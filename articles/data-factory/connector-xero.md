@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 09a1bfc47cd048e371575f80933f5bfd0116bf8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 131f147e2c445e8cfef12288d4d0d29f6fd7fe01
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Xero
 
@@ -55,7 +55,7 @@ A következő tulajdonságok Xero kapcsolódó szolgáltatás támogatottak:
 | type | A type tulajdonságot kell beállítani: **Xero** | Igen |
 | gazdagép | A Xero Server endpoint (`api.xero.com`).  | Igen |
 | consumerKey | A Xero alkalmazáshoz kapcsolódó kulcsa. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| privateKey | A titkos kulcsot a .pem fájl lett létrehozva, a Xero titkos alkalmazás, lásd: [hozzon létre egy nyilvános/titkos kulcspár](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). A .pem fájl, többek között a Unix sor endings(\n) az összes szöveg, tekintse meg az alábbi minta.<br/>Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
+| privateKey | A titkos kulcsot a .pem fájl lett létrehozva, a Xero titkos alkalmazás, lásd: [hozzon létre egy nyilvános/titkos kulcspár](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Vegye figyelembe, hogy **készítése az 512 numbits privatekey.pem** használatával `openssl genrsa -out privatekey.pem 512`; 1024 nem támogatott. A .pem fájl, többek között a Unix sor endings(\n) az összes szöveg, tekintse meg az alábbi minta.<br/><br/>Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Meghatározza, hogy az állomásnév szükséges a kiszolgálói tanúsítvány felel meg a kiszolgáló állomásnevét, SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a kiszolgáló identitásának ellenőrzése SSL-en keresztüli kapcsolódás esetén. Az alapértelmezett érték: igaz.  | Nem |

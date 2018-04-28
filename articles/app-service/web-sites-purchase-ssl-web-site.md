@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -101,7 +101,7 @@ Az a  **[Azure-portálon](https://portal.azure.com/)**, kattintson a **App Servi
 
 Kattintson annak az alkalmazásnak a nevére, amelyhez hozzá szeretné rendelni a tanúsítványt.
 
-Az a **beállítások**, kattintson a **SSL-tanúsítványok**.
+Az a **beállítások**, kattintson a **SSL-beállítások**.
 
 Kattintson a **App Service-tanúsítvány importálása** , és válassza ki az imént beszerzett tanúsítványt.
 
@@ -166,7 +166,7 @@ Válassza ezt a beállítást csak a [egy App Service-tartomány, az Azure-ból 
 > [!TIP]
 > Ellenőrizze a terminál használatával `curl -G http://<domain>/.well-known/pki-validation/starfield.html` a válasz tartalmaznia kell a `<verification-token>`.
 
-#### <a name="dns-txt-record-verification"></a>DNS TXT Record Verification
+#### <a name="dns-txt-record-verification"></a>DNS TXT rekord ellenőrzése
 
 1. A DNS-kezelő használatával hozzon létre egy TXT rekordot a a `@` altartomány értékkel egyenlőnek a tartomány ellenőrző jogkivonat.
 1. Kattintson a **"Frissítés"** ellenőrzés után a tanúsítvány állapotának frissítése.
@@ -206,5 +206,7 @@ Ha az SSL-tanúsítvány automatikus megújítási van konfigurálva, de nem aut
 
 ## <a name="more-resources"></a>További erőforrások
 
+* [HTTPS kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-https)
+* [A TLS 1.1-es vagy 1.2-es kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
 * [Egy SSL-tanúsítvány használható az alkalmazás kódjában, az Azure App Service-ben](app-service-web-ssl-cert-load.md)
 * [– Gyakori kérdések: App Service-tanúsítványok](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

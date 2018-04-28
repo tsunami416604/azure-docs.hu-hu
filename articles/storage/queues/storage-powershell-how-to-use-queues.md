@@ -1,12 +1,12 @@
 ---
-title: "Azure Queue storage PowerShell műveleteket |} Microsoft Docs"
-description: "Hogyan hajthat végre műveleteket a Azure Queue storage a PowerShell használatával"
+title: Azure Queue storage PowerShell műveleteket |} Microsoft Docs
+description: Hogyan hajthat végre műveleteket a Azure Queue storage a PowerShell használatával
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 36eb6db83bb902b35efb8c9666ab06e0c618d602
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bad9f1f3fd5737e865a8f4d1d15ab3d5eb68b4cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue storage műveleteket az Azure PowerShell
 
@@ -38,15 +38,15 @@ Nincsenek az adatok vezérlősík várólisták nem PowerShell-parancsmagok. Ada
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Login-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="retrieve-list-of-locations"></a>Helyek listájának beolvasása
 
-Ha nem tudja, melyik használni kívánt helyet, listázhatja a helyeket. Miután a lista megjelenik, megtalálja használni kívánt. Ebben a gyakorlatban használandó **eastus**. Ez a változó tárolja **hely** későbbi használatra.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ebben a gyakorlatban használandó **eastus**. Ez a változó tárolja **hely** későbbi használatra.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -66,7 +66,7 @@ New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-Hozzon létre egy szabványos általános célú tárfiók helyileg redundáns tárolás (LRS) használatával [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). A tárfiók környezetét, amely definiálja a tárfiókot használni beolvasása. A tárfiók eljárva hivatkozik a környezet helyett ismételten adja meg a hitelesítő adatokat.
+Hozzon létre egy szabványos általános célú tárfiók helyileg redundáns tárolás (LRS) használatával [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). A tárfiók környezetét, amely definiálja a tárfiókot használni beolvasása. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
@@ -171,13 +171,13 @@ Remove-AzureStorageQueue –Name $queueName –Context $ctx
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az eszközök, ebben a gyakorlatban létrehozott összes eltávolításához távolítsa el az erőforráscsoportot. Ez törli a csoportban található összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókban és az erőforráscsoport magát.
+Az eszközök, ebben a gyakorlatban létrehozott összes eltávolításához távolítsa el az erőforráscsoportot. Így törli a csoportban lévő összes erőforrást is. Ebben az esetben eltávolítja a létrehozott tárfiókban és az erőforráscsoport magát.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Útmutató cikkben megtanulta, kapcsolatos alapvető várólista tárolók kezelése a PowerShell-lel, beleértve a hogyan:
 
@@ -190,7 +190,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 > * Üzenetsor törlése
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>A Microsoft Azure PowerShell tárolási parancsmagok
-* [Storage PowerShell-parancsmagok](/powershell/module/azurerm.storage#storage)
+* [Tárolási PowerShell-parancsmagok](/powershell/module/azurerm.storage#storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

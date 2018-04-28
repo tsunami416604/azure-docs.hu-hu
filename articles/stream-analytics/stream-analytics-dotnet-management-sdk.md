@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/06/2017
-ms.openlocfilehash: 541ad08a21b118e463969fa3240374c3646bf50e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b57e22b979d0e47d294a89d41a945a665beacdc0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>.NET SDK-kezelés: Beállítása és az Azure Stream Analytics API használatával a .NET-hez analytics-feladatok futtatása
 Megtudhatja, hogyan állítson be és használja a Stream Analytics API Management .NET SDK használatával .NET analytics-feladatok futtatása. Projekt beállítása, hozzon létre a bemeneti és kimeneti adatforrások, átalakítások, és úgy indítsa és feladatok. Az analytics-feladatok adatok Blob-tároló vagy az eseményközpont folyamatos átviteléhez.
@@ -45,7 +45,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* Beállítása egy bemeneti forrás- és kimeneti használatára. A további tudnivalókat [bemenet hozzáadása](stream-analytics-add-inputs.md) állíthat be egy minta bemeneti és [hozzáadása kimenetek](stream-analytics-add-outputs.md) állíthat be egy minta kimenet.
+* Állítsa be egy bemeneti forrás- és kimeneti való kapcsolódáshoz a feladathoz.
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
 Az analytics-feladat használja a Stream Analytics API a .NET-hez, először állítsa be a projekthez.

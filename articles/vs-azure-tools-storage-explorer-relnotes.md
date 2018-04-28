@@ -1,12 +1,12 @@
 ---
-title: "Kibocsátási megjegyzések a Microsoft Azure Tártallózó (előzetes verzió)"
-description: "Kibocsátási megjegyzések a Microsoft Azure Tártallózó (előzetes verzió)"
+title: A Microsoft Azure Tártallózó kibocsátási megjegyzései
+description: Kibocsátási megjegyzések a Microsoft Azure Tártallózó
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 0e5523e297979a89ffd4b4ed51c8476fb1354419
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
-ms.translationtype: MT
+ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Kibocsátási megjegyzések a Microsoft Azure Tártallózó (előzetes verzió)
+# <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Tártallózó kibocsátási megjegyzései
 
 A cikkben a kibocsátási megjegyzések a 0.9.6. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
 
-[A Microsoft Azure Tártallózó (előzetes verzió)](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux rendszeren.
+[A Microsoft Azure Tártallózó](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux rendszeren.
 
 ## <a name="version-096"></a>0.9.6 verzió
 02/28/2018
@@ -198,7 +198,7 @@ A cikkben a kibocsátási megjegyzések a 0.9.6. Azure Tártallózó (előzetes 
 ## <a name="version-092"></a>0.9.2 verzió
 11/01/2017
 
-### <a name="hotfixes"></a>Hotfixes
+### <a name="hotfixes"></a>Gyorsjavítások
 * Váratlan adatok módosítása volt lehetséges, attól függően, hogy a helyi időzónát táblaentitásokat Edm.DateTime értékeinek szerkesztése során. A szerkesztő mostantól használ a egyszerű szövegmező Edm.DateTime értékek pontos, egységes ad.
 * Egy csoport nevét és a kulcs csatolt blobok feltöltése/letöltése nem indul el. A probléma javítását.
 * Korábban Tártallózó csak felajánlja újból hitelesítésre a régi fiókot, ha egy vagy több a fiók-előfizetések választotta. Most Tártallózó kérni fogja, még akkor is, ha a fiók teljesen ki van szűrve.

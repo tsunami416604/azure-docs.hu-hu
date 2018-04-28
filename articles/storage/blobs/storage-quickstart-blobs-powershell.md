@@ -1,19 +1,19 @@
 ---
-title: Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban az Azure PowerShell használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre az Azure PowerShell használatával. Majd a PowerShell segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: Azure rövid útmutató – Blob létrehozása objektumtárban Azure PowerShell használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban az Azure PowerShell használatával kezelheti az objektumtárat (blobtárat). Majd a PowerShell segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: roygara
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 29eb69f95680babfc1004d483a6a1c2bc44edda8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f028d37a98cecf14706773a2eb7cb601481435d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-powershell"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure PowerShell használatával
 

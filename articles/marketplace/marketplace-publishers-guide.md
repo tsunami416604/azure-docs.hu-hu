@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 999c9bc04cffcfe3e352d877ebf9e19fc7c7df35
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure piactér és AppSource publisher útmutató
 
@@ -141,7 +141,7 @@ Három jellemző próba forgatókönyvek van:
 |**Interaktív bemutató**    |  Lehetővé teszi az ügyfelek a a terméket telepítő összetettsége nélkül művelet megjelenítéséhez.       |    A megoldás, amely nehéz elérni a próbaidőszak lenne összetett telepítési igényel.     |
 
 
-#### <a name="free-trial"></a>Ingyenes próbalehetőség
+#### <a name="free-trial"></a>Ingyenes próbaidőszak
 
 Egy ingyenes próbaverzióra használja, ha a megoldáshoz, vagy az alkalmazás által a ingyenes-az-próbálja meg, a Szolgáltatottszoftver-alapú próbaverziójának. Ez a beállítás kiváló minőségű érdeklődők meghajtók érdekelt ügyfél segítségével az üzleti lendkerék indíthat el. Ingyenes próbaverzió korlátozott használatú vagy korlátozott időtartamra próba fiókok jelenítheti meg. Tartalmazniuk kell a fizetős használja a szoftver átalakítás felgyorsítása művelet hívása.
 
@@ -253,7 +253,7 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 
 |**Követelmény**  | **Részletek**  |**Közzétételi beállítás**  |
 |---------|---------|---------|
-|**Ingyenes próbaverzió lejárta és próbaverziója**     |  Az ügyfél az alkalmazás használhatja az ingyenes korlátozott ideig kell lennie.<br><br>Ez azt jelenti, hogy az ügyfél nem vesznek részt a terméket, és nem az alapul szolgáló Microsoft-k termék vagy szolgáltatás költségének licencek vagy előfizetések díjai. Mert mind a próbaverziós beállítást a közzétevő Microsoft termék-előfizetéshez vannak telepítve, a közzétevő kizárólag vezérli próba költség optimalizálása és kezelését.<br><br>Válassza ki a próba-előfizetésre, az interaktív bemutató, vagy kipróbálása. Beállításoktól függetlenül az ingyenes próbaverzióval kell nyújtania az ügyfél minimális idő kipróbálni az alkalmazás további költség nélkül.<br><br>A folyamat próbát létrehozásának megkezdéséhez elérhetők a cloudmarketplace@microsoft.com. <br><br>Vegye figyelembe, hogy az Azure piactér SaaS próba észlel kell engedélyezése a felhasználók számára az Active Directory munkahelyi hitelesítő adatokkal jelentkezhetnek be. [További információk](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences). |   Próbaverzió      | 
+|**Ingyenes próbaverzió lejárta és próbaverziója**     |  Az ügyfél az alkalmazás használhatja az ingyenes korlátozott ideig kell lennie.<br><br>Ez azt jelenti, hogy az ügyfél nem vesznek részt a terméket, és nem az alapul szolgáló Microsoft-k termék vagy szolgáltatás költségének licencek vagy előfizetések díjai. Mert mind a próbaverziós beállítást a közzétevő Microsoft termék-előfizetéshez vannak telepítve, a közzétevő kizárólag vezérli próba költség optimalizálása és kezelését.<br><br>Válassza ki a próba-előfizetésre, az interaktív bemutató, vagy kipróbálása. Beállításoktól függetlenül az ingyenes próbaverzióval kell nyújtania az ügyfél minimális idő kipróbálni az alkalmazás további költség nélkül.<br><br>A folyamat próbát létrehozásának megkezdéséhez elérhetők a cloudmarketplace@microsoft.com. <br><br>Vegye figyelembe, hogy az Azure piactér SaaS próba észlel kell engedélyezése a felhasználók számára az Active Directory munkahelyi hitelesítő adatokkal jelentkezhetnek be. [További információk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences). |   Próbaverzió      | 
 | **Könnyen konfigurálható, azonnal használható megoldás**    |  Az alkalmazás könnyű és gyors konfigurálásához és állítson be kell lennie.       |  Próbaverzió       |
 |**Rendelkezésre állás/üzemideje**    |    A Szolgáltatottszoftver-alkalmazás vagy a platform legalább 99,9 %-os hasznos üzemidőt kell rendelkeznie.     |    Próbaverzió     |
 |**Azure Active Directory**    |    Az ajánlat lehetővé kell tenni, Azure Active Directory (Azure AD) összevont egyszeri bejelentkezést (SSO) hozzájárulási engedélyezve van.      |  Próbaverzió|
@@ -264,7 +264,7 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 |**Követelmény**  |**Részletek** |**Közzétételi beállítás**  |
 |---------|---------|---------|
 |**Számlázási és annak mérésére**    |  A virtuális gép támogatnia kell a saját licenc vagy a használat alapú, a havi számlázási.       |    Tranzakció    |
-|**Azure-kompatibilis virtuális merevlemez (VHD)**     |   Virtuális gépek kell épülő [Windows](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) vagy [Linux](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).    |   Tranzakció      |
+|**Azure-kompatibilis virtuális merevlemez (VHD)**     |   Virtuális gépek kell épülő [Windows](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) vagy [Linux](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).    |   Tranzakció      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Consulting Services tanácsadó szolgálat közzététel adott előfeltételei
 
@@ -277,7 +277,7 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Az Azure Active Directoryval kísérletek engedélyezése
 Az Azure Active Directory egy identitás felhőszolgáltatás, amely lehetővé teszi a hitelesítést a Microsoft munkahelyi vagy iskolai fiók szabványos protokollok segítségével: OAuth és az OpenID Connect. További tudnivalók az Azure AD meg a [termék weblap](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
 
-Microsoft Azure AD-val senki piactér hitelesíti. Amikor a hitelesített felhasználók a próbaidőszak listázása a piactéren keresztül kattint, és átirányítja a kísérleti környezetben, anélkül, hogy egy további bejelentkezési lépést a felhasználó oszthat közvetlenül a próbaverzió. A [jogkivonatot, amely az alkalmazás fogad az Azure AD-hitelesítés során](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) , amely a felhasználói fiók létrehozása az alkalmazás segítségével értékes felhasználói adatokat tartalmaz. Ezután automatizálhatja a telepítési élmény és átalakítás érdekében. 
+Microsoft Azure AD-val senki piactér hitelesíti. Amikor a hitelesített felhasználók a próbaidőszak listázása a piactéren keresztül kattint, és átirányítja a kísérleti környezetben, anélkül, hogy egy további bejelentkezési lépést a felhasználó oszthat közvetlenül a próbaverzió. A [jogkivonatot, amely az alkalmazás fogad az Azure AD-hitelesítés során](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) , amely a felhasználói fiók létrehozása az alkalmazás segítségével értékes felhasználói adatokat tartalmaz. Ezután automatizálhatja a telepítési élmény és átalakítás érdekében. 
 
 Az Azure AD az alkalmazás vagy a próbaidőszak egy kattintással hitelesítés engedélyezése:
 
@@ -292,20 +292,20 @@ Ha az Azure AD ma támogatja:
 
 - Az alkalmazás regisztrálása az Azure portálon.
 - A több-bérlős támogatással funkció engedélyezése az Azure AD egy egyetlen kattintással próbaverziója eléréséhez.
-- [További információk](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications).
+- [További információk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 
 Ha most ismerkedik az Azure AD összevont egyszeri bejelentkezés:
 
 - Az alkalmazás regisztrálása az Azure portálon.
-- Egyszeri bejelentkezés az Azure AD használatával fejlesztése [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) vagy [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
+- Egyszeri bejelentkezés az Azure AD használatával fejlesztése [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) vagy [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
 - A több-bérlős támogatással funkció engedélyezése az Azure AD egy egyetlen kattintással próbaverziója eléréséhez.
-- [További információk](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified).
+- [További információk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).
 
 ### <a name="certify-your-azure-ad-integration-for-the-marketplace-single-tenant-applications"></a>Az Azure AD-integráció a piactér tanúsítására: single-bérlői alkalmazások
 
 Single-bérlői alkalmazások több lehetőség áll rendelkezésre:
 
-- Felhasználók hozzáadása a könyvtárhoz vendégként használatával [Azure B2B](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Felhasználók hozzáadása a könyvtárhoz vendégként használatával [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 - Az ügyfelek forduljon Me keresztül manuálisan kiépítése próbaverzió
 - Ügyfél próbát fejlesztéséhez.
 - Hozzon létre egy több-bérlős bemutató mintaalkalmazás egyszeri Bejelentkezést.
@@ -316,11 +316,11 @@ Office-, Dynamics, és a Power BI AppSource alkalmazások esetén részletesebb 
 
 |Product |Közzétételi információkat  |
 |---------|---------|
-|Office 365     |    Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store).     |
-|Dynamics 365 a pénzügyi és műveletek  |   Ön éppen való fejlesztéskor Enterprise Edition, tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
-|Az ügyfél Engagement Dynamics 365 |Tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource). |
-|Power BI   |     Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/en-us/power-bi/developer/office-store).    |
-|Cortana Intelligence     |    További tudnivalók [AppSource a Cortana](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
+|Office 365     |    Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store).     |
+|Dynamics 365 a pénzügyi és műveletek  |   Ön éppen való fejlesztéskor Enterprise Edition, tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
+|Az ügyfél Engagement Dynamics 365 |Tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource). |
+|Power BI   |     Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/power-bi/developer/office-store).    |
+|Cortana Intelligence     |    További tudnivalók [AppSource a Cortana](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
 |AppSource tanácsadás ajánlatok     |  Tekintse át a [irányelvek és megtudhatja, hogyan nyújt az ajánlatot](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf).    |
 
 
@@ -522,11 +522,11 @@ A vállalati fiók létrehozásakor követi ezeket az irányelveket, ha egynél 
 
 A fejlesztői fiókba elsősorban a megbízható számítógépekhez legyenek elérhetők. Ez azért fontos, mert fiókonként hetente létrehozott kódok száma korlátozva van. Használja a megbízható számítógépekhez is lehetővé teszi, hogy a legtöbb zökkenőmentes bejelentkezési élményt.
 
-További fejlesztői fiók irányelvek és biztonsági további információkért lásd: [fejlesztői fiókot](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account).
+További fejlesztői fiók irányelvek és biztonsági további információkért lásd: [fejlesztői fiókot](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account).
 
 ### <a name="guidance-for-microsoft-ids-in-an-azure-ad-federated-domain"></a>Útmutató a Microsoft IDs összevont Azure AD-tartomány
 
-A vállalati fiók is lehet összevont keresztül [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/). Ha mégis megpróbálja létrehozása a Microsoft ID vállalati e-mail címmel hibát ad vissza. Ha hibaüzenetet kap, először forduljon az informatikai csapat számára, győződjön meg arról, hogy ez a helyzet. Ez egy ismert probléma, és jelenleg is dolgozunk névfeloldása. 
+A vállalati fiók is lehet összevont keresztül [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Ha mégis megpróbálja létrehozása a Microsoft ID vállalati e-mail címmel hibát ad vissza. Ha hibaüzenetet kap, először forduljon az informatikai csapat számára, győződjön meg arról, hogy ez a helyzet. Ez egy ismert probléma, és jelenleg is dolgozunk névfeloldása. 
 
 A probléma megoldásához, azt javasoljuk, hogy hozzon létre egy új e-mail címet a @outlook.com tartomány és hozzon létre egy szabályt. Kövesse az alábbi lépéseket:
 
@@ -562,7 +562,7 @@ Az utolsó lépés befejezése után Outlook a minden e-mailek-kommunikáció a 
 5. A **fióktípus**, jelölje be **vállalati** , és válassza a **következő** gombra.
 
    >[!IMPORTANT]
-   >Jobb megértése érdekében a fióktípusoknak a használata, és amelyek kiválaszthatja, lásd: [típusok, a helyek és a díjak](https://docs.microsoft.com/en-us/windows/uwp/publish/account-types-locations-and-fees).
+   >Jobb megértése érdekében a fióktípusoknak a használata, és amelyek kiválaszthatja, lásd: [típusok, a helyek és a díjak](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
 
 6. A **Publisher megjelenített név**, adja meg a megjelenített neve (általában a vállalat nevét).
 

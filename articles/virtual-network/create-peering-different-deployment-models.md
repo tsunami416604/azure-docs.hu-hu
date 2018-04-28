@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: e1dfd7ec4a2475142423f00a457a909989a36bea
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: be7db6f8a69731dec83ba94aecc272bc1df17892
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellel, ugyanahhoz az előfizetéshez 
 
@@ -161,7 +161,7 @@ Használhatja a [Azure-portálon](#portal), az Azure [parancssori felület](#cli
 
     > [!WARNING]
     > Megváltozott hálózati konfigurációs fájlok importálása (klasszikus) az előfizetéshez létező virtuális hálózatok módosításai okozhatják. Csak adja hozzá a korábbi virtuális hálózatot, és módosítsa vagy távolítsa el a meglévő virtuális hálózatok az előfizetésből nem biztosítására. 
-5. Jelentkezzen be az Azure a virtuális hálózat (erőforrás-kezelő) létrehozásához írja be a `login-azurermaccount` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#requirements-and-constraints).
+5. Jelentkezzen be az Azure a virtuális hálózat (erőforrás-kezelő) létrehozásához írja be a `Connect-AzureRmAccount` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#requirements-and-constraints).
 6. Hozzon létre egy erőforráscsoportot és egy virtuális hálózatot (Resource Manager). Másolja a parancsfájlt, illessze be a PowerShell és nyomja le az `Enter`.
 
     ```powershell
@@ -211,7 +211,7 @@ Ez az oktatóanyag befejezése után, előfordulhat, hogy törölni kívánja az
 2. Az a **myResourceGroup** panelen kattintson a **törlése** ikonra.
 3. A törlés megerősítéséhez a a **típus az ERŐFORRÁSCSOPORT neve** adja meg a **myResourceGroup**, és kattintson a **törlése**.
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="delete-cli"></a>Az Azure parancssori felület
 
 1. Az Azure CLI 2.0 segítségével törölje a virtuális hálózatot (erőforrás-kezelő) a következő paranccsal:
 

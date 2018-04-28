@@ -1,8 +1,8 @@
 ---
-title: "Az Azure HDInsight az Apache Spark-fürt elhárítása |} Microsoft Docs"
-description: "További tudnivalók az Apache Spark on Azure HDInsight és azok megkerülő fürtökkel kapcsolatos problémák."
+title: Az Azure HDInsight az Apache Spark-fürt elhárítása |} Microsoft Docs
+description: További tudnivalók az Apache Spark on Azure HDInsight és azok megkerülő fürtökkel kapcsolatos problémák.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,24 +10,22 @@ tags: azure-portal
 ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 664c97117de793209007843fa23c98f52c2b079d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>A HDInsight az Apache Spark-fürt kapcsolatos ismert problémák
 
 Ez a dokumentum nyomon követi az összes ismert problémák a HDInsight Spark nyilvános előzetes verzióhoz.  
 
 ## <a name="livy-leaks-interactive-session"></a>Livy szivárgást interaktív munkamenet
-Újraindításakor Livy (az Ambari, illetve a virtuális gép újraindítás headnode 0) egy interaktív munkamenet-életben egy interaktív feladat munkamenet kiszivárgott. Emiatt az új feladatok is elakadt a elfogadott állapotban, és nem indítható el.
+Újraindításakor Livy (az Ambari vagy headnode 0 virtuális gép újraindítása miatt) egy interaktív munkamenet-életben egy interaktív feladat munkamenet kiszivárgott. Ennek eredményeképpen új feladatokat is elakadt a elfogadott állapotban.
 
 **Megoldás:**
 
@@ -54,7 +52,12 @@ Spark előzmények kiszolgáló nem automatikusan elindul a fürt létrehozása 
 Manuálisan indítsa el az előzmények server Ambari.
 
 ## <a name="permission-issue-in-spark-log-directory"></a>A Spark naplókönyvtár engedély probléma
-Amikor hdiuser spark-submit egy feladatot ad meg, nincs-e egy hiba java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (engedély megtagadva) és az illesztőprogram-napló nem készül. 
+hdiuser lekérdezi a következő hiba, ha egy feladat használatával elküldése spark-nyújt:
+
+```
+java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied)
+```
+Nevével, és nincs illesztőprogram napló. 
 
 **Megoldás:**
 
@@ -65,7 +68,7 @@ Amikor hdiuser spark-submit egy feladatot ad meg, nincs-e egy hiba java.io.FileN
 
 ## <a name="spark-phoenix-connector-is-not-supported"></a>A Spark-Phoenix összekötő nem támogatott
 
-A Spark-Phoenix összekötő egy HDInsight Spark-fürt nem támogatott.
+HDInsight Spark-fürtök nem támogatják a Spark-Phoenix összekötő.
 
 **Megoldás:**
 
@@ -75,10 +78,10 @@ A Spark-HBase-összekötő kell helyette használni. Az utasításokért lásd: 
 Az alábbiakban néhány Jupyter notebookok kapcsolatos ismert problémák.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>A fájlnevek nem ASCII-karaktereket notebookokban
-A Spark HDInsight-fürtökkel használt Jupyter notebookok fájlnevekben nem rendelkezhet nem ASCII-karaktereket. Ha mégis megpróbálja feltölteni a fájlt a Jupyter felhasználói felületen, amelynek a nem ASCII-fájl nevét, az nem csendes (Ez azt jelenti, hogy Jupyter nem teszi lehetővé a fájl feltöltéséhez, de a megjelenő hibaüzenet nem lépett vagy). 
+Ne használjon nem ASCII-karaktereket a Jupyter notebook elnevezése. Ha mégis megpróbálja feltölteni a fájlt a Jupyter felhasználói felületen, amelynek a nem ASCII-fájl nevét, nem minden hibaüzenet nélkül. Jupyter nem teszi lehetővé a fájl feltöltéséhez, de a megjelenő hibaüzenet nem lépett vagy.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Nagyobb méretű notebookok betöltése közben hiba
-Láthatja, hogy hiba  **`Error loading notebook`**  Ha nagyobb méretű notebookok tölthető be.  
+Láthatja, hogy hiba **`Error loading notebook`** Ha nagyobb méretű notebookok tölthető be.  
 
 **Megoldás:**
 
@@ -99,7 +102,7 @@ Jupyter notebook használatával Spark magic utasításnak elsőként kód több
 Ez akkor fordul elő, mert az első kódcella futtatásakor. A háttérben kezdeményez a munkamenet-konfigurációhoz és Spark, SQL, és a Hive-környezeteket. Miután ezek a környezetek vannak beállítva, az első utasításban fut, és ezáltal a benyomást, amely az utasítás hosszú időt vett igénybe befejezéséhez.
 
 ### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter notebook időkorlátot adja meg a munkamenet létrehozása
-Amikor Spark-fürt kifogyott az erőforrásokból, a Jupyter notebook a Spark- és PySpark kernelek fog időtúllépés történt a munkamenet létrehozása közben. 
+Amikor Spark-fürt kifogyott az erőforrásokból, a Spark- és PySpark kernelek a Jupyter notebook a rendszer túllépi az időkorlátot a munkamenet létrehozására tett kísérlet. 
 
 **Megoldást:** 
 

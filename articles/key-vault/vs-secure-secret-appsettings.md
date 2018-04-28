@@ -1,24 +1,24 @@
 ---
-title: "Titkos Alkalmazásbeállítások webalkalmazás biztonságosan mentése |} Microsoft Docs"
-description: "Hogyan biztonságosan mentése titkos alkalmazás beállításait, például Azure hitelesítő adatok vagy harmadik féltől származó API használatával ASP.NET alapvető Key Vault Provider, a felhasználó titkos kulcs vagy a .NET 4.7.1 konfigurációs rendszerépítők"
+title: Titkos Alkalmazásbeállítások webalkalmazás biztonságosan mentése |} Microsoft Docs
+description: Hogyan biztonságosan mentése titkos alkalmazás beállításait, például Azure hitelesítő adatok vagy harmadik féltől származó API használatával ASP.NET alapvető Key Vault Provider, a felhasználó titkos kulcs vagy a .NET 4.7.1 konfigurációs rendszerépítők
 services: visualstudio
-documentationcenter: 
+documentationcenter: ''
 author: cawa
 manager: paulyuk
-editor: 
-ms.assetid: 
-ms.service: 
+editor: ''
+ms.assetid: ''
+ms.service: ''
 ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 612b8d2c36e9b46e99452e78d1b30fda03474151
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: eee882dc52ffc37067916dac29324efe0bc95b03
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Titkos Alkalmazásbeállítások webalkalmazás biztonságosan mentése
 
@@ -145,7 +145,7 @@ Az ASP.NET core szakaszából a kulcstároló, a projekt konfigurálásához kö
 
 1. Telepítse a következő NuGet-csomagot a projekthez
 ```
-Microsoft.Configuration.ConfigurationBuilders.Azure.1.0.0-alpha1.nupkg
+Microsoft.Configuration.ConfigurationBuilders.UserSecrets.1.0.0-preview2.nupkg
 ```
 
 2. Adja meg a Key Vault konfigurációs builder a Web.config fájlban. Ez a szakasz előtt helyezze *appSettings* szakasz. Cserélje le *vaultName* kell lennie a Key Vault name, ha a Key Vault szuverén felhő használata a nyilvános Azure és a teljes URI-címe van.

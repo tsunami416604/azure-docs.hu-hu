@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: d60c5766b22e31c33d0dd4a743fa297470109ac6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7fe1cd003bd7e6b681989324a42a076f4fd2f7df
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub eszköz kiépítése szolgáltatáshoz automatikus átadásának segítségével regisztrálja a MXChip IoT DevKit IoT hubbal
 
@@ -54,7 +54,7 @@ A DevKit az eszköz-üzembehelyezési létrehozott szolgáltatáspéldány való
 4. Nyissa meg a Visual Studio Code, a DevKit kapcsolódni a számítógéphez, és nyissa meg a klónozott kódot tartalmazó mappát.
 
 5. Nyissa meg **DevKitDPS.ino**. Keresés és csere `[Global Device Endpoint]` és `[ID Scope]` le feljegyzett értékekkel.
-  ![Terjesztési pontok végpont](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) hagyhatja a **registrationId** üres. Az alkalmazás létrehoz egyet a MAC-cím és a belső vezérlőprogram verziója alapján. Ha szeretné testre szabni a regisztrációs Azonosítót, használjon csak alfanumerikus, kis, és az kötőjel kombinációk egy legfeljebb 128 karakter hosszú lehet. További információkért lásd: [kezelése az Azure-portálon eszközbeléptetésnél](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments).
+  ![Terjesztési pontok végpont](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) hagyhatja a **registrationId** üres. Az alkalmazás létrehoz egyet a MAC-cím és a belső vezérlőprogram verziója alapján. Ha szeretné testre szabni a regisztrációs Azonosítót, használjon csak alfanumerikus, kis, és az kötőjel kombinációk egy legfeljebb 128 karakter hosszú lehet. További információkért lásd: [kezelése az Azure-portálon eszközbeléptetésnél](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
 6. Gyors Megnyitás Visual STUDIO Code használata (Windows: `Ctrl+P`, macOS: `Cmd+P`) és típus *eszköz-feltöltési feladat* build és a kód feltölti a DevKit.
 

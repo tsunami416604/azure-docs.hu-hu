@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: e8e9f9c0cbe044b2aa459898f2d3900db10d200a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 5316013631670ab3612e441e64e2f330f01941b7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-storage-metrics-in-azure-monitor-preview"></a>Az Azure Storage mérőszámainak Azure figyelőben (előzetes verzió)
 
@@ -28,23 +28,23 @@ Az Azure biztosít, egységes felhasználói felületek keresztüli különböz�
 
 ## <a name="access-metrics"></a>Hozzáférés metrikák
 
-Az Azure hozzáférési metrikák több lehetőség is biztosít. Végezheti el azokat a [Azure-portálon](https://portal.azure.com), az Azure figyelő API-k (REST és .net) és elemzési megoldások, például Naplóelemzés és az Event Hubs. További információkért lásd: [Azure figyelő metrikák](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Az Azure hozzáférési metrikák több lehetőség is biztosít. Végezheti el azokat a [Azure-portálon](https://portal.azure.com), az Azure figyelő API-k (REST és .net) és elemzési megoldások, például a művelet felügyeleti csomag és az Event Hubs. További információkért lásd: [Azure figyelő metrikák](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Alapértelmezés szerint engedélyezve vannak a metrikákat, és végezheti el az utolsó 30 napnyi adat. Ha szeretné megőrizni az adatokat egy hosszabb ideig, úgy archiválhatók metrikai adatok az Azure Storage-fiók. Ez úgy van konfigurálva a [diagnosztikai beállítások](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) Azure-figyelőben.
+Alapértelmezés szerint engedélyezve vannak a metrikákat, és érheti el az adatok az elmúlt 30 nap. Ha szeretné megőrizni az adatokat egy hosszabb ideig, úgy archiválhatók metrikai adatok az Azure Storage-fiók. Ez úgy van konfigurálva a [diagnosztikai beállítások](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) Azure-figyelőben.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Az Azure portálon hozzáférés metrikák
 
-Figyelheti a metrikák adott idő alatt az Azure portálon. Az alábbiakban egy példát mutatunk megtekintése **UsedCapacity** fiók szintjén.
+Figyelheti a metrikák adott idő alatt az Azure portálon. A következő példa bemutatja, hogyan megtekintéséhez **UsedCapacity** fiók szintjén.
 
 ![Képernyőkép a metrikát a az Azure-portál elérése](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-A dimenziók támogató metrika szűrheti kell a kívánt dimenzió értékű. Az alábbiakban egy példát mutatunk megtekintése **tranzakciók** a fiók szintjén **sikeres** válaszának típusa.
+A dimenziók támogató metrika szűrheti kell a kívánt dimenzió értékű. A következő példa bemutatja, hogyan megtekintéséhez **tranzakciók** a fiók szintjén **sikeres** válaszának típusa.
 
 ![képernyőfelvétel az Azure portálon dimenzió metrikák elérése](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
 ### <a name="access-metrics-with-the-rest-api"></a>A REST API Access metrikák
 
-Az Azure biztosít, [REST API-k](/rest/api/monitor/) metrika definíció- és értékek olvasni. Ez a szakasz bemutatja, hogyan olvasni a tárolási. Erőforrás-azonosító szerepel az összes REST API-k. További információk megadására, olvassa el az [Storage szolgáltatásaihoz erőforrás-azonosító ismertetése](#understanding-resource-id-for-services-in-storage).
+Az Azure biztosít, [REST API-k](/rest/api/monitor/) metrika definíció- és értékek olvasni. Ez a szakasz bemutatja, hogyan olvasni a tárolási. Erőforrás-azonosító szerepel az összes REST API-k. További információkért olvassa el [Storage szolgáltatásaihoz erőforrás-azonosító ismertetése](#understanding-resource-id-for-services-in-storage).
 
 A következő példa bemutatja, hogyan használható [ArmClient](https://github.com/projectkudu/ARMClient) egyszerűbbé teheti a REST API-val tesztelése a parancssorból.
 
@@ -139,9 +139,151 @@ A következő válasz JSON formátumban metrika értéket tartalmaz:
 
 ```
 
-## <a name="billing-for-metrics"></a>A metrikák számlázási
+### <a name="access-metrics-with-the-net-sdk"></a>A .net SDK hozzáférés metrikák
 
-A metrikák Azure figyelőben használata jelenleg szabad. Azonban ha használ további megoldásokat metrikák adatok bevitele, akkor előfordulhat, hogy számlázni ezek a megoldások. Például kell fizetni Azure Storage által archiválja metrikák egy Azure Storage-fiókhoz. Vagy számlázva által Naplóelemzési Ha adatfolyam formájában a speciális elemzésekre szolgáló metrikák Naplóelemzési adatokat.
+Az Azure biztosít, [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) metrika definíció- és értékek olvasni. A [példakód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) bemutatja, hogyan használhatja az SDK-más paraméterekkel együtt. Kell használnia `0.18.0-preview` vagy a storage mérőszámainak újabb verziója. Erőforrás-Azonosítót használja a .net SDK. További információkért olvassa el [Storage szolgáltatásaihoz erőforrás-azonosító ismertetése](#understanding-resource-id-for-services-in-storage).
+
+A következő példa bemutatja, hogyan olvasni tárolási Azure Monitor .net SDK használatával.
+
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Lista fiók szintű metrika-definíció a .net SDK
+
+A következő példa bemutatja, hogyan listázhat fiók szintjén metrika definíciója:
+
+```csharp
+    public static async Task ListStorageMetricDefinition()
+    {
+        // Resource ID for storage account
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        Using metrics in Azure Monitor is currently free. However, if you use additional solutions ingesting metrics data, you may be billed by these solutions. For example, you are billed by Azure Storage if you archive metrics data to an Azure Storage account. Or you are billed by Operation Management Suite (OMS) if you stream metrics data to OMS for advanced analysis.
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+        IEnumerable<MetricDefinition> metricDefinitions = await readOnlyClient.MetricDefinitions.ListAsync(resourceUri: resourceId, cancellationToken: new CancellationToken());
+
+        foreach (var metricDefinition in metricDefinitions)
+        {
+            //Enumrate metric definition:
+            //    Id
+            //    ResourceId
+            //    Name
+            //    Unit
+            //    MetricAvailabilities
+            //    PrimaryAggregationType
+            //    Dimensions
+            //    IsDimensionRequired
+        }
+    }
+
+```
+
+Ha ki szeretné listázni a blob, table, fájl vagy várólista metrikai meghatározásainak, az API-t adjon meg a különböző erőforrás-azonosítók az egyes szolgáltatásokhoz.
+
+#### <a name="read-metric-values-with-the-net-sdk"></a>Olvassa el a metrika értékek a .net SDK
+
+A következő példa bemutatja, hogyan olvashatja `UsedCapacity` fiók szintjén adatokat:
+
+```csharp
+    public static async Task ReadStorageMetricValue()
+    {
+        // Resource ID for storage account
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+
+        Microsoft.Azure.Management.Monitor.Models.Response Response;
+
+        string startDate = DateTime.Now.AddHours(-3).ToString("o");
+        string endDate = DateTime.Now.ToString("o");
+        string timeSpan = startDate + "/" + endDate;
+
+        Response = await readOnlyClient.Metrics.ListAsync(
+            resourceUri: resourceId,
+            timespan: timeSpan,
+            interval: System.TimeSpan.FromHours(1),
+            metric: "UsedCapacity",
+
+            aggregation: "Average",
+            resultType: ResultType.Data,
+            cancellationToken: CancellationToken.None);
+
+        foreach (var metric in Response.Value)
+        {
+            //Enumrate metric value
+            //    Id
+            //    Name
+            //    Type
+            //    Unit
+            //    Timeseries
+            //        - Data
+            //        - Metadatavalues
+        }
+    }
+
+```
+
+Újabb példa, ha szeretné olvasni metrika értékeinek blob, table, fájl vagy várólista, meg kell adnia különböző erőforrás-azonosítók minden egyes szolgáltatás API-val.
+
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>Olvassa el a .net SDK többdimenziós metrika értékek
+
+A többdimenziós metrikáihoz kell meta data szűrő határozza meg, ha azt szeretné, hogy az adott dimenzió értékekre metrika adatokat olvasni.
+
+A következő példa bemutatja, hogyan olvassa el a metrika-több dimenzió támogató a metrikaadatokat:
+
+```csharp
+    public static async Task ReadStorageMetricValueTest()
+    {
+        // Resource ID for blob storage
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+
+        Microsoft.Azure.Management.Monitor.Models.Response Response;
+
+        string startDate = DateTime.Now.AddHours(-3).ToString("o");
+        string endDate = DateTime.Now.ToString("o");
+        string timeSpan = startDate + "/" + endDate;
+        // It's applicable to define meta data filter when a metric support dimension
+        // More conditions can be added with the 'or' and 'and' operators, example: BlobType eq 'BlockBlob' or BlobType eq 'PageBlob'
+        ODataQuery<MetadataValue> odataFilterMetrics = new ODataQuery<MetadataValue>(
+            string.Format("BlobType eq '{0}'", "BlockBlob"));
+
+        Response = readOnlyClient.Metrics.List(
+                        resourceUri: resourceId,
+                        timespan: timeSpan,
+                        interval: System.TimeSpan.FromHours(1),
+                        metric: "BlobCapacity",
+                        odataQuery: odataFilterMetrics,
+                        aggregation: "Average",
+                        resultType: ResultType.Data);
+
+        foreach (var metric in Response.Value)
+        {
+            //Enumrate metric value
+            //    Id
+            //    Name
+            //    Type
+            //    Unit
+            //    Timeseries
+            //        - Data
+            //        - Metadatavalues
+        }
+    }
+
+```
 
 ## <a name="understanding-resource-id-for-services-in-azure-storage"></a>Erőforrás-azonosító az Azure Storage szolgáltatások ismertetése
 
@@ -187,8 +329,7 @@ GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
 `
 
 ## <a name="capacity-metrics"></a>A kapacitás metrikák
-
-A kapacitás értékeihez Azure figyelő óránként küldi. Az érték a naponta frissülnek. Az idő felbontása határozza meg az időtartam, amelynek metrikák értékek jelenjenek meg. A támogatott időfelbontási a teljesítmény-mérőszámait egy óra (PT1H).
+A kapacitás értékeihez Azure figyelő óránként küldi. Az értékek a naponta frissülnek. Az idő felbontása határozza meg az időtartam, amelynek metrikák értékek jelenjenek meg. A támogatott időfelbontási a teljesítmény-mérőszámait egy óra (PT1H).
 
 Az Azure Storage Azure a figyelő a következő kapacitás mérőszámait jeleníti meg.
 
@@ -196,7 +337,7 @@ Az Azure Storage Azure a figyelő a következő kapacitás mérőszámait jelen�
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| UsedCapacity | A tárfiók által használt tárhely mennyiségét. Standard szintű storage-fiókok esetén a blob, table, fájlt és várólista által használt kapacitás összege. Prémium szintű storage-fiókok és a Blob storage-fiókok ez nem ugyanaz, mint BlobCapacity. <br/><br/> Egység: bájtok <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 |
+| UsedCapacity | A tárfiók által használt tárhely mennyiségét. Standard szintű storage-fiókok esetén a blob, table, fájlt és várólista által használt kapacitás összege. Prémium szintű storage-fiókok és a Blob storage-fiókok megegyezik a BlobCapacity. <br/><br/> Egység: bájtok <br/> Összesítési típusát: átlagos <br/> Példa érték: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
@@ -252,7 +393,7 @@ Az Azure Storage támogatja az Azure-figyelő a metrikák méretei követően.
 | Dimenzió neve | Leírás |
 | ------------------- | ----------------- |
 | BlobType | Csak a Blob metrikáihoz blob típusa. A támogatott értékek a következők **BlockBlob** és **PageBlob**. Hozzáfűző Blob BlockBlob tartalmazza. |
-| ResponseType | Tranzakció választípus. A lehetséges értékek a következők: <br/><br/> <li>ServerOtherError: Minden más kiszolgálóoldali hiba kivéve ismertetett állók közül. </li> <li> ServerBusyError: Hitelesítése a kérelemhez, amely egy 503-as HTTP-állapotkódot küldte. (Még nem támogatott) </li> <li> ServerTimeoutError: Időtúllépés hitelesített kérelmet, amely az 500-as HTTP-állapotkódot küldte. Időtúllépés történt a kiszolgáló hibája miatt. </li> <li> ThrottlingError: Ügyféloldali és kiszolgálóoldali szabályozási hiba (el lesz távolítva után ServerBusyError és ClientThrottlingError támogatottak) összege </li> <li> AuthorizationError: Hitelesített kérelmet, amely a jogosulatlan hozzáférés adat-vagy engedélyezési hiba miatt sikertelen volt. </li> <li> NetworkError: Hitelesített kérelmet, amely hálózati hibák miatt nem sikerült. Általában akkor fordul elő, egy ügyfél túl korán bezárása után a kapcsolat időtúllépés lejárati idejük előtt. </li> <li>  ClientThrottlingError: Ügyféloldali szabályozási hiba (még nem támogatott) </li> <li> ClientTimeoutError: Időtúllépés hitelesített kérelmet, amely az 500-as HTTP-állapotkódot küldte. Ha az ügyfél hálózati időtúllépés vagy a kérelmi időkorlátot. a tároló szolgáltatás által vártnál alacsonyabb értékre van beállítva, akkor egy várt időtúllépés. Ellenkező esetben azt az elvártnak megfelelően egy ServerTimeoutError. </li> <li> ClientOtherError: Más ügyféloldali hibák kivételével ismertetett néhányat a meglévők közül. </li> <li> Sikerült: A kérelem sikeres|
+| ResponseType | Tranzakció választípus. A lehetséges értékek a következők: <br/><br/> <li>ServerOtherError: Minden más kiszolgálóoldali hiba kivéve ismertetett állók közül. </li> <li> ServerBusyError: Hitelesítése a kérelemhez, amely egy 503-as HTTP-állapotkódot küldte. </li> <li> ServerTimeoutError: Időtúllépés hitelesített kérelmet, amely az 500-as HTTP-állapotkódot küldte. Időtúllépés történt a kiszolgáló hibája miatt. </li> <li> AuthorizationError: Hitelesített kérelmet, amely a jogosulatlan hozzáférés adat-vagy engedélyezési hiba miatt sikertelen volt. </li> <li> NetworkError: Hitelesített kérelmet, amely hálózati hibák miatt nem sikerült. Általában akkor fordul elő, egy ügyfél túl korán bezárása után a kapcsolat időtúllépés lejárati idejük előtt. </li> <li>    ClientThrottlingError: Ügyféloldali szabályozási hiba. </li> <li> ClientTimeoutError: Időtúllépés hitelesített kérelmet, amely az 500-as HTTP-állapotkódot küldte. Ha az ügyfél hálózati időtúllépés vagy a kérelmi időkorlátot. a tároló szolgáltatás által vártnál alacsonyabb értékre van beállítva, akkor egy várt időtúllépés. Ellenkező esetben azt az elvártnak megfelelően egy ServerTimeoutError. </li> <li> ClientOtherError: Más ügyféloldali hibák kivételével ismertetett néhányat a meglévők közül. </li> <li> Sikerült: A kérelem sikeres|
 | GeoType | Tranzakció elsődleges vagy másodlagos fürtből. A rendelkezésre álló értékeket tartalmazza az elsődleges és másodlagos. Érvényes írásvédett Georedundáns redundáns Storage(RA-GRS) másodlagos bérlőhöz objektumok olvasásakor. |
 | APINÉV | A művelet neve. Példa: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Összes művelet nevét, lásd: [dokumentum](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
 
@@ -260,8 +401,8 @@ A metrikák támogató dimenziók esetében meg kell adnia a megfelelő mérősz
 
 ## <a name="service-continuity-of-legacy-metrics"></a>A szolgáltatás folytonosságának örökölt mérőszámokat
 
-A hagyományos metrikák felügyelt Azure-figyelő metrikák párhuzamosan érhetők el. A támogatási tartja azonos mindaddig, amíg az Azure Storage karakterlánccal végződik-e a szolgáltatás örökölt mérőszámokat. A befejezési terv azt fogja értesíthetik, után azt a felügyelt Azure-figyelő metrikák hivatalosan kibocsátási.
+A hagyományos metrikák felügyelt Azure-figyelő metrikák párhuzamosan érhetők el. A támogatási tartja azonos mindaddig, amíg az Azure Storage karakterlánccal végződik-e a szolgáltatás örökölt mérőszámokat.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="next-steps"></a>További lépések
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: a84393c5c53b8f8e4a8b688a462f433b2d611b0e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8bcc1b2c76ff1e312d1435997ef6d677656510d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy Tweetet a Shake – letölteni egy Twitter-üzenetet az Azure Functions!
 
@@ -33,7 +33,7 @@ Befejezés a [– első lépések útmutató](https://docs.microsoft.com/azure/i
 
 Aktív Azure-előfizetés. Ha még nincs fiókja, regisztrálni keresztül ezen módszerek egyikét:
 
-* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azure.microsoft.com/en-us/free/)
+* Aktiválja a [ingyenes 30 napos próbafiókot Microsoft Azure](https://azure.microsoft.com/free/)
 * Jogcím a [Azure-kreditjeinek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) MSDN vagy a Visual Studio előfizetői esetén
 
 ## <a name="open-the-project-folder"></a>Nyissa meg a projekt mappát
@@ -44,10 +44,6 @@ Aktív Azure-előfizetés. Ha még nincs fiókja, regisztrálni keresztül ezen 
 - Indítsa el a Visual STUDIO Code.
 - A DevKit kapcsolódni a számítógéphez.
 
-Visual STUDIO Code automatikusan megkeresi a DevKit és az bemutatása oldalát jeleníti meg:
-
-![mini-solution-vscode](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_start.png)
-
 > [!NOTE]
 > Visual STUDIO Code elindításakor kaphat olyan hibaüzenetet, amely a Arduino IDE vagy a kapcsolódó tábla csomagot nem lehet található. Ha ez a hiba akkor fordul elő, zárja be a Visual STUDIO Code, és indítsa újra az Arduino IDE. VS-kódot kell most megkereséséhez Arduino IDE megfelelően.
 
@@ -57,7 +53,8 @@ Bontsa ki a bal oldali **ARDUINO példák** szakaszban, keresse meg a **MXCHIP A
 
 ![Mini solution példák](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Ha véletlenül bezárja a panelen, akkor nyissa meg újra. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
+> [!NOTE]
+> Példa parancs palettáról is megnyithatja. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
 
 ## <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
@@ -68,7 +65,7 @@ A Visual STUDIO Code terminálban egy interaktív parancssori végigvezeti Önt 
 ![cloud-provision](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
-> Ha a lap lefagy a betöltés állapota, amikor megpróbál bejelentkezni az Azure-ba, tekintse meg a [gyakran ismételt kérdések lépés] ({{"/docs/faq/#page-hangs-when-log-in-azure" |} 
+> Ha a lap lefagy a betöltés állapota, amikor megpróbál bejelentkezni az Azure-ba, tekintse meg a [gyakran ismételt kérdések lépés](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
  
 ## <a name="modify-the-hashtag"></a>A #hashtag módosítása
 
@@ -167,7 +164,7 @@ Tesztelési célokra, ez a minta a projekt egy előre konfigurált Twitter tulaj
   string authHeader = "Bearer " + "[your own token]";
   ...
   ```
-  ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+  ![Twitter-jogkivonat](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. Mentse a fájlt, és kattintson a **futtatása**.
 

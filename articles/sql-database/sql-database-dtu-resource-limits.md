@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: c4c85395856756e8ec6a788aa958b479a297892d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 6602a4ab8f6081c1b96c7da3bc94291d05d79862
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-dtu-based-resource-model-limits"></a>Az Azure SQL Database DTU-alapú erőforrás modell korlátok
 
@@ -39,7 +39,7 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 ### <a name="standard-service-tier"></a>Standard szolgáltatásszint
 | **Teljesítményszint szükséges** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|---:|
-| A maximális i ** | 10 | 20 | 50 | 100 |
+| DTU-k maximális száma | 10 | 20 | 50 | 100 |
 | Belefoglalt tárhely (GB) | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) * | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | N/A | N/A | – |
@@ -51,7 +51,7 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 ### <a name="standard-service-tier-continued"></a>Standard szintű szolgáltatási réteg (Folytatás)
 | **Teljesítményszint szükséges** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|---:|
-| A maximális i ** | 200 | 400 | 800 | 1600 | 3000 |
+| DTU-k maximális száma | 200 | 400 | 800 | 1600 | 3000 |
 | Belefoglalt tárhely (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) * | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | N/A | N/A | N/A |– |
@@ -78,8 +78,6 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 >
 >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
->\*\* Maximális Dtu adatbázisonkénti indítása, 200 dtu-inak száma és az annál magasabb a Standard még csak előzetes verziójúak.
->
 
 
 ## <a name="single-database-change-storage-size"></a>Önálló adatbázist: tároló méretének módosítása
@@ -97,7 +95,7 @@ A következő videó bemutatja, hogy dinamikusan a teljesítményszint növelés
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
 
-Az adatbázis szolgáltatásszintjének és/vagy teljesítményszintjének megváltoztatásakor egy replika jön létre az eredeti adatbázisról az új teljesítményszinten, majd a rendszer átáll a replikához való csatlakozásra. A folyamat során nem történik adatvesztés, de a replikára való átálláskor egy pillanatra az adatbázis felé irányuló kapcsolatok le lesznek tiltva, így lehet, hogy néhány folyamatban lévő tranzakció vissza lesz állítva. A kapcsoló-over idő hosszával platformonként változó, de általában a 4 másodperc érték kisebb, mint 30 másodperc 99 %-ában. Ha nagy számát, a pillanatnyilag kapcsolatok útban tranzakciók le vannak tiltva, akkor lehet, hogy a kapcsoló-over időtartama hosszabb. 
+Az adatbázis szolgáltatásszintjének és/vagy teljesítményszintjének megváltoztatásakor egy replika jön létre az eredeti adatbázisról az új teljesítményszinten, majd a rendszer átáll a replikához való csatlakozásra. A folyamat során nem történik adatvesztés, de a replikára való átálláskor egy pillanatra az adatbázis felé irányuló kapcsolatok le lesznek tiltva, így lehet, hogy néhány folyamatban lévő tranzakció vissza lesz állítva. A kapcsoló-over idő hosszával platformonként változó, de kisebb, mint 30 másodperc 99 %-ában. Ha nagy számát, a pillanatnyilag kapcsolatok útban tranzakciók le vannak tiltva, akkor lehet, hogy a kapcsoló-over időtartama hosszabb. 
 
 A teljes felskálázási folyamat időtartama az adatbázis a módosítás előtti és utáni méretétől és szolgáltatásszintjétől függ. Például változik, a, vagy a szabványos szolgáltatásréteg, 250 GB-os adatbázis hat órán belül kell végrehajtani. Adatbázis méretének teljesítményszintet belül a prémium szolgáltatásszintet változik a méretezett három órán belül kell végrehajtani.
 
@@ -229,7 +227,7 @@ A következő táblázat ismerteti a készletezett adatbázisok tulajdonságait.
 |:--- |:--- |
 | eDTU-k maximális száma adatbázisonként |A készletben található adatbázisok bármelyike által használható eDTU-k maximális száma (az elérhetőség a készletben található további adatbázisok kihasználtságától függ). Az eDTU adatbázisonkénti maximális száma nem garantálja az erőforrásokat az adatbázisok számára. Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Az eDTU-k adatbázisonkénti maximális számát állítsa elég magasra ahhoz, hogy az adatbázis-kihasználtsági csúcsokkal is elbírjon. Elvárható, hogy a szükségesnél valamivel nagyobb értéket adjon meg, mivel a készlet általában hullámzó használati mintákat feltételez az adatbázisokkal kapcsolatban, amelyekben az adatbázisok kihasználtsága nem egyszerre éri el a csúcsértéket. Például tegyük fel, hogy az adatbázisonkénti felhasználási csúcs 20 eDTU, és a készletben található 100 adatbázisnak egyszerre csak a 20%-a éri el a csúcsot. Ha az eDTU-k adatbázisonkénti maximális száma 20-ra van állítva, akkor észszerű a készletet ötszörösen túlméretezni, és az eDTU-k készletenkénti számát 400-ra állítani. |
 | eDTU-k minimális száma adatbázisonként |A készletben található adatbázisok mindegyike számára garantált eDTU-k minimális száma. Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Az eDTU adatbázisonkénti minimális száma lehet 0, ami egyben az alapértelmezett érték is. Ezen tulajdonság értékeként egy 0 és az adatbázisonkénti átlagosan használt eDTU-k száma közötti mennyiséget adjon meg. A készletben található adatbázisok számának és az eDTU-k adatbázisonkénti minimális számának szorzata nem lehet magasabb az eDTU-k készletenkénti számánál. Például ha egy készletben 20 adatbázis van, és az eDTU-k adatbázisonkénti minimális száma 10-re van állítva, akkor az eDTU-k készletenkénti száma legalább 200 kell, hogy legyen. |
-| Adatbázisonként maximális tárolási |Az adatbázis maximális korlátot adatbázis esetén a felhasználó által a készletben. Készletezett adatbázisok megoszthatja a lefoglalt tárolókészlet, így az adatbázis el lehet érni mérete legfeljebb maradt a kisebb tárolási verem és az adatbázis méretét. Maximális adatbázis mérete a naplófájlok méretét, az adatok hivatkozik, és nem tartalmazza a fájlok által elfoglalt hely. |
+| Adatbázisonként maximális tárolási |Az adatbázis maximális korlátot adatbázis esetén a felhasználó által a készletben. Készletezett adatbázisok azonban lefoglalt tárolókészlet megosztani. Akkor is, ha a teljes maximális tárolási **adatbázisonként* értéke nagyobb, mint a teljes rendelkezésre álló tár **terület a készlet*, a ténylegesen használt minden, az adatbázisok teljes lemezterület nem lesz képes hosszabb legyen, mint a rendelkezésre álló készlet kapacitása. Maximális adatbázis mérete a naplófájlok méretét, az adatok hivatkozik, és nem tartalmazza a fájlok által elfoglalt hely. |
 |||
  
 ## <a name="elastic-pool-change-storage-size"></a>A rugalmas készlet: tároló méretének módosítása

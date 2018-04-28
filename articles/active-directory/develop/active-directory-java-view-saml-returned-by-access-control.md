@@ -1,25 +1,24 @@
 ---
-title: "A hozzáférés-vezérlési szolgáltatásban (Java) által visszaadott SAML megtekintése"
-description: "Útmutató: a hozzáférés-vezérlési szolgáltatásban az Azure-platformon futó Java-alkalmazások által visszaadott SAML megtekintése."
+title: A hozzáférés-vezérlési szolgáltatásban (Java) által visszaadott SAML megtekintése
+description: 'Útmutató: a hozzáférés-vezérlési szolgáltatásban az Azure-platformon futó Java-alkalmazások által visszaadott SAML megtekintése.'
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: mtillman
-editor: 
+manager: mbaldwin
 ms.assetid: 6cd216f9-eb43-46b4-b30d-f194d0ae2d48
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: d239145806be19d2199314fa351d1121f52203c8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 28c43b27d58d78036dd832fb4f95f2bc9958441c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>A Azure Access Control szolgáltatás által visszaadott SAML megtekintése
 Ez az útmutató bemutatja, hogyan kell megtekinteni az alapul szolgáló Security Assertion Markup Language (SAML) adott vissza az alkalmazás az Azure Access Control Service (ACS). Az útmutatóban épít, a [webes felhasználók hitelesítéséhez az Azure Access Control Service használatával Eclipse hogyan](active-directory-java-authenticate-users-access-control-eclipse.md) témakör, adja meg a kódot, amely az SAML-információkat jeleníti meg. A kész alkalmazás az alábbihoz hasonlóan fog kinézni.
@@ -184,7 +183,7 @@ Módosítsa **index.jsp** az alábbi kód használatával.
 1. Futtassa az alkalmazást a számítógép-emulátorban, vagy telepítse az Azure-bA leírt lépéseket [webes felhasználók hitelesítéséhez az Azure Access Control Service használatával Eclipse hogyan](active-directory-java-authenticate-users-access-control-eclipse.md).
 2. Elindít egy böngészőt, és nyissa meg a webes alkalmazás. A bejelentkezés után az alkalmazás, látni fogja a SAML információt, beleértve az identitásszolgáltató által biztosított biztonsági helyességi feltételt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További megismerkedhet az ACS azon funkcióit és kifinomultabb forgatókönyvek kísérletezhet, olvassa el [Access Control Service 2.0][Access Control Service 2.0].
 
 [Prerequisites]: #pre

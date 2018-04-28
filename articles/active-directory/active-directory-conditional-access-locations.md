@@ -1,26 +1,26 @@
 ---
-title: "Azure Active Directory feltételes hozzáférési feltételek hely |} Microsoft Docs"
-description: "Útmutató a felhőalapú alkalmazások, a felhasználó hálózati helye alapján való hozzáférést a hely feltétel használatával."
+title: Azure Active Directory feltételes hozzáférési feltételek hely |} Microsoft Docs
+description: Útmutató a felhőalapú alkalmazások, a felhasználó hálózati helye alapján való hozzáférést a hely feltétel használatával.
 services: active-directory
-keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
-documentationcenter: 
+keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2018
+ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 842fe8c194f1c88c7dabb073e0fa7b7806d92d44
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory feltételes hozzáférési feltételek helye 
 
@@ -43,7 +43,14 @@ Egy hely egy hálózati helyre, vagy az elnevezett hely vagy a multi-factor auth
 
 Elnevezett helyek hozhat létre IP-címtartományok, országokban és régiókban logikai csoportjai. 
 
- A név helye a következő részből áll:
+A névvel ellátott helyeken végezheti el a **kezelése** szakasz a feltételes hozzáférés lap.
+
+![Helyek](./media/active-directory-conditional-access-locations/02.png)
+
+ 
+
+
+Egy nevesített helyre a következő részből áll:
 
 ![Helyek](./media/active-directory-conditional-access-locations/42.png)
 
@@ -68,13 +75,13 @@ Elnevezett helyek konfigurálhatja az Azure ad-ben a kapcsolódó objektum mére
 
 ## <a name="trusted-ips"></a>Megbízható IP-címek
 
-IP-címtartományok képviselő a szervezet helyi intranet az is beállítható a [multi-factor authentication szolgáltatás beállításainak](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Ez a funkció lehetővé teszi, hogy legfeljebb 50 IP-címtartományok konfigurálhatja. Az IP-címtartományt CIDR-formátumban vannak. További információkért lásd: [megbízható IP-címek](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).  
+IP-címtartományok képviselő a szervezet helyi intranet az is beállítható a [multi-factor authentication szolgáltatás beállításainak](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Ez a funkció lehetővé teszi, hogy legfeljebb 50 IP-címtartományok konfigurálhatja. Az IP-címtartományt CIDR-formátumban vannak. További információkért lásd: [megbízható IP-címek](authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
 Ha a konfigurált IP-címek megbízhatónak, azok megjelennek, a **MFA megbízható IP-CÍMEK** helyét. a hely feltétel közül.   
 
 ### <a name="skipping-multi-factor-authentication"></a>Többtényezős hitelesítés kihagyása
 
-A multi-factor authentication szolgáltatás beállításainak lapján azonosíthatja, vállalati intranetes felhasználók kiválasztásával **összevont felhasználók intranetről érkező kérelmeket a multi-factor authentication kihagyása**. Ez a beállítás jelzi, hogy a belső vállalati hálózati jogcímek, az AD FS által kibocsátott, legyen megbízható, és azonosítja a felhasználót, hogy a vállalati hálózaton. További információkért lásd: [a megbízható IP-címek szolgáltatás engedélyezze a feltételes hozzáférés](../multi-factor-authentication/multi-factor-authentication-whats-next.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+A multi-factor authentication szolgáltatás beállításainak lapján azonosíthatja, vállalati intranetes felhasználók kiválasztásával **összevont felhasználók intranetről érkező kérelmeket a multi-factor authentication kihagyása**. Ez a beállítás jelzi, hogy a belső vállalati hálózati jogcímek, az AD FS által kibocsátott, legyen megbízható, és azonosítja a felhasználót, hogy a vállalati hálózaton. További információkért lásd: [a megbízható IP-címek szolgáltatás engedélyezze a feltételes hozzáférés](authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
 Ezen beállítás után például elnevezett helye **MFA megbízható IP-CÍMEK** a kijelölt összes házirend érvényes lesz.
 
@@ -100,7 +107,7 @@ Amikor konfigurálja a hely feltétel, lehetősége van megkülönböztetésére
 
 ### <a name="any-location"></a>Bármely hely
 
-Alapértelmezés szerint kiválasztásával **bárhova** hatására az összes IP-címet, alkalmazandó egy házirendet, amely azt jelenti, hogy a cím az interneten. Ez a beállítás nem nincs korlátozva elnevezett helyként konfigurált IP-címeket. Ha bejelöli **bárhova**, továbbra is kizárhatja az adott helyeken egy házirend. Például egy házirendet alkalmazhat hatókörének beállításához az helyekre, kivéve a vállalati hálózat megbízható helyek kivételével az összes hely.
+Alapértelmezés szerint kiválasztásával **bárhova** hatására az összes IP-címet, alkalmazandó egy házirendet, amely azt jelenti, hogy a cím az interneten. Ez a beállítás nevesített helyként konfigurált IP-címek nem korlátozódik. Ha bejelöli **bárhova**, továbbra is kizárhatja az adott helyeken egy házirend. Például egy házirendet alkalmazhat hatókörének beállításához az helyekre, kivéve a vállalati hálózat megbízható helyek kivételével az összes hely.
 
 ### <a name="all-trusted-locations"></a>Minden megbízható hely
 
@@ -112,7 +119,7 @@ Ez a beállítás a következőkre vonatkozik:
 
 ### <a name="selected-locations"></a>Kijelölt helyek
 
-Ezt a lehetőséget válassza ki egy vagy több elnevezett helye. Ezt a beállítást alkalmazza a házirend a felhasználó nem csatlakoztatja a a kiválasztott helyeken. Kattint Whe **kiválasztása** nevesített hálózatok listáját jeleníti meg elnevezett hálózati kijelölés vezérlő nyílik meg. A lista mutatja azokat is, ha a hálózati hely jelölte meg megbízhatóként. Az elnevezett hely nevű **MFA megbízható IP-címek** használható az IP-beállításait a multi-factor authentication szolgáltatás beállítás lapján konfigurálható.
+Ezt a lehetőséget válassza ki egy vagy több elnevezett helye. Ezt a beállítást alkalmazza a házirend a felhasználó nem csatlakoztatja a a kiválasztott helyeken. Amikor rákattint **kiválasztása** nevesített hálózatok listáját jeleníti meg elnevezett hálózati kijelölés vezérlő nyílik meg. A lista mutatja azokat is, ha a hálózati hely jelölte meg megbízhatóként. Az elnevezett hely nevű **MFA megbízható IP-címek** használható az IP-beállításait a multi-factor authentication szolgáltatás beállítás lapján konfigurálható.
 
 ## <a name="what-you-should-know"></a>Tudnivalók
 
@@ -130,7 +137,7 @@ Ez azt jelenti, hogy a mobile és a modern hitelesítést használó asztali alk
 Alapértelmezés szerint az Azure AD kibocsát egy token óránként. Helyezze át a vállalati hálózatból, egy órán belül a házirend érvényesítve van a modern hitelesítést használó alkalmazások.
 
 
-### <a name="user-ip-address"></a>User IP address
+### <a name="user-ip-address"></a>Felhasználói IP-cím
 
 A házirendek értékelésének használt IP-címét a felhasználó a nyilvános IP-címe. Egy magánhálózaton eszközök esetében ez nem az ügyfél IP-címét a felhasználó eszközén az intraneten, hogy a cím, a nyilvános internethez való kapcsolódáshoz a hálózat által használt. 
 

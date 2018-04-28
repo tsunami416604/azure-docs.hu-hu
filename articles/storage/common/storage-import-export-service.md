@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: 1e94466d9d41bbc6a2100256d96e19d0d13600cb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4d6177fe0a50c531ba6c4b3e87eaa08299af2ddd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -29,7 +29,7 @@ Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage import
 2.  Attól függően, hogy az adatok teljes mérete be kell szereznie a szükséges számú 2,5 hüvelyk SSD vagy 2,5" vagy 3.5-ös" SATA II vagy III merevlemez-meghajtókat.
 3.  Csatlakoztassa közvetlenül használatával SATA merevlemez-meghajtók vagy külső USB-adapterek egy windows-számítógépre.
 1.  Hozzon létre egy NTFS-kötet minden merevlemez-meghajtón, és rendeljen meghajtóbetűjelet a köteten. Nincs csatlakozási pontok le.
-2.  A windows-gépen titkosítás engedélyezéséhez bit tároló titkosítási az NTFS-köteten. Kövesse az utasításokat a https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
+2.  A windows-gépen titkosítás engedélyezéséhez bit tároló titkosítási az NTFS-köteten. Kövesse az utasításokat a https://technet.microsoft.com/library/cc731549(v=ws.10).aspx.
 3.  Másolás & Beillesztés húzza & dobja el vagy Robocopy, illetve bármely ilyen eszköz lemezeken ezen titkosított egyetlen kötetek adatok másolása teljesen.
 7.  Töltse le a WAImportExport V1 https://www.microsoft.com/en-us/download/details.aspx?id=42659
 8.  Csomagolja ki, hogy az alapértelmezett mappa waimportexportv1. Például C:\WaImportExportV1  

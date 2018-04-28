@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: daa5043a948e660b6c3e685e933855afff8f7671
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 228d2852d9554d378dc663e74460da7ab80d4b24
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rövid útmutató: SQL Servert futtató, Windows rendszerű virtuális gép létrehozása az Azure PowerShell használatával
 
@@ -40,10 +40,10 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verzi�
 
 ## <a name="configure-powershell"></a>A PowerShell konfigurálása
 
-1. Nyissa meg a PowerShellt és állítsa be az Azure-fiókja elérését az **Add-AzureRmAccount** parancs futtatásával.
+1. Nyissa meg a PowerShellt, és állítsa be az Azure-fiókja elérését a **Connect-AzureRmAccount** parancs futtatásával.
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. Ekkor meg kell jelennie egy bejelentkezési képernyőnek, amely a hitelesítő adatainak megadását kéri. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.

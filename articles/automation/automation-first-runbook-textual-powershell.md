@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 61632bfc8848fb5a5bcbcda7c1e60e763448ce23
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76d14b0d9bf14c6b9f342b0aae8fd42e871ea18d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="my-first-powershell-runbook"></a>Az első PowerShell-forgatókönyvem
 
@@ -81,7 +81,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Éles környezetben fu
 12. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már látott a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>5. lépés – Hitelesítés hozzáadása az Azure-erőforrások kezeléséhez
-Most már befejeződött a runbook tesztelése és közzététele, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen. Már nem tudja használni, ha nincs, hitelesítéshez, amelyekre a hitelesítő adatok használatával, ha ehhez a [Előfeltételek](#prerequisites). Megteheti, hogy a a **Add-AzureRmAccount** parancsmag.
+Most már befejeződött a runbook tesztelése és közzététele, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen. Már nem tudja használni, ha nincs, hitelesítéshez, amelyekre a hitelesítő adatok használatával, ha ehhez a [Előfeltételek](#prerequisites). Megteheti, hogy a a **Connect-AzureRmAccount** parancsmag.
 
 1. A szöveges-szerkesztő megnyitásához **szerkesztése** MyFirstRunbook-PowerShell lapon.
 2. Nincs szükség a **Write-Output** többé. sor, úgy lépjen tovább, és törölje azt.
@@ -89,7 +89,7 @@ Most már befejeződött a runbook tesztelése és közzététele, de még nem c
    
    ```
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    ```
    <br>
@@ -99,11 +99,11 @@ Most már befejeződött a runbook tesztelése és közzététele, de még nem c
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>6. lépés: Kód hozzáadása a virtuális gép indításához
 Most, hogy a runbook hitelesíti az Azure-előfizetéshez, kezelheti az erőforrásokat. A virtuális gép elindításához-utasítást adni. Kiválaszthatja a virtuális gépek az Azure-előfizetéssel, valamint a most meg megoldás, amely nevet a runbook.
 
-1. Az *Add-AzureRmAccount* után írja be a következőt: *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*. Ezzel megadja az elindítani kívánt virtuális gép nevét, valamint az erőforráscsoportjának nevét.  
+1. Után *Connect-AzureRmAccount*, típus *Start-AzureRmVM-név (VMName) - ResourceGroupName "NameofResourceGroup"* biztosít, és az erőforráscsoport nevét a virtuális gép elindításához.  
    
    ```
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    ```
@@ -122,7 +122,7 @@ A runbook jelenleg elindul a virtuális gépet, hogy Ön szoftveresen kötött a
     [string]$ResourceGroupName
    )
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
    ```

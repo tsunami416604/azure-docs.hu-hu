@@ -1,6 +1,6 @@
 ---
-title: SSIS-csomag használata az Azure Data Factory - tárolt eljárási tevékenység meghívása |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan lehet meghívni egy Azure Data Factory-folyamat a tárolt eljárási tevékenység használja az SQL Server Integration Services (SSIS) csomag.
+title: Futtassa a tárolt eljárási tevékenység használata az Azure Data Factory SSIS-csomag |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan egy Azure Data Factory-folyamat a tárolt eljárási tevékenység használja az SQL Server Integration Services (SSIS) csomag futtatásához.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 00a4401a9116d8ebbfefa56194fe45802bcf198e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 283e1022abda083d73e8e4e5bca7872791cb4861
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy SSIS-csomagot, a tárolt eljárási tevékenység az Azure Data Factory meghívása
-Ez a cikk ismerteti, hogyan lehet meghívni egy SSIS-csomagot az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával. 
+# <a name="run-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Futtassa egy tárolt eljárás tevékenység használata az Azure Data Factory SSIS-csomag
+Ez a cikk ismerteti, hogyan egy SSIS-csomag futtatása az Azure Data Factory láncból a tárolt eljárási tevékenység használatával. 
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [meghívása SSIS-csomagok használata tárolt eljárási tevékenység az 1-es](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
@@ -85,12 +85,13 @@ Ebben a lépésben használatával a Data Factory felhasználói felületén hoz
 4. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
 
     1. Válassza ki **Azure SQL adatbázis** a **típus**.
-    2. Válassza ki az Azure SQL-kiszolgáló, amelyen az SSISDB adatbázis a **kiszolgálónév** mező.
-    3. Válassza ki **SSISDB** a **adatbázisnév**.
-    4. A **felhasználónév**, adja meg a nevét, a felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz.
-    5. A **jelszó**, adja meg a felhasználó jelszavát. 
-    6. Tesztelje a kapcsolatot az adatbázis kattintva **tesztkapcsolat** gombra.
-    7. A társított szolgáltatás gombra kattintva mentse a **mentése** gombra. 
+    2. Válassza ki a **alapértelmezett** Azure integrációs futásidejű csatlakozni az Azure SQL Database, amelyen a `SSISDB` adatbázis.
+    3. Válassza ki az Azure SQL Database az SSISDB adatbázist üzemeltető a **kiszolgálónév** mező.
+    4. Válassza ki **SSISDB** a **adatbázisnév**.
+    5. A **felhasználónév**, adja meg a nevét, a felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz.
+    6. A **jelszó**, adja meg a felhasználó jelszavát. 
+    7. Tesztelje a kapcsolatot az adatbázis kattintva **tesztkapcsolat** gombra.
+    8. A társított szolgáltatás gombra kattintva mentse a **mentése** gombra. 
 
         ![Azure SQL Database társított szolgáltatás](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. A Tulajdonságok ablakban váltson a **tárolt eljárás** a lap a **SQL fiók** lapot, és hajtsa végre a következő lépéseket: 
@@ -121,14 +122,18 @@ Ebben a szakaszban indít folyamatot futtató, és megfigyeli azt.
 
 1. Futtassa egy folyamat indításához kattintson **eseményindító** az eszköztáron, és kattintson **aktiválhatja most**. 
 
-    ![Aktiválás most](./media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+    ![Aktiválás most](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+
 2. A **Folyamatfuttatás** ablakban kattintson a **Befejezés** gombra. 
 3. Váltson a bal oldali **Monitorozás** lapra. A Futtatás futószalag és egyéb információk (például futtassa Kezdés időpontja) mellett állapota látható. A nézet frissítéséhez kattintson a **Frissítés** parancsra.
 
     ![Folyamatfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+
 3. Kattintson az **Actions** (Műveletek) oszlopban található **View Activity Runs** (Tevékenységfuttatások megtekintése) hivatkozásra. Futtassa az adatcsatorna esetében van (a tárolt eljárási tevékenység) csak egy tevékenység csak egy tevékenység megjelenik.
 
-    ![Tevékenységek](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png) futtathatja a következő 4 **lekérdezés** szemben az SSISDB adatbázis annak ellenőrzésére, hogy az Azure SQL Server a csomag végrehajtása. 
+    ![Tevékenységfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
+
+4. Futtathatja a következő **lekérdezés** szemben az SSISDB adatbázis annak ellenőrzésére, hogy az Azure SQL Server a csomag végrehajtása. 
 
     ```sql
     select * from catalog.executions

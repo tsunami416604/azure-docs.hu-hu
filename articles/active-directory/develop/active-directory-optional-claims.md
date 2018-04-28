@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/15/2018
+ms.date: 04/24/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f9cc4f900428e1337fc9b9d428879d6527c60017
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f87487c4ee56ae90eb5825b0e77610fac73bd3fa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nem kötelező jogcímek, az Azure AD (előzetes verzió)
 
@@ -65,7 +65,9 @@ A választható alkalmazások is használhatnak alapértelmezés szerint elérhe
 | `fwd`                      | IP-címet.  (Ha belül egy VNETET) kérő ügyfél eredeti IPv4-cím hozzáadása                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `ctry`                     | Felhasználó ország                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_ctry`              | Erőforrás-bérlő ország                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
+| `acct`    | A bérlői felhasználói fiók állapota.  Ha a felhasználó tagja a bérlőt, az értéke `0`.  Ha a Vendég, az értéke `1`.  | JWT, SAML | | |
 | `upn`                      | UserPrincipalName claim.  Bár a jogcím automatikusan települ, adja meg azt a Vendég felhasználói esetben viselkedésének módosítása további tulajdonságok csatolni egy választható jogcímként. | JWT, SAML  |           | További tulajdonságok: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+
 ### <a name="v20-optional-claims"></a>Nem kötelező jogcímek 2.0-s verzió
 Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepelnek, de v2.0 jogkivonatok törlődnek, kivéve, ha a kért.  Ezeket a jogcímeket csak alkalmazhatók JWTs (azonosító-jogkivonatokat és hozzáférési jogkivonatok).  
 
@@ -78,7 +80,7 @@ Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepelnek, de v2.0 j
 | `pwd_exp`     | Jelszó lejárati ideje        | A jelszó lejárati dátum és idő.                                                                                    |       |
 | `pwd_url`     | Jelszó URL-cím módosítása             | Egy URL-címet, amely a felhasználói által felkereshető módosíthatják jelszavukat.                                                                        |       |
 | `in_corp`     | Vállalati hálózaton belül        | Ha az ügyfél bejelentkezik a vállalati hálózatról jeleket. Ha nem, a jogcím nincs megadva                     |       |
-| `nickname`    | Nickname                        | A felhasználó, a Vezetéknév vagy utónév megadva külön kiegészítő nevét.                                                             |       |                                                                                                                |       |
+| `nickname`    | Becenév                        | A felhasználó, a Vezetéknév vagy utónév megadva külön kiegészítő nevét.                                                             |       |                                                                                                                |       |
 | `family_name` | Vezetéknév                       | Az utolsó nevét, Vezetéknév vagy családnév felhasználó biztosít az Azure AD-felhasználói objektum. <br>"family_name":"Miller" |       |
 | `given_name`  | Utónév                      | Az első biztosít vagy az "adott" a felhasználó nevét, az Azure AD-felhasználói objektum vannak megadva.<br>"given_name": "Frank"                   |       |
 
@@ -151,7 +153,7 @@ Nem kötelező jogcímek, az alkalmazás az alkalmazás jegyzékében (lásd pé
    }
 ```
 
-### <a name="optionalclaims-type"></a>OptionalClaims Type
+### <a name="optionalclaims-type"></a>OptionalClaims típusa
 
 A választható jogcímek, az alkalmazás által kért deklarálja. Az alkalmazás minden jogkivonatok (azonosító token, hozzáférési jogkivonat, SAML 2 jogkivonat) három típusú visszaküldendő választható jogcímeket, a biztonsági jogkivonatokkal kapcsolatos szolgáltatástól fogadhatnak konfigurálhatja. Az alkalmazás is beállíthat különböző választható jogcímek vissza kell helyezni az egyes lexikális elem típusa. Az alkalmazás entitás OptionalClaims tulajdonság OptionalClaims objektum.
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery Deployment Planner a Hyper-V – Azure-hoz| Microsoft Docs"
-description: "Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója a Hyper-V–Azure forgatókönyvhöz."
+title: Azure Site Recovery Deployment Planner a Hyper-V – Azure-hoz| Microsoft Docs
+description: Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója a Hyper-V–Azure forgatókönyvhöz.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -9,11 +9,11 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: nisoneji
-ms.openlocfilehash: dc504ee9def6b500eee640521b57dc48dac9cca4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 17ff3ece76f854cd539172019f8d154742873bb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Hely helyreállítási telepítési Planner Azure Hyper-v
 
@@ -116,9 +116,9 @@ A virtuális gép ajánlott konfigurációja: 8 vCPU, 16 GB RAM, 300 GB HDD.
 3.  Csomagolja ki a .zip mappát.
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
-Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Deployment Planner_v2.1.zip
+Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR telepítési Planner_v2.2.zip
 
-E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
+E:\ASR telepítési Planner_v2.2\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Frissítés az üzembehelyezés-tervező a legújabb verzióra
 Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
@@ -133,7 +133,7 @@ Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az al�
   >Minden új Deployment Planner a .zip fájl összegző frissítését jelenti. Ezért nem kell a legújabb fájlokat a korábbi mappába másolnia. Létrehozhat és használhat egy új mappát is.
 
 ## <a name="version-history"></a>Verzióelőzmények
-A legutóbbi ASR Deployment Planner eszköz verziószáma 2.1.
+A Helyreállítás telepítési Planner eszköz legújabb 2.2.
 Az egyes frissítésekben hozzáadott javításokról az [ASR Deployment Planner verzióelőzményeinek oldalán](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lehet tájékozódni.
 
 

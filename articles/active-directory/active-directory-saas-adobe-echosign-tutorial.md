@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció Adobe bejelentkezési |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az Adobe bejelentkezési között."
+title: 'Oktatóanyag: Azure Active Directory-integráció Adobe bejelentkezési |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az Adobe bejelentkezési között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2017
+ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f68701cc345ee1bb04cde265ac4e2d6a402da557
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Oktatóanyag: Azure Active Directory-integráció Adobe bejelentkezési
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.echosign.com/`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.echosign.com/`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.echosign.com`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.echosign.com`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Adobe bejelentkezési ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html) beolvasni ezeket az értékeket. 
@@ -129,40 +129,31 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
 
-
 7. Egy másik webes böngészőablakban jelentkezzen be a Adobe bejelentkezési vállalati webhely rendszergazdaként.
 
-8. A felső menüben kattintson a **fiók**, és a bal oldali navigációs ablakában kattintson az **SAML beállítások** alatt **Fiókbeállítások**.
+8. A SAML menüben kattintson a **Fiókbeállítások**, és kattintson a **SAML beállítások**.
    
-   ![Fiók](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "fiók")
+    ![Fiók](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "fiók")
 
-9. A SAML-beállítások területen a következő lépésekkel:
+9. Az a **SAML beállítások** területen tegye a következőket:
+  
+    ![SAML-alapú beállítások](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML-beállítások")
    
-   ![SAML-alapú beállítások](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML-beállítások")
+    a. Mint **SAML mód**, jelölje be **SAML kötelező**.
    
-   a. Mint **SAML mód**, jelölje be **SAML kötelező**.
+    b. Válassza ki **engedélyezése Adobe bejelentkezési fiókot a rendszergazdák a Adobe bejelentkezési hitelesítő adataival bejelentkezni**.
    
-   b. Válassza ki **EchoSign Fiókrendszergazdák engedélyezése a EchoSign hitelesítő adataival bejelentkezni**.
-   
-   c. Mint **felhasználó létrehozása**, jelölje be **keresztül SAML hitelesített felhasználók automatikus hozzáadása**.
+    c. Mint **felhasználó létrehozása**, jelölje be **keresztül SAML hitelesített felhasználók automatikus hozzáadása**.
 
-10. Helyezze át, amely, a következő lépések:
-
-       ![SAML-alapú beállítások](./media/active-directory-saas-adobe-echosign-tutorial/ic789522.png "SAML-beállítások")
-
-    a. Beillesztés **SAML Entitásazonosító**, amely az Azure portálról másolta a **IdP Entitásazonosító** szövegmező.
+    d. Beillesztés **SAML Entitásazonosító**, amely az Azure portálról másolta a **entitás azonosítója/kiállító URL-cím** szövegmező.
     
-    b. Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure portálról másolta a **IdP bejelentkezési URL-cím** szövegmező.
+    e. Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure portálról másolta a **bejelentkezési URL-cím/egyszeri bejelentkezési végpont** szövegmező.
    
-    c. Beillesztés **Sign-Out URL-cím**, amely az Azure portálról másolta a **IdP kijelentkezési URL-cím** szövegmező.
+    f. Beillesztés **Sign-Out URL-cím**, amely az Azure portálról másolta a **kijelentkezési URL-cím/SLO végpont** szövegmező.
 
-    d. Nyissa meg a letöltött **Certificate(Base64)** fájlt a Jegyzettömbben, annak tartalmának másolása a vágólapra és illessze be azt a **IdP tanúsítvány** szövegmező
+    g. Nyissa meg a letöltött **Certificate(Base64)** fájlt a Jegyzettömbben, annak tartalmának másolása a vágólapra és illessze be azt a **IdP tanúsítvány** szövegmező
 
-    e. Kattintson a **módosítások mentése**.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    h. Kattintson a **módosítások mentése**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -208,15 +199,15 @@ Ahhoz, hogy az Azure AD-felhasználók Adobe bejelentkezési bejelentkezni, akko
 
 2. A felső menüben kattintson **fiók**, és a bal oldali navigációs ablakában kattintson az **felhasználók és csoportok**, majd kattintson a **hozzon létre egy új felhasználót**.
    
-   ![Fiók](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "fiók")
+    ![Fiók](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "fiók")
    
 3. Az a **új felhasználó létrehozása** területen tegye a következőket:
    
-   ![Hozzon létre felhasználói](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "felhasználó létrehozása")
+    ![Hozzon létre felhasználói](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "felhasználó létrehozása")
    
-   a. Típus a **E-mail cím**, **Utónév**, és **Vezetéknév** szeretné azokat a kapcsolódó szövegmezők rendelkezés érvényes AAD-fiók.
+    a. Típus a **E-mail cím**, **Utónév**, és **Vezetéknév** szeretné azokat a kapcsolódó szövegmezők rendelkezés érvényes AAD-fiók.
    
-   b. Kattintson a **létrehozza a felhasználó**.
+    b. Kattintson a **létrehozza a felhasználó**.
 
 >[!NOTE]
 >Az Azure Active Directory fióktulajdonos kap egy e-mailt, amely tartalmaz egy hivatkozást a fiók megerősítéséhez, mielőtt aktívvá válik. 

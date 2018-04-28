@@ -1,24 +1,24 @@
 ---
-title: "Az Azure keresési találatok Active Directory identitásokkal levágási biztonsági szűrők |} Microsoft Docs"
-description: "Hozzáférés-vezérlés az Azure Search tartalmakat a biztonsági szűrők és az Active Directory-identitás használatával."
-services: search
+title: Az Azure keresési találatok Active Directory identitásokkal levágási biztonsági szűrők |} Microsoft Docs
+description: Hozzáférés-vezérlés az Azure Search tartalmakat a biztonsági szűrők és az Active Directory-identitás használatával.
 author: revitalbarletz
 manager: jlembicz
+services: search
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 7c1723e01c78132169d8975473a0e9f5466a066c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Az Azure Active Directory identitásokkal találatok díszítésre biztonsági szűrők
 
 Ez a cikk bemutatja, hogyan használható az Azure Active Directory (AAD) biztonsági azonosítók szűrők együtt az Azure Search lehet levágni a keresési eredmények felhasználói csoporttagság alapján.
 
-Ez a cikk ismerteti a következő feladatokat:
+Ez a cikk a következő feladatokat mutatja be:
 > [!div class="checklist"]
 - AAD-csoportok és felhasználók létrehozása
 - Rendelje hozzá a felhasználó hozott létre a csoport
@@ -97,7 +97,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>4. lépés: Csoportok azonosítók gyorsítótárazása
-Szükség esetén a hálózati késés csökkentésére, gyorsítótárazhatja a felhasználócsoport-társítást, hogy a keresési kérelem elküldésekor csoportok rendszer adja vissza a gyorsítótárból, egy körbejárási mentése az aad-be. Használhatja (AAD kötegelt API-t) [https://developer.microsoft.com/graph/docs/concepts/json_batching] több felhasználóval rendelkező egyetlen Http-kérelem küldéséhez, és a gyorsítótár létrehozása.
+Szükség esetén a hálózati késés csökkentésére, gyorsítótárazhatja a felhasználócsoport-társítást, hogy a keresési kérelem elküldésekor csoportok rendszer adja vissza a gyorsítótárból, egy körbejárási mentése az aad-be. (AAD kötegelt API-hoz) [https://developer.microsoft.com/graph/docs/concepts/json_batching] több felhasználóval rendelkező egyetlen Http-kérelem küldéséhez, és a gyorsítótár létrehozása.
 
 A Microsoft Graph nagy mennyiségű kérést kezelésére terveztek. Kérelmek túlságosan száma fordulhat elő, ha a Microsoft Graph a HTTP-állapotkód 429 kérelem sikertelen lesz. További információkért lásd: [Microsoft Graph-szabályozás](https://developer.microsoft.com/graph/docs/concepts/throttling).
 
@@ -185,7 +185,7 @@ A válasz, amely a felhasználó jogosult megtekinteni álló dokumentumok szűr
 
 Ebben a bemutatóban megismerte technikák használatával AAD bejelentkezések dokumentumok Azure keresési eredmények szűréséhez díszítésre dokumentumok, amelyek nem felelnek meg a kérés esetén megadott szűrő eredményeit.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Azure Search szűrőkkel azonosító-alapú hozzáférés-vezérlés](search-security-trimming-for-azure-search.md)
 + [Az Azure Search szűrők](search-filters.md)

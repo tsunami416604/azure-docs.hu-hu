@@ -1,4 +1,4 @@
-Az alkalmazás profilszerkesztésének engedélyezéséhez létre kell hoznia egy profilszerkesztési szabályzatot. Ez a szabályzat írja le, hogy mit tapasztalnak a felhasználók a profilszerkesztés során, valamint megadja azokat a jogkivonatokat, amelyeket az alkalmazás fogad a szerkesztés sikeres elvégzésekor.
+Ha engedélyezzük a profil az alkalmazásra, használja a **profil szerkesztése** házirend. Ezzel a házirend-profil szerkesztése és a jogkivonatokat, amelyek az alkalmazás sikeres befejezését követően kap tartalmát során az ügyfelek végighaladnia szolgáltatásokat írja le.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

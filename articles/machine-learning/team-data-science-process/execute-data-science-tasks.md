@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: bradsev
-ms.openlocfilehash: da09ab7daba115e570bb8b97549cc5f01e7496b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f0e0c04e48a551db6d7d7cd221a35e267dc0a63f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Tudományos feladatok végrehajtása: feltárása, a modellezési és a központi telepítés
 
 Jellemző adatok tudományos feladatok közé tartozik, az adatok feltárása, modellezési és központi telepítését. Ez a cikk bemutatja, hogyan használható a **interaktív adatok feltárása, elemzési és jelentéskészítési (IDEAR)** és **automatikus modellezéséhez és jelentéskészítési (AMAR)** segédprogramok közös adatok tudományos több feladat végrehajtására például az adatok interaktív áttekintését, adatelemzés, jelentéskészítési és modell létrehozását. Azt is ismerteti, üzembe helyezéséhez egy modell segítségével számos különféle eszközök gazdag és adatok platformokon, például a következő üzemi környezetbe beállítások:
 
-- [Azure Machine Learning](../preview/index.yml)
+- [Azure Machine Learning](../service/index.yml)
 - [SQL-kiszolgáló az ML-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -32,7 +32,7 @@ Jellemző adatok tudományos feladatok közé tartozik, az adatok feltárása, m
 
 Egy adatok tudósok végezheti feltárására és az sokféleképpen reporting: függvénytár vagy csomag elérhető a Python (például matplotlib) vagy r (ggplot vagy például rácsszerkezetű). Adatszakértőkön testre szabhatja az ilyen kódot, hogy az adott forgatókönyveket adatok feltárása igényeinek. Eltérőek a strukturált adatok kezelésével funkciókra van szüksége, amely a strukturálatlan adatok, például szöveget vagy képeket. 
 
-Például az Azure Machine Learning-munkaterület is kínálnak [adatok előkészítése speciális](../preview/tutorial-bikeshare-dataprep.md) wrangling adatokat és feltárása, beleértve a szolgáltatás létrehozása. A felhasználó határoznia kell az eszközöket, könyvtárakat és csomagok, amelyek az ajánlott suite igényeiknek megfelelően. 
+Például az Azure Machine Learning-munkaterület is kínálnak [adatok előkészítése speciális](../desktop-workbench/tutorial-bikeshare-dataprep.md) wrangling adatokat és feltárása, beleértve a szolgáltatás létrehozása. A felhasználó határoznia kell az eszközöket, könyvtárakat és csomagok, amelyek az ajánlott suite igényeiknek megfelelően. 
 
 A termék ebben a fázisban végén az adatok feltárása jelentést. A jelentés viszonylag átfogó képet kaphat az adatok modellezési használandó és a megfelelő a modellezési lépésben-e az adatok értékelése kell biztosítania. A csapat adatok tudományos folyamat (TDSP) segédprogramok félig automatizált feltárási a következő szakaszban tárgyalt, modellezési és a reporting is biztosít szabványosított adatok feltárása és jelentések modellezési. 
 
@@ -63,8 +63,8 @@ Egy YAM fájl használatával adja meg:
 - az adatok milyen része képzési használja, és milyen arányban teszteléshez
 - Futtassa mely algoritmusokat 
 - a modell optimalizálásához paraméterek kiválasztása:
-    - cross-validation 
-    - bootstrapping
+    - kereszt-ellenőrzési 
+    - rendszerindítása
     - a kereszt-ellenőrzési modellrészt
 - a hyper-paraméter állandóként állítja be, minden egyes algoritmushoz. 
 
@@ -75,7 +75,7 @@ További információkért lásd: [automatikus modellezési és segédprogram Re
 ### <a name="model-management"></a>Modellkezelés
 Után több modellek készített, általában regisztrációja és kezelése a modellek rendelkeznie kell. Általában parancsfájlok vagy az API-k és a háttérrendszer adatbázis vagy versioning van szüksége. A felügyeleti feladatok is figyelembe venni néhány lehetőségek közül választhat:
 
-1. [Az Azure Machine Learning - modell felügyeleti szolgáltatás](../preview/index.yml)
+1. [Az Azure Machine Learning - modell felügyeleti szolgáltatás](../service/index.yml)
 2. [A MIT ModelDB](https://mitdbg.github.io/modeldb/) 
 3. [SQL-seerver modell felügyeleti rendszert](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
@@ -88,7 +88,7 @@ Után több modellek készített, általában regisztrációja és kezelése a m
 Nincsenek különböző szempontok és platformokat a modellek üzembe helyezésre. Íme néhány lehetőség:
 
 
-- [Az Azure Machine Learning modell telepítése](../preview/model-management-overview.md)
+- [Az Azure Machine Learning modell telepítése](../desktop-workbench/model-management-overview.md)
 - [Központi telepítési modell SQL-kiszolgálón](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

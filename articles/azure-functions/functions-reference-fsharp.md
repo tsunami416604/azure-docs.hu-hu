@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions F # fejlesztői leírás |} Microsoft Docs"
-description: "Megtudhatja, hogyan fejleszthet Azure Functions használatával F #."
+title: 'Az Azure Functions F # fejlesztői leírás |} Microsoft Docs'
+description: 'Megtudhatja, hogyan fejleszthet Azure Functions használatával F #.'
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-editor: 
-tags: 
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, webhookokkal, a dinamikus számítási, a kiszolgáló nélküli architektúra, F #"
+editor: ''
+tags: ''
+keywords: 'Azure functions, Funkciók, Eseményfeldolgozási, webhookokkal, a dinamikus számítási, a kiszolgáló nélküli architektúra, F #'
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: functions
 ms.devlang: fsharp
@@ -16,14 +16,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2c84de3f38a49bc97fda04a7a4eb449a1f7d14bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>Az Azure Functions F # fejlesztői leírás
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 F # az Azure Functions egy megoldással egyszerűen futtathatók kisebb kódrészletek, más néven "függvények" a felhőben. Az F # függvénynek keresztül Függvényargumentumok adatáramlás. Argumentum neve meg van határozva a `function.json`, és nincsenek előre definiált nevek többek között a funkció naplózó és a megszakítási jogkivonatok eléréséhez.
 
@@ -82,7 +81,7 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
     output <- input
 ```
 
-## <a name="async"></a>Async
+## <a name="async"></a>Aszinkron
 A `async` munkafolyamat is használható, de az eredmény vissza kell adnia egy `Task`. Ezt megteheti a `Async.StartAsTask`, például:
 
 ```fsharp

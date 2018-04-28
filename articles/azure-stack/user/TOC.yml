@@ -110,6 +110,8 @@
                   href: azure-stack-version-profiles-azurecli2.md
                 - name: NYISSA MEG
                   href: azure-stack-version-profiles-go.md
+                - name: Ruby
+                  href: azure-stack-version-profiles-ruby.md
                 - name: Erőforrás-szolgáltató profilok által támogatott API-k
                   href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: Szabályzatmodul használata

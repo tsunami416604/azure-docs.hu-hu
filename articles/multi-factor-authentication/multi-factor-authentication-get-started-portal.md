@@ -1,8 +1,8 @@
 ---
-title: "Felhasználói portál az Azure MFA-kiszolgálóhoz | Microsoft Docs"
-description: "Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és a felhasználói portál használatát."
+title: Felhasználói portál az Azure MFA-kiszolgálóhoz | Microsoft Docs
+description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és a felhasználói portál használatát.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 15f4ef7b70027a820dc50a9399891bbab77d7e12
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Felhasználói portál az Azure Multi-Factor Authentication-kiszolgálóhoz
 
@@ -69,7 +69,7 @@ A felhasználói portál üzembe helyezéséhez kövesse az alábbi lépéseket:
    > [!NOTE]
    > Ez az SSL-tanúsítvány általában egy nyilvánosan aláírt SSL-tanúsítvány.
 
-4. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
+4. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth)). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
 ![MFA-kiszolgáló felhasználói portáljának telepítése](./media/multi-factor-authentication-get-started-portal/install.png)
 
@@ -108,7 +108,7 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
     * Keresse meg a **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** értéket, és módosítsa ezt a helyőrző URL-címet arra a címre, amelyre a Web Service SDK-t telepítette a 2. lépésben.
     * Mentse a Web.Config fájlt, és zárja be a Jegyzettömböt.
 
-6. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
+6. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth)). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
 Ha kérdései vannak az SSL-tanúsítvány IIS-kiszolgálón történő konfigurálásáról, olvassa el [Az SSL beállítása az IIS-en](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) cikket.
 
@@ -179,6 +179,6 @@ Ha a rendszergazdák úgy konfigurálták az Azure Multi-Factor Authentication-k
 
 A felhasználó önregisztrációja ezzel befejeződött, és a felhasználó be van jelentkezve a felhasználói portálra. Ezután bármikor újra bejelentkezhet a felhasználói portálra a telefonszáma, PIN-kódja, hitelesítési módszere és biztonsági kérdései módosításához, ha ezt a rendszergazdáik engedélyezték.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](multi-factor-authentication-get-started-server-webservice.md)

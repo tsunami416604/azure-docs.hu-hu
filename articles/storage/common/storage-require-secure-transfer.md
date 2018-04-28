@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Storage biztonságos átvitelét igénylő |} Microsoft Docs"
-description: "Ismerje meg a \"Biztonságos átviteli szükséges\" funkció Azure Storage és az engedélyezéshez."
+title: Az Azure Storage biztonságos átvitelét igénylő |} Microsoft Docs
+description: Ismerje meg a "Biztonságos átviteli szükséges" funkció Azure Storage és az engedélyezéshez.
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: Jason.Hogg
 editor: fhryo-msft
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: 797ac45a41cdf655e7465a01875a0394081c08a7
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 0ec36864377d724795197851341cbb837f47c4c6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Biztonságos átvitele az Azure Storage megkövetelése
 
@@ -66,7 +66,7 @@ Kötelező a biztonságos átvitele programozott módon, a beállítást haszná
 
 Ez a minta az Azure PowerShell 4.1-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
-Futtatás `Login-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
+Futtassa a `Connect-AzureRmAccount` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
 
  A beállítás ellenőrzéséhez a következő parancsot használja:
 
@@ -122,5 +122,5 @@ A beállításnak az engedélyezéséhez a következő parancsot használja:
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure Storage biztonsági képességeket, amelyek együtt lehetővé teszik a fejlesztők számára a biztonságos alkalmazások széles választékát nyújtja. További részletekért látogasson el a [tárolási biztonsági útmutatója](storage-security-guide.md).

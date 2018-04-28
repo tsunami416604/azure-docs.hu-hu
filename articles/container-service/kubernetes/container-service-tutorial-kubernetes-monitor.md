@@ -3,17 +3,17 @@ title: Azure Container Service-oktatóanyag – A Kubernetes monitorozása
 description: Azure Container Service-oktatóanyag – A Kubernetes monitorozása a Log Analytics használatával
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5b11c3cdf3eb457ade111d0908a2dac867ac1278
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 17398a9f74e40a7d513912d654fa609d9837d805
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Kubernetes-fürt monitorozása a Log Analytics használatával
 
@@ -27,8 +27,8 @@ Ez az oktatóanyag, amely egy hétrészes sorozat hetedik része, a következő 
 
 > [!div class="checklist"]
 > * A Log Analytics-munkaterület beállításainak lekérése
-> * OMS-ügynökök beállítása a Kubernetes-csomópontokon
-> * Hozzáférés a monitorozási információkhoz az OMS-portálon vagy az Azure Portalon
+> * Log Analytics-ügynökök beállítása a Kubernetes-csomópontokon
+> * Hozzáférés a monitorozási információkhoz a Log Analytics-portálon vagy az Azure Portalon
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -38,7 +38,7 @@ Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az okta
 
 ## <a name="get-workspace-settings"></a>Munkaterület beállításainak lekérése
 
-Az [OMS-portál](https://mms.microsoft.com) megnyitásakor lépjen a **Beállítások** > **Csatlakoztatott források** > **Linuxos kiszolgálók** elemre. Itt megtalálhatja a *munkaterület-azonosítót* és egy elsődleges vagy másodlagos *munkaterületkulcsot*. Jegyezze fel ezeket az értékeket, mert szüksége lesz rájuk az OMS-ügynökök a fürtön történő beállításához.
+A [Log Analytics-portál](https://mms.microsoft.com) megnyitásakor lépjen a **Beállítások** > **Csatlakoztatott források** > **Linuxos kiszolgálók** elemre. Itt megtalálhatja a *munkaterület-azonosítót* és egy elsődleges vagy másodlagos *munkaterületkulcsot*. Jegyezze fel ezeket az értékeket, mert szüksége lesz rájuk a Log Analytics-ügynökök a fürtön való beállításához.
 
 ## <a name="create-kubernetes-secret"></a>Kubernetes titkos kódjának létrehozása
 
@@ -48,7 +48,7 @@ Tárolja a Log Analytics-munkaterület beállításait egy `omsagent-secret` nev
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
 ```
 
-## <a name="set-up-oms-agents"></a>OMS-ügynökök beállítása
+## <a name="set-up-log-analytics-agents"></a>Log Analytics-ügynökök beállítása
 
 A következő Kubernetes-jegyzékfájl a tárolómonitorozási ügynökök konfigurálásához használható a Kubernetes-fürtön. Létrehoz egy Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) elemet, amely minden fürtcsomóponton egy azonos podot futtat.
 
@@ -142,11 +142,11 @@ Ha az ügynökök futnak, a Log Analytics számára az adatok betöltése és fe
 
 ## <a name="access-monitoring-data"></a>Monitorozási adatok elérése
 
-A tároló monitorozási adatait megtekintheti és elemezheti a [tárolómegoldással](../../log-analytics/log-analytics-containers.md) az OMS-portálon vagy az Azure Portalon.
+A tároló monitorozási adatait a Log Analytics-portálon vagy az Azure Portalon a [tárolómegoldással](../../log-analytics/log-analytics-containers.md) tekintheti meg és elemezheti.
 
-Ha a tárolómegoldást az [OMS-portál](https://mms.microsoft.com) segítségével szeretné telepíteni, lépjen a **megoldástárba**. Ezután adja hozzá a **tárolómegoldást**. Másik megoldásként adja hozzá a tárolómegoldást az [Azure Marketplace-ről](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
+Ha a tárolómegoldást a [Log Analytics-portál](https://mms.microsoft.com) segítségével szeretné telepíteni, lépjen a **megoldástárba**. Ezután adja hozzá a **tárolómegoldást**. Másik megoldásként adja hozzá a tárolómegoldást az [Azure Marketplace-ről](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 
-Az OMS-portálon keresse meg a **Tárolók** összefoglaló csempét az irányítópulton. Kattintson a csempére többek között a következő részletekért: tárolóesemények, hibák, állapot, rendszerképek leltára, valamint processzor- és memóriahasználat. Részletesebb információkért kattintson egy sorra bármely csempén, vagy végezzen [naplókeresést](../../log-analytics/log-analytics-log-searches.md).
+A Log Analytics-portálon keresse meg a **Tárolók** összefoglaló csempét az irányítópulton. Kattintson a csempére többek között a következő részletekért: tárolóesemények, hibák, állapot, rendszerképek leltára, valamint processzor- és memóriahasználat. Részletesebb információkért kattintson egy sorra bármely csempén, vagy végezzen [naplókeresést](../../log-analytics/log-analytics-log-searches.md).
 
 ![Tárolók irányítópultja az OMS-portálon](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
@@ -160,8 +160,8 @@ Ebben az oktatóanyagban a Log Analytics használatával monitoroztuk a Kubernet
 
 > [!div class="checklist"]
 > * A Log Analytics-munkaterület beállításainak lekérése
-> * OMS-ügynökök beállítása a Kubernetes-csomópontokon
-> * Hozzáférés a monitorozási információkhoz az OMS-portálon vagy az Azure Portalon
+> * Log Analytics-ügynökök beállítása a Kubernetes-csomópontokon
+> * Hozzáférés a monitorozási információkhoz a Log Analytics-portálon vagy az Azure Portalon
 
 
 Kövesse ezt a hivatkozást a Container Service-hez előre felépített szkriptminták megtekintéséhez.

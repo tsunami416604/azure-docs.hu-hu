@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: rimman
-ms.openlocfilehash: 182f9fcfd03d736f66dd8ca11720c88c9f5b36fc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2b69b3b5fee0d1148a762f817d9c5a8bc67806e7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB egység kérése
 
@@ -209,38 +209,6 @@ Példa:
 5. Jegyezze fel a kérelem egység ingyenesen elérhető bármely egyéni parancsfájlok (tárolt eljárások, eseményindítók, felhasználó által definiált függvények) használja ki az alkalmazást
 6. A megadott műveletek másodpercenkénti futtatásához várhatóan becsült száma szükséges kérelemegység kiszámításához.
 
-## <a id="GetLastRequestStatistics"></a>MongoDB API GetLastRequestStatistics paranccsal
-A MongoDB API támogatja egy egyéni parancs *getLastRequestStatistics*, az a kérelem díjak egy adott művelethez.
-
-Például a Mongo rendszerhéj hajtható végre a kérelem díjat ellenőrizni szeretné a műveletet.
-```
-> db.sample.find()
-```
-
-Ezután hajtsa végre a parancsot *getLastRequestStatistics*.
-```
-> db.runCommand({getLastRequestStatistics: 1})
-{
-    "_t": "GetRequestStatisticsResponse",
-    "ok": 1,
-    "CommandName": "OP_QUERY",
-    "RequestCharge": 2.48,
-    "RequestDurationInMilliSeconds" : 4.0048
-}
-```
-
-Ennek tudatában, egy fenntartott átviteli sebességet, az alkalmazás által igényelt mennyisége becslése módja a kérelem egység kell fizetni társított tipikus műveleteket futtatott egy reprezentatív elem, amelyet az alkalmazás és majd becslése a hajtsa végre a másodpercenként várhatóan műveletek száma.
-
-> [!NOTE]
-> Ha méretét és az indexelt tulajdonságok száma jelentősen eltérő típusú elemekre, majd jegyezze fel a megfelelő műveletet kérelem egység kell fizetni társított minden egyes *típus* jellemző elem.
-> 
-> 
-
-## <a name="use-mongodb-api-portal-metrics"></a>Használja a MongoDB API portál metrikák
-A legegyszerűbben úgy beszerezni a helyes becsült kérelem egység költségek a MongoDB API-adatbázis, hogy használja a [Azure-portálon](https://portal.azure.com) metrikákat. Az a *kérelem* és *kérelem kell fizetni* diagramokat, a kérelem egységek minden művelet nem használ-e, és hány kérelemegység használják ki egy másik viszonyítva becsült kaphat.
-
-![MongoDB API portál metrikák][6]
-
 ## <a name="a-request-unit-estimate-example"></a>A kérelem egység becsült – példa
 Vegye figyelembe a következő ~ 1 KB méretű dokumentum:
 
@@ -344,9 +312,6 @@ Ha a .NET SDK-ügyfél és a LINQ-lekérdezések, majd a legtöbbször ennek soh
 
 Ha a kérelmek aránya felett összesítve működő egynél több ügyfél, az alapértelmezett újrapróbálási viselkedése nem elegendők, és az ügyfél kivételhibát egy `DocumentClientException` állapotú code 429 az alkalmazáshoz. Ilyen esetben érdemes lehet figyelembe venni az újrapróbálási viselkedése és az alkalmazás hibakezelési rutinok a logikai, vagy növelje a kiosztott átviteli sebesség a tároló.
 
-## <a id="RequestRateTooLargeAPIforMongoDB"></a> Meghaladja a fenntartott átviteli sebességének korlátai a MongoDB API-ban.
-Alkalmazások, amelyek mérete meghaladja a létesített átviteli sebesség a tároló lehet sebessége korlátozott felhasználási aránya a kiosztott átviteli sebesség alá süllyed. A sebesség korlátozása esetén a háttér megelőző jelleggel véget ér a kérelmet egy `16500` hibakód - `Too Many Requests`. Alapértelmezés szerint a MongoDB API automatikusan újrapróbálkozik legfeljebb 10-szer kell a visszatérésre egy `Too Many Requests` hibakód. Ha sok kap `Too Many Requests` hibakódok, érdemes lehet fontolja meg, vagy egy újrapróbálkozási logika a az alkalmazás hibakezelési rutinok vagy [növelje a kiosztott átviteli sebesség a tároló](set-throughput.md).
-
 ## <a name="next-steps"></a>További lépések
 További információt az Azure Cosmos DB adatbázisok fenntartott átviteli sebességet, ismerheti meg ezeket az erőforrásokat:
 
@@ -361,4 +326,3 @@ Első lépésként a méretezés és teljesítmény Azure Cosmos DB tesztelést,
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
-[6]: ./media/request-units/api-for-mongodb-metrics.png

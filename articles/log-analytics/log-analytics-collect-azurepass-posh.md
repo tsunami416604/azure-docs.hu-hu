@@ -1,12 +1,12 @@
 ---
-title: "A Naplóelemzési Azure PaaS erőforrás gyűjtéséhez |} Microsoft Docs"
-description: "Útmutató: Azure PaaS erőforrás metrikáit adatgyűjtést megőrzési és elemzése a Log Analyticshez PowerShell használatával."
+title: A Naplóelemzési Azure PaaS erőforrás gyűjtéséhez |} Microsoft Docs
+description: 'Útmutató: Azure PaaS erőforrás metrikáit adatgyűjtést megőrzési és elemzése a Log Analyticshez PowerShell használatával.'
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 83491c4902dabc6bab1e222551298cfaffbaecf4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 8a2c04c2f79f310b7e70e7add7a8d5f318f056d2
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>A Naplóelemzési konfigurálása Azure PaaS erőforrás metrikáit gyűjteménye
 
@@ -57,7 +57,7 @@ A következő lépésekkel töltse le és futtassa a parancsfájlt.
     PS C:\> save-script -Name Enable-AzureRMDiagnostics -Path "C:\users\<username>\desktop\temp"
     ```
 
-3. Futtatás `Login-AzureRmAccount` kapcsolat létrehozása az Azure-ral.   
+3. Futtassa a `Connect-AzureRmAccount` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.   
 4. Futtassa a következő parancsfájlt `.\Enable-AzureRmDiagnostics.ps1` szeretné az adatgyűjtést egy adott erőforráshoz, az előfizetés vagy az paraméterrel paraméterek nélkül `-ResourceGroup <myResourceGroup>` erőforrás megadásához egy adott erőforráscsoportban.   
 5. Válassza ki a megfelelő előfizetést a listából, ha egynél több, a megfelelő érték megadásával.<br><br> ![Válassza ki a parancsfájl által visszaadott előfizetés](./media/log-analytics-collect-azurepass-posh/script-select-subscription.png)<br> Ellenkező esetben az egyetlen rendelkezésre előfizetés automatikusan kijelöli.
 6. A parancsfájl a következő előfizetéshez regisztrált Naplóelemzési munkaterület listáját adja vissza.  Jelölje ki a megfelelő a listából.<br><br> ![Válassza ki a parancsfájl által visszaadott munkaterület](./media/log-analytics-collect-azurepass-posh/script-select-workspace.png)<br> 

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1ac3c341f7ffc1911fc063202c043351e412843f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 682998bb979c9b155b7b1389d8f605018ae135b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) Azure SQL eléréséhez használja
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
 
@@ -101,7 +101,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-Ezután adja hozzá a virtuális gép MSI a csoporthoz.  Az MSI kell **ObjectId**, mely akkor is beolvasása az Azure PowerShell.  Első lépésként töltse le [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Majd jelentkezzen be `Login-AzureRmAccount`, és futtassa a következő parancsokat:
+Ezután adja hozzá a virtuális gép MSI a csoporthoz.  Az MSI kell **ObjectId**, mely akkor is beolvasása az Azure PowerShell.  Első lépésként töltse le [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Majd jelentkezzen be `Connect-AzureRmAccount`, és futtassa a következő parancsokat:
 - Győződjön meg arról, a munkamenet-környezet van beállítva a kívánt Azure-előfizetéssel, ha több.
 - A rendelkezésre álló erőforrások az Azure-előfizetéshez a listában, a ellenőrizze a megfelelő erőforráscsoport és a virtuális gép nevét.
 - Az MSI virtuális gép tulajdonságait, használja a megfelelő értékeket `<RESOURCE-GROUP>` és `<VM-NAME>`.

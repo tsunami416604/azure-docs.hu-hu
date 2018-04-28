@@ -1,25 +1,25 @@
 ---
-title: "Az Azure Active Directory feltételes hozzáférés SharePoint Online és Exchange Online beállítása |} Microsoft Docs"
-description: "Útmutató az Azure Active Directory feltételes hozzáférés SharePoint Online és Exchange Online beállítása."
+title: Az Azure Active Directory feltételes hozzáférés SharePoint Online és Exchange Online beállítása |} Microsoft Docs
+description: Útmutató az Azure Active Directory feltételes hozzáférés SharePoint Online és Exchange Online beállítása.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 62349fba-3cc0-4ab5-babe-372b3389eff6
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c527d4511ab2dd3bb349c10c1defb24723fef59a
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: aff37c4b440fe545ba69a409b9dcd83deabf7660
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>Az Azure Active Directory feltételes hozzáférés SharePoint Online és Exchange Online beállítása 
 
@@ -56,7 +56,7 @@ Az ügyfél alkalmazások feltételes hozzáférés nem vonatkozik például a k
 
 A modern hitelesítés mellett SharePoint online-hoz is támogatja örökölt hitelesítési protokollok megvalósítását végzi. A régebbi hitelesítési protokoll engedélyezett, ha a feltételes hozzáférési házirendek a SharePoint nem kényszeríti ki a nem modern hitelesítést használó ügyfelek.
 
-Letilthatja a SharePoint-hozzáféréshez régebbi hitelesítési protokollok használatával a  **[Set-SPOTenant](https://technet.microsoft.com/library/fp161390.aspx)**  parancsmagot: 
+Letilthatja a SharePoint-hozzáféréshez régebbi hitelesítési protokollok használatával a **[Set-SPOTenant](https://technet.microsoft.com/library/fp161390.aspx)** parancsmagot: 
 
     Set-SPOTenant -LegacyAuthProtocolsEnabled $false
 
@@ -180,7 +180,11 @@ A következő három szabályok alkalmazásával:
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd: [feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md)
+További információkért lásd: [feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md).
+
+Konfigurálásával kapcsolatos utasításokat a jogcímszabályokba, lásd: [Jogcímszabályok konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-claim-rules). 
+
+
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre egy alkalmazás belső átirányítási - Azure PowerShell |} Microsoft Docs"
-description: "Ismerje meg, amely belső webes forgalom átirányítja a megfelelő háttérkészletbe kiszolgálók az Azure Powershell Alkalmazásátjáró létrehozása."
+title: Hozzon létre egy alkalmazás belső átirányítási - Azure PowerShell |} Microsoft Docs
+description: Ismerje meg, amely belső webes forgalom átirányítja a megfelelő háttérkészletbe kiszolgálók az Azure Powershell Alkalmazásátjáró létrehozása.
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -12,30 +12,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: davidmu
-ms.openlocfilehash: c319d4f9aa3f607bccdc7237ce1f678b338180d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c0da7920692673ce414d76932fe23280d3b217dd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Hozzon létre egy alkalmazás belső átirányítása Azure PowerShell használatával
 
 Azure Powershell segítségével konfigurálhatja [webes forgalom átirányítása](application-gateway-multi-site-overview.md) létrehozásakor egy [Alkalmazásátjáró](application-gateway-introduction.md). Ebben az oktatóanyagban a háttérkészlet, a virtuálisgép-méretezési csoport használatával határozza meg. Ezután konfigurálja figyelők és szabályok alapján a tartományok, amelyek a saját győződjön meg arról, hogy a webes forgalom érkezik a megfelelő készlethez. Ez az oktatóanyag feltételezi, hogy Ön a tulajdonosa több tartományok és felhasználási mintái *www.contoso.com* és *www.contoso.org*.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
 > * Application Gateway létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
 > * Hozzon létre egy virtuálisgép-méretezési háttérkészlet állítható be
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa ` Get-Module -ListAvailable AzureRM` . Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa ` Get-Module -ListAvailable AzureRM` . Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -285,7 +285,7 @@ Update-AzureRmVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-## <a name="create-cname-record-in-your-domain"></a>Create CNAME record in your domain
+## <a name="create-cname-record-in-your-domain"></a>CNAME rekord létrehozására a tartományban
 
 Nyilvános IP-címmel az Alkalmazásátjáró létrehozása után lekérni a DNS-címét, és hozzon létre egy CNAME rekordot a tartomány segítségével. Használhat [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) lekérni a DNS-címét az Alkalmazásátjáró. Másolás a *fqdn* a DNSSettings értékének és az legyen az Ön által létrehozott CNAME rekord értékét. A-rekordok használata nem ajánlott, mert a VIP módosíthatja az Alkalmazásátjáró újraindításakor.
 
@@ -295,11 +295,11 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-Adjon meg a tartománynevet a böngésző címsorába. Such as, http://www.contoso.com.
+Adjon meg a tartománynevet a böngésző címsorába. Például a http://www.contoso.com.
 
 ![Az alkalmazás átjáró contoso hely tesztelése](./media/tutorial-internal-site-redirect-powershell/application-gateway-iistest.png)
 
-Módosítsa a címet a más tartományokba, például http://www.contoso.org és látnia kell, hogy a forgalom átirányítva vissza a figyelő a www.contoso.com.
+Módosítsa a címet a tartományhoz, például http://www.contoso.org és láthatja, hogy a forgalom átirányítva vissza a figyelő a www.contoso.com.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -310,7 +310,7 @@ Ebben a cikkben megtanulta, hogyan:
 > * Application Gateway létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
 > * Hozzon létre egy virtuálisgép-méretezési állítható be a háttérkészlet
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Alkalmazásátjáró teendők](./application-gateway-introduction.md)

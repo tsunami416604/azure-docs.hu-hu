@@ -1,34 +1,30 @@
 ---
-title: "Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory"
-description: "Szolgáltatásidentitás felügyelete az Azure Active Directory szolgáltatással kapcsolatos ismert problémák."
+title: Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory
+description: Szolgáltatásidentitás felügyelete az Azure Active Directory szolgáltatással kapcsolatos ismert problémák.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 78148c6538efa06018628297a89681ec6ec3d32d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 ## <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
-
-### <a name="is-there-a-private-preview-available-for-additional-features"></a>Van egy private Preview verziójára érhető el, további funkciók?
-
-Igen. Ha azt szeretné, figyelembe kell venni a private Preview verziójára, a beléptetési [látogasson el az előfizetési oldalra](https://aka.ms/azuremsiprivatepreview).
 
 ### <a name="does-msi-work-with-azure-cloud-services"></a>MSI-fájl az Azure Cloud Services működik?
 
@@ -42,10 +38,24 @@ Nem, MSI nincs még integrálva az adal-t vagy MSAL. Az MSI REST-végpont haszn�
 
 A biztonsági határokat az identitás, amely kapcsolódik az erőforrás. A biztonsági határa a virtuális gép MSI-fájl, például a virtuális gép. Bármely kód, hogy a virtuális gépen: hívja az MSI-végpont és a jogkivonatok kérelem. Az MSI-t támogató egyéb erőforrások a hasonló élményt is.
 
+### <a name="should-i-use-the-msi-vm-imds-endpoint-or-the-msi-vm-extension-endpoint"></a>Az MSI-VM IMDS endpoint vagy a MSI VM bővítmény végpont érdemes használni?
+
+MSI-fájl használata virtuális gépek esetén javasoljuk az MSI IMDS endpoint használatával. Az Azure példány metaadatok szolgáltatás nem érhető el az Azure Resource Manager használatával létrehozott összes infrastruktúra-szolgáltatási virtuális gép REST-végpont. MSI IMDS protokollt használó előnyei a következők:
+
+1. Minden Azure IaaS támogatott operációs rendszerek használható MSI IMDS keresztül. 
+2. Már nem kell telepítenie egy bővítmény MSI engedélyezése a virtuális gépen. 
+3. Az MSI-fájl által használt tanúsítványok nem szerepelnek a virtuális Gépet. 
+4. A IMDS végpont egy jól ismert nem irányítható IP-címet, csak érhetőek el a virtuális gép. 
+
+Az MSI-Virtuálisgép-bővítmény még ma; használandó mavenen azonban soron a IMDS végpont használatával lesznek érvényben. Az MSI-Virtuálisgép-bővítmény hamarosan elindul egy érvénytelenítése csomagjában. 
+
+Azure példány Metada szolgáltatás további információkért lásd: [IMDS dokumentáció](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+
 ### <a name="what-are-the-supported-linux-distributions"></a>Mik azok a támogatott Linux disztribúciókról?
 
-A következő Linux terjesztésekről MSI támogatja: 
+Azure infrastruktúra által támogatott összes Linux terjesztésekről MSI keresztül a IMDS végpont használható. 
 
+Megjegyzés: Az MSI Virtuálisgép-bővítmény a következő Linux terjesztésekről csak támogatja:
 - CoreOS stabil
 - 7.1 – centOS
 - RedHat 7.2
@@ -108,3 +118,16 @@ Miután a virtuális gép elindul, a címke távolíthatja el a következő para
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
+
+## <a name="known-issues-with-user-assigned-msi-preview"></a>Felhasználó hozzárendelése MSI kapcsolatos ismert problémák *(előzetes verzió)*
+
+- Távolítsa el az összes felhasználó lehet hozzárendelve MSIs csak úgy azáltal, hogy a rendszer tartozik MSI-fájl. 
+- Egy virtuális géphez a Virtuálisgép-bővítmény telepítése sikertelen lehet DNS-keresési hibák miatt. Indítsa újra a virtuális Gépet, és próbálkozzon újra. 
+- A "nem létező" MSI hozzáadása miatt sikertelen a virtuális gép. *Megjegyzés: A javítás sikertelen hozzárendelés-azonosító, ha MSI-fájl nem létezik, folyamatban van a építeni*
+- Azure Storage útmutató jelenleg csak központi Velünk EUAP érhető el. 
+- MSI rendelve speciális karakterek (pl. aláhúzásjel) neve a felhasználó létrehozása nem támogatott.
+- A második felhasználó hozzáadása hozzárendelése az identitás, a clientID nem feltétlenül érhető el a kérelmek jogkivonatainak. A megoldás, mint indítsa újra a MSI Virtuálisgép-bővítmény, az alábbi két bash parancsokkal:
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
+- A vmagent esetében a Windows jelenleg nem támogatja a felhasználó hozzárendelt MSI-fájl. 
+- Ha egy virtuális gép rendelkezik egy felhasználó lehet hozzárendelve MSI, de a rendszer nem rendelnek MSI, a portál felhasználói felületének fog engedélyezettként MSI-fájl. A rendszer MSI hozzárendelt engedélyezéséhez az Azure Resource Manager-sablon, egy Azure CLI vagy az SDK.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 11f57f866981cd4d376705dd24e2f0c54126e337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: ac7fa42c93e42e93800c3b26154cdabb85756698
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-stack-1803-update"></a>Az Azure verem 1803 frissítés
 
@@ -44,10 +44,11 @@ Az Azure verem 1803 frissítés buildszáma **20180329.1**.
 
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
-1803 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).
+- 1803 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).
 
-- [KB 4103348 - az hálózati vezérlő API szolgáltatás leáll, ha egy Azure verem frissítés telepítésekor](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4103348 - az hálózati vezérlő API szolgáltatás leáll, ha egy Azure verem frissítés telepítésekor](https://support.microsoft.com/en-us/help/4103348)
 
+- A frissítés telepítése után tekintse át a tűzfal konfigurációját, és győződjön meg arról [szükséges portok](azure-stack-integrate-endpoints.md) nyitva. A frissítés például vezet be az Azure figyelő, köztük a naplók tevékenység naplókban is megváltoztatását. A módosítás port 13012 most szolgál, és meg van nyitva.  
 
 ### <a name="new-features"></a>Új funkciók 
 A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure verem.
@@ -169,7 +170,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
     - *Engedélyezése:*
  
       ```powershell    
-      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+      Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
       
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
       
@@ -199,7 +200,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
         ```powershell
         
-        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+        Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
         
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
         

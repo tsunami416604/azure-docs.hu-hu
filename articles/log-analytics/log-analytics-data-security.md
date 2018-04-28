@@ -1,24 +1,24 @@
 ---
-title: "Jelentkezzen az Analytics-adatok biztonsági |} Microsoft Docs"
-description: "Információ hogyan Naplóelemzési adatvédelmi és titkosítja az adatokat."
+title: Jelentkezzen az Analytics-adatok biztonsági |} Microsoft Docs
+description: Információ hogyan Naplóelemzési adatvédelmi és titkosítja az adatokat.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: bfd9b3302c73e50408cdd68b25317630aa087d7f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="log-analytics-data-security"></a>Naplófájl Analytics adatok biztonsága
 Ez a dokumentum olyan kiegészítésére az adatokat az Azure Naplóelemzés információt [Azure biztonsági és adatkezelési központ](../security/security-microsoft-trust-center.md).  
@@ -57,14 +57,14 @@ Az alábbi táblázat mutatja be a rendelkezésre álló megoldások és példá
 
 Az alábbi táblázat példákat adattípusok:
 
-| Adattípus | **Mezők** |
+| **Adattípus** | **Mezők** |
 | --- | --- |
 | Riasztás |Riasztás neve riasztás leírása, BaseManagedEntityId, probléma azonosítója, IsMonitorAlert, RuleId, ResolutionState, prioritás, súlyosság, kategória, tulajdonos, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Konfiguráció |CustomerID, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
 | Esemény |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Megjegyzés:** írásakor egyéni mezők eseményeket a Windows eseménynaplóba, OMS gyűjti azokat. |
 | Metaadatok |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Address, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Teljesítmény |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
-| Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
+| Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, a környezetben, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, monitorid attribútumként, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fizikai biztonság
 A Naplóelemzési szolgáltatás Microsoft személyzete kezeli, és az összes tevékenység naplózza, és naplózhatók. A Naplóelemzési Azure szolgáltatásként működik, és megfelel-e az összes Azure megfelelőségi és biztonsági követelményeknek. 18 lapján megtekintheti az Azure eszközök fizikai biztonsági adatait a [Microsoft Azure biztonsági áttekintése](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik az OMS-szolgáltatás, így az átvitel és a megszakítási felelősséget módosítja egy munkanapon belül. A jelenleg használt globális fizikai infrastruktúra olvashat [Microsoft Datacenters](https://www.microsoft.com/server-cloud/cloud-os/global-datacenters.aspx).
@@ -155,9 +155,9 @@ Az operációs rendszer tanúsítványtároló a Windows vagy a felügyeleti kis
 A fent leírtaknak megfelelően a felügyeleti kiszolgáló vagy a közvetlenül csatlakoztatott ügynökök adatküldést SSL-en keresztül a Microsoft Azure adatközpontjaiban. ExpressRoute segítségével szükség esetén további biztonsága érdekében az adatokat. ExpressRoute módja a közvetlenül csatlakozik Azure a meglévő WAN hálózaton, például a többprotokollos átváltását (MPLS) VPN-profilok, a szolgáltató által megadott címkével. További információkért lásd: [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. A Log Analytics szolgáltatás fogadja és dolgozza fel az adatokat
-Tnem Naplóelemzés szolgáltatás biztosítja, hogy a bejövő adatok megbízható forrásból származó érvényesítésével azonosítsa a tanúsítványok és az Azure hitelesítési adatok integritását. A feldolgozatlan nyers adatokat az Azure Event Hubs a régióban, végül az adatokat fog tárolni a aktívan majd tárolódik. A tárolt adatok függ a típusú megoldások, amelyek importálva lettek, és adatok gyűjtéséért felelős ügyfélfeladatot. Ezután a Naplóelemzési szolgáltatás folyamatok a nyers adatokat, és ingests azt az adatbázisba.
+A Log Analytics szolgáltatás biztosítja, hogy a bejövő adatok megbízható forrásból érvényesítésével azonosítsa a tanúsítványok és az Azure hitelesítési adatok integritását. A feldolgozatlan nyers adatokat az Azure Event Hubs a régióban, végül az adatokat fog tárolni a aktívan majd tárolódik. A tárolt adatok függ a típusú megoldások, amelyek importálva lettek, és adatok gyűjtéséért felelős ügyfélfeladatot. Ezután a Naplóelemzési szolgáltatás folyamatok a nyers adatokat, és ingests azt az adatbázisba.
 
-A megőrzési időtartam, az összegyűjtött adatokat az adatbázisban tárolja a tervet, ha létrejött a munkaterület függ.  A fizetős szinten gyűjtött adatok alapértelmezés szerint 31 napig érhető, de annak 365 nap.  Az adatok aktívan még nincs titkosítva, és közepes 2018 tervezett. 
+A megőrzési időtartam, az összegyűjtött adatokat az adatbázisban tárolt attól függ, hogy a kijelölt tarifacsomag. Az a *szabad* réteg, a 7 napig érhető összegyűjtött adatokat. Az a *fizetve* réteg, gyűjtött adatokat 31 napig alapértelmezés szerint, de kiterjeszthető 720 nap. Adatok titkosítása az Azure storage adatbizalmasság biztosításához tárolja. Az adatok az elmúlt két hétben is SSD-alapú gyorsítótárában vannak tárolva, és ez a gyorsítótár jelenleg nincs titkosítva.  Támogatja az ilyen titkosítási 2018 újabb felében tervezzük.  
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Log Analytics segítségével fér hozzá az adatokhoz
 A Naplóelemzési munkaterület eléréséhez jelentkezzen be arra a szervezeti fiók vagy a Microsoft-fiókkal, amely korábban állítsa be az Azure portálon. A portál és Naplóelemzési közötti összes forgalom HTTPS biztonságos csatornán keresztül zajlik. A portál használata esetén egy munkamenet-Azonosítót a felhasználói ügyfélen (webböngésző) jön létre, és a helyi gyorsítótárban tárolt adatok, mindaddig, amíg a munkamenet megszakítása. Ha leállt, a rendszer törli a gyorsítótár. Ügyféloldali cookie-kat, amelyek nem tartalmaznak személyes azonosításra alkalmas adatokat, nem lesznek automatikusan eltávolítva. Munkamenet-cookie-k HTTPOnly megjelölve, és biztosított. Egy előre meghatározott tétlen időszak után az Azure portál munkamenet megszakítása.

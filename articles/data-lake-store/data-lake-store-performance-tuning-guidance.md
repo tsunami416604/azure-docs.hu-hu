@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Store teljesítményhangolás irányelvek |} Microsoft Docs"
-description: "Az Azure Data Lake Store teljesítményhangolás irányelvek"
+title: Az Azure Data Lake Store teljesítményhangolás irányelvek |} Microsoft Docs
+description: Az Azure Data Lake Store teljesítményhangolás irányelvek
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 15832f94b73057a8bfce7be27e3fd57c7771940d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Azure Data Lake Store teljesítményének hangolása
 
@@ -42,7 +42,7 @@ Függetlenül attól, hogy a helyszíni gépeket vagy virtuális gépek Azure-ba
 
 ### <a name="network-connectivity-to-azure-data-lake-store"></a>Azure Data Lake Store-hálózati kapcsolat
 
-A hálózati kapcsolat a forrásadatok és az Azure Data Lake store között szűk néha lehetnek. A forrásadatok esetén a helyszíni, érdemes lehet egy dedikált hivatkozás a [Azure ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) . Ha a forrásadatok az Azure-ban, a teljesítmény lesz ajánlott, amikor az adatok és a Data Lake Store azonos Azure régióban.
+A hálózati kapcsolat a forrásadatok és az Azure Data Lake store között szűk néha lehetnek. A forrásadatok esetén a helyszíni, érdemes lehet egy dedikált hivatkozás a [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Ha a forrásadatok az Azure-ban, a teljesítmény lesz ajánlott, amikor az adatok és a Data Lake Store azonos Azure régióban.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Maximális párhuzamos folyamatkezelést biztosítja az adatfeldolgozást eszközök konfigurálása
 
@@ -142,6 +142,6 @@ A fenti általános útmutatást, felül minden alkalmazás rendelkezik az adott
 | [A HDInsight MapReduce](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.Map.Memory</li><li>Mapreduce.job.Maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [A HDInsight alatt futó Storm](data-lake-store-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Spout végrehajtó példányok száma</li><li>Bolt végrehajtó példányok száma </li><li>Spout feladatok száma</li><li>Bolt feladatok száma</li></ul>|
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
 * [Ismerkedés az Azure Data Lake Analytics szolgáltatással](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

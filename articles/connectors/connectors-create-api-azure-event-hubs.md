@@ -1,14 +1,14 @@
 ---
-title: "Esemény figyelése az Azure Event Hubs Azure Logic Apps |} Microsoft Docs"
-description: "Az adatfolyamok események fogadásához, és a logic apps események küldése az Azure Event Hubs használatával figyelése"
+title: Esemény figyelése az Azure Event Hubs Azure Logic Apps |} Microsoft Docs
+description: Az adatfolyamok események fogadásához, és a logic apps események küldése az Azure Event Hubs használatával figyelése
 services: logic-apps
-keywords: "az adatfolyam, eseményfigyelő, az event hubs"
+keywords: az adatfolyam, eseményfigyelő, az event hubs
 author: ecfan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
-ms.assetid: 
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/06/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 076f7dd11ca8c153046727861ecb755e88f32b01
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8de56cd64f38791fb27d9bcce1e16641fb162c2f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>Figyelése, fogadására és küldi az eseményeket az Event Hubs-összekötő használatával
 
@@ -45,7 +45,7 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, létre kell hozn
 
     ![Az Event Hubs névtér engedélyeinek kezelése](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
-3. Ha azt szeretné, hogy később manuálisan adja meg a kapcsolati adatokat, a kapcsolati karakterlánc beolvasása az Event Hubs névtér. Choose **RootManageSharedAccessKey**. Mellett az elsődleges kulcs kapcsolati karakterláncot válassza a Másolás gombra. Későbbi használatra a kapcsolódási karakterlánc mentése.
+3. Ha azt szeretné, hogy később manuálisan adja meg a kapcsolati adatokat, a kapcsolati karakterlánc beolvasása az Event Hubs névtér. Válasszon **RootManageSharedAccessKey**. Mellett az elsődleges kulcs kapcsolati karakterláncot válassza a Másolás gombra. Későbbi használatra a kapcsolódási karakterlánc mentése.
 
     ![Másolja az Event Hubs névtér kapcsolati karakterláncot](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
@@ -76,11 +76,28 @@ A [ *eseményindító* ](../logic-apps/logic-apps-overview.md#logic-app-concepts
 3. Válassza ki az Event Hubs figyelésére, és állítsa be az időköz és mikor ellenőrizze az Event Hubs gyakorisága.
 
     ![Adja meg az Event Hubs vagy felhasználói csoport](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
+    
+    > [!NOTE]
+    > Az Event Hubs indítók vannak *hosszú-lekérdezési* eseményindítók, vagyis eseményindító következik be, amikor az eseményindító dolgozza fel az eseményeket és majd vár megjelenését a központ további események 30 másodpercig.
+    > Ha nincsenek események 30 másodperc, a rendszer kihagyja a eseményindító Futtatás. Ellenkező esetben az eseményindító továbbra is fennáll, addig, amíg az Event Hubs nem üres események olvasását.
+    > A következő eseményindító lekérdezési az eseményindító tulajdonságaiban megadott ismétlődési alapul.
 
-    > [!TIP]
-    > Opcionálisan válassza ki a fogyasztói csoportot események olvasása, válassza a **speciális beállítások megjelenítése**.
 
-4. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** parancsot.
+4. Bejelölheti a speciális eseményindító beállítások egy része, válassza a **speciális beállítások megjelenítése**.
+
+    ![Speciális beállítások eseményindító](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
+
+    | Tulajdonság | Részletek |
+    | --- | --- |
+    | Tartalomtípus  |A legördülő listából válassza ki az események tartalomtípusa. Application/octet-stream alapértelmezés szerint be van jelölve. |
+    | A tartalomséma |Adja meg a tartalom séma a JSON-ban az eseményeket az eseményközpontból olvasható. |
+    | Felhasználói csoport neve |Adja meg az Eseményközpont [fogyasztói csoportnév](../event-hubs/event-hubs-features.md#consumer-groups) a rendszer kiolvassa az eseményeket. Ha a felhasználói csoport neve nincs megadva, alapértelmezett felhasználói csoport használja. |
+    | Minimális partíciókulcs |Adja meg a minimális [partíció](../event-hubs/event-hubs-features.md#partitions) azonosító olvasni. Alapértelmezés szerint minden olyan partíciónak olvasható. |
+    | Maximális partíciókulcs |Adja meg azt a maximális [partíció](../event-hubs/event-hubs-features.md#partitions) azonosító olvasni. Alapértelmezés szerint minden olyan partíciónak olvasható. |
+    | Események maximális száma |Adjon meg egy értéket események maximális száma. Az eseményindító visszaadása egy és a tulajdonság által megadott események száma. |
+    |||
+
+5. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** parancsot.
 
 Most ha a logikai alkalmazás ellenőrzi a kijelölt Eseményközpont, és új esemény talál, az eseményindító fut a műveletek a Logic Apps alkalmazást a tényleges esemény.
 

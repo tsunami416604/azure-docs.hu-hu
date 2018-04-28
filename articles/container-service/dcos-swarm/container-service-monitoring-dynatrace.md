@@ -1,19 +1,19 @@
 ---
-title: "A figyelő Azure DC/OS-fürtről - Dynatrace"
-description: "Egy Azure tároló szolgáltatás DC/OS fürtben Dynatrace a figyelheti. A DC/OS Irányítópult segítségével telepítheti a Dynatrace OneAgent."
+title: A figyelő Azure DC/OS-fürtről - Dynatrace
+description: Egy Azure tároló szolgáltatás DC/OS fürtben Dynatrace a figyelheti. A DC/OS Irányítópult segítségével telepítheti a Dynatrace OneAgent.
 services: container-service
 author: MartinGoodwell
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 52a8a05f050017f5062ff986bad7ec2e6a650aa5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3d1bfc3bb61781d487c40831edd5da6fcb5a7df9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Egy Azure tároló szolgáltatás DC/OS fürtben a Dynatrace SaaS/felügyelt figyelése
 
@@ -27,12 +27,12 @@ Az alábbi ábrán láthatók a Dynatrace felhasználói felületén:
 ![Dynatrace felhasználói felület](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
 ## <a name="prerequisites"></a>Előfeltételek 
-[Telepítése](container-service-deployment.md) és [csatlakozás](./../container-service-connect.md) állította be Azure Tárolószolgáltatási fürthöz. Ismerkedjen meg a [Marathon felhasználói felülettel](container-service-mesos-marathon-ui.md). Ugrás a [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/) Dynatrace Szolgáltatottszoftver-fiók beállítása.  
+[Telepítése](container-service-deployment.md) és [csatlakozás](./../container-service-connect.md) állította be Azure Tárolószolgáltatási fürthöz. Ismerkedjen meg a [Marathon felhasználói felülettel](container-service-mesos-marathon-ui.md). Ugrás a [ https://www.dynatrace.com/trial/ ](https://www.dynatrace.com/trial/) Dynatrace Szolgáltatottszoftver-fiók beállítása.  
 
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>A marathon segítségével Dynatrace telepítés konfigurálása
 Ezeket a lépéseket megmutatja, hogyan konfigurálja és alkalmazza őket a marathon segítségével a fürt Dynatrace alkalmazásokat.
 
-1. A DC/OS felhasználói felületén keresztül elérni [http://localhost:80 /](http://localhost:80/). Egyszer a DC/OS felhasználói felületének, keresse meg a **Universe** fülre, majd keresse meg a **Dynatrace**.
+1. A DC/OS felhasználói felületén keresztül elérni [ http://localhost:80/ ](http://localhost:80/). Egyszer a DC/OS felhasználói felületének, keresse meg a **Universe** fülre, majd keresse meg a **Dynatrace**.
 
     ![A DC/OS Universe Dynatrace](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 
@@ -52,6 +52,6 @@ Ezeket a lépéseket megmutatja, hogyan konfigurálja és alkalmazza őket a mar
 
     ![A DC/OS Universe-példányok Dynatrace konfiguráció](./media/container-service-monitoring-dynatrace/dynatrace-config2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a csomag telepítése, lépjen vissza a Dynatrace irányítópult. Ismerje meg a másik a szoftverhasználati mérési adatok a tárolók a fürtön belül. 

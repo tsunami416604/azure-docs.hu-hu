@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6ee23beaa450129be7c173da9efc687cc3790a15
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ee4e200fa57a38249b0be2997de7e3268a9302cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Helyek közötti VPN-kapcsolattal rendelkező virtuális hálózat létrehozása a PowerShell használatával
 
@@ -52,7 +52,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 Ha helyben kívánja telepíteni és használni a PowerShellt, telepítse az Azure Resource Manager PowerShell-parancsmagok legújabb verzióját. A PowerShell-parancsmagok gyakran frissülnek, és általában frissítenie kell a PowerShell-parancsmagokat a legújabb szolgáltatásfunkciók eléréséhez. Ha nem frissíti a PowerShell-parancsmagokat, a megadott értékek sikertelenek lehetnek. 
 
 A jelenleg használt verzió azonosításához futtassa a Get-Module -ListAvailable AzureRM parancsot. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-azurerm-ps) szakaszt. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
-Ha helyileg futtatja a PowerShellt, akkor emellett a Login-AzureRmAccount futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha helyileg futtatja a PowerShellt, akkor emellett a Connect-AzureRmAccount parancs futtatásával kapcsolatot kell létesítenie az Azure-ral.
 
 
 ### <a name="example"></a>Példaértékek

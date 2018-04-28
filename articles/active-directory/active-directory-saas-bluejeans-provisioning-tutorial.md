@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag: BlueJeans konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikusan ellátásához, majd leépíti BlueJeans felhasználói fiókokat."
+title: 'Oktatóanyag: BlueJeans konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikusan ellátásához, majd leépíti BlueJeans felhasználói fiókokat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
-ms.openlocfilehash: 55a907bdab57ce73533361782a3890466e3076ea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9b071d166f741df523d6343ba771b7a29cd4a303
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés BlueJeans konfigurálása
 
@@ -112,7 +112,7 @@ Ez a szakasz végigvezeti az Azure AD szolgáltatás kiépítését, módosítá
 
     ![BlueJeans Provisioning](./media/active-directory-saas-bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
-7. Az a **értesítő e-mailt** mezőbe írja be az e-mail cím vagy egy csoportot, a létesítési hiba értesítéseket, és jelölje be a jelölőnégyzetet kell **e-mailben értesítést küld, ha hiba lép fel**.
+7. Az a **értesítő e-mailt** mezőbe írja be az e-mail cím vagy egy csoportot kell az üzembe helyezési hiba értesítéseket, és jelölje be a jelölőnégyzetet - **e-mailben értesítést küld, ha hiba lép fel**.
 
     ![BlueJeans Provisioning](./media/active-directory-saas-bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
@@ -143,6 +143,10 @@ Ez a szakasz végigvezeti az Azure AD szolgáltatás kiépítését, módosítá
 Ez a művelet elindítja a kezdeti szinkronizálás az összes felhasználót és/vagy csoportok meghatározott **hatókör** a a **beállítások** szakasz. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, körülbelül 40 percenként történik, amíg az Azure AD szolgáltatás kiépítését fut-e hosszabb időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz figyelemmel az előrehaladást, és hivatkozásokat követve történő rendszerbe állításához tevékenység jelentést, amely ismerteti a BlueJeans szolgáltatás kiépítését az Azure AD által végzett összes műveletet.
 
 Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](./active-directory-saas-provisioning-reporting.md).
+
+## <a name="connector-limitations"></a>Összekötő korlátozásai
+
+* Bluejeans nem engedélyezi a felhasználónevek 30 karakternél hosszabb.
 
 ## <a name="additional-resources"></a>További források
 

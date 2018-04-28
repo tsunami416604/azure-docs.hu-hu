@@ -1,18 +1,18 @@
 ---
-title: "Az Azure a dinamikus készletek kezelését Ansible használatával"
-description: "Ansible használata az Azure a dinamikus készletek kezelése"
+title: Az Azure a dinamikus készletek kezelését Ansible használatával
+description: Ansible használata az Azure a dinamikus készletek kezelése
 ms.service: ansible
-keywords: "ansible, azure, devops, bash, cloudshell, dinamikus készlet"
+keywords: ansible, azure, devops, bash, cloudshell, dinamikus készlet
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
 ms.date: 01/14/2018
 ms.topic: article
-ms.openlocfilehash: 799be6d2bb521de38af952376bf8ee14a18846de
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f29f4ec64b79738cae2ad684610f4817739825a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Azure a dinamikus készletek kezelését Ansible használatával
 Ansible használható lekéréses Hardverleltár-információk (beleértve a felhő adatforrások, például az Azure) különböző forrásokból történő egy *dinamikus készlet*. A cikkben, használja a [Azure Cloud rendszerhéj](./ansible-run-playbook-in-cloudshell.md) Ansible Azure dinamikus készlet két olyan virtuális gépet hoz létre konfigurálásához azon virtuális gépek egyik címkét, és Nginx telepítse a virtuális gép címkézett.
@@ -27,7 +27,7 @@ Ansible használható lekéréses Hardverleltár-információk (beleértve a fel
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Nyissa meg [rendszerhéj felhőalapú](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+1. Nyissa meg [rendszerhéj felhőalapú](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Hozzon létre egy Azure-erőforráscsoport ebben az oktatóanyagban a virtuális gépek tárolására.
 

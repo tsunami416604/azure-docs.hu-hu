@@ -1,25 +1,18 @@
 ---
-title: "Az Azure Search kapacitástervezési |} Microsoft Docs"
-description: "Állítsa be az Azure Search, ahol az egyes erőforrások árképzéséről számlázható keresési egység a partícióazonosító és másodpéldány számítógép-erőforrásokat."
-services: search
-documentationcenter: 
+title: Az Azure Search kapacitástervezési |} Microsoft Docs
+description: Állítsa be az Azure Search, ahol az egyes erőforrások árképzéséről számlázható keresési egység a partícióazonosító és másodpéldány számítógép-erőforrásokat.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 1dc16afe-56f9-439d-8874-1733ae1a2b74
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>A lekérdezés és a munkaterhelések az Azure Search indexelő erőforrás szintjeinek
 Miután [válasszon egy tarifacsomagot](search-sku-tier.md) és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), a következő lépésre szükség növelje a replikák és a szolgáltatás által használt partíciók számát. Minden egyes kínál, számlázási egységek rögzített száma. Ez a cikk azt ismerteti, hogyan azokat az egységeket, hogy a lekérdezés-végrehajtás indexelő és tárolási követelményeinek optimális konfigurálása során eléréséhez lefoglalni.
@@ -111,10 +104,10 @@ Az alábbi táblázatban a SUS-t a replikák és a partíciók 36-SU korlátaina
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replikák** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replikák** |3 SU |6 SU |9-ES SU |12 SU |18 SU |36 SU |
-| **4 replikák** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
-| **5 replikák** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
-| **6 replikák** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
-| **12 replikák** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
+| **4 replikák** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
+| **5 replikák** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
+| **6 replikák** |6 SU |12 SU |18 SU |24 SU |36 SU |– |
+| **12 replikák** |12 SU |24 SU |36 SU |– |N/A |– |
 
 SUS-t, a díjszabás és a kapacitás részletes magyarázatához lásd az Azure webhelyén. További információkért lásd: [díjszabás](https://azure.microsoft.com/pricing/details/search/).
 

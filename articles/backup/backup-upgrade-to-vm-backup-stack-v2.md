@@ -1,6 +1,6 @@
 ---
-title: Frissítés az Azure virtuális gép biztonsági mentési verem V2 |} Microsoft Docs
-description: Virtuális gép biztonsági mentési csomagjának V2 frissítése-folyamat és a gyakori kérdések
+title: Frissítés az Azure virtuális gép biztonsági mentési verem Azure Resource Manager telepítési modelljét |} Microsoft Docs
+description: Virtuális gép biztonsági mentési csomagjának, erőforrás-kezelő telepítési modell frissítése-folyamat és a gyakori kérdések
 services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhk
@@ -13,84 +13,84 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 4bdbf48030dda18e6698a7731989ec2de2319b35
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 224cd365e6b3ca4fd963b530dbaa289b763d53ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="upgrade-to-vm-backup-stack-v2"></a>Frissítés a virtuális gép biztonságimásolat-vermének 2-es verziójára
-A virtuális gép (VM) biztonsági mentési verem V2 frissítése a következő továbbfejlesztett szolgáltatásokat nyújtja:
-* Lásd: az adatátvitel végrehajtásához várakozás nélkül a helyreállítás elérhető legyen a biztonsági mentési feladat részeként készített pillanatképet lehetősége.
-A visszaállítás elindítása előtt tároló másolandó pillanatkép várakozási csökkenti. Emellett ez kizárja a további tárhely követelmény kivételével első biztonsági mentés a prémium szintű virtuális gépek biztonsági mentéséről.  
+# <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Az Azure Resource Manager telepítési modelljét Azure virtuális gép biztonsági mentési csomagjának frissítése
+A Resource Manager üzembe helyezési modellben a virtuális gép (VM) biztonsági mentési verem frissítés a következő továbbfejlesztett szolgáltatásokat nyújtja:
+* Tekintse meg a biztonsági mentési feladatot, amely elérhető a helyreállítás befejezéséhez adatátvitel várakozás nélkül részeként végrehajtott pillanatképek lehetősége. Csökkenti a várakozási idő a visszaállítás elindítása előtt a tárolóba másolja a pillanatképek. Ez a lehetőség kizárjuk a prémium szintű virtuális gépeket, kivéve az első biztonsági mentés biztonsági mentéséről további tárhely követelmény.  
 
-* Biztonsági mentés és visszaállítás alkalommal megtartják a pillanatképek helyi 7 napig csökkentése. 
+* Biztonsági mentés és visszaállítás alkalommal megtartják a pillanatképek helyi hét napig csökkentése.
 
-* Támogatja a lemez méretének akár 4 TB.  
+* Támogatja a lemez méretének akár 4 TB.
 
-* Képesek használni az eredeti storage-fiókok (akkor is, ha a virtuális gép lemezzel rendelkezik, amelyet elosztott storage-fiókok) mikor történt a visszaállítás, egy nem felügyelt virtuális Gépre. Ezzel biztosítható visszaállítások gyorsabban számos különböző Virtuálisgép-konfigurációk. 
+* Lehetővé teszi egy nem felügyelt virtuális gép eredeti tárfiókok visszaállításához használni. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezzel rendelkezik, amelyet tárfiókok különböző pontjain. Így visszaállítások gyorsabban számos különböző Virtuálisgép-konfigurációk.
     > [!NOTE] 
-    > Ez nem ugyanaz, mint az eredeti virtuális felülbírálása. 
-    > 
+    > Lehetősége nem ugyanaz, mint az eredeti virtuális felülbírálása. 
     >
 
-## <a name="what-is-changing-in-the-new-stack"></a>Mi az új verem változik?
+## <a name="whats-changing-in-the-new-stack"></a>Mi az új verem változik?
 A biztonsági mentési feladat jelenleg két fázisból áll:
-1.  Virtuális gép pillanatkép készítéséhez. 
-2.  Virtuális gép pillanatkép átvitele Azure Backup-tárolóban. 
+1.  Virtuális gép pillanatkép létrehozása van folyamatban. 
+2.  A virtuális gép pillanatfelvétele átvitele az Azure Backup-tárolóban. 
 
-A helyreállítási pont tekinthető létre csak azt követően 1 és 2 fázisban történik. Az új verem részeként a helyreállítási pont jön létre, amint a pillanatkép befejezése. A helyreállítási pont, az adott visszaállítási adatfolyam használatával is visszaállíthatja. A helyreállítási pont, az Azure portálon "pillanatkép" helyreállítási pont típusként azonosíthatja. Ha a pillanatkép átkerül a tároló, helyreállítási pont típus "Pillanatkép és tároló" módosításait. 
+A helyreállítási pont tekinthető létre csak azt követően 1 és 2 fázisban történik. Az új verem részeként, amint elkészült a pillanatkép jön létre egy helyreállítási pontot. Is helyreállíthatja a helyreállítási pont az adott visszaállítási adatfolyam használatával. A helyreállítási pont típusa "snapshot" segítségével azonosíthatja a helyreállítási pont, az Azure portálon. Követően a pillanatkép átkerül a tárolóban, a helyreállítási pont típusa "pillanatkép és tárolóban. a" módosításait 
 
-![A virtuális gép biztonsági mentési csomagjának V2 biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-flow.jpg) 
+![Virtuális gép biztonsági mentési verem Resource Manager üzembe helyezési modellel – tárolás és a tároló biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-flow.jpg) 
 
-Alapértelmezés szerint hét napos pillanatképek lesznek megőrizve. Ez lehetővé teszi a visszaállítást végrehajtani gyorsabban ezeket a pillanatképeket az adatok másolása a tárolóból vissza az ügyfél tárfiókja szükséges idő csökkentése révén. 
+Alapértelmezés szerint pillanatfelvételek megmaradnak hét napja. Ez a funkció lehetővé teszi, hogy a visszaállítás ezeket a pillanatképeket a gyorsabb befejezéséhez. Csökkenti az adatok másolása a tárolóból vissza az ügyfél tárfiókjával szükséges idő. 
 
 ## <a name="considerations-before-upgrade"></a>Frissítés előtt kapcsolatos szempontok
-* Ez az a virtuális gép biztonsági mentési csomagjának egy egyirányú frissítését. Igen Ez a folyamat minden jövőbeni biztonsági mentés váltanak. Mivel a **engedélyezve van egy előfizetési szinten, minden virtuális gép kerül, ez a folyamat**. Az összes új funkciót elemek ugyanazt a vermet alapul. Ez a házirend szinten későbbi hamarosan vezérlése kiadását. 
-* Virtuális gépek a premium lemezek esetében az első biztonsági mentés során győződjön meg arról, hogy a virtuális gép mérete megfelelő tárolóhely érhető el a tárfiókban lévő első biztonsági mentés befejeződéséig. 
-* Pillanatképek helyileg tárolja a helyreállítási pont létrehozása növelése érdekében és visszaállítási felgyorsítása érdekében, mivel látni fogja a 7 napos időszak alatt pillanatképek megfelelő tárolási költségeket.
-* Növekményes pillanatképek lapblobokat tárolódnak. Az ügyfél helyi tároló fiókban tárolt összes nem felügyelt lemezek segítségével az ügyfelek a 7 nap pillanatképek fogjuk számlázni. Az aktuális árképzési modellt szerinti nincs költség nélkül kezelt lemezeken található ügyfelek számára.
-* Akkor használatos, ha a visszaállítás pillanatkép helyreállítási pont a prémium szintű virtuális gépek, látni fogja a virtuális gép létrehozása részeként a visszaállítása közben használt ideiglenes tárolási helye. 
-* Prémium szintű tárfiókok esetén a pillanatképek azonnali helyreállítási szükséges a 10 TB területet, a prémium szintű storage-fiók alkalmazásban lefoglalt által elfoglalt.
+* A virtuális gép biztonsági mentési csomagjának frissítése egyike irányt. Így minden biztonsági mentés nyissa meg a folyamatot. Engedélyezve van az előfizetés szintjén, mert ez a folyamat kísérhet minden virtuális gép. Az összes új funkciót elemek ugyanazt a vermet alapulnak. Ez a házirend szinten későbbi hamarosan vezérlése kiadását.
 
-## <a name="how-to-upgrade"></a>Hogyan lehet frissíteni?
+* Prémium szintű lemezekhez rendelkező virtuális gépek során, és csak az első biztonsági mentés befejezése, győződjön meg arról, hogy nincs elegendő szabad hellyel a tárfiók. A virtuális gép egyenlőnek kell lennie.
+
+* A pillanatképek helyileg tárolja a helyreállítási pont létrehozása növelése érdekében és visszaállítási felgyorsítása érdekében. Ezért tekintse meg, amelyek megfelelnek a 7 napos időszak alatt a pillanatképek tárolási költségeket.
+
+* Növekményes pillanatképek lapblobokat tárolódnak. Nem felügyelt lemezeket használó összes ügyfél számára van szó, az ügyfél helyi tárfiók tárolja a pillanatképek a hét napja. Az aktuális árképzési modellt megfelelően nincs költség nélkül kezelt lemezeken található ügyfelek számára.
+
+* Ha így tesz, a visszaállítás egy prémium szintű virtuális gép pillanatkép helyreállítási pontból, megjelenik egy ideiglenes tárolási helye, amely a virtuális gép kerül létrehozásra részeként a visszaállítása közben.
+
+* Prémium szintű storage-fiókok a pillanatképek azonnali helyreállítási elvégzett 10 TB-nyi számára lefoglalt terület helyezkednek el.
+
+## <a name="upgrade"></a>Frissítés
 ### <a name="the-azure-portal"></a>Az Azure-portálon
-Ha használja az Azure portál használatával, meg fog megjelenik egy értesítés a nagy lemeztámogatás kapcsolódó tároló irányítópult és biztonsági mentése és visszaállítása sebesség javítása.
+Ha használja az Azure-portálon, a tároló irányítópulton megjelenik egy értesítés. Az értesítés támogatja a nagyméretű lemezek és a biztonsági mentési és visszaállítási sebesség javítása vonatkozik.
 
-![A virtuális gép biztonsági mentési csomagjának V2 biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-banner.png) 
+![Virtuális gép biztonsági mentési verem Resource Manager üzembe helyezési modellel – támogatási értesítési biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-banner.png) 
 
 Nyissa meg az új verem történő frissítés képernyő, jelölje be a szalagcím. 
 
-![A virtuális gép biztonsági mentési csomagjának V2 biztonsági mentési feladat](./media/backup-azure-vms/instant-rp.png) 
+![Biztonsági mentési feladatot a virtuális gép biztonsági mentési csomagjának Resource Manager üzembe helyezési modellben--frissítése](./media/backup-azure-vms/instant-rp.png) 
 
 ### <a name="powershell"></a>PowerShell
-A következő parancsmagokat egy emelt szintű PowerShell terminál végre:
-1.  Jelentkezzen be az Azure-fiókjával. 
+Futtassa a következő parancsmagokat egy emelt szintű PowerShell terminál:
+1.  Jelentkezzen be az Azure-fiókjával: 
 
-```
-PS C:> Login-AzureRmAccount
-```
+    ```
+    PS C:> Connect-AzureRmAccount
+    ```
 
 2.  Válassza ki az előfizetést, az előzetes regisztrálni kívánt:
 
-```
-PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-```
+    ```
+    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    ```
 
 3.  Az előfizetés regisztrálása a private Preview verziójára:
 
-```
-PS C:>  Register-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
-```
+    ```
+    PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
+    ```
 
-## <a name="verify-whether-the-upgrade-is-complete"></a>Ellenőrizze, hogy a frissítés befejezése
+## <a name="verify-that-the-upgrade-is-finished"></a>Győződjön meg arról, hogy a frissítés befejeződött
 Egy rendszergazda jogú PowerShell terminálról futtassa az alábbi parancsmagot:
 
 ```
-Get-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
-Ha regisztrált felirat látható, az előfizetés virtuális gép biztonsági mentési csomagjának V2 legyen frissítve. 
-
-
-
+"Regisztrált" felirat látható, ha az előfizetés virtuális gép biztonsági mentési verem Resource Manager üzembe helyezési modellben legyen frissítve.

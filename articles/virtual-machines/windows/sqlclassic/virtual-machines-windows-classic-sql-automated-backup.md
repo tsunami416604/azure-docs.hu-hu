@@ -1,11 +1,11 @@
 ---
-title: "Automatikus biztonsági mentés az SQL Server virtuális gépek (klasszikus) |} Microsoft Docs"
-description: "Ismerteti az automatikus biztonsági mentés szolgáltatás az SQL Server fut, az Azure virtuális gépek erőforrás-kezelő használatával. "
+title: Automatikus biztonsági mentés az SQL Server virtuális gépek (klasszikus) |} Microsoft Docs
+description: 'Ismerteti az automatikus biztonsági mentés szolgáltatás az SQL Server fut, az Azure virtuális gépek erőforrás-kezelő használatával. '
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: jroth
-ms.openlocfilehash: 05f5ec690fbf1ea2f4f6a6d927685d7a34ac9273
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3bca1c6c357527a32de499ac9207b1bb734dad7b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus biztonsági mentés az SQL Server Azure virtuális gépekben (klasszikus)
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Automatikus biztonsági mentés használja, fontolja meg a következő előfelt�
 * SQL Server 2014 Enterprise
 
 > [!NOTE]
-> Automatikus biztonsági mentés az SQL Server 2016 erőforrás-kezelő virtuális gépek esetén támogatott. További információkért lásd: [automatikus biztonsági mentés v2 az SQL Server 2016 Azure Virtual Machines (erőforrás-kezelő)](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
+> Automatikus biztonsági mentés az SQL Server 2016 erőforrás-kezelő virtuális gépek esetén támogatott. További információkért lásd: [automatikus biztonsági mentés v2 az SQL Server 2016 Azure Virtual Machines (erőforrás-kezelő)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
 
 **Adatbázis-konfiguráció**:
 

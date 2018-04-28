@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 3d6f2bf569ecfebe3bf4f535a7a8ab3bf22849f1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f0df9b02e7672faec3a1d94997c9b27ffca275e5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Gyakori kérdések az Azure-verem használata API
 Ebben a cikkben megválaszolunk néhány kapcsolatos gyakori kérdések az Azure verem használati API-t.
@@ -27,7 +27,7 @@ Ebben a cikkben megválaszolunk néhány kapcsolatos gyakori kérdések az Azure
 ## <a name="what-meter-ids-can-i-see"></a>Milyen mérő azonosítók látom?
 A következő erőforrás-szolgáltató használata esetén jelentést kap:
 
-| **Erőforrás-szolgáltató** | **A mérési azonosítója** | **A mérési neve** | **Unit** | **További információ** |
+| **Erőforrás-szolgáltató** | **A mérési azonosítója** | **A mérési neve** | **egység** | **További információ** |
 | --- | --- | --- | --- | --- |
 | **Hálózat** |F271A8A388C44D93956A063E1D2FA80B |Statikus IP-cím használata |IP-címek| Count IP-címekre. Ha felhívja a használati API a napi részletességű, a mérő az órák számát szorozva IP-címet adja vissza. |
 | |9E2739BA86744796B465F64674B822BA |Dinamikus IP-cím használata |IP-címek| Count IP-címekre. Ha felhívja a használati API a napi részletességű, a mérő az órák számát szorozva IP-címet adja vissza. |
@@ -44,7 +44,7 @@ A következő erőforrás-szolgáltató használata esetén jelentést kap:
 | |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |10., 000's kérelmek száma |Várólista szolgáltatási kérelmek (10 000 db). |
 | |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Érkező adatok GB-ban |Várólista szolgáltatás adatok érkező GB-ban. |
 | |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Kimenő forgalom GB-ban |Várólista szolgáltatás adatforgalommal GB-ban |
-| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*üzemideje (óra)   | Teljes DB kapacitása a létrehozásakor. Ha felhívja a használati API a napi részletességű, a mérő az órák számát szorozva MB adja vissza. |
+| **SQL RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*üzemideje (óra)   | Teljes DB kapacitása a létrehozásakor. Ha felhívja a használati API a napi részletességű, a mérő az órák számát szorozva MB adja vissza. |
 | **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*üzemideje (óra)    | Teljes DB kapacitása a létrehozásakor. Ha felhívja a használati API a napi részletességű, a mérő az órák számát szorozva MB adja vissza. |
 | **Számítás** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Alapszintű VM-méret órák |Virtuális processzor-üzemóra | Virtuális magok száma és az óra, a virtuális gép futott. |
 | |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows virtuális gép mérete üzemideje (óra) |Virtuális processzor-üzemóra | Virtuális magok száma és a virtuális gép futott óra. |
@@ -68,7 +68,7 @@ A következő erőforrás-szolgáltató használata esetén jelentést kap:
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Az API-k összehasonlítják Azure verem használati módja a [Azure használati API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (jelenleg a nyilvános előzetes verzió)?
 * A bérlő használati API konzisztensek legyenek az Azure API, egy kivétellel: a *showDetails* jelző jelenleg nem támogatott Azure-készletben.
 * A szolgáltató használati API csak Azure verem vonatkozik.
-* Jelenleg a [RateCard API](https://msdn.microsoft.com/en-us/library/azure/mt219004.aspx) , amely az Azure-ban rendelkezésre álló nincs Azure-készletben.
+* Jelenleg a [RateCard API](https://msdn.microsoft.com/library/azure/mt219004.aspx) , amely az Azure-ban rendelkezésre álló nincs Azure-készletben.
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Mi az a használati és a jelentett idő közötti különbség?
 Használati adatok jelentéseinek két fő időértékek rendelkezik:

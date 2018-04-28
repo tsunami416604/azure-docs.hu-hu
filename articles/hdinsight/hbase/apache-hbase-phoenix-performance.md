@@ -1,28 +1,26 @@
 ---
-title: "Az Azure HDInsight Phoenix teljesítmény |} Microsoft Docs"
-description: "Gyakorlati tanácsok Phoenix teljesítményének optimalizálása érdekében."
+title: Az Azure HDInsight Phoenix teljesítmény |} Microsoft Docs
+description: Gyakorlati tanácsok Phoenix teljesítményének optimalizálása érdekében.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 42b95d6b67f3449a2de2619f0a25b3b8f798950d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 58ecf22fa0f9349a767455fe3ab08fca058d02da
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="phoenix-performance-best-practices"></a>Phoenix teljesítmény gyakorlati tanácsok
+# <a name="phoenix-performance-best-practices"></a>A Phoenix teljesítményével kapcsolatos ajánlott eljárások
 
 A legfontosabb Phoenix teljesítmény célja az alapul szolgáló HBase optimalizálása érdekében. Phoenix létrehoz egy relációs adatmodell, amely az SQL-lekérdezések alakítja át a HBase műveletek, például a vizsgálatok HBase felett. A következő tábla sémáját, a kijelölés, valamint az elsődleges kulcs, és az összes indexek használata a mezők sorrendje Phoenix teljesítményét.
 
@@ -38,21 +36,21 @@ A Phoenix egy olyan táblázatában megadva elsődleges kulcs határozza meg, ho
 
 Például a tábla a névjegyek rendelkezik, az Utónév, utolsó nevét, telefonszám és cím, az azonos oszlop termékcsalád összes. Egy elsődleges kulcs feladatütemezési egyre több alapján adható meg:
 
-|rowkey|       Cím|   telefon| Utónév| Vezetéknév|
+|rowkey|       Cím|   Telefonszám| Utónév| Vezetéknév|
 |------|--------------------|--------------|-------------|--------------|
 |  1000|San Gabriel Dr 1111.|1-425-000-0002|    Jakab|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 Azonban ha Vezetéknév szerint gyakran kérdezze le az elsődleges kulcs nem hajthatja végre, mert minden egyes lekérdezés egy teljes táblázatbeolvasás minden Vezetéknév értékének olvasásához szükséges. Egy elsődleges kulcs meg ehelyett a Vezetéknév, az utónév és a társadalombiztosítási szám oszlopok. Ez az utolsó oszlop, a félreérthetőség megszüntetéséhez két lakosai ugyanazzal a névvel, például egy édesapja és fia azonos címen.
 
-|rowkey|       Cím|   telefon| Utónév| Vezetéknév| socialSecurityNum |
+|rowkey|       Cím|   Telefonszám| Utónév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  1000|San Gabriel Dr 1111.|1-425-000-0002|    Jakab|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Ez az új elsődleges kulcs a sort a Phoenix által létrehozott kulcsok néz ki:
 
-|rowkey|       Cím|   telefon| Utónév| Vezetéknév| socialSecurityNum |
+|rowkey|       Cím|   Telefonszám| Utónév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|San Gabriel Dr 1111.|1-425-000-0002|    Jakab|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
@@ -62,7 +60,7 @@ A fenti első sorban a rowkey adatai képviselt látható módon:
 |rowkey|       kulcs|   érték| 
 |------|--------------------|---|
 |  Dole-John-111|Cím |San Gabriel Dr 1111.|  
-|  Dole-John-111|telefon |1-425-000-0002|  
+|  Dole-John-111|Telefonszám |1-425-000-0002|  
 |  Dole-John-111|Utónév |Jakab|  
 |  Dole-John-111|Vezetéknév |Dole|  
 |  Dole-John-111|socialSecurityNum |111| 
@@ -120,7 +118,7 @@ Az érintett indexek rendszer mellett a értékek indexelt sor adatai indexeket.
 
 A példában például létrehozhat egy másodlagos index csak a socialSecurityNum oszlop a tábla forduljon. A másodlagos index volna felgyorsítása socialSecurityNum szűrés lekérdezések, de más mezők értékének beolvasása szükséges egy másik olvassa el a fő táblázaton.
 
-|rowkey|       Cím|   telefon| Utónév| Vezetéknév| socialSecurityNum |
+|rowkey|       Cím|   Telefonszám| Utónév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole-John-111|San Gabriel Dr 1111.|1-425-000-0002|    Jakab|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |

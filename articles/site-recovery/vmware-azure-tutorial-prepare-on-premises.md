@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/15/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7722891af15111fd0151055c35bf24100ed79b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
@@ -25,9 +25,12 @@ Az oktatóanyag bemutatja, hogyan készítse elő a helyszíni VMware-infrastruk
 > * A VMware-kiszolgáló követelményeinek áttekintése
 > * A VMware virtuális gépek követelményeinek áttekintése
 
-Ez az oktatóanyag-sorozat egyetlen virtuális gép az Azure Site Recovery használatával való biztonsági mentését mutatja be. Ha több VMware virtuális gép védelmét tervezi biztosítani, töltse le a [Deployment Planner eszközt](https://aka.ms/asr-deployment-planner) a VMware replikálásához. Az eszközzel információt gyűjthet a virtuális gép kompatibilitásáról, a lemezek virtuális gépenkénti számáról és a lemezenkénti adatváltozásról. Emellett az eszköz teljesíti a hálózati sávszélességre vonatkozó követelményeket, és lefedi a sikeres replikációhoz és feladatátvételi teszthez szükséges Azure-infrastruktúrát. [Itt részletesebben olvashat](site-recovery-deployment-planner.md) az eszköz futtatásáról.
+Ez az oktatóanyag-sorozat azt mutatja be, hogyan replikálható egyetlen virtuális gép az Azure Site Recovery használatával. 
 
 Ez a sorozat második oktatóanyaga. Győződjön meg arról, hogy [beállította az Azure-összetevőket](tutorial-prepare-azure.md) az előző oktatóanyagban leírtak szerint.
+
+Ha több virtuális gépet replikál, töltse le a [Deployment Planner eszközt](https://aka.ms/asr-deployment-planner) a VMware replikálásához. [További információk](site-recovery-deployment-planner.md).
+
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Fiók előkészítése automatikus felderítéshez
 

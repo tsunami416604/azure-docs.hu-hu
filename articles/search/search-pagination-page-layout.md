@@ -1,24 +1,19 @@
 ---
-title: "Útmutató az Azure Search keresési eredmények lapon |} Microsoft Docs"
-description: "Az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure tördelési."
-services: search
-documentationcenter: 
+title: Útmutató az Azure Search keresési eredmények lapon |} Microsoft Docs
+description: Az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure tördelési.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: a0a1d315-8624-4cdf-b38e-ba12569c6fcc
+manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 3ef946c6c0ab9c111932b3145fd46ae6ef2684cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>A keresési eredmények oldalakra tördelése az Azure Search-ben
 Ez a cikk az Azure Search szolgáltatás REST API használatával valósítja meg a keresési eredmények oldalának, például az érintett teljes, a dokumentum beolvasása, a rendezési sorrend és a navigációs szokásos megoldások szabványos elemeit nyújt útmutatást.
@@ -73,7 +68,7 @@ Sorrendjét relevanciájának gyakran alapértelmezett, de a gyakori, hogy alter
 
  ![][3]
 
-Az Azure Search rendezés alapul a `$orderby` kifejezés indexeli, mezők`"Sortable": true.`
+Az Azure Search rendezés alapul a `$orderby` kifejezés indexeli, mezők `"Sortable": true.`
 
 Relevanciájának erősen kapcsolódik a pontozási profil. Segítségével az alapértelmezett pontozási, amely szöveg elemzése és a statisztika támaszkodik a dokumentumok további vagy erősebb egyezés Ugrás a kívánt keresőkifejezést a magasabb pontszámok rangsorolni levő összes eredményt.
 

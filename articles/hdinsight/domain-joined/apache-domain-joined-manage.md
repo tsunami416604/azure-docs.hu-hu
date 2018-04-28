@@ -1,29 +1,91 @@
 ---
-title: Tartományhoz csatlakozó HDInsight-fürtök - Azure kezelése |} Microsoft Docs
+title: Tartományhoz csatlakozó HDInsight-fürtök - Azure kezelése
 description: A tartományhoz a HDInsight-fürtök kezelése
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.assetid: 6ebc4d2f-2f6a-4e1e-ab6d-af4db6b4c87c
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/11/2018
-ms.author: bhanupr
-ms.openlocfilehash: 44202541557a7513e0068f52289a637f6e48f43f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 9875d9884f04d26ebfbd44e858beb272c2306958
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>Tartományhoz csatlakozó HDInsight-fürtök kezelése
 Ismerje meg, a felhasználók és a szerepköröket, a tartományhoz, és a tartományhoz a HDInsight-fürtök kezelése.
+
+## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>VSCode használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
+
+Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználónév, is hivatkozásra a biztonsági hadoop-fürthöz tartományi felhasználónevet használatával (például: user1@contoso.com).
+1. Nyissa meg a parancs palettát kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: hivatkozás egy fürt**.
+
+   ![hivatkozás fürt parancs](./media/apache-domain-joined-manage/link-cluster-command.png)
+
+2. Adja meg a HDInsight fürt URL -> felhasználónév -> bemeneti be a jelszót válasszon -> fürttípus -> azt látható sikeres info ellenőrzési át.
+   
+   ![hivatkozás fürt párbeszédpanel](./media/apache-domain-joined-manage/link-cluster-process.png)
+
+   > [!NOTE]
+   > Csatolt felhasználónevet és jelszót használják, ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó. 
+   
+3. Megjelenik egy társított fürt paranccsal **lista fürt**. Most is elküldhetik a csatolt fürt parancsfájlt.
+
+   ![csatolt fürt](./media/apache-domain-joined-manage/linked-cluster.png)
+
+4. Is megszüntetheti a fürt által beírása **HDInsight: egy fürt leválasztása** parancs palettáról.
+
+## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>IntelliJ használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
+
+Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználónév, is hivatkozásra a biztonsági hadoop-fürthöz tartományi felhasználónevet használatával (például: user1@contoso.com). 
+1. Kattintson a **fürt hivatkozás** a **Azure Explorer**.
+
+   ![hivatkozás fürt helyi menü](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+
+2. Adja meg **a fürt neve**, **felhasználónév** és **jelszó**. Ellenőrizze a felhasználónevet és jelszót, ha a hitelesítési hiba van szükség. Szükség esetén adja hozzá a Tárfiók, Biztonságitár-kulcs, majd jelöljön ki egy tárolót a tároló. A bal oldali fában Tártallózó tárolással kapcsolatos van
+   
+   ![hivatkozás fürt párbeszédpanel](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+
+   > [!NOTE]
+   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó csatolt biztonságitár-kulcs, felhasználónevet és jelszót használunk.
+   > ![az IntelliJ Tártallózó](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
+
+   
+3. Láthatja, hogy a társított fürt **HDInsight** csomópont, ha a bemeneti adatokat megfelelőek. Most is elküldhetik a csatolt fürthöz kérelmet.
+
+   ![csatolt fürt](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+
+4. Is megszüntetheti a fürtöt **Azure Explorer**.
+   
+   ![a fürt megszüntetése](./media/apache-domain-joined-manage/unlink.png)
+
+## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Eclipse használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
+
+Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználónév, is hivatkozásra a biztonsági hadoop-fürthöz tartományi felhasználónevet használatával (például: user1@contoso.com).
+1. Kattintson a **fürt hivatkozás** a **Azure Explorer**.
+
+   ![hivatkozás fürt helyi menü](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+
+2. Adja meg **fürtnév**, **felhasználónév** és **jelszó**, majd kattintson az OK gombra, ha szeretné kapcsolni a fürtöt. Megadhatja a Tárfiókot, a kulcs, és válassza ki a bal oldali fanézetben működéséhez Tártallózó a tároló
+   
+   ![hivatkozás fürt párbeszédpanel](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   
+   > [!NOTE]
+   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó csatolt biztonságitár-kulcs, felhasználónevet és jelszót használunk.
+   > ![a Tártallózó az eclipse-ben](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
+
+3. Láthatja, hogy a társított fürt **HDInsight** csomópont után az OK gombra kattintás, ha a bemeneti adatokat megfelelőek. Most is elküldhetik a csatolt fürthöz kérelmet.
+
+   ![csatolt fürt](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+
+4. Is megszüntetheti a fürtöt **Azure Explorer**.
+   
+   ![a fürt megszüntetése](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Hozzáférés a vállalati biztonsági csomag fürtön.
 

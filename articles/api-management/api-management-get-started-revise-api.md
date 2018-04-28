@@ -1,11 +1,11 @@
 ---
-title: "Változatok a módosítások nem törhető biztonságosan az Azure API Management használata |} Microsoft Docs"
-description: "Ez az oktatóanyag áttekintésével megismerheti, hogyan változatok az API Management használata nem törhető módosításokat kövesse."
+title: Változatok használata a nem kompatibilitástörő változás biztonságos végrehajtásához az Azure API Managementben | Microsoft Docs
+description: Az oktatóanyag lépéseiből megtudhatja, hogyan hajthat végre nem kompatibilitástörő változásokat változatok használatával az API Managementben.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,97 +14,95 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 50d7ac17faebb34f1a1f9a3259aa0196950391d9
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: b4812ea8d93e4bfb784370e3a3196a5d20e47519
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Nem törhető módosítások biztonságosan kövesse felülvizsgálata
-Az API-készen áll, és elindítja a fejlesztők által használható, amikor általában a módosítások elvégzése az adott API-hoz, és egyszerre a nem zavarja a API hívóknak gondoskodunk kell. Akkor célszerű is, hogy a fejlesztők a végrehajtott változtatásokat ismernie. A Microsoft ehhez az Azure API Management használata **változatok**. További információkért lásd: [változatok & verzió](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) és [az Azure API Management API Versioning](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
+# <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Változatok használata a nem kompatibilitástörő változások biztonságos elvégzéséhez
+Amikor az API készen áll, és a fejlesztők elkezdik a használatát, általában ügyelni kell arra, hogy amikor módosításokat végez az API-n, ne akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. Az Azure API Managementben ez a **változatok** használatával valósítható meg. További információ: [Verziók és változatok](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) és [API-k verziókezelése az Azure API Managementtel](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A rendszer új változatot hozzáadása
-> * A verzió nem törhető módosításokat
-> * Ellenőrizze a változat aktuális és a módosítási napló bejegyzés hozzáadása
-> * Keresse meg a fejlesztői portálján módosítások megtekintéséhez és módosításához napló
+> * Új változat hozzáadása
+> * Nem kompatibilitástörő változások végrehajtása a változaton
+> * Változat aktuálissá tétele és módosításinapló-bejegyzés hozzáadása
+> * A fejlesztői portál tallózása a módosítások és a módosítási napló megtekintéséhez
 
-![A fejlesztői portálján a módosítási napló](media/api-management-getstarted-revise-api/azure_portal.PNG)
+![Módosítási napló a fejlesztői portálon](media/api-management-getstarted-revise-api/azure_portal.PNG)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Fejezze be a következő gyorsindítási: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
-+ Is, végezze el a következő oktatóanyagot: [importálása és az első API-t közzétenni](import-and-publish.md).
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+## <a name="add-a-new-revision"></a>Új változat hozzáadása
 
-## <a name="add-a-new-revision"></a>A rendszer új változatot hozzáadása
-
-1. Válassza ki **API-k** lap.
-2. Válassza ki **konferencia-API** az API-lista (vagy egyéb változatok hozzáadni kívánt API).
-3. Kattintson a **változatok** fülre az oldal tetején a menüből.
-4. Válassza ki **+ újabb változatot**
+1. Kattintson az **API-k** fülre.
+2. Válassza a **Conference API** lehetőséget az API-k listájából (vagy bármely egyéb API-t, amelyhez változatokat kíván hozzáadni).
+3. Kattintson a **Változatok** fülre az oldal felső részén található menüben.
+4. Válassza a **+ Változat hozzáadása** lehetőséget.
 
     > [!TIP]
-    > Másik lehetőségként **hozzáadása változat** a helyi menü (**...** ) API.
+    > Az API helyi menüjében (**...**) található **Változat hozzáadása** lehetőséget is választhatja.
     
-    ![Képernyő tetején változatok menü](media/api-management-getstarted-revise-api/TopMenu.PNG)
+    ![A képernyő felső részén található Változatok menü](media/api-management-getstarted-revise-api/TopMenu.PNG)
 
-5. Adjon meg egy leírást az új verziókra, mi azt használandó szöveget.
-6. Válassza ki **létrehozása**
-7. A rendszer új változatot megtörtént.
+5. Adja meg az új változat leírását, amely alapján emlékezni fog a változat funkciójára.
+6. Kattintson a **Létrehozás** elemre.
+7. Az új változat létrehozása megtörtént.
 
     > [!NOTE]
-    > Marad az eredeti API **változat 1**. Ez az a verzió, a felhasználók továbbra is hívható, amíg a felhasználó annak másik változatát aktuális.
+    > Az eredeti API az **1. változatban** marad. A felhasználók ezt a változatot hívják egészen addig, amíg Ön nem tesz aktuálissá egy másik változatot.
 
-## <a name="make-non-breaking-changes-to-your-revision"></a>A verzió nem törhető módosításokat
+## <a name="make-non-breaking-changes-to-your-revision"></a>Nem kompatibilitástörő változások végrehajtása a változaton
 
-1. Válassza ki **konferencia-API** API listájából.
-2. Válassza ki a **tervezési** lapon, a képernyő felső részén.
-3. Figyelje meg, hogy a **változat választó** (közvetlenül felett a tervezés lapról) jeleníti meg az aktuális verzióra **változat 2**.
+1. Válassza a **Conference API** elemet az API-k listájából.
+2. Kattintson a képernyő felső részén található **Tervezés** fülre.
+3. Figyelje meg, hogy a (közvetlenül a Tervezés lap fölött található) **változatválasztóban** a **2. változat** jelenik meg aktuális változatként.
 
     > [!TIP]
-    > Használja a változat választó, amely a használni kívánt változatok közötti váltáshoz.
+    > A változatválasztóval váltson arra a változatra, amelyen dolgozni kíván.
 
-4. Válassza ki **+ Hozzáadás művelet**.
-5. Állítsa be az új művelet **POST**, és a nevét, és a megjelenített neve a műveletet, mert **tesztelése**
-6. **Mentés** az új művelet.
-7. Most hajtottunk módosítva **változat 2**. Használja a **változat választó** váltson vissza a lap tetején **változat 1**.
-8. Figyelje meg, hogy az új művelet nem jelenik meg **változat 1**. 
+4. Válassza a **+ Művelet hozzáadása** lehetőséget.
+5. Az új művelet legyen **POST**, a művelet Neve és Megjelenítendő neve pedig **test**.
+6. **Mentse** az új műveletet.
+7. Most módosítottuk a **2. változatot**. Az oldal felső részén található **Változatválasztóval** váltson vissza az **1. változatra**.
+8. Figyelje meg, hogy az új művelet nem jelenik meg az **1. változatban**. 
 
-## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>Ellenőrizze a változat aktuális és a módosítási napló bejegyzés hozzáadása
-1. Válassza ki a **változatok** fülre az oldal tetején a menüből.
+## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>Változat aktuálissá tétele és módosításinapló-bejegyzés hozzáadása
+1. Kattintson a **Változatok** fülre az oldal felső részén található menüben.
 
-    ![A verzió menü változat képernyőn.](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
-1. Nyissa meg a helyi menüt (**...** ) a **2. módosítása**.
-2. Válassza ki **ellenőrizze aktuális**. Ellenőrizze **küldje el nyilvános Változásnapló ehhez az API**, ha a használni kívánt megjegyzések az ezt a módosítást.
-3. Válassza ki **történő nyilvános Változásnapló ehhez az API-közzététellel**
-4. Adjon meg egy leírást a módosítást, amelyet a fejlesztők számára, például **változatok tesztelése. A hozzáadott új "teszt" műveletet.**
-5. **2. módosítása** jelenleg aktuális.
+    ![A változatok képernyőn található változatok menü.](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
+1. Nyissa meg a **2. változat** helyi menüjét (**...**).
+2. Kattintson a **Legyen ez az aktuális** elemre. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról.
+3. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** jelölőnégyzetet
+4. Adja meg a módosítás leírását a fejlesztőknek, például **Változatok tesztelése. Új „test” művelet hozzáadva.**
+5. Most már a **2. változat** az aktuális.
 
-## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Keresse meg a fejlesztői portálján módosítások megtekintéséhez és módosításához napló
-1. Válassza ki az Azure-portálon **API-k**
-2. Válassza ki **fejlesztői portálján** a felső menüben.
-3. Válassza ki **API-k**, majd válassza ki **konferencia-API**.
-4. Figyelje meg, az új **tesztelése** művelet már elérhető.
-5. Válassza ki **API-változások nyomon követése** alábbi API-név.
-6. Figyelje meg, hogy a módosítási napló tétel megjelenik-e a listában.
+## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>A fejlesztői portál tallózása a módosítások és a módosítási napló megtekintéséhez
+1. Az Azure Portalon válassza az **API-k** lehetőséget
+2. A felső menüben kattintson a **Fejlesztői portál** elemre.
+3. Kattintson az **API-k** elemre, majd válassza a **Conference API** lehetőséget.
+4. Figyelje meg, hogy az új **test** művelet már elérhető.
+5. Kattintson az **API-változások nyomon követése** elemre az API neve alatt.
+6. Figyelje meg, hogy a módosításinapló-bejegyzés megjelenik a listában.
 
     ![Fejlesztői portál](media/api-management-getstarted-revise-api/developer_portal.PNG)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A rendszer új változatot hozzáadása
-> * A verzió nem törhető módosításokat
-> * Ellenőrizze a változat aktuális és a módosítási napló bejegyzés hozzáadása
-> * Keresse meg a fejlesztői portálján módosítások megtekintéséhez és módosításához napló
+> * Új változat hozzáadása
+> * Nem kompatibilitástörő változások végrehajtása a változaton
+> * Változat aktuálissá tétele és módosításinapló-bejegyzés hozzáadása
+> * A fejlesztői portál tallózása a módosítások és a módosítási napló megtekintéséhez
 
-Előzetes következő oktatóanyagot:
+Folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Az API-t több verziójának közzététele](api-management-get-started-publish-versions.md)
+> [Az API több verziójának közzététele](api-management-get-started-publish-versions.md)

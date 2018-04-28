@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: cb0304cae1b92578eb3c9230ae9faeecdf13d750
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 7304ade9c47034b6cb76eb87126f09fb5af65c8b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="api-management-policies"></a>API Management házirendek
 Ez a szakasz a következő API-felügyeleti házirendek nyújt. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](api-management-howto-policies.md).  
@@ -47,7 +47,7 @@ Ez a szakasz a következő API-felügyeleti házirendek nyújt. Hozzáadása és
     -   [Új érték](api-management-advanced-policies.md#set-variable) -megőrzéséhez a későbbi eléréshez elnevezett környezeti változóban értéket.  
     -   [Kérelem módszert állítja be](api-management-advanced-policies.md#SetRequestMethod) -módosíthatja a kérelem HTTP-metódust.  
     -   [Állítsa be. állapotkód:](api-management-advanced-policies.md#SetStatus) – a HTTP-állapotkód: a megadott értékre változik.  
-    -   [Nyomkövetési](api-management-advanced-policies.md#Trace) -be egy karakterláncot ad a [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) kimeneti.  
+    -   [Nyomkövetési](api-management-advanced-policies.md#Trace) -be egy karakterláncot ad a [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) kimeneti.  
     -   [Várjon, amíg](api-management-advanced-policies.md#Wait) -megvárja-e a zárójelek között [küldési kérelmek](api-management-advanced-policies.md#SendRequest), [lehet értéket kiolvasni a gyorsítótár](api-management-caching-policies.md#GetFromCacheByKey), vagy [folyamatot szabályozhatja](api-management-advanced-policies.md#choose) házirendeket befejeződjön, mielőtt továbblép.  
 -   [Hitelesítési házirendek](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Basic hitelesítés](api-management-authentication-policies.md#Basic) -alapszintű hitelesítést használó háttérszolgáltatás a hitelesítést.  

@@ -1,34 +1,32 @@
 ---
-title: "Egy Azure HDInsight Spark-fürt interaktív lekérdezések futtatására |} Microsoft Docs"
-description: "HDInsight Spark rövid útmutató az Apache Spark-fürtök HDInsightban történő létrehozásáról."
-keywords: "spark gyorsútmutató,interaktív spark,interaktív lekérdezés,hdinsight spark,azure spark"
+title: Egy Azure HDInsight Spark-fürt interaktív lekérdezések futtatására |} Microsoft Docs
+description: HDInsight Spark rövid útmutató az Apache Spark-fürtök HDInsightban történő létrehozásáról.
+keywords: spark gyorsútmutató,interaktív spark,interaktív lekérdezés,hdinsight spark,azure spark
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: jgao
-ms.openlocfilehash: 78ab44a7afa6523e1e9e4082b3f45b1a28affe77
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 177fb47c72e9abbafcda69416643fbd3848373bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-interactive-queries-on-spark-clusters-in-hdinsight"></a>A hdinsight Spark-fürtjei interaktív lekérdezések futtatására
 
 Megtudhatja, hogyan Jupyter notebook használatához Spark SQL interaktív lekérdezések futtatásához egy Spark-fürt. 
 
-[Jupyter notebook](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html) egy webböngésző-alapú alkalmazás, amely kiterjeszti a konzol alapú interaktivitási élményének a weben. A Spark on HDInsight is [Zeppelin Notebook](apache-spark-zeppelin-notebook.md). Ebben az oktatóanyagban használt Jupyter Notebook.
+[Jupyter notebook](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html) egy webböngésző-alapú alkalmazás, amely kiterjeszti a konzol alapú interaktivitási élményének a weben. A Spark on HDInsight része a [Zeppelin notebook](apache-spark-zeppelin-notebook.md) is. Az oktatóanyag a Jupyter notebookot alkalmazza.
 
-A HDInsight-fürtökön Jupyter notebookok támogatja a három kernelek - **PySpark**, **PySpark3**, és **Spark**. A **PySpark** kernel ebben az oktatóanyagban használt. További információ a kernelek, és a használatának előnyeit **PySpark**, lásd: [használata Jupyter notebook kernelek az Apache Spark hdinsight-fürtök](apache-spark-jupyter-notebook-kernels.md). Zeppelin Notebook használatához tekintse meg a [használja Zeppelin notebookok az Apache Spark on Azure HDInsight fürt](./apache-spark-zeppelin-notebook.md).
+A Jupyter notebookok a HDInsight-fürtökön három kernelt támogatnak – **PySpark**, **PySpark3** és **Spark**. Az oktatóanyag a **PySpark** kernelt alkalmazza. A kernelekkel, valamint a **PySpark** használatának előnyeivel kapcsolatos további információkért lásd: [Jupyter notebookkernelek használata Apache Spark-fürtökkel a HDInsightban](apache-spark-jupyter-notebook-kernels.md). Zeppelin Notebook használatához tekintse meg a [használja Zeppelin notebookok az Apache Spark on Azure HDInsight fürt](./apache-spark-zeppelin-notebook.md).
 
 Ebben az oktatóanyagban adatait kéri a csv-fájlban. Meg kell először adott adatok betöltése az Spark, a dataframe. Majd a Jupyter Notebook használatával dataframe lekérdezéseket is futtathat. 
 

@@ -84,7 +84,7 @@ A kapcsolati karakterláncot az Azure Portalon vagy az Azure parancssori eszköz
 
 4. A **Summary** (Összefoglalás) lapon az **Outputs** (Kimenetek) részben számos fürthivatkozás található. Az **SSHMaster0** biztosítja a Container Service-fürt első főkiszolgálójához tartozó SSH kapcsolati karakterláncot. 
 
-A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Példa:
+A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Például:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -92,7 +92,17 @@ ssh userName@masterFQDN –A –p 22
 
 Több információ: [Csatlakozás Azure Container Service-fürthöz](../articles/container-service/kubernetes/container-service-connect.md).
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>A DNS-névfeloldás nem működik a Windowsban. Mit tegyek?
+
+Van néhány olyan ismert DNS-probléma a Windowsban, amelyek aktív kivezetése jelenleg is folyamatban van. Győződjön meg róla, hogy az ACS-motor és a Windows legfrissebb verzióját használja (a [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) és a [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) telepítése mellett), hogy a környezetben érvényesüljenek a javítások. Egyéb esetben a hibák kezelésével kapcsolatos részletekért tekintse meg az alábbi táblázatot:
+
+| DNS-tünet | Áthidaló megoldás  |
+|-------------|-------------|
+|Ha a számításifeladat-tároló instabil és összeomlik, a hálózati névtér törlődik | Telepítse újra az érintett szolgáltatásokat |
+| A szolgáltatás virtuális IP-címéhez való hozzáférés sérült | Konfiguráljon egy [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) elemet, hogy mindig fusson egy normál (nem jogosult) pod |
+|Ha a tárolót futtató csomópont elérhetetlenné válik, a DNS-lekérdezések meghiúsulhatnak, ami „negatív gyorsítótár-bejegyzést” eredményez | Futtassa a következőt az érintett tárolókban: <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> Ha ez továbbra sem oldja meg a problémát, próbálja meg teljesen letiltani a DNS-gyorsítótárazást: <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
+
+## <a name="next-steps"></a>További lépések
 
 * [További információ](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) az Azure Container Service-ről.
 * Container Service-fürt központi telepítése a [portál](../articles/container-service/dcos-swarm/container-service-deployment.md) vagy az [Azure CLI 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) segítségével.

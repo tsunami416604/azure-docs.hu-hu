@@ -1,13 +1,13 @@
 ---
-title: "SAP magas rendelkezésre állású egy Windows feladatátvevő fürt és a fájl megosztás használatával SAP ASC/SCS-példányok Azure-infrastruktúra előkészítése |} Microsoft Docs"
-description: "Az Azure infrastruktúra előkészítése a SAP magas rendelkezésre állás Windows feladatátvevő fürt és a fájl megosztás segítségével SAP ASC/SCS-példányok"
+title: SAP magas rendelkezésre állású egy Windows feladatátvevő fürt és a fájl megosztás használatával SAP ASC/SCS-példányok Azure-infrastruktúra előkészítése |} Microsoft Docs
+description: Az Azure infrastruktúra előkészítése a SAP magas rendelkezésre állás Windows feladatátvevő fürt és a fájl megosztás segítségével SAP ASC/SCS-példányok
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f9e2108a7714dcbfd4f2db583cb6ee4b803f65a
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2945f731a71a66d2594eb31afb50d1ae775a2b42
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastruktúra előkészítése SAP magas rendelkezésre állású egy Windows feladatátvevő fürt és a fájlmegosztást a SAP ASC/SCS-példányok
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/16/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -212,7 +212,7 @@ Ez a cikk ismerteti az Azure-infrastruktúra előkészítő lépések, amelyek s
 
 A telepítés megkezdése előtt tekintse át a következő cikket:
 
-* [Architektúra-Útmutató: Windows feladatátvevő fürt SAP ASC/SCS példány fájlmegosztást a fürt][sap-high-availability-guide-wsfc-shared-disk]
+* [Architektúra-Útmutató: Windows feladatátvevő fürt SAP ASC/SCS példány fájlmegosztást a fürt][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>Állomásnevet és IP-címek
@@ -227,7 +227,7 @@ A telepítés megkezdése előtt tekintse át a következő cikket:
 
 **1. táblázat**: ASC/SCS fürt
 
-| SAP \<SID > | SAP ASC/SCS példányszámának |
+| SAP \<SID &GT; | SAP ASC/SCS példányszámának |
 | --- | --- |
 | PR1 | 00 |
 
@@ -341,6 +341,6 @@ _**2. ábra**: felhasználói felület képernyő nélkül felügyelt lemezeket 
 
 Az a **Tárfióktípus** mezőben válassza **prémium szintű Storage**. A többi beállítás ugyanazok, mint a felügyelt lemezek beállításai.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SAP NetWeaver magas rendelkezésre állással telepített Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok][sap-high-availability-installation-wsfc-file-share]

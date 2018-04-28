@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Backup: A rendszer állapot visszaállítása a Windows Server |} Microsoft Docs"
-description: "Lépés által lépés magyarázat a Windows Server rendszerállapot helyreállítása egy biztonsági másolatból, az Azure-ban."
+title: 'Az Azure Backup: A rendszer állapot visszaállítása a Windows Server |} Microsoft Docs'
+description: Lépés által lépés magyarázat a Windows Server rendszerállapot helyreállítása egy biztonsági másolatból, az Azure-ban.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: c673cca6a35cfdc0edaecdc69a797f48772d847c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server
 
@@ -34,7 +34,7 @@ Ez a cikk azt ismerteti, hogyan Windows kiszolgáló rendszerállapotának bizto
 ## <a name="recover-system-state-files-to-the-same-server"></a>Rendszerállapot helyreállítása fájlok ugyanarra a kiszolgálóra
 A következő lépések bemutatják, hogyan szeretné visszaállítani a Windows Server-konfigurációs korábbi állapotába. A kiszolgáló konfigurációjának visszaállítása egy ismert, stabil állapotban, rendkívül fontos lehet. Az alábbi lépéseket a kiszolgáló rendszerállapotának visszaállíthatók a Recovery Services-tároló. 
 
-1. Nyissa meg a **a Microsoft Azure Backup szolgáltatás** beépülő modult. Ha nem tudja, ahová a beépülő modul telepítve van, a számítógép vagy a kiszolgáló keresése **a Microsoft Azure Backup szolgáltatás**.
+1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. Ha nem tudja, ahová a beépülő modul telepítve van, a számítógép vagy a kiszolgáló keresése **a Microsoft Azure Backup szolgáltatás**.
 
     Egy asztali alkalmazás meg kell jelennie a keresési eredmények között.
 
@@ -171,7 +171,7 @@ Egyszer helyreállított rendszerállapot-fájlként Azure Recovery Services Age
 Rendszerállapot biztonsági mentésének Active Directory-adatokat. Tegye a következőket Active Directory tartományi szolgáltatások (AD DS) visszaállítása a jelenlegi állapotában a korábbi állapotába.
 
 1. Indítsa újra a tartományvezérlőt a Címtárszolgáltatások helyreállító módban (DSRM).
-2. Kövesse a lépéseket [Itt](https://technet.microsoft.com/en-us/library/cc794755(v=ws.10).aspx) helyreállítását az Active Directory tartományi szolgáltatások a Windows Server biztonsági másolat segítségével.
+2. Kövesse a lépéseket [Itt](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) helyreállítását az Active Directory tartományi szolgáltatások a Windows Server biztonsági másolat segítségével.
 
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Sikertelen rendszerállapot-visszaállítást hibaelhárítása

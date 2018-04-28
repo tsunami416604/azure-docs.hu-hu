@@ -9,11 +9,11 @@ ms.custom: mvc,business continuity
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 569eef6e1d930e505bc6dff9b692814438e5bd4d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="implement-a-geo-distributed-database"></a>Földrajzilag elosztott adatbázis implementálása
 
@@ -380,4 +380,17 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
 
 ## <a name="next-steps"></a>További lépések
 
-További információk: [Aktív georeplikációs és feladatátvételi csoportok](sql-database-geo-replication-overview.md).
+Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja egy Azure SQL Database-adatbázis és -alkalmazás feladatátvételét egy távoli régióba, majd hogyan tesztelheti a feladatátvételi tervet.  Megismerte, hogyan végezheti el az alábbi műveleteket: 
+
+> [!div class="checklist"]
+> * Adatbázis-felhasználók létrehozása és az engedélyeik kiosztása
+> * Adatbázisszintű tűzfalszabály beállítása
+> * Georeplikációs feladatátvételi csoport létrehozása
+> * Egy Java-alkalmazás létrehozása az Azure SQL-adatbázis lekérdezéséhez
+> * Vészhelyreállítási próba végrehajtása
+
+Ha meg szeretné tudni, hogyan hozhat létre felügyelt példányt, lépjen a következő oktatóanyagra.
+
+> [!div class="nextstepaction"]
+>[Felügyelt példány létrehozása](sql-database-managed-instance-create-tutorial-portal.md)
+

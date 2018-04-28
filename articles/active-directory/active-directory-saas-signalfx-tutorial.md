@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált SignalFx |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és SignalFx között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált SignalFx |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és SignalFx között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 50a86a01c22450ae2d92e6743fb6de7e652d4017
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9db01b4ea9a4f0d307db8bb9f8b6d6437a06815d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Oktatóanyag: Azure Active Directoryval integrált SignalFx
 
@@ -121,10 +121,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |    
-    | User.FirstName          | user.givenname |
+    | User.FirstName          | User.givenName |
     | User.email          | user.mail |
-    | PersonImmutableID       | user.userprincipalname    |
-    | User.LastName       | user.surname    |
+    | PersonImmutableID       | User.userPrincipalName    |
+    | User.LastName       | User.surname    |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -140,49 +140,33 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     e. Kattintson az **OK** gombra.
  
-6. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+6. Az a **SAML-aláíró tanúsítványa** területen tegye a következőket: 
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png)
+
+    a. Kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
+
+    b. Kattintson a **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
 7. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-signalfx-tutorial/tutorial_general_400.png)
 
-8. Létrehozásához a **metaadatainak URL-címét**, hajtsa végre a következő lépéseket:
-
-    a. Kattintson a **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appregistrations.png)
-   
-    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpointicon.png)
-
-    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpoint.png)
-     
-    d. Most lépjen a tulajdonságlapján **SignalFx** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-9. A a **SignalFx konfigurációs** kattintson **konfigurálása SignalFx** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** a a **rövid összefoglaló szakasz.**
+8. A a **SignalFx konfigurációs** kattintson **konfigurálása SignalFx** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** a a **rövid összefoglaló szakasz.**
 
     ![SignalFx konfiguráció](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_configure.png) 
 
-10. Bejelentkezés a SignalFx vállalati webhely rendszergazdaként.
+9. Bejelentkezés a SignalFx vállalati webhely rendszergazdaként.
 
-11. A SignalFx, kattintson a felső a **integrációja** Integrációk lapjának megnyitásához.
+10. A SignalFx, kattintson a felső a **integrációja** Integrációk lapjának megnyitásához.
 
     ![SignalFx integráció](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_intg.png)
 
-12. Kattintson a **Azure Active Directory** a csempén **bejelentkezési szolgáltatások** szakasz.
+11. Kattintson a **Azure Active Directory** a csempén **bejelentkezési szolgáltatások** szakasz.
  
     ![SignalFx saml](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_saml.png)
 
-13. Kattintson a **új integrációs** alatt pedig a **telepítése** lapon hajtsa végre a következő lépéseket:
+12. Kattintson a **új integrációs** alatt pedig a **telepítése** lapon hajtsa végre a következő lépéseket:
  
     ![SignalFx samlintgpage](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_azure.png)
 
@@ -194,12 +178,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     d. Az a **kiállítójának URL-címe** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító**, amely az Azure portálról másolta.
 
-    e. Az a **metaadatainak URL-CÍMÉT** szövegmező, illessze be a **metaadatainak URL-címét** mintát, amely az Azure portálról hozta létre.
+    e. Az a **metaadatainak URL-CÍMÉT** szövegmező, illessze be a **alkalmazás összevonási metaadatainak URL-címe** , amely az Azure portálról másolta.
 
     f. Kattintson a **Save** (Mentés) gombra.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 

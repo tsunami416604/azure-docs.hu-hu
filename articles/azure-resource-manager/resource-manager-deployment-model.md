@@ -1,6 +1,6 @@
 ---
-title: "Resource Manager és klasszikus telepítési |} Microsoft Docs"
-description: "A Resource Manager üzembe helyezési modellben és a klasszikus közötti különbségeket mutatja (vagy szolgáltatásfelügyelet) üzembe helyezési modellben."
+title: Resource Manager és klasszikus telepítési |} Microsoft Docs
+description: A Resource Manager üzembe helyezési modellben és a klasszikus közötti különbségeket mutatja (vagy szolgáltatásfelügyelet) üzembe helyezési modellben.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2144e3527b44e3cf508d23fedf7abb4cda595bbf
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 06da24babd470e81bed9c45a32c59ad9cfd153fe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager és klasszikus üzembe helyezési: üzembe helyezési modellek és az erőforrások állapota
 Ebből a cikkből megismerheti, Azure Resource Manager és klasszikus üzembe helyezési modellek. A Resource Manager és klasszikus üzembe helyezési modellek határoz meg két különböző módokat telepítése és kezelése az Azure megoldások. Különböző API kétféle módon működik velük, és a telepített erőforrások tartalmazhat fontos különbség. A két modell nem kompatibilisek egymással. Ez a cikk ismerteti azokat a különbségeket.
@@ -108,7 +108,7 @@ A következő táblázat ismerteti, hogyan működnek együtt a számítási, h�
 | Tárfiókok |A virtuális géphez, amely tárolja a virtuális merevlemezeket az operációs rendszer, ideiglenes, és további adatlemezt tárfiók szükséges. |A virtuális géphez szükséges egy tárfiókot, a lemezek a blob Storage tárolóban tárolni. |
 | Rendelkezésre állási csoportok |A platform felé való rendelkezésre állást azonos „AvailabilitySetName” konfigurálásával lehetett jelezni a virtuális gépeken. A tartalék tartományok maximális száma 2 volt. |A Rendelkezésre állási csoport egy Microsoft.Compute szolgáltató által közzétett erőforrás. A nagy rendelkezésre állást igénylő virtuális gépeket szerepeltetni kell a Rendelkezésre állási csoportban. A tartalék tartományok maximális száma mostantól 3. |
 | Affinitáscsoportok |Virtuális hálózatok létrehozásához szükség volt Affinitáscsoportokra. A regionális virtuális hálózatok bevezetésével erre már nem volt szükség. |Egyszerűbben fogalmazva az Azure Resource Manageren keresztül közzétett API-kban nem létezik az Affinitáscsoportok koncepciója. |
-| Terheléselosztás |Egy felhőszolgáltatás létrehozása egy implicit terheléselosztót biztosít a telepített virtuális gépekhez. |A Load Balancer egy Microsoft.Network szolgáltató által közzétett erőforrás. A terheléselosztást igénylő virtuális gépek elsődleges hálózati adapterének hivatkoznia kell a terheléselosztóra. Egy terheléselosztó lehet külső vagy belső. A betöltési terheléselosztó példánya hivatkozik a háttérbeli IP-címkészletet, amely tartalmazza a hálózati Adaptert egy virtuális gép (nem kötelező), és hivatkozik arra a terhelés terheléselosztó nyilvános vagy privát IP-cím (nem kötelező). [További információk.](../virtual-network/resource-groups-networking.md) |
+| Terheléselosztás |Egy felhőszolgáltatás létrehozása egy implicit terheléselosztót biztosít a telepített virtuális gépekhez. |A Load Balancer egy Microsoft.Network szolgáltató által közzétett erőforrás. A terheléselosztást igénylő virtuális gépek elsődleges hálózati adapterének hivatkoznia kell a terheléselosztóra. Egy terheléselosztó lehet külső vagy belső. A betöltési terheléselosztó példánya hivatkozik a háttérbeli IP-címkészletet, amely tartalmazza a hálózati Adaptert egy virtuális gép (nem kötelező), és hivatkozik arra a terhelés terheléselosztó nyilvános vagy privát IP-cím (nem kötelező). |
 | Virtuális IP-cím |Cloud Services csomag lekérdezi egy alapértelmezett VIP-t (virtuális IP-cím), ha egy virtuális Gépet hozzáadnak egy felhőalapú szolgáltatás. A Virtuális IP-cím az implicit terheléselosztóhoz társított cím. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Nyilvános IP-cím lehet statikus (fenntartott) vagy dinamikus. Dinamikus nyilvános IP-címek is hozzárendelhető a terheléselosztóhoz. A nyilvános IP-címek védelme biztonsági csoportok segítségével biztosítható. |
 | Fenntartott IP-címek |Az Azure-ban fenntarthat egy IP-címet, és társíthatja egy felhőszolgáltatáshoz, hogy biztosítsa az IP-cím állandóságát. |Nyilvános IP-cím statikus módban is létrehozható, és ez lehetőséget nyújt a azonos egy fenntartott IP-címként. |
 | Virtuális gépenként megadott nyilvános IP-cím (PIP) |Nyilvános IP-címeket is hozzárendelhet egy virtuális géphez közvetlenül. |A nyilvános IP-cím egy Microsoft.Network szolgáltató által közzétett erőforrás. Nyilvános IP-cím lehet statikus (fenntartott) vagy dinamikus. |
@@ -147,7 +147,7 @@ Az automatizálás és a már létrehozott parancsfájlokat is a meglévő virtu
 
 Széles választékát kezdősablont található [Azure Resource Manager gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A sablont, amely meghatározza egy virtuális gépet, a tárfiók és a virtuális hálózat létrehozása bízná, lásd: [Resource Manager sablonokhoz](resource-manager-template-walkthrough.md).
 * A parancsok a sablonok telepítésével kapcsolatos információk: [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md).
 

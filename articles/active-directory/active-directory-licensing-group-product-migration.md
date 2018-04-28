@@ -1,13 +1,13 @@
 ---
-title: "Biztonságosan áttelepítése a felhasználók az Azure Active Directory biztonságicsoport-alapú licencelési használatával terméklicencek közötti |} Microsoft Docs"
-description: "Ismerteti az különböző terméklicencek (Office 365 nagyvállalati E1 csomag és E3) között a felhasználók áttelepítése során Csoportalapú licencelési használatával"
+title: Biztonságosan áttelepítése a felhasználók az Azure Active Directory biztonságicsoport-alapú licencelési használatával terméklicencek közötti |} Microsoft Docs
+description: Ismerteti az különböző terméklicencek (Office 365 nagyvállalati E1 csomag és E3) között a felhasználók áttelepítése során Csoportalapú licencelési használatával
 services: active-directory
-keywords: "Az Azure AD-licencelés"
-documentationcenter: 
+keywords: Az Azure AD-licencelés
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/07/2018
 ms.author: piotrci
-ms.openlocfilehash: bb27b3fb739bbcea56026733b41e6cadf21b8953
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 068457044af7af7a55bdbcc4043da3028a68b2d0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Felhasználók közötti terméklicencek Csoportalapú licencelési használatával biztonságosan áttelepítése
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti az ajánlott módszer a felhasználók áthelyezhet termékl
 
 -   Terméklicencek ütköző szolgáltatás nem tartalmazó egyszerű áttelepítését tervezi, például az Office 365 nagyvállalati E3 csomag és az Office 365 nagyvállalati E5 közötti áttelepítése.
 
--   Néhány ütköző szolgáltatást tartalmazó termékek összetettebb áttelepítését tervezi, például az Office 365 nagyvállalati E1 csomag és az Office 365 nagyvállalati E3 csomag közötti áttelepítése. Ütközések kapcsolatos további információkért lásd: [ütköző service-csomagokról](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) és [szolgáltatás, amely nem rendelhető hozzá egy időben tervek](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
+-   Néhány ütköző szolgáltatást tartalmazó termékek összetettebb áttelepítését tervezi, például az Office 365 nagyvállalati E1 csomag és az Office 365 nagyvállalati E3 csomag közötti áttelepítése. Ütközések kapcsolatos további információkért lásd: [ütköző service-csomagokról](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) és [szolgáltatás, amely nem rendelhető hozzá egy időben tervek](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
 
 Ez a cikk tartalmazza a PowerShell mintakód áttelepítési és ellenőrzési lépések végrehajtásához használható. A kód különösen fontos a nagy méretű műveletek ahol nincs mód manuálisan hajtsa végre a lépéseket.
 
@@ -37,7 +37,7 @@ Az áttelepítés megkezdése előtt fontos ellenőrizni, hogy bizonyos feltéte
 -   Felhasználó rendelkezik a *forrás licenc* rendelt Csoportalapú licencelési használatával. A licencet a termékhez távolabb áthelyezése egy egyetlen forrás csoport öröklődtek, és közvetlenül nem rendelkezik.
 
     >[!NOTE]
-    >Licencek hozzárendelésének is közvetlenül, ha az alkalmazás megakadályozhatja a *cél licenc*. További információ [közvetlen és a licenc-hozzárendelést](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses). Előfordulhat, hogy szeretné használni egy [PowerShell-parancsfájl](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group) ellenőrizni, ha a felhasználók közvetlen licenccel rendelkezik.
+    >Licencek hozzárendelésének is közvetlenül, ha az alkalmazás megakadályozhatja a *cél licenc*. További információ [közvetlen és a licenc-hozzárendelést](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses). Előfordulhat, hogy szeretné használni egy [PowerShell-parancsfájl](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group) ellenőrizni, ha a felhasználók közvetlen licenccel rendelkezik.
 
 -   A célként megadott termék elegendő elérhető licenccel rendelkezik. Ha még nem rendelkezik elegendő licenccel, néhány felhasználónál nem lehet, hogy a *cél licenc*. Is [ellenőrizze a rendelkezésre álló licencek számának](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products).
 
@@ -54,7 +54,7 @@ Az áttelepítés megkezdése előtt fontos ellenőrizni, hogy bizonyos feltéte
 
 3.  Egy kötegben, a felhasználók hozzáadása a célcsoport. Csoportalapú licencelési szerzi be a módosítást, és hozzárendeli a *cél licenc*. A folyamat időtartama a kötegelt és a bérlői más tevékenységei méretétől függően hosszabb idejébe vehet igénybe.
 
-4.  Győződjön meg arról, hogy a felhasználók a köteg teljes feldolgozása Csoportalapú licencelésével. Győződjön meg arról, hogy minden felhasználó rendelkezik-e a *cél licenc* rendelve. Ellenőrizze, hogy a felhasználók hibás állapotú, például a ütközik más termékek vagy megfelelő számú licenccel hiánya nem végződhet. Hibákkal kapcsolatos további információkért lásd: [csoport problémák megoldására licencelési Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
+4.  Győződjön meg arról, hogy a felhasználók a köteg teljes feldolgozása Csoportalapú licencelésével. Győződjön meg arról, hogy minden felhasználó rendelkezik-e a *cél licenc* rendelve. Ellenőrizze, hogy a felhasználók hibás állapotú, például a ütközik más termékek vagy megfelelő számú licenccel hiánya nem végződhet. Hibákkal kapcsolatos további információkért lásd: [csoport problémák megoldására licencelési Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
 
 5.  Ezen a ponton a felhasználók is rendelkeznek a *forrás licenc* és *cél licenc* rendelve.
 
@@ -175,7 +175,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>Áttelepítheti a felhasználókat, amelyek ütköző service-csomagokról termékek között
-Áttelepítés célja Csoportalapú licencelési segítségével módosíthatja a felhasználói licencek egy *forrás licenc* (ebben a példában: Office 365 nagyvállalati E1 csomag) való egy *cél licenc* (ebben a példában: Office 365 Enterprise E3). Ebben a forgatókönyvben a két termék ütköző service-csomagokról tartalmaz, így a felhasználók zökkenőmentesen áttelepíthetik az egymással ütköző kerülő kell. Az ütközések kapcsolatos további információkért lásd: [Active Directory licencelése csoport probléma megoldása: ütköző service-csomagokról](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). Az áttelepítés során kell felhasználók veszítsék el hozzáférésüket szolgáltatások vagy adat. Az áttelepítés történik kötegekben kis"." Ellenőrizze az egyes kötegekben eredménye, és minimalizálása érdekében a folyamat során előforduló problémák körét. A teljes a folyamat a következőképpen történik:
+Áttelepítés célja Csoportalapú licencelési segítségével módosíthatja a felhasználói licencek egy *forrás licenc* (ebben a példában: Office 365 nagyvállalati E1 csomag) való egy *cél licenc* (ebben a példában: Office 365 Enterprise E3). Ebben a forgatókönyvben a két termék ütköző service-csomagokról tartalmaz, így a felhasználók zökkenőmentesen áttelepíthetik az egymással ütköző kerülő kell. Az ütközések kapcsolatos további információkért lásd: [Active Directory licencelése csoport probléma megoldása: ütköző service-csomagokról](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). Az áttelepítés során kell felhasználók veszítsék el hozzáférésüket szolgáltatások vagy adat. Az áttelepítés történik kötegekben kis"." Ellenőrizze az egyes kötegekben eredménye, és minimalizálása érdekében a folyamat során előforduló problémák körét. A teljes a folyamat a következőképpen történik:
 
 1.  A forrás-csoport tagjai legyenek, és öröklik a *forrás licenc* a csoportból.
 
@@ -183,7 +183,7 @@ Check passed for all users. Exiting check loop.
 
 3.  Egy kötegben, a felhasználók hozzáadása a célcsoport. Csoportalapú licencelési szerzi be a módosítást, és megpróbálja hozzárendelni a *cél licenc*. A helyhozzárendelés meghiúsul, a két termék a szolgáltatások közötti ütközés miatt. Csoportalapú licencelési rögzíti a hiba felhasználói hibát. A folyamat időtartama a kötegelt és a bérlői más tevékenységei méretétől függően hosszabb idejébe vehet igénybe.
 
-4.  Győződjön meg arról, hogy a felhasználók a köteg teljes feldolgozása Csoportalapú licencelésével. Győződjön meg arról, hogy minden felhasználó rendelkezik-e a rögzített ütközés hiba. Ellenőrizze, hogy egyes felhasználók váratlan hibaállapotban nem végződhet. Hibákkal kapcsolatos további információkért lásd: [csoport problémák megoldására licencelési Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
+4.  Győződjön meg arról, hogy a felhasználók a köteg teljes feldolgozása Csoportalapú licencelésével. Győződjön meg arról, hogy minden felhasználó rendelkezik-e a rögzített ütközés hiba. Ellenőrizze, hogy egyes felhasználók váratlan hibaállapotban nem végződhet. Hibákkal kapcsolatos további információkért lásd: [csoport problémák megoldására licencelési Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
 
 5.  Ezen a ponton a felhasználók továbbra is fennáll a *forrás licenc* egy ütközés által jelzett hibát, és a *cél licenc*. A felhasználók még nem rendelkezik a *cél licenc* rendelve.
 
@@ -317,7 +317,7 @@ Ez a szakasz a PowerShell-kódot, amely ebben a cikkben ismertetett a parancsfá
 >[!WARNING]
 >Ez a kód bemutatási célokra példaként valósul meg. Ha a környezetben használandó, fontolja meg a kódot először teszteléshez a kis méretű, vagy egy külön tesztelési bérlőn. Lehetséges, hogy úgy, hogy a kód a környezet konkrét igényeinek.
 
-Futtassa a kódot, kövesse az utasításokat a a [Azure AD PowerShell 1.0-s verziójú szalagtárak](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0). A parancsfájl végrehajtása előtt futtassa a `connect-msolservice` parancsmag futtatásával jelentkezzen be a bérlő számára.
+Futtassa a kódot, kövesse az utasításokat a a [Azure AD PowerShell 1.0-s verziójú szalagtárak](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0). A parancsfájl végrehajtása előtt futtassa a `connect-msolservice` parancsmag futtatásával jelentkezzen be a bérlő számára.
 
 ```
 # BEGIN: Helper functions that are used in the scripts.

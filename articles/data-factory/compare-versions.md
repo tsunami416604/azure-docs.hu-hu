@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2018
+ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e78051c4eb0cd79d636a6af31db8ffb6cd7e6aef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Az Azure Data Factory V1 és V2 verziójának összehasonlítása
 Ez a cikk az Azure Data Factory V2 és V1 verzióját hasonlítja össze. Ha szeretné megismerni a V1 verziót, tekintse meg [Az Azure Data Factory bemutatását](v1/data-factory-introduction.md). Ha szeretné megismerni a V2 verziót, tekintse meg [A Data Factory bemutatását (V2 – előzetes verzió)](introduction.md).
@@ -139,11 +139,7 @@ A V2-ben frissített SDK-k visszamenőlegesen nem kompatibilisek a V1 verzió ü
 
 ## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
 
-2-es verziójú Data Factory gyermekerőforrásainak létrehozása és kezelése:
-
--   Az 1-es verziójú Data Factory közreműködői szerepkörével nem lehet 2-es verziójú erőforrásokat létrehozni és kezelni.
--   A Data Factory-erőforráson létrehozott normál ARM-közreműködői szerepkör használható egy PowerShell-lel vagy SDK-kkal üzembe helyezett, 2-es verziójú Data Factory gyermekerőforrásainak létrehozásához és kezeléséhez. Ez a szerepkör azonban nem használható az Azure Portalról vagy ARM-sablonalapú telepítéssel üzembe helyezett, 2-es verziójú Data Factory gyermekerőforrásainak létrehozásához és kezeléséhez.
--   Az Azure Portalról vagy ARM-sablonalapú telepítéssel üzembe helyezett, 2-es verziójú Data Factory gyermekerőforrásainak létrehozásához és kezeléséhez az „Automation-feladat operátor” szerepkör tagjának kell lennie az erőforráscsoport vagy az előfizetés szintjén. A vállalat létrehozhat egy egyéni szerepkört is, amelynek „Műveletek” listája tartalmazza a „Microsoft.Resources/deployments/*” elemet az [egyéni szerepkörök az Azure szerepköralapú hozzáférés-vezérléséhez való létrehozását](../active-directory/role-based-access-control-custom-roles.md) ismertető cikkben leírtak szerint.
+Az 1-es verziójú Data Factory közreműködői szerepkörével létrehozhatók és kezelhetők a 2-es verziójú Data Factory erőforrásai.
 
 ## <a name="monitoring-experience"></a>Monitorozási feladatok
 A V2-ben a data factorykat az [Azure Monitor](monitor-using-azure-monitor.md) segítségével is monitorozhatja. Az új PowerShell-parancsmagok támogatják az [integrációs modulok](monitor-integration-runtime.md) monitorozását. A V1 és a V2 is támogatja a vizuális monitorozást egy monitorozási alkalmazáson keresztül, amely az Azure Portalról indítható el.

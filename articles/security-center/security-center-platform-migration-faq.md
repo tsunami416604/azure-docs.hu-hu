@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 04/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 197b1a844291f2bef2dd35001d1e6b8807ac9805
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6a88fbadd8fbf05a4942e42b535770f6f068af28
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-center-platform-migration-faq"></a>A Security Center platform áttelepítési – gyakori kérdések
 Korai. június 2017 az Azure Security Center megkezdte a Microsoft Monitoring Agent használatával gyűjt, és adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési](security-center-platform-migration.md). Ez a GYIK a platform áttelepítésével kapcsolatos kérdésekre ad választ.
@@ -122,8 +122,6 @@ Egy meglévő Naplóelemzési munkaterület kiválasztása:
    >
 
    - Válassza ki **Mégse** megszakítja a műveletet.
-
-      ![Konfigurálja újra a figyelt virtuális gépek][6]
 
 ### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>Mi történik, ha a Microsoft Monitoring Agent már telepítve van a virtuális Gépre bővítményként?
 A Security Center nem bírálja felül a meglévő kapcsolatok felhasználói munkaterületek. A Security Center biztonsági adatait a virtuális gép már csatlakoztatva van a munkaterületen tárolja. A Security Center tartalmazza a Security Center használatának támogatásához a virtuális gép az Azure erőforrás-Azonosítót a bővítmény verzióra frissíti.
@@ -248,4 +246,3 @@ A Security Center platform áttelepítésével kapcsolatos további tudnivalók�
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/solutions.png
 [5]: ./media/security-center-platform-migration-faq/use-another-workspace.png
-[6]: ./media/security-center-platform-migration-faq/reconfigure-monitored-vm.png

@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 70c1553c166cc334f9db03c78139181c6f5c0553
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: caf2c54c986f8c4dd951628fd6908d42e7ddd281
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
-Ez a cikk a biztonsági mentése az Azure Resource Manager telepített virtuális gép (VM) a környezet előkészítése a lépéseit ismerteti. A leírt eljárások lépés használja az Azure-portálon. A virtuális gép biztonsági mentési adatok tárolása a Recovery Services-tároló. A tároló klasszikus és Resource Manager telepített virtuális gépek biztonsági mentési adatokat tartalmazza.
+Ez a cikk a biztonsági mentése az Azure Resource Manager telepített virtuális gép (VM) a környezet előkészítése a lépéseit ismerteti. A leírt eljárások lépés használja az Azure-portálon. A virtuális gépek biztonsági mentésekor, a biztonsági mentési adatok vagy a helyreállítási pontok vannak tárolva Recovery Services-tároló. Helyreállítási szolgáltatások tárolók klasszikus és Resource Manager telepített virtuális gépek biztonsági mentési adatok tárolására.
 
 > [!NOTE]
 > Azure az erőforrások létrehozására és kezelésére két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).
 
 Mielőtt védelme (vagy biztonsági mentése) erőforrás-kezelő telepített virtuális gép, győződjön meg arról, az Előfeltételek:
 
-* Recovery Services-tároló létrehozása (vagy egy meglévő Recovery Services-tároló azonosítása) *ugyanabban a régióban, mint a virtuális gép*.
+* Hozzon létre vagy jelöljön Recovery Services-tároló *ugyanabban a régióban, mint a virtuális gép*.
 * Válassza ki a forgatókönyvet, a biztonsági mentési házirend meghatározása és védelmére határozzák meg.
-* A virtuális gépen a Virtuálisgép-ügynök telepítésének ellenőrzése.
+* Ellenőrizze a egy Virtuálisgép-ügynök telepítése (kiterjesztés) a virtuális gépen.
 * Ellenőrizze a hálózati kapcsolatot.
 * Linux virtuális gépekhez, ha szeretné testre szabni a biztonsági környezetet az alkalmazáskonzisztens biztonsági mentések, kövesse a [pillanatkép előtti és a pillanatkép utáni parancsfájlok konfigurálásának lépései](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
@@ -51,7 +51,7 @@ A környezet előkészítése előtt ügyeljen arra, hogy ezek a korlátozások 
 * Több mint 16 adatlemezekkel rendelkező virtuális gépek biztonsági mentését nem támogatott.
 * A fenntartott IP-cím és a nem definiált végpontot a virtuális gépek biztonsági mentését nem támogatott.
 * Nem támogatott Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux virtuális gépek biztonsági mentéséről.
-* Nem ajánlott, amelyek tartalmazzák a fürt megosztott kötetei (CSV) vagy kibővített fájlkiszolgáló virtuális gépek biztonsági mentéséről. A fürt konfigurálása során egy pillanatkép-feladat szereplő összes virtuális gépet is érintő van szükségük. Azure biztonsági mentés nem támogatja a virtuális Gépre kiterjedő konzisztencia. 
+* Nem ajánlott, amelyek tartalmazzák a fürt megosztott kötetei (CSV) vagy kibővített fájlkiszolgáló virtuális gépek biztonsági mentéséről. Ha végzett, sikertelen volt-e a fürt megosztott kötetei szolgáltatás írók várt. A fürt konfigurálása során egy pillanatkép-feladat szereplő összes virtuális gépet is érintő van szükségük. Azure biztonsági mentés nem támogatja a virtuális Gépre kiterjedő konzisztencia. 
 * Csatlakoztatott hálózati meghajtók egy virtuális Géphez csatlakozik, nem tartalmazza a biztonsági mentési adatokat.
 * Egy meglévő virtuális gép cseréje a visszaállítás során nem támogatott. Ha úgy próbálja visszaállítani a virtuális gép, ha a virtuális gép létezik, a visszaállítási művelet sikertelen.
 * Kereszt-régió biztonsági mentését, és a visszaállítás nem támogatottak.
@@ -167,7 +167,7 @@ Mielőtt a Recovery Services-tároló, a felderítési folyamat bármely az elő
 
    !["Biztonsági mentés engedélyezése" gombra](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
-Miután sikeresen engedélyezte a biztonsági mentés, a biztonsági mentési házirend ütemezés szerint fog futni. Ha szeretné létrehozni a virtuális gépek biztonsági mentése, ekkor megjelenik egy igény szerinti biztonságimásolat-készítő feladat [időt. a biztonsági mentési feladat](./backup-azure-arm-vms.md#triggering-the-backup-job).
+Miután sikeresen engedélyezte a biztonsági mentés, a biztonsági mentési házirend ütemezés szerint fog futni. Ha szeretné létrehozni a virtuális gépek biztonsági mentése, ekkor megjelenik egy igény szerinti biztonságimásolat-készítő feladat [időt. a biztonsági mentési feladat](./backup-azure-vms-first-look-arm.md#initial-backup).
 
 Ha problémába ütközik a virtuális gép rögzítése, tekintse meg a következő információkat a Virtuálisgép-ügynök telepítése és a hálózati kapcsolatot. Ha az Azure-ban létrehozott virtuális gépek védelmét valószínűleg nem kell a következő információkat. De ha áttelepítette a virtuális gépek Azure-ba, lehet, hogy a Virtuálisgép-ügynök megfelelően telepítve, és, hogy a virtuális gép kommunikálhatnak-e a virtuális hálózat.
 
@@ -208,6 +208,10 @@ Az Azure datacenter IP-címtartományok, tekintse meg az engedélyezett a [Azure
 Segítségével engedélyezheti az adott régió tárolási kapcsolatok [címkék szolgáltatás](../virtual-network/security-overview.md#service-tags). Győződjön meg arról, hogy a szabály, amely lehetővé teszi a hozzáférést a tárolási fiók rendelkezik-e a magasabb prioritású, mint a szabály, amely blokkolja az internet-hozzáféréssel. 
 
 ![NSG a régió tárolási címkékkel](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+A következő videó bemutatja, hogyan a lépéseit szolgáltatás címkék konfigurálása: 
+
+>[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 > [!WARNING]
 > Tárolási szolgáltatás címkék csak a meghatározott régióiba elérhetők, és még csak előzetes verziójúak. Régiók listáját lásd: [címkék szolgáltatás tárolási](../virtual-network/security-overview.md#service-tags).

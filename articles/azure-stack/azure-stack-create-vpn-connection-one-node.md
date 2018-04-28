@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6520da6b866ebddd66604dd8f27acfc5a9bcef4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Különböző Azure verem szoftverfejlesztői készlet környezetekben két virtuális hálózat közötti pont-pont VPN-kapcsolat létrehozása
 ## <a name="overview"></a>Áttekintés
@@ -34,7 +34,7 @@ Az alábbi ábrán látható, hogy mi a kapcsolat konfigurációs kell hasonlít
 A kapcsolat a konfigurálás befejezéséhez gondoskodjon arról, hogy a következő elemek megkezdése előtt:
 
 * Két kiszolgálót és egyéb előfeltételeket, amelyek megfelelnek az Azure verem szoftverfejlesztői készlet hardverkövetelmények a [gyors üzembe helyezés: az Azure verem szoftverfejlesztői készlet kiértékelése](azure-stack-deploy-overview.md). 
-* A [Azure verem szoftverfejlesztői készlet](https://azure.microsoft.com/en-us/overview/azure-stack/try/) központi telepítési csomagot.
+* A [Azure verem szoftverfejlesztői készlet](https://azure.microsoft.com/overview/azure-stack/try/) központi telepítési csomagot.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Az Azure verem szoftverfejlesztői készlet környezetek központi telepítése
 Fejezze be a kapcsolat konfigurációját, két Azure verem szoftverfejlesztői készlet környezetet kell telepítenie.
@@ -53,7 +53,7 @@ A következő táblázat összefoglalja a hálózati konfigurációt a mindkét 
 |---------|---------|---------|
 |Virtuális hálózat neve     |VNET-01|VNET-02 |
 |Virtuális hálózat címtere |10.0.10.0/23|10.0.20.0/23|
-|Alhálózat neve     |Subnet-01|Subnet-02|
+|Alhálózat neve     |Alhálózat-01|Alhálózat-02|
 |Alhálózati címtartomány|10.0.10.0/24 |10.0.20.0/24 |
 |Átjáró alhálózata     |10.0.11.0/24|10.0.21.0/24|
 |Külső BGPNAT cím     |         |         |

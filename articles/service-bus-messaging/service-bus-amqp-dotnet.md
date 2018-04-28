@@ -1,11 +1,11 @@
 ---
-title: "Service Bus .NET és AMQP 1.0 |} Microsoft Docs"
-description: "A .NET-Azure Service Bus használata AMQP"
+title: Az Azure Service Bus .NET és AMQP 1.0 |} Microsoft Docs
+description: A .NET-Azure Service Bus használata AMQP
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 0eb68c97ca26a862a79de9ffb83b1fc630ba2af4
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 28b8d7a71f01d8633d020b99fbe6bc5c16f272b4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>A Service Bus a .NET-használata AMQP 1.0-s
 
@@ -71,8 +71,8 @@ Csak a közvetlenül az AMQP típusokat az üzenet törzsét akkor szerializálh
 | rövid |rövid |AMQP érték |
 | int |int |AMQP érték |
 | hosszú |hosszú |AMQP érték |
-| lebegőpontos |lebegőpontos |AMQP érték |
-| duplaszó |duplaszó |AMQP érték |
+| Lebegőpontos |Lebegőpontos |AMQP érték |
+| double |double |AMQP érték |
 | Decimális |decimal128 |AMQP érték |
 | Karakter |Karakter |AMQP érték |
 | DateTime |időbélyeg |AMQP érték |
@@ -94,17 +94,12 @@ Csak a közvetlenül az AMQP típusokat az üzenet törzsét akkor szerializálh
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
 | A TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
-## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>Nem támogatott funkciók, korlátozások és viselkedési különbségek
+## <a name="behavioral-differences"></a>Viselkedés különbségek
 
-A Service Bus .NET API következő jellemzői jelenleg nem támogatottak AMQP használatakor:
-
-* Tranzakciók
-* Átviteli cél küldés
-
-Emellett néhány kisebb különbségek vannak a Service Bus .NET API működésében AMQP képest az alapértelmezett protokoll használata esetén:
+Néhány kisebb különbségek vannak a Service Bus .NET API működésében AMQP képest az alapértelmezett protokoll használata esetén:
 
 * A [OperationTimeout] [ OperationTimeout] tulajdonság a rendszer figyelmen kívül hagyja.
-* `MessageReceiver.Receive(TimeSpan.Zero)`valósul meg `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
+* `MessageReceiver.Receive(TimeSpan.Zero)` valósul meg `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
 * Üzenetek befejezése által zárolási jogkivonatok csak végezhető el az üzenetet fogadó számára eredetileg az üzeneteket.
 
 ## <a name="control-amqp-protocol-settings"></a>Vezérlő AMQP protokoll beállításait

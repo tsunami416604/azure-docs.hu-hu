@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: fae9d7f871dbb20f19bfd61576e017b3910ee8f4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési párhuzamos folyamatkezelést biztosítja
 Ez a cikk bemutatja, hogyan Azure Stream Analytics párhuzamos folyamatkezelést biztosítja előnyeit. Megismerheti a Stream Analytics-feladatok méretezése bemeneti partíciók beállításával, és az elemzés Lekérdezésdefiníció hangolása.
@@ -29,21 +29,13 @@ A Stream Analytics-feladat skálázás kihasználja a partíciók a bemeneti vag
 
 ### <a name="inputs"></a>Bemenetek
 Minden Azure Stream Analytics-bevitel kihasználhatják a particionálás:
--   Az EventHub (kell megadni, a partíciós kulcs explicit módon)
--   Az IoT-központ (kell megadni, a partíciós kulcs explicit módon)
+-   Az EventHub (kell megadni, a partíciós kulcs explicit módon, a PARTITION BY kulcsszó)
+-   Az IoT-központ (kell megadni, a partíciós kulcs explicit módon, a PARTITION BY kulcsszó)
 -   Blob Storage
 
 ### <a name="outputs"></a>Kimenetek
 
-A Stream Analytics használata, kihasználhatja a kimenetek a particionálás:
--   Azure Data Lake Storage
--   Azure Functions
--   Azure-tábla
--   Blob Storage
--   CosmosDB (kell megadni, a partíciós kulcs explicit módon)
--   Az EventHub (kell megadni, a partíciós kulcs explicit módon)
--   Az IoT-központ (kell megadni, a partíciós kulcs explicit módon)
--   Service Bus
+A Stream Analytics használata, kihasználhatja a legtöbb kimeneti mosdók particionálás. További információ a kimeneti particionálás érhető el a [a kimeneti oldal szakasza particionálás](https://review.docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs?branch=master#partitioning).
 
 Power BI, az SQL és az SQL-adatraktár kimenetek nem támogatják a particionálást. Azonban Ön is továbbra is partícióazonosító a bemeneti leírtak [Ez a szakasz](#multi-step-query-with-different-partition-by-values) 
 
@@ -56,7 +48,7 @@ Partíciók kapcsolatos további információkért tekintse meg a következő ci
 ## <a name="embarrassingly-parallel-jobs"></a>Embarrassingly párhuzamos feladat
 Egy *embarrassingly párhuzamos* az Azure Stream Analytics tudunk legjobban méretezhető forgatókönyv. A lekérdezés egy példánya bemeneti egy partíciót csatlakozik a kimenet egy partíciót. A párhuzamos végrehajtás követelményei a következők:
 
-1. Ha a lekérdezés logika attól függ, hogy a lekérdezés példányt által feldolgozott ugyanazzal a kulccsal, meg kell győződnie arról, hogy az események nyissa meg a bemeneti partícióra. Az event hubs számára ez azt jelenti, hogy az eseményadatok kell rendelkeznie a **PartitionKey** érték beállítása. Másik lehetőségként particionált feladók is használhatja. A blob-tároló Ez azt jelenti, hogy az események az azonos partíció mappába kerülnek. Ha a lekérdezés logika nem követeli meg a lekérdezés példányt általi feldolgozásának ugyanazzal a kulccsal, figyelmen kívül hagyhatja ezt a követelményt. A logikai erre példa lehet egy egyszerű válassza-projekt-szűrő lekérdezés.  
+1. Ha a lekérdezés logika attól függ, hogy a lekérdezés példányt által feldolgozott ugyanazzal a kulccsal, meg kell győződnie arról, hogy az események nyissa meg a bemeneti partícióra. Az Event Hubs vagy IoT-központot, ez azt jelenti, hogy az eseményadatok kell rendelkeznie a **PartitionKey** érték beállítása. Másik lehetőségként particionált feladók is használhatja. A blob-tároló Ez azt jelenti, hogy az események az azonos partíció mappába kerülnek. Ha a lekérdezés logika nem követeli meg a lekérdezés példányt általi feldolgozásának ugyanazzal a kulccsal, figyelmen kívül hagyhatja ezt a követelményt. A logikai erre példa lehet egy egyszerű válassza-projekt-szűrő lekérdezés.  
 
 2. Ha az adatokat a bemeneti oldalon elrendezését, meg kell győződnie arról, hogy a lekérdezés particionálva van. Ehhez szükséges, hogy használja **PARTITION BY** az összes lépését. Több lépést használhat, de mindegyikük ugyanazzal a kulccsal kell particionálható. Jelenleg a particionálási key értékre kell állítani **PartitionId** ahhoz, hogy a teljes párhuzamos feladat.  
 
@@ -66,6 +58,7 @@ Egy *embarrassingly párhuzamos* az Azure Stream Analytics tudunk legjobban mér
 
    * 8 event hub bemeneti partíciók és 8 eseményközpont kimeneti partíciók
    * 8 event hub bemeneti partíciókat és a blob storage kimeneti  
+   * 8 Iot hub bemeneti partíciók és 8 eseményközpont kimeneti partíciók
    * bemeneti partíciók 8 blob storage és a blob storage kimeneti  
    * 8 blob-tároló bemeneti partíciók és 8 event hub kimeneti partíciók  
 

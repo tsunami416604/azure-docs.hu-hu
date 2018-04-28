@@ -1,27 +1,25 @@
 ---
-title: "A teljesítmény - Azure HDInsight Spark-feladatok optimalizálása |} Microsoft Docs"
-description: "A legjobb teljesítmény érdekében a Spark-fürtök közös stratégiák jeleníti meg."
+title: A teljesítmény - Azure HDInsight Spark-feladatok optimalizálása |} Microsoft Docs
+description: A legjobb teljesítmény érdekében a Spark-fürtök közös stratégiák jeleníti meg.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: 64ddb70f071a9fadc6fef64dcd3506c6d6255481
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 381f9ef2dac2c1dfdada32a917626b17c5969a98
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="optimize-spark-jobs"></a>Spark feladatok optimalizálása
+# <a name="optimize-spark-jobs"></a>Spark-feladatok optimalizálása
 
 Ismerje meg, hogyan optimalizálható a Spark fürtkonfiguráció az adott munkaterhelés számára.  A leggyakoribb probléma memóriaprobléma miatt nem megfelelő konfigurációk (különösen a nem megfelelő méretű végrehajtója), hosszú ideig futó műveletek és feladatok derékszögű műveleteket eredményez. Felgyorsíthatja a megfelelő gyorsítótárazás, és lehetővé teszi a feladatok [adatok döntés](#optimize-joins-and-shuffles). A legjobb teljesítmény érdekében figyelése, és tekintse át a hosszan futó és erőforrás-igényes Spark feladat végrehajtások.
 
@@ -67,7 +65,7 @@ Amikor létrehoz egy új Spark-fürt, lehetősége van az Azure Blob Storage vag
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:**//url/ | **Standard** | Igen | Átmeneti fürt |
 | Azure Data Lake Store | **Adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| Helyi HDFS | **hdfs:**//url/ | **Fastest** | Nem | Interaktív 24/7 fürt |
+| Helyi HDFS | **hdfs:**//url/ | **Leggyorsabb** | Nem | Interaktív 24/7 fürt |
 
 ## <a name="use-the-cache"></a>A gyorsítótár
 
@@ -82,7 +80,7 @@ Spark nyújt a saját natív gyorsítótárazási mechanizmusok, például a kü
     * A memória és SSD-gyorsítótárazás használja.
 
 * Helyi HDFS (ajánlott)
-    * `hdfs://mycluster`elérési út.
+    * `hdfs://mycluster` elérési út.
     * Használja az SSD-gyorsítótárazás.
     * A fürt törlésekor a gyorsítótár rebuild igénylő a gyorsítótárazott adatok elvesznek.
 
@@ -164,9 +162,9 @@ Attól függően, hogy a Spark-fürt terhelést, dönthet, hogy egy nem alapért
 
 Az alábbiakban néhány általános paraméterek módosíthatja:
 
-* `--num-executors`Beállítja a megfelelő számú végrehajtója.
-* `--executor-cores`magok száma minden végrehajtó beállítása. Általában middle-sized végrehajtója kell rendelkezésre állnia, más folyamatok néhány, a rendelkezésre álló memória felhasználását.
-* `--executor-memory`minden egyes végrehajtó, amely vezérli a halommemória mérete, a yarn RENDSZERÉN beállítja a memória méretét. Hagyja meg a végrehajtási terhelés memóriát.
+* `--num-executors` Beállítja a megfelelő számú végrehajtója.
+* `--executor-cores` magok száma minden végrehajtó beállítása. Általában middle-sized végrehajtója kell rendelkezésre állnia, más folyamatok néhány, a rendelkezésre álló memória felhasználását.
+* `--executor-memory` minden egyes végrehajtó, amely vezérli a halommemória mérete, a yarn RENDSZERÉN beállítja a memória méretét. Hagyja meg a végrehajtási terhelés memóriát.
 
 ### <a name="select-the-correct-executor-size"></a>Válassza ki a megfelelő végrehajtó mérete
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure rövid útmutató – Batch-feladat futtatása – portál"
-description: "Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure Portalon."
+title: Azure rövid útmutató – Batch-feladat futtatása – portál
+description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure Portalon.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a00c8ea07c31d2ab4ba2638f2a7e4adcf5ca4a10
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure Portalon
 
@@ -37,7 +37,7 @@ Kövesse az alábbi lépéseket egy minta Batch-fiók tesztelési céllal tört�
 
 2. Adjon meg értéket a **Fiók neve** és az **Erőforráscsoport** mezőben. A fiók nevének egyedinek kell lennie a kiválasztott Azure-**helyen**, csak kisbetűket vagy számokat, illetve 3–24 karaktert tartalmazhat. 
 
-3. A **Tárfiók** mezőben válasszon ki egy meglévő általános célú tárfiókot, vagy hozzon létre egy újat.
+3. A **Tárfiókok** területen válasszon egy meglévő tárfiókot, vagy hozzon létre egy újat.
 
 4. Hagyja meg az alapértelmezett értékeket a többi beállításnál, és kattintson a **Létrehozás** gombra a fiók létrehozásához.
 

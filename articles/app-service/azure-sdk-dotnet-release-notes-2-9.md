@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 30013c0bd8ded31ccaf3cdc142bbf8dc6b375031
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Az Azure SDK for .NET 2.9 kibocsátási megjegyzései
 
@@ -41,7 +41,7 @@ Ebben a kiadásban az Azure SDK 2.9 legfrissebb módosításokat nem vezettek be
  
 ### <a name="windows-server-2016-virtual-machines"></a>Windows Server 2016-os virtuális gépek
 
-- A Visual Studio mostantól támogatja a felhő szolgáltatások telepítése az operációs rendszer családja 5 (Windows Server 2016) virtuális gépekhez. A meglévő felhőszolgáltatások módosíthatja a beállításokat, amelyekre az új operációsrendszer-család. Létrehozásakor új felhőalapú szolgáltatások, ha úgy dönt, hogy létrehozni a szolgáltatást használó .net 4.6-os vagy újabb, az alapértelmezés szerint a szolgáltatás az operációs rendszer családja 5.  További információkért tekintse át a [Vendég operációsrendszer-család támogatja a tábla](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/).
+- A Visual Studio mostantól támogatja a felhő szolgáltatások telepítése az operációs rendszer családja 5 (Windows Server 2016) virtuális gépekhez. A meglévő felhőszolgáltatások módosíthatja a beállításokat, amelyekre az új operációsrendszer-család. Létrehozásakor új felhőalapú szolgáltatások, ha úgy dönt, hogy létrehozni a szolgáltatást használó .net 4.6-os vagy újabb, az alapértelmezés szerint a szolgáltatás az operációs rendszer családja 5.  További információkért tekintse át a [Vendég operációsrendszer-család támogatja a tábla](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/).
 
 #### <a name="known-issues"></a>Ismert problémák
 
@@ -50,7 +50,7 @@ Ebben a kiadásban az Azure SDK 2.9 legfrissebb módosításokat nem vezettek be
  
 ### <a name="azure-in-role-cache"></a>Azure szerepköralapú gyorsítótár 
 
-- Támogatás a 2016. November 30 Azure szerepköralapú gyorsítótár végződik. További információért kattintson [Itt](https://azure.microsoft.com/en-us/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
+- Támogatás a 2016. November 30 Azure szerepköralapú gyorsítótár végződik. További információért kattintson [Itt](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/).
 
 ### <a name="azure-resource-manager-templates-for-azure-stack"></a>Az Azure-bA az Azure Resource Manager-sablonok a verem
 

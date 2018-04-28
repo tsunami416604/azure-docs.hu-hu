@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Fabric Docker Compose (előzetes verzió) |} Microsoft Docs"
-description: "Az Azure Service Fabric a Docker Compose formátum használatával kell levezényelni a meglévő tárolók Service Fabric használatával könnyebben fogad el. Támogatja a Docker Compose jelenleg előzetes verzió."
+title: Az Azure Service Fabric Docker Compose (előzetes verzió) |} Microsoft Docs
+description: Az Azure Service Fabric a Docker Compose formátum használatával kell levezényelni a meglévő tárolók Service Fabric használatával könnyebben fogad el. Támogatja a Docker Compose jelenleg előzetes verzió.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 79b4700b0b0b6897c19117044d37623a2f6ea8df
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 72ff8e99453d3067492d50c3e35396dba9f23c12
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>Docker kötet beépülő modulok és naplózás-illesztőprogramok a tárolóban
 Az Azure Service Fabric támogatja megadó [Docker kötet beépülő modulok](https://docs.docker.com/engine/extend/plugins_volume/) és [Docker naplózási illesztőprogramok](https://docs.docker.com/engine/admin/logging/overview/) a tárolószolgáltatás számára. Akkor is megmaradnak az adatok [Azure fájlok](https://azure.microsoft.com/services/storage/files/) Ha a tároló áthelyezése vagy egy másik állomás újraindul.
@@ -41,7 +41,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 ```
 
 > [!NOTE]
-> Windows Server 2016 Datacenter nem támogatja a leképezést SMB csatlakoztatások tárolókhoz ([, amely csak a Windows Server verzió 1709 támogatott](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage)). Ennél a határértéknél megakadályozza, hogy a kötet hálózatleképezés és Azure fájlok kötet illesztőprogramok 1709 régebbi verzióin. 
+> Windows Server 2016 Datacenter nem támogatja a leképezést SMB csatlakoztatások tárolókhoz ([, amely csak a Windows Server verzió 1709 támogatott](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/container-storage)). Ennél a határértéknél megakadályozza, hogy a kötet hálózatleképezés és Azure fájlok kötet illesztőprogramok 1709 régebbi verzióin. 
 >   
 
 

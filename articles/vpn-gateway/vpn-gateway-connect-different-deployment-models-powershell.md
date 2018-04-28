@@ -1,11 +1,11 @@
 ---
-title: "Klasszikus virtuális hálózatok csatlakoztatása Azure Resource Manager Vnetek: PowerShell |} Microsoft Docs"
-description: "Klasszikus virtuális hálózatokat és erőforrás-kezelő Vnetek VPN-átjáró és a PowerShell használatával közötti VPN-kapcsolat létrehozása."
+title: 'Klasszikus virtuális hálózatok csatlakoztatása Azure Resource Manager Vnetek: PowerShell |} Microsoft Docs'
+description: Klasszikus virtuális hálózatokat és erőforrás-kezelő Vnetek VPN-átjáró és a PowerShell használatával közötti VPN-kapcsolat létrehozása.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Különböző üzemi modellekből származó virtuális hálózatok összekapcsolása a PowerShell-lel
 
@@ -176,7 +176,7 @@ Az erőforrás-kezelő vnet VPN-átjáró létrehozásához kövesse az alábbi 
 1. Jelentkezzen be az Azure-fiókjával a PowerShell-konzolban. A következő parancsmag kéri a bejelentkezési hitelesítő adatok az Azure-fiók. A bejelentkezés után a fiók beállításait, hogy elérhetők az Azure PowerShell letöltése.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ``` 
    
   Olvassa be az Azure-előfizetések listáját.
@@ -190,7 +190,7 @@ Az erőforrás-kezelő vnet VPN-átjáró létrehozásához kövesse az alábbi 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
-2. A helyi hálózati átjáró létrehozása. Virtuális hálózatokban a helyi hálózati átjáró általában a helyszínt jelenti. A helyi hálózati átjáró ebben az esetben a klasszikus virtuális hálózat hivatkozik. Adjon neki egy nevet, amellyel Azure is hivatkozik rá, és is adja meg a címelőtag terület. Az Azure a megadott IP-címelőtagot a helyszíni helyre küldendő adatforgalom azonosítására használja. Ha az adatok itt később, úgy, hogy az átjáró létrehozása előtt kell módosítsa az értékeket, és futtassa újból a minta.
+2. Hozzon létre egy helyi hálózati átjárót. Virtuális hálózatokban a helyi hálózati átjáró általában a helyszínt jelenti. A helyi hálózati átjáró ebben az esetben a klasszikus virtuális hálózat hivatkozik. Adjon neki egy nevet, amellyel Azure is hivatkozik rá, és is adja meg a címelőtag terület. Az Azure a megadott IP-címelőtagot a helyszíni helyre küldendő adatforgalom azonosítására használja. Ha az adatok itt később, úgy, hogy az átjáró létrehozása előtt kell módosítsa az értékeket, és futtassa újból a minta.
    
    **-Név** utal, hogy a helyi hálózati átjáró hozzárendelni kívánt név.<br>
    **-AddressPrefix** a klasszikus virtuális hálózat a címtér van.<br>

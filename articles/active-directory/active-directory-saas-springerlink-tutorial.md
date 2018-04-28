@@ -1,10 +1,10 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció Springer hivatkozás |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Springer hivatkozás között."
+title: 'Oktatóanyag: Azure Active Directory-integráció Springer hivatkozás |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Springer hivatkozás között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 58cdf029-bdc0-43c4-a469-b921c2a669bd
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e532659be9b8aef303a20900465d16a7641d8cfe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8b004bec7c022662a1c90f54079af4fd25c84fab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Oktatóanyag: Azure Active Directory-integráció Springer hivatkozás
 
@@ -107,45 +107,25 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk springer hivatkozás tartomány és az URL-címek](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url1.png)
 
-    a. Az a **azonosító** szövegmező, írja be az URL-cím:`https://fsso.springer.com`
+    a. Az a **azonosító** szövegmező, írja be az URL-cím: `https://fsso.springer.com`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím:`https://fsso-qa1.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`    
+    b. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím: `https://fsso-qa1.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`    
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak**. Ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
     ![Az egyszeri bejelentkezés információk springer hivatkozás tartomány és az URL-címek](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`    
+    Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
-5. Kattintson a **mentése** gombra.
+5. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe. 
+
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_certificate.png)    
+
+6. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-springerlink-tutorial/tutorial_general_400.png)
 
-6. Létrehozásához a **metaadatok** URL-címe, hajtsa végre a következő lépéseket:
-
-    a. Kattintson a **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_appregistrations.png)
-   
-    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_endpointicon.png)
-
-    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_endpoint.png)
-     
-    d. Most lépjen a tulajdonságlapján **Springer hivatkozás** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. Egyszeri bejelentkezés konfigurálása **Springer hivatkozás** oldalon kell küldeniük a létrehozott **metaadatainak URL-CÍMÉT** való [Springer hivatkozás támogatási csoport](mailto:identity@springernature.com).
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-
+7. Egyszeri bejelentkezés konfigurálása **Springer hivatkozás** oldalon kell küldeniük a **alkalmazás összevonási metaadatainak URL-címe** való [Springer hivatkozás támogatási csoport](mailto:identity@springernature.com).
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 

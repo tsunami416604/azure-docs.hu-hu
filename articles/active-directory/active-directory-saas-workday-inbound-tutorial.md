@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -468,7 +468,7 @@ Ha az Azure Active Directory-bérlő az EU adatközpontok egyik található, maj
 
 **Hibaelhárítás ügynök**
 
-A [Windows-Eseménynapló](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) a Windows Server az ügynököt futtató számítógép az ügynök által végzett összes műveletet eseményeket tartalmazza. Ezek az események megtekintése:
+A [Windows-Eseménynapló](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) a Windows Server az ügynököt futtató számítógép az ügynök által végzett összes műveletet eseményeket tartalmazza. Ezek az események megtekintése:
     
 1. Nyissa meg **Eventvwr.msc**.
 2. Válassza ki **Windows-naplók > alkalmazás**.
@@ -491,7 +491,7 @@ Ha a megadott a Powershell-parancsokat az Active Directory vagy az Azure Active 
 
 4. Bármikor, ellenőrizze a **naplók** fülre az Azure portálon, hogy a létesítési szolgáltatás hajtott végre műveleteket. A naplók a létesítési szolgáltatás, például, hogy melyik felhasználók folyamatban van a Workday kívül olvassa el és majd később hozzáadott vagy frissített Active Directory által végrehajtott minden egyes szinkronizálási események sorolja fel. **[Olvassa el a felügyeleti naplók az üzembe helyezési jelentéskészítés – útmutató részletes utasításokat olvashat](active-directory-saas-provisioning-reporting.md)**
 
-5.  Ellenőrizze a [Windows-Eseménynapló](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) a Windows Server kapcsolatos esetleges új hibák vagy figyelmeztetések az ügynököt futtató számítógépen. Indítsa el ezeket az eseményeket is megtekinthető **Eventvwr.msc** a kiszolgálón, és kiválasztja **Windows-naplók > alkalmazás**. Kiépítés kapcsolatos összes üzenet a következő forrás alatt jelentkezett **AADSyncAgent**. 
+5.  Ellenőrizze a [Windows-Eseménynapló](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) a Windows Server kapcsolatos esetleges új hibák vagy figyelmeztetések az ügynököt futtató számítógépen. Indítsa el ezeket az eseményeket is megtekinthető **Eventvwr.msc** a kiszolgálón, és kiválasztja **Windows-naplók > alkalmazás**. Kiépítés kapcsolatos összes üzenet a következő forrás alatt jelentkezett **AADSyncAgent**. 
     
 
 6. Fejeződött be, akkor fog kiírni, összefoglaló jelentést a **kiépítési** lapon, a lent látható módon.
@@ -819,7 +819,7 @@ A megfelelő GDPR időtartamú két módja van:
 1. Kérésre adatok kinyerése a személy, és távolítsa el adatait az adott személy a Windows Eseménynapló. 
 2. A Windows Eseménynapló forrása a AADSyncAgent folyamat alatt 48 órát megőrzési megtartása
 
-A Windows-eseménynaplók az adatmegőrzés konfigurálásával kapcsolatos további információkért lásd: a [Eseménynaplók beállításai](https://technet.microsoft.com/en-us/library/cc952132.aspx). A Windows-Eseménynapló általános információkért lásd: [Ez a cikk](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx).
+A Windows-eseménynaplók az adatmegőrzés konfigurálásával kapcsolatos további információkért lásd: a [Eseménynaplók beállításai](https://technet.microsoft.com/library/cc952132.aspx). A Windows-Eseménynapló általános információkért lásd: [Ez a cikk](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
 
 ## <a name="next-steps"></a>További lépések

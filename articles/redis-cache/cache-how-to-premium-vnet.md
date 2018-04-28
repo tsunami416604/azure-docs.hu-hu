@@ -1,11 +1,11 @@
 ---
-title: "Virtuális hálózat konfigurálása a Premium Azure Redis gyorsítótár |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhatja létre és kezelheti a Premium szint Azure Redis Cache példány virtuális hálózati támogatása"
+title: Virtuális hálózat konfigurálása a Premium Azure Redis gyorsítótár |} Microsoft Docs
+description: Megtudhatja, hogyan hozhatja létre és kezelheti a Premium szint Azure Redis Cache példány virtuális hálózati támogatása
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: ba3a7ccc059dd5036753f471b762e27f22a179af
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 250c66c3a39519a6eddc1ecb51259ec1944c88a9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Virtuális hálózati támogatásának konfigurálása prémium szintű Azure Redis Cache
 Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a funkciót, beleértve a prémium réteg szolgáltatások, például a fürtszolgáltatás, az adatmegőrzésre és a virtuális hálózat támogatásának rugalmasságot biztosítanak. A virtuális hálózat egy magánhálózaton a felhőben. Azure Redis Cache példány konfigurálásakor a virtuális hálózaton nincs nyilvánosan megcímezhető, és csak érhetők el a virtuális gépek és az alkalmazások a Vneten belül. Ez a cikk ismerteti a premium Azure Redis Cache példányt virtuális hálózat támogatásának konfigurálása.
@@ -84,12 +84,13 @@ A következő lista az Azure Redis Cache skálázás gyakran feltett kérdésekr
 
 * [Mik azok a gyakori hiba a konfiguráció problémákat az Azure Redis Cache és Vnetekhez?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
 * [Hogyan ellenőrizhetem, hogy működik-e a gyorsítótár a VNETEN belül?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [Kapcsolódás egy VNETET az a Redis gyorsítótár, miért jelenik meg egy hiba, amely meghatározza, hogy a távoli tanúsítvány nem érvényes?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
 * [Használható alapszintű vagy standard gyorsítótárával Vnetekhez?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [Miért nem a Redis gyorsítótár létrehozása sikertelen lesz az egyes alhálózatok, de nem mások?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
 * [Mik azok az alhálózati kapcsolatos követelmények?](#what-are-the-subnet-address-space-requirements)
 * [Működnek-e minden gyorsítótár-funkciók egy VNETET a gyorsítótárhoz esetén?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
-## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Mik azok a gyakori hiba a konfiguráció problémákat az Azure Redis Cache és Vnetekhez?
+### <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Mik azok a gyakori hiba a konfiguráció problémákat az Azure Redis Cache és Vnetekhez?
 Azure Redis Cache a Vneten belül helyezkedik el, amikor a rendszer az alábbi táblázatban a portokat használja. 
 
 >[!IMPORTANT]
@@ -100,7 +101,7 @@ Azure Redis Cache a Vneten belül helyezkedik el, amikor a rendszer az alábbi t
 - [Kimenő portokra vonatkozó követelmények](#outbound-port-requirements)
 - [Bejövő portokra vonatkozó követelmények](#inbound-port-requirements)
 
-### <a name="outbound-port-requirements"></a>Kimenő portokra vonatkozó követelmények
+#### <a name="outbound-port-requirements"></a>Kimenő portokra vonatkozó követelmények
 
 Nincsenek hét kimenő port.
 
@@ -120,7 +121,7 @@ Nincsenek hét kimenő port.
 | 6379-6380 |Kimenő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati) |
 
 
-### <a name="inbound-port-requirements"></a>Bejövő portokra vonatkozó követelmények
+#### <a name="inbound-port-requirements"></a>Bejövő portokra vonatkozó követelmények
 
 Nincsenek nyolc bejövő port tartományon. Bejövő kérelmek ezen tartományok, vagy más, ugyanazon virtuális üzemeltetett szolgáltatások bejövő vagy belső a Redis alhálózati kommunikáció.
 
@@ -135,7 +136,7 @@ Nincsenek nyolc bejövő port tartományon. Bejövő kérelmek ezen tartományok
 | 16001 |Bejövő |TCP/UDP |Az Azure terheléselosztás | (Redis alhálózati) |Azure Load Balancer |
 | 20226 |Bejövő |TCP |Belső Redis-kommunikáció | (Redis alhálózati) |(Redis alhálózati) |
 
-### <a name="additional-vnet-network-connectivity-requirements"></a>További virtuális hálózat hálózati kapcsolat követelmények
+#### <a name="additional-vnet-network-connectivity-requirements"></a>További virtuális hálózat hálózati kapcsolat követelmények
 
 Nincsenek hálózati kapcsolat az Azure Redis Cache, előfordulhat, hogy kezdetben jutott virtuális hálózatban. Azure Redis Cache-gyorsítótár a következő elemek megfelelően működnek, ha a virtuális hálózaton belül van szükség.
 
@@ -164,6 +165,24 @@ Az előző szakaszban leírtak a portokra vonatkozó követelmények konfigurál
   - Tesztelheti egy másik módja, ha a teszt gyorsítótárügyfél (amely lehet egy egyszerű konzolalkalmazást StackExchange.Redis használatával), amely a gyorsítótár csatlakozik, és hozzáadja, és néhány elemet lekéri a gyorsítótárból. A mintaalkalmazás ügyfél, amely ugyanazt a virtuális Hálózatot, mint a gyorsítótárban, és futtassa ellenőrzésére a gyorsítótár-kiszolgálóra telepítse.
 
 
+### <a name="when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid"></a>Kapcsolódás egy VNETET az a Redis gyorsítótár, miért jelenik meg egy hiba, amely meghatározza, hogy a távoli tanúsítvány nem érvényes?
+
+Kapcsolódás a VNETEN belül egy Redis gyorsítótárhoz, például a tanúsítvány érvényesítési hiba jelenik meg:
+
+`{"No connection is available to service this operation: SET mykey; The remote certificate is invalid according to the validation procedure.; …"}`
+
+Az OK lehet az IP-címe a host való kapcsolódás esetén. Az állomásnév használatát javasoljuk. Ez azt jelenti, az alábbi parancsokat használja:     
+
+`[mycachename].redis.windows.net:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
+
+Kerülje az IP-cím a következő kapcsolati karakterlánc hasonlít:
+
+`10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
+
+Ha nem tudja feloldani a DNS-nevet, néhány ügyfél tárak konfigurációs beállítások, például a `sslHost` amely a StackExchange.Redis ügyfél biztosítja. Ez lehetővé teszi, hogy a tanúsítvány érvényesítéséhez használt állomásnév felülbírálása. Példa:
+
+`10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
+
 ### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>Használható alapszintű vagy standard gyorsítótárával Vnetekhez?
 Vnetek csak prémium szintű gyorsítótárak használható.
 
@@ -182,7 +201,9 @@ Ha a gyorsítótár egy virtuális hálózat része, csak a virtuális hálózat
 
 * Konzol redis - konzol Redis fut a helyi böngészőben, amely a virtuális hálózaton kívül, mert nem tud kapcsolódni a gyorsítótárhoz.
 
+
 ## <a name="use-expressroute-with-azure-redis-cache"></a>Azure Redis gyorsítótár ExpressRoute használata
+
 Az ügyfelek kapcsolódhatnak egy [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) kapcsolat a virtuális hálózati infrastruktúrára, így kiterjesztése a helyszíni hálózat az Azure-bA. 
 
 Alapértelmezés szerint egy újonnan létrehozott ExpressRoute-kapcsolatcsoport nem végzi el a kényszerített bújtatás (az alapértelmezett útvonal hirdetmény 0.0.0.0/0) egy virtuális hálózaton. Ennek eredményeképpen kimenő internetkapcsolat engedélyezett a VNET-ről és ügyfélalkalmazások csatlakozni más Azure-végpontok Azure Redis Cache beleértve.

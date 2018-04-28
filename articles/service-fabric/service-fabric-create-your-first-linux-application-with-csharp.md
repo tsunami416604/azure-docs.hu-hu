@@ -1,24 +1,24 @@
 ---
-title: "Az első Azure-alapú mikroszolgáltatás-alkalmazás létrehozása Linux rendszeren C# használatával | Microsoft Docs"
-description: "Service Fabric-alkalmazás létrehozása és telepítése C# használatával"
+title: Az első Azure-alapú mikroszolgáltatás-alkalmazás létrehozása Linux rendszeren C# használatával | Microsoft Docs
+description: Service Fabric-alkalmazás létrehozása és telepítése C# használatával
 services: service-fabric
 documentationcenter: csharp
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5a96d21d-fa4a-4dc2-abe8-a830a3482fb1
 ms.service: service-fabric
 ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 9a97a560034b288823d662d83d6366383c9e1706
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 30ed7eb736b2012a0e9ed4c10d4bfd1aff35faac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
   ```bash
   sudo npm install -g yo
   ```
-3. A Service Fabric Yeo Java-alkalmazásgenerátor telepítése az NPM-ből
+3. A Service Fabric Yeoman C#-alkalmazásgenerátor telepítése az NPM-ből
 
   ```bash
   sudo npm install -g generator-azuresfcsharp
@@ -105,7 +105,7 @@ A kész alkalmazás a többi Service Fabric-alkalmazással azonos módon telepí
 
 Ezen parancsok paraméterezése megtalálható az alkalmazáscsomagon belül, a generált jegyzékfájlokban.
 
-Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)-t a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) URL-címen. Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
+Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)t a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) URL-címen. Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Tesztügyfél elindítása és feladatátvétel végrehajtása
 Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást vagy alkalmazást igényelnek, amely üzeneteket küld a számukra. Az aktorsablon egy egyszerű tesztszkriptet tartalmaz, amelyet az aktorszolgáltatással való kommunikációra használhat.

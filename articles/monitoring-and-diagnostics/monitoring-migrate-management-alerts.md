@@ -1,12 +1,12 @@
 ---
-title: "Telepítse át az Azure-riasztások felügyeleti események napló Tevékenységriasztásokat |} Microsoft Docs"
-description: "A felügyeleti események riasztások eltávolítja a október 1. Készíti áttelepítése meglévő riasztásokat."
+title: Telepítse át az Azure-riasztások felügyeleti események napló Tevékenységriasztásokat |} Microsoft Docs
+description: A felügyeleti események riasztások eltávolítja a október 1. Készíti áttelepítése meglévő riasztásokat.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: johnkem
-ms.openlocfilehash: 08a457029d3721f5c38dbcd2d2aab7d09a241d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1cc02664a345da49c276a6876d5cdfaf5bdb8477
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Telepítse át a felügyeleti események Azure riasztások tevékenységnapló riasztások
 
@@ -38,7 +38,7 @@ Az Azure Monitor (korábban Azure Insights) érhető el egy olyan képességet, 
 A következő PowerShell-parancsfájl az összes riasztás listáját, amelyeknek az előfizetés, valamint az egyes riasztások beállítása feltételek felügyeleti események adja vissza.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $alerts = $null
 foreach ($rg in Get-AzureRmResourceGroup ) {
   $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName
@@ -113,7 +113,7 @@ Hozzon létre egy új tevékenység napló értesítés, a következő lehetős�
 Riasztások a korábban létrehozott felügyeleti események nem lesz automatikusan áttelepítve a tevékenység napló riasztásokat. A fenti PowerShell-parancsfájl segítségével a riasztásokat a felügyeleti események van beállítva, és manuálisan hozza létre őket tevékenység napló riasztásként kell. A október 1, amely után riasztások felügyeleti események a már nem lesznek láthatók az Azure-előfizetése előtt kell végezni. Más típusú Azure riasztások, például Azure metrika riasztások, az Application Insights-riasztások és Naplóelemzési riasztások nem érinti ez a változás. Ha kérdése van, az alábbi megjegyzések fel.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ [műveletnapló](monitoring-overview-activity-logs.md)
 * Konfigurálása [napló Tevékenységriasztásokat Azure-portálon](monitoring-activity-log-alerts.md)

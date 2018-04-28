@@ -1,23 +1,19 @@
 ---
-title: "Az Azure Search .NET SDK 3 verzió frissítése |} Microsoft Docs"
-description: "Az Azure Search .NET SDK 3 verzió frissítése"
-services: search
-documentationcenter: 
+title: Az Azure Search .NET SDK 3 verzió frissítése |} Microsoft Docs
+description: Az Azure Search .NET SDK 3 verzió frissítése
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: 48238788e06057ccaba41d1d3f500b5c10c93cb7
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 161d22e0ff4ec4ab28107919a80ecc48cd027967
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Az Azure Search .NET SDK 3 verzió frissítése
 Ha szeretne megtudni a 2.0-preview vagy a régebbi verzióját a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít frissíteni az alkalmazást a 3-as verzió használatára.
@@ -56,7 +52,7 @@ Ha a build sikertelen, a következőhöz hasonló egy összeállítási hibát k
 
 A következő lépés a build hiba kijavításához. Lásd: [módosítások Megtörje a 3-as verziójú](#ListOfChanges) mi okozza a hibát, és miként lehet elhárítani.
 
-Elavult metódusokra vagy tulajdonságokra kapcsolatban további build figyelmeztetések jelenhetnek meg. A figyelmeztetésekkel kapcsolatos használata helyett az elavult funkció tartalmazza. Például, ha az alkalmazás által a `IndexingParameters.Base64EncodeKeys` tulajdonság, kell megjelenik egy figyelmeztetés, amely szerint`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Elavult metódusokra vagy tulajdonságokra kapcsolatban további build figyelmeztetések jelenhetnek meg. A figyelmeztetésekkel kapcsolatos használata helyett az elavult funkció tartalmazza. Például, ha az alkalmazás által a `IndexingParameters.Base64EncodeKeys` tulajdonság, kell megjelenik egy figyelmeztetés, amely szerint `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
 Build hibák megszüntetése után módosíthatja a új funkcióinak kihasználásához, ha az alkalmazáshoz. Az SDK-t az új funkciói részletes leírást talál [What's new in 3-as verziójú](#WhatsNew).
 
@@ -125,7 +121,7 @@ index.Analyzers = new Analyzer[]
 
 Láthatja, kapcsolódó fordítási hibákat módszerek vagy a verziójával elavultként lettek megjelenítve, 2.0-kép és a 3-as verziójú később eltávolított tulajdonságokhoz. Ha ilyen hibákba ütközik, ez megoldásával:
 
-- Ha ez a konstruktor: `ScoringParameter(string name, string value)`, használja helyette a erre:`ScoringParameter(string name, IEnumerable<string> values)`
+- Ha ez a konstruktor: `ScoringParameter(string name, string value)`, használja helyette a erre: `ScoringParameter(string name, IEnumerable<string> values)`
 - Ha használta a `ScoringParameter.Value` tulajdonság, használja a `ScoringParameter.Values` tulajdonság vagy a `ToString` metódus helyett.
 - Ha használta a `SearchRequestOptions.RequestId` tulajdonság, használja a `ClientRequestId` tulajdonság helyette.
 

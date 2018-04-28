@@ -1,18 +1,18 @@
 ---
-title: "Futtassa a Ansible Bash Azure felhőben rendszerhéj"
-description: "Megtudhatja, hogyan végezhető különböző Ansible Bash Azure Cloud rendszerhéj"
+title: Futtassa a Ansible Bash Azure felhőben rendszerhéj
+description: Megtudhatja, hogyan végezhető különböző Ansible Bash Azure Cloud rendszerhéj
 ms.service: ansible
-keywords: "ansible, az azure, a devops, a bash, a cloudshell, a forgatókönyv, a bash"
+keywords: ansible, az azure, a devops, a bash, a cloudshell, a forgatókönyv, a bash
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
 ms.date: 02/01/2018
 ms.topic: article
-ms.openlocfilehash: 92ca2950199d638c5f76c0c7aadbae4fda7e9d1e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9fe65f4cf10119002bcb7a3855d112d850e20f1a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Futtassa a Ansible Bash Azure felhőben rendszerhéj
 
@@ -24,7 +24,7 @@ Ebben az oktatóanyagban elsajátíthatja a felhő rendszerhéj Bash Ansible kü
 
 - **Azure hitelesítő adataival** - [létrehozása Azure-felhasználó hitelesítő adatait, és Ansible konfigurálása](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
-- **Azure Cloud rendszerhéj konfigurálása** – Ha még nem ismeri a Azure Cloud rendszerhéj, a cikk [gyors üzembe helyezés az Azure felhőalapú rendszerhéj Bash](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart) azt ábrázolja, hogyan indítani és konfigurálni a felhő rendszerhéj. Egy külön webhelyen itt felhő rendszerhéj elindításához:
+- **Azure Cloud rendszerhéj konfigurálása** – Ha még nem ismeri a Azure Cloud rendszerhéj, a cikk [gyors üzembe helyezés az Azure felhőalapú rendszerhéj Bash](https://docs.microsoft.com/azure/cloud-shell/quickstart) azt ábrázolja, hogyan indítani és konfigurálni a felhő rendszerhéj. Egy külön webhelyen itt felhő rendszerhéj elindításához:
 
 [![Indítsa el a felhő rendszerhéjat](https://shell.azure.com/images/launchcloudshell.png "indítsa el a felhő rendszerhéjat")](https://shell.azure.com)
 

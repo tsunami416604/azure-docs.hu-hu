@@ -1,10 +1,10 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált XaitPorter |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és XaitPorter között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált XaitPorter |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és XaitPorter között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 2012d990f7cdcb8c12da5f16db518b261b06a5b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5e18850d902e5a11da904af719e598c4e247ce0d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Oktatóanyag: Azure Active Directoryval integrált XaitPorter
 
@@ -108,38 +108,22 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk XaitPorter tartomány és az URL-címek](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.xaitporter.com/saml/login`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.xaitporter.com/saml/login`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.xaitporter.com`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.xaitporter.com`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [XaitPorter ügyfél-támogatási csoport](https://www.xait.com/support/) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [XaitPorter ügyfél-támogatási csoport](https://www.xait.com/support/) beolvasni ezeket az értékeket.
+     
+4. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe. 
 
-4. Kattintson a **mentése** gombra.
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_certificate.png) 
+
+5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-xaitporter-tutorial/tutorial_general_400.png)
 
-5. Létrehozásához a **metaadatok** URL-címe, hajtsa végre a következő lépéseket:
-
-    a. Kattintson a **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_appregistrations.png)
-   
-    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_endpointicon.png)
-
-    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_endpoint.png)
-     
-    d. Most lépjen a tulajdonságlapján **XaitPorter** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Adja meg a **IP-cím** vagy a **metaadatainak URL-CÍMÉT** számára a [SmartRecruiters támogatási csoport](https://www.smartrecruiters.com/about-us/contact-us/), így XaitPorter is győződjön meg arról, hogy IP-cím elérhető a XaitPorter a példány engedélyezett konfigurálása a oldalán. 
+6. Adja meg a **IP-cím** vagy a **alkalmazás összevonási metaadatainak URL-címe** számára a [SmartRecruiters támogatási csoport](https://www.smartrecruiters.com/about-us/contact-us/), így XaitPorter is győződjön meg arról, hogy IP-cím elérhető a Engedélyezési lista konfigurálása a oldalán XaitPorter példány. 
 
 7. Egy másik webes böngészőablakban jelentkezzen be a XaitPorter vállalati webhely rendszergazdaként.
 
@@ -157,15 +141,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Válassza ki **engedélyezése az egyszeri bejelentkezés hitelesítési**.
 
-    b. A **identitás szolgáltató beállításainak** szövegmező, Beillesztés **metaadatainak URL-CÍMÉT** , amely a Azure, majd kattintson a másolt **beolvasása**.
+    b. A **identitás szolgáltató beállításainak** szövegmezőhöz Beillesztés **alkalmazás összevonási metaadatainak URL-címe** amely másolta a Azure-portálon, majd kattintson a **Fetch**.
 
     c. Válassza ki **engedélyezése a felhasználók automatikus létrehozása**.
 
     d. Kattintson az **OK** gombra.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 

@@ -1,8 +1,8 @@
 ---
-title: "Az Azure storage emulator használata a fejlesztéshez és teszteléshez |} Microsoft Docs"
-description: "Az Azure storage emulator egy szabad helyi fejlesztési környezetet biztosít az fejlesztés és tesztelés az Azure Storage-alkalmazások. Ismerje meg, hogyan kérések hitelesítése az emulátor csatlakoztatása az alkalmazásról és a parancssori eszköz használatával."
+title: Az Azure storage emulator használata a fejlesztéshez és teszteléshez |} Microsoft Docs
+description: Az Azure storage emulator egy szabad helyi fejlesztési környezetet biztosít az fejlesztés és tesztelés az Azure Storage-alkalmazások. Ismerje meg, hogyan kérések hitelesítése az emulátor csatlakoztatása az alkalmazásról és a parancssori eszköz használatával.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztéshez és teszteléshez
 
@@ -27,7 +27,7 @@ A Microsoft Azure storage emulator emulálja a fejlesztéshez Azure Blob, Queue 
 ## <a name="get-the-storage-emulator"></a>A storage emulator beolvasása
 A storage emulator áll rendelkezésre, mert része a [Microsoft Azure SDK](https://azure.microsoft.com/downloads/). A storage emulator használatával is telepíthet a [önálló telepítő](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (közvetlen letöltése). A storage emulator telepítéséhez rendszergazdai jogosultsággal kell rendelkeznie a számítógépen.
 
-A storage emulator jelenleg kizárólag Windows rendszeren fut. Annak eldöntéséhez, hogy a storage emulator Linux azok egy beállítás akkor a közösségi fenn, nyílt forráskódú storage emulator [Azurite](https://github.com/arafato/azurite).
+A storage emulator jelenleg kizárólag Windows rendszeren fut. Annak eldöntéséhez, hogy a storage emulator Linux azok egy beállítás akkor a közösségi fenn, nyílt forráskódú storage emulator [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
 > A storage emulator egy verziójában létrehozott adatokat elérhetőnek kell lennie egy másik verzió használata esetén nem garantált. Ha szeretné megőrizni az adatokat a hosszú távú, ajánlott adatok tárolásához Azure storage-fiók helyett a storage emulator.
@@ -179,7 +179,7 @@ Beállítások listájának megtekintéséhez írja be a `/help` parancsot a par
 | Beállítás | Leírás | Parancs | Argumentumok |
 | --- | --- | --- | --- |
 | **Kezdés** |A storage emulator elindul. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Indítsa el az emulátort helyett egy új folyamat létrehozása a jelenlegi folyamatban. |
-| **Stop** |A storage emulator leáll. |`AzureStorageEmulator.exe stop` | |
+| **állj** |A storage emulator leáll. |`AzureStorageEmulator.exe stop` | |
 | **Állapot** |A storage emulator állapotának nyomtatása. |`AzureStorageEmulator.exe status` | |
 | **Törölje a jelet** |Törli az összes olyan szolgáltatás, a parancssorban megadott. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*a BLOB*: blob-adatok törlése. <br/>*várólista*: várólista adatokat törli. <br/>*tábla*: törli a tábla adatai. <br/>*minden*: az összes szolgáltatás az összes adat törlése. |
 | **Init** |Állítsa be az emulátor egyszeri inicializálás hajt végre. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-kiszolgáló Kiszolgáló_neve\példány_neve*: Adja meg az SQL-példányt futtató kiszolgálón. <br/>*-sqlinstance példánynév*: az alapértelmezett kiszolgálópéldánynál használható SQL-példány nevét adja meg. <br/>*-forcecreate*: az SQL-adatbázis létrehozása kényszeríti, még akkor is, ha már létezik. <br/>*-skipcreate*: kihagyja az SQL-adatbázis létrehozása. Ez elsőbbséget élvez - forcecreate.<br/>*-reserveports*: a HTTP-portok megadott szolgáltatásokkal társított kísérletek.<br/>*-unreserveports*: távolítsa el a HTTP-port lefoglalását megkísérli a szolgáltatásokkal kapcsolatos. Ez elsőbbséget élvez - reserveports.<br/>*-inprocess*: inicializálási végez helyett egy új folyamat terjesztése a jelenlegi folyamatban. Az aktuális folyamat emelt jogosultsági szintű indítható el, ha port foglalások módosítása. |

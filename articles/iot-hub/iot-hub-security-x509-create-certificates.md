@@ -1,11 +1,11 @@
 ---
-title: "X.509 tanúsítvány létrehozása a PowerShell segítségével |} Microsoft Docs"
-description: "PowerShell segítségével helyileg X.509-tanúsítvány létrehozása és engedélyezése az X.509-alapú biztonsági az az Azure IoT hub szimulált környezetben."
+title: X.509 tanúsítvány létrehozása a PowerShell segítségével |} Microsoft Docs
+description: PowerShell segítségével helyileg X.509-tanúsítvány létrehozása és engedélyezése az X.509-alapú biztonsági az az Azure IoT hub szimulált környezetben.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dsk-2015
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
-ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e58096d4bde9c947f199b4696c0b5c28291956d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>PowerShell-parancsfájlokkal kezelheti a hitelesítésszolgáltató által aláírt X.509-tanúsítványokat
 
@@ -33,7 +33,9 @@ Ez az oktatóanyag feltételezi, hogy, hogy rendelkezik érvényes módon kapott
 ## <a name="create-x509-certificates"></a>X.509 tanúsítvány létrehozása
 A következő lépések bemutatják az X.509 legfelső szintű tanúsítványok helyi létrehozása egy példát. 
 
-1. Nyisson meg egy PowerShell-ablakot, egy *rendszergazda*. 
+1. Nyisson meg egy PowerShell-ablakot, egy *rendszergazda*.  
+   **Megjegyzés:** meg kell nyitnia a PowerShell magát, nem PowerShell ISE, Visual Studio Code vagy más eszközök, amelyek az alapul szolgáló PowerShell-konzolban burkolása.  Nem-konzol használata alapján PowerShell eredményez `openssl` függő alábbi parancsokat.
+
 2. Nyissa meg a munkakönyvtárat. Futtassa a következő a globális változókat. 
     ```PowerShell
     $openSSLBinSource = "<full_path_to_the_binaries>\OpenSSL\bin"

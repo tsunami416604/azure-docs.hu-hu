@@ -1,29 +1,26 @@
 ---
-title: SQL Data Warehouse Transact-SQL nyelvi elemek |} Microsoft Docs
-description: Az SQL Data Warehouse használt Transact-SQL nyelvi elem esetén referenciatartalmat listája.
+title: T-SQL nyelvi elemek - Azure SQL Data Warehouse |} Microsoft Docs
+description: Hivatkozások a T-SQL-utasítások az Azure SQL Data Warehouse támogatott dokumentációját.
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: ''
-ms.assetid: ea0b9a3e-e489-458e-addc-cc153e5cc158
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: dd9dc070c817a7276369a9be7126b0d48dc9e4eb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: bd7665798e5bf26c0e538deb713ef9696c84338c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="language-elements"></a>Nyelvi elemek
+# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse támogatott T-SQL nyelvi elemei
+Hivatkozások a T-SQL nyelvi elemei az Azure SQL Data Warehouse támogatott dokumentációját.
+
 ## <a name="core-elements"></a>Alapvető elemei
-* [Szintaxis konvenciók](https://msdn.microsoft.com/library/ms177563.aspx)
+* [Szintaxis konvenciók](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [elnevezési szabályok](https://msdn.microsoft.com/library/ms175874.aspx)
 * [foglalt kulcsszavak](https://msdn.microsoft.com/library/ms189822.aspx)
 * [Rendezések](https://msdn.microsoft.com/library/ff848763.aspx)
@@ -51,7 +48,7 @@ ms.lasthandoff: 03/28/2018
 ## <a name="operators"></a>Operátorok
 * [+ (Add)](https://msdn.microsoft.com/library/ms178565.aspx)
 * [(Karakterlánc-összefűzés) +](https://msdn.microsoft.com/library/ms177561.aspx)
-* [- (Negative)](https://msdn.microsoft.com/library/ms189480.aspx)
+* [-(Negatív)](https://msdn.microsoft.com/library/ms189480.aspx)
 * [-(Kivonás)](https://msdn.microsoft.com/library/ms189518.aspx)
 * [* (Szorozza meg)](https://msdn.microsoft.com/library/ms176019.aspx)
 * [/ (Osztás)](https://msdn.microsoft.com/library/ms175009.aspx)
@@ -70,9 +67,9 @@ ms.lasthandoff: 03/28/2018
 * [EXISTS](https://msdn.microsoft.com/library/ms188336.aspx)
 * [IN](https://msdn.microsoft.com/library/ms177682.aspx)
 * [IS [NOT] NULL ÉRTÉKŰ](https://msdn.microsoft.com/library/ms188795.aspx)
-* [LIKE](https://msdn.microsoft.com/library/ms179859.aspx)
+* [PÉLDÁUL](https://msdn.microsoft.com/library/ms179859.aspx)
 * [NEM](https://msdn.microsoft.com/library/ms189455.aspx)
-* [OR](https://msdn.microsoft.com/library/ms188361.aspx)
+* [VAGY](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bitenkénti operátorok
 * [& (Bitenkénti és)](https://msdn.microsoft.com/library/ms174965.aspx)
@@ -91,16 +88,16 @@ ms.lasthandoff: 03/28/2018
 * [@@TRANCOUNT](https://msdn.microsoft.com/library/ms187967.aspx)
 * [@@VERSION](https://msdn.microsoft.com/library/ms177512.aspx)
 * [ABS](https://msdn.microsoft.com/library/ms189800.aspx)
-* [ACOS](https://msdn.microsoft.com/library/ms178627.aspx)
+* [ARCCOS](https://msdn.microsoft.com/library/ms178627.aspx)
 * [ASCII](https://msdn.microsoft.com/library/ms177545.aspx)
 * [ASIN](https://msdn.microsoft.com/library/ms181581.aspx)
 * [ATAN](https://msdn.microsoft.com/library/ms181746.aspx)
 * [ATN2](https://msdn.microsoft.com/library/ms173854.aspx)
 * [BINARY_CHECKSUM](https://msdn.microsoft.com/library/ms173784.aspx)
-* [CASE](https://msdn.microsoft.com/library/ms181765.aspx)
+* [ESET](https://msdn.microsoft.com/library/ms181765.aspx)
 * [CAST és ÁTALAKÍTÁSA](https://msdn.microsoft.com/library/ms187928.aspx)
-* [CEILING](https://msdn.microsoft.com/library/ms189818.aspx)
-* [CHAR](https://msdn.microsoft.com/library/ms187323.aspx)
+* [FELSŐ HATÁR](https://msdn.microsoft.com/library/ms189818.aspx)
+* [KARAKTER](https://msdn.microsoft.com/library/ms187323.aspx)
 * [CHARINDEX](https://msdn.microsoft.com/library/ms186323.aspx)
 * [ELLENŐRZŐÖSSZEG](https://msdn.microsoft.com/library/ms189788.aspx)
 * [COALESCE](https://msdn.microsoft.com/library/ms190349.aspx)
@@ -138,7 +135,7 @@ ms.lasthandoff: 03/28/2018
 * [ERROR_STATE](https://msdn.microsoft.com/library/ms180031.aspx)
 * [EXP](https://msdn.microsoft.com/library/ms179857.aspx)
 * [FIRST_VALUE](https://msdn.microsoft.com/library/hh213018.aspx)
-* [FLOOR](https://msdn.microsoft.com/library/ms178531.aspx)
+* [EMELET](https://msdn.microsoft.com/library/ms178531.aspx)
 * [GETDATE](https://msdn.microsoft.com/library/ms188383.aspx)
 * [GETUTCDATE](https://msdn.microsoft.com/library/ms178635.aspx)
 * [HAS_DBACCESS](https://msdn.microsoft.com/library/ms187718.aspx)
@@ -154,7 +151,7 @@ ms.lasthandoff: 03/28/2018
 * [LEN](https://msdn.microsoft.com/library/ms190329.aspx)
 * [LOG](https://msdn.microsoft.com/library/ms190319.aspx)
 * [LOG10](https://msdn.microsoft.com/library/ms175121.aspx)
-* [LOWER](https://msdn.microsoft.com/library/ms174400.aspx)
+* [ALACSONYABB](https://msdn.microsoft.com/library/ms174400.aspx)
 * [LTRIM](https://msdn.microsoft.com/library/ms177827.aspx)
 * [MAX](https://msdn.microsoft.com/library/ms187751.aspx)
 * [MIN](https://msdn.microsoft.com/library/ms179916.aspx)
@@ -194,7 +191,7 @@ ms.lasthandoff: 03/28/2018
 * [SIN](https://msdn.microsoft.com/library/ms188377.aspx)
 * [SMALLDATETIMEFROMPARTS](https://msdn.microsoft.com/library/hh213396.aspx)
 * [SOUNDEX](https://msdn.microsoft.com/library/ms187384.aspx)
-* [SPACE](https://msdn.microsoft.com/library/ms187950.aspx)
+* [LEMEZTERÜLET](https://msdn.microsoft.com/library/ms187950.aspx)
 * [SQL_VARIANT_PROPERTY](https://msdn.microsoft.com/library/ms178550.aspx)
 * [SQRT](https://msdn.microsoft.com/library/ms176108.aspx)
 * [NÉGYZETES](https://msdn.microsoft.com/library/ms173569.aspx)
@@ -219,12 +216,12 @@ ms.lasthandoff: 03/28/2018
 * [TYPE_NAME](https://msdn.microsoft.com/library/ms189750.aspx)
 * [TYPEPROPERTY](https://msdn.microsoft.com/library/ms188419.aspx)
 * [UNICODE](https://msdn.microsoft.com/library/ms180059.aspx)
-* [UPPER](https://msdn.microsoft.com/library/ms180055.aspx)
-* [USER](https://msdn.microsoft.com/library/ms186738.aspx)
+* [FELSŐ](https://msdn.microsoft.com/library/ms180055.aspx)
+* [FELHASZNÁLÓ](https://msdn.microsoft.com/library/ms186738.aspx)
 * [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
 * [VAR](https://msdn.microsoft.com/library/ms186290.aspx)
 * [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
-* [YEAR](https://msdn.microsoft.com/library/ms186313.aspx)
+* [ÉV](https://msdn.microsoft.com/library/ms186313.aspx)
 * [XACT_STATE](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>Tranzakciók
@@ -279,5 +276,5 @@ ms.lasthandoff: 03/28/2018
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>További lépések
-További TSQL referenciáért lásd: [SQL Data Warehouse T-SQL utasítás](sql-data-warehouse-reference-tsql-statements.md).
+Hivatkozás kapcsolatos további információkért lásd: [T-SQL utasítások az Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), és [az Azure SQL Data Warehouse rendszernézetek](sql-data-warehouse-reference-tsql-system-views.md).
 

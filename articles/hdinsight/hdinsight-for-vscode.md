@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 0074486d3d7fb58bc6e3adcbe4245ec53e7e4cde
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e8dc802d67b4cd2e38ab195b771ceeaa07876e58
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight eszközök segítségével a Visual Studio Code
 
@@ -29,7 +29,7 @@ Ismerje meg, hogyan használható az Azure HDInsight Tools a Visual Studio (kód
 
 A következőkre lesz szükség a cikkben szereplő lépések végrehajtását:
 
-- A HDInsight-fürthöz.  Hozzon létre egy fürtöt, tekintse meg [első lépései a hdinsight eszközzel]( hdinsight-hadoop-linux-tutorial-get-started.md).
+- A HDInsight-fürthöz. Hozzon létre egy fürtöt, tekintse meg [első lépései a hdinsight eszközzel]( hdinsight-hadoop-linux-tutorial-get-started.md).
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
 - [Monó](http://www.mono-project.com/docs/getting-started/install/). Monó van csak a Linux és macOS szükséges.
 
@@ -100,7 +100,7 @@ Elküldés előtt parancsfájlok a HDInsight-fürtökhöz a Visual STUDIO Code, 
     - Küldje el a PySpark kötegelt parancsfájlok
     - Set-konfigurációk
 
-**Ha szeretné kapcsolni a fürt**
+<a id="linkcluster"></a>**Ha szeretné kapcsolni a fürt**
 
 Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználónév, is hivatkozásra a biztonsági hadoop-fürthöz tartományi felhasználónevet használatával (például: user1@contoso.com).
 1. Nyissa meg a parancs palettát kiválasztásával **CTRL + SHIFT + P**, majd adja meg **HDInsight: hivatkozás egy fürt**.
@@ -112,7 +112,7 @@ Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználóné
    ![hivatkozás fürt párbeszédpanel](./media/hdinsight-for-vscode/link-cluster-process.png)
 
    > [!NOTE]
-   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó társított felhasználónevet és jelszót használunk. 
+   > Csatolt felhasználónevet és jelszót használják, ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz kapcsolódó. 
    
 3. Megjelenik egy társított fürt paranccsal **lista fürt**. Most is elküldhetik a csatolt fürt parancsfájlt.
 
@@ -275,8 +275,50 @@ A HDInsight Tools for Visual STUDIO Code is lehetővé teszi a Spark-fürtök in
 
 A Python feladat elküldése után küldésének naplók megjelennek a **kimeneti** ablak a Visual STUDIO Code. A **Spark felhasználói felület URL-cím** és **Yarn felhasználói felület URL-cím** is látható. Nyomon követheti a feladat állapotát egy webböngészőben nyissa meg az URL-címet.
 
-
+>[!NOTE]
+>PySpark3 Livy 0,4 (amely HDI spark 2.2-fürt) már nem támogatott. Csak a "PySpark" python esetén támogatott. Ismert hiba, amely a spark 2.2 terjeszt python3 miatt sikertelen.
    
+## <a name="livy-configuration"></a>Livy konfiguráció
+Livy konfiguráció támogatott, akkor állapítható meg a Projektbeállítások munkahelyi terület mappában. További információ: [Livy információs](https://github.com/cloudera/livy/blob/master/README.rst ).
+
++ A projekt beállításait:
+
+    ![Livy konfiguráció](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+
++ A támogatott Livy konfigurációk:   
+
+    **POST /batches**   
+    A kérelem törzse
+
+    | név | leírás | type | 
+    | :- | :- | :- | 
+    | fájl | A kérelem végrehajtása tartalmazó fájl | elérési út (kötelező) | 
+    | proxyUser | Felhasználó megszemélyesíthet-e a feladat futtatásakor | karakterlánc | 
+    | Osztálynév | Alkalmazás Java/Spark fő osztály | karakterlánc |
+    | argumentum | Parancssori argumentumok az alkalmazáshoz | karakterlánc-listával | 
+    | JAR-fájlok kivételével | Ebben a munkamenetben használandó jars | Karakterláncok listáját | 
+    | pyFiles | Ebben a munkamenetben használandó Python-fájlok | Karakterláncok listáját |
+    | fájl megjelenítése | Ebben a munkamenetben használandó fájlok | Karakterláncok listáját |
+    | driverMemory | Az illesztőprogram folyamat használandó memória mennyisége | karakterlánc |
+    | driverCores | Az illesztőprogram folyamat használandó magok száma | int |
+    | executorMemory | Hozott végrehajtó folyamat memória mennyisége | karakterlánc |
+    | executorCores | Az egyes végrehajtó használandó magok száma | int |
+    | numExecutors | Sikerült elindítani a munkamenetet a végrehajtója száma | int |
+    | archiválja | Ebben a munkamenetben használandó archiválja | Karakterláncok listáját |
+    | Várólista | A neve, amelyhez a YARN várólista elküldése megtörtént | karakterlánc |
+    | név | A munkamenet neve | karakterlánc |
+    | conf | Spark konfiguráció tulajdonságai | Térkép kulcs = val |
+
+    Választörzs   
+    A létrehozott kötegelt objektum.
+
+    | név | leírás | type | 
+    | :- | :- | :- | 
+    | id | A munkamenet-azonosító | int | 
+    | appId | Az alkalmazás azonosítóját a ehhez a munkamenethez |  Karakterlánc |
+    | appInfo | A részletes alkalmazásinformáció | Térkép kulcs = val |
+    | Napló | A napló sorok | karakterlánc-listával |
+    | state |   A kötegelt állapota | karakterlánc |
 
 
 ## <a name="additional-features"></a>További funkciók

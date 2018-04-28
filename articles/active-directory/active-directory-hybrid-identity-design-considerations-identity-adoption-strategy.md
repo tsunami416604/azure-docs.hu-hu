@@ -1,11 +1,11 @@
 ---
-title: "Hibrid identitás Tervező - bevezetési stratégia Azure |} Microsoft Docs"
-description: "Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett."
-documentationcenter: 
+title: Hibrid identitás Tervező - bevezetési stratégia Azure |} Microsoft Docs
+description: Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e6c9cbc4f158e62092c7a9e401e618880e5ea3b6
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia meghatározása
 Ebben a feladatban a hibrid identitás bevezetési stratégia a hibrid identitáskezelési megoldás a tárgyalt üzleti követelményeinek megfelelően határozza meg:
@@ -52,7 +52,7 @@ Az alábbi táblázat segít meghatározni, hogy a előnyeit és hátrányait fo
 | Stratégia | Előnyei | Hátrányok |
 | --- | --- | --- |
 | **Felhőbeli identitások** |Könnyebben kezelhető kis szervezet számára. <br> Semmit nem kell telepítenie a helyi nincs szükség további hardverre<br>Könnyen használható, ha a felhasználó elhagyja a vállalatot |Felhasználók kell jelentkeznie számítási feladatok felhőben való hozzáféréskor <br> Előfordulhat, hogy jelszavakat, és nem lehet azonos a felhőalapú és helyszíni identitások |
-| **Synchronized** |A helyszíni jelszóval hitelesíti, mind a helyszíni, mind a felhőbeli könyvtárak <br>Könnyebben kezelhető a kis, közepes vagy nagy szervezetek <br>Az egyes erőforrások felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br> A szinkronizálás Microsoft előnyben részesített módszer <br> Könnyebben kezelhető |Egyes felhasználók is vonakodhatnak annak a címtárak szinkronizálása a felhővel adott vállalat rendőrségi miatt |
+| **Szinkronizálva** |A helyszíni jelszóval hitelesíti, mind a helyszíni, mind a felhőbeli könyvtárak <br>Könnyebben kezelhető a kis, közepes vagy nagy szervezetek <br>Az egyes erőforrások felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br> A szinkronizálás Microsoft előnyben részesített módszer <br> Könnyebben kezelhető |Egyes felhasználók is vonakodhatnak annak a címtárak szinkronizálása a felhővel adott vállalat rendőrségi miatt |
 | **Összevont** |Felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br>Ha a felhasználó le van állítva, vagy hagyja, a fiók azonnal letiltható, és hozzáférés visszavonása esetén<br> Támogatja a speciális forgatókönyveket, amelyek nem végezhető el szinkronizálva |További lépések beállítása és konfigurálása <br> Magasabb karbantartás <br> További hardverre lehet szükség az STS-infrastruktúra <br> Az összevonási kiszolgáló telepítése további hardverre lehet szükség. További szoftverek szükség, ha az AD FS szolgál <br> Széles körű beállítása szükséges az egyszeri bejelentkezés <br> Kritikus pont hiba, ha az összevonási kiszolgáló nem működik, felhasználók nem tudják hitelesíteni |
 
 ### <a name="client-experience"></a>Ügyfélélmény
@@ -90,7 +90,7 @@ Emellett figyelembe kell venni, milyen lehetőségek nem lesznek elérhetők:
 * Átmenet Office passzív hitelesítést lehetővé teszi, hogy ahhoz, hogy támogassa a tiszta SAML 2.0 IdPs, de támogatási továbbra is elérhető lesz a ügyfél-ügyfél alap
 
 > [!NOTE]
-> Olvassa el a cikk https://aka.ms/ssoproviders a legfrissebb listáját.
+> A legtöbb frissített listájához, olvassa el a cikk https://aka.ms/ssoproviders.
 > 
 > 
 
@@ -196,7 +196,7 @@ Annak ellenére, hogy előfordulhat, hogy kiegyenlítése után a megoldást a s
 | A helyszíni AD |Multi-Factor Authentication-kiszolgáló |
 
 > [!NOTE]
-> Gondoskodnia kell arról, hogy a multi-factor Authentication hitelesítés tervezési beállítás, amely a kijelölt támogatja-e a kívánt szükséges funkciókat.  További információk [válassza ki a multi-factor Authentication biztonsági megoldást,](../multi-factor-authentication/multi-factor-authentication-get-started.md#what-am-i-trying-to-secure).
+> Gondoskodnia kell arról, hogy a multi-factor Authentication hitelesítés tervezési beállítás, amely a kijelölt támogatja-e a kívánt szükséges funkciókat.  További információk [válassza ki a multi-factor Authentication biztonsági megoldást,](authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure).
 > 
 > 
 

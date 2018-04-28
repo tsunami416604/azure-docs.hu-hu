@@ -1,8 +1,8 @@
 ---
-title: "Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban"
-description: "Útmutató az Azure App Service helyi Git-telepítésének engedélyezése."
+title: Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
+description: Útmutató az Azure App Service helyi Git-telepítésének engedélyezése.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 4cbe26055bdbf906223a327ab8cf94bebe9e7998
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 842cd6f67a04bec0ed06282bdeeea8b8a51c0667
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -44,7 +44,7 @@ Győződjön meg arról, hogy rendelkezik-e a megfelelő fájlokat a projektben 
 
 | Futtatókörnyezet | Legfelső szintű directory fájlok |
 |-|-|
-| ASP.NET (csak Windows) | _*.sln_, _*.csproj_, or _default.aspx_ |
+| ASP.NET (csak Windows) | _*.sln_, _*.csproj_, vagy _default.aspx_ |
 | ASP.NET-mag | _*.sln_ vagy _*.csproj_ |
 | PHP | _index.php_ |
 | Ruby (csak Linux) | _Gemfile_ |
@@ -189,3 +189,5 @@ git config --global http.postBuffer 524288000
 
 * [Project Kudu dokumentációja](https://github.com/projectkudu/kudu/wiki)
 * [Folyamatos üzembe helyezés az Azure App Service](app-service-continuous-deployment.md)
+* [Minta: Webalkalmazás létrehozása és központi telepítése a kódot egy helyi Git-tárház (Azure CLI)](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
+* [Példa: Webalkalmazás létrehozása és egy helyi Git-tárház (PowerShell) a kód telepítésére](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

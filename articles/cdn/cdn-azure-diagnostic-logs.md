@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 9c61fe7c62f0718d390509d3b0ff3327bd193f43
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c367cffa8f0453a0f7e230571d861d039122c291
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -113,7 +113,7 @@ A következő példa bemutatja, hogyan engedélyezése diagnosztikai naplók az 
 
 Először jelentkezzen be, és válasszon egy előfizetést:
 
-    Login-AzureRmAccount 
+    Connect-AzureRmAccount 
 
     Select-AzureSubscription -SubscriptionId 
 
@@ -163,7 +163,7 @@ Az alapvető analitikai adatok eléréséhez az Azure Storage-fiókjához, elős
 |Profilnév |A CDN-profil neve|
 |A végpont neve |A CDN-végpont neve|
 |év|  az év, például 2017 4 számjegyből álló ábrázolása|
-|Hónap| a hónapok sorszáma 2 számjegyű ábrázolása. 01 január =... 12=December|
+|Hónap| a hónapok sorszáma 2 számjegyű ábrázolása. 01 január =... 12 decembert jelenti – =|
 |Nap|   a hónap napját 2 számjegyű ábrázolása|
 |PT1H.json| Az analitikai adatok tárolására tényleges JSON-fájl|
 
@@ -201,7 +201,7 @@ Telepíthető megoldások Azure piactérről kattintva a **most töltse le innen
 Kövesse az alábbi lépéseket a felügyeleti megoldás hozzáadása:
 
 1.   Ha még nem tette meg, jelentkezzen be az Azure-előfizetéshez az Azure portálra, és nyissa meg az irányítópulton való rögzítéséhez.
-    ![Azure Dashboard](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
+    ![Az Azure irányítópult](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
 2. Az a **új** részen **piactér**, jelölje be **figyelés + felügyeleti**.
 

@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 38de0886de1d6068b2edad9aadc89d8048b48a55
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a112951409fc6177240b9eddc9fcd7f6c0c932cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>A Service Fabric gyakori kérdések
 
 Nincsenek számos gyakran feltett kérdésekre a Service Fabric Teendők, és hogyan kell használni. Ez a dokumentum ismerteti a fenti gyakori kérdések és a válaszok.
 
 ## <a name="cluster-setup-and-management"></a>Fürt beállítása és kezelése
+
+### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Hogyan készíthetek visszaállítási a Service Fabric-fürt tanúsítványt?
+
+Bármilyen frissítést az alkalmazáshoz szükséges visszaállítása állapotának hiba észlelése előtt a Service Fabric fürt kvórum; a módosítás véglegesítését véglegesített változások csak előre lesz vonva. Eszkalációs visszafejtés tartozó ügyfél-támogatási szolgálathoz, keresztül helyreállítani, szükség lehet, ha egy nem figyelt legfrissebb tanúsítvány módosítása bevezetésének.  [A Service Fabric az alkalmazásfrissítés](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade?branch=master) vonatkozik [alkalmazás frissítési paraméterei](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master), és kézbesíti az állásidő frissítési ígéret nulla.  Ajánlott alkalmazás követően frissítse a figyelt módban, a frissítési tartományok automatikus végrehajtási állapot-ellenőrzési eredményeire tompított, működés közbeni vissza automatikusan, ha az alapértelmezett szolgáltatás frissítése nem sikerül alapul.
+ 
+Ha a fürt van továbbra is használhatja a klasszikus tanúsítvány-ujjlenyomat tulajdonság az erőforrás-kezelő sablonban, ajánlott meg [tanúsítvány ujjlenyomata a fürt módosítása köznapi név](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), modern titkok ki felügyeleti szolgáltatások.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Egy fürt, amely több Azure-régiók és a saját adatközpontját hozhat létre?
 
@@ -89,7 +95,7 @@ Napjainkban fejlesztjük fejlett élményt, amíg való telepítésért felelős
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Titkosíthatja a mellékelt adatok lemezt a fürt csomóponttípus (virtuálisgép-méretezési csoport)?
 Igen.  További információkért lásd: [hozzon létre egy fürtöt csatolt adatlemezek](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [lemezek (PowerShell) titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), és [lemezek (CLI) titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
-### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster-"></a>Mik azok a könyvtárak és folyamatok, amelyek a fürt egy víruskereső program futtatása során kell?
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Mik azok a könyvtárak és folyamatok, amelyek a fürt egy víruskereső program futtatása során kell?
 
 | **Víruskereső kizárt könyvtárak** |
 | --- |

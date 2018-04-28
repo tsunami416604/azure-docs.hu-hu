@@ -1,11 +1,11 @@
 ---
-title: "Nyissa meg a portokat a virtuális gép Azure PowerShell használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan nyisson meg egy portot / hozzon létre egy végpontot, a Windows virtuális gépre az Azure resource manager rendszerbe állítási mód és az Azure PowerShell használatával"
+title: Nyissa meg a portokat a virtuális gép Azure PowerShell használatával |} Microsoft Docs
+description: Megtudhatja, hogyan nyisson meg egy portot / hozzon létre egy végpontot, a Windows virtuális gépre az Azure resource manager rendszerbe állítási mód és az Azure PowerShell használatával
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d9918992ef1ac46b3b000480b6be7e984f0858e1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b8eb36e4abad12cb46493846a024da00f9146d40
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Portok és egy virtuális géphez végpontok nyitni az Azure PowerShell használatával
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -29,7 +29,7 @@ Hozzon létre egy hálózati biztonsági csoport és a hozzáférés-vezérlési
 Jelentkezzen be az Azure-fiókjával:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 A következő példákban cserélje le a saját értékeit paraméterek nevei. Példa paraméter nevekre *myResourceGroup*, *myNetworkSecurityGroup*, és *myVnet*.
@@ -92,7 +92,7 @@ A gyors parancsok lehetővé teszik, amelyekből megismerheti a forgalom halad a
 
 Magas rendelkezésre állású webes alkalmazásokhoz helyezze a virtuális gépek az Azure terheléselosztó mögött. A load balancer osztja el a forgalmat a virtuális gépekhez, a hálózati biztonsági csoport, amely biztosítja a forgalomszűrést végez. További információkért lásd: [betöltése Linux virtuális gépek magas rendelkezésre állású alkalmazás létrehozása az Azure-ban egyenleg](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a példában létrehozott egy egyszerű szabályt, amely engedélyezi a HTTP-forgalmat. További részletes környezetek létrehozásáról a következő cikkekben találhat:
 
 * [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md)

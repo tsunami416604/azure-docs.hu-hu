@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: rogarana
-ms.openlocfilehash: ae1c6628492de208f7c11e0b4e9d3133774ae184
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 33ca8af49ed9c3a8e7133eedfd284a1b71a9a9f9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
 
@@ -46,10 +46,10 @@ Storage-fiókok kapcsolatos további információkért lásd: [Storage bemutatá
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Login-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>Az előfizetés tárfiókok listázása
@@ -227,7 +227,7 @@ A legtöbben Azure nyilvános Felhőjében használja a globális Azure telepít
 
 * [Az Azure Government felhő](https://azure.microsoft.com/features/gov/)
 * [Azure Kínában a 21Vianet által működtetett Kína-felhő](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+* [Az Azure német felhő](../../germany/germany-welcome.md)
 
 Hogyan érhetők el a felhők és a tárolás, a PowerShell használatával kapcsolatos információkért lásd: [tárolás kezelése a PowerShell használata Azure független felhők](storage-powershell-independent-clouds.md).
 

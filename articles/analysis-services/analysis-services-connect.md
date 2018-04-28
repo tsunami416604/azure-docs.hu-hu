@@ -1,20 +1,20 @@
 ---
-title: Kapcsolódás Azure Analysis Services |} Microsoft Docs
+title: Kapcsolódás Azure Analysis Services-kiszolgálók |} Microsoft Docs
 description: Megtudhatja, hogyan csatlakozhat, és adatokat lekérni az Analysis Services-kiszolgálóhoz, az Azure-ban.
 author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8493ff1e2b9be48fc8eec1e727684fe09f6af72c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 53a8a1eea5ffa50fcdaf4a60c9bbd03d30d8e311
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="connect-to-an-azure-analysis-services-server"></a>Egy Azure Analysis Services-kiszolgálóhoz kapcsolódni
+# <a name="connecting-to-servers"></a>Kiszolgálók csatlakoztatása
 
 Ez a cikk ismerteti az adatok modellezési és a felügyeleti alkalmazások, például az SQL Server Management Studio (SSMS) vagy SQL Server Data Tools (SSDT) használatával a kiszolgálóhoz való kapcsolódás. Vagy az ügyfél jelentés az alkalmazások, például a Microsoft Excel-, Power BI Desktop, vagy egyéni alkalmazások. Az Azure Analysis Services kapcsolatok HTTPS használatára.
 

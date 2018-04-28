@@ -22,3 +22,10 @@
 7. Ha az irányítópulton a rögzített címkére kattint, megjelennek a címkével társított erőforrások.
 
      ![Címkék rögzítése az irányítópulton](./media/resource-manager-tag-resources/show-pinned-tag.png)
+
+
+Tömeges hozzárendelése címkék csak egy erőforráshoz:
+1. Az erőforrások (pl. minden erőforrásokat, erőforráscsoport oveview); listából
+2. Jelölje be a jelölőnégyzetet az erőforrások ki szeretné osztani a címke;
+3. Válassza ki a hozzárendelése címkék beállítás;
+4. Adja hozzá a neve és az értékeket, és válassza ki a hozzárendelése.

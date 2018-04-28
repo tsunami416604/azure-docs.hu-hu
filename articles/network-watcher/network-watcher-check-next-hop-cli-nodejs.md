@@ -1,11 +1,11 @@
 ---
-title: "Azure hálózati figyelő következő ugrás - Azure CLI 1.0 a következő ugrás található |} Microsoft Docs"
-description: "Ez a cikk leírja, hogyan megtalálhatja a következő ugrás típusa van, és használó Azure parancssori felület használatával, a következő ugrás IP-cím."
+title: Azure hálózati figyelő következő ugrás - Azure CLI 1.0 a következő ugrás található |} Microsoft Docs
+description: Ez a cikk leírja, hogyan megtalálhatja a következő ugrás típusa van, és használó Azure parancssori felület használatával, a következő ugrás IP-cím.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0700c274-3e0d-4dca-acfa-3ceac8990613
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: e849f7952962d177f40ce99307ef1c305e089827
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-10"></a>Megtudhatja, milyen a következő ugrás típusa a következő ugrás funkció használata az Azure CLI 1.0 Azure hálózati figyelőt használ
 
@@ -74,7 +74,7 @@ Az alábbi listában a jelenleg rendelkezésre álló NextHopType értékeket mu
 * VnetLocal
 * HyperNetGateway
 * VnetPeering
-* Nincs
+* None
 
 ## <a name="next-steps"></a>További lépések
 

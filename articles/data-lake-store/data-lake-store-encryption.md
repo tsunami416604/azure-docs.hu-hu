@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 53d5f413f58cea7bc8eab081d46eff2ab83e7ecb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2328f7e233025d9f9ee9113aa28fb74754dd9193
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Az adatok titkosítása az Azure Data Lake Store-ban
 
@@ -138,3 +138,6 @@ Vegye figyelembe, hogy az alapértelmezett titkosítási beállítások használ
     ![Képernyőkép a Data Lake Store ablakról, amelyen az üzenet és a Kulcs rotálása van kiemelve](./media/data-lake-store-encryption/rotatekey.png)
 
 Ez a művelet kevesebb mint két percet vehet igénybe, és a kulcsrotálás nem jár várt leállással. A művelet befejezését követően a kulcs új verziója lesz használatban.
+
+> [!IMPORTANT]
+> A kulcsrotáció után a rendszer nem használja tovább aktívan a kulcs régi verzióját az adatok titkosítására.  Az olyan ritka esetekben, amikor a váratlan meghibásodások az adatok redundáns másolatait is érinthetik, lehetséges, hogy az adatokat egy olyan biztonsági másolatból kell visszaállítani, amely továbbra is a régi kulcsot használja. Annak érdekében, hogy az adatok az ilyen ritka esetekben is elérhetők maradjanak, őrizze meg a titkosítási kulcsa előző verzióját. Az ajánlott vészhelyreállítás-tervezési eljárásokért lásd: [Vészhelyreállítási útmutató a Data Lake Store-ban tárolt adatokhoz](data-lake-store-disaster-recovery-guidance.md). 

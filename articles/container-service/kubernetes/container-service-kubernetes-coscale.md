@@ -1,19 +1,19 @@
 ---
-title: "Egy Azure Kubernetes fürt CoScale figyelése"
-description: "Az Azure Tárolószolgáltatásban CoScale használatával Kubernetes fürt figyelése"
+title: Egy Azure Kubernetes fürt CoScale figyelése
+description: Az Azure Tárolószolgáltatásban CoScale használatával Kubernetes fürt figyelése
 services: container-service
 author: fryckbos
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 2d6757397d76b6ca87a45254cb31f34d34a42541
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 16580307193bbb7eb9b401eb1b14356e8589d6e2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>Egy Azure-tároló szolgáltatás Kubernetes fürt CoScale figyelése
 
@@ -78,7 +78,7 @@ Ennyi az egész! Ha az ügynök működik és elérhető, meg kell jelennie a ko
 A CoScale ügynök automatikusan új gépek a fürt központi telepítése. Az ügynök a frissítések automatikus verziójának kiadásakor.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a [dokumentáció CoScale](http://docs.coscale.com/) és [blog](https://www.coscale.com/blog) figyelési megoldásoknak CoScale további információt. 
 

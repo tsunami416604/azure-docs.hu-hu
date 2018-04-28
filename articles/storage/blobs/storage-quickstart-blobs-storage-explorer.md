@@ -1,19 +1,19 @@
 ---
-title: Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban az Azure Storage Explorer használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre az Azure Storage Explorer használatával. Majd a Storage Explorer segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: Azure rövid útmutató – Blob létrehozása objektumtárban az Azure Storage Explorer használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban az Azure Storage Explorer használatával kezelheti az objektumtárat (blobtárat). Majd a Storage Explorer segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 04/09/2018
 ms.author: tamram
-ms.openlocfilehash: f44d42b949eae0d017e3bba218234fd1e2ead78e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 176d2fffa9f9e3c43a4e5c922aed58cebdbe2b1d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Storage Explorer használatával
 

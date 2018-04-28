@@ -1,12 +1,12 @@
 ---
-title: "Adatforrások csatlakoztatása |} Microsoft Docs"
-description: "Útmutató a cikk kiemelés az Azure Data Catalog felderített adatforrásokhoz való csatlakozás."
+title: Adatforrások csatlakoztatása |} Microsoft Docs
+description: Útmutató a cikk kiemelés az Azure Data Catalog felderített adatforrásokhoz való csatlakozás.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: b5bed534d9fa1a64b0e90c268407281724185ce8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b4dfc7a900e42b348c416d2d8c05b73fb15847ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-connect-to-data-sources"></a>Kapcsolódás az adatforrásokhoz
 ## <a name="introduction"></a>Bevezetés
@@ -46,9 +46,9 @@ Használata esetén a "Megnyitás..." az Azure Data Catalog-portált, a megfelel
 | Excel |.odc |Az Excel 2010-es vagy újabb |
 | Excel (első 1000) |.odc |Az Excel 2010-es vagy újabb |
 | Power Query |.xlsx |Excel 2016 vagy az Excel 2010 vagy az Excel 2013 a Power Query az Excel-bővítmény telepítése |
-| A Power BI Desktop |.pbix |A Power BI Desktop július 2016 vagy újabb |
+| A Power BI Desktop |a .pbix |A Power BI Desktop július 2016 vagy újabb |
 | SQL Server Data Tools |vsweb:// |A Visual Studio 2013 Update 4 vagy újabb rendszert telepített SQL Server tooling |
-| Jelentéskezelő |http:// |Lásd: [SQL Server Reporting Services böngészőre vonatkozó követelményei](https://technet.microsoft.com/en-us/library/ms156511.aspx) |
+| Jelentéskezelő |http:// |Lásd: [SQL Server Reporting Services böngészőre vonatkozó követelményei](https://technet.microsoft.com/library/ms156511.aspx) |
 
 ## <a name="your-data-your-tools"></a>Az adatok, az eszközök
 A menüben elérhető beállítások a jelenleg kiválasztott adategységet típusú függ. Természetesen nem minden lehetséges eszközök fog szerepelni a "Megnyitás..." menü, de még könnyen bármely ügyfél eszközt használó adatforráshoz való kapcsolódáshoz. Amikor egy adategységet kiválasztásakor a **Azure Data Catalog** portál, a teljes helyen jelenik meg a Tulajdonságok panelen.

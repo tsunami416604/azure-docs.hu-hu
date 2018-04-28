@@ -3,7 +3,7 @@ title: Az Azure Service Fabric teljesítmény figyelése |} Microsoft Docs
 description: További információk a figyelési és az Azure Service Fabric-fürtök diagnostics teljesítményszámlálók.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 3784cb6f713c5ce476ab980122ee6ec9fa3ebc59
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/16/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 54837b2a43f93f43d089a2fdf35d8b74ecacfc3e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
@@ -75,7 +75,7 @@ A Service Fabric egyéni teljesítményszámlálóit jelentős mennyiségű áll
 
 Az alkalmazások üzembe helyezi a fürthöz, ha Reliable Actors használ, adja hozzá a countes `Service Fabric Actor` és `Service Fabric Actor Method` kategóriák (lásd: [Service Fabric megbízható szereplője diagnosztika](service-fabric-reliable-actors-diagnostics.md)).
 
-Használatakor a távelérési szolgáltatás, hasonlóképpen tudunk `Service Fabric Service` és `Service Fabric Service Method` kell gyűjtése teljesítményszámláló-kategóriák a teljesítményszámlálók. 
+Ha Reliable Services használatához hasonló módon kell `Service Fabric Service` és `Service Fabric Service Method` kell gyűjtése teljesítményszámláló-kategóriák a teljesítményszámlálók. 
 
 Megbízható gyűjtemények használatakor, azt javasoljuk, hogy a `Avg. Transaction ms/Commit` a a `Service Fabric Transactional Replicator` / tranzakció metrika az átlagos véglegesítési késés gyűjtéséhez.
 
@@ -83,4 +83,4 @@ Megbízható gyűjtemények használatakor, azt javasoljuk, hogy a `Avg. Transac
 ## <a name="next-steps"></a>További lépések
 
 * További információ [platform szintjén az eseménygenerálás](service-fabric-diagnostics-event-generation-infra.md) a Service Fabric
-* Teljesítményadatok gyűjtéséhez keresztül [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)
+* Teljesítményadatok gyűjtéséhez keresztül [OMS-ügynököt](service-fabric-diagnostics-oms-agent.md)

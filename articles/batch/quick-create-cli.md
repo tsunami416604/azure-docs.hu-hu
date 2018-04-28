@@ -1,6 +1,6 @@
 ---
-title: "Azure rövid útmutató – Batch-feladat futtatása – CLI"
-description: "Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure CLI-vel."
+title: Azure rövid útmutató – Batch-feladat futtatása – CLI
+description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure CLI-vel.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/16/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8d0e827dd3658d711de3830453c92af581786ad0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: de0ff088b3a61c48ddcbdff01f105884870886e1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure CLI használatával
 
@@ -40,7 +40,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-A Batch-fiók összekapcsolható egy általános célú Azure Storage-fiókkal. Bár a rövid útmutatóhoz nem kötelező, a Storage-fiók hasznos az alkalmazások üzembe helyezéséhez, valamint a legtöbb valós számítási feladat be- és kimeneti adatainak tárolásához. Az [az storage account create](/cli/azure/storage/account#az_storage_account_create) paranccsal hozzon létre egy Storage-fiókot az erőforráscsoportban.
+A Batch-fiókot összekapcsolhatja egy Azure Storage-fiókkal. Bár a rövid útmutatóhoz nem kötelező, a Storage-fiók hasznos az alkalmazások üzembe helyezéséhez, valamint a legtöbb valós számítási feladat be- és kimeneti adatainak tárolásához. Az [az storage account create](/cli/azure/storage/account#az_storage_account_create) paranccsal hozzon létre egy Storage-fiókot az erőforráscsoportban.
 
 ```azurecli-interactive
 az storage account create \

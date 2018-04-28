@@ -1,11 +1,11 @@
 ---
-title: "Azure számlázás vállalati API-k |} Microsoft Docs"
-description: "További tudnivalók a Reporting API-k, amelyek lehetővé teszik a vállalati Azure ügyfelek való lekérésére programozott módon fogyasztási adatokhoz."
-services: 
-documentationcenter: 
+title: Azure számlázás vállalati API-k |} Microsoft Docs
+description: További tudnivalók a Reporting API-k, amelyek lehetővé teszik a vállalati Azure ügyfelek való lekérésére programozott módon fogyasztási adatokhoz.
+services: ''
+documentationcenter: ''
 author: anandedwin
 manager: aedwin
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
 ms.service: billing
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: f7a480c77c93035e655606433aea2547a1c105cc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ae04c7c1fdddecf40583d14f7b08dcf41941c6f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k – áttekintés
 A Reporting API-k engedélyezése a vállalati Azure-ügyfelek számára használati és elszámolási adatok programozott módon le az elsődleges adatok elemzésére szolgáló eszközöket. 
 
 ## <a name="enabling-data-access-to-the-api"></a>Az API adataihoz hozzáférés engedélyezése
-* **Hozza létre, vagy az API-kulcs beolvasása** - a vállalati portál és kövesse az oktatóanyag a Súgó - Reporting API-k. Az első szakasza a súgócikk ismerteti, hogyan létrehozásához vagy a megadott beléptetési API-kulcs beolvasása.
+* **Generálni, vagy az API-kulcs beolvasása** -jelentkezzen be a vállalati portálon, és navigáljon a Jelentések > használati letöltése > API-hozzáférési kulcs létrehozása vagy az API-kulcs beolvasása.
 * **Kulcsok átadja a API** -az API-kulcsot kell átadni minden hívás a hitelesítéshez és engedélyezéshez. A következő tulajdonság kell lennie, hogy a HTTP-fejlécek
 
 |Fejléc kulcs kérése | Érték|

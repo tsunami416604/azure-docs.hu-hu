@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: bfc8f432e868c03d101ca7bfbc6b59f6e98ce29b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4c74833933642ec67bdd2a77d073b083d54a3038
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Több IP-címek hozzárendelése a virtuális gépek PowerShell használatával
 
@@ -27,14 +27,14 @@ ms.lasthandoff: 04/16/2018
 
 Ez a cikk azt ismerteti, hogyan létrehozni egy virtuális gépet (VM) a PowerShell használata Azure Resource Manager telepítési modell használatával. Több IP-cím nem lehet hozzárendelni a klasszikus üzembe helyezési modell használatával létrejött erőforrásokat. Az Azure üzembe helyezési modellel kapcsolatos további tudnivalókért olvassa el a [üzembe helyezési modellel megértéséhez](../resource-manager-deployment-model.md) cikk.
 
-[!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
+[!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Több IP-címekkel rendelkező virtuális gép létrehozása
 
 A következő lépések bemutatják, hogyan több IP-címmel, például virtuális gép létrehozásához a forgatókönyvben leírtak szerint. A végrehajtásához szükséges változók értékeinek módosítása.
 
 1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a fennmaradó lépéseit ebben a szakaszban egy PowerShell-munkameneten belül. Ha még nem rendelkezik a PowerShell telepítése és konfigurálása, hajtsa végre a a [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) cikk.
-2. Jelentkezzen be a fiókot a `login-azurermaccount` parancsot.
+2. Jelentkezzen be a fiókot a `Connect-AzureRmAccount` parancsot.
 3. Cserélje le *myResourceGroup* és *westus* a nevet és a helyet. Hozzon létre egy erőforráscsoportot. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
     ```powershell

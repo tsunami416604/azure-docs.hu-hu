@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 99c29afec7d06a458ed6d34071f1b6acbba1f03b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: db38678a05afbc764dec20f2a475e00856a1aeee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Hyper-V virtuális gép Kapacitástervezés a kapacitást és teljesítményt megoldás (előzetes verzió)
 
 ![Kapacitást és teljesítményt szimbólum](./media/log-analytics-capacity/capacity-solution.png)
+
+> [!NOTE]
+> A kapacitást és teljesítményt megoldás elavult.  Az ügyfelek, akik már telepítették a megoldás továbbra is használhatja, de kapacitást és teljesítményt is nem vehető fel bármely új munkaterületek.
 
 A Naplóelemzési a kapacitást és teljesítményt megoldás segítségével megismerheti a kapacitás, a Hyper-V-kiszolgálók. A megoldás jelenít meg a teljes kihasználtság (Processzor, memória és lemez) a gazdagépek és azokat Hyper-V gazdagépeken futó virtuális gépeket a Hyper-V környezetben betekintést nyújt. Metrikák Processzor, memória és a lemezek gyűjtése történt a gazdagépek és a rajtuk futó virtuális gépek között.
 

@@ -1,32 +1,32 @@
 ---
-title: "Az Azure Active Directoryban konfigurálható jogkivonat élettartamát |} Microsoft Docs"
-description: "Tudnivalók az Azure AD által kiállított jogkivonatokat élettartamai."
+title: Az Azure Active Directoryban konfigurálható jogkivonat élettartamát |} Microsoft Docs
+description: Tudnivalók az Azure AD által kiállított jogkivonatokat élettartamai.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
-ms.author: billmath
+ms.date: 04/19/2018
+ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 553283f246b701b5084f0a3a9914d7ceb8826fe4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a62d7a36eeb84b06baa4f2968d48f4a7afcaa05d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurálható jogkivonat élettartamát az Azure Active Directoryban (nyilvános előzetes verzió)
 Megadhat egy Azure Active Directory (Azure AD) által kiállított jogkivonat élettartamát. A szervezet jogkivonat élettartamát a szervezet összes alkalmazást, egy több-bérlős (több szervezet) alkalmazáshoz, vagy egy adott szolgáltatás egyszerű állíthatja be.
 
-> [!NOTE]
-> Ez a funkció jelenleg nyilvános előzetes verziójához. Készüljön visszaállítja, vagy távolítsa el a módosításokat. A szolgáltatás bármely Azure Active Directory-előfizetés nyilvános előzetes érhető el. Azonban, amikor a szolgáltatás általánosan elérhetővé válik, a funkció az egyes funkcióit szükség lehet egy [Azure Active Directory Premium](active-directory-get-started-premium.md) előfizetés.
+> [!IMPORTANT]
+> Után az ügyfelek az előzetes nyújtanak segítséget, azt készül, hogy ez a funkció cserélje le az Azure Active Directory feltételes hozzáférés új szolgáltatása.  Ha az új szolgáltatás befejeződött, ez a funkció végül elavulttá válik értesítési idő után.  A konfigurálható a jogkivonatok élettartama házirend használatakor készíthető új feltételes hozzáférési funkciónak váltás után érhető el. 
 >
 >
 
@@ -45,19 +45,19 @@ Kijelölhet egy házirendet az alapértelmezett házirendet a szervezet számár
 A frissítési jogkivonatokat, a hozzáférési jogkivonatok, a munkamenet-jogkivonatokat és az azonosító-jogkivonatokat a jogkivonatok élettartama házirendek állíthatja be.
 
 ### <a name="access-tokens"></a>Hozzáférési jogkivonatok
-Ügyfelek hozzáférési jogkivonatok használják a védett erőforrások eléréséhez. Olyan hozzáférési jogkivonatot csak olyan felhasználó, az ügyfél és az erőforrás egyedi kombinációja használható. Hozzáférési jogkivonatok nem vonható vissza, és azok lejártáig érvényesek. Egy rosszindulatú szereplő, amely egy hozzáférési jogkivonatot kapott használhatja az élettartamuk mértékét. Beállítja a hozzáférési token élettartama között a rendszer teljesítményének javítása és növelése ennyi idő alatt, hogy az ügyfél megőrzi-e a hozzáférést, miután a felhasználói fiók le van tiltva. Továbbfejlesztett rendszer teljesítmény akkor érhető el a szám, ahányszor egy ügyfél szerezzen be egy új jogkivonatot kell csökkentésével.
+Ügyfelek hozzáférési jogkivonatok használják a védett erőforrások eléréséhez. Olyan hozzáférési jogkivonatot csak olyan felhasználó, az ügyfél és az erőforrás egyedi kombinációja használható. Hozzáférési jogkivonatok nem vonható vissza, és azok lejártáig érvényesek. Egy rosszindulatú szereplő, amely egy hozzáférési jogkivonatot kapott használhatja az élettartamuk mértékét. Beállítja a hozzáférési token élettartama között a rendszer teljesítményének javítása és növelése ennyi idő alatt, hogy az ügyfél megőrzi-e a hozzáférést, miután a felhasználói fiók le van tiltva. Továbbfejlesztett rendszer teljesítmény akkor érhető el a szám, ahányszor egy ügyfél szerezzen be egy új jogkivonatot kell csökkentésével.  Az alapértelmezett érték 1 óra - 1 óra elteltével az ügyfél kell használni a frissítési jogkivonat (általában csendes) egy új frissítési jogkivonat és hozzáférési tokent. 
 
 ### <a name="refresh-tokens"></a>Frissítési jogkivonatok
-Létrejöttekor olyan hozzáférési jogkivonatot, védett erőforrások eléréséhez, az ügyfél megkapja egy frissítési jogkivonat és a hozzáférési tokent. A frissítési token beszerzése a token párok új hozzáférési/frissítés az aktuális jogkivonat lejártakor történik. A frissítési jogkivonat felhasználói és az ügyfél van kötve. A frissítési jogkivonat visszavonhatók, és a token érvényességi be van jelölve, minden alkalommal, amikor a jogkivonat.
+Létrejöttekor olyan hozzáférési jogkivonatot, védett erőforrások eléréséhez, az ügyfél is kap egy frissítési jogkivonat. A frissítési token beszerzése a token párok új hozzáférési/frissítés az aktuális jogkivonat lejártakor történik. A frissítési jogkivonat felhasználói és az ügyfél van kötve. A frissítési jogkivonat lehet [bármikor visszavont](develop/active-directory-token-and-claims.md#token-revocation), és a token érvényességi be van jelölve, minden alkalommal, amikor a jogkivonat.  
 
-Fontos és bizalmas nyilvános ügyfelek közötti különbségtétel. További információ a különböző típusú ügyfelek: [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
+Fontos bizalmas és nyilvános ügyfelek közötti különbségtétel, ez hatással van, hogy mennyi ideig használható a frissítési jogkivonatokat. További információ a különböző típusú ügyfelek: [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>A frissítési jogkivonatokat bizalmas ügyfél token élettartama
-Bizalmas ügyfelek olyan alkalmazások, amelyek tudja biztonságosan tárolni ügyfél jelszót (titkos). Hogy a rendszer tudja, hogy kérések érkeznek, az ügyfélalkalmazás nem pedig egy rosszindulatú szereplő. Például a webes alkalmazás nem bizalmas ügyfél, mert egy ügyfélkulcsot képes tárolni a webkiszolgálón. Nem lesz közzétéve. Mivel ezek a folyamatok biztonságosabb, van-e a frissítési jogkivonatokat folyamok kiadott alapértelmezett élettartamának `until-revoked`házirend használatával nem módosítható és nem lehet visszavonni a önkéntes jelszó alaphelyzetbe állítását.
+Bizalmas ügyfelek olyan alkalmazások, amelyek tudja biztonságosan tárolni ügyfél jelszót (titkos). Hogy a rendszer tudja, hogy kérések érkeznek, a védett ügyfélalkalmazástól, és nem egy rosszindulatú szereplő. Például a webes alkalmazás nem bizalmas ügyfél, mert egy ügyfélkulcsot képes tárolni a webkiszolgálón. Nem lesz közzétéve. Mivel ezek a folyamatok biztonságosabb, van-e a frissítési jogkivonatokat folyamok kiadott alapértelmezett élettartamának `until-revoked`házirend használatával nem módosítható és nem lehet visszavonni a önkéntes jelszó alaphelyzetbe állítását.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>A nyilvános ügyfél frissítési jogkivonatokat token élettartama
 
-Nyilvános ügyfelek nem tudja biztonságosan tárolni (titkos) ügyfél jelszót. Például az iOS vagy Android-alkalmazások nem takarják tulajdonostól, titkos kulcs, egy nyilvános ügyfél akkor tekinthető. A házirendbe erőforrásokon a akadályozni, hogy frissítési jogkivonatokat, nyilvános ügyfelek régebbi, mint a megadott időszak hozzáférési/frissítési jogkivonat párokat. (Ehhez használja a frissítési Token maximális tétlenség ideje tulajdonságát.) Házirendek beállítása az adott időszakban, amelyen túl már nem fogad a frissítési jogkivonatokat is használja. (Ehhez használja a frissítési Token maximális életkora tulajdonságát.) Módosíthatja is szabályozhatja, mikor és milyen gyakran szükséges-e a felhasználó éppen csendes hitelesíteni, egy nyilvános ügyfélalkalmazás használata helyett a hitelesítő adatok újbóli frissítési jogkivonat élettartamát.
+Nyilvános ügyfelek nem tudja biztonságosan tárolni (titkos) ügyfél jelszót. Például az iOS vagy Android-alkalmazások nem takarják tulajdonostól, titkos kulcs, egy nyilvános ügyfél akkor tekinthető. A házirendbe erőforrásokon a akadályozni, hogy frissítési jogkivonatokat, nyilvános ügyfelek régebbi, mint a megadott időszak hozzáférési/frissítési jogkivonat párokat. (Ehhez használja a frissítési Token maximális inaktív idő tulajdonság (`MaxInactiveTime`).) Házirendek beállítása az adott időszakban, amelyen túl már nem fogad a frissítési jogkivonatokat is használja. (Ehhez használja a frissítési Token maximális életkora tulajdonságát.) Módosíthatja is szabályozhatja, mikor és milyen gyakran szükséges-e a felhasználó éppen csendes hitelesíteni, egy nyilvános ügyfélalkalmazás használata helyett a hitelesítő adatok újbóli frissítési jogkivonat élettartamát.
 
 ### <a name="id-tokens"></a>Azonosító-jogkivonatokat
 Webhelyek és natív ügyfelek átadott azonosító-jogkivonatokat. Azonosító-jogkivonatokat a felhasználói profil adatait tartalmazzák. Egy azonosító jogkivonat felhasználói és az ügyfél egyedi kombinációja van kötve. Azonosító-jogkivonatokat érvényesek a lejártáig. Általában egy webes alkalmazás megfelel a felhasználó a munkamenetek élettartamát az az alkalmazás azonosítója jogkivonat élettartamát adja ki a felhasználó. Egy azonosító jogkivonatot, milyen gyakran a webes alkalmazás lejár az alkalmazás munkamenet, és milyen gyakran szükség van a felhasználó számára (csendes vagy interaktív) az Azure AD-val hitelesíthető vezérlésére élettartama módosíthatja.
@@ -108,6 +108,8 @@ Hozzon létre, és hozzárendelheti a jogkivonatok élettartama házirend, az ad
 A kapcsolat, alkalmazás és szolgáltatás egyszerű objektumok között kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directoryban](active-directory-application-objects.md).
 
 A token érvényességi ki lesz értékelve a jogkivonat időpontjában. A legmagasabb prioritású az alkalmazást, amely használatban van a házirend érvénybe lép.
+
+Itt használt összes timespans a C# megfelelően vannak formázva [TimeSpan](https://msdn.microsoft.com/library/system.timespan) objektum - D.HH:MM:SS.  Így lenne, 80 nap és 30 perc `80.00:30:00`.  A bevezető D törölhetők, ha nulla, így 90 percig lenne `00:90:00`.  
 
 > [!NOTE]
 > Íme egy példa.
@@ -177,7 +179,7 @@ A felhasználók hitelesítést gyakrabban csökkenti a maximális életkora ké
 A felhasználók hitelesítést gyakrabban csökkenti a maximális életkora kényszeríti. Mert minősül, hogy kevésbé biztonságos, mint a multi-factor authentication hitelesítést, azt javasoljuk, hogy egy érték, amely egyenlő vagy kisebb, mint a multi-factor Authentication munkamenet Token maximális életkora tulajdonság állítani ezt a tulajdonságot.
 
 ### <a name="multi-factor-session-token-max-age"></a>Multi-factor Authentication munkamenet Token maximális életkora
-**String:** MaxAgeSessionMultiFactor
+**Karakterlánc:** MaxAgeSessionMultiFactor
 
 **Érinti:** munkamenet jogkivonatok (állandó és nem állandó)
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: f3c8853331121fc1e267f6c569279f7d8df907b5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 995f40599c059434c419bea95019f8700f756ad8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Windows virtuális gép létrehozása
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Virtuális gépek léteznie kell a hálózat elérését gyorsítja fel engedélyezve van. Ez a funkció nem engedélyezhető a meglévő virtuális gépeken. Az alábbi lépésekkel gyorsított hálózatkezelés engedélyezése:
 >   1. A virtuális gép törlése
 >   2. Hozza létre újra a virtuális gép gyorsított hálózattal engedélyezve
@@ -52,7 +52,7 @@ Gyorsított hálózatkezelés legtöbb általános célú és számítási optim
 További információ a Virtuálisgép-példányok: [Windows Virtuálisgép-méretek](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="regions"></a>Régiók
-Elérhető az összes Azure-régiók és Azure Government felhő. 
+Elérhető az összes Azure-régiók és Azure Government felhő.
 
 ## <a name="limitations"></a>Korlátozások
 A következő korlátozások vonatkoznak az e funkció használata esetén:
@@ -65,11 +65,11 @@ Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure PowerShell gyo
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Telepítés [Azure PowerShell](/powershell/azure/install-azurerm-ps) verzió 5.1.1-es vagy újabb. A jelenleg telepített verzió megkereséséhez futtassa `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni kell, telepítse a legújabb verziót a AzureRM modul a [PowerShell-galériában](https://www.powershellgallery.com/packages/AzureRM). A PowerShell-munkamenetben jelentkezzen be egy Azure-fiók használatával [Add-AzureRmAccount](/powershell/module/AzureRM.Profile/Add-AzureRmAccount).
+Telepítés [Azure PowerShell](/powershell/azure/install-azurerm-ps) verzió 5.1.1-es vagy újabb. A jelenleg telepített verzió megkereséséhez futtassa `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni kell, telepítse a legújabb verziót a AzureRM modul a [PowerShell-galériában](https://www.powershellgallery.com/packages/AzureRM). A PowerShell-munkamenetben jelentkezzen be egy Azure-fiók használatával [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount).
 
 A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevekre *myResourceGroup*, *myNic*, és *myVM*.
 
-Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *centralus* helye:
+Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) paranccsal. Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *centralus* helye:
 
 ```powershell
 New-AzureRmResourceGroup -Name "myResourceGroup" -Location "centralus"
@@ -200,13 +200,13 @@ New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "cent
 
 ## <a name="confirm-the-driver-is-installed-in-the-operating-system"></a>Ellenőrizze az illesztőprogram telepítve van az operációs rendszer
 
-Miután létrehozta a virtuális Gépet az Azure-ban, csatlakoztassa a virtuális Gépet, és győződjön meg arról, hogy az illesztőprogram telepítve van-e a Windows rendszerben. 
+Miután létrehozta a virtuális Gépet az Azure-ban, csatlakoztassa a virtuális Gépet, és győződjön meg arról, hogy az illesztőprogram telepítve van-e a Windows rendszerben.
 
 1. Egy webböngészőben nyissa meg az Azure [portal](https://portal.azure.com) és jelentkezzen be az Azure-fiókjával.
 2. A mezőbe a szöveget tartalmazó *keresési erőforrások* az Azure portál felső részén írja be a *myVm*. Ha **myVm** jelenik meg a keresési eredmények között kattintson rá. Ha **létrehozása** alatt látható a **Connect** gomb, Azure még nem fejeződött be a virtuális gép létrehozása. Kattintson a **Connect** a áttekintése után csak bal felső sarkában többé nem láthatja **létrehozása** alatt a **Connect** gombra.
 3. Adja meg a felhasználónevet és jelszót adott meg [a virtuális gép létrehozása](#create-the-virtual-machine). Ha soha nem csatlakozott egy Windows Azure-ban, tekintse meg [kapcsolódás a virtuális gép](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 4. Kattintson a jobb gombbal a Start gombra, és kattintson a **Eszközkezelő**. Bontsa ki a **hálózati adapterek** csomópont. Ellenőrizze, hogy a **Mellanox ConnectX-3 virtuális függvény Ethernet-Adapter** az alábbi ábrán látható módon jelenik meg:
-   
+
     ![Eszközkezelő](./media/create-vm-accelerated-networking/device-manager.png)
 
 Gyorsított hálózatkezelés engedélyezve van a virtuális gép számára.

@@ -1,31 +1,31 @@
 ---
-title: "Az Azure piactéren használatával cége"
-description: "Részletes útmutató és az Azure piactéren új közzétevők közzétételi Ellenőrzőlisták"
+title: Az Azure piactéren használatával cége
+description: Részletes útmutató és az Azure piactéren új közzétevők közzétételi Ellenőrzőlisták
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 85baba61d5603539641f45f7ab1d722ca98514ad
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fd51ad8289ac03bf7b4d2a5bd0222db98bcf6737
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="grow-your-business-by-using-the-azure-marketplace"></a>Az Azure piactéren használatával cége
 
 Miután az Azure piactér felsorolást a műszaki eszközök már fejlesztett, marketing hasznosítani az alkalmazás és a növekedéssel a termék érkező felhasználók száma növelhető. 
 
 >[!NOTE]
->A közzétételi folyamat és műszaki követelményeken kapcsolatban, olvassa el a [Azure piactér és AppSource közzétételi útmutató](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide).
+>A közzétételi folyamat és műszaki követelményeken kapcsolatban, olvassa el a [Azure piactér és AppSource közzétételi útmutató](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 
 ## <a name="how-marketing-helps"></a>Hogyan segíti az marketing
 
@@ -203,7 +203,7 @@ Részletes jelentések megjelenítése a felhasználói adatok, például a vál
 - Viszonteladó
 - Utónév
 - Vezetéknév
-- E-mail cím
+- E-mail
 - Cég neve
 - A tranzakció dátuma
 - Előfizetés neve

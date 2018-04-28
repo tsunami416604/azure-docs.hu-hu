@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2018
+ms.date: 04/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 22eee6c2253e6b1ff92de0cebf4fea451a0a8fe5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8c2a7e723d21f79f21e92da31fbc4fd49d64fd37
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>JIT-virtuális gép hozzáférés kezelése
 
@@ -119,6 +119,16 @@ Kérjen hozzáférést egy virtuális géphez:
 
 4. A **hozzáférés kérése**, konfigurálnia az egyes virtuális gépek a portok megnyitásához és a forrás IP-címe, amely a port meg van nyitva, és a időszak, amelynek az port meg van nyitva. Kérhet hozzáférést csak a portok az imént beállított idő házirendben. Minden porthoz tartozik egy engedélyezett maximális időtartamot a csak származó idő házirendben.
 5. Válassza ki **portok megnyitása**.
+
+> [!NOTE]
+> Amikor egy felhasználó egy virtuális Géphez való hozzáférést igényel, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) írási hozzáférést biztosítson a virtuális gép az engedélyeket. Ha írási engedélyekkel rendelkeznek, elfogadja a kérelmet.
+>
+>
+
+> [!NOTE]
+> Ha egy felhasználó hozzáférést kér a rendszer proxy mögött, a "Saját IP-címe" beállítás nem működnek. Előfordulhat, hogy a szervezet teljes tartományának megadása szükséges.
+>
+>
 
 ## <a name="editing-a-just-in-time-access-policy"></a>Szerkesztés csak hozzáférési házirendben idő
 

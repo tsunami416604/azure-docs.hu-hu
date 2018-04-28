@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 0f560a02a51239cff0a7d4057ec7beb2f0f5c5c5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f439c65d9b4fbeb78623312c426767f89dfd9fab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Az Azure Active Directory B2C: Többtényezős hitelesítés engedélyezése a felhasználók felé néző alkalmazásokban
-Az Azure Active Directory (Azure AD) B2C integrálható közvetlenül [Azure multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) , hogy adhat hozzá egy második biztonsági szintként, regisztrációs és a bejelentkezési élmény a felhasználók felé néző alkalmazásokban. És ehhez egyetlen kódsort írása nélkül. Jelenleg támogatott telefonhívási és az SMS-ellenőrzéseket. Ha már létrehozott regisztráció és bejelentkezés házirendek, a multi-factor Authentication továbbra is engedélyezheti.
+Az Azure Active Directory (Azure AD) B2C integrálható közvetlenül [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) , hogy adhat hozzá egy második biztonsági szintként, regisztrációs és a bejelentkezési élmény a felhasználók felé néző alkalmazásokban. És ehhez egyetlen kódsort írása nélkül. Jelenleg támogatott telefonhívási és az SMS-ellenőrzéseket. Ha már létrehozott regisztráció és bejelentkezés házirendek, a multi-factor Authentication továbbra is engedélyezheti.
 
 > [!NOTE]
 > Többtényezős hitelesítés is engedélyezhető, nem csak a meglévő házirendek szerkesztésével regisztráció és bejelentkezés házirendek létrehozásakor.

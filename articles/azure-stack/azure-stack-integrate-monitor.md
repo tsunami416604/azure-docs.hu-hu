@@ -1,11 +1,11 @@
 ---
-title: "Külső figyelési megoldást integrálása Azure verem |} Microsoft Docs"
-description: "Útmutató: Azure verem integrálni az adatközpontban lévő külső felügyeleti megoldással."
+title: Külső figyelési megoldást integrálása Azure verem |} Microsoft Docs
+description: 'Útmutató: Azure verem integrálni az adatközpontban lévő külső felügyeleti megoldással.'
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3435ada40afb9f1c6e57be64d1b9086d0cdaefd9
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4188d114aa86086821b2c640d7f2d98a78bcbf4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Külső figyelési megoldást integrálása Azure verem
 
@@ -92,14 +92,14 @@ A beépülőmodul-fájlt "Azurestack_plugin.py" konfigurálása a következő pa
 
 Ha nem használja az Operations Manager, Nagios, illetve a Nagios-alapú megoldás, a PowerShell használatával széles skálájával figyelési megoldásoknak integrálása az Azure-verem engedélyezése.
  
-1. A PowerShell segítségével, győződjön meg arról, hogy rendelkezik [PowerShell telepítése és konfigurálása](azure-stack-powershell-configure-quickstart.md) Azure verem üzemeltető környezetben. Telepítse a PowerShell helyi számítógépre, amely képes elérni az erőforrás-kezelő (rendszergazda) végpont (https://adminmanagement [régió].[External_FQDN]).
+1. A PowerShell segítségével, győződjön meg arról, hogy rendelkezik [PowerShell telepítése és konfigurálása](azure-stack-powershell-configure-quickstart.md) Azure verem üzemeltető környezetben. Telepítse a PowerShell helyi számítógépre, amely képes elérni az erőforrás-kezelő (rendszergazda) végpont (https://adminmanagement. [régió]. [External_FQDN]).
 
 2. A következő parancsokat a Azure verem környezet Azure verem kezelőként való csatlakozáshoz:
 
    ```PowerShell
    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
 
-   Login-AzureRmAccount -EnvironmentName "AzureStackAdmin"
+   Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
 3. Váltson arra a könyvtárra, amelybe telepítette a [Azure verem eszközök](https://github.com/Azure/AzureStack-Tools) a PowerShell telepítése, például c:\azurestack-tools-master részeként. Ezután váltson az infrastruktúra és az infrastruktúra modul importálása a következő parancsot:
 
@@ -145,7 +145,7 @@ A kérelem lekérdezi az alapértelmezett szolgáltató előfizetés az összes 
 
 |Argumentum  |Leírás  |
 |---------|---------|
-|armendpoint     |  Az Azure-verem környezethez, a formátum https://adminmanagement az Azure Resource Manager végpontja. {RegionName}. {Külső FQDN}. Például, ha a külső FQDN-je *azurestack.external* régió neve pedig *helyi*, akkor a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.       |
+|armendpoint     |  Az Azure Resource Manager végpont az Azure-verem környezet formátumú https://adminmanagement.{RegionName}.{External FQDN}. Például, ha a külső FQDN-je *azurestack.external* régió neve pedig *helyi*, akkor a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.       |
 |subid     |   A felhasználó, aki a hívás előfizetés-azonosítója. Ez az API lekérdezés csak olyan felhasználó, aki jogosult az alapértelmezett szolgáltató előfizetéshez használható.      |
 |RegionName     |    Az Azure Alkalmazásveremben üzembe régió neve.     |
 |API-verzió     |  Az ilyen kérést használt protokoll verziója. 2016-05-01 kell használnia.      |
@@ -206,7 +206,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*id*     |      A riasztás egyedi azonosítója.   |
 |*name*     |     A riasztás belső nevét.   |
-|*Típusa*     |     Erőforrás-definícióban.    |
+|*type*     |     Erőforrás-definícióban.    |
 |*hely*     |       A régió neve.     |
 |*címkét*     |   Az erőforráscímkék.     |
 |*closedtimestamp*    |  UTC idő, amikor a riasztás be lett zárva.    |
@@ -222,12 +222,12 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*description*     |  A regisztrált összetevőjének leírása.   |
 |*servicetype*     |   A regisztrált fabric-szolgáltatás típusú.   |
 |*Szervizkiszolgáló*     |   Ajánlott javítási lépéseket.    |
-|*Típusa*     |   Riasztási típus.    |
+|*type*     |   Riasztási típus.    |
 |*resourceRegistrationid*    |     A regisztrált erőforrás-azonosítója.    |
 |*resourceProviderRegistrationID*   |    A regisztrált erőforrás-szolgáltató az érintett összetevő azonosítója.  |
 |*serviceregistrationid*     |    A regisztrált szolgáltatás azonosítója.   |
-|*severity*     |     Riasztás súlyossága.  |
-|*state*     |    A riasztás állapota.   |
+|*Súlyosság:*     |     Riasztás súlyossága.  |
+|*Állapot*     |    A riasztás állapota.   |
 |*Cím*     |    Riasztás címét.   |
 |*impactedresourceid*     |     Érintett erőforrás azonosítója.    |
 |*ImpactedresourceDisplayName*     |     Az érintett erőforrás nevét.  |
@@ -248,7 +248,7 @@ A kérelem egyedi azonosítójú riasztás bezárása után
 
 |Argumentum  |Leírás  |
 |---------|---------|
-|*armendpoint*     |   Az Azure-verem környezethez, a formátum https://adminmanagement az erőforrás-kezelő végpontját. {RegionName}. {Külső FQDN}. Például, ha a külső FQDN-je *azurestack.external* régió neve pedig *helyi*, akkor a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.      |
+|*armendpoint*     |   Az Azure-verem környezet formátumú erőforrás-kezelő végpont https://adminmanagement.{RegionName}.{External FQDN}. Például, ha a külső FQDN-je *azurestack.external* régió neve pedig *helyi*, akkor a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.      |
 |*subid*     |    A felhasználó, aki a hívás előfizetés-azonosítója. Ez az API lekérdezés csak olyan felhasználó, aki jogosult az alapértelmezett szolgáltató előfizetéshez használható.     |
 |*RegionName*     |   Az Azure Alkalmazásveremben üzembe régió neve.      |
 |*api-version*     |    Az ilyen kérést használt protokoll verziója. 2016-05-01 kell használnia.     |
@@ -349,7 +349,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |---------|---------|
 |*id*     |      A riasztás egyedi azonosítója.   |
 |*name*     |     A riasztás belső nevét.   |
-|*Típusa*     |     Erőforrás-definícióban.    |
+|*type*     |     Erőforrás-definícióban.    |
 |*hely*     |       A régió neve.     |
 |*címkét*     |   Az erőforráscímkék.     |
 |*closedtimestamp*    |  UTC idő, amikor a riasztás be lett zárva.    |
@@ -365,12 +365,12 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |*description*     |  A regisztrált összetevőjének leírása.   |
 |*servicetype*     |   A regisztrált fabric-szolgáltatás típusú.   |
 |*Szervizkiszolgáló*     |   Ajánlott javítási lépéseket.    |
-|*Típusa*     |   Riasztási típus.    |
+|*type*     |   Riasztási típus.    |
 |*resourceRegistrationid*    |     A regisztrált erőforrás-azonosítója.    |
 |*resourceProviderRegistrationID*   |    A regisztrált erőforrás-szolgáltató az érintett összetevő azonosítója.  |
 |*serviceregistrationid*     |    A regisztrált szolgáltatás azonosítója.   |
-|*severity*     |     Riasztás súlyossága.  |
-|*state*     |    A riasztás állapota.   |
+|*Súlyosság:*     |     Riasztás súlyossága.  |
+|*Állapot*     |    A riasztás állapota.   |
 |*Cím*     |    Riasztás címét.   |
 |*impactedresourceid*     |     Érintett erőforrás azonosítója.    |
 |*ImpactedresourceDisplayName*     |     Az érintett erőforrás nevét.  |
@@ -393,7 +393,7 @@ A kérés állapotát az összes regisztrált erőforrás-szolgáltató lekérde
 
 |Argumentumok  |Leírás  |
 |---------|---------|
-|*armendpoint*     |    Az Azure-verem környezethez, a formátum https://adminmanagement az erőforrás-kezelő végpontja. {RegionName}. {Külső FQDN}. Például, ha a külső FQDN-je azurestack.external, és helyi régió nevét, majd a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.     |
+|*armendpoint*     |    A Resource Manager végpont az Azure-verem környezet formátumú https://adminmanagement.{RegionName}.{External FQDN}. Például, ha a külső FQDN-je azurestack.external, és helyi régió nevét, majd a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.     |
 |*subid*     |     A felhasználó, aki a hívás előfizetés-azonosítója. Ez az API lekérdezés csak olyan felhasználó, aki jogosult az alapértelmezett szolgáltató előfizetéshez használható.    |
 |*RegionName*     |     Az Azure Alkalmazásveremben üzembe régió neve.    |
 |*api-version*     |   Az ilyen kérést használt protokoll verziója. 2016-05-01 kell használnia.      |
@@ -435,7 +435,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*Azonosító*     |   A riasztás egyedi azonosítója.      |
 |*name*     |  A riasztás belső nevét.       |
-|*Típusa*     |  Erőforrás-definícióban.       |
+|*type*     |  Erőforrás-definícióban.       |
 |*hely*     |  A régió neve.       |
 |*címkét*     |     Az erőforráscímkék.    |
 |*registrationId*     |   Az erőforrás-szolgáltató regisztrálása egyedi.      |
@@ -462,7 +462,7 @@ A kérelem egy adott regisztrált erőforrás-szolgáltató állapot beolvasása
 
 |Argumentumok  |Leírás  |
 |---------|---------|
-|*armendpoint*     |    Az Azure-verem környezethez, a formátum https://adminmanagement az erőforrás-kezelő végpontja. {RegionName}. {Külső FQDN}. Például, ha a külső FQDN-je azurestack.external, és helyi régió nevét, majd a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.     |
+|*armendpoint*     |    A Resource Manager végpont az Azure-verem környezet formátumú https://adminmanagement.{RegionName}.{External FQDN}. Például, ha a külső FQDN-je azurestack.external, és helyi régió nevét, majd a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.     |
 |*subid*     |A felhasználó, aki a hívás előfizetés-azonosítója. Ez az API lekérdezés csak olyan felhasználó, aki jogosult az alapértelmezett szolgáltató előfizetéshez használható.         |
 |*RegionName*     |  Az Azure Alkalmazásveremben üzembe régió neve.       |
 |*api-version*     |  Az ilyen kérést használt protokoll verziója. 2016-05-01 kell használnia.       |
@@ -503,7 +503,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*Azonosító*     |   A riasztás egyedi azonosítója.      |
 |*name*     |  A riasztás belső nevét.       |
-|*Típusa*     |  Erőforrás-definícióban.       |
+|*type*     |  Erőforrás-definícióban.       |
 |*hely*     |  A régió neve.       |
 |*címkét*     |     Az erőforráscímkék.    |
 |*registrationId*     |   Az erőforrás-szolgáltató regisztrálása egyedi.      |

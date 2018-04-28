@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a340cb3d73e0aaa86a5b7beb555133daed39d8b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services kibővített
 
@@ -22,7 +22,7 @@ Kibővített, az ügyfél lekérdezések elosztható több *replikák lekérdez�
 
 Egy tipikus kiszolgáló telepítése esetén egy kiszolgáló mind feldolgozási és lekérdezés kiszolgálóként szolgál. Ha a kiszolgálón modellekkel ügyfél lekérdezések száma meghaladja a lekérdezés feldolgozása egységek (QPU) a kiszolgáló terv, vagy a modell feldolgozása a lekérdezési munkaterhelések egy időben történik, a teljesítmény csökkenhet. 
 
-Kibővített hozhat létre a lekérdezés-készletben legfeljebb hét további lekérdezési replikával (nyolc összesen, beleértve a kiszolgáló). Méretezheti a kritikus időpontokban QPU kielégítése érdekében lekérdezés replikák száma, és bármikor elkülönítheti a feldolgozási kiszolgáló, a lekérdezés készletből. 
+Kibővített hozhat létre a lekérdezés-készletben legfeljebb hét további lekérdezési replikával (nyolc összesen, beleértve a kiszolgáló). Méretezheti a kritikus időpontokban QPU kielégítése érdekében lekérdezés replikák száma, és bármikor elkülönítheti a feldolgozási kiszolgáló, a lekérdezés készletből. Az összes lekérdezés replikák és a kiszolgáló ugyanabban a régióban jönnek létre.
 
 A lekérdezés-készletben található lekérdezés replikák száma, függetlenül feldolgozási terheléshez nem osztják lekérdezés replikák között. A feldolgozó kiszolgáló egyetlen kiszolgáló szolgál. Lekérdezés replikák ellenőrizhető, hogy csak a lekérdezések a lekérdezés készletben található összes replikát szinkronizálja modellekkel. 
 
@@ -73,11 +73,17 @@ Használja a **szinkronizálási** műveletet.
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-PowerShell, a szinkronizálási futtatásához [frissítése a legújabb](https://github.com/Azure/azure-powershell/releases) 5.01 vagy magasabb AzureRM modul. Használjon [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+PowerShell, mielőtt [telepítse vagy frissítse a legújabb AzureRM modul](https://github.com/Azure/azure-powershell/releases). 
+
+A lekérdezés replikák száma beállításához használja [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Adja meg a nem kötelező `-ReadonlyReplicaCount` paraméter.
+
+Szinkronizálás futtatása, használja a [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+
+
 
 ## <a name="connections"></a>Kapcsolatok
 
-A kiszolgáló – áttekintés lapon nincsenek két kiszolgáló nevét. Ha még kiszolgáló kibővített még nincs konfigurálva, akkor mindkét kiszolgáló neve azonos működik. Ha a kiszolgáló kibővített megfelelően konfigurált, szüksége lesz a kapcsolat típusától függően a megfelelő kiszolgáló nevének megadásához. 
+A kiszolgáló – áttekintés lapon nincsenek két kiszolgáló nevét. Ha még kiszolgáló kibővített még nincs konfigurálva, akkor mindkét kiszolgáló neve azonos működik. Miután a kiszolgáló kibővített konfigurál, meg kell adnia a megfelelő kiszolgáló nevét, a kapcsolat típusától függően. 
 
 Például a Power BI Desktop, az Excel és az egyéni alkalmazások használatát a végfelhasználói ügyfélkapcsolatok **kiszolgálónév**. 
 

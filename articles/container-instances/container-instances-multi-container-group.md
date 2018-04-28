@@ -3,17 +3,17 @@ title: Több tároló csoportokat az Azure-tároló példányok telepítése
 description: Útmutató az Azure-tároló esetekben több tároló egy tároló-csoport központi telepítését.
 services: container-instances
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 58fd4c18df5ec0a5d02be0e6e89cb2b4af26b20e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5447598286e6f0dd8578af11f1789a8c5f477d5a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-container-group"></a>A tároló csoport telepítése
 
@@ -108,7 +108,7 @@ Ez a példa egy tárolócsoport két tárolókhoz, egy nyilvános IP-címet, ké
 }
 ```
 
-Egy tároló titkos kép beállításjegyzék használatát, az objektum hozzáadása a JSON-dokumentum, az alábbi formátumban.
+Egy tároló titkos kép beállításjegyzék használatát, az objektum hozzáadása a JSON-dokumentum, az alábbi formátumban. Egy megvalósítási példát szemléltet konfiguráció, tekintse meg a [ACI Resource Manager-sablonra való hivatkozást] [ template-reference] dokumentációját.
 
 ```json
 "imageRegistryCredentials": [
@@ -134,7 +134,7 @@ A sablon üzembe helyezése a [az csoport központi telepítésének létrehozá
 az group deployment create --resource-group myResourceGroup --name myContainerGroup --template-file azuredeploy.json
 ```
 
-Néhány másodpercen belül egy kezdeti választ kell kapnia az Azure-ból.
+Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát.
 
 ## <a name="view-deployment-state"></a>Központi telepítés állapotának megtekintése
 
@@ -210,3 +210,4 @@ Ez a cikk a több tároló Azure tároló példánya telepítéséhez szüksége
 [az-container-show]: /cli/azure/container#az_container_show
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-deployment-create]: /cli/azure/group/deployment#az_group_deployment_create
+[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups

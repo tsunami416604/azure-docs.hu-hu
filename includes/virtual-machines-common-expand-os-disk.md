@@ -22,7 +22,7 @@ Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, é
 1. Jelentkezzen be a Microsoft Azure-fiókjába erőforrás-kezelő módban, és válassza ki az előfizetését a következő módon:
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Állítsa az erőforráscsoport és a virtuális gép nevét a következőre:
@@ -65,7 +65,7 @@ Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, é
 1. Jelentkezzen be a Microsoft Azure-fiókjába erőforrás-kezelő módban, és válassza ki az előfizetését a következő módon:
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Állítsa az erőforráscsoport és a virtuális gép nevét a következőre:
@@ -109,7 +109,7 @@ Ebben a cikkben a Powershell Azure Resource Manager-moduljaival bővítettük eg
 Unamanged lemezek:
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
@@ -122,7 +122,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 Managed Disks:
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'

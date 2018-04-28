@@ -1,41 +1,30 @@
 ---
-title: "Helyettesítő kulcsok létrehozása identitásával |} Microsoft Docs"
-description: "Megtudhatja, hogyan IDENTITÁS használatára a táblákon helyettesítő kulcsok létrehozásához."
+title: Helyettesítő kulcsok - Azure SQL Data Warehouse létrehozásához AZONOSÍTÓJÁNAK használatával |} Microsoft Docs
+description: Javaslatok és Példák helyettesítő kulcsok létrehozása az Azure SQL Data Warehouse táblákon azonosító tulajdonsággal.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: e10b58743fad5f7c2c4f00b51f06d4ec9bcb6768
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: ab028705f5af7c37017d2e697240b7d3436f5f71
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="create-surrogate-keys-by-using-identity"></a>Identitásával helyettesítő kulcsok létrehozása
-> [!div class="op_single_selector"]
-> * [– Áttekintés][Overview]
-> * [Adattípusok][Data Types]
-> * [Terjesztése][Distribute]
-> * [Index][Index]
-> * [Partíció][Partition]
-> * [Statisztika][Statistics]
-> * [Ideiglenes][Temporary]
-> * [Identitás][Identity]
-> 
-> 
+# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse helyettesítő kulcsok létrehozásához AZONOSÍTÓJÁNAK használatával
+Javaslatok és Példák helyettesítő kulcsok létrehozása az Azure SQL Data Warehouse táblákon azonosító tulajdonsággal.
 
-Sok adatok modelers, például azok a data warehouse modellek tervezésekor helyettesítő kulcsok létrehozásához a táblákon. Az IDENTITÁS tulajdonsággal e cél eléréséhez egyszerű és hatékony terhelés teljesítmény befolyásolása nélkül. 
+## <a name="what-is-a-surrogate-key"></a>Mi az a helyettes kulcs?
+Helyettes kulcs egy tábla minden egyes sorára egyedi azonosító oszlop. A kulcs nem jön létre a tábla adatai. Adatok modelers, például azok a data warehouse modellek tervezésekor helyettesítő kulcsok létrehozásához a táblákon. Az IDENTITÁS tulajdonsággal e cél eléréséhez egyszerű és hatékony terhelés teljesítmény befolyásolása nélkül.  
 
-## <a name="get-started-with-identity"></a>Ismerkedés az IDENTITÁS
+## <a name="creating-a-table-with-an-identity-column"></a>Az azonosító oszlop a tábla létrehozása
+Az azonosító tulajdonság célja, hogy az nem befolyásolja a terhelés teljesítmény között az adatraktár összes terjesztési kiterjesztése. IDENTITÁS megvalósítása ezért objektumorientált felé ezen célok eléréséhez. 
+
 Egy táblát az azonosító tulajdonság rendelkezőként, amikor először hoz létre a tábla a következő utasítás hasonló szintaxissal definiálhatja:
 
 ```sql
@@ -52,8 +41,7 @@ WITH
 
 Ezután `INSERT..SELECT` a táblázat feltöltéséhez.
 
-## <a name="behavior"></a>Viselkedés
-Az azonosító tulajdonság célja, hogy az nem befolyásolja a terhelés teljesítmény között az adatraktár összes terjesztési kiterjesztése. IDENTITÁS megvalósítása ezért objektumorientált felé ezen célok eléréséhez. Ez a szakasz a teljes körűen jobb megértése érdekében a végrehajtási apró mutatja be.  
+Ez a szakasz a többi teljes körűen jobb megértése érdekében a végrehajtási apró mutatja be.  
 
 ### <a name="allocation-of-values"></a>Foglalási értékek
 Az azonosító tulajdonság nem biztosítja a sorrendben, amelyben a helyettesítő értékek le van foglalva, amely tükrözi a működését, az SQL Server és az Azure SQL Database. Azonban az Azure SQL Data Warehouse garancia hiányában hangsúlyozottan. 
@@ -100,7 +88,7 @@ Ha ezek a feltételek bármelyike teljesül, az oszlop nem NULL helyett az azono
 ### <a name="create-table-as-select"></a>TABLE AS SELECT LÉTREHOZÁSA
 A következő dokumentált válassza ki az SQL Server viselkedést létrehozása TABLE AS kiválasztása (CTAS)... . Azonban nem adhat meg egy azonosító tulajdonság oszlop definíciójában a `CREATE TABLE` része az utasítást. Az IDENTITY függvény a is használhatja a `SELECT` a CTAS része. A táblázat feltöltéséhez, kell használnia `CREATE TABLE` megadhatók a tábla követ `INSERT..SELECT` való feltöltése.
 
-## <a name="explicitly-insert-values-into-an-identity-column"></a>Explicit módon értékek beszúrása azonosító oszlop 
+## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explicit módon értékek beszúrása azonosító oszlop 
 Támogatja az SQL Data Warehouse `SET IDENTITY_INSERT <your table> ON|OFF` szintaxist. Ez a szintaxis segítségével explicit módon értékek beszúrása az identitásoszlop.
 
 Sok adatok modelers, például a dimenziók bizonyos soraihoz előre meghatározott negatív értékek használata. Példa: "az ismeretlen tag" sor vagy a -1. 
@@ -124,11 +112,10 @@ FROM    dbo.T1
 ;
 ```    
 
-## <a name="load-data-into-a-table-with-identity"></a>Adatok betöltése az IDENTITÁS tartalmazó tábla
+## <a name="loading-data"></a>Adatok betöltése
 
 Az azonosító tulajdonság jelenléte rendelkezik néhány hatással vannak az Adatbetöltési kód. Ez a szakasz néhány alapvető mintázatokból az adatok táblába töltéséhez identitásával mutatja be. 
 
-### <a name="load-data-with-polybase"></a>Adatok betöltése PolyBase-szel
 Adatok betöltése a következő táblába, és hozzon létre egy helyettesítő kulcsot használva IDENTITY, hozzon létre a táblát, és ezután használja az INSERT... Válassza ki, vagy szúrja be. A betöltése ÉRTÉKEKET.
 
 A következő példa az alapvető mintát információk találhatók:
@@ -160,28 +147,16 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE] 
-> Nincs használható `CREATE TABLE AS SELECT` jelenleg, amikor az adatok betöltését azonosító oszlopot tartalmazó tábla.
+> Nincs lehetséges létrehozása TABLE AS kiválasztása a "jelenleg, amikor az adatok betöltését azonosító oszlopot tartalmazó tábla.
 > 
 
-Az adatok betöltéséhez a tömeges másolási funkciójával (BCP) eszközzel további információkért tekintse meg a következő cikkeket:
+Az adatok betöltéséhez további információkért lásd: [tervezése bontsa ki, betöltés és átalakítás (ELT) az Azure SQL Data Warehouse](design-elt-data-loading.md) és [gyakorlati tanácsok betöltése](guidance-for-loading-data.md).
 
-- [A polybase-zel betöltése][]
-- [PolyBase az ajánlott eljárások][]
 
-### <a name="load-data-with-bcp"></a>Adatok betöltése a BCP használatával
-BCP parancssori eszköz segítségével adatok betöltése az SQL Data Warehouse-t. A paraméterek egyike (-E) BCP viselkedését vezérlő az azonosító oszlopot tartalmazó tábla adatainak betöltésekor. 
+## <a name="system-views"></a>Rendszernézetek
+Használhatja a [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) katalógus nézetre, és azonosíthatja a azonosítótulajdonság tartalmazó oszlop.
 
-Ha -E meg van adva, az oszlop a bemeneti fájl identitású tárolt értékek kerülnek. Ha van -E *nem* adott, akkor ebben az oszlopban szereplő értékek figyelmen kívül lesznek hagyva. Ha az azonosító oszlop nincs megadva, majd az adatok betöltése normál. Az értékek a tulajdonság a növekvő, mind a seed házirendnek megfelelően jönnek létre.
-
-Adatok betöltése BCP segítségével további információkért tekintse meg a következő cikkeket:
-
-- [A BCP-vel betöltése][]
-- [A BCP az MSDN-en][]
-
-## <a name="catalog-views"></a>Katalógus-nézetek
-Az SQL Data Warehouse támogatja a `sys.identity_columns` katalógus megtekintése. Ez a nézet segítségével azonosíthatja a azonosítótulajdonság tartalmazó oszlop.
-
-Jobb megértése érdekében az adatbázis-séma segítségével a példa bemutatja, hogyan integrálható `sys.identity_columns` a többi rendszer katalógus nézetek:
+Jobb megértése érdekében az adatbázis-séma segítségével a példa bemutatja, hogyan integrálható sys.identity_column "a többi rendszer katalógus nézetek:
 
 ```sql
 SELECT  sm.name
@@ -202,28 +177,27 @@ AND     tb.name = 'T1'
 ```
 
 ## <a name="limitations"></a>Korlátozások
-Az azonosító tulajdonság nem használható a következő esetekben:
+Az azonosító tulajdonság nem használható:
 - Ha az oszlop adattípusához nincs INT vagy BIGINT
-- Ha az oszlop is a terjesztési kulcs
-- Ha a tábla nem a külső tábla 
+- Ha az oszlop értéke is a terjesztési kulcs
+- Ha a tábla-e a külső tábla 
 
 A következő kapcsolódó funkciók nem támogatottak az SQL Data Warehouse:
 
-- [IDENTITY()][]
-- [@@IDENTITY][]
-- [SCOPE_IDENTITY][]
-- [IDENT_CURRENT][]
-- [IDENT_INCR][]
-- [IDENT_SEED][]
-- [DBCC CHECK_IDENT()][]
+- [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
+- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
+- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
+- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
+- [DBCC CHECK_IDENT()](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
 
-## <a name="tasks"></a>Feladatok
+## <a name="common-tasks"></a>Gyakori feladatok
 
-Ez a témakör néhány mintakód segítségével végrehajthat olyan gyakori feladatokat azonosító oszlop használata.
+Ez a témakör néhány mintakód segítségével végrehajthat olyan gyakori feladatokat azonosító oszlop használata. 
 
-> [!NOTE] 
-> Oszlop C1 az alábbi feladataival IDENTITÁSA.
-> 
+Oszlop C1 az alábbi feladataival IDENTITÁSA.
+ 
  
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>A legmagasabb lefoglalt érték található egy táblához
 Használja a `MAX()` működnek, mint a legmagasabb érték egy elosztott tábla számára lefoglalt meghatározásához:
@@ -254,39 +228,5 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>További lépések
 
-* Táblák fejlesztésével kapcsolatos további tudnivalókért lásd: [tábla áttekintése][Overview], [adattípusok tábla][Data Types], [táblaterjesztése] [ Distribute], [Index táblázat][Index], [tábla particionálásához][Partition], és [ Az ideiglenes táblák][Temporary]. 
-* Ajánlott eljárásokra vonatkozó további információkért lásd: [gyakorlati tanácsok az SQL Data Warehouse][SQL Data Warehouse Best Practices].  
+* Táblák fejlesztésével kapcsolatos további tudnivalókért lásd: a [táblázat áttekintése] [áttekintése].  
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Identity]: ./sql-data-warehouse-tables-identity.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-[A BCP-vel betöltése]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp/
-[A polybase-zel betöltése]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase/
-[PolyBase az ajánlott eljárások]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-polybase-guide/
-
-
-<!--MSDN references-->
-[Identity property]: https://msdn.microsoft.com/library/ms186775.aspx
-[sys.identity_columns]: https://msdn.microsoft.com/library/ms187334.aspx
-[IDENTITY()]: https://msdn.microsoft.com/library/ms189838.aspx
-[@@IDENTITY]: https://msdn.microsoft.com/library/ms187342.aspx
-[SCOPE_IDENTITY]: https://msdn.microsoft.com/library/ms190315.aspx
-[IDENT_CURRENT]: https://msdn.microsoft.com/library/ms175098.aspx
-[IDENT_INCR]: https://msdn.microsoft.com/library/ms189795.aspx
-[IDENT_SEED]: https://msdn.microsoft.com/library/ms189834.aspx
-[DBCC CHECK_IDENT()]: https://msdn.microsoft.com/library/ms176057.aspx
-
-[a BCP az MSDN-en]: https://msdn.microsoft.com/library/ms162802.aspx
-  
-
-<!--Other Web references-->  

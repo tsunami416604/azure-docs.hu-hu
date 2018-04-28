@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Site Recovery hibaelhárítása az Azure-Azure replikációjával kapcsolatos problémák és hibák |} Microsoft Docs"
-description: "Vészhelyreállítás Azure virtuális gépek replikálása hibáinak és problémáinak elhárítása"
+title: Az Azure Site Recovery hibaelhárítása az Azure-Azure replikációjával kapcsolatos problémák és hibák |} Microsoft Docs
+description: Vészhelyreállítás Azure virtuális gépek replikálása hibáinak és problémáinak elhárítása
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ad0281df19ac1696ebb7cc913045d49c652be84a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure-Azure virtuális gép replikálási problémák elhárítása
 
@@ -199,6 +199,17 @@ Ahhoz, hogy a replikáció a virtuális Gépre, a telepítés állapotát kell *
 
 - Ha **provisioningState** van **sikertelen**, forduljon a támogatási szolgálathoz elhárítása adatokkal.
 - Ha **provisioningState** van **Frissítéskísérleti**, egy másikat is első telepíthető. Ellenőrizze, hogy van-e a virtuális Gépre, várjon, amíg befejeződik, majd próbálja megismételni a sikertelen helyreállítás, hogy a folyamatban lévő műveleteket **engedélyezze a replikálást** feladat.
+
+
+## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>A COM / hiba a kötet árnyékmásolata szolgáltatás (hibakód: 151025)
+**Hibakód:** | **Lehetséges okok** | **Javaslatok**
+--- | --- | ---
+151025<br></br>**Üzenet**: Site recovery bővítmény telepítése sikertelen | -"COM + rendszeralkalmazás" szolgáltatás le van tiltva.</br></br>– "A kötet árnyékmásolata" szolgáltatás le van tiltva.| Automatikus vagy kézi indítási módban beállítani az "COM + rendszer kérelem" és "A kötet árnyékmásolata" szolgáltatásokat.
+
+### <a name="fix-the-problem"></a>A probléma elhárításához
+
+Nyissa meg a "Szolgáltatások" konzolt, és ellenőrizze a "COM + rendszeralkalmazás" és "A kötet árnyékmásolata" beállítása nem "Letiltva" az "Indítás típusa".
+  ![COM-hiba](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
 ## <a name="next-steps"></a>További lépések
 [Azure-alapú virtuális gépek replikálása](site-recovery-replicate-azure-to-azure.md)

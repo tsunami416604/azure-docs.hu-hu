@@ -1,8 +1,8 @@
 ---
-title: "Az Apache Spark on machine learning-alkalmazások Azure hdinsight létrehozása |} Microsoft Docs"
-description: "Lépésenkénti útmutató Apache Spark gépi tanulás alkalmazás elkészítése a HDInsight Spark-fürtök Jupyter notebook használatával"
+title: Az Apache Spark on machine learning-alkalmazások Azure hdinsight létrehozása |} Microsoft Docs
+description: Lépésenkénti útmutató Apache Spark gépi tanulás alkalmazás elkészítése a HDInsight Spark-fürtök Jupyter notebook használatával
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: f584ca5e-abee-4b7c-ae58-2e45dfc56bf4
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 2f7dcb9bea05a79a6647b549896c8107f9e830af
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 95daab2bd7bc57d01bc9e3c05404958edd71eecc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Az Apache Spark on machine learning-alkalmazások Azure hdinsight létrehozása
 
@@ -185,7 +183,7 @@ Ebben az alkalmazásban használja a Spark [ML adatcsatorna](https://spark.apach
 10. Állítsa le a notebook az erőforrások kijelölése. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 ## <a name="anaconda"></a>Használjon Anaconda scikit – ismerje meg a könyvtár a Spark gépi tanulás
-Az Apache Spark on hdinsight fürtök Anaconda-könyvtárakkal rendelkeznek. Ez magában foglalja a **scikit-további** könyvtár a machine Learning szolgáltatáshoz. A könyvtár is tartalmaz, amelyek közvetlenül a Jupyter notebook minta alkalmazásokat hozhatnak létre különböző adatkészletek. A scikit használatát bemutató példák-könyvtár ismerje meg, lásd: [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
+Az Apache Spark on hdinsight fürtök Anaconda-könyvtárakkal rendelkeznek. Ez magában foglalja a **scikit-további** könyvtár a machine Learning szolgáltatáshoz. A könyvtár is tartalmaz, amelyek közvetlenül a Jupyter notebook minta alkalmazásokat hozhatnak létre különböző adatkészletek. A scikit használatát bemutató példák-könyvtár ismerje meg, lásd: [ http://scikit-learn.org/stable/auto_examples/index.html ](http://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="seealso"></a>Lásd még:
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)

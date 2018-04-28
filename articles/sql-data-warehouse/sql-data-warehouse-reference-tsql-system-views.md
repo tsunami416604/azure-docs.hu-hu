@@ -1,27 +1,24 @@
 ---
-title: Az SQL Data Warehouse rendszernézetek |} Microsoft Docs
-description: Rendszer mutató hivatkozásokat tartalmaz az SQL Data Warehouse megtekinti a tartalmat.
+title: Rendszernézetek - Azure SQL Data Warehouse |} Microsoft Docs
+description: Az Azure SQL Data Warehouse támogatott rendszernézetek dokumentációjában mutató hivatkozásokat.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
-ms.assetid: 21ec594b-d270-4202-a8cd-bb150e5ae12c
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 01/22/2018
-ms.author: barbkess
-ms.openlocfilehash: 96bd74a9c68cc77d35832836afa966958ed37264
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 59929a851bca967e36e5d4cf9a02a20dae117928
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="system-views"></a>Rendszernézetek
+# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse támogatott rendszernézetek
+Hivatkozások a T-SQL-utasítások az Azure SQL Data Warehouse támogatott dokumentációját.
+
 ## <a name="sql-data-warehouse-catalog-views"></a>Az SQL Data Warehouse katalógusnézetekre
 * [sys.pdw_column_distribution_properties](http://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
@@ -87,7 +84,7 @@ A következő dinamikus felügyeleti nézetek SQL Data Warehouse alkalmazható, 
 * [sys.database_permissions](http://msdn.microsoft.com/library/ms188367.aspx)
 * [sys.database_principals](http://msdn.microsoft.com/library/ms187328.aspx)
 * [sys.database_role_members](http://msdn.microsoft.com/library/ms189780.aspx)
-* [sys.databases](http://msdn.microsoft.com/library/ms178534.aspx)
+* [sys.Databases](http://msdn.microsoft.com/library/ms178534.aspx)
 * [sys.default_constraints](http://msdn.microsoft.com/library/ms173758.aspx)
 * [sys.external_data_sources](http://msdn.microsoft.com/library/dn935019.aspx)
 * [sys.external_file_formats](http://msdn.microsoft.com/library/dn935025.aspx)
@@ -101,7 +98,7 @@ A következő dinamikus felügyeleti nézetek SQL Data Warehouse alkalmazható, 
 * [sys.key_constraints](http://msdn.microsoft.com/library/ms174321.aspx)
 * [sys.numbered_procedures](http://msdn.microsoft.com/library/ms179865.aspx)
 * [sys.objects](http://msdn.microsoft.com/library/ms190324.aspx)
-* [sys.parameters](http://msdn.microsoft.com/library/ms176074.aspx)
+* [sys.Parameters](http://msdn.microsoft.com/library/ms176074.aspx)
 * [sys.partition_functions](http://msdn.microsoft.com/library/ms187381.aspx)
 * [sys.partition_parameters](http://msdn.microsoft.com/library/ms175054.aspx)
 * [sys.partition_range_values](http://msdn.microsoft.com/library/ms187780.aspx)
@@ -129,7 +126,7 @@ A következő dinamikus felügyeleti nézetek SQL Data Warehouse alkalmazható, 
 * [sys.system_views](http://msdn.microsoft.com/library/ms187764.aspx)
 * [sys.systypes](https://msdn.microsoft.com/library/ms175109.aspx)
 * [sys.sysusers](https://msdn.microsoft.com/library/ms179871.aspx)
-* [sys.tables](http://msdn.microsoft.com/library/ms187406.aspx)
+* [sys.Tables](http://msdn.microsoft.com/library/ms187406.aspx)
 * [sys.types](http://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](http://msdn.microsoft.com/library/ms190334.aspx)
 
@@ -143,7 +140,7 @@ Az SQL Data Warehouse és Parallel Data Warehouse Analytics Platform System (PDW
 > 
 > 
 
-| Az SQL Data Warehouse DMV neve | SQL Server Transact-SQL article|
+| Az SQL Data Warehouse DMV neve | SQL Server Transact-SQL-cikk|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -223,9 +220,9 @@ A következő dinamikus felügyeleti nézetek SQL Data Warehouse alkalmazható, 
 
 ## <a name="sql-server-informationschema-views"></a>SQL Server entitástulajdonos nézetek
 * [CHECK_CONSTRAINTS](http://msdn.microsoft.com/library/ms189772.aspx)
-* [COLUMNS](http://msdn.microsoft.com/library/ms188348.aspx)
-* [PARAMETERS](http://msdn.microsoft.com/library/ms173796.aspx)
-* [ROUTINES](https://msdn.microsoft.com/library/ms188757.aspx)
+* [OSZLOPOK](http://msdn.microsoft.com/library/ms188348.aspx)
+* [PARAMÉTEREK](http://msdn.microsoft.com/library/ms173796.aspx)
+* [RUTINOK](https://msdn.microsoft.com/library/ms188757.aspx)
 * [SCHEMATA](https://msdn.microsoft.com/library/ms182642.aspx)
 * [TABLES](http://msdn.microsoft.com/library/ms186224.aspx)
 * [VIEW_COLUMN_USAGE](https://msdn.microsoft.com/library/ms190492.aspx)
@@ -233,14 +230,4 @@ A következő dinamikus felügyeleti nézetek SQL Data Warehouse alkalmazható, 
 * [VIEWS](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>További lépések
-Hivatkozás kapcsolatos további információkért lásd: [SQL Data Warehouse hivatkozás áttekintése] [SQL Data Warehouse hivatkozás áttekintése].
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
+Hivatkozás kapcsolatos további információkért lásd: [T-SQL utasítások az Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), és [T-SQL nyelvi elemei az Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md).

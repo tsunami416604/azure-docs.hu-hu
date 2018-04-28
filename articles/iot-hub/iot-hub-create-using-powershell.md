@@ -1,11 +1,11 @@
 ---
-title: "PowerShell-parancsmag használatával Azure IoT Hub létrehozása |} Microsoft Docs"
-description: "Hogyan lehet egy PowerShell-parancsmag segítségével létrehoz egy IoT-központot."
+title: PowerShell-parancsmag használatával Azure IoT Hub létrehozása |} Microsoft Docs
+description: Hogyan lehet egy PowerShell-parancsmag segítségével létrehoz egy IoT-központot.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 1d22e1a20d18e06686f893b1f4ae22e6373633b3
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: e7dbfabadf72b8abece02907cd16644ef95e67a9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>A New-AzureRmIotHub parancsmaggal IoT hub létrehozása
 
@@ -39,7 +39,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 Adja meg egy PowerShell-parancssort, jelentkezzen be az Azure-előfizetéshez a következő parancsot:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Ha több Azure-előfizetéssel rendelkezik, a jelentkezik be az Azure ad hozzáférést az összes Azure-előfizetést a hitelesítő adatok társított. Használja a következő parancsot a rendelkezésre álló használata Azure-előfizetések listázásához:
@@ -48,7 +48,7 @@ Ha több Azure-előfizetéssel rendelkezik, a jelentkezik be az Azure ad hozzáf
 Get-AzureRMSubscription
 ```
 
-Az alábbi parancs segítségével válassza ki, hogy az IoT hub létrehozására szolgáló parancsok futtatásához használni kívánt előfizetést. Az előfizetés neve vagy azonosítója is használhatja, ha az előző parancs kimenetében:
+Az alábbi parancs segítségével válassza ki azt az előfizetést, amelyet az IoT Hub létrehozásához szükséges parancsok futtatásához kíván használni. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
 ```powershell
 Select-AzureRMSubscription `
@@ -110,7 +110,7 @@ Azt is megteheti távolíthatja el az erőforráscsoportot és az összes erőfo
 Remove-AzureRmResourceGroup -Name MyIoTRG1
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most egy IoT-központot egy PowerShell-parancsmag használatával telepített, akkor érdemes lehet további felfedezése:
 
@@ -124,7 +124,7 @@ Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse m
 
 Az IoT-központ képességeit további megismeréséhez lásd:
 
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

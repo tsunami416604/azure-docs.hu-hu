@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: bsiva
-ms.openlocfilehash: cbb76aafe97e9e9b45c48a2b13bd1a6566b51fa5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 2a0f183770a07cd05963e88c672452cfeb80e567
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replikálásához és feladatátadásához a VMware virtuális gépek az Azure PowerShell használatával
 
@@ -42,10 +42,10 @@ Előkészületek:
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be a Microsoft Azure-előfizetés
 
-Jelentkezzen be az Azure-előfizetéshez Login-AzureRmAccount parancsmag segítségével
+Jelentkezzen be az Azure-előfizetéshez a Connect-AzureRmAccount parancsmaggal
 
 ```azurepowershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 Válassza ki az Azure-előfizetés szeretné replikálni a VMware virtuális gépeket. A Get-AzureRmSubscription parancsmag segítségével juthatnak az Azure-előfizetéssel rendelkezik listáját. Válassza ki az Azure-előfizetés a Select-AzureRmSubscription parancsmaggal használható.
 

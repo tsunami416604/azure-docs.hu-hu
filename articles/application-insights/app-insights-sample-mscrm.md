@@ -1,8 +1,8 @@
 ---
-title: "A Microsoft Dynamics CRM-hez és az Azure Application Insights |} Microsoft Docs"
-description: "Telemetriai adatok beszerzése a Microsoft Dynamics CRM Online Application Insights segítségével. Forgatókönyv: a telepítés az első adatok, a képi megjelenítés és exportálása."
+title: A Microsoft Dynamics CRM-hez és az Azure Application Insights |} Microsoft Docs
+description: 'Telemetriai adatok beszerzése a Microsoft Dynamics CRM Online Application Insights segítségével. Forgatókönyv: a telepítés az első adatok, a képi megjelenítés és exportálása.'
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mazharmicrosoft
 manager: carmonm
 ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ced4f62b4f27ede28c61e8d2670432ddd7b76f9b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Forgatókönyv: Telemetriai engedélyezése a Microsoft Dynamics CRM Online Application Insights segítségével
 Ez a cikk bemutatja, hogyan telemetriai adatok beolvasására [Microsoft Dynamics CRM Online](https://www.dynamics.com/) használatával [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Végigvezetjük a teljes folyamat Application Insights-parancsfájl hozzáadása az alkalmazáshoz, adatokat és az adatok vizuális rögzítése.
@@ -47,7 +47,7 @@ Ha figyelni szeretné az alkalmazást, az Application Insights SDK az alkalmazá
 1. Nyissa meg az CRM Online-példány és a bejelentkezési rendszergazdai jogosultságokkal.
 2. Nyissa meg a Microsoft Dynamics CRM beállításait, egyéni beállításokat, a rendszer testreszabása
 
-    ![Microsoft Dynamics CRM settings](./media/app-insights-sample-mscrm/00001.png)
+    ![A Microsoft Dynamics CRM-beállítások](./media/app-insights-sample-mscrm/00001.png)
 
     ![Beállítások > Testreszabás](./media/app-insights-sample-mscrm/00002.png)
 
@@ -60,7 +60,7 @@ Ha figyelni szeretné az alkalmazást, az Application Insights SDK az alkalmazá
     ![Nyissa meg a szövegszerkesztőben.](./media/app-insights-sample-mscrm/00004.png)
 2. Másolja a kódot az Application Insights. Másolása, ügyeljen arra, hogy figyelmen kívül hagyása parancsprogramcímkékben-e. Tekintse meg az alábbi képernyőfelvételen:
 
-    ![A rendszerállapot-kulcs beállítása](./media/app-insights-sample-mscrm/00005.png)
+    ![A rendszerállapot-kulcs beállítása](./media/app-insights-sample-mscrm/000005.png)
 
     A kód a instrumentation kulcsot, amely azonosítja az Application insights-erőforrást tartalmazza.
 3. Mentse, és tegye közzé.

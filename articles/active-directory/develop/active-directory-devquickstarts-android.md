@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure AD Android |} Microsoft Docs"
-description: "Hogyan hozhat létre egy Android-alkalmazás, amely az Azure AD bejelentkezési és a hívások Azure AD számára az API-k használatával OAuth2.0 védett."
+title: Ismerkedés az Azure AD Android |} Microsoft Docs
+description: Hogyan hozhat létre egy Android-alkalmazás, amely az Azure AD bejelentkezési és a hívások Azure AD számára az API-k használatával OAuth2.0 védett.
 services: active-directory
 documentationcenter: android
 author: danieldobalian
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 6c949c07c95c5d965b31725bce4ab2deac646bca
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 25a908c542bf8fdd8008841a1865cdfb40d847fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-android-getting-started"></a>Ismerkedés az Azure AD Android
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -28,7 +28,7 @@ Ha az asztali alkalmazások, Azure Active Directory (Azure AD) segítségével e
 
 Android-ügyfelek, amelyek a védett erőforrások eléréséhez szükséges az Azure AD az Active Directory Authentication Library (ADAL) biztosít. ADAL kizárólagos célja megkönnyíti a hozzáférési jogkivonatok lekérésére, az alkalmazás. Annak bemutatásához, hogy milyen egyszerűen, azt fogja Android feladatlista alkalmazás létrehozásához, amely:
 
-* Lekérdezi hozzáférési jogkivonatainak egy tennivalók listája API felület meghívásakor használatával a [OAuth 2.0 hitelesítési protokoll](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+* Lekérdezi hozzáférési jogkivonatok hívásakor egy tennivalók listája API használatával [OAuth 2.0 hitelesítési protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
 * Lekérdezi a felhasználó tennivalók listájára.
 * Felhasználók jeleket.
 
@@ -37,7 +37,7 @@ A kezdéshez van szüksége, amelyben felhasználók létrehozása és egy alkal
 ## <a name="step-1-download-and-run-the-nodejs-rest-api-todo-sample-server"></a>1. lépés: Töltse le és futtassa a Node.js REST API TODO minta kiszolgáló
 A Node.js REST API TODO minta kifejezetten a meglévő mintát eredményez, amely a single-bérlő tennivaló REST API létrehozása az Azure AD dolgozhat írása. Ennek előfeltétele a gyors üzembe helyezését.
 
-Beállítására kapcsolatos információkért lásd: a meglévő minták [Microsoft Azure Active Directory minta REST API szolgáltatás a Node.js](active-directory-devquickstarts-webapi-nodejs.md).
+Beállítására kapcsolatos információkért lásd: a meglévő minták [Azure Active Directory minta REST API szolgáltatás a Node.js](active-directory-devquickstarts-webapi-nodejs.md).
 
 
 ## <a name="step-2-register-your-web-api-with-your-azure-ad-tenant"></a>2. lépés: A webes API regisztrálása az Azure AD-bérlő
@@ -81,8 +81,8 @@ A Maven build, használhatja a legfelső szinten pom.xml:
 
 1. A tárház klónozása egy olyan könyvtárba, az Ön által választott:
 
-  `$ git clone git@github.com:AzureADSamples/NativeClient-Android.git`  
-2. Kövesse a [a Maven környezet beállítása Androidhoz készült előfeltételei](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android).
+  `$ git clone https://github.com/Azure-Samples/active-directory-android.git`  
+2. Kövesse a [a Maven környezet beállítása Androidhoz készült előfeltételei](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Maven).
 3. Az SDK 19 emulátor beállítása.
 4. Nyissa meg a gyökérmappájába, ahol a tárházban klónozott.
 5. Futtassa ezt a parancsot: `mvn clean install`
@@ -101,12 +101,12 @@ Hajtottunk, könnyen használható adal-t használni az Android-projekt több le
 * Android Studio használata, AAR csomag formátumot használja, és a bináris fájlok hivatkozik.
 
 ### <a name="option-1-source-zip"></a>1. lehetőség: Forrás Zip
-Letöltheti a forráskódot, kattintson a **töltse le a ZIP-** a lap jobb oldalán. Illetve [töltse le a Githubról](https://github.com/AzureAD/azure-activedirectory-library-for-android/archive/v1.0.9.tar.gz).
+Letöltheti a forráskódot, kattintson a **töltse le a ZIP-** a lap jobb oldalán. Illetve [töltse le a Githubról](https://github.com/AzureAD/azure-activedirectory-library-for-android/releases).
 
 ### <a name="option-2-source-via-git"></a>2. lehetőség: Forrás Git keresztül
 Ahhoz, hogy az SDK segítségével Git forráskódját, írja be:
 
-    git clone git@github.com:AzureAD/azure-activedirectory-library-for-android.git
+    git clone https://github.com/AzureAD/azure-activedirectory-library-for-android.git
     cd ./azure-activedirectory-library-for-android/src
 
 ### <a name="option-3-binaries-via-gradle"></a>3. lehetőség: Bináris Gradle keresztül
@@ -167,7 +167,7 @@ A JAR-fájlra beszerezni a Maven-tárház, és helyezze be a **függvénytárak*
             ....
         <application/>
 
-4. A fő tevékenységnél AuthenticationContext példányának létrehozása. A hívás részleteit túlmutat a jelen témakör, de remek kezdőpont kaphat megnézi a [Android Native Client minta](https://github.com/AzureADSamples/NativeClient-Android). A következő példában SharedPreferences az alapértelmezett gyorsítótár, továbbá hatóság formájában `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`:
+4. A fő tevékenységnél AuthenticationContext példányának létrehozása. A hívás részleteit túlmutat a jelen témakör, de remek kezdőpont kaphat megnézi a [Android Native Client minta](https://github.com/AzureAD/azure-activedirectory-library-for-android). A következő példában SharedPreferences az alapértelmezett gyorsítótár, továbbá hatóság formájában `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`:
 
     `mContext = new AuthenticationContext(MainActivity.this, authority, true); // mContext is a field in your activity`
 
@@ -232,27 +232,11 @@ A paraméterek leírását itt található:
 Ez a forgatókönyv segítségével kell mi sikeresen integrálni kell az Azure Active Directoryban. További példák a, keresse fel a AzureADSamples / GitHub tárházából.
 
 ## <a name="important-information"></a>Fontos információk
-### <a name="customization"></a>Testreszabás
-Az alkalmazás-erőforrásokat felülírhatnak-e projekt könyvtárerőforrásokat. Ez akkor fordul elő, amikor az alkalmazás éppen készül. Emiatt testre hitelesítési tevékenység elrendezés a kívánt módon. Mindenképpen tartsa a vezérlők Azonosítóját, hogy az ADAL által használt (webes Nézet).
 
 ### <a name="broker"></a>Broker
-A Microsoft Intune vállalati portál alkalmazást a broker összetevő biztosít. A fiók AccountManager jön létre. A fiók típusa nem "com.microsoft.workaccount." AccountManager lehetővé teszi, hogy csak egyetlen egyszeri bejelentkezési fiók. A felhasználó számára az egyszeri bejelentkezési cookie létrehozza az alkalmazások közül legalább egy eszköz challenge befejezése után.
+Az Intune vállalati portál vagy a Microsoft Authenticator alkalmazást a broker összetevő biztosít. A fiók AccountManager jön létre. A fiók típusa nem "com.microsoft.workaccount." AccountManager lehetővé teszi, hogy csak egyetlen egyszeri bejelentkezési fiók. A felhasználó számára az egyszeri bejelentkezési cookie létrehozza az alkalmazások közül legalább egy eszköz challenge befejezése után.
 
-ADAL használja az átvitelszervező-fiókot, ha egy felhasználói fiók jön létre, és ez a hitelesítő úgy, hogy nem hagyja ki. Kihagyhatja a broker felhasználót:
-
-   `AuthenticationSettings.Instance.setSkipBroker(true);`
-
-Egy különös RedirectUri broker használati regisztrálnia kell. RedirectUri formátumban van `msauth://packagename/Base64UrlencodedSignature`. A RedirectUri kaphat az alkalmazás a parancsfájl brokerRedirectPrint.ps1 vagy az API-hívás mContext.getBrokerRedirectUri használatával. Az aláírás nem kapcsolódik az aláírási tanúsítványokat.
-
-Az aktuális broker modell csak egy felhasználóhoz. AuthenticationContext biztosít a API-módszer segítségével a broker felhasználó.
-
-   `String brokerAccount =  mContext.getBrokerUser(); //Broker user is returned if account is valid.`
-
-Az alkalmazás jegyzékének AccountManager fiókok használatára a következő engedélyekkel kell rendelkeznie. További információkért lásd: a [AccountManager az információt az Android](http://developer.android.com/reference/android/accounts/AccountManager.html).
-
-* GET_ACCOUNTS
-* USE_CREDENTIALS
-* MANAGE_ACCOUNTS
+További információt a broker segítségével konfigurálása kivételt a [broker wikicikket](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Broker). 
 
 ### <a name="authority-url-and-ad-fs"></a>Szolgáltató URL-címe és az AD FS
 Active Directory összevonási szolgáltatások (AD FS) értéke nem értelmezhető éles STS, ezért meg kell példány felderítés kapcsolni, és hamis át, a AuthenticationContext konstruktor.
@@ -287,69 +271,15 @@ Az elsődleges információforrások a problémák diagnosztizálása az alábbi
 
 Ne feledje, hogy korrelációs azonosító központi helyet foglalnak el a diagnosztika a könyvtárban. A korrelációs állíthatja be az egyéb műveletek során a kérelem egy kérelem alapon, ha azt szeretné, hogy az adal-t összefüggéseket azonosítók. Ha nem állít egy korrelációs azonosító, a ADAL véletlenszerű egy hoz létre. Az összes üzenetek naplózása és hálózati hívások majd kell jelölni a korrelációs azonosítót. Az önállóan létrehozott azonosítója módosítások minden kérelemnél meg.
 
-#### <a name="exceptions"></a>Kivételek
+#### <a name="errors--exceptions"></a>Hibák & kivételek
 A felsoroltakat az első diagnosztika. Próbálja meg hasznos hibaüzenetek jelennek meg. Ha talál, amely nem lehet hasznos, adjon fájlt az kapcsolatos problémát, és ossza meg velünk. Eszköz információkat, például a modell és SDK számát tartalmazza.
+
+További információt milyen hibák az alkalmazás kezelje, kivételt a [hiba történt az ajánlott eljárások kezelése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-adal-error-handling). 
 
 #### <a name="logs"></a>Logs
 Beállíthatja, hogy a szalagtár készítése a naplózási üzenetek problémák diagnosztizálásához használható. Naplózás konfigurálása egy visszahívást, amelyet az adal-t használja kéz ki a naplóüzenetekben hozza létre a következő hívással konfigurálásához.
 
-    Logger.getInstance().setExternalLogger(new ILogger() {
-        @Override
-        public void Log(String tag, String message, String additionalMessage, LogLevel level, ADALError errorCode) {
-        ...
-        // You can write this to log file depending on level or error code.
-        writeToLogFile(getApplicationContext(), tag +":" + message + "-" + additionalMessage);
-        }
-    }
-
-Üzenetek csak írható egyéni naplófájlt használ, az alábbi kódban látható módon. Sajnos nincs nem szabványos vonható naplók az eszközről. Egyes szolgáltatások, amelyek segítségével a van. Akkor is is találjon ki a saját, például a fájlt küld a kiszolgáló.
-
-    private syncronized void writeToLogFile(Context ctx, String msg) {
-       File directory = ctx.getDir(ctx.getPackageName(), Context.MODE_PRIVATE);
-       File logFile = new File(directory, "logfile");
-       FileOutputStream outputStream = new FileOutputStream(logFile, true);
-       OutputStreamWriter osw = new OutputStreamWriter(outputStream);
-       osw.write(msg);
-       osw.flush();
-       osw.close();
-    }
-
-A naplózási szintek a következők:
-* Hiba (kivételek)
-* Figyelmeztetés (figyelmeztetés)
-* Info (tájékoztatási céllal)
-* Részletes (További részletekért)
-
-Beállíthatja a naplózási szint ehhez hasonló:
-
-    Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
-
- Összes naplózási üzenetek küldése a logcat bármilyen egyéni napló visszahívások mellett.
-Letölthető egy fájlba logcat az alábbiak szerint:
-
-    adb logcat > "C:\logmsg\logfile.txt"
-
- További adb parancsokkal kapcsolatos további információkért lásd: a [logcat az információt az Android](https://developer.android.com/tools/debugging/debugging-log.html#startingLogcat).
-
-#### <a name="network-traces"></a>Hálózati nyomkövetés
-Különböző eszközök használatával az adal-t állít elő, HTTP-forgalom rögzítése.  Ez akkor hasznos, ha ismeri az OAuth protokollt, vagy ha meg kell adnia a diagnosztikai adatokat a Microsoft vagy egyéb támogatási csatornáit.
-
-Fiddler a HTTP legegyszerűbb eszköz. Az alábbi hivatkozások segítségével állítsa be megfelelően rekord ADAL hálózati forgalmat. A nyomkövetés eszköz, például a Fiddler vagy Charles hasznos lehet konfigurálnia kell, hogy titkosítatlan SSL forgalom rögzítése.  
-
-> [!NOTE]
-> Nyomok jön létre, így például a hozzáférési jogkivonatok, felhasználónevek és jelszavak magas szintű jogosultsággal rendelkező adatokat tartalmazhatnak. Éles fiókok használata, ne ossza meg a nyomkövetések harmadik felek számára. Ha szeretne valakinek nyomkövetés megadni ahhoz, hogy segítségre van szüksége, egy ideiglenes fiókot használata a felhasználónevek és jelszavak, amelyek nem mind a megosztás Reprodukálja a hibát.
-
-* A Telerik webhelyről: [beállítás mentése Fiddler az Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
-* A Githubból: [ADAL Fiddler szabályainak konfigurálása](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/How-to-listen-to-httpUrlConnection-in-Android-app-from-Fiddler)
-
-### <a name="dialog-mode"></a>Párbeszédpanelen mód
-Tevékenység nélkül acquireToken metódus támogatja a párbeszédpanel megjelenítése.
-
-### <a name="encryption"></a>Titkosítás
-Adal-t a jogkivonatokat és SharedPreferences tárban alapértelmezés szerint titkosítja. Megnézheti a StorageHelper osztály a részletek megtekintéséhez. Android 4.3 (API 18) biztonságos tárolására titkos kulcsok Android Keystore bevezetni. Adal-t használ, amely az API 18 és az annál magasabb. Ha szeretne adal-t használó SDK alacsonyabb verziójához, adjon meg egy titkos kulcsot következő AuthenticationSettings.INSTANCE.setSecretKey szeretné.
-
-### <a name="oauth2-bearer-challenge"></a>Az OAuth2 tulajdonosi kérdés
-A AuthenticationParameters osztály authorization_uri lekérése az OAuth2 tulajdonosi ellenőrző funkciót biztosít.
+Kapcsolja be a naplózást, kivételt a [wikicikket naplózás](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Logging).
 
 ### <a name="session-cookies-in-webview"></a>Webes nézet munkamenet cookie-k
 Android webes nézet nem törli a munkamenetek cookie-jait, az alkalmazás bezárása után. A mintakód használatával, amely kezelheti:
@@ -361,21 +291,10 @@ Android webes nézet nem törli a munkamenetek cookie-jait, az alkalmazás bezá
 
 A cookie-k kapcsolatos részletekért lásd: a [CookieSyncManager az információt az Android](http://developer.android.com/reference/android/webkit/CookieSyncManager.html).
 
-### <a name="resource-overrides"></a>Erőforrás-felülbírálások
-Az ADAL-könyvtár ProgressDialog üzenetek angol karakterláncot tartalmaz. Az alkalmazás mindent felülír Ha azt szeretné, hogy a honosított karakterláncok.
-
-     <string name="app_loading">Loading...</string>
-     <string name="broker_processing">Broker is processing</string>
-     <string name="http_auth_dialog_username">Username</string>
-     <string name="http_auth_dialog_password">Password</string>
-     <string name="http_auth_dialog_title">Sign In</string>
-     <string name="http_auth_dialog_login">Login</string>
-     <string name="http_auth_dialog_cancel">Cancel</string>
-
 ### <a name="ntlm-dialog-box"></a>NTLM párbeszédpanel
 1.1.0-ás ADAL-verziót támogatja az NTLM párbeszédpanel, amely a WebViewClient onReceivedHttpAuthRequest esemény feldolgozása. Az elrendezés és a párbeszédpanel karakterláncok személyre is szabhatja.
 
-### <a name="cross-app-sso"></a>Cross-app SSO
+### <a name="cross-app-sso"></a>Alkalmazások közötti SSO
 Ismerje meg, [az Android alkalmazások közötti SSO engedélyezése az ADAL használatával](active-directory-sso-android.md).  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

@@ -1,10 +1,10 @@
 ---
-title: "Automatikus skálázás HPC Pack fürtcsomópontok |} Microsoft Docs"
-description: "Automatikusan nő, és a számítási fürtcsomópontok HPC Pack az Azure-ban számára zsugorítása"
+title: Automatikus skálázás HPC Pack fürtcsomópontok |} Microsoft Docs
+description: Automatikusan nő, és a számítási fürtcsomópontok HPC Pack az Azure-ban számára zsugorítása
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: 
+manager: ''
 editor: tysonn
 ms.assetid: 38762cd1-f917-464c-ae5d-b02b1eb21e3f
 ms.service: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.openlocfilehash: 0c8a5aacd19d83b26cfeb3750d57dd783687f1c4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 4a2350183bc0cb9360e9315cd8a351be20b66584
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>Automatikusan növelhető, vagy az Azure-ban a HPC Pack fürterőforrások csökkenthető a fürtmunkaterhelés szerint
 Ha az Azure "kapacitásnövelés" csomópontok HPC Pack fürt központi telepítését, vagy a HPC Pack-fürtöt hoz létre az Azure virtuális gépeken, érdemes lehet egy módszerre, amellyel automatikusan nő, és a fürt erőforrásait, például a csomópontok vagy a fürtön a munkaterhelés szerint magok csökkenhet. Ily módon a fürterőforrásokat skálázás lehetővé teszi az Azure-erőforrások hatékonyabban használja, és azok kapcsolatos költségek szabályozását.
@@ -50,13 +50,13 @@ Jelenleg akkor csak automatikusan növelhető vagy csökkenthető a Windows Serv
     ```powershell
         cd $env:CCP_HOME\bin
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     ```
         
     Ha a fiók több mint egy Azure Active Directory-bérlő vagy az Azure-előfizetés, válassza ki a megfelelő bérlői és az előfizetés a következő parancsot futtathatja:
   
     ```powershell
-        Login-AzureRMAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
+        Connect-AzureRmAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
     ```     
        
     A következő parancsot a jelenleg kijelölt bérlői és az előfizetés megtekintése:
@@ -186,19 +186,19 @@ Alapértelmezés szerint **SoaJobGrowThreshold** 50000 értékre van állítva �
 * **HPC Pack 2012 R2 Update 1 vagy újabb rendszerű fürt** – a **AzureAutoGrowShrink.ps1** parancsfájl telepítve van a % CCP_HOME % bin mappában. A fürt átjárócsomópontjába lehet telepítve a helyi vagy egy Azure virtuális gép. Lásd: [HPC Pack hibrid fürt beállítása](../../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md) egy helyszíni átjárócsomópont és az Azure "kapacitásnövelés" csomópontok használatába. Tekintse meg a [HPC Pack IaaS telepítési parancsfájl](hpcpack-cluster-powershell-script.md) gyorsan HPC Pack-fürt üzembe helyezése az Azure virtuális gépeken, vagy használjon egy [Azure gyors üzembe helyezés sablon](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/).
 * **Az Azure PowerShell 1.4.0** -a parancsfájl jelenleg ezt a verziót az Azure PowerShell függ.
 * **A fürt az Azure-kapacitásnövelés csomópontok** -futtassa a parancsfájlt egy ügyfélszámítógépen, amelyen telepítve van-e az HPC Pack, vagy a head csomóponton. Ha fut az ügyfélszámítógépeken, győződjön meg arról, hogy megadta-e a változó $env: CCP_SCHEDULER a head csomópontra. Az Azure "kapacitásnövelés" csomópontok hozzá kell adni a fürthöz, de nem telepített állapotban lehetnek.
-* **Az Azure virtuális gépeken (Resource Manager üzembe helyezési modellben) telepített fürt** -a Resource Manager üzembe helyezési modellben telepített Azure virtuális gépek fürtben, a parancsfájl az Azure authentication két módszert támogat: futtatásához az Azure-fiókjával jelentkezzen be a minden alkalommal parancsfájl (futtatásával `Login-AzureRmAccount`, vagy konfigurálja a szolgáltatás egyszerű való hitelesítéshez szükséges tanúsítvány. HPC Pack biztosít a parancsfájl **ConfigARMAutoGrowShrinkCert.ps** egyszerű szolgáltatás létrehozása a tanúsítványt. A parancsfájl létrehoz egy Azure Active Directory (Azure AD) alkalmazás és egy egyszerű szolgáltatást, és a közreműködő szerepkört rendel az egyszerű szolgáltatás. A parancsfájl futtatásához indítsa el az Azure Powershellt rendszergazdaként, és futtassa a következő parancsokat:
+* **Az Azure virtuális gépeken (Resource Manager üzembe helyezési modellben) telepített fürt** -a Resource Manager üzembe helyezési modellben telepített Azure virtuális gépek fürtben, a parancsfájl az Azure authentication két módszert támogat: futtatásához az Azure-fiókjával jelentkezzen be a minden alkalommal parancsfájl (futtatásával `Connect-AzureRmAccount`, vagy konfigurálja a szolgáltatás egyszerű való hitelesítéshez szükséges tanúsítvány. HPC Pack biztosít a parancsfájl **ConfigARMAutoGrowShrinkCert.ps** egyszerű szolgáltatás létrehozása a tanúsítványt. A parancsfájl létrehoz egy Azure Active Directory (Azure AD) alkalmazás és egy egyszerű szolgáltatást, és a közreműködő szerepkört rendel az egyszerű szolgáltatás. A parancsfájl futtatásához indítsa el az Azure Powershellt rendszergazdaként, és futtassa a következő parancsokat:
 
     ```powershell
     cd $env:CCP_HOME\bin
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     .\ConfigARMAutoGrowShrinkCert.ps1 -DisplayName “YourHpcPackAppName” -HomePage "https://YourHpcPackAppHomePage" -IdentifierUri "https://YourHpcPackAppUri" -PfxFile "d:\yourcertificate.pfx"
     ```
 
     Ha szeretne többet megtudni **ConfigARMAutoGrowShrinkCert.ps1**- ben futtassa `Get-Help .\ConfigARMAutoGrowShrinkCert.ps1 -Detailed`,
 
-* **Az Azure virtuális gépeken (klasszikus üzembe helyezési modellel) telepített fürt** -futtassa a parancsfájlt az átjárócsomóponthoz virtuális gép, mert előfeltétel a **Start-HpcIaaSNode.ps1** és **Stop-HpcIaaSNode.ps1** olyan parancsfájlok, hogy telepítve vannak. A parancsfájlok továbbá egy Azure felügyeleti tanúsítvánnyal kell rendelkezniük, vagy közzététele beállításfájl (lásd: [kezelése számítási csomópontok HPC csomagban fürtön, az Azure-ban](hpcpack-cluster-node-manage.md)). Győződjön meg arról, hogy minden a számítási csomópont virtuális gépek kell már felvette a fürthöz. Azok a leállított állapotban lehet.
+* **Az Azure virtuális gépeken (klasszikus üzembe helyezési modellel) telepített fürt** -futtassa a parancsfájlt az átjárócsomóponthoz virtuális gép, mert előfeltétel a **Start-HpcIaaSNode.ps1** és **Stop-HpcIaaSNode.ps1** parancsfájlok amely telepítve van. A parancsfájlok továbbá egy Azure felügyeleti tanúsítvánnyal kell rendelkezniük, vagy közzététele beállításfájl (lásd: [kezelése számítási csomópontok HPC csomagban fürtön, az Azure-ban](hpcpack-cluster-node-manage.md)). Győződjön meg arról, hogy minden a számítási csomópont virtuális gépek kell már felvette a fürthöz. Azok a leállított állapotban lehet.
 
 
 

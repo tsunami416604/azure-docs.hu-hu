@@ -1,6 +1,7 @@
-Az alkalmazásba való bejelentkezés engedélyezéséhez létre kell hoznia egy bejelentkezési szabályzatot. Ez a szabályzat írja le, hogy mit tapasztalnak a felhasználók a bejelentkezés során, valamint megadja azokat a jogkivonatokat, amelyeket az alkalmazás fogad a sikeres bejelentkezésekkor.
+Bejelentkezés az alkalmazásban csak engedélyezni szeretné, ha használja a **bejelentkezési** házirend. Ez a házirend az, hogy az ügyfelek végighaladnia során be- és a jogkivonatok, amelyek megkapják az alkalmazás tartalmát a sikeres bejelentkezések feladatait ismerteti.
 
-[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)] Kattintson a **Bejelentkezési szabályzatok** gombra.
+[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
+Kattintson a **bejelentkezési házirendek**.
 
 A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure-erőforrások – a biztonsági riasztások privileged Identity Management |} Microsoft Docs
+title: Az Azure-erőforrások biztonsági riasztások kezelése a Privileged Identity Management használatával |} Microsoft Docs
 description: A PIM biztonsági riasztások ismerteti.
 services: active-directory
 documentationcenter: ''
@@ -13,37 +13,38 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 86c9a0f12b2598ffbd02810a11622b13b0363a1f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c6c057541b3e3067de6331bab6ca9cccfa092710
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="privileged-identity-management---resource-roles---alerts"></a>Privileged Identity Management - szerepkör erőforrás - riasztások
-Az Azure-erőforrások PIM riasztásokat állít elő, ha nem biztonságos vagy gyanús tevékenységek a környezetben. Riasztást vált ki, ha azt mutatja a riasztások lapon. 
+# <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások biztonsági riasztások kezelése a Privileged Identity Management használatával
+Privileged Identity Management (PIM) az Azure-erőforrások riasztásokat állít elő, ha nem biztonságos vagy gyanús tevékenységek a környezetben. Riasztást vált ki, ha azt mutatja a riasztások lapon. 
 
-![](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
+![Riasztások lap](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
 
 ## <a name="review-alerts"></a>Riasztások áttekintése
-Válasszon ki egy riasztást, a felhasználók vagy szerepkörök a riasztást kiváltó felsoroló jelentés megtekintéséhez valamint szervizelési a Tanácsot.
-![](media/azure-pim-resource-rbac/rbac-alert-info.png)
+Válasszon ki egy riasztást, a felhasználók vagy szerepkörök szervizelési tanácsot együtt, a riasztást kiváltó felsoroló jelentés megtekintéséhez.
+
+![Riasztásjelentés](media/azure-pim-resource-rbac/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Riasztások
 | Riasztás | Súlyosság | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
-| **Az erőforráshoz rendelt túl sok tulajdonosai** |Közepes |Túl sok felhasználó rendelkezik a tulajdonosi szerepkört. |Tekintse át a felhasználók a listán, és rendelje hozzá az egyes korlátozott engedélyekkel rendelkező szerepkörökhöz. |
+| **Az erőforráshoz rendelt túl sok tulajdonosai** |Közepes |Túl sok felhasználó rendelkezik a tulajdonosi szerepkört. |Tekintse át a felhasználók a listán, és újbóli hozzárendelése a korlátozott engedélyekkel rendelkező szerepkörökhöz néhány. |
 | **Az erőforráshoz rendelt túl sok állandó tulajdonosai** |Közepes |Túl sok felhasználó véglegesen egy szerepkörhöz vannak hozzárendelve. |Tekintse át a felhasználók a listán, és rendelje hozzá az egyes aktiválási szerepkör használata szükséges. |
-| **Ismétlődő szerepkör létrehozása** |Közepes |Több szerepkör ugyanazok a feltételek rendelkezik. |Csak ezek a szerepkörök egyikét használhatja. |
+| **Ismétlődő szerepkör létrehozása** |Közepes |Több szerepkör ugyanazok a feltételek rendelkezik. |Ezek a szerepkörök csak egyikét használhatja. |
 
 
 ### <a name="severity"></a>Súlyosság
 * **Magas**: azonnali beavatkozást igényel a szabályzat megsértése miatt. 
 * **Közepes**: nem igényelnek azonnali beavatkozást, de egy lehetséges szabályzat megsértése jelzi.
-* **Alacsony**: nem igényelnek azonnali beavatkozást, de a preferrable házirend módosítását javasol.
+* **Alacsony**: nem igényelnek azonnali beavatkozást, de a kívánt házirend módosítását javasol.
 
 ## <a name="configure-security-alert-settings"></a>Biztonsági riasztási beállításainak konfigurálása
-A riasztások lapon keresse meg a beállításokat.
-![](media/azure-pim-resource-rbac/rbac-navigate-settings.png)
+Ugrás a riasztások lapon **beállítások**.
+![Beállítások](media/azure-pim-resource-rbac/rbac-navigate-settings.png)
 
 A környezet és a biztonsági célok szeretne használni a különböző riasztások beállítások testre szabhatók.
-![](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+![A beállítások testre szabása](media/azure-pim-resource-rbac/rbac-alert-settings.png)

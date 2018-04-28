@@ -1,27 +1,25 @@
 ---
-title: "Apache Phoenix psql - Azure HDInsight segítségével vezérlőbe való betöltés tömeges |} Microsoft Docs"
-description: "Tömeges betöltési adatok betöltése az Phoenix táblák a psql eszközzel."
+title: Apache Phoenix psql - Azure HDInsight segítségével vezérlőbe való betöltés tömeges |} Microsoft Docs
+description: Tömeges betöltési adatok betöltése az Phoenix táblák a psql eszközzel.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 0a623113ee9f3fe2c0f5f616ecd79b8311a8ffc1
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 2c192707c6cf8f84d2ca1c0307770cadd5cdb8bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="bulk-load-data-into-phoenix-using-psql"></a>Tömeges betöltési adatok Phoenix psql használatával
+# <a name="bulk-load-data-into-phoenix-using-psql"></a>Adatok tömeges betöltése a Phoenixbe a psql használatával
 
 [Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, épülő nagymértékben párhuzamos relációs adatbázis [HBase](../hbase/apache-hbase-overview.md). Phoenix SQL-szerű lekérdezéseket biztosít a HBase-en. Phoenix felhasználók létrehozása, törlése, és módosítsa az SQL táblák, indexek, nézetek és sorozatok és upsert sorok egyesével és csoportosan JDBC illesztőprogramokat használja. Phoenix fordítása a lekérdezések MapReduce használata helyett natív noSQL-fordítási segítségével hozza létre a kis késleltetésű alkalmazások a HBase felett. Phoenix hozzáadja az adatok közös elhelyezése a kód végrehajtása társprocesszorok történő ügyfél által megadott kód futtatásához a kiszolgáló, a címterületen belülre. Ez minimalizálja az ügyfél-kiszolgáló az adatátvitelt.  Phoenix használata a Hdinsightban adatokkal dolgozni, először hozzon létre táblák, és majd az adatok betöltése az őket.
 

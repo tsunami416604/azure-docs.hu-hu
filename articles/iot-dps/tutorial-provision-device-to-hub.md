@@ -5,22 +5,22 @@ services: iot-dps
 keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 03/28/2018
+ms.date: 04/12/2018
 ms.topic: tutorial
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4d98ce103bed7f9d14eb45422b70ceca1328afaa
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9f151a8fbcdc20124467a1db290f6a05f574e4fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszköz kiépítése IoT Hubra az Azure IoT Hub Device Provisioning Service használatával
 
-Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, hogy az a Device Provisioning Service-hez csatlakozzon. Ebben az oktatóanyagban megtudhatja, hogyan építheti ki az eszközt ezzel a szolgáltatással egyetlen IoT Hubra **_regisztrációs listákkal_**. Ez az oktatóanyag a következőket mutatja be:
+Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, hogy az a Device Provisioning Service-hez csatlakozzon. Ebben az oktatóanyagban megtudhatja, hogyan regisztrálhatja az eszközt ezzel a szolgáltatással egyetlen IoT Hubon automatikus regisztráció és **_regisztrációs listák_** használatával. Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
 > * Az eszköz regisztrálása
@@ -42,18 +42,18 @@ Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevői
     - Az egyes TPM-lapkákhoz vagy szimulációkhoz tartozó egyedi *ellenőrzőkulcs*, amely a TPM-lapka gyártójától szerezhető be.  További információkért olvassa el a [TPM-ellenőrzőkulcsot ismertető](https://technet.microsoft.com/library/cc770443.aspx) szakaszt.
     - A névtérben/hatókörben lévő eszköz egyedi azonosítására használt *regisztrációs azonosító*. Ez az azonosító nem feltétlenül egyezik az eszköz azonosítójával. Az azonosító minden eszközhöz kötelező. TPM-alapú eszközök esetén a regisztrációs azonosító magából a TPM-ből származhat, például a TPM-ellenőrzőkulcs SHA-256 kivonata lehet.
 
-    ![Regisztrációs információk TPM-hez a portálon](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)
+    [![Regisztrációs információk a TPM-hez a portálon](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509-alapú eszközökhöz a következőkre van szükség:
     - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) *.pem* vagy *.cer* fájlformátumban. Egyéni regisztrációhoz az X.509 rendszer eszközönkénti *aláíró tanúsítványát*, míg regisztrációs csoportok esetén a *főtanúsítványt* kell használni. 
 
-    ![Regisztrációs információk X.509-hez a portálon](./media/tutorial-provision-device-to-hub/x509-device-enrollment.png)
+    [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 A következő két módon regisztrálható az eszköz a Device Provisioning Service-ben:
 
 - **Regisztrációs csoportok** Közös igazolási mechanizmussal rendelkező eszközök csoportja. Nagy számú, azonos kívánt kezdeti konfigurációval rendelkező eszközhöz vagy azonos bérlőt célzó eszközökhöz érdemes regisztrációs csoportot használni.
 
-    ![Regisztrációs csoportok X.509-hez a portálon](./media/tutorial-provision-device-to-hub/x509-enrollment-groups.png)
+    [![Csoportos regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
 - **Egyéni regisztrációk** A Device Provisioning Service-szel regisztrálható egyetlen eszközhöz tartozó bejegyzés. Az egyéni regisztrációk x509-tanúsítványokat vagy SAS-tokeneket használhatnak (valós vagy virtuális TPM-ben) igazolási mechanizmusként. Az egyedi kezdeti konfigurációt igénylő vagy az igazolási mechanizmusként kizárólag TPM-en vagy virtuális TPM-en keresztül SAS-tokeneket használó eszközökhöz egyéni regisztrációk használatát javasoljuk. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
 

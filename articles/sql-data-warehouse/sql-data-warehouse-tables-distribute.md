@@ -1,42 +1,38 @@
 ---
-title: "Tervezési útmutatást elosztott táblák - Azure SQL Data Warehouse |} Microsoft Docs"
-description: "Javaslatok az Azure SQL Data Warehouse kivonatoló elosztott és a ciklikus multiplexelési táblák tervezése."
+title: Elosztott táblák tervezési útmutató - Azure SQL Data Warehouse |} Microsoft Docs
+description: Javaslatok az Azure SQL Data Warehouse kivonatoló elosztott és a ciklikus multiplexelési elosztott táblák tervezése.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 01/18/2018
-ms.author: barbkess
-ms.openlocfilehash: 3c86b89da796223336e3a0d9dd809ae140d6911e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d65ca91fc4cffa53adf3a7c56c7919e46c5037d9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Útmutató az Azure SQL Data Warehouse elosztott táblák tervezése
+Javaslatok az Azure SQL Data Warehouse kivonatoló elosztott és a ciklikus multiplexelési elosztott táblák tervezése.
 
-Ez a cikk javaslatok az Azure SQL Data Warehouse elosztott táblák tervezése biztosít. Kivonatoló elosztott táblák javíthatja a nagy ténytáblák a lekérdezések teljesítményét, és ez a cikk a fókuszt. Ciklikus multiplexelés táblák hasznosak betöltése sebességének javítása. Tervezési döntések magyarázatait jelentős hatást gyakorolnak lekérdezés javítása és a teljesítmény betöltésekor.
+Ez a cikk azt feltételezi, hogy az adatok terjesztési és az SQL Data Warehouse adatátviteli – fogalmak megismerése.  További információkért lásd: [Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra](massively-parallel-processing-mpp-architecture.md). 
 
-## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk azt feltételezi, hogy az adatok terjesztési és az SQL Data Warehouse adatátviteli – fogalmak megismerése.  További információkért lásd: a [architektúra](massively-parallel-processing-mpp-architecture.md) cikk. 
+## <a name="what-is-a-distributed-table"></a>Mi az az elosztott tábla?
+Elosztott táblázat jelenik meg egy táblát, de a sorok ténylegesen tárolt 60 terjesztéseket. A sorok eszközzel együtt a kivonatoló vagy a ciklikus multiplexelési algoritmus.  
+
+**Kivonatoló elosztott táblák** javíthatja a nagy ténytáblák a lekérdezések teljesítményét, és ez a cikk a fókuszt. **Ciklikus multiplexelés táblák** hasznosak betöltése sebességének javítása. Tervezési döntések magyarázatait jelentős hatást gyakorolnak lekérdezés javítása és a teljesítmény betöltésekor.
+
+Egy másik tábla tárolási lehetőség egy kis tábla a számítási csomópontok közötti replikáció. További információkért lásd: [kialakítási útmutató a replikált táblák](design-guidance-for-replicated-tables.md). Gyorsan a következő három lehetőség közül választhat, tekintse meg az elosztott táblák a [táblák áttekintése](sql-data-warehouse-tables-overview.md). 
 
 Táblatervezés részeként megérteni a lehető legnagyobb mértékben az adatokat, és hogyan lekérik az adatokat.  Tegyük fel ezeket a kérdéseket:
 
 - Mekkora a tábla?   
 - Milyen gyakran frissülnek, a tábla?   
 - Van tény-és dimenziótáblák az adatraktárban?   
-
-## <a name="what-is-a-distributed-table"></a>Mi az az elosztott tábla?
-Elosztott táblázat jelenik meg egy táblát, de a sorok ténylegesen tárolt 60 terjesztéseket. A sorok eszközzel együtt a kivonatoló vagy a ciklikus multiplexelési algoritmus. 
-
-Egy másik tábla tárolási lehetőség egy kis tábla a számítási csomópontok közötti replikáció. További információkért lásd: [kialakítási útmutató a replikált táblák](design-guidance-for-replicated-tables.md). Gyorsan a következő három lehetőség közül választhat, tekintse meg az elosztott táblák a [táblák áttekintése](sql-data-warehouse-tables-overview.md). 
 
 
 ### <a name="hash-distributed"></a>Elosztott kivonata
@@ -67,7 +63,7 @@ Emiatt a rendszer néha kell ahhoz, hogy feloldja egy lekérdezést, rendszerez�
 - Ha az illesztés kevésbé fontos, mint más illesztéseket a
 - Ha a tábla egy ideiglenes átmeneti tárolási tábla
 
-Az oktatóanyag [adatok betöltése az Azure Storage-blobból](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) egy példán adatok betöltését a ciklikus multiplexelési átmeneti tárolási tábla.
+Az oktatóanyag [terhelés Győr taxicab adatokat az Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) egy példán adatok betöltését a ciklikus multiplexelési átmeneti tárolási tábla.
 
 
 ## <a name="choosing-a-distribution-column"></a>Egy olyan terjesztési oszlop kiválasztása
@@ -91,7 +87,7 @@ WITH
 ;
 ``` 
 
-Egy fontos tervezési döntés a terjesztési oszlop kiválasztása, mivel ebben az oszlopban szereplő értékek határozzák meg, hogyan jutnak el a sorokat. A legjobb választás számos tényezőtől függ, és általában a mellékhatásokkal jár. Azonban ha nem a legjobb oszlop először, használhatja [létrehozása TABLE AS kiválasztása (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) újra létre kell hoznia egy másik terjesztési oszlopot tartalmazó tábla. 
+Egy fontos tervezési döntés a terjesztési oszlop kiválasztása, mivel ebben az oszlopban szereplő értékek határozzák meg, hogyan jutnak el a sorokat. A legjobb választás számos tényezőtől függ, és általában a mellékhatásokkal jár. Azonban ha nem a legjobb oszlop először, használhatja [létrehozása TABLE AS kiválasztása (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) újra létre kell hoznia egy másik terjesztési oszlopot tartalmazó tábla. 
 
 ### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Válassza ki a terjesztési oszlopot, amely nem kell frissíteni
 Egy olyan terjesztési oszlop nem frissíthető, kivéve, ha a sor törlése és a frissített értékekkel új sor beszúrására. Ezért válassza ki a statikus értékeket tartalmazó oszlop. 
@@ -129,7 +125,7 @@ Miután alakítson ki az ujjlenyomat-elosztott tábla, a következő lépéssel 
 Adatok betöltése a kivonat-elosztott táblába, után ellenőrizze, hogy hogyan egyenlően elosztott a sorok a 60 terjesztéseket. A sorok) eloszlása feladatonként (10 %-kal egy észrevehető gyakorolt hatása összességében nélkül változhatnak. 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Határozza meg, ha a tábla tartalmaz-e az adatok döntés
-Ellenőrizze az adatok döntés, hogy használja gyorsan [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql). A következő SQL-kódot a táblázat sorait az egyes a 60 terjesztéseket tárolt számát adja vissza. Az elosztott terhelésű teljesítmény érdekében az elosztott tábla sorait kell kell elosztva egyenletesen valamennyi felosztást.
+Ellenőrizze az adatok döntés, hogy használja gyorsan [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql). A következő SQL-kódot a táblázat sorait az egyes a 60 terjesztéseket tárolt számát adja vissza. Az elosztott terhelésű teljesítmény érdekében az elosztott tábla sorait kell kell elosztva egyenletesen valamennyi felosztást.
 
 ```sql
 -- Find data skew for a distributed table

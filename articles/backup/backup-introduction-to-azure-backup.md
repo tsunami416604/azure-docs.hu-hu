@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b6701cdc4dd25c0a46193a73d1edd022388bc5ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -219,7 +219,7 @@ Néhány gyakori példa védett példányokra: virtuális gépek, alkalmazáskis
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Mi az a Recovery Services-tároló?
-A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. A Recovery Services-tároló az Azure-szolgáltatások, valamint a helyszíni kiszolgálók és munkaállomások biztonsági mentési adatainak tárolására szolgál. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. Minden egyes Azure-előfizetésben legfeljebb 25 Recovery Services-tároló hozható létre Azure-régiónként. Az adatok tárolási helyének kiválasztásakor figyelembe kell venni, hogy nem minden régió azonos. A régiónkénti párosításról és a további tárolási szempontokkal kapcsolatos információkért lásd a [georedundáns tárolást](../storage/common/storage-redundancy-grs.md) ismertető cikket.
+A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. A Recovery Services-tároló az Azure-szolgáltatások, valamint a helyszíni kiszolgálók és munkaállomások biztonsági mentési adatainak tárolására szolgál. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. Minden egyes Azure-előfizetésben legfeljebb 500 Recovery Services-tároló hozható létre Azure-régiónként. Az adatok tárolási helyének kiválasztásakor figyelembe kell venni, hogy nem minden régió azonos. A régiónkénti párosításról és a további tárolási szempontokkal kapcsolatos információkért lásd a [georedundáns tárolást](../storage/common/storage-redundancy-grs.md) ismertető cikket.
 
 Az Azure Service Manageren alapuló mentési tárolók voltak a tároló első verziói. Az Azure Resource Manager modelljellemzőit biztosító Recovery Services-tárolók képezték a tároló második verzióját. A szolgáltatások közötti különbségekről teljes leírást a [Recovery Services-tároló áttekintő cikkében](backup-azure-recovery-services-vault-overview.md) talál. Már nem hozhat létre Backup-tárolót, és minden meglévő Backup-tároló Recovery Services-tárolóra frissült. Az Azure Portalon kezelheti a Recovery Services-tárolóra frissített tárolókat.
 

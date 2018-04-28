@@ -1,11 +1,11 @@
 ---
-title: "Azure virtuális gép lemezképének elkészítése inicializálás felhőben való használatra |} Microsoft Docs"
-description: "Egy már meglévő Azure Virtuálisgép-lemezkép előkészítése felhő inicializálás központi telepítése"
+title: Azure virtuális gép lemezképének elkészítése inicializálás felhőben való használatra |} Microsoft Docs
+description: Egy már meglévő Azure Virtuálisgép-lemezkép előkészítése felhő inicializálás központi telepítése
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 2eb7510d4e76e4996e83f351a62c0b025b487df2
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Egy meglévő Linux Azure Virtuálisgép-lemezkép előkészítése inicializálás felhőben való használatra
 Ez a cikk bemutatja, hogyan egy meglévő Azure virtuális gépet, és készítse elő a újratelepített és felhő inicializálás használatra kész. A létrejövő kép segítségével telepítsen egy új virtuális gép vagy virtuálisgép-méretezési csoportok - vagy amelyek sikerült majd további szabhatja testre felhő inicializálás központi telepítéskor.  Ezen felhő inicializálás parancsfájlok futtatása az első betöltés után az erőforrásokat az Azure-ban kiépített. Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md)
@@ -43,22 +43,20 @@ Frissítés a `cloud_init_modules` szakasz `/etc/cloud/cloud.cfg` tartalmazza a 
 
 Itt látható egy minta milyen egy általános célú `cloud_init_modules` szakasz tűnik.
 ```bash
- cloud_config_modules:
- - mounts
- - locale
- - set-passwords
- - rh_subscription
- - yum-add-repo
- - package-update-upgrade-install
- - timezone
- - puppet
- - chef
- - salt-minion
- - mcollective
- - disable-ec2-metadata
- - runcmd
+cloud_init_modules:
+ - migrator
+ - bootcmd
+ - write-files
+ - growpart
+ - resizefs
  - disk_setup
  - mounts
+ - set_hostname
+ - update_hostname
+ - update_etc_hosts
+ - rsyslog
+ - users-groups
+ - ssh
 ```
 Üzembe helyezési és kezelési elmúló lemezek kapcsolatos feladatot frissítenie kell a `/etc/waagent.conf`. A következő parancsokat a megfelelő beállítások frissítése. 
 ```bash
@@ -72,6 +70,28 @@ Engedélyezése csak Azure adatforrásként az Azure Linux ügynök hozzon létr
 ```bash
 # This configuration file is provided by the WALinuxAgent package.
 datasource_list: [ Azure ]
+```
+
+Adja hozzá a konfigurációs egy függőben lévő állomásnév regisztrációs hiba elhárítása.
+```bash
+cat > /etc/cloud/hostnamectl-wrapper.sh <<\EOF
+#!/bin/bash -e
+if [[ -n $1 ]]; then
+  hostnamectl set-hostname $1
+else
+  hostname
+fi
+EOF
+
+chmod 0755 /etc/cloud/hostnamectl-wrapper.sh
+
+cat > /etc/cloud/cloud.cfg.d/90-hostnamectl-workaround-azure.cfg <<EOF
+# local fix to ensure hostname is registered
+datasource:
+  Azure:
+    hostname_bounce:
+      hostname_command: /etc/cloud/hostnamectl-wrapper.sh
+EOF
 ```
 
 Ha a meglévő Azure-rendszerképet lapozófájl konfigurálva van, és új lemezképet felhő inicializálás swap fájl konfigurációjának módosításához, el kell távolítania a meglévő lapozófájl.
@@ -126,7 +146,7 @@ az vm generalize --resource-group myResourceGroup --name sourceVmName
 az image create --resource-group myResourceGroup --name myCloudInitImage --source sourceVmName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Konfigurációs módosítások további felhőalapú inicializálás példákért lásd a következő:
  
 - [Egy további Linux-felhasználó hozzáadása a virtuális gépek](cloudinit-add-user.md)

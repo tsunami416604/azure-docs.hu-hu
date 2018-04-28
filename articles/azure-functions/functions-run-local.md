@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: f3278c064a01e3dea1d7a629b4a7b2e846a71208
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód és az Azure Functions helyi tesztelése
 
@@ -31,50 +31,93 @@ A Visual Studio C# fejlesztő, az Azure Functions is [integrálható a Visual St
 
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
-[Az Azure Functions Core eszközök] az Azure Functions futtatókörnyezettel, amely a helyi fejlesztési számítógépen futtathatja helyi verziója. Nincs emulátor vagy szimulátor. Az azonos futásidejű powers működik az Azure-ban. Azure funkciók Core eszközök, egy verzió a két verziója van a futtatókörnyezet, illetve egy verziójához 1.x 2.x. Mindkét változatához vannak megadva, az [npm csomag](https://docs.npmjs.com/getting-started/what-is-npm).
+[Az Azure Functions Core eszközök] az Azure Functions futtatókörnyezettel, amely a helyi fejlesztési számítógépen futtathatja helyi verziója. Nincs emulátor vagy szimulátor. Az azonos futásidejű powers működik az Azure-ban. Az Azure Functions Core eszközök két verziója van:
 
->[!NOTE]  
-> Vagy a verzió telepítése előtt kell [NodeJS telepítése](https://docs.npmjs.com/getting-started/installing-node), mely tartalmazza az npm. A verzió 2.x az eszközök csak a Node.js 8.5 és újabb verziói támogatottak. 
++ [Verzió 1.x](#v1): verziót támogatja a futtatókörnyezet 1.x. Ebben a verzióban csak a Windows rendszerű számítógépek támogatják, és az telepítve van egy [npm csomag](https://docs.npmjs.com/getting-started/what-is-npm).
++ [Verzió 2.x](#v2): verziót támogatja a futtatókörnyezet 2.x. Ezen verziója támogatja a [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Használja a platform-specifikus csomag menedzserek vagy npm a telepítéshez. 
 
-### <a name="version-2x-runtime"></a>Verzió 2.x futásidejű
+### <a name="v1"></a>Verzió 1.x
 
-Verzió 2.x eszközt használja az Azure Functions futtatókörnyezettel 2.x, amely a .NET Core épül. Ez a támogatott 2.x verziója támogatja a .NET Core minden platformon. A platformfüggetlen fejlesztésekhez jelenlegi verzióját használja, és ha a Functions futtatókörnyezete 2.x szükség. 
+Az eszközök eredeti verzióját használja a funkciók 1.x futásidejű. Ebben a verzióban a .NET-keretrendszer (4.7.1) használ, és csak a Windows rendszerű számítógépeken támogatott. A verzió 1.x eszközök telepítése előtt [NodeJS telepítése](https://docs.npmjs.com/getting-started/installing-node), mely tartalmazza az npm.
 
->[!IMPORTANT]   
-> Azure Functions Core eszközök telepítése előtt [telepítse a .NET Core 2.0](https://www.microsoft.com/net/core).  
->
-> Az Azure Functions futtatókörnyezettel 2.0 előzetes, és jelenleg nem minden Azure Functions támogatja. További információkért lásd: [Azure Functions futtatókörnyezet 2.0 ismert problémák](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues) 
-
- Az alábbi parancs segítségével a 2.0-s verzióját telepíti:
-
-```bash
-npm install -g azure-functions-core-tools@core
-```
-
-Ubuntu használatkor telepítésekor `sudo`, az alábbiak szerint:
-
-```bash
-sudo npm install -g azure-functions-core-tools@core
-```
-
-MacOS és Linux telepítése esetén szükség lehet felvenni a `unsafe-perm` jelzőt, az alábbiak szerint:
-
-```bash
-sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
-```
-
-### <a name="version-1x-runtime"></a>Verzió 1.x futásidejű
-
-Az eszközök eredeti verzióját használja a funkciók 1.x futásidejű. Ebben a verzióban a .NET-keretrendszer használ, és csak a Windows rendszerű számítógépeken támogatott. Az alábbi parancs segítségével a verzió 1.x telepíti:
+Az alábbi parancs segítségével a verzió 1.x telepíti:
 
 ```bash
 npm install -g azure-functions-core-tools
 ```
 
+### <a name="v2"></a>Verzió 2.x
+
+>[!NOTE]
+> Az Azure Functions futtatókörnyezettel 2.0 előzetes, és jelenleg nem minden Azure Functions támogatja. További információkért lásd: [Azure Functions verziók](functions-versions.md) 
+
+Verzió 2.x eszközt használja az Azure Functions futtatókörnyezettel 2.x, amely a .NET Core épül. Ez a támogatott .NET Core 2.x támogatja, beleértve az összes platformon [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux).
+
+#### <a name="windows-npm"></a>Windows
+
+Az alábbi lépéseket az npm segítségével Core eszközök telepítése Windows. Is [Chocolatey](https://chocolatey.org/). További információkért lásd: a [Core eszközök információs](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
+
+1. Telepítés [.NET Core 2.0 a Windows](https://www.microsoft.com/net/download/windows).
+
+2. Telepítés [Node.js], mely tartalmazza az npm. A verzió 2.x az eszközök csak a Node.js 8.5 és újabb verziói támogatottak.
+
+3. A Core eszközök telepítéséhez:
+
+  ```bash
+  npm install -g azure-functions-core-tools@core
+  ```
+
+#### <a name="brew"></a>A Homebrew MacOS
+
+Az alábbi lépéseket a Core eszközök telepítéséhez macOS Homebrew használja.
+
+1. Telepítés [.NET Core-2.0 macOS](https://www.microsoft.com/net/download/macos).
+
+1. Telepítés [Homebrew](https://brew.sh/), ha még nincs telepítve.
+
+2. A Core eszközök telepítéséhez:
+
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools 
+    ```
+
+#### <a name="linux"></a> Linux (Ubuntu/Debian) rendelkező APT
+
+Az alábbi lépéseket használata [APT](https://wiki.debian.org/Apt) az Ubuntu/Debian Linux terjesztési Core eszközök telepítéséhez. Más Linux terjesztéseket, tekintse meg a [Core eszközök információs](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
+
+1. Telepítés [.NET Core 2.0 Linux](https://www.microsoft.com/net/download/linux).
+
+1. A Microsoft-termékkulcs regisztrálása megbízhatóként:
+
+  ```bash
+  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+  ```
+
+2.  Készítse elő a hírcsatorna csomagot cseréje `<version>` az az alábbi parancsot a megfelelő verzió nevét a táblázatból:
+
+  ```bash
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-<version>-prod <version> main" > /etc/apt/sources.list.d/dotnetdev.list'
+  sudo apt-get update
+  ```
+
+  | A Linux-disztribúció | `<version>` |
+  | --------------- | ----------- |
+  | Ubuntu 17.10    | `artful`    |
+  | Ubuntu 17.04    | `zesty`     |
+  | Ubuntu 16.04/Linux 18 Mentaízű    | `xenial`  |
+
+3. A Core eszközök telepítéséhez:
+
+  ```bash
+  sudo apt-get install azure-functions-core-tools
+  ```
+
 ## <a name="run-azure-functions-core-tools"></a>Az Azure Functions Core eszközeinek futtatása
  
 Az Azure Functions Core eszközök a következő parancs aliasok bővült:
-* **func**
+* **FUNC**
 * **azfun**
 * **azurefunctions**
 
@@ -137,15 +180,19 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
 | Beállítás      | Leírás                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | Ha beállítása **igaz**, minden értéket a helyi számítógép kulccsal titkosított. A használt `func settings` parancsok. Alapértelmezett érték **hamis**. |
-| **Értékek** | A helyi futtatás során használt Alkalmazásbeállítások gyűjteménye. **AzureWebJobsStorage** és **AzureWebJobsDashboard** példák; teljes listáját lásd: [alkalmazás-beállítások referenciája](functions-app-settings.md).  |
+| **Értékek** | A helyi futtatás során használt Alkalmazásbeállítások gyűjteménye. **AzureWebJobsStorage** és **AzureWebJobsDashboard** példák; teljes listáját lásd: [alkalmazás-beállítások referenciája](functions-app-settings.md). Sok eseményindítók és kötések rendelkezik hivatkozó Alkalmazásbeállítás, például tulajdonsággal **kapcsolat** a Blob storage eseményindító. Az ilyen tulajdonságok van szüksége a megadott alkalmazás-beállítás a **értékek** tömb. Ugyanez vonatkozik bármely kötelező tulajdonság értéke alkalmazásburkoló százalékjelek, például egy alkalmazás Beállításnév beállított `%AppSettingName%`. |
 | **Gazdagép** | Ebben a szakaszban beállítások testreszabása a funkciók gazdafolyamat, a helyi futtatás során. | 
 | **LocalHttpPort** | Beállítja azt a portot használja a helyi funkciók állomás fut (`func host start` és `func run`). A `--port` parancssori kapcsoló elsőbbséget élvez ezt az értéket. |
 | **CORS** | Meghatározza az engedélyezett eredeteket [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források, szóközök nélkül vesszővel tagolt lista formájában vannak megadva. A helyettesítő karakteres érték (\*) támogatott, amely lehetővé teszi a kérelmek bármely a forrásból. |
 | **ConnectionStrings** | Az adatbázis-kapcsolati karakterláncok a függvényeket tartalmaz. Ez az objektum kapcsolati karakterláncokat hozzáadódnak a szolgáltató típusát a környezet **System.Data.SqlClient**.  | 
 
-A legtöbb eseményindítók és kötések rendelkezik egy **kapcsolat** tulajdonság, amely leképezhető egy környezeti változó vagy alkalmazás beállítás nevét. Minden kapcsolat tulajdonság local.settings.json fájlban meghatározott Alkalmazásbeállítás kell lennie. 
+Ezek a beállítások is elolvashatja a kódban környezeti változóként. További információkért tekintse meg a környezeti változók szakaszban nyelvspecifikus hivatkozás témakörök közül:
 
-Ezek a beállítások is elolvashatja a kódban környezeti változóként. A C#, használjon [System.Environment.GetEnvironmentVariable](https://msdn.microsoft.com/library/system.environment.getenvironmentvariable(v=vs.110).aspx) vagy [ConfigurationManager.AppSettings](https://msdn.microsoft.com/library/system.configuration.configurationmanager.appsettings%28v=vs.110%29.aspx). A JavaScript, használjon `process.env`. A rendszer környezeti változó megadott érvényesülnek a local.settings.json fájl értékeit. 
++ [C# előre le fordítva](functions-dotnet-class-library.md#environment-variables)
++ [C# script (.csx)](functions-reference-csharp.md#environment-variables)
++ [F#](functions-reference-fsharp.md#environment-variables)
++ [Java](functions-reference-java.md#environment-variables) 
++ [JavaScript](functions-reference-node.md#environment-variables)
 
 A local.settings.json fájl csak által használt funkciók eszközök a helyi futtatás során. Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan a projektet az Azure-ba való közzétételekor. Használja a `--publish-local-settings` kapcsoló [közzétételekor](#publish) való győződjön meg arról, hogy ezek a beállítások hozzáadódnak a függvény alkalmazást az Azure-ban.
 
@@ -167,7 +214,7 @@ Kapcsolati karakterláncok érték beállításához tegye a következő lehető
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
-    Mindkét parancsok használatba történő első bejelentkezés az Azure-bA.
+    Mindkét parancsok első jelentkezzen be Azure igényelnek.
 
 <a name="create-func"></a>
 ## <a name="create-a-function"></a>Függvény létrehozása
@@ -275,7 +322,7 @@ A következő példa egy fájlból egy POST kérést, hogy ugyanazt a funkciót 
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-Vegye figyelembe, hogy GET kérések adatok átadására a lekérdezési karakterláncban a böngészőből. Minden egyéb HTTP-metódus, a cURL, Fiddler, Postman vagy egy hasonló HTTP vizsgálati eszköz kell használnia.  
+Hogy GET kérések adatok átadására a lekérdezési karakterláncban a böngészőből. Minden egyéb HTTP-metódus, a cURL, Fiddler, Postman vagy egy hasonló HTTP vizsgálati eszköz kell használnia.  
 
 #### <a name="non-http-triggered-functions"></a>A HTTP nélküli indított funkciók
 A különböző funkciók eltérő HTTP eseményindítók és webhookokkal tesztelheti a funkciók helyileg felügyeleti végpont meghívásával. A függvény hívása a következő ehhez a végponthoz, a HTTP POST-kérelmet a helyi kiszolgáló váltja ki. Vizsgálati adatok opcionálisan átadása a végrehajtása a POST kérelem törzsét. Ez a funkció hasonlít a **teszt** fülre az Azure portálon.  
@@ -361,3 +408,4 @@ A következő fájl egy hiba vagy a szolgáltatás kérelem [nyissa meg a GitHub
 
 [Az Azure Functions Core eszközök]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure-portálon]: https://portal.azure.com 
+[Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

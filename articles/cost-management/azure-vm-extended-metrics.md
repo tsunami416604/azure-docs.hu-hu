@@ -1,20 +1,20 @@
 ---
-title: "Adja hozzá az Azure virtuális gépek kiterjesztett metrikák |} Microsoft Docs"
-description: "Ez a cikk segít engedélyezheti és konfigurálhatja az Azure virtuális gépek bővített diagnosztikai metrikákat."
+title: Adja hozzá az Azure virtuális gépek kiterjesztett metrikák |} Microsoft Docs
+description: Ez a cikk segít engedélyezheti és konfigurálhatja az Azure virtuális gépek bővített diagnosztikai metrikákat.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 91797aaab1dca96e78643f57776eb16d336e894b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: 4b00baba44a4724ce8f6a45a80692f7f566a35ed
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Az Azure virtuális gépek kiterjesztett metrikák hozzáadása
 
@@ -31,7 +31,7 @@ Például érdemes figyelni a CPU és memória % Azure virtuális gépeken. Az A
 
 ## <a name="verify-that-metrics-are-enabled-on-vms"></a>Győződjön meg arról, hogy metrikák engedélyezve vannak-e a virtuális gépeken
 
-1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+1. Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 2. A **virtuális gépek**, jelöljön ki egy virtuális Gépet majd a **figyelés**, jelölje be **metrikák**. Elérhető listája látható.
 3. Válassza ki az egyes metrikákat, és egy grafikonon jeleníti meg a számukra.  
     ![Példa a Metrika – állomás százalékos Processzor](./media/azure-vm-extended-metrics/metric01.png)
@@ -72,7 +72,7 @@ VM metrikák Azure PowerShell-parancsfájlok használatával engedélyezheti. Ha
 
 Az Azure-példányokon a Cloudyn portálon teljesítménymutatók megtekintéséhez navigáljon **eszközök** > **számítási** > **példány Explorer**. A Virtuálisgép-példányok listáját bontsa ki a példány, és ezután bontsa ki egy erőforrást, a részletek megtekintéséhez.
 
-![Instance Explorer](./media/azure-vm-extended-metrics/instance-explorer.png)
+![Példány Explorer](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>További lépések
 

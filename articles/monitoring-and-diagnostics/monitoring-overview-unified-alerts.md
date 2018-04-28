@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/23/2018
 ms.author: mamit
 ms.custom: ''
-ms.openlocfilehash: 16e0fc493a257504e2708336e05c30b36d4bea15
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c3622b4699ef532f204231c76aa3436be3676763
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="the-new-alerts-experience-in-azure-monitor"></a>Az Azure-figyelő tapasztal az új riasztások
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/03/2018
 
 Riasztások rendelkezik az új felület. A régebbi riasztások élmény pedig mostantól a riasztások (klasszikus) lapján. Az új riasztások felületet a riasztások (klasszikus) élmény van a következő előnyöket biztosítja:
 
--   **Értesítési rendszer jobb**: minden újabb riasztás használja [művelet csoportok]( https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups), amely megnevezett értesítések és a műveletek a több riasztás is használhatnak.  Klasszikus metrika riasztások és értesítések. Naplóelemzési régebbi. ne használjon művelet csoportok. 
+-   **Értesítési rendszer jobb**: minden újabb riasztás használja [művelet csoportok]( https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), amely megnevezett értesítések és a műveletek a több riasztás is használhatnak.  Klasszikus metrika riasztások és értesítések. Naplóelemzési régebbi. ne használjon művelet csoportok. 
 - **A jelentéskészítési egyesített** - összes riasztás létrehozása a metrikákat, naplók és a tevékenység napló keresztül figyelő Azure Log Analytics és az Application Insights rendelkezésre áll egy. 
 - **Nézet indította Naplóelemzési riasztásait az Azure portálon** -most is lásd indította Naplóelemzési riasztások az előfizetésében is. Korábban ezek volt külön portált. 
 - **Fired riasztások és a riasztás szabályok** - riasztás szabályok (a riasztást kiváltó definíció), és következik be riasztásokat (a riasztási szabály indítási példánya) megkülönböztetett forgalomosztályból, így elkülönül egymástól a működési és konfigurációs nézetek.
@@ -104,7 +104,7 @@ Riasztások több Azure-szolgáltatások figyelésének keresztül érhetők el.
 | **Jel típusa** | **Forrás figyelése** | **Leírás** | 
 |-------------|----------------|-------------|
 | Metrika | Az Azure-figyelő | Más néven [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md), 1 perces gyakorisággal metrika feltételek kiértékelése támogatja, és lehetővé teszik a több metrika és többdimenziós metrika szabályokat. A támogatott erőforrástípusai listáját [Itt](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported). |
-| Metrika | Az Azure-figyelő | [Régebbi klasszikus metrika riasztások](monitoring-overview-alerts.md) nem támogatottak az új riasztások felületet. Megtalálja azokat a riasztásokat (klasszikus) Azure-portálon. A klasszikus riasztások néhány metrikák típusokat, amelyek még nem lettek áthelyezve az újabb riasztások támogatja. Teljes listájáért lásd: [támogatott metrikák](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
+| Metrika | Az Azure-figyelő | [Régebbi klasszikus metrika riasztások](monitoring-overview-alerts.md) nem támogatottak az új riasztások felületet. Megtalálja azokat a riasztásokat (klasszikus) Azure-portálon. A klasszikus riasztások néhány metrikák típusokat, amelyek még nem lettek áthelyezve az újabb riasztások támogatja. Teljes listájáért lásd: [támogatott metrikák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
 | Logs  | Log Analytics | Értesítéseket, illetve automatikus műveleteket futtatott metrika és/vagy esemény adatok napló keresési lekérdezés meghatározott feltételeknek eleget. Régebbi Naplóelemzési riasztásokat továbbra is elérhetők, de [az új felületre való másolásának](monitoring-alerts-extend.md). Emellett egy [az előzetes *Naplóelemzési naplók, metrikák* ](monitoring-alerts-extend-tool.md) érhető el. Az előzetes lehetővé teszi bizonyos naplók típusait és alakíthatja át őket metrika, ahol meg tudja majd riasztás őket az Új riasztási felület használatával. Az előzetes akkor hasznos, ha le szeretné kérdezni natív Azure figyelő metrikák együtt az Azure-naplók. |
 | Tevékenységnapló | Tevékenységi naplóit (általános) | A kiválasztott célkiszolgáló (erőforrás és az erőforrások csoport/előfizetést) keresztül végrehajtott összes létrehozási, frissítési és törlési műveletek rekordokat tartalmazza. |
 | Tevékenységnapló  | Service Health | Az új riasztások tapasztalat nem támogatott. Lásd: [napló riasztások tevékenység létrehozása a szolgáltatás értesítések](monitoring-activity-log-alerts-on-service-notifications.md).  |

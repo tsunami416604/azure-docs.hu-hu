@@ -1,25 +1,25 @@
 ---
-title: "Az Azure Active Directory v2.0-végpontra vonatkozó alkalmazástípusok |} Microsoft Docs"
-description: "Milyen alkalmazásokat és az Azure Active Directory v2.0-végponttól által támogatott forgatókönyveket."
+title: Az Azure Active Directory v2.0-végpontra vonatkozó alkalmazástípusok |} Microsoft Docs
+description: Milyen alkalmazásokat és az Azure Active Directory v2.0-végponttól által támogatott forgatókönyveket.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
-ms.author: dastrock
+ms.date: 04/17/2018
+ms.author: hpsin
 ms.custom: aaddev
-ms.openlocfilehash: b0344c1da626a8b4679a632db239fc9ded9d5ce6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 291cd1adaf36d7f02aae84f97b7f7b3e6bca2c9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Alkalmazástípusok az Azure Active Directory v2.0 végpont
 Az Azure Active Directory (Azure AD) v2.0-végponttól hitelesítést is támogatja a modern alkalmazás-architektúrák esetén az összes szabványos protokollokat számos [OAuth 2.0-s vagy az OpenID Connect](active-directory-v2-protocols.md). A cikkből megtudhatja, milyen típusú alkalmazásokat úgy, hogy az Azure AD v2.0, függetlenül a választott nyelv vagy platform használatával. A cikkben szereplő információkat, amelyekkel jobban megértheti az összetettebb feladatok előtt készült [a kód munka megkezdéséhez](active-directory-appmodel-v2-overview.md#getting-started).
@@ -120,4 +120,4 @@ A folyamatot, az alkalmazás kommunikál közvetlenül a `/token` végpont végp
 
 ![Démon alkalmazás hitelesítési folyamat](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
-Egy démon alkalmazás elkészítésére, tekintse meg az ügyfél-hitelesítő adatok dokumentációjában találhatók a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakaszban, vagy adjon meg egy [.NET mintaalkalmazás](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Egy démon alkalmazás elkészítésére, tekintse meg a [ügyfél hitelesítő adatait a dokumentáció](active-directory-v2-protocols-oauth-client-creds.md), vagy próbálja meg egy [.NET mintaalkalmazás](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

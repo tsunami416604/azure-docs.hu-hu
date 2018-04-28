@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 20e3a65c28e95849822d81076b6780e05a2aebbf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5a4e19f232abce8701e6d2e12a876c55079b91a2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Az Azure CLI 1.0 használatával több hálózati adapterrel rendelkező Linux virtuális gép létrehozása
 Létrehozhat egy virtuális gép (VM), amelyen több virtuális hálózati adapterek (NIC) nem csatlakoztatható az Azure-ban. Egy gyakori forgatókönyv, hogy az előtér- és kapcsolat, vagy a hálózaton, figyelési vagy biztonsági mentési megoldásra dedikált különböző alhálózatokon. A cikkben gyors parancsok futtatásával hozzon létre egy virtuális gép több hálózati adapter nem csatlakoztatható. Különböző [Virtuálisgép-méretek](sizes.md) több hálózati adapter támogatja, így méretezés ennek megfelelően a virtuális Gépet.
@@ -163,7 +163,7 @@ Használhatja a `copyIndex()` majd hozzáfűzendő erőforrás nevét, amely leh
 "name": "[concat('myNic', copyIndex())]", 
 ```
 
-Átfogó példát olvasható [létrehozása a Resource Manager-sablonok segítségével több hálózati adapter](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+Átfogó példát olvasható [létrehozása a Resource Manager-sablonok segítségével több hálózati adapter](../../virtual-network/template-samples.md).
 
 Több hálózati adapter a Linux virtuális gépek hozzáadásakor útválasztási szabályok létrehozásához szükséges. Ezek a szabályok lehetővé teszik a virtuális Gépet, amelyhez tartozik egy adott hálózati adatforgalmat Ellenkező esetben forgalom tartozó eth1, például nem tudja feldolgozni megfelelően a meghatározott alapértelmezett útvonalat. Útválasztási a probléma megoldásához tekintse meg a [konfigurálása vendég operációs rendszer számára több hálózati adapter](multiple-nics.md#configure-guest-os-for-multiple-nics).
 

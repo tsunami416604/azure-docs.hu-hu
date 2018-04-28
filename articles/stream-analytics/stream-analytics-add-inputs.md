@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 713b830717cce7b4b2b0fb1171596659c2275b85
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 13c3c948fbe24d5536b32967c8394060ee898377
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Adatfolyam-továbbítási adatok beviteli vagy hivatkozás adatok hozzáadása a Stream Analytics-feladat
 Útmutató a Stream Analytics-feladat, mint az Event Hubs vagy hivatkozás adatokat a Blob storage adatbevitel streaming egy adatforrást a számítógéphez.
@@ -49,12 +49,12 @@ A Stream Analytics-feladat bemenete hozzáadása:
     ![Adatfolyam-bemenetre adatok hozzáadása](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)  
 4. Adja meg a beviteli mezőben a bemeneti Áljel rövid nevét.  Ez a név használandó a feladat lekérdezésben később tekintse meg a bemeneti adatok.
    
-    Töltse ki a többi a szükséges csatlakozási tulajdonságokat az adatforráshoz való kapcsolódáshoz. Ezek a mezők bemeneti és a forrás típusa változhat, és részletesen meghatározása [Itt](stream-analytics-create-a-job.md).  
+    Töltse ki a többi a szükséges csatlakozási tulajdonságokat az adatforráshoz való kapcsolódáshoz. 
    
     ![Event hub bemeneti hozzáadása](./media/stream-analytics-add-inputs/4-stream-analytics-add-inputs.png)  
 5. Adja meg a bemeneti adatok szerializálási beállításait:
    
-   * Győződjön meg arról, hogy a lekérdezések a várt módon működik-e, adja meg a **esemény szerializálási formátum** a bejövő adatok.  Támogatott szerializálási formátumok a következők: JSON, CSV és az Avro.
+   * Győződjön meg arról, hogy a lekérdezések a várt módon működik-e, adja meg a **esemény szerializálási formátum** a bejövő adatok.  Támogatott szerializálási formátumok a következők: JSON, CSV és az Avro. Győződjön meg arról, a JSON formátum igazodik a meghatározás nem tartalmazza a decimális számok kezdő 0.
    * Ellenőrizze a **kódolás** az adatok számára.  Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.
      
      ![A bemeneti adatok szerializálási beállítások](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)  

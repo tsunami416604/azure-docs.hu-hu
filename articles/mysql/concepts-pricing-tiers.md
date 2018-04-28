@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: c9a74aa00ee263b8fb4e19b77ad5be418e31c7d6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 24f352d8743ba8ef72e141498589e1c6c14ff85e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure tarifacsomagok MySQL-adatbázis
 
@@ -22,10 +22,10 @@ Létrehozhat egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis az egyik három
 |    | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási létrehozása | 4, 5. generációból generációs | 4, 5. generációból generációs | Gen 5 |
-| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| vCores | 1, 2 | 2, 4, 8, 16 és 32 |2, 4, 8, 16 |
 | Memória mennyisége vCore | Alapkonfiguráció | 2 x Basic | Általános célú x 2 |
 | Tároló mérete | 5 GB és 1 TB | 5 GB és 2 TB | 5 GB és 2 TB |
-| Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárolási típus | Az Azure standard szintű tárolót | Azure Premium Storage | Azure Premium Storage |
 | Adatbázis biztonsági mentés megőrzési időtartam | 7-35 nap | 7-35 nap | 7-35 nap |
 
 Válasszon egy tarifacsomagot, használja a következő táblázat kiindulási pontként.
@@ -36,7 +36,7 @@ Válasszon egy tarifacsomagot, használja a következő táblázat kiindulási p
 | Általános rendeltetés | A legtöbb üzleti szolgáltatások, amelyek kiegyensúlyozott számítási és memóriakapacitást méretezhető i/o-átviteli. Például a webes és mobilalkalmazások és más vállalati alkalmazásokat futtató kiszolgálók.|
 | Memóriára optimalizált | Gyorsabb tranzakció-feldolgozást és magasabb szintű párhuzamosság memórián belüli teljesítményt igénylő nagy teljesítményű adatbázis munkaterhelésekhez. Például a kiszolgálók a valós idejű adatok és nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozásához.|
 
-Miután létrehozott egy kiszolgálót, vCores száma módosítható felfelé vagy lefelé másodpercen belül. Is egymástól függetlenül beállíthatja másolatot tároló és a biztonsági mentés megőrzési időszak felfelé vagy lefelé alkalmazás állásidő nélkül. További információkért lásd: "Válik erőforrások" szakasz.
+Miután létrehozott egy kiszolgálót, vCores száma módosítható felfelé vagy lefelé (belül az azonos árképzési szint) másodpercen belül. Is egymástól függetlenül beállíthatja másolatot tároló és a biztonsági mentés megőrzési időszak felfelé vagy lefelé alkalmazás állásidő nélkül. Az árképzési szint vagy a biztonsági másolatok tárolási típus nem módosítható, miután a kiszolgáló akkor jön létre. További információkért lásd: a [válik erőforrások](#scale-resources) szakasz.
 
 ## <a name="compute-generations-vcores-and-memory"></a>Számítási generációja, vCores és memória
 
@@ -53,13 +53,13 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 | USA nyugati régiója, 2. |  | X |
 | Közép-Kanada | X | X |
 | Kelet-Kanada | X | X |
-| Dél-Brazília | X |  |
+| Dél-Brazília | X | X |
 | Észak-Európa | X | X |
 | Nyugat-Európa | X | X |
 | Az Egyesült Királyság nyugati régiója |  | X |
 | Az Egyesült Királyság déli régiója |  | X |
 | Kelet-Ázsia | X |  |
-| Délkelet-Ázsia | X |  |
+| Délkelet-Ázsia | X | X |
 | Kelet-Ausztrália |  | X |
 | Közép-India | X |  |
 | Nyugat-India | X |  |
@@ -75,7 +75,7 @@ A tároló, kiépítése nem MySQL-kiszolgáló az Azure-adatbázishoz rendelkez
 
 |    | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
 |:---|:----------|:--------------------|:---------------------|
-| Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárolási típus | Az Azure standard szintű tárolót | Azure Premium Storage | Azure Premium Storage |
 | Tároló mérete | 5 GB és 1 TB | 5 GB és 2 TB | 5 GB és 2 TB |
 | Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
 | IO | Változó |3 IOPS/GB<br/>100 minimális IOPS | 3 IOPS/GB<br/>100 minimális IOPS |
@@ -90,7 +90,7 @@ A szolgáltatás automatikusan felveszi a kiszolgáló biztonsági másolatait. 
 
 ## <a name="scale-resources"></a>Erőforrások skálázása
 
-Miután létrehozta a kiszolgáló, a vCores tárolókapacitást és a biztonsági mentés megőrzési időszak egymástól függetlenül módosíthatja. Az árképzési szint vagy a biztonsági másolatok tárolási típus nem módosítható, miután a kiszolgáló akkor jön létre. vCores és a biztonsági mentés megőrzési időszak felfelé vagy lefelé méretezhetők. A tárhely méretét pedig csak növelni. Az erőforrások skálázás végezhető vagy a portál vagy az Azure parancssori felület használatával. Az Azure parancssori felület használatával skálázás példáért lásd: [figyelő és a skála egy Azure parancssori felület használatával MySQL-kiszolgálóhoz tartozó Azure-adatbázis](scripts/sample-scale-server.md).
+Miután létrehozta a kiszolgáló, a vCores tárolókapacitást és a biztonsági mentés megőrzési időszak egymástól függetlenül módosíthatja. Az árképzési szint vagy a biztonsági másolatok tárolási típus nem módosítható, miután a kiszolgáló akkor jön létre. VCores száma is méretezhető felfelé vagy lefelé belül az azonos árképzési szint. A biztonsági mentés megőrzési idő is méretezhető felfelé vagy lefelé 7 35 napon. A tárhely méretét pedig csak növelni. Az erőforrások skálázás végezhető vagy a portál vagy az Azure parancssori felület használatával. Az Azure parancssori felület használatával skálázás példáért lásd: [figyelő és a skála egy Azure parancssori felület használatával MySQL-kiszolgálóhoz tartozó Azure-adatbázis](scripts/sample-scale-server.md).
 
 Ha megváltoztatja a vCores számát, az eredeti kiszolgáló hozza létre az új számítási felosztás. Miután az új kiszolgálón fut, kapcsolatok bekapcsolt állapotban az új kiszolgálóra. Során, amikor a rendszer való működésre vált az új kiszolgáló jelenleg nincs új kapcsolatok hozhatók létre, és minden nem véglegesített tranzakciót visszaállít a rendszer. Ebben az ablakban platformonként változó, de a legtöbb esetben egy percen belül.
 

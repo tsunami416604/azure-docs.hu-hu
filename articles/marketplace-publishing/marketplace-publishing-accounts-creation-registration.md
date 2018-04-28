@@ -1,11 +1,11 @@
 ---
-title: "Létrehozása és regisztrálása a közzétevő fiók |} Microsoft Docs"
-description: "Utasítások a Microsoft Developer-fiók létrehozásához, így a jóváhagyást követően is értékesít különböző kínálnak az Azure piactéren típusok."
+title: Létrehozása és regisztrálása a közzétevő fiók |} Microsoft Docs
+description: Utasítások a Microsoft Developer-fiók létrehozásához, így a jóváhagyást követően is értékesít különböző kínálnak az Azure piactéren típusok.
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5a2fe68d-2967-463f-8af6-42bed07e3eaa
 ms.service: marketplace
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: mbaldwin
-ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 69da37cbf5691fe94b9550200e259711e9e201d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 Ez a cikk végigvezeti a szükséges fiókok létrehozása és a regisztrációs folyamat egy engedélyezett Microsoft Developer legyen, az Azure piactérről.
@@ -37,7 +37,7 @@ A címet, amely a felhasználó neve képezi a tartományban kell lennie, és az
 A vállalati fiók létrehozásakor követi ezeket az irányelveket, ha egynél több személy kell megnyitni a fiókot a Microsoft-fiókkal bejelentkezik a fiók eléréséhez.
 
 > [!Important]
-> Fontos, hogy lehetővé teszik több felhasználó is elérheti a fejlesztői központban regisztrált fiókjában, azt javasoljuk, Azure Active Directory használatával egyéni felhasználók számára, ki férhet hozzá a fiókot az egyéni bejelentkezik szerepkörök hozzárendelése az Azure AD hitelesítő adatait. További információk: [fiókot használó felhasználók kezelése](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+> Fontos, hogy lehetővé teszik több felhasználó is elérheti a fejlesztői központban regisztrált fiókjában, azt javasoljuk, Azure Active Directory használatával egyéni felhasználók számára, ki férhet hozzá a fiókot az egyéni bejelentkezik szerepkörök hozzárendelése az Azure AD hitelesítő adatait. További információk: [fiókot használó felhasználók kezelése](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users).
 
 * A Microsoft-fiók létrehozása használatával egy e-mail-címét a vállalati tartományhoz, de nem egy személy – például windowsapps@fabrikam.com.
 * A lehető legkevesebb fejlesztők a Microsoft-fiókhoz való hozzáférés korlátozásához.
@@ -49,7 +49,7 @@ A vállalati fiók létrehozásakor követi ezeket az irányelveket, ha egynél 
 
 A fejlesztői fiókba elsősorban a megbízható számítógépekhez legyenek elérhetők. Ez azért fontos, mert fiókonként hetente létrehozott kódok száma korlátozva van. Azt is lehetővé teszi, hogy a legtöbb zökkenőmentes bejelentkezési élményt.
 
-További információt a további fejlesztői fiók irányelvek és biztonsági [Itt](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+További információt a további fejlesztői fiók irányelvek és biztonsági [Itt](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Utasítások
 1. Nyisson meg egy új Chrome Incognito vagy Internet Explorer InPrivate-böngészés munkamenet győződjön meg arról, hogy még nem jelentkezett ajánlása meglévő fiókhoz.

@@ -1,26 +1,26 @@
 ---
-title: "Az Azure Active Directory feltételes hozzáférési feltételek |} Microsoft Docs"
-description: "Tudnivalók a hozzárendelések használata a Azure Active Directory feltételes hozzáférési házirend indításához."
+title: Az Azure Active Directory feltételes hozzáférési feltételek |} Microsoft Docs
+description: Tudnivalók a hozzárendelések használata a Azure Active Directory feltételes hozzáférési házirend indításához.
 services: active-directory
-keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
-documentationcenter: 
+keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/27/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2415a2c2c0143b4abeb8ec1ecab379a204456874
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b3096fbec6a7cc30d1ae3452b6c8b872cf3aec8f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Az Azure Active Directory feltételes hozzáférési feltételek 
 
@@ -45,17 +45,23 @@ Ez a cikk áttekintést nyújt a feltételeket és azok hogyan használhatók a 
 
 A felhasználók és csoportok feltétele egy feltételes hozzáférési házirendben kötelező. A házirend, vagy válassza ki is **minden felhasználó** , vagy válasszon adott felhasználókat és csoportokat.
 
-![Vezérlés](./media/active-directory-conditional-access-conditions/02.png)
+![Vezérlés](./media/active-directory-conditional-access-conditions/111.png)
 
 Ha bejelöli:
 
-- **Minden felhasználó**, a házirend vonatkozik, a címtárban szereplő összes felhasználó. Ez magában foglalja a vendégfelhasználók számára.
+- **Minden felhasználó**, a házirend vonatkozik, hogy a címtárban szereplő összes felhasználó. Ez magában foglalja a vendégfelhasználók számára.
 
-- **Válassza ki a felhasználók és csoportok**, egy célcsoport kijelölésével az adott felhasználócsoportokhoz. Például kiválaszthatja egy csoportot, amely tartalmazza a HR osztály összes tagja, ha egy felhő alkalmazásként HR alkalmazást. 
+- **Válassza ki a felhasználók és csoportok**, beállíthatja a következő beállításokat:
 
-- Egy csoport lehet bármilyen típusú csoport az Azure AD, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportok.
+    - **Minden vendégfelhasználók** -lehetővé teszi a B2B vendégfelhasználók számára a szabályzatok célzásához. Ez a feltétel rendelkező felhasználói fiók megfelel a *userType* attribútum értékének beállítása *vendég*. Ez a beállítás olyan esetekben, ahol egy házirendet kell alkalmazni, amint az a fiók létrejön egy összehíváshoz folyamatában, az Azure AD is használhatja.
 
-Is kizárhat egyes felhasználók vagy csoportok egy házirend. Egy gyakori használati eset szolgáltatás fiók is, ha a házirend érvénybe lépteti a multi-factor Authentication hitelesítést. 
+    - **Directory szerepkörök** -lehetővé teszi, amelyekre a házirend a felhasználói szerepkör-hozzárendelés alapján. Ez a feltétel támogatja directory szerepkörök például *globális rendszergazda* vagy *jelszókezelő*.
+
+    - **Felhasználók és csoportok** -lehetővé teszi, hogy a felhasználók adott csoportja cél. Például kiválaszthatja egy csoportot, amely tartalmazza a HR osztály összes tagja, ha egy felhő alkalmazásként HR alkalmazást.
+
+Egy csoport lehet bármilyen típusú csoport az Azure AD, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportok
+
+Is kizárhat egyes felhasználók vagy csoportok egy házirend. Egy gyakori használati eset szolgáltatás fiók is, ha a házirend érvénybe lépteti a többtényezős hitelesítés (MFA). 
 
 Felhasználók adott csoportja célzó akkor hasznos, új központi telepítésére vonatkozóan. Egy új házirend céljaként meghatározott érvényesíti a házirendet viselkedés csak egy kezdeti készleteinek. 
 
@@ -71,7 +77,7 @@ A felhőalapú alkalmazások feltétele egy feltételes hozzáférési házirend
 
 Választhat:
 
-- **Az összes felhőalapú alkalmazások** alapterv házirendeket, hogy a teljes szervezet alkalmazható. A kijelölés gyakori használati eset egy olyan házirend, többtényezős hitelesítést igényel bejelentkezési kockázat észlelésekor bármely felhőalapú alkalmazás.
+- **Az összes felhőalapú alkalmazások** alapterv házirendeket, hogy a teljes szervezet alkalmazható. A kijelölés gyakori használati eset egy olyan házirend, többtényezős hitelesítést igényel bejelentkezési kockázat észlelésekor bármely felhőalapú alkalmazás. Egy házirend is tartozik **összes felhőalapú alkalmazások** hozzáférés vonatkozik minden webhelyen és szolgáltatásra. Ez a beállítás nem korlátozódik a felhőalapú alkalmazásokat, amelyek a **válasszon felhőalkalmazások** listája.
 
 - Az egyes felhőalapú alkalmazások célként megadott szolgáltatások házirend. Például megkövetelheti a felhasználókat, hogy egy [megfelelő eszköz](active-directory-conditional-access-policy-connected-applications.md) SharePoint Online eléréséhez. A házirend más szolgáltatások is érvényben van, a SharePoint-tartalom, például a Microsoft Teams elérésekor. 
 
@@ -105,6 +111,17 @@ A támogatott eszközplatformok teljes listáját lásd: [eszköz platform felt�
 
 
 Egy gyakori használati eset, ez az állapot értéke egy házirendet, amely korlátozza a hozzáférést a felhőalapú alkalmazások [megbízható eszköz](active-directory-conditional-access-policy-connected-applications.md#trusted-devices). További helyzeteket is, beleértve az eszköz platformja feltétel, lásd: [Azure Active Directory alkalmazás-alapú feltételes hozzáférés](active-directory-conditional-access-mam.md).
+
+
+
+## <a name="device-state"></a>Az eszköz állapotát
+
+Az eszköz állapota feltétel lehetővé teszi, hogy az Azure AD hibrid tartományhoz csatlakoztatott és eszközök megjelölve megfelelőnek feltételes hozzáférési házirend alól. Ez akkor hasznos, ha a házirend csak további munkamenet biztonsága nem felügyelt eszközön kell alkalmazni. Például csak kényszerítése a Microsoft Cloud App Security munkamenet vezérlő a nem felügyelt eszközök esetén. 
+
+
+![Feltételek](./media/active-directory-conditional-access-conditions/112.png)
+
+Ha azt szeretné, a nem felügyelt eszközök hozzáférésének letiltására, akkor meg kell valósítania [eszközalapú feltételes hozzáférési](active-directory-conditional-access-policy-connected-applications.md).
 
 
 ## <a name="locations"></a>Helyek

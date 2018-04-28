@@ -1,32 +1,27 @@
 ---
-title: "Azure Active Directory Connect szinkronizálási szolgáltatás: Multi-földrajzi képességeinek elsődleges hely konfigurálása az Office 365-ben |} Microsoft Docs"
-description: "Az Office 365 felhasználói erőforrások megközelíti a felhasználó Azure Active Directory Connect szinkronizálási put ismerteti."
+title: 'Azure Active Directory Connect szinkronizálási szolgáltatás: Multi-földrajzi képességeinek elsődleges hely konfigurálása az Office 365-ben |} Microsoft Docs'
+description: Az Office 365 felhasználói erőforrások megközelíti a felhasználó Azure Active Directory Connect szinkronizálási put ismerteti.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 04/16/2018
 ms.author: billmath
-ms.openlocfilehash: a5ebd61539af7116b8f92cdf9404cd2b5cdea193
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0020ed42baaa32fbc5ae2d62b37558e491842d67
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect szinkronizálási szolgáltatás: elsődleges hely az Office 365-erőforrások konfigurálása
 Ez a témakör célja végigvezetik Önt az attribútum az elsődleges hely beállítása az Azure Active Directory (Azure AD) Connect szinkronizálási szolgáltatás. Ha az Office 365-ben Multi-földrajzi szolgáltatásait valaki használja, ez az attribútum segítségével jelölheti ki az Office 365-adatokat a felhasználó földrajzi helye. (A feltételek *régió* és *földrajzi* van megegyezik.)
-
-> [!IMPORTANT]
-> Multi-földrajzi jelenleg előzetes verzió. Ha szeretne részt venni az előzetes programban, lépjen kapcsolatba a Microsoft képviselőjével.
->
->
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Elsődleges hely szinkronizálásának engedélyezése
 Alapértelmezés szerint a felhasználók az Office 365-erőforrások, az Azure AD-bérlő azonos földrajzi találhatók. Például ha a bérlő Észak-Amerika található, majd a felhasználó Exchange-postaládák is található Észak-Amerikában. A nemzetközi szervezetnél ez nem feltétlenül optimális.
@@ -34,7 +29,7 @@ Alapértelmezés szerint a felhasználók az Office 365-erőforrások, az Azure 
 Úgy, hogy az attribútum **preferredDataLocation**, meghatározhatja, hogy a felhasználó földrajzi. A felhasználó Office 365 erőforrások, például a postaláda és a onedrive vállalati verzió, a felhasználó ugyanazon földrajzi rendelkezik, és még egy bérlő a teljes szervezet számára.
 
 > [!IMPORTANT]
-> Jogosult Multi-földrajzi, rendelkeznie kell legalább 5 000 munkaállomásokat az Office 365-előfizetésben.
+> Multi-földrajzi már érhető el az Office 365-szolgáltatásokhoz 5000 előfizetések legalább-ügyfél számára. Forduljon a Microsoft-képviselőjével részleteit.
 >
 >
 
@@ -50,12 +45,12 @@ Az Office 365 Multi-földrajzi elérhető geos a következők:
 | Európai Unió | EUR |
 | India | IND |
 | Japán | JPN |
-| Dél-Korea | KOR |
+| Korea | KOR |
 | Egyesült Királyság | GBR |
 | Egyesült Államok | NÉV |
 
 * Ha egy földrajzi nem szerepel ebben a táblában (például Dél-Amerika), akkor azt nem használható a Multi-földrajzi.
-* Indiai és dél koreai geos csak ügyfelek számlázási címet, és ezek geos a megvásárolt licencek számára elérhetők lesznek.
+* A India földrajzi csak számlázási címét, és a földrajzi megvásárolt licencek rendelkező ügyfelek rendelkezésére áll.
 * Nem minden Office 365 számítási feladattal a felhasználó földrajzi beállítás használatát támogatja.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>A szinkronizálás Azure AD Connect-támogatás
@@ -131,7 +126,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
     | Leírás | *Adjon meg egy egyéni leírást* |  |
     | Csatlakoztatott rendszer | *Válassza ki a helyszíni Active Directory-összekötő* |  |
     | Objektumtípus csatlakoztatva | **Felhasználó** |  |
-    | Metaverzum-objektum típusa | **Person** |  |
+    | Metaverzum-objektum típusa | **Személy** |  |
     | Kapcsolat típusa | **Csatlakozás** |  |
     | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Nem válasszon egy másik szinkronizálási szabály által használt érték. |
 
@@ -140,7 +135,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 
     | Típusa | Célattribútum | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    |Közvetlen | preferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | Frissítés |
+    |Közvetlen | PreferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | Frissítés |
 
 7. A bejövő forgalomra vonatkozó szabály létrehozásához válassza **Hozzáadás**.
 
@@ -160,7 +155,7 @@ A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték fel�
     | Leírás | *Adjon meg egy leírást* ||
     | Csatlakoztatott rendszer | *Válassza ki az Azure AD Connectoron* ||
     | Objektumtípus csatlakoztatva | **Felhasználó** ||
-    | Metaverzum-objektum típusa | **Person** ||
+    | Metaverzum-objektum típusa | **Személy** ||
     | Kapcsolat típusa | **Csatlakozás** ||
     | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Nem válasszon egy másik szinkronizálási szabály által használt érték. |
 
@@ -177,7 +172,7 @@ A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték fel�
 
     | Típusa | Célattribútum | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    | Közvetlen | preferredDataLocation | preferredDataLocation | Nincs bejelölve | Frissítés |
+    | Közvetlen | PreferredDataLocation | PreferredDataLocation | Nincs bejelölve | Frissítés |
 
 7. Bezárás **Hozzáadás** a kimenő forgalomra vonatkozó szabály létrehozásához.
 

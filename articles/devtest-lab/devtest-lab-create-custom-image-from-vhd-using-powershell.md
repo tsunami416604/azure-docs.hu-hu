@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 2c542f9d47eb8011a13bf7156430324c53d238ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6bfb34c05a03ed02694210a5901f4f367e8a2fd3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Egyéni lemezkép létrehozása a PowerShell használatával VHD-fájl
 
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/23/2018
 
 A következő lépések végigvezetik egyéni lemezkép létrehozása a PowerShell használatával VHD-fájlt:
 
-1. Egy PowerShell-parancssorba, jelentkezzen be az Azure-fiókjával a következő hívást a **Login-AzureRmAccount** parancsmag.  
+1. Egy PowerShell-parancssorba, jelentkezzen be az Azure-fiókjával a következő hívást a **Connect-AzureRmAccount** parancsmag.  
     
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1.  Válassza ki a kívánt Azure-előfizetés meghívásával a **Select-AzureRmSubscription** parancsmag. A következő helyőrzőt cserélje le a **$subscriptionId** változó, egy érvényes Azure-előfizetéssel. 
@@ -83,7 +83,7 @@ A következő PowerShell-parancsfájl segítségével létrehozhat egyéni rends
 
 ```PowerShell
 # Log in to your Azure account.  
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Select the desired Azure subscription. 
 $subscriptionId = '<Specify your subscription ID here>'

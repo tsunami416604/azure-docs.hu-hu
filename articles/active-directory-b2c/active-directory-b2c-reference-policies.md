@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: c733f919189dadcf1181ddbe2a1057b2bcf66fc4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Az Azure Active Directory B2C: Beépített házirendek
 
@@ -62,7 +62,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Regisztrálási vagy bejelentkezési szabályzat létrehozása
 
-Ez a házirend mindkét fogyasztói előfizetési & bejelentkezési élmény egyetlen konfigurációval kezeli. Fogyasztók le a megfelelő elérési utat (regisztráció vagy bejelentkezés) attól függően, hogy a helyi rendszer vezetett. Azt is bemutatja a jogkivonatokat, amelyek az alkalmazás sikeres regisztrációra vagy bejelentkezések kap tartalmát.  A kód a minta a regisztráció vagy bejelentkezés házirend [érhető el itt](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Javasoljuk, hogy a regisztrációs szabályzatban, és a bejelentkezési házirend keresztül használja ezt a házirendet.  
+Ez a házirend mindkét fogyasztói előfizetési & bejelentkezési élmény egyetlen konfigurációval kezeli. Fogyasztók le a megfelelő elérési utat (regisztráció vagy bejelentkezés) attól függően, hogy a helyi rendszer vezetett. Azt is bemutatja a jogkivonatokat, amelyek az alkalmazás sikeres regisztrációra vagy bejelentkezések kap tartalmát.  A kód mintát eredményez, amely a **regisztráció vagy bejelentkezés** házirend [érhető el itt](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Javasoljuk, hogy ez a házirend keresztül használja a **előfizetési** házirend vagy egy **bejelentkezési** házirend.  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -85,16 +85,16 @@ Ez a házirend mindkét fogyasztói előfizetési & bejelentkezési élmény egy
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Hogyan hivatkozásra a jelszó-visszaállítási házirend regisztráció vagy bejelentkezés házirenddel?
-A regisztráció vagy bejelentkezés házirendje (helyi fiókoknál) hoz létre, ha megjelenik egy **elfelejtette jelszó?** tapasztalat első oldalán lévő hivatkozásra. Ez a hivatkozás nem automatikusan eseményindító jelszó alaphelyzetbe állítása házirend. 
+Amikor létrehoz egy **regisztráció vagy bejelentkezés** házirendje (helyi fiókoknál), lásd: egy **elfelejtette a jelszavát?** tapasztalat első oldalán lévő hivatkozásra. Ez a hivatkozás nem automatikusan eseményindító jelszó alaphelyzetbe állítása házirend. 
 
 Ehelyett a hiba kódja **`AADB2C90118`** küld vissza az alkalmazást. Ez a hibakód kezelni a megadott jelszó-visszaállítási házirend figyelőn kell az alkalmazást. További információkért lásd: a [minta azt mutatja be a módszert is, amely a linking házirendek](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
 
 ### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>A regisztráció vagy bejelentkezés házirend vagy a regisztrációs szabályzatban, és a bejelentkezési házirend érdemes használni?
-Azt javasoljuk, hogy a regisztrációs szabályzatban, és a bejelentkezési házirend keresztül használja a regisztráció vagy bejelentkezés házirend.  
+Azt javasoljuk, hogy használja a **regisztráció vagy bejelentkezés** házirend keresztül egy **előfizetési** házirend és a **bejelentkezési** házirend.  
 
-A regisztráció vagy bejelentkezés házirend a bejelentkezési házirend-nál több képességekkel rendelkezik. Lehetővé teszi, hogy lap felhasználói felületének testreszabása és a honosításhoz jobb támogatást. 
+A **regisztráció vagy bejelentkezés** házirend mint további funkciókkal rendelkezik a **bejelentkezési** házirend. Lehetővé teszi, hogy lap felhasználói felületének testreszabása és a honosításhoz jobb támogatást. 
 
-A bejelentkezési házirend ajánlott, nem kell szerepelnie a házirendeket, ha csak kisebb testreszabási lehetőségek szükséges branding, és szeretné a jelszó alaphelyzetbe állítása azt beépítve.
+A **bejelentkezési** házirend ajánlott, nem kell szerepelnie a házirendeket, ha csak kisebb testreszabási lehetőségek szükséges branding, és szeretné a jelszó alaphelyzetbe állítása azt beépítve.
 
 ## <a name="next-steps"></a>További lépések
 * [Token, munkamenet és egyszeri bejelentkezés konfigurálása](active-directory-b2c-token-session-sso.md)

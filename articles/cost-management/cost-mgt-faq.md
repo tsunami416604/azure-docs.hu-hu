@@ -1,20 +1,20 @@
 ---
-title: "Gyakori kérdések az Azure költség Management szolgáltatásról |} Microsoft Docs"
-description: "A témakör válaszokat ad Azure költség-kezeléssel kapcsolatos gyakori kérdésekre."
+title: Gyakori kérdések az Azure költség Management szolgáltatásról |} Microsoft Docs
+description: A témakör válaszokat ad Azure költség-kezeléssel kapcsolatos gyakori kérdésekre.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: troubleshooting
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 8920ff082fa1b442aa147068080085c40760e290
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Gyakori kérdések az Azure költség Management
 
@@ -89,7 +89,7 @@ Cloudyn e-mail-címét az Azure-ban az alapértelmezett cím vált, ha a fiók k
 
 Azt javasoljuk, hogy legalább két Cloudyn rendszergazdai fiókokat hoz létre, abban az esetben, ha az egyik fiók lekérdezi zárolása.
 
-Ha Ön nem jelentkezhet be a Cloudyn portálra, győződjön meg arról, hogy bejelentkezni Cloudyn a helyes Azure költség felügyeleti URL-címet használja. Use [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+Ha Ön nem jelentkezhet be a Cloudyn portálra, győződjön meg arról, hogy bejelentkezni Cloudyn a helyes Azure költség felügyeleti URL-címet használja. Használjon [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
 Kerülje a Cloudyn közvetlen URL-cím https://app.cloudyn.com.
 
@@ -116,9 +116,9 @@ Egy entitás további CSP fiókok hozzáadásához válassza **MSP hozzáférés
 
 Lehetséges, hogy a különböző pénznemeket használó több Azure-fiókra. Költség jelentéseket Cloudyn azonban ne jelenjen meg egynél több pénznem típusa jelentésenként.
 
-Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek jelennek USD  **$** . A javasolt ajánlott kerülheti el a különböző pénznemek entitás ugyanabba a hierarchiába. Más szóval egy entitás struktúrájából összes előfizetés megegyező pénznemet kell használni.
+Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek jelennek USD **$**. A javasolt ajánlott kerülheti el a különböző pénznemek entitás ugyanabba a hierarchiába. Más szóval egy entitás struktúrájából összes előfizetés megegyező pénznemet kell használni.
 
-Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénznem és mutatja be megfelelően a jelentésekben.  Azonban Cloudyn csak jeleníti USD  **$**  CSP és a web-közvetlen Azure-fiókra.
+Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénznem és mutatja be megfelelően a jelentésekben.  Azonban Cloudyn csak jeleníti USD **$** CSP és a web-közvetlen Azure-fiókra.
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Mik azok a Cloudyn adatok frissítése ütemtervek?
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Backup hibrid biztonsági mentések védelme érdekében biztonsági funkciók |} Microsoft Docs"
-description: "Útmutató: Azure Backup szolgáltatás biztonsági szolgáltatások használatával biztonságosabbá teszi a biztonsági másolatok"
+title: Az Azure Backup hibrid biztonsági mentések védelme érdekében biztonsági funkciók |} Microsoft Docs
+description: 'Útmutató: Azure Backup szolgáltatás biztonsági szolgáltatások használatával biztonságosabbá teszi a biztonsági másolatok'
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: 47bc8423-0a08-4191-826d-3f52de0b4cb8
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
-ms.openlocfilehash: f856303d4abf05178eb11a242b87390ff1484e1b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 2529d19dbf0ca0fb59f5abe48be3e8b14e862e29
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Az Azure Backup hibrid biztonsági mentések védelme érdekében biztonsági funkciói
 -Maillel kapcsolatos biztonsági problémák, például a kártevő szoftver, a nevű és a behatolás, növekednek. Lehet, hogy a biztonsági problémák költséges, pénzt és adatokat. Az ilyen támadások elleni védelmet, a Azure biztonsági mentés most hibrid biztonsági mentések védelme érdekében biztonsági szolgáltatásokat biztosítja. Ez a cikk bemutatja, hogyan adhat engedélyezése és ezek a funkciók használata az Azure Recovery Services Agent ügynök és az Azure Backup Server használatával. Ezek a funkciók a következők:
@@ -55,7 +55,7 @@ Recovery Services-tároló létrehozásakor, a biztonsági szolgáltatásokat is
     ![Képernyőkép a Recovery Services-tároló tulajdonságok](./media/backup-azure-security-feature/security-settings-update.png)
 
     A frissítés a hivatkozás megnyitja a **biztonsági beállítások** panel, amelyen a szolgáltatások összegzését tartalmazza, és lehetővé teheti, hogy azokat.
-5. A legördülő listából **állított Azure multi-factor Authentication?**, kiválaszthat egy értéket annak ellenőrzéséhez, ha engedélyezte a [Azure multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md). Ha engedélyezve van, kell adnia egy másik eszközről (például egy mobiltelefon) hitelesítéséhez az Azure-portálon történő bejelentkezés során.
+5. A legördülő listából **állított Azure multi-factor Authentication?**, kiválaszthat egy értéket annak ellenőrzéséhez, ha engedélyezte a [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md). Ha engedélyezve van, kell adnia egy másik eszközről (például egy mobiltelefon) hitelesítéséhez az Azure-portálon történő bejelentkezés során.
 
    A biztonsági mentés végrehajtott kulcsfontosságú műveleteket hajt végre, amikor meg kell adnia egy PIN-kód és az Azure portálon elérhető biztonsági. Azure multi-factor Authentication engedélyezése egy biztonsági réteget ad. Csak a feljogosított felhasználók érvényes Azure hitelesítő adatokkal, és egy második eszközről hitelesített, férhetnek hozzá az Azure-portálon.
 6. Biztonsági beállítások mentéséhez válasszon **engedélyezése** kattintson **mentése**. Kiválaszthatja **engedélyezése** csak után kiválaszthat egy értéket a **állított Azure multi-factor Authentication?** listáját az előző lépésben.
@@ -106,7 +106,7 @@ Győződjön meg arról, hogy számos mindig érvényes helyreállítási pont �
 
 A cikkben említett biztonsági funkciók célzott támadások elleni védelmi mechanizmust biztosít. Ennél is fontosabb a támadás akkor fordul elő, ha ezeket a szolgáltatásokat biztosítanak az adatok helyreállíthatók.
 
-## <a name="troubleshooting-errors"></a>Kapcsolatos hibák elhárítása
+## <a name="troubleshooting-errors"></a>Hibaelhárítás
 | Művelet | Hiba részletei | Megoldás: |
 | --- | --- | --- |
 | Házirend módosítása |A biztonsági mentési házirend nem módosítható. Hiba: Az aktuális művelet [0x29834] belső szolgáltatási hiba miatt sikertelen volt. Várjon egy kis ideig, majd ismételje meg a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |**OK:**<br/>Ez a hiba elérhető lesz, ha a biztonsági beállítások engedélyezve vannak, próbálja meg csökkenteni a megőrzési időtartam alatt a fent megadott minimális értékek, és nem támogatott verziójú (az első Megjegyzés: Ez a cikk a támogatott verziók vannak megadva). <br/>**Javasolt művelet:**<br/> Ebben az esetben állítsa be a megadott időszak minimális megőrzési (hét nap négy hétben-naponta, hetente, a havi vagy éves egy év három hétig) feletti megőrzési időszak házirend folytatásához kapcsolatos frissítések. Szükség esetén kedvelt módszer lehet frissíteni a biztonságimásolat-készítő ügynök, az Azure Backup Server és/vagy a DPM UR használja ki a biztonsági frissítéseket. |

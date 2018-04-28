@@ -1,11 +1,11 @@
 ---
-title: "Azure virtuális gép titkosítása | Microsoft Docs"
-description: "A dokumentum segítséget nyújt Önnek virtuális gépeinek az Azure Security Center által küldött riasztást követő titkosításában."
+title: Azure virtuális gép titkosítása | Microsoft Docs
+description: A dokumentum segítséget nyújt Önnek virtuális gépeinek az Azure Security Center által küldött riasztást követő titkosításában.
 services: security, security-center
 documentationcenter: na
 author: TomShinder
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: fa55df0c4d5291834035ea5cae58fa3d75de7e02
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9a376eb63e7ba054a125666f95c05d5e7dfb5470
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure virtuális gép titkosítása
 Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes virtuális gépek nincsenek titkosítva. Ezek a riasztások magas súlyossági szinttel jelennek meg. A rendszer ilyenkor javasolja, hogy titkosítsa az érintett virtuális gépeket.
@@ -92,8 +92,8 @@ Az Azure virtuális gép titkosításához végezze el az alábbi lépéseket:
 1. Ha korábban bezárta a PowerShell ISE-t, indítsa el a PowerShell ISE-t magas jogosultsági szinten. Ha a PowerShell ISE még nincs megnyitva, kövesse a cikk korábbi szakaszaiban ismertetett utasításokat. Ha korábban bezárta a parancsprogramot, nyissa meg az **ADEPrereqScript.ps1** fájlt. Ehhez kattintson a **Fájl** menüre, majd a **Megnyitás** gombra, és válassza ki a parancsprogramot a **c:\AzureADEScript** könyvtárból. Ha a cikkben eddig szereplő összes utasítást elvégezte, egyszerűen folytassa a következő lépéssel.
 2. A PowerShell ISE konzoljában (azaz az alsó panelen) váltsa át a fókuszt a parancsprogram helyére. Ehhez írja be: **cd c:\AzureADEScript**, majd nyomja le az **ENTER** billentyűt.
 3. Állítsa át a gépén úgy a végrehajtási szabályzatot, hogy le tudja futtatni a parancsprogramot. Írja be a konzolba a **Set-ExecutionPolicy Unrestricted** parancsot, majd nyomja le az ENTER billentyűt. Ha megjelenik a végrehajtási szabályzat módosításának hatásaira figyelmeztető párbeszédpanel, kattintson a **Yes to all** (Igen mindegyikre) vagy a **Yes** (Igen) lehetőségre (Ha megjelenik a **Yes to all** lehetőség, válassza ezt, ha nem jelenik meg a **Yes to all** lehetőség, válassza egyszerűen a **Yes** elemet).
-4. Jelentkezzen be Azure-fiókjába. Írja be a konzolba a **Login-AzureRmAccount** parancsot, majd nyomja le az **ENTER** billentyűt. Megjelenik egy párbeszédpanel, ahol megadhatja bejelentkezési adatait. (A virtuális gépeket csak akkor tudja titkosítani, ha rendelkezik a módosításukhoz szükséges jogokkal. Ha nem biztos a dolgában, forduljon az előfizetés tulajdonosához vagy a rendszergazdához). Megjelennek a következő információk: **Environment**, **Account**, **TenantId**, **SubscriptionId** és **CurrentStorageAccount**. Másolja a Jegyzettömbbe a **SubscriptionId** tartalmát. Erre a 6. lépésnél lesz szükség.
-5. Tudja meg, hogy milyen előfizetéshez tartozik a virtuális gép, illetve tudja meg a virtuális gép helyét. Lépjen a [https://portal.azure.com](ttps://portal.azure.com) lapra, és jelentkezzen be.  Kattintson a lap bal oldalán található **Virtuális gépek** elemre. A listában megtekintheti a virtuális gépeit, és hogy milyen előfizetéshez tartoznak.
+4. Jelentkezzen be Azure-fiókjába. Írja be a konzolba a **Connect-AzureRmAccount** parancsot, majd nyomja le az **ENTER** billentyűt. Megjelenik egy párbeszédpanel, ahol megadhatja bejelentkezési adatait. (A virtuális gépeket csak akkor tudja titkosítani, ha rendelkezik a módosításukhoz szükséges jogokkal. Ha nem biztos a dolgában, forduljon az előfizetés tulajdonosához vagy a rendszergazdához). Megjelennek a következő információk: **Environment**, **Account**, **TenantId**, **SubscriptionId** és **CurrentStorageAccount**. Másolja a Jegyzettömbbe a **SubscriptionId** tartalmát. Erre a 6. lépésnél lesz szükség.
+5. Tudja meg, hogy milyen előfizetéshez tartozik a virtuális gép, illetve tudja meg a virtuális gép helyét. Lépjen a [https://portal.azure.com](ttps://portal.azure.com) webhelyre, és jelentkezzen be.  Kattintson a lap bal oldalán található **Virtuális gépek** elemre. A listában megtekintheti a virtuális gépeit, és hogy milyen előfizetéshez tartoznak.
 
    ![Virtuális gépek](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. Térjen vissza a PowerShell ISE-hez. Állítsa be az előfizetési kontextust, amelyben a parancsprogram futni fog. Írja be a konzolba a **Select-AzureRmSubscription –SubscriptionId <Ön_előfizetés-azonosítója>** parancsot (az **<Ön_előfizetés-azonosítója >** helyére írja be tényleges előfizetés-azonosítóját), majd nyomja le az **ENTER** billentyűt. Megjelennek a következő információk: Environment, **Account**, **TenantId**, **SubscriptionId** és **CurrentStorageAccount**.
@@ -122,7 +122,7 @@ Ha szeretné ellenőrizni, hogy a megfelelő erőforráscsoport-nevet adta-e meg
 
 **$resourceGroupName**
 
-Nyomja le az **ENTER** billentyűt. Meg kell jelennie a virtuális gépeket tartalmazó erőforráscsoport nevének. Példa:
+Nyomja le az **ENTER** billentyűt. Meg kell jelennie a virtuális gépeket tartalmazó erőforráscsoport nevének. Például:
 
 ![A PowerShell eredménye](./media/security-center-disk-encryption/security-center-disk-encryption-fig6.png)
 
@@ -137,7 +137,7 @@ Ha szeretné ellenőrizni, hogy a megfelelő virtuális gép nevét adta-e meg, 
 
 **$vmName**
 
-Nyomja le az **ENTER** billentyűt. Meg kell jelennie a titkosítani kívánt virtuális gép nevének. Példa:
+Nyomja le az **ENTER** billentyűt. Meg kell jelennie a titkosítani kívánt virtuális gép nevének. Például:
 
 ![A PowerShell eredménye](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
@@ -171,7 +171,7 @@ A **Lemezek** panelen láthatja, hogy a **Titkosítás** mező értéke **Enged�
 
 ![Lemeztulajdonságok](./media/security-center-disk-encryption/security-center-disk-encryption-fig12.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, hogyan lehet Azure virtuális gépeket titkosítani. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – A cikkből megismerheti az Azure-erőforrások állapotfigyelésének módját.

@@ -1,6 +1,6 @@
 ---
-title: az Azure DNS PowerShell beágyazott fájlja
-description: az Azure DNS PowerShell beágyazott fájlja
+title: Azure DNS – PowerShell-fájl belefoglalása
+description: Azure DNS – PowerShell-fájl belefoglalása
 services: dns
 author: subsarma
 ms.service: dns
@@ -8,24 +8,24 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 1ddfd1ae8dffbc5d381773ea9679713e93a44a32
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 388bea528b138d78b9ec23ceea295108306c61e9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
-## <a name="set-up-azure-powershell-for-azure-dns"></a>Az Azure DNS az Azure PowerShell beállítása
+## <a name="set-up-azure-powershell-for-azure-dns"></a>Az Azure PowerShell beállítása az Azure DNS-hez
 
 ### <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a következőkkel.
 
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
-* Telepítse a legújabb verziót az Azure Resource Manager PowerShell-parancsmagokat kell. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azureps-cmdlets-docs) foglalkozó témakörben talál.
+* Az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióit kell telepítenie. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azureps-cmdlets-docs) foglalkozó témakörben talál.
 
-Emellett saját zónák (nyilvános előzetes verzió) használatához szüksége, hogy az alábbi PowerShell-modulok és verziók. 
-* AzureRM.Dns - [verzió 4.1.0](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0) vagy újabb
-* AzureRM.Network - [verzió 5.4.0](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0) vagy újabb
+Emellett a privát zónák (nyilvános előzetes verzió) használatához meg kell győződnie róla, hogy rendelkezik az alábbi PowerShell-modulokkal és verziókkal. 
+* AzureRM.Dns – [4.1.0-s](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0) vagy újabb verzió
+* AzureRM.Network – [5.4.0-s](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0) vagy újabb verzió
 
 ```powershell 
 Find-Module -Name AzureRM.Dns 
@@ -35,9 +35,9 @@ Find-Module -Name AzureRM.Dns
 Find-Module -Name AzureRM.Network 
 ``` 
  
-A fenti parancsok kimenetének kell jelenítse meg, hogy AzureRM.Dns verziója 4.1.0 vagy újabb verziójú, és AzureRM.Network 5.4.0 vagy újabb verzió esetén.  
+A fenti parancsok kimenetének azt kell jelezniük, hogy az AzureRM.Dns verziója 4.1.0-s vagy újabb, az AzureRM.Network verziója pedig 5.4.0-s vagy újabb.  
 
-Abban az esetben, ha a rendszeren csak a korábbi verziók, vagy telepítse a legújabb Azure PowerShell, vagy letöltheti és telepítheti a fenti modulok a PowerShell-galériából hivatkozásokkal a fenti mellett a verziója. Ezután telepítheti őket használatával az alábbi parancsok. Mindkét a modulok szükségesek, és teljesen visszafelé kompatibilis. 
+Ha a rendszeren korábbi verziók vannak telepítve, telepítheti az Azure PowerShell legújabb verzióját, vagy letöltheti és telepítheti a fenti modulokat a PowerShell-galériából a fenti hivatkozásokkal, amelyek a modulverziók mellett találhatók. Ezután az alábbi parancsokkal telepítheti őket. Mindkét modul szükséges, és teljes mértékben kompatibilis a korábbi verziókkal. 
 
 ```powershell
 Install-Module -Name AzureRM.Dns -Force
@@ -49,10 +49,10 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
-Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. További információkért lásd: [PowerShell használata a Resource Manager](../articles/azure-resource-manager/powershell-azure-resource-manager.md).
+Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. További információ: [A PowerShell használata a Resource Managerrel](../articles/azure-resource-manager/powershell-azure-resource-manager.md).
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ### <a name="select-the-subscription"></a>Válassza ki az előfizetést

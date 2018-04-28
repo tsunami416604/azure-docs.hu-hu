@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Application Insights pillanatkép-hibakereső .NET-alkalmazások |} Microsoft Docs"
-description: "Debug pillanatképek vannak automatikusan gyűjti a program kivételek éles .NET-alkalmazásokban"
+title: Az Azure Application Insights pillanatkép-hibakereső .NET-alkalmazások |} Microsoft Docs
+description: Debug pillanatképek vannak automatikusan gyűjti a program kivételek éles .NET-alkalmazásokban
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: pharring
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a2b3dbce1d969eaa9937ad866fd055ae72e6529
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0ba58f1384d7c93af30f9b175a5a154811c9a1e0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazásokban kivételek pillanatképek hibakeresése
 
@@ -42,7 +42,7 @@ A következő környezetekben támogatottak:
 
 1. [Az Application Insights engedélyezéséhez a web app alkalmazásban](app-insights-asp-net.md), ha még nincs kész.
 
-2. Tartalmazza a [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag az alkalmazásban. 
+2. Tartalmazza a [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomag az alkalmazásban.
 
 3. Tekintse át az alapértelmezett beállításokat, a csomag hozzáadott [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
 
@@ -92,10 +92,18 @@ A következő környezetekben támogatottak:
 
 3. Módosítsa az alkalmazás `Startup` osztály hozzáadása és konfigurálása a pillanatkép-gyűjtő telemetriai processzor.
 
+    Adja hozzá a következő using utasításokat a `Startup.cs`
+
    ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;
    using Microsoft.Extensions.Options;
-   ...
+   using Microsoft.ApplicationInsights.AspNetCore;
+   using Microsoft.ApplicationInsights.Extensibility;
+   ```
+
+   Adja hozzá a következő `SnapshotCollectorTelemetryProcessorFactory` az osztály `Startup` osztály.
+
+   ```csharp
    class Startup
    {
        private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
@@ -111,11 +119,11 @@ A következő környezetekben támogatottak:
                return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
            }
        }
+       ...
+    ```
+    Adja hozzá a `SnapshotCollectorConfiguration` és `SnapshotCollectorTelemetryProcessorFactory` az indítási folyamat szolgáltatások:
 
-       public Startup(IConfiguration configuration) => Configuration = configuration;
-
-       public IConfiguration Configuration { get; }
-
+    ```csharp
        // This method gets called by the runtime. Use this method to add services to the container.
        public void ConfigureServices(IServiceCollection services)
        {
@@ -178,7 +186,7 @@ A következő környezetekben támogatottak:
         }
    }
     ```
-    
+
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
 Az Azure-előfizetés tulajdonosainak pillanatképek vizsgálhatja meg. Más felhasználók tulajdonos engedéllyel kell rendelkezni.
@@ -208,7 +216,7 @@ A hibakeresési pillanatkép nézetben láthatja a hívási verem és a változ�
 A pillanatképek kényes információt is tartalmazhat, és alapértelmezés szerint nincsenek megtekinthető. A pillanatképek megtekintéséhez rendelkeznie kell a `Application Insights Snapshot Debugger` Önhöz rendelt szerepkör.
 
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>A Visual Studio 2017 vállalati pillanatképek hibakeresése
-1. Kattintson a **letöltése pillanatkép** gombra kattintva töltse le a `.diagsession` fájlhoz, amely a Visual Studio 2017 Enterprise nyithatja meg. 
+1. Kattintson a **letöltése pillanatkép** gombra kattintva töltse le a `.diagsession` fájlhoz, amely a Visual Studio 2017 Enterprise nyithatja meg.
 
 2. Lehetőségre a `.diagsession` fájl, először [töltse le és telepítse a pillanatkép-hibakereső bővítményt a Visual Studio](https://aka.ms/snapshotdebugger).
 
@@ -312,7 +320,7 @@ Legalább két egyidejű pillanatkép-készítési engedélyezze.
 Például ha az alkalmazás teljes munkakészletének 1 GB, akkor győződjön meg arról, hogy van-e legalább 2 GB szabad lemezterület-pillanatképek.
 Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigurálása a pillanatképek helyi dedikált erőforrással.
 
-1. A felhőalapú szolgáltatás egy új helyi erőforrás hozzáadása a felhőalapú szolgáltatás definíciós (.csdf) fájl szerkesztésével. Az alábbi példa meghatározza egy nevű erőforrást `SnapshotStore` 5 GB méretű.
+1. Vegyen fel egy új helyi erőforrást a felhőalapú szolgáltatás definíciós (.csdef) fájl szerkesztésével a felhőalapú szolgáltatás. Az alábbi példa meghatározza egy nevű erőforrást `SnapshotStore` 5 GB méretű.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
@@ -379,5 +387,5 @@ Ha még nem látja a pillanatkép Azonosítóval rendelkező kivételek, a kivé
 ## <a name="next-steps"></a>További lépések
 
 * [Állítsa be a snappoints a kódban](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) kivétel várakozás nélkül pillanatképek eléréséhez.
-* [Kivételek a webalkalmazások diagnosztizálásához](app-insights-asp-net-exceptions.md) ismerteti, hogyan további kivételek láthatóvá az Application Insights részére. 
+* [Kivételek a webalkalmazások diagnosztizálásához](app-insights-asp-net-exceptions.md) ismerteti, hogyan további kivételek láthatóvá az Application Insights részére.
 * [Észlelési intelligens](app-insights-proactive-diagnostics.md) automatikusan észleli a teljesítményanomáliákat.

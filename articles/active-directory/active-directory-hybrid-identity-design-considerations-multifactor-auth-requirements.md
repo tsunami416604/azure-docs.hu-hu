@@ -1,11 +1,11 @@
 ---
-title: "Hibrid identitás Tervező - Azure multi-factor authentication követelményeinek |} Microsoft Docs"
-description: "Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett."
-documentationcenter: 
+title: Hibrid identitás Tervező - Azure multi-factor authentication követelményeinek |} Microsoft Docs
+description: Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett.
+documentationcenter: ''
 services: active-directory
 author: femila
 manager: billmath
-editor: 
+editor: ''
 ms.assetid: 9c59fda9-47d0-4c7e-b3e7-3575c29beabe
 ms.service: active-directory
 ms.devlang: na
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bbdf60ed22a720f4f735108da79fe3b2ace1660a
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 998aebfc38c4a0971a5071faebdeae4dbca86690
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás a többtényezős hitelesítési követelmények meghatározása
 A világ mobilitási, a felhasználói adatokat és alkalmazásokat a felhőben, és egy eszközről ezek az információk védelme vált kiemelkedő.  Minden nap van egy új főcím kapcsolatos biztonsági problémák.  Bár, nem garantálja az ilyen problémák elleni, a többtényezős hitelesítést, ezek a problémák megelőzése érdekében biztonsági további réteget biztosít.
 Indítsa el a multi-factor authentication a szervezetek szükséges követelmények értékelésekor. Ez azt jelenti, hogy mi a szervezet próbál biztonságos.  Ez a kiértékelés fontos, hogy a és a szervezetek felhasználók a multi-factor authentication lehetővé teszi a műszaki követelményeinek meghatározása.
 
 > [!NOTE]
-> Ha nem ismeri a többtényezős hitelesítés és a hatása, erősen ajánlott, hogy olvassa el a cikk [Mi az Azure multi-factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md) előzetes folytatja a fejezet elolvasása.
+> Ha nem ismeri a többtényezős hitelesítés és a hatása, erősen ajánlott, hogy olvassa el a cikk [Mi az Azure multi-factor Authentication?](authentication/multi-factor-authentication.md) előzetes folytatja a fejezet elolvasása.
 > 
 > 
 

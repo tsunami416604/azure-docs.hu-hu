@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma
-ms.openlocfilehash: 34bdbf6e98d5232bf924f3f32a2acb3460a7737f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 445b18dee9efa9561ba1274ef59a9a426332d745
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data tudományos virtuális gépet az Azure telepítéséhez
 A Microsoft adatokat tudományos virtuális gép, a Windows Azure virtuális gép (VM) előtelepített és konfigurált számos népszerű eszköz adatelemzés és a gépi tanulás általánosan használt lemezkép. A rendszer részét képező eszközök:
 
-* [Az Azure gépi tanulás](../preview/index.yml) munkaterület
+* [Az Azure gépi tanulás](../service/index.yml) munkaterület
 * [Microsoft gépi tanulási a kiszolgáló](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
 * Anaconda Python elosztási
 * Jupyter notebook (az R, Python, PySpark mag)
@@ -192,7 +192,7 @@ A [ **Microsoft Webplatform-telepítő** ](https://www.microsoft.com/web/downloa
 Az alábbiakban a lépéseket, ahol folytathatja a tanulási és kutatási funkciójával. 
 
 * Megismerkedhet a különböző adatok tudományos eszközök az adatok tudományos virtuális gép által a start menü és az a menü felsorolt eszközök.
-* További tudnivalók Azure Machine Learning szolgáltatás és a munkaterületet üzemeltető érhetők el a termék [gyors üzembe helyezés és oktatóanyagok lap](../preview/index.yml). 
+* További tudnivalók Azure Machine Learning szolgáltatás és a munkaterületet üzemeltető érhetők el a termék [gyors üzembe helyezés és oktatóanyagok lap](../service/index.yml). 
 * Navigáljon a **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** mintákat az R, amely támogatja a vállalati léptékű adatelemzés RevoScaleR szalagtár használatával.  
 * A következő cikkben: [10 lehetősége van az adatok tudományos virtuális gép](http://aka.ms/dsvmtenthings)
 * Ismerje meg, hogyan hozhat létre a teljes körű elemzési megoldásokat rendszeresen használatával a [Team adatok tudományos folyamat](../team-data-science-process/index.yml).

@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD B2C-t használó webalkalmazás kipróbálása
-description: Gyors útmutató a felhasználói bejelentkezést az Azure Active Directory B2C használatával biztosító, mintául szolgáló ASP.NET-es webalkalmazás kipróbáláshoz.
+title: Gyors útmutató – ASP.NET-alkalmazásba való bejelentkezés konfigurálása Azure Active Directory B2C-vel | Microsoft Docs
+description: Azure Active Directory B2C-alapú bejelentkezést támogató minta ASP.NET-webalkalmazás futtatása.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 7d6744fe7ef82a6a4f54291cedd15d5b3d4ee242
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4342e8c58c9bb20580d8428a6c9869f9a3b893cb
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-web-app"></a>Gyors útmutató: Az Azure AD B2C-t használó webalkalmazás kipróbálása
+# <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Gyors útmutató: ASP.NET-alkalmazásba való bejelentkezés konfigurálása Azure Active Directory B2C-vel
 
 Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt az alkalmazás, az üzlet és az ügyfelek védelme érdekében. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon.
 

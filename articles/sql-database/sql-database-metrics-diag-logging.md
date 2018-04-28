@@ -10,18 +10,18 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: b1ac34c97d94f0b8759cb3e6f229ba0f7a2be7c9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b6ecedac8e5d040c2e75d28e1dc8e8309f359a1c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database metrikák és diagnosztikai naplózás 
 Az Azure SQL-adatbázis el tudná küldeni, metrikákat és diagnosztikai naplókat a könnyebb figyelése. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
 * **Az Azure Storage**: egy kis áron telemetriai hatalmas mennyiségű archiválásra használja.
 * **Az Azure Event Hubs**: az SQL Database telemetriai integrálása a figyelési megoldást igényelnek egyéni vagy a működés közbeni folyamatok használt.
-* **Az Azure Naplóelemzés**: egy, a-kész figyelési megoldásban reporting, riasztás és orvoslása képességeit.
+* **Az Azure Naplóelemzés**: egy, a-kész figyelési megoldásban reporting, riasztás és orvoslása képességeit. Ez az egyik funkciója a [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
 
     ![Architektúra](./media/sql-database-metrics-diag-logging/architecture.png)
 

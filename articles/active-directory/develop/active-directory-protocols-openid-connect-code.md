@@ -1,25 +1,25 @@
 ---
-title: "Az OpenID Connect hitelesítési folyamata megismerése az Azure AD |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan használható a HTTP-üzenetek webalkalmazások és webes API-k használata az Azure Active Directory és az OpenID Connect-bérlőben hozzáférés hitelesítése."
+title: Az OpenID Connect hitelesítési folyamata megismerése az Azure AD |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan használható a HTTP-üzenetek webalkalmazások és webes API-k használata az Azure Active Directory és az OpenID Connect-bérlőben hozzáférés hitelesítése.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
-ms.author: dastrock
+ms.date: 04/17/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3a813d73dc8a80c46e1b7500ec72ccb2a47bc6d5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4d9593aad789a9888c32297d634ba19e669bd461
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Az OpenID Connect és az Azure Active Directory használatával webes alkalmazásokhoz való hozzáférés engedélyezésére
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) egy egyszerű identitásrétegének az OAuth 2.0 protokollt platformra épül. OAuth 2.0 meghatározása mechanizmusok az beszerzése és használata **hozzáférési jogkivonatok** hozzáférni védett erőforrásokhoz, de azok nem határoznak meg szabványos módszerek azonosító adatok megadása. Hitelesítési OpenID Connect valósítja meg az OAuth 2.0 hitelesítési folyamat részeként. Információt ad a végfelhasználónak formájában egy `id_token` , amely ellenőrzi a felhasználó és a felhasználó alapvető profiladataihoz tájékoztatást.
@@ -73,7 +73,7 @@ Ezért egy minta kérelem néz ki:
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=id_token
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&redirect_uri=http%3A%2F%2Flocalhost%3a12345
 &response_mode=form_post
 &scope=openid
 &state=12345
@@ -82,15 +82,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| Bérlői |Szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható.  Az engedélyezett értékek a következők bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
+| bérlő |Szükséges |A `{tenant}` személyek is jelentkezzen be az alkalmazás a kérelem elérési útjában szereplő érték is használható.  Az engedélyezett értékek a következők bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
 | client_id |Szükséges |Az Azure ad-vel regisztrált az alkalmazáshoz hozzárendelt alkalmazásazonosító. Ez az Azure portálon találja meg. Kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, válassza ki az alkalmazást, és keresse meg az alkalmazásazonosítót a alkalmazás lapján. |
 | response_type |Szükséges |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezhet.  Például a más response_types is tartalmazhat `code`. |
-| Hatókör |Szükséges |Hatókörök szóközökkel elválasztott listája.  Az OpenID Connect, magában kell foglalnia a hatókör `openid`, amely az eszköz a hozzájárulási felhasználói felületén a "Bejelentkezés" engedélyt.  A kérésben a hozzájárulás kérése más hatókörök is. |
+| scope |Szükséges |Hatókörök szóközökkel elválasztott listája.  Az OpenID Connect, magában kell foglalnia a hatókör `openid`, amely az eszköz a hozzájárulási felhasználói felületén a "Bejelentkezés" engedélyt.  A kérésben a hozzájárulás kérése más hatókörök is. |
 | Nonce |Szükséges |A kérelem, az alkalmazás, a létrejövő szereplő által generált szereplő érték `id_token` jogcímként.  Az alkalmazás ezután ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket.  Az érték általában egy véletlenszerű, egyedi karakterlánc vagy a GUID Azonosítóját, a kérelem származási azonosítására használható. |
 | redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszok redirect_uri.  Ez pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve az url-kódolású kell lennie. |
-| response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott authorization_code küldi vissza az alkalmazás.  Támogatott értékek a következők `form_post` a *HTTP közzétett űrlapból* vagy `fragment` a *URL-cím töredék*.  Webes alkalmazásokhoz, javasoljuk `response_mode=form_post` ahhoz, hogy az alkalmazás a jogkivonatok legbiztonságosabb átvitelét. |
+| response_mode |Ajánlott |Megadja azt a módszert, amelynek használatával az eredményül kapott authorization_code küldi vissza az alkalmazás.  Támogatott értékek a következők `form_post` a *HTTP közzétett űrlapból* és `fragment` a *URL-cím töredék*.  Webes alkalmazásokhoz, javasoljuk `response_mode=form_post` ahhoz, hogy az alkalmazás a jogkivonatok legbiztonságosabb átvitelét. Az alapértelmezett értéket, ha `response_mode` nincs megadva, a `fragment`.|
 | state |Ajánlott |A token válaszként visszaadott a kérelemben szereplő érték.  Bármely, a kívánt tartalmat karakterlánc lehet.  Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások megelőzése](http://tools.ietf.org/html/rfc6749#section-10.12).  Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a is használatos. |
-| parancssor |választható |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges.  Jelenleg a csak érvényes értékei a "bejelentkezés", "none", és "".  `prompt=login`arra kényszeríti a felhasználó megadja a hitelesítő adataikat, hogy kérésre nem lehet negálni egyszeri bejelentkezést.  `prompt=none`Ellenkező - biztosítja, hogy a felhasználó számára nem jelenik meg minden bármely interaktív kérdés.  Ha a kérelem nem hajtható végre csendes keresztül egyszeri bejelentkezést, a végpont hibát ad vissza.  `prompt=consent`Eseményindítók OAuth-alapú hozzájárulás párbeszédpanelen, a felhasználó bejelentkezése után az, amely kéri a felhasználót, hogy engedélyezze, hogy az alkalmazás. |
+| parancssor |választható |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges.  Jelenleg a csak érvényes értékei a "bejelentkezés", "none", és "".  `prompt=login` arra kényszeríti a felhasználó megadja a hitelesítő adataikat, hogy kérésre nem lehet negálni egyszeri bejelentkezést.  `prompt=none` Ellenkező - biztosítja, hogy a felhasználó számára nem jelenik meg minden bármely interaktív kérdés.  Ha a kérelem nem hajtható végre csendes keresztül egyszeri bejelentkezést, a végpont hibát ad vissza.  `prompt=consent` Eseményindítók OAuth-alapú hozzájárulás párbeszédpanelen, a felhasználó bejelentkezése után az, amely kéri a felhasználót, hogy engedélyezze, hogy az alkalmazás. |
 | login_hint |választható |Segítségével előre töltse ki a bejelentkezési oldal a felhasználó a felhasználónév vagy e-mail cím mező, ha tudja, hogy időben a felhasználónevét.  Gyakran alkalmazások újrahitelesítés, hogy már kivont a felhasználónév egy korábbi bejelentkezési használatával során használja ezt a paramétert a `preferred_username` jogcímek. |
 
 Ezen a ponton a felhasználónak kapcsolatba kell adnia a hitelesítő adatait, és a hitelesítés végrehajtásához.
@@ -99,8 +99,8 @@ Ezen a ponton a felhasználónak kapcsolatba kell adnia a hitelesítő adatait, 
 A minta választ, a felhasználó rendelkezik hitelesítése után nézhet ki:
 
 ```
-POST /myapp/ HTTP/1.1
-Host: localhost
+POST / HTTP/1.1
+Host: localhost:12345
 Content-Type: application/x-www-form-urlencoded
 
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
@@ -115,8 +115,8 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 Hibaválaszok is elküldheti a `redirect_uri` , az alkalmazás megfelelően tudja ezeket kezelni:
 
 ```
-POST /myapp/ HTTP/1.1
-Host: localhost
+POST / HTTP/1.1
+Host: localhost:12345
 Content-Type: application/x-www-form-urlencoded
 
 error=access_denied&error_description=the+user+canceled+the+authentication
@@ -174,10 +174,10 @@ Ha átirányítja a felhasználót, hogy a `end_session_endpoint`, az Azure AD t
 1. Keresse meg a [Azure-portálon](https://portal.azure.com).
 2. Válassza ki az Active Directory kattintva a lap jobb felső sarkában a fiókba.
 3. A bal oldali navigációs panelen válassza ki a **Azure Active Directory**, majd válassza **App regisztrációk** válassza ki az alkalmazást.
-4. Kattintson a **tulajdonságok** keresse meg a **kijelentkezési URL-cím** szövegmezőben. 
+4. Kattintson a **beállítások**, majd **tulajdonságok** keresse meg a **kijelentkezési URL-cím** szövegmezőben. 
 
 ## <a name="token-acquisition"></a>Token beszerzése
-Sok webalkalmazások nem csak beléptetni a felhasználót, de emellett egy webszolgáltatás-bővítmény OAuth protokollt használó felhasználó nevében kell. Ebben a forgatókönyvben egyesíti az OpenID Connect felhasználói hitelesítés során egyidejűleg az beszerzése egy `authorization_code` , amely a beolvasandó használható `access_tokens` az OAuth hitelesítési kód Flow használatával.
+Sok webalkalmazások nem csak beléptetni a felhasználót, de emellett egy webszolgáltatás-bővítmény OAuth protokollt használó felhasználó nevében kell. Ebben a forgatókönyvben egyesíti az OpenID Connect felhasználói hitelesítés során egyidejűleg az beszerzése egy `authorization_code` , amely a beolvasandó használható `access_tokens` használatával a [OAuth-engedélyezési kód Flow](active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token).
 
 ## <a name="get-access-tokens"></a>A hozzáférési jogkivonatok lekérésére
 Jogkivonatot szerezni, módosítania kell a bejelentkezési kérelem a fent:
@@ -188,8 +188,8 @@ Jogkivonatot szerezni, módosítania kell a bejelentkezési kérelem a fent:
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
 &response_type=id_token+code
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered Redirect Uri, url encoded
-&response_mode=form_post                              // form_post', or 'fragment'
+&redirect_uri=http%3A%2F%2Flocalhost%3a12345          // Your registered Redirect Uri, url encoded
+&response_mode=form_post                              // `form_post' or 'fragment'
 &scope=openid
 &resource=https%3A%2F%2Fservice.contoso.com%2F                                     
 &state=12345                                          // Any value, provided by your app
@@ -233,4 +233,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 A lehetséges hibakódokat és a javasolt művelet leírását, [engedélyezési végpont hibái hibakódok](#error-codes-for-authorization-endpoint-errors).
 
-Miután egy engedélyezési igazoló `code` és egy `id_token`, a felhasználói bejelentkezés és a hozzáférési jogkivonatok lekérésére, ha a nevében.  A felhasználó bejelentkezni ellenőrizni kell a `id_token` pontosan a fent leírt módon. Ahhoz, hogy a hozzáférési jogkivonatok, hajtsa végre a "Az engedélyezési kód használata olyan hozzáférési jogkivonatot kérni" szakaszában leírt lépéseket a [OAuth-protokoll dokumentációját](active-directory-protocols-oauth-code.md).
+Miután egy engedélyezési igazoló `code` és egy `id_token`, a felhasználói bejelentkezés és a hozzáférési jogkivonatok lekérésére, ha a nevében.  A felhasználó bejelentkezni ellenőrizni kell a `id_token` pontosan a fent leírt módon. Ahhoz, hogy a hozzáférési jogkivonatok, hajtsa végre a "Az engedélyezési kód használata olyan hozzáférési jogkivonatot kérni" szakaszában leírt lépéseket a [OAuth-protokoll dokumentációját](active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token).

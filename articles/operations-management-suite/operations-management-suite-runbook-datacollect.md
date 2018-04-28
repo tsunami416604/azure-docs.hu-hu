@@ -1,11 +1,11 @@
 ---
-title: "Egy runbookhoz, az Azure Automationben Log Analytics-adatok gyűjtése |} Microsoft Docs"
-description: "Lépésenkénti útmutató, amely végigvezeti egy runbook létrehozása az Azure Automation szolgáltatásban, hogy a OMS tárházba elemzés, Log Analyticshez úgy gyűjthet adatokat."
+title: Egy runbookhoz, az Azure Automationben Log Analytics-adatok gyűjtése |} Microsoft Docs
+description: Lépésenkénti útmutató, amely végigvezeti egy runbook létrehozása az Azure Automation szolgáltatásban, hogy a OMS tárházba elemzés, Log Analyticshez úgy gyűjthet adatokat.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: operations-management-suite
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 59f674c9c6404da7f5384539189f41a4ba1a939a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0784e2317fbc98561b486547654ca27bb30e76c3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Egy Azure Automation-runbook Naplóelemzési az adatok gyűjtése
 Jelentős mennyiségű Naplóelemzési adatokat gyűjteni különböző forrásokból, beleértve a [adatforrások](../log-analytics/log-analytics-data-sources.md) az ügynökökre és is [adatgyűjtés az Azure-ból](../log-analytics/log-analytics-azure-storage.md).  Nincsenek olyan forgatókönyvek, ha az adatok gyűjtéséhez kell, amely nem érhető el a szabványos forrásokon keresztül.  Ebben az esetben is használhatja a [HTTP adatait gyűjtője API](../log-analytics/log-analytics-data-collector-api.md) Naplóelemzési bármely REST API-ügyfél adatokat írni.  Az adatgyűjtés elvégzéséhez gyakran használják az Azure Automationben egy runbook használ.   
@@ -65,7 +65,7 @@ A PowerShell-galériában azonban lehetővé teszi a gyors kapcsolóval kell tel
 
 | Tulajdonság | Munkaterület-azonosító értéke | Munkaterület-kulcs értéke |
 |:--|:--|:--|
-| Név | WorkspaceId | WorkspaceKey |
+| Name (Név) | WorkspaceId | WorkspaceKey |
 | Típus | Karakterlánc | Karakterlánc |
 | Érték | Illessze be a Naplóelemzési munkaterület a munkaterület azonosítója. | Illessze be kell jelentkezniük az elsődleges vagy másodlagos kulcsot a Naplóelemzési munkaterületet. |
 | Titkosított | Nem | Igen |
@@ -97,7 +97,7 @@ Azure Automation szolgáltatásbeli szerkesztővé rendelkezik a portálon, ahol
         # Code copied from the runbook AzureAutomationTutorial.
         $connectionName = "AzureRunAsConnection"
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -184,10 +184,10 @@ A leggyakoribb figyelési adatokat összegyűjtő runbook-indítási módja üte
 
 | Tulajdonság | Érték |
 |:--|:--|
-| Név | AutomationJobs-óránként |
-| Indítása | Válassza ki, amikor legalább 5 perccel későbbi, mint a jelenlegi időpont. |
+| Name (Név) | AutomationJobs-óránként |
+| Kezdés | Válassza ki, amikor legalább 5 perccel későbbi, mint a jelenlegi időpont. |
 | Ismétlődés | Ismétlődő |
-| Ismétlődik minden | 1 óra |
+| Ismétlődés minden | 1 óra |
 | Készlet lejárati | Nem |
 
 Az ütemezés létrehozása után kell beállítani, amely minden alkalommal, amikor az ütemezés elindítja a runbookot használjuk paraméterértékek.
@@ -210,7 +210,7 @@ Egy runbook indítását, Everytime [feladat jön létre](../automation/automati
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Használjon [adatforrásnézet-tervezőből](../log-analytics/log-analytics-view-designer.md) a Naplóelemzési tárház összegyűjtött adatokat megjelenítő nézet létrehozásához.
 - A runbookot a csomag egy [felügyeleti megoldás](operations-management-suite-solutions-creating.md) terjeszteni az ügyfél számára.
 - További információ [Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/).

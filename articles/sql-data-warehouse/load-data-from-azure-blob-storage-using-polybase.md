@@ -1,31 +1,24 @@
 ---
-title: 'Oktatóanyag: Polybase-adatbetöltés az Azure Storage Blobból az Azure SQL Data Warehouse-ba | Microsoft Docs'
-description: Oktatóanyag, amelyben az Azure Portal és az SQL Server Management Studio használatával töltheti be New York-i taxik adatait az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba.
+title: 'Oktatóanyag: Terhelés New York Taxicab adatokat az Azure SQL Data Warehouse |} Microsoft Docs'
+description: Az oktatóanyag használja az Azure portál és az SQL Server Management Studio New York Taxicab adatok betöltése az egy nyilvános Azure-ból az Azure SQL Data Warehouse-blob.
 services: sql-data-warehouse
-documentationcenter: ''
 author: ckarst
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.custom: mvc,develop data warehouses
-ms.devlang: na
-ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/16/2018
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
 ms.author: cakarst
-ms.reviewer: barbkess
-ms.openlocfilehash: 77e1666a5c8cc51495f2058ff76b2b99a3212db0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: igorstan
+ms.openlocfilehash: fb918cc70a3a3d21e86c9d530e264199794886f1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával.
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Terhelés New York Taxicab adatokat az Azure SQL Data Warehouse
 
-A PolyBase az adatok SQL Data Warehouse-ba történő beolvasásához használt standard betöltési technológia. Ebben az oktatóanyagban a PolyBase használatával New York-i taxik adatait töltheti be az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
+A PolyBase használatával New York Taxicab adatok betöltése az nyilvános oktatóanyag használ az Azure blob az Azure SQL Data Warehouse. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 
 > [!div class="checklist"]
 > * Adattárház létrehozása az Azure Portalon
@@ -50,7 +43,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL-adattárház létrehozása
 
-Az Azure SQL Data Warehouse [számítási erőforrások](performance-tiers.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
+Az Azure SQL Data Warehouse [számítási erőforrások](memory-and-concurrency-limits.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
 
 Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához. 
 
@@ -170,7 +163,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 ## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A [memória maximális értékei](performance-tiers.md#memory-maximums) [teljesítményszint](performance-tiers.md) és [erőforrásosztály](resource-classes-for-workload-management.md) szerint vannak definiálva. 
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. Memória maximális értékeket a következők szerint definiált [teljesítményszinttel](memory-and-concurrency-limits.md#performance-tiers), [az adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md), és [erőforrásosztály](resource-classes-for-workload-management.md). 
 
 Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
@@ -221,7 +214,7 @@ Az adatok betöltésének első lépése a LoaderRC20-ként való bejelentkezés
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Külső táblák létrehozása a mintaadatokhoz
 
-Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag bemutatja, hogyan használható a [Polybase](/sql/relational-databases/polybase/polybase-guide) New York-i taxik adatainak betöltésére egy Azure-tárolóblobból. Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
+Készen áll megkezdeni az adatok az új adattárházba való betöltésének folyamatát. Az oktatóanyag bemutatja, hogyan lehet külső táblák segítségével New York Város taxi cab adatok betöltése az Azure storage-blob. Ha később szeretné megismerni az adatok Azure Blob Storage-be való áthelyezésének vagy a forrásból közvetlenül az SQL Data Warehouse-ba való betöltésének a módját, olvassa el a [betöltés áttekintését](sql-data-warehouse-overview-load.md).
 
 Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó információk megadásához. Ezen információk közé tartozik az adatok helye, az adatok tartalmának formátuma és az adatok tábladefiníciója. 
 

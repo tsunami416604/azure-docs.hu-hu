@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: f19d33c905d6153dffa1e7d5cdaea92ed1b94ff7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7c36d2ead9ca9e1ebd08d3d5a9c4901e46d42c00
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?
 Egyszeri bejelentkezés azt jelenti, hogy nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat, végre kell hajtani, üzleti által csak akkor, ha egyetlen felhasználói fiókkal jelentkezik be. Miután bejelentkezett, van-e hozzáférési összes szolgáltatásbeli hitelesítéshez szükséges nélkül kell alkalmazást (például adjon meg egy jelszót) még egyszer.
@@ -75,7 +75,7 @@ Mindkét esetben a hitelesítő adatok titkosítására a könyvtárban van tár
 Jelszó-alapú egyszeri Bejelentkezést olyan módon, az alkalmazás és a felhasználó-specifikus adatok beolvasása az Azure AD és alkalmazása a szolgáltatáson bővítmény támaszkodik. A legtöbb külső SaaS-alkalmazásokhoz az Azure AD által támogatott támogatja ezt a szolgáltatást.
 
 Jelszó-alapú egyszeri bejelentkezéshez a végfelhasználó böngészőkkel lehet:
-* Internet Explorer 8, 9, 10, 11 – a Windows 7 vagy újabb
+* Az Internet Explorer 11 – a Windows 7 vagy újabb
 * Peremhálózati Windows 10 évforduló Edition vagy újabb 
 * Chrome – A Windows 7 vagy újabb, és MacOS X rendszeren vagy újabb
 * Firefox 26.0 vagy újabb – a Windows XP SP2 vagy újabb, és a Mac OS X 10,6 vagy újabb verzió
@@ -153,7 +153,7 @@ Melyik úgy dönt, hogy központi telepítése a szervezetben metódussal közü
 ### <a name="azure-ad-access-panel"></a>Az Azure AD hozzáférési panel
 A hozzáférési panelre a https://myapps.microsoft.com egy webes portál, amely lehetővé teszi a felhasználó szervezeti fiókkal az Azure Active Directoryban megtekintése és indítása felhőalapú alkalmazások, amelyhez már rendelkezik hozzáféréssel az Azure AD-rendszergazda által. Ha a végfelhasználó [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), az önkiszolgáló csoportkezelési képességeinek a hozzáférési Panel keresztül is használhatja.
 
-![Azure AD Access Panel](media/active-directory-appssoaccess-whatis/azure-ad-access-panel.png)
+![Az Azure AD hozzáférési Panel](media/active-directory-appssoaccess-whatis/azure-ad-access-panel.png)
 
 A hozzáférési Panel elkülönül az Azure-portálon, és nem igényli a felhasználók számára egy Azure-előfizetés vagy az Office 365-előfizetéssel rendelkezik.
 

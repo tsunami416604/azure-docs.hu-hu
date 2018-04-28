@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 22d34ac4128da1d1a9f20619aec2aaccc2425a21
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Az Azure Active Directory B2C: Egyéni házirendek
 
@@ -27,7 +27,7 @@ Az egyéni szabályzatok olyan konfigurációs fájlok, amelyekkel meghatározha
 
 ## <a name="comparing-built-in-policies-and-custom-policies"></a>Beépített és egyéni házirendeket összehasonlítása
 
-| | Beépített házirendek | Egyéni szabályzatok |
+| | Beépített szabályzatok | Egyéni szabályzatok |
 |-|-------------------|-----------------|
 |Azon felhasználók megcélzása | Minden alkalmazásfejlesztők vagy identitás szakértői nélkül | Identitás szakemberek: rendszerintegrátoroktól, tanácsadókkal és házon belüli identitás csoportok. OpenIDConnect folyamatokkal részeként, és identitás-szolgáltatóktól és szolgáltatáson alapuló Jogcímalapú hitelesítés |
 |A konfigurációs módszert | Az Azure portál egy felhasználóbarát felhasználói felületen | XML-fájlok közvetlen szerkesztésével és majd feltölteni az Azure-portálon |
@@ -64,9 +64,9 @@ Az Azure AD B2C együttműködő Identitásszolgáltatók, a felhasználók, a m
 
 ### <a name="identity-experience-framework"></a>Identity Experience Framework
 
-Például OpenIDConnect, OAuth, SAML, WSFed és néhány nem szabványos megfelelően (például REST formázza teljes mértékben konfigurálhatók, házirend-vezérelt, felhőalapú Azure platformon vezénylő (nagyjából Jogcímszolgáltatók) entitások közötti megbízhatósági kapcsolat a szabványos protokoll Operációs rendszerek API-based jogcímek cseréjét). A I2E hoz felhasználóbarát, whitelabelled észlel, amely támogatja a HTML, CSS és javascript.  Ma identitás élmény keretében elérhető, csak az Azure AD B2C szolgáltatás kontextusában és rangsorolt CIAM kapcsolódó feladatok.
+Például OpenIDConnect, OAuth, SAML, WSFed és néhány nem szabványos megfelelően (például REST formázza teljes mértékben konfigurálhatók, házirend-vezérelt, felhőalapú Azure platformon vezénylő (nagyjából Jogcímszolgáltatók) entitások közötti megbízhatósági kapcsolat a szabványos protokoll Operációs rendszerek API-based jogcímek cseréjét). A I2E hoz létre, amely támogatja a HTML, CSS és javascript felhasználóbarát, fehér címkével lép.  Ma identitás élmény keretében elérhető, csak az Azure AD B2C szolgáltatás kontextusában és rangsorolt CIAM kapcsolódó feladatok.
 
-### <a name="built-in-policies"></a>Beépített házirendek
+### <a name="built-in-policies"></a>Beépített szabályzatok
 
 Előre definiált konfigurációs fájlokat, amelyek közvetlenül az Azure AD B2C a leggyakrabban használt (azaz a felhasználói regisztráció, bejelentkezés, a jelszó alaphelyzetbe állítása) feladatok és a megbízható entitások, amelynek kapcsolatot is az Azure AD B2C (az előre definiált végrehajtásához viselkedése Példa Facebook identitásszolgáltató, LinkedIn, Microsoft Account, Google-fiókot).  A jövőben beépített házirendek is rendelkezhetnek testreszabási Identitásszolgáltatók, amelyek általában a vállalati tartomány, például az Azure Active Directory Premium, az Active Directory vagy az AD FS, a Salesforce azonosító szolgáltató stb.
 

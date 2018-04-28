@@ -1,6 +1,6 @@
 ---
-title: "Konfigurálja, hogy az mindig a rendelkezésre állási csoport figyelője – a Microsoft Azure |} Microsoft Docs"
-description: "Rendelkezésre állási csoport figyelői konfigurálása az Azure Resource Manager modellt, a belső terheléselosztók használatával egy vagy több IP-címekkel rendelkező."
+title: Konfigurálja, hogy az mindig a rendelkezésre állási csoport figyelője – a Microsoft Azure |} Microsoft Docs
+description: Rendelkezésre állási csoport figyelői konfigurálása az Azure Resource Manager modellt, a belső terheléselosztók használatával egy vagy több IP-címekkel rendelkező.
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 5efb72f450261e098b638af023001ddb2a5015cf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több Always On rendelkezésre állási csoport figyelői - erőforrás-kezelő konfigurálása
 Ez a témakör bemutatja, hogyan:
@@ -48,10 +48,10 @@ SQL Server-hozzáférés engedélyezése a Windows tűzfal konfigurálása. A t�
 > 
 > 
 
-A következő PowerShell-parancsfájlt hoz létre a belső terheléselosztók, konfigurálja a terheléselosztási szabályok, és beállítja az IP-címet a terheléselosztóhoz. A parancsfájl futtatásához nyissa meg a Windows PowerShell ISE, és illessze be a parancsfájlt a parancssori panelbe. Használjon `Login-AzureRMAccount` próbál bejelentkezni a PowerShell. Ha több Azure-előfizetéssel rendelkezik, `Select-AzureRmSubscription ` az előfizetés beállításához. 
+A következő PowerShell-parancsfájlt hoz létre a belső terheléselosztók, konfigurálja a terheléselosztási szabályok, és beállítja az IP-címet a terheléselosztóhoz. A parancsfájl futtatásához nyissa meg a Windows PowerShell ISE, és illessze be a parancsfájlt a parancssori panelbe. Használjon `Connect-AzureRmAccount` próbál bejelentkezni a PowerShell. Ha több Azure-előfizetéssel rendelkezik, `Select-AzureRmSubscription ` az előfizetés beállításához. 
 
 ```powershell
-# Login-AzureRmAccount
+# Connect-AzureRmAccount
 # Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<Resource Group Name>" # Resource group name
@@ -112,7 +112,7 @@ Az előtér-portot használja a portot, amelyet az SQL Server-példány való cs
 A következő parancsfájl egy új IP-cím hozzáadása a meglévő terheléselosztó. A Példánynak a terheléselosztási előtér-portot figyelő-portot használja. Ezt a portot a portot, amelyet az SQL-kiszolgáló figyel a következőn lehet. Az alapértelmezett példány az SQL Server a port az 1433-as. A terheléselosztási szabály a rendelkezésre állási csoport hozni egy fix IP-cím (közvetlen kiszolgálói válasz), így a háttér-port nem azonos az előtér-port. A változók a környezet frissítése. 
 
 ```powershell
-# Login-AzureRmAccount
+# Connect-AzureRmAccount
 # Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<ResourceGroup>"          # Resource group name

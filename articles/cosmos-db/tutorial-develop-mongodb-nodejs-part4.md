@@ -1,25 +1,25 @@
 ---
-title: "MongoDB, Angular és Node oktatóanyag az Azure-hoz – 4. rész | Microsoft Docs"
-description: "A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 4. része"
+title: MongoDB, Angular és Node oktatóanyag az Azure-hoz – 4. rész | Microsoft Docs
+description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 4. része
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e1d96fe8cb06be08863bbcd1885080aaca8fbd61
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c9f0c6f18645a8d3a5a069aa55fec0ba8e9ba547
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 4. rész: Azure Cosmos DB-fiók létrehozása az Azure CLI használatával
 
@@ -64,7 +64,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 A parancs végrehajtása egy-két percet is igénybe vehet. Amint befejeződött, a terminálablakban megjelennek az új adatbázissal kapcsolatos információk. 
 
 Amint az Azure Cosmos DB-fiók létrejött:
-1. Nyisson meg egy új böngészőablakot, és lépjen a [https://portal.azure.com](https://portal.azure.com) oldalra.
+1. Nyisson meg egy új böngészőablakot, és lépjen a következő oldalra: [https://portal.azure.com](https://portal.azure.com)
 1. Kattintson az Azure Cosmos DB emblémára ![Az Azure Cosmos DB ikonja az Azure Portalon](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) a bal oldali sávon, és az megjeleníti az összes rendelkezésre álló Azure Cosmos DB-adatbázist.
 1. Kattintson az imént létrehozott Azure Cosmos DB-fiókra, válassza az **Overview** (Áttekintés) lapot, és görgessen le a térképig, amelyen az adatbázis található. 
 

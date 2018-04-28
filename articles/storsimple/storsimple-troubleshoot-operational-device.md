@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple eszköz üzembe helyezett hibaelhárítása |} Microsoft Docs"
-description: "Ismerteti a StorSimple eszközön a jelenleg telepített és működő bekövetkező hibák megoldásában."
+title: A StorSimple eszköz üzembe helyezett hibaelhárítása |} Microsoft Docs
+description: Ismerteti a StorSimple eszközön a jelenleg telepített és működő bekövetkező hibák megoldásában.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
 ms.service: storsimple
 ms.devlang: NA
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 4639e749cfaa6b38fa6b91ddebfc17924c1d5bd6
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: cf037f7f1c1384b654a7144485d38f569eb7c167
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Az operatív StorSimple eszköz hibáinak elhárítása
 > [!NOTE]
-> A klasszikus portál StorSimple elavult. A StorSimple eszköz kezelői automatikusan áthelyezi a érvénytelenítése ütemezés szerint az új Azure-portálon. Kapni fog egy e-mailek és a portál értesítései az áthelyezés. Ez a dokumentum hamarosan is kell vonni. Az áthelyezés kapcsolatos kérdéseivel lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md).
+> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
 
 ## <a name="overview"></a>Áttekintés
 A cikkben kapcsolatos konfigurációs problémák hasznos hibaelhárítási útmutatót, hogy esetleg felmerülő után a StorSimple eszköz üzembe helyezett és működik. Kapcsolatos gyakori hibák, lehetséges okok, és a Microsoft Azure StorSimple futtatásakor az esetleg előforduló problémák megoldását segítő javasolt lépéseket ismerteti. Ez az információ a StorSimple fizikai eszköz helyszíni, mind a StorSimple virtuális eszköz vonatkozik.
@@ -62,8 +62,8 @@ Hibák numerikus sorrendben vannak felsorolva.
 | 390061 |A rendszer nem foglalt vagy nem érhető el. |Várjon néhány percet, és próbálkozzon újra. Ha a probléma továbbra is fennáll, további lépéseket kérjük, forduljon a Microsoft ügyfélszolgálatához. |
 | 390143 |Hiba történt a következő hibakóddal 390143. (Ismeretlen hiba történt.) |Ha a probléma továbbra is fennáll, forduljon a Microsoft Support további lépéseket. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a probléma megoldásához nem [forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) segítségért. 
 
-[1]: https://technet.microsoft.com/en-us/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/en-us/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
+[2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx

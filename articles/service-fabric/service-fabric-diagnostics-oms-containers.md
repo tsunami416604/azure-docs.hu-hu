@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 7a775b6d23c144c81650bb3608ee6a117475a9ba
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1de7e58eecc80e306920ab17884290dfddf8efa8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-containers-with-log-analytics"></a>A Naplóelemzési tárolók figyelése
  
-Ez a cikk tároló figyelését a fürt beállításához szükséges lépéseket ismerteti. A további információkért lásd: [tárolók figyelése a Service Fabric](service-fabric-diagnostics-event-analysis-oms.md#monitoring-containers). Ez a részletes oktatóanyaga megtekintéséhez is követheti [figyelő Windows tárolók a Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+Ez a cikk tároló események megtekintése az OMS szolgáltatáshoz tárolófigyelő megoldás beállításához szükséges lépéseket ismerteti. A fürt beállítása a tároló eseményeket gyűjtő, megjelenik ez [részletes oktatóanyagainkat](service-fabric-tutorial-monitoring-wincontainers.md).
 
 ## <a name="set-up-the-container-monitoring-solution"></a>A felügyeleti megoldás tároló beállítása
 
@@ -35,9 +35,22 @@ Ez a cikk tároló figyelését a fürt beállításához szükséges lépéseke
 
     ![Tárolómegoldások hozzáadása](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. A megoldás belül ugyanazon a munkaterületen a fürt már létrehozott létrehozása. Ezt a változtatást automatikusan elindítja az ügynököt, hogy a tároló docker adatgyűjtés indítása. Mintegy 15 percre leáll vagy tette meg kell jelennie a bejövő naplók és a statisztikák mentése könnyű megoldást.
+3. A megoldás belül ugyanazon a munkaterületen a fürt már létrehozott létrehozása. Ezt a változtatást automatikusan elindítja az ügynököt, hogy a tároló docker adatgyűjtés indítása. Mintegy 15 percre leáll vagy tette meg kell jelennie a bejövő naplók és a statisztikák mentése könnyű megoldást. az alábbi ábrán látható.
+
+    ![Alapszintű OMS irányítópult](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+
+Az ügynök lehetővé teszi, hogy több OMS kérdezhetők le, vagy feladatkonfigurációkat teljesítménymutatók használt tároló-specifikus-naplók gyűjtésére. A napló típusok tartoznak a következők:
+
+* ContainerInventory: tároló helye, a nevét, és a képeket információkat jeleníti meg.
+* ContainerImageInventory: információ a központilag telepített lemezképek, többek között az azonosítók vagy mérete
+* ContainerLog: más bejegyzések, adott hibanaplókat és a docker-naplók (stdout, stb.)
+* ContainerServiceLog: docker démon parancsok futtatása
+* Teljesítmény: teljesítményszámlálókat, beleértve a tároló processzor, memória, a hálózati forgalom, a lemez i/o, és a gazdagép gépekről egyéni metrikák
+
+
 
 ## <a name="next-steps"></a>További lépések
+* További információ [OMS tartozó tárolók megoldás](../log-analytics/log-analytics-containers.md).
 * További információk a Service Fabric - tároló vezénylési [Service Fabric és a tárolók](service-fabric-containers-overview.md)
 * Az beszerzése familiarized a [naplófájl keresési és lekérdezése](../log-analytics/log-analytics-log-searches.md) szolgáltatásai által kínált Naplóelemzési
 * Log Analytics beállítása konfigurálása [riasztás automatikus](../log-analytics/log-analytics-alerts.md) szabályok észlelésére és diagnosztika

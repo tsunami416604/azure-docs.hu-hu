@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9ed679c555d9bb363ffb4d896e791dcbd1b90f8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 07d720db85a152f08cfeb278b91cce3b10d73800
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -388,7 +388,7 @@ A következő táblázat a lehetséges állapotok egy **logikai átjáró**. Az 
 
 status | Megjegyzések
 :----- | :-------
-Needs Registration | Nincs csomópont még regisztrálva van a logikai átjáró
+Regisztrálnia kell az Adatátjárót | Nincs csomópont még regisztrálva van a logikai átjáró
 Online | Átjáró csomópontja online állapotban.
 Offline | Nincs csomópontja online állapotát.
 Korlátozott | Ez az átjáró nem minden csomópontja kifogástalan állapotban vannak. Ez az állapot nem figyelmezteti rá, hogy néhány csomópont esetleg nem működik! <br/><br/>Hitelesítő adatok szinkronizálási problémája kézbesítő/munkavégző csomóponton okozhatja. 
@@ -484,7 +484,7 @@ Ez a szakasz ismerteti, hogyan hozhat létre, és regisztrálnia kell egy átjá
 2. Jelentkezzen be a következő parancs futtatásával, majd írja be Azure hitelesítő adatait az Azure-fiókjával.
 
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. Használja a **New-AzureRmDataFactoryGateway** parancsmaggal hozzon létre egy logikai átjáró az alábbiak szerint:
 

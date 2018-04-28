@@ -1,13 +1,13 @@
 ---
-title: "Be annak az Azure ExpressRoute Microsoft társviszony-létesítés: PowerShell |} Microsoft Docs"
-description: "Ez a cikk ismerteti a PowerShell használatával a Microsoft Peering útvonal szűrők konfigurálása"
+title: 'Be annak az Azure ExpressRoute Microsoft társviszony-létesítés: PowerShell |} Microsoft Docs'
+description: Ez a cikk ismerteti a PowerShell használatával a Microsoft Peering útvonal szűrők konfigurálása
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: 9d953ea68e1e14ae12aa401af935d207f0747e8c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6e767166ecf248aa0e7fc16dc21361394e03107d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Be annak a Microsoft társviszony-létesítéshez: PowerShell
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Nem fogja tudni csatolni az Office 365 szolgáltatásaival rajtuk útvonal szűr
 > 
 > 
 
-### <a name="workflow"></a>Munkafolyamat
+### <a name="workflow"></a>munkafolyamat
 
 Nem fogja tudni kapcsolódni a Microsoft társviszony-létesítés szolgáltatások, az alábbi konfigurációs lépéseket kell végrehajtania:
 
@@ -84,14 +84,14 @@ Konfigurációs megkezdése előtt győződjön meg arról, hogy a következő f
 
  - Rendelkeznie kell egy aktív Microsoft társviszony-létesítés. Kövesse az utasításokat, [létrehozása, és társviszony-létesítési konfigurációjának módosítása](expressroute-circuit-peerings.md)
 
-### <a name="log-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjával
+### <a name="log-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába.
 
 Mielőtt hozzálát a művelethez, be kell jelentkeznie az Azure-fiókjába. A parancsmag kéri az Azure-fiók bejelentkezési hitelesítő adatait. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára.
 
 Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Ha több Azure-előfizetéssel is rendelkezik, ellenőrizze a fiók előfizetéseit.

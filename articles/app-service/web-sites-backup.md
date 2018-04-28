@@ -1,8 +1,8 @@
 ---
-title: "Adatok biztonsági mentése az Azure-ban"
-description: "Megtudhatja, hogyan az alkalmazások biztonsági mentéseinek létrehozását az Azure App Service-ben."
+title: Adatok biztonsági mentése az Azure-ban
+description: Megtudhatja, hogyan az alkalmazások biztonsági mentéseinek létrehozását az Azure App Service-ben.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 435370a8758d439a5fcce2e04efd11b4aaaf0357
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A biztonsági mentési és visszaállítási funkciót [Azure App Service](app-service-web-overview.md) lehetővé teszi, hogy könnyen hozzanak létre alkalmazás biztonsági mentést, manuálisan vagy ütemezés szerint. Az alkalmazás felülírja a meglévő alkalmazás vagy egy másik alkalmazásnak visszaállítása visszaállíthatja egy korábbi állapothoz pillanatképet. 
@@ -30,14 +30,14 @@ Az alkalmazás biztonsági másolatból történő visszaállítását informác
 ## <a name="what-gets-backed-up"></a>Mi a biztonsági mentés beolvasása
 App Service is biztonsági másolatot a következő információkat az Azure-tárfiók és tároló, amely az alkalmazás használatára konfigurált. 
 
-* Alkalmazáskonfiguráció
-* Fájl tartalma
+* Alkalmazás-beállítások
+* A fájl
 * Az alkalmazáshoz kapcsolódó adatbázis
 
 A következő adatbázis-megoldások biztonsági mentését végző szolgáltatás használata támogatott: 
-   - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
-   - [A MySQL (előzetes verzió) Azure-adatbázis](https://azure.microsoft.com/en-us/services/mysql)
-   - [Azure-adatbázis PostgreSQL (előzetes verzió)](https://azure.microsoft.com/en-us/services/postgres)
+   - [SQL Database](https://azure.microsoft.com/services/sql-database/)
+   - [A MySQL (előzetes verzió) Azure-adatbázis](https://azure.microsoft.com/services/mysql)
+   - [Azure-adatbázis PostgreSQL (előzetes verzió)](https://azure.microsoft.com/services/postgres)
    - [MySQL alkalmazásbeli](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 
@@ -71,13 +71,13 @@ A következő adatbázis-megoldások biztonsági mentését végző szolgáltat�
 ![kattintson konfigurálása](./media/web-sites-backup/ClickConfigure1.png)
 3. Az a **biztonsági mentési konfigurációhoz** kattintson **tárolási: nincs konfigurálva** storage-fiókok konfigurálása.
    
-    ![Válassza ki a tárfiók][ChooseStorageAccount]
+    ![Tárfiók kiválasztása][ChooseStorageAccount]
 4. A biztonsági mentés célhelyének megadásához jelöljön ki egy **Tárfiók** és **tároló**. A tárfiók ugyanahhoz az előfizetéshez, mint a kívánt alkalmazást, készítsen biztonsági másolatot kell tartoznia. Ha kívánja, létrehozhat egy új tárfiókot vagy egy új tároló megfelelő lapján. Amikor elkészült, kattintson a **válasszon**.
    
-    ![Válassza ki a tárfiók](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
+    ![Tárfiók kiválasztása](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
 5. Az a **biztonsági mentési konfigurációhoz** még mindig nyitva marad lapján konfigurálhatja **adatbázis biztonsági másolata**, majd válassza ki a biztonsági mentés (SQL-adatbázis vagy MySQL) szerepeltetni kívánt adatbázisokat, majd kattintson a **OK**.  
    
-    ![Válassza ki a tárfiók](./media/web-sites-backup/03ConfigureDatabase1.png)
+    ![Tárfiók kiválasztása](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
    > Ebben a listában szerepelnek az adatbázis, a kapcsolati karakterláncában szerepelnie kell a **kapcsolati karakterláncok** szakasza a **Alkalmazásbeállítások** az alkalmazás lapját.
@@ -97,7 +97,7 @@ A tárfiók és tároló konfigurálása után bármikor kezdeményezhető manu�
 ## <a name="configure-automated-backups"></a>Az automatikus biztonsági mentések konfigurálása
 1. Az a **biztonsági mentési konfigurációhoz** lap **ütemezett biztonsági mentés** való **a**. 
    
-    ![Válassza ki a tárfiók](./media/web-sites-backup/05ScheduleBackup1.png)
+    ![Tárfiók kiválasztása](./media/web-sites-backup/05ScheduleBackup1.png)
 2. Beállítások megjelenik, biztonsági mentési ütemezés beállítása **ütemezett biztonsági mentési** való **a**, majd konfigurálja a biztonsági mentés ütemezése tetszés szerint, és kattintson a **OK**.
    
     ![Az automatikus biztonsági mentés engedélyezése][SetAutomatedBackupOn]
@@ -154,7 +154,7 @@ Az adatbázis biztonsági mentése az alkalmazás a .zip fájl tárolja. SQL-ada
 > 
 > 
 
-## <a name="automate-with-scripts"></a>Parancsfájlok automatizálásához
+## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
 Automatizálható biztonságimásolat-felügyeleti parancsfájlok, használja a [Azure CLI](/cli/azure/install-azure-cli) vagy [Azure PowerShell](/powershell/azure/overview).
 
@@ -165,7 +165,7 @@ Minták lásd:
 
 <a name="nextsteps"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A visszaállítása egy alkalmazás olyan biztonsági információ: [visszaállítása egy alkalmazást az Azure-ban](web-sites-restore.md). 
 
 

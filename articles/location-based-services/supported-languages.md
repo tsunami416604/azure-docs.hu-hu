@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: cpendle
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8c284bb3637415186a12c63d4eeb088ab5f23e2e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f85a7b018085ce30550bec21fe41ca3f9253da80
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-location-based-services---supported-languages"></a>Azure-beli hely alapú szolgáltatások - támogatott nyelvek
 Az Azure-alapú helyszolgáltatás a különböző nyelveken szolgáltatásban honosított.  A következő táblázat a támogatott nyelvkódok az egyes szolgáltatásokhoz.  
@@ -34,14 +34,14 @@ Az Azure-alapú helyszolgáltatás a különböző nyelveken szolgáltatásban h
 | bg-BG      | bolgár              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | CA-ES      | katalán                |       |    ✓   |         |                   |                |     ✓     |
 | zh-HanS    | kínai (egyszerűsített)   |       |  zh-CN |         |                   |                |     ✓     |
-| zh-HanT    | kínai (hagyományos)  | zh-TW |  zh-TW |  zh-TW  |                   |      Zh-TW     |     ✓     |
+| zh-HanT    | kínai (hagyományos)  | zh-TW |  zh-TW |  zh-TW  |                   |      zh-TW     |     ✓     |
 | hr-HR      | horvát               |       |    ✓   |         |                   |                |     ✓     |
 | cs-CZ      | cseh                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | da-DK      | dán                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| nl -NL     | holland                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| NL-NL      | holland                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | nl-BE      | Belorusz        |       |    ✓   |         |                   |                |     ✓     |
 | hu         | Angol                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| et-EE      | észt               |       |    ✓   |         |         ✓         |                |     ✓     |
+| et-VM –      | észt               |       |    ✓   |         |         ✓         |                |     ✓     |
 | fi-FI      | finn                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | FR-FR      | francia                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | FR-Kanada      | Francia (kanadai)      |       |    ✓   |         |                   |                |     ✓     |
@@ -49,9 +49,9 @@ Az Azure-alapú helyszolgáltatás a különböző nyelveken szolgáltatásban h
 | de-DE      | német                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | el-GR      | görög                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | He-IL      | héber                 |       |        |         |         ✓         |                |     ✓     |
-| hi-IN      | hindi                  |       |        |         |                   |                |     ✓     |
+| üdv-IN      | hindi                  |       |        |         |                   |                |     ✓     |
 | hu-HU      | magyar              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| id-ID      | indonéz             |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
+| Azonosító      | indonéz             |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
 | it-IT      | olasz                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ja-JP      | japán               |       |        |         |                   |                |     ✓     |
 | kk-KZ      | kazak                 |       |        |         |                   |                |     ✓     |
@@ -59,21 +59,21 @@ Az Azure-alapú helyszolgáltatás a különböző nyelveken szolgáltatásban h
 | es-419     | Latin-amerikai spanyol |       |    ✓   |         |                   |                |     ✓     |
 | lv-LV      | lett                |       |    ✓   |         |         ✓         |                |     ✓     |
 | lt-LT      | litván             |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| ms-MY      | maláj (latin betűs)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
+| MS-saját      | maláj (latin betűs)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | nb-NO      | norvég (bokmål)       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pl-PL      | lengyel                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pt-BR      | portugál (Brazília)    |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| pt-PT      | portugál (Portugália)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| PT-PT      | portugál (Portugália)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ro-RO      | román               |       |        |         |         ✓         |                |     ✓     |
 | ru-RU      | orosz                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | sr-Cyrl-RS | szerb (cirill betűs)     |       |        |         |                   |                |     ✓     |
 | az SR-Latn-RS | szerb (latin betűs)        |       |        |         |                   |                |     ✓     |
-| sk-SK      | Szlovák              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| SK-SK      | Szlovák              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | sl-SL      | szlovén              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | es-ES      | spanyol                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | es-MX      | spanyol (Mexikó)       |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |
 | SV -SE     | svéd                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | cs-EDIK      | thai                   |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
 | tr-TR      | török                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| uk-UA      | Ukrán               |       |        |         |                   |                |     ✓     |
+| Egyesült Királyság-EE      | Ukrán               |       |        |         |                   |                |     ✓     |
 | vi-VN      | vietnami             |       |        |         |                   |                |     ✓     |

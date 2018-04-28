@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 67d75a28ba65dbdc0a3a105f9e41a1c4f02f2615
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f870bf1a282d7a044bb876e0015962b4f520a15f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Meglévő prediktív webszolgáltatás újratanítása
 Ez a dokumentum ismerteti a megőrzési folyamata a következő forgatókönyvet:
@@ -26,8 +26,8 @@ Ez a dokumentum ismerteti a megőrzési folyamata a következő forgatókönyvet
 * Rendelkezik egy tanítási kísérletet, és egy prediktív kísérletté központilag telepített operationalized webszolgáltatásként.
 * Új adatokat, amelyet a prediktív webszolgáltatás a pontozási elvégzéséhez.
 
-> [!NOTE] 
-> Egy új webszolgáltatás-bővítmény telepítése, megfelelő engedélyekkel kell rendelkeznie, amelyhez az előfizetést, a webszolgáltatás telepítése. További információ: [kezelése az Azure Machine Learning webszolgáltatások portál használatával egy webszolgáltatás-bővítmény](manage-new-webservice.md). 
+> [!NOTE]
+> Egy új webszolgáltatás-bővítmény telepítése, megfelelő engedélyekkel kell rendelkeznie, amelyhez az előfizetést, a webszolgáltatás telepítése. További információ: [kezelése az Azure Machine Learning webszolgáltatások portál használatával egy webszolgáltatás-bővítmény](manage-new-webservice.md).
 
 A meglévő webszolgáltatás és kísérletek verziótól kezdődően kell kövesse az alábbi lépéseket:
 
@@ -54,7 +54,7 @@ A tanítási kísérletet frissítése:
 
 Futtassa a kísérletet.
 
-Ezután telepítenie kell a tanítási kísérletet egy webszolgáltatás, amely létrehozza a modell betanítását és modell kiértékelésének eredménye.  
+Ezután telepítenie kell a tanítási kísérletet egy webszolgáltatás, amely létrehozza a modell betanítását és modell kiértékelésének eredménye.
 
 A kísérlet vászon alján kattintson **webes szolgáltatások beállítása**, majd válassza ki **[Új] webes szolgáltatás telepítése**. Az Azure Machine Learning webszolgáltatások portal nyitja meg a **webes szolgáltatás telepítése** lap. Adjon meg egy nevet a webszolgáltatáshoz, fizetési csomag kiválasztása, és kattintson **telepítés**. Használhatja a kötegelt végrehajtási módszert csak a betanított modellek létrehozásához.
 
@@ -84,7 +84,7 @@ Keresse meg a **apikey** deklarációjában:
 Az a **alapvető fogyasztási adatai** szakasza a **felhasználás** lapon keresse meg az elsődleges kulcsot, és másolja a **apikey** nyilatkozatot.
 
 ### <a name="update-the-azure-storage-information"></a>Az Azure Storage-adatainak módosítása
-A BES mintakód feltölt egy fájlt egy helyi meghajtó (például "C:\temp\CensusIpnput.csv") az Azure Storage, folyamatokat engedélyez, és kiírja az eredményeket vissza az Azure Storage.  
+A BES mintakód feltölt egy fájlt egy helyi meghajtó (például "C:\temp\CensusIpnput.csv") az Azure Storage, folyamatokat engedélyez, és kiírja az eredményeket vissza az Azure Storage.
 
 Miután a kísérletet, az eredményül kapott munkafolyamat kell lennie a következőhöz hasonló:
 
@@ -126,7 +126,7 @@ A következő egy megőrzési kimeneti példát:
 ## <a name="evaluate-the-retraining-results"></a>Megőrzési eredmények értékelése
 Az alkalmazás futtatásakor a parancs kimenete az URL-cím és a megosztott aláírások jogkivonatot az értékelés eredményét eléréséhez szükséges.
 
-A teljesítmény eredmények retrained modell kombinálásával láthatók a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredmények a *output2* (az előző megőrzési kimeneti ábrának megfelelően) és a teljes URL-cím beillesztése a böngésző címsorában.  
+A teljesítmény eredmények retrained modell kombinálásával láthatók a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredmények a *output2* (az előző megőrzési kimeneti ábrának megfelelően) és a teljes URL-cím beillesztése a böngésző címsorában.
 
 Vizsgálja meg az eredményeket a meghatározásához, hogy az újonnan betanított modell végez elégséges helyettesítse a meglévőt.
 
@@ -136,7 +136,7 @@ Másolás a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti er
 Ha újratanítása egy új webszolgáltatás-bővítmény, frissítenie kell hivatkoznia, az új betanított modell a prediktív webszolgáltatás-definíciójának. A webszolgáltatás-definíciójának a betanított modell webszolgáltatás belső másolatát, és nincs közvetlen módosítható. Győződjön meg arról, hogy vannak-e a webszolgáltatás-definíciójának beolvasása a prediktív kísérletté és nem a tanítási kísérletet.
 
 ## <a name="sign-in-to-azure-resource-manager"></a>Jelentkezzen be az Azure Resource Manager számára
-Ön először be kell jelentkeznie Azure-fiókjába a PowerShell környezetben használatával a [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) parancsmag.
+Ön először be kell jelentkeznie Azure-fiókjába a PowerShell környezetben használatával a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmag.
 
 ## <a name="get-the-web-service-definition-object"></a>A webszolgáltatás-definíciójának objektum
 A következő beolvasni a webszolgáltatás-definíciójának objektum meghívásával a [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) parancsmag.

@@ -3,18 +3,18 @@ title: ETL, helyett Azure SQL Data Warehouse ELT kialakítása |} Microsoft Docs
 description: Helyett ETL alakítson ki az adatok vagy az Azure SQL Data Warehouse feltöltését egy kivonatot, betöltés és átalakítás (ELT) folyamatot.
 services: sql-data-warehouse
 author: ckarst
-manager: jhubbard
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 04/11/2018
+ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 13189bfe2e2e6db6185c798065dc3bea1fd3d537
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Kinyerési, betöltés és átalakítás (ELT) az Azure SQL Data Warehouse tervezése
 
@@ -56,7 +56,7 @@ Adatok betöltése a PolyBase, ezek betöltését beállításokat használhatja
 A PolyBase adatokat tölt az UTF-8 és UTF-16 kódolású tagolt szövegfájlok. A tagolt szövegfájlok, valamint betölti a Hadoop-fájl formátumok RC fájl ORC és Parquet. A PolyBase adatok betöltése a Gzip és klassz kis tömörített fájlok. A PolyBase jelenleg nem támogatja a kiterjesztett ASCII, rögzített szélességű formátum és beágyazott formátumú például WinZip JSON vagy XML.
 
 ### <a name="non-polybase-loading-options"></a>A PolyBase nem betöltése beállítások
-Ha az adatok nem kompatibilis a PolyBase, használhatja [bcp](sql-data-warehouse-load-with-bcp.md) vagy a [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP Azure Blob Storage tárolóban keresztül közvetlenül az SQL Data Warehouse betölti, és csak kis terhelések számára készült. Vegye figyelembe, ezek a beállítások betöltése teljesítménye jelentősen lassabb, mint a PolyBase. 
+Ha az adatok nem kompatibilis a PolyBase, használhatja [bcp](/sql/tools/bcp-utility) vagy a [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP Azure Blob Storage tárolóban keresztül közvetlenül az SQL Data Warehouse betölti, és csak kis terhelések számára készült. Vegye figyelembe, ezek a beállítások betöltése teljesítménye jelentősen lassabb, mint a PolyBase. 
 
 
 ## <a name="extract-source-data"></a>Forrásadatok kinyerése

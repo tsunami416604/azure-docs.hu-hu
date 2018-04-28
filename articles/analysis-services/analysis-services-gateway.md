@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5d327f016237890b506f45c4c494bd08ad2f71bb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abd2d2c8e220a946d08774f8e55ea968008c1757
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Csatlakozás az adatforrásokhoz helyszíni Azure a helyszíni adatok átjáróval
 Az a helyszíni átjáró működik hídként, a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitel biztosítása. Mellett több Azure Analysis Services-kiszolgáló ugyanabban a régióban dolgozik, az átjáró legújabb verzióját is működik az Azure Logic Apps, a Power bi-ban, a kiemelt alkalmazások és a Microsoft Flow. Csak egyetlen átjáró ugyanabban a régióban több szolgáltatáshoz is társíthat. 
@@ -82,6 +82,11 @@ Beállíthatja, hogy az közvetlen TCP; helyett HTTPS használatával kommuniká
     <value>Https</value>
 </setting>
 ```
+
+## <a name="tenant-level-administration"></a>Bérlői szintű felügyelet 
+
+Jelenleg nincs egyetlen helyen, ahol a bérlői rendszergazdák kezelhetik az átjárók, a többi felhasználó telepítette és konfigurálta.  Ha Ön a bérlői rendszergazdák, ajánlott elfogadtatni a felhasználókkal venni rendszergazdaként minden átjáró telepítésekor a szervezetében. Ez lehetővé teszi, hogy az átjáró beállításai oldal vagy a szervezeten belüli összes átjáró kezelése [PowerShell-parancsok](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters). 
+
 
 ## <a name="faq"></a>Gyakori kérdések
 

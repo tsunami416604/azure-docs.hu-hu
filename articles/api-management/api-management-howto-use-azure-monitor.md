@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f4b1a6e3ee995fb309577fd6df611a705e613041
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
-Az Azure Monitor Azure-szolgáltatás használatával egyetlen eszközön keresztül monitorozhatja Azure-erőforrásait. Az Azure Monitorral az egyes Azure-erőforrásoktól, például az API Managementtől az Azure-ba érkező mérőszámokat és naplókat jelenítheti meg, kérdezheti le, irányíthatja át, archiválhatja, illetve különböző műveleteket is végezhet velük. 
+Az Azure Monitorral az egyes Azure-erőforrásoktól az Azure-ba érkező metrikákat vagy naplókat jelenítheti meg, kérdezheti le, irányíthatja át, archiválhatja, illetve különböző műveleteket is végezhet velük.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -43,24 +43,22 @@ A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azu
 + Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 + Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
 ## <a name="view-metrics-of-your-apis"></a>Az API-k metrikáinak megtekintése
 
 Az API Management percenként biztosít mérőszámokat, így közel valós idejű képet ad az API-k állapotáról. Az alábbiakban néhány rendelkezésre álló mérőszámról adunk összefoglaló tájékoztatást:
 
-* Kapacitás (előzetes verzió): az APIM-szolgáltatások magasabb/alacsonyabb verzióra váltásával kapcsolatos döntések meghozatalát segíti elő. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az átjáró erőforrásainak, például a processzornak és a memóriának a kihasználtsága alapján számítódik ki.
+* Kapacitás (előzetes verzió): az APIM-szolgáltatások magasabb/alacsonyabb verzióra váltásával kapcsolatos döntések meghozatalát segíti elő. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az érték számítása az átjáró erőforrásai, például a processzor és a memória kihasználtsága alapján történik.
 * Összes átjárókérés: az API-lekérdezések száma az adott időszakban. 
-* Sikeres átjárókérések: a sikert jelző HTTP-válaszkódot kapott API-kérések száma, beleértve a 304-es, a 307-es, valamint a 301-nél alacsonyabb (például 200-as) válaszkódokat. 
-* Sikertelen átjárókérések: a hibát jelző HTTP-válaszkódot kapott API-kérések száma, beleértve a 400-as, valamint az 500-nál magasabb válaszkódokat.
-* Jogosulatlan átjárókérések: a 401-es, 403-as és 429-es HTTP-válaszkódot kapott API-kérések száma. 
+* Sikeres átjárókérések: a sikert jelző HTTP-válaszkódot kapott API-kérések száma, beleértve a 304-es, a 307-es, valamint a 301-nél alacsonyabb (például 200-as) válaszkódokat.
+* Sikertelen átjárókérések: a hibát jelző HTTP-válaszkódot (a 400-as, valamint az 500-nál magasabb válaszkódokat is beleértve) kapott API-kérések száma.
+* Jogosulatlan átjárókérések: a 401-es, 403-as és 429-es HTTP-válaszkódot kapott API-kérések száma.
 * Egyéb átjárókérések: az előző kategóriákba nem tartozó (például 418-as) HTTP-válaszkódot kapott API-kérések száma.
 
 A mérőszámok elérése:
 
 1. Válassza a lap alján lévő menü **Metrika** elemét.
 2. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat (több mérőszámot is hozzáadhat). 
-    
+
     Például válassza az **Összes átjárókérés** és a **Sikertelen átjárókérések** mérőszámot az elérhető mérőszámok listájából.
 3. A diagram az API-hívások teljes számát mutatja, és a sikertelen API-hívások számát is megjeleníti. 
 
@@ -89,7 +87,7 @@ A riasztások konfigurálása:
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 
-A tevékenységnaplók betekintést engednek az API Management-szolgáltatásokban végrehajtott műveletekbe. A tevékenységnaplók segítségével az API Management-szolgáltatásokban végrehajtott írási műveletek (PUT, POST, DELETE) kapcsán megállapíthatja, hogy a „ki, mit és mikor” hajtott végre. 
+A tevékenységnaplók betekintést engednek az API Management-szolgáltatásokban végrehajtott műveletekbe. A tevékenységnaplók segítségével az API Management-szolgáltatásokban végrehajtott írási műveletek (PUT, POST, DELETE) kapcsán megállapíthatja, hogy a „ki, mit és mikor” hajtott végre.
 
 > [!NOTE]
 > A tevékenységnaplók az olvasási (GET) műveleteket, illetve az Azure Portalon vagy az eredeti felügyeleti API-k használatával végzett műveleteket nem tartalmazzák.
@@ -116,15 +114,15 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 ```json
 {  
     "isRequestSuccess" : "",
-    "time": "",   
-    "operationName": "",      
-    "category": "",   
-    "durationMs": ,   
-    "callerIpAddress": "",   
-    "correlationId": "",   
-    "location": "",      
-    "httpStatusCodeCategory": "",      
-    "resourceId": "",      
+    "time": "",
+    "operationName": "",
+    "category": "",
+    "durationMs": ,
+    "callerIpAddress": "",
+    "correlationId": "",
+    "location": "",
+    "httpStatusCodeCategory": "",
+    "resourceId": "",
     "properties": {   
         "method": "", 
         "url": "", 
@@ -164,11 +162,11 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | time | dátum-idő | Az átjárótól érkező HTTP-kérelem megérkezésének időbélyegzője |
 | operationName | karakterlánc | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
 | category | karakterlánc | A „GatewayLogs” állandó érték |
-| durationMs | egész szám | A kérelem átjáróhoz való megérkezése és a válasz elküldése között eltelt ezredmásodpercek száma kerekítve |
+| durationMs | egész szám | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |
 | callerIpAddress | karakterlánc | Az átjáró közvetlen hívójának IP-címe (közvetítő is lehet) |
 | correlationId | karakterlánc | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
 | location | karakterlánc | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
-| httpStatusCodeCategory | karakterlánc | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy kevesebb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
+| httpStatusCodeCategory | karakterlánc | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy alacsonyabb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
 | resourceId | karakterlánc | A /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<erőforráscsoport>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> API Management-erőforrás azonosítója |
 | properties | objektum | Az aktuális kérelem tulajdonságai |
 | method | karakterlánc | A bejövő kérelem HTTP-metódusa |
@@ -206,7 +204,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Tevékenységnaplók megtekintése
 > * Diagnosztikai naplók megtekintése
-> * Az API-k mérőszámainak megtekintése 
+> * Az API-k mérőszámainak megtekintése
 > * Riasztási szabály beállítása a jogosulatlan API-hívások esetére
 
 Folytassa a következő oktatóanyaggal:

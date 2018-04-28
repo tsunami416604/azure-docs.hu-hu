@@ -1,38 +1,38 @@
 ---
-title: "Hozzon létre egy HTTP-eseményindítóval Azure Cosmos DB bemeneti kötést |} Microsoft Docs"
-description: "Útmutató az Azure Functions használatával lekérdezés Azure Cosmos DB HTTP-eseményindítókkal."
+title: HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel | Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure Functionst HTTP-triggerekkel az Azure Cosmos DB lekérdezéséhez.
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 3fca64db9e19f8295fc462b790beb95f6796ae4c
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: MT
+ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Az Azure Functions HTTP-eseményindítóval hozzon létre egy Azure Cosmos DB bemeneti kötése
+# <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Azure Functions HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel
 
-Azure Cosmos-adatbázis, amely séma nélküli, és a kiszolgáló nélküli globálisan elosztott, több modellre adatbázis. Az Azure függvény egy kiszolgáló nélküli számítási szolgáltatás, amely lehetővé teszi igény kódot. A két Azure szolgáltatás párosítani és rendelkezik az alap, amelyre egy kiszolgáló nélküli architektúra, amely lehetővé teszi, hogy nagyszerű alkalmazások létrehozására összpontosítson, és nem kell foglalkoznia üzembe helyezési és a számítás kiszolgáló karbantartásáért és -adatbázist vissza kell.
+Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis, amely séma- és kiszolgálómentes. Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel igény szerint futtathat kódokat. Ez a két Azure-szolgáltatás együtt egy olyan kiszolgáló nélküli architektúra alapját képezi, amellyel a nagyszerű alkalmazások létrehozására összpontosíthat, és nem kell foglalkoznia a számítási és adatbázisigényeinek megfelelő kiszolgálók üzembe helyezésével és karbantartásával.
 
-Ez az oktatóanyag épít, a létrehozott kód a [Graph API gyors üzembe helyezés, a .NET-hez](create-graph-dotnet.md). Ez az oktatóanyag hozzáadja egy Azure-függvény, amely tartalmaz egy [HTTP-eseményindítóval](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger). A HTTP-eseményindítóval használ egy Azure Cosmos DB [kötés bemeneti](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md) adatok lekérése a graph-adatbázist, a gyors üzembe helyezés létrehozott. Ez különösen HTTP eseményindító lekérdezések Azure Cosmos DB az adatokat, de bemeneti kötéseket Azure Cosmos DB segítségével függetlenül a függvény csak az adatok a bemeneti értékek beolvasása.
+Ez az oktatóanyag a [Graph API .NET-es gyors útmutatójában](create-graph-dotnet.md) létrehozott kódot használja fel. Ez az oktatóanyag hozzáad egy Azure-függvényt, amely egy [HTTP-triggert](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger) tartalmaz. A HTTP-trigger egy Azure Cosmos DB [bemeneti kötést](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md) használ a gyors útmutatóban létrehozott Graph-adatbázis adatainak lekérésére. Ez az adott HTTP-trigger csak lekérdezi az Azure Cosmos DB adatait, de az Azure Cosmos DB bemeneti kötéseivel bármilyen adatbemeneti értékeket lekérhet a függvényeihez.
 
-Ez az oktatóanyag ismerteti a következő feladatokat:
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Egy Azure-függvény projekt létrehozása 
-> * Hozzon létre egy HTTP-eseményindítóval
-> * Az Azure függvény közzététele
-> * Az Azure-függvény kapcsolódni az Azure Cosmos DB adatbázishoz
+> * Azure Functions-projekt létrehozása 
+> * HTTP-trigger létrehozása
+> * Az Azure-függvény közzététele
+> * Az Azure-függvény csatlakoztatása az Azure Cosmos DB-adatbázishoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,46 +40,46 @@ Ez az oktatóanyag ismerteti a következő feladatokat:
 
     ![Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017 telepítése](./media/tutorial-functions-http-trigger/functions-vs-workloads.png)
     
-- A Visual Studio 2017 15.3 verzió frissítése vagy telepítése után manuálisan kell frissíteni a Visual Studio 2017 eszközök az Azure Functions. Az eszközök frissítheti a **eszközök** menüt **bővítmények és frissítések...**   >  **Frissítések** > **Visual Studio piactér** > **az Azure Functions és webes feladatok eszközök**  >  **Frissítés**.
+- Miután telepítette a Visual Studio 2017 15.3-as verzióját vagy frissített rá, manuálisan frissítenie kell az Azure Functions Visual Studio 2017-es eszközeit. Az eszközöket az **Eszközök** menü **Bővítmények és frissítések...** > **Frissítések** > **Visual Studio-piactér** > **Azure Functions- és WebJobs-eszközök** > **Frissítés** menüpontjában frissítheti.
 
-- Fejezze be a [létre olyan .NET-alkalmazás, a Graph API-jával](tutorial-develop-graph-dotnet.md) oktatóanyag, vagy a kód például a get a [azure-cosmos-db-graph-dotnet-getting-started](https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started) GitHub-tárház és a projekt felépítéséhez.
+- Végezze el a [.NET-alkalmazás létrehozása a Graph API-val](tutorial-develop-graph-dotnet.md) című oktatóanyagot, vagy töltse le a mintakódot az [azure-cosmos-db-graph-dotnet-getting-started](https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started) GitHub-adattárból, és hozza létre a projektet.
  
-## <a name="build-a-function-in-visual-studio"></a>A Visual Studio függvény létrehozása
+## <a name="build-a-function-in-visual-studio"></a>Függvény létrehozása a Visual Studióban
 
-1. Hozzáadás egy **Azure Functions** a megoldásához kattintson a jobb gombbal a megoldás csomópontján projekt **Megoldáskezelőben**, a válasszon **Hozzáadás**  >   **Új projekt**. Válasszon **Azure Functions** a párbeszédpanelen mezőbe, és adjon neki nevet **PeopleDataFunctions**.
+1. Adjon hozzá egy **Azure Functions**-projektet a megoldáshoz. Ehhez kattintson a jobb gombbal a megoldás csomópontjára a **Megoldáskezelőben**, majd válassza a **Hozzáadás** > **Új projekt lehetőséget**. Válassza az **Azure Functions** lehetőséget a párbeszédpanelen, és adja meg a **PeopleDataFunctions** nevet.
 
-   ![Az Azure-függvény projekt hozzáadása a megoldáshoz](./media/tutorial-functions-http-trigger/01-add-function-project.png)
+   ![Azure Functions-projekt hozzáadása a megoldáshoz](./media/tutorial-functions-http-trigger/01-add-function-project.png)
 
-2. Miután az Azure Functions-projekt létrehozása, van néhány NuGet kapcsolódó frissíti, és telepíti a végrehajtásához. 
+2. Miután létrehozta az Azure Functions-projektet, végre kell hajtania néhány, a NuGethez kapcsolódó frissítést és telepítést. 
 
-    a. Győződjön meg arról, hogy a legújabb funkciók SDK, a NuGet-kezelő használatával frissítse a **Microsoft.NET.Sdk.Functions** csomag. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése**. Az a **telepített** lapra, válassza ki a Microsoft.NET.Sdk.Functions, majd kattintson **frissítés**.
+    a. A NuGet Managerrel frissítse a **Microsoft.NET.Sdk.Functions** csomagot, hogy biztosan a legfrissebb Functions SDK legyen telepítve. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget. A **Telepítve** lapon válassza ki a Microsoft.NET.Sdk.Functions nevű csomagot, majd kattintson a **Frissítés** elemre.
 
    ![NuGet-csomagok frissítése](./media/tutorial-functions-http-trigger/02-update-functions-sdk.png)
 
-    b. Az a **Tallózás** lapra, adja meg **azure.graphs** található a **Microsoft.Azure.Graphs** csomagot, majd kattintson a **telepítése**. Ez a csomag tartalmazza a Graph API .NET ügyféloldali SDK-JÁT.
+    b. A **Tallózás** lapon írja be az **azure.graphs** kifejezést a **Microsoft.Azure.Graphs** csomag megkereséséhez, majd kattintson a **Telepítés** elemre. Ez a csomag tartalmazza a Graph API .NET Client SDK-t.
 
    ![A Graph API telepítése](./media/tutorial-functions-http-trigger/03-add-azure-graphs.png)
 
-    c. Az a **Tallózás** lapra, adja meg **mono.csharp** található a **Mono.CSharp** csomagot, majd kattintson a **telepítése**.
+    c. A **Tallózás** lapon írja be a **mono.csharp** kifejezést a **Mono.CSharp** csomag megkereséséhez, majd kattintson a **Telepítés** elemre.
 
-   ![Mono.CSharp telepítése](./media/tutorial-functions-http-trigger/04-add-mono.png)
+   ![A Mono.CSharp telepítése](./media/tutorial-functions-http-trigger/04-add-mono.png)
 
-3. A Solution Explorer most telepíti, akkor a csomagokat kell tartalmaznia, ahogy az itt látható. 
+3. A Megoldáskezelőnek most már tartalmazza a telepített csomagokat, amint az itt látható. 
    
-   A következő igazolnia kell írnia egy kódrészletet, ezért fel kell venni egy új **Azure-függvény** elem a projekthez. 
+   Ezután írnunk kell némi kódot, ezért hozzáadunk egy új **Azure Function**-elemet a projekthez. 
 
     a. A **Megoldáskezelő** felületén kattintson jobb egérgombbal a projekt csomópontra, majd válassza a **Hozzáadás** > **Új elem** lehetőséget.   
-    b. A a **új elem hozzáadása** párbeszédablakban válassza **Visual C# elemek**, jelölje be **Azure-függvény**, típus **keresési** , a nevet a projektnek, majd Kattintson a **Hozzáadás**.  
+    b. Az **Új elem hozzáadása** párbeszédpanelen válassza a **Visual C#-elemek**, majd az **Azure-függvény** lehetőséget, írja be a **Keresés** nevet a projekt neveként, majd kattintson a **Hozzáadás** gombra.  
  
-   ![Hozzon létre egy új függvényt nevű keresési](./media/tutorial-functions-http-trigger/05-add-function.png)
+   ![Egy Keresés nevű új függvény létrehozása](./media/tutorial-functions-http-trigger/05-add-function.png)
 
-4. Az Azure-függvény válaszol a HTTP-kérelmekre, így a Http-eseményindító sablon itt megfelelő.
+4. Az Azure-függvény HTTP-kérelmekre reagál majd, így a HTTP-triggersablon használata itt megfelelő.
    
-   Az a **új Azure-függvény** mezőben válassza **Http-eseményindítóval**. Azt szeretnénk, ha az Azure-függvény nyitva kell lennie "kiterjedő," túl, így hivatott a **hozzáférési jogosultsággal** való **névtelen**, amely lehetővé teszi, hogy mindenki. Kattintson az **OK** gombra.
+   Az **Új Azure-függvény** mezőben válassza a **HTTP-trigger** lehetőséget. Azt is szeretnénk, ha ez az Azure-függvény mindenki számára elérhető lenne, ezért a **Hozzáférési jogosultságokat** **Névtelen** értékre állítjuk. Kattintson az **OK** gombra.
 
-   ![Névtelen set hozzáférési jogok](./media/tutorial-functions-http-trigger/06-http-trigger.png)
+   ![Hozzáférési jogosultságok beállítása Névtelen értékre](./media/tutorial-functions-http-trigger/06-http-trigger.png)
 
-5. Miután Search.cs hozzáadása az Azure-függvény projekthez, másolja ezeket **használatával** keresztül utasítások a meglévő használati utasításokat:
+5. Miután hozzáadta a Search.cs függvényt az Azure Functions-projekthez, másolja ezeket a **using** utasításokat a meglévő using utasítások helyére:
 
    ```csharp
    using Microsoft.Azure.Documents;
@@ -98,7 +98,7 @@ Ez az oktatóanyag ismerteti a következő feladatokat:
    using System.Threading.Tasks;
    ```
 
-6. Ezután cserélje le az Azure-függvény osztály kódot az alábbi kódot. A kód a Graph API használatával, vagy minden, a felhasználók számára, vagy az adott személy által azonosított Azure Cosmos DB adatbázis keres a `name` lekérdezési karakterlánc.
+6. Ezután cserélje le az Azure-függvény osztálykódját az alábbi kódra. A kód a Graph API használatával megkeresi az összes személyt vagy a `name` lekérdezési karakterlánc paraméter által azonosított adott személyt az Azure Cosmos DB-adatbázisban.
 
    ```csharp
    public static class Search
@@ -160,36 +160,36 @@ Ez az oktatóanyag ismerteti a következő feladatokat:
    }
    ```
 
-   A kód tulajdonképpen a kapcsolat logikák beállítani, mint az eredeti konzolalkalmazást, amely az adatbázis egy egyszerű lekérdezést beolvasni a megfelelő rekordok a rendezés.
+   Ez a kód tulajdonképpen ugyanazt a csatlakozási logikát használja, mint az adatbázis áttöltésekor használt eredeti konzolalkalmazás, és egy egyszerű lekérdezéssel kéri le a megfelelő rekordokat.
 
-## <a name="debug-the-azure-function-locally"></a>Helyileg Azure függvény hibakeresése
+## <a name="debug-the-azure-function-locally"></a>Az Azure-függvény helyi hibakeresése
 
-Most, hogy a kód befejeződött, az Azure-függvény helyi hibakeresési eszközök és emulator használatával helyben, ha kipróbálja a kódra.
+Most, hogy elkészült a kód, az Azure Functions helyi hibakeresési eszközeivel és emulátorával helyben futtathatja a kódot tesztelés céljából.
 
-1. A kód lefut megfelelően, mielőtt konfigurálnia kell azt a helyi végrehajtásához az Azure Cosmos adatbázis-kapcsolati információkat. A local.settings.json fájl segítségével konfigurálhatja a helyi végrehajtásához Azure-függvény sokkal ugyanolyan módon állítsa be az eredeti konzol alkalmazását végrehajtó szeretné használni az App.config fájlt.
+1. Mielőtt a kód megfelelően futhatna, konfigurálnia kell a helyi végrehajtásra az Azure Cosmos DB kapcsolati adataival. A local.settings.json fájllal ugyanúgy konfigurálhatja az Azure-függvényt a helyi végrehajtásra, ahogy az App.config fájlt használná az eredeti konzolalkalmazás végrehajtásához.
 
-    Ehhez az szükséges, az alábbi kódsorokat hozzáadása local.settings.json, és másolja a végpont és a következő ábrán látható módon a GraphGetStarted projekt App.Config fájlból AuthKey.
+    Ehhez adja hozzá a következő kódsorokat local.settings.json fájlhoz, majd másolja be az Endpoint és az AuthKey értékét a GraphGetStarted projekt App.Config fájljából, amint az alábbi ábrán látható.
 
    ```json
     "Endpoint": "",
     "AuthKey": ""
     ```
 
-   ![A végpont és az engedélyezés kulcsát állítsa a local.settings.json fájlban](./media/tutorial-functions-http-trigger/07-local-functions-settings.png)
+   ![A végpont és a hitelesítési kulcs beállítása a local.settings.json fájlban](./media/tutorial-functions-http-trigger/07-local-functions-settings.png)
 
-2. Az új funkciók alkalmazás kezdőprojektként módosítható. A **Megoldáskezelőben**, kattintson a jobb gombbal **PeopleDataFunctions**, és válassza ki **beállítás kezdőprojektként**.
+2. Cserélje le a StartUp projektet az új Functions-alkalmazásra. A **Megoldáskezelőben** kattintson a jobb gombbal a **PeopleDataFunctions** projektre, majd válassza a **Beállítás indítási projektként** lehetőséget.
 
-3. A **Megoldáskezelőben**, kattintson a jobb gombbal **függőségek** a a **PeopleDataFunctions** projektre, és kattintson a **hivatkozás hozzáadása**. A listában jelölje ki a System.Configuration, és kattintson **OK**.
+3. A **Megoldáskezelőben** kattintson a jobb gombbal a **Függőségek** elemre a **PeopleDataFunctions** projektben, majd kattintson a **Hivatkozás hozzáadása** gombra. A listában válassza ki a System.Configuration elemet, majd kattintson az **OK** gombra.
 
-3. Most tegyük a az alkalmazás futtatásához. Nyomja le az F5 billentyűt a helyi func.exe üzemeltetett és használatra készen álljon az Azure-függvény kóddal hibakeresési eszköz indítása.
+3. Most pedig futtassuk az alkalmazást. Nyomja le az F5 billentyűt a func.exe helyi hibakareső eszközben, miközben az Azure-függvény kódja fut és használatra kész.
 
-   Kezdeti kimenetét a func.exe végén észlelünk, localhost:7071 tárolt Azure-függvény. Ez akkor hasznos, ha kipróbálja az ügyfél.
+   A func.exe kezdeti kimenetének a végén látható, hogy az Azure-függvény a localhost:7071 helyen fut. Ez hasznos az ügyfélben való teszteléshez.
 
    ![Az ügyfél tesztelése](./media/tutorial-functions-http-trigger/08-functions-emulator.png)
 
-4. Az Azure-függvény teszteléséhez [Visual Studio Code](http://code.visualstudio.com/) Huachao Mao kiterjesztésű [többi ügyfél](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). REST-ügyfél a helyi vagy távoli HTTP kérelem funkció egy egyetlen kattintson a jobb gombbal a kínál. 
+4. Az Azure-függvény teszteléséhez használja a [Visual Studio Code-ot](http://code.visualstudio.com/) a Huachao Mao által készített [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) bővítménnyel. A REST Client egyetlen jobb gombos kattintással elérhetővé a helyi vagy távoli HTTP-kérelmeket. 
 
-    Ehhez az szükséges, hozzon létre egy új fájlt teszt-függvény-locally.http, és adja hozzá a következő kódot:
+    Ehhez hozzon létre egy új fájlt test-function-locally.http néven, és adja hozzá a következő kódot:
 
     ```http
     get http://localhost:7071/api/Search
@@ -197,57 +197,57 @@ Most, hogy a kód befejeződött, az Azure-függvény helyi hibakeresési eszkö
     get http://localhost:7071/api/Search?name=ben
    ```
 
-    Most kattintson a jobb gombbal a kód első sorában, majd válasszon **kérés küldése** a következő ábrán látható módon.
+    Most kattintson a jobb gombbal a kód első sorára, majd válassza a **Kérelem küldése** lehetőséget, amint a következő ábrán látható.
 
-   ![A Visual Studio code többi kérés küldése](./media/tutorial-functions-http-trigger/09-rest-client-in-vs-code.png)
+   ![REST-kérés küldése a Visual Studio Code-ból](./media/tutorial-functions-http-trigger/09-rest-client-in-vs-code.png)
 
-   A helyileg futó Azure-függvény fejlécek, JSON törzs tartalmat, a nyers HTTP-válasz jelenik meg minden.
+   Megjelenik a nyers HTTP-válasz a helyben futó Azure-függvényből: a fejlécek, a JSON-törzs tartalma, minden.
 
    ![REST-válasz](./media/tutorial-functions-http-trigger/10-general-results.png)
 
-5. Most már a második kódsort, majd válassza ki és **kérés küldése**. Adja hozzá a `name` lekérdezési karakterlánc-paraméter ismert, hogy az adatbázis, a azt az Azure-függvény adja vissza az eredményeket szűrheti.
+5. Most jelölje ki a kód második sorát, majd válassza a **Kérelem küldése** lehetőséget. Ha hozzáadja a `name` lekérdezésikarakterlánc-paramétert egy olyan értékkel, amelyről tudja, hogy szerepel az adatbázisban, szűrheti az Azure-függvény által visszaadott eredményeket.
 
-   ![Az Azure-függvény eredmények szűréséhez](./media/tutorial-functions-http-trigger/11-search-for-ben.png)
+   ![Az Azure-függvény eredményeinek szűrése](./media/tutorial-functions-http-trigger/11-search-for-ben.png)
 
-Miután az Azure-függvény van hitelesítve, és úgy tűnik, hogy megfelelően működik, az utolsó lépés, hogy közzéteszi az Azure App Service és a felhőben való futtatásra konfigurálja.
+Miután ellenőrizte az Azure-függvényt, és látszólag megfelelően működik, az utolsó lépés az Azure App Service-ben való közzététele, valamint a konfigurálása a felhőben való futtatásra.
 
-## <a name="publish-the-azure-function"></a>Az Azure függvény közzététele
+## <a name="publish-the-azure-function"></a>Az Azure-függvény közzététele
 
-1. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, majd válassza ki **közzététel**.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, majd válassza a **Közzététel** lehetőséget.
 
    ![Az új projekt közzététele](./media/tutorial-functions-http-trigger/12-publish-function.png)
 
-2. Elkészültünk közzététele a tesztek a nyilvánosan elérhető forgatókönyvek a felhőben. Az a **közzététel** lapon jelölje be **Azure függvény App**, jelölje be **hozzon létre új** egy Azure-függvény létrehozása az Azure-előfizetése, majd kattintson **közzététele** .
+2. Most közzéteheti a projektet a felhőben, ahol tesztelheti egy nyilvánosan elérhető forgatókönyv keretében. A **Közzététel** lapon válassza az **Azure-függvényalkalmazás**, majd az **Új létrehozása** elemet egy Azure-függvény létrehozásához az Azure-előfizetésében, majd kattintson a **Közzététel** elemre.
 
-   ![Hozzon létre egy új Azure-függvény alkalmazást](./media/tutorial-functions-http-trigger/13-publish-panel.png)
+   ![Új Azure-függvényalkalmazás létrehozása](./media/tutorial-functions-http-trigger/13-publish-panel.png)
 
-3. Az a **közzététel** párbeszédpanelen tegye a következőket:
+3. A **Közzététel** párbeszédpanelen tegye a következőket:
    
-    a. A **alkalmazásnév**, a függvény adjon egy egyedi nevet.
+    a. Az **Alkalmazás neve** mezőben adjon egyedi nevet a függvénynek.
 
-    b. A **előfizetés**, válassza ki az Azure-előfizetés használatára.
+    b. Az **Előfizetés** mezőben válassza ki a használni kívánt Azure-előfizetést.
    
-    c. A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, és ugyanazt a nevet használja, az alkalmazás nevére.
+    c. Az **Erőforráscsoport** mezőben hozzon létre egy új erőforráscsoportot, és használja ugyanazt a nevet, mint az alkalmazás neve.
    
-    d. A **App Service-csomag**, kattintson a **új** létrehozni egy új fogyasztás alapján App Service-csomag, mert azt a kiszolgáló nélküli Azure-függvény használati használatalapú számlázási módszert használni kíván. Az alapértelmezett beállításokat használja a **konfigurálása App Service-csomag** lapon, majd **OK**.
+    d. Az **App Service-csomagnál** kattintson az **Új** elemre egy új fogyasztásalapú App Service-csomag létrehozásához, mivel használatalapú számlázási módszert szeretnénk használni a kiszolgáló nélküli Azure-függvényhez. Az **App Service-csomag konfigurálása** lapon használja az alapértelmezett értékeket, majd kattintson az **OK** gombra.
    
-    e. A **Tárfiók**, is **új** használata az Azure-függvény, abban az esetben, ha a blobokat, táblák és várólisták indul el, egyéb funkciók végrehajtása legalább egyszer kell egy új Tárfiók létrehozásához. Az alapértelmezett beállításokat használja a **Tárfiók** lapon, majd **OK**.
+    e. A **Storage-fiók** területen az **Új** elemre kattintva hozzon létre egy új tárfiókot az Azure-függvény számára arra az esetre, ha később egyéb funkciók aktiválásához blob-, tábla- és üzenetsor-támogatásra lenne szükség. A **Tárfiók** lapon használja az alapértelmezett értékeket, majd kattintson az **OK** gombra.
 
-    f. Kattintson a **létrehozása** gombra a párbeszédpanelen az erőforrások létrehozásához az Azure-előfizetése. A Visual Studio tölti le a közzétételi profilt (egyszerű XML-fájl), amelyet az Azure-függvény kód a következő közzétételekor használ.
+    f. Ezután kattintson a **Létrehozás** gombra a párbeszédpanelen az összes erőforrás létrehozásához az Azure-előfizetésében. A Visual Studio letölt egy a közzétételi profilt (ez egy egyszerű XML-fájl), amelyet az Azure-függvény kódjának következő közzétételekor használ majd.
 
-   ![A Storage-fiók létrehozása](./media/tutorial-functions-http-trigger/14-new-function-app.png)
+   ![A tárfiók létrehozása](./media/tutorial-functions-http-trigger/14-new-function-app.png)
 
-    A Visual Studio akkor használhatja, ha módosítja a függvény, és tegye közzé újból kell közzététel lapot jeleníti meg. Nincs teendője, hogy oldalon most.
+    A Visual Studio ezután megjelenít egy Közzététel lapot, amelyet akkor használhat, ha módosítja a függvényt, és újra közzé kell tennie. Most nem szükséges semmilyen műveletet végrehajtania ezen a lapon.
 
-4. Miután az Azure-függvény közzé van téve, akkor lépjen a [Azure-portálon](https://portal.azure.com/) az Azure-függvény lapját. Itt láthatja az Azure-függvény mutató hivatkozás **Alkalmazásbeállítások**. Az élő Azure-függvény Azure Cosmos-adatbázis adatbázis-kapcsolata konfigurálása az személy adatait a hivatkozás megnyitásához.
+4. Az Azure-függvény közzététele után a függvény oldalára léphet az [Azure Portalon](https://portal.azure.com/). Itt található egy hivatkozás, amely az Azure-függvény **Alkalmazásbeállításaira** mutat. A hivatkozás megnyitásával konfigurálhatja az élő Azure-függvényt, hogy az Ön személyi adataival kapcsolódhasson az Azure Cosmos DB-adatbázishoz.
 
-   ![Tekintse át az alkalmazásbeállítások](./media/tutorial-functions-http-trigger/15-function-in-portal.png)
+   ![Alkalmazásbeállítások áttekintése](./media/tutorial-functions-http-trigger/15-function-in-portal.png)
 
-5. Csak úgy, ahogy korábban a Konzolalkalmazás App.config fájlban, és az Azure-függvény alkalmazás local.settings.json fájlban, szüksége lesz a végpont és AuthKey a közzétett függvény Azure Cosmos DB adatbázishoz adhat hozzá. Ezzel a módszerrel sosem ellenőrizze a konfigurációs kódot is, amely tartalmazza a kulcsok - konfigurálja őket a portálon, és győződjön meg a verziókövetési rendszerrel való nem tárolás. Az egyes értékek hozzáadásához kattintson a **új beállítás hozzáadása** gombra, adja hozzá **végpont** és az érték az App.config fájlban, majd kattintson a **új beállítás hozzáadása** újra, és adja hozzá **AuthKey**  és az egyéni érték. Miután hozzáadott, és menti a értékek, a beállításokat a következőhöz hasonló kell kinéznie.
+5. Ahogy korábban a konzolalkalmazás App.config fájljában és az Azure-függvényalkalmazás local.settings.json fájljában, most is hozzá kell adnia a közzétett függvényhez az Azure Cosmos DB-adatbázis Endpoint és AuthKey értékeit. Így sosem kell olyan konfigurációs kóddal bejelentkeznie, amely tartalmazza a kulcsait – ezeket a portálon konfigurálhatja, és biztos lehet benne, hogy a verziókövetés nem tárolja őket. Az egyes értékek hozzáadásához kattintson az **Új beállítás hozzáadása** elemre, és adja hozzá az **Endpoint** beállítást és az app.config fájlban lévő értéket, majd kattintson újra az **Új beállítás hozzáadása** elemre, és adja hozzá az **AuthKey** beállítást és a saját egyéni értékét. Miután hozzáadta és mentette az értékeket, a beállításoknak az alábbiakhoz hasonlóan néznek ki.
 
-   ![Az Endpoint és AuthKey konfigurálása](./media/tutorial-functions-http-trigger/16-app-settings.png)
+   ![Végpont és AuthKey konfigurálása](./media/tutorial-functions-http-trigger/16-app-settings.png)
 
-6. Az Azure-függvény megfelelően van konfigurálva az Azure-előfizetéssel, ha újra segítségével a Visual Studio Code többi ügyfél bővítmény lekérdezni a nyilvánosan elérhető Azure Function URL-cím. E két sornyi kód hozzáadása a test-függvény-locally.http, és futtassa a minden egyes sorban, a függvény vizsgálandó. Cserélje le az URL-címben a függvény nevét a függvény nevét.
+6. Miután az Azure-függvény megfelelően konfigurálva lett az Azure-előfizetésben, a Visual Studio Code REST-ügyfél bővítményével lekérdezheti az Azure-függvény nyilvánosan elérhető URL-címét. Adja hozzá ezt a két kódsort a test-function-locally.http fájlhoz, majd futtassa mindkét sort a függvény teszteléséhez. Az URL-címben cserélje le a függvény nevét a saját függvénye nevére.
 
     ```json
     get https://peoplesearchfunction.azurewebsites.net/api/Search
@@ -255,24 +255,24 @@ Miután az Azure-függvény van hitelesítve, és úgy tűnik, hogy megfelelően
     get https://peoplesearchfunction.azurewebsites.net/api/Search?name=thomas
     ```
 
-    Az Azure Cosmos Adatbázisból lekért adatok válaszol, a függvény.
+    Ez a függvény az Azure Cosmos DB-ből lekért adatokat adja válaszként.
 
-    ![A többi ügyfél használatával az Azure-függvény lekérdezése](./media/tutorial-functions-http-trigger/17-calling-function-from-code.png)
+    ![Az Azure-függvény lekérdezése a REST-ügyfél használatával](./media/tutorial-functions-http-trigger/17-calling-function-from-code.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Az Azure-függvény projekt létrehozása 
-> * Létrehozott egy HTTP-eseményindítóval
-> * Az Azure függvény közzétett
-> * A függvény az Azure Cosmos DB adatbázishoz kapcsolódó
+> * Létrehozott egy Azure Functions-projektet 
+> * Létrehozott egy HTTP-triggert
+> * Közzétette az Azure-függvényt
+> * Csatlakoztatta a függvényt az Azure Cosmos DB-fiókhoz
 
-Most már folytathatja a fogalmakat részt Cosmos DB további információt.
+A Cosmos DB-vel kapcsolatos további információkért folytassa az Alapfogalmak szakasz áttekintésével.
 
 > [!div class="nextstepaction"]
 > [Globális terjesztés](distribute-data-globally.md) 
 
-Ez a cikk alapján a blog [Brady Gaster Schemaless & kiszolgáló nélküli](http://www.bradygaster.com/category/%20Serverless%20&%20Schemaless) blog adatsorozat. Látogasson el az adatsorozat további közlemények a blogbejegyzésben.
+Ez a cikk [Brady Gaster Schemaless & Serverless](http://www.bradygaster.com/category/%20Serverless%20&%20Schemaless) blogsorozatának egyik blogján alapul. A sorozat egyéb cikkeinek megtekintéséhez látogasson el a blogra.

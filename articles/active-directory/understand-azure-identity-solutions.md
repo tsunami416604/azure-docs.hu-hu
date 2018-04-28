@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd8e122324ab2d4c783fb6d4e09a9f4f197f91ca
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Az Azure identitáskezelési megoldásairól ismertetése
 A Microsoft Azure Active Directory (Azure AD) egy identitás- és hozzáférés kezelési felhőalapú megoldás, amely címtárszolgáltatások, identitás-irányítás és alkalmazáshozzáférés-kezeléshez. Az Azure AD gyorsan [lehetővé teszi az egyszeri bejelentkezés (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) 1, 000 a kereskedelmi és egyéni előre integrált alkalmazások által a [az Azure AD application gallery](https://azure.microsoft.com/marketplace/active-directory/all/). Ezekhez az alkalmazásokhoz számos valószínűleg már használhatja például az Office 365, a Salesforce.com, a mezőbe, a ServiceNow és a Workday.
@@ -107,7 +107,7 @@ Az alábbiakban néhány gyakori identitások és hozzáférések forgatókönyv
 Van egy tonna kiváló erőforrások online részletes tudnivalók az Azure AD segítséget. Az első lépésekhez kiváló cikkek listája itt található:
 
 * [A címtár az Azure AD Connect hibrid Management engedélyezése](active-directory-aadconnect.md)
-* [Egy legalább egyszer világgal további biztonsági](../multi-factor-authentication/multi-factor-authentication.md)
+* [Egy legalább egyszer világgal további biztonsági](authentication/multi-factor-authentication.md)
 * [Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](active-directory-saas-app-provisioning.md)
 * [Ismerkedés az Azure AD Reporting](active-directory-reporting-getting-started.md)
 * [A jelszavak kezelése bárhonnan](active-directory-passwords-update-your-own-password.md)

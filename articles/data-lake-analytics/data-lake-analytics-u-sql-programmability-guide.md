@@ -1,8 +1,8 @@
 ---
-title: "U-SQL programozástámogatási útmutató az Azure Data Lake |} Microsoft Docs"
-description: "További tudnivalók az Azure Data Lake szolgáltatások, amelyek lehetővé teszik, hogy hozzon létre egy felhőalapú big Data típusú adatok platform készletét."
+title: U-SQL programozástámogatási útmutató az Azure Data Lake |} Microsoft Docs
+description: További tudnivalók az Azure Data Lake szolgáltatások, amelyek lehetővé teszik, hogy hozzon létre egy felhőalapú big Data típusú adatok platform készletét.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: a241199ff8441d76d48d297b69af05a604d2a423
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 400057b5ce79cdcf6c7651462e9f497bf647e930
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programozástámogatási útmutató
 
@@ -37,7 +37,7 @@ Tekintse meg az alábbi U-SQL-parancsfájlt:
     (VALUES
        ("Contoso",   1500.0, "2017-03-39"),
        ("Woodgrove", 2700.0, "2017-04-10")
-    ) AS D( customer, amount );
+    ) AS D( customer, amount, date );
 
 @results =
   SELECT
@@ -88,7 +88,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>C# kifejezések használhatók mai dátum
 
-Lekéréses mai dátum, azt használja az alábbi C# kifejezés:`DateTime.Now.ToString("M/d/yyyy")`
+Lekéréses mai dátum, azt használja az alábbi C# kifejezés: `DateTime.Now.ToString("M/d/yyyy")`
 
 Itt látható egy példa egy parancsfájlban a kifejezés használatával:
 
@@ -536,9 +536,9 @@ A `IFormatter` felület rendezi sorba, és vonja rendezi sorba a legfelső szint
 
 * **Szerializálható**: egy objektumot, vagy graph-objektumok, a megadott adatfolyam adott gyökérrel rendelkező rendezi sorba.
 
-`MyType`példány: a típus példánya.  
-`IColumnWriter`író / `IColumnReader` olvasó: az alapul szolgáló folyam oszlop.  
-`ISerializationContext`a környezetben: származó jelzők egy csoportját, amely megadja a cél- és környezetben az adatfolyam a szerializálás során határozza meg.
+`MyType` példány: a típus példánya.  
+`IColumnWriter` író / `IColumnReader` olvasó: az alapul szolgáló folyam oszlop.  
+`ISerializationContext` a környezetben: származó jelzők egy csoportját, amely megadja a cél- és környezetben az adatfolyam a szerializálás során határozza meg.
 
 * **Köztes**: Megadja, hogy a cél- és a környezetben nem megőrzött tároló.
 
@@ -1061,7 +1061,7 @@ UDO neve általában explicit módon a U-SQL-parancsfájlt az alábbi U-SQL-utas
 * EXTRACT
 * KIMENETI
 * FOLYAMAT
-* COMBINE
+* CSOPORTOSÍTÁS
 * CSÖKKENTÉSE
 
 > [!NOTE]  
@@ -1270,9 +1270,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`minden egyes bemeneti sorára neve. Azt adja vissza a `IUnstructuredWriter output` sorkészlete.
+* `Output` minden egyes bemeneti sorára neve. Azt adja vissza a `IUnstructuredWriter output` sorkészlete.
 * A konstruktor osztály paraméterek átadása a felhasználó által definiált outputter szolgál.
-* `Close`opcionálisan bírálja felül, ha a kiadási költséges állapotát, vagy határozza meg, ha az utolsó sor írt szolgál.
+* `Close` opcionálisan bírálja felül, ha a kiadási költséges állapotát, vagy határozza meg, ha az utolsó sor írt szolgál.
 
 **SqlUserDefinedOutputter** attribútum azt jelzi, hogy a típus, egy felhasználó által definiált outputter kell regisztrálni. Ez az osztály nem örökölhető.
 

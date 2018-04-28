@@ -2,23 +2,20 @@
 title: Windows PowerShell-parancsfájlok használatával történő közzétételéhez fejlesztési és tesztkörnyezetek |} Microsoft Docs
 description: Útmutató a Windows PowerShell-parancsfájlokat a Visual Studio használatával közzétegyék a fejlesztési és tesztelési környezetben.
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 5fff1301-5469-4d97-be88-c85c30f837c1
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 5fff1301-5469-4d97-be88-c85c30f837c1
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: 58d1c8398e626544a7b02198ec0431203aedcc81
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 866575a483e705e1c972a0b56d98f26e9cf0c631
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Windows PowerShell-parancsprogramok használata a fejlesztési és tesztelési környezetben való közzétételhez
 
@@ -319,11 +316,11 @@ Ha segítséget szeretne kérni a funkciók elvégzésére is használhatja a Wi
 | Add-AzureVMEndpoints |Új bemeneti végpont ad hozzá egy virtuális gépet, és visszahelyezi a virtuális gépet az új végponttal. |
 | Add-AzureVMStorage |A jelenlegi előfizetés hoz létre egy új Azure storage-fiók. A fiók neve kezdődik "devtest" egyedi alfanumerikus karakterlánc követ. A funkció az új tárfiók a nevét adja vissza. Adja meg egy helyet vagy az új tárfiók affinitáscsoport. |
 | Add-AzureWebsite |A megadott név és hely egy webhelyet hoz létre. Ez a funkció meghívja a **New-AzureWebsite** függvény a Azure modulban. Ha az előfizetés már nem tartalmazza a megadott névvel rendelkező webhely, ez a funkció a webhelyet hoz létre, és egy webhely objektumot ad vissza. Ellenkező esetben az eredmény `$null`. |
-| Backup-Subscription |A jelenlegi Azure-előfizetést a menti a `$Script:originalSubscription` változó parancsfájl hatókörében. Ez a funkció menti az aktuális Azure-előfizetés (módon nyert `Get-AzureSubscription -Current`) és a tárfiók, és az előfizetés módosítja ezt a parancsfájlt (a változó tárolja `$UserSpecifiedSubscription`) és a tárfiókot, a parancsfájl hatókörében. Úgy, hogy elmenti az értékeket, a függvény használható, például a `Restore-Subscription`, állítsa vissza az eredeti aktuális előfizetés és a storage-fiók aktuális állapotát, ha a jelenlegi állapota megváltozott. |
+| Backup-előfizetés |A jelenlegi Azure-előfizetést a menti a `$Script:originalSubscription` változó parancsfájl hatókörében. Ez a funkció menti az aktuális Azure-előfizetés (módon nyert `Get-AzureSubscription -Current`) és a tárfiók, és az előfizetés módosítja ezt a parancsfájlt (a változó tárolja `$UserSpecifiedSubscription`) és a tárfiókot, a parancsfájl hatókörében. Úgy, hogy elmenti az értékeket, a függvény használható, például a `Restore-Subscription`, állítsa vissza az eredeti aktuális előfizetés és a storage-fiók aktuális állapotát, ha a jelenlegi állapota megváltozott. |
 | Find-AzureVM |Lekérdezi a megadott Azure virtuális géphez. |
 | Format-DevTestMessageWithTime |A dátum és idő üzenetre lefoglalja. Ez a funkció a hiba- és részletes adatfolyamok üzenetek tervezték. |
 | Get-AzureSQLDatabaseConnectionString |Állítja össze a kapcsolati karakterláncot egy Azure SQL adatbázishoz való kapcsolódáshoz. |
-| Get-AzureVMStorage |A minta első tárfiók a nevét adja vissza "devtest*" (kis-és nagybetűket) a megadott helyre vagy az affinitáscsoport. Ha a "devtest*" tárfiók helye vagy affinitáscsoportja nem egyezik a, a függvény figyelmen kívül hagyja azt. Adja meg egy helyet vagy affinitáscsoport. |
+| Get-AzureVMStorage |A minta első tárfiók a nevét adja vissza "devtest *" (kis-és nagybetűket) a megadott helyre vagy az affinitáscsoport. Ha a "devtest*" tárfiók helye vagy affinitáscsoportja nem egyezik a, a függvény figyelmen kívül hagyja azt. Adja meg egy helyet vagy affinitáscsoport. |
 | Get-MSDeployCmd |A MsDeploy.exe eszköz futtatni kívánt parancs adja vissza. |
 | New-AzureVMEnvironment |Megállapítja, vagy létrehoz egy virtuális gépet, amely megfelel a JSON-konfigurációs fájlban lévő értékeket az előfizetést. |
 | Publish-WebPackage |Felhasználási MsDeploy.exe és a webes közzétenni a csomagot. A zip-fájl erőforrások telepítése a webhelyen. Ez a függvény nem ad kimenetet. Ha MSDeploy.exe hívása sikertelen, a függvény kivételt vált. Részletesebb kimenet használatához a **-Verbose** lehetőséget. |
@@ -345,8 +342,8 @@ Ha segítséget szeretne kérni a funkciók elvégzésére is használhatja a Wi
 | New-AzureWebApplicationEnvironment |Azure-erőforrások, például a webhelyek vagy virtuális gépet hoz létre. |
 | New-WebDeployPackage |Ez a funkció nincs megvalósítva. Ez a funkció a projekt felépítéséhez parancsok adhat hozzá. |
 | Publish-AzureWebApplication |A webalkalmazások Azure közzéteszi. |
-| Publish-WebApplication |Hoz létre, és a Web Apps, a virtuális gépek, a SQL-adatbázisok és a storage-fiókok a Visual Studio webes projektet telepít. |
-| Test-WebApplication |Ez a funkció nincs megvalósítva. Ez a függvény az alkalmazás teszteléséhez parancsok adhat hozzá. |
+| Közzététele: webalkalmazás |Hoz létre, és a Web Apps, a virtuális gépek, a SQL-adatbázisok és a storage-fiókok a Visual Studio webes projektet telepít. |
+| Teszt:-webalkalmazás |Ez a funkció nincs megvalósítva. Ez a függvény az alkalmazás teszteléséhez parancsok adhat hozzá. |
 
 ## <a name="next-steps"></a>További lépések
 PowerShell parancsfájl-kezelési beolvasásával kapcsolatos további [a Windows PowerShell parancsfájlok](https://technet.microsoft.com/library/bb978526.aspx) és egyéb Azure PowerShell-parancsfájlok, tekintse meg a [Script Center](https://azure.microsoft.com/documentation/scripts/).

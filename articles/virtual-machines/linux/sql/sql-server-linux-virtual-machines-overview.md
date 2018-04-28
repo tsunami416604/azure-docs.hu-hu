@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 03/22/2018
+ms.date: 04/10/2018
 ms.author: jroth
-ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c24536d8d5647e4a2c19afa17c35050e1f11c20
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 
@@ -24,27 +24,16 @@ ms.lasthandoff: 03/23/2018
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-Ez a témakör az SQL Server Azure-beli, Linux rendszerű virtuális gépeken történő futtatásának lehetőségeit ismerteti, valamint [hivatkozásokat tartalmaz a portálon elérhető rendszerképekhez](#create).
+Az Azure virtuális gépeken futó SQL Serverrel teljes SQL Server-verziókat használhat a felhőben anélkül, hogy bármilyen helyszíni hardvert kellene fenntartania. Az SQL Servert futtató virtuális gépekkel a használatalapú licencelési költségek is leegyszerűsödnek.
 
-> [!NOTE]
-> Ha már ismeri az SQL Server használatát, és csak azt szeretné megtudni, hogyan helyezhet üzembe egy SQL Servert futtató, Linux rendszerű virtuális gépet, tekintse meg az [SQL Servert futtató, Linux rendszerű virtuális gép az Azure szolgáltatásban történő létrehozását](provision-sql-server-linux-virtual-machine.md) ismertető cikket. Ha pedig egy Windows rendszerű virtuális gépet szeretne létrehozni egy SQL Server futtatásához, tekintse meg az [SQL Servert futtató, Windows rendszerű virtuális gép az Azure szolgáltatásban történő létrehozását](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md) ismertető cikket.
+Világszerte számos [földrajzi régióban](https://azure.microsoft.com/regions/) üzemelnek Azure virtuális gépek. Több különböző [gépméret](../sizes.md) is elérhető. A virtuális gépek rendszerkép-katalógusából a megfelelő verziójú, kiadású és operációs rendszerű, SQL Servert futtató virtuális gépet hozhat létre. Ez számos különböző SQL Server számítási feladatra teszi alkalmassá a virtuális gépeket.
 
-Amennyiben Ön adatbázis-rendszergazda vagy fejlesztő, az Azure virtuális gépek lehetőséget nyújtanak a helyszíni SQL Server számítási feladatok és alkalmazások áthelyezésére a felhőbe.
+## <a id="create"></a> SQL virtuális gépek – első lépések
 
-## <a name="scenarios"></a>Forgatókönyvek
-
-Számos oka lehet annak, amiért úgy dönt, az adatokat az Azure-ban tárolja. Ha az Azure-hoz fejleszti vagy arra migrálja az alkalmazását, akkor megnövelheti a teljesítményt, ha a háttéradatokat is az Azure-ban tárolja. Automatikusan hozzáférést kap több különböző adatközponthoz is a globális jelenlét érdekében, illetve vészhelyreállítás esetére. Emellett az adatok is tartósak, és magas szintű biztonság védi őket.
-
-Az Azure virtuális gépeken futó SQL Server a relációs adatok Azure-ban való tárolásának egyik módja. Lehetősége van az Azure SQL Database szolgáltatás használatára is. A virtuális gépen futó SQL Server és az Azure SQL Database közti választásról további információt a [felhőalapú SQL Server-verzió kiválasztását (Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS))](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md) ismertető cikkben talál.
-
-## <a id="create"></a>Új SQL virtuális gép létrehozása
-
-Az új SQL-alapú virtuális gép létrehozásának részletes útmutatóját a [Linux rendszerű SQL Server virtuális gép az Azure-ban történő létrehozását](provision-sql-server-linux-virtual-machine.md) ismertető cikkben találja.
-
-A következő táblázat a virtuálisgép-katalógus legújabb SQL Server-rendszerképeit foglalja össze. Kattintson bármelyik hivatkozásra egy új SQL virtuális gép létrehozásának megkezdéséhez az Ön által választott verzióval, kiadással és operációs rendszerrel.
+Első lépésként válassza ki a megfelelő verziójú, kiadású és operációs rendszerű SQL Server virtuális gép rendszerképét. Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra az SQL Server virtuálisgép-katalógus rendszerképeinek letöltéséhez.
 
 > [!TIP]
-> Az ezekhez a rendszerképekhez tartozó virtuális gépek és az SQL díjszabásának megismeréséhez tekintse meg [a Linux rendszerű SQL Server-virtuálisgépek díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+> Az SQL-rendszerképek díjszabásával kapcsolatos további információkért tekintse meg [az SQL Servert futtató Linux rendszerű virtuális gépek díjszabási lapját](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
@@ -65,6 +54,33 @@ A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbáz
 | SLES | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![nem](./media/sql-server-linux-virtual-machines-overview/no.png) | ![nem](./media/sql-server-linux-virtual-machines-overview/no.png) |
 | Ubuntu | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![igen](./media/sql-server-linux-virtual-machines-overview/yes.png) |
 
+## <a name="related-products-and-services"></a>Kapcsolódó termékek és szolgáltatások
+
+### <a name="linux-virtual-machines"></a>Linux rendszerű virtuális gépek
+
+* [Virtual Machines – áttekintés](../overview.md)
+
+### <a name="storage"></a>Tárolás
+
+* [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
+
+### <a name="networking"></a>Hálózat
+
+* [A Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
+* [IP-címek az Azure-ban](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [Teljes tartománynév létrehozása az Azure Portalon](../portal-create-fqdn.md)
+
+### <a name="sql"></a>SQL
+
+* [A Linux rendszeren futó SQL Server dokumentációja](https://docs.microsoft.com/sql/linux)
+* [Az Azure SQL Database összehasonlítása](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
+
 ## <a name="next-steps"></a>További lépések
 
-További információkat a Linuxon futó SQL Server konfigurálásáról és használatáról [a Linuxon futó SQL Server áttekintésében](https://docs.microsoft.com/sql/linux/sql-server-linux-overview) talál.
+Az SQL Server használatbavétele Azure-beli, Linux rendszerű virtuális gépeken:
+
+* [SQL Servert futtató virtuális gép létrehozása az Azure Portalon](provision-sql-server-linux-virtual-machine.md)
+
+Választ találhat a Linux rendszerű SQL virtuális gépek használatával kapcsolatos gyakori kérdésekre:
+
+* [Az SQL Server használata Azure-beli, Linux rendszerű virtuális gépeken – gyakori kérdések](sql-server-linux-faq.md)

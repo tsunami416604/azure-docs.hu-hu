@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management-szolgáltatások telepítése több Azure-régiók |} Microsoft Docs"
-description: "Ismerje meg, hogyan lehet telepíteni az Azure API Management szolgáltatáspéldány több Azure-régiók."
+title: Azure API Management-szolgáltatások telepítése több Azure-régiók |} Microsoft Docs
+description: Ismerje meg, hogyan lehet telepíteni az Azure API Management szolgáltatáspéldány több Azure-régiók.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 6f84c1b2092f71eaeba0005a36018390242869ea
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ff0101bde54f99f99461d0f042af520b1642d0df
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Az Azure API Management szolgáltatáspéldány üzembe helyezése több Azure-régiók
 Az API Management több területi környezetben, amely lehetővé teszi, hogy egyetlen API management szolgáltatás szét a kívánt Azure-régiók tetszőleges számú API közzétevők támogatja. Ezzel csökkenthető a kérelem által érzékelt késleltetés földrajzilag elosztott API fogyasztók és a szolgáltatás rendelkezésre állása is támogatja, ha egy régió tartozik offline állapotba kerül. 
@@ -25,11 +25,11 @@ Az API Management több területi környezetben, amely lehetővé teszi, hogy eg
 Amikor egy API-kezelés szolgáltatás a kezdetben létrejön, csak az egyik tartalmaz [egység] [ unit] és egy egyetlen Azure-régió, amelyhez az elsődleges régióban kijelölt fájlcsoportban helyezkedik el. További régiókban könnyen felveheti az Azure portálon keresztül. Az API Management átjárókiszolgáló minden régió telepít, és hívás forgalmat a rendszer a legközelebbi átjáró irányítsa. Ha egy régiót offline állapotba kerül, akkor kimenő forgalomról automatikusan újra irányított, a következő legközelebbi átjáró. 
 
 > [!IMPORTANT]
-> Több területi telepítési érhető el csak a  **[prémium] [ Premium]**  réteg.
+> Több területi telepítési érhető el csak a **[prémium] [ Premium]** réteg.
 > 
 > 
 
-## <a name="add-region"></a>API-kezelés szolgáltatás példányt telepítése egy új régióban
+## <a name="add-region"> </a>Az API Management szolgáltatás példányt telepítése egy új régióban
 > [!NOTE]
 > Ha még nem hozott létre az API Management szolgáltatáspéldány, lásd: [hozzon létre egy API-kezelés szolgáltatás példányt][Create an API Management service instance].
 > 
@@ -51,7 +51,7 @@ Kattintson a **Hozzáadás** helyezhető el a kiválasztott a helyek táblában.
 
 Ismételje meg ezt a folyamatot, amíg a konfigurált összes hellyel rendelkezik, és kattintson a **mentése** a telepítési folyamat elindításához az eszköztáron.
 
-## <a name="remove-region"></a>Egy API-kezelés szolgáltatás példány törlése
+## <a name="remove-region"> </a>Egy API-kezelés szolgáltatás példány törlése
 
 Az Azure portálon keresse meg a **és az árképzés** az API Management szolgáltatáspéldány a lap. 
 

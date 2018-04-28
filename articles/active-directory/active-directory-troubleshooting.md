@@ -1,11 +1,11 @@
 ---
-title: "Hibaelhárítás: \"Active Directory\" elem nem található vagy nem érhető el |} Microsoft Docs"
-description: "Mi a teendő, ha az Active Directory menüpont nem jelenik meg az Azure felügyeleti portálján."
+title: 'Hibaelhárítás: "Active Directory" elem nem található vagy nem érhető el |} Microsoft Docs'
+description: Mi a teendő, ha az Active Directory menüpont nem jelenik meg az Azure felügyeleti portálján.
 services: active-directory
 documentationcenter: na
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3383020d-6397-43ea-b7aa-c6a9d6a1e3df
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-ms.openlocfilehash: 27a884b89224ed5765e9fcef134e711e3952ff72
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6e8557ec66db51df0bb463a9511b0cdc94811d4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>Hibaelhárítás: "Active Directory" elem nem található vagy nem érhető el
 Az Azure Active Directory-szolgáltatások és szolgáltatások használatára vonatkozó utasításokat számos kezdődhet "nyissa meg az Azure felügyeleti portálra, és kattintson a **Active Directory**." Mi a teendő, ha az Active Directory kiterjesztés vagy a menü elem nem jelenik meg, vagy ha meg van jelölve, de **nem érhető el**? Ez a témakör célja. Azt ismerteti, hogy a feltételeket, amelyek alapján **Active Directory** nem jelenik meg vagy nem érhető el, és elmagyarázza, hogyan folytatható.
@@ -39,7 +39,7 @@ Az Active Directory elem megjelenik a bal oldali navigációs menü, a következ
 * Az Azure-bérlőhöz legalább egy Azure AD-hozzáférés-vezérlés (ACS) névtérrel. További információkért lásd: [hozzáférés-vezérlési Namespace](https://msdn.microsoft.com/library/azure/gg185908.aspx).
   
     VAGY
-* Az Azure-bérlőhöz van legalább egy Azure multi-factor Authentication-szolgáltató. További információkért lásd: [Administering Azure többtényezős hitelesítési szolgáltatók](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+* Az Azure-bérlőhöz van legalább egy Azure multi-factor Authentication-szolgáltató. További információkért lásd: [Administering Azure többtényezős hitelesítési szolgáltatók](authentication/howto-mfa-getstarted.md).
 
 Egy hozzáférés-vezérlés névtér vagy egy többtényezős hitelesítési szolgáltató létrehozásához kattintson a **+ új** > **alkalmazásszolgáltatások** > **Active Directory**.
 

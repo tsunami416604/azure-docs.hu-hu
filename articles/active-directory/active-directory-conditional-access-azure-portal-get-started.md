@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Active Directoryban feltételes hozzáférés – első lépések |} Microsoft Docs"
-description: "A helyre vonatkozó feltétellel feltételes hozzáférés tesztelése."
+title: Az Azure Active Directoryban feltételes hozzáférés – első lépések |} Microsoft Docs
+description: A helyre vonatkozó feltétellel feltételes hozzáférés tesztelése.
 services: active-directory
-keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
-documentationcenter: 
+keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c780efe92ec69ff692b42a586f55a1036d2ec952
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 04a7736e85c0b149cb627411f61fc147220769ad
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Ismerkedés a feltételes hozzáférés az Azure Active Directoryban
 
@@ -30,7 +30,7 @@ Ez a témakör nyújt útmutatást a hely feltétel a környezetben a feltétele
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Számos szervezetben egy közös követelmény-hoz csak többtényezős hitelesítés megkövetelése az alkalmazásokhoz való hozzáférés, amely nem történik a vállalati intranethez. Az Azure Active Directoryval könnyen megvalósításához a cél helyalapú feltételes hozzáférési házirend konfigurálása. Ez a témakör részletes útmutatást kapcsolódó házirend beállítása. A házirend használja [megbízható IP-címek](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) kérés érkezett a vállalati hozzáférés kísérletek közötti különbséget tenni a következőre intranetes és minden egyéb helyek.
+Számos szervezetben egy közös követelmény-hoz csak többtényezős hitelesítés megkövetelése az alkalmazásokhoz való hozzáférés, amely nem történik a vállalati intranethez. Az Azure Active Directoryval könnyen megvalósításához a cél helyalapú feltételes hozzáférési házirend konfigurálása. Ez a témakör részletes útmutatást kapcsolódó házirend beállítása. A házirend használja [megbízható IP-címek](authentication/howto-mfa-mfasettings.md#trusted-ips) kérés érkezett a vállalati hozzáférés kísérletek közötti különbséget tenni a következőre intranetes és minden egyéb helyek.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -47,7 +47,7 @@ Ez a forgatókönyv teszteléséhez kell:
 
 - Megbízható IP-címek konfigurálása
 
-Ha további információt a megbízható IP-cím van szüksége, tekintse meg [megbízható IP-címek](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).
+Ha további információt a megbízható IP-cím van szüksége, tekintse meg [megbízható IP-címek](authentication/howto-mfa-mfasettings.md#trusted-ips).
 
 
 ## <a name="policy-configuration-steps"></a>Házirend konfigurációs lépések

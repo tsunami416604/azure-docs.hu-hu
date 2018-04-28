@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 42fbf50ac0807a3982385990871d9c4724bdaaad
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6aa0c08fad98eeff7c937f817ca0a8fa20238c4a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurálása és kezelése – gyakori kérdések az Azure Web Apps
 
@@ -268,7 +268,7 @@ Az üzenet azt jelzi, az csalás ellenőrzési folyamat akár 24 óráig is elta
 Ha az App Service tanúsítvány továbbra is jelenjen meg ez az üzenet 24 óra múlva, futtassa a következő PowerShell-parancsfájlt. A parancsfájl kapcsolatba lép a [tanúsítványszolgáltató](https://www.godaddy.com/) közvetlenül a probléma megoldása érdekében.
 
 ```
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <subId>
 $actionProperties = @{
     "Name"= "<Customer Email Address>"

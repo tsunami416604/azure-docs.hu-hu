@@ -1,6 +1,6 @@
 ---
-title: "Az Application Insights és Naplóelemzési által használt IP-címek |} Microsoft Docs"
-description: "Az Application Insights által igényelt tűzfal kivételek"
+title: Az Application Insights és Naplóelemzési által használt IP-címek |} Microsoft Docs
+description: Az Application Insights által igényelt tűzfal kivételek
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b48b17b214f6ff22c7c68421ba8c89104c8b4b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f56810d6520edd19ce757a91712698714902e668
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és Naplóelemzési által használt IP-címek
 A [Azure Application Insights](app-insights-overview.md) szolgáltatás által használt IP-címek száma. Szükség lehet tudja ezeket a címeket, ha a figyelt alkalmazás egy tűzfal mögött található.
@@ -34,7 +34,7 @@ Néhány kimenő portok megnyitása a kiszolgáló engedélyezéséhez az Applic
 | --- | --- | --- | --- |
 | Telemetria |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244 |443 |
 | Élő Stream metrikák |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
-| Belső telemetriai adat |breeze.aimon.applicationinsights.io |52.161.11.71 |443 |
+| Belső telemetriai adat |breeze.aimon.applicationinsights.IO |52.161.11.71 |443 |
 
 ## <a name="status-monitor"></a>Állapotfigyelője
 Állapot figyelő - szükséges konfiguráció csak akkor, ha módosítja.
@@ -48,7 +48,7 @@ Néhány kimenő portok megnyitása a kiszolgáló engedélyezéséhez az Applic
 | Konfiguráció |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Konfiguráció |`auth.gfx.ms` | |`443` |
 | Konfiguráció |`login.live.com` | |`443` |
-| Telepítés |`packages.nuget.org` , `nuget.org`, `api.nuget.org` | |`443` |
+| Telepítés |`packages.nuget.org` , `nuget.org`, `api.nuget.org`, `az320820.vo.msecnd.net` (NuGet-letöltések) | |`443` |
 
 ## <a name="hockeyapp"></a>HockeyApp
 | Cél | URL-cím | IP | Portok |

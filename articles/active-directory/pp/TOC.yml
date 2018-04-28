@@ -1,35 +1,4 @@
-- name: Felügyeltszolgáltatás-identitás (felhasználó által hozzárendelt)
-  href: msi-overview.md
+- name: Virtuális gép MSI használata egy Azure-tároló eléréséhez
   items:
-    - name: Az MSI konfigurálása Azure-beli virtuális géphez
-      items:
-        - name: Az Azure parancssori felület használata
-          href: msi-qs-configure-cli-windows-vm.md
-        - name: Az Azure SDK használata
-          href: msi-qs-configure-sdk-windows-vm.md
-    - name: MSI-hozzáférés biztosítása a Resource Managerhez
-      items:
-        - name: Az Azure parancssori felület használata
-          href: msi-howto-assign-access-cli.md
-    - name: Virtuális gép MSI használata
-      items:
-        - name: Hozzáférési jogkivonat beszerzése
-          href: msi-how-to-use-vm-msi-token.md
-        - name: Bejelentkezés az Azure CLI-be
-          href: msi-how-to-use-vm-msi-sign-in.md
-        - name: Használat Azure SDK-kal
-          href: msi-how-to-use-vm-msi-sdk.md
-    - name: Virtuális gép MSI használata az Azure Resource Manager eléréséhez
-      items:
-        - name: Linux rendszerű virtuális gépről
-          href: msi-tutorial-linux-vm-access-arm.md
-    - name: Virtuális gép MSI használata az Azure Cosmos DB eléréséhez
-      items:
-        - name: Linux rendszerű virtuális gépről
-          href: msi-tutorial-linux-vm-access-cosmosdb.md
-    - name: Virtuális gép MSI használata egy Azure-tároló eléréséhez
-      items:
-        - name: Linux rendszerű virtuális gépről hozzáférési kulccsal
-          href: msi-tutorial-linux-vm-access-storage.md
-    - name: Gyakori kérdések és ismert problémák
-      href: msi-known-issues.md
+    - name: Linux rendszerű virtuális gépről hozzáférési kulccsal
+      href: msi-tutorial-linux-vm-access-storage.md

@@ -1,24 +1,18 @@
 ---
-title: "Az Azure Search értékkorlátozás szűrők |} Microsoft Docs"
-description: "Szűrési feltételek felhasználó biztonsági azonosítóját, nyelvi, földrajzihely-vagy numerikus értékek lekérdezések az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure keresési eredményeket csökkentése érdekében."
-services: search
-documentationcenter: 
+title: Az Azure Search értékkorlátozás szűrők |} Microsoft Docs
+description: Szűrési feltételek felhasználó biztonsági azonosítóját, nyelvi, földrajzihely-vagy numerikus értékek lekérdezések az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure keresési eredményeket csökkentése érdekében.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 02a027845e56407bc8cc95f54a46d9534cb6de92
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f2cfea52d3c3f4bfc75364d0662a4218219152d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Az Azure Search értékkorlátozás szűrő létrehozása 
 
@@ -113,7 +107,7 @@ A következő kódrészletet, ha a felhasználó kiválaszt egy értéket a kate
 if (categoryFacet != "")
   filter = "category eq '" + categoryFacet + "'";
 ```
-A REST API használatával, a kérelem kellene lennie csuklós `$filter=category eq 'c1'`. Ahhoz, hogy a kategória több érték mező, használja a következő szintaxist:`$filter=category/any(c: c eq 'c1')`
+A REST API használatával, a kérelem kellene lennie csuklós `$filter=category eq 'c1'`. Ahhoz, hogy a kategória több érték mező, használja a következő szintaxist: `$filter=category/any(c: c eq 'c1')`
 
 ## <a name="tips-and-workarounds"></a>Tippek és a lehetséges megoldások
 

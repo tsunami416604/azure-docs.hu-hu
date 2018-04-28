@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: e6d2891a8ea531bf5c7cc7e1c74b890e01f2b56b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cdfde0d888c8434443dcd05109f646eca8c0df19
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage kötései Azure Functions
 
@@ -33,7 +33,7 @@ A Table storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nug
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="input"></a>Bevitel
+## <a name="input"></a>Input (Bemenet)
 
 Az Azure Table storage bemeneti kötése segítségével olvasni egy táblát az Azure Storage-fiók.
 
@@ -354,15 +354,15 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** | - | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
-|**direction** | - | meg kell `in`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
-|**name** | - | A tábla vagy a funkciókódot entitás jelölő neve. | 
-|**Táblanév** | **TableName** | A tábla neve.| 
+|**type** | n/a | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
+|**direction** | n/a | meg kell `in`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
+|**name** | n/a | A tábla vagy a funkciókódot entitás jelölő neve. | 
+|**Táblanév** | **Táblanév** | A tábla neve.| 
 |**partitionKey** | **PartitionKey** |Választható. A partíciókulcs a tábla entitás olvasni. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
-|**rowKey** |**RowKey** | Választható. Olvassa el a tábla entitás sorkulcsa. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
+|**RowKey** |**RowKey** | Választható. Olvassa el a tábla entitás sorkulcsa. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
 |**hajtsa végre a megfelelő** |**hajtsa végre a megfelelő** | Választható. A JavaScript olvasni entitások maximális száma. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
-|**filter** |**Filter** | Választható. Egy OData szűrőkifejezés JavaScript a bemeneti tábla. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
-|**connection** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
+|**filter** |**Szűrő** | Választható. Egy OData szűrőkifejezés JavaScript a bemeneti tábla. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
+|**Kapcsolat** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -385,12 +385,12 @@ A Table storage bemeneti kötése a következő szituációkat ismerteti:
 
   Állítsa be a `filter` és `take` tulajdonságok. Nincs beállítva `partitionKey` vagy `rowKey`. A bemeneti tábla entitás (vagy entitások) használatával `context.bindings.<name>`. A deszerializált objektum rendelkezik `RowKey` és `PartitionKey` tulajdonságok.
 
-## <a name="output"></a>Kimeneti
+## <a name="output"></a>Kimenet
 
 Egy Azure Table storage kimeneti entitások írni egy Azure Storage-fiókban lévő táblázat kötés használja.
 
 > [!NOTE]
-> A kimeneti kötés nem támogatja a meglévő entitások. Használja a `TableOperation.Replace` művelet [az Azure Storage SDK-ból](https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) meglévő entitás frissítése.   
+> A kimeneti kötés nem támogatja a meglévő entitások. Használja a `TableOperation.Replace` művelet [az Azure Storage SDK-ból](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) meglévő entitás frissítése.   
 
 ## <a name="output---example"></a>Kimeneti – példa
 
@@ -614,13 +614,13 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** | - | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
-|**direction** | - | meg kell `out`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
-|**name** | - | A változó nevét, amely a tábla vagy entitás függvény kódban használt. Beállítása `$return` hivatkozni, a függvény visszatérési értéke.| 
-|**Táblanév** |**TableName** | A tábla neve.| 
+|**type** | n/a | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
+|**direction** | n/a | meg kell `out`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
+|**name** | n/a | A változó nevét, amely a tábla vagy entitás függvény kódban használt. Beállítása `$return` hivatkozni, a függvény visszatérési értéke.| 
+|**Táblanév** |**Táblanév** | A tábla neve.| 
 |**partitionKey** |**PartitionKey** | A partíciókulcs a tábla entitás írni. Tekintse meg a [használati adatai](#output---usage) kapcsolatos útmutatás a tulajdonságot használni.| 
-|**rowKey** |**RowKey** | A tábla entitás írni a sorkulcs. Tekintse meg a [használati adatai](#output---usage) kapcsolatos útmutatás a tulajdonságot használni.| 
-|**connection** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
+|**RowKey** |**RowKey** | A tábla entitás írni a sorkulcs. Tekintse meg a [használati adatai](#output---usage) kapcsolatos útmutatás a tulajdonságot használni.| 
+|**Kapcsolat** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

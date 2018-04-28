@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory B2C: Az Azure AD-szolgáltató felvétele egyéni házirendek használatával |} Microsoft Docs"
-description: "További tudnivalók az Azure Active Directory B2C egyéni házirendek"
+title: 'Az Azure Active Directory B2C: Az Azure AD-szolgáltató felvétele egyéni házirendek használatával |} Microsoft Docs'
+description: További tudnivalók az Azure Active Directory B2C egyéni házirendek
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: parakhj
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: f34326bcb8a7cbf5b5cf75e8f18f2843abc0b3ab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40943c135746925929daf7ebae4714ef70eeda51
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Az Azure Active Directory B2C: Azure AD-fiókok használatával írja alá
 
@@ -46,12 +46,12 @@ Bejelentkezés a felhasználók egy meghatározott engedélyezése az Azure AD a
 > A szervezeti a használjuk a "contoso.com" Azure AD-bérlő és a "fabrikamb2c.onmicrosoft.com" az Azure AD B2C bérlő az alábbi utasításokat.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A felső sávon válassza ki a fiókját. Az a **Directory** menüben válassza ki a szervezeti Azure AD-bérlő hol szeretne regisztrálni az alkalmazás (contoso.com).
-1. Válassza ki **további szolgáltatások** a bal oldali ablaktáblán, és keresse meg az "App regisztráció."
-1. Válassza ki **új alkalmazás regisztrációja**.
-1. Adjon meg egy nevet az alkalmazáshoz (például `Azure AD B2C App`).
-1. Válassza ki **Web app / API** az alkalmazás típusra.
-1. A **bejelentkezési URL-cím**, adja meg a következő URL-cím, ahol `yourtenant` cseréli le az Azure AD B2C bérlő neve (`fabrikamb2c.onmicrosoft.com`):
+2. A felső sávon válassza ki a fiókját. Az a **Directory** menüben válassza ki a szervezeti Azure AD-bérlő hol szeretne regisztrálni az alkalmazás (contoso.com).
+3. Válassza ki **további szolgáltatások** a bal oldali ablaktáblán, és keresse meg az "App regisztráció."
+4. Válassza az **Új alkalmazás regisztrálása** elemet.
+5. Adjon meg egy nevet az alkalmazáshoz (például `Azure AD B2C App`).
+6. Válassza a **Webalkalmazás/API** lehetőséget az alkalmazás típusaként.
+7. A **bejelentkezési URL-cím**, adja meg a következő URL-cím, ahol `yourtenant` cseréli le az Azure AD B2C bérlő neve (`fabrikamb2c.onmicrosoft.com`):
 
     >[!NOTE]
     >A "yourtenant" értékének kell lennie a kisbetűket a **bejelentkezési URL-cím**.
@@ -60,10 +60,10 @@ Bejelentkezés a felhasználók egy meghatározott engedélyezése az Azure AD a
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. Mentse az azonosítót.
-1. Válassza ki az újonnan létrehozott alkalmazást.
-1. Az a **beállítások** panelen válassza **kulcsok**.
-1. Hozzon létre egy új kulcsot, és mentse. A következő szakaszban a lépések még szüksége lesz rájuk.
+8. Mentse az azonosítót.
+9. Válassza ki az újonnan létrehozott alkalmazást.
+10. Az a **beállítások** panelen válassza **kulcsok**.
+11. Adja meg a kulcs leírását, válasszon egy időtartamot, és kattintson **mentése**. A kulcsnak az értéke megjelenik. Másolásához, mert a következő szakaszban a lépések fogja használni.
 
 ## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>Az Azure AD-kulcs hozzáadása az Azure AD B2C
 
@@ -219,6 +219,6 @@ Most frissíteni kell a függő entitásonkénti (RP) fájl, amely indít el az 
 
 Tesztelje a egyéni házirendet, majd kattintson a panel megnyitása feltöltött **futtatása most**. Problémák diagnosztizálásához, olvassa el [hibaelhárítási](active-directory-b2c-troubleshoot-custom.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Visszajelzés küldése a [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).

@@ -1,25 +1,18 @@
 ---
-title: "Videók, példák és oktatóanyagok az Azure Search |} Microsoft Docs"
-description: "Központi videók, mintát, demonstrációt és listája oktatóanyagok az Azure Search, a MIcrosoft Azure felhőalapú szolgáltatás létrehozása."
-services: search
-documentationcenter: 
+title: Videók, példák és oktatóanyagok az Azure Search |} Microsoft Docs
+description: Központi videók, mintát, demonstrációt és listája oktatóanyagok az Azure Search, a Microsoft Azure felhőalapú szolgáltatás létrehozása.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 4ffa17a3-9e2b-4172-ad77-30c6a1354b24
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: heidist
-ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71a8abcebb95f2d34dee2f26dc2c7f341465a55
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Az Azure Search: Kódminták, bemutatók, videók és oktatóanyagok
 Tájékozódjon a gyorsabb a következő videók, bemutatók, oktatóanyagok és mintaalkalmazások.
@@ -28,10 +21,10 @@ Tájékozódjon a gyorsabb a következő videók, bemutatók, oktatóanyagok és
 
 Ha most ismerkedik az Azure Search, kezdje itt. Minden forrás körülbelül egy óra alatt tekintheti meg.
 
-| Cím | Leírás | Dátum |
+| Beosztás | Leírás | Dátum |
 |-------|-------------|------|
 | [Ez a videó megtekintése](https://channel9.msdn.com/Events/Connect/2016/138) | szolgáltatások, a szolgáltatások létrehozásához és a lekérdezések 9m38s bemutatása. | 2016. november |
-| [Szolgáltatás létrehozása](search-get-started-portal.md) | A portálon az Azure Search beállításának lépéseit. | 2017. február |
+| [ Szolgáltatás létrehozása](search-get-started-portal.md) | A portálon az Azure Search beállításának lépéseit. | 2017. február |
 | [Az index lekérdezése](search-get-started-portal.md) | Hozzon létre, és az index lekérdezése használatával beépített mintaadatok. Eszközök a portálon gyorsan lekérdezéstípusok megismerése, és a keresési paraméterek. | 2017. február |
 | [Következő lépés:<br/> a .NET kódot](search-howto-dotnet-sdk.md) | C# forgatókönyv bemutatja, hogyan csatlakozzon, index és lekérdezés az Azure Search .NET könyvtár használatával. | 2016. november |
 | [Következő lépés:<br/> többi kód](search-create-index-rest-api.md) | Tekintse át a REST-hívások és bármilyen platformon az Azure Search-index létrehozása és programozási nyelv a JSON hasznos adat található. | 2016. december |

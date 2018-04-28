@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9fb928b7cb8e1a83734b64a8b9c19bc3cf3203ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Használatával a privilegizált végpont Azure verem
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Azure verem kezelőként használja az adminisztrációs portálhoz, a PowerShell vagy Azure Resource Manager API-k a napi felügyeleti feladatok. Azonban az egyes közös műveletek kisebb kell használnia a *kiemelt végpont* (EGP). Az EGP egy előre konfigurált távoli PowerShell-konzolt, és segítséget nyújtanak a szükséges feladat elvégzésére éppen elegendő képességeket. A végpont által használt [PowerShell JEA (csak elég felügyeleti)](https://docs.microsoft.com/en-us/powershell/jea/overview) teszi közzé a parancsmagok csak egy korlátozott készletét. Az EGP eléréséhez, és meghívja a parancsmagok korlátozott készletét, egy alacsony jogosultsági szintű fiókot használja. Nem rendszergazdai fiókok szükség. A fokozott biztonság érdekében parancsfájlok nem engedélyezett.
+Azure verem kezelőként használja az adminisztrációs portálhoz, a PowerShell vagy Azure Resource Manager API-k a napi felügyeleti feladatok. Azonban az egyes közös műveletek kisebb kell használnia a *kiemelt végpont* (EGP). Az EGP egy előre konfigurált távoli PowerShell-konzolt, és segítséget nyújtanak a szükséges feladat elvégzésére éppen elegendő képességeket. A végpont által használt [PowerShell JEA (csak elég felügyeleti)](https://docs.microsoft.com/powershell/jea/overview) teszi közzé a parancsmagok csak egy korlátozott készletét. Az EGP eléréséhez, és meghívja a parancsmagok korlátozott készletét, egy alacsony jogosultsági szintű fiókot használja. Nem rendszergazdai fiókok szükség. A fokozott biztonság érdekében parancsfájlok nem engedélyezett.
 
 Az EGP használhatja például a következő feladatok elvégzéséhez:
 
@@ -108,7 +108,7 @@ Ezt az eljárást egy integrált rendszer megkezdése előtt győződjön meg ar
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>Tippek a rendszerjogosultságú végpont 
 
-Említetteknek megfelelően van-e az EGP egy [PowerShell JEA](https://docs.microsoft.com/en-us/powershell/jea/overview) végpont. Adja meg egy erős biztonsági réteg, JEA-végpont csökkenti néhány alapvető PowerShell funkciót, például parancsfájlok vagy a lap befejezését. Ha bármilyen típusú parancsfájl műveletet, a hiba miatt sikertelen a művelet **ScriptsNotAllowed**. Ez az elvárt működés.
+Említetteknek megfelelően van-e az EGP egy [PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview) végpont. Adja meg egy erős biztonsági réteg, JEA-végpont csökkenti néhány alapvető PowerShell funkciót, például parancsfájlok vagy a lap befejezését. Ha bármilyen típusú parancsfájl műveletet, a hiba miatt sikertelen a művelet **ScriptsNotAllowed**. Ez az elvárt működés.
 
 Igen például ahhoz, hogy a paraméterek listáját egy adott parancsmag, akkor futtassa a következő parancsot:
 
@@ -116,7 +116,7 @@ Igen például ahhoz, hogy a paraméterek listáját egy adott parancsmag, akkor
     Get-Command <cmdlet_name> -Syntax
 ```
 
-Másik lehetőségként használhatja a [Import-PSSession](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) parancsmag segítségével importálja a EGP-parancsmagok az aktuális munkamenetbe, a helyi számítógépen. Így minden parancsmagok és a EGP funkcióit is elérhető a helyi számítógépen, és az kiegészítést, több általában parancsfájlok. 
+Másik lehetőségként használhatja a [Import-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) parancsmag segítségével importálja a EGP-parancsmagok az aktuális munkamenetbe, a helyi számítógépen. Így minden parancsmagok és a EGP funkcióit is elérhető a helyi számítógépen, és az kiegészítést, több általában parancsfájlok. 
 
 Importálja a EGP munkamenet a helyi gépén, tegye a következőket:
 

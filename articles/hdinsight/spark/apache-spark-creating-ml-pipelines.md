@@ -1,28 +1,26 @@
 ---
-title: "Hozzon létre egy Apache Spark gépi tanulás csővezeték - Azure HDInsight |} Microsoft Docs"
-description: "Adatok folyamatok létrehozásához használja az Apache Spark gépi tanulás könyvtár."
+title: Hozzon létre egy Apache Spark gépi tanulás csővezeték - Azure HDInsight |} Microsoft Docs
+description: Adatok folyamatok létrehozásához használja az Apache Spark gépi tanulás könyvtár.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: maxluk
-ms.openlocfilehash: 238ab5f940fbea836b75e20b015ae16f22eef3e9
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 75fdc427be42ff8895cde8add7c7b0623da6a808
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>Egy Spark machine learning folyamat létrehozása
+# <a name="create-a-spark-machine-learning-pipeline"></a>Spark Machine Learning-folyamat létrehozása
 
 Apache Spark méretezhető machine learning könyvtár (MLlib) számos lehetőséget kínál az elosztott környezetben való modellezési képességekkel. A Spark csomag [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) DataFrames épülő magas szintű API-k olyan készlete. Ezen API-k hogyan hozhat létre, és gyakorlati gépi tanulásra folyamatok hangolását.  *Gépi tanulás Spark* az MLlib DataFrame-alapú API, nem a régebbi RDD-alapú feldolgozási folyamat API hivatkozik.
 
@@ -36,7 +34,7 @@ Minden egyes állapot nélküli példány átalakítók vagy egy négyzetgyöké
 
 ## <a name="pipeline-example"></a>Folyamat – példa
 
-Bemutatásához az ML-feldolgozási folyamat gyakorlati használatát, a példában a minta `HVAC.csv` adatfájlt, amely a HDInsight-fürtjéhez, Azure Storage vagy a Data Lake Store az alapértelmezett tároló előre betöltött előre. A fájl tartalmának megtekintéséhez nyissa meg a `/HdiSamples/HdiSamples/SensorSampleData/hvac` könyvtár. `HVAC.csv`HVAC a cél- és tényleges hőmérsékletek idejében tartalmaz (*fűtésrendszerek, a szellőzőrendszerek, a légkondicionáló*) rendszerek különböző épületben. A cél, hogy az adatok a modell betanítását, és az adott épület az előrejelzési hőmérséklet.
+Bemutatásához az ML-feldolgozási folyamat gyakorlati használatát, a példában a minta `HVAC.csv` adatfájlt, amely a HDInsight-fürtjéhez, Azure Storage vagy a Data Lake Store az alapértelmezett tároló előre betöltött előre. A fájl tartalmának megtekintéséhez nyissa meg a `/HdiSamples/HdiSamples/SensorSampleData/hvac` könyvtár. `HVAC.csv` HVAC a cél- és tényleges hőmérsékletek idejében tartalmaz (*fűtésrendszerek, a szellőzőrendszerek, a légkondicionáló*) rendszerek különböző épületben. A cél, hogy az adatok a modell betanítását, és az adott épület az előrejelzési hőmérséklet.
 
 A következő kódot:
 

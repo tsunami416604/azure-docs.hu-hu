@@ -2,9 +2,8 @@
 title: Bevezetés az Azure Cosmos DB használatába | Microsoft Docs
 description: Az Azure Cosmos DB ismertetése. Ez a globálisan elosztott, többmodelles adatbázis az alacsony késés, a rugalmas skálázhatóság és a magas rendelkezésre állás jegyében készült.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: monicar
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: a855183f-34d4-49cc-9609-1478e465c3b7
 ms.service: cosmos-db
@@ -12,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/15/2017
-ms.author: mimig
+ms.date: 04/08/2018
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e78480ceb47e472029795848739b4416e0c4256e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 13c6fc8550f6b5bfac6d236a7145039d2622f0ae
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -36,7 +35,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
 * **Kulcsrakész globális terjesztés**
     * Tetszőleges számú [Azure-régióban](https://azure.microsoft.com/regions/) [terjesztheti az adatait](distribute-data-globally.md) [egyetlen gombnyomással](tutorial-global-distribution-sql-api.md). Ezáltal ott helyezheti el az adatokat, ahol a felhasználói vannak, így a lehető legkisebb késést garantálhatja a felhasználóknak. 
     * Az Azure Cosmos DB többkiszolgálós API felületeivel az alkalmazás mindig tudni fogja, hol található a legközelebbi régió, és a legközelebbi adatközpontnak küldi el a kérelmeket. Mindehhez nem kell módosítania a konfigurációt. Megadhatja az írási régiót és tetszőleges számú olvasási régiót, a többit automatikusan elvégzi a rendszer.
-    * A többkiszolgálós API-knak köszönhetően az alkalmazásokat nem kell újból üzembe kell helyeznie, és továbbra is magas rendelkezésre állásúak maradnak, amikor régiókat ad hozzá vagy távolít el a Cosmos DB-adatbázisból.
+    * A többkiszolgálós API-knak köszönhetően az alkalmazásokat nem kell újból üzembe kell helyeznie, és továbbra is magas rendelkezésre állásúak maradnak, amikor régiókat ad hozzá vagy távolít el az Azure Cosmos DB-adatbázisból.
 
 * **Több adatmodell és népszerű API az adatok eléréséhez és lekérdezéséhez**
     * Az atom-rekord-szekvencián (ARS) alapuló adatmodell, amelyre az Azure Cosmos DB épült, natív módon támogat többféle adatmodellt, többek között a dokumentumokat, a diagramokat, a kulcs-értékeket, a táblákat és az oszlopcsalád-adatmodelleket.
@@ -44,9 +43,9 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
         * [SQL API](sql-api-introduction.md): Egy séma nélküli JSON-adatbázismotor részletes SQL-lekérdezési képességekkel.
         * [MongoDB API](mongodb-introduction.md): Nagymértékben méretezhető, *szolgáltatásként elérhető MongoDB*, amely az Azure Cosmos DB platformra épül. Kompatibilis a meglévő MongoDB-kódtárakkal, -illesztőkkel, -eszközökkel és -alkalmazásokkal.
         * [Cassandra API](cassandra-introduction.md): Globálisan elosztott, szolgáltatásként elérhető Cassandra, amely az Azure Cosmos DB platformra épül. Kompatibilis a meglévő [Apache Cassandra](https://cassandra.apache.org/)-kódtárakkal, -illesztőkkel, -eszközökkel és -alkalmazásokkal.
-        * [Graph (Gremlin) API](graph-introduction.md): Teljes mértékben felügyelt, vízszintesen méretezhető gráfadatbázis-szolgáltatás, amellyel egyszerűen készíthet és futtathat olyan alkalmazásokat, amelyek az Open Graph API-kat támogató (az Apache Gremlin [Apache TinkerPop-specifikáció](http://tinkerpop.apache.org/) alapján), magas szinten csatlakoztatott adatkészletekkel működnek együtt.
+        * [Gremlin (Graph) API](graph-introduction.md): Teljes mértékben felügyelt, vízszintesen méretezhető gráfadatbázis-szolgáltatás, amellyel egyszerűen készíthet és futtathat olyan alkalmazásokat, amelyek az Open Graph API-kat támogató (az Apache Gremlin [Apache TinkerPop-specifikáció](http://tinkerpop.apache.org/) alapján), magas szinten csatlakoztatott adatkészletekkel működnek együtt.
         * [Table API](table-introduction.md): Egy kulcs/érték adatbázis-szolgáltatás, amely prémium szintű képességeket (például automatikus indexelést, garantáltan alacsony késést és globális terjesztést) biztosít a meglévő Azure Table Storage-alkalmazások számára anélkül, hogy az alkalmazásokat módosítani kellene.
-        * Hamarosan további adatmodellek is elérhetővé válnak!
+        * Hamarosan további adatmodellek és API-k is elérhetővé válnak!
 
 * **Az átviteli sebesség és a tárterület rugalmas és független méretezése igény szerint, világszerte**
     * Az adatbázis átviteli sebességét könnyedén méretezheti [másodpercalapú](request-units.md) részletességgel, és igény szerint bármikor megváltoztathatja. 
@@ -65,7 +64,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
     * Az öt jól definiált, célszerűen alkalmazható és intuitív [konzisztenciamodellből](consistency-levels.md) álló kínálat az SQL által nyújtottakhoz hasonló konzisztenciától az enyhén korlátozott NoSQL-hez hasonló végleges konzisztenciáig minden igényt képes lefedni. 
   
 * **Pénzvisszafizetési garancia**
-    * Iparágvezető, pénzügyi felelősséggel vállalt, átfogó [szolgáltatói szerződések](https://aka.ms/acdbsla) az alapvető fontosságú adatok rendelkezésre állásáról, késéséről, átviteli sebességéről és konzisztenciájáról. 
+    * Iparágvezető, pénzügyi felelősséggel vállalt, átfogó [szolgáltatói szerződések](https://aka.ms/acdbsla) (SLA-k) az alapvető fontosságú adatok rendelkezésre állásáról, késéséről, átviteli sebességéről és konzisztenciájáról. 
 
 * **Nincs adatbázisséma vagy indexkezelés**
     * Gyors alkalmazásséma-iteráció anélkül, hogy aggódnia kellene az adatbázisséma és/vagy az indexkezelés miatt.
@@ -77,7 +76,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
 
 ## <a name="capability-comparison"></a>Képességek összehasonlítása
 
-Az Azure Cosmos DB a relációs és nem relációs adatbázisok legjobb képességeit nyújtja.
+Az Azure Cosmos DB a hagyományos relációs és a nem relációs adatbázisok legjobb képességeit nyújtja.
 
 | Funkciók | Relációs adatbázisok   | Nem relációs (NoSQL-) adatbázisok |    Azure Cosmos DB |
 | --- | --- | --- | --- |

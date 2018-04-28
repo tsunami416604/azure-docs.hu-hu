@@ -1,5 +1,3 @@
-Az alkalmazásba való bejelentkezés engedélyezéséhez létre kell hoznia egy bejelentkezési szabályzatot. Ez a szabályzat írja le, hogy mit tapasztalnak a felhasználók a bejelentkezés során, valamint megadja azokat a jogkivonatokat, amelyeket az alkalmazás fogad a sikeres bejelentkezésekkor.
-
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
 A beállítások szabályzatokat tartalmazó részén válassza a **Regisztrálási vagy bejelentkezési szabályzatok** lehetőséget, majd kattintson a **+ Hozzáadás** gombra.

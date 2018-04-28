@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: f445a2c77b14477ea2ef4ff7722183d641275f08
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bfad3ff71be07026cf4a7dd6ad75df399349f844
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 Software Assurance rendelkező ügyfelek Azure hibrid juttatás for Windows Server lehetővé teszi a helyszíni Windows Server licencek használja, és futtassa a Windows virtuális gépek Azure költséghatékony. Azure hibrid juttatás for Windows Server bármelyik új virtuális gépek telepítéséhez használható Azure platform Windows Server-lemezképet Windows egyéni támogatott. Ez a cikk halad keresztül lépéseket, a új virtuális gépek Azure hibrid juttatás for Windows Server telepítése, és hogyan frissíthet meglévő futtató virtuális gépek. További információ az Azure hibrid juttatás for Windows Server licencelési és pluszköltséggel kevésbé kell kihasználni, tekintse meg a [Azure hibrid juttatás for Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -194,4 +194,4 @@ További információ [Azure hibrid juttatás for Windows Server és az Azure Si
 
 További információ [Azure több-Bérlős üzemeltető jogosultsággal rendelkező Windows 10-re](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
 
-Tudjon meg többet az [gyakran ismételt kérdések](#https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/faq/)
+Tudjon meg többet az [gyakran ismételt kérdések](#https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)

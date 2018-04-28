@@ -1,26 +1,26 @@
 ---
-title: "Csoportházirend-sablon minták |} Microsoft Docs"
-description: "Azure-házirend JSON-minták"
+title: Csoportházirend-sablon minták |} Microsoft Docs
+description: Azure-házirend JSON-minták
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: azure-policy
 ms.devlang: na
 ms.topic: samples
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 01/17/2018
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 19641f3b1f2781cf23955743bf65172ff84fb544
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0956f42812307f88e37ef12078a86eb85f407ce6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="templates-for-azure-policy"></a>Sablonok az Azure-házirend
 
@@ -59,7 +59,7 @@ A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalm
 | [Virtuális gép hálózati adapterek használatát a jóváhagyott IP-alhálózatot](scripts/use-approved-subnet-vm-nics.md) | Szükséges, hogy a hálózati adapterek egy jóváhagyott alhálózat használja. Megadja a jóváhagyott alhálózati Azonosítóját. |
 | [Jóváhagyott vNet használja a virtuális gép hálózati illesztő](scripts/use-approved-vnet-vm-nics.md) | Megköveteli, hogy a hálózati adapterek jóváhagyott virtuális hálózat használata. Megadja a jóváhagyott virtuális hálózat Azonosítójává. |
 |**Címkék**||
-| [Számlázási címkék házirend kezdeményezés](scripts/billing-tags-policy-init.md) | Költség center és a termék nevét megadott kód paraméterértékek szükségesek. Beépített házirendek vonatkoznak, és kényszerítse a szükséges címkéket használ. Megadhatja a szükséges értékeket a címkék.  |
+| [Számlázási címkék házirend kezdeményezés](scripts/billing-tags-policy-init.md) | Költség center és a termék nevét megadott kód paraméterértékek szükségesek. A példa beépített szabályzatokat használ a szükséges címkék hozzáadásához és előírásához. A címkék szükséges értékeit Ön adja meg.  |
 | [Címke és az értékét az erőforráscsoportokkal](scripts/enforce-tag-rg.md) | Címke és erőforráscsoport érték szükséges. Megadhatja a szükséges címke nevét és értékét.  |
 |**SQL**||
 | [SQL-adatbázis szintjét naplózási naplózása](scripts/audit-sql-db-audit-setting.md) | SQL-adatbázis naplózási beállításainak eseményeket, ha ezek a beállítások nem egyezik a megadott értéket. Adjon meg egy értéket, amely jelzi, hogy naplózási beállításai engedélyezve legyen-e vagy le van tiltva.  |

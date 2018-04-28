@@ -1,11 +1,11 @@
 ---
-title: "Egy Azure virtuális gép felügyelt Szolgáltatásidentitás használatát a bejelentkezéshez"
-description: "Lépésenkénti útmutatásért és példákért használatával jelentkezzen be a parancsfájl-ügyfél egy Azure virtuális gép MSI egyszerű szolgáltatásnév és az erőforrás eléréséhez."
+title: Egy Azure virtuális gép felügyelt Szolgáltatásidentitás használatát a bejelentkezéshez
+description: Lépésenkénti útmutatásért és példákért használatával jelentkezzen be a parancsfájl-ügyfél egy Azure virtuális gép MSI egyszerű szolgáltatásnév és az erőforrás eléréséhez.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4df404bbf56efbc3bb68f006f8aa0c7cdf0e86ac
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ec8c9de6ecd81900c4104abf58ecbe032e43fad9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Egy Azure virtuális gép felügyelt szolgáltatás Identity (MSI) használatát a bejelentkezéshez 
 
@@ -51,7 +51,7 @@ Az alábbi parancsfájl bemutatja, hogyan:
 2. Hívása az Azure Resource Manager és a virtuális gép szolgáltatás egyszerű azonosító beszerzése Parancssori felület jogkivonat beszerzése vagy használata automatikusan kezelése az Ön gondoskodik. Ügyeljen arra, hogy a virtuális gép nevét `<VM-NAME>`.  
 
    ```azurecli
-   az login --msi
+   az login --identity
    
    spID=$(az resource list -n <VM-NAME> --query [*].identity.principalId --out tsv)
    echo The MSI service principal ID is $spID
@@ -61,20 +61,11 @@ Az alábbi parancsfájl bemutatja, hogyan:
 
 Az alábbi parancsfájl bemutatja, hogyan:
 
-1. Szerezzen be egy MSI-jogkivonatot a virtuális gép számára.  
-2. A hozzáférési jogkivonat használatával jelentkezzen be az Azure AD, a megfelelő MSI egyszerű alatt.   
-3. Hívja meg az Azure Resource Manager parancsmagot, hogy a virtuális gép adatainak beolvasása. Token használható automatikusan felügyelete PowerShell gondoskodik.  
+1. Jelentkezzen be az Azure AD-alatt a virtuális gép MSI egyszerű szolgáltatásnév  
+2. Hívja meg az Azure Resource Manager parancsmagot, hogy a virtuális gép adatainak beolvasása. Token használható automatikusan felügyelete PowerShell gondoskodik.  
 
    ```azurepowershell
-   # Get an access token for the MSI
-   $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token `
-                                 -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
-   $content =$response.Content | ConvertFrom-Json
-   $access_token = $content.access_token
-   echo "The MSI access token is $access_token"
-
-   # Use the access token to sign in under the MSI service principal. -AccountID can be any string to identify the session.
-   Login-AzureRmAccount -AccessToken $access_token -AccountId "MSI@50342"
+   Add-AzureRmAccount -identity
 
    # Call Azure Resource Manager to get the service principal ID for the VM's MSI. 
    $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
@@ -84,14 +75,14 @@ Az alábbi parancsfájl bemutatja, hogyan:
 
 ## <a name="resource-ids-for-azure-services"></a>Erőforrás-azonosítók az Azure-szolgáltatások
 
-Lásd: [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](overview.md#azure-services-that-support-azure-ad-authentication) erőforrásokat, amelyek támogatják az Azure AD, és az MSI lettek tesztelve, és a megfelelő erőforrás-azonosítók listáját.
+Lásd: [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](services-support-msi.md#azure-services-that-support-azure-ad-authentication) erőforrásokat, amelyek támogatják az Azure AD, és az MSI lettek tesztelve, és a megfelelő erőforrás-azonosítók listáját.
 
 ## <a name="error-handling-guidance"></a>Hiba kezelési útmutató 
 
 A következő válaszok azt jelezheti, hogy a virtuális gép MSI-fájl nincs megfelelően konfigurálva:
 
 - PowerShell: *Invoke-WebRequest: nem lehet kapcsolódni a távoli kiszolgáló*
-- Parancssori felület: *MSI: nem sikerült beolvasni a "http://localhost:50342/oauth2/token" hiba történt a származó jogkivonat "HTTPConnectionPool (host"localhost", port = = 50342)* 
+- Parancssori felület: *MSI: nem sikerült beolvasni a származó jogkivonat "http://localhost:50342/oauth2/token" hiba történt a "HTTPConnectionPool (állomás"localhost", port = = 50342)* 
 
 Ha egyik ezeket a hibákat, térjen vissza az Azure virtuális gép a [Azure-portálon](https://portal.azure.com) és:
 

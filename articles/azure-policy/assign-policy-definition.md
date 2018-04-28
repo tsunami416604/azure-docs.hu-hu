@@ -1,19 +1,19 @@
 ---
-title: "Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához | Microsoft Docs"
-description: "Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat egy szabályzatdefiníciót a nem megfelelő erőforrások azonosítására."
+title: Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához | Microsoft Docs
+description: Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létrehozhat egy szabályzatdefiníciót a nem megfelelő erőforrások azonosítására.
 services: azure-policy
-keywords: 
-author: bandersmsft
-ms.author: banders
-ms.date: 01/10/2018
+keywords: ''
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 04/18/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 4287b139f26d17e58f6caffbadb2c7da2a9b7b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 6bb9eddb6a663e1f230c9c46835661ad20c02cfd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához
 Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Ez a rövid útmutató végigvezeti Önt a folyamaton, amellyel létrehozhat egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést.
@@ -71,15 +71,14 @@ Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzár
 
 Ha a meglévő erőforrások kiértékelésekor egy feltétel igaznak bizonyul, ezek az erőforrások a szabályzatnak nem megfelelőként lesznek megjelölve. Az előző képen nem megfelelő erőforrások láthatóak. A következő táblázat azt mutatja be, hogyan működnek a különböző szabályzatműveletek a feltételek kiértékelésével a megfelelőségi állapot eléréséhez. A kiértékelési logika nem jelenik meg az Azure Portalon, a megfelelőségi állapotok eredményei azonban igen. A megfelelőségi állapotok eredménye lehet megfelelő vagy nem megfelelő.
 
-|Erőforrás  |Ha egy feltétel a szabályzatban  |Művelet a szabályzatban   |Megfelelőségi állapot  |
-|-----------|---------|---------|---------|
-|Létezik     |True (Igaz)     |Megtagadás     |Nem megfelelő |
-|Létezik     |False (Hamis)    |Megtagadás     |Megfelelő     |
-|Létezik     |True (Igaz)     |Hozzáfűzés   |Nem megfelelő |
-|Létezik     |False (Hamis)    |Hozzáfűzés   |Megfelelő     |
-|Létezik     |True (Igaz)     |Naplózás    |Nem megfelelő |
-|Létezik     |False (Hamis)    |Naplózás    |Nem megfelelő |
+| **Erőforrás-állapot** | **Művelet** | **Szabályzat-kiértékelés** | **Megfelelőségi állapot** |
+| --- | --- | --- | --- |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False (Hamis) | Megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | False (Hamis) | Megfelelő |
 
+\* Az Append, DeployIfNotExist és AuditIfNotExist művelet esetében az IF utasításnak TRUE értéket kell visszaadnia. Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy nem megfelelőnek minősüljön a szabályzat. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a gyűjteményben lévő többi útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.

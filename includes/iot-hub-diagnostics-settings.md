@@ -4,20 +4,20 @@
 1. Válassza ki **diagnosztikai beállítások**.
 1. Válassza ki **a diagnosztika bekapcsolásához**.
 
-   ![Diagnosztika engedélyezése][1]
+   ![Diagnosztika bekapcsolása][1]
 
 1. Adjon meg egy nevet a diagnosztikai beállítások.
 1. Válasszon hol szeretné elküldeni a naplókat. A következő három beállítás bármilyen kombinációját kiválaszthatja:
-   * A tárolási fiók archiválása
-   * Az eseményközpontok felé adatfolyam
-   * A Naplóelemzési küldése
+   * Archiválás tárfiókba
+   * Streamelés eseményközpontba
+   * Küldés a Log Analyticsnek
 1. Válassza ki a figyelni kívánt milyen műveletek, és a naplókat, hogy ezek a műveletek engedélyezése. A diagnosztikai beállítások jelenthetik-e a műveletek a következők:
    * Kapcsolatok
    * Telemetriát
    * Felhő-eszközre küldött üzenetek
    * Eszköz identitása műveletek
    * Fájlfeltöltések
-   * Üzenet-útválasztás
+   * Üzenetirányítás
    * Felhő eszközre iker műveletek
    * Eszköz-felhő iker műveletek
    * A két műveletek
@@ -28,7 +28,7 @@
 Ha kapcsolja be a diagnosztikai beállításokat a PowerShell segítségével szeretne, használja a következő kódot:
 
 ```
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <subscription that includes your IoT Hub>
 Set-AzureRmDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```

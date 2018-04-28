@@ -1,19 +1,19 @@
 ---
-title: "Azure-tároló példányát az Azure fájlok kötet csatlakoztatása"
-description: "Útmutató: Azure tároló osztályt állapot megőrizni az Azure fájlok kötet csatlakoztatása"
+title: Azure-tároló példányát az Azure fájlok kötet csatlakoztatása
+description: 'Útmutató: Azure tároló osztályt állapot megőrizni az Azure fájlok kötet csatlakoztatása'
 services: container-instances
 author: seanmck
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 98be7e65c2280aa58cf904cbca265f87610eff55
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 239150c1e752ce6a4f2a19fa1192cd1a910ebea9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure-tároló példányát az Azure fájlmegosztások csatlakoztatása
 
@@ -22,7 +22,7 @@ Alapértelmezés szerint Azure tároló példányok állapot nélküli alkalmaz�
 > [!NOTE]
 > Egy Azure fájlok fájlmegosztás csatlakoztatása korlátozódik jelenleg Linux tárolók. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
 
-## <a name="create-an-azure-file-share"></a>Az Azure-fájlmegosztás létrehozása
+## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 
 Az Azure fájlmegosztások használatához Azure tároló osztályt, akkor létre kell hoznia. A következő parancsprogrammal hozzon létre egy tárfiókot, a fájlmegosztás és a megosztás saját magát. A tárfiók nevének globálisan egyedi, kell lennie, a parancsfájl egy véletlenszerű értékét hozzáadja a kezdőpontját meghatározó karakterlánc.
 
@@ -83,7 +83,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-A `--dns-name-label` érték belül egyedinek kell lennie az Azure-régió hoz létre, hogy a tároló-példány. Frissítse az előző parancsban szereplő érték, ha egy **DNS-névcímke** hibaüzenet jelenik meg, a parancs végrehajtásakor.
+A `--dns-name-label` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a tárolópéldányt létrehozza. Frissítse az előző parancsban szereplő érték, ha egy **DNS-névcímke** hibaüzenet jelenik meg, a parancs végrehajtásakor.
 
 ## <a name="manage-files-in-mounted-volume"></a>Csatlakoztatott kötet lévő fájlok kezeléséhez
 

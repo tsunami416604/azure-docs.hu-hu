@@ -1,27 +1,25 @@
 ---
-title: "Phoenix lekérdezés Server REST SDK - az Azure HDInsight |} Microsoft Docs"
-description: 
+title: Phoenix lekérdezés Server REST SDK - az Azure HDInsight |} Microsoft Docs
+description: ''
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 66ff65a5b74294fe1a8f4373102160a98cd7a8c3
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 4adc0cf81a36307369fa9f4eecd281a93ccba98b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
+# <a name="phoenix-query-server-rest-sdk"></a>Phoenix lekérdezés Server REST-SDK
 
 [Apache Phoenix](http://phoenix.apache.org/) egy nyílt forráskódú, nagymértékben párhuzamos relációs Adatbázisréteg a [HBase](apache-hbase-overview.md). Phoenix használatát teszi SQL-szerű lekérdezéseket a hbase eszközzel SSH eszközökkel, mint [SQLLine](apache-hbase-phoenix-squirrel-linux.md). Phoenix is biztosít a Phoenix lekérdezés Server (PQS), a vékony ügyfelek, az ügyfél-kommunikációhoz két átviteli mechanizmusok támogató nevű HTTP-kiszolgáló: JSON és a protokoll pufferek. Protokoll pufferek az alapértelmezett mechanizmus, és JSON-nál több hatékony kommunikációt biztosít.
 

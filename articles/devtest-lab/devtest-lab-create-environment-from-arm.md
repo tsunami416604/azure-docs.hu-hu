@@ -1,12 +1,12 @@
 ---
-title: "Hozzon létre virtuális Gépre kiterjedő környezetek és PaaS-erőforrások Azure Resource Manager-sablonok |} Microsoft Docs"
-description: "Útmutató: virtuális Gépre kiterjedő környezetek és PaaS erőforrások létrehozása a Azure DevTest Labs szolgáltatásban az Azure Resource Manager-sablon"
+title: Hozzon létre virtuális Gépre kiterjedő környezetek és PaaS-erőforrások Azure Resource Manager-sablonok |} Microsoft Docs
+description: 'Útmutató: virtuális Gépre kiterjedő környezetek és PaaS erőforrások létrehozása a Azure DevTest Labs szolgáltatásban az Azure Resource Manager-sablon'
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: devtest-lab
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: v-craic
-ms.openlocfilehash: b4582dd03ceb1c2104f6e93c55a65e5a2b968c0a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 38e048e9ec4985d16632f8891e42c2b6394c83d6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Hozzon létre virtuális Gépre kiterjedő környezetek és PaaS-erőforrások Azure Resource Manager-sablonok
 
@@ -102,7 +102,7 @@ Az Azure Resource Manager sablon tárház van konfigurálva a tesztkörnyezetben
 
     ![Válasszon egy alapja](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
   
-1. A a **Hozzáadás** panelen adja meg a **környezetnevet** érték. A környezet neve, a felhasználók számára, a laborban jelenik meg. Az Azure Resource Manager-sablon a fennmaradó beviteli mezők vannak definiálva. Ha az alapértelmezett értékek meg vannak határozva a sablonban vagy a `azuredeploy.parameter.json` fájl jelen, az alapértelmezett értékek megjelenítése a beviteli mezők. Típusú paraméterek *biztonságos karakterlánc*, használhatja a titkos kulcsokat, a laborban tárolt [titkos tárolójának](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store).
+1. A a **Hozzáadás** panelen adja meg a **környezetnevet** érték. A környezet neve, a felhasználók számára, a laborban jelenik meg. Az Azure Resource Manager-sablon a fennmaradó beviteli mezők vannak definiálva. Ha az alapértelmezett értékek meg vannak határozva a sablonban vagy a `azuredeploy.parameter.json` fájl jelen, az alapértelmezett értékek megjelenítése a beviteli mezők. Típusú paraméterek *biztonságos karakterlánc*, használhatja a titkos kulcsokat, a laborban tárolt [titkos tárolójának](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store).
 
     ![Adja hozzá a panelen](./media/devtest-lab-create-environment-from-arm/add.png)
 
@@ -110,9 +110,9 @@ Az Azure Resource Manager sablon tárház van konfigurálva a tesztkörnyezetben
     > Nincsenek több paraméter - még akkor is, ha a megadott – a megjelenített értékek üres értékeket. Ezért ha a felhasználók ezeket az értékeket rendel a paraméterek az Azure Resource Manager-sablonok, DevTest Labs nem jeleníti meg az értékeket. Ehelyett üres beviteli mezők láthatók, ahol labor felhasználókat kell adnia egy értéket a környezet létrehozásakor.
     > 
     > - GENERÁCIÓS EGYEDI
-    > - GEN-UNIQUE-[N]
+    > - -EGYEDI - GENERÁCIÓS [N]
     > - GEN-SSH-PUB-KEY
-    > - GEN-PASSWORD 
+    > - GENERÁCIÓS-JELSZÓ 
  
 1. Válassza ki **Hozzáadás** a környezetet hozhat létre. A környezet elindítja az állapot megjelenő létrehozását azonnal a **a virtuális gépek** listája. Új erőforráscsoport automatikusan hozta létre a labor az Azure Resource Manager sablon definiált összes erőforrások biztosításához.
 1. A környezet létrehozása után válassza ki a környezet a **a virtuális gépek** lista használatával nyissa meg az erőforrás-csoport ablaktáblán, és keresse meg az összes környezetben kiosztott erőforrásokat.

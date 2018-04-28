@@ -1,6 +1,6 @@
 ---
-title: "Azure erőforráscsoportokkal kapcsolatos Visual Studio-projektek | Microsoft Docs"
-description: "A Visual Studio használatával Azure erőforráscsoport-projekteket hozhat létre, és telepítheti az erőforrásokat az Azure rendszerbe."
+title: Azure erőforráscsoportokkal kapcsolatos Visual Studio-projektek | Microsoft Docs
+description: A Visual Studio használatával Azure erőforráscsoport-projekteket hozhat létre, és telepítheti az erőforrásokat az Azure rendszerbe.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2017
+ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d647206b882059e0651223dc84f2ad2a314f8a87
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: bd0680a16596931b5f595bbdd4e48414c8dbde73
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 A Visual Studio és az [Azure SDK](https://azure.microsoft.com/downloads/) alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerbe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. Azt is megteheti, hogy meghatározza a virtuális gépet, a virtuális hálózatot és a tárfiókot, majd telepíti az infrastruktúrát a virtuális gépen végrehajtott parancsfájllal együtt. Az **Azure erőforráscsoport** telepítési projektje lehetővé teszi, hogy az összes szükséges erőforrást egyetlen, megismételhető műveletben telepítse. Az erőforrások telepítésével és kezelésével kapcsolatos további információkért lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md).
@@ -148,7 +148,7 @@ Készen áll a projekt telepítésére. Az Azure Erőforráscsoport-projekt tele
 5. Kattintson a **Telepítés** gombra a projekt telepítéséhez az Azure szolgáltatásban. Megnyílik egy PowerShell-konzol a Visual Studio-példányon kívül. Amikor a rendszer kéri, adja meg az SQL Server rendszergazdai jelszavát a PowerShell-konzolon. **Lehetséges, hogy a PowerShell-konzolt egyéb elemek eltakarják, vagy kis méretben fut a tálcán.** Keresse meg és nyissa meg a konzolt a jelszó megadásához.
    
    > [!NOTE]
-   > Előfordulhat, hogy a Visual Studio megkéri, hogy telepítse az Azure PowerShell-parancsmagokat. Az erőforráscsoportok sikeres üzembe helyezéséhez szükség van az Azure PowerShell-parancsmagokra. Ha a program kéri, telepítse őket.
+   > Előfordulhat, hogy a Visual Studio megkéri, hogy telepítse az Azure PowerShell-parancsmagokat. Az erőforráscsoportok sikeres üzembe helyezéséhez szükség van az Azure PowerShell-parancsmagokra. Ha a program kéri, telepítse őket. További információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-azurerm-ps).
    > 
    > 
 6. Az üzembe helyezés eltarthat néhány percig. A **Kimenet** ablakban követhető az üzembe helyezés állapota. Az üzembe helyezés befejeztével az utolsó üzenet jelzi az üzembe helyezés sikerességét, a következőhöz hasonló módon:
@@ -216,7 +216,103 @@ Ezen a ponton az alkalmazás infrastruktúrája már telepítve van, tényleges 
     
      ![telepített alkalmazás megjelenítése](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="add-an-operations-dashboard-to-your-deployment"></a>Műveleti irányítópult hozzáadása az üzemelő példányhoz
+Most, hogy létrehozott egy megoldást, tegye meg az utolsó lépést, és állítsa üzembe. Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat használhatja. Kiaknázhatja a JSON-ban erőforrásként meghatározott megosztott irányítópultok használatában rejlő lehetőségeket. Ezt a sablon módosításával teheti meg, egy egyéni erőforrás hozzáadásával. 
+
+1. Nyissa meg a WebsiteSqlDeploy.json fájlt, és adja hozzá a következő JSON-kódblokkot a tárfiók-erőforrás után, de még az erőforrás szakasz záró ] jele előtt.
+
+```json
+    ,{
+      "properties": {
+        "lenses": {
+          "0": {
+            "order": 0,
+            "parts": {
+              "0": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "colSpan": 4,
+                  "rowSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "resourceGroup",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "id",
+                      "value": "[resourceGroup().id]",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/ResourceGroupMapPinnedPart"
+                }
+              },
+              "1": {
+                "position": {
+                  "x": 4,
+                  "y": 0,
+                  "rowSpan": 3,
+                  "colSpan": 4
+                },
+                "metadata": {
+                  "inputs": [],
+                  "type": "Extension[azure]/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "__Customizations__\n\nUse this dashboard to create and share the operational views of services critical to the application performing. To customize simply pin components to the dashboard and then publish when you're done. Others will see your changes when you publish and share the dashboard.\n\nYou can customize this text too. It supports plain text, __Markdown__, and even limited HTML like images <img width='10' src='https://portal.azure.com/favicon.ico'/> and <a href='https://azure.microsoft.com' target='_blank'>links</a> that open in a new tab.\n",
+                        "title": "Operations",
+                        "subtitle": "[resourceGroup().name]"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "metadata": {
+          "model": {
+            "timeRange": {
+              "value": {
+                "relative": {
+                  "duration": 24,
+                  "timeUnit": 1
+                }
+              },
+              "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+            }
+          }
+        }
+      },
+      "apiVersion": "2015-08-01-preview",
+      "name": "[concat('ARM-',resourceGroup().name)]",
+      "type": "Microsoft.Portal/dashboards",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "hidden-title": "[concat('OPS-',resourceGroup().name)]"
+      }
+    }
+}
+```
+
+2. Telepítse újra az erőforráscsoportot, és amikor az Azure Portalon megtekinti az irányítópultot, láthatja, hogy a megosztott irányítópult megjelent a választási lehetőségek között. 
+
+    ![Egyéni irányítópult](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
+
+
+
+   > [!NOTE] 
+   > Az irányítópulthoz való hozzáférés RBAC-csoportokkal kezelhető, és az üzembe helyezett erőforráson testre szabott beállítások is közzétehetők. Vegye figyelembe, hogy az erőforráscsoport az ismételt üzembe helyezéskor visszaáll a sablonban meghatározott alapértelmezett értékre. Fontolja meg a sablon frissítését a testre szabott értékekkel. Erről az [Azure-irányítópultok szoftveres létrehozásával](../azure-portal/azure-portal-dashboards-create-programmatically.md) kapcsolatos cikkben talál további információt.
+
+
+    ![Egyéni irányítópult](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
+    
+    
+## <a name="next-steps"></a>További lépések
 * Az erőforrásoknak a portálon keresztül történő kezelésével kapcsolatos információkért lásd: [Az Azure Portal használata az Azure erőforrások kezeléséhez](resource-group-portal.md).
 * A sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 

@@ -1,11 +1,11 @@
 ---
-title: "SQL Server virtuális gépek az Azure PowerShell kialakítási útmutatója |} Microsoft Docs"
-description: "Lépéseket és a PowerShell-parancsok biztosít az Azure virtuális gép létrehozása az SQL Server virtuális gép a gyűjtemény lemezképei."
+title: SQL Server virtuális gépek az Azure PowerShell kialakítási útmutatója |} Microsoft Docs
+description: Lépéseket és a PowerShell-parancsok biztosít az Azure virtuális gép létrehozása az SQL Server virtuális gép a gyűjtemény lemezképei.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f94cf2ab84179161c8d0a4f2ae6f73ded1d65c3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuális gépek az Azure PowerShell kiépítése
 
@@ -31,10 +31,10 @@ Ez a cikk az Azure PowerShell 3,6 vagy újabb verziója szükséges. A verzió a
 
 ## <a name="configure-your-subscription"></a>Az előfizetés konfigurálása
 
-1. Nyissa meg a PowerShellt és állítsa be az Azure-fiókja elérését az **Add-AzureRmAccount** parancs futtatásával.
+1. Nyissa meg a PowerShellt, és állítsa be az Azure-fiókja elérését a **Connect-AzureRmAccount** parancs futtatásával.
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. Ekkor meg kell jelennie egy bejelentkezési képernyőnek, amely a hitelesítő adatainak megadását kéri. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
@@ -326,8 +326,8 @@ Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 
 Emellett véglegesen is törölheti a virtuális géppel társított erőforrásokat a **Remove-AzureRmResourceGroup** paranccsal. Ez véglegesen törli magát a virtuális gépet is, ezért ezt a parancsot körültekintően alkalmazza.
 
-## <a name="example-script"></a>A példaként megadott parancsfájlt
-A következő parancsfájl tartalmazza a teljes PowerShell parancsprogramot ehhez az oktatóanyaghoz. Azt feltételezi, hogy már beállítása az Azure-előfizetés használata a **Add-AzureRmAccount** és **Select-AzureRmSubscription** parancsok.
+## <a name="example-script"></a>Példaszkript
+A következő parancsfájl tartalmazza a teljes PowerShell parancsprogramot ehhez az oktatóanyaghoz. Azt feltételezi, hogy már beállítása az Azure-előfizetés használata a **Connect-AzureRmAccount** és **Select-AzureRmSubscription** parancsok.
 
 ```PowerShell
 # Variables

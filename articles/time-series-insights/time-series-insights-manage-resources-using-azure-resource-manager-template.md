@@ -1,6 +1,6 @@
 ---
-title: "A Azure idő adatsorozat Insights környezet használata Azure Resource Manager-sablonok kezelése |} Microsoft Docs"
-description: "Ez a cikk ismerteti a programozott módon, Azure Resource Manager Azure idő adatsorozat Insights környezete kezeléséhez."
+title: A Azure idő adatsorozat Insights környezet használata Azure Resource Manager-sablonok kezelése |} Microsoft Docs
+description: Ez a cikk ismerteti a programozott módon, Azure Resource Manager Azure idő adatsorozat Insights környezete kezeléséhez.
 services: time-series-insights
 ms.service: time-series-insights
 author: sandshadow
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 12/08/2017
-ms.openlocfilehash: b09d4a1aea56a4e306f80a1b43d519d313fd73ab
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8355248f28a019ef4712f542c8eac731362330ce
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Idő adatsorozat Insights-erőforrások használata Azure Resource Manager-sablonok létrehozása
 
@@ -28,7 +28,7 @@ Idő adatsorozat Insights támogatja a következőket:
    | Környezet | Egy alkalommal adatsorozat Insights környezete események, amelyek esemény brókerek olvasni, tárolt és elérhetővé a lekérdezés logikai csoportosítása. További információ: [a Azure idő adatsorozat Insights környezet megtervezése](time-series-insights-environment-planning.md) |
    | Eseményforrás | Egy esemény forrása kapcsolatot létesíthet egy esemény broker, amelyből idő adatsorozat Insights beolvassa és események ingests környezetbe. Az IoT-központ és az Event Hubs jelenleg támogatott esemény forrásai. |
    | Referencia-adatkészlet | Hivatkozási adatkészletek adja meg a környezetben eseményekkel kapcsolatos metaadatokat. A hivatkozási adatkészletek metaadatok tartományhoz fog csatlakozni az események érkező során. Az esemény kulcstulajdonságok erőforrásként hivatkozási adatkészletek vannak definiálva. A tényleges metaadatok, amely a referencia-adatkészlet feltöltött, illetve a módosított adatok vezérlősík API-k használatával. |
-   | Hozzáférési házirend | Hozzáférési házirendek adja ki a lekérdezések, kezelheti a referenciaadatok a környezetben, lekérdezések és a környezet perspektívák engedélyeket. További információ: [adatokat az Azure-portál használatával idő adatsorozat Insights környezetben való hozzáférést](time-series-insights-data-access.md) |
+   | Hozzáférési szabályzat | Hozzáférési házirendek adja ki a lekérdezések, kezelheti a referenciaadatok a környezetben, lekérdezések és a környezet perspektívák engedélyeket. További információ: [adatokat az Azure-portál használatával idő adatsorozat Insights környezetben való hozzáférést](time-series-insights-data-access.md) |
 
 A Resource Manager-sablon egy JSON-fájl, amely meghatározza az infrastruktúra és az erőforrás egy erőforráscsoportban. További információkért lásd a következő dokumentumokat:
 
@@ -153,7 +153,7 @@ További információkért lásd: a [paraméterek](../azure-resource-manager/res
 Egy PowerShell-parancssorba futtassa a következő parancsot:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Jelentkezzen be az Azure-fiókjával kéri. A bejelentkezés után futtassa a következő parancsot az elérhető előfizetések megtekintéséhez:
@@ -266,9 +266,10 @@ Outputs                 :
 
 A gyorsindítási sablonon kezdőlapja a Githubból is magában foglalja a **az Azure telepítéséhez** gombra. Az Azure portálon kattintson rá egyéni telepítési oldal megnyitása. Ezen a lapon adja meg vagy válassza ki az értékeket az egyes származó paraméterek a [kötelező paraméterek](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) vagy [választható paraméterek:](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) táblákat. Kattintson a beállítások megadása után a **beszerzési** gomb indít el a sablon-üzembehelyezés.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Idő adatsorozat Insights-erőforrások REST API-val programozott módon kezeléséről további információért lásd: [adatsorozat Insights Időkezelést](https://docs.microsoft.com/rest/api/time-series-insights-management/).

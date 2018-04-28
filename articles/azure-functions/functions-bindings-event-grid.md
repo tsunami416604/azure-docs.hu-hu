@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Az Azure Functions rács eseményindító
 
@@ -213,7 +213,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság |Leírás|
 |---------|---------|----------------------|
-| **Típusa** | Szükséges – kell állítani `eventGridTrigger`. |
+| **type** | Szükséges – kell állítani `eventGridTrigger`. |
 | **direction** | Szükséges – kell állítani `in`. |
 | **name** | Kötelező – a változó nevét, amely megkapja a eseményadatok paramétereként függvény a kódban használt. |
 
@@ -337,6 +337,9 @@ Másik lehetőségként küldhet egy HTTP PUT saját maga a kulcs értékét meg
 
 ## <a name="local-testing-with-requestbin"></a>Helyi RequestBin teszteléshez
 
+> [!NOTE]
+> A RequestBin hely jelenleg nem érhető el, de használhatja ezt a módszert a https://hookbin.com helyette. Ha a hely nem működik, használhatja [ngrok](#local-testing-with-ngrok).
+
 Egy esemény rács eseményindító teszteléséhez helyileg, akkor a helyi gép a felhőben a forrásból kézbesíteni esemény rács HTTP-kérelmek get. Ehhez egy úgy, hogy a rögzítés kérelmek online, és manuálisan küldje el újra azokat a helyi számítógépen:
 
 2. [Hozzon létre egy RequestBin végpontot](#create-a-RequestBin-endpoint).
@@ -348,7 +351,7 @@ Ha elkészült tesztelni, használhatja ugyanazt az előfizetést üzemi a végp
 
 ### <a name="create-a-requestbin-endpoint"></a>RequestBin-végpont létrehozása
 
-RequestBin egy nyílt forráskódú eszköz, amely elfogadja a HTTP-kérelmekre, és megjeleníti a kérés törzsében. A http://requestb.in URL-cím beolvasása különleges kezelés Azure esemény rács által. Tesztelés megkönnyítéséhez esemény rács eseményeket küldi a RequestBin URL-cím anélkül, hogy az előfizetés érvényesítése kérelmek helyes választ. Két vizsgálati eszközök azonos kezelésére adta: http://webhookinbox.com és http://hookbin.com.
+RequestBin egy nyílt forráskódú eszköz, amely elfogadja a HTTP-kérelmekre, és megjeleníti a kérés törzsében. A http://requestb.in URL-cím beolvasása különleges kezelés Azure esemény rács által. Tesztelés megkönnyítéséhez esemény rács eseményeket küldi a RequestBin URL-cím anélkül, hogy az előfizetés érvényesítése kérelmek helyes választ. Egy vizsgálati eszköz kap azonos kezelésére: http://hookbin.com.
 
 RequestBin nem célja a magas teljesítmény-használatról. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
 

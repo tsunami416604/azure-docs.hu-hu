@@ -1,19 +1,18 @@
 ---
-title: "Az Azure Search ad hozzá a Blob Storage |} Microsoft Docs"
-description: "Index létrehozása kódból az Azure Search HTTP REST API használatával."
+title: Az Azure Search ad hozzá a Blob Storage |} Microsoft Docs
+description: Index létrehozása kódból az Azure Search HTTP REST API használatával.
 services: search
-documentationcenter: 
-author: ashmaka
-manager: jhubbard
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2017
-ms.author: ashmaka
-ms.openlocfilehash: 15469e8a2d28bdf00d6e8d8c9f823c51975ee90e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+author: chaosrealm
+manager: jlembicz
+ms.author: eugenesh
+ms.openlocfilehash: 71e43920f0e6a64beb7cdb28d0707dd30502bf05
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Keresés a Blob Storage-tárolókban az Azure Search szolgáltatással
 
@@ -51,5 +50,5 @@ Az Azure Search közvetlenül a Blob storage portállapon a blobok is hozzáadha
 
 Kattintson a **hozzáadása Azure Search** ahol válasszon ki egy meglévő Azure Search szolgáltatást, vagy hozzon létre egy új szolgáltatást, a folyamat elindításához. Ha létrehoz egy új szolgáltatás, akkor kívül a tárfiók portál élmény léptetését. Lépjen vissza a tárolási portálon, és jelölje ki újból a **hozzáadása Azure Search** beállítás, ahol kiválaszthatja a meglévő szolgáltatást.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 További tudnivalók az Azure Search Blob indexelő a teljes [dokumentáció](https://aka.ms/azsblobindexer).

@@ -1,9 +1,9 @@
 ---
-title: "Riasztás létrehozása, a metrika a Resource Manager sablonnal |} Microsoft Docs"
-description: "Megtudhatja, hogyan metrika riasztás értesítéseket e-mailben vagy a webhook létrehozása egy Resource Manager-sablon használatával."
+title: Riasztás létrehozása a klasszikus metrika az Azure Resource Manager sablonnal |} Microsoft Docs
+description: Útmutató Resource Manager sablon segítségével riasztás létrehozása a klasszikus metrika értesítéseket e-mailben vagy webhook.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 41d62044-6bc5-4674-b277-45b919f58efe
@@ -12,16 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/21/2017
+ms.date: 4/27/2018
 ms.author: johnkem
-ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c83eeaf6c26aca3acdd43a767aa11357fa502544
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
+# <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) Azure metrika riasztások konfigurálása. Ez lehetővé teszi, hogy automatikusan riasztásokat állíthat be az erőforrások annak érdekében, hogy helyesen legyen-e figyelve erőforrások létrehozásakor.
+
+> [!NOTE]
+> 
+> Ez a cikk ismerteti, hogy létrehozása **klasszikus metrika riasztások** Resource Manager-sablonok használatával. Ha a keresett létrehozása [újabb metrika riasztások](monitoring-near-real-time-metric-alerts.md) sablonokkal, [Ez a cikk](monitoring-create-metric-alerts-with-templates.md) részleteit.
+>
+
 
 Az alapvető lépések a következők:
 
@@ -30,7 +36,7 @@ Az alapvető lépések a következők:
 
 Az alábbiakban azt ismertetjük Resource Manager-sablonok létrehozásához először riasztás egyedül a riasztást egy másik erőforrás létrehozása közben.
 
-## <a name="resource-manager-template-for-a-metric-alert"></a>A metrika riasztások Resource Manager-sablon
+## <a name="resource-manager-template-for-a-classic-metric-alert"></a>A klasszikus metrika riasztások Resource Manager-sablon
 Hozzon létre egy riasztást, a Resource Manager-sablonnal, hozzon létre egy típusú erőforrást `Microsoft.Insights/alertRules` , és töltse ki az összes kapcsolódó tulajdonságok. Az alábbiakban van a sablont, amely egy riasztási szabályt hoz létre.
 
 ```json
@@ -180,7 +186,7 @@ Hozzon létre egy riasztást, a Resource Manager-sablonnal, hozzon létre egy t�
 
 Riasztási szabály a séma és a Tulajdonságok magyarázatot [érhető el itt](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
-## <a name="resource-manager-template-for-a-resource-with-an-alert"></a>Riasztás erőforrás Resource Manager-sablon
+## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>A klasszikus metrika riasztások erőforrás Resource Manager-sablon
 A Resource Manager-sablon riasztást általában akkor hasznos, ha létre riasztást erőforrás létrehozása közben. Például, érdemes lehet ahhoz, hogy a "CPU % > 80-as" szabály be van állítva, minden alkalommal, amikor a virtuális gép telepítése. Ehhez adja hozzá a riasztási szabály a erőforrás tömbben erőforrásként a Virtuálisgép-sablonhoz, és adja hozzá a függőség használatával a `dependsOn` tulajdonságot a VM erőforrás-azonosító. Ez egy teljes példa, amely egy Windows virtuális Gépet hoz létre, és hozzáadja egy riasztást, mely előfizetés rendszergazdái értesítése, ha a CPU-kihasználtsága a 80 % fölé megy.
 
 ```json
@@ -400,7 +406,7 @@ A Resource Manager-sablon riasztást általában akkor hasznos, ha létre riaszt
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Tudjon meg többet a riasztások](insights-receive-alert-notifications.md)
 * [Diagnosztikai beállítások hozzáadása](monitoring-enable-diagnostic-logs-using-template.md) a Resource Manager sablonhoz
 

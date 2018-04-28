@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 8d984c17ab373428b13ed59a598ca8ae4e88136a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.date: 04/16/2018
+ms.openlocfilehash: 30fa7e081c24339b7fa9f572d9feb25a0f920a86
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>A Stream Analytics kimenetek: tárolási és elemzésére szolgáló beállítások
 A Stream Analytics-feladat szerzői, vegye figyelembe a kapott adatokban felhasznált hogyan. Hogyan, az eredmények megtekinthetők a Stream Analytics-feladat, és képes tárolására?
@@ -290,6 +290,8 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a vár
 | Elválasztó karakter |Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 | Formátum |Csak érvényes JSON-típus. Sorral elválasztott beállítás megadja, hogy a formázott azzal, hogy minden JSON-objektum sortöréssel elválasztva. A tömb határozza meg, hogy a formázott JSON-objektumokat tömbként. |
 
+A partíciók száma [a Service Bus SKU és mérete alapján](../service-bus-messaging/service-bus-partitioning.md). Partíciós kulcs egyedi egész szám érték minden partíció esetében.
+
 ## <a name="service-bus-topics"></a>Service Bus-üzenettémák
 Service Bus-üzenetsorok adjon meg egy-egy kommunikációs módszer a küldőtől fogadóra, amíg [Service Bus-üzenettémakörök](https://msdn.microsoft.com/library/azure/hh367516.aspx) egy egy-a-többhöz típusú kommunikációt biztosítanak.
 
@@ -305,6 +307,8 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a táb
 | Esemény szerializálási formátum |A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott. |
  | Encoding |Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
 | Elválasztó karakter |Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
+
+A partíciók száma [a Service Bus SKU és mérete alapján](../service-bus-messaging/service-bus-partitioning.md). Partíciós kulcs egyedi egész szám érték minden partíció esetében.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Az Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) van egy globálisan elosztott, több modellre adatbázis szolgáltatást, hogy a földgolyó méretét, a gazdag lekérdezési és az automatikus indexeléshez keresztül séma-független adatmodellekben, rugalmasan méretezhető korlátlan ajánlatok garantált alacsony késéssel és iparágvezető átfogó SLA-k. A Stream Analytics Cosmos DB adatgyűjtési beállítások kapcsolatos információkért tekintse meg a [Cosmos DB kimenetként a Stream Analytics](stream-analytics-documentdb-output.md) cikk.
@@ -326,7 +330,7 @@ A következő táblázat létrehozása az Azure Cosmos DB kimeneti tulajdonsága
 | Partíciókulcs | Választható. Ez csak akkor szükséges, ha a gyűjtemény mintát használ egy {partition} token.<br/> A partíciós kulcs a kimeneti eseményekben a kimenet gyűjtemények közötti particionálására szolgáló kulcs megadásához használt mező neve.<br/> Egyetlen gyűjtemény kimeneti például a PartitionId bármilyen tetszőleges kimeneti oszlop használható. |
 | A dokumentum azonosítója |Választható. A kimeneti eseményekben a mely Beszúrás vagy frissítés műveletek alapuló elsődleges kulcs megadásához használt mező neve.  
 
-## <a name="azure-functions-in-preview"></a>Az Azure Functions (az előzetes verzió)
+## <a name="azure-functions"></a>Azure Functions
 Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel igény szerint, külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat kódokat. Lehetővé teszi, amely az Azure vagy harmadik féltől származó szolgáltatással téve események által kiváltott kód megvalósítását.  Ez a lehetőség az Azure Functions eseményindítók válaszolni teszi természetes kimeneti számára egy Azure Stream Analytics. A konzolkimeneti adapter lehetővé teszi a felhasználóknak a Stream Analytics csatlakozni az Azure Functions, futtassa a parancsfájlt vagy kódrészletek, számos esemény adott válaszként.
 
 Az Azure Stream Analytics az Azure Functions via HTTP-eseményindító hív meg. Az új Azure-függvény konzolkimeneti adapter áll rendelkezésre a következő konfigurálható tulajdonságokkal:
@@ -342,6 +346,23 @@ Az Azure Stream Analytics az Azure Functions via HTTP-eseményindító hív meg.
 Vegye figyelembe, hogy Azure Stream Analytics 413 (http-kérelmek entitás túl nagy) kivétel megkapja az Azure-függvény, csökkentik az Azure Functions küld a kötegek mérete. Az Azure-függvény kódjában ez a kivétel segítségével győződjön meg arról, hogy Azure Stream Analytics nem küld túlméretes kötegek. Emellett győződjön meg arról, hogy a maximális száma és mérete a függvényben értékei konzisztensek legyenek a Stream Analytics-portálon megadott értékek. 
 
 Emellett helyzetben fennáll semmilyen esetben egy olyan időkeretet üzenetsorokra, nincs kimenet jön létre. Ennek eredményeképpen computeResult függvény nem hívják meg. Ez a viselkedés a beépített ablakos összesítő függvényekben összhangban.
+
+## <a name="partitioning"></a>Particionálás
+
+A következő táblázat összefoglalja a partíció támogatása és az egyes kimeneti kimeneti írók száma:
+
+| Kimenet típusa | Particionálás támogatása | Partíciókulcs  | Kimeneti írók száma | 
+| --- | --- | --- | --- |
+| Azure Data Lake Store | Igen | Használja {a date} és {time} jogkivonatok az elérési út előtag mintában. Válassza ki a dátum formátumban, például éééé/hh/nn, nn/hh/éééé, hh-nn-éééé formátumra Konvertálni. Az időformátum ÓÓ használható. | Ugyanaz, mint a bemenetben. | 
+| Azure SQL Database | Nem | None | Nem alkalmazható. | 
+| Azure Blob Storage | Igen | Használja {a date} és {time} az elérési út mintája jogkivonatokat. Válassza ki a dátum formátumban, például éééé/hh/nn, nn/hh/éééé, hh-nn-éééé formátumra Konvertálni. Az időformátum ÓÓ használható. | Ugyanaz, mint a bemenetben. | 
+| Azure Event Hub | Igen | Igen | Ugyanaz, mint a kimeneti Eseményközpont partíciókat. |
+| Power BI | Nem | None | Nem alkalmazható. | 
+| Azure Table Storage | Igen | A kimeneti oszlop.  | Ugyanaz, mint a bemeneti vagy az előző lépésben. | 
+| Az Azure Service Bus-témakörbe | Igen | Automatikusan választott. A partíciók számának alapul a [Service Bus SKU és mérete](../service-bus-messaging/service-bus-partitioning.md). Partíciós kulcs egyedi egész szám érték minden partíció esetében.| Ugyanaz, mint a kimeneti.  |
+| Az Azure Service Bus-üzenetsorba | Igen | Automatikusan választott. A partíciók számának alapul a [Service Bus SKU és mérete](../service-bus-messaging/service-bus-partitioning.md). Partíciós kulcs egyedi egész szám érték minden partíció esetében.| Ugyanaz, mint a kimeneti. |
+| Azure Cosmos DB | Igen | {Partition} token gyűjteménynévmintája használja. {partition} érték a PARTITION BY záradék a lekérdezés alapul. | Ugyanaz, mint a bemenetben. |
+| Azure Functions | Nem | None | Nem alkalmazható. | 
 
 
 ## <a name="get-help"></a>Segítségkérés

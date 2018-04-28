@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Naplóelemzés erőforrások közötti keresési |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan kérdezheti több munkaterületekkel és App Insights app erőforrásokon az előfizetésben."
+title: Az Azure Naplóelemzés erőforrások közötti keresési |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan kérdezheti több munkaterületekkel és App Insights app erőforrásokon az előfizetésben.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 5485b1634013c73b58932aafa6e17d636558715d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e46ae3af3a718703f9e1d6b847b2342469bf3a1e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Kereszt-erőforrás napló keresést a Naplóelemzési  
 
@@ -30,7 +30,7 @@ Lekérheti most nem csak több Naplóelemzési munkaterület, de is ugyanazt az 
 A lekérdezés egy másik munkaterület hivatkozik, használja a [ *munkaterület* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) azonosítóját, és az Application Insights egy alkalmazás esetén a [ *app* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())azonosítója.  
 
 ### <a name="identifying-workspace-resources"></a>Munkaterület erőforrások azonosítása
-Az alábbi példák bemutatják, lekérdezések összesített számát az aktuális munkaterület frissítés táblából besorolásuk által igényelt frissítések is vissza a Naplóelemzési munkaterület, és egy másik munkaterület nevű  *contosoretail-it*. 
+Az alábbi példák bemutatják, lekérdezések Naplóelemzési munkaterület visszaadandó frissítések összesített száma a frissítés táblából nevű munkaterület különböző *contosoretail-it*. 
 
 Munkaterület azonosító is lehet befejezett egy számos módon:
 

@@ -3,7 +3,7 @@ title: Azure-veremben telepített virtuális gépek védelme |} Microsoft Docs
 description: Irányelvek Azure verem telepített virtuális gépek védelme.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
@@ -11,20 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 02get-started-article
-ms.date: 02/27/2018
-ms.author: mabrigg
+ms.topic: get-started-article
+ms.date: 04/25/2018
+ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 0e74c6af36130d206456634548f452a1f1a2d4af
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b49a8650611472b5e35c4bdf8373a1d7e3a45589
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Azure verem telepített virtuális gépek védelme
-
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
-
 Ez a cikk ismerteti a telepített Azure veremben felhasználói virtuális gépek védelmét, hogyan.
 
 Az adatvesztéssel és a nem tervezett leállás elleni kell megvalósítani a felhasználói alkalmazások és adatok biztonsági mentés-helyreállítás vagy vész-helyreállítási terv. A terv minden alkalmazáshoz egyedi, de a szervezete átfogó az üzletmenet folytonossága és vészhelyreállítás BC vagy-helyreállítási stratégia által meghatározott keretek követi. Általános minták és gyakorlatok alkalmazás rugalmasságot és rendelkezésre állást el [rugalmas alkalmazások az Azure-kialakítása](https://docs.microsoft.com/azure/architecture/resiliency) Azure architektúra Center.
@@ -147,7 +144,8 @@ Az Azure-verem üzembe helyezéshez szempontokat:
 ## <a name="next-steps"></a>További lépések 
 
 Ebben a cikkben azt mutatja be a felhasználói virtuális gépeket telepített Azure veremben védelme irányelveket. Hogyan védi meg a virtuális gépek Azure-szolgáltatások használata további információkért lásd:
- - [Azure verem az Azure Backup Server támogatása](https://docs.microsoft.com/en-us/azure/backup/ ) 
- - [Azure verem támogatása az Azure Site Recovery](https://docs.microsoft.com/en-us/azure/site-recovery/)  
+ - [Azure Backup használatával biztonsági másolatot a fájlokhoz és alkalmazásokhoz Azure verem](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
+ - [Azure verem az Azure Backup Server támogatása](https://docs.microsoft.com/azure/backup/ ) 
+ - [Azure verem támogatása az Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)  
  
 A virtuális gépek védelmét Azure veremben kínáló partner termékekkel kapcsolatos további tudnivalókért tekintse meg a "[védett alkalmazások és adatok Azure veremben](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)."

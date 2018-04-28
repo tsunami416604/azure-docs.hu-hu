@@ -2,23 +2,20 @@
 title: A Storage Emulator használatával a Visual Studio és konfigurálása |} Microsoft Docs
 description: A Storage Emulator használatával a Visual Studio és konfigurálása
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: c8e7996f-6027-4762-806e-614b93131867
-ms.service: storage
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+assetId: c8e7996f-6027-4762-806e-614b93131867
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: ecf9df0d94f34df69750a8baa7f5502764cf9b06
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c502d5e0869d35ded5c3ba7e790da0558d219e0e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>A Storage Emulator használatával a Visual Studio és konfigurálása
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -54,5 +51,5 @@ Az első alkalommal futtat vagy hibakeresése a Visual Studio, a szolgáltatás 
 A storage emulator a helyi tárterület-szolgáltatások állapotának megtekintése és indítása, leállítása, és visszaállíthatja őket felhasználói felülete lehetőséget nyújt. A storage emulator szolgáltatás elindítása után a felhasználói felület megjelenítése vagy elindításához, vagy állítsa le a szolgáltatást a Microsoft Azure Emulator a Windows tálcán található az értesítési területen megjelenő ikonra kattint.
 
 ## <a name="viewing-storage-emulator-data-in-server-explorer"></a>A Server Explorer storage emulator adatok megtekintése
-Az Azure Storage-csomópont a Server Explorer lehetővé teszi a storage-fiókok, beleértve a storage emulator blob és a tábla adatainak beállítások adatok megtekintése és módosítása. Lásd: [a Tártallózó (előzetes verzió) kezelése az Azure Blob Storage-erőforrások](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) további információt.
+Az Azure Storage-csomópont a Server Explorer lehetővé teszi a storage-fiókok, beleértve a storage emulator blob és a tábla adatainak beállítások adatok megtekintése és módosítása. Lásd: [kezelése az Azure Blob Storage-erőforrások a Tártallózó alkalmazással](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) további információt.
 

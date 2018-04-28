@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Az Azure Storage szolgáltatás inaktívadat-titkosítása
 
@@ -72,7 +72,7 @@ V: Igen, ha Ön [saját titkosítási kulcsok használata](storage-service-encry
 
 **K: Storage szolgáltatás titkosítási alapértelmezés szerint engedélyezve van, a storage-fiók létrehozásakor?**
 
-A: Igen Storage szolgáltatás titkosítási (a Microsoft által felügyelt kulcsok használata) alapértelmezés szerint engedélyezve van az összes storage-fiókok – Azure Resource Manager és klasszikus. Azt engedélyezte az összes szolgáltatáshoz, valamint – Blob-tároló, a Table storage, Queue storage és Azure fájlokat.
+A: Igen Storage szolgáltatás titkosítási alapértelmezés szerint engedélyezve van az összes storage-fiókok és az összes Azure Storage szolgáltatás.
 
 **K: hogyan eltér a Azure Disk Encryption?**
 

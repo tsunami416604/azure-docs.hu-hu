@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ffb8e822644ba8f0bccc3e81edc4da6085ff3ec7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2c9a60aaa627a41d023e5d5d7464046df5b55b05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden egyes dokumentum írása az alkalmazással kapcsolatos szolgáltatásokra vonatkozó az Azure Active Directory (Azure AD) átfogó listáját tartalmazza.
@@ -42,8 +42,8 @@ Ez a szakasz vonatkozó hibaelhárítási útmutatók gyors hozzáférést bizto
 |:---:| --- |
 | Összevont egyszeri bejelentkezést. |[Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](active-directory-saml-debugging.md) |
 | Jelszó-alapú egyszeri bejelentkezést. |[A hozzáférési Panel bővítményét az Internet Explorer hibaelhárítása](active-directory-saas-ie-troubleshooting.md) |
-| Application Proxy |[Alkalmazás Proxy hibaelhárítási útmutatója](active-directory-application-proxy-troubleshoot.md) |
-| Egyszeri bejelentkezés közötti helyszíni AD és az Azure AD |[Hibaelhárítási Jelszókivonat-szinkronizálást](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[A Jelszóvisszaírás hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Alkalmazásproxy |[Alkalmazás Proxy hibaelhárítási útmutatója](active-directory-application-proxy-troubleshoot.md) |
+| Egyszeri bejelentkezés közötti helyszíni AD és az Azure AD |[Hibaelhárítási Jelszókivonat-szinkronizálást](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[A Jelszóvisszaírás hibaelhárítása](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dinamikus csoporttagság |[Dinamikus csoporttagság hibaelhárítása](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>Egyszeri bejelentkezés (SSO)
@@ -96,7 +96,7 @@ Ha a szervezet egy Windows Server Active Directory a helyszíni és a felhőben 
 | Az egyszeri bejelentkezésre vonatkozó beállításokat a áttekintése érhető el az Azure AD Connect, valamint a hibrid környezetek kezeléséről |[A felhasználói bejelentkezési beállítások az Azure AD Connect](active-directory-aadconnect-user-signin.md) |
 | Általános útmutatást mindkét környezetek kezelése a helyszíni Active Directory és az Azure Active Directory |[Az Azure AD hibrid identitáskezelési elrendezésével kapcsolatos szempontok](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[A helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md) |
 | Útmutatás a jelszó-szinkronizálás engedélyezése az egyszeri bejelentkezés használatával |[Jelszó-szinkronizálás megvalósítása az Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Jelszó-szinkronizálás hibaelhárítása](https://support.microsoft.com/en-us/kb/2855271) |
-| Útmutatás a Jelszóvisszaírás engedélyezése az egyszeri bejelentkezés használatával |[Az Azure AD-jelszókezelés első lépések](active-directory-passwords-getting-started.md)<br /><br />[A jelszóvisszaíró hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Útmutatás a Jelszóvisszaírás engedélyezése az egyszeri bejelentkezés használatával |[Az Azure AD-jelszókezelés első lépések](authentication/quickstart-sspr.md)<br /><br />[A jelszóvisszaíró hibaelhárítása](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Útmutatás az egyszeri bejelentkezés engedélyezése harmadik fél Identitásszolgáltatók használatával |[Kompatibilis harmadik fél Identitásszolgáltatók engedélyezése egyszeri bejelentkezéshez használható listája](https://aka.ms/ssoproviders) |
 | Hogyan Windows 10-felhasználók számára is teszik az egyszeri bejelentkezés az Azure AD Join keresztül |[Csatlakozás a felhő szolgáltatásainak kiterjesztése Windows 10 eszközökön az Azure Active Directory használatával](active-directory-azureadjoin-overview.md) |
 
@@ -115,7 +115,7 @@ Beállítása után az egyszeri bejelentkezés az alkalmazások és erőforráso
 
 Feltételes hozzáférés egy [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) szolgáltatás.
 
-## <a name="apps--azure-ad"></a>Apps & Azure AD
+## <a name="apps--azure-ad"></a>Alkalmazások és az Azure AD
 ### <a name="cloud-app-discovery-find-which-saas-apps-are-being-used-in-your-organization"></a>A cloud App Discovery: Található mely SaaS-alkalmazások van használatban a szervezet
 A cloud App Discovery segítségével informatikai részlegek ismerje meg, melyik SaaS-alkalmazások vannak használatban a szervezetben. Azt is mérheti az alkalmazások használatát és a népszerűségét úgy, hogy az informatikai megállapíthatja, hogy mely alkalmazások előnyösek a legjobban alatt informatikai vezérlő és integrálva van az Azure AD.
 
@@ -184,9 +184,9 @@ Az Azure AD hozzáférési Panel, ahol a végfelhasználók alkalmazások elind�
 | Útmutató a következő cikket: |  |
 |:---:| --- |
 | Az egyszeri bejelentkezés alkalmazások központi telepítéséhez a felhasználók számára elérhető különböző lehetőségek összehasonlítása |[Üzembe helyezése az Azure AD integrált alkalmazások felhasználók számára](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
-| A hozzáférési Panel és a mobil egyenértékű MyApps áttekintése |[Bevezetés a hozzáférési Panel és MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
+| A hozzáférési Panel és a mobil egyenértékű MyApps áttekintése |[Bevezetés a hozzáférési Panel és MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Hogyan érhetők el az Azure AD alkalmazásaiban az Office 365 webhelyről |[Az Office 365 alkalmazás indító használatával](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
-| Hogyan érhetők el az Intune Managed Browser mobilalkalmazás által az Azure AD alkalmazásaiban |[Intune által felügyelt böngészőben](https://technet.microsoft.com/en-us/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
+| Hogyan érhetők el az Intune Managed Browser mobilalkalmazás által az Azure AD alkalmazásaiban |[Intune által felügyelt böngészőben](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | Hogyan érhetők el az Azure AD alkalmazások mélyhivatkozással kezdeményezése egyszeri bejelentkezést. |[Közvetlen bejelentkezés az alkalmazásokra mutató beolvasása](active-directory-appssoaccess-whatis.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 Hozzáférési Panel érhető el [Azure Active Directory minden kiadása](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -210,4 +210,4 @@ Mely jelentések érhetők el az Azure Active Directory különböző kiadásait
 
 [Az Azure Active Directory tartományi szolgáltatások](https://azure.microsoft.com/services/active-directory-ds/)
 
-[Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
+[Az Azure többtényezős hitelesítés](https://azure.microsoft.com/services/multi-factor-authentication/)

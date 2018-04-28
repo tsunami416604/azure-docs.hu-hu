@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1fe8a52a946b7e70a845e26b80dec94176c346f0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: d56b27a040420d049f567ac0de9289b1e72f3ea9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Azure tárolószolgáltatás (AKS) HTTPS érkező
 
@@ -23,11 +23,11 @@ Ez a dokumentum végigvezeti egy minta központi telepítése a [NGINX érkező 
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Helm parancssori felület telepítése – tekintse meg a Helm CLI [dokumentáció] [helm-cli] telepítési utasításokat.
+Helm parancssori felület telepítése – tekintse meg a Helm CLI [dokumentáció] [ helm-cli] telepítési utasításokat.
 
 ## <a name="install-an-ingress-controller"></a>Egy érkező controller telepítése
 
-A NGINX érkező tartományvezérlő telepítése Helm használatával. Tekintse meg a NGINX érkező vezérlő [dokumentáció] [ nginx-ingress] részletes telepítési információkat. 
+A NGINX érkező tartományvezérlő telepítése Helm használatával. Tekintse meg a NGINX érkező vezérlő [dokumentáció] [ nginx-ingress] részletes telepítési információkat.
 
 A diagram tárház frissítése.
 
@@ -76,13 +76,7 @@ PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAdd
 az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
 ```
 
-Ha szükséges, a következő paranccsal lekérni a teljes Tartománynevet. Frissítse az IP-cím érték, amely az érkező vezérlő.
-
-```azurecli
-az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '52.224.125.195')].[dnsSettings.fqdn]" --output tsv
-```
-
-A bejövő adatok vezérlő már elérhető a teljes Tartománynevet.
+A bejövő adatok tartományvezérlő teljesen minősített Tartománynevét keresztül érhető el kell.
 
 ## <a name="install-kube-lego"></a>KUBE-LEGO telepítése
 
@@ -181,13 +175,14 @@ Figyelje meg, hogy a kapcsolat titkosított, és most titkosítása által kiál
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a jelen dokumentumban bemutatott szoftver. 
+További információ a jelen dokumentumban bemutatott szoftver.
 
+- [Helm parancssori felület][helm-cli]
 - [NGINX érkező vezérlő][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
-[helm-client]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

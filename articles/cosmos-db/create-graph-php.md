@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f6d8b8773719a59ad5326196f32a69a13a9a5d34
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4c7046c335039f5bc689790aaf53f5dff65991d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a PHP és az Azure Portal használatával
 
@@ -42,24 +42,7 @@ A gráfadatbázis létrehozásához először létre kell hoznia egy Gremlin- (G
 
 ## <a name="add-a-graph"></a>Gráf hozzáadása
 
-Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozására is használhatja. 
-
-1. Kattintson az **Adatkezelő** > **Új gráf** lehetőségre.
-
-    A jobb szélen megjelenik a **Gráf hozzáadása** terület. Előfordulhat, hogy jobbra kell görgetnie, hogy lássa.
-
-    ![Az Azure Portal Adatkezelő, Gráf hozzáadása oldal](./media/create-graph-php/azure-cosmosdb-data-explorer-graph.png)
-
-2. A **Gráf hozzáadása** oldalon adja meg az új gráf beállításait.
-
-    Beállítás|Ajánlott érték|Leírás
-    ---|---|---
-    Adatbázis-azonosító|sample-database|Az új adatbázisnak adja a *sample-database* nevet. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóközt.
-    Gráfazonosító|sample-graph|Az új gyűjteménynek adja a *sample-graph* nevet. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
-    Tárkapacitás|Rögzített méretű (10 GB)|Ne módosítsa az alapértelmezett **Rögzített méretű (10 GB)** értéket. Ez az érték az adatbázis tárkapacitása.
-    Teljesítmény|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-
-3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -85,7 +68,7 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-graph-php-getting-started\ mappában található `connect.php` fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-information) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-graph-php-getting-started\ mappában található connect.php fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-information) szakaszra. 
 
 * A Gremlin `connection` inicializálása megtörténik a `connect.php` fájl elején a `$db` objektum használatával.
 
@@ -122,7 +105,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-php/keys.png)
 2. Nyissa meg a `connect.php` fájlt, és a 8. sorba illessze be az URI értéket a `your_server_address` helyére.
 
-    A kapcsolat objektum inicializálásának most a következőhöz hasonlóan kell kinéznie:
+    A kapcsolatobjektum inicializálásának most a következő kódhoz hasonlóan kell kinéznie:
 
     ```php
     $db = new Connection([
@@ -138,11 +121,11 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
 3. Ha a gráfadatbázis-fiókot 2017. december 20-án vagy azután hozta létre, módosítsa a gazdagép nevében a `graphs.azure.com` karakterláncot a következőre: `gremlin.cosmosdb.azure.com`.
 
-4. Módosítsa a kapcsolat objektumban lévő `username` paramétert az adatbázis és a gráf nevével. Ha a `sample-database` és `sample-graph` javasolt értékeket használta, a következőképpen kell kinéznie:
+4. Módosítsa a kapcsolat objektumban lévő `username` paramétert az adatbázis és a gráf nevével. Ha a `sample-database` és `sample-graph` javasolt értékeket használta, a következő kódhoz hasonlóan kell kinéznie:
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
-    Ekkor így kell kinéznie a teljes kapcsolat objektumnak:
+    A teljes kapcsolatobjektumnak ekkor az alábbi kódrészlethez hasonlóan kell kinéznie:
 
     ```php
     $db = new Connection([
@@ -158,7 +141,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
 5. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `your_primary_key` helyére a jelszóparaméterben.
 
-    A kapcsolat objektum inicializálásának a most így kell kinéznie:
+    A kapcsolatobjektum inicializálásának most a következő kódhoz hasonlóan kell kinéznie:
 
     ```php
     $db = new Connection([
@@ -228,7 +211,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
     tech | java | 
 
     > [!NOTE]
-    > Ebben a rövid útmutatóban egy nem particionált gyűjteményt hozunk létre. Ha azonban a gyűjtemény létrehozásakor megad egy partíciókulcsot és particionált gyűjteményt hoz létre, minden új csúcspontban meg kell adnia kulcsként a partíciókulcsot. 
+    > Ebben a rövid útmutatóban egy nem particionált gyűjteményt fog létrehozni. Ha azonban a gyűjtemény létrehozásakor megad egy partíciókulcsot és particionált gyűjteményt hoz létre, minden új csúcspontban meg kell adnia kulcsként a partíciókulcsot. 
 
 6. Kattintson az **OK** gombra. Előfordulhat, hogy ki kell terjesztenie a képernyőt a képernyő alján lévő **OK** gomb megjelenítéséhez.
 
@@ -250,7 +233,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
     Ha további adatokat ad meg, szűrőkkel csökkentheti a találatok számát. Az Adatkezelő alapértelmezés szerint a `g.V()` lekérdezést használja a gráf összes csúcspontjának lekéréséhez. Ezt más [gráflekérdezésre](tutorial-query-graph.md) is módosíthatja, például a `g.V().count()` lekérdezésre, ha azt szeretné, hogy a rendszer JSON formátumban adja vissza a gráf csúcspontjainak számát. Ha módosította a szűrőt, állítsa vissza a szűrőt a `g.V()` lekérdezésre, majd kattintson a **Szűrő alkalmazása** lehetőségre az eredmények újbóli megjelenítéséhez.
 
-12. Most már összekapcsolhatjuk a rakesh és az ashley elemet. Győződjön meg arról, hogy az **ashley** elem van kijelölve a **Találatok** listában, majd kattintson a jobb alsó sarokban, a **Célok** elem mellett lévő Szerkesztés gombra. Előfordulhat, hogy szélesebbre kell állítania az ablakot a **Tulajdonságok** terület megjelenítéséhez.
+12. Most már összekapcsolhatja a rakesh és az ashley elemet. Győződjön meg arról, hogy az **ashley** elem van kijelölve a **Találatok** listában, majd kattintson a jobb alsó sarokban, a **Célok** elem mellett lévő Szerkesztés gombra. Előfordulhat, hogy szélesebbre kell állítania az ablakot a **Tulajdonságok** terület megjelenítéséhez.
 
    ![Gráfcsúcspont céljának módosítása](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
 
@@ -262,7 +245,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
    ![Két összekapcsolt csúcspont az Adatkezelőben](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
 
-   Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét. A gráfhoz továbbra is hozzáadhat csúcspontokat, módosíthatja a meglévő csúcspontokat, és megváltoztathatja a lekérdezéseket. Most pedig tekintsük át az Azure Cosmos DB által biztosított mérőszámokat, majd távolítsuk el az erőforrásokat. 
+   Ezzel befejezte a gyors útmutató erőforrások létrehozására vonatkozó részét. A gráfhoz továbbra is hozzáadhat csúcspontokat, módosíthatja a meglévő csúcspontokat, és megváltoztathatja a lekérdezéseket. Most pedig tekintsük át az Azure Cosmos DB által biztosított mérőszámokat, majd távolítsuk el az erőforrásokat. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

@@ -1,11 +1,11 @@
 ---
-title: "Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Data Lake Store eléréséhez"
-description: "Ez az oktatóanyag bemutatja, hogyan használják a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure Data Lake Store eléréséhez."
+title: Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Data Lake Store eléréséhez
+description: Ez az oktatóanyag bemutatja, hogyan használják a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure Data Lake Store eléréséhez.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 742b76e17b7ad00a70b0d18895c0b59ebe044d47
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: daef85164793dd6183c41604f200864aabadf8d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
 
@@ -211,7 +211,7 @@ Gratulálunk!  A Data Lake Store-fájlrendszer használatával egy virtuális g�
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
 - MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](msi-overview.md).
-- A felügyeleti műveletek Data Lake Store az Azure Resource Managert használja.  További információk a virtuális gép MSI hitelesítésére az erőforrás-kezelő használatával, [egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) használatával férjenek hozzá a Resource Manager](msi-tutorial-linux-vm-access-arm.md).
+- A felügyeleti műveletek Data Lake Store az Azure Resource Managert használja.  További információk a virtuális gép MSI hitelesítésére az erőforrás-kezelő használatával, [egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) használatával férjenek hozzá a Resource Manager](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md).
 - További információ [Azure Active Directory használatával a Data Lake Store hitelesítési](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
 - További információ [fájlrendszer-műveleteket a Azure Data Lake Store REST API használatával](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) vagy a [WebHDFS fájlrendszer API-k](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis).
 - További információ [hozzáférés-vezérlés a Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).

@@ -1,22 +1,18 @@
 ---
-title: "Az Azure Search elemzőkkel |} Microsoft Docs"
-description: "Hozzárendelése elemzőkkel lecseréli index kereshető szöveg mezők alapértelmezett szabványos Lucene egyéni, előre definiált vagy nyelvspecifikus lehetőségeket."
+title: Az Azure Search elemzőkkel |} Microsoft Docs
+description: Hozzárendelése elemzőkkel lecseréli index kereshető szöveg mezők alapértelmezett szabványos Lucene egyéni, előre definiált vagy nyelvspecifikus lehetőségeket.
 services: search
-manager: jhubbard
-author: HeidiSteen
-documentationcenter: 
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: heidist
-ms.openlocfilehash: 1b9dea2978c11955da3ea4df8b90dc10a866d3f1
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+manager: cgronlun
+author: HeidiSteen
+ms.openlocfilehash: e858966fb5a15b84af1952399a5eff3ca50d0d59
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="analyzers-in-azure-search"></a>Elemzők az Azure Search szolgáltatásban
 
@@ -53,7 +49,7 @@ Testre szabhatja, mint egy előre meghatározott analyzer **mintát** vagy **le�
 
 3. Egy elemző eszköz hozzáadása egy mező definition azt eredményezi, az indexben írási művelet azok háromszorosa. Ha ad hozzá egy **analyzer** létező indexek, vegye figyelembe a következőket:
  
- | Forgatókönyv | Gyakorolt hatás | Lépések |
+ | Forgatókönyv | Hatás | Lépések |
  |----------|--------|-------|
  | Új mező hozzáadása | minimális | Ha a mező a sémában még nem létezik, nincs nincs mező változat végezhet, mert a mező még nincs fizikai jelenlét az indexben. Használjon [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ehhez a feladathoz.|
  | Egy elemző eszköz hozzáadása egy meglévő indexelt mezőt. | Építse újra | A fordított index mező kell újra létrehoznia az alapoktól fel, és újra kell indexelni mezőket a tartalmát. <br/> <br/>Az indexek aktív fejlesztés alatt [törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) átvételéhez mező új meghatározása az index. <br/> <br/>Éles környezetben indexek hozzon létre egy új mezőben adja meg a módosított meghatározása és használatba. Használjon [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) átfogó az új mező. Később, a tervezett index karbantartás részeként is távolítja el az elavult mező eltávolítása az index. |
@@ -242,7 +238,7 @@ Különböző nyelveken karakterláncokat tartalmazó mezőket is használható,
   }
 ~~~~
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Tekintse át az átfogó magyarázata [hogyan teljes szöveges keresés működik az Azure Search](search-lucene-query-architecture.md). Ez a cikk példák segítségével viselkedéseket, amelyek a felületen counter-intuitive tűnhetnek ismertetik.
 
@@ -254,7 +250,7 @@ Különböző nyelveken karakterláncokat tartalmazó mezőket is használható,
 
 + [Hasonlítsa össze a szabványos és az angol nyelvű elemzőkkel](http://alice.unearth.ai/) szomszédos ablaktáblán a bemutató webhelyen. 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
  [REST API-t dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

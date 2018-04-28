@@ -1,6 +1,6 @@
 ---
-title: "A kezelt alkalmazások Azure áttekintése |} Microsoft Docs"
-description: "A fogalmakat ismerteti az Azure által felügyelt alkalmazások"
+title: A kezelt alkalmazások Azure áttekintése |} Microsoft Docs
+description: A fogalmakat ismerteti az Azure által felügyelt alkalmazások
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/26/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: a26cfc632dacb41435b3755409d3e91630f5f3eb
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 35e30700270fb5757a80c4a6b8f231042f7640f3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure által felügyelt alkalmazások áttekintése
 
@@ -52,7 +52,7 @@ További információ a piactéren kezelt alkalmazás közzététele: [piactér-
 
 ## <a name="resource-groups-for-managed-applications"></a>Erőforráscsoportok kezelt alkalmazások
 
-A kezelt alkalmazás erőforrásait általában két erőforráscsoport találhatók. A fogyasztó egy erőforráscsoport, valamint kezelésére a közzétevő a másik erőforráscsoportban. A kezelt alkalmazás meghatározásakor a közzétevő a hozzáférési szintet határozza meg. A következő kép bemutatja egy olyan forgatókönyvet, ahol a közzétevő kéri a tulajdonosi szerepkört, a felügyelt erőforráscsoport. A közzétevő Ez az erőforráscsoport a fogyasztó számára olvasási zárolást helyezni.
+A kezelt alkalmazás erőforrásait általában két erőforráscsoport találhatók. A fogyasztó egy erőforráscsoport, valamint kezelésére a közzétevő a másik erőforráscsoportban. A kezelt alkalmazás meghatározásakor a közzétevő a hozzáférési szintet határozza meg. A következő kép bemutatja egy olyan forgatókönyvet, ahol a közzétevő kéri a tulajdonosi szerepkört, a felügyelt erőforráscsoport. A közzétevő Ez az erőforráscsoport a fogyasztó számára olvasási zárolást helyezni. A közzétevő-azonosságok, amelyek hozzáférést kapnak a felügyelt erőforráscsoporthoz nem érvényes a zárolás.
 
 ![Erőforrás csoport hozzáférése](./media/overview/access.png)
 

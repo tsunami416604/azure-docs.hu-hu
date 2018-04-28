@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Az Azure Active Directory B2C: Segítő használt eszköz a lap felhasználói felület (UI) testreszabási szolgáltatás bemutatása
 Ez a cikk egy kiegészítő, hogy a [fő felhasználói felület testreszabása cikk](active-directory-b2c-reference-ui-customization.md) az Azure Active Directory (Azure AD) B2C. A következő lépések azt ismertetik, hogyan gyakorlására a lap felhasználói felületi testreszabási szolgáltatás minta HTML- és CSS tartalom mellékelt használatával.
@@ -29,7 +29,7 @@ A mellékelt minta tartalom customze két oldalán használható egy [regisztrá
 ## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 Szüksége lesz a [alkalmazás regisztrálása](active-directory-b2c-app-registration.md) a B2C bérlő a házirend végrehajtásához használható. Az alkalmazás a regisztrálás után futtatja ténylegesen a regisztrációs szabályzatban használt néhány lehetőség közül választhat:
 
-* Build az Azure AD B2C az "Első lépések" című részében felsorolt gyors üzembe helyezési alkalmazások egyik [jelentkezzen regisztrálása és beléptetése az alkalmazások a fogyasztói](active-directory-b2c-overview.md#get-started).
+* Build az Azure AD B2C az "Első lépések" című részében felsorolt gyors üzembe helyezési alkalmazások egyik [jelentkezzen regisztrálása és beléptetése az alkalmazások a fogyasztói](active-directory-b2c-overview.md).
 * Használja az előre elkészített [az Azure AD B2C Playground](https://aadb2cplayground.azurewebsites.net) alkalmazás. Ha a playground használatát választja, regisztrálnia kell egy alkalmazást a B2C-bérlő használata a a **átirányítási URI** `https://aadb2cplayground.azurewebsites.net/`.
 * Használja a **Futtatás most** gombra a házirend a [Azure-portálon](https://portal.azure.com/).
 
@@ -39,7 +39,7 @@ A házirend megjelenésének és arculatának testreszabásához szüksége elő
 Ez az oktatóanyag céljából már előre létrehozott néhány minta tartalom és üzemelteti az Azure Blob Storage tárolóban. A minta tartalma a fiktív vállalat, a "Wingtip Toys" a témában nagyon egyszerű testreszabását. Próbálja ki a saját házirendben, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a bérlő számítógépen a [Azure-portálon](https://portal.azure.com/) , és keresse meg a B2C funkciók panelje.
-2. Kattintson a **regisztráció vagy bejelentkezés házirendek** és kattintson a házirend (például "b2c\_1\_bejelentkezési\_mentése\_bejelentkezési\_a").
+2. Kattintson a **regisztráció vagy bejelentkezés házirendek**, kattintson a házirendre, majd kattintson a Szerkesztés (például "b2c\_1\_bejelentkezési\_mentése\_bejelentkezési\_a").
 3. Kattintson a **lap felhasználói felületének testreszabása** , majd **egyesített előfizetési vagy a bejelentkezési oldal**.
 4. Váltás a **használata egyéni lap** váltani **Igen**. Az a **egyéni lap URI** mezőbe írja be `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/unified.html`. Kattintson az **OK** gombra.
 5. Kattintson a **helyi fiók előfizetéshez**. Váltás a **egyéni sablon használata** váltani **Igen**. Az a **egyéni lap URI** mezőbe írja be `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/selfasserted.html`.

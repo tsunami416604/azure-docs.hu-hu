@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: ''
-ms.openlocfilehash: 45b148a9ccbd7c801821f23586810872a4a0d50d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c0e7f2060f81812cd69ed1af0246287757985243
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Az Azure Active Directory és a multi-factor Authentication: identitások és hozzáférések vezérlőkkel személyes adatok védelme
 
@@ -125,7 +125,7 @@ Ha a felhasználók, amely tartalmazza az Azure multi-factor Authentication lice
 
 ![Engedélyezve van az MFA-felhasználók](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-Ha meg kell vizsgálni a folyamatot, amely a helyzetnek legmegfelelőbb központi telepítési típus meghatározása licencek jelenleg nem rendelkezik. A című cikk bármikor elindíthatja [válassza ki az Azure multi-factor Authentication Autehntication megoldást meg](../multi-factor-authentication/multi-factor-authentication-get-started.md). Ha úgy dönt, hogy a multi-factor Authentication kiszolgáló létrehozásához szükséges. Következő lépések végrehajtásával elindíthatja:
+Ha meg kell vizsgálni a folyamatot, amely a helyzetnek legmegfelelőbb központi telepítési típus meghatározása licencek jelenleg nem rendelkezik. A című cikk bármikor elindíthatja [válassza ki az Azure multi-factor Authentication Autehntication megoldást meg](../active-directory/authentication/concept-mfa-whichversion.md). Ha úgy dönt, hogy a multi-factor Authentication kiszolgáló létrehozásához szükséges. Következő lépések végrehajtásával elindíthatja:
 
 1. Válassza ki **Active Directory** (bejelentkezve rendszergazdaként) az Azure portálon.
 
@@ -137,7 +137,7 @@ Ha meg kell vizsgálni a folyamatot, amely a helyzetnek legmegfelelőbb központ
 
 4. Kattintson a **Mentés** gombra.
 
-Ebben az ablakban is lehetősége nyílik a multi-factor Authentication kiszolgáló letöltéséhez. Méretezés és a központi telepítésének megtervezése a cikk áttekintésével kapcsolatos további részletekért [Ismerkedés az Azure multi-factor Authentication kiszolgáló az](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)
+Ebben az ablakban is lehetősége nyílik a multi-factor Authentication kiszolgáló letöltéséhez. Méretezés és a központi telepítésének megtervezése a cikk áttekintésével kapcsolatos további részletekért [Ismerkedés az Azure multi-factor Authentication kiszolgáló az](../active-directory/authentication/howto-mfaserver-deploy.md)
 
 A többtényezős hitelesítésszolgáltató kezeléséről további utasításokért lásd: [első lépések az Azure multi-factor Auth Provider.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)
 

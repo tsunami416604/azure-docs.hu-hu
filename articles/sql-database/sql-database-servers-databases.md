@@ -9,18 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ffae541020a2672affab774ee6da2a8c707745f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database-kiszolgálók és adatbázisok létrehozása és kezelése
 
 SQL-adatbázis három típusú adatbázisokból kínálja:
 
-- Belül létrehozott egy adatbázist egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) meghatározott számú [számítási és tárolási erőforrásokat a különböző munkaterhelések](sql-database-service-tiers.md). Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
-- Részeként létrehozott adatbázis egy [adatbázisok készlete](sql-database-elastic-pool.md) belül egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) meghatározott számú [számítási és tárolási erőforrásokat a különböző munkaterhelések](sql-database-service-tiers.md) , amelyek megosztott összes a készletben lévő adatbázisok között. Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
+- Belül létrehozott egy adatbázist egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) rendelkező egy [együtt a számítási és tárolási erőforrások készletét](sql-database-service-tiers-dtu.md) vagy egy [számítási és tárolási erőforrásokatfüggetlenméretezését](sql-database-service-tiers-vcore.md). Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
+- Részeként létrehozott adatbázis egy [adatbázisok készlete](sql-database-elastic-pool.md) belül egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) rendelkező egy [együtt a számítási és tárolási erőforrások készletét (DTU-alapú)](sql-database-service-tiers-dtu.md) vagy egy [(vCore-alapú) számítási és tárolási erőforrásokat független méretezését](sql-database-service-tiers-vcore.md) a készletben lévő adatbázisok között megosztott. Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
 - Egy [egy SQL server-példányt](sql-database-managed-instance.md) jött létre (a felügyelt példánya) egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) a számítási és tárolási erőforrásokat, az összes olyan server-példányon adatbázis egy adott csoportján. A felügyelt példánya rendszer és a felhasználó adatbázist tartalmaz. Felügyelt példány lehetővé teszi, hogy adatbázis növekedési-és-shift egy teljes körűen felügyelt PaaS, hogy az alkalmazás újratervezése nélkül. Felügyelt példány magas kompatibilitási a helyszíni SQL Server programozási modellt biztosít, és támogatja az SQL Server szolgáltatásai és a hozzá tartozó eszközök és szolgáltatások nagy részét.  
 
 Microsoft Azure SQL Database 7.3 vagy újabb tabulált adatfolyam (TDS) protokoll ügyfél verziója támogatja, és lehetővé teszi, hogy csak a titkosított TCP/IP-kapcsolatokat.
@@ -78,7 +78,7 @@ Egy Azure SQL adatbázis használatával létrehozásához a [Azure-portálon](h
   ![adatbázis létrehozása-1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> Az adatbázis árképzési szint kiválasztásával további információkért lásd: [szolgáltatásszintek](sql-database-service-tiers.md).
+> Az adatbázis árképzési szint kiválasztásával további információkért lásd: [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md).
 
 Egy felügyelt példány létrehozásához lásd: [egy felügyelt példányának létrehozása](sql-database-managed-instance-create-tutorial-portal.md)
 
@@ -91,11 +91,11 @@ Kezelheti egy meglévő adatbázist, navigáljon a **SQL-adatbázisok** lapon, m
    ![kiszolgálói tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> Adatbázis teljesítménye tulajdonságok beállítása: [szolgáltatásszintek](sql-database-service-tiers.md).
+> Adatbázis teljesítménye tulajdonságok beállítása: [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md).
 >
 
 > [!TIP]
-> Tekintse meg az Azure portál gyors üzembe helyezési útmutató [Azure SQL-adatbázis létrehozása az Azure portálon](sql-database-get-started-portal.md).
+> Az Azure portál gyors üzembe helyezés, lásd: [Azure SQL-adatbázis létrehozása az Azure portálon](sql-database-get-started-portal.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Azure SQL-kiszolgálók, a adatbázisok és a PowerShell-lel tűzfalak kezelése
@@ -120,7 +120,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az A
 | New-AzureRmSqlServerVirtualNetworkRule | Létrehoz egy [ *virtuális hálózati szabály*](sql-database-vnet-service-endpoint-rule-overview.md), amely a virtuális hálózati szolgáltatási végpont alhálózat alapján. |
 
 > [!TIP]
-> Tekintse meg a PowerShell gyors üzembe helyezési útmutató [PowerShell használatával egyetlen Azure SQL-adatbázis létrehozása](sql-database-get-started-portal.md). PowerShell-példa parancsfájlok, lásd: [a PowerShell szolgáltatás használatával hozzon létre egy Azure SQL-adatbázis és a tűzfalszabályok konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelő és a skála egyetlen SQL adatbázis-PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> A PowerShell gyors üzembe helyezés, lásd: [PowerShell használatával egyetlen Azure SQL-adatbázis létrehozása](sql-database-get-started-portal.md). PowerShell-példa parancsfájlok, lásd: [a PowerShell szolgáltatás használatával hozzon létre egy Azure SQL-adatbázis és a tűzfalszabályok konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelő és a skála egyetlen SQL adatbázis-PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Kezelheti az Azure SQL kiszolgáló, adatbázisok, és tűzfal az Azure parancssori felület használatával
@@ -150,7 +150,7 @@ Létrehozásához és kezeléséhez az Azure SQL server, adatbázisok és a tűz
 |[az sql server-tűzfalszabály törlése](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Egy tűzfalszabály törlése|
 
 > [!TIP]
-> Tekintse meg az Azure CLI gyors üzembe helyezési útmutató [az Azure parancssori felület használatával egyetlen Azure SQL-adatbázis létrehozása](sql-database-get-started-cli.md). Az Azure parancssori felület parancsfájlpéldákat, lásd: [használata CLI egy Azure SQL-adatbázis létrehozása és konfigurálása a tűzfalszabályok](scripts/sql-database-create-and-configure-database-cli.md) és [használata CLI figyelését, valamint egy SQL-adatbázis méretezése](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Az Azure CLI gyors üzembe helyezés, lásd: [az Azure parancssori felület használatával egyetlen Azure SQL-adatbázis létrehozása](sql-database-get-started-cli.md). Az Azure parancssori felület parancsfájlpéldákat, lásd: [használata CLI egy Azure SQL-adatbázis létrehozása és konfigurálása a tűzfalszabályok](scripts/sql-database-create-and-configure-database-cli.md) és [használata CLI figyelését, valamint egy SQL-adatbázis méretezése](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Azure SQL-kiszolgálók, a adatbázisok és a tűzfalak Transact-SQL használatával kezelése
@@ -181,7 +181,7 @@ Létrehozása és kezelése az Azure SQL kiszolgáló, adatbázisok és tűzfala
 
 
 > [!TIP]
-> Gyors üzembe helyezési útmutató a Microsoft Windows SQL Server Management Studio használatával, lásd: [Azure SQL Database: használható SQL Server Management Studio való kapcsolódás és lekérdezés az adatok](sql-database-connect-query-ssms.md). A gyors üzembe helyezési útmutató az macOS, a Linux vagy a Windows Visual Studio Code használatával, lásd: [Azure SQL Database: használja a Visual Studio Code való kapcsolódás és lekérdezés az adatok](sql-database-connect-query-vscode.md).
+> Egy SQL Server Management Studio használatával a Microsoft Windows gyors üzembe helyezés, lásd: [Azure SQL Database: használható SQL Server Management Studio való kapcsolódás és lekérdezés az adatok](sql-database-connect-query-ssms.md). A gyors üzembe helyezés a macOS, a Linux vagy a Windows Visual Studio Code használatával, lásd: [Azure SQL Database: használja a Visual Studio Code való kapcsolódás és lekérdezés az adatok](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Azure SQL kiszolgáló, adatbázisok és a REST API használatával tűzfalak kezelése
 

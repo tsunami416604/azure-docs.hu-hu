@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2245fcdaa8b7e85ea37e9af9c939cd188c4d7ed9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>ASP.Net Core-hoz készült Application Insights
 
@@ -187,13 +187,13 @@ Most, hogy befejezte az előző lépéseket ügyfélfunkciókkal tesztelheti, é
 
    ![Képernyőkép a metrikák élő adatfolyam](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
 
-   (Ha a PowerShell parancsfájl továbbra is futnak, megtekintheti az élő metrika, ha már nem futtassa a parancsfájlt ismét élő adatfolyam nyissa meg.)
+   (Ha a PowerShell parancsfájl még mindig fut, akkor kell megjelennie élő metrika, ha a program nem futtatható a parancsprogram újra élő adatfolyam nyissa meg.)
 
 ## <a name="app-insights-sdk-comparison"></a>App Insights SDK összehasonlítása
 
 Az Application Insights termékcsoport merevlemez dolgozott a eléréséhez szolgáltatásparitást között a lehető legközelebb a [.NET-keretrendszer SDK teljes](https://github.com/Microsoft/ApplicationInsights-dotnet) és a .net Core SDK. A 2.2.0 kiadása a [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) az Application Insights szolgáltatás résnek nagymértékben be van zárva.
 
-Bővebb információt a különbségek és közötti kompromisszumot [.NET és a .NET Core](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server).
+Bővebb információt a különbségek és közötti kompromisszumot [.NET és a .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
 
    | SDK összehasonlítása | ASP.NET        | Az ASP.NET Core 2.1.0    | Az ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
@@ -203,7 +203,7 @@ Bővebb információt a különbségek és közötti kompromisszumot [.NET és a
    | **SQL függőségi hívások esetében**     | **+** |**-** | **+**|
    | **Teljesítményszámlálók*** | **+** | **-**| **-**|
 
-_Teljesítményszámlálók_ ebben a környezetben hivatkozik [kiszolgálóoldali teljesítményszámlálók](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) , például a processzor, memória és a lemezkihasználtság lekéréséhez.
+_Teljesítményszámlálók_ ebben a környezetben hivatkozik [kiszolgálóoldali teljesítményszámlálók](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) , például a processzor, memória és a lemezkihasználtság lekéréséhez.
 
 ## <a name="open-source-sdk"></a>Open-source SDK
 [Olvassa el, és hozzájárulnak a kódot](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)

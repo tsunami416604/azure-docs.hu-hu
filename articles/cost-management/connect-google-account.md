@@ -1,20 +1,20 @@
 ---
-title: "A Google Cloud Platform fiók csatlakozni Azure költség Management |} Microsoft Docs"
-description: "Csatlakoztassa a Google Cloud Platform fiók költség megtekintéséhez, és használati adatok költség felügyeleti repots."
+title: A Google Cloud Platform fiók csatlakozni Azure költség Management |} Microsoft Docs
+description: Csatlakoztassa a Google Cloud Platform fiók költség megtekintéséhez, és használati adatok költség felügyeleti repots.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 8f8c157be0a369817099afa211015ba7587017e3
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: b7141d028c496b75b061c17aa19ad6c73c0588c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Csatlakozás a Google Cloud Platform fiók
 
@@ -24,7 +24,7 @@ Kapcsolódás a meglévő Google Cloud Platform fiókot Azure költség Manageme
 
 Indítsa el a projekt információt gyűjt.
 
-1. Jelentkezzen be a Google Cloud Platform konzolhoz [https://console.cloud.google.com](https://console.cloud.google.com).
+1. Jelentkezzen be a Google Cloud Platform konzolhoz [ https://console.cloud.google.com ](https://console.cloud.google.com).
 2. Tekintse át a projekt költség felügyeleti és vegye figyelembe a bevezetni kívánt adatokat a **projektnevet** és a **Projektazonosítónak**. Biztosíthatja az adatok későbbi lépéseire lesz szüksége.  
     ![Google Cloud Platform konzol](./media/connect-google-account/gcp-console01.png)
 3. Ha nincs engedélyezve a számlázási van, és a projekthez kapcsolódó, hozzon létre egy számlázási fiókot. További információkért lásd: [hozzon létre egy új számlázási fiókot](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
@@ -59,7 +59,7 @@ Használati és eszköz céghez, a költség felügyeleti követelményeket a k�
 
 ## <a name="add-a-google-cloud-account-to-cost-management"></a>Google Cloud-fiók hozzáadása költség-felügyelet
 
-1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra [https://azure.cloudyn.com](https://azure.cloudyn.com/) , és jelentkezzen be.
+1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) , és jelentkezzen be.
 2. Kattintson a **beállítások** (fogaskerék ikonjára symbol), és válassza **felhő fiókok**.
 3. A **fiókok kezelése**, jelölje be a **Google-fiókot** fülre, majd **új hozzáadása +**.
 4. A **Google-fiók neve**, adja meg a számlázási fiók e-mail címét, majd kattintson az **következő**.

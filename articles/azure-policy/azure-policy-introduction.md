@@ -3,19 +3,19 @@ title: Az Azure Policy áttekintése | Microsoft Docs
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
+author: DCtheGeek
+ms.author: dacoulte
 ms.reviewer: nini
-ms.date: 03/29/2018
+ms.date: 04/18/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f9cd00aec025748170a6576fe3ee4dbf794edfdb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 886026f8548cf3d7416b5034995399368de8c419
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -53,13 +53,17 @@ Az Azure Policy tartalmaz néhány beépített szabályzatot, amelyek alapértel
 - **Címke és címke értékének kényszerítése**: Ez a szabályzat kötelezővé teszi egy címke és a hozzá tartozó érték megadását egy erőforráshoz.
 - **Nem engedélyezett erőforrástípusok**: Ezzel a szabályzattal megadhatók mindazon erőforrástípusok, amelyeket a cég vagy szervezet nem helyezhet üzembe.
 
-Ezen szabályzatok bármelyike hozzárendelhető az Azure Portalon, a PowerShellben vagy az Azure CLI-n.
+Ezen szabályzatok bármelyike hozzárendelhető az Azure Portalon, a PowerShellben vagy az Azure CLI-n. Miután módosított egy szabályzatdefiníciót, a rendszer nagyjából óránként egyszer újraértékeli a szabályzatokat.
 
 További, a szabályzatdefiníciók szerkezetéről szóló információkért lásd a [szabályzatdefiníciók szerkezetével](policy-definition.md) foglalkozó témakört.
 
 ## <a name="policy-assignment"></a>Szabályzat-hozzárendelés
 
-A szabályzat-hozzárendelés egy olyan szabályzatdefiníció, amely egy adott hatókörön belül érvényes. Ez a hatókör bármi lehet egy felügyeleti csoporttól egy erőforráscsoportig. A *hatókör* kifejezés az összes olyan erőforráscsoportra, előfizetésre vagy felügyeleti csoportra vonatkozik, amelyekhez a szabályzatdefiníció hozzá lett rendelve. A szabályzat-hozzárendeléseket az összes alárendelt erőforrás örökli. Tehát ha egy szabályzat érvényes egy erőforráscsoportra, akkor az adott erőforráscsoporton belüli összes erőforrásra is érvényes lesz. Azt is meg lehet azonban adni, hogy a szabályzat-hozzárendelés egy adott alhatókörre ne vonatkozzon. Egy előfizetésre vonatkozóan megadhat például egy olyan szabályzatot, amely megakadályozza a hálózati erőforrások létrehozását, de ennek a hatálya alól kivonhat egy, az előfizetésen belüli erőforráscsoportot, amelyet a hálózati infrastruktúra használ. Ehhez a hálózati erőforráscsoporthoz hozzáférést adhat a hálózati erőforrások létrehozásával megbízott felhasználóknak.
+A szabályzat-hozzárendelés egy olyan szabályzatdefiníció, amely egy adott hatókörön belül érvényes. Ez a hatókör bármi lehet egy felügyeleti csoporttól egy erőforráscsoportig. A *hatókör* kifejezés az összes olyan erőforráscsoportra, előfizetésre vagy felügyeleti csoportra vonatkozik, amelyekhez a szabályzatdefiníció hozzá lett rendelve. A szabályzat-hozzárendeléseket az összes alárendelt erőforrás örökli. Tehát ha egy szabályzat érvényes egy erőforráscsoportra, akkor az adott erőforráscsoporton belüli összes erőforrásra is érvényes lesz. Azt is meg lehet azonban adni, hogy a szabályzat-hozzárendelés egy adott alhatókörre ne vonatkozzon.
+
+Egy előfizetésre vonatkozóan megadhat például egy olyan szabályzatot, amely megakadályozza a hálózati erőforrások létrehozását, de ennek a hatálya alól kivonhat egy, az előfizetésen belüli erőforráscsoportot, amelyet a hálózati infrastruktúra használ. Ehhez a hálózati erőforráscsoporthoz hozzáférést adhat a hálózati erőforrások létrehozásával megbízott felhasználóknak.
+
+Előfordulhat továbbá, hogy szeretne hozzárendelni egy erőforrástípus-alapú engedélyezési szabályzatot a felügyeleti csoport szintjén. Ezután hozzárendelne egy megengedőbb (több erőforrástípust engedélyező) szabályzatot egy alárendelt felügyeleti csoporthoz vagy akár közvetlenül az előfizetésekhez. Ez azonban nem működne, mivel a szabályzat egy explicit tiltási rendszer. A megoldás az, hogy kizárja az alárendelt felügyeleti csoportot vagy az előfizetést a felügyeleti csoport szintjén hozzárendelt szabályzatból, majd hozzárendeli a megengedőbb szabályzatot az alárendelt felügyeleti csoportok vagy az előfizetések szintjén. Lényegében, ha egy szabályzat eredménye egy erőforrás tiltása, akkor az erőforrás engedélyezésének egyetlen módja a tiltó szabályzat módosítása.
 
 További, a szabályzatdefiníciók és -hozzárendelések beállítására vonatkozó tudnivalókért lásd a [szabályzat-hozzárendelés nem megfelelő erőforrások azonosításának céljából, az Azure környezetben történő létrehozásával](assign-policy-definition.md) foglalkozó cikket.
 

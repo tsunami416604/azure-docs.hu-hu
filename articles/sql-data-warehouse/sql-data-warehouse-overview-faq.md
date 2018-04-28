@@ -1,25 +1,20 @@
 ---
-title: "Azure SQL Data Warehouse kapcsolatos gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk felsorolja, ügyfelek és a fejlesztők Azure SQL Data Warehouse kapcsolatos gyakran ismételt kérdések"
+title: Azure SQL Data Warehouse kapcsolatos gyakori kérdések |} Microsoft Docs
+description: Ez a cikk felsorolja, ügyfelek és a fejlesztők Azure SQL Data Warehouse kapcsolatos gyakran ismételt kérdések
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: 812CA525-3BF3-49DF-8DF3-FB4342464F4F
+author: acomet
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 3/1/2017
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 4c00710ecc0c91f8407eca81b78176075fcbd6ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/17/2018
+ms.author: acomet
+ms.reviewer: igorstan
+ms.openlocfilehash: 475dd2de05c2691d4698ae1112118ecea9bc2d2f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse gyakran ismételt kérdések
 
@@ -102,7 +97,7 @@ K: kapcsolódni HDI?
 
 V: HDI a HDFS rétegként ADLS vagy WASB is használhatja. Ha a HDFS rétegként vagy, majd akkor is, hogy adatok betöltése az SQL DW. Azonban nem hozható létre leküldéses közzététele számítási HDI-példányához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A teljes SQL Data warehouse további információkért lásd: a [áttekintése] lap.
 
 

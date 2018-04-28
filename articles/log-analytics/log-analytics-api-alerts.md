@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 642b27405c703aa7a30d9fc544009d70b5d1b2df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e6987900ac2ef535fe31d4d1ecadb1a302a9c0be
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a REST API-val Naplóelemzési riasztási szabályok kezelése
 A napló Analytics riasztási REST API lehetővé teszi, hogy hozhat létre és kezelheti a riasztásokat az Operations Management Suite (OMS).  Ez a cikk ismerteti az API-t, és néhány példa a másik műveletet hajt végre.
@@ -101,7 +101,7 @@ Minden művelet a következő táblázat a jellemzőkkel rendelkezik.  Különb�
 ### <a name="retrieving-actions"></a>Műveletek végrehajtása
 
 > [!NOTE]
-> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA műveletek most már Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA műveletek most már Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 A Get metódus használatával ütemezett összes műveletet.
 
@@ -124,7 +124,7 @@ A kérelem formátuma új művelet létrehozásához művelettípus függ, ezek 
 ### <a name="deleting-actions"></a>Műveletek törlése
 
 > [!NOTE]
-> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA műveletek most már Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA műveletek most már Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 A művelet azonosítójú a Delete metódus segítségével törölheti a műveletet.
 
@@ -216,7 +216,7 @@ Használja a Put metódust egy meglévő azonosítójú művelet egy ütemezés 
 #### <a name="action-groups"></a>Műveletcsoportok
 Összes riasztás Azure, a kezelési műveletek alapértelmezett mechanizmusaként művelet csoportot használjon. Művelet csoporttal egyszer adja meg a végrehajtandó műveleteket, és társíthatja a művelet több riasztás - csoport Azure között. Nem szükséges, ismételten deklarálható többször ugyanazokat a műveleteket. A művelet csoportok több műveletek – például az e-mailek, SMS, hang hívja, ITSM kapcsolat, Automation-Runbook, Webhook URI támogatja. 
 
-A felhasználó ki van bővítve a riasztások az Azure - ütemezés szerint most már rendelkezik küszöbértéket, riasztást létrehozni, valamint átadott részletei művelet. E-mail részleteit, Webhook URL-címek, Runbook-automatizálási részleteit és más műveleteket kell lenniük oldal definiált egy művelet csoport előtt először létre riasztást; létrehozhat egy [művelet csoport Azure figyelő](../monitoring-and-diagnostics/monitoring-action-groups.md) a portál vagy [művelet csoport API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+A felhasználó ki van bővítve a riasztások az Azure - ütemezés szerint most már rendelkezik küszöbértéket, riasztást létrehozni, valamint átadott részletei művelet. E-mail részleteit, Webhook URL-címek, Runbook-automatizálási részleteit és más műveleteket kell lenniük oldal definiált egy művelet csoport előtt először létre riasztást; létrehozhat egy [művelet csoport Azure figyelő](../monitoring-and-diagnostics/monitoring-action-groups.md) a portál vagy [művelet csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Vegyen fel művelet csoport-hozzárendelést egy riasztást, adja meg az egyedi Azure Resource Manager csoport azonosítója, a művelet a riasztás definíciójának. Egy minta ábra lejjebb tekinthetők meg:
 
@@ -322,7 +322,7 @@ Egy művelet csoporthoz tartozó ütemezés módosításához használja a Put m
 Értesítő e-mailt küldjön egy vagy több címzett.  A tulajdonságok az alábbi táblázatban tartalmaznak.
 
 > [!NOTE]
-> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA például az e-mailben értesítést most vezérelt Azure művelet csoportokban. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA például az e-mailben értesítést most vezérelt Azure művelet csoportokban. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
    
 
 | Tulajdonság | Leírás |
@@ -366,7 +366,7 @@ Használja a Put metódust egy meglévő azonosítójú művelet ütemezés e-ma
 Szervizelt próbál kijavítja a hibát, a riasztás által azonosított Azure Automation forgatókönyv indítása.  A runbook egy szervizelési művelet szerepel a webhook létrehozása kell, és adja meg az URI a WebhookUri tulajdonság.  Ez a művelet az OMS-konzollal létrehozásakor egy új webhook automatikusan létrejön a runbookhoz.
 
 > [!NOTE]
-> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA például a runbook használatával szervizelési műveletek most már Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA például a runbook használatával szervizelési műveletek most már Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Szervizelt tulajdonságot tartalmazhatja az alábbi táblázatban.
 
@@ -425,7 +425,7 @@ Az alábbiakban látható egy teljes példa egy új e-mail-riasztások létrehoz
 Webhookműveletek egy folyamat megkezdéséhez hívja az egy URL-cím és a nem kötelezően kell küldeni a hasznos adatok között.  Ezek hasonlóak szervizelési műveletek kivételével ezek webhookokkal, amely az Azure Automation-runbook eltérő folyamatok indít el a célja.  A további lehetőséget, hogy a hasznos adatok között a távoli folyamat küldendő is biztosítanak.
 
 > [!NOTE]
-> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA például az Webhook most Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve munkaterület minden riasztás automatikusan kiterjesztik az Azure-bA. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA például az Webhook most Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 
 Webhookműveletek nem rendelkezik a küszöbérték, de ehelyett hozzá kell adni egy ütemezést, amely egy riasztási műveletek a küszöbértéket.  

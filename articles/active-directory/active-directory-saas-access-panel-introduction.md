@@ -1,8 +1,8 @@
 ---
-title: "Mi az a hozzáférési panel az Azure Active Directoryban? | Microsoft Docs"
-description: "Ismerje meg, hogyan használható a hozzáférési panel (webböngésző, Android-alkalmazás, iPhone és iPad) férhetnek hozzá SaaS-alkalmazásokhoz való változatait."
+title: Mi az a hozzáférési panel az Azure Active Directoryban? | Microsoft Docs
+description: Ismerje meg, hogyan használható a hozzáférési panel (webböngésző, Android-alkalmazás, iPhone és iPad) férhetnek hozzá SaaS-alkalmazásokhoz való változatait.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
@@ -15,11 +15,11 @@ ms.date: 03/06/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3c8ea85a0906071d6b30f176de7509e5f346b513
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panel?
 
@@ -50,9 +50,7 @@ A hozzáférési panel megnyitásával érheti `http://myapps.microsoft.com`.
 
 Ha a bejelentkezési lapon konfigurált egyéni branding, az URL-címet a szervezet tartományához hozzáfűzésével branding betöltheti (például `http://myapps.microsoft.com/<your domain>.com`).
 
-Egyetlen aktív vagy ellenőrzött tartomány nevét az Azure-portálon beállított is használhatja, ahogy az itt látható:
-
-![Wingtip Toys domain name][2]  
+Itt látható módon használhatja bármely aktív vagy ellenőrzött és érvényes tartománynevet van konfigurálva, az Azure-portálon: ![Wingtip Toys tartománynév][2]  
 
 Az URL-cím minden felhasználó számára jelentkezzen be az Azure AD integrált alkalmazások terjesztése.
 
@@ -75,7 +73,7 @@ A hozzáférési panel bővítmény érhető el jelenleg:
 - **Peremhálózati**: a Windows 10 évforduló Edition vagy újabb. 
 - **Chrome**: Windows 7 vagy újabb, és MacOS X rendszeren vagy újabb.
 - **Firefox 26.0 vagy újabb**: Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
-- **Internet Explorer 8, 9, 10, 11**: Windows 7 vagy újabb (korlátozottan támogatja).
+- **Az Internet Explorer 11**: Windows 7 vagy újabb (korlátozottan támogatja).
 
 ## <a name="my-apps-secure-sign-in-extension"></a>Saját alkalmazások biztonságos bejelentkezési bővítménye
 Jelentkezzen be a jelszó-alapú egyszeri bejelentkezést, a bővítmény kell használnia. A bővítmény telepítését követően bejelentkezhet hozzá kiválasztásával további funkciók engedélyezésére **jelentkezzen be a kezdéshez**. 

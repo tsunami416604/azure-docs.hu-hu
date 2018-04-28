@@ -1,47 +1,34 @@
 ---
-title: "Az SQL Data Warehouse táblák statisztikák kezelése |} Microsoft Docs"
-description: "Első lépések az Azure SQL Data Warehouse táblákon statisztika."
+title: Létrehozás, frissítse a statisztikai adatokat - Azure SQL Data Warehouse |} Microsoft Docs
+description: Javaslatok és példák létrehozásához, és frissíti a táblákon, az Azure SQL Data Warehouse-optimalizálás statisztikákat.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 11/06/2017
-ms.author: barbkess
-ms.openlocfilehash: 5e7fd3c8790bb9a1a7ae8662f9a7047ae54892d2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse táblák statisztikák kezelése
-> [!div class="op_single_selector"]
-> * [– Áttekintés][Overview]
-> * [Adattípusok][Data Types]
-> * [Terjesztése][Distribute]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [Statistics][Statistics]
-> * [Ideiglenes][Temporary]
-> 
-> 
+# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Frissíti a statisztikákat a táblák az Azure SQL Data Warehouse létrehozása
+Javaslatok és példák létrehozásához, és frissíti a táblákon, az Azure SQL Data Warehouse-optimalizálás statisztikákat.
 
+## <a name="why-use-statistics"></a>Statisztika miért érdemes használni?
 Minél több ismeri az Azure SQL Data Warehouse az adatokat, minél gyorsabban hajtható végre rajta lekérdezések. Statisztika gyűjtése az adatokról, és majd betöltése az SQL Data Warehouse az egyik legfontosabb, amit a lekérdezések optimalizálását is van. Ez azért, mert az SQL Data Warehouse lekérdezésoptimalizáló költség-alapú optimalizáló. Összehasonlítja a különböző lekérdezésterveket költségét, és majd úgy dönt, hogy a költséghatékonyság, amely a legtöbb esetben a tervet, amely végrehajtja a leggyorsabb a tervet. Például ha a optimalizáló becslése, hogy a dátum jelenleg korlátozza a lekérdezés egy sort ad vissza, azt eldönthetik, másik csomagot, mint ha azt a választott dátum becslése, visszatér 1 millió sort foglalnak.
 
 A folyamat létrehozásának, és frissítse a statisztikai adatokat jelenleg egy kézi művelet, de egyszerű tegye.  Hamarosan lesz automatikusan létrehozásához, és egyetlen oszlopok és indexek statisztikai adatainak frissítése.  Az alábbi információk segítségével nagy mértékben automatizálható a statisztikák felügyeleti az adatokon. 
 
-## <a name="getting-started-with-statistics"></a>Ismerkedés a statisztikák
+## <a name="scenarios"></a>Forgatókönyvek
 Minden egyes oszlophoz a mintában szereplő statisztikák létrehozása egyszerű módja a kezdéshez. Elévült statisztikát optimálisnál lekérdezési teljesítmény vezethet. Azonban frissítse a statisztikai adatokat az összes oszlopot, az adatok növekedésével is memóriát használ. 
 
 Különböző alkalmazási helyzetek kapcsolatos ajánlások a következők:
-| **Scenario** | Ajánlás |
+| **A forgatókönyv** | Ajánlás |
 |:--- |:--- |
 | **Első lépések** | Az összes oszlop frissítse az SQL Data Warehouse áttelepítése után |
 | **Legfontosabb oszlop vonatkozó statisztikák** | Kivonatfelosztási kulcs |
@@ -94,7 +81,7 @@ WHERE
 
 **Oszlopok dátum** az adatraktárban, például általában szükség gyakori statisztikai adatok frissítése. Minden alkalommal új sorok be vannak töltve az adatraktárba, új betöltése vagy tranzakció kerülnek. Ezek az adatok terjesztési módosítsa, majd ellenőrizze a statisztika elavult.  Ezzel ellentétben egy felhasználói tábla nemét oszlop statisztikai előfordulhat, hogy soha nem frissítenie kell. Feltéve, hogy a terjesztés az ügyfelek közötti állandó, új sorok hozzáadásakor a tábla változat nem fog módosítása az adatok terjesztési. Azonban ha az adatraktár tartalmazza, csak egy nemét, és több genders egy új követelményt eredményez, majd szeretné az nemét oszlop statisztikai adatainak frissítése.
 
-További ismertetése [statisztika] [ Statistics] az MSDN Webhelyén.
+További információkért lásd: általános útmutatást [statisztika](/sql/relational-databases/statistics/statistics).
 
 ## <a name="implementing-statistics-management"></a>Végrehajtási statisztika kezelése
 Akkor érdemes gyakran az Adatbetöltési folyamat annak érdekében, hogy a terhelés végén frissíti statisztikáit kiterjeszteni. Az adatok betöltését akkor, ha a táblák leggyakrabban módosítása a méretük és/vagy a terjesztési értékek. Ezért ez a logikai hely valamelyik felügyeleti folyamat végrehajtásához.
@@ -107,7 +94,7 @@ A statisztika frissítése a betöltési folyamat során a következő alapelvek
 * Érdemes lehet, statikus terjesztési oszlopok gyakran frissíteni.
 * Ne feledje, hogy minden statisztikai adat objektum frissül a feladatütemezési. Egyszerűen végrehajtási `UPDATE STATISTICS <TABLE_NAME>` nem mindig ideális, különösen a statisztika objektumok sok nagy táblák esetében.
 
-További ismertetése [számossága becslés] [ Cardinality Estimation] az MSDN Webhelyén.
+További információkért lásd: [számossága becslés](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
 ## <a name="examples-create-statistics"></a>Példák: Statisztikák létrehozása
 Ezek a példák használatát mutatják be különböző beállítások statisztikák létrehozásához. A beállítások, amelyekkel az egyes oszlopok az adatok és az oszlop a lekérdezésekben használt hogyan jellemzői függ.
@@ -172,7 +159,7 @@ A beállítások is kombinálhatja együtt. A következő példa egy szűrt stat
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-A teljes referenciáért lásd: [CREATE statistics UTASÍTÁSHOZ] [ CREATE STATISTICS] az MSDN Webhelyén.
+A teljes referenciáért lásd: [CREATE statistics UTASÍTÁSHOZ](/sql/t-sql/statements/create-statistics-transact-sql).
 
 ### <a name="create-multi-column-statistics"></a>Több oszlop statisztikai adatainak létrehozása
 Több oszlop statisztikai adatainak objektum létrehozásához, egyszerűen használja az előző példák, de meg több oszlopot.
@@ -362,9 +349,9 @@ Jelen nyilatkozat is könnyen használható. Ne feledje azonban, hogy frissíti 
 > 
 > 
 
-Egy végrehajtásához egy `UPDATE STATISTICS` eljárás, lásd: [az ideiglenes táblák][Temporary]. A végrehajtási módszer kis mértékben eltér az előző `CREATE STATISTICS` eljárás, de az eredmény nem ugyanaz.
+Egy végrehajtásához egy `UPDATE STATISTICS` eljárás, lásd: [az ideiglenes táblák](sql-data-warehouse-tables-temporary.md). A végrehajtási módszer kis mértékben eltér az előző `CREATE STATISTICS` eljárás, de az eredmény nem ugyanaz.
 
-Tekintse meg a teljes szintaxissal [Update Statistics] [ Update Statistics] az MSDN Webhelyén.
+Tekintse meg a teljes szintaxissal [Update Statistics](/sql/t-sql/statements/update-statistics-transact-sql).
 
 ## <a name="statistics-metadata"></a>Statisztika metaadatok
 Több rendszer nézetek és függvények, amelyek segítségével található információ a statisztikákat is van. Például láthatja, ha egy statisztika objektum lehet elavult a statisztikák-date függvény használatával statisztika volt utoljára létrehozásakor vagy frissítésekor.
@@ -374,21 +361,21 @@ Ezek a rendszer nézetek statisztika ismertetik:
 
 | katalógusnézet használatával derítheti ki | Leírás |
 |:--- |:--- |
-| [sys.columns][sys.columns] |Egy sor minden egyes oszlophoz. |
-| [sys.objects][sys.objects] |Egy sor minden objektum az adatbázisban. |
-| [sys.schemas][sys.schemas] |Egy sor minden séma az adatbázisban. |
-| [sys.stats][sys.stats] |Egy sor minden egyes statisztika objektumhoz. |
-| [sys.stats_columns][sys.stats_columns] |A statisztika objektum minden egyes oszlopának egy sort. Vissza a sys.columns mutató hivatkozásokat tartalmaz. |
-| [sys.tables][sys.tables] |Egy sor minden táblához (külső táblát tartalmazza). |
-| [sys.table_types][sys.table_types] |Egy sor egyes adattípusok esetében. |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Egy sor minden egyes oszlophoz. |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Egy sor minden objektum az adatbázisban. |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Egy sor minden séma az adatbázisban. |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Egy sor minden egyes statisztika objektumhoz. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |A statisztika objektum minden egyes oszlopának egy sort. Vissza a sys.columns mutató hivatkozásokat tartalmaz. |
+| [sys.Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Egy sor minden táblához (külső táblát tartalmazza). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Egy sor egyes adattípusok esetében. |
 
 ### <a name="system-functions-for-statistics"></a>A statisztika rendszer funkciók
 A rendszer függvények hasznosak statisztika használata:
 
 | Rendszer-funkció | Leírás |
 |:--- |:--- |
-| [STATS_DATE][STATS_DATE] |A statisztika objektum utolsó módosításának dátuma. |
-| [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] |Az értékek a statisztika objektum azt értelmezni tudja módon a terjesztési összefoglaló szintű és részletes információk. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |A statisztika objektum utolsó módosításának dátuma. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Az értékek a statisztika objektum azt értelmezni tudja módon a terjesztési összefoglaló szintű és részletes információk. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Statisztika oszlopok és funkciók egyesítése egy nézet
 Ez a nézet számos lehetőséget kínál a statisztika kapcsolódó oszlopok, és annak az eredménye a STATS_DATE() függvény együtt.
@@ -476,37 +463,5 @@ DBCC SHOW_STATISTICS() szigorúbban végrehajtani az SQL Data Warehouse az SQL S
 - Egyéni hiba 2767 nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
-További részletekért lásd: [DBCC SHOW_STATISTICS] [ DBCC SHOW_STATISTICS] az MSDN Webhelyén.
+A további javíthatja a lekérdezések teljesítményét, lásd: [a számítási feladat figyeléséhez](sql-data-warehouse-manage-monitor.md)
 
-  További tudnivalókért tekintse meg a cikkek [tábla áttekintése][Overview], [tábla adattípusok][Data Types], [terjesztése egy tábla] [ Distribute], [Tábla indexelő][Index], [tábla particionáló][Partition], és [Az ideiglenes táblák][Temporary].
-  
-   Gyakorlati tanácsok kapcsolatban bővebben lásd: [SQL Data Warehouse gyakorlati tanácsok][SQL Data Warehouse Best Practices].  
-
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->  
-[Cardinality Estimation]: https://msdn.microsoft.com/library/dn600374.aspx
-[CREATE STATISTICS]: https://msdn.microsoft.com/library/ms188038.aspx
-[DBCC SHOW_STATISTICS]:https://msdn.microsoft.com/library/ms174384.aspx
-[Statistics]: https://msdn.microsoft.com/library/ms190397.aspx
-[STATS_DATE]: https://msdn.microsoft.com/library/ms190330.aspx
-[sys.columns]: https://msdn.microsoft.com/library/ms176106.aspx
-[sys.objects]: https://msdn.microsoft.com/library/ms190324.aspx
-[sys.schemas]: https://msdn.microsoft.com/library/ms190324.aspx
-[sys.stats]: https://msdn.microsoft.com/library/ms177623.aspx
-[sys.stats_columns]: https://msdn.microsoft.com/library/ms187340.aspx
-[sys.tables]: https://msdn.microsoft.com/library/ms187406.aspx
-[sys.table_types]: https://msdn.microsoft.com/library/bb510623.aspx
-[UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
-
-<!--Other Web references-->  

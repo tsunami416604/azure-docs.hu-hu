@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 534e4e6d8b6ea2bfc059383e3e55c0352678ee04
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: eb2a670735db8a72163967d89d0359b4b89a3e2f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatások
 Az Azure AD Connect szinkronizálási szolgáltatás két részből áll:
@@ -31,7 +31,7 @@ Ez a témakör azt ismerteti, hogyan a következő funkcióit a **az Azure AD Co
 Ezek a beállítások szerint úgy vannak konfigurálva a [Active Directory modul Windows Powershellhez készült Azure](https://aka.ms/aadposh). Külön letölteni és telepíteni azt az Azure AD Connect. Rendszerben az ebben a témakörben a parancsmagokat a [2016. március kiadásban (build 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Ha ebben a témakörben a parancsmagokat nem rendelkezik, vagy nem tud létrehozni ugyanazt az eredményt, majd győződjön meg arról, a legújabb verzióját futtatják.
 
 Az Azure AD-címtár konfiguráció megtekintéséhez futtassa `Get-MsolDirSyncFeatures`.  
-![Get-MsolDirSyncFeatures result](./media/active-directory-aadconnectsyncservice-features/getmsoldirsyncfeatures.png)
+![Get-MsolDirSyncFeatures eredménye](./media/active-directory-aadconnectsyncservice-features/getmsoldirsyncfeatures.png)
 
 Számos beállítás csak módosíthatja az Azure AD Connect.
 
@@ -56,7 +56,7 @@ A következő beállításokat az Azure AD Connect vannak konfigurálva, és nem
 | DeviceWriteback |[Az Azure AD Connect: Eszközvisszaírás engedélyezése](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect szinkronizálása: címtárbővítmények](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Lehetővé teszi, hogy a karanténba kerül, ha egy másik objektum helyett az exportálás során a teljes objektumot sikertelen duplikált attribútum. |
-| PasswordSync |[A jelszó-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| PasswordSync |[Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
 | UnifiedGroupWriteback |[Előzetes verzió: A csoportvisszaírás](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Jelenleg nem támogatott. |
 
@@ -88,7 +88,7 @@ Hagyományosan a UserPrincipalName attribútum a szinkronizálási szolgáltatá
 
 További részletekért lásd: [Office 365, az Azure vagy az Intune-ban szereplő felhasználónevek nem egyeznek meg, a helyszíni egyszerű Felhasználónévvel vagy másodlagos bejelentkezési Azonosítóval](https://support.microsoft.com/kb/2523192).
 
-Ez a funkció lehetővé teszi, hogy a szinkronizálási motor a userPrincipalName frissíteni, ha megváltozott a helyszíni és jelszó-szinkronizálást használ. Összevonási használja, ha ez a funkció nem támogatott.
+Ez a funkció lehetővé teszi, hogy a szinkronizálási motor a userPrincipalName frissíteni, ha megváltozott a helyszíni és használhatja a Jelszókivonat-szinkronizálás. Összevonási használja, ha ez a funkció nem támogatott.
 
 Ez a funkció a alapértelmezés szerint most hozták létre Azure AD-címtártól. Ha ezt a szolgáltatást, futtassa a látható:  
 

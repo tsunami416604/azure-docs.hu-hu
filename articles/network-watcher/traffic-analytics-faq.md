@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 78449a527f5ee1410530ded18a11cb8c6a5dded5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Gyakori kérdések a forgalom elemzés
 
@@ -104,11 +104,15 @@ ms.lasthandoff: 04/16/2018
 
         Ön az erőforrások információi az irányítópulton; azonban folyamat kapcsolatos jelenleg nincs jelen. Adatok nem találhatók az erőforrások között nincs kommunikáció adatfolyamok miatt. 60 perc várakozás és újbóli állapotának ellenőrzéséhez. Ha biztos benne, hogy létezik-e erőforrások közötti kommunikációs forgalom, majd a aggodalomra a [felhasználói hang fórum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-14.  Hogyan áron a forgalom analytics?
+14. Konfigurálhatja a PowerShell vagy az Azure Resource Manager sablon forgalom analytics?
+
+    Nem, forgalom analytics csak konfigurálható az Azure portál használatával.
+
+15.  Hogyan áron a forgalom analytics?
 
         Forgalom analytics forgalmi díjas csökkentett naplók növelésére és a továbbfejlesztett naplók tárolása a Naplóelemzési munkaterület. A képen forgalom analytics nem számlázása történik a csökkentett naplók lehetőségeinek azonban munkaterület az adatok tárolási közzétett ütemben számlázási vonatkoznak. Ez a válasz frissíti az forgalom analytics díjszabása elérhetővé válik.
 
-15.  Hogyan navigálhatnak meg, hogy a földrajzi nézet a billentyűzet használata-e?
+16.  Hogyan navigálhatnak meg, hogy a földrajzi nézet a billentyűzet használata-e?
 
         A földrajzi-lap két fő részeket tartalmazza:
     

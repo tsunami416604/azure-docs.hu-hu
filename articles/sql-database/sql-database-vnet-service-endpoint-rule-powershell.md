@@ -1,6 +1,6 @@
 ---
-title: "A virtuális hálózati Szolgáltatásvégpontok és szabályok az SQL PowerShell |} Microsoft Docs"
-description: "PowerShell-parancsfájlok létrehozását és kezelését virtuális Szolgáltatásvégpontok az Azure SQL adatbázis biztosít."
+title: A virtuális hálózati Szolgáltatásvégpontok és szabályok az SQL PowerShell |} Microsoft Docs
+description: PowerShell-parancsfájlok létrehozását és kezelését virtuális Szolgáltatásvégpontok az Azure SQL adatbázis biztosít.
 services: sql-database
 author: MightyPen
 manager: jhubbard
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 489d1044de49c63ac7e1423708cc0638355ab1b5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5fcf33d3d54b118c1c25f1467a496da3644a2345
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>Hozzon létre egy virtuális végpontját, és a szabály az Azure SQL Database PowerShell használatával
 
@@ -50,6 +50,9 @@ Az alábbi listán azt mutatja be, a másik *fő* parancsmagokat, futtatnia kell
 - Már bejelentkezhet az Azure-ba, többek között keresztül a [Azure-portálon][http-azure-portal-link-ref-477t].
 - PowerShell-parancsfájlok már futtathatja.
 
+> [!NOTE]
+> Győződjön meg arról, hogy Szolgáltatásvégpontok vannak kapcsolva a virtuális hálózatot/alhálózatot, amelyet szeretne hozzáadni a kiszolgálóhoz ellenkező esetben a virtuális hálózat tűzfalszabály létrehozása sikertelen lesz.
+
 #### <a name="one-script-divided-into-four-chunks"></a>Egy parancsfájl négy adattömbök felosztva.
 
 A PowerShell-parancsfájl bemutató kisebb parancsfájlok sorozatát van osztva. Megkönnyíti a tanulási és rugalmasságot biztosít. A parancsfájlok a megjelölt sorrendben kell futtatni. Ha most idő nem rendelkezik a parancsfájlok futtatásához, a tényleges tesztkimenet parancsfájl 4 után jelenik meg.
@@ -79,7 +82,7 @@ Az első PowerShell-parancsfájl változók hozzárendeli az értékeket. A kés
 ###########################################################
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 ###########################################################
 ##  Assignments to variables used by the later scripts.  ##
@@ -119,7 +122,7 @@ Write-Host 'Completed script 1, the "Variables".';
 Ez a parancsfájl előkészíti a következő parancsfájlt, ahol a végpont művelete. Ez a parancsfájl létrehozza, a következő elemeket, de csak felsorolt, ha még nem léteznek. Parancsfájl 2 kihagyhatja, ha biztos benne, hogy ezek az elemek már létezik:
 
 - Azure-erőforráscsoport
-- Azure SQL Database server
+- Az Azure SQL Database-kiszolgálóhoz
 
 #### <a name="powershell-script-2-source-code"></a>PowerShell parancsfájl 2 forráskód
 
@@ -305,8 +308,8 @@ Write-Host 'Completed script 3, the "Virtual-Netowrk-Rule".';
 
 A végső parancsfájl törli az erőforrásokat, amelyek a korábbi parancsfájlok a bemutató készült. Azonban a parancsprogram kéri a jóváhagyás előtt törli a következő:
 
-- Azure SQL Database server
-- Azure Resource Group
+- Az Azure SQL Database-kiszolgálóhoz
+- Azure-erőforráscsoportot
 
 Parancsfájl 4 1 parancsfájl befejezése után bármikor futtathatja.
 
@@ -519,7 +522,7 @@ A PowerShell-parancsfájl nem minden olyan összetevő frissítésére, kivéve,
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 # Assignments to variables used by the later scripts.
 # You can EDIT these values, if necessary.

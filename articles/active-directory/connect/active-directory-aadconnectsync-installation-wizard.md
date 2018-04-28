@@ -1,12 +1,12 @@
 ---
-title: "Az Azure AD Connect ismételt futtatásával telepítse a varázsló |} Microsoft Docs"
-description: "Ismerteti a telepítési varázsló működése a második futtatásakor."
-keywords: "Az Azure AD Connect telepítővarázsló lehetővé teszi, hogy konfigurálja a karbantartási beállításait, a második futtatásakor"
+title: Az Azure AD Connect ismételt futtatásával telepítse a varázsló |} Microsoft Docs
+description: Ismerteti a telepítési varázsló működése a második futtatásakor.
+keywords: Az Azure AD Connect telepítővarázsló lehetővé teszi, hogy konfigurálja a karbantartási beállításait, a második futtatásakor
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d800214e-e591-4297-b9b5-d0b1581cc36a
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: a5a55b15bbffbcfa18e07e251180820e3d9cb6d8
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 56cc38275a23eb4529558b876db619768a885a25
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect szinkronizálása: még egyszer a telepítővarázsló futtatása
 Az Azure AD Connect telepítővarázsló első futtatásakor az végigvezeti a telepítés konfigurálása. Ha újra futtatni a telepítési varázsló, karbantartási lehetőségeinek kínál.
@@ -79,7 +79,7 @@ Az állapot módosítására irányuló ezt a beállítást, és válassza ki, v
 ![Lehetőség, amely a rendszer azt is jelzi az átmeneti környezetű üzemmód jelenlegi állapotában](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>Felhasználói bejelentkezés módosítása
-Ez a beállítás lehetővé teszi, hogy a jelszó-szinkronizálás összevonási vagy megfordítva már módosíthatja. Nem lehet átváltani **ne konfiguráljon**.
+Ez a beállítás lehetővé teszi, hogy módosíthatja a felhasználói bejelentkezési módszer, és onnan Jelszókivonat-szinkronizálás, átmenő hitelesítést vagy összevonási. Nem lehet átváltani **ne konfiguráljon**.
 
 Ez a beállítás további információkért lásd: [felhasználói bejelentkezés](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method).
 

@@ -1,7 +1,7 @@
 ---
-title: "Azure SQL-bejelentkezések és -felhasználók | Microsoft Docs"
-description: "Megismerheti az SQL Database biztonsági felügyeletét, azon belül is az adatbázis-hozzáférés és a bejelentkezési biztonság felügyeletét a kiszolgálószintű elsődleges fiókon keresztül."
-keywords: "sql database biztonság,adatbázis biztonságának felügyelete,bejelentkezési biztonság,adatbázis biztonsága,adatbázis-hozzáférés"
+title: Azure SQL-bejelentkezések és -felhasználók | Microsoft Docs
+description: Megismerheti az SQL Database biztonsági felügyeletét, azon belül is az adatbázis-hozzáférés és a bejelentkezési biztonság felügyeletét a kiszolgálószintű elsődleges fiókon keresztül.
+keywords: sql database biztonság,adatbázis biztonságának felügyelete,bejelentkezési biztonság,adatbázis biztonsága,adatbázis-hozzáférés
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 1f512cdbb0275e9ae2d868a326df0e4e5dd2ee24
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 54bf692f35e2529fe7d0b14684c9acc7d66b9903
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="controlling-and-granting-database-access"></a>Adatbázis-hozzáférés szabályozása és biztosítása
 
@@ -75,7 +75,7 @@ Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerep
 1. Egy rendszergazdai fiókkal csatlakozzon a master adatbázishoz.
 2. Nem kötelező lépés: Hozzon létre egy SQL Server-hitelesítési bejelentkezést a [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) utasítással. Mintautasítás:
    
-   ```
+   ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
    ```
    
@@ -86,15 +86,15 @@ Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerep
 
 3. A master adatbázisban hozzon létre egy felhasználót a [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) utasítással. A felhasználó Azure Active Directory-hitelesítésű tartalmazottadatbázis-felhasználó lehet (ha az Azure AD-hitelesítéshez konfigurálta a környezetét), vagy egy SQL Server-hitelesítésű tartalmazottadatbázis-felhasználó, illetve egy SQL Server-hitelesítésű felhasználó, az SQL Server-hitelesítési bejelentkezéstől függően (amelyet az előző lépésben hozott létre). Mintautasítások:
    
-   ```
-   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
-   CREATE USER Tran WITH PASSWORD = '<strong_password>';
-   CREATE USER Mary FROM LOGIN Mary; 
+   ```sql
+   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
+   CREATE USER Tran WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
+   CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
 4. Adja az új felhasználót a **dbmanager** adatbázis-szerepkörhöz az [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) utasítással. Mintautasítások:
    
-   ```
+   ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
    ALTER ROLE dbmanager ADD MEMBER [mike@contoso.com];
    ```
@@ -114,21 +114,25 @@ A másik rendszergazdai szerepkör a bejelentkezéskezelői szerepkör. Ezen sze
 
 Felhasználók létrehozásához csatlakozzon az adatbázishoz, és hajtson végre a következő példákhoz hasonló utasításokat:
 
-```
+```sql
 CREATE USER Mary FROM LOGIN Mary; 
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 A kezdetekben csak a rendszergazdák vagy az adatbázis tulajdonosa hozhat létre felhasználókat. Ha további felhasználókat szeretne felhatalmazni új felhasználók létrehozására, adja a kiválasztott felhasználónak az `ALTER ANY USER` engedélyt egy, a következőhöz hasonló utasítással:
 
-```
+```sql
 GRANT ALTER ANY USER TO Mary;
 ```
 
 Ha további felhasználóknak szeretne teljes elérést biztosítani az adatbázishoz, tegye őket a **db_owner** rögzített adatbázis-szerepkör tagjává az `ALTER ROLE` utasítással.
 
+```sql
+ALTER ROLE db_owner ADD MEMBER Mary; 
+```
+
 > [!NOTE]
-> A bejelentkezéseken alapuló adatbázis-felhasználók létrehozásának leggyakoribb oka az, ha olyan SQL Server-hitelesítési felhasználókkal rendelkezik, akiknek több adatbázishoz kell hozzáférniük. A bejelentkezésen alapuló felhasználók a bejelentkezéshez vannak kötve, és egyetlen jelszó használható a bejelentkezéshez. Az egyes adatbázisokban lévő tartalmazottadatbázis-felhasználók önálló entitások, és mindegyiknek saját jelszava van. Ez félreértésekhez vezethet a tartalmazott adatbázisok felhasználói esetében, ha nem ugyanazokat a jelszavakat használják.
+> Egy logikai kiszolgáló bejelentkezési alapján adatbázis-felhasználó létrehozása több leggyakoribb oka, a felhasználók számára, amelyeket több adatbázis elérésére. Mivel a tartalmazott adatbázis-felhasználók egyedi entitások, hogy az egyes adatbázisok kezeli a saját felhasználó és a saját jelszavát. A felhasználó majd figyelembe venni az egyes adatbázisok minden jelszót, és hogy lehessen tarthatatlan amikor sok adatbázis több jelszó módosítása kellene többletterhelés okozhatnak. Azonban ha az SQL Server bejelentkezési és a magas rendelkezésre állású (aktív georeplikáció és feladatátvételi csoportok), az SQL Server bejelentkezési meg kell manuálisan minden egyes kiszolgálón. Ellenkező esetben az adatbázis-felhasználót a rendszer már nem rendeli hozzá a kiszolgálói bejelentkezési feladatátvétel történik, és nem tudnak hozzáférni a feladás egy vagy több adatbázis feladatátvétel után. Bejelentkezések a georeplikáció konfigurálásával kapcsolatos további információkért lásd: [konfigurálása és kezelése az Azure SQL Database biztonsági georedundáns helyreállítás vagy feladatátvételi](sql-database-geo-replication-security-config.md).
 
 ### <a name="configuring-the-database-level-firewall"></a>Adatbázisszintű tűzfal konfigurálása
 Ajánlott eljárásként a nem rendszergazdai felhasználóknak csak az általuk használt adatbázisokhoz kell hozzáféréssel rendelkezniük a tűzfalon keresztül. Ahelyett, hogy a kiszolgálószintű tűzfalon keresztül hitelesítené az IP-címüket, és hozzáférést adna nekik az összes adatbázishoz, az [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) utasítással konfigurálja az adatbázisszintű tűzfalat. Az adatbázisszintű tűzfal nem konfigurálható a portálon keresztül.
@@ -154,7 +158,7 @@ Az SQL Database-ben több mint 100 engedély adható vagy tagadható meg külön
 ### <a name="considerations-and-restrictions"></a>Megfontolandó szempontok és korlátozások
 Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye figyelembe a következőket:
 
-* A  **utasítások futtatásához csatlakoznia kell a** master adatbázishoz`CREATE/ALTER/DROP DATABASE`.   
+* A **utasítások futtatásához csatlakoznia kell a**master adatbázishoz`CREATE/ALTER/DROP DATABASE`.   
 * A **kiszolgáló-rendszergazdai** bejelentkezéshez tartozó felhasználó nem módosítható és nem vethető el. 
 * A **kiszolgáló-rendszergazdai** bejelentkezés alapértelmezett nyelve az amerikai angol (US-English).
 * Csak a rendszergazdák (**kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master** adatbázis **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és a `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
@@ -164,7 +168,7 @@ Az SQL Database bejelentkezéseinek és felhasználóinak kezelésekor vegye fig
 * A `CREATE/ALTER/DROP LOGIN` és `CREATE/ALTER/DROP DATABASE` utasítások ADO.NET alkalmazáson belüli futtatásakor a paraméteres parancsok futtatása nem engedélyezett. További információkért lásd: [Parancsok és paraméterek](https://msdn.microsoft.com/library/ms254953.aspx).
 * A `CREATE/ALTER/DROP DATABASE` és `CREATE/ALTER/DROP LOGIN` utasítások futtatásakor csak az egyes utasítások lehetnek a Transact-SQL kötegben szereplő egyetlen utasítások. Különben hiba történik. Például a következő Transact-SQL utasítás azt ellenőrzi, hogy az adatbázis létezik-e. Ha igen, akkor meghívja a `DROP DATABASE` utasítást az adatbázis eltávolításához. Mivel a `DROP DATABASE` utasítás nem a köteg egyetlen utasítása, a következő Transact-SQL utasítás futtatása hibát eredményez.
 
-  ```
+  ```sql
   IF EXISTS (SELECT [name]
            FROM   [sys].[databases]
            WHERE  [name] = N'database_name')

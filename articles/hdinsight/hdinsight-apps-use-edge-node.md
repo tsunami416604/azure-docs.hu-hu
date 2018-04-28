@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 04/19/2018
 ms.author: jgao
-ms.openlocfilehash: 0e5e05a1a5c084854cd911188777dedf40817227
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6cb7bb982da36256707d080a7f5118127deb3a9c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata a hdinsight Hadoop-fürtök
 
@@ -69,6 +69,9 @@ Miután létrehozott egy élcsomópontot, csatlakozás az élcsomóponthoz SSH h
 >
 > Az Apache-okat használ, ha esetleg találni az Apache keresztül projekt helyek [ http://apache.org ](http://apache.org), például a [Hadoop](http://hadoop.apache.org/) hely.
 
+> [!NOTE]
+> Ugyanaz, mint a fürtök, peremhálózati csomópontok egyaránt felügyelt javítás.  További információkért lásd: [hdinsight javítás az operációs rendszer](./hdinsight-os-patching.md).
+
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Meglévő fürt egy élcsomópontot hozzáadása
 Ebben a szakaszban egy Resource Manager-sablon egy élcsomópontot hozzáadása egy meglévő HDInsight-fürt használatára.  A Resource Manager-sablon található [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). A Resource Manager-sablon meghívja a helyen található parancsfájlművelet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablon a hívó parancsfájlművelet bemutatásához.
 
@@ -115,6 +118,10 @@ Ebben a szakaszban a Resource Manager-sablon létrehozása a HDInsight-fürt egy
      
      Néhány tulajdonság lett volna a sablonban szoftveresen kötött: fürt típusa, a fürt feldolgozó csomópontok száma, a peremhálózati csomópont mérete és a peremhálózati csomópont neve.
 4. Ellenőrizze **elfogadom a feltételeket és a fenti feltételek**, és kattintson a **beszerzési** élcsomópont a fürt létrehozásához.
+
+## <a name="add-multiple-edge-nodes"></a>Több biztonsági csomópontok hozzáadása
+
+Több biztonsági csomópontokat adhat hozzá egy HDInsight-fürtre.  A több peremhálózati csomópontok konfigurációs csak végezhető Azure Resource Manager-sablonok használatával.  Tekintse meg a sablon mintában Ez a cikk elején.  Frissíteni kell a **targetInstanceCount** megfelelően a létrehozandó peremhálózati csomópontok száma.
 
 ## <a name="access-an-edge-node"></a>Hozzáférés egy élcsomópontot
 Élcsomópont ssh-végpont esetében &lt;EdgeNodeName >.&lt; ClusterName >-ssh.azurehdinsight.net:22.  Például új-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.

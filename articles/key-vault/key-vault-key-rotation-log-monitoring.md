@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: stgriffi
-ms.openlocfilehash: 701edc784dcde067e8ec585a3b31d6075207fbbf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 01f1f719545b554b22ef79b38f95087341c65e83
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Az Azure Key Vault beállítása végpontok közötti kulcsforgatással és auditálással
 ## <a name="introduction"></a>Bevezetés
@@ -38,7 +38,7 @@ Ez a cikk végigvezeti az Azure Key Vault használatával használatával egy ti
 Ahhoz, hogy egy alkalmazás titkos kulcs lekérése a Key Vault, először hozzon létre a titkos kulcsot, és töltse fel azt a tárolóban. Ehhez az Azure PowerShell-munkamenet indítása, a következő paranccsal Azure-fiókjába történő bejelentkezés:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. PowerShell beolvassa az összes olyan előfizetést, ehhez a fiókhoz társított. PowerShell alapértelmezés szerint az elsőt használja.
@@ -201,7 +201,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Add-AzureRmAccount `
+    Connect-AzureRmAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `

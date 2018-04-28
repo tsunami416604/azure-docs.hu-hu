@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 3a581111587d0fe3cba04cd05272b3154374ce52
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 87ca0a1cd9766d3ad76d0fe5dd29a34ec40ea276
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Hálózati forgalom szűrése hálózati biztonsági csoportokkal
 
@@ -50,8 +50,8 @@ Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák:
 | **Protocol (Protokoll)** |A szabálynak megfelelő protokoll. |TCP, UDP vagy * |A * protokollként történő használata tartalmazza az ICMP-t (csak a kiszolgálók közötti forgalom), valamint az UDP-t és a TCP-t, és csökkentheti a szükséges szabályok számát.<br/>A * használata azonban túl széles körű lehet, ezért ügyeljen arra, hogy csak szükség esetén használja. |
 | **Source port range (Forrásporttartomány)** |A szabálynak megfelelő forrásporttartomány. |Egy portszám 1 és 65535 között, egy porttartomány (például 1–65535) vagy * (minden porthoz). |A forrásportok rövid élettartamúak is lehetnek. Ha az ügyfélprogram nem egy adott portot használ, a legtöbb esetben a * jelet használja.<br/>A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra.<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani. |
 | **Destination port range (Célporttartomány)** |A szabálynak megfelelő célporttartomány. |Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65535) vagy \* (minden porthoz). |A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra.<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani. |
-| **Source address prefix (Forráscímelőtag)** |A szabálynak megfelelő forráscím-előtag vagy címke. |Egy IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez). |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez. |
-| **Destination address prefix (Célcímelőtag)** |A szabálynak megfelelő célcím-előtag vagy címke. | Egy IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez). |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez. |
+| **Source address prefix (Forráscímelőtag)** |A szabálynak megfelelő forráscím-előtag vagy címke. |Egy IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [szolgáltatáscímke](#service-tags) vagy * (minden címhez). |Érdemes lehet tartományokat, szolgáltatáscímkék és a * jelet használni a szabályok számának csökkentéséhez. |
+| **Destination address prefix (Célcímelőtag)** |A szabálynak megfelelő célcím-előtag vagy címke. | Egy IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#service-tags) vagy * (minden címhez). |Érdemes lehet tartományokat, szolgáltatáscímkék és a * jelet használni a szabályok számának csökkentéséhez. |
 | **Direction (Irány)** |Az a forgalomirány, amely megfelel a szabálynak. |Bejövő vagy kimenő. |A bejövő vagy kimenő szabályokat a rendszer külön dolgozza fel, az irány alapján. |
 | **Priority (Prioritás)** |A szabályokat a rendszer prioritás szerinti sorrendben ellenőrzi. Amint talál egy érvényes szabályt, nem vizsgálja, hogy a többi szabálynak megfelel-e a forgalom. | 100 és 4096 közötti szám. | A prioritások meghatározásakor érdemes 100-as lépésközt használni, hogy a jövőben esetlegesen létrejövő új szabályoknak is legyen hely a meglévő szabályok között. |
 | **Access (Hozzáférés)** |Az alkalmazandó hozzáférés típusa, ha a csomag megfelel a szabálynak. | Engedélyezés vagy megtagadás. | Ne feledje, hogy ha egy csomag egyik szabálynak sem felel meg, akkor a rendszer eldobja a csomagot. |
@@ -62,36 +62,13 @@ Az NSG-k két szabálykészletet tartalmaznak: bejövőt és kimenőt. A szabál
 
 Az előző ábrán az NSG-szabályok feldolgozásának folyamata látható.
 
-### <a name="default-tags"></a>Alapértelmezett címkék
-Az alapértelmezett címkék olyan rendszer által biztosított azonosítók, amelyek az IP-címek egy kategóriáját célozzák meg. Az alapértelmezett címkéket a szabályok tulajdonságainak **forráscím-előtagjában** és **célcím-előtagjában** lehet használni. Háromféle alapértelmezett címkét lehet használni:
+### <a name="default-tags"></a>Rendszercímkék
 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** klasszikus telepítéshez): Ez a címke tartalmazza a virtuális hálózat címterét (az Azure-ban meghatározott CIDR-tartományok), valamint az összes csatlakoztatott helyszíni címteret és a csatlakoztatott Azure virtuális hálózatokat (helyi hálózatokat).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra terheléselosztóját jelöli. A címkét a rendszer lefordítja arra az Azure-adatközponti IP-címre, ahonnan az Azure Load Balancer állapot-mintavételei származnak.
-* **Internet** (Resource Manager) (**INTERNET** klasszikus telepítéshez): Ez a címke azt az IP-címteret jelöli, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el. A tartományba beletartozik az [Azure tulajdonában lévő nyilvános IP-címtér](https://www.microsoft.com/download/details.aspx?id=41653) is.
+A szolgáltatáscímkék olyan rendszer által biztosított azonosítók, amelyek az IP-címek egy kategóriáját célozzák meg. A szolgáltatáscímkéket a biztonsági szabályok tulajdonságainak **forráscím-előtagjában** és **célcím-előtagjában** lehet használni. Többet is megtudhat a [szolgáltatáscímkékről](security-overview.md#service-tags).
 
-### <a name="default-rules"></a>Alapértelmezett szabályok
-Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezett szabályokat nem lehet törölni, de mivel a legalacsonyabb prioritást rendelték hozzájuk, a létrehozott szabályok felülbírálhatják azokat. 
+### <a name="default-rules"></a>Alapértelmezett biztonsági szabályok
 
-Az alapértelmezett szabályok az alábbiak szerint engedélyezik és tiltják le a forgalmat:
-- **Virtuális hálózat:** A virtuális hálózatból kiinduló és oda érkező forgalom a bejövő és kimenő irányban is engedélyezve van.
-- **Internet:** A kimenő forgalom engedélyezett, de a bejövő forgalom le van tiltva.
-- **Terheléselosztó:** Engedélyezi az Azure Load Balancer számára, hogy megvizsgálja a virtuális gépek és a szerepkörpéldányok állapotát. Ha felülbírálja ezt a szabályt, az Azure Load Balancer állapot-mintavételei meghiúsulnak, és ez hatással lehet a szolgáltatásra.
-
-**Bejövő alapértelmezett szabályok**
-
-| Name (Név) | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protokoll | Hozzáférés |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVNetInBound |65000 | VirtualNetwork | * | VirtualNetwork | * | * | Engedélyezés |
-| AllowAzureLoadBalancerInBound | 65001 | AzureLoadBalancer | * | * | * | * | Engedélyezés |
-| DenyAllInBound |65500 | * | * | * | * | * | Megtagadás |
-
-**Kimenő alapértelmezett szabályok**
-
-| Name (Név) | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protokoll | Hozzáférés |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVnetOutBound | 65000 | VirtualNetwork | * | VirtualNetwork | * | * | Engedélyezés |
-| AllowInternetOutBound | 65001 | * | * | Internet | * | * | Engedélyezés |
-| DenyAllOutBound | 65500 | * | * | * | * | * | Megtagadás |
+Minden NSG tartalmaz egy alapértelmezett biztonsági szabálykészletet. Az alapértelmezett szabályokat nem lehet törölni, de mivel a legalacsonyabb prioritást rendelték hozzájuk, a létrehozott szabályok felülbírálhatják azokat. További információt az [alapértelmezett biztonsági szabályokkal](security-overview.md#default-security-rules) foglalkozó cikkben találhat.
 
 ## <a name="associating-nsgs"></a>Az NSG-k társítása
 Az NSG-ket virtuális gépekhez, hálózati adapterekhez és alhálózatokhoz is társíthatja attól függően, hogy milyen üzembe helyezési modellt használ, a következők szerint:
@@ -127,7 +104,7 @@ Az NSG-ket a klasszikus és a Resource Manager-alapú üzemi modellel is meg leh
 | PowerShell     | [Igen](virtual-networks-create-nsg-classic-ps.md) | [Igen](tutorial-filter-network-traffic.md) |
 | Azure CLI **V1**   | [Igen](virtual-networks-create-nsg-classic-cli.md) | [Igen](tutorial-filter-network-traffic-cli.md) |
 | Azure CLI **V2**   | Nem | [Igen](tutorial-filter-network-traffic-cli.md) |
-| Azure Resource Manager-sablon   | Nem  | [Igen](virtual-networks-create-nsg-arm-template.md) |
+| Azure Resource Manager-sablon   | Nem  | [Igen](template-samples.md) |
 
 ## <a name="planning"></a>Tervezés
 Az NSG-k megvalósítása előtt válaszolnia kell az alábbi kérdésekre:

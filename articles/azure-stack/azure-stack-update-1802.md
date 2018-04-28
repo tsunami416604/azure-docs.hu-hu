@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 04/19/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-stack-1802-update"></a>Az Azure verem 1802 frissítés
 
@@ -56,9 +56,10 @@ Az Azure verem 1802 frissítés buildszáma **20180302.1**.
 
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
-1802 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).  
-- [KB 4103348 - az hálózati vezérlő API szolgáltatás leáll, ha egy Azure verem frissítés telepítésekor](https://support.microsoft.com/help/4103348)
+1802 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md). 
+- Az Azure verem gyorsjavítás **1.0.180302.4**. [KB 4131152 - meglévő virtuálisgép-méretezési csoportok esetleg használhatatlanná válik.]( https://support.microsoft.com/help/4131152) 
 
+  Ez a javítás is megoldja a részletes leírást talál [KB 4103348 - hálózati vezérlő API szolgáltatás lefagy, amikor egy Azure verem frissítés telepítésekor](https://support.microsoft.com/help/4103348).
 
 
 ### <a name="new-features-and-fixes"></a>Új szolgáltatásokat és javításokat

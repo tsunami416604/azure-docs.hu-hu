@@ -1,11 +1,11 @@
 ---
-title: "Fájl feltöltése konfigurálása az Azure PowerShell használatával |} Microsoft Docs"
-description: "Az IoT hub fájl engedélyezéséhez konfigurálja az Azure PowerShell-parancsmagok segítségével feltölti a csatlakoztatott eszközökről. A cél Azure storage-fiók konfigurálásával kapcsolatos információkat tartalmazza."
+title: Fájl feltöltése konfigurálása az Azure PowerShell használatával |} Microsoft Docs
+description: Az IoT hub fájl engedélyezéséhez konfigurálja az Azure PowerShell-parancsmagok segítségével feltölti a csatlakoztatott eszközökről. A cél Azure storage-fiók konfigurálásával kapcsolatos információkat tartalmazza.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c6966fd4a60681643c2a690013035bde20abee78
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 22d331342504aa7cc3d4fe86777ef9c2595a27ac
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurálja az IoT-központ fájlfeltöltések a PowerShell használatával
 
@@ -35,12 +35,12 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be az Azure-fiókjával
 
-Jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését.
+Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
-1. A PowerShell parancssorból futtassa a **Login-AzureRmAccount** parancsmagot:
+1. A PowerShell parancssorból futtassa a **Connect-AzureRmAccount** parancsmagot:
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Ha több Azure-előfizetéssel rendelkezik, a jelentkezik be az Azure ad hozzáférést az összes Azure-előfizetést a hitelesítő adatok társított. Használja a következő parancsot a rendelkezésre álló használata Azure-előfizetések listázásához:
@@ -49,7 +49,7 @@ Jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését.
     Get-AzureRMSubscription
     ```
 
-    A következő parancs segítségével válassza ki, hogy az IoT hub kezelésére szolgáló parancsok futtatásához használni kívánt előfizetést. Az előfizetés neve vagy azonosítója is használhatja, ha az előző parancs kimenetében:
+    A következő parancs segítségével válassza ki, hogy az IoT hub kezelésére szolgáló parancsok futtatásához használni kívánt előfizetést. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -123,7 +123,7 @@ Set-AzureRmIotHub `
     -FileUploadNotificationMaxDeliveryCount 10
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az IoT-központ a fájl feltöltése képességeivel kapcsolatos további információk: [egy eszközről tölt fel][lnk-upload].
 
@@ -136,7 +136,7 @@ Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 Az IoT-központ képességeit további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 * [Az IoT-megoldásból az alapoktól biztonságos mentése][lnk-securing]
 
 [lnk-upload]: iot-hub-devguide-file-upload.md

@@ -1,24 +1,18 @@
 ---
-title: "Az Azure Search szűrők |} Microsoft Docs"
-description: "Szűrés a felhasználó biztonsági azonosítóját, nyelvi, földrajzihely- vagy numerikus értékek lekérdezések az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure keresési eredményeket csökkentése érdekében."
-services: search
-documentationcenter: 
+title: Az Azure Search szűrők |} Microsoft Docs
+description: Szűrés a felhasználó biztonsági azonosítóját, nyelvi, földrajzihely- vagy numerikus értékek lekérdezések az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure keresési eredményeket csökkentése érdekében.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/19/2017
 ms.author: heidist
-ms.openlocfilehash: 2e8721684b1d4ed0e7392d85ea1df0f595860a05
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
-ms.translationtype: MT
+ms.openlocfilehash: 82da742e6512e0acc8278a255c7e4e0516eaa8cb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="filters-in-azure-search"></a>Szűrők az Azure Search szolgáltatásban 
 
@@ -52,9 +46,9 @@ Példaforgatókönyvek a következők:
 
 Ha egy szűkítő hatása a keresési eredmények között, szűrők a következők nem az egyetlen lehetősége. Másik módszert lehet felel meg leginkább, attól függően, hogy a cél:
 
- + `searchFields`lekérdezési paraméter értékén rögzíti a keresési bizonyos mezők. Például ha az index külön mezők biztosít angol és spanyol leírásokat, használhatja searchFields, amelyekre a teljes szöveges keresés használandó mezőket. 
+ + `searchFields` lekérdezési paraméter értékén rögzíti a keresési bizonyos mezők. Például ha az index külön mezők biztosít angol és spanyol leírásokat, használhatja searchFields, amelyekre a teljes szöveges keresés használandó mezőket. 
 
-+ `$select`paraméter használatával adja meg az eredményt mezők beállítása, hatékonyan díszítésre a válasz a hívó alkalmazás felé. Ez a paraméter nem pontosítsa a lekérdezést, vagy csökkentse a dokumentumgyűjteményt, de ha részletes válasz a cél, ezt a paramétert, fontolja meg. 
++ `$select` paraméter használatával adja meg az eredményt mezők beállítása, hatékonyan díszítésre a válasz a hívó alkalmazás felé. Ez a paraméter nem pontosítsa a lekérdezést, vagy csökkentse a dokumentumgyűjteményt, de ha részletes válasz a cél, ezt a paramétert, fontolja meg. 
 
 Vagy paraméterrel kapcsolatos további információkért lásd: [dokumentumok keresése > kérelem > lekérdezési paramétert](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
 
@@ -161,7 +155,7 @@ Karakterlánc csak kis-és nagybetűket. Nincs alsó-kis-és felső cased szó v
 
 | Módszer | Leírás | 
 |----------|-------------|
-| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy függvény kezeléséről egy mező karakterláncok vesszővel tagolt listáját. A karakterláncok alkotják a szűrési feltételeket, a lekérdezés hatókörét minden mezőjére alkalmazott. <br/><br/>`search.in(f, ‘a, b, c’)`szemantikai szempontból egyenértékű `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, azzal a különbséggel, hogy sokkal gyorsabb végrehajtja az értékek listája nagy esetén.<br/><br/>Javasoljuk a **javításával** szolgáló funkciók [biztonsági szűrők](search-security-trimming-for-azure-search.md) és a szűrők álló nyers szöveg illeszkednie kell az adott mezőben található. Ez a megközelítés sebesség tervezték. Több ezer értékeket válaszideje subsecond számíthat. Bár nem explicit függvény átadhatók elemek száma korlátozott, a késés növekedése arányában megadta karakterláncok száma. | 
+| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy függvény kezeléséről egy mező karakterláncok vesszővel tagolt listáját. A karakterláncok alkotják a szűrési feltételeket, a lekérdezés hatókörét minden mezőjére alkalmazott. <br/><br/>`search.in(f, ‘a, b, c’)` szemantikai szempontból egyenértékű `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, azzal a különbséggel, hogy sokkal gyorsabb végrehajtja az értékek listája nagy esetén.<br/><br/>Javasoljuk a **javításával** szolgáló funkciók [biztonsági szűrők](search-security-trimming-for-azure-search.md) és a szűrők álló nyers szöveg illeszkednie kell az adott mezőben található. Ez a megközelítés sebesség tervezték. Több ezer értékeket válaszideje subsecond számíthat. Bár nem explicit függvény átadhatók elemek száma korlátozott, a késés növekedése arányában megadta karakterláncok száma. | 
 | [Search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy függvény, amely lehetővé teszi a teljes szöveges keresés műveleteit szigorúan logikai szűrő azonos szűrőkifejezésben található kombinálhatók. Ez lehetővé teszi több lekérdezés-szűrő kombináció egy kérelem. Használhatja az egy *tartalmaz* egy részleges karakterlánc nagyobb karakterláncon belüli szűrőt. |  
 | [$filter = mező operátor karakterlánc](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | A felhasználó által definiált kifejezés mezők, operátorok és értékek állnak. | 
 
@@ -171,7 +165,7 @@ A numerikus nincsenek `searchable` teljes szöveges keresés környezetében. Cs
 
 Numerikus mezők (ár, méret, SKU, azonosítója) tartalmazó dokumentumok ezeket az értékeket a találatok között adja meg, ha a mező jelölése `retrievable`. Itt az pont, maga a teljes szöveges keresés nincs numerikus típusú alkalmazandó.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Először próbálja meg **keresési ablak** tartalmazó lekérdezések elküldeni a portálon **$filter** paraméterek. A [valós-erőforrások-minta index](search-get-started-portal.md) érdekes eredményét mutatja az a következő lekérdezések szűrve, amikor Ön illessze be a keresési sávon:
 
@@ -198,7 +192,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 További példák dolgozni, lásd: [OData szűrő kifejezésszintaxist > Példák](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Hogyan teljes szöveges keresés az Azure Search működik](search-lucene-query-architecture.md)
 + [REST API-t dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)

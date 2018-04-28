@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: skwan
-ms.openlocfilehash: 507986e4fa83e1821b1d7a1938b356feee81e9d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 692bc5eb401ccda36ef42006de509144170f7757
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>A Linux virtuális gép MSI Azure Cosmos DB eléréséhez használja 
 
@@ -113,7 +113,7 @@ A válasz az alapértelmezett MSI (Megjegyzés: a principalID, mert használatba
 ```
 ## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>A Linux virtuális gép MSI hozzáférést biztosíthat a Cosmos DB tárelérési kulcsok
 
-Cosmos DB natív módon támogatja az Azure AD-alapú hitelesítés.  Azonban egy olyan MSI Csomaghoz segítségével lekérni egy Cosmos DB hozzáférési kulcsot a Resource Manager, majd a kulcs Cosmos-adatbázis eléréséhez használja.  Ebben a lépésben megadta a rendszer MSI hozzáféréssel rendelkező, a kulcsokhoz, a Cosmos DB-fiókhoz.
+Cosmos DB natív módon támogatja az Azure AD-alapú hitelesítés. Azonban egy olyan MSI Csomaghoz segítségével lekérni egy Cosmos DB hozzáférési kulcsot a Resource Manager, majd a kulcs Cosmos-adatbázis eléréséhez használja. Ebben a lépésben meg hozzáférést a MSI a kulcsokat a Cosmos DB-fiókhoz.
 
 A Cosmos DB-fiókba az Azure Resource Manager az Azure parancssori felület használatával MSI identitás hozzáférést engedélyez, frissítés a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, és `<COSMOS DB ACCOUNT NAME>` alkalmaz környezetében. Cserélje le `<MSI PRINCIPALID>` rendelkező a `principalId` tulajdonság által visszaadott a `az resource show` parancsot [beolvasni a Linux virtuális gép MSI a principalID](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Cosmos DB két részletességi támogatja a tárelérési kulcsok használata esetén: olvasási/írási hozzáfér a fiókjához, és olvasási hozzáférést ahhoz a fiókhoz.  Rendelje hozzá a `DocumentDB Account Contributor` szerepkör, ha azt szeretné, hogy a fiók olvasási/írási kulcsokat, vagy rendelje hozzá a `Cosmos DB Account Reader Role` szerepkör, ha le szeretné kérdezni a fiók csak olvasható kulcsok:
 
@@ -149,7 +149,7 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél. Windows használ, ha 
 4. CURL használatával szerezze be a hozzáférési tokent az Azure Resource Manager: 
      
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
     ```
  
     > [!NOTE]

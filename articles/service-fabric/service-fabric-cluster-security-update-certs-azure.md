@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric-fürtben lévő tanúsítványok kezelése |} Microsoft Docs"
-description: "Hozzáadhat új tanúsítványokat, a helyettesítő tanúsítvány, és távolítsa el a tanúsítványt, vagy a Service Fabric-fürt ismerteti."
+title: Azure Service Fabric-fürtben lévő tanúsítványok kezelése |} Microsoft Docs
+description: Hozzáadhat új tanúsítványokat, a helyettesítő tanúsítvány, és távolítsa el a tanúsítványt, vagy a Service Fabric-fürt ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 65ade0f2526bf444c2205c74cce0e20be540998d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70de9ed6175a5fe7a8e3eed9c0a921cf8184d50d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hozzáadhat és eltávolíthat tanúsítványokat a Service Fabric-fürtök az Azure-ban
 Javasoljuk, hogy megismerje a módját a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök biztonsági forgatókönyveinek](service-fabric-cluster-security.md). Ismernie kell fürt tanúsítvány és felhasználási területének, mielőtt végrehajtásának folytatásához.
@@ -47,7 +47,7 @@ Ha a szándéka az, eltávolítani a tanúsítványt, amely elsődleges van megj
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Erőforrás-kezelő Powershell-lel másodlagos tanúsítvány hozzáadásához
 > [!TIP]
-> Most már jobb és egyszerűbb módon hozzáadni egy másodlagos tanúsítvány használata a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmag. Nem kell kövesse a jelen szakaszban szereplő lépéseket.  Is, nem szükséges a telepítés a fürt létrehozásához használatakor eredetileg használt sablon a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmag.
+> Most már jobb és egyszerűbb módon hozzáadni egy másodlagos tanúsítvány használata a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmag. Nem kell kövesse a jelen szakaszban szereplő lépéseket.  Is, nem kell létrehozni és telepíteni a fürt használatakor eredetileg használt sablon a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmag.
 
 Ezek a lépések feltételezik, hogy Ön ismeri a Resource Manager működésével és legalább egy Service Fabric-fürt Resource Manager-sablon használatával telepített, és a sablont, amely akkor lesz szüksége a fürt létrehozásakor használt. Az Ön számára elfogadható JSON használatával is feltételezzük.
 
@@ -197,7 +197,7 @@ A Resource Manager-sablon paraméter fájl szerkesztése, vegye fel a két új s
 - Jelentkezzen be az Azure-fiókjába, és válassza ki az adott azure-előfizetés. Ez egy fontos lépés a segítsen, akik hozzáférhetnek a több azure-előfizetés.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId <Subcription ID> 
 
 ```

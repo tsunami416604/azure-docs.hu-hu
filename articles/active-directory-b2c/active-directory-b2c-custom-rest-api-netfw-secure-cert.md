@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: f1b9ef9a78715c08c5361e4bab6a31384c5c98d3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fb5c8a48a676a2909cce3c4d126218e48a4c8ce2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Biztonságos a RESTful szolgáltatás ügyfél-tanúsítványok használatával
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 A kapcsolódó cikkében akkor [hozzon létre egy RESTful szolgáltatás](active-directory-b2c-custom-rest-api-netfw.md) , amely együttműködik az Azure Active Directory B2C (az Azure AD B2C).
 
 Ebből a cikkből megtanulhatja a hozzáférés korlátozása az Azure web app (RESTful API) ügyfél-tanúsítvány használatával. Ezt a módszert nevezik TLS kölcsönös hitelesítést, vagy *ügyféltanúsítvány-alapú hitelesítés*. Csak a megfelelő tanúsítványok, például az Azure AD B2C-ben szolgáltatások férhetnek hozzá a szolgáltatáshoz.

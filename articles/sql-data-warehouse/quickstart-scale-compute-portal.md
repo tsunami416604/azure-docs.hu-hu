@@ -1,28 +1,24 @@
 ---
-title: "Gyors üzembe helyezés: Horizontális felskálázás az Azure SQL Data Warehouse - Azure-portálon számítási |} Microsoft Docs"
-description: "Az Azure portál feladatok kezelésére számítási teljesítményt. Skála dwu-k beállításával számítási erőforrásokat. Vagy, és sablonok felfüggesztése és folytatása a számítási erőforrásokat költségek csökkentése érdekében."
+title: 'Gyors útmutató: Számítási bővítés az Azure SQL Data Warehouse-ban – Azure Portal | Microsoft Docs'
+description: Azure SQL Data Warehouse-beli számítási bővítés az Azure Portalon. Bővítéssel a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: jhubbard
-editor: 
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 01/31/2018
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 6b86042ed6b95ba49fa2089ba36b1dbe9a61cc40
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: MT
+ms.topic: quickstart
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: d93ea939a938fa88615161d3d048ee1881dd319a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors üzembe helyezés: Méretezési számítási az Azure SQL Data Warehouse az Azure-portálon
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Data Warehouse-beli számítási bővítés az Azure Portalon
 
-Az Azure-portálon az Azure SQL Data Warehouse számítás méretezése. [Horizontális felskálázás számítási](sql-data-warehouse-manage-compute-overview.md) jobb teljesítményt vagy skálája biztonsági számítási költségek csökkentése érdekében. 
+Azure SQL Data Warehouse-beli számítási bővítés az Azure Portalon. [Bővítéssel](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -32,32 +28,32 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Amely már, vagy használjon adatraktár méretezheti [gyors üzembe helyezés: hozzon létre, és csatlakozzon - portál](create-data-warehouse-portal.md) nevű data warehouse létrehozása az **mySampleDataWarehouse**.  A gyors üzembe helyezés méretezi **mySampleDataWarehouse**.
+Méretezhet egy meglévő adattárházat, vagy létrehozhat egy **mySampleDataWarehouse** nevű adattárházat a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutató követésével.  A jelen gyors útmutató a **mySampleDataWarehouse** nevű adattárház méretezését mutatja be.
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
-Az SQL Data Warehouse növelheti vagy csökkentheti a számítási erőforrásokat adattárházegységek beállításával. A [létrehozása és a Connect - portál](create-data-warehouse-portal.md) létrehozott **mySampleDataWarehouse** és 400 dwu-k inicializálása azt. Az alábbi lépéseket, állítsa be a dwu-k a **mySampleDataWarehouse**.
+Az SQL Data Warehouse-ban növelheti vagy csökkentheti a számítási erőforrásokat az adattárházegységek számának módosításával. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
 
-Adattárházegységek módosítása:
+Az adattárházegységek számának módosításához:
 
-1. Kattintson a **SQL-adatbázisok** az Azure portál bal oldalán.
-2. Válassza ki **mySampleDataWarehouse** a a **SQL-adatbázisok** lap. Megnyitja az adatraktárba.
-3. Kattintson a **méretezési**.
+1. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
+2. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ekkor megnyílik az adattárház.
+3. Kattintson **Méretezés** lehetőségre.
 
-    ![Kattintson a Scale](media/quickstart-scale-compute-portal/click-scale.png)
+    ![Méretezés lehetőség választása](media/quickstart-scale-compute-portal/click-scale.png)
 
-2. A skála panelen mozgassa a csúszkát balra vagy jobbra a DWU-beállítást.
+2. A Méretezés panelen húzza a csúszkát balra vagy jobbra az adattárházegységek (DWU-k) beállításának módosításához.
 
-    ![Csúszka](media/quickstart-scale-compute-portal/scale-dwu.png)
+    ![Csúszka mozgatása](media/quickstart-scale-compute-portal/scale-dwu.png)
 
-3. Kattintson a **Save** (Mentés) gombra. Egy megerősítő üzenet jelenik meg. Kattintson a **Igen** megerősítéséhez vagy **nem** megszakítja a műveletet.
+3. Kattintson a **Save** (Mentés) gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
     ![Kattintson a Save (Mentés) gombra.](media/quickstart-scale-compute-portal/confirm-change.png)
 
 
 
 ## <a name="next-steps"></a>További lépések
-Most megtanulhatta, az adatraktár számítási méretezése. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
+Ebből az útmutatóból megtudhatta, hogyan tudja méterezni egy adattárház számítási kapacitását. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 >[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 8ea768c6ba8b404978b78f2cbd272f98af3fa70b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c2233ab32314655c510c8c884641293ae3325ef5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Az Azure által támogatott disztribúciók Linux
-Partnerek adja meg az Azure piactéren Linux-lemezképeket. Már dolgozunk a különböző Linux Közösségek még több változatban is elkészíti a támogatott terjesztési listához adni. Időközben azokat a terjesztéseket, amelyek nem érhetők el a piactérről, az mindig helyezheti a saját Linux által útmutatása szerint [létrehozása és feltöltése a Linux operációs rendszert tartalmazó virtuális merevlemez](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic).
+Partnerek adja meg az Azure piactéren Linux-lemezképeket. Már dolgozunk a különböző Linux Közösségek még több változatban is elkészíti a támogatott terjesztési listához adni. Időközben azokat a terjesztéseket, amelyek nem érhetők el a piactérről, az mindig helyezheti a saját Linux által útmutatása szerint [létrehozása és feltöltése a Linux operációs rendszert tartalmazó virtuális merevlemez](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúcióiról, valamint a verziók
 A következő táblázat a Linux terjesztéseket, a támogatott Azure-on. Tekintse meg [támogatja a Microsoft Azure Linux képek](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) részletesebb információ a Linux és az Azure-ban nyílt forráskódú technológiája támogatása.

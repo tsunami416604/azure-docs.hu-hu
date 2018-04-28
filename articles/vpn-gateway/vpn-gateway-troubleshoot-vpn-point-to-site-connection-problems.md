@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 503dcd87bf87ffb204b03780fc11f30825ac35ef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibáinak elhárítása: Az Azure pont – hely kapcsolat problémák
 
@@ -48,7 +48,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális User\Personal\Certificates |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
-    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
+    | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
 
 3. Nyissa meg a felhasználók számára\<felhasználónév > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*.cer fájlt) a felhasználói és számítógép tárolójában.
 
@@ -63,7 +63,7 @@ Az ügyféltanúsítvány telepítésével kapcsolatos további információkér
 
 A VPN-ügyfél használatával csatlakoznak az Azure virtuális hálózat megkísérlésekor a következő hibaüzenet jelenhet meg:
 
-**A fogadott üzenet volt-e váratlan vagy rosszul formázott. (Error 0x80090326)**
+**A fogadott üzenet volt-e váratlan vagy rosszul formázott. (0x80090326 hiba)**
 
 ### <a name="cause"></a>Ok
 
@@ -96,7 +96,7 @@ A VPN-ügyfél használatával csatlakoznak az Azure virtuális hálózat megkí
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális User\Personal\Certificates |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
-    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
+    | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
 
 2. Ha a tanúsítvány már a helyen, próbálja meg törölni a tanúsítványokat, és telepítse újra. A **azuregateway -*GUID*. cloudapp.net** tanúsítványa megtalálható-e az ügyfél VPN-konfiguráció Azure-portálról letöltött csomagot. Fájl archivers segítségével csomagolja ki a fájlokat a csomagból.
 
@@ -318,7 +318,7 @@ Ez a hiba akkor fordul elő, ha a RADIUS-kiszolgáló, amelyet a VPN-ügyfél hi
 
 ### <a name="solution"></a>Megoldás
 
-Győződjön meg arról, hogy a RADIUS-kiszolgáló megfelelően van-e konfigurálva. További információkért lásd: [integrálni RADIUS-hitelesítés az Azure multi-factor Authentication kiszolgáló](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md).
+Győződjön meg arról, hogy a RADIUS-kiszolgáló megfelelően van-e konfigurálva. További információkért lásd: [integrálni RADIUS-hitelesítés az Azure multi-factor Authentication kiszolgáló](../active-directory/authentication/howto-mfaserver-dir-radius.md).
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>"Hiba 405" Ha a VPN-átjáró legfelső szintű tanúsítvány letöltése
 

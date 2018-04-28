@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: e5310c59cbfe4080911768f29e1b8f635a611e63
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c1b04968f83271006240fc0e099175e9017574ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# fejlesztői leírás
 
@@ -44,7 +44,7 @@ A Visual Studio a **Azure Functions** projektsablon hoz létre egy C# hordozhat�
 > [!IMPORTANT]
 > Az összeállítási folyamat létrehoz egy *function.json* fájlt minden funkciót. Ez *function.json* fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. A funkció letiltásához használja a [letiltása](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) attribútum. Például MY_TIMER_DISABLED beállítás logikai alkalmazás hozzáadása, és alkalmazni `[Disable("MY_TIMER_DISABLED")]` a függvénynek. Ezután engedélyezése és letiltása az alkalmazás beállításainak megváltoztatása.
 
-### <a name="functionname-and-trigger-attributes"></a>Eseményindító és függvénynév attribútumok
+## <a name="methods-recognized-as-functions"></a>Funkciók értelmezhető módszerek
 
 Egy osztály könyvtárban, a függvény egy statikus metódus egy `FunctionName` és egy eseményindító attribútum, az alábbi példában látható módon:
 
@@ -61,13 +61,24 @@ public static class SimpleExample
 } 
 ```
 
-A `FunctionName` attribútummal jelöli meg a metódus egy függvény belépési pontként. A név egy projekten belül egyedinek kell lennie.
+A `FunctionName` attribútummal jelöli meg a metódus egy függvény belépési pontként. A név egy projekten belül egyedinek kell lennie. Projektsablonjai gyakran nevű metódus létrehozása `Run`, de a metódus nevét bármilyen érvényes C# metódus neve lehet.
 
 Az eseményindító attribútum az eseményindító adja meg, és a bemeneti adatok kötődik metódusparaméter. A példa függvény váltja ki egy üzenetsor-üzenetet, és az üzenetsorban lévő üzenetet továbbítódik metódust a `myQueueItem` paraméter.
 
-### <a name="additional-binding-attributes"></a>További kötés attribútumok
+## <a name="method-signature-parameters"></a>Metódus-aláírás paraméterei
 
-További bemeneti és kimeneti kötelező attribútum is használható. A következő példa egy kimeneti várólista-kötés hozzáadásával előző egy módosítja. A függvény a bemeneti várólista üzenetet ír egy új üzenetsor-üzenetet egy másik várólistához.
+A metódus aláírása nem az eseményindító attribútummal használt paraméterek tartalmazhat. Íme néhány a felvehető paraméterek közül:
+
+* [Bemeneti és kimeneti kötések](functions-triggers-bindings.md) jelölés azonosítja, által dekoráció azokat az attribútumokat.  
+* Egy `ILogger` vagy `TraceWriter` paramétere [naplózás](#logging).
+* A `CancellationToken` paramétere [szabályos leállítást](#cancellation-tokens).
+* [Kötési kifejezésként](functions-triggers-bindings.md#binding-expressions-and-patterns) paramétereket indítás metaadatok.
+
+Paramétereket a függvényaláíráshoz a sorrendje nem lényeges. Például helyezhet el trigger paraméterek előtt vagy után más kötésekben, és adhat meg a tranzakciónaplókat tartalmazó paraméter előtt vagy után eseményindító vagy kötelező paraméterek.
+
+### <a name="output-binding-example"></a>Példa a kimenetre kötés
+
+A következő példa egy kimeneti várólista-kötés hozzáadásával előző egy módosítja. A függvény az üzenetsorban található üzenetet, amely elindítja a működnek, mint egy új üzenetsor-üzenetet egy másik várólistához ír.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -84,13 +95,11 @@ public static class SimpleExampleWithOutput
 }
 ```
 
-### <a name="order-of-parameters"></a>A paraméterek sorrendje
+A kötés útmutatót ([tárüzenetsort](functions-bindings-storage-queue.md), például) mely eseményindító, bemeneti vagy kimeneti attribútumok kötés használható különböző ismertetik.
 
-Paramétereket a függvényaláíráshoz a sorrendje nem lényeges. Például helyezhet el trigger paraméterek előtt vagy után más kötésekben, és adhat meg a tranzakciónaplókat tartalmazó paraméter előtt vagy után eseményindító vagy kötelező paraméterek.
+### <a name="binding-expressions-example"></a>Kötési kifejezésekben – példa
 
-### <a name="binding-expressions"></a>Kötési kifejezésként
-
-Kötési kifejezésekben attribútum konstruktorparaméterek és a Függvényparaméterek használható. Például a következő kód jogosultságot kap a várólistában, figyelheti a Alkalmazásbeállítás nevét, és onnan kapta, hogy a várólista üzenet létrehozása idején a `insertionTime` paraméter.
+A következő kód jogosultságot kap a várólistában, figyelheti a Alkalmazásbeállítás nevét, és onnan kapta, hogy a várólista üzenet létrehozása idején a `insertionTime` paraméter.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -107,9 +116,7 @@ public static class BindingExpressionsExample
 }
 ```
 
-További információkért lásd: **kötelező kifejezések és minták** a [eseményindítók és kötések](functions-triggers-bindings.md#binding-expressions-and-patterns).
-
-### <a name="conversion-to-functionjson"></a>Function.json átalakítása
+## <a name="autogenerated-functionjson"></a>Automatikusan létrehozott function.json
 
 Az összeállítási folyamat létrehoz egy *function.json* fájlban egy függvény a build mappában. Ahogy azt korábban említettük, ez a fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. 
 
@@ -134,7 +141,7 @@ A létrehozott *function.json* fájl tartalmaz egy `configurationSource` tulajdo
 }
 ```
 
-### <a name="microsoftnetsdkfunctions-nuget-package"></a>Microsoft.NET.Sdk.Functions NuGet-csomag
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
 A *function.json* fájl létrehozása végzi el a NuGet-csomag [Microsoft\.NET\.Sdk\.funkciók](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
@@ -169,7 +176,7 @@ A `Sdk` csomag is függ [Newtonsoft.Json](http://www.nuget.org/packages/Newtonso
 
 Forráskódja `Microsoft.NET.Sdk.Functions` érhető el a GitHub-tárház [azure\-funkciók\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
-### <a name="runtime-version"></a>Futtatókörnyezet verziója
+## <a name="runtime-version"></a>Futtatókörnyezet verziója
 
 A Visual Studio használja a [Azure Functions Core eszközök](functions-run-local.md#install-the-azure-functions-core-tools) funkciók projektek futtatásához. A Core-eszközök a Functions futtatókörnyezete parancssori felület.
 

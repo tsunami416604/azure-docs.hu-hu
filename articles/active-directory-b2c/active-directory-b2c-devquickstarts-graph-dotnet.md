@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 731ff24fe9cc1b5dbf0c597139a96ae80b863cc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Használja az Azure AD Graph API
 
@@ -29,16 +29,16 @@ A B2C bérlőre nincsenek két elsődleges módja a Graph API-val folytatott kom
 * Interaktív, egyszer futó feladatok akkor szerepét a B2C-bérlő a rendszergazdai fiók a feladatok végrehajtásakor. Ebben a módban a rendszergazda számára, hogy a hitelesítő adatokkal jelentkezhetnek be, hogy a rendszergazda a Graph API bármely hívások végrehajtása előtt szükséges.
 * Automatikus, folyamatos feladatokat valamilyen adja meg a felügyeleti feladatok végrehajtásához szükséges jogosultságokkal rendelkező szolgáltatásfiókot kell használnia. Az Azure AD meg ehhez az alkalmazásnak, és az Azure AD hitelesíti. Ehhez használja az **Alkalmazásazonosító** használó a [OAuth 2.0 ügyfél hitelesítő adatai megadják](../active-directory/develop/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api). Ebben az esetben az alkalmazás úgy működik, mint maga nem felhasználóként, a Graph API hívása.
 
-Ebben a cikkben mutatjuk be az automatikus használati eset végrehajtása. Annak bemutatásához, azt fogja összeállítása a .NET 4.5 `B2CGraphClient` , amely elvégzi a felhasználó létrehozása, olvasása, frissítése és Törlés (CRUD) típusú műveletek. Az ügyfél egy Windows parancssori felület (CLI), mely lehetővé teszi a különböző módszerek meghívására lesz. Azonban a kód írása a nem interaktív, automatikus módon viselkedik.
+Ebből a cikkből megismerheti, hogyan hajthat végre az automatikus használati eset. A .NET 4.5 lesz készít `B2CGraphClient` , amely elvégzi a felhasználó létrehozása, olvasása, frissítése és Törlés (CRUD) típusú műveletek. Az ügyfél egy Windows parancssori felület (CLI), mely lehetővé teszi a különböző módszerek meghívására lesz. Azonban a kód írása a nem interaktív, automatikus módon viselkedik.
 
 ## <a name="get-an-azure-ad-b2c-tenant"></a>Az Azure AD B2C-bérlő beszerzése
-Előtt hozzon létre az alkalmazások vagy felhasználók számára, vagy minden kommunikálni az Azure AD, szüksége lesz egy Azure AD B2C-bérlő és a bérlő egy globális rendszergazdai fiókját. Ha már, a bérlő nincs [Ismerkedés az Azure AD B2C](active-directory-b2c-get-started.md).
+Alkalmazások vagy felhasználók számára hozhat létre, meg kell az Azure AD B2C-bérlő. Ha már, a bérlő nincs [Ismerkedés az Azure AD B2C](active-directory-b2c-get-started.md).
 
 ## <a name="register-your-application-in-your-tenant"></a>Az alkalmazás regisztrálása-bérlőben
-Miután a B2C-bérlő elkészült, az alkalmazás használatával regisztrálnia kell a [Azure Portal](https://portal.azure.com).
+Miután a B2C-bérlő elkészült, az alkalmazást a regisztrálnia kell a [Azure-portálon](https://portal.azure.com).
 
 > [!IMPORTANT]
-> A Graph API használata a B2C bérlőre, szüksége lesz egy dedikált alkalmazás regisztrálása az általános *App regisztrációk* az Azure portál menüjében **nem** az Azure AD B2C  *Alkalmazások* menü. Nem használhat újra a már meglévő B2C alkalmazások az Azure AD B2C regisztrált *alkalmazások* menü.
+> A B2C-bérlő a Graph API-t használja, akkor regisztrálnia kell egy alkalmazást, amely a *App regisztrációk* szolgáltatással az Azure-portálon **nem** az Azure AD B2C *alkalmazások*menü. Az alábbi utasítások alapján a tanúsítványtárolójához menü. Nem használhat újra meglévő B2C alkalmazások az Azure AD B2C regisztrált *alkalmazások* menü.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki az Azure AD B2C-bérlő fiókja kiválasztja az oldal jobb felső sarkában.
@@ -47,7 +47,8 @@ Miután a B2C-bérlő elkészült, az alkalmazás használatával regisztrálnia
     1. Válassza ki **Web App / API** az alkalmazás típusa.    
     2. Adjon meg **valamennyi bejelentkezési URL-cím** (pl. https://B2CGraphAPI) , mert nincs megfelelő ehhez a példához.  
 5. Az alkalmazás lesz most megjelenjenek az alkalmazások listájának kattintson rá az beszerzése a **Alkalmazásazonosító** (más néven Ügyfélazonosítót). Másolja, szüksége lehet rájuk egy későbbi szakasz ismerteti.
-6. A beállítások menüben kattintson a **kulcsok** , és adja hozzá egy új kulcsot (más néven ügyfélkulcs). Is másolja azt egy későbbi szakasz ismerteti a használatra.
+6. A beállítások menüben kattintson a **kulcsok**.
+7. Az a **jelszavak** szakaszban adja meg a kulcs leírását, és válasszon egy időtartamot, és kattintson **mentése**. Másolja a kulcs értékét (más néven Ügyfélkulcs) használható egy későbbi szakasz ismerteti.
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>Konfigurálása létrehozása, olvasása, és az alkalmazás engedélyeinek frissítése
 Most szeretné beolvasni a szükséges engedélyekkel létrehozása, olvasása, frissítése és törlése a felhasználók számára az alkalmazás konfigurálása.

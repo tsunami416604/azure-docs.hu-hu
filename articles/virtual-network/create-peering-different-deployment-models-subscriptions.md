@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 7a0104e68b07dbdff5483b771429fb9bc19a523f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 08a025acb89d3b35798688dc333038fb807284cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellek és előfizetések
 
@@ -204,7 +204,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Ha min
     > [!WARNING]
     > Megváltozott hálózati konfigurációs fájlok importálása (klasszikus) az előfizetéshez létező virtuális hálózatok módosításai okozhatják. Csak adja hozzá a korábbi virtuális hálózatot, és módosítsa vagy távolítsa el a meglévő virtuális hálózatok az előfizetésből nem biztosítására. 
 
-5. Jelentkezzen be a "b" felhasználó tartozó előfizetés Resource Manager-parancsok használatával írja be a "b" felhasználó a `login-azurermaccount` parancsot.
+5. Jelentkezzen be a "b" felhasználó tartozó előfizetés Resource Manager-parancsok használatával írja be a "b" felhasználó a `Connect-AzureRmAccount` parancsot.
 6. "A" felhasználó engedélyek hozzárendelése virtuális hálózati b másolása a következő parancsfájl egy szövegszerkesztőben a Számítógépről, majd cserélje le a `<SubscriptionB-id>` előfizetés b azonosítójú Ha az előfizetés-azonosítója nem ismeri, adja meg a `Get-AzureRmSubscription` parancs a megtekintéséhez. A következő **azonosító** visszaadott kimenet van az előfizetés-azonosító. Azure létrehozni a virtuális hálózat (klasszikus), az első lépésben létrehozott 4 erőforráscsoportban nevű *alapértelmezett-hálózat*. A parancsfájl végrehajtása, másolja a módosított, illessze be a PowerShell, és nyomja le az `Enter`.
     
     ```powershell 
@@ -214,7 +214,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Ha min
       -Scope /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
     ```
 
-7. Jelentkezzen ki az Azure-bA biztosít, és írja be a "a" felhasználó "a" felhasználó tartozó előfizetés bejelentkezni a `login-azurermaccount` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
+7. Jelentkezzen ki az Azure-bA biztosít, és írja be a "a" felhasználó "a" felhasználó tartozó előfizetés bejelentkezni a `Connect-AzureRmAccount` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
 8. A virtuális hálózat (erőforrás-kezelő) létrehozása a következő parancsfájl másolása, a PowerShell a illeszti, és nyomja `Enter`:
 
     ```powershell
@@ -281,7 +281,7 @@ Ez az oktatóanyag befejezése után, előfordulhat, hogy törölni kívánja az
 5. Az a **myVnetB** panelen kattintson a **törlése**.
 6. A törlés megerősítéséhez kattintson **Igen** a a **virtuális hálózati Delete** mezőbe.
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="delete-cli"></a>Az Azure parancssori felület
 
 1. Jelentkezzen be Azure-ban a parancssori felület 2.0 törölni a virtuális hálózatot (erőforrás-kezelő) a következő paranccsal:
 

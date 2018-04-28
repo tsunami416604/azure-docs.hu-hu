@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: sujayt
-ms.openlocfilehash: 4ddad2d8e5c5323b632b65efaf87d3df7ce8d707
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: a20ec14181e49443b5caf6ed0bcfaedcd4601b1c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Az Azure-régió, egy másik replikálásához támogatási mátrix
 
@@ -93,7 +93,7 @@ Az alábbi támogatási esetén alkalmazható bármilyen munkaterhelést futtat�
 
 ### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Az Azure virtuális gépek támogatott Ubuntu kernel verziók
 
-**Release** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
+**Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
 14.04 LTS | 9.11 | a 3.13.0-125-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-83-generic 4.4.0-21-Generic |
 14.04 LTS | 9.12 | a 3.13.0-132-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-96-generic 4.4.0-21-Generic |
@@ -107,10 +107,10 @@ Az alábbi támogatási esetén alkalmazható bármilyen munkaterhelést futtat�
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Az Azure virtuális gépek támogatott Debian kernel-verziók
 
-**Release** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
+**Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
-Debian 7 | 9.14 | 3.2.0-4-amd64 to 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | 3.16.0-4-amd64 to 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.5-amd64 |
+Debian 7 | 9.14 | a 3.2.0-5-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.5-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Támogatott fájlrendszerek és a Vendég tárolási konfigurációk alakíthatók ki Linux operációs rendszert futtató Azure virtuális gépeken
 
@@ -165,9 +165,11 @@ Standard szintű felügyelt lemez | Támogatott Azure-régiók Azure Site Recove
 Prémium szintű felügyelt lemez | Támogatott Azure-régiók Azure Site Recovery használata támogatott. Kormánya felhők jelenleg nem támogatottak. |
 Tárolóhelyek | Támogatott |         
 Titkosítását (SSE) | Támogatott | Gyorsítótár és a cél storage-fiókok válassza ki az engedélyezett SSE tárfiókot.     
-Azure Disk Encryption (ADE) | Nem támogatott |
+Az Azure Disk Encryption (ADE) | Nem támogatott |
 Gyakran használt adatok hozzáadása lemez | Nem támogatott | Ha ad hozzá, vagy távolítsa el a virtuális Gépre adatlemez, szeretné tiltsa le a replikációt, és engedélyezze újra a virtuális gép replikálását.
 Lemez kizárása | Nem támogatott|   Ideiglenes lemez alapértelmezés szerint ki van zárva.
+Tárolóhelyek – közvetlen  | Nem támogatott|
+Kibővített fájlkiszolgáló  | Nem támogatott|
 LRS | Támogatott |
 GRS | Támogatott |
 RA-GRS | Támogatott |

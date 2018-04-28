@@ -4,7 +4,7 @@ description: Arra vonatkozó ismeretek, hogyan lehet fejlesztési műveleteket v
 services: cosmos-db
 documentationcenter: ''
 author: rafats
-manager: jhubbard
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -16,17 +16,17 @@ ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 7fca9f184097ed50ace665cde0c5ef8fb180feda
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a6ed74de159593003e8a18daefce2eb9a5945481
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-cosmosdb-develop-with-the-sql-api-in-net"></a>Azure CosmosDB: Fejlesztés az SQL API-val .NET-keretrendszerben
+# <a name="azure-cosmos-db-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: Fejlesztés az SQL API-val .NET-keretrendszerben
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre az Azure Portalon egy Azure Cosmos DB-fiókot, majd [partíciókulccsal](sql-api-partition-data.md#partition-keys) rendelkező dokumentum-adatbázist és gyűjteményt az [SQL .NET API-val](sql-api-introduction.md). Ha a gyűjtemény létrehozásakor meghatározza a partíciókulcsot, azzal előkészíti az alkalmazást arra, hogy az adatok mennyiségének növekedésével zökkenőmentesen átméretezhető legyen. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre az Azure Portalon egy Azure Cosmos DB-fiókot, majd [partíciókulccsal](sql-api-partition-data.md#partition-keys) rendelkező dokumentum-adatbázist és gyűjteményt az [SQL .NET API-val](sql-api-introduction.md). Ha a gyűjtemény létrehozásakor meghatározza a partíciókulcsot, azzal előkészíti az alkalmazást arra, hogy az adatok mennyiségének növekedésével zökkenőmentesen átméretezhető legyen.
 
 Ez az oktatóanyag a következő, az [SQL .NET API](sql-api-sdk-dotnet.md)-val elvégezhető feladatokat mutatja be:
 
@@ -41,25 +41,22 @@ Ez az oktatóanyag a következő, az [SQL .NET API](sql-api-sdk-dotnet.md)-val e
 > * Adatbázis törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
-Győződjön meg róla, hogy rendelkezik az alábbiakkal:
+Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
-* Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/). 
+* Hozzáférés egy Azure Cosmos DB-fiókhoz
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
+  Használhat saját Azure-előfizetést is egy [ingyenes Azure-fiók](https://azure.microsoft.com/free/) regisztrálásával. Ezután [létrehozhat egy Azure Cosmos DB-fiókot](create-sql-api-dotnet.md#create-a-database-account).
+
 * Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
-
-Először hozzon létre egy Azure Cosmos DB-fiókot az Azure Portalon.
 
 > [!TIP]
-> * Már rendelkezik Azure Cosmos DB-fiókkal? Ez esetben ugorjon [A Visual Studio-megoldás beállítása](#SetupVS) című részhez.
-> * Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre [A Visual Studio-megoldás beállítása](#SetupVS) című lépésre. 
+> * Ha az Azure Cosmos DB Emulator használata mellett dönt, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor telepítéséhez.
 >
 >
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a id="SetupVS"></a>A Visual Studio-megoldás beállítása
 1. Nyissa meg a **Visual Studiót** a számítógépén.
@@ -68,7 +65,7 @@ Először hozzon létre egy Azure Cosmos DB-fiókot az Azure Portalon.
    ![Képernyőfelvétel az Új projekt ablakról](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-new-project-2.png)
 
 4. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található, majd kattintson a **NuGet-csomagok kezelése...** lehetőségre.
-    
+
     ![A Projekt jobb gombos kattintással elérhető menüjének képernyőfelvétele](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-manage-nuget-pacakges.png)
 5. A **NuGet** lapon kattintson a **Tallózás** elemre, majd írja be a **documentdb** kifejezést a keresőmezőbe.
 <!---stopped here--->
@@ -103,11 +100,11 @@ private DocumentClient client;
 
 Ezután lépjen vissza az [Azure Portalra](https://portal.azure.com) a végponti URL-cím és az elsődleges kulcs beszerzéséért. A végponti URL-cím és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, az Azure Cosmos DB pedig megbízzon az alkalmazás által létesített kapcsolatban.
 
-Az Azure Portalon lépjen az Azure Cosmos DB-fiókra, és kattintson a **Kulcsok**, majd az **Írási/olvasási kulcsok** elemre.
+Az Azure Portalon lépjen az Azure Cosmos DB-fiókra. A bal oldali menüben válassza a **Kulcsok**, majd az **Írható és olvasható kulcsok** lehetőséget.
 
 Másolja ki az URI-t a portálról, és illessze be a `<your endpoint URL>` helyére a program.cs fájlban. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `<your primary key>` helyére. Az értékekből ne feledje eltávolítani a `<` és `>` karaktereket.
 
-![Képernyőkép a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt Azure Portalról. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az Azure Cosmos DB-fiók panelén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI és PRIMARY KEY értékek vannak kiemelve](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-keys.png)
+![Képernyőkép a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt Azure Portalról. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az Azure Cosmos DB-fiók szakaszban lévő KEYS elem, valamint a Kulcsok szakaszban lévő URI és PRIMARY KEY értékek vannak kiemelve.](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-keys.png)
 
 ## <a id="instantiate"></a>A DocumentClient példányának létrehozása
 
@@ -124,24 +121,24 @@ Következő lépésként hozzon létre egy Azure Cosmos DB-[adatbázist](sql-api
 ```csharp
 await client.CreateDatabaseAsync(new Database { Id = "db" });
 ```
-## <a name="decide-on-a-partition-key"></a>Partíciókulcs választása 
+## <a name="decide-on-a-partition-key"></a>Partíciókulcs választása
 
-A gyűjtemények dokumentumok tárolására alkalmas tárolók. Olyan logikai erőforrások, amelyek [több fizikai partícióra is kiterjedhetnek](partition-data.md). A [partíciókulcs](sql-api-partition-data.md) olyan tulajdonság (vagy útvonal) a dokumentumokon belül, amelynek használatával az adatok eloszthatók a kiszolgálók vagy partíciók között. Az ugyanazzal a partíciókulccsal rendelkező összes dokumentum ugyanazon a partíción tárolódik. 
+A gyűjtemények dokumentumok tárolására alkalmas tárolók. Olyan logikai erőforrások, amelyek [több fizikai partícióra is kiterjedhetnek](partition-data.md). A [partíciókulcs](sql-api-partition-data.md) olyan tulajdonság (vagy útvonal) a dokumentumokon belül, amelynek használatával az adatok eloszthatók a kiszolgálók vagy partíciók között. Az ugyanazzal a partíciókulccsal rendelkező összes dokumentum ugyanazon a partíción tárolódik.
 
-A partíciókulcs meghatározása fontos döntés a gyűjtemény létrehozása előtt. A partíciókulcsok olyan tulajdonságok (vagy útvonalak) a dokumentumokon belül, amelyeket az Azure Cosmos DB az adatok több kiszolgáló vagy partíció közötti elosztására használ. A Cosmos DB kivonatolja a partíciókulcs értékét, és a kivonatolt eredmény alapján határozza meg, hogy melyik partíción tárolja a dokumentumot. Az ugyanazon partíciókulccsal rendelkező összes dokumentum ugyanazon a partíción tárolódik, és a gyűjtemény létrehozását követően a partíciókulcsok nem módosíthatók. 
+A partíciókulcs meghatározása fontos döntés a gyűjtemény létrehozása előtt. A partíciókulcsok olyan tulajdonságok (vagy útvonalak) a dokumentumokon belül, amelyeket az Azure Cosmos DB az adatok több kiszolgáló vagy partíció közötti elosztására használ. A Cosmos DB kivonatolja a partíciókulcs értékét, és a kivonatolt eredmény alapján határozza meg, hogy melyik partíción tárolja a dokumentumot. Az ugyanazon partíciókulccsal rendelkező összes dokumentum ugyanazon a partíción tárolódik, és a gyűjtemény létrehozását követően a partíciókulcsok nem módosíthatók.
 
-Ebben az oktatóanyagban a partíciókulcs a `/deviceId` lesz. Így a rendszer egy adott eszköz minden adatát ugyanazon a partíción tárolja. Olyan partíciókulcsot érdemes választani, amely sok, hasonló gyakorisággal használt értékkel rendelkezik, mert így gondoskodni lehet róla, hogy a Cosmos DB az adatok mennyiségének növekedése közben elvégezze a terheléselosztást, és a gyűjtemény teljes kapacitását ki lehessen aknázni. 
+Ebben az oktatóanyagban a partíciókulcsot `/deviceId` értékre kell állítania. Így a rendszer egy adott eszköz minden adatát ugyanazon a partíción tárolja. Olyan partíciókulcsot érdemes választani, amely sok, hasonló gyakorisággal használt értékkel rendelkezik, mert így gondoskodni lehet róla, hogy a Cosmos DB az adatok mennyiségének növekedése közben elvégezze a terheléselosztást, és a gyűjtemény teljes kapacitását ki lehessen aknázni.
 
-A particionálással kapcsolatban további információkat az [Azure Cosmos DB particionálási és méretezési eljárásait](partition-data.md) ismertető cikkben talál. 
+A particionálással kapcsolatban további információkat az [Azure Cosmos DB particionálási és méretezési eljárásait](partition-data.md) ismertető cikkben talál.
 
-## <a id="CreateColl"></a>Gyűjtemény létrehozása 
+## <a id="CreateColl"></a>Gyűjtemény létrehozása
 
-Most, hogy megvan a partíciókulcs (`/deviceId`), hozzunk létre egy [gyűjteményt](sql-api-resources.md#collections) a **DocumentClient** osztály [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) vagy [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metódusával. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikákat tartalmazó tároló. 
+A partíciókulccsal (`/deviceId`) létrehozhat egy [gyűjteményt](sql-api-resources.md#collections) a **DocumentClient** osztály [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) vagy [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metódusával. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikákat tartalmazó tároló.
 
 > [!WARNING]
 > A gyűjtemények létrehozása a díjszabásra is hatással van, mivel átviteli sebességet tart fenn az alkalmazás számára az Azure Cosmos DB-vel folytatott kommunikációhoz. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/).
-> 
-> 
+>
+>
 
 ```csharp
 // Collection for device telemetry. Here the JSON property deviceId is used  
@@ -186,7 +183,7 @@ public class DeviceReading
     public double MetricValue;
   }
 
-// Create a document. Here the partition key is extracted 
+// Create a document. Here the partition key is extracted
 // as "XMS-0001" based on the collection definition
 await client.CreateDocumentAsync(
     UriFactory.CreateDocumentCollectionUri("db", "coll"),
@@ -207,7 +204,7 @@ Olvassa be a dokumentumot a partíciókulcsa és az azonosítója alapján a Rea
 ```csharp
 // Read document. Needs the partition key and the Id to be specified
 Document result = await client.ReadDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
 DeviceReading reading = (DeviceReading)(dynamic)result;
@@ -223,7 +220,7 @@ reading.MetricValue = 104;
 reading.ReadingTime = DateTime.UtcNow;
 
 await client.ReplaceDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   reading);
 ```
 
@@ -234,7 +231,7 @@ Töröljön egy dokumentumot a partíciókulcsa és azonosítója alapján a Del
 ```csharp
 // Delete a document. The partition key is required.
 await client.DeleteDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 ```
 ## <a name="query-partitioned-collections"></a>Particionált gyűjtemények lekérdezése
@@ -247,13 +244,13 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     UriFactory.CreateDocumentCollectionUri("db", "coll"))
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
-    
+
 A következő lekérdezés nem rendelkezik a partíciókulcsra (DeviceId) vonatkozó szűrővel, és minden partícióra kiterjed, ahol a partíció indexén lesz végrehajtva. Ne feledje, hogy meg kell adnia az EnableCrossPartitionQuery értékét (`x-ms-documentdb-query-enablecrosspartition` a REST API-ban) ahhoz, hogy az SDK egy lekérdezést az összes partíción futtasson.
 
 ```csharp
 // Query across partition keys
 IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
     new FeedOptions { EnableCrossPartitionQuery = true })
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
@@ -264,16 +261,16 @@ Az Azure Cosmos DB SQL SDK 1.9.0-s és újabb verziói támogatják a párhuzamo
 ```csharp
 // Cross-partition Order By queries
 IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
     new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
     .OrderBy(m => m.MetricValue);
 ```
-    
+
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-* A `MaxDegreeOfParallelism` érték beállításával szabályozhatja a párhuzamosság szintjét, azaz a gyűjtemény partícióihoz egyszerre létrehozott hálózati kapcsolatokat. Ha ez az érték -1, a párhuzamosság szintjét az SDK felügyeli. Ha a `MaxDegreeOfParallelism` érték nincs megadva, vagy az értéke 0 (ez az alapértelmezett érték), akkor csak egy hálózati kapcsolat jön létre a gyűjtemény partícióihoz.
-* A `MaxBufferedItemCount` értékének beállításával kompromisszum alakítható ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha kihagyja ezt a paramétert vagy -1 értéket ad meg, akkor a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát az SDK felügyeli.
+* A `MaxDegreeOfParallelism` érték beállításával szabályozhatja a párhuzamosság szintjét, azaz a gyűjtemény partícióihoz egyszerre létrehozott hálózati kapcsolatokat. Ha ez a paraméter -1, a párhuzamosság szintjét az SDK felügyeli. Ha a `MaxDegreeOfParallelism` érték nincs megadva, vagy az értéke 0 (ez az alapértelmezett érték), akkor csak egy hálózati kapcsolat jön létre a gyűjtemény partícióihoz.
+* A `MaxBufferedItemCount` értékének beállításával kompromisszum alakítható ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha kihagyja ezt a paramétert, vagy -1 értéket ad meg, akkor a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát az SDK felügyeli.
 
 Ha a gyűjtemény állapota azonos, a párhuzamos lekérdezés ugyanazon sorrendben adja vissza az értékeket, mint a soros lekérdezés esetén. A rendezést (ORDER BY és/vagy TOP) is magában foglaló, több partícióra kiterjedő lekérdezések végrehajtásakor az SQL SDK párhuzamosan hajtja végre a lekérdezéseket a partíciókon, majd egyesíti a részlegesen tárolt eredményeket az ügyféloldalon, ezáltal globálisan rendezett eredményeket ad vissza.
 
@@ -283,7 +280,7 @@ Végül pedig elemi tranzakciókat is végrehajthat az azonos eszközazonosító
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
     UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
+    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") },
     "XMS-001-FE24C");
 ```
 
@@ -293,12 +290,12 @@ Ennyi az egész! Ezek egy olyan Azure Cosmos DB-alkalmazás fő összetevői, am
 
 Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölheti az Azure Portalon az oktatóanyaghoz létrehozott összes erőforrást:
 
-1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** elemre, majd kattintson a létrehozott erőforrás egyedi nevére. 
+1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** elemre, majd kattintson a létrehozott erőforrás egyedi nevére.
 2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban a következőket hajtotta végre: 
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
 > * Létrehozott egy Azure Cosmos DB-fiókot
@@ -310,7 +307,7 @@ Ebben az oktatóanyagban a következőket hajtotta végre:
 > * Törölt egy dokumentumot
 > * Törölt egy adatbázist
 
-Most továbbléphet a következő oktatóanyaghoz, és további adatokat importálhat a Cosmos DB-fiókba. 
+Most továbbléphet a következő oktatóanyaghoz, és további adatokat importálhat a Cosmos DB-fiókba.
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

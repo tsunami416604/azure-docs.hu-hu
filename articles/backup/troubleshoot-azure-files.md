@@ -9,11 +9,11 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 225d11c8609c81ed7877283e8dc0fd920b14d838
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Az Azure Files biztonsági mentésével kapcsolatos problémák elhárítása
 Az alábbi táblázatokban szereplő információk segítségével elháríthatja az Azure Files biztonsági mentése közben fellépő problémákat és hibákat.
@@ -59,6 +59,7 @@ Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához
 | A visszaállítás sikertelen, mert a forrás egyik fájlja nem létezik. | <ul><li> A kijelölt elemek nem szerepelnek a helyreállítási pont adataiban. A fájlok helyreállításához adja meg a helyes fájllistát. <li> A helyreállítási ponthoz tartozó megosztás fájlpillanatképet manuálisan kell törölni. Válasszon egy másik helyreállítási pontot, és ismételje meg a visszaállítási műveletet. |
 | Már folyamatban van egy ugyanerre a célhelyre irányuló helyreállítási feladat. | <ul><li>A fájlmegosztás biztonsági mentése nem támogatja az ugyanazon célfájlmegosztásra végzett párhuzamos helyreállítást. <li>Várja meg a meglévő helyreállítási feladat befejeződését, majd próbálja meg újból. Ha nem talál helyreállítási feladatot a helyreállítási tárban, ellenőrizze az adott előfizetéshez tartozó többi helyreállítási tárat. |
 | A visszaállítási művelet sikertelen volt, mert a célfájlmegosztás megtelt. | Növelje meg a célfájlmegosztás méretkvótáját, hogy az képes legyen fogadni a visszaállítási adatokat, majd ismételje meg a műveletet. |
+| A visszaállítási művelet sikertelen volt, mivel hiba történt a File Sync szolgáltatás a célfájlmegosztással társított erőforrásain végrehajtott visszaállítás előtti műveletek során. | Később próbálkozzon újra, és ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához. |
 | Egy vagy több fájlt nem sikerült helyreállítani. További információkért ellenőrizze a hibás fájlok listáját a fent megadott elérési úton. | <ul> <li> A helyreállítási hibák okai megtalálhatók a fájlban (az elérési utat a feladat részletei tartalmazzák). Vizsgálja ki az okokat, majd ismételje meg a visszaállítási műveletet csak a hibás fájlokra vonatkozóan. <li> A fájlvisszaállítási hibák leggyakoribb okai a következők: <br/> – Győződjön meg arról, hogy a hibás fájlok jelenleg nincsenek használatban. <br/> – Egy, a hibás fájlokkal megegyező nevű könyvtár található a szülőkönyvtárban. |
 
 ## <a name="see-also"></a>Lásd még:

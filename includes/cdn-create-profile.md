@@ -2,46 +2,46 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: cdn
-author: dksimpson
+author: SyntaxC4
 ms.service: cdn
 ms.topic: include
-ms.date: 04/04/2018
-ms.author: rli; v-deasim
+ms.date: 04/13/2018
+ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: 692364e9b2e78b3bd1f63137148dfbc680364737
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 0db5f571324694f0518ffc4e92af985e5125d755
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 ## <a name="create-a-new-cdn-profile"></a>Új CDN-profil létrehozása
 
-A CDN-profil CDN-végpontok tárolója, és adja meg a tarifacsomagot.
+A CDN-profil a CDN-végpontok egy olyan tárolója, amely meghatároz egy tarifacsomagot.
 
-1. Az Azure portálon a bal felső sarokban válassza **hozzon létre egy erőforrást**.
+1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozás** lehetőséget.
     
-    A **új** ablaktáblán jelenik meg.
+    Ekkor megnyílik az **Új** panel.
    
-2. Válassza ki **Web + mobil**, majd **CDN**.
+2. Válassza a **Web + mobil**, majd a **CDN** lehetőséget.
    
-    ![Válassza ki a CDN-erőforrás](./media/cdn-create-profile/cdn-new-resource.png)
+    ![CDN erőforrás kiválasztása](./media/cdn-create-profile/cdn-new-resource.png)
 
-    A **CDN-profil** ablaktáblán jelenik meg.
+    Ekkor megnyílik a **CDN-profil** panel.
 
-    A kép a következő táblázatban megadott beállítások használatát.
+    Ezután használja a képet követő táblázatban megadott beállításokat.
    
     ![Új CDN-profil](./media/cdn-create-profile/cdn-new-profile.png)
 
     | Beállítás  | Érték |
     | -------- | ----- |
-    | **Name (Név)** | Adja meg *my-cdn-profil – 123* a profil neve. Ez a név nem globálisan egyedi; Ha már van használatban, megadhat egy másik. |
-    | **Előfizetés** | A legördülő listából válassza ki az Azure-előfizetésre.|
-    | **Erőforráscsoport** | Válassza ki **hozzon létre új** , és írja be *saját – erőforrás-csoport – 123* a az erőforráscsoport neve. Ez a név nem globálisan egyedi; Ha már van használatban, megadhat egy másik. | 
-    | **Erőforráscsoport helye** | Válassza ki **USA középső RÉGIÓJA** a legördülő listából. |
-    | **Tarifacsomag** | Válassza ki **Standard Verizon** a legördülő listából. |
-    | **Most hozzon létre egy új CDN-végpont** | Hagyja bejelölve. |  
+    | **Name (Név)** | Írja be a *my-cdn-profile-123* értéket a profil neveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másikat. |
+    | **Előfizetés** | Válasszon egy Azure-előfizetést a legördülő listából.|
+    | **Erőforráscsoport** | Válassza az **Új létrehozása** lehetőséget, és írja be a *my-resource-group-123* értéket az erőforráscsoport neveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másikat. | 
+    | **Erőforráscsoport helye** | Válassza az **USA középső régiója** értéket a legördülő listából. |
+    | **Tarifacsomag** | Válassza a **Standard – Verizon** értéket a legördülő listából. |
+    | **Új CDN-végpont létrehozása** | Hagyja kiválasztatlanul. |  
    
-3. Válassza ki **rögzítés az irányítópulton** a profil mentéséhez az irányítópulton való létrehozás után.
+3. Válassza a **Rögzítés az irányítópulton** lehetőséget, ha a profilt a létrehozása után az irányítópultra szeretné rögzíteni.
     
-4. Válassza ki **létrehozása** a profil létrehozásához. 
+4. Válassza a **Létrehozás** gombot a profil létrehozásához. 
 

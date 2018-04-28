@@ -1,6 +1,6 @@
 ---
-title: "A PowerShell és az Azure Resource Manager a Hyper-V virtuális gépek replikálása |} Microsoft Docs"
-description: "Automatizálhatja a replikálást a Hyper-V virtuális gépek Azure-bA az Azure Site Recovery PowerShell és az Azure Resource Manager használatával."
+title: A PowerShell és az Azure Resource Manager a Hyper-V virtuális gépek replikálása |} Microsoft Docs
+description: Automatizálhatja a replikálást a Hyper-V virtuális gépek Azure-bA az Azure Site Recovery PowerShell és az Azure Resource Manager használatával.
 services: site-recovery
 author: bsiva
 manager: abhiag
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: bsiva
-ms.openlocfilehash: 4304cad9dc6aab7eb95885815a3ceb636ca6ff52
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 18ed9566cd265ef851f914a59e10f6973bdc0d86
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Állítsa be az Azure-bA vész-helyreállítási Hyper-V virtuális gépek PowerShell és az Azure Resource Manager használatával
 
@@ -45,9 +45,9 @@ Emellett az adott példa cikkben leírt előfeltételei a következők:
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>1. lépés: Bejelentkezés az Azure-fiókjával
 
-1. Nyisson meg egy PowerShell-konzolt, és futtassa ezt a parancsot az Azure-fiókjával bejelentkezhet. A parancsmag megnyitása egy weblap bekéri a hitelesítő adatait: **Login-AzureRmAccount**.
-    - Alternatív megoldásként paraméterként megadhat a fiók hitelesítő adatait a **Login-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
-    - Ha működik a bérlő nevében CSP partner, adja meg az ügyfél a bérlők a tenantID vagy bérlői elsődleges tartománynév használatával. Például: **Login-AzureRmAccount-bérlői "fabrikam.com"**
+1. Nyisson meg egy PowerShell-konzolt, és futtassa ezt a parancsot az Azure-fiókjával bejelentkezhet. A parancsmag megnyitása egy weblap bekéri a hitelesítő adatait: **Connect-AzureRmAccount**.
+    - Alternatív megoldásként paraméterként megadhat a fiók hitelesítő adataival a **Connect-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
+    - Ha működik a bérlő nevében CSP partner, adja meg az ügyfél a bérlők a tenantID vagy bérlői elsődleges tartománynév használatával. Például: **Connect-AzureRmAccount-bérlői "fabrikam.com"**
 2. Társítsa az előfizetést szeretné használni a fiók, mert egy fiók több előfizetéssel is rendelkezik:
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`

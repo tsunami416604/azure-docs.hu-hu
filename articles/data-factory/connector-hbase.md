@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ee4fe897bc8b0b1c969ea2fbfc1289d6a5bba7c2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ba2317e588b570acc1a4f24c89e892729f29b54b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HBase 
 
@@ -45,8 +45,8 @@ HBase kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **HBase** | Igen |
-| gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a HBase. (i.e. 192.168.222.160, [clustername].azurehdinsight.net)  | Igen |
-| port | A TCP-portot, amely a HBase-példány használja a kapcsolatok figyelésére. Az alapértelmezett érték: 9090.  | Nem |
+| gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a HBase. (azaz 192.168.222.160, [fürtnév] .azurehdinsight .net)  | Igen |
+| port | A TCP-portot, amely a HBase-példány használja a kapcsolatok figyelésére. Az alapértelmezett érték: 9090. Ha Azure HDInsights csatlakozni, adja meg 443-as port. | Nem |
 | httpPath | A részleges URL-címet a HBase-kiszolgáló megfelelő. (azaz /gateway/sandbox/hbase/version)  | Nem |
 | authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **alapvető** | Igen |
 | felhasználónév | A HBase-példányhoz való csatlakozáshoz használt felhasználónevet.  | Nem |

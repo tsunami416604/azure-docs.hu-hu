@@ -1,41 +1,41 @@
 ---
-title: "Azure Cosmos DB: A Java-API Cassandra fejlesztést |} Microsoft Docs"
-description: "Ismerje meg, hogyan fejleszthet Azure Cosmos DB Cassandra API-val javás környezetekben"
+title: 'Azure Cosmos DB: Fejlesztés a Cassandra API-val Java nyelven | Microsoft Docs'
+description: Arra vonatkozó ismeretek, hogyan lehet fejlesztési műveleteket végrehajtani az Azure Cosmos DB Cassandra API-jával Java nyelven
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-tags: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+tags: ''
 ms.assetid: 6732d883-835c-481f-98e1-287893530948
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 11/15/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 53987e5863d9fc11b4fa377295d198293819269c
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 8a4b26227b162268afd965f89ab2806b530e75be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure CosmosDB: A Java-API Cassandra fejlesztést
+# <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB: Fejlesztés a Cassandra API-val Java nyelven
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez az oktatóanyag bemutatja, hogyan hozzon létre egy Azure Cosmos DB fiókot az Azure portál használatával, majd létre Cassandra Table(sql-api-partition-data.md#partition-keys) a [Cassandra API](cassandra-introduction.md). Hozzon létre elsődleges kulcsot, ha létrehoz egy táblázatot, amelyet az alkalmazás kész az adatok növekedésével egyszerűen lehet méretezni. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre az Azure Portalon egy Azure Cosmos DB-fiókot, majd egy Cassandra-táblát (sql-api-partition-data.md#partition-keys) a [Cassandra API-val](cassandra-introduction.md). Ha a tábla létrehozásakor meghatározza az elsődleges kulcsot, azzal előkészíti az alkalmazást arra, hogy az adatok mennyiségének növekedésével zökkenőmentesen skálázható legyen. 
 
-Ez az oktatóanyag a Cassandra API használatával a következő feladatokat tartalmazza:
+Ez az oktatóanyag a következő, a Cassandra API-val elvégezhető feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Azure Cosmos DB-fiók létrehozása
-> * Hozzon létre egy kulcstérértesítések használatával és a tábla elsődleges kulccsal
+> * Kulcstér és tábla létrehozása elsődleges kulccsal
 > * Adat beszúrása
 > * Adatok lekérdezése
-> * Tekintse át a szolgáltatásiszint-szerződések
+> * SLA-k áttekintése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -219,16 +219,16 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A gyors üzembe helyezés már megtanulta, hogyan tegye a következőket:
+Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 
 > [!div class="checklist"]
 > * Azure Cosmos DB-fiók létrehozása
-> * Hozzon létre egy kulcstérértesítések használatával és a tábla elsődleges kulccsal
+> * Kulcstér és tábla létrehozása elsődleges kulccsal
 > * Adat beszúrása
 > * Adatok lekérdezése
-> * Reivew SLA-k
+> * SLA-k áttekintése
 
 Most már további adatokat importálhat az Azure Cosmos DB-gyűjteménybe. 
 

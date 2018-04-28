@@ -12,32 +12,43 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 69036b522b375eced604256340b532ad14a8708e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 90b36183ba32e75e06d434098d26cb10f3736373
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Linux virtuális gép létrehozása Azure-készletben Azure parancssori felület használatával
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Gyors üzembe helyezés: Linux server virtuális gép létrehozása Azure-készletben Azure parancssori felület használatával
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Az Azure CLI segítségével létrehozása és kezelése az Azure-verem erőforrások a parancssorból. A gyors üzembe helyezés adatokat az Azure parancssori felület használatával egy Linux virtuális gép létrehozása Azure-készletben.  A virtuális gép létrehozása után a webkiszolgálón telepítve van, és a 80-as port meg van nyitva, hogy a webes forgalom.
+Létrehozhat egy Ubuntu Server 16.04 LTS virtuális gépet az Azure parancssori felület használatával. Kövesse a cikkben történő létrehozásáról és használatáról a virtuális gép. Ez a cikk is lehetővé teszi a lépéseket:
 
-## <a name="prerequisites"></a>Előfeltételek 
+* Csatlakoztassa a virtuális gép egy távoli ügyfélhez.
+* A NGINX-webkiszolgáló telepítéséhez, és az alapértelmezett kezdőlapja a lapnak a megtekintésére.
+* Nem használt erőforrások törlése.
 
-* Győződjön meg arról, hogy az Azure-verem operátor hozzá van adva a "Ubuntu Server 16.04 LTS" kép a verem Azure piactéren. 
+## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure verem hozhatja létre és kezelheti az erőforrásokat az Azure parancssori felület adott verziója szükséges. Ha még nem rendelkezik Azure CLI Azure verem konfigurált, jelentkezzen be a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) és kövesse a lépéseket a [telepítése és konfigurálja az Azure parancssori felület](azure-stack-version-profiles-azurecli2.md).
+* **A Linux-lemezkép a verem Azure piactéren**
 
-* A név id_rsa.pub a nyilvános SSH-kulcs a Windows-felhasználói profil .ssh könyvtárban kell létrehozni. Az SSH-kulcsok létrehozásának részletes információkért lásd: [létrehozása SSH kulcsok Windows](../../virtual-machines/linux/ssh-from-windows.md). 
+   A verem Azure piactér nem tartalmazza a Linux-lemezkép alapértelmezés szerint. Adja meg az Azure-verem operátorral beolvasása a **Ubuntu Server 16.04 LTS** lemezkép van szüksége. Az operátor használhatja a leírt lépéseket a [Piactéri elemek töltse le az Azure-ból Azure verem](../azure-stack-download-azure-marketplace-item.md) cikk.
+
+* Az Azure verem hozhatja létre és kezelheti az erőforrásokat az Azure parancssori felület adott verziója szükséges. Ha még nem rendelkezik az Azure CLI Azure verem konfigurált, jelentkezzen be a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) és kövesse a lépéseket a [ Telepítse és konfigurálja az Azure parancssori felület](azure-stack-version-profiles-azurecli2.md).
+
+* Egy nyilvános SSH-kulcs az a név id_rsa.pub menti a felhasználói profil .ssh könyvtárában. SSH-kulcsok létrehozásával kapcsolatos részletes információkért lásd: [létrehozása SSH kulcsok Windows](../../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Erőforráscsoport egy olyan logikai tároló mely Azure-verembe erőforrások telepítése és kezelése. A szoftverfejlesztői készlet vagy az Azure-verem integrált a rendszer a [az csoport létrehozása](/cli/azure/group#az_group_create) parancs futtatásával hozzon létre egy erőforráscsoportot. A jelen dokumentum összes változók értékeit hozzárendelt igazolnia, használhatja őket, vagy adjon meg másik értéket. Az alábbi példakód létrehozza a helyi helyen contoso.com nevű erőforráscsoport.
+Erőforráscsoport egy olyan logikai tároló, ahol telepítheti és kezelheti az Azure-verem erőforrásokat. A szoftverfejlesztői készlet vagy az Azure-verem integrált a rendszer a [az csoport létrehozása](/cli/azure/group#az_group_create) parancs futtatásával hozzon létre egy erőforráscsoportot.
+
+>[!NOTE]
+ Példák az összes változót értékek vannak hozzárendelve. Megadhat azonban új értéket, ha szeretné.
+
+Az alábbi példakód létrehozza a helyi helyen contoso.com nevű erőforráscsoport.
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -45,7 +56,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. Az alábbi példakód létrehozza a myVM nevű virtuális gép. Ez a példa Bemutatofelhasznalo egy rendszergazda felhasználó neve és Demouser@123 a jelszót. Az értékeket módosítsa a környezetének megfelelően. Ezek az értékek van szükség, ha a virtuális géphez való kapcsolódás.
+A virtuális gép létrehozása a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. Az alábbi példakód létrehozza a myVM nevű virtuális gép. Ez a példa Bemutatofelhasznalo egy rendszergazda felhasználó neve és Demouser@123 , a felhasználó jelszavát. Ezek helyett, amelyet a környezetének megfelelő.
 
 ```cli
 az vm create \
@@ -58,29 +69,29 @@ az vm create \
   --location local
 ```
 
-Művelet befejeződése után a parancs paramétereit a virtuális gép lesz kimeneti.  Jegyezze fel a *PublicIPAddress*, mivel ez csatlakozási és kezelési a virtuális gép használja.
+A nyilvános IP-cím eredmény abban az esetben a **PublicIpAddress** paraméter. Jegyezze fel a címet, mert van szüksége a virtuális gép hozzáférjen.
 
 ## <a name="open-port-80-for-web-traffic"></a>A 80-as port megnyitása a webes adatforgalom számára
 
-Alapértelmezés szerint kizárólag SSH-kapcsolatok engedélyezettek az Azure-ban üzembe helyezett, Linux rendszerű virtuális gépeken. Ha ez a virtuális gép webkiszolgáló lesz, meg kell nyitnia a 80-as portot az internet irányából. A kívánt port megnyitásához használja az [az vm open-port](/cli/azure/vm#open-port) parancsot.
+A virtuális gép futtatása az IIS-webkiszolgáló lesz, mert szükség nyissa meg az internetes forgalmat a 80-as porton. A kívánt port megnyitásához használja az [az vm open-port](/cli/azure/vm#open-port) parancsot.
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="ssh-into-your-vm"></a>Bejelentkezés a virtuális gépre SSH-val
+## <a name="use-ssh-to-connect-to-the-virtual-machine"></a>Az SSH használata a virtuális géphez való kapcsolódáshoz
 
-Ha olyan rendszert használ, amelyre telepítve van az SSH, a következő paranccsal csatlakozhat a virtuális géphez. Ha Windows rendszert használ, a [Putty](http://www.putty.org/) segítségével hozhatja létre a kapcsolatot. Ügyeljen arra, hogy cserélje le a megfelelő nyilvános IP-címet a virtuális gép. A fenti példában az IP-cím lett 192.168.102.36.
+Az ügyfélszámítógépre telepített SSH csatlakozzon a virtuális géphez. Ha egy Windows ügyfél dolgozik, [Putty](http://www.putty.org/) a VPN-kapcsolat létrehozásához. A virtuális gép kapcsolódni a következő paranccsal:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-## <a name="install-nginx"></a>Az NGINX telepítése
+## <a name="install-the-nginx-web-server"></a>Az NGINX-webkiszolgáló telepítése
 
-Az alábbi bash-parancsfájl segítségével frissítse a csomagforrásokat, és telepítse a legújabb NGINX-csomagot. 
+Csomag erőforrásokat, és telepítse a legújabb NGINX-csomagot, futtassa a következő parancsfájlt:
 
-```bash 
+```bash
 #!/bin/bash
 
 # update package source
@@ -92,13 +103,13 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>Az NGINX kezdőlapjának megtekintése
 
-Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális gépén az internet irányából, tetszőleges böngészőt használhat az alapértelmezett NGINX-kezdőlap megtekintéséhez. Ügyeljen arra, hogy az alapértelmezett oldalt a fentebb dokumentált *publicIPAddress* használatával keresse fel. 
+Az NGINX telepítve, és a virtuális gépen nyissa meg a 80-as porton a webkiszolgálón, a virtuális gép nyilvános IP-cím használatával végezheti el. Nyisson meg egy webböngészőt, és keresse meg a ```http://<public IP address>```.
 
-![Alapértelmezett NGINX-webhely](./media/azure-stack-quick-create-vm-linux-cli/nginx.png) 
+![NGINX web server kezdőlap](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, a [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
+Az erőforrásokat, amelyek többé nem kell törölni. Használhatja a [az csoport törlése](/cli/azure/group#az_group_delete) parancs beírásával távolítsa el ezeket az erőforrásokat. Az erőforráscsoport és az ahhoz tartozó összes erőforrást törli, a következő parancsot:
 
 ```cli
 az group delete --name myResourceGroup
@@ -106,5 +117,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-A gyors üzembe helyezés egy egyszerű Linux virtuális gép telepítése után. További információt a verem Azure virtuális gépek, továbbra is [szempontok a virtuális gépek Azure-készletben](azure-stack-vm-considerations.md).
-
+A gyors üzembe helyezés egy webkiszolgáló alapvető Linux-kiszolgáló virtuális gépek telepítette. További információt a verem Azure virtuális gépek, továbbra is [szempontok a virtuális gépek Azure-készletben](azure-stack-vm-considerations.md).

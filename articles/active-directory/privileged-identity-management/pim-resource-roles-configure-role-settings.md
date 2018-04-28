@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management az Azure erőforrás - szerepkör beállításokat kell megadni |} Microsoft Docs
+title: Szerepkör-beállítások konfigurálása a Privileged Identity Management használatával Azure-erőforrások használatával |} Microsoft Docs
 description: Útmutatás a PIM szerepkör beállításainak konfigurálása.
 services: active-directory
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 0fe986d8cdace301fde4045b16d299ba8395457d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 05546be87aec3ec2f44b876a97eeab2121383d61
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="privileged-identity-management---resource-roles---configure"></a>Privileged Identity Management - szerepkör erőforrás - konfigurálása
+# <a name="configure-role-settings-by-using-for-azure-resources-by-using-privileged-identity-management"></a>Szerepkör-beállítások konfigurálása a Privileged Identity Management használatával Azure-erőforrások használatával 
 
-A PIM környezetben hozzárendelések alkalmazott alapértelmezett szerepkör-beállítások konfigurálása határozza meg. Adja meg, ezek az erőforrás, válassza a beállítások lapon a bal oldali navigációs, vagy a szerepkör-beállítások gombra az műveletsávon bármely szerepkör a jelenlegi beállítások megtekintéséhez.
+Felhasználóiszerep-beállítások konfigurálásakor adja meg az alapértelmezett beállításokat, a Privileged Identity Management (PIM) környezetben hozzárendelések alkalmazott. Ezek az erőforrás beállításainak megadásához válassza ki a **szerepkör beállításainak** lapon a bal oldali ablaktáblán. Igény szerint kiválaszthatja a szerepkör-beállítások gombra (a szerepköröket) műveletsávon a jelenlegi beállítások megtekintéséhez.
 
 
 ## <a name="select-a-role"></a>Szerepkör kiválasztása
-Válasszon olyan módosítást a kívánt szerepkört. Válassza ki, módosíthatja a meglévő beállítások szerkesztése.
+Válasszon egy szerepet, amelyet szeretne módosítani. A meglévő beállítások módosításához válassza ki, **szerkesztése**.

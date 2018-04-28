@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB tábla API-műveleteket a PowerShell-lel |} Microsoft Docs"
-description: "A PowerShell-lel Azure Cosmos DB tábla API műveletek végrehajtása"
+title: Azure Cosmos DB tábla API-műveleteket a PowerShell-lel |} Microsoft Docs
+description: A PowerShell-lel Azure Cosmos DB tábla API műveletek végrehajtása
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: d0f835db8a9fbe3833a9c7931ad1d8b4a778f016
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Az Azure PowerShell Azure Cosmos DB tábla API műveletek végrehajtása 
 
@@ -55,10 +55,10 @@ Az adatbázis-fiók nevét és az erőforrás csoportot beszerzése a portálró
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Login-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-a-table-or-reference-a-table"></a>Hozzon létre egy táblát, vagy hivatkozzon egy tábla
@@ -100,7 +100,7 @@ Ha létrehozott egy új erőforráscsoportot, és létrehozott egy új Azure Cos
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Útmutató cikkben megismerte közös tábla API-műveleteket a PowerShell-lel, beleértve a hogyan: 
 

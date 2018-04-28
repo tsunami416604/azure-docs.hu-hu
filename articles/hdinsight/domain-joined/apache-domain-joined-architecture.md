@@ -3,24 +3,22 @@ title: Tartományhoz csatlakozó Azure HDInsight-architektúra |} Microsoft Docs
 description: Útmutató a tartományhoz csatlakoztatott HDInsight tervezéséhez.
 services: hdinsight
 documentationcenter: ''
-author: bhanupr
+author: omidm1
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/20/2018
-ms.author: bprakash
-ms.openlocfilehash: b4f79388e45e24dc906a3a03dc0c0e51df52160d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.devlang: ''
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 20d6dbad6fa1914c8b12f47bb48f6efba3895887
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Azure-tartományhoz csatlakoztatott Hadoop-fürtök tervezése a HDInsightban
 
@@ -51,8 +49,6 @@ Az alábbi képernyőfelvételen látható egy szervezeti Egységet létrehozni 
 
 - **Az Azure Active Directory tartományi szolgáltatások**: Ez a szolgáltatás egy felügyelt Active Directory-tartományhoz, amely teljes mértékben kompatibilis a Windows Server Active Directory biztosítja. A Microsoft gondoskodik kezelését, javítását és az AD-tartomány ellenőrzése. A fürtök telepítése anélkül, hogy a tartományvezérlők karbantartásához. Felhasználók, csoportok, és jelszavak szinkronizálódnak az Azure Active Directoryból, így a felhasználók jelentkezzen be a fürtre, a vállalati hitelesítő adatok használatával. További információkért lásd: [Azure Active Directory tartományi szolgáltatások konfigurálása tartományhoz csatlakoztatott HDInsight-fürtök](./apache-domain-joined-configure-using-azure-adds.md).
 
-> [!NOTE]
-> Active Directory Azure IaaS virtuális gépeken már nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 * A tartományhoz csatlakoztatott HDInsight-fürtök kezeléséhez lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](apache-domain-joined-manage.md).

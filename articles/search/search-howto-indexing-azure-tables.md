@@ -1,24 +1,19 @@
 ---
-title: "Az Azure Search Azure Table storage indexelése |} Microsoft Docs"
-description: "Útmutató: az Azure Search Azure Table storage-ban tárolt adatok index"
-services: search
-documentationcenter: 
+title: Az Azure Search Azure Table storage indexelése |} Microsoft Docs
+description: 'Útmutató: az Azure Search Azure Table storage-ban tárolt adatok index'
 author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: 1cc27411-d0cc-40ed-8aed-c7cb9ab402b9
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 04/10/2017
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a171bdd11cd2de030937927eef34d5ad9e0507af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search index Azure Table storage
 Ez a cikk bemutatja, hogyan használható az Azure Search Azure Table storage-ban tárolt adatok indexeléséhez.
@@ -29,7 +24,7 @@ Az Azure Table storage indexelő állíthat be ezeket az erőforrásokat haszná
 
 * [Azure Portal](https://ms.portal.azure.com)
 * Az Azure Search [REST API-n](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Az Azure Search [.NET SDK-val](https://aka.ms/search-sdk)
+* Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
 Itt bemutatjuk, a folyamat a REST API használatával. 
 
@@ -52,7 +47,7 @@ Tábla indexelő, az adatforrás rendelkeznie kell a következő tulajdonságokk
 
 Adatforrás létrehozása:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -70,7 +65,7 @@ Adatforrás létrehozása API további információkért lásd: [adatforrás lé
 
 A hitelesítő adatokat megadhatja a következő táblázatban ezen módszerek valamelyikével: 
 
-- **Teljes hozzáférés tárolási fiók kapcsolati karakterlánc**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` letölthető a kapcsolati karakterláncot az Azure-portálon a a **Storage-fiók panelen** > **beállítások** > **kulcsok** (a klasszikus tárfiókokba) vagy **beállítások** > **hívóbetűk** (az Azure Resource Manager storage-fiókok).
+- **Teljes hozzáférés tárolási fiók kapcsolati karakterlánc**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` letölthető a kapcsolati karakterláncot az Azure-portálon címen a **Storage-fiók panelen** > **beállítások**  >  **Kulcsok** (a klasszikus tárfiókokba) vagy **beállítások** > **hívóbetűk** (az Azure Resource Manager-tároló fiókok).
 - **A tárfiók megosztott hozzáférési aláírást kapcsolati karakterlánc**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` a közös hozzáférésű jogosultságkódot van a listája, és meg kell-e olvasási engedéllyel a (jelen esetben táblák) tárolók és objektumok (táblázat sorait).
 -  **Tábla közös hozzáférésű jogosultságkódot**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` a közös hozzáférésű jogosultságkódot (olvasás) lekérdezés engedélyekkel kell rendelkezniük a táblában.
 
@@ -84,7 +79,7 @@ Az index egy dokumentum, az attribútumok megadja azokat a mezőket, és más, a
 
 Index létrehozása:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -103,7 +98,7 @@ Az indexelő datasource csatlakoztatja a cél keresési indexszel rendelkező é
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozásához:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -136,7 +131,7 @@ Egy tábla indexelő ütemezés szerint futtatni beállításakor azt reindexes 
 
 Azt jelzi, hogy bizonyos dokumentumok el kell távolítani az indexből, egy helyreállítható törlésre stratégia is használhat. Helyett a sor törlése, annak jelzésére, hogy azt rendelkezik törölve, és állítson be egy helyreállítható törlési szabályzat a adatforráson tulajdonság hozzáadása. Például a következő házirendet úgy véli, hogy egy sor törölve, ha a sor tulajdonsággal rendelkezik `IsDeleted` értékű `"true"`:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

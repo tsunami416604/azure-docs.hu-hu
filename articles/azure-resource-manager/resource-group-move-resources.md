@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -121,7 +121,6 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Cognitive Services
 * Tartalommoderátor
 * Data Catalog
-* Data Factory
 * Data Lake Analytics
 * Data Lake Store
 * DNS
@@ -163,11 +162,14 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * AD Domain Services
 * AD hibrid Állapotfigyelő szolgáltatás
 * Application Gateway
+* Azure Database for MySQL
 * BizTalk Services
+* Tanúsítványok – jelzi, hogy áthelyezhetők-e a App Service-tanúsítványokkal, de feltöltött tanúsítványok [korlátozások](#app-service-limitations).
 * Container Service
-* Express Route
+* Data Factory
 * DevTest Labs - helyezze át az új erőforráscsoport ugyanahhoz az előfizetéshez engedélyezve van, de több előfizetés áthelyezése nem engedélyezett.
 * Dynamics LCS
+* Express Route
 * Terheléselosztók – lásd [terheléselosztó korlátozásai](#lb-limitations)
 * Felügyelt alkalmazások
 * Tekintse meg a felügyelt lemezek - [virtuális gépek korlátozásai](#virtual-machines-limitations)

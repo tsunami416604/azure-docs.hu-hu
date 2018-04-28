@@ -1,12 +1,12 @@
 ---
-title: "Hurok - folyamat-tömb, vagy ismétlődő műveletek - Azure Logic Apps |} Microsoft Docs"
-description: "Az \"az összes\" tömbök feldolgozni hurkokat vagy ismétlődő műveletek mindaddig, amíg a logic apps a meghatározott feltételek"
+title: Hurok - folyamat-tömb, vagy ismétlődő műveletek - Azure Logic Apps |} Microsoft Docs
+description: Az "az összes" tömbök feldolgozni hurkokat vagy ismétlődő műveletek mindaddig, amíg a logic apps a meghatározott feltételek
 services: logic-apps
 keywords: az egyes hurkok
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: f634b1004fef2eb65c6b8134088ceead47c91890
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>Hurok: Tömbök feldolgozni, vagy egy feltétel teljesüléséig ismételje meg a műveletek
 
@@ -153,9 +153,6 @@ Ismételje meg a műveletet, amíg a feltétel teljesül, vagy bizonyos állapot
 
 * A végpont hívható, amíg elér a választ, amely a kívánt.
 * Hozzon létre egy rekordot egy adatbázisban, várjon, amíg egy adott mező abban, hogy a rekord jóváhagyását és feldolgozás folytatásához. 
-
-> [!NOTE]
-> "Csak" hurkok "Foreach" hurkokat vagy egyéb nem tartalmazhat "Csak" hurkok.
 
 Például 8:00 órakor naponta, a logikai alkalmazás növeli a változó mindaddig, amíg a változó értéke 10. Ezt követően a logic app küld egy e-mailt, amely megerősíti, hogy a jelenlegi érték. Bár ez a példa az Office 365 Outlook, használhatja a Logic Apps által támogatott e-mail szolgáltató ([tekintse át az összekötők listán Itt](https://docs.microsoft.com/connectors/)). Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet. 
 

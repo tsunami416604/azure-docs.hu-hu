@@ -2,23 +2,20 @@
 title: Ismerkedés a queue storage és a Visual Studio a kapcsolódó szolgáltatások (webjobs-feladat projektek) |} Microsoft Docs
 description: Ismerkedés az Azure Queue storage segítségével webjobs-feladat projektben egy tárfiókot, a Visual Studio használatával történő kapcsolódás után kapcsolódó szolgáltatások.
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 52c089d2657d61ee42730a00def060dec74439fc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 332d682147ba832f631052d8348039f74b46c438
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatva (webjobs-feladat projektek) szolgáltatások
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -300,9 +297,9 @@ A **Blob** attribútum a következő típusú használható:
 * **TextWriter**
 * **karakterlánc** (olvasni.)
 * **kimenő karakterlánc** (írási; hoz létre egy blobot, csak akkor, ha a karakterlánc-paraméter null értékű akkor, ha a függvény)
-* POCO (read)
+* POCO (olvasás)
 * kimenő POCO (írás; mindig létrehoz egy blobot, mint null objektumot hoz létre, ha POCO paraméter értéke null, ha a függvény)
-* **CloudBlobStream** (write)
+* **CloudBlobStream** (írás)
 * **ICloudBlob** (olvasása vagy írása)
 * **CloudBlockBlob** (olvasása vagy írása)
 * **CloudPageBlob** (olvasása vagy írása)

@@ -1,9 +1,9 @@
 ---
-title: "Az Azure Active Directory azonosító adatok védelmét |} Microsoft Docs"
-description: "Ismerje meg, az Azure AD Identity Protection miként korlátozhatja, hogy a támadó kihasználni a sérült biztonságú identitás vagy az eszköz és identitás vagy egy eszköz, amely korábban gyanús vagy megsértik ismert biztonságossá tételéhez."
+title: Az Azure Active Directory azonosító adatok védelmét |} Microsoft Docs
+description: Ismerje meg, az Azure AD Identity Protection miként korlátozhatja, hogy a támadó kihasználni a sérült biztonságú identitás vagy az eszköz és identitás vagy egy eszköz, amely korábban gyanús vagy megsértik ismert biztonságossá tételéhez.
 services: active-directory
-keywords: "az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése"
-documentationcenter: 
+keywords: az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e66d033d95efccf53ea2de889b5811fe2eafb76a
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: b8ae865e06e085ebe1bb71b35d812024190e2b21
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -368,7 +368,7 @@ Azt javasoljuk, hogy az Azure többtényezős hitelesítés a felhasználói bej
 
 ![Felhasználói ridk házirend](./media/active-directory-identityprotection/1019.png "felhasználói ridk házirend")
 
-További részletekért lásd: [Mi az Azure multi-factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
+További részletekért lásd: [Mi az Azure multi-factor Authentication?](authentication/multi-factor-authentication.md)
 
 Az Azure AD Identity Protection úgy konfigurálja a házirendet, amely lehetővé teszi a multi-factor authentication regisztráció bevezetési kezeléséhez nyújt segítséget:
 

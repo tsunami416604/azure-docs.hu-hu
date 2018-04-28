@@ -1,13 +1,13 @@
 ---
-title: "SAP NetWeaver Azure virtuális gépek DBMS telepítésének |} Microsoft Docs"
-description: "Az SAP NetWeaver Azure virtuális gépek adatbázis-kezelő telepítése"
+title: SAP NetWeaver Azure virtuális gépek DBMS telepítésének |} Microsoft Docs
+description: Az SAP NetWeaver Azure virtuális gépek adatbázis-kezelő telepítése
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5654dac7-4204-4387-b312-3d8b2898eb3a
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 855fc155bbdef9a3a0ab8415067102e607fab0f9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f8e8f1bc6f43c78e500e198a222fd29051138505
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Az SAP NetWeaver Azure virtuális gépek adatbázis-kezelő telepítése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -237,7 +237,7 @@ ms.lasthandoff: 03/09/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -290,7 +290,7 @@ ms.lasthandoff: 03/09/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -479,7 +479,7 @@ Tud dolgozni prémium szintű Azure Storage általában Virtuálisgép-sorozat h
 
 Mivel a mögöttes Azure Storage replikálja az egyes lemezek legalább három tárolócsomóponthoz egyszerű RAID 0 csíkozást használható. Nincs szükség az RAID5 vagy RAID1 végrehajtásához.
 
-### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage
+### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>A Microsoft Azure Storage
 A Microsoft Azure Storage tárolja az alap virtuális gép (és az operációs rendszer) és a lemezek vagy a Blobok legalább három különálló tárolócsomóponthoz. Egy tárfiókhoz vagy a felügyelt lemezes létrehozásakor választási lehetőség van a védelem itt látható módon:
 
 ![Georeplikáció engedélyezve az Azure Storage-fiókban][dbms-guide-figure-100]
@@ -810,18 +810,18 @@ Azt is számításba kell egy rendelkezésre állási csoport figyelőjének seg
 
 [comment]: <> (Teendők régi blog)
 [comment]: <> (A részletes lépéseket és az AlwaysOn-konfigurációjának telepítése Azure szükségleti cikkek vannak legjobb akkor tapasztaltak, amikor útmutató alapján elérhető oktatóanyag [here][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups])
-[comment]: <> (Előre konfigurált AlwaysOn beállítása az Azure katalógusában keresztül < https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
+[comment]: <> (Előre konfigurált AlwaysOn beállítása az Azure katalógusában keresztül <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
 [comment]: <> (Legjobb ismertetett [this][virtual-machines-windows-classic-ps-sql-int-listener] az oktatóanyagban egy rendelkezésre állási csoport figyelőjének létrehozása történik)
 [comment]: <> (A hozzáférés-vezérlési listák biztonságossá tétele hálózati végpont magyarázatát legjobb itt:)
-[comment]: <> (*    <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> )
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>) 
+[comment]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> )
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>) 
 
 Központi telepítése egy SQL Server mindig a rendelkezésre állási csoport keresztül különböző Azure-régiókat is lehetőség. Ez a funkció kihasználja az Azure VNet – Vnet-kapcsolatot ([további részleteket][virtual-networks-configure-vnet-to-vnet-connection]).
 
 [comment]: <> (Teendők régi blog)
-[comment]: <> (Ilyen esetben az SQL Server AlwaysOn rendelkezésre állási csoportok beállítása az alábbiakban ismertetjük: < https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
+[comment]: <> (Ilyen esetben az SQL Server AlwaysOn rendelkezésre állási csoportok beállítása az alábbiakban ismertetjük: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
 
 #### <a name="summary-on-sql-server-high-availability-in-azure"></a>Az SQL Server magas rendelkezésre állás az Azure-ban összegzése
 Mivel, hogy Azure Storage védi a tartalmat, egy kisebb ok arra, hogy a készenléti lemezkép ragaszkodjanak nincs. Ez azt jelenti, hogy a magas rendelkezésre állású forgatókönyv kell csak elleni, a következő esetekben:

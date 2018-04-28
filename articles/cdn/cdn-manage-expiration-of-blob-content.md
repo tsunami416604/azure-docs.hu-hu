@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 72a823ef04ad69d1d3b40377c32a02bacb8328c2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6d2681ad05890fc5f9f2821245e0f0280bf45a5f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Azure Blob Storage tárolóban az Azure Content Delivery Network lejáratának kezelése
 > [!div class="op_single_selector"]
@@ -148,7 +148,7 @@ class Program
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>A beállítás a Cache-Control fejlécek más módszerrel
 
 ### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-A [Azure Tártallózó](https://azure.microsoft.com/en-us/features/storage-explorer/), megtekintheti és szerkesztheti a blob storage-erőforrások, többek között a tulajdonságokat, mint a *CacheControl* tulajdonság. 
+A [Azure Tártallózó](https://azure.microsoft.com/features/storage-explorer/), megtekintheti és szerkesztheti a blob storage-erőforrások, többek között a tulajdonságokat, mint a *CacheControl* tulajdonság. 
 
 Frissítése az *CacheControl* tulajdonság a Tártallózó alkalmazással Azure BLOB:
    1. Jelöljön ki egy blobot, majd **tulajdonságok** a helyi menüből. 
@@ -168,8 +168,8 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
 ### <a name="azure-storage-services-rest-api"></a>Az Azure storage szolgáltatások REST API-n
 Használhatja a [az Azure storage szolgáltatások REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) explicit módon meghatározhatja a *x-ms-blob-cache-control* tulajdonság használatával a kérelem a következő műveleteket:
   
-   - [Put Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx)
-   - [PUT tiltólista](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx)
+   - [Put Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
+   - [PUT tiltólista](https://msdn.microsoft.com/library/azure/dd179467.aspx)
    - [A Blob tulajdonságainak beállítása](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése

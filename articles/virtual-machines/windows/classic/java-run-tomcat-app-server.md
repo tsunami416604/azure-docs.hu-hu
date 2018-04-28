@@ -1,11 +1,10 @@
 ---
-title: "A klasszikus Azure virtuális gép futtatásához a Java-alkalmazáskiszolgáló |} Microsoft Docs"
-description: "Ez az oktatóanyag a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és bemutatja, hogyan hozzon létre egy Windows virtuális gépet, és konfigurálja úgy, hogy az Apache Tomcat alkalmazáskiszolgáló futtatásához."
+title: A klasszikus Azure virtuális gép futtatásához a Java-alkalmazáskiszolgáló
+description: Ez az oktatóanyag a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és bemutatja, hogyan hozzon létre egy Windows virtuális gépet, és konfigurálja úgy, hogy az Apache Tomcat alkalmazáskiszolgáló futtatásához.
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
-manager: erikre
-editor: 
+manager: mbaldwin
 tags: azure-service-management
 ms.assetid: d627aa09-f7d6-4239-8110-f8fc5111b939
 ms.service: virtual-machines-windows
@@ -13,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 04/11/2018
 ms.author: robmcm
-ms.openlocfilehash: b166d2af56051b7d90eba0d50e1ea41f96c1109e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e13228a707e7dae4a4c2505154d01215c40b4716
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>Javás alkalmazáskiszolgáló futtatása hagyományos módon üzembe helyezett virtuális gépen
 > [!IMPORTANT]
@@ -84,7 +83,7 @@ Ez az oktatóanyag Tomcat használja, a Java-alkalmazáskiszolgáló telepítés
 
 Nyisson meg egy parancssort, a virtuális gépen, és futtassa a parancsot manuálisan is kezdeményezhető Tomcat **nettó&nbsp;start&nbsp;Tomcat8**.
 
-Ha Tomcat fut, hozzáférhet az URL-cím megadásával Tomcat <8080> a virtuális gép böngészőben.
+Ha Tomcat fut, hozzáférhet az URL-cím megadásával Tomcat <http://localhost:8080> a virtuális gép böngészőben.
 
 A külső gépekről futtató Tomcat megtekintéséhez szükség hozzon létre egy végpontot, és nyisson meg egy portot.
 
@@ -113,7 +112,7 @@ A külső gépekről futtató Tomcat megtekintéséhez szükség hozzon létre e
 6. Az a **szabálytípus**, jelölje be **Port**, és kattintson a **következő**.  
    ![Új bejövő szabály port][NewRulePort]
 7. Az a **protokoll és portok** képernyőn válassza ki **TCP**, adja meg **8080** , a **adott helyi port**, és kattintson a  **Következő**.  
-  ![Új bejövő szabály][NewRuleProtocol]
+  ![Új bejövő szabály ][NewRuleProtocol]
 8. Az a **művelet** képernyőn válassza ki **a kapcsolat engedélyezéséhez**, és kattintson a **következő**.
    ![Új bejövő szabály művelet][NewRuleAction]
 9. Az a **profil** képernyőn **tartomány**, **titkos**, és **nyilvános** van kiválasztva, és kattintson **tovább**.

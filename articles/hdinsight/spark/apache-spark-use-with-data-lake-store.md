@@ -1,8 +1,8 @@
 ---
-title: "Adatok elemzése az Azure Data Lake Store az Apache Spark használatával |} Microsoft Docs"
-description: "Azure Data Lake Store-ban tárolt adatok elemzése a Spark-feladatok futtatása"
+title: Adatok elemzése az Azure Data Lake Store az Apache Spark használatával |} Microsoft Docs
+description: Azure Data Lake Store-ban tárolt adatok elemzése a Spark-feladatok futtatása
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 1f174323-c17b-428c-903d-04f0e272784c
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 6e44ffc26bbb618e0ff14d412ed77e4827232b42
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fa6f93231cba46e29206ec312fb82ad120ed45f6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>A Data Lake Store adatok elemzése a HDInsight Spark-fürt használatával
 
@@ -55,7 +53,7 @@ HDInsight-fürtök Data Lake Store további tárhely és az Azure Storage-Blobba
    > Ellenőrizze, hogy a megfelelő esetben van a fájl elérési útja és neve.
    >
    >
-3. Az Azure-előfizetés alapján, amely rendelkezik a Data Lake Store-fiók a hitelesítő adatok megadását kéri. Az alábbi kódrészletben hasonló kimenetnek jelenik meg:
+3. Az Azure-előfizetés alapján, amely rendelkezik a Data Lake Store-fiók a hitelesítő adatok megadását kéri. Az alábbi kódrészlethez hasonló kimenet jelenik meg:
 
         Initializing Copy.
         Copy Started.

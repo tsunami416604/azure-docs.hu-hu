@@ -9,11 +9,11 @@ ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a093a44106ad861449b6defb140532698fa668
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4abf8ae491c9992dd3d21a0d657ba9cd214b740
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>A változáskövetési megoldás a környezetében lévő változások követése
 
@@ -23,18 +23,19 @@ Telepített szoftverek, Windows-szolgáltatások, Windows beállításjegyzék �
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
-
 A változások követése megkezdéséhez szeretne engedélyezni a változások követése és a készlet megoldás az Automation-fiókhoz.
 
 1. Az Azure-portálon lépjen az Automation-fiók
 1. Válassza ki **a változáskövetés** alatt **konfigurációs**.
-2. Válasszon egy meglévő naplóelemzési munkaterület vagy **új munkaterület létrehozása** kattintson **engedélyezése**.
+1. Válasszon egy meglévő naplóelemzési munkaterület vagy **új munkaterület létrehozása** kattintson **engedélyezése**.
 
 Ez lehetővé teszi a megoldást az automation-fiók. A megoldás engedélyezése akár 15 percet is igénybe vehet. A kék szalagcím értesíti, ha a megoldás engedélyezve van. Lépjen vissza a **változások követése** lapon kezelheti a megoldás.
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Változáskövetés és a készlet konfigurálása
 
-Megtudhatja, hogyan megoldás előkészítésére számítógépek látogassa meg: [bevezetési automatizálási megoldásokat](automation-onboard-solutions-from-automation-account.md). Ha engedélyezi az új fájl vagy nyomon követheti a beállításkulcsokat, engedélyezve van a változáskövetés és készlet.
+Megtudhatja, hogyan megoldás előkészítésére számítógépek látogassa meg: [bevezetési automatizálási megoldásokat](automation-onboard-solutions-from-automation-account.md). Ha egy gép bevezetése a változások követése és a készlet megoldás követendő elemeket is konfigurálhat. Ha engedélyezi az új fájl vagy nyomon követheti a beállításkulcsokat, engedélyezve van a változáskövetés és készlet.
+
+A Windows és Linux-fájlokban szereplő változásainak követése, MD5 kivonatokat a fájlok használhatók. Ezek a kivonatok észleli, ha a változás nem lett végrehajtva a utolsó leltározás óta használja.
 
 ### <a name="configure-linux-files-to-track"></a>Linux-fájlok nyomon követéséhez beállítása
 
@@ -109,6 +110,7 @@ Egyéb korlátozások is érvényesek:
 ## <a name="known-issues"></a>Ismert problémák
 
 A változáskövetési megoldás jelenleg a következő hibákat észlelt:
+
 * A gyorsjavítás-frissítések a Windows 10 Creators Update és Windows Server 2016 Core RS3 gépek nem történik gyűjtés.
 
 ## <a name="change-tracking-data-collection-details"></a>Nyomkövetési adatok gyűjtése adatainak módosítása
@@ -117,13 +119,13 @@ Az alábbi táblázat azon adatok gyűjtési gyakoriságát. Minden az adatok pi
 
 | **Változás típusa** | **Gyakoriság** |
 | --- | --- |
-| A Windows beállításjegyzékben | 50 minutes | 
-| Windows file | 30 perc | 
-| Linux-fájl | 15 perc | 
-| Windows-szolgáltatások | 30 perc | 
+| A Windows beállításjegyzékben | 50 perc |
+| Windows-fájl | 30 perc |
+| Linux-fájl | 15 perc |
+| Windows-szolgáltatások | 30 perc |
 | Linux-démonok | 5 perc |
-| A Windows szoftverek | 30 perc | 
-| Linux-szoftver | 5 perc | 
+| A Windows szoftverek | 30 perc |
+| Linux-szoftver | 5 perc |
 
 ### <a name="registry-key-change-tracking"></a>Beállításjegyzék-kulcs módosítás nyomon követése
 
@@ -132,19 +134,19 @@ A beállításkulcsok módosításainak figyelése célja rögzítési ponthoz b
 > [!div class="mx-tdBreakAll"]
 > |  |
 > |---------|
-> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
+> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők közös autostart bejegyzéseit, amelyek közvetlenül a Windows Intézőt, és általában futtatási-folyamat az Explorer.exe környezet igénybe vételét.    |
 > |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők parancsfájlok, amelyek indítási parancsot.     |
-> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
+> |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők futtatott parancsfájlok, leállításkor.     |
 > |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Mielőtt a felhasználó bejelentkezik a Windows fiókjukhoz betöltött kulcsokat figyeli. A kulcs szolgál 64 bites számítógépeken futó 32 bites program.    |
 > |**HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed összetevők**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Nyomon követi az alkalmazásbeállítások módosításait.     |
-> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**|
+> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők közös autostart bejegyzéseit, amelyek közvetlenül a Windows Intézőt, és általában futtatási-folyamat az Explorer.exe környezet igénybe vételét.|
-> |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers**|
+> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők közös autostart bejegyzéseit, amelyek közvetlenül a Windows Intézőt, és általában futtatási-folyamat az Explorer.exe környezet igénybe vételét.|
 > |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyeli a ikon kezelő regisztrációs átfedő.|
@@ -152,7 +154,7 @@ A beállításkulcsok módosításainak figyelése célja rögzítési ponthoz b
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyeli a ikon átfedő 64 bites számítógépeken futó 32 bites program kezelő regisztrálása.|
 > |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser segédobjektuma**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Új böngésző segítő objektum beépülők az Internet Explorer figyeli. Használja a Document Object Model (DOM) az aktuális lap eléréséhez és a navigáció.|
-> |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects**|
+> |**HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser segédobjektuma**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Új böngésző segítő objektum beépülők az Internet Explorer figyeli. A Document Object Model (DOM) az aktuális lap eléréséhez és navigáció a 64 bites számítógépeken futó 32 bites program használja.|
 > |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Új Internet Explorer-bővítmények, például egyéni eszköz menük és az egyéni gombok figyeli.|
@@ -162,7 +164,7 @@ A beállításkulcsok módosításainak figyelése célja rögzítési ponthoz b
 |&nbsp;&nbsp;&nbsp;&nbsp;A 32 bites illesztőprogramok wavemapper, wave1 és wave2, msacm.imaadpcm, .msadpcm, .msgsm610 és vidc társított figyeli. Hasonló a rendszer [illesztőprogramok] szakasza. INI-fájl.|
 > |**HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyelők a 32-bites illesztőprogramok társított wavemapper, wave1 és wave2, msacm.imaadpcm, .msadpcm, .msgsm610 és a 64 bites számítógépeken futó 32 bites program vidc. Hasonló a rendszer [illesztőprogramok] szakasza. INI-fájl.|
-> |**HKEY\_LOCAL\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
+> |**HKEY\_helyi\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyeli a lista ismert vagy a gyakran használt rendszer DLL-EK; a rendszer megakadályozza, hogy a személyek gyenge Alkalmazásengedélyek directory kihasználva ejtésével rendszer DLL-ek trójai faló verzióiban.|
 > |**HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyeli a rendszeresemény-értesítéseket kaphat Winlogon, az interaktív bejelentkezési támogatási modell a Windows operációs rendszerhez a csomagok listájában.|

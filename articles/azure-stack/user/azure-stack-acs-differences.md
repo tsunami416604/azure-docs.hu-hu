@@ -1,12 +1,12 @@
 ---
-title: "Verem az Azure Storage: Különbségek és szempontok"
-description: "Azure verem központi telepítésével kapcsolatos megfontolások együtt Azure verem Storage és az Azure Storage közötti különbségek megismeréséhez."
+title: 'Verem az Azure Storage: Különbségek és szempontok'
+description: Azure verem központi telepítésével kapcsolatos megfontolások együtt Azure verem Storage és az Azure Storage közötti különbségek megismeréséhez.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
 ms.reviwer: xiaofmao
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/21/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 7c4f030018f388302c3b60a41086bbd97c86513d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 165a899dbad0893b3a2bddcfc68c9b5d737e9d3d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Verem az Azure Storage: Különbségek és szempontok
 
@@ -30,7 +30,7 @@ Ez a cikk az Azure Storage Azure Storage-verem ismert különbségek foglalja ö
 
 ## <a name="cheat-sheet-storage-differences"></a>Lap cheat: tárolási különbségek
 
-| Szolgáltatás | Azure (global) | Azure Stack |
+| Szolgáltatás | Azure (globális) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Felhőalapú SMB-fájlmegosztások támogatott|Még nem támogatott.
 |Az Azure Storage szolgáltatás inaktívadat-titkosítása|256 bites AES titkosítást|A BitLocker 128 bites AES titkosítást
@@ -47,6 +47,7 @@ A blob storage a helyreállítható törlés|Előzetes verzió|Még nem támogat
 |Lap blob maximális mérete|8 TB|1 TB
 |Oldalméret blob lap|512 bájt|4 KB
 |Tábla partíciós kulcs és a sor kulcsméret|1024 karakter (2048 bájt)|400 karakterek (800 bájt)
+|A BLOB pillanatkép|A maximális számú pillanatképpel egy BLOB nem korlátozott.|A maximális számú pillanatképpel egy BLOB 1000.|
 
 ### <a name="metrics"></a>Mérőszámok
 Van még néhány különbség a storage mérőszámainak:
@@ -59,14 +60,14 @@ A következő verziók támogatottak az Azure Storage-verem:
 Az Azure Storage API-k szolgáltatások:
 
 1802 frissítése vagy újabb:
- - [2017-04-17](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2017-04-17)
- - [2016-05-31](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2016-05-31)
- - [2015-12-11](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08 ](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2015-07-08)
- - [2015-04-05](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2015-04-05)
+ - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+ - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+ - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+ - [2015-07-08 ](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Korábbi verziók:
- - [2015-04-05](https://docs.microsoft.com/en-us/rest/api/storageservices/version-2015-04-05)
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 
 Az Azure Storage szolgáltatások felügyeleti API-kat:
@@ -81,13 +82,13 @@ A következő klienskódtárak segítségével az Azure Storage-verem támogatot
 
 | Ügyfélkódtár | A verem használható az Azure-verzió | Hivatkozás                                                                                                                                                                                                                                                                                                                                     | Végpont meghatározása       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET           | A 6.2.0 8.7.0 számára.          | Nuget-csomagot:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub-kiadás:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | app.config file              |
+| .NET           | A 6.2.0 8.7.0 számára.          | Nuget-csomagot:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub-kiadás:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | App.config fájlban              |
 | Java           | A 4.1.0 6.1.0 számára           | Maven csomag:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage<br> <br>GitHub-kiadás:<br>https://github.com/Azure/azure-storage-java/releases                                                                                                                                                                    | Kapcsolati karakterlánc beállítása      |
 | Node.js        | A 1.1.0-ás 2.7.0 számára           | NPM hivatkozásra:<br>https://www.npmjs.com/package/azure-storage<br>(Például: Futtatás "npm telepítése azure-storage@2.7.0")<br> <br>Github-kiadás:<br>https://github.com/Azure/azure-storage-node/releases                                                                                                                                         | Szolgáltatás deklarációjában |
 | C++            | A 2.4.0 3.1.0 számára           | Nuget-csomagot:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub-kiadás:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | Kapcsolati karakterlánc beállítása      |
 | PHP            | A 0.15.0 1.0.0 számára          | GitHub-kiadás:<br>https://github.com/Azure/azure-storage-php/releases<br> <br>Szerkesztő keresztül (lásd alább a részletekre)                                                                                                                                                                                                                  | Kapcsolati karakterlánc beállítása      |
 | Python         | A 0.30.0 1.0.0 számára          | GitHub-kiadás:<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | Szolgáltatás deklarációjában |
-| Ruby           | A 0.12.1 1.0.1-es számára          | RubyGems csomag:<br>Közös:<br>https://rubygems.org/gems/azure-storage-common/<br>Blob: https://rubygems.org/gems/azure-storage-blob/<br>Queue: https://rubygems.org/gems/azure-storage-queue/<br>Table: https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub-kiadás:<br>https://github.com/Azure/azure-storage-ruby/releases | Kapcsolati karakterlánc beállítása      |
+| Ruby           | A 0.12.1 1.0.1-es számára          | RubyGems csomag:<br>Közös:<br>https://rubygems.org/gems/azure-storage-common/<br>BLOB: https://rubygems.org/gems/azure-storage-blob/<br>Várólista: https://rubygems.org/gems/azure-storage-queue/<br>Tábla: https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub-kiadás:<br>https://github.com/Azure/azure-storage-ruby/releases | Kapcsolati karakterlánc beállítása      |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: "Gyorsítótár ASP.NET munkamenetállapot-szolgáltató |} Microsoft Docs"
-description: "Útmutató: Azure Redis Cache használatának az ASP.NET munkamenet-állapot tárolása"
+title: Gyorsítótár ASP.NET munkamenetállapot-szolgáltató |} Microsoft Docs
+description: 'Útmutató: Azure Redis Cache használatának az ASP.NET munkamenet-állapot tárolása'
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: 485375f2f2ffb83b7d0fdeef8daab5880a8bbc27
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: bb0c53433af8a679811f00bfff2efee94d211a24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Az Azure Redis Cache ASP.NET munkamenetállapot-szolgáltatója
-Azure Redis Cache biztosít a munkamenetállapot-szolgáltatóját, amelyek segítségével a munkamenet-állapot tárolása helyett a memória gyorsítótárban, vagy az SQL Server-adatbázisban. A gyorsítótárazási munkamenetállapot-szolgáltatóját használatához először konfigurálja a gyorsítótárhoz, és konfigurálja az ASP.NET-alkalmazás a Redis gyorsítótár munkamenet állapota NuGet csomag segítségével gyorsítótár.
+Azure Redis Cache biztosít a munkamenetállapot-szolgáltatóját, melyekkel a munkamenet állapota a memóriában Redis Cache segítségével helyett egy SQL Server-adatbázis tárolásához. A gyorsítótárazási munkamenetállapot-szolgáltatóját használatához először konfigurálja a gyorsítótárhoz, és konfigurálja az ASP.NET-alkalmazás a Redis gyorsítótár munkamenet állapota NuGet csomag segítségével gyorsítótár.
 
 Nincs gyakran gyakorlati állapot egyaránt működik valamilyen formában tárolja a felhasználói munkamenet elkerülése érdekében valós felhő alkalmazásban, de néhány módszerek hatással lehet a teljesítmény és méretezhetőség több, mint a többire. Ha állapot tárolására, a legjobb megoldás, hogy maradjon kicsi a mennyiség szerinti és cookie-kban tárolja. Amely nem valósítható meg, ha a következő legjobb megoldás az ASP.NET munkamenet-állapot használandó szolgáltató elosztott, memóriában lévő gyorsítótárhoz. A teljesítmény és méretezhetőség tükrözik a legrosszabb megoldást az adatbázis biztonsági munkamenetállapot-szolgáltatóját. Ez a témakör az ASP.NET munkamenetállapot-szolgáltatóját használja az Azure Redis Cache nyújt útmutatást. A más munkamenet-állapotra vonatkozó információkért lásd: [az ASP.NET munkamenet-állapot beállításai](#aspnet-session-state-options).
 
@@ -112,7 +112,7 @@ A lépések elvégzése után az alkalmazás a Redis gyorsítótár munkamenetá
 
 ## <a name="aspnet-session-state-options"></a>Az ASP.NET munkamenet-állapot beállításai
 * Ez a szolgáltató memória munkamenetállapot-szolgáltató - tárolja a munkamenet-állapot, a memória. Ez a szolgáltató használatának előnye gyorsan és egyszerűen. A webalkalmazások azonban használata a memória-szolgáltató nem elosztott óta nem méretezhető.
-* SQL Server munkamenetállapot-szolgáltató - szolgáltató Sql Server tárolja a munkamenet-állapot. Használja ezt a szolgáltatót, ha azt szeretné, hogy a munkamenet-állapot tárolásához az állandó tároló. A webalkalmazás méretezheti, de használata az Sql Server munkamenet teljesítmény hatást gyakorol a webalkalmazás.
+* SQL Server munkamenetállapot-szolgáltató - szolgáltató Sql Server tárolja a munkamenet-állapot. Használja ezt a szolgáltatót, ha azt szeretné, hogy a munkamenet-állapot tárolásához az állandó tároló. A webalkalmazás méretezheti, de használata az Sql Server munkamenet teljesítmény hatást gyakorol a webalkalmazás. Használhatja a szolgáltató egy [memórián belüli online Tranzakciófeldolgozási konfigurációs](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) a teljesítmény növelése érdekében.
 * Elosztott a memória munkamenetállapot-szolgáltatóját például a Redis gyorsítótár munkamenetállapot-szolgáltatóját – Ez a szolgáltató lehetővé teszi a legjobb mindkét világot. A webes alkalmazás lehet egy egyszerű, gyors és méretezhető munkamenetállapot-szolgáltatóját. Ez a szolgáltató gyorsítótárban tárolja a munkamenet-állapot, mert az alkalmazás ki a kapcsolódó, amikor egy elosztott a gyorsítótárban, például az átmeneti hálózati hibák való jellemzők melyeket figyelembe venni. Gyakorlati tanácsok a gyorsítótár használatával, lásd: [útmutatást gyorsítótárazás](../best-practices-caching.md) Microsoft Patterns & eljárások [Azure Cloud alkalmazás tervezési és megvalósítási útmutatást](https://github.com/mspnp/azure-guidance).
 
 További információ a munkamenet-állapot és egyéb bevált gyakorlatokat: [webes fejlesztési gyakorlati tanácsok (épület valós felhőalapú alkalmazásokat az Azure-ral)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).

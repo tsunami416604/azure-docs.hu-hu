@@ -1,25 +1,25 @@
 ---
-title: "Hozzon létre egy csomagot az Azure-verem |} Microsoft Docs"
-description: "A felhő rendszergazdájának hozzon létre egy tervet, amely lehetővé teszi a előfizetők kiépítése virtuális gépek."
+title: Hozzon létre egy csomagot az Azure-verem |} Microsoft Docs
+description: A felhő rendszergazdájának hozzon létre egy tervet, amely lehetővé teszi a előfizetők kiépítése virtuális gépek.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/10/2017
+ms.date: 04/23/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 5eefca3541ae9f73514f80b0f8df9e5027600f87
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: ''
+ms.openlocfilehash: b1bfff16c4f51a9fa53204930df78cbd2cf19b8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Csomag létrehozása az Azure Stackben
 
@@ -27,44 +27,36 @@ ms.lasthandoff: 02/21/2018
 
 A [Csomagok](azure-stack-key-features.md) egy vagy több szolgáltatás csoportjai. -Szolgáltatóként biztosítson a felhasználók terveket hozhat létre. A felhasználók, a csomagok és szolgáltatások tartoznak a ajánlatok előfizetni. Ez a példa bemutatja, hogyan hozhat létre egy tervet, amely tartalmazza a számítási, hálózati és tárolóerőforrás-szolgáltatók. Ez a séma segítségével előfizetők a virtuális gépeket.
 
-1. Jelentkezzen be a verem Azure felügyeleti portálra (https://adminportal.local.azurestack.external). 5. lépése során létrehozott fiókot adja meg a hitelesítő adatait a [a PowerShell-parancsprogrammal](azure-stack-run-powershell-script.md) szakasz.
+1. Jelentkezzen be a verem Azure felügyeleti portálra (https://adminportal.local.azurestack.external).
 
-2. A terv és az ajánlat, amely a felhasználók előfizethetnek létrehozásához kattintson a **új** > **bérlői kínál + tervek** > **terv**.
+2. A terv és az ajánlat, amely a felhasználók előfizethetnek létrehozásához válassza **új** > **kínál + tervek** > **terv**.  
+   ![Válassza ki a tervet.](media/azure-stack-create-plan/select-plan.png)
 
-   ![](media/azure-stack-create-plan/image01.png)
-3. Az a **új megtervezése** panelen adja meg a **megjelenített név** és **erőforrásnév**. A megjelenített nevének értéke a terv valódi neve, amelyet a felhasználók. Kizárólag a rendszergazda láthatja az erőforrás nevét. A rendszergazdák az Azure Resource Manager erőforrásként tervvel működését nevét is.
+3. Az a **új tervet** panelen adja meg a **megjelenített név** és **erőforrásnév**. A megjelenített nevének értéke a terv valódi neve, amelyet a felhasználók. Csak a rendszergazda tekintheti meg az erőforrás nevét, amely a rendszergazdák az Azure Resource Manager erőforrásként tervvel működését neve.  
+   ![Adja meg a részleteket](media/azure-stack-create-plan/plan-name.png)
 
-   ![](media/azure-stack-create-plan/image02.png)
-4. Hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő, a terv tárolója.
+4. Hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő, a terv tárolója.  
+   ![Adja meg az erőforráscsoportot](media/azure-stack-create-plan/resource-group.png)
 
-   ![](media/azure-stack-create-plan/image02a.png)
-5. Kattintson a **szolgáltatások**, jelölje be **Microsoft.Compute**, **Microsoft.Network**, és **Microsoft.Storage**, majd kattintson az **Válasszon**.
+5. Válassza ki **szolgáltatások** és majd jelölje be a **Microsoft.Compute**, **Microsoft.Network**, és **Microsoft.Storage**. Ezután válasszon **válasszon** a konfiguráció mentéséhez. Jelölőnégyzetek jelennek meg minden egyes beállítás az egérrel való rámutatáskor.  
+   ![Szolgáltatások kiválasztása](media/azure-stack-create-plan/services.png)
 
-   ![](media/azure-stack-create-plan/image03.png)
-6. Kattintson a **kvóták**, kattintson a **Microsoft.Storage (helyi)**, és majd válasszon az alapértelmezett kvótát, vagy kattintson a **hozzon létre új kvóta** testreszabása a kvótát.
+6. Válassza ki **kvóták**, **Microsoft.Storage (helyi)**, majd válassza a alapértelmezett kvótát, vagy válasszon **hozzon létre új kvóta** testreszabása a kvótát.  
+   ![Kvóták](media/azure-stack-create-plan/quotas.png)
 
-   ![](media/azure-stack-create-plan/image04.png)
-7. Ha hoz létre egy új kvóta, adjon meg egy nevet a kvóta > állítsa be a kvótaértékek > kattintson **OK** > kattintson az új kvótának nevére.
+7. Ha új kvótákat hoz létre, adja meg egy **neve** a kvótához > adja meg a kvóta értékét > Válassza ki **OK**. A **kvóta létrehozása** ablaktáblát.
+   ![Új kvóta](media/azure-stack-create-plan/new-quota.png)
 
-   ![](media/azure-stack-create-plan/image06.png)
-8. Kattintson a **Microsoft.Network (helyi)**, és majd válasszon az alapértelmezett kvótát, vagy kattintson a **hozzon létre új kvóta** testreszabása a kvótát.
+   Ezután válassza ki a létrehozott új kvótát. Válassza ki a kvóta rendeli, majd bezárja a kiválasztó ablaktáblát.  
+   ![Rendelje hozzá a kvóta](media/azure-stack-create-plan/assign-quota.png)
 
-    ![](media/azure-stack-create-plan/image07.png)
-9. Ha egy új kvóta hoz létre, írjon be egy nevet a kvóta > állítsa be a kvótaértékek > kattintson **OK** > kattintson az új kvótának nevére.
+8. Ismételje meg a 6 és 7 létrehozására és hozzárendelésére kvótái **Microsoft.Network (helyi)** és **Microsoft.Compute (helyi)**.  Ha mindhárom szolgáltatást rendelt, jelennek meg az alábbi képen hasonló.  
+   ![Teljes kvóta hozzárendelések](media/azure-stack-create-plan/all-quotas-assigned.png)
 
-    ![](media/azure-stack-create-plan/image08.png)
-10. Kattintson a **Microsoft.Compute (helyi)**, és majd válasszon az alapértelmezett kvótát, vagy kattintson a **hozzon létre új kvóta** testreszabása a kvótát.
-
-    ![](media/azure-stack-create-plan/image09.png)
-11. Ha egy új kvóta hoz létre, írjon be egy nevet a kvóta > állítsa be a kvótaértékek > kattintson **OK** > kattintson az új kvótának nevére.
-
-    ![](media/azure-stack-create-plan/image10.png)
-12. A a **kvóták** panelen kattintson **OK**, majd a a **új tervet** panelen kattintson **létrehozása** a terv létrehozásához.
-
-    ![](media/azure-stack-create-plan/image11.png)
-13. Az új csomag megtekintéséhez kattintson **összes erőforrás**, majd keresse meg a tervet, és kattintson a nevére.
-
-    ![](media/azure-stack-create-plan/image12.png)
+9. Az a **kvóták** ablaktáblán válassza **OK**, majd a a **új tervet** ablaktáblán válassza **létrehozása** a terv létrehozásához.  
+    ![A terv létrehozása](media/azure-stack-create-plan/create.png)
+10. Az új csomag megtekintéséhez válasszon **összes erőforrás**, majd keresse meg a tervet, és válassza ki a nevét. Ha az erőforrások listáját hosszú, akkor **keresési** név alapján a terv kereséséhez.  
+   ![Ellenőrizze, hogy a terv](media/azure-stack-create-plan/plan-overview.png)
 
 ### <a name="next-steps"></a>További lépések
 [Ajánlat létrehozása](azure-stack-create-offer.md)

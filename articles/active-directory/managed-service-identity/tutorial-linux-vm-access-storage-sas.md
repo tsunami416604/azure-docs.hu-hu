@@ -1,8 +1,8 @@
 ---
-title: "A Linux virtuális gép MSI SAS hitelesítő adat segítségével Azure Storage eléréséhez használja"
-description: "Ez az oktatóanyag bemutatja, hogyan egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) Azure Storage egy SAS-hitelesítő adat használata helyett a fiók tárelérési kulcs elérésére használhat."
+title: A Linux virtuális gép MSI SAS hitelesítő adat segítségével Azure Storage eléréséhez használja
+description: Ez az oktatóanyag bemutatja, hogyan egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) Azure Storage egy SAS-hitelesítő adat használata helyett a fiók tárelérési kulcs elérésére használhat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a3edf58d1e2429d15b599f75e7f9382afd94bb7b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 724d05ab931254c9db372612fedb035a93c393a5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Linux virtuális gép felügyelt Szolgáltatásidentitás segítségével Azure Storage érhetnek el egy SAS-hitelesítő adat
 
@@ -59,7 +59,7 @@ Ebben az oktatóanyagban létrehozhatunk egy új Linux virtuális Gépet. A megl
 
 ## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. A színfalak MSI engedélyezése két dolgot eredményez: az MSI-Virtuálisgép-bővítmény a virtuális Gépet telepít, és felügyelt identitás lehetővé teszi a virtuális gép számára.  
+A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. Engedélyezése felügyelt Szolgáltatásidentitás a virtuális gép, két dolgot eredményez: regiszterekben az Azure Active Directory segítségével felügyelt identitását, és hozzon létre a virtuális gép identitásának konfigurálja a virtuális Gépen. 
 
 1. Keresse meg az erőforráscsoport a új virtuális gép, és válassza ki a virtuális gépet, az előző lépésben létrehozott.
 2. Kattintson a virtuális gép "Beállítások" a bal oldali **konfigurációs**.
@@ -67,10 +67,6 @@ A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg sz
 4. Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.
 
     ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Ha ellenőrizni szeretné mely bővítmények a virtuális Gépre, kattintson a **bővítmények**. Ha MSI engedélyezve van, a **ManagedIdentityExtensionforLinux** listájában jelenik meg.
-
-    ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>Create a storage account 
 
@@ -124,7 +120,7 @@ Ezek a lépések elvégzéséhez szüksége lesz egy SSH-ügyfél. Windows haszn
     A CURL kérés- és a hozzáférési token nem éri el:
     
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true    
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true    
     ```
     
     > [!NOTE]

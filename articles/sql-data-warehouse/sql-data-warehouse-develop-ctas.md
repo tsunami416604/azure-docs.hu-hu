@@ -2,19 +2,19 @@
 title: TABLE AS SELECT (CTAS) az Azure SQL Data Warehouse létrehozása |} Microsoft Docs
 description: Tippek az Azure SQL Data Warehouse létrehozása TABLE AS kiválasztása (CTAS) utasítás kódolásának megoldások.
 services: sql-data-warehouse
-author: ronortloff
+author: ckarst
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/12/2018
-ms.author: rortloff
+ms.date: 04/17/2018
+ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: cb36cb7d3dd652608620283fe2ea2e6649406be5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9bff6b1216ae826203b24a2cdf8a3d7fd0fd586f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse CREATE TABLE AS SELECT (CTAS) használatával
 Tippek az Azure SQL Data Warehouse létrehozása TABLE AS kiválasztása (CTAS) T-SQL utasítás kódolásának megoldások.

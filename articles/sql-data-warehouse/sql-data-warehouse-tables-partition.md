@@ -1,60 +1,46 @@
 ---
-title: "Az SQL Data Warehouse Táblák particionálása |} Microsoft Docs"
-description: "Első lépések az Azure SQL Data Warehouse táblaparticionálást."
+title: Az Azure SQL Data Warehouse Táblák particionálása |} Microsoft Docs
+description: Javaslatok és példák az Azure SQL Data Warehouse tábla partíciók használatára.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 6cef870c-114f-470c-af10-02300c58885d
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: f94bc3770fbd7e707194032cb99c67b09f8a0618
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: ada55950ee36222e70809e2ef423c63612cd61ed
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse Táblák particionálása
-> [!div class="op_single_selector"]
-> * [– Áttekintés][Overview]
-> * [Adattípusok][Data Types]
-> * [Terjesztése][Distribute]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [Statistics][Statistics]
-> * [Ideiglenes][Temporary]
-> 
-> 
+Javaslatok és példák az Azure SQL Data Warehouse tábla partíciók használatára.
 
-Particionálás támogatott az SQL Data Warehouse tábla összes olyan; beleértve a fürtözött oszlopcentrikus, a fürtözött index és a halommemória.  Minden terjesztési típuson, beleértve a kivonatoló vagy a ciklikus multiplexelés elosztott a particionálás is támogatott.  Particionálás lehetővé teszi, hogy az adatok felosztani a particionálás kisebb csoportokat az adatok és a legtöbb esetben történik, a dátum oszlop.
+## <a name="what-are-table-partitions"></a>Mik azok a táblázat partíciókat?
+Tábla partíciók lehetővé teszik az adatok felosztani adatok kisebb csoportjainak. A legtöbb esetben a táblázat partíciókat a dátum oszlop jönnek létre. Particionálás támogatott az SQL Data Warehouse tábla összes olyan; beleértve a fürtözött oszlopcentrikus, a fürtözött index és a halommemória. Minden terjesztési típuson, beleértve a kivonatoló vagy a ciklikus multiplexelés elosztott a particionálás is támogatott.  
 
-## <a name="benefits-of-partitioning"></a>Particionálás előnyei
-Particionálás adatok karbantartása és lekérdezéseivel kapcsolatos teljesítményt is kihasználhatja.  E előnyöket mindegyikét vagy csak egy függ, hogyan történik az adatok betöltése, és hogy mindkét célokra használhatók ugyanarra az oszlopra óta particionálás csak akkor lehet elvégezni egy oszlop.
+Particionálás adatok karbantartása és lekérdezéseivel kapcsolatos teljesítményt is kihasználhatja. E előnyöket mindegyikét vagy csak egy függ, hogyan történik az adatok betöltése, és hogy mindkét célokra használhatók ugyanarra az oszlopra óta particionálás csak akkor lehet elvégezni egy oszlop.
 
 ### <a name="benefits-to-loads"></a>Terhelések előnyei
-Az elsődleges az SQL Data Warehouse particionálás előnye a hatékonyság és az adatok betöltése a partíció törlése használatával, váltás és egyesítése teljesítményének javítása érdekében.  A legtöbb esetben adatok particionálása szorosan kapcsolódik a sorrendet, amelyben az adatok betöltése az adatbázisba dátum oszlopban.  Egyik legnagyobb előnye az adatok karbantartása partíciókra használatával, a tranzakció naplózási elkerülését.  Egyszerűen beszúrni, frissítése vagy törlése az adatok lehetnek egy kis gondolat és annak érdekében, a legegyszerűbb módszer használatával a betöltési folyamat során particionálás jelentősen javíthatja a teljesítményt.
+Az elsődleges az SQL Data Warehouse particionálás előnye a hatékonyság és az adatok betöltése a partíció törlése használatával, váltás és egyesítése teljesítményének javítása érdekében. A legtöbb esetben adatok particionálása szorosan kapcsolódik a sorrendet, amelyben az adatok betöltése az adatbázisba dátum oszlopban. Egyik legnagyobb előnye az adatok karbantartása partíciókra használatával, a tranzakció naplózási elkerülését. Egyszerűen beszúrni, frissítése vagy törlése az adatok lehetnek egy kis gondolat és annak érdekében, a legegyszerűbb módszer használatával a betöltési folyamat során particionálás jelentősen javíthatja a teljesítményt.
 
-Váltás a partíció segítségével gyorsan távolítsa el vagy cserélje le a szakasz egy tábla.  Azt jelzi, például értékesítési ténytábla tartalmazhat-e az elmúlt 36 hónap csak az adatokat.  Minden hónap végén a legrégebbi hónap értékesítési adatokat töröltek, amelyek a tábla.  Ezek az adatok delete utasítások segítségével az adatok törléséhez a legrégebbi hónaphoz sikerült törölni.  Azonban nagy mennyiségű adat--soronként egy delete utasítás törlése is túl sok időt vehet igénybe, valamint a veszéllyel nagy tranzakciók visszagörgetése hosszú ideig tarthat, ha valamilyen hiba.  A több optimális megoldás, a legrégebbi partíció adatainak elvetése érdekében.  Ha az egyes sorok törléséhez órába is telhet, egy teljes partíció törlése sikerült másodpercre.
+Váltás a partíció segítségével gyorsan távolítsa el vagy cserélje le a szakasz egy tábla.  Azt jelzi, például értékesítési ténytábla tartalmazhat-e az elmúlt 36 hónap csak az adatokat. Minden hónap végén a legrégebbi hónap értékesítési adatokat töröltek, amelyek a tábla.  Ezek az adatok delete utasítások segítségével az adatok törléséhez a legrégebbi hónaphoz sikerült törölni. Azonban nagy mennyiségű adat--soronként egy delete utasítás törlése is túl sok időt vehet igénybe, valamint a veszéllyel nagy tranzakciók visszagörgetése hosszú ideig tarthat, ha valamilyen hiba. A több optimális megoldás, a legrégebbi partíció adatainak elvetése érdekében. Ha az egyes sorok törléséhez órába is telhet, egy teljes partíció törlése sikerült másodpercre.
 
 ### <a name="benefits-to-queries"></a>Lekérdezések előnyei
-Particionálás is segítségével javíthatja a lekérdezések teljesítményét.  Egy lekérdezést, amely a szűrő alkalmazása particionált adatokra korlátozhatja a vizsgálatot csak a megfelelő partíciókat. Ez a módszer szűrési teljes táblázatbeolvasás elkerülése, és csak a kisebb részhalmazát adatokat beolvasni. Fürtözött oszlopcentrikus indexek bevezetésével a predikátum eltávolítási teljesítménybeli előnyökben kevesebb előnyös, de egyes esetekben lehet lekérdezések előnyt.  Például ha az értékesítési ténytábla az értékesítési dátum mező 36 hónapokra particionálva van, akkor ez a szűrő lekérdezi az értékesítés időpontjában kihagyhatja megkeresése, amelyek nem egyeznek a szűrő partíciókat.
+Particionálás is segítségével javíthatja a lekérdezések teljesítményét. Egy lekérdezést, amely a szűrő alkalmazása particionált adatokra korlátozhatja a vizsgálatot csak a megfelelő partíciókat. Ez a módszer szűrési teljes táblázatbeolvasás elkerülése, és csak a kisebb részhalmazát adatokat beolvasni. Fürtözött oszlopcentrikus indexek bevezetésével a predikátum eltávolítási teljesítménybeli előnyökben kevesebb előnyös, de egyes esetekben lehet lekérdezések előnyt. Például ha az értékesítési ténytábla az értékesítési dátum mező 36 hónapokra particionálva van, akkor ez a szűrő lekérdezi az értékesítés időpontjában kihagyhatja megkeresése, amelyek nem egyeznek a szűrő partíciókat.
 
-## <a name="partition-sizing-guidance"></a>Partíció olvasható méretezési útmutató
-Particionálás teljesítmény javításához bizonyos esetekben használható, amíg a tábla létrehozása **túl sok** partíciók hátrányosan befolyásolhatja a teljesítményt bizonyos körülmények között.  A problémák különösen akkor igaz, a fürtözött oszloptárindexű táblákat.  Particionálás hasznosak lehetnek, fontos tudni, mikor érdemes használni a particionálás és létrehozásához a partíciók száma.  Nincs rögzített gyors szabály, hogy hány partíció található, a túl sok, ez függ az adatokat, és hány partíciók meg egyidejűleg betöltésekor.  Egy sikeres particionálási sémát általában több tíz, száz partíciók, akár több ezer nem rendelkezik.
+## <a name="sizing-partitions"></a>Méretezési partíciók
+Particionálás teljesítmény javításához bizonyos esetekben használható, amíg a tábla létrehozása **túl sok** partíciók hátrányosan befolyásolhatja a teljesítményt bizonyos körülmények között.  A problémák különösen akkor igaz, a fürtözött oszloptárindexű táblákat. Particionálás hasznosak lehetnek, fontos tudni, mikor érdemes használni a particionálás és létrehozásához a partíciók száma. Nincs rögzített gyors szabály, hogy hány partíció található, a túl sok, ez függ az adatokat, és hány partíciók meg egyidejűleg betöltésekor. Egy sikeres particionálási sémát általában több tíz, száz partíciók, akár több ezer nem rendelkezik.
 
-A partíciók létrehozásakor **fürtözött oszlopcentrikus** táblák, fontos figyelembe kell venni a sorok mindegyik partíció tartozik.  Az optimális tömörítés és a fürtözött oszloptárindexű táblákat teljesítményétől legalább 1 millió sort foglalnak terjesztési és partíciónként szükséges.  Mielőtt partíciók jönnek létre, az SQL Data Warehouse már felosztja minden tábla 60 elosztott adatbázisok.  A particionálás hozzá van a háttérben létrehozott terjesztéseket mellett.  Ebben a példában használata, ha az értékesítési ténytábla található 36 havi partíciók, és mivel, hogy az SQL Data Warehouse 60 azokat a terjesztéseket, majd az értékesítési ténytábla kell tartalmaznia 60 millió sort foglalnak havonta vagy 2.1 egymilliárd sort minden hónap fel van töltve.  Ha a tábla tartalmazza a sorszám ajánlott minimális száma nem lépi-e, érdemes lehet kevesebb partíciók partíciónként sorok számának növelésére.  Lásd még: a [indexelő] [ Index] cikket, amely tartalmazza az SQL Data Warehouse minőségének fürt oszlopcentrikus indexek futó lekérdezések.
+A partíciók létrehozásakor **fürtözött oszlopcentrikus** táblák, fontos figyelembe kell venni a sorok mindegyik partíció tartozik. Az optimális tömörítés és a fürtözött oszloptárindexű táblákat teljesítményétől legalább 1 millió sort foglalnak terjesztési és partíciónként szükséges. Mielőtt partíciók jönnek létre, az SQL Data Warehouse már felosztja minden tábla 60 elosztott adatbázisok. A particionálás hozzá van a háttérben létrehozott terjesztéseket mellett. Ebben a példában használata, ha az értékesítési ténytábla található 36 havi partíciók, és mivel, hogy az SQL Data Warehouse 60 azokat a terjesztéseket, majd az értékesítési ténytábla kell tartalmaznia 60 millió sort foglalnak havonta vagy 2.1 egymilliárd sort minden hónap fel van töltve. Ha a tábla tartalmazza a sorszám ajánlott minimális száma nem lépi-e, érdemes lehet kevesebb partíciók partíciónként sorok számának növelésére. További információkért lásd: a [indexelő](sql-data-warehouse-tables-index.md) cikk, köztük a fürt oszlopcentrikus indexek minőségének is felmérő lekérdezések.
 
-## <a name="syntax-difference-from-sql-server"></a>Az SQL Server szintaktikai különbség
-SQL Data Warehouse bevezeti a definiáljon partíciókat úgy, hogy egyszerűbb, mint az SQL Server.  Particionálási függvény és sémák nem használják az SQL Data Warehouse szerint az SQL Server.  Ehelyett a teendő szüksége a particionált oszlop és a határ pontok azonosítására.  Bár a particionálás szintaxisát némileg eltérő SQL Server, az alapvető fogalmakat azonosak.  SQL Server és az SQL Data Warehouse támogatja táblánként, amely címkiosztási partíció lehet egy partícióoszlop.  Particionálás kapcsolatos további információkért lásd: [particionált táblák és -indexek][Partitioned Tables and Indexes].
+## <a name="syntax-differences-from-sql-server"></a>Az SQL Server szintaktikai eltérések
+SQL Data Warehouse bevezeti a definiáljon partíciókat úgy, hogy egyszerűbb, mint az SQL Server. Particionálási függvény és sémák nem használják az SQL Data Warehouse szerint az SQL Server. Ehelyett a teendő szüksége a particionált oszlop és a határ pontok azonosítására. Bár a particionálás szintaxisát némileg eltérő SQL Server, az alapvető fogalmakat azonosak. SQL Server és az SQL Data Warehouse támogatja táblánként, amely címkiosztási partíció lehet egy partícióoszlop. Particionálás kapcsolatos további információkért lásd: [particionált táblák és -indexek](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
 
-A következő példa egy SQL Data warehouse particionálva [CREATE TABLE] [ CREATE TABLE] utasítás, particionálja a FactInternetSales táblának OrderDateKey oszlopon:
+Az alábbi példában a [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) kivonat particionálásához a FactInternetSales táblának OrderDateKey oszlopon:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -83,10 +69,10 @@ WITH
 ## <a name="migrating-partitioning-from-sql-server"></a>Az SQL Server particionálás áttelepítése
 Egyszerűen csak az SQL Data Warehouse áttelepítése az SQL Server partíció definíciók:
 
-* Az SQL Server kiküszöbölése [partícióséma][partition scheme].
-* Adja hozzá a [partíciós függvényei] [ partition function] a CREATE TABLE-definíciót.
+- Az SQL Server kiküszöbölése [partícióséma](/sql/t-sql/statements/create-partition-scheme-transact-sql).
+- Adja hozzá a [partíciós függvényei](/sql/t-sql/statements/create-partition-function-transact-sql) a CREATE TABLE-definíciót.
 
-Ha egy SQL Server-példányt telepít egy particionált táblához, a következő SQL segítségével mérje fel, a sorok számát, amely minden egyes partícióra.  Ne feledje, hogy ha olyan particionálási részletességgel használatban van az SQL Data Warehouse, partíciónként sorok számának csökkenti egy tényezővel 60.  
+Ha egy SQL Server-példányt telepít egy particionált táblához, a következő SQL segítségével mérje fel, a sorok számát, amely minden egyes partícióra. Ne feledje, hogy ha olyan particionálási részletességgel használatban van az SQL Data Warehouse, partíciónként sorok számának csökkenti egy tényezővel 60.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -123,9 +109,9 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="workload-management"></a>Terheléskezelés
-A tábla partíciós döntés számításba a egy végső építőelemre szempont, hogy [munkaterhelés felügyeleti][workload management].  Munkaterhelés-kezelés az SQL Data Warehouse az elsősorban a memória és a párhuzamosság management.  A lekérdezés végrehajtása során minden egyes terjesztési számára lefoglalt maximális memória az SQL Data Warehouse erőforrás osztályok szabályozza.  Ideális esetben a partíciók mérete más tényezőktől, például a fürtözött oszlopcentrikus indexek felépítése memóriaigényét figyelembe véve.  Nagy mértékben fürtözött oszlopcentrikus indexek juttatásra, amikor azok több memóriát foglal le.  Ezért érdemes győződjön meg arról, hogy a partíció index újraépítése nem függeszteni memória. A lekérdezés számára elérhető memória mennyiségének növelését naplókról smallrc, az alapértelmezett szerepkör egyik szerepkör largerc például lehet elérni.
+A tábla partíciós döntés számításba a egy végső szempont, hogy [munkaterhelés felügyeleti](resource-classes-for-workload-management.md). Munkaterhelés-kezelés az SQL Data Warehouse az elsősorban a memória és a párhuzamosság management. A lekérdezés végrehajtása során minden egyes terjesztési számára lefoglalt maximális memória az SQL Data Warehouse erőforrás osztályok szabályozza. Ideális esetben a partíciók mérete más tényezőktől, például a fürtözött oszlopcentrikus indexek felépítése memóriaigényét figyelembe véve. Nagy mértékben fürtözött oszlopcentrikus indexek juttatásra, amikor azok több memóriát foglal le. Ezért érdemes győződjön meg arról, hogy a partíció index újraépítése nem függeszteni memória. A lekérdezés számára elérhető memória mennyiségének növelését naplókról smallrc, az alapértelmezett szerepkör egyik szerepkör largerc például lehet elérni.
 
-A kiosztását) eloszlása feladatonként (memória áll rendelkezésre információ az erőforrás-vezérlő dinamikus felügyeleti nézetekkel lekérdezésével. A valóságban a a memóriaengedély nem éri el a következő lekérdezés eredményeit. Azonban ez a lekérdezés biztosít, amelyekkel a partíciók felügyeleti műveletek osztályozás útmutatást.  Lehetőleg kerülje a partíciók túl az extra nagy erőforrás osztály memóriaengedély méretezése. Ha ez a szám nagyobb legyen a partíciók, akkor kockáztatja az Memóriaterhelést, ami viszont kevésbé optimális tömörítés.
+A kiosztását) eloszlása feladatonként (memória áll rendelkezésre információ az erőforrás-vezérlő dinamikus felügyeleti nézetekkel lekérdezésével. A valóságban a a memóriaengedély nem éri el a következő lekérdezés eredményeit. Azonban ez a lekérdezés biztosít, amelyekkel a partíciók felügyeleti műveletek osztályozás útmutatást. Lehetőleg kerülje a partíciók túl az extra nagy erőforrás osztály memóriaengedély méretezése. Ha ez a szám nagyobb legyen a partíciók, akkor kockáztatja az Memóriaterhelést, ami viszont kevésbé optimális tömörítés.
 
 ```sql
 SELECT  rp.[name]                                AS [pool_name]
@@ -144,7 +130,7 @@ AND     rp.[name]    = 'SloDWPool'
 ```
 
 ## <a name="partition-switching"></a>Váltás a partíció
-Az SQL Data Warehouse a felosztás egyesítése és váltás partíció támogatja. Ezek segítségével végrehajtása a [az ALTER TABLE] [ ALTER TABLE] utasítást.
+Az SQL Data Warehouse a felosztás egyesítése és váltás partíció támogatja. Ezek segítségével végrehajtása a [az ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) utasítást.
 
 Váltás a partíciók két tábla között, gondoskodnia kell arról, hogy a partíciók igazodnak a megfelelő határokon belül, és, hogy megfelel-e a definíciói. Ellenőrizze, hogy megkötések kényszerítésére értékek a táblázat nem érhetők el, mint a forrástábla a azonos partícióhatárok, mint a céltábla kell tartalmaznia. Ha a partícióhatárok nincsenek majd azonos, majd a partíció kapcsolójának sikertelen lesz, mivel nem fognak szinkronizálódni a partíciós metaadatok.
 
@@ -185,7 +171,7 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 ```
 
 > [!NOTE]
-> A statisztika-objektum létrehozásával a tábla metaadatainak pontosabb. Statisztika kihagyása, ha az SQL Data Warehouse alapértelmezett értékeket fogja használni. A statisztika részletes, nézze [statisztika][statistics].
+> A statisztika-objektum létrehozásával a tábla metaadatainak pontosabb. Statisztika kihagyása, ha az SQL Data Warehouse alapértelmezett értékeket fogja használni. A statisztika részletes, nézze [statisztika](sql-data-warehouse-tables-statistics.md).
 > 
 > 
 
@@ -212,7 +198,7 @@ Ossza fel a parancs a következő hibaüzenetet kapja:
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Üzenet 35346, szint 15 állapot 1, az ALTER PARTITION utasítás sor 44 SPLIT záradékának sikertelen volt, mert a partíció nem üres.  Csak üres partíciók oszthatók fel oszlopcentrikus indexet a tábla létezik. Fontolja meg az oszloptárindex letiltását előtt az ALTER PARTITION utasítás kiadása, majd az oszloptárindex újraépítését az ALTER PARTITION utasítás befejeződése után.
+Üzenet 35346, szint 15 állapot 1, az ALTER PARTITION utasítás sor 44 SPLIT záradékának sikertelen volt, mert a partíció nem üres. Csak üres partíciók oszthatók fel oszlopcentrikus indexet a tábla létezik. Fontolja meg az oszloptárindex letiltását előtt az ALTER PARTITION utasítás kiadása, majd az oszloptárindex újraépítését az ALTER PARTITION utasítás befejeződése után.
 
 Használhat azonban `CTAS` ahhoz, hogy az adatok új tábla létrehozása.
 
@@ -272,43 +258,41 @@ A tábla-definíció elkerülése érdekében **Rozsdás** a forrásrendszerben 
 
 1. Hozzon létre a tábla particionált tábla megegyezik, azonban nincsenek partíció értékek
 
-```sql
-CREATE TABLE [dbo].[FactInternetSales]
-(
-    [ProductKey]            int          NOT NULL
-,   [OrderDateKey]          int          NOT NULL
-,   [CustomerKey]           int          NOT NULL
-,   [PromotionKey]          int          NOT NULL
-,   [SalesOrderNumber]      nvarchar(20) NOT NULL
-,   [OrderQuantity]         smallint     NOT NULL
-,   [UnitPrice]             money        NOT NULL
-,   [SalesAmount]           money        NOT NULL
-)
-WITH
-(   CLUSTERED COLUMNSTORE INDEX
-,   DISTRIBUTION = HASH([ProductKey])
-,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
-                    ()
-                )
-)
-;
-```
+    ```sql
+    CREATE TABLE [dbo].[FactInternetSales]
+    (
+        [ProductKey]            int          NOT NULL
+    ,   [OrderDateKey]          int          NOT NULL
+    ,   [CustomerKey]           int          NOT NULL
+    ,   [PromotionKey]          int          NOT NULL
+    ,   [SalesOrderNumber]      nvarchar(20) NOT NULL
+    ,   [OrderQuantity]         smallint     NOT NULL
+    ,   [UnitPrice]             money        NOT NULL
+    ,   [SalesAmount]           money        NOT NULL
+    )
+    WITH
+    (   CLUSTERED COLUMNSTORE INDEX
+    ,   DISTRIBUTION = HASH([ProductKey])
+    ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES () )
+    )
+    ;
+    ```
 
 1. `SPLIT` a tábla a telepítési folyamat részeként:
 
-```sql
--- Create a table containing the partition boundaries
+    ```sql
+     -- Create a table containing the partition boundaries
 
-CREATE TABLE #partitions
-WITH
-(
-    LOCATION = USER_DB
-,   DISTRIBUTION = HASH(ptn_no)
-)
-AS
-SELECT  ptn_no
-,       ROW_NUMBER() OVER (ORDER BY (ptn_no)) as seq_no
-FROM    (
+    CREATE TABLE #partitions
+    WITH
+    (
+        LOCATION = USER_DB
+    ,   DISTRIBUTION = HASH(ptn_no)
+    )
+    AS
+    SELECT  ptn_no
+    ,       ROW_NUMBER() OVER (ORDER BY (ptn_no)) as seq_no
+    FROM    (
         SELECT CAST(20000101 AS INT) ptn_no
         UNION ALL
         SELECT CAST(20010101 AS INT)
@@ -318,59 +302,36 @@ FROM    (
         SELECT CAST(20030101 AS INT)
         UNION ALL
         SELECT CAST(20040101 AS INT)
-        ) a
-;
+    ) a
+    ;
 
--- Iterate over the partition boundaries and split the table
+     -- Iterate over the partition boundaries and split the table
 
-DECLARE @c INT = (SELECT COUNT(*) FROM #partitions)
-,       @i INT = 1                                 --iterator for while loop
-,       @q NVARCHAR(4000)                          --query
-,       @p NVARCHAR(20)     = N''                  --partition_number
-,       @s NVARCHAR(128)    = N'dbo'               --schema
-,       @t NVARCHAR(128)    = N'FactInternetSales' --table
-;
+    DECLARE @c INT = (SELECT COUNT(*) FROM #partitions)
+    ,       @i INT = 1                                 --iterator for while loop
+    ,       @q NVARCHAR(4000)                          --query
+    ,       @p NVARCHAR(20)     = N''                  --partition_number
+    ,       @s NVARCHAR(128)    = N'dbo'               --schema
+    ,       @t NVARCHAR(128)    = N'FactInternetSales' --table
+    ;
 
-WHILE @i <= @c
-BEGIN
-    SET @p = (SELECT ptn_no FROM #partitions WHERE seq_no = @i);
-    SET @q = (SELECT N'ALTER TABLE '+@s+N'.'+@t+N' SPLIT RANGE ('+@p+N');');
+    WHILE @i <= @c
+    BEGIN
+        SET @p = (SELECT ptn_no FROM #partitions WHERE seq_no = @i);
+        SET @q = (SELECT N'ALTER TABLE '+@s+N'.'+@t+N' SPLIT RANGE ('+@p+N');');
 
-    -- PRINT @q;
-    EXECUTE sp_executesql @q;
+        -- PRINT @q;
+        EXECUTE sp_executesql @q;
+        SET @i+=1;
+    END
 
-    SET @i+=1;
-END
+     -- Code clean-up
 
--- Code clean-up
-
-DROP TABLE #partitions;
-```
+    DROP TABLE #partitions;
+    ```
 
 Ezt a módszert a kódot a verziókövetési statikus marad, és a particionálási tartományhatár-értékek használata engedélyezett a dinamikus; fejlesztik, az adatraktár adott idő alatt.
 
 ## <a name="next-steps"></a>További lépések
-További tudnivalókért tekintse meg a cikkek [tábla áttekintése][Overview], [tábla adattípusok][Data Types], [terjesztése egy tábla] [ Distribute], [Tábla indexelő][Index], [fenntartása a tábla statisztikai adatainak] [ Statistics] és [Az ideiglenes táblák][Temporary].  Gyakorlati tanácsok kapcsolatban bővebben lásd: [SQL Data Warehouse gyakorlati tanácsok][SQL Data Warehouse Best Practices].
+A táblák fejlesztésével kapcsolatos további információkért tekintse meg a cikkek [tábla áttekintése](sql-data-warehouse-tables-overview.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[workload management]: ./resource-classes-for-workload-management.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!-- MSDN Articles -->
-[Partitioned Tables and Indexes]: https://msdn.microsoft.com/library/ms190787.aspx
-[ALTER TABLE]: https://msdn.microsoft.com/en-us/library/ms190273.aspx
-[CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
-[partition function]: https://msdn.microsoft.com/library/ms187802.aspx
-[partition scheme]: https://msdn.microsoft.com/library/ms179854.aspx
-
-
-<!-- Other web references -->

@@ -1,11 +1,11 @@
 ---
-title: "Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Data Lake Store eléréséhez"
-description: "Ez az oktatóanyag bemutatja, hogyan használják a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure Data Lake Store eléréséhez."
+title: Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Data Lake Store eléréséhez
+description: Ez az oktatóanyag bemutatja, hogyan használják a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure Data Lake Store eléréséhez.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: be76fa089003a7e881bcddcfeeb628e4a704ce21
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2e0d7f7f8b63a199f921c28072bcd861711addfc
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 
@@ -55,7 +55,7 @@ Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet.  A
 
 ## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése 
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. MSI engedélyezése közli az Azure-hoz létre egy felügyelt a virtuális gép számára. A színfalak MSI engedélyezése két dolgot eredményez: az MSI-Virtuálisgép-bővítmény a virtuális Gépet telepít, és lehetővé teszi, hogy az Azure Resource Manager MSI.
+A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. MSI engedélyezése közli az Azure-hoz létre egy felügyelt a virtuális gép számára. A színfalak MSI engedélyezése két dolgot eredményez: regiszterekben az Azure Active Directory segítségével felügyelt identitását, és hozzon létre a virtuális gép identitásának konfigurálja a virtuális Gépen.
 
 1. Válassza ki a **virtuális gép** , hogy szeretné-e engedélyezze MSI-t.  
 2. A bal oldali navigációs sávon kattintson **konfigurációs**. 
@@ -99,10 +99,10 @@ Ebben az oktatóanyagban bejelentkezik a Data Lake Store-fájlrendszer REST API 
 1. A portálon lépjen a **virtuális gépek**, nyissa meg a Windows virtuális gépre, és a a **áttekintése** kattintson **Connect**.
 2. Adja meg a **felhasználónév** és **jelszó** számára, amely hozzá van, a Windows virtuális gép létrehozása után. 
 3. Most, hogy létrehozott egy **távoli asztali kapcsolat** nyissa meg a virtuális gép **PowerShell** a távoli munkamenet. 
-4. A PowerShell használatával `Invoke-WebRequest`, indítson egy lekérdezést a helyi MSI-végpont az Azure Data Lake Store megszerezni az olyan hozzáférési jogkivonatot.  A Data Lake Store erőforrás-azonosító "https://datalake.azure.net/".  A Data Lake nem az erőforrás-azonosító a pontos egyezés, és a záró perjelet fontos.
+4. A PowerShell használatával `Invoke-WebRequest`, indítson egy lekérdezést a helyi MSI-végpont az Azure Data Lake Store megszerezni az olyan hozzáférési jogkivonatot.  Az erőforrás-azonosító a Data Lake Store "https://datalake.azure.net/".  A Data Lake nem az erőforrás-azonosító a pontos egyezés, és a záró perjelet fontos.
 
    ```powershell
-   $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://datalake.azure.net/"} -Headers @{Metadata="true"}
+   $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
    ```
     
    A válasz egy JSON-objektumból átalakítása egy PowerShell-objektum. 

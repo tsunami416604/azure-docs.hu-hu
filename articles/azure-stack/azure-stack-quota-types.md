@@ -1,25 +1,25 @@
 ---
-title: "Kvóta típusa Azure verem |} Microsoft Docs"
-description: "Tekintse át a szolgáltatásokat és erőforrásokat a Azure verem használható különböző kvóta típusok."
+title: Kvóta típusa Azure verem |} Microsoft Docs
+description: Tekintse át a szolgáltatásokat és erőforrásokat a Azure verem használható különböző kvóta típusok.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/23/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: xiaofmao
+ms.openlocfilehash: b68a963dae4b3621bfd9ecdcbc20146d7b20c457
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure verem kvóta típusa
 
@@ -35,16 +35,18 @@ ms.lasthandoff: 02/21/2018
 | Rendelkezésre állási maximális száma | 10 | Ezen a helyen létrehozott rendelkezésre állási csoportok maximális számát. |
 | Virtuálisgép-méretezési maximális száma | 20 | Ezen a helyen létrehozott virtuálisgép-méretezési csoportok maximális számát. |
 
-> [!NOTE]
-> Számítási kvóták nem érvényesek a technical Preview-ban.
-> 
-> 
+
 
 ## <a name="storage-quota-types"></a>Tárolási kvóta típusok
 | **Elem** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
 | Maximális kapacitás (GB) |500 |Ezen a helyen az előfizetés által felhasználható teljes tárolási kapacitás. |
 | Storage-fiókok száma összesen |20 |Előfizetés hozhat létre ezen a helyen storage-fiókok maximális száma. |
+
+> [!NOTE]  
+> Egy új tárolási kvótája érvénybe akár két óráig is eltarthat. 
+> 
+> 
 
 ## <a name="network-quota-types"></a>Kvóta hálózattípusok
 | **Elem** | **Alapértelmezett érték** | **Leírás** |

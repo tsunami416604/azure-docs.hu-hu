@@ -1,25 +1,20 @@
 ---
-title: "További tudnivalók Azure SQL Data Warehouse műveletek |} Microsoft Docs"
-description: "Az SQL Data Warehouse rugalmassága lehetővé teszi, hogy növelje, csökkentse vagy szüneteltesse a számítási teljesítményt az adattárházegységek (DWU-k) csúszkájával. Ez a cikk az adatraktárak mérőszámait ismerteti, és azt, hogy azok milyen kapcsolatban vannak a DWU-kkal. "
+title: További tudnivalók Azure SQL Data Warehouse műveletek |} Microsoft Docs
+description: 'Az SQL Data Warehouse rugalmassága lehetővé teszi, hogy növelje, csökkentse vagy szüneteltesse a számítási teljesítményt az adattárházegységek (DWU-k) csúszkájával. Ez a cikk az adatraktárak mérőszámait ismerteti, és azt, hogy azok milyen kapcsolatban vannak a DWU-kkal. '
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: cadffa9c-589d-4db7-888a-1f202a753bc5
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 629ce22bf669a760d041bbd006b836d2da5d237b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 21e1f687e152cf91bd32389e0d5aa0dabd463b2f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-warehouse-workload"></a>Adatraktár-számítási feladat
 Az adatraktár-számítási feladat minden olyan műveletre utal, amelyet egy adatraktárral végeznek. Az adatraktár-számítási feladat magában foglalja az adatok betöltését az adatraktárba, az elemzések végrehajtását, a jelentések készítését az adatraktárról, az adatraktárban lévő adatok kezelését és az adatok adatraktárból történő exportálását. Az összetevők terjedelme és mélysége gyakran arányos az adatraktár érettségi szintjével.
@@ -65,7 +60,7 @@ Az adatok jelentéskészítés és elemzés számára történő elérhetővé t
 * A jelentések létrehozásához az írásvédett jelentéskészítő kiszolgálókra minden éjszaka fel lehet tölteni egy pillanatképet a napi adatokról. Ez nagyobb sávszélességet biztosít az ügyfelek számára, miközben csökkenti az adatraktár számítási erőforrásigényét. Biztonsági szempontjából az adatpiacok lehetővé teszik az adatraktárhoz hozzáférő felhasználók számának csökkentését.
 * Az elemzéshez ki lehet építeni az adatraktáron egy elemzési adatkockát, és le lehet futtatni az elemzést az adatraktáron, vagy előre fel lehet dolgozni az adatokat és exportálni lehet őket az elemzési kiszolgálóra további elemzés céljából.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg többet az [SQL Data Warehouse gyors létrehozásáról][create a SQL Data Warehouse] és a [mintaadatok betöltéséről][load sample data].
 
 <!--Image references-->

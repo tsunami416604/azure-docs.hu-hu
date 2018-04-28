@@ -1,11 +1,11 @@
 ---
-title: "Az App Services - verem Azure feldolgozói szerepkörök kibővítési |} Microsoft Docs"
-description: "Részletes útmutatás méretezését Azure verem App Service szolgáltatások"
+title: Az App Services - verem Azure feldolgozói szerepkörök kibővítési |} Microsoft Docs
+description: Részletes útmutatás méretezését Azure verem App Service szolgáltatások
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: 3cbe87bd-8ae2-47dc-a367-51e67ed4b3c0
 ms.service: azure-stack
 ms.workload: app-service
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 680cb70777574d0ed88c5f83fb0a6fa20263b951
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 3bbd39f99c72d92bd7969de52d893c892314fc99
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>App Service Azure veremben: további infrastruktúra vagy feldolgozói szerepkörök hozzáadása
 
@@ -51,7 +51,7 @@ Az Azure App Service Azure veremben összes szerepkör virtuálisgép-méretezé
     ##### Scale out the AppService Role instances ######
    
     # Set context to AzureStack admin.
-    Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+    Add-AzureRmAccount -EnvironmentName AzureStackAdmin
                                                  
     ## Name of the Resource group where AppService is deployed.
     $AppServiceResourceGroupName = "AppService.local"

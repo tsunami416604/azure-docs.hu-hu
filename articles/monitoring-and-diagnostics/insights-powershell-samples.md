@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 7b6da166ddd53162ca1177e925f00291ae78de2a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a67edd4372cff70a3948e85033e806749d585eb5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>A figyelő PowerShell Azure gyors üzembe helyezési-minták
 Ez a cikk jeleníti meg, akkor minták segítséget nyújtanak a figyelő az Azure-szolgáltatások elérésének PowerShell-parancsokat.
@@ -38,7 +38,7 @@ A cikkben a példák bemutatják, hogyan használhatja az Azure-figyelő parancs
 Első lépésként jelentkezzen be az Azure-előfizetéshez.
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Megjelenik egy bejelentkezési képernyő. Egyszer, jelentkezzen be a fiókjával, a TenantID, és alapértelmezett előfizetés-azonosító jelennek meg. Az Azure parancsmagok működik az alapértelmezett előfizetés keretében. Rendelkezik hozzáféréssel előfizetések listájának megtekintéséhez használja a következő parancsot:

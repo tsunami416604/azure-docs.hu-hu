@@ -1,21 +1,21 @@
 ---
-title: "Gyakori kérdések az Azure-adatbázis áttelepítése szolgáltatással |} Microsoft Docs"
-description: "Ismerje meg az Azure-adatbázis áttelepítési szolgáltatás adatbázis-áttelepítés végrehajtásának használatával kapcsolatos gyakori kérdésekre."
+title: Gyakori kérdések az Azure-adatbázis áttelepítése szolgáltatással |} Microsoft Docs
+description: Ismerje meg az Azure-adatbázis áttelepítési szolgáltatás adatbázis-áttelepítés végrehajtásának használatával kapcsolatos gyakori kérdésekre.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/25/2018
-ms.openlocfilehash: 3c1c259cc58eb1adab39d9c0ca376726b798186e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 85052e1363ebbfe21cd7d6d5b3720f79cec7c417
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Az Azure-adatbázis áttelepítése szolgáltatással kapcsolatos gyakori kérdések
 Ez a cikk felsorolja a Azure adatbázis áttelepítési szolgáltatás és a kapcsolódó válaszok együttes használatával kapcsolatos gyakori kérdésekre.
@@ -48,11 +48,11 @@ Egy tipikus, egyszerű adatbázis az áttelepítés során meg:
 ### <a name="q-what-are-the-prerequisites-for-using-the-azure-database-migration-service"></a>Q. Mik az Azure-adatbázis áttelepítési szolgáltatás használatára vonatkozó Előfeltételek?
 Győződjön meg arról, hogy az Azure-adatbázis áttelepítési szolgáltatás zökkenőmentesen adatbázis áttelepítések végrehajtása során több előfeltételei van. Összes forgatókönyv (a forrás-cél párok) szolgáltatás által támogatott, amíg más Előfeltételek egyediek-e egy adott forgatókönyvhöz néhányat az Előfeltételek vonatkoznak.
 Azure-adatbázis áttelepítése szolgáltatás Előfeltételek az összes támogatott áttelepítési forgatókönyvek által közösen használt tartalmaznia kell:
-- Az Azure Resource Manager telepítési modell, amely webhelyek kapcsolatot biztosít annak a helyszíni adatforrás-kiszolgálók használatával vagy használatával hozhat létre egy VNETET az Azure-adatbázis áttelepítése szolgáltatás [ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-- Győződjön meg arról, hogy az Azure virtuális hálózatot (VNET) hálózati biztonsági csoport szabályok tegye letiltása a következő kommunikációs portok 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG forgalomszűrést végez, olvassa el a [hálózati forgalmat hálózati biztonsági csoportokkal](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg).
+- Az Azure Resource Manager telepítési modell, amely webhelyek kapcsolatot biztosít annak a helyszíni adatforrás-kiszolgálók használatával vagy használatával hozhat létre egy VNETET az Azure-adatbázis áttelepítése szolgáltatás [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+- Győződjön meg arról, hogy az Azure virtuális hálózatot (VNET) hálózati biztonsági csoport szabályok tegye letiltása a következő kommunikációs portok 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG forgalomszűrést végez, olvassa el a [hálózati forgalmat hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Egy tűzfal készülék elé a forrás-adatbázis használata esetén szükség lehet ahhoz, hogy az Azure adatbázis áttelepítése az áttelepítés forrás adatbázis(ok) eléréséhez Tűzfalszabályok hozzáadása.
  
-Minden a előfeltételei "versenyeznek" az Azure-adatbázis áttelepítése szolgáltatással adott áttelepítési forgatókönyvek listáját lásd: a kapcsolódó oktatóanyagok az Azure áttelepítési szolgáltatásban [dokumentáció](https://docs.microsoft.com/en-us/azure/dms/dms-overview) a a docs.microsoft.com webhelyen.
+Minden a előfeltételei "versenyeznek" az Azure-adatbázis áttelepítése szolgáltatással adott áttelepítési forgatókönyvek listáját lásd: a kapcsolódó oktatóanyagok az Azure áttelepítési szolgáltatásban [dokumentáció](https://docs.microsoft.com/azure/dms/dms-overview) a a docs.microsoft.com webhelyen.
 
 ### <a name="q-how-do-i-find-the-ip-address-for-the-azure-database-migration-service-so-that-i-can-create-an-allow-list-for-the-firewall-rules-used-to-access-my-source-database-for-migration"></a>Q. Hogyan találhatom az IP-cím az Azure-adatbázis áttelepítése szolgáltatás, hogy létre tudok hozni egy engedélyezési listája az áttelepítés forrás adatbázis eléréséhez használt tűzfalszabályok?
 Szükség lehet hozzáadni a tűzfalszabályok engedélyezése a forráshely adatbázisára vonatkozó áttelepítési eléréséhez Azure adatbázis áttelepítési szolgáltatás. A szolgáltatás az IP-cím dinamikus, de az Express Route használ, ha a cím közvetlenül hozzá van rendelve a vállalati hálózaton. A legegyszerűbben úgy, hogy azonosítsa a megfelelő IP-cím ugyanabban az erőforráscsoportban a kiépített Azure adatbázis áttelepítési szolgáltatás erőforrásként a társított felülettel kereséséhez keresse meg a legyen. A hálózati illesztő erőforrás neve általában a hálózati adapter előtaggal kezdődik, és egy egyedi karaktert és számsorozatot, például NIC-jj6tnztnmarpsskr82rbndyp követ. A hálózati illesztő erőforrás kiválasztásával megtekintheti az IP-cím, amely szerepel az engedélyezési listán az erőforrás-áttekintés az Azure portálon a szerepelnie kell.
@@ -80,7 +80,7 @@ Az adatbázis áttelepítést, a szolgáltatás használatával felgyorsítása 
 - Az Azure SQL Database célpéldány prémium tarifacsomagra SKU szabályozás, az Azure SQL Database minimalizálása érdekében az áttelepítési művelet során, felskálázott ideiglenesen befolyásolhatja adatok fájlátviteli tevékenységeket, alacsonyabb szintű termékváltozatok használatakor.
 
 ### <a name="q-how-do-i-set-up-an-azure-virtual-network"></a>Q. Hogyan állíthatom be egy Azure virtuális hálózatot?
-Több Microsoft-oktatóanyagokat is ismerteti, hogyan kell beállítani egy Azure virtuális Hálózatot a folyamatot, miközben a dokumentációs jelenik meg a cikk [Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview).
+Több Microsoft-oktatóanyagokat is ismerteti, hogyan kell beállítani egy Azure virtuális Hálózatot a folyamatot, miközben a dokumentációs jelenik meg a cikk [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ### <a name="q-why-is-my-azure-database-migration-service-unavailable-or-stopped"></a>Q. Az Azure-adatbázis áttelepítési szolgáltatás miért van, nem érhető el vagy leállított?
 Ha a felhasználónak explicit módon leállítja az Azure adatbázis áttelepítési szolgáltatás (DMS), vagy ha egy 24 órás időszakban a szolgáltatás inaktív, a szolgáltatás lennie egy leállított vagy szüneteltetett állapot automatikus. Minden esetben a szolgáltatás nem érhető el, és leállított állapotban lesz.  Aktív áttelepítést folytatásához indítsa újra a szolgáltatást.

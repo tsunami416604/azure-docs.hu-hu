@@ -1,12 +1,12 @@
 ---
-title: "A Storage Explorer (előzetes verzió) használata az Azure File Storage szolgáltatással | Microsoft Docs"
-description: "Ismerje meg, hogyan használhatja a fájlmegosztásokat és fájlokat a Storage Explorer előzetes verziójában."
+title: A Storage Explorer használata az Azure File Storage szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan használhatja a fájlmegosztásokat és a fájlokat a Storage Explorer szolgáltatásban.
 services: storage
 documentationcenter: na
 author: cawaMS
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 964691758254531cb92a5b1cbe055ef61d25dba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8bcc2bf11ef4adbe9139635d3c24c240a46783c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="using-storage-explorer-preview-with-azure-file-storage"></a>A Storage Explorer (előzetes verzió) használata az Azure File Storage szolgáltatással
+# <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
 
-Az Azure File storage egy felhőalapú fájlmegosztást kínáló, SMB protokollt használó szolgáltatás. Az SMB 2.1 és az SMB 3.0 protokollt is támogatja. Az Azure File Storage szolgáltatással költséges újraírások nélkül, gyorsan megoldható a fájlmegosztásra támaszkodó, régi típusú alkalmazások áttelepítése az Azure-ra. A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat alkalmazásadatokat. Ez a cikk ismerteti, hogyan használhatja a fájlmegosztásokat és fájlokat a Storage Explorer előzetes verziójában.
+Az Azure File storage egy felhőalapú fájlmegosztást kínáló, SMB protokollt használó szolgáltatás. Az SMB 2.1 és az SMB 3.0 protokollt is támogatja. Az Azure File Storage szolgáltatással költséges újraírások nélkül, gyorsan megoldható a fájlmegosztásra támaszkodó, régi típusú alkalmazások áttelepítése az Azure-ra. A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat alkalmazásadatokat. Ez a cikk ismerteti, hogyan használhatja a fájlmegosztásokat és a fájlokat a Storage Explorer szolgáltatásban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-- [A Tártallózó (előzetes verzió) letöltése és telepítése](http://www.storageexplorer.com/)
+- [A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com/)
 
 - [Csatlakozás egy Azure-tárfiókhoz vagy -szolgáltatáshoz](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -36,9 +36,9 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 Minden fájlnak fájlmegosztásban kell lennie, amely egyszerűen egy logikai fájlcsoportot jelent. Egy fiók korlátlan számú fájlmegosztást tartalmazhat, egy adott megosztás pedig korlátlan számú fájl tárolására használható.
 
-A következő lépések bemutatják, hogyan hozhat létre fájlmegosztást a Storage Explorer előzetes verziójában.
+A következő lépések bemutatják, hogyan hozhat létre fájlmegosztást a Storage Explorerben.
 
-1. Nyissa meg a Tártallózót (előzetes verzió).
+1. Nyissa meg a Storage Explorert.
 
 2. A bal oldali ablaktáblán bontsa ki a tárfiókot, ahol létre kívánja hozni a fájlmegosztást
 
@@ -58,9 +58,9 @@ A következő lépések bemutatják, hogyan hozhat létre fájlmegosztást a Sto
 
 A fájlmegosztások fájlokat és mappákat tartalmaznak (a mappákban pedig további fájlok lehetnek).
 
-A következő lépések bemutatják, hogyan tekinthető meg egy fájlmegosztás tartalma a Storage Explorer előzetes verziójában:+
+A következő lépések bemutatják, hogyan tekintheti meg egy fájlmegosztás tartalmát a Storage Explorerben:+
 
-1. Nyissa meg a Tártallózót (előzetes verzió).
+1. Nyissa meg a Storage Explorert.
 
 2. A bal oldali ablaktáblán bontsa ki a megtekinteni kívánt fájlmegosztást tartalmazó tárfiókot.
 
@@ -78,9 +78,9 @@ A következő lépések bemutatják, hogyan tekinthető meg egy fájlmegosztás 
 
 A fájlmegosztások szükség szerint egyszerűen létrehozhatók és törölhetők. (Az egyes fájlok törlésének módját lásd a [Fájlmegosztásban lévő fájlok kezelése](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) című szakaszban.)
 
-A következő lépések bemutatják, hogyan törölhet fájlmegosztást a Storage Explorer előzetes verziójában:
+A következő lépések bemutatják, hogyan törölhet fájlmegosztást a Storage Explorerben.
 
-1. Nyissa meg a Tártallózót (előzetes verzió).
+1. Nyissa meg a Storage Explorert.
 
 2. A bal oldali ablaktáblán bontsa ki a megtekinteni kívánt fájlmegosztást tartalmazó tárfiókot.
 
@@ -96,11 +96,11 @@ A következő lépések bemutatják, hogyan törölhet fájlmegosztást a Storag
 
 ## <a name="copy-a-file-share"></a>Fájlmegosztás másolása
 
-A Storage Explorer (előzetes verzió) lehetővé teszi egy fájlmegosztás vágólapra másolását, majd egy másik tárfiókba történő beillesztését. (Az egyes fájlok másolásának módját lásd a [Fájlmegosztásban lévő fájlok kezelése](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) című szakaszban.)
+A Storage Explorer lehetővé teszi egy fájlmegosztás vágólapra másolását, majd egy másik tárfiókba történő beillesztését. (Az egyes fájlok másolásának módját lásd a [Fájlmegosztásban lévő fájlok kezelése](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) című szakaszban.)
 
 A következő lépések bemutatják, hogyan másolhat át fájlmegosztást egyik tárfiókból a másikba.
 
-1. Nyissa meg a Tártallózót (előzetes verzió).
+1. Nyissa meg a Storage Explorert.
 
 2. A bal oldali ablaktáblán bontsa ki a másolni kívánt fájlmegosztást tartalmazó tárfiókot.
 
@@ -120,7 +120,7 @@ A [közös hozzáférésű jogosultságkód (SAS)](https://docs.microsoft.com//a
 
 A következő lépések bemutatják, hogyan hozhat létre SAS-t egy fájlmegosztáshoz:+
 
-1. Nyissa meg a Tártallózót (előzetes verzió).
+1. Nyissa meg a Storage Explorert.
 
 2. A bal oldali ablaktáblán bontsa ki azt a fájlmegosztást tartalmazó tárfiókot, amelyhez SAS-t kíván beszerezni.
 
@@ -146,7 +146,7 @@ A következő lépések bemutatják, hogyan hozhat létre SAS-t egy fájlmegoszt
 
 A következő lépések bemutatják, hogyan történik a fájlmegosztáshoz tartozó hozzáférési szabályzatok kezelése (hozzáadása és eltávolítása):+ . A hozzáférési szabályzatokkal olyan SAS URL-címek hozhatók létre, amelyeken keresztül a Storage-fájl erőforrás adott időtartamig hozzáférhető.
 
-1. Nyissa meg a Tártallózót (előzetes verzió).
+1. Nyissa meg a Storage Explorert.
 
 2. A bal oldali ablaktáblán bontsa ki azt a fájlmegosztást tartalmazó tárfiókot, amelynek a hozzáférési szabályzatait kezelni kívánja.
 
@@ -180,7 +180,7 @@ A fájlmegosztás létrehozása után többek között fájlokat tölthet fel a 
 
 A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) egy fájlmegosztásban.
 
-1.  Nyissa meg a Tártallózót (előzetes verzió).
+1.  Nyissa meg a Storage Explorert.
 
 2.  A bal oldali ablaktáblán bontsa ki a kezelni kívánt fájlmegosztást tartalmazó tárfiókot.
 
@@ -256,8 +256,8 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
 
         c. Válassza az **Igen** lehetőséget a megerősítési párbeszédpanelen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A [Storage Explorer (előzetes verzió) legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com/).
+- A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com/).
 
 - Annak megismerése, hogyan [hozhat létre alkalmazásokat Azure-blobok, -táblák, -üzenetsorok és -fájlok használatával](https://azure.microsoft.com/documentation/services/storage/).

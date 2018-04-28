@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
 ms.author: juanpere
-ms.openlocfilehash: e54ba3e3015c7175814c7f4e3330ad2de3819136
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4f0428fc2cddee0181705cad9675cc31fc38b753
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>Eszközkezelés használja indításához eszköz vezérlőprogram-frissítés (.NET/csomópont)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
@@ -71,7 +71,6 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#), amely indít
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
         static ServiceClient client;
-        static JobClient jobClient;
         static string targetDevice = "{deviceIdForTargetDevice}";
         
 1. Adja hozzá a **Program** osztályhoz a következő módszert:

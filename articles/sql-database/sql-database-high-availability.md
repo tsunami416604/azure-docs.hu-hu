@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 69d004ae4c2408e5749d0a7d21b996cec8dba722
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: e85db04206927eaf17cf52c11b536c75a47a088e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 Az Azure SQL adatbázis Platformszolgáltatási ajánlat kezdete óta a Microsoft tett a felhőalkalmazások nyújtotta az ügyfelek, amelyek a szolgáltatás részét magas rendelkezésre állású (HA), és az ügyfelek nem szükséges üzemeltetéséhez, különleges logika hozzáadása, és magas rendelkezésre ÁLLÁSÚ körül döntéseket. A Microsoft fenntartja a magas rendelkezésre ÁLLÁSÚ rendszerkonfiguráció és a művelet, teljes hozzáféréssel, szolgáltatásiszint-szerződésben garantált kínál az ügyfeleknek. A magas rendelkezésre ÁLLÁSÚ SLA régióban SQL-adatbázis vonatkozik, és nem nyújt védelmet a teljes tartomány hibák, amely kívül a Microsoft irányítása alá tartozó tényezők miatt esetekben (például természeti katasztrófa, war, tevékenységéért terrorakció is történhet, lázadások, kormányzati műveletet, vagy egy hálózati vagy az eszköz hiba a Microsoft adatközpontokban, beleértve az ügyfél helyeken vagy a felhasználói helyek és a Microsoft-adatközpont közti külső).
@@ -46,7 +46,7 @@ Főbb előnyei:
 
 ## <a name="data-redundancy"></a>Adatredundancia
 
-A magas rendelkezésre állású megoldás az SQL-adatbázis alapuló [Always ON rendelkezésre állási csoportok](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technológia az SQL-kiszolgálóról, és működnek az LS és RS adatbázis is minimális eltérésekkel lehetővé teszi. LS a konfigurációban az Always ON rendelkezésre állási csoport technológia használjuk a megőrzéséhez az RS-ben a rendszer rendelkezésre állás (alacsony RTO). 
+A magas rendelkezésre állású megoldás az SQL-adatbázis alapuló [Always ON rendelkezésre állási csoportok](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technológia az SQL-kiszolgálóról, és működnek az LS és RS adatbázis is minimális eltérésekkel lehetővé teszi. LS a konfigurációban az Always ON rendelkezésre állási csoport technológia használjuk a megőrzéséhez az RS-ben a rendszer rendelkezésre állás (aktív georeplikáció által alacsony RTO). 
 
 ## <a name="local-storage-configuration"></a>Helyi tárolás beállítása
 

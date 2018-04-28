@@ -1,6 +1,6 @@
 ---
-title: "Az Application Insights-erőforrás létrehozása a PowerShell parancsfájl |} Microsoft Docs"
-description: "Application Insights-erőforrások létrehozásának automatizálása."
+title: Az Application Insights-erőforrás létrehozása a PowerShell parancsfájl |} Microsoft Docs
+description: Application Insights-erőforrások létrehozásának automatizálása.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: 376bcb542e4e83c2464d9f3f53ea71965ce79c33
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: d06b44246b694c0d2a83503ecd1ae0cedfadd9ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>PowerShell-parancsfájl egy Application Insights-erőforrás létrehozásához
 
@@ -36,7 +36,7 @@ Például ha egy mobileszköz-alkalmazást fejleszt, valószínű, hogy tetszől
 ## <a name="script-to-create-an-application-insights-resource"></a>Hozzon létre egy Application Insights-erőforrást parancsprogram
 Tekintse meg a megfelelő parancsmag specifikációk:
 
-* [Új AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
+* [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
 
 *PowerShell-parancsfájl*  
@@ -51,7 +51,7 @@ Tekintse meg a megfelelő parancsmag specifikációk:
 # If running manually, uncomment before the first 
 # execution to login to the Azure Portal:
 
-# Add-AzureRmAccount / Login-AzureRmAccount
+# Connect-AzureRmAccount / Connect-AzureRmAccount
 
 # Set the name of the Application Insights Resource
 
@@ -109,7 +109,7 @@ Két módon lehet elérhetővé tenni a iKey az SDK-val:
   * `Microsoft.ApplicationInsights.Extensibility.
     TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Application Insights és webes teszt erőforrások létrehozása sablonból](app-insights-powershell.md)
 * [A PowerShell segítségével az Azure diagnosztikai figyelés beállítása](app-insights-powershell-azure-diagnostics.md) 
 * [Értesítések beállítása a PowerShell használatával](app-insights-powershell-alerts.md)

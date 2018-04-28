@@ -1,24 +1,18 @@
 ---
 title: Forgalom Analytics keresse meg az Azure Search |} Microsoft Docs
-description: "Engedélyezze a keresési forgalom analytics az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure-ban a felhasználók és az adatok észrevételeket feloldásához."
+description: Engedélyezze a keresési forgalom analytics az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure-ban a felhasználók és az adatok észrevételeket feloldásához.
+author: HeidiSteen
+manager: cgronlun
 services: search
-documentationcenter: 
-author: bernitorres
-manager: jlembicz
-editor: 
-ms.assetid: b31d79cf-5924-4522-9276-a1bb5d527b13
 ms.service: search
-ms.devlang: multiple
-ms.workload: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/05/2017
-ms.author: betorres
-ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: heidist
+ms.openlocfilehash: ca0a00d078cd63aa8736ba9f9822fd812823304f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-search-traffic-analytics"></a>Mi az a keresési forgalom analytics
 Keresési forgalom analytics egy minta megvalósításához a keresési szolgáltatáshoz visszajelzés hurok. Ebben a mintában a szükséges adatokat és az Application Insights, több platformon szolgáltatások figyelésre egy iparágban vezető használatával gyűjtéséről ismerteti.
@@ -102,7 +96,7 @@ Egyéb nyelvekhez és platformokhoz, tekintse meg a teljes [lista](https://docs.
 
 Minden alkalommal keresési kérelem egy felhasználó által kiadott naplózni kell, hogy az Application Insights egyéni esemény a következő sémával keresési eseményként:
 
-**Szolgáltatásnév**: (karakterlánc) keresőszolgáltatás nevének **SearchId**: egyedi azonosítója (guid), a keresési lekérdezés (származik a keresési válaszul) **IndexName**: (karakterlánc) keresési szolgáltatás index lekérdezendő **QueryTerms**: (karakterlánc) keresési feltételeket a felhasználó által megadott **attribútumhoz resultcount számlálót**: (int) azon dokumentumok száma, a visszaadott (származik a keresési válaszul) **ScoringProfile**: használja, ha van ilyen relevanciaprofil nevét (karakterlánc)
+**Szolgáltatásnév**: (karakterlánc) keresőszolgáltatás nevének **SearchId**: a keresési lekérdezés egyedi azonosítóját (guid) (a keresési válaszul származik) **IndexName**: (karakterlánc) keresési szolgáltatás index kell lennie lekérdezett **QueryTerms**: a felhasználó által megadott (karakterlánc) keresőkifejezéseket **attribútumhoz resultcount számlálót**: (int) azon dokumentumok száma, a visszaadott (származik a keresési válaszul)  **ScoringProfile**: használja, ha van ilyen relevanciaprofil nevét (karakterlánc)
 
 > [!NOTE]
 > Kérelmek száma a felhasználók által létrehozott lekérdezések $count hozzáadásával = igaz értéket a keresési lekérdezés. További információ [Itt](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)
@@ -139,7 +133,7 @@ Minden alkalommal keresési kérelem egy felhasználó által kiadott naplózni 
 
 Minden alkalommal, a felhasználó kattint a dokumentumot, keresési elemzési célokra naplózandó jel. Az Application Insights egyéni események használatával ezek az események naplózása a következő sémával:
 
-**Szolgáltatásnév**: (karakterlánc) keresőszolgáltatás nevének **SearchId**: egyedi azonosítója (guid), a kapcsolódó keresési lekérdezés **dokumentumazonosító**: (karakterlánc) dokumentumazonosító **pozíció**: a Keresés a dokumentum (int) rangsorát eredményeit tartalmazó lap
+**Szolgáltatásnév**: (karakterlánc) keresőszolgáltatás nevének **SearchId**: egyedi azonosítója (guid), a kapcsolódó keresési lekérdezés **dokumentumazonosító**: (karakterlánc) dokumentumazonosító **pozíciója**: a Keresés a dokumentum (int) rangsorát eredményeit tartalmazó lap
 
 > [!NOTE]
 > Pozíció az alkalmazás kardinális sorrendje hivatkozik. Szabadon ennyi, mindaddig, amíg a rendszer mindig azonos, az összehasonlítás engedélyezéséhez.
@@ -184,7 +178,7 @@ A metrikák a Power BI Virtuálisasztal-sablon szerepel:
 ![A Power BI sablon az Application Insights olvasásra][3]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Állíthatnak be a keresési alkalmazások hatékony és osztályon adatait a keresési szolgáltatáshoz.
 
 További információt az Application Insights [Itt](https://go.microsoft.com/fwlink/?linkid=842905). Látogasson el az Application Insights [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/application-insights/) további információt a különböző szolgáltatásrétegeiben használt funkciókkal.

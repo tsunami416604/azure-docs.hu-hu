@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: df97d2020309fa9af7f67170729ce9c2d723572d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c9c4cb42e6bf9f60c883242fad6963f72b772063
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
@@ -32,24 +32,15 @@ Az Linuxon futó App Service számos beépített rendszerképet támogat a fejle
 
 | Nyelv | Támogatott verziók |
 |---|---|
-| Node.js | 4.4, 4.5, 6.2, 6.6, 6.9-6.11, 8.0, 8.1 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 9.4 |
 | Java* | 8.0 |
-| PHP | 5.6, 7.0 |
+| PHP | 5.6, 7.0, 7.2 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
+| Indítás | 1.0 |
+| Apache Tomcat | 8.5, 9.0 |
 
-* Előzetes verziójú funkciók támogatása
-
-### <a name="preview-supported-java-runtimes"></a>Előzetes verzió: támogatott Java-futtatókörnyezetek
-
-A Linux App Service-ben elérhető Java-futtatókörnyezetek az alábbiak:
-
-| Futtatókörnyezet | Verzió |
-|---|---|
-| Apache Tomcat | 8.5 |
-| Apache Tomcat | 9.0 |
-
-További információt a [Java-webalkalmazás létrehozása a Linuxon futó App Service-ben](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-java) című cikkben tekinthet meg.
+További információt a [Java-webalkalmazás létrehozása a Linuxon futó App Service-ben](https://docs.microsoft.com/azure/app-service/containers/quickstart-java) című cikkben tekinthet meg.
 
 ## <a name="deployments"></a>Központi telepítés
 
@@ -84,10 +75,7 @@ Az Azure Portal megjeleníti a Web App for Containers szolgáltatással jelenleg
 
 A virtuálishálózat-integrációhoz, Azure Active Directory/külső fél közötti hitelesítéshez vagy Kudu webhelybővítményekhez hasonló funkciók még nem elérhetőek. Frissíteni fogjuk a dokumentációt és blogunkat, amikor ezek a funkciók elérhetővé válnak.
 
-A Linuxon futó App Service szolgáltatást csak az [Alapszintű és Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service-csomagok támogatják, és nem rendelkezik [Ingyenes vagy Közös](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Az alábbi korlátozások szintén fontosak a Linuxon futó App Service esetében:
-
-* Nem hozhat létre Web App for Containers szolgáltatást olyan App Service-csomagban, amely már üzemeltet nem Linuxos webalkalmazásokat.
-* Nem Linuxos webalkalmazásokat tartalmazó erőforráscsoportokhoz készült Web App for Containers létrehozása esetén a létező App Service-csomag erőforráscsoportjától eltérő App Service-csomagot kell létrehoznia.
+A Linuxon futó App Service szolgáltatást csak az [Alapszintű és Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service-csomagok támogatják, és nem rendelkezik [Ingyenes vagy Közös](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Nem hozhat létre Web App for Containers szolgáltatást olyan App Service-csomagban, amely már üzemeltet nem Linuxos webalkalmazásokat.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

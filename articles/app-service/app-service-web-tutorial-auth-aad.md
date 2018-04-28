@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/03/2018
 ms.author: cephalin
-ms.openlocfilehash: 66e127e3c2c025818bb972d8937d8fb238d49e15
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4bdb182d93b842bf94e75672b1d7b4cf4f6da253
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben
 
@@ -170,7 +170,7 @@ return Content(data, "application/json");
 
 Az első sor `POST /api/Todo` hívást indít a háttérrendszeri API-alkalmazás felé.
 
-Ezt követően keresse meg az `Update(long id, [FromBody] TodoItem item)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
+Ezt követően keresse meg a `Update(long id, [FromBody] TodoItem item)` metódust, és cserélje le a kapcsos zárójelek közötti kódot a következőre:
 
 ```cs
 var res = _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", item).Result;
@@ -273,7 +273,7 @@ Jelentkezzen be az [Azure Erőforrás-kezelőbe](https://resources.azure.com). K
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-A bal oldali böngészőben kattintson az **Előfizetések** > **_&lt;saját\_előfizetés>_** > **resourceGroups** > **myAuthResourceGroup** > **szolgáltatók** > **Microsoft.Web** > **helyek** > **_&lt;háttér\_rendszeri\_alkalmazás\_neve>_** > **config** > **authsettings** elemre.
+A bal oldali böngészőben kattintson az **Előfizetések** > **_&lt;saját\_előfizetés>_** > **resourceGroups** > **myAuthResourceGroup** > **szolgáltatók** > **Microsoft.Web** > **helyek** > **_\<előtér\_rendszerbeli\_alkalmazás\_neve>_** > **config** > **authsettings** elemre.
 
 Az **authsettings** nézetben kattintson a **Szerkesztés** gombra. A vágólapra másolt alkalmazásazonosító használatával állítsa az `additionalLoginParams` értéket a következő JSON-karakterláncra. 
 

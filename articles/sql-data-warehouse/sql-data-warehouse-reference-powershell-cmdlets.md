@@ -1,25 +1,20 @@
 ---
 title: Az Azure SQL Data Warehouse PowerShell-parancsmagjai
-description: "A felső PowerShell-parancsmagok az Azure SQL Data Warehouse figyeléséről, valamint szüneteltetéséről és folytatásáról adatbázis található."
+description: A felső PowerShell-parancsmagok az Azure SQL Data Warehouse figyeléséről, valamint szüneteltetéséről és folytatásáról adatbázis található.
 services: sql-data-warehouse
-documentationcenter: NA
 author: kevinvngo
-manager: jhubbard
-editor: 
-ms.assetid: 6f0d5772-f05f-4cc8-9749-4adb153dfd50
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: ce3e11587c2e0cb92923868a4f26d7f59c7ef4ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 43bf1bcb1ccbb82fc15cddde85e06cac0abfd9c7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>PowerShell-parancsmagok és a REST API-k, az SQL Data Warehouse
 Az SQL Data Warehouse számos feladat Azure PowerShell-parancsmagokkal vagy a REST API-k kezelhetők.  Az alábbiakban néhány olyan PowerShell-parancsok használata az SQL Data Warehouse a gyakori feladatok automatizálására.  Egyes jó REST, tekintse meg a cikk [kezelése a REST-méretezhetőség][Manage scalability with REST].
@@ -34,7 +29,7 @@ Az SQL Data Warehouse számos feladat Azure PowerShell-parancsmagokkal vagy a RE
 2. A PowerShell-parancssorba, futtassa az alábbi parancsokat az Azure Resource Managerrel történő bejelentkezéshez, és jelölje ki az előfizetését.
    
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     Get-AzureRmSubscription
     Select-AzureRmSubscription -SubscriptionName "MySubscription"
     ```
@@ -86,7 +81,7 @@ Azure SQL Data Warehouse PowerShell-parancsmagok használata támogatott.
 * [Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase]
 * [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További PowerShell című részben talál példákat:
 
 * [PowerShell-lel SQL Data Warehouse létrehozása][Create a SQL Data Warehouse using PowerShell]
@@ -98,7 +93,7 @@ Egyéb feladatokat, melyekhez a PowerShell segítségével automatizálható, l�
 
 <!--Article references-->
 [How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Create a SQL Data Warehouse using PowerShell]: ./sql-data-warehouse-get-started-provision-powershell.md
+[Create a SQL Data Warehouse using PowerShell]: ./create-data-warehouse-powershell.md
 [Database restore]: ./sql-data-warehouse-restore-database-powershell.md
 [Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
 

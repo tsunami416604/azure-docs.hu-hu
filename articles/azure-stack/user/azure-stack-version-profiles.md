@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 8A336052-8520-41D2-AF6F-0CCE23F727B4
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/23/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 452ed1de0588b380747edaa44dd0cc3805c51392
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1ea65c9c1f69c8eec77eb498a5963b0d77ce57f1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure verem API-verzió profilok kezelése
 
@@ -38,19 +36,32 @@ Ez a témakör nyújt segítséget:
 ## <a name="summary-of-api-profiles"></a>API-profilok összegzése
 
 - API-profilok használatosak az Azure erőforrás-szolgáltatók és az API-verziók.
-- API-profilokat a fejlesztők számára a sablonok létrehozása több Azure-felhőkben létre. A célja, hogy megfeleljen a kompatibilis és állandó felületek szükségességét.
+- API-profilokat a fejlesztők számára a sablonok létrehozása több Azure-felhőkben létre. A célja, hogy a kompatibilis és állandó kapcsolat az igényeknek megfelelő.
 - Profilok évente négyszer kiadásakor.
 - Három profil elnevezési szabályai a következők:
     - **legújabb**  
         Legutóbbi API-verziók, amely az Azure-ban.
     - **yyyy-mm-dd-hybrid**  
-    Kiadás dátuma: egy róla ütemben történik, ebben a kiadásban összpontosított konzisztencia és stabilitását több felhőkben.
+    Kiadás dátuma: egy róla ütemben történik, ebben a kiadásban összpontosított konzisztencia és stabilitását több felhőkben. Ez a profil optimális Azure verem kompatibilitási célozza. 
     - **yyyy-mm-dd-profile**  
     Optimális stabilitás és a legújabb funkciók között helyezkedik el.
 
+### <a name="api-profiles-and-azure-stack-compatibility"></a>API-profilokat és Azure verem kompatibilitási
+
+A legújabb API-profilok az Azure-verem nem kompatibilisek. Az elnevezési konvenciókat segítségével azonosíthatók a profilok használatához Azure verem megoldásaiban.
+
+**legújabb**  
+Ez a profil a legújabb API-verziók található a globális Azure-ban Azure verem nem fog működni. A profil rendelkezik-e jelentős változásokat legnagyobb száma. A profil a stabilitás és a többi felhőből kompatibilis fenntartott helyezi. Ha a kívánt a legújabb API-verziót használnak, akkor a profilt kell használnia.
+
+**Éééé-hh-nn-hibrid**  
+Ehhez a profilhoz. március és szeptember felszabadul évente. Ez a profil optimális stabilitás és a különböző felhők kompatibilitás rendelkezik. Ez a profil globális Azure és Azure verem célja. Az ezen profilban szereplő Azure API-verziók lesz azonos Azure veremben felsorolt megfelelően. Ez a profil segítségével kódot a hibrid felhő megoldások fejlesztése.
+
+**yyyy-mm-dd-profile**  
+Ehhez a profilhoz. június és December globális Azure szabadul fel. Ez a profil nem fog működni a szemben Azure verem; számos jelentős változásokat lesz. Optimális stabilitás és a legújabb funkciókat mögött helyezkedik el, amíg a legújabb és közötti ehhez a profilhoz különbség, hogy legújabb mindig a legújabb API-verziók attól függetlenül, ha jelent meg az API-t olyan állnak. Egy új API-verzió hoz létre a számítási API holnap, ha az adott API-verzió a legújabb profil megjelenik, de nem profilban a éééé-hh-nn-profilt a profil az előre meghatározott. A legfrissebb. június vagy December előtt kiadott verziók magában foglalja.
+
 ## <a name="azure-resource-manager-api-profiles"></a>Az Azure Resource Manager API-profilok
 
-Az Azure verem nem használja a legújabb verzióját a globális Azure-ban található API-verziók. A saját megoldás készítése kell mindegyik erőforrás-szolgáltató API-verzió található, amely kompatibilis a Azure verem Azure-ban.
+Azure verem nem található a globális Azure API-verziók a legújabb verzióját használja. A saját megoldás készítése kell mindegyik erőforrás-szolgáltató API-verzió található, amely kompatibilis a Azure verem Azure-ban.
 
 Ahelyett, hogy mindegyik erőforrás-szolgáltató és az Azure-verem által támogatott verziót kutatás, mint használhat egy API-profilt. A profilja olyan erőforrás-szolgáltatók és API-verziók. Az SDK-t vagy egy eszközt, az SDK-val készült visszaáll a cél api-verzió van megadva a profilban. Az API-profiljaival megadhat egy Profilverzió egy teljes sablonra, és futásidőben, az Azure erőforrás-kezelő kiválasztja a megfelelő verziót az erőforrás.
 
@@ -67,14 +78,13 @@ Fejlesztőként összpontosíthat írása a megoldás. Ahelyett, hogy mely api-v
 Kódminták segítséget nyújtanak a megoldás integrálása az Azure veremnek megfelelő a választott nyelv profilok segítségével megtalálhatja. Jelenleg található útmutatást és minták a következő nyelveken:
 
 - **PowerShell**  
-Használhatja a **AzureRM.Bootstrapper** modul a PowerShell-galériában API-verzió profilokkal működéséhez szükséges PowerShell-parancsmagok segítségével keresztül érhető el.  
-További információ: [PowerShell használata API-verzió profilok](azure-stack-version-profiles-powershell.md).
+Használhatja a **AzureRM.Bootstrapper** modul a PowerShell-galériában API-verzió profilokkal működéséhez szükséges PowerShell-parancsmagok segítségével keresztül érhető el. További információ: [PowerShell használata API-verzió profilok](azure-stack-version-profiles-powershell.md).
 - **Azure CLI 2.0**  
-Frissítheti a környezet konfigurációjának Azure verem meghatározott API verziója profilt kell használnia.  
-További információ: [használata API verziója profilok az Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
+Frissítheti a környezet konfigurációjának Azure verem meghatározott API verziója profilt kell használnia. További információ: [használata API verziója profilok az Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
 - **GO**  
-NYISSA meg SDK egy profil a különféle szolgáltatások eltérő verziójú különböző típusú kombinációja. a profilok alatt érhetők el profilok / elérési utat, a verziót a **éééé-hh-nn** formátumban.  
-További információ: [használata API verziója profilokat NYISSA meg a](azure-stack-version-profiles-go.md).
+NYISSA meg SDK egy profil a különféle szolgáltatások eltérő verziójú különböző típusú kombinációja. a profilok alatt érhetők el profilok / elérési utat, a verziót a **éééé-hh-nn** formátumban. További információ: [használata API verziója profilokat NYISSA meg a](azure-stack-version-profiles-go.md).
+- **Ruby**  
+A Ruby SDK az Azure verem erőforrás-kezelőhöz biztosít eszközök segítségével felépítéséhez és az infrastruktúra kezelését. Erőforrás-szolgáltató az SDK tartalmazza a számítási, a virtuális hálózatok és a tárolási Ruby nyelveket. További információ: [Ruby profilokkal használata API verziója](azure-stack-version-profiles-ruby.md)
 
 ## <a name="next-steps"></a>További lépések
 * [A PowerShell telepítése az Azure Stack szolgáltatáshoz](azure-stack-powershell-install.md)

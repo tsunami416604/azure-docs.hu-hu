@@ -1,24 +1,19 @@
 ---
-title: "Hogyan használható az Azure Search .NET-alkalmazásból |} Microsoft Docs"
-description: "Azure Search .NET-alkalmazás használata"
-services: search
-documentationcenter: 
+title: Hogyan használható az Azure Search .NET-alkalmazásból |} Microsoft Docs
+description: Azure Search .NET-alkalmazás használata
 author: brjohnstmsft
 manager: jlembicz
-editor: 
-ms.assetid: 93653341-c05f-4cfd-be45-bb877f964fcb
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: 7273ae6a698f2af52e78ea2aae9ca5cd80f6a2b1
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
-ms.translationtype: MT
+ms.openlocfilehash: b50dda3847431299d7a2ffac84ecd89f3c4a586d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Azure Search .NET-alkalmazás használata
 Ez a cikk a forgatókönyv az első működik, és a rendszer a [Azure Search .NET SDK](https://aka.ms/search-sdk). A .NET SDK használatával valósít meg egy hatékony keresési élményt biztosít az alkalmazás Azure Search használatával.
@@ -41,7 +36,7 @@ Ez az SDK nem támogatja a [felügyeleti műveletek](https://docs.microsoft.com/
 Ha már használja az Azure Search .NET SDK régebbi verziója, és frissítse az általánosan elérhető új verzióra szeretné [Ez a cikk](search-dotnet-sdk-migration.md) ismerteti, hogyan.
 
 ## <a name="requirements-for-the-sdk"></a>Az SDK követelményei
-1. A Visual Studio 2017.
+1. Visual Studio 2017.
 2. A saját Azure Search szolgáltatás. Az SDK használatához szüksége lesz a nevét, valamint a szolgáltatás egy vagy több API-kulcsokat. [A szolgáltatás létrehozása a portálon](search-create-service-portal.md) segít a fenti lépéseket.
 3. Töltse le az Azure Search .NET SDK [NuGet-csomag](http://www.nuget.org/packages/Microsoft.Azure.Search) a Visual Studio "Manage NuGet Packages" használatával. A csomag neve csak keressen `Microsoft.Azure.Search` NuGet.org meg.
 
@@ -582,7 +577,7 @@ Az alábbiakban az eredményeket, amely az összes mezők szerepelhetnek, mivel 
 
 Ez a lépés az oktatóanyag befejezése, de itt nem állnak le. **További lépések** Azure Search többet további forrásokat biztosít.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Nézze át a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referenciáit.
 * A Tudásbázis keresztül elmélyítsék [videókat és más mintákat és oktatóanyagok](search-video-demo-tutorial-list.md).
 * Felülvizsgálati [elnevezési konvenciói](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) további a különféle objektumok elnevezési szabályai.

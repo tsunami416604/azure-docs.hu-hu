@@ -1,25 +1,25 @@
 ---
-title: "MongoDB, Angular és Node oktatóanyag az Azure-hoz – 5. rész | Microsoft Docs"
-description: "A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 5. része."
+title: MongoDB, Angular és Node oktatóanyag az Azure-hoz – 5. rész | Microsoft Docs
+description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 5. része.
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c06247279df9eaaedf128a2eeec801b4e323c535
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: MT
+ms.openlocfilehash: 7a4b25792577247d3121c5226da55081ed55ff2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 5. rész: A Mongoose használata az Azure Cosmos DB-hez való csatlakozáshoz
 
@@ -227,7 +227,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [4
 
    Az alkalmazás még nem tárol fő képeket, az oktatóanyag következő részében azonban majd hozzáadjuk a put, push és delete funkcionalitást, amelyekkel hozzáadhat, frissíthet és törölhet fő képeket a felhasználói felületen keresztül az Azure Cosmos DB-vel létesített Mongoose-kapcsolatokon keresztül. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

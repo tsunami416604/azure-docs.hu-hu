@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.openlocfilehash: d8aaf0ef8cefdc0cb1c4ff3dec656d31c32f664f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 77f6ae1df8a364eecc5e7d6d6fe3a07dd215ac16
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Az Azure Active Directory B2C: A felhasználói felület konfigurálása dinamikus tartalom egyéni házirendek használatával
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 Azure Active Directory B2C segítségével (az Azure AD B2C) egyéni házirendek, elküldheti a paraméter egy lekérdezési karakterlánc. Úgy, hogy a paraméter a HTML-végpontot, dinamikusan módosíthatja az oldal tartalmát. Például a háttérkép, a Azure AD B2C regisztráció vagy bejelentkezés lapon adja meg a webkiszolgáló vagy a mobilalkalmazás paramétereinek alapján módosíthatja. 
 
 ## <a name="prerequisites"></a>Előfeltételek

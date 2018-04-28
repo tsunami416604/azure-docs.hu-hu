@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 159bdf681761b9fc46f77cbcf25a210db11d1d9b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure Data biztonsági és a titkosítás gyakorlati tanácsok
 A kulcsokat a felhőben az adatvédelem egyik elszámolása van a lehetséges állapotok az adatok akkor fordulhat elő, és milyen vezérlők érhetők el az adott állapotban. Céljából az Azure data biztonsági és a titkosítás gyakorlati tanácsok a javaslatok lesz körül állapotok a következő adatokat:
@@ -50,15 +50,15 @@ Az Azure data biztonsági és titkosítási gyakorlati tanácsokat cikkben emlí
 * Fájl szintű adatok titkosításának kényszerítése
 
 ## <a name="enforce-multi-factor-authentication"></a>Többtényezős hitelesítés kikényszerítéséhez
-Az első lépés az adatok elérése a Microsoft Azure-ban vezérlő pedig úgy, hogy hitelesíteni a felhasználót. [Az Azure multi-factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) csupán felhasználónévvel és jelszóval mint egy másik módszer használatával felhasználói identitás ellenőrzése módot. A hitelesítési módszer segítségével hozzáférés biztonságossá tételét adatokhoz és alkalmazásokhoz egyszerű bejelentkezési folyamatot a felhasználó igény szerint betartása mellett.
+Az első lépés az adatok elérése a Microsoft Azure-ban vezérlő pedig úgy, hogy hitelesíteni a felhasználót. [Az Azure multi-factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) csupán felhasználónévvel és jelszóval mint egy másik módszer használatával felhasználói identitás ellenőrzése módot. A hitelesítési módszer segítségével hozzáférés biztonságossá tételét adatokhoz és alkalmazásokhoz egyszerű bejelentkezési folyamatot a felhasználó igény szerint betartása mellett.
 
 A felhasználók számára az Azure MFA engedélyezésével ad hozzá egy második biztonsági réteggel felhasználói bejelentkezéseket és tranzakciókat. Ebben az esetben egy tranzakció lehetséges, hogy használja a dokumentum egy fájlkiszolgálón, vagy a SharePoint Online-ban található. Az Azure MFA is segít csökkenteni szeretné annak valószínűségét, egy sérült biztonságú hitelesítő adat rendelkezik-e a szervezet adataihoz való hozzáférés informatikai.
 
 Példa: Ha az Azure többtényezős hitelesítés kényszerítéséhez a felhasználók számára, és konfigurálja úgy, hogy használják telefonhívást vagy SMS-üzenet ellenőrzést, ha a felhasználó hitelesítő adatainak biztonsága sérül, a támadó nem fogja tudni bármilyen olyan erőforrás elérésére, mivel azt nem kell a hozzáférést a felhasználó telefonjára. A szervezeteknek, amelyek nem adja hozzá a további védelmi réteg biztosítása identitás jobban ki vannak téve a hitelesítő adatok jelszóellopásos támadáshoz, ami azt eredményezheti, hogy az adatok biztonsági sérülése.
 
-Olyan szervezeteknek, amelyek a hitelesítési vezérlő helyszíni megtartja egy alternatív, hogy használja [Azure multi-factor Authentication kiszolgáló](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), más néven az MFA a helyszínen. Ez a módszer használatával is tudja kényszeríteni a többtényezős hitelesítést a multi-factor Authentication kiszolgáló helyszíni megtartásával.
+Olyan szervezeteknek, amelyek a hitelesítési vezérlő helyszíni megtartja egy alternatív, hogy használja [Azure multi-factor Authentication kiszolgáló](../active-directory/authentication/howto-mfaserver-deploy.md), más néven az MFA a helyszínen. Ez a módszer használatával is tudja kényszeríteni a többtényezős hitelesítést a multi-factor Authentication kiszolgáló helyszíni megtartásával.
 
-További információ az Azure MFA, olvassa el a cikk [Ismerkedés az Azure multi-factor Authentication a felhőben](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+További információ az Azure MFA, olvassa el a cikk [Ismerkedés az Azure multi-factor Authentication a felhőben](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Használjon szerepköralapú hozzáférés-vezérlést (RBAC)
 Alapuló hozzáférés korlátozása a [tudniuk kell, hogy](https://en.wikipedia.org/wiki/Need_to_know) és [legalacsonyabb jogosultsági szint](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági alapelveket. Ez elengedhetetlen a szervezeteknek, amelyek az adatok biztonsági házirendek kikényszerítéséhez. Azure szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyek hozzárendelése a felhasználók, csoportok és alkalmazások egy adott hatókörben. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást.

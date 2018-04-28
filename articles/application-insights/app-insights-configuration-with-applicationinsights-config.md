@@ -1,8 +1,8 @@
 ---
 title: ApplicationInsights.config referencia - Azure |} Microsoft Docs
-description: "Engedélyezze vagy tiltsa le az adatok gyűjtése modulok, és adja hozzá a teljesítményszámlálók és más paramétereket."
+description: Engedélyezze vagy tiltsa le az adatok gyűjtése modulok, és adja hozzá a teljesítményszámlálók és más paramétereket.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: OlegAnaniev-MSFT
 editor: mrbullwinkle
 manager: carmonm
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: a35da5c84e4e79d7bc6f2167ec7e172970992612
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
-ms.translationtype: MT
+ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) telemetriai adatok küldése az Application Insights az API-t biztosít. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követése a telemetriai adatok az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetria-modulokat és az inicializálók, és némelyikük paramétereinek megadása.
@@ -181,7 +181,7 @@ Ezek a paraméterek befolyásolják, hogyan a Java SDK kell tárolni, valamint a
 A telemetriai adatok elemek száma, amelyek az SDK-val memórián belüli tároló tárolhatja. A számnak az elérésekor, a telemetria puffer ki van ürítve, – ez azt jelenti, hogy a telemetriai adatok elemek az Application Insights-kiszolgálónak küldött.
 
 * Minimum: 1
-* Max: 1000
+* Maximális: 1000
 * Alapértelmezett: 500
 
 ```
@@ -199,7 +199,7 @@ A telemetriai adatok elemek száma, amelyek az SDK-val memórián belüli tárol
 Meghatározza, hogy milyen gyakran az adatok tárolása a memóriában tárolt kell kiürítése (Application insights szolgáltatásnak elküldött).
 
 * Minimum: 1
-* Max: 300
+* Maximális: 300
 * Alapértelmezett: 5
 
 ```
@@ -217,7 +217,7 @@ Meghatározza, hogy milyen gyakran az adatok tárolása a memóriában tárolt k
 Meghatározza a maximális mérete (MB), amely számára engedélyezett az állandó tároló a helyi lemezen való. Ez a tároló nem sikerült továbbítani az Application Insights végpont tárolásakor telemetriai elemekre szolgál. A tároló mérete teljesülésekor új telemetriai elemek elvesznek.
 
 * Minimum: 1
-* Max: 100
+* Maximum: 100
 * Alapértelmezett: 10
 
 ```
@@ -263,6 +263,91 @@ Ha csak egy meghatározott események küldése egy másik erőforráscsoportban
 ```
 
 Egy új kulcs beszerzése [hozzon létre egy új erőforrást az Application Insights portáljáról][new].
+
+
+
+## <a name="applicationid-provider"></a>ApplicationId szolgáltató
+
+_Rendelkezésre álló v2.6.0 kezdődően_
+
+Ez a szolgáltató célja egy Instrumentation kulcs alapján azonosítóját használva. Az alkalmazásazonosító RequestTelemetry és DependencyTelemetry szerepel, és határozza meg a korrelációs a portálon.
+
+Akkor érhető el, úgy, hogy `TelemetryConfiguration.ApplicationIdProvider` vagy kódot, vagy a konfigurációban.
+
+### <a name="interface-iapplicationidprovider"></a>Felület: IApplicationIdProvider
+
+```csharp
+public interface IApplicationIdProvider
+{
+    bool TryGetApplicationId(string instrumentationKey, out string applicationId);
+}
+```
+
+
+A két megvalósítások nyújtunk a [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) sdk: `ApplicationInsightsApplicationIdProvider` és `DictionaryApplicationIdProvider`.
+
+### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
+
+Ez az a profil Api csomagolásának. Azt fogja adatátviteli kérések és a gyorsítótár eredmények.
+
+A konfigurációs fájlhoz hozzá a szolgáltatót, vagy telepítésekor [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) vagy [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)
+
+Ez az osztály tulajdonsága egy nem kötelező `ProfileQueryEndpoint`.
+Alapértelmezés szerint a beállított érték `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
+Ha ez a konfiguráció esetén a proxy konfigurálása van szüksége, ajánlott proxyhasználat alapszintű címéből és többek között a következőket "/ api/profilok / {0} / appId". Vegye figyelembe, hogy a(z) "{0}" változó helyére kérelmenként futásidőben a Instrumentation kulcsot.
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa Configuration ApplicationInsights.config keresztül:
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>Példa Configuration kód használatával:
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApplicationIdProvider();
+```
+
+### <a name="dictionaryapplicationidprovider"></a>DictionaryApplicationIdProvider
+
+Ez az olyan statikus szolgáltatót, amely a konfigurált Instrumentation kulcs hagyatkoznak / alkalmazás azonosítója párokat.
+
+Ez az osztály tulajdonsága `Defined` ez < karakterlánc, karakterlánc > Instrumentation kulcs Dictionary az alkalmazásazonosító párokat.
+
+Ez az osztály tulajdonsága egy nem kötelező `Next` a konfigurációt egy másik szolgáltató használatára, ha egy Instrumentation kulcs van szükség, amely nem létezik konfigurálásához használható.
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Példa Configuration ApplicationInsights.config keresztül:
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.DictionaryApplicationIdProvider, Microsoft.ApplicationInsights">
+        <Defined>
+            <Type key="InstrumentationKey_1" value="ApplicationId_1"/>
+            <Type key="InstrumentationKey_2" value="ApplicationId_2"/>
+        </Defined>
+        <Next Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights" />
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>Példa Configuration kód használatával:
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationIdProvider{
+ Defined = new Dictionary<string, string>
+    {
+        {"InstrumentationKey_1", "ApplicationId_1"},
+        {"InstrumentationKey_2", "ApplicationId_2"}
+    }
+};
+```
+
+
+
 
 ## <a name="next-steps"></a>További lépések
 [További tudnivalók az API-t][api].

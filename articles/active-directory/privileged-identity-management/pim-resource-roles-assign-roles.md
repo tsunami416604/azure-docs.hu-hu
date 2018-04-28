@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management az Azure-erőforrások - hozzárendelése szerepkörökhöz |} Microsoft Docs
+title: Az Azure-erőforrások szerepkörök hozzárendelése a Privileged Identity Management használatával |} Microsoft Docs
 description: Ismerteti, hogyan rendelhet szerepköröket a PIM.
 services: active-directory
 documentationcenter: ''
@@ -13,64 +13,64 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 9a9046afe2ee1e578333ff9d29f6fb21e95a0f22
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 501f063992d2f5c7769a5c9059b346aa2b5c2bb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="privileged-identity-management---resource-roles---assign"></a>Privileged Identity Management - szerepkör erőforrás - hozzárendelése
+# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások szerepkörök hozzárendelése a Privileged Identity Management használatával
 
 ## <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
-Egy felhasználó vagy csoport hozzárendelése egy szerepkörhöz, válassza ki a szerepkör (Ha a szerepkörök megtekintése) 
+Hozzárendelése egy felhasználóhoz vagy csoporthoz egy szerepkört a Megtekintés a **szerepkörök** ablaktáblán jelölje ki a szerepkört, és válassza ki **felhasználó hozzáadása**. 
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
+!["-Szerepkörök ablaktáblában a"Felhasználó hozzáadása"gombra](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
 
-vagy kattintson a Hozzáadás gombra az műveletsávon (Ha a tagok megtekintése).
+Igény szerint kiválaszthatja **felhasználó hozzáadása** a a **tagok** ablaktáblán.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
+![A "Felhasználó hozzáadása" gombra a "Tagok" ablaktábla](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
 
 
-Ha egy felhasználó vagy csoport hozzáadása a tagok lapon, akkor kell: 
+Ha a felhasználó adja hozzá, vagy a csoport a **tagok** ablaktáblán kell: 
 
-1. Kattintson a Hozzáadás menüjének szerepkör, felhasználó vagy csoport kiválasztása előtt.
+1. Válassza ki a szerepkör eltávolítása a **Szerepkörválasztás** ablaktáblán egy felhasználó vagy csoport kiválasztása előtt.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
+   !["Szerepkör kiválasztása" ablak](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
 
 2. Válasszon egy felhasználót vagy csoportot a könyvtárból.
 
-3. Válassza ki a megfelelő hozzárendelési típusát a legördülő menüből. 
+3. A legördülő menüből válassza ki a megfelelő hozzárendelés-típus: 
 
-    - **Csak az idő-hozzárendelési:** azt a felhasználó vagy csoport tagjai támogatható, de nem állandó hozzáférést biztosít a szerepkör egy megadott ideig idő vagy korlátlan ideig (Ha be van állítva, a szerepkör beállításai). 
-    - **Közvetlen hozzárendelés:** nem követeli meg a felhasználó vagy csoport tagjai (más néven állandó hozzáférés) szerepkör-hozzárendelés aktiválásához. A Microsoft azt javasolja, hogy közvetlen hozzárendelés használatával elmozdul a telefonos vagy bizalmas tevékenységek, például a rövid távú használatra, ahol hozzáférés nem lesz szükség a feladat befejezésekor.
+   - **JIT**: a felhasználó vagy csoport tagjai a megadott idő vagy korlátlan ideig szerepkör támogatható, de nem állandó hozzáférést biztosít (Ha be van állítva, a szerepkör beállításai). 
+   - **Közvetlen**: nincs szükség a felhasználó vagy csoport tagjai (más néven állandó hozzáférés) szerepkör-hozzárendelés aktiválásához. Ha hozzáférés nem lesz szükség a feladat befejezésekor rövid távú használatra rendelését használatát javasoljuk. Többek között a készenléti elmozdul és időérzékeny tevékenységeket.
 
-A hozzárendelés típusa legördülő lista alatt egy jelölőnégyzet teszi adja meg, ha a hozzárendelés állandó kell lennie (csak az idő hozzárendelés/véglegesen aktív aktiválásához közvetlen hozzárendelés véglegesen jogosult).
+4. Ha a hozzárendelés kell állandó (just-in-time-hozzárendelés véglegesen jogosult, vagy véglegesen aktív közvetlen hozzárendelés), jelölje be a jelölőnégyzetet a **hozzárendelés-típus** mezőbe.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
+   ![A "Hozzárendelés-típus" és a kapcsolódó jelölőnégyzeteket "Tagsági beállítások" ablaktábla](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
 
->[!NOTE]
->Lehet, hogy a jelölőnégyzet unmodifiable, ha egy másik rendszergazda adta meg a maximális hozzárendelés időtartama, az egyes hozzárendelés szerepkör beállításai.
+   >[!NOTE]
+   >Előfordulhat, hogy a jelölőnégyzet unmodifiable, ha egy másik rendszergazda adta meg a maximális hozzárendelés időtartama, az egyes hozzárendelés szerepkör beállításai.
 
- Adjon meg egy adott hozzárendelés időtartama, törölje a jelölőnégyzet és módosítása, illetve befejező dátum-és.
+   Adjon meg egy adott hozzárendelés időtartama, törölje a jelet a jelölőnégyzetből, és módosítsa a kezdő vagy záró dátum és idő mezőkbe.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
+   !["Tagsági beállítások" ablakban a kezdő dátum, a kezdő időpont, a befejezési dátum és a befejezési időpontja](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
 
 
 ## <a name="manage-role-assignments"></a>Szerepkör-hozzárendelések kezelése
 
-Rendszergazdák kezelhetik a szerepkör-hozzárendelések szerepkörök vagy a tagot a bal oldali navigációs való kiválasztással. Szerepkörök kiválasztásával lehetővé teszi, hogy a rendszergazdák számára, hogy a fájlkezelési feladatokat egy adott szerepkör hatóköre, amíg tagok megjeleníti az összes felhasználó- és szerepkör-hozzárendelések az erőforrás.
+Rendszergazdák kezelhetik a szerepkör-hozzárendelések kiválasztásával vagy **szerepkörök** vagy **tagok** a bal oldali ablaktáblán. Kiválasztása **szerepkörök** lehetővé teszi a rendszergazdák számára, hogy a felügyeleti feladatokat egy adott szerepkör hatóköre. Kiválasztása **tagok** jeleníti meg az összes felhasználó- és szerepkör-hozzárendelések az erőforráshoz.
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
+!["-Szerepkörök panelen](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
 
-![](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
+!["Tagok" ablak](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
 
 >[!NOTE]
-Ha van függőben lévő aktiválási szerepkör, értesítésszalagról jelenik meg a lap tetején tagsági megtekintésekor.
+Ha van függőben lévő aktiválási szerepkör, értesítésszalagról jelenik meg, ha a panel tetején tagsági megtekintése közben.
 
 
 ## <a name="modify-existing-assignments"></a>Módosítsa a meglévő hozzárendelést
 
-A felhasználó vagy csoport részletes nézete a meglévő hozzárendelést módosításához válassza a beállítások módosítása az műveletsávon az oldal tetején. Módosítsa a hozzárendelés-típus csak az idő-hozzárendelés vagy rendelését.
+A felhasználó vagy csoport részletes nézete a meglévő hozzárendelést módosításához válassza **beállításainak módosítása** az műveletsávon. A hozzárendelés-típus a **időben csak** vagy **közvetlen**.
 
-![](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+!["Felhasználó" ablaktáblában a "Beállítások módosítása" gombra](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)

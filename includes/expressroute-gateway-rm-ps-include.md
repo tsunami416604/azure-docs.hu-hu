@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d9eaab359d76afce61cfcc72e3fa125b08856e32
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7e33d4ed7100287ef6b22aa4c90fd52671363902
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 Ez a feladat lépéseit a következő konfigurációs hivatkozás listában található értékek alapján a VNet használja. További beállításokat és a nevek azt is ezen a listán. Nem használjuk a lista összes lépést, közvetlenül a Bár jelenleg felvenni a listában szereplő értékek alapján a változók. A listában referenciaként, az értékeket cserélje le a saját másolhatja.
 
@@ -30,13 +30,13 @@ Ez a feladat lépéseit a következő konfigurációs hivatkozás listában tal�
 * Átjáró IP-név = "GWIP"
 * Átjáró IP-konfiguráció neve = "gwipconf"
 * Típus = "ExpressRoute" Ez a típus egy ExpressRoute-konfiguráció szükséges.
-* Gateway Public IP Name = "gwpip"
+* Átjáró nyilvános IP-név = "gwpip"
 
 ## <a name="add-a-gateway"></a>Átjáró hozzáadása
 1. Csatlakozás az Azure-előfizetéshez.
 
   ```powershell 
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   Get-AzureRmSubscription 
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```

@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 04/11/2018
 ms.author: renash
-ms.openlocfilehash: 8905b708101e78691c14168edf7afd659afa92a4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e283619c7e634a1fbba5940e5c8545b0ee4de3d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Azure-fájlmegosztás csatlakoztatása és a megosztás elérése Windows rendszeren
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows és Windows Server rendszeren csatlakoztathatók. Ez a cikk három különböző módszert mutat be az Azure-fájlmegosztások csatlakoztatására Windows rendszeren: a Fájlkezelő felhasználói felület, a PowerShell és a parancssor használatával. 
 
 Ha egy Azure-fájlmegosztást az üzemeltető Azure-régión kívül kíván csatlakoztatni, például a helyszínen vagy más Azure-régióban, az operációs rendszernek támogatnia kell az SMB 3.0-s verziót. 
 
-Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy helyszínen futó Windows-telepítésekre. Az alábbi táblázatban látható, hogy melyik operációsrendszer-verzió melyik környezetekben támogatja a fájlmegosztások csatlakoztatását:
+Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy helyszínen futó Windows-telepítésekre. A következő táblázatban látható, hogy melyik operációsrendszer-verzió melyik környezetekben támogatja a fájlmegosztások csatlakoztatását:
 
 | Windows-verzió        | SMB-verzió | Azure-beli virtuális gépeken csatlakoztatható | Helyszínen csatlakoztatható |
 |------------------------|-------------|-----------------------|----------------------|
@@ -49,11 +49,20 @@ Azure-fájlmegosztásokat csatlakoztathat az Azure-beli virtuális gépeken vagy
 
 * **Tárfiók kulcsa**: Az Azure-fájlmegosztások csatlakoztatásához szüksége lesz az elsődleges (vagy másodlagos) tárkulcsra. Az SAS-kulcsokkal való csatlakoztatás jelenleg nem támogatott.
 
-* **Győződjön meg arról, hogy a 445-ös port nyitva van**: Az Azure Files SMB protokollt használ. Az SMB a 445-ös TCP-porton keresztül kommunikál – ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös TCP-portot az ügyfél gépéről.
+* **Győződjön meg arról, hogy a 445-ös port nyitva van**: Az Azure Files SMB protokollt használ. Az SMB a 445-ös TCP-porton keresztül kommunikál – ellenőrizze, hogy a tűzfal nem blokkolja-e a 445-ös TCP-portot az ügyfél gépéről. A Portqry segítségével ellenőrizheti, hogy a 445-ös TCP-port nyitva van-e. Ha a 445-ös port szűrtként jelenik meg, a TCP-port blokkolva van. Itt láthat egy példalekérdezést:
+
+    `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
+
+    Ha a 445-ös TCP-portot egy szabály blokkolja a hálózati elérési úton, a következő eredmény látható:
+
+    `TCP port 445 (Microsoft-ds service): FILTERED`
+
+    További információ a Portqry használatáról: [A Portqry.exe parancssori segédprogram használata](https://support.microsoft.com/help/310099).
+
 
 ## <a name="persisting-connections-across-reboots"></a>Kapcsolatok megőrzése újraindítások között
 ### <a name="cmdkey"></a>CmdKey
-Állandó kapcsolatot a legegyszerűbben úgy hozhat létre, ha a tárfiók hitelesítő adatait menti a Windowsban a „CmdKey” parancssori segédprogram használatával. Alább egy például szolgáló parancssor látható, amellyel megőrizhetők a virtuális géphez tartozó tárfiók hitelesítő adatai:
+A legegyszerűbben úgy hozhat létre állandó kapcsolatot, ha a CmdKey parancssori segédprogrammal menti a tárfiók hitelesítő adatait a Windowsban. Alább egy például szolgáló parancssor látható, amellyel megőrizhetők a virtuális géphez tartozó tárfiók hitelesítő adatai:
 ```
 C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
 ```

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e3e59395b7066169b8a7863f45a446051b830a71
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Gyors üzembe helyezés PowerShell Azure-felhőbe rendszerhéj (előzetes verzió)
 
@@ -225,7 +225,7 @@ Akkor is megtalálhatja a `VirtualMachines` directory első és futtatási `Ente
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzureRmVM
  ```
 
-### <a name="discover-webapps"></a>Discover WebApps
+### <a name="discover-webapps"></a>Webalkalmazás felderítése
 
 Írja be azokat a `WebApps` egyszerűen nyissa meg a webes alkalmazások erőforrások könyvtár
 
@@ -274,13 +274,13 @@ Hitelesítés kiszolgálók vagy az SSH használatával virtuális gépek, a nyi
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>Egy egyéni profilt használ a GIT és az SSH-beállítások megtartására
 
-Mivel munkamenetek nem maradnak kijelentkezési, mentse a `$env:USERPROFILE\.ssh` könyvtárból `CloudDrive` , vagy hozzon létre egy symlink felhő rendszerhéj lekérdezi indításakor.
-Adja hozzá a következő kódrészletet a profile.ps1 egy symlink CloudDrive történő létrehozásához a.
+Mivel munkamenetek nem maradnak kijelentkezési, mentse a `$env:USERPROFILE\.ssh` könyvtárból `clouddrive` , vagy hozzon létre egy symlink felhő rendszerhéj lekérdezi indításakor.
+Adja hozzá a következő kódrészletet a profile.ps1 egy symlink történő létrehozásához a `clouddrive`.
 
 ``` PowerShell
 # Check if the .ssh directory exists
-if( -not (Test-Path $home\CloudDrive\.ssh)){
-    mkdir $home\CloudDrive\.ssh
+if( -not (Test-Path $home\clouddrive\.ssh)){
+    mkdir $home\clouddrive\.ssh
 }
 
 # .ssh path relative to this script
@@ -347,21 +347,21 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>Azure-fájlok használatával tárolja az adatait
 
-Létrehozhat egy parancsfájlt, mondja ki `helloworld.ps1`, és menti a `CloudDrive` rendszerhéj-munkamenetek között használandó.
+Létrehozhat egy parancsfájlt, mondja ki `helloworld.ps1`, és menti a `clouddrive` rendszerhéj-munkamenetek között használandó.
 
 ``` PowerShell
-cd C:\users\ContainerAdministrator\CloudDrive
-PS C:\users\ContainerAdministrator\CloudDrive> vim .\helloworld.ps1
+cd C:\users\ContainerAdministrator\clouddrive
+PS C:\users\ContainerAdministrator\clouddrive> vim .\helloworld.ps1
 # Add the content, such as 'Hello World!'
-PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
+PS C:\users\ContainerAdministrator\clouddrive> .\helloworld.ps1
 Hello World!
 ```
 
-Használatakor PowerShell felhő rendszerhéj, amikor legközelebb a `helloworld.ps1` fájl alapján lesznek megtalálhatók, a `CloudDrive` címtárhoz, amely csatlakoztatja a Azure fájlok megosztáshoz.
+Használatakor PowerShell felhő rendszerhéj, amikor legközelebb a `helloworld.ps1` fájl alapján lesznek megtalálhatók, a `clouddrive` címtárhoz, amely csatlakoztatja a Azure fájlok megosztáshoz.
 
 ## <a name="use-custom-profile"></a>Egyéni profil használata
 
-Testre szabhatja a PowerShell-környezet létrehozása a PowerShell - profil `profile.ps1` vagy `Microsoft.PowerShell_profile.ps1`. E menteni a `CloudDrive` , hogy minden PowerShell-munkamenetben, ha indítsa el a felhő rendszerhéj betölteni.
+Testre szabhatja a PowerShell-környezet létrehozása a PowerShell - profil `profile.ps1` vagy `Microsoft.PowerShell_profile.ps1`. E menteni a `clouddrive` , hogy minden PowerShell-munkamenetben, ha indítsa el a felhő rendszerhéj betölteni.
 
 Arról, hogyan hozza létre a profilt, hogy [kapcsolatos profilok][profile].
 
@@ -373,7 +373,7 @@ A felhő rendszerhéj egy Git-tárház klónozása, szeretne létrehozni egy [sz
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-Felhő rendszerhéj munkamenetek nem maradnak, ha kijelentkezik, vagy a munkamenet lejárata, mivel a Git-konfigurációs fájl nem létezik a következő bejelentkezéskor. Ahhoz, hogy a Git-config továbbra is fennáll, mentenie kell a .gitconfig, hogy a `CloudDrive` , és másolja, vagy hozzon létre egy symlink, a felhő rendszerhéj lekérdezi indításakor. A profile.ps1, a következő kódrészletet segítségével hozzon létre egy symlink való `CloudDrive`.
+Felhő rendszerhéj munkamenetek nem maradnak, ha kijelentkezik, vagy a munkamenet lejárata, mivel a Git-konfigurációs fájl nem létezik a következő bejelentkezéskor. Ahhoz, hogy a Git-config továbbra is fennáll, mentenie kell a .gitconfig, hogy a `clouddrive` , és másolja, vagy hozzon létre egy symlink, a felhő rendszerhéj lekérdezi indításakor. A profile.ps1, a következő kódrészletet segítségével hozzon létre egy symlink való `clouddrive`.
 
  ``` PowerShell
  

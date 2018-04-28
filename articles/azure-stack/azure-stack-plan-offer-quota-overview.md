@@ -1,25 +1,25 @@
 ---
-title: "Az Azure verem terv, ajánlat, kvóta és előfizetés áttekintése |} Microsoft Docs"
-description: "Felhő operátorként kívánt Azure verem terveket, ajánlatokat, kvóták és előfizetések ismertetése."
+title: Az Azure verem terv, ajánlat, kvóta és előfizetés áttekintése |} Microsoft Docs
+description: Felhő operátorként kívánt Azure verem terveket, ajánlatokat, kvóták és előfizetések ismertetése.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/22/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 7c395dfcdfcd509d8b32028badd1c1310ea67657
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: ''
+ms.openlocfilehash: fcf19f486ebdc739f3d5c7b25215ba8726462a56
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Csomag, ajánlat, kvóta és előfizetés áttekintése
 
@@ -32,10 +32,10 @@ Ajánlatok tartalmazhat egy vagy több terveket, és minden csomag tartalmaz egy
 - azokat az erőforrásokat, a felhasználók is felhasználhatnak mennyisége
 - mely régiókat férhetnek hozzá az erőforrásokhoz
 
-Ha valamilyen szolgáltatás biztosításához fogjuk lépések magas szintű:
+Ha valamilyen szolgáltatás biztosításához kövesse az alábbi magas szintű lépéseket:
 
 1. Adjon hozzá egy szolgáltatás, amelyet telepíthet a felhasználók számára.
-2. Egy vagy több szolgáltatást tartalmazó terv létrehozása. Terv létrehozása, amikor válasszon, vagy hozzon létre a csomagban az erőforrás korlátai által megszabott minden egyes szolgáltatás meghatározó kvótákat.
+2. Egy vagy több szolgáltatást tartalmazó terv létrehozása. Terv létrehozása, amikor válassza ki, vagy a csomagban az erőforrás korlátai által megszabott minden egyes szolgáltatás meghatározó kvóták létrehozása.
 3. Hozzon létre egy ajánlatot (például alap tervek és választható bővítmény tervek) egy vagy több terveket tartalmazó.
 
 Miután létrehozta a kért ajánlat, a felhasználók előfizethetnek hozzáférjen a szolgáltatásokat és erőforrásokat biztosít. Felhasználók előfizethetnek annyi ajánlatok szerint. Az alábbi ábrán egy egyszerű példa egy felhasználó két ajánlatok fizet elő. Minden egyes ajánlat rendelkezik a szolgáltatáscsomag vagy a kettő, és minden terv hozzáférést biztosít szolgáltatások.
@@ -52,13 +52,15 @@ Kezeléséhez nyújt segítséget a felhő kapacitása, válassza ki, vagy hozzo
 
 Kvóták régió konfigurálhatja. Például egy tervet tartalmazó terület A számítási szolgáltatásai eredményezhet. a kvóta két virtuális gép, 4 GB RAM és 10 CPU-magokat. A csomagban Azure verem, csak egy régió tartozik (nevű *helyi*) érhető el.
 
+További információ [kvóta típusok Azure verem](azure-stack-quota-types.md). 
+
 ### <a name="base-plan"></a>Alapcsomag
 
 Az ajánlat létrehozásakor a szolgáltatás-rendszergazda tartalmazhat egy referenciaterv. E alap tervek szerepelnek alapértelmezés szerint, amikor a felhasználó adott ajánlatra. Amikor a felhasználó, hozzáférhetnek az e alap terveket (megfelelő kvótával) megadott összes erőforrás-szolgáltató.
 
 ### <a name="add-on-plans"></a>Kiegészítő csomagok
 
-Nem kötelező bővítmény tervek ajánlatot is felvehető. Az előfizetés alapértelmezés szerint nem szerepelnek a bővítmény tervek. Bővítmény tervek további terveket (kvóták), amely az előfizető adhat hozzá az előfizetések ajánlatot érhető el. Például kínálhat egy referenciaterv próbaverziójára korlátozott erőforrásokkal, és nagyobb mértékű erőforrásokkal bővítmény tervének az ügyfelek, akik úgy dönt, hogy elfogadja a szolgáltatást.
+Bővítmény tervek tervekben választható ajánlatot ad hozzá. Az előfizetés alapértelmezés szerint nem szerepelnek a bővítmény tervek. Bővítmény tervek további terveket (kvóták), amely az előfizető adhat hozzá az előfizetések ajánlatot érhető el. Például kínálhat egy referenciaterv próbaverziójára korlátozott erőforrásokkal, és nagyobb mértékű erőforrásokkal bővítmény tervének az ügyfelek, akik úgy dönt, hogy elfogadja a szolgáltatást.
 
 ## <a name="offers"></a>Ajánlatok
 

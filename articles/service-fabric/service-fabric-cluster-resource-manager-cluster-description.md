@@ -1,11 +1,11 @@
 ---
-title: "Fürt erőforrás-kezelő fürt leírása |} Microsoft Docs"
-description: "A Service Fabric-fürt leíró tartalék tartományok, a frissítési tartományok, a csomópont tulajdonságait és a csomópont-kapacitás az a fürt erőforrás-kezelő megadásával."
+title: Fürt erőforrás-kezelő fürt leírása |} Microsoft Docs
+description: A Service Fabric-fürt leíró tartalék tartományok, a frissítési tartományok, a csomópont tulajdonságait és a csomópont-kapacitás az a fürt erőforrás-kezelő megadásával.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
 ms.service: Service-Fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 26ce9e96dd4df170e80c2c61dcc08c70357eec22
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
-ms.translationtype: MT
+ms.openlocfilehash: 396f1d3d8c69ba3204d16f06d49656fd138a1126
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Ismertető a service fabric-fürt
 A Service Fabric fürt erőforrás-kezelő biztosít több fürt leíró mechanizmusok. Futásidőben a fürt erőforrás-kezelő ezt az információt használja a fürtben futó szolgáltatások magas rendelkezésre állásának biztosításához. Miközben a fontos szabályok, is megkísérli a fürtön belül a hálózatierőforrás-fogyasztás optimalizálása.
@@ -95,7 +95,8 @@ Nem ajánlott mely elrendezés kiválasztása választ, a mindegyike rendelkezik
 A leggyakoribb modell a FD/UD mátrix, ahol a FDs és UDs egy táblát, és csomópontok kerülnek, a átlós mentén indítása. Ez az alapértelmezés szerint a Service Fabric-fürtök az Azure-ban használt modell. A sok csomópontokkal rendelkező fürtök mindent fejeződik be például a fenti sűrű mátrix minta keresése.
 
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Hiba és a frissítési tartomány típusmegkötéseket és az eredményül kapott viselkedéstől
-A fürt erőforrás-kezelő szolgáltatás között hiba és a frissítési tartományok korlátozásként a tudni kezeli. További információk a korlátozások található [Ez a cikk](service-fabric-cluster-resource-manager-management-integration.md). Hiba és a frissítési tartomány megkötések állapotát: "egy adott szolgáltatáshoz partíció soha nem kell különbséget *nagyobb, mint egy* a szolgáltatás az objektumok számát (állapotmentes szolgáltatások példányok vagy állapotalapú szolgáltatási replikák) két tartomány között." Ez megakadályozza, hogy bizonyos helyezi át, vagy a szabályok, amelyek megszegnek ennél a határértéknél.
+### <a name="default-approach"></a>*Alapértelmezett megközelítés*
+Alapértelmezés szerint a fürt erőforrás-kezelő tartja a szolgáltatások hiba és a frissítési tartományok között. Ez van modellezve a [megkötés](service-fabric-cluster-resource-manager-management-integration.md). A hiba, és a frissítési tartomány korlátozás állapotok: "egy adott szolgáltatáshoz partíció soha nem kell különbséget nagyobb, mint egy, a szolgáltatás objektumok (állapotmentes szolgáltatások példányok vagy állapotalapú szolgáltatási replikák) ugyanazon a szinten két tartomány közötti számot hierarchia". Tegyük fel, ennél a határértéknél "legnagyobb különbség" biztosítékot nyújt. A hiba, és a frissítési tartomány korlátozás megakadályozza, hogy bizonyos helyezi át, vagy a fenti szabályt megsértő szabályok. 
 
 Nézzük például. Tegyük fel, hogy rendelkezik-e öt tartalék tartományok és öt frissítési tartományok hat csomóponttal rendelkező fürt.
 
@@ -106,6 +107,8 @@ Nézzük például. Tegyük fel, hogy rendelkezik-e öt tartalék tartományok �
 | **UD2** | | |N3 | | |
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
+
+*Konfiguráció 1.*
 
 Most tegyük fel, a szolgáltatás egy TargetReplicaSetSize (vagy, egy állapot nélküli szolgáltatáshoz az InstanceCount) létrehozhatunk öt. A replikák N1-N5 léphet. N6 valójában soha nem használt függetlenül attól, hány szolgáltatások, például a hoz létre. De miért? Vizsgáljuk meg a különbség a jelenlegi elrendezéshez és mi történne N6 van kiválasztva.
 
@@ -120,6 +123,9 @@ Az elrendezés azt kapott és az összes hiba és a frissítési tartomány / re
 | **UD4** | | | | |R5 |1 |
 | **FDTotal** |1 |1 |1 |1 |1 |- |
 
+*1 elrendezés*
+
+
 Ebben az elrendezésben kiegyensúlyozott tartalék tartomány és a frissítési tartományi csomópontok tekintetében. Azt is kiegyensúlyozott hiba és a frissítési tartomány / replikák száma tekintetében. Minden tartományban van, a csomópontok azonos száma és a replikák azonos számú.
 
 Most mi történne helyett N2 kellett használtuk N6 vizsgáljuk meg. Hogyan kellene a replikák terjeszthetők majd?
@@ -133,7 +139,10 @@ Most mi történne helyett N2 kellett használtuk N6 vizsgáljuk meg. Hogyan kel
 | **UD4** | | | | |R4 |1 |
 | **FDTotal** |2 |0 |1 |1 |1 |- |
 
-Ebben az elrendezésben megsérti a definícióját a tartalék tartomány korlátozás. FD0 két replika van, míg FD1 nullát mutat, így a különbség FD0 és FD1 összesen két. A fürt erőforrás-kezelő nem engedélyezi a ezzel az elrendezéssel. Hasonlóképpen, ha azt kivételezett N2 és N6 (helyett N1 és N2) azt visszajelzést kap:
+*Elrendezés 2*
+
+
+Ebben az elrendezésben sérti a tartalék tartomány megkötés "legnagyobb különbség" garancia a definíciót. FD0 két replika van, míg FD1 nulla, a különbség FD0 és FD1 így két, összesen ez pedig nagyobb, mint az egyik legnagyobb különbség. A korlátozás sérül, mert a fürt erőforrás-kezelő nem engedélyezi a ezzel az elrendezéssel. Hasonlóképpen, ha azt kivételezett N2 és N6 (helyett N1 és N2) azt visszajelzést kap:
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -144,7 +153,85 @@ Ebben az elrendezésben megsérti a definícióját a tartalék tartomány korl�
 | **UD4** | | | | |R4 |1 |
 | **FDTotal** |1 |1 |1 |1 |1 |- |
 
-Ebben az elrendezésben kiegyensúlyozott tartalék tartományok tekintetében. Azonban most azt van a szabályt sértő a frissítési tartomány korlátozás. Ennek az az oka UD0 rendelkezik nulla replikákat, míg két UD1 tartozik. Ezért ezt az elrendezést is érvénytelen, és nem tárolható a fürt-kezelő által. 
+*Elrendezés 3*
+
+
+Ebben az elrendezésben kiegyensúlyozott tartalék tartományok tekintetében. Azonban most azt van a szabályt sértő a frissítési tartomány korlátozás mert UD0 nulla replikák közben UD1 két tartozik. Ezért ezt az elrendezést is érvénytelen, és nem tárolható a fürt-kezelő által.
+
+Ez a megközelítés a terjesztéshez, állapot-nyilvántartó replikák vagy állapotmentes példányok a legjobb lehetséges hibatűrést biztosít. Egy helyzetben tartománya leáll, a replikák/példányok minimális száma elvész. 
+
+Ezt a módszert használja, másrészt lehet a túl szigorú és a fürt összes erőforrásainak használatát teszi lehetővé. Bizonyos fürtkonfigurációk, az egyes csomópontok nem használható. Ez a Service Fabric nem helyezi el a szolgáltatásokat, ami azt eredményezi, figyelmeztető üzenetek is járhat. Az előző példában a fürt csomópontjainak egy része nem lehet (a megadott példa N6) használt. Akkor is, ha az adott fürtben (N7 – N10) lenne csomópontokat hozzáadni, replika/példány volna csak helyezni N1 – N5 hiba és a frissítési tartomány korlátok miatt. 
+
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+| --- |:---:|:---:|:---:|:---:|:---:|
+| **UD0** |N1 | | | |N10 |
+| **UD1** |N6 |N2 | | | |
+| **UD2** | |N7 |N3 | | |
+| **UD3** | | |N8 |N4 | |
+| **UD4** | | | |N9 |N5 |
+
+*2. konfiguráció*
+
+
+### <a name="alternative-approach"></a>*Alternatív módszert*
+
+A fürt erőforrás-kezelő támogatja a hiba és a frissítési tartomány korlátozás, amely lehetővé teszi, hogy az Elhelyezés a minimális szintű biztonság továbbra is egyúttal egy másik verziója. Az alternatív hiba és a frissítési tartomány korlátozás meg kell adni az alábbiak szerint: "Egy adott szolgáltatáshoz partíció replika elosztása a tartományok győződjön meg arról, hogy a partíció nem érinti a kvórum elvesztése". Tegyük fel, ennél a határértéknél "biztonságos kvórum-nak" garanciát nyújt. 
+
+> [!NOTE]
+>Egy állapotalapú szolgáltatás meghatároztuk *kvórum elvesztése* egy olyan esetben, ha a partíció replikák többsége nem működik egy időben. Például ha TargetReplicaSetSize öt, három replikákat készlete kvórum jelöli. Hasonlóképpen ha TargetReplicaSetSize 6, négy replikák szükségesek a kvórum. Mindkét esetben legfeljebb két replikák le egyszerre esetén használható a partíció szeretné is megfelelően működjenek. Az állapotmentes szolgáltatások, nincs nincs *kvórum elvesztése* állapotmentes szolgáltatások conitnue való functionate általában akkor is, ha egyszerre leáll példányok többsége szerint. Tárgyaljuk, ezért a szöveg többi állapotalapú szolgáltatások.
+>
+
+Lépjen vissza az előző példát. A "biztonságos kvórum-nak" verzióját a korlátozást minden három adott elrendezések lesz érvényes. Ennek oka az, akkor is, ha a hiba a FD0 a második elrendezés vagy UD1 a harmadik elrendezésben lenne, a partíció továbbra is fennáll a kvórum (a a replikák többsége továbbra is lenne be). A korlátozás a jelen verziójával N6 sikerült szinte mindig lesz szükség.
+
+A "biztonságos kvórum-nak" megközelítés biztosítja rugalmasabb sablontelepítést a "legnagyobb különbség" megközelítést, mert az egyszerűbb található replika azokat a terjesztéseket, amelyek érvényesek a szinte bármilyen fürtjének topológiája. Azonban ez a megközelítés nem garantálja a legjobb hiba tolerancia jellemzőit mivel egyes hibák rosszabb, mint a többire. A legrosszabb esetben a replikák többsége lehet egy tartomány és a replika egy további hibával elveszett. Például 3 hibák kvórum 5 replikák vagy példányok elveszítik megadni, helyett most egyébként csak két hibákkal többsége. 
+
+### <a name="adaptive-approach"></a>*Adaptív megközelítés*
+A megközelítések is előnyeinek és hátrányainak, mert azt már bevezetett egy adaptív módszert alkalmaz, amely egyesíti a két stratégiák.
+
+> [!NOTE]
+>Ez lesz az alapértelmezett viselkedést, kezdve a Service Fabric-verzió 6.2. 
+>
+Az adaptív megközelítés alapértelmezés szerint a "legnagyobb különbség" programot használ, és csak szükség esetén a "biztonságos kvórum-nak" logika vált. A fürt erőforrás-kezelő automatikusan számadatok ki, melyik stratégia szükség a fürt és a szolgáltatások konfigurálásától megtekintésével. Egy adott szolgáltatáshoz: *egyenlően osztható fel a frissítési tartományok számának és tartalék tartományok száma a TargetReplicaSetSize esetén **és** csomópontok száma értéke kisebb vagy egyenlő, mint a (tartalék tartományok száma) * (a a száma, frissítési tartományok), a fürt erőforrás-kezelő "alapú kvórum-nak" logika, hogy a szolgáltatás kell használni.* Figyelembe kell vennie, hogy a fürt erőforrás-kezelő mind az állapotmentes és állapotalapú szolgáltatások esetén annak ellenére, hogy a kvórum elvesztése nem a megfelelő állapotmentes szolgáltatásokhoz használja ezt a módszert használja.
+
+Lépjen vissza az előző példát, és azt feltételezik, hogy a fürt most már rendelkezik-e (a fürt továbbra is konfigurálva van az öt tartalék tartományok és öt frissítési tartományok és adott fürt marad öt üzemeltetett szolgáltatás TargetReplicaSetSize) 8 csomópont. 
+
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
+| --- |:---:|:---:|:---:|:---:|:---:|
+| **UD0** |N1 | | | | |
+| **UD1** |N6 |N2 | | | |
+| **UD2** | |N7 |N3 | | |
+| **UD3** | | |N8 |N4 | |
+| **UD4** | | | | |N5 |
+
+*Konfiguráció 3.*
+
+Az összes szükséges feltételek teljesülnek, mert a fürt erőforrás-kezelő felhasznál kiosztása során a szolgáltatás "kvórum alapján" programot. Ez lehetővé teszi a N6 – N8 használatát. Egy esetleges terjesztési ebben az esetben volt látható:
+
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+| --- |:---:|:---:|:---:|:---:|:---:|:---:|
+| **UD0** |R1 | | | | |1 |
+| **UD1** |R2 | | | | |1 |
+| **UD2** | |R3 |R4 | | |2 |
+| **UD3** | | | | | |0 |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |2 |1 |1 |0 |1 |- |
+
+*4 elrendezés*
+
+A szolgáltatás TargetReplicaSetSize (például) csökkenteni négy, a fürt erőforrás-kezelő figyelje meg, hogy a módosítást, és a "legnagyobb különbség" logika használatával, mert már oszthatónak FDs és UDs száma TargetReplicaSetSize nem folytatásához. Ennek eredményeképpen bizonyos replika típusú áthelyezések megtörténik a fennmaradó négy replikák N1-N5 csomóponton, úgy, hogy a tartalék tartomány és a frissítési tartomány logika "legnagyobb különbség" verziója nem sérül elosztásához. 
+
+A negyedik elrendezés és öt TargetReplicaSetSize keresése vissza. Amennyiben N1 eltávolították a fürtből, a frissítési tartományok száma négy válik. Ebben az esetben a fürt erőforrás-kezelő kezdődik "legnagyobb különbség" logika használatával, mint UDs száma nem egyenlő osztani a szolgáltatás TargetReplicaSetSize többé. Ennek eredményeképpen replika R1, amikor újra, a beépített ki, hogy a tartalék és a frissítési tartomány korlátozás nem sérül N4 léphet.
+
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
+| --- |:---:|:---:|:---:|:---:|:---:|:---:|
+| **UD0** |– |N/A |N/A |N/A |N/A |– |
+| **UD1** |R2 | | | | |1 |
+| **UD2** | |R3 |R4 | | |2 |
+| **UD3** | | | |R1 | |1 |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
+
+*5 elrendezés*
 
 ## <a name="configuring-fault-and-upgrade-domains"></a>Hiba és a frissítési tartományok konfigurálása
 Tartalék tartományok és a frissítési tartományok definiálása történik meg automatikusan az Azure Service Fabric központi telepítések üzemeltetett. A Service Fabric szerzi be, és a környezet adatokkal az Azure-ból.
@@ -514,8 +601,8 @@ LoadMetricInformation     :
                             MaxNodeLoadNodeId     : 2cc648b6770be1bc9824fa995d5b68b1
 ```
 
-## <a name="next-steps"></a>Következő lépések
-* Az architektúra és információk folyamat belül a fürt erőforrás-kezelő információkért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-architecture.md)
+## <a name="next-steps"></a>További lépések
+* Az architektúra és információk folyamat belül a fürt erőforrás-kezelő információkért tekintse meg [Ez a cikk ](service-fabric-cluster-resource-manager-architecture.md)
 * Lemeztöredezettség-mentesítés metrikák meghatározása az összevonni helyett ezzel azt csomópontok terhelése egyik módja. Lemeztöredezettség-mentesítés konfigurálásáról további tudnivalókért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * Indítsa el az elejétől és [Bevezetés a Service Fabric fürt Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
 * Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos további tudnivalókért tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)

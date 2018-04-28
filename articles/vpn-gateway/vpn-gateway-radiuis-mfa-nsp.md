@@ -1,25 +1,25 @@
 ---
-title: "Biztonságos Azure VPN gateway RADIUS-hitelesítés a hálózati házirend-kiszolgáló a multi-factor Authentication |} Microsoft Docs"
-description: "Ismerteti az Azure átjáró RADIUS-hitelesítés integrálása a hálózati házirend-kiszolgáló a multi-factor Authentication."
+title: Biztonságos Azure VPN gateway RADIUS-hitelesítés a hálózati házirend-kiszolgáló a multi-factor Authentication |} Microsoft Docs
+description: Ismerteti az Azure átjáró RADIUS-hitelesítés integrálása a hálózati házirend-kiszolgáló a multi-factor Authentication.
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
 manager: willchen
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: genli
-ms.openlocfilehash: f0d95cc0dabb253a72afdbc1bc518df882c4d861
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 665e1914f44d7c5e650a1b632d8b11c6d8a5931a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Hálózati házirend-kiszolgáló a multi-factor Authentication Azure VPN gateway RADIUS-hitelesítés integrálása 
 
@@ -50,7 +50,7 @@ Ahhoz, hogy a többtényezős Hitelesítést, a felhasználók az Azure Active D
  
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2. lépés a hálózati házirend-kiszolgáló konfigurálása az Azure MFA használatára
 
-1. A hálózati házirend-kiszolgálón [az NPS-bővítményének telepítése az Azure MFA](../multi-factor-authentication/multi-factor-authentication-nps-extension.md#install-the-nps-extension).
+1. A hálózati házirend-kiszolgálón [az NPS-bővítményének telepítése az Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
 2. Nyissa meg a NSP-konzolt, kattintson a jobb gombbal **RADUIS ügyfelek**, majd válassza ki **új**. Hozza létre a RADUIS ügyfél a következő beállítások megadásával:
 
     - **Rövid név**: adjon neki tetszőleges nevet.
@@ -80,5 +80,5 @@ Ahhoz, hogy a többtényezős Hitelesítést, a felhasználók az Azure Active D
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
-- [Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel](../multi-factor-authentication/multi-factor-authentication-nps-extension.md)
+- [Az Azure többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md)
+- [Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel](../active-directory/authentication/howto-mfa-nps-extension.md)

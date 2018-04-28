@@ -1,26 +1,24 @@
 ---
-title: "Hozzon létre magas rendelkezésre állású Spark Streaming feladatok a YARN - Azure HDInsight |} Microsoft Docs"
-description: "Hogyan állítható be a Spark Streaming egy magas rendelkezésre állású forgatókönyv esetén."
+title: Hozzon létre magas rendelkezésre állású Spark Streaming feladatok a YARN - Azure HDInsight |} Microsoft Docs
+description: Hogyan állítható be a Spark Streaming egy magas rendelkezésre állású forgatókönyv esetén.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ramoha
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: ramoha
-ms.openlocfilehash: f916f9939ac9683a2ee162ba4d2105f66187b111
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0a738d7e26384523e9da9c8c79e12729330fe6f7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Hozzon létre magas rendelkezésre állású Spark Streaming feladatok YARN
 
@@ -117,7 +115,7 @@ Illesztőprogramok DStream ellenőrzőpontok helyreállításához:
 
 * Hosszan futó feladatot kell szegmentálhatja.  Amikor Spark Streaming alkalmazás a fürthöz, a YARN várólista, ahol a feladat futtatásakor meg kell határozni. Használhatja a [YARN kapacitás Feladatütemező](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) várólisták külön hosszú ideig futó feladatok küldéséhez.
 
-* Az adatfolyam-továbbítási alkalmazást szabályosan le. Ha a eltolások ismert, és minden alkalmazás-állapot tárolása kívülről, majd programozott módon leállíthatja az adatfolyam-továbbítási alkalmazás megfelelő helyén. Egyik módszer, hogy használja a "a szál hurkok" Spark, ellenőrzésével egy külső jelzőhöz minden  *n*  másodperc. Használhatja a *jelzőfájl* , amely az alkalmazás indításakor HDFS létrehozni, akkor távolítja el, amikor le kívánja állítani. A jelölő fájl módszert használja a külső alkalmazás-t meghívó kód hasonló külön szálban használja:
+* Az adatfolyam-továbbítási alkalmazást szabályosan le. Ha a eltolások ismert, és minden alkalmazás-állapot tárolása kívülről, majd programozott módon leállíthatja az adatfolyam-továbbítási alkalmazás megfelelő helyén. Egyik módszer, hogy használja a "a szál hurkok" Spark, ellenőrzésével egy külső jelzőhöz minden *n* másodperc. Használhatja a *jelzőfájl* , amely az alkalmazás indításakor HDFS létrehozni, akkor távolítja el, amikor le kívánja állítani. A jelölő fájl módszert használja a külső alkalmazás-t meghívó kód hasonló külön szálban használja:
 
     ```scala
     streamingContext.stop(stopSparkContext = true, stopGracefully = true)

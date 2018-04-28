@@ -1,26 +1,26 @@
 ---
-title: "A figyelő Azure DC/OS-fürtről - Datadog"
-description: "Az Azure Tárolószolgáltatás-fürt Datadog a figyelheti. A DC/OS webes felhasználói felület segítségével a Datadog ügynökök telepítésére a fürthöz."
+title: A figyelő Azure DC/OS-fürtről - Datadog
+description: Az Azure Tárolószolgáltatás-fürt Datadog a figyelheti. A DC/OS webes felhasználói felület segítségével a Datadog ügynökök telepítésére a fürthöz.
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b895ef906a8c8f3f8cc21267d80f8b59b64837f4
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 029f36e4362704fcec240f6e88da5c96e903c317
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>Egy Azure tároló szolgáltatás DC/OS fürt Datadog figyelése
 
 Ebben a cikkben azt Datadog ügynökök telepíti az Azure Tárolószolgáltatás-fürt minden ügynök csomópontján. Ehhez a konfigurációhoz szüksége lesz egy fiókra Datadog. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-[Helyezzen üzembe](container-service-deployment.md) és [csatlakoztasson](../container-service-connect.md) egy, az Azure Container Service által konfigurált fürtöt. Ismerkedjen meg a [Marathon felhasználói felülettel](container-service-mesos-marathon-ui.md). Ugrás a [http://datadoghq.com](http://datadoghq.com) egy Datadog fiók beállítása. 
+[Helyezzen üzembe](container-service-deployment.md) és [csatlakoztasson](../container-service-connect.md) egy, az Azure Container Service által konfigurált fürtöt. Ismerkedjen meg a [Marathon felhasználói felülettel](container-service-mesos-marathon-ui.md). Ugrás a [ http://datadoghq.com ](http://datadoghq.com) egy Datadog fiók beállítása. 
 
 ## <a name="datadog"></a>Datadog
 Datadog egy figyelési szolgáltatás, amely a figyelési adatokat gyűjt a tárolók skálázása az Azure Tárolószolgáltatás-fürt belül. Datadog rendelkezik egy Docker integrációs irányítópultot, ahol láthatja adott mérőszámok belül a tárolók. A tárolók gyűjtött metrikák Processzor, memória, hálózati és i/o szerint vannak rendszerezve. Datadog metrikák felosztja a tárolók és a képeket. Egy példa a felhasználói felület néz a CPU-használat nem éri el.
@@ -30,7 +30,7 @@ Datadog egy figyelési szolgáltatás, amely a figyelési adatokat gyűjt a tár
 ## <a name="configure-a-datadog-deployment-with-marathon"></a>A marathon segítségével Datadog telepítés konfigurálása
 Ezeket a lépéseket bemutatja, hogyan konfigurálhatja és telepítheti a fürtben a marathon segítségével Datadog alkalmazásokat. 
 
-A DC/OS felhasználói felületén keresztül elérni [http://localhost:80 /](http://localhost:80/). Egyszer a DC/OS felhasználói felületének keresse meg a "Universe" amelyek a bal alsó részén, majd keresse meg a "Datadog", majd kattintson a "Telepítés".
+A DC/OS felhasználói felületén keresztül elérni [ http://localhost:80/ ](http://localhost:80/). Egyszer a DC/OS felhasználói felületének keresse meg a "Universe" amelyek a bal alsó részén, majd keresse meg a "Datadog", majd kattintson a "Telepítés".
 
 ![A DC/OS Universe belül Datadog csomag](./media/container-service-monitoring/datadog1.png)
 

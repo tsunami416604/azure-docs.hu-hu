@@ -1,26 +1,23 @@
 ---
-title: "A Cloud App Discovery szolgáltatás az Azure Active Directory beállítása |} Microsoft Docs"
-description: "Keresse meg és kezelheti az alkalmazásokat a Cloud App Discovery felhőhasználat és árnyékmásolatok informatikai kapcsolatban nyújtanak információkat hajtható végre."
+title: A Cloud App Discovery szolgáltatás az Azure Active Directory beállítása |} Microsoft Docs
+description: Keresse meg és kezelheti az alkalmazásokat a Cloud App Discovery felhőhasználat és árnyékmásolatok informatikai kapcsolatban nyújtanak információkat hajtható végre.
 services: active-directory
-keywords: "a cloud app discovery alkalmazások kezelése"
-documentationcenter: 
+keywords: a cloud app discovery alkalmazások kezelése
+documentationcenter: ''
 author: curtand
 manager: mtillman
 tags: ignite
-ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 04/25/2018
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: 4a0cb1b7793c846f98ae4e89b99b4bda984cd5e4
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: e46098d93360c809ba0aef46ed8244acf5af7196
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Az Azure AD Cloud App Discovery beállítása
 
@@ -86,6 +83,7 @@ Ahhoz, hogy a Cloud App Discovery jelentés készítése sikeresen, a forgalmi n
 * Cisco Meraki – URL-napló
 * Clavister NGFW (Syslog)
 * Dell Sonicwall
+* Digitális Arts i-szűrő
 * Fortinet Fortigate
 * Juniper SRX
 * Juniper SSG
@@ -107,7 +105,7 @@ Ha a napló nem támogatott, válassza ki a **más** , a **adatforrás** , és a
 
 ## <a name="data-attributes-according-to-vendor-documentation"></a>Adatok attribútumok (megfelelően a forgalmazó dokumentációja)
 
-| Adatforrás         | Célzott alkalmazás URL-címe | Megcélzott alkalmazások IP-cím | Felhasználónév | Forrás IP-cím | A teljes forgalma | Feltöltött bájt |
+| Adatforrás         | Célzott alkalmazás URL-címe | Megcélzott alkalmazások IP-cím | Felhasználónév | Forrás IP-cím | Összes forgalom | Feltöltött bájt |
 |-----------------------------------------|----------------|---------------|----------|-----------|---------------|----------------|
 | Barracuda                               | **Igen**        | **Igen**       | **Igen**  | **Igen**   | Nem            | Nem             |
 | Blue Coat                               | **Igen**        | Nem            | **Igen**  | **Igen**   | **Igen**       | **Igen**        |
@@ -123,7 +121,7 @@ Ha a napló nem támogatott, válassza ki a **más** , a **adatforrás** , és a
 | Juniper SSG                             | Nem             | **Igen**       | Nem       | **Igen**   | **Igen**       | **Igen**        |
 | McAfee SWG                              | **Igen**        | Nem            | Nem       | **Igen**   | **Igen**       | **Igen**        |
 | MS TMG                                  | **Igen**        | Nem            | **Igen**  | **Igen**   | **Igen**       | **Igen**        |
-| Palo Alto Networks                      | **Igen**        | **Igen**       | **Igen**  | **Igen**   | **Igen**       | **Igen**        |
+| Palo Alto Networks                      | Nem             | **Igen**       | **Igen**  | **Igen**   | **Igen**       | **Igen**        |
 | Sophos                                  | **Igen**        | **Igen**       | **Igen**  | **Igen**   | **Igen**       | Nem             |
 | Kalmár (Common)                          | **Igen**        | Nem            | **Igen**  | **Igen**   | Nem            | **Igen**        |
 | Kalmár (natív)                          | **Igen**        | Nem            | **Igen**  | **Igen**   | Nem            | **Igen**        |
@@ -132,7 +130,7 @@ Ha a napló nem támogatott, válassza ki a **más** , a **adatforrás** , és a
 | Zscaler                                 | **Igen**        | **Igen**       | **Igen**  | **Igen**   | **Igen**       | **Igen**        |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások segítségével továbbra is az Azure AD Cloud App Discovery beállítása.
 
 * [Pillanatkép-jelentések létrehozása](cloudappdiscovery-set-up-snapshots.md)

@@ -1,23 +1,19 @@
 ---
-title: "Az Azure Search .NET SDK 1.1-es verziójának frissítése |} Microsoft Docs"
-description: "Az Azure Search .NET SDK 1.1-es verziójának frissítése"
-services: search
-documentationcenter: 
+title: Az Azure Search .NET SDK 1.1-es verziójának frissítése |} Microsoft Docs
+description: Az Azure Search .NET SDK 1.1-es verziójának frissítése
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: 387a052a116388cc9ad816ec8b339347d5c28322
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ccefd21e2aa89a2b46129956b3c4417d548cbf32
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Az Azure Search .NET SDK 1.1-es verziójának frissítése
 
@@ -54,9 +50,9 @@ Végezetül build hibák megszüntetése után módosításokat végezheti el az
 Az alábbi lista rendezve annak a valószínűségét, hogy a változás érinteni fogja az alkalmazás kódjában.
 
 #### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch és IndexAction módosítása
-`IndexBatch.Create`átnevezték `IndexBatch.New` és már nem rendelkezik egy `params` argumentum. Használhat `IndexBatch.New` kötegek, amely különböző típusú műveletek (összevonása, törlés stb.) kombinálhatók. Emellett nincsenek új statikus módszereket biztosít a kötegek ahol a műveletek megegyeznek: `Delete`, `Merge`, `MergeOrUpload`, és `Upload`.
+`IndexBatch.Create` átnevezték `IndexBatch.New` és már nem rendelkezik egy `params` argumentum. Használhat `IndexBatch.New` kötegek, amely különböző típusú műveletek (összevonása, törlés stb.) kombinálhatók. Emellett nincsenek új statikus módszereket biztosít a kötegek ahol a műveletek megegyeznek: `Delete`, `Merge`, `MergeOrUpload`, és `Upload`.
 
-`IndexAction`már nem rendelkezik nyilvános konstruktorral, és most nem módosíthatók a tulajdonságait. Az új statikus metódusok többféle célra műveletek létrehozásához kell használnia: `Delete`, `Merge`, `MergeOrUpload`, és `Upload`. `IndexAction.Create`el lett távolítva. Ha csak egy dokumentumot a rendelkező túlterhelést, ügyeljen arra, hogy használjon `Upload` helyette.
+`IndexAction` már nem rendelkezik nyilvános konstruktorral, és most nem módosíthatók a tulajdonságait. Az új statikus metódusok többféle célra műveletek létrehozásához kell használnia: `Delete`, `Merge`, `MergeOrUpload`, és `Upload`. `IndexAction.Create` el lett távolítva. Ha csak egy dokumentumot a rendelkező túlterhelést, ügyeljen arra, hogy használjon `Upload` helyette.
 
 ##### <a name="example"></a>Példa
 Ha a kód így néz ki:
@@ -152,7 +148,7 @@ A `IndexesOperationsExtensions`:
 
 * Választható paraméterek: most már van modellezve, ahelyett, hogy a paraméterek alapértelmezett további metódus túlterhelések-nál. Ez csökkenti metódus túlterhelések, egyes esetekben jelentős mértékben.
 * A kiterjesztésmetódusok mostantól HTTP idegen részleteit a hívó számos elrejtése. Például az SDK régebbi verzióit objektumot adott vissza, a válasz a HTTP-állapotkódot, amelyek gyakran nem kell ellenőrizni, mert a művelet módszerek throw `CloudException` bármely status kód, amely jelzi a hiba. Az új kiterjesztésmetódusok csak térjen vissza a modell objektumait, így meg lehet spórolni a hiba, hogy azokat a kódban kicsomagolásához.
-* Ezzel ellentétben a core felületeihez most az olyan teszi közzé a módszereket, amelyek jobban irányítható HTTP szinten ha esetleg szükség lenne rá. Most továbbíthatja a kérelmeket, és az új szereplő egyéni HTTP-fejlécekben `AzureOperationResponse<T>` visszatérési típusa történő közvetlen hozzáférést biztosít a `HttpRequestMessage` és `HttpResponseMessage` a művelethez. `AzureOperationResponse`a van definiálva a `Microsoft.Rest.Azure` névtér és a felváltja `Hyak.Common.OperationResponse`.
+* Ezzel ellentétben a core felületeihez most az olyan teszi közzé a módszereket, amelyek jobban irányítható HTTP szinten ha esetleg szükség lenne rá. Most továbbíthatja a kérelmeket, és az új szereplő egyéni HTTP-fejlécekben `AzureOperationResponse<T>` visszatérési típusa történő közvetlen hozzáférést biztosít a `HttpRequestMessage` és `HttpResponseMessage` a művelethez. `AzureOperationResponse` a van definiálva a `Microsoft.Rest.Azure` névtér és a felváltja `Hyak.Common.OperationResponse`.
 
 #### <a name="scoringparameters-changes"></a>ScoringParameters módosítások
 Egy új osztályt `ScoringParameter` könnyebb paraméterek megadásához a profilok pontozási keresési lekérdezés az SDK legújabb hozzá lett adva. Korábban a `ScoringProfiles` tulajdonsága a `SearchParameters` osztály volt megadva, `IList<string>`; Most írta-e be `IList<ScoringParameter>`.
@@ -178,10 +174,10 @@ Módosíthatja a build hibák elhárításához:
 #### <a name="model-class-changes"></a>Modellmódosításokkal osztály
 A leírt aláírás-módosítások miatt [művelet metódus módosítások](#OperationMethodChanges), sok osztály a a `Microsoft.Azure.Search.Models` névtér átnevezték vagy eltávolítani. Példa:
 
-* `IndexDefinitionResponse`lett cserélve`AzureOperationResponse<Index>`
+* `IndexDefinitionResponse` lett cserélve `AzureOperationResponse<Index>`
 * A `DocumentSearchResponse` új nevet kapott: `DocumentSearchResult`
 * A `IndexResult` új nevet kapott: `IndexingResult`
-* `Documents.Count()`most adja vissza egy `long` a dokumentum számával, hanem egy`DocumentCountResponse`
+* `Documents.Count()` most adja vissza egy `long` a dokumentum számával, hanem egy `DocumentCountResponse`
 * A `IndexGetStatisticsResponse` új nevet kapott: `IndexGetStatisticsResult`
 * A `IndexListResponse` új nevet kapott: `IndexListResult`
 

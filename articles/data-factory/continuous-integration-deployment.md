@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f44d8cc48d6bfee909c04b20136cd2be6f828a0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6ad0f554161937a4fdb10179e2b310facbb91945
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integrációt és üzembe helyezés az Azure Data Factory
 
@@ -92,7 +92,7 @@ Az alábbiakban egy VSTS-Feloldás beállítása, úgy automatizálható, hogy e
 
     a.  Vegye fel a titkos kulcsok paraméterfájl:
 
-        -   Másolatot készít a paraméterfájlban a közzététel fiókirodai feltöltött, és adja meg a paraméterek le szeretné kérdezni a kulcstároló, az alábbi formátumban:
+       -   Másolatot készít a paraméterfájlban a közzététel fiókirodai feltöltött, és adja meg a paraméterek le szeretné kérdezni a kulcstároló, az alábbi formátumban:
 
         ```json
         {
@@ -102,24 +102,24 @@ Az alábbiakban egy VSTS-Feloldás beállítása, úgy automatizálható, hogy e
                         "keyVault": {
                             "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
                         },
-                        "secretName": " &lt secret - name &gt "
+                        "secretName": " < secret - name > "
                     }
-                }        
+                }
             }
         }
         ```
 
-        -   Ha ezt a módszert használja, a titkos kulcs van lekért a key vault automatikusan.
+       -   Ha ezt a módszert használja, a titkos kulcs van lekért a key vault automatikusan.
 
-        -   A paraméterek fájlnak kell lennie a közzététel ágában is.
+       -   A paraméterek fájlnak kell lennie a közzététel ágában is.
 
     b.  Adja hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault):
 
-        -   Válassza ki a **feladatok** lapra, hozzon létre egy új feladatot, keressen **Azure Key Vault** , és adja hozzá.
+       -   Válassza ki a **feladatok** lapra, hozzon létre egy új feladatot, keressen **Azure Key Vault** , és adja hozzá.
 
-        -   A Key Vault tevékenységhez, válassza ki az előfizetést, amelyben a kulcstartót létrehozó, adjon meg hitelesítő adatokat, ha szükséges, és válassza a a key vault.
+       -   A Key Vault tevékenységhez, válassza ki az előfizetést, amelyben a kulcstartót létrehozó, adjon meg hitelesítő adatokat, ha szükséges, és válassza a a key vault.
 
-            ![](media/continuous-integration-deployment/continuous-integration-image8.png)
+       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Adja hozzá az Azure Resource Manager központi telepítési feladatot:
 

@@ -1,26 +1,24 @@
 ---
-title: "Új verzió - Azure HDInsight HBase-fürtöt áttelepítése |} Microsoft Docs"
-description: "Hogyan telepítheti át a HBase-fürtökkel új verzióra."
+title: Új verzió - Azure HDInsight HBase-fürtöt áttelepítése |} Microsoft Docs
+description: Hogyan telepítheti át a HBase-fürtökkel új verzióra.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 15d23d0ccf816ca355103ad7fd0d6124f1c5c226
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 3ca982e7fc0ce56bee2ee2e193c82a78fac44362
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-an-hbase-cluster-to-a-new-version"></a>HBase-fürtöt egy új verziójára való áttérést
 
@@ -193,7 +191,7 @@ A következő forgatókönyv olyan 3.6 (egyaránt kapható Apache HBase 1.1.2) u
     
 4. Állítsa le a régi HBase fürt adatfeldolgozást.
 5. Győződjön meg arról, hogy a legutóbbi egyetlen megadott adattal sem a kérést kapott ki van ürítve, futtassa újra a korábbi parancsfájl.
-6. Ambari jelentkezzen be a régi fürtön (https://OLDCLUSTERNAME.azurehdidnsight.net), majd állítsa le a HBase-szolgáltatásokat. Győződjön meg arról, hogy szeretné-e leállítania a szolgáltatásokat kérő, jelölje be a jelölőnégyzetet, a HBase a karbantartási mód bekapcsolása. Csatlakozás és az Ambari használatával további információkért lásd: [kezelése HDInsight-fürtök az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md).
+6. Ambari jelentkezzen be a régi fürtön (https://OLDCLUSTERNAME.azurehdidnsight.net) és állítsa le a HBase-szolgáltatásokat. Győződjön meg arról, hogy szeretné-e leállítania a szolgáltatásokat kérő, jelölje be a jelölőnégyzetet, a HBase a karbantartási mód bekapcsolása. Csatlakozás és az Ambari használatával további információkért lásd: [kezelése HDInsight-fürtök az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md).
 
     ![A Ambari kattintson a szolgáltatások fülre, majd a bal oldali menüben HBase, majd a műveletek a szolgáltatás leállítása](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
 

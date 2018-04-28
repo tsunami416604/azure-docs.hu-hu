@@ -1,25 +1,25 @@
 ---
 title: Az Azure Active Directory v2.0 jogkivonatok referencia |} Microsoft Docs
-description: "A jogkivonatok és jogcímek különböző típusairól a Azure AD v2.0-végpontra által kibocsátott"
+description: A jogkivonatok és jogcímek különböző típusairól a Azure AD v2.0-végpontra által kibocsátott
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4a408fb40c976c6e06f00d074504de6a3ec29bd1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Az Azure Active Directory v2.0 jogkivonatok referenciái
 Az Azure Active Directory (Azure AD) v2.0-végponttól számos különböző típusú minden biztonsági jogkivonatokat bocsát ki [hitelesítési folyamat](active-directory-v2-flows.md). Ezt a hivatkozást a formátuma, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát ismerteti.
@@ -49,7 +49,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 ```
 
 > [!TIP]
-> Az eljárás az, vizsgálja meg a minta azonosító jogkivonatában lévő jogcímeket, illessze be a minta azonosító jogkivonatot [calebb.net](http://calebb.net/).
+> Az eljárás az, vizsgálja meg a minta azonosító jogkivonatában lévő jogcímeket, illessze be a minta azonosító jogkivonatot [jwt.ms](http://jwt.ms/).
 >
 >
 
@@ -62,7 +62,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Lejárati idő |`exp` |`1452289231` |Az idő, ahol a token érvénytelen, válik epoch időt jelöli. Az alkalmazás által használandó ezt az igényt a jogkivonatok élettartama érvényességének ellenőrzésére. |
 | Hatálybalépési idő |`nbf` |`1452285331` |Az idő, amelynél a jogkivonat hatályba lép, epoch időt jelöli. Ez megegyezik általában a kiállítási idő. Az alkalmazás által használandó ezt az igényt a jogkivonatok élettartama érvényességének ellenőrzésére. |
 | verzió: |`ver` |`2.0` |Az azonosító jogkivonatot, az Azure AD által definiált verzióját. A v2.0-végpontra értéke `2.0`. |
-| Bérlő azonosítója |`tid` |`b9419818-09af-49c2-b0c3-653adc1f376e` |Az, hogy a felhasználó az Azure AD-bérlő képviselő GUID. A munkahelyi és iskolai fiókok a GUID-azonosító, amely a felhasználó tagja a szervezet nem módosítható bérlői azonosító. A személyes fiókok értéke `9188040d-6c67-4c5b-b112-36a304b66dad`. A `profile` hatókör ezt az igényt fogadásához szükséges. |
+| bérlőazonosító |`tid` |`b9419818-09af-49c2-b0c3-653adc1f376e` |Az, hogy a felhasználó az Azure AD-bérlő képviselő GUID. A munkahelyi és iskolai fiókok a GUID-azonosító, amely a felhasználó tagja a szervezet nem módosítható bérlői azonosító. A személyes fiókok értéke `9188040d-6c67-4c5b-b112-36a304b66dad`. A `profile` hatókör ezt az igényt fogadásához szükséges. |
 | Kód kivonata |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |A kód kivonat csak akkor, ha a Azonosítót jogkivonatban kiadott OAuth 2.0 hitelesítési kóddal azonosító-jogkivonatokat szerepel. Az engedélyezési kód hitelességének használható. Ezen ellenőrzés végrehajtásával kapcsolatos részletekért lásd: a [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html). |
 | Hozzáférési jogkivonat kivonata |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |A hozzáférési token kivonatoló azonosító szerepel jogkivonatokat, csak ha az azonosító token kiadott olyan OAuth 2.0 hozzáférési jogkivonatot. A hozzáférési token hitelességének használható. Ezen ellenőrzés végrehajtásával kapcsolatos részletekért lásd: a [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html). |
 | Nonce |`nonce` |`12345` |Az egyszeri üzenet hitelesítési karakterláncok ismétlésének támadások kiküszöböléséhez stratégiát. Az alkalmazás megadhat egy nonce engedélyezési kérelmet használatával a `nonce` lekérdezési paraméter. Megadja a kérelemben szereplő érték is ki lesz adva a Azonosítót jogkivonatban `nonce` jogcím változtatás nélkül. Az alkalmazás ellenőrizheti, hogy az érték azt a kérelmet, amely összerendeli az alkalmazás munkamenet egyedi azonosítója jogkivonatok megadott értékkel. Az alkalmazás végre kell hajtania az ellenőrzés az azonosító jogkivonatok érvényesség-ellenőrzése során. |
@@ -73,9 +73,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | objektum azonosítója |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | A Microsoft identity rendszer ebben az esetben egy felhasználói fiókot az objektum nem módosítható azonosítója.  Azt is segítségével biztonságos és kulcsként az adatbázistáblákban levő engedélyezési ellenőrzéseket hajtanak végre. Ezt az Azonosítót egyedileg azonosítja a felhasználó alkalmazásra – két különböző alkalmazások az azonos felhasználói bejelentkezés fog kapni a ugyanazt az értéket a `oid` jogcímek.  Ez azt jelenti, hogy használható Microsoft online szolgáltatások, például a Microsoft Graph lekérdezések létrehozásakor.  A Microsoft Graph ezt az Azonosítót ad vissza a `id` tulajdonság egy adott felhasználói fiók.  Mivel a `oid` lehetővé teszi, hogy a felhasználók, összefüggéseket több alkalmazást a `profile` hatókör ezt az igényt fogadásához szükséges. Vegye figyelembe, hogy ha egy felhasználó több bérlő, a felhasználó fogja tartalmazni az egyes bérlők különböző Objektumazonosító - nek minősíti azokat külön fiókot annak ellenére, hogy a felhasználó bejelentkezik az egyes fiókokhoz azokkal a hitelesítő adatokkal. |
 
 ### <a name="access-tokens"></a>Hozzáférési jogkivonatok
-Jelenleg csak a Microsoft Services által igénybe vehető a v2.0-végpontra által kibocsátott jogkivonatot. Az alkalmazások végrehajtani az érvényesítés vagy a hozzáférési jogkivonatok vizsgálata a jelenleg támogatott esetek bármelyike nem szükséges. Hozzáférési jogkivonatok nem teljesen átlátszó, is kezelheti. Csak karakterláncok, amelyek az alkalmazás képes továbbadni a Microsoft a HTTP-kérelmek.
 
-A v2.0-végpontra is bevezeti, a közeljövőben, az alkalmazás hozzáférési jogkivonatok az egyéb ügyfelektől fogadott képességét. Idő lejárta után a hivatkozás a témakörben található információk fog frissülni, hogy az alkalmazás hozzáférési jogkivonatok érvényesség-ellenőrzése és más hasonló feladatok elvégzéséhez szükséges információkkal.
+A v2.0-végpontra lehetővé teszi, hogy a harmadik féltől származó alkalmazások és az Azure AD hozzáférési jogkivonatok a védett erőforrások, például webes API-k kiállítására regisztrált. Az alkalmazás hozzáférési jogkivonatokat kibocsátani, beállításával kapcsolatos további információkért lásd: [egy alkalmazás regisztrálása a v2.0-végponttal](active-directory-v2-app-registration.md). Az alkalmazás regisztrálása a v2.0-végpontra, akkor a fejlesztői hozzáférési nevű adhat meg **hatókörök**, amelyhez hozzáférési jogkivonatok kell kiállítani. Például a **calendars.read** a Microsoft Graph API-ban meghatározott hatókör engedélyt ad a felhasználói naptár olvasni. Amikor az alkalmazás hozzáférési tokent kap a v2.0-végpontra, ellenőrizni kell a jogkivonat aláírása, kibocsátó, célközönség, lejárati időt, és minden más jogcímet a forgatókönyvtől függően. 
 
 A v2.0-végpontra a kér le a hozzáférési tokent, ha a v2.0-végpontra is visszaadja a hozzáférési jogkivonat az alkalmazás használatára vonatkozó metaadatok. Ezen információk közé tartozik a lejárat időpontjának a hozzáférési jogkivonat és a hatókörök, amelyek esetében érvényes. Az alkalmazás intelligens gyorsítótárazás hozzáférési jogkivonatok nem kell elemezni, nyissa meg a hozzáférési jogkivonat maga végrehajtásához ezeket a metaadatokat használja.
 

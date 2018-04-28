@@ -2,23 +2,20 @@
 title: Ismerkedés a blob storage és a Visual Studio kapcsolódó szolgáltatások (webjobs-feladat projektek) |} Microsoft Docs
 description: Első lépések a Blob storage használata a webjobs-feladat projektben csatlakoztassa a Visual Studio használatával Azure-tárolóra kapcsolódó szolgáltatások.
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 60b25dd987e1b959a850614bf375ae434f2c0815
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4800d6ad0482462b9eccb72de34de56e4f7c370c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Blob storage és a Visual Studio csatlakoztatva (webjobs-feladat projektek) szolgáltatások
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -148,7 +145,7 @@ Az elhalt blobok várólista üzenet egy JSON-objektum, amely tartalmazza a köv
 * FunctionId (formátumú *{webjobs-feladat neve}*. Működik. *{Függvény neve}*, például: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" vagy "PageBlob")
 * ContainerName
-* BlobName
+* Blobnév
 * ETag (például egy blob verziójának azonosítója: "0x8D1DC6E70A277EF")
 
 Az alábbi példakódban az **CopyBlob** függvénynek kódot, amely azt eredményezi, hogy minden alkalommal, amikor a hívott sikertelen. Miután az SDK meghívja az újrapróbálkozások maximális számát, az elhalt blob várólista jön létre, egy üzenet, és üzenetet dolgoz fel a **LogPoisonBlob** függvény.

@@ -1,29 +1,28 @@
 ---
-title: "További tudnivalók az Azure AD v2.0 által támogatott hitelesítési protokollok |} Microsoft Docs"
-description: "Az Azure AD v2.0-végponttól által támogatott protokollok útmutatóját."
+title: További tudnivalók az Azure AD v2.0 által támogatott hitelesítési protokollok |} Microsoft Docs
+description: Az Azure AD v2.0-végponttól által támogatott protokollok útmutatóját.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
+ms.date: 04/22/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ce9a7cb14b933da23873d69e1f14a744d012a858
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 29d9e2d9ee05b755ef40179e0e75fb0c8a6b010b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoll - OAuth 2.0-s & OpenID Connect
-A v2.0-végpontra használhatja az Azure AD identity,--szolgáltatás az iparági szabványos protokollok, OpenID Connectet és az OAuth 2.0-s.  Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések vannak ezek a protokollok minden két közötti lehet.  Az adatok itt hasznos lesz, ha úgy dönt, hogy a kód írása útján tájékoztatjuk & kezelési HTTP-kérelmekre, vagy használja a 3. fél nyissa meg a forrás könyvtár, nem pedig a nyílt forráskódú szalagtárak egyikével.
-<!-- TODO: Need link to libraries above -->
+A v2.0-végpontra használhatja az Azure AD identity,--szolgáltatás az iparági szabványos protokollok, OpenID Connectet és az OAuth 2.0-s.  Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések vannak ezek a protokollok minden két közötti lehet.  Az adatok itt akkor lehet hasznos, ha úgy dönt, hogy a kód írása útján tájékoztatjuk & kezelése HTTP-kérelmek vagy a 3. fél nyílt forráskódú szalagtár helyett egyikével a [nyissa meg a forrás szalagtárak](active-directory-v2-libraries.md).
 
 > [!NOTE]
 > Nem minden Azure Active Directory forgatókönyvek és funkciók támogatják a v2.0-végponttól.  Annak meghatározásához, ha a v2.0-végponttal kell használnia, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).

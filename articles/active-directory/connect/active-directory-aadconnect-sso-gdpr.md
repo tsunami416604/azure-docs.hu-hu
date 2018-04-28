@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezést - GDPR megfelelőségi |} Microsoft Docs"
-description: "Ez a cikk az Azure Active Directory (Azure AD) zökkenőmentes egyszeri Bejelentkezéssel és GDPR megfelelőségi foglalkozik."
+title: Felhasználói adatok és az Azure AD zökkenőmentes egyszeri bejelentkezés |} Microsoft Docs
+description: Ez a cikk az Azure Active Directory (Azure AD) zökkenőmentes egyszeri Bejelentkezéssel és GDPR megfelelőségi foglalkozik.
 services: active-directory
-keywords: "Mi az Azure AD Connect GDPR, szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Mi az Azure AD Connect GDPR, szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,27 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: 0c7ed376accb1eed01106358491e925d3b8126c5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bffa5a3aa57c5b01e3361bc6fc6b284348707800
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-ad-seamless-single-sign-on-gdpr-compliance"></a>Az Azure AD zökkenőmentes egyszeri bejelentkezés: GDPR megfelelőségi
+# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Felhasználói adatok és az Azure AD zökkenőmentes egyszeri bejelentkezést.
+
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-A lehetséges, hogy 2018, az európai adatvédelmi törvény, a [általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm), esedékes érvénybe léptetéséhez. A GDPR támaszt a vállalatok, állami intézményekhez, nem nyereség és más szervezetekkel, hogy az ajánlat termékek és szolgáltatások vállalatoknál az Európai Unió, vagy ha az adatgyűjtés és -elemzés EU lakosai kötve új szabályokat. A GDPR elhelyezkedő függetlenül érvényes. 
-
-Microsoft-termékek és szolgáltatások elérhetők ma segítséget nyújtanak a GDPR követelményeknek. További információk a Microsoft Privacy Policy házirend [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
 
 Az Azure AD zökkenőmentes SSO hoz létre a következő napló típus, amely tartalmazhat EUII:
 
 - Az Azure AD Connect nyomkövetésének naplófájljait.
 
-Zökkenőmentes SSO GDPR megfelelőségének kétféleképpen érhető el:
+A zökkenőmentes egyszeri Bejelentkezéses felhasználói adatvédelmi megfelelőségét kétféleképpen érhető el:
 
 1.  Kérésre adatok kinyerése a személy, és adatok eltávolítása a telepítések az adott személyt.
 2.  Győződjön meg arról, 48 órával adatot nem őrződnek meg.
@@ -65,6 +64,6 @@ További részletek kapcsolódó az Azure AD Connect GDPR követelmények, lásd
 Ha naplózás engedélyezve van, a a termék hoz létre a biztonsági naplók a tartományvezérlők. Naplózási házirendek konfigurálásával kapcsolatos további tudnivalókért olvassa el ezt [cikk](https://technet.microsoft.com/library/dd277403.aspx).
 
 ## <a name="next-steps"></a>További lépések
-
+* [Tekintse át a Microsoft Privacy házirendet, a biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
 - [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-sso.md) -Útmutató: a szolgáltatással kapcsolatos gyakori problémák megoldása.
 - [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkciókérések tárolásához.

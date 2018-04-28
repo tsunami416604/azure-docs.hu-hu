@@ -1,8 +1,8 @@
 ---
-title: "Nagy mennyiségű adatok feltöltése a Data Lake Store kapcsolat nélküli módszerrel |} Microsoft Docs"
-description: "Adatok másolása az Azure Storage blobs Data Lake store a AdlCopy eszközzel"
+title: Nagy mennyiségű adatok feltöltése a Data Lake Store kapcsolat nélküli módszerrel |} Microsoft Docs
+description: Adatok másolása az Azure Storage blobs Data Lake store a AdlCopy eszközzel
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8dd20d0cf7f202b5d5fdeffb5848235e73eb9349
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ee6f4ab1ac5892536d7f419c198158dc34d6f49e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Data Lake Store-adatok offline példányát az Azure Import/Export szolgáltatás használata
 Ebből a cikkből megtudhatja, hogyan hatalmas adatok másolása (> 200 GB-os) azokat az Azure Data Lake Store módszerrel offline másolat, például a [Azure Import/Export szolgáltatás](../storage/common/storage-import-export-service.md). Pontosabban ebben a cikkben példa fájl 339,420,860,416 bájt vagy körülbelül 319 GB-TAL a lemezen. Most hívja meg a fájl 319GB.tsv.
@@ -195,7 +195,7 @@ A fájl, 319 GB, és úgy, hogy az Azure Import/Export szolgáltatás használat
 
 ````
 # Login to our account
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # List your subscriptions
 Get-AzureRmSubscription

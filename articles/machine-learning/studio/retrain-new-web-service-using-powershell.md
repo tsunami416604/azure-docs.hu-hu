@@ -14,20 +14,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 7fa93e138bc9feb66c200597119bb12dbaf00480
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 865243a10bd5043ca04c392c043b37772271f68f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>A Machine Learning Management PowerShell-parancsmagok használatával egy új erőforrás-kezelő alapú webszolgáltatás újratanítása
-Ha újratanítása egy új webszolgáltatás-bővítmény, frissítenie kell hivatkoznia, az új betanított modell a prediktív webszolgáltatás-definíciójának.  
+Ha újratanítása egy új webszolgáltatás-bővítmény, frissítenie kell hivatkoznia, az új betanított modell a prediktív webszolgáltatás-definíciójának.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Be kell állítania egy tanítási kísérletet, és egy prediktív kísérletté látható módon [Machine Learning-modellek szoftveres](retrain-models-programmatically.md). 
+Be kell állítania egy tanítási kísérletet, és egy prediktív kísérletté látható módon [Machine Learning-modellek szoftveres](retrain-models-programmatically.md).
 
 > [!IMPORTANT]
-> A prediktív kísérletté tanulás webszolgáltatás Azure Resource Manager (új) alapú gépként kell telepíteni. Egy új webszolgáltatás-bővítmény telepítése, megfelelő engedélyekkel kell rendelkeznie, amelyhez az előfizetést, a webszolgáltatás telepítése. További információkért lásd: [kezelése az Azure Machine Learning webszolgáltatások portál használatával egy webszolgáltatás-bővítmény](manage-new-webservice.md). 
+> A prediktív kísérletté tanulás webszolgáltatás Azure Resource Manager (új) alapú gépként kell telepíteni.
+> Egy új webszolgáltatás-bővítmény telepítése, megfelelő engedélyekkel kell rendelkeznie, amelyhez az előfizetést, a webszolgáltatás telepítése. További információkért lásd: [kezelése az Azure Machine Learning webszolgáltatások portál használatával egy webszolgáltatás-bővítmény](manage-new-webservice.md).
 
 A web Services további információkért lásd: [központi telepítése az Azure Machine Learning webszolgáltatás](publish-a-machine-learning-web-service.md).
 
@@ -48,7 +49,7 @@ Lépései a következők:
 6. A webszolgáltatás új webszolgáltatás-definíciójának frissítése
 
 ## <a name="sign-in-to-your-azure-resource-manager-account"></a>Jelentkezzen be az Azure Resource Manager-fiókba
-Ön először be kell jelentkeznie Azure-fiókjába a belül a PowerShell környezet használatával a [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) parancsmag.
+Ön először be kell jelentkeznie Azure-fiókjába a belül a PowerShell környezet használatával a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmag.
 
 ## <a name="get-the-web-service-definition"></a>A webszolgáltatás-definíciójának beolvasása
 A következő beolvasni a webszolgáltatás meghívásával a [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) parancsmag. A webszolgáltatás-definíciójának a betanított modell webszolgáltatás belső másolatát, és nincs közvetlen módosítható. Győződjön meg arról, hogy vannak-e a webszolgáltatás-definíciójának beolvasása a prediktív kísérletté és nem a tanítási kísérletet.

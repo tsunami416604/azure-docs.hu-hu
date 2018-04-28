@@ -1,8 +1,8 @@
 ---
-title: "Alkalmazások kezelése az Azure Active Directory |} Microsoft Docs"
-description: "Ez a cikk az Azure Active Directory integrálása a helyszíni, felhő- és SaaS-alkalmazásokhoz előnyei."
+title: Alkalmazások kezelése az Azure Active Directory |} Microsoft Docs
+description: Ez a cikk az Azure Active Directory integrálása a helyszíni, felhő- és SaaS-alkalmazásokhoz előnyei.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 95b96f10-2d5c-4b78-8af8-d3657a24140f
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: f4035e4c1ef2bc78256ed842bc4b1ac65ecf8b53
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: c6f01a16f5f60193c81a03a7374649f87eeb270a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Alkalmazások kezelése az Azure Active Directoryban
 A tényleges munkafolyamat vagy a tartalom túl vállalatok rendelkeznek összes alkalmazás két alapvető követelményei:
@@ -111,5 +111,6 @@ Az Azure ad-val biztonságossá teheti az alkalmazások részletes hozzáférés
 Első lépésként alkalmazások integrálása az Azure ad-vel, vessen egy pillantást a [integrálása Azure Active Directory és az alkalmazások első lépések útmutató](active-directory-integrating-applications-getting-started.md).
 
 ## <a name="see-also"></a>Lásd még
-[Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
+[Index a következő cikket: az Azure Active Directoryban Alkalmazáskezelés](active-directory-apps-index.md)
+[részletes telepítési tervét az egyszeri bejelentkezés az SaaS-alkalmazáshoz](http://aka.ms/ssodeploymentplan)
 

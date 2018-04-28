@@ -1,53 +1,55 @@
 ---
-title: Bevezetés az Azure Storage használatába | Microsoft Docs
-description: Bevezetés az Azure Storage, a Microsoft felhőalapú adattároló szolgáltatásának használatába.
+title: Bevezetés az Azure Storage használatába – Felhőalapú tárolás az Azure-ban | Microsoft Docs
+description: Az Azure Storage a Microsoft felhőalapú tárolási megoldása. Az Azure Storage magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns adatobjektum-tárolást biztosít.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 03/06/2018
+ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 18a8065bba8a4a0ec2025d6b9134fe9fab21eb5f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 071b209ffa8ffeb8ef6d998f08bcd68868e29911
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
+# <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
-A Microsoft Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, méretezhető és redundáns tárolást tesz lehetővé. A karbantartást és a kritikus problémák kezelését a Microsoft végzi el Önnek.
+Az Azure Storage a Microsoft felhőalapú tárolási megoldása a modern adattárolási forgatókönyvekhez. Az Azure Storage az adatobjektumok nagymértékben skálázható objektumtárolását, a felhő fájlrendszer-szolgáltatását, a megbízható üzenetküldést elősegítő üzenettárolást és egy NoSQL-tárolót biztosít. Az Azure Storage:
 
-Az Azure Storage a következő három adatszolgáltatást tartalmazza: Blob Storage, File Storage és Queue Storage. A Blob Storage standard és prémium szintű tárolást is kínál – a prémium tárolás kizárólag SSD meghajtókon történik a lehető leggyorsabb teljesítmény biztosítása érdekében. Egy másik szolgáltatás a ritkán használt adatok tárolása, amelynek keretében az ilyen adatok nagy mennyiségben tárolhatók alacsony költségek mellett.
+- **Tartós és magas rendelkezésre állású.** A redundancia biztosítja az adatok biztonságát átmeneti hardverhiba esetén. Az adatközpontok vagy földrajzi helyek adatait replikálhatja is a helyi vagy természeti katasztrófák elleni további védelem érdekében. Az így replikált adatok magas rendelkezésre állásúak maradnak váratlan meghibásodás esetén is. 
+- **Biztonságos.** A szolgáltatás titkosítja az Azure Storage tárterületre írt összes adatot. Az Azure Storage használatával részletesen szabályozhatja, hogy ki férhet hozzá az adatokhoz.
+- **Skálázható.** Az Azure Storage nagymértékben skálázható, hogy megfeleljen a mai alkalmazások adattárolási és teljesítménybeli igényeinek. 
+- **Felügyelt.** A karbantartást és a kritikus problémák kezelését a Microsoft Azure végzi el Ön helyett.
+- **Hozzáférhető.** Az Azure Storage tárterületen lévő adatok a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül. A Microsoft számos nyelven (például .NET, Java, Node.js, Python, PHP, Ruby és Go) nyújt SDK-kat az Azure Storage-hoz, valamint egy kifinomult REST API-t is biztosít. Az Azure Storage támogatja az Azure PowerShell és az Azure CLI szkriptjeit. Az Azure Portal és az Azure Storage Explorer emellett egyszerű vizuális megoldásokat nyújt az adatok használatához.  
 
-Ebben a cikkben megismerkedhet a következőkkel:
-* az Azure Storage szolgáltatásai,
-* a tárfiókok típusai,
-* a blobokhoz, üzenetsorokhoz és fájlokhoz való hozzáférés módjai,
-* titkosítás
-* replikáció,
-* az adatok a tárolóba vagy a tárolóból való áthelyezése,
-* valamint a számos elérhető Storage ügyfélkódtár.
+## <a name="azure-storage-services"></a>Azure Storage-szolgáltatások
 
-Az Azure Storage gyors üzembe helyezéséhez lásd a [tárfiók létrehozásával](storage-quickstart-create-account.md) foglalkozó témakört.
+Az Azure Storage ezeket az adatszolgáltatásokat tartalmazza: 
 
-## <a name="introducing-the-azure-storage-services"></a>Az Azure Storage szolgáltatásainak bemutatása
+- [Azure Blobs](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló a szöveges és bináris adatokhoz.
+- [Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztások felhőalapú vagy helyszíni üzemelő példányokhoz.
+- [Azure Queues](../queues/storage-queues-introduction.md): Az alkalmazások összetevői között megbízható üzenetkezelést biztosító üzenettároló. 
+- [Azure Tables](../../cosmos-db/table-storage-overview.md): A strukturált adatok séma nélküli tárolására szolgáló NoSQL-tároló.
 
-Az Azure Storage által biztosított szolgáltatások – Blob Storage, File Storage és Queue Storage – használatához először létre kell hoznia egy tárfiókot, majd ezután azon a fiókon belül viheti át az adatait egy adott szolgáltatásba, illetve a szolgáltatásból máshová.
+Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként lásd: [Tárfiók létrehozása](storage-quickstart-create-account.md).
 
 ## <a name="blob-storage"></a>Blob Storage
 
-A blobok lényegében ugyanolyan fájlok, mint amilyeneket a számítógépén (vagy táblagépén, mobileszközén stb.) is tárol. Lehetnek képek, Microsoft Excel-fájlok, HTML-fájlok, virtuális merevlemezek (VHD-k), big data (például naplók), vagy adatbázisok biztonsági másolatai – lényegében szinte bármi. A blobok tárolása tárolókban történik, amelyek a mappákhoz hasonlatosak.
+Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. A Blob Storage nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adatok tárolására van optimalizálva. 
 
-A fájlok Blob Storage tárolóban való elhelyezése után a világ bármely pontjáról elérheti azokat URL-címek, a REST-felület vagy az Azure SDK-tároló ügyfélkódtárai használatával. A tárolók ügyfélkódtárai több nyelvhez, köztük a Node.js, a Java, a PHP, a Ruby, a Python és a .NET nyelvekhez is elérhetők.
+A Blob Storage a következőkhöz ideális:
 
-A bloboknak három típusa létezik: a blokkblobok, a lapblobok (ezek a VHD-fájlokhoz használatosak) és a hozzáfűző blobok.
+* Képek vagy dokumentumok közvetlen szolgáltatása a böngészők számára.
+* Fájlok tárolása megosztott hozzáféréshez.
+* Video- és hangtartalom streamelése.
+* Adattárolás biztonsági mentésekhez és helyreállításhoz, vészhelyreállításhoz és archiváláshoz.
+* Adattárolás helyszíni vagy az Azure-ban üzemeltetett szolgáltatásban való elemzéshez.
 
-* A blokkblobokban hagyományos fájlok tárolhatók legfeljebb nagyjából 4,7 TB méretig.
-* A lapblobokban közvetlen elérésű fájlok tárolhatók legfeljebb 8 TB méretig. Ezek a virtuális gépek alapját képező VHD-fájlokhoz használatosak.
-* A hozzáfűző blobok a blokkblobokhoz hasonlóan blokkokból állnak, azonban a hozzáfűzési műveletekhez vannak optimalizálva. Ezek például több virtuális gép adatainak egyazon blobba történő naplózására használhatók.
+A Blob Storage tárolóban lévő objektumok a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül. A felhasználók vagy ügyfélalkalmazások URL-eken, az [Azure Storage REST API-n](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), az [Azure PowerShellen](https://docs.microsoft.com/powershell/module/azure.storage), az [Azure CLI-n](https://docs.microsoft.com/cli/azure/storage) vagy Azure Storage-ügyfélkódtárakon keresztül érhetik el a blobokat. A tároló ügyfélkódtárai több nyelven érhetők el, beleértve a [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/en/latest/index.html), [PHP](http://azure.github.io/azure-storage-php/) és [Ruby](http://azure.github.io/azure-storage-ruby) nyelveket.
 
-A nagy adatkészleteknél, ahol a hálózati korlátok miatt irreális lenne az adatok vezetékes le- vagy feltöltése a Blob Storage-ba, elküldhet a Microsoftnak egy teljes merevlemez-készletet, hogy az adatokat közvetlenül az adatközpontból importálják vagy oda exportálják. Lásd: [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage](../storage-import-export-service.md) (A Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob Storage-ba).
+További információ a Blob Storage-ról: [Bevezetés az Azure-alapú objektumtárolás használatába](../blobs/storage-blobs-introduction.md).
 
 ## <a name="azure-files"></a>Azure Files
 Az [Azure Files](../files/storage-files-introduction.md) segítségével magas rendelkezésre állású hálózati fájlmegosztásokat hozhat létre, amelyek az SMB protokollon keresztül érhetőek el. Ez azt jelenti hogy ugyanazokhoz a fájlokhoz több virtuális gép is hozzáférhet olvasási és írási jogosultsággal. A fájlokat a REST-felület vagy a Storage klienskódtáraival is olvashatja.
@@ -64,15 +66,21 @@ A fájlmegosztások számos gyakori forgatókönyvhöz használhatók:
 
 Jelenleg az Active Directory-alapú hitelesítés és a hozzáférés-vezérlési listák (ACL-ek) még nem támogatottak, azonban a későbbiekben ez is megvalósul majd. A fájlmegosztáshoz való hozzáférés a tárfiók hitelesítő adataival hitelesíthető. Ez azt jelenti, hogy bárki, akinél a fájlmegosztás csatlakoztatva van, teljes írási/olvasási jogosultsággal rendelkezik rajta.
 
+További információ az Azure Filesról: [Bevezetés az Azure Files használatába](../files/storage-files-introduction.md).
+
 ## <a name="queue-storage"></a>Queue Storage
 
 Az Azure Queue szolgáltatás üzenetek tárolására és lehívására használható. Az üzenetsor üzenetei egyenként legfeljebb 64 KB méretűek lehetnek, és az üzenetsor akár több millió üzenetet is tartalmazhat. Az üzenetsorok általában aszinkron feldolgozásra szánt üzenetek listáit tárolják.
 
 Tegyük fel például, hogy biztosítani szeretné az ügyfelei számára, hogy képeket tölthessenek fel, az egyes képekhez pedig miniatűröket szeretne létrehozni. Választhatná azt, hogy az ügyfeleknek a feltöltéskor várniuk kelljen a miniatűrök létrehozására. Alternatív megoldásként azonban használhat üzenetsort is. Amint az ügyfél befejezte a feltöltést, írjon egy üzenetet az üzenetsorba. Ezután egy Azure-függvénnyel hívja le az üzenetet az üzenetsorból, és hozza létre a miniatűrt. Ennek az eljárásnak minden egyes része külön méretezhető, és így szabadabban hangolhatja a felhasználási céloknak megfelelően.
 
+További információ az Azure Queuesról: [Bevezetés az Azure Queues használatába](../queues/storage-queues-introduction.md).
+
 ## <a name="table-storage"></a>Table Storage
 
 Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Storage dokumentációját lásd: [Az Azure Table Storage áttekintése](../../cosmos-db/table-storage-overview.md). A meglévő Azure Table Storage-szolgáltatáson kívül elérhető egy új Azure Cosmos DB Table API-ajánlat, amely teljesítményoptimalizált táblákat, globális elosztást és automatikus másodlagos indexeket is biztosít. Ha további információra van szüksége, vagy szeretné kipróbálni az új prémium ajánlatot, tekintse meg az [Azure Cosmos DB Table API](https://aka.ms/premiumtables)-t ismertető cikket.
+
+További információ a Table Storage-ról: [Az Azure Table Storage áttekintése](../../cosmos-db/table-storage-overview.md).
 
 ## <a name="disk-storage"></a>Lemezes tárolás
 
@@ -167,101 +175,33 @@ Az Azure Storage díjszabásával kapcsolatos részletes információkért lásd
 ## <a name="storage-apis-libraries-and-tools"></a>Storage API-k, kódtárak és eszközök
 Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyekkel HTTP/HTTPS kérelmek indíthatók. Ezenfelül az Azure Storage számos népszerű nyelvhez biztosít programozási kódtárakat. Ezek a kódtárak sok szempontból leegyszerűsítik az Azure Storage használatát, mivel számos részletet kezelnek (például a szinkron és aszinkron hívás, műveletek kötegelése, kivételek kezelése, automatikus újrapróbálkozások, működési viselkedés stb.). Jelenleg a következő nyelvekhez és platformokhoz érhetők el kódtárak (a továbbiak összeállítása folyamatban):
 
-### <a name="azure-storage-data-services"></a>Azure Storage-adatszolgáltatások
-* [A Storage szolgáltatások REST API-ja](/rest/api/storageservices/)
-* [A Storage ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/?view=azurestorage-8.1.1)
+### <a name="azure-storage-data-api-and-library-references"></a>Az Azure Storage adat API-ja és kódtárhivatkozásai
+* [A Storage szolgáltatások REST API-ja](https://docs.microsoft.com/rest/api/storageservices/)
+* [A Storage ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+* [A Storage ügyféloldali kódtára a Javához/Androidhoz](https://docs.microsoft.com/java/api/overview/azure/storage)
+* [A Storage ügyféloldali kódtára a Node.js-hez](https://docs.microsoft.com/en-us/javascript/api/azure-storage)
+* [A Storage ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-storage-python)
+* [A Storage ügyféloldali kódtára a PHP-hez](https://github.com/Azure/azure-storage-php)
+* [A Storage ügyféloldali kódtára a Rubyhoz](https://github.com/Azure/azure-storage-ruby)
 * [A Storage ügyféloldali kódtára a C++ programnyelvhez](https://github.com/Azure/azure-storage-cpp)
-* [A Storage ügyféloldali kódtára a Javához/Androidhoz](https://azure.microsoft.com/develop/java/)
-* [A Storage ügyféloldali kódtára a Node.js-hez](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [A Storage ügyféloldali kódtára a PHP-hez](https://azure.microsoft.com/develop/php/)
-* [A Storage ügyféloldali kódtára a Pythonhoz](https://azure.microsoft.com/develop/python/)
-* [A Storage ügyféloldali kódtára a Rubyhoz](https://azure.microsoft.com/develop/ruby/)
-* [Storage-parancsmagok a PowerShellhez](/powershell/module/azure.storage/?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)
-* [Storage-parancsok a CLI 2.0-hoz](/cli/azure/storage)
+
+### <a name="azure-storage-management-api-and-library-references"></a>Az Azure Storage felügyeleti API-ja és kódtárhivatkozásai
+* [A Storage erőforrás-szolgáltató REST API-ja](https://docs.microsoft.com/rest/api/storagerp/)
+* [Storage erőforrás-szolgáltató ügyfél a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage/management)
+* [A Storage szolgáltatásfelügyelet REST API-ja](https://msdn.microsoft.com/library/azure/ee460790.aspx)
+
+### <a name="azure-storage-data-movement-api-and-library-references"></a>Az Azure Storage adatátviteli API-ja és kódtárhivatkozásai
+* [A Storage Import/Export szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/storageimportexport/)
+* [A Storage adatátviteli ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)
+
+### <a name="tools-and-utilities"></a>Eszközök és segédprogramok
+* [Azure PowerShell-parancsmagok a Storage-hoz](https://docs.microsoft.com/powershell/module/azure.storage)
+* [Azure CLI-parancsmagok a Storage-hoz](https://docs.microsoft.com/cli/azure/storage)
+* [AzCopy parancssori segédprogram](http://aka.ms/downloadazcopy)
+* Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a Microsoft ingyenes, önálló alkalmazása, amellyel vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
+* [Azure Storage-ügyféleszközök](../storage-explorers.md)
+* [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/)
 
 ## <a name="next-steps"></a>További lépések
 
-* [További tudnivalók a Blob Storage-ról](../blobs/storage-blobs-introduction.md)
-* [További tudnivalók a File Storage-ról](../storage-files-introduction.md)
-* [További tudnivalók a Queue Storage-ról](../queues/storage-queues-introduction.md)
-
 Az Azure Storage gyors üzembe helyezéséhez lásd a [tárfiók létrehozásával](storage-quickstart-create-account.md) foglalkozó témakört.
-
-<!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
-
-Azure Storage resources can be accessed by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for the following languages and platforms, with others in the pipeline:
-
-### Azure Storage data services
-* [Storage Services REST API](https://docs.microsoft.com/rest/api/storageservices/)
-* [Storage Client Library for .NET](https://docs.microsoft.com/dotnet/api/?view=azurestorage-8.1.1)
-* [Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp)
-* [Storage Client Library for Java/Android](https://azure.microsoft.com/develop/java/)
-* [Storage Client Library for Node.js](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [Storage Client Library for PHP](https://azure.microsoft.com/develop/php/)
-* [Storage Client Library for Python](https://azure.microsoft.com/develop/python/)
-* [Storage Client Library for Ruby](https://azure.microsoft.com/develop/ruby/)
-* [Storage Cmdlets for PowerShell](/powershell/module/azure.storage/?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)
-
-### Azure Storage management services
-* [Storage Resource Provider REST API Reference](/rest/api/storagerp/)
-* [Storage Resource Provider Client Library for .NET](/dotnet/api/microsoft.azure.management.storage)
-* [Storage Resource Provider Cmdlets for PowerShell 1.0](/powershell/module/azure.storage)
-* [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
-
-### Azure Storage data movement services
-* [Storage Import/Export Service REST API](../storage-import-export-service.md)
-* [Storage Data Movement Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
-
-### Tools and utilities
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.
-* [Azure Storage Client Tools](../storage-explorers.md)
-* [Azure SDKs and Tools](https://azure.microsoft.com/tools/)
-* [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](/powershell/azure/overview)
-* [AzCopy Command-Line Utility](http://aka.ms/downloadazcopy)
-
-## Next steps
-To learn more about Azure Storage, explore these resources:
-
-### Documentation
-* [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
-* [Create a storage account](../storage-create-storage-account.md)
-
--->
-
-### <a name="for-administrators"></a>Rendszergazdáknak
-* [Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)](storage-powershell-guide-full.md)
-* [Using the Azure CLI with Azure Storage (Az Azure CLI és az Azure Storage együttes használata)](../storage-azure-cli.md)
-
-### <a name="for-net-developers"></a>.NET-fejlesztőknek
-* [Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel](../blobs/storage-dotnet-how-to-use-blobs.md)
-* [Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel](../files/storage-dotnet-how-to-use-files.md)
-* [Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel](../storage-dotnet-how-to-use-queues.md)
-
-### <a name="for-javaandroid-developers"></a>Java/Android-fejlesztőknek
-* [How to use Blob storage from Java (A Blob Storage használata Javával)](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Fejlesztés az Azure Files szolgáltatáshoz Javával](../files/storage-java-how-to-use-file-storage.md)
-* [How to use Table storage from Java (A Table Storage használata Javával)](../../cosmos-db/table-storage-how-to-use-java.md)
-* [How to use Queue Storage from Java (A Queue Storage használata Javával)](../storage-java-how-to-use-queue-storage.md)
-
-### <a name="for-nodejs-developers"></a>Node.js-fejlesztőknek
-* [How to use Blob storage from Node.js (A Blob Storage használata Node.js-sel)](../blobs/storage-nodejs-how-to-use-blob-storage.md)
-* [How to use Table storage from Node.js (A Table Storage használata Node.js-sel)](../../cosmos-db/table-storage-how-to-use-nodejs.md)
-* [How to use Queue storage from Node.js (A Queue Storage használata Node.js-sel)](../storage-nodejs-how-to-use-queues.md)
-
-### <a name="for-php-developers"></a>PHP-fejlesztőknek
-* [How to use Blob storage from PHP (A Blob Storage használata PHP-val)](../blobs/storage-php-how-to-use-blobs.md)
-* [How to use Table storage from PHP (A Table Storage használata PHP-val)](../../cosmos-db/table-storage-how-to-use-php.md)
-* [How to use Queue storage from PHP (A Queue Storage használata PHP-val)](../storage-php-how-to-use-queues.md)
-
-### <a name="for-ruby-developers"></a>Ruby-fejlesztőknek
-* [How to use Blob storage from Ruby (A Blob Storage használata Rubyval)](../blobs/storage-ruby-how-to-use-blob-storage.md)
-* [How to use Table storage from Ruby (A Table Storage használata Rubyval)](../../cosmos-db/table-storage-how-to-use-ruby.md)
-* [How to use Queue storage from Ruby (A Queue Storage használata Rubyval)](../storage-ruby-how-to-use-queue-storage.md)
-
-### <a name="for-python-developers"></a>Python-fejlesztőknek
-* [How to use Blob storage from Pythonnal (A Blob Storage használata Pythonnal)](../blobs/storage-python-how-to-use-blob-storage.md)
-* [Fejlesztés az Azure Files szolgáltatáshoz Pythonnal](../files/storage-python-how-to-use-file-storage.md)
-* [How to use Table storage from Python (A Table Storage használata Pythonnal)](../../cosmos-db/table-storage-how-to-use-python.md)
-* [How to use Queue storage from Python (A Queue Storage használata Pythonnal)](../storage-python-how-to-use-queue-storage.md)

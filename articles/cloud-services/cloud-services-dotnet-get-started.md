@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel | Microsoft Docs"
-description: "Ismerje meg, hogyan hozhat létre többrétegű alkalmazást az ASP.NET MVC és az Azure használatával. Az alkalmazás felhőszolgáltatásban fut webes és feldolgozói szerepkörben. Entity Framework, SQL Database és Azure Storage üzenetsorokat és blobokat használ."
+title: Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre többrétegű alkalmazást az ASP.NET MVC és az Azure használatával. Az alkalmazás felhőszolgáltatásban fut webes és feldolgozói szerepkörben. Entity Framework, SQL Database és Azure Storage üzenetsorokat és blobokat használ.
 services: cloud-services, storage
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d7aa440d-af4a-4f80-b804-cc46178df4f9
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 704391a60b4ba777b8fd2b156db2ea5587498383
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d092f5f6c59351530941d47565ee2c4905ddd2e7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -34,8 +34,8 @@ Ez az alkalmazás egy hirdetőtábla. A felhasználók szöveg megadásával és
 
 Az alkalmazás [üzenetsor-központú munkasémát](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használ, hogy áthelyezze a miniatűrök létrehozásának processzorigényes feladatát egy háttérfolyamatra.
 
-## <a name="alternative-architecture-websites-and-webjobs"></a>Alternatív architektúra: Websites és WebJobs
-Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Alternatív megoldásként az előtér-alkalmazást futtathatja egy [Azure-webhelyen](/services/web-sites/), a háttéralkalmazás esetében pedig használhatja a [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) szolgáltatást (jelenleg előzetes verzióban érhető el). A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvéhez leginkább illő szolgáltatások kiválasztásával kapcsolatos információkért lásd: [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése](../app-service/choose-web-site-cloud-service-vm.md).
+## <a name="alternative-architecture-web-apps-and-webjobs"></a>Alternatív architektúra: Web Apps és WebJobs
+Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Alternatív megoldásként az előtér-alkalmazást futtathatja egy [Azure Web Apps](/azure/app-service/)-webalkalmazásban, a háttéralkalmazás esetében pedig használhatja a [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) szolgáltatást. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvéhez leginkább illő szolgáltatások kiválasztásával kapcsolatos információkért lásd: [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Ismertetett témák
 * A gép alkalmassá tétele az Azure-alapú fejlesztésre az Azure SDK telepítésével.

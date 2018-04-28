@@ -1,12 +1,12 @@
 ---
-title: "Töltse le a Piactéri elemek az Azure-ból |} Microsoft Docs"
-description: "A saját Azure Alkalmazásveremben üzembe az Azure-ból letölthető Piactéri elemek."
+title: Töltse le a Piactéri elemek az Azure-ból |} Microsoft Docs
+description: A saját Azure Alkalmazásveremben üzembe az Azure-ból letölthető Piactéri elemek.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
-ms.translationtype: MT
+ms.openlocfilehash: c7d28831edf028657b7dd2a6a404a692a4a3bcb0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Töltse le a Piactéri elemek az Azure-ból az Azure-verem
 
@@ -62,7 +62,7 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
 
 1. Nyissa meg rendszergazdaként a PowerShell-konzolban és [Azure verem adott PowerShell-modulok telepítése](azure-stack-powershell-install.md). Győződjön meg arról, hogy telepítse **PowerShell 1.2.11 verzió vagy újabb**.  
 
-2. Adja hozzá az Azure-fiókot regisztrálni Azure verem használt. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmag paraméter nélkül. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2-factor authentication használatával.  
+2. Adja hozzá az Azure-fiókot regisztrálni Azure verem használt. A fiók hozzáadásához futtassa a **Connect-AzureRmAccount** parancsmag paraméter nélkül. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2-factor authentication használatával.  
 
 3. Ha több előfizetéssel rendelkezik, a következő paranccsal válassza ki, amelyiket a regisztrációhoz használja:  
 

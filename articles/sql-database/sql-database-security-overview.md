@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 6a66c9fe3716935a717dca984d1995ca371d9499
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: b45e1434d648096a67c2f12046960926d2c7640d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-your-sql-database"></a>Az SQL Database-adatbázis védelme
 
@@ -39,7 +39,7 @@ Az adatok titkosításának egyéb módjaira vonatkozóan fontolja meg az alább
 Felderítési adatok & besorolás (jelenleg előzetes verzió) Azure SQL Database beépített felderítésével, zárolásának, címkézés és az adatbázisok a bizalmas adatok védelmének speciális funkciókat biztosít. Felderítésének, illetve a lehető legnagyobb mértékben bizalmas adatok zárolásának (üzleti/pénzügyi, egészségügyi, személyazonosításra alkalmas adatok, stb.) is döntő szerepet játszanak a szervezeti adatokat védelmi stature. Az infrastruktúra lehetnek:
 
 - Különféle biztonsági forgatókönyvek, például a figyelési (naplózás), és riasztást küld rendellenes bizalmas adatokhoz való hozzáférést.
-- Való hozzáférés vezérlése, és nagyon érzékeny adatokat tartalmazó adatbázisok biztonsági korlátozására.
+- Való hozzáférés vezérlése, és korlátozására, biztonságát adatbázist tartalmazó nagyon érzékeny adatokat.
 - Gondoskodik az adatok adatvédelmi szabványok és az előírásoknak való megfelelés igényeinek megfelelő.
 
 További információkért lásd: [Ismerkedés az SQL DB adatok felderítési & besorolás](sql-database-data-discovery-and-classification.md). 
@@ -66,7 +66,7 @@ Az engedélyezés az Azure SQL Database-adatbázisokban a felhasználók által 
 A sorszintű biztonság lehetővé teszi az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz való hozzáférést a lekérdezést végrehajtó felhasználó jellemzői alapján (például csoporttagság vagy végrehajtási környezet). További információkat a [sorszintű biztonsággal kapcsolatos](https://msdn.microsoft.com/library/dn765131) részben találhat.
 
 ### <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás 
-SQL-adatbázis dinamikus adatmaszkolási maszkolás a jogosulatlan felhasználók által bizalmas adatok veszélyeztetettségének korlátozása. Dinamikus adatmaszkolási automatikusan felderíti az Azure SQL Database potenciálisan bizalmas adatokat, és ezeket a mezőket, gyakorolt minimális hatás mellett az alkalmazási rétegre a maszkolandó végrehajthatóként ajánlásokat. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információkért lásd: [Ismerkedés az SQL-adatbázis dinamikus adatmaszkolási](sql-database-dynamic-data-masking-get-started.md) korlátozzák a bizalmas adatok felfedésnek használható.
+SQL-adatbázis dinamikus adatmaszkolási maszkolás a jogosulatlan felhasználók által bizalmas adatok veszélyeztetettségének korlátozása. Dinamikus adatmaszkolási automatikusan felderíti az Azure SQL Database potenciálisan bizalmas adatokat, és ezeket a mezőket, gyakorolt minimális hatás mellett az alkalmazási rétegre a maszkolandó végrehajthatóként ajánlásokat. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információkért lásd: [Ismerkedés az SQL-adatbázis dinamikus adatmaszkolási](sql-database-dynamic-data-masking-get-started.md).
 
 ## <a name="proactive-monitoring"></a>Proaktív figyelés
 Az SQL Database naplózási és fenyegetésészlelési képességek biztosításával védi az adatokat. 

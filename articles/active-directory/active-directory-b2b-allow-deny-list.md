@@ -13,22 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 04/19/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: b9ead9643cc7926be3bd69e947977fa40d45a722
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a18193ee0d216416cda3145c85c8357813f794d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Engedélyezi vagy letiltja az adott vállalatoknak B2B felhasználók meghívást
 
 Engedélyezési vagy tiltólista meghívókat B2B felhasználók számára az adott szervezetek egy engedélyezési vagy letiltási lista segítségével. Például ha szeretné tiltani a személyes e-mail-cím tartomány, állíthat be a letiltási lista, amely például Gmail.com és Outlook.com-tartományt tartalmaz. Vagy, ha a vállalatnál a számos más vállalatok számára, például a Contoso.com, Fabrikam.com és Litware.com, és csak ezek a szervezetek felhívás korlátozni szeretné, adhat hozzá a Contoso.com, Fabrikam.com és Litware.com számára az engedélyezési lista.
   
-> [!NOTE]
-> Jelenleg akkor csak a letiltási listáját használja. Használhatja a listák hamarosan nagyon engedélyezése.
-
 ## <a name="important-considerations"></a>Fontos tudnivalók találhatók
 
 - Létrehozhat egy engedélyezési lista vagy a letiltási listát. Mindkét típusú lista nem tudja beállítani. Alapértelmezés szerint bármely tartományok nincsenek található az engedélyezési listán vannak a letiltási listát, és fordítva. 
@@ -50,22 +47,34 @@ A letiltási lista hozzáadása:
 2. Válassza ki **Azure Active Directory** > **felhasználók** > **felhasználói beállítások**.
 3. A **külső felhasználók**, jelölje be **külső együttműködés beállításainak kezelése**.
 4. A **együttműködés korlátozások**, jelölje be **felhívás a megadott tartomány megtagadása**.
-5. A **CÉLTARTOMÁNYOK**, adja meg az egyik a blokkolni kívánt tartomány nevét. Több tartomány új sorba írjon be tartományonként.
+5. A **CÉLTARTOMÁNYOK**, adja meg az egyik a blokkolni kívánt tartomány nevét. Több tartomány új sorba írjon be tartományonként. Példa:
 
    ![Megjeleníti a Megtagadás beállítás hozzáadott tartományokkal](./media/active-directory-b2b-allow-deny-list/DenyListSettings.png)
  
 6. Amikor elkészült, kattintson a **mentése**.
 
-Miután a házirendet, ha egy felhasználó egy blokkolt tartományból meghívása próbál, üzenetet kap arról, hogy a felhasználó jelenleg le van tiltva, a meghívó házirend kapni.
+Miután a házirendet, ha egy felhasználó egy blokkolt tartományból meghívása próbál, üzenetet kap arról, hogy a tartományi felhasználó jelenleg le van tiltva, a meghívó házirend kapni.
  
 ### <a name="add-an-allow-list"></a>Adja hozzá az engedélyezési listák
 
-> [!NOTE]
-> Jelenleg a **engedélyezése csak a megadott tartomány felhívás (szigorúbb)** beállítás nem érhető el. Használhatja a listák hamarosan nagyon engedélyezése.
-
 Ez a beállítás egy szigorúbb, ahol olyan tartományok állíthat be az engedélyezési listán, és bármely más szervezetek vagy tartományt, amely nem említett meghívókat korlátozása. 
 
-Ha az engedélyezési listák használni kívánt, győződjön meg arról, hogy teljes mértékben a az üzleti igények kiértékelése időt. Ha ez a házirend túl szigorú, a felhasználók választhatják dokumentumok küldjön e-mailek keresztül, vagy találjon más nem informatikai áttérést dolgoznak.
+Ha szeretne egy engedélyezési lista használja, győződjön meg arról, hogy időt teljesen kiértékelheti az üzleti igények is. Ha ez a házirend túl szigorú, a felhasználók választhatják dokumentumok küldjön e-mailek keresztül, vagy találjon más nem informatikai áttérést dolgoznak.
+
+
+Az engedélyezési listák hozzáadása:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Válassza ki **Azure Active Directory** > **felhasználók** > **felhasználói beállítások**.
+3. A **külső felhasználók**, jelölje be **külső együttműködés beállításainak kezelése**.
+4. A **együttműködés korlátozások**, jelölje be **engedélyezése csak a megadott tartomány felhívás (szigorúbb)**.
+5. A **CÉLTARTOMÁNYOK**, adja meg az egyik a tartományok, amelyek számára engedélyezni kívánja a neve. Több tartomány új sorba írjon be tartományonként. Példa:
+
+   ![A hozzáadott tartományokkal engedélyezése beállítás megjelenítése](./media/active-directory-b2b-allow-deny-list/AllowListSettings.png)
+ 
+6. Amikor elkészült, kattintson a **mentése**.
+
+Miután a házirendet, ha egy felhasználó egy tartományból, amely nem szerepel az engedélyezési listán meghívása próbál, üzenetet kap arról, hogy a tartományi felhasználó jelenleg le van tiltva, a meghívó házirend kapni.
 
 ### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>Váltson a visszautasítja a listában, és fordítva engedélyezése 
 
@@ -116,9 +125,6 @@ Ha a modul nincs telepítve, vagy nem rendelkezik a szükséges verzió, tegye a
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Konfigurálja a házirendet a AzureADPolicy-parancsmagok használatával
 
-> [!NOTE]
-> Jelenleg csak konfigurálható a letiltási listáját. Használhatja a listák hamarosan nagyon engedélyezése.
-
 Hozzon létre egy engedélyezési vagy tiltólista használja a [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) parancsmag. A következő példa bemutatja, hogyan telepíthet a letiltási lista, amely blokkolja a "live.com" tartomány.
 
 ````powershell 
@@ -139,7 +145,7 @@ New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedA
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ````
 
-A házirend beszerzéséhez használja a [Get-AzureADPolicy](https://docs.microsoft.com/en-us/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmag. Példa:
+A házirend beszerzéséhez használja a [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmag. Példa:
 
 ````powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 

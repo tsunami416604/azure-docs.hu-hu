@@ -1,11 +1,11 @@
 ---
-title: "SaaS alkalmazás a felhasználók átadása az Azure AD automatikus |} Microsoft Docs"
-description: "Hogyan használható az Azure AD automatikus kiépítéséhez, bemutatása leépíti, és folyamatosan frissíti a felhasználói fiókok több külső SaaS-alkalmazások között."
+title: SaaS alkalmazás a felhasználók átadása az Azure AD automatikus |} Microsoft Docs
+description: Hogyan használható az Azure AD automatikus kiépítéséhez, bemutatása leépíti, és folyamatosan frissíti a felhasználói fiókok több külső SaaS-alkalmazások között.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: e14ba62ce2d6c48e47a6b75387bcede68bb1a5b0
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 56af1915326429b37f87dbaa397e1c9b832c675a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazásokhoz?
@@ -176,7 +176,7 @@ A létesítési feladat összes meghatároznak a hibát okozó hibák után tör
 
 Teljesítmény attól függően, hogy a kiosztási feladatának működik-e egy kezdeti szinkronizálást, vagy egy növekményes szinkronizálás eltérőek lesznek.
 
-A kezdeti szinkronizálás végrehajtásához szükséges idő közvetlenül függ hány felhasználók, csoportok és csoporttagok szerepelnek a forrásrendszerben lesz. Nagyon kicsi forrásrendszerek objektumok száz percek a kezdeti szinkronizálás hajthatja végre. Több ezer vagy kombinált objektumok millióit száz forrásrendszerek azonban nagyon hosszú időt vehet igénybe.
+A kezdeti szinkronizálás végrehajtásához szükséges idő közvetlenül függ hány felhasználók, csoportok és csoporttagok szerepelnek a forrásrendszerben lesz. Nagyon kicsi forrásrendszerek objektumok száz percek a kezdeti szinkronizálás hajthatja végre. Több ezer vagy kombinált objektumok millióit száz forrásrendszerek azonban hosszabb ideig tart.
 
 Növekményes szinkronizálás szükséges idő az adott szinkronizálási ciklust észlelt megváltozása függ. Ha kevesebb mint 5000 felhasználó vagy csoport tagsági változása észlelhető, ezek is gyakran szinkronizálva egy 40 perces cikluson belül. 
 

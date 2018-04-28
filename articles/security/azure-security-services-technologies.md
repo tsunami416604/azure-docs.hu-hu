@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 838987e7fa5e638a980c592f5cdf775d3110fab0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 20d3eb9a1843e1a223ba7fb060df46a22f9315b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Az Azure biztonsági szolgáltatásokat és technológiákat
 A jelenlegi és jövőbeli Azure-ügyfél folytatott beszélgetéseket, a rendszer gyakran megkéri "rendelkezik listáját a biztonsági szolgáltatásokat és technológiákat, amelyre az Azure ajánlat kapcsolódó?"
@@ -58,7 +58,7 @@ Kezdeti annak érdekében, hogy a lista a következő: Az idő múlásával a li
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
 * [Az Azure Active Directory tartományi szolgáltatások](../active-directory-domain-services/active-directory-ds-overview.md)
-* [Az Azure többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
+* [Az Azure többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>Biztonsági mentés és katasztrófa utáni helyreállítás
 * [Azure Backup](https://azure.microsoft.com/documentation/services/backup/)

@@ -1,25 +1,25 @@
 ---
-title: "PowerShell-példák az Azure Active Directory biztonságicsoport-alapú licenckezeléshez |} Microsoft Docs"
-description: "Az Azure Active Directory biztonságicsoport-alapú licencelési PowerShell-forgatókönyvek"
+title: PowerShell-példák az Azure Active Directory biztonságicsoport-alapú licenckezeléshez |} Microsoft Docs
+description: Az Azure Active Directory biztonságicsoport-alapú licencelési PowerShell-forgatókönyvek
 services: active-directory
-keywords: "Az Azure AD-licencelés"
-documentationcenter: 
+keywords: Az Azure AD-licencelés
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 04/23/2018
 ms.author: curtand
-ms.openlocfilehash: 6a518f9c7ddb11de2b459d5d28c404316eb62355
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60387840b9a155c3d8494efb2d41cc094d05504b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell-példák az Azure Active Directory biztonságicsoport-alapú licenckezeléshez
 
@@ -28,8 +28,8 @@ Csoportalapú licenckezelési teljes funkciók is elérhetővé a [Azure-portál
 > [!NOTE]
 > Parancsmagok futtatása előtt győződjön meg arról, hogy csatlakozik a bérlő először futtassa a `Connect-MsolService` parancsmag.
 
->[!WARNING]
->Ez a kód bemutatási célokra példaként valósul meg. Ha a környezetben használandó, fontolja meg, vizsgálja, hogy először egy kis méretű, vagy egy külön tesztelési bérlőn. Előfordulhat, hogy úgy, hogy a kód a környezet konkrét igényeinek.
+> [!WARNING]
+> Ez a kód bemutatási célokra példaként valósul meg. Ha a környezetben használandó, fontolja meg, vizsgálja, hogy először egy kis méretű, vagy egy külön tesztelési bérlőn. Előfordulhat, hogy úgy, hogy a kód a környezet konkrét igényeinek.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>A csoporthoz rendelt termék licencek megtekintése
 A [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) parancsmag segítségével kérje le a csoportházirend-objektum, majd ellenőrizze a *licencek* tulajdonság: felsorolja az összes termék licenccel jelenleg a csoport.
@@ -202,17 +202,17 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 Ez a parancsfájl, amely csak a csoportok licenc hibás keresésre egy másik verziója. Akkor lehet, hogy több optimalizálni forgatókönyvek, ahol várhatóan több csoport gond van.
 
 ```
-Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
-    $user = $_;
-    $user.IndirectLicenseErrors | % {
-            New-Object Object |
-                Add-Member -NotePropertyName UserName -NotePropertyValue $user.DisplayName -PassThru |
-                Add-Member -NotePropertyName UserId -NotePropertyValue $user.ObjectId -PassThru |
-                Add-Member -NotePropertyName GroupId -NotePropertyValue $_.ReferencedObjectId -PassThru |
-                Add-Member -NotePropertyName LicenseError -NotePropertyValue $_.Error -PassThru
-        }
-    }
-```
+$groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
+    foreach ($groupId in $groupIds) {
+    Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
+        Get-MsolUser -ObjectId {$_.ObjectId} |
+        Where {$_.IndirectLicenseErrors -and $_.IndirectLicenseErrors.ReferencedObjectId -eq $groupId.ObjectID} |
+        Select DisplayName, `
+               ObjectId, `
+               @{Name="LicenseError";Expression={$_.IndirectLicenseErrors | Where {$_.ReferencedObjectId -eq $groupId.ObjectID} | Select -ExpandProperty Error}}
+ 
+    } 
+``` 
 
 ## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>Ha felhasználói licenc hozzárendelése közvetlenül vagy öröklés útján egy csoporttól származik ellenőrzése
 

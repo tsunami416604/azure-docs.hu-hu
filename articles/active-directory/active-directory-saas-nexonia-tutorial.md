@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Nexonia |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Nexonia között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Nexonia |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Nexonia között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: a7a71eb4de1723be1fd32a35bee848885738b029
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 027b7ae5b87cc8349670b2270124c18d68242a9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>Oktatóanyag: Azure Active Directoryval integrált Nexonia
 
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezést a Nexonia tesztelése és konfigurálása, 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Nexonia alkalmazásban.
 
   > [!Note]
-   > Ha problémák vannak az integrációt, akkor tekintse meg a [hivatkozás](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery) hibaelhárítási útmutató. Ha még nem talált a megoldást, majd indítson a támogatási kérelem Azure-portálon.
+   > Ha problémák vannak az integrációt, akkor tekintse meg a [hivatkozás](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) hibaelhárítási útmutató. Ha még nem talált a megoldást, majd indítson a támogatási kérelem Azure-portálon.
 
 **Konfigurálása az Azure AD az egyszeri bejelentkezés Nexonia, hajtsa végre az alábbi lépéseket:**
 
@@ -111,9 +111,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Nexonia tartomány és az URL-címek](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_url.png)
 
-    a. Az a **azonosító** szövegmezőhöz be egy értéket:`Nexonia`
+    a. Az a **azonosító** szövegmezőhöz be egy értéket: `Nexonia`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
 
     > [!NOTE] 
     > A válasz URL-cím értéke nincs valós. Frissítse az értéket a tényleges válasz URL-címet. Ügyfél [Nexonia támogatási csoport](https://nexonia.zendesk.com/hc/requests/new) az értéket be kell olvasni.

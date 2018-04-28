@@ -1,8 +1,8 @@
 ---
-title: "LDAP-hitelesítés és Azure MFA-kiszolgáló | Microsoft Docs"
-description: "Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt az LDAP-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez."
+title: LDAP-hitelesítés és Azure MFA-kiszolgáló | Microsoft Docs
+description: Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt az LDAP-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
 ms.openlocfilehash: 37f96afab67680b3140a6f4da6bff0c23a1f328f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-hitelesítés és az Azure multi-factor Authentication kiszolgáló
 Alapértelmezés szerint az Azure Multi-Factor Authentication-kiszolgáló úgy van konfigurálva, hogy a felhasználókat az Active Directoryból importálja vagy szinkronizálja. Azonban konfigurálható úgy különböző LDAP-címtárakhoz való kötésre is, például ADAM-címtárhoz vagy adott Active Directory-tartományvezérlőkhöz. LDAP keresztül könyvtár való csatlakozáskor az Azure multi-factor Authentication kiszolgáló a hitelesítés végrehajtásához LDAP-proxyként működhet. Ezenkívül lehetővé teszi, hogy az LDAP-kötést felhasználja RADIUS-célként az IIS-hitelesítést használó felhasználók előhitelesítésére illetve elsődleges hitelesítésre az Azure MFA felhasználói portálon.
@@ -37,7 +37,7 @@ Az LDAP-hitelesítés konfigurálásához telepítse az Azure Multi-Factor Authe
 
 3. Az Ügyfelek lapon módosítsa a TCP-portot és az SSL-portot, ha az Azure Multi-Factor Authentication LDAP-szolgáltatását nem szabványos portokhoz szeretné kötni, hogy fogadni tudjon LDAP-kéréseket.
 4. Ha azt tervezi, az ügyfél LDAPS segítségével az Azure multi-factor Authentication kiszolgáló, az SSL-tanúsítvány MFA kiszolgáló ugyanazon a kiszolgálón telepítve kell. Kattintson a **Tallózás** mellett az SSL tanúsítvány mezőbe, és válassza ki a biztonságos kapcsolat használandó tanúsítványt.
-5. Kattintson az **Add** (Hozzáadás) parancsra.
+5. Kattintson a **Hozzáadás** parancsra.
 6. Az LDAP-ügyfél hozzáadása párbeszédpanelen adja meg az IP-cím, a készülék, a kiszolgáló vagy az alkalmazás, amely hitelesíti a kiszolgáló és az alkalmazás neve (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
 7. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Felhasználók jelentős számú nem még importálva lettek a kiszolgálón és/vagy nem érvényes a kétlépéses ellenőrzést, ha üresen hagyja a nincs bejelölve. Tekintse meg a multi-factor Authentication kiszolgáló súgófájl további információ a szolgáltatásról.
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Lake Store eléréséhez használja a felügyelt Linux virtuális gép Szolgáltatásidentitás"
-description: "Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (MSI) a Linux virtuális gépek Azure Data Lake Store elérésére használhat."
+title: Azure Data Lake Store eléréséhez használja a felügyelt Linux virtuális gép Szolgáltatásidentitás
+description: Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (MSI) a Linux virtuális gépek Azure Data Lake Store elérésére használhat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: bef549a0cb8a876bbf8fbf281a6c2d1d489736af
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8b7e6cbd4bc7cfef349e9cebd9e4db537701a877
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja a felügyelt Linux virtuális gép Szolgáltatásidentitás
 
@@ -58,16 +58,13 @@ Ebben az oktatóanyagban létrehozhatunk egy új Linux virtuális Gépet. A megl
 
 ## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése
 
-A virtuális gép MSI segítségével hozzáférési jogkivonatok lekérni az Azure AD anélkül, hogy a hitelesítő adatok be a kódját. Az MSI-Virtuálisgép-bővítmény engedélyezése MSI telepíti a virtuális Gépet, és lehetővé teszi, hogy az Azure Resource Manager MSI.  
+A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. Engedélyezése felügyelt Szolgáltatásidentitás a virtuális gép, két dolgot eredményez: regiszterekben az Azure Active Directory segítségével felügyelt identitását, és hozzon létre a virtuális gép identitásának konfigurálja a virtuális Gépen.
 
 1. A **virtuális gép**, válassza ki a MSI engedélyezze a kívánt virtuális gépet.
 2. A bal oldali panelen válassza ki a **konfigurációs**.
 3. Látni **identitás**. Regisztrálja és MSI engedélyezéséhez jelölje be **Igen**. Ha le kell tiltani, jelölje be **nem**.
    !["Az Azure Active Directoryban regisztrálja" kiválasztása](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. Kattintson a **Mentés** gombra.
-5. Ha azt szeretné ellenőrizni a Linux virtuális Gépet, válassza ki a rendszer mely bővítmények **bővítmények**. Ha engedélyezve van a MSI, **ManagedIdentityExtensionforLinux** listájában jelenik meg.
-
-   ![Kiterjesztések listája](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>A virtuális gép hozzáférési jogot az Azure Data Lake Store
 
@@ -102,10 +99,10 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél. Windows használ, ha 
 
 1. A portálon tallózással keresse meg a Linux virtuális Gépet. A **áttekintése**, jelölje be **Connect**.  
 2. Csatlakoztassa a virtuális Gépet az SSH-ügyfél az Ön által választott használatával. 
-3. A Terminálszolgáltatások ablakban cURL, használatával indítson egy lekérdezést a helyi MSI-végpont a Data Lake Store-fájlrendszer olyan hozzáférési jogkivonatot beolvasni. A Data Lake Store erőforrás-azonosító "https://datalake.azure.net/".  Fontos a záró perjelet az erőforrás-azonosító.
+3. A Terminálszolgáltatások ablakban cURL, használatával indítson egy lekérdezést a helyi MSI-végpont a Data Lake Store-fájlrendszer olyan hozzáférési jogkivonatot beolvasni. Az erőforrás-azonosító a Data Lake Store "https://datalake.azure.net/".  Fontos a záró perjelet az erőforrás-azonosító.
     
    ```bash
-   curl http://localhost:50342/oauth2/token --data "resource=https://datalake.azure.net/" -H Metadata:true   
+   curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
    ```
     
    A sikeres válasz a hozzáférési jogkivonat Data Lake Store-hitelesítést használó adja vissza:

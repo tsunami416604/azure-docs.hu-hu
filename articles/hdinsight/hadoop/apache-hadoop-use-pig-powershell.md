@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: c54670b11c0a2a3c5379abe4a43431445daa1a5a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0c06289625ab18dad134c235fc28fd5c775955eb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>A Pig-feladatok futtatása a HDInsight az Azure PowerShell használatával
 
@@ -44,7 +44,7 @@ Az Azure PowerShell biztosít *parancsmagok* , amelyek lehetővé teszik, hogy t
 
 A következő parancsmagok használhatók a Pig-feladatokhoz egy távoli HDInsight-fürt futtatásakor:
 
-* **Login-AzureRmAccount**: az Azure-előfizetések az Azure PowerShell hitelesíti.
+* **Connect-AzureRmAccount**: az Azure-előfizetések az Azure PowerShell hitelesíti.
 * **Új AzureRmHDInsightPigJobDefinition**: létrehoz egy *definition feladat* a megadott Pig Latin utasítás használatával.
 * **Start-AzureRmHDInsightJob**: a feladat definíciójához küld HDInsight, és elindítja a feladatot. A *feladat* objektumot ad vissza.
 * **Várjon, amíg-AzureRmHDInsightJob**: a feladat állapotának ellenőrzése a feladatobjektum használja. Arra vár, amíg a feladat befejeződött, vagy a várakozási idő túl lett lépve.

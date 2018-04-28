@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/27/2018
 ms.author: victorh
-ms.openlocfilehash: f4552960cf16e8f7cb89868a03e4b4699eba2540
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7e259936dce433683dd135171ee1c5626bf23739
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Alkalmazásátjáró a PowerShell használatával
 
@@ -58,7 +58,7 @@ Ez a szakasz végigvezeti az Alkalmazásátjáró tartalmazó erőforráscsoport
    1. Jelentkezzen be az Azure-fiókjával.
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 
@@ -158,8 +158,8 @@ Az összes konfigurációs elemek vannak állítva az Alkalmazásátjáró létr
    5. A tanúsítvány az alkalmazás-átjáró konfigurálása. Ezt a tanúsítványt a forgalmat az Alkalmazásátjáró reencrypt és visszafejtésére szolgál.
 
    ```powershell
-   $password = ConvertTo-SecureString  <password for certificate file> -AsPlainText -Force 
-   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $password 
+   $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
+   $cert = New-AzureRmApplicationGatewaySSLCertificate -Name cert01 -CertificateFile <full path to .pfx file> -Password $passwd 
    ```
 
    > [!NOTE]

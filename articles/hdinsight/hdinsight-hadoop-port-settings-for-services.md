@@ -11,13 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 04/20/2018
 ms.author: larryfr
-ms.openlocfilehash: b6510024d1644f1e0b357126e2b971c66eb95dbc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4490ac9bccb406bd2e882fc8afcbaf05aa8ddfab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>A HDInsight Hadoop-szolgáltatás által használt portok
 
@@ -56,6 +56,7 @@ Az alábbiakban adott fürt esetében érhető el:
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |HBase |HBase REST API-t. Lásd: [HBase első lépései](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API-t. Lásd: [küldje el külső feladatok távolról a Livy használatával](spark/apache-spark-livy-rest-interface.md) |
+| A Spark Thrift-kiszolgáló |443 |HTTPS |Spark |A Spark Thrift-kiszolgáló használt elküldeni a Hive-lekérdezéseket. Lásd: [Beeline használata a HDInsight Hive](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |A Storm webes felhasználói felület. Lásd: [központi telepítése és kezelése a HDInsight alatt futó Storm-topológiák](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>Hitelesítés

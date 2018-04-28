@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/26/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 8fbc489bacb3c8592ee99fc5a4486fd864f498ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 49697a57e59b652fed4997d57bc7ae15cc596cf7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure-kapcsolat nélküli telepítés tervezési megfontolások Azure verem integrált rendszerek
 Után úgy döntött, [hogyan fogja integrálja Azure verem a hibrid felhőkörnyezet](azure-stack-connection-models.md), majd véglegesítése is az Azure-verem telepítési döntések meghozatalában.
@@ -47,7 +47,7 @@ Azure verem legjobban, ha a kapcsolódó Azure-ba, ezért fontos megjegyezni, ho
 |Riasztási szervizelési/megoldás, amely egy online szervizelési útmutató hivatkozik|Nem érhető el – bármely riasztási eltávolításának hivatkozásokat tartalmaz, hogy használja az internetes URL-címe nem fognak működni.|
 |Piactér szindikálási – válassza ki, és adja hozzá a gyűjtemény csomagokat közvetlenül az Azure piactérről|Sérült – Azure verem (nélkül bármely internetkapcsolat) kapcsolat nélküli módban telepítésekor Piactéri elemek nem lehet letölteni a verem Azure portál használatával. Azonban használhatja a [piactér szindikálási eszköz](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) töltse le a Piactéri elemek egy internetkapcsolattal rendelkező gép, és majd átviszi a verem Azure környezetben.|
 |Az Azure-verem központi telepítésének kezelése az Azure Active Directory összevonási fiókok segítségével|Nem érhető el – ez a funkció használatához Azure hozzáférés szükséges. Az AD FS, ha a helyi Active Directory példánya használandók.|
-|Például a webalkalmazás és az SQL erőforrás-szolgáltató|Nem érhető el – például a webalkalmazás és az SQL erőforrás-szolgáltatók internetelérés szükséges a tartalomhoz.|
+|App Services|Sérült - webalkalmazás szükség lehet Internet-hozzáférés frissített tartalom.|
 |Parancssori felület (CLI)|Sérült – CLI lecsökkentette és szolgáltatás alapelveinek létesítésének funkciókat.|
 |A Visual Studio – a Cloud discovery|Sérült – a Cloud Discovery vagy deríti fel másik felhőt, vagy egyáltalán nem működik.|
 |A Visual Studio – Active Directory összevonási szolgáltatások|Sérült – csak a Visual Studio Enterprise támogatja: AD FS.

@@ -1,74 +1,70 @@
 ---
-title: "Gyors üzembe helyezés: Szüneteltetése és folytatása számítási az Azure SQL Data Warehouse - PowerShell |} Microsoft Docs"
-description: "PowerShell-feladatok szüneteltetése számítási az Azure SQL Data Warehouse költségek csökkentése érdekében. Amikor készen áll az adatraktárat, folytathatja a számítást."
+title: 'Gyors üzembe helyezés: Szüneteltetése és folytatása számítási az Azure SQL Data Warehouse - PowerShell |} Microsoft Docs'
+description: A PowerShell szolgáltatás használatával szünet számítási az Azure SQL Data Warehouse költségek csökkentése érdekében. Amikor készen áll az adatraktárat, folytathatja a számítást.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 01/25/2018
-ms.author: barbkess
-ms.openlocfilehash: b1f5c10fe294b44a9853f16e1866b77cf74a1479
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: ef341a1528bf759461abfb7cfc6d878fd8a44cb4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-powershell"></a>Gyors üzembe helyezés: Felfüggesztése és folytatása számítási az Azure SQL Data Warehouse a PowerShellben
-Az Azure SQL Data Warehouse költségek csökkentése érdekében számítási szüneteltetése a PowerShell használatával. [Folytathatja a számítást](sql-data-warehouse-manage-compute-overview.md) Ha készen áll az adatraktárat.
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Gyors üzembe helyezés: Szüneteltetése és folytatása számítási az Azure SQL Data Warehouse a PowerShell használatával
+A PowerShell szolgáltatás használatával szünet számítási az Azure SQL Data Warehouse költségek csökkentése érdekében. [Folytathatja a számítást](sql-data-warehouse-manage-compute-overview.md) Ha készen áll az adatraktárat.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Ez az oktatóanyag van szükség az Azure PowerShell modul verziója 5.1.1-es vagy újabb. Futtatás ` Get-Module -ListAvailable AzureRM` találnia, amelynek van jelenleg. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps.md) ismertető cikket. 
+Az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziója szükséges. A jelenleg rendelkezésére álló verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps.md) ismertető cikket.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A gyors üzembe helyezés feltételezi, hogy már rendelkezik egy SQL data warehouse szüneteltetése és folytatása. Ha szeretne létrehozni egyet, akkor használhatja [létrehozása és a Connect - portál](create-data-warehouse-portal.md) nevű adatraktár létrehozásához **mySampleDataWarehouse**. 
+A gyors üzembe helyezés feltételezi, hogy már rendelkezik egy SQL data warehouse szüneteltetése és folytatása. Ha szeretne létrehozni egyet, akkor használhatja [létrehozása és a Connect - portál](create-data-warehouse-portal.md) nevű adatraktár létrehozásához **mySampleDataWarehouse**.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe az [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) parancs használatával, és kövesse a képernyőn megjelenő útmutatásokat.
+Jelentkezzen be az Azure-előfizetésbe a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancs használatával, és kövesse a képernyőn megjelenő útmutatást.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
-Melyik előfizetéssel használja megtekintéséhez futtassa [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+A használt előfizetés megtekintéséhez futtassa a [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) parancsot.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Ha egy másik előfizetésben található alapértelmezett használni kell, futtassa [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
+Ha nem az alapértelmezett előfizetést kívánja használni, futtassa a [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription) parancsot.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-data-warehouse-information"></a>Kereshet az adatraktár információi
+## <a name="look-up-data-warehouse-information"></a>Adattárház-információk megkeresése
 
-Keresse meg az adatbázis neve, a kiszolgálónév és a szüneteltetése és folytatása tervezi az adatraktárhoz tartozó erőforráscsoport. 
+Keresse meg a felfüggeszteni és folytatni tervezett adattárházhoz tartozó adatbázis nevét, a kiszolgáló nevét és az erőforráscsoportot.
 
-Kövesse az alábbi lépéseket az adatraktár Tartózkodásihely-adatok kereséséhez.
+Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a **SQL-adatbázisok** az Azure portál bal oldalán.
-3. Válassza ki **mySampleDataWarehouse** a a **SQL-adatbázisok** lap. Megnyitja az adatraktárba.
+2. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
+3. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ekkor megnyílik az adattárház.
 
-    ![Kiszolgáló nevét és az erőforrás-csoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
+    ![Kiszolgálónév és erőforráscsoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Jegyezze fel az adatraktár-nevét, amely az adatbázis nevét. Is írja be a kiszolgáló nevét, és az erőforráscsoportot. Ön 
+4. Jegyezze fel az adatraktár-nevét, amely az adatbázis nevét. Írja fel a kiszolgáló nevét és az erőforráscsoportot is. Ön
 5.  Ezek a szüneteltetése és folytatása parancsokban.
-6. Ha a kiszolgáló foo.database.windows.net, akkor csak az első rész a PowerShell-parancsmagok a kiszolgálónevet. Az előző ábrán a teljes kiszolgálónevet newserver-20171113.database.windows.net. A utótag dobja el, és használja **newserver-20171113** a PowerShell-parancsmag a kiszolgálónevet.
+6. Ha a kiszolgáló valami.database.windows.net, csak az első részt használja kiszolgálónévként a PowerShell-parancsmagokban. A fenti ábrán a teljes kiszolgálónév newserver-20171113.database.windows.net. A utótag dobja el, és használja **newserver-20171113** a PowerShell-parancsmag a kiszolgálónevet.
 
 ## <a name="pause-compute"></a>Felfüggesztés számítási
-Költségek csökkentése érdekében szüneteltetése, és folytassa a számítási erőforrások igény. Például ha az adatbázis éjszaka és hétvégén nem használ, után ilyen alkalmakkor szünetelteti, is fogják folytatni azt a nap folyamán. Amíg az adatbázis fel van függesztve, nincs díjmentes számítási erőforrásokat. Azonban továbbra is tárolási számlázni. 
+Költségek csökkentése érdekében szüneteltetése, és folytassa a számítási erőforrások igény. Például ha az adatbázis éjszaka és hétvégén nem használ, után ilyen alkalmakkor szünetelteti, is fogják folytatni azt a nap folyamán. Amíg az adatbázis fel van függesztve, nincs díjmentes számítási erőforrásokat. Azonban továbbra is tárolási számlázni.
 
 Egy adatbázis felfüggesztése, használja a [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase.md) parancsmag. A következő példa egy adatraktár nevű felfüggesztése **mySampleDataWarehouse** nevű kiszolgálón található **newserver-20171113**. A kiszolgáló van egy Azure erőforráscsoport nevű **myResourceGroup**.
 
@@ -107,10 +103,10 @@ $resultDatabase
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az adattárházegységek és az adattárházban tárolt adatok díjkötelesek. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva. 
+Az adattárházegységek és az adattárházban tárolt adatok díjkötelesek. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
 - Ha meg szeretné tartani az adatokat a tárhelyen, szüneteltesse a számítási.
-- Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is. 
+- Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is.
 
 Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolítására.
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: c02b7a74eea6973d6ccfbc1cc59d15bfd5cb5b77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ec2399c955f718186bbedc0e4bad61ccc61fd972
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezet az Azure App Service beállítása
 <a name="Overview"></a>
@@ -30,7 +30,7 @@ A webalkalmazás, webes alkalmazás a Linux, mobil háttér és API-alkalmazás 
 * Központilag telepíthetők az alkalmazások a tárhely először és csere az éles környezetben biztosítja, hogy a összes példányát a tárolóhely Mielőtt éles környezetben felcserélés folyamatban vannak tárolóhelyspecifikus. Ez megszünteti állásidő, az alkalmazás központi telepítésekor. A forgalom átirányítása zökkenőmentes-kérelmek nem dobja swap műveletek miatt. A teljes munkafolyamat konfigurálásával automatizálható [automatikus felcserélés](#Auto-Swap) , ha nincs szükség a előtti swap érvényesítése.
 * Egy felcserélés után a tárolóhely korábban előkészített alkalmazással most már rendelkezik az előző éles alkalmazások. Ha a módosításokat, azokat az éles tárolóhelyre felcserélve nem a várt módon, közvetlenül a "utolsó ismert helyes"nevű hely eléréséhez a azonos virtuális végezhet vissza.
 
-Minden kiválasztása az App Service-csomaghoz támogatja az üzembe helyezési oszlopaik száma különböző. Tárolóhely száma megállapítása: az alkalmazás támogatja, lásd: [App szolgáltatásra vonatkozó korlátozások](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#app-service-limits).
+Minden kiválasztása az App Service-csomaghoz támogatja az üzembe helyezési oszlopaik száma különböző. Tárolóhely száma megállapítása: az alkalmazás támogatja, lásd: [App szolgáltatásra vonatkozó korlátozások](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits).
 
 * Ha az alkalmazás több tárolóhelye van, a réteg nem módosítható.
 * Skálázás nem érhető el a nem végleges pont felcserélése.
@@ -54,7 +54,7 @@ Futnia kell az alkalmazást a **szabványos** vagy **prémium** réteg ahhoz, ho
    
     ![Beállítások forrása][ConfigurationSource1]
    
-    Először ad hozzá egy tárolóhely, csak két lehetősége van: az alapértelmezett tárolóhelyről, éles környezetben, vagy egyáltalán nem klónozott konfigurációs.
+    Az első alkalommal ad hozzá egy tárolóhely, csak két lehetősége van: az alapértelmezett tárolóhelyről, éles környezetben, vagy egyáltalán nem klónozott konfigurációs.
     A létrehozást követően több üzembe helyezési ponti, lesz klónozza a nem az éles tárhely beállításait:
    
     ![Konfigurációs forrás][MultipleConfigurationSources]
@@ -67,8 +67,8 @@ Nincs tartalom központi telepítési tárolóhely létrehozása után. A tárol
 
 <a name="AboutConfiguration"></a>
 
-## <a name="configuration-for-deployment-slots"></a>Az üzembe helyezési konfiguráció
-Klónozza a másik üzembe helyezési pont konfigurációja, a klónozott konfigurációs esetén szerkeszthető. Továbbá bizonyos konfigurációs elemek követi a tartalmat a lapozófájl-kapacitás (nem tárolóhely adott) keresztül közben más konfigurációs elemek ugyanaz a tárolóhely marad a lapozófájl-kapacitás (tárolóhely adott) után. A következő listákban konfiguráció szerint változnak, ha Ön felcserélése megjelenítése.
+## <a name="which-settings-are-swapped"></a>Beállítások van cserélve?
+Klónozza a másik üzembe helyezési pont konfigurációja, a klónozott konfigurációs esetén szerkeszthető. Továbbá bizonyos konfigurációs elemek követi a tartalmat a lapozófájl-kapacitás (nem tárolóhely adott) keresztül közben más konfigurációs elemek ugyanaz a tárolóhely marad a lapozófájl-kapacitás (tárolóhely adott) után. A következő listákban módosítani, ha Ön felcserélése beállítások megjelenítése.
 
 **Beállítások, amelyek van cserélve**:
 
@@ -87,7 +87,7 @@ Klónozza a másik üzembe helyezési pont konfigurációja, a klónozott konfig
 * Skálázási beállításokat
 * Webjobs-feladatok bejegyzéstípusait
 
-Egy alkalmazás beállítás vagy a kapcsolati karakterlánc (nem cserélhető fel) tárhely anyagot konfigurálása, hozzáférés-a **Alkalmazásbeállítások** paneljén adott tárhely, majd válassza ki a **tárolóhely beállítás** mezőben a konfiguráció a tárolóhely kell odatapadjon elemei. Vegye figyelembe, hogy jelölés egy konfigurációs elem, ha adott tárolóhely létrehozásáról szóló az elem nem cserélhető között az alkalmazáshoz kapcsolódó összes üzembe helyezési hatását.
+Egy alkalmazás beállítás vagy a kapcsolati karakterlánc (nem cserélhető fel) tárhely anyagot konfigurálása, hozzáférés-a **Alkalmazásbeállítások** paneljén adott tárhely, majd válassza ki a **tárolóhely beállítás** mezőben a konfiguráció a tárolóhely kell odatapadjon elemei. Az adott elemhez, nem cserélhető létrehozását az alkalmazáshoz kapcsolódó összes üzembe helyezési hatásának megjelölése egy konfigurációs elem tárolóhely adott rendelkezik.
 
 ![Tárolóhely-beállítások][SlotSettings]
 
@@ -123,13 +123,13 @@ A kritikus fontosságú munkaterhelésekhez, érvényesíteni szeretné, hogy az
 
 Használatakor a **a felcserélés előnézettel** beállítás (lásd: [telepítési felcserélése](#Swap)), az App Service a következőket teszi:
 
-- Megtartja a céltárolóhelyre változatlan marad, így nem érinti a meglévő terhelése, hogy a bővítőhely (pl. éles környezet).
+- Megtartja a céltárolóhelyre változatlan marad, így nem érinti a meglévő terhelése, hogy a bővítőhely (például az éles környezet).
 - A forrás tárolási helyre, beleértve a tárolóhely-specifikus kapcsolati karakterláncok és Alkalmazásbeállítások céltárolóhelyen konfigurációs elemeinek vonatkozik.
 - A forrás tárolási helyre, a fent említett konfigurációs elemeket a munkavégző folyamatok újraindul.
 - Amikor befejezte a lapozófájl-kapacitás: a warmed létrehozása előtti forrás tárolási helyre helyezi a hangsúlyt a céltárolóhelyre. A rendeltetési tárolási helyre helyezi át a forrás tárolási helyre, mint egy manuális felcserélés.
 - Ha megszakítja a lapozófájl-kapacitás: újra alkalmazza a forrás tárolási helyre konfigurációs elemet a forrás tárolási helyre.
 
-Megtekintheti, pontosan hogyan az alkalmazás működik a céltárolóhelyre konfigurációjával kapcsolatban. Ellenőrzés befejezése után végezze el a lapozófájl-kapacitás egy külön lépésben. Ez a lépés előnye, hogy a forrás tárolási helyre már tárolóhelyspecifikus a kívánt konfigurációval rendelkezik, és az ügyfelek nem tapasztalnak állásidőt fog tapasztalni.  
+Megtekintheti, pontosan hogyan az alkalmazás működik a céltárolóhelyre konfigurációjával kapcsolatban. Ellenőrzés befejezése után végezze el a lapozófájl-kapacitás egy külön lépésben. Ebben a lépésben előnye, hogy a forrás tárolási helyre már tárolóhelyspecifikus a kívánt konfigurációval rendelkezik, és az ügyfelek nem tapasztalnak leállási.  
 
 Több fázisban swap érhető el az Azure PowerShell-parancsmagok-példák az Azure PowerShell-parancsmagok telepítési üzembe helyezési ponti szakaszban szerepelnek.
 
@@ -153,7 +153,7 @@ Az automatikus felcserélés konfigurálása tárhely is könnyen. Kövesse az a
     ![][Autoswap1]
 2. Válassza ki **a** a **automatikus felcserélés**, válassza ki a kívánt cél bővítőhely a **automatikus felcserélés tárolóhely**, és kattintson a **mentése** parancsra a parancssávon. Ellenőrizze, hogy a tárhely pontosan a cél tárolóhely szánt konfigurációját.
    
-    A **értesítések** lapon villogjon, egy zöld **sikeres** a művelet végrehajtása után.
+    A **értesítések** lapon tokenkódot egy zöld **sikeres** a művelet végrehajtása után.
    
     ![][Autoswap2]
    
@@ -161,26 +161,36 @@ Az automatikus felcserélés konfigurálása tárhely is könnyen. Kövesse az a
    > Tesztelje az automatikus felcserélés az alkalmazásra vonatkozóan, először jelölje ki a cél nem éles tárhely **automatikus felcserélés tárolóhely** Ismerkedjen meg a szolgáltatás számára.  
    > 
    > 
-3. Hajtsa végre egy adott üzembe helyezési pont kódot küldeni. Az automatikus felcserélés rövid idő múlva történjen, és a frissítés jelenik meg a cél a tárhely URL-címen.
+3. Hajtsa végre egy adott üzembe helyezési pont kódot küldeni. Az automatikus felcserélés rövid idő múlva történik, és megjelenik a frissítés a cél a tárhely URL-címen.
 
 <a name="Rollback"></a>
 
-## <a name="to-rollback-a-production-app-after-swap"></a>A visszaállítás után swap éles alkalmazások
+## <a name="roll-back-a-production-app-after-swap"></a>Lapozófájl-kapacitás után visszaállíthatja a éles alkalmazások
 Ki a hibákat a tárolóhelycsere élesben azonosít, ha visszaállíthatja az üzembe helyezési ponti azok előtti swap állapota az azonos két üzembe helyezési ponti azonnal csere által.
 
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up-before-swap"></a>Egyéni bemelegítési swap előtt
-Néhány alkalmazás egyéni bemelegítési műveletek lehet szükség. A `applicationInitialization` konfigurációs elem a Web.config fájlban lehetővé teszi egyéni inicializálási műveletek végrehajtása előtt a kérelem érkezik. A csereművelet végrehajtásához az egyéni bemelegítési várakozik. Íme egy minta web.config töredéket.
+Néhány alkalmazás egyéni bemelegítési műveletek lehet szükség. A `applicationInitialization` konfigurációs elem a Web.config fájlban lehetővé teszi egyéni inicializálási műveletek végrehajtása előtt a kérelem érkezik. A csereművelet végrehajtásához az egyéni bemelegítési vár. Íme egy minta web.config töredéket.
 
     <applicationInitialization>
         <add initializationPage="/" hostName="[app hostname]" />
         <add initializationPage="/Home/About" hostname="[app hostname]" />
     </applicationInitialization>
 
+## <a name="monitor-swap-progress"></a>A figyelő felcserélés folyamatban van
+
+A csereművelet néha egy ideig, például ha az alkalmazást, amelynek van cserélve rendelkezik egy bemelegítési hosszú időt vesz igénybe. A lapozófájl-kapacitás műveletének további információt kaphat a [tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) a a [Azure-portálon](https://portal.azure.com).
+
+Válassza ki az alkalmazás oldalát a portál bal oldali navigációs **tevékenységnapló**.
+
+Csereművelet jelennek meg a napló lekérdezést `Slotsswap`. Bontsa ki, és válassza ki a suboperations vagy a hiba részleteinek megtekintéséhez.
+
+![A tárolóhelycsere műveletnapló](media/web-sites-staged-publishing/activity-log.png)
+
 <a name="Delete"></a>
 
-## <a name="to-delete-a-deployment-slot"></a>Egy üzembe helyezési pont törlése
+## <a name="delete-a-deployment-slot"></a>Egy üzembe helyezési pont törlése
 Egy üzembe helyezési pont paneljén nyissa meg a telepített környezet tárolóhelye panelen, kattintson a **áttekintése** (az alapértelmezett oldal), és kattintson a **törlése** parancsra a parancssávon.  
 
 ![Egy üzembe helyezési pont törlése][DeleteStagingSiteButton]
@@ -189,41 +199,47 @@ Egy üzembe helyezési pont paneljén nyissa meg a telepített környezet tárol
 
 <a name="PowerShell"></a>
 
-## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>Az üzembe helyezési tárhely az Azure PowerShell-parancsmagjai
+## <a name="automate-with-azure-powershell"></a>Az Azure PowerShell használatával automatizálhatja
+
 Az Azure PowerShell modul, amely kezelése a Windows PowerShell, hiszen támogatják az kezelése az Azure App Service üzembe helyezési segítségével Azure-parancsmagokat kínál.
 
 * A telepítése és konfigurálása az Azure PowerShell és az Azure PowerShell hitelesítéséhez az Azure előfizetéssel rendelkező információkért lásd: [telepítése és konfigurálása a Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 - - -
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-```
+```PowerShell
 New-AzureRmWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="create-a-deployment-slot"></a>Egy üzembe helyezési tárhely létrehozása
-```
+```PowerShell
 New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="initiate-a-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Indítson el egy felcserélés előnézettel (több fázisban swap) és a cél tárolóhely konfiguráció alkalmazása a forrás tárolási helyre
-```
+```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="cancel-a-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>Megszakítja a függőben lévő felcserélés (felülvizsgálati felcserélés) és a forrás helyezési pont konfigurációjának visszaállítása
-```
+```PowerShell
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="swap-deployment-slots"></a>Központi telepítés felcserélése
-```
+```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
+```
+
+### <a name="monitor-swap-events-in-the-activity-log"></a>A figyelő a tevékenység naplóbeli eseményei a lapozófájl-kapacitás
+```PowerShell
+Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 - - -
@@ -237,53 +253,14 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 
 <a name="CLI"></a>
 
-## <a name="azure-command-line-interface-azure-cli-commands-for-deployment-slots"></a>Az üzembe helyezési tárhely az Azure parancssori felület (CLI) parancsok
-Az Azure parancssori felület platformfüggetlen parancsokat biztosít működik-e az Azure-ral, hiszen támogatják az App Service üzembe helyezési pontok kezelése.
+## <a name="automate-with-azure-cli"></a>Az Azure CLI automatizálásához
 
-* Telepítése és konfigurálása az Azure parancssori felület, beleértve az Azure parancssori felület csatlakoztatása az Azure-előfizetéshez, további információkért lásd: [telepítése és konfigurálása az Azure parancssori felület](../cli-install-nodejs.md).
-* Az Azure App Service az Azure parancssori felületen használható parancsok listáját, hívja meg a `azure site -h`.
-
-> [!NOTE] 
-> A [Azure CLI 2.0](https://github.com/Azure/azure-cli) parancsok a üzembe helyezési, lásd: [az webalkalmazás üzembe helyezési pont](/cli/azure/webapp/deployment/slot).
-
-- - -
-### <a name="azure-site-list"></a>az Azure webhely-lista
-Az aktuális előfizetésben az alkalmazásokkal kapcsolatos információk hívás **azure webhelylista**, az alábbi példa.
-
-`azure site list webappslotstest`
-
-- - -
-### <a name="azure-site-create"></a>az Azure-webhely létrehozása
-Egy üzembe helyezési tárhely létrehozása, hívja meg a **azure-webhely létrehozása** és adja meg a meglévő alkalmazás és a tárolóhely létrehozásához, az alábbi példában látható módon nevét.
-
-`azure site create webappslotstest --slot staging`
-
-Az új tárhely verziókövetésének engedélyezéséhez használja a **– git** beállítás, az alábbi példában látható módon.
-
-`azure site create --git webappslotstest --slot staging`
-
-- - -
-### <a name="azure-site-swap"></a>az Azure site lapozófájl-kapacitás
-Ahhoz, hogy a frissített telepítési az éles alkalmazások tárolóhely, használja a **azure hely swap** parancs a Csere műveletet, az alábbi példában látható módon. Az éles alkalmazás nem fog tapasztalni bármely állásidő, és nem fog változni hidegindítás.
-
-`azure site swap webappslotstest`
-
-- - -
-### <a name="azure-site-delete"></a>az Azure webhely törlése
-Az üzembe helyezési pont, amely már nem szükséges törölheti a **azure webhely törlése** parancs, az alábbi példában látható módon.
-
-`azure site delete webappslotstest --slot staging`
-
-- - -
-> [!NOTE]
-> Tekintsen meg működés közben egy webalkalmazást. [App Service kipróbálása](https://azure.microsoft.com/try/app-service/) azonnal, és hozzon létre egy rövid élettartamú alapszintű alkalmazást – nincs szükség bankkártyára, nem jár kötelezettségekkel.
-> 
-> 
+A [Azure CLI](https://github.com/Azure/azure-cli) parancsok a üzembe helyezési, lásd: [az webalkalmazás üzembe helyezési pont](/cli/azure/webapp/deployment/slot).
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure App Service Web App – webes hozzáférés letiltása nem éles üzembe helyezési](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-[Bevezetés az App Service Linux](../app-service/containers/app-service-linux-intro.md)
-[Microsoft Azure ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/)
+[Az Azure App Service Web App – nem éles üzembe helyezési webes hozzáférés letiltása](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
+[Az App Service Linux bemutatása](../app-service/containers/app-service-linux-intro.md)  
+[A Microsoft Azure ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->
 [QGAddNewDeploymentSlot]:  ./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png

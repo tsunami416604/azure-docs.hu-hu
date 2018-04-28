@@ -3,22 +3,22 @@ title: Lemezkép tárolási Azure tároló beállításjegyzék
 description: A Docker-tároló képek tárolási módját a Azure tároló beállításjegyzék, beleértve a biztonsági, redundanciát és kapacitást az adatokat.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: marsma
-ms.openlocfilehash: df46712889a3eba54f1a2288ba93c82b21b92deb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 92e60b4213cb80d193a7c35f68b8f9fd099481d7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Tároló lemezkép tárolási Azure tároló beállításjegyzék
 
 Minden [Basic, Standard és Premium](container-registry-skus.md) Azure tároló beállításjegyzék számos előnyt biztosít az Azure fejlett tárolási funkciókat, például titkosítási nyugalmi kép adatok biztonsági és adatvédelmi kép georedundancia. A következő szakaszok ismertetik a szolgáltatások és a lemezkép tárolási Azure tároló beállításjegyzék (ACR) határain.
 
-## <a name="encryption-at-rest"></a>Encryption-at-rest
+## <a name="encryption-at-rest"></a>Titkosítási nyugalmi
 
 A beállításjegyzékben összes tároló-lemezkép titkosított aktívan. Azure automatikusan titkosítja a lemezkép előtt tárolja, és visszafejti a azonnali során, vagy az alkalmazások és szolgáltatások le a lemezképet.
 

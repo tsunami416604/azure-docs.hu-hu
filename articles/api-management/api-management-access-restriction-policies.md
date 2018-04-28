@@ -1,11 +1,11 @@
 ---
-title: "A szoftverkorlátozó házirendek az Azure API Management hozzáférés |} Microsoft Docs"
-description: "További tudnivalók a hozzáférés szoftverkorlátozó házirendek az Azure API Management használható."
+title: A szoftverkorlátozó házirendek az Azure API Management hozzáférés |} Microsoft Docs
+description: További tudnivalók a hozzáférés szoftverkorlátozó házirendek az Azure API Management használható.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 11cc5841d2f804f0d120dddda226bf05a0612607
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés szoftverkorlátozó házirendek
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -65,7 +65,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |failed-check-error-message|Ha a fejléc nem létezik vagy érvénytelen értéket adja vissza a HTTP-válasz törzsében hibaüzenetet. Ez az üzenet rendelkeznie kell a megfelelő escape-karaktersorozatot különleges karaktereket.|Igen|–|  
-|failed-check-httpcode|HTTP-állapotkód vissza, ha a fejléc nem létezik, vagy érvénytelen értékkel rendelkezik.|Igen|–|  
+|nem sikerült – jelölőnégyzet-HTTP-kód|HTTP-állapotkód vissza, ha a fejléc nem létezik, vagy érvénytelen értékkel rendelkezik.|Igen|–|  
 |fejléc-neve|Ellenőrizze, hogy a HTTP-fejléc nevét.|Igen|–|  
 |esetben figyelmen kívül hagyása|Állítható igaz vagy hamis. Ha eset igaz értékre állítva a rendszer figyelmen kívül hagyja, ha a fejléc értékének a rendszer összehasonlítja a készlet az elfogadható értéktartományon.|Igen|–|  
   
@@ -88,8 +88,8 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 ```xml  
 <rate-limit calls="number" renewal-period="seconds">  
-    <api name="name" calls="number" renewal-period="seconds">  
-        <operation name="name" calls="number" renewal-period="seconds" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </rate-limit>  
 ```  
@@ -113,8 +113,8 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |korlát beállítása|A gyökérelem.|Igen|  
-|api-t|Vegyen fel legalább egy hívás sebessége korlátozza az API-k a terméken belüli ezen elemek. Termék és API hívása sebesség egymástól függetlenül korlátokat alkalmazza.|Nem|  
-|művelet|Vegyen fel legalább egy műveleten belül az API-k hívása sebessége korlátozza az ezen elemek. Termék API és művelet hívása sebesség korlátok egymástól függetlenül alkalmazza.|Nem|  
+|api-t|Vegyen fel legalább egy hívás sebessége korlátozza az API-k a terméken belüli ezen elemek. Termék és API hívása sebesség egymástól függetlenül korlátokat alkalmazza. API lehet hivatkozni vagy keresztül `name` vagy `id`. Ha mindkét biztosított, `id` fogja használni és `name` figyelmen kívül hagyja.|Nem|  
+|művelet|Vegyen fel legalább egy műveleten belül az API-k hívása sebessége korlátozza az ezen elemek. Termék API és művelet hívása sebesség korlátok egymástól függetlenül alkalmazza. Művelet lehet hivatkozni vagy keresztül `name` vagy `id`. Ha mindkét biztosított, `id` fogja használni és `name` figyelmen kívül hagyja.|Nem|  
   
 ### <a name="attributes"></a>Attribútumok  
   
@@ -243,8 +243,8 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
   
 ```xml  
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">  
-    <api name="name" calls="number" bandwidth="kilobytes">  
-        <operation name="name" calls="number" bandwidth="kilobytes" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </quota>  
 ```  
@@ -268,8 +268,8 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |kvóta|A gyökérelem.|Igen|  
-|api-t|Adjon hozzá egy vagy több ezeket az elemeket a kvóta az API-k a terméken belüli bevezetése. A termék és API-kvóták egymástól függetlenül érvényesek.|Nem|  
-|művelet|Vegyen fel legalább egy, a kvóta műveleten belül az API-k bevezetése ezeket az elemeket. Termék API és művelet kvóták egymástól függetlenül érvényesek.|Nem|  
+|api-t|Adjon hozzá egy vagy több ezeket az elemeket a terméken belüli hívás API-k kvóta bevezetése. A termék és API-hívás kvóták egymástól függetlenül vonatkozik. API lehet hivatkozni vagy keresztül `name` vagy `id`. Ha mindkét biztosított, `id` fogja használni és `name` figyelmen kívül hagyja.|Nem|  
+|művelet|Vegyen fel legalább egy hívás kvóta műveleten belül az API-k bevezetése ezeket az elemeket. Termék API és művelet hívása kvóták egymástól függetlenül érvényesek. Művelet lehet hivatkozni vagy keresztül `name` vagy `id`. Ha mindkét biztosított, `id` fogja használni és `name` figyelmen kívül hagyja.|Nem|  
   
 ### <a name="attributes"></a>Attribútumok  
   
@@ -489,7 +489,7 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |célcsoportok|Lehet, hogy a jogkivonat jelenlegi elfogadható célközönség jogcímeket listáját tartalmazza. Ha több célközönség értékek találhatók, akkor minden egyes érték próbálkozik amíg újra nem indítják összes kimerültek (ebben az esetben az érvényesítés sikertelen), vagy amíg valamelyik nem jár sikerrel. Legalább egy célközönség meg kell adni.|Nem|  
 |Kiállítói aláírási kulcsok|Aláírt jogkivonatokat érvényesítéséhez használt Base64-kódolású biztonsági kulcsok listáját. Ha több biztonsági kulcsok szerepelnek, akkor minden kulcs próbálkozik amíg újra nem indítják összes kimerültek (ebben az esetben az érvényesítés sikertelen), vagy amíg valamelyik nem jár sikerrel (hasznos token kulcsváltás). Fő elemekből kell egy nem kötelező `id` az egyeztetéshez használt attribútum `kid` jogcímek.|Nem|  
 |kibocsátók|A jogkivonat kiállító elfogadható résztvevők listájának. Ha több kibocsátó értékek találhatók, akkor minden egyes érték próbálkozik amíg újra nem indítják összes kimerültek (ebben az esetben az érvényesítés sikertelen), vagy amíg valamelyik nem jár sikerrel.|Nem|  
-|openid-config|Az elem, amelyből aláíró kulcsok és a kiállító érhető el megfelelő megnyitott azonosító konfigurációs végpont megadására használt.|Nem|  
+|openid-konfiguráció|Az elem, amelyből aláíró kulcsok és a kiállító érhető el megfelelő megnyitott azonosító konfigurációs végpont megadására használt.|Nem|  
 |szükséges jogcímeket|A jogcímek kellene lennie ahhoz, hogy a nem érvényes jogkivonat megtalálható listáját tartalmazza. Ha a `match` attribútum van beállítva `all` minden jogcím értékét a házirend a jogkivonat az érvényesítés sikeres jelen kell lennie. Ha a `match` attribútum van beállítva `any` legalább egy jogcímet a jogkivonat az érvényesítés sikeres jelen kell lennie.|Nem|  
 |zumo főkulcs|Az Azure Mobile Services által kiállított jogkivonatokat főkulcs|Nem|  
   
@@ -499,14 +499,14 @@ Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozz
 |----------|-----------------|--------------|-------------|  
 |óraeltérés|TimeSpan érték. Adja meg a várt közötti maximális eltérést a jogkivonat kiállítójának rendszerideje és az API Management-példány használatával.|Nem|0 másodperc|  
 |failed-validation-error-message|A HTTP-válasz törzsében adja vissza, ha a jwt-t nem felel meg az érvényesítési hibaüzenet. Ez az üzenet rendelkeznie kell a megfelelő escape-karaktersorozatot különleges karaktereket.|Nem|Alapértelmezett hibaüzenetet függ az érvényesítési hibát, például "JWT nem található."|  
-|failed-validation-httpcode|HTTP-állapotkód vissza, ha a jwt-t nem teljesíti az ellenőrző.|Nem|401|  
+|nem sikerült – érvényesítési-HTTP-kód|HTTP-állapotkód vissza, ha a jwt-t nem teljesíti az ellenőrző.|Nem|401|  
 |fejléc-neve|A HTTP-fejlécnek a tokent tároló neve.|Vagy `header-name` vagy `query-parameter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
 |id|A `id` attribútuma a `key` elem lehetővé teszi a karakterláncot, amely elleni megfeleltetésének `kid` tudja meg a megfelelő kulcsot az aláírás-ellenőrzés használata (ha van ilyen) a jogkivonat jogcímek.|Nem|–|  
 |Egyezés|A `match` attribútuma a `claim` elem meghatározza, hogy a házirend minden jogcím értékét kell a jogkivonat az érvényesítés sikeres szerepel. Lehetséges értékek:<br /><br /> -                          `all` – a szabályzat minden jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.<br /><br /> -                          `any` -legalább egy jogcím értékét a jogkivonat az érvényesítés sikeres jelen kell lennie.|Nem|összes|  
 |lekérdezés-paremeter-neve|Neve az a következő lekérdezésparaméter a tokent tároló.|Vagy `header-name` vagy `query-paremeter-name` megadott; de nem mindkettőn keresztül kell lennie.|–|  
-|igényelnek-lejárati-idő|Logikai érték. Meghatározza, hogy szükséges-e egy lejárati jogcímet a tokenben.|Nem|igaz|
+|igényelnek-lejárati-idő|Logikai érték. Meghatározza, hogy szükséges-e egy lejárati jogcímet a tokenben.|Nem|true|
 |szükséges rendszer|A token neve sémáját, pl. "Tulajdonos". Az attribútum van beállítva, ha a házirend biztosítja, hogy a megadott séma szerepel az engedélyezési fejléc értéke.|Nem|–|
-|require-signed-tokens|Logikai érték. Megadja, hogy egy jogkivonatot kell aláírni.|Nem|igaz|  
+|igényelnek-aláírt-tokenek|Logikai érték. Megadja, hogy egy jogkivonatot kell aláírni.|Nem|true|  
 |Elválasztó|Karakterlánc. Meghatározza az elválasztó (pl. ",") értékek beolvasása a többértékű jogcím használandó.|Nem|–| 
 |url|Azonosító konfigurációs végponti URL-cím megnyitása ahol nyitott azonosító konfigurációs metaadatok érhető el. A válasz meg kell felelnie a specifikációk, meghatározott URL-címen:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Az Azure Active Directory használata a következő URL-cím: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` a directory-bérlő neve, pl. és `contoso.onmicrosoft.com`.|Igen|–|  
   

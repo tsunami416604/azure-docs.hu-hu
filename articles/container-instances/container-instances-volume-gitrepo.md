@@ -1,18 +1,18 @@
 ---
-title: "Azure-tároló példányok gitRepo kötet csatlakoztatása"
-description: "Útmutató: a Git-tárház klónozása be a tároló példányok gitRepo kötet csatlakoztatása"
+title: Azure-tároló példányok gitRepo kötet csatlakoztatása
+description: 'Útmutató: a Git-tárház klónozása be a tároló példányok gitRepo kötet csatlakoztatása'
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 04/16/2018
 ms.author: marsma
-ms.openlocfilehash: 9acde9259fcb392458e7b2fa7d3369776978285e
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: MT
+ms.openlocfilehash: 9c4e6e16bed6c8563561e292fe93c974376bab09
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure-tároló példányát gitRepo kötet csatlakoztatása
 
@@ -33,14 +33,42 @@ Csatlakoztatásakor a *gitRepo* kötet, megadhatja a kötet konfigurálása hár
 | `directory` | Nem | Könyvtár, amelyben a tárház klónozása kell. Az elérési út kell tartalmaznia, vagy nem kezdődhet "`..`".  Ha megad "`.`", a tárház klónozták a kötet könyvtárba. Ellenkező esetben a Git-tárház klónozták be a megadott néven, a kötet könyvtárban lévő egyik alkönyvtár. |
 | `revision` | Nem | A-verziójának klónozható véglegesítési kivonatát. Ha nincs megadva, a `HEAD` változat klónozták. |
 
-## <a name="mount-a-gitrepo-volume"></a>GitRepo kötet csatlakoztatása
+## <a name="mount-gitrepo-volume-azure-cli"></a>Kötet csatlakoztatási gitRepo: Azure parancssori felület
 
-Csatlakoztassa a *gitRepo* kötet tároló példányt, ha már telepítette használatával egy [Azure Resource Manager sablon](/azure/templates/microsoft.containerinstance/containergroups).
+GitRepo kötet csatlakoztatása, tároló példányok központi telepítésekor a [Azure CLI](/cli/azure), szállítási a `--gitrepo-url` és `--gitrepo-mount-path` paramétereit, és a [az tároló létrehozása] [ az-container-create] parancsot. Opcionálisan megadhat a kötetek klónozása a könyvtár (`--gitrepo-dir`) és a-verziójának klónozható véglegesítési kivonatát (`--gitrepo-revision`).
 
-Először feltöltése a `volumes` a tároló csoport tömb `properties` a sablon szakasza. Minden egyes tároló, amelyben szeretné csatlakoztatni a tárolócsoport a következő a *gitRepo* kötet, feltölti a `volumeMounts` tömb a a `properties` szakasz tároló-definícióban.
+A példában a parancs klónokat a [aci-helloworld] [ aci-helloworld] a mintaalkalmazás `/mnt/aci-helloworld` tároló-példány:
+
+```azurecli-interactive
+az container create \
+    --resource-group myResourceGroup \
+    --name hellogitrepo \
+    --image microsoft/aci-helloworld \
+    --dns-name-label aci-demo \
+    --ports 80 \
+    --gitrepo-url https://github.com/Azure-Samples/aci-helloworld \
+    --gitrepo-mount-path /mnt/aci-helloworld
+```
+
+Annak ellenőrzéséhez, hogy a gitRepo kötet csatlakoztatása, indítsa el a rendszerhéj-tárolóban levő [az tároló exec] [ az-container-exec] és a directory listája:
+
+```console
+$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+/usr/src/app # ls -l /mnt/aci-helloworld/
+total 16
+-rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
+-rw-r--r--    1 root     root          1162 Apr 16 16:35 LICENSE
+-rw-r--r--    1 root     root          1237 Apr 16 16:35 README.md
+drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
+```
+
+## <a name="mount-gitrepo-volume-resource-manager"></a>Kötet csatlakoztatási gitRepo: erőforrás-kezelő
+
+GitRepo kötet csatlakoztatása, tároló példányok telepítésekor egy [Azure Resource Manager sablon](/azure/templates/microsoft.containerinstance/containergroups), először feltöltése a `volumes` a tároló csoport tömb `properties` a sablon szakasza. Ezt követően a, amelyben szeretné csatlakoztatni a tárolócsoport minden egyes tároló a *gitRepo* kötet, feltölti a `volumeMounts` tömb a a `properties` szakasz tároló-definícióban.
 
 Például a következő Resource Manager-sablon csoportot hoz létre tárolót álló egyetlen tárolót. A tároló által megadott két GitHub-adattárak klónokat a *gitRepo* kötet blokkokat. A második kötet tartalmaz további megadásával való klónozásához egy könyvtárat, és egy adott változat klónozását véglegesítési kivonatát.
 
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
 [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 Az eredményül kapott könyvtárstruktúrát a két klónozott repók az előző sablonban meghatározott van:
@@ -59,3 +87,10 @@ Megtudhatja, hogyan csatlakoztatása egyéb Azure tároló példányok kötet t�
 * [Azure-tároló példányát az Azure fájlmegosztások csatlakoztatása](container-instances-volume-azure-files.md)
 * [Az Azure-tároló példányát emptyDir kötet csatlakoztatása](container-instances-volume-emptydir.md)
 * [Azure-tároló példányát titkos kötet csatlakoztatása](container-instances-volume-secret.md)
+
+<!-- LINKS - External -->
+[aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
+
+<!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-exec]: /cli/azure/container#az-container-exec

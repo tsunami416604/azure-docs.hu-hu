@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4dc1b070f7933f23ee615501dfbc68551068210c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Az Azure Data Lake Store biztonsági
 Sok vállalat vannak kihasználja a big data elemzésre szolgáló üzleti elemzéseket felhasználóinál intelligens döntéseket. Egy szervezet előfordulhat, hogy rendelkezik egy összetett és szabályozott környezetben, a különböző felhasználók növekvő számú. Győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja a rendszer biztonsága érdekében együtt a megfelelő szintű hozzáférést biztosít az egyéni felhasználók számára a vállalati létfontosságú. Azure Data Lake Store célja e biztonsági követelményeknek. Ebből a cikkből megtudhatja, Data Lake Store biztonsági képességeivel kapcsolatos többek között:
@@ -35,7 +35,7 @@ Hitelesítés az a folyamat, amellyel a felhasználó identitásának ellenőrz�
 Lehet, hogy minden Azure-előfizetéssel társítva van egy példányát az Azure Active Directory. Csak a felhasználók és a szolgáltatás-identitások az Azure Active Directory szolgáltatásban meghatározott érhető el a Data Lake Store-fiók, az Azure portálon, a parancssori eszközök, vagy ügyfélalkalmazások keresztül a szervezet az Azure Data Lake használatával hoz létre Store SDK. Az Azure Active Directoryt használja a központi hozzáférés-vezérlési mechanizmus főbb előnyei a következők:
 
 * Egyszerűsített identitás életciklusának kezelésére. A felhasználó vagy egy szolgáltatást (egyszerű szolgáltatásidentitás) hozható létre gyorsan és egyszerűen törlése vagy a könyvtárban a fiók letiltása gyorsan visszavonva.
-* Többtényezős hitelesítés [A multi-factor authentication](../multi-factor-authentication/multi-factor-authentication.md) egy további biztonsági réteget biztosít a felhasználói bejelentkezéseket és tranzakciókat.
+* Többtényezős hitelesítés [A multi-factor authentication](../active-directory/authentication/multi-factor-authentication.md) egy további biztonsági réteget biztosít a felhasználói bejelentkezéseket és tranzakciókat.
 * Bármely ügyfél szabványos protokollhoz, például az OAuth vagy OpenID keresztül hitelesítést.
 * Összevonási vállalati címtárszolgáltatások és a felhőalapú identitás-szolgáltatóktól.
 

@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 90bbcc865f13a1d048ea12fdccd3ca848cf362ba
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 749157d16c1c394b173545dddb8751d58fdcfd56
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>A RESTful-szolgáltatásokat biztonságos alapvető HTTP-hitelesítés használatával
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 Az egy [kapcsolódó az Azure AD B2C-cikk](active-directory-b2c-custom-rest-api-netfw.md), létrehozhat egy RESTful szolgáltatás (webes API-k), amely az Azure Active Directory B2C (az Azure AD B2C) felhasználói utak hitelesítés nélkül. 
 
 Ebben a cikkben hozzáadhat egyszerű HTTP-hitelesítés a RESTful szolgáltatás érdekében, hogy a csak ellenőrzése és a felhasználók B2C, beleértve az API-t. HTTP egyszerű hitelesítéssel a felhasználói hitelesítő adatokat (Alkalmazásazonosító és alkalmazás titkos kulcs) az egyéni házirendek beállítása. 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: f9a3eeff7a44c98228f89a7519117b043217eefd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 17043ef3450554dd4ea272a4b7732367bae8e369
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Adatkészletek és az Azure Data Factory összekapcsolt szolgáltatások 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -193,7 +193,7 @@ Tulajdonság | Leírás | Szükséges
 név | Az oszlop neve. | Igen
 type | Az oszlop adattípusát. Adat-előállító megengedett értékek, a következő ideiglenes adattípusokat támogatja: **Int16, Int32, Int64, egyetlen, Double, Decimal, Byte [], logikai érték, karakterlánc, Guid, Datetime, Datetimeoffset és Timespan** | Nem
 Kulturális környezet | . A NET-alapú kulturális környezet lehet használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Az alapértelmezett érték `en-us`. | Nem
-Formátumban | Formázó karakterlánc kell használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Tekintse meg [egyéni dátum és idő formátumú karakterláncok](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings) a dátum és idő formázása. | Nem
+Formátumban | Formázó karakterlánc kell használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Tekintse meg [egyéni dátum és idő formátumú karakterláncok](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) a dátum és idő formázása. | Nem
 
 ### <a name="example"></a>Példa
 A következő példában tegyük fel, hogy a forrás Blobadatok CSV formátumú három oszlopot tartalmaz: a felhasználói azonosítóját, nevét és lastlogindate. Vannak Int64, típusú karakterlánc, és a DateTime típusú érték a hét napjára rövidített francia nevekkel egyéni dátum és idő formátumban.

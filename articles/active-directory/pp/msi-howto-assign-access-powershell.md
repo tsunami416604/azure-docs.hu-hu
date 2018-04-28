@@ -1,11 +1,11 @@
 ---
-title: "Az MSI-hozzáférés hozzárendelése az Azure erőforráscsoport, a PowerShell használatával"
-description: "Lépésről lépésre utasítások hozzárendelése egy olyan MSI Csomaghoz, egy erőforráson, egy másik erőforrás, a PowerShell használatával való hozzáférés."
+title: Az MSI-hozzáférés hozzárendelése az Azure erőforráscsoport, a PowerShell használatával
+description: Lépésről lépésre utasítások hozzárendelése egy olyan MSI Csomaghoz, egy erőforráson, egy másik erőforrás, a PowerShell használatával való hozzáférés.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c9f146e829e463fbdaf1bcff8747ffc5dd055ecb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: ac8cca1e80defca33a879db5d4c160362314931a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>A kezelt Service Identity (MSI) hozzáférés hozzárendelése egy erőforrás PowerShell használatával
 
@@ -36,10 +36,10 @@ Továbbá, telepítse [Azure PowerShell verziója 4.3.1](https://www.powershellg
 
 Egy Azure-erőforrás a MSI bekapcsolását követően [például egy Azure virtuális gép](msi-qs-configure-powershell-windows-vm.md):
 
-1. Jelentkezzen be az Azure használatával a `Login-AzureRmAccount` parancsmag. Használjon olyan fiókot, amely alatt a MSI konfigurált Azure-előfizetéssel társított:
+1. Jelentkezzen be az Azure használatával a `Connect-AzureRmAccount` parancsmag. Használjon olyan fiókot, amely alatt a MSI konfigurált Azure-előfizetéssel társított:
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 2. Ebben a példában azt hozzáadásakor jogosultságot ad az Azure virtuális gép hozzáférés tárfiókba. Először használjuk [Get-AzureRMVM](/powershell/module/azurerm.compute/get-azurermvm) a virtuális gép "myVM", amely jött létre, amikor a jelenleg engedélyezve van az MSI nevű az egyszerű szolgáltatás eléréséhez. Ezt követően használjuk [New-AzureRmRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment) ahhoz, hogy a virtuális gép megkapja a storage-fiókok hozzáférést "Olvasó" nevű "myStorageAcct":
 

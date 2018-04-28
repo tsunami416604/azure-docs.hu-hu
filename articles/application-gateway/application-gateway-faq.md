@@ -9,15 +9,15 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 41d679d7660cbc35d6af8f9afc1a36e6e5c5c541
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Alkalmazásátjáró gyakori kérdések
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 **Q. Mi az Application Gateway?**
 
@@ -53,7 +53,7 @@ Háttérkészlet állhat hálózati adapter virtuálisgép-méretezési csoporto
 
 **Q. Milyen régiók érhető el a szolgáltatást?**
 
-Alkalmazásátjáró globális Azure minden területen érhető el. Rendszerben is elérhető [Azure Kína](https://www.azure.cn/) és [Azure Government](https://azure.microsoft.com/en-us/overview/clouds/government/)
+Alkalmazásátjáró globális Azure minden területen érhető el. Rendszerben is elérhető [Azure Kína](https://www.azure.cn/) és [Azure Government](https://azure.microsoft.com/overview/clouds/government/)
 
 **Q. Ez az előfizetésem dedikált telepítésének vagy azt megoszthatja ügyfelek?**
 
@@ -183,7 +183,7 @@ Nem, de Alkalmazásátjáró riasztást küldjön, amikor a küszöbérték elé
 
 Igen, Azure példányok elosztása frissítés és a tartalék tartományok győződjön meg arról, hogy minden példány nem egy időben. Alkalmazásátjáró támogatja, több példányát ugyanahhoz az átjáróhoz a terhelés hozzáadásával méretezés.
 
-## <a name="ssl-configuration"></a>SSL Configuration
+## <a name="ssl-configuration"></a>SSL-beállítása
 
 **Q. Milyen tanúsítványok Alkalmazásátjáró támogatottak?**
 
@@ -327,6 +327,6 @@ Igen, Alkalmazásátjáró támogatja a riasztások, értesítések metrikák ki
 
 A leggyakoribb oka a háttérkiszolgálón a hozzáférést egy NSG-t vagy egyéni DNS-megjelenítését blokkolják. Látogasson el [háttér állapot, a diagnosztikai naplózás és a metrikák az Alkalmazásátjáró](application-gateway-diagnostics.md) további.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információt az Alkalmazásátjáró látogasson el [Alkalmazásátjáró bemutatása](application-gateway-introduction.md).
+További információt az Alkalmazásátjáró látogasson el [Mi az Azure Application Gateway?](overview.md)

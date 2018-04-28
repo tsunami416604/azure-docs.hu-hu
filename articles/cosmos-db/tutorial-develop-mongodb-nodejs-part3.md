@@ -1,25 +1,25 @@
 ---
-title: "MongoDB, Angular és Node oktatóanyag az Azure-hoz – 3. rész | Microsoft Docs"
-description: "A MongoDB-alkalmazások Azure Cosmos DB-n Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 3. része."
+title: MongoDB, Angular és Node oktatóanyag az Azure-hoz – 3. rész | Microsoft Docs
+description: A MongoDB-alkalmazások Azure Cosmos DB-n Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 3. része.
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: ff75b4546a85c1c0bbf5c256977a3d33016c8c44
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: MT
+ms.openlocfilehash: de645f46a889ba05fc54b1c5d2b9da64393d348e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 3. rész: A felhasználói felület létrehozása az Angular segítségével
 
@@ -101,7 +101,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
     > 2. A keresőmezőbe írja be az *angular essentials* kifejezést.
     > 3. Kattintson az **Install** (Telepítés) gombra. 
     > 4. Az új bővítmények alkalmazásához kattintson a **Reload** (Újbóli betöltés) gombra,
-    > vagy töltse le a fájlokat a [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials) helyről. 
+    > vagy töltse le a [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials) helyről. 
     > ![Angular Essentials bővítmény](./media/tutorial-develop-mongodb-nodejs-part3/angular-essentials-extension.png)
 
 7. Lépjen vissza a **heroes.component.html** fájlra, és másolja be ezt a kódot. A `<div>` tároló tárolja a teljes oldalt. A tárolóban a fő képek egy listája található, amelyeket létre kell hoznia, hogy amikor majd azokra kattint, akkor a felhasználói felületen kijelölhesse és szerkeszthesse, illetve törölhesse azokat. Ezután a HTML-ben némi stíluskezelést hajtunk végre, amely azt mutatja majd, hogy melyik elem lett kijelölve. Emellett van egy szerkesztési terület, ahol felvehetők az új fő képek vagy szerkeszthetők a meglévők. 
@@ -547,7 +547,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
      ![Helyileg futó főképalkalmazás](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

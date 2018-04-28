@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6767257a540e4f29bb5445a718ad65a31e1f373e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 7d263dbb89b10876c3a1deb330f969c598addd6a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
 
@@ -33,9 +33,9 @@ Ez a cikk az Azure PowerShell 3.0.0-s verziójának parancsmagjain alapul. Aján
 Az alábbi műveletek segítségével felügyelheti az Azure PowerShell-lel a Batch-erőforrásokat.
 
 * [Telepítse és konfigurálja az Azure PowerShellt](/powershell/azure/overview)
-* Futtassa a **Login-AzureRmAccount** parancsmagot, hogy csatlakozzon az előfizetéséhez (az Azure Batch-parancsmagok az Azure Resource Manager modulban találhatók):
+* A **Connect-AzureRmAccount** parancsmag futtatásával csatlakozzon az előfizetéséhez (az Azure Batch-parancsmagok az Azure Resource Manager modulban találhatók):
   
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 * **Regisztráljon a Batch-szolgáltató névterével**. Ezt a műveletet **előfizetésenként csak egyszer** kell elvégezni.
   
     `Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch`

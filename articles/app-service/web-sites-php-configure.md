@@ -1,24 +1,23 @@
 ---
-title: PHP-konfigurálás az Azure App Service Web Apps |} Microsoft Docs
+title: Az Azure App Service Web Apps PHP-konfigurálás
 description: Megtudhatja, hogyan konfigurálhatja az alapértelmezett a PHP-telepítés vagy egy egyéni PHP-telepítés hozzáadása az Azure App Service Web Apps.
 services: app-service
 documentationcenter: php
-author: cephalin
+author: msangapu
 manager: cfowler
-editor: ''
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: cephalin
-ms.openlocfilehash: a9059be43a6188b81b57f1503bba241b3138e114
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.date: 04/11/2018
+ms.author: msangapu
+ms.openlocfilehash: 3dbd41756ede8577fee43d9758e39eb36130a6ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Az Azure App Service Web Apps PHP-konfigurálás
 
@@ -50,7 +49,7 @@ PHP 7.0 és a PHP 7.2 változatokat is elérhető, de alapértelmezés szerint n
 
 1. Nyissa meg az Azure PowerShell, és jelentkezzen be a fiók:
 
-        PS C:\> Login-AzureRmAccount
+        PS C:\> Connect-AzureRmAccount
 1. Állítsa be a PHP verzióját a webalkalmazás számára.
 
         PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}

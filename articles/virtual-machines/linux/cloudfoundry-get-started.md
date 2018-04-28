@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 25cb758d6d897e03884f77459620e69600a78511
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry az Azure-ban
 
@@ -59,11 +59,11 @@ Ha döntő felhő Foundry használ, a service broker is [csempe elérhető](http
 
 ## <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
-### <a name="visual-studio-team-services-plugin"></a>Visual Studio Team Services plugin
+### <a name="visual-studio-team-services-plugin"></a>Visual Studio Team Services beépülő modul
 
 Felhő Foundry kiválóan alkalmas a gyors szoftverfejlesztői, beleértve a folyamatos integrációt (CI) és a folyamatos kézbesítési (CD) használatát. Ha a Visual Studio Team Services (VSTS) segítségével a projektek kezelését, és szeretne CI/CD-ről be a következő feldolgozási sorban célzó felhőalapú Foundry, használja a [VSTS felhő Foundry összeállítási kiterjesztés](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). A beépülő modul segítségével egyszerűen konfigurálható és felhő Foundry való telepítésének automatizálásához e futó Azure vagy egy másik környezetben.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure piactérről döntő felhő Foundry telepítése](https://azure.microsoft.com/en-us/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [Az Azure piactérről döntő felhő Foundry telepítése](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
 - [Foundry az Azure-felhőbe alkalmazás telepítése](./cloudfoundry-deploy-your-first-app.md)

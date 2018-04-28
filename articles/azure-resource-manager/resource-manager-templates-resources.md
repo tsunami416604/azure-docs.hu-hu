@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Resource Manager sablon struktúra és szintaxis |} Microsoft Docs"
-description: "A struktúra és az Azure Resource Manager-sablonok deklaratív JSON-szintaxis használatával tulajdonságait ismerteti."
+title: Az Azure Resource Manager sablon erőforrások |} Microsoft Docs
+description: Az Azure Resource Manager-sablonok deklaratív JSON-szintaxis használatával erőforrások szakasza ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: b5438080f71fa8f5c4f03006b75b826f1cfa576a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 74830a5220a75408398af2224204f8195ab27cc6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok források szakasza
 
@@ -42,9 +42,9 @@ Meghatározhatja az erőforrások az alábbi szerkezettel:
       "comments": "<your-reference-notes>",
       "copy": {
           "name": "<name-of-copy-loop>",
-          "count": "<number-of-iterations>",
+          "count": <number-of-iterations>,
           "mode": "<serial-or-parallel>",
-          "batchSize": "<number-to-deploy-serially>"
+          "batchSize": <number-to-deploy-serially>
       },
       "dependsOn": [
           "<array-of-related-resource-names>"
@@ -58,6 +58,21 @@ Meghatározhatja az erőforrások az alábbi szerkezettel:
                   "input": {}
               }
           ]
+      },
+      "sku": {
+          "name": "<sku-name>",
+          "tier": "<sku-tier>",
+          "size": "<sku-size>",
+          "family": "<sku-family>",
+          "capacity": <sku-capacity>
+      },
+      "kind": "<type-of-resource>",
+      "plan": {
+          "name": "<plan-name>",
+          "promotionCode": "<plan-promotion-code>",
+          "publisher": "<plan-publisher>",
+          "product": "<plan-product>",
+          "version": "<plan-version>"
       },
       "resources": [
           "<array-of-child-resources>"
@@ -78,11 +93,14 @@ Meghatározhatja az erőforrások az alábbi szerkezettel:
 | másolás |Nem |Ha egynél több példány van szükség, az olyan erőforrások száma létrehozásához. Az alapértelmezett mód párhuzamos. Adja meg a soros módban, ha nem szeretné, hogy az összes vagy egy időben üzembe helyezendő erőforrásokat. További információkért lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nem |Ehhez az erőforráshoz központi telepítése előtt telepíteni kell erőforrások. Erőforrás-kezelő kiértékeli az erőforrások közti függőségeket, és telepíti azokat a megfelelő sorrendben. Ha nincsenek függő erőforrások, párhuzamos központi telepítés. Az érték lehet egy vesszővel elválasztott lista erőforrás nevét vagy egyedi erőforrás-azonosítók. Ez a sablon üzembe helyezett erőforrások csak felsorolása Erőforrások, amelyek nincsenek meghatározva a sablonban már léteznie kell. Kerülje a szükségtelen függőségek hozzáadásával még a központi telepítés lassú, és hozzon létre körkörös függőségi viszony. A beállítás függőségek útmutatást lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md). |
 | properties |Nem |Erőforrás-specifikus konfigurációs beállításokat. A tulajdonságok értékeit ugyanazok, mint a REST API művelet (PUT metódust) létrehozni az erőforrást a kérés törzsében meg az értékeket. Egy tulajdonság több példányát létrehozni egy másolatot tömb is megadható. |
+| sku | Nem | Bizonyos erőforrások értékeket, amelyek meghatározzák a Termékváltozat telepítendő engedélyezése. Például megadhatja a storage-fiókok felügyeletére szolgáló típusú. |
+| típusa | Nem | Bizonyos erőforrások engedélyezése egy érték, amely meghatározza a telepít erőforrás típusát. Megadhatja például, a típus Cosmos-adatbázis létrehozásához. |
+| csomag | Nem | Bizonyos erőforrások értékeket, amelyek meghatározzák a tervezi engedélyezése. Például megadhatja a virtuális gép Piactéri lemezképhez. | 
 | erőforrás |Nem |A múltbeli erőforrástól függő gyermekszintű erőforrása. Csak olyan típusú erőforrások a szülő erőforrás sémája által számukra engedélyezett. A gyermek-erőforrás teljesen minősített típusú tartalmaz szülő erőforrástípusra, például **Microsoft.Web/sites/extensions**. A szülő erőforrás függőség nem utal. Függőséget explicit módon meg kell adni. |
 
 ## <a name="resource-specific-values"></a>Erőforrás-specifikus értékeket
 
-A **apiVersion**, **típus**, és **tulajdonságok** minden erőforrás típusa eltérő. Ezekhez a tulajdonságokhoz tartozó értékek meghatározásáról, lásd: [sablonra való hivatkozást](/azure/templates/).
+A **apiVersion**, **típus**, és **tulajdonságok** elemek eltérőek az egyes erőforrás. A **sku**, **jellegű**, és **terv** elemei a következők egyes erőforrástípusok esetében érhető el, de nem minden. Ezekhez a tulajdonságokhoz tartozó értékek meghatározásáról, lásd: [sablonra való hivatkozást](/azure/templates/).
 
 ## <a name="resource-names"></a>Erőforrások neve
 Általában három típusú erőforrásnevek a Resource Manager használata:

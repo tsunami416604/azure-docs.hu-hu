@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Active Directory fejlesztői fogalmak |} Microsoft Docs"
-description: "A gyakran használt Azure Active Directory fejlesztői fogalmak és szolgáltatások feltételei listáját."
+title: Az Azure Active Directory fejlesztői fogalmak |} Microsoft Docs
+description: A gyakran használt Azure Active Directory fejlesztői fogalmak és szolgáltatások feltételei listáját.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 81e0778a0ae168170436213d8aa48c8d60575da2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 Ez a cikk az Azure Active Directory (AD) fejlesztői alapfogalmakat, amelyek hasznosak, ha az Azure AD alkalmazásfejlesztés megtanulni részénél definíciókat tartalmazza.
@@ -79,7 +79,7 @@ Meghatározása szerint a [OAuth2 engedélyezési keretrendszer][OAuth2-Role-Def
 
 Alkalmazások integrálása az Azure AD, ha az Azure AD megvalósítja a hitelesítési kiszolgálói szerepkört az Azure AD-alkalmazások és a Microsoft service API-k, például [Microsoft Graph API-k][Microsoft-Graph].
 
-## <a name="claim"></a>Jogcímszabály
+## <a name="claim"></a>igénylés
 A [biztonsági jogkivonat](#security-token) jogcímeket, amely helyességi feltételek egy entitást tartalmaz (például egy [ügyfélalkalmazás](#client-application) vagy [erőforrás tulajdonosa](#resource-owner)) (például a egymásikentitáshoz[erőforrás-kiszolgáló](#resource-server)). Jogcímek olyan név/érték párok, amely a token tárgyú tények továbbítása (például a hitelesített rendszerbiztonsági tagot az [engedélyezési server](#authorization-server)). A jogcímeket egy adott jogkivonat több változók, például a típusuk, a tulajdonos, az alkalmazás konfigurációja stb hitelesítéséhez használt hitelesítő adat típusának token függenek.
 
 Lásd: [az Azure AD-jogkivonatok referenciájából] [ AAD-Tokens-Claims] további részleteket.
@@ -105,7 +105,7 @@ Lásd: [bármely Azure AD-felhasználó, a több-bérlős alkalmazás minta hasz
 ## <a name="native-client"></a>natív ügyfél
 Olyan típusú [ügyfélalkalmazás](#client-application) telepített natív módon az eszközön. Összes kódot az eszközön végrehajtása, mert egy "nyilvános" ügyfél hitelesítő adatok közvetlenül a Microsoftnak/bizalmasan tárolására, mert minősül. Lásd: [OAuth2-ügyfél meg kell adnia, és profilok] [ OAuth2-Client-Types] további részleteket.
 
-## <a name="permissions"></a>Engedélyek
+## <a name="permissions"></a>engedélyek
 A [ügyfélalkalmazás](#client-application) fér hozzá egy [erőforrás-kiszolgáló](#resource-server) is deklarálni kell engedélyekre vonatkozó kéréseit. Kétféle érhetők el:
 
 * "Delegált" engedéllyel, amelynek [hatókör-alapú](#scopes) delegált engedélyezése a bejelentkezett a hozzáférési [erőforrás tulajdonosa](#resource-owner), jelenjenek meg az erőforráshoz, futásidőben ["scp" jogcímek](#claim) az ügyfél [hozzáférési jogkivonat](#access-token).
@@ -152,10 +152,10 @@ Folyamat egy [ügyfélalkalmazás](#client-application) kapcsolódó állapot c�
 
 Egy alkalmazás bejelentkezési funkciójának általában egyszeri bejelentkezéses (SSO) végrehajtásához használatos. Azt is előz "előfizetés" függvény, mint a belépési pont, a felhasználó hozzáfér egy alkalmazás (után első bejelentkezés). A regisztrációs függvény segítségével gyűjtse össze és egyes felhasználók további állapotban maradnak, és előfordulhat, hogy [felhasználói hozzájárulás](#consent).
 
-## <a name="sign-out"></a>Kijelentkezés
+## <a name="sign-out"></a>kijelentkezés
 A folyamatot nem hitelesítő felhasználó, a felhasználói állapot leválasztása társított a [ügyfélalkalmazás](#client-application) munkamenet során [bejelentkezés](#sign-in)
 
-## <a name="tenant"></a>Bérlői
+## <a name="tenant"></a>bérlő
 Az Azure AD-címtár egy példányát az Azure AD-bérlő nevezzük. Több funkciót, beleértve a tartalmazza:
 
 * a beállításjegyzék szolgáltatás integrált alkalmazások
@@ -176,7 +176,7 @@ Hasonló ahhoz, ahogy a szolgáltatás egyszerű objektum egy alkalmazáspéldá
 ## <a name="web-client"></a>webes ügyfél
 Olyan típusú [ügyfélalkalmazás](#client-application) , amely végrehajtja az összes kód egy webkiszolgálón, és képes biztonságosan tárolja a hitelesítő adatok a kiszolgálón egy "bizalmas" ügyfél működhet. Lásd: [OAuth2-ügyfél meg kell adnia, és profilok] [ OAuth2-Client-Types] további részleteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A [Azure AD fejlesztői útmutató] [ AAD-Dev-Guide] van minden Azure AD-fejlesztési célra kezdőlapja kapcsolódó témakörök, valamint áttekintést [alkalmazásintegráció] [ AAD-How-To-Integrate] és alapjait [az Azure AD-alapú hitelesítés és a támogatott hitelesítési forgatókönyvek][AAD-Auth-Scenarios].  Is található mintakódok és oktatóprogramok, akinek gyorsan üzembe az beszerzése [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom, például a kérelmekről új definíciók vagy meglévőket frissítése!
@@ -203,7 +203,7 @@ Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen p
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
-[O365-Perm-Ref]: https://msdn.microsoft.com/en-us/office/office365/howto/application-manifest
+[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3

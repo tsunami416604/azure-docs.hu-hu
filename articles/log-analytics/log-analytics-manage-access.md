@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 6caa0c8769ea6e62a22659089f37f74f6962e1c7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -77,7 +77,7 @@ Az alapértelmezett beállítások szerint a munkaterületet létrehozó Microso
 A Log Analytics-munkaterületekhez történő hozzáférés két engedélyezési modellel szabályozható:
 
 1. Örökölt Log Analytics felhasználói szerepkörök
-2. [Azure szerepkör-alapú hozzáférés](../active-directory/role-based-access-control-configure.md)
+2. [Azure szerepkör-alapú hozzáférés](../role-based-access-control/role-assignments-portal.md)
 
 Az alábbi táblázat az egyes engedélyezési modellekkel beállítható hozzáféréseket foglalja össze:
 
@@ -104,7 +104,7 @@ Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>A Log Analyticshez való hozzáférés szabályozása Azure-engedélyekkel
-Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../active-directory/role-based-access-control-configure.md) című rész lépéseit.
+Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../role-based-access-control/role-assignments-portal.md) című rész lépéseit.
 
 Az Azure két beépített felhasználói szerepkört biztosít a Log Analyticshez:
 - Log Analytics olvasó
@@ -156,7 +156,7 @@ Ezen szerepkörökkel különféle hatókörökben biztosíthat hozzáférést a
 - Erőforráscsoport – Hozzáférés az erőforráscsoportban lévő összes munkaterülethez
 - Erőforrás – Hozzáférés kizárólag az adott erőforráshoz
 
-Az [egyéni szerepkörök](../active-directory/role-based-access-control-custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
+Az [egyéni szerepkörök](../role-based-access-control/custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Az Azure felhasználói szerepkörei és a Log Analytics-portál felhasználói szerepkörei
 Ha legalább olvasási Azure-engedéllyel rendelkezik a Log Analytics-munkaterületen, az **OMS-portál** feladatra kattintva nyithatja meg az OMS-portált a Log Analytics-munkaterület megtekintésekor.
@@ -174,11 +174,11 @@ Az OMS-portálon érvényes szerepkör-hozzárendelés meghatározása a követk
 | Felhőszolgáltató (CSP) által kezelt előfizetések esetén <br> A bejelentkezéshez használt fiók a munkaterülettel társított Azure Active Directoryban található | Rendszergazda | Jellemzően egy felhőszolgáltató ügyfele |
 | Felhőszolgáltató (CSP) által kezelt előfizetések esetén <br> A bejelentkezéshez használt fiók a munkaterülettel társított Azure Active Directoryban található | Közreműködő | Jellemzően a felhőszolgáltató |
 
-<sup>1</sup>A szerepkör-meghatározásokról az [Azure-engedélyeket](../active-directory/role-based-access-control-custom-roles.md) ismertető cikk nyújt részletesebb tájékoztatást. A szerepkörök kiértékelésekor a `*` és a `Microsoft.OperationalInsights/workspaces/*` műveletek nem egyenértékűek.
+<sup>1</sup>A szerepkör-meghatározásokról az [Azure-engedélyeket](../role-based-access-control/custom-roles.md) ismertető cikk nyújt részletesebb tájékoztatást. A szerepkörök kiértékelésekor a `*` és a `Microsoft.OperationalInsights/workspaces/*` műveletek nem egyenértékűek.
 
 Néhány dolog, amit érdemes észben tartani az Azure Portal kapcsán:
 
-* Amikor a http://mms.microsoft.com webhelyről jelentkezik be az OMS-portálra, akkor a **Munkaterület kiválasztása** lista jelenik meg. Ez a lista csak azokat a munkaterületeket tartalmazza, ahol Log Analytics felhasználói szerepkörrel rendelkezik. Az Azure-előfizetéssel elérhető munkaterületek csak akkor lesznek láthatók, ha az URL-cím részeként megad egy bérlőt. Például: `mms.microsoft.com/?tenant=contoso.com`. A bérlőazonosító gyakran a bejelentkezéshez használt e-mail-cím utolsó része.
+* Ha a http://mms.microsoft.com webhelyről jelentkezik be az OMS-portálra, akkor a **Munkaterület kiválasztása** lista jelenik meg. Ez a lista csak azokat a munkaterületeket tartalmazza, ahol Log Analytics felhasználói szerepkörrel rendelkezik. Az Azure-előfizetéssel elérhető munkaterületek csak akkor lesznek láthatók, ha az URL-cím részeként megad egy bérlőt. Például: `mms.microsoft.com/?tenant=contoso.com`. A bérlőazonosító gyakran a bejelentkezéshez használt e-mail-cím utolsó része.
 * Amennyiben közvetlenül kíván elérni egy portált, amelyhez Azure-engedélyekkel rendelkezik, akkor meg kell adni az erőforrást az URL-cím részeként. Ezt az URL-címet a PowerShell használatával is elő lehet állítani.
 
   Például: `(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`.

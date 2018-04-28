@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d1d098f45c391363523b6a56ec0c6fdb40e64d68
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 599c016763fde6f1dc8221fffa554cf68e8c498f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Az Azure erőforrás-kezelő támogatási használata az Azure terheléselosztó
 
@@ -46,7 +46,7 @@ Sablonok tartalmazhatnak a virtuális gépek, virtuális hálózatok, rendelkez�
 
 [További információ a sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
-[További információ a hálózati erőforrások](../virtual-network/resource-groups-networking.md)
+[További információ a hálózati erőforrások](../networking/networking-overview.md)
 
 Gyors üzembe helyezés sablonok használata az Azure Load Balancer, tekintse meg a [GitHub-tárházban](https://github.com/Azure/azure-quickstart-templates) üzemeltető közösségi létrehozott sablonok készlete.
 

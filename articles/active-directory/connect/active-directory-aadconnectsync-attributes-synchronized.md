@@ -1,11 +1,11 @@
 ---
-title: "Attribútumok szinkronizálva az Azure AD Connect |} Microsoft Docs"
-description: "Az Azure Active Directoryval szinkronizált attribútumok listája."
+title: Attribútumok szinkronizálva az Azure AD Connect |} Microsoft Docs
+description: Az Azure Active Directoryval szinkronizált attribútumok listája.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect szinkronizálási szolgáltatás által szinkronizált attribútumok listája.  
@@ -39,10 +39,10 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | Attribútum neve | Felhasználó | Megjegyzés |
 | --- |:---:| --- |
 | AccountEnabled |X |Meghatározza, hogy a fiók engedélyezve van. |
-| cn |X | |
+| CN |X | |
 | displayName |X | |
 | objectSID |X |gépi tulajdonság. AD-felhasználói azonosító karbantarthatja az Azure közötti szinkronizálás AD és az AD. |
-| pwdLastSet |X |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. A jelszó-szinkronizálás és a összevonási használják. |
+| pwdLastSet |X |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. Jelszókivonat-szinkronizálás, a átmenő hitelesítés és összevonási használják. |
 | sourceAnchor |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
 | userPrincipalName |X |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
@@ -55,7 +55,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | altRecipient |X | | |Az Azure AD Connect build 1.1.552.0 igényel vagy után. |
 | authOrig |X |X |X | |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | CO |X |X | | |
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
@@ -154,11 +154,11 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. A jelszó-szinkronizálás és a összevonási használják. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |A groupType származtatni. |
+| SecurityEnabled | | |X |A groupType származtatni. |
 | sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | St |X |X | | |
-| streetAddress |X |X | | |
+| StreetAddress |X |X | | |
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | TelephoneNumber |X |X | | |
@@ -177,7 +177,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | AccountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
 | authOrig |X |X |X | |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | CO |X |X | | |
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
@@ -234,14 +234,14 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | postOfficeBox |X |X | |Ez az attribútum a SharePoint Online által jelenleg nem használt. |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. A jelszó-szinkronizálás és a összevonási használják. |
+| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. Jelszókivonat-szinkronizálás, a átmenő hitelesítés és összevonási használják. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |A groupType származtatni. |
+| SecurityEnabled | | |X |A groupType származtatni. |
 | sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | St |X |X | | |
-| streetAddress |X |X | | |
+| StreetAddress |X |X | | |
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | TelephoneNumber |X |X | | |
@@ -258,7 +258,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | --- |:---:|:---:|:---:| --- |
 | AccountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | CO |X |X | | |
 | Vállalati |X |X | | |
 | Szervezeti egység |X |X | | |
@@ -289,12 +289,12 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | Irányítószám |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. A jelszó-szinkronizálás és a összevonási használják. |
-| securityEnabled | | |X |A groupType származtatni. |
+| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. Jelszókivonat-szinkronizálás, a átmenő hitelesítés és összevonási használják. |
+| SecurityEnabled | | |X |A groupType származtatni. |
 | sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | St |X |X | | |
-| streetAddress |X |X | | |
+| StreetAddress |X |X | | |
 | TelephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | cím |X |X | | |
@@ -306,14 +306,14 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | AccountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
-| cn |X | |X |Közös felhasználóneve vagy aliasa. Leggyakrabban az előtag [mail] érték. |
+| CN |X | |X |Közös felhasználóneve vagy aliasa. Leggyakrabban az előtag [mail] érték. |
 | displayName |X |X |X |Egy karakterlánc, amely valódi névként (Keresztnév Vezetéknév) gyakran látható nevét jelöli. |
 | mail |X |X |X |teljes e-mail címet. |
 | Tag | | |X | |
 | objectSID |X | |X |gépi tulajdonság. AD-felhasználói azonosító karbantarthatja az Azure közötti szinkronizálás AD és az AD. |
 | proxyAddresses |X |X |X |gépi tulajdonság. Az Azure AD által használt. A felhasználó az összes másodlagos e-mail címét tartalmazza. |
 | pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. |
-| securityEnabled | | |X |GroupType származik. |
+| SecurityEnabled | | |X |GroupType származik. |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
 | userPrincipalName |X | | |Az egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
@@ -323,7 +323,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | --- |:---:|:---:|:---:| --- |
 | AccountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | leírás |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
@@ -331,8 +331,8 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | Tag | | |X | |
 | objectSID |X | |X |gépi tulajdonság. AD-felhasználói azonosító karbantarthatja az Azure közötti szinkronizálás AD és az AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. A jelszó-szinkronizálás és a összevonási használják. |
-| securityEnabled | | |X |A groupType származtatni. |
+| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. Jelszókivonat-szinkronizálás, a átmenő hitelesítés és összevonási használják. |
+| SecurityEnabled | | |X |A groupType származtatni. |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
 | userPrincipalName |X | | |Egyszerű felhasználónév értéke az a felhasználó bejelentkezési azonosítója. Leggyakrabban az ugyanaz, mint [mail] érték. |
@@ -342,7 +342,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | --- |:---:|:---:|:---:| --- |
 | AccountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | CO |X |X | | |
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
@@ -359,12 +359,12 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | physicalDeliveryOfficeName |X |X | | |
 | Irányítószám |X |X | | |
 | preferredLanguage |X | | | |
-| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. A jelszó-szinkronizálás és a összevonási használják. |
-| securityEnabled | | |X |A groupType származtatni. |
+| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. Jelszókivonat-szinkronizálás, a átmenő hitelesítés és összevonási használják. |
+| SecurityEnabled | | |X |A groupType származtatni. |
 | sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | St |X |X | | |
-| streetAddress |X |X | | |
+| StreetAddress |X |X | | |
 | TelephoneNumber |X |X | | |
 | cím |X |X | | |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |
@@ -381,7 +381,7 @@ Ez a csoport olyan attribútumok használható, ha az Azure AD-címtár nem tám
 | Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |
 | AccountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
-| cn |X | |X | |
+| CN |X | |X | |
 | displayName |X |X |X | |
 | givenName |X |X | | |
 | mail |X | |X | |
@@ -390,7 +390,7 @@ Ez a csoport olyan attribútumok használható, ha az Azure AD-címtár nem tám
 | Tag | | |X | |
 | objectSID |X | | |gépi tulajdonság. AD-felhasználói azonosító karbantarthatja az Azure közötti szinkronizálás AD és az AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. A jelszó-szinkronizálás és a összevonási használják. |
+| pwdLastSet |X | | |gépi tulajdonság. Lehet, hogy mikor érvénytelenné válnak a már kiadott jogkivonatokat. Jelszókivonat-szinkronizálás, a átmenő hitelesítés és összevonási használják. |
 | sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosítót ADDS és az Azure AD közötti kapcsolat fenntartásához. |
 | usageLocation |X | | |gépi tulajdonság. A felhasználó ország. A licenc-hozzárendelést használatos. |

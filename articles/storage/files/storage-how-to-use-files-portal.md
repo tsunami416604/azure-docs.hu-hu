@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: 588d260bb939c8f6439ca66828296ea455f1524a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9b8a7988be2c3a2622dd45a264abcb674b7d169e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="managing-azure-file-shares-with-the-azure-portal"></a>Azure-fájlmegosztások felügyelete az Azure Portallal 
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez az útmutató az Azure-fájlmegosztások [Azure Portallal](https://portal.azure.com/) való használatának alapvető lépéseit mutatja be. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -47,10 +47,10 @@ Fájlmegosztás létrehozása:
 4. A **Név** mezőbe írja be a *myshare* karakterláncot.
 5. Az Azure-fájlmegosztás létrehozásához kattintson az **OK** gombra.
 
-## <a name="manipulating-the-contents-of-the-azure-file-share"></a>Az Azure-fájlmegosztás tartalmának módosítása
-Most, hogy létrehozott egy Azure-fájlmegosztást, csatlakoztathatja azt az SMB szolgáltatással [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) vagy [macOS](storage-how-to-use-files-mac.md) rendszeren. Másik megoldásként az Azure Portallal is módosíthatja az Azure-fájlmegosztást. Az Azure Portalon keresztül intézett összes kérelem a fájl REST API-jával történik, amely lehetővé teszi a fájlok és könyvtárak létrehozását, módosítását és törlését SMB-hozzáférés nélküli ügyfeleken.
+## <a name="work-with-the-contents-of-the-azure-file-share"></a>Az Azure-fájlmegosztás tartalmának használata
+Most, hogy létrehozott egy Azure-fájlmegosztást, csatlakoztathatja azt az SMB szolgáltatással [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) vagy [macOS](storage-how-to-use-files-mac.md) rendszeren. Másik megoldásként az Azure Portalon is használhatja az Azure-fájlmegosztást. Az Azure Portalon keresztül intézett összes kérelem a fájl REST API-jával történik, amely lehetővé teszi a fájlok és könyvtárak létrehozását, módosítását és törlését SMB-hozzáférés nélküli ügyfeleken.
 
-### <a name="create-directory"></a>Könyvtár létrehozása
+### <a name="create-a-directory"></a>Könyvtár létrehozása
 Ha egy új *myDirectory* nevű könyvtárat szeretne létrehozni az Azure-fájlmegosztás gyökérmappájában:
 
 1. A **Fájlszolgáltatás** oldalon válassza ki a **myshare** fájlmegosztást. Megnyílik a fájlmegosztás oldala.

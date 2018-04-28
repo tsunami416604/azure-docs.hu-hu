@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
 ms.author: sethm
-ms.openlocfilehash: 876b1c30c09f31958555ff3dee769d8dd443a60d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c8d84de608ccf3d9a9293c20c07c10a00b73da68
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus erőforrásainak használata Azure Resource Manager-sablonok létrehozása
 
@@ -163,7 +163,7 @@ További információkért lásd: a [paraméterek](../azure-resource-manager/res
 Egy PowerShell-parancssorba futtassa a következő parancsot:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Jelentkezzen be az Azure-fiókjával kéri. A bejelentkezés után futtassa a következő parancsot az elérhető előfizetések megtekintéséhez:

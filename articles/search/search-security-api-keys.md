@@ -1,25 +1,20 @@
 ---
 title: Létrehozása, kezelése és biztonságos rendszergazdai és lekérdezés api-kulcsot az Azure Search |} Microsoft Docs
 description: API-kulcsokat a szolgáltatási végpont való hozzáférés szabályozása. Adminisztrációs kulcsok írási hozzáférést. Lekérdezési kulcsok a csak olvasási hozzáféréssel is létrehozható.
-services: search
-documentationcenter: ''
 author: HeidiSteen
 manager: cgronlun
-editor: ''
 tags: azure-portal
-ms.assetid: ''
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: heidist
-ms.openlocfilehash: 2718a0b2e97c5af8ee25a96100c3d8cb0dbfe9fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 83a082eb7a18c65a5824bf272e0397b18883277f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Hozzon létre és api-kulcsok az Azure Search szolgáltatás kezelése
 

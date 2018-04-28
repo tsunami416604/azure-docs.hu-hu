@@ -3,7 +3,7 @@ title: Az Azure CDN szabályok motor szolgáltatások |} Microsoft Docs
 description: Az Azure CDN referenciadokumentációt szabályok adatbázismotor-szolgáltatások.
 services: cdn
 documentationcenter: ''
-author: Lichard
+author: dksimpson
 manager: akucer
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
-ms.author: rli
-ms.openlocfilehash: fd670e3b01812b7fa8fc708a02d02210b598ac6a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: v-deasim
+ms.openlocfilehash: c7681d6ed867f218eb871f1e96c18d00813798af
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabályok motor-funkciók
 Ez a cikk részletes leírását tartalmazza az elérhető szolgáltatások az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
@@ -515,16 +515,16 @@ Kapcsolatos információkat:
 
 ---
 ### <a name="debug-cache-response-headers"></a>Gyorsítótár válaszfejlécek hibakeresése
-**Cél:** határozza meg, hogy választ tartalmazhatnak az X-EK-Debug válaszfejléc, amely információt nyújt a gyorsítótár-házirend a kért objektum.
+**Cél:** határozza meg, hogy a válasz tartalmazhatnak [X-EK-Debug válaszfejlécek](cdn-http-debug-headers.md), amely információt nyújt a gyorsítótár-házirend a kért objektum.
 
 Hibakeresési gyorsítótári választ fejlécek fog szerepelni a válasz a következő két teljesülése esetén:
 
-- A hibakeresési gyorsítótár válasz fejlécek funkció engedélyezve van a kívánt kérésre.
-- A fenti kérelem a debug gyorsítótár válaszfejlécek a válaszban szereplő csoportját határozza meg.
+- A gyorsítótár válaszfejlécek Debug funkció engedélyezve van a megadott kérésre.
+- A megadott kérelem a debug gyorsítótár válaszfejlécek a válaszban szereplő csoportját határozza meg.
 
-Gyorsítótár válasz fejlécek kérheti többek között a következő fejléc és a kívánt irányelvek a kérelemben szereplő Debug:
+Hibakeresési gyorsítótári választ fejlécek kérheti a a kérelem a következő fejléc és a megadott irányelveket is beleértve:
 
-X-EK-Debug: _Directive1_,_Directive2_,_DirectiveN_
+`X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
 **Példa**
 
@@ -624,7 +624,7 @@ Eltávolítás| Biztosítja, hogy egy `Expires` fejléc nem része a válasz fej
 ### <a name="external-max-age"></a>Külső maximális-kor
 **Cél:** határozza meg a böngészőben POP a gyorsítótár ismételt érvényesítése maximális-életkora intervallumát. Ez azt jelenti mennyi ideig, mielőtt egy böngésző adja meg, hogy egy eszköz POP az új verzióhoz tartozó ellenőrizheti.
 
-A funkció engedélyezése hoz létre `Cache-Control: max-age` és `Expires` a POP fejléceket, és küldje el a HTTP-ügyfél. Alapértelmezés szerint ezek a fejlécek felülírja az eredeti kiszolgálóra által létrehozott. Azonban a Cache-Control fejléc kezelését és a lejárati fejléc-kezelés szolgáltatások használható útválasztását ezen viselkedés megváltoztatásához.
+A funkció engedélyezése hoz létre `Cache-Control: max-age` és `Expires` a POP fejléceket, és küldje el a HTTP-ügyfél. Alapértelmezés szerint ezek a fejlécek felülírja ezeket a fejléceket hozta létre az eredeti kiszolgálóra. Azonban a Cache-Control fejléc kezelését és a lejárati fejléc-kezelés szolgáltatások használható útválasztását ezen viselkedés megváltoztatásához.
 
 Kapcsolatos információkat:
 
@@ -706,7 +706,7 @@ Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem r
 Kapcsolatos információkat:
 
 - A kívánt fájlkiterjesztéseket beállítás engedélyezett H.264 fájlnév-kiterjesztések egy szóközökkel elválasztott kötetnevek kulcstulajdonságokat határozza meg. A kívánt fájlkiterjesztéseket beállítás felülírja az alapértelmezett viselkedés. Ha ezt a beállítást, többek között azokat a fájlkiterjesztéseket karbantartásához MP4 és F4V támogatása. 
-- Ügyeljen arra, hogy egy időszakot minden fájlnév-kiterjesztés (például .mp4 .f4v) megadásakor.
+- Egy időszakot minden fájlnév-kiterjesztés megadása (például _.mp4_, _.f4v_).
 
 **Alapértelmezés:** alapértelmezés szerint HTTP progresszív letöltés MP4 és F4V media támogatja.
 
@@ -727,7 +727,7 @@ Letiltva|Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett vi
 
 Minden éles forgalomhoz lehetőleg Ez a szolgáltatás le van tiltva alapértelmezett állapotában hagyja. Ellenkező esetben származási kiszolgálók fog védelme nem biztosítható a végfelhasználók számára, akik véletlenül indíthat sok no-cache kérelem weblapok frissítésekor vagy a a számos népszerű médialejátszókhoz, amely minden videó kérelemmel no-cache fejléc küldése van kódolva. Ez a funkció azonban bizonyos nem éles átmeneti vagy tesztelés könyvtárak, annak érdekében, hogy a forráskiszolgálóról igény szerinti lekérése friss tartalom alkalmazandó hasznos lehet.
 
-A gyorsítótár egy kérelmet, amelyet továbbítani kell az eredeti kiszolgálóra miatt ez a szolgáltatás számára küldött állapota TCP_Client_Refresh_Miss. A gyorsítótár állapotok jelentést, amely nem érhető el az alapvető jelentéskészítési modul hasonlóan, a gyorsítótár állapot szerint statisztikai információkat nyújt. Ez lehetővé teszi, hogy számát és a továbbított kérelmek százalékos követésére miatt ez a funkció az eredeti kiszolgálóra.
+A gyorsítótár állapotát, a kérelmeket, amelyek miatt ez a funkció az eredeti kiszolgálóra továbbítható érték jelentett `TCP_Client_Refresh_Miss`. A gyorsítótár állapotok jelentést, amely nem érhető el az alapvető jelentéskészítési modul hasonlóan, a gyorsítótár állapot szerint statisztikai információkat nyújt. Ez a jelentés lehetővé teszi, hogy számát és százalékos továbbított kérelmek nyomon követhetők a miatt ez a funkció az eredeti kiszolgálóra.
 
 **Alapértelmezés:** letiltva.
 
@@ -884,9 +884,9 @@ A következő műveletek valamelyikét hajthatja végre, a fejléc:
 
 Beállítás|Leírás|Példa
 -|-|-
-Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő kérelem fejléc értékének végéhez.|**A kérelem fejléc értéke (ügyfél):**érték1 <br/> **Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** Value1Value2
-Felülírás|A kérelem fejléc értéke lesz a megadott értékre.|**A kérelem fejléc értéke (ügyfél):**érték1 <br/>**Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** érték2 <br/>
-Törlés|Törli a megadott kérelemfejlécet.|**A kérelem fejléc értéke (ügyfél):**érték1 <br/> **Ügyfél fejléc konfigurációjának módosítása:** törölje a szóban forgó kérelemfejlécet. <br/>**Eredmény:** a megadott kérelemfejlécet a rendszer nem továbbítja az eredeti kiszolgálóra.
+Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő kérelem fejléc értékének végéhez.|**A kérelem fejléc értéke (ügyfél):** érték1 <br/> **Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** Value1Value2
+Felülírás|A kérelem fejléc értéke lesz a megadott értékre.|**A kérelem fejléc értéke (ügyfél):** érték1 <br/>**Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** érték2 <br/>
+Törlés|Törli a megadott kérelemfejlécet.|**A kérelem fejléc értéke (ügyfél):** érték1 <br/> **Ügyfél fejléc konfigurációjának módosítása:** törölje a szóban forgó kérelemfejlécet. <br/>**Eredmény:** a megadott kérelemfejlécet a rendszer nem továbbítja az eredeti kiszolgálóra.
 
 Kapcsolatos információkat:
 
@@ -922,8 +922,8 @@ A következő műveletek egyikét a válaszfejléc hajtható végre:
 
 Beállítás|Leírás|Példa
 -|-|-
-Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő válasz fejléc értékének végéhez.|**Válasz állomásfejléc-érték (ügyfél):**érték1 <br/> **Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** Value1Value2
-Felülírás|A válasz fejléc értéke lesz a megadott értékre.|**Válasz állomásfejléc-érték (ügyfél):**érték1 <br/>**Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** érték2 <br/>
+Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő válasz fejléc értékének végéhez.|**Válasz állomásfejléc-érték (ügyfél):** érték1 <br/> **Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** Value1Value2
+Felülírás|A válasz fejléc értéke lesz a megadott értékre.|**Válasz állomásfejléc-érték (ügyfél):** érték1 <br/>**Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** érték2 <br/>
 Törlés|Törli a megadott válaszfejlécet.|**Válasz állomásfejléc-érték (ügyfél):** érték1 <br/> **Ügyfél válaszfejléc konfigurációjának módosítása:** törölje a szóban forgó válaszfejlécet. <br/>**Eredmény:** a megadott válaszfejlécet a rendszer nem továbbítja a kérelmezőnek.
 
 Kapcsolatos információkat:
@@ -990,12 +990,22 @@ Kapcsolatos információkat:
 
 ---
 ### <a name="proxy-special-headers"></a>Proxy különleges fejlécek
-**Cél:** meghatározza, hogy a rendszer továbbítja a POP az eredeti kiszolgálóra CDN-specifikus kérelemfejléc készletét.
+**Cél:** meghatározza a készletét [Verizon-specifikus HTTP-kérelmek fejléceinek](cdn-verizon-http-headers.md) , hogy a rendszer továbbítja a POP az eredeti kiszolgálóra.
 
 Kapcsolatos információkat:
 
-- Minden egyes CDN-specifikus fejléc definiált ezt a szolgáltatást a rendszer az eredeti kiszolgálóra továbbítja.
-- CDN-specifikus fejléc megakadályozása eltávolítja a ezen a listán az eredeti kiszolgálóra lesznek továbbítva.
+- Minden egyes CDN-specifikus kérelemfejléc, ez a szolgáltatás meghatározott továbbíthatja a rendszer az eredeti kiszolgálóra. A kizárt fejlécek nem továbbítják.
+- CDN-specifikus fejléc továbbított érdekében listáról való eltávolításához szóközökkel elválasztott lista fejlécmező található.
+
+A következő HTTP-fejléceket az alapértelmezett listában szerepelnek:
+- keresztül
+- X-továbbított-számára
+- X továbbított protokoll
+- X-állomás
+- X-Midgress
+- X-átjáró – lista
+- X-EK-neve
+- Gazdagép
 
 **Alapértelmezés:** összes CDN-specifikus kérelemfejléc a rendszer az eredeti kiszolgálóra továbbítja.
 

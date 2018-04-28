@@ -1,23 +1,23 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció IQNavigator virtuális gépek |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és IQNavigator virtuális gépek között."
+title: 'Oktatóanyag: Azure Active Directory-integráció IQNavigator virtuális gépek |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és IQNavigator virtuális gépek között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: a8a09b25-dfa5-4c31-aea2-53bf1853b365
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 82c91ba8fa340fb2b179d61200a69e94ab85b6d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddb2883c0b90aaffa82bbc701cdc20de1feb7e19
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Oktatóanyag: Azure Active Directory-integráció IQNavigator virtuális gépek
 
@@ -103,7 +103,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
 
 3. Az a **IQNavigator virtuális gépek tartomány és az URL-címek** területen tegye a következőket:
@@ -112,7 +112,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **azonosító** szövegmező, írja be az URL-cím:`iqn.com`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, hajtsa végre a következő lépést:
 
@@ -120,46 +120,26 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     Az a **állapot továbbítása** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.iqnavigator.com`
 
-    > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és továbbító állapottal. Ügyfél [IQNavigator virtuális gépek ügyfél-támogatási csoport](https://www.beeline.com/iqn-product-support/) beolvasni ezeket az értékeket. 
+    > [!NOTE]
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és továbbító állapottal. Ügyfél [IQNavigator virtuális gépek ügyfél-támogatási csoport](https://www.beeline.com/iqn-product-support/) beolvasni ezeket az értékeket.
 
-5. Kattintson a **mentése** gombra.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_general_400.png)
-
-6. Létrehozásához a **metaadatok** URL-címe, hajtsa végre a következő lépéseket:
-
-    a. Kattintson a **App regisztrációk**.
+5. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
     
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_appregistrations.png)
-   
-    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_endpointicon.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_metadataurl.png)
 
-    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_endpoint.png)
-     
-    d. Most lépjen a tulajdonságlapján **IQNavigator virtuális gépek** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. IQNavigator alkalmazás a névazonosítója jogcímek az egyedi felhasználói azonosító értéket várt. Ügyfél leképezheti a névazonosítója jogcímet a megfelelő értéket. Ebben az esetben azt a felhasználó hozzárendelt. UserPrincipalName bemutató erre a célra. Azonban a szervezet beállításainak megfelelően hozzá kell leképezni a megfelelő értéket.   
+6. IQNavigator alkalmazás a névazonosítója jogcímek az egyedi felhasználói azonosító értéket várt. Ügyfél leképezheti a névazonosítója jogcímet a megfelelő értéket. Ebben az esetben azt a felhasználó hozzárendelt. UserPrincipalName bemutató erre a célra. Azonban a szervezet beállításainak megfelelően hozzá kell leképezni a megfelelő értéket.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
 
+7. Kattintson a **mentése** gombra.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_general_400.png)
+
 8. A a **IQNavigator virtuális gépek konfigurációs** kattintson **konfigurálása IQNavigator virtuális gépek** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
 
-9. Egyszeri bejelentkezés konfigurálása **IQNavigator virtuális gépek** oldalon kell küldeniük a **metaadatainak URL-CÍMÉT**, **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** számára[ IQNavigator virtuális gépek támogatási csoport](https://www.beeline.com/iqn-product-support/). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+9. Egyszeri bejelentkezés konfigurálása **IQNavigator virtuális gépek** oldalon kell küldeniük a **alkalmazás összevonási metaadatainak URL-címe**, **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe**való [IQNavigator virtuális gépek támogatási csoport](https://www.beeline.com/iqn-product-support/). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -174,11 +154,11 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
 2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_02.png) 
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_02.png)
 
 3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_03.png) 
+
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_03.png)
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
@@ -191,7 +171,7 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="creating-a-iqnavigator-vms-test-user"></a>IQNavigator virtuális gépek tesztfelhasználó létrehozása
 
 Ez a szakasz célja egy felhasználó Britta Simon meghívta IQNavigator virtuális gépek létrehozásához. Együttműködve [IQNavigator virtuális gépek támogatási csoport](https://www.beeline.com/iqn-product-support/) a felhasználók hozzáadása a IQNavigator virtuális gépek fiók.
@@ -200,21 +180,21 @@ Ez a szakasz célja egy felhasználó Britta Simon meghívta IQNavigator virtuá
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés IQNavigator virtuális gépek Azure egyszeri bejelentkezéshez használandó.
 
-![Felhasználó hozzárendelése][200] 
+![Felhasználó hozzárendelése][200]
 
 **Britta Simon hozzárendelése IQNavigator virtuális Gépeket, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó hozzárendelése][201]
 
 2. Az alkalmazások listában válassza ki a **IQNavigator virtuális gépek**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![Felhasználó hozzárendelése][202]
 
 4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
 
@@ -237,8 +217,6 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

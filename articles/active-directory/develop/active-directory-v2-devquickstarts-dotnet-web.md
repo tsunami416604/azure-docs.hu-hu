@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD v2.0 .NET web app bejelentkezési első lépések |} Microsoft Docs"
-description: "Hogyan hozhat létre egy .NET MVC webalkalmazás, mely aláírja a felhasználók be mindkét személyes Microsoft-Account és a munkahelyi vagy iskolai fiókját."
+title: Az Azure AD v2.0 .NET web app bejelentkezési első lépések |} Microsoft Docs
+description: Hogyan hozhat létre egy .NET MVC webalkalmazás, mely aláírja a felhasználók be mindkét személyes Microsoft-Account és a munkahelyi vagy iskolai fiókját.
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c8b97ac6-0a06-4367-81b6-7d1d98152b14
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>Bejelentkezés hozzáadása egy .NET MVC webalkalmazás
 A v2.0-végponttal támogatja a személyes Microsoft-fiókot is a webes alkalmazásokhoz való hitelesítés és a munkahelyi vagy iskolai fiókok gyorsan is hozzáadhat.  Az ASP.NET web apps Ez elvégezhető a .NET-keretrendszer 4.5 része a Microsoft OWIN köztes használatával.

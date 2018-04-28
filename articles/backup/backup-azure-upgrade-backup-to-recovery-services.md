@@ -1,6 +1,6 @@
 ---
-title: "Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló |} Microsoft Docs"
-description: "Útmutatás és támogatási információk frissítése a Recovery Services-tároló az Azure Backup-tárolóban."
+title: Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló |} Microsoft Docs
+description: Útmutatás és támogatási információk frissítése a Recovery Services-tároló az Azure Backup-tárolóban.
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 25ad2f6309531678ec98012f540556af581649b2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Frissítse a biztonsági másolatok tárolóját a Recovery Services-tároló
 
@@ -57,7 +57,7 @@ PowerShell-parancsfájlok használatával frissítse a biztonsági mentési tár
 
 A következő parancsfájl használatával frissíti a tárolók. Az alábbi mintaparancsfájl magyarázatokat paraméter tartozik.
 
-RecoveryServicesVaultUpgrade-1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **-hely** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName**`<rgname>`
+RecoveryServicesVaultUpgrade-1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **-hely** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName** `<rgname>`
 
 **A SubscriptionID** -előfizetés azonosítója számának a tárolóra, a frissítés alatt áll.<br/>
 **VaultName** -nevét a mentési tárolóval, hogy a frissítés alatt áll.<br/>
@@ -84,7 +84,7 @@ A PowerShell-parancsfájlt a hitelesítő adatok megadását kéri. Adja meg a h
 ### <a name="pre-requisites-checking"></a>Előfeltételek ellenőrzése
 Azure hitelesítő adatait adta meg, miután a Azure ellenőrzi, hogy a környezet megfelel-e a következő előfeltételek teljesülését:
 
-- **Minimális verziója** -mentési tárolókban a Recovery Services-tárolók frissítéséhez a MARS agent legalább 2.0.9083.0 verziója. Ha regisztrált egy mentési tárolóba rendszernél korábbi 2.0.9083.0 ügynök elemeket tartalmaz, az előfeltétel-ellenőrzés sikertelen lesz. Ha az előfeltétel-ellenőrzés sikertelen, frissítse az ügynököt, majd próbálja meg újra frissíteni a tárolóban. Az ügynök a legújabb verzióját letöltheti [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+- **Minimális verziója** -mentési tárolókban a Recovery Services-tárolók frissítéséhez a MARS agent legalább 2.0.9083.0 verziója. Ha regisztrált egy mentési tárolóba rendszernél korábbi 2.0.9083.0 ügynök elemeket tartalmaz, az előfeltétel-ellenőrzés sikertelen lesz. Ha az előfeltétel-ellenőrzés sikertelen, frissítse az ügynököt, majd próbálja meg újra frissíteni a tárolóban. Az ügynök a legújabb verzióját letöltheti [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 - **A folyamatban lévő konfigurációs feladatok**: Ha valaki konfigurálását végzi a biztonsági másolatok tárolóját, állítsa be a frissíteni kívánt feladatot, vagy egy elem regisztrálása, az előfeltétel-ellenőrzés sikertelen lesz. A konfigurálás, vagy az elem regisztrálásának befejezése, és indítsa el a tároló frissítési folyamat.
 - **Storage-alapú számlázási modellt**: Recovery Services-tárolók a példány-alapú számlázási modellt támogatja. Ha a tároló frissítést futtat egy biztonsági mentési tárolót, hogy a tároló-alapú számlázási modellt használ, a számlázási modellt és a tároló frissítésére kéri. Ellenkező esetben frissítheti a számlázási modellt először, és futtassa a tároló frissítés.
 - Azonosítsa a Recovery Services-tárolónak egy erőforráscsoportot. A Resource Manager üzembe helyezési funkcióival kihasználását, a Recovery Services-tároló erőforráscsoportban kell helyezni. Ha nem tudja, melyik erőforráscsoport kíván használni, adjon meg egy nevet, és a frissítési folyamat meg az erőforráscsoportot hoz létre. A frissítési folyamat is hozzárendeli a tárolót az új erőforráscsoport.
@@ -106,7 +106,7 @@ Recovery Services-tároló megadását időzóna-információk támogatja a bizt
 
 ## <a name="enhanced-security"></a>Fokozott biztonság
 
-A biztonsági másolatok tárolóját a Recovery Services-tároló történő frissítésekor a biztonsági bekapcsolja a beállításokat, hogy a tároló automatikusan. Ha a biztonsági beállítások, bizonyos műveletek, például törlés, biztonsági mentések, vagy módosítása egy hozzáférési kódot igényel egy [Azure multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) PIN-kódot. A fokozott biztonsági további információkért lásd: a cikk [funkciókat a hibrid biztonsági másolatának](backup-azure-security-feature.md). 
+A biztonsági másolatok tárolóját a Recovery Services-tároló történő frissítésekor a biztonsági bekapcsolja a beállításokat, hogy a tároló automatikusan. Ha a biztonsági beállítások, bizonyos műveletek, például törlés, biztonsági mentések, vagy módosítása egy hozzáférési kódot igényel egy [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN-kódot. A fokozott biztonsági további információkért lásd: a cikk [funkciókat a hibrid biztonsági másolatának](backup-azure-security-feature.md). 
 
 A fokozott biztonságot be van kapcsolva, amikor adatok megőrződnek fel és 14 nap után a helyreállítási pont adatok törölve lett a tárolóból. Az ügyfelek számlázása a biztonsági adatok tárolására. Biztonsági adatok megőrzése érvényes helyreállítási pontot az Azure Backup ügynök, az Azure Backup Server és a System Center Data Protection Manager. 
 

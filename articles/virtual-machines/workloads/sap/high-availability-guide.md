@@ -1,13 +1,13 @@
 ---
-title: "Az Azure virtuális gépek magas rendelkezésre állás a SAP NetWeaver |} Microsoft Docs"
-description: "Magas rendelkezésre állású útmutatója SAP NetWeaver Azure virtuális gépeken"
+title: Az Azure virtuális gépek magas rendelkezésre állás a SAP NetWeaver |} Microsoft Docs
+description: Magas rendelkezésre állású útmutatója SAP NetWeaver Azure virtuális gépeken
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2216a2d5c30e95fcd02b4df56305153335511e0
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: da1289b7b86f6f8016920c28890189db8ccb2511
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Magas rendelkezésre állás a SAP NetWeaver Azure virtuális gépeken
 
@@ -366,7 +366,7 @@ ms.lasthandoff: 03/09/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam (SAP termék rendelkezésre állási mátrix)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -420,7 +420,7 @@ ms.lasthandoff: 03/09/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -587,7 +587,7 @@ Eléréséhez SAP alkalmazás magas rendelkezésre állású, többek között a
 
 * SAP Application Server-példány
 * SAP ASC/SCS példány
-* DBMS server
+* Adatbázis-kezelő kiszolgáló
 
 Tudnivalók az SAP-összetevők a magas rendelkezésre állású forgatókönyvek védelméről további információkért lásd: [Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver](planning-guide.md).
 
@@ -887,7 +887,7 @@ A fenti példában a DNS-szolgáltatás telepítve és konfigurálva van a Windo
 
 | Virtuálisgép-szerepkör | Virtuális gép állomásneve | Hálózati kártya neve | Statikus IP-cím |
 | --- | --- | --- | --- |
-| First DNS server |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
+| Első DNS-kiszolgáló |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
 | Második DNS-kiszolgáló |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
 ### <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a> Állomásnév és a statikus IP-címet a SAP ASC/SCS fürtözött példány és az adatbázis-kezelő fürtözött példány
@@ -897,7 +897,7 @@ A helyszíni telepítéshez szüksége ezek fenntartott állomásneve és IP-cí
 | Virtuális állomás neve szerepkör | Virtuális állomás neve | Virtuális statikus IP-cím |
 | --- | --- | --- |
 | SAP ASC/SCS első fürt virtuális host name (kezelő) |pr1-ascs-vir |10.0.0.42 |
-| SAP ASC/SCS példány virtuális állomás neve |pr1-ascs-sap |10.0.0.43 |
+| SAP ASC/SCS példány virtuális állomás neve |PR1-ASC-sap |10.0.0.43 |
 | SAP DBMS második fürt virtuális állomásnevet (kezelő) |pr1-dbms-vir |10.0.0.32 |
 
 A fürt létrehozásakor hozzon létre a virtuális állomásnevek **pr1-ASC-vir** és **pr1-dbms-vir** és a társított IP-címek, amely egyrészt a fürt kezeléséhez. Ezzel kapcsolatos további információkért lásd: [fürtcsomópontok fürtkonfiguráció gyűjtése][sap-ha-guide-8.12.1].
@@ -929,8 +929,8 @@ A jelen példában vezetünk be a virtuális gépek és a statikus IP-címek:
 | Második SAP Application Server-példány |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
 | ... |... |... |... |
 | Utolsó SAP Application Server-példány |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
-| Első fürtcsomópontra ASC/SCS-példány |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
-| Második fürtcsomópont ASC/SCS-példány |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
+| Első fürtcsomópontra ASC/SCS-példány |PR1-ASC-0 |pr1-nic-ascs-0 |10.0.0.40 |
+| Második fürtcsomópont ASC/SCS-példány |PR1-ASC-1 |pr1-nic-ascs-1 |10.0.0.41 |
 | Adatbázis-kezelő példány első fürtcsomópontra |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
 | Adatbázis-kezelő példány második fürtcsomópont |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
 
@@ -958,7 +958,7 @@ Ebben a példában két Azure belső terheléselosztók a statikus IP-címmel re
 
 | Az Azure belső terheléselosztási szerepköréhez | Az Azure belső terheléselosztó neve | Statikus IP-cím |
 | --- | --- | --- |
-| SAP ASC/SCS példány belső terheléselosztót |pr1-lb-ascs |10.0.0.43 |
+| SAP ASC/SCS példány belső terheléselosztót |PR1-lb-ASC |10.0.0.43 |
 | SAP DBMS belső terheléselosztó |pr1-lb-dbms |10.0.0.33 |
 
 
@@ -976,17 +976,17 @@ Szükséges belső terheléselosztási végpontok, először hozzon létre a ter
 
 | Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Konkrét portok (példányszámának 00 példány ASC) (SSZON 10) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3200* |32 <*InstanceNumber*> |3200 |
-| ABAP Message Server / *lbrule3600* |36 <*InstanceNumber*> |3600 |
-| Internal ABAP Message / *lbrule3900* |39 <*InstanceNumber*> |3900 |
-| Message Server HTTP / *Lbrule8100* |81-es <*InstanceNumber*> |8100 |
+| Sorba helyezni Server / *lbrule3200* |32 <*InstanceNumber*> |3200 |
+| ABAP üzenet Server / *lbrule3600* |36 <*InstanceNumber*> |3600 |
+| Belső ABAP üzenet / *lbrule3900* |39 <*InstanceNumber*> |3900 |
+| A kiszolgáló HTTP-üzenet / *Lbrule8100* |81-es <*InstanceNumber*> |8100 |
 | SAP Start Service ASCS HTTP / *Lbrule50013* |5 <*InstanceNumber*> 13 |50013 |
 | SAP Start Service ASCS HTTPS / *Lbrule50014* |5 <*InstanceNumber*> 14 |50014 |
 | Sorba helyezni replikációs / *Lbrule50016* |5 <*InstanceNumber*> 16 |50016 |
 | SAP Start Service ERS HTTP *Lbrule51013* |5 <*InstanceNumber*> 13 |51013 |
 | SAP Start Service ERS HTTP *Lbrule51014* |5 <*InstanceNumber*> 14 |51014 |
 | Erőforrás-kezelő Win *Lbrule5985* | |5985 |
-| File Share *Lbrule445* | |445 |
+| Fájlmegosztás *Lbrule445* | |445 |
 
 _**1. táblázat:** portszámokat SAP NetWeaver ABAP ASC példánya_
 
@@ -994,9 +994,9 @@ Ezután hozzon létre a terheléselosztást a SAP NetWeaver Java SCS portok vég
 
 | Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Konkrét portok (SCS példány példányszámának 01) (SSZON 11) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3201* |32 <*InstanceNumber*> |3201 |
+| Sorba helyezni Server / *lbrule3201* |32 <*InstanceNumber*> |3201 |
 | Átjárókiszolgáló / *lbrule3301* |33 <*InstanceNumber*> |3301 |
-| Java Message Server / *lbrule3900* |39 <*InstanceNumber*> |3901 |
+| Java-üzenet Server / *lbrule3900* |39 <*InstanceNumber*> |3901 |
 | Message Server HTTP / *Lbrule8101* |81-es <*InstanceNumber*> |8101 |
 | SAP Start Service SCS HTTP / *Lbrule50113* |5 <*InstanceNumber*> 13 |50113 |
 | SAP Start Service SCS HTTPS / *Lbrule50114* |5 <*InstanceNumber*> 14 |50114 |
@@ -1004,7 +1004,7 @@ Ezután hozzon létre a terheléselosztást a SAP NetWeaver Java SCS portok vég
 | SAP Start Service ERS HTTP *Lbrule51113* |5 <*InstanceNumber*> 13 |51113 |
 | SAP Start Service ERS HTTP *Lbrule51114* |5 <*InstanceNumber*> 14 |51114 |
 | Erőforrás-kezelő Win *Lbrule5985* | |5985 |
-| File Share *Lbrule445* | |445 |
+| Fájlmegosztás *Lbrule445* | |445 |
 
 _**2. táblázat:** portszámot az SAP NetWeaver Java SCS-példányok_
 
@@ -1233,7 +1233,7 @@ Ezeket a feladatokat a fürt tanúsító fájlmegosztás beállítása foglal ma
 
   _**38. ábra:** , hogy a fürt már újra konfigurálni megerősítése_
 
-A Windows feladatátvevő fürt sikeres telepítését követően módosítások szükség lehet néhány küszöbértékek való igazításának lehetősége feladatátvételi észlelési feltételeket az Azure-ban. Módosítani kell a paraméterei dokumentálva vannak ebben a blogban: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/. Feltételezve, hogy a két virtuális gépekre, amelyek a Windows-fürt konfigurációs építése ASC/SCS ugyanazon az alhálózaton találhatók, a következő paramétereket kell módosítani ezeket az értékeket:
+A Windows feladatátvevő fürt sikeres telepítését követően módosítások szükség lehet néhány küszöbértékek való igazításának lehetősége feladatátvételi észlelési feltételeket az Azure-ban. Módosítani kell a paraméterei dokumentálva vannak ebben a blogban: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ . Feltételezve, hogy a két virtuális gépekre, amelyek a Windows-fürt konfigurációs építése ASC/SCS ugyanazon az alhálózaton találhatók, a következő paramétereket kell módosítani ezeket az értékeket:
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 

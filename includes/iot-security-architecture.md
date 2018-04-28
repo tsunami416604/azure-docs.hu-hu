@@ -147,24 +147,24 @@ Ez a szakasz felderíti a modellezni identitásalapú korábban leírt architekt
 
 Az egyes kategóriák az Azure IoT-architektúra leírt, az ebben a példában megpróbálja számos különböző fenyegetések mérséklésére között szerepel az/adatait különböző szakaszokat: folyamat, a kommunikáció és a tároló. Az alábbiakban látható a leggyakrabban a "folyamat" kategória, hogyan ezek a fenyegetések sikerült legjobb szüntethető áttekintése után áttekintése:
 
-**(S)-címek hamisítását**: támadó egy eszközről, akár szoftveres vagy hardveres szinten, előfordulhat, hogy kibontása kriptográfiai kulcsokat tárol, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitás alatt az eszköz a kulcsokat tárol hozzáférés foglalt a. Egy jó ábra, amely bekapcsolja a TV és népszerű prankster eszközök távoli szabályozza.
+**(S)-címek hamisítását**: támadó előfordulhat, hogy az eszközről, akár szoftveres vagy hardveres szinten, bontsa ki a titkosítási kulcsokat tárol, és elérni ezt követően a rendszer egy másik fizikai vagy virtuális eszköz a identitás, az eszköz a kulcsokat tárol a foglalt. Egy jó ábra, amely bekapcsolja a TV és népszerű prankster eszközök távoli szabályozza.
 
 **Letiltja a szolgáltatást (D)**: egy eszköz nem működik, vagy történő kommunikációhoz választógomb-használati vagy kivágáshoz fenyegetéseknek zavarja alkalmas megjeleníthetők. Például a felügyeleti fényképezőgép, amelyekről a szándékosan kiejtett power vagy a hálózati kapcsolat nem a jelentés adatait, minden.
 
-**(T) illetéktelen**: támadó részben vagy egészben helyettesítheti az eszközön futó szoftver kihasználhatják a valódi identitás, az eszköz, ha a kulcs anyagot vagy a titkosítási kulcs anyagok okozó létesítményekben álltak rendelkezésre a tiltott program a kicserélt szoftver lehetővé. Például egy támadó előfordulhat, hogy kihasználja elfogására és ne jelenjen meg többé a kommunikációs elérési úton az eszköz adatait, és cserélje le a lopott kulcsokat tárol a hitelesített hamis adatok kibontott kulcsokat tárol.
+**(T) illetéktelen**: támadó részben vagy egészben helyettesítheti a szoftver az eszközön futó lehetővé a valódi identitás, az eszköz ki, ha a kulcs anyagot vagy a titkosítási eszközökkel rendelkező kulcs kicserélt szoftver anyagok álltak rendelkezésre a a tiltott program. Például egy támadó előfordulhat, hogy kihasználja elfogására és ne jelenjen meg többé a kommunikációs elérési úton az eszköz adatait, és cserélje le a lopott kulcsokat tárol a hitelesített hamis adatok kibontott kulcsokat tárol.
 
 **Információk felfedése (I)**: Ha az eszközt úgy szoftvert futtat, úgy szoftverhez sikerült potenciálisan szivárgás lépett fel adatokat a jogosulatlan felek. Például egy támadó előfordulhat, hogy kihasználja behelyezése maga az eszköz és a vezérlő vagy mező átjáró vagy siphon ki adatokat az átjáró közötti kommunikáció elérési kibontott kulcsokat tárol.
 
 **A jogosultság E illetéktelen**: egy eszköz, amelyet megadott funkciót is kényszeríthető, valami mással. Például, hogy nyissa meg a fele módon van programozott szelep is megtevésztve egészen megnyitásához.
 
-| **Összetevő** | **Threat** | **Mitigation** | **Risk** | **Megvalósítása** |
+| **Összetevő** | **Fenyegetések** | **Megoldás** | **Kockázati** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
 | Eszköz |S |Identitás hozzárendelése az eszközt, és az eszköz hitelesítése |Eszköz vagy az eszköz része cseréje egy másik eszköz. Honnan tudhatja beszélünk a megfelelő eszközre? |Az eszköz használata a Transport Layer Security (TLS) vagy az IPSec-hitelesítéséhez. Infrastruktúra támogatnia kell a előmegosztott kulccsal (PSK), amely nem tudja kezelni a teljes aszimmetrikus titkosítási eszközökön. Használja ki az Azure AD [OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt) |
-| TRID |Tamperproof mechanizmusok az eszközre, például alkalmazni, így azt rögzített lehetetlen bontsa ki a kulcsokat és más kriptográfiai anyagok az eszközről. |A kockázat, ha valaki van illetéktelen módosítását az eszköz (fizikai zavaró tényező). Hogy biztosan, az eszköz nem módosították. |A leghatékonyabb megoldás egy platformmegbízhatósági modul (TPM) képesség, amely lehetővé teszi a kulcsok tárolása, amelyből a kulcsok nem olvasható, de csak akkor használható, amelyek a kulcsot használják, de soha nem fedjük fel a kulcs titkosítási műveletek különleges-chip áramkört. Az eszköz titkosítása memória. Az eszköz kulcskezelést. A kód aláírása. | |
-| E |Ha az eszköz hozzáférés-vezérlés. Hitelesítési séma. |Ha az eszköz lehetővé teszi, hogy az egyes műveletek végrehajtása a külső forrásból, vagy akár sérült biztonságú érzékelők parancsok, lehetővé teszi a támadás műveletek elvégzésére, egyéb módon nem érhető el. |Ha az eszköz a hitelesítési séma | |
+|| TRID |Tamperproof mechanizmusok az eszközre, például alkalmazni, így azt rögzített lehetetlen bontsa ki a kulcsokat és más kriptográfiai anyagok az eszközről. |A kockázat, ha valaki van illetéktelen módosítását az eszköz (fizikai zavaró tényező). Hogy biztosan, az eszköz nem módosították. |A leghatékonyabb megoldás egy platformmegbízhatósági modul (TPM) képesség, amely lehetővé teszi a kulcsok tárolása, amelyből a kulcsok nem olvasható, de csak akkor használható, amelyek a kulcsot használják, de soha nem fedjük fel a kulcs titkosítási műveletek különleges-chip áramkört. Az eszköz titkosítása memória. Az eszköz kulcskezelést. A kód aláírása. | |
+|| E |Ha az eszköz hozzáférés-vezérlés. Hitelesítési séma. |Ha az eszköz lehetővé teszi, hogy az egyes műveletek végrehajtása a külső forrásból, vagy akár sérült biztonságú érzékelők parancsok, lehetővé teszi a támadás műveletek elvégzésére, egyéb módon nem érhető el. |Ha az eszköz a hitelesítési séma | |
 | A mező átjáró |S |Az átjáró a mező átjáró hitelesítése (például a tanúsítvány alapú, PSK, vagy a jogcím-alapú.) |Ha valaki mező átjáró hamis, majd azt is jelenthet maga mint bármely olyan eszközről. |A TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Ugyanazokat általános – eszközök kulcs tárolására és a tanúkiszolgáló aggályokat legjobb esetben van TPM használatát. Az IPSec támogatja a vezeték nélküli érzékelő hálózatok (WSN) bővítmény 6LowPAN. |
-| TRID |A mező átjáró (TPM?) hamisítás elleni védelme |Információk felfedése és az adatok illetéktelen módosítását hamisításra épülő támadásoknak, amely megtéveszteni a felhő átjáró számbavétele, mező-átjáróra van szó okozhat |Memória titkosítás, a TPM által, hitelesítés. | |
-| E |Hozzáférés-vezérlési mechanizmus mező átjáró | | | |
+|| TRID |A mező átjáró (TPM?) hamisítás elleni védelme |Információk felfedése és az adatok illetéktelen módosítását hamisításra épülő támadásoknak, amely megtéveszteni a felhő átjáró számbavétele, mező-átjáróra van szó okozhat |Memória titkosítás, a TPM által, hitelesítés. | |
+|| E |Hozzáférés-vezérlési mechanizmus mező átjáró | | | |
 
 Íme néhány példa a ebbe a kategóriába tartozó fenyegetések:
 
@@ -172,13 +172,13 @@ Címhamisítást: Támadó előfordulhat, hogy kinyerése kriptográfiai kulcsok
 
 **Szolgáltatásmegtagadást**: egy eszköz nem működik, vagy történő kommunikációhoz választógomb-használati vagy kivágáshoz fenyegetéseknek zavarja alkalmas megjeleníthetők. Például a felügyeleti fényképezőgép, amelyekről a szándékosan kiejtett power vagy a hálózati kapcsolat nem a jelentés adatait, minden.
 
-**Illetéktelen**: támadó részben vagy egészben helyettesítheti az eszközön futó szoftver kihasználhatják a valódi identitás, az eszköz, ha a kulcs anyagot vagy a titkosítási kulcs anyagok okozó létesítményekben álltak rendelkezésre a tiltott program a kicserélt szoftver lehetővé.
+**Illetéktelen**: támadó részben vagy egészben helyettesítheti a szoftver az eszközön futó lehetővé a valódi identitás, az eszköz ki, ha a kulcs anyagot vagy a titkosítási eszközökkel rendelkező kulcs kicserélt szoftver anyagok álltak rendelkezésre a a tiltott program.
 
 **Illetéktelen**: egy felügyeleti kamera, amely egy üres Előszoba látható pontszámot képe látható ilyen Előszoba fényképe célzó sikerült. Füst vagy tűz érzékelő sikerült készítőnek tekintene valaki rendelkezik egy világosabb rajta. Mindkét esetben az eszköz valószínűleg technikailag teljesen megbízható-e a rendszer felé, de azt jelenti, hogy úgy információkat.
 
 **Illetéktelen**: támadó előfordulhat, hogy kihasználja a elfogására és ne jelenjen meg többé a kommunikációs elérési úton az eszköz adatait, és cserélje le a lopott kulcsokat tárol a hitelesített hamis adatok kibontott kulcsokat tárol.
 
-**Illetéktelen**: támadó részben vagy teljesen helyettesítheti az eszközön futó szoftver kihasználhatják a valódi identitás, az eszköz, ha a kulcs anyagot vagy a titkosítási kulcs anyagok okozó létesítményekben álltak rendelkezésre a tiltott program a kicserélt szoftver lehetővé.
+**Illetéktelen**: támadó részben vagy teljesen helyettesítheti a szoftver az eszközön futó lehetővé a kicserélt szoftvert, hogy kihasználja a valódi identitás, az eszköz, ha a kulcsokat tárol, vagy a titkosítási eszközökkel rendelkezik kulcs anyagok álltak rendelkezésre a a tiltott program.
 
 **Információk felfedése**: Ha az eszközt úgy szoftvert futtat, úgy szoftverhez sikerült potenciálisan szivárgás lépett fel adatokat a jogosulatlan felek.
 
@@ -200,7 +200,7 @@ Címhamisítást: Támadó előfordulhat, hogy kinyerése kriptográfiai kulcsok
 
 Eszközök, az eszközök és az mező átjárók és az eszköz és a felhő átjáró közötti kommunikáció görbe körül fenyegetéseket. Az alábbi táblázat néhány útmutatás körül nyitott sockets meg az eszköz és a VPN rendelkezik:
 
-| **Összetevő** | **Threat** | **Mitigation** | **Risk** | **Megvalósítása** |
+| **Összetevő** | **Fenyegetések** | **Megoldás** | **Kockázati** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
 | Az IoT-központ eszköz |TID |(D) A TLS (PSK/RSA) a forgalom titkosításához |Lehallgatást, vagy zavaró az eszköz és az átjáró közötti kommunikáció |A biztonsági protokoll szintjén. Egyéni protokollok hogy megtudja, hogyan lehet megvédeni őket szüksége. A legtöbb esetben a kommunikáció akkor történik meg az adott eszközről az IoT hubhoz (eszköz kezdeményezi a kapcsolatot). |
 | Eszköz eszköz |TID |(D) TLS (PSK/RSA) a forgalom titkosításához. |Az eszközök közötti átvitel során adatainak olvasása. Az adatok illetéktelen módosításának. Túl van terhelve az eszközt az új kapcsolatok |A biztonsági protokoll szint (MQTT/AMQP/HTTP/CoAP. Egyéni protokollok hogy megtudja, hogyan lehet megvédeni őket szüksége. A megoldás a DoS fenyegetés felhő vagy mező átjárón keresztül eszközök partnert, és lehet őket az ügyfelek felé a hálózat csak act. A társviszony-létesítést azt eredményezheti, hogy az átjáró által lett közvetítőalapú után a partnerek között közvetlen kapcsolat |
@@ -224,7 +224,7 @@ Eszközök, az eszközök és az mező átjárók és az eszköz és a felhő á
 
 Minden eszköz és a mező átjáró storage (az adatok, az operációs rendszer lemezkép tárolási Queuing ideiglenes) rendelkezik.
 
-| **Összetevő** | **Threat** | **Mitigation** | **Risk** | **Megvalósítása** |
+| **Összetevő** | **Fenyegetések** | **Megoldás** | **Kockázati** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
 | Eszköz tárhelyén |TRID |Tárolás titkosítását, a naplók aláírása |A tároló (személyazonosításra alkalmas adatokat), telemetriai adatok illetéktelen módosításának adatok olvasása. Illetéktelenül aszinkron vagy gyorsítótárazott parancs vezérlő adatokat. Konfiguráció vagy a belső vezérlőprogram frissítési csomagokat illetéktelenül során gyorsítótárazva, vagy helyileg várólistára vezethet feltörésének az operációs rendszer és/vagy a rendszer összetevők |Titkosítási, üzenethitelesítő kódot (MAC) vagy digitális aláírással. Ha lehetséges, erős hozzáférés keresztül erőforrásokhoz való hozzáférést vezérlő listák (ACL) vagy hozzáférési engedélyekkel. |
 | Az eszköz operációs rendszere kép |TRID | |Az operációs rendszer illetéktelenül / az operációs rendszer összetevőit cseréje |Csak olvasható az operációs rendszer partíció aláírt operációsrendszer-lemezképek, a titkosítás |

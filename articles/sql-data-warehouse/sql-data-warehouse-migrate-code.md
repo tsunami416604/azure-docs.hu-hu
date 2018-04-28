@@ -1,25 +1,20 @@
 ---
-title: "Telepítse át az SQL-kódot az SQL Data Warehouse |} Microsoft Docs"
-description: "Tippek az SQL-kódot az Azure SQL Data Warehouse adattárházzal történő, megoldások történő áttelepítéséhez."
+title: Telepítse át az SQL-kódot az SQL Data Warehouse |} Microsoft Docs
+description: Tippek az SQL-kódot az Azure SQL Data Warehouse adattárházzal történő, megoldások történő áttelepítéséhez.
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: 19c252a3-0e41-4eec-9d3e-09a68c7e7add
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 06/23/2017
-ms.author: joeyong;barbkess
-ms.openlocfilehash: c6e6b890f5e2d0e31b10bbb6803adad02bf60248
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: b17e8e306c01bef4c58658b35f3a67d0e721633c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Az SQL Data Warehouse az SQL-kódot áttelepítése
 Ez a cikk azt ismerteti, valószínűleg szüksége lesz, ha a kódot egy másik adatbázis áttelepítése az SQL Data Warehouse kódmódosításokat. Néhány SQL Data Warehouse funkció jelentősen fejleszti a teljesítményt, úgy vannak kialakítva, hogy elosztott módon működnek. Azonban fenntartása a teljesítmény és méretezhetőség érdekében egyes szolgáltatások nem érhetők el is.
@@ -31,7 +26,7 @@ Az alábbi lista a leggyakrabban használt szolgáltatásai nem támogatja az SQ
 * [Törli a ANSI illesztések][ANSI joins on deletes]
 * [merge utasítás][merge statement]
 * adatbázisok közötti illesztések
-* [a kurzorok][cursors]
+* [A kurzorok][cursors]
 * [INSERT... EXEC][INSERT..EXEC]
 * Output záradékban
 * belső felhasználó által definiált függvények
@@ -114,7 +109,7 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 ;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az összes támogatott T-SQL-utasítások teljes listáját lásd: [Transact-SQL témakörök][Transact-SQL topics].
 
 <!--Image references-->

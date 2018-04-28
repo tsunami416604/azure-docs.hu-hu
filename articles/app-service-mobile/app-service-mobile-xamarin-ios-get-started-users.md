@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés a Mobile Apps Xamarin IOS-hitelesítés"
-description: "Útmutató a Mobile Apps segítségével hitelesíti a felhasználókat identitás-szolgáltatóktól, beleértve az aad-ben, a Google, a Facebook, a Twitter és a Microsoft számos a Xamarin IOS-es alkalmazás."
+title: Ismerkedés a Mobile Apps Xamarin IOS-hitelesítés
+description: Útmutató a Mobile Apps segítségével hitelesíti a felhasználókat identitás-szolgáltatóktól, beleértve az aad-ben, a Google, a Facebook, a Twitter és a Microsoft számos a Xamarin IOS-es alkalmazás.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.service: app-service-mobile
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: 1649d2bf4f3429f2f5f56bdabdfe9a015a115893
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: c2b77d7c9caab1c7ac13af5ccd50e992bcce1caf
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Bővítse Xamarin.iOS-alkalmazását hitelesítési funkcióval
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -116,7 +116,7 @@ Ebben a szakaszban az alkalmazás egy bejelentkezési képernyőt megjelenítend
             return ResumeWithURL != null && ResumeWithURL(url);
         }
 6. Nyissa meg **Info.plist** fájlt, keresse meg **URL-cím típusú** a a **speciális** szakasz. Mostantól konfigurálhatja a **azonosító** és a **URL-sémákat** a URL-típust, és kattintson a **URL-típus hozzáadása**. **URL-sémákat** meg kell egyeznie a {url_scheme_of_your_app}.
-7. A Visual Studio és Xamarin Studio csatlakozott a Xamarin létrehozása a Mac, futtassa a célcsoport-kezelési egy eszközt vagy emulátort ügyfél-projektet. Győződjön meg arról, hogy az alkalmazás nem jelennek meg adatok.
+7. A Visual Studio, a kapcsolat a Mac-gazdagép vagy a Visual Studio Mac futtassa az ügyfélprojekt célzó egy eszközt vagy emulátort. Győződjön meg arról, hogy az alkalmazás nem jelennek meg adatok.
    
     Hajtsa végre a frissítési kézmozdulat modulba húzza le az elemeket, és emiatt a bejelentkezési képernyő jelenik meg. Miután sikeresen megadta az érvényes hitelesítő adatokat, az alkalmazás a teendőlista elemeinek listáját jeleníti meg, és frissíthetik az adatokat.
 

@@ -3,21 +3,20 @@ title: A Spark-tevékenység használata az Azure Data Factory adatok átalakít
 description: Útmutató adatok átalakítása futtatásával Spark programokat egy, a Spark-tevékenység használata az Azure data factory-folyamathoz.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 3b877a9ae8fe58314171c8b556a7005e98dc3a33
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: 52b6489d14c016ce2efdd06614102a40651b94c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>A Spark-tevékenység használata az Azure Data Factory adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -91,7 +90,7 @@ A következő mappaszerkezet létrehozása az Azure Blob Storage HDInsight kapcs
 | &lt;Felhasználó által definiált &gt; | Az elérési út a Spark feladat bejegyzés fájlra hivatkozik | Igen      | Fájl   |
 | . / jars                | Ebben a mappában található összes fájl feltöltése, és a fürt a java classpath helyezve | Nem       | Mappa |
 | ./pyFiles             | Ebben a mappában található összes fájl feltöltése, és a fürt PYTHONPATH helyezve | Nem       | Mappa |
-| ./files               | Ebben a mappában található összes fájl feltöltése és végrehajtó munkakönyvtár helyezve | Nem       | Mappa |
+| . / fájlok               | Ebben a mappában található összes fájl feltöltése és végrehajtó munkakönyvtár helyezve | Nem       | Mappa |
 | . / archiválja            | Ebben a mappában található összes fájl tömörítetlen. | Nem       | Mappa |
 | . / naplói                | A Spark-fürtön a naplókat tartalmazó mappa. | Nem       | Mappa |
 

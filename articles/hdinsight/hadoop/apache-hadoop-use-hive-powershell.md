@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 044c901799ff7acae1e27602b84802f6b5f70f05
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 20ae2c93a231051d3802e8b2329d218d207204e3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="run-hive-queries-using-powershell"></a>PowerShell-lel Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -45,7 +45,7 @@ Az Azure PowerShell biztosít *parancsmagok* , amelyek lehetővé teszik, hogy t
 
 A következő parancsmagok használhatók egy távoli HDInsight-fürtöt a Hive-lekérdezések futtatásakor:
 
-* `Add-AzureRmAccount`: Az Azure-előfizetések az Azure PowerShell hitelesíti.
+* `Connect-AzureRmAccount`: Az Azure-előfizetések az Azure PowerShell hitelesíti.
 * `New-AzureRmHDInsightHiveJobDefinition`: Létrehoz egy *definition feladat* a megadott HiveQL utasítás használatával.
 * `Start-AzureRmHDInsightJob`: A feladat definíciójához küld HDInsight, és elindítja a feladatot. A *feladat* objektumot ad vissza.
 * `Wait-AzureRmHDInsightJob`: A feladatobjektum használja a feladat állapotának ellenőrzéséhez. Arra vár, amíg a feladat befejeződik, vagy a várakozási ideje lejár.

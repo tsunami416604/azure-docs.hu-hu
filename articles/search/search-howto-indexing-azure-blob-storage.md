@@ -1,24 +1,19 @@
 ---
 title: Az Azure Search Azure Blob Storage indexelése
 description: 'Útmutató: Azure Blob Storage indexelése és az Azure Search dokumentumok szöveg kinyerése'
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: eugenesh
-ms.openlocfilehash: 67f6775fb68f4cd13c52ebe66727f2b4df23c692
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 77fac23286d536903e32140b554304e72c16097f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Az Azure Blob Storage tárolóban az Azure Search dokumentumok indexelő
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-fájlok, a Microsoft Office-dokumentumok, és számos egyéb gyakori formátumok) az Azure Blob Storage tárolóban tárolja. Első lépésként beállítása és konfigurálása a blob indexelő használatának alapjait ismerteti. Ezt követően viselkedésmódok mélyebb feltárása kínál, és forgatókönyvek lehetséges hibát.
@@ -372,10 +367,10 @@ Az alábbi táblázat foglalja össze az egyes végzett feldolgozás, és ismert
 | DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
 | DOC (application/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
 | XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
-| XLS (application/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
+| XLS (kérelem/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
 | PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
 | PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
-| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Bontsa ki a szöveget, beleértve a mellékletek |
+| ÜZENET (kérelem/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Bontsa ki a szöveget, beleértve a mellékletek |
 | ZIP (kérelem/zip) |`metadata_content_type` |Az archívumban található összes dokumentum szöveg kinyerése |
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |XML-címke sáv és szöveg |
 | JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Szöveg<br/>Megjegyzés: Ha több dokumentum mező kinyerése JSON blob van szüksége, tekintse meg [indexelő JSON-blobok](search-howto-index-json-blobs.md) részletek |

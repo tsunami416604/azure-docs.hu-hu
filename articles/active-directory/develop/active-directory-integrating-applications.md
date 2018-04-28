@@ -3,7 +3,7 @@ title: Alkalmazások integrálása az Azure Active Directoryval
 description: Hogyan lehet hozzáadni, frissítés, vagy távolítsa el a kérelmet az Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
-author: PatAltimore
+author: mtillman
 manager: mtillman
 editor: mbaldwin
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/04/2017
-ms.author: bryanla
+ms.date: 04/18/2018
+ms.author: mtillman
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: 472a1746a338857d457a7b8d5e7fec3ddbf65895
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ebf6653fada0897c23ebb84ab14de1040a963552
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryban
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -56,7 +56,7 @@ Bármely alkalmazás, amely szeretné használni az Azure AD képességeit, elő
 5. Ha befejezte, kattintson a **létrehozása**. Az Azure AD alkalmazás azonosító egyedi Azonosítót rendel hozzá az alkalmazáshoz, és meg van-e az alkalmazás fő regisztrációs lapjához. Attól függően, hogy az alkalmazás egy webes vagy natív alkalmazás különböző beállítások állnak rendelkezésre a kiegészítő lehetőségekhez hozzá az alkalmazáshoz. A következő szakaszban áttekintést hozzájárulási és adatok tekintse meg az alkalmazás regisztrációja (hitelesítő adatok, engedélyek engedélyezése bejelentkezhet a felhasználók számára, a többi bérlőtől.) további konfigurációs szolgáltatásainak engedélyezése
 
   > [!NOTE]
-  > Alapértelmezés szerint az újonnan regisztrált alkalmazás van konfigurálva, hogy **csak** ugyanannak a bérlőnek bejelentkezni az alkalmazás felhasználóit.
+  > Alapértelmezés szerint egy újonnan regisztrált webes alkalmazás van konfigurálva, hogy **csak** ugyanannak a bérlőnek bejelentkezni az alkalmazás felhasználóit.
   > 
   > 
 
@@ -65,7 +65,7 @@ Miután az alkalmazás regisztrálva van az Azure ad-vel, kell frissíteni, hogy
 
 ### <a name="overview-of-the-consent-framework"></a>A hozzájárulási keretrendszer áttekintése
 
-Az Azure AD hozzájárulási keretrendszer megkönnyíti a több-bérlős web- és natív ügyfél-alkalmazások, beleértve a többrétegű alkalmazások fejlesztéséhez. Ezek az alkalmazások az Azure AD-bérlő, ahol az alkalmazás regisztrálva van egy eltérő engedélyező bejelentkezési felhasználói fiókokat. Előfordulhat, hogy is webes API-k, például a Microsoft Graph API (eléréséhez Azure Active Directory, az Intune és a szolgáltatások az Office 365-ben) és más Microsoft-szolgáltatásokban API-k, mellett a saját webes API-k eléréséhez szükséges. A keretrendszer egy felhasználó vagy a rendszergazda jogosultságot ad a beleegyezést kérő regisztrálni kell a könyvtárban, amelyek magukban foglalhatják directory adatokhoz hozzáférő alkalmazáshoz való alapul.
+Az Azure AD hozzájárulási keretrendszer megkönnyíti a több-bérlős web- és natív ügyfél-alkalmazások fejlesztéséhez. Ezek az alkalmazások az Azure AD-bérlő, ahol az alkalmazás regisztrálva van egy eltérő engedélyező bejelentkezési felhasználói fiókokat. Előfordulhat, hogy is webes API-k, például a Microsoft Graph API (eléréséhez Azure Active Directory, az Intune és a szolgáltatások az Office 365-ben) és más Microsoft-szolgáltatásokban API-k, mellett a saját webes API-k eléréséhez szükséges. A keretrendszer egy felhasználó vagy a rendszergazda jogosultságot ad a beleegyezést kérő regisztrálni kell a könyvtárban, amelyek magukban foglalhatják directory adatokhoz hozzáférő alkalmazáshoz való alapul.
 
 Például egy webes ügyfélalkalmazás rendszernek végig kell olvasnia a felhasználóval kapcsolatos adatok az Office 365 szolgáltatásból, ha a felhasználó hozzájárul az ügyfélalkalmazás először fel kell. Miután hozzájárulási kap, az ügyfélalkalmazás fog tudni hívja fel a Microsoft Graph API a felhasználó nevében, és a naptári adatok használatára, szükség szerint. A [Microsoft Graph API](https://graph.microsoft.io) hozzáférést biztosít az adatok az Office 365-ben (például a naptárak és az Exchange, helyek és a SharePoint, a dokumentumot a onedrive-ról a OneNote-ba, a tervező számára, Excel munkafüzetekhez feladatok notebookok listák üzenetek stb.), valamint felhasználók és csoportok az Azure AD és más adatok több Microsoft felhőszolgáltatás objektumokat. 
 
@@ -93,17 +93,17 @@ Az alábbi lépések bemutatják, hogyan a hozzájárulási tapasztalhat az alka
 
 5. Miután a felhasználó engedélyezi a hozzájárulási, az engedélyezési kód az alkalmazás, amely szerezzen be egy hozzáférési jogkivonatot, és a frissítési token váltják vissza küld vissza. Ez a folyamat kapcsolatos további információkért tekintse meg a [webes API szakasz hitelesítési forgatókönyvek az Azure AD-webalkalmazás](active-directory-authentication-scenarios.md#web-application-to-web-api).
 
-6. A rendszergazdák is is beleegyezik a delegált engedélyek egy alkalmazás a felhasználók nevében az Ön bérelt szolgáltatásának. Felügyeleti hozzájárulási megakadályozza, hogy a hozzájárulási párbeszédpanel a bérlő minden felhasználó számára megjelenő, és történik, az alkalmazás lapját a [Azure-portálon](https://portal.azure.com). Az a **beállítások** az alkalmazás lapján kattintson **szükséges engedélyek** , majd kattintson a a **engedélyt adjon** gombra. 
+6. A rendszergazdák is is beleegyezik a delegált engedélyek egy alkalmazás a felhasználók nevében az Ön bérelt szolgáltatásának. Felügyeleti hozzájárulási megakadályozza, hogy a hozzájárulási párbeszédpanel a bérlő minden felhasználó számára megjelenő, és teheti a [Azure-portálon](https://portal.azure.com) rendszergazdai szerepkörrel rendelkező felhasználók számára. Az a **beállítások** az alkalmazás lapján kattintson **szükséges engedélyek** , majd kattintson a a **engedélyt adjon** gombra. 
 
   ![Adja meg explicit admin szerezni a hozzájárulásukat engedélyeket](./media/active-directory-integrating-applications/grantpermissions.png)
     
   > [!NOTE]
-  > Explicit megadását hozzájárulás használatával a **engedélyt adjon** gomb akkor ADAL.js használó egylapos alkalmazások (SPA) szükséges. Ellenkező esetben az alkalmazás meghiúsul, ha a hozzáférési jogkivonat van szükség.   
+  > Explicit megadását hozzájárulás használatával a **engedélyt adjon** gomb akkor ADAL.js használó egylapos alkalmazások (SPA) szükséges. Ellenkező esetben az alkalmazás meghiúsul, ha a hozzáférési jogkivonat van szükség. 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Webes API-k elérésére ügyfélalkalmazás konfigurálása
 Ahhoz, hogy részt vesz egy engedélyezési grant flow, amelyhez hitelesítés szükséges a (és egy hozzáférési jogkivonat beszerzése) webes bizalmas ügyfélalkalmazást azt kell létesítenie a biztonságos hitelesítő adatok. Az alapértelmezett hitelesítési módszer az Azure portál által támogatott ügyfél-azonosító + titkos kulcs. Ez a fejezet a konfigurációs lépéseket kell adnia a titkos kulcsot az ügyfél-hitelesítő adatokkal.
 
-Emellett egy ügyfél egy webes API-t egy erőforrás-alkalmazáshoz (például Microsoft Graph API) által elérhetővé tett hozzáférni, a hozzájárulási keretrendszer biztosítja az ügyfél beolvassa az engedély megadása szükséges, a kért engedélyek alapján. Alapértelmezés szerint minden alkalmazás engedélyek választhatja ki a "Windows Azure Active Directory" (Graph API-val) és a "Windows Azure szolgáltatásfelügyeleti API." A [Graph API "Bejelentkezés és olvasási felhasználói profil" engedély](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) is alapértelmezettként van beállítva. Ha az ügyfél, amely rendelkezik Office 365 előfizetett fiókok bérlőjében regisztrálva van folyamatban, webes API-k és a SharePoint és az Exchange Online zónaaliasok. Választhat [engedélyek két típusú](active-directory-dev-glossary.md#permissions) az egyes webes API szükséges:
+Emellett egy ügyfél egy webes API-t egy erőforrás-alkalmazáshoz (például a Microsoft Graph API) által elérhetővé tett hozzáférni, a hozzájárulási keretrendszer biztosítja az ügyfél beolvassa az engedély megadása szükséges, a kért engedélyek alapján. Alapértelmezés szerint minden alkalmazás engedélyek választhatja ki a "Windows Azure Active Directory" (Graph API-val) és a "Windows Azure szolgáltatásfelügyeleti API." A [Graph API "Bejelentkezés és olvasási felhasználói profil" engedély](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) is alapértelmezettként van beállítva. Ha az ügyfél, amely rendelkezik Office 365 előfizetett fiókok bérlőjében regisztrálva van folyamatban, webes API-k és a SharePoint és az Exchange Online zónaaliasok. Választhat [engedélyek két típusú](active-directory-dev-glossary.md#permissions) az egyes webes API szükséges:
 
 - Alkalmazásengedélyek: Az ügyfélalkalmazást hozzá kell férniük a web API közvetlenül saját magát (felhasználói környezet). Ez a típus engedély rendszergazda jóváhagyását igényli, és nem is érhető el natív ügyfél-alkalmazások.
 
@@ -120,7 +120,7 @@ Emellett egy ügyfél egy webes API-t egy erőforrás-alkalmazáshoz (például 
    ![Egy alkalmazás regisztráció frissítése](./media/active-directory-integrating-applications/update-app-registration.png)
 
 4. A következő lépés az alkalmazás fő regisztrációs oldalra, így akár a **beállítások** az alkalmazás lapját. A webes alkalmazás hitelesítő adatait a titkos kulcs hozzáadása:
-  - Kattintson a **kulcsok** a szakasz a **beállítások** lap.  
+  - Kattintson a **kulcsok** a szakasz a **beállítások** lap. 
   - Adjon meg egy leírást a kulcshoz.
   - Válasszon ki egy vagy két év időtartama.
   - Kattintson a **Save** (Mentés) gombra. A jobb szélső oszlop lesz a kulcs értékét, a konfigurációs módosítások mentése után. **Ellenőrizze, hogy a kulcs** az Ügyfélkód használható, mert nem érhető el egyszer bezárja ezt az oldalt.
@@ -141,7 +141,7 @@ Emellett egy ügyfél egy webes API-t egy erőforrás-alkalmazáshoz (például 
 6. Ha elkészült, kattintson a **kiválasztása** gombra a **hozzáférés engedélyezése** lapon, majd a **végzett** gombra a **hozzáadása API-hozzáférés** lap. A rendszer visszairányítja a **szükséges engedélyek** lap, ahol az új erőforrás API-k listája kerül.
 
   > [!NOTE]
-  > Kattintson a **végzett** gombra is automatikusan beállítja az engedélyeket az alkalmazáshoz beállított egyéb alkalmazások engedélyei alapján a könyvtárban.  Ezek az Alkalmazásengedélyek tekintheti meg az alkalmazás megnézi **beállítások** lap.
+  > Kattintson a **végzett** gombra is automatikusan beállítja az engedélyeket az alkalmazáshoz beállított egyéb alkalmazások engedélyei alapján a könyvtárban. Ezek az Alkalmazásengedélyek tekintheti meg az alkalmazás megnézi **beállítások** lap.
   > 
   > 
 
@@ -182,7 +182,7 @@ A következő szakasz bemutatja, hogyan teszi közzé a hozzáférési hatókör
   > További hatókörökkel később szükség szerint is elérhetővé teheti. Vegye figyelembe, hogy a webes API számos különböző funkcióihoz tartozó több hatókör esetleg felfedi. Az erőforrás is való hozzáférést a webes API-t, futásidőben hatókörének (`scp`) jogcím(ek) a fogadott OAuth 2.0 hozzáférési jogkivonat.
   > 
 
-6. Ha befejezte, kattintson a **mentése**. Most a webes API más alkalmazás a könyvtárban van beállítva.  
+6. Ha befejezte, kattintson a **mentése**. Most a webes API más alkalmazás a könyvtárban van beállítva. 
 
   ![Egy alkalmazás regisztráció frissítése](./media/active-directory-integrating-applications/update-app-registration-manifest.png)
 
@@ -210,7 +210,7 @@ További információ az alkalmazás általában manifest fogalmak című [az Az
 
 A korábbiak mellett az ilyen/elérése API-k a saját alkalmazásai regisztrálhatja az ügyfélalkalmazást API-k által Microsoft erőforrások elérésére. A Microsoft Graph API néven érhető el a portál erőforrás/API listában "Microsoft Graph" az Azure ad-vel regisztrált összes alkalmazásra. Ha az ügyfélalkalmazást, amely az Office 365-előfizetésre feliratkozott fiókokat tartalmazó bérlőjében regisztrál, a hatókörök által a különböző Office 365-erőforrások is elérhető.
 
-A Microsoft Graph API által elérhetővé tett hatóköre teljes leírása, tekintse meg a [engedélyhatókörök |} Microsoft Graph API-val kapcsolatos fogalmak](https://graph.microsoft.io/docs/authorization/permission_scopes) cikk.
+A Microsoft Graph API által elérhetővé tett hatóköre teljes leírása, tekintse meg a [Microsoft Graph engedélyek hivatkozás](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) cikk.
 
 > [!NOTE]
 > A jelenlegi korlátozás miatt natív ügyfélalkalmazások csak hívhatják meg azokat az Azure AD Graph API ha azok a "Hozzáférés a munkahely címtárában" engedéllyel. Ez a korlátozás vonatkozik webes alkalmazásokhoz.
@@ -247,7 +247,7 @@ Miután kiválasztotta a módosításokat, felhasználók és más vállalatok r
 
 #### <a name="changing-the-application-to-support-multi-tenant"></a>Az alkalmazás támogassa a több-bérlős módosítása
 
-Támogatja a több-bérlős alkalmazásokhoz az Azure AD hozzájárulási keretrendszer fokozottan támaszkodik. Hozzájárulás, akkor az eszköz, amely lehetővé teszi a felhasználó egy másik bérlőhöz, az alkalmazás-hozzáférést biztosít a felhasználó-bérlője által biztosított erőforrásokhoz. Ez a felület nevezzük "felhasználói hozzájárulás."
+Támogatja a több-bérlős alkalmazásokhoz az Azure AD hozzájárulási keretrendszer fokozottan támaszkodik. Hozzájárulás, akkor az eszköz, amely lehetővé teszi a felhasználóknak az alkalmazás-hozzáférést biztosít a felhasználó-bérlője által biztosított erőforrásokhoz egy másik bérlőhöz. Ez a felület nevezzük "felhasználói hozzájárulás."
 
 A webes alkalmazás is lehet, hogy kínál.
 
@@ -289,7 +289,7 @@ OAuth 2.0 típusú implicit Grant alkalmazások alapértelmezés szerint le van 
 Ez a szakasz ismerteti a távolítsa el az alkalmazás regisztrálása az Azure AD-bérlő.
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>A szervezet által létrehozott alkalmazás eltávolítása
-A szervezet által regisztrált alkalmazások megjelenítése alatt a "Saját alkalmazások" szűrő a bérlő App regisztrációk"fő" lapon. Ezek az alkalmazások azok manuálisan regisztrált az Azure-portálon vagy programozottan PowerShell vagy a Graph API segítségével. Pontosabban, azok vannak objektum által jelképezett mindkét egy alkalmazás és egyszerű szolgáltatás az Ön bérelt szolgáltatásának. További információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok](active-directory-application-objects.md).
+A szervezet által regisztrált alkalmazások csoportban jelennek meg a "Saját alkalmazások" szűrő a bérlő App regisztrációk"fő" lapon. Ezek az alkalmazások azok manuálisan regisztrált az Azure-portálon vagy programozottan PowerShell vagy a Graph API segítségével. Pontosabban, azok vannak objektum által jelképezett mindkét egy alkalmazás és egyszerű szolgáltatás az Ön bérelt szolgáltatásának. További információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok](active-directory-application-objects.md).
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>A címtárban lévő egyetlen-bérlő alkalmazás eltávolítása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -307,15 +307,15 @@ A szervezet által regisztrált alkalmazások megjelenítése alatt a "Saját al
 6. Kattintson a **Igen** a megerősítő üzeneten.
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Egy másik szervezet által felhatalmazott több-bérlős alkalmazás eltávolítása
-Az alkalmazásokat, amelyek alapján az "Összes alkalmazások" szűrő megjelenítése egy részét (kivéve a "Saját alkalmazások" regisztrációk) a bérlő "App regisztrációk" főoldalon, amelyek több-bérlős alkalmazásokhoz. Technikai szempontból a több-bérlős alkalmazásokhoz egy másik bérlőhöz, és volt a hozzájárulási folyamat során a bérlő regisztrálni. Pontosabban, azok vannak objektum által jelképezett csak a szolgáltatás egyszerű az Ön bérlőjében, nem megfelelő alkalmazás-objektum. Az alkalmazás és szolgáltatás egyszerű objektumok közötti különbségekkel kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure AD](active-directory-application-objects.md).
+Az alkalmazásokat, amely alatt az "Összes alkalmazások" szűrő megjelenik egy részét (kivéve a "Saját alkalmazások" regisztrációk) a bérlő "App regisztrációk" főoldalon, amelyek több-bérlős alkalmazásokhoz. Technikai szempontból a több-bérlős alkalmazásokhoz egy másik bérlőhöz, és volt a hozzájárulási folyamat során a bérlő regisztrálni. Pontosabban, azok vannak objektum által jelképezett csak a szolgáltatás egyszerű az Ön bérlőjében, nem megfelelő alkalmazás-objektum. Az alkalmazás és szolgáltatás egyszerű objektumok közötti különbségekkel kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure AD](active-directory-application-objects.md).
 
-El szeretné távolítani egy több-bérlős alkalmazás hozzáférés a címtárhoz (után hozzájárulási megadó), a vállalati rendszergazda el kell távolítania a szolgáltatásnevet. A rendszergazda kell globális rendszergazdai hozzáféréssel rendelkezik, és távolítsa el az Azure portálon keresztül vagy használja a [Azure AD PowerShell-parancsmagok](http://go.microsoft.com/fwlink/?LinkId=294151) elérését.
+El szeretné távolítani egy több-bérlős alkalmazás hozzáférés a címtárhoz (után hozzájárulási megadó), a vállalati rendszergazda el kell távolítania a szolgáltatásnevet. A rendszergazda kell globális rendszergazdai hozzáféréssel rendelkeznek, és távolítsa el az Azure portálon keresztül vagy használja a [Azure AD PowerShell-parancsmagok](http://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>További lépések
 - Az Azure AD hitelesítési működéséről további információkért lásd: [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
 - Tekintse meg a [Branding irányelveket az integrált alkalmazások](active-directory-branding-guidelines.md) kapcsolatos tippek az alkalmazások visual útmutatást.
 - Az alkalmazás alkalmazás- és szolgáltatásnevet objektumok közötti kapcsolatot további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok](active-directory-application-objects.md).
 - További információt a szerepkör az alkalmazás jegyzékének lejátszása közben, lásd: [az Azure Active Directory alkalmazásjegyzékének megismerése](active-directory-application-manifest.md)
-- Tekintse meg a [az Azure AD fejlesztői szószedet](active-directory-dev-glossary.md) bizonyos Azure Active Directory (AD) fejlesztői alapfogalmakat-definíciók.
+- Tekintse meg a [az Azure AD fejlesztői szószedet](active-directory-dev-glossary.md) néhányat az Azure AD alapvető fejlesztői fogalmak definícióját.
 - Látogasson el a [Active Directory fejlesztői útmutatója](active-directory-developers-guide.md) minden fejlesztéssel kapcsolatos tartalom áttekintését.
 

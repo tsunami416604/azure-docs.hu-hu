@@ -1,24 +1,22 @@
 ---
-title: "A HBase fürt replikálása az Azure virtuális hálózat beállítása |} Microsoft Docs"
-description: "Útmutató: a HBase-replikálás egy HDInsight-verzióról a másikra terheléselosztás, magas rendelkezésre állású, nulla állásidő áttelepítési és a frissítések és vész-helyreállítási beállítása."
+title: A HBase fürt replikálása az Azure virtuális hálózat beállítása |} Microsoft Docs
+description: 'Útmutató: a HBase-replikálás egy HDInsight-verzióról a másikra terheléselosztás, magas rendelkezésre állású, nulla állásidő áttelepítési és a frissítések és vész-helyreállítási beállítása.'
 services: hdinsight,virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: b0a22815dc0bf0ea31e47efe5152498f9aa45de4
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: c28c48b5842deec9d9c3898c5742c3d4d473094e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>A HBase fürt replikálása az Azure virtuális hálózat beállítása
 
@@ -255,7 +253,7 @@ A `print_usage()` szakasza a [parancsfájl](https://github.com/Azure/hbase-utils
         -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
 
 
-## <a name="disable-replication"></a>Tiltsa le a replikációt
+## <a name="disable-replication"></a>A replikálás letiltása
 
 Tiltsa le a replikációt, hogy egy másik parancsfájl művelet parancsfájl használatát [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Az ismertetett eljárást kell követnie is [engedélyezze a replikálást](#enable-replication) a parancsfájl művelet hívására. Használja a következő paramétereket:
 

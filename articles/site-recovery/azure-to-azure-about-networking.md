@@ -6,20 +6,20 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/17/2018
 ms.author: sujayt
-ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: f318f98479caed8efb4a3705939cb9ac0dd5b237
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Az Azure az Azure-bA replikációs alkalmazás hálózatkezelési funkcióiról
 
 >[!NOTE]
 > Az Azure virtuális gépek helyreállítási helyreplikálásának jelenleg előzetes verzió.
 
-Ez a cikk hálózati útmutatást biztosít, amikor Ön replikálásához és helyreállítása Azure virtuális gépek egy régióban egy másik használatával [Azure Site Recovery](site-recovery-overview.md). 
+Ez a cikk hálózati útmutatást biztosít, amikor Ön replikálásához és helyreállítása Azure virtuális gépek egy régióban egy másik használatával [Azure Site Recovery](site-recovery-overview.md).
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -57,19 +57,18 @@ login.microsoftonline.com | A Site Recovery szolgáltatás URL-címek a hiteles�
 
 Az IP-alapú tűzfal proxy vagy az NSG-szabályok kimenő kapcsolat ellenőrzésére használnak, ha ezek IP-címtartományok engedélyezni kell.
 
-- Az összes IP-címtartományokat, amelyek megfelelnek a forráshelyen.
-    - Letöltheti a [IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653).
+- Összes IP-címtartományokat, amelyek megfelelnek a storage-fiókok forrás régióban
+    - Kell létrehoznia egy [tárolási szolgáltatás címke](../virtual-network/security-overview.md#service-tags) NSG-szabály a forrás régió alapján.
     - Szeretné engedélyezni a ezeknél a címeknél, így az is lehet adatokat írni a gyorsítótár tárfiók a virtuális gépről.
 - Az összes IP-címtartományokat, amelyek megfelelnek az Office 365 [hitelesítés és identitás IP V4 végpontok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
     - Ha új cím ad hozzá az Office 365-tartomány a jövőben, akkor kell új NSG-szabályok létrehozásához.
-- Webhely-helyreállítási szolgáltatási végpont IP-címek. Ezek érhetők el egy [XML-fájl](https://aka.ms/site-recovery-public-ips), és a célhely függ.
--  Is [töltse le és használja ezt a parancsfájlt](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702), az NSG-t a szükséges szabályok automatikus létrehozásához. 
+- Webhely-helyreállítási szolgáltatási végpont IP-címek. Ezek érhetők el egy [XML-fájl](https://aka.ms/site-recovery-public-ips) és a célhely függ.
+-  Is [töltse le és használja ezt a parancsfájlt](https://aka.ms/nsg-rule-script), az NSG-t a szükséges szabályok automatikus létrehozásához.
 - Azt javasoljuk, hogy a szükséges NSG-szabályok létrehozása egy NSG-teszt, és ellenőrizze, hogy nincs probléma a termelési NSG-t a szabályok létrehozása előtt.
-- A szükséges számú NSG-szabályok létrehozása, győződjön meg arról, hogy az előfizetés szerepel az engedélyezési listán. Kapcsolattartási Azure támogatja az előfizetés az NSG-szabály korlát növelése érdekében.
 
-Az IP-címtartományok a következők:
 
->
+Site Recovery IP-címtartományok a következők:
+
    **Target** | **A helyreállítási hely IP** |  **A Site Recovery IP figyelése**
    --- | --- | ---
    Kelet-Ázsia | 52.175.17.132 | 13.94.47.61
@@ -99,50 +98,73 @@ Az IP-címtartományok a következők:
    Egyesült Királyság északi régiója | 51.142.209.167 | 13.87.102.68
    Korea középső régiója | 52.231.28.253 | 52.231.32.85
    Korea déli régiója | 52.231.298.185 | 52.231.200.144
-   
-   
-  
+
+
+
 
 ## <a name="example-nsg-configuration"></a>Példa NSG-konfiguráció
 
-Ez a példa bemutatja a virtuális gépek replikálása az NSG-szabályok konfigurálása. 
+Ez a példa bemutatja a virtuális gépek replikálása az NSG-szabályok konfigurálása.
 
-- NSG-szabályok segítségével szabályozhatja a kimenő kapcsolat, ha a "Kimenő HTTPS engedélyezése" szabályok használata az összes a szükséges IP-címtartományok.
-- A példa feltételezi, hogy a virtuális gép helyét "Amerikai keleti" és a cél elérési útja "USA középső RÉGIÓJA.
+- NSG-szabályok segítségével szabályozhatja a kimenő kapcsolat, ha használja a "Kimenő HTTPS engedélyezése" szabályokat: 443-as port minden a szükséges IP-címtartományokhoz.
+- A példa feltételezi, hogy a virtuális gép helyét "Amerikai keleti" és a cél elérési útja "Középső Régiójában".
 
 ### <a name="nsg-rules---east-us"></a>NSG-szabályok - USA keleti régiója
 
-1. Létrehozhat szabályokat, amelyek megfelelnek [keleti Velünk IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653). Erre azért szükség, így az is lehet adatokat írni a gyorsítótár tárfiók a virtuális gépről.
-2. Létrehozhat szabályokat, amelyek megfelelnek az Office 365 összes IP-címtartományokhoz [hitelesítés és identitás IP V4 végpontok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-3. Hozzon létre szabályokat, amelyek megfelelnek a célhelyre:
+1. HTTPS (443) kimenő biztonsági szabály létrehozása "Storage.EastUS" az NSG-t az alábbi képernyőfelvételen látható módon.
+
+      ![tároló-tag](./media/azure-to-azure-about-networking/storage-tag.png)
+
+2. Az összes IP-címtartományokat, amelyek megfelelnek az Office 365 kimenő HTTPS (443) szabályok létrehozása [hitelesítés és identitás IP V4 végpontok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+3. HTTPS (443) kimenő szabályok létrehozása a hely helyreállítási IP-címek, amelyek megfelelnek a célhelyre:
 
    **Hely** | **Webhely-helyreállítási IP-cím** |  **Helyreállítási figyelő IP-címe**
     --- | --- | ---
    USA középső régiója | 40.69.144.231 | 52.165.34.144
 
-### <a name="nsg-rules---central-us"></a>NSG-szabályok - USA középső RÉGIÓJA 
+### <a name="nsg-rules---central-us"></a>NSG-szabályok - USA középső RÉGIÓJA
 
 Ezek a szabályok szükség, hogy a replikációs cél régióban engedélyezhető a forrás régió feladatátvételt követően a:
 
-* Szabályok, amelyek megfelelnek [központi USA IP-címtartományok](https://www.microsoft.com/download/confirmation.aspx?id=41653). Ezek szükségesek, így az is lehet adatokat írni a gyorsítótár tárfiók a virtuális gépről.
+1. HTTPS (443) kimenő biztonsági szabály létrehozása az NSG "Storage.CentralUS".
 
-* Az összes IP-címtartományokat, amelyek megfelelnek az Office 365 szolgáltatásra vonatkozó szabályok [hitelesítés és identitás IP V4 végpontok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+2. Az összes IP-címtartományokat, amelyek megfelelnek az Office 365 kimenő HTTPS (443) szabályok létrehozása [hitelesítés és identitás IP V4 végpontok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
 
-* Olyan szabályokat, hogy a forrás helye:
-    - USA keleti régiója
-    - Hely helyreállítási IP-cím: 13.82.88.226
-    - IP-cím figyelése helyreállítási hely: 104.45.147.24
+3. Kimenő HTTPS (443) a szabályok létrehozása a hely helyreállítási IP-címek, amelyek megfelelnek a forrás helye:
 
+   **Hely** | **Webhely-helyreállítási IP-cím** |  **Helyreállítási figyelő IP-címe**
+    --- | --- | ---
+   USA középső régiója | 13.82.88.226 | 104.45.147.24
 
-## <a name="expressroutevpn"></a>ExpressRoute/VPN 
+## <a name="network-virtual-appliance-configuration"></a>Virtuális készülék hálózatkonfigurálás
+
+Ha a virtuális gépek kimenő hálózati forgalmat a hálózati virtuális készülékek (NVAs) segítségével végzi, a készülék előfordulhat, hogy beolvasása szabályozva, ha a replikációs forgalom átmegy az NVA. Azt javasoljuk, hogy a hálózati szolgáltatás-végpont létrehozása a virtuális hálózat "Tárolás", hogy a replikációs forgalom nem halad az NVA számára.
+
+### <a name="create-network-service-endpoint-for-storage"></a>Hálózati szolgáltatás-végpont létrehozása a tároláshoz
+Létrehozhat egy hálózati végpontot a virtuális hálózat "Tárolás", hogy a replikálás forgalma nem hagynak Azure határ.
+
+- Válassza ki az Azure virtuális hálózatot, majd kattintson a "Szolgáltatásvégpontok"
+
+    ![Storage-végponthoz](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
+
+- Kattintson a "Hozzáadása" és "Szolgáltatásvégpontok hozzáadása" lap megnyitása
+- Válassza ki a "Microsoft.Storage" a "Service" és a szükséges alhálózatok "Alhálózatok" mező alatt, és kattintson a "Hozzáadás"
+
+>[!NOTE]
+>A storage-fiókokra, használja az automatikus rendszer-Helyreállítás nem korlátozhatja a virtuális hálózati hozzáférést. Engedélyezze a hozzáférést minden hálózatról
+
+## <a name="expressroutevpn"></a>ExpressRoute/VPN
 
 Ha egy ExpressRoute- vagy VPN-kapcsolat a helyszíni és az Azure-beli hely között, kövesse az ebben a szakaszban irányelveket.
 
 ### <a name="forced-tunneling"></a>Alagúthasználat kényszerítése
 
-Általában adja meg az alapértelmezett útvonalat (0.0.0.0/0), amely arra kényszeríti a kimenő internetes forgalmat a helyszíni helyeken keresztül. Ez nem ajánlott meg. A replikációs forgalom és a Site Recovery szolgáltatás kommunikációja nem hagyja az Azure-határ. A megoldás, hogy vegye fel a felhasználó által definiált útvonalak (udr-EK) a [ezek IP-címtartományok](#outbound-connectivity-for-azure-site-recovery-ip-ranges) , hogy a replikációs forgalmat a helyszíni nem használható.
+Általában, adja meg az alapértelmezett útvonalat (0.0.0.0/0), amely arra kényszeríti a helyszíni hely áramlása érdekében kimenő internetforgalom vagy. Ez nem ajánlott meg. A replikálás forgalma nem hagyja meg az Azure-határ.
 
-### <a name="connectivity"></a>Kapcsolatok 
+Is [hozzon létre egy hálózati végpontot](#create-network-service-endpoint-for-storage) a virtuális hálózatot "Tároló" úgy, hogy a replikálás forgalma nem hagynak Azure határ.
+
+
+### <a name="connectivity"></a>Kapcsolatok
 
 Kövesse a kapcsolatok a cél helyét, és a helyszíni hely közötti:
 - Ha az alkalmazásnak a helyszíni gépeket csatlakozni, vagy ha nincsenek a csatlakozó ügyfelek az alkalmazás a helyszíni keresztül VPN/ExpressRoute, győződjön meg arról, hogy legalább egy [pont-pont kapcsolat](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) a cél Azure-régió, és a helyszíni adatközpont között.

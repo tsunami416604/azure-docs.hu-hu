@@ -1,11 +1,11 @@
 ---
-title: "Azure Cloud Services alkalmazások átalakítása mikroszolgáltatások |} Microsoft Docs"
-description: "Ez az útmutató a felhőalapú szolgáltatások webes és feldolgozói szerepkörök és a Service Fabric állapotmentes szolgáltatások Felhőszolgáltatások telepítenek át a Service Fabric hasonlítja össze."
+title: Azure Cloud Services alkalmazások átalakítása mikroszolgáltatások |} Microsoft Docs
+description: Ez az útmutató a felhőalapú szolgáltatások webes és feldolgozói szerepkörök és a Service Fabric állapotmentes szolgáltatások Felhőszolgáltatások telepítenek át a Service Fabric hasonlítja össze.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bb8f2f8a6f0905716c34796a5b16c38f406ae64c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Útmutató a Service Fabric állapotmentes szolgáltatások webes és feldolgozói szerepkörök alakítása
 A cikkből megtudhatja, hogyan telepíthetők át a felhőalapú szolgáltatások webes és feldolgozói szerepkörök a Service Fabric állapotmentes szolgáltatásokhoz. Ez az a legegyszerűbb áttelepítési út a felhőalapú szolgáltatások a Service Fabric az alkalmazások, amelyek általános architektúrája érintetlen marad többé-kevésbé megegyezik.
@@ -53,7 +53,7 @@ Feldolgozói szerepkör és a Service Fabric szolgáltatás az API-k ajánlat ha
 | Feldolgozás |`Run()` |`RunAsync()` |
 | Virtuális gép indítása |`OnStart()` |– |
 | Virtuális gép leállítása |`OnStop()` |– |
-| Nyissa meg figyelő az ügyféli kérelmek részére |– |<ul><li> `CreateServiceInstanceListener()`az állapot nélküli</li><li>`CreateServiceReplicaListener()`az állapotalapú alkalmazások és szolgáltatások</li></ul> |
+| Nyissa meg figyelő az ügyféli kérelmek részére |– |<ul><li> `CreateServiceInstanceListener()` az állapot nélküli</li><li>`CreateServiceReplicaListener()` az állapotalapú alkalmazások és szolgáltatások</li></ul> |
 
 ### <a name="worker-role"></a>Feldolgozói szerepkör
 ```csharp
@@ -121,7 +121,7 @@ A Cloud Services környezet API információkat és az aktuális Virtuálisgép-
 | --- | --- | --- |
 | A konfigurációs beállítások és módosítási értesítés |`RoleEnvironment` |`CodePackageActivationContext` |
 | Helyi tároló |`RoleEnvironment` |`CodePackageActivationContext` |
-| Végpont |`RoleInstance` <ul><li>Jelenlegi példány:`RoleEnvironment.CurrentRoleInstance`</li><li>Egyéb szerepköröket és példány:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`az aktuális csomópont-címe</li><li>`FabricClient`és `ServicePartitionResolver` a szolgáltatási végpont felderítése</li> |
+| Végpont |`RoleInstance` <ul><li>Jelenlegi példány: `RoleEnvironment.CurrentRoleInstance`</li><li>Egyéb szerepköröket és példány: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` az aktuális csomópont-címe</li><li>`FabricClient` és `ServicePartitionResolver` a szolgáltatási végpont felderítése</li> |
 | Az emuláció környezet |`RoleEnvironment.IsEmulated` |– |
 | Egyidejű esemény |`RoleEnvironment` |– |
 
@@ -207,11 +207,11 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>Indítási feladatok
 Indítási feladatokat is az alkalmazás indítása előtt végzett műveleteket. Egy indítási tevékenységhez általában emelt szintű jogosultságokkal telepítő parancsfájlok futtatásához használt. Cloud Services és a Service Fabric támogatja a kezdeti feladatok. A fő különbség, hogy a felhőalapú szolgáltatások indítási feladat van kötve egy virtuális gép már része egy szerepkörpéldányt, mert mivel a Service Fabric egy indítási feladat a szolgáltatást, amely nem kötődik azonban bármely adott virtuális géphez van kötve.
 
-| Cloud Services | Service Fabric |
+| Service Fabric | Cloud Services |
 | --- | --- | --- |
 | Konfiguráció helye |ServiceDefinition.csdef |
 | Jogosultságok |"korlátozott" vagy "emelt szintű" |
-| Alkalmazás-előkészítés |"simple", "background", "foreground" |
+| Alkalmazás-előkészítés |"egyszerű", "Háttér", "előtér" |
 
 ### <a name="cloud-services"></a>Cloud Services
 Cloud Services egy indítási belépési pont úgy van konfigurálva, a ServiceDefinition.csdef szerepkör /. 

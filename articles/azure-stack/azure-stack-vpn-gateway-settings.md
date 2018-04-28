@@ -1,11 +1,11 @@
 ---
-title: "VPN-átjáró beállítások Azure verem |} Microsoft Docs"
-description: "Ismerje meg a VPN-átjárók használata Azure verem beállításait."
+title: VPN-átjáró beállítások Azure verem |} Microsoft Docs
+description: Ismerje meg a VPN-átjárók használata Azure verem beállításait.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: fa8d3adc-8f5a-4b4f-8227-4381cf952c56
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/18/2018
 ms.author: brenduns
-ms.openlocfilehash: 1eba5df93b461eb22ab8341b4498682957c9298a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: b732770b2eace07690d112e81c6916b16b2cb5b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-átjáró konfigurációs beállítások Azure verem
 
@@ -160,7 +160,7 @@ Azure, amely támogatja több ajánlatok egy kezdeményező és a válaszoló is
 |IKE verziószám |IKEv2 |
 |Titkosítás és kivonatoló algoritmusokat (titkosítás)     | GCMAES256|
 |Titkosítás és kivonatoló algoritmusokat (hitelesítés) | GCMAES256|
-|SA élettartama (Idő)  | 14 400 másodpercet |
+|SA élettartama (Idő)  | 27,700 másodpercben |
 |SA élettartama (bájt) | 819,200       |
 |Sérülés utáni titkosságvédelem (PFS) |PFS2048 |
 |Kapcsolat megszakadásának észlelése | Támogatott|  

@@ -1,36 +1,32 @@
 ---
-title: "Az Azure AD Connect állapotát és általános Data Protection szabályozás |} Microsoft Docs"
-description: "Ez a dokumentum ismerteti az beszerzése az Azure AD Connect GDPR előírásainak."
+title: Az Azure AD Connect Health és a felhasználói adatvédelem |} Microsoft Docs
+description: Ez a dokumentum ismerteti az Azure AD Connect Health felhasználói adatok.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: bf26e91308cfec0dc8ede20e683919b5764a4868
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect-health"></a>GDPR megfelelőség és az Azure AD Connect Health 
+# <a name="user-privacy-and-azure-ad-connect-health"></a>Felhasználói adatok és az Azure AD Connect Health 
 
-[Általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) Európai Unió adatok védelmét és adatvédelmi törvény van. A GDPR támaszt a vállalatok új szabályokat, állami intézményekhez, nem nyereség és más szervezetek, termékek és szolgáltatások biztosítson munkatársai az EU, vagy ha az adatgyűjtés és -elemzés EU lakosai kötve. 
-
-Microsoft-termékek és szolgáltatások elérhetők ma segítséget nyújtanak a GDPR követelményeknek. További információk a Microsoft Privacy Policy házirend [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
-
-Az Azure AD Connect Health figyeli a helyszíni identitás infrastruktúra és a szinkronizálási szolgáltatás. Azt is biztosít elemzések és a felületek riasztásokat. A Microsoft elkötelezte magát a GDPR-megfelelőségi felhőszolgáltatás, előfordulhat, hogy 2018 kényszerítési megkezdésekor, és adja meg a szerződéses kötelezettségeket a GDPR kapcsolatos biztosítékok. 
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
-> Ez a cikk ismerteti az Azure AD Connect Health GDPR megfelelőségi. Az Azure AD Connectben GDPR megfelelőségi információkért lásd: [GDPR megfelelőség és az Azure AD Connect](../../active-directory/connect/active-directory-aadconnect-gdpr.md).
+>Ez a cikk az Azure AD Connect Health és a felhasználói adatvédelem foglalkozik.  Az Azure AD Connect és felhasználói adatvédelmi információkat lásd: a cikk [Itt](../../active-directory/connect/active-directory-aadconnect-gdpr.md).
 
-## <a name="gdpr-classification"></a>GDPR besorolás
+## <a name="user-privacy-classification"></a>Felhasználói adatvédelmi besorolás
 Az Azure AD Connect Health beleesik a **adatfeldolgozó** GDPR besorolási kategóriáját. A processzor feldolgozási folyamat, mint a szolgáltatás az adatfeldolgozás szolgáltatásokat nyújt kulcs partnerek és a záró fogyasztók. Az Azure AD Connect Health nem hozhat létre a felhasználói adatokat, és rendelkezik a független befolyással milyen személyes adatok gyűjtése, és hogyan használja fel azokat. Adatok beolvasása, összesítési, elemzés és a jelentéskészítés az Azure AD Connect Health meglévő helyszíni adatok alapján. 
 
 ## <a name="data-retention-policy"></a>Adatmegőrzési szabályzat
@@ -67,5 +63,5 @@ Egy korábban törölt figyelt szolgáltatás számára az Azure AD Connect Heal
 
 ## <a name="next-steps"></a>További lépések
 * [Tekintse át a Microsoft Privacy házirendet, a biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
-* [Az Azure AD Connect és GDPR](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
-* [Az Azure AD Connect Health műveletei](active-directory-aadconnect-health-operations.md)
+* [Az Azure AD Connect és a felhasználói adatok](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
+

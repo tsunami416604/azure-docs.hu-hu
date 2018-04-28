@@ -1,24 +1,18 @@
 ---
-title: "Az Azure Search jellemzőalapú navigációs megvalósításához |} Microsoft Docs"
-description: "Adja hozzá Jellemzőalapú navigációs alkalmazásokat, amelyekbe beépül az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, Microsoft Azure-on."
-services: search
-documentationcenter: 
+title: Az Azure Search jellemzőalapú navigációs megvalósításához |} Microsoft Docs
+description: Adja hozzá Jellemzőalapú navigációs alkalmazásokat, amelyekbe beépül az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, Microsoft Azure-on.
 author: HeidiSteen
-manager: mblythe
-editor: 
-ms.assetid: cdf98fd4-63fd-4b50-b0b0-835cb08ad4d3
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 413f498eeb0bbc9a971c7a65200ed2fd8caa9aaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 1bd814250a243d03f1eedc4d0ecb2719975b9c6f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció, amely az alkalmazások keresése irányuló részletezési navigációs szűrési mechanizmus. A kifejezés "jellemzőalapú navigációs" ismeretlen, de Ön már valószínűleg használta. Ahogy az alábbi példában látható, jellemzőalapú navigációs értéke "Nothing" több mint eredmények szűréséhez kategóriákat.
@@ -54,7 +48,7 @@ A kiindulási pontja egy alkalmazás-lap, amely általában helyezve kerülete j
 1. Egy lekérdezést küld az Azure Search a jellemzőalapú navigáció struktúra egy vagy több dimenzió lekérdezési paraméterek segítségével határozza meg. Például a lekérdezés tartalmazhat `facet=Rating`, lehet, hogy az egy `:values` vagy `:sort` tovább pontosíthatja a megjelenítési beállítást.
 2. A bemutató réteg képezi le egy keresése oldal, amely használatával a típushoz a kérésben megadott jellemzőalapú navigáció.
 3. Egy jellemzőalapú navigációs szerkezetben, amely tartalmazza az értékelést kap, akkor kattintson a "4" annak jelzésére, hogy csak egy minősítés 4 vagy újabb termékek megjelenjenek-e. 
-4. A válasz az alkalmazás küld egy lekérdezést, amely tartalmazza`$filter=Rating ge 4` 
+4. A válasz az alkalmazás küld egy lekérdezést, amely tartalmazza `$filter=Rating ge 4` 
 5. A bemutató réteg frissíti a lapot, amely az csökkentett eredménykészletet, csak a megadott elemeket, amelyek megfelelnek az új feltételeket tartalmazó (ebben az esetben a termékek besorolású 4 és legfeljebb).
 
 Egy dimenzió egy lekérdezési paraméter, de ne tévessze össze az lekérdezés bevitellel. A lekérdezésben kiválasztási feltételek, soha nem használható. Ehelyett gondolja, hogy a dimenzió lekérdezési paraméterek ismét elérhető lesz a válaszban szereplő szerkezeti bemeneteként. Minden dimenzió lekérdezési paraméter, akkor adja meg, az Azure Search értékeli ki, hány dokumentumok minden értékkorlátozás értéke részleges eredményei nem.
@@ -301,7 +295,7 @@ Jellemzőalapú leásási általában érdemes csak a dokumentumok az értékkor
 
 Minden jellemzőalapú navigációs fában mezőhöz nincs alapértelmezett maximális száma 10 értékből. Ez az alapértelmezett szabálykészletében navigációs struktúrákhoz mert kezelhető méretre tartja az értékek listája. Az alapértelmezett érték felülírható rendelhet a count érték.
 
-* `&facet=city,count:5`Meghatározza, hogy csak az első öt városokat szerint rangsorolunk eredmények tetején található dimenzió emiatt kerüljenek vissza. Fontolja meg a kívánt keresőkifejezést "repülőtéri" és a 32 megegyezik a mintalekérdezést. Ha a lekérdezés `&facet=city,count:5`, csak az első öt egyedi város dokumentumokkal a legtöbb a a találatok között szerepelnek a dimenzió eredmények.
+* `&facet=city,count:5` Meghatározza, hogy csak az első öt városokat szerint rangsorolunk eredmények tetején található dimenzió emiatt kerüljenek vissza. Fontolja meg a kívánt keresőkifejezést "repülőtéri" és a 32 megegyezik a mintalekérdezést. Ha a lekérdezés `&facet=city,count:5`, csak az első öt egyedi város dokumentumokkal a legtöbb a a találatok között szerepelnek a dimenzió eredmények.
 
 Figyelje meg értékkorlátozás eredmények és a keresési eredmények közötti különbségtételt. A program, amelyek megfelelnek a lekérdezés összes dokumentumot. Értékkorlátozás eredményei az egyes értékkorlátozás értéke megfelelő találat. A példában a találatok között szerepelnek a városnév, amelyek nem szerepelnek a dimenzió problémabesorolások listája (ebben a példában 5). Keresztül válnak láthatóvá értékkorlátozás törölje, vagy válassza a város mellett egyéb facets jellemzőalapú navigációs kiszűrt eredményeket. 
 
@@ -312,7 +306,7 @@ Figyelje meg értékkorlátozás eredmények és a keresési eredmények közöt
   A bemutató kódban megjelenik egy count paraméter a dimenzió értékkorlátozás eredmények számának megjelenítésére használatos. Értékkorlátozás eredmények száma a dimenzió kifejezés vagy a tartomány megfelelő dokumentumok számát jelzi.
 * `&facet=City,count:12`<br/>
   A dimenzió lekérdezésben száma értéket állíthat be.  Az alapértelmezett érték 10, de be lehet állítani magasabb vagy alacsonyabb. Beállítás `count:12` dokumentum száma szerint a dimenzió eredmények megfelel az első 12 lekérdezi.
-* "`@odata.count`"<br/>
+* „`@odata.count`”<br/>
   Válaszban az érték adja meg a keresési eredmények egyező elemek száma. Átlagosan kombinálja, a található elemek, amelyek megfelelnek a keresési kifejezés miatt az összes dimenzió eredmények összege nagyobb, de nincs értékkorlátozás értéke megegyezik kell.
 
 **Értékkorlátozás eredmények összesítése beolvasása**
@@ -340,7 +334,7 @@ Címkék általában definiálják HTML vagy formátumban (`index.cshtml` a mint
 Az Azure Search tartomány konstrukció két megközelítés biztosít a számítási tartomány egyszerűbbé teszi. Mindkét megközelítés az Azure Search hoz létre a megfelelő tartományokon a megadott bemeneti adatok megadott. Például ha megadja a tartomány értékének 10 |} 20 |} 30, automatikusan létrehozza a 0 – 10, 10-20, 20 – 30 tartományait. Az alkalmazás opcionálisan eltávolíthatja bármely intervallumok üres. 
 
 **1. módszer: A időköz paraméter használható.**  
-Árlista értékkorlátozás $10 lépésekben beállításához megadni:`&facet=price,interval:10`
+Árlista értékkorlátozás $10 lépésekben beállításához megadni: `&facet=price,interval:10`
 
 **2. módszer: Értékek listáját használja**  
 A numerikus adatok értékek listáját is használhatja.  Érdemes lehet a dimenzió értéktartományán egy `listPrice` mező megjelenítése az alábbiak szerint:

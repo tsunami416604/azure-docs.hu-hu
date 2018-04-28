@@ -3,8 +3,8 @@ title: Ismerkedés a Microsoft Power BI Embedded szolgáltatással | Microsoft D
 description: A Power BI Embedded és az üzletiintelligencia-alkalmazások
 services: power-bi-embedded
 documentationcenter: ''
-author: guyinacube
-manager: erikre
+author: markingmyname
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
-ms.author: asaxton
-ms.openlocfilehash: 3ea302d8cdd9a08d41f863917adeb4505552649d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: maghan
+ms.openlocfilehash: 7b604f9a26fc4c9a2c76a28ca01d066fe1640718
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>A Mcirosoft Power BI Embedded bemutatása
 
@@ -27,7 +27,7 @@ A **Power BI Embedded** egy gyors módszert kínál a független szoftverszáll�
 
 ![Beágyazási folyamat ábrája](media/get-started/introduction.png)
 
-A Power BI Embedded az ISV-k, azok fejlesztői és az ügyfelek számára is számtalan előnyt kínál, az ISV például ingyen kezdhet vizualizációkat készíteni a Power BI Desktop használatával. Az ISV-k gyorsabban juttathatják termékeiket piacra, ha csökkenthetik a vizuális elemzési fejlesztésekre fordított erőfeszítéseket, és kiemelkedhetnek versenytársaik közül egyéni adatkezelési élményt kínáló termékeikkel. Akár úgy is dönthetnek, hogy a beágyazott elemzések által teremtett többletértéket prémium szolgáltatásként árusítják.
+A Power BI Embedded az ISV-k, azok fejlesztői és az ügyfelek számára is számtalan előnyt kínál, az ISV például ingyen kezdhet vizualizációkat készíteni a Power BI Desktoppal. Az ISV-k gyorsabban juttathatják termékeiket piacra, ha csökkenthetik a vizuális elemzési fejlesztésekre fordított erőfeszítéseket, és kiemelkedhetnek versenytársaik közül egyéni adatkezelési élményt kínáló termékeikkel. Akár úgy is dönthetnek, hogy a beágyazott elemzések által teremtett többletértéket prémium szolgáltatásként árusítják.
 
 A fejlesztők idejüket az alkalmazás fő képességeinek kialakítására fordíthatják, és nem kell annyit foglalkozniuk a vizualizációk és elemzések kifejlesztésével. Gyorsan reagálhatnak az ügyfelek jelentésekkel és irányítópultokkal kapcsolatos igényeire, és az új megoldásokat könnyedén beágyazhatják a teljes körű dokumentációval rendelkező API-k és SDK-k használatával. Azzal, hogy engedélyezik a könnyen navigálható adatfelderítési képességeket alkalmazásaikban, az ISV-k lehetővé tehetik ügyfeleik számára, hogy gyors, adatokon alapuló, az adott környezethez igazodó és megbízható döntéseket hozhassanak bármilyen eszközön.
 

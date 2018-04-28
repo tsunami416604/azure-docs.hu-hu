@@ -1,18 +1,18 @@
 ---
-title: "Erőforrások létrehozása az Azure Site Recoveryvel való használatra | Microsoft Docs"
-description: "Ismerje meg, hogyan készítheti elő az Azure-t a helyszíni gépek replikálásához az Azure Site Recovery használatával."
+title: Erőforrások létrehozása az Azure Site Recoveryvel való használatra | Microsoft Docs
+description: Ismerje meg, hogyan készítheti elő az Azure-t a helyszíni gépek replikálásához az Azure Site Recovery használatával.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2f6ff1d30eef1fe34e55457d9bdd4295804ec16a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 0aec94ce4d53e1d0f5ecfbc7c667f7d4ceea1d2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek replikálásához
 
@@ -21,8 +21,9 @@ ms.lasthandoff: 02/23/2018
 Az oktatóanyag bemutatja, hogyan készítse elő az Azure-összetevőket, amikor helyszíni virtuális gépeket (Hyper-V vagy VMware) vagy Windows/Linux rendszert futtató fizikai kiszolgálókat szeretne replikálni az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Annak ellenőrzése, hogy a fiók rendelkezik-e replikálási engedélyekkel.
-> * Hozzon létre egy Azure-tárfiókot.
+> * Ellenőrizze, hogy az Azure-fiók rendelkezik-e replikálási engedélyekkel.
+> * Hozzon létre egy Azure-tárfiókot. A replikált adatok itt lesznek tárolva.
+> * Recovery Services-tároló létrehozása.
 > * Azure-hálózat beállítása. Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre, ehhez az Azure-hálózathoz csatlakoznak.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
@@ -39,7 +40,7 @@ Ha most hozta létre az ingyenes Azure-fiókját, akkor Ön az előfizetés rend
 - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
 - Írás a kiválasztott tárfiókra.
 
-A „Virtuális gépek közreműködője” beépített szerepkör rendelkezik ezekkel az engedélyekkel. A Site Recovery-műveletek kezelésére szóló engedélyre is szüksége lesz. A „Site Recovery-közreműködő” szerepkör minden olyan engedéllyel rendelkezik, amely a Site Recovery-műveletek Recovery Services-tárolóban történő kezeléséhez szükséges.
+A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális gépek közreműködője beépített szerepkörrel. Emellett a fiókhoz hozzá kell rendelni a Site Recovery-közreműködő beépített szerepkört is, a Site Recovery-műveletek tárolókban való kezeléséhez.
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 

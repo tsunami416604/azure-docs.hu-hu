@@ -1,25 +1,19 @@
 ---
 title: Szolgáltatási korlátait, az Azure Search |} Microsoft Docs
 description: A kapacitástervezés használt szolgáltatásra vonatkozó korlátozások és kérelmeit és válaszait az Azure Search maximális korlátozásait.
-services: search
-documentationcenter: ''
 author: HeidiSteen
-manager: jhubbard
-editor: ''
-tags: azure-portal
-ms.assetid: 857a8606-c1bf-48f1-8758-8032bbe220ad
+manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: heidist
-ms.openlocfilehash: 77ea75bf66f4b6ae6ec7d6ede4364db6b7fa82a0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 59b6efd8459f675bc44891d7b04251260fdd38e9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatásra vonatkozó korlátozások
 Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [kiépíteni az Azure Search](search-create-service-portal.md) : **szabad**, **alapvető**, vagy **Szabványos** tarifacsomag szükséges.
@@ -130,7 +124,7 @@ Megbecsli több előre jelezhető, ha a dedikált erőforrások (Basic és Stand
 * Javaslat API kérelmenként visszaadott legfeljebb 100 javaslatok
 
 ## <a name="api-key-limits"></a>Az API-kulcs korlátok
-API-kulcsokat használnak a szolgáltatás-hitelesítéshez. Két típusa van. A kérelem fejlécében megadott adminisztrációs kulcsok, és a szolgáltatás teljes olvasási és írási hozzáférést. Lekérdezés kulcsai csak olvasható, az URL-cím a megadott, és általában elosztott ügyfélalkalmazások számára.
+API-kulcsokat használnak a szolgáltatás-hitelesítéshez. Két típusukat különböztetjük meg. A kérelem fejlécében megadott adminisztrációs kulcsok, és a szolgáltatás teljes olvasási és írási hozzáférést. Lekérdezés kulcsai csak olvasható, az URL-cím a megadott, és általában elosztott ügyfélalkalmazások számára.
 
 * Legfeljebb 2 adminisztrációs kulcsok-szolgáltatás
 * Legfeljebb 50 lekérdezési kulcsok-szolgáltatás

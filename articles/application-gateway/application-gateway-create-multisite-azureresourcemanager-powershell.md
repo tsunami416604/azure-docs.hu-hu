@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre egy alkalmazás több webhely-üzemeltetés – Azure PowerShell |} Microsoft Docs"
-description: "Ismerje meg, amelyen több helyet az Azure Powershell Alkalmazásátjáró létrehozása."
+title: Hozzon létre egy alkalmazás több webhely-üzemeltetés – Azure PowerShell |} Microsoft Docs
+description: Ismerje meg, amelyen több helyet az Azure Powershell Alkalmazásátjáró létrehozása.
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: ed385eac624f5c59981c01ee70ba2a1700a78653
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: be3ecf1d1ce292df47cbe117390e863f4bd4d5b1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>Hozzon létre egy alkalmazás több helyet üzemeltető Azure PowerShell használatával
 
 Azure Powershell segítségével konfigurálhatja [több webhely tárolása](application-gateway-multi-site-overview.md) létrehozásakor egy [Alkalmazásátjáró](application-gateway-introduction.md). Ebben az oktatóanyagban hoz létre a virtuálisgép-méretezési csoportok használatával háttérkészletek menüpontot. Ezután konfigurálja figyelők és szabályok alapján a tartományok, amelyek a saját győződjön meg arról, hogy a webes forgalom érkezik a készletek a megfelelő kiszolgálókat. Ez az oktatóanyag feltételezi, hogy Ön a tulajdonosa több tartományok és felhasználási mintái *www.contoso.com* és *www.fabrikam.com*.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
 > * Application Gateway létrehozása
 > * Figyelők és útválasztási szabályok létrehozása
 > * A háttérkészlet hozzon létre virtuálisgép-méretezési csoportok
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 ![Többhelyes útválasztási – példa](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa ` Get-Module -ListAvailable AzureRM` . Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa ` Get-Module -ListAvailable AzureRM` . Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -247,7 +247,7 @@ for ($i=1; $i -le 2; $i++)
 }
 ```
 
-## <a name="create-cname-record-in-your-domain"></a>Create CNAME record in your domain
+## <a name="create-cname-record-in-your-domain"></a>CNAME rekord létrehozására a tartományban
 
 Nyilvános IP-címmel az Alkalmazásátjáró létrehozása után lekérni a DNS-címét, és hozzon létre egy CNAME rekordot a tartomány segítségével. Használhat [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) lekérni a DNS-címét az Alkalmazásátjáró. Másolás a *fqdn* a DNSSettings értékének és az legyen az Ön által létrehozott CNAME rekord értékét. A-rekordok használata nem ajánlott, mert a VIP módosíthatja az Alkalmazásátjáró újraindításakor.
 
@@ -257,7 +257,7 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-Adjon meg a tartománynevet a böngésző címsorába. Such as, http://www.contoso.com.
+Adjon meg a tartománynevet a böngésző címsorába. Például a http://www.contoso.com.
 
 ![Az alkalmazás átjáró contoso hely tesztelése](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
 
@@ -274,7 +274,7 @@ Ebben a cikkben megtanulta, hogyan:
 > * Application Gateway létrehozása
 > * Figyelők és útválasztási szabályok létrehozása
 > * A háttérkészlet hozzon létre virtuálisgép-méretezési csoportok
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Alkalmazásátjáró teendők](application-gateway-introduction.md)

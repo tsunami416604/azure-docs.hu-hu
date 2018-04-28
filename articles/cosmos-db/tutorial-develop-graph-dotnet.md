@@ -1,59 +1,59 @@
 ---
-title: "Az Azure Cosmos DB: A Graph API a .NET fejlesztés |} Microsoft Docs"
-description: "Ismerje meg, hogyan fejleszthet Azure Cosmos DB SQL API-t a .NET használatával"
+title: 'Azure Cosmos DB: Fejlesztés a Graph API-val .NET-keretrendszerben | Microsoft Docs'
+description: Arra vonatkozó ismeretek, hogyan lehet fejlesztési műveleteket végrehajtani az Azure Cosmos DB SQL API-jával a .NET-keretrendszerben
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
-manager: jhubbard
-editor: 
+manager: kfile
+editor: ''
 ms.assetid: cc8df0be-672b-493e-95a4-26dd52632261
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: ddbfe11e4415e1c240914142f4daf54b3032f5d8
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: 66f0d0064fe59c6e1d249eb69c1b433fe661c513
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Az Azure Cosmos DB: A Graph API a .NET fejlesztés
+# <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: Fejlesztés a Graph API-val .NET-keretrendszerben
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez az oktatóanyag azt mutatja be, az Azure portál használatával egy Cosmos-DB Azure-fiók létrehozása és egy grafikonon adatbázis és a tároló létrehozása. Az alkalmazás ezután létrehoz egy egyszerű közösségi hálózati használatával négy személyekkel a [Graph API](graph-sdk-dotnet.md), majd halad át, és a graph használatával Gremlin lekérdezi.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre az Azure Portalon egy Azure Cosmos DB-fiókot, majd egy gráfadatbázist és egy tárolót. Az alkalmazás ezután a [Graph API](graph-sdk-dotnet.md) használatával létrehoz egy egyszerű közösségi hálózatot négy személlyel, majd bejárja és lekérdezi a gráfot a Gremlin használatával.
 
-Ez az oktatóanyag ismerteti a következő feladatokat:
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Azure Cosmos DB-fiók létrehozása 
-> * Hozzon létre egy grafikonon adatbázis és a tároló
-> * Szerializálható csúcsban és a .NET-objektumokhoz
-> * Adja hozzá a csúcsban és élei számára
-> * A graph használatával Gremlin lekérdezése
+> * Gráfadatbázis és tároló létrehozása
+> * Csúcsok és élek szerializálása .NET-objektumokká
+> * Csúcsok és élek hozzáadása
+> * A gráf lekérdezése a Gremlin használatával
 
-## <a name="graphs-in-azure-cosmos-db"></a>Az Azure Cosmos DB grafikonja
-Azure Cosmos DB használatával létrehozása, frissítése és diagramjait használatával lekérdezni a [Microsoft.Azure.Graphs](graph-sdk-dotnet.md) könyvtárban. Egy bővítmény módszert biztosít a Microsoft.Azure.Graph könyvtár `CreateGremlinQuery<T>` a a `DocumentClient` osztály Gremlin lekérdezések végrehajtásához.
+## <a name="graphs-in-azure-cosmos-db"></a>Gráfok az Azure Cosmos DB-ben
+Az Azure Cosmos DB használatával gráfokat hozhat létre, frissíthet és kérdezhet le a [Microsoft.Azure.Graphs](graph-sdk-dotnet.md) kódtár segítségével. A Microsoft.Azure.Graph kódtár egy egybővítményes `CreateGremlinQuery<T>` metódust biztosít a `DocumentClient` osztályon a Gremlin-lekérdezések végrehajtásához.
 
-Gremlin egy funkcionális programozási nyelv, amely támogatja az írási műveletek (DML) és a lekérdezés- és átjárás műveletei. Ebben a cikkben a elindított Gremlin beolvasandó néhány példa azt foglalkozik. Lásd: [Gremlin lekérdezések](gremlin-support.md) Gremlin lehetőségeinek Azure Cosmos DB részletes útmutatást. 
+A Gremlin egy funkcionális programozási nyelv, amely írási műveleteket (DML), valamint lekérdezési és bejárási műveleteket támogat. Az ebben a cikkben bemutatott példák segítenek elindulni a Gremlin használatával. A Gremlin az Azure Cosmos DB-ben elérhető képességeinek részletes bemutatásáért lásd: [Gremlin-lekérdezések](gremlin-support.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/). 
-    * Másik lehetőségként használhatja a [helyi emulátor](local-emulator.md) ehhez az oktatóanyaghoz.
+    * Vagy használhatja a [helyi emulátort](local-emulator.md) ebben az oktatóanyagban.
 * [Visual Studio](http://www.visualstudio.com/).
 
-## <a name="create-database-account"></a>Adatbázis-fiók létrehozása
+## <a name="create-database-account"></a>Adatbázisfiók létrehozása
 
-Először hozzon létre egy Azure Cosmos DB fiókot az Azure portálon.  
+Először hozzon létre egy Azure Cosmos DB-fiókot az Azure Portalon.  
 
 > [!TIP]
-> * Már van Azure Cosmos DB fiókja? Ha igen, ugorjon előre [a Visual Studio megoldás beállítása](#SetupVS)
-> * Ha az Azure Cosmos DB Emulator használ, adja kövesse a [Azure Cosmos DB emulátor](local-emulator.md) kell beállítania az emulátor, és ugorjon előre [a Visual Studio megoldás beállítása](#SetupVS). 
+> * Már rendelkezik Azure Cosmos DB-fiókkal? Ez esetben ugorjon [A Visual Studio-megoldás beállítása](#SetupVS) című részhez.
+> * Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre [A Visual Studio-megoldás beállítása](#SetupVS) című lépésre. 
 >
 > 
 
@@ -62,33 +62,33 @@ Először hozzon létre egy Azure Cosmos DB fiókot az Azure portálon.
 ## <a id="SetupVS"></a>A Visual Studio-megoldás beállítása
 1. Nyissa meg a **Visual Studiót** a számítógépén.
 2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.
-3. Az a **új projekt** párbeszédablakban válassza **sablonok** / **Visual C#** / **Konzolalkalmazás (.NET-keretrendszer)**, nevezze el a projektet, és kattintson a **OK**.
+3. Az **Új projekt** párbeszédpanelen válassza a **Sablonok** / **Visual C#** / **Konzolalkalmazás (.NET-keretrendszer)** elemet, nevezze el a projektet, majd kattintson az **OK** gombra.
 4. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található, majd kattintson a **NuGet-csomagok kezelése...** lehetőségre.
-5. Az a **NuGet** lapra, majd **Tallózás**, és írja be **Microsoft.Azure.Graphs** a keresőmezőbe, és ellenőrizze a **előzetes verzióját tartalmazzák**.
-6. A találatok között található **Microsoft.Azure.Graphs** kattintson **telepítése**.
+5. A **NuGet** lapon kattintson a **Tallózás** elemre, majd írja be a **Microsoft.Azure.Graphs** kifejezést a keresőmezőbe, és jelölje be az **Include prerelease versions** (Előzetes verziók is) beállítást.
+6. A találatok között keresse meg a **Microsoft.Azure.Graphs** elemet, majd kattintson a **Telepítés** elemre.
    
    Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
    
-    A `Microsoft.Azure.Graphs` tár egyetlen bővítmény módszert biztosít a `CreateGremlinQuery<T>` Gremlin műveletek hajthatók végre. Gremlin egy funkcionális programozási nyelv, amely támogatja az írási műveletek (DML) és a lekérdezés- és átjárás műveletei. Ebben a cikkben a elindított Gremlin beolvasandó néhány példa azt foglalkozik. [Gremlin lekérdezések](gremlin-support.md) rendelkezik Gremlin képességek részletes útmutató az Azure Cosmos Adatbázisba.
+    A `Microsoft.Azure.Graphs` kódtár egy egybővítményes `CreateGremlinQuery<T>` metódust biztosít a Gremlin-lekérdezések végrehajtásához. A Gremlin egy funkcionális programozási nyelv, amely írási műveleteket (DML), valamint lekérdezési és bejárási műveleteket támogat. Az ebben a cikkben bemutatott példák segítenek elindulni a Gremlin használatával. A [Gremlin-lekérdezések](gremlin-support.md) cikk részletesen bemutatja a Gremlin az Azure Cosmos DB-ben elérhető képességeit.
 
-## <a id="add-references"></a>Az alkalmazás kapcsolódni
+## <a id="add-references"></a>Az alkalmazás csatlakoztatása
 
-Adja hozzá ezt a két állandót és a *ügyfél* változó az alkalmazás. 
+Adja hozzá ezt a két állandót és a *client* (ügyfél) változót az alkalmazáshoz. 
 
 ```csharp
 string endpoint = ConfigurationManager.AppSettings["Endpoint"]; 
 string authKey = ConfigurationManager.AppSettings["AuthKey"]; 
 ``` 
-A következő biztonsági head a [Azure-portálon](https://portal.azure.com) a végponti URL-cím és az elsődleges kulcs beolvasása. A végponti URL-cím és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, az Azure Cosmos DB pedig megbízzon az alkalmazás által létesített kapcsolatban. 
+Ezután lépjen vissza az [Azure Portalra](https://portal.azure.com) a végponti URL-cím és az elsődleges kulcs beszerzéséért. A végponti URL-cím és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, az Azure Cosmos DB pedig megbízzon az alkalmazás által létesített kapcsolatban. 
 
-Az Azure portálon lépjen az Azure Cosmos DB fiókjába, kattintson **kulcsok**, és kattintson a **írható-olvasható kulcsok**. 
+Az Azure Portalon lépjen az Azure Cosmos DB-fiókra, és kattintson a **Kulcsok**, majd az **Írási/olvasási kulcsok** elemre. 
 
-Az URI a portálról másolása és beillesztése azt `Endpoint` a fenti az endpoint tulajdonság. Ezután másolja az elsődleges kulcsot a portálról, és illessze be azt a `AuthKey` fenti tulajdonság. 
+Másolja ki az URI-t a portálról, és illessze be az `Endpoint` helyére a fenti végpont tulajdonságban. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a fenti `AuthKey` tulajdonságba. 
 
-![Képernyőfelvétel a C#-alkalmazás létrehozása az oktatóanyagban használt Azure-portálon. Azt mutatja be egy Azure Cosmos DB fiók az Azure Cosmos DB navigációs KEYS gomb, és a kulcsok panelen lévő URI és PRIMARY KEY értékek](./media/tutorial-develop-graph-dotnet/keys.png) 
+![Képernyőkép az oktatóanyagban a C#-alkalmazás létrehozásához használt Azure Portalról. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az Azure Cosmos DB navigációs felületén lévő KEYS gomb, valamint a Kulcsok panelen lévő URI és PRIMARY KEY értékek vannak kiemelve](./media/tutorial-develop-graph-dotnet/keys.png) 
  
-## <a id="instantiate"></a>A documentclient ügyfél segítségével hozható létre 
-Ezután hozzon létre egy új példányt a **DocumentClient**.  
+## <a id="instantiate"></a>A DocumentClient példányának létrehozása 
+Ezután hozza létre a **DocumentClient** egy új példányát.  
 
 ```csharp 
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey); 
@@ -96,15 +96,15 @@ DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
 
 ## <a id="create-database"></a>Adatbázis létrehozása 
 
-Ezután hozzon létre egy Azure Cosmos DB [adatbázis](sql-api-resources.md#databases) használatával a [Documentclient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metódus vagy [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metódusában a  **DocumentClient** osztályával a [SQL .NET SDK](sql-api-sdk-dotnet.md).  
+Most hozzon létre egy Azure Cosmos DB-[adatbázist](sql-api-resources.md#databases) a **DocumentClient** osztály [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) vagy [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metódusának használatával az [SQL .NET SDK](sql-api-sdk-dotnet.md)-ból.  
 
 ```csharp 
 Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "graphdb" }); 
 ``` 
  
-## <a name="create-a-graph"></a>Hozzon létre egy grafikonon 
+## <a name="create-a-graph"></a>Gráf létrehozása 
 
-Ezután hozzon létre egy grafikonon tároló használatával, a használatával a [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) metódus vagy [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metódusában a **DocumentClient** osztály. A gyűjtemény egy grafikonon entitások tároló. 
+Következő lépésként hozzon létre egy gráftárolót a **DocumentClient** osztály [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) vagy [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metódusával. A gyűjtemény egy gráfentitásokat tartalmazó tároló. 
 
 ```csharp 
 DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync( 
@@ -113,15 +113,15 @@ DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync
     new RequestOptions { OfferThroughput = 1000 }); 
 ``` 
 
-## <a id="serializing"></a>Szerializálható csúcsban és a .NET-objektumokhoz
-Azure Cosmos-adatbázis használja a [GraphSON egybeírt](gremlin-support.md), amely megadja, hogy a csúcsban, szélek és tulajdonságait egy JSON-séma. Az Azure Cosmos DB .NET SDK magában foglalja a függőség beállításához JSON.NET, és ez lehetővé teszi, hogy a szerializálás/deszerializálás GraphSON .NET objektumot, amely azt használható a kódban.
+## <a id="serializing"></a>Csúcsok és élek szerializálása .NET-objektumokká
+Az Azure Cosmos DB a [GraphSON küldési formátumot](gremlin-support.md) használja, amely egy JSON-sémát definiál a csúcsok, élek és tulajdonságok számára. Az Azure Cosmos DB .NET SDK függőségként tartalmazza a JSON.NET-et, aminek köszönhetően a GraphSON .NET-objektumokká szerializálható/deszerializható, amelyek aztán a kódban használhatók.
 
-Tegyük fel most dolgozni egy egyszerű közösségi hálózati négy személyekkel. Úgy tekintünk létrehozása `Person` csúcsban, adja hozzá `Knows` köztük lévő viszonyt is, majd a lekérdezés és haladnak át a diagramot úgy, hogy keresse meg a "" Friend "friend" kapcsolatokat. 
+Példaként vegyünk most egy négy személyt magában foglaló egyszerű közösségi hálózatot. Megvizsgáljuk, hogyan lehet `Person` csúcsokat létrehozni, `Knows` kapcsolatokat felvenni közöttük, majd lekérdezni és bejárni a gráfot az „ismerős ismerőse" kapcsolatok feltérképezésére. 
 
-A `Microsoft.Azure.Graphs.Elements` névteret biztosít `Vertex`, `Edge`, `Property` és `VertexProperty` osztályok a .NET jól meghatározott objektumok GraphSON válaszokat deszerializálása során.
+A `Microsoft.Azure.Graphs.Elements` névtér `Vertex`, `Edge`, `Property` és `VertexProperty` osztályokat biztosít a GraphSON-válaszok jól definiált .NET-objektumokká való deszerializálásához.
 
-## <a name="run-gremlin-using-creategremlinquery"></a>Gremlin CreateGremlinQuery használatával futtassa
-Gremlin, például az SQL, olvasási, írási és lekérdezési műveletek támogatja. Például az alábbi kódrészletben láthatja a csúcsban, szélek létrehozása, hajtsa végre az egyes mintalekérdezések hogyan `CreateGremlinQuery<T>`, és aszinkron módon iterációt ezekkel az eredményekkel használatával `ExecuteNextAsync` és "HasMoreResults.
+## <a name="run-gremlin-using-creategremlinquery"></a>A Gremlin futtatása a CreateGremlinQuery használatával
+Az SQL-hez hasonlóan a Gremlin is az olvasás, írás és lekérdezés műveleteket támogatja. Az alábbi kódrészlet például bemutatja, hogyan lehet csúcsokat és éleket létrehozni, néhány mintalekérdezést végrehajtani a `CreateGremlinQuery<T>` használatával, valamint aszinkron módon végigvenni ezeket az eredményeket az `ExecuteNextAsync` és a `HasMoreResults használatával.
 
 ```cs
 Dictionary<string, string> gremlinQueries = new Dictionary<string, string>
@@ -166,9 +166,9 @@ foreach (KeyValuePair<string, string> gremlinQuery in gremlinQueries)
 }
 ```
 
-## <a name="add-vertices-and-edges"></a>Adja hozzá a csúcsban és élei számára
+## <a name="add-vertices-and-edges"></a>Csúcsok és élek hozzáadása
 
-Vizsgáljuk meg a további részletek az előző szakaszban látható Gremlin utasításokat. Első azt néhány Gremlin tartozó használatával csúcsban `addV` metódust. Például az alábbi kódrészletben hoz létre a "Személy" típusú "Thomas Andersen" csúcspont utónevét, vezetéknevét és kora tulajdonságait.
+Most lássuk részletesebben az előző szakaszban bemutatott Gremlin-utasításokat. Először létrehozunk néhány csúcspontot a Gremlin `addV` metódusával. Az alábbi kódrészlet például létrehoz egy „Személy” típusú „Thomas Andersen” csúcspontot utónév, vezetéknév és életkor tulajdonságokkal.
 
 ```cs
 // Create a vertex
@@ -182,7 +182,7 @@ while (createVertexQuery.HasMoreResults)
 }
 ```
 
-Ezután azt néhány szélek között ezek csúcsban Gremlin tartozó használatával hoz létre `addE` metódust. 
+Ezután a Gremlin `addE` metódusával létrehozunk néhány élt a csúcspontok közt. 
 
 ```cs
 // Add a "knows" edge
@@ -196,7 +196,7 @@ while (create.HasMoreResults)
 }
 ```
 
-Egy meglévő csúcspont segítségével frissítheti azt `properties` Gremlin lépést. Azt a hívást végre a lekérdezés keresztül kihagyása `HasMoreResults` és `ExecuteNextAsync` a többi példák.
+A meglévő csúcspontok a Gremlinben a `properties` lépéssel frissíthetők. A további példákban kihagyjuk azt a részt, amely a `HasMoreResults` és az `ExecuteNextAsync` használatával végrehajtja a lekérdezést.
 
 ```cs
 // Update a vertex
@@ -205,7 +205,7 @@ client.CreateGremlinQuery<Vertex>(
     "g.V('thomas').property('age', 45)");
 ```
 
-Szegélyek és Gremlin tartozó használatával csúcsban elvetné `drop` lépés. Íme egy kódrészletet, amely bemutatja, hogyan törölhető egy csomópont és él. Vegye figyelembe, hogy társított széleinek kaszkádolt delete csúcspont eldobása végez.
+Az élek és a csúcspontok a Gremlin `drop` lépésével vethetők el. Az alábbi kódrészlet a csúcsok és élek törlését mutatja be. Vegye figyelembe, hogy a csúcsok elvetése maga után vonja a társított élek törlését is.
 
 ```cs
 // Drop an edge
@@ -215,15 +215,15 @@ client.CreateGremlinQuery(graphCollection, "g.E('thomasKnowsRobin').drop()");
 client.CreateGremlinQuery(graphCollection, "g.V('robin').drop()");
 ```
 
-## <a name="query-the-graph"></a>A lekérdezés a diagramhoz
+## <a name="query-the-graph"></a>A gráf lekérdezése
 
-Lekérdezések és traversals Gremlin is használatával végezheti el. Például az alábbi kódrészletben mutatja be a grafikonon csúcsban számát:
+A lekérdezéseket és bejárásokat szintén a Gremlin használatával hajthatja végre. A következő kódrészlet például azt mutatja be, hogyan számlálható meg a csúcspontok száma a gráfban:
 
 ```cs
 // Run a query to count vertices
 IDocumentQuery<int> countQuery = client.CreateGremlinQuery<int>(graphCollection, "g.V().count()");
 ```
-Szűrők Gremlin tartozó használatával végezheti el `has` és `hasLabel` lépéseit, és egyesíthet használatával `and`, `or`, és `not` összetettebb szűrők létrehozásához:
+A Gremlin `has` és `hasLabel` lépéseivel végezhet szűrést, és azokat az `and`, `or` és `not` operátorokkal kombinálva összetettebb szűrőket hozhat létre:
 
 ```cs
 // Run a query with filter
@@ -232,7 +232,7 @@ IDocumentQuery<Vertex> personsByAge = client.CreateGremlinQuery<Vertex>(
   "g.V().hasLabel('person').has('age', gt(40))");
 ```
 
-Kivetítheti az egyes tulajdonságok a lekérdezés eredményében használatával a `values` . lépés:
+A `values` lépéssel megkaphatja bizonyos tulajdonságok vetületét a lekérdezés eredményeiben:
 
 ```cs
 // Run a query with projection
@@ -241,7 +241,7 @@ IDocumentQuery<string> firstNames = client.CreateGremlinQuery<string>(
   $"g.V().hasLabel('person').values('firstName')");
 ```
 
-Eddig is csak láttuk lekérdezési operátorok, amelyek működnek a bármely adatbázis. Diagramok esetén gyors és hatékony átjárás műveleteihez kapcsolódó szélek és csúcsban keresse meg kell. Keressük Thomas összes barátok. Jelenleg ezt úgy teheti meg Gremlin `outE` keresheti meg az összes lépést a Thomas, majd a használatával Gremlin tartozó szegélyek a a-csúcsban bejárása a kimenő éleinek `inV` . lépés:
+Eddig csak minden adatbázisban működő lekérdezési operátorokat láttunk. A gráfok gyors és hatékony módjai az bejárási műveleteknek, amikor kapcsolódó élekhez vagy csúcspontokhoz kell navigálni. Keressük meg Thomas összes barátját. Ezt a Gremlin `outE` lépésével tesszük meg, hogy megtaláljuk Thomas összes külső élét, majd ezekről az élekről áthaladjunk a belső csúcspontokra a Gremlin `inV` lépésével:
 
 ```cs
 // Run a traversal (find friends of Thomas)
@@ -250,7 +250,7 @@ IDocumentQuery<Vertex> friendsOfThomas = client.CreateGremlinQuery<Vertex>(
   "g.V('thomas').outE('knows').inV().hasLabel('person')");
 ```
 
-A következő lekérdezés hajtja végre két ugrások található összes Thomas' "ismerősök olyan ismerőseinek", a függvény meghívásával `outE` és `inV` kétszer. 
+A következő lekérdezés két ugrást végez Thomas összes „barátja barátainak” megkereséséhez az `outE` és `inV` kétszeri hívásával. 
 
 ```cs
 // Run a traversal (find friends of friends of Thomas)
@@ -259,9 +259,9 @@ IDocumentQuery<Vertex> friendsOfFriendsOfThomas = client.CreateGremlinQuery<Vert
   "g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')");
 ```
 
-Összetettebb lekérdezések létrehozhatja és hatékony graph átjárás logika Gremlin, beleértve a keverése szűrőkifejezéseket, ismétlési használatával végez használatával valósítja meg a `loop` lépés, és végrehajtási feltételes navigációs használ a `choose` lépés. További információ a teendők [Gremlin támogatási](gremlin-support.md)!
+A Gremlin használatával összetettebb lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat implementálhat, beleértve a szűrőkifejezések keverését, a hurkolás elvégzését a `loop` lépéssel, valamint a feltételes navigáció implementálását a `choose` lépéssel. A [Gremlin-támogatás](gremlin-support.md) segítségével további lehetőségeket ismerhet meg.
 
-Ennyi az egész, az Azure Cosmos DB oktatóanyag befejeződött! 
+Ennyi az egész. Végeztünk is ezzel az Azure Cosmos DB-oktatóanyaggal! 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -272,14 +272,14 @@ Ha az alkalmazást már nem használja, a következő lépések használatával 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Egy Azure Cosmos DB-fiók létrehozása 
-> * Egy grafikonon adatbázis és a tároló létrehozása
-> * A szerializált csúcsban és a .NET-objektumokhoz
-> * A hozzáadott csúcsban és élei számára
-> * A graph használatával Gremlin lekérdezése
+> * Létrehozott egy Azure Cosmos DB-fiókot 
+> * Létrehozott egy gráfadatbázist és egy tárolót
+> * Csúcsokat és éleket szerializált .NET-objektumokká
+> * Csúcsokat és éleket adott hozzá
+> * Lekérdezte a gráfot a Gremlin használatával
 
 Most már készen áll arra, hogy a Gremlin használatával összetettebb lekérdezéseket hozzon létre és hatékony gráfbejárási logikákat implementáljon. 
 

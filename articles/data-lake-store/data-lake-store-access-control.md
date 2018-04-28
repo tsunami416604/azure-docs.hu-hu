@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8fd8bd81191d2019d5fa41ce1b6a029f3587adfd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Az Azure Data Lake Store szolgáltatásban található hozzáférés-vezérlés
 
@@ -150,7 +150,7 @@ A Data Lake Store-fiók számos szerepkörrel rendelkezik az Azure-ban, többek 
 * Közreműködők
 * Olvasók
 
-Egy Data Lake Store-fiók **Tulajdonosok** szerepkörében mindenki automatikusan a fiók felügyelője lesz. További tudnivalókért lásd a [szerepköralapú hozzáférés-vezérlést](../active-directory/role-based-access-control-configure.md) bemutató szakaszt.
+Egy Data Lake Store-fiók **Tulajdonosok** szerepkörében mindenki automatikusan a fiók felügyelője lesz. További tudnivalókért lásd a [szerepköralapú hozzáférés-vezérlést](../role-based-access-control/role-assignments-portal.md) bemutató szakaszt.
 Ha létre szeretne hozni egy egyéni, szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört, amely felügyelői engedélyekkel rendelkezik, akkor annak a következő engedélyekkel kell rendelkeznie:
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -184,7 +184,7 @@ A tulajdonoscsoportot megváltoztathatja:
 * a tulajdonos, ha szintén tagja ennek a csoportnak.
 
 > [!NOTE]
-> A tulajdonoscsoport *nem* változtathatja meg egy fájl vagy mappa ACL-eit.
+> A tulajdonoscsoport *nem* változtathatja meg egy fájl vagy mappa ACL-eit.  Bár a gyökérmappa esetében a tulajdonoscsoport azon felhasználó szerint lesz beállítva, aki létrehozta a fiókot (**1. eset**, fent), egyetlen felhasználói fiók nem jogosult engedélyeket kiadni a tulajdonoscsoporton keresztül.  Az engedélyt hozzárendelheti egy érvényes felhasználócsoporthoz, ha van ilyen.
 
 ## <a name="access-check-algorithm"></a>Hozzáférés-ellenőrzési algoritmus
 

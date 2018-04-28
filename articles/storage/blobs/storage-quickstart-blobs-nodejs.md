@@ -1,19 +1,19 @@
 ---
-title: Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Node.js használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Node.js-hez készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: Azure rövid útmutató – Blob létrehozása objektumtárban Node.js használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Majd a Storage Node.js-hez készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 8783b83a1a94caf4a49f9da7a2dd30c9cb52df22
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 30a64ec6fd4df63eba9c35f1774c81c35fa3506f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Node.js használatával
 
@@ -82,7 +82,7 @@ A modulok rendeltetése a következő:
 - a *dotenv* betölti a *.env* nevű fájlban meghatározott környezeti változókat az aktuális végrehajtási környezetbe
 - a *path* a blobtárolóba feltölteni kívánt fájl abszolút elérési útjának meghatározásához szükséges
 - a *yargs* egy egyszerű felületet kínál a parancssori argumentumok eléréséhez
-- az *azure-storage* a Node.js [Azure Storage SDK](/nodejs/api/azure-storage) modulja
+- az *azure-storage* a Node.js [Azure Storage SDK](https://docs.microsoft.com/javascript/api/azure-storage) modulja
 
 Ez után a változók egy sorának inicializálása következik:
 
@@ -294,4 +294,4 @@ Ez a rövid útmutató azt mutatja be, hogyan tölthetők fel fájlok egy helyi 
 > [!div class="nextstepaction"]
 > [Blob Storage-műveletek használati útmutatója](storage-nodejs-how-to-use-blob-storage.md)
 
-Az Azure Storage Node.js-referenciájáért lásd: [azure-storage csomag](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest).
+Az Azure Storage Node.js-referenciájáért lásd: [azure-storage csomag](https://docs.microsoft.com/javascript/api/azure-storage).

@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/16/2018
 ms.author: ayolubek
-ms.openlocfilehash: 928ff9b2519f6e92b091d9fd6b4ea0a7bca94d2b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: a677e6eb583e293f83df824804aa4cd6f8f5d778
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="recover-a-multi-tenant-saas-application-using-geo-restore-from-database-backups"></a>Helyreállítani egy több-bérlős SaaS-alkalmazás használatával georedundáns helyreállítás az adatbázis biztonsági mentése
 
@@ -68,7 +68,7 @@ Ebben az oktatóanyagban ezekkel a kihívásokkal foglalkozik az Azure SQL Datab
 
 ## <a name="get-the-disaster-recovery--scripts"></a>A vész-helyreállítási parancsfájlok beolvasása 
 
-A jelen oktatóanyagban használt vész-Helyreállítási parancsfájlok érhetők el a [Wingtip jegyek SaaS adatbázis GitHub-tárházban bérlőnként](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/tree/feature-DR-georestore). Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek felügyeleti parancsfájlok lépéseit.
+A jelen oktatóanyagban használt vész-Helyreállítási parancsfájlok érhetők el a [Wingtip jegyek SaaS adatbázis GitHub-tárházban bérlőnként](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant). Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek felügyeleti parancsfájlok lépéseit.
 > [!IMPORTANT]
 > Minden a Wingtip jegyek felügyeleti parancsfájlok, például a vész-Helyreállítási parancsfájlok minta minőségét és a rendszer nem éles környezetben használja.   
 

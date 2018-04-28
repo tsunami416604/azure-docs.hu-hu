@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Store Hive teljesítményének hangolása irányelvek |} Microsoft Docs"
-description: "Az Azure Data Lake Store Hive teljesítményének hangolása irányelvek"
+title: Az Azure Data Lake Store Hive teljesítményének hangolása irányelvek |} Microsoft Docs
+description: Az Azure Data Lake Store Hive teljesítményének hangolása irányelvek
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 57bd8758c2ae24922a959c9ce3893aad90dfe7e1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Útmutatás a Hive HDInsight és az Azure Data Lake Store teljesítményhangolása
 
@@ -29,7 +29,7 @@ Az alapértelmezett beállításokat állították be, hogy a megfelelő teljes�
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Store-fiók**. Hogyan hozhat létre ilyet, lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md)
 * **Az Azure HDInsight-fürt** a Data Lake Store-fiók eléréséhez. Lásd: [HDInsight-fürtök létrehozása a Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy a fürt számára engedélyezi a távoli asztal.
-* **HDInsight Hive futó**.  A HDInsight Hive-feladatok futtatásával kapcsolatos további tudnivalókért lásd: a [használata a HDInsight Hive] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **HDInsight Hive futó**.  A HDInsight Hive-feladatok futtatásával kapcsolatos további tudnivalókért lásd: () [használata a HDInsight Hive]https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **Teljesítményhangolás ADLS iránymutatást**.  Általános teljesítmény fogalmakat, lásd: [Data Lake Store teljesítmény hangolása útmutató](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>Paraméterek
@@ -88,6 +88,6 @@ Ha Ön első szabályozott ellenőrzéséhez szeretne engedélyezni a hibakeres�
 ## <a name="further-information-on-hive-tuning"></a>További információ a Hive hangolása
 
 Az alábbiakban néhány rendszerek, amelyek segítségével finomhangolhatják a Hive-lekérdezéseket:
-* [A hdinsight Hadoop Hive-lekérdezések optimalizálása](https://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [A hdinsight Hadoop Hive-lekérdezések optimalizálása](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
 * [Hibaelhárítás a Hive-lekérdezések teljesítményét](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 * [Az ignite előadás a HDInsight Hive a optimalizálása](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

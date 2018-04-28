@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ac869cc45d352bdeed16bb3ca926ec7a921d1f75
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3d63e33adb9cbbe96ad2851870592cc07c9cc3da
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Az Azure Functions Azure Cosmos DB kötései
 
@@ -38,7 +38,7 @@ A Cosmos DB kötések funkciók verziójához 1.x szerepelnek a [Microsoft.Azure
 
 ## <a name="trigger"></a>Eseményindító
 
-Az Azure Cosmos DB eseményindítót használ a [Azure Cosmos DB módosítás hírcsatorna](../cosmos-db/change-feed.md) partíciók között a módosításának figyelésére. A módosítás hírcsatorna beszúrások és frissítések, nem törlések tesz közzé. 
+Az Azure Cosmos DB eseményindítót használ a [Azure Cosmos DB módosítás hírcsatorna](../cosmos-db/change-feed.md) partíciók között a módosításának figyelésére. A módosítás hírcsatorna beszúrások és frissítések, nem törlések tesz közzé. Az eseményindító minden insert vagy a figyelt gyűjtemény végzett frissítés végrehajtás elindítása. 
 
 ## <a name="trigger---example"></a>Eseményindító – példa
 
@@ -159,18 +159,24 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** || meg kell `cosmosDBTrigger`. |
+|**type** || meg kell `cosmosDBTrigger`. |
 |**direction** || meg kell `in`. Ez a paraméter rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** || A dokumentumok a változások listájának jelölő függvény kódban használt változó neve. | 
 |**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB fiók való kapcsolódáshoz használt kapcsolati karakterlánc tartalmazó alkalmazásbeállítás neve. |
-|**databaseName**|**DatabaseName**  | A figyelt gyűjtemény Azure Cosmos DB adatbázis neve. |
+|**DatabaseName**|**DatabaseName**  | A figyelt gyűjtemény Azure Cosmos DB adatbázis neve. |
 |**CollectionName** |**CollectionName** | A figyelt gyűjtemény nevét. |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Választható) A kapcsolati karakterláncot a szolgáltatás, amely tartalmazza a címbérlet gyűjteményt tartalmazó alkalmazásbeállítás neve. Ha nincs megadva, a `connectionStringSetting` értéket használja. Ez a paraméter értéke a kötés a portálon létrehozásakor automatikusan. A kapcsolati karakterláncot a bérletek gyűjtemény írási engedéllyel kell rendelkeznie.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Választható) Az adatbázis, amely tárolja a bérletek tároló gyűjtemény nevét. Ha nincs megadva, az értékét a `databaseName` beállítást használja. Ez a paraméter értéke a kötés a portálon létrehozásakor automatikusan. |
-|**leaseCollectionName** | **LeaseCollectionName** | (Választható) A bérletek tároló gyűjtemény nevét. Ha nincs megadva, az érték `leases` szolgál. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Választható) Ha beállítása `true`, a bérletek gyűjtemény automatikusan jön létre, ha még nem létezik. Az alapértelmezett érték `false`. |
+|**LeaseCollectionName** | **LeaseCollectionName** | (Választható) A bérletek tároló gyűjtemény nevét. Ha nincs megadva, az érték `leases` szolgál. |
+|**CreateLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Választható) Ha beállítása `true`, a bérletek gyűjtemény automatikusan jön létre, ha még nem létezik. Az alapértelmezett érték `false`. |
 |**leasesCollectionThroughput**| **LeasesCollectionThroughput**| (Választható) Rendel a bérletek gyűjtemény létrehozásakor kérjen egységek mennyisége határozza meg. Ez a beállítás csak akkor használhatók, ha a amikor nem `createLeaseCollectionIfNotExists` értéke `true`. Ez a paraméter értéke a kötés létrehozása a portál használatával automatikusan.
-| |**LeaseOptions** | Tulajdonságainak beállításával egy példányát a címbérlet-beállítások konfigurálása a [ChangeFeedHostOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.changefeedprocessor.changefeedhostoptions) osztály.
+|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (Választható) Ha a beállítás, hozzáadása előtag a bérletek ennél a függvénynél, két külön Azure Functions ugyanaz a címbérlet gyűjtemény megosztása különböző előtagok használatával hatékonyan így bérleti gyűjtemény létrehozása.
+|**FeedPollDelay**| **FeedPollDelay**| (Választható) Amikor az összes módosítások vannak merül le, ha be van állítva, meghatározza, ezredmásodpercben megadva, a késés Between lekérdezési partíciója új módosítások az adatcsatorna számára. Alapértelmezés szerint 5000 (5 másodperc).
+|**LeaseAcquireInterval**| **LeaseAcquireInterval**| (Választható) Érték beállítása esetén meghatározza, ezredmásodpercben, ha partíció van elosztva között ismert állomás-példányok számítási feladatot indítsa intervallum. Alapértelmezés szerint 13000 (13 másodperc).
+|**LeaseExpirationInterval**| **LeaseExpirationInterval**| (Választható) Érték beállítása esetén meghatározza, ezredmásodpercben megadva, az időköz, amelynek a címbérlet születik partíció képviselő címbérletét. A bérlet intervallum nem hosszabbítja meg, ha annak történő lejártát okoz, és a partíció tulajdonjogát áthelyezi egy másik példánya. Alapértelmezés szerint 60000 (60 másodperc).
+|**LeaseRenewInterval**| **LeaseRenewInterval**| (Választható) Ha a beállítás, meghatározza, ezredmásodpercben, partíciók példánya által jelenleg tárolt összes címbérlet megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
+|**CheckpointFrequency**| **CheckpointFrequency**| (Választható) Érték beállítása esetén meghatározza, ezredmásodpercben megadva, a címbérlet ellenőrzőpontokat közötti távolság. Alapértelmezés szerint mindig sikeres függvény hívása után.
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Választható) Érték beállítása esetén az testreszabja függvény hívásához szükséges egy fogadott elemek maximális száma.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -474,14 +480,14 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa**     || meg kell `documentdb`.        |
+|**type**     || meg kell `documentdb`.        |
 |**direction**     || meg kell `in`.         |
 |**name**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
-|**databaseName** |**DatabaseName** |A a dokumentum tartalmazó adatbázis.        |
+|**DatabaseName** |**DatabaseName** |A a dokumentum tartalmazó adatbázis.        |
 |**CollectionName** |**CollectionName** | A gyűjtemény, amely tartalmazza a dokumentum nevét. |
 |**id**    | **Azonosító** | A dokumentum beolvasása azonosítója. Ez a tulajdonság támogatja [kötési kifejezésként](functions-triggers-bindings.md#binding-expressions-and-patterns). Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt. |
 |**sqlQuery**  |**SqlQuery**  | Egy Azure Cosmos adatbázis SQL-lekérdezésben használt több dokumentumot. A tulajdonság támogatja a futásidejű kötések, például: `SELECT * FROM c where c.departmentId = {departmentId}`. Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt.|
-|**connection**     |**ConnectionStringSetting**|Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
+|**Kapcsolat**     |**ConnectionStringSetting**|Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
 |**partitionKey**|**PartitionKey**|Meghatározza a partíció a keresési kulcs értékét. Előfordulhat, hogy tartalmazzák a kötési paraméterek esetében.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -746,15 +752,15 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa**     || meg kell `documentdb`.        |
+|**type**     || meg kell `documentdb`.        |
 |**direction**     || meg kell `out`.         |
 |**name**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
-|**databaseName** | **DatabaseName**|Az adatbázis, a gyűjteményt, ahol a dokumentum létre tartalmazó.     |
+|**DatabaseName** | **DatabaseName**|Az adatbázis, a gyűjteményt, ahol a dokumentum létre tartalmazó.     |
 |**CollectionName** |**CollectionName**  | A gyűjtemény, ahol létrehozzák a dokumentum neve. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Egy logikai értéket, amely azt jelzi, hogy a gyűjtemény létrehozása, ha még nem létezik. Az alapértelmezett érték *hamis* új gyűjtemények létrejövő fenntartott átviteli, amelyek hatással vannak költsége van. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/documentdb/) olvasható.  |
 |**partitionKey**|**PartitionKey** |Amikor `CreateIfNotExists` igaz értékű, meghatározza a partíció kulcs elérési útja a létrehozott gyűjteményhez.|
 |**CollectionThroughput**|**CollectionThroughput**| Ha `CreateIfNotExists` igaz értékű, meghatározza a [átviteli](../cosmos-db/set-throughput.md) a létrehozott gyűjtemény.|
-|**connection**    |**ConnectionStringSetting** |Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
+|**Kapcsolat**    |**ConnectionStringSetting** |Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -769,7 +775,7 @@ Alapértelmezés szerint amikor a a függvénynek a kimeneti paraméter írni eg
 
 | Kötelező | Leírások |
 |---|---|
-| CosmosDB | [CosmosDB hibakódok](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| CosmosDB | [CosmosDB hibakódok](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 ## <a name="next-steps"></a>További lépések
 

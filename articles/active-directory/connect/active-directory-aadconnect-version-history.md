@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2018
+ms.date: 04/17/2018
 ms.author: billmath
-ms.openlocfilehash: 5308803bb36024ee2373cf07ec46f798eb7192c5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
 
+
 Ez a cikk úgy van kialakítva, segítséget nyújtanak a kiadott verziók nyomon követheti, és tudni, hogy szükséges-e vagy nem a legújabb verzióra frissíteni.
 
 Ez az kapcsolódó témaköröket:
-
-
 
 Témakör |  Részletek
 --------- | --------- |
@@ -35,6 +34,21 @@ Az Azure AD Connect frissítésének lépései | A különböző módszereket [a
 Szükséges engedélyek | Egy frissítés alkalmazásához szükséges engedélyek, lásd: [fiókok és engedélyek](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="117510"></a>1.1.751.0
+Állapot 4/12/2018: csak letöltésre kiadott
+
+>[!NOTE]
+>Ez a gyorsjavítás az Azure AD Connect
+
+### <a name="azure-ad-connect-sync"></a>Az Azure AD Connect szinkronizálása
+#### <a name="fixed-issues"></a>Javított problémák
+Javítani a hibát, ahol sikertelen alkalmanként automatikus Azure-példányt észlelés Kína bérlők számára.  
+
+### <a name="ad-fs-management"></a>AD FS-Szolgáltatáskezelés
+#### <a name="fixed-issues"></a>Javított problémák
+
+Hiba történt a konfigurációs újrapróbálkozási logika, amely egy ArgumentException, amely meghatározza, hogy a "azonos kulccsal rendelkező elem már szerepel."  Emiatt az összes újrapróbálkozási művelet sikertelen lesz.
 
 ## <a name="117500"></a>1.1.750.0
 Állapot 3/22/2018: automatikus frissítési és a letöltés.
@@ -99,8 +113,7 @@ Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?Lin
 A módosítások kezeli a következőt:
 1. Az Expressz telepítés
 2. Egyéni telepítés fiókkal automatikus létrehozása
-
-* A telepítő megváltozott, így nem igényel rendszergazdai jogosultság az Azure AD Connect tiszta telepítés
+3. A telepítő megváltozott, így nem igényel rendszergazdai jogosultság az Azure AD Connect tiszta telepítés
 
 * A következő egy adott objektumához szinkronizálási probléma megoldásához új segédprogram hozzá. Érhető el a hibaelhárítás objektum szinkronizálási beállítás az Azure AD Connect varázsló hibaelhárítása további feladat. Jelenleg a segédprogram ellenőrzi a következő:
 
@@ -496,12 +509,12 @@ CBool(
 
   * Azure AD-összekötő séma hozzáadott következő attribútumokat:
     * Group: OnPremisesSamAccountName
-    * Group: NetBiosName
-    * Group: DnsDomainName
+    * Csoport: NetBiosName
+    * Csoport: tartománynév
     * Felhasználó: OnPremisesDistinguishedName
 
 * A ADSyncDomainJoinedComputerSync parancsmag parancsfájl most már AzureEnvironment nevű új nem kötelező paraméter. A paraméter használatával adja meg a megfelelő Azure Active Directory-bérlő üzemeltetett melyik régióban. Érvényes értékek a következők:
-  * AzureCloud (default)
+  * AzureCloud (alapértelmezett)
   * AzureChinaCloud
   * AzureGermanyCloud
   * USGovernment

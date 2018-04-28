@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Key Vault eléréséhez használja a Windows virtuális gép MSI"
-description: "Ez az oktatóanyag bemutatja, hogyan a folyamatot, amely egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Key Vault eléréséhez."
+title: Az Azure Key Vault eléréséhez használja a Windows virtuális gép MSI
+description: Ez az oktatóanyag bemutatja, hogyan a folyamatot, amely egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Key Vault eléréséhez.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 3c1f41f407dc85eac40d1aa545c588426db6a382
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c65e2dc3d1b7a754bda54bb9127bbc777b514768
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Az Azure Key Vault eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) 
 
@@ -58,7 +58,7 @@ Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet. A 
 
 ## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése 
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. Egy felügyelt identitást a virtuális gép létrehozása Azure MSI engedélyezése jelzi. A színfalak MSI engedélyezése két dolgot eredményez: az MSI-Virtuálisgép-bővítmény a virtuális Gépet telepít, és lehetővé teszi, hogy az Azure Resource Manager MSI.
+A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. Egy felügyelt identitást a virtuális gép létrehozása Azure MSI engedélyezése jelzi. A színfalak MSI engedélyezése két dolgot eredményez: regisztrálja a virtuális Gépet az Azure Active Directory segítségével hoz létre a felügyelt, és konfigurálja a virtuális gép identitását.
 
 1.  Válassza ki a **virtuális gép** , hogy szeretné-e engedélyezze MSI-t.  
 2.  A bal oldali navigációs sávon kattintson **konfigurációs**. 
@@ -66,10 +66,6 @@ A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg sz
 4.  Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.  
 
     ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Ha szeretné ellenőrizni, és a virtuális gép mely bővítmények ellenőrizze, kattintson a **bővítmények**. Ha MSI engedélyezve van, majd **ManagedIdentityExtensionforWindows** listájában jelenik meg.
-
-    ![Kép helyettesítő szövege](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>A virtuális gép hozzáférést biztosítson a kulcstároló tárolt titkos kulcs 
  
@@ -112,25 +108,25 @@ A virtuális gép MSI először szereznie egy hozzáférési jogkivonatot a Key 
     A PowerShell-kérelem:
     
     ```powershell
-    PS C:\> $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://vault.azure.net"} -Headers @{Metadata="true"} 
+    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -Method GET -Headers @{Metadata="true"} 
     ```
     
     Ezután bontsa ki a teljes válasz, amely tárolja a $response objektum JavaScript Object Notation (JSON) formátumú karakterláncot.  
     
     ```powershell
-    PS C:\> $content = $response.Content | ConvertFrom-Json 
+    $content = $response.Content | ConvertFrom-Json 
     ```
     
     Ezután bontsa ki a hozzáférési jogkivonat a választ.  
     
     ```powershell
-    PS C:\> $KeyVaultToken = $content.access_token 
+    $KeyVaultToken = $content.access_token 
     ```
     
     Végezetül paranccsal PowerShell Invoke-WebRequest beolvasni a titkos kulcsot a kulcstároló, a hozzáférési jogkivonat hitelesítési fejlécéhez benyújtása korábban létrehozott.  A kulcstároló, amely az URL-CÍMÉT kell a **Essentials** szakasza a **áttekintése** a Key Vault oldalán.  
     
     ```powershell
-    PS C:\> (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 
+    (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 
     ```
     
     A válasz fog kinézni: 

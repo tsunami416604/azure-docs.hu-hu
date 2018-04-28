@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Fabric integrálása az API Managementtel | Microsoft Docs"
-description: "Ebből az oktatóanyagból megtudhatja, hogyan kezdheti meg gyorsan az Azure API Management és a Service Fabric használatát."
+title: Az Azure Service Fabric integrálása az API Managementtel | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan kezdheti meg gyorsan az Azure API Management és a Service Fabric használatát.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 430e813b89f3e0004c517ef77f1028e00ebe5404
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f209e992c4562f11727613c58e1e94483af03bb7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-deploy-api-management-with-service-fabric"></a>Oktatóanyag: az API Management üzembe helyezése a Service Fabrickel
 Ez az oktatóanyag egy sorozat negyedik része.  Az Azure API Management üzembe helyezése a Service Fabrickel speciális forgatókönyv.  Az API Management akkor hasznos, ha a Service Fabric-háttérszolgáltatásokhoz tartozó útválasztási szabályok széles skálájával szeretne API-kat közzétenni. A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. A Service Fabricben átjáró lehet bármely, bejövő forgalomra tervezett állapotmentes szolgáltatás, például egy ASP.NET Core-alkalmazás, az Event Hubs, az IoT Hub vagy az Azure API Management. 
@@ -59,7 +59,7 @@ Most, hogy biztonságos [Windows-fürttel](service-fabric-tutorial-create-vnet-a
 Azure-parancsok végrehajtása előtt jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
@@ -142,7 +142,7 @@ Ebben az oktatóanyagban egy alapszintű webkiszolgálót helyezhet üzembe, ame
 
    Most már futnia kell egy `fabric:/EchoServerApplication/EchoServerService` nevű Java állapotmentes szolgáltatásnak a Service Fabric-fürtön az Azure-ban.
 
-5. Nyisson meg egy böngészőt, és írja be a következőt: http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage. Az „[1.0-s verzió] Hello World!!!” szövegnek kell megjelennie.
+5. Nyisson meg egy böngészőt, és írja be a következőt: http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage. Az „[version 1.0]Hello World!!!” szövegnek kell megjelennie.
 
 ## <a name="download-and-understand-the-resource-manager-templates"></a>A Resource Manager-sablonok letöltése és megismerése
 Töltse le és mentse a következő Resource Manager-sablonokat és paraméterfájlt:
@@ -179,7 +179,7 @@ A [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagemen
 
 - A **displayName** (megjelenített név) bármilyen, az API-t jelölő név lehet. Ehhez az oktatóanyaghoz használja a „Service Fabric App” nevet.
 - A **name** (név) egyedi és leíró nevet biztosít az API-nak, például: „service-fabric-app”. A fejlesztői és közzétevői portálon jelenik meg. 
-- A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. A jelen oktatóanyag esetében legyen például „http://servicefabric”. 
+- A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. A jelen oktatóanyag esetében legyen például: http://servicefabric. 
 - A **path** (útvonal) értéke az API Management szolgáltatás kiindulási URL-címéhez lesz hozzáfűzve. A kiindulási URL-cím egy API Management-szolgáltatáspéldány által üzemeltetett mindegyik API esetében megegyezik. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie. 
 - A **protocols** (protokollok) határozza meg, mely protokollok révén lehet hozzáférni az API-hoz. A jelen oktatóanyag esetében a **http** és **https** protokollokat adja meg.
 - A **path** (útvonal) az API utótagja. A jelen oktatóanyag esetében legyen „myapp”.

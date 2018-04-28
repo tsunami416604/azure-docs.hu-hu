@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 76ea24a658c728aebd15be55cc0c8dfca27f01ec
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: a29af17c97b106860c3b4adbad5e8002d2a91651
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) PowerShell használatával
 
@@ -60,10 +60,10 @@ Az MSI-kompatibilis virtuális gép létrehozása:
 
 Ha egy meglévő virtuális gépen az MSI engedélyezni kell:
 
-1. Jelentkezzen be az Azure használatával `Login-AzureRmAccount`. Az Azure-előfizetés, amely tartalmazza a virtuális Géphez társított olyan fiókot használjon. Emellett győződjön meg arról, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi a virtuális Gépen, például a "Virtuális gép közreműködő" írási engedélyekkel:
+1. Jelentkezzen be az Azure használatával `Connect-AzureRmAccount`. Az Azure-előfizetés, amely tartalmazza a virtuális Géphez társított olyan fiókot használjon. Emellett győződjön meg arról, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi a virtuális Gépen, például a "Virtuális gép közreműködő" írási engedélyekkel:
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 2. Először kérjen le a virtuális gép tulajdonságok a `Get-AzureRmVM` parancsmag. Majd MSI engedélyezéséhez használja a `-AssignIdentity` váltani a [frissítés-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) parancsmagot:
@@ -84,10 +84,10 @@ Ha egy meglévő virtuális gépen az MSI engedélyezni kell:
 
 Ha egy virtuális gép, amely már nem kell egy olyan MSI Csomaghoz, használhatja a `RemoveAzureRmVMExtension` parancsmag segítségével távolítsa el az MSI-fájl a virtuális gépből:
 
-1. Jelentkezzen be az Azure használatával `Login-AzureRmAccount`. Az Azure-előfizetés, amely tartalmazza a virtuális Géphez társított olyan fiókot használjon. Emellett győződjön meg arról, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi a virtuális Gépen, például a "Virtuális gép közreműködő" írási engedélyekkel:
+1. Jelentkezzen be az Azure használatával `Connect-AzureRmAccount`. Az Azure-előfizetés, amely tartalmazza a virtuális Géphez társított olyan fiókot használjon. Emellett győződjön meg arról, hogy a fiókja tagja egy szerepkör, amely lehetővé teszi a virtuális Gépen, például a "Virtuális gép közreműködő" írási engedélyekkel:
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 2. Használja a `-Name` kapcsoló és a [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) parancsmag, a bővítmény hozzáadásakor használt azonos név megadása:

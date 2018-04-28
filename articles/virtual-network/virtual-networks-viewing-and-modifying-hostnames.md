@@ -3,7 +3,7 @@ title: Megtekintése és módosítása az állomásnevek |} Microsoft Docs
 description: Hogyan megtekintése és módosítása az Azure virtuális gépek állomásnevek, webes és feldolgozói szerepkörök névfeloldás
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: tysonn
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: genli
-ms.openlocfilehash: 6fe3522c1b3e2f5a07de3d12875ae47a830873d3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9bf57eac2176444ed408d90723009118bd411480
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Megtekintése és módosítása az állomásnevek
 Az állomásnév lehet hivatkozni a szerepkörpéldányok engedélyezéséhez meg kell adni az állomásnév értéke a konfigurációs fájlban az egyes szerepkörökhöz. A kívánt gazdagép nevét hozzáadása ehhez a **vmName** attribútuma a **szerepkör** elemet. Értékét a **vmName** attribútum alapjaként van használatban a névhez, az összes szerepkör-példány. Például ha **vmName** van *webrole típusról* , de az adott szerepkör három alkalmazáspéldányra, az állomásneveket példánya lesz *webrole0*, *webrole1*, és *webrole2*. Meg kell a virtuális gépek gazdagépnevet adjon meg a konfigurációs fájlban, mivel egy virtuális gép állomásnevét a virtuális gép neve alapján van feltöltve. A Microsoft Azure-szolgáltatás konfigurálásával kapcsolatos további információkért lásd: [Azure szolgáltatás konfigurációs séma (.cscfg fájl)](https://msdn.microsoft.com/library/azure/ee758710.aspx)

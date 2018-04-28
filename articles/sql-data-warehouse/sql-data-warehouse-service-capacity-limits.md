@@ -1,38 +1,33 @@
 ---
-title: Az SQL Data Warehouse kapacitáskorlátait |} Microsoft Docs
-description: A kapcsolatok, adatbázisok, táblák és az SQL Data Warehouse lekérdezések maximális értékeket.
+title: A kapacitás korlátok - Azure SQL Data Warehouse |} Microsoft Docs
+description: Azure SQL Data Warehouse különböző összetevői engedélyezett maximális értékeket.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
-ms.assetid: e1eac122-baee-4200-a2ed-f38bfa0f67ce
+author: antvgski
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 03/27/2018
-ms.author: kevin;barbkess
-ms.openlocfilehash: 4c49fa082547dc0de76126df17a888c6c32f03e4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: anvang
+ms.reviewer: igorstan
+ms.openlocfilehash: a0646bad9f440fc1e7d0bbdfae5bd2a23156c52f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
-Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Warehouse engedélyezett maximális értékeket tartalmazza.
+Azure SQL Data Warehouse különböző összetevői engedélyezett maximális értékeket.
 
 ## <a name="workload-management"></a>Terheléskezelés
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
-| [Adattárházegységek (DWU)][Data Warehouse Units (DWU)] |Maximális DWU egyetlen SQL-adatraktár | A rugalmasság optimalizálva [teljesítményszinttel](memory-and-concurrency-limits.md#performance-tiers): DW6000<br></br>A számítási optimalizált [teljesítményszinttel](memory-and-concurrency-limits.md#performance-tiers): DW30000c |
-| [Adattárházegységek (DWU)][Data Warehouse Units (DWU)] |Alapértelmezett DTU kiszolgálónként |54,000<br></br>Alapértelmezés szerint minden SQL server (például myserver.database.windows.net) rendelkezik egy DTU-Kvótáról 54 000, amely lehetővé teszi, hogy legfeljebb DW6000c. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótája által [a támogatási jegy létrehozása] [ creating a support ticket] választja *kvóta* kérelem típusként.  A DTU kiszámításához van, a 7.5 szorozza meg a teljes DWU szükséges, vagy a 9.0 szorozza meg a teljes cDWU szükséges. Példa:<br></br>7.5 = 45,000 x DW6000 dtu-k<br></br>X 9.0 = 54 000 DW600c dtu-inak száma.<br></br>Az SQL server beállítás az aktuális DTU-használat a portálon tekintheti meg. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
+| [Adattárházegységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximális DWU egyetlen SQL-adatraktár | A rugalmasság optimalizálva [teljesítményszinttel](memory-and-concurrency-limits.md#performance-tiers): DW6000<br></br>A számítási optimalizált [teljesítményszinttel](memory-and-concurrency-limits.md#performance-tiers): DW30000c |
+| [Adattárházegységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Alapértelmezett DTU kiszolgálónként |54,000<br></br>Alapértelmezés szerint minden SQL server (például myserver.database.windows.net) rendelkezik egy DTU-Kvótáról 54 000, amely lehetővé teszi, hogy legfeljebb DW6000c. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótája által [a támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md) választja *kvóta* kérelem típusként.  A DTU kiszámításához van, a 7.5 szorozza meg a teljes DWU szükséges, vagy a 9.0 szorozza meg a teljes cDWU szükséges. Példa:<br></br>7.5 = 45,000 x DW6000 dtu-k<br></br>X 9.0 = 54 000 DW600c dtu-inak száma.<br></br>Az SQL server beállítás az aktuális DTU-használat a portálon tekintheti meg. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
 | Adatbázis-kapcsolat |Egyidejű megnyitott munkamenetek |1024<br/><br/>A 1024 aktív munkamenetek mindegyikének kérelmezheti SQL Data Warehouse-adatbázishoz egy időben. Vegye figyelembe, hogy egyidejűleg futtatható szolgáltatásobjektumok lekérdezések száma korlátozott. A feldolgozási korlát túllépésekor a kéréseket, amelyekre egy belső várólistán ahol vár feldolgozásra. |
 | Adatbázis-kapcsolat |Maximális memória előkészített utasítások |20 MB |
 | [Számítási feladatok kezelése](resource-classes-for-workload-management.md) |Maximális párhuzamos lekérdezések |32<br/><br/> Alapértelmezés szerint az SQL Data Warehouse legfeljebb 32 egyidejű lekérdezéseket és lekérdezések fennmaradó várólisták hajthat végre.<br/><br/>Az egyidejű lekérdezések csökkentheti a felhasználók hozzárendelése esetén magasabb erőforrás osztályok, vagy ha az SQL Data warehouse-bA rendelkezik alsó [adatraktáregység](memory-and-concurrency-limits.md) beállítást. Néhány lekérdezést, például a DMV lekérdezések futtatása mindig engedélyezett. |
-| [a TempDB][Tempdb] |Maximális GB |399 GB-ot DW100. Ezért a DWU1000, a tempdb mérete és 3.99 TB |
+| [a TempDB](sql-data-warehouse-tables-temporary.md) |Maximális GB |399 GB-ot DW100. Ezért DWU1000, a TempDB adatbázis mérete és 3.99 TB. |
 
 ## <a name="database-objects"></a>Adatbázis-objektumok
 | Kategória | Leírás | Maximum |
@@ -41,8 +36,8 @@ Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Wareho
 | Tábla |Maximális méret |A lemezen tömörített 60 TB |
 | Tábla |Adatbázisonként táblák |10,000 |
 | Tábla |Táblánként oszlopok |1024 oszlopot |
-| Tábla |Bájt / oszlop |Oszlop függ [adattípus][data type].  A határ 8000 char adattípus, nvarchar a 4000 vagy MAX adattípusok 2 GB. |
-| Tábla |Soronként meghatározott bájt |8060 bájt<br/><br/>A soronkénti bájtok száma kiszámítása ugyanolyan módon, mert az SQL Server lap tömörítést. Például az SQL Server, az SQL Data Warehouse támogatja a sor-túlcsordulás tárolóról, ami lehetővé teszi, hogy **változó hosszúságú oszloppal** a soron kívüli leküldött. Változó hosszúságú sorok soron kívüli elküldte azokat, csak 24 bájtos gyökér tárolja a fő rekordban. További információkért lásd: a [sor-túlcsordulás adatok meghaladja a 8 KB-os][Row-Overflow Data Exceeding 8 KB]. |
+| Tábla |Bájt / oszlop |Oszlop függ [adattípus](sql-data-warehouse-tables-data-types.md). A határ 8000 char adattípus, nvarchar a 4000 vagy MAX adattípusok 2 GB. |
+| Tábla |Soronként meghatározott bájt |8060 bájt<br/><br/>A soronkénti bájtok száma kiszámítása ugyanolyan módon, mert az SQL Server lap tömörítést. Például az SQL Server, az SQL Data Warehouse támogatja a sor-túlcsordulás tárolóról, ami lehetővé teszi, hogy **változó hosszúságú oszloppal** a soron kívüli leküldött. Változó hosszúságú sorok soron kívüli elküldte azokat, csak 24 bájtos gyökér tárolja a fő rekordban. További információkért lásd: [sor-túlcsordulás adatok meghaladja a 8 KB-os](https://msdn.microsoft.com/library/ms186981.aspx). |
 | Tábla |Táblánként partíciók |15,000<br/><br/>A nagy teljesítményű, azt javasoljuk, számának minimalizálása a partíciók száma meg kell során továbbra is támogató üzleti igényeinek. A partíciók számának növekedésével a terhelés adatok Definition nyelvi (DDL) és az adatok adatkezelési nyelvi (DML) műveletekhez növekedésének és az alacsonyabb teljesítményt. |
 | Tábla |Az karakter / partíció határérték. |4000 |
 | Index |A nem fürtözött indexek táblánként. |50<br/><br/>Csak a sortárindex táblák vonatkozik. |
@@ -73,8 +68,8 @@ Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Wareho
 | KIVÁLASZTÁS |CSATLAKOZTATÁS / oszlopok |1024 oszlopot<br/><br/>Az ILLESZTÉS soha nem lehet több mint 1024 oszlopot. Nincs nem garantálja, hogy mindig legyen a 1024. Ha az ILLESZTÉS terv több oszlop, mint az ILLESZTÉS eredményeit tartalmazó ideiglenes táblát igényel, az 1024 korlát vonatkozik, az ideiglenes táblába. |
 | KIVÁLASZTÁS |A GROUP BY oszlopok bájtokat. |8060<br/><br/>A GROUP BY záradékban oszlopok 8060 bájtok maximális rendelkezhet. |
 | KIVÁLASZTÁS |Bájtok ORDER BY oszlopok száma |8060 bájt<br/><br/>Az oszlopok az ORDER BY záradékban 8060 bájtok maximális rendelkezhet. |
-| Egy utasítás azonosítói |A hivatkozott azonosítók száma |65,535<br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés tartalmazó azonosítók számának korlátozása. Haladja meg az SQL Server-hiba 8632 szám eredményez. További információkért lásd: [belső hiba: elérte az egyik korlátozását][Internal error: An expression services limit has been reached]. |
-| A szövegkonstansok | A szövegkonstansok utasításban száma | 20,000 <br/><br/>Az SQL Data Warehouse limites a lekérdezés egyetlen kifejezés tartalmazó karakterlánckonstansokat száma. Haladja meg az SQL Server-hiba 8632 szám eredményez. További információkért lásd: [belső hiba: elérte az egyik korlátozását][Internal error: An expression services limit has been reached]. |
+| Egy utasítás azonosítói |A hivatkozott azonosítók száma |65,535<br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés tartalmazó azonosítók számának korlátozása. Haladja meg az SQL Server-hiba 8632 szám eredményez. További információkért lásd: [belső hiba: egyik korlátozását el lett érve.] [belső hiba: elérte az egyik korlátozását]. |
+| A szövegkonstansok | A szövegkonstansok utasításban száma | 20,000 <br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés a karakterlánckonstansokat számának korlátozása. Haladja meg az SQL Server-hiba 8632 szám eredményez.|
 
 ## <a name="metadata"></a>Metaadatok
 | Rendszernézet | Sorok maximális száma |
@@ -90,18 +85,4 @@ Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Wareho
 | sys.dm_pdw_sql_requests |A legutóbbi 1000 SQL kérelmek sys.dm_pdw_exec_requests vannak tárolva. |
 
 ## <a name="next-steps"></a>További lépések
-Hivatkozás kapcsolatos további információkért lásd: [SQL Data Warehouse hivatkozás áttekintés][SQL Data Warehouse reference overview].
-
-<!--Image references-->
-
-<!--Article references-->
-[Data Warehouse Units (DWU)]: ./sql-data-warehouse-overview-what-is.md
-[SQL Data Warehouse reference overview]: ./sql-data-warehouse-overview-reference.md
-[Workload management]: ./resource-classes-for-workload-management.md
-[Tempdb]: ./sql-data-warehouse-tables-temporary.md
-[data type]: ./sql-data-warehouse-tables-data-types.md
-[creating a support ticket]: /sql-data-warehouse-get-started-create-support-ticket.md
-
-<!--MSDN references-->
-[Row-Overflow Data Exceeding 8 KB]: https://msdn.microsoft.com/library/ms186981.aspx
-[Internal error: An expression services limit has been reached]: https://support.microsoft.com/kb/913050
+Az SQL Data Warehouse a javaslatok, tekintse meg a [Cheat lap](cheat-sheet.md).

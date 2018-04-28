@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 991db58db1bb07f338c0f80aa4db69ddb868dcab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4da62d808caf1e88aef8e67f91815b959a19af0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Az Azure idő adatsorozat Insights környezet megtervezése
 
@@ -87,14 +87,14 @@ Nem lehet felmérni előre mennyi adatot várt leküldéses. Ebben az esetben az
 Sávszélesség-szabályozás és a késés kapcsolatos információkért lásd: [csökkenthető a késleltetés és a sávszélesség-szabályozás](time-series-insights-environment-mitigate-latency.md). 
 
 ## <a name="shaping-your-events"></a>Az események kialakításában.
-Fontos, hogy ellenőrizze, hogy a küldött események ÁME módszer támogatja kiépíteni a környezet mérete (ezzel szemben, leképezheti a hány események ÁME beolvassa a környezet és az egyes eseményeket mérete).  Hasonlóan fontos gondolja át az attribútumokat, érdemes lehet az adatok lekérdezésekor szűrés és többféle szempontból való.  Ennek tudatában, javasoljuk, hogy tekintse át a JSON kialakításában szakasza a *küldi az eseményeket* dokumentáció [dokumentáció] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-send-events).  A lap alján felé van.  
+Fontos, hogy ellenőrizze, hogy a küldött események ÁME módszer támogatja kiépíteni a környezet mérete (ezzel szemben, leképezheti a hány események ÁME beolvassa a környezet és az egyes eseményeket mérete).  Hasonlóan fontos gondolja át az attribútumokat, érdemes lehet az adatok lekérdezésekor szűrés és többféle szempontból való.  Ennek tudatában, javasoljuk, hogy tekintse át a JSON kialakításában szakasza a *küldi az eseményeket* dokumentáció [dokumentáció] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).  A lap alján felé van.  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>Így mindig a referenciaadatok helyen
 A referencia-adatkészlet kiegészítheti az esemény forrásból származó események elemek gyűjteménye. Idő adatsorozat Insights érkező motor minden esemény az eseményforrás a megfelelő adatsor a csatlakozik a referencia-adatkészlet a. Ez a kibővített esemény ezután lekérdezhető. Ezt az összekapcsolást az elsődleges kulcs oszlop(ok) meghatározott a referencia-adatkészlet alapján történik.
 
 Megjegyzés: a referenciaadatok visszamenőleges nincs tartományhoz csatlakoztatva. Ez azt jelenti, hogy csak a jelenlegi és jövőbeli érkező adatok egyező és referencia meghatározott időpontban csatlakozik, konfigurálása és feltöltése után.  Ha azt tervezi, hogy a nagy mennyiségű előzményadatokat küldeni ÁME és nem feltölteni, vagy hozzon létre referenciaadatok ÁME először, akkor lehet, hogy újra munkavégzésre (mutatót, nem szórakoztató).  
 
-Hozzon létre, a referenciaadatok ÁME kezelését és feltöltését kapcsolatos további tudnivalókért keressen fel a *referenciaadatok* dokumentáció [dokumentáció] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Hozzon létre, a referenciaadatok ÁME kezelését és feltöltését kapcsolatos további tudnivalókért keressen fel a *referenciaadatok* dokumentáció [dokumentáció] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 
 ## <a name="next-steps"></a>További lépések

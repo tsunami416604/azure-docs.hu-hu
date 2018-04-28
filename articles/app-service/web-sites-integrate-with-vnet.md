@@ -1,8 +1,8 @@
 ---
-title: "Alkalmazások integrálása az Azure virtuális hálózat"
-description: "Bemutatja, hogyan csatlakozzon az Azure App Service alkalmazás egy új vagy meglévő Azure virtuális hálózat"
+title: Alkalmazások integrálása az Azure virtuális hálózat
+description: Bemutatja, hogyan csatlakozzon az Azure App Service alkalmazás egy új vagy meglévő Azure virtuális hálózat
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: erikre
 editor: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 83f5c64926eb9b718463c415a5478af374245f31
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure virtuális hálózat
 Ez a dokumentum az Azure App Service virtuális hálózati integráció funkció használatát ismerteti és bemutatja, hogyan állíthatja be az alkalmazásokkal [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ha ismeri az Azure virtuális hálózatokról (Vnetekről), ez az a képesség, amely lehetővé teszi egy nem internetes routeable hálózat elérését Ön szabályozza az Azure-erőforrások számos helyezendő. Ezek a hálózatok csatlakozhat a helyszíni VPN technológiáin különböző hálózatokhoz. Többet szeretne megtudni az Azure Virtual Network, indítsa el az adatok itt: [Azure virtuális hálózat áttekintése][VNETOverview]. 
@@ -57,7 +57,8 @@ Az alábbiakban tartsa szem előtt a webalkalmazást egy virtuális hálózathoz
 
 * Virtuális integráció csak olyan alkalmazások működik egy **szabványos**, **prémium**, vagy **elszigetelt** árképzési terv. Ha a funkció engedélyezéséhez, majd App Service-csomag skálázása egy nem támogatott díjszabási csomaggal az alkalmazások kapcsolata megszakad a Vnetek használják a. 
 * Ha a cél virtuális hálózat már létezik, pont-pont VPN engedélyezve van a dinamikus útválasztási átjáróval, mielőtt csatlakozhat egy alkalmazáshoz kell rendelkeznie. Ha az átjáró statikus útválasztással van konfigurálva, nem engedélyezhető a pont-pont virtuális magánhálózati (VPN).
-* A virtuális hálózat, az App Service Plan(ASP) ugyanahhoz az előfizetéshez kell lennie. 
+* A virtuális hálózat, az App Service Plan(ASP) ugyanahhoz az előfizetéshez kell lennie.
+* Ha az átjáró már pont-pont engedélyezve van, és nincs-e az alapszintű Termékváltozat, IKEV2 a pont-pont konfigurációjában le kell tiltani.
 * Az alkalmazásokat, amelyekbe beépül az egy Vnetet a DNS-ben, hogy a virtuális hálózat megadott használja.
 * Alapértelmezés szerint az integrációs alkalmazások csak útvonal-forgalmat a virtuális hálózat a virtuális hálózat definiált útvonalak alapján történő. 
 

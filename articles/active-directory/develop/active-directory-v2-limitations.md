@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Active Directory v2.0 végpont korlátai és korlátozásai |} Microsoft Docs"
-description: "Korlátozások és az Azure AD v2.0-végpontra vonatkozó korlátozások listáját."
+title: Az Azure Active Directory v2.0 végpont korlátai és korlátozásai |} Microsoft Docs
+description: Korlátozások és az Azure AD v2.0-végpontra vonatkozó korlátozások listáját.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a81f505c189da31edb91d1b522d9f3140f821cb4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpontra érdemes használni?
 Alkalmazások, amelyekbe beépül az Azure Active Directory összeállításakor kell döntse el, hogy a v2.0-végpont és a hitelesítési protokollokat megfelel-e az igényeinek. Az Azure Active Directory eredeti végpont továbbra is teljes mértékben támogatja, és néhány tekintetben a v2.0-nál több szolgáltatás gazdag. Azonban a v2.0-végpontra [vezet be, jelentős előnyt](active-directory-v2-compare.md) a fejlesztők számára.
@@ -84,15 +84,6 @@ Az utóbbi két adhat hozzá, mert az első átirányítási URI-t, az altartom�
 Vegye figyelembe azt is, akkor egy adott alkalmazáshoz csak 20 válasz URL-címek is.
 
 Alkalmazás regisztrálása az alkalmazásregisztrációs portálra, lásd: [egy alkalmazás regisztrálása a v2.0-végponttal](active-directory-v2-app-registration.md).
-
-## <a name="restrictions-on-services-and-apis"></a>Szolgáltatások és API-k korlátozásai
-Jelenleg a v2.0-végpontra támogatja bejelentkezési bármely alkalmazás, amely regisztrálva van az alkalmazásregisztrációs portálra, és amely listájának esik [támogatott hitelesítési forgalom](active-directory-v2-flows.md). Ezek az alkalmazások azonban OAuth 2.0 hozzáférési jogkivonatok erőforrások nagyon korlátozott számú szerezheti be. A v2.0-végpont problémák hozzáférési jogkivonatainak csak:
-
-* Az alkalmazás által kért a jogkivonatot. Egy alkalmazás szerezhetnek be a hozzáférési tokent, ha a logikai alkalmazás számos különböző összetevői vagy rétegek áll. Ebben a forgatókönyvben a művelet megtekintéséhez tekintse meg a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) oktatóanyagok.
-* Az Outlook posta, naptár és Contacts REST API-k, amelyek https://outlook.office.com találhatók. Ezen API-k hozzáférő alkalmazás írásával kapcsolatban lásd: a [Office bevezetés](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) oktatóanyagok.
-* A Microsoft Graph API-k. További tudnivalók [Microsoft Graph](https://graph.microsoft.io) és az adatokat, amelyek az Ön számára elérhető.
-
-Nincsenek más szolgáltatások jelenleg támogatottak. A jövőben további Microsoft Online Services lesz hozzáadva a saját egyedi webes API-k és szolgáltatások támogatása mellett.
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Szalagtárak és SDK-k korlátozásai
 Szalagtár támogatása a v2.0-végpontra jelenleg korlátozott. Ha egy éles alkalmazásban a v2.0-végpontra használni kívánt, akkor ezeket a beállításokat:

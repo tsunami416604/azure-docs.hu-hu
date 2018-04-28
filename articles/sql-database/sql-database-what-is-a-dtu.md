@@ -10,14 +10,14 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 178eba46e0d128c8d93f2ba664a4a0916889fbbd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: 22337e412661172475a05f6fec31ae03683be988
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>Adatbázis-tranzakciós egységek (dtu-k) és a rugalmas adatbázis-tranzakciós egységek (edtu-k)
-Ez a cikk tartalmazza a Database Transaction Unitok (adatbázisok tranzakciós egységei, DTU-k) és a rugalmas Database Transaction Unitok (eDTU-k) ismertetését, valamint leírja, mi történik, ha a DTU-k vagy eDTU-k száma eléri a maximális értéket.  
+Ez a cikk tartalmazza a Database Transaction Unitok (adatbázisok tranzakciós egységei, DTU-k) és a rugalmas Database Transaction Unitok (eDTU-k) ismertetését, valamint leírja, mi történik, ha a DTU-k vagy eDTU-k száma eléri a maximális értéket. Díjszabási információkért lásd: [Azure SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
 ## <a name="what-are-database-transaction-units-dtus"></a>Mik az adatbázis-tranzakciós egységek (dtu-k)?
 Egy adott szinten belül egyetlen Azure SQL-adatbázis egy [szolgáltatásréteg](sql-database-single-database-resources.md), a Microsoft biztosítja, hogy az erőforrásokhoz, hogy az adatbázis (független bármely más adatbázis Azure felhőben), és így a kiszámítható teljesítmény szintű bizonyos szintű. Ez a mennyiség-erőforrások adatbázis-tranzakciós egységek vagy dtu-inak számaként és, így egy csomagolt mérték számítási, tárolási és IO erőforrások. Ezek az erőforrások között arány eredetileg határozza egy [teljesítményteszt OLTP-munkaterhelés](sql-database-benchmark-overview.md) jellemző OLTP-munkaterhelések valós kialakítva. A terhelés meghaladja az bármely ezeket az erőforrásokat, az átviteli sebesség esetén az szabályozottan halmozott – így a lassabb teljesítmény és időtúllépéseket okoz. A számítási feladatok által használt erőforrások nincs hatással a többi SQL adatbázis Azure felhőben számára elérhető erőforrások, és más munkaterhelésekhez használt erőforrások nem érintik az SQL-adatbázis számára elérhető erőforrások.

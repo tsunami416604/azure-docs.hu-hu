@@ -1,8 +1,8 @@
 ---
-title: "Az Azure MFA kiszolgáló frissítése |} Microsoft Docs"
-description: "Lépéseket és útmutatást az Azure multi-factor Authentication kiszolgáló újabb verzióra való frissítéséhez."
+title: Az Azure MFA kiszolgáló frissítése |} Microsoft Docs
+description: Lépéseket és útmutatást az Azure multi-factor Authentication kiszolgáló újabb verzióra való frissítéséhez.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 50bb8ac3-5559-4d8b-a96a-799a74978b14
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 456f2c64c91249f3ec2de4f2d79a2f77cc7598da
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>A legújabb Azure multi-factor Authentication kiszolgáló frissítése
 
@@ -106,7 +106,7 @@ Ezek az utasítások csak akkor érvényesek, ha a multi-factor Authentication k
 9. Ismételje meg a 2. a kiszolgálók most eltávolítja az AD FS-farm frissítése, és indítsa újra az AD FS szolgáltatás ezeken a kiszolgálókon.
 10. Ezek a kiszolgálók hozzáadása vissza az AD FS-farm.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Példák az beszerzése [speciálisabb forgatókönyvek esetén az Azure multi-factor Authentication és a külső VPN-EK](multi-factor-authentication-advanced-vpn-configurations.md)
 

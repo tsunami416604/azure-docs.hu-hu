@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cc64ef8d820db6a072b708323eb110d62ed0a83c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-network-security"></a>Azure hálózati biztonság
 
@@ -75,7 +75,7 @@ A dokumentum tartalma a következő Azure lesz hálózati vállalati lehetőség
 
 ### <a name="basic-network-connectivity"></a>Alapvető hálózati kapcsolat
 
-A [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) szolgáltatás lehetővé teszi, hogy biztonságosan kapcsolódjanak a Azure-erőforrások egymástól a virtuális hálózatot (VNet). A virtuális hálózat a felhőben saját hálózati ábrázolása. Egy Vnetet az Azure hálózati infrastruktúra előfizetéshez dedikált logikai elkülönítése. Elérhetők Vnetek csatlakoztatják egymáshoz és a pont-pont virtuális magánhálózatok használata a helyszíni hálózatokhoz és a dedikált [WAN kapcsolatok](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+A [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) szolgáltatás lehetővé teszi, hogy biztonságosan kapcsolódjanak a Azure-erőforrások egymástól a virtuális hálózatot (VNet). A virtuális hálózat a felhőben saját hálózati ábrázolása. Egy Vnetet az Azure hálózati infrastruktúra előfizetéshez dedikált logikai elkülönítése. Elérhetők Vnetek csatlakoztatják egymáshoz és a pont-pont virtuális magánhálózatok használata a helyszíni hálózatokhoz és a dedikált [WAN-kapcsolatok](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
 
 ![Alapvető hálózati kapcsolat](media/azure-network-security/azure-network-security-fig-2.png)
 
@@ -112,7 +112,7 @@ Ahogy látja, akkor az Azure virtuális hálózat biztosít a virtuális gépek,
 
 -   Helyszíni kapcsolatok
 
--   Forgalomszűrést végez
+-   Forgalomszűrés
 
 -   Útválasztás
 
@@ -124,7 +124,7 @@ Azure belső névfeloldást biztosít a virtuális gépek és [Felhőszolgáltat
 
 Minden Azure belül több Vnetek Megvalósíthat [előfizetés](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json) és az Azure [régió](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json). Minden egyes virtuális hálózat el különítve a más Vnetekről. Minden egyes vnet a következő műveletek végezhetők el:
 
--   Adjon meg egy egyéni privát IP-címtér nyilvános és titkos (az RFC 1918) címeket használnak. Erőforrások Azure rendel a virtuális hálózat egy magánhálózati IP-cím keresztül kapcsolódik a címterület, rendeli.
+-   Megadhat egy egyéni magánhálózati IP-címteret nyilvános és magánhálózati (RFC 1918) címek használatával. Erőforrások Azure rendel a virtuális hálózat egy magánhálózati IP-cím keresztül kapcsolódik a címterület, rendeli.
 
 -   A VNet szegmentálni be egy vagy több alhálózatból, és foglaljon le a VNet-címterek minden alhálózat egy része.
 
@@ -160,17 +160,17 @@ A vnetek való [helyszíni](https://docs.microsoft.com/azure/virtual-network/vir
 
 A helyszíni hálózat csatlakozhatnak egy virtuális hálózat használatával tetszőleges kombinációját az alábbiak közül:
 
-- **Pont-pont virtuális magánhálózati (VPN):** a egyetlen számítógép csatlakozik a hálózathoz és a virtuális hálózat között. A kapcsolat típusa nem nagyszerű, ha Ön most csak az első lépések az Azure-ral, vagy a fejlesztők számára, mert azt a meglévő hálózati kevéssé vagy egyáltalán ne módosítását igényli. A kapcsolat az SSTP protokoll segítségével, titkosított kommunikációt biztosít a számítógép és a virtuális hálózat között az interneten keresztül. A pont-pont típusú VPN várakozási is előre nem látható, mivel a forgalom halad át az interneten.
+- **Pont-pont virtuális magánhálózati (VPN):** a egyetlen számítógép csatlakozik a hálózathoz és a virtuális hálózat között. Ez a kapcsolattípus remek választás, ha csak most ismerkedik az Azure szolgáltatással, illetve a fejlesztők számára, mert a meglévő hálózatot csak kis mértékben vagy egyáltalán nem kell módosítani. A kapcsolat az SSTP protokoll segítségével, titkosított kommunikációt biztosít a számítógép és a virtuális hálózat között az interneten keresztül. A pont-pont típusú VPN várakozási is előre nem látható, mivel a forgalom halad át az interneten.
 
 - **Telephelyek közötti VPN:** a VPN-eszköz és az Azure VPN-átjáró között. A kapcsolat típusa lehetővé teszi, hogy az összes helyszíni erőforrás is engedélyezni szeretné a virtuális hálózat eléréséhez. A kapcsolat az IPsec/IKE VPN, amely titkosított kommunikációt biztosít az interneten, a helyszíni eszközök és az Azure VPN gateway között. A pont-pont kapcsolat a késési is előre nem látható, mivel a forgalom halad át az interneten.
 
-- **Az Azure ExpressRoute:** hoznak létre egy ExpressRoute-partner keresztül a hálózat és az Azure-ban. Ezt a kapcsolatot a sajátja. Forgalom nem bejárják az interneten. Az ExpressRoute-kapcsolat a késési is előre jelezhető, mivel a forgalom nem haladnak át az interneten. Az előző kapcsolódási beállítás kapcsolatos további tudnivalókért olvassa el a [kapcsolat topológiai diagramot](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Azure ExpressRoute**: Saját hálózata és az Azure között egy ExpressRoute-partneren keresztül létesített kapcsolat. Ez a kapcsolat nem nyilvános. Forgalom nem bejárják az interneten. Az ExpressRoute-kapcsolat a késési is előre jelezhető, mivel a forgalom nem haladnak át az interneten. Az előző kapcsolódási beállítás kapcsolatos további tudnivalókért olvassa el a [kapcsolat topológiai diagramot](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Forgalomszűrés**
 
 Virtuális gép és a Felhőszolgáltatások szerepkörpéldányokat [hálózati forgalom](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bejövő és kimenő alapján szűrhetők forrás IP-cím és port, cél IP-cím és port és protokoll.
 
-Szűrheti a hálózati forgalom valamelyike vagy mindegyike a következő beállítások segítségével alhálózatok között:
+A hálózati forgalom alhálózatok közötti szűrése az alábbi lehetőségek egyikével vagy akár mindkettővel elvégezhető:
 
 - **Hálózati biztonsági csoportok (NSG):** minden NSG tartalmazhat több bejövő és kimenő biztonsági szabály lehetővé teszi, hogy a forrás és cél IP-cím, port és protokoll forgalmának szűrésére. Akkor is alkalmazzon NSG-t egyes hálózati adapterek virtuális gépen. Az NSG-t is alkalmazhat az alhálózat egy hálózati Adaptert, vagy más Azure-erőforrás, csatlakozik-e. Ha többet szeretne megtudni az NSG-k, olvassa el a [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
@@ -180,7 +180,7 @@ Szűrheti a hálózati forgalom valamelyike vagy mindegyike a következő beáll
 
 Azure alapértelmezett útválasztás konfigurálása a saját útvonalakat, vagy a hálózati átjáró BGP-útvonalakat segítségével igény szerint felülbírálható.
 
-Az útvonaltáblák, amelyek lehetővé teszik az erőforrások csatlakoznak bármely kommunikálhatnak egymással, alapértelmezés szerint a virtuális hálózat egyetlen alhálózatának sem az Azure létrehoz. Megvalósíthat valamelyike vagy mindegyike felülbírálhatja az alapértelmezett útvonalak Azure-hoz létre a következő beállításokat:
+Az útvonaltáblák, amelyek lehetővé teszik az erőforrások csatlakoznak bármely kommunikálhatnak egymással, alapértelmezés szerint a virtuális hálózat egyetlen alhálózatának sem az Azure létrehoz. Az Azure által létrehozott alapértelmezett útvonalak felülírásához valósítsa meg az alábbi lehetőségek egyikét, vagy akár mindkettőt:
 
 - **Felhasználó által definiált útvonalak:** hozhat létre egyéni útvonaltáblák útvonalak adott vezérlőn, ahol továbbítódik a az egyes alhálózatokon. Felhasználó által definiált útvonalak kapcsolatos további tudnivalókért olvassa el a [felhasználó által definiált útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 

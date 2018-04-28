@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions JavaScript-fejlesztői útmutatója |} Microsoft Docs"
-description: "Megtudhatja, hogyan fejleszthet függvények JavaScript használatával."
+title: Az Azure Functions JavaScript-fejlesztői útmutatója |} Microsoft Docs
+description: Megtudhatja, hogyan fejleszthet függvények JavaScript használatával.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra"
+editor: ''
+tags: ''
+keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: functions
 ms.devlang: nodejs
@@ -16,14 +16,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: 9d63c95c849c8ef6011557c72240e56071ba614f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e593f58f6b92e562067401381cfce06d5fb18e29
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript fejlesztői útmutató
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Az Azure Functions JavaScript élményét megkönnyíti, hogy egy függvénynek, amely szerint átadott exportálása egy `context` objektum kommunikál a futtatókörnyezet és fogadása és adatküldés kötéseken keresztül.
 
@@ -226,7 +225,7 @@ A `response` objektum tulajdonságai a következők:
 | _Törzs_    | A választörzs tartalmazó objektum.         |
 | _Fejlécek_ | Egy objektum, amely tartalmazza a response fejlécekkel együtt.             |
 | _isRaw_   | Azt jelzi, hogy formázás ki van kapcsolva a választ.    |
-| _status_  | A HTTP-állapotkód: a válasz.                     |
+| _Állapot_  | A HTTP-állapotkód: a válasz.                     |
 
 ### <a name="accessing-the-request-and-response"></a>A kérelem és válasz elérése 
 

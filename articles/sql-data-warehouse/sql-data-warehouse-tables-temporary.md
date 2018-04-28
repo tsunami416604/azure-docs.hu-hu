@@ -1,41 +1,26 @@
 ---
-title: "Az SQL Data Warehouse az ideiglenes táblák |} Microsoft Docs"
-description: "Ismerkedés az Azure SQL Data Warehouse ideiglenes táblákat."
+title: Az SQL Data Warehouse az ideiglenes táblák |} Microsoft Docs
+description: Alapvető útmutatással szolgál az ideiglenes táblák és a munkamenet szintű ideiglenes táblák ezeket az alapelveket emeli ki.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: e3b2f9017ecea7d9f78c07476f96c3dd8d031863
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a3e06a4074bc7b5cd8612162a624718107a50656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse az ideiglenes táblák
-> [!div class="op_single_selector"]
-> * [– Áttekintés][Overview]
-> * [Adattípusok][Data Types]
-> * [Terjesztése][Distribute]
-> * [Index][Index]
-> * [Partíció][Partition]
-> * [Statisztika][Statistics]
-> * [Ideiglenes][Temporary]
-> 
-> 
-
-Az ideiglenes táblák hasznosak, ha az adatfeldolgozás - különösen ha a köztes eredmények átmeneti jellegűek átalakítása során. Az SQL Data Warehouse az ideiglenes táblák létezik, a munkamenet szinten.  Csak azok a munkamenethez, amelyben hozta létre, és automatikusan eldobott munkamenetben kijelentkezésekor látható.  Az ideiglenes táblák teljesítmény előnyt kínálnak, mert az eredményeiket írt helyi ahelyett, hogy a távoli tároló.  Az ideiglenes táblák azok is bárhonnan elérhetők a munkamenetben, beleértve belül és kívül tárolt eljárás belül amelyeket kis mértékben eltér az Azure SQL Data Warehouse az Azure SQL Database.
-
 Ez a cikk alapvető útmutatást nyújt az ideiglenes táblák használata, és kiemeli a munkamenet szintű ideiglenes táblák ezeket az alapelveket. Ebben a cikkben szereplő információk segítségével segítséget nyújt a kódot, újrahasznosításának és a karbantartás a kód egyszerű javítása modularize.
+
+## <a name="what-are-temporary-tables"></a>Mik az ideiglenes táblák?
+Az ideiglenes táblák hasznosak, ha az adatfeldolgozás - különösen ha a köztes eredmények átmeneti jellegűek átalakítása során. Az SQL Data Warehouse az ideiglenes táblák létezik, a munkamenet szinten.  Csak azok a munkamenethez, amelyben hozta létre, és automatikusan eldobott munkamenetben kijelentkezésekor látható.  Az ideiglenes táblák teljesítmény előnyt kínálnak, mert az eredményeiket írt helyi ahelyett, hogy a távoli tároló.  Az ideiglenes táblák azok is bárhonnan elérhetők a munkamenetben, beleértve belül és kívül tárolt eljárás belül amelyeket kis mértékben eltér az Azure SQL Data Warehouse az Azure SQL Database.
 
 ## <a name="create-a-temporary-table"></a>Hozzon létre egy ideiglenes táblát
 Az ideiglenes táblák hozza létre a tábla neve az előtag a `#`.  Példa:
@@ -112,7 +97,7 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS`a hatékony parancs és a hozzáadott előnye, hogy hatékony tranzakciónaplók helyhasználatáról használata során. 
+> `CTAS` a hatékony parancs és a hozzáadott előnye, hogy hatékony tranzakciónaplók helyhasználatáról használata során. 
 > 
 > 
 
@@ -232,20 +217,5 @@ DROP TABLE #stats_ddl;
 Az SQL Data Warehouse ugyanazok a korlátozások néhány, az ideiglenes táblák végrehajtása során.  Jelenleg csak a munkamenet hatókörű ideiglenes táblák támogatottak.  Globális ideiglenes táblák nem támogatottak.  Emellett nézetek nem hozható létre ideiglenes táblákra.
 
 ## <a name="next-steps"></a>További lépések
-További tudnivalókért tekintse meg a cikkek [tábla áttekintése][Overview], [tábla adattípusok][Data Types], [terjesztése egy tábla] [ Distribute], [Tábla indexelő][Index], [tábla particionáló] [ Partition] és [Fenntartása a tábla statisztikai adatainak][Statistics].  Gyakorlati tanácsok kapcsolatban bővebben lásd: [SQL Data Warehouse gyakorlati tanácsok][SQL Data Warehouse Best Practices].
+Táblák fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [tábla áttekintése](sql-data-warehouse-tables-overview.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

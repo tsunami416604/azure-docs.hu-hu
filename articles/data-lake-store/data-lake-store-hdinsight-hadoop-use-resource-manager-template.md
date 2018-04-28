@@ -1,8 +1,8 @@
 ---
-title: "Azure-sablonok segítségével hozza létre a HDInsight és a Data Lake Store |} Microsoft Docs"
-description: "Használja az Azure Resource Manager-sablonok létrehozása és használata a HDInsight-fürtök az Azure Data Lake Store"
+title: Azure-sablonok segítségével hozza létre a HDInsight és a Data Lake Store |} Microsoft Docs
+description: Használja az Azure Resource Manager-sablonok létrehozása és használata a HDInsight-fürtök az Azure Data Lake Store
 services: data-lake-store,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 8c5afc96cc8101345f00b5d435e9f393d22672de
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bc20504865fa59cafc199305f9810fb4c3d99524
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>HDInsight-fürtök létrehozása a Data Lake Store Azure Resource Manager-sablonnal
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ A fenti hivatkozás található útmutatás PowerShell szükséges. Mielőtt elk
 
 ```
 # Log in to your Azure account
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # List all the subscriptions associated to your account
 Get-AzureRmSubscription
@@ -80,7 +80,7 @@ Annak biztosításához, a feltöltött mintaadatok érhető el a HDInsight-für
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>A HDInsight-fürt használata a Data Lake Store tesztet-feladatok futtatása
 Miután konfigurálta a HDInsight-fürtöt, a teszt feladatok ellenőrzéséhez, hogy a HDInsight-fürt hozzáférhet-e a Data Lake Store a fürtön is futtathatja. Ehhez az szükséges, azt egy minta Hive táblát hoz létre a Data Lake Store korábban feltöltött megadott mintaadatokat használja feladat elindul.
 
-Ebben a szakaszban fogja SSH egy HDInsight Linux-fürt, és futtassa a minta Hive-lekérdezések. Ha egy Windows ügyfél használ, azt javasoljuk, **PuTTY**, amely letölthető [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+Ebben a szakaszban fogja SSH egy HDInsight Linux-fürt, és futtassa a minta Hive-lekérdezések. Ha egy Windows ügyfél használ, azt javasoljuk, **PuTTY**, amely letölthető [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 A PuTTY használatával kapcsolatos további információkért lásd: [SSH használata a HDInsight Windows Linux-alapú Hadooppal ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -116,7 +116,7 @@ A PuTTY használatával kapcsolatos további információkért lásd: [SSH haszn
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>Hozzáférés Data Lake Store HDFS parancs használatával
 Miután konfigurálta a Data Lake Store használata a HDInsight-fürthöz, a HDFS felületparancsokat használhatja az áruház eléréséhez szükséges.
 
-Ebben a szakaszban fogja SSH egy HDInsight Linux a fürt és a HDFS parancsokat. Ha egy Windows ügyfél használ, azt javasoljuk, **PuTTY**, amely letölthető [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+Ebben a szakaszban fogja SSH egy HDInsight Linux a fürt és a HDFS parancsokat. Ha egy Windows ügyfél használ, azt javasoljuk, **PuTTY**, amely letölthető [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 A PuTTY használatával kapcsolatos további információkért lásd: [SSH használata a HDInsight Windows Linux-alapú Hadooppal ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 

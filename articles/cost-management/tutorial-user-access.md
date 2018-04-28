@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/26/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+manager: dougeby
+ms.openlocfilehash: c1be4d649bf4b69a9f749003b5c66142006b78e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Oktatóanyag: Hozzáférések hozzárendelése költségkezelési adatokhoz
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Bár Ön eleve rendelkezik rendszergazdai hozzáféréssel, előfordulhat, hogy erre a cég más munkatársainak is szüksége lesz. A Cloudyn portálon kattintson a fogaskerék szimbólumra a jobb felső sarokban, és válassza a **User Management** (Felhasználókezelés) lehetőséget. Új felhasználó hozzáadásához kattintson az **Add New User** (Új felhasználó hozzáadása) gombra.
 
-Adja meg a felhasználóra vonatkozó kötelező adatokat. A jelszó mezőt üresen hagyhatja, így a felhasználó állíthatja be a jelszót az első bejelentkezésekor. A **Notify user by email** (Felhasználó értesítése e-mailben) lehetőségre kattintva a Cloudyn egy e-mailt küld a felhasználónak a bejelentkezési információkkal. Adjon felhasználókezelési jogosultságokat, ha azt szeretné, hogy a felhasználó létrehozhasson és módosíthasson más felhasználókat. A címzettlisták kezelésére vonatkozó jogosultsággal a felhasználó szerkesztheti a címzettlistákat.
+Adja meg a felhasználóra vonatkozó kötelező adatokat. A bejelentkezési azonosítónak érvényes e-mail-címnek kell lennie. Adjon felhasználókezelési jogosultságokat, ha azt szeretné, hogy a felhasználó létrehozhasson és módosíthasson más felhasználókat. A címzettlisták kezelésére vonatkozó jogosultsággal a felhasználó szerkesztheti a címzettlistákat. A **Notify user by email** (Felhasználó értesítése e-mailben) lehetőségre kattintva a Cloudyn egy e-mailt küld a felhasználónak a bejelentkezési információkkal. Az első bejelentkezéskor a felhasználó beállít egy jelszót.
 
 A **User has admin access** (A felhasználó rendszergazdai hozzáféréssel rendelkezik) alatt a cég gyökérszintű entitása van kiválasztva. Hagyja kiválasztva a gyökérszintű entitást, és mentse a felhasználói adatokat. A gyökérszintű entitás kiválasztásával a felhasználó nem csupán a fa legfelső szintű entitásához fér majd hozzá, hanem az össze az alá tartozóhoz is.  
   ![rendszergazdai hozzáféréssel rendelkező új felhasználó hozzáadása](.\media\tutorial-user-access\new-admin-access.png)
@@ -64,7 +64,7 @@ A fa létrehozásakor mérlegelje, miként szeretné követni vagy miként kell 
 
 Az Azure-szerződés vagy -fiók a Cloudynben való regisztrálásakor az előfizetett Azure-erőforrások adatait, többek között a használatra, a teljesítményre, a számlázásra és a címkékre vonatkozó adatokat a rendszer átmásolta a Cloudyn-fiókjába. Az entitásfát azonban manuálisan kell létrehoznia. Ha kihagyta az Azure Resource Manager-regisztrációt, csak a számlázási adatok és néhány adategység-jelentés érhetők el a Cloudyn portálján.
 
-A Cloudyn portálon kattintson a **Settings** (Beállítások) gombra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget. Egyetlen entitásból (a gyökérből) kell kiindulni, és ebből kell kiépíteni a teljes entitásfát. Példa egy entitáshierarchiára, amely számos informatika vállalatéhoz hasonlóan fog kinézni, amint a fa elkészül:
+A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget. Egyetlen entitásból (a gyökérből) kell kiindulni, és ebből kell kiépíteni a teljes entitásfát. Példa egy entitáshierarchiára, amely számos informatika vállalatéhoz hasonlóan fog kinézni, amint a fa elkészül:
 
 ![entitásfa](.\media\tutorial-user-access\entity-tree.png)
 

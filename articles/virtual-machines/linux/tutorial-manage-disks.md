@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1207ae8160739bcf27a651880dd58ea6893ebf37
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3153c57d6504346f6985823860623dc37977b79f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Azure-lemezek kezelése az Azure CLI használatával
 
@@ -108,16 +108,17 @@ Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microso
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Hozzon létre egy virtuális gépet az [az vm create]( /cli/azure/vm#az_vm_create) paranccsal. A `--datadisk-sizes-gb` argumentum használatával adhatja meg, hogy egy további lemezt kell létrehozni és a virtuális géphez csatolni. Több lemez létrehozásához és csatolásához a lemezméreteket egy szóközzel tagolt listában adja meg. A következő példában egy virtuális gépet hozunk létre két, egyenként 128 GB méretű adatlemezzel. Mivel a lemezek mérete 128 GB, mindkettő P10 típusú lemezként van konfigurálva, amely lemezenként maximálisan 500 IOPS-t biztosít.
+Hozzon létre egy virtuális gépet az [az vm create]( /cli/azure/vm#az_vm_create) paranccsal. A következő példa létrehoz egy *myVM* nevű virtuális gépet, hozzáadja az *azureuser* nevű felhasználói fiókot, valamint SSH-kulcsokat hoz létre, ha azok még nem léteznének. A `--datadisk-sizes-gb` argumentum használatával adhatja meg, hogy egy további lemezt kell létrehozni és a virtuális géphez csatolni. Több lemez létrehozásához és csatolásához a lemezméreteket egy szóközzel tagolt listában adja meg. A következő példában egy virtuális gépet hozunk létre két, egyenként 128 GB méretű adatlemezzel. Mivel a lemezek mérete 128 GB, mindkettő P10 típusú lemezként van konfigurálva, amely lemezenként maximálisan 500 IOPS-t biztosít.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroupDisk \
   --name myVM \
   --image UbuntuLTS \
   --size Standard_DS2_v2 \
-  --data-disk-sizes-gb 128 128 \
-  --generate-ssh-keys
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --data-disk-sizes-gb 128 128
 ```
 
 ### <a name="attach-disk-to-existing-vm"></a>Lemez csatolása meglévő virtuális géphez

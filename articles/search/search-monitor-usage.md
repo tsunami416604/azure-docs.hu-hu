@@ -1,25 +1,20 @@
 ---
-title: "Használati és az Azure Search szolgáltatás statisztikáinak figyeléséhez |} Microsoft Docs"
-description: "Erőforrás-felhasználás és index mérete nyomon az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure."
-services: search
-documentationcenter: 
+title: Használati és az Azure Search szolgáltatás statisztikáinak figyeléséhez |} Microsoft Docs
+description: Erőforrás-felhasználás és index mérete nyomon az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 
+services: search
 ms.service: search
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: required
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fe852afedfc1cce99d81b8ab53c6c80df34ac6d6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 286569eef8e17909ecab017b67b0ffc044a4bfe4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="monitoring-an-azure-search-service"></a>Egy Azure Search szolgáltatás figyelése
 
@@ -89,45 +84,45 @@ Az adatok tárfiókba másolását követően az adatokat két tárolók JSON é
 
 Egy blob tároló száma óránként van.
 
-Példa elérési útja:`resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
+Példa elérési útja: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
 
 #### <a name="log-schema"></a>Séma
 A naplókat blobok a keresési szolgáltatás forgalmi naplók tartalmazzák.
 Minden egyes blob tartozik egy legfelső szintű objektum nevű **rekordok** , amely tartalmazza a napló objektumokból álló tömb.
 Minden egyes blob rekordok rendelkezzen a művelet, amely során az azonos órához került sor.
 
-| Név | Típus | Példa | Megjegyzések |
+| Name (Név) | Típus | Példa | Megjegyzések |
 | --- | --- | --- | --- |
-| time |Dátum és idő |"2015-12-07T00:00:43.6872559Z" |A művelet időbélyegzője |
-| resourceId |Karakterlánc |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK /<br/> MICROSOFT. KERESÉSI/SEARCHSERVICES/SEARCHSERVICE" |Az erőforrás-azonosítója |
-| operationName |Karakterlánc |"Query.Search" |A művelet neve |
-| operationVersion |Karakterlánc |"2015-02-28" |A használt api-verzió |
-| category |Karakterlánc |"OperationLogs" |állandó |
-| resultType |Karakterlánc |"Sikeres" |A lehetséges értékek: sikeres vagy sikertelen volt |
+| time |dátum/idő |"2015-12-07T00:00:43.6872559Z" |A művelet időbélyegzője |
+| resourceId |karakterlánc |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK /<br/> MICROSOFT. KERESÉSI/SEARCHSERVICES/SEARCHSERVICE" |Az erőforrás-azonosítója |
+| operationName |karakterlánc |"Query.Search" |A művelet neve |
+| operationVersion |karakterlánc |"2015-02-28" |A használt api-verzió |
+| category |karakterlánc |"OperationLogs" |állandó |
+| resultType |karakterlánc |"Sikeres" |A lehetséges értékek: sikeres vagy sikertelen volt |
 | resultSignature |int |200 |HTTP eredménykódja |
 | durationMS |int |50 |A művelet ezredmásodpercben időtartama |
-| properties |Objektum |az alábbi táblázat |A művelet vonatkozó adatokat tartalmazó objektum |
+| properties |objektum |az alábbi táblázat |A művelet vonatkozó adatokat tartalmazó objektum |
 
 **Tulajdonságok séma**
-| Név | Típus | Példa | Megjegyzések |
+| Name (Név) | Típus | Példa | Megjegyzések |
 | --- | --- | --- | --- |
-| Leírás |Karakterlánc |"/Indexes('content')/docs beolvasása" |A művelet végpont |
-| Lekérdezés |Karakterlánc |"? keresési = AzureSearch & $count = true & api-version = 2015-02-28" |A lekérdezés-paraméterek |
+| Leírás |karakterlánc |"/Indexes('content')/docs beolvasása" |A művelet végpont |
+| Lekérdezés |karakterlánc |"? keresési = AzureSearch & $count = true & api-version = 2015-02-28" |A lekérdezés-paraméterek |
 | Dokumentumok |int |42 |Feldolgozott dokumentumok száma |
-| indexName |Karakterlánc |"testindex" |A művelethez társított index nevét |
+| indexName |karakterlánc |"testindex" |A művelethez társított index nevét |
 
 #### <a name="metrics-schema"></a>Metrikák séma
-| Név | Típus | Példa | Megjegyzések |
+| Name (Név) | Típus | Példa | Megjegyzések |
 | --- | --- | --- | --- |
-| resourceId |Karakterlánc |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK /<br/>MICROSOFT. KERESÉSI/SEARCHSERVICES/SEARCHSERVICE" |az erőforrás-azonosító |
-| metricName |Karakterlánc |"Várakozási" |a mérték neve |
-| time |Dátum és idő |"2015-12-07T00:00:43.6872559Z" |a művelet időbélyeg |
-| Átlagos |int |64 |A nyers minták a metrika időközben átlagos érték |
-| minimális |int |37 |A minimális érték a metrika időközben nyers minták |
-| Maximális |int |78 |A maximális érték a metrika időközben nyers minták |
-| összesen |int |258 |A nyers minták a metrika időközben teljes értéke |
-| Száma |int |4 |A metrika létrehozásához használt nyers minták száma |
-| időkeretben vannak |Karakterlánc |"PT1M" |A metrika az ISO 8601 metrikaindítójának aggregációs időköze |
+| resourceId |karakterlánc |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK /<br/>MICROSOFT. KERESÉSI/SEARCHSERVICES/SEARCHSERVICE" |az erőforrás-azonosító |
+| metricName |karakterlánc |"Várakozási" |a mérték neve |
+| time |dátum/idő |"2015-12-07T00:00:43.6872559Z" |a művelet időbélyeg |
+| átlag |int |64 |A nyers minták a metrika időközben átlagos érték |
+| minimum |int |37 |A minimális érték a metrika időközben nyers minták |
+| maximum |int |78 |A maximális érték a metrika időközben nyers minták |
+| összeg |int |258 |A nyers minták a metrika időközben teljes értéke |
+| darab |int |4 |A metrika létrehozásához használt nyers minták száma |
+| időkeretben vannak |karakterlánc |"PT1M" |A metrika az ISO 8601 metrikaindítójának aggregációs időköze |
 
 Minden metrikák egy perces időközönként jelenti. Minden mérőszám minimális, maximális és átlagos száma percenként értékeket.
 
@@ -144,7 +139,7 @@ Az Azure Search biztosít egy [Power BI-tartalomcsomag](https://app.powerbi.com/
 
 ![Az Azure Search Power BI-irányítópulton][4]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Felülvizsgálati [méretezni a replikák és a partíciók](search-limits-quotas-capacity.md) kapcsolatos útmutatás partíciókat és a meglévő szolgáltatás replikáit kiosztásáért elosztása érdekében.
 
 Látogasson el [kezelése a Microsoft Azure – keresés szolgáltatást](search-manage.md) további információt a felügyeleti szolgáltatás, vagy [teljesítmény- és optimalizálási](search-performance-optimization.md) a finomhangoláshoz útmutatást.

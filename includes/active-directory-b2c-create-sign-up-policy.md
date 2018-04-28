@@ -1,4 +1,4 @@
-Az alkalmazásba való regisztráció engedélyezéséhez létre kell hoznia egy regisztrálási szabályzatot. Ez a szabályzat írja le, hogy mit tapasztalnak a felhasználók a regisztráció során, valamint megadja azokat a jogkivonatokat, amelyeket az alkalmazás fogad a sikeres regisztrálásokkor.
+Ha szeretné csak akkor engedélyezze a regisztrációs az alkalmazásra, használja a **előfizetési** házirend. Ez a házirend a regisztráció során végighaladnia ügyfelek szolgáltatásokat írja le, illetve az alkalmazás sikeres regisztrációra által kapott jogkivonatok tartalmát.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

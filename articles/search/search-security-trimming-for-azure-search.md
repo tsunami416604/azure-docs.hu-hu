@@ -1,21 +1,18 @@
 ---
-title: "Azure Search levágási eredményez a biztonsági szűrők |} Microsoft Docs"
-description: "Hozzáférés-vezérlés az Azure Search tartalmakat a biztonsági szűrők és a felhasználói identitások használatával."
-ms.custom: 
-ms.date: 08/07/2017
+title: Azure Search levágási eredményez a biztonsági szűrők |} Microsoft Docs
+description: Hozzáférés-vezérlés az Azure Search tartalmakat a biztonsági szűrők és a felhasználói identitások használatával.
 ms.service: search
-ms.reviewer: 
-ms.suite: 
-ms.tgt_pltfrm: 
-caps.latest.revision: "26"
+ms.topic: conceptual
+services: search
+ms.date: 08/07/2017
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: c829399f9c21846d8ee5b43945e2565565279820
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: dd26676b74431566b3631b8a79cd06bcf3022518
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Azure Search levágási eredményez a biztonsági szűrők
 
@@ -29,7 +26,7 @@ Ez a cikk bemutatja, hogyan hajthat végre olyan biztonsági szűrést, az aláb
 > [!div class="checklist"]
 > * A fő azonosítókat tartalmazó mező létrehozása 
 > * Leküldéses vagy meglévő dokumentumokat a megfelelő egyszerű azonosítók frissítése
-> * A keresési foglalhatnak `search.in``filter`
+> * A keresési foglalhatnak `search.in` `filter`
 
 >[!NOTE]
 > A jelen dokumentum nem ismerteti a fő azonosítók lekérésének folyamatát. Az identitás-szolgáltatótól szerezheti be.
@@ -155,7 +152,7 @@ A dokumentumok szerezheti vissza, ha `group_ids` "group_id1" vagy "group_id2" ta
 
 Ez a hogyan szűrheti a felhasználói azonosító és az Azure keresési eredmény `search.in()` függvény. Ez a funkció használatával adjon át az egyes céldokumentumban társított egyszerű azonosítók egyeztetéshez a kérelmező felhasználó egyszerű azonosítót. Keresési kérelem kezelésekor a `search.in` függvény kiszűri a keresési eredmények között, amelyekhez nincs a felhasználó rendszerbiztonsági tagok olvasási hozzáféréssel rendelkezik. Az egyszerű azonosítók jelenthet többek között a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitását.
  
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Active Directory azonosító-alapú hozzáférés-vezérlés Azure Search-szűrők használata](search-security-trimming-for-azure-search-with-aad.md)
 + [Az Azure Search szűrők](search-filters.md)

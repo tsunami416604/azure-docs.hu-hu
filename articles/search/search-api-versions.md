@@ -1,23 +1,19 @@
 ---
-title: "Az Azure Search API-verziók |} Microsoft Docs"
-description: "Az Azure Search REST API-k és az ügyféloldali kódtára a .NET SDK házirendje."
-services: search
-documentationcenter: 
+title: Az Azure Search API-verziók |} Microsoft Docs
+description: Az Azure Search REST API-k és az ügyféloldali kódtára a .NET SDK házirendje.
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: 1a7f5b9c53d3258e5f8eda40401c61a85971d8c7
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
-ms.translationtype: MT
+ms.openlocfilehash: dfa3e1996ecbd3d78fef9f85facb7da1c209fafa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="api-versions-in-azure-search"></a>Az Azure Search API-verziók
 Az Azure Search rendszeresen bevezeti szolgáltatás-frissítéseket. Néha, de nem minden esetben ezeket a frissítéseket, hogy az előző verziókkal való kompatibilitás miatt API felületen új verziójának közzétételéhez szükséges. Új verzió közzététele lehetővé teszi szabályozhatja, mikor és hogyan integrálja a keresési szolgáltatás frissítéseiről a kódban.

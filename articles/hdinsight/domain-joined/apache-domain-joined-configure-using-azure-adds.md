@@ -1,24 +1,19 @@
 ---
-title: Azure Active Directory tartományszolgáltatásokban - Azure tartományhoz HDInsight-fürtök konfigurálása |} Microsoft Docs
+title: Az AAD-DS tartományhoz HDInsight-fürtök konfigurálása
 description: Megtudhatja, hogyan telepítheti és konfigurálhatja az Azure Active Directory tartományi szolgáltatások tartományhoz HDInsight-fürtök
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/20/2018
-ms.author: bhanupr
-ms.openlocfilehash: ae7ccaf3d167176a1fc6015e84b0eb023da945d5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 060ca8040f514ec1df48c2ca4568cbbb2a529267
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása
 
@@ -36,7 +31,10 @@ Hozzon létre egy Azure Active Directory tartományi szolgáltatások HDInsight-
 > [!NOTE]
 > A bérlői rendszergazdák csak a jogosult tartományi szolgáltatások létrehozására. Ha az alapértelmezett tároló Azure Data Lake tároló-(ADLS-) használata a HDInsight, majd győződjön meg arról, az alapértelmezett Azure AD bérlője ADLS legyen, mint a tartomány a HDInsight-fürthöz. Ehhez állítsa be az Azure Data Lake Store működéséhez a multi-factor authentication kell olyan felhasználóknál, akik hozzáférhetnek a fürt le kell tiltani.
 
-Után van megadva a tartományi szolgáltatások, a szolgáltatás-fiók létrehozásához szüksége a **az Azure AD-tartományvezérlő rendszergazdák** csoport hozhat létre a HDInsight-fürthöz. A fiók globális rendszergazdának kell lennie az Azure ad-val.
+Az AAD tartományi szolgáltatás van megadva, miután létrehozásához szükséges szolgáltatásfiók az aad-ben (amely lesznek szinkronizálva az AAD-DS-ben) a megfelelő engedélyekkel a HDInsight-fürt létrehozása. Ha ez a szolgáltatás fiók már létezik, alaphelyzetbe meg jelszót, és várjon, amíg, amíg az AAD-DS-ben a szinkronizált kell (az alaphelyzetbe a kerberos Jelszókivonat létrehozását eredményezi, és akár 30 percet is igénybe vehet). Ez a szolgáltatás fiók rendelkezik a következő konferenciát:
+
+- Számítógépek csatlakoztatása a tartományhoz, és helyezze a gép rendszerbiztonsági tagok belül a szervezeti egységet a fürt létrehozása során.
+- Hozzon létre szolgáltatásnevekről belül a szervezeti egységet a fürt létrehozása során.
 
 Biztonságos LDAP Azure AD tartományi szolgáltatások felügyelt tartomány számára engedélyezni kell. Engedélyezheti a biztonságos LDAP [konfigurálása biztonságos LDAP (LDAPS) egy Azure AD tartományi szolgáltatások által felügyelt tartomány](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
@@ -49,7 +47,7 @@ Célszerűbb a azonos Azure virtuális network(VNet) helyezze el az Azure AD tar
 Amikor létrehoz egy tartományhoz csatlakozó HDInsight-fürtöt, meg kell adnia a következő paraméterekkel:
 
 - **Tartománynév**: A tartománynév társított Azure Active Directory tartományi Szolgáltatásokban. Például: contoso.onmicrosoft.com
-- **Tartományi felhasználónév**: A szolgáltatás fiók az Azure AD-tartományvezérlő rendszergazdák csoportban az előző szakaszban létrehozott. Például: hdiadmin@contoso.onmicrosoft.com. A tartományi felhasználó a tartományhoz csatlakoztatott HDInsight fürt rendszergazdája.
+- **Tartományi felhasználónév**: A fiók az az Azure AD-tartományvezérlő az előző szakaszban létrehozott. Például: hdiadmin@contoso.onmicrosoft.com. A tartományi felhasználó a rendszergazda a tartományhoz csatlakoztatott HDInsight-fürt lesz.
 - **Tartományi jelszó**: a szolgáltatás fiók jelszavát.
 - **Szervezeti egység**: a HDInsight-fürthöz használni kívánt szervezeti egység megkülönböztető nevét. Például: OU HDInsightOU, DC = contoso, DC = = onmicrosohift, DC = com. Ha a szervezeti egység nem létezik, a HDInsight-fürt megkísérli a szervezeti egység létrehozása. 
 - **LDAPS URL-cím**: például ldaps://contoso.onmicrosoft.com:636

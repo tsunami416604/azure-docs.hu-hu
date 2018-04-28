@@ -1,8 +1,8 @@
 ---
-title: "Élő webalkalmazások Azure Application Insights Profilkészítő a profil |} Microsoft Docs"
-description: "A web server kód gyors elérési út egy kis erőforrásigénnyel Profilkészítő azonosításához."
+title: Élő webalkalmazások Azure Application Insights Profilkészítő a profil |} Microsoft Docs
+description: A web server kód gyors elérési út egy kis erőforrásigénnyel Profilkészítő azonosításához.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c65ef9141898369b8fcadd4c52972b767aca7cfe
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a4b1e30f1350a5e5886899069b05b8b87bb7000d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazásokban az Application insights szolgáltatással
 
@@ -63,7 +63,7 @@ További információ: a [előzetes verzióját Profilkészítő Azure számít�
 
 ## <a name="view-profiler-data"></a>Profilkészítő adatok megtekintése
 
-Győződjön meg arról, hogy az alkalmazás fogad-forgalmat. Ha a kísérlet, a web app használatával hozhat létre kérelmek [Application Insights Teljesítménytesztelés](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test). Ha engedélyezte a Profilkészítő újonnan, egy rövid terheléstesztet mintegy 15 percre leáll, amely kell létrehozni a szolgáltatásprofil-elemzői adat is futtathatja. Ha egy ideje már engedélyezni Profilkészítő korábban, tartsa szem előtt tartva futtató Profilkészítő véletlenszerűen kétszer minden órában, és a minden egyes alkalommal két perces időtartamot futtatja. Azt javasoljuk, hogy először a teszt a terhelés egy órán keresztül minta szolgáltatásprofil-elemzői adat kapja.
+Győződjön meg arról, hogy az alkalmazás fogad-forgalmat. Ha a kísérlet, a web app használatával hozhat létre kérelmek [Application Insights Teljesítménytesztelés](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Ha engedélyezte a Profilkészítő újonnan, egy rövid terheléstesztet mintegy 15 percre leáll, amely kell létrehozni a szolgáltatásprofil-elemzői adat is futtathatja. Ha egy ideje már engedélyezni Profilkészítő korábban, tartsa szem előtt tartva futtató Profilkészítő véletlenszerűen kétszer minden órában, és a minden egyes alkalommal két perces időtartamot futtatja. Azt javasoljuk, hogy először a teszt a terhelés egy órán keresztül minta szolgáltatásprofil-elemzői adat kapja.
 
 Miután az alkalmazás egyes forgalom érkezik, lépjen a **teljesítmény** ablaktáblán válassza előbb **érvénybe műveletek** megtekintése a szolgáltatásprofil-elemzői adat, és válassza a **szolgáltatásprofil-elemzői adat** gombra.
 
@@ -187,7 +187,7 @@ A nyomkövetések párhuzamos jelenik meg, amikor határozza meg, melyik szálak
 Az alábbiakban néhány dolog, ellenőrizheti:
 
 * Ha a megtekinteni kívánt adatok néhány hétre régebbi, próbálkozzon a időszűrője korlátozása, és próbálkozzon újra.
-* Győződjön meg arról, hogy proxyk és a tűzfalon nem letiltott https://gateway.azureserviceprofiler.net elérésére.
+* Győződjön meg arról, hogy proxyk és a tűzfalon nem letiltott hozzáférés https://gateway.azureserviceprofiler.net.
 * Győződjön meg arról, hogy az Application Insights instrumentation kulcsot használ az alkalmazás ugyanaz, mint az Application Insights-erőforrást, amelyen engedélyezett profilkészítési. A kulcs általában az ApplicationInsights.config fájlban, de a web.config vagy az app.config fájlban is lehet.
 
 ### <a name="error-report-in-the-profiling-viewer"></a>Hibajelentés a profilkészítési megjelenítőben
@@ -311,7 +311,7 @@ Bár ez a módszer viszonylag egyszerű, vegye figyelembe a következőket:
 
 * A Web Apps webes feladatok használata egyedi. A webes projekt futtatott biztosítja, hogy a folyamat rendelkezik-e az azonos környezeti változókat és, hogy a webhely Alkalmazásbeállítások. Ez azt jelenti, hogy nem kell átadni a instrumentation billentyűt a parancssor használatával Profiler. Profilkészítő a környezet instrumentation kulccsal kell átvételéhez. Azonban ha azt szeretné, a Profilkészítő a fejlesztői mezőben vagy a Web Apps kívül gépen fut, kell megadnia egy rendszerállapot-kulcsot. Ehhez úgy, hogy egy argumentum `--ikey <instrumentation-key>`. Ezt az értéket meg kell egyeznie a instrumentation kulcs, amely az alkalmazás használja. Napló kimenetét a Profilkészítő megtudhatja, mely ikey Profilkészítő használatába és során azt is profilkészítési e észlelte instrumentation kulcs tevékenységre.
 
-* Manuálisan indított webes feladatok is elindítható a webes Hook keresztül. Az URL-CÍMEN kaphat kattintson a jobb gombbal a web feladat, az irányítópult és a Tulajdonságok megtekintése. Vagy az eszköztáron válassza **tulajdonságok** a tábla a webes projekt kiválasztása után. Ez a megközelítés korlátlan lehetőségek, például a Profilkészítő időt. a CI/CD folyamatot (például VSTS) vagy a Microsoft Flow (https://flow.microsoft.com/en-us/) hasonlót megnyílik. Végső soron a választott attól függ, milyen összetett kívánja tenni a *run.cmd* fájl (is lehet, amely egy *run.ps1* fájl), de rugalmasan van-e.
+* Manuálisan indított webes feladatok is elindítható a webes Hook keresztül. Az URL-CÍMEN kaphat kattintson a jobb gombbal a web feladat, az irányítópult és a Tulajdonságok megtekintése. Vagy az eszköztáron válassza **tulajdonságok** a tábla a webes projekt kiválasztása után. Ez a megközelítés megnyílik korlátlan lehetőségek, például a Profilkészítő időt. a CI/CD folyamatot (például VSTS) vagy a Microsoft Flow hasonlót (https://flow.microsoft.com/en-us/). Végső soron a választott attól függ, milyen összetett kívánja tenni a *run.cmd* fájl (is lehet, amely egy *run.ps1* fájl), de rugalmasan van-e.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 604249151f3c1ca206f64a178b25ea1dae5b5023
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c6d1588aaf069d6c3ae175e9b554c0da6c86290
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Oktatóanyag: Azure Active Directoryval integrált Spacio
 
@@ -113,35 +113,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Spacio ügyfél-támogatási csoport](mailto:support@spac.io) beolvasni ezeket az értékeket. 
 
-4. Kattintson a **Mentés** gombra.
+4. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_general_400.png)
 
-5. Létrehozásához a **metaadatainak URL-CÍMÉT**, hajtsa végre a következő lépéseket:
+5. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe. 
 
-    a. Kattintson a **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appregistrations.png)
-   
-    b. Kattintson a **végpontok** megnyitásához a **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpointicon.png)
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_certificate.png)
 
-    c. Kattintson a **másolása** gomb másolása a **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpoint.png)
-     
-    d. Most lépjen a tulajdonságlapján **Spacio** , és másolja a **alkalmazásazonosító** használatával a **másolási** gombra, majd illessze be a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Egyszeri bejelentkezés konfigurálása **Spacio** oldalon kell küldeniük a létrehozott **metaadatainak URL-CÍMÉT** való [Spacio támogatási csoport](mailto:support@spac.io). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. Egyszeri bejelentkezés konfigurálása **Spacio** oldalon kell küldeniük a **alkalmazás összevonási metaadatainak URL-címe** való [Spacio támogatási csoport](mailto:support@spac.io). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 

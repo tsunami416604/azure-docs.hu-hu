@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 550fe16c5997947b528d284b7afdce9af0b7a56b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 00b0635d894ff8a41c810345cfa94363029e78e8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése
 
@@ -31,14 +31,14 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 - Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
 - A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
-- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 - Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
 ## <a name="add-a-subnet"></a>Adjon hozzá egy alhálózatot
 
 1. Adja meg a keresési mezőbe, a portál felső, *virtuális hálózatok* be a keresőmezőbe. Ha **virtuális hálózatok** jelennek meg a keresési eredmények között, válassza ki azt.
 2. Válassza ki a virtuális hálózati alhálózat hozzáadni kívánt virtuális hálózatok listája.
-3. A **beállítások**, jelölje be **alhálózatok**.
+3. A **BEÁLLÍTÁSOK** területen válassza az **Alhálózatok** elemet.
 4. Válassza ki **+ alhálózati**.
 5. Adja meg a következő paraméterekkel:
     - **Név**: A nevet a virtuális hálózaton belül egyedinek kell lennie.
@@ -57,7 +57,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 1. Adja meg a keresési mezőbe, a portál felső, *virtuális hálózatok* be a keresőmezőbe. Ha **virtuális hálózatok** jelennek meg a keresési eredmények között, válassza ki azt.
 2. A virtuális hálózatok listájában jelölje ki a virtuális hálózat, amely tartalmazza az alhálózat beállításait módosítani szeretné.
-3. A **beállítások**, jelölje be **alhálózatok**.
+3. A **BEÁLLÍTÁSOK** területen válassza az **Alhálózatok** elemet.
 4. Az alhálózatok listájának megtekintéséhez jelölje ki az alhálózatot, beállításait módosítani szeretné. A következő beállításokat módosíthatja:
 
     - **Címtartomány:** nincsenek erőforrások az alhálózaton belül vannak telepítve, ha a címtartomány módosíthatja. Ha erőforrásokat az alhálózaton található, állítsa az erőforrások áthelyezése egy másik alhálózatot, vagy először törölje azokat az alhálózat. Áthelyezéséhez vagy az erőforrás törlése lépései eltérőek attól függően, hogy az erőforrás. Megtudhatja, hogyan helyezze át vagy törölje az alhálózatok-erőforrást, olvassa el a dokumentációt, helyezze át vagy törölje kívánt minden erőforrástípus. Lásd: korlátait **-címtartományt** az 5. lépésében [adjon hozzá egy alhálózatot](#add-a-subnet).
@@ -76,7 +76,7 @@ Csak akkor, ha nincsenek erőforrások az alhálózatban lévő alhálózatot t�
 
 1. Adja meg a keresési mezőbe, a portál felső, *virtuális hálózatok* be a keresőmezőbe. Ha **virtuális hálózatok** jelennek meg a keresési eredmények között, válassza ki azt.
 2. A virtuális hálózatok listájában jelölje ki a törölni kívánt alhálózat tartalmazó virtuális hálózaton.
-3. A **beállítások**, jelölje be **alhálózatok**.
+3. A **BEÁLLÍTÁSOK** területen válassza az **Alhálózatok** elemet.
 4. Az alhálózatok listájában jelölje ki **...** , a jobb oldalon, az alhálózat törölni kívánt
 5. Válassza ki **törlése**, majd válassza ki **Igen**.
 

@@ -1,10 +1,10 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Form.com |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Form.com között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Form.com |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Form.com között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e4de55d99fce1cb1feff18a784eb029d3cb6a404
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0b1d990337c7c5caaee79bc8e3280c2690fc47b0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Oktatóanyag: Azure Active Directoryval integrált Form.com
 
@@ -101,16 +101,16 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_samlbase.png)
 
 3. Az a **Form.com tartomány és az URL-címek** területen tegye a következőket:
 
     ![Az egyszeri bejelentkezés információk Form.com tartomány és az URL-címek](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.wa-form.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.wa-form.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.form.com`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.form.com`
 
     c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:
     | |
@@ -118,46 +118,26 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | `https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action` |
     | `https://<subdomain>.form.com/Member/UserAccount/SAML2.action` |
     
-    > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, válasz URL-CÍMEN és azonosítója. Ügyfél [Form.com ügyfél-támogatási csoport](https://form.com/about/company/contact-us/) beolvasni ezeket az értékeket. 
- 
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+    > [!NOTE]
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, válasz URL-CÍMEN és azonosítója. Ügyfél [Form.com ügyfél-támogatási csoport](https://form.com/about/company/contact-us/) beolvasni ezeket az értékeket.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_certificate.png) 
-
-5. Létrehozásához a **metaadatainak URL-CÍMÉT**, hajtsa végre a következő lépéseket:
-
-    a. Kattintson a **App regisztrációk**.
+4. Az a **SAML-aláíró tanúsítványa** területen tegye a következőket:
     
-    ![Appreg konfigurálása](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_appregistrations.png)
-   
-    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Endpointcon konfigurálása](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_endpointicon.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-formcom-tutorial/tutorial_metadataurl.png)
 
-    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Konfigurálja a végpontot](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_endpoint.png)
+    a. Kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
+
+    b. Kattintson a **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
      
-    d. Most lépjen a tulajdonságlapján **Form.com** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
- 
-    ![Appid konfigurálása](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Kattintson a **mentése** gombra.
+5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-formcom-tutorial/tutorial_general_400.png)
 
-7. A a **Form.com konfigurációs** kattintson **konfigurálása Form.com** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. A a **Form.com konfigurációs** kattintson **konfigurálása Form.com** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
     ![Form.com konfiguráció](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_configure.png) 
 
-8. Egyszeri bejelentkezés konfigurálása **Form.com** oldalon kell küldeniük a letöltött **tanúsítvány (Base64)**, **metaadatainak URL-CÍMÉT**, és **SAML-alapú egyszeri bejelentkezést. URL-címe** való [Form.com támogatási csoport](https://form.com/about/company/contact-us/). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+7. Egyszeri bejelentkezés konfigurálása **Form.com** oldalon kell küldeniük a letöltött **tanúsítvány (Base64)**, **alkalmazás összevonási metaadatainak URL-címe**, és **SAML Az egyszeri bejelentkezési URL-címe** való [Form.com támogatási csoport](https://form.com/about/company/contact-us/). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 

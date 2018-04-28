@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD Connect és általános adatok védelme |} Microsoft Docs
+title: Az Azure AD Connect és a felhasználói adatvédelem |} Microsoft Docs
 description: Ez a dokumentum ismerteti az beszerzése az Azure AD Connect GDPR előírásainak.
 services: active-directory
 documentationcenter: ''
@@ -11,36 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR megfelelőség és az Azure AD Connect 
+# <a name="user-privacy-and-azure-ad-connect"></a>Felhasználói adatok és az Azure AD Connect 
 
-A lehetséges, hogy 2018, az európai adatvédelmi törvény, a [általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm), esedékes érvénybe léptetéséhez. A GDPR támaszt a vállalatok, állami intézményekhez, nem nyereség és más szervezetekkel, hogy az ajánlat termékek és szolgáltatások vállalatoknál az Európai Unió, vagy ha az adatgyűjtés és -elemzés EU lakosai kötve új szabályokat. A GDPR elhelyezkedő függetlenül érvényes. 
-
-Microsoft-termékek és szolgáltatások elérhetők ma segítséget nyújtanak a GDPR követelményeknek. További információk a Microsoft Privacy Policy házirend [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Ez a cikk az Azure AD Connect és GDPR megfelelőségi foglalkozik.  Megfelelőségi információk az Azure AD Connect Health és GDPR: a cikk [Itt](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
+>Ez a cikk az Azure AD Connect és a felhasználói adatvédelem foglalkozik.  Az Azure AD Connect Health és felhasználói adatvédelmi információkat lásd: a cikk [Itt](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
 
-Az Azure AD Connect telepítés általános adatok védelmi szabályozás megfelelőségi kétféleképpen érhető el:
+Felhasználói adatvédelmi megfelelőségének az Azure AD Connect telepítése kétféleképpen érhető el:
 
 1.  Kérésre adatok kinyerése a személy, és távolítsa el adatait az adott személy a létesítmények
 2.  Győződjön meg arról, 48 órával adatot nem őrződnek meg.
 
 Az Azure AD Connect csapat azt javasolja, hogy a második lehetőség óta sokkal egyszerűbb, bevezetéséhez és karbantartásához.
 
-Az Azure AD Connect szinkronizálási kiszolgáló GDPR megfelelőségi hatókör a következő adatokat tárolja:
+Az Azure AD Connect szinkronizálási kiszolgáló a következő adatvédelmi adatokat tároló:
 1.  Az a személy adatait a **az Azure AD Connect-adatbázis**
 2.  Az adatok a **Windows-Eseménynapló** előfordulhat, hogy egy személy kapcsolatos információkat tartalmazó fájlokat.
 3.  Az adatok a **az Azure AD Connect telepítési naplófájlok** , hogy egy személy kapcsolatos tartalmazhat
 
-Megfelelő GDPR, az Azure AD Connect ügyfelek kell használni, a következő irányelveket:
+Azure AD Connect-ügyfél használnia kell az alábbi iránymutatásokat, amikor a felhasználó adatainak eltávolítása:
 1.  Az Azure AD Connect telepítési naplófájlok rendszeresen – legalább 48 óránként tartalmazó mappa tartalmának törlése
 2.  A termék eseménynaplók is létrehozhat.  Eseménynaplók naplók kapcsolatos további tudnivalókért tekintse meg a [dokumentációját Itt](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
 
@@ -82,5 +80,5 @@ A következő lépésekkel ütemezni a parancsfájl futtatásához 48 óránkén
 
 
 ## <a name="next-steps"></a>További lépések
-- [A helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).
-- [Az Azure AD Connect Health és GDPR](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)
+* [Tekintse át a Microsoft Privacy házirendet, a biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
+- [Az Azure AD Connect Health és a felhasználói adatok](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)

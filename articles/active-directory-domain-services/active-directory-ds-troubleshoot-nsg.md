@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: ca3292f1b89fc461950a47116126b6f5338fb381
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ce03ee0e0936cea4b96e48fbc949f40ee0fe83a0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>A felügyelt tartományok érvénytelen hálózati konfiguráció hibaelhárítása
 Ez a cikk segít elhárításához és hárítsa el a hálózati konfigurációs hibákat, amelyek a következő figyelmeztető üzenet:
@@ -61,7 +61,7 @@ Az alábbi lépések segítségével hozzon létre egy új NSG PowerShell haszn�
 
   ```PowerShell
   # Log in to your Azure subscription.
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
 2. Hozzon létre egy NSG-t három szabályok. A következő parancsfájl meghatározza, hogy a három szabályok, amelyek lehetővé teszik a hozzáférést az Azure AD tartományi szolgáltatások futtatásához szükséges portok az NSG. Ezt követően a parancsfájl hoz létre egy új NSG-t, amely tartalmazza ezeket a szabályokat. A további szabályok, amelyek lehetővé teszik az egyéb bejövő forgalmat, szükség esetén adja hozzá a virtuális hálózat üzembe helyezett munkaterhelések által ugyanazt a formátumot használja.
@@ -123,7 +123,7 @@ $VnetName = "exampleVnet"
 $SubnetName = "exampleSubnet"
 
 # Log in to your Azure subscription.
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Allow inbound HTTPS traffic to enable synchronization to your managed domain.
 $SyncRule = New-AzureRmNetworkSecurityRuleConfig -Name AllowSyncWithAzureAD -Description "Allow synchronization with Azure AD" `

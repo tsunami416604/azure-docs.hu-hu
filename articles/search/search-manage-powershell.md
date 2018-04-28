@@ -1,25 +1,20 @@
 ---
-title: "Azure Search kezelése a Powershell-parancsfájlok |} Microsoft Docs"
-description: "Az Azure Search szolgáltatás PowerShell-parancsfájlokkal kezelheti. Hozzon létre vagy frissíteni az Azure Search szolgáltatást, és Azure Search adminisztrációs kulcsok kezelése"
-services: search
-documentationcenter: 
-author: seansaleh
-manager: mblythe
-editor: 
+title: Azure Search kezelése a Powershell-parancsfájlok |} Microsoft Docs
+description: Az Azure Search szolgáltatás PowerShell-parancsfájlokkal kezelheti. Hozzon létre vagy frissíteni az Azure Search szolgáltatást, és Azure Search adminisztrációs kulcsok kezelése
+author: HeidiSteen
+manager: cgronlun
 tags: azure-resource-manager
-ms.assetid: 9b3dc1f2-3619-4235-ba1f-d2d6f5c45dd5
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: powershell
+ms.devlang: powershell
+ms.topic: conceptual
 ms.date: 08/15/2016
-ms.author: seasa
-ms.openlocfilehash: aa51c846efef12461ec382274199bc049c42aaa3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
-ms.translationtype: MT
+ms.author: heidist
+ms.openlocfilehash: 974f2df8c4c9c9730f176a1e8472199960b359f6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>A PowerShell segítségével az Azure Search szolgáltatás kezelése
 > [!div class="op_single_selector"]
@@ -37,7 +32,7 @@ Ezek a parancsok párhuzamosan használható felügyeleti lehetőségekről a [A
 
 Először meg kell ezzel a paranccsal az Azure bejelentkezési azonosító:
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 A Microsoft Azure bejelentkezési párbeszédpanelen adja meg az e-mail cím, az Azure-fiókjával, és a hozzá tartozó jelszó.
 
@@ -135,6 +130,6 @@ Most, hogy a szolgáltatás létrehozása a következő lépésekre is: build eg
 * [Az Azure Search-index létrehozása az Azure portálon](search-create-index-portal.md)
 * [Keresési ablak használata az Azure-portálon az Azure Search-index lekérdezése](search-explorer.md)
 * [Adatok betöltése a többitől indexelő beállítása](search-indexer-overview.md)
-* [Azure Search .NET használata](search-howto-dotnet-sdk.md)
+* [Az Azure Search használata a .NET-ben](search-howto-dotnet-sdk.md)
 * [Az Azure Search forgalom elemzése](search-traffic-analytics.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált ServiceNow |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a ServiceNow között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált ServiceNow |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a ServiceNow között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: d893b55e2e771035bbd1097da678830fafb24e7a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bc5b41da83f183aaf62723212f7197fb50dc536d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directoryval integrált ServiceNow
 
@@ -119,37 +119,21 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és az oktatóanyag későbbi részében ismertetett azonosítója lesz szüksége.
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítványa** területen tegye a következőket: 
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+
+    a. Kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe, mint az alkalmazás összevonási metaadatainak URL-cím lesz az oktatóanyag későbbi részében.
+
+    b. Kattintson a **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
 5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_general_400.png)
 
-6. Létrehozásához a **metaadatok** URL-címe, hajtsa végre a következő lépéseket:
+6. Jelentkezzen be rendszergazdaként a ServiceNow alkalmazás.
 
-    a. Kattintson a **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/appregistrations.png)
-
-    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/endpointicon.png)
-    
-    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/endpoint.png)
-
-    d. Most lépjen **ServiceNow** tulajdonságait, és másolja a **Alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** használatával a következő mintát: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.  A generált érték Másolás a Jegyzettömb ezeket a metaadatokat az oktatóanyag későbbi részében használható URL-CÍMÉT.
-
-7. Jelentkezzen be rendszergazdaként a ServiceNow alkalmazás.
-
-8. Aktiválja a **integrációs - több szolgáltató egyszeri bejelentkezés telepítő** beépülő modul a következő lépéseket követve:
+7. Aktiválja a **integrációs - több szolgáltató egyszeri bejelentkezés telepítő** beépülő modul a következő lépéseket követve:
 
     a. A bal oldali navigációs ablakában keresse **rendszer Definition** szakasz a keresősávban, és kattintson a **beépülő modulok**.
 
@@ -163,9 +147,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     d. Kattintson a **aktiválás** gombra.
 
-9. Kétféleképpen, amelyben **ServiceNow** konfigurált automatikus és manuális lehet.
+8. Kétféleképpen, amelyben **ServiceNow** konfigurált automatikus és manuális lehet.
 
-10. Konfigurálásához **ServiceNow** automatikusan kövesse a következő lépések
+9. Konfigurálásához **ServiceNow** automatikusan kövesse a következő lépések
 
     a. Lépjen vissza a **ServiceNow** Signle-bejelentkezési oldal az Azure portálon.
 
@@ -201,15 +185,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     * Kattintson a **aktiválás** , az oldal jobb felső sarkában.
 
-11. Konfigurálásához **ServiceNow** manuálisan kövesse a következő lépések
+10. Konfigurálásához **ServiceNow** manuálisan kövesse a következő lépések
 
-12. Jelentkezzen be rendszergazdaként a ServiceNow alkalmazás.
+11. Jelentkezzen be rendszergazdaként a ServiceNow alkalmazás.
 
-13. A bal oldali navigációs ablakában keresse **több szolgáltató SSO** szakasz a keresősávban, és kattintson a **tulajdonságok**.
+12. A bal oldali navigációs ablakában keresse **több szolgáltató SSO** szakasz a keresősávban, és kattintson a **tulajdonságok**.
 
     ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "alkalmazás URL-CÍMEK konfigurálása")
 
-14. Az a **több SSO tulajdonságokat** párbeszédpanelen hajtsa végre a következő lépéseket:
+13. Az a **több SSO tulajdonságokat** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694981.png "alkalmazás URL-CÍMEK konfigurálása")
 
@@ -265,7 +249,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Válassza ki **URL-cím** beállítást **Identity Provider metaadatok importálása** párbeszédpanelt.
 
-    b. Adja meg a **metaadatainak URL-CÍMÉT** létrehozott Azure-portálon.
+    b. Adja meg a **alkalmazás összevonási metaadatainak URL-címe** ami Azure-portálon másolta.
 
     c. Kattintson az **Importálás** gombra.
 
@@ -358,7 +342,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificates.png)
 
 5. Kattintson a **mentése** gombra.
 
@@ -459,11 +443,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > Konfigurálhatja az Azure AD vagy az Azure AD felhasználói azonosító (egyszerű felhasználónév), vagy az e-mail cím a SAML-jogkivonat egyedi azonosítóként kibocsátásához címen a **ServiceNow > attribútumok > egyszeri bejelentkezés** szakasza az Azure-portálon a kívánt mező a leképezési és a **nameidentifier** attribútum. A kijelölt attribútum (például az egyszerű felhasználónév) Azure AD-ben tárolt érték meg kell egyeznie a megadott mező (például felhasználónév) ServiceNow tárolt érték
 
     f. Kattintson a **Save** (Mentés) gombra.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor! Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
+ 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.

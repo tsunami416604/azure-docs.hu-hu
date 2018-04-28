@@ -5,22 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 04/26/2018
 ms.topic: overview
 ms.service: cost-management
-manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 3e5caff5ff1af79154baddf39bf465ddea5aadae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: 05e53688e1350052fdbbc61451df8a51dc3349cd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Mi az Azure Cost Management?
 
 A Microsoft Cloudyn nevű leányvállalata által licencelt Azure Cost Management használatával követheti az Azure-erőforrások és egyéb felhőszolgáltatók felhőhasználatát és költségeit és, az AWS-t és a Google-t is beleértve. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management segít optimalizálni a felhő költségeit, mivel azonosítja azokat az alacsony kihasználtságú erőforrásokat, amelyeket kezelhet és módosíthat.
 
-Bevezető videó: [Az Azure Cost Management bemutatása](https://azure.microsoft.com/en-us/resources/videos/azure-cost-management-overview-and-demo).
+Bevezető videó: [Az Azure Cost Management bemutatása](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo).
 
 ## <a name="monitor-usage-and-spending"></a>Használat és költségek monitorozása
 

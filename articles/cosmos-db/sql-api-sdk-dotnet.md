@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4d33fc513b3a2aaa70a3402a42b31efe63c62dd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0047ff742b4a2fd46739c40d08e7c07b69896fae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK API-SQL: Töltse le és a kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -52,6 +52,12 @@ ms.lasthandoff: 04/16/2018
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name12201220"></a><a name="1.22.0"/>1.22.0
+
+* FeedOptions hozzáadott ConsistencyLevel tulajdonság.
+* A hozzáadott JsonSerializerSettings RequestOptions és FeedOptions.
+* A hozzáadott EnableReadRequestsFallback ConnectionPolicy számára.
+
 ### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
 
 * A KeyNotFoundException közötti partíció rendelés javította esetekben lévő lekérdezések.
@@ -293,6 +299,7 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.22.0](#1.22.0) |2018. április 19. |--- |
 | [1.21.1](#1.20.1) |2018. március 09. |--- |
 | [1.20.2](#1.20.1) |2018. február 21. |--- |
 | [1.20.1](#1.20.1) |2018. február 05. |--- |

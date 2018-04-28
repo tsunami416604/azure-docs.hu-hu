@@ -8,7 +8,7 @@ A következő lépések bemutatják, hogyan állíthat be egy PowerShell haszná
 1. Jelentkezzen be az Azure-előfizetéshez a következő parancsot:
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Ha több Azure-előfizetéssel rendelkezik, a jelentkezik be az Azure ad hozzáférést az összes Azure-előfizetést a hitelesítő adatok társított. Használja a következő parancsot a rendelkezésre álló használata Azure-előfizetések listázásához:
@@ -17,7 +17,7 @@ A következő lépések bemutatják, hogyan állíthat be egy PowerShell haszná
     Get-AzureRMSubscription
     ```
 
-    A következő parancs segítségével válassza ki, hogy az IoT hub kezelésére szolgáló parancsok futtatásához használni kívánt előfizetést. Az előfizetés neve vagy azonosítója is használhatja, ha az előző parancs kimenetében:
+    A következő parancs segítségével válassza ki, hogy az IoT hub kezelésére szolgáló parancsok futtatásához használni kívánt előfizetést. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -49,7 +49,7 @@ A következő lépések bemutatják, hogyan állíthat be egy PowerShell haszná
 
 Most már befejezte az Azure AD-alkalmazás, amely lehetővé teszi, hogy a hitelesítésre, az egyéni C#-alkalmazás létrehozása. Az oktatóanyag későbbi részében szüksége a következő értékeket:
 
-* A TenantId
+* TenantId
 * SubscriptionId
 * ApplicationId
 * Jelszó

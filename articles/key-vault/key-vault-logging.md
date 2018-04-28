@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Key Vault naplózása | Microsoft Docs"
-description: "Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával."
+title: Az Azure Key Vault naplózása | Microsoft Docs
+description: Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 2faf45c7329f1c98a26bcf7ec5d569dfa16cbbda
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -52,7 +52,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 ## <a id="connect"></a>Csatlakozás az előfizetésekhez
 Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába az alábbi paranccsal:  
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Az Azure PowerShell megkeresi az összes olyan előfizetést, amely ehhez a fiókhoz van rendelve, és alapértelmezés szerint kiválasztja az elsőt.
 
@@ -150,7 +150,7 @@ A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
 Mivel ugyanazt a tárfiókot több erőforrásból gyűjtött naplók tárolására is használhatja, a blob nevének teljes erőforrás-azonosítója segít abban, hogy csak a szükséges blobokat töltse le, illetve csak azokhoz férjen hozzá. Előtte azonban nézzük meg, hogyan tölthető le az összes blob.
 
-Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Példa:
+Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Például:
 
     New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 
@@ -164,7 +164,7 @@ A listát a „Get-AzureStorageBlobContent” paranccsal töltse le a mappába:
 
 A második parancs futtatásakor a blob nevének **/** elválasztója egy teljes mapparendszert létrehoz a célmappában, és a program ebben a rendszerben tárolja majd fájlokként a letöltött blobokat.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
@@ -224,7 +224,7 @@ Az alábbi táblázat a mezők neveit és leírásait sorolja fel.
 | identity |A REST API-kérelemhez megadott tokenben szereplő identitás. Ez általában egy „felhasználó”, „egyszerű szolgáltatásnév” vagy „felhasználó + alkalmazás-azonosító”, az Azure PowerShell-parancsmagok által eredményezett kérelmekhez hasonlóan. |
 | properties |Ez a mező a művelettől (operationName) függően más-más adatokat tartalmaz. A legtöbb esetben ügyféladatokat (az ügyfél által használt felhasználói ügynök sztringjét), a REST API-kérelem pontos URI-ját és a HTTP-állapot kódját tartalmazza. Ezenkívül ha egy objektumot a rendszer egy kérelem (például a KeyCreate vagy a VaultGet) eredményeként ad vissza, a kulcs URI-ját („id”), a tároló URI-ját vagy a titkos kulcs URI-ját is tartalmazza. |
 
-Az **operationName** mező értékei ObjectVerb formátumúak. Példa:
+Az **operationName** mező értékei ObjectVerb formátumúak. Például:
 
 * Minden kulcstárolón elvégzett művelet „Vault`<action>`” formátumú, például `VaultGet` és `VaultCreate`.
 * Minden kulcson elvégzett művelet „Key`<action>`” formátumú, például `KeySign` és `KeyList`.
@@ -234,7 +234,7 @@ Az alábbi táblázat az operationName műveleteket és a megfelelő REST API-pa
 
 | operationName | REST API-parancs |
 | --- | --- |
-| Authentication |Az Azure Active Directory végpontján keresztül |
+| Hitelesítés |Az Azure Active Directory végpontján keresztül |
 | VaultGet |[Kulcstároló adatainak lekérése](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx) |
 | VaultPut |[Kulcstároló létrehozása vagy frissítése](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx) |
 | VaultDelete |[Kulcstároló törlése](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx) |

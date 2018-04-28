@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a4bdea4844c4aaa9990d619d59326a83cf0aef6c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Az Azure portál használatával eszközök kezelése
 
@@ -74,7 +74,7 @@ Az eszköz beállításai oldal konfigurálását teszi lehetővé:
 
 - **Felhasználók előfordulhat, hogy regisztrálják az eszközeiket az Azure AD** -konfigurálnia kell ennek a beállításnak az eszközök akkor is lehet [regisztrált](device-management-introduction.md#azure-ad-registered-devices) az Azure ad-val. Ha **nincs**, eszközök regisztrálása, amelyek nincsenek tartományhoz az Azure AD vagy az Azure AD-tartományhoz hibrid nem engedélyezettek. Az Office 365 mobileszköz-felügyeleti (MDM) vagy a Microsoft Intune beléptetési regisztráció szükséges. Ha konfigurálta a szolgáltatások valamelyikét **minden** van kiválasztva és **NONE** nem érhető el.
 
-- **Csatlakoztathatják az eszközeiket a többtényezős hitelesítés megkövetelése** -dönthet úgy, hogy felhasználóknak meg kell adnia egy második hitelesítési tényezővel való [illesztési](device-management-introduction.md#azure-ad-joined-devices) az eszközeiket az Azure ad Szolgáltatásba. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy többtényezős hitelesítés megkövetelése eszközök regisztrálásakor. Mielőtt engedélyezné ezt a szolgáltatást a többtényezős hitelesítést, győződjön meg róla, hogy a többtényezős hitelesítés beállítása a felhasználók regisztrálják az eszközeiket. A különböző Azure multi-factor authentication szolgáltatások további információkért lásd: [Ismerkedés az Azure multi-factor Authentication hitelesítés](../multi-factor-authentication/multi-factor-authentication-get-started.md). 
+- **Csatlakoztathatják az eszközeiket a többtényezős hitelesítés megkövetelése** -dönthet úgy, hogy felhasználóknak meg kell adnia egy második hitelesítési tényezővel való [illesztési](device-management-introduction.md#azure-ad-joined-devices) az eszközeiket az Azure ad Szolgáltatásba. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy többtényezős hitelesítés megkövetelése eszközök regisztrálásakor. Mielőtt engedélyezné ezt a szolgáltatást a többtényezős hitelesítést, győződjön meg róla, hogy a többtényezős hitelesítés beállítása a felhasználók regisztrálják az eszközeiket. A különböző Azure multi-factor authentication szolgáltatások további információkért lásd: [Ismerkedés az Azure multi-factor Authentication hitelesítés](authentication/concept-mfa-whichversion.md). 
 
 - **Eszközök maximális számát** – Ez a beállítás engedélyezi, hogy válassza ki, amelyeken az Azure ad-ben a felhasználói eszközök maximális számát. Ha a felhasználó eléri ezt a kvótát, amelyek nem tudják további eszközöket felvenni, amíg egy vagy több olyan meglévő eszközt a rendszer eltávolítja. Az eszköz ajánlat csatlakozott az Azure AD vagy az Azure AD ma regisztrált összes eszköz akkor számít. Az alapértelmezett érték **20**.
 

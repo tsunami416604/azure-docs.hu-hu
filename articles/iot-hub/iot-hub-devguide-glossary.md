@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT Hub szószedet |} Microsoft Docs"
-description: "Fejlesztői útmutató - Azure IoT Hub kapcsolatos gyakori kifejezések."
+title: Az Azure IoT Hub szószedet |} Microsoft Docs
+description: Fejlesztői útmutató - Azure IoT Hub kapcsolatos gyakori kifejezések.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7576077ede7c1c18bcba3853b3b4a2ee0b561968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 828489510cea16ebba1944c0e6d1fc88f9375fc7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT-központ szószedet
 Ez a cikk az általános kifejezés, amely az IoT-központ cikkeket mutatja be.
@@ -33,7 +33,7 @@ A [Azure CLI](../cli-install-nodejs.md) platformfüggetlen, nyílt forráskódú
 A [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) platformfüggetlen, nyílt forráskódú, rendszerhéj-alapú, a parancs eszköz létrehozására és kezelésére a Microsoft Azure erőforrásait. Ez a parancssori felület előzetes verzióját a Python segítségével van megvalósítva.
 
 
-## <a name="azure-iot-device-sdks"></a>Azure IoT device SDKs
+## <a name="azure-iot-device-sdks"></a>Az Azure SDK-k IoT-eszközök
 Nincsenek _eszköz SDK-k_ érhető el, amelyek lehetővé teszik, hogy hozzon létre több nyelven [eszköz alkalmazások](#device-app) , amely kommunikálni az IoT-központ. Az IoT-központ oktatóanyagok bemutatják a ezek eszközoldali SDK-k használata. A Forráskód és SDK-k eszközzel kapcsolatos további információk találhatók a Githubon [tárház](https://github.com/Azure/azure-iot-sdks).
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT service SDKs
@@ -110,6 +110,9 @@ A [eszköz identitások REST API](https://docs.microsoft.com/rest/api/iothub/iot
 ## <a name="device-identity"></a>Eszközidentitás
 Az eszközidentitást minden regisztrált eszközhöz hozzárendelt egyedi azonosítója a [identitásjegyzékhez](#identity-registry).
 
+## <a name="module-identity"></a>A modul identitás
+A modul identitás rendelt minden modul, egy eszközhöz tartozó egyedi azonosító érték. Modul identitás is regisztrálva van a [identitásjegyzékhez](#identity-registry).
+
 ## <a name="device-management"></a>Eszközfelügyelet
 Eszköz felügyelete magába foglalja a teljes életciklusát társított az IoT-megoldásból, beleértve a tervezési, kiépítési, konfigurálása, a figyelés és a rajtuk lévő eszközök kezelése.
 
@@ -125,14 +128,17 @@ A kezdeti hozzáadása során a rendszer eszköz kiépítése [eszközadatok](#d
 ## <a name="device-twin"></a>Ikereszközök
 A [eszköz iker](iot-hub-devguide-device-twins.md) JSON-dokumentum, amely például metaadat, a konfiguráció és a feltételek eszköz állapot adatait tárolja. [Az IoT-központ](#iot-hub) továbbra is fennáll az egyes eszközök, az IoT hub megadó egy eszköz iker. Eszköz twins lehetővé teszik a szinkronizálandó [eszköz feltételek](#device-condition) és az eszköz és a megoldás közötti konfigurációk háttér. Keresse meg az adott eszközöket és a hosszú ideig futó műveletek állapotának lekérdezése eszköz twins kérdezheti le.
 
-## <a name="device-twin-queries"></a>Eszköz iker lekérdezések
-[Eszköz iker lekérdezések](iot-hub-devguide-query-language.md) adatok lekérését az eszköz twins az SQL-szerű IoT Hub lekérdezési nyelv segítségével. Az IoT-központ azonos lekérdezési nyelv használatával kapcsolatos információkat lekérni [feladatok](#job) az IoT hub futtatja.
+## <a name="module-twin"></a>A modul iker
+Eszköz iker hasonló, a modul a két, amely tárolja az állapotadatokat modul például metaadat, a konfiguráció és a feltételek JSON-dokumentum. Az IoT-központ továbbra is fennáll, a modul iker minden modul identitás, amely az IoT hub a kiépítése szerint egy eszközidentitás. A modul twins lehetővé teszik a modul feltételek és a konfigurációk a modul és a megoldás háttérrendszeréhez közötti szinkronizálása. Keresse meg a modulokról, és a hosszú ideig futó műveletek állapotának lekérdezése modul twins kérdezheti le.
+
+## <a name="twin-queries"></a>A két lekérdezések
+[Eszköz- és modul iker lekérdezések](iot-hub-devguide-query-language.md) adatok lekérését az eszköz twins vagy modul twins az SQL-szerű IoT Hub lekérdezési nyelv segítségével. Az IoT-központ azonos lekérdezési nyelv használatával kapcsolatos információkat lekérni [feladatok](#job) az IoT hub futtatja.
 
 ## <a name="device-twin-rest-api"></a>Eszköz iker REST API-n
 Használhatja a [eszköz iker REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) a megoldásban való háttér az eszköz twins kezeléséhez. Az API lehetővé teszi a lekérésére és frissítésére [eszköz iker](#device-twin) tulajdonságait, és meghívja [módszerek közvetlen](#direct-method). Általában kell használnia a magasabb szintű egyik [SDK szolgáltatás](#azure-iot-service-sdks) látható módon az IoT-központ oktatóanyagok.
 
-## <a name="device-twin-synchronization"></a>Eszköz két szinkronizálás
-Eszköz két szinkronizálást használ a [szükséges tulajdonságok](#desired-properties) az eszközök és beolvasása az eszköz twins a [tulajdonságok jelentett](#reported-properties) az eszközökről az eszköz iker tárolni.
+## <a name="twin-synchronization"></a>A két szinkronizálás
+A két szinkronizálás használja a [szükségeskonfiguráció-tulajdonságok](#desired-properties) eszköz twins vagy a modul twins, az eszközök vagy a modulok konfigurálása és lekérése [tulajdonságok jelentett](#reported-properties) ezekből a kettős tárolja.
 
 ## <a name="direct-method"></a>Közvetlen módszer
 A [közvetlen módszer](iot-hub-devguide-direct-methods.md) módja a metódus indításához, az eszközön az API-k az IoT hub a figyelőn hajtható végre.
@@ -214,7 +220,7 @@ Környezetében egy [eszköz iker](iot-hub-devguide-device-twins.md), egy alkalm
 ## <a name="resource-group"></a>Erőforráscsoport
 [Az Azure Resource Manager](#azure-resource-manager) erőforrás csoportokat használ a kapcsolódó erőforrások csoportosítása. Erőforráscsoport segítségével a csoport összes erőforrásra műveleteket végezhet egy időben.
 
-## <a name="retry-policy"></a>Újrapróbálkozási házirend
+## <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 Újrapróbálkozási házirendje használatával kezelni [átmeneti hibák](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) egy felhőszolgáltatásra történő csatlakoztatásakor.
 
 ## <a name="routing-rules"></a>Útválasztási szabályokat

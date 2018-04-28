@@ -2,18 +2,19 @@
 title: Memória és a feldolgozási korlátok - Azure SQL Data Warehouse |} Microsoft Docs
 description: Tekintse meg a különböző teljesítményszintet és az Azure SQL Data Warehouse erőforrás osztályok számára lefoglalt memória és a feldolgozási korlátok.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/11/2018
-ms.author: kevin
-ms.reviewer: jrj
-ms.openlocfilehash: 096dd5f1bac87e1442963b62067896b7abf20a8e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 4e6e95e8601e7ab8b836e2aa1aa21ef4d5779954
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse memória és a feldolgozási korlátok
 Tekintse meg a különböző teljesítményszintet és az Azure SQL Data Warehouse erőforrás osztályok számára lefoglalt memória és a feldolgozási korlátok. További információ az alkalmazások és szolgáltatások felügyeleti csomag ezen képességek alkalmazandó talál, [erőforrás-osztályok a munkaterhelés felügyeleti](resource-classes-for-workload-management.md). 

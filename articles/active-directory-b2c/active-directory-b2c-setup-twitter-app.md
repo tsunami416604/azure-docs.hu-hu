@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Active Directory B2C: Twitter konfigurációs |} Microsoft Docs'
+title: Az Azure AD B2C Twitter konfigurációja |} Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés az Azure Active Directory B2C által védett alkalmazások Twitter fiókkal rendelkező felhasználók számára.
 services: active-directory-b2c
 documentationcenter: ''
@@ -9,21 +9,21 @@ editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 4/06/2017
+ms.date: 4/17/2018
 ms.author: davidmu
-ms.openlocfilehash: ee2d82f8c90b88a898428973a1febaa21034a14f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 40e4c5549414765dabc6f37c5ffb5aea519ae673
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts"></a>Az Azure Active Directory B2C: Regisztráció és bejelentkezés adhat Twitter-fiókkal rendelkező felhasználók
+# <a name="provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts-using-azure-ad-b2c"></a>Twitter-fiókok Azure AD B2C segítségével fogyasztók regisztráció és bejelentkezés biztosítása
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
-Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként Twitter használatához szüksége Twitter-alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Ehhez Twitter developer-fiók szükséges. Ha még nincs fiókja, beszerezheti a [ https://dev.twitter.com/ ](https://dev.twitter.com/).
+Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként Twitter használatához szüksége Twitter-alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Ehhez Twitter-fiók szükséges. Ha még nincs fiókja, beszerezheti a [ https://twitter.com/signup ](https://twitter.com/signup).
 
-1. Lépjen a [fejlesztői webhely Twitter](https://dev.twitter.com/) és jelentkezzen be a hitelesítő adatait.
-2. Kattintson a **alkalmazásaimat** alatt **eszközök & támogatási** , majd **új alkalmazás létrehozása**. 
+1. Lépjen a [Twitter alkalmazások](https://apps.twitter.com/) és jelentkezzen be a hitelesítő adatait.
+2. Kattintson a **új alkalmazás létrehozása**. 
 3. Ebben a formátumban adja meg az értéket a **neve**, **leírás**, és **webhely**.
 4. Az a **visszahívási URL-cím**, adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`. Győződjön meg arról, hogy **{tenant}** a bérlő nevű (például contosob2c.onmicrosoft.com).
 5. A jelölőnégyzet bejelölésével vállalja, hogy a **fejlesztői megállapodás** kattintson **az Twitter-alkalmazás létrehozása**.
@@ -31,11 +31,12 @@ Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként Twitter h
 7. Másolja a értékének **kulcsa** és **felhasználói titok**. Mindkettő konfigurálásához Twitter-bérlőben identitás-szolgáltatóként kell.
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>Twitter-bérlőben identitás-szolgáltatóként konfigurálása
-1. Az alábbi lépéseket követve [lépjen a B2C funkciók panelje](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) az Azure portálon.
-2. Kattintson a B2C funkciók panelje **identitás-szolgáltatóktól**.
-3. A panel tetején kattintson a **+Add** (+Hozzáadás) lehetőségre.
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként. 
+2. Váltson át az Azure AD B2C-bérlő, válassza ki az Azure AD B2C-címtárat a portál jobb felső sarkában.
+3. Kattintson a **minden szolgáltatás**, majd válassza ki **az Azure AD B2C** alatti szolgáltatások listából **biztonság + identitás szakaszában**.
+4. Kattintson a **identitás-szolgáltatóktól**.
 4. Adjon meg egy rövid **neve** a az identitás-szolgáltató konfigurációját. Adja meg például "Twitter".
-5. Kattintson a **identitás szolgáltatótípus**, jelölje be **Twitter**, és kattintson a **OK**.
+5. Kattintson a **identitás szolgáltatótípus**, jelölje be **Twitter (előzetes verzió)**, és kattintson a **OK**.
 6. Kattintson a **az identitásszolgáltató beállítása** , és írja be a Twitteren **kulcsa** a a **ügyfél-azonosító** és a Twitter **felhasználói titok** a a **ügyfélkulcs**.
 7. Kattintson a **OK**, és kattintson a **létrehozása** a Twitter-konfiguráció mentéséhez.
 

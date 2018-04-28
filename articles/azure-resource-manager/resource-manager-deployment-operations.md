@@ -1,32 +1,31 @@
 ---
-title: "Az Azure Resource Manager üzembe helyezési műveleteinek |} Microsoft Docs"
-description: "Útmutató megtekintéséhez az Azure Resource Manager üzembe helyezési műveleteket a portál, a PowerShell, az Azure CLI és a REST API-t."
+title: Az Azure Resource Manager üzembe helyezési műveleteinek |} Microsoft Docs
+description: Útmutató megtekintéséhez az Azure Resource Manager üzembe helyezési műveleteket a portál, a PowerShell, az Azure CLI és a REST API-t.
 services: azure-resource-manager,virtual-machines
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
-ms.date: 01/13/2017
+ms.date: 04/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 26c2c333a97abff75f6b4caefb1e351dea826081
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Az Azure Resource Manager központi telepítési műveletek megtekintése
 
-
 A műveletek a központi telepítés az Azure portálon keresztül tekintheti meg. Előfordulhat, hogy tervezheti meg a műveletek megtekintése hiba beérkezése után üzembe helyezése során, ez a cikk foglalkozik, amelyek nem tudták műveletek megtekintése. A portál, amely lehetővé teszi, hogy könnyedén megtalálhatja a hibák, és határozza meg a lehetséges javítások felületet biztosít.
 
-A központi telepítés elháríthatja a naplókat, és a telepítési műveleteket. Ez a témakör mindkét módszer jeleníti meg. Segítség az adott telepítési hibáinak megoldása: [gyakori hibák feloldása, amikor erőforrásokat üzembe helyezi az Azure-bA az Azure Resource Manager](resource-manager-common-deployment-errors.md).
+A központi telepítés elháríthatja a naplókat, és a telepítési műveleteket. Ez a cikk mindkét módszer bemutatja. Segítség az adott telepítési hibáinak megoldása: [gyakori hibák feloldása, amikor erőforrásokat üzembe helyezi az Azure-bA az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portál
 Üzembe helyezési műveleteinek megtekintéséhez tegye a következőket:
@@ -136,21 +135,19 @@ A központi telepítés elháríthatja a naplókat, és a telepítési művelete
 1. Az alkalmazáspéldány általános állapotának lekérése a **azure-csoportok telepítési megjelenítése** parancsot.
 
   ```azurecli
-  azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-  A visszaadott értékek közül egy a **correlationId**. Ez az érték a kapcsolódó események nyomon követésére szolgál, és hasznos lehet, amikor olyan központi telepítés hibaelhárítása a technikai támogatási szolgálathoz.
+1. A visszaadott értékek közül egy a **correlationId**. Ez az érték a kapcsolódó események nyomon követésére szolgál, és hasznos lehet, amikor olyan központi telepítés hibaelhárítása a technikai támogatási szolgálathoz.
 
   ```azurecli
-  "properties": {
-    "provisioningState": "Failed",
-    "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
+  az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-2. A központi telepítés műveletek megjelenítéséhez használja:
+1. A központi telepítés műveletek megjelenítéséhez használja:
 
   ```azurecli
-  azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment operation list -g ExampleGroup -n ExampleDeployment
   ```
 
 ## <a name="rest"></a>REST

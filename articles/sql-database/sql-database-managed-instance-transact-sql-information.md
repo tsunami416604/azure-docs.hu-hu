@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 0fe0b5d3120833b8472fcdaee366a5d1f2818600
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről az Azure SQL adatbázis felügyelt példány T-SQL különbségek 
 
@@ -393,7 +393,7 @@ A következő változók, funkciók és a nézetek különböző eredményeket:
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Kis adatbázisfájlok meghaladó tárhelyen
 
-Felügyelt feltünteti Azure Premium lemezterület számára fenntartott 35 TB tárterületre nem rendelkezik fel, és mindegyik adatbázisfájlt külön fizikai lemezen helyezkedik. Mérete 128 GB-os, 256 GB, 512 GB, 1 TB-os vagy 4 TB-os lehet. Nem használt terület a lemezen nem fel van töltve, de a teljes összegére Azure Premium mérete nem haladhatja meg a 35 TB. Bizonyos esetekben egy felügyelt példány, nem kell 8 TB összesen meghaladhatja a 35 TB Azure tárolási mérete miatt belső töredezettsége vonatkozó korlátozást. 
+Felügyelt feltünteti Azure Premium lemezterület számára fenntartott 35 TB tárterületre nem rendelkezik fel, és mindegyik adatbázisfájlt külön fizikai lemezen helyezkedik. Mérete 128 GB-os, 256 GB, 512 GB, 1 TB-os vagy 4 TB-os lehet. Nem használt terület a lemezen nem fel van töltve, de a teljes összegére Azure Premium mérete nem haladhatja meg a 35 TB. Bizonyos esetekben egy felügyelt, nem kell 8 TB összesen példány meghaladhatja a 35 TB Azure tárolási mérete miatt belső töredezettsége vonatkozó korlátozást. 
 
 Például egy felügyelt példány 1.2-es TB méretű 4 TB-os lemezt használ, egy fájlt, és 248-fájlok 1 GB minden kerülnek, 248 lemezek 128 GB méretű lehet. Ebben a példában a lemez teljes tároló mérete 1 x 4 TB + 248 x 128 GB = 35 TB. Azonban teljes fenntartott példány adatbázisok mérete x 1.2 1 TB + 248 x 1 GB = 1,4 TB. Ez az ábra bemutatja, hogy bizonyos körülmények között egy olyan speciális elosztása, mert a felügyelt példány Azure Premium lemez tárolási kapacitása, ahol előfordulhat, hogy nem a várt lehet elérni. 
 

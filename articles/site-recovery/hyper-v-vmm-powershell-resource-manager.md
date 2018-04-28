@@ -1,6 +1,6 @@
 ---
-title: "A Virtual Machine Manager-felhőkhöz Hyper-V virtuális gépek replikálása egy másodlagos helyre, amelynek PowerShell (Azure Resource Manager) |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet a Virtual Machine Manager-felhőkhöz Hyper-V virtuális gépek replikálása egy másodlagos helyre a Virtual Machine Manager PowerShell (Resource Manager) használatával"
+title: A Virtual Machine Manager-felhőkhöz Hyper-V virtuális gépek replikálása egy másodlagos helyre, amelynek PowerShell (Azure Resource Manager) |} Microsoft Docs
+description: Ismerteti, hogyan lehet a Virtual Machine Manager-felhőkhöz Hyper-V virtuális gépek replikálása egy másodlagos helyre a Virtual Machine Manager PowerShell (Resource Manager) használatával
 services: site-recovery
 author: sujaytalasila
 manager: rochakm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: sutalasi
-ms.openlocfilehash: ea4c2ed287619b92dba1b9b966cc0d52e0eb89c5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7c6af1b63d9e7904f5a397200c6950c62df08832
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Hyper-V virtuális gépek replikálása másodlagos helyre (erőforrás-kezelő) PowerShell használatával
 
@@ -58,7 +58,7 @@ Győződjön meg arról, hogy az Azure PowerShell készen áll:
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
-        Login-AzureRmAccount #-Credential $Cred
+        Connect-AzureRmAccount #-Credential $Cred
 2. Az előfizetések, az előfizetéshez azonosítók listájának lekérésében. Megjegyzés: az előfizetés, amelyben a Recovery Services-tároló létrehozásához kívánt azonosító. 
 
         Get-AzureRmSubscription

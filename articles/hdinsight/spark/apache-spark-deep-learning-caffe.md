@@ -1,8 +1,8 @@
 ---
-title: "Caffe használni az Azure HDInsight Spark elosztott mély tanulási |} Microsoft Docs"
-description: "Az Azure HDInsight Spark Caffe elosztott mély tanulási használata"
+title: Caffe használni az Azure HDInsight Spark elosztott mély tanulási |} Microsoft Docs
+description: Az Azure HDInsight Spark Caffe elosztott mély tanulási használata
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: xiaoyongzhu
 manager: asadk
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 71dcd1ad-4cad-47ad-8a9d-dcb7fa3c2ff9
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 7565efd82945f21b83471ee66098cd476b7bb59f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: bccd889ba8a063613f1f3f385b39e4bfe8afcc89
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Az Azure HDInsight Spark Caffe elosztott mély tanulási használata
 
@@ -35,23 +33,23 @@ Nincsenek [számos népszerű keretrendszerekre](https://en.wikipedia.org/wiki/C
 
 Ez a cikk bemutatja, hogyan kell telepíteni [a Spark Caffe](https://github.com/yahoo/CaffeOnSpark) a HDInsight-fürtök. Ez a cikk is a beépített MNIST bemutató használ elosztott mély tanulási használata a HDInsight Spark CPU-n használatát mutatják be.
 
-Nincsenek négy fő lépést kell legyen a HDInsight működik.
+A feladatnak négy lépésben történik:
 
 1. Telepítse a szükséges függőségek a csomópontokon
 2. Caffe létrehozása a Spark on hdinsight az átjárócsomópont-kiszolgálón
 3. A szükséges kódtárak összes munkavégző csomópontokhoz terjesztése
 4. Egy Caffe modell összeállítása, és elosztott módon futtassa.
 
-Mivel a HDInsight a PaaS megoldás, azt funkciókat nyújtja a kiváló platform - könnyen egyes feladatok elvégzéséhez. Egyik szolgáltatása, amely a következő blogbejegyzésben fokozottan használjuk nevezik [parancsfájlművelet](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), amellyel testreszabásához fürtcsomópontok (átjárócsomópont, munkavégző csomópont vagy élcsomópont) rendszerhéj parancsot végrehajthat.
+Mivel a HDInsight a PaaS megoldás, azt funkciókat nyújtja a kiváló platform - könnyen egyes feladatok elvégzéséhez. Neve a következő blogbejegyzésben használt funkcióinak egyike a [parancsfájlművelet](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), amellyel testreszabásához fürtcsomópontok (átjárócsomópont, munkavégző csomópont vagy élcsomópont) rendszerhéj parancsot végrehajthat.
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>1. lépés: A szükséges függőségek telepítése minden csomópontján
 
-Első lépésként, a szükséges függőségek telepítése szükséges. A Caffe hely és [CaffeOnSpark hely](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) kínál néhány hasznos wiki a függőségek telepítése a Spark a YARN módot. A HDInsight Spark is használja a YARN módot. Azonban azt kell adnia néhány további függőségek HDInsight platformon. Ehhez az szükséges, hogy egy parancsfájlművelettel, és futtassa az átjárócsomópontokkal és a feldolgozó csomópontok. A parancsfájl művelet körülbelül 20 percet vesz igénybe, azok is függ a többi csomagot. Néhány, a HDInsight-fürtjéhez, például egy GitHub helyre vagy az alapértelmezett BLOB storage-fiók által elérhető helyen akkor kell helyezni.
+A kezdéshez telepítendő függőségeit. A Caffe hely és [CaffeOnSpark hely](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) kínál néhány hasznos wiki a függőségek telepítése a Spark a YARN módot. A HDInsight Spark is használja a YARN módot. Azonban kell hozzáadnia a HDInsight platformon néhány további függőségeit. Ehhez az szükséges, egy parancsfájlművelettel, és futtassa az átjárócsomópontokkal és feldolgozó csomópontokat. A parancsfájl művelet körülbelül 20 percet vesz igénybe, azok is függ a többi csomagot. Néhány, a HDInsight-fürtjéhez, például egy GitHub helyre vagy az alapértelmezett BLOB storage-fiók által elérhető helyen akkor kell helyezni.
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
     #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
-    #It seems numpy will only needed during compilation time, but for safety purpose we install them on all the nodes
+    #It seems numpy will only needed during compilation time, but for safety purpose you install them on all the nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
@@ -67,9 +65,9 @@ Első lépésként, a szükséges függőségek telepítése szükséges. A Caff
     echo "protobuf installation done"
 
 
-A parancsfájlművelet két lépésből áll. Az első lépés, hogy a szükséges kódtárak telepítése. A tárak tartalmazza a szükséges kódtárak (például gflags, glog) Caffe fordítása és Caffe fut (például numpy). CPU-optimalizálásra libatlas használunk, de más optimalizálási könyvtárak, például MKL vagy CUDA (GPU) a telepítési mindig kövesse a CaffeOnSpark wiki.
+A parancsfájlművelet két lépésből áll. Az első lépés, hogy a szükséges kódtárak telepítése. A tárak tartalmazza a szükséges kódtárak (például gflags, glog) Caffe fordítása és Caffe fut (például numpy). CPU-optimalizálásra libatlas használ, de mindig kövesse a CaffeOnSpark wiki más optimalizálási könyvtárak, például MKL vagy CUDA (a GPU) telepítésével.
 
-A második lépésben letöltéséhez fordítása, és futásidőben Caffe protobuf 2.5.0 telepítése. Protobuf 2.5.0 [szükséges](https://github.com/yahoo/CaffeOnSpark/issues/87), azonban a jelen verziójában nem áll rendelkezésre Ubuntu 16, a csomag, ezért ellenőriznünk kell, hogy a forrás-kódjában. Nincsenek is néhány erőforrások az interneten, hogy hogyan. További információkért lásd: [Itt](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
+A második lépésben letöltéséhez fordítása, és futásidőben Caffe protobuf 2.5.0 telepítése. Protobuf 2.5.0 [szükséges](https://github.com/yahoo/CaffeOnSpark/issues/87), azonban a jelen verziójában nem áll rendelkezésre Ubuntu 16, a csomag, ezért meg kell, hogy a forrás-kódjában. Nincsenek is néhány erőforrások az interneten, hogy hogyan. További információkért lásd: [Itt](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
 A kezdéshez csak a parancsfájlművelet alapján futtathatók a fürt összes munkavégző csomópontokhoz és átjárócsomópontokkal (a HDInsight 3.5). A Parancsfájlműveletek futtathat egy meglévő fürt, vagy a Parancsfájlműveletek használja a fürt létrehozása során. A Parancsfájlműveletek további információkért lásd: a dokumentáció [Itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
 
@@ -155,7 +153,7 @@ Valószínűleg látni tesztelési hiba a végleges CaffeOnSpark ellenőrzése s
 
 ## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>3. lépés: A szükséges kódtárak összes munkavégző csomópontokhoz terjesztése
 
-A következő lépés az, hogy a tárak elosztása (alapvetően a CaffeOnSpark/caffe-nyilvános/terjesztése/lib tárak/és CaffeOnSpark/caffe-distri/terjesztése/lib /) összes csomópontjának. 2. lépésben azt BLOB Storage tárolóban helyezhető el a tárak, és ebben a lépésben használjuk Parancsfájlműveletek másolja az átjárócsomópontokkal és feldolgozó csomópontokat.
+A következő lépés az, hogy a tárak elosztása (alapvetően a CaffeOnSpark/caffe-nyilvános/terjesztése/lib tárak/és CaffeOnSpark/caffe-distri/terjesztése/lib /) összes csomópontjának. 2. lépésben a tárak elhelyezése a BLOB storage, és ebben a lépésben segítségével Parancsfájlműveletek másolja az átjárócsomópontokkal és feldolgozó csomópontokat.
 
 Ehhez futtassa a parancsfájlművelet látható módon a következő kódrészletet:
 
@@ -164,7 +162,7 @@ Ehhez futtassa a parancsfájlművelet látható módon a következő kódrészle
 
 Győződjön meg arról kell a megfelelő helyre pont adott a fürt)
 
-A 2. lépésben, azt helyezése a BLOB-tároló, amely minden csomópontja számára érhető el, mert ebben a lépésben azt csak másolásához csomópontjaihoz.
+A 2. lépésben, akkor helyezheti a BLOB-tároló, amely minden csomópontja számára érhető el, mert ebben a lépésben csak másolja csomópontjaihoz.
 
 ## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>4. lépés: A Caffe modellek írása, és elosztott módon futtassa
 
@@ -172,13 +170,13 @@ Caffe telepítve van az előző lépések futtatása után. A következő lépé
 
 Caffe "kifejező architektúra segítségével", ahol egy modell létrehozására, egyszerűen adja meg a konfigurációs fájlt, és minden (a legtöbb esetben) nélkül kódolása. Ezért a következőkben van. 
 
-A modell betanításához azt egy olyan minta modell MNIST képzési. A MNIST adatbázis kézzel számjegyek 60 000 példák betanítási készlete, és 10 000 példák TesztKészlet rendelkezik. A korábbiakhoz NIST elérhető egy részét is. A számjegyek mérete normalizált és a rögzített méretű kép középre törölték. CaffeOnSpark rendelkezik néhány parancsprogramot, töltse le a DataSet adatkészlet és a megfelelő formátumba alakítsa át.
+A modell betanítását, egy olyan minta modell MNIST képzési. A MNIST adatbázis kézzel számjegyek 60 000 példák betanítási készlete, és 10 000 példák TesztKészlet rendelkezik. A korábbiakhoz NIST elérhető egy részét is. A számjegyek mérete normalizált és a rögzített méretű kép középre törölték. CaffeOnSpark rendelkezik néhány parancsprogramot, töltse le a DataSet adatkészlet és a megfelelő formátumba alakítsa át.
 
 CaffeOnSpark MNIST képzési biztosít a hálózati topológiák példákat. A hálózati architektúra (a hálózati topológia) és optimalizálási felosztása töltött kialakítást rendelkezik. Ebben az esetben két fájl van szükség: 
 
-a "Solver" fájl ({CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt$) áttekintése, valamint az optimalizálás, és létrehozzon paraméter frissítések szolgál. Például azt határozza meg hogy CPU vagy GPU használatos, mi az a mérlegserpenyőre, hogyan sok a közelítés a rendszer, stb. Is meghatározza, melyik idegsejt hálózati topológia használjon a program (amely a második fájl szükséges). Solver kapcsolatos további információkért lásd: [Caffe dokumentáció](http://caffe.berkeleyvision.org/tutorial/solver.html).
+a "Solver" fájl ({CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt$) áttekintése, valamint az optimalizálás, és létrehozzon paraméter frissítések szolgál. Például azt határozza meg hogy CPU vagy GPU használatos, mi az a mérlegserpenyőre, hogyan sok a közelítés a rendszer, stb. Is meghatározza, melyik idegsejt hálózati topológia használjon a program (amely a második fájl kell). Solver kapcsolatos további információkért lásd: [Caffe dokumentáció](http://caffe.berkeleyvision.org/tutorial/solver.html).
 
-Ehhez a példához mivel GPU, hanem CPU használjuk kell módosítjuk az utolsó sort:
+Ehhez a példához óta GPU, hanem CPU használ módosítania kell az utolsó sort:
 
     # solver mode: CPU or GPU
     solver_mode: CPU
@@ -187,7 +185,7 @@ Ehhez a példához mivel GPU, hanem CPU használjuk kell módosítjuk az utolsó
 
 Más sorok igény szerint módosíthatók.
 
-A második fájl ({CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt$) határozza meg, hogyan a idegsejt hálózati mint, és a megfelelő bemeneti és kimeneti fájl. Is frissíteni kell a fájlt a betanítási adatok helyének megfelelően. A következő részben (kell a fürthöz megadott megfelelő helyére mutasson) lenet_memory_train_test.prototxt módosítása:
+A második fájl ({CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt$) határozza meg, hogyan a idegsejt hálózati mint, és a megfelelő bemeneti és kimeneti fájl. is szeretné frissíteni a fájlt a betanítási adatok helyének megfelelően. A következő részben (kell a fürthöz megadott megfelelő helyére mutasson) lenet_memory_train_test.prototxt módosítása:
 
 - Módosítsa a "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" "wasb: / / / projektek/machine_learning/image_dataset/mnist_train_lmdb"
 - "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" módosítsa "wasb: / / / projektek/machine_learning/image_dataset/mnist_test_lmdb"
@@ -196,7 +194,7 @@ A második fájl ({CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt$) hatá
 
 A megadásával a hálózati kapcsolatban további információkért tekintse meg a [MNIST dataset Caffe dokumentációja](http://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
-Ez a cikk céljából MNIST példában használjuk. Futtassa a következő parancsokat az átjárócsomóponthoz:
+Ez a cikk céljából MNIST példában használja. Futtassa a következő parancsokat az átjárócsomóponthoz:
 
     spark-submit --master yarn --deploy-mode cluster --num-executors 8 --files ${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt,${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt --conf spark.driver.extraLibraryPath="${LD_LIBRARY_PATH}" --conf spark.executorEnv.LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" --class com.yahoo.ml.caffe.CaffeOnSpark ${CAFFE_ON_SPARK}/caffe-grid/target/caffe-grid-0.1-SNAPSHOT-jar-with-dependencies.jar -train -features accuracy,loss -label label -conf lenet_memory_solver.prototxt -devices 1 -connection ethernet -model wasb:///mnist.model -output wasb:///mnist_features_result
 
@@ -204,7 +202,7 @@ Az előző parancs minden YARN tárolóhoz osztja el a szükséges fájlok (lene
 
 ## <a name="monitoring-and-troubleshooting"></a>Figyelés és hibaelhárítás
 
-Mivel az YARN fürt mód használjuk, ebben az esetben a Spark illesztőprogram ütemezi egy tetszőleges tárolóhoz (és egy tetszőleges munkavégző csomópont) csak akkor jelenik meg a konzol kimeneti hasonlót:
+A YARN fürt módot, mivel ebben az esetben a Spark illesztőprogram ütemezi egy tetszőleges tárolóhoz (és egy tetszőleges munkavégző csomópont) csak akkor jelenik meg a konzol kimeneti hasonlót:
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
@@ -214,7 +212,7 @@ Ha szeretné tudni, hogy mi történt, általában szeretné lekérni a Spark ve
    
 ![YARN FELHASZNÁLÓI FELÜLETEN](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
 
-Tekintse meg az adott alkalmazás hány erőforrásokat is igénybe vehet. A "Feladatütemező" hivatkozásra kattinthat, és majd látni fogja, hogy ehhez az alkalmazáshoz nincsenek futó 9 tárolók. YARN 8 végrehajtója arra kérjük, és egy másik tárolóban illesztőprogram folyamat. 
+Tekintse meg az adott alkalmazás hány erőforrásokat is igénybe vehet. A "Feladatütemező" hivatkozásra kattinthat, és majd látni fogja, hogy ehhez az alkalmazáshoz nincsenek futó kilenc tárolók. YARN nyolc végrehajtója biztosításához tegye fel, és egy másik tárolóban illesztőprogram folyamat. 
 
 ![YARN Feladatütemező](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
 
@@ -271,7 +269,7 @@ az a headnode. Az ellenőrzés tároló hiba után oka GPU mód használatával 
 
 ## <a name="getting-results"></a>Eredmények beolvasása
 
-Mivel azt 8 végrehajtója osztja fel, és a hálózati topológia egyszerű, csak elméletileg körülbelül 30 percet az eredmény futtatásához. A parancssorból, láthatja, hogy azt a modell használatba wasb:///mnist.model, és az eredmények nevű wasb: / / / mnist_features_result.
+8 végrehajtója osztja fel, és a hálózati topológia egyszerű, mert csak elméletileg körülbelül 30 percet az eredmény futtatásához. A parancssorból, láthatja, hogy a modell használatba wasb:///mnist.model, és jelenítse meg az eredményeket nevű wasb: / / / mnist_features_result.
 
 Az eredményeket kaphat rendszerű
 

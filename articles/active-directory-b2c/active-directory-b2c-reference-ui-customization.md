@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: ea33fa95aa7b73668aeee313a9d71a7f78e89a77
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6d1e093fafc6ea74dfcdfa498810ff33d27d89f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Az Azure Active Directory B2C: Testreszabása az Azure AD B2C felhasználói felület (UI)
 
@@ -341,7 +341,8 @@ Ha azt tervezi, a lap felhasználói felületének testreszabása szolgáltatás
 * Nem az Azure AD B2C alapértelmezett tartalmát, és próbálja meg módosítani. Érdemes a HTML5 tartalom teljesen új összeállításához és alapértelmezett tartalom használni.
 * Biztonsági okok miatt jelenleg nem engedélyezi, hogy bármely JavaScript szerepeljenek a tartalmat. A legtöbb mire van szüksége a kezdő verzióról elérhetőnek kell lennie. Ha nem, [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) kérjen új funkciókat.
 * A támogatott böngészőkben:
-  * Internet Explorer 11, 10, Edge
+  * Az Internet Explorer 11, 10, a peremhálózati
   * Az Internet Explorer 9 böngészőben 8 korlátozott támogatása
   * Google Chrome 42.0 vagy újabb verzió
   * Mozilla Firefox 38.0 vagy újabb verzió
+* Győződjön meg arról, hogy nem tartalmaz `<form>` , ez a POST műveletet, az Azure AD B2C injected HTML hozott létre zavarja a HTML-címkéket.

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: e203787bffa80b324508f7df8f8e7a8c62355695
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -103,7 +103,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 * <a id="afs-conflict-resolution"></a>**Ha ugyanazon fájl két kiszolgáló körülbelül egy időben történtek, mi történik?**  
     Az Azure fájlszinkronizálás használ egy egyszerű ütközésfeloldás stratégia: jelenleg mindkét módosításokat, a két kiszolgáló egyidejűleg módosított fájlok nyomon. A legutóbb írt módosítás megtartja az eredeti fájlnevet. A régebbi fájl rendelkezik a "forrás" gép és az ütközést a névhez. Ez azt jelenti, hogy ez a besorolás: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\< ext\>  
 
     Például az első CompanyReport.docx irányadók válna CompanyReport-CentralServer.docx Ha CentralServer, ahol a régebbi írása történt. A második ütközés CompanyReport-CentralServer-1.docx neve.
 
@@ -171,7 +171,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 * <a id="afs-files-excluded"></a>
 **Azure fájlszinkronizálás automatikusan kizárja a mely fájlok vagy mappák?**  
     Alapértelmezés szerint Azure fájlszinkronizálás nem tartalmazza a következő fájlokat:
-    * desktop.ini
+    * Desktop.ini
     * thumbs.db
     * ehthumbs.db
     * ~$\*.\*
@@ -257,7 +257,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
     Igen. Az Azure Files legfeljebb 200 megosztás pillanatképek továbbra is. Megosztás pillanatképek nem száma a fájlmegosztási kvóta felé így a teljes lemezterület, melynek használatával a megosztás pillanatképek megosztásonkénti korlátozva. Tárfiókok korlátai továbbra is érvényesek lesznek. Után 200 megosztás pillanatképeket törölnie kell a korábbi pillanatképek új megosztás-pillanatképek létrehozásához.
 * <a id="snapshot-cost"></a>
 **Mennyi nem megosztás pillanatkép költség?**  
-    Szabványos és standard tárolási költségű pillanatkép vonatkoznak. A pillanatképeket növekményes jellegűek. A kiinduló pillanatkép a megosztás saját magát. A későbbi pillanatképek növekményes, és csak a korábbi pillanatképből különbözeti tárolja. Ez azt jelenti, hogy az új módosításokkal, amely a számlázási lesz látható minimális, ha a munkaterhelés forgalom minimális lesz. Lásd: [árazás lap](https://azure.microsoft.com/en-us/pricing/details/storage/files/) Standard Azure-fájlok díjszabási információkat. A megosztás pillanatkép által felhasznált mérete meg módja a számlázott kapacitás összevetésével ma használható kapacitás. Jelenleg is dolgozunk eszközt használunk erre a jelentéskészítési javítása érdekében.
+    Szabványos és standard tárolási költségű pillanatkép vonatkoznak. A pillanatképeket növekményes jellegűek. A kiinduló pillanatkép a megosztás saját magát. A későbbi pillanatképek növekményes, és csak a korábbi pillanatképből különbözeti tárolja. Ez azt jelenti, hogy az új módosításokkal, amely a számlázási lesz látható minimális, ha a munkaterhelés forgalom minimális lesz. Lásd: [árazás lap](https://azure.microsoft.com/pricing/details/storage/files/) Standard Azure-fájlok díjszabási információkat. A megosztás pillanatkép által felhasznált mérete meg módja a számlázott kapacitás összevetésével ma használható kapacitás. Jelenleg is dolgozunk eszközt használunk erre a jelentéskészítési javítása érdekében.
 
 
 ### <a name="create-share-snapshots"></a>Megosztás pillanatképeket

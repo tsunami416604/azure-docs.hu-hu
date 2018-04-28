@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -46,10 +46,24 @@ Az App Service mobil-háttéralkalmazás létrehozása, vagy hajtsa végre a [gy
 
 Vissza a *Ismerkedés* panelen, a **tábla API létrehozása**, válassza a **C#** , a **háttéralkalmazás-nyelv**. Kattintson a **letöltése**, bontsa ki a tömörített projektfájlokat a helyi számítógépen, és nyissa meg a megoldást a Visual Studio.
 
-### <a name="create-a-net-backend-using-visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 és a Visual Studio 2015-öt használó .NET-háttéralkalmazás létrehozása
+### <a name="create-a-net-backend-using-visual-studio-2017"></a>A Visual Studio 2017 használata a .NET-háttéralkalmazás létrehozása
+
+Telepítse a Visual Studio telepítő Azure Mobile Apps-projekt közzététele a Visual Studio használatával Azure számítási. Az SDK telepítése után az alábbi lépéseket követve ASP.NET-alkalmazás létrehozása:
+
+1. Nyissa meg a **új projekt** párbeszédpanelen (a **fájl** > **új** > **projekt …** ).
+2. Bontsa ki a **Visual C#** válassza **webes**.
+3. Válassza ki **ASP.NET webes alkalmazás (.NET-keretrendszer)**.
+4. Töltse ki a projekt nevét. Ezután kattintson az **OK** gombra.
+5. Válassza ki **Azure Mobile Apps** sablont a listából.
+6. Kattintson a **OK** a megoldás létrehozásához.
+7. Kattintson a jobb gombbal a projektre a a **Megoldáskezelőben** válassza **közzététel...** , majd válassza a **App Service** közzétételi célként.
+8. Kövesse az utasításokat hitelesítéséhez, és válasszon egy új vagy meglévő Azure App Service közzététele.
+
+### <a name="create-a-net-backend-using-visual-studio-2015"></a>Visual Studio 2015 használata a .NET-háttéralkalmazás létrehozása
+
 Telepítse a [Azure SDK for .NET] [ 4] (2.9.0 verzió vagy újabb) az Azure Mobile Apps-projekt létrehozása a Visual Studióban. Az SDK telepítése után az alábbi lépéseket követve ASP.NET-alkalmazás létrehozása:
 
-1. Nyissa meg a **új projekt** párbeszédpanelen (a *fájl* > **új** > **projekt …** ).
+1. Nyissa meg a **új projekt** párbeszédpanelen (a **fájl** > **új** > **projekt …** ).
 2. Bontsa ki a **sablonok** > **Visual C#**, és válassza ki **webes**.
 3. Válassza ki **ASP.NET webalkalmazás**.
 4. Töltse ki a projekt nevét. Ezután kattintson az **OK** gombra.

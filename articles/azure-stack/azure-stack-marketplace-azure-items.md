@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 413485fc764000dadca1a2cccf9ee0de7e9046aa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -32,10 +32,10 @@ Használja a virtuális gép (VM) Extensions frissítések érhetők el, amikor 
 |  | Elem neve | Leírás | Közzétevő | Operációs rendszer típusa |
 | --- | --- | --- | --- | --- |
 |![SQL IaaS-bővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [ SQL IaaS-bővítmény ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>Töltse le a Windows Piactéri elemet bármely SQL Server telepítéséhez a bővítmény - ehhez a kiterjesztéshez szükséges.</b> | Microsoft | Windows |
-|![Egyéni szkriptbővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [ Egyéni parancsprogramok futtatására szolgáló bővítmény ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>Töltse le a frissítés a beépített Windows-verzió az egyéni parancsfájl kiterjesztése a.</b> | Microsoft | Windows |
+|![Egyéni szkriptbővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [ Egyéni parancsprogramok futtatására szolgáló bővítmény ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>Töltse le a frissítés a beépített Windows-verzió az egyéni parancsfájl kiterjesztése a.</b> | Microsoft | Windows |
 |![PowerShell DSC-bővítményt](media/azure-stack-marketplace-azure-items/dsc.png) | [ PowerShell DSC-bővítményt ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>A frissítés letöltése a PowerShell DSC-bővítményt a beépített verziójára. A frissítés támogatja a TLS 1.2-es verzió.</b> | Microsoft | Windows |
-| ![A Microsoft Antimalware-bővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [ A Microsoft Antimalware-bővítmény ](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| Az Azure-hoz a Microsoft Antimalware egy olyan single-ügynök megoldás az alkalmazások és a bérlői környezetekben, emberi beavatkozás nélkül a háttérben futnak. | Microsoft | Windows |
-|![Egyéni szkriptbővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [ Egyéni parancsprogramok futtatására szolgáló bővítmény ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>A frissítés letöltése az egyéni parancsprogramok futtatására szolgáló bővítmény beépített verziója Linux. A bővítmény több verziója is van, és le kell töltenie 1.5.2.1 és 2.0.x programból is. </b> | Microsoft | Linux |
+| ![A Microsoft Antimalware-bővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [ A Microsoft Antimalware-bővítmény ](https://docs.microsoft.com/azure/security/azure-security-antimalware)| Az Azure-hoz a Microsoft Antimalware egy olyan single-ügynök megoldás az alkalmazások és a bérlői környezetekben, emberi beavatkozás nélkül a háttérben futnak. | Microsoft | Windows |
+|![Egyéni szkriptbővítmény](media/azure-stack-marketplace-azure-items/cse.png) | [ Egyéni parancsprogramok futtatására szolgáló bővítmény ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>A frissítés letöltése az egyéni parancsprogramok futtatására szolgáló bővítmény beépített verziója Linux. A bővítmény több verziója is van, és le kell töltenie 1.5.2.1 és 2.0.x programból is. </b> | Microsoft | Linux |
 | ![Docker-bővítmény](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | A Linux virtuális gépek docker-kiterjesztés. | Microsoft | Linux |
 | ![Linux virtuális gép hozzáférés](media/azure-stack-marketplace-azure-items/cse.png) | [ Linux virtuális gép hozzáférés ](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>A frissítés letöltéséhez a vmaccess bővítmény beépített verziója Linux-bővítmény. A frissítés akkor fontos, ha a Debian Linux virtuális gépek használatát tervezi.</b> | Microsoft | Linux |
 | ![Linux Acronis biztonsági mentés kiterjesztése](media/azure-stack-marketplace-azure-items/acronis.png) | [ Linux Acronis biztonsági mentés kiterjesztése ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | A Microsoft Azure Acronis biztonsági mentés kiterjesztése a Acronis biztonsági mentés termékcsalád data protection részét képezi. | Nemzetközi GmbH Acronis. | Linux |

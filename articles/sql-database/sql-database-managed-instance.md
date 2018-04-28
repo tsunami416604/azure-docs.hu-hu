@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: ba57530c5708216ca7c990025d513144dcdf82a4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
@@ -42,8 +42,6 @@ A következő táblázat a körvonal különbségek kulcsát, és envisioned has
 |Az Azure SQL Database (egyetlen vagy tárolókészlet) |**Rugalmas készletek**: az új több-bérlős SaaS-alkalmazások fejlesztéséhez vagy szándékosan átalakítása a meglévő ügyfelek a helyszíni alkalmazások be egy több-bérlős SaaS-alkalmazás rugalmas készletek javaslatot. Ez a modell előnyei a következők: <br><ul><li>Licencét kínál az előfizetés (az ISV-k) a kínál az üzleti modell átalakítás</li></ul><ul><li>Egyszerű és listajele távra bérlők elszigetelésére</li></ul><ul><li>Adatbázis-központú egyszerűsített programozási modellt</li></ul><ul><li>Így anélkül, hogy elérte-e a rögzített felső határ kiterjesztése</li></ul>**Az egyszeri adatbázisok**: az új alkalmazásfejlesztés eltérő SaaS több-bérlős, amelynek munkaterhelés stabillá és kiszámíthatóvá, az ügyfelek javaslatot önálló adatbázisok. Ez a modell előnyei a következők:<ul><li>Adatbázis-központú egyszerűsített programozási modellt</li></ul>  <ul><li>Az egyes adatbázisok kiszámítható teljesítmény</li></ul>|
 |SQL IaaS virtuális gépként|Az ügyfelek, melynek segítségével testre szabhatja az operációs rendszer vagy az adatbázis-kiszolgáló, valamint szempontjából külső alkalmazások mellett az SQL Server (futtató ugyanabból virtuális), a specifikus követelményekkel rendelkező javaslatot SQL virtuális gépek / IaaS az optimális megoldás|
 |||
-
-<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>A felügyelt példánya programozott módon azonosítása
 
@@ -224,5 +222,5 @@ A felügyelt példány lehetővé teszik a rendszergazdának a legtöbb vállala
 
 - A szolgáltatások és összehasonlító listáját lásd: [általános SQL-szolgáltatások](sql-database-features.md).
 - A VNetek konfigurálásával kapcsolatos további információkért tekintse meg a [felügyelt példányok VNetjének konfigurálásával kapcsolatos](sql-database-managed-instance-vnet-configuration.md) cikket.
-- Az oktatóanyag, amely létrehoz egy kezelt példányt, és visszaállítja egy adatbázis biztonsági másolatból, lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-tutorial-portal.md).
+- Az oktatóanyag, amely létrehoz egy kezelt példányt, és visszaállítja egy adatbázis biztonsági másolatból, lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-create-tutorial-portal.md).
 - Az Azure Database Migration Service migráláshoz való használatát a [felügyelt példány DMS használatával történő migrálását](../dms/tutorial-sql-server-to-managed-instance.md) bemutató oktatóanyag ismerteti.

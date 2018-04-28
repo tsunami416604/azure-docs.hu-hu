@@ -1,24 +1,26 @@
 ---
 title: Frissítés az Azure SQL Data Warehouse legújabb generációját |} Microsoft Docs
-description: Azure SQL Data Warehouse frissítése a legújabb generációját Azure hardver- és tároló-architektúra lépéseket.
+description: Azure SQL Data Warehouse frissítsen az Azure hardver- és tároló-architektúra legújabb generációját.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
-ms.services: sql-data-warehouse
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/02/2018
+ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 724f027f3f43cd0ad846210b511c8fc1af27153f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 673386ad236f596aa4c64fe2e8c885fb86afe170
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
+Azure SQL Data Warehouse frissítsen az Azure hardver- és tároló-architektúra legújabb generációját.
 
-Mostantól zökkenőmentesen frissítheti a számítási teljesítmény rétegben az Azure portálon optimalizálása. Ha a rugalmasság adatraktár egy optimalizált, ajánlott frissítése a legújabb Azure hardver- és egy speciális tároló-architektúra beszerzéséhez. Jobb teljesítmény, a méretezhetőség és a korlátlan oszlopos tárolási kihasználni fogja. 
+## <a name="why-upgrade"></a>Miért frissíteni?
+Mostantól zökkenőmentesen frissítheti a számítási teljesítmény rétegben az Azure portálon optimalizálása. Ha a rugalmasság adatraktár egy optimalizált, ajánlott frissítése. Frissítse, használhatja a legújabb generációját Azure hardver, és a bővített tároló-architektúra. Kihasználhatja a gyorsabb teljesítményt, a méretezhetőség és a korlátlan oszlopos tárolás. 
 
 ## <a name="applies-to"></a>A következőkre vonatkozik
 Ez a frissítés a rugalmasság teljesítményszinttel optimalizálása az adatraktárak vonatkozik.
@@ -28,12 +30,6 @@ Ez a frissítés a rugalmasság teljesítményszinttel optimalizálása az adatr
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
-
-> [!NOTE]
-> 3/30-től rendelkeznie kell [kiszolgáló szintű naplózás](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing#subheading-8) ki van kapcsolva a frissítés megkezdése előtt.
-> 
->
-
 > [!NOTE]
 > Ha a rugalmasság adatraktár nincs optimalizálva a meglévő régióban adott optimalizálva számítási érhető el, akkor [georedundáns helyreállítás a számítási optimalizálása](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) egy támogatott régióban a Powershellen keresztül.
 > 

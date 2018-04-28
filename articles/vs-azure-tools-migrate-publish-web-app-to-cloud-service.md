@@ -2,23 +2,20 @@
 title: Telepítse át, és a webalkalmazások Azure-Felhőszolgáltatás a Visual Studio eszközből közzététele |} Microsoft Docs
 description: Megtudhatja, hogyan telepítse át, és az Azure felhőszolgáltatásban a webes alkalmazás közzététele a Visual Studio használatával
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 9394adfd-a645-4664-9354-dd5df08e8c91
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ghogen
-ms.openlocfilehash: 682be267bbb1cf495d85af5786309a98f885fc23
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: aa09cd06a5ccea3f18459efb701aeaa8d9e59639
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>Hogyan: át, és tegye közzé a Visual Studio egy Azure-Felhőszolgáltatásban a webes alkalmazás
 
@@ -85,7 +82,7 @@ A következő táblázat ismerteti, az alkalmazás elindítása az Azure-ban:
    | Üres ASP.NET-webalkalmazás | Ha egy alapértelmezett `.aspx` az alkalmazás lapját, válassza ki az URL-címet a **telepítési** lapján a **Azure tevékenységnapló**. Egy másik lapra lép, adja meg a böngészőben egy URL-cím a következő: `<deployment_url>/<page_name>.aspx` |
    | A Silverlight alkalmazás<br/>A Silverlight üzleti alkalmazás<br/>A Silverlight navigációs alkalmazás | Keresse meg az alkalmazás a következő URL-formátum használatával az adott lapon: `<deployment_url>/<page_name>.aspx` |
     WCF-alkalmazás<br/>Munkafolyamat-szolgáltatás WCF-alkalmazás | Állítsa be a `.svc` fájl a kezdőlapot, a WCF-szolgáltatások projekthez. Majd keresse meg a `<deployment_url>/<service_file>.svc` |
-   | ASP.NET Dynamic Entities<br/>Az ASP.NET dinamikus adatok Linq to SQL | Frissítse a kapcsolati karakterlánc a következő szakaszban leírtak szerint. Majd keresse meg a `<deployment_url>/<page_name>.aspx`. A "LINQ to SQL" egy Azure SQL Database adatbázist kell használnia. |
+   | Az ASP.NET dinamikus entitások<br/>Az ASP.NET dinamikus adatok Linq to SQL | Frissítse a kapcsolati karakterlánc a következő szakaszban leírtak szerint. Majd keresse meg a `<deployment_url>/<page_name>.aspx`. A "LINQ to SQL" egy Azure SQL Database adatbázist kell használnia. |
 
 ## <a name="update-a-connection-string-for-aspnet-dynamic-entities"></a>Frissítse a kapcsolati karakterláncot az ASP.NET dinamikus entitások
 

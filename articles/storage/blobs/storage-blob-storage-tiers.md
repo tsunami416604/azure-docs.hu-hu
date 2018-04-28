@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b09d9c428f9c29e0048faa32ce5349a127be89
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív tárolási szintek
 
@@ -32,7 +32,7 @@ Az egyes adathozzáférési forgatókönyvek esetében számos előnyt biztosít
 
 ## <a name="storage-accounts-that-support-tiering"></a>Rétegezést támogató Storage-fiókok
 
-A objektum tárolási adataihoz csak a Blob Storage- vagy a General Purpose v2 (GPv2) (általános célú) fiókokban használhatja a gyakori, ritka elérésű, vagy archív tárolási szinteket. General Purpose v1 (GPv1) fiókok nem támogatják a rétegezést. Az ügyfelek azonban könnyedén, egyetlen kattintással átalakíthatják meglévő GPv1 agy Blob Storage-fiókjukat GPv2-fiókokká az Azure Portalon. A GPv2 új díjszabási struktúrát nyújt a blobokhoz, fájlokhoz és üzenetsorokhoz, továbbá hozzáférést biztosít különféle egyéb, új tárolási szolgáltatásokhoz is. Továbbá, a későbbiek során egyes új szolgáltatások és árengedmények csak a GPv2-fiókok esetében lesznek elérhetők. Az ügyfeleknek tehát érdemes megfontolni a GPv2 fiókok használatát. A használatot azonban csak akkor kezdjék meg, ha áttekintették az összes szolgáltatás díjszabását. Egyes számítási feladatok ugyanis drágábbak lehetnek GPv2-fiókokon, mint a GPv1-fiókok esetében. További információk: [Az Azure Storage-fiók beállításai](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Az objektum tárolási adataihoz csak a Blob Storage- vagy a General Purpose v2 (GPv2) (általános célú) fiókokban használhatja a gyakori, ritka elérésű, vagy archív tárolási szinteket. General Purpose v1 (GPv1) fiókok nem támogatják a rétegezést. Az ügyfelek azonban könnyedén, egyetlen kattintással átalakíthatják meglévő GPv1- vagy Blob Storage-fiókjukat GPv2-fiókká az Azure Portalon. A GPv2 új díjszabási struktúrát nyújt a blobokhoz, fájlokhoz és üzenetsorokhoz, továbbá hozzáférést biztosít különféle egyéb, új tárolási szolgáltatásokhoz is. Továbbá, a későbbiek során egyes új szolgáltatások és árengedmények csak a GPv2-fiókok esetében lesznek elérhetők. Az ügyfeleknek tehát érdemes megfontolni a GPv2 fiókok használatát. A használatot azonban csak akkor kezdjék meg, ha áttekintették az összes szolgáltatás díjszabását. Egyes számítási feladatok ugyanis drágábbak lehetnek GPv2-fiókokon, mint a GPv1-fiókok esetében. További információk: [Az Azure Storage-fiók beállításai](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 A Blob Storage- és GPv2-fiókokban fiókszinten elérhető a **Hozzáférési szint** attribútum, amellyel megadható, hogy a tárfiók alapértelmezett szintje gyakori vagy ritka elérésű legyen minden olyan, a tárfiókban található blob esetében, amelyhez nincs az objektumok szintjén beállított szint. Azon objektumok esetében, amelyek szintje az objektumok szintjén van megadva, a fiókszint nem lesz érvényes. Az archív szint csak az objektumok szintjén alkalmazható. Bármikor válthat a tárolási szintek között.
 
@@ -81,7 +81,7 @@ Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azo
 
 Ha egy blob egy ritkább elérésű szintre kerül (Gyakori elérésű->Ritka elérésű, Gyakori elérésű->Archív vagy Ritka elérésű->Archív), a műveletet a rendszer a célszintű írásként számlázza, amely esetében a célszintű írási műveleteire (10 000 műveletenként) és adatírásaira (GB-onként) vonatkozó díjak érvényesek. Ha egy blob egy gyakrabban használt szintre kerül (Archív->Ritka elérésű, Archív->Gyakori elérésű vagy Ritka elérésű->Gyakori elérésű), a műveletet a rendszer a forrásszintről olvasásként számlázza, amely esetében a forrásszint olvasási műveleteire (10 000 műveletenként) és adatlekéréseire (GB-onként) vonatkozó díjak érvényesek.
 
-Ha átváltja a fiókszintet gyakori elérésűről ritka elérésűre, csak a GPv2-fiókok esetében lesznek díjkötelesek a beállított szinttel nem rendelkező blobok esetében végrehajtott írási műveletek (10.000 műveletenként). Ez a Blob Storage-fiókok esetében díjmentes. Ha Blob Storage- vagy GPv2-fiókját ritka elérésűről gyakori elérésűre módosítja, az olvasási műveletek (10.000 műveletenként) és adatlekérések (GB-onként) esetében díjat számolunk fel. A ritka elérésű vagy archív szintről áthelyezett blobok esetében korai törlésre vonatkozó díjak lehetnek érvényesek.
+Ha átváltja a fiókszintet gyakori elérésűről ritka elérésűre, csak a GPv2-fiókok esetében lesznek díjkötelesek a beállított szinttel nem rendelkező blobok esetében végrehajtott írási műveletek (10.000 műveletenként). Ez a Blob Storage-fiókok esetében díjmentes. Ha Blob Storage- vagy GPv2-fiókját ritka elérésűről gyakori elérésűre módosítja, az olvasási műveletek (10 000 műveletenként) és adatlekérések (GB-onként) után díjat számolunk fel. A ritka elérésű vagy archív szintről áthelyezett blobok esetében korai törlésre vonatkozó díjak lehetnek érvényesek.
 
 ### <a name="cool-and-archive-early-deletion"></a>Korai törlés a ritka elérésű és az archív szinten
 
@@ -137,7 +137,7 @@ Ebben a szakaszban a következő forgatókönyveket mutatjuk be az Azure Portal 
 
 **Blob Storage vagy GPv2-fiókokat kell használnom, ha rétegezni szeretném az adataimat?**
 
-Azt javasoljuk, Blob Storage-fiókok helyett használjon GPv2-fiókokat a rétegezéshez. A GPv2 a Blob Storage-fiókok által támogatott szolgáltatások mellett számos egyebet is támogat. A Blob Storage és GPv2-fiókok díjszabása majdnem teljesen megegyezik, azonban egyes új szolgáltatások és árengedmények csak GPv2-fiókok esetében lesznek elérhetők. A GPv1-fiókok nem támogatják a rétegezést.
+Javasoljuk, hogy Blob Storage-fiókok helyett használjon GPv2-fiókokat a rétegzéshez kialakításához. A GPv2 a Blob Storage-fiókok által támogatott szolgáltatások mellett sok mást is támogat. A Blob Storage és GPv2-fiókok díjszabása majdnem teljesen megegyezik, azonban egyes új szolgáltatások és árengedmények csak GPv2-fiókokhoz lesznek elérhetők. A GPv1-fiókok nem támogatják a rétegezést.
 
 A GPv1- és GPv2-fiókok díjszabási struktúrája eltér egymástól, ezért az ügyfeleknek érdemes mindkettőt alaposan áttekinteni, mielőtt a GPv2-fiókok használata mellett döntenek. Meglévő Blob Storage- vagy GPv1-fiókját könnyedén, egyetlen kattintással átalakíthatja GPv2-fiókká. További információk: [Az Azure Storage-fiók beállításai](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -147,7 +147,7 @@ Igen. A **Hozzáférési szint** attribútum a fiók szintjén beállított alap
 
 **Módosíthatom a Blob Storage- vagy GPv2-tárfiókom alapértelmezett tárolási szintjét?**
 
-Igen, az alapértelmezett tárolási szintet úgy változtathatja meg, hogy a tárfiókban megadja a **Hozzáférési szint** attribútum kívánt értékét. A tárolási szint módosítása az adott fiókban lévő összes olyan objektumra vonatkozik, amelyhez nincs külön szint beállítva. A tárolási szint gyakoriról ritka elérésű szintre váltása költségekkel jár az írási műveletek (10.000 műveletenként) vonatkozásában (csak a GPv2-fiókokban található, beállított szinttel nem rendelkező blobokra vonatkozóan). A tárolási szint ritkáról gyakori elérésű szintre váltása költségekkel jár az olvasási műveletek (10.000 műveletenként) és adatlekérések (GB-onként) vonatkozásában is a Blob Storage és GPv2 fiókok összes blobja esetében.
+Igen, az alapértelmezett tárolási szintet úgy változtathatja meg, hogy a tárfiókban megadja a **Hozzáférési szint** attribútum kívánt értékét. A tárolási szint módosítása az adott fiókban lévő összes olyan objektumra vonatkozik, amelyhez nincs külön szint beállítva. A tárolási szint gyakoriról ritka elérésű szintre váltása költségekkel jár az írási műveletek (10 000 műveletenként) után (csak a GPv2-fiókokban található, beállított szinttel nem rendelkező blobok esetén). A tárolási szint ritkáról gyakori elérésű szintre váltása költségekkel jár az olvasási műveletek (10 000 műveletenként) és adatlekérések (GB-onként) után is a Blob Storage és GPv2 fiókok összes blobja esetén.
 
 **Beállíthatom a fiók alapértelmezett hozzáférési szintjét archív szintre?**
 
@@ -159,7 +159,7 @@ A gyakori és ritka elérésű tárolási szint, illetve a blobszintű rétegez�
 
 **A gyakori elérésű tárolási szinten és a ritka elérésű tárolási szinten eltérően viselkednek a blobok?**
 
-A gyakori elérésű tárolási szinten a blobok ugyanolyan késéssel rendelkeznek, mint a GPv1-, GPv2- és Blob Storage-fiókok esetében. A ritka elérésű tárolási szinten a blobok hasonló késéssel rendelkeznek (ezredmásodpercben), mint a GPv1-, GPv2- és Blob Storage-fiókok esetében. Az archív tárolási szinten lévő blobok esetében több óra késés tapasztalható GPv1-, GPv2- és Blob Storage-fiókok esetében.
+A gyakori elérésű tárolási szinten a blobok ugyanolyan késéssel rendelkeznek, mint a GPv1-, GPv2- és Blob Storage-fiókok esetében. A ritka elérésű tárolási szinten a blobok hasonló késéssel rendelkeznek (ezredmásodpercben), mint a GPv1-, GPv2- és Blob Storage-fiókokban lévő blobok. Az archív tárolási szinten lévő blobok esetében több óra késés tapasztalható GPv1-, GPv2- és Blob Storage-fiókok esetében.
 
 A ritka elérésű tárolási szinten a blobok rendelkezésre állási szolgáltatási szintje (SLA) kissé alacsonyabb, mint a gyakori elérésű tárolási szinten. További információkért lásd: [SLA a következőhöz: Storage](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
 

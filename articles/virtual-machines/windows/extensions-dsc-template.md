@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 03/22/2018
 ms.author: migreene
-ms.openlocfilehash: 095b0cba8f7d22920203e5e3c4bcd83666188023
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a39cabeb35450e98cc7d7d64645642959aacde0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok kívánt állapot konfigurációs bővítmény
 
@@ -33,7 +33,7 @@ Ez a cikk ismerteti az Azure Resource Manager sablon a [kívánt állapot konfig
 
 A következő kódrészletet mutat a **erőforrás** a sablon szakasza.
 A DSC-bővítményt alapértelmezett bővítmény tulajdonságokat örökli.
-További információkért lásd: [VirtualMachineExtension osztály](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.).
+További információkért lásd: [VirtualMachineExtension osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.).
 
 ```json
 {
@@ -83,7 +83,7 @@ A virtuális gép méretezési készlet fürtcsomópont egy **tulajdonságok** s
 A **bővítmények**, a részletek hozzáadása a DSC-bővítményt.
 
 A DSC-bővítményt alapértelmezett bővítmény tulajdonságokat örökli.
-További információkért lásd: [VirtualMachineScaleSetExtension osztály](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
+További információkért lásd: [VirtualMachineScaleSetExtension osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet).
 
 ```json
 "extensionProfile": {
@@ -197,17 +197,17 @@ A következő paraméterek érhetők el az alapértelmezett konfigurációs para
 
 ## <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
-A következő értékek kapcsolatos további információkért lásd: [helyi Configuration Manager alapbeállítások](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings).
+A következő értékek kapcsolatos további információkért lásd: [helyi Configuration Manager alapbeállítások](https://docs.microsoft.com/powershell/dsc/metaconfig#basic-settings).
 A DSC-bővítmény alapértelmezett konfigurációs parancsfájl segítségével csak a felsorolt LCM tulajdonságainak konfigurálása a következő táblázat az.
 
 | Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
-| settings.configurationArguments.RegistrationKey |securestring |Kötelező tulajdonság. Megadja a kulcsot, amellyel egy csomópont és a PowerShell-hitelesítő adat objektum az Azure Automation szolgáltatás regisztrálása. Ezt az értéket automatikusan észlelhetők használatával a **listkeys** metódus az Automation-fiók ellen. Az érték egy védett beállítás titkosítani kell. |
+| settings.configurationArguments.RegistrationKey |SecureString |Kötelező tulajdonság. Megadja a kulcsot, amellyel egy csomópont és a PowerShell-hitelesítő adat objektum az Azure Automation szolgáltatás regisztrálása. Ezt az értéket automatikusan észlelhetők használatával a **listkeys** metódus az Automation-fiók ellen. Az érték egy védett beállítás titkosítani kell. |
 | settings.configurationArguments.RegistrationUrl |karakterlánc |Kötelező tulajdonság. Adja meg a-automatizálás végpontjának, ahol a csomópontra megkísérel regisztrálni URL-CÍMÉT. Ezt az értéket automatikusan észlelhetők használatával a **hivatkozás** metódus az Automation-fiók ellen. |
 | settings.configurationArguments.NodeConfigurationName |karakterlánc |Kötelező tulajdonság. Meghatározza a csomópont-konfiguráció hozzárendelése a csomópont Automation-fiók. |
 | settings.configurationArguments.ConfigurationMode |karakterlánc |Meghatározza a mód LCM. Érvényes lehetőségek a következők **ApplyOnly**, **ApplyandMonitor**, és **ApplyandAutoCorrect**.  Az alapértelmezett érték **ApplyandMonitor**. |
-| settings.configurationArguments.RefreshFrequencyMins | uint32 | Itt adhatja meg, milyen gyakran kíséri meg LCM lépjen kapcsolatba az Automation-fiók a frissítéseket.  Alapértelmezett érték **30**.  Minimális érték **15**. |
-| settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Itt adhatja meg, milyen gyakran LCM ellenőrzi az aktuális konfigurációt. Alapértelmezett érték **15**. Minimális érték **15**. |
+| settings.configurationArguments.RefreshFrequencyMins | UInt32 | Itt adhatja meg, milyen gyakran kíséri meg LCM lépjen kapcsolatba az Automation-fiók a frissítéseket.  Alapértelmezett érték **30**.  Minimális érték **15**. |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Itt adhatja meg, milyen gyakran LCM ellenőrzi az aktuális konfigurációt. Alapértelmezett érték **15**. Minimális érték **15**. |
 | settings.configurationArguments.RebootNodeIfNeeded | logikai | Meghatározza, hogy a csomópont automatikusan az OK gombra a DSC-művelet kérésére. Alapértelmezett érték **hamis**. |
 | settings.configurationArguments.ActionAfterReboot | karakterlánc | Itt adhatja meg, mi történik, a rendszer újraindítása után a konfiguráció alkalmazása során. Az érvényes beállítások: **ContinueConfiguration** és **StopConfiguration**. Alapértelmezett érték **ContinueConfiguration**. |
 | settings.configurationArguments.AllowModuleOverwrite | logikai | Meghatározza, hogy LCM felülírja a meglévő modulok a csomóponton. Alapértelmezett érték **hamis**. |
@@ -330,7 +330,7 @@ Ez a korábbi formátum hogyan alkalmazkodik a formátumban:
 | settings.advancedOptions.downloadMappings |settings.AdvancedOptions.DownloadMappings |
 | protectedSettings.configurationArguments |protectedSettings.Properties |
 | protectedSettings.configurationUrlSasToken |settings.SasToken |
-| protectedSettings.configurationDataUrlSasToken |SAS token from protectedSettings.DataBlobUri |
+| protectedSettings.configurationDataUrlSasToken |A protectedSettings.DataBlobUri SAS-jogkivonat |
 
 ## <a name="troubleshooting---error-code-1100"></a>Hibaelhárítás – 1100-as hibakód
 
@@ -340,9 +340,9 @@ Ezek a hibák szövegét változik, és előfordulhat, hogy módosítani.
 
 ### <a name="invalid-values"></a>Érvénytelen értékekkel
 
-"Privacy.dataCollection nem"{0}".
+"Privacy.dataCollection van"{0}".
 Az egyetlen lehetséges értékek: ","Engedélyezése"és"Disable"".
-"WmfVersion nem"{0}".
+"WmfVersion van"{0}".
 Csak a lehetséges értékek a következők... "legújabb" és ".
 
 **A probléma**: A megadott érték nem megengedett.
@@ -352,7 +352,7 @@ További információkért lásd: a táblázatban szereplő [részletek](#detail
 
 ### <a name="invalid-url"></a>Érvénytelen URL
 
-"ConfigurationData.url nem"{0}". Ez nem egy érvényes URL-címet az""DataBlobUri nem "{0}". Ez nem egy érvényes URL-címet az""Configuration.url nem "{0}". Ez nem egy érvényes URL-címet az"
+"ConfigurationData.url van"{0}". Ez nem egy érvényes URL-címet az"" DataBlobUri van "{0}". Ez nem egy érvényes URL-címet az"" Configuration.url van "{0}". Ez nem egy érvényes URL-címet az"
 
 **A probléma**: A megadott URL-cím érvénytelen.
 
@@ -361,7 +361,7 @@ Győződjön meg arról, hogy az URL-címet oldható fel érvényes helyekre, ho
 
 ### <a name="invalid-configurationargument-type"></a>Érvénytelen ConfigurationArgument típusa
 
-"Típus érvénytelen configurationArguments" {0}
+"Érvénytelen configurationArguments típus {0}"
 
 **A probléma**: A *ConfigurationArguments* tulajdonság nem oldható fel egy **Hashtable** objektum.
 
@@ -370,7 +370,7 @@ Kövesse az előző példában megadott formátumban. Figyelendő ajánlatok, ve
 
 ### <a name="duplicate-configurationarguments"></a>Ismétlődő ConfigurationArguments
 
-"Található nyilvános és a védett configurationArguments ismétlődő argumentumok"{0}""
+"Ismétlődő argumentumok található{0}" a nyilvános és a védett configurationArguments "
 
 **A probléma**: A *ConfigurationArguments* nyilvános beállításai és a *ConfigurationArguments* a védett beállításai tulajdonság azonos névvel rendelkezik.
 

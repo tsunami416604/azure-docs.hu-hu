@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.openlocfilehash: 93397e5370863b11b7c153bbf234d6bfdd808718
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/16/2018
+ms.openlocfilehash: 63648dfe02a0b5ed00d0a7206a6aabbe200f94c4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics és az Azure Machine Learning segítségével véleményeket elemzések végrehajtását
 Ez a cikk ismerteti, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladat, amely az Azure Machine Learning. Akkor használhatja Machine Learning véleményeket analytics a Cortana Intelligence Gallery a streamadatok szöveg elemzésére és valós időben a céggel kapcsolatos véleményeket pontszám meghatározásához. A Cortana Intelligence Suite használata lehetővé teszi ennek a feladatnak anélkül, hogy a menő a céggel kapcsolatos véleményeket elemzési modell létrehozásának bemutatása.
@@ -25,7 +25,7 @@ Amiről tanulni az ebben a cikkben az ehhez hasonló helyzeteknek alkalmazhatja:
 * Megjegyzések a videók, fórumok és blogok kiértékelése. 
 * Sok más valós idejű, a prediktív pontozási forgatókönyvek.
 
-Egy valós forgatókönyv esetén az adatok közvetlenül a Twitter adatfolyam visszajelzést kap. Egyszerűbbé teheti az oktatóanyag azt már megírta azt, hogy a Streaming Analytics-feladat Twitter-üzeneteket lekérdezi az Azure Blob storage CSV-fájlból. Létrehozhat saját CSV-fájl, vagy egy CSV-mintafájlt, a következő ábrán látható módon használhatja:
+Egy valós forgatókönyv esetén az adatok közvetlenül a Twitter adatfolyam visszajelzést kap. Az oktatóanyag leegyszerűsítése írás, hogy a Streaming Analytics-feladat Twitter-üzeneteket lekérdezi az Azure Blob storage CSV-fájlból. Létrehozhat saját CSV-fájl, vagy egy CSV-mintafájlt, a következő ábrán látható módon használhatja:
 
 ![a CSV-fájlban szereplő minta Twitter-üzenetek](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
@@ -39,7 +39,7 @@ A következő ábra bemutatja, ezt a konfigurációt. Amint több reális forgat
 Mielőtt elkezdené, győződjön meg arról, hogy a következő:
 
 * Aktív Azure-előfizetés.
-* Néhány adatot a CSV-fájlból. Letöltheti a fájlt a korábban bemutatott [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), vagy létrehozhat saját fájlt. Ez a cikk feltételezzük, hogy a fájl a Githubról használ.
+* Néhány adatot a CSV-fájlból. Letöltheti a fájlt a korábban bemutatott [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), vagy létrehozhat saját fájlt. Ebben a cikkben feltételezzük, hogy a fájl a Githubról használ.
 
 Magas szinten a feladatokat, ebben a cikkben bemutatott, tegye a következőket:
 
@@ -105,7 +105,7 @@ Most, hogy a mintaadatokat egy blobba, engedélyezheti a céggel kapcsolatos vé
 
    ![a vizsgálati eredmények a Machine Learning Studióban](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
-7. Az a **alkalmazások** oszlop, kattintson a **Excel 2010 vagy korábbi munkafüzet** egy Excel-munkafüzet letöltésére mutató hivatkozás. A munkafüzet tartalmazza az API-kulcs és az URL-címet, akkor később be kell állítania a Stream Analytics-feladat.
+7. Az a **alkalmazások** oszlop, kattintson a **Excel 2010 vagy korábbi munkafüzet** egy Excel-munkafüzet letöltésére mutató hivatkozás. A munkafüzet tartalmazza az API-kulcsot és az URL-címet, akkor később be kell állítania a Stream Analytics-feladat.
 
     ![Stream Analytics-Machine Learning, gyors áttekintő](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
@@ -139,7 +139,7 @@ A feladat lekérdezi a bemeneti blob-tároló korábban feltöltött CSV-fájlb�
    |---------|---------|
    |**A bemeneti alias** | A nevet használja `datainput` válassza **válasszon blob-tároló az előfizetésből**       |
    |**Storage-fiók**  |  Válassza ki a korábban létrehozott tárfiókot.  |
-   |**Container**  | Válassza ki a korábban létrehozott tároló (`azuresamldemoblob`)        |
+   |**Tároló**  | Válassza ki a korábban létrehozott tároló (`azuresamldemoblob`)        |
    |**Esemény szerializálási formátum**  |  Válassza ki **CSV**       |
 
    ![Új feladat bemeneti beállításai](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
@@ -157,9 +157,9 @@ A feladat küldése eredmények ugyanazt a blob-tároló ahol lekérdezi a bemen
 
    |Mező  |Érték  |
    |---------|---------|
-   |**A kimeneti alias** | A nevet használja `datainput` válassza **válasszon blob-tároló az előfizetésből**       |
+   |**A kimeneti alias** | A nevet használja `datamloutput` válassza **válasszon blob-tároló az előfizetésből**       |
    |**Storage-fiók**  |  Válassza ki a korábban létrehozott tárfiókot.  |
-   |**Container**  | Válassza ki a korábban létrehozott tároló (`azuresamldemoblob`)        |
+   |**Tároló**  | Válassza ki a korábban létrehozott tároló (`azuresamldemoblob`)        |
    |**Esemény szerializálási formátum**  |  Válassza ki **CSV**       |
 
    ![Új feladat kimenet beállításai](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
@@ -168,7 +168,7 @@ A feladat küldése eredmények ugyanazt a blob-tároló ahol lekérdezi a bemen
 
 
 ### <a name="add-the-machine-learning-function"></a>A Machine Learning-függvény hozzáadása 
-Korábban közzétett a gépi tanulási modell webszolgáltatáshoz. A mi esetünkben az adatfolyam állapotelemzési feladat futtatásakor küldené minden egyes minta tweetet a céggel kapcsolatos véleményeket elemzés a webszolgáltatás bemenete. A Machine Learning webszolgáltatás adja vissza a céggel kapcsolatos véleményeket (`positive`, `neutral`, vagy `negative`) és egy pozitív tweetet valószínűségét. 
+Korábban közzétett a gépi tanulási modell webszolgáltatáshoz. Ebben a forgatókönyvben a adatfolyam állapotelemzési feladat futtatásakor küldené minden egyes minta tweetet a céggel kapcsolatos véleményeket elemzés a webszolgáltatás bemenete. A Machine Learning webszolgáltatás adja vissza a céggel kapcsolatos véleményeket (`positive`, `neutral`, vagy `negative`) és egy pozitív tweetet valószínűségét. 
 
 Az oktatóanyag ezen részében adja meg az adatfolyam állapotelemzési feladat egy függvényt. A függvény küldjön egy tweetet, a webszolgáltatás és a válasz segítségnyújtáshoz hívható meg. 
 
@@ -200,12 +200,13 @@ A Stream Analytics lekérdezéssel deklaratív, az SQL-alapú vizsgálja meg a b
 
     ```
     WITH sentiment AS (  
-    SELECT text, sentiment(text) as result from datainput  
+    SELECT text, sentiment(text) as result 
+    FROM datainput  
     )  
 
-    Select text, result.[Score]  
-    Into datamloutput
-    From sentiment  
+    SELECT text, result.[Score]  
+    INTO datamloutput
+    FROM sentiment  
     ```    
 
     A lekérdezés meghívja a korábban létrehozott függvényt (`sentiment`) ahhoz, hogy a bemeneti adatok minden tweetet véleményeket elemzést. 
@@ -213,11 +214,11 @@ A Stream Analytics lekérdezéssel deklaratív, az SQL-alapú vizsgálja meg a b
 4. Kattintson a **mentése** a lekérdezés mentéséhez.
 
 
-## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimeneti ellenőrzése
+## <a name="start-the-stream-analytics-job-and-check-the-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 
 Most elindíthatja a Stream Analytics-feladat.
 
-### <a name="start-the-job"></a>Indítsa el a feladatot
+### <a name="start-the-job"></a>A feladat indítása
 1. Térjen vissza a feladathoz – áttekintés panelen.
 
 2. Kattintson a **Start** a panel tetején.

@@ -1,8 +1,8 @@
 ---
-title: "Az Application Insights telemetria a folyamatos exportálás |} Microsoft Docs"
-description: "Diagnosztikai és használati adatok exportálása Microsoft Azure-tárhelyre, és töltse le innen."
+title: Az Application Insights telemetria a folyamatos exportálás |} Microsoft Docs
+description: Diagnosztikai és használati adatok exportálása Microsoft Azure-tárhelyre, és töltse le innen.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7d1f648bc2c2a42cfbd668f180bce8f56ebd065b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 05d271eb7d046819bb8fc2be20623cba0000d8f4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="export-telemetry-from-application-insights"></a>Az Application Insights telemetria exportálása
 Szeretné megőrizni a telemetriai adat hosszabb, mint a szokásos megőrzési időszakot? Vagy valamilyen speciális módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portáljáról látható JSON formátumban a Microsoft Azure storage exportálhatja. Ott töltse le az adatok és bármit kódját, írási kell feldolgozni azt.  
@@ -31,10 +31,11 @@ A folyamatos exportálás beállítása előtt van néhány más-érdemes figyel
 * [Elemzés](app-insights-analytics.md) hatékony lekérdezésnyelvet biztosít a telemetriai adatokat. Exportálhatja eredmények.
 * Ha a keresett [az adatokba a Power BI](app-insights-export-power-bi.md), azt teheti a folyamatos exportálás használata nélkül.
 * A [adatelérési REST API](https://dev.applicationinsights.io/) programozott hozzáférést a telemetriai adatok.
+* Emellett a telepítő [a folyamatos exportálás PowerShell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 
 A folyamatos exportálás nem másolta az adatok (Ha azt is marad mindaddig, amíg tetszés) tárhelyre, továbbra is rendelkezésre áll az Application Insightsban a szokásos [megőrzési időszak](app-insights-data-retention-privacy.md).
 
-## <a name="setup"></a>A folyamatos exportálás létrehozása
+## <a name="setup"></a> A folyamatos exportálás létrehozása
 1. Az Application Insights-erőforrást az alkalmazáshoz, nyissa meg a folyamatos exportálás, és válassza a **Hozzáadás**:
 
     ![Görgessen le, majd kattintson a folyamatos exportálás](./media/app-insights-export-telemetry/01-export.png)
@@ -71,12 +72,12 @@ Véglegesen állítsa le az exportálást, törölje azt. Így nem törlése az 
 ### <a name="cant-add-or-change-an-export"></a>Nem adható hozzá, vagy módosítsa az export?
 * Adja hozzá, vagy módosítsa a kivitel, tulajdonos, közreműködő vagy Application Insights közreműködői jogokkal kell. [További tudnivalók a szerepkörök][roles].
 
-## <a name="analyze"></a>Milyen eseményeket kapott?
+## <a name="analyze"></a> Milyen eseményeket kapott?
 Az exportált adatok a nyers telemetriaadatok az alkalmazásból érkező, azzal a különbséggel, hogy az ügyfél IP-címről érkező helyadatok, amelyek Microsoft jelenleg felvenni.
 
 Adatok, amelyek szerint el lett vetve [mintavételi](app-insights-sampling.md) nem szerepel az exportált adatokat.
 
-Más számított metrikák nem érhetők el. Például azt átlagos CPU-felhasználása ne exportálja, de a nyers telemetriaadatok, amelyből az átlagos számított exportálása.
+Más számított metrikák nem érhetők el. Például nem exportálása átlagos processzorkihasználtság, de a nyers telemetriaadatok, amelyből az átlagos számított exportálása.
 
 Az adatokat is tartalmaz, az eredmények közül [webteszt rendelkezésre állási](app-insights-monitor-web-app-availability.md) , amely meg van adva.
 
@@ -85,7 +86,7 @@ Az adatokat is tartalmaz, az eredmények közül [webteszt rendelkezésre állá
 >
 >
 
-## <a name="get"></a>Vizsgálja meg az adatok
+## <a name="get"></a> Vizsgálja meg az adatok
 A tárolási közvetlenül a portálon vizsgálhatja meg. Kattintson a **Tallózás**, válassza ki a tárfiók, és nyisson **tárolók**.
 
 Vizsgálja meg az Azure storage a Visual Studio, nyissa meg a **nézet**, **Cloud Explorer**. (Ha még nem rendelkezik az adott parancs, szeretné-e az Azure SDK telepítése: Nyissa meg a **új projekt** párbeszédpanelen bontsa ki a Visual C# / felhőalapú, és válassza **Microsoft Azure SDK for .NET**.)
@@ -100,19 +101,19 @@ Az elérési utat a következő:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-Ha
+Ahol (a(z)
 
-* `blobCreationTimeUtc`van a belső blob létrehozásának időpontja átmeneti tárolási
-* `blobDeliveryTimeUtc`az az idő, amikor blob lett másolva a exportálási cél
+* `blobCreationTimeUtc` van a belső blob létrehozásának időpontja átmeneti tárolási
+* `blobDeliveryTimeUtc` az az idő, amikor blob lett másolva a exportálási cél
 
-## <a name="format"></a>Az adatformátum
+## <a name="format"></a> Az adatformátum
 * Minden egyes blob egy szövegfájlt, amely több tartalmazza az "\n'-separated sorokat. A telemetriai adatok feldolgozása körülbelül fél perc időszakra tartalmaz.
 * Minden egyes sorára például egy kérelem vagy a lap nézet telemetriai adatpont jelöli.
 * Minden egyes sorára nem formázott JSON-dokumentumhoz. Elhelyezkedik, és azt a stare, nyissa meg a Visual Studio és válassza a Szerkesztés, speciális formátumú fájlba:
 
 ![A megfelelő eszköz telemetriai adatok megtekintése](./media/app-insights-export-telemetry/06-json.png)
 
-Idő időtartamok vannak ütés, ahol a 10 000-re ölések = 1 MS. Ezek az értékek például a kérést küldeni a böngészőből, 3ms azt, és a lap a böngészőben feldolgozni 1.8s 1 MS idő megjelenítése:
+Idő időtartamok vannak ütés, ahol a 10 000-re ölések = 1 ms. Például ezek az értékek megjelenítése a idő 1 ms kérést küldeni a böngészőből, 3 ms és 1.8 s feldolgozni a böngészőben:
 
     "sendRequest": {"value": 10000.0},
     "receiveRequest": {"value": 30000.0},

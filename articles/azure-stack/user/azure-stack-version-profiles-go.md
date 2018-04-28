@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 84475302-EFC2-4C35-B4CF-60C857A96345
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/02/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 09a774e5dda71d87c3862a6152ff5d2c9468c40c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5b881c17b6ad1c9a7e46492f8549f563cfd6d796
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Nyissa meg az Azure-verem API-verzió profilok használata
 
@@ -82,7 +80,7 @@ Nyissa meg kód minta futtatásához Azure veremben:
   ```
 
   3. Nem érhető el, ha előfizetés létrehozása és mentése a későbbi előfizetés-azonosító. Előfizetés létrehozása a további információkért lásd: [ajánlatok-előfizetések létrehozása az Azure-készletben](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
-  4. Hozzon létre egy egyszerű "Előfizetés" hatókör és **tulajdonos** szerepkör. A szolgáltatás egyszerű azonosító és a titkos kulcs mentése. Egy egyszerű Azure verem létrehozásával kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Az Azure-verem környezet be van állítva.
+  4. Hozzon létre egy egyszerű "Előfizetés" hatókör és **tulajdonos** szerepkör. Mentse a szolgáltatásnevekről Azonosítót és titkos kulcsot. Egy egyszerű Azure verem létrehozásával kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Az Azure-verem környezet be van állítva.
   5. Szolgáltatás modul importálása a kódban Ugrás SDK profilból. Azure verem profil verziószámának **2017-03-09**. Ahhoz például, hogy a hálózati modul importálása **2017-03-09** profiltípus: 
 
   ````go
@@ -129,7 +127,7 @@ Az erőforrás-ügyfél authorizer a Authorizer kell beállítani. Többféle m�
 
 Ebben a szakaszban egy közös módja authorizer jogkivonatok Azure veremben ügyfél hitelesítő adatok használatával:
 
-  1. Ha a tulajdonosi szerepkört az előfizetés az egyszerű szolgáltatás nem érhető el, kihagyhatja ezt a lépést. Máskülönben hozzon létre egy egyszerű [utasításokat]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals) , és rendelje hozzá az előfizetéséhez hatókörű "owner" szerepet [utasításokat]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). A szolgáltatás egyszerű alkalmazás azonosítója és a titkos kulcs mentése. 
+  1. Ha a tulajdonosi szerepkört az előfizetés az egyszerű szolgáltatás nem érhető el, kihagyhatja ezt a lépést. Máskülönben hozzon létre egy egyszerű [utasításokat]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) , és rendelje hozzá az előfizetéséhez hatókörű "owner" szerepet [utasításokat]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). A szolgáltatás egyszerű alkalmazás azonosítója és a titkos kulcs mentése. 
 
   2. Importálás **adal** Ugrás-AutoRest-csomagot a kódban. 
   

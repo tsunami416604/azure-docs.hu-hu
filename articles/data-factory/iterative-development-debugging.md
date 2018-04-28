@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan fejleszthet és hibakeresési adat-előállít�
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 04/04/2018
+ms.date: 04/16/2018
 ms.topic: article
 ms.service: data-factory
 services: data-factory
@@ -12,11 +12,11 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: adb5ffd65d4b2b591abba5d4b3481b7ca08de579
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6a6fbd721e4f0af977fe7fa03adc4459de7611f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Ismétlődő fejlesztési és az Azure Data Factory-hibakeresés
 
@@ -45,9 +45,17 @@ Tesztelésekor fut, nem kell a változások közzétételére a data factory, ki
 
 ## <a name="setting-breakpoints-for-debugging"></a>A hibakereséshez töréspontok beállítása
 
-Adat-előállító lehetővé teszi az adatcsatorna vászonra egy adott tevékenységet addig debug. Csak a tevékenység, ameddig szeretné tesztelni, és válassza ki a töréspont elhelyezése **Debug**. Adat-előállító biztosítja, hogy a vizsgálat a töréspont tevékenység csak a folyamat vásznon. Ez *Debug amíg* szolgáltatás akkor hasznos, ha nem kívánja tesztelni a teljes folyamat, de a tevékenységek a feldolgozási sor belül csak egy részét.
+Adat-előállító emellett lehetővé teszi a hibakeresési, amíg el nem éri a feldolgozási sor vásznon egy adott tevékenységet. Csak a tevékenység, ameddig szeretné tesztelni, és válassza ki a töréspont elhelyezése **Debug**. Adat-előállító biztosítja, hogy a vizsgálat a töréspont tevékenység csak a folyamat vásznon. Ez *Debug amíg* szolgáltatás akkor hasznos, ha nem kívánja tesztelni a teljes folyamat, de a tevékenységek a feldolgozási sor belül csak egy részét.
 
 ![Töréspontokat a feldolgozási sor vászonra](media/iterative-development-debugging/iterative-development-image4.png)
+
+Töréspontokat állíthasson, a folyamat vászonra egy elem kijelölése. A *Debug amíg* beállítás elem jobb felső sarkában, egy üres piros kör jelenik meg.
+
+![A kijelölt elem Töréspont beállítása előtt](media/iterative-development-debugging/iterative-development-image5.png)
+
+Miután kiválasztotta a *Debug mindaddig, amíg* jelzésére kitöltött piros kör módosítja a beállítást, a a töréspont engedélyezve van.
+
+![Miután beállította a Töréspont a kijelölt elem](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>További lépések
 [Folyamatos integrációt és üzembe helyezés az Azure Data Factory](continuous-integration-deployment.md)

@@ -1,8 +1,8 @@
 ---
-title: "Azure SQL eléréséhez használja a Windows virtuális gép MSI"
-description: "Ez az oktatóanyag végigvezeti az Azure SQL eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI)."
+title: Azure SQL eléréséhez használja a Windows virtuális gép MSI
+description: Ez az oktatóanyag végigvezeti az Azure SQL eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: bryanla
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 863054ea8c69206d4068a35f09ec946aec67ea1f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5459739e9d3469adc7dbf65c8dcc0de918ea0c73
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) Azure SQL eléréséhez használja
 
@@ -55,17 +55,13 @@ Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet.  A
 
 ## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése 
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. MSI engedélyezése közli az Azure-hoz létre egy felügyelt a virtuális gép számára. A színfalak MSI engedélyezése két dolgot eredményez: az MSI-Virtuálisgép-bővítmény a virtuális Gépet telepít, és lehetővé teszi, hogy az Azure Resource Manager MSI.
+A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. MSI engedélyezése közli az Azure-hoz létre egy felügyelt a virtuális gép számára. A színfalak MSI engedélyezése két dolgot eredményez: regiszterekben az Azure Active Directory segítségével felügyelt identitását, és hozzon létre a virtuális gép identitásának konfigurálja a virtuális Gépen.
 
 1.  Válassza ki a **virtuális gép** , hogy szeretné-e engedélyezze MSI-t.  
 2.  A bal oldali navigációs sávon kattintson **konfigurációs**. 
 3.  Látni **Szolgáltatásidentitás felügyelt**. Regisztrálja, és engedélyezze a MSI-t, jelölje be **Igen**, ha szeretné letiltani, válassza a nem. 
 4.  Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.  
     ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Ha szeretné ellenőrizni, és a virtuális gép mely bővítmények ellenőrizze, kattintson a **bővítmények**. Ha MSI engedélyezve van, majd **ManagedIdentityExtensionforWindows** listájában jelenik meg.
-
-    ![Kép helyettesítő szövege](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>A virtuális gép hozzáférést biztosíthat az Azure SQL Server adatbázis
 
@@ -100,7 +96,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-Ezután adja hozzá a virtuális gép MSI a csoporthoz.  Az MSI kell **ObjectId**, mely akkor is beolvasása az Azure PowerShell.  Első lépésként töltse le [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Majd jelentkezzen be `Login-AzureRmAccount`, és futtassa a következő parancsokat:
+Ezután adja hozzá a virtuális gép MSI a csoporthoz.  Az MSI kell **ObjectId**, mely akkor is beolvasása az Azure PowerShell.  Első lépésként töltse le [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Majd jelentkezzen be `Connect-AzureRmAccount`, és futtassa a következő parancsokat:
 - Győződjön meg arról, a munkamenet-környezet van beállítva a kívánt Azure-előfizetéssel, ha több.
 - A rendelkezésre álló erőforrások az Azure-előfizetéshez a listában, a ellenőrizze a megfelelő erőforráscsoport és a virtuális gép nevét.
 - Az MSI virtuális gép tulajdonságait, használja a megfelelő értékeket `<RESOURCE-GROUP>` és `<VM-NAME>`.
@@ -193,7 +189,7 @@ using System.Web.Script.Serialization;
 //
 // Get an access token for SQL.
 //
-HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50342/oauth2/token?resource=https://database.windows.net/");
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://database.windows.net/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
 string accessToken = null;
@@ -234,7 +230,7 @@ Másik lehetőségként gyors módja, ha a végpontok közötti telepítés ír�
 4.  A PowerShell használatával `Invoke-WebRequest`, indítson egy lekérdezést a helyi MSI végpont az Azure SQL megszerezni az olyan hozzáférési jogkivonatot.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://database.windows.net/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     A válasz egy JSON-objektumból átalakítása egy PowerShell-objektum. 

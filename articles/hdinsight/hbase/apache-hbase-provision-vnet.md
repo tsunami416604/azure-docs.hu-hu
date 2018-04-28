@@ -1,9 +1,9 @@
 ---
-title: "Hozzon létre HBase-fürtökkel egy virtuális hálózat - Azure |} Microsoft Docs"
-description: "Ismerkedés az Azure HDInsight HBase használatával. Útmutató a HDInsight HBase fürtök létrehozása az Azure-beli virtuális hálózathoz."
-keywords: 
+title: Hozzon létre HBase-fürtökkel egy virtuális hálózat - Azure |} Microsoft Docs
+description: Ismerkedés az Azure HDInsight HBase használatával. Útmutató a HDInsight HBase fürtök létrehozása az Azure-beli virtuális hálózathoz.
+keywords: ''
 services: hdinsight,virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 8de8e446-f818-4e61-8fad-e9d38421e80d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 08f71340fea7424262fc9c549351bd50bcfcafe2
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: edcfa47eee0f085bad415be0d9b112bbc33c3eca
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Hozzon létre HBase-fürtökkel a HDInsight az Azure-beli virtuális hálózathoz
 Útmutató az Azure HDInsight HBase-fürtök létrehozása egy [Azure Virtual Network][1].
@@ -91,7 +89,7 @@ Az új HBase fürtöt használatának megkezdése előtt, akkor az eljárásokka
 
    * Egy webes böngésző segítségével az Ambari hívást:
 
-     Browse to https://&lt;ClusterName>.azurehdinsight.net/api/v1/clusters/&lt;ClusterName>/hosts?minimal_response=true. A JSON-fájl, a DNS-utótagok változik.
+     Keresse meg a https://&lt;ClusterName >.azurehdinsight.net/api/v1/clusters/&lt;ClusterName > / üzemeltető? minimal_response = true. A JSON-fájl, a DNS-utótagok változik.
    * Az Ambari webhelyet használja:
 
      1. Keresse meg a https://&lt;ClusterName >. azurehdinsight.net.

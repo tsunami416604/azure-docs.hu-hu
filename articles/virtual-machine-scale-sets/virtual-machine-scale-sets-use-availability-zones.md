@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: iainfou
-ms.openlocfilehash: 70dff848ce0674461749075e6498741c3eb9a381
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9093fcf008f199cc1a78d50979f6387a2e1b5262
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuálisgép-méretezési csoport létrehozása
 
@@ -70,15 +70,15 @@ Rendelkezésre állási zónák használatára, a méretezési létre kell hozni
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-A méretezési csoport egy rendelkezésre állási zóna használó létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](quick-create-portal.md). Győződjön meg arról, hogy rendelkezik [tekintse meg a rendelkezésre állási zónák regisztrálva](http://aka.ms/azenroll). Amikor kiválaszt egy támogatott Azure-régió, terjedő skálán, állítsa be az egyik rendelkezésre álló zónában, a következő példában látható módon hozhat létre:
+A méretezési csoport egy rendelkezésre állási zóna használó létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](quick-create-portal.md). Amikor kiválaszt egy támogatott Azure-régió, terjedő skálán egy vagy több rendelkezésre álló zónákban, állítsa be a következő példában látható módon hozhat létre:
 
-![Hozzon létre egy méretezési egy rendelkezésre állási zóna beállítása](media/virtual-machine-scale-sets-use-availability-zones/create-portal-single-az.png)
+![Hozzon létre egy méretezési egy rendelkezésre állási zóna beállítása](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
 
 A méretezési és az azt támogató erőforrások, például az Azure terheléselosztó és a nyilvános IP-cím, az ugyanabban a zónában megadott jönnek létre.
 
 ## <a name="use-the-azure-cli-20"></a>Az Azure parancssori felület használatával 2.0
 
-A méretezési csoport egy rendelkezésre állási zóna használó létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](quick-create-cli.md). Rendelkezésre állási zónák használatára kell létrehozni a méretezési a támogatott Azure-régiót, és rendelkezik [tekintse meg a rendelkezésre állási zónák regisztrálva](http://aka.ms/azenroll).
+A méretezési csoport egy rendelkezésre állási zóna használó létrehozásának folyamata megegyezik a részletes a [bevezető cikkben](quick-create-cli.md). Rendelkezésre állási zónák használatára, a méretezés, a támogatott Azure-régiót állítsa be kell létrehoznia.
 
 Adja hozzá a `--zones` paramétert a [az vmss létrehozása](/cli/azure/vmss#az_vmss_create) parancsot, és adja meg, melyik zónába használni (például a zóna *1*, *2*, vagy *3*). Az alábbi példa létrehoz egy nevesített beállítása single-zóna méretezési *myScaleSet* zónában *1*:
 

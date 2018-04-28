@@ -1,11 +1,11 @@
 ---
-title: "Mock API válaszok az Azure portállal |} Microsoft Docs"
-description: "Az oktatóanyag bemutatja, hogyan használható az API Management (APIM) házirend beállítása az API-k, így mocked választ ad vissza. A metódus endables fejlesztők végrehajtására, és abban az esetben, ha a háttérkiszolgáló nem érhető el valós válaszok küldéséhez az API Management-példány tesztelése gombra."
+title: API válaszok utánzása az Azure Portallal | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan lehet az API Management (APIM) használatával úgy beállítani a szabályzatokat az API-kon, hogy azok egy utánzott választ adjanak vissza. Ezzel a metódussal a fejlesztők akkor is folytathatják az API Management-példány megvalósítását és tesztelését, ha a háttérrendszer nem elérhető valós válaszok visszaadása céljából.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,92 +14,90 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: e485071b026c52eb23532639546ad475fc92cde3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: f3209edb23577d656e228aa0d75d852f35cd93ef
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="mock-api-responses"></a>Utánzatait API válaszok
+# <a name="mock-api-responses"></a>API-válaszok utánzása
 
-Háttér API-k is importálja az APIM API-k vagy létrehozott és kezelt manuálisan. A jelen oktatóanyagban szereplő lépések bemutatják a APIM segítségével hozzon létre egy üres API-t, és manuális kezelése. Az oktatóanyag bemutatja, hogyan házirend beállítása az API-k, így mocked választ ad vissza. Ez a módszer lehetővé teszi a fejlesztők végrehajtására, és akkor is, ha a háttérkiszolgáló nem valódi válaszok küldéséhez APIM példány tesztelése gombra. Válaszok kiadványszerkesztést is hasznos lehet a számos forgatókönyv részeként:
+A háttérbeli API-k APIM API-kba importálhatók, de manuálisan is létrehozhatók és kezelhetők. Az oktatóanyag lépései bemutatják, hogyan hozhat létre és kezelhet üres API-kat az APIM használatával. Az oktatóanyag bemutatja, hogyan állíthat be szabályzatokat az API-kon úgy, hogy azok utánzott válaszokat adjanak vissza. Ezzel a metódussal a fejlesztők akkor is folytathatják az APIM-példány megvalósítását és tesztelését, ha a háttérrendszer nem elérhető valós válaszok visszaadása céljából. A válaszok utánzása számos forgatókönyv esetében lehet hasznos:
 
-+ Ha az API homlokzati úgy van kialakítva, először tesztelhet, és a háttér-megvalósítási később. Vagy a háttér még fejlesztés alatt párhuzamosan.
-+ Ha a háttérkiszolgáló nem ideiglenesen nem működési vagy méretezése nem sikerült.
++ Ha előbb az API előtérrendszere készül el, és a háttérrendszer csak később lesz megvalósítva, vagy ha a háttérrendszer fejlesztése párhuzamosan zajlik.
++ Ha a háttérrendszer ideiglenesen üzemen kívül van vagy nem méretezhető.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Egy teszt API létrehozása 
-> * A tesztelési API művelet hozzáadása
-> * Válasz mocking engedélyezése
-> * A mocked API tesztelése
+> * Tesztelési API létrehozása 
+> * Művelet hozzáadása a tesztelési API-hoz
+> * Válaszutánzás engedélyezése
+> * Az utánzott API tesztelése
 
-![Mocked művelet válasz](./media/mock-api-responses/mock-api-responses01.png)
+![Utánzott műveleti válasz](./media/mock-api-responses/mock-api-responses01.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fejezze be a következő gyorsindítási: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
+Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+## <a name="create-a-test-api"></a>Tesztelési API létrehozása 
 
-## <a name="create-a-test-api"></a>Egy teszt API létrehozása 
+A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy háttérrendszer nélküli üres API. Azt is bemutatja, hogyan lehet műveletet hozzáadni az API-hoz. A szakasz lépéseinek végrehajtása után a művelet meghívása hibát ad vissza. A hibák a „Válaszutánzás engedélyezése” szakasz lépéseinek végrehajtásával megszűnnek.
 
-A jelen szakaszban szereplő lépéseket hozzon létre egy üres API nem háttér szemléltetik. Azt is bemutatja, hogyan művelet hozzáadása az API-t. Hiba történt a jelen szakaszban szereplő lépéseket befejezése után a művelet hoz létre. Nincs hiba kap, miután elvégezte a "Válasz mocking engedélyezése" című szakaszában ismertetett lépéseket.
-
-1. Válassza ki **API-k** a alatt **API MANAGEMENT**.
-2. A bal oldali menüben válassza ki a **+ Hozzáadás API**.
-3. Válassza ki **üres API** a listából.
-4. Adja meg "*API tesztelése*" a **megjelenített név**.
-5. Adja meg "*korlátlan*" a **termékek**.
+1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
+2. A bal oldali menüben válassza az **+ API hozzáadása** elemet.
+3. Válassza az **Üres API** elemet a listából.
+4. A **Megjelenítendő név** mezőben adja meg a „*Tesztelési API*” nevet.
+5. A **Termékek** mezőben adja meg a „*Korlátlan*” értéket.
 6. Kattintson a **Létrehozás** gombra.
 
-## <a name="add-an-operation-to-the-test-api"></a>A tesztelési API művelet hozzáadása
+## <a name="add-an-operation-to-the-test-api"></a>Művelet hozzáadása a tesztelési API-hoz
 
 1. Válassza ki az előző lépésben létrehozott API-t.
-2. Kattintson a **+ Hozzáadás művelet**.
+2. Kattintson a **+ Művelet hozzáadása** elemre.
 
-    ![Mocked művelet válasz](./media/mock-api-responses/mock-api-responses02.png)
+    ![Utánzott műveleti válasz](./media/mock-api-responses/mock-api-responses02.png)
 
     |Beállítás|Érték|Leírás|
     |---|---|---|
-    |**URL-cím** (HTTP-műveletet)|GET|Az előre meghatározott HTTP-műveletek közül választhat.|
-    |**URL-CÍME** |*/test*|Egy URL-címet a API-hoz. |
-    |**Megjelenített név**|*Hívás tesztelése*|A megjelenített neve a **fejlesztői portálján**.|
-    |**Leírás**||Adjon meg egy leírást, amely a dokumentáció a a fejlesztők számára, ez az API használatával biztosítható a művelet a **fejlesztői portálján**.|
-    |**Lekérdezés** lap||Lekérdezési paramétereket adhat hozzá. Mellett ad meg nevet és leírást, megadhatja az értékeket, amelyeket ez a paraméter lehet hozzárendelni. Az értékek egyike lehet állítani alapértelmezettként (nem kötelező).|
-    |**Kérelem** lap||Megadhatja a kérelem tartalomtípus, példákat és sémák. |
-    |**Válasz** lap|Ezt a táblázatot követő lépések.|A válaszhoz tartozó állapotkódok, példák és sémák megadása.|
+    |**URL** (HTTP-művelet)|GET|Az előre meghatározott HTTP-műveletek közül választhat.|
+    |**URL-cím** |*/test*|Az API URL-címe. |
+    |**Megjelenített név**|*Teszthívás*|A **fejlesztői portálon** megjelenített név.|
+    |**Leírás**||Adja meg a művelet leírását, amely dokumentációként szolgál majd a **fejlesztői portálon** az API-t használó fejlesztők számára.|
+    |**Lekérdezés** lap||Hozzáadhat lekérdezési paramétereket. A név és a leírás megadása mellett megadhatja az ehhez a paraméterhez rendelhető értékeket is. Az értékek egyike megjelölhető alapértelmezettként (választható).|
+    |**Kérés** lap||Definiálhatja a kéréshez tartozó tartalomtípusokat, példákat és sémákat. |
+    |**Válasz** lap|Lásd a táblázat alatti lépéseket.|Definiálhatja a válaszhoz tartozó állapotkódokat, tartalomtípusokat, példákat és sémákat.|
 
-3. Válassza ki a **válasz** lapon, az URL-cím alatt megjelenített név és Leírás mezőket.
-4. Kattintson a **+ Hozzáadás válasz**.
-5. Válassza ki **200 OK** a listából.
-6. A a **felelősséget** válassza ki a jobb oldali fejléc **+ Hozzáadás ábrázolását**.
-7. Adja meg "*az application/json*" azokat a keresési mezőbe, majd válassza ki a **az application/json** tartalomtípus.
-8. Az a **minta** szöveget adja meg a "*{"sampleField":"test"}*".
+3. Válassza a **Válasz** lapot az URL-cím, a Megjelenítendő név és a Leírás mezők alatt.
+4. Kattintson a **+ Válasz hozzáadása** gombra.
+5. Válassza a **200 OK** elemet a listából.
+6. A jobb oldali **Ábrázolások** fejléc alatt válassza a **+ Ábrázolás hozzáadása** lehetőséget.
+7. Írja be az „*alkalmazás/json*” kifejezést a keresőmezőbe, és válassza ki az **alkalmazás/json** tartalomtípust.
+8. A **Minta** szövegmezőbe írja be a következőt: *{ 'sampleField' : 'test' }*.
 9. Kattintson a **Mentés** gombra.
 
-## <a name="enable-response-mocking"></a>Válasz mocking engedélyezése
+## <a name="enable-response-mocking"></a>Válaszutánzás engedélyezése
 
-1. Válassza ki a "Teszt API létrehozása" lépésben létrehozott API-t.
-2. Válassza ki a tesztelési műveletet hozzáadott.
-2. Kattintson a jobb oldalon látható a **tervezési** fülre.
-3. Az a **bejövő feldolgozási** ablak, kattintson a ceruza ikonra.
-4. Az a **Mocking** lapon jelölje be **statikus válaszok** a **viselkedés Mocking**.
-5. Az a **API-kezelés a következő választ ad vissza:** szövegmezőben **200 OK, az application/json**. Ez a beállítás azt jelzi, hogy az API-t a válasz minta az előző szakaszban meghatározott kell visszaadnia.
+1. Válassza ki a „Tesztelési API létrehozása” lépésben létrehozott API-t.
+2. Válassza ki a hozzáadott tesztműveletet.
+2. A jobb oldali ablakban kattintson a **Tervezés** lapra.
+3. A **Bejövő feldolgozás** ablakban kattintson a ceruza ikonra.
+4. Az **Utánzás** lapon válassza a **Statikus válaszok** lehetőséget az **Utánzási viselkedés** mezőben.
+5. **Az API Management válasza:** szövegmezőbe írja be a következőt: **200 OK, alkalmazás/json**. Ez a beállítás azt jelzi, hogy az API az előző szakaszban definiált mintaválaszt adja vissza.
 6. Kattintson a **Mentés** gombra.
 
-## <a name="test-the-mocked-api"></a>A mocked API tesztelése
+## <a name="test-the-mocked-api"></a>Az utánzott API tesztelése
 
-1. Válassza ki a "Teszt API létrehozása" lépésben létrehozott API-t.
-2. Nyissa meg a **teszt** fülre.
-3. Győződjön meg arról a **hívás tesztelése** API van kiválasztva.
+1. Válassza ki a „Tesztelési API létrehozása” lépésben létrehozott API-t.
+2. Nyissa meg a **Teszt** lapot.
+3. Győződjön meg róla, hogy a **Teszthívás** API van kiválasztva.
 
     > [!TIP]
-    > A szöveg egy sárga sáv **Mocking engedélyezett** azt jelzi, hogy válaszok API Management által visszaadott mocking házirend, és nem egy tényleges háttér választ küld-e.
+    > Egy sárga, **Utánzás engedélyezve** szöveggel ellátott sáv jelzi, hogy az API Management által visszaadott válaszokat egy utánzási szabályzat küldi, és nem a háttérrendszer valós válaszairól van szó.
 
-3. Válassza ki **küldése** hívás teszt végrehajtásához.
-4. A **HTTP-válasz** jeleníti meg az első szakaszban az oktatóanyag mintaként megadott JSON.
+3. Teszthívás indításához válassza a **Küldés** lehetőséget.
+4. A **HTTP-válasz** mező az oktatóanyag első szakaszában mintaként megadott JSON-t jeleníti meg.
 
 ## <a name="video"></a>Videó
 
@@ -107,16 +105,16 @@ A jelen szakaszban szereplő lépéseket hozzon létre egy üres API nem hátté
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Egy teszt API létrehozása
-> * A tesztelési API művelet hozzáadása
-> * Válasz mocking engedélyezése
-> * A mocked API tesztelése
+> * Tesztelési API létrehozása
+> * Művelet hozzáadása a tesztelési API-hoz
+> * Válaszutánzás engedélyezése
+> * Az utánzott API tesztelése
 
-Előzetes következő oktatóanyagot:
+Folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Az átalakítási és egy közzétett API védelme](transform-api.md)
+> [Közzétett API átalakítása és védelme](transform-api.md)

@@ -92,7 +92,7 @@
 #### [Üzembe helyezéssel kapcsolatos gyakori kérdések](cloud-services-deployment-faq.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=cloud-services)
 ## [.csdef XML-séma](schema-csdef-file.md)
 ### [LoadBalancerProbe séma](schema-csdef-loadbalancerprobe.md)
 ### [WebRole séma](schema-csdef-webrole.md)

@@ -1,19 +1,19 @@
 ---
-title: "A Marathon REST API-t Azure DC/OS-fürt kezeléséhez"
-description: "Tárolók telepítése egy Azure tároló szolgáltatás DC/OS fürtben a Marathon REST API használatával."
+title: A Marathon REST API-t Azure DC/OS-fürt kezeléséhez
+description: Tárolók telepítése egy Azure tároló szolgáltatás DC/OS fürtben a Marathon REST API használatával.
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c9322756c30011305ebe6f4f2fd38554f275a1b3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: edd66be25bf2571a7315372898300476fec101ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>A Marathon REST API-t a DC/OS-tárolók kezelése
 
@@ -27,7 +27,7 @@ A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure t
 * [Csatlakozás Azure Container Service-fürthöz](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>Hozzáférés a DC/OS API-k
-Miután csatlakozott az Azure tárolószolgáltatás-fürthöz, a DC/OS-t és a megfelelő REST API-kat a http://localhost:local-port címen érheti el. Az ebben a dokumentumban szereplő példák azt feltételezik, hogy az alagutat a 80-as porton keresztül hozta létre. Például a Marathon végpontok címen érhető el URI-azonosítók kezdve `http://localhost/marathon/v2/`. 
+Miután csatlakozott az Azure Tárolószolgáltatási fürthöz, és érheti el a DC/OS keresztül kapcsolódó REST API-k http://localhost:local-port. Az ebben a dokumentumban szereplő példák azt feltételezik, hogy az alagutat a 80-as porton keresztül hozta létre. Például a Marathon végpontok címen érhető el URI-azonosítók kezdve `http://localhost/marathon/v2/`. 
 
 A [Marathon API-ról](https://mesosphere.github.io/marathon/docs/rest-api.html) és a [Chronos API-ról](https://mesos.github.io/chronos/docs/api.html) a Mesosphere dokumentációjában, a [Mesos Scheduler API-ról](http://mesos.apache.org/documentation/latest/scheduler-http-api/) pedig az Apache dokumentációjában talál további információt.
 
@@ -46,7 +46,7 @@ curl localhost/marathon/v2/apps
 {"apps":[]}
 ```
 
-## <a name="deploy-a-docker-formatted-container"></a>Docker-formázású tároló üzembe helyezése
+## <a name="deploy-a-docker-formatted-container"></a>Docker-formátumú tároló üzembe helyezése
 A JSON-fájl, amely leírja a kívánt üzembe helyezéssel segítségével telepítheti Docker-formátumú tárolók Marathon REST API-n keresztül. Az alábbi minta egy titkos ügynököt a fürt egy Nginx tároló telepíti. 
 
 ```json
@@ -120,7 +120,7 @@ A Marathon API segítségével horizontális felskálázás vagy méretezni az a
 A bújtatott kapcsolat létrehozásakor futtassa a következő parancsot az alkalmazás horizontális.
 
 > [!NOTE]
-> Az URI a http://localhost/marathon/v2/apps/ cím, amelyet a skálázandó alkalmazás azonosítója követ. Ha az itt szerepelő Nginx mintát használja, akkor az URI a http://localhost/marathon/v2/apps/nginx cím lesz.
+> A megadott URI azonosító http://localhost/marathon/v2/apps/ skálázandó alkalmazás azonosítója követ. Ha az Nginx-mintát szövegdobozba itt, akkor az URI lesz az http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -179,7 +179,7 @@ A Marathon API-t az üzemelő alkalmazáspéldányok horizontális skálázásá
 A következő parancsot az alkalmazás horizontális:
 
 > [!NOTE]
-> Az URI a http://localhost/marathon/v2/apps/ cím, amelyet a skálázandó alkalmazás azonosítója követ. Ha az Nginx-mintát használja, akkor az URI a http://localhost/marathon/v2/apps/nginx cím lesz.
+> A megadott URI azonosító http://localhost/marathon/v2/apps/ skálázandó alkalmazás azonosítója követ. Ha az Nginx-mintát itt használ, akkor az URI lesz http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -187,7 +187,7 @@ A következő parancsot az alkalmazás horizontális:
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További tudnivalók a Mesos HTTP-végpontokról](http://mesos.apache.org/documentation/latest/endpoints/)
 * [További tudnivalók a Marathon REST API](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Active Directory hitelesítési - Azure SQL (áttekintés) |} Microsoft Docs"
-description: "További tudnivalók az Azure Active Directory használatáról az SQL-adatbázis, a felügyelt példány és az SQL Data Warehouse hitelesítéshez"
+title: Az Azure Active Directory hitelesítési - Azure SQL (áttekintés) |} Microsoft Docs
+description: További tudnivalók az Azure Active Directory használatáról az SQL-adatbázis, a felügyelt példány és az SQL Data Warehouse hitelesítéshez
 services: sql-database
 author: GithubMirek
 manager: craigg
@@ -9,18 +9,18 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: cfad53a3f86450163b2e29d5e4d4ed2726ecb0bc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fe3864c3f765ff4858deede798d5641a55dd8aef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Az SQL-adatbázis, a példány kezelt vagy az SQL Data Warehouse hitelesítéshez használandó Azure Active Directory-hitelesítés
 Az Azure Active Directory-hitelesítés a Microsoft Azure SQL-adatbázishoz szeretne csatlakozni egy olyan mechanizmus és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitások az Azure Active Directory (Azure AD) segítségével. Az Azure AD-alapú hitelesítés adatbázis-felhasználók identitását, és más Microsoft-szolgáltatásokban egyetlen központi helyen központilag kezelheti. Központi azonosítófelügyeleti biztosít egy helyen adatbázis-felhasználók kezelése és egyszerűbbé teszi a jogosultság kezelése. Előnyei a következők:
 
 * SQL Server-hitelesítés helyett biztosít.
 * Segítséget nyújt a felhasználói identitások elterjedése leállítása adatbázis-kiszolgáló között.
-* Lehetővé teszi, hogy a jelszó Elforgatás egyetlen helyen
+* Lehetővé teszi, hogy a jelszó Elforgatás egyetlen helyen.
 * Az ügyfelek adatbázis-engedélyek külső (az Azure AD) csoportok használatával kezelheti.
 * Integrált Windows-hitelesítés és egyéb Azure Active Directory által támogatott hitelesítési engedélyezésével azt megnövelésével kiküszöbölheti jelszavak tárolását.
 * Az Azure AD authentication tartalmazott adatbázis-felhasználók használatával személyazonosság igazolása az adatbázis szintjén.
@@ -75,7 +75,7 @@ Az Azure AD korlátozásokról felügyelt példány:
 - Csak az Azure AD felügyeleti adatbázisok hozhatnak létre, az Azure Active Directory-felhasználók egyetlen DB hatóköre, és nem rendelkezik ezzel az engedéllyel
 - Adatbázis-tulajdonosi:
   - Az Azure AD rendszerbiztonsági tag nem módosítható az adatbázis (a engedélyezési ON adatbázis módosítása) tulajdonjogát, és nem állítható be, mint a tulajdonos.
-  - Az Azure AD-rendszergazda által létrehozott adatbázisokat a nem tulajdonosi van beállítva (0x1 található sys.sysdatabases owner_sid mező)
+  - Az Azure AD-rendszergazda által létrehozott adatbázisokat a nem tulajdonosi van beállítva (0x1 található sys.sysdatabases owner_sid mező).
 - SQL-ügynök nem tudja felügyelni, ha jelentkezett be az Azure AD rendszerbiztonsági tagok használatával. 
 - Az Azure AD admin nem lehet megszemélyesíteni, EXECUTE AS használatával
 - DAC-kapcsolatról az Azure AD rendszerbiztonsági tagok nem támogatott. 
@@ -97,7 +97,7 @@ Az Azure Active Directory authentication az identitásokat az Azure AD-adatbázi
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
-* Kezelhetőség javítása érdekében, ajánlott az egy dedikált az Azure AD kiépítése csoport rendszergazdaként.   
+* Kezelhetőség javítása érdekében, azt javasoljuk, egy dedikált az Azure AD kiépítése csoport rendszergazdaként.   
 * Csak egy Azure AD-rendszergazda (egy felhasználó vagy csoport) bármikor konfigurálhatja egy Azure SQL Database server, a példány kezelt vagy az Azure SQL Data Warehouse számára.   
 * Csak az SQL Server az Azure AD rendszergazdája kezdetben csatlakozhat a Azure SQL Database-kiszolgálóhoz, a példány kezelt vagy az Azure SQL Data Warehouse egy Azure Active Directory-fiókkal. Az Active Directory-rendszergazda úgy is konfigurálhatja a további Azure AD adatbázis-felhasználók.   
 * Javasolt a kapcsolat időtúllépése beállítást 30 másodperc.   

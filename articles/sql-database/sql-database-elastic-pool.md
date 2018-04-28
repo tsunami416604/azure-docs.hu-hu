@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.date: 04/10/2018
 ms.author: ninarn
 ms.topic: article
-ms.openlocfilehash: 930b5607f343b87adc253cc99d74ddf28235a50b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 33f4430baacbe50f3d4c7da857ee4345d4f74928
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése, és több Azure SQL-adatbázisok méretezése
 
@@ -32,9 +32,9 @@ Rugalmas készletek biztosításával, hogy az adatbázisok beolvasása a teljes
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-Rugalmas készletek engedélyezése a fejlesztői készlet használati előre nem látható időszakok olyan egyéni adatbázis több adatbázis oszt erőforrások vásárlásához. A készlet-alapú vagy az erőforrások konfigurálhatja a [DTU-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#dtu-based-purchasing-model) vagy a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview). A készlet erőforrás követelmény adatbázisa összesített kihasználtsági határozza meg. A tárolókészlet számára elérhető erőforrások mennyisége a fejlesztői költségvetés vezérli. A fejlesztői egyszerűen adatbázisokat ad hozzá a címkészletet, állítja be az adatbázisokra vonatkozó minimális és maximális erőforrások (minumumn és a maximális i vagy a minimális vagy maximális vCores attól függően, hogy a választott resourceing modell), és ezután beállítja az erőforrásokat a készlet alapján a keret. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
+Rugalmas készletek engedélyezése a fejlesztői készlet használati előre nem látható időszakok olyan egyéni adatbázis több adatbázis oszt erőforrások vásárlásához. A készlet-alapú vagy az erőforrások konfigurálhatja a [DTU-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#dtu-based-purchasing-model) vagy a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview). A készlet erőforrás követelmény adatbázisa összesített kihasználtsági határozza meg. A tárolókészlet számára elérhető erőforrások mennyisége a fejlesztői költségvetés vezérli. A fejlesztői egyszerűen adatbázisokat ad hozzá a címkészletet, beállítja a minimális és maximális erőforrások az adatbázisok (minimális és maximális dtu-inak vagy minimális vagy maximális vCores attól függően, hogy a választott resourcing modell), majd beállítja a készlet alapján az erőforrások és a keret. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
 
-A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. A túlterheltség adatbázis is több erőforrást igény kielégítéséhez. Könnyű terhelések tartozó adatbázisok használnak kisebb, és nem tartozó adatbázisok nem erőforrást. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett a készlet költségei is kiszámíthatóak lesznek. További források azzal a különbséggel, hogy az adatbázisok áthelyezése a adja meg a további számítási erőforrásokat az új eDTU-foglalás esetleg egy meglévő készletbe adatbázis állásidő nélkül lehet hozzáadni. Hasonlóképpen ha már nincs szükség további erőforrásokat azok távolíthatók el egy meglévő készlet bármikor időben. Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
+A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. A túlterheltség adatbázis is több erőforrást igény kielégítéséhez. Könnyű terhelések tartozó adatbázisok használnak kisebb, és nem tartozó adatbázisok nem erőforrást. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Plus akkor a készlet előre jelezhető költségvetést. További források azzal a különbséggel, hogy az adatbázisok áthelyezése a adja meg a további számítási erőforrásokat az új eDTU-foglalás esetleg egy meglévő készletbe adatbázis állásidő nélkül lehet hozzáadni. Hasonlóképpen ha már nincs szükség további erőforrásokat azok távolíthatók el egy meglévő készlet bármikor időben. Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Mikor érdemes egy SQL Database rugalmas készlet?
 
@@ -81,7 +81,7 @@ Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis szükséges ahhoz, 
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Egyidejűleg kiugró kihasználtságú adatbázisok maximális száma
 
-Erőforrások megosztása, nem minden adatbázis készletben egyidejűleg használhatják legfeljebb a rendelkezésre álló erőforrások az önálló adatbázisok. A kevesebb adatbázis, amely egyidejűleg csúcsidőre, minél kisebb a készlet erőforrások állítható be, és annál költséghatékony a készlet válik. Általában a készletben lévő adatbázisok legfeljebb 2/3 (vagy 67 %) kell egyidejűleg maximális az erőforrások határértéket.
+Az erőforrások megosztása nem minden adatbázis készletben egyidejűleg használhatják legfeljebb a rendelkezésre álló erőforrások az önálló adatbázisok. A kevesebb adatbázis, amely egyidejűleg csúcsidőre, minél kisebb a készlet erőforrások állítható be, és annál költséghatékony a készlet válik. Általában a készletben lévő adatbázisok legfeljebb 2/3 (vagy 67 %) kell egyidejűleg maximális az erőforrások határértéket.
 
 ***DTU-alapú vásárlási modell példa***<br>
 Ha csökkenteni szeretnénk három S3-adatbázis költségét egy 200 eDTU-s készletben, akkor a háromból egyszerre legfeljebb kettő működhet kiugró kihasználtsággal. Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia. Ha a készletet 200 eDTU-nál nagyobbra növeljük, akkor több S3-adatbázist kellene hozzáadnunk a készlethez, hogy a költség alacsonyabb legyen, mint ha teljesítményszinteket és önálló adatbázisokat használnánk.
@@ -98,7 +98,7 @@ Ha egy 100 DTU-s kiugró kihasználtsággal működő S3-adatbázis átlagosan l
 
 A készlet méretének attól függ, hogy az összesítő a készletben található összes adatbázis szükséges erőforrásokat. Ez magában foglalja a meghatározásakor a következők:
 
-* Összes adatbázis a készletben (attól függően, hogy a választott resourceing modell maximális vCores vagy maximális dtu-k) által használt erőforrások maximális száma.
+* Összes adatbázis a készletben (attól függően, hogy a választott modell resourcing maximális vCores vagy maximális dtu-k) által használt erőforrások maximális száma.
 * A készletben szereplő összes adatbázis által használt maximális tárterület (bájtban).
 
 Minden erőforrás-modellje elérhető szolgáltatás rétegei, tekintse meg a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers.md#dtu-based-purchasing-model) vagy a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
@@ -269,17 +269,17 @@ Létrehozásához és kezeléséhez az SQL Database rugalmas készletek használ
 |[Rugalmas készletek - beolvasása](/rest/api/sql/elasticpools/get)|Lekérdezi a rugalmas készletekben.|
 |[Rugalmas készletek - kiszolgáló listája](/rest/api/sql/elasticpools/listbyserver)|Kiszolgálók rugalmas készletek listáját adja vissza.|
 |[Rugalmas készletek - frissítés](/rest/api/sql/elasticpools/update)|Frissíti a meglévő rugalmas készlet.|
-|[Ajánlott rugalmas készletek érhetők - beolvasása](/rest/api/sql/recommendedelasticpools/get)|Lekérdezi a recommented rugalmas készlet.|
+|[Ajánlott rugalmas készletek érhetők - beolvasása](/rest/api/sql/recommendedelasticpools/get)|Lekérdezi a javasolt rugalmas készlet.|
 |[Ajánlott rugalmas készletek érhetők - kiszolgáló listája](/rest/api/sql/recommendedelasticpools/listbyserver)|A ajánlott rugalmas készletek érhetők értéket ad vissza.|
-|[Ajánlott rugalmas készletek érhetők - lista metrikák](/rest/api/sql/recommendedelasticpools/listmetrics)|Recommented rugalmas készlet metrikák értéket ad vissza.|
+|[Ajánlott rugalmas készletek érhetők - lista metrikák](/rest/api/sql/recommendedelasticpools/listmetrics)|Értéket ad vissza a rugalmas készlet metrikák ajánlott.|
 |[A rugalmas készlet tevékenységek](/rest/api/sql/elasticpoolactivities)|A rugalmas készlet tevékenységek adja vissza.|
 |[A rugalmas készlet adatbázis tevékenységek](/rest/api/sql/elasticpooldatabaseactivities)|Adatbázisok rugalmas készlethez belül tevékenység adja vissza.|
 |[-Adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate)|Létrehoz egy új adatbázist, vagy egy meglévő adatbázist frissíti.|
 |[Adatbázis - Get](/rest/api/sql/databases/get)|Lekérdezi egy adatbázis.|
 |[Adatbázis - hozza ki a rugalmas készlet](/rest/api/sql/databases/getbyelasticpool)|Egy adatbázis lekérdezi a rugalmas készletekben belül.|
-|[Ajánlott rugalmas készlet hozza - adatbázisok](/rest/api/sql/databases/getbyrecommendedelasticpool)|Lekérdezi egy adatbázist egy recommented rugalmas készletet belül.|
+|[Ajánlott rugalmas készlet hozza - adatbázisok](/rest/api/sql/databases/getbyrecommendedelasticpool)|Egy adatbázis lekérdezi a javasolt rugalmas készlet belül.|
 |[Adatbázis - listát a rugalmas készlet](/rest/api/sql/databases/listbyelasticpool)|A rugalmas készletekben található adatbázisok listáját adja vissza.|
-|[Adatbázis - lista által javasolt rugalmas készlet](/rest/api/sql/databases/listbyrecommendedelasticpool)|Adatbázisok belül egy recommented rugalmas készletet listáját adja vissza.|
+|[Adatbázis - lista által javasolt rugalmas készlet](/rest/api/sql/databases/listbyrecommendedelasticpool)|Ajánlott rugalmas készlet belül adatbázisok listáját adja vissza.|
 |[Adatbázis - kiszolgáló listája](/rest/api/sql/databases/listbyserver)|A Server-adatbázisok listáját adja vissza.|
 |[Adatbázis - frissítés](/rest/api/sql/databases/update)|Egy meglévő adatbázist frissíti.|
 

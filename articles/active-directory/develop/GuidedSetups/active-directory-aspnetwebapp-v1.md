@@ -1,24 +1,24 @@
 ---
-title: "Az Azure AD v1 ASP.NET webkiszolgáló bevezetés |} Microsoft Docs"
-description: "A Microsoft bejelentkezés végrehajtási egy ASP.NET-megoldás a hagyományos böngészőalapú webalkalmazás a szabványos OpenID Connect"
+title: Az Azure AD v1 ASP.NET webkiszolgáló bevezetés |} Microsoft Docs
+description: A Microsoft bejelentkezés végrehajtási egy ASP.NET-megoldás a hagyományos böngészőalapú webalkalmazás a szabványos OpenID Connect
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2017
+ms.date: 04/09/2018
 ms.author: andret
-ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 00fef27529dd1d69c13ceaf22e16d2b7cd47801f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés a Microsoft ASP.NET webalkalmazás hozzáadása
@@ -280,7 +280,7 @@ Ezenkívül megjelenik egy táblázatot, beleértve az összes felhasználó sze
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>Egy metódust, amelynek elérésekor teszt egy *[engedélyezés]* attribútum (nem kötelező)
 Ebben a lépésben meg elérésének tesztelése a jogcímek vezérlő névtelen felhasználóként:<br/>
 Válassza ki a Kijelentkezés hivatkozásra a felhasználó, és kijelentkezési folyamat befejezéséhez.<br/>
-A böngészőben, a parancssorba írja be a http://localhost{port}/jogcímeket a tartományvezérlő által védett eléréséhez a `[Authorize]` attribútum
+Most már a böngészőben, írja be a http://localhost:{port}/claims a tartományvezérlő által védett eléréséhez a `[Authorize]` attribútum
 
 #### <a name="expected-results"></a>Kívánt eredmény elérése érdekében
 A parancssorba, nincs szükség, hogy a nézet hitelesítést kell kapnia.

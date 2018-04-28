@@ -1,8 +1,8 @@
 ---
-title: "A Linux virtuális gép felhasználó által hozzárendelt MSI Azure Resource Manager eléréséhez használja"
-description: "Ez az oktatóanyag végigvezeti egy User-Assigned felügyelt szolgáltatás identitásának (MSI) használata a Linux virtuális gép, Azure Resource Manager eléréséhez."
+title: A Linux virtuális gép felhasználó által hozzárendelt MSI Azure Resource Manager eléréséhez használja
+description: Ez az oktatóanyag végigvezeti egy User-Assigned felügyelt szolgáltatás identitásának (MSI) használata a Linux virtuális gép, Azure Resource Manager eléréséhez.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -15,10 +15,10 @@ ms.date: 12/22/2017
 ms.author: arluca
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: c2b6d70e441dc3d300f49adff1c02d7cc65788d2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-resource-manager"></a>Linux virtuális gép, egy felhasználó által hozzárendelt felügyelt szolgáltatás identitásának (MSI) használatával férjenek hozzá az Azure Resource Manager
 
@@ -49,7 +49,7 @@ Ebben az oktatóanyagban a CLI-parancsfájlt példák futtatásához két lehet�
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Egy új erőforráscsoportot a Linux virtuális gép létrehozása
 

@@ -1,94 +1,90 @@
 ---
-title: 'Gyors üzembe helyezés: Horizontális felskálázás az Azure SQL Data Warehouse - PowerShell számítási |} Microsoft Docs'
-description: PowerShell feladatok horizontális adattárházegységek beállításával számítási erőforrásokat.
+title: 'Gyors útmutató: Számítási feladatok skálázása az Azure SQL Data Warehouse-ban – PowerShell | Microsoft Docs'
+description: Azure SQL Data Warehouse-beli számítási feladatok skálázása a PowerShellben. Felskálázással a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: jhubbard
-editor: ''
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 03/16/2018
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 3236c0ad9676712afd220a3c8a9326f3ea1f59d5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.topic: quickstart
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 40fa33aad8bf5ac042f9d80493b97a914fe770bb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Gyors üzembe helyezés: Az Azure SQL Data Warehouse a PowerShellben számítási méretezési
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Gyors útmutató: Azure SQL Data Warehouse-beli számítási feladatok skálázása a PowerShellben
 
-Skála számítási az Azure SQL Data Warehouse a PowerShellben. [Horizontális felskálázás számítási](sql-data-warehouse-manage-compute-overview.md) jobb teljesítményt vagy skálája biztonsági számítási költségek csökkentése érdekében. 
+Azure SQL Data Warehouse-beli számítási feladatok skálázása a PowerShellben. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Ez az oktatóanyag van szükség az Azure PowerShell modul verziója 5.1.1-es vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` találnia, amelynek van jelenleg. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps.md) ismertető cikket. 
+Az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziója szükséges. A jelenleg rendelkezésére álló verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps.md) ismertető cikket.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A gyors üzembe helyezés azt feltételezi, hogy már rendelkezik egy SQL data warehouse is méretezhető. Ha szeretne létrehozni egyet, [létrehozása és a Connect - portál](create-data-warehouse-portal.md) nevű data warehouse létrehozása az **mySampleDataWarehouse**. 
+Ez a gyors útmutató feltételezi, hogy már rendelkezik méretezhető SQL Data Warehouse szolgáltatással. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe az [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) parancs használatával, és kövesse a képernyőn megjelenő útmutatásokat.
+Jelentkezzen be az Azure-előfizetésbe a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancs használatával, és kövesse a képernyőn megjelenő útmutatást.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
-Melyik előfizetéssel használja megtekintéséhez futtassa [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+A használt előfizetés megtekintéséhez futtassa a [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) parancsot.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Ha egy másik előfizetésben található alapértelmezett használni kell, futtassa [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
+Ha nem az alapértelmezett előfizetést kívánja használni, futtassa a [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription) parancsot.
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-data-warehouse-information"></a>Kereshet az adatraktár információi
+## <a name="look-up-data-warehouse-information"></a>Adattárház-információk megkeresése
 
-Keresse meg az adatbázis neve, a kiszolgálónév és a szüneteltetése és folytatása tervezi az adatraktárhoz tartozó erőforráscsoport. 
+Keresse meg a felfüggeszteni és folytatni tervezett adattárházhoz tartozó adatbázis nevét, a kiszolgáló nevét és az erőforráscsoportot.
 
-Kövesse az alábbi lépéseket az adatraktár Tartózkodásihely-adatok kereséséhez.
+Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a **SQL-adatbázisok** az Azure portál bal oldalán.
-3. Válassza ki **mySampleDataWarehouse** a a **SQL-adatbázisok** lap. Ekkor megnyílik az adatraktárba. 
+2. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
+3. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház.
 
-    ![Kiszolgáló nevét és az erőforrás-csoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
+    ![Kiszolgálónév és erőforráscsoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Jegyezze fel az adatraktár-nevét, amely az adatbázis neve lesz. Ne feledje, hogy egy adatraktár az adatbázis egy típust. Is írja be a kiszolgáló nevét, és az erőforráscsoportot. Először használja ezeket az szüneteltetése, folytatása parancsok.
-5. Ha a kiszolgáló foo.database.windows.net, akkor csak az első rész a PowerShell-parancsmagok a kiszolgálónevet. Az előző ábrán a teljes kiszolgálónevet newserver-20171113.database.windows.net. Használjuk **newserver-20171113** a PowerShell-parancsmag a kiszolgálónevet.
+4. Írja fel az adattárház nevét. Ezt fogja használni az adatbázis neveként. Ne feledje, hogy az adattárház az adatbázisok egy típusa. Írja fel a kiszolgáló nevét és az erőforráscsoportot is. Ezeket a felfüggesztő és folytató parancsokban fogja használni.
+5. Ha a kiszolgáló valami.database.windows.net, csak az első részt használja kiszolgálónévként a PowerShell-parancsmagokban. A fenti ábrán a teljes kiszolgálónév newserver-20171113.database.windows.net. A PowerShell-parancsmagban a **newserver-20171113** részt használjuk a kiszolgáló neveként.
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
-Az SQL Data Warehouse növelheti vagy csökkentheti a számítási erőforrásokat adattárházegységek beállításával. A [létrehozása és a Connect - portál](create-data-warehouse-portal.md) létrehozott **mySampleDataWarehouse** és 400 dwu-k inicializálása azt. Az alábbi lépéseket, állítsa be a dwu-k a **mySampleDataWarehouse**.
+Az SQL Data Warehouse-ban növelheti vagy csökkentheti a számítási erőforrásokat az adattárházegységek számának módosításával. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
 
-Adattárházegységek módosításához használja a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell-parancsmagot. Az alábbi példa DW300 az adattárházegységek állítja az adatbázis **mySampleDataWarehouse** erőforráscsoporthoz tartozik, amely található **myResourceGroup** kiszolgálón  **mynewserver-20171113**.
+Az adattárházegységek számának módosítására használja a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell-parancsmagot. Az alábbi példa DW300-ra állítja be az adattárházegységek számát a **myResourceGroup** erőforráscsoportban a **mynewserver-20171113** kiszolgálón üzemeltetett **mySampleDataWarehouse** adatbázishoz.
 
 ```Powershell
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
 ```
 
-## <a name="check-data-warehouse-state"></a>Ellenőrizze, adatraktár állapota
+## <a name="check-data-warehouse-state"></a>Az adattárház állapotának ellenőrzése
 
-Az adatraktár aktuális állapotának megtekintéséhez használja a [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell-parancsmagot. Ez a állapotának beolvasása a **mySampleDataWarehouse** ResourceGroup adatbázis **myResourceGroup** és a kiszolgáló **mynewserver-20171113.database.windows.net**.
+Az adattárház aktuális állapotát megtekintheti a [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell-parancsmag használatával. Ez a **myResourceGroup** erőforráscsoportban a **mynewserver-20171113.database.windows.net** kiszolgálón üzemeltetett **mySampleDataWarehouse** adatbázis állapotát adja vissza.
 
 ```powershell
 $database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
 $database
 ```
 
-Emiatt, az alábbihoz hasonló:
+Az eredmény a következőhöz lesz hasonló:
 
-```powershell   
+```powershell
 ResourceGroupName             : myResourceGroup
 ServerName                    : mynewserver-20171113
 DatabaseName                  : mySampleDataWarehouse
@@ -114,16 +110,16 @@ ReadScale                     : Disabled
 ZoneRedundant                 : False
 ```
 
-Megtekintheti a **állapot** az adatbázis, a kimenetben. Ebben az esetben láthatja, hogy az adatbázis online állapotban.  Ez a parancs futtatásakor Online, felfüggesztése, folytatása, méretezés vagy felfüggesztett állapot értéket kell kapnia. 
+A kimenetben megjelenik az adatbázis **Állapota**. Ebben az esetben az látható, hogy az adatbázis online állapotban van.  Ennek a parancsnak a futtatáskor az Online, Pausing (felfüggesztés), Resuming (folytatás), Scaling (méretezés) vagy Paused (felfüggesztve) állapotértéket kell visszakapnia.
 
-Az állapot önmagában, használja a következő parancsot:
+Az állapot önmagában való megjelenítéséhez használja a következő parancsot:
 
 ```powershell
 $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most megtanulhatta, az adatraktár számítási méretezése. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
+Ebből az útmutatóból megtudhatta, hogyan tudja méterezni egy adattárház számítási kapacitását. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 >[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)

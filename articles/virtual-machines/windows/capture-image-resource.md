@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 8195c5e86e6e8d7e2a0bd059820998692667eca8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4445787fd559c6d0a6dfc891910cb9a139a6907e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Egy felügyelt képre egy általánosított virtuális gép létrehozása az Azure-ban
 
@@ -66,7 +66,7 @@ Győződjön meg arról, hogy a Sysprep által a gépen futó kiszolgálói szer
 Lemezkép létrehozása a közvetlenül a virtuális gépről biztosítja, hogy a kép tartalmazza a virtuális gép, beleértve az operációs rendszer lemezének és adatlemezeket társított lemezeket. Ez a példa bemutatja, hogyan hozzon létre egy felügyelt képre egy virtuális gép által használt lemezek kezelését.
 
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. Ez a cikk a AzureRM 5.7.0 verziója szükséges, vagy később. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. Ez a cikk a AzureRM 5.7.0 verziója szükséges, vagy később. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 
 > [!NOTE]

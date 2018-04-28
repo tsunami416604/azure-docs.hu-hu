@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés a Tártallózó alkalmazással (előzetes verzió) | Microsoft Docs"
-description: "Azure tárerőforrások kezelése a Tártallózó alkalmazással (előzetes verzió)"
+title: Ismerkedés a Tártallózó alkalmazással |} Microsoft Docs
+description: A Tártallózó alkalmazással az Azure storage-erőforrások kezelése
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
@@ -14,33 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 27b3775d81ec6dc093dae4ee46167c5d5a9c9e19
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: MT
+ms.openlocfilehash: e8ebbd1a0ac2153913a2e5f506505ffb481b3822
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="get-started-with-storage-explorer-preview"></a>Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
+# <a name="get-started-with-storage-explorer"></a>Ismerkedés a Tártallózó alkalmazással
 ## <a name="overview"></a>Áttekintés
-Az Azure Tártallózó (előzetes verzió) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken. Ebből a cikkből megismerheti számos módon csatlakozik, és az Azure storage-fiókok kezelése.
+Az Azure Tártallózó egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux. Ebből a cikkből megismerheti számos módon csatlakozik, és az Azure storage-fiókok kezelése.
 
-![Microsoft Azure Tártallózó (előzetes verzió)][0]
+![Microsoft Azure Storage Explorer][0]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* [A Tártallózó (előzetes verzió) letöltése és telepítése](http://www.storageexplorer.com)
 
-> [!NOTE]
-> A Linux disztribúciókkal eltérő Ubuntu 16.04 szükség lehet manuálisan kell telepítenie néhány függősége. Általában a következő csomagok szükségesek:
-> * libgconf-2-4
-> * libsecret
-> * Naprakész ÖET
->
-> Attól függően, hogy a distro lehet többi csomagot, telepítenie kell. A Tártallózó [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciókkal az adott lépést tartalmaznak.
->
->
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+A következő Windows-verziókban támogatott Azure Tártallózó:
+
+* Windows 10 (ajánlott)
+* Windows 8
+* Windows 7
+
+[A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com)
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+Az Azure Tártallózó macOS következő verzióiban támogatott:
+
+* macOS 10.12 "Sierra" és az újabb verzió
+
+[A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com)
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+A következő disztribúciókkal Linux Azure Tártallózó támogatott:
+
+* Ubuntu 16.04 x64 (ajánlott)
+* Ubuntu 17.10 x64
+* Ubuntu 14.04 x64
+
+Azure Tártallózó működhet a más disztribúciókkal, de a fent felsorolt csak ők hivatalosan támogatottak.
+
+A következő függőségek/telepített könyvtárak Linux Azure Storage Exploer futtatásra is szükséges:
+
+* [A .NET core 2.x](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* libsecret (Megjegyzés: libsecret-1.so.0 kell lennie a számítógépen. Ha egy másik verziója telepítve libsecret, megpróbálhatja világos az .so fájl csatolása libsecret-1.so.0)
+* libgconf-2-4
+* Naprakész ÖET
+
+Az Azure Tártallózó [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciókkal az adott lépést tartalmaznak.
+
+[A Storage Explorer letöltése és telepítése](http://www.storageexplorer.com)
+
+---
 
 ## <a name="connect-to-a-storage-account-or-service"></a>Csatlakozás egy tárfiókhoz vagy -szolgáltatáshoz
-A Tártallózó (előzetes verzió) számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. Megteheti például a következőt:
+A Storage Explorer számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. Megteheti például a következőt:
 * Csatlakozhat az Azure-előfizetéséhez kapcsolt tárfiókokhoz.
 * Csatlakozhat olyan tárfiókokhoz és szolgáltatásokhoz, amelyek más Azure-előfizetésekből vannak megosztva.
 * Csatlakozhat egy helyi tárolóhoz az Azure Storage Emulator használatával, és kezelheti azt. 
@@ -60,7 +87,7 @@ Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 >
 >
 
-1. A Tártallózó (előzetes verzió), válassza ki a **fiókok kezelése** gomba a **fiók felügyeleti Panel**.
+1. A Tártallózó, válassza ki a **fiókok kezelése** gomba a **fiók felügyeleti Panel**.
 
     ![Fiókok kezelése][1]
 
@@ -79,7 +106,7 @@ Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
     ![Kiválasztott Azure-előfizetések][4]
 
 ## <a name="work-with-local-development-storage"></a>Munkavégzés helyi fejlesztési tárterülettel
-A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is dolgozhat az Azure Storage Emulator használatával. Ez a megközelítés lehetővé teszi az Azure Storage szimulálhatja anélkül feltétlenül egy tárfiókot Azure, rendszerbe, mert a tárfiók tárfiókra az Azure Storage Emulator.
+A Tártallózó alkalmazással használhat elleni helyi tárterület az Azure Storage Emulator használatával. Ez a megközelítés lehetővé teszi az Azure Storage szimulálhatja anélkül feltétlenül egy tárfiókot Azure, rendszerbe, mert a tárfiók tárfiókra az Azure Storage Emulator.
 
 > [!NOTE]
 > Az Azure Storage Emulator jelenleg kizárólag Windows rendszeren támogatott.
@@ -91,7 +118,7 @@ A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is do
 >
 >
 
-1. A Tártallózó (előzetes verzió) bal oldali ablaktáblán, bontsa ki a **(helyi és kapcsolódó)** > **Tárfiókok** > **(fejlesztés)**  >  **Blobtárolók** csomópont.
+1. A Tártallózó bal oldali ablaktáblán, bontsa ki a **(helyi és kapcsolódó)** > **Tárfiókok** > **(fejlesztés)**  >  **Blobtárolók** csomópont.
 
     ![Helyi fejlesztési csomópont][5]
 
@@ -102,12 +129,9 @@ A Tártallózó (előzetes verzió) segítségével a helyi tárterületen is do
 3. Miután telepítette az emulátort, létrehozhat helyi blobokat, üzenetsorokat és táblákat, és kezelheti őket. Egyes tárfióktípusok munkavégzés további tudnivalókért tekintse meg az alábbi útmutatók:
 
     * [Azure Blob Storage-erőforrások kezelése](vs-azure-tools-storage-explorer-blobs.md)
-    * Azure File Share Storage-erőforrások kezelése: *Hamarosan elérhető*
-    * Azure Queue Storage-erőforrások kezelése: *Hamarosan elérhető*
-    * Azure Table Storage-erőforrások kezelése: *Hamarosan elérhető*
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Külső tárfiók csatolása vagy leválasztása
-A Tártallózó (előzetes verzió) segítségével külső tárfiókokat csatolhat, így azok könnyen megoszthatók. Ez a szakasz külső tárfiókok csatolását (és leválasztását) írja le.
+A Tártallózó alkalmazással csatolhat segítségével külső tárfiókokat, hogy a storage-fiókok azok könnyen megoszthatóak. Ez a szakasz külső tárfiókok csatolását (és leválasztását) írja le.
 
 ### <a name="get-the-storage-account-credentials"></a>Tárfiók hitelesítő adatainak lekérése
 Külső tárfiókok megosztásához az adott fiók tulajdonosának kell szereznie a fiókhoz tartozó hitelesítő adatok (fióknevet és kulcsot) és oszthat meg, hogy információkat csatlakoztatni kívánó személlyel említett fiók. A tárfiók hitelesítő adatait az Azure-portálon szerezheti be az alábbi lépések végrehajtásával:
@@ -120,7 +144,7 @@ Külső tárfiókok megosztásához az adott fiók tulajdonosának kell szerezni
 
 4. A közül **Tárfiókok**, válassza ki a kívánt tárfiókot.
 
-5. A **beállítások**, jelölje be **hívóbetűk**.
+5. A **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet.
 
     ![Hozzáférési kulcs lehetőség][7]
 
@@ -129,9 +153,9 @@ Külső tárfiókok megosztásához az adott fiók tulajdonosának kell szerezni
     ![Elérési kulcs][8]
 
 ### <a name="attach-to-an-external-storage-account"></a>Külső tárfiók csatolása
-Külső tárfiók csatolásához szükség van a fiók nevére és kulcsára. A „Tárfiók hitelesítő adatainak lekérése” szakasz ismerteti ezen értékek lekérését az Azure Portalról. A portálon azonban a fiókkulcs neve: **kulcs1**. Igen, amikor Tártallózó (előzetes verzió) fiókkulcs kér, akkor adja meg a **key1** érték.
+Külső tárfiók csatolásához szükség van a fiók nevére és kulcsára. A „Tárfiók hitelesítő adatainak lekérése” szakasz ismerteti ezen értékek lekérését az Azure Portalról. A portálon azonban a fiókkulcs neve: **kulcs1**. Igen, amikor Tártallózó fiókkulcs kér, akkor adja meg a **key1** érték.
 
-1. A Tártallózó (előzetes verzió), nyissa meg a **párbeszédpanelen csatlakozzon**.
+1. A Tártallózó, nyissa meg a **párbeszédpanelen csatlakozzon**.
 
     ![Csatlakozás Azure Storage-hoz lehetőség][9]
 
@@ -172,10 +196,10 @@ E forgatókönyv szemléltetésére tegyük fel, hogy az „A” felhasználó v
 
 2. "A" felhasználó megosztja a SAS a tárfiók eléréséhez kívánó személlyel ("b" felhasználó, ebben a példában).  
 
-3. A „B” felhasználó a Tártallózó (előzetes verzió) segítségével csatolja az „A” felhasználóhoz tartozó fiókot a megadott SAS-kód használatával.
+3. "B" felhasználó a Tártallózó csatolása a fiókhoz, amely a megadott SAS használatával felhasználóhoz tartozik.
 
 ### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>A megosztani kívánt fiókhoz SAS kapcsolati karakterlánc generálása
-1. A Tártallózó (előzetes verzió), kattintson a jobb gombbal szeretné osztani, majd válassza ki a tárfiók **közös hozzáférésű Jogosultságkód beolvasása...** .
+1. A Tártallózó, kattintson a jobb gombbal szeretné osztani, majd válassza ki a tárfiók **közös hozzáférésű Jogosultságkód beolvasása...** .
 
     ![SAS beszerzése menüpont][14]
 
@@ -186,7 +210,7 @@ E forgatókönyv szemléltetésére tegyük fel, hogy az „A” felhasználó v
 3. Mellett a **kapcsolati karakterlánc** szövegmezőben, jelölje be **másolási** másolja a vágólapra, majd **Bezárás**.
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>A storage-fiók csatolása SAS kapcsolati karakterlánc használatával
-1. A Tártallózó (előzetes verzió), nyissa meg a **párbeszédpanelen csatlakozzon**.
+1. A Tártallózó, nyissa meg a **párbeszédpanelen csatlakozzon**.
 
     ![Csatlakozás Azure Storage-hoz lehetőség][9]
 
@@ -213,12 +237,9 @@ A "A storage-fiók csatolása SAS használatával" szakasz ismerteti, hogyan egy
 Ebben a környezetben a szolgáltatás egy blob tároló, a várólista, a tábla, vagy fájlmegosztásba. SAS létrehozása listázott szolgáltatáshoz az alábbiak szerint:
 
 * [SAS lekérése blob tárolóhoz](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-* SAS lekérése fájlmegosztáshoz: *Hamarosan elérhető*
-* SAS lekérése üzenetsorhoz: *Hamarosan elérhető*
-* SAS lekérése táblához: *Hamarosan elérhető*
 
 ### <a name="attach-to-the-shared-account-service-by-using-a-sas-uri"></a>Közös fiókszolgáltatás csatolása a SAS URI használatával
-1. A Tártallózó (előzetes verzió), nyissa meg a **párbeszédpanelen csatlakozzon**.
+1. A Tártallózó, nyissa meg a **párbeszédpanelen csatlakozzon**.
 
     ![Csatlakozás Azure Storage-hoz lehetőség][9]
 
@@ -251,7 +272,7 @@ Emellett a Azure előfizetéssel Azure Cosmos DB fiókok kezelése, kapcsolódni
 
  ## <a name="connect-to-azure-data-lake-store-by-uri"></a>Csatlakozás az Azure Data Lake Store URI
 Előfordulhat, hogy szeretne hozzáférni olyan erőforrásokhoz, amelyek nem szerepelnek az előfizetésében, de mások biztosítják az erőforrások URI-jének lekéréséhez szükséges engedélyt. Ilyen esetben a bejelentkezés után csatlakozhat a Data Lake Store-hoz az URI segítségével. Tekintse át a következő lépéseket.
-1. Nyissa meg a Tártallózót (előzetes verzió).
+1. Nyissa meg a Storage Explorert.
 2. A bal oldali panelen bontsa ki a **Helyi és csatolt** elemet.
 3. Kattintson a jobb gombbal a **Data Lake Store** elemre, és a helyi menüből válassza a **Csatlakozás a Data Lake Store-hoz…** lehetőséget.
 
@@ -276,9 +297,9 @@ Ha szeretne egy tároló-erőforrás található és nem tudja, ahol van, haszn�
 >
 
 ## <a name="next-steps"></a>További lépések
-* [Azure Blob Storage-erőforrások kezelése a Tártallózó (előzetes verzió) használatával](vs-azure-tools-storage-explorer-blobs.md)
+* [A Tártallózó alkalmazással Azure Blob Storage-erőforrások kezelése](vs-azure-tools-storage-explorer-blobs.md)
 * [Az Azure Tártallózó (előzetes verzió) Azure Cosmos DB kezelése](./cosmos-db/storage-explorer.md)
-* [A Tártallózó (előzetes verzió) Azure Data Lake Store-erőforrások kezelése](./data-lake-store/data-lake-store-in-storage-explorer.md)
+* [A Tártallózó alkalmazással az Azure Data Lake Store-erőforrások kezelése](./data-lake-store/data-lake-store-in-storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Overview.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageAccounts.png

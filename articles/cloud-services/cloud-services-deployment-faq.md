@@ -1,11 +1,11 @@
 ---
-title: "Telepítési problémák esetére, a Microsoft Azure Cloud Services – gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk felsorolja a kapcsolatos gyakori kérdések a Microsoft Azure-szolgáltatásokhoz központi telepítés."
+title: Telepítési problémák esetére, a Microsoft Azure Cloud Services – gyakori kérdések |} Microsoft Docs
+description: Ez a cikk felsorolja a kapcsolatos gyakori kérdések a Microsoft Azure-szolgáltatásokhoz központi telepítés.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: 61d1cc511bf541e75ffda3e84b116f78a434f6f1
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: effc0eb872a1f63e32c1958234c173a53c381620
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure-szolgáltatásokhoz központi telepítési problémák: gyakran ismételt kérdések (GYIK)
 
@@ -79,4 +79,4 @@ Mivel a felhőalapú szolgáltatás egy klasszikus erőforrást, amely nem kompa
 
 A klasszikus portálon a csomag közvetlenül a felügyeleti API réteg feltöltött, majd a API réteg volna ideiglenesen tegye a csomag egy belső tároló figyelembe.  Ez a folyamat teljesítményének és méretezhetőségének problémákat okoz, mivel az API réteg nem volt célja, hogy a fájl feltöltési szolgáltatás lehet.  Az Azure portálon (Resource Manager üzembe helyezési modellben) azt kell megkerülte az ideiglenes lépés API réteg első feltöltése a gyorsabb és megbízhatóbb központi telepítések eredményez. 
 
-A költség, mint nagyon kicsi, és újra felhasználhatja a tárfiókon összes központi telepítések egységességét. Használhatja a [tárolási költség Számológép](https://azure.microsoft.com/en-us/pricing/calculator/#storage1) annak meghatározásához, a költség, töltse fel a service-csomag (CSPKG), töltse le a CSPKG, majd törölje a CSPKG. 
+A költség, mint nagyon kicsi, és újra felhasználhatja a tárfiókon összes központi telepítések egységességét. Használhatja a [tárolási költség Számológép](https://azure.microsoft.com/pricing/calculator/#storage1) annak meghatározásához, a költség, töltse fel a service-csomag (CSPKG), töltse le a CSPKG, majd törölje a CSPKG. 

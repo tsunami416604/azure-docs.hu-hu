@@ -10,10 +10,10 @@ ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: 48c6cacebdeb7505c8dc2bcaed099c33862589ac
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-a-c-module-with-azure-iot-edge"></a>Visual Studio Code használata egy C# modul fejlesztéséhez Azure IoT oldala
 Ez a cikk részletes utasításokat biztosít [Visual Studio Code](https://code.visualstudio.com/) fejlesztésére és központi telepítése az Azure IoT peremhálózati modulok fő fejlesztési eszközként. 
@@ -251,7 +251,7 @@ A következő lépések bemutatják egy Visual Studio Code és az Azure IoT pere
 
     ![Képernyőfelvétel a Visual STUDIO Code Explorer](./media/how-to-vscode-develop-csharp-module/build-module.png)
 
-### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Hozzon létre egy Docker-lemezképet, és tegye közzé a beállításjegyzék
+### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Docker-rendszerkép létrehozása és közzététele a beállításjegyzékben
 
 1. A Visual STUDIO Code Explorerben bontsa ki a **Docker** mappa. Ezután bontsa ki a tárolóplatform mappáját, amely a **linux-x64** vagy a **windows-nano** mappa.
 2. Kattintson a jobb gombbal a **Dockerfile** fájlt, és válassza ki **Build IoT peremhálózati modul Docker kép**. 

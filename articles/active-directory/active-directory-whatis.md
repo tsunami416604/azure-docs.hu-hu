@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.custom: it-pro
-ms.openlocfilehash: 003ce2edda3e2069eb7e05f58ecc2e208c818946
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 01183a2c85b748d593146f6b52a7d4dbd34524cb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory?
 Azure Active Directory (Azure AD) a rendszer a Microsoft több-bérlős, felhőalapú címtár, identity management szolgáltatás, amely core címtárszolgáltatások, alkalmazás-hozzáférés kezelése és egységes megoldássá azonosító adatok védelmét. Az Azure AD is biztosít, amely lehetővé teszi a fejlesztők számára a hozzáférés-vezérlést biztosítanak az alkalmazások központi házirend és a szabályok alapján a gazdag, szabványokon alapuló platformja.
@@ -55,7 +55,7 @@ Az Azure Active Directory javítása érdekében, az Azure Active Directory Basi
 > Számos Azure Active Directory képességet "használatalapú" kiadás keresztül érhetők el:
 >
 > * Active Directory B2C jelenleg a identitás- és hozzáférés-kezelési megoldás a felhasználók felé néző alkalmazásokhoz. További információkért lásd: [Azure Active Directory B2C-vel](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
-> * Az Azure multi-factor Authentication használható keresztül, felhasználónként, vagy a hitelesítésszolgáltatókat. További információkért lásd: [Mi az Azure multi-factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
+> * Az Azure multi-factor Authentication használható keresztül, felhasználónként, vagy a hitelesítésszolgáltatókat. További információkért lásd: [Mi az Azure multi-factor Authentication?](authentication/multi-factor-authentication.md)
 >
 
 ## <a name="how-can-i-get-started"></a>Hogyan lehet kezdjem el?

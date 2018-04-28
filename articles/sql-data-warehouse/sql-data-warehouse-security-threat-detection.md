@@ -1,85 +1,68 @@
 ---
-title: "Ismerkedés az SQL Data Warehouse fenyegetések észlelése"
-description: "A Fenyegetésészlelés az első lépések"
+title: Veszélyforrások detektálása - Azure SQL Data Warehouse |} Microsoft Docs
+description: A fenyegetésészlelés konfigurálása, és vizsgálja meg az Azure SQL Data Warehouse gyanús események.
 services: sql-data-warehouse
-documentationcenter: 
-author: ronortloff
-manager: jhubbard
-editor: 
-ms.assetid: c9073dd9-6c62-4735-8457-dfb9f859c900
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: security
-ms.date: 10/31/2016
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 7f5dab6936e8cac10ac7a4a7dc4c3be116de5ad5
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 8dc1ef0432536c6bfd4fe069406cd057ca069ea2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="get-started-with-threat-detection"></a>A fenyegetésészlelés az első lépései
-> [!div class="op_single_selector"]
-> * [Naplózás](sql-data-warehouse-auditing-overview.md)
-> * [Fenyegetések észlelése](sql-data-warehouse-security-threat-detection.md)
-> 
-> 
+# <a name="threat-detection-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse fenyegetések észlelése
+A fenyegetésészlelés konfigurálása, és vizsgálja meg az Azure SQL Data Warehouse gyanús események.
 
-## <a name="overview"></a>Áttekintés
-A Fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket, amelyek esetleges biztonsági fenyegetéseket jelezhetnek a észleli. A Fenyegetésészlelés preview, és az SQL Data Warehouse támogatja.
+## <a name="what-is-threat-detection"></a>Mi az a fenyegetésészlelés
+A fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket észleli, amelyek esetleges biztonsági fenyegetéseket jelezhetnek. 
 
-A Fenyegetésészlelés biztonsági, amelyek segítségével a felhasználók észlelése és azok bekövetkezésekor, adja meg a biztonsági riasztások a rendellenes tevékenységek reagáljon a lehetséges veszélyforrásokra egy új réteget biztosít. Felhasználók felfedezheti a gyanús eseményeket [Azure SQL Data Warehouse-naplózás](sql-data-warehouse-auditing-overview.md) meghatározni, ha azok hozzáférést, megszegi vagy az adatraktárban adatokat a biztonsági rések elleni kísérlet eredménye.
+A fenyegetésészlelés új biztonsági réteget jelent, amely a rendellenes tevékenységekre adott riasztásokkal teszi lehetővé, hogy az ügyfelek bekövetkezésük pillanatában észlelhessék a vélhető fenyegetéseket, és reagálhassanak azokra. Felhasználók felfedezheti a gyanús eseményeket [Azure SQL Data Warehouse-naplózás](sql-data-warehouse-auditing-overview.md) meghatározni, ha azok hozzáférést, megszegi vagy az adatraktárban adatokat a biztonsági rések elleni kísérlet eredménye.
 A Fenyegetésészlelés egyszerűen potenciális fenyegetések ellen az adatraktárba történő szakértői biztonsági vagy speciális biztonsági rendszerek figyelése kezelése nélkül.
 
-A Fenyegetésészlelés például bizonyos adatbázist érintő rendellenes tevékenységeket utaló esetleges SQL injektálási kísérletek begyűjtésére észleli. SQL-injektálás az egyik a közös webes alkalmazás biztonsági problémák elleni támadásra adatvezérelt alkalmazások, az interneten. A támadók rosszindulatú SQL-utasítások mezőkbe alkalmazás bejegyzést, megsértése vagy az adatbázis adatai módosításához, szúrjon alkalmazás biztonsági előnyeit.
+A fenyegetésészlelés például egyes, az adatbázist érintő rendellenes tevékenységeket észlel, amelyek lehetséges SQL-injektálási kísérleteket jelezhetnek. Az SQL-injektálás az egyik leggyakoribb webalkalmazás-biztonsági probléma az interneten, a használatával adatvezérelt alkalmazásokat támadnak meg. Az alkalmazások biztonsági réseinek kihasználásával a támadók rosszindulatú SQL-utasításokat injektálhatnak az alkalmazás beviteli mezőibe az adatbázisban található adatokkal való visszaéléshez vagy azok módosításához.
 
 ## <a name="set-up-threat-detection-for-your-database"></a>A fenyegetésészlelés az adatbázis beállítása
-1. Indítsa el az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
-2. Nyissa meg a figyelni kívánt SQL-adatraktár tartozó konfigurációs panel. A beállítások panelen válassza ki a **naplózás és Fenyegetésészlelés**.
+1. Indítsa el az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
+2. Nyissa meg a figyelni kívánt SQL-adatraktár tartozó konfigurációs panel. A Beállítások panelen válassza a **Naplózás és fenyegetésészlelés** elemet.
    
-    ![Navigációs ablaktábla][1]
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/1_td_click_on_settings.png)
 3. Az a **naplózás és Fenyegetésészlelés** konfigurációs panelen kapcsolja **ON** naplózás, amely megjeleníti a fenyegetés észlelési beállítások.
    
-    ![Navigációs ablaktábla][2]
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/2_td_turn_on_auditing.png)
 4. Kapcsolja be **ON** veszélyforrások detektálása.
 5. Konfigurálhatja a listáját, amelyek megkapják a biztonsági riasztások adatraktár rendellenes tevékenységek észlelésekor e-maileket.
 6. Kattintson a **mentése** a a **naplózási & Threat detection** konfigurációs panelt, és mentse az új vagy frissített naplózás és a fenyegetés szabályzat.
    
-    ![Navigációs ablaktábla][3]
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/3_td_turn_on_threat_detection.png)
 
 ## <a name="explore-anomalous-data-warehouse-activities-upon-detection-of-a-suspicious-event"></a>Megismerkedhet a rendellenes data warehouse tevékenységek egy gyanús esemény észlelése
 1. A adatbázist érintő rendellenes tevékenységeket észlelésekor e-mailben értesítést fog kapni. <br/>
-   Az e-mailt a gyanús biztonsági esemény, például a rendellenes tevékenységek, a adatbázis neve, a kiszolgáló nevét és az esemény időpontja jellege tájékoztatást fogunk adni. Emellett a lehetséges okok tájékoztatást fogunk adni, és javasolt műveletek vizsgálatához és az adatbázis következő potenciális fenyegetések csökkentésében.<br/>
+   Az e-mail információkat tartalmaz a gyanús biztonsági eseményről, beleértve a rendellenes tevékenységek jellegét, az adatbázis és a kiszolgáló nevét, valamint az esemény időpontját. Az e-mail ezen kívül ismerteti a lehetséges okokat, illetve a lehetséges adatbázis-fenyegetések kivizsgálására és elhárítására javasolt műveleteket is.<br/>
    
-    ![Navigációs ablaktábla][4]
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/4_td_email.png)
 2. Az e-mailt, kattintson a a **Azure SQL-naplózás napló** hivatkozás, amely az Azure-portálon elindul, és a megfelelő naplózási bejegyzések a gyanús esemény környékén megjelenítése.
    
-    ![Navigációs ablaktábla][5]
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/5_td_audit_records.png)
 3. Kattintson az auditálási rekordok további részleteket az adatbázis gyanús tevékenységek, például SQL-utasításban, a hiba okát, és az ügyfél IP.
    
-    ![Navigációs ablaktábla][6]
-4. A naplózási bejegyzések paneljén kattintson **az Excelben** nyissa meg az előre konfigurált excel-sablon importálása és futtatása a napló a gyanús esemény környékén mélyebb elemzése.<br/>
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/6_td_audit_record_details.png)
+4. Az Auditing Records (Naplózási rekordok) panelen kattintson a **Megnyitás Excelben** lehetőségre egy előre konfigurált Excel-sablon megnyitásához a gyanús esemény bekövetkezésének időpontja környékén rögzített naplók importálásához és részletesebb elemzéséhez.<br/>
    **Megjegyzés:** Excel 2010 vagy újabb, gépi lekérdezés és a **gyors összevonás** beállításra akkor szükség
    
-    ![Navigációs ablaktábla][7]
-5. Konfigurálhatja a **gyors összevonás** beállítás - a a **POWER QUERY** menüszalag lapon jelölje be **beállítások** a beállítások párbeszédpanel megjelenítéséhez. Válassza ki az adatvédelmi szakaszt, és válassza a második lehetőség - "És a teljesítmény lehetséges javítása az adatvédelmi szintek figyelmen kívül":
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/7_td_audit_records_open_excel.png)
+5. A **Gyors összevonás** beállítás konfigurálása – a **POWER QUERY** menüszalagján válassza a **Beállítások** elemet a Beállítások párbeszédpanel megjelenítéséhez. Válassza az Adatvédelem szakaszt, majd válassza a második lehetőséget – „A teljesítmény lehetséges javítása az adatvédelmi szintek figyelmen kívül hagyásával”:
    
-    ![Navigációs ablaktábla][8]
-6. A betöltés SQL naplókat, ügyeljen arra, hogy a beállítások lapon helyesen van beállítva, és válassza ki a "Data" szalagon, és kattintson a "Az összes frissítés" gombra a paraméterek.
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png)
+6. Az SQL-naplók betöltéséhez ellenőrizze, hogy megfelelően állította-e be a Beállítások lap paramétereit, majd válassza ki az „Adatok” menüszalagot, és kattintson „Az összes frissítése” elemre.
    
-    ![Navigációs ablaktábla][9]
-7. Az eredmények jelennek meg a **SQL naplók** lap, amely lehetővé teszi a rendellenes tevékenységek talált mélyebb elemzésének futtatja, és csökkenteni a hatását a biztonsági események az alkalmazásban.
+    ![Navigációs ablaktábla](media/sql-data-warehouse-security-threat-detection/9_td_excel_parameters.png)
+7. Az eredmények az **SQL Audit Logs** (SQL-naplók) lapon jelennek meg, ahol részletesebb elemzésnek vetheti alá az észlelt rendellenes tevékenységeket, és csökkentheti a biztonsági események hatását az alkalmazásban.
 
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-security-threat-detection/1_td_click_on_settings.png
-[2]: ./media/sql-data-warehouse-security-threat-detection/2_td_turn_on_auditing.png
-[3]: ./media/sql-data-warehouse-security-threat-detection/3_td_turn_on_threat_detection.png
-[4]: ./media/sql-data-warehouse-security-threat-detection/4_td_email.png
-[5]: ./media/sql-data-warehouse-security-threat-detection/5_td_audit_records.png
-[6]: ./media/sql-data-warehouse-security-threat-detection/6_td_audit_record_details.png
-[7]: ./media/sql-data-warehouse-security-threat-detection/7_td_audit_records_open_excel.png
-[8]: ./media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png
-[9]: ./media/sql-data-warehouse-security-threat-detection/9_td_excel_parameters.png
+## <a name="next-steps"></a>További lépések
+Biztonsági kapcsolatos további információkért lásd: [adatraktár biztonságos](sql-data-warehouse-overview-manage-security.md).

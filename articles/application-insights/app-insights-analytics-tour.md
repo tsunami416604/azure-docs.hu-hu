@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2017
+ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4f82e436e25d01bbfa09ec1e8a2efcdf0be8c006
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 81c5b6051b8e1b1812e47cfcb64538c25ee8bfe5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Az Application Insightsban Analytics bemutatása
 [Elemzés](app-insights-analytics.md) a hatékony keresési funkciója [Application Insights](app-insights-overview.md). Ezeken a lapokon a Log Analytics lekérdezési nyelv ismertetik.
@@ -33,7 +33,7 @@ Nyissa meg az alkalmazás Analytics [áttekintése panel](app-insights-dashboard
 
 ![Nyissa meg portal.azure.com, nyissa meg az Application Insights-erőforrást, majd kattintson a elemzés.](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[Igénybe](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html): n sorok megjelenítése
+## <a name="takehttpsdocsloganalyticsiodocslanguage-referencetabular-operators-show-me-n-rows"></a>[Igénybe](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators): n sorok megjelenítése
 Felhasználói műveletek (általában HTTP-kérelmekre a webes alkalmazás által fogadott) jelentkezzen adatpontok tárolódnak a következő táblába `requests`. Minden egyes sorára az egy telemetriai adat az Application Insights SDK az alkalmazás kapott.
 
 Először néhány minta sorokat a tábla vizsgálata:
@@ -68,7 +68,7 @@ Az Application Insights több alkalmazás adatainak kombinálását, használja 
     
 ```
 
-## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Felső](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) és [rendezés](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
+## <a name="tophttpsdocsloganalyticsiodocslanguage-referencetabular-operatorstop-operator-and-sorthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssort-operator"></a>[Felső](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) és [rendezés](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)
 `take` hasznos eredményeként gyors mintát eléréséhez, de nem meghatározott sorrendben jeleníti meg a tábla azon sorait. Amelyet egy rendezett nézet `top` (a minta) vagy `sort` (keresztül az egész tábla).
 
 Az első n sorok, adott oszlop szerint rendezve jelenjenek meg:
@@ -94,7 +94,7 @@ Az eredmény változatlan marad, de egy kicsit lassabban fog futni. (Is létreho
 
 Az oszlopfejlécek nézetében is használható a képernyőn az eredmények rendezéséhez. De ha már használta természetesen `take` vagy `top` csak lekérdezni egy tábla, kattintson az oszlopfejlécre a része lesz csak sorrendjének a korábban beolvasott rekordok.
 
-## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Ha](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): szűrési feltétel
+## <a name="wherehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorswhere-operator-filtering-on-a-condition"></a>[Ha](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator): szűrési feltétel
 
 Nézzük meg, csak kérelmeket, amelyek egy adott eredmény, hibakód:
 
@@ -173,7 +173,7 @@ További példák:
 [Dátumokat és időpontokat hivatkozás](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
 
 
-## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): válassza ki, nevezze át és számítási oszlopok
+## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): válassza ki, nevezze át és számítási oszlopok
 Használjon [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) kívánt oszlopok kiválasztására:
 
 ```AIQL
@@ -207,7 +207,7 @@ Nevezze át az oszlopok is, és újakat megadása:
 Kifejezések lehetnek a szokásos operátorok (`+`, `-`,...), és számos különböző hasznos funkciók.
 
 ## <a name="extend"></a>Bővíthető
-Ha csak szeretné oszlopok hozzáadása a már meglévőket, [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html):
+Ha csak szeretné oszlopok hozzáadása a már meglévőket, [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator):
 
 ```AIQL
 
@@ -216,7 +216,7 @@ Ha csak szeretné oszlopok hozzáadása a már meglévőket, [ `extend` ](https:
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-Használatával [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) kevésbé részletes, mint [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) Ha meg szeretné tartani a meglévő oszlopokat.
+Használatával [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) kevésbé részletes, mint [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) Ha meg szeretné tartani a meglévő oszlopokat.
 
 ### <a name="convert-to-local-time"></a>Helyi idő átalakítása
 
@@ -229,8 +229,7 @@ Időbélyeg helyi időre mindig UTC formátumban vannak. Így ha Ön a US csende
     | extend localTime = timestamp - 8h
 ```
 
-
-## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Összefoglalója](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): sorcsoportra összesítése
+## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[Összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator): sorcsoportra összesítése
 `Summarize` alkalmazza a megadott *aggregátumfüggvény* keresztül sorcsoportra.
 
 Például a webalkalmazás válaszol a kérelemre idejét a mezőben jelentett `duration`. Nézzük meg, az átlagos válaszidő kérelmekre:
@@ -268,7 +267,7 @@ Ezért az elemek száma összegzése ad események számát az eredeti jó becsl
 
 Szerepel továbbá egy `count()` összesítési (és a count művelet), olyan esetekben, ahol valóban szeretné, hogy a csoportban található sorok számát.
 
-Nincs számos [aggregátumfüggvényeket](https://docs.loganalytics.io/learn/tutorials/aggregations.html).
+Nincs számos [aggregátumfüggvényeket](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
 
 ## <a name="charting-the-results"></a>Az eredmények diagramkészítési
 ```AIQL
@@ -409,7 +408,7 @@ A `where` záradék nem tartalmazza a végeredménye munkamenetek (sessionDurati
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[Százalékos érték](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
+## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[Százalékos érték](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
 Milyen tartományok időtartamok fedik le a munkamenetek különböző százalékának?
 
 A fenti lekérdezéssel, de az utolsó sort cserélje le:
@@ -470,7 +469,7 @@ A kérelem által visszaadott hibaválaszt kapcsolatos kivételeket megkeresés�
 Jó gyakorlat használandó `project` csak a végrehajtása az illesztés előtt kell oszlopok kiválasztásához.
 Az azonos záradékban azt a Timestamp típusú oszlop átnevezése.
 
-## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[Így](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): eredményt hozzárendelése egy változó
+## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[Így](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement): eredményt hozzárendelése egy változó
 
 Használjon `let` válassza ki az előző kifejezés részei. Az eredmények ugyanazok maradtak, mint:
 
@@ -541,7 +540,7 @@ Ha például az alkalmazás tartalmazza:
 ```csharp
 
     var dimensions = new Dictionary<string, string>
-                     {{"p1", "v1"},{"p2", "v2"}};
+                     {{"p1", "v1"},{"p2.d2", "v2"}};
     var measurements = new Dictionary<string, double>
                      {{"m1", 42.0}, {"m2", 43.2}};
     telemetryClient.TrackEvent("myEvent", dimensions, measurements);
@@ -554,7 +553,6 @@ Ezek az értékek Analytics kibontásához:
     customEvents
     | extend p1 = customDimensions.p1,
       m1 = todouble(customMeasurements.m1) // cast to expected type
-
 ```
 
 Annak ellenőrzéséhez, hogy egy egyéni dimenzió egy adott típusú:
@@ -565,6 +563,18 @@ Annak ellenőrzéséhez, hogy egy egyéni dimenzió egy adott típusú:
     | extend p1 = customDimensions.p1,
       iff(notnull(todouble(customMeasurements.m1)), ...
 ```
+
+### <a name="special-characters"></a>Speciális karakterek
+
+A különleges karaktereket vagy a név nyelvi kulcsszavak azonosítókhoz elérhet keresztül kell `['` és `']` vagy `["` és `"]`.
+
+```AIQL
+
+    customEvents
+    | extend p2d2 = customDimensions.['p2.d2'], ...
+```
+
+[Azonosító elnevezési szabályok referencia](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
 
 ## <a name="dashboards"></a>Irányítópultok
 Ahhoz, hogy minden a legfontosabb diagramok és táblák összefogni a irányítópult eredmény rögzíthető.

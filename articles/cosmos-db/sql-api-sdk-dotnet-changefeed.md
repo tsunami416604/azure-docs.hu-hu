@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/19/2018
 ms.author: maquaran
-ms.openlocfilehash: fe6dd9545be17453be38ce9afd5836aa07882ce6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 72eb329c03893f801e112ad33bca0c57c5ee46a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítás adatcsatorna processzor SDK: Töltse le és a kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -41,6 +41,11 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="stable-builds"></a>Stabil buildek
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* A függőben lévő munkahelyi becslése a javításokat.
+
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * Jobb stabilitás.
 * Manuális ellenőrzőpontok támogatása.
@@ -63,6 +68,23 @@ ms.lasthandoff: 04/16/2018
 * GA SDK
 * Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) verziók 1.14.1 vagy régebbi verzió.
 
+### <a name="pre-release-builds"></a>Előzetes buildjeit
+
+### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+* Új v2 API:
+  * A processzor rugalmas konstrukció jelentéskészítő mintát: a ChangeFeedProcessorBuilder osztály.
+    * Paraméterek bármilyen kombinációját is igénybe vehet.
+    * Figyelés és/vagy bérleti gyűjteményt (nem érhető el a v1) DocumentClient-példány is igénybe vehet.
+  * IChangeFeedObserver.ProcessChangesAsync most CancellationToken vesz igénybe.
+  * IRemainingWorkEstimator – a fennmaradó munkahelyi négyzetgyökének külön-külön is használható a processzor.
+  * Új bővítési pontok:
+    * IParitionLoadBalancingStrategy - egyéni terheléselosztás partíciók a processzor példányai között.
+    * ILease, ILeaseManager – az egyéni partícióbérlés-kezelést.
+    * IPartitionProcessor - partíció egyéni feldolgozási módosításait.
+* Naplózás - használ [LibLog](https://github.com/damianh/LibLog) könyvtárban.
+* 100 %-os visszamenőlegesen kompatibilis V1-es API-t.
+* Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1 verzió vagy újabb verzió.
+
 ## <a name="release--retirement-dates"></a>Kiadás & használatból való kivonást dátumok
 Microsoft legalább értesítést küldenek **12 hónapon keresztül** SDK eltávolítása érdekében vagy újabb támogatott verzióra való áttérés előtt.
 
@@ -74,6 +96,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.3.2](#1.3.2) |2018. április 18. |--- |
 | [1.3.1](#1.3.1) |2018. március 13. |--- |
 | [1.2.0](#1.2.0) |2017. október 31. |--- |
 | [1.1.1](#1.1.1) |2017. augusztus 29. |--- |

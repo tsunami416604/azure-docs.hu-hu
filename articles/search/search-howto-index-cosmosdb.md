@@ -1,25 +1,20 @@
 ---
 title: Egy Azure Cosmos DB adatforrás indexelése az Azure Search |} Microsoft Docs
 description: Ez a cikk bemutatja, hogyan hozzon létre egy Azure Search-indexelőt, egy Azure Cosmos DB adatforrás.
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: ''
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: search
-ms.date: 03/23/2018
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: 165402f5147224cd355f0ae14642069a3de58f19
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fcc77104103cea91f5eecb972e1d6e872c933015
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Az Azure Search használatával az indexelők Cosmos DB csatlakozás
 
@@ -78,7 +73,7 @@ Ez a cikk bemutatja, hogyan használható a REST API-t. Ha úgy dönt, a portál
 ## <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
 Hozzon létre egy adatforrást, tegye a FELADÁS egy vagy több:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -102,12 +97,12 @@ A kérelem törzsében az adatforrás-definíciót, amely az alábbi mezőket ke
 * **hitelesítő adatok**:
   
   * **connectionString**: kötelező. A következő formátumban adja meg a kapcsolati adatokat az Azure Cosmos DB adatbázishoz: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` a MongoDB gyűjtemények hozzáadása **ApiKind = MongoDB** a kapcsolati karakterlánc módosításait: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDB` 
-* **container**:
+* **tároló**:
   
   * **név**: kötelező. Adja meg az azonosítót, az adatbázis-gyűjtemény indexelése.
   * **lekérdezés**: nem kötelező. Megadhat egy lekérdezést egy tetszőleges JSON-dokumentumok egybesimítására Azure Search indexelheti strukturálatlan sémába. MongoDB-gyűjtemények lekérdezések nem támogatottak. 
 * **dataChangeDetectionPolicy**: ajánlott. Lásd: [módosított dokumentumokat indexelő](#DataChangeDetectionPolicy) szakasz.
-* **dataDeletionDetectionPolicy**: Optional. Lásd: [törölt dokumentumok indexelő](#DataDeletionDetectionPolicy) szakasz.
+* **dataDeletionDetectionPolicy**: nem kötelező. Lásd: [törölt dokumentumok indexelő](#DataDeletionDetectionPolicy) szakasz.
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Lekérdezések alakzathoz indexelt adatokat
 Adjon meg egy SQL-lekérdezést egybesimítására beágyazott tulajdonságok vagy a tömbök, a projekt JSON tulajdonságait, és szűrje az adatokat indexelése. 
@@ -151,7 +146,7 @@ A cél Azure Search-index létrehozása, ha Ön nem rendelkezik ilyennel. Egy in
 
 Az alábbi példa létrehoz egy indexet és azonosító és a Leírás mezőt:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -197,7 +192,7 @@ Gondoskodjon arról, hogy a cél index sémája kompatibilis a forrás JSON-doku
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozásához:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -216,7 +211,7 @@ Hozzon létre indexelő API további részletekért tekintse meg [létrehozása 
 ### <a name="running-indexer-on-demand"></a>Az indexelő igény szerinti futtatása
 Rendszeres időközönként futó ütemezett, mellett az indexelő is el az igény szerinti:
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -228,7 +223,7 @@ Az indexelő állapotát a portál vagy az API-val beolvasása indexelő állapo
 ### <a name="getting-indexer-status"></a>Az indexelő állapotának beolvasása
 Az indexelő állapotát és végrehajtási előzményeinek le:
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2016-09-01
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
     api-key: [Search service admin key]
 
 A válasz indexelő általános állapotát, az utolsó (vagy folyamatban) indexelő meghívása és az indexelő legutóbbi indítások előzményeit tartalmazza.
@@ -302,7 +297,7 @@ Ha egy egyéni lekérdezést használ, győződjön meg arról, hogy a tulajdons
 
 A következő példa egy adatforrást egy helyreállítható törlési házirendet hoz létre:
 
-    POST https://[Search service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 

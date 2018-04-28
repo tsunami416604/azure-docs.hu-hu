@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/15/2017
 ms.author: markgal;arunak;sogup
-ms.openlocfilehash: 2d25782ef73f8899587636b65ccd2d7870f89e6f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 12ecc7ab33dba2f4f9842a4fbd6491400024a4e5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="recovery-services-vaults-overview"></a>Helyreállítási szolgáltatások tárolók áttekintése
 
 Ez a cikk ismerteti a Recovery Services-tároló funkcióit. Recovery Services-tároló egy tárolási egység, amely az adatok Azure-ban. Az adatok program általában másolja az adatokat, vagy a virtuális gépek (VM), a munkaterhelés, a kiszolgálókra vagy munkaállomásokra konfigurációs adatait. Recovery Services-tárolók használatával a különböző Azure-szolgáltatásokra például IaaS virtuális gépeket (Linux- vagy Windows-) és az Azure SQL-adatbázisok biztonsági mentési adatok tárolására. Helyreállítási szolgáltatások tárolók támogatása a System Center DPM, a Windows Server, Azure Backup Server, és több. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. 
 
-Azure-előfizetéssel, belül legfeljebb 25 Recovery Services-tárolók régiónként is létrehozhat.
+Azure-előfizetéssel, belül régiónként előfizetésenként legfeljebb 500 Recovery Services-tárolók is létrehozhat.
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Összehasonlító Recovery Services-tárolók és a mentési tárolókat
 

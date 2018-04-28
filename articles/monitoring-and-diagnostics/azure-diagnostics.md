@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Diagnostics áttekintése |} Microsoft Docs"
-description: "Az Azure diagnostics használjon hibakeresés, méri a teljesítményt, figyelés, a forgalom elemzése a felhőszolgáltatások, virtuális gépek és a service fabric"
+title: Az Azure Diagnostics áttekintése |} Microsoft Docs
+description: Az Azure diagnostics használjon hibakeresés, méri a teljesítményt, figyelés, a forgalom elemzése a felhőszolgáltatások, virtuális gépek és a service fabric
 services: multiple
 documentationcenter: .net
 author: rboucher
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
 ms.service: multiple
 ms.workload: na
@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0231a6c1d78818b948bb24d0c406fb2f2da17a0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-diagnostics"></a>Mi az Azure Diagnostics
-Az Azure Diagnostics a funkció, amely lehetővé teszi a telepített alkalmazás diagnosztikai adatok gyűjtésére Azure belül. Számos különböző forrásokból származó használja a diagnosztika bővítményét. Azure Cloud Service webes és feldolgozói szerepkörök, Microsoft Windows és a Service Fabric rendszert futtató Azure virtuális gépek jelenleg támogatott vannak. Más Azure-szolgáltatásokkal rendelkezik saját külön diagnosztika.
+Az Azure Diagnostics a funkció, amely lehetővé teszi a telepített alkalmazás diagnosztikai adatok gyűjtésére Azure belül. Számos különböző forrásokból származó használja a diagnosztika bővítményét. Azure Cloud Service (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek esetében támogatott vannak, és a Service Fabric virtuálisgép-méretezési készlet. Más Azure-szolgáltatásokkal rendelkezik különböző diagnosztika módszerek. Lásd: [figyelőeszközök az Azure-ban](monitoring-overview.md). 
 
 ## <a name="data-you-can-collect"></a>Begyűjtheti adatok
 Az Azure Diagnostics össze tudják gyűjteni a következő típusú adatok:
@@ -34,20 +34,17 @@ Az Azure Diagnostics össze tudják gyűjteni a következő típusú adatok:
 | .NET eseményforrás |Kód írása a .NET használatával események [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) osztály |
 | IIS-napló |IIS-webhelyek kapcsolatos információk |
 | Jegyzékfájl alapú ETW |A folyamat által generált Windows nyomkövetési eseményeinek |
-| Összeomlási memóriaképek |Egy alkalmazás összeomlása esetén a folyamat állapotával kapcsolatos információk |
-| Egyéni hibanaplókat |Az alkalmazás vagy szolgáltatás által létrehozott naplók |
+| összeomlási memóriaképek, |Egy alkalmazás összeomlása esetén a folyamat állapotával kapcsolatos információk |
+| egyéni hibanaplók, |Az alkalmazás vagy szolgáltatás által létrehozott naplók |
 | Azure-infrastruktúra diagnosztikai naplók |Maga diagnosztikai információk |
 
-Az Azure diagnostics-bővítmény, az adatok átviteléhez az Azure storage-fiók, vagy elküldi a hasonló szolgáltatások [Application Insights](../application-insights/app-insights-cloudservices.md). Az adatok a Hibakeresés és hibaelhárítás, méri a teljesítményt, erőforrás-használat, a forgalom elemzése és a kapacitástervezés figyelés és naplózás is használhatja.
+Az Azure diagnostics-bővítmény, az adatok átviteléhez az Azure storage-fiók, vagy küldje el a [Application Insights](../application-insights/app-insights-cloudservices.md). Is adatfolyamként való [Eseményközpont](../event-hubs/event-hubs-what-is-event-hubs.md), amely ezután lehetővé teszi a montoring-Azure szolgáltatásokhoz való küldéshez. Az adatok a Hibakeresés és hibaelhárítás, méri a teljesítményt, erőforrás-használat, a forgalom elemzése és a kapacitástervezés figyelés és naplózás is használhatja.
 
 ## <a name="versioning"></a>Verziókezelés
 Lásd: [Azure Diagnostics Rendszerverzió-előzmények](azure-diagnostics-versioning-history.md).
 
 ## <a name="next-steps"></a>További lépések
 Válassza ki a diagnosztikai adatok gyűjtéséhez és használja a következő cikkeket a kezdéshez kívánt melyik szolgáltatás. Az általános Azure diagnostics hivatkozásokkal az egyes feladatok esetében.
-
-## <a name="web-apps"></a>Web Apps
-Vegye figyelembe, hogy nem használó webalkalmazások Azure Diagnostics. Keresse meg a megfelelő adatokat: [webalkalmazások](../app-service/web-sites-enable-diagnostic-log.md)
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Cloud Services Azure Diagnostics használatával
 * Ha a Visual Studio használatával, lásd: [nyomon követésére, a Cloud Services alkalmazás használja a Visual Studio](../vs-azure-tools-debug-cloud-services-virtual-machines.md) a kezdéshez. Egyéb esetben lásd:

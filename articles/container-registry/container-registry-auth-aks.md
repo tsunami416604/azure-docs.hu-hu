@@ -1,18 +1,18 @@
 ---
-title: "A hitelesítést az Azure Tárolószolgáltatás Azure tároló beállításjegyzék"
-description: "Megtudhatja, hogyan biztosít hozzáférést a személyes tárolót beállításjegyzék lemezképeihez az Azure Tárolószolgáltatás egy Azure Active Directory szolgáltatás egyszerű."
+title: A hitelesítést az Azure Tárolószolgáltatás Azure tároló beállításjegyzék
+description: Megtudhatja, hogyan biztosít hozzáférést a személyes tárolót beállításjegyzék lemezképeihez az Azure Tárolószolgáltatás egy Azure Active Directory szolgáltatás egyszerű.
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
-ms.openlocfilehash: a115df87feea0c9f7987e0c65f6f880325d88ca2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6f2f035015445ee1fb2009b64d20d654484d7775
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-service"></a>A hitelesítést az Azure Tárolószolgáltatás Azure tároló beállításjegyzék
 

@@ -1,12 +1,12 @@
 ---
-title: "Magas rendelkezésre állásra konfigurálja a Azure MFA kiszolgáló |} Microsoft Docs"
-description: "Azure multi-factor Authentication kiszolgáló magas rendelkezésre állást biztosító konfigurációk több példányának telepítése."
+title: Magas rendelkezésre állásra konfigurálja a Azure MFA kiszolgáló |} Microsoft Docs
+description: Azure multi-factor Authentication kiszolgáló magas rendelkezésre állást biztosító konfigurációk több példányának telepítése.
 services: multi-factor-authentication
 keywords: Az Azure MFA
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -17,10 +17,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: c2f9a2422ea5a47edd80948073c7f7a6cb0d0945
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Magas rendelkezésre állásra konfigurálja a Azure multi-factor Authentication kiszolgáló
 
@@ -73,6 +73,6 @@ Vegye figyelembe a következő elemek a fenti ábrán használat számozott ter�
    ![Az Azure MFA kiszolgáló - a felhasználói portál és Mobile App szolgáltatás magas rendelkezésre ÁLLÁSÚ](./media/mfa-server-high-availability/mfaportal.png)
 3. Az AD FS kiszolgálófarm terhelése eloszlik és közzétéve az interneten keresztül terheléselosztással rendelkező AD FS proxyk peremhálózatban. Minden ADFS-kiszolgáló az AD FS-ügynök használatával kommunikálni az Azure multi-factor Authentication kiszolgálók egy elosztott terhelésű URL-címet (mfaapp.contoso.com) használatával a 443-as TCP-porton keresztül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure MFA kiszolgáló telepítése és konfigurálása](multi-factor-authentication-get-started-server.md)

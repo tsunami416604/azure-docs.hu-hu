@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/03/2018
+ms.date: 04/17/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: 34b03cf1fda29706936968ab93cb35a6a2510c65
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: af253525ce5a77ece72e810642abcaf7931e39d8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Fizikai memória kapacitásának Azure verem kezelése
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/05/2018
 A teljes rendelkezésre álló memória kapacitásbővítés Azure verem, több memóriát is hozzáadhat. Azure-készletben a fizikai kiszolgáló is hivatkozunk egy *skálázási egység csomópont*. Összes méretezési egység tagcsomópontja egyetlen skálázási egységére azonos memóriamennyiség kell rendelkeznie.
 
 > [!note]  
-> A folytatás előtt tekintse át a hardver gyártó dokumentációjában, ha a memória frissíti a gyártó egy fizikai memória-frissítés támogatja. Az OEM hardver gyártójával támogatási szerződése szükség lehet, hogy a szállító hajtsa végre a fizikai kiszolgáló állvány elhelyezése és az eszköz belső vezérlőprogram frissítése.
+> A folytatás előtt tekintse át a hardver gyártó dokumentációjában, ha a gyártó támogatja a fizikai memória frissítése. Az OEM hardver gyártójával támogatási szerződése szükség lehet, hogy a fizikai kiszolgáló állvány elhelyezése és az eszköz belső vezérlőprogram frissítési működnek.
 
 A következő folyamatábra bemutatja, az általános folyamat egyes skálázási egység csomópont memóriáját.
 

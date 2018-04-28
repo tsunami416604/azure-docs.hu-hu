@@ -3,17 +3,17 @@ title: Az Azure Container Instances áttekintése
 description: Az Azure Container Instances ismertetése
 services: container-instances
 author: seanmck
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
 ms.date: 03/29/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: e10d4046f543fbcc479421f4ca8f10221abc806f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 09e22d7e61a612ecec53ba7a17ad0fe72a29b2c1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -23,7 +23,7 @@ Az Azure Container Instances ideális megoldás minden olyan forgatókönyv eset
 
 ## <a name="fast-startup-times"></a>Rövid indítási idők
 
-A tárolók jelentős előnyöket nyújtanak a virtuális gépekkel szemben az indítás terén. Az Azure Container Instances használatával másodpercek alatt elindíthat egy tárolót az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie és kezelnie.
+A tárolók jelentős előnyöket nyújtanak a virtuális gépekkel szemben az indítás terén. Az Azure Container Instanceszel másodpercek alatt elindíthat egy tárolót az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie és kezelnie.
 
 ## <a name="public-ip-connectivity-and-dns-name"></a>Nyilvános IP-kapcsolat és DNS-név
 
@@ -39,7 +39,7 @@ A tárolók általában egyetlen alkalmazás futtatására vannak optimalizálva
 
 ## <a name="persistent-storage"></a>Állandó tárolók
 
-Az állapotok Azure Container Instances használatával való lekéréséhez és megőrzéséhez az [Azure-fájlmegosztások közvetlen csatolásának](container-instances-mounting-azure-files-volume.md) lehetőségét kínáljuk.
+Az állapotok az Azure Container Instanceszel való lekéréséhez és megőrzéséhez az [Azure-fájlmegosztások közvetlen csatolásának](container-instances-mounting-azure-files-volume.md) lehetőségét kínáljuk.
 
 ## <a name="linux-and-windows-containers"></a>Linux- és Windows-tárolók
 

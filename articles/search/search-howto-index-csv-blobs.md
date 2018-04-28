@@ -1,24 +1,19 @@
 ---
-title: "Az Azure Search-indexelőt, blob CSV blobok indexelő |} Microsoft Docs"
+title: Az Azure Search-indexelőt, blob CSV blobok indexelő |} Microsoft Docs
 description: Megtudhatja, hogyan CSV BLOB az Azure Search index
-services: search
-documentationcenter: 
 author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: ed3c9cff-1946-4af2-a05a-5e0b3d61eb25
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 12/28/2017
 ms.author: eugenesh
-ms.openlocfilehash: 40b7f1f4f75d389a64329e7d8fd3c7feb79d5e55
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: dfb1bd48a47e45363e8761a3d79901e5171b37d1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Az Azure Search-indexelőt, blob CSV blobok indexelő
 Alapértelmezés szerint [blob Azure Search-indexelőt](search-howto-indexing-azure-blob-storage.md) elemez szöveg blobok szöveg egyetlen adattömb jelölik. Azonban a CSV-adatokat tartalmazó BLOB, gyakran szeretné kezelni a blob, különálló dokumentumként soronként. Például adja a következő tagolt szöveget: 
@@ -47,7 +42,7 @@ A CSV-blobok index, definíció létrehozása vagy módosítása egy indexelő r
 
 Hozzon létre indexelő API további részletekért tekintse meg [létrehozása indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-`firstLineContainsHeaders`azt jelzi, hogy az első sort (kötelező) minden egyes blob tartalmaz-e a fejléceket.
+`firstLineContainsHeaders` azt jelzi, hogy az első sort (kötelező) minden egyes blob tartalmaz-e a fejléceket.
 Blobok nem tartalmaznak egy kezdeti fejlécsort, ha a fejlécek az indexelő konfigurációban kell megadni: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 

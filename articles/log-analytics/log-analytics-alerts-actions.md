@@ -12,16 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2018
+ms.date: 04/13/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a48e4c0ab61e5dcf526bb8b1d8bdc6b0d16f9e7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 717adf1b19b9de8542ec507df3a01b187d0df8a5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Műveletek hozzáadni a Naplóelemzési riasztási szabályok
+
+> [!NOTE]
+> A Naplóelemzési riasztások [az Azure kiterjesztendő](../monitoring-and-diagnostics/monitoring-alerts-extend.md).  Riasztások az Azure használatát [művelet csoportok](../monitoring-and-diagnostics/monitoring-action-groups.md) ebben a cikkben az információk helyett a lépések meghatározásához.
+
+
 Ha egy [riasztást hoz létre a Naplóelemzési](log-analytics-alerts.md), lehetősége van a [a riasztási szabály konfigurálása](log-analytics-alerts.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különféle műveletek és a részletek konfigurálásával összes típusához.
 
 | Műveletek | Leírás |
@@ -32,7 +37,7 @@ Ha egy [riasztást hoz létre a Naplóelemzési](log-analytics-alerts.md), lehet
 
 
 ## <a name="email-actions"></a>E-mailek műveletek
-E-mailek műveletek a riasztás részleteit e-mail küldése egy vagy több címzett.  Megadhatja, hogy az e-mail tárgya, de annak tartalma Naplóelemzési által összeállított szabványos formátumban.  Ez magában foglalja például a nevét a riasztás részleteit a napló keresés által visszaadott legfeljebb tíz rekordok mellett összegző információkat.  A Naplóelemzési, visszatér a rekordok teljes készletét, hogy a lekérdezés egy napló keresés hivatkozást is tartalmaz.   Az üzenet küldője *a Microsoft Operations Management Suite Team &lt; noreply@oms.microsoft.com &gt;* . 
+E-mailek műveletek a riasztás részleteit e-mail küldése egy vagy több címzett.  Az e-mail tárgyát megadhatja, a tartalma azonban szabványos, és a Log Analytics hozza létre.  Ez magában foglalja például a nevét a riasztás részleteit a napló keresés által visszaadott legfeljebb tíz rekordok mellett összegző információkat.  A Naplóelemzési, hogy a rekordok teljes készletet ad vissza, hogy a lekérdezés egy napló keresés hivatkozást is tartalmaz.   Az üzenet küldője *a Microsoft Operations Management Suite Team &lt; noreply@oms.microsoft.com &gt;* . 
 
 E-mailek műveletek igényelnek a tulajdonságok az alábbi táblázatban.
 
@@ -44,7 +49,7 @@ E-mailek műveletek igényelnek a tulajdonságok az alábbi táblázatban.
 
 ## <a name="webhook-actions"></a>Webhookműveletek
 
-Webhookműveletek lehetővé teszi egy külső folyamatban egy HTTP POST kérelemben keresztül.  A meghívott szolgáltatás kell webhookok támogatja, és határozza meg, hogyan fogja használni a tartalom kap.  Sikerült is meghívhatja a REST API-t nem támogató kifejezetten webhookokkal, amíg a kérelmet, amely együttműködik a API formátumban.  Példák a webhook riasztást válaszul egy üzenetet küldi [Slackhez](http://slack.com) , vagy hozzon létre egy incidenst a [PagerDuty](http://pagerduty.com/).  Riasztási szabály létrehozása a Slackhez hívása olyan webhook részletes útmutatást érhető el: [Naplóelemzési riasztásokban Webhookok](log-analytics-alerts-webhooks.md).
+Webhookműveletek lehetővé teszi egy külső folyamatban egy HTTP POST kérelemben keresztül.  A meghívott szolgáltatás kell webhookok támogatja, és határozza meg, hogyan használja a tartalom kap.  Sikerült is meghívhatja a REST API-t nem támogató kifejezetten webhookokkal, amíg a kérelmet, amely együttműködik a API formátumban.  Példák a webhook riasztást válaszul egy üzenetet küldi [Slackhez](http://slack.com) , vagy hozzon létre egy incidenst a [PagerDuty](http://pagerduty.com/).  Riasztási szabály létrehozása a Slackhez hívása olyan webhook részletes útmutatást érhető el: [Naplóelemzési riasztásokban Webhookok](log-analytics-alerts-webhooks.md).
 
 Webhookműveletek igényelnek a tulajdonságok az alábbi táblázatban.
 
@@ -54,10 +59,8 @@ Webhookműveletek igényelnek a tulajdonságok az alábbi táblázatban.
 | Egyéni JSON-adattartalmat |A webhook küldendő egyéni hasznos.  További információ alább olvasható. |
 
 
-Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatásnak továbbított adatok JSON formátumú, tartalmazza.  Alapértelmezés szerint a tartalom a következő táblázat tartalmazza az értékeket.  Ha szeretné, ezek a hasznos adatok kicseréli a saját egyéni egy.  Ebben az esetben használhatja a változók a táblázatban az egyes paraméterek egyéni adattartalmat értékük felvenni.
+Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatásnak továbbított adatok JSON formátumú, tartalmazza.  Alapértelmezés szerint a tartalom a következő táblázat a értékeket tartalmaz.  Ha szeretné, ezek a hasznos adatok kicseréli a saját egyéni egy.  Ebben az esetben használhatja a változók a táblázatban az egyes paraméterek egyéni adattartalmat értékük felvenni.
 
->[!NOTE]
-> Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a webhook hasznos adatai módosultak.  A formátum részletei: [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse).  A példa látható [minták](#sample-payload) alatt.
 
 | Paraméter | Változó | Leírás |
 |:--- |:--- |:--- |
@@ -110,9 +113,9 @@ Runbook műveleteket igényelnek a tulajdonságok az alábbi táblázatban.
 | Forgatókönyv | Ez a Runbook elindítja a riasztás létrehozásakor. |
 | Futtassa a | Adja meg **Azure** a runbook futtatásához a felhőben.  Adja meg **hibridfeldolgozó** a runbook futhat az ügynök [hibrid forgatókönyv-feldolgozó](../automation/automation-hybrid-runbook-worker.md ) telepítve.  |
 
-Runbook műveletek indíthatja a runbook egy [webhook](../automation/automation-webhooks.md).  A riasztási szabály létrehozásakor az automatikusan létrehoz egy új webhook a runbook nevű **OMS riasztás szervizelési** GUID követ.  
+Runbook műveletek indíthatja a runbook egy [webhook](../automation/automation-webhooks.md).  A riasztási szabály létrehozásakor automatikusan létrehoz egy új webhook a runbook nevű **OMS riasztás szervizelési** GUID követ.  
 
-Nem közvetlenül tölthető fel a runbook paramétereket, de a [$WebhookData paraméter](../automation/automation-webhooks.md) a riasztást, többek között az azt létrehozó napló keresési eredmények részleteit tartalmazza.  A runbook kell megadni **$WebhookData** úgy, hogy a riasztás tulajdonságai érhetők el a paramétert.  A riasztási adatokat érhető el egyetlen tulajdonságot, json formátumban **SearchResult** (a runbook-műveletek és a szabványos tartalom webhookműveletek) vagy **SearchResults** (webhookműveletek együtt egyéni hasznos beleértve **IncludeSearchResults ": true**) az a **RequestBody** tulajdonsága **$WebhookData**.  Ez az alábbi táblázatban a tulajdonságokkal fog rendelkezni.
+Nem közvetlenül tölthető fel a runbook paramétereket, de a [$WebhookData paraméter](../automation/automation-webhooks.md) a a riasztást, többek között az azt létrehozó napló keresési eredmények tartalmazza.  A runbook kell határoznia, hogy **$WebhookData** úgy, hogy a riasztás tulajdonságai érhetők el a paramétert.  A riasztási adatokat érhető el egyetlen tulajdonságot, json formátumban **SearchResult** (a runbook-műveletek és a szabványos tartalom webhookműveletek) vagy **SearchResults** (webhookműveletek együtt egyéni hasznos beleértve **IncludeSearchResults ": true**) az a **RequestBody** tulajdonsága **$WebhookData**.  Az alábbi táblázatban a tulajdonságokkal azt.
 
 >[!NOTE]
 > Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), akkor a runbook tartalom módosult.  A formátum részletei: [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse).  A példa látható [minták](#sample-payload) alatt.  
@@ -121,43 +124,12 @@ Nem közvetlenül tölthető fel a runbook paramétereket, de a [$WebhookData pa
 |:--- |:--- |
 | id |Elérési út és a keresés GUID. |
 | __metadata |A riasztás rekordok száma és a keresési eredmények állapotát kapcsolatos információkat. |
-| érték |A keresési eredmények rekordokban külön bejegyzést.  A bejegyzés a részleteket a tulajdonságok és értékek a rekord fog egyezni. |
+| érték |A keresési eredmények rekordokban külön bejegyzést.  A bejegyzés a részleteket a tulajdonságok és értékek a rekord felel meg. |
 
 Például a következő forgatókönyvek Ehhez bontsa ki a napló keresés által visszaadott rekordok, és rendelje hozzá minden egyes bejegyzés típusától függően különböző tulajdonságokat.  Vegye figyelembe, hogy a runbook elindítja átalakításával **RequestBody** JSON úgy, hogy az erőforrások az PowerShell objektumként.
 
 >[!NOTE]
-> Mindkettő ezeknél a runbookoknál használja a **SearchResult** Ez a tulajdonság, amely tartalmazza a runbook-műveletek és a szabványos tartalom webhookműveletek eredményeit.  Ha a runbook volt meghívva egy egyéni adattartalom használatával webhook választ, meg kell módosítani ezt a tulajdonságot **SearchResults**.
-
-A következő runbook működni fog-e a tartalom egy [örökölt Naplóelemzési munkaterület](log-analytics-log-search-upgrade.md).
-
-    param ( 
-        [object]$WebhookData
-    )
-
-    $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
-    $Records     = $RequestBody.SearchResult.value
-
-    foreach ($Record in $Records)
-    {
-        $Computer = $Record.Computer
-
-        if ($Record.Type -eq 'Event')
-        {
-            $EventNo    = $Record.EventID
-            $EventLevel = $Record.EventLevelName
-            $EventData  = $Record.EventData
-        }
-
-        if ($Record.Type -eq 'Perf')
-        {
-            $Object    = $Record.ObjectName
-            $Counter   = $Record.CounterName
-            $Instance  = $Record.InstanceName
-            $Value     = $Record.CounterValue
-        }
-    }
-
-A következő runbook működni fog-e a tartalom egy [Naplóelemzési munkaterület frissítése](log-analytics-log-search-upgrade.md).
+> Ez a forgatókönyv használ **SearchResult** Ez a tulajdonság, amely tartalmazza a runbook-műveletek és a szabványos tartalom webhookműveletek eredményeit.  Ha a runbook volt meghívva egy egyéni adattartalom használatával webhook választ, meg kell módosítani ezt a tulajdonságot **SearchResults**.
 
     param ( 
         [object]$WebhookData
@@ -208,88 +180,12 @@ A következő runbook működni fog-e a tartalom egy [Naplóelemzési munkaterü
 
 
 ## <a name="sample-payload"></a>A minta forgalma
-Ez a szakasz bemutatja webhook és runbook műveletek minta hasznos a mindkét örökölt és egy [Naplóelemzési munkaterület frissítése](log-analytics-log-search-upgrade.md).
+Ez a szakasz bemutatja a webhook és runbook műveletek minta hasznos.
 
 ### <a name="webhook-actions"></a>Webhookműveletek
-Ezekben a példákban mindegyikét használja **SearchResult** Ez a tulajdonság, amely tartalmazza a szabványos tartalom webhookműveletek eredményeit.  Ha a webhook egy egyéni adattartalom, amely tartalmazza a keresési eredmények között, ez a tulajdonság lenne **SearchResults**.
+Ez a példa **SearchResult** Ez a tulajdonság, amely tartalmazza a szabványos tartalom webhookműveletek eredményeit.  Ha a webhook egy egyéni adattartalom, amely tartalmazza a keresési eredmények között, ez a tulajdonság lenne **SearchResults**.
 
-#### <a name="legacy-workspace"></a>A hagyományos munkaterületen.
-Az alábbiakban látható egy minta hasznos webhook művelethez örökölt munkaterületen.
-
-    {
-    "WorkspaceId": "workspaceID",
-    "AlertRuleName": "WebhookAlert",
-    "SearchQuery": "Type=Usage",
-    "SearchResult": {
-        "id": "subscriptions/subscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspace-workspaceID/search/SearchGUID|10.1.0.7|2017-09-27T10-30-38Z",
-        "__metadata": {
-        "resultType": "raw",
-        "total": 1,
-        "top": 2147483647,
-        "RequestId": "SearchID|10.1.0.7|2017-09-27T10-30-38Z",
-        "CoreSummaries": [
-            {
-            "Status": "Successful",
-            "NumberOfDocuments": 135000000
-            }
-        ],
-        "Status": "Successful",
-        "NumberOfDocuments": 135000000,
-        "StartTime": "2017-09-27T10:30:38.9453282Z",
-        "LastUpdated": "2017-09-27T10:30:44.0907473Z",
-        "ETag": "636421050440907473",
-        "sort": [
-            {
-            "name": "TimeGenerated",
-            "order": "desc"
-            }
-        ],
-        "requestTime": 361
-        },
-        "value": [
-        {
-            "Computer": "-",
-            "SourceSystem": "OMS",
-            "TimeGenerated": "2017-09-26T13:59:59Z",
-            "ResourceUri": "/subscriptions/df1ec963-d784-4d11-a779-1b3eeb9ecb78/resourcegroups/mms-eus/providers/microsoft.operationalinsights/workspaces/workspace-861bd466-5400-44be-9552-5ba40823c3aa",
-            "DataType": "Operation",
-            "StartTime": "2017-09-26T13:00:00Z",
-            "EndTime": "2017-09-26T13:59:59Z",
-            "Solution": "LogManagement",
-            "BatchesWithinSla": 8,
-            "BatchesOutsideSla": 0,
-            "BatchesCapped": 0,
-            "TotalBatches": 8,
-            "AvgLatencyInSeconds": 0.0,
-            "Quantity": 0.002502,
-            "QuantityUnit": "MBytes",
-            "IsBillable": false,
-            "MeterId": "a4e29a95-5b4c-408b-80e3-113f9410566e",
-            "LinkedMeterId": "00000000-0000-0000-0000-000000000000",
-            "id": "954f7083-cd55-3f0a-72cb-3d78cd6444a3",
-            "Type": "Usage",
-            "MG": "00000000-0000-0000-0000-000000000000",
-            "__metadata": {
-            "Type": "Usage",
-            "TimeGenerated": "2017-09-26T13:59:59Z"
-            }
-        }
-        ]
-    },
-    "SearchIntervalStartTimeUtc": "2017-09-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2017-09-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 1,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2017-09-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Type%3DUsage",
-    "Description": null,
-    "Severity": "Low"
-    }
-
-
-#### <a name="upgraded-workspace"></a>Frissített munkaterületen.
-Az alábbiakban látható egy minta hasznos egy webhook műveletet egy frissített munkaterületen.
+Az alábbiakban látható egy minta hasznos webhook művelethez.
 
     {
     "WorkspaceId": "workspaceID",
@@ -427,64 +323,7 @@ Az alábbiakban látható egy minta hasznos egy webhook műveletet egy frissíte
 
 ### <a name="runbooks"></a>Runbookok
 
-#### <a name="legacy-workspace"></a>A hagyományos munkaterület
-Az alábbiakban látható egy minta hasznos a runbook műveletet a hagyományos munkaterületen.
-
-    {
-        "SearchResult": {
-            "id": "subscriptions/subscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspace-workspaceID/search/searchGUID|10.1.0.7|TimeStamp",
-            "__metadata": {
-                "resultType": "raw",
-                "total": 1,
-                "top": 2147483647,
-                "RequestId": "searchGUID|10.1.0.7|2017-09-27T10-51-43Z",
-                "CoreSummaries": [{
-                    "Status": "Successful",
-                    "NumberOfDocuments": 135000000
-                }],
-                "Status": "Successful",
-                "NumberOfDocuments": 135000000,
-                "StartTime": "2017-09-27T10:51:43.3075124Z",
-                "LastUpdated": "2017-09-27T10:51:51.1002092Z",
-                "ETag": "636421063111002092",
-                "sort": [{
-                    "name": "TimeGenerated",
-                    "order": "desc"
-                }],
-                "requestTime": 511
-            },
-            "value": [{
-                "Computer": "-",
-                "SourceSystem": "OMS",
-                "TimeGenerated": "2017-09-26T13:59:59Z",
-                "ResourceUri": "/subscriptions/AnotherSubscriptionID/resourcegroups/SampleResourceGroup/providers/microsoft.operationalinsights/workspaces/workspace-workspaceID",
-                "DataType": "Operation",
-                "StartTime": "2017-09-26T13:00:00Z",
-                "EndTime": "2017-09-26T13:59:59Z",
-                "Solution": "LogManagement",
-                "BatchesWithinSla": 8,
-                "BatchesOutsideSla": 0,
-                "BatchesCapped": 0,
-                "TotalBatches": 8,
-                "AvgLatencyInSeconds": 0.0,
-                "Quantity": 0.002502,
-                "QuantityUnit": "MBytes",
-                "IsBillable": false,
-                "MeterId": "a4e29a95-5b4c-408b-80e3-113f9410566e",
-                "LinkedMeterId": "00000000-0000-0000-0000-000000000000",
-                "id": "954f7083-cd55-3f0a-72cb-3d78cd6444a3",
-                "Type": "Usage",
-                "MG": "00000000-0000-0000-0000-000000000000",
-                "__metadata": {
-                    "Type": "Usage",
-                    "TimeGenerated": "2017-09-26T13:59:59Z"
-                }
-            }]
-        }
-    }
-
-#### <a name="upgraded-workspace"></a>Frissített munkaterület
-Az alábbiakban látható egy minta hasznos a runbook műveletet egy frissített munkaterületen.
+Az alábbiakban látható egy minta hasznos a runbook műveletet.
 
     {
     "WorkspaceId": "workspaceID",

@@ -1,19 +1,19 @@
 ---
-title: "Azure DC/OS-fürtön a Vamp Kanári kiadás"
-description: "Vamp segítségével Kanári kiadás szolgáltatások, és egy Azure tároló szolgáltatás DC/OS-fürtről végez a intelligens forgalom alkalmazása"
+title: Azure DC/OS-fürtön a Vamp Kanári kiadás
+description: Vamp segítségével Kanári kiadás szolgáltatások, és egy Azure tároló szolgáltatás DC/OS-fürtről végez a intelligens forgalom alkalmazása
 services: container-service
 author: gggina
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: e23b316311ff88d1587da8d5ef777b91bfe0a2e9
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 339864f6261d031a21b138f880654bcd6ef51855
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Egy Azure tároló szolgáltatás DC/OS-fürtön a Vamp Kanári kiadás mikroszolgáltatások
 
@@ -41,7 +41,7 @@ Ebben a bemutatóban beállítjuk Vamp Azure tárolószolgáltatás és a DC/OS-
 
 ## <a name="set-up-vamp"></a>Vamp beállítása
 
-Most, hogy a futó DC/OS-fürtről, a DC/OS felhasználói felületének (http://localhost:80) az telepíthető Vamp. 
+Most, hogy a futó DC/OS-fürtről, telepítheti a DC/OS felhasználói felületének a Vamp (http://localhost:80). 
 
 ![A DC/OS UI felhasználói felülete](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
@@ -132,7 +132,7 @@ Ez a forgatókönyv használ nevű egységes mintaalkalmazás [ **Száva**](http
 
 1. Ugrás a **központi telepítések**.
 
-2. Kattintson az **Add** (Hozzáadás) parancsra.
+2. Kattintson a **Hozzáadás** parancsra.
 
 3. Illessze be a következő szerkezeti terve YAM. Ez tervezetének egy fürt csak egy szolgáltatás variant, amely egy későbbi lépésben módosítjuk tartalmazza:
 
@@ -286,7 +286,7 @@ Ez a cikk lett egy gyors bevezetés Vamp a DC/OS-fürtön. Első Vamp portáltó
 Azt is az egyes hatékony szolgáltatásainak Vamp érint: egyesítése egy új szolgáltatás variant futó központi és bevezeti a Növekményesen, majd egy ismert kompatibilitási megoldásához forgalom.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Vamp műveletek keresztül kezeléséről további információt a [Vamp a REST API-t](http://vamp.io/documentation/api/api-reference/).
 

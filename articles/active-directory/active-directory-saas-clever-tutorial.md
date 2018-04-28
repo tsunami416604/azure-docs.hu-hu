@@ -1,10 +1,10 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Clever |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Clever között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Clever |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Clever között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 04/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 1aad242ff1e9161ad5dfbecd01a44d8fb3c93cbb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.openlocfilehash: 6531e6c8c97bfadac898c4aa4943855dcd32bdfe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Oktatóanyag: Azure Active Directoryval integrált Clever
 
@@ -101,37 +101,37 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-clever-tutorial/tutorial_clever_samlbase.png)
 
 3. Az a **intelligens tartomány és az URL-címek** területen tegye a következőket:
 
     ![Az egyszeri bejelentkezés információkat intelligens tartomány- és URL-címek](./media/active-directory-saas-clever-tutorial/tutorial_clever_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://clever.com/in/<companyname>`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://clever.com/in/<companyname>`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://clever.com/<companyname>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://clever.com/<companyname>`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [intelligens ügyfél-támogatási csoport](https://clever.com/about/contact/) beolvasni ezeket az értékeket.
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
-
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-clever-tutorial/tutorial_clever_certificate.png)
+4. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-clever-tutorial/tutorial_metadataurl.png)
 
 5. Az intelligens alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban, amelyhez egyéni attribútum leképezései hozzáadása a **SAML-jogkivonat attribútumok** konfigurációs.
 
     Az alábbi képernyőfelvételen látható egy példa a.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png)
 
 6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti ábrán látható módon, és hajtsa végre a következő lépéseket:
     
     | Attribútum neve  | Attribútum értéke |
-    | --------------- | -------------------- |    
+    | --------------- | -------------------- |
     | clever.Student.credentials.District\_felhasználónév  | User.userPrincipalName |
     | Utónév  | User.givenName |
-    | Vezetéknév  | User.surname |    
+    | Vezetéknév  | User.surname |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -145,39 +145,19 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     d. Hagyja a **Namespace** szövegbeviteli mező üres.
     
-    d. Kattintson az **OK** gombra.     
-
-5. Kattintson a **mentése** gombra.
+    d. Kattintson az **OK** gombra.
+    
+7. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-clever-tutorial/tutorial_general_400.png)
 
-8. Létrehozásához a **metaadatok** URL-címe, hajtsa végre a következő lépéseket:
+8. Egy másik webes böngészőablakban jelentkezzen be a vállalat intelligens webhely rendszergazdaként.
 
-    a. Kattintson a **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-clever-tutorial/tutorial_clever_appregistrations.png)
-   
-    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpointicon.png)
-
-    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpoint.png)
-     
-    d. Most lépjen a tulajdonságlapján **Clever** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-clever-tutorial/tutorial_clever_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-9. Egy másik webes böngészőablakban jelentkezzen be a vállalat intelligens webhely rendszergazdaként.
-
-10. Az eszköztáron kattintson **azonnali bejelentkezési**.
+9. Az eszköztáron kattintson **azonnali bejelentkezési**.
 
     ![Azonnali bejelentkezési](./media/active-directory-saas-clever-tutorial/ic798984.png "azonnali bejelentkezés")
 
-11. Az a **azonnali bejelentkezési** lapon, a következő lépésekkel:
+10. Az a **azonnali bejelentkezési** lapon, a következő lépésekkel:
       
       ![Azonnali bejelentkezési](./media/active-directory-saas-clever-tutorial/ic798985.png "azonnali bejelentkezés")
       
@@ -188,13 +168,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
       
       b. Mint **Identitásrendszere**, jelölje be **az AD FS**.
 
-      c. Típus a **metaadatainak URL-CÍMÉT** a a **metaadatainak URL-CÍMÉT** szövegmező.
+      c. Az a **metaadatainak URL-CÍMÉT** szövegmezőhöz Beillesztés **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure portálról másolta.
       
       d. Kattintson a **Save** (Mentés) gombra.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -227,12 +203,12 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="create-a-clever-test-user"></a>Intelligens tesztfelhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók Clever bejelentkezni, akkor ki kell építenie a Clever.
 
-Használata esetén Clever, [intelligens ügyfél-támogatási csoport](https://clever.com/about/contact/) a felhasználók hozzáadása az intelligens platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
+Használata esetén Clever, [intelligens ügyfél-támogatási csoport](https://clever.com/about/contact/) a felhasználók hozzáadása az intelligens platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt.
 
 >[!NOTE]
 >Bármely más intelligens felhasználói fiók létrehozása eszközök vagy Clever kiépíteni az Azure AD-felhasználói fiókok által nyújtott API-k.
@@ -241,17 +217,17 @@ Használata esetén Clever, [intelligens ügyfél-támogatási csoport](https://
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Clever Azure egyszeri bejelentkezéshez használandó.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200]
 
 **Britta Simon hozzárendelése Clever, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó hozzárendelése][201]
 
 2. Az alkalmazások listában válassza ki a **Clever**.
 
-    ![Az alkalmazások listáját a Clever hivatkozásra](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)  
+    ![Az alkalmazások listáját a Clever hivatkozásra](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
@@ -266,13 +242,13 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-    
+
 ### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
 Az intelligens csempe elemre a hozzáférési panelen, meg kell beolvasni automatikusan bejelentkezett az intelligens alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

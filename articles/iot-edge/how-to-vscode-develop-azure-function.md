@@ -10,10 +10,10 @@ ms.date: 12/20/2017
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: 47d420b4b283b390f67719233c4bea59495a589a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-and-deploy-azure-functions-to-azure-iot-edge"></a>Visual Studio Code segítségével fejlesztésekor és telepítésekor az Azure Functions Azure IoT szegélyhez
 
@@ -35,7 +35,7 @@ Ellenőrizze, hogy a befejezett alábbi oktatóanyagok az Ez az útmutató megke
 - [.NET Core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd). 
 - [Python 2.7](https://www.python.org/downloads/)
 - [Az IoT-Edge vezérlő parancsfájl](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
-- AzureIoTEdgeFunction template (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
+- AzureIoTEdgeFunction sablon (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
 - Egy aktív IoT hubot legalább egy IoT peremhálózati eszköz.
 
 Ajánlott továbbá telepítendő [Docker támogatja a Visual STUDIO Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) jobb kezelése érdekében a modul lemezképek és a tárolók.
@@ -136,7 +136,7 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
 
 8. Mentse a fájlt.
 
-### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Hozzon létre egy Docker-lemezképet, és tegye közzé a beállításjegyzék
+### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Docker-rendszerkép létrehozása és közzététele a beállításjegyzékben
 
 1. A VS Code Explorerben bontsa ki a **Docker** mappát. Ezután bontsa ki a tárolóplatform mappáját, amely a **linux-x64** vagy a **windows-nano** mappa.
 2. Kattintson a jobb gombbal a **Dockerfile** fájlra, és kattintson az **IoT Edge-modul Docker-rendszerképének összeállítása** elemre. 

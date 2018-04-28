@@ -1,19 +1,19 @@
 ---
-title: Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban az Azure CLI-vel | Microsoft Docs
-description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre az Azure CLI használatával. Majd a parancssori felület segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: Azure rövid útmutató – Blob létrehozása objektumtárban Azure CLI használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban Azure CLI használatával kezelheti az objektumtárat (blobtárat). Majd a parancssori felület segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: roygara
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 673392f393d3fb5d7351c0b4ad4782179a99da2a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b55fe97adc56f4b8f1baeb2d8bb5f905fcd424bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása az Azure CLI-vel
 

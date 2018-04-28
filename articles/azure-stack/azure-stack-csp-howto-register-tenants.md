@@ -1,11 +1,11 @@
 ---
-title: "Adja hozzá a bérlők használatának és számlázási Azure verem |} Microsoft Docs"
-description: "A szükséges lépéseket a felhasználó hozzáadása a Felhőszolgáltató által felügyelt Azure-verem."
+title: Adja hozzá a bérlők használatának és számlázási Azure verem |} Microsoft Docs
+description: A szükséges lépéseket a felhasználó hozzáadása a Felhőszolgáltató által felügyelt Azure-verem.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 67e5a67d7cd5caf6bd4d2625969b139411d62696
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e982fa2bec3cbc4845ecebb45db76f019e2178ff
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Adja hozzá a bérlő használati és számlázási Azure verem
 
@@ -58,7 +58,7 @@ A regisztráció frissítése az új ügyfél-előfizetést. Azure a Partner kö
 > Ez a lépés végrehajtásához rendelkeznie kell [regisztrált Azure verem](azure-stack-register.md).
 
 1. Nyissa meg a Windows PowerShell egy rendszergazdai jogú parancssorba, majd futtassa:  
-    `Login-AzureRmAccount`
+    `Add-AzureRmAccount`
 2. Írja be Azure hitelesítő adatait.
 3. A PowerShell-munkamenetben futtassa:
 
@@ -70,7 +70,7 @@ A regisztráció frissítése az új ügyfél-előfizetést. Azure a Partner kö
 | --- | --- | 
 |registrationSubscriptionID | Az Azure-előfizetés, amely a kezdeti regisztráció az Azure-vermet lett megadva. |
 | customerSubscriptionID | Az Azure-előfizetés (nem Azure-verem) tartozó regisztrálni kell az ügyfél. Kell létrehozni a CSP ajánlat; a gyakorlatban ez azt jelenti, hogy Partner központon keresztül történik. Ha az ügyfél egynél több Azure Active Directory-bérlőt, ehhez az előfizetéshez kell létrehozni a bérlőt, jelentkezzen be Azure verem használható.
-| resourceGroup | Az erőforráscsoport, amely a regisztrációs tárolja az Azure-ban. 
+| Erőforráscsoport | Az erőforráscsoport, amely a regisztrációs tárolja az Azure-ban. 
 | registrationName | A regisztráció az Azure-készlet neve. Az Azure-ban tárolt objektum. | 
 
 

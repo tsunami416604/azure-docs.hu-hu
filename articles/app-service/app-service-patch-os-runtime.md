@@ -1,11 +1,11 @@
 ---
-title: "Az operációs rendszer és a futásidejű javítás az Azure App Service szolgáltatásban |} Microsoft Docs"
-description: "Ismerteti, hogyan frissítse az Azure App Service-frissítéseket az operációs rendszer és a futtatókörnyezetek és a válaszok közleményeket."
+title: Az operációs rendszer és a futásidejű javítás az Azure App Service szolgáltatásban |} Microsoft Docs
+description: Ismerteti, hogyan frissítse az Azure App Service-frissítéseket az operációs rendszer és a futtatókörnyezetek és a válaszok közleményeket.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 869bd0e3f684ff4a2291e189cf247daedfb74922
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Az operációs rendszer és a futásidejű javítás az Azure App Service-ben
 
@@ -93,7 +93,7 @@ Az alábbi táblázat az alkalmazásokat futtatja verziók a Windows és a nyelv
 | Python-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole`, a következő parancsot a parancssorba: <br> `python --version` |
 
 > [!NOTE]
-> Beállításjegyzék-helyhez való hozzáférés `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, ahol információkat ["KB" javítások]((https://technet.microsoft.com/security/bulletins.aspx)) található, zárolva van.
+> Beállításjegyzék-helyhez való hozzáférés `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, ahol információkat ["KB" javítások]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)) található, zárolva van.
 >
 >
 

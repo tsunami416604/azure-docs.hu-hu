@@ -5,6 +5,7 @@
     - name: A Virtual Network bemutatása
       href: virtual-networks-overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Virtuális hálózat létrehozása – portál
       href: quick-create-portal.md

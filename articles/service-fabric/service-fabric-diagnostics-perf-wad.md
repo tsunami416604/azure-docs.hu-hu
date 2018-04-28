@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: b2b740c2ececba2c3f95f8fbfbfb55e7f4811112
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a9e8ef7243fcef990dae6ddc6509cd31b3f36e3d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>A Windows Azure diagnosztikai kiterjesztésű-figyelő
 
@@ -44,7 +44,9 @@ Teljesítményszámlálók adatainak összegyűjtése ÜVEGVATTA keresztül, mó
 
     A `scheduledTransferPeriod` határozza meg, hogyan gyűjtött számláló átviszi a program az Azure storage táblában, és bármely frquently konfigurálva fogadó. 
 
-3. Adjon hozzá teljesítményszámlálókat szeretné összegyűjtéséhez a `PerformanceCounterConfiguration` , amely az előző lépésben lett deklarálva. Az egyes számlálók szeretne gyűjteni a van meghatározva egy `counterSpecifier`, `sampleRate`, `unit`, `annotation`, és minden kapcsolódó `sinks`. Íme egy példa konfiguráció a számláló a *teljes processzoridő* (mennyi ideig feldolgozó műveletekhez használatban volt a CPU) és *Service Fabric szereplő metódus meghívásáhozmásodpercenként*, a Service Fabric egyéni teljesítményszámlálói közül. Tekintse meg [megbízható szereplő teljesítményszámlálók](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) és [megbízható szolgáltatás teljesítményszámlálók](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) Service Fabric egyéni Teljesítményfigyelő számlálók teljes listáját.
+3. Adjon hozzá teljesítményszámlálókat szeretné összegyűjtéséhez a `PerformanceCounterConfiguration` , amely az előző lépésben lett deklarálva. Az egyes számlálók szeretne gyűjteni a van meghatározva egy `counterSpecifier`, `sampleRate`, `unit`, `annotation`, és minden kapcsolódó `sinks`.
+
+Íme egy példa konfiguráció a számláló a *teljes processzoridő* (mennyi ideig feldolgozó műveletekhez használatban volt a CPU) és *Service Fabric szereplő metódus meghívásáhozmásodpercenként*, a Service Fabric egyéni teljesítményszámlálói közül. Tekintse meg [megbízható szereplő teljesítményszámlálók](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) és [megbízható szolgáltatás teljesítményszámlálók](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) Service Fabric egyéni Teljesítményfigyelő számlálók teljes listáját.
 
  ```json
  "WadCfg": {
@@ -112,9 +114,8 @@ Teljesítményszámlálók adatainak összegyűjtése ÜVEGVATTA keresztül, mó
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. A frissítés befejeződése után terítésével (közötti 15-45 percet vesz igénybe), ÜVEGVATTA kell kell gyűjtése a teljesítményszámlálók és a fürthöz tartozó elküldi őket a tárfiókban lévő WADPerformanceCountersTable a táblában.
+5. A frissítés befejeződése után terítésével (közötti 15-45 percet vesz igénybe), ÜVEGVATTA kell kell gyűjtése a teljesítményszámlálók és a fürthöz tartozó elküldi őket a tárfiókban lévő WADPerformanceCountersTable a táblában. Tekintse meg az Application Insights által a teljesítményszámlálók [a AI fogadó ad hozzá a Resource Manager-sablon](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>További lépések
-* Tekintse meg az Application Insights által a teljesítményszámlálók [a AI fogadó a Resource Manager-sablon hozzáadása](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)
 * A fürt további teljesítményszámlálók adatainak összegyűjtése. Lásd: [teljesítménymutatók](service-fabric-diagnostics-event-generation-perf.md) kell gyűjtött teljesítményszámlálók listája.
 * [Használjon figyelési és diagnosztika a Windows virtuális gép és az Azure Resource Manager-sablonok](../virtual-machines/windows/extensions-diagnostics-template.md) módosításokat további a `WadCfg`, beleértve a további tárhely konfigurálásával és diagnosztikai adatok küldése.

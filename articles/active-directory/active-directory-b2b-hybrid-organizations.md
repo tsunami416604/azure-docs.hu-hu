@@ -1,47 +1,54 @@
 ---
-title: "Az Azure Active Directory B2B együttműködés hibrid szervezetek |} Microsoft Docs"
-description: "Partnerek adjon hozzáférést ad mindkét helyi és felhőbeli erőforrásokat az Azure AD B2B együttműködés"
+title: Hibrid szervezetek - Azure Active Directory B2B együttműködés |} Microsoft Docs
+description: Partnerek hozzáférést is a helyszíni és felhőalapú Azure AD B2B együttműködés erőforrásokhoz.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.date: 12/15/2017
+ms.date: 04/26/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 2e690eeea6a9f7e1cc10830a913774daa3c66689
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 748d5f7497c3ab65a669bf3f205e9486dfcaed92
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Az Azure Active Directory B2B együttműködés hibrid szervezeteknek
 
-Egy hibrid szervezet, melyekben mind a helyszíni és felhőalapú erőforrásaihoz, érdemes mindkét helyi külső partnerekkel hozzáférés biztosítása és a felhőben található erőforrásokat. Helyi erőforrások eléréséhez felügyelheti partner fiókjait helyileg a helyszíni Active Directory-környezetben. Partnerek bejelentkezik a partner fiók hitelesítő adataival, a szervezet erőforrásaihoz. A partnerek hozzáférésének felhőalapú erőforrásokat használó ugyanezeket a hitelesítő adatokat, használhatja Azure Active Directory (Azure AD) Connect Azure AD B2B felhasználóként a felhőbe a partner fiókok szinkronizálása (Ez azt jelenti, hogy a felhasználók a UserType vendég =).
+Az Azure Active Directory (Azure AD) B2B együttműködés megkönnyíti, hogy a külső partnerekkel hozzáférést alkalmazásokat és erőforrásokat a szervezetben. Ez érvényét veszti, még akkor is hibrid konfigurációnak, mind a helyszíni és felhőalapú erőforrások esetében. Nem számít, ha jelenleg kezelheti a külső partner fiókok helyileg a helyszíni identitás rendszerben, vagy ha kezelheti az Azure AD B2B felhasználóként a külső fiókokat a felhőben. Mostantól ezek a felhasználók hozzáférést biztosíthat az egyik helyen, erőforrások mindkét környezetben a bejelentkezési hitelesítő adatokkal.
 
-## <a name="identify-unique-attributes-for-usertype"></a>Egyedi attribútumok UserType felderítése
+## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>Támogatás B2B az Azure AD férhetnek hozzá a helyszíni alkalmazások
 
-Mielőtt engedélyezné a szinkronizálást a UserType attribútuma, először el kell döntenie UserType attribútuma származik a helyszíni Active Directory módjáról. Más szóval milyen a helyszíni környezetben paraméterei a külső együttműködők egyedi? Határozza meg a paraméter, amely a külső együttműködők megkülönbözteti a saját szervezet tagjaira.
+Ha a szervezet Azure AD B2B együttműködés képességek az Azure AD az erőforráspartner-szervezetek Vendég felhasználóknak szánt meghívó használ, megadhatja a B2B a felhasználók hozzáférést kapjanak a helyszíni alkalmazások most.
 
-Ez a két gyakori módszer a a következők:
+SAML-alapú hitelesítést használó alkalmazásokhoz akkor is elérhetővé ezeket az alkalmazásokat B2B végig a felhasználókat az Azure-portálon az Azure AD-alkalmazásproxy használata a hitelesítéshez.
 
-- Jelölje ki a nem használt a helyszíni Active Directory attribútumtár (például extensionAttribute1) kívánja használni, mint a forrásattribútum kulcsoszlopaival. 
-- Azt is megteheti UserType attribútuma értéke származik egyéb tulajdonságait. Például szinkronizálandó minden felhasználó vendégként a helyszíni Active Directory UserPrincipalName attribútum a tartomány lejártát  *@partners.fabrikam123.org* .
+Integrált Windows-hitelesítéssel (IWA) és a Kerberos által korlátozott delegálás (KCD) használó alkalmazásokhoz, akkor is Azure AD proxyt használja hitelesítésre. Azonban engedélyezési működjön, a user objektum szükség van a helyszíni Windows Server Active Directory. Két módon használhatja, amelyek megfelelnek a B2B vendégfelhasználók helyi felhasználói objektumokat létrehozni.
+
+- A Microsoft Identity Manager (MIM) 2016 SP1 és a MIM-kezelőügynök Microsoft Graph használhatja.
+- Egy PowerShell-parancsfájlt is használhatja. (Ez a megoldás nem igényel MIM.)
+
+Ezek a megoldások megvalósításához kapcsolatos részletekért lásd: [Grant B2B az Azure AD férhetnek hozzá a helyszíni alkalmazások](active-directory-b2b-hybrid-cloud-to-on-premises.md).
+
+## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Helyileg kezelt partner fiókok elérhető felhőalapú erőforrások biztosítása
+
+Előtt az Azure Active Directory a helyszíni identitáskezelési rendszereket rendelkező szervezetek hagyományosan partner fiókok a helyszíni címtár rendelkezik felügyelt. Ha például egy szervezet, győződjön meg arról, hogy a partnerek továbbra is hozzáférhetnek az alkalmazások és egyéb erőforrásokat a felhőhöz mozgatása szeretné. Ideális esetben érdemes ezek a felhasználók a ugyanazokat a hitelesítő adatokat használja a felhő- és helyszíni erőforrások eléréséhez. 
+
+Most már használható az Azure AD Connect ezeknek a helyi fiókoknak a felhő szinkronizálásához felhasználóként"Vendég,", ahol a fiókok ugyanúgy viselkednek ajánlat módszerek hangvételünk Azure AD B2B felhasználók.
+
+A vállalati adatok védelme érdekében csak a megfelelő erőforrásokhoz való hozzáférés szabályozása, és engedélyezési házirendeket, amelyek kezelik a vendégfelhasználók eltér az alkalmazottak konfigurálása.
+
+Megvalósítás részletei: [Grant helyileg kezelt partner fiókoknak az Azure AD B2B együttműködés felhőalapú erőforrásokhoz hozzáférést](active-directory-b2b-hybrid-on-premises-to-cloud.md).
  
-A részletes attribútum követelményeket lásd [UserType szinkronizálásának engedélyezése](connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype). 
+## <a name="next-steps"></a>További lépések
 
-## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Az Azure AD Connect szinkronizálási felhasználóknak, hogy a felhő konfigurálása
+- [Támogatás B2B az Azure AD férhetnek hozzá a helyszíni alkalmazások](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+- [Helyileg kezelt partner fiókok hozzáférést biztosít felhőbeli erőforrásokat használó Azure AD B2B együttműködés](active-directory-b2b-hybrid-on-premises-to-cloud.md)
 
-Keresse meg az egyedi attribútum, konfigurálhatja az Azure AD Connect szinkronizálása ezek a felhasználók a felhőalapú Azure AD B2B felhasználóként (Ez azt jelenti, hogy a felhasználók a UserType vendég =). Egy engedélyezési szempontjából ezek a felhasználók nem különböztethetők meg Azure AD B2B együttműködés meghívó folyamat létrehozott B2B felhasználók.
-
-Megvalósítási útmutatásért lásd: [UserType szinkronizálásának engedélyezése](connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype).
-
-## <a name="next-steps"></a>Következő lépések
-
-- Azure AD B2B együttműködés áttekintését lásd: [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
-- Az Azure AD Connect áttekintéséért lásd: [integrálása a helyszíni címtárakat az Azure Active Directoryval](connect/active-directory-aadconnect.md).
 

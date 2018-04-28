@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0476865b19cd078b05e5def4a51c2df17315daa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Az Azure API Management Azure Active Directory segítségével hitelesíthetők a fejlesztői fiókok
 
@@ -100,6 +100,11 @@ Ez a cikk bemutatja, hogyan engedélyezze a hozzáférést a fejlesztői portál
 31. Lépjen vissza az API Management alkalmazás. 
 
     Az a **Hozzáadás identitásszolgáltató** ablakban illessze be a kulcsot a a **ügyfélkulcs** szövegmezőben.
+
+    > [!IMPORTANT]
+    > Ellenőrizze, hogy frissíteni a **ügyfélkulcs** a kulcs érvényességének lejárta előtt. 
+    >  
+    >
 32. A **Hozzáadás identitásszolgáltató** ablakban találhatók a **engedélyezett bérlők** szövegmezőben. Itt adja meg a tartomány, amelyhez hozzáférést biztosítson az API-k, az API Management szolgáltatáspéldány szeretné az Azure AD-példánya. Elkülönítheti a több tartomány ágyazódjanak, szóközzel vagy vesszővel válassza el egymástól.
 
     A több tartományt is megadhat a **engedélyezett bérlők** szakasz. Minden olyan felhasználó, mint az eredeti tartomány, ahol az alkalmazás regisztrálva lett más tartományokból bejelentkezés, előtt ugyanaz a tartományi globális rendszergazdájának engedélyeznie kell az alkalmazás hozzáférési címtáradatok. Engedélyt szeretne megadni, a globális rendszergazdának a következőket:

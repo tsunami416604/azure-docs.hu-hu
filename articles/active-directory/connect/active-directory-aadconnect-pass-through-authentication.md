@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: d19e63e10f2d42d97bb6fabca9c9e47028cbaf39
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 377a8255961a4c7fa55f8bbc5cb98ae4deff3205
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználó bejelentkezhet az Azure Active Directory áteresztő hitelesítés
 
@@ -39,7 +39,7 @@ Ez a szolgáltatás nem helyett [Azure AD Jelszókivonat-szinkronizálást](acti
 - *Kiváló felhasználói élmény*
   - Felhasználó használja ugyanazt a jelszót, mind a helyszíni és felhőalapú alkalmazások bejelentkezni.
   - Felhasználók kevesebb időt segítségével az informatikai segélyszolgálat feloldó jelszó kapcsolatos problémákat.
-  - Felhasználók fejezheti be [önkiszolgáló jelszókezelés](../active-directory-passwords-overview.md) feladatok a felhőben.
+  - Felhasználók fejezheti be [önkiszolgáló jelszókezelés](../authentication/active-directory-passwords-overview.md) feladatok a felhőben.
 - *Könnyen üzembe helyezése és felügyelete*
   - Nincs szükség bonyolult helyszíni telepítésekkel vagy a hálózati konfigurációt.
   - Csak egy egyszerűsített helyszíni telepített ügynök kell.
@@ -56,7 +56,7 @@ Ez a szolgáltatás nem helyett [Azure AD Jelszókivonat-szinkronizálást](acti
 - Felhasználói bejelentkezés támogatja minden böngésző alapú webalkalmazás és a Microsoft Office ügyfél használó alkalmazások [modern hitelesítést](https://aka.ms/modernauthga).
 - Bejelentkezési felhasználónevek vagy a helyszíni alapértelmezett felhasználónév lehet (`userPrincipalName`) vagy az Azure AD Connect konfigurált egy másik attribútum (úgynevezett `Alternate ID`).
 - A funkció zökkenőmentesen együttműködik a [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) funkciók, például a multi-factor Authentication (MFA) biztonságossá tétele a felhasználók számára.
-- Integrálva a felhő alapú [önkiszolgáló jelszókezelés](../active-directory-passwords-overview.md), beleértve a jelszavak visszaírását a helyszíni Active Directory és a jelszavas védelem tiltó által leggyakrabban használt jelszavakat.
+- Integrálva a felhő alapú [önkiszolgáló jelszókezelés](../authentication/active-directory-passwords-overview.md), beleértve a jelszavak visszaírását a helyszíni Active Directory és a jelszavas védelem tiltó által leggyakrabban használt jelszavakat.
 - Többerdős környezetben támogatottak, ha a AD erdők között erdőszintű megbízhatóság, és ha névutótag megfelelően van beállítva.
 - Egy szabad szolgáltatást, és nem kell használni az Azure AD bármely fizetős verziója.
 - Keresztül engedélyezhető [az Azure AD Connect](active-directory-aadconnect.md).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 1efb8d89b0a78dcf88c60c2e8cd3b968a725e8b9
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory alkalmazástervezési a koncepció igazolása: építőelemek
 
@@ -380,8 +380,8 @@ Hozzávetőleges időt Complete: 15 perc
 | Előfeltétel | További források |
 | --- | --- |
 | A bérlői önkiszolgáló jelszó-kezelésen. | [Az Azure Active Directory-jelszó alaphelyzetbe állítása a informatikai rendszergazdák](active-directory-passwords-update-your-own-password.md) |
-| Engedélyezze a jelszóvisszaírást a helyszíni jelszavak kezeléséhez. Megjegyzés: ehhez az adott Azure AD Connect verziók | [Jelszóvisszaírás előfeltételei](active-directory-passwords-writeback.md) |
-| Ez a funkció, és győződjön meg arról, hogy egy biztonsági csoport tagjai koncepció felhasználók azonosítására. A felhasználók nem rendszergazdák számára, hogy a funkció teljes mértékben kihasználhatják kell lennie. | [Testreszabása: Az Azure AD a jelszókezelés: hozzáférés korlátozása a jelszó alaphelyzetbe állítása](active-directory-passwords-writeback.md) |
+| Engedélyezze a jelszóvisszaírást a helyszíni jelszavak kezeléséhez. Megjegyzés: ehhez az adott Azure AD Connect verziók | [Jelszóvisszaírás előfeltételei](authentication/howto-sspr-writeback.md) |
+| Ez a funkció, és győződjön meg arról, hogy egy biztonsági csoport tagjai koncepció felhasználók azonosítására. A felhasználók nem rendszergazdák számára, hogy a funkció teljes mértékben kihasználhatják kell lennie. | [Testreszabása: Az Azure AD a jelszókezelés: hozzáférés korlátozása a jelszó alaphelyzetbe állítása](authentication/howto-sspr-writeback.md) |
 
 
 ### <a name="steps"></a>Lépések
@@ -412,7 +412,7 @@ Hozzávetőleges időt Complete: 10 perc
 | Előfeltétel | További források |
 | --- | --- |
 | Többtényezős Hitelesítést használó Koncepció felhasználók azonosítása  |  |
-| A jó fogadása az MFA-kérdést Phone  | [Mi az az Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md) |
+| A jó fogadása az MFA-kérdést Phone  | [Mi az az Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md) |
 
 ### <a name="steps"></a>Lépések
 
@@ -421,7 +421,7 @@ Hozzávetőleges időt Complete: 10 perc
 | Navigáljon a "Felhasználók és csoportok" panel az Azure AD felügyeleti portál | [Az Azure AD felügyeleti portál: Felhasználók és csoportok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
 | Válassza ki a "Minden felhasználó" panel |  |
 | A felső menüsoron válasszon "Többtényezős hitelesítés" gombra a | Közvetlen URL-címe Azure MFA-portálon: https://aka.ms/mfaportal |
-| A "User" beállításainál jelölje ki a koncepció felhasználókat, és lehetővé teszi a multi-factor Authentication | [Azure Multi-Factor Authentication – felhasználói állapotok](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) |
+| A "User" beállításainál jelölje ki a koncepció felhasználókat, és lehetővé teszi a multi-factor Authentication | [Azure Multi-Factor Authentication – felhasználói állapotok](authentication/howto-mfa-userstates.md) |
 | Jelentkezzen be a koncepció felhasználó, és a lépésein végighaladva a igazolása létrehozása folyamatban  |  |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
@@ -457,7 +457,7 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-Összevonási használ, ha a helyszíni identitásszolgáltató (IdP) segítségével JOGCÍMEKKEL rendelkező és a vállalati hálózat belső/külső állapot kommunikációhoz. Ezzel a módszerrel nem kell az IP-címek, elképzelhető, hogy értékeléséhez és kezeléséhez a nagy méretű szervezeteknek összetett kezelését is használhatja. A telepítő által kell a "hálózati központi" forgatókönyv (olyan felhasználó, a belső hálózatról, és közben a kapcsolók naplózás helyeken, például egy kávézóban) fiókot, és győződjön meg arról, hogy a megvalósítását. További: [Securing felhőalapú erőforrásokat az Azure többtényezős hitelesítés és az AD FS: megbízható IP-címeinek összevont felhasználók](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md#trusted-ips-for-federated-users)
+Összevonási használ, ha a helyszíni identitásszolgáltató (IdP) segítségével JOGCÍMEKKEL rendelkező és a vállalati hálózat belső/külső állapot kommunikációhoz. Ezzel a módszerrel nem kell az IP-címek, elképzelhető, hogy értékeléséhez és kezeléséhez a nagy méretű szervezeteknek összetett kezelését is használhatja. A telepítő által kell a "hálózati központi" forgatókönyv (olyan felhasználó, a belső hálózatról, és közben a kapcsolók naplózás helyeken, például egy kávézóban) fiókot, és győződjön meg arról, hogy a megvalósítását. További: [Securing felhőalapú erőforrásokat az Azure többtényezős hitelesítés és az AD FS: megbízható IP-címeinek összevont felhasználók](authentication/howto-mfa-adfs.md#trusted-ips-for-federated-users)
 
 ## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 
@@ -559,7 +559,7 @@ Hozzávetőleges időt igényel: 20 perc
 | Lépés | További források |
 | --- | --- |
 | "Tanúsítvány-hitelesítés" az AD FS engedélyezése | [Hitelesítési házirendek konfigurálása: Az elsődleges hitelesítés globálisan konfigurálása a Windows Server 2012 R2](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) |
-| Választható: Engedélyezze a Tanúsítványalapú hitelesítés az Azure AD-ban az Exchange ActiveSync-ügyfelek | [Ismerkedés az Azure Active Directory-alapú hitelesítés](active-directory-certificate-based-authentication-get-started.md) |
+| Választható: Engedélyezze a Tanúsítványalapú hitelesítés az Azure AD-ban az Exchange ActiveSync-ügyfelek | [A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban](active-directory-certificate-based-authentication-get-started.md) |
 | Navigáljon a hozzáférési panelre, és a hitelesítés a felhasználói tanúsítvány használatával | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Megfontolandó szempontok

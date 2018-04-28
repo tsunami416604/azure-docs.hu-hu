@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis gyorsítótár Azure PowerShell kezelése |} Microsoft Docs"
-description: "Útmutató az Azure PowerShell Azure Redis Cache felügyeleti feladatokat hajthat végre."
+title: Azure Redis gyorsítótár Azure PowerShell kezelése |} Microsoft Docs
+description: Útmutató az Azure PowerShell Azure Redis Cache felügyeleti feladatokat hajthat végre.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 58f8601fa780ac86729f60e9e30f4c6a91c73deb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure Redis gyorsítótár Azure PowerShell kezelése
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Ha már telepítette az Azure PowerShell, rendelkeznie kell Azure PowerShell 1.0
 
 Először be kell jelentkezni Azure ezzel a paranccsal.
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 A Microsoft Azure bejelentkezési párbeszédpanelen adja meg az e-mail cím, az Azure-fiókjával, és a hozzá tartozó jelszó.
 
@@ -66,18 +66,18 @@ Segítség a példában a `New-AzureRmRedisCache` parancsmag, típus:
     Get-Help New-AzureRmRedisCache -Detailed
 
 ### <a name="how-to-connect-to-other-clouds"></a>Más felhők csatlakoztatása
-Az Azure alapértelmezés szerint a környezete `AzureCloud`, amely globális Azure felhőben példányt jelenti. Szeretne csatlakozni egy másik példányt, használja a `Add-AzureRmAccount` parancsot a `-Environment` vagy -`EnvironmentName` parancssori kapcsolóval a kívánt környezetre vagy a környezet neve.
+Az Azure alapértelmezés szerint a környezete `AzureCloud`, amely globális Azure felhőben példányt jelenti. Szeretne csatlakozni egy másik példányt, használja a `Connect-AzureRmAccount` parancsot a `-Environment` vagy -`EnvironmentName` parancssori kapcsolóval a kívánt környezetre vagy a környezet neve.
 
 Rendelkezésre álló környezeteket listájának megtekintéséhez futtassa a `Get-AzureRmEnvironment` parancsmag.
 
 ### <a name="to-connect-to-the-azure-government-cloud"></a>Az Azure Government felhőbe való kapcsolódáshoz
 Az Azure Government felhő csatlakozni, használja a következő parancsok egyikét.
 
-    Add-AzureRMAccount -EnvironmentName AzureUSGovernment
+    Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
 
 vagy
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
 
 A gyorsítótár Azure Government felhőalapú létrehozásához használja az alábbi helyek egyikét.
 
@@ -89,11 +89,11 @@ Az Azure Government felhő kapcsolatos további információkért lásd: [a Micr
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Az Azure Kína felhőbe való kapcsolódáshoz
 Az Azure Kína felhő csatlakozni, használja a következő parancsok egyikét.
 
-    Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+    Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 vagy
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
 
 A gyorsítótár Azure Kína felhőalapú létrehozásához használja az alábbi helyek egyikét.
 
@@ -105,12 +105,12 @@ Az Azure Kína felhő kapcsolatos további információkért lásd: [AzureChinaC
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Csatlakozni a Microsoft Azure-Németország
 A Microsoft Azure Németország csatlakozni, használja a következő parancsok egyikét.
 
-    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+    Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
 
 
 vagy
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
 
 A Microsoft Azure Németországban a gyorsítótár létrehozásához használja az alábbi helyek egyikét.
 
@@ -141,18 +141,18 @@ A következő táblázat a tulajdonságok és a gyakran használt paraméterek l
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration tulajdonságai
 | Tulajdonság | Leírás | Árképzési szintek |
 | --- | --- | --- |
-| rdb-backup-enabled |E [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) engedélyezve van |Csak a prémium |
-| rdb-storage-connection-string |A kapcsolati karakterláncot a tárfiók [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |Csak a prémium |
-| rdb-backup-frequency |A biztonsági mentési gyakorisága [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |Csak a prémium |
-| maxmemory-reserved |Konfigurálja a [fenntartott memória](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) nem gyorsítótár folyamatok |Standard és Premium |
-| maxmemory-policy |Konfigurálja a [kiürítés házirend](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a gyorsítótár |Minden tarifacsomagok |
-| értesítés-kulcstérértesítések használatával-események |Konfigurálja az [kulcstérértesítések használatával értesítések](cache-configure.md#keyspace-notifications-advanced-settings) |Standard és Premium |
-| hash-max-ziplist-entries |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Premium |
-| hash-max-ziplist-value |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Premium |
-| set-max-intset-entries |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Premium |
-| zset-max-ziplist-entries |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Premium |
-| zset-max-ziplist-value |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Premium |
-| adatbázisok |Konfigurálja az adatbázisok számát. Ez a tulajdonság csak a gyorsítótár létrehozásakor konfigurálható. |Standard és Premium |
+| rekordadatbázis biztonsági mentés engedélyezve |E [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) engedélyezve van |Csak a prémium |
+| rekordadatbázis-storage-kapcsolat-karakterlánc |A kapcsolati karakterláncot a tárfiók [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |Csak a prémium |
+| biztonsági mentés-gyakori rekordadatbázis |A biztonsági mentési gyakorisága [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |Csak a prémium |
+| maxmemory-reserved |Konfigurálja a [fenntartott memória](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) nem gyorsítótár folyamatok |Standard és Prémium |
+| maxmemory-házirend |Konfigurálja a [kiürítés házirend](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a gyorsítótár |Minden tarifacsomagok |
+| értesítés-kulcstérértesítések használatával-események |Konfigurálja az [kulcstérértesítések használatával értesítések](cache-configure.md#keyspace-notifications-advanced-settings) |Standard és Prémium |
+| hash-max-ziplist-entries |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| hash-max-ziplist-value |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| set-maximális-intset-bejegyzések |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| zset-max-ziplist-entries |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| zset-max-ziplist-value |Konfigurálja az [memóriaoptimalizálási](http://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
+| adatbázisok |Konfigurálja az adatbázisok számát. Ez a tulajdonság csak a gyorsítótár létrehozásakor konfigurálható. |Standard és Prémium |
 
 ## <a name="to-create-a-redis-cache"></a>A Redis Cache létrehozása
 Új Azure Redis Cache példány használatával hozhatók létre a [New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx) parancsmag.
@@ -327,7 +327,7 @@ A következő parancsot a maxmemory-házirend a Redis gyorsítótár myCache nev
 <a name="scale"></a>
 
 ## <a name="to-scale-a-redis-cache"></a>A Redis gyorsítótár méretezése
-`Set-AzureRmRedisCache`az Azure Redis Cache-gyorsítótár méretezési használható példány, ha a `Size`, `Sku`, vagy `ShardCount` tulajdonság módosítását mutatjuk be. 
+`Set-AzureRmRedisCache` az Azure Redis Cache-gyorsítótár méretezési használható példány, ha a `Size`, `Sku`, vagy `ShardCount` tulajdonság módosítását mutatjuk be. 
 
 > [!NOTE]
 > Skálázás a PowerShell használatával gyorsítótár az azonos korlátok és útmutatók méretezés a gyorsítótár Azure-portálról. A következő korlátozásokkal egy másik tarifacsomagra méretezheti.

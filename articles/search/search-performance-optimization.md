@@ -1,24 +1,19 @@
 ---
-title: "Az Azure Search teljesítmény- és optimalizálási szempontok |} Microsoft Docs"
-description: "Azure Search teljesítmény hangolására és optimális méretezési konfigurálása"
-services: search
-documentationcenter: 
+title: Az Azure Search teljesítmény- és optimalizálási szempontok |} Microsoft Docs
+description: Azure Search teljesítmény hangolására és optimális méretezési konfigurálása
 author: LiamCavanagh
-manager: pablocas
-editor: 
-ms.assetid: 4d3cd864-29d2-4921-be0d-a3f1a819de46
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89c0352723f1ed00784250b566902028af853d10
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Az Azure Search teljesítmény- és optimalizálási kapcsolatos szempontok
 Egy remek keresési élményt biztosít az a kulcs sikeres sok Mobile és webes alkalmazásokhoz. Ingatlan, a car Piacterek online katalógusok használni gyors keresés és a vonatkozó eredményeket hatással lesz a felhasználói élmény. Ez a dokumentum azt tapasztalja, ajánlott eljárások a legtöbbet hozhatja ki Azure Search, különösen ha speciális célú méretezhetőségi kifinomult követelményeit beszélő hogyan támogatja a súgót, vagy egyéni rangsorolási készült.  Emellett ez a dokumentum belső ismerteti, és ismerteti a különböző módszer valós felhasználói alkalmazásokban hatékonyan működjön.
@@ -98,7 +93,7 @@ Az Azure Search segítségével elvégezheti a elemzése és a szolgáltatás te
 
 STA megérteni, hogy az Azure Search szempontjából késés díjszabás hasznos eszköze.  Mivel a lekérdezés Teljesítményelemzési értékek, a rendszer naplózza a lekérdezés idejét (az erre vonatkozó kérés érkezik történő elküldésekor az idő) az Azure Search teljes körűen feldolgozandó alapulnak, le is tudja ennek segítségével állapítsa meg, ha késési problémák vannak az Azure Search szolgáltatás ügyféloldali vagy elemek a szolgáltatás, például hálózati késés ide.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információt a árképzési szinteket, és a szolgáltatások korlátok mindegyik, lásd: [szolgáltatási korlátait, az Azure Search](search-limits-quotas-capacity.md).
 
 Látogasson el [kapacitástervezés](search-capacity-planning.md) partícióazonosító és másodpéldány kombinációk tájékozódhat.

@@ -2,23 +2,20 @@
 title: Közzététel WebApplicationVM |} Microsoft Docs
 description: Megtudhatja, hogyan telepítheti egy webalkalmazást egy virtuális géphez. Ezt a parancsfájlt a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek.
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: de4cec95-f73f-44d9-babd-9f47f2633cdb
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: de4cec95-f73f-44d9-babd-9f47f2633cdb
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: 49778b00dc9b1f6a8a11de5e3575599957b753fe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 3fdd11387096d95359fb5f578ca64720f2182c45
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>(A Windows PowerShell-parancsfájl) közzététele-WebApplicationVM
 A webalkalmazások egy virtuális gépet telepít. A parancsfájl a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek.
@@ -39,77 +36,77 @@ A JSON-konfigurációs fájlt, amely leírja a központi telepítés részletein
 
 | Aliasnevek | nincs |
 | --- | --- |
-| Kötelező? |igaz |
+| Kötelező? |true |
 | Beosztás |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |hamis |
-| Helyettesítő karakterek elfogadása? |hamis |
+| Fogadja el a feldolgozási sor beviteli? |false |
+| Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="subscriptionname"></a>Előfizetés neve
 Kívánja a virtuális gép létrehozása Azure-előfizetés neve.
 
 | Aliasnevek | nincs |
 | --- | --- |
-| Kötelező? |hamis |
+| Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |Az előfizetés fájlban az első előfizetést használ |
-| Fogadja el a feldolgozási sor beviteli? |hamis |
-| Helyettesítő karakterek elfogadása? |hamis |
+| Fogadja el a feldolgozási sor beviteli? |false |
+| Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="webdeploypackage"></a>WebDeployPackage
 A webes telepítési csomag közzétételére a virtuális gép elérési útja. Ezt a csomagot a Visual Studio webhely közzététele varázsló használatával hozhat létre. Lásd: [Útmutató: webes telepítési csomag létrehozása a Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
 
 | Aliasnevek | nincs |
 | --- | --- |
-| Kötelező? |hamis |
+| Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |hamis |
-| Helyettesítő karakterek elfogadása? |hamis |
+| Fogadja el a feldolgozási sor beviteli? |false |
+| Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="allowuntrusted"></a>AllowUntrusted
 Amennyiben az értéke igaz, nem egy megbízható legfelső szintű hitelesítésszolgáltató által aláírt tanúsítványok használatának engedélyezése.
 
 | Aliasnevek | nincs |
 | --- | --- |
-| Kötelező? |hamis |
+| Kötelező? |false |
 | Beosztás |nevű |
-| Alapértelmezett érték |hamis |
-| Fogadja el a feldolgozási sor beviteli? |hamis |
-| Helyettesítő karakterek elfogadása? |hamis |
+| Alapértelmezett érték |false |
+| Fogadja el a feldolgozási sor beviteli? |false |
+| Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="vmpassword"></a>VMPassword
 A virtuális gép fiók hitelesítő adatait. Példa: - VMPassword @{név = "rendszergazda"; Jelszó = a "password"}
 
 | Aliasnevek | nincs |
 | --- | --- |
-| Kötelező? |hamis |
+| Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |hamis |
-| Helyettesítő karakterek elfogadása? |hamis |
+| Fogadja el a feldolgozási sor beviteli? |false |
+| Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
 A hitelesítő adatokat az Azure SQL-adatbázis. Példa: - DatabaseServerPassword @{név = "rendszergazda"; Jelszó = a "password"}
 
 | Aliasnevek | nincs |
 | --- | --- |
-| Kötelező? |hamis |
+| Kötelező? |false |
 | Beosztás |nevű |
 | Alapértelmezett érték |nincs |
-| Fogadja el a feldolgozási sor beviteli? |hamis |
-| Helyettesítő karakterek elfogadása? |hamis |
+| Fogadja el a feldolgozási sor beviteli? |false |
+| Helyettesítő karakterek elfogadása? |false |
 
 ### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 Amennyiben az értéke igaz, a nyomtató érkező üzenetek a parancsfájl a kimeneti adatfolyamba.
 
 | Aliasnevek | nincs |
 | --- | --- |
-| Kötelező? |hamis |
+| Kötelező? |false |
 | Beosztás |nevű |
-| Alapértelmezett érték |hamis |
-| Fogadja el a feldolgozási sor beviteli? |hamis |
-| Helyettesítő karakterek elfogadása? |hamis |
+| Alapértelmezett érték |false |
+| Fogadja el a feldolgozási sor beviteli? |false |
+| Helyettesítő karakterek elfogadása? |false |
 
 ## <a name="remarks"></a>Megjegyzések
 A parancsfájl használata létrehozásához teljes leírását fejlesztési és tesztkörnyezetek, lásd: [Windows PowerShell parancsfájlok használata a közzététel a fejlesztési és tesztkörnyezetek](vs-azure-tools-publishing-using-powershell-scripts.md).

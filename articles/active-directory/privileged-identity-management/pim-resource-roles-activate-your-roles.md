@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management az Azure-erőforrások - szerepkörök aktiválása |} Microsoft Docs
+title: Az Azure-erőforrások szerepkörök aktiválása Privileged Identity Management használatával |} Microsoft Docs
 description: A PIM szerepkörök aktiválása ismerteti.
 services: active-directory
 documentationcenter: ''
@@ -13,38 +13,39 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 3e5456e7a632639cb82d7ba2b2e073938b1798ef
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a985e67cc566cc45b3ee6b8dc98e91a8f34abd1b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="privileged-identity-management---resource-roles---activate"></a>Privileged Identity Management - szerepkör erőforrás - aktiválása
-Szerepkörök aktiválása az Azure-erőforrások bevezet egy új felület, amely lehetővé teszi az aktiválási a jövőbeni dátum/idő ütemezése, és válasszon egy adott aktiválási időtartamot a legnagyobb (a rendszergazdák által konfigurált) belül jogosult szerepkör tagjai. További tudnivalók [itt az Azure AD-szerepkörök aktiválása](../active-directory-privileged-identity-management-how-to-activate-role.md).
+# <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások szerepkörök aktiválása Privileged Identity Management használatával
+Privileged Identity Management (PIM) egy új Azure-erőforrások szerepkörök aktiválása élményt vezet be. Jogosult szerepkör tagjai aktiválási egy későbbi dátumra és időre is ütemezheti. A maximális (a rendszergazdák által konfigurált) belül egy adott aktiválás időtartama is választhatja. További információkért lásd: [aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-how-to-activate-role.md).
 
 ## <a name="activate-roles"></a>Szerepkörök aktiválása
-Keresse meg a a szerepkörök részben a bal oldali navigációs sávon. Kattintson az "Aktiválási" a szerepkörhöz történő aktiválni szeretné.
-![](media/azure-pim-resource-rbac/rbac-roles.png)
+Keresse meg a **a szerepkörök** szakasz a bal oldali ablaktáblán. Válassza ki **aktiválás** az aktiválni kívánt szerepkör esetében.
 
-Az aktiválások menüből adjon meg a kívánt kezdő dátum és idő, a szerepkör aktiválásához. Opcionálisan csökkentése az aktiválás időtartama (mennyi ideig a szerepköre aktív), és ha szükséges; indoklásának beírásához Kattintson az aktiválás gombra.
+![Lapján "Jogosult szerepkörök" a "Saját szerepkörök" panelen.](media/azure-pim-resource-rbac/rbac-roles.png)
 
-A kezdő dátum és idő nem módosul, ha a szerepkör aktiválódik másodpercen belül. Egy szerepkör aszinkron aktiválás szalagcím üzenet a saját szerepkörök lapon jelenik meg. Kattintson a frissítés gombra kattintva törölheti ezt az üzenetet.
+Az a **aktiválások** menüben adja meg a kezdő dátum és idő a szerepkör aktiválásához. Szükség esetén csökkentse az aktiválás időtartama (időtartama, amely a szerepkör aktív) és indoklásának beírásához, ha szükséges. Ezt követően válassza **aktiválás**.
 
-![](media/azure-pim-resource-rbac/rbac-activate-notification.png)
+A kezdő dátum és idő nem módosulnak, ha a szerepkör aktiválásakor másodpercben. Az a **a szerepkörök** ablaktáblán Szalagcím megjelenik egy üzenet, hogy a szerepkör aktiválása várakozik. Válassza ki a frissítés gombra kattintva törölje ezt az üzenetet.
 
-Ha az aktiválás dátuma jövőbeli időpontra van ütemezve, a függőben lévő kérelem függőben lévő kérelmek fülre, a bal oldali navigációs menü megjelenik. Abban az esetben, ha a szerepkör aktiválása már nincs szükség, a felhasználó megszakítja a kérést a lap jobb oldalán a Mégse gombra kattintva.
+!["A szerepkörök" ablaktáblán egy szalagcím üzenet és a függőben lévő jóváhagyási szóló értesítés](media/azure-pim-resource-rbac/rbac-activate-notification.png)
 
-![](media/azure-pim-resource-rbac/rbac-activate-pending.png)
+Ha az aktiválás van ütemezve egy jövőbeli dátumot és időpontot, a függőben lévő kérelem jelenik meg a **függőben lévő kérelmek** lapján a bal oldali ablaktáblán. A szerepkör aktiválása már nincs szükség, ha a kérelem kiválasztásával megszakíthatja a **Mégse** gombra.
+
+![Függőben lévő kérelmek "Mégse" gombot listája](media/azure-pim-resource-rbac/rbac-activate-pending.png)
 
 
-## <a name="just-enough-administration"></a>Éppen elég felügyelettel
+## <a name="apply-just-enough-administration-practices"></a>Csak elég felügyeleti gyakorlatot
 
-A éppen elegendő (JEA) felügyeleti gyakorlati tanácsok a erőforrás szerepkör-hozzárendelések érték használata egyszerű, Azure-erőforrások PIM. Felhasználók és az Azure-előfizetésekhez vagy erőforrás-csoportok a csoport tagjai aktiválhatják a meglévő szerepkör-hozzárendelés csökkentett hatókörben. 
+Az erőforrás szerepkör-hozzárendelések csak elég adminisztrációs (JEA) gyakorlati tanácsok a PIM az Azure-erőforrások egyszerű érték használata. Felhasználók és az Azure-előfizetések vagy erőforrás-csoportok a csoport tagjai aktiválhatják a meglévő szerepkör-hozzárendelés csökkentett hatókörben. 
 
-A lapon, a kezeléséhez szükséges alárendelt erőforrás található.
+A keresési oldaláról, amelyeknek kezelniük kell alárendelt erőforrás található.
 
-![](media/azure-pim-resource-rbac/azure-resources-02.png)
+![Egy erőforrás kiválasztása](media/azure-pim-resource-rbac/azure-resources-02.png)
 
-Jelöljön ki a bal oldali navigációs menü a szerepkört, és válassza ki a megfelelő szerepkört aktiválja. Figyelje meg a hozzárendelés-típus örökölt, mert a szerepkör a lent látható módon az erőforráscsoportot, hanem az előfizetés kapott.
+Válassza ki **a szerepkörök** a bal oldali ablaktáblán, és válassza ki a megfelelő szerepkört aktiválja. A hozzárendelés típusa **örökölt** a szerepkört rendelték, az előfizetés, nem pedig az erőforráscsoport, mert.
 
-![](media/azure-pim-resource-rbac/my-roles-02.png)
+![Jogosult szerepkör-hozzárendelések, a hozzárendelés típusa, a kijelölt listája](media/azure-pim-resource-rbac/my-roles-02.png)

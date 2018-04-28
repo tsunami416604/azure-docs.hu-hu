@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 09/28/2017
+ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: e67ae32902c989f74cee0c1d223dacc770c0d387
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c28af5a9773cc362663831346b58f599aed6ea9a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Kötegelt szolgáltatási megoldások és az Active Directory hitelesítéséhez
 
@@ -65,7 +65,7 @@ Használja a **Azure Batch erőforrás végpont** a Batch szolgáltatás kérelm
 
 Az első lépés az Azure AD hitelesítéséhez van az alkalmazás regisztrálása az Azure AD-bérlő. Az alkalmazás regisztrálása lehetővé teszi az Azure hívja [Active Directory Authentication Library] [ aad_adal] (ADAL) a felhasználói kódból. Az adal-t az API-k biztosít hitelesítéséhez az Azure AD az alkalmazásból. Az alkalmazás regisztrálása kell hogy tervezi integrált hitelesítést vagy egy egyszerű szolgáltatást.
 
-Ha regisztrálja az alkalmazást, adja meg információkat az Azure AD az alkalmazással kapcsolatos. Az Azure AD majd biztosít, amelyekkel az alkalmazás társítása az Azure AD futásidőben Azonosítóját. Az Alkalmazásazonosító kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md).
+Ha regisztrálja az alkalmazást, adja meg információkat az Azure AD az alkalmazással kapcsolatos. Az Azure AD majd biztosít az Alkalmazásazonosító (más néven a *ügyfél-azonosító*), hogy használja-e az alkalmazás társítása az Azure AD futásidőben. Az Alkalmazásazonosító kapcsolatos további információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directoryban](../active-directory/develop/active-directory-application-objects.md).
 
 A kötegelt alkalmazás regisztrálásához kövesse a [egy alkalmazás hozzáadása](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application) szakasz [alkalmazások integrálása az Azure Active Directory][aad_integrate]. Natív alkalmazás regisztrálnia az alkalmazást, ha bármilyen érvényes URI-JÁNAK megadhatja a **átirányítási URI-**. Nem kell egy valódi végpontot bizonyult.
 
@@ -81,7 +81,7 @@ A bérlő azonosítója azonosítja az Azure AD-bérlő számára az alkalmazás
 
 1. Az Azure-portálon válassza ki az Active Directory.
 2. Kattintson a **Tulajdonságok** elemre.
-3. A megadott könyvtár-azonosítóhoz GUID-érték másolása Ez az érték rövidítése a bérlő azonosítója.
+3. A megadott GUID-érték másolja a **könyvtár-azonosítója**. Ez az érték rövidítése a bérlő azonosítója.
 
 ![Másolja a könyvtár-azonosítója](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -97,17 +97,17 @@ Miután megismerte [az alkalmazás regisztrálva](#register-your-application-wit
 
     ![Keresse meg az alkalmazás neve](./media/batch-aad-auth/search-app-registration.png)
 
-3. Nyissa meg a **beállítások** panel az alkalmazáshoz. Az a **API-hozzáférés** szakaszban jelölje be **szükséges engedélyek**.
+3. Kattintson az alkalmazást, majd **beállítások**. Az a **API-hozzáférés** szakaszban jelölje be **szükséges engedélyek**.
 4. Az a **szükséges engedélyek** panelen kattintson a **Hozzáadás** gombra.
-5. 1. lépésben a keresse meg a kötegelt API. Keressen rá az egyes karakterláncokra, addig amíg meg nem találja az API-t:
+5. A **API kiválasztása**, keresse meg a kötegelt API. Keressen rá az egyes karakterláncokra, addig amíg meg nem találja az API-t:
     1. **MicrosoftAzureBatch**.
     2. **Microsoft Azure Batch**. Újabb Azure AD-bérlők ezt a nevet használhatják.
     3. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója. 
-6. Miután megtalálta a kötegelt API-t, jelölje ki, majd kattintson a **válasszon** gombra.
-6. A 2. lépésben, jelölje be a jelölőnégyzetet a **Azure Batch szolgáltatás** , és kattintson a **válasszon** gombra.
-7. Kattintson a **végzett** gombra.
+6. Miután megtalálta a kötegelt API-t, jelölje ki, majd kattintson a **válasszon**.
+7. A **engedélyként válassza**, jelölje be a jelölőnégyzetet a **Azure Batch szolgáltatás** kattintson **válasszon**.
+8. Kattintson a **Done** (Kész) gombra.
 
-A **szükséges engedélyek** most mutat be, hogy az Azure AD alkalmazás fér hozzá az adal-t, mind a Batch szolgáltatás API panelen. Engedélyekkel az adal-ra automatikusan regisztrációt az alkalmazás az Azure ad-val.
+A **szükséges engedélyek** windows most mutat be, hogy az Azure AD alkalmazás fér hozzá az adal-t, mind a Batch szolgáltatás API. Engedélyekkel az adal-ra automatikusan regisztrációt az alkalmazás az Azure ad-val.
 
 ![Támogatás API engedélyei](./media/batch-aad-auth/required-permissions-data-plane.png)
 
@@ -126,7 +126,7 @@ Kövesse az alábbi lépéseket az Azure-portálon:
 
 1. Az Azure portál bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**. Kattintson a **App regisztrációk**.
 2. Keresse meg az alkalmazás regisztrációk a listában az alkalmazás nevét.
-3. Megjelenítés a **beállítások** panelen. Az a **API-hozzáférés** szakaszban jelölje be **kulcsok**.
+3. Kattintson az alkalmazást, majd **beállítások**. Az a **API-hozzáférés** szakaszban jelölje be **kulcsok**.
 4. A kulcs létrehozásához adja meg a kulcs leírását. Ezután válassza ki a kulcs egy vagy két éves időtartammal. 
 5. Kattintson a **mentése** gombra kattintva hozzon létre, és megjeleníti a kulcsot. Másolja egy biztonságos helyre, a kulcs értékét, akkor nem fog tudni férni újra Ha kilép a panelen. 
 
@@ -152,14 +152,14 @@ A bérlő azonosítója azonosítja az Azure AD-bérlő számára az alkalmazás
 
 1. Az Azure-portálon válassza ki az Active Directory.
 2. Kattintson a **Tulajdonságok** elemre.
-3. A megadott könyvtár-azonosítóhoz GUID-érték másolása Ez az érték rövidítése a bérlő azonosítója.
+3. A megadott GUID-érték másolja a **könyvtár-azonosítója**. Ez az érték rövidítése a bérlő azonosítója.
 
 ![Másolja a könyvtár-azonosítója](./media/batch-aad-auth/aad-directory-id.png)
 
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ebben a szakaszban szereplő példák bemutatják, hogyan hitelesítéséhez az Azure AD integrált hitelesítésen keresztül, és egy egyszerű szolgáltatást. A Kódminták .NET használja, de a fogalmakat hasonló, ha a többi nyelvet.
+Ebben a szakaszban szereplő példák bemutatják, hogyan hitelesítéséhez az Azure AD integrált hitelesítésen keresztül, és egy egyszerű szolgáltatást. Ezek a legtöbb .NET használja, de a koncepció ismertetése érdekében hasonló, ha a többi nyelvet.
 
 > [!NOTE]
 > Egy Azure AD hitelesítési tokent egy óra múlva lejár. A hosszú élettartamú használatakor **BatchClient** objektum, azt javasoljuk, hogy visszaállíthatja a jogkivonat az ADAL halasztása minden kérelemnél annak érdekében, hogy mindig legyen egy érvényes tokent. 
@@ -205,7 +205,7 @@ Adja meg az alkalmazás Azonosítóját (ügyfél-azonosító) az alkalmazáshoz
 private const string ClientId = "<application-id>";
 ```
 
-Az átirányítási URI-t a regisztráció során megadott szeretne másolni. Az átirányítási URI a kódban megadott meg kell egyeznie az átirányítási URI-t az alkalmazás regisztrálásakor megadott:
+Az átirányítási URI-t, amely a megadott, is másolja, ha az alkalmazás regisztrált egy natív alkalmazásként. Az átirányítási URI a kódban megadott meg kell egyeznie az átirányítási URI-t az alkalmazás regisztrálásakor megadott:
 
 ```csharp
 private const string RedirectUri = "http://mybatchdatasample";
@@ -296,7 +296,7 @@ public static async Task<string> GetAuthenticationTokenAsync()
 }
 ```
 
-Összeállíthatja a **BatchTokenCredentials** objektum, amely a delegált paramétert fogad. Ezen hitelesítő adatok segítségével nyissa meg a **BatchClient** objektum. Ezután használhatja, amely **BatchClient** -objektumot a Batch szolgáltatás további műveleteket:
+Összeállíthatja a **BatchTokenCredentials** objektum, amely a delegált paramétert fogad. Ezen hitelesítő adatok segítségével nyissa meg a **BatchClient** objektum. Akkor használja azt **BatchClient** -objektumot a Batch szolgáltatás további műveleteket:
 
 ```csharp
 public static async Task PerformBatchOperations()
@@ -308,6 +308,65 @@ public static async Task PerformBatchOperations()
         await client.JobOperations.ListJobs().ToListAsync();
     }
 }
+```
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Példa: az Azure AD szolgáltatás egyszerű használata kötegelt Python
+
+Egy egyszerű szolgáltatást kötegelt Python végzett hitelesítéshez, telepítése, és hivatkozzon a [azure-köteg](https://pypi.org/project/azure-batch/) és [azure-közös](https://pypi.org/project/azure-common/) modulok.
+
+
+```python
+from azure.batch import BatchServiceClient
+from azure.common.credentials import ServicePrincipalCredentials
+```
+
+Egy egyszerű szolgáltatás használata esetén meg kell adnia a bérlő azonosítója. Bérlői azonosító lekéréséhez kövesse a témakörben ismertetett lépéseket [bérlői azonosító lekérése az Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
+
+```python
+TENANT_ID = "<tenant-id>";
+```
+
+A Batch szolgáltatás erőforrás végpont – referencia:  
+
+```python
+RESOURCE = "https://batch.core.windows.net/";
+```
+
+A Batch-fiók hivatkozási:
+
+```python
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+```
+
+Adja meg az alkalmazás Azonosítóját (ügyfél-azonosító) az alkalmazáshoz. Az Alkalmazásazonosítót a alkalmazás regisztrálása az Azure-portálon a érhető el:
+
+```python
+CLIENT_ID = "<application-id>";
+```
+
+Adja meg a titkos kulcsot az Azure portálról másolt:
+
+```python
+SECRET = "<secret-key>";
+```
+
+Hozzon létre egy **ServicePrincipalCredentials** objektum:
+
+```python
+credentials = ServicePrincipalCredentials(
+    client_id=CLIENT_ID,
+    secret=SECRET,
+    tenant=TENANT_ID,
+    resource=RESOURCE
+)
+```
+
+A szolgáltatás egyszerű hitelesítő adatai segítségével nyissa meg a **BatchServiceClient** objektum. Akkor használja azt **BatchServiceClient** -objektumot a Batch szolgáltatás utólagos műveleteket.
+
+```python
+    batch_client = BatchServiceClient(
+    credentials,
+    base_url=BATCH_ACCOUNT_URL
+)
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -1,12 +1,11 @@
 ---
-title: "Tábla API Azure Cosmos DB globális telepítési útmutató |} Microsoft Docs"
-description: "Megtudhatja, hogyan beállítani az Azure Cosmos DB globális terjesztési tábla API használatával."
+title: Az Azure Cosmos DB globális terjesztési oktatóanyaga a Table API-hoz | Microsoft Docs
+description: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB globális terjesztését a Table API használatával.
 services: cosmos-db
-keywords: "globális terjesztési, tábla"
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: cgronlun
+keywords: globális terjesztés, Table
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,46 +13,46 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/13/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 40c0bfe913e1396194de00cf6fa1d1ff823b1d0e
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
-ms.translationtype: MT
+ms.openlocfilehash: f877baa33d94dad07250da9a10209555dbca65c9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Hogyan lehet beállítani az Azure Cosmos DB globális terjesztési tábla API használatával
+# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása a Table API használatával
 
-Ez a cikk ismerteti a következő feladatokat: 
+Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * Az Azure portál használatával globális terjesztési konfigurálása
-> * Globális terjesztési használatával konfigurálja a [tábla API](table-introduction.md)
+> * Globális terjesztés konfigurálása az Azure Portallal
+> * Globális terjesztés konfigurálása a [Table API](table-introduction.md) használatával
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>A preferált régió tábla API használatával csatlakozik
+## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Csatlakozás egy kívánt régióhoz a Table API használatával
 
-Kihasználása érdekében [globális terjesztési](distribute-data-globally.md), ügyfélalkalmazások is adja meg a dokumentum műveletek végrehajtásához használandó régiók rendezett beállítások listáját. Ezt megteheti úgy, hogy a [TableConnectionPolicy.PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.table.tableconnectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_CosmosDB_Table_TableConnectionPolicy_PreferredLocations) tulajdonság. Az Azure Cosmos DB tábla API SDK kommunikálni a legjobb végpont választja, a fiók konfigurációjának, aktuális területi rendelkezésre állás és a megadott beállítások listája alapján.
+A [globális terjesztés](distribute-data-globally.md) kihasználása érdekében az ügyfélalkalmazások megadhatják a preferált régiók sorrendbe rendezett listáját a dokumentumokkal kapcsolatos műveletek elvégzéséhez. Ezt a [TableConnectionPolicy.PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.table.tableconnectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_CosmosDB_Table_TableConnectionPolicy_PreferredLocations) tulajdonság beállításával lehet megtenni. Az Azure Cosmos DB Table API SDK a kommunikációhoz az optimális végpontot a fiók konfigurációja, az aktuális régiónkénti rendelkezésre állás és a megadott preferencialista alapján választja ki.
 
-A PreferredLocations olvasása tartalmaznia kell egy előnyben részesített (többhelyű) helyek vesszővel tagolt listája. Minden ügyfél példány e régiók részhalmazát megadhat kis késleltetésű olvasása csatlakozási kísérleteinek kívánt sorrendjét. A régiók névvel kell ellátni használatával a [megjelenített neveket](https://msdn.microsoft.com/library/azure/gg441293.aspx), például `West US`.
+A PreferredLocations tulajdonságnak egy vesszővel elválasztott listát kell tartalmaznia az előnyben részesített (többkiszolgálós) helyekről az olvasásokhoz. Minden ügyfélpéldány a kívánt sorrendben adhatja meg ezen régiók részhalmazát a kis késleltetésű olvasásokhoz. A régiókat a [megjelenített nevükkel](https://msdn.microsoft.com/library/azure/gg441293.aspx) kell elnevezni, például: `West US`.
 
-Minden olvasási műveletek kerülnek a PreferredLocations lista első rendelkezésre álló terület. A kérés nem teljesíthető, ha az ügyfél lefelé a listában, a következő régióban sikertelen, és így tovább.
+Az olvasások a PreferredLocations lista első elérhető régiójába lesznek küldve. Ha a kérelem meghiúsul, az ügyfél továbbadja a listát a következő régiónak, és így tovább.
 
-Az SDK megpróbálja beolvasni a régiók megadott PreferredLocations. Igen például ha az adatbázis-fiókot a három régióban, de az ügyfél csak meghatározza a nem írási régiók két PreferredLocations, majd nincs olvasási szolgáltató kívül az írási régió, feladatátvétel esetén is.
+Az SDK a PreferredLocations listában szereplő régiókból próbál meg olvasni. Így ha például az adatbázisfiók három régióban érhető el, de az ügyfél csak kettőt ad meg a nem írási régiók közül a PreferredLocations listában, akkor az írási régió nem szolgál ki olvasásokat, még feladatátvétel esetén sem.
 
-Az SDK automatikusan elküldi az összes írási műveletek aktuális írási terület.
+Az SDK az összes írást automatikusan az aktuális írási régióba küldi.
 
-A PreferredLocations tulajdonsága nincs beállítva, ha minden kérésnél szolgáltató aktuális írási régióban.
+Ha a PreferredLocations tulajdonság nincs beállítva, a kérelmek az aktuális írási régióból lesznek teljesítve.
 
-Ez azt, hogy ez az oktatóanyag befejezése. Megismerheti a globális replikált fiókja konzisztencia kezeléséhez olvasásával [Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md). És hogyan globális adatbázis-replikációval kapcsolatos további információk az Azure Cosmos Adatbázisba működik, a következő témakörben: [adatok globálisan Azure Cosmos DB terjesztése](distribute-data-globally.md).
+Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Az Azure portál használatával globális terjesztési konfigurálása
-> * Az Azure Cosmos DB tábla API-kkal globális terjesztési konfigurálása
+> * Globális terjesztés konfigurálása az Azure Portallal
+> * Globális terjesztés konfigurálása az Azure Cosmos DB Table API-jaival
 

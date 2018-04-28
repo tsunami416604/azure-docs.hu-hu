@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ba721091c2eb0c67171a6d3106468a05f9be1f8f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="my-first-graphical-runbook"></a>Az első grafikus forgatókönyvem
 
@@ -137,7 +137,7 @@ Most, hogy van egy változója az előfizetés-azonosító tárolására, úgy k
 1. Vigye a kurzort a **Bejelentkezés az Azure-ba** fölé, és várja meg, amíg megjelenik az alakzat alján egy kör. Kattintson a körre, és húzza a nyilat az **Előfizetés azonosítójának megadása** elemre.
 
 > [!IMPORTANT]
-> **Adja hozzá-AzureRmAccount** alias már **Connect-AzureRMAccount**. Amikor keresést a könyvtár elemek, ha nem látja **Connect-AzureRMAccount**, használhat **Add-AzureRMAccount**, vagy frissítheti a modulok az Automation-fiókban.
+> **Connect-AzureRmAccount** alias már **Connect-AzureRMAccount**. Amikor keresést a könyvtár elemek, ha nem látja **Connect-AzureRMAccount**, használhat **Connect-AzureRmAccount**, vagy frissítheti a modulok az Automation-fiókban.
 
 A forgatókönyvnek ezen a ponton az alábbi kódhoz kell hasonlítania: <br>![Forgatókönyv-hitelesítés konfigurálása](media/automation-first-runbook-graphical/runbook-auth-config.png)
 

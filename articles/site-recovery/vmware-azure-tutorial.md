@@ -1,34 +1,34 @@
 ---
-title: "Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez az Azure Site Recovery szolgáltatással | Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be az Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez az Azure Site Recoveryvel."
+title: Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez az Azure Site Recovery szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan állíthat be az Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez az Azure Site Recoveryvel.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7580db2a2fd41c124443b26257f1b946adcc068c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6c86a98dd819b91608be04f1466dc1e6764ee4b9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
-Az oktatóanyag bemutatja, hogyan állíthat be az Azure-ba irányuló vészhelyreállítást Windows rendszerű helyszíni VMware virtuális gépekhez. Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag bemutatja, hogyan állíthat be az Azure-ba irányuló vészhelyreállítást Windows rendszerű helyszíni VMware virtuális gépekhez. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A replikációs forrás és cél megadása.
 > * A replikációs forráskörnyezet (többek között a helyszíni Azure Site Recovery-összetevők), valamint a replikálási célkörnyezet beállítása.
-> * Replikációs szabályzat létrehozása.
-> * Virtuális gép replikálásának engedélyezése.
+> * Hozzon létre replikációs szabályzatot.
+> * Engedélyezze egy virtuális gép replikációját.
 
 Ez az oktatóanyag egy sorozat harmadik része. Az oktatóanyag során feltételezzük, hogy elvégezte az azt megelőző oktatóanyagok feladatait:
 
-* [Az Azure előkészítése](tutorial-prepare-azure.md)
-* [Helyszíni VMware előkészítése](vmware-azure-tutorial-prepare-on-premises.md)
+* [Az Azure előkészítése](tutorial-prepare-azure.md). Ez az oktatóanyag leírja, hogyan állíthat be Azure-tárfiókot és -hálózatot, hogyan ellenőrizheti, hogy rendelkezik-e a megfelelő engedélyekkel, és hogyan hozhat létre helyreállítási tárat.
+* [Helyszíni VMware előkészítése](vmware-azure-tutorial-prepare-on-premises.md). Ebben az oktatóanyagban fiókokat készít elő, hogy a Site Recovery VMware-kiszolgálókat érjen el a virtuális gépek felderítése érdekében, és opcionálisan elvégezheti a Site Recovery mobilitási szolgáltatási összetevő leküldéses telepítését, amikor engedélyezi egy virtuális gép replikációját. Arról is meggyőződik, hogy a VMware-kiszolgálók és a virtuális gépek megfelelnek a Site Recovery követelményeinek.
 
 Mielőtt nekikezdene, érdemes [áttekintenie, hogy léteznek-e az architektúrában](vmware-azure-architecture.md) vészhelyreállítási forgatókönyvek.
 
@@ -43,8 +43,6 @@ Mielőtt nekikezdene, érdemes [áttekintenie, hogy léteznek-e az architektúr�
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-> [!TIP]
-> A VMware virtuális gépek védelmére szolgáló konfigurációs kiszolgálók üzembe helyezésének ajánlott módszere az OVF-alapú üzembehelyezési modell használata. Jelen cikkben is ezt használjuk. Ha a cégen vagy intézményen belül érvényesülő korlátozások megakadályozzák az OVF-sablonok üzembe helyezését, akkor a [UnifiedSetup.exe fájllal telepíthet konfigurációs kiszolgálókat](physical-manage-configuration-server.md).
 
 A forráskörnyezet telepítéséhez egyetlen magas rendelkezésre állású helyszíni gépre van szükség a helyszíni Site Recovery-összetevők futtatásához. Ilyen összetevő lehet a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgáló:
 
@@ -53,6 +51,10 @@ A forráskörnyezet telepítéséhez egyetlen magas rendelkezésre állású hel
 - A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.
 
 A konfigurációs kiszolgáló magas rendelkezésre állású VMware virtuális gépként való beállításához töltsön le egy előkészített Open Virtualization Format-sablont (OVF, nyílt virtualizációs formátum), és importálja a VMware-be a virtuális gép létrehozásához. Miután beállította a konfigurációs kiszolgálót, regisztrálja a tárolóban. A regisztrációt követően a Site Recovery felderíti a helyszíni VMware virtuális gépeket.
+
+> [!TIP]
+> Ez az oktatóanyag OVF-sablonnal hozza létre a konfigurációs kiszolgáló VMware virtuális gépét. Ha ezt nem tudja megtenni, [manuális beállítást](physical-manage-configuration-server.md) is használhat. 
+
 
 ### <a name="download-the-vm-template"></a>A virtuálisgép-sablon letöltése
 
@@ -87,7 +89,7 @@ A konfigurációs kiszolgáló magas rendelkezésre állású VMware virtuális 
 Ha további hálózati adaptereket szeretne hozzáadni a konfigurációs kiszolgálóhoz, ezt azelőtt tegye meg, hogy regisztrálná a kiszolgálót a tárolóban. A regisztrálást követően további adapterek hozzáadása nem támogatott.
 
 1. A vSphere Client-leltárban kattintson a jobb gombbal a virtuális gépre, és válassza az **Edit Settings** (Beállítások szerkesztése) elemet.
-2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután kattintson a **Next** (Tovább) gombra.
+2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután kattintson a **Tovább** gombra.
 3. Válassza ki a hálózati adapter típusát és a hálózatot. 
 4. A virtuális hálózati adapter a virtuális gép bekapcsolásakor való csatlakoztatásához válassza a **Connect at power on** (Csatlakoztatás a bekapcsoláskor) elemet. Válassza a **Next** > **Finish** (Tovább > Befejezés) elemet. Ezután kattintson az **OK** gombra.
 
@@ -98,12 +100,12 @@ Ha további hálózati adaptereket szeretne hozzáadni a konfigurációs kiszolg
 2. A virtuális gép a bekapcsolásakor egy Windows Server 2016 telepítési folyamatot indít el. Fogadja el a licencszerződést, és adjon meg egy rendszergazdai jelszót.
 3. A telepítés befejezése után jelentkezzen be rendszergazdaként a virtuális gépre.
 4. Az első bejelentkezés alkalmával elindul az Azure Site Recovery Configuration Tool.
-5. Adjon meg egy nevet, amelyen a konfigurációs kiszolgálót regisztrálja a Site Recovery szolgáltatásban. Ezután kattintson a **Next** (Tovább) gombra.
+5. Adjon meg egy nevet, amelyen a konfigurációs kiszolgálót regisztrálja a Site Recovery szolgáltatásban. Ezután kattintson a **Tovább** gombra.
 6. Az eszköz ellenőrzi, hogy a virtuális gép tud-e csatlakozni az Azure-hoz. A kapcsolat létrejötte után a **Sign in** (Bejelentkezés) gombra kattintva jelentkezzen be az Azure-előfizetésbe. Olyan hitelesítő adatokra van szükség, amelyekkel hozzá lehet férni a tárolóhoz, amelyben regisztrálni kívánja a konfigurációs kiszolgálót.
 7. Az eszköz végrehajt néhány konfigurációs feladatot, majd újraindul.
 8. Jelentkezzen be újra a gépre. A konfigurációs kiszolgáló felügyeleti varázslója automatikusan elindul.
 
-### <a name="configure-settings-and-connect-to-vmware"></a>Beállítások konfigurálása és csatlakozás a VMware-hez
+### <a name="configure-settings-and-add-the-vmware-server"></a>Beállítások konfigurálása és a VMware-kiszolgáló hozzáadása
 
 1. A konfigurációs kiszolgáló felügyeleti varázslójában válassza a **Setup connectivity** (Kapcsolat beállítása) gombot, majd válassza ki a hálózati adaptert, amely a replikációs forgalmat fogadja. Ezután válassza a **Save** (Mentés) lehetőséget. Ez a beállítás a konfigurálás után nem módosítható.
 2. A **Helyreállítási tár kiválasztása** területen válassza ki az Azure-előfizetést, valamint a megfelelő erőforráscsoportot és tárolót.

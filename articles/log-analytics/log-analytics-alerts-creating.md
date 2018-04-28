@@ -1,8 +1,8 @@
 ---
-title: "Riasztásokat hoznak létre az OMS szolgáltatáshoz |} Microsoft Docs"
-description: "Naplóelemzési riasztások határozza meg az OMS-adattárban lévő fontos adatokat és is proaktív értesítést küldenek, problémák vagy meghívása műveletek kijavításának őket.  Ez a cikk ismerteti a riasztási szabály és a részletek a különböző általuk végezhető műveletek létrehozása."
+title: Riasztásokat hoznak létre az OMS szolgáltatáshoz |} Microsoft Docs
+description: Naplóelemzési riasztások határozza meg az OMS-adattárban lévő fontos adatokat és is proaktív értesítést küldenek, problémák vagy meghívása műveletek kijavításának őket.  Ez a cikk ismerteti a riasztási szabály és a részletek a különböző általuk végezhető műveletek létrehozása.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,34 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 04/13/2018
 ms.author: bwren
-ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b692822660ab12f89b274cea75727fb808d673f8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>A Naplóelemzési riasztási szabályok használata
-A riasztási szabályok, amelyek automatikusan futnak a napló keresések rendszeres időközönként riasztások jönnek létre.  Akkor hozzon létre egy riasztási rekordot, ha az eredmények bizonyos feltételeknek.  A szabály úgy automatikusan futtatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat.   
+
+> [!NOTE]
+> Ez a cikk ismerteti az OMS-portálon kezelt klasszikus Log Analytics-riasztásokat.  A Naplóelemzési riasztások [az Azure kiterjesztendő](../monitoring-and-diagnostics/monitoring-alerts-extend.md).  Ha ezzel végzett, majd létrehoz, és a riasztási szabályok az Azure portálon szerkesztése és Megjegyzés: Ebben a cikkben ismertetett eljárások használhatók.
+
+
+A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikus naplókereséseket futtatnak.  Akkor hozzon létre egy riasztási rekordot, ha az eredmények bizonyos feltételeknek.  A szabály ekkor automatikusan lefuttathat egy vagy több műveletet, hogy proaktívan értesítse Önt a riasztásról, vagy meghívjon egy másik folyamatot.   
 
 Ez a cikk ismerteti a folyamatok létrehozhatja és szerkesztheti a riasztási szabályok az OMS-portálon.  A különböző beállításokról és konfigurálásukról megvalósításához szükséges logikát, lásd: [Naplóelemzési ismertetése riasztások](log-analytics-alerts.md).
 
->[!NOTE]
-> Jelenleg létrehozásának vagy az Azure portál használatával riasztási szabály módosítása. 
 
 ## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
 
 Az OMS-portálon riasztási szabályt létrehozni, akkor először hozzon létre az azt jelzi, hogy a riasztás kell meghívnia napló keresése.  A **riasztás** gomb lesz elérhető, hozhat létre és konfigurálja a riasztási szabályt.
 
 >[!NOTE]
-> Legfeljebb 250 riasztási szabályok jelenleg az OMS-munkaterület hozható létre. 
+> Legfeljebb 250 riasztási szabályok jelenleg a Naplóelemzési munkaterület hozható létre. 
 
 1. Az OMS áttekintése lapon kattintson a **naplófájl-keresési**.
 2. Hozzon létre egy új naplófájl keresési lekérdezést, vagy válasszon ki egy mentett napló keresést. 
-3. Kattintson a **riasztási** nyissa meg a lap tetején a **riasztási szabály hozzáadása** képernyő.
+3. Kattintson az oldal tetején található **Riasztás** lehetőségre a **Riasztási szabály hozzáadása** képernyő megnyitásához.
 4. A témakörben található információk alapján riasztási szabály konfigurálása [riasztási szabályok részletei](#details-of-alert-rules) alatt.
-6. Kattintson a **mentése** a riasztási szabály befejezéséhez.  Futtatása azonnal elindul.
+6. Kattintson a **Mentés** gombra a riasztási szabály jóváhagyásához.  Futtatása azonnal elindul.
 
 
 ## <a name="edit-an-alert-rule"></a>Riasztási szabály szerkesztése
@@ -66,7 +69,7 @@ Ezek a alapbeállításainak megadása a riasztási szabály és a riasztásokat
 
 | Tulajdonság | Leírás |
 |:--- |:---|
-| Név | A riasztási szabályt azonosító egyedi nevet. Ez a név szerepel az a szabály által létrehozott riasztások.  |
+| Name (Név) | A riasztási szabályt azonosító egyedi nevet. Ez a név szerepel az a szabály által létrehozott riasztások.  |
 | Leírás | A riasztási szabály opcionális leírása. |
 | Súlyosság |Az a szabály által létrehozott riasztások súlyossága. |
 
@@ -88,7 +91,7 @@ Határozza meg, milyen gyakran a keresési lekérdezés futtatása.
 | A riasztások gyakorisága | Meghatározza, hogy milyen gyakran kell futtatni a lekérdezést. Bármely érték 5 perc és 24 óra közötti lehet. A időszak kisebbnek vagy azzal egyenlőnek kell lennie.  Ha az érték nagyobb, mint az időszak, majd azzal kockáztatja alatt nem talált rekordokat.<br><br>Vegye figyelembe például egy olyan időkeretet, 30 perc és 60 perc gyakorisága.  Ha a lekérdezés futtatása, 1:00, 12:30 és 1:00 PM rekordok adja vissza.  A következő szeretné futtatni a lekérdezést ideje 2:00 amikor meghaladná a 1:30 és 2:00 között rögzíti.  1:00 és 1:30 között létrejövő rekordok volna soha nem értékelhető ki. |
 
 
-### <a name="generate-alert-based-on"></a>Riasztás alapján
+### <a name="generate-alert-based-on"></a>Riasztás létrehozása ez alapján
 Határozza meg a feltételeket, amelyek fogja értékelni a meghatározásához, ha a riasztás létrejöjjön keresési lekérdezés eredményeit.  Ezen adatok kiválasztott riasztási szabály típusától függően eltérőek lesznek.  Részletek kaphat a különböző riasztási szabály esetében a [Naplóelemzési ismertetése riasztások](log-analytics-alerts.md).
 
 | Tulajdonság | Leírás |
@@ -99,14 +102,14 @@ Határozza meg a feltételeket, amelyek fogja értékelni a meghatározásához,
 
 | Tulajdonság | Leírás |
 |:--- |:---|
-| Találatok száma |Riasztás jön létre, ha a lekérdezés által visszaadott rekordok számát **nagyobb, mint** vagy **kisebb, mint** megadja az értéket.  |
+| Eredmények száma |Riasztás jön létre, ha a lekérdezés által visszaadott rekordok számát **nagyobb, mint** vagy **kisebb, mint** megadja az értéket.  |
 
 #### <a name="metric-measurement-alert-rules"></a>Metrika mérési riasztási szabályok
 
 | Tulajdonság | Leírás |
 |:--- |:---|
-| Összesített értékét | Az küszöbérték, amely minden összesített a eredmények meghaladható figyelembe kell venni a sérülése. |
-| Eseményindító riasztás alapján | Létrejön egy riasztás megszegése száma.  Megadhat **megszegése teljes** megszegése az eredmények között bármilyen kombinációját beállítása vagy **egymást követő megszegése** megkövetelése, hogy a behatolás egymást követő mintákban kell-e magukat. |
+| Összesített érték | Az küszöbérték, amely minden összesített a eredmények meghaladható figyelembe kell venni a sérülése. |
+| Triggerriasztás alapja | Létrejön egy riasztás megszegése száma.  Megadhat **megszegése teljes** megszegése az eredmények között bármilyen kombinációját beállítása vagy **egymást követő megszegése** megkövetelése, hogy a behatolás egymást követő mintákban kell-e magukat. |
 
 ### <a name="actions"></a>Műveletek
 A riasztási szabályok mindig létrehoz egy [rekord riasztási](#alert-records) a küszöbérték elérése esetén.  Megadhatja, hogy egy vagy több válaszokat kell futtatnia, például egy e-mailek küldéséhez, vagy a runbook indítása.
@@ -120,7 +123,7 @@ E-mailek műveletek a riasztás részleteit e-mail küldése egy vagy több cím
 |:--- |:---|
 | E-mailes értesítés |Adja meg **Igen** Ha azt szeretné, hogy egy e-mailt kell küldeni a figyelmeztetés jelenik meg. |
 | Tárgy |A tulajdonos e-mailben.  Az üzenet törzse nem módosítható. |
-| Címzettek |Címzett e-mail címét.  Ha több címet ad meg, majd külön a címeket pontosvesszővel (;). |
+| Címzettek |Címzett e-mail címét.  Ha több címet ad meg, pontosvesszővel (;) válassza el őket. |
 
 #### <a name="webhook-actions"></a>Webhookműveletek
 Webhookműveletek lehetővé teszi egy külső folyamatban egy HTTP POST kérelemben keresztül.
@@ -149,7 +152,7 @@ Runbook műveletek az Azure Automationben runbook indítása.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Telepítse a [Riasztáskezelési megoldás](log-analytics-solution-alert-management.md) Naplóelemzési riasztások gyűjtése a System Center Operations Manager (SCOM) együtt létrehozott riasztások elemzéséhez.
 * Tudjon meg többet az [keresések jelentkezzen](log-analytics-log-searches.md) , amely riasztást generál.
 * A forgatókönyv a [konfigurálása egy webook](log-analytics-alerts-webhooks.md) a riasztási szabályt.  

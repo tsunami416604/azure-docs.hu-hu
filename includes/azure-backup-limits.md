@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 2/7/2018
 ms.author: trinadhk;sogup
 ms.custom: include file
-ms.openlocfilehash: b345283f87c446ff3b583b0c5dd8a4be222303ae
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1f41567f7d5dcc9b6536b47ef639ba53abff8ec4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 A következő korlátozások vonatkoznak az Azure biztonsági mentés.
 
 | Korlát azonosítója | Alapértelmezett korlát |
 | --- | --- |
-| Minden egyes tárolóban elleni regisztrálható kiszolgálók/gépek számát |a Windows Server/ügyfél/SCDPM 50 <br/> 200 IaaS virtuális gépekhez |
-| Egy adatforrás tároló Azure storage-ban tárolt adatok mérete |54400 GB max<sup>1</sup> |
-| Mentési tárolók hozható létre az egyes Azure-előfizetések száma |Régiónként 25 recovery Services-tárolók |
+| Minden egyes tárolóban elleni regisztrálható kiszolgálók/gépek számát |a Windows Server/ügyfél/SCDPM 50 <br/> 1000 IaaS virtuális gépekhez |
+| Egy adatforrás tároló Azure storage-ban tárolt adatok mérete |54400 GB maximális<sup>1</sup> |
+| Mentési tárolók hozható létre az egyes Azure-előfizetések száma |Régiónként 500 recovery Services-tárolók |
 | Ennyiszer naponta biztonsági mentés ütemezése |a Windows Server vagy Windows-ügyfélen naponta 3 <br/> az SCDPM naponta 2 <br/> Infrastruktúra-szolgáltatási virtuális gépek naponta egyszer |
 | A biztonsági mentéshez Azure virtuális géphez csatolt adatok lemezek |16 |
 | Egy Azure virtuális géphez a biztonsági mentéshez egyedi adatokat lemez mérete| 4095 GB <sup>2</sup>|

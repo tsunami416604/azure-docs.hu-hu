@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 01de1020cd485b3cf91e5d5bc2e175df2bcad111
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 58e1c88629c21940e09efd6832d536c0b2b47ace
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure Cosmos-Adatbázisból
 
@@ -168,7 +168,6 @@ Adatok másolása Azure Cosmos DB, állítsa be a fogadó típusa a másolási t
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **DocumentDbCollectionSink** |Igen |
 | nestingSeparator |A forrás oszlop nevét jelzi, hogy a beágyazott dokumentum egy különleges karakterek van szükség. <br/><br/>Például `Name.First` kimeneti adatkészlet struktúra hoz létre a következő JSON struktúrában a Cosmos DB dokumentumban:`"Name": {"First": "[value maps to this column from source]"}` pont a nestedSeparator esetén. |Nem (alapértelmezett érték a pont `.`) |
-| writeBatchTimeout |Várakozási idő a művelet befejezését, mielőtt azt az időkorlátot.<br/><br/>Két érték engedélyezett: timespan. Példa: "00: 30:00" (30 perc). |Nem |
 
 **Példa**
 

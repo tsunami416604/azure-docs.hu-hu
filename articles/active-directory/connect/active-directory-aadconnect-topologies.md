@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Támogatott topológiák |} Microsoft Docs"
-description: "Ez a témakör a támogatott és nem támogatott topológiák részletezi az Azure AD Connect"
+title: 'Az Azure AD Connect: Támogatott topológiák |} Microsoft Docs'
+description: Ez a témakör a támogatott és nem támogatott topológiák részletezi az Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: 8003951fb0c80bda56de4718cbe94526dc118b61
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2f72f2dd3dbaaf17494d09a36159afc464cc64d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és az Azure AD Connect szinkronizálási szolgáltatás, a kulcs integrációs megoldást használó Azure Active Directory (Azure AD) topológiákat. Ez a cikk egyaránt támogatott, és nem támogatott konfigurációkat tartalmazza.
@@ -29,17 +29,22 @@ A jelmagyarázatban képeket a cikkben a következő:
 | --- | --- |
 | A helyszíni Active Directory-erdő |![A helyszíni Active Directory-erdő](./media/active-directory-aadconnect-topologies/LegendAD1.png) |
 | A helyszíni Active Directory szűrt importálás |![Szűrt importálás Active Directory](./media/active-directory-aadconnect-topologies/LegendAD2.png) |
-| Azure AD Connect sync server |![Azure AD Connect sync server](./media/active-directory-aadconnect-topologies/LegendSync1.png) |
+| Az Azure AD Connect sync-kiszolgáló |![Az Azure AD Connect sync-kiszolgáló](./media/active-directory-aadconnect-topologies/LegendSync1.png) |
 | Az Azure AD Connect szinkronizálási kiszolgálót "átmeneti módban" |![Az Azure AD Connect szinkronizálási kiszolgálót "átmeneti módban"](./media/active-directory-aadconnect-topologies/LegendSync2.png) |
 | A Forefront Identity Manager (FIM) 2010 vagy a Microsoft Identity Manager (MIM) 2016 GALSync |![A FIM 2010 vagy a MIM 2016 GALSync](./media/active-directory-aadconnect-topologies/LegendSync3.png) |
 | Az Azure AD Connect szinkronizálási kiszolgálót, részletes |![Az Azure AD Connect szinkronizálási kiszolgálót, részletes](./media/active-directory-aadconnect-topologies/LegendSync4.png) |
 | Azure AD |![Azure Active Directory](./media/active-directory-aadconnect-topologies/LegendAAD.png) |
 | A forgatókönyv nem támogatott |![A forgatókönyv nem támogatott](./media/active-directory-aadconnect-topologies/LegendUnsupported.png) |
 
+
+> [!IMPORTANT]
+> A Microsoft nem támogatja a módosítása, vagy a konfiguráció vagy hivatalosan ismertetett műveletek kívül az Azure AD Connect szinkronizálási működő. E konfiguráció vagy a műveletek bármelyike okozhatja az Azure AD Connect szinkronizálási szolgáltatás inkonzisztens vagy nem támogatott állapotban. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
+
+
 ## <a name="single-forest-single-azure-ad-tenant"></a>Egyetlen erdő, egyetlen Azure AD-bérlő
 ![Egyetlen erdő esetén, és egyetlen bérlő topológia](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-A leggyakrabban használt topológia egyetlen helyszíni erdő, egy vagy több tartományt, és az egy egyetlen Azure AD bérlői. Az Azure AD-alapú hitelesítés a jelszó-szinkronizálás használatos. Az Azure AD Connect a gyorstelepítés csak ez a topológia támogatja.
+A leggyakrabban használt topológia egyetlen helyszíni erdő, egy vagy több tartományt, és az egy egyetlen Azure AD bérlői. Az Azure AD-alapú hitelesítés Jelszókivonat-szinkronizálást használatos. Az Azure AD Connect a gyorstelepítés csak ez a topológia támogatja.
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Egyetlen erdő, több szinkronizálási kiszolgálót egy Azure AD-bérlő számára
 ![Egyetlen erdő esetén nem támogatott, a szűrt topológia](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
@@ -59,7 +64,7 @@ Közös topológiák ismerteti a szakaszok kapcsolatos [topológiák külön](#m
 
 Az alapértelmezett konfiguráció a Azure AD Connect szinkronizálási szolgáltatás azt feltételezi, hogy:
 
-* Minden felhasználó csak egy engedélyezett fiókkal rendelkezik, és az erdőben, ahol ennek a fióknak-e a felhasználó hitelesítésére szolgál. Ez feltételezi, a jelszó-szinkronizálás és a összevonási. UserPrincipalName és sourceAnchor/immutableID határozza meg az erdő.
+* Minden felhasználó csak egy engedélyezett fiókkal rendelkezik, és az erdőben, ahol ennek a fióknak-e a felhasználó hitelesítésére szolgál. Ez feltételezi, a Jelszókivonat-szinkronizálás, az átmenő hitelesítés és az összevonási. UserPrincipalName és sourceAnchor/immutableID határozza meg az erdő.
 * Minden felhasználónak csak egy postaláda van.
 * Az erdő, amelyen a postaládát, a felhasználó rendelkezik a legjobb adatok minőségének látható a az Exchange globális cím lista (GAL) attribútumok. Ha a felhasználó nem postaláda, bármely erdőben ezeket az attribútumértékeket közre használható.
 * Ha rendelkezhetnek hivatkozott postafiókkal, akkor is fiók a bejelentkezéshez használt egy másik erdőben.
@@ -152,7 +157,7 @@ Ez a topológia rendelkezik-e a következő egyéb korlátozások a támogatott 
 
 * Az Azure AD-bérlőt csak az egyik engedélyezheti az Exchange hibrid a helyszíni Active Directory-példánnyal.
 * Windows 10-eszközöket csak egy Azure AD-bérlővel társítható.
-* Az egyszeri bejelentkezés (SSO) lehetőséget a jelszó-szinkronizálás és az áteresztő hitelesítés csak egy Azure AD-bérlő használható.
+* Egyszeri bejelentkezés (SSO) beállítás megadása jelszó kivonatát szinkronizálás és az áteresztő hitelesítés csak egy Azure AD-bérlő használható.
 
 Objektumok egymást kölcsönösen kizáró számú követelmény is vonatkozik visszaírásához. Néhány visszaíró szolgáltatását nem támogatottak a topológia, mert azok feltételezik, hogy egyetlen helyszíni konfigurációt. Ezek a funkciók a következők:
 

@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: e6b2b7f4c01a5280c2fb3a5c17158b8dcc2797d4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Adatalapú hibakeresést keresztül a feladat ábra
 
@@ -76,11 +76,11 @@ Ha az előző lekérdezés lépés egy bemeneti processzor, használja a bemenet
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Amelyek azt alá tartozó az adatok olvasása közben?
 
-*   **InputEventsSourcesBackloggedTotal** jelzi, hogy hány több üzenetet kell az Event Hubs és Azure IoT Hub bemeneti adatok olvasását.
+*   **Adjon meg a várakozó események (összesen)** jelzi, hogy hány több üzenetet kell az Event Hubs és Azure IoT Hub bemeneti adatok olvasását. Ha ez a szám nagyobb, mint 0, az azt jelenti, a feladat nem dolgozható fel az adatok gyors ez várható. Ebben az esetben szükség lehet az adatfolyam-egységek számának növeléséhez, illetve győződjön meg arról, hogy a feladat párhuzamos működésű is lehet. További információk itt tekintheti meg a [lekérdezés párhuzamos folyamatkezelést biztosítja lap](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
 
 
 ## <a name="get-help"></a>Segítségkérés
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>További lépések
 * [A Stream Analytics bemutatása](stream-analytics-introduction.md)

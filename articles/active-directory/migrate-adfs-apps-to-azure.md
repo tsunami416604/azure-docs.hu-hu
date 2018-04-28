@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: 5eb562901d73974765878024b1107e3b75e9abb5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6303fdce65e460489c9f66e388c28383b9942627
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS helyszíni alkalmazások migrálása az Azure-ba 
 
@@ -230,7 +230,7 @@ A korábban az **Identitás** > **Egyszeri bejelentkezés beállításai** felü
 ![Az Azure AD kiválasztása hitelesítési szolgáltatásként](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Választható: Felhasználók átadásának konfigurálása az Azure AD-ben
-Ha szeretné megtudni, hogyan kezelje közvetlenül az Azure AD a felhasználókiépítést egy SaaS-alkalmazásban, tekintse meg [A felhasználókiépítés és -megszüntetés automatizálása az SaaS-alkalmazásokban az Azure Active Directoryval](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-app-provisioning) témakort.
+Ha szeretné megtudni, hogyan kezelje közvetlenül az Azure AD a felhasználókiépítést egy SaaS-alkalmazásban, tekintse meg [A felhasználókiépítés és -megszüntetés automatizálása az SaaS-alkalmazásokban az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) témakort.
 
 ## <a name="next-steps"></a>További lépések
 

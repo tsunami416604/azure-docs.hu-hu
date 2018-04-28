@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 2E21C8DE-D540-4C1C-A0EF-1B7125DB7A6E
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/02/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 8cc5ce1ec113df7ce92c54022dbe1b6219c8c235
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: db01df21c95ee41197344cec719f1c2ab2dfc2ed
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API verziókat támogatja Azure verem profilok
 
@@ -55,7 +53,7 @@ Szerepköralapú hozzáférés-vezérlés használatával a műveleteinek a szer
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuális gépek és a támogató erőforrásokat. További információkért lásd: [Azure számítási](https://docs.microsoft.com/en-us/rest/api/compute/).
+Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuális gépek és a támogató erőforrásokat. További információkért lásd: [Azure számítási](https://docs.microsoft.com/rest/api/compute/).
 
 | Erőforrás típusa | API-verzió |
 |---------------------------------------------------------------|-------------|
@@ -92,8 +90,8 @@ Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuáli
 | Típusú erőforrások | API-verziók |
 |--------------------|--------------------|
 | Riasztási szabályok | 2016-03-01 |
-| Kategóriák | 2017-03-01-preview |
-| Eseménytípusok | 2017-03-01-preview |
+| Kategóriák | 2017 03-01. dátumú előnézeti |
+| Eseménytípusok | 2017 03-01. dátumú előnézeti |
 | Metrikadefiníciók | 2016-03-01 |
 | Műveletek | 2015-04-01 |
 
@@ -165,9 +163,9 @@ Az Azure Resource Manager lehetővé teszi, hogy akkor helyezheti üzembe és fe
 | Előfizetések/művelet | 2015-012016-09-01 |
 | Előfizetések/szolgáltatók | 2015-012017-08-01 |
 | Az előfizetések és az erőforrások csoportok | 2015-012016-09-01 |
-| Subscriptions/resourceGroups/resources | 2015-012016-09-01 |
-| Subscriptions/resources | 2015-012016-09-01 |
-| Subscriptions/tagNames | 2016-0609-01 |
+| Előfizetések/resourceGroups/erőforrások | 2015-012016-09-01 |
+| Előfizetések/erőforrások | 2015-012016-09-01 |
+| Előfizetések/tagNames | 2016-0609-01 |
 | Subscriptions/tagNames/tagValues | 2016-0609-01 |
 | Bérlők | 2015-012017-08-01 |
 

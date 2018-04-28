@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk
-ms.openlocfilehash: 47d5da880f47831274fe05817ac9c488464d3096
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: markgal;trinadhk;sogup
+ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban
 Ez a cikk ismerteti a teljesítmény- és erőforrás-javaslatok a virtuális gép biztonsági mentési infrastruktúra tervezéséhez nyújtanak segítséget. A biztonsági mentési szolgáltatás; fő szempontjait is meghatározza lehet, hogy ezeket az jellemzőket fontos meghatározni, hogy az architektúra a kapacitástervezés és ütemezés. Ha megismerte [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezés, mint a megkezdése előtt [biztonsági mentése a virtuális gépek](backup-azure-arm-vms.md). Ha az Azure virtuális gépek több információra van szüksége, tekintse meg a [Virtual Machines – dokumentáció](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -43,7 +43,7 @@ Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, é
 
 ### <a name="data-consistency"></a>Adatkonzisztencia
 Biztonsági mentése és visszaállítása a kritikus fontosságú adatok bonyolítja van arra, hogy üzleti szempontból fontos adatokhoz kell biztonsági mentése során az alkalmazások az adatokat előállító üzleti futnak. Orvoslása érdekében Azure biztonsági mentés támogatja az alkalmazáskonzisztens biztonsági mentés a Windows és a Linux virtuális gépek
-#### <a name="windows-vm"></a>Windowsos VM
+#### <a name="windows-vm"></a>Windows rendszerű virtuális gép
 Azure biztonsági mentés VSS teljes biztonsági mentés a Windows virtuális gépeken időt vesz igénybe. (további információk [VSS teljes biztonsági mentés](http://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)). Ahhoz, hogy a VSS másolásos biztonsági mentéshez, a következő beállításkulcsot kell állítani a virtuális Gépen.
 
 ```
@@ -91,7 +91,7 @@ Az egyes lemezek biztonsági mentés alatt Azure biztonsági mentési olvassa be
 
 | Biztonsági mentési művelet | Hányad átviteli sebesség |
 | --- | --- |
-| Kezdeti biztonsági mentés |160 Mbps |
+| Kezdeti biztonsági mentés |160 MB/s |
 | A növekményes biztonsági mentés (DR) |640 Mbps <br><br> Átviteli sebesség jelentősen csökken, ha a lemez közötti megvédheti a módosított adatokat (igénylő biztonsági mentése).|
 
 ## <a name="total-vm-backup-time"></a>Virtuális gép teljes biztonsági mentés ideje
@@ -99,7 +99,8 @@ A biztonsági mentési legtöbbször ennek olvasását és az adatok másolásá
 
 * Szükséges idő [telepítse vagy frissítse a tartalék mellék](backup-azure-arm-vms.md).
 * Pillanatkép ideje, ami időn belül elindítani egy pillanatkép. A pillanatképek megközelíti az ütemezett biztonsági mentéskor aktiválódnak.
-* Várakozási ideje. A biztonsági mentési szolgáltatás biztonsági mentések több ügyfél feldolgozása, mert pillanatkép biztonsági mentési adatok másolása a biztonsági mentési vagy a Recovery Services-tároló esetleg nem azonnal elindítani. A maximális idejét betöltése, és a várakozási is stretch legfeljebb nyolc óra feldolgozott biztonsági másolatok száma miatt. Azonban a teljes virtuális gép biztonsági mentési ideje 24 óránál kevesebb napi biztonsági mentési házirendek.
+* Várakozási ideje. A biztonsági mentési szolgáltatás biztonsági mentések több ügyfél feldolgozása, mert pillanatkép biztonsági mentési adatok másolása a biztonsági mentési vagy a Recovery Services-tároló esetleg nem azonnal elindítani. A maximális idejét betöltése, és a várakozási is stretch legfeljebb nyolc óra feldolgozott biztonsági másolatok száma miatt. Azonban a teljes virtuális gép biztonsági mentési ideje 24 óránál kevesebb napi biztonsági mentési házirendek. <br>
+**Ez a tároló érvényes csak növekményes biztonsági mentések és nem az első biztonsági mentés. Első biztonsági mentés ideje arányos, és az adatok méretétől függően 24 óránál hosszabb lehet, és az idő biztonsági mentés használatban van.**
 * Adatátviteli idő, a biztonsági mentési szolgáltatás számára, a korábbi biztonsági mentés a növekményes változásokat számítási és a változások átvitele tárolási tároló szükséges idő.
 
 ### <a name="why-am-i-observing-longer12-hours-backup-time"></a>Miért vagyok I betartásával longer(>12 hours) biztonsági mentés ideje?

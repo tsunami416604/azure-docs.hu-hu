@@ -3,17 +3,17 @@ title: Házirend-definíció Azure szerkezetet |} Microsoft Docs
 description: Ismerteti, hogyan erőforrás házirend-definíció Azure házirend létrehozásához használt erőforrásokra vonatkozó konvenciók a szervezet ismertetésével, ha a házirend érvényesítve van-e, és a végrehajtandó műveletet.
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
-ms.date: 01/17/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 04/18/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8b89e1c8ccfcfd7b53ecdd9172590424d1c7ae4c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -67,7 +67,7 @@ Minden Azure házirend sablon minták erővel [sablonok Azure házirend](json-sa
 ## <a name="mode"></a>Mód
 
 A **mód** határozza meg, milyen típusú erőforrások kiértékelendő táblakifejezés házirend. A támogatott módok a következők:
-* `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése 
+* `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése
 * `indexed`: csak értékelje ki, amely támogatja a címkék és a hely típusú erőforrások
 
 Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy Azure CLI-t használ, meg kell adnia a **mód** paraméter manuálisan. Ha a házirend-definíció nem tartalmaz egy **mód** érték azt az alapértelmezett érték a `indexed` a visszamenőleges kompatibilitás.

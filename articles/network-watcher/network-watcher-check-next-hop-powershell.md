@@ -1,11 +1,11 @@
 ---
-title: "Következő Ugrás az Azure hálózati figyelő következő ugrás - PowerShell található |} Microsoft Docs"
-description: "Ez a cikk leírja, hogyan megtalálhatja a következő ugrás típusa van, és használja a PowerShell használatával, a következő ugrás IP-címet."
+title: Következő Ugrás az Azure hálózati figyelő következő ugrás - PowerShell található |} Microsoft Docs
+description: Ez a cikk leírja, hogyan megtalálhatja a következő ugrás típusa van, és használja a PowerShell használatával, a következő ugrás IP-címet.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6a656c55-17bd-40f1-905d-90659087639c
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: ef559fbbd3e8448d64167552cacee04790418343
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-powershell"></a>Megtudhatja, milyen a következő ugrás típusa a következő ugrás funkció használ az Azure hálózati figyelőt PowerShell használatával
 

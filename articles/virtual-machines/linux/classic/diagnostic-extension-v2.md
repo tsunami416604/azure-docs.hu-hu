@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linuxos VM teljesítmény- és diagnosztikai adatainak monitorozása a linuxos diagnosztikai bővítménnyel
 
@@ -53,7 +53,7 @@ A bővítmény legújabb verziója **2.3**, és **a régi verziókat (2.0, 2.1-e
 
 A bővítmény használatával engedélyezheti a [Azure-portálon](https://portal.azure.com/#), az Azure PowerShell vagy Azure CLI-parancsfájlokat.
 
-Tekintheti meg és konfigurálhatja a rendszer és a teljesítmény adatoknak közvetlenül az Azure-portálon, hajtsa végre a [ezeket a lépéseket az Azure blog](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/).
+Tekintheti meg és konfigurálhatja a rendszer és a teljesítmény adatoknak közvetlenül az Azure-portálon, hajtsa végre a [ezeket a lépéseket az Azure blog](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/).
 
 Ez a cikk foglalkozik, hogyan engedélyezése és konfigurálása a bővítmény Azure CLI-parancsok segítségével. Ez lehetővé teszi, hogy olvassa el, és tekintse meg az adatok közvetlenül a tároló tábla.
 
@@ -158,7 +158,7 @@ Ezenkívül segítségével következő felhasználói felületi eszközökkel �
 1. Visual Studio Server Explorer. Lépjen a tárfiókhoz. Miután a virtuális gép fut, körülbelül 5 percig, látni fogja, a négy alapértelmezett táblák: "LinuxCpu", "LinuxDisk", "LinuxMemory" és "Linuxsyslog". Kattintson duplán a táblanevek, az adatok megtekintéséhez.
 1. [Az Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Tártallózó").
 
-![image](./media/diagnostic-extension/no1.png)
+![Kép](./media/diagnostic-extension/no1.png)
 
 Ha engedélyezte a fileCfg vagy perfCfg (leírt forgatókönyvek 2 és 3), a Visual Studio Server Explorer és az Azure Tártallózó használhatja nem alapértelmezett adatainak megtekintéséhez.
 

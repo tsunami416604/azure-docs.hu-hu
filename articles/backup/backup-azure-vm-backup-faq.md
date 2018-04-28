@@ -1,12 +1,12 @@
 ---
-title: "Azure VM Backup – gyakori kérdések | Microsoft Docs"
-description: "Válaszok a következő gyakori kérdésekre: hogyan működik az Azure-beli virtuális gépek biztonsági mentése, mik a korlátozások, és mi történik, ha módosítások történnek a szabályzatban"
+title: Azure VM Backup – gyakori kérdések | Microsoft Docs
+description: 'Válaszok a következő gyakori kérdésekre: hogyan működik az Azure-beli virtuális gépek biztonsági mentése, mik a korlátozások, és mi történik, ha módosítások történnek a szabályzatban'
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
-keywords: "azure-beli virtuális gép biztonsági mentése, azure-beli virtuális gép visszaállítása, biztonsági mentési szabályzat"
+editor: ''
+keywords: azure-beli virtuális gép biztonsági mentése, azure-beli virtuális gép visszaállítása, biztonsági mentési szabályzat
 ms.assetid: c4cd7ff6-8206-45a3-adf5-787f64dbd7e1
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 9a08495c1b395871c04c0c2b06a6efbdb4bfeaa2
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: e0337a7ce1392d78eba9791095f5d7a9c7d4afdd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ Lépkedjen végig [támogatott operációs rendszerek](backup-azure-arm-vms-prep
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>Miért nem látom a virtuális gépemet a Biztonsági mentés konfigurálása varázslóban?
 A biztonsági mentés varázslóban konfigurálása Azure Backup szolgáltatás csak felsorolja képező virtuális gépek:
-  * Már nem védett ellenőrizheti a biztonsági mentés állapotának a virtuális gépek VM panelen lesz, és ellenőrzi a biztonsági másolat állapota-beállítások menüjében. További információ a [Virtuális gép biztonsági mentési állapotának ellenőrzéséről](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade)
+  * Már nem védett ellenőrizheti a biztonsági mentés állapotának a virtuális gépek VM panelen lesz, és ellenőrzi a biztonsági másolat állapota-beállítások menüjében. További információ a [Virtuális gép biztonsági mentési állapotának ellenőrzéséről](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu)
   * A virtuális géppel azonos régióba tartozik
 
 ## <a name="backup"></a>Biztonsági mentés
@@ -78,7 +78,7 @@ Powershell-parancsmagokkal, tekintse meg a [Itt](backup-azure-vms-automation.md#
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Mi történik, ha módosítom a biztonsági mentési szabályzatot a virtuális gépen vagy gépeken?
-Egy új házirend alkalmazása esetén a virtuális gép van, ütemezését és az új házirend megőrzési követi. Ha a megőrzési ki van bővítve, a meglévő helyreállítási pontok leegyszerűsítheti az új házirend szerint lesznek megjelölve. Ha a megőrzési csökken, ezeket a következő karbantartási feladat a törlésre megjelölt és törlődnek. 
+Egy új házirend alkalmazása esetén a virtuális gép van, ütemezését és az új házirend megőrzési követi. Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve. 
 
 ### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Hogyan helyezhető át a virtuális gépek közötti erőforráscsoportok az Azure backup-ban regisztrált?
 Kövesse a következő lépések végrehajtásával sikeresen biztonsági másolat virtuális gép áthelyezése a célként megadott erőforráscsoportja 

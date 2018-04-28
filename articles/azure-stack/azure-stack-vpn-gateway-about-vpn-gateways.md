@@ -1,11 +1,11 @@
 ---
-title: "VPN-átjáró Azure verem kapcsolatos |} Microsoft Docs"
-description: "További információk, és konfigurálja a VPN-átjárók használata Azure verem."
+title: VPN-átjáró Azure verem kapcsolatos |} Microsoft Docs
+description: További információk, és konfigurálja a VPN-átjárók használata Azure verem.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 0e30522f-20d6-4da7-87d3-28ca3567a890
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: ba9642d8c51f57623aded44b84d7127334806bc1
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
-ms.translationtype: MT
+ms.openlocfilehash: 9c821f20ce5826666a05121e1a39882fae0930d3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>VPN-átjáró Azure verem kapcsolatos
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
@@ -70,7 +70,7 @@ Ez a típusú kapcsolat a helyek közötti kapcsolat egy változata. A virtuáli
 
 ## <a name="gateway-skus"></a>Gateway termékváltozatok
 A virtuális hálózati átjáró Azure verem létrehozásakor meg kell adnia az átjáró, amely a használni kívánt Termékváltozat. A következő VPN gateway SKU-n támogatottak:
-- Basic
+- Alapszintű
 - Standard
 - HighPerformance
 
@@ -87,13 +87,14 @@ A termékváltozat kiválasztásakor vegye figyelembe az alábbiakat:
 ## <a name="estimated-aggregate-throughput-by-sku"></a>A termékváltozat becsült összesített átviteli sebessége
 Az alábbi táblázatban az átjárótípusok és azok becsült összesített átviteli sebessége tekinthető meg az átjárók termékváltozata alapján.
 
-|   | VPN Gateway teljesítménye *(1)* |VPN-átjáró maximális IPsec-alagutak |
+|   | VPN Gateway teljesítménye *(1)* | VPN-átjáró maximális IPsec bújtatja *(2)* |
 |-------|-------|-------|
-|**Alapszintű Termékváltozat** ***(2)***    | 100 Mbps  | 10    |
+|**Alapszintű Termékváltozat** ***(3)***    | 100 Mbps  | 10    |
 |**Standard Termékváltozat**       | 100 Mbps  | 10    |
-|**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 30    |
+|**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 5 |
 ***(1)***  A VPN esetén átviteli sebesség nem garantált átviteli sebességgel létesítmények közötti kapcsolatok az interneten keresztül. Ez a maximális mérhető teljesítmény.  
-***(2)***  Az alapszintű termékváltozat nem támogatott a BGP.
+***(2)***  Maximális alagutak száma nem haladhatja meg az összes előfizetést Azure verem üzemelő példányonként.
+***(3)***  Az alapszintű termékváltozat nem támogatott a BGP.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók [VPN-átjárók beállításainak](azure-stack-vpn-gateway-settings.md) Azure verem.

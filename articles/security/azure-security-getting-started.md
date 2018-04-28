@@ -1,6 +1,6 @@
 ---
-title: "Ismerkedés a Microsoft Azure biztonsági |} Microsoft Docs"
-description: "Ez a cikk a Microsoft Azure biztonsági képességei és, hogy az eszközök és a szervezetek számára általános szempontok áttekintése."
+title: Ismerkedés a Microsoft Azure biztonsági |} Microsoft Docs
+description: Ez a cikk a Microsoft Azure biztonsági képességei és, hogy az eszközök és a szervezetek számára általános szempontok áttekintése.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: e1ee07f2284df925b8bbd9050de7ae40fa66bf65
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.openlocfilehash: 7d3fab20ec238bff0664fc98c2067c919e97a7c2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>A Microsoft Azure Security használatának első lépései
 Build, vagy a felhőbeli szolgáltató telepíthet át informatikai eszközök, az alkalmazások és a szolgáltatások és a biztonsági a felhő alapú eszközök kezelésére adathordozóira vezérlők adatok védelme érdekében, hogy szervezete képességek vannak hagyatkoznia.
@@ -45,7 +45,7 @@ Az identitás- és hozzáférés-kezelés egyéb funkciói többek között a k�
 * Az Azure AD lehetővé teszi az [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) bejelentkezést a SaaS-alkalmazások számára a futtatási helyüktől függetlenül. Egyes alkalmazások az Azure AD-vel összevontan működnek, mások jelszavas egyszeri bejelentkezést használnak. Az összevont alkalmazások emellett a felhasználóátadást és a jelszótárolást is támogathatják.
 * Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban tárolt adatokhoz való hozzáférést hitelesítés védi. Minden tárfiók elsődleges kulccsal rendelkezik ([tárfiók kulcsa](https://msdn.microsoft.com/library/azure/ee460785.aspx), vagy SAK) és egy másodlagos titkos kulcs (a közös hozzáférésű jogosultságkódot, vagy SAS).
 * Az Azure AD Identity keresztül összevonási szolgáltatás segítségével biztosítja [Active Directory összevonási szolgáltatások](../active-directory/fundamentals-identity.md), szinkronizáláshoz és a replikáció a helyszíni címtárakban.
-* [Az Azure multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) a többtényezős hitelesítési szolgáltatás, amely megköveteli a felhasználóktól bejelentkezések ellenőrizheti a mobilalkalmazás, telefonhívással vagy szöveges üzenetben. Használat és az Azure AD segítségével biztonságos a helyszíni erőforrások az Azure multi-factor Authentication kiszolgálóval és az egyéni alkalmazások és könyvtárak a SDK használatával.
+* [Az Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) a többtényezős hitelesítési szolgáltatás, amely megköveteli a felhasználóktól bejelentkezések ellenőrizheti a mobilalkalmazás, telefonhívással vagy szöveges üzenetben. Használat és az Azure AD segítségével biztonságos a helyszíni erőforrások az Azure multi-factor Authentication kiszolgálóval és az egyéni alkalmazások és könyvtárak a SDK használatával.
 * [Azure AD tartományi szolgáltatások](https://azure.microsoft.com/services/active-directory-ds/) lehetővé teszi, hogy az Azure virtuális gépek csatlakoztatása tartományhoz tartományvezérlők üzembe helyezésének nélkül. Ezek a virtuális gépek jelentkezzen be a vállalati Active Directory hitelesítő adataival, és a tartományhoz csatlakozó virtuális gépek felügyelete az Azure virtuális gépeken futó biztonsági alapterveket kényszerítéséhez csoportházirend használatával.
 * [Az Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) egy magas rendelkezésre állású globális identitás szolgáltatást biztosít a felhasználók felé néző alkalmazások száz millió identitások alkalmazkodnak. Mobil- és webes platformokba is integrálható. A felhasználók bármikor beléphet, testre szabható felhasználói élmény mellett az alkalmazások új vagy meglévő közösségi fiókjaik használatával.
 
@@ -186,7 +186,7 @@ Azure rendelkezik biztonsági vezérlők fenyegetés megoldás megvalósításá
 * A Microsoft megközelítése behatolást vagy a biztonság tesztelés is magában foglalja "[piros-összevonás](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)," magában foglalja a Microsoft Információbiztonsági szakemberei valós, elleni védelmet tesztelése az Azure-ban (nem vevő) éles rendszerek támadása speciális, állandó fenyegetések.
 * Az integrált központi telepítési rendszerek kezelik a biztonsági javítások terjesztését és telepítését az Azure platformon keresztül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/)
 
 [Az Azure Security csapat blogja](http://blogs.msdn.com/b/azuresecurity/)

@@ -1,6 +1,6 @@
 ---
-title: "A vész-Helyreállítási részletezési Hyper-V virtuális gépek futtatásához egy másodlagos helyre Azure Site Recovery segítségével |} Microsoft Docs"
-description: "Ismerje meg, a vész-Helyreállítási részletezési futtatása Hyper-V virtuális gépek VMM-felhőkben egy másodlagos adatközpontba Azure Site Recovery segítségével."
+title: A vész-Helyreállítási részletezési Hyper-V virtuális gépek futtatásához egy másodlagos helyre Azure Site Recovery segítségével |} Microsoft Docs
+description: Ismerje meg, a vész-Helyreállítási részletezési futtatása Hyper-V virtuális gépek VMM-felhőkben egy másodlagos adatközpontba Azure Site Recovery segítségével.
 services: site-recovery
 author: ponatara
 manager: abhemraj
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: ponatara
-ms.openlocfilehash: a586eac3be39a4d3fb35dff7a4b1cc40f32f2720
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c389776f62db5fd04f67ef22822e21fd4aee368f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A vész-Helyreállítási részletezési futtatása Hyper-V virtuális gépek egy másodlagos helyre
 
@@ -45,17 +45,24 @@ Feladatátvételi teszt futtatásakor azonosítóját, válassza ki a teszt repl
 
 **A beállítás** | **Részletek** 
 --- | --- 
-Egyik sem | A teszt virtuális gép létrejön az állomás, amelyen a replika virtuális gép található. Nem adnak a felhőhöz, és nem csatlakozik a hálózathoz.<br/><br/> Csatlakozhat a gépet egy Virtuálisgép-hálózat létrehozása után.
+**Egyik sem** | A teszt virtuális gép létrejön az állomás, amelyen a replika virtuális gép található. Nem adnak a felhőhöz, és nem csatlakozik a hálózathoz.<br/><br/> Csatlakozhat a gépet egy Virtuálisgép-hálózat létrehozása után.
 **Meglévő** | A teszt virtuális gép létrejön az állomás, amelyen a replika virtuális gép található. Még nincs hozzáadva a felhőbe.<br/><br/>Az éles hálózattól elkülönített Virtuálisgép-hálózatot létrehozni.<br/><br/>A VLAN-alapú hálózati használata, azt javasoljuk, hogy hozzon létre egy külön logikai hálózat (nincs használatban az üzemi) a VMM-ben erre a célra. Ezt a logikai hálózatot a feladatátvételi tesztet a Virtuálisgép-hálózatok létrehozásához használt.<br/><br/>A logikai hálózat legalább egy virtuális gép összes Hyper-V-kiszolgáló a hálózati adapterek társítva kell lennie.<br/><br/>A VLAN logikai hálózatok a hálózati helyeket a logikai hálózat ad hozzá, el kell különíteni.<br/><br/>Windows Hálózatvirtualizálás-alapú logikai hálózat használata, az Azure Site Recovery automatikusan létrehozza elszigetelt Virtuálisgép-hálózatok. 
 **Hálózat létrehozása** | Egy ideiglenes teszthálózatot használ a megadott beállítás alapján automatikusan jön létre **logikai hálózati** és a kapcsolódó hálózati helyeket.<br/><br/> Feladatátvételi ellenőrzi, hogy a virtuális gépek jönnek létre. |Ezt a beállítást kell használnia, ha a helyreállítási terv egynél több Virtuálisgép-hálózatot használ.<br/><br/> Windows Hálózatvirtualizálás hálózatok használata, ezt a beállítást automatikusan hozhat létre Virtuálisgép-hálózat (alhálózat és IP-címkészletek) ugyanazokat a beállításokat, a hálózat, a replika virtuális gép. Automatikusan kiüríti a Virtuálisgép-hálózatok a feladatátvételi teszt befejeződése után.<br/><br/> A teszt virtuális gép létrehozása a gazdagépen, amelyen a replika virtuális gép található. Még nincs hozzáadva a felhőbe.
 
 ### <a name="best-practices"></a>Ajánlott eljárások
 
 - A termelési számítási feladatokhoz állásidő tesztelését egy üzemi hálózat okoz. Kérje meg a felhasználókat, hogy nem használja a kapcsolódó alkalmazások, ha a vész-helyreállítási részletezési folyamatban van.
-- A tesztelési célú hálózat felel meg a teszt feladatátvételhez használt VMM logikai hálózat típusa nem szükséges. Azonban néhány kombináció nem működnek: – Ha a replika DHCP- és a VLAN-alapú elkülönítés esetén a Virtuálisgép-hálózatot használ a replika nem igényel például egy statikus IP-címkészletet. A teszt feladatátvételhez Windows Hálózatvirtualizálás használatával nem fognak működni, mert nincs címkészletek érhetők el. 
-        -Teszt feladatátvétel nem fog működni, ha a replika nincs elkülönítés használ, és a vizsgálat a Windows-hálózat Hálózatvirtualizálást használ. Ennek az az oka az elkülönítés nélküli hálózat nem rendelkezik az alhálózatok, a Windows Hálózatvirtualizálás hálózat létrehozásához szükséges.
+
+- A tesztelési célú hálózat felel meg a teszt feladatátvételhez használt VMM logikai hálózat típusa nem szükséges. Azonban néhány kombináció nem működnek:
+
+     - Ha a replika használ a DHCP- és a VLAN-alapú elkülönítés, a Virtuálisgép-hálózatot a replika egy statikus IP-címkészlet nem szükséges. A teszt feladatátvételhez Windows Hálózatvirtualizálás használatával nem fognak működni, mert nincs címkészletek érhetők el. 
+        
+     - A feladatátvételi teszt nem fog működni, ha a replika nincs elkülönítés használ, és a vizsgálat a Windows-hálózat Hálózatvirtualizálást használ. Ennek az az oka az elkülönítés nélküli hálózat nem rendelkezik az alhálózatok, a Windows Hálózatvirtualizálás hálózat létrehozásához szükséges.
+        
 - Azt javasoljuk, hogy nem használja a kiválasztott hálózati hálózatra való leképezés, a feladatátvételi teszthez.
+
 - A Virtuálisgép-hálózatok leképezése után feladatátvételi, attól függ, hogyan lett konfigurálva a Virtuálisgép-hálózatot a VMM-konzol hogyan kapcsolódnak a replika virtuális gépeket.
+
 
 ### <a name="vm-network-configured-with-no-isolation-or-vlan-isolation"></a>Nincs elkülönítés vagy VLAN-elkülönítéssel Virtuálisgép-hálózatot
 

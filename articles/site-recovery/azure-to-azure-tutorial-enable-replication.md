@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 03/16/2018
+ms.topic: tutorial
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása (előzetes verzió)
 
@@ -77,7 +74,7 @@ Ha URL-alapú tűzfalproxyt használ a kimenő kapcsolat szabályozásához, biz
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
-Ha a kimenő kapcsolatot bármilyen IP-alapú tűzfal, proxy vagy NSG-szabályok szabályozzák, a következő IP-címtartományoknak szerepelnie kell az engedélyezési listán. A tartományok listája az alábbi hivatkozásokat követve tölthető le:
+Ha URL-ek helyett IP-címekkel szeretné szabályozni a kimenő kapcsolatot, vegye fel az engedélyezési listára a megfelelő adatközpont-tartományokat, Office 365-címeket, valamint az IP-alapú tűzfalak, proxyk vagy NSG-szabályok szolgáltatásvégpont-címeit.
 
   - [A Microsoft Azure adatközpont IP-tartományai](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
   - [A Microsoft Azure adatközpont IP-tartományai Németországban](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
@@ -85,7 +82,7 @@ Ha a kimenő kapcsolatot bármilyen IP-alapú tűzfal, proxy vagy NSG-szabályok
   - [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery-szolgáltatásvégpontok IP-címei](https://aka.ms/site-recovery-public-ips)
 
-A listák segítségével konfigurálhatja a hálózati hozzáférés-vezérlést a hálózaton. Ezzel a [szkripttel](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702) hozhatja létre a szükséges NSG-szabályokat.
+Ezzel a [szkripttel](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702) hozhatja létre a szükséges NSG-szabályokat.
 
 ## <a name="verify-azure-vm-certificates"></a>Azure-beli virtuális gép tanúsítványainak ellenőrzése
 
@@ -105,7 +102,7 @@ Az Azure Site Recovery három beépített szerepkört biztosít a Site Recovery 
 
 - **Site Recovery-olvasó** – Ez a szerepkör a Site Recovery összes felügyeleti műveletének a megtekintésére rendelkezik engedélyekkel. Ez a szerepkör olyan informatikai felügyeleti vezető számára a leginkább megfelelő, aki monitorozhatja az aktuális biztonság állapotát, és támogatási jegyeket hoz létre.
 
-További információ az [Azure beépített RBAC-szerepköreivel](../active-directory/role-based-access-built-in-roles.md) kapcsolatban.
+További információ az [Azure beépített RBAC-szerepköreivel](../role-based-access-control/built-in-roles.md) kapcsolatban.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
@@ -144,9 +141,9 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 
 - **Gyorsítótár tárfiókjai**: A Site Recovery tárfiókot használ a forrásrégióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.
 
-- **Cél storage-fiókok (Ha a forrás virtuális gép nem használ által kezelt lemezeken)**: alapértelmezés szerint a Site Recovery hoz létre egy új tárfiókot mappába történő tükrözésének a forrás virtuális gép tárfiók cél régióban.
+- **Cél tárfiókok (ha a forrás virtuális gép nem használ felügyelt lemezeket)**: Alapértelmezés szerint a Site Recovery új tárfiókot hoz létre a célrégióban a forrás virtuális gép tárfiókjának tükrözéséhez.
 
-- **A replika (Ha a virtuális gép használja a felügyelt lemezek) által kezelt lemezeken**: alapértelmezés szerint a Site Recovery kezelt lemezek létrehozza a cél régióban mappába történő tükrözésének felügyelt lemezeket a forrás virtuális gép (Standard vagy prémium) azonos tárolási módot, a forrás virtuális gép kezeli a lemez.
+- **Replika felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)**: Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezeinek azokkal azonos tártípusban (standard vagy prémium) való tükrözéséhez.
 
 - **Cél rendelkezésre állási csoportok**: Alapértelmezés szerint a Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban az „asr” utótaggal. Rendelkezésre állási csoportot csak vehet fel, ha a virtuális gépek egy csoport részei a forrásrégióban.
 

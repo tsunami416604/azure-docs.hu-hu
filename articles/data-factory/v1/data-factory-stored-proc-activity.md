@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 60df540d847a1e7422e87bc375220819dac4b25c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a628374841126a750ebf6881f8adec66340c1d29
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -161,7 +161,7 @@ Figyelje meg a következő tulajdonságokkal:
 
 - A **típus** tulajdonsága **SqlServerStoredProcedure**. 
 - A **storedProcedureName** típus tulajdonságainak értéke **sp_sample** (a tárolt eljárás neve).
-- A **storedProcedureParameters** szakasz nevű egy paraméter **/időből**. Név és a kis-és a JSON-paraméter meg kell egyeznie a nevét, és a kis-és a tárolt eljárás definícióban paraméter. Ha az egyik paraméter null értékű kell átadni, használja a szintaxist: `"param1": null` (kisbetűket).
+- A **storedProcedureParameters** szakasz nevű egy paraméter **DateTime**. Név és a kis-és a JSON-paraméter meg kell egyeznie a nevét, és a kis-és a tárolt eljárás definícióban paraméter. Ha az egyik paraméter null értékű kell átadni, használja a szintaxist: `"param1": null` (kisbetűket).
  
 1. Ha nem látja ezt a gombot, kattintson a három pontot  **További** a parancssávon, majd kattintson a **új adatcsatorna**.
 2. Másolja és illessze be a következő JSON kódrészletet:   

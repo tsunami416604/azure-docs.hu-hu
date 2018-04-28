@@ -1,6 +1,6 @@
 ---
-title: "Nyomon követheti a Azure Application Insights .NET SDK-val egyéni műveleteket |} Microsoft Docs"
-description: "Azure Application Insights .NET SDK-val egyéni műveletek nyomon követése"
+title: Nyomon követheti a Azure Application Insights .NET SDK-val egyéni műveleteket |} Microsoft Docs
+description: Azure Application Insights .NET SDK-val egyéni műveletek nyomon követése
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 5c6f7521614d7c8337ef31fb8102c5715f83a58d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 94424a3d8aad56cf4504cccd8adb1a45523d95e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK-val egyéni műveletek nyomon követése
 
@@ -169,7 +169,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>Feldolgozás
+#### <a name="process"></a>Folyamat
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -334,7 +334,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>Feldolgozás
+#### <a name="process"></a>Folyamat
 
 A következő példában bejövő üzenet zajlik a módon hasonlóan a bejövő HTTP-kérelem:
 
@@ -413,7 +413,7 @@ async Task BackgroundTask()
 }
 ```
 
-Ebben a példában `telemetryClient.StartOperation` hoz létre `RequestTelemetry` és tölti ki a korrelációs környezetben. Tegyük fel, a bejövő kérelmeket, amelyek ütemezett a művelet által létrehozott szülő művelet van. Amennyiben a megjelölt `BackgroundTask` ugyanazon aszinkron elindul egy bejövő kérelem folyamata kontrolljához szülő művelet tartozzanak. `BackgroundTask`és minden beágyazott telemetriai elem mellékel a kérelemhez, amely a, a kérelem befejeződését követően automatikusan közötti kapcsolatot.
+Ebben a példában `telemetryClient.StartOperation` hoz létre `RequestTelemetry` és tölti ki a korrelációs környezetben. Tegyük fel, a bejövő kérelmeket, amelyek ütemezett a művelet által létrehozott szülő művelet van. Amennyiben a megjelölt `BackgroundTask` ugyanazon aszinkron elindul egy bejövő kérelem folyamata kontrolljához szülő művelet tartozzanak. `BackgroundTask` és minden beágyazott telemetriai elem mellékel a kérelemhez, amely a, a kérelem befejeződését követően automatikusan közötti kapcsolatot.
 
 A feladat indításakor a háttérben szálból, amely nem tartalmaz semmilyen műveletet (`Activity`) társított, `BackgroundTask` bármelyik szülő nem rendelkezik. Azonban azt is beágyazott műveletek. A feladat jelentett összes telemetriai elemet összefüggő a `RequestTelemetry` létrehozott `BackgroundTask`.
 
@@ -450,11 +450,11 @@ public async Task RunMyTaskAsync()
 
 Művelet leállt, értékesítésére művelet hatására az, akkor azt a telefonhívás helyett `StopOperation`.
 
-*Figyelmeztetés*: bizonyos esetekben unhanded kivétel is [megakadályozása](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-finally) `finally` hívandó, műveletek nem követhető nyomon.
+*Figyelmeztetés*: bizonyos esetekben unhanded kivétel is [megakadályozása](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` hívandó, műveletek nem követhető nyomon.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Párhuzamos művelet feldolgozása és nyomon követése
 
-`StopOperation`csak leállítja a műveletet, amely elkezdődött. Ha az aktuális futó művelet nem egyezik meg szeretné szüntetni, azzal `StopOperation` nincs semmi hatása. Ez a helyzet akkor fordulhat elő, ha azonos végrehajtási környezetében párhuzamosan több művelet indítása:
+`StopOperation` csak leállítja a műveletet, amely elkezdődött. Ha az aktuális futó művelet nem egyezik meg szeretné szüntetni, azzal `StopOperation` nincs semmi hatása. Ez a helyzet akkor fordulhat elő, ha azonos végrehajtási környezetében párhuzamosan több művelet indítása:
 
 ```csharp
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");

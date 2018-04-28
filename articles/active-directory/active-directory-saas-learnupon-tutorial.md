@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált LearnUpon |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és LearnUpon között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált LearnUpon |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és LearnUpon között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 40e6df0db7651488642e774512f55fbd6805809a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2796f280b2f95504be5f9691098bff07fdd93393
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Oktatóanyag: Azure Active Directoryval integrált LearnUpon
 
@@ -110,14 +110,14 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_url.png)
 
-    Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.learnupon.com/saml/consumer`
+    Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.learnupon.com/saml/consumer`
 
     > [!NOTE] 
     > Ne feledje, hogy ez a nem a tényleges érték. Ez az érték a tényleges válasz URL-címet frissíteni kell. Ez az érték ügyfél megszerezni [LearnUpon támogatási csoport](https://www.learnupon.com/features/support/).
 
 
 
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Raw)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. Az a **SAML-aláíró tanúsítványa** szakaszban, keresse meg a **ujjlenyomat** -ez nem kerülnek be a LearnUpon SAML-beállításokat.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_certificate.png) 
 

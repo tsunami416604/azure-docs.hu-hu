@@ -12,46 +12,51 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 5446f00b698fbe1fe1bae9c52bf3e73fe0d1c506
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 86597defad7c76d41065270030a4c77ee901b014
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-linux-virtual-machine-by-using-powershell-in-azure-stack"></a>Linux virtuális gép létrehozása Azure-készletben a PowerShell használatával 
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Gyors üzembe helyezés: Linux server virtuális gép létrehozása Azure-készletben a PowerShell használatával
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Az Azure PowerShell létrehozása és kezelése az Azure köteget a parancssor vagy parancsfájlok erőforrás szolgál.  Ez az útmutató adatokat Azure verem Ubuntu server rendszerű virtuális gép létrehozása a PowerShell használatával.
+Ubuntu Server 16.04 LTS virtuális gép Azure verem PowerShell használatával is létrehozhat. Kövesse a cikkben történő létrehozásáról és használatáról a virtuális gép.  Ez a cikk is lehetővé teszi a lépéseket:
 
-## <a name="prerequisites"></a>Előfeltételek 
+* Csatlakoztassa a virtuális gép egy távoli ügyfélhez.
+* Nem használt erőforrások törlése.
 
-* Győződjön meg arról, hogy az Azure-verem operátor hozzá van adva a "Ubuntu Server 16.04 LTS" kép a verem Azure piactéren.  
+## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure verem Azure PowerShell-lel hozhatja létre és kezelheti az erőforrásokat adott verziója szükséges. Ha még nem rendelkezik konfigurált Azure verem PowerShell, jelentkezzen be a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) és kövesse a lépéseket a [ telepítés](azure-stack-powershell-install.md) és [konfigurálása](azure-stack-powershell-configure-user.md) PowerShell.    
+* **A Linux-lemezkép a verem Azure piactéren**
 
-* A név id_rsa.pub a nyilvános SSH-kulcs a Windows-felhasználói profil .ssh könyvtárban kell létrehozni. Az SSH-kulcsok létrehozásának részletes információkért lásd: [létrehozása SSH kulcsok Windows](../../virtual-machines/linux/ssh-from-windows.md).  
+   A verem Azure piactér nem tartalmazza a Linux-lemezkép alapértelmezés szerint. Adja meg az Azure-verem operátorral beolvasása a **Ubuntu Server 16.04 LTS** lemezkép van szüksége. Az operátor használhatja a leírt lépéseket a [Piactéri elemek töltse le az Azure-ból Azure verem](../azure-stack-download-azure-marketplace-item.md) cikk.
+
+* Az Azure verem hozzon létre és kezelheti az erőforrásokat az Azure PowerShell adott verziója szükséges. Ha még nem rendelkezik konfigurált Azure verem PowerShell, jelentkezzen be a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) és kövesse a lépéseket a [ telepítés](azure-stack-powershell-install.md) és [konfigurálása](azure-stack-powershell-configure-user.md) PowerShell.
+
+* Egy nyilvános SSH-kulcs az a név id_rsa.pub menti a felhasználói profil .ssh könyvtárában. SSH-kulcsok létrehozásával kapcsolatos részletes információkért lásd: [létrehozása SSH kulcsok Windows](../../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Erőforráscsoport egy olyan logikai tároló mely Azure-verembe erőforrások telepítése és kezelése. A szoftverfejlesztői készlet vagy az integrált Azure verem rendszer futtassa a következő kódblokk egy erőforráscsoport létrehozásához. A jelen dokumentum összes változók értékeit hozzárendelt igazolnia, használhatja őket, vagy adjon meg másik értéket.
+Erőforráscsoport egy olyan logikai tároló, ahol telepítheti és kezelheti az Azure-verem erőforrásokat. A szoftverfejlesztői készlet vagy az integrált Azure verem rendszer futtassa a következő kódblokk egy erőforráscsoport létrehozásához. Ebben a dokumentumban a változók értékek vannak hozzárendelve, használhatja ezeket az értékeket, vagy új értéket hozzárendelni.
 
 ```powershell
 # Create variables to store the location and resource group names.
 $location = "local"
-$ResourceGroupName = "myResourceGroup" 
+$ResourceGroupName = "myResourceGroup"
 
 New-AzureRmResourceGroup `
   -Name $ResourceGroupName `
-  -Location $location 
+  -Location $location
 ```
 
 ## <a name="create-storage-resources"></a>Tároló-erőforrások létrehozása
 
-Hozzon létre egy tárfiókot, és az Ubuntu Server 16.04 LTS lemezkép mentéséhez tárolót.
+Hozzon létre egy tárfiókot, és ezután hozzon létre egy tárolót az Ubuntu Server 16.04 LTS lemezkép.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -73,7 +78,7 @@ Set-AzureRmCurrentStorageAccount `
 $containerName = 'osdisks'
 $container = New-AzureStorageContainer `
   -Name $containerName `
-  -Permission Blob 
+  -Permission Blob
 ```
 
 ## <a name="create-networking-resources"></a>Hálózati erőforrások létrehozása
@@ -106,7 +111,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Hálózati biztonsági csoport és hálózati biztonsági csoportszabály létrehozása
 
-A hálózati biztonsági csoport a virtuális gép bejövő és kimenő szabályok segítségével biztonságossá tételére. Hozzon létre egy bejövő szabályt az 3389-es bejövő távoli asztali kapcsolatok lehetővé tételéhez és a bejövő szabály a bejövő webes forgalomra engedélyezéséhez a 80-as porton.
+A hálózati biztonsági csoport a virtuális gép bejövő és kimenő szabályok segítségével biztonságossá tételére. Bejövő szabály a 3389-es bejövő távoli asztali kapcsolatok lehetővé tételéhez és a bejövő webes forgalomra engedélyezéséhez a 80-as portot a bejövő szabály létrehozása.
 
 ```powershell
 # Create an inbound network security group rule for port 22
@@ -125,6 +130,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroup -Locat
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>Hálózati kártya létrehozása a virtuális géphez
+
 A hálózati kártya csatlakoztatja a virtuális gépet egy alhálózathoz, egy hálózati biztonsági csoporthoz és egy nyilvános IP-címhez.
 
 ```powershell
@@ -135,11 +141,12 @@ $nic = New-AzureRmNetworkInterface `
   -Location $location `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id `
-  -NetworkSecurityGroupId $nsg.Id 
+  -NetworkSecurityGroupId $nsg.Id
 ```
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
-Hozzon létre egy virtuálisgép-konfigurációt. Ebben a konfigurációban a virtuális gép üzembe helyezése során használt beállítások szerepelnek, például a virtuális gép rendszerképe, mérete és hitelesítési konfigurációja.
+
+Hozzon létre egy virtuálisgép-konfigurációt. A konfiguráció tartalmazza a beállításokat a virtuális gép telepítésekor használja. Például: felhasználói hitelesítő adatokat, méretének és a virtuális gép lemezképe.
 
 ```powershell
 # Define a credential object.
@@ -152,13 +159,13 @@ $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_D1"
 $VirtualMachine = New-AzureRmVMConfig `
   -VMName $VmName `
-  -VMSize $VmSize 
+  -VMSize $VmSize
 
 $VirtualMachine = Set-AzureRmVMOperatingSystem `
   -VM $VirtualMachine `
   -Linux `
   -ComputerName "MainComputer" `
-  -Credential $cred 
+  -Credential $cred
 
 $VirtualMachine = Set-AzureRmVMSourceImage `
   -VM $VirtualMachine `
@@ -173,13 +180,13 @@ $osDiskUri = '{0}vhds/{1}-{2}.vhd' -f `
   $vmName.ToLower(), `
   $osDiskName
 
-# Sets the operating system disk properties on a virtual machine. 
+# Sets the operating system disk properties on a virtual machine.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
   -Name $osDiskName `
   -VhdUri $OsDiskUri `
   -CreateOption FromImage | `
-  Add-AzureRmVMNetworkInterface -Id $nic.Id 
+  Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 # Configure SSH Keys
 $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
@@ -193,27 +200,28 @@ Add-AzureRmVMSshPublicKey -VM $VirtualMachine `
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
  -Location $location `
-  -VM $VirtualMachine 
+  -VM $VirtualMachine
 ```
 
 ## <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
 
-Az üzembe helyezés befejeztével hozzon létre egy SSH-kapcsolatot a virtuális géppel. A virtuális gép nyilvános IP-címének visszaadásához használja a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1) parancsot.
+A virtuális gép telepítése után konfigurálja az SSH-kapcsolat a virtuális géphez. A virtuális gép nyilvános IP-címének visszaadásához használja a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1) parancsot.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-A telepített SSH rendszerről a következő paranccsal a virtuális géphez történő csatlakozáshoz. Ha Windows dolgozik, akkor használhatja [Putty](http://www.putty.org/) a VPN-kapcsolat létrehozásához.
+Az SSH telepített ügyfél rendszerből használja a következő parancsot a virtuális géphez történő csatlakozáshoz. Ha Windows dolgozik, akkor használhatja [Putty](http://www.putty.org/) a VPN-kapcsolat létrehozásához.
 
 ```
 ssh <Public IP Address>
 ```
 
-Amikor a rendszer kéri, a bejelentkezési felhasználónevét azureuser. Ha megadott egy hozzáférési kódot az SSH-kulcsok létrehozásakor, azt is meg kell adnia.
+Amikor a rendszer kéri, adja meg a bejelentkezési felhasználói azureuser. Ha az SSH-kulcsok létrehozásakor használt jelszó szükséges, adja meg a jelszót kell.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szüksége, használhatja a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) parancsot a távolítsa el az erőforráscsoportot, a virtuális gép, és minden kapcsolódó erőforrások:
+
+Az erőforrásokat, amelyek többé nem kell törölni. Használhatja a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) parancs beírásával távolítsa el ezeket az erőforrásokat. Az erőforráscsoport és az ahhoz tartozó összes erőforrást törli, a következő parancsot:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -221,4 +229,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-A gyors üzembe helyezés egy egyszerű Linux virtuális gép telepítése után. További információt a verem Azure virtuális gépek, továbbra is [szempontok a virtuális gépek Azure-készletben](azure-stack-vm-considerations.md).
+A gyors üzembe helyezés telepített Linux server alapvető virtuális gépek. Virtuális gépek Azure-verem kapcsolatos további tudnivalókért keresse fel [szempontok a virtuális gépek Azure-készletben](azure-stack-vm-considerations.md).

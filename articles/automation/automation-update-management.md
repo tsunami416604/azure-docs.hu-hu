@@ -5,21 +5,21 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2018
+ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c4b05044b0894e565ec4136f368314cb22041a7b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
-A frissítés-kezelési megoldás az Azure automationben üzembe helyezett Azure, a helyszíni környezetben és más szolgáltatók a Windows és Linux számítógépek operációs rendszer biztonsági frissítések kezelését teszi lehetővé. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
+A frissítés-kezelési megoldás az Azure automationben lehetővé teszi a Windows és Linux rendszerű számítógép Azure, a helyszíni környezetben és más szolgáltatók telepítése operációs rendszer frissítéseinek kezelése. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
 A virtuális gépek frissítéseinek felügyeletét közvetlenül az [Azure Automation](automation-offering-get-started.md)-fiókjából engedélyezheti.
-Ha szeretné megtudni, hogyan engedélyezheti a virtuális gépek frissítéseinek felügyeletét az Automation-fiókjából, akkor tekintse meg a [több virtuális gép frissítéseinek felügyeletét](manage-update-multi.md) ismertető cikket.
+Ha szeretné megtudni, hogyan engedélyezheti a virtuális gépek frissítéseinek felügyeletét az Automation-fiókjából, akkor tekintse meg a [több virtuális gép frissítéseinek felügyeletét](manage-update-multi.md) ismertető cikket. Engedélyezheti a frissítéskezelés az egyetlen virtuális gépek létrehozását a virtuális gép lap az Azure portálon. Ebben a forgatókönyvben érhető el mindkét [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépek.
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
 
@@ -46,16 +46,16 @@ A frissítéstelepítésben megadott helyen és időben a célszámítógépek e
 
 ### <a name="supported-client-types"></a>Ügyfelek támogatott típusok
 
-A következő táblázat a támogatott operációs rendszerek listáját jeleníti meg: 
+A következő táblázat a támogatott operációs rendszerek listáját jeleníti meg:
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Csak értékelés frissítése         |
-|Windows Server 2008 R2 SP1 és újabb rendszer     |A Windows PowerShell 4.0-s vagy újabb rendszer szükséges ([töltse le a WMF 4.0-s](https://www.microsoft.com/download/details.aspx?id=40855)).<br> A Windows PowerShell 5.1 ([letöltése WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) megbízhatóbbak ajánlott.         |
+|Windows Server 2008 R2 SP1 és újabb rendszer     |A Windows PowerShell 4.0-s vagy újabb rendszer szükséges ([töltse le a WMF 4.0-s](https://www.microsoft.com/download/details.aspx?id=40855)).</br> A Windows PowerShell 5.1 ([letöltése WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) megbízhatóbbak ajánlott.         |
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|Ubuntu 12.04 LTS és újabb x86/x64       |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
+|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
 
 ### <a name="unsupported-client-types"></a>Ügyfél nem támogatott típusú
 
@@ -122,7 +122,7 @@ Heartbeat
 
 A Windows-számítógépen a következő ügynök ellenőrzésére a Log Analyticshez tekinthetők át:
 
-1. Nyissa meg a Microsoft Monitoring Agent, a Vezérlőpulton, és az a **Azure Naplóelemzés** lapon, az ügynök jeleníti meg a következő üzenet: **Naplóelemzési sikeresen csatlakozott a Microsoft Monitoring Agent** .   
+1. Nyissa meg a Microsoft Monitoring Agent, a Vezérlőpulton, és az a **Azure Naplóelemzés** lapon, az ügynök jeleníti meg a következő üzenet: **Naplóelemzési sikeresen csatlakozott a Microsoft Monitoring Agent** .
 2. Nyissa meg a Windows Eseménynaplóját, lépjen az **Alkalmazás- és szolgáltatásnaplók\Operations Manager** részhez, és keresse meg a 3000-es, illetve az 5002-es eseményazonosítót a forrás szolgáltatás-összekötőből. Ezek az események azt jelzik, a számítógép regisztrálva van a Naplóelemzési munkaterület, és konfigurációs fogadja.
 
 Ha az ügynök nem tud kommunikálni a Naplóelemzési, és a tűzfalon vagy proxykiszolgálón keresztül az internettel történő kommunikációra van konfigurálva, győződjön meg arról, a tűzfal vagy a proxy kiszolgáló megfelelően konfigurálva megtekintésével [hálózati konfigurációja Windows-ügynök](../log-analytics/log-analytics-agent-windows.md) vagy [hálózati konfigurációt a Linux-ügynök](../log-analytics/log-analytics-agent-linux.md).
@@ -145,7 +145,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 | --- | --- | --- |
 | Windows-ügynökök |Igen |A megoldás információt szerez be Windows-ügynököktől a rendszerfrissítésekről, és kezdeményezi a szükséges frissítések telepítését. |
 | Linux-ügynökök |Igen |A megoldás információt szerez be Linux-ügynököktől a rendszerfrissítésekről, és kezdeményezi a szükséges frissítések telepítését a támogatott disztribúciókon. |
-| Az Operations Manager felügyeleti csoportja |Igen |A megoldás információt szerez be a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről.<br>Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynök és a Log Analytics között. A Naplóelemzési munkaterületet adat továbbítódik a felügyeleti csoportból. |
+| Az Operations Manager felügyeleti csoportja |Igen |A megoldás információt szerez be a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről.</br>Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynök és a Log Analytics között. A Naplóelemzési munkaterületet adat továbbítódik a felügyeleti csoportból. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
@@ -196,6 +196,30 @@ Hozzon létre egy új központi telepítésének kattintva a **ütemezés közpo
 |Ütemezési beállítások|Válassza ki a dátumot, és válassza ki az egyszer, vagy az ismétlődés ismétlődő|
 | Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
 
+## <a name="update-classifications"></a>Frissítési besorolások
+
+A következő táblázatok tartalmazzák a frissítési besorolások felügyelete mellett a következő definícióját: minden besorolási listáját.
+
+### <a name="windows"></a>Windows
+
+|Besorolás  |Leírás  |
+|---------|---------|
+|Kritikus frissítések     | Egy frissítés egy adott probléma, amely kritikus, nem biztonsági hiba kezelésére szolgál.        |
+|Biztonsági frissítések     | Egy frissítés egy termékspecifikus biztonsági problémára.        |
+|Kumulatív frissítések     | Az egyszerű telepítés egy csomagba gyorsjavítások összesített csoportja.        |
+|Funkciócsomagok     | Termékkiadáson kívül terjesztett új termékfunkciók.        |
+|Szervizcsomagok     | Egy alkalmazás által használt gyorsjavítások összesített csomagja.        |
+|Definíciófrissítések     | Vírus- vagy egyéb definíciós fájlok frissítése.        |
+|Eszközök     | A segédprogram vagy szolgáltatás, amely egy vagy több feladat végrehajtására.        |
+|Frissítések     | Egy alkalmazás vagy a jelenleg telepített fájl frissítése.        |
+
+### <a name="linux"></a>Linux
+
+|Besorolás  |Leírás  |
+|---------|---------|
+|Kritikus vagy biztonsági frissítések     | Frissítéseket egy meghatározott problémára vagy egy termékspecifikus biztonsági problémára.         |
+|Egyéb frissítések     | Minden más frissítéseket, amelyek nem kritikus fontosságú jellege vagy biztonsági frissítések.        |
+
 ## <a name="search-logs"></a>Keresési naplókat
 
 A részleteket a portál által biztosított, mellett keresések szemben a naplók végezheti el. Az a **változások követése** megnyitva, kattintson **Naplóelemzési**, ekkor megnyílik a **naplófájl-keresési** lap
@@ -206,13 +230,13 @@ A következő táblázat a megoldás által gyűjtött frissítési rekordok min
 
 | Lekérdezés | Leírás |
 | --- | --- |
-|Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Számítógép, a cím, a KBID, a besorolás, a PublishedDate projekt |Minden számítógép, amelyről hiányzik frissítés<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Ha számítógép == "ContosoVM1.contoso.com"<br>&#124;Számítógép, a cím, a KBID, a termék, a PublishedDate projekt |Egy adott számítógépről hiányzó frissítések (cserélje le az értéket a saját számítógépnevére)|
-| Esemény<br>&#124;Ha EventLevelName == "error" és a számítógép ((frissítés &#124; where (besorolási == "Biztonsági frissítések" vagy a besorolási == "Kritikus frissítések")<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false <br>&#124;különálló számítógép)) |Olyan gépek hibaeseményei, amelyeknél kritikus vagy biztonsági szükséges frissítések hiányoznak |
-| Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;különböző cím |Egyedi frissítések minden számítógépnél |
-| UpdateRunProgress<br>&#124;Ha InstallationStatus == "sikertelen" <br>&#124;AggregatedValue összefoglalója count() által számítógép, cím, UpdateRunName = |Futtassa egy frissítés sikertelen rendelkező számítógépek<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Frissítés<br>&#124;Ha OSType == "Linux"<br>&#124;Ha UpdateState! = "Nem szükséges" és (besorolási == "Kritikus frissítések" vagy a besorolási == "Biztonsági frissítések")<br>&#124;AggregatedValue összefoglalója = count() számítógépenként |Linux gépeire, amelyeket a csomag frissítés érhető el, amely kritikus vagy biztonsági rést listája | 
-| UpdateRunProgress<br>&#124;Ha UpdateRunName == "DeploymentName"<br>&#124;AggregatedValue összefoglalója = count() számítógépenként|Az ebben a frissítésfuttatásban frissített számítógépek (cserélje le az értéket a saját frissítéstelepítésének nevére) | 
+|Frissítés</br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false</br>&#124;Számítógép, a cím, a KBID, a besorolás, a PublishedDate projekt |Minden számítógép, amelyről hiányzik frissítés</br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:</br>OSType = "Windows"</br>OSType == "Linux" |
+| Frissítés</br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false</br>&#124;Ha számítógép == "ContosoVM1.contoso.com"</br>&#124;Számítógép, a cím, a KBID, a termék, a PublishedDate projekt |Egy adott számítógépről hiányzó frissítések (cserélje le az értéket a saját számítógépnevére)|
+| Esemény</br>&#124;Ha EventLevelName == "error" és a számítógép ((frissítés &#124; where (besorolási == "Biztonsági frissítések" vagy a besorolási == "Kritikus frissítések")</br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false </br>&#124;különálló számítógép)) |Olyan gépek hibaeseményei, amelyeknél kritikus vagy biztonsági szükséges frissítések hiányoznak |
+| Frissítés</br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false</br>&#124;különböző cím |Egyedi frissítések minden számítógépnél |
+| UpdateRunProgress</br>&#124;Ha InstallationStatus == "sikertelen" </br>&#124;AggregatedValue összefoglalója count() által számítógép, cím, UpdateRunName = |Futtassa egy frissítés sikertelen rendelkező számítógépek</br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:</br>OSType = "Windows"</br>OSType == "Linux" |
+| Frissítés</br>&#124;Ha OSType == "Linux"</br>&#124;Ha UpdateState! = "Nem szükséges" és (besorolási == "Kritikus frissítések" vagy a besorolási == "Biztonsági frissítések")</br>&#124;AggregatedValue összefoglalója = count() számítógépenként |Linux gépeire, amelyeket a csomag frissítés érhető el, amely kritikus vagy biztonsági rést listája |
+| UpdateRunProgress</br>&#124;Ha UpdateRunName == "DeploymentName"</br>&#124;AggregatedValue összefoglalója = count() számítógépenként|Az ebben a frissítésfuttatásban frissített számítógépek (cserélje le az értéket a saját frissítéstelepítésének nevére) |
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrálás a System Center Configuration Managerrel
 
@@ -248,18 +272,18 @@ Ha problémák merülnek fel a megoldás vagy virtuális gépek bevezetése sor�
 
 | Üzenet | Ok | Megoldás |
 |----------|----------|----------|
-| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.InvalidOperationException: {„Üzenet”:„A gép már<br>regisztrálva van egy másik fiókhoz. "} | A gép már be lett vezetve egy másik munkaterületre a frissítéskezeléshez | Végezze el a régi összetevők tisztítását [a hibrid runbook-csoport törlésével](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
-| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---><br>System.Net.WebException: Az alapul szolgáló kapcsolat<br>megszakadt: Váratlan hiba<br>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:<br>Az ügyfél és a kiszolgáló nem képes kommunikálni,<br>mert nem rendelkeznek közös algoritmussal | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
-| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
-| Az <wsid>.oms.opinsights.azure.com szolgáltatás által bemutatott tanúsítványt<br>nem a Microsoft szolgáltatásaihoz használt<br>hitelesítésszolgáltató bocsátotta ki. Kapcsolatfelvétel<br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a<br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
-| A gép nem regisztrálható a javításkezelőhöz,<br>A regisztráció kivétel miatt meghiúsult<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Nem sikerült önaláírt tanúsítványt létrehozni. ---><br>System.UnauthorizedAccessException: A hozzáférés megtagadva. | Hiba az önaláírt tanúsítvány létrehozásakor | Ellenőrizze, hogy a rendszerfióknak<br>van-e olvasási hozzáférése a következő mappához:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
+| A gép nem regisztrálható a javításkezelőhöz,</br>A regisztráció kivétel miatt meghiúsult</br>System.InvalidOperationException: {„Üzenet”:„A gép már</br>regisztrálva van egy másik fiókhoz. "} | A gép már be lett vezetve egy másik munkaterületre a frissítéskezeléshez | Végezze el a régi összetevők tisztítását [a hibrid runbook-csoport törlésével](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
+| Nem sikerült regisztrálni a gépet a javítások, regisztrációs kivétel miatt sikertelen volt</br>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---></br>System.Net.WebException: Az alapul szolgáló kapcsolat</br>megszakadt: Váratlan hiba</br>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:</br>Az ügyfél és a kiszolgáló nem képes kommunikálni,</br>mert nem rendelkeznek közös algoritmussal | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
+| A gép nem regisztrálható a javításkezelőhöz,</br>A regisztráció kivétel miatt meghiúsult</br>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
+| A szolgáltatás által bemutatott tanúsítványt \<wsid\>. oms.opinsights.azure.com</br>nem a Microsoft szolgáltatásaihoz használt</br>hitelesítésszolgáltató bocsátotta ki. Kapcsolatfelvétel</br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a</br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
+| A gép nem regisztrálható a javításkezelőhöz,</br>A regisztráció kivétel miatt meghiúsult</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Nem sikerült önaláírt tanúsítványt létrehozni. ---></br>System.UnauthorizedAccessException: A hozzáférés megtagadva. | Hiba az önaláírt tanúsítvány létrehozásakor | Ellenőrizze, hogy a rendszerfióknak</br>van-e olvasási hozzáférése a következő mappához:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag áttekintésével megismerheti, hogyan kezelheti a frissítéseket a Windows virtuális gépek továbbra is.
 
 > [!div class="nextstepaction"]
-> [Frissítések és javítások kezelheti a Windows Azure virtuális gépeken](automation-tutorial-troubleshoot-changes.md)
+> [Frissítések és javítások kezelheti a Windows Azure virtuális gépeken](automation-tutorial-update-management.md)
 
 * A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-searches.md) Naplókeresés funkciójával is megtekintheti.
 * [Létrehozhat riasztásokat](../log-analytics/log-analytics-alerts.md) a számítógépekről hiányzó kritikus frissítések jelzésére vagy arra az estre, ha egy számítógép automatikus frissítése letiltott állapotba kerül.

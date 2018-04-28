@@ -1,11 +1,11 @@
 ---
-title: "A Media Services REST API áttekintése |} Microsoft Docs"
-description: "Media Services REST API – áttekintés"
+title: A Media Services REST API áttekintése |} Microsoft Docs
+description: Media Services REST API – áttekintés
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: juliako;johndeu
-ms.openlocfilehash: 066959058576af830103aa98a12f0c36acfdbb14
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 472408f1c367984d5f4e0e435366c4a0af2e5b34
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="media-services-operations-rest-api-overview"></a>A Media Services REST API áttekintése
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -42,7 +42,7 @@ A következők érvényesek REST használatakor.
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
         x-ms-version: 2.17
-        Authorization: Bearer <token> 
+        Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
         {
@@ -71,7 +71,7 @@ A következő olyan opcionális fejlécek:
 | Fejléc | Típus | Érték |
 | --- | --- | --- |
 | Dátum |RFC 1123 dátuma |A kérés időbélyege |
-| Elfogadom |Tartalomtípus |A kért content-type a választ, mint az alábbiak:<p> -az application/json; odata részletes =<p> -application/atom + xml<p> Válaszok lehet egy másik tartalomtípus egy blob adatlehívás, például ha a sikeres válasz tartalmazza a blob adatfolyam tartalmaként. |
+| Elfogadás |Tartalomtípus |A kért content-type a választ, mint az alábbiak:<p> -az application/json; odata részletes =<p> -application/atom + xml<p> Válaszok lehet egy másik tartalomtípus egy blob adatlehívás, például ha a sikeres válasz tartalmazza a blob adatfolyam tartalmaként. |
 | Fogadja el-kódolás |A gzip, deflate |A GZIP és a DEFLATE kódolását, ha alkalmazható. Megjegyzés: Nagy erőforrások Media Services előfordulhat, hogy figyelmen kívül hagyja ezt a fejlécet, és vissza noncompressed adatokat. |
 | Fogadja el nyelv |"hu", "es", és így tovább. |Adja meg a kívánt nyelvet, a válasz. |
 | Fogadja el Charset |Például a "UTF-8" Charset típusa |Alapértelmezés az UTF-8. |
@@ -98,7 +98,7 @@ A következő egy HTTP-műveleteket tartalmazó is használható, ha így HTTP-k
 | GET |Az objektum aktuális értékét adja vissza. |
 | POST |Egy objektum a megadott adatok alapján hoz létre, vagy elküldi a parancsot. |
 | A PUT |A felváltja egy objektumot, vagy létrehoz egy elnevezett objektum (ha alkalmazható). |
-| TÖRLÉSE |Törli az objektumot. |
+| DELETE |Törli az objektumot. |
 | EGYESÍTÉS |Frissíti a meglévő objektum elnevezett tulajdonság módosításokkal. |
 | HEAD |Az objektum GET választ metaadatokat adja vissza. |
 
@@ -116,7 +116,7 @@ További részletek a Media Services-fiók, az Azure portálról beszerzésére 
 
 A cikk részleteket, amely kapcsolódik a REST API használatával az Azure AD hitelesítési kód írása a [hitelesítés használata az Azure AD az Azure Media Services API REST eléréséhez](media-services-rest-connect-with-aad.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure AD-alapú hitelesítés használata a Media Services REST API-t a további tudnivalókért lásd: [hitelesítés használata az Azure AD az Azure Media Services API REST eléréséhez](media-services-rest-connect-with-aad.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek

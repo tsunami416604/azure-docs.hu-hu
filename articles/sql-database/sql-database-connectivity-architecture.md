@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: f7dc584c8fa9f4452b2bd9288df86492399c036c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 76af1ead671a6d6b279202eaf7886463d4cd8bb7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolat architektúrája 
 
@@ -66,9 +66,9 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
 | 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
 | USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
-| India középső régiója | 104.211.96.159  | |
-| India déli régiója | 104.211.224.146  | |
-| India nyugati régiója | 104.211.160.80 | |
+| Közép-India | 104.211.96.159  | |
+| Dél-India | 104.211.224.146  | |
+| Nyugat-India | 104.211.160.80 | |
 | Kelet-Japán | 191.237.240.43 | 13.78.61.196 |
 | Nyugat-Japán | 191.238.68.11 | 104.214.148.156 |
 | Korea középső régiója | 52.231.32.42 | |
@@ -80,11 +80,11 @@ A következő táblázat az elsődleges és másodlagos IP-címek az Azure SQL D
 | Egyesült Királyság északi régiója | 13.87.97.210 | |
 | Egyesült Királyság déli régiója 1 | 51.140.184.11 | |
 | Egyesült Királyság 2. déli régiója | 13.87.34.7 | |
-| Egyesült Királyság nyugati régiója | 51.141.8.11  | |
-| Egyesült Államok nyugati középső régiója | 13.78.145.25 | |
+| Az Egyesült Királyság nyugati régiója | 51.141.8.11  | |
+| USA nyugati középső régiója | 13.78.145.25 | |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
 | 1 USA nyugati régiója | 23.99.34.75 | 104.42.238.205 |
-| Egyesült Államok 2. nyugati régiója | 13.66.226.202  | |
+| USA nyugati régiója, 2. | 13.66.226.202  | |
 ||||
 
 \* **Megjegyzés:** *USA keleti régiója 2* rendelkezik is egy harmadlagos IP-címe `52.167.104.0`.
@@ -105,7 +105,7 @@ Az Azure SQL Database kapcsolatkezelési házirendet az Azure SQL Database-kiszo
 A következő PowerShell-parancsfájl bemutatja, hogyan módosítsa a kapcsolatkezelési házirendet.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <Subscription Name>
 
 # Azure Active Directory ID

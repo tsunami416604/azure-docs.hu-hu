@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc5f11a324b5ac65c872ca2c033f039c129c5f8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Recovery Services-tároló frissített mentési tároló
 Ez a cikk áttekintést nyújt milyen Recovery Services-tároló, a Recovery Services-tároló és a frissítés utáni lépések tároló létező biztonsági másolathoz történő frissítéssel kapcsolatos gyakran ismételt kérdések. Recovery Services-tároló megfelel az Azure Resource Manager egy biztonsági mentési tárolót, amely a biztonsági mentési adatokat. Az adatokat a program általában másolja az adatokat, vagy a konfigurációs adatokat a virtuális gépek (VM), a munkaterhelések, a kiszolgálók vagy a munkaállomások, hogy a helyszíni vagy az Azure-ban.
@@ -60,7 +60,7 @@ A második képernyőn látható hivatkozások nyújtanak segítséget a Recover
 Recovery Services-tároló megadását időzóna-információk támogatja a biztonsági mentési házirend. Tároló sikeres frissítése után nyissa meg a biztonsági mentési házirendek tároló-beállítások menüjében, és az időzóna-adatok a tárolóban lévő konfigurált házirendek frissítése. Ez a képernyő már jeleníti meg a helyi időzónát használják, amikor egy létrehozott házirend megadott biztonsági mentési ütemezést. 
 
 ## <a name="enhanced-security"></a>Fokozott biztonság
-A biztonsági másolatok tárolóját a Recovery Services-tároló történő frissítésekor a biztonsági bekapcsolja a beállításokat, hogy a tároló automatikusan. Ha a biztonsági beállítások, bizonyos műveletek, például törlés, biztonsági mentések, vagy módosítása egy hozzáférési kódot igényel egy [Azure multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) PIN-kódot. A fokozott biztonsági további információkért lásd: a cikk [funkciókat a hibrid biztonsági másolatának](backup-azure-security-feature.md). A fokozott biztonságot be van kapcsolva, amikor adatok megőrződnek fel és 14 nap után a helyreállítási pont adatok törölve lett a tárolóból. Az ügyfelek számlázása a biztonsági adatok tárolására. Biztonsági adatok megőrzése érvényes helyreállítási pontot az Azure Backup ügynök, az Azure Backup Server és a System Center Data Protection Manager. 
+A biztonsági másolatok tárolóját a Recovery Services-tároló történő frissítésekor a biztonsági bekapcsolja a beállításokat, hogy a tároló automatikusan. Ha a biztonsági beállítások, bizonyos műveletek, például törlés, biztonsági mentések, vagy módosítása egy hozzáférési kódot igényel egy [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN-kódot. A fokozott biztonsági további információkért lásd: a cikk [funkciókat a hibrid biztonsági másolatának](backup-azure-security-feature.md). A fokozott biztonságot be van kapcsolva, amikor adatok megőrződnek fel és 14 nap után a helyreállítási pont adatok törölve lett a tárolóból. Az ügyfelek számlázása a biztonsági adatok tárolására. Biztonsági adatok megőrzése érvényes helyreállítási pontot az Azure Backup ügynök, az Azure Backup Server és a System Center Data Protection Manager. 
 
 ## <a name="gather-data-on-your-vault"></a>A tároló adatgyűjtés
 Egyszer, frissítse a Recovery Services-tároló, jelentések konfigurálása az Azure biztonsági mentés (az infrastruktúra-szolgáltatási virtuális gépek és a Microsoft Azure Recovery Services agent), és a jelentésekhez a Power BI használatával. Az adatgyűjtés további információkért lásd: a cikk [Azure Backup konfigurálása jelentések](backup-azure-configure-reports.md).

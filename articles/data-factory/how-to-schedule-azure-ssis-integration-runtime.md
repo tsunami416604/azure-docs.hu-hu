@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 04/17/2018
 ms.author: douglasl
-ms.openlocfilehash: cc9ab244c784cab608a75092b542dea0a6f69f22
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
 Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)). Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Ebben a cikkben leírt magas szintű lépései a következők:
@@ -74,7 +74,7 @@ Ha egy Azure Automation-fiók nem rendelkezik, hozzon létre ebben a lépésben 
     ![Automatizálási kezdőlap](./media/how-to-schedule-azure-ssis-integration-runtime/automation-modules.png)
 2. Az a **Tallózás gyűjtemény** ablakot, írja be **AzureRM.Profile** a keresési ablak, és nyomja le az **ENTER**. Válassza ki **AzureRM.Profile** a listában. Kattintson a **importálási** az eszköztáron. 
 
-    ![Select AzureRM.Profile](./media/how-to-schedule-azure-ssis-integration-runtime/select-azurerm-profile.png)
+    ![Válassza ki a AzureRM.Profile](./media/how-to-schedule-azure-ssis-integration-runtime/select-azurerm-profile.png)
 1. Az a **importálási** ablakban válassza ki **elfogadom frissíti az összes Azure modulok** lehetőséget, majd kattintson a **OK**.  
 
     ![AzureRM.Profile importálása](./media/how-to-schedule-azure-ssis-integration-runtime/import-azurerm-profile.png)
@@ -123,7 +123,7 @@ Az alábbi eljárások ismertetik PowerShell runbook létrehozása. A parancsfá
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
     
         "Logging in to Azure..."
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -226,7 +226,7 @@ Ez a szakasz bemutatja, hogyan lehet meghívni a webhookok az előző szakaszban
 A folyamat létrehozása három tevékenységek áll. 
 
 1. Az első **webes** tevékenység hív meg elindítani a Azure SSIS infravörös első webhook 
-2. A **tárolt eljárás** tevékenység fut egy SQL-parancsfájl, amely futtatja a SSIS-csomagot. A második **webes** tevékenység leállítja az Azure SSIS infravörös Egy SSIS-csomagot a Data Factory-folyamathoz meghívása a tárolt eljárási tevékenység használatával kapcsolatos további információkért lásd: [meghívni egy SSIS-csomag](how-to-invoke-ssis-package-stored-procedure-activity.md). 
+2. A **SSIS-csomag hajtható végre** tevékenység vagy a **tárolt eljárás** tevékenység fut a SSIS-csomag.
 3. A második **webes** tevékenység meghívja a webhook az Azure SSIS infravörös leállítása 
 
 Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rendelje hozzá a feldolgozási sor. Az ütemezés eseményindító meghatározza annak ütemezését, hogy a folyamat. Tegyük fel, amelyek van ütemezve napi 23 óra eseményindítót hoz létre. Az eseményindító a feldolgozási sor lefuttat minden nap 23 óra. A folyamat elindítja az Azure SSIS infravörös, végrehajtja a SSIS-csomag leáll, és majd a Azure SSIS infravörös 
@@ -241,7 +241,7 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
       
      ![Új adat-előállító lap](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
  
-   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
        `Data factory name “MyAzureSsisDataFactory” is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
@@ -278,69 +278,55 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
     3. A **törzs**, adja meg `{"message":"hello world"}`. 
    
         ![Első webes tevékenység - beállítások lap](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-5. A tárolt eljárási tevékenység az egérrel a **általános** szakasza a **tevékenységek** eszközkészlet. A tevékenység nevének beállítása **RunSSISPackage**. 
-6. Váltás a **SQL fiók** lapra a **tulajdonságok** ablak. 
-7. A **társított szolgáltatás**, kattintson a **+ új**.
-8. Az a **új társított szolgáltatás** ablakban, a következő műveleteket: 
 
-    1. Válassza ki **Azure SQL adatbázis** a **típus**.
-    2. Válassza ki az Azure SQL-kiszolgáló, amelyen a **SSISDB** adatbázist a **kiszolgálónév** mező. Az Azure SSIS IR üzembe helyezési folyamat létrehoz egy SSIS katalógust (SSISDB adatbázis) a megadott Azure SQL-kiszolgálón.
-    3. Válassza ki **SSISDB** a **adatbázisnév**.
-    4. A **felhasználónév**, adja meg a nevét, a felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz.
-    5. A **jelszó**, adja meg a felhasználó jelszavát. 
-    6. Tesztelje a kapcsolatot az adatbázis kattintva **tesztkapcsolat** gombra.
-    7. A társított szolgáltatás gombra kattintva mentse a **mentése** gombra.
-9. Az a **tulajdonságok** ablakban váltson a **tárolt eljárás** a lap a **SQL fiók** lapot, és hajtsa végre a következő lépéseket: 
+4. Áthúzása a SSIS-csomag végrehajtása vagy a tárolt eljárás tevékenység a a **általános** szakasza a **tevékenységek** eszközkészlet. A tevékenység nevének beállítása **RunSSISPackage**. 
 
-    1. A **tárolt eljárás neve**, jelölje be **szerkesztése** lehetőséget, és adja meg **sp_executesql**. 
-    2. Válassza ki **+ új** a a **tárolt eljárás paramétereit** szakasz. 
-    3. A **neve** adja meg a paraméter **utasításban**. 
-    4. A **típus** adja meg a paraméter **karakterlánc**. 
-    5. A **érték** a paraméter adja meg a következő SQL-lekérdezést:
+5. Ha a végrehajtás SSIS-csomag tevékenység választja, kövesse az utasításokat a [futtassa egy SSIS-csomagot a SSIS-tevékenység használata az Azure Data Factory](how-to-invoke-ssis-package-ssis-activity.md) tevékenység létrehozásának befejezéséhez.  Győződjön meg arról, hogy megadja a megfelelő számú ismételt kísérletek számát, amelyek megfelelő gyakoriságát, amellyel az Azure-SSIS infravörös rendelkezésre állását várja meg, mert elindításához akár 30 percet vesz igénybe. 
 
-        Az SQL-lekérdezést, adja meg a megfelelő értékeket a **mappa_neve**, **projektnév**, és **csomag_neve** paraméterek. 
+    ![Ismétlés beállításai](media/how-to-schedule-azure-ssis-integration-runtime/retry-settings.png)
 
-        ```sql
-        DECLARE       @return_value int, @exe_id bigint, @err_msg nvarchar(150)
+6. Ha bejelöli a tárolt eljárási tevékenység, kövesse az utasításokat a [meghívni egy SSIS-csomagot, a tárolt eljárási tevékenység az Azure Data Factory](how-to-invoke-ssis-package-stored-procedure-activity.md) tevékenység létrehozásának befejezéséhez. Győződjön meg arról, hogy a lemezt egy Transact-SQL parancsfájlt, amely megvárja-e az Azure-SSIS infravörös rendelkezésre állását a óta elindításához akár 30 percet vesz igénybe.
+    ```sql
+    DECLARE @return_value int, @exe_id bigint, @err_msg nvarchar(150)
 
-        -- Wait until Azure-SSIS IR is started
-        WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
-        BEGIN
-            WAITFOR DELAY '00:00:01';
-        END
+    -- Wait until Azure-SSIS IR is started
+    WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
+    BEGIN
+        WAITFOR DELAY '00:00:01';
+    END
 
-        EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
-            @project_name=N'YourProject', @package_name=N'YourPackage',
-            @use32bitruntime=0, @runincluster=1, @useanyworker=1,
-            @execution_id=@exe_id OUTPUT 
+    EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
+        @project_name=N'YourProject', @package_name=N'YourPackage',
+        @use32bitruntime=0, @runincluster=1, @useanyworker=1,
+        @execution_id=@exe_id OUTPUT 
 
-        EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
+    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
 
-        EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
+    EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
 
-        -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/failed (4)/
-        -- pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
-        IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
-        BEGIN
-            SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
-            RAISERROR(@err_msg, 15, 1)
-        END
+    -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/
+    -- failed (4)/pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
+    IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
+    BEGIN
+        SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
+        RAISERROR(@err_msg, 15, 1)
+    END
+    ```
 
-        ```
-10. Csatlakozás a **webes** tevékenység és a **tárolt eljárás** tevékenység. 
+7. Csatlakozás a **webes** tevékenység és a **SSIS-csomag hajtható végre** vagy a **tárolt eljárás** tevékenység. 
 
     ![Csatlakozás a webes és a tárolt eljárás tevékenység](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
 
-11. A húzással egy másik **webes** tevékenység jobb oldalán a **tárolt eljárás** tevékenység. A tevékenység nevének beállítása **StopIR**. 
-12. Váltás a **beállítások** lapra a **tulajdonságok** ablakot, és a következő műveleteket hajthatja végre: 
+8. Adatértékmezők áthúzása egy másik **webes** tevékenység jobb oldalán a **SSIS-csomag hajtható végre** tevékenység vagy a **tárolt eljárás** tevékenység. A tevékenység nevének beállítása **StopIR**. 
+9. Váltás a **beállítások** lapra a **tulajdonságok** ablakot, és a következő műveleteket hajthatja végre: 
 
     1. A **URL-cím**, illessze be, amely az Azure SSIS infravörös leállítja a webhook URL-címe 
     2. A **metódus**, jelölje be **POST**. 
     3. A **törzs**, adja meg `{"message":"hello world"}`.  
-4. Csatlakozás a **tárolt eljárás** a legutolsó tevékenység **webes** tevékenység.
+10. Csatlakozás a **SSIS-csomag hajtható végre** tevékenység vagy a **tárolt eljárás** a legutolsó tevékenység **webes** tevékenység.
 
     ![Teljes feldolgozási folyamat](./media/how-to-schedule-azure-ssis-integration-runtime/full-pipeline.png)
-5. Az adatcsatorna-beállítások gombra kattintva érvényesítenie **ellenőrzése** az eszköztáron. Zárja be a **folyamat ellenőrzési jelentés** kattintva **>>** gombra. 
+11. Az adatcsatorna-beállítások gombra kattintva érvényesítenie **ellenőrzése** az eszköztáron. Zárja be a **folyamat ellenőrzési jelentés** kattintva **>>** gombra. 
 
     ![Folyamat érvényesítése](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 
@@ -352,7 +338,7 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
 2. Az a **Runbook** lap az Azure Automation-fiók, ellenőrizheti, hogy futtatta-e a feladatok indítása és leállítása a Azure SSIS infravörös 
 
     ![Runbook-feladatok](./media/how-to-schedule-azure-ssis-integration-runtime/runbook-jobs.png)
-3. Launch SQL Server Management Studio. Az a **kapcsolódás a kiszolgálóhoz** ablakban, a következő műveleteket hajthatja végre: 
+3. Indítsa el az SQL Server Management Studio eszközt. Az a **kapcsolódás a kiszolgálóhoz** ablakban, a következő műveleteket hajthatja végre: 
 
     1. A **kiszolgálónév**, adja meg  **&lt;az Azure SQL-adatbázis&gt;. database.windows.net**.
     2. Válassza ki **beállítások >>**.

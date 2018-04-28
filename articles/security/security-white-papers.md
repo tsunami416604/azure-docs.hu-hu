@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/19/2018
 ms.author: tomsh
-ms.openlocfilehash: dfc0128247ad86e9fa6932f8b05c91ae7da0d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 29a479ffee3488768f1882c0938b0ecfdd55218b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-white-papers"></a>Az Azure biztonsági tanulmányok
 | | |
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/05/2018
 |[Azure hálózati biztonság](azure-network-security.md)|Bemutatja a hálózati vezérlő kell továbbfejleszteni a biztonságot a megoldások Azure központi telepítését konfigurálhatja széles körét. A fókusz ügyfélkapcsolati hálózati biztonsági vezérlőre.|
 |[Az Azure operational biztonsági](azure-operational-security.md)|Biztosít egy átfogó az ügyfélkapcsolati működési biztonsági technológiák és az elérhető szolgáltatások az Azure-ral.|
 |[Az Azure biztonsági technikai lehetőségeit](azure-security-technical-capabilities.md)|Fókusz biztonsági szolgáltatásokat és funkciókat támogató Azure Storage, Azure SQL-adatbázisok, az Azure virtuális gép modell, és az eszközök és infrastruktúra, amely minden felügyeletét.|
-|[Biztonsági útmutató az Azure Storage-hoz](https://docs.microsoft.com/en-us/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Az egyes használható az Azure Storage biztonsági szolgáltatások áttekintése Felügyeleti vezérlősík biztonsági, vezérlősík adatbiztonság, titkosítását, a titkosítás a felhőszolgáltató közötti átviteléhez, és a tárolási analitika ismerteti.|
+|[Biztonsági útmutató az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Az egyes használható az Azure Storage biztonsági szolgáltatások áttekintése Felügyeleti vezérlősík biztonsági, vezérlősík adatbiztonság, titkosítását, a titkosítás a felhőszolgáltató közötti átviteléhez, és a tárolási analitika ismerteti.|
 |[Adatbesorolás a felhőre való előkészületként](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03) |A letölthető dokumentum vezet be az adatok besorolását és az értékét a felhőalapú környezetben alapjai számítástechnikai. Szervezetek értékeli a felhő számítási jövőbeli használatra vagy a szervezet jelenleg felhőalapú szolgáltatások segítségével és a optimalizálása adatok felügyeleti fog keresést rendelkezésre legjobban a dokumentum.|
 |[Irányítás az Azure-ban](governance-in-azure.md)|Ismerteti az Azure beépített biztonsági és irányítási funkcióit. A fő irányítás tárgyalt vannak: házirendek, folyamatok és eljárások végrehajtására a szervezeti célok; biztonság és a szervezet szabványoknak; folyamatos való riasztások és figyelését.
 |[Az Azure nyilvános felhőjében elszigeteléséről](azure-isolation.md)|Ismerteti, hogyan Azure elkülönítést is biztosít a rosszindulatú és nem rosszindulatú felhasználók ellen. A felhőalapú megoldások újratervezni különböző elkülönítési döntések kínál a fejlesztők által útmutatóként szolgál. Elsődleges célja az ügyfélkapcsolati biztonsági ellenőrzéseket, és nem kísérli meg cím SLA-k, árképzési modellt és DevOps eljárásokkal kapcsolatos szempontok.|

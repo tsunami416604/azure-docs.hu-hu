@@ -10,15 +10,15 @@ ms.custom: saas apps
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: ayolubek
-ms.openlocfilehash: c6f3da52643caa9aa1172db5b884c5336c409715
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3b2b1b767b26d844046d545e3d587621c5d14995
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Az adatbázis-georeplikációt használ több-bérlős SaaS-alkalmazás katasztrófa utáni helyreállítás
 
-Ebben az oktatóanyagban egy több-bérlős SaaS-alkalmazáshoz, az adatbázis-/-bérlős modell használatával végrehajtott a teljes vész-helyreállítási forgatókönyv vizsgálatát. Az alkalmazás megvédeni a nem tervezett kimaradás, használhatja [ _georeplikáció_ ](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview) replikákat az alkalmazáskatalógus és a bérlői adatbázisok létrehozásához egy másik helyreállítási régióban. Nem tervezett kimaradás esetén meg gyorsan feladatátvételt ezekre a replikákra folytatja a normál üzleti tevékenységekhez. Feladatátvétel esetén az adatbázisok eredeti régióban válnak a másodlagos replikákat az adatbázisok helyreállítási régióban. Miután ezekre a replikákra ismét online elérhető azokat automatikusan történik meg, az adatbázisokat a helyreállítási régióban állapotát. A leállás nem oldódik meg, miután Ön nem vissza az adatbázisok eredeti éles régióban.
+Ebben az oktatóanyagban egy több-bérlős SaaS-alkalmazáshoz, az adatbázis-/-bérlős modell használatával végrehajtott a teljes vész-helyreállítási forgatókönyv vizsgálatát. Az alkalmazás megvédeni a nem tervezett kimaradás, használhatja [ _georeplikáció_ ](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) replikákat az alkalmazáskatalógus és a bérlői adatbázisok létrehozásához egy másik helyreállítási régióban. Nem tervezett kimaradás esetén meg gyorsan feladatátvételt ezekre a replikákra folytatja a normál üzleti tevékenységekhez. Feladatátvétel esetén az adatbázisok eredeti régióban válnak a másodlagos replikákat az adatbázisok helyreállítási régióban. Miután ezekre a replikákra ismét online elérhető azokat automatikusan történik meg, az adatbázisokat a helyreállítási régióban állapotát. A leállás nem oldódik meg, miután Ön nem vissza az adatbázisok eredeti éles régióban.
 
 Ez az oktatóanyag ismerteti, a feladatátvétel és a feladat-visszavétel munkafolyamatok. Megtudhatja, hogyan:
 > [!div classs="checklist"]
@@ -82,7 +82,7 @@ Ebben az oktatóanyagban először georeplikáció létrehozására használhatj
 Később egy külön hazatelepítési lépésben rendszer átadja az alkalmazáskatalógus és a bérlői adatbázisok eredeti régió helyreállítási régióban. Az alkalmazás és az adatbázisok maradnak hazatelepítési rendelkezésre. Amikor végzett, az alkalmazás teljesen működőképes az eredeti régióban.
 
 > [!Note]
-> Az alkalmazás a állítja helyre a rendszer a _párosított régió_ a régió, ahol az alkalmazás központi telepítése. További információkért lásd: [Azure párosítva régiók](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions).
+> Az alkalmazás a állítja helyre a rendszer a _párosított régió_ a régió, ahol az alkalmazás központi telepítése. További információkért lásd: [Azure párosítva régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 ## <a name="review-the-healthy-state-of-the-application"></a>Az alkalmazás kifogástalan állapotának áttekintése
 
@@ -103,7 +103,7 @@ A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás norm
 Ebben a feladatban egy folyamat, amely a kiszolgálók, a rugalmas készletek és az adatbázisok konfigurációját a bérlő katalógusba való szinkronizálásának megkezdése. A folyamat tartja ezt az információt a katalógus naprakész.  A folyamat működik a aktív katalógust és az eredeti régióban található, vagy a helyreállítási régióban. A konfigurációs adatok, a helyreállítási környezet biztosításához a helyreállítási folyamat során az eredeti környezettel következetes, és majd később biztosításához hazatelepítési során az eredeti régió konzisztenssé a végrehajtott módosításokat a a helyreállítási környezet. A katalógus segítségével is nyomon követheti, bérlői erőforrások helyreállítási állapota
 
 > [!IMPORTANT]
-> Az egyszerűség kedvéért a szinkronizálási folyamat és a más helyreállítási és hazatelepítési hosszú ideig futó folyamatok szereplő helyi Powershell feladatok vagy az ügyfél felhasználói bejelentkezés alatt futó munkamenetek is érvényes. A hitelesítési tokenek ki, ha először jelentkezik több óra elteltével lejár, és a feladat majd sikertelen lesz. Egy éles telepítési forgatókönyvhöz, a hosszú futású folyamatokat valamilyen, egyszerű szolgáltatás alatt futó megbízható Azure szolgáltatásként kell végrehajtani. Lásd: [a Azure PowerShell szolgáltatás használatával hozzon létre egy egyszerű tanúsítvány](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal).
+> Az egyszerűség kedvéért a szinkronizálási folyamat és a más helyreállítási és hazatelepítési hosszú ideig futó folyamatok szereplő helyi Powershell feladatok vagy az ügyfél felhasználói bejelentkezés alatt futó munkamenetek is érvényes. A hitelesítési tokenek ki, ha először jelentkezik több óra elteltével lejár, és a feladat majd sikertelen lesz. Egy éles telepítési forgatókönyvhöz, a hosszú futású folyamatokat valamilyen, egyszerű szolgáltatás alatt futó megbízható Azure szolgáltatásként kell végrehajtani. Lásd: [a Azure PowerShell szolgáltatás használatával hozzon létre egy egyszerű tanúsítvány](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
 
 1. Az a _PowerShell ISE_, nyissa meg a ...\Learning Modules\UserConfig.psm1 fájlt. Cserélje le `<resourcegroup>` és `<user>` 10-es és 11 az értéket, az alkalmazás üzembe helyezésekor a sorban.  Mentse a fájlt!
 
@@ -181,7 +181,7 @@ Most tegyük fel, a régióban, amelyben az alkalmazás üzemel, és a helyreál
 
 2. A szkriptek futtatásához nyomja le az **F5** billentyűt.  
     * A parancsfájl egy új PowerShell-ablakban nyílik meg, és elindítja a párhuzamosan futó PowerShell feladatok sorozata. Ezeket a feladatokat a helyreállítási régióban bérlői adatbázisok feladatátvételt.
-    * A helyreállítási régió a _párosított régió_ társított Azure-régiót, amelyben az alkalmazás telepítése. További információkért lásd: [Azure párosítva régiók](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions). 
+    * A helyreállítási régió a _párosított régió_ társított Azure-régiót, amelyben az alkalmazás telepítése. További információkért lásd: [Azure párosítva régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 3. A PowerShell-ablakban a helyreállítási folyamat állapotának figyelése.
     ![Feladatátvételi folyamat](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
@@ -310,4 +310,4 @@ Azure SQL database is tartalmaz ahhoz, hogy az üzletmenet folytonossága techno
 
 ## <a name="additional-resources"></a>További források
 
-* [További oktatóprogramot kínál, amelyek a Wingtip SaaS-alkalmazás épül](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+* [További oktatóprogramot kínál, amelyek a Wingtip SaaS-alkalmazás épül](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)

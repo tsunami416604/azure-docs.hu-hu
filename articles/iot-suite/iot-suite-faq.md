@@ -1,12 +1,12 @@
 ---
-title: "Az Azure IoT Suite – gyakori kérdések |} Microsoft Docs"
-description: "Gyakran ismételt kérdések az IoT Suite-ról"
+title: Az Azure IoT Suite – gyakori kérdések |} Microsoft Docs
+description: Gyakran ismételt kérdések az IoT Suite-ról
 services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c79c90c4f6c28153d4d299015a06a6bc37145081
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 49e94e771deb4582b922400d81e8388faf164f40
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Gyakran ismételt kérdések az IoT Suite-ról
 
@@ -33,6 +33,12 @@ A forráskód a következő GitHub-adattárak tárolja:
 * [A távoli felügyeleti előkonfigurált megoldás (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 * [Előre konfigurált prediktív karbantartási megoldás](https://github.com/Azure/azure-iot-predictive-maintenance)
 * [Előre konfigurált csatlakoztatott gyári megoldás](https://github.com/Azure/azure-iot-connected-factory)
+
+### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-preconfigured-solutions"></a>Milyen SDK-k is használni eszközügyfeleitől az előkonfigurált megoldások kialakításához?
+
+A különböző nyelvi (C, .NET, Java, Node.js, Python) IoT eszközre SDK-k hivatkozásait megtalálhatja az a [Microsoft Azure IoT SDK-k](https://github.com/Azure/azure-iot-sdks) GitHub-adattárak.
+
+Ha a DevKit eszközt használ, erőforrások és a minták található a [IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub-tárházban.
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-preconfigured-solutions"></a>Érhető el az új mikroszolgáltatások architektúra összes három előkonfigurált megoldásokat?
 

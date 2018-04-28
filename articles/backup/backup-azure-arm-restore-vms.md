@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Backup: Visszaállítása a virtuális gépek az Azure-portál használatával |} Microsoft Docs"
-description: "Egy Azure virtuális gép visszaállíthatja őket egy helyreállítási pontból az Azure portál használatával"
+title: 'Az Azure Backup: Visszaállítása a virtuális gépek az Azure-portál használatával |} Microsoft Docs'
+description: Egy Azure virtuális gép visszaállíthatja őket egy helyreállítási pontból az Azure portál használatával
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "biztonsági másolat visszaállításával lehetséges; visszaállítása; helyreállítási pont;"
+editor: ''
+keywords: biztonsági másolat visszaállításával lehetséges; visszaállítása; helyreállítási pont;
 ms.assetid: 372b87c6-3544-4dc5-bbc9-c742ca502159
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 84fb2cc08e97541d2d9d327ca2b6865ff9a6fe20
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Az Azure-portál használatával állítsa vissza a virtuális gépek
 Pillanatképek készítése a adatait meghatározott időközönként védeni az adatokat. Ezeket a pillanatképeket nevezzük helyreállítási pontokat, és vannak tárolva, a Recovery Services-tárolók. Szükség esetén javítsa vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontok. A helyreállítási pont visszaállításakor teheti:
@@ -109,7 +109,7 @@ A portál biztosít egy **Gyorslétrehozás** a visszaállított virtuális gép
 ## <a name="create-a-new-vm-from-a-restore-point"></a>Hozzon létre egy új virtuális Gépet egy visszaállítási pont
 1. Ha még nem tette, [válasszon ki egy helyreállítási pontot](#restore-a vm-with-special-network-configurations) új virtuális gép egy visszaállítási pont létrehozása előtt. Miután kijelölt egy visszaállítási pontot a a **konfiguráció visszaállítása** panelen adja meg vagy válassza ki az értékeket az egyes a következő mezőket:
 
-    a. **Állítsa vissza a típusú**. Hozzon létre egy virtuális gépet.
+    a. **Állítsa vissza a típusú**. Virtuális gépet hoz létre.
 
     b. **Virtuális gép neve**. Adja meg a virtuális gép nevét. A név az erőforráscsoportnak (az Azure Resource Manager telepített virtuális esetén) vagy a felhőszolgáltatás (az egy klasszikus virtuális gépekhez) egyedinek kell lennie. A virtuális gép nem cserélhető le, ha az előfizetés már létezik.
 
@@ -211,7 +211,7 @@ Azure biztonsági mentés lehetővé teszi, hogy a biztonsági másolat virtuál
 ## <a name="restore-domain-controller-vms"></a>Virtuális gépek tartományvezérlő visszaállítása
 Biztonsági mentési tartományvezérlő (DC) virtuális gépek támogatott lehetőség biztonsági mentéssel. Azonban meg kell legyen óvatos a visszaállítási folyamat során. A megfelelő helyreállítási folyamatot attól függ, hogy a tartomány struktúráját. A legegyszerűbb esetben egyetlen tartományvezérlő egyetlen tartományban van. Gyakrabban üzemi terhelés esetén meg kell egyetlen tartományt a több tartományvezérlők, lehet, hogy egyes tartományvezérlők helyszíni. Végül lehetséges, hogy több tartomány erdő. 
 
-Az Active Directory szempontból az Azure virtuális gép olyan, mint bármely más virtuális gép modern támogatott hipervizor alkalmazáson. A fő különbség a helyszíni hipervizorok, hogy nincs virtuális gép konzol az Azure-ban érhető el. A konzol bizonyos helyzetekben, például egy operációs rendszer nélküli helyreállítás (BMR) használatával helyreállításához szükség-típusú biztonsági mentést. VM-visszaállítást a biztonsági mentési tárolóból azonban a teljes operációs rendszer nélküli Helyreállítás váltja fel. Directory címtárszolgáltatások helyreállító módjában (DSRM) is rendelkezésre áll, ezért az összes Active Directory-helyreállítási forgatókönyvek életképes. További információkért lásd: [virtualizált tartományvezérlők biztonsági mentés és helyreállítás szempontjai](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) és [tervezése az Active Directory-erdő helyreállítási](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx).
+Az Active Directory szempontból az Azure virtuális gép olyan, mint bármely más virtuális gép modern támogatott hipervizor alkalmazáson. A fő különbség a helyszíni hipervizorok, hogy nincs virtuális gép konzol az Azure-ban érhető el. A konzol bizonyos helyzetekben, például egy operációs rendszer nélküli helyreállítás (BMR) használatával helyreállításához szükség-típusú biztonsági mentést. VM-visszaállítást a biztonsági mentési tárolóból azonban a teljes operációs rendszer nélküli Helyreállítás váltja fel. Directory címtárszolgáltatások helyreállító módjában (DSRM) is rendelkezésre áll, ezért az összes Active Directory-helyreállítási forgatókönyvek életképes. További információkért lásd: [virtualizált tartományvezérlők biztonsági mentés és helyreállítás szempontjai](https://technet.microsoft.com/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) és [tervezése az Active Directory-erdő helyreállítási](https://technet.microsoft.com/library/planning-active-directory-forest-recovery(v=ws.10).aspx).
 
 ### <a name="single-dc-in-a-single-domain"></a>Egyetlen tartományvezérlő egyetlen tartományban
 A virtuális Gépet az Azure portálról vagy a PowerShell használatával (mint bármely más virtuális gép) állíthatók vissza.
@@ -242,7 +242,7 @@ Teljes hozza létre a virtuális lemez visszaállítása után, kövesse az alá
 
    a. A felhőszolgáltatás a virtuális gép létrehozása egy [belső terheléselosztó](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/).
 
-   b. Hozzon létre egy virtuális gép csatlakozni egy [internetre terheléselosztó](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/).
+   b. Hozzon létre egy virtuális gép csatlakozni egy [internetre terheléselosztó](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
 
    c. A virtuális gép létrehozása [több hálózati adapter](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
 

@@ -2,23 +2,20 @@
 title: A szerepkörök az Azure-felhőszolgáltatás konfigurálása a Visual Studio |} Microsoft Docs
 description: Megtudhatja, hogyan beállítása és konfigurálása a szerepkörök az Azure felhőszolgáltatások Visual Studio használatával.
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: d397ef87-64e5-401a-aad5-7f83f1022e16
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: d397ef87-64e5-401a-aad5-7f83f1022e16
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 8a1eb75e9f38aae29cbb0012e5f15404299d011d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 09e6c3a9c27342ef27d49674d62ccf74d70d2e0f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>A Visual Studio Azure cloud service szerepkörök konfigurálása
 Azure-felhőszolgáltatás rendelkezhet egy vagy több munkavégző vagy a webes szerepkörök. Az egyes szerepkörökhöz szükség határozza meg, akkor az a szerepkör beállítására és is konfigurálhatja, hogyan fut a szerepkörhöz. A felhőszolgáltatások szerepkörök kapcsolatos további információkért lásd: a videó [Bevezetés az Azure Felhőszolgáltatások](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). 
@@ -102,7 +99,7 @@ Minden szolgáltatás konfigurációját egy másik értéket használ, nincs k�
 
 1. Az a **szolgáltatáskonfiguráció** listára, válassza ki a frissíteni kívánt szolgáltatás konfigurációját.
 
-    ![Service Configuration](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
+    ![Szolgáltatás konfigurációja](./media/vs-azure-tools-configure-roles-for-cloud-service/project-properties-settings-tab-select-configuration.png)
 
 1. A kapcsolati karakterlánc hozzáadásához válassza **beállítás hozzáadása**.
 

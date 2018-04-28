@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4aad45559d167e6c046822200c9bbb98113d463b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5bb758637d7b23f206f78d1604f985c2985d4410
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Rövid útmutató: Azure Container Service- (AKS-) fürt üzembe helyezése
 
@@ -83,6 +83,11 @@ Nyissa meg a Cloud Shellt az Azure Portal jobb felső sarkában található gomb
 
 ![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
 
+Adja meg az előfizetést (ha még nem adta meg).
+```azurecli-interactive
+az account set -s SUBSCRIPTION_NAME
+```
+
 Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálhatja a kubectl-t a Kubernetes-fürthöz való csatlakozásra.
 
 Másolja és illessze be a következő parancsot a Cloud Shellbe. Ha szükséges, módosítsa az erőforráscsoport és a fürt nevét.
@@ -110,7 +115,7 @@ aks-agentpool-14693408-2   Ready     agent     7m        v1.8.1
 
 A Kubernetes-jegyzékfájl meghatározza a fürt célállapotát, például azt, hogy milyen tárolórendszerképeknek kell futniuk. Ebben a példában egy jegyzékfájlt használunk az Azure Vote alkalmazás futtatásához szükséges összes objektum létrehozásához.
 
-Hozzon létre egy `azure-vote.yaml` nevű fájlt, és másolja bele a következő YAML-kódot. Ha az Azure Cloud Shellben dolgozik, ez a fájl a vi vagy a Nano segítségével hozható létre, ugyanúgy, mint egy virtuális vagy fizikai rendszeren.
+Hozzon létre egy `azure-vote.yaml` nevű fájlt, és másolja bele a következő YAML-kódot. Ha az Azure Cloud Shellben dolgozik, ez a fájl a vi vagy a Nano alkalmazással hozható létre, ugyanúgy mint egy virtuális vagy fizikai rendszeren.
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -211,7 +216,7 @@ Miután az *EXTERNAL-IP* cím *pending* állapotról egy *IP-címre* változik, 
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Most a külső IP-címre léphet az Azure Vote alkalmazás megtekintéséhez.
+Most lépjen a külső IP-címre az Azure Vote alkalmazás megtekintéséhez.
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
 

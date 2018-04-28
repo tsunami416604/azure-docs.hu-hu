@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 7465486109af773403c61f6b4505d932949009df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0c4f6ef9d934a414ef805ddba6d2602b03bcbf16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Alapértelmezett felhasználói engedélyek az Azure Active Directoryban
 
-Az Azure Active Directory (Azure AD) az összes felhasználó megkapja alapértelmezett engedélyek egy készletét. A felhasználó hozzáférési áll a felhasználó, típusát a [szerepkörtagságok](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-users-assign-role-azure-portal), és az egyes objektumok tulajdonosa. Ez a cikk ismerteti az alapértelmezett engedélyeket, és a tag és a Vendég felhasználói alapértelmezései összehasonlítását tartalmazza.
+Az Azure Active Directory (Azure AD) az összes felhasználó megkapja alapértelmezett engedélyek egy készletét. A felhasználó hozzáférési áll a felhasználó, típusát a [szerepkörtagságok](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal), és az egyes objektumok tulajdonosa. Ez a cikk ismerteti az alapértelmezett engedélyeket, és a tag és a Vendég felhasználói alapértelmezései összehasonlítását tartalmazza.
 
 ## <a name="member-and-guest-users"></a>A tag, és a vendég felhasználók
 A kapott alapértelmezett engedélyek csoportja függ, ha a felhasználó tagja natív a bérlő (felhasználói), vagy ha a felhasználó a B2B együttműködés Vendég (Vendég felhasználó). További információ a B2B együttműködés: [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md) vendégfelhasználók kapcsolatos további információk). 

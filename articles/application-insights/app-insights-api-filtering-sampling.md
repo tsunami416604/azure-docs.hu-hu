@@ -1,9 +1,9 @@
 ---
-title: "Szűrés és az Azure Application Insights SDK előfeldolgozása |} Microsoft Docs"
-description: "Az írási Telemetriai processzorok és a telemetriai adatok inicializálók, az SDK-ban való vagy tulajdonságokat adhat az adatok az Application Insights portál telemetriai adatok elküldése előtt."
+title: Szűrés és az Azure Application Insights SDK előfeldolgozása |} Microsoft Docs
+description: Az írási Telemetriai processzorok és a telemetriai adatok inicializálók, az SDK-ban való vagy tulajdonságokat adhat az adatok az Application Insights portál telemetriai adatok elküldése előtt.
 services: application-insights
-documentationcenter: 
-author: beckylino
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
-ms.author: borooji;mbullwin
-ms.openlocfilehash: 3f621010c1c36445ad35d81d96a2e5aefc46b10c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: mbullwin; borooji
+ms.openlocfilehash: 06f116fc5096fe4bda9c8433c3a33726acb67eea
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Szűrés és az Application Insights SDK a telemetriai adatok előfeldolgozása
 
@@ -35,7 +35,7 @@ Előkészületek:
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>Filtering: ITelemetryProcessor
+## <a name="filtering-itelemetryprocessor"></a>Szűrés: ITelemetryProcessor
 Ez a módszer lehetővé teszi több közvetlen ellenőrzése alatt tartja a mi van, illetve tiltani szeretné a telemetriai adatok adatfolyamból. A mintavételi, párhuzamosan használható vagy külön-külön.
 
 Telemetriai adatok szűrése, telemetriai processzort írása, és regisztrálja az SDK-val. A processzor végighalad az összes telemetriai adat, és dobja el, az adatfolyamból, vagy vegye fel a Tulajdonságok választhatja. Ez magában foglalja a szabványos modulból, mint a HTTP-kérelem adatgyűjtő és a függőségi adatgyűjtő telemetriai, valamint saját kezűleg írt telemetriai adatokat. Például szűrhetők telemetriai adatainak robots vagy sikeres függőségi hívások esetében érkező kérelmeket.
@@ -218,7 +218,7 @@ Telemetria inicializálók segítségével az összes telemetriai adat; küldöt
 
 Az Application Insights webes csomag például HTTP-kérelmekre vonatkozó telemetriai adatokat gyűjt. Alapértelmezés szerint azt észleli, ha bármely kérelem válaszkód sikertelenként > = 400. Azonban ha azt szeretné kezelni a 400 sikeres, megadhatja a telemetriai adatok inicializáló, amely beállítja a sikeres tulajdonságot.
 
-Ha megad egy telemetriai inicializáló, azt nevezzük, amikor a Track*() módszerekkel nevezik. Ez magában foglalja a szabványos telemetriai modulok által meghívott módszerek. Konvenció ezek a modulok egyik tulajdonságnak sem, amely már be van állítva egy inicializáló által nem állít be.
+Ha megad egy telemetriai inicializáló, nevezik Track*() módszerek meghívásakor. Ez magában foglalja a szabványos telemetriai modulok által meghívott módszerek. Konvenció ezek a modulok egyik tulajdonságnak sem, amely már be van állítva egy inicializáló által nem állít be.
 
 **Adja meg az inicializáló**
 
@@ -263,7 +263,7 @@ Ha megad egy telemetriai inicializáló, azt nevezzük, amikor a Track*() módsz
 
 **Az inicializáló betöltése**
 
-In ApplicationInsights.config:
+Az ApplicationInsights.config:
 
     <ApplicationInsights>
       <TelemetryInitializers>

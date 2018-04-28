@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: 31b36e6fb6a1ebf09c559b2777ffa5f554c3cfa0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 3bfedf940bd884fc8093f14236b6f3e4f7596839
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Tárhelykezelés a felhőben az Azure független PowerShell használatával
 
@@ -25,7 +25,7 @@ A legtöbben Azure nyilvános Felhőjében használja a globális Azure telepít
 
 * [Az Azure Government felhő](https://azure.microsoft.com/features/gov/)
 * [Azure Kínában a 21Vianet által működtetett Kína-felhő](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+* [Az Azure német felhő](../../germany/germany-welcome.md)
 
 ## <a name="using-an-independent-cloud"></a>Egy független a felhővel 
 
@@ -48,7 +48,7 @@ Get-AzureRmEnvironment
 Jelentkezzen be a fiók, amely hozzáfér ehhez a felhő kívánt csatlakozni, és a környezet beállításához. Ez a példa bemutatja, hogyan használja az Azure Government felhő fiókkal bejelentkezni.   
 
 ```powershell
-Login-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzureRmAccount –Environment AzureUSGovernment
 ```
 
 A kínai felhő elérésére használja a környezet **AzureChinaCloud**. A német felhő elérésére, **AzureGermanCloud**.
@@ -61,7 +61,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 Az alábbi táblázat a helyek, a német felhő adott vissza.
 
-|Hely | DisplayName |
+|Hely | displayName |
 |----|----|
 | germanycentral | Közép-Németország|
 | germanynortheast | Északkelet-Németország | 

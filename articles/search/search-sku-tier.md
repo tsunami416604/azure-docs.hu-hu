@@ -1,25 +1,19 @@
 ---
-title: "Válassza ki a Termékváltozat vagy IP-címek az Azure Search |} Microsoft Docs"
-description: "Az Azure Search is üzembe ezek termékváltozatok: ingyenes, a Basic és standard szintű, ahol Standard lehetőség a különböző erőforrás-konfigurációk és kapacitása szintjének."
+title: Válassza ki a Termékváltozat vagy IP-címek az Azure Search |} Microsoft Docs
+description: 'Az Azure Search is üzembe ezek termékváltozatok: ingyenes, a Basic és standard szintű, ahol Standard lehetőség a különböző erőforrás-konfigurációk és kapacitása szintjének.'
 services: search
-documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 8d4b7bca-02a5-43ee-b3f8-03551dfb32fd
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: 781683f27c943e25d5629dd846da357f51c9d4f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 6fe41a8c4d184fef4d1bb0a12fed44a49ef8a6da
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Termékváltozat vagy tarifacsomag választása az Azure Search szolgáltatáshoz
 Az Azure Search egy [szolgáltatás kiépítve](search-create-service-portal.md) egy adott árképzési szint vagy a Termékváltozat. A választható lehetőségek **szabad**, **alapvető**, vagy **szabványos**, ahol **szabványos** több konfigurációk és kapacitások érhető el.
@@ -78,9 +72,9 @@ A következő diagram része a korlátok [az Azure Search szolgáltatásra vonat
 | Szolgáltatói szerződés (SLA) |No <sup>1</sup> |Igen |Igen |Igen |Igen |Igen |
 | Index korlátok |3 |5 |50 |200 |200 |1000 <sup>2</sup> |
 | A dokumentum korlátok |10 000 teljes |1 millió szolgáltatás |15 millió partíciónként |60 millió partíciónként |120 millió partíciónként |1 millió index |
-| Maximális partíciók |N/A |1 |12 |12 |12 |3 <sup>2</sup> |
+| Maximális partíciók |– |1 |12 |12 |12 |3 <sup>2</sup> |
 | Partíció mérete |Összesen 50 MB |2 GB-ot szolgáltatás |Partíciónként 25 GB |100 GB-ot partíció (legfeljebb 1.2-es TB-szolgáltatás esetében) |200 GB-ot partíció (legfeljebb 2,4 TB-szolgáltatás esetében) |200 GB-os (legfeljebb 600 GB-szolgáltatás esetében) |
-| Maximális replikák |N/A |3 |12 |12 |12 |12 |
+| Maximális replikák |– |3 |12 |12 |12 |12 |
 
 <sup>1</sup> ingyenes szint és az előzetes funkciók nem tartoznak a szolgáltatásszint-szerződések (SLA). Az összes számlázható rétegek SLA-k érvénybe, ha a szolgáltatás megfelelő redundancia kiépítése. Két vagy több replikák szükségesek (olvasás) lekérdezés SLA-t. Három vagy több replikák lekérdezés és az indexelés (írásra) SLA szükségesek. A partíciók számának nincs egy SLA-t szempont. 
 

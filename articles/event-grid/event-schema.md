@@ -6,19 +6,21 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 7af0e1cc8ae36774ef1cebf1bada6477888860d0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cb7797f5322b9288faf96be2ede164f156fd66cc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Az Azure Event rács esemény séma
 
 Ez a cikk ismerteti a tulajdonságok és a sémában, amely az összes esemény találhatók. Események állnak olyan öt szükséges kapcsolatikarakterlánc-tulajdonságokat, és egy szükséges objektumot. A Tulajdonságok megegyeznek az összes esemény bármely közzétevőtől. Az adatobjektum mindegyik közzétevő jellemző tulajdonságok tartalmazza. A rendszer témaköröket ezeket a tulajdonságokat vonatkoznak, például az Azure Storage vagy az Azure Event Hubs az erőforrás-szolgáltató.
 
-Az események küldhetők Azure esemény rács tömbben, amely több esemény-objektumot is tartalmazhat. Ha csak egyetlen olyan esemény, a tömb hossza 1. A tömb egy teljes mérete legfeljebb 1 MB lehet. A tömb minden esemény értéke legfeljebb 64 KB.
+Eseményforrások Azure esemény rácshoz események küldése az tömb, amely több esemény-objektumot is tartalmazhat. Események az esemény a rács témakörhöz könyvelés, ha a tömb lehet egy teljes mérete legfeljebb 1 MB. A tömb minden esemény értéke legfeljebb 64 KB. Ha az esemény vagy a tömb hossza meghaladja a méretet, a válasz jelenik **413 Payload túl nagy**.
+
+Esemény rács az eseményeket egy adott eseményhez tartalmazó tömbben előfizetőknek küldi. Ez a viselkedés a későbbiekben változhat.
 
 A JSON-séma keresése az esemény rács esemény és az egyes Azure publisher adattartalom a [esemény séma tároló](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
 

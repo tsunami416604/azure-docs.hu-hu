@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 09ee56627f6c254362d9fbc3c665494418efb1dc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9897a3578ad35376bea81b4821dbc2d84526a736
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Biztonságossá tétele a felhőalapú és hibrid telepítések privileged access Azure AD-ben
 
@@ -118,7 +118,7 @@ Vészhelyzeti fiókok segítségével a szervezetek korlátozni a rendszerjogosu
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Kapcsolja be a multi-factor authentication és más magas jogosultsági szintű egyfelhasználós nem összevont rendszergazdai fiókok regisztrálása 
 
-Bejelentkezéskor a véglegesen legalább egy, az Azure AD rendszergazdai szerepkörök rendelt minden egyes felhasználók a Azure multi-factor Authentication (MFA) megkövetelése: globális rendszergazda, a kiemelt szerepkörű rendszergazda, az Exchange Online rendszergazdai és a SharePoint Online rendszergazdai. Az útmutató használatával engedélyezhető az [multi-factor Authentication (MFA) a rendszergazdai fiókokhoz](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) , és győződjön meg arról, hogy ezek a felhasználók a regisztrált [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). További információ a 2. lépés és az útmutató 3. lépés [adatokhoz és szolgáltatásokhoz az Office 365-ben való hozzáférés](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Bejelentkezéskor a véglegesen legalább egy, az Azure AD rendszergazdai szerepkörök rendelt minden egyes felhasználók a Azure multi-factor Authentication (MFA) megkövetelése: globális rendszergazda, a kiemelt szerepkörű rendszergazda, az Exchange Online rendszergazdai és a SharePoint Online rendszergazdai. Az útmutató használatával engedélyezhető az [multi-factor Authentication (MFA) a rendszergazdai fiókokhoz](authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy ezek a felhasználók a regisztrált [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). További információ a 2. lépés és az útmutató 3. lépés [adatokhoz és szolgáltatásokhoz az Office 365-ben való hozzáférés](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2. fázis: A leggyakrabban használt támadás technikák csökkentése
 
@@ -164,8 +164,8 @@ Az Azure AD azt javasolja, hogy szükséges-e többtényezős hitelesítés (MFA
 
 Kapcsolja be:
 
-* [Magas-közzétételi fiók MFA](../multi-factor-authentication/multi-factor-authentication-security-best-practices.md) például egy szervezet vezetői tisztviselő tartozó fiókok 
-* [Minden rendszergazdai fiókot az MFA egy adott felhasználóhoz társított](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) az SaaS-alkalmazásokhoz kapcsolódó egyéb 
+* [Magas-közzétételi fiók MFA](authentication/multi-factor-authentication-security-best-practices.md) például egy szervezet vezetői tisztviselő tartozó fiókok 
+* [Minden rendszergazdai fiókot az MFA egy adott felhasználóhoz társított](authentication/howto-mfa-userstates.md) az SaaS-alkalmazásokhoz kapcsolódó egyéb 
 * Többtényezős hitelesítés az összes rendszergazda a Microsoft SaaS-alkalmazások, többek között a Rendszergazdák szerepkör felügyelt az Exchange Online és az Office portálon
 
 Használatakor a Windows Hello for Business, a többtényezős hitelesítés követelménye érheti el, használja a Windows Hello bejelentkezési élményt nyújt. További információkért lásd: [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
@@ -240,7 +240,7 @@ Szükséges C-csomag vezetők, magas szintű kezelők, a kritikus informatikai �
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Dedikált munkaállomások használja az Azure AD felügyeleti célokra
 
-A támadók megkísérli ahhoz, hogy hozzáférjenek egy szervezet adatokhoz és rendszerek, így azok megszakíthatja az integritásra és a rosszindulatú kódot, amely megváltoztatja a program programot, vagy a rendszergazdai hitelesítő adatok megadása snoops, az adatok hitelességét kiemelt jogosultságú fiókok célként. Jogosultsági szintű hozzáféréssel rendelkező munkaállomások (láb) kényes feladatokhoz, amely védett az Internet támadások és fenyegetési vektoroknak enged utat adjon meg egy dedikált operációs rendszert. Ezekről a feladatokról bizalmas és fiókok mappától a napi használja a munkaállomások és eszközök nagyon erős védelmet nyújt az adathalász támadások, alkalmazás és az operációs rendszer biztonsági rések, különböző megszemélyesítési támadásokkal szemben, és hitelesítő adatokkal való visszaéléseket támadások ellen, mint a billentyűlenyomást a Pass-the-Hash és Pass-The-Ticket naplózása. Szintű hozzáféréssel rendelkező munkaállomások üzembe helyezésével, csökkentheti annak kockázatát, hogy rendszergazdák meg rendszergazdai hitelesítő adatokat, kivéve egy asztali környezetben, amely rendelkezik lettek megerősítve. További információkért lásd: [jogosultsági szintű hozzáféréssel rendelkező munkaállomások](https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+A támadók megkísérli ahhoz, hogy hozzáférjenek egy szervezet adatokhoz és rendszerek, így azok megszakíthatja az integritásra és a rosszindulatú kódot, amely megváltoztatja a program programot, vagy a rendszergazdai hitelesítő adatok megadása snoops, az adatok hitelességét kiemelt jogosultságú fiókok célként. Jogosultsági szintű hozzáféréssel rendelkező munkaállomások (láb) kényes feladatokhoz, amely védett az Internet támadások és fenyegetési vektoroknak enged utat adjon meg egy dedikált operációs rendszert. Ezekről a feladatokról bizalmas és fiókok mappától a napi használja a munkaállomások és eszközök nagyon erős védelmet nyújt az adathalász támadások, alkalmazás és az operációs rendszer biztonsági rések, különböző megszemélyesítési támadásokkal szemben, és hitelesítő adatokkal való visszaéléseket támadások ellen, mint a billentyűlenyomást a Pass-the-Hash és Pass-The-Ticket naplózása. Szintű hozzáféréssel rendelkező munkaállomások üzembe helyezésével, csökkentheti annak kockázatát, hogy rendszergazdák meg rendszergazdai hitelesítő adatokat, kivéve egy asztali környezetben, amely rendelkezik lettek megerősítve. További információkért lásd: [jogosultsági szintű hozzáféréssel rendelkező munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Tekintse át a nemzeti szabványügyi és technológiai javaslatok incidensek kezelése 
 

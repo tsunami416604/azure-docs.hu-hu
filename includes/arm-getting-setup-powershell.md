@@ -26,7 +26,7 @@ Ha még nem rendelkezik Azure-előfizetéssel, aktiválhatja a [MSDN-előfizető
 
 Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be Azure ezt a parancsot.
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Ha több Azure-előfizetéssel rendelkezik, az Azure-előfizetések ezzel a paranccsal jeleníthet meg.
 

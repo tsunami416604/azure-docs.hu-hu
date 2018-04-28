@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Automation forgatókönyv- és minták"
-description: "Forgatókönyveit és moduljait a Microsoft és a Közösség érhetők el, telepítése és használata az Azure Automation-környezetben.  Ez a cikk ismerteti, hogyan férhet hozzá ezekhez az erőforrásokhoz, és a runbookok a gyűjteményébe hozzájárulás."
+title: Az Azure Automation forgatókönyv- és minták
+description: Forgatókönyveit és moduljait a Microsoft és a Közösség érhetők el, telepítése és használata az Azure Automation-környezetben.  Ez a cikk ismerteti, hogyan férhet hozzá ezekhez az erőforrásokhoz, és a runbookok a gyűjteményébe hozzájárulás.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6a9298c0b7331bfa8af76eb904d256f6302816bf
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fe0e38e384f9f3d40bc6f7556cdb5e6dee9b4395
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Az Azure Automation forgatókönyv- és minták
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, különféle forgatókönyvekhez, amik már Microsoft és a Közösség által készített végezheti el.  Használja a következő használati helyzetekben módosítás nélkül, vagy használhatja őket a kiindulási pontként, és szerkesztheti azokat az adott igények szerint.
@@ -25,7 +25,7 @@ A [forgatókönyvek](http://gallery.technet.microsoft.com/scriptcenter/site/sear
 Csak importálhatja a Runbook gyűjteményből közvetlenül az Azure portál használatával. Ez a funkció a Windows PowerShell használatával nem hajtható végre.
 
 > [!NOTE]
-> Ellenőriznie kell, hogy a Runbook-galériából beolvasása, és járjon el körültekintően telepítése, és futtassa azokat éles környezetben a runbook tartalmát. |}
+> Ellenőriznie kell, hogy a Runbook-galériából beolvasása, és járjon el körültekintően telepítése, és futtassa azokat éles környezetben a runbook tartalmát.
 > 
 > 
 

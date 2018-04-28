@@ -1,23 +1,23 @@
 ---
-title: Mik azok a Adattárházegységek (dwu-k, cDWUs) az Azure SQL Data Warehouse? | Microsoft Docs
-description: Az Azure SQL Data Warehouse képességek kibővítési teljesítményét. Horizontális felskálázás dwu-k, cDWUs, beállításával vagy és sablonok felfüggesztése és folytatása a számítási erőforrásokat költségek csökkentése érdekében.
+title: Adattárházegységek (dwu-k, cDWUs) az Azure SQL Data Warehouse |} Microsoft Docs
+description: Javaslatok az adattárházegységek (dwu-k, cDWUs) ára és teljesítménye és egységek számának módosítása optimalizálása ideális számának kiválasztása.
 services: sql-data-warehouse
-author: sqlmojo
+author: ronortloff
 manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
-ms.date: 04/09/2018
-ms.author: joeyong
-ms.reviewer: jrj
-ms.openlocfilehash: 56d59be2074a3047ce19fde3e808354266040864
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a83a9f9332d81e02a83efc019ad56027316301ab
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
----
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adattárházegységek (dwu-k) és a számítás Adattárházegységek (cDWUs)
-Adattárházegységek (dwu-k) ismerteti, és az Azure SQL Data Warehouse Adattárházegységek (cDWUS) számítási. Javaslatok kiválasztásáról adattárházegységek, és azok számát módosítása ideális számát tartalmazza. 
+Javaslatok az adattárházegységek (dwu-k, cDWUs) ára és teljesítménye és egységek számának módosítása optimalizálása ideális számának kiválasztása. 
 
 ## <a name="what-are-data-warehouse-units"></a>Mik azok a Adattárházegységek?
 SQL Data Warehouse Processzor, memória és I/O vannak becsomagolva egységekbe számítási skála Adattárházegységek (dwu-k) néven. A DWU egy absztrakt, normalizált mértéket számítási erőforrásokat és a teljesítmény jelöli. A szolgáltatási szint módosításával módosítható a rendszerben, ami viszont beállítja a teljesítmény és a költség, a rendszer számára kiosztott dwu-k száma. 
@@ -28,7 +28,7 @@ Teljesítményt az adattárházegységek alapján történik a data warehouse mu
 
 - Milyen gyors is szabványos vámraktározási adatlekérdezés vizsgálata nagy mennyiségű sort és ezután hajtja végre komplex összesítést készít? Ez a művelet i/o- és a CPU-intenzív esetében.
 - Milyen gyors fogadására képes, az adatraktár adatait az Azure Storage blobs szolgáltatásban vagy az Azure Data Lake? Ez a művelet a hálózati és a CPU-intenzív esetében. 
-- Milyen gyorsan lehet a [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-parancsot, másolja át egy táblázatot? Ez a művelet adatolvasás a tárolóból, szétosztása a készülék csomópontjai között, és ismét rögzíti az tárolási magában foglalja. Ez a művelet CPU IO és intenzív hálózati esetében.
+- Milyen gyorsan lehet a [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-parancsot, másolja át egy táblázatot? Ez a művelet adatolvasás a tárolóból, szétosztása a készülék csomópontjai között, és ismét rögzíti az tárolási magában foglalja. Ez a művelet CPU IO és intenzív hálózati esetében.
 
 Dwu-k növelése:
 - Lineárisan módosítja a rendszer a vizsgálatokat, összesítések és CTAS utasítások
@@ -85,11 +85,11 @@ Az SQL Data Warehouse kibővített rendszer építhető ki a számítási és a 
 
 > [!NOTE]
 >
-> Lekérdezési teljesítmény csak további párhuzamos folyamatkezelést biztosítja a növekszik, ha a munkahelyi oszthatók számítási csomópontjai között. Ha talál meg, hogy skálázás nem módosítja a teljesítményt, szükség lehet a Táblatervezés és/vagy a lekérdezések hangolását. A lekérdezés hangolása útmutatást, tekintse meg a következő [teljesítmény](sql-data-warehouse-overview-manage-user-queries.md) cikkeket. 
+> Lekérdezési teljesítmény csak további párhuzamos folyamatkezelést biztosítja a növekszik, ha a munkahelyi oszthatók számítási csomópontjai között. Ha talál meg, hogy skálázás nem módosítja a teljesítményt, szükség lehet a Táblatervezés és/vagy a lekérdezések hangolását. A lekérdezés hangolása útmutatást, lásd: [felhasználói lekérdezések kezelése](sql-data-warehouse-overview-manage-user-queries.md). 
 
 ## <a name="permissions"></a>Engedélyek
 
-A adattárházegységek módosításához szükséges a leírt engedélyek [ALTER DATABASE][ALTER DATABASE]. 
+A adattárházegységek módosításához szükséges a leírt engedélyek [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql). 
 
 ## <a name="view-current-dwu-settings"></a>Aktuális DWU beállításainak megjelenítése
 
@@ -117,14 +117,16 @@ Dwu-k vagy cDWUs módosítása:
 
 2. A **méretezési**, mozgassa a csúszkát bal vagy jobb gombbal módosíthatja a DWU-beállítására állnak.
 
-3. Kattintson a **Save** (Mentés) gombra. Egy megerősítő üzenet jelenik meg. Kattintson a **Igen** megerősítéséhez vagy **nem** megszakítja a műveletet.
+3. Kattintson a **Save** (Mentés) gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
 ### <a name="powershell"></a>PowerShell
-A dwu-k vagy cDWUs módosításához az [Set-AzureRmSqlDatabase] [Set-AzureRmSqlDatabase] PowerShell parancsmaggal. Az alábbi példa állítja be a szolgáltatási szint célkitűzés DW1000 MySQLDW a MyServer kiszolgáló tárolt adatbázis.
+A dwu-k vagy cDWUs módosításához használja a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell-parancsmagot. Az alábbi példa állítja be a szolgáltatási szint célkitűzés DW1000 MySQLDW a MyServer kiszolgáló tárolt adatbázis.
 
 ```Powershell
 Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
+
+További információkért lásd: [az SQL Data Warehouse PowerShell-parancsmagjai](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 ### <a name="t-sql"></a>T-SQL
 A T-SQL aktuális DWU vagy cDWU beállítások megtekintése, módosítsa a beállításokat, majd a folyamat állapotának ellenőrzése. 
@@ -132,7 +134,7 @@ A T-SQL aktuális DWU vagy cDWU beállítások megtekintése, módosítsa a beá
 A dwu-k vagy cDWUs módosítása:
 
 1. A fő adatbázist az SQL Database logikai kiszolgálóhoz csatlakozni.
-2. Használja a [ALTER DATABASE] [ ALTER DATABASE] TSQL utasítást. Az alábbi példa állítja be a szolgáltatási szint célkitűzés DW1000 az adatbázis MySQLDW. 
+2. Használja a [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL utasítást. Az alábbi példa állítja be a szolgáltatási szint célkitűzés DW1000 az adatbázis MySQLDW. 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -142,7 +144,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ### <a name="rest-apis"></a>REST API-k
 
-A dwu-k módosításához használja a [létrehozás vagy frissítés adatbázis] [létrehozás vagy frissítés adatbázis] REST API-t. Az alábbi példa állítja be a szolgáltatási szint célkitűzés DW1000 az adatbázis MySQLDW, amely a MyServer kiszolgáló üzemelteti. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforrás-csoportban.
+A dwu-k módosításához használja a [létrehozás vagy frissítés adatbázis](/rest/api/sql/databases/createorupdate) REST API-t. Az alábbi példa állítja be a szolgáltatási szint célkitűzés DW1000 az adatbázis MySQLDW, amely a MyServer kiszolgáló üzemelteti. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforrás-csoportban.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -155,6 +157,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
+További REST API-t, tekintse meg a [REST API-k, az SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
 
 ## <a name="check-status-of-dwu-changes"></a>DWU módosítások állapotának ellenőrzése
 
@@ -196,40 +199,7 @@ A méretezési művelet kezdeményezésekor akkor a rendszer először az össze
 - Lefelé méretezéshez művelet, a felesleges csomópontok válassza le a tárhelyet, és a többi csomópontot az áttelepítést csatlakoztassa újra.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikkek segítenek megismerni néhány további legfontosabb teljesítményi fogalmak:
-
-* [Munkaterhelés és feldolgozási kezelése][Workload and concurrency management]
-* [Tábla kialakítás áttekintése][Table design overview]
-* [elosztása][Table distribution]
-* [Tábla indexelő][Table indexing]
-* [Táblaparticionálást][Table partitioning]
-* [Tábla statisztikai adatainak][Table statistics]
-* [Gyakorlati tanácsok][Best practices]
-
-<!--Image reference-->
-
-<!--Article references-->
-
-[capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
+A teljesítmény kezelése kapcsolatos további információkért lásd: [erőforrás-osztályok a munkaterhelés felügyeleti](resource-classes-for-workload-management.md) és [memória és a feldolgozási korlátok](memory-and-concurrency-limits.md).
 
 
-[Check database state with T-SQL]: ./sql-data-warehouse-manage-compute-tsql.md#check-database-state-and-operation-progress
-[Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
-[Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
 
-[Workload and concurrency management]: ./resource-classes-for-workload-management.md
-[Table design overview]: ./sql-data-warehouse-tables-overview.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Table indexing]: ./sql-data-warehouse-tables-index.md
-[Table partitioning]: ./sql-data-warehouse-tables-partition.md
-[Table statistics]: ./sql-data-warehouse-tables-statistics.md
-[Best practices]: ./sql-data-warehouse-best-practices.md
-[development overview]: ./sql-data-warehouse-overview-develop.md
-
-[SQL DB Contributor]:../role-based-access-control/built-in-roles.md#sql-db-contributor
-
-<!--MSDN references-->
-[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
-
-<!--Other Web references-->
-[Azure portal]: http://portal.azure.com/

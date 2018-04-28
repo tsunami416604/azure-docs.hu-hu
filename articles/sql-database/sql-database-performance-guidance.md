@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: c9a04f6ebbca60e969d608e0ad92839b5e04d772
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: ca9e2935f3d44952235a1669b3f5bebc7708f4bf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Az Azure SQL-adatbázis teljesítményének hangolása
 
@@ -28,7 +28,7 @@ Ezek a kézi módszert, mert később szüksége lesz, hogy mit [szolgáltatáss
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Az adatbázis teljesítményének szintjének növelése
 
-Az Azure SQL adatbázis két vásárlási modell, a vCore-alapú alapjául szolgáló vásárlási modell és a v-Core-alapú alapjául szolgáló vásárlási modell kínál. Minden egyes modellnek több [szolgáltatásszintek](sql-database-service-tiers.md) , amelyek közül választhat. Egyes szolgáltatásszinteken szigorúan elkülöníti az erőforrásokat, hogy használható-e az SQL-adatbázis, és biztosítja, hogy a szolgáltatási szint kiszámítható teljesítményt. Ebben a cikkben szereplő útmutatást, amelyek segítségével válassza ki a szolgáltatási rétegben, az alkalmazás fel. Azt is ismertetik, hogy az alkalmazás úgy hasznosíthatja a legjobban az Azure SQL Database észlelheti.
+Azure SQL adatbázis két vásárlási modell, a DTU-alapú alapjául szolgáló vásárlási modell és a v-Core-alapú alapjául szolgáló vásárlási modell kínál. Minden egyes modellnek több [szolgáltatásszintek](sql-database-service-tiers.md) , amelyek közül választhat. Egyes szolgáltatásszinteken szigorúan elkülöníti az erőforrásokat, hogy használható-e az SQL-adatbázis, és biztosítja, hogy a szolgáltatási szint kiszámítható teljesítményt. Ebben a cikkben szereplő útmutatást, amelyek segítségével válassza ki a szolgáltatási rétegben, az alkalmazás fel. Azt is ismertetik, hogy az alkalmazás úgy hasznosíthatja a legjobban az Azure SQL Database észlelheti.
 
 > [!NOTE]
 > Ez a cikk foglalkozik, a teljesítmény útmutatást az önálló adatbázisok Azure SQL-adatbázisban. Rugalmas készletek kapcsolódó teljesítmény útmutatóért lásd: [rugalmas készletek ára és teljesítménye szempontjai](sql-database-elastic-pool-guidance.md). Vegye figyelembe azonban, hogy ebben a cikkben szereplő hangolási javaslatok alkalmazása az adatbázisok rugalmas készlethez, és beállíthatja hasonló teljesítmény előnyök.

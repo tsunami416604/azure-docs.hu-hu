@@ -1,11 +1,11 @@
 ---
-title: "A tetszőleges végpontot HTTP - Azure Logic Apps protokollt használó kommunikációra |} Microsoft Docs"
-description: "Hozzon létre a logic apps, amely képes kommunikálni a tetszőleges végpontot HTTP Protokollon keresztül"
+title: A tetszőleges végpontot HTTP - Azure Logic Apps protokollt használó kommunikációra |} Microsoft Docs
+description: Hozzon létre a logic apps, amely képes kommunikálni a tetszőleges végpontot HTTP Protokollon keresztül
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 3eae7a4a47680fc36849fd413b76a80865cf3c9f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 355d1e02ef8195bcee469b77976f1a5834f192d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-the-http-action"></a>Ismerkedjen meg a HTTP-művelet
 
@@ -113,8 +113,8 @@ A * azt jelenti, hogy mezőt kötelező kitölteni.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Módszer * |metódus |A HTTP-műveletet használata |
-| URI* |uri azonosító |A HTTP-kérelem URI-JÁNAK |
+| Módszer * |method |A HTTP-műveletet használata |
+| URI * |uri azonosító |A HTTP-kérelem URI-JÁNAK |
 | Fejlécek |fejlécek |A HTTP-fejlécek felvenni egy JSON-objektum |
 | Törzs |törzs |A HTTP-kérelem törzse |
 | Hitelesítés |hitelesítés |A részletek a [hitelesítési](#authentication) szakasz |
@@ -128,29 +128,29 @@ A HTTP-válasz kimeneti részleteit az alábbiakban.
 | --- | --- | --- |
 | Fejlécek |objektum |Válaszfejlécek |
 | Törzs |objektum |Válasz objektum |
-| Állapotkód |int |HTTP-állapotkód: |
+| Állapotkód |int |HTTP-állapotkód |
 
 ## <a name="authentication"></a>Hitelesítés
-A Logic Apps szolgáltatás lehetővé teszi a különböző típusú HTTP-végpontokról hitelesítést használja. Használhatja a hitelesítés a **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, és  **[HTTP Webhook](connectors-native-webhook.md)**  összekötők. A következő hitelesítési típusokat, amelyek konfigurálhatók:
+A Logic Apps szolgáltatás lehetővé teszi a különböző típusú HTTP-végpontokról hitelesítést használja. Használhatja a hitelesítés a **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, és **[HTTP Webhook](connectors-native-webhook.md)** összekötők. A következő hitelesítési típusokat, amelyek konfigurálhatók:
 
 * [Alapszintű hitelesítés](#basic-authentication)
 * [Ügyféltanúsítvány-alapú hitelesítés](#client-certificate-authentication)
 * [Az Azure Active Directory (Azure AD) OAuth-hitelesítés](#azure-active-directory-oauth-authentication)
 
-#### <a name="basic-authentication"></a>Az egyszerű hitelesítés
+#### <a name="basic-authentication"></a>Alapszintű hitelesítés
 
 A következő hitelesítési objektumot az alapszintű hitelesítés van szükség.
 A * azt jelenti, hogy mezőt kötelező kitölteni.
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Type* |type |Hitelesítés típusa (lehet `Basic` az egyszerű hitelesítés) |
+| Típus * |type |Hitelesítés típusa (lehet `Basic` az egyszerű hitelesítés) |
 | Username* |felhasználónév |Felhasználónév hitelesítéséhez |
 | Jelszó * |jelszó |Jelszó a hitelesítéshez |
 
 > [!TIP]
 > Ha szeretné használni, melyek nem kérhető le a definíció, használja a jelszó egy `securestring` paraméter és a `@parameters()`  
->  [munkafolyamat-definíció funkció](http://aka.ms/logicappdocs).
+>  [munkafolyamat-definíció funkció](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
 
 Példa:
 
@@ -168,13 +168,13 @@ A következő hitelesítési objektum ügyféltanúsítvány-alapú hitelesíté
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Type* |type |A hitelesítés típusát (kell `ClientCertificate` az ügyfél SSL-tanúsítványok) |
+| Típus * |type |A hitelesítés típusát (kell `ClientCertificate` az ügyfél SSL-tanúsítványok) |
 | PFX* |pfx |A Base64-kódolású tartalmak a személyes információcseréhez kapcsolódó (PFX) fájl |
 | Jelszó * |jelszó |A jelszó megadásával érheti el a PFX-fájlból |
 
 > [!TIP]
 > Egy paramétert, amely olvashatók a logic app mentését követően a definíció nem lesz használható a `securestring` paraméter és a `@parameters()`  
->  [munkafolyamat-definíció funkció](http://aka.ms/logicappdocs).
+>  [munkafolyamat-definíció funkció](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
 
 Példa:
 
@@ -191,14 +191,14 @@ A következő hitelesítési objektum Azure AD OAuth-hitelesítés szükséges. 
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Type* |type |A hitelesítés típusát (kell `ActiveDirectoryOAuth` az Azure AD OAuth) |
+| Típus * |type |A hitelesítés típusát (kell `ActiveDirectoryOAuth` az Azure AD OAuth) |
 | Bérlői * |bérlő |A bérlő azonosítóját az Azure AD-bérlő |
 | A célközönség * |Célközönség |Az engedélyezési használatára a kért erőforrás. Például:`https://management.core.windows.net/` |
 | Ügyfél-azonosító * |clientId |Az ügyfél az Azure AD-alkalmazás azonosítója |
 | Titkos kulcs * |titkos kód |A titkos kulcsot a jogkivonatot kérő ügyfél |
 
 > [!TIP]
-> Használhatja a `securestring` paraméter és a `@parameters()` [munkafolyamat-definíció funkció](http://aka.ms/logicappdocs) egy paraméterrel, amely a kezdeti mentést követően a definíció nem olvasható.
+> Használhatja a `securestring` paraméter és a `@parameters()` [munkafolyamat-definíció funkció](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow) egy paraméterrel, amely a kezdeti mentést követően a definíció nem olvasható.
 > 
 > 
 

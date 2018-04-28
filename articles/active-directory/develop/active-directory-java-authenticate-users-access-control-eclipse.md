@@ -1,25 +1,24 @@
 ---
-title: "Hozzáférés-vezérlés (Java) használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan fejleszthet és hozzáférés-vezérlés használata Javával az Azure-ban."
+title: Hozzáférés-vezérlés (Java) használata
+description: Megtudhatja, hogyan fejleszthet és hozzáférés-vezérlés használata Javával az Azure-ban.
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: mtillman
-editor: 
+manager: mbaldwin
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bd65da490bf3d7e17bf6ff36e76e306842d50653
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Hogyan hitelesítheti az Eclipse használata Azure hozzáférés-vezérlési szolgáltatásban webes felhasználók
 Ez az útmutató bemutatja, hogyan használható az Azure Access Control Service (ACS) az Azure-eszközkészlet belül az eclipse-ben. Az ACS további információkért lásd: a [további lépések](#next_steps) szakasz.
@@ -118,12 +117,12 @@ Ebben a feladatban konfigurálja ACS ismeri fel a Java-webalkalmazás érvényes
    2. A **mód**, jelölje be **adja meg a beállításokat manuálisan**.
    3. A **tartomány**, írja be az URI, amely az ACS által kiadott biztonsági jogkivonat vonatkozik. Ez a feladat, írja be a következőt **http://localhost:8080/**.
       ![Függő entitás realm compute emulator használható][relying_party_realm_emulator]
-   4. A **visszatérési URL-** URL-címét, amelyhez az ACS a biztonsági jogkivonatot ad vissza. Ez a feladat, írja be a következőt **http://localhost:8080/MyACSHelloWorld/index.jsp**
-      ![függő entitás URL-cím használható compute emulator adja vissza.][relying_party_return_url_emulator]
+   4. A **visszatérési URL-** URL-címét, amelyhez az ACS a biztonsági jogkivonatot ad vissza. Ez a feladat, írja be a következőt ** http://localhost:8080/MyACSHelloWorld/index.jsp ** 
+       ![függő entitás URL-cím használható compute emulator adja vissza.][relying_party_return_url_emulator]
    5. Fogadja el a többi mezőt az alapértelmezett értékeket.
 4. Kattintson a **Save** (Mentés) gombra.
 
-Ezzel sikeresen beállította a Java-webalkalmazás az Azure compute emulator futtatáskor ( http://localhost:8080/) kell lennie egy függő Entitás az ACS-névtérben. Ezután hozzon létre a szabályokat, amelyek ACS használatával feldolgozhatja a jogcímeket a függő Entitás számára.
+Ezzel sikeresen beállította a Java-webalkalmazás az Azure compute emulator futtatáskor (a http://localhost:8080/) kell egy függő Entitás az ACS-névtérben. Ezután hozzon létre a szabályokat, amelyek ACS használatával feldolgozhatja a jogcímeket a függő Entitás számára.
 
 ## <a name="create-rules"></a>Szabályok létrehozása
 Ebben a feladatban határozza meg a szabályokat, amelyek meghatározzák a jogcímek átadott hogyan IP-címekről a függő Entitás. Ez az útmutató céljából azt egyszerűen konfigurálja ACS nélkül történő másolását a bemeneti jogcímek adattípusokat és az értékeket közvetlenül a kimeneti jogkivonatot szűrését, és módosítja azokat.

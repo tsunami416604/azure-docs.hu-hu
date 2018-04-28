@@ -1,6 +1,6 @@
 ---
-title: "A webalkalmazások áttekintése | Microsoft Docs"
-description: "A Web Apps áttekintő súgótartalmai az Azure Portalon"
+title: Az App Service áttekintése | Microsoft Docs
+description: Az App Service áttekintő súgótartalmai az Azure Portalon
 services: app-service
 author: sewatson
 manager: lwelicki
@@ -8,19 +8,21 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 13709876752dd5df356765ed636c5a7e4a665d4c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="web-apps-documentation"></a>Web Apps-dokumentáció
+# <a name="app-service-documentation"></a>App Service – dokumentáció
+Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat az infrastruktúra, a nyelv vagy a webes keretrendszer futtatókörnyezetének kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely egyéb Git-adattárból. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.
 
-Az Azure Web Apps segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat infrastruktúrakezelés nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus telepítéseket a GitHub, Visual Studio Team Services vagy bármely egyéb Git-adattárból. Ismerje meg, hogyan használhatja az Azure Web Apps szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
+## <a name="windows-linux-and-docker"></a>Windows, Linux és Docker
+A [Web Apps](/app-service/app-service-web-overview) az App Service fő ajánlata webalkalmazások Windows-környezetek segítségével történő összeállításához és üzemeltetéséhez. A Linux-környezeteket előnyben részesítő fejlesztőknek az [App Service for Linuxot](/app-service/containers/app-service-linux-intro) érdemes választaniuk. A fejlesztők közvetlenül az App Service for Linuxban is üzembe helyezhetik a rendszerképeket az egyéni futtatókörnyezetek/keretrendszerek beüzemeléséhez.
 
 ## <a name="5-minute-quickstarts"></a>5 perces gyors útmutatók
 
-Megtudhatja, hogyan helyezheti üzembe első alkalmazását a felhőben a Web Apps segítségével:
+Megtudhatja, hogyan helyezheti üzembe első alkalmazását a felhőben az App Service for Web Apps segítségével:
 
 - [.NET](/azure/app-service/app-service-web-get-started-dotnet)
 - [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
@@ -33,7 +35,11 @@ Megtudhatja, hogyan helyezheti üzembe első alkalmazását a felhőben a Web Ap
 
 Megtudhatja, hogyan telepíthet, kezelhet és monitorozhat biztonságos webalkalmazásokat az Azure-ban.
 
-- Hozzon létre egy alkalmazást a [.NET és az Azure SQL Database](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase) vagy a [Node.js és a MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app) használatával
+- Alkalmazás létrehozása a következő használatával:
+  - [.NET és Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
+  - [Node.js és MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+  - [Java és MySQL](/app-service/app-service-web-tutorial-java-mysql)
+  - [Python és PostgreSQL](/app-service/app-service-web-tutorial-python-postgresql)
 - [Meglévő egyéni tartomány kapcsolása az alkalmazáshoz](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Meglévő SSL-tanúsítvány kötése az alkalmazáshoz](/azure/app-service/app-service-web-tutorial-custom-SSL)
 
@@ -51,5 +57,4 @@ Szkriptek keresése a gyakori feladatok kezeléséhez.
 
 ## <a name="more"></a>Továbbiak
 
-- [Dokumentáció megtekintése további információhoz](/azure/app-service-web/index)
 - [Az összes Azure-szolgáltatás bemutatása](https://aka.ms/j3wr7y)

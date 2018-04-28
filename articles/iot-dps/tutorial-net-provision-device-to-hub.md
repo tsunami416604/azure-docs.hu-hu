@@ -1,69 +1,69 @@
 ---
-title: "Egy Azure IoT Hub eszköz kiépítése szolgáltatáshoz (.NET) eszközt kiépítése |} Microsoft Docs"
-description: "Az eszköz a Azure IoT Hub eszköz kiépítése szolgáltatáshoz (.NET) használatával egyetlen IoT-központ telepítéséhez"
+title: Eszköz kiépítése az Azure IoT Hub Device Provisioning Service (.NET) segítségével | Microsoft Docs
+description: Eszköz kiépítése egyetlen IoT Hubra az Azure IoT Hub Device Provisioning Service (.NET) használatával
 services: iot-dps
-keywords: 
-author: msebolt
+keywords: ''
+author: bryanla
 ms.author: v-masebo
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 6919f962d853faa572ee7ad5d0cb9aeacd3bd2b6
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
-ms.translationtype: MT
+ms.openlocfilehash: c02835e8712c79ea540d7560da111f54abbeed23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Regisztrálja az eszközt az Azure IoT Hub kiépítés szolgáltatás ügyfél (.NET) használatával az IoT hubhoz
+# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Az eszköz regisztrálása IoT Hubra az Azure IoT Hub Provisioning Service ügyfél (.NET) használatával
 
-Az előző oktatóanyag megtudta, hogyan eszköz beállítása az eszköz kiépítése szolgáltatáshoz való kapcsolódáshoz. Ebben az oktatóanyagban elsajátíthatja, hogyan a szolgáltatás használatához az eszközt egy IoT-központ kiépítéséhez mindkét  **_egyes beléptetési_**  és  **_beléptetési csoportok_**. Ez az oktatóanyag a következőket mutatja be:
+Az előző oktatóanyagban bemutattuk, hogyan állíthat be egy eszközt úgy, hogy az a Device Provisioning Service-hez csatlakozzon. Ebben az oktatóanyagban megtudhatja, hogyan építheti ki az eszközt ezzel a szolgáltatással egyetlen IoT Hubra, **_egyéni regisztráció_** és **_regisztrációs csoportok_** használatával. Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
-> * Regisztrálja az eszközt
-> * Indítsa el az eszközt
-> * Ellenőrizze, hogy az eszköz regisztrálva van
+> * Az eszköz regisztrálása
+> * Az eszköz elindítása
+> * Az eszköz sikeres regisztrálásának ellenőrzése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt továbblépne, győződjön meg arról, hogy az eszköz konfigurálása és a *hardveres biztonsági modul* lásd az oktatóanyag a [eszköz beállítása az Azure IoT Hub eszköz kiépítése szolgáltatáshoz használatával kiépítéséhez](./tutorial-set-up-device.md).
+A folytatás előtt győződjön meg arról, hogy [a kiépítendő eszköz az Azure IoT Hub Device Provisioning Service használatával történő beállítását](./tutorial-set-up-device.md) ismertető oktatóanyagban leírt módon konfigurálta az eszközt és annak *hardverbiztonsági modulját*.
 
-* Visual Studio 2015-öt vagy a Visual Studio 2017
+* Visual Studio 2015 vagy Visual Studio 2017
 
 > [!NOTE]
-> A Visual Studio nincs szükség. A telepítés [.NET](https://www.microsoft.com/net) elegendő és a fejlesztők az előnyben részesített szerkesztő Windows vagy Linux.  
+> Visual Studio nem szükséges. Elegendő a [.NET](https://www.microsoft.com/net) telepítése, és a fejlesztők az általuk előnyben részesített, Windowson vagy Linuxon futó szerkesztőt használhatják.  
 
-Ez az oktatóanyag az időtartam alatt vagy után a gyártási a folyamat, ha eszközadatokat hozzá lett adva a létesítési szolgáltatás hardver szimulálja. Ez a kód általában egy számítógépen vagy futtatható a .NET-kódot, és nem vehető fel a eszközöktől gyári eszköz futtatása
+Ez az oktatóanyag a hardvergyártási folyamat közbeni vagy az azutáni időszakot szimulálja, amikor az eszközinformációt hozzáadják a regisztrációs szolgáltatáshoz. Ez a kód általában egy számítógépen vagy egy .NET-kód futtatására képes gyári eszközön fut, és nem szabad hozzáadni magukhoz az eszközökhöz.
 
 
-## <a name="enroll-the-device"></a>Regisztrálja az eszközt
+## <a name="enroll-the-device"></a>Az eszköz regisztrálása
 
-Ezt a lépést foglal magában, az eszköz egyedi biztonsági összetevők hozzáadása az kiépítése szolgáltatáshoz. Ezen biztonsági összetevők a következők:
+Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevőinek a Device Provisioning Service-hez adása. Ezek a biztonsági összetevők a következők:
 
 - TPM-alapú eszközök esetén:
-    - A *ellenőrzőkulccsal* egyedi minden TPM lapka vagy szimulátor. Olvassa el a [megértéséhez TPM ellenőrzőkulccsal](https://technet.microsoft.com/library/cc770443.aspx) további információt.
-    - A *regisztrációs Azonosítót* névtér/hatókörében eszköz egyedi azonosítására szolgál. Ez lehet, vagy nem lehet ugyanaz, mint az eszközazonosító. Az azonosító megadása kötelező, minden eszközhöz. A TPM-alapú eszközök esetén a regisztrációs Azonosítót a platformmegbízhatósági modul, például egy SHA-256 kivonatoló, a TPM ellenőrzőkulcs kell származnia.
+    - Az egyes TPM-lapkákhoz vagy szimulációkhoz tartozó egyedi *ellenőrzőkulcs*. További információkért olvassa el a [TPM-ellenőrzőkulcsot ismertető](https://technet.microsoft.com/library/cc770443.aspx) szakaszt.
+    - A névtérben/hatókörben lévő eszköz egyedi azonosítására használt *regisztrációs azonosító*. Ez nem feltétlenül egyezik meg az eszköz azonosítójával. Az azonosító minden eszközhöz kötelező. TPM-alapú eszközök esetén a regisztrációs azonosító magából a TPM-ből származhat, például a TPM-ellenőrzőkulcs SHA-256 kivonata lehet.
 
 - X.509-alapú eszközök esetén:
-    - A [X.509 tanúsítvány az eszköz tulajdonosa](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx), formájában, vagy egy *.pem* vagy egy *.cer* fájlt. Az egyes beléptetési kell használnia a *levéltanúsítvány* a X.509 rendszerhez, a beléptetési csoportok kell használnia a *legfelső szintű tanúsítvány* vagy egy azzal egyenértékű *aláíró tanúsítvány*.
-    - A *regisztrációs Azonosítót* névtér/hatókörében eszköz egyedi azonosítására szolgál. Ez lehet, vagy nem lehet ugyanaz, mint az eszközazonosító. Az azonosító megadása kötelező, minden eszközhöz. X.509-alapú eszközökhöz regisztrációs Azonosítót a tanúsítvány köznapi nevének (CN) származik. Ezek a követelmények további információk: [eszköz fogalmak](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device).
+    - Az [eszközhöz kiadott X.509-tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) *.pem* vagy *.cer* fájlformátumban. Egyéni regisztrációhoz az X.509 rendszer *levéltanúsítványát*, míg regisztrációs csoportok esetén a *főtanúsítványt vagy egy egyenértékű* aláíró tanúsítványt *kell használni*.
+    - A névtérben/hatókörben lévő eszköz egyedi azonosítására használt *regisztrációs azonosító*. Ez nem feltétlenül egyezik meg az eszköz azonosítójával. Az azonosító minden eszközhöz kötelező. Az X.509-alapú eszközök esetén a regisztrációs azonosító a tanúsítvány köznapi nevéből (CN) származik. A követelményekkel kapcsolatos további információkért tekintse meg az [eszközökkel kapcsolatos alapelveket ismertető](https://docs.microsoft.com/azure/iot-dps/concepts-device) témakört.
 
-Regisztrálja az eszközt, az eszköz kiépítése szolgáltatáshoz két módja van:
+A következő két módon regisztrálható az eszköz a Device Provisioning Service-ben:
 
-- **Egyes regisztrációkat** egyetlen eszközt, amely előfordulhat, hogy regisztrálja az eszköz kiépítése szolgáltatáshoz tartozó bejegyzés jelképez. Egyes regisztrációkat használhatja X.509-tanúsítványokat vagy a SAS-tokenje (a valós vagy virtuális TPM) igazolás mechanizmusokat. Azt javasoljuk, egyes regisztrációkat eszközök, amelyek külön kezdeti konfigurációt igényelnek, vagy használó eszközöket is csak TPM keresztül SAS-tokenje igazoló mechanizmusként. Előfordulhat, hogy az egyes regisztrációkat a kívánt IoT hub eszköz-azonosító van megadva.
+- **Egyéni regisztrációk** A Device Provisioning Service-szel regisztrálható egyetlen eszközhöz tartozó bejegyzés. Az egyéni regisztrációk X.509-tanúsítványokat vagy SAS-tokeneket használhatnak (valós vagy virtuális TPM-ben) igazolási mechanizmusként. Az egyedi kezdeti konfigurációt igénylő vagy az igazolási mechanizmusként kizárólag TPM-en keresztül SAS-tokeneket használó eszközökhöz egyéni regisztrációk használatát javasoljuk. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.
 
-- **Beléptetési csoportok** , amelyek egy adott tanúsítvány mechanizmus egy eszközcsoportra jelképez. Azt javasoljuk, egy beléptetési csoport az eszközök, amelyek kezdeti szükségeskonfiguráció megosztásához sok vagy eszközök valamennyi amelyet ugyanannak a bérlőnek. Beléptetési csoportok X.509 csak, és az összes az X.509 tanúsítványlánc egy aláíró tanúsítványt.
+- **Regisztrációs csoportok** Közös igazolási mechanizmussal rendelkező eszközök csoportja. Nagy számú, azonos kívánt kezdeti konfigurációval rendelkező eszközhöz vagy azonos bérlőt célzó eszközökhöz érdemes regisztrációs csoportot használni. A regisztrációs csoportok mind X.509-alapúak, és az X.509-tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkeznek.
 
-### <a name="enroll-the-device-using-individual-enrollments"></a>Az egyes regisztrációkat használt eszköz regisztrálása
+### <a name="enroll-the-device-using-individual-enrollments"></a>Az eszköz regisztrálása Egyéni regisztrációk használatával
 
-1. A Visual Studio, a Visual C# Konzolalkalmazás projekt létrehozása használatával a **Konzolalkalmazás** projektsablon. Nevet a projektnek **DeviceProvisioning**.
+1. A Visual Studióban hozzon létre egy Visual C# konzolalkalmazás-projektet a **Konzolalkalmazás** projektsablonnal. Adja a projektnek a **DeviceProvisioning** (Eszközkiépítés) nevet.
     
-1. A Megoldáskezelőben kattintson a jobb gombbal a **DeviceProvisioning** projektre, és kattintson a **NuGet-csomagok kezelése...** .
+1. A Megoldáskezelőben kattintson a jobb gombbal a **DeviceProvisioning** projektre, majd kattintson a **NuGet-csomagok kezelése...** parancsra.
 
-1. Az a **NuGet-Csomagkezelő** ablakban válassza ki **Tallózás** keresse meg a **microsoft.azure.devices.provisioning.service**. Válassza ki a bejegyzést, és kattintson a **telepítése** telepítéséhez a **Microsoft.Azure.Devices.Provisioning.Service** csomagot, majd fogadja el a használati feltételeket. Ez az eljárás tölti le, telepíti, és hozzáad egy hivatkozást a [SDK szolgáltatás kiépítését Azure IoT-eszközök](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet csomag és annak függőségeit.
+1. A **NuGet-csomagkezelő** ablakban válassza a **Tallózás** lehetőséget, és keresse meg a **microsoft.azure.devices.provisioning.service** csomagot. Jelölje ki az elemet, és kattintson a **Telepítés** gombra a **Microsoft.Azure.Devices.Provisioning.Service** csomag telepítéséhez, majd fogadja el a használati feltételeket. Ez az eljárás letölti és telepíti az [Azure IoT eszközkiépítési szolgáltatási SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet-csomagot és annak függőségeit, valamint hozzáad egy rá mutató hivatkozást is.
 
 1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
    
@@ -71,7 +71,7 @@ Regisztrálja az eszközt, az eszköz kiépítése szolgáltatáshoz két módja
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: Cserélje le a helyőrző értékét az előző szakaszban az áttelepítés előtt feljegyzett terjesztési pontok kapcsolati karakterlánccal.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban feljegyzett DPS kapcsolati karakterláncra.
    
     ```csharp
     static readonly string ServiceConnectionString = "{DPS connection string}";
@@ -87,7 +87,7 @@ Regisztrálja az eszközt, az eszköz kiépítése szolgáltatáshoz két módja
     private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
     ```
 
-1. Adja hozzá a következő, az eszköz regisztrációjának megvalósításához:
+1. Adja hozzá a következőt az eszköz regisztrációjának megvalósításához:
 
     ```csharp
     static async Task SetRegistrationDataAsync()
@@ -112,7 +112,7 @@ Regisztrálja az eszközt, az eszköz kiépítése szolgáltatáshoz két módja
     }
     ```
 
-1. Végül adja hozzá az alábbi kódot a **fő** módszert, nyissa meg a kapcsolatot az IoT hub és a regisztráció megkezdéséhez:
+1. Végül adja hozzá a következő kódot a **Fő** metódushoz az IoT Hub-kapcsolat megnyitásához és a regisztráció indításához:
    
     ```csharp
     try
@@ -131,22 +131,22 @@ Regisztrálja az eszközt, az eszköz kiépítése szolgáltatáshoz két módja
     }
     ```
         
-1. A Visual Studio Solution Explorerben kattintson a jobb gombbal a megoldás, és kattintson **indítási projektek beállítása...** . Válassza ki **egyetlen kezdőprojekt**, majd válassza ki a **DeviceProvisioning** projekt legördülő menüből.  
+1. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd kattintson a **Kezdőprojektek beállítása** parancsra. Válassza az **Egyetlen kezdőprojekt** lehetőséget, majd a legördülő menüből válassza a **DeviceProvisioning** projektet.  
 
-1. A .NET-eszköz alkalmazás futtatása **DeviceProvisiong**. Érdemes azt beállítania az eszköz kiépítése: 
+1. Futtassa a **DeviceProvisiong** .NET-eszközalkalmazást. Az eszközalkalmazás beállítja az eszköz kiépítését: 
 
-    ![Az egyes regisztrációs futtatása](./media/tutorial-net-provision-device-to-hub/individual.png)
+    ![Egyéni regisztráció futtatása](./media/tutorial-net-provision-device-to-hub/individual.png)
 
-Ha sikeresen regisztrálta az eszközét, kell megjelennie, megjelenik a portálon, mint a következőket:
+Sikeres regisztráció után az eszköznek a következőképpen kell megjelennie a portálon:
 
    ![Sikeres regisztráció a portálon](./media/tutorial-net-provision-device-to-hub/individual-portal.png)
 
-### <a name="enroll-the-device-using-enrollment-groups"></a>Regisztrálja az eszközt a beléptetési csoportok használata
+### <a name="enroll-the-device-using-enrollment-groups"></a>Az eszköz regisztrálása Regisztrációs csoportok használatával
 
 > [!NOTE]
-> A beléptetési csoport minta igényli egy X.509 tanúsítvány.
+> A regisztrációs mintacsoporthoz egy X.509-tanúsítvány szükséges.
 
-1. A Visual Studio Solution Explorerben nyissa meg a **DeviceProvisioning** a fenti létrehozott projekt. 
+1. A Visual Studio Megoldáskezelőjében nyissa meg a fent létrehozott **DeviceProvisioning** projektet. 
 
 1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
     
@@ -154,14 +154,14 @@ Ha sikeresen regisztrálta az eszközét, kell megjelennie, megjelenik a portál
     using System.Security.Cryptography.X509Certificates;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét lecserélheti a X509 tanúsítványhely.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át az X.509-tanúsítvány helyére.
    
     ```csharp
     private const string X509RootCertPathVar = "{X509 Certificate Location}";
     private const string SampleEnrollmentGroupId = "sample-group-csharp";
     ```
 
-1. Adja hozzá a következőt a **Program.cs** valósítja meg a regisztrációt a csoporthoz:
+1. A csoport regisztrációjának megvalósításához adja hozzá a következőt a **Program.cs** fájlhoz:
 
     ```csharp
     public static async Task SetGroupRegistrationDataAsync()
@@ -191,7 +191,7 @@ Ha sikeresen regisztrálta az eszközét, kell megjelennie, megjelenik a portál
     }
     ```
 
-1. Végül, cserélje le az alábbi kódot a **fő** módszert, nyissa meg a kapcsolatot az IoT hub és a csoport regisztráció megkezdéséhez:
+1. Végül az IoT Hub-kapcsolat megnyitásához és a csoportos regisztráció indításához cserélje le a **Fő** metódust a következő kódra:
    
     ```csharp
     try
@@ -210,46 +210,46 @@ Ha sikeresen regisztrálta az eszközét, kell megjelennie, megjelenik a portál
     }
     ```
 
-1. A .NET-eszköz alkalmazás futtatása **DeviceProvisiong**. Érdemes azt beállítania az eszköz kiépítése csoport: 
+1. Futtassa a **DeviceProvisiong** .NET-eszközalkalmazást. Az eszközalkalmazás beállítja az eszköz csoportos kiépítését: 
 
-    ![Csoport regisztrációs futtatása](./media/tutorial-net-provision-device-to-hub/group.png)
+    ![Csoportos regisztráció futtatása](./media/tutorial-net-provision-device-to-hub/group.png)
 
-    Sikeresen regisztrált az eszközcsoport, az megjelenik a portálon, mint a következő megjelennie:
+    Sikeres regisztráció után az eszközcsoportnak a következőképpen kell megjelennie a portálon:
 
-   ![Sikeres csoport beléptetési a portálon](./media/tutorial-net-provision-device-to-hub/group-portal.png)
-
-
-## <a name="start-the-device"></a>Indítsa el az eszközt
-
-Ezen a ponton a következő telepítő készen áll a eszközregisztráció:
-
-1. Az eszköz kiépítése szolgáltatáshoz regisztrált az eszközt vagy eszközöket és 
-2. Az eszköz áll készen a biztonsági konfigurált és az eszköz kiépítése szolgáltatáshoz ügyfél SDK használata alkalmazás keresztül érhető el.
-
-Indítsa el az eszközöket, hogy az ügyfélalkalmazás számára az eszköz kiépítése szolgáltatáshoz a regisztrációs elindításához.  
+   ![Sikeres csoportregisztráció a portálon](./media/tutorial-net-provision-device-to-hub/group-portal.png)
 
 
-## <a name="verify-the-device-is-registered"></a>Ellenőrizze, hogy az eszköz regisztrálva van
+## <a name="start-the-device"></a>Az eszköz elindítása
 
-Egyszer az eszköz indítása, a következő műveleteket kell végrehajtani. Tekintse meg a TPM-szimulátor mintaalkalmazás [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) további részleteket. 
+Ekkor a következő beállítás van készen az eszköz regisztrációjához:
 
-1. Az eszköz regisztrációs kérelmet küld az eszköz kiépítése szolgáltatáshoz.
-2. TPM-eszközök esetén az eszköz kiépítése szolgáltatáshoz küld vissza a regisztrációs kihívás, amelyhez az eszköz válaszol. 
-3. A sikeres regisztráció az eszköz kiépítése szolgáltatáshoz elküldi az eszközt az IoT hub URI, eszköz-Azonosítóját és a titkosított kulcs biztonsági. 
-4. Az IoT-központ ügyfélalkalmazás az eszköz ezután csatlakozik a központ. 
-5. A sikeres kapcsolat szeretne az elosztóhoz, kell megjelennie az eszköz jelennek meg az IoT-központ **eszköz Explorer**. 
+1. Az eszköz vagy eszközcsoport regisztrálva van a Device Provisioning Service-ben, és 
+2. Az eszköz biztonsági konfigurációja elkészült, amely a Device Provisioning Service ügyféloldali SDK-val érhető el az alkalmazáson keresztül.
 
-    ![Sikeres kapcsolatot a portálon](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
+Indítsa el az eszközt, hogy az ügyfélalkalmazás elindíthassa a Device Provisioning Service-szel való regisztrációt.  
+
+
+## <a name="verify-the-device-is-registered"></a>Az eszköz sikeres regisztrálásának ellenőrzése
+
+Az eszköz indítása után a következő műveleteket kell elvégezni. További részletekért tekintse meg a TPM-szimulátor [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) mintaalkalmazását. 
+
+1. Az eszköz regisztrációs kérést küld a Device Provisioning Service-nek.
+2. TPM-eszközök esetén a Device Provisioning Service visszaküld egy regisztrációs kihívást, amelyre az eszköz válaszol. 
+3. Sikeres regisztráció esetén a Device Provisioning Service visszaküldi az eszköznek az IoT Hub URI-jét, az eszközazonosítót és a titkosított kulcsot. 
+4. Az eszközön lévő IoT Hub-ügyfélalkalmazás ekkor csatlakozik a hubhoz. 
+5. A hubhoz való sikeres csatlakozás esetén látnia kell az eszközt az IoT Hub **Device Explorer** paneljén. 
+
+    ![Sikeres csatlakozás a hubhoz a portálon](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Regisztrálja az eszközt
-> * Indítsa el az eszközt
-> * Ellenőrizze, hogy az eszköz regisztrálva van
+> * Az eszköz regisztrálása
+> * Az eszköz elindítása
+> * Az eszköz sikeres regisztrálásának ellenőrzése
 
-A következő oktatóanyag áttekintésével megismerheti, hogyan több különböző terhelésű hubok központilag továbblépés. 
+A következő oktatóanyag azt mutatja be, hogyan regisztrálhat több eszközt az elosztott terhelésű hubok között. 
 
 > [!div class="nextstepaction"]
-> [Különböző terhelésű IoT-központok eszközök beállításához](./tutorial-provision-multiple-hubs.md)
+> [Eszközök regisztrálása elosztott terhelésű IoT Hubokon](./tutorial-provision-multiple-hubs.md)

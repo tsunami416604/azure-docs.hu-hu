@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: saveenr
-ms.openlocfilehash: f37a4563a758d442760f4a6be3c11bb9a9ddfc28
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 332b6c90ea51d16a439bfb21222bb753e93a02b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -39,13 +39,13 @@ Ez az oktatóanyag feltételezi az Azure PowerShell használatának előzetes is
 Előfizetés nevével történő bejelentkezéshez:
 
 ```
-Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+Connect-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
 Az előfizetés neve helyett előfizetés-azonosítót is használhat a bejelentkezéshez:
 
 ```
-Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Connect-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 Sikeres művelet esetén a parancs kimenete az alábbi szöveghez hasonlít:
@@ -96,13 +96,13 @@ OUTPUT @a
 "@
 ```
 
-Küldje el a szkriptet.
+Küldje el a szkript szövegét a `Submit-AdlJob` parancsmaggal és a `-Script` paraméterrel.
 
 ```
 $job = Submit-AdlJob -Account $adla -Name "My Job" –Script $script
 ```
 
-Azt is megteheti, hogy fájlként menti a szkriptet, és a következő paranccsal küldi el:
+Másik lehetőségként elküldhet egy szkriptfájlt a `-ScriptPath` paraméterrel:
 
 ```
 $filename = "d:\test.usql"
@@ -110,20 +110,19 @@ $script | out-File $filename
 $job = Submit-AdlJob -Account $adla -Name "My Job" –ScriptPath $filename
 ```
 
-
-Kérje le egy adott feladat állapotát. Használja a parancsmagot addig, amíg a feladat be nem fejeződik.
+A feladatok állapotát a `Get-AdlJob` parancsmaggal kérheti le. 
 
 ```
 $job = Get-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Ahelyett, hogy újra és újra meghívná a Get-AdlAnalyticsJob parancsmagot a feladat befejeződéséig, használja a Wait-AdlJob parancsmagot.
+Ahelyett, hogy újra és újra meghívná a Get-AdlJob parancsmagot a feladat befejezéséig, használja a `Wait-AdlJob` parancsmagot.
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Töltse le a kimeneti fájlt.
+Töltse le a kimeneti fájlt az `Export-AdlStoreItem` parancsmaggal.
 
 ```
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"

@@ -1,11 +1,11 @@
 ---
-title: "A helyszíni feltételes hozzáférés az Azure Active Directoryban |} Microsoft Docs"
-description: "Egy részletes útmutató a helyszíni alkalmazások feltételes hozzáférést tesz lehetővé a Windows Server 2012 R2 Active Directory összevonási szolgáltatások (AD FS) használatával."
+title: A helyszíni feltételes hozzáférés az Azure Active Directoryban |} Microsoft Docs
+description: Egy részletes útmutató a helyszíni alkalmazások feltételes hozzáférést tesz lehetővé a Windows Server 2012 R2 Active Directory összevonási szolgáltatások (AD FS) használatával.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 466cd564f08b07d443db7cb1de59c5778682ed73
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációs használatával
 Ha munkahelyi-csatlakozás a felhasználók saját eszközét, az Azure Active Directory (Azure AD) eszközregisztrációs szolgáltatását, az eszközeik jelölhető, amelyről ismert, hogy a szervezet. Az alábbiakban részletesen ismerteti az Active Directory összevonási szolgáltatások (AD FS) a Windows Server 2012 R2 használatával a helyszíni alkalmazások feltételes hozzáférést tesz lehetővé.
@@ -89,7 +89,7 @@ Kövesse az ellenőrzőlista engedélyezése és konfigurálása az Azure Active
 | Fejezze be a második rész a "Eszközvisszaírás engedélyezése az Azure AD Connectben." Amikor végzett, térjen vissza az útmutató. |[Eszközvisszaírás engedélyezése az Azure AD Connectben](#upgrade-your-active-directory-domain-services-schema) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Választható] 4. lépés: Az többtényezős hitelesítés engedélyezése
-Határozottan javasoljuk, hogy a multi-factor Authentication több lehetőség közül választhat. Ha azt szeretné, hogy többtényezős hitelesítést, lásd: [válassza ki a multi-factor Authentication biztonsági megoldást,](../multi-factor-authentication/multi-factor-authentication-get-started.md). Ez magában foglalja az egyes megoldások, és hivatkozások segítségével konfigurálja a megoldást az Ön által választott leírását.
+Határozottan javasoljuk, hogy a multi-factor Authentication több lehetőség közül választhat. Ha azt szeretné, hogy többtényezős hitelesítést, lásd: [válassza ki a multi-factor Authentication biztonsági megoldást,](authentication/concept-mfa-whichversion.md). Ez magában foglalja az egyes megoldások, és hivatkozások segítségével konfigurálja a megoldást az Ön által választott leírását.
 
 ## <a name="part-5-verification"></a>5. rész: ellenőrzése
 A telepítés befejeződött, és bizonyos esetekben tekinthetők meg. Az alábbi hivatkozások segítségével a szolgáltatás kísérletezhet, és ismerkedjen meg a szolgáltatásai.
@@ -156,7 +156,7 @@ Való kommunikációhoz az URL-cím, a felhasználók számos különböző mód
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Azure Active Directory eszközregisztrációs segítségével össze a Windows 8.1 eszköz
 1. Válassza ki a Windows 8.1-eszközön **gépház** > **hálózati** > **munkahelyi**.
-2. Adja meg a felhasználónevét UPN formátumú; például  **dan@contoso.com** .
+2. Adja meg a felhasználónevét UPN formátumú; például **dan@contoso.com**.
 3. Válassza ki **csatlakozás**.
 4. Amikor a rendszer kéri, jelentkezzen be a fiókjával. Az eszköz már csatlakoztatva van.
 
@@ -186,7 +186,7 @@ A következő lépések bemutatják a forgatókönyv végrehajtásához.
 1. Az AD FS MMC eszköz megnyitásához, majd válassza ki **AD FS** > **megbízhatósági kapcsolatok** > **függő entitás Megbízhatóságai**.
 2. Keresse meg az alkalmazás, amely az új hozzáférési szabály vonatkozik. Kattintson a jobb gombbal az alkalmazást, majd válassza ki **Jogcímszabályok szerkesztése**.
 3. Válassza ki a **Kiállításengedélyezési szabályok** lapra, majd válassza ki **szabály hozzáadása**.
-4. Az a **jogcímszabály** sablon legördülő listában válassza **engedélyezése vagy tiltása felhasználók egy bejövő jogcím alapján**. Válassza ki **következő**.
+4. Az a **jogcímszabály** sablon legördülő listában válassza **engedélyezése vagy tiltása felhasználók egy bejövő jogcím alapján**. Ezután kattintson a **Tovább** gombra.
 5. Az a **Jogcímszabály nevének** mezőbe írja be **hozzáférés engedélyezése a regisztrált eszközökről**.
 6. Az a **bejövő jogcím típusa** legördülő listában válassza **regisztrált felhasználó van**.
 7. Az a **bejövő jogcím értéke** mezőbe írja be **igaz**.

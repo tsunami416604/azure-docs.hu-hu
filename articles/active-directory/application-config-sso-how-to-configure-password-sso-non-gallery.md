@@ -1,11 +1,11 @@
 ---
-title: "Jelszó egyszeri bejelentkezés egy nem galéria applicationn a konfigurálása |} Microsoft Docs"
-description: "Egyéni nem galéria alkalmazás biztonságos jelszó-alapú egyszeri bejelentkezés konfigurálása, ha nem szerepel az Azure AD Application Gallery"
+title: Jelszó egyszeri bejelentkezés egy nem galéria applicationn a konfigurálása |} Microsoft Docs
+description: Egyéni nem galéria alkalmazás biztonságos jelszó-alapú egyszeri bejelentkezés konfigurálása, ha nem szerepel az Azure AD Application Gallery
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fd93b3fa5b601a276047feab67758fe1a29d4e27
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b928d71fbff232ae93dbf3d24517e7efc4cf8bfd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jelszó egyszeri bejelentkezés nem galéria alkalmazások konfigurálása
 
@@ -112,6 +112,8 @@ Egyszeri bejelentkezés egy alkalmazás konfigurálásához kövesse az alábbi 
 10. Felhasználók hozzárendelése az alkalmazáshoz.
 
 11. Emellett is megadhatja a felhasználó nevében hitelesítő adatok a felhasználók a sorok kijelöléséhez és parancsával **frissítéséhez szükséges hitelesítő adatokat** , majd gépelje be a felhasználónevet és jelszót a felhasználók nevében. Ellenkező esetben megkérdezi a felhasználókat a hitelesítő adatok magukat az indítás után.
+
+12. **Választható lehetőség:** bizonyos közösségi alkalmazások, például a Twitter és a Facebookon, nincs is engedélyezheti a jelszót az alkalmazáshoz kijelölt gyakorisággal automatikus kapcsolódó kulcsváltást. Ahhoz, hogy a kijelölés **szeretném, hogy az Azure AD az automatikus kezelésére a felhasználóhoz vagy csoporthoz tartozó jelszó** nevében egy felhasználó vagy csoport hitelesítő adatok megadása közben. Válassza ki a **helyettesítő gyakoriság (hét)**.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Felhasználó hozzárendelése egy alkalmazás közvetlenül
 

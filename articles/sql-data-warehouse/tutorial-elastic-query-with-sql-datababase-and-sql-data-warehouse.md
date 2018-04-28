@@ -1,29 +1,24 @@
 ---
-title: "Rugalmas lekérdezési oktatóanyag az Azure SQL Data Warehouse szolgáltatással |} Microsoft Docs"
-description: "Rugalmas lekérdezés használata az Azure SQL Data Warehouse szolgáltatással"
+title: 'Oktatóanyag: Rugalmas lekérdezés az Azure SQL Data Warehouse szolgáltatással |} Microsoft Docs'
+description: Ez az oktatóanyag a Rugalmas lekérdezési szolgáltatás segítségével az Azure SQL Database a lekérdezés Azure SQL Data warehouse-bA.
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67g
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 11/03/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/14/2018
 ms.author: elbutter
-ms.openlocfilehash: 20bbdbbde7edc4351563685761785874870a3c82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: igorstan
+ms.openlocfilehash: a31f035b5ec086a046028956c4a9c0de0d6a313d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="configure-elastic-query-with-sql-data-warehouse"></a>Rugalmas lekérdezési konfigurálja az SQL Data Warehouse szolgáltatással
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Oktatóanyag: Használata rugalmas lekérdezés hozzáférni adataihoz az Azure SQL Data Warehouse az Azure SQL adatbázis
 
-Ebben az oktatóanyagban elsajátíthatja rugalmas lekérdezés használata küldje el a lekérdezést az SQL-adatbázis az SQL Data Warehouse-lesz. Rugalmas lekérdezési funkciók Azure SQL termékek között már. Egy fogalom, rugalmas lekérdezési kapcsolatos további információkért lásd: [ **rugalmas lekérdezés használata az SQL Data Warehouse**][How to use Elastic Query with SQL Data Warehouse].
+Ez az oktatóanyag a Rugalmas lekérdezési szolgáltatás segítségével az Azure SQL Database a lekérdezés Azure SQL Data warehouse-bA. 
 
 ## <a name="prerequisites-for-the-tutorial"></a>Az oktatóanyag előfeltételei
 
@@ -128,7 +123,7 @@ A következő néhány lépésben leírtak létre fogunk hozni egy táblát az a
 
 5. Figyelje meg, hogy most már rendelkezik egy külső tábla definíciójában a **SQL database-példányt**.
 
-   ![Rugalmas lekérdezési külső tábla definíciójában](./media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
+   ![Rugalmas lekérdezési külső tábla definíciójában](media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
 
 
 6. Küldje el a következő lekérdezést, amely lekérdezi az adatraktár példánya. A 2. lépésben beszúrt öt értékeket kell kapnia. 
@@ -143,15 +138,5 @@ SELECT * FROM [dbo].[OrderInformation];
 
 Gratulálunk, állította be a rugalmas lekérdezés nagyon alapjait. 
 
-
-
-
-<!--Image references-->
-
-<!--Article references-->
-
-[How to use Elastic Query with SQL Data Warehouse]: ./how-to-use-elastic-query-with-sql-data-warehouse.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
+## <a name="next-steps"></a>További lépések
+A javaslatok, lásd: [gyakorlati tanácsok az Azure SQL Data Warehouse szolgáltatással rugalmas lekérdezéssel](how-to-use-elastic-query-with-sql-data-warehouse.md).

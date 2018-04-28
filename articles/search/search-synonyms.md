@@ -1,25 +1,20 @@
 ---
-pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
-description: "A szinonimák (előzetes verzió) szolgáltatás, az Azure Search REST API felfedett előzetes dokumentációjában talál."
-services: search
-documentationCenter: 
+pageTitle: Synonyms in Azure Search | Microsoft Docs
+description: Bontsa ki a keresési lekérdezés hatókörét szinonimák használata
 authors: mhko
-manager: pablocas
-editor: 
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 07/07/2016
+ms.topic: conceptual
+ms.date: 04/20/2018
+manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 447abc48cca3dee398e641f8458e52a5b2cb8e42
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 03e45aae37a0c0474dbd9cc5dd5e3fddd347bd62
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="synonyms-in-azure-search-preview"></a>Szinonimák az Azure Search (előzetes verzió)
+# <a name="synonyms-in-azure-search"></a>Az Azure Search szinonimák
 
 Szinonimák a keresőprogramok, amely implicit módon bontsa ki a lekérdezés hatókörét a felhasználónak nem kell ténylegesen adja meg a kifejezés nem megfelelő használati társítani. Például a kifejezés "kutya" és a szinonima rendelését "canine" és "ételadagot", "kutya" tartalmazó dokumentumokat kap, "canine" vagy "ételadagot" is tartozik a lekérdezés hatókörén belül.
 
@@ -27,7 +22,7 @@ Az Azure Search szinonimát bővítése időben történik. Egy szolgáltatás e
 
 ## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
 
-A szinonimák funkció jelenleg előzetes verzióban érhetők, és csak akkor támogatott a legújabb előzetes api-verzió (api-version = 2016 09-01. dátumú előnézeti). Jelenleg nincs Azure Portal-támogatás. Az API-verzió van megadva a kérés, mert is lehet kombinálni általánosan elérhető (GA), és ugyanahhoz az alkalmazáshoz az API-k előzetes. Azonban előnézeti API-k nincsenek az SLA-t és a szolgáltatások módosíthatja, ezért nem javasoljuk azok az éles környezetben.
+A szinonimák támogatja a legújabb api-verzió (api-version = 2017-11-11). Jelenleg nincs Azure Portal-támogatás.
 
 ## <a name="how-to-use-synonyms-in-azure-search"></a>Az Azure search szinonimák használata
 
@@ -47,11 +42,11 @@ Szinonimák beépítése a keresőalkalmazás két lépésből áll:
 
 Szinonimát maps feltöltötte-e a szolgáltatás POST vagy PUT keresztül. Minden egyes szabály az új sor karaktert ("\n") kell elválasztani. Legfeljebb 5000 szabálynál szinonimát térkép szabad szolgáltatásban és más termékváltozatok 10 000 szabályokat adhat meg. Minden egyes szabály legfeljebb 20 bővítések rendelkezhet.
 
-Ebben az előzetesben szinonimát maps az alábbiakban ismertetett Apache Solr formátumúnak kell lennie. Ha egy meglévő szinonimát szótár más formátumú, és közvetlenül használja, tudassa velünk, a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+Szinonimát maps az alábbiakban ismertetett Apache Solr formátumúnak kell lennie. Ha egy meglévő szinonimát szótár más formátumú, és közvetlenül használja, tudassa velünk, a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 Létrehozhat egy új szinonimát leképezés HTTP POST használatával az alábbi példában látható módon:
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2016-09-01-Preview
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
     {  
@@ -64,7 +59,7 @@ Létrehozhat egy új szinonimát leképezés HTTP POST használatával az alább
 
 Azt is megteheti PUT használja, és adja meg az URI a szinonima térkép nevét. Ha a szinonima leképezés nem létezik, a rendszer létrehozza.
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
     {  
@@ -90,24 +85,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>Lista szinonimát leképezi a szolgáltatás alatt.
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2016-09-01-Preview
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>A szolgáltatás alatt szinonimát térkép beolvasása.
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>A szolgáltatás alatt szinonimák térképre törlése.
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Az index definícióját a szinonima térkép használandó kereshető mezők konfigurálására.
 
 Új mező tulajdonság **synonymMaps** segítségével adja meg a szinonima térképre használandó kereshető mező. Szinonimát maps szolgáltatás szintű erőforrás, és az index a szolgáltatás alatt futó minden mező szerint lehet hivatkozni.
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2016-09-01-Preview
+    POST https://[servicename].search.windows.net/indexes?api-version=2017-11-11
     api-key: [admin key]
 
     {
@@ -142,7 +137,7 @@ Washington, Wash., WA => WA
 **synonymMaps** adható meg "Edm.String" vagy "Collection(Edm.String)" típusú kereshető mezőt.
 
 > [!NOTE]
-> Ebben az előzetesben mezőben leképezése egy szinonima csak tartozhat. Ha több szinonimát maps használni kívánt, tudassa velünk, a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Akkor is csak egy szinonima mezőben hozzárendelését. Ha több szinonimát maps használni kívánt, tudassa velünk, a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 ## <a name="impact-of-synonyms-on-other-search-features"></a>Egyéb keresési funkciókat a szinonimák hatása
 
@@ -160,7 +155,7 @@ Szinonimát bővítések nem vonatkoznak a helyettesítő karakteres kifejezést
 
 - Létrehozhat több szinonimát maps keresési alkalmazás (például úgy, hogy ha az alkalmazás támogatja a többnyelvű vásárlói bázisunk nyelv). Jelenleg a mező csak egyikét használhatja őket. A mező synonymMaps tulajdonság bármikor frissítheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha egy meglévő index (nem éles) fejlesztői környezetben, hogyan szinonimák hozzáadása módosítja keresési élményt biztosít, beleértve a profilok pontozási gyakorolt megtekintéséhez kattintson a kijelölés kis dictionary és javaslatok kísérletezhet.
 

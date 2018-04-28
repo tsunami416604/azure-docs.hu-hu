@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Fabric Java ügyfél API-k |} Microsoft Docs"
-description: "Hozza létre, és a Service Fabric Java-ügyfél API-k használata a Service Fabric ügyfél REST API-specifikációnak használatával"
+title: Az Azure Service Fabric Java ügyfél API-k |} Microsoft Docs
+description: Hozza létre, és a Service Fabric Java-ügyfél API-k használata a Service Fabric ügyfél REST API-specifikációnak használatával
 services: service-fabric
 documentationcenter: java
 author: rapatchi
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 6f9b9d46be36b292fe2c3be92d90d4cf87155210
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9596e55c6c915461ef4d0bff0d7f9583aac18a1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Az Azure Service Fabric Java ügyfél API-k
 
@@ -133,5 +133,5 @@ Minden API-hoz. a végrehajtás négy túlterheléssel találja. Ha a választha
     * Ez az API-hívás változat használható, ha reaktív aszinkron programozás használni kívánt nyers rest válasz kezelése
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók [Service Fabric REST API-k](https://docs.microsoft.com/en-us/rest/api/servicefabric/)
+* További tudnivalók [Service Fabric REST API-k](https://docs.microsoft.com/rest/api/servicefabric/)
 

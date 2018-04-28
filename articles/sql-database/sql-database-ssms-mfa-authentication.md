@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: 2ea8c3119366d86c3aabf1faa0d71f1ba3610f41
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c6472dcde55a7b642ced7bbf0d93893df9208e0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzális hitelesítés használata az SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)
 Az Azure SQL Database és az Azure SQL Data Warehouse támogatja az SQL Server Management Studio (SSMS) használatával kapcsolatok *Active Directory univerzális hitelesítési*. 
@@ -25,7 +25,7 @@ Az Azure SQL Database és az Azure SQL Data Warehouse támogatja az SQL Server M
 
 - `Active Directory - Universal with MFA` a hitelesítés egy interaktív módszerhez is támogatja az *Azure multi-factor Authentication* (MFA). Az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáférésekkel szemben, miközben a felhasználói igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát teszi lehetővé. Egyszerű hitelesítési beállítások (telefonhívás, szöveges üzenetet, intelligens kártyák PIN-kód és az értesítést a mobilalkalmazásban), számos erős hitelesítés biztosítja lehetővé teszi a felhasználók a módszerek közötti választást inkább. Az Azure ad-val interaktív MFA érvényesítéshez előugró párbeszédpanelen eredményezhet.
 
-A multi-factor Authentication ismertetését lásd: [multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md).
+A multi-factor Authentication ismertetését lásd: [multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md).
 A konfigurálás lépéseinek végrehajtásához tekintse meg a [konfigurálása az Azure SQL Database multi-factor authentication szolgáltatást az SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Az Azure AD tartományi nevét vagy a bérlői azonosító paraméter   

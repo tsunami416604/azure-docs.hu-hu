@@ -23,7 +23,7 @@
 ## [APP SERVICE](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)
 
 # További források
-## [Azure Advisor videók](https://azure.microsoft.com/en-us/resources/videos/index/?services=advisor)
+## [Azure Advisor videók](https://azure.microsoft.com/resources/videos/index/?services=advisor)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 

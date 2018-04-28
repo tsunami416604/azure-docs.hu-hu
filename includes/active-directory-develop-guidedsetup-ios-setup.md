@@ -2,7 +2,7 @@
 
 Ez a szakasz részletesen arról, hogyan hozzon létre egy új projektet bemutatják, hogyan integrálható az iOS-alkalmazás (Swift) rendelkező *jelentkezzen be Microsoft* azt lekérdezhesse jogkivonat igénylő webes API-k.
 
-> Ehelyett töltse le az XCode-projektjét, ez a minta szeretné? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) és ugorjon a [konfigurációs lépés](#create-an-application-express) konfigurálása a kódminta végrehajtása előtt.
+> Ehelyett töltse le az XCode-projektjét, ez a minta szeretné? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a kódminta végrehajtása előtt.
 
 
 ## <a name="install-carthage-to-download-and-build-msal"></a>Carthage MSAL letöltése és telepítése

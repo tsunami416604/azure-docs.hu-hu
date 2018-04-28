@@ -1,11 +1,11 @@
 ---
-title: "Aktív-aktív S2S VPN-kapcsolatokat a VPN-átjárók konfigurálása: Azure Resource Manager: PowerShell |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan aktív-aktív kapcsolatok konfigurálása az Azure VPN Gatewayek Azure Resource Manager és a PowerShell használatával."
+title: 'Aktív-aktív S2S VPN-kapcsolatokat a VPN-átjárók konfigurálása: Azure Resource Manager: PowerShell |} Microsoft Docs'
+description: Ez a cikk bemutatja, hogyan aktív-aktív kapcsolatok konfigurálása az Azure VPN Gatewayek Azure Resource Manager és a PowerShell használatával.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: yushwang
-ms.openlocfilehash: 41cca764335f21bed60fe968288bc8b8274f3215
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c09abe97d34b7220d76481a403165f1b7e07fcaa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Az Azure VPN Gatewayek aktív-aktív S2S VPN-kapcsolatok konfigurálása
 
@@ -94,7 +94,7 @@ A Resource Manager parancsmagjainak használatához váltson át PowerShell mód
 Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. A következő minta segíthet a kapcsolódásban:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
@@ -416,7 +416,7 @@ Ebben a lépésben aktív-aktív mód engedélyezése, és frissítheti az átj�
 
 * Az új SKU használata ebben a lépésben egy örökölt Termékváltozat nem módosítható. Csak egy örökölt SKU támogatott örökölt egy másikra is átméretezhetők. Például nem módosíthatja a Termékváltozat szabványos VpnGw1 való (annak ellenére, hogy aktív-aktív támogatott VpnGw1) mert Standard örökölt SKU, és VpnGw1 aktuális Termékváltozat. Átméretezési és áttelepítése termékváltozatok kapcsolatos további információkért lásd: [Gateway SKU-n](vpn-gateway-about-vpngateways.md#gwsku).
 
-* Ha azt szeretné, méretezze át a jelenlegi SKU, például a VpnGw3, VpnGw1 ezt teheti használatával ezt a lépést, mert a azonos SKU-család szerepelnek a termékváltozat. Ehhez használja az értéket:```-GatewaySku VpnGw3```
+* Ha azt szeretné, méretezze át a jelenlegi SKU, például a VpnGw3, VpnGw1 ezt teheti használatával ezt a lépést, mert a azonos SKU-család szerepelnek a termékváltozat. Ehhez használja az értéket: ```-GatewaySku VpnGw3```
 
 Használata esetén ez a környezetben, ha nincs szüksége az átjáró átméretezése, nincs szükség a - GatewaySku adja meg. Figyelje meg, hogy ebben a lépésben meg kell adnia az átjáróobjektum PowerShell, a tényleges frissítés indításához. A frissítés eltarthat 30 – 45 perc, akkor is, ha nem átméretezni az átjáró.
 

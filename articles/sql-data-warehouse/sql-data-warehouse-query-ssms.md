@@ -1,25 +1,20 @@
 ---
-title: "Csatlakozás az Azure SQL Data Warehouse - SSMS |} Microsoft Docs"
-description: "SQL Server Management Studio (SSMS) használatával történő kapcsolódás és lekérdezés az Azure SQL Data Warehouse."
+title: Csatlakozás az Azure SQL Data Warehouse - SSMS |} Microsoft Docs
+description: SQL Server Management Studio (SSMS) használatával történő kapcsolódás és lekérdezés az Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: 
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: 299e50b3-e68a-471c-8aee-b0b9874781bd
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 207fb9fd861c66039fbde89681aed3df3a2f4021
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: f4b960115da3d30d355768498ae95270acaef49b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Csatlakozás az SQL Data Warehouse az SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -41,7 +36,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 * Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el [az SQL Data Warehouse-hoz történő csatlakozást][Connect to SQL Data Warehouse] ismertető cikket.
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Csatlakozás az SQL Data Warehouse-hoz
-1. Nyissa meg a szolgáltatáshoz az SSMS.
+1. Nyissa meg az SSMS-t.
 2. Nyissa meg az Object Explorert. Ehhez az szükséges, válassza ki a **fájl** > **Object Explorerben csatlakozzon**.
    
     ![SQL Server Object Explorer][1]
@@ -89,7 +84,7 @@ A környezet Azure Active Directory-hitelesítésre történő konfigurálásáv
 
 <!--Other-->
 [Azure portal]: https://portal.azure.com
-[Install SSMS]: https://msdn.microsoft.com/en-US/library/hh213248.aspx
+[Install SSMS]: https://msdn.microsoft.com/library/hh213248.aspx
 
 
 <!--Image references-->

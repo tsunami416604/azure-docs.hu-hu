@@ -1,8 +1,8 @@
 ---
-title: "A Spark-fürtök - Azure HDInsight futtathatnak Scala-alkalmazás létrehozása |} Microsoft Docs"
-description: "Az Apache Maven scalában írt a buildelési rendszer és egy meglévő Maven archetype az IntelliJ IDEA által biztosított Scala Spark-alkalmazás létrehozása."
+title: A Spark-fürtök - Azure HDInsight futtathatnak Scala-alkalmazás létrehozása |} Microsoft Docs
+description: Az Apache Maven scalában írt a buildelési rendszer és egy meglévő Maven archetype az IntelliJ IDEA által biztosított Scala Spark-alkalmazás létrehozása.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: b2467a40-a340-4b80-bb00-f2c3339db57b
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 24becbf5f539ac031d6f5b217a4c5a6b59f572f8
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d64d60112641992a5a56ee5d129e7cbe754bde9d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Az Apache Spark-fürttel hdinsighton futó Scala Maven-alkalmazás létrehozása
 

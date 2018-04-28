@@ -1,11 +1,11 @@
 ---
-title: "Biztonságos kapcsolódás az Azure Service Fabric-fürt |} Microsoft Docs"
-description: "Ismerteti, hogyan hitelesítheti az ügyfelek hozzáférhessenek a Service Fabric-fürt és az ügyfelek és a fürt közötti kommunikáció biztonságossá tétele."
+title: Biztonságos kapcsolódás az Azure Service Fabric-fürt |} Microsoft Docs
+description: Ismerteti, hogyan hitelesítheti az ügyfelek hozzáférhessenek a Service Fabric-fürt és az ügyfelek és a fürt közötti kommunikáció biztonságossá tétele.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 15ea4cbc02a0311b26e75ae7156c42f6bc2b9b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 0ce01b62fde690934d97fdefb7720e1be5512f4a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 
@@ -89,25 +89,32 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Csatlakozás egy ügyfél-tanúsítvány használatával biztonságos fürthöz
-A következő parancsot PowerShell rendszergazdai hozzáférés hitelesítése ügyféltanúsítványok használó biztonságos fürtben való kapcsolódáshoz. Adja meg a fürt tanúsítvány ujjlenyomata és, hogy rendelkezik engedéllyel a kiszolgálófürt-felügyelet az ügyféltanúsítvány ujjlenyomata. A tanúsítvány részleteinél meg kell egyeznie a fürtcsomópontokon egy tanúsítványt.
+A következő parancsot PowerShell rendszergazdai hozzáférés hitelesítése ügyféltanúsítványok használó biztonságos fürtben való kapcsolódáshoz. 
+
+#### <a name="connect-using-certificate-common-name"></a>Kapcsolódás a tanúsítvány egyszerű neve
+Adja meg a fürt tanúsítvány egyszerű neve és az ügyféltanúsítványt, amely rendelkezik engedéllyel a fürtkezeléshez köznapi neve. A tanúsítvány részleteinél meg kell egyeznie a fürtcsomópontokon egy tanúsítványt.
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-          -StoreLocation CurrentUser -StoreName My
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName <certificate common name>  `
+    -FindType FindBySubjectName `
+    -FindValue <certificate common name> `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
-
-*ServerCertThumbprint* az ujjlenyomatot a kiszolgálói tanúsítvány a fürtcsomóponton telepítve van. *Findvalue –* van a felügyeleti ügyfél tanúsítvány ujjlenyomatát.
-Ha a paraméter ki van töltve, a parancs néz ki a következő példa: 
-
+*ServerCommonName* van a fürtcsomópontokon telepített kiszolgálói tanúsítvány köznapi neve. *Findvalue –* a rendszergazdai ügyféltanúsítvány köznapi neve. Ha a paraméter ki van töltve, a parancs néz ki a következő példa:
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `
-          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `
-          -StoreLocation CurrentUser -StoreName My
+$ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
+$certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
+
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName $certCN  `
+    -FindType FindBySubjectName `
+    -FindValue $certCN `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Csatlakozás a Windows Active Directory használatával biztonságos fürthöz

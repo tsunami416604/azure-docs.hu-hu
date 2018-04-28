@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre a hálózati biztonsági csoport – az Azure portálon |} Microsoft Docs
+title: Hozzon létre egy hálózati biztonsági csoportot - Azure-portál |} Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre és telepíthet a hálózati biztonsági csoportok az Azure portál használatával.
 services: virtual-network
 documentationcenter: na
@@ -16,15 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd05df542327f9d8dae924b7097d247980a0558b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d8a66de0b0239fef12168733eca7af85c8b08f82
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="create-network-security-groups-using-the-azure-portal"></a>Hozza létre a hálózati biztonsági csoportokat az Azure portál használatával
-
-[!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
+# <a name="create-a-network-security-group-using-the-azure-portal"></a>Hozzon létre egy hálózati biztonsági csoportot az Azure portál használatával
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
@@ -34,33 +32,32 @@ Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [NSG-k l�
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-A minta az alábbi parancsok várt már létrehozott egy egyszerű környezetben PowerShell a fenti forgatókönyv alapján. Ha szeretné a parancsokat a jelen dokumentum megjelenített, először összeállítása a tesztkörnyezetben üzembe helyezésével [sablon](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), kattintson a **az Azure telepítéséhez**, cserélje le az alapértelmezett paraméterértékek, ha szükséges, és kövesse az utasításokat a portálon. Az alábbi használata lépéseket **RG-NSG** az erőforráscsoport a sablon telepítve van a neveként.
 
 ## <a name="create-the-nsg-frontend-nsg"></a>Az NSG-előtérbeli NSG létrehozása
-Létrehozásához a **NSG-előtérbeli** NSG látható a fenti forgatókönyvben kövesse az alábbi lépéseket.
+Létrehozásához a **NSG-előtérbeli** NSG-t, ahogy az az eset, kövesse az alábbi lépéseket:
 
-1. Egy böngészőből keresse fel a(z) http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
-2. Kattintson a **Tallózás >** > **hálózati biztonsági csoportok**.
+1. Egy böngészőből keresse fel a(z) https://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+2. Válassza ki **+ hozzon létre egy erőforrást >** > **hálózati biztonsági csoportok**.
    
     ![Azure portál – NSG-k](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
-3. Az a **hálózati biztonsági csoportok** panelen kattintson a **Hozzáadás**.
+3. A **hálózati biztonsági csoportok**, jelölje be **Hozzáadás**.
    
     ![Azure portál – NSG-k](./media/virtual-networks-create-nsg-arm-pportal/figure12.png)
-4. Az a **hálózati biztonsági csoport létrehozása** panelen, hozzon létre egy NSG nevű *NSG-előtér* a a *RG-NSG* erőforráscsoportban, és kattintson **létrehozása**.
+4. A **hálózati biztonsági csoport létrehozása**, hozzon létre egy NSG nevű *NSG-előtérbeli* a a *RG-NSG* erőforrás csoportot, és adja **létrehozása** .
    
     ![Azure portál – NSG-k](./media/virtual-networks-create-nsg-arm-pportal/figure13.png)
 
 ## <a name="create-rules-in-an-existing-nsg"></a>Szabályok létrehozása egy létező NSG-ben
-Azure-portálról egy meglévő NSG-szabályok létrehozására, kövesse az alábbi lépéseket.
+Azure-portálról egy meglévő NSG-szabályok létrehozására, végezze el a következő lépéseket:
 
-1. Kattintson a **Tallózás >** > **hálózati biztonsági csoportok**.
-2. Az NSG-ket, kattintson a **NSG-előtérbeli** > **bejövő biztonsági szabályok**
+1. Válassza ki **minden szolgáltatás**, majd keresse meg a **hálózati biztonsági csoportok**. Ha **hálózati biztonsági csoportok** jelenik meg, válassza ki azt.
+2. Az NSG-ket, jelölje ki **NSG-előtérbeli** > **bejövő biztonsági szabályok**
    
     ![Azure portál – NSG-előtér](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
-3. A közül **bejövő biztonsági szabályok**, kattintson a **Hozzáadás**.
+3. A közül **bejövő biztonsági szabályok**, jelölje be **Hozzáadás**.
    
     ![Azure portál – szabály hozzáadása](./media/virtual-networks-create-nsg-arm-pportal/figure3.png)
-4. A a **Hozzáadás bejövő biztonsági szabály** panelen nevű szabályt létrehozni *web-szabály* prioritását *200* keresztül hozzáférést *TCP* portra *80* e bármelyik virtuális Gépet a forrás-, és kattintson **OK**. Figyelje meg, hogy ezek a beállítások a legtöbb alapértelmezett értékei lesznek már.
+4. A **Hozzáadás bejövő biztonsági szabály**, nevű szabályt létrehozni *web-szabály* prioritását *200* keresztül hozzáférést *TCP* port*80* e bármelyik virtuális Gépet a forrás-, és válassza **OK**. Figyelje meg, hogy ezek a beállítások a legtöbb alapértelmezett értékei lesznek már.
    
     ![Azure portál – szabálybeállításai](./media/virtual-networks-create-nsg-arm-pportal/figure4.png)
 5. Néhány másodpercen belül megjelenik az új szabály az NSG.
@@ -69,29 +66,29 @@ Azure-portálról egy meglévő NSG-szabályok létrehozására, kövesse az al�
 6. Ismételje meg a 6-hozzon létre egy bejövő forgalomra vonatkozó szabály nevű *rdp-szabály* prioritással *250* keresztül hozzáférést *TCP* portra *3389-es* forrásból bármely virtuális géphez.
 
 ## <a name="associate-the-nsg-to-the-frontend-subnet"></a>NSG hozzárendelése az előtérben levő alhálózathoz
-1. Kattintson a **Tallózás >** > **erőforráscsoportok** > **RG-NSG**.
-2. Az a **RG-NSG** paneljén kattintson **...**   >  **TestVNet**.
+
+1. Válassza ki **összes szolgáltatások >**, adja meg **erőforráscsoportok**, jelölje be **erőforráscsoportok** megjelenésekor, majd válassza ki **RG-NSG**.
+2. A **RG-NSG**, jelölje be **...**   >  **TestVNet**.
    
     ![Azure portál – TestVNet](./media/virtual-networks-create-nsg-arm-pportal/figure14.png)
-3. Az a **beállítások** panelen kattintson a **alhálózatok** > **előtér** > **hálózati biztonsági csoport** > **NSG-előtér**.
+3. A **beállítások**, jelölje be **alhálózatok** > **előtér** > **hálózati biztonsági csoport**  >  **NSG-előtérbeli**.
    
     ![Azure portál – az alhálózati beállítások](./media/virtual-networks-create-nsg-arm-pportal/figure15.png)
-4. Az a **előtér** panelen kattintson a **mentése**.
+4. Az a **előtér** panelen válassza **mentése**.
    
     ![Azure portál – az alhálózati beállítások](./media/virtual-networks-create-nsg-arm-pportal/figure16.png)
 
 ## <a name="create-the-nsg-backend-nsg"></a>Az NSG-háttérrendszer NSG létrehozása
-Létrehozásához a **NSG-háttérrendszer** NSG-t, és rendelje hozzá azt a **háttér** alhálózati, kövesse az alábbi lépéseket.
+Létrehozásához a **NSG-háttérrendszer** NSG-t, és rendelje hozzá azt a **háttér** alhálózati, kövesse az alábbi lépéseket:
 
-1. Ismételje meg a [létrehozása az NSG-előtérbeli NSG](#Create-the-NSG-FrontEnd-NSG) létrehozni egy NSG nevű *NSG-háttérrendszer*
-2. Ismételje meg a [egy meglévő NSG-szabályok létrehozására](#Create-rules-in-an-existing-NSG) létrehozásához a **bejövő** szabályok az alábbi táblázatban.
+1. Az NSG nevű létrehozásához *NSG-háttérrendszer*, ismételje meg a [létrehozása az NSG-előtérbeli NSG](#Create-the-NSG-FrontEnd-NSG).
+2. Létrehozásához a **bejövő** szabályok az alábbi, a táblázat a ismételje meg a [egy meglévő NSG-szabályok létrehozására](#Create-rules-in-an-existing-NSG).
    
    | Bejövő forgalomra vonatkozó szabály | Kimenő forgalomra vonatkozó szabály |
    | --- | --- |
    | ![Azure portál – bejövő forgalomra vonatkozó szabály](./media/virtual-networks-create-nsg-arm-pportal/figure17.png) |![Azure portál – kimenő forgalomra vonatkozó szabály](./media/virtual-networks-create-nsg-arm-pportal/figure18.png) |
-3. Ismételje meg a [társít a NSG a FrontEnd alhálózathoz](#Associate-the-NSG-to-the-FrontEnd-subnet) társítja a **NSG-háttérrendszer** NSG a **háttér** alhálózati.
+3. Rendelje hozzá a a **NSG-háttérrendszer** NSG a **háttér** alhálózati, ismételje meg a [társít a NSG a FrontEnd alhálózathoz](#Associate-the-NSG-to-the-FrontEnd-subnet).
 
 ## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [meglévő NSG-k kezelése](manage-network-security-group.md)
 * [Naplózás engedélyezése](virtual-network-nsg-manage-log.md) az NSG-ket.
-

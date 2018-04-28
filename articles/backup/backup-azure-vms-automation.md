@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b5869e44e22fab1e996fcd58b4258849603a711
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3431db3844ca47ce6c2beafbd894a69f05e0311a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 
@@ -79,9 +79,9 @@ Megkezdéséhez:
     Cmdlet          Unregister-AzureRmRecoveryServicesBackupManagem... 1.4.0      AzureRM.RecoveryServices.Backup
     Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
     ```
-3. Jelentkezzen be a Azure fiók használatával **Login-AzureRmAccount**. Ez a parancsmag megnyitása egy weblap bekéri a hitelesítő adatait: 
-    - Alternatív megoldásként paraméterként megadhat a fiók hitelesítő adatait a **Login-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
-    - Ha működik a bérlő nevében CSP partner, adja meg az ügyfél a bérlők a tenantID vagy bérlői elsődleges tartománynév használatával. Például: **Login-AzureRmAccount-bérlői "fabrikam.com"**
+3. Jelentkezzen be a Azure fiók használatával **Connect-AzureRmAccount**. Ez a parancsmag megnyitása egy weblap bekéri a hitelesítő adatait: 
+    - Alternatív megoldásként paraméterként megadhat a fiók hitelesítő adataival a **Connect-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
+    - Ha működik a bérlő nevében CSP partner, adja meg az ügyfél a bérlők a tenantID vagy bérlői elsődleges tartománynév használatával. Például: **Connect-AzureRmAccount-bérlői "fabrikam.com"**
 4. Társítsa az előfizetést szeretné használni a fiókot, mert egy fiók több előfizetéssel is rendelkezik:
 
     ```PS

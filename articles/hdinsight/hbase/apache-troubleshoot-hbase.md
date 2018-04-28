@@ -1,23 +1,21 @@
 ---
-title: "Azure HDInsight HBase hibaelhárításáról |} Microsoft Docs"
-description: "A HBase és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok."
+title: Azure HDInsight HBase hibaelhárításáról |} Microsoft Docs
+description: A HBase és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinver
 manager: ashitg
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.openlocfilehash: cd6315c192ad3c33d43406993b1a3e6bd6ec7e4d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 04d8e37791c12078754a661f7a1aa8a76a6b3c44
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>A HBase hibaelhárítása az Azure HDInsight használatával
 
@@ -47,7 +45,7 @@ Ahhoz, hogy a ki nem osztott régiók normál állapotra, kövesse az alábbi l�
 
 Az időtúllépés problémák használatakor egyik lehetséges oka a `hbck` parancs lehet, hogy több régiók állapotban van a "az átmeneti" hosszú ideig. Azokban a régiókban, kapcsolat nélküli a HBase fő felhasználói felületén tekintheti meg. Régiók nagy mennyiségű átmenet megpróbálja, mert a HBase fő időtúllépés lehet, és nem lehet azokban a régiókban újra online állapotba.
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Jelentkezzen be a HDInsight HBase-fürtöt SSH használatával.
 2. A ZooKeeper rendszerhéj kapcsolódni, futtassa a `hbase zkcli` parancsot.
@@ -128,7 +126,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópontok száma alatt, vagy a HDFS replikációs tényező közel van.
 
-### <a name="resolution-steps"></a>Megoldási lépések 
+### <a name="resolution-steps"></a>A megoldás lépései 
 
 1. A HDInsight-fürt a HDFS állapotának lekérése a következő parancsok futtatásával:
 
@@ -213,7 +211,7 @@ A HDInsight-fürt csökkentették le egy nagyon kevés csomópontot. A csomópon
 
 ## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Hogyan állítsa helyre JDBC vagy SQLLine elérhetőségét Apache Phoenix problémái?
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 Phoenix kapcsolódni, az aktív ZooKeeper csomópont IP-címét kell megadnia. Győződjön meg arról, hogy a ZooKeeper szolgáltatást, hogy mely sqlline.py csatlakozni próbál működik és elérhető.
 1. Jelentkezzen be a HDInsight-fürthöz SSH használatával.
@@ -278,7 +276,7 @@ Rendszerindítás közben HMaster does alapvető `list` parancs ezeket a mappák
 
 A régió kiszolgálónaplókban próbálja ki a fájl létrehozásának ütemterv azonosíthatja, és ha hiba történt a fájl létrehozásának környékén folyamat crash megjelenik. (Ügyfélszolgálatához HBase segít ennek során.) Ez segítséget nyújt nekünk nyújtanak robusztusabb mechanizmusok, így elkerülheti, hogy elérte-e ezt a hibát, és szabályos folyamat leállítások biztosítása.
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 Ellenőrizze a hívási verem és határozza meg, előfordulhat, hogy melyik mappához okozza a problémát (például lehet a WALs vagy a .tmp mappában). A Cloud Explorer vagy a HDFS parancs használatával ezután próbálja meg a probléma fájl megkereséséhez. Általában ez jelenti a \*-renamePending.json fájlt. (A \*-renamePending.json fájl egy atomi átnevezése a WASB illesztő végrehajtásához használt napló fájlt. Ebben a megvalósításban hibák miatt ezeket a fájlokat is hagyható után folyamat leállásából eredő hiba, és így tovább.) Ez a fájl, a Cloud Explorer vagy a HDFS-parancsok segítségével kényszerített-törlés. 
 
@@ -294,7 +292,7 @@ Nincs kiszolgálói cím szerepel *hbase: meta* a régió xxx.
 
 Előfordulhat, hogy megjelenik egy üzenet, amely azt jelzi, hogy a Linux-fürt a *hbase: meta* tábla nem érhető el. Futó `hbck` előfordulhat, hogy jelenti, hogy "hbase: meta tábla Replikaazonosítójú 0 nem található a bármely régióban." A probléma lehet, hogy HMaster nem tudta inicializálni a HBase újraindítása után. A HMaster naplófájlokban, előfordulhat, hogy üzenetet látja: "nem kiszolgálói címet, a hbase szerepel: meta a terület hbase: biztonsági mentés \<terület neve\>".  
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. A HBase rendszerhéjban adja meg a következő parancsokat (tényleges értékek módosítása megfelelő):  
 
@@ -333,7 +331,7 @@ A probléma tapasztalhat, ha sok táblák és régiók, amely nem ki lettek ür�
 
 Ez az egy ismert probléma az HMaster szolgáltatással. Általános fürt indítási feladatok hosszú időt vehet igénybe. HMaster leáll, mert a névtér tábla még nincs hozzárendelve. Ez akkor fordul elő, csak a forgatókönyvek, ahol nagy adatmennyiség unflushed létezik, és egy öt perces időkorlát túl kicsi.
   
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Az Ambari felhasználói felületén, nyissa meg a **HBase** > **Configs**. Az egyéni hbase-site.xml fájlban adja hozzá a következő beállítást: 
 
@@ -411,7 +409,7 @@ A lezárás miatt a folyamathoz társított port előfordulhat, hogy nem oldhat�
    ... 15 more
    ```
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Próbálja meg újraindítás elindítása előtt, ami csökkenti a HBase régió kiszolgálók terhelését. 
 2. Másik lehetőségként (ha 1. lépésben nem oldották), manuálisan indítsa újra a munkavégző csomóponton régió kiszolgálók a következő parancsokkal:

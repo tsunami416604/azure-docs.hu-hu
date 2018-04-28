@@ -2,23 +2,19 @@
 title: Egy Azure data warehouse adattárházzal erőforrások |} Microsoft Docs
 description: Fejlesztői fogalmak, tervezési döntéseit, javaslatok és az SQL Data Warehouse kódolási eljárások.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: barbkess
-editor: ''
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: develop
-ms.date: 03/22/2018
-ms.author: jrj;barbkess
-ms.openlocfilehash: c81a6f9af556a86f10d2482333fdc98f9cfb1454
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: d9a272b2f43e080cd44b7179fe6f9dc55507142b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Tervezési döntések és az SQL Data Warehouse kódolási eljárások
 Tekintse meg a fejlesztési cikkeiben jobb megértése érdekében tervezési döntések javaslatok és kódolási eljárások az SQL Data Warehouse keresztül.
@@ -34,7 +30,7 @@ A következő cikkekben fogalmakat és a tervezési döntések egy elosztott dat
 * [-táblák indexeit][table indexes]
 * [tábla partíciók][table partitions]
 * [CTAS][CTAS]
-* [statistics][statistics]
+* [Statisztika][statistics]
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Javaslatok és kódolási eljárások
 A cikkekben, konkrét programozási módszerek, tippeket és javaslatokat az SQL Data Warehouse adattárházzal:
@@ -44,7 +40,7 @@ A cikkekben, konkrét programozási módszerek, tippeket és javaslatokat az SQL
 * [nézetek][views]
 * [az ideiglenes táblák][temporary tables]
 * [dynamic SQL][dynamic SQL]
-* [looping][looping]
+* [hurkolás][looping]
 * [Beállítások szerint kell csoportosítani][group by options]
 * [A változó-hozzárendelés][variable assignment]
 

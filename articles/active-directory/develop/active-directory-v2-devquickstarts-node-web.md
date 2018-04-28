@@ -1,39 +1,39 @@
 ---
-title: "Node.js web app bejelentkezés az Azure Active Directory v2.0 |} Microsoft Docs"
-description: "Ismerje meg, hogyan hozhat létre Node.js webalkalmazásokba jelentkezik be egy felhasználó személyes Microsoft-fiókkal és a munkahelyi vagy iskolai fiók használatával."
+title: Node.js web app bejelentkezés az Azure Active Directory v2.0 |} Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre Node.js webalkalmazásokba jelentkezik be egy felhasználó személyes Microsoft-fiókkal és a munkahelyi vagy iskolai fiók használatával.
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1b889e72-f5c3-464a-af57-79abf5e2e147
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 05/13/2017
+ms.date: 04/20/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 230d8ad16dc62564f3c1149443dd59fbb9974db5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eb16502ca255bf99c3780ff3975b6ca7f5a79993
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-sign-in-to-a-nodejs-web-app"></a>Bejelentkezés felvétele Node.js webalkalmazásokba
 
 > [!NOTE]
 > Nem minden Azure Active Directory forgatókönyvek és funkciók használata a v2.0-végponttól. Annak megállapításához, hogy használja a v2.0-végpontra vagy az 1.0-s verziójú végpont, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
-> 
+>
 
-Ebben az oktatóanyagban Passport használjuk a következő feladatok elvégzéséhez:
+Ebben az oktatóanyagban használjuk [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) a következő feladatok elvégzéséhez:
 
 * A webalkalmazásban jelentkezzen be a felhasználó Azure Active Directory (Azure AD) és a v2.0-végponttól.
 * A felhasználói információkat jelenítenek meg.
 * Jelentkezzen ki az alkalmazásból a felhasználó.
 
-A **Passport** a Node.js-hez készült közbenső hitelesítési szoftver. Rugalmas és, moduláris Passport diszkréten eldobása minden Express-alapú vagy restify webalkalmazás. Passport stratégiák széles választékát támogatja a hitelesítést egy felhasználónév és jelszó, Facebook-on, Twitter vagy egyéb beállítások használatával. Kidolgoztunk egy stratégiát, amellyel a szoftver az Azure AD esetében is felhasználható. Ebben a cikkben azt mutatja be a modul telepítése, és adja hozzá a az Azure AD `passport-azure-ad` beépülő modult.
+[A Passport](http://passportjs.org/) egy hitelesítési köztes van a Node.js. Rugalmas és, moduláris Passport diszkréten eldobása minden Express-alapú vagy restify webalkalmazás. Passport stratégiák széles választékát támogatja a hitelesítést egy felhasználónév és jelszó, Facebook-on, Twitter vagy egyéb beállítások használatával. Kidolgoztunk egy stratégiát, amellyel a szoftver az Azure AD esetében is felhasználható. Ebben a cikkben azt mutatja be a modul telepítése, és adja hozzá a az Azure AD **passport-azure-ad** beépülő modult.
 
 ## <a name="download"></a>Letöltés
 Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs). Az oktatóanyag ismerteti, hogy is [töltse le az alkalmazás vázát .zip-fájlként](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) vagy klónozza a vázat:
@@ -47,40 +47,29 @@ Hozzon létre egy új alkalmazást [apps.dev.microsoft.com](https://apps.dev.mic
 
 * Másolás a **alkalmazásazonosító** az alkalmazáshoz hozzárendelni. Ebben az oktatóanyagban van szükség.
 * Adja hozzá a **webes** platform az alkalmazásra vonatkozóan.
-* Másolás a **átirányítási URI-** a portálról. Az alapértelmezett URI értéket kell használnia `urn:ietf:wg:oauth:2.0:oob`.
+* A megadott minta következő URL-cím hozzáadása `http://localhost:3000/auth/openid/return` , a **átirányítási URI-**.
 
-## <a name="2-add-prerequisities-to-your-directory"></a>2: prerequisities adni a könyvtárhoz
-Egy parancssorban lépjen nyissa meg a gyökérmappára, ha nem már létezik. Futtassa az alábbi parancsot:
+## <a name="2-prerequisities-to-run-the-sample"></a>2: a minta futtatásához Prerequisities
 
-* `npm install express`
-* `npm install ejs`
-* `npm install ejs-locals`
-* `npm install restify`
-* `npm install mongoose`
-* `npm install bunyan`
-* `npm install assert-plus`
-* `npm install passport`
-* `npm install webfinger`
-* `npm install body-parser`
-* `npm install express-session`
-* `npm install cookie-parser`
+Szüksége lesz a Node.js build és a minta futtatásához telepíteni kell. Node.js-t telepítheti http://nodejs.org/.
 
-Ezenkívül használjuk `passport-azure-ad` a a vázat is használtuk:
+Egy parancssorban lépjen nyissa meg a gyökérmappára, ha nem már létezik.
+A felsorolt Előfeltételek csomópont moduljainak telepítése a következő parancsot a `package.json` fájlt:
 
-* `npm install passport-azure-ad`
+`npm install`
 
-Ez telepíti a könyvtárak, amelyek `passport-azure-ad` használja.
+Ez is telepíti a könyvtárak, amelyek `passport-azure-ad` használja.
 
-## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3: az alkalmazás beállítása a passport-csomópont-js stratégia használatára
+## <a name="3-set-up-your-app-to-use-passport-azure-ad"></a>3: az alkalmazás beállítása a passport-azure-ad használatára
 Állítsa be az Express közbenső szoftvert az OpenID Connect hitelesítési protokoll használandó. A Passport használatával be- és kijelentkezési kérések kiállítása, a felhasználói munkamenet kezelése és a felhasználó, többek között adatainak beolvasása.
 
-1.  A projekt gyökérkönyvtárában nyissa meg a Config.js fájlt. Az a `exports.creds` területen adja meg az alkalmazás konfigurációs értékeit.
-  
-  * `clientID`: A **alkalmazásazonosító** , amely hozzá van rendelve az alkalmazást az Azure portálon.
+1.  A projekt gyökérkönyvtárában nyissa meg a config.js fájlt. Az a `exports.creds` területen adja meg az alkalmazás konfigurációs értékeit.
+
+  * `clientID`: A **alkalmazásazonosító** , amely hozzá van rendelve az alkalmazás a portálon.
   * `returnURL`: A **átirányítási URI-** a portálon megadott.
   * `clientSecret`: A titkos kulcsot, a portálon létrehozott.
 
-2.  A projekt gyökérkönyvtárában nyissa meg az App.js fájlban. A OIDCStrategy stratey, amely a meghívni kívánt `passport-azure-ad`, adja hozzá a következő hívást:
+2.  A projekt gyökérkönyvtárában nyissa meg az app.js fájlban. A OIDCStrategy, amely a meghívni kívánt `passport-azure-ad`, adja hozzá a következő hívást:
 
   ```JavaScript
   var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -135,8 +124,8 @@ A Passport hasonló mintát alkalmaz az összes stratégia (Twitter-, Facebook-o
 
   > [!IMPORTANT]
   > Az előzőekben látható kód minden olyan felhasználó, amely képes hitelesíteni a kiszolgáló vesz igénybe. Ez az úgynevezett automatikus regisztráció. Az üzemi kiszolgálón így engedélyezni kívánja bárki, aki nélkül őket nyissa meg a regisztrációs folyamat az Ön által. Ez általában egy mintát, amely a fogyasztói alkalmazásoknál megjelenik az. Az alkalmazás is lehetővé teheti, regisztrálni a Facebook, de azt kéri, hogy további adatokat. Ha ez az oktatóanyag nem parancssori program alkalmaz, jogkivonat-objektumból visszaadott lehetett kibontani a az e-mailt. Ezután meg lehet, hogy kérnie a felhasználót adhat meg további információt. Mivel ez egy tesztkiszolgálón, hozzáadja a felhasználó közvetlenül a memóriában lévő adatbázishoz.
-  > 
-  > 
+  >
+  >
 
 4.  Adja hozzá a metódusokat, amelyek segítségével nyomon követni a felhasználók, akik van bejelentkezve, a Passport által előírt. Ez magában foglalja a szerializálása és deszerializálása során a felhasználó adatait:
 
@@ -234,7 +223,7 @@ A Passport hasonló mintát alkalmaz az összes stratégia (Twitter-, Facebook-o
   // POST /auth/openid/return
   //   Use passport.authenticate() as route middleware to authenticate the
   //   request. If authentication fails, the user is redirected back to the
-  //   sign-in page. Otherwise, the primary route function is called. 
+  //   sign-in page. Otherwise, the primary route function is called.
   //   In this example, it redirects the user to the home page.
 
   app.post('/auth/openid/return',
@@ -245,10 +234,10 @@ A Passport hasonló mintát alkalmaz az összes stratégia (Twitter-, Facebook-o
     });
   ```
 
-## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4: a be- és kijelentkezési kérések kiállítása az Azure AD használata a Passport
+## <a name="4-add-sign-in-and-sign-out-requests-to-azure-ad"></a>4: az Azure AD-be- és kijelentkezési kérések hozzáadása
 Az alkalmazás most már be van állítva az OpenID Connect hitelesítési protokoll használatával kommunikálnak a v2.0-végponttól. A `passport-azure-ad` stratégia gondoskodik hitelesítési üzenetek létrehozásával, ellenőrzése az Azure ad-jogkivonatok és karbantartása a felhasználói munkamenet összes részleteit. Ehhez marad csak a kell biztosítani a felhasználóknak olyan módon, bejelentkezés és kijelentkezés, valamint a bejelentkezett felhasználó további információt gyűjteni.
 
-1.  Adja hozzá a **alapértelmezett**, **bejelentkezési**, **fiók**, és **kijelentkezési** az App.js fájl módszerek:
+1.  Adja hozzá a **alapértelmezett**, **bejelentkezési**, **fiók**, és **kijelentkezési** az app.js fájl módszerek:
 
   ```JavaScript
 
@@ -277,7 +266,7 @@ Az alkalmazás most már be van állítva az OpenID Connect hitelesítési proto
   ```
 
   Az alábbiak:
-    
+
     * A `/` útvonal átirányítja a felhasználókat a index.ejs nézetet. Átadja a felhasználó a kérés (ha van ilyen).
     * A `/account` útvonal először *biztosítja, hogy hitelesítése* (megvalósítása, amely a következő kódrészlet). Ezt követően átadja a felhasználó a kérelemben. Ez az, hogy a felhasználó további információt.
     * A `/login` útvonal hívja a `azuread-openidconnect` a hitelesítő `passport-azuread`. Ha, amely nem jár sikerrel, az átirányítja a felhasználó vissza `/login`.
@@ -309,7 +298,7 @@ Az alkalmazás most már be van állítva az OpenID Connect hitelesítési proto
   ```
 
 
-## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a>5: a nézetek és útvonalak létrehozása az Express a felhasználó a webhely megjelenítése
+## <a name="5-create-the-views-and-routes-in-express"></a>5: a nézetekhez és útvonalak létrehozása az Express
 Adja hozzá az útvonalakat és nézeteket, amelyek az adatok megjelenítése a felhasználónak. Az útvonalakat és nézeteket is kezelni a `/logout` és `/login` létrehozott útvonalak.
 
 1. Hozzon létre a gyökérkönyvtárban a `/routes/index.js` útvonal.
@@ -338,7 +327,7 @@ Adja hozzá az útvonalakat és nézeteket, amelyek az adatok megjelenítése a 
   };
   ```
 
-  `/routes/index.js`és `/routes/user.js` egyszerű útvonalak adják át a nézetekhez, ha van ilyen, többek között a felhasználó a kérés vannak.
+  `/routes/index.js` és `/routes/user.js` egyszerű útvonalak adják át a nézetekhez, ha van ilyen, többek között a felhasználó a kérés vannak.
 
 3.  Hozzon létre a gyökérkönyvtárban a `/views/index.ejs` nézet. Ezen a lapon meghívja a **bejelentkezési** és **kijelentkezési** módszerek. Is használhatja a `/views/index.ejs` nézetre, és a fiók adatait rögzíti. Használhatja a feltételes hozzáférési `if (!user)` átadta-e keresztül a kérelemben szereplő felhasználóként. Fontos, hogy rendelkezik-e a bejelentkezett felhasználó bizonyító adatok.
 
@@ -399,13 +388,19 @@ Adja hozzá az útvonalakat és nézeteket, amelyek az adatok megjelenítése a 
   </html>
   ```
 
-6.  Build és az alkalmazás futtatása futtassa `node app.js`. Folytassa a `http://localhost:3000`.
 
-7.  Jelentkezzen be személyes Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókkal. Vegye figyelembe, hogy a felhasználó identitását tükröz /account listájában. 
+  ## <a name="6-build-and-run-your-app"></a>6: hozza létre, és az alkalmazás futtatása
+  1. Össze, és futtathatja az alkalmazást, a következő parancsot az alkalmazások gyökérkönyvtárából.
+
+  `node app.js`
+
+   Folytassa a `http://localhost:3000` a böngészőben.
+
+  2. Jelentkezzen be személyes Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókkal. Vegye figyelembe, hogy a felhasználói azonosító megjelenik a `/account` útvonal.
 
 Most már rendelkezik egy webalkalmazást, amelyet az iparági szabványos protokollok használatával. Az alkalmazás a felhasználók a személyes és munkahelyi vagy iskolai fiókok használatával képes hitelesíteni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként biztosított [egy .zip fájl](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip). Akkor is klónozhatja azt a Githubról:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
@@ -421,4 +416,3 @@ Az alábbiakban néhány további források:
 
 ### <a name="get-security-updates-for-our-products"></a>Biztonsági frissítések termékeinkhez
 Javasoljuk, hogy regisztráljon biztonsági incidensek fordulhat elő, ha értesítést szeretne kapni. Az a [Microsoft műszaki biztonsági értesítéseket](https://technet.microsoft.com/security/dd252948) lapon, a biztonsági tanácsadók riasztást fizessen elő.
-

@@ -3,17 +3,17 @@ title: A saját Azure beállításjegyzékbe leküldéses Docker kép
 description: Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8fc04ec77a101e08bfde22df76e845b87f8c316e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 40f2d3bde5e92a035709b1a8e49b76d3da079680
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -61,7 +61,7 @@ Végrehajtás következő [futtatása docker](https://docs.docker.com/engine/ref
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Keresse meg a [8080](http://localhost:8080) szolgálja ki a futó tárolóban Nginx alapértelmezett weblap megtekintéséhez. A következőhöz hasonló lap kell megjelennie:
+Keresse meg a [ http://localhost:8080 ](http://localhost:8080) szolgálja ki a futó tárolóban Nginx alapértelmezett weblap megtekintéséhez. A következőhöz hasonló lap kell megjelennie:
 
 ![Nginx egy helyi számítógépen](./media/container-registry-get-started-docker-cli/nginx.png)
 
@@ -103,7 +103,7 @@ Használja a [futtatása docker](https://docs.docker.com/engine/reference/run/) 
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Lépjen a [http://localhost:8080](http://localhost:8080) helyre a futó tároló megtekintéséhez.
+Keresse meg a [ http://localhost:8080 ](http://localhost:8080) a futó tároló megtekintéséhez.
 
 Állítsa le, és távolítsa el a tároló, nyomja meg a `Control` + `C`.
 

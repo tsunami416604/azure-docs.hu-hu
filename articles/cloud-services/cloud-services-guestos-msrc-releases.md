@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 4/6/2018
 ms.author: raiye
-ms.openlocfilehash: 5631fb8df6453cf7a1806947f0e29ab7fff7093e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: df5844ff53d8196eb1143913b420d933ba43920f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC) frissítések alkalmazása az Azure vendég operációs rendszeren. Ez a cikk határozza meg, ha az adott frissítés használ, a vendég operációs rendszer összes keresése. Frissítések mindig áthozott az adott [termékcsalád] [ family-explain] bevezetett azokat.
@@ -27,13 +27,13 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-03 rel | [4088787], [4088776] |Windows 10-biztonsági |5.17 |2018. március 13. |
-| 18-03 rel | [4088878], [4088880], [4088879] |Csak a Windows biztonsági |2.72, 3.59, 4.52 |2018. március 13. |
-| 18-03 rel | [4089187] |Internet Explorer |2.72, 3.59, 4.52 |2018. március 13. |
-| 18-03 rel | [4074595] |Flash |3.59, 4.52, 5.17 |2018. március 13. |
+| 18-03 rel | [4088878], [4088880], [4088879] |Csak a Windows biztonsági |2.72, 3.59, 4.52-es |2018. március 13. |
+| 18-03 rel | [4089187] |Internet Explorer |2.72, 3.59, 4.52-es |2018. március 13. |
+| 18-03 rel | [4074595] |Flash |3.59, 4.52-es, 5.17 |2018. március 13. |
 | – | [4074598] |Február nem a biztonság összegzése |2.72 |2018. február 13. |
 | – | [4074593] |Február nem a biztonság összegzése |3.59 |2018. február 13. |
-| – | [4074594] |Február nem a biztonság összegzése |4.52 |2018. február 13. |
-| – | [4074837] |Időzóna frissítése |2.72, 3.59, 4.52 |2018. február 13. |
+| – | [4074594] |Február nem a biztonság összegzése |4.52-es |2018. február 13. |
+| – | [4074837] |Időzóna frissítése |2.72, 3.59, 4.52-es |2018. február 13. |
 
 
 ## <a name="february-guest-os"></a>Február vendég operációs rendszer
@@ -53,12 +53,12 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 ## <a name="january-guest-os"></a>Január vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| Rel 18-01 | [4056898], [4056897], [4056899] |Csak a Windows biztonsági |2.70, 3.57, 4.50 |2018. január 3. |
+| Rel 18-01 | [4056898], [4056897], [4056899] |Csak a Windows biztonsági |2.70. bekezdés, 3.57, 4,50 |2018. január 3. |
 | Rel 18-01 | [4056890], [4056892] |Csak a Windows biztonsági |5.15 |2018. január 3. |
-| – | [4054518] |December nem a biztonság összegzése |2.70 |2017. december 12. |
+| – | [4054518] |December nem a biztonság összegzése |2.70. bekezdés |2017. december 12. |
 | – | [4054520] |December nem a biztonság összegzése |3.57 |2017. december 12. |
 | – | [4054519] |December nem a biztonság összegzése |4.50 |2017. december 12. |
-| – | [4051956] |Január időzóna frissítése |2.70, 3.57, 4.50 |2017. december 12. |
+| – | [4051956] |Január időzóna frissítése |2.70. bekezdés, 3.57, 4,50 |2017. december 12. |
 
 
 
@@ -179,8 +179,8 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-05-rel | [4019214] |Csak a Windows biztonsági |3.49 | 2017. május 9. |
 | 17-05-rel | [4018271] |Összesített frissítés az Internet Explorer |3.49 | 2017. május 9. |
 | 17-05-rel | [4010323] |SHA1 tanácsadó |2.62, 4.42, 5.7 | 2017. május 9. |
-| 17-05-rel | [4022344] |Microsoft Security Advisory |5.7 | 2017. május 9. |
-| 17-05-rel | [4022345] |Microsoft Security Advisory |5.7 | 2017. május 9. |
+| 17-05-rel | [4022344] |A Microsoft biztonsági tanácsadó |5.7 | 2017. május 9. |
+| 17-05-rel | [4022345] |A Microsoft biztonsági tanácsadó |5.7 | 2017. május 9. |
 | 17-05-rel | [4021279] |.NET /ASP.Net core tanácsadó |2.62, 3.49, 4.42, 5.7 | 2017. május 9. |
 | – | [4012864] |Időzóna frissítése |2.62, 3.49, 4.42 | 2017. május 9. |
 | – | [4014565] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |
@@ -206,9 +206,9 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-04-rel |  [4015547]  |Csak a Windows biztonsági |4.41 | 2017. április 11. |
 | 17-04-rel |  [4015548]  |Csak a Windows biztonsági |3.48 | 2017. április 11. |
 | 17-04-rel |  [4014661]  |Az Internet explorer |2.61, 3.48, 4.41 | 2017. április 11. |
-| 17-04-rel |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |.NET Security |4.41 | 2017. április 11. |
-| 17-04-rel |  [4014564]; [4014572]; [4014549] |.NET Security |3.48 | 2017. április 11. |
-| 17-04-rel |  [4014566]; [4014552]; [4014573]; [4014558]  |.NET Security |2.61 | 2017. április 11. |
+| 17-04-rel |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |.NET-biztonsága |4.41 | 2017. április 11. |
+| 17-04-rel |  [4014564]; [4014572]; [4014549] |.NET-biztonsága |3.48 | 2017. április 11. |
+| 17-04-rel |  [4014566]; [4014552]; [4014573]; [4014558]  |.NET-biztonsága |2.61 | 2017. április 11. |
 | 17-04-rel |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5.6 | 2017. április 11. |
 | 17-04-rel |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0163; CVE-2017-0183; CVE-2017-0184; CVE-2017-0184; CVE-2017-0185; CVE-2017-0168 |2.61, 3.48, 4.41 | 2017. április 11. |
 | 17-04-rel |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0178; CVE-2017-0179; CVE-2017-0162; CVE-2017-0169 |4.41 | 2017. április 11. |
@@ -249,7 +249,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-151 |[3205651]   |Biztonsági frissítés a Kernel módú illesztőprogramjaival.|2.58, 3.46, 4.39, 5.4 |2016. DEC 13. |
 | MS16-152 |[3199709]   |Biztonsági frissítés a Windows-rendszermag |5.4 |2016. DEC 13. |
 | MS16-153 |[3207328] |Biztonsági frissítés a közös napló fájlrendszer-illesztőprogram|2.58, 3.46, 4.39, 5.4 |2016. DEC 13. |
-| MS16-155 |[3205640]   |Biztonsági frissítés a. |5.4 |2016. DEC 13. |
+| MS16 – 155 |[3205640]   |Biztonsági frissítés a. |5.4 |2016. DEC 13. |
 | – |[3197868] |2016. november havi minőségi kiadott a Windows 7 SP1 és Windows Server 2008 R2 SP1 |2.58 |2016. DEC 13. |
 | – |[3197877] |November 2016 havi minőségi kiadott Windows Server 2012 |3.46 |2016. DEC 13. |
 | – |[3197874] |2016. november biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 rendszerben |4.39 |2016. DEC 13. |
@@ -297,9 +297,9 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 ## <a name="september-guest-os"></a>Szeptembertől vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
-| MS16-104 |[3183038] |Összesített frissítés az Internet Explorer |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
+| MS16-104-ES |[3183038] |Összesített frissítés az Internet Explorer |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
 | MS16-106 |[3185848] |Biztonsági frissítés a Microsoft grafikus összetevő |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
-| MS16-110 |[3178467] |Biztonsági frissítés a Windows |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
+| MS16-110-RE |[3178467] |Biztonsági frissítés a Windows |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
 | MS16-111 |[3186973] |Biztonsági frissítés a Windows-rendszermag |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
 | MS16-112 |[3178469] |Biztonsági frissítés a Windows zárolási képernyőn |4.36 |2016. Szeptembertől 13. |
 | MS16-114 |[3185879] |Biztonsági frissítés a Windows SMB-kiszolgálón |4.36, 3.43, 2.55 |2016. Szeptembertől 13. |
@@ -420,7 +420,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-018 |[3136082] |Biztonsági frissítés a Windows kernelmódú illesztőprogram megszerzését elhárítása |4.29, 3.36, 2.48 |2016. február 9. |
 | MS16-019 |[3137893] |Biztonsági frissítés a távoli végrehajtás megoldására. |4.29, 3.36, 2.48 |2016. február 9. |
 | MS16-021 |[3133043] |Biztonsági frissítés a hálózati házirend-kiszolgáló RADIUS-kiszolgáló szolgáltatásmegtagadást elhárítása |4.29, 3.36, 2.48 |2016. február 9. |
-| Microsoft Security Advisory |[3109853] |Frissítés TLS együttműködés javítása érdekében |4.29, 3.36 |2016. február 9. |
+| A Microsoft biztonsági tanácsadó |[3109853] |Frissítés TLS együttműködés javítása érdekében |4.29, 3.36 |2016. február 9. |
 | Az új kiadás-MS15-101 |[3089662] |A .NET-keretrendszer biztonsági rései jogok kiterjesztése |4.29, 3.36, 2.48 |2016. február 9. |
 | Az új kiadás-MS15-118 |[3104507] |A .NET-keretrendszer megszerzését megoldására biztonsági frissítések |4.29, 3.36, 2.48 |2016. február 9. |
 | Az új kiadás-MS15-128 |[3104503] |Távoli végrehajtás megoldására Microsoft grafikus összetevő biztonsági frissítések |4.29, 3.36, 2.48 |2016. február 9. |
@@ -434,9 +434,9 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS16-007 |[3124901] |Biztonsági frissítés a Microsoft Windows távoli végrehajtás elhárítása |4.28, 3.35, 2.47 |2016. január 12-én |
 | MS16-008 |[3124605] |Biztonsági frissítés a Kernel megszerzését elhárítása |4.28, 3.35, 2.47 |2016. január 12-én |
 | A Microsoft biztonsági tanácsadó változat |[2755801] |Az Adobe Flash Player az Internet Explorerben a biztonsági frissítés (KB-os csomag: Feladatdiagnosztika)-tanácsadó helyőrző |4.28, 3.35 |2016. január 12-én |
-| Microsoft Security Advisory |[3109853] |Frissítés TLS együttműködés javítása érdekében |4.28, 3.35 |2016. január 12-én |
-| Microsoft Security Advisory |[3123479] |A Microsoft Root Certificate programban SHA-1 kivonatoló algoritmus érvénytelenítése |4.28, 3.35, 2.47 |2016. január 12-én |
-| Microsoft Security Advisory |[2736233] |ActiveX Kill BITS frissítések |4.28, 3.35, 2.47 |2016. január 12-én |
+| A Microsoft biztonsági tanácsadó |[3109853] |Frissítés TLS együttműködés javítása érdekében |4.28, 3.35 |2016. január 12-én |
+| A Microsoft biztonsági tanácsadó |[3123479] |A Microsoft Root Certificate programban SHA-1 kivonatoló algoritmus érvénytelenítése |4.28, 3.35, 2.47 |2016. január 12-én |
+| A Microsoft biztonsági tanácsadó |[2736233] |ActiveX Kill BITS frissítések |4.28, 3.35, 2.47 |2016. január 12-én |
 
 ## <a name="december-guest-os"></a>December vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -462,7 +462,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS15-120 |[3102939] |Frissítés az IPSec szolgáltatásmegtagadást elhárítása |4.26, 3.33 |2015. november 10. |
 | MS15-121 |[3081320] |Schannel-címek hamisítását biztonsági frissítése |4.26, 3.33, 2.45 |2015. november 10. |
 | MS15-122 |[3105256] |Biztonsági frissítés a Kerberos biztonsági szolgáltatás figyelmen kívül hagyása elhárítása |4.26, 3.33, 2.45 |2015. november 10. |
-| Microsoft Security Advisory |[3097966] |Véletlenül jelentett digitális tanúsítványok lehetővé címhamisítást |4.26, 3.33, 2.45 |2015. november 10. |
+| A Microsoft biztonsági tanácsadó |[3097966] |Véletlenül jelentett digitális tanúsítványok lehetővé címhamisítást |4.26, 3.33, 2.45 |2015. november 10. |
 
 ## <a name="october-guest-os"></a>Október vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -471,7 +471,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | MS15-108 |[3089659] |Biztonsági frissítés, a JScript és VBScript céljából lehetséges távoli végrehajtás |2.44 |2015. október 13. |
 | MS15-109 |[3096443] |Biztonsági frissítés a Windows rendszerhéj távoli cím |4.25, 3.32, 2.44 |2015. október 13. |
 | MS15-111 |[3096447] |Biztonsági frissítés a Windows-rendszermag megszerzését megoldására |4.25, 3.32, 2.44 |2015. október 13. |
-| Microsoft Security Advisory |[3092627] |2015. szeptember megoldásával kapcsolatban a Windows update vagy alkalmazás lefagy 3076895 biztonsági frissítés telepítését követően |4.25, 3.32, 2.44 |2015. október 13. |
+| A Microsoft biztonsági tanácsadó |[3092627] |2015. szeptember megoldásával kapcsolatban a Windows update vagy alkalmazás lefagy 3076895 biztonsági frissítés telepítését követően |4.25, 3.32, 2.44 |2015. október 13. |
 
 ## <a name="september-guest-os"></a>Szeptembertől vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -790,9 +790,9 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 [4014567]: http://support.microsoft.com/kb/4014567
 [4015550]: http://support.microsoft.com/kb/4015550
 [4013418]: http://support.microsoft.com/kb/4013418
-[4022345]: https://technet.microsoft.com/en-us/library/security/4022345.aspx
-[4022344]: https://technet.microsoft.com/en-us/library/security/4022344.aspx
-[4021279]: https://technet.microsoft.com/en-us/library/security/4021279.aspx
+[4022345]: https://technet.microsoft.com/library/security/4022345.aspx
+[4022344]: https://technet.microsoft.com/library/security/4022344.aspx
+[4021279]: https://technet.microsoft.com/library/security/4021279.aspx
 
 
 [4015217]: http://support.microsoft.com/kb/4015217

@@ -1,8 +1,8 @@
 ---
-title: "A Windows virtuális gép MSI SAS hitelesítő adat segítségével Azure Storage eléréséhez használja"
-description: "Ez az oktatóanyag bemutatja, hogyan egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) Azure Storage egy SAS-hitelesítő adat használata helyett a fiók tárelérési kulcs elérésére használhat."
+title: A Windows virtuális gép MSI SAS hitelesítő adat segítségével Azure Storage eléréséhez használja
+description: Ez az oktatóanyag bemutatja, hogyan egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) Azure Storage egy SAS-hitelesítő adat használata helyett a fiók tárelérési kulcs elérésére használhat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: c12cf5e5c8f103434b973ccd7e50ea96b405d541
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 88d09bac87c474359f5ece93b6fe0340d9565833
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Az Azure Storage érhetnek el egy SAS-hitelesítő adat szolgáltatás Windows virtuális gép felügyelt identitás használatára
 
@@ -58,7 +58,7 @@ Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet. A 
 
 ## <a name="enable-msi-on-your-vm"></a>A virtuális Gépen lévő MSI engedélyezése
 
-A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. A színfalak MSI engedélyezése két dolgot eredményez: az MSI-Virtuálisgép-bővítmény a virtuális Gépet telepít, és MSI lehetővé teszi a virtuális géphez.  
+A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg szeretne adni a kód hitelesítő adatokat igénylő nélkül teszi lehetővé. A színfalak MSI engedélyezése két dolgot eredményez: regiszterekben az Azure Active Directory segítségével felügyelt identitását, és hozzon létre a virtuális gép identitásának konfigurálja a virtuális Gépen.
 
 1. Keresse meg az erőforráscsoport a új virtuális gép, és válassza ki a virtuális gépet, az előző lépésben létrehozott.
 2. A virtuális gép "Beállítások" a bal oldali panelen kattintson **konfigurációs**.
@@ -66,10 +66,6 @@ A virtuális gép MSI hozzáférési jogkivonatok beolvasása az Azure AD meg sz
 4. Győződjön meg arról, hogy kattintson **mentése** a konfiguráció mentéséhez.
 
     ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Ha ellenőrizni szeretné mely bővítmények a virtuális Gépre, kattintson a **bővítmények**. Ha MSI engedélyezve van, a **ManagedIdentityExtensionforWindows** listájában jelenik meg.
-
-    ![Kép helyettesítő szövege](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>Create a storage account 
 
@@ -121,7 +117,7 @@ Szüksége lesz az Azure Resource Manager PowerShell-parancsmagok használatáho
 4. A helyi MSI-végpont megszerezni egy hozzáférési jogkivonatot az Azure Resource Manager használatával Powershell Invoke-WebRequest, indítson egy lekérdezést.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]

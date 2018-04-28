@@ -1,9 +1,9 @@
 ---
-title: "A barangolás beállítási referencia Windows 10 |} Microsoft Docs"
-description: "Forrásul vagy a biztonsági mentés a Windows 10-beállítások teljes listáját."
+title: A barangolás beállítási referencia Windows 10 |} Microsoft Docs
+description: Forrásul vagy a biztonsági mentés a Windows 10-beállítások teljes listáját.
 services: active-directory
-keywords: "a vállalati állapothordozás, a windows-felhő"
-documentationcenter: 
+keywords: a vállalati állapothordozás, a windows-felhő
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 21d21c945b622c1695d8856c4baff02c098218cf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 741b76935b5a6d9b2a6869ef57caa0ac0dc6351a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 Forrásul vagy a biztonsági mentés a Windows 10-beállítások teljes listáját a következő: 
@@ -47,11 +47,15 @@ A következő beállítások csoportok állnak rendelkezésre a végfelhasznál�
 * Könnyű kezelés: Narrátor, Nagyító, képernyő-billentyűzet 
 * Egyéb Windows-beállítások: lásd: a Windows-beállítások részletei
 
-![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-individual-sync-settings.png)
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 Edge böngésző beállítás (Kedvencek, olvasási lista) csoport szinkronizálása is engedélyezhető vagy letiltható Edge böngésző beállításai menüpont a végfelhasználók által.
 
-![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-edge.png)
+
+A Windows 10-es verzió 1803 vagy újabb, az Internet Explorer beállítási csoportja (a Kedvencek közé, beírt URL-címek) szinkronizálása is engedélyezhető vagy letiltható az Internet Explorer beállításainak menüpont a végfelhasználók által. 
+
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Windows-beállítások részletei
 Az alábbi táblázatban a csoport oszlop más bejegyzései hivatkozik letiltható beállítások a beállítások > fiókok > Beállítások szinkronizálása > más Windows-beállításait. 

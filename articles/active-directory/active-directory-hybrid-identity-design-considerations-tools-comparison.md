@@ -1,8 +1,8 @@
 ---
-title: "Hibrid identitás: a címtár-integrációs eszközök összehasonlítása | Microsoft Docs"
-description: "Ez az oldal egy átfogó táblázatot biztosít, amely összehasonlítja a címtár-integrációhoz használható különböző címtár-integrációs eszközöket."
+title: 'Hibrid identitás: a címtár-integrációs eszközök összehasonlítása | Microsoft Docs'
+description: Ez az oldal egy átfogó táblázatot biztosít, amely összehasonlítja a címtár-integrációhoz használható különböző címtár-integrációs eszközöket.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 1e62a4bd-4d55-4609-895e-70131dedbf52
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2018
+ms.date: 04/27/2018
 ms.author: billmath
-ms.openlocfilehash: 78ca910b4dfd5a706d2f1df7f70291fb48f096f5
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 5d189af9b08f2b6e9ea194c15bfba683afc75a54
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hibrid identitás: a címtár-integrációs eszközök összehasonlítása
 Az évek során a címtár-integrációs eszközök bővültek és továbbfejlődtek.  Ez a dokumentum ezen eszközök egyesített nézetét is elérhetővé teszi, valamint az egyes eszközökben elérhető funkciók összehasonlíthatóságát biztosítja.
@@ -43,16 +43,14 @@ NyE = Nyilvános előzetes verzió
 | Csatlakozás egyetlen helyszíni AD-erdőhöz |● |● |● |● |● |
 | Csatlakozás több helyszíni AD-erdőhöz |● |● | |● |● |
 | Csatlakozás több helyszíni Exchange-szervezethez |● | | | | |
-| Csatlakozás egyetlen helyszíni LDAP-címtárhoz |●* | | |● |● |
-| Csatlakozás több helyszíni LDAP-címtárakhoz |●*  | | |● |● |
-| Csatlakozás helyszíni AD-hez és helyszíni LDAP-címtárakhoz |●* | | |● |● |
+| Csatlakozás egyetlen helyszíni LDAP-címtárhoz | | | |● |● |
+| Csatlakozás több helyszíni LDAP-címtárakhoz |  | | |● |● |
+| Csatlakozás helyszíni AD-hez és helyszíni LDAP-címtárakhoz | | | |● |● |
 | Csatlakozás egyedi rendszerekhez (SQL, Oracle, MySQL stb.) |JK | | |● |● |
 | Ügyfél által meghatározott attribútumok szinkronizálása (címtárbővítmények) |● | | | | |
 | Csatlakozás helyszíni HR-hez (SAP, Oracle eBusiness, PeopleSoft) |JK | | |● |● |
 | Támogatja a FIM-szinkronizálási szabályokat és összekötőket a helyszíni rendszerekre történő üzembe helyezéshez. | | | |● |● |
-&#42; Jelenleg erre két támogatott lehetőség van.  Ezek a következők:
-   1. Használhatja az általános LDAP-összekötőt, és engedélyezheti az Azure AD Connecten kívül.  Ez egy bonyolult megoldás, és szükség van egy partnerre az előkészítéséhez, valamint egy Premier támogatási szerződésre a fenntartásához.  Ez a lehetőség egy vagy több LDAP-címtár kezelésére is képes.
-   2. Kifejlesztheti a saját megoldását is az objektumok LDAP-ból az Active Directoryba való áthelyezésére.  Ezután szinkronizálnia kell az objektumokat az Azure AD Connecttel.  Az objektumok áthelyezésére a MIM vagy a FIM jelenthet megoldást.
+
 
 ## <a name="cloud-to-on-premises-synchronization"></a>Felhőről helyszínre végzett szinkronizálás
 | Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services | Azure Active Directory Synchronization Tool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |

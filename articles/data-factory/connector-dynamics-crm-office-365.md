@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea69fdab9ec510f6060b280db3afffb7533a4bda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: e68f8d4405ae82cfaae59b1e4d9dcea8b361baff
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása Dynamics 365 (közös adatszolgáltatás) vagy a Dynamics CRM és Azure Data Factory használatával
 
@@ -35,7 +35,7 @@ A Dynamics összekötő támogatja a következő Dynamics verziói és a hiteles
 | Dynamics verziók | Hitelesítéstípusok | A kapcsolódószolgáltatás-minták |
 |:--- |:--- |:--- |
 | Dynamics 365 online <br> Dynamics CRM Online | Office365 | [Dynamics online + Office365 hitelesítés](#dynamics-365-and-dynamics-crm-online) |
-| Dynamics 365 helyszíni ELÉRÉS <br> Dynamics CRM 2016 helyszíni ELÉRÉS <br> Dynamics CRM 2015 a helyszíni az ELÉRÉS | IFD | [Dynamics a helyszíni az internetes Elérésű + ELÉRÉS hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+| Dynamics 365 helyszíni ELÉRÉS <br> Dynamics CRM 2016 helyszíni ELÉRÉS <br> Dynamics CRM 2015 a helyszíni az ELÉRÉS | ELÉRÉS | [Dynamics a helyszíni az internetes Elérésű + ELÉRÉS hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 A Dynamics 365 konkrétan az alábbi alkalmazástípusokat támogatja:
 
@@ -63,7 +63,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságok támogatottak
 |:--- |:--- |:--- |
 | type | A type tulajdonságot meg kell **Dynamics**. | Igen |
 | deploymentType | A központi telepítési típus a Dynamics példány. Lehet **"Online"** Dynamics online. | Igen |
-| Szervezetnév | A Dynamics példány szervezet nevét. | Nem szabad megadni, ha a felhasználóhoz társított egynél több Dynamics-példány |
+| serviceUri | A szolgáltatás URL-CÍMÉT a Dynamics példány, pl. `https://adfdynamics.crm.dynamics.com`. | Igen |
 | authenticationType | A hitelesítési típus Dynamics kiszolgálóhoz csatlakozik. Adja meg **"Office365"** Dynamics online. | Igen |
 | felhasználónév | Adja meg a felhasználónevet Dynamics való kapcsolódáshoz. | Igen |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
@@ -71,6 +71,9 @@ A Dynamics társított szolgáltatás a következő tulajdonságok támogatottak
 
 >[!IMPORTANT]
 >Dynamics adatait átmásolja, amikor az alapértelmezett Azure integrációs futásidejű nem hajthatók végre másolása. Ez azt jelenti, ha a forrás társított szolgáltatás nem rendelkezik a megadott integrációs futásidejű explicit módon [hozzon létre egy Azure integrációs futásidejű](create-azure-integration-runtime.md#create-azure-ir) egy helyen lévő közelében a Dynamics példányát. Rendelje hozzá azt a Dynamics társított szolgáltatás az alábbi példában látható módon.
+
+>[!NOTE]
+>A Dynamics összekötő "szervezetnév" tulajdonság segítségével azonosíthatja a Dynamics CRM/365 Online példányát használja. Eszköz tartja működik, amíg a használata javasolt a ahhoz, hogy a jobb teljesítmény érdekében például felderítési Ehelyett adja meg az új "serviceUri" tulajdonságot.
 
 **Példa: A Dynamics online Office365-hitelesítés használatával**
 
@@ -82,7 +85,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságok támogatottak
         "description": "Dynamics online linked service using Office365 authentication",
         "typeProperties": {
             "deploymentType": "Online",
-            "organizationName": "orga02d9c75",
+            "serviceUri": "https://adfdynamics.crm.dynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -269,7 +272,7 @@ Adatok másolása Dynamics, állítsa be a fogadó típusa a másolási tevéken
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani **DynamicsSink**. | Igen |
 | WriteBehavior | A művelet írási viselkedését.<br/>Az engedélyezett értéket **"Upsert"**. | Igen |
-| writeBatchSize | A sorok számát az egyes kötegekben Dynamics írt adatok. | Nem (alapértelmezett érték 10) |
+| WriteBatchSize | A sorok számát az egyes kötegekben Dynamics írt adatok. | Nem (alapértelmezett érték 10) |
 | ignoreNullValues | Azt jelzi, hogy a bemeneti adatokból (kivéve a kulcsmezők) null értékek kihagyása írási művelet során.<br/>Két érték engedélyezett **igaz** és **hamis**.<br>- **Igaz**: változatlanul a célobjektum adatainak upsert/frissítési művelet végrehajtásakor. Szúrja be egy meghatározott alapértelmezett értéket, ha így tesz, az insert művelet.<br/>- **Hamis**: frissítse az adatokat a célobjektum NULL upsert/frissítési művelet végrehajtásakor. Helyezze be NULL értékre, ha így tesz, az insert művelet. | Nem (alapértelmezett értéke "false") |
 
 >[!NOTE]

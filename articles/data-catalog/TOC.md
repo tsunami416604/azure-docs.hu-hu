@@ -26,7 +26,7 @@
 ## [Kapcsolódó adategységek megtekintése](data-catalog-how-to-view-related-data-assets.md) 
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=data-catalog)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=data-catalog)
 ## [REST](/rest/api/datacatalog/)
 ## [Keresési szintaxis referenciája](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Fejlesztői fogalmak](data-catalog-developer-concepts.md)

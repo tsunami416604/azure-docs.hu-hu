@@ -15,11 +15,11 @@ ms.date: 03/06/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 3b689c6028470021734ad78dd88748f4079c383f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4e413d921390cfb87c27c530c6870945c28c0df8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök
 Azure szerepköralapú hozzáférés-vezérlés (RBAC) tartalmaz a következő beépített szerepkörök, felhasználók, csoportok és szolgáltatások rendelhető. A beépített szerepkörök definíciója nem módosítható. Azonban létrehozhat [egyéni szerepkörök az Azure RBAC](custom-roles.md) a szervezet igényeinek megfelelően.
@@ -579,6 +579,7 @@ Létrehozhat és kezelhet adat-előállítókat, valamint azokban található gy
 | **Műveletek** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
+| Microsoft.DataFactory/factory/* | Létrehozása és kezelése az adat-előállítók és gyermekerőforrásait rajtuk. |
 | Microsoft.DataFactory/dataFactories/* | Létrehozása és kezelése az adat-előállítók és gyermekerőforrásait rajtuk. |
 | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
 | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |

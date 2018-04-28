@@ -12,24 +12,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/30/2018
+ms.date: 4/03/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 807c703eccf336236846212b8a0cadc20ec2bc4a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3d6a47ba184b4bbbd290a61c581ae8b83b9361af
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>A Naplóelemzési beállítása egy fürtben
 
-A Naplóelemzési munkaterület Azure Resource Manager, a PowerShell vagy az Azure piactér állíthat be. Ha a telepítés későbbi használat érdekében egy frissített Resource Manager-sablon, használja ugyanazt a sablont az OMS-környezet beállítása. Üzembe helyezés piactér egyszerűbb, ha már rendelkezik egy fürt engedélyezve diagnosztikai telepítik. Nincs előfizetés-szintű hozzáférést a fiók, amelyen OMS telepíti, ha a PowerShell vagy a Resource Manager-sablon telepíthet.
+A Naplóelemzési az ajánlott megoldás a fürt szolgáltatásiszint-események figyelésére. A Naplóelemzési munkaterület Azure Resource Manager, a PowerShell vagy az Azure piactér állíthat be. Ha a telepítés későbbi használat érdekében egy frissített Resource Manager-sablon, ugyanazt a sablont segítségével állítsa be a Naplóelemzési környezetet. Üzembe helyezés piactér egyszerűbb, ha már rendelkezik egy fürt engedélyezve diagnosztikai telepítik. Ha a fiók, amely telepíti az előfizetés szintű hozzáférés nem rendelkezik, a PowerShell vagy a Resource Manager-sablon telepíthet.
 
 > [!NOTE]
-> Naplóelemzési be, figyelheti a fürtöt, meg kell rendelkeznie a fürt- vagy platform-szintjén eseményeinek engedélyezve diagnosztikai.
+> Naplóelemzési be, figyelheti a fürtöt, meg kell rendelkeznie a fürt- vagy platform-szintjén eseményeinek engedélyezve diagnosztikai. Tekintse meg [diagnosztika a Windows-fürtök beállítása](service-fabric-diagnostics-event-aggregation-wad.md) és [diagnosztika a Linux-fürtök beállítása](service-fabric-diagnostics-event-aggregation-lad.md) további
 
-## <a name="deploy-oms-by-using-azure-marketplace"></a>OMS telepítését az Azure piactéren
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>A Naplóelemzési munkaterület telepítését az Azure piactéren
 
-Ha hozzá szeretne adni egy OMS-munkaterület, a fürt telepítése után, nyissa meg a portálon az Azure piactéren, és keresse meg **Service Fabric Analytics**:
+Ha szeretne hozzáadni a Naplóelemzési munkaterület fürt telepítése után, nyissa meg a portálon az Azure piactéren, és keressen **Service Fabric Analytics**. Ez a Service Fabric központi telepítések egy egyéni megoldás, amely a Service Fabric vonatkozó adatokat tartalmaz. A folyamat a megoldás (az irányítópult megtekintéséhez insights) és a munkaterület (fürt adatok összesítésének) hoz létre.
 
 1. Válassza ki **új** a bal oldali navigációs menü. 
 
@@ -39,7 +39,7 @@ Ha hozzá szeretne adni egy OMS-munkaterület, a fürt telepítése után, nyiss
 
     ![A piactéren OMS ú elemzés](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. Válassza a Service Fabric Analytics létrehozása ablak **munkaterület kiválasztása** a a **OMS-munkaterület** mezőben, majd **hozzon létre egy új munkaterületet**. Töltse ki a szükséges bejegyzéseket. Az egyetlen követelménye, hogy az előfizetés, a Service Fabric-fürt és az OMS-munkaterület megegyezik. Ha a bejegyzések érvényesítése megkezdené az OMS-munkaterület központi telepítését. A telepítés csak néhány percet vesz igénybe.
+4. Válassza a Service Fabric Analytics létrehozása ablak **munkaterület kiválasztása** a a **OMS-munkaterület** mezőben, majd **hozzon létre egy új munkaterületet**. Töltse ki a szükséges bejegyzéseket. Az egyetlen követelménye, hogy az előfizetés, a Service Fabric-fürt és a munkaterület megegyezik. Ha a bejegyzések érvényesítése a munkaterület központi telepítése elindul. A telepítés csak néhány percet vesz igénybe.
 
 5. Ha elkészült, válassza ki a **létrehozása** újra a Service Fabric Analytics létrehozása ablak alján. Győződjön meg arról, hogy alatt megjelenik az új munkaterületet **OMS-munkaterület**. Ez a művelet hozzáadja a megoldás a munkaterületet.
 
@@ -48,9 +48,9 @@ Ha Windows használ, folytassa a OMS Szolgáltatáshoz való kapcsolódáshoz a 
 >[!NOTE]
 >Ez a felület Linux-fürtök engedélyezése még nem érhető el. 
 
-### <a name="connect-the-oms-workspace-to-your-cluster"></a>Az OMS-munkaterület csatlakozzon a fürthöz 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>A Naplóelemzési munkaterület csatlakozzon a fürthöz 
 
-1. A munkaterület kell kapcsolódnia kell a fürtből származó diagnosztikai adatokat. Nyissa meg az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki **ServiceFabric\<nameOfOMSWorkspace\>**  és Ugrás a – áttekintés oldalra. Ott módosíthatja a megoldás beállításai, munkaterület beállításai, és elérni az OMS-portálon.
+1. A munkaterület kell kapcsolódnia kell a fürtből származó diagnosztikai adatokat. Nyissa meg az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki **ServiceFabric\<nameOfWorkspace\>**  és Ugrás a – áttekintés oldalra. Ott módosíthatja a megoldás beállításai, munkaterület beállításai, és elérni az OMS-portálon.
 
 2. A bal oldali navigációs menü alatti **munkaterület adatforrások**, jelölje be **tárfiókok naplók**.
 
@@ -200,7 +200,7 @@ $WorkspaceName = "<OMS Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId $SubID 
 
 # Create the resource group if needed

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: eccfdf519d16595f2bda77675d62bff4bf14b4f8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 45856f759b7d11a7712a032a00d2d1a4fb2043d2
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - erőforrás-kezelő különböző előfizetésekhez 
 
@@ -179,7 +179,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Ha min
 
 1. Telepítse a PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) moduljának legújabb verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Indítson el egy PowerShell-munkamenetet.
-3. A PowerShellben, jelentkezzen be az Azure-bA "a" felhasználó írja be a `login-azurermaccount` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
+3. A PowerShellben, jelentkezzen be az Azure-bA "a" felhasználó írja be a `Connect-AzureRmAccount` parancsot. A fiókkal jelentkezik be az virtuális hálózati társviszony-létesítés létrehozásához szükséges engedélyekkel kell rendelkeznie. Az engedélyek listájáért lásd: [virtuális hálózati társviszony-létesítési engedélyek](virtual-network-manage-peering.md#permissions).
 4. Hozzon létre egy erőforráscsoportot és a virtuális hálózat A. másolása a következő parancsfájl egy szövegszerkesztőben a számítógépen. Cserélje le `<SubscriptionA-Id>` SubscriptionA azonosítójú. Ha az előfizetés-azonosítója nem ismeri, adja meg a `Get-AzureRmSubscription` parancs a megtekintéséhez. A következő **azonosító** visszaadott kimenet van az előfizetés-azonosító. A parancsfájl végrehajtása, másolja a módosított, illessze be a PowerShell, és nyomja le az `Enter`.
 
     ```powershell
@@ -292,7 +292,7 @@ Ez az oktatóanyag befejezése után, előfordulhat, hogy törölni kívánja az
 5. Jelentkezzen ki, "a" felhasználó a portálon, és jelentkezzen be "b" felhasználó.
 6. Végezze el myResourceGroupB 2 – 4 lépéseket.
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="delete-cli"></a>Az Azure parancssori felület
 
 1. Jelentkezzen be Azure-bA "a" felhasználó, és hajtsa végre a következő parancsot:
 

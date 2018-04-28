@@ -1,12 +1,12 @@
 ---
-title: "Támogatott vendég operációs rendszerek Azure verem |} Microsoft Docs"
-description: "A vendég operációs rendszerek használható Azure veremben."
+title: Támogatott vendég operációs rendszerek Azure verem |} Microsoft Docs
+description: A vendég operációs rendszerek használható Azure veremben.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: Brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/22/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: 3eceb740b8115d2eaca517017f6158744d6e8e58
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ff3aea4e449e3d489b0c0f01345ecd9773c7d885
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure-veremben támogatott vendég operációs rendszerek
 
@@ -30,34 +30,40 @@ Az Azure verem támogatja a Windows operációs rendszerű vendégek felsorolt a
 
 A telepítés során Azure verem esetében a vendégügynök megfelelő verzióját a lemezképpel.
 
-| Operációs rendszer | Leírás | Közzétevő | Operációs rendszer típusa | Piactér |
+| Operációs rendszer | Leírás | Elérhető a piactéren |
 | --- | --- | --- | --- | --- | --- |
-| Windows Server 2008 R2 SP1 | 64 bites | Microsoft | Windows | Adatközpont |
-| Windows Server 2012 | 64 bites | Microsoft | Windows | Adatközpont |
-| Windows Server 2012 R2 | 64 bites | Microsoft | Windows | Adatközpont |
-| Windows Server 2016 | 64 bites | Microsoft | Windows | Datacenter, Datacenter Core tárolók adatközpont |
-| Windows 10 *(lásd az 1. megjegyzés)* | 64 bites, Pro és Enterprise | Microsoft | Windows | Nem |
+| A Windows Server verzió 1709 | 64 bites | A tárolók Core |
+| Windows Server 2016 | 64 bites |  Datacenter, Datacenter Core tárolók adatközpont |
+| Windows Server 2012 R2 | 64 bites |  Adatközpont |
+| Windows Server 2012 | 64 bites |  Adatközpont |
+| Windows Server 2008 R2 SP1 | 64 bites |  Adatközpont |
+| Windows Server 2008 SP2 | 64 bites |  Saját rendszerkép kapcsolása |
+| Windows 10 *(lásd az 1. megjegyzés)* | 64 bites, Pro és Enterprise | Saját rendszerkép kapcsolása |
 
-***1. Megjegyzés:****telepítheti a Windows 10-es ügyfél operációs rendszereket Azure veremben, rendelkeznie kell [Windows felhasználói licencelési](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) vagy a vételi keresztül egy minősített több-Bérlős szolgáltató ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)).* 
+***1. Megjegyzés:****telepítheti a Windows 10-es ügyfél operációs rendszereket Azure veremben, rendelkeznie kell [Windows felhasználói licencelési](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) vagy a vételi keresztül egy minősített több-Bérlős szolgáltató ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)).*
 
+Piactéren elérhető rendszerkép fizetési,-akkor-használható vagy BYOL (EA/SPLA) licencelési érhetők el. Mindkét szolgáltatás egyetlen Azure veremben példányra használata nem támogatott. 
+
+Csak a Datacenter kiadások érhetők el a piactéren; az ügyfelek a saját kiszolgáló képek, többek között a többi kiadás is kapcsolja.
 
 ## <a name="linux"></a>Linux
 
 Az itt felsorolt Linux terjesztésekről tartalmazza a szükséges Windows Azure Linux ügynök (WALA).
 
 > [!NOTE]   
-> Mint 2.2.3 régebbi WALA verzióival készült képek *nem* támogatott és nem valószínű, hogy telepíteni. Néhány WALA ügynökverziók ismert, hogy Azure virtuális gépeken verem, többek között a 2.2.12 és 2.2.13 verziói nem függvény.
+> Egyéni lemezképek kell kialakítani, nyilvános WALA legújabb verziójával. Előfordulhat, hogy Azure verem 2.2.18 régebbi verziói nem működnek majd megfelelően.  
 >
-> [felhő inicializálás](https://cloud-init.io/) Ubuntu terjesztéseket Azure veremben csak támogatott.
+> [felhő inicializálás](https://cloud-init.io/) Azure veremben jelenleg nem támogatott.
 
 | Disztribúció | Leírás | Közzétevő | Piactér |
 | --- | --- | --- | --- | --- | --- |
 | Tároló Linux |  64 bites | CoreOS | Stable |
 | CentOS-alapú 6.9. | 64 bites | Az engedélyezetlen Wave | Igen |
 | 7.4 centOS-alapú | 64 bites | Az engedélyezetlen Wave | Igen |
+| ClearLinux | 64 bites | ClearLinux.org | Igen |
 | Debian 8 "Jessie" | 64 bites | credativ |  Igen |
 | Debian 9 "Stretch" | 64 bites | credativ | Igen |
-| Red Hat Enterprise Linux (függőben) 7.x | 64 bites | Red Hat | Nem |
+| Red Hat Enterprise Linux (függőben) 7.x | 64 bites | Red Hat |Saját rendszerkép kapcsolása |
 | SLES 11SP4 | 64 bites | SUSE | Igen |
 | SLES 12SP3 | 64 bites | SUSE | Igen |
 | Ubuntu 14.04-es lts verzió | 64 bites | Canonical | Igen |

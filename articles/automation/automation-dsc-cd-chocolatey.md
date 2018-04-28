@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e92bb8b4078bc5c85a639d3b5b38c124152576f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bf535dfae4c5f710a423343bc3d76c81d83df2ae
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Példa: A virtuális gépek Automation DSC és Chocolatey folyamatos üzembe helyezés
 DevOps világában sok eszközöket különböző pontok folyamatos integrációs folyamatban van.  Azure Automation kívánt állapot konfigurációs szolgáltatása (DSC) egy üdvözlő új hozzáadása arra a DevOps csoportokat is alkalmaz.  Ez a cikk bemutatja a beállítás mentése folyamatos Deployment (CD) a Windows-számítógépen.  Könnyen kiterjesztheti a technika (egy webhely, például) szerepkör, és onnan, valamint a további szerepkörök közé tartoznak a tetszőleges számú, Windows rendszerű számítógépeken szükség szerint.
@@ -50,7 +50,7 @@ Valószínűleg már végzett tetején, vagy azt a legtöbb bit.  A nuspec létr
 Ha még nem kezdve egy ARM-sablon, ez is OK gombra.  PowerShell-parancsmagok célja, hogy a virtuális gépek regisztrálása a lekérési kiszolgálójával, és az összes többi van. További részletekért lásd: Ez a cikk: [bevezetési gépeket Azure Automation DSC általi kezelésre](automation-dsc-onboarding.md)
 
 ## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>1. lépés: A lekérési kiszolgálón és az automatizálás fiók beállítása
-Egy hitelesített (Add-AzureRmAccount) PowerShell parancssorból: (percet is igénybe vehet néhány közben a lekérési kiszolgálón be van állítva)
+Egy hitelesített (Csatlakozás-AzureRmAccount) PowerShell parancssorból: (percet is igénybe vehet néhány közben a lekérési kiszolgálón be van állítva)
 
     New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
     New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 

@@ -1,6 +1,6 @@
 ---
-title: "DSVM és a cél az Azure ML számítási HDI létrehozása"
-description: "Hozzon létre DSVM és HDI Spark-fürt a számítási célozza az Azure ML kísérletezhet."
+title: DSVM és a cél az Azure ML számítási HDI létrehozása
+description: Hozzon létre DSVM és HDI Spark-fürt a számítási célozza az Azure ML kísérletezhet.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 15cdee0fb3994874c88b16bebec35f5eae9f8de2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1229a66ec84b4272337a5dd1e17942e46b25e9a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>A számítási célok DSVM és HDI Spark fürt létrehozása
 
@@ -27,7 +27,7 @@ Könnyedén növelheti vagy további számítási célok például Ubuntu-alapú
 
 Egy DSVM hozhat létre Azure-portálon. 
 
-1. Jelentkezzen be Azure-portálon a https://portal.azure.com
+1. Jelentkezzen be az Azure-portálon https://portal.azure.com
 2. Kattintson a **+ új** hivatkozásra, majd keresse meg a "data tudományos virtuális gép Linux".
     ![Ubuntu](media/how-to-create-dsvm-hdi/ubuntu_dsvm.png)
 4. Válasszon **adatok tudományos virtuális gép Linux (Ubuntu)** elemet a listában, és kövesse a képernyőn megjelenő a DSVM létrehozásához nyújt útmutatást.
@@ -148,13 +148,13 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>Bontsa ki a DSVM operációsrendszer-lemez
-Linux virtuális gép az Azure-ban általában tartalmaz egy 30 GB-os operációsrendszer-lemez. A cél az Azure ML számítási használatakor azt is fogyasztásra gyorsan Docker-motor húzza lefelé Docker képek és felépítése conda rétegek utasítást. Célszerű bontsa ki az operációsrendszer-lemezképet (például 200 GB) nagyobb méretűre elkerülése érdekében a "teljes" lemezhiba, amíg egy végrehajtását közepén. Hivatkozás [kibontása a Linux virtuális gép és az Azure parancssori felület virtuális merevlemezek](../../virtual-machines/linux/expand-disks.md) ehhez egyszerűen az azure-cli módjáról. 
+Az Ubuntu DSVM egy 50 GB-os operációsrendszer-lemez és a 100GB adatlemezt tartalmaz. Docker ábráit tárolja a adatlemez, több helyre nem áll rendelkezésre. A cél az Azure ML számítási használatakor ezt a lemezt használhatja húzza lefelé Docker képek és felépítése conda rétegek utasítást Docker-motorhoz. Szükség lehet bontsa ki a lemezről lemezre (például 200 GB) nagyobb méretűre elkerülése érdekében a "teljes" lemezhiba, amíg egy végrehajtását közepén. Hivatkozás [kibontása a Linux virtuális gép és az Azure parancssori felület virtuális merevlemezek](../../virtual-machines/linux/expand-disks.md) ehhez egyszerűen az azure-cli módjáról. 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Az Apache Spark on Azure HDInsight-fürt létrehozása az Azure portálon
 
 Kibővített Spark feladatok futtatása az Apache Spark on Azure HDInsight-fürt létrehozása az Azure portálon kell.
 
-1. Jelentkezzen be Azure-portálon a https://portal.azure.com
+1. Jelentkezzen be az Azure-portálon https://portal.azure.com
 2. Kattintson a **+ új** hivatkozásra, majd keresse meg a "HDInsight".
 
     ![hdi keresése](media/how-to-create-dsvm-hdi/hdi.png)

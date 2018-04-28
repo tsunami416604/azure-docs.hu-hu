@@ -1,25 +1,19 @@
 ---
-title: "Az Azure Search Lucene lekérdezés példák |} Microsoft Docs"
-description: "Az intelligens egyeztetésű keresési, közelségi kapcsolat keresési, kifejezés kiemelése, reguláris kifejezés keresési, és helyettesítő karakteres keresés Lucene a lekérdezés szintaxisa."
-services: search
-documentationcenter: 
+title: Az Azure Search Lucene lekérdezés példák |} Microsoft Docs
+description: Az intelligens egyeztetésű keresési, közelségi kapcsolat keresési, kifejezés kiemelése, reguláris kifejezés keresési, és helyettesítő karakteres keresés Lucene a lekérdezés szintaxisa.
 author: LiamCa
-manager: pablocas
-editor: 
+manager: jlembicz
 tags: Lucene query analyzer syntax
-ms.assetid: 147f360d-a5ce-4d7b-a909-c8b65bfb748c
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: liamca
-ms.openlocfilehash: 1faed621039ecd04064cb074e6b9011418e6ec47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: c83b3b0d9c0cc99ba8a76dc4a6b2f83ed6de49dc
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Lucene lekérdezési szintaxis példák az Azure Search lekérdezések létrehozása
 Lekérdezések létrehozása az Azure Search, használhatja az alapértelmezett vagy [egyszerű lekérdezés szintaxisát](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vagy a tulajdonos alternatív [Lucene Lekérdezéselemzőben az Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). A Lucene Lekérdezéselemzőben összetett lekérdezési szerkezeteket, például mező hatókörű lekérdezések intelligens egyeztetésű keresési, közelségi kapcsolat keresési, kifejezés kiemelése vagy reguláris kifejezést keresési támogatja.
@@ -117,7 +111,7 @@ A reguláris kifejezés keresési egyezést közötti perjellel "/", a leírtak 
 
 * `&queryType=full&$select=business_title&search=business_title:/(Sen|Jun)ior/`
 
-Ebben a példában az URL-címe nem megfelelő jeleníti meg a lapon. A probléma megoldásához másolja az alábbi URL-címet, majd illessze be a böngésző URL-címet:`http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
+Ebben a példában az URL-címe nem megfelelő jeleníti meg a lapon. A probléma megoldásához másolja az alábbi URL-címet, majd illessze be a böngésző URL-címet: `http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
 
 ## <a name="wildcard-search-example"></a>Helyettesítő karakteres keresés – példa
 Több általában felismerhető szintaxis is használható (\*) vagy egy (?) karakter helyettesítő karakteres kereséssel. Vegye figyelembe a Lucene lekérdezéselemzőben egyetlen kifejezés, és nem egy kifejezést a szimbólumok használatát támogatja.
@@ -128,12 +122,12 @@ Több általában felismerhető szintaxis is használható (\*) vagy egy (?) kar
 
 Nem használhatja a * és? Keresés az első karakterként szimbólum.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Adja meg a Lucene Lekérdezéselemzőben az a kódot. Az alábbi hivatkozások azt ismertetik, hogyan állíthatja be a keresési lekérdezések .NET-hez és a REST API-t. A hivatkozások a szintaxissal alapértelmezett egyszerű, adatnézetből származó adja meg, hogy ez a cikk alkalmazni kell a **queryType**.
 
 * [A .NET SDK használatával Azure Search-Index lekérdezése](search-query-dotnet.md)
 * [A REST API használatával Azure Search-Index lekérdezése](search-query-rest-api.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
  [Hogyan teljes szöveges keresés az Azure Search működik](search-lucene-query-architecture.md)

@@ -1,4 +1,4 @@
-Az alkalmazáshoz tartozó új jelszó részletekbe menő létrehozási folyamatának engedélyezéséhez létre kell hoznia egy új jelszó létrehozására vonatkozó szabályzatot. Az új jelszó összes bérlőre vonatkozó létrehozási lehetősége [itt](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md) van meghatározva. Ez a szabályzat írja le, hogy mit tapasztalnak a felhasználók az új jelszó kérése során, valamint megadja azokat a jogkivonatokat, amelyeket az alkalmazás fogad a művelet sikeres elvégzésekor.
+Ahhoz, hogy a minden részletre kiterjedő jelszó-változtatási az alkalmazásra, használja a **jelszó-átállítási** házirend. Az új jelszó összes bérlőre vonatkozó létrehozási lehetősége [itt](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md) van meghatározva. Ez a házirend az, hogy a felhasználók jelszó-változtatási és -jogkivonatokat, amelyek az alkalmazás sikeres befejezését követően kap tartalmát során végighaladnia feladatait ismerteti.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: ae8e9f46923928853c0c63e8c50f4e95b915e277
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5a0574af04c118d466544d533561eb01639edfc6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Az Azure AD Connect: Fiókok és engedélyek
 Az Azure AD Connect telepítővarázsló biztosít két különböző elérési utak:
@@ -58,7 +58,7 @@ A [fiók](#active-directory-account) létrehozott olvasását és írását az A
 
 | Engedély | A használt |
 | --- | --- |
-| <li>Változások replikálása</li><li>Replikálása Directory összes módosítása |A jelszó-szinkronizálás |
+| <li>Változások replikálása</li><li>Replikálása Directory összes módosítása |Jelszókivonat-szinkronizálás |
 | Olvasási/írási összes tulajdonság felhasználó |Importálás és az Exchange hibrid |
 | Olvasási/írási összes tulajdonságok iNetOrgPerson |Importálás és az Exchange hibrid |
 | Az összes tulajdonság csoport olvasási/írási |Importálás és az Exchange hibrid |
@@ -87,10 +87,10 @@ Engedélyezi szükséges jogosultságokat az függ a választható szolgáltatá
 | Szolgáltatás | Engedélyek |
 | --- | --- |
 | Az msDS-ConsistencyGuid szolgáltatás |Az msDS-ConsistencyGuid attribútum részletes ismertetését lásd: e írási engedélyekkel [tervezési alapelvek - msDS-ConsistencyGuid használata sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor). | 
-| A jelszó-szinkronizálás |<li>Változások replikálása</li>  <li>Replikálása Directory összes módosítása |
+| Jelszókivonat-szinkronizálás |<li>Változások replikálása</li>  <li>Replikálása Directory összes módosítása |
 | Hibrid Exchange-telepítés |Írási engedéllyel a dokumentált attribútumok [Exchange hibrid visszaírási](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) felhasználók, csoportok és ügyfelek. |
 | Exchange E-mail nyilvános mappa |Olvasási engedéllyel a dokumentált attribútumok [Exchange E-mail nyilvános mappa](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) nyilvános mappák. | 
-| Jelszóvisszaíró |Írási engedéllyel a dokumentált attribútumok [Ismerkedés a jelszókezeléssel](../active-directory-passwords-writeback.md) a felhasználók számára. |
+| Jelszóvisszaíró |Írási engedéllyel a dokumentált attribútumok [Ismerkedés a jelszókezeléssel](../authentication/howto-sspr-writeback.md) a felhasználók számára. |
 | Eszközvisszaíró |A PowerShell-parancsfájllal megadott engedélyeket [eszközvisszaíró](active-directory-aadconnect-feature-device-writeback.md). |
 | Group writeback (Csoportvisszaíró) |Olvassa el, létrehozási, frissítési és törlési objektumokat csoport a szinkronizált **Office 365-csoportok**.  További információ: [Csoportvisszaírásról](active-directory-aadconnect-feature-preview.md#group-writeback).|
 

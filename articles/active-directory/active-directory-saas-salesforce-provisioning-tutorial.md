@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Salesforce konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Salesforce között."
+title: 'Oktatóanyag: Salesforce konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Salesforce között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d300eb397b58b4e1f8c8a6516e0a279980d8d09
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b5a85dd7d4ac6bdabcbab49f654ebfe4adae73cd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Salesforce konfigurálása
 
@@ -27,9 +27,13 @@ Ez az oktatóanyag célja a Salesforce és az Azure AD automatikus kiépítésé
 
 Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
 
-*   Az Azure Active directory-bérlő.
-*   Rendelkeznie kell egy érvényes bérlőt Salesforce a munkahelyén vagy a Salesforce oktatási célokra. Egy ingyenes próbafiók vagy a szolgáltatás segítségével.
-*   Egy felhasználói fiókot a Salesforce-ban Team rendszergazdai engedélyekkel.
+*   Az Azure Active directory-bérlő
+*   A Salesforce.com-bérlőhöz
+
+>[!IMPORTANT] 
+>Ha a Salesforce.com próbafiókra használ, majd meg lesz nem lehet konfigurálni az automatizált felhasználókiépítése. Próba fiókok nem rendelkeznek a szükséges API-hozzáférést, amíg azokat vásárolták engedélyezve van. A korlátozás ingyenes használatával kaphat [fejlesztői fiókjába](https://developer.salesforce.com/signup) az oktatóanyag elvégzéséhez.
+
+Ha egy Salesforce védőfal mögötti környezet használ, tekintse át a [Salesforce védőfal integrációs oktatóanyag](https://go.microsoft.com/fwLink/?LinkID=521879).
 
 ## <a name="assigning-users-to-salesforce"></a>Felhasználók hozzárendelése Salesforce
 
@@ -89,7 +93,7 @@ Ez a szakasz célja felvázoló engedélyezése a felhasználók átadása Sales
 
 10. Másolja a token nyissa meg az Azure AD ablakba, és illessze be azt a **titkos Token** mező.
 
-11. A **bérlői URL-cím** kell adni, ha az adott Salesforce-példány a Salesforce kormányzati felhő. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-cím a következő formátumban https://your-instance.my.salesforce.com, az a példány cseréje a Salesforce-példány nevét.
+11. A **bérlői URL-cím** kell adni, ha az adott Salesforce-példány a Salesforce kormányzati felhő. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-cím a következő formátumban, https://your-instance.my.salesforce.com, a példány cseréje a Salesforce-példány nevét.
 
 12. Az Azure portálon kattintson **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat a Salesforce alkalmazást.
 

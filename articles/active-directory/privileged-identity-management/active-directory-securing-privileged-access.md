@@ -1,8 +1,8 @@
 ---
-title: "Emelt szintű hozzáférés biztosítása az Azure AD |} Microsoft Docs"
-description: "Ez a témakör ismerteti a privileged access Azure, az Azure Active Directory és a Microsoft Online Services védelmének."
+title: Emelt szintű hozzáférés biztosítása az Azure AD |} Microsoft Docs
+description: Ez a témakör ismerteti a privileged access Azure, az Azure Active Directory és a Microsoft Online Services védelmének.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
 editor: mwahl
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 6611bd07ad4c65953349c62cae3ece735fd85e70
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f49d5a629b9643df81253c57ee8e3458b43b0c59
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Az Azure Active Directory biztonságossá tétele a privilegizált hozzáférési jogosultsága.
 Emelt szintű hozzáférés biztonságossá tétele Ez kritikus első lépés egy modern szervezet üzleti eszközök védelme érdekében. Kiemelt jogosultságú fiókok azok a fiókok, felügyelheti és kezelheti az informatikai rendszerek. A támadók számítógépes ezeket a fiókokat ahhoz, hogy hozzáférjenek a szervezetek adatokhoz és rendszerek célként. Emelt szintű hozzáférés biztonságossá tételéhez, a fiókok és a kockázat, hogy egy rosszindulatú felhasználó rendszert kell különíteni.
@@ -63,7 +63,7 @@ Jogosultságokat a kitettség idő csökkentése, és növelje a használatukat 
 Feltételes hozzáférés-vezérlést Azure Active Directory ellenőrzi a megadott feltételek úgy dönt, hogy a felhasználó hitelesítéséhez az alkalmazáshoz való hozzáférés engedélyezése előtt. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* Engedélyezése [Azure többtényezős hitelesítés](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
+* Engedélyezése [Azure többtényezős hitelesítés](../authentication/howto-mfa-getstarted.md)
 * Engedélyezése [az Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md)
 * Engedélyezése [Azure AD Identity Protection](../active-directory-identityprotection.md)
 * Engedélyezése [feltételes hozzáférés-vezérlést](../active-directory-conditional-access-azure-portal.md)

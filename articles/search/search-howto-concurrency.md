@@ -1,25 +1,18 @@
 ---
-title: "Egyidejű írási műveleteket ad ki az Azure Search erőforrások kezelése"
-description: "Egyidejű hozzáférések optimista használja a frissítést vagy törlést Azure Search-indexek, az indexelők, az adatforrások közepes vezeték nélkül ütközések elkerülése érdekében."
-services: search
-documentationcenter: 
+title: Egyidejű írási műveleteket ad ki az Azure Search erőforrások kezelése
+description: Egyidejű hozzáférések optimista használja a frissítést vagy törlést Azure Search-indexek, az indexelők, az adatforrások közepes vezeték nélkül ütközések elkerülése érdekében.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
-ms.openlocfilehash: aee1b7376d4829e3e2f5a232525e3c3cb4df9d8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5fa495c1266c847cabc0eb4e35b85132550bc3c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Az Azure Search párhuzamossági kezelése
 
@@ -211,7 +204,7 @@ Lekérdezi a "Hotels nevű" index, ellenőrzi a frissítési művelet az objektu
         }
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a [szinonimák C# minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) biztonságosan frissítésével a létező indexek további környezethez.
 
@@ -220,7 +213,7 @@ Próbálja meg módosítani vagy a következő minták ETag-EK vagy AccessCondit
 + [REST API-mintát a Githubon](https://github.com/Azure-Samples/search-rest-api-getting-started) 
 + [.NET SDK mintát a Githubon](https://github.com/Azure-Samples/search-dotnet-getting-started). Ez a megoldás a cikkben bemutatott kódot tartalmazó "DotNetEtagsExplainer" projekt tartalmazza.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
   [Közös HTTP-kérelem-válasz fejlécek](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)    
   [HTTP-állapotkódok](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) [Index műveletek (REST API-t)](https://docs.microsoft.com/\rest/api/searchservice/index-operations)

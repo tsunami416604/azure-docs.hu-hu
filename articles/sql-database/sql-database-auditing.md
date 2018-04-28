@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázis-események, mind az írás őket naplózási jelentkezzen be az Azure storage-fiók. A naplózás is:
@@ -165,8 +165,18 @@ Georeplikált adatbázisok Ha az elsődleges adatbázis naplózásának engedél
 3. Lépjen vissza a naplózási konfiguráció panelt, váltson a tárelérési kulcs az elsődleges a másodlagos, és kattintson **OK**. Kattintson a **mentése** a naplózási konfiguráció panel tetején.
 4. Lépjen vissza a tárolási konfiguráció panelt, és generálni a másodlagos elérési kulcsot (a frissítés során a következő kulcs előkészítése).
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>SQL adatbázis-naplózás az Azure PowerShell kezelése
+## <a name="additional-information"></a>További információ
 
+* A napló vonatkozó további információért formátumú, a tároló mappa hierarchiáját és elnevezési konvenciók, tekintse meg a [Blob naplózási napló fájlformátum referenciájában](https://go.microsoft.com/fwlink/?linkid=829599).
+
+   > [!IMPORTANT]
+   > Az Azure SQL adatbázishoz Audit 4000 karaktert tartalmazhat karakter mezők tárol egy naplórekordot. Ha a **utasítás** vagy a **data_sensitivity_information** naplózható művelet által visszaadott értékek legfeljebb 4000 karaktert tartalmazhat, a először 4000 karakter bármely adatok lesz  **csonkolva lesz, és nem ellenőrzött**.
+
+* Naplók írt **hozzáfűző Blobok** egy Azure Blob Storage az Azure-előfizetése.
+   * **Prémium szintű Storage** jelenleg **nem támogatott** által hozzáfűző blobokat.
+   * **VNet a tárolási** jelenleg **nem támogatott**.
+
+## <a name="manage-sql-database-auditing-using-azure-powershell"></a>SQL adatbázis-naplózás az Azure PowerShell kezelése
 
 * **PowerShell-parancsmagok**:
 

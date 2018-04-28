@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/20/2018
 ms.author: larryfr
-ms.openlocfilehash: b96f457bc13ae3e412580096a1f9be865e64cb74
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 970ccf19b5668bd57118fcabc5018c60352ebde7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Használhatja a Beeline Apache Hive
 
@@ -252,10 +252,17 @@ A teljesen minősített tartománynevét egy headnode megkereséséhez használj
 
 Spark hiveserver2-n, amelyek van más néven a Spark Thrift-kiszolgáló a saját végrehajtásának biztosít. Ez a szolgáltatás Spark SQL használatával helyett Hive a lekérdezéseket, és attól függően, hogy a lekérdezés jobb teljesítményt biztosíthat.
 
-Ha csatlakozni szeretne a Spark Thrift-kiszolgáló, a Spark on HDInsight-fürt, a port használatára `10002` helyett `10001`. Például: `beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`.
+A __kapcsolati karakterlánc__ használható, ha az interneten keresztül kapcsolódó némileg eltérő. Helyett tartalmazó `httpPath=/hive2` van `httpPath/sparkhive2`. A következő egy példa az interneten keresztül kapcsolódó:
 
-> [!IMPORTANT]
-> A Spark Thrift-kiszolgáló nem érhető el közvetlenül az interneten keresztül. Csak csatlakozhat az SSH-munkamenetet, vagy a HDInsight-fürttel azonos Azure virtuális hálózatán belül.
+```bash 
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Ha közvetlenül a a fürt átjárócsomópontjába, vagy a HDInsight-fürttel azonos Azure virtuális hálózatán belül erőforrás, port `10002` Spark Thrift-kiszolgáló helyett használható `10001`. A következő egy példa való közvetlen csatlakoztatása az átjárócsomóponthoz:
+
+```bash
+beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
+```
 
 ## <a id="summary"></a><a id="nextsteps"></a>További lépések
 

@@ -1,9 +1,9 @@
 ---
-title: "Az Azure Active Directory Identity Protection-forgatókönyv |} Microsoft Docs"
-description: "Ismerje meg, az Azure AD Identity Protection miként korlátozhatja, hogy a támadó kihasználni a sérült biztonságú identitás vagy az eszköz és identitás vagy egy eszköz, amely korábban gyanús vagy megsértik ismert biztonságossá tételéhez."
+title: Az Azure Active Directory Identity Protection-forgatókönyv |} Microsoft Docs
+description: Ismerje meg, az Azure AD Identity Protection miként korlátozhatja, hogy a támadó kihasználni a sérült biztonságú identitás vagy az eszköz és identitás vagy egy eszköz, amely korábban gyanús vagy megsértik ismert biztonságossá tételéhez.
 services: active-directory
-keywords: "az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése"
-documentationcenter: 
+keywords: az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f4240c9196796c2e83c408271fe81b20842ab722
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection playbook
+# <a name="azure-active-directory-identity-protection-playbook"></a>Az Azure Active Directory Identity Protection-forgatókönyv
 
 Ez a forgatókönyv segítséget:
 
@@ -50,7 +50,7 @@ A következő eljárás olyan kell használnia:
 
 **Szimulálása a bejelentkezés egy névtelen IP-címről, a következő lépésekkel**:
 
-1. Használja a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en), navigáljon a [https://myapps.microsoft.com](https://myapps.microsoft.com).   
+1. Használja a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en), navigáljon a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).   
 2. Adja meg a fiók, akkor jelenik meg a hitelesítő adatait a **névtelen IP-címekről bejelentkezések** jelentés.
 
 A bejelentkezés mutatja az Identity Protection-irányítópult 10 – 15 percen belül. 
@@ -76,7 +76,7 @@ A következő eljárás szükséges, hogy egy felhasználói fiókot használjon
 **Szimulálása a bejelentkezés egy ismeretlen helyről, a következő lépésekkel**:
 
 1. Bejelentkezés a fiókot, ha sikertelen az MFA-kérdést az MFA-kérdést nem átadásával.
-2. Keresse meg az új VPN-kapcsolattal [https://myapps.microsoft.com](https://myapps.microsoft.com) , és adja meg a teszt fiók hitelesítő adatait.
+2. Keresse meg az új VPN-kapcsolattal [ https://myapps.microsoft.com ](https://myapps.microsoft.com) , és adja meg a teszt fiók hitelesítő adatait.
    
 
 A bejelentkezés mutatja az Identity Protection-irányítópult 10 – 15 percen belül.
@@ -90,18 +90,18 @@ Lehetetlen odautazás feltétel szimulálva nem nehéz, mert az algoritmus álta
 
 **Ezzel szimulálva egy lehetetlen odautazás alapján ezúttal szokatlan helyre, a következő lépésekkel**:
 
-1. Keresse meg a szabványos böngészővel [https://myapps.microsoft.com](https://myapps.microsoft.com).  
+1. Keresse meg a szabványos böngészővel [ https://myapps.microsoft.com ](https://myapps.microsoft.com).  
 2. Adjon meg egy lehetetlen odautazás kockázat eseményt generál a fiók hitelesítő adatait.
 3. Módosítsa a felhasználói ügynök. Módosítsa az Internet Explorer felhasználói ügynök fejlesztői eszközök, vagy módosítsa a felhasználói ügynök Firefox vagy felhasználói ügynök kapcsoló bővítményével Chrome.
 4. Az IP-címének módosítása. Az IP-címe a VPN-és a Tor bővítmény használatával, vagy egy új gépet az Azure különböző adatközpont dolgozik módosíthatja.
-5. Bejelentkezés az [https://myapps.microsoft.com](https://myapps.microsoft.com) hitelesítő adatokkal, mielőtt, és a korábbi bejelentkezés után néhány percen belül.
+5. Bejelentkezés az [ https://myapps.microsoft.com ](https://myapps.microsoft.com) hitelesítő adatokkal, mielőtt, és a korábbi bejelentkezés után néhány percen belül.
 
 A bejelentkezés megjelennek az Identity Protection-irányítópult 2 – 4 órán belül.
 
 ## <a name="simulating-vulnerabilities"></a>Biztonsági rések szimulálása
 Biztonsági rések egy hibás szereplő is kihasználható az Azure AD környezetben gyengeségei miatt. Jelenleg biztonsági rések 3 típusú illesztett az Azure AD Identity Protection használó egyéb szolgáltatásokat az Azure AD. A biztonsági rések jelenik meg az Identity Protection-Irányítópult automatikusan után ezek a funkciók be vannak állítva.
 
-* Az Azure AD [többtényezős hitelesítés](../multi-factor-authentication/multi-factor-authentication.md)
+* Az Azure AD [többtényezős hitelesítés](authentication/multi-factor-authentication.md)
 * Az Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
 * Az Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
@@ -120,7 +120,7 @@ További információkért lásd: [felhasználói kockázat biztonsági háziren
 
 **Egy felhasználói kockázat biztonsági házirend, hajtsa végre a következő lépéseket**:
 
-1. Bejelentkezés az [https://portal.azure.com](https://portal.azure.com) a bérlő globális rendszergazdai hitelesítő adatokkal.
+1. Bejelentkezés az [ https://portal.azure.com ](https://portal.azure.com) a bérlő globális rendszergazdai hitelesítő adatokkal.
 2. Navigáljon a **Identity Protection**. 
 3. Az a **Azure AD Identity Protection** kattintson **felhasználói kockázat házirendnek**.
 4. Az a **hozzárendelések** területen válassza ki a kívánt felhasználók (és a csoportok) és a felhasználó kockázati szintjét.
@@ -145,7 +145,7 @@ További információkért lásd: [felhasználói kockázat biztonsági háziren
 
 **A bejelentkezési a kockázat házirendnek, hajtsa végre az alábbi lépéseket:**
 
-1. Bejelentkezés az [https://portal.azure.com ](https://portal.azure.com) a bérlő globális rendszergazdai hitelesítő adatokkal.
+1. Bejelentkezés az [ https://portal.azure.com ](https://portal.azure.com) a bérlő globális rendszergazdai hitelesítő adatokkal.
 
 2. Navigáljon a **Azure AD Identity Protection**.
 

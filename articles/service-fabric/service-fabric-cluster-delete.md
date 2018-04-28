@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/24/2017
 ms.author: aljo
-ms.openlocfilehash: 7da2277fef224ff7859cac1ad5a2290c9dc56a85
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1255574e6aae930b0e349ec8f36cc66ac2b7e49f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Az Azure és az erőforrásokat, ezzel felhasznál egy Service Fabric-fürt törlése
 A Service Fabric-fürt sok más Azure-erőforrások mellett magát fürterőforrás épül fel. A Service Fabric-fürtök teljes törléséhez ezért az összes őket alkotó erőforrást is törölni kell.
@@ -38,7 +38,7 @@ Az erőforráscsoport a következő Azure PowerShell-parancsmag futtatásával i
 Nyisson meg egy PowerShell-ablakot, és a következő PS-parancsmagok futtatásához:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 ```
@@ -82,7 +82,7 @@ A következő Azure PowerShell-parancsmag futtatásával törölheti egyesével-
 Nyisson meg egy PowerShell-ablakot, és a következő PS-parancsmagok futtatásához:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 A törölni kívánt erőforrások mindegyikének futtassa a következő parancsfájlt:
 

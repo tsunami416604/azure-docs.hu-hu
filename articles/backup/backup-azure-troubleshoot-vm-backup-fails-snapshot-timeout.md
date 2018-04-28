@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 194b8237ce1bff6ac18878bc7eca6e0d3891aa33
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure biztonsági mentési hiba elhárítása: az ügynök vagy a bővítmény problémái
 
@@ -63,7 +63,8 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Biztonsági mentés sikertelen lesz, mivel a Virtuálisgép-ügynök nem válaszol
 
-Hibaüzenet: "Nem lehet végrehajtani a műveletet, a Virtuálisgép-ügynök nem válaszol"
+Hibaüzenet: "Nem lehet végrehajtani a műveletet, a Virtuálisgép-ügynök nem válaszol" <br>
+Hibakód: "GuestAgentSnapshotTaskStatusError"
 
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás ütemezése, biztonsági mentés indít el a feladat által a biztonsági mentés Virtuálisgép-bővítmény időpontban pillanatképének elkészítéséhez kommunikál. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Ha a pillanatkép nem elindul, a biztonsági mentési hiba léphet fel. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
 **1. ok: [az ügynök telepítve legyen a virtuális Géphez, de azok nem válaszoló (a Windows-alapú virtuális gépek)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -72,7 +73,8 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 
 ## <a name="backup-fails-with-an-internal-error"></a>Belső hiba történt a biztonsági mentés sikertelen
 
-Hibaüzenet: "biztonsági mentés egy belső hiba miatt nem sikerült – próbálja megismételni a műveletet, néhány perc múlva"
+Hibaüzenet: "biztonsági mentés egy belső hiba miatt nem sikerült – próbálja megismételni a műveletet, néhány perc múlva" <br>
+Hibakód: "BackUpOperationFailed" / "BackUpOperationFailedV2"
 
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás ütemezése, biztonsági mentés indít el a feladat által a biztonsági mentés Virtuálisgép-bővítmény időpontban pillanatképének elkészítéséhez kommunikál. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Ha a pillanatkép nem elindul, a biztonsági mentési hiba léphet fel. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
 **1. ok: [a virtuális gép nem rendelkezik internet-hozzáférés](#the-vm-has-no-internet-access)**  
@@ -97,6 +99,8 @@ A probléma megoldása érdekében próbálkozzon a következő módszerek egyik
 Használhat [címkék szolgáltatás](../virtual-network/security-overview.md#service-tags) az adott régió Storage kapcsolatok lehetővé tételéhez. Győződjön meg arról, hogy a szabály, amely lehetővé teszi a hozzáférést a tárfiókhoz magasabb prioritású, mint a szabály adott blokkok internet-hozzáféréssel rendelkező. 
 
 ![Hálózati biztonsági csoport régió tárolási címkékkel](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+Szeretné megtudni, a lépéseit szolgáltatás címkék konfigurálásához, tekintse meg a [Ez a videó](https://youtu.be/1EjLQtbKm1M).
 
 > [!WARNING]
 > Tárolási szolgáltatás címkék még csak előzetes verziójúak. Elérhetők csak adott régióban. Régiók listáját lásd: [tárolási címkék szolgáltatás](../virtual-network/security-overview.md#service-tags).

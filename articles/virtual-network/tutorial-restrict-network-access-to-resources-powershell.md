@@ -17,32 +17,32 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 28c95e1333b4641e50284a869135a9608dd3242f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b3977e045751165947243c67291e81b998b5fcb5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Hálózati hozzáférés korlátozása PaaS erőforrások virtuális hálózati szolgáltatás végpontokon PowerShell használatával
 
-Virtuális hálózati szolgáltatási végpont lehetővé teszik a virtuális hálózati alhálózat az Azure szolgáltatás erőforrásokhoz való hálózati hozzáférés korlátozásához. Eltávolíthatja az internet-hozzáférés az erőforrásokhoz is. Végpontok adja meg a közvetlen kapcsolat a virtuális hálózat és a támogatott Azure-szolgáltatásokat, hogy lehetővé teszi a virtuális hálózat titkos címterület használata az Azure-szolgáltatások eléréséhez. Azure-erőforrások Szolgáltatásvégpontok keresztül mindig irányuló forgalom a Microsoft Azure hálózat marad. Ebből a cikkből megismerheti, hogyan:
+Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózati alhálózatra korlátozható az egyes Azure-szolgáltatási erőforrásokhoz való hálózati hozzáférés. Emellett teljesen le is tiltható az internetes hozzáférés az erőforrásokhoz. A szolgáltatásvégpontok közvetlen csatlakozást biztosítanak a virtuális hálózat és a támogatott Azure-szolgáltatások között, így lehetővé teszik a virtuális hálózat magáncímterének használatát az Azure-szolgáltatások eléréséhez. A szolgáltatásvégpontokon keresztül az Azure-erőforrások felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán marad. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
-* Hozzon létre egy virtuális hálózatot egyetlen alhálózattal
-* Adjon hozzá egy alhálózatot és egy végpontot engedélyezése
-* Hozzon létre egy Azure-erőforrás és a hálózati hozzáférés engedélyezése, hogy csak egy alhálózatból
-* Virtuális gép (VM) telepítése minden egyes alhálózathoz
-* Erősítse meg a hozzáférést egy erőforráshoz alhálózatból származó
-* Győződjön meg arról, a hozzáférés megtagadva erőforrás alhálózat és az internetről
+* Virtuális hálózat létrehozása egyetlen alhálózattal
+* Alhálózat hozzáadása és szolgáltatásvégpont engedélyezése
+* Azure-erőforrás létrehozása és hálózati hozzáférés engedélyezése az erőforráshoz egyetlen alhálózatról
+* Virtuális gép (VM) üzembe helyezése az egyes alhálózatokon
+* Erőforráshoz való alhálózati hozzáférés ellenőrzése
+* Erőforráshoz való alhálózati és internetes hozzáférés letiltásának ellenőrzése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha PowerShell telepítéséhez és használatához helyileg, ez a cikk igényel-e az Azure PowerShell modul verziója 5.4.1 vagy újabb. A telepített verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha PowerShell telepítéséhez és használatához helyileg, ez a cikk igényel-e az Azure PowerShell modul verziója 5.4.1 vagy újabb. A telepített verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Virtuális hálózat létrehozása előtt hozzon létre egy erőforráscsoportot a virtuális hálózat, és ez a cikk létrehozott összes többi erőforrása van. Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup*: 
+Virtuális hálózat létrehozása előtt hozzon létre egy erőforráscsoportot a virtuális hálózat, és ez a cikk létrehozott összes többi erőforrása van. Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal. Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup*: 
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -58,7 +58,7 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Az alhálózat-konfiguráció létrehozása [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Az alábbi példa létrehoz egy alhálózati konfigurációt nevű alhálózat *nyilvános*:
+A [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) parancs használatával hozzon létre egy alhálózati konfigurációt. Az alábbi példa létrehoz egy alhálózati konfigurációt nevű alhálózat *nyilvános*:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzureRmVirtualNetworkSubnetConfig `
@@ -73,7 +73,7 @@ Hozza létre az alhálózatot a virtuális hálózatban az alhálózat beállít
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="enable-a-service-endpoint"></a>A szolgáltatásvégpont engedélyezése 
+## <a name="enable-a-service-endpoint"></a>Szolgáltatásvégpont engedélyezése 
 
 Csak a végpontok támogató szolgáltatások Szolgáltatásvégpontok engedélyezheti. Tekintse meg az Azure-beli hely, a szolgáltatási végpont engedélyezve van az elérhető szolgáltatások [Get-AzureRmVirtualNetworkAvailableEndpointService](/powershell/module/azurerm.network/get-azurermvirtualnetworkavailableendpointservice). Az alábbi példa elérhető szolgáltatás-végpont-kompatibilis szolgáltatások listáját adja vissza a *eastus* régióban. A szolgáltatások visszaadott tájékoztatás idővel bővülni fog, több Azure-szolgáltatások szolgáltatási végpont engedélyezve lesz.
 
@@ -93,7 +93,7 @@ $subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="restrict-network-access-for-a-subnet"></a>Egy alhálózatot a hálózati hozzáférés korlátozása
+## <a name="restrict-network-access-for-a-subnet"></a>Alhálózat hálózati hozzáférésének korlátozása
 
 Hozzon létre a hálózati biztonsági csoport biztonsági szabályai a [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig). A következő szabály lehetővé teszi, hogy a nyilvános IP-címek az Azure Storage szolgáltatás kimenő hozzáférést: 
 
@@ -140,7 +140,7 @@ $rule3 = New-AzureRmNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Hozzon létre egy hálózati biztonsági csoport [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNsgPrivate*.
+Hozzon létre egy hálózati biztonsági csoportot a [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) paranccsal. Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNsgPrivate*.
 
 ```azurepowershell-interactive
 $nsg = New-AzureRmNetworkSecurityGroup `
@@ -163,9 +163,9 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="restrict-network-access-to-a-resource"></a>Egy erőforrás való hálózati hozzáférés korlátozása
+## <a name="restrict-network-access-to-a-resource"></a>Erőforráshoz való hálózati hozzáférés korlátozása
 
-Azure-végpontok engedélyezett szolgáltatások segítségével létrehozott erőforrások való hálózati hozzáférés korlátozása szükséges lépések szolgáltatásban függően változik. Az egyes szolgáltatások lépéseit minden egyes szolgáltatás dokumentációjában találhat. Ez a cikk hátralévő része az Azure Storage-fiók, mint például a hálózati hozzáférés korlátozása.
+A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létrehozott erőforrásokhoz való hálózati hozzáférés korlátozásának lépései szolgáltatásonként eltérőek. Az egyes szolgáltatásokhoz szükséges lépéseket az adott szolgáltatások dokumentációja tartalmazza. Ez a cikk hátralévő része az Azure Storage-fiók, mint például a hálózati hozzáférés korlátozása.
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
@@ -192,7 +192,7 @@ $storageAcctKey = (Get-AzureRmStorageAccountKey `
 
 A kulcs használatával hozzon létre egy fájlmegosztást egy későbbi lépésben. Adja meg `$storageAcctKey` és Megjegyzés: az érték is kell kézzel beírnia egy későbbi lépésben a fájlmegosztás leképezése egy virtuális gép meghajtóra.
 
-### <a name="create-a-file-share-in-the-storage-account"></a>Fájlmegosztás létrehozása a tárfiókban lévő
+### <a name="create-a-file-share-in-the-storage-account"></a>Fájlmegosztás létrehozása a tárfiókban
 
 A tárfiók környezet létrehozása és a kulcs [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext). A környezet magában foglalja a tárfiók nevét és a fiók kulcsot:
 
@@ -206,7 +206,7 @@ $share = New-AzureStorageShare my-file-share -Context $storageContext
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>A storage-fiók összes hálózati hozzáférés megtagadása
 
-Alapértelmezés szerint a storage-fiókok bármely hálózatban lévő ügyfelek hálózati kapcsolatokat fogadjon. A kijelölt hálózatokhoz való hozzáférés korlátozásához, módosítsa az alapértelmezett művelet *Megtagadás* rendelkező [frissítés-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset). Ha a hálózati hozzáférés megtagadva a tárfiók nem érhető el egyetlen hálózathoz sem.
+Alapértelmezés szerint a tárfiókok bármely hálózatban lévő ügyféltől érkező hálózati kapcsolatokat elfogadnak. A kijelölt hálózatokhoz való hozzáférés korlátozásához, módosítsa az alapértelmezett művelet *Megtagadás* rendelkező [frissítés-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset). Ha a hálózati hozzáférés megtagadva a tárfiók nem érhető el egyetlen hálózathoz sem.
 
 ```azurepowershell-interactive
 Update-AzureRmStorageAccountNetworkRuleSet  `
@@ -215,7 +215,7 @@ Update-AzureRmStorageAccountNetworkRuleSet  `
   -DefaultAction Deny
 ```
 
-### <a name="enable-network-access-from-a-subnet"></a>Egy alhálózatot a hálózati hozzáférés engedélyezése
+### <a name="enable-network-access-from-a-subnet"></a>Hálózati hozzáférés engedélyezése alhálózatról
 
 A létrehozott virtuális hálózathoz beolvasása [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) majd lekérheti a titkos alhálózati objektum alhálózatát a egy változóba [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig):
 
@@ -238,11 +238,11 @@ Add-AzureRmStorageAccountNetworkRule `
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Tesztelje a storage-fiók a hálózati hozzáférést, telepítenie kell a virtuális gépek minden egyes alhálózatot.
+Tárfiókhoz való hálózati hozzáférés teszteléséhez helyezzen üzembe egy virtuális gépet minden alhálózaton.
 
 ### <a name="create-the-first-virtual-machine"></a>Az első virtuális gép létrehozása
 
-A virtuális gép létrehozása a *nyilvános* alhálózat [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). A következő parancs futtatásakor a rendszer kéri a hitelesítő adatokat. A megadott értékek a virtuális Gépet, a felhasználónév és jelszó van állítva. A `-AsJob` beállítás hoz létre a virtuális gép a háttérben, hogy továbbra is a következő lépéssel.
+A virtuális gép létrehozása a *nyilvános* alhálózat [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). A következő parancs futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszót. Az `-AsJob` kapcsoló a háttérben hozza létre a virtuális gépet, így Ön eközben folytathatja a következő lépéssel.
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -277,9 +277,9 @@ New-AzureRmVm `
 
 A virtuális gép létrehozása Azure néhány percet vesz igénybe. Ne folytassa a következő lépéssel mindaddig, amíg az Azure létrehozza a virtuális Gépet, és a kimenetet visszaadja a PowerShell. 
 
-## <a name="confirm-access-to-storage-account"></a>Erősítse meg a tárfiók eléréséhez
+## <a name="confirm-access-to-storage-account"></a>Tárfiókhoz való hozzáférés ellenőrzése
 
-Használjon [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) vissza a nyilvános IP-címet a virtuális gépek. A következő példa a nyilvános IP-címét adja vissza a *myVmPrivate* VM:
+Egy virtuális gép nyilvános IP-címének visszaadásához használja a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) parancsot. A következő példa a nyilvános IP-címét adja vissza a *myVmPrivate* VM:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress `
@@ -288,22 +288,22 @@ Get-AzureRmPublicIpAddress `
   | Select IpAddress
 ```
 
-Cserélje le `<publicIpAddress>` az alábbi parancs a nyilvános IP-cím az előző parancs által visszaadott, és írja be a következő parancsot: 
+A következő parancsban cserélje le a `<publicIpAddress>` értékét az előző parancs által visszaadott nyilvános IP-címre, majd írja be a következő parancsot: 
 
 ```powershell
 mstsc /v:<publicIpAddress>
 ```
 
-A távoli asztal protokoll (RDP) fájl létrehozása és a számítógép letölti. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza ki a **Connect**. Adja meg a felhasználónevet és a virtuális gép létrehozásakor megadott jelszót. Válassza ki szeretne **több lehetőséget**, majd **használjon más fiókot**, hogy a virtuális gép létrehozása után a megadott hitelesítő adatok megadása. Kattintson az **OK** gombra. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a figyelmeztetést kap, válassza ki a **Igen** vagy **Folytatás**, hogy a kapcsolat.
+A rendszer létrehoz és letölt a számítógépre egy Remote Desktop Protocol (.rdp) fájlt. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania. Kattintson az **OK** gombra. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
 
-Az a *myVmPrivate* VM PowerShell-lel Z meghajtóra Azure fájlmegosztás hozzárendelését. Cserélje le a parancsok futtatásához `<storage-account-key>` és `<storage-account-name>` megadva, vagy olvassa be a értékeivel [hozzon létre egy tárfiókot](#create-a-storage-account).
+A *myVmPrivate* virtuális gépen a PowerShell-lel képezze le az Azure-fájlmegosztást a Z meghajtóra. Cserélje le a parancsok futtatásához `<storage-account-key>` és `<storage-account-name>` megadva, vagy olvassa be a értékeivel [hozzon létre egy tárfiókot](#create-a-storage-account).
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
-PowerShell-kimenet visszaadása hasonló a következő egy példa a kimenetre:
+A PowerShell a következő példához hasonló kimenetet ad vissza:
 
 ```powershell
 Name           Used (GB)     Free (GB) Provider      Root
@@ -311,7 +311,7 @@ Name           Used (GB)     Free (GB) Provider      Root
 Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
 ```
 
-Az Azure-fájlmegosztáshoz sikeresen leképezve a Z meghajtóra.
+Az Azure-fájlmegosztás sikeresen le lett képezve a Z meghajtóra.
 
 Győződjön meg arról, hogy a virtuális gép rendelkezik-e a kimenő kapcsolat bármely nyilvános IP-címek:
 
@@ -319,11 +319,11 @@ Győződjön meg arról, hogy a virtuális gép rendelkezik-e a kimenő kapcsola
 ping bing.com
 ```
 
-Nem érkezett válasz, mert a társított hálózati biztonsági csoport kapni a *titkos* alhálózat nem engedélyezi a nyilvános IP-címek kívül a címek az Azure Storage szolgáltatás kimenő hozzáférést.
+Nem kap választ, mert a *Magánjellegű* alhálózathoz rendelt hálózati biztonsági csoport nem engedélyezi a kimenő hozzáférést olyan nyilvános IP-címekhez, amelyek nem az Azure Storage szolgáltatáshoz rendelt címek.
 
-Zárja be a távoli asztali munkamenetet a *myVmPrivate* virtuális gép.
+Zárja be a *myVmPrivate* virtuális gépre irányuló távoli asztali munkamenetet.
 
-## <a name="confirm-access-is-denied-to-storage-account"></a>Erősítse meg a tárfiók a hozzáférés megtagadva
+## <a name="confirm-access-is-denied-to-storage-account"></a>Tárfiókhoz való hozzáférés letiltásának ellenőrzése
 
 A nyilvános IP-cím az beszerzése a *myVmPublic* VM:
 
@@ -334,7 +334,7 @@ Get-AzureRmPublicIpAddress `
   | Select IpAddress
 ```
 
-Cserélje le `<publicIpAddress>` az alábbi parancs a nyilvános IP-cím az előző parancs által visszaadott, és írja be a következő parancsot: 
+A következő parancsban cserélje le a `<publicIpAddress>` értékét az előző parancs által visszaadott nyilvános IP-címre, majd írja be a következő parancsot: 
 
 ```powershell
 mstsc /v:<publicIpAddress>
@@ -348,9 +348,9 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-A fájlmegosztás elérését, és érkezik egy `New-PSDrive : Access is denied` hiba. Hozzáférés megtagadva, mert a *myVmPublic* virtuális gép telepítve van a *nyilvános* alhálózat. A *nyilvános* alhálózati nincs engedélyezve az Azure Storage szolgáltatásvégpont, és a tárfiók csak a hálózati hozzáférés lehetővé teszi a *titkos* alhálózati, nem a *nyilvános*alhálózat.
+A fájlmegosztás elérését, és érkezik egy `New-PSDrive : Access is denied` hiba. A hozzáférést a rendszer megtagadja, mert a *myVmPublic* virtuális gép a *Nyilvános* alhálózaton van üzembe helyezve. A *Nyilvános* alhálózat nem rendelkezik az Azure Storage-hoz engedélyezett szolgáltatásvégponttal, és a tárfiók kizárólag a *Magánjellegű* alhálózatról engedélyezi a hozzáférést, a *Nyilvános* alhálózatról nem.
 
-Zárja be a távoli asztali munkamenetet a *myVmPublic* virtuális gép.
+Zárja be a távoli asztali munkamenetet a *myVmPublic* virtuális géppel.
 
 A számítógépről megpróbálja a fájlmegosztások tekintse meg a tárfiók a következő paranccsal:
 
@@ -364,7 +364,7 @@ Nincs hozzáférése, és érkezik egy *Get-azurestoragefile parancsnak: A távo
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség, [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) eltávolítása az erőforráscsoport és az összes olyan erőforrást tartalmaz:
+Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást:
 
 ```azurepowershell-interactive 
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -372,6 +372,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy végpontot a virtuális hálózati alhálózat engedélyezve van. Megtudta, hogy engedélyezhető-e a végpontok a több Azure-szolgáltatásokkal üzembe helyezett erőforrás. Létrehozott egy Azure Storage-fiók és a tárolási fiók csak egy virtuális hálózati alhálózat erőforrásainak korlátozott hálózati hozzáférést. Szolgáltatásvégpontok kapcsolatos további információkért lásd: [szolgáltatás végpontok áttekintése](virtual-network-service-endpoints-overview.md) és [alhálózatok kezelése](virtual-network-manage-subnet.md).
+Ebben a cikkben egy végpontot a virtuális hálózati alhálózat engedélyezve van. Megismerte, hogy az Azure-szolgáltatásokkal üzembe helyezett erőforrásokhoz szolgáltatásvégpontok engedélyezhetők. Létrehozott egy Azure Storage-fiókot, és egy adott virtuális hálózati alhálózat erőforrásaira korlátozta a fiók felé irányuló hálózati hozzáférést. További információkat a szolgáltatásvégpontokról a [szolgáltatásvégpontok áttekintését](virtual-network-service-endpoints-overview.md) és az [alhálózatok kezelését](virtual-network-manage-subnet.md) ismertető cikkekben olvashat.
 
-Ha több virtuális hálózat már rendelkezik fiókjába, érdemes lehet összekapcsolni két virtuális hálózatok, az egyes virtuális hálózati erőforrások is kommunikálhatnak egymással. Megtudhatja, hogyan: [virtuális hálózatok csatlakoztatása](tutorial-connect-virtual-networks-powershell.md).
+Ha több virtuális hálózat található a fiókjában, érdemes lehet összekapcsolni két virtuális hálózatot, hogy az egyes virtuális hálózatokban található erőforrások kommunikálhassanak egymással. Megtudhatja, hogyan: [virtuális hálózatok csatlakoztatása](tutorial-connect-virtual-networks-powershell.md).

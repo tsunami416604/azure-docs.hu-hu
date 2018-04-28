@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights Docker alkalmazások figyelésének |} Microsoft Docs"
-description: "Docker teljesítményszámlálói, eseményeket és kivételeket is megjeleníthetők az Application Insights együtt a telemetriai adatok indexelése alkalmazásokból."
+title: Azure Application Insights Docker alkalmazások figyelésének |} Microsoft Docs
+description: Docker teljesítményszámlálói, eseményeket és kivételeket is megjeleníthetők az Application Insights együtt a telemetriai adatok indexelése alkalmazásokból.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 68f408f18b767ed9c5aba8fed8c97f021cdeb123
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a0476e2f0bf08f76b45e1342ec38137e46008cb1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Az Application Insightsban Docker-alkalmazások figyelése
-A teljesítményszámlálók életciklus-események és a teljesítmény [Docker](https://www.docker.com/) tárolók is forrásadatok az Application insights szolgáltatással. Telepítse a [Application Insights](app-insights-overview.md) lemezkép a gazdagép és a tároló teljesítményszámlálók megjeleníti a gazdagép, valamint a többi képet.
+A teljesítményszámlálók életciklus-események és a teljesítmény [Docker](https://www.docker.com/) tárolók is forrásadatok az Application insights szolgáltatással. Telepítse a [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) lemezkép a gazdagép és a tároló teljesítményszámlálók megjeleníti a gazdagép, valamint a többi képet.
 
 Docker az egyszerűsített tárolók teljes összes függőségekkel rendelkező alkalmazások terjesztése. Ezek fogja futtatni, a gazdagépen, amelyen egy Docker-motorhoz.
 
@@ -43,6 +43,10 @@ Futtatásakor a [Application Insights kép](https://hub.docker.com/r/microsoft/a
 2. Adja hozzá a Docker csempe: válasszon **vegye fel a csempe**, húzza a Docker csempe a gyűjteményből, és kattintson a **végzett**. 
    
     ![Példa](./media/app-insights-docker/03.png)
+
+> [!NOTE]
+> Az Áttekintés ablaktábláján az Application Insightsban zárolva van, és nem engedélyezi a csempék felvételéhez a gyűjteményből. Továbbra is hozzáadhat a Docker csempe a Azure irányítópult felületen keresztül a fent leírt módon.
+
 3. Kattintson a **Essentials** legördülő lista és a rendszerállapot-kulcs másolása. Ezzel, hogy az SDK helyét a telemetriai adatokat küldhet.
 
     ![Példa](./media/app-insights-docker/02-props.png)
@@ -124,7 +128,7 @@ Processzor és memória teljesítményszámlálókat, dúsított, majd Docker-t�
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Javához készült Application insights szolgáltatással](app-insights-java-get-started.md)
 * [A Node.js Application insights szolgáltatással](app-insights-nodejs.md)

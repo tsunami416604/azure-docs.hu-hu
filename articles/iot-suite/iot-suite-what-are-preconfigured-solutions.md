@@ -1,12 +1,12 @@
 ---
-title: "Az Azure IoT Suite előre konfigurált megoldások áttekintése | Microsoft Docs"
-description: "Az Azure IoT Suite előre konfigurált megoldások és az architektúrájuk leírása további forrásokra mutató hivatkozásokkal."
-services: 
+title: Az Azure IoT Suite előre konfigurált megoldások áttekintése | Microsoft Docs
+description: Az Azure IoT Suite előre konfigurált megoldások és az architektúrájuk leírása további forrásokra mutató hivatkozásokkal.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: b29c5fe9543c5fe6da9ff52da6549fdcacff868f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b7b9f61a8fb46d5d591b317049cfd60b723a7e77
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Mi az Azure IoT Suite?
 
@@ -97,7 +97,7 @@ Egy előre konfigurált megoldás üzembe helyezésekor a kiépítési folyamat 
 * [Azure Time Series Insights](../time-series-insights/index.yml). Az előre konfigurált megoldások ezt a szolgáltatást használják az eszközökről származó telemetriaadatok elemzésére és megjelenítésére.
 * [Azure Container Service](../container-service/index.yml). Ez a szolgáltatás az előre konfigurált megoldásokban üzemelteti és felügyeli a mikroszolgáltatásokat.
 * [Azure Cosmos DB](../cosmos-db/index.yml) és [Azure Storage](../storage/index.yml) adattároláshoz.
-* [Azure Stream Analytics](../stream-analytics/index.md). A prediktív karbantartás előre konfigurált megoldás ezzel a szolgáltatással dolgozza fel a bejövő telemetriát, végez összesítést és észleli az eseményeket. Ez az előre konfigurált megoldás is a Stream Analyticsszel dolgozza fel azokat a tájékoztató üzeneteket, amelyek például metaadatokat vagy eszközök parancsválaszait tartalmazzák.
+* [Azure Stream Analytics](../stream-analytics/index.yml). A prediktív karbantartás előre konfigurált megoldás ezzel a szolgáltatással dolgozza fel a bejövő telemetriát, végez összesítést és észleli az eseményeket. Ez az előre konfigurált megoldás is a Stream Analyticsszel dolgozza fel azokat a tájékoztató üzeneteket, amelyek például metaadatokat vagy eszközök parancsválaszait tartalmazzák.
 * [Azure Web Apps](../app-service/index.yml) az előre konfigurált megoldások egyéni alkalmazáskódjának tárolására.
 
 A tipikus IoT-megoldások architektúrájának áttekintéséért lásd a [Microsoft Azure-t és az eszközök internetes hálózatát (IoT)](iot-suite-what-is-azure-iot.md) ismertető cikket.

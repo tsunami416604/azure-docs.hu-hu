@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre egy Azure Application Gateway - sablonok |} Microsoft Docs"
-description: "Ez az oldal utasításokat tartalmaz egy Azure Application Gateway Azure Resource Manager-sablonnal történő létrehozásához"
+title: Hozzon létre egy Azure Application Gateway - sablonok |} Microsoft Docs
+description: Ez az oldal utasításokat tartalmaz egy Azure Application Gateway Azure Resource Manager-sablonnal történő létrehozásához
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ba100189cec2060efa97914a2c90f7b0cccbc33f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Application Gateway létrehozása az Azure Resource Manager-sablonokkal
 
@@ -76,7 +76,7 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
    * **Név** Az erőforrás neve. Figyelje meg a `[parameters('applicationGatewayName')]`, ami azt jelenti, a név biztosított bemenetként, vagy egy paraméterfájl üzembe helyezése során.
    * **properties**. Az erőforrás tulajdonságainak listája. A sablon az Application Gateway létrehozása során a virtuális hálózatot és a nyilvános IP-címet használja.
 
-1. Lépjen vissza [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
+1. Lépjen vissza [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Kattintson a **azuredeploy-parameters.json**, és kattintson a **RAW**.
 1. Mentse a fájlt egy helyi mappába a számítógépén.
 1. Nyissa meg a mentett fájlt, és módosítsa a paraméterek értékeit. A következő értékek használatával helyezze üzembe a forgatókönyvünkben ismertetett Application Gateway-t.
@@ -129,7 +129,7 @@ Ha még sosem használta az Azure PowerShell, látogasson el: [telepítése és 
 1. PowerShell-bejelentkezési
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Keresse meg a fiókot az előfizetésekben.

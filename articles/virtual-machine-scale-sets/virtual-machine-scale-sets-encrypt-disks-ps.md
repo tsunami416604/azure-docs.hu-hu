@@ -1,13 +1,13 @@
 ---
-title: "Az Azure virtuálisgép-méretezési beállítja a lemez titkosítása |} Microsoft Docs"
-description: "Virtuálisgép-példányok és a virtuálisgép-méretezési csoportok csatlakoztatott lemezek titkosítására Azure PowerShell használata"
+title: Az Azure virtuálisgép-méretezési beállítja a lemez titkosítása |} Microsoft Docs
+description: Virtuálisgép-példányok és a virtuálisgép-méretezési csoportok csatlakoztatott lemezek titkosítására Azure PowerShell használata
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 856d4bc7dd636b3a2f3d072a10989cafd7efd6a6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d24189e94cade36eca3349c1f46810ee6daa2a49
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>Az operációs rendszer és a virtuálisgép-méretezési csoportban lévő csatolt adatlemezek titkosítása
 És iparági szabványos titkosítási technológiával inaktív adatok megvédeni, hogy a virtuálisgép-méretezési csoportok Azure lemez titkosítás (ADE) támogatja. Titkosítási engedélyezhető a Windows és Linux rendszerű virtuális gép méretezési készlet. További információkért lásd: [lemez titkosítás a Windows Azure és a Linux](../security/azure-security-disk-encryption.md).
@@ -41,7 +41,7 @@ Ez a cikk az Azure PowerShell modul verziója 5.3.0 szükséges vagy újabb. A v
 Az Azure subsription az adatok titkosítása a virtuálisgép-méretezési előnézete beállítja a register [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature): 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
@@ -80,13 +80,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Első lépésként állítsa be a rendszergazda felhasználónevét és jelszavát a Virtuálisgép-példányok [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal állítsa be a virtuálisgép-példányok rendszergazdai felhasználónevét és jelszavát:
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési csoportot a [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) paranccsal. A Virtuálisgép-példányokhoz felé irányuló forgalom terjesztéséhez terheléselosztót is létrejön. A load balancer forgalom 80-as TCP-porton terjesztése, valamint a távoli asztali forgalom 3389-es TCP-porton és a TCP-portot az 5985 PowerShell-távelérés engedélyezése szabályokat tartalmazza:
+Most hozzon létre egy virtuálisgép-méretezési csoportot a [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) paranccsal. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó olyan szabályokat tartalmaz, amelyek elosztják a 80-as TCP-porton beérkező forgalmat, valamint lehetővé teszi a távoli asztali forgalmat a 3389-es TCP-porton és a PowerShell távoli eljáráshívást az 5985-ös TCP-porton:
 
 ```powershell
 $vmssName="myScaleSet"

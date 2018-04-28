@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 74ee26b961a765276aaa1f0bf17603f22bc8dd20
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 286c23e95f030f92b67e8a505905d11d6ece0297
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>A Runbook végrehajtása az Azure Automationben
 
@@ -32,10 +32,10 @@ A feladatok fér hozzá az Azure-erőforrások az Azure-előfizetéssel való ka
 
 A következő táblázat ismerteti a különböző állapotok feladat lehetséges.
 
-| Állapot | Leírás |
+| status | Leírás |
 |:--- |:--- |
 | Befejeződött |A feladat sikeresen befejeződött. |
-| Sikertelen |A [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md), a runbookot nem sikerült lefordítani. A [PowerShell-parancsfájl runbookok](automation-runbook-types.md), a runbookot nem sikerült elindítani, vagy a feladat kivételbe ütközött. |
+| Meghiúsult |A [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md), a runbookot nem sikerült lefordítani. A [PowerShell-parancsfájl runbookok](automation-runbook-types.md), a runbookot nem sikerült elindítani, vagy a feladat kivételbe ütközött. |
 | Nem sikerült, erőforrás Várakozás |A feladat sikertelen volt, mert elérte a [igazságos elosztása révén](#fair-share) háromszor korlátjának növelését, és az azonos ellenőrzőpont vagy a runbook elindítása indított minden alkalommal. |
 | Várakozik |A feladat arra vár erőforrások egy automatizálási feldolgozó elérhető lesz, így indíthatók el. |
 | Indítás |A feladat egy feldolgozónak van kiosztva, és az elindítás folyamatban van. |
@@ -88,13 +88,31 @@ Használhatja a [Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt
 
 Az alábbi Példaparancsok beolvasni a minta-runbookhoz tartozó utolsó feladatot, és annak állapotát, a runbook-paraméterek és a feladat kimenetét megadott értékek megjelenítése.
 
-```powershell-interactive
+```azurepowershell-interactive
 $job = (Get-AzureRmAutomationJob –AutomationAccountName "MyAutomationAccount" `
 –RunbookName "Test-Runbook" -ResourceGroupName "ResourceGroup01" | sort LastModifiedDate –desc)[0]
 $job.Status
 $job.JobParameters
 Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
+```
+
+Az alábbi minta egy adott feladat kimenetének beolvasása, és minden rekordot ad vissza. Abban az esetben, hogy az egyik a bejegyzés kivétel történt a kivétel bekerül a érték helyett. Ez akkor hasznos, mint a kivételek további információkkal szolgál, amelyek nem kerülhetnek általában kimeneti.
+
+```azurepowershell-interactive
+$output = Get-AzureRmAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
+foreach($item in $output)
+{
+    $fullRecord = Get-AzureRmAutomationJobOutputRecord -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -JobId <jobID> -Id $item.StreamRecordId
+    if ($fullRecord.Type -eq "Error")
+    {
+        $fullRecord.Value.Exception
+    }
+    else
+    {
+    $fullRecord.Value
+    }
+}
 ```
 
 ## <a name="get-details-from-activity-log"></a>A műveletnapló beolvasása – részletek

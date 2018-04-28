@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD B2C-t használó egyoldalas alkalmazás kipróbálása
-description: Gyors útmutató a felhasználókat az Azure Active Directory B2C használatával hitelesítő és regisztráló egyoldalas mintaalkalmazás kipróbáláshoz.
+title: Gyors üzembe helyezés – beállítása bejelentkezés Azure Active Directory B2C segítségével egyoldalas alkalmazások |} Microsoft Docs
+description: Futtassa egy egyoldalas mintaalkalmazás, amely Azure Active Directory B2C használatával biztosítja a fiók bejelentkezhet.
 services: active-directory-b2c
 documentationcenter: ''
 author: davidmu1
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 02a0515ff7c461370f29a511ac576d857676cb2b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 96baf0297c3d2976f3d6fb112b0bd0ce077a186f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-single-page-app"></a>Gyors útmutató: Az Azure AD B2C-t használó egyoldalas alkalmazás kipróbálása
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Gyors üzembe helyezés: Állítson be bejelentkezés Azure Active Directory B2C segítségével egyoldalas alkalmazások
 
 Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt az alkalmazás, az üzlet és az ügyfelek védelme érdekében. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon.
 

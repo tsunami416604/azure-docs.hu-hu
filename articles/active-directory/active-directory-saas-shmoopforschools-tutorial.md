@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Shmoop a iskolákat |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az iskolai Shmoop között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Shmoop a iskolákat |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az iskolai Shmoop között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 48db70834f96adbb7097457caca8489ea1a57da5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e824fe7a74c4adc619f7fa324aa6fa28dacecf24
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Oktatóanyag: Azure Active Directoryval integrált Shmoop a iskolákat
 
@@ -37,7 +37,7 @@ Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazá
 Konfigurálása az Azure AD-integrációs Shmoop a iskolákat, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Egy-egy bejelentkezési a alkalmas Shmoop a iskolákat előfizetéshez
+- Egy Shmoop a iskolákat egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
 > Nem ajánlott, éles környezetben teszteléséhez lépéseit az oktatóanyag segítségével.
@@ -80,8 +80,6 @@ Ebben a szakaszban konfigurálása, és tesztelés az Azure AD az egyszeri bejel
 
 Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, aki a párjukhoz felhasználó Shmoop az iskolai egy felhasználó számára az Azure AD. Más szóval kell egy Azure AD-felhasználó és a kapcsolódó felhasználó a Shmoop az iskolai közötti kapcsolatot.
 
-Shmoop a iskolákat biztosítanak a **felhasználónév** ugyanazt az értéket, az érték a **felhasználónév** az Azure ad-ben. A hivatkozás kapcsolat most hozott létre.
-
 Az Azure AD egyszeri bejelentkezést a Shmoop a iskolákat tesztelése és konfigurálása, végezze el a következő építőelemeket:
 
 1. [Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy a felhasználók számára a szolgáltatás használatához.
@@ -108,9 +106,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
 
-    a. Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe:`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    a. Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
-    b. Az a **azonosító** mezőbe írja be a következő mintát olyan URL-címe:`https://schools.shmoop.com/<uniqueid>`
+    b. Az a **azonosító** mezőbe írja be a következő mintát olyan URL-címe: `https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Lépjen kapcsolatba a [Shmoop a iskolákat ügyfél-támogatási csoport](mailto:support@shmoop.com) beolvasni ezeket az értékeket. 
@@ -146,31 +144,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. Létrehozásához a **metaadatok** URL-címet, a következő lépéseket:
+7. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
 
-    a. Válassza ki **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appregistrations.png)
-   
-    b. Lehetőségre a **végpontok** párbeszédpanelen jelölje ki **végpontok**.  
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpointicon.png)
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
-    c. Kattintson a Másolás gombra, majd másolja a **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpoint.png)
-     
-    d. Keresse fel a tulajdonságlapján **Shmoop a iskolákat**. Másolja a **Alkalmazásazonosító** használatával a **másolási** gombra. Illessze be a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** használatával a következő mintát: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.   
-
-8. Egyszeri bejelentkezés konfigurálása a **Shmoop a iskolákat** oldalon kell küldeniük a **metaadatainak URL-CÍMÉT** való a [Shmoop a iskolákat támogatási csoport](mailto:support@shmoop.com).
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com) közben állítja be az alkalmazást. Ez az alkalmazás a hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapra, és a beágyazott eléréséhez a dokumentáció a **konfigurációs** alsó szakasz. További, a beágyazott dokumentáció szolgáltatásról [az Azure AD dokumentációjában beágyazott]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+8. Egyszeri bejelentkezés konfigurálása a **Shmoop a iskolákat** oldalon kell küldeniük a **alkalmazás összevonási metaadatainak URL-címét** való a [Shmoop a iskolákat támogatási csoport](mailto:support@shmoop.com).
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 

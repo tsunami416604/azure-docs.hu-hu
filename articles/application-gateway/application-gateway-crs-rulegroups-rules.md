@@ -1,25 +1,22 @@
 ---
-title: "Az Azure Application Gateway webalkalmazási tűzfal CRS szabály csoportok és a szabályok |} Microsoft Docs"
-description: "Ezen a lapon információt nyújt webes alkalmazás tűzfal CRS csoportok és a szabályok."
+title: Az Azure Application Gateway webalkalmazási tűzfal CRS szabály csoportok és szabályok
+description: Ezen a lapon információt nyújt webes alkalmazás tűzfal CRS csoportok és a szabályok.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
+author: vhorne
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 9265be4ac4258115c9302189d84b20e4894d42bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/16/2018
+ms.author: victorh
+ms.openlocfilehash: 5ba291eaa93a48e3aadc11b1f0f7b48b01683b07
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Kínált webes alkalmazás tűzfal CRS csoportok és a szabályok listája
 
@@ -27,28 +24,8 @@ Alkalmazás átjáró webalkalmazási tűzfal (waf-ot) védje a webalkalmazások
 
 Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek webalkalmazási tűzfal Application Gateway használata esetén érhetők el.  Minden tábla jelenti. a szabályok egy adott CRS verziójához szabály csoportban található.
 
-##<a name="owasp30"></a>OWASP_3.0
+## <a name="owasp30"></a> OWASP_3.0
 
-### <a name="crs910"></a>  <p x-ms-format-detection="none">KÉRELEM-910-IP-MEGBÍZHATÓSÁGIBESOROLÁS-KEZELÉSI</p>
-
-|ruleId|Leírás|
-|---|---|
-|910011|A szabály 910011|
-|910012|A szabály 910012|
-|910000|Kérhet az ismert rosszindulatú ügyfél (előző forgalom megsértésének alapján).|
-|910100|Ügyfél IP-cím magas kockázati országában helyről.|
-|910120|A szabály 910120|
-|910130|A szabály 910130|
-|910150|HTTP Blacklist felel meg a keresési motor IP-cím|
-|910160|HTTP Blacklist egyezés levélszemétküldő IP-cím|
-|910170|HTTP Blacklist egyezés gyanús IP-cím|
-|910180|HTTP Blacklist egyezés való IP-cím|
-|910013|A szabály 910013|
-|910014|A szabály 910014|
-|910015|A szabály 910015|
-|910016|A szabály 910016|
-|910017|A szabály 910017|
-|910018|A szabály 910018|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">KÉRELEM 911-METÓDUS-VÉGREHAJTÁST</p>
 
@@ -64,26 +41,6 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |911017|A szabály 911017|
 |911018|A szabály 911018|
 
-### <a name="crs912"></a> <p x-ms-format-detection="none">KÉRELEM-912-DOS-VÉDELEM</p>
-
-|ruleId|Leírás|
-|---|---|
-|912100|A szabály 912100|
-|912012|A szabály 912012|
-|912120|Szolgáltatásmegtagadási (DoS) támadás azonosított % @{tx.real_ip} (% @{tx.dos_block_counter} találatok a legutolsó riasztás óta)|
-|912130|A szabály 912130|
-|912140|A szabály 912140|
-|912150|A szabály 912150|
-|912160|A szabály 912160|
-|912170|Lehetséges szolgáltatásmegtagadásos (DoS) támadás % @{tx.real_ip} - Bursts kérelmek száma = % @{ip.dos_burst_counter}|
-|912013|A szabály 912013|
-|912014|A szabály 912014|
-|912019|A szabály 912019|
-|912171|Lehetséges szolgáltatásmegtagadásos (DoS) támadás % @{tx.real_ip} - Bursts kérelmek száma = % @{ip.dos_burst_counter}|
-|912015|A szabály 912015|
-|912016|A szabály 912016|
-|912017|A szabály 912017|
-|912018|A szabály 912018|
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">KÉRELEM 913-OLVASÓ-ÉSZLELÉS</p>
 
@@ -334,9 +291,9 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |943017|A szabály 943017|
 |943018|A szabály 943018|
 
-##<a name="owasp229"></a>OWASP_2.2.9
+##<a name="owasp229"></a> OWASP_2.2.9
 
-### <a name="crs20"></a>crs_20_protocol_violations
+### <a name="crs20"></a> crs_20_protocol_violations
 
 |ruleId|Leírás|
 |---|---|
@@ -362,7 +319,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |960901|Kérelemben érvénytelen karakter|
 |960018|Kérelemben érvénytelen karakter|
 
-### <a name="crs21"></a>crs_21_protocol_anomalies
+### <a name="crs21"></a> crs_21_protocol_anomalies
 
 |ruleId|Leírás|
 |---|---|
@@ -375,7 +332,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |960904|Tartalom tartalmazó, de hiányzik a Content-Type fejléc kérése|
 |960017|Állomásfejléc az egy numerikus IP-cím|
 
-### <a name="crs23"></a>crs_23_request_limits
+### <a name="crs23"></a> crs_23_request_limits
 
 |ruleId|Leírás|
 |---|---|
@@ -386,7 +343,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |960342|Feltöltött fájl mérete túl nagy|
 |960343|Teljes feltöltött fájlok mérete túl nagy|
 
-### <a name="crs30"></a>crs_30_http_policy
+### <a name="crs30"></a> crs_30_http_policy
 
 |ruleId|Leírás|
 |---|---|
@@ -396,7 +353,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |960035|URL-cím fájlkiterjesztés korlátozza házirend|
 |960038|HTTP-fejléc korlátozza házirend|
 
-### <a name="crs35"></a>crs_35_bad_robots
+### <a name="crs35"></a> crs_35_bad_robots
 
 |ruleId|Leírás|
 |---|---|
@@ -405,7 +362,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |990902|Kérelem azt jelzi, hogy egy biztonsági beolvasott a hely|
 |990012|Az engedélyezetlen webhely webbejáró|
 
-### <a name="crs40"></a>crs_40_generic_attacks
+### <a name="crs40"></a> crs_40_generic_attacks
 
 |ruleId|Leírás|
 |---|---|
@@ -434,7 +391,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |958976|A PHP injektálási támadás|
 |958977|A PHP injektálási támadás|
 
-### <a name="crs41sql"></a>crs_41_sql_injection_attacks
+### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
 |ruleId|Leírás|
 |---|---|
@@ -471,7 +428,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |981253|Észleli a MySQL és PostgreSQL tárolt eljárás vagy függvény alkalommal|
 |981251|Észleli a MySQL UDF injektálási és egyéb adatszerkezet/adatkezelési kísérletek|
 
-### <a name="crs41xss"></a>crs_41_xss_attacks
+### <a name="crs41xss"></a> crs_41_xss_attacks
 
 |ruleId|Leírás|
 |---|---|
@@ -576,13 +533,13 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |973329|Internet Explorer lehetővé szűrők - támadás észlelése.|
 |973328|Internet Explorer lehetővé szűrők - támadás észlelése.|
 
-### <a name="crs42"></a>crs_42_tight_security
+### <a name="crs42"></a> crs_42_tight_security
 
 |ruleId|Leírás|
 |---|---|
 |950103|Elérési út könyvtármegkerülési támadás|
 
-### <a name="crs45"></a>crs_45_trojans
+### <a name="crs45"></a> crs_45_trojans
 
 |ruleId|Leírás|
 |---|---|
@@ -590,7 +547,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályok, amelyek we
 |950921|Hátsó kapun keresztüli hozzáférést|
 |950922|Hátsó kapun keresztüli hozzáférést|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan tilthatja ellátogatva WAF: [testreszabása WAF szabályok](application-gateway-customize-waf-rules-portal.md)
 

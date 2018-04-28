@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 73b0c35ac81d9b32cd56a6fd23119f3889867499
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d6a4701c0318edf8292c777615196a2170a68750
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy törlése egy útválasztási táblázatot
 
@@ -31,10 +31,10 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 - Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
 - A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
-- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 - Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
-## <a name="create-a-route-table"></a>Hozzon létre egy útválasztási táblázatot
+## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
 Hány útvonal táblákat hozhat létre egy Azure-beli hely és az előfizetés korlátozva van. További részletek: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
@@ -82,7 +82,7 @@ Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőm
 - Az Azure CLI: [az hálózati útvonal-táblázat frissítése](/cli/azure/network/route-table/route#az_network_route_table_update)
 - PowerShell: [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable)
 
-## <a name="associate-a-route-table-to-a-subnet"></a>Társítson egy útválasztási táblázatot az alhálózathoz
+## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
 Egy alhálózat állhat nulla vagy egy útválasztási táblázatot társítva. Egy útválasztási táblázatot lehet nulla vagy több alhálózatból társítva. Mivel az útvonaltáblák nem társított virtuális hálózatokhoz, társítania kell egy útválasztási táblázatot azt szeretné, hogy az útvonaltáblát társított minden egyes alhálózathoz. Az alhálózat összes forgalomra útvonaltábláit, belül létrehozott útvonalak alapján továbbítja [alapértelmezett útvonalak](virtual-networks-udr-overview.md#default), útvonalak egy helyszíni hálózatból kiterjednek, ha a virtuális hálózathoz van csatlakoztatva egy Azure virtuális hálózati átjáró ( Expressroute-on, vagy VPN-profilok, ha a VPN-átjáró BGP használatával). Csak egy útválasztási táblázatot működő azonos Azure-beli hely és az útválasztási táblázatot előfizetés virtuális hálózatok alhálózatokra is hozzárendelhető.
 
@@ -132,7 +132,7 @@ Hány útvonalak útvonaltáblánkénti hozhat létre egy Azure-beli hely és az
 1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** megjelenik a keresési eredmények között, jelölje be.
 2. Válassza ki az útvonaltábla a listából, amely hozzá szeretné adni egy útvonalat.
 3. Válassza ki **útvonalak**a **beállítások**.
-4. Válassza ki **+ Hozzáadás**.
+4. Válassza a **+ Hozzáadás** lehetőséget.
 5. Adjon meg egy egyedi **neve** belül az útvonaltáblát az útvonal.
 6. Adja meg a **címelőtag**, a CIDR-jelöléssel irányíthatja a forgalmat a kívánt. Az előtag nem lehet duplikálni útválasztási táblázatot belül egynél több útvonal, bár a előtag lehet belül egy másik előtag. Például ha egy útvonal előtagjaként definiált 10.0.0.0/16, továbbra is definiálhat a 10.0.0.0/24 címelőtagot egy másik útvonalat. Azure egy útvonalat a forgalmat a leghosszabb előtag egyezés alapján választják ki. Hogyan választja ki a Azure útvonalak kapcsolatos további információkért lásd: [Útválasztás – áttekintés](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 7. Válassza ki a **a következő ugrás típusa**. Összes következő ugrás típusa részletes ismertetését lásd: [Útválasztás – áttekintés](virtual-networks-udr-overview.md).

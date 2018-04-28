@@ -1,9 +1,9 @@
 ---
-title: "Kétlépéses ellenőrzés hibaelhárítása |} Microsoft Docs"
-description: "Ez a dokumentum felhasználók információt nyújt a Mi a teendő, ha az Azure multi-factor Authentication problémát futnak."
+title: Kétlépéses ellenőrzés hibaelhárítása |} Microsoft Docs
+description: Ez a dokumentum felhasználók információt nyújt a Mi a teendő, ha az Azure multi-factor Authentication problémát futnak.
 services: multi-factor-authentication
-keywords: "többtényezős hitelesítés ügyfél, hitelesítési probléma korrelációs azonosító"
-documentationcenter: 
+keywords: többtényezős hitelesítés ügyfél, hitelesítési probléma korrelációs azonosító
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
@@ -16,13 +16,13 @@ ms.date: 07/06/2017
 ms.author: barlan
 ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 840f4f9e3616f5a60ebbbb0ad33cee9a67958989
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 995430a5c8a388358fcfb7c8c9bac978450df411
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="get-help-with-two-step-verification"></a>Segítség a kétlépéses ellenőrzés
+# <a name="get-help-with-two-step-verification"></a>Segítség a kétlépcsős ellenőrzéshez
 Ebben a cikkben megválaszolunk személyek kérje meg a kétlépéses ellenőrzést kapcsolatos leggyakoribb kérdésekre.
 
 ## <a name="why-do-i-have-to-perform-two-step-verification-can-i-turn-it-off"></a>Miért kell végrehajtani a kétlépéses ellenőrzést? Ki lehet kapcsolni azt?
@@ -87,7 +87,7 @@ Ha nem rendelkezik konfigurált egy másik módszert, a vállalat támogatási s
 Ha gyakran rossz cella jel miatt késések, azt javasoljuk, használja a [Microsoft Authenticator alkalmazás](microsoft-authenticator-app-how-to.md) okostelefonos. Az alkalmazás hozhat létre, amelyekkel bejelentkezhet véletlenszerű biztonsági kódokat, és ezek nem feltétlenül szükséges egy cella jel vagy az interneten kapcsolathoz.
 
 ## <a name="app-passwords-are-not-working"></a>Alkalmazásjelszók nem működnek.
-Először is győződjön meg arról, hogy megfelelően van megadva az alkalmazásjelszót. A generált jelszót a felváltja a normál jelszavát, de csak a régebbi asztali alkalmazások, amelyek nem támogatják a kétlépéses ellenőrzést. Ha az eszköz még nem működik, próbálja aláíró a és [hozzon létre egy új alkalmazásjelszót](multi-factor-authentication-end-user-app-passwords.md).  Még mindig nem működik, ha a vállalat támogatási szolgálattól, és azok [törölje a meglévő alkalmazásjelszavak](../multi-factor-authentication-manage-users-and-devices.md) és majd létrehozhat egy újat.
+Először is győződjön meg arról, hogy megfelelően van megadva az alkalmazásjelszót. A generált jelszót a felváltja a normál jelszavát, de csak a régebbi asztali alkalmazások, amelyek nem támogatják a kétlépéses ellenőrzést. Ha az eszköz még nem működik, próbálja aláíró a és [hozzon létre egy új alkalmazásjelszót](multi-factor-authentication-end-user-app-passwords.md).  Még mindig nem működik, ha a vállalat támogatási szolgálattól, és azok [törölje a meglévő alkalmazásjelszavak](../../active-directory/authentication/howto-mfa-userdevicesettings.md) és majd létrehozhat egy újat.
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nem található a problémámat választ.
 Hibaelhárítási lépések próbált, de a problémák továbbra is fut, ha a vállalat támogatási szolgálattól. Segíthet kell lennie.

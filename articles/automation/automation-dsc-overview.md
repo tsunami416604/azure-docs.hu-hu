@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3949b79c3729ecdc2dfdd6297a5f10852e061540
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4282333fc8c6f0835c451b781f70dfaed0697d96
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC – áttekintés
 
@@ -25,7 +25,7 @@ Az Azure Automation DSC számos előnye van, mint az Azure-on kívüli DSC.
 
 ### <a name="built-in-pull-server"></a>Beépített lekérési kiszolgálójával
 
-Azure Automation szolgáltatásbeli biztosít egy [DSC lekérési kiszolgálójával](https://msdn.microsoft.com/en-us/powershell/dsc/pullserver) , hogy a célcsomópontokat automatikusan megjelenik a konfigurációk, felelnek meg a kívánt állapot, és megfelelőségi jelentéseket küldhetnek vissza.
+Azure Automation szolgáltatásbeli biztosít egy [DSC lekérési kiszolgálójával](https://msdn.microsoft.com/powershell/dsc/pullserver) , hogy a célcsomópontokat automatikusan megjelenik a konfigurációk, felelnek meg a kívánt állapot, és megfelelőségi jelentéseket küldhetnek vissza.
 A beépített lekérési kiszolgálójával, az Azure Automationben szükségtelenné teszi beállítása és karbantartása a saját lekérési kiszolgálójával.
 Azure Automation szolgáltatásbeli virtuális vagy fizikai Windows vagy Linux rendszerű gépek, a felhőben, vagy a helyszíni célba.
 

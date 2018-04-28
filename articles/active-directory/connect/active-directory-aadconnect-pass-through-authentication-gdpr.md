@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD Connect - áteresztő hitelesítés - GDPR megfelelőségi |} Microsoft Docs"
-description: "Ez a cikk az Azure Active Directory (Azure AD) áteresztő hitelesítés és GDPR megfelelőségi foglalkozik."
+title: Felhasználói adatok és az Azure Active Directory áteresztő hitelesítés |} Microsoft Docs
+description: Ez a cikk az Azure Active Directory (Azure AD) áteresztő hitelesítés és GDPR megfelelőségi foglalkozik.
 services: active-directory
-keywords: "Az Azure AD Connect áteresztő hitelesítés GDPR, szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Az Azure AD Connect áteresztő hitelesítés GDPR, szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/28/2018
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 21874c961163e3efba45c2ee8557c03135987f95
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-active-directory-pass-through-authentication-gdpr-compliance"></a>Az Azure Active Directory áteresztő hitelesítés: GDPR megfelelőségi
+# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatok és az Azure Active Directory áteresztő hitelesítés
+
+
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Áttekintés
-
-A lehetséges, hogy 2018, az európai adatvédelmi törvény, a [általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm), esedékes érvénybe léptetéséhez. A GDPR támaszt a vállalatok, állami intézményekhez, nem nyereség és más szervezetekkel, hogy az ajánlat termékek és szolgáltatások vállalatoknál az Európai Unió, vagy ha az adatgyűjtés és -elemzés EU lakosai kötve új szabályokat. A GDPR elhelyezkedő függetlenül érvényes. 
-
-Microsoft-termékek és szolgáltatások elérhetők ma segítséget nyújtanak a GDPR követelményeknek. További információk a Microsoft Privacy Policy házirend [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
 
 Az Azure AD áteresztő hitelesítés hoz létre a következő napló típusú, amely tartalmazhat EUII:
 
@@ -35,7 +34,7 @@ Az Azure AD áteresztő hitelesítés hoz létre a következő napló típusú, 
 - Hitelesítési ügynök nyomkövetésének naplófájljait.
 - Windows-esemény naplófájlokat.
 
-Áteresztő hitelesítés GDPR megfelelőségi kétféleképpen érhető el:
+Felhasználói adatok áteresztő hitelesítés kétféleképpen érhető el:
 
 1.  Kérésre adatok kinyerése a személy, és adatok eltávolítása a telepítések az adott személyt.
 2.  Győződjön meg arról, 48 órával adatot nem őrződnek meg.
@@ -104,4 +103,5 @@ A parancsfájl futtatását ütemezése 48 óránként kövesse az alábbi lép�
 Ha naplózás engedélyezve van, a a termék hoz létre a biztonsági naplók a tartományvezérlők. Naplózási házirendek konfigurálásával kapcsolatos további tudnivalókért olvassa el ezt [cikk](https://technet.microsoft.com/library/dd277403.aspx).
 
 ## <a name="next-steps"></a>További lépések
+* [Tekintse át a Microsoft Privacy házirendet, a biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
 - [**Hibaelhárítás** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) -Útmutató: a szolgáltatással kapcsolatos gyakori problémák megoldása.

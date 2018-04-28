@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 9049c98803056ce459ef22869100166cbd232cc3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6c06b2819516664a367ca31925366eabd05e688e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Oktatóanyag: Azure Active Directoryval integrált AppNeta Teljesítményfigyelő
 
@@ -130,7 +130,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | cím| user.jobtitle|
 
     > [!NOTE]
-    > "csoportok" hivatkozik a biztonsági csoport Appneta, amely az Azure AD egy szerepkör van hozzárendelve. Tekintse meg [ez](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) doc, amely ismerteti, hogyan hozzon létre egyéni szerepkörök az Azure ad-ben.
+    > "csoportok" hivatkozik a biztonsági csoport Appneta, amely az Azure AD egy szerepkör van hozzárendelve. Tekintse meg [ez](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) doc, amely ismerteti, hogyan hozzon létre egyéni szerepkörök az Azure ad-ben.
         
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 

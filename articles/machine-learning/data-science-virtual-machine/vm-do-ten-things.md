@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: gokuma
-ms.openlocfilehash: 09c48b92e39aa347c97d42358b50c338851fa59b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5f0961a99eac805e82cbc5e5d61c485f8661ba0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas az adatelemző virtuális gép
+# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz végezhető műveletek a a Windows Data tudományos virtuális gép
 
-A Microsoft Data tudományos virtuális gép (DSVM) olyan hatékony tudományos fejlesztési környezet, amely lehetővé teszi a különböző adatok feltárása és modellezési feladatok elvégzéséhez. A környezet már rendelkezik, beépített és csomagolt eszközökkel számos népszerű adatok elemzés, amely megkönnyíti a helyszíni, felhőalapú vagy hibrid telepítések elemzés gyors megkezdéséhez. A DSVM szorosan együttműködik olyan sok Azure-szolgáltatást, és képes olvasni és feldolgozni az adatokat az Azure, az Azure SQL Data Warehouse, az Azure Data Lake, az Azure Storage, vagy az Azure Cosmos Adatbázisba tárolt. Például az Azure Machine Learning és az Azure Data Factory analytics eszközöket is hasznosítani tudnak.
+A Windows Data tudományos virtuális gép (DSVM) olyan hatékony tudományos fejlesztési környezet, amely lehetővé teszi a különböző adatok feltárása és modellezési feladatok elvégzéséhez. A környezet már rendelkezik a beépített és csomagolt eszközökkel számos népszerű adatok elemzés, amely megkönnyíti a helyszíni, elemzéshez gyors megkezdéséhez felhőalapú vagy hibrid környezetekhez. A DSVM szorosan együttműködik olyan sok Azure-szolgáltatást, és képes olvasni és feldolgozni az adatokat az Azure, az Azure SQL Data Warehouse, az Azure Data Lake, az Azure Storage, vagy az Azure Cosmos Adatbázisba tárolt. Azt is kihasználhatják a más analytics eszközök, például az Azure Machine Learning és az Azure Data Factory.
 
 Ebből a cikkből megtudhatja hogyan használható a DSVM tudományos különböző feladatok elvégzéséhez, és más Azure-szolgáltatásokkal kommunikálni. Íme néhány a DSVM végezhet el:
 
@@ -208,7 +208,7 @@ Adatszakértőkön nagy adatkészletek, kódok vagy egyéb erőforrásokat a csa
 Azure Powershell használatával hozzon létre egy Azure Fájlszolgáltatás megosztást. Ez a parancsfájl futtatásához Azure PowerShell egy Azure szolgáltatás fájlmegosztás létrehozásához.
 
     # Authenticate to Azure.
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     # Select your subscription
     Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
     # Create a new resource group.

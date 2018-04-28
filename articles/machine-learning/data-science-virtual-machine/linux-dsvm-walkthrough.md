@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59d6b960a40910b8b2fe72f6c3b149608ee8b8ad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adattudomány rendelkező Linux adatok tudományos virtuális gépek Azure-on
 Ez a forgatókönyv bemutatja, hogyan végezhető több közös adatok tudományos a Linux adatok tudományos virtuális gép. A Linux adatok tudományos virtuális gép (DSVM) érhető el, amely adatelemzés és a gépi tanulás általánosan használt eszközöket együtt telepített Azure virtuálisgép-lemezkép. A kulcs szoftverösszetevőket van felsorolva a [a Linux adatok tudományos virtuális gép kiépítéséhez](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések során adattudomány (percben), anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Könnyedén növelheti a virtuális gép, ha szükséges, és állítsa le, ha nincsenek használatban. Ehhez az erőforráshoz, mind a rugalmas és költséghatékony.
@@ -264,7 +264,7 @@ XGBoost is meghívhatja a python vagy a parancssorból végzi.
 A fejlesztési pythonos környezetekben az Anaconda Python azokat a terjesztéseket 2.7 és 3.5-ös telepítve vannak a DSVM.
 
 > [!NOTE]
-> A Anaconda terjesztési tartalmaz [Condas](http://conda.pydata.org/docs/index.html), amelyek segítségével hozzon létre egyéni környezeteket, amelyek különböző verziói és/vagy a bennük foglalt telepített csomagok Python.
+> A Anaconda terjesztési tartalmaz [Conda](http://conda.pydata.org/docs/index.html), amelyek segítségével hozzon létre egyéni környezeteket, amelyek különböző verziói és/vagy a bennük foglalt telepített csomagok Python.
 >
 >
 
@@ -316,6 +316,24 @@ A modell közzétételére AzureML:
 
 ## <a name="jupyterhub"></a>Jupyterhub
 A Anaconda terjesztési a DSVM a Jupyter notebook, olyan többplatformos környezetben, a Python, R vagy Ágnes kóddal és elemzési tartalmaz. A Jupyter notebook JupyterHub keresztül érhető el. A helyi Linux-felhasználónév és jelszó használatával bejelentkezik ***https://\<VM DNS-nevét vagy IP-cím\>: 8000 /***. Minden konfigurációs fájlt a JupyterHub könyvtárban találhatók **/etc/jupyterhub**.
+
+> [!NOTE]
+> A Python Package Manager használatára (keresztül a `pip` parancs) a Jupyter notebook a jelenlegi kernel, a következő parancs használható kódcella, például:
+```python
+   import sys
+   ! {sys.executable} -m pip install numpy -y
+```
+>
+>
+
+> [!NOTE]
+> A Conda-telepítővel (keresztül a `conda` parancs) a Jupyter notebook a jelenlegi kernel, a következő parancs használható kódcella, például:
+```python
+   import sys
+   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+```
+>
+>
 
 Több minta jegyzetfüzetet már telepítve van a virtuális Gépet:
 

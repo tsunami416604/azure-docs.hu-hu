@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: abd3ef00148795f4b3e79e2ed64dd35f56946455
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 68e3775be36b434acb5c25b522f9e28bec1b6125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával SAP ECC
 
@@ -124,7 +124,7 @@ Adatok másolása SAP ECC, állítsa be a forrás típusa a másolási tevékeny
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **SapEccSource** | Igen |
-| lekérdezés | OData-lekérdezés beállításai adatok szűréséhez. Példa: "$select = név, leírás & $top = 10".<br/><br/>SAP ECC összekötő adatainak másolása kombinált URL-címről: (társított szolgáltatás megadott URL-cím) / (dataset megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezés). Tekintse meg [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Igen |
+| lekérdezés | OData-lekérdezés beállításai adatok szűréséhez. Példa: "$select = név, leírás & $top = 10".<br/><br/>SAP ECC összekötő adatainak másolása kombinált URL-címről: (társított szolgáltatás megadott URL-cím) / (dataset megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezés). Tekintse meg [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 
@@ -170,14 +170,14 @@ SAP ECC történő másolás, ha a következő megfeleltetéseket szolgálnak az
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimális |
 | Edm.Double | Dupla |
-| Edm.Single | Egyedülálló |
+| Edm.Single | Önálló |
 | Edm.Guid | Karakterlánc |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Karakterlánc |
-| Edm.Time | TimeSpan |
+| Edm.Time | A TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]

@@ -10,11 +10,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 37f143ce9dabdc2d0eaf6c60dd551c682a141c17
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sql-database-application-development-overview"></a>SQL-adatbázis alkalmazások fejlesztői áttekintés
 Ez a cikk ismerteti az alapvető szempontokat, amelyeket a fejlesztőknek érdemes figyelembe venniük az Azure SQL Database-hez való csatlakozáshoz használt kód írásakor.
@@ -29,12 +29,12 @@ Különböző programozási nyelvekhez és platformokhoz érhetők el kódmintá
 * További információ: [adatkapcsolattárak SQL Database és SQL Server](sql-database-libraries.md).
 
 ## <a name="tools"></a>Eszközök 
-Használhat olyan nyílt forráskódú eszközöket is, mint például a [Cheetah](https://github.com/wunderlist/cheetah), az [sql-cli](https://www.npmjs.com/package/sql-cli) és a [VS Code](https://code.visualstudio.com/). Ezen kívül az Azure SQL Database olyan Microsoft-eszközöket is támogat, mint például a [Visual Studio](https://www.visualstudio.com/downloads/) és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  A hatékonyságot az Azure felügyeleti portál, a PowerShell és a REST API-k használatával növelheti tovább.
+Kihasználhatja a nyílt forrású eszközök például [gepárd](https://github.com/wunderlist/cheetah), [sql-cli](https://www.npmjs.com/package/sql-cli), [Visual STUDIO Code](https://code.visualstudio.com/). Ezen kívül az Azure SQL Database olyan Microsoft-eszközöket is támogat, mint például a [Visual Studio](https://www.visualstudio.com/downloads/) és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  A hatékonyságot az Azure felügyeleti portál, a PowerShell és a REST API-k használatával növelheti tovább.
 
 ## <a name="resource-limitations"></a>Erőforrás-korlátozások
 Az Azure SQL Database két különböző mechanizmussal kezeli az adatbázis számára elérhető erőforrásokat: erőforrás-szabályozással és a korlátozások kényszerítésével.
 
-* További információ: [erőforrás-korlátozások az Azure SQL Database](sql-database-service-tiers.md).
+* További információ: [Azure SQL Database DTU-alapú erőforrás modell korlátok](sql-database-dtu-resource-limits.md) és [Azure SQL Database vCore-alapú erőforrás modell korlátok (előzetes verzió)](sql-database-vcore-resource-limits.md).
 
 ## <a name="security"></a>Biztonság
 Az Azure SQL Database erőforrásokat biztosít a hozzáférés korlátozásához, az adatok védelméhez és a tevékenységek monitorozásához az SQL Database-adatbázisokban.

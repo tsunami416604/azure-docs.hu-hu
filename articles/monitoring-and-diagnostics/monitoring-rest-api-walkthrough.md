@@ -18,11 +18,11 @@ ms.dyn365.ops.version: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: mcollier
-ms.openlocfilehash: a87f60b04806fb337a9b4558a67ffa11da661ad5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a2b33822a1208c2835b8eabfb6717edba08d1992
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure figyelési REST API-forgatókönyv
 Ez a cikk bemutatja, hogyan végezhet hitelesítést, a kód használhassa a [Microsoft Azure figyelő REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
@@ -41,7 +41,7 @@ $subscriptionId = "{azure-subscription-id}"
 $resourceGroupName = "{resource-group-name}"
 
 # Authenticate to a specific Azure subscription.
-Login-AzureRmAccount -SubscriptionId $subscriptionId
+Connect-AzureRmAccount -SubscriptionId $subscriptionId
 
 # Password for the service principal
 $pwd = "{service-principal-password}"
@@ -596,10 +596,10 @@ Az alábbi listában néhány példa a különböző Azure-erőforrások erőfor
 * **IoT Hub** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
 * **Elastic SQL Pool** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
 * **SQL Database (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{server-name}*/databases/*{database-name}*
-* **A Service Bus** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.ServiceBus/*{névtér}* / *{szolgáltatásbusz-neve}*
-* **Virtuálisgép-méretezési csoportok** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Compute/virtualMachineScaleSets/ *{Virtuálisgép-név}*
-* **Virtuális gépek** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Compute/virtualMachines/*{virtuálisgép-név}*
-* **Az Event Hubs** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.EventHub/namespaces/*{ az eventhub-namespace}*
+* **A Service Bus** -következő *{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.ServiceBus/*{névtér}* / *{szolgáltatásbusz-neve}*
+* **Virtuálisgép-méretezési csoportok** -következő *{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Compute/virtualMachineScaleSets/ *{Virtuálisgép-név}*
+* **Virtuális gépek** -következő *{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Compute/virtualMachines/*{virtuálisgép-név}*
+* **Az Event Hubs** -következő *{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.EventHub/namespaces/*{ az eventhub-namespace}*
 
 Nincsenek alternatív módszer beolvasása az erőforrás-azonosító, beleértve az Azure erőforrás-kezelő, a kívánt erőforrás megtekintése az Azure portálon, és a PowerShell vagy az Azure parancssori felület használatával.
 

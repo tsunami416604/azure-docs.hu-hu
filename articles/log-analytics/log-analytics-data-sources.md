@@ -1,8 +1,8 @@
 ---
-title: "Adatforrások konfigurálása az Azure Naplóelemzés |} Microsoft Docs"
-description: "Adatforrások határozza meg, hogy a Naplóelemzési gyűjti az ügynökök és egyéb kapcsolódó források adatait.  A cikkből megtudhatja, hogyan Naplóelemzési az adatforrás, konfigurálásukról részleteit ismerteti, és a különböző forrásokból elérhető összegzését tartalmazza."
+title: Adatforrások konfigurálása az Azure Naplóelemzés |} Microsoft Docs
+description: Adatforrások határozza meg, hogy a Naplóelemzési gyűjti az ügynökök és egyéb kapcsolódó források adatait.  A cikkből megtudhatja, hogyan Naplóelemzési az adatforrás, konfigurálásukról részleteit ismerteti, és a különböző forrásokból elérhető összegzését tartalmazza.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 04/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4237df0934d6191b77ff82c86a66585e72191ac9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-sources-in-log-analytics"></a>A Naplóelemzési adatforrások
 A Naplóelemzési adatokat gyűjti össze a csatlakoztatott források, és azt a Naplóelemzési munkaterület tárolja.  Az egyes összegyűjtött adatokon az adatforrásokat, amelyeknél megadta határozzák meg.  A Naplóelemzési adatok rekordkészlet tárolja.  Az egyes adatforrások egy adott típusú rekordot hoz létre a saját tulajdonságkészletbe minden típus.
@@ -29,16 +29,19 @@ Adatforrások eltérnek [megoldások](log-analytics-add-solutions.md), amely is 
 
 
 ## <a name="summary-of-data-sources"></a>Adatforrások áttekintése
-Az adatforrásokat, amelyek jelenleg a Naplóelemzési a következő táblázatban láthatók.  Mindegyik rendelkezik-e egy külön cikk tárgyalja részletek megadása, hogy az adatforrás mutató hivatkozást.
+A következő táblázat sorolja fel az adatforrásokat, amelyek jelenleg a Naplóelemzési.  Mindegyik rendelkezik-e egy külön cikk tárgyalja részletek megadása, hogy az adatforrás mutató hivatkozást.   A metódus és a Log Analyticshez való használatra vonatkozó adatok gyűjtésének gyakorisága információkat is biztosít.  Ez a cikk a információt elérhető különböző megoldások azonosítására és a különböző felügyeleti megoldások adatok megismeréséhez és kapcsolat követelmények megértése érdekében használhatja. Az egyes oszlopok, lásd: [az gyűjtemény adatait az Azure-ban a felügyeleti megoldásokra](../monitoring/monitoring-solutions-inventory.md).
 
-| Adatforrás | Eseménytípus | Leírás |
-|:--- |:--- |:--- |
-| [Egyéni naplók](log-analytics-data-sources-custom-logs.md) |\<Naplónév\>_CL |Windows vagy Linux ügynökök naplófájl-információkat tartalmazó szövegfájlok. |
-| [Windows-Eseménynapló](log-analytics-data-sources-windows-events.md) |Esemény |Események az esemény bejelentkezési Windows rendszerű számítógépekről gyűjt. |
-| [Windows-teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) |A Teljesítményfigyelő |Windows rendszerű számítógépek gyűjtött teljesítményszámlálók. |
-| [Linux-teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) |A Teljesítményfigyelő |A Linux rendszerű számítógépekről gyűjtött teljesítményszámlálók. |
-| [IIS-naplók](log-analytics-data-sources-iis-logs.md) |W3CIISLog |Az Internet Information Services W3C formátumban naplózza. |
-| [Syslog](log-analytics-data-sources-syslog.md) |Rendszernapló |Syslog-események Windows vagy Linux rendszerű számítógépeken. |
+
+| Adatforrás | Platform | A Microsoft figyelési ügynök | Operations Manager-ügynök | Azure Storage tárterület | Az Operations Manager szükséges? | Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött | A gyűjtés gyakorisága |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | érkezésükkor |
+| [Egyéni naplók](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | érkezésükkor |
+| [IIS-naplók](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 perc |
+| [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |Ütemezés szerint, a 10 másodperces minimális |
+| [Teljesítményszámlálók](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |Ütemezés szerint, a 10 másodperces minimális |
+| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |az Azure storage: 10 perc; az ügynök: érkezésükkor |
+| [Windows-Eseménynapló](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | érkezésükkor |
+
 
 ## <a name="configuring-data-sources"></a>Adatforrások konfigurálása
 Konfigurálja az adatforrást a **adatok** Naplóelemzési menüjében **speciális beállítások**.  A munkaterületen lévő összes csatlakoztatott források kerülnek beállításra.  Ez a konfiguráció jelenleg nem összes ügynököt kizárni.

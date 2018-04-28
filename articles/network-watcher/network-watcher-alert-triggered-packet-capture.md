@@ -1,11 +1,11 @@
 ---
-title: "Ehhez a proaktív hálózatfigyelési riasztások és az Azure Functions csomagrögzítéssel használható |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan hozzon létre egy riasztási kiváltott csomagrögzítéssel Azure hálózati figyelőt"
+title: Ehhez a proaktív hálózatfigyelési riasztások és az Azure Functions csomagrögzítéssel használható |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan hozzon létre egy riasztási kiváltott csomagrögzítéssel Azure hálózati figyelőt
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: bdd4b7ddd5ebaf0187ed4943a518a83fc2531da4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4c96ca70b9b6a82dcccec443ac0b1e06f96a2396
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktív hálózatfigyelési riasztások és az Azure Functions csomagrögzítéssel használata
 
@@ -86,7 +86,7 @@ Az első lépés, ha a riasztás feldolgozni, és hozzon létre egy csomagrögz�
 
     |**Beállítás** | **Érték** | **Részletek** |
     |---|---|---|
-    |**Scenario**|Kísérleti|Forgatókönyv típusa|
+    |**A forgatókönyv**|Kísérleti|Forgatókönyv típusa|
     |**A függvény neve**|AlertPacketCapturePowerShell|A függvény neve|
     |**Jogosultsági szint**|Függvény|A függvény jogosultsági szint|
 
@@ -289,7 +289,7 @@ A következő példa a függvényben használható PowerShell-kódjába. Le kell
             #Authentication
             $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
             $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-            Add-AzureRMAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            Connect-AzureRmAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
             #Get the VM that fired the alert
@@ -345,7 +345,7 @@ Ugrás a meglévő virtuális gépből, és adja hozzá a riasztási szabályt. 
   |**Name (Név)**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
   |**Leírás**|TCP-szegmens küldött meghaladja a küszöbértéket|A riasztási szabály leírása.||
   |**Metrika**|Küldött TCP-szegmens| A metrika a riasztás aktiválásához használatára. |
-  |Az állapot|Nagyobb mint| Az állapotot, amelyet használni a mérték kiértékelése során.|
+  |**Az állapot**|Nagyobb mint| Az állapotot, amelyet használni a mérték kiértékelése során.|
   |**Küszöbérték**|100| A metrika a riasztást kiváltó értéke. Ez az érték a környezet érvényes értékre kell állítani.|
   |**Időtartam**|Az elmúlt öt percben| Meghatározza, hogy az időszak, amelyben a küszöbértéket a metrika a(z) keres.|
   |**Webhook**|[webhook URL-CÍMÉT függvény alkalmazásból]| A webhook URL-CÍMÉT az előző lépésben létrehozott függvény alkalmazásból.|
@@ -365,7 +365,7 @@ Az Azure storage-fiókok fájlok letöltésére vonatkozó utasításokért lás
 
 A rögzítési letöltése után tekintheti által olvasható eszközzel egy **.cap** fájlt. Az alábbiakban két eszközökre mutató hivatkozásokat:
 
-- [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [Microsoft Message Analyzert](https://technet.microsoft.com/library/jj649776.aspx)
 - [WireShark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>További lépések

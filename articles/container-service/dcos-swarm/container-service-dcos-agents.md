@@ -1,19 +1,19 @@
 ---
-title: "Azure Tárolószolgáltatási DC/OS-ügynök készleteket"
-description: "A nyilvános és titkos ügynök készletek működéséről az Azure tároló szolgáltatás DC/OS-fürt"
+title: Azure Tárolószolgáltatási DC/OS-ügynök készleteket
+description: A nyilvános és titkos ügynök készletek működéséről az Azure tároló szolgáltatás DC/OS-fürt
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: e82a6c1ee2d45cd07f4e87c43ad4fb1149ef555c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 81059fd75f0e61324221614c4bb8eccd94203478
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Azure Tárolószolgáltatási DC/OS-ügynök készleteket
 Azure Tárolószolgáltatási DC/OS fürtök ügynök csomópontok két rendelkezik, egy nyilvános készlet és egy személyes készletet tartalmaz. Egy alkalmazás vagy a készletbe, a tárolószolgáltatás gépek közötti kisegítő érintő is telepíthető. A gépek kommunikál az internettel (nyilvános), vagy belső (magánhálózati) tartani. Ez a cikk rövid áttekintést nyújt, ezért azonban nyilvános és titkos.
@@ -38,7 +38,7 @@ A privát készlet és a nyilvános készlet olyan Azure virtuálisgép-méretez
 ## <a name="use-agent-pools"></a>Ügynök-készletek használatára
 Alapértelmezés szerint **Marathon** bármely új alkalmazás telepíti a *titkos* ügynök csomópontok. Explicit módon telepítheti az alkalmazást, hogy a *nyilvános* csomópontok az alkalmazás létrehozása közben. Válassza ki a **nem kötelező** lapra, és írja be **slave_public** a a **elfogadott erőforrás szerepkörök** érték. Ez a folyamat dokumentált [Itt](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) és a a [DC/OS](https://dcos.io/docs/1.7/administration/installing/custom/create-public-agent/) dokumentációját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tudjon meg többet az [a DC/OS-tárolók kezelése](container-service-mesos-marathon-ui.md).
 
 * Megtudhatja, hogyan [nyissa meg a tűzfal](container-service-enable-public-access.md) a DC/OS-tárolók nyilvános hozzáférés engedélyezése az Azure által biztosított.

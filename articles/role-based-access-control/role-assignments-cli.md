@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 9a4489c575de9f63740c68bda8cbf921592402ec
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f783b08b25b7dd00351537f4dd404d9c8d02044d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Szerepköralapú hozzáférés-vezérlés az Azure parancssori felületével kezelése
 
@@ -38,7 +38,7 @@ Az Azure parancssori felület használatával felügyeli a szerepkör-hozzárend
 
 ## <a name="list-role-definitions"></a>Szerepkör-definíciók listája
 
-Kilistázhatja az összes rendelkezésre álló szerepkör-definíciók [az szerepkör-definíció lista](/cli/azure/role/definition#az_role_definition_list):
+Kilistázhatja az összes rendelkezésre álló szerepkör-definíciók [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list
@@ -95,7 +95,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 
 ### <a name="list-actions-of-a-role-definition"></a>Egy szerepkör-definíció lista műveletek
 
-Egy szerepkör-definíció műveleteit kilistázhatja [az szerepkör-definíció lista](/cli/azure/role/definition#az_role_definition_list):
+Egy szerepkör-definíció műveleteit kilistázhatja [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list --name <role_name>
@@ -185,7 +185,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ### <a name="list-role-assignments-for-a-user"></a>Szerepkör-hozzárendelések listáját egy felhasználó számára
 
-Kilistázhatja az adott felhasználó szerepkör-hozzárendelések [az szerepkör társításának listája](/cli/azure/role/assignment#az_role_assignment_list):
+Kilistázhatja az adott felhasználó szerepkör-hozzárendelések [az szerepkör társításának listája](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --assignee <assignee>
@@ -214,7 +214,7 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 
 ### <a name="list-role-assignments-for-a-resource-group"></a>Szerepkör-hozzárendelések listáját erőforráscsoport
 
-A szerepkör-hozzárendelések erőforráscsoport létező kilistázhatja [az szerepkör társításának listája](/cli/azure/role/assignment#az_role_assignment_list):
+A szerepkör-hozzárendelések erőforráscsoport létező kilistázhatja [az szerepkör társításának listája](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --resource-group <resource_group>
@@ -243,7 +243,7 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 
 ### <a name="create-a-role-assignment-for-a-user"></a>A felhasználói szerepkör-hozzárendelés létrehozása
 
-Egy felhasználó szerepkör-hozzárendelés létrehozása a erőforrás hatóköréből, használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
+Egy felhasználó szerepkör-hozzárendelés létrehozása a erőforrás hatóköréből, használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create):
 
 ```azurecli
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
@@ -257,13 +257,13 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 
 ### <a name="create-a-role-assignment-for-a-group"></a>Egy szerepkör-hozzárendelés létrehozása
 
-Egy szerepkör-hozzárendelés a csoport létrehozásához használja [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
+Egy szerepkör-hozzárendelés a csoport létrehozásához használja [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create):
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-Az alábbi példa a *olvasó* szerepkört a *Reino Mack Team* azonosító 22222222-2222-2222-2222-222222222222 előfizetés hatókörben csoportban. Ahhoz, hogy a csoport azonosítója, használhatja a [az ad-csoport lista](/cli/azure/ad/group#az_ad_group_list) vagy [az ad-csoport megjelenítése](/cli/azure/ad/group#az_ad_group_show).
+Az alábbi példa a *olvasó* szerepkört a *Reino Mack Team* azonosító 22222222-2222-2222-2222-222222222222 előfizetés hatókörben csoportban. Ahhoz, hogy a csoport azonosítója, használhatja a [az ad-csoport lista](/cli/azure/ad/group#az-ad-group-list) vagy [az ad-csoport megjelenítése](/cli/azure/ad/group#az-ad-group-show).
 
 ```azurecli
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -277,13 +277,13 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ### <a name="create-a-role-assignment-for-an-application"></a>Az alkalmazás szerepkör-hozzárendelés létrehozása
 
-Az alkalmazás-szerepkör létrehozásához használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az_role_assignment_create):
+Az alkalmazás-szerepkör létrehozásához használja a [az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create):
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-Az alábbi példa a *virtuális gép közreműködő* alkalmazást objektum azonosítója 44444444-4444-4444-4444-444444444444, a szerepkörnek a *pharma-értékesítési-projectforecast* erőforráscsoport hatókör. Ahhoz, hogy az alkalmazás Objektumazonosító, használhatja a [az ad alkalmazáslistájában](/cli/azure/ad/app#az_ad_app_list) vagy [az ad-alkalmazás megjelenítése](/cli/azure/ad/app#az_ad_app_show).
+Az alábbi példa a *virtuális gép közreműködő* alkalmazást objektum azonosítója 44444444-4444-4444-4444-444444444444, a szerepkörnek a *pharma-értékesítési-projectforecast* erőforráscsoport hatókör. Ahhoz, hogy az alkalmazás Objektumazonosító, használhatja a [az ad alkalmazáslistájában](/cli/azure/ad/app#az-ad-app-list) vagy [az ad-alkalmazás megjelenítése](/cli/azure/ad/app#az-ad-app-show).
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
@@ -291,7 +291,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-a-role-assignment"></a>Távolítsa el a szerepkör-hozzárendelés
 
-Szerepkör-hozzárendelés eltávolításához használja [az szerepkör-hozzárendelés törlése](/cli/azure/role/assignment#az_role_assignment_delete):
+Szerepkör-hozzárendelés eltávolításához használja [az szerepkör-hozzárendelés törlése](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
@@ -303,7 +303,7 @@ A következő példában eltávolítjuk a *virtuális gép közreműködő* a sz
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast
 ```
 
-A következő példában eltávolítjuk a *olvasó* szerepkörnek a *Reino Mack Team* azonosító 22222222-2222-2222-2222-222222222222 előfizetés hatókörben csoportban. Ahhoz, hogy a csoport azonosítója, használhatja a [az ad-csoport lista](/cli/azure/ad/group#az_ad_group_list) vagy [az ad-csoport megjelenítése](/cli/azure/ad/group#az_ad_group_show).
+A következő példában eltávolítjuk a *olvasó* szerepkörnek a *Reino Mack Team* azonosító 22222222-2222-2222-2222-222222222222 előfizetés hatókörben csoportban. Ahhoz, hogy a csoport azonosítója, használhatja a [az ad-csoport lista](/cli/azure/ad/group#az-ad-group-list) vagy [az ad-csoport megjelenítése](/cli/azure/ad/group#az-ad-group-show).
 
 ```azurecli
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -313,7 +313,7 @@ az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role
 
 ### <a name="list-custom-roles"></a>Egyéni szerepkörök listája
 
-A szerepkörök, amelyek rendelhető hozzá hatókör kilistázhatja [az szerepkör-definíció lista](/cli/azure/role/definition#az_role_definition_list).
+A szerepkörök, amelyek rendelhető hozzá hatókör kilistázhatja [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list).
 
 Az alábbi példák mindegyikét listában a egyéni szerepkörök az aktuális előfizetésben:
 
@@ -344,7 +344,7 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 
 ### <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
-Egy egyéni biztonsági szerepkört hozhat létre [az szerepkör-definíció létrehozása](/cli/azure/role/definition#az_role_definition_create). A szerepkör-definíció lehet JSON-leírásuk vagy egy JSON-leírásuk tartalmazó fájl elérési útját.
+Egy egyéni biztonsági szerepkört hozhat létre [az szerepkör-definíció létrehozása](/cli/azure/role/definition#az-role-definition-create). A szerepkör-definíció lehet JSON-leírásuk vagy egy JSON-leírásuk tartalmazó fájl elérési útját.
 
 ```azurecli
 az role definition create --role-definition <role_definition>
@@ -386,7 +386,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ### <a name="update-a-custom-role"></a>Frissítés egy egyéni biztonsági szerepkört
 
-Ha egy egyéni biztonsági szerepkört frissítéséhez először az [szerepkör-definíció listán az](/cli/azure/role/definition#az_role_definition_list) szerepkör-definíció beolvasása. A szerepkör-definíció, végezze el a szükséges módosításokat. Végül [az szerepkör-definíció frissítése](/cli/azure/role/definition#az_role_definition_update) frissített szerepkör-definíció mentése.
+Ha egy egyéni biztonsági szerepkört frissítéséhez először az [szerepkör-definíció listán az](/cli/azure/role/definition#az-role-definition-list) szerepkör-definíció beolvasása. A szerepkör-definíció, végezze el a szükséges módosításokat. Végül [az szerepkör-definíció frissítése](/cli/azure/role/definition#az-role-definition-update) frissített szerepkör-definíció mentése.
 
 ```azurecli
 az role definition update --role-definition <role_definition>
@@ -429,7 +429,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ### <a name="delete-a-custom-role"></a>Egyéni szerepkör törléséhez
 
-Egyéni szerepkör törléséhez használja [az szerepkör-definíció törlése](/cli/azure/role/definition#az_role_definition_delete). A szerepkör törléséhez megadásához használja a szerepkör nevét vagy a szerepkör-azonosítót. A szerepkör-Azonosítót meghatározásához [az szerepkör-definíció lista](/cli/azure/role/definition#az_role_definition_list).
+Egyéni szerepkör törléséhez használja [az szerepkör-definíció törlése](/cli/azure/role/definition#az-role-definition-delete). A szerepkör törléséhez megadásához használja a szerepkör nevét vagy a szerepkör-azonosítót. A szerepkör-Azonosítót meghatározásához [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list).
 
 ```azurecli
 az role definition delete --name <role_name or role_id>

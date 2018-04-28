@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs"
-description: "A Java-webalkalmazások gyors üzembe helyezésével kapcsolatos utasítások az Application Insights-monitorozáshoz"
+title: Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs
+description: A Java-webalkalmazások gyors üzembe helyezésével kapcsolatos utasítások az Application Insights-monitorozáshoz
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: daf7fb88b41ca21ea08e1368215578971032e47d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0198614f34b5e4ad31d9cf19f6799913dc71e21f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-monitoring-your-java-web-application"></a>A Java-webalkalmazás monitorozásának indítása
 
@@ -26,7 +26,7 @@ Ez a rövid útmutató végigvezeti az Application Insights SDK egy meglévő Ja
 
 A gyorsútmutató elvégzéséhez:
 
-- Telepítse az Oracle JRE 1.6-os vagy újabb, vagy a Zulu JRE 1.6-os vagy újabb verzióját.
+- Telepítse a JRE 1.7-es vagy 1.8-as verzióját.
 - Telepítse az [ingyenes, Java EE-fejlesztőknek készült Eclipse IDE-t](http://www.eclipse.org/downloads/). Ez a rövid útmutató az Eclipse Oxygent (4.7) használja.
 - Szüksége lesz egy Azure-előfizetésre és egy meglévő Java-alapú dinamikus webes projektre.
  
