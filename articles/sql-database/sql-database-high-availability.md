@@ -6,14 +6,14 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e85db04206927eaf17cf52c11b536c75a47a088e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 839cadffc37a1c4a6ceae77fbe1e01020c28fe1d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 Az Azure SQL adatbázis Platformszolgáltatási ajánlat kezdete óta a Microsoft tett a felhőalkalmazások nyújtotta az ügyfelek, amelyek a szolgáltatás részét magas rendelkezésre állású (HA), és az ügyfelek nem szükséges üzemeltetéséhez, különleges logika hozzáadása, és magas rendelkezésre ÁLLÁSÚ körül döntéseket. A Microsoft fenntartja a magas rendelkezésre ÁLLÁSÚ rendszerkonfiguráció és a művelet, teljes hozzáféréssel, szolgáltatásiszint-szerződésben garantált kínál az ügyfeleknek. A magas rendelkezésre ÁLLÁSÚ SLA régióban SQL-adatbázis vonatkozik, és nem nyújt védelmet a teljes tartomány hibák, amely kívül a Microsoft irányítása alá tartozó tényezők miatt esetekben (például természeti katasztrófa, war, tevékenységéért terrorakció is történhet, lázadások, kormányzati műveletet, vagy egy hálózati vagy az eszköz hiba a Microsoft adatközpontokban, beleértve az ügyfél helyeken vagy a felhasználói helyek és a Microsoft-adatközpont közti külső).
@@ -87,9 +87,14 @@ A magas rendelkezésre állású architektúra redundáns zóna verziója által
 ## <a name="read-scale-out"></a>Olvassa el a kibővített
 Ismertetettek szerint Premium és fontos üzleti (előzetes verzió) szolgáltatás rétegek emelés Kvórum beállítása és az AlwaysON technológia a magas rendelkezésre állás egyetlen zóna és a redundáns zónabeállítások egyaránt. A AlwasyON előnyeit egyike, hogy a replikákat mindig a tranzakciós úton konzisztens állapotban van. A replikának az elsődleges teljesítmény szintjét, mert az alkalmazás kihasználhatja a csak olvasható munkaterhelések nem extra a karbantartáshoz, hogy további kapacitást költség (olvasási kibővített). Ezzel a módszerrel a csak olvasható lekérdezések elkülönül a fő olvasási és írási terhelést, és nem lesz hatással a teljesítményét. Olvasási kibővített szolgáltatás célja az alkalmazásokhoz, amelyek logikailag tartalmazzák például írásvédett munkaterhelések elválasztva, és ezért sikerült kihasználja a további kapacitást anélkül, hogy az elsődleges. 
 
-Az olvasási kibővített szolgáltatással az adott adatbázishoz, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy ezek után a PowerShell használatával való konfigurációját megváltoztatásával a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [ Új AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust.
+Az olvasási kibővített szolgáltatással az adott adatbázishoz, explicit módon aktiválnia kell az adatbázis létrehozásakor vagy ezek után a PowerShell használatával való konfigurációját megváltoztatásával a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust.
 
-Olvasási kibővített adatbázis engedélyezése után az adatbázishoz való kapcsolódás alkalmazásokat a rendszer kéri, vagy az olvasási és írási replikára vagy egy csak olvasható replika az adatbázist a következők szerint a `ApplicationIntent` tulajdonság, az alkalmazás konfigurálva kapcsolati karakterlánc. Információk a `ApplicationIntent` tulajdonság, lásd: [alkalmazás szándéka megadása](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent) 
+Olvasási kibővített adatbázis engedélyezése után az adatbázishoz való kapcsolódás alkalmazásokat a rendszer kéri, vagy az olvasási és írási replikára vagy egy csak olvasható replika az adatbázist a következők szerint a `ApplicationIntent` tulajdonság, az alkalmazás konfigurálva kapcsolati karakterlánc. Információk a `ApplicationIntent` tulajdonság, lásd: [megadó alkalmazás szándéka](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
+
+Olvasási kibővített le van tiltva, vagy a ReadScale tulajdonsága egy nem támogatott szolgáltatási rétegben, ha az írható-olvasható replika, függetlenül az összes kapcsolat van irányítva a `ApplicationIntent` tulajdonság.  
+
+> [!NOTE]
+> Lehetőség olvasási kibővített a szabványos vagy egy általános célú adatbázis aktiválása annak ellenére, hogy nem okoz a csak olvasható útválasztási szánt munkamenet egy külön replikára. Ez történik, Standard vagy általános célú és a prémium szintű/üzleti kritikus rétegek közötti felfelé és lefelé méretezési meglévő alkalmazások támogatásához.  
 
 Az olvasási kibővített funkció támogatja a szint a munkamenet-konzisztencia. A csak olvasható munkamenet újracsatlakozik-e után a replika elérhetetlensége kapcsolódási hiba okozhatja, ha azt egy másik replikára lehet átirányítani. Amíg nem valószínű, eredményezhet, amely elavult az adatkészlet feldolgozása. Ehhez hasonlóan az alkalmazások írja az adatokat, olvasási és írási munkamenet használatával, és azonnal beolvassa a csak olvasható munkamenet, esetén lehetséges, hogy az új adatok nem jelennek meg azonnal.
 

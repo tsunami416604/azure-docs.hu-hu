@@ -1,25 +1,25 @@
 ---
-title: "Telepítse a helyszíni adatok gateway - Azure Logic Apps |} Microsoft Docs"
-description: "Hozzáférés a helyszíni adatforrások, előtt telepítse az helyszíni data gateway gyors adatátvitel és a titkosításhoz a helyszíni adatforrások és a logic Apps alkalmazások között"
-keywords: "adatok, a helyszíni, az adatok átvitele, a titkosítás és a adatforrások eléréséhez"
+title: Telepítse a helyszíni adatok gateway - Azure Logic Apps |} Microsoft Docs
+description: Hozzáférés a helyszíni adatforrások, előtt telepítse az helyszíni data gateway gyors adatátvitel és a titkosításhoz a helyszíni adatforrások és a logic Apps alkalmazások között
+keywords: adatok, a helyszíni, az adatok átvitele, a titkosítás és a adatforrások eléréséhez
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: e061f24f3160de82548c4debf6da5821318ad2fb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6c1c954209c08c4ce1262bdc1620755e4a3a6d7e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Az a helyszíni átjáró telepítése az Azure Logic Apps
 
@@ -59,7 +59,7 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos informá
 * .NET 4.5 keretrendszer
 * 64 bites Windows 7 vagy Windows Server 2008 R2 (vagy újabb)
 
-Ajánlott
+**Ajánlott**
 
 * 8 mag Processzor
 * 8 GB memória
@@ -242,6 +242,11 @@ Ezért amikor a felhasználó, a felhőben kommunikál a helyszíni adatforrásh
 6. Az eredményeket az adatforrásból kerülnek vissza az átjáró, majd az átjáró felhőszolgáltatáshoz. Az átjáró felhőszolgáltatáshoz majd értékeket használja.
 
 <a name="faq"></a>
+
+## <a name="tenant-level-administration"></a>Bérlői szintű felügyelet 
+
+Jelenleg nincs egyetlen helyen, ahol a bérlői rendszergazdák kezelhetik az átjárók, a többi felhasználó telepítette és konfigurálta.  Ha Ön a bérlői rendszergazdák, ajánlott elfogadtatni a felhasználókkal venni rendszergazdaként minden átjáró telepítésekor a szervezetében. Ez lehetővé teszi, hogy az átjáró beállításai oldal vagy a szervezeten belüli összes átjáró kezelése [PowerShell-parancsok](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters). 
+
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3652e26bb775ae6ac1897bea529e7ae69d77cdbd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 A memóriaoptimalizált VM-méretek ajánlat egy nagy memória-CPU arányú, amelyek kiváló relációs adatbázis-kiszolgálók, közepes vagy nagyméretű gyorsítótárak és memórián belüli elemzés. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 
@@ -22,8 +22,9 @@ A memóriaoptimalizált VM-méretek ajánlat egy nagy memória-CPU arányú, ame
 
 * A D-sorozat virtuális gépei nagyobb számítási teljesítményt és ideiglenes lemezteljesítményt igénylő alkalmazások futtatására lettek kialakítva. A D-sorozat virtuális gépei gyorsabb processzorokat, nagyobb memória–vCPU arányt, valamint az ideiglenes tároláshoz SSD meghajtókat kínálnak. Részletekért lásd az Azure blogon megjelent bejelentést [a D-sorozat új virtuális gépméreteit](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) ismertető bejegyzésben.
 
-* A Dv2-sorozat az eredeti D-sorozat újabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációs 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzoron alapul, és a teljesítménye az Intel Turbo Boost Technology 2.0 alkalmazásával akár 3,1 GHz-re is növelhető. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
+* A Dv2-sorozat az eredeti D-sorozat újabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációját alapul 2,4 GHz-es Intel Xeon® E5-2673 v3 2,4 GHz (Haswell) vagy E5-2673 v4 2.3 GHz (Broadwell) processzort, és az Intel Turbo program technológia 2.0 folytathatja legfeljebb 3.1-es GHz-es. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
+* A Ev3-sorozat szolgáltatások E5-2673 v4 2.3 GHz (Broadwell) processzor többszálú konfiguráció esetén a legtöbb általános célú munkaterhelések jobb értékajánlatához biztosítása, és a Ev3 üzembe igazítását az általános célú virtuális gépek a legtöbb más felhők.  Memória (a 7 GiB/vCPU való 8 GiB/vCPU) ki lett terjesztve, amíg a lemez-és hálózati korrigálták való megfelelés érdekében a Hyper-Threading technológia való átálláskor / core alapon.  A Ev3, a D/Dv2 családtagjai felső memóriaterület Virtuálisgép-méretek legfeljebb végezze.
 
 ## <a name="esv3-series-sup1sup"></a>Esv3-sorozat <sup>1</sup>
 
@@ -130,7 +131,7 @@ ACU: 180–240
 <br>
 
 
-## <a name="dsv2-series-sup1sup"></a>DSv2-series <sup>1</sup>
+## <a name="dsv2-series-sup1sup"></a>DSv2-sorozat <sup>1</sup>
 
 ACU: 210–250
 

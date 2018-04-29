@@ -1,11 +1,11 @@
 ---
-title: "A System Center Data Protection Manager alkalmazást az Azure Backup hibaelhárítása |} Microsoft Docs"
-description: "A System Center Data Protection Manager elhárítása."
+title: A System Center Data Protection Manager alkalmazást az Azure Backup hibaelhárítása |} Microsoft Docs
+description: A System Center Data Protection Manager elhárítása.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: adigan
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: 2d73c349-0fc8-4ca8-afd8-8c9029cb8524
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: pullabhk;markgal;adigan
-ms.openlocfilehash: bf4ea676c5309bb732f6a4ce71849606b4d2e4df
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 8f8117b216dcbda217bc433e643090e8eb47cf57
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>A System Center Data Protection Manager hibaelhárítása
 
 Ez a cikk a Data Protection Manager használata során előforduló problémák megoldásait ismerteti.
 
-A legújabb kibocsátási megjegyzések a System Center Data Protection Manager, tekintse meg a [dokumentáció a System Center](https://docs.microsoft.com/en-us/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). A Data Protection Manager a támogatással kapcsolatos részletesebb [Ez a mátrix](https://docs.microsoft.com/en-us/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
+A legújabb kibocsátási megjegyzések a System Center Data Protection Manager, tekintse meg a [dokumentáció a System Center](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). A Data Protection Manager a támogatással kapcsolatos részletesebb [Ez a mátrix](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
 
 
 ## <a name="error-replica-is-inconsistent"></a>Hiba: A replika inkonzisztens

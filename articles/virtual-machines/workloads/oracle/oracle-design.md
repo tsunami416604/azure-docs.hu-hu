@@ -1,13 +1,13 @@
 ---
-title: "Tervezési és valósítsa meg az Oracle-adatbázishoz a Azure |} Microsoft Docs"
-description: "Tervezése és megvalósítása az Oracle-adatbázishoz az Azure környezetben."
+title: Tervezési és valósítsa meg az Oracle-adatbázishoz a Azure |} Microsoft Docs
+description: Tervezése és megvalósítása az Oracle-adatbázishoz az Azure környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.openlocfilehash: c8f858bf249c4b56ad4fe60654ab489676eceb1f
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b291066137df004625029aef12c3db4d5441a89c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Tervezése és megvalósítása az Oracle-adatbázishoz az Azure-ban
 
@@ -51,7 +51,7 @@ Az alábbi táblázat egy helyszíni megvalósítás és az Oracle-adatbázishoz
 > | **Tervezett karbantartás** |Javítás vagy frissítés|[Rendelkezésre állási készletek](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (javítás/frissítések Azure által kezelt) |
 > | **Erőforrás** |Dedikált  |A más ügyfelekkel megosztott|
 > | **Régiók** |Adatközpontok |[A régióban párok](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
-> | **Tárolás** |SAN vagy fizikai lemezek |[Azure által kezelt tárolási](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Storage** |SAN vagy fizikai lemezek |[Azure által kezelt tárolási](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Méretezés** |Függőleges méretezés |Horizontális skálázhatóság|
 
 
@@ -90,7 +90,7 @@ Az alábbiakban a metrikák a AWR jelentés szerezhetők be:
 - Magok száma összesen
 - Órajelű Processzor
 - Teljes memória GB-ban
-- CPU-felhasználás
+- Processzorkihasználtság
 - Maximális adatátviteli sebesség
 - I/o-módosításokat (olvasás/írás) aránya
 - Végezze el újra napló gyakorisága (MB/s)
@@ -136,7 +136,7 @@ Az összes hálózati átviteli becsült az alábbi információk alapján:
 
 ![Képernyőfelvétel az SQL * nettó átviteli sebesség](./media/oracle-design/sqlnet_info.png)
 
-A hálózati sávszélesség követelmények alapján kiválaszthatja a különböző átjáró típusa van. Ezek közé tartozik a basic, VpnGw, és az Azure ExpressRoute. További információkért lásd: a [árképzést ismertető oldalra VPN-átjáró](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/?v=17.23h).
+A hálózati sávszélesség követelmények alapján kiválaszthatja a különböző átjáró típusa van. Ezek közé tartozik a basic, VpnGw, és az Azure ExpressRoute. További információkért lásd: a [árképzést ismertető oldalra VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h).
 
 **Javaslatok**
 
@@ -231,7 +231,7 @@ Miután beállítása és az Azure környezetben konfigurálva, a következő l�
 - [Oracle Golden kapu beállítása](configure-oracle-golden-gate.md)
 - [Oracle biztonsági mentés és helyreállítás](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Hozzon létre magas rendelkezésre állású virtuális gépek](../../linux/create-cli-complete.md)
 - [Virtuális gép telepítése az Azure parancssori felület minták felfedezése](../../linux/cli-samples.md)

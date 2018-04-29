@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: bccd889ba8a063613f1f3f385b39e4bfe8afcc89
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 27ce89f205efa6b8f2d29e034c6e5002065879fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Az Azure HDInsight Spark Caffe elosztott mély tanulási használata
 
@@ -29,7 +29,7 @@ A részletes tanulási van érintő mindent az RTM szállítására egészségü
 
 Nincsenek [számos népszerű keretrendszerekre](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), többek között a következőket [Microsoft kognitív eszközkészlet](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano, stb. Caffe egyik a leghíresebb nem szimbolikus (imperatív) Neurális hálózat keretrendszerek, és számos területen, például a számítógép stratégiai széles körben használt. Ezenkívül [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) kombinálja az Apache Spark, ebben az esetben a mély tanulási Caffe könnyen használható egy meglévő Hadoop-fürthöz. A teljes megoldás tanulási Spark ETL folyamatok, csökkentése rendszer összetettségét, és a késleltetés és a részletes tanulási is használhatja.
 
-[HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) a felhőalapú Hadoop kínál optimalizált nyílt forráskódú elemzési fürtök biztosít a Spark, struktúra, Hadoop, HBase, Storm, Kafka és R Server számára. HDInsight biztonsági 99,9 %-os SLA-t. Ezeket a big Data típusú adatok technológiákat és ISV alkalmazások egy könnyen telepíthető biztonsággal és a vállalatok figyelési felügyelt fürtként.
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) a felhőalapú Hadoop kínál optimalizált nyílt forráskódú elemzési fürtök biztosít a Spark, struktúra, Hadoop, HBase, Storm, Kafka és R Server számára. HDInsight biztonsági 99,9 %-os SLA-t. Ezeket a big Data típusú adatok technológiákat és ISV alkalmazások egy könnyen telepíthető biztonsággal és a vállalatok figyelési felügyelt fürtként.
 
 Ez a cikk bemutatja, hogyan kell telepíteni [a Spark Caffe](https://github.com/yahoo/CaffeOnSpark) a HDInsight-fürtök. Ez a cikk is a beépített MNIST bemutató használ elosztott mély tanulási használata a HDInsight Spark CPU-n használatát mutatják be.
 

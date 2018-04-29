@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: cadd0f4c07b7e8adec4956543f67313aa8442da3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e033439ba9f525307edb857a358d1f760a08aad0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>A virtuálisgép-méretezési csoportok az alkalmazás központi telepítése
-A virtuális gép (VM)-példányok méretezési csoportban lévő alkalmazások futtatásához, először telepítse az alkalmazás-összetevők és a szükséges fájlokat. Ez a cikk egy egyéni Virtuálisgép-lemezkép összeállítása a terjedő skálán-példány beállítása, vagy automatikusan az install-parancsfájlok futtathatók a meglévő Virtuálisgép-példányok módjai be. Azt is megtudhatja, hogyan alkalmazást vagy az operációs rendszer frissítése érdekében kezelése érdekében egy méretezési.
+Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Ez a cikk egy egyéni Virtuálisgép-lemezkép összeállítása a terjedő skálán-példány beállítása, vagy automatikusan az install-parancsfájlok futtathatók a meglévő Virtuálisgép-példányok módjai be. Azt is megtudhatja, hogyan alkalmazást vagy az operációs rendszer frissítése érdekében kezelése érdekében egy méretezési.
 
 
 ## <a name="build-a-custom-vm-image"></a>Egyéni VM-lemezkép elkészítése
@@ -42,7 +42,7 @@ Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Alkalmazások telepítése a Windows PowerShell DSC rendelkező virtuális gépet
-[PowerShell kívánt állapot konfigurációs szolgáltatása (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) olyan felügyeleti platform célszámítógépekre konfigurációjának meghatározása. A DSC-konfigurációk határozza meg, mi egy számítógépre telepítéséhez és a gazdagép konfigurálása. A helyi Configuration Manager (LCM) motor dolgozza fel a kért műveletek megnyomott konfigurációk alapján minden cél csomóponton fut.
+[PowerShell kívánt állapot konfigurációs szolgáltatása (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) olyan felügyeleti platform célszámítógépekre konfigurációjának meghatározása. A DSC-konfigurációk határozza meg, mi egy számítógépre telepítéséhez és a gazdagép konfigurálása. A helyi Configuration Manager (LCM) motor dolgozza fel a kért műveletek megnyomott konfigurációk alapján minden cél csomóponton fut.
 
 A PowerShell DSC-bővítmény lehetővé teszi testre szabhatja a PowerShell segítségével állítsa be a skálázási Virtuálisgép-példány. Az alábbi példa:
 

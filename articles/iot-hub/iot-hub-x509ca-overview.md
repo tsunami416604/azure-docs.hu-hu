@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Hub X.509 hitelesítésszolgáltató biztonsági áttekintése |} Microsoft Docs"
-description: "Áttekintés – hogyan hitelesítheti az X.509 tanúsítvány hitelesítésszolgáltatók használatával IoT Hub eszközöket."
+title: Azure IoT Hub X.509 hitelesítésszolgáltató biztonsági áttekintése |} Microsoft Docs
+description: Áttekintés – hogyan hitelesítheti az X.509 tanúsítvány hitelesítésszolgáltatók használatával IoT Hub eszközöket.
 services: iot-hub
 documentationcenter: .net
 author: eustacea
 manager: arjmands
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 7497753cc27867b1fdb9635ba6613ac75b449090
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 11f340ebe1719c680cce5f6ad34150d3717c57d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Eszközhitelesítési X.509 CA-tanúsítványok használata
 
@@ -69,7 +69,7 @@ Itt megtudhatja, hogyan [a CA-tanúsítvány regisztrálása](iot-hub-security-x
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Egy eszközt az IoT hub létrehozása
 
-Eszköz megszemélyesítési zárja ki, hogy az IoT-központ szükséges tudassa vele várhatnak, milyen eszközöket.  Ehhez az IoT Hub eszköz beállításjegyzék eszköz tételt hoz létre.  Ez a folyamat automatikus IoT-központ használatakor [eszköz kiépítése szolgáltatáshoz](https://azure.microsoft.com/en-us/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (terjesztési pontok). 
+Eszköz megszemélyesítési zárja ki, hogy az IoT-központ szükséges tudassa vele várhatnak, milyen eszközöket.  Ehhez az IoT Hub eszköz beállításjegyzék eszköz tételt hoz létre.  Ez a folyamat automatikus IoT-központ használatakor [eszköz kiépítése szolgáltatáshoz](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (terjesztési pontok). 
 
 Itt megtudhatja, hogyan [hozzon létre manuálisan egy eszközt az IoT-központ](iot-hub-security-x509-get-started.md#createdevice).
 
@@ -81,7 +81,7 @@ IoT Hub sikeres csatlakozás végrehajtja a hitelesítési folyamatot, és akkor
 
 Itt megtudhatja, hogyan [eszköz kapcsolat lépés](iot-hub-security-x509-get-started.md#authenticatedevice).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók [X.509 hitelesítésszolgáltató hitelesítési értékének](iot-hub-x509ca-concept.md) az IoT.
 

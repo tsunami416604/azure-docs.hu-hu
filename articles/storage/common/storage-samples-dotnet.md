@@ -1,12 +1,12 @@
 ---
-title: "Azure Storage-minták .NET használatával |} Microsoft Docs"
-description: "Megtekintése, töltse le és futtassa a mintakódot és az alkalmazások az Azure Storage. Felderíteni a bevezetés minták BLOB, üzenetsorok, táblák és fájlok, a .NET-storage ügyfélkódtáraival használatával."
+title: Azure Storage-minták .NET használatával |} Microsoft Docs
+description: Megtekintése, töltse le és futtassa a mintakódot és az alkalmazások az Azure Storage. Felderíteni a bevezetés minták BLOB, üzenetsorok, táblák és fájlok, a .NET-storage ügyfélkódtáraival használatával.
 services: storage
 documentationcenter: na
 author: seguler
 manager: jahogg
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: 74777ed14ebb41ad31657f814e86724ff1e5e62e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e6973f0decc448657d869afb8823dd03c62d272
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-storage-samples-using-net"></a>Azure Storage-minták .NET használatával
 
@@ -28,9 +28,9 @@ A következő táblázat a minták tárház és minden egyes minta az ismertetet
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Végpont</th><th style="font-size:110%">Forgatókönyv</th><th style="font-size:110%">Mintakód</th></tr></thead><tbody> 
 <tr> 
-<td rowspan="16"><b>A BLOB</b></td>
+<td rowspan="16"><b>Blob</b></td>
 <td>Hozzáfűző Blob</td> 
-<td><a href="https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">CloudBlobContainer.GetAppendBlobReference módszer – példa</a></td> 
+<td><a href="https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">CloudBlobContainer.GetAppendBlobReference módszer – példa</a></td> 
 </tr> 
 <tr> 
 <td>Blokkblob</td>
@@ -49,7 +49,7 @@ A következő táblázat a minták tárház és minden egyes minta az ismertetet
 <td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage fotótár webalkalmazás</a></td>
 </tr> 
 <tr> 
-<td>A Blob törlése</td>
+<td>Delete Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage fotótár webalkalmazás</a></td>
 </tr> 
 <tr> 
@@ -89,7 +89,7 @@ A következő táblázat a minták tárház és minden egyes minta az ismertetet
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">A BLOB első lépések</a></td>
 </tr>           
 <tr> 
-<td>Pillanatkép Blob</td>
+<td>Snapshot Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs">Biztonsági mentési Azure virtuális gépek lemezeit növekményes pillanatképek</a></td>
 </tr> 
 <tr> 
@@ -210,7 +210,7 @@ Tekintse meg az alábbi útmutatókban, ha a telepítését, és ismerkedjen meg
 * [Ismerkedés az Azure Table szolgáltatás a .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Bevezetés az Azure File szolgáltatás a .NET használatába](../storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egyéb nyelvek minták olvashat:
 

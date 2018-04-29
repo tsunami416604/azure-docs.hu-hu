@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: bdb9bfaa85f526af0c5e42294a75664fa7137849
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2b105cd05ace9be6ad24d092f2b12c7ad092188e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
 
@@ -46,7 +46,7 @@ Lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/p
 > Prémium szintű Storage támogatja a csak a helyileg redundáns tárolás (LRS). Prémium szintű Storage kapcsolatos információkért lásd: [prémium szintű Storage: nagy teljesítményű tárolást Azure virtuális gépek terheléseihez](../../virtual-machines/windows/premium-storage.md).
 
 ## <a name="changing-replication-strategy"></a>Replikációs stratégiájának módosítása
-Azt teszik lehetővé a tárfiók replikációs stratégiájának módosítása használatával a [Azure-portálon](https://portal.azure.com/), [Azure Powershell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), vagy egy a többhöz [ Azure ügyfélkódtárai](https://docs.microsoft.com/en-us/azure/index?view=azure-dotnet#pivot=sdkstools). A tárfiók replikációs típusának módosítása nem eredményez állásidő.
+Azt teszik lehetővé a tárfiók replikációs stratégiájának módosítása használatával a [Azure-portálon](https://portal.azure.com/), [Azure Powershell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), vagy egy a többhöz [ Azure ügyfélkódtárai](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). A tárfiók replikációs típusának módosítása nem eredményez állásidő.
 
    > [!NOTE]
    > Jelenleg a portál vagy az API nem használható a fiók átalakítása zrs-t. Azonban tervezzük történő ZRS az LRS, GRS és az RA-GRS után ZRS általánosan elérhető támogatásához. Lásd: [zónaredundáns tárolás (ZRS)](storage-redundancy-zrs.md) részleteiről.

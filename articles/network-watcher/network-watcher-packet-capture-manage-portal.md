@@ -1,11 +1,11 @@
 ---
-title: "Csomag rögzíti az Azure hálózati figyelőt - Azure-portálon kezelése |} Microsoft Docs"
-description: "Ezen a lapon ismerteti, hogyan kezelheti a csomag rögzítése funkció az Azure-portál használatával hálózati figyelőt"
+title: Csomag rögzíti az Azure hálózati figyelőt - Azure-portálon kezelése |} Microsoft Docs
+description: Ezen a lapon ismerteti, hogyan kezelheti a csomag rögzítése funkció az Azure-portál használatával hálózati figyelőt
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 40414afbfcd456353b4290585ccd9d594fbf55dd
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 508b9e7eef757277d4bc0e93a26f3a63045f31e4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Csomag rögzítésekre kezelése Azure hálózati figyelőt a portál használatával
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/11/2018
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
-> - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
+> - [Az Azure REST API-n](network-watcher-packet-capture-manage-rest.md)
 
 Hálózati figyelő csomagrögzítéssel rögzítési munkamenetek nyomon követéséhez forgalma és a virtuális gép létrehozását teszi lehetővé. Annak érdekében, hogy csak a kívánt forgalom rögzíti a rögzítési munkamenet szűrők célokat szolgálnak. Csomagrögzítéssel segít diagnosztizálni hálózati rendellenességeket proaktív és reaktív is. Egyéb felhasználásra tartalmazzák a hálózati statisztikákat, hálózati behatolások, ügyfél-kiszolgáló közötti kommunikációt, és még sok más hibakeresési információkat való összegyűjtéséhez. Őket távolról elindítása csomag rögzíti, ez a funkció megkönnyíti a csomagrögzítéssel fut, manuálisan, a kívánt számítógépet, amely értékes időt takaríthat meg okozta terheket.
 
@@ -123,7 +123,7 @@ A csomag rögzítési nézetben kattintson a **helyi menü** (...), vagy kattint
 
 A rendszer felkéri a jóváhagyásához a csomagrögzítéssel törléséhez kattintson **Igen**
 
-![confirmation][4]
+![Jóváhagyás][4]
 
 ## <a name="stop-a-packet-capture"></a>A csomagrögzítéssel leállítása
 
@@ -131,7 +131,7 @@ A csomag rögzítési nézetben kattintson a **helyi menü** (...), vagy kattint
 
 ## <a name="download-a-packet-capture"></a>A csomagrögzítéssel letöltése
 
-A csomag rögzítési munkamenet befejezése után a rögzítési fájl feltöltése a blob storage vagy a virtuális gép helyi fájlba. A tárolási helye a csomagrögzítéssel definiálása a munkamenet létrehozását. Eszköz eléréséhez rögzítési-fájlokat egy tárfiókkal a Microsoft Azure Tártallózó, amely innen tölthető le: http://storageexplorer.com/
+A csomag rögzítési munkamenet befejezése után a rögzítési fájl feltöltése a blob storage vagy a virtuális gép helyi fájlba. A tárolási helye a csomagrögzítéssel definiálása a munkamenet létrehozását. Eszköz eléréséhez rögzítési-fájlokat egy tárfiókkal a Microsoft Azure Tártallózó, amely innen tölthető le:  http://storageexplorer.com/
 
 Ha egy tárfiókot meg van adva, csomag rögzítési fájlok kerülnek a storage-fiókok a következő helyen:
 ```
@@ -142,7 +142,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 Csomag rögzíti a virtuális gép a riasztások megtekintésével automatizálása [riasztási kiváltott csomagrögzítéssel létrehozása](network-watcher-alert-triggered-packet-capture.md)
 
-Keresése, ha bizonyos adatforgalom engedélyezett a virtuális gép kívül vagy belül ellátogatva [ellenőrizze IP folyamat ellenőrzése](network-watcher-check-ip-flow-verify-portal.md)
+Keresése, ha bizonyos adatforgalom engedélyezett a virtuális gép kívül vagy belül ellátogatva [ellenőrizze IP folyamat ellenőrzése](diagnose-vm-network-traffic-filtering-problem.md)
 
 <!-- Image references -->
 [1]: ./media/network-watcher-packet-capture-manage-portal/figure1.png

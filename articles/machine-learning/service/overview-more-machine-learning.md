@@ -11,11 +11,11 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.openlocfilehash: 189f19a3a3f588df8844a552abda73827eb45191
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbb8deeab8368d9c0e6d29c8d7e1e2e0a8805d60
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Egyéb machine learning termékek és szolgáltatások a Microsofttól
 
@@ -77,7 +77,7 @@ A [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolki
 A Cognitive Toolkitet mély tanulást használó modell összeállításához érdemes használnia.  A Cognitive Toolkit a korábbi szolgáltatások bármelyikében használható.
 
 ## <a name="azure-cognitive-services"></a>Az Azure kognitív szolgáltatások
-[Azure-szolgáltatások kognitív](https://docs.microsoft.com/en-us/azure/#pivot=products&panel=ai) körülbelül 30 készlete API-k, amelyek lehetővé teszik a kommunikáció természetes módszerek használó alkalmazások készítéséhez. Ezen API-k biztosíthatja a alkalmazás lásd, hall, beszéd, megértéséhez, és pár sornyi kód rendelkező felhasználónak rendelkeznie kell értelmezni. Egyszerűen hozzáadhat intelligens funkciókat az alkalmazáshoz, például a következőket: 
+[Azure-szolgáltatások kognitív](https://docs.microsoft.com/azure/#pivot=products&panel=ai) körülbelül 30 készlete API-k, amelyek lehetővé teszik a kommunikáció természetes módszerek használó alkalmazások készítéséhez. Ezen API-k biztosíthatja a alkalmazás lásd, hall, beszéd, megértéséhez, és pár sornyi kód rendelkező felhasználónak rendelkeznie kell értelmezni. Egyszerűen hozzáadhat intelligens funkciókat az alkalmazáshoz, például a következőket: 
 
 - Érzelemfelismerés
 - Látvány- és beszédfelismerés

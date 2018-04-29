@@ -9,15 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b929eaf17255210a5c813e3e91478f9202941b64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példa a gyakori Stream Analytics használati minták lekérdezése
+
 ## <a name="introduction"></a>Bevezetés
-Lekérdezések Azure Stream Analytics lekérdezési SQL-szerű nyelven van kifejezve. Ezeket a lekérdezéseket a rendszer részletes ismertetését lásd: a [Stream Analytics lekérdezési nyelvi referencia](https://msdn.microsoft.com/library/azure/dn834998.aspx) útmutató. Ez a cikk több közös lekérdezési kifejezések valós forgatókönyv alapuló megoldásokat ismerteti. Folyamatban lévő és továbbra is új mintákat folyamatosan frissül.
+Lekérdezések Azure Stream Analytics lekérdezési SQL-szerű nyelven van kifejezve. A nyelvi szerkezetek ismertetett a [Stream Analytics lekérdezési nyelvi referencia](https://msdn.microsoft.com/library/azure/dn834998.aspx) útmutató. 
+
+A lekérdezés tervezési is express egyszerű csatlakoztatott logikai esemény tárolt adatok mozgatása egy bemeneti adatfolyam egy másik kimeneti adattárba. Vagy gazdag mintát egyező és időbeli elemzés összesítések kiszámításához hasonlóan a TollApp minta különféle idő windows keresztül lehet hasznos. Csatlakozhat a több bemenetei szeretné kombinálhatja a streaming események és keresések elleni statikus referenciaadatok funkciógazdagabbá teheti az esemény értékeket az adatokat. Is meg lehet adatokat írni több kimenet.
+
+Ez a cikk több közös lekérdezési kifejezések valós forgatókönyv alapuló megoldásokat ismerteti. Folyamatban lévő és továbbra is új mintákat folyamatosan frissül.
 
 ## <a name="query-example-convert-data-types"></a>Példa: adattípusok átalakítása
 **Leírás**: meghatározza azokat a tulajdonságokat a bemeneti adatfolyam.
@@ -463,7 +468,7 @@ Például generál egy eseményt 5 másodpercentként, az utoljára látott adat
 
 **Bemeneti**:
 
-| t | érték |
+| T | érték |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -571,7 +576,7 @@ WHERE
     AND t2.maxPower > 10
 ````
 
-**MAGYARÁZAT**: az első lekérdezés `max_power_during_last_3_mins`, használja a [csúszó ablak](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) az elmúlt 3 perc alatt a maximális érték az energiagazdálkodási érzékelő minden eszköz kereséséhez. A második lekérdezés az első lekérdezés az energiagazdálkodási értéket keresi a legújabb ablakban vonatkozó az aktuális esemény csatlakozik. És ezt követően megadott feltételek teljesülnek, riasztást küld az eszköz.
+**MAGYARÁZAT**: az első lekérdezés `max_power_during_last_3_mins`, használja a [csúszó ablak](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) az elmúlt 3 perc alatt a maximális érték az energiagazdálkodási érzékelő minden eszköz kereséséhez. A második lekérdezés az első lekérdezés az energiagazdálkodási értéket keresi a legújabb ablakban vonatkozó az aktuális esemény csatlakozik. És ezt követően megadott feltételek teljesülnek, riasztást küld az eszköz.
 
 
 ## <a name="get-help"></a>Segítségkérés

@@ -1,19 +1,19 @@
 ---
-title: "Active Directory és a DNS az Azure Site Recovery védelmét |} Microsoft Docs"
-description: "A cikk ismerteti az Active Directory, Azure Site Recovery segítségével megvalósítható a vész-helyreállítási megoldást."
+title: Active Directory és a DNS az Azure Site Recovery védelmét |} Microsoft Docs
+description: A cikk ismerteti az Active Directory, Azure Site Recovery segítségével megvalósítható a vész-helyreállítási megoldást.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ebddd3f68605df94bd06bef1fec785f740c3b023
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery használatával védi az Active Directory és a DNS-
 
@@ -57,16 +57,16 @@ A virtuális gép, amelyen a tartományvezérlő vagy a DNS, a Site Recovery szo
 A tartományvezérlő létrehozása a másodlagos helyen. Amikor előlépteti egy tartomány tartományvezérlői szerepkör a kiszolgálót, adja meg annak a tartománynak az elsődleges helyen használt nevét. Használhatja a **Active Directory – helyek és szolgáltatások** beépülő modul segítségével a hely objektum, amelyhez a helyek ad hozzá a beállításokat. A helykapcsolatot beállítások konfigurálásával szabályozhatja, hogy milyen gyakran történik, és két vagy több hely közötti replikáció során. További információkért lásd: [helyek közötti replikáció ütemezése](https://technet.microsoft.com/library/cc731862.aspx).
 
 ### <a name="site-to-azure-protection"></a>Hely Azure védelem
-Első, [egy tartományvezérlőt hozzon létre egy Azure virtuális hálózatra](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). Amikor előlépteti egy tartomány tartományvezérlői szerepkör a kiszolgálót, adja meg az elsődleges helyen használt ugyanazon tartomány nevét.
+Először hozzon létre egy tartományvezérlő egy Azure virtuális hálózatban. Amikor előlépteti egy tartomány tartományvezérlői szerepkör a kiszolgálót, adja meg az elsődleges helyen használt ugyanazon tartomány nevét.
 
-Ezt követően [konfigurálja újra a virtuális hálózat DNS-kiszolgáló](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network) a DNS-kiszolgáló használatára az Azure-ban.
+Ezután konfigurálja úgy a DNS-kiszolgáló a DNS-kiszolgáló használatára az Azure virtuális hálózat.
 
 ![Azure Network-hálózat](./media/site-recovery-active-directory/azure-network.png)
 
 ### <a name="azure-to-azure-protection"></a>Azure-Azure védelme
-Első, [egy tartományvezérlőt hozzon létre egy Azure virtuális hálózatra](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). Amikor előlépteti egy tartomány tartományvezérlői szerepkör a kiszolgálót, adja meg az elsődleges helyen használt ugyanazon tartomány nevét.
+Először hozzon létre egy tartományvezérlő egy Azure virtuális hálózatban. Amikor előlépteti egy tartomány tartományvezérlői szerepkör a kiszolgálót, adja meg az elsődleges helyen használt ugyanazon tartomány nevét.
 
-Ezt követően [konfigurálja újra a virtuális hálózat DNS-kiszolgáló](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network) a DNS-kiszolgáló használatára az Azure-ban.
+Ezután konfigurálja úgy a DNS-kiszolgáló a DNS-kiszolgáló használatára az Azure virtuális hálózat.
 
 ## <a name="test-failover-considerations"></a>Feladatátvételi szempontokat részletező cikket
 A feladatátvételi teszt termelési számítási feladatokhoz gyakorolt hatás elkerülése érdekében a termelési hálózati elkülönített hálózatban következik be.
@@ -77,7 +77,7 @@ A legtöbb alkalmazás egy tartományvezérlő és DNS-kiszolgáló szükséges.
 2. Hozzon létre egy elkülönített hálózatot. Az Azure-ban létrehozott virtuális hálózatnak el különítve a többi hálózat alapértelmezés szerint. Azt javasoljuk, hogy használja-e az azonos IP-címtartomány ehhez a hálózathoz, amely a termelési hálózat használata. Hely-hely kapcsolatot, a hálózat nem engedélyezi.
 3. Adjon meg egy DNS-IP-címet, az elkülönített hálózatban. Használja az IP-cím, a DNS-virtuális gép beolvasandó várt. Ha az Azure-bA replikál, adja meg az IP-címet a virtuális gép feladatátvételi használt. Adja meg az IP-cím, a replikált virtuális gépen, hogy a **számítás és hálózat** beállításaiban, válassza a **cél IP-címet** beállításait.
 
-    ![Azure test network](./media/site-recovery-active-directory/azure-test-network.png)
+    ![Azure tesztet hálózathoz](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
     > A Site Recovery megpróbálja létrehozni a teszt virtuális gépek azonos nevű és ugyanazon az IP-cím, a megadott alhálózat a **számítás és hálózat** a virtuális gép beállításai között. Ha azonos nevű alhálózat nem használható az Azure virtuális hálózatban, a feladatátvételi teszthez megadott, a teszt virtuális gépét a betűrendben az első alhálózat jön létre.

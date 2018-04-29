@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 541055eeae5e2c0eaff2fb88d8e83fdc43ba08b0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 360e395743dcf4b4bae98a756f6483dd0d269775
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Egy Azure virtuális gép felügyelt szolgáltatás Identity (MSI) használata a token beszerzése 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Ez a cikk példákat különböző kód és parancsfájl-token beszerzése, valamint útmutatást, például a jogkivonat lejáratáról és HTTP-hibák kezelése a fontos kérdésekben. Javasoljuk, hogy használjon felügyelt Szolgáltatásidentitás IMDS végponttal, a Virtuálisgép-bővítmény végpont elavulttá válik.
+
+Felügyelt Szolgáltatásidentitást az Azure Active Directoryban automatikusan felügyelt identitással Azure szolgáltatásokat biztosít. Ez az identitás, amely támogatja az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatokat a kódban a szolgáltatással való hitelesítésre szolgáló használhatja. 
+
+Ez a cikk példákat különböző kód és parancsfájl-token beszerzése, valamint útmutatást, például a jogkivonat lejáratáról és HTTP-hibák kezelése a fontos kérdésekben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,14 +35,14 @@ Ha azt tervezi, a cikkben az Azure PowerShell-példák használni, ügyeljen arr
 
 
 > [!IMPORTANT]
-> - Minden minta kódot, a parancsfájl a cikkben azt feltételezi, hogy az ügyfél egy MSI-kompatibilis virtuális gépen futó. A virtuális gép "Csatlakozás" szolgáltatást használja az Azure-portálon távolról csatlakozni a virtuális Gépet. A virtuális gép MSI engedélyezésével kapcsolatos részletekért lásd: [konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával](qs-configure-portal-windows-vm.md), vagy a variant cikkekben (a PowerShell, CLI, sablon vagy egy Azure SDK használatával). 
+> - Minden minta kódot, a parancsfájl a cikkben azt feltételezi, hogy az ügyfél által felügyelt Szolgáltatásidentitás rendelkező virtuális gép futó. A virtuális gép "Csatlakozás" szolgáltatást használja az Azure-portálon távolról csatlakozni a virtuális Gépet. A virtuális gép MSI engedélyezésével kapcsolatos részletekért lásd: [konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával](qs-configure-portal-windows-vm.md), vagy a variant cikkekben (a PowerShell, CLI, sablon vagy egy Azure SDK használatával). 
 
 > [!IMPORTANT]
-> - A biztonsági határ felügyelt identitás, az erőforrás. Összes kódot/parancsfájl egy MSI-kompatibilis virtuális gépen futó kérelmezhet és lekérni a jogkivonatokat. 
+> - Felügyelt Szolgáltatásidentitás, biztonsági határ az erőforrás-használat esetén a rendszer. Összes kódot/parancsfájl egy virtuális gépen futó kérelmezhet és lekérni a tokeneket bármely felügyelt szolgáltatás identitásának rendelkezésre rajta. 
 
 ## <a name="overview"></a>Áttekintés
 
-Egy ügyfélalkalmazás kérhet egy olyan MSI Csomaghoz [csak alkalmazás-hozzáférési jogkivonat](../develop/active-directory-dev-glossary.md#access-token) egy adott erőforráshoz való hozzáférést illetően. A jogkivonat [az MSI-szolgáltatás egyszerű alapján](overview.md#how-does-it-work). Így nincs szükség az regisztrálja magát az ügyfél a saját egyszerű szolgáltatásnév a hozzáférési token beszerzése. A lexikális elem egy tulajdonosi jogkivonatot a használhatók [szolgáltatások közötti hívások igénylő ügyfél hitelesítő adatait](../develop/active-directory-protocols-oauth-service-to-service.md).
+Egy ügyfélalkalmazás kérhet felügyelt Szolgáltatásidentitás [csak alkalmazás-hozzáférési jogkivonat](../develop/active-directory-dev-glossary.md#access-token) egy adott erőforráshoz való hozzáférést illetően. A jogkivonat [az MSI-szolgáltatás egyszerű alapján](overview.md#how-does-it-work). Így nincs szükség az regisztrálja magát az ügyfél a saját egyszerű szolgáltatásnév a hozzáférési token beszerzése. A lexikális elem egy tulajdonosi jogkivonatot a használhatók [szolgáltatások közötti hívások igénylő ügyfél hitelesítő adatait](../develop/active-directory-protocols-oauth-service-to-service.md).
 
 |  |  |
 | -------------- | -------------------- |
@@ -48,7 +51,7 @@ Egy ügyfélalkalmazás kérhet egy olyan MSI Csomaghoz [csak alkalmazás-hozzá
 | [Szolgáltatáshitelesítést egy token használatával nyissa meg](#get-a-token-using-go) | Az MSI REST-végpont Ugrás ügyfélről használatának példája |
 | [Az Azure PowerShell jogkivonat beolvasása](#get-a-token-using-azure-powershell) | Az MSI REST-végpont egy PowerShell-ügyfél használata – példa |
 | [Szolgáltatáshitelesítést egy token használata CURL használatával](#get-a-token-using-curl) | Az MSI REST-végpont a Bash/CURL ügyfélben használatának példája |
-| [Kezelési jogkivonat lejáratáról](#handling-token-expiration) | Útmutató a lejárt hozzáférési jogkivonatok kezelése |
+| [Token-gyorsítótárazási kezelése](#handling-token-caching) | Útmutató a lejárt hozzáférési jogkivonatok kezelése |
 | [Hibakezelés](#error-handling) | Útmutató a token MSI-végpont által visszaadott HTTP-hibák kezelése |
 | [Erőforrás-azonosítók az Azure-szolgáltatások](#resource-ids-for-azure-services) | Erőforrás-azonosítók támogatott Azure-szolgáltatásokat az beszerzése |
 
@@ -56,10 +59,10 @@ Egy ügyfélalkalmazás kérhet egy olyan MSI Csomaghoz [csak alkalmazás-hozzá
 
 Az alapvető kezelőfelület egy hozzáférési jogkivonat beszerzése REST, így elérhető bármely ügyfél alkalmazás számára, amelyekkel HTTP REST-hívások a virtuális gépen alapul. Ez az az Azure AD-programozási modell hasonló, kivéve az ügyfél használ egy végpontot a virtuális gépen (és az Azure AD-végpont).
 
-Az MSI példány metaadatok szolgáltatás (IMDS) végpont használatával kérelemmintát *(ajánlott)*:
+Az Azure példány metaadatok szolgáltatás (IMDS) végpont használatával kérelemmintát *(ajánlott)*:
 
 ```
-GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1 Metadata: true
+GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
 | Elem | Leírás |
@@ -70,7 +73,7 @@ GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01
 | `resource` | A lekérdezési karakterlánc paraméterként, az App ID URI a célerőforrás jelző. Emellett megjelenik a `aud` (célközönség) jogcím a kiállított jogkivonat. Ez a példa kérelmek Azure Resource Manager hozzáférési jogkivonatot tartalmaz egy App ID URI-azonosítója https://management.azure.com/. |
 | `Metadata` | Egy HTTP kérelem fejlécmező, mint a kiszolgáló oldalán kérelem hamisítására (SSRF) támadások elleni megoldás MSI szükséges. Ez az érték "true", az összes kisbetű értékre kell állítani.
 
-Az MSI VM bővítmény végpont használatával kérelemmintát *(elavult) a*:
+A kezelt Service Identity (MSI) virtuális gép bővítmény végpont használatával kérelemmintát *(elavult) a*:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -264,23 +267,25 @@ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sy
 echo The MSI access token is $access_token
 ```
 
-## <a name="token-expiration"></a>Jogkivonat lejáratáról 
+## <a name="token-caching"></a>Token-gyorsítótárazási
 
-Ha a kódban a token gyorsítótárazási kezelésére forgatókönyvek, ahol az erőforrás azt mutatták ki, hogy a jogkivonat lejárt felkészültnek kell lennie. 
+Amíg a felügyelt szolgáltatás identitásának (MSI) alrendszer használt (IMDS/MSI Virtuálisgép-bővítmény) gyorsítótárazzák a jogkivonatokat, azt is javasoljuk megvalósításához a token-gyorsítótárazási a kódban. Ennek eredményeképpen kell előkészíteni az esetekben, ahol az erőforrás azt jelzi, hogy a jogkivonat lejárt. 
 
-Megjegyzés: A IMDS MSI alrendszer gyorsítótár jogkivonatokat, mert a tömörített hívások Azure AD-eredmények csak akkor, ha:
-- a gyorsítótár-tévesztései miatt nem jogkivonat a gyorsítótárban történik
-- a jogkivonat érvényessége lejárt
+Az Azure AD a tömörített hívások többletköltséggel csak ha:
+- gyorsítótár-tévesztései akkor fordul elő, nincs lexikális elem szerepel a MSI alrendszer gyorsítótár miatt
+- a gyorsítótárazott jogkivonat érvényessége lejárt
 
 ## <a name="error-handling"></a>Hibakezelés
 
-Az MSI-végpont jelzi a hibákat a HTTP üzenet válaszfejléc, az állapot kód mezője révén 4xx vagy 5xx hibaként:
+A Szolgáltatásidentitás felügyelt endpoint jelzi a hibákat a HTTP üzenet válaszfejléc, az állapot kód mezője révén 4xx vagy 5xx hibaként:
 
 | Állapotkód | Hiba oka | Hogyan legyen kezelve |
 | ----------- | ------------ | ------------- |
 | 429-es jelű túl sok kérelmet. |  Elérte a IMDS sávszélesség-szabályozási korlátot. | Az exponenciális leállítási próbálja újra. Tekintse meg az alábbi útmutatást. |
 | 4xx hiba történt a kérelem. | Egy vagy több a kérelemben szereplő paraméterek helytelen volt. | Nem próbálja meg újra.  Vizsgálja meg a hiba részleteiben talál további információt.  4xx olyan tervezési idejű hibákat tartalmaznak.|
 | 5XX átmeneti hiba szolgáltatásból. | Az MSI-alrendszer vagy az Azure Active Directory átmeneti hibát adott vissza. | Biztonságos legalább 1 másodperc várakozás után ismételje meg a legyen.  Ha újra, vagy túl gyorsan túl gyakran, IMDS és/vagy az Azure AD előfordulhat, hogy hibaüzenetet egy arány korlátot (429).|
+| 404 nem található. | IMDS végpont frissítése folyamatban van. | Expontential leállítási próbálja újra. Tekintse meg az alábbi útmutatást. |
+| timeout | IMDS végpont frissítése folyamatban van. | Expontential leállítási próbálja újra. Tekintse meg az alábbi útmutatást. |
 
 Ha hiba lép fel, a megfelelő HTTP-válasz törzsében a hiba részletes adatait a JSON-adatokat tartalmaz:
 
@@ -303,11 +308,11 @@ Ez a szakasz a lehetséges hibaválaszok dokumentumokat. A "200 OK" állapota a 
 |           | ACCESS_DENIED | Az erőforrás tulajdonosa vagy a hitelesítési kiszolgáló megtagadta a kérelmet. |  |
 |           | unsupported_response_type | A hitelesítési kiszolgáló nem támogatja egy hozzáférési jogkivonatot: Ezzel a módszerrel lehet beszerezni. |  |
 |           | invalid_scope | A kért hatóköre érvénytelen, ismeretlen vagy nem megfelelően formázott. |  |
-| 500 belső kiszolgálóhiba | ismeretlen | Nem sikerült jogkivonatot lekérdezni az Active Directory címtárban. További információ: a naplók  *\<fájl elérési útja\>* | Győződjön meg arról, hogy MSI engedélyezve van a virtuális Gépen. Lásd: [konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával](qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége.<br><br>Azt is ellenőrizze, hogy a HTTP GET kérés URI formátuma megfelelő, különösen az erőforrás URI megadva a lekérdezésben. A "kérelemmintát" című része a [REST szakasz megelőző](#rest) példát, vagy [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](overview.md#azure-services-that-support-azure-ad-authentication) szolgáltatások és a megfelelő erőforrás-azonosítók listáját.
+| 500 belső kiszolgálóhiba | ismeretlen | Nem sikerült jogkivonatot lekérdezni az Active Directory címtárban. További információ: a naplók  *\<fájl elérési útja\>* | Győződjön meg arról, hogy MSI engedélyezve van a virtuális Gépen. Lásd: [konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával](qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége.<br><br>Azt is ellenőrizze, hogy a HTTP GET kérés URI formátuma megfelelő, különösen az erőforrás URI megadva a lekérdezésben. A "kérelemmintát" című része a [REST szakasz megelőző](#rest) példát, vagy [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](services-support-msi.md) szolgáltatások és a megfelelő erőforrás-azonosítók listáját.
 
-## <a name="throttling-guidance"></a>Sávszélesség-szabályozási útmutató 
+## <a name="retry-guidance"></a>Ismételje meg az útmutató 
 
-Sávszélesség-szabályozási korlátozások vonatkoznak az MSI IMDS végponthoz intézett hívások száma. A sávszélesség-szabályozási küszöbérték túllépésekor a MSI IMDS végpont semmilyen további kérelmet korlátozza, amíg a késleltetési érvényben van. Ebben az időszakban, a MSI IMDS végpont visszatér a HTTP-állapotkód 429 ("túl sok kérelem"), és a kérelem sikertelen lesz. 
+Sávszélesség-szabályozási korlátozások vonatkoznak a IMDS végponthoz intézett hívások száma. A sávszélesség-szabályozási küszöbérték túllépésekor IMDS végpont semmilyen további kérelmet korlátozza, amíg a késleltetési van érvényben. Ebben az időszakban, a IMDS végpont visszatér a HTTP-állapotkód 429 ("túl sok kérelem"), és a kérelem sikertelen lesz. 
 
 Próbálkozzon újra a következő stratégia javasoljuk: 
 
@@ -317,7 +322,7 @@ Próbálkozzon újra a következő stratégia javasoljuk:
 
 ## <a name="resource-ids-for-azure-services"></a>Erőforrás-azonosítók az Azure-szolgáltatások
 
-Lásd: [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](overview.md#azure-services-that-support-azure-ad-authentication) erőforrásokat, amelyek támogatják az Azure AD, és az MSI lettek tesztelve, és a megfelelő erőforrás-azonosítók listáját.
+Lásd: [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](services-support-msi.md) erőforrásokat, amelyek támogatják az Azure AD, és az MSI lettek tesztelve, és a megfelelő erőforrás-azonosítók listáját.
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom

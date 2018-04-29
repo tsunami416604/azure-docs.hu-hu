@@ -1,19 +1,19 @@
 ---
-title: "CI/CD-ről az Azure-tárolót szolgáltatás vezérlőprogramja és Swarm mód"
-description: "Azure-tároló szolgáltatás vezérlőprogramja használja Docker Swarm-módban, egy Azure-tároló beállításkulcs, és a Visual Studio Team Services egy több tároló .NET Core alkalmazás folyamatosan továbbítására"
+title: CI/CD-ről az Azure-tárolót szolgáltatás vezérlőprogramja és Swarm mód
+description: Azure-tároló szolgáltatás vezérlőprogramja használja Docker Swarm-módban, egy Azure-tároló beállításkulcs, és a Visual Studio Team Services egy több tároló .NET Core alkalmazás folyamatosan továbbítására
 services: container-service
 author: diegomrtnzg
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 6aa690ff7ec0689db78ff1225d36171adb30ee2c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 01126f3eef988eb1787bafea92e7384aad1a703c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>Azure tárolószolgáltatás egy több tároló alkalmazás telepítését az ACS-motor és a Docker Swarm mód Visual Studio Team Services használatával teljes CI/CD folyamat
 
@@ -218,7 +218,7 @@ A kiadási munkafolyamat két feladatot hozzáadott tevődik össze.
 
 1. Egy feladat biztonságosan másolja a compose-fájlt egy *telepítése* mappa a Docker Swarm fő csomóponton korábban konfigurált SSH-kapcsolat használatával. További részletek a következő képernyő jelenik meg.
     
-    Forrásmappa:```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
+    Forrásmappa: ```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
 
     ![Visual Studio Team Services - kiadás SCP-je](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-scp.png)
 
@@ -244,7 +244,7 @@ A kiadási munkafolyamat két feladatot hozzáadott tevődik össze.
 
 Most, hogy a konfiguráció befejezése után is tesztelheti az új CI/CD adatcsatornát. A tesztek legkönnyebben frissítése a forráskódot, és véglegesítse a módosításokat a GitHub-tárházban történő. Néhány másodperccel azután leküldéses a kód jelenik meg a Visual Studio Team Services rendszert futtató új buildverziót. Sikeres befejezést követően egy új kiadási elindul, és az Azure Tárolószolgáltatás-fürthöz az alkalmazás új verziójának telepítése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Visual Studio Team Services CI/CD kapcsolatos további információkért tekintse meg a [VSTS összeállítása – áttekintés](https://www.visualstudio.com/docs/build/overview).
 * Az ACS-motor kapcsolatos további információkért tekintse meg a [ACS motor GitHub-tárház](https://github.com/Azure/acs-engine).

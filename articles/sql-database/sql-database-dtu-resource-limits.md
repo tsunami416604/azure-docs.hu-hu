@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 6602a4ab8f6081c1b96c7da3bc94291d05d79862
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: fb5c2e16e696ba9eecf4346a0c4e7bc05aacf39f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-dtu-based-resource-model-limits"></a>Az Azure SQL Database DTU-alapú erőforrás modell korlátok
 
@@ -32,7 +32,6 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 | Maximális tárolási lehetőségek (GB) | 2 |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) |– |
 | Maximális párhuzamos munkavállalók (kérelmek) | 30 |
-| Egyidejű bejelentkezések maximális száma | 30 |
 | Egyidejű munkamenetek maximális száma | 300 |
 |||
 
@@ -44,7 +43,6 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 | Maximális tárolási lehetőségek (GB) * | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | N/A | N/A | – |
 | Maximális párhuzamos munkavállalók (kérelmek)| 60 | 90 | 120 | 200 |
-| Egyidejű bejelentkezések maximális száma | 60 | 90 | 120 | 200 |
 | Egyidejű munkamenetek maximális száma |600 | 900 | 1200 | 2400 |
 ||||||
 
@@ -56,7 +54,6 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 | Maximális tárolási lehetőségek (GB) * | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | N/A | N/A | N/A |– |
 | Maximális párhuzamos munkavállalók (kérelmek)| 400 | 800 | 1600 | 3200 |6000 |
-| Egyidejű bejelentkezések maximális száma | 400 | 800 | 1600 | 3200 |6000 |
 | Egyidejű munkamenetek maximális száma |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
@@ -68,15 +65,14 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 | Maximális tárolási lehetőségek (GB) * | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 | 4096 |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maximális párhuzamos munkavállalók (kérelmek)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
-| Egyidejű bejelentkezések maximális száma | 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Egyidejű munkamenetek maximális száma | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
 
 > [!IMPORTANT]
-> \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
+> - Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
->\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> - Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kelet-Ausztrália, Ausztrália délkeleti, Dél-Brazília, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Franciaország központi, Németország központi, kelet-japán, Nyugat-japán, koreai központi Észak-USA középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA East2, USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
 
 
@@ -140,7 +136,6 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 | Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | – | N/A | N/A | N/A | N/A | N/A | N/A | – |
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
-| Egyidejű bejelentkezések maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
 | Adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
 | Adatbázisonként maximális edtu-k választási lehetőségek | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
@@ -156,7 +151,6 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 | Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | – | N/A | N/A | N/A | N/A | – | 
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 |
-| Egyidejű bejelentkezések maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | Adatbázisonként maximális edtu-k választási lehetőségek | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 | 
@@ -172,7 +166,6 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 | Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | – | N/A | N/A | N/A | – | 
 | Adatbázisok maximális száma készletenként | 500 | 500 | 500 | 500 | 500 | 
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 2400 | 3200 | 4000 | 5000 | 6000 |
-| Egyidejű bejelentkezések maximális száma készletenként | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | Adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Adatbázisonként maximális edtu-k választási lehetőségek | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 | 
@@ -188,7 +181,6 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 | Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | 1 | 2 | 4 | 10 | 12 | 
 | Adatbázisok maximális száma készletenként | 50 | 100 | 100 | 100 | 100 | 
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 200 | 400 | 800 | 1600 | 2400 | 
-| Egyidejű bejelentkezések maximális száma készletenként | 200 | 400 | 800 | 1600 | 2400 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | eDTU-k minimális száma adatbázisonként | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000, 1500 | 
 | eDTU-k maximális száma adatbázisonként | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000, 1500 |
@@ -204,7 +196,6 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 | Maximális memórián belüli online Tranzakciófeldolgozási tárolási készletenként (GB) | 16 | 20 | 24 | 28 | 32 |
 | Adatbázisok maximális száma készletenként | 100 | 100 | 100 | 100 | 100 | 
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 3200 | 4000 | 4800 | 5600 | 6400 |
-| Egyidejű bejelentkezések maximális száma készletenként | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | Adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
 | Adatbázisonként maximális edtu-k választási lehetőségek | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
@@ -212,9 +203,9 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 ||||||||
 
 > [!IMPORTANT]
-> \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/). Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).
+> -  Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/). Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).
 >
-> \* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> -  Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kelet-Ausztrália, Ausztrália délkeleti, Dél-Brazília, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Franciaország központi, Németország központi, kelet-japán, Nyugat-japán, koreai központi Észak-USA középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA East2, USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 >
 
 Ha egy rugalmas készlet minden DTU-ja használatban van, akkor a készletben található minden adatbázis ugyanannyi erőforrást kap a lekérdezések feldolgozásához. Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. A rugalmas készlet egyenlő erőforrás-megosztása hozzáadódik az egyes adatbázisok számára máshonnan garantált erőforrások mennyiségéhez, ha a minimális DTU/adatbázis érték nem 0-ra van állítva.

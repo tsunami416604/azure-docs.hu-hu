@@ -17,10 +17,10 @@ ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 89a4216a3893892eedd6c216c7e0e5d51cf64749
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Az Azure írási gyorsító SAP telepítésekhez
 Azure írási gyorsító az első megkezdődött M sorozatú virtuális gépek kizárólag funkcionalitást. Az Azure-írási gyorsító adatsorozattal bármely más Virtuálisgép-Azure, kivéve az M-sorozat nem érhető el. Állapota a neve, mint a funkció célja javítása a prémium szintű Azure Storage elleni írások késését i/o. 

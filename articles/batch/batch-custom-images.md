@@ -1,18 +1,18 @@
 ---
-title: "Az egyéni lemezképek Azure Batch készletek kiépítése |} Microsoft Docs"
-description: "Létrehozhat egy kötegelt kiépítését egyéni lemezképéről készlet számítási csomópontokra, amelyeket a szoftver- és az alkalmazáshoz szükséges adatokat tartalmazzák. Egyéni lemezkép egy hatékony módját a számítási csomópontok a Batch-alkalmazások futtatásához."
+title: Az egyéni lemezképek Azure Batch készletek kiépítése |} Microsoft Docs
+description: Létrehozhat egy kötegelt kiépítését egyéni lemezképéről készlet számítási csomópontokra, amelyeket a szoftver- és az alkalmazáshoz szükséges adatokat tartalmazzák. Egyéni lemezkép egy hatékony módját a számítási csomópontok a Batch-alkalmazások futtatásához.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 63a567e9fdfef8dfceb275953cc0ac606355ea30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 78bc50a1189d8f42281f81643a5e907d94480082
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-a-managed-custom-image-to-create-a-pool-of-virtual-machines"></a>Felügyelt egyéni lemezképet használ a virtuális gépek készlet létrehozása 
 
@@ -40,7 +40,7 @@ A forgatókönyvnek konfigurált egyéni lemezkép használatával több előny�
 
     
 ## <a name="prepare-a-custom-image"></a>Egyéni lemezkép előkészítése
-Egy felügyelt képre előkészítheti a virtuális merevlemez, egy Azure virtuális gép felügyelt lemezzel, vagy egy virtuális gép pillanatképből. 
+Egy felügyelt képre előkészítheti a virtuális merevlemez, egy Azure virtuális gép felügyelt lemezzel, vagy egy virtuális gép pillanatképből. A kötegelt ajánlott, felügyelt lemezkép létrehozása a virtuális gép és a felügyelt lemezek vagy a virtuális gép pillanatfelvétele. A felügyelt képre és az alapjául szolgáló erőforrás rendelkeznie kell meglévő méretezést kívánó készletek és a készlet törlése után lehet eltávolítani. 
 
 Ha a lemezkép előkészítése, vegye figyelembe a következő szempontokat:
 

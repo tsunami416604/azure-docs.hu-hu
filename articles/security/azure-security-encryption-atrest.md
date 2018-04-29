@@ -3,7 +3,7 @@ title: A Microsoft Azure Data Encryption nyugalmi |} Microsoft Docs
 description: Ez a cikk áttekintése a Microsoft Azure data encryption nyugalmi általános képességek, és az általános szempontokat tartalmazza.
 services: security
 documentationcenter: na
-author: YuriDio
+author: barclayn
 manager: mbaldwin
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: c0bc3c8774b68b49be95d5df86319a2e0463e6ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
+# <a name="azure-data-encryption-at-rest"></a>Az Azure Data Encryption nyugalmi
 Nincsenek több eszközt a vállalati biztonsági és megfelelőségi igényeknek megfelelő adatok védelme a Microsoft Azure-ban. A dokumentum koncentrál:
 - Hogyan védett adatok inaktív között a Microsoft Azure
 - Ismerteti, amelyek a data protection végrehajtása részt vevő összetevők
@@ -72,7 +72,7 @@ Egynél több titkosítási kulcs használatban van egy rest-megvalósítási ti
 
 Az adattitkosítási kulcsokat, a kulcs titkosítási kulcsok titkosítva tárolódnak, és csak a kulcs titkosítási kulccsal rendelkező entitás bármely az adattitkosítási kulcsokat, ezzel a kulccsal titkosított kérheti le. A kulcs tárolása különböző modellek támogatottak. Mindegyik modellt a következő szakasz későbbi részében részletesebben ismertetik.
 
-## <a name="data-encryption-models"></a>Data Encryption Models
+## <a name="data-encryption-models"></a>Adatok titkosítása modellek
 
 A különböző titkosítási modellek és azok előnyei és hátrányai elengedhetetlen megérteni a megértése, hogyan valósítja meg az Azure-ban a különböző erőforrás-szolgáltató az titkosítását. Ezek a definíciók összes erőforrás-szolgáltató között megosztott közös nyelvi és besorolás biztosításához az Azure-ban. 
 
@@ -246,7 +246,7 @@ Az Azure Blob, és a fájl titkosítását támogatja a kiszolgálóoldali titko
 
 Az SQL Azure jelenleg titkosítását a Microsoft által felügyelt szolgáltatás és az ügyféloldali titkosítás forgatókönyvek.
 
-Támogatja a kiszolgáló titkosítási keresztül az átlátható adattitkosítási nevű SQL-funkció jelenleg elérhető. Ha egy SQL Azure-ügyfelünkkel lehetővé teszi, hogy TDE kulcs automatikusan létrehozása és kezelése a számukra. Titkosítását az adatbázis és a kiszolgáló szintjén engedélyezhető. Től június 2017 [átlátszó Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) alapértelmezés szerint az újonnan létrehozott adatbázisok engedélyezve lesz.
+Kiszolgáló titkosítási jelenleg támogatását az átlátható adattitkosítási nevű SQL funkción keresztül. Ha egy SQL Azure-ügyfelünkkel lehetővé teszi, hogy TDE kulcs automatikusan létrehozása és kezelése a számukra. Titkosítását az adatbázis és a kiszolgáló szintjén engedélyezhető. Től június 2017 [átlátszó Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) alapértelmezés szerint az újonnan létrehozott adatbázisok engedélyezve lesz.
 
 Ügyféloldali titkosítás az SQL Azure adatok támogatott keresztül a [mindig titkosítja](https://msdn.microsoft.com/library/mt163865.aspx) szolgáltatás. Mindig titkosított kulcsot használ, amely a létrehozott és tárolt az ügyfél által. Az ügyfelek a fő oszlopkulcs tárolhat Windows tanúsítványtárolót, az Azure Key Vault vagy helyi hardveres biztonsági modult. SQL Server Management Studio használatával, SQL-felhasználók eldönthetik, milyen kulcs titkosítására melyik oszlop szeretnének.
 
@@ -257,8 +257,8 @@ Támogatja a kiszolgáló titkosítási keresztül az átlátható adattitkosít
 | **Tárolás és adatbázisok**            |                |                     |                              |                              |        |
 | Lemez (IaaS)                      |                | -                   | Igen                          | Igen*                         | -      |
 | SQL Server (IaaS)                |                | Igen                 | Igen                          | Igen                          | Igen    |
-| SQL Azure (PaaS)                 |                | Igen                 | Előzetes verzió                      | -                            | Igen    |
-| Az Azure Storage (blokk/Lapblobokat) |                | Igen                 | Előzetes verzió                      | -                            | Igen    |
+| SQL Azure (PaaS)                 |                | Igen                 | Igen                          | -                            | Igen    |
+| Az Azure Storage (blokk/Lapblobokat) |                | Igen                 | Igen                          | -                            | Igen    |
 | Azure Storage (Files)            |                | Igen                 | -                            | -                            | -      |
 | Az Azure Storage (táblák, üzenetsorok)   |                | -                   | -                            | -                            | Igen    |
 | A cosmos DB (dokumentum DB)          |                | Igen                 | -                            | -                            | -      |
@@ -273,9 +273,9 @@ Támogatja a kiszolgáló titkosítási keresztül az átlátható adattitkosít
 | Azure Data Lake Store            |                | Igen                 | Igen                          | -                            | -      |
 | Azure Data Catalog               |                | Igen                 | -                            | -                            | -      |
 | Power BI                         |                | Igen                 | -                            | -                            | -      |
-| **IoT Services**                     |                |                     |                              |                              |        |
+| **IoT-szolgáltatásaival**                     |                |                     |                              |                              |        |
 | IoT Hub                          |                | -                   | -                            | -                            | Igen    |
-| Service Bus                      |                | Igen (prémium csomagban)              | -                            | -                            | Igen    |
+| Service Bus                      |                | Igen              | -                            | -                            | Igen    |
 | Event Hubs                       |                | Igen             | -                            | -                            | -      |
 
 

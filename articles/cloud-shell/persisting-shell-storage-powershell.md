@@ -1,12 +1,12 @@
 ---
-title: "PowerShell Azure Cloud rendszerhéj (előzetes verzió) lévő fájlok maradnak |} Microsoft Docs"
-description: "A forgatókönyv a hogyan Azure Cloud rendszerhéj fájlokat továbbra is fennáll."
+title: PowerShell Azure Cloud rendszerhéj (előzetes verzió) lévő fájlok maradnak |} Microsoft Docs
+description: A forgatókönyv a hogyan Azure Cloud rendszerhéj fájlokat továbbra is fennáll.
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: damaerte
-ms.openlocfilehash: 74488b85ec524e4ad4c06a639a16ddbfd54b3154
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b87c4a408393e4ae341898e8cfa23e9acbcb4fc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 [!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -26,15 +26,15 @@ ms.lasthandoff: 02/01/2018
 A felhő rendszerhéj (előzetes verzió) PowerShell továbbra is fennáll a fájlok a következő metóduson keresztül: 
 * A megadott Azure-fájlmegosztáshoz, csatlakoztatni `clouddrive` a a `$Home` könyvtárhoz, a fájlmegosztás közvetlen interakció.
 
-## <a name="list-cloud-drive-azure-file-shares"></a>Lista felhő meghajtó Azure fájlmegosztások
-A `Get-CloudDrive` parancs a felhő rendszerhéj a felhő meghajtó által jelenleg csatlakoztatott Azure fájl megosztás adatainak beolvasása. <br>
-![Running Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
+## <a name="list-clouddrive-azure-file-shares"></a>Lista `clouddrive` Azure fájlmegosztásokat
+A `Get-CloudDrive` parancs segítségével lekérdezhető az Azure fájl megosztási információk által aktuálisan csatlakoztatva a `clouddrive` a felhő rendszerhéj. <br>
+![Get-CloudDrive fut](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
-## <a name="unmount-cloud-drive"></a>Felhőalapú Meghajtójukra leválasztása
+## <a name="unmount-clouddrive"></a>Válassza le a lemezképet `clouddrive`
 Az Azure fájlmegosztások, hogy bármikor a felhő rendszerhéj csatlakoztatott is leválasztása. Az Azure fájlmegosztások el lett távolítva, kérni fogja hozhat létre, és egy új Azure fájlmegosztás csatlakoztatása a következő munkamenetben.
 
-A `Dismount-CloudDrive` parancs az Azure fájlmegosztások leválasztja az aktuális tárfiókból. Az aktuális munkamenet leválasztása a felhőalapú Meghajtójukra leáll. A felhasználó kéri hozhat létre, és egy új Azure fájlmegosztás csatlakoztatása a következő munkamenet során.
-![Running Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
+A `Dismount-CloudDrive` parancs az Azure fájlmegosztások leválasztja az aktuális tárfiókból. Leválasztás a `clouddrive` megszakítja az aktuális munkamenet. A felhasználó kéri hozhat létre, és egy új Azure fájlmegosztás csatlakoztatása a következő munkamenet során.
+![Dismount-CloudDrive fut](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [features-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5a9f1bfee1df41d25309e84fe9958ff19a368943
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0c8fc2551f529fbff647d3400144fa2a9600bbd9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD tartományi szolgáltatások - riasztások hibaelhárítása
 A cikkben hibaelhárítási útmutatók a felügyelt tartományok indításakor a riasztásokhoz.
@@ -130,7 +130,7 @@ A virtuális hálózaton belüli gépek előfordulhat, hogy kéréseket küld az
 
 **Megoldás:**
 
-A szolgáltatás visszaállítása [újítsa meg az Azure-előfizetéshez](https://docs.microsoft.com/en-us/azure/billing/billing-subscription-become-disable) a felügyelt tartományok társított.
+A szolgáltatás visszaállítása [újítsa meg az Azure-előfizetéshez](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable) a felügyelt tartományok társított.
 
 ## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504: Egy érvénytelen konfiguráció miatt felfüggesztése
 
@@ -142,5 +142,5 @@ A szolgáltatás visszaállítása [újítsa meg az Azure-előfizetéshez](https
 
 [Ellenőrizze a tartomány állapotát](active-directory-ds-check-health.md) a riasztásokhoz, amely a felügyelt tartomány konfigurációs problémákat jelezhet. Ha ezek a riasztások bármelyikét oldhatja, tegye meg. Után forduljon a támogatási szolgálathoz kívánja újból engedélyezni az előfizetését.
 
-## <a name="contact-us"></a>Lépjen kapcsolatba velünk
+## <a name="contact-us"></a>Kapcsolat
 Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).

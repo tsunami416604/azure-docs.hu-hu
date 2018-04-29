@@ -12,15 +12,15 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a1224c48537441726c0e01134f6a9256cf3b71c6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8e8bbf5808c11709a49f1cb6ebeba410837e5810
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>Az Azure CLI 2.0 és az IoT-bővítmény használata eszközregisztrációs szolgáltatások kezelésére
 
-Az [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) egy nyílt forrású, több platformon is használható parancssori eszköz különböző Azure-erőforrások, például az IoT Edge felügyeletére. Az Azure CLI 2.0 Windows, Linux és Mac OS rendszereken érhető el. Az Azure CLI 2.0 egy használatra kész megoldás Azure IoT Hub-erőforrások, eszközregisztrációs szolgáltatáspéldányok és csatolt központok felügyeletéhez.
+Az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forrású, több platformon is használható parancssori eszköz különböző Azure-erőforrások, például az IoT Edge felügyeletére. Az Azure CLI 2.0 Windows, Linux és Mac OS rendszereken érhető el. Az Azure CLI 2.0 egy használatra kész megoldás Azure IoT Hub-erőforrások, eszközregisztrációs szolgáltatáspéldányok és csatolt központok felügyeletéhez.
 
 Az IoT-bővítmény az Azure CLI 2.0 funkcióinak körét olyan szolgáltatásokkal egészíti ki, amilyen például az eszközfelügyelet és a teljes körű IoT Edge-képességek.
 
@@ -34,7 +34,7 @@ Ebben az oktatóanyagban először az Azure CLI 2.0 és az IoT-bővítmény beá
 
 ### <a name="step-2---install-azure-cli-20"></a>2. lépés – Az Azure CLI 2.0 telepítése
 
-Kövesse a [telepítési utasításokat](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI 2.0 telepítéséhez a saját környezetében. Az Azure CLI 2.0 legalább 2.0.24-es verzióját kell használnia. A verziószámot az `az –version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. Windows rendszeren a legegyszerűbb megoldás a telepítésre az [MSI](https://aka.ms/InstallAzureCliWindows) letöltése és telepítése.
+Kövesse a [telepítési utasításokat](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI 2.0 telepítéséhez a saját környezetében. Az Azure CLI 2.0 legalább 2.0.24-es verzióját kell használnia. A verziószámot az `az –version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. Windows rendszeren a legegyszerűbb megoldás a telepítésre az [MSI](https://aka.ms/InstallAzureCliWindows) letöltése és telepítése.
 
 ### <a name="step-3---install-iot-extension"></a>3. lépés – Az IoT-bővítmény telepítése
 

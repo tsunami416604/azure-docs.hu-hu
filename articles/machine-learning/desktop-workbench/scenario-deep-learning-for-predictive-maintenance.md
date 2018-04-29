@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 962a9d32790638af7513e805424d8579b29f433e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 005470298a115a822350f345cdab6e9cafb15eda
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>A részletes learning a prediktív karbantartási valós forgatókönyv
 
@@ -151,7 +151,7 @@ A következő hivatkozásokat adjon meg más prediktív karbantartási példái 
 * [A prediktív karbantartási modellezési útmutató SQL R Services segítségével](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
 * [Python kalauz modellezési prediktív karbantartás](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
 * [A prediktív karbantartási PySpark használatával](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
-* [A prediktív karbantartási valós forgatókönyv](https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance)
+* [A prediktív karbantartási valós forgatókönyv](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance)
 
 ## <a name="next-steps"></a>További lépések
 

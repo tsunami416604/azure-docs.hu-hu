@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: a83a9f9332d81e02a83efc019ad56027316301ab
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 94791e4dc3d3c841dde4685d34d4e3fdaf7d9af7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adattárházegységek (dwu-k) és a számítás Adattárházegységek (cDWUs)
 Javaslatok az adattárházegységek (dwu-k, cDWUs) ára és teljesítménye és egységek számának módosítása optimalizálása ideális számának kiválasztása. 
@@ -36,19 +36,19 @@ Dwu-k növelése:
 - Növeli a párhuzamos lekérdezések és feldolgozási üzembe helyezési ponti maximális számát.
 
 ## <a name="service-level-objective"></a>Szolgáltatási szint célkitűzésének
-A szolgáltatási szint célkitűzést (SLO), a méretezhetőség beállítás határozza meg az adatraktár költségeket és a teljesítmény szintjét. A szolgáltatási szintek, a számítási teljesítmény réteg méretezési optimalizálása a számítási adattárházegységek (cDWU), például DW2000c értékek mérése. A rugalmasság szolgáltatási szintek optimalizálása a dwu-k, például DW2000 mérik. 
+A szolgáltatási szint célkitűzést (SLO), a méretezhetőség beállítás határozza meg az adatraktár költségeket és a teljesítmény szintjét. A szolgáltatási szintjeit Gen2 értékek mérési egysége a számítási adattárházegységek (cDWU), például DW2000c. Szolgáltatási szintek Gen1 értékek mérési egysége a dwu-k, például DW2000. 
 
 T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg, a szolgáltatási szint és az adatraktár teljesítményének rétegét.
 
 ```sql
---Optimized for Elasticity
+--Gen1
 CREATE DATABASE myElasticSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000'
 )
 ;
 
---Optimized for Compute
+--Gen2
 CREATE DATABASE myComputeSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000c'
@@ -60,12 +60,12 @@ WITH
 
 Minden egyes teljesítményszinttel némileg eltérő mértékegységet az adattárházegységek használ. Ezt a különbséget a számlán is megjelenik, a méretezési egység közvetlenül a számlázási rendszerhez.
 
-- A rugalmasság teljesítményszinttel mérése Adattárházegységek (dwu-k) optimalizálva.
-- Az optimalizált a számítási teljesítmény rétegben mérése számítási Adattárházegységek (cDWUs). 
+- Az adatraktárak Gen1 értékek mérése Adattárházegységek (dwu-k).
+- Gen2 adatok warehousesr értékek mérési egysége a számítási Adattárházegységek (cDWUs). 
 
-Dwu-k és cDWUs egyaránt támogatja méretezési számítási felfelé vagy lefelé, és számítási felfüggesztése, ha nem szeretné használni, az adatraktár. Ezeket a műveleteket az összes igény szerinti. Az optimalizált számítás teljesítményszinttel is használ egy helyi lemezalapú gyorsítótárban a számítási csomópontok a teljesítmény javítása érdekében. Méretezhető, illetve a rendszer felfüggeszti a gyorsítótárat érvénytelenítik, és így gyorsítótár felmelegedés időszak kötelező, mielőtt az optimális teljesítmény akkor érhető el.  
+Dwu-k és cDWUs egyaránt támogatja méretezési számítási felfelé vagy lefelé, és számítási felfüggesztése, ha nem szeretné használni, az adatraktár. Ezeket a műveleteket az összes igény szerinti. Gen2 a számítási csomópontok helyi lemezalapú gyorsítótárban teljesítmény javítása érdekében használja. Méretezhető, illetve a rendszer felfüggeszti a gyorsítótárat érvénytelenítik, és így gyorsítótár felmelegedés időszak kötelező, mielőtt az optimális teljesítmény akkor érhető el.  
 
-Adattárházegységek növelésével számítási erőforrások lineárisan növekednek. Az optimalizált számítás teljesítményszinttel biztosítja a legjobb lekérdezési teljesítmény és a legmagasabb méretezési azonban rendelkezik egy magasabb belépési ár. A teljesítmény állandó igény szerinti rendelkező vállalatok számára készült. Ezek a rendszerek kell használniuk a legtöbb a gyorsítótár. 
+Adattárházegységek növelésével számítási erőforrások lineárisan növekednek. Gen2 nyújtja a legjobb lekérdezési teljesítmény és a legmagasabb méretezési, de magasabb bejegyzés árat van. A teljesítmény állandó igény szerinti rendelkező vállalatok számára készült. Ezek a rendszerek kell használniuk a legtöbb a gyorsítótár. 
 
 ### <a name="capacity-limits"></a>Kapacitási korlátok
 Minden egyes SQL server (például myserver.database.windows.net) rendelkezik egy [Database Transaction Unit (DTU)](../sql-database/sql-database-what-is-a-dtu.md) , amely lehetővé teszi, hogy egy bizonyos számú adattárházegységek kvótát. További információkért lásd: a [munkaterhelés felügyeleti kapacitáskorlátait](sql-data-warehouse-service-capacity-limits.md#workload-management).
@@ -76,10 +76,9 @@ Az ideális száma adattárházegységek függ túlságosan azok a számítási 
 
 A legjobb DWU kereséséhez a munkaterheléshez lépéseket:
 
-1. Fejlesztési először egy kisebb DWU az optimalizált használ a rugalmasság teljesítményszinttel kiválasztása.  Mivel a probléma, amely ebben a szakaszban működési érvényesítési, a rugalmasság teljesítményszinttel optimalizálása beállítás ésszerű. Jó kiindulópont DW200. 
+1. Először egy kisebb DWU kiválasztása. 
 2. Az alkalmazások teljesítményéről, tesztelje adatbetöltés a rendszerbe betartásával erőforrásigények teljesítéséhez képest választott dwu-k számának figyelése
-3. Azonosítsa a esetleges további követelményeket csúcs tevékenység rendszeres időszakokra. Ha a munkaterhelés látható jelentős csúcsait és csatornák tevékenységben, és egy jó ok arra, hogy gyakran méretezhető, majd a rugalmasság teljesítményszinttel a optimalizált alkalmazást.
-4. Ha több mint 1000 DWU kell, majd a számítási teljesítmény rétegben optimalizálása alkalmazást, mivel így az a legjobb teljesítmény érdekében.
+3. Azonosítsa a esetleges további követelményeket csúcs tevékenység rendszeres időszakokra. Ha a munkaterhelés jelentős csúcsait és csatornák megjelenő tevékenység, és egy jó ok arra, hogy gyakran méretezni.
 
 Az SQL Data Warehouse kibővített rendszer építhető ki a számítási és a lekérdezés jelentős mennyiségű adatok óriási mennyiségben. Igaz platformképességei méretezéshez, különösen a nagyobb dwu-k, lásd: javasoljuk az adatkészlet skálázás, annak érdekében, hogy kevés az adat a hírcsatorna a processzorok méretezni. A skála vizsgálat, azt javasoljuk, legalább 1 TB.
 

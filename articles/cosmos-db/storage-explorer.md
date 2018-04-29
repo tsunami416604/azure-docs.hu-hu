@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB kezelése az Azure Storage Explorerben
 
@@ -76,7 +76,7 @@ Az Azure Cosmos DB-hez történő csatlakozás másik módja a kapcsolati karakt
 
 A következő lépésekkel csatlakozhat az Azure Cosmos DB-hez az Emulator használatával. Ez a megoldás egyelőre csak az SQL-fiókot támogatja.
 
-1. Telepítse az Emulatort, és indítsa el. Az Emulator telepítéséról lásd a [Cosmos DB Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator) témakörét.
+1. Telepítse az Emulatort, és indítsa el. Az Emulator telepítéséról lásd a [Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) témakörét.
 
 2. Keresse meg a **Helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal a **Cosmos DB-fiókok** elemre, majd válassza a **Csatlakozás a Cosmos DB Emulatorhoz…** lehetőséget.
 
@@ -210,7 +210,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az [Azure Cosmos DB in Storage Explorer](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) egy önálló alkalmazás, amely lehetővé teszi az Azure- és Sovereign-felhőkben üzemeltetett Azure Cosmos DB-fiókokhoz való csatlakozást Windows, macOS és Linux rendszerekről. Az alkalmazás az Azure Cosmos DB-entitások kezelését, az adatok módosítását, valamint a tárolt eljárások és triggerek frissítését is lehetővé teszi, és olyan Azure-entitásokat is biztosít, mint a tárolóblobok és üzenetsorok.
+Az [Azure Cosmos DB in Storage Explorer](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) egy önálló alkalmazás, amely lehetővé teszi az Azure- és Sovereign-felhőkben üzemeltetett Azure Cosmos DB-fiókokhoz való csatlakozást Windows, macOS és Linux rendszerekről. Az alkalmazás az Azure Cosmos DB-entitások kezelését, az adatok módosítását, valamint a tárolt eljárások és triggerek frissítését is lehetővé teszi, és olyan Azure-entitásokat is biztosít, mint a tárolóblobok és üzenetsorok.
 
 Ezek az Azure Cosmos DB in Storage Explorer leggyakoribb problémáinak megoldásai.
 

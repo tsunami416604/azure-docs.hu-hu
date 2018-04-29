@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: ba02e877fe7152d759085e3d25090459cd2459fc
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ed0718f2d9d5093442001005e43551e7e9749eef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="door-monitor"></a>Ajtó figyelője          
 
@@ -44,7 +44,7 @@ Befejezés a [– első lépések útmutató]({{"/docs/get-started/" | absolute_
 
 Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, regisztrálni keresztül ezen módszerek egyikét:
 
-* Aktiválja a [ingyenes 30 napos próba Microsoft Azure-fiókot](https://azure.microsoft.com/en-us/free/).
+* Aktiválja a [ingyenes 30 napos próba Microsoft Azure-fiókot](https://azure.microsoft.com/free/).
 * Jogcím a [Azure-kreditjeinek](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) az MSDN webhelyen vagy a Visual Studio előfizetői esetén.
 
 ## <a name="deploy-sendgrid-service-in-azure"></a>Az Azure-ban a SendGrid szolgáltatás üzembe helyezése
@@ -69,7 +69,7 @@ Ekkor a következő oldalon megjelenik.
 
 Fejezze be a bejelentkezési űrlap kitöltése:
 
-  * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal).
+  * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 
   * **Név**: A a SendGrid szolgáltatás nevét. Adjon egyedi nevet, előfordulhat, hogy más szolgáltatások eltérő.
 
@@ -111,7 +111,7 @@ Ekkor a következő oldalon megjelenik.
 
 Fejezze be a bejelentkezési űrlap kitöltése:
 
-  * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal).
+  * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 
   * **IOT-Központnév**: az IoT hub nevét. Adjon egyedi nevet, előfordulhat, hogy más szolgáltatások eltérő.
 
@@ -132,10 +132,6 @@ Fejezze be a bejelentkezési űrlap kitöltése:
 - Indítsa el a Visual STUDIO Code.
 - A DevKit kapcsolódni a számítógéphez.
 
-Visual STUDIO Code automatikusan észleli a DevKit, és egy bevezető lap megnyitása:
-
-![VSCode](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-start.png)
-
 > [!NOTE]
 > Visual STUDIO Code elindításához jelenhet egy hibaüzenet, hogy nem található a Arduino IDE vagy a csomag kapcsolódó tábla. Ha ez a hibaüzenet jelenik meg, zárja be és a kódot, indítsa el újra az Arduino IDE és VS kódot kell megkeresheti a Arduino IDE elérési utat helyesen.
 
@@ -145,7 +141,8 @@ Bontsa ki a bal oldali **ARDUINO példák** szakaszban, keresse meg a **MXCHIP A
 
 ![Mini solution példák](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Ha véletlenül bezárja a panelen, akkor nyissa meg újra. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
+> [!NOTE]
+> Példa parancs palettáról is megnyithatja. Használjon `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) nyissa meg a parancs palettát, írja be a következőt **Arduino**, keresése és válassza a **Arduino: Példák**.
 
 ### <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
@@ -216,4 +213,4 @@ Ha problémába ütközik, tekintse meg a [– gyakori kérdések](https://micro
 Megtanulhatta, egy DevKit eszköz csatlakoztatása az Azure IoT Suite, és a SendGrid szolgáltatás használata az e-mailt küldeni. A javasolt következő lépések a következők:
 
 * [Az Azure IoT Suite – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
-* [Csatlakoztasson egy MXChip IoT DevKit eszközt a Microsoft IoT Central alkalmazás](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Csatlakoztasson egy MXChip IoT DevKit eszközt a Microsoft IoT Central alkalmazás](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

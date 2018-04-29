@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
-ms.openlocfilehash: 26acb70ac5ac017fc8162e8abeec48b8b9ecfa7f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 848db5d0df63707eece4f9f7a2a69135bed2d389
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Kapcsolatok hibaelhárítása az Azure hálózati figyelőt Azure REST API használatával
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/05/2018
 > - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
-> - [Azure REST API](network-watcher-connectivity-rest.md)
+> - [Az Azure REST API-n](network-watcher-connectivity-rest.md)
 
 Megtudhatja, hogyan használja a kapcsolat ellenőrzése, hogy egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont is hozható létre hibaelhárítása.
 
@@ -468,7 +468,7 @@ A következő példa az előző API-hívás futtató válaszát. Az ellenőrzés
 
 Csomag rögzíti a virtuális gép a riasztások megtekintésével automatizálása [hozzon létre egy riasztási kiváltott csomagrögzítéssel](network-watcher-alert-triggered-packet-capture.md).
 
-Ha bizonyos adatforgalom engedélyezett a virtuális gép kívül vagy belül ellátogatva található [ellenőrizze IP folyamat, ellenőrizze](network-watcher-check-ip-flow-verify-portal.md).
+Ha bizonyos adatforgalom engedélyezett a virtuális gép kívül vagy belül ellátogatva található [ellenőrizze IP folyamat, ellenőrizze](diagnose-vm-network-traffic-filtering-problem.md).
 
 
 

@@ -7,21 +7,17 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: b1d60cc0a83c95c5e33fbaae6083572af3e183ad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 1cc796061056ff017e3d778ebb2e50e13d55a4c1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Útmutató a replikált táblák használata az Azure SQL Data Warehouse tervezése
 Ez a cikk tervezése során az SQL Data Warehouse-sémát a replikált táblák ajánlásokat biztosít. Ezek a javaslatok segítségével javíthatja a lekérdezések teljesítményét adatok mozgás és a lekérdezés összetettsége csökkentésével.
-
-> [!NOTE]
-> A replikált tábla funkció jelenleg nyilvános előzetes verziójához. Bizonyos viselkedéseinek van változhatnak.
-> 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk azt feltételezi, hogy az adatok terjesztési és az SQL Data Warehouse adatátviteli – fogalmak megismerése.  További információkért lásd: a [architektúra](massively-parallel-processing-mpp-architecture.md) cikk. 
@@ -44,20 +40,13 @@ Replikált táblák munkahelyi csillagséma kis dimenzió táblák esetén. Dime
 Fontolja meg a replikált tábla esetén:
 
 - A tábla a lemezen mérete 2 GB-nál kevesebb, függetlenül a sorok száma. A tábla mérete megkereséséhez használja a [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) parancs: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
-- A tábla szolgál, amelyek egyébként adatmozgás illesztésekben. Például az kivonatoló elosztott táblákon illesztés adatátvitelt jelölik a szükséges, ha a csatlakozó oszlopok nem áll terjesztési ugyanarra az oszlopra. Ha a kivonat-elosztott tábla kicsi, fontolja meg a replikált tábla. Ciklikus multiplexelés táblán illesztés adatmozgás igényel. Replikált táblák helyett a legtöbb esetben ciklikus multiplexelés táblák használatát javasoljuk. 
-
-
-Vegye figyelembe a replikált tábla konvertálása a meglévő elosztott táblából:
-
-- Lekérdezés használja az adatátviteli műveletek, melyek az adatokat a számítási csomópontok tervezi. A BroadcastMoveOperation drága, és csökkenti a lekérdezés teljesítményét. A lekérdezés csomagokban az adatátviteli műveletek megtekintéséhez használja [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).
+- A tábla szolgál, amelyek egyébként adatmozgás illesztésekben. Táblázatot, amely ugyanezen az oszlopon, például egy ujjlenyomat-elosztott táblát egy ciklikus multiplexelés táblához nem osztják csatlakoztatáskor adatátvitelt jelölik a lekérdezés végrehajtásához szükséges.  Ha a tábla kicsi, fontolja meg a replikált tábla. Replikált táblák helyett a legtöbb esetben ciklikus multiplexelés táblák használatát javasoljuk. A lekérdezés csomagokban az adatátviteli műveletek megtekintéséhez használja [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).  A BroadcastMoveOperation replikált tábla használatával el is távolíthatók szokványos adatátviteli művelet.  
  
 Replikált táblák nem fed fel a legjobb lekérdezési teljesítmény során:
 
 - A tábla tartalmaz a gyakori beszúrási, frissítési és törlési műveletek. Ezen adatok adatkezelési nyelv működéséhez szükségesek egy újjáépítését a replikált tábla. Újraépítése gyakran okozhat lassabb teljesítményre.
 - Az adatraktár gyakori méretezett. Adatraktár skálázás módosítja a számítási csomópontokat, ami azt eredményezi azok háromszorosa egy rebuild száma.
-- A tábla a nagy számú oszlopot tartalmaz, de az műveleteket általában hozzáférni csak kis számú oszlopot. Ebben a forgatókönyvben, ahelyett, hogy a teljes táblázatot lehet hatékonyabb hash terjesztése a tábla, és majd indexet létrehozni a gyakran használt oszlop. Ha a lekérdezés adatátvitelt jelölik a szükséges, az SQL Data Warehouse csak helyezi át az adatokat a kért oszlopok. 
-
-
+- A tábla a nagy számú oszlopot tartalmaz, de az műveleteket általában hozzáférni csak kis számú oszlopot. Ebben a forgatókönyvben, ahelyett, hogy a teljes táblázatot lehet terjeszteni a tábla, majd hozza létre az indexet a gyakran használt oszlopokon hatékonyabb. Ha a lekérdezés adatátvitelt jelölik a szükséges, az SQL Data Warehouse csak helyezi át az adatokat a kért oszlopot. 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Replikált táblák használata egyszerű lekérdezés predikátumok
 Mielőtt terjeszteni, vagy a tábla replikálása mellett dönt, tervezze meg a lekérdezéstípusok szeretné futtatni a táblázaton. Amikor csak lehetséges –
@@ -67,7 +56,7 @@ Mielőtt terjeszteni, vagy a tábla replikálása mellett dönt, tervezze meg a 
 
 Processzorigényes lekérdezések legjobb végre, ha a munkahelyi oszlik el minden számítási csomópont. Például egy táblázat minden egyes sorára számítások futó lekérdezések végezzen jobban, mint a replikált táblák elosztott táblákon. Mivel a replikált tábla rendszer teljes minden számítási csomóponton, processzorigényes replikált táblákon futása a teljes táblázaton minden számítási csomóponton. A további számítási lelassíthatja a lekérdezés teljesítményét.
 
-Például ez a lekérdezés tartalmaz egy összetett predikátum.  Az elosztott táblázat helyett egy replikált tábla esetén a szállító gyorsabban futtatja. Ebben a példában a szállító kivonatoló elosztott vagy ciklikus multiplexelés elosztott.
+Például ez a lekérdezés tartalmaz egy összetett predikátum.  Az elosztott táblázat helyett egy replikált tábla esetén a szállító gyorsabban futtatja. Ebben a példában a szállító ciklikus multiplexelés elosztott is lehet.
 
 ```sql
 
@@ -132,7 +121,7 @@ WHERE d.FiscalYear = 2004
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>A replikált táblák módosítását a teljesítménnyel kapcsolatos szempontok
-Az SQL Data Warehouse-tábla fő verziója fölött valósítja meg a replikált tábla. Másolja a főverzió egy terjesztési adatbázis minden számítási csomóponton. Változás történik, amikor az SQL Data Warehouse először frissíti a fő tábla. Majd minden számítási csomóponton a táblák egy újjáépítését igényel. A replikált tábla újjáépítését másolása a tábla minden számítási csomópont, és ezután a az indexek újraépítése tartalmaz.
+Az SQL Data Warehouse-tábla fő verziója fölött valósítja meg a replikált tábla. Másolja a főverzió egy terjesztési adatbázis minden számítási csomóponton. Változás történik, amikor az SQL Data Warehouse először frissíti a fő tábla. Majd újjáépíti a táblázatok minden számítási csomóponton. A replikált tábla újjáépítését másolása a tábla minden számítási csomópont, és ezután a az indexek felépítése tartalmaz.  Például egy DW400 a replikált tábla rendelkezik az adatok 5 másolatát.  A fő példány és egy teljes másolatot minden számítási csomóponton.  Minden adat terjesztési adatbázisok tárolják. SQL Data Warehouse a modellt használ az adatok módosítását gyorsabb utasítások és rugalmas skálázási műveletek támogatásához. 
 
 Újraépíti szükségesek után:
 - Adatok betöltése vagy módosította
@@ -143,7 +132,7 @@ Az SQL Data Warehouse-tábla fő verziója fölött valósítja meg a replikált
 - Szüneteltetési művelete
 - A művelet folytatása
 
-Az újjáépítést történik meg azonnal az adatok módosítása után. Ehelyett az újjáépítést lekérdezés kiválasztja azokat a tábla első alkalommal elindul.  A tábla kezdeti select utasításon belül, hogy a replikált tábla lépésre van.  Az újjáépítést történik a lekérdezésben, mert a kezdeti select utasítás gyakorolt attól függően, hogy a tábla méretét jelentős lehet.  Ha több replikált táblák egy rebuild igénylő van szó, minden egyes példányra újraépítésekor Feladattervek lépések a utasításon belül.  Adatok a konzisztencia, a replikált tábla kizárólagos zárolást Újraépítés alatt az a tábla használatban van.  A zárolás megakadályozza a minden a tábla a Újraépítés időtartama. 
+Az újjáépítést történik meg azonnal az adatok módosítása után. Ehelyett az újjáépítést lekérdezés kiválasztja azokat a tábla első alkalommal elindul.  A lekérdezés az újjáépítést kiváltó olvassa be az azonnal-tábla fő verziója közben aszinkron módon átmásolja az adatokat minden számítási csomópont. Amíg be nem fejeződik az adatok másolását, lekérdezések továbbra is a tábla fő verzióját használja.  Minden olyan tevékenységet, amely egy másik rebuild kényszeríti replikált táblázaton történik, ha az adatok másolását érvénytelenné válik, és adat másolása újra akkor indul el, a következő utasítást. 
 
 ### <a name="use-indexes-conservatively"></a>Konzervatív módon indexek használata
 Standard indexelési eljárások replikált táblák vonatkozik. Az SQL Data Warehouse újraépíti az újjáépítést részeként minden replikált tábla indexe. Indexek csak akkor alkalmazza, ha a jobb teljesítménye ez fontosabb, mint az indexek újraépítése költségét.  
@@ -172,7 +161,7 @@ Például a terhelés mintát négy forrásból származó adatokat tölt, de cs
 
 
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>A replikált tábla helyreállítása egy kötegelt betöltés után
-Ahhoz, hogy a lekérdezés konzisztens végrehajtásának lassúságát, javasoljuk, a replikált táblák frissítését egy kötegelt betöltés után újraindítás. Ellenkező esetben az első lekérdezés várja meg a táblázatok frissítése, beleértve az indexek újraépítése. Attól függően, hogy a méretét és az érintett replikált táblák számát jelentős lehet a teljesítményre gyakorolt hatást.  
+Ahhoz, hogy a lekérdezés konzisztens végrehajtásának lassúságát, fontolja meg, a replikált táblák a build kényszerített egy kötegelt betöltés után. Ellenkező esetben az első lekérdezés továbbra is használni adatátvitelt jelölik a lekérdezést. 
 
 Ez a lekérdezés használja a [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV módosított, de nem úgy replikált táblák listázásához.
 
@@ -187,7 +176,7 @@ SELECT [ReplicatedTable] = t.[name]
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
  
-Egy rebuild kényszerítéséhez futtassa a következő utasítás a fenti kimenetben minden táblában. 
+Egy rebuild indításához futtassa az alábbi utasítást a fenti kimenetben minden táblában. 
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]

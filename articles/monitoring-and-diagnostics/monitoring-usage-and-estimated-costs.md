@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f25c39b602449be3ab9d1cd7e67d6fcfc78afb17
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 08991565d56ffbf7d798944f108a1b86e4463c58
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Használati és becsült költségei figyelése
 
@@ -39,12 +39,11 @@ A havi használati oszlop diagram, amely a használati trendeket szemlélteti a 
 
 ## <a name="new-pricing-model"></a>Új árképzési modellt
 
-2018. április, az új figyelési árképzési modellt jelent meg. Felhő mobilbarát, fogyasztás alapján árképzési jellemzői. Csak kell fizetnie a valóban használt funkciókért, csomópont-alapú kötelezettségvállalás nélkül. Információk az új árképzési modell [riasztási, metrikákat, értesítések](https://azure.microsoft.com/pricing/details/monitor/), [Naplóelemzési](https://azure.microsoft.com/pricing/details/log-analytics/), és [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/).
+A április 2018 egy [jelent meg új figyelési árképzési modellt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Ez funkciókat árképzési felhő mobilbarát, fogyasztás alapján. Csak kell fizetnie a valóban használt funkciókért, csomópont-alapú kötelezettségvállalás nélkül. Információk az új árképzési modell [riasztási, metrikákat, értesítések](https://azure.microsoft.com/pricing/details/monitor/), [Naplóelemzési](https://azure.microsoft.com/pricing/details/log-analytics/) és [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
 
-Felhasználók, akik Naplóelemzési vagy az Application Insights használatához után 2018. április 2. az új árképzési modellt lehetőség. Az olyan ügyfelek, akik már használja ezeket a szolgáltatásokat az új árképzési modellt való áthelyezése nem kötelező.
+Ügyfelek bevezetése Naplóelemzési vagy az Application Insights után 2018. április 2. az új árképzési modellt lehetőség. Az olyan ügyfelek, akik már használja ezeket a szolgáltatásokat az új árképzési modellt való áthelyezése nem kötelező.
 
 ## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Az új árképzési modellt hatásának értékelése
-
 Az új árképzési modellt különböző hatások lesz a minden ügyfél, a figyelési használati minták alapján. Felhasználók, akik 2018. április 2., mielőtt a Naplóelemzési vagy az Application Insights használta éppen a **használati és a becsült költség** lap figyelőben Azure becslése bármi is módosul a költségek, ha azok helyezze át az új árképzési modellt. Ez biztosítja a előfizetés áthelyezi az új modell. A legtöbb felhasználó esetén az új árképzési modellt előnyös lesz. Az ügyfelek főként magas használati mintákat vagy magasabb költségű régiókban ez nem lehet az eset.
 
 Az előfizetésekhez a költségek, a választott becsült megjelenítéséhez a **használati és a becsült költség** lapon, válassza ki a lap tetején kék szalagcím. Célszerű ehhez az egy előfizetés egyszerre, mert ez a szint, ahol az új árképzési modellt kell megoldania.
@@ -71,11 +70,30 @@ Nincs másik változtatást Naplóelemzési vagy magasabb költségű régiókba
 
 ## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Új árképzési modellt és az Operations Management Suite előfizetés jogosultságok
 
-Az ügyfelek, akik vásárolt a Microsoft Operations Management Suite E1 és E2 jogosultak a csomópont adatok adatfeldolgozást jogosultságok beállítása / [Naplóelemzési](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) és [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans). Ezeket a jogosultságokat a Naplóelemzési munkaterület vagy az Application Insights fogadásához erőforrásokhoz egy adott előfizetésben, hogy előfizetéshez tartozó fizetési modell az előre-április 2018 árképzési modellt kell maradnia. Ez hol érhetők el a Log Analyticshez "Csomópontonként (OMS)" tarifacsomag és az Application Insights "Vállalati" díjszabások. A szervezet által megvásárolt csomagban csomópontok számától függően néhány az új árképzési modellt előfizetések továbbra is előnyös lehet áthelyezését. De ehhez az alapos megfontolás szükséges.
+Az ügyfelek, akik vásárolt a Microsoft Operations Management Suite E1 és E2 jogosultak a csomópont adatok adatfeldolgozást jogosultságok beállítása [Naplóelemzési](https://www.microsoft.com/cloud-platform/operations-management-suite) és [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans). A Naplóelemzési munkaterület vagy az Application Insights-erőforrások ezeket a jogosultságokat kap, a megadott előfizetés: 
+
+- Az előfizetés árképzési modellt a előtti. április 2018 modellben kell maradnia.
+- Napló Analytics munkaterületek használja a "csomópontonként (OMS)" IP-címek.
+- Application Insights-erőforrások használja a "Vállalati" árképzési terv.
+
+A szervezet által megvásárolt, csomagban csomópontok számától függően néhány áthelyezni az új árképzési modellt előfizetések előnyös lehet, de ehhez alapos megfontolás szükséges. Általában tanácsos egyszerűen a fent leírt módon előtti-április 2018 modell maradnak.
+
+> [!WARNING]
+> Ha a szervezet megvásárolja a Microsoft Operations Management Suite E1 és E2, általában célszerű megtartani az előfizetések a előtti-április 2018 árképzési modellt. 
+>
 
 ## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Ha az új árképzési modellt áthelyezendő változások
 
-Előfizetés helyezi át az új árképzési modellt fogja módosítani a tarifacsomag az egyes Naplóelemzési új / GB-os réteget, és hogy elmozdul-e bármely (hívott "pergb2018" az Azure Resource Manager). Az áthelyezés is módosul Application Insights-erőforrások vállalati tervben az alapszintű csomag. Költség becslése eredő ezeket a módosításokat jeleníti meg.
+Az új árképzési modellt egyszerűbbé teszi a Naplóelemzési és az Application Insights árképzési beállítások csak egyetlen réteg (vagy terv). Előfizetés helyezi át az új árképzési modellt lesz:
+
+- Ez a tarifacsomag módosítása minden Naplóelemzési új / GB-os réteghez (úgynevezett "pergb2018" az Azure Resource Manager)
+- A vállalati terv bármely Application Insights-erőforrások az alapszintű csomag értékre módosul.
+
+Költség becslése eredő ezeket a módosításokat jeleníti meg.
+
+> [!WARNING]
+> Fontos megjegyzés: Ha használhatja az Azure Resource Manager vagy a PowerShell telepítése Itt [Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) vagy [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) egy előfizetésben, hogy áttelepítette az új árképzési modellt. Ha adja meg a "pergb2018" eltérő árképzési szint/terv Naplóelemzési vagy a "Basic" Application Insights, nem pedig a megadása érvénytelen árképzési szint/tervet, mert a telepítés sikeres lesz **, de csak az érvényes fogja használni árképzési szint/terv**. 
+>
 
 ## <a name="moving-to-the-new-pricing-model"></a>Az új árképzési modellt áthelyezése
 

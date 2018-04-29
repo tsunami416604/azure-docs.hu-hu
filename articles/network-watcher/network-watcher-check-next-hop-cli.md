@@ -1,11 +1,11 @@
 ---
-title: "Következő Ugrás az Azure hálózati figyelő következő ugrás - Azure CLI 2.0 található |} Microsoft Docs"
-description: "Ez a cikk leírja, hogyan megtalálhatja a következő ugrás típusa van, és használó Azure parancssori felület használatával, a következő ugrás IP-cím."
+title: Következő Ugrás az Azure hálózati figyelő következő ugrás - Azure CLI 2.0 található |} Microsoft Docs
+description: Ez a cikk leírja, hogyan megtalálhatja a következő ugrás típusa van, és használó Azure parancssori felület használatával, a következő ugrás IP-cím.
 services: network-watcher
 documentationcenter: na
 author: georgewallace
 manager: jimdial
-editor: 
+editor: ''
 ms.assetid: 0700c274-3e0d-4dca-acfa-3ceac8990613
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 873bd0f8c98cfa67c77841df8aa53eb2b895cd54
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Megtudhatja, milyen a következő ugrás típusa van a következő ugrás funkció használatát az Azure CLI 2.0 verziót használja Azure hálózati figyelőt
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/09/2018
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
-> - [Azure REST API](network-watcher-check-next-hop-rest.md)
+> - [Az Azure REST API-n](network-watcher-check-next-hop-rest.md)
 
 Következő ugrás csak a hálózati figyelő, amely a képességét get biztosít, a következő ugrás típusa és az IP-cím a megadott virtuális gép alapján. Ez a szolgáltatás akkor hasznos, meghatározni, hogy ha egy virtuális gép elhagyó forgalomra halad át egy átjárót, az interneten vagy a virtuális hálózatok a cél eléréséhez.
 
@@ -82,7 +82,7 @@ Az alábbi listában a jelenleg rendelkezésre álló NextHopType értékeket mu
 * VnetLocal
 * HyperNetGateway
 * VnetPeering
-* Nincs
+* None
 
 ## <a name="next-steps"></a>További lépések
 

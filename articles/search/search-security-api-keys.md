@@ -10,11 +10,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: heidist
-ms.openlocfilehash: 83a082eb7a18c65a5824bf272e0397b18883277f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 4215795b7cd2a25427a3ce9b3cde16bfc69cb009
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Hozzon létre és api-kulcsok az Azure Search szolgáltatás kezelése
 
@@ -27,7 +27,7 @@ A keresési szolgáltatás eléréséhez használt kulcsok kétféle: admin (olv
 |Kulcs|Leírás|Korlátok|  
 |---------|-----------------|------------|  
 |Adminisztratív körzet|Teljes körű jogosultságot biztosít az összes művelethez, beleértve a szolgáltatás kezelése létrehozása, és törölje az indexek, az indexelők és az adatforrások.<br /><br /> Két adminisztrációs kulcsok, néven *elsődleges* és *másodlagos* kulcsok a portálon jönnek létre, ha a szolgáltatás jön létre, és az igény szerinti külön-külön újragenerálása. A két kulcs lehetővé teszi egy kulcs váltása a második kulcs használatakor a szolgáltatás folyamatos elérésére.<br /><br /> Adminisztrációs kulcsok csak HTTP-kérelmek fejléceinek vannak megadva. Az egy URL-cím nem helyezhető el egy adminisztrációs api-kulcsot.|Legfeljebb 2-szolgáltatás|  
-|Lekérdezés|Csak olvasható hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások számára.<br /><br /> Lekérdezési kulcsok igény szerint jönnek létre. Létrehozhat őket manuálisan a portálon vagy programozottan keresztül a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Lekérdezési kulcsok a keresés, a javaslat, vagy a keresési művelet HTTP-kérelem fejléc adható meg. Másik lehetőségként átadhatók egy lekérdezési kulcsot paraméterként egy URL-címen. Attól függően, hogy az ügyfélalkalmazás formulates a kérelmet akkor valószínűleg egyszerűbb felelt meg a kulcsot a lekérdezési paramétert:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01&api-key=A8DA81E03F809FE166ADDB183E9ED84D`|50-szolgáltatás|  
+|Lekérdezés|Csak olvasható hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások számára.<br /><br /> Lekérdezési kulcsok igény szerint jönnek létre. Létrehozhat őket manuálisan a portálon vagy programozottan keresztül a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Lekérdezési kulcsok a keresés, a javaslat, vagy a keresési művelet HTTP-kérelem fejléc adható meg. Másik lehetőségként átadhatók egy lekérdezési kulcsot paraméterként egy URL-címen. Attól függően, hogy az ügyfélalkalmazás formulates a kérelmet akkor valószínűleg egyszerűbb felelt meg a kulcsot a lekérdezési paramétert:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11&api-key=[query key]`|50-szolgáltatás|  
 
  Nincs vizuálisan, egy adminisztrációs kulcsot vagy a lekérdezési kulcs közötti különbség. Mindkét kulcsai 32 véletlenszerűen álló karakterláncok generált alfanumerikus karakter. Ha elveszti nyomon milyen kulcs van megadva az alkalmazásban, akkor [ellenőrizze a portálon értékek](https://portal.azure.com) , vagy használja a [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) adhatja vissza az értéket és a kulcs típusa.  
 

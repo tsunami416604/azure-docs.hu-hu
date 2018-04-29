@@ -1,22 +1,22 @@
 ---
-title: "Az Azure-beli hely forgalom érvényességének alapú szolgáltatások |} Microsoft Docs"
-description: "További tudnivalók a forgalmat az Azure-beli hely lefedettségének Hídképzéssel alapú szolgáltatások"
+title: Az Azure-beli hely forgalom érvényességének alapú szolgáltatások |} Microsoft Docs
+description: További tudnivalók a forgalmat az Azure-beli hely lefedettségének Hídképzéssel alapú szolgáltatások
 services: location-based-services
-keywords: 
+keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 251c736e0f607ffeea144639f437900eb337b6ea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6d061d5b1100051a2a06e838dc16912119efb6c9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-location-based-services---traffic-coverage"></a>Azure-beli hely alapú szolgáltatások - forgalom érvényességének
 
@@ -31,6 +31,7 @@ Azure hely-alapú szolgáltatásokhoz (LBS) gazdag forgalmi információk megism
 |Bahrein     |         |✓         |
 |Belgium     |✓         |✓         |
 |Brazília     |✓         |✓         |
+|Bulgária     |✓         |✓         |
 |Kanada     |✓         |✓         |
 |Chile     |✓         |✓         |
 |Kolumbia      |         |✓         |

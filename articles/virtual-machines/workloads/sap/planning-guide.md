@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cd12808f7e3bbb8a4edfe0d8de1e5b0a007770a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c2c3443f014f6c42ba9e8b68b21c2b9d0fdb1549
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -236,7 +236,7 @@ ms.lasthandoff: 04/05/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -292,7 +292,7 @@ ms.lasthandoff: 04/05/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -602,7 +602,7 @@ Azure Storage-ról további információt itt található:
 * <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>
 * <https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview.aspx>
 
-#### <a name="azure-standard-storage"></a>Azure Standard Storage
+#### <a name="azure-standard-storage"></a>Az Azure standard szintű tárolót
 Azure standard szintű tárolást volt a tároló típusa szerinti elérhető Azure IaaS kiadásakor. Nem voltak IOPS kvóta egyetlen lemezenként. Tapasztalt késést nem volt ugyanahhoz az osztályhoz tartozik, például a helyben tárolt csúcskategóriás SAP rendszerek általában telepített SAN/NAS-eszközökön. Ettől függetlenül az Azure standard szintű tárolást bizonyult elegendő-e több száz SAP rendszerek időközben telepítve az Azure-ban.
 
 A szabványos Azure Storage-fiókok tárolt lemezek van szó, a tényleges tárolt adatokat, a storage-tranzakció, a kimenő adatátviteli és a redundancia beállítást a kiválasztott kötet alapján. Sok, a maximális 1TB méretű is létrehozható, de mindaddig, amíg azok továbbra is üres használata díjmentes. Ezután töltse ki egy virtuális Merevlemezt 100GB, ha van szó, 100GB tárolására, nem pedig a VHD-t a készült névleges méretét.
@@ -966,7 +966,7 @@ Ebben az esetben szeretnénk töltse fel a virtuális Merevlemezt, vagy anélkü
 
 **PowerShell**
 
-* Jelentkezzen be előfizetés *Login-AzureRmAccount*
+* Jelentkezzen be előfizetés *Connect-AzureRmAccount*
 * Az előfizetés és a környezet beállításához *Set-AzureRmContext* és előfizetés-azonosító paramétert vagy SubscriptionName - lásd: <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
 * A virtuális merevlemez feltöltése *Add-AzureRmVhd* egy Azure Storage-fiók – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
 * (Választható) Hozhat létre egy felügyelt lemezt a virtuális Merevlemezt *New-AzureRmDisk* -lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk>
@@ -993,7 +993,7 @@ Ebben az esetben szeretnénk töltse fel a virtuális Merevlemezt, vagy anélkü
 Egy meglévő virtuális vagy virtuális merevlemez feltöltése a helyi hálózatról történő használatához azt egy Azure Virtuálisgép-lemezkép egy virtuális gép vagy VHD-t kell fejezetben felsorolt követelményeknek [specifikus képének a virtuális gépek telepítése az SAP-előkészítése] [ planning-guide-5.2.2] ebben a dokumentumban.
 
 * Használja *sysprep* Windows vagy *waagent-deprovision* tekintse meg a VM - általánosítja Linux [Sysprep műszaki útmutatója](https://technet.microsoft.com/library/cc766049.aspx) Windows vagy [rögzítése egy Linux virtuális gép használata erőforrás-kezelő sablonként] [ capture-image-linux-step-2-create-vm-image] Linux
-* Jelentkezzen be előfizetés *Login-AzureRmAccount*
+* Jelentkezzen be előfizetés *Connect-AzureRmAccount*
 * Az előfizetés és a környezet beállításához *Set-AzureRmContext* és előfizetés-azonosító paramétert vagy SubscriptionName - lásd: <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
 * A virtuális merevlemez feltöltése *Add-AzureRmVhd* egy Azure Storage-fiók – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
 * (Választható) Hozzon létre egy felügyelt lemezképet a virtuális merevlemez *New-AzureRmImage* -lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage>
@@ -1096,7 +1096,7 @@ Azure CLI segítségével másolja a virtuális merevlemez, ahogy az [Ez a cikk]
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
 ```
 
-##### <a name="azure-storage-tools"></a>Azure Storage tools
+##### <a name="azure-storage-tools"></a>Az Azure Storage-eszközök
 * <http://storageexplorer.com/>
 
 Azure Tártallózók Professional kiadása itt található:

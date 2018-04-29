@@ -1,18 +1,18 @@
 ---
-title: "Az Azure tároló beállításjegyzék webhook adatbázisséma hivatkozása"
-description: "Webhook kérelem JSON hasznos referencia az Azure-tároló beállításjegyzék."
+title: Az Azure tároló beállításjegyzék webhook adatbázisséma hivatkozása
+description: Webhook kérelem JSON hasznos referencia az Azure-tároló beállításjegyzék.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: 84f0277a7b1a5bd7dfe2178f78f34140b1dd2642
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Az Azure tároló beállításjegyzék webhook referencia
 
@@ -46,7 +46,7 @@ A tároló-lemezkép a rendszer előkészítésre továbbít egy tárház által
 |`timestamp`|DateTime|Az az idő, ahol a webhook esemény lett elindítva.|
 |`action`|Karakterlánc|A webhook eseményt kiváltó művelet.|
 |[cél](#target)|Összetett típus|A webhook eseményt kiváltó esemény célját.|
-|[kérelem](#request)|Összetett típus|A kérelem a webhook eseményt létrehozó.|
+|[Kérelem](#request)|Összetett típus|A kérelem a webhook eseményt létrehozó.|
 
 ### <a name="target"></a>cél
 
@@ -110,9 +110,9 @@ A Webhook kiváltva, ha a tárház vagy jegyzékfájl törlődik. Nem indulnak e
 |`timestamp`|DateTime|Az az idő, ahol a webhook esemény lett elindítva.|
 |`action`|Karakterlánc|A webhook eseményt kiváltó művelet.|
 |[cél](#delete_target)|Összetett típus|A webhook eseményt kiváltó esemény célját.|
-|[kérelem](#delete_request)|Összetett típus|A kérelem a webhook eseményt létrehozó.|
+|[Kérelem](#delete_request)|Összetett típus|A kérelem a webhook eseményt létrehozó.|
 
-### <a name="delete_target"></a>cél
+### <a name="delete_target"></a> cél
 
 |Elem|Típus|Leírás|
 |------------------|----------|-----------|
@@ -120,7 +120,7 @@ A Webhook kiváltva, ha a tárház vagy jegyzékfájl törlődik. Nem indulnak e
 |`digest`|Karakterlánc|A kivonatoló a tartalom határozzák meg a beállításjegyzék V2 HTTP API-specifikációnak.|
 |`repository`|Karakterlánc|A tárház nevét.|
 
-### <a name="delete_request"></a>kérelem
+### <a name="delete_request"></a> Kérelem
 
 |Elem|Típus|Leírás|
 |------------------|----------|-----------|
@@ -160,6 +160,6 @@ az acr repository delete -n MyRegistry --repository MyRepository
 az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --manifest
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure-tároló beállításjegyzék webhookok használatával](container-registry-webhook.md)

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="traffic-analytics"></a>Forgalom elemzés
+# <a name="traffic-analytics"></a>Traffic Analytics
 
 Forgalom analytics egy felhőalapú megoldás, amely felhőalapú hálózatokhoz a felhasználói és alkalmazás tevékenységek láthatósága. Forgalom elemzés elemzi a hálózati figyelőt hálózati biztonsági csoport (NSG) folyamat bejegyzéseit, amelyek a forgalom áramlását az Azure felhőben betekintést. A forgalom analytics segítségével:
 
@@ -42,7 +42,7 @@ Egy Azure virtuális hálózatot rendelkezik ismertetik, hogy érkező NSG folya
 - **Hálózati biztonsági csoport (NSG) folyamat naplók**: bemenő és kimenő IP-forgalom a hálózati biztonsági csoportok használatával kapcsolatos információk megtekintéséhez. NSG folyamata naplók json formátumban vannak megírva, és megjelenítése a kimenő és bejövő adatfolyamok / szabály alapján, a hálózati adapter a folyamat vonatkozik, 5 rekordos információ a folyamattal (forrás vagy a cél IP-cím forrás vagy a cél-port és protokoll), és ha a forgalom engedélyezve lett, vagy megtagadva. NSG folyamata naplók kapcsolatos további információkért lásd: [NSG folyamata naplók](network-watcher-nsg-flow-logging-overview.md).
 - **Naplófájl Analytics**: Azure szolgáltatás, amely figyelési adatokat gyűjt, és tárolja az adatok egy központi tárházban. Ezek az adatok tartalmazhatnak eseményeket, teljesítményadatokat vagy egyéni adatok az Azure API-n keresztül megadott. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Például a hálózati teljesítmény figyelése és a forgalom analytics alapjaként Naplóelemzési használatával készített alkalmazások figyelése. További információkért lásd: [analytics jelentkezzen](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **A naplóelemzési munkaterület jelentkezzen**: naplóelemzési, egy Azure-fiókra vonatkozó adatok tárolására példánya. Napló analytics munkaterületekkel kapcsolatos további információkért lásd: [Naplóelemzési munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Hálózati figyelő**: egy regionális szolgáltatás, amely lehetővé teszi, hogy figyelése és diagnosztizálása egy Azure hálózati forgatókönyv szintjén feltételek. Ha bekapcsolja NSG folyamata naplók be- és kikapcsolását és a hálózati figyelőt. További információkért lásd: [hálózati figyelőt](network-watcher-monitoring-overview.md#network-watcher).
+- **Hálózati figyelő**: egy regionális szolgáltatás, amely lehetővé teszi, hogy figyelése és diagnosztizálása egy Azure hálózati forgatókönyv szintjén feltételek. Ha bekapcsolja NSG folyamata naplók be- és kikapcsolását és a hálózati figyelőt. További információkért lásd: [hálózati figyelőt](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Hogyan működik a forgalom elemzés 
 

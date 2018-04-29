@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3d8a4ddd98086252f36eeb7034248e909fec1ac0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-token-reference"></a>Az Azure AD-jogkivonatok referenciájából
-Azure Active Directory (Azure AD) bocsát ki biztonsági jogkivonatainak feldolgozása minden hitelesítési folyamat során számos különböző. Ez a dokumentum ismerteti a formátumát, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát.
+Azure Active Directory (Azure AD) bocsát ki biztonsági jogkivonatainak feldolgozása minden hitelesítési folyamat során számos különböző. Ez a dokumentum ismerteti a formátumát, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát. 
 
 ## <a name="types-of-tokens"></a>A jogkivonatok típusok
 Az Azure AD által támogatott a [OAuth 2.0 protokoll](active-directory-protocols-oauth-code.md), amely él access_tokens és refresh_tokens is.  Azt is támogatja a hitelesítést és -bejelentkezés keresztül [OpenID Connect](active-directory-protocols-openid-connect-code.md), amely bevezet egy harmadik típusú jogkivonatot, a id_token.  Ezeket a jogkivonatokat mindegyikének "tulajdonosi jogkivonattal" értéke jelöli.
@@ -52,7 +52,6 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 > [!div class="mx-codeBreakAll"]
 | JWT jogcím | Name (Név) | Leírás |
 | --- | --- | --- |
-| `appid` |Alkalmazásazonosító |Határozza meg az alkalmazást a token által használt erőforrások eléréséhez. Az alkalmazás működhet-e saját magát vagy egy felhasználó nevében. Az Alkalmazásazonosító általában egy alkalmazás az objektumot határozza meg, de a szolgáltatás egyszerű objektum az az Azure ad-ben is jelenthet. <br><br> **Példaérték JWT**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
 | `aud` |Célközönség |A jogkivonat az illetékes címzett. Az alkalmazást, amely megkapja a jogkivonatot kell győződjön meg arról, hogy a célközönség értéke megfelelő-e, és utasítsa el a szükséges jogkivonatokhoz, egy másik célközönség számára készült. <br><br> **Példa SAML érték**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **Példaérték JWT**: <br> `"aud":"https://contoso.com"` |
 | `appidacr` |Alkalmazás hitelesítési környezeti osztályait ismertető dokumentációban |Azt jelzi, hogy az ügyfelek hitelesítésének módját. Egy nyilvános ügyfél értéke 0. Ügyfél-azonosító és a titkos ügyfélkódot használata esetén a értéke 1. <br><br> **Példaérték JWT**: <br> `"appidacr": "0"` |
 | `acr` |Hitelesítési környezeti osztályait ismertető dokumentációban |Azt jelzi, hogyan a tulajdonos hitelesített, az ügyfél számára az alkalmazás hitelesítési környezeti osztályait ismertető dokumentációban jogcím szemben. A "0" érték azt jelzi, hogy a végfelhasználói hitelesítési nem felelt meg az ISO/IEC 29115 követelményeinek. <br><br> **Példaérték JWT**: <br> `"acr": "0"` |
@@ -163,9 +162,8 @@ Frissítési jogkivonatok érvénytelenítve, vagy bármikor, számos okból vis
   * Akaratlan jelszómódosítás: Ha a rendszergazda kényszeríti a felhasználót, hogy módosítania kell a jelszavát, vagy visszaállítja azt, majd a felhasználói jogkivonatokhoz érvénytelenné válnak ha volt elérni a használatával a jelszavát.  Tekintse meg a kivételek az alábbi megjegyzésekben. 
   * Biztonság megsértése: (Pl. a jelszavak a helyi tárolójába megszegése) biztonsági problémák esetén a rendszergazdának vissza tudja vonni a frissítési jogkivonatokat jelenleg kiadott összes.  Ezzel kikényszeríti a minden felhasználó számára újra hitelesíteni. 
 
-Megjegyzés: 
-
-Ha a hitelesítési módszer nem jelszó nem használható (a Windows Hello-, a hitelesítő alkalmazása, például egy oldallal vagy az ujjlenyomat biometria) a token eléréséhez, a jelszó módosítása nem kényszeríti a felhasználónak újra hitelesíteni (de ez arra kényszeríti a hitelesítő alkalmazás újra hitelesíteni).  Ez azért, mert a kiválasztott hitelesítési bemeneti (a arc, pl.) nem változott, és ezért használható újra újra hitelesíteni.
+> [!NOTE]
+>Ha a hitelesítési módszer nem jelszó nem használható (a Windows Hello-, a hitelesítő alkalmazása, például egy oldallal vagy az ujjlenyomat biometria) a token eléréséhez, a jelszó módosítása nem kényszeríti a felhasználónak újra hitelesíteni (de ez arra kényszeríti a hitelesítő alkalmazás újra hitelesíteni).  Ez azért, mert a kiválasztott hitelesítési bemeneti (a arc, pl.) nem változott, és ezért használható újra újra hitelesíteni.
 
 ## <a name="sample-tokens"></a>A minta jogkivonatok
 

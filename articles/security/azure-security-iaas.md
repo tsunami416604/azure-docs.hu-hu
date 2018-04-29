@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a6d6e0b7ea844f0a4d60ae7a157ac76dc8bdb8f8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások az Azure IaaS munkaterhelések
 
@@ -52,7 +52,7 @@ A múltban a hálózati szegélyhálózati használt vállalati adatok hozzáfé
 
 A legtöbb előnyös lépéseket, amelyek egy fiók biztonságos egyik kéttényezős hitelesítést. Kéttényezős hitelesítés módja a hitelesítő valami mellett jelszó használatával. Segít mérsékelni valaki más jelszó segítségével kezeli, aki hozzáféréssel.
 
-[Az Azure multi-factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) segítségével megakadályozhatja a adatokhoz és alkalmazásokhoz való hozzáférés mellett egyszerű bejelentkezési folyamatot a felhasználó igény szerint. Egyszerű hitelesítési beállítások – a telefonhívás, szöveges üzenetet vagy mobilalkalmazásban megjelenő értesítést számos erős hitelesítés biztosítja. Előnyben részesített módszere a felhasználók megadhatják.
+[Az Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) segítségével megakadályozhatja a adatokhoz és alkalmazásokhoz való hozzáférés mellett egyszerű bejelentkezési folyamatot a felhasználó igény szerint. Egyszerű hitelesítési beállítások – a telefonhívás, szöveges üzenetet vagy mobilalkalmazásban megjelenő értesítést számos erős hitelesítés biztosítja. Előnyben részesített módszere a felhasználók megadhatják.
 
 Többtényezős hitelesítés használatára legegyszerűbb módja a Microsoft Authenticator mobilalkalmazás használható a Windows, iOS és Android rendszerű mobileszközök. A legújabb kiadásra frissüljön a Windows 10 és a helyszíni Active Directory, az Azure Active Directoryval (Azure AD) integrálása [vállalati Windows Hello](../active-directory/active-directory-azureadjoin-passport-deployment.md) használhat a zökkenőmentes egyszeri bejelentkezés az Azure-erőforrások. Ebben az esetben a Windows 10-es eszközök használatos a második tényezőként a hitelesítéshez.
 
@@ -118,7 +118,7 @@ Másik lehetőségként használhatja a [pont-pont](../vpn-gateway/vpn-gateway-h
 >[!NOTE]
 >Bármelyik VPN-beállítás segítségével konfigurálja újra az ACL-ek az NSG-ket nem való hozzáférés engedélyezése a felügyeleti végpontok az internetről.
 
-Érdemes fontolóra veheti, hogy egy másik lehetőség egy [távoli asztali átjáró](../multi-factor-authentication/multi-factor-authentication-get-started-server-rdg.md) központi telepítés. A központi telepítés segítségével biztonságosan csatlakozzon a távoli asztal-kiszolgálók a HTTPS PROTOKOLLOKON keresztül közben részletesebb vezérlők alkalmazása az ezeket a kapcsolatokat.
+Érdemes fontolóra veheti, hogy egy másik lehetőség egy [távoli asztali átjáró](../active-directory/authentication/howto-mfaserver-nps-rdg.md) központi telepítés. A központi telepítés segítségével biztonságosan csatlakozzon a távoli asztal-kiszolgálók a HTTPS PROTOKOLLOKON keresztül közben részletesebb vezérlők alkalmazása az ezeket a kapcsolatokat.
 
 Felvenni rendelkezik elérésére funkciókat:
 
@@ -166,7 +166,7 @@ Azure IaaS összes virtuális gépnek kell megerősítve, így csak a telepítet
 
 Security Compliance Manager ingyenes. Használhatja a gyors konfigurálásához és a asztalok, a hagyományos adatközpontok és a privát és nyilvános felhő kezelése csoportházirend és a System Center Configuration Manager használatával.
 
-Security Compliance Manager házirendek kész a központi telepítése és ellenőrzi a Szükségeskonfiguráció-kezelési konfigurációs csomagok biztosít. Ezek alaptervek alapuló [Microsoft biztonsági útmutatói](https://technet.microsoft.com/en-us/library/cc184906.aspx) javaslatok és az iparág ajánlott eljárások. Ezek segítségével kezelheti a konfigurációs eltéréseket, cím megfelelőségi követelményeket, és a biztonsági kockázatok csökkentése.
+Security Compliance Manager házirendek kész a központi telepítése és ellenőrzi a Szükségeskonfiguráció-kezelési konfigurációs csomagok biztosít. Ezek alaptervek alapuló [Microsoft biztonsági útmutatói](https://technet.microsoft.com/library/cc184906.aspx) javaslatok és az iparág ajánlott eljárások. Ezek segítségével kezelheti a konfigurációs eltéréseket, cím megfelelőségi követelményeket, és a biztonsági kockázatok csökkentése.
 
 Security Compliance Manager segítségével importálja a jelenlegi konfigurációt a számítógépek két különböző módszer használatával. Először az Active Directory-alapú csoportházirendek importálhatja. Második, "arany főkiszolgáló" konfigurációs importálhatja a referencia-számítógép a [LocalGPO eszköz](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) biztonsági mentése a helyi csoportházirend. Importálhatja a helyi csoportházirend Security Compliance Manager.
 

@@ -62,7 +62,7 @@
 ### [Diagnosztikai irányelvek](notification-hubs-push-notification-fixer.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=notification-hubs)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=notification-hubs)
 ## [Azure PowerShell](/powershell/module/azurerm.notificationhubs)
 ## [.NET](/dotnet/api/microsoft.azure.notificationhubs)
 ## [REST](/rest/api/notificationhubs)

@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 3bbcf7b637a0f32751dc15664a1b7479e65503eb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 909b53e65fd893575a944d714f99698c7e45387d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Az oszlopcentrikus maximalizálva sorcsoport minősége
 
@@ -34,7 +34,7 @@ A tömeges betöltés vagy oszlopcentrikus index rebuild, során néha nincs el�
 
 Ha nincs elég memória a legalább 10 000 sorok tömörítése minden sorcsoport, az SQL Data Warehouse hibát generál.
 
-További információ a tömeges betöltés: [fürtözött oszlopcentrikus index a tömeges betöltés](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+További információ a tömeges betöltés: [fürtözött oszlopcentrikus index a tömeges betöltés](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Sorcsoport minőségi figyelése
 

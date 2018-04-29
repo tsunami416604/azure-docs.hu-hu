@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 1399455fb727c27e22da8c5525eec87e343d46cc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 798af75625e0d2fed1220932c172683fe71f9aad
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure-figyelővel képernyő adat-előállítók  
 Sok áthelyezése alkotórészek összetettek a felhőalapú alkalmazásokhoz. Győződjön meg arról, hogy az alkalmazás marad be adatokat, és megfelelő állapotban fut figyelés nyújt. Emellett segít, hogy ki a lehetséges problémák stave és a múltbeli kiépítettektől eltérő hibakeresést. Figyelési adatok segítségével emellett az alkalmazással kapcsolatos átfogó megismerésében. Ennek az információnak a segítséget nyújtanak az alkalmazások teljesítményének vagy karbantartási követelmények, vagy a, amelyek egyébként kézi beavatkozás műveletek automatizálására.
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[További információk itt](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
+[További információk itt](https://msdn.microsoft.com/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>A naplók és események séma
 
@@ -387,7 +387,7 @@ Azure figyelő címinfrastruktúra megjelenítési lehetőségeinek a teljesítm
 
 ADFV2 bocsát ki a következő metrikák
 
-| **Metrika**           | **Metrika megjelenített neve**         | **Unit** | **Aggregáció típusa** | **Leírás**                                       |
+| **Metrika**           | **Metrika megjelenített neve**         | **egység** | **Aggregáció típusa** | **Leírás**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | Sikerült a folyamat fut metrikák | Darabszám    | Összes                | Teljes folyamatok futtatása sikeres egy perc időszakban |
 | PipelineFailedRuns   | Nem sikerült a folyamat fut metrikák    | Darabszám    | Összes                | Teljes folyamatok futtatása sikertelen egy perc időszakban    |

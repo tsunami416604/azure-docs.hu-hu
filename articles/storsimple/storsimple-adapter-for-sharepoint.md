@@ -1,11 +1,11 @@
 ---
-title: "StorSimple-Adapter telepítése a SharePoint |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet telepíteni és konfigurálni, vagy távolítsa el a StorSimple-adaptert a SharePoint, a SharePoint-kiszolgálófarm."
+title: StorSimple-Adapter telepítése a SharePoint |} Microsoft Docs
+description: Ismerteti, hogyan lehet telepíteni és konfigurálni, vagy távolítsa el a StorSimple-adaptert a SharePoint, a SharePoint-kiszolgálófarm.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
 ms.service: storsimple
 ms.devlang: NA
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 8910471e09b9ecc797005818538ccfc6a91c68a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Telepítse és konfigurálja a StorSimple-adaptert a SharePoint
 ## <a name="overview"></a>Áttekintés
@@ -252,7 +252,7 @@ A Blobok helyezze vissza az SQL Server tartalom-adatbázisok használata után a
 1. Nyissa meg a Vezérlőpultot, és kattintson **programok és szolgáltatások**.
 2. Válassza ki **SharePoint StorSimple adaptert**, és kattintson a **Eltávolítás**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További információ a StorSimple](storsimple-overview.md).
 
 <!--Reference links-->
@@ -261,4 +261,4 @@ A Blobok helyezze vissza az SQL Server tartalom-adatbázisok használata után a
 [3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/en-us/library/ff943565.aspx
+[8]: https://technet.microsoft.com/library/ff943565.aspx

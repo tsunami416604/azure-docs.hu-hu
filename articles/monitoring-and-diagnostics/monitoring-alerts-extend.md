@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: 445adb7f57332a285494c744763f633806d2675e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 54ec12f24ddbad6227a306aeae86658807f85b4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Terjessze ki (Másolás) riasztások a OMS-portálon az Azure
 Az Operations Management Suite (OMS) portál csak a Log Analyticshez riasztásokat jeleníti meg.  Az új riasztások felületet most integrálva van a riasztási élmény különböző szolgáltatások és a Microsoft Azure-része. Az új felület érhető el, **riasztások** Azure figyelése az Azure-ban a portál tartalmazza napló tevékenységriasztásokat, a metrika riasztások és a napló riasztások Naplóelemzés és az Application Insights. 
@@ -43,7 +43,7 @@ Naplóelemzési munkaterület riasztások Azure kiterjeszti az beszerzése ütem
  ![Ütemezett időszak alatt a riasztások átirányítja az Azure-bA felhasználói művelet](./media/monitor-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
-> Riasztások kiterjedő OMS-portálon az Azure-ba nem kerül sor, és Azure használatát riasztásainak lekérdezés alapú Naplóelemzési riasztások alapján nem számlázzuk, korlátozások és feltételek, mint a belül használatakor [házirend árképzési Azure-figyelő](https://azure.microsoft.com/en-us/pricing/details/monitor/)  
+> Riasztások kiterjedő OMS-portálon az Azure-ba nem kerül sor, és Azure használatát riasztásainak lekérdezés alapú Naplóelemzési riasztások alapján nem számlázzuk, korlátozások és feltételek, mint a belül használatakor [házirend árképzési Azure-figyelő](https://azure.microsoft.com/pricing/details/monitor/)  
 
 Felhasználók élvezheti az előnyöket, amely a riasztást; Ez a dátum előtt által önkéntesen engedélyezés, hogy a riasztások kezelhető az Azure-ban.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 990abc5c4e546d72d093bcd9e8f37932e93cbeb4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c3d6ed2c011cc6be1098ae5e693ee6d904efaa3b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -151,7 +151,7 @@ Az alábbi táblázat a SNAT port preallocations háttér címkészletet méret�
 | 101-200 | 256 |
 | 201-400 | 128 |
 | 401-800 | 64 |
-| 801-1,000 | 32 |
+| 801-1000 | 32 |
 
 >[!NOTE]
 > A szabványos terheléselosztó használatakor [több frontends](load-balancer-multivip-overview.md), [minden előtérbeli IP-cím szorozza meg a rendelkezésre álló SNAT portok száma](#multivipsnat) az előző táblázatban. Például egy háttér címkészletet 50 virtuális gép 2 terheléselosztási szabályok, külön-külön előtérbeli IP-címek egy, a 2048 (2 x 1024-es) SNAT portok száma IP-konfigurációt fogja használni. A részletek megtekintéséhez [több frontends](#multife).
@@ -243,10 +243,11 @@ Ha egy NSG blokkolja az egészségügyi mintavételi kérelmeit a AZURE_LOADBALA
 
 ## <a name="limitations"></a>Korlátozások
 - DisableOutboundSnat nincs lehetőség egy terheléselosztási szabály portálon konfigurálásakor.  Ehelyett használja a többi, sablon vagy ügyfél eszközök.
+- Webes feldolgozói szerepkörök olyan virtuális hálózaton kívül is elérhetőnek lennie, csak egy belső szabványos terheléselosztó használata miatt a hogyan egyik mellékhatása előtti-VNet szolgáltatások függvény. Kell nem használ, ez a megfelelő szolgáltatást saját magát, vagy az alapul szolgáló platform értesítés nélkül változhatnak. Hogy mindig részlegnek feltételeznie kell létrehozásához szükséges kimenő kapcsolat explicit módon ha egy belső szabványos terheléselosztó csak használata esetén szükséges. 
 
 ## <a name="next-steps"></a>További lépések
 
 - További információ [terheléselosztó](load-balancer-overview.md).
-- További információ [szabványos terheléselosztó](load-balancer-standard-overview.md).
+- További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).
 - További információ [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
 - Ismerje meg, azzal kapcsolatban, a másik kulccsal [hálózati lehetőségeket](../networking/networking-overview.md) az Azure-ban.

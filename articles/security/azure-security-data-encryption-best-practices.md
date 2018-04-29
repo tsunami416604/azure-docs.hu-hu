@@ -3,8 +3,8 @@ title: Gyakorlati tanácsok a biztonsági adatok és a titkosítás |} Microsoft
 description: Ez a cikk számos gyakorlati tanácsok az adatok biztonságát, és a beépített titkosítási használata Azure-képességek.
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbalwin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 574ca8a68bf6e532331a4b6f1106e472c8ab0449
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure Data biztonsági és a titkosítás gyakorlati tanácsok
+
 A kulcsokat a felhőben az adatvédelem egyik elszámolása van a lehetséges állapotok az adatok akkor fordulhat elő, és milyen vezérlők érhetők el az adott állapotban. Céljából az Azure data biztonsági és a titkosítás gyakorlati tanácsok a javaslatok lesz körül állapotok a következő adatokat:
 
 * Nyugalmi: Ez magában foglalja a tárolási objektum, a tárolók és a fizikai adathordozó statikusan létező típusok kell azt mágneses vagy optikai lemez összes információt.
@@ -50,6 +51,7 @@ Az Azure data biztonsági és titkosítási gyakorlati tanácsokat cikkben emlí
 * Fájl szintű adatok titkosításának kényszerítése
 
 ## <a name="enforce-multi-factor-authentication"></a>Többtényezős hitelesítés kikényszerítéséhez
+
 Az első lépés az adatok elérése a Microsoft Azure-ban vezérlő pedig úgy, hogy hitelesíteni a felhasználót. [Az Azure multi-factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) csupán felhasználónévvel és jelszóval mint egy másik módszer használatával felhasználói identitás ellenőrzése módot. A hitelesítési módszer segítségével hozzáférés biztonságossá tételét adatokhoz és alkalmazásokhoz egyszerű bejelentkezési folyamatot a felhasználó igény szerint betartása mellett.
 
 A felhasználók számára az Azure MFA engedélyezésével ad hozzá egy második biztonsági réteggel felhasználói bejelentkezéseket és tranzakciókat. Ebben az esetben egy tranzakció lehetséges, hogy használja a dokumentum egy fájlkiszolgálón, vagy a SharePoint Online-ban található. Az Azure MFA is segít csökkenteni szeretné annak valószínűségét, egy sérült biztonságú hitelesítő adat rendelkezik-e a szervezet adataihoz való hozzáférés informatikai.
@@ -61,6 +63,7 @@ Olyan szervezeteknek, amelyek a hitelesítési vezérlő helyszíni megtartja eg
 További információ az Azure MFA, olvassa el a cikk [Ismerkedés az Azure multi-factor Authentication a felhőben](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Használjon szerepköralapú hozzáférés-vezérlést (RBAC)
+
 Alapuló hozzáférés korlátozása a [tudniuk kell, hogy](https://en.wikipedia.org/wiki/Need_to_know) és [legalacsonyabb jogosultsági szint](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági alapelveket. Ez elengedhetetlen a szervezeteknek, amelyek az adatok biztonsági házirendek kikényszerítéséhez. Azure szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyek hozzárendelése a felhasználók, csoportok és alkalmazások egy adott hatókörben. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást.
 
 Kihasználhatja [beépített RBAC-szerepkörök](../role-based-access-control/built-in-roles.md) felhasználók jogosultságok hozzárendelése az Azure-ban. Érdemes lehet *tárolási fiók közreműködői* a felhő üzemeltetői, amely szükséges a storage-fiókok kezelése és *klasszikus tárolási fiók közreműködői* szerepkör kezelése a klasszikus tárfiókokat. A felhő üzemeltetői, amelyet a virtuális gépek és a tárfiók kezelése, fontolja meg, hogy *virtuális gép közreműködő* szerepkör.
@@ -70,6 +73,7 @@ A szervezeteknek, amelyek kényszeríti ki a hozzáférés-vezérlés képesség
 További tudnivalók az Azure RBAC által a cikk elolvasása [átruházásához hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="encrypt-azure-virtual-machines"></a>Az Azure virtuális gépek titkosítása
+
 A legtöbb szervezet számára [adatok titkosítását](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) kötelező lépés adatvédelmi, a megfelelőség és az adatok közös joghatóság alá felé. Az Azure Disk Encryption lehetővé teszi, hogy a rendszergazdák számára a Windows és Linux rendszerű infrastruktúra-szolgáltatási virtuális gép (VM) lemezek titkosításához. Az Azure Disk Encryption használja. Ez az iparági szabványos BitLocker a Windows és a DM-crypt program segítségével a Linux operációs rendszer és az adatlemezek kötettitkosítást biztosít.
 
 Kihasználhatja az Azure Disk Encryption és megvédeni az adatok a szervezeti biztonsági és megfelelőségi követelmények teljesítéséhez segítségével. A szervezetek is figyelembe kell venni, titkosítással segítségével mérsékelhetik a kockázatokat jogosulatlan kapcsolatos adatok elérése. Ajánlott továbbá meghajtók számukra bizalmas adatok írása előtt a titkosítást.
@@ -125,6 +129,7 @@ Lehet, hogy adatbázis a blokkszintű titkosítás nem használó szervezetek jo
 További Erőforráscsoportoknál titkosításával kapcsolatos által a cikk elolvasása [átlátható adattitkosítást az Azure SQL Database](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx).
 
 ## <a name="protect-data-in-transit"></a>Adatok védelmére átvitel
+
 Az átvitel során az adatok védelme a data protection stratégia nagyon fontos részét kell lennie. Oda-vissza adatokat fog áthelyezése több helyről, mert az általános ajánlás az, hogy mindig SSL/TLS protokollokat használ az exchange-adatok különböző helyek között. Bizonyos esetekben érdemes lehet különítheti el a teljes kommunikációs csatornát a helyszíni és a felhő közötti virtuális magánhálózati (VPN) segítségével infrastruktúra.
 
 Az adatok áthelyezése a helyszíni infrastruktúra és az Azure között megfelelő védelmi funkciók, például a HTTPS- vagy VPN-érdemes lehet.
@@ -142,6 +147,7 @@ Adatok védelmére átvitel nem válaszoló szervezetek jobban ki vannak téve a
 További Azure VPN lehetőségekről a cikk olvasásával [tervezése és kialakítása VPN-átjáró](../vpn-gateway/vpn-gateway-plan-design.md).
 
 ## <a name="enforce-file-level-data-encryption"></a>Fájl szintű adatok titkosításának kényszerítése
+
 Amely növelheti az adatok biztonsági szint védelmi réteget titkosítja a fájlok, függetlenül a fájl helyét.
 
 [Az Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) titkosítási, identitáskezelési és engedélyezési házirendeket használ a fájlok és e-mailek biztonságossá. Több eszközön működik az Azure RMS-telefonokon, táblagépeken és számítógépeken megvédi a szervezeten belül, mind a szervezeten kívülről. Ez a lehetőség azért lehetséges, mert az Azure RMS biztosítja, ami az adatok maradnak, még akkor is, ha elhagyják a szervezet területét.

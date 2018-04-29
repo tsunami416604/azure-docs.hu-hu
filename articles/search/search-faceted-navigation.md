@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 1bd814250a243d03f1eedc4d0ecb2719975b9c6f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció, amely az alkalmazások keresése irányuló részletezési navigációs szűrési mechanizmus. A kifejezés "jellemzőalapú navigációs" ismeretlen, de Ön már valószínűleg használta. Ahogy az alábbi példában látható, jellemzőalapú navigációs értéke "Nothing" több mint eredmények szűréséhez kategóriákat.
@@ -61,7 +61,7 @@ Az alkalmazás kódjában a minta nem térjen vissza a jellemzőalapú navigáci
 
 ### <a name="query-basics"></a>Lekérdezés alapjai
 
-Az Azure Search, egy kérelem egy vagy több lekérdezési paraméterek keresztül megadott (lásd: [dokumentumok keresése](http://msdn.microsoft.com/library/azure/dn798927.aspx) minden egyes leírása). A lekérdezés-paraméterek egyike sem kötelező, de kell ahhoz, hogy a lekérdezés érvényes legyen, legalább egy.
+Az Azure Search, egy kérelem egy vagy több lekérdezési paraméterek keresztül megadott (lásd: [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) minden egyes leírása). A lekérdezés-paraméterek egyike sem kötelező, de kell ahhoz, hogy a lekérdezés érvényes legyen, legalább egy.
 
 Pontosság, megértettem, a lehetőség nem számít találatok sorrendekben legalább ezek a kifejezések egyike:
 
@@ -228,7 +228,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Egy dimenzió lekérdezési paraméter értéke egy mező, és attól függően, írja be az adatokat, is lehet további paraméterezni vesszővel tagolt listája, amely tartalmazza az `count:<integer>`, `sort:<>`, `interval:<integer>`, és `values:<list>`. Értékek listáját támogatott numerikus tartományok beállítása során. Lásd: [dokumentumok keresése (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) a használat részleteiről.
+Egy dimenzió lekérdezési paraméter értéke egy mező, és attól függően, írja be az adatokat, is lehet további paraméterezni vesszővel tagolt listája, amely tartalmazza az `count:<integer>`, `sort:<>`, `interval:<integer>`, és `values:<list>`. Értékek listáját támogatott numerikus tartományok beállítása során. Lásd: [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) a használat részleteiről.
 
 Értékkorlátozás, valamint a kérelem, az alkalmazás által megfogalmazott is összeállítsa-e úgy, hogy leszűkítheti jelölt dokumentumok értékkorlátozás értéke a kijelölés alapján. Egy kerékpárt Store jellemzőalapú navigációs biztosít keresik kérdésekre, például *érhetők el a milyen színek, gyártók és kerékpárt típusú?*. Szűrés kérdésekre ad választ például *hegyi kerékpárt, mely pontos kerékpárt piros, tartomány ár ezen?*. Kattintson a "Red" annak jelzésére, hogy megjelenjenek-e csak piros termékek, tartalmaz-e az alkalmazás a következő lekérdezés `$filter=Color eq ‘Red’`.
 
@@ -329,7 +329,7 @@ Címkék általában definiálják HTML vagy formátumban (`index.cshtml` a mint
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Szűrő alapján
-Értékkorlátozás értékek tartományok keresztül egy közös keresési alkalmazás követelményeinek. Tartományok numerikus adatokat és a dátum/idő értékek vannak támogatva. További kapcsolatos mindkét megközelítés a [dokumentumok keresése (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
+Értékkorlátozás értékek tartományok keresztül egy közös keresési alkalmazás követelményeinek. Tartományok numerikus adatokat és a dátum/idő értékek vannak támogatva. További kapcsolatos mindkét megközelítés a [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 Az Azure Search tartomány konstrukció két megközelítés biztosít a számítási tartomány egyszerűbbé teszi. Mindkét megközelítés az Azure Search hoz létre a megfelelő tartományokon a megadott bemeneti adatok megadott. Például ha megadja a tartomány értékének 10 |} 20 |} 30, automatikusan létrehozza a 0 – 10, 10-20, 20 – 30 tartományait. Az alkalmazás opcionálisan eltávolíthatja bármely intervallumok üres. 
 
@@ -362,7 +362,7 @@ Két olyan földrajzi funkció van az Azure Search **geo.distance** és **geo.in
 * A **geo.distance** függvény adja vissza kilométerben két pont között. Egy pont mező, másik megnevezése a szűrő egy konstans. 
 * A **geo.intersects** függvény igaz értéket ad vissza egy adott sokszögön belül egy adott pont esetén. A pont mező, a szűrő megnevezése koordináták állandó listáját a sokszög van megadva.
 
-A szűrő példák található [OData-kifejezésszintaxist (Azure Search)](http://msdn.microsoft.com/library/azure/dn798921.aspx).
+A szűrő példák található [OData-kifejezésszintaxist (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 <a name="tryitout"></a>
 
@@ -431,9 +431,9 @@ További áttekinthetik a jellemzőalapú navigáció tervezési alapelvek a kö
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
 [Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

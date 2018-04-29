@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: dbe859a2d069a20ba2e02d009dfb99b6126f8dea
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 5f963e9ef6f0a19599f372b196dc75a327b92b5a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-appsource"></a>Mi az a AppSource
 AppSource lehetővé teszi, hogy a Microsoft-partnerek legyen a technológia és a szolgáltatásaikat felderíthető egy Microsoft által támogatott online kirakat ügyfelektől. Egy AppSource közzétevőként üzleti felhasználók AppSource található, próbálja meg, és üzleti SaaS-alkalmazásokhoz, valamint a megvalósítás szolgáltatásokat a meghajtó üzleti eredmények számítanak, és csökkentse idő-értéket is végezhetnek: 
@@ -42,23 +42,23 @@ AppSource, a listában egy alkalmazás vagy a tanácsadási ajánlat, amely seg�
 *   **Az Office 365**: A modern munkahely a felhőben. Együttműködik az ingyenes Microsoft Word, a PowerPoint, az Excel és a OneNote-bA.
 
 ### <a name="office-365"></a>Office 365
-Office alkalmazások elérhetők a AppSource! Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store "Office 365 - AppSource").
+Office alkalmazások elérhetők a AppSource! Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store "Office 365 - AppSource").
 
 ### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 a pénzügyi és műveletek
-Enterprise Edition való fejlesztéskor tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source "Dynamics 365 Enterprise Edition - AppSource").  
+Enterprise Edition való fejlesztéskor tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source "Dynamics 365 Enterprise Edition - AppSource").  
 
 ### <a name="dynamics-365-for-customer-engagement"></a>Az ügyfél Engagement Dynamics 365
-Tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource "Dynamics 365 - AppSource").
+Tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource "Dynamics 365 - AppSource").
 
 ### <a name="power-bi"></a>Power BI
-Egyéni látványelemek létrehozása, és elérhetővé tétele AppSource keresztül. Tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/en-us/power-bi/developer/office-store "Power BI - AppSource").
+Egyéni látványelemek létrehozása, és elérhetővé tétele AppSource keresztül. Tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/power-bi/developer/office-store "Power BI - AppSource").
 
 ### <a name="consulting-offers"></a>Ajánlatok tanácsadás
 Ha szolgáltatások ügyfelek digitális átalakítása elősegítése, illetve egy megoldást, vagy az alkalmazás végrehajtja, akkor kínálhat, hogy ez a szolgáltatás olyan tanácsadási ajánlat AppSource a. 
 [Tekintse át az útmutatást, és megtudhatja, hogyan nyújt az ajánlatot](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf "AppSource - Partner listázása irányelvek").
 
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
-[A Cortana Intelligence AppSource közzétételi útmutató](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide "Cortana Intelligence AppSource - közzétételi útmutató")
+[A Cortana Intelligence AppSource közzétételi útmutató](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide "Cortana Intelligence AppSource - közzétételi útmutató")
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-integráció
 Egyes AppSource kirakat alkalmazások is integrálása az Azure Active Directory (Azure AD) közzé kell tenni. Alkalmazások integrálása az Azure ad-val megfelelően legyen dokumentálva; A Microsoft biztosít több SDK-k és további források az igényeknek. 
@@ -76,17 +76,17 @@ Egyes AppSource kirakat alkalmazások is integrálása az Azure Active Directory
 ###### <a name="table-appsource-offerings-that-require-azure-active-directory-integration"></a>Tábla: AppSource ajánlatokat, amelyek igénylik az Azure Active Directory-integráció
 
 Első lépésként javasoljuk, hogy **az Azure piactér közzétételi dedikált előfizetés beállítása*** engedélyezése elkülöníthetők a más kezdeményezések a munkáját. Ha még nem telepítette az alábbi eszközöket, majd ajánlott továbbá, hogy a következő eszközöket felvenni a fejlesztési környezetet: 
-*   [Az Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest "Azure - parancssori felület")
-*   [Az Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-5.0.0 "PowerShell – Azure")
+*   [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest "Azure - parancssori felület")
+*   [Az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0 "PowerShell – Azure")
 *   Tekintse át az elérhető eszközöket a [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/ "Azure - fejlesztői eszközök") lap
 *   [A Visual Studio Code](https://code.visualstudio.com/ "a Visual Studio Code - fő")
 
 Ha elkezdi az Azure ad-vel, az alábbi hivatkozások a legjobb erőforrások: 
 
 **Dokumentáció**
-*   [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide "az Azure AD - fejlesztői útmutatója")
-*   [Az Azure Active Directory integrálása](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate "- integrálása az Azure AD")
-*   [Alkalmazások integrálása az Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications "alkalmazások – az Azure AD integrálása")
+*   [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide "az Azure AD - fejlesztői útmutatója")
+*   [Az Azure Active Directory integrálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate "- integrálása az Azure AD")
+*   [Alkalmazások integrálása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications "alkalmazások – az Azure AD integrálása")
 *   [Azure menetrend - biztonság és identitás](https://azure.microsoft.com/roadmap/?category=security-identity "Azure menetrend - biztonság és identitás")
 
 **Videók**

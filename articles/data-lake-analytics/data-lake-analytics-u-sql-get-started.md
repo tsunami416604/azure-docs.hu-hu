@@ -1,8 +1,8 @@
 ---
-title: "Ismerkedés a U-SQL nyelv |} Microsoft Docs"
-description: "A U-SQL nyelvű alapismeretei."
+title: Ismerkedés a U-SQL nyelv |} Microsoft Docs
+description: A U-SQL nyelvű alapismeretei.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: 38c4e1b9bd24ef0b8a81f6154620f3f98d3b5ac1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e7efdac8b032055b5344f34f5f9ad2679bddb107
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-u-sql"></a>Ismerkedés a U-SQL
 U-SQL nyelven, hogy feltétlenül szükséges C#, így deklaratív SQL bármilyen léptékben adatok feldolgozása. U-SQL skálázható, elosztott lekérdezés funkció segítségével hatékonyan elemezheti adatok relációs áruházak, például az Azure SQL-adatbázis között. U-SQL, a strukturálatlan adatok feldolgozását olvassa el a séma alkalmazása és egyéni logika és a felhasználó által megadott függvények beszúrni. Ezenkívül a U-SQL, amely lehetővé teszi az részletes szabályozhatják, hogyan hajthat végre léptékű bővítési is. 
@@ -60,8 +60,8 @@ Figyelje meg a kérdéses az adatok mellett írja be a `Duration` mező. Ez azt 
 
 ### <a name="key-concepts"></a>Fő fogalmak
 * **A sorhalmaz változók**: minden lekérdezési kifejezés, amely létrehozza a sorhalmaz változó lehet hozzárendelni. U-SQL-T-SQL változó elnevezési mintát követi (`@searchlog`, például) a parancsfájlban.
-* A **KIBONTÁSA** kulcsszó fájlból olvassa be az adatokat, és határozza meg, olvassa el a séma. `Extractors.Tsv`a beépített U-SQL kivonatoló lapon tagolt fájlok van. Egyéni vagyis fejleszthet.
-* A **kimeneti** fájlba írja az adatokat a sorkészlet. `Outputters.Csv()`az egy beépített U-SQL outputter vesszővel tagolt fájl létrehozásához. Egyéni outputters fejleszthet.
+* A **KIBONTÁSA** kulcsszó fájlból olvassa be az adatokat, és határozza meg, olvassa el a séma. `Extractors.Tsv` a beépített U-SQL kivonatoló lapon tagolt fájlok van. Egyéni vagyis fejleszthet.
+* A **kimeneti** fájlba írja az adatokat a sorkészlet. `Outputters.Csv()` az egy beépített U-SQL outputter vesszővel tagolt fájl létrehozásához. Egyéni outputters fejleszthet.
 
 ### <a name="file-paths"></a>Fájlok elérési útja
 
@@ -226,8 +226,8 @@ A U-SQL rendelkező záradékot a kimeneti korlátozása csoportokat, amelyek a 
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Speciális összesítő forgatókönyvek esetén dokumentációjában az U-SQL referencia [összesíteni, elemzési, és hivatkozzon funkciók](https://msdn.microsoft.com/en-us/library/azure/mt621335.aspx)
+Speciális összesítő forgatókönyvek esetén dokumentációjában az U-SQL referencia [összesíteni, elemzési, és hivatkozzon funkciók](https://msdn.microsoft.com/library/azure/mt621335.aspx)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)

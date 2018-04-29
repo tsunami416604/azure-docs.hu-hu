@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 18465463e924c10ddc35d619992655773e12cc82
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatok tudományos virtuális gép kiépítése Linux (Ubuntu)
 
@@ -95,7 +95,7 @@ Az adatok tudományos virtuális gép példányt létrehozni a Linux lépései a
    
    b. **Méret**:
    
-   * Válassza ki a kiszolgáló típusát, amely megfelel a funkcionális és költség megkötések. Válassza ki **nézet összes** a VM-méretek további beállítások megtekintéséhez. Válassza ki a GPU képzési egy NC-osztály virtuális Gépre.
+   * Válassza ki a kiszolgáló típusát, amely megfelel a funkcionális és költség megkötések. Válassza ki **nézet összes** a VM-méretek további beállítások megtekintéséhez. Jelöljön ki egy névhasználati környezet vagy a GPU képzési ND-osztály VM. A [régiónként rendelkezésre álló termékek](https://azure.microsoft.com/global-infrastructure/services/) lap felsorolja a régiók Feldolgozóegységekkel.
    
    c. **Beállítások**:
    

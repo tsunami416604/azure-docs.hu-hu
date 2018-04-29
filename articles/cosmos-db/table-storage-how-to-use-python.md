@@ -13,11 +13,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: c8f35656e9db07b596cd24ecb570fa0960f540b8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b4370f63c2e5ccf466de7cb680377b12940a6efc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-python"></a>Az Azure Table storage Python használatának első lépései
 
@@ -42,7 +42,7 @@ Az oktatóanyag sikeres teljesítéséhez a következőkre lesz szüksége:
 
 - [Python](https://www.python.org/downloads/) 2.7, 3.3-as, 3.4, 3.5-ös vagy 3.6.
 - [Az Azure Cosmos DB Python SDK táblázat](https://pypi.python.org/pypi/azure-cosmosdb-table/). Ez az SDK csatlakoznak az Azure Table storage mind az Azure Cosmos DB tábla API-t.
-- [Az Azure Storage-fiók](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#create-a-storage-account) vagy [Azure Cosmos DB fiók](https://azure.microsoft.com/en-us/try/cosmosdb/)
+- [Az Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) vagy [Azure Cosmos DB fiók](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Az Azure szolgáltatás-fiók létrehozása
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
@@ -223,11 +223,11 @@ table_service.delete_table('tasktable')
 
 ## <a name="next-steps"></a>További lépések
 
-* [Gyakori kérdések – fejlesztéséhez és a tábla API](https://docs.microsoft.com/en-us/azure/cosmos-db/faq#develop-with-the-table-api)
+* [Gyakori kérdések – fejlesztéséhez és a tábla API](https://docs.microsoft.com/azure/cosmos-db/faq#develop-with-the-table-api)
 * [Az Azure Cosmos DB SDK for Python API-referencia](https://azure.github.io/azure-cosmosdb-python/)
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
 * [A Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md): egy ingyenes, platformfüggetlen-alkalmazást a Windows, a macOS és a Linux vizuálisan adatok Azure Storage használata.
-* [Working with Python a Visual Studio (Windows)](https://docs.microsoft.com/en-us/visualstudio/python/overview-of-python-tools-for-visual-studio)
+* [Working with Python a Visual Studio (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 [py_commit_batch]: https://azure.github.io/azure-cosmosdb-python/ref/azure.cosmosdb.table.tableservice.html
 [py_create_table]: https://azure.github.io/azure-cosmosdb-python/ref/azure.cosmosdb.table.tableservice.html

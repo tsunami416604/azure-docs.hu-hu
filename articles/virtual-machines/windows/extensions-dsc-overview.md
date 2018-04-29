@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: e23d0a70cdfcc1b37f02d86dd6418aa28c5bbf2c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6bfe48df685952d2b465d9549e2f1c086c1c490
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure célállapot-konfiguráció kiterjesztés kezelőjének bemutatása
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 
 Az Azure Virtuálisgép-ügynök és a kapcsolódó bővítmények a Microsoft Azure infrastruktúra-szolgáltatások részét képezik. Virtuálisgép-bővítmények olyan szoftverösszetevők, amelyek VM bővíthetők, és egyszerűbbé tehető a virtuális gép különböző felügyeleti műveleteket.
 
-Az elsődleges-és nagybetűhasználattal a Azure kívánt állapot konfigurációs szolgáltatása (DSC) bővítményt a virtuális gépek rendszerindításának érték a [Azure Automation DSC szolgáltatás](../../automation/automation-dsc-overview.md). Biztosít egy virtuális gép rendszerindítása [előnyöket](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#pull-service) , amelyek tartalmazzák a Virtuálisgép-konfiguráció és egyéb működési eszközök – például a figyelés Azure integráció folyamatos kezelését.
+Az elsődleges-és nagybetűhasználattal a Azure kívánt állapot konfigurációs szolgáltatása (DSC) bővítményt a virtuális gépek rendszerindításának érték a [Azure Automation DSC szolgáltatás](../../automation/automation-dsc-overview.md). Biztosít egy virtuális gép rendszerindítása [előnyöket](https://docs.microsoft.com/powershell/dsc/metaconfig#pull-service) , amelyek tartalmazzák a Virtuálisgép-konfiguráció és egyéb működési eszközök – például a figyelés Azure integráció folyamatos kezelését.
 
 A DSC-bővítményt az Automation DSC szolgáltatás függetlenül is használhatja. Azonban ez magában foglalja a központi telepítése során egy szinguláris műveleteket. Nincs folyamatban lévő reporting vagy konfigurációkezelés áll rendelkezésre, nem helyileg a virtuális gép.
 
@@ -49,7 +49,7 @@ Ez az útmutató a következő fogalmakat ismeretét feltételezi:
 
 ## <a name="architecture"></a>Architektúra
 
-Az Azure DSC-bővítmény az Azure Virtuálisgép-ügynök keretrendszer használatával kézbesíti, kihirdeti, és a jelentés az Azure virtuális gépeken futó DSC-konfigurációk. A DSC-bővítményt egy konfigurációs dokumentum és a paraméterek fogadja el. Ha nincs fájl áll rendelkezésre, egy [konfigurációs parancsfájl alapértelmezett](#default-configuration-script) kiterjesztésű van beágyazva. Az alapértelmezett konfigurációs parancsfájl használatával csak metaadat beállított [helyi Configuration Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig).
+Az Azure DSC-bővítmény az Azure Virtuálisgép-ügynök keretrendszer használatával kézbesíti, kihirdeti, és a jelentés az Azure virtuális gépeken futó DSC-konfigurációk. A DSC-bővítményt egy konfigurációs dokumentum és a paraméterek fogadja el. Ha nincs fájl áll rendelkezésre, egy [konfigurációs parancsfájl alapértelmezett](#default-configuration-script) kiterjesztésű van beágyazva. Az alapértelmezett konfigurációs parancsfájl használatával csak metaadat beállított [helyi Configuration Manager](https://docs.microsoft.com/powershell/dsc/metaconfig).
 
 A bővítmény hívásakor először a következő logika használatával telepíti a WMF verziója:
 
@@ -61,7 +61,7 @@ A WMF telepítése újraindítást igényel. Az újraindítás után a bővítm�
 
 ### <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
-Az Azure DSC-bővítményt tartalmaz egy alapértelmezett konfigurációs parancsfájlt, amely rendelkezik tekinthető használni bevezetésében, egy virtuális Gépet az Azure Automation DSC szolgáltatásra. A parancsprogram paramétereinek összhangban legyenek a konfigurálható tulajdonságainak [helyi Configuration Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig). A parancsfájl paramétereit, lásd: [konfigurációs parancsfájl alapértelmezett](extensions-dsc-template.md#default-configuration-script) a [célállapot-konfiguráció bővítmény Azure Resource Manager-sablonok](extensions-dsc-template.md). A teljes parancsfájl, tekintse meg a [GitHub-sablon Azure gyors üzembe helyezés](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Az Azure DSC-bővítményt tartalmaz egy alapértelmezett konfigurációs parancsfájlt, amely rendelkezik tekinthető használni bevezetésében, egy virtuális Gépet az Azure Automation DSC szolgáltatásra. A parancsprogram paramétereinek összhangban legyenek a konfigurálható tulajdonságainak [helyi Configuration Manager](https://docs.microsoft.com/powershell/dsc/metaconfig). A parancsfájl paramétereit, lásd: [konfigurációs parancsfájl alapértelmezett](extensions-dsc-template.md#default-configuration-script) a [célállapot-konfiguráció bővítmény Azure Resource Manager-sablonok](extensions-dsc-template.md). A teljes parancsfájl, tekintse meg a [GitHub-sablon Azure gyors üzembe helyezés](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>A DSC-bővítményt a Resource Manager-sablonok
 

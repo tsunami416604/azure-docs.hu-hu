@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 5d08c752af23845a31428b16ee3de594044b4129
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 171265d996c9fe4eb10ac354347f5725dadd0203
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciókkal kapcsolatos tudnivalók
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -44,7 +44,7 @@ Ez a cikk többi általános útmutatást a Linux-disztribúció Azure-on futó 
 
 ## <a name="general-linux-installation-notes"></a>Jelzi, hogy általános Linux rendszerhez – telepítés
 * A VHDX formátum nem támogatott az Azure csak **rögzített VHD**.  Átválthat a lemez VHD formátumú Hyper-V kezelője vagy a convert-vhd-parancsmag segítségével. VirtualBox rendszer használata esetén ez azt jelenti, hogy kiválasztásával **mérete rögzített** az alapértelmezett, a lemez létrehozásakor dinamikusan kiosztott szemben.
-* Azure csak az 1. generációs virtuális gépek támogatja. 1. generációs virtuális gépek VHDX-re a virtuális merevlemez formátumának és a rögzített méretű lemezekké dinamikusan bővülő válthat. De nem módosíthatja a virtuális gép generációját. További információkért lásd: [érdemes létrehozni 1 vagy 2. generációs virtuális gépek a Hyper-V?](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+* Azure csak az 1. generációs virtuális gépek támogatja. 1. generációs virtuális gépek VHDX-re a virtuális merevlemez formátumának és a rögzített méretű lemezekké dinamikusan bővülő válthat. De nem módosíthatja a virtuális gép generációját. További információkért lásd: [érdemes létrehozni 1 vagy 2. generációs virtuális gépek a Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
 * A VHD számára engedélyezett maximális mérete 1,023 GB.
 * Ha telepíti a Linux rendszer *ajánlott* LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használja. LVM neve ütközik a klónozott virtuális gépek, így elkerülhető, különösen akkor, ha egy operációsrendszer-lemez legalább egyszer kell hibaelhárítási egy másik, azonos virtuális géphez csatlakoztatható. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezek használható.
 * Kernel támogatása UDF fájlrendszerek csatlakoztatására szükség. Azure első rendszerindításkor az üzembe helyezési konfiguráció lett átadva a Linux virtuális gép keresztül UDF formátumú adathordozót, amely csatolva van a Vendég. Az Azure Linux ügynök a UDF fájlrendszerben beolvasni a konfigurációt, és helyezze üzembe a virtuális gép csatlakoztatása képesnek kell lennie.

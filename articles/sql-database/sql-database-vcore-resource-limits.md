@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 23bab643a88fe27eb34750f970f962041f8c18f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 204702eee1cf502ac873e0c1f5e3fd257ecce33c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Az Azure SQL Database vCore alapú vásárlási modell korlátok (előzetes verzió)
 
@@ -33,17 +33,16 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 |Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|
 |Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|–|N/A|N/A|N/A|–|
 |Tárolási típus|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|
-|I/O várakozási ideje (hozzávetőleges)|5-7 ms (write)<br>5-10 ms (read)|5-7 ms (write)<br>5-10 ms (read)|5-7 ms (write)<br>5-10 ms (read)|5-7 ms (write)<br>5-10 ms (read)|5-7 ms (write)<br>5-10 ms (read)|
+|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|
 |Maximális adatok (GB)|1024|1024|1536|3072|4096|
 |Maximális naplófájlméret|307|307|461|922|1229|
 |A TempDB size(DB)|32|64|128|256|384|
 |Cél IOPS|320|640|1280|2560|5120|
-|I/O várakozási ideje (hozzávetőleges)|5-7 ms (write)
+|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)
 |Maximális párhuzamos munkavállalók (kérelmek)|200|400|800|1600|3200|
-|Egyidejű bejelentkezések maximális száma|200|400|800|1600|3200|
-|A maximális munkamenet engedélyezett|3000|3000|3000|3000|3000|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|
-|Multi-AZ|–|N/A|N/A|N/A|–|
+|Több-AZ|–|N/A|N/A|N/A|–|
 |Olvassa el a kibővített|–|N/A|N/A|N/A|–|
 |Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
@@ -63,10 +62,9 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 |Cél IOPS|5000|10000|20000|40000|80000|
 |I/O várakozási ideje (hozzávetőleges)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|
 |Maximális párhuzamos munkavállalók (kérelmek)|200|400|800|1600|3200|
-|Egyidejű bejelentkezések maximális száma|200|400|800|1600|3200|
-|A maximális munkamenet engedélyezett|3000|3000|3000|3000|3000|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|
 |Replikák száma|3|3|3|3|3|
-|Multi-AZ|Igen|Igen|Igen|Igen|Igen|
+|Több-AZ|Igen|Igen|Igen|Igen|Igen|
 |Olvassa el a kibővített|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
@@ -115,20 +113,19 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 |Maximális naplófájlméret|154|227|461|614|1075|
 |A TempDB size(DB)|32|64|128|256|384|
 |Cél IOPS|320|640|1280|2560|5120|
-|I/O várakozási ideje (hozzávetőleges)|5-7 ms (write)<br>5-10 ms (read)|5-7 ms (write)<br>5-10 ms (read)|5-7 ms (write)<br>5-10 ms (read)|5-7 ms (write)<br>5-10 ms (read)|5-7 ms (write)<br>5-10 ms (read)|
+|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|
 |Maximális párhuzamos munkavállalók (kérelmek)|210|420|840|1680|3360|
-|Egyidejű bejelentkezések maximális száma|210|420|840|1680|3360|
-|A maximális munkamenet engedélyezett|3000|3000|3000|3000|3000|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|
 |Maximális készlet sűrűség|100|200|500|500|500|
-|Minimális és maximális rugalmas készlet kattintson-leáll|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|
+|Minimális és maximális rugalmas készlet kattintson-leáll|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2. régiója|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
 |Replikák száma|1|1|1|1|1|
-|Multi-AZ|–|N/A|N/A|N/A|–|
+|Több-AZ|–|N/A|N/A|N/A|–|
 |Olvassa el a kibővített|–|N/A|N/A|N/A|–|
 |Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
 ### <a name="business-critical-service-tier"></a>Üzleti kritikus szolgáltatási rétegben
-|Teljesítményszint|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|
+|Teljesítményszint|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|
 |:--- | --: |--: |--: |--: |--: |
 |H/W létrehozása|4|4|4|4|4|
 |vCores|1|2|4|8|16|
@@ -142,11 +139,10 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 |Cél IOPS|320|640|1280|2560|5120|
 |I/O várakozási ideje (hozzávetőleges)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|
 |Maximális párhuzamos munkavállalók (kérelmek)|210|420|840|1680|3360|
-|Egyidejű bejelentkezések maximális száma|210|420|840|1680|3360|
-|A maximális munkamenet engedélyezett|3000|3000|3000|3000|3000|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|
 |Maximális készlet sűrűség|–|50|100|100|100|
-|Minimális és maximális rugalmas készlet kattintson-leáll|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|
-|Multi-AZ|Igen|Igen|Igen|Igen|Igen|
+|Minimális és maximális rugalmas készlet kattintson-leáll|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2. régiója|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
+|Több-AZ|Igen|Igen|Igen|Igen|Igen|
 |Olvassa el a kibővített|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||

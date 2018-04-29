@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: e421797d85dd031b77788958db6b1df62a292a8a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: db910096f776f2f8710c0ac03f0378491018fc09
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -137,7 +137,7 @@ A projektek és a munkaterületet üzemeltető alkalmazásból származó munkat
 Ha Windows 10 alá esik Creators frissítést, és a projekt egy, a onedrive vállalati verzió leképezett helyi mappában jön létre, előfordulhat, hogy nem nyitható meg minden olyan fájlt a munkaterületre. Node.js kód sikertelen lesz, a onedrive vállalati verzió mappában a alá esik Creators frissítés által bevezetett programhiba okozza. A hiba lesz kijavítva, amint a Windows Update, de addig, nem hozzon létre projekteket a onedrive vállalati verzió mappában.
 
 ## <a name="file-name-too-long-on-windows"></a>A fájlnév túl hosszú a Windows rendszeren
-Ha Windows munkaterületet használja, mutatjuk be a alapértelmezett maximális 260 karakteres fájl neve maximális hossz, amely "a rendszer nem találja a megadott elérési út" hibaként surface sikerült. Egy beállításkulcs-érték engedélyezi sokkal hosszabb fájl elérési útja módosítható. Felülvizsgálati [Ez a cikk](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.
+Ha Windows munkaterületet használja, mutatjuk be a alapértelmezett maximális 260 karakteres fájl neve maximális hossz, amely "a rendszer nem találja a megadott elérési út" hibaként surface sikerült. Egy beállításkulcs-érték engedélyezi sokkal hosszabb fájl elérési útja módosítható. Felülvizsgálati [Ez a cikk](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) beállításával kapcsolatos további részletekért a _MAX_PATH_ beállításkulcsot.
 
 ## <a name="interrupt-cli-execution-output"></a>Parancssori végrehajtás kimenetének megszakítási
 Ha egy kísérletezés, futtatni használatával indítsa el `az ml experiment submit` vagy `az ml notebook start` és a kimeneti megszakítási szeretné: 

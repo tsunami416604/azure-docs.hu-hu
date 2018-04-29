@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub eszközről a felhőbe üzenetküldési megértése |} Microsoft Docs"
-description: "Fejlesztői útmutató - eszközről a felhőbe az IoT-központ az üzenetküldési használata. A telemetriai adatokat, és nem telemtry adatok küldését, és üzeneteket a útválasztás használatával kapcsolatos adatokat tartalmaz."
+title: Azure IoT Hub eszközről a felhőbe üzenetküldési megértése |} Microsoft Docs
+description: Fejlesztői útmutató - eszközről a felhőbe az IoT-központ az üzenetküldési használata. A telemetriai adatokat, és nem telemtry adatok küldését, és üzeneteket a útválasztás használatával kapcsolatos adatokat tartalmaz.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 54b2961713f529438f5508bb0615824ec6bec214
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>Eszköz-felhő üzenetek küldése az IoT-központ
 
@@ -32,7 +32,7 @@ Eszköz-felhő IoT-központ az üzenetküldési jellemzői a következők:
 * Eszköz a felhőbe küldött üzeneteket a következők tartós és az IoT-központ alapértelmezett megtartott **üzenetek/események** végpont hét napig.
 * Eszköz a felhőbe küldött üzeneteket legfeljebb 256 KB, és küld optimalizálása kötegekben csoportosíthatók. Kötegek legfeljebb 256 KB lehet.
 * A a [IoT-központ való hozzáférés szabályozása] [ lnk-devguide-security] szakaszban, IoT-központ lehetővé teszi, hogy a eszközönkénti hitelesítési és hozzáférés-vezérlés.
-* Az IoT-központ lehetővé teszi, hogy legfeljebb 10 egyéni végpontokat hoz létre. Az IoT hub konfigurált útvonalak alapján végpontok kézbesíti az üzeneteket. További információkért lásd: [útválasztási szabályok](#routing-rules).
+* Az IoT-központ lehetővé teszi, hogy legfeljebb 10 egyéni végpontokat hoz létre. Az IoT hub konfigurált útvonalak alapján végpontok kézbesíti az üzeneteket. További információkért lásd: [útválasztási szabályok](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
 * Az IoT-központ lehetővé teszi, hogy egyidejűleg csatlakoztatott eszközök millióira (lásd: [kvóták és sávszélesség-szabályozási][lnk-quotas]).
 * Az IoT-központ nem engedélyezi a tetszőleges particionálást. Eszköz a felhőbe küldött üzeneteket particionáltak, azok származó alapján **deviceId**.
 

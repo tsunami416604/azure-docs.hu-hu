@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 48a8f6d35c3ea1266880f05d12ebf4efd855df41
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery segítségével vész-helyreállítási egy többrétegű SharePoint alkalmazás replikálása
 
@@ -53,7 +53,7 @@ Megkezdése előtt győződjön meg arról, hogy a következő:
 
 ## <a name="sharepoint-architecture"></a>SharePoint-architektúra
 
-SharePoint rétegzett topológiákat és a kiszolgálói szerepkörök használatával, amely megfelel a konkrét célokat és célok farm-kialakításának megvalósítása egy vagy több kiszolgálón is telepíthető. Egy tipikus nagy, nagy igény SharePoint-kiszolgálófarm nagyszámú egyidejű felhasználót és nagyszámú tartalomelem támogató szolgáltatás csoportosítás használata a méretezhetőség stratégia részeként. Ez a megközelítés szolgáltatásokat futtató található dedikált kiszolgálókra, ezek a szolgáltatások csoportosítása, és majd kiterjesztése a kiszolgálókra csoportként. A következő topológiát mutatja be, a szolgáltatás és a kiszolgáló SharePoint-kiszolgálófarm három rétegekhez csoportosítása. További információ a SharePoint dokumentációjának és a termék sor architektúrák különböző SharePoint topológiák részletes útmutatást. A SharePoint 2013 fejlesztésével kapcsolatos további részletei [Ez a dokumentum](https://technet.microsoft.com/en-us/library/cc303422.aspx).
+SharePoint rétegzett topológiákat és a kiszolgálói szerepkörök használatával, amely megfelel a konkrét célokat és célok farm-kialakításának megvalósítása egy vagy több kiszolgálón is telepíthető. Egy tipikus nagy, nagy igény SharePoint-kiszolgálófarm nagyszámú egyidejű felhasználót és nagyszámú tartalomelem támogató szolgáltatás csoportosítás használata a méretezhetőség stratégia részeként. Ez a megközelítés szolgáltatásokat futtató található dedikált kiszolgálókra, ezek a szolgáltatások csoportosítása, és majd kiterjesztése a kiszolgálókra csoportként. A következő topológiát mutatja be, a szolgáltatás és a kiszolgáló SharePoint-kiszolgálófarm három rétegekhez csoportosítása. További információ a SharePoint dokumentációjának és a termék sor architektúrák különböző SharePoint topológiák részletes útmutatást. A SharePoint 2013 fejlesztésével kapcsolatos további részletei [Ez a dokumentum](https://technet.microsoft.com/library/cc303422.aspx).
 
 
 
@@ -66,7 +66,7 @@ Ez a cikk létrehozásához, a VMware virtuális gépek, a Windows Server 2012 R
 
 ### <a name="source-and-target"></a>Forrása és célja
 
-**A forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-ba**
+**Forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-ba**
 --- | --- | ---
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen

@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.date: 04/10/2018
 ms.author: ninarn
 ms.topic: article
-ms.openlocfilehash: 33f4430baacbe50f3d4c7da857ee4345d4f74928
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: ecf9450271e82132b0f31fd0c65ce95d95c2cb3d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése, és több Azure SQL-adatbázisok méretezése
 
@@ -32,7 +32,7 @@ Rugalmas készletek biztosításával, hogy az adatbázisok beolvasása a teljes
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-Rugalmas készletek engedélyezése a fejlesztői készlet használati előre nem látható időszakok olyan egyéni adatbázis több adatbázis oszt erőforrások vásárlásához. A készlet-alapú vagy az erőforrások konfigurálhatja a [DTU-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#dtu-based-purchasing-model) vagy a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview). A készlet erőforrás követelmény adatbázisa összesített kihasználtsági határozza meg. A tárolókészlet számára elérhető erőforrások mennyisége a fejlesztői költségvetés vezérli. A fejlesztői egyszerűen adatbázisokat ad hozzá a címkészletet, beállítja a minimális és maximális erőforrások az adatbázisok (minimális és maximális dtu-inak vagy minimális vagy maximális vCores attól függően, hogy a választott resourcing modell), majd beállítja a készlet alapján az erőforrások és a keret. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
+Rugalmas készletek engedélyezése a fejlesztői készlet használati előre nem látható időszakok olyan egyéni adatbázis több adatbázis oszt erőforrások vásárlásához. A készlet-alapú vagy az erőforrások konfigurálhatja a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) vagy a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md). A készlet erőforrás követelmény adatbázisa összesített kihasználtsági határozza meg. A tárolókészlet számára elérhető erőforrások mennyisége a fejlesztői költségvetés vezérli. A fejlesztői egyszerűen adatbázisokat ad hozzá a címkészletet, beállítja a minimális és maximális erőforrások az adatbázisok (minimális és maximális dtu-inak vagy minimális vagy maximális vCores attól függően, hogy a választott resourcing modell), majd beállítja a készlet alapján az erőforrások és a keret. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
 
 A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. A túlterheltség adatbázis is több erőforrást igény kielégítéséhez. Könnyű terhelések tartozó adatbázisok használnak kisebb, és nem tartozó adatbázisok nem erőforrást. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Plus akkor a készlet előre jelezhető költségvetést. További források azzal a különbséggel, hogy az adatbázisok áthelyezése a adja meg a további számítási erőforrásokat az új eDTU-foglalás esetleg egy meglévő készletbe adatbázis állásidő nélkül lehet hozzáadni. Hasonlóképpen ha már nincs szükség további erőforrásokat azok távolíthatók el egy meglévő készlet bármikor időben. Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
 
@@ -101,7 +101,7 @@ A készlet méretének attól függ, hogy az összesítő a készletben találha
 * Összes adatbázis a készletben (attól függően, hogy a választott modell resourcing maximális vCores vagy maximális dtu-k) által használt erőforrások maximális száma.
 * A készletben szereplő összes adatbázis által használt maximális tárterület (bájtban).
 
-Minden erőforrás-modellje elérhető szolgáltatás rétegei, tekintse meg a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers.md#dtu-based-purchasing-model) vagy a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
+Minden erőforrás-modellje elérhető szolgáltatás rétegei, tekintse meg a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) vagy a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md).
 
 Az SQL Database automatikusan kiértékeli az SQL Database-kiszolgálók adatbázisainak erőforrás-használati előzményeit, és felajánlja a megfelelő készletkonfigurációt az Azure Portalon. Az ajánlások mellett egy beépített funkciót is használhat, amely megbecsüli a kiszolgáló egyedi adatbáziscsoportjainak eDTU-használatát. Ez alapján lehetőségelemzést végezhet adatbázisok interaktív hozzáadásával és eltávolításával, majd az erőforrás-használati elemzés és a méretezési tanácsok megtekintésével a módosítások véglegesítése előtt. Útmutatás: [Rugalmas készlet felügyelete, kezelése és méretezése](sql-database-elastic-pool-manage-portal.md).
 
@@ -112,11 +112,11 @@ Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutat�
    A DTU-alapú alapjául szolgáló vásárlási modell: MAX (<*adatbázisok száma* X *DTU-felhasználásban / adatbázis átlagos*>,<br>
    <*A kiugró kihasználtsággal egyszerre működő adatbázisok száma* X *Az egyes adatbázisok kiugró DTU-használata*)
 
-   Az alapjául szolgáló vásárlási modell vCore-alapú: MAX (<*adatbázisok száma* X *átlagos vCore használata / adatbázis*>,<br>
+   Az alapjául szolgáló vásárlási modell vCore-alapú (előzetes verzió): MAX (<*adatbázisok száma* X *átlagos vCore használata / adatbázis*>,<br>
    <*Egyidejűleg peaking száma adatbázisok* X *lehessen vCore-felhasználás csúcsidőszakát / adatbázis*)
 
 2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát. Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.
-3. A DTU-alapú vásárlási modell igénybe a nagyobb az edtu-k becsült 1. lépés és a 2. lépés. Ahhoz, hogy a vCore-alapú alapjául szolgáló vásárlási modell végrehajtani a vCore becslés 1. lépés.
+3. A DTU-alapú vásárlási modell igénybe a nagyobb az edtu-k becsült 1. lépés és a 2. lépés. Ahhoz, hogy a vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió) végrehajtani a vCore becslés 1. lépés.
 4. Tekintse meg a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/) és a legkisebb készlet, amely méretezés keresés érték nagyobb, mint a becslés a 3. lépés.
 5. Hasonlítsa össze az 5. lépésben szereplő készlet árát az önálló adatbázisok megfelelő teljesítményszintjeinek árával.
 

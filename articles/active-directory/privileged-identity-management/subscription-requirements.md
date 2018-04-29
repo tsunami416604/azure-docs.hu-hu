@@ -1,8 +1,8 @@
 ---
-title: "Privileged Identity Management előfizetések - Azure |} Microsoft Docs"
-description: "Az előfizetés és licencelési követelmények kezelésére, és a bérlő az Azure AD Privileged Identity Management használatát ismerteti"
+title: Privileged Identity Management előfizetések - Azure |} Microsoft Docs
+description: Az előfizetés és licencelési követelmények kezelésére, és a bérlő az Azure AD Privileged Identity Management használatát ismerteti
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
 editor: mwahl
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: b04544c6a1d288524783ed6d323146c0ef7bfe95
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9e49ddb8fca9ce193c92f27c307942d5f3d3d2fd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Az Azure Active Directory Privileged Identity Management előfizetés követelményeinek
 
@@ -40,7 +40,7 @@ A parancs segítségével lekérdezhető az Ön bérelt szolgáltatásának elő
 
 Ha ez a parancs visszaadja a sor mely SkuPartNumber "AAD_PREMIUM_P2" vagy "EMSPREMIUM" és IsTrial értéke "True", ez azt jelzi, hogy az Azure AD Premium P2 próbaverziójával megtalálható-e a bérlő.  Ha nincs engedélyezve az előfizetési állapotot, és Ön nem rendelkezik egy Azure AD Premium P2- vagy EMS E5 előfizetés vásárlása, majd meg kell vásárolnia egy Azure AD Premium P2 előfizetés vagy az EMS E5 előfizetés továbbra is használja az Azure AD Privileged Identity Management.
 
-Az Azure AD Premium P2 keresztül érhető el egy [Microsoft nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), a [nyissa meg a mennyiségi licencelési programon](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx), és a [megoldás szolgáltatók program](https://partner.microsoft.com/en-US/cloud-solution-provider). Office 365 és az Azure-előfizetők vásárolhatja online az Azure AD Premium P2.  További információ a Azure AD Premium árképzési és hogyan rendelhető online helyen találhatók [Azure Active Directory árképzési](https://azure.microsoft.com/en-us/pricing/details/active-directory/).
+Az Azure AD Premium P2 keresztül érhető el egy [Microsoft nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), a [nyissa meg a mennyiségi licencelési programon](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx), és a [megoldás szolgáltatók program](https://partner.microsoft.com/en-US/cloud-solution-provider). Office 365 és az Azure-előfizetők vásárolhatja online az Azure AD Premium P2.  További információ a Azure AD Premium árképzési és hogyan rendelhető online helyen találhatók [Azure Active Directory árképzési](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Az Azure AD Privileged Identity Management a bérlő nem érhető el
 
@@ -57,7 +57,7 @@ Ha az Azure AD Premium P2 előfizetés vagy az EMS E5 előfizetés lejár, vagy 
 - Minden folyamatban lévő hozzáférés felülvizsgálatra az Azure AD-szerepkörök véget ér, és az Azure AD Privileged Identity Management konfigurációs beállításait.
 - Az Azure AD Privileged Identity Management a szerepkör-hozzárendelési módosítások már nem küld e-maileket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ismerkedés az Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
 - [Szerepkörök az Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)

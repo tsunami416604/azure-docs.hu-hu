@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 341ee58904cb08a024ac9f14839cf011e72b4dd2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -121,6 +121,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Cognitive Services
 * Tartalommoderátor
 * Data Catalog
+* Adat-előállító - 1-es verzió is helyezhető, de V2 áthelyezése (előzetes verzió) nem támogatott.
 * Data Lake Analytics
 * Data Lake Store
 * DNS
@@ -166,7 +167,6 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * BizTalk Services
 * Tanúsítványok – jelzi, hogy áthelyezhetők-e a App Service-tanúsítványokkal, de feltöltött tanúsítványok [korlátozások](#app-service-limitations).
 * Container Service
-* Data Factory
 * DevTest Labs - helyezze át az új erőforráscsoport ugyanahhoz az előfizetéshez engedélyezve van, de több előfizetés áthelyezése nem engedélyezett.
 * Dynamics LCS
 * Express Route

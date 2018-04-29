@@ -1,25 +1,20 @@
 ---
-title: "Csatlakozás az Azure SQL Data Warehouse-hoz – VSTS | Microsoft Docs"
-description: "Az SQL Data Warehouse lekérdezése a Visual Studióval."
+title: Csatlakozás az Azure SQL Data Warehouse-hoz – VSTS | Microsoft Docs
+description: Az SQL Data Warehouse lekérdezése a Visual Studióval.
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: daace889-95e5-4826-b2fc-047eac9d6d95
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 1e44c6c3c47034a892753c69c5ef22a5eac18c0d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 1bd3516661a73e7a6d9aaceed589a55cd650453e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Csatlakozás a SQL Data Warehouse-hoz a Visual Studio és az SSDT használatával
 > [!div class="op_single_selector"]
@@ -79,7 +74,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
    
     ![Lekérdezés eredményei][7]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy képes csatlakozni és elvégezni a lekérdezéseket, próbálja [megjeleníteni az adatokat a PowerBI használatával][visualizing the data with PowerBI].
 
 A környezet Azure Active Directory-hitelesítésre történő konfigurálásával kapcsolatban tekintse meg az [SQL Data Warehouse-zal történő hitelesítést][Authenticate to SQL Data Warehouse] ismertető cikket.

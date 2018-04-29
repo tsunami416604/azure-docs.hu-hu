@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 77fac23286d536903e32140b554304e72c16097f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 976b1c6b65036faeff3c4cc21e91ccf798eb0df3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Az Azure Blob Storage tárolóban az Azure Search dokumentumok indexelő
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-fájlok, a Microsoft Office-dokumentumok, és számos egyéb gyakori formátumok) az Azure Blob Storage tárolóban tárolja. Első lépésként beállítása és konfigurálása a blob indexelő használatának alapjait ismerteti. Ezt követően viselkedésmódok mélyebb feltárása kínál, és forgatókönyvek lehetséges hibát.
@@ -49,7 +49,7 @@ Az adatforrás blobindexelés, a következő kötelező tulajdonságok kell rend
 
 Adatforrás létrehozása:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ Az index a dokumentumban, attribútumok, megadja azokat a mezőket, és más, a 
 
 Hozzon létre egy kereshető indexet a következőképpen `content` mező a szöveg kibontani a blobok tárolására:   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ Az indexelő csatlakoznak az adatforrás egy cél search-index, és automatizál
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozásához:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -171,7 +171,7 @@ Ehhez a példához most válassza ki a `metadata_storage_name` mezőt dokumentum
 
 Ennek érdekében minden együtt, és ez hogyan hozzáadhat mező leképezések és base 64 kódolás kulcsok a meglévő indexelőt engedélyezése:
 
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -197,7 +197,7 @@ Szabályozhatja, hogy mely blobok indexelt, és amely kimarad.
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Csak a meghatározott fájlnév-kiterjesztésű blobok index
 Csak a fájlnév-kiterjesztések használatával adja meg a blobok indexelheti a `indexedFileNameExtensions` indexelő konfigurációs paraméter. Az érték a kívánt fájlkiterjesztéseket (a kezdő pont) vesszővel tagolt listáját tartalmazó karakterlánc. Például, hogy az index csak a. PDF és. Blobok DOCX, tegye a következőket:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -209,7 +209,7 @@ Csak a fájlnév-kiterjesztések használatával adja meg a blobok indexelheti a
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Blobok meghatározott fájlnév-kiterjesztésű kizárása
 Kizárhat meghatározott fájlnév-kiterjesztések blobok használatával indexelésének a `excludedFileNameExtensions` konfigurációs paraméter. Az érték a kívánt fájlkiterjesztéseket (a kezdő pont) vesszővel tagolt listáját tartalmazó karakterlánc. Például, hogy az összes blobot, kivéve az index a. PNG és. JPEG-bővítményeket, tegye a következőket:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -231,7 +231,7 @@ A blobok részeket indexelt segítségével szabályozhatja a `dataToExtract` ko
 
 Például csak a tárolási metaadatok indexelése, használja:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -254,7 +254,7 @@ A fenti konfigurációs paraméterek összes BLOB vonatkozik. Egyes esetekben el
 
 Alapértelmezés szerint a blob indexelője, amint fordul egy blobot a tartalom nem támogatott típust (például egy képet). Természetesen használhatja a `excludedFileNameExtensions` paraméter kihagyását bizonyos tartalomtípusokat. Azonban szükség lehet index blobok minden lehetséges tartalomtípusokat előre ismerete nélkül. Folytatni, amikor a rendszer észlelt egy nem támogatott tartalomtípus, állítsa be a `failOnUnsupportedContentType` konfigurációs paramétert `false`:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -292,7 +292,7 @@ Egy "helyreállítható törlésre" módszert használja, törlésével dokument
 
 Például a következő házirendet úgy ítéli meg, egy blobot törölve lesz, ha olyan metadata tulajdonsággal rendelkezik `IsDeleted` értékű `true`:
 
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -339,7 +339,7 @@ Ennek működéséhez minden indexelők és más olyan összetevők kell kidolgo
 
 Ha a blobok az azonos kódolással egyszerű szöveges tartalmaz, akkor jelentősen növelheti indexelési teljesítmény használatával **mód elemzése szöveg**. Szöveg elemzésekor mód használatához állítsa a `parsingMode` konfigurációs tulajdonság `text`:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

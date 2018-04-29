@@ -10,11 +10,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5a20f8cb2946db0ff5fafc4c307f56629b635825
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: bf94e99d84b7f5b727b185209ba0288096b30607
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódjai: adatbázis-csatlakozási hibáinak és egyéb problémák
 
@@ -34,7 +34,7 @@ Erősen ajánlott, hogy az ügyfélprogram újrapróbálkozási logika, hogy sik
 * Adatbázis &lt;db_name&gt; kiszolgálón &lt;Azure_instance&gt; már nem érhető el. Próbálkozzon újra később. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: &lt;session_id&gt;. (A Microsoft SQL Server, hibakód: 40613)
 * Egy létező kapcsolat kényszerített módon be lett zárva a távoli állomás.
 * System.Data.Entity.Core.EntityCommandExecutionException: Hiba történt a parancsdefiníció végrehajtása közben. Lásd a belső kivétel leírásában olvasható. ---> System.Data.SqlClient.SqlException: egy átviteli szintű hiba történt a kiszolgáló-eredmények fogadásakor. (szolgáltató: munkamenet-szolgáltató, hiba: 19 - fizikai kapcsolat már nem használható)
-* Másodlagos adatbázishoz kapcsolódási kísérlet sikertelen volt, mert reconfguration folyamatban van az adatbázis elfoglalt új lapok közepén egy aktív traznakció alkalmazása az elsődleges adatbázisban. 
+* Másodlagos adatbázishoz kapcsolódási kísérlet sikertelen volt, mert az újrakonfigurálás folyamatban van az adatbázis elfoglalt új lapok közepén egy aktív tranzakció alkalmazása az elsődleges adatbázisban. 
 
 Újrapróbálkozási logika kód példákért lásd:
 
@@ -50,7 +50,7 @@ Hibák a következők átmeneti jellegűek, és meg kell ismételni a úgy az al
 | ---:| ---:|:--- |
 | 4060 |16 |Nem nyitható meg az adatbázis "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |
 | 40197 |17 |A szolgáltatás a kérelem feldolgozása hibát észlelt. Kérjük, próbálkozzon újból. Hibakód: %d.<br/><br/>Ha a szolgáltatás szoftver vagy a hardverfrissítés, a hardver meghibásodása vagy a más feladatátvételi problémák miatt nem működik a hibaüzenetet kap. Az üzenet hiba 40197 ágyazott hibakód: (%d) milyen típusú hiba vagy a feladatátvétel történt további információkkal szolgál. Néhány példa a kódok vannak ágyazva az üzenet hiba 40197 hiba 40020, 40143, 40166 és 40540.<br/><br/>Az SQL Database-kiszolgálóhoz csatlakozni automatikusan csatlakoztatja az adatbázis megfelelő példányához. Az alkalmazás kell catch 40197, hibanapló hibaelhárítási üzeneten belüli beágyazott hibakód: (%d), és próbáljon újra csatlakozni az SQL-adatbázis, az erőforrások elérhetők, amíg újból létrejött a kapcsolat. |
-| 40501 |20 |A szolgáltatás jelenleg túlterhelt. Próbálja megismételni a kérelmet 10 másodperc után. Incidens azonosítója: %ls. Kód: %d.<br/><br/>További információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers.md). |
+| 40501 |20 |A szolgáltatás jelenleg túlterhelt. Próbálja megismételni a kérelmet 10 másodperc után. Incidens azonosítója: %ls. Kód: %d.<br/><br/>További információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40613 |17 |Adatbázis '%.&#x2a;ls' kiszolgáló '%.&#x2a;ls' már nem érhető el. Próbálkozzon újra később. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: '%.&#x2a;ls'. |
 | 49918 |16 |Nem tudja feldolgozni a kérelmet. Nincs elég erőforrás a kérelem feldolgozásához.<br/><br/>A szolgáltatás jelenleg túlterhelt. Próbálkozzon újra később a kérelmet. |
 | 49919 |16 |Nem lehet folyamatot létrehozni vagy frissítési kérelem. Túl sok létrehozási és frissítési művelet előfizetéshez tartozó "% ld".<br/><br/>A szolgáltatás túlterhelt feldolgozása több létrehozása vagy kérelmek az előfizetés vagy a kiszolgáló frissítése. Kérelmek jelenleg nincs hozzáférésük erőforrás-optimalizálás. Lekérdezés [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) a függőben lévő műveletek. Várjon, amíg a létrehozás vagy frissítés függőben lévő kérelmek befejeződött vagy törölje az egyik a függőben lévő kérelmek, és próbálkozzon újra később. |
@@ -86,12 +86,12 @@ A következő hibák okozzák túlzott használt erőforrások az Azure SQL Data
 
 Kapcsolódó témakörök:
 
-* További részletes információk érhető el itt: [erőforrás-korlátozások az Azure SQL Database](sql-database-service-tiers.md).
+* További részletes információk érhető el itt: [erőforrás-korlátozások az Azure SQL Database](sql-database-service-tiers-dtu.md).
 
 | Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
-| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s korlátozást %d, és el lett érve. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers.md). |
-| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális száma: %d, és az adatbázis aktuális kihasználását: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers.md). |
+| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s korlátozást %d, és el lett érve. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális száma: %d, és az adatbázis aktuális kihasználását: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Az adatbázis elérte a üzenetméret-kvótája. Particionálhat vagy törölhet adatokat, dobjon el indexeket, vagy a dokumentációt a lehetséges megoldások megismeréséhez. |
 | 40549 |16 |Munkamenet meg lett szakítva, mert egy hosszú ideig futó tranzakció van. Próbálja lerövidíteni a tranzakciót. |
 | 40550 |16 |A munkamenet megszakadt, mert túl sok zárolások szerzett. Próbálja meg olvasása vagy egy tranzakción belül kevesebb sort módosítani. |
@@ -112,10 +112,10 @@ Hibák a következők létrehozása és a rugalmas készleteket használó kapcs
 | 40859 |EX_USER |A rugalmas készlet nem támogatja a szolgáltatási szint "%ls". |a rugalmas készlet szolgáltatási rétegben |Szolgáltatási szint nem támogatott rugalmas készlethez történő üzembe helyezéséhez. |Adja meg a megfelelő edition, vagy hagyja üresen az alapértelmezett szolgáltatásréteg használni szolgáltatási rétegben. |
 | 40860 |EX_USER |A rugalmas készlet "%ls" és a szolgáltatás "%ls" cél kombinációja érvénytelen. |a rugalmas készlet neve; szolgáltatási szint célkitűzésének neve |A rugalmas készlet és a szolgáltatási cél adható meg egyszerre csak akkor, ha a "ElasticPool" szolgáltatási cél van megadva. |Adja meg a rugalmas készlet és a szolgáltatási cél megfelelő kombinációja. |
 | 40861 |EX_USER |Az adatbázis-kiadás a(z) %. *ls' nem térhet el a rugalmas készlet szolgáltatási szintjétől, amelynek van a(z) %.* ls'. |adatbázis-kiadás, rugalmas készlet szolgáltatási szintjétől |Az adatbázis-kiadás nem egyezik a rugalmas készlet szolgáltatási szintjétől. |Ne adjon meg egy adatbázis-kiadás, amely eltér attól a rugalmas készlet szolgáltatási szintjétől.  Ne feledje, hogy az adatbázis-kiadás nem adható meg. |
-| 40862 |EX_USER |Rugalmas készlet nevének kell lennie. Ha a rugalmas készlet szolgáltatási célja meg van adva. |Nincs |Rugalmas készlet szolgáltatási célja nem azonosított egyértelműen egy rugalmas készlet. |Adja meg a rugalmas készlet nevét, ha használja a rugalmas készlet szolgáltatási célja. |
+| 40862 |EX_USER |Rugalmas készlet nevének kell lennie. Ha a rugalmas készlet szolgáltatási célja meg van adva. |None |Rugalmas készlet szolgáltatási célja nem azonosított egyértelműen egy rugalmas készlet. |Adja meg a rugalmas készlet nevét, ha használja a rugalmas készlet szolgáltatási célja. |
 | 40864 |EX_USER |A rugalmas készlet dtu-i verziójúnak kell lennie (%d) dtu-inak száma a szolgáltatási réteg a(z) %. * ls'. |A rugalmas készlet; dtu-i rugalmas készlet szolgáltatási szintjétől. |Kísérlet a minimális korlát alá a rugalmas készlet dtu-i. |Ismételje meg a minimális korlát legalább tárolókészlet rugalmas dtu-i beállítást. |
 | 40865 |EX_USER |A rugalmas készlet dtu-i nem lehet hosszabb (%d) dtu-inak száma a szolgáltatási réteg a(z) %. * ls'. |A rugalmas készlet; dtu-i rugalmas készlet szolgáltatási szintjétől. |Kísérlet a meghaladja a maximális rugalmas készlet dtu-i. |Próbálja meg újra a beállítást a rugalmas készlet dtu-i nem lehet nagyobb a maximálisan megengedettet. |
-| 40867 |EX_USER |A dtu-k adatbázisonkénti maximális értéke nem lehet kevesebb legalább (%d) szolgáltatási szinthez a(z) %. * ls'. |DTU k adatbázisonkénti maximális értékét; a rugalmas készlet szolgáltatási rétegben |Kísérlet a DTU maximális támogatott meghaladja az adatbázisonként. | a rugalmas készlet szolgáltatási szintjétől, amely támogatja a kívánt beállítás használatával onsider. |
+| 40867 |EX_USER |A dtu-k adatbázisonkénti maximális értéke nem lehet kevesebb legalább (%d) szolgáltatási szinthez a(z) %. * ls'. |DTU k adatbázisonkénti maximális értékét; a rugalmas készlet szolgáltatási rétegben |Kísérlet a DTU maximális támogatott meghaladja az adatbázisonként. | Érdemes lehet a rugalmas készlet szolgáltatási szintjétől, amely támogatja a kívánt beállítást. |
 | 40868 |EX_USER |A dtu-k adatbázisonkénti maximális értéke nem lehet nagyobb, mint (%d) szolgáltatási réteg a(z) %. * ls'. |DTU k adatbázisonkénti maximális értékét; rugalmas készlet szolgáltatási szintjétől. |Kísérlet a DTU maximális száma a támogatott határon túlra adatbázisonként. | Érdemes lehet a rugalmas készlet szolgáltatási szintjétől, amely támogatja a kívánt beállítást. |
 | 40870 |EX_USER |A DTU-k adatbázisonkénti minimális nem lehet nagyobb, mint (%d) szolgáltatási réteg a(z) %. * ls'. |DTU-k minimális száma az adatbázisban. rugalmas készlet szolgáltatási szintjétől. |A DTU-k száma a támogatott határon túlra adatbázisonkénti minimális kísérlet. | Érdemes lehet a rugalmas készlet szolgáltatási szintjétől, amely támogatja a kívánt beállítást. |
 | 40873 |EX_USER |Adatbázisok (%d) és a DTU-k (%d) adatbázisonkénti minimális száma nem haladhatja meg a dtu-inak száma a rugalmas készlet (%d). |Adatbázisok rugalmas készlethez; száma DTU-k minimális száma az adatbázisban. A rugalmas készlet dtu-k. |Adja meg a DTU-k minimális az adatbázisok rugalmas készletben, amelynek hossza meghaladja a rugalmas készlet dtu-i próbál. | Érdemes megfontolni a rugalmas készlet dtu-i, vagy csökkentse a DTU-k adatbázisonkénti minimális csökkentheti a rugalmas készletben lévő adatbázisok számát. |
@@ -173,11 +173,11 @@ Hibák a következők nem minden korábbi kategóriába tartoznak.
 | 40607 |16 |A Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában. |
 | 40611 |16 |Kiszolgálók rendelkezhet legfeljebb 128 tűzfalszabály definiálható. |
 | 40614 |16 |A tűzfalszabály kezdő IP-cím nem haladhatja meg a záró IP-cím. |
-| 40615 |16 |Nem nyitható meg a kiszolgáló a bejelentkezés által kért "{0}". Ügyfél IP-cím "{1}" nem engedélyezett a kiszolgálóhoz való hozzáféréshez.<br /><br />Engedélyezi a hozzáférést, az SQL-adatbázis portálon, vagy futtassa a sp\_beállítása\_tűzfal\_a főadatbázison való futtatásával hozzon létre egy tűzfalszabályt ehhez IP-cím vagy a címtartomány-szabályok. A módosítás érvénybe lépéséhez akár öt percet is igénybe vehet. |
+| 40615 |16 |Nem nyitható meg a kiszolgáló "{0}" a bejelentkezés által kért. IP-című ügyfél{1}"nem engedélyezett a kiszolgálóhoz való hozzáféréshez.<br /><br />Engedélyezi a hozzáférést, az SQL-adatbázis portálon, vagy futtassa a sp\_beállítása\_tűzfal\_a főadatbázison való futtatásával hozzon létre egy tűzfalszabályt ehhez IP-cím vagy a címtartomány-szabályok. A módosítás érvénybe lépéséhez akár öt percet is igénybe vehet. |
 | 40617 |16 |A tűzfalszabály-név, amely elindítja a (szabály neve) értéke túl hosszú. Maximális hossza 128. |
 | 40618 |16 |A tűzfalszabály-név nem lehet üres. |
 | 40620 |16 |A felhasználó bejelentkezése sikertelen volt: "%.&#x2a;ls". A jelszó módosítása sikertelen volt. Bejelentkezéskori jelszómódosítás nem támogatott az SQL Server jelen verziójában. |
-| 40627 |20 |A kiszolgáló "{0}" és az adatbázis "{1}" művelet van folyamatban. Várjon néhány percet, majd próbálja újra. |
+| 40627 |20 |A művelet kiszolgálón "{0}"és az adatbázis"{1}" folyamatban van. Várjon néhány percet, majd próbálja újra. |
 | 40630 |16 |Jelszó érvényesítése sikertelen volt. A jelszó nem felel meg házirend követelményeinek, mert túl rövid. |
 | 40631 |16 |A megadott jelszó nem túl hosszú. A jelszót kell legfeljebb 128 karakterből állhat. |
 | 40632 |16 |Jelszó érvényesítése sikertelen volt. Mivel az nem elég bonyolult a jelszó nem felel meg házirend követelményeinek. |
@@ -205,5 +205,6 @@ Hibák a következők nem minden korábbi kategóriába tartoznak.
 
 ## <a name="next-steps"></a>További lépések
 * További információ a [Azure SQL adatbázis-szolgáltatások](sql-database-features.md).
-* További információ a [szolgáltatásszintek](sql-database-service-tiers.md).
+* További információ a [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md).
+* További információ a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md).
 
