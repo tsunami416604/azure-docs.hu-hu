@@ -1,0 +1,1 @@
+**Érintett termékek:**![igen](media/analysis-services-appliesto/yes.png)Azure Analysis Services![igen](media/analysis-services-appliesto/yes.png)SQL Server Analysis Services (2017-es vagy újabb)
