@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: febeb2b7e6ada69db78cb0553b4fa90874f5f2eb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 17b2f1b65463f87f81ffe06bae5ac559a84bcb2a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Oktatóanyag: ASP.NET Core-alkalmazás monitorozása és diagnosztizálása a Service Fabric szolgáltatásban
-Ez az oktatóanyag egy sorozat negyedik része. A Service Fabric-fürtön futó ASP.NET Core alkalmazás Application Insights használatával való monitorozása és diagnosztizálása beállításának lépéseit írja le. Telemetriát gyűjtünk az oktatóanyag [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) című első részében kifejlesztett alkalmazásból. 
+Ez az oktatóanyag egy sorozat ötödik része. A Service Fabric-fürtön futó ASP.NET Core alkalmazás Application Insights használatával való monitorozása és diagnosztizálása beállításának lépéseit írja le. Telemetriát gyűjtünk az oktatóanyag [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) című első részében kifejlesztett alkalmazásból. 
 
 Az oktatóanyag-sorozat negyedik részében az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -35,6 +35,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md)
 > * [Az alkalmazás üzembe helyezése egy távoli fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [HTTPS-végpont hozzáadása ASP.NET Core kezelőfelületi szolgáltatáshoz](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [A CI/CD konfigurálása a Visual Studio Team Services használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * Monitorozás és diagnosztika beállítása az alkalmazáshoz
 
@@ -104,8 +105,7 @@ A következő lépéseket kell végrehajtani a NuGet beállításához:
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
     
-    2. A *CreateServiceInstanceListeners()* vagy a *CreateServiceReplicaListeners()* beágyazott *return* utasításában, a *ConfigureServices* > *services* alatt a két meghatározott Singleton szolgáltatás közé adja hozzá a következőt: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`.
-    Ez hozzáadja a *szolgáltatáskörnyezetet* a telemetriához, így jobban megértheti a telemetria forrását az Application Insightsban. A *VotingWeb.cs* fájlban lévő beágyazott *return* utasításnak így kell kinéznie:
+    2. A *CreateServiceInstanceListeners()* vagy a *CreateServiceReplicaListeners()* beágyazott *return* utasításában, a *ConfigureServices* > *services* alatt a két meghatározott Singleton szolgáltatás között adja hozzá a következőt: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`. Ez hozzáadja a *szolgáltatáskörnyezetet* a telemetriához, így jobban megértheti a telemetria forrását az Application Insightsban. A *VotingWeb.cs* fájlban lévő beágyazott *return* utasításnak így kell kinéznie:
     
     ```csharp
     return new WebHostBuilder()

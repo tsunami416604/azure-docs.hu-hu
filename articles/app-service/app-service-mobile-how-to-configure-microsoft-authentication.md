@@ -1,34 +1,34 @@
 ---
-title: "Az App Service szolgáltatások alkalmazás Microsoft Account hitelesítés konfigurálása"
-description: "Megtudhatja, hogyan konfigurálja az App Service szolgáltatások alkalmazás Microsoft Account hitelesítést."
+title: Az App Service szolgáltatások alkalmazás Microsoft Account hitelesítés konfigurálása
+description: Megtudhatja, hogyan konfigurálja az App Service szolgáltatások alkalmazás Microsoft Account hitelesítést.
 author: mattchenderson
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 67386b03ae4cc683fe00e11e8dad19d1442eff09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fb5bdf30502dbca3eba961165a1ab643427abd6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Az App Service alkalmazás használatához Microsoft Account bejelentkezés konfigurálása
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service-nek Microsoft Account használja, mint egy hitelesítésszolgáltatót. 
 
-## <a name="register-microsoft-account"></a>Regisztrálja az alkalmazást a Microsoft-fiók
+## <a name="register-microsoft-account"> </a>Regisztrálja az alkalmazást a Microsoft-fiók
 1. Jelentkezzen be a [Azure-portálon], és keresse meg az alkalmazás. Másolás a **URL-cím**, amelyet később az alkalmazás konfigurálása a Microsoft Account használhat.
 2. Keresse meg a [saját alkalmazások] a Microsoft Account Developer Center weblapjára, és jelentkezzen be Microsoft-fiókjával, ha szükséges.
-3. Kattintson a **hozzáadhat egy alkalmazást**, majd írja be az alkalmazás nevét, majd kattintson **alkalmazás létrehozása**.
+3. Kattintson a **hozzáadhat egy alkalmazást**, majd írja be az alkalmazás nevét, majd kattintson **létrehozása**.
 4. Jegyezze fel a **Alkalmazásazonosító**, mert később szüksége lesz az. 
 5. Kattintson a "Platformok," **hozzáadása Platform** válassza ki a "Web".
 6. A "Átirányítási URI-k" adja meg a végpont az alkalmazáshoz, majd kattintson az **mentése**. 
@@ -42,7 +42,7 @@ Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service-nek Micro
     > [!IMPORTANT]
     > A jelszó nem egy fontos biztonsági hitelesítő adatok. Ne ossza meg senkivel a jelszót, vagy eloszthatják azt egy ügyfél-alkalmazással.
 
-## <a name="secrets"></a>Az App Service alkalmazás azon Microsoft-fiók hozzáadása
+## <a name="secrets"> </a>Microsoft Account adatait hozzá az App Service alkalmazáshoz
 1. Vissza a [Azure-portálon], keresse meg az alkalmazás, kattintson a **beállítások** > **hitelesítési / engedélyezési**.
 2. Ha a hitelesítési / engedélyezési funkció nincs engedélyezve, kapcsolja **a**.
 3. Kattintson a **Microsoft-fiók**. Illessze be az alkalmazás Azonosítóját és jelszavát értékek, amelyek korábban beszerzett, és opcionálisan engedélyezése az alkalmazás által igényelt összes hatókörök. Ezután kattintson az **OK** gombra.
@@ -55,7 +55,7 @@ Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service-nek Micro
 
 Most már készen áll a Microsoft Account használja a hitelesítéshez, az alkalmazásban.
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+## <a name="related-content"> </a>Kapcsolódó tartalom
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->

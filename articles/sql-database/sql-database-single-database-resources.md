@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 87cd4c565a7429ffb7096034823a1f5ff49df195
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1fe162beca258fe8ec3d03ce2844c1abe3176dc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Az Azure SQL-adatbázis egy adatbázis-erőforrások kezelése
 
@@ -79,7 +79,7 @@ Beállítása vagy módosítása az Azure SQL-adatbázisok a szolgáltatási szi
 | --- | --- |
 |[ADATBÁZIS (az Azure SQL Database) létrehozása](/sql/t-sql/statements/create-database-azure-sql-database)|Egy új adatbázist hoz létre. Kell csatlakoznia a főadatbázison való futtatásával hozzon létre egy új adatbázist.|
 | [Az ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Azure SQL-adatbázis módosítása. |
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Egy Azure SQL database vagy az Azure SQL Data Warehouse esetében adja vissza a edition (szolgáltatási réteg), a szolgáltatási cél (IP-címek) és a rugalmas készlet nevét. Ha be van jelentkezve a főadatbázishoz egy Azure SQL adatbázis-kiszolgáló, az összes adatbázis ad vissza adatokat. Az Azure SQL Data Warehouse kell csatlakoznia a fő adatbázist.|
+|[sys.database_service_objectives (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Egy Azure SQL database vagy az Azure SQL Data Warehouse esetében adja vissza a edition (szolgáltatási réteg), a szolgáltatási cél (IP-címek) és a rugalmas készlet nevét. Ha be van jelentkezve a főadatbázishoz egy Azure SQL adatbázis-kiszolgáló, az összes adatbázis ad vissza adatokat. Az Azure SQL Data Warehouse kell csatlakoznia a fő adatbázist.|
 |[sys.database_usage (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-usage-azure-sql-database)|Felsorolja a száma, típusa és az Azure SQL Database-kiszolgálón lévő adatbázis időtartama.|
 
 A következő példa bemutatja az adatbázis maximális méretét az ALTER DATABASE parancs használatával a következőre változik:
@@ -109,6 +109,6 @@ Beállítása vagy módosítása az Azure SQL-adatbázisok szolgáltatási szint
 
 ## <a name="next-steps"></a>További lépések
 
-- További tudnivalók a szolgáltatási szinteket, teljesítményszintjeivel és tárolási összegek, lásd: [szolgáltatásszintek](sql-database-service-tiers.md).
+- További tudnivalók a szolgáltatási szinteket, teljesítményszintjeivel és tárolási összegek, lásd: [[alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md).
 - További tudnivalók a rugalmas készletek című [rugalmas készletek](sql-database-elastic-pool.md).
 - További tudnivalók [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md)

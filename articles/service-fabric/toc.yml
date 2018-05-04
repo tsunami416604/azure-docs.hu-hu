@@ -246,11 +246,13 @@
       items:
         - name: Monitorozás áttekintése
           href: service-fabric-diagnostics-overview.md
-        - name: Fürtesemények
+        - name: Fürtmonitorozás
           href: service-fabric-diagnostics-event-generation-infra.md
           items:
-            - name: Műveleti csatorna
-              href: service-fabric-diagnostics-event-generation-operational.md
+            - name: Service Fabric-események
+              href: service-fabric-diagnostics-events.md
+            - name: Az EventStore áttekintése
+              href: service-fabric-diagnostics-eventstore.md
             - name: A Reliable Services eseményei
               href: service-fabric-reliable-services-diagnostics.md
             - name: A Reliable Actors eseményei
@@ -507,6 +509,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Azure Resource Manager
                   href: service-fabric-cluster-creation-via-arm.md
+                - name: A tanúsítvány köznapi nevét használó fürt
+                  href: service-fabric-create-cluster-using-cert-cn.md
             - name: Méretezés
               items:
                 - name: Manuálisan
@@ -519,6 +523,10 @@
               href: service-fabric-cluster-security-roles.md
             - name: Port megnyitása a terheléselosztóban
               href: create-load-balancer-rule.md
+            - name: Fürttanúsítvány módosítása köznapi névre
+              href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+            - name: Fürttanúsítványok manuális váltása
+              href: service-fabric-cluster-rollover-cert-cn.md
             - name: Fürttanúsítványok kezelése
               href: service-fabric-cluster-security-update-certs-azure.md
             - name: Törlés
@@ -567,6 +575,8 @@
               href: service-fabric-diagnostics-oms-containers.md
         - name: Fürtök monitorozása
           items:
+            - name: EventStore API-k lekérdezése
+              href: service-fabric-diagnostics-eventstore-query.md
             - name: Windows Azure Diagnostics
               href: service-fabric-diagnostics-event-aggregation-wad.md
             - name: Linux Azure Diagnostics
@@ -630,6 +640,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST
       href: /rest/api/servicefabric
+    - name: Service Fabric-események
+      href: service-fabric-diagnostics-event-generation-operational.md
     - name: Fürtbeállítások és a Fabric frissítési szabályzatának konfigurálása
       href: service-fabric-cluster-fabric-settings.md
     - name: Szolgáltatásmodell XML-sémája

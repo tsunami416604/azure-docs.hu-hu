@@ -1,25 +1,22 @@
 ---
-title: A webes alkalmazás közzététele egy Azure virtuális gépre a Visual Studio eszközből |} Microsoft Docs
+title: A webes alkalmazás közzététele egy Azure virtuális gépre a Visual Studio eszközből
 description: A Visual Studióból egy Azure virtuális géphez ASP.NET webes alkalmazás közzététele
 services: virtual-machines-windows
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 tags: azure-service-management
 ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: dotnet
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: aspnet
+ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: f236a00ef86f58d4d266a19d74485984d9ddb691
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d9e2c1a941c25aedd9048f2784350106b8739dba
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET webes alkalmazások közzététele egy Azure virtuális gépre a Visual Studio eszközből
 
@@ -48,7 +45,7 @@ A következő szakasz ismerteti, hogyan közzététele egy Azure virtuális gép
 5. Válassza ki a megfelelő fiókot (az Azure-előfizetés csatlakoztatva a virtuális gép).  
    - Ha be van jelentkezve Visual Studio, a fiókok listáján megjelenik a hitelesített fiókok.  
    - Ha nincs bejelentkezve, vagy ha van szüksége a fiók nem szerepel, válassza a "Fiók hozzáadása...", és kövesse az utasításokat a bejelentkezéshez.  
-   ![Azure Account Selector]  
+   ![Azure-fiók választó]  
 
 6. Válassza ki a megfelelő virtuális Gépet a listából a meglévő virtuális gépek.
 
@@ -81,7 +78,7 @@ Most már sikeresen közzétette a webalkalmazás az Azure virtuális géphez.
 
 A Közzététel varázsló befejezése után a közzététel lap megnyitása a dokumentumban is a megadott új közzétételi profilhoz.
 
-### <a name="re-publish"></a>Re-publish
+### <a name="re-publish"></a>Tegye közzé újra
 
 A frissítések közzétételéhez a webalkalmazást, válassza ki a **közzététel** gombra a Publish oldalán.  
 - Ha a rendszer kéri, adja meg a felhasználónevet és jelszót.  

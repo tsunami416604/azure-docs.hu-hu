@@ -1,21 +1,21 @@
 ---
-title: "Párhuzamos számítási feladat feldolgozása – Azure Batch .NET"
-description: "Oktatóanyag – Médiafájlok párhuzamos átkódolása ffmpeg segítségével az Azure Batchben a Batch .NET ügyfélkódtár használatával"
+title: Párhuzamos számítási feladat feldolgozása – Azure Batch .NET
+description: Oktatóanyag – Médiafájlok párhuzamos átkódolása ffmpeg segítségével az Azure Batchben a Batch .NET ügyfélkódtár használatával
 services: batch
 author: dlepow
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1100f8fddcd2f802b5f38e0b9789bc9ec359e03a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 57fc70d5b47f18affa90e1153884e8af23d937ec
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
@@ -38,7 +38,7 @@ Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formá
 
 * [Visual Studio IDE](https://www.visualstudio.com/vs) (a Visual Studio 2015-ös vagy újabb verziója). 
 
-* Egy Batch-fiók és egy társított, általános célú tárfiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
+* Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat.
 
 * [Az ffmpeg 3.4 64 bites Windowshoz készült verziója](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Töltse le a .zip-fájlt a helyi számítógépére. Ebben az oktatóanyagban csak a .zip-fájlra lesz szüksége. A fájlt nem kell sem kibontania, sem helyileg telepítenie. 
 

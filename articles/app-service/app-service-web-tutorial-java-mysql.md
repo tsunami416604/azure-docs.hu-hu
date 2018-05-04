@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 31951b609f7d819b532e6fa8cb02c702e9457253
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 0f88ca7c0353c4ab63bf4f6ca5509b0e4504929f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Oktatóanyag: Java- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -137,25 +137,50 @@ A `--location` paraméterhez használható lehetséges értékek megtekintéséh
 
 ### <a name="create-a-mysql-server"></a>MySQL-kiszolgáló létrehozása
 
-A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) paranccsal. A `<mysql_server_name>` helyőrző minden előfordulási helyére írja be saját, egyedi MySQL-kiszolgálónevét. Ez a név része a MySQL-kiszolgáló gazdanevének (`<mysql_server_name>.mysql.database.azure.com`), és globálisan egyedinek kell lennie. Az `<admin_user>` és az `<admin_password>` helyére is a saját értékeit írja.
+A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) paranccsal.
+
+Az alábbi parancsban írjon egy egyedi kiszolgálónevet a *\<mysql_name>*, egy felhasználónevet az *\<admin_user>*, valamint egy jelszót az *\<admin_password>* helyőrző helyére. A kiszolgálónév a postgreSQL-végpont (`https://<mysql_name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban.
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user <admin_user> --admin-password <admin_password>
+az mysql server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
+
+> [!NOTE]
+> Mivel az oktatóanyag több hitelesítő adattal dolgozik, a félreértések elkerülése érdekében az `--admin-user` és az `--admin-password` helyőrző értékekre van beállítva. Éles környezet esetén kövesse az ajánlott biztonsági eljárásokat, amikor megfelelő felhasználónevet és jelszót választ az Azure-ban található MySQL-kiszolgálóhoz.
+>
+>
 
 A MySQL-kiszolgáló létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg:
 
 ```json
 {
-  "administratorLogin": "admin_user",
-  "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "mysql_server_name.mysql.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/mysql_server_name",
-  "location": "northeurope",
-  "name": "mysql_server_name",
-  "resourceGroup": "mysqlJavaResourceGroup",
-  ...
-  < Output has been truncated for readability >
+  "additionalProperties": {},
+  "administratorLogin": "<admin_user>",
+  "earliestRestoreDate": "2018-04-19T22:56:40.990000+00:00",
+  "fullyQualifiedDomainName": "<mysql_name>.mysql.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
+  "location": "westeurope",
+  "name": "<mysql_server_name>",
+  "resourceGroup": "myResourceGroup",
+  "sku": {
+    "additionalProperties": {},
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
+    "size": null,
+    "tier": "GeneralPurpose"
+  },
+  "sslEnforcement": "Enabled",
+  "storageProfile": {
+    "additionalProperties": {},
+    "backupRetentionDays": 7,
+    "geoRedundantBackup": "Disabled",
+    "storageMb": 5120
+  },
+  "tags": null,
+  "type": "Microsoft.DBforMySQL/servers",
+  "userVisibleState": "Ready",
+  "version": "5.7"
 }
 ```
 
@@ -167,9 +192,13 @@ A Cloud Shellben az [`az mysql server firewall-rule create`](/cli/azure/mysql/se
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
+> [!TIP] 
+> Még szigorúbb tűzfalszabályt is megadhat, ha [csak azokat a kimenő IP-címeket használja, amelyeket alkalmazása használ](app-service-ip-addresses.md#find-outbound-ips).
+>
+
 ## <a name="configure-the-azure-mysql-database"></a>Az Azure MySQL-adatbázis konfigurálása
 
-A helyi terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. Használja az `<admin_user>` és a `<mysql_server_name>` korábban megadott értékeit.
+A helyi terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. A _&lt;mysql_server_name>_ helyőrzőnél használja a korábban megadott értéket. Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
 
 ```bash
 mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p

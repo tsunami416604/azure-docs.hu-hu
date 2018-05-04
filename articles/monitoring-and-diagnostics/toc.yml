@@ -67,6 +67,8 @@
           href: insights-alerts-powershell.md
         - name: Naplóriasztásokra vonatkozó webhook-műveletek
           href: monitor-alerts-unified-log-webhook.md
+        - name: Új metrikariasztás létrehozása Resource Manager-sablonnal
+          href: monitoring-create-metric-alerts-with-templates.md
         - name: Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
           href: monitoring-enable-alerts-using-template.md
         - name: Riasztások másolása az OMS-portálról az Azure Portalba

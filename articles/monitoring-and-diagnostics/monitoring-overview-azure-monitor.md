@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 1ba2f2be8db424bddfccdf374704ec7be5691feb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 9a9166e93d24f6402d849b1bee3bcf470685c814
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="overview-of-azure-monitor"></a>Az Azure figyelő áttekintése
 Ez a cikk áttekintést nyújt az Azure-figyelő szolgáltatás a Microsoft Azure-ban. Azt ismerteti, milyen Azure figyelő nem, és ez a témakör további információkra mutató hivatkozások használata az Azure-figyelő.  Videó tetszés szerint tekintse meg a következő lépéseket hivatkozások Ez a cikk alján. 
@@ -108,7 +108,7 @@ Példák erre vonatkozóan:
 
 ### <a name="store-and-archive"></a>Tároló kapcsolatos és archiválási
 Néhány figyelési adatok már tárolt és elérhető az Azure-figyelő a beállított időn. 
-- Metrikák 30 napig tárolja. 
+- Metrikák 90 napig tárolja. 
 - Tevékenység naplóbejegyzések 90 napig tárolja. 
 - Diagnosztikai naplók egyáltalán nem tárolja. 
 

@@ -22,7 +22,7 @@
 ### [A Stretch Database letiltása](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=sql-server-database)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=sql-server-database)
 
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

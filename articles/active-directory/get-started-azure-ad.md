@@ -1,25 +1,25 @@
 ---
-title: "Ismerkedés az Azure Active Directory |} Microsoft Docs"
-description: "Licencet lekérni, tartománynév hozzáadása, hozzon létre egyéni bejelentkezési oldal és vegye fel az önkiszolgáló jelszó-változtatási az Azure Active Directoryban"
-keywords: 
+title: Ismerkedés az Azure Active Directory |} Microsoft Docs
+description: Licencet lekérni, tartománynév hozzáadása, hozzon létre egyéni bejelentkezési oldal és vegye fel az önkiszolgáló jelszó-változtatási az Azure Active Directoryban
+keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: active-directory
 ms.workload: identity
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: 9e1a7337c2477455aa0b56f2147f46f3bf5293a8
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: eedcb80038179cf74666880816cb0b5416ac63fd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Ismerkedés az Azure AD szolgáltatással
 Az Identitáskezelés a modern szükséges méretezhető, egységes reliablity annak biztosítása érdekében az alkalmazások és szolgáltatások csak a hitelesített felhasználók elérhetőségét. A felhasználók, az informatikai részlegnek identity management igényeinek megfelelően támogatásához oly módon, mint egy szolgáltatott szoftverként (SaaS) alkalmazások jóváhagyott, nyilvános szoftver elérésére, a gazdagép belső üzletági alkalmazások, és a még akkor is, módjairól a helyszíni alkalmazások fejlesztéséhez és használati. Az összes követelménynek mutasson a felhőalapú identitás-kezelési megoldás a szükséges.      
@@ -81,7 +81,7 @@ A csoport-alapú licenc-hozzárendelést segítségével többek között a köv
 Hozzárendelt áttekintése és a rendelkezésre álló licencek **Azure Active Directory** > **licencek** > **összes**.
 
 ## <a name="configure-self-service-password-reset"></a>Önkiszolgáló jelszóátállítás konfigurálása
-[Az önkiszolgáló jelszó-változtatási (SSPR)](active-directory-passwords-getting-started.md) nyújt egy egyszerű azt jelenti, hogy a rendszergazdák engedélyezése a felhasználók visszaállíthassák vagy a jelszavak és a fiókok zárolásának feloldásához. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhasználatáról, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
+[Az önkiszolgáló jelszó-változtatási (SSPR)](authentication/quickstart-sspr.md) nyújt egy egyszerű azt jelenti, hogy a rendszergazdák engedélyezése a felhasználók visszaállíthassák vagy a jelszavak és a fiókok zárolásának feloldásához. A rendszer részletes, követhető jelentést tartalmaz a felhasználók rendszerhasználatáról, továbbá értesítőkkel figyelmeztet az illetéktelen használatra vagy visszaélésre.
 
 ### <a name="verification-step"></a>Ellenőrzési lépés
 Tekintse át az önkiszolgáló jelszó-Változtatási tulajdonságok engedélyezve **Azure Active Directory** > **jelszó-átállítási** annak érdekében, hogy a megfelelő felhasználói és a csoport-hozzárendelések lettek bevezetve. 

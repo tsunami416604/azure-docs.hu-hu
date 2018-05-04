@@ -1,8 +1,8 @@
 ---
-title: "Application Insights Profilkészítő engedélyezése az alkalmazások az Azure Felhőszolgáltatások erőforrások |} Microsoft Docs"
-description: "Megtudhatja, hogyan állíthat be az Application Insights Profilkészítő Azure Felhőszolgáltatások futó alkalmazást."
+title: Application Insights Profilkészítő engedélyezése az alkalmazások az Azure Felhőszolgáltatások erőforrások |} Microsoft Docs
+description: Megtudhatja, hogyan állíthat be az Application Insights Profilkészítő Azure Felhőszolgáltatások futó alkalmazást.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: ramach-msft
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ef6d8cb47971b1cf261edceb13485b940eff3d13
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Application Insights Profilkészítő engedélyezése az Azure virtuális gépek, a Service Fabric és az Azure Cloud Services csomag
 
@@ -40,7 +40,7 @@ Engedélyezni Profilkészítő, módosítania kell a konfigurációt a három he
 
 ## <a name="set-up-the-application-insights-instance"></a>Az Application Insights-példány beállítása
 
-1. [Hozzon létre egy új Application Insights-erőforrást](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource), vagy válasszon egy meglévőt. 
+1. [Hozzon létre egy új Application Insights-erőforrást](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource), vagy válasszon egy meglévőt. 
 
 2. Nyissa meg az Application Insights-erőforrást, és másolja a instrumentation kulcsot.
 
@@ -157,7 +157,7 @@ Teljes példákért lásd:
       További információ a diagnosztika bővítmény felvétele a központi telepítési sablont: [használata figyelési és diagnosztika a Windows virtuális gép és az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!TIP]
-> Virtuális gépek a fenti lépéseket a json-alapú helyett, hogy az Azure-portálon lépjen **virtuális gépek** > **diagnosztikai beállítások**  >  ** Fogadók esetében** > Set diagnosztikai adatok küldése az Application Insights- **engedélyezve** , és válassza az Application Insights-fiókkal vagy egy adott ikey.
+> Virtuális gépek a fenti lépéseket a json-alapú helyett, hogy az Azure-portálon lépjen **virtuális gépek** > **diagnosztikai beállítások**  >   **Fogadók esetében** > Set diagnosztikai adatok küldése az Application Insights- **engedélyezve** , és válassza az Application Insights-fiókkal vagy egy adott ikey.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 

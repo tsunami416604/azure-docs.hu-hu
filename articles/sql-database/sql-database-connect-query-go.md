@@ -11,11 +11,11 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: v-daveng
-ms.openlocfilehash: b10d3e469ffac22a2b0994708f50125d21496fef
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3585a47e0823a765bd59b28f4b399aed7c5fcae3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Go használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -23,7 +23,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használható a [Go](https://godoc.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató végrehajtásához győződjön meg arról, hogy megfelel az alábbi előfeltételeknek:
+A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 

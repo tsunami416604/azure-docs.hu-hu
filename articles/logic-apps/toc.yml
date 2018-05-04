@@ -299,10 +299,12 @@
     - name: Munkafolyamat-definíciós nyelvséma
       href: logic-apps-workflow-definition-language.md
       items:
+        - name: Munkafolyamat-műveletek és eseményindítók
+          href: logic-apps-workflow-actions-triggers.md
+        - name: Munkafolyamat-definíciós nyelv függvényei
+          href: workflow-definition-language-functions-reference.md
         - name: GA – Sémaelőzmények
           href: logic-apps-schema-2016-04-01.md
-    - name: Munkafolyamat-műveletek és eseményindítók
-      href: logic-apps-workflow-actions-triggers.md
     - name: Sémák nyomon követése
       items:
         - name: AS2-követési séma

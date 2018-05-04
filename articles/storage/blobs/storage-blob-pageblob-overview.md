@@ -6,13 +6,13 @@ author: anasouma
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/30/2018
 ms.author: wielriac
-ms.openlocfilehash: 5d1ad1555cb1e01e363456af5c50ecd090ce7147
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 79590e1987ee29ca06f9fb103f548518b2c1c57e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Az Azure lapblobokat egyedi jellemzői
 
@@ -21,9 +21,6 @@ Az Azure Storage blob storage háromféle biztosít: Blokkblobokat, hozzáfűző
 Lapblobokat 512 bájtos lapok, amelyek lehetővé teszik a olvasási/írási bájt tetszőleges tartományok gyűjteménye. Ezért lapblobokat tárolására alkalmasak index alapján és ritka adatstruktúrák operációsrendszer- és adatlemezek például a virtuális gépek és adatbázisok. Például Azure SQL Database használja lapblobokat az állandó tároló az adatbázisok. Továbbá a tartomány-alapú frissítéseket tartalmazó fájlokat is gyakran használják lapblobokat.  
 
 Azure lapblobokat kulcsfunkciói a következők: a REST-felület, a tároló és az Azure-bA zökkenőmentes áttelepítés képességek tartósságát. Ezek a szolgáltatások a következő szakasz részletesen ismerteti. Emellett Azure lapblobokat jelenleg támogatott a két típusú tárhelyek: prémium és Standard tárolására. Prémium szintű Storage kifejezetten konzisztens nagy teljesítményt és alacsony késési igényű, így ideális, ha magas performant adatokat tároló adatbázis premium lapblobokat igénylő munkaterhelések készült.  Standard szintű tárolást költséghatékonyabb késésre nem érzékeny munkaterhelések futtatására.
-
-> [!WARNING]
-> Prémium szintű Storage a lapblobokat használatra lettek tervezve merevlemezekként csak. A Microsoft nem javasolja más típusú adatok tárolása a prémium szintű Storage, a lapblobokat, a költség jelentősen nagyobb lehet. Blokkblobok használata, amely nincs a virtuális merevlemez adatainak tárolásához.
 
 ## <a name="sample-use-cases"></a>Példa használati esetek
 

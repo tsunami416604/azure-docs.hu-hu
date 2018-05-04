@@ -1,23 +1,19 @@
 ---
-title: "Az Azure Search .NET Management SDK 2-es verzió frissítése |} Microsoft Docs"
-description: "Az Azure Search .NET Management SDK 2-es verzió frissítése"
-services: search
-documentationcenter: 
+title: Az Azure Search .NET Management SDK 2-es verzió frissítése |} Microsoft Docs
+description: Az Azure Search .NET Management SDK 2-es verzió frissítése
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
+ms.author: brjohnst
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: brjohnst
-ms.openlocfilehash: ade32dcb4e0885c251c17fad46fb753b6134d027
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: a6b6c01f0cc811abca90139e4c26c27b7bd7119f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrading-to-the-azure-search-net-management-sdk-version-2"></a>Az Azure Search .NET Management SDK 2-es verzió frissítése
 1.0.2-es verzióját használata vagy a régebbi a [Azure Search .NET SDK-t felügyeleti](https://aka.ms/search-mgmt-sdk), ez a cikk segít frissíteni az alkalmazást a 2-es verziója.
@@ -29,7 +25,7 @@ Az Azure Search .NET SDK felügyeleti 2-es verziója korábbi verzióihoz képes
 ## <a name="whats-new-in-version-2"></a>2-es verzió újdonságai
 Az Azure Search .NET SDK felügyeleti 2 verzióját célozza ugyanazon általánosan elérhető verziójának az Azure Search felügyeleti REST API SDK korábbi, mint kifejezetten 2015-08-19. A módosítások az SDK módosulnak szigorúan ügyféloldali az SDK-t a használhatóság javítása érdekében. Ezek a változások közé tartoznak a következők:
 
-* `Services.CreateOrUpdate`az aszinkron verzióival mostantól automatikusan lekérdezik a kiépítés és `SearchService` és befejezéséig szolgáltatás kiépítése nem adják vissza. Ezáltal, nem kell saját kezűleg ilyen lekérdezési kód írása.
+* `Services.CreateOrUpdate` az aszinkron verzióival mostantól automatikusan lekérdezik a kiépítés és `SearchService` és befejezéséig szolgáltatás kiépítése nem adják vissza. Ezáltal, nem kell saját kezűleg ilyen lekérdezési kód írása.
 * Ha meg kívánja, és kérdezze le a manuális létesítési szolgáltatás, az új használható `Services.BeginCreateOrUpdate` metódus vagy az aszinkron verziók egyike.
 * Új módszerek `Services.Update` és az aszinkron verzióival érhetőek el az SDK-t. Ezek a módszerek segítségével HTTP javítására, de támogatja a növekményes frissítést a szolgáltatás. Például most szolgáltatás is skálázható egy úgy, hogy egy `SearchService` ezeket a módszereket, amely tartalmazza a csak a kívánt példány `partitionCount` és `replicaCount` tulajdonságok. Hívása a régi módja `Services.Get`, a visszaadott módosítása `SearchService`, és átadja azt a `Services.CreateOrUpdate` továbbra is támogatott, de már nem szükséges. 
 

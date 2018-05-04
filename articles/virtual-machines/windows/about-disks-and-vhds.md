@@ -10,11 +10,11 @@ ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 3d82416b7382b8e09706fd7fb8af9e1d3fe79f01
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e95b5a6037c791f501a04ebe468b1c781805f693
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Lemezek tárolás Azure Windows virtuális gépek
 Csakúgy, mint bármely más számítógépre az Azure virtuális gépek lemezek használatával egy olyan hely az operációs rendszerek, alkalmazások és adatok tárolására. Minden Azure virtuális gépek legalább két lemezt – a Windows operációs rendszer és egy ideiglenes lemezzel rendelkezik. Az operációs rendszer lemez létrehozása lemezkép, és mind az operációsrendszer-lemez, és a lemezkép virtuális merevlemezeket (VHD) Azure-tárfiók tárolja. Virtuális gépek is rendelkeznek legalább egy adatlemezt, virtuális merevlemezekként is tárolt. 
@@ -70,7 +70,7 @@ fsutil behavior set DisableDeleteNotify 0
 ```
 
 > [!NOTE]
-> Megjegyzés: A vágás támogatása kezdődik-e a Windows Server 2012 vagy Windows 8 és újabb verzióiban lásd: lásd: [új API lehetővé teszi, hogy a mutatók "Vágás és megfeleltetésének törlése" küldendő tárolási adathordozókon alkalmazások](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
+> Megjegyzés: A vágás támogatása kezdődik-e a Windows Server 2012 vagy Windows 8 és újabb verzióiban lásd: [új API lehetővé teszi, hogy a mutatók "Vágás és megfeleltetésének törlése" küldendő tárolási adathordozókon alkalmazások](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
 > 
 
 <!-- Might want to match next-steps from overview of managed disks -->

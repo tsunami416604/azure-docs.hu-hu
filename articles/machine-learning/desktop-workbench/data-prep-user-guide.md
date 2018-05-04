@@ -1,6 +1,6 @@
 ---
-title: "Részletes útmutató az Azure Machine Learning adatok előkészített használata |} Microsoft Docs"
-description: "Ez a dokumentum nyújt áttekintést és az Azure Machine Learning adatok előkészített adatok problémáinak megoldásával kapcsolatos részletek"
+title: Részletes útmutató az Azure Machine Learning adatok előkészített használata |} Microsoft Docs
+description: Ez a dokumentum nyújt áttekintést és az Azure Machine Learning adatok előkészített adatok problémáinak megoldásával kapcsolatos részletek
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 9fc0ae8929f12447123321a5c64ac89309c68dca
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-preparations-user-guide"></a>Adatok előkészített felhasználói útmutatója 
 Az Azure Machine Learning adatok előkészített élmény nagy mennyiségű funkciók széles körét biztosítja. Ez a cikk a felhasználói élmény a legalsó szintű részeit dokumentumokat.

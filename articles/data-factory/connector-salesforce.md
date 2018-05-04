@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: e6440bfd3297ee68cd4ff79c8654b5f97cba077e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f4de97ef2df5351ac7e8574717ee1439b54a90e8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a kezdő és a Salesforce Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -238,7 +238,7 @@ Adatok másolása Salesforce, állítsa be a fogadó típusa a másolási tevék
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani **SalesforceSink**. | Igen |
 | WriteBehavior | Az írási viselkedésének a művelethez.<br/>Két érték engedélyezett **beszúrása** és **Upsert**. | Nem (alapértelmezett érték Insert) |
 | externalIdFieldName | A külső azonosító mezőben a upsert művelet neve. A megadott mező "Külső azonosító mezője" a Salesforce-objektum definiálni kell. A megfelelő bemeneti adatok azt nem lehet NULL értékeket. | Igen, a "Upsert" |
-| writeBatchSize | A sorok számát az egyes kötegekben Salesforce írt adatok. | Nem (alapértelmezett érték 5 000) |
+| WriteBatchSize | A sorok számát az egyes kötegekben Salesforce írt adatok. | Nem (alapértelmezett érték 5 000) |
 | ignoreNullValues | Azt jelzi, hogy figyelmen kívül hagyja a bemeneti adat NULL értékek írási művelet során.<br/>Két érték engedélyezett **igaz** és **hamis**.<br>- **Igaz**: változatlanul a célobjektum lévő adatokat egy upsert vagy az update művelet végrehajtásakor. Szúrja be egy meghatározott alapértelmezett értéket, ha így tesz, az insert művelet.<br/>- **Hamis**: frissítse a célobjektum adatait NULL értékre, ha így tesz, upsert vagy az update művelet. Helyezze be NULL értékre, ha így tesz, az insert művelet. | Nem (alapértelmezett értéke "false") |
 
 **Példa: Salesforce fogadó a a másolási tevékenység**
@@ -294,7 +294,7 @@ A Salesforce Lomtárból letölthető a törölt rekordok lekérdezéséhez mega
 A SOQL vagy SQL-lekérdezés megadása esetén a dátum és idő formátumú különbség figyelmet fordítania. Példa:
 
 * **SOQL minta**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL-minta**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}"`
+* **SQL-minta**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
 ## <a name="data-type-mapping-for-salesforce"></a>Adattípus-leképezést Salesforce
 
@@ -307,7 +307,7 @@ Salesforce adatokat másolni, ha a következő megfeleltetéseket segítségéve
 | Currency (Pénznem) |Dupla |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
-| E-mail cím |Karakterlánc |
+| E-mail |Karakterlánc |
 | Azonosító |Karakterlánc |
 | Keresési kapcsolat |Karakterlánc |
 | Többszörös kiválasztási lista |Karakterlánc |

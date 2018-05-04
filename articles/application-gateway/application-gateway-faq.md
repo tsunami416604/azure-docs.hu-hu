@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: 41d679d7660cbc35d6af8f9afc1a36e6e5c5c541
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Alkalmazásátjáró gyakori kérdések
 
@@ -178,6 +178,11 @@ Nem, de Alkalmazásátjáró riasztást küldjön, amikor a küszöbérték elé
 **Q. Fel/le OK állásidő, nem manuális méretezési?**
 
 Állásidő nélkül, a frissítési tartományok és a tartalék tartományok között elosztott példányok.
+
+**Q. Nem az alkalmazás átjáró támogatja a kapcsolat kiürítése?**
+
+Igen. Beállíthatja, hogy a kapcsolat megszakítása nélkül háttérkészletbeli tagok módosítása kiürítését. Ez lehetővé teszi a meglévő kapcsolatok továbbra is az előző cél kell küldeni, amíg a kapcsolat le van zárva, vagy konfigurálható időkorlátja lejár. Vegye figyelembe, hogy a kapcsolat befejeződik az aktuális üzenetsoroktól kapcsolatok csak vár kiürítését. Alkalmazásátjáró nem tehát tudatában alkalmazás munkamenet-állapot.
+
 
 **Q. Módosítható példányméretének a közepes vagy nagyméretű megszakítása nélkül?**
 

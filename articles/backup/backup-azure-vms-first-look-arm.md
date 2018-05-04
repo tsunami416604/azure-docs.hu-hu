@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: markgal;jimpark
+ms.author: markgal;jimpark;sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6a29e184a47e3b4304f9c4683e76feab3e75dd4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 701accb107931bd1f4472d8999102fecb4fd6373
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Biztonsági másolatot az Azure virtuális gépek Recovery Services-tároló
 
@@ -39,7 +39,9 @@ A Prémium szintű tárolós virtuális gépek védelméről további informáci
 Mi is, és nem készíthető biztonsági másolat kapcsolatos további tudnivalókért lásd: [készítse elő a környezetet a biztonsági mentése Azure virtuális gépek](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
 
 > [!NOTE]
-> Ez az oktatóprogram feltételezi, hogy Ön már rendelkezik egy virtuális géppel az Azure-előfizetésében, és hogy lépéseket tett azért, hogy a biztonsági mentési szolgáltatás hozzáférjen a virtuális géphez.
+> A biztonsági mentési szolgáltatás hoz létre egy külön erőforráscsoportot, mint az erőforráscsoport, a virtuális gép visszaállítási pont gyűjtemény tárolásához. Ügyfelek, hogy nem használható a biztonsági mentési szolgáltatása által létrehozott erőforráscsoport zárolása végigvitelével.
+A biztonsági mentési szolgáltatása által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_`<Geo>`_`<number>`
+<br>Például: AzureBackupRG_northeurope_1
 >
 >
 

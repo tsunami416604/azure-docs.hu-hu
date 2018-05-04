@@ -1,23 +1,19 @@
 ---
-title: "Több vállalat kiszolgálása az Azure Search modellezési |} Microsoft Docs"
-description: "További információk a közös tervminták több-bérlős SaaS-alkalmazásokhoz az Azure Search használata során."
-services: search
-manager: jhubbard
+title: Több vállalat kiszolgálása az Azure Search modellezési |} Microsoft Docs
+description: További információk a közös tervminták több-bérlős SaaS-alkalmazásokhoz az Azure Search használata során.
+manager: jlembicz
 author: ashmaka
-documentationcenter: 
-ms.assetid: 72e9696a-553b-47dc-9e05-a82db0ebf094
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: ashmaka
-ms.openlocfilehash: 622ae64e118dd2498aff0bf2e9f6c1dbfb0ab045
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 765f9c4600f762efdd7d57681529751e99c13894
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>A kialakítási minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Search
 Egy több-bérlős alkalmazás egyike, amellyel a bérlők számára nem látható, vagy semmilyen más bérlővel adatok megosztására tetszőleges számú szolgáltatások és képességei azonosak. Ez a dokumentum ismerteti a bérlő elkülönítési stratégiák több-bérlős alkalmazásokhoz az Azure Search beépített.
@@ -41,7 +37,7 @@ Hozzáadása és eltávolítása a partíció, és a replikákról lehetővé te
 ### <a name="service-and-index-limits-in-azure-search"></a>Az Azure Search szolgáltatás és az index korlátok
 Nincsenek különböző néhány [tarifacsomagok](https://azure.microsoft.com/pricing/details/search/) az Azure Search, hogy a rétegek mindegyiknek különböző [korlátozásai és a kvóták](search-limits-quotas-capacity.md). Ezek a korlátozások némelyike a szolgáltatás szintjén, a index szintjén vannak, és a partíció szintjén vannak.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Alapszintű | Standard1 | Standard (2) | Standard (3) | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximális replikák-szolgáltatás |3 |12 |12 |12 |12 |
 | Maximális partícióból szolgáltatás |1 |12 |12 |12 |3 |
@@ -130,7 +126,7 @@ Ez a módszer külön felhasználói fiókok, külön jogosultsági szintek funk
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure Search esetén számos alkalmazás kényszerítő választani [a szolgáltatás robusztus képességeivel kapcsolatos további](http://aka.ms/whatisazsearch). A különböző tervminták több-bérlős alkalmazások kiértékelését végzi, vegye figyelembe a [különböző árképzési szinteket](https://azure.microsoft.com/pricing/details/search/) és a megfelelő [szolgáltatási korlátait](search-limits-quotas-capacity.md) legjobb személyessé tétele az Azure Search alkalmazás megfelelően munkaterhelések és különböző méretű architektúráinak megfelelően.
 
 Bármely kérdések az Azure Search és a több-bérlős forgatókönyvek irányítható azuresearch_contact@microsoft.com.

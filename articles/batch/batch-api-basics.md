@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/28/2018
+ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1a202efd08de69e6e766c9c42047c01a03be4d96
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -79,10 +79,15 @@ Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is
 
 ## <a name="azure-storage-account"></a>Azure Storage-fiók
 
-Az erőforrásfájlok és a kimeneti fájlok tárolására a legtöbb Batch-megoldás az Azure Storage-ot használja.  
+Az erőforrásfájlok és a kimeneti fájlok tárolására a legtöbb Batch-megoldás az Azure Storage-ot használja. Például a Batch-tevékenységek (beleértve a szabványos, az indítási, a feladat-előkészítési és a feladatkiadási tevékenységeket) általában olyan erőforrásfájlokat határoznak meg, amelyek egy tárfiókban találhatók.
 
-A Batch jelenleg kizárólag az általános célú tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md#create-a-storage-account) című szakaszában található. A Batch-tevékenységeknek (beleértve a szabványos tevékenységeket, az indítási tevékenységeket, a feladat-előkészítési és a feladatkiadási tevékenységeket) olyan erőforrásfájlokat kell meghatározniuk, amelyek általános célú tárfiókokban találhatóak.
+A Batch az alábbi [Azure Storage-fiókokat](../storage/common/storage-account-options.md) támogatja:
 
+* Általános célú v2- (GPv2-) fiók 
+* Általános célú v1- (GPv1-) fiók
+* Blob Storage-fiókok
+
+A Batch-fiókhoz a Batch-fiók létrehozásakor vagy később is társíthat tárfiókot. Tárfiók kiválasztásakor vegye figyelembe a költségekre és teljesítményre vonatkozó követelményeket. A GPv2 és a Blob-tárfiók például magasabb [kapacitási és méretezhetőségi korlátokat](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) támogat a GPv1-hez képest. (Ha növelni szeretné a tárolási kapacitást, lépjen kapcsolatba az Azure ügyfélszolgálatával.) Ezek a fiókok növelhetik azon Batch-megoldások teljesítményét, amelyek a tárfiókba író vagy abból olvasó, nagy mennyiségű párhuzamos feladatot tartalmaznak.
 
 ## <a name="compute-node"></a>Számítási csomópont
 A számítási csomópontok olyan Azure-alapú virtuális gépek vagy Cloud Service-virtuális gépek, amelyek az alkalmazás adott számítási feladatának feldolgozására vannak kijelölve. A csomópont mérete határozza meg a CPU-magok számát, a memóriakapacitást és a csomóponthoz lefoglalt helyi fájlrendszeri méretet. Windows- és Linux-csomópontokból az Azure Cloud Services, az [Azure Virtual Machines Marketplace][vm_marketplace]-ről származó rendszerképek vagy az Ön által előkészített egyéni rendszerképek segítségével hozhat létre készleteket. Ezekről a lehetőségekről további információkat tudhat meg az alábbi, [Készlet](#pool) című fejezetben.
@@ -252,7 +257,7 @@ Amikor létrehozza a tevékenységet, a következőket kell megadnia:
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
     Ha a tevékenységeknek olyan alkalmazást vagy parancsfájlt is futtatniuk kell, amely nem tartozik a csomópont `PATH`- vagy referenciakörnyezet-változói közé, hívja meg explicit módon a rendszerhéját a feladat parancssorából.
-* A feldolgozni kívánt adatokat tartalmazó **erőforrásfájlok**. Ezeket a fájlokat a rendszer automatikusan a csomópontra másolja egy általános célú Azure Storage-fiók Blob Storage-tárhelyéből, mielőtt végrehajtja a tevékenység parancssorát. További információkért olvassa el az [Indítási tevékenység](#start-task) és a [Fájlok és könyvtárak](#files-and-directories) című fejezetet.
+* A feldolgozni kívánt adatokat tartalmazó **erőforrásfájlok**. Ezeket a fájlokat a rendszer automatikusan a csomópontra másolja egy Azure Storage-fiók Blob Storage-tárhelyéből, mielőtt végrehajtaná a tevékenység parancssorát. További információkért olvassa el az [Indítási tevékenység](#start-task) és a [Fájlok és könyvtárak](#files-and-directories) című fejezetet.
 * Az alkalmazás számára szükséges **környezeti változók**. További információkért olvassa el a [Környezeti beállítások tevékenységekhez](#environment-settings-for-tasks) című fejezetet.
 * Azok a **korlátozások**, amelyeken belül a tevékenység végrehajtható. Korlátozás például a maximális időtartam, ameddig a tevékenység futhat, a meghiúsult tevékenységek újrapróbálásának maximális száma, valamint a tevékenység munkakönyvtárában tárolt fájlok megőrzésének maximális ideje.
 * Az ütemezett tevékenység futtatására beállított számítási csomópontra üzembe helyezni kívánt **alkalmazáscsomagok**. Az [alkalmazáscsomagok](#application-packages) leegyszerűsítik a tevékenységek által futtatott alkalmazások üzembe helyezését és verziókezelését. A tevékenységszintű alkalmazáscsomagok különösen megosztott készletes környezetekben hasznosak, ahol a különböző feladatok egy készletben futnak, és a rendszer nem törli a készletet a feladat befejezésekor. Ha a feladatnál a készletben kevesebb a tevékenység, mint a csomópont, az alkalmazáscsomagok használatával csökkentheti az adatátviteli igényt, mivel így a rendszer csak azokon a csomópontokon helyezi üzembe az alkalmazást, amelyek ténylegesen futtatják a tevékenységeket.

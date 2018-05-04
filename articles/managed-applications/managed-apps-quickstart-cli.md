@@ -1,6 +1,6 @@
 ---
-title: "Azure-beli felügyelt alkalmazás létrehozása az Azure CLI-vel | Microsoft Docs"
-description: "Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás."
+title: Azure-beli felügyelt alkalmazás létrehozása az Azure CLI-vel | Microsoft Docs
+description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás.
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35059603096279f7d58da1c1b40dd2ab3f1b5c38
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 46ea192220ced18b25d60030527d1f76fb37962a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Azure-beli felügyelt alkalmazás létrehozása és üzembe helyezése az Azure CLI-vel
 
@@ -75,7 +75,7 @@ A parancs befejeződésekor egy felügyeltalkalmazás-definíció található az
 Íme néhány az előző példában használt paraméterek közül:
 
 * **resource-group**: Annak az erőforráscsoportnak a neve, ahol létrejött a felügyelt alkalmazás definíciója.
-* **lock-level**: A felügyelt erőforráscsoporton elhelyezett zárolás típusa. Megakadályozza, hogy az ügyfél nemkívánatos műveleteket hajtson végre ezen az erőforráscsoporton. Jelenleg a ReadOnly az egyetlen támogatott zárolási szint. Amikor a ReadOnly van megadva, az ügyfél csak olvashatja a felügyelt erőforráscsoportban lévő erőforrásokat.
+* **lock-level**: A felügyelt erőforráscsoporton elhelyezett zárolás típusa. Megakadályozza, hogy az ügyfél nemkívánatos műveleteket hajtson végre ezen az erőforráscsoporton. Jelenleg a ReadOnly az egyetlen támogatott zárolási szint. Amikor a ReadOnly van megadva, az ügyfél csak olvashatja a felügyelt erőforráscsoportban lévő erőforrásokat. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
 * **authorizations**: A felügyelt erőforráscsoporthoz való engedély biztosításához használt résztvevő-azonosítót és szerepkördefiníció-azonosítót ismerteti. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ehhez a tulajdonsághoz több érték is megadható. Ha több értékre van szükség, `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` formátumban kell megadni őket. Az értékeket szóközzel kell elválasztani egymástól.
 * **package-file-uri**: A szükséges fájlokat tartalmazó .zip csomag helye. A csomagnak tartalmaznia kell legalább a **mainTemplate.json** és a **createUiDefinition.json** fájlt. A **mainTemplate.json** határozza meg a felügyelt alkalmazás részeként kiépített Azure-erőforrásokat. A sablon pont olyan, mint egy átlagos Resource Manager-sablon. A **createUiDefinition.json** hozza létre a felhasználói felületet a felügyelt alkalmazást a portálon keresztül létrehozó felhasználók számára.
 
@@ -117,7 +117,7 @@ az managedapp create \
 
 Az üzembe helyezés sikeres befejeződése után láthatja, hogy az alkalmazás létrejött az applicationGroup csoportban. Létrejött a storageAccount erőforrás az infrastructureGroup csoportban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * Példák a fájlokra: [Minta felügyelt alkalmazások](https://github.com/Azure/azure-managedapp-samples/tree/master/samples).

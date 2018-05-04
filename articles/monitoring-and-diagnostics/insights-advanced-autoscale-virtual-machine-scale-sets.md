@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
-ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1ac5c4c44386fc05e3ee87ccdbbc4f652a94a1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Speciális automatikus skálázás konfigurációját a Resource Manager-sablonok segítségével a Virtuálisgép-méretezési készlet
 Méretezés és a virtuálisgép-méretezési csoportok alapján a teljesítmény-küszöbértékeinek metrika, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. A skálázási műveletek értesítések e-mailek és a webhook is konfigurálhatja. Ez a bemutató ismerteti egy példa a Resource Manager-sablon használatával egy Virtuálisgép-méretezési csoportban lévő összes objektum konfigurálására.
@@ -35,7 +35,7 @@ Ebben a bemutatóban használjuk [Azure erőforrás-kezelő](https://resources.a
 1. Telepítsen egy új méretezési készletben egy alapszintű automatikus skálázási beállítás. Ez a cikk az használja az Azure katalógusából gyors üzembe helyezés, amely rendelkezik egy Windows méretezési alapvető automatikus skálázás sablonnal. Linux-méretezési csoportok azonos módon működnek.
 2. A méretezési készlet létrehozása után nyissa meg a méretezési készlet erőforrást az Azure erőforrás-kezelővel. A következő Microsoft.Insights csomópont alatt megjelenik.
 
-    ![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Az Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
     A sablon végrehajtási hozott létre egy alapértelmezett automatikus skálázási beállítás nevű **"autoscalewad"**. A jobb oldalon megtekintheti az automatikus skálázási beállítás teljes definíciója. Ebben az esetben az alapértelmezett automatikus skálázási beállítás CPU-alapú % kibővített és skálázási szabály tartalmaz.  
 
@@ -47,7 +47,7 @@ Ebben a bemutatóban használjuk [Azure erőforrás-kezelő](https://resources.a
     | Szabály |Service Bus várólista-üzenetek száma > x |
     | Szabály |Service Bus várólista-üzenetek száma < y |
     | Szabály |CPU % > n |
-    | Szabály |CPU% < p |
+    | Szabály |CPU % < p |
     | **Profil** |**Milyen napra esik reggel óra (nincs szabály)** |
     | **Profil** |**A termék indítási nap (nincs szabály)** |
 
@@ -200,7 +200,7 @@ Ebben a bemutatóban használjuk [Azure erőforrás-kezelő](https://resources.a
             }
           }
     ```
-    Támogatott mezőket és azok értékeit: [automatikus skálázás REST API-dokumentáció](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx). Az automatikus skálázási beállítás most a korábban ismertetett három profilokat tartalmazza.
+    Támogatott mezőket és azok értékeit: [automatikus skálázás REST API-dokumentáció](https://msdn.microsoft.com/library/azure/dn931928.aspx). Az automatikus skálázási beállítás most a korábban ismertetett három profilokat tartalmazza.
 
 7. Végül tekintse meg az automatikus skálázás **értesítési** szakasz. Automatikus skálázás értesítések lehetővé teszik a három műveleteket, ha egy kibővített, vagy a művelet sikeresen elindítva.
    - A rendszergazda és az előfizetés társadminisztrátoroknak értesítése

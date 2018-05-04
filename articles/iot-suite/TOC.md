@@ -1,3 +1,4 @@
+# [Azure IoT – alapok](../iot-fundamentals/index.yml)
 # [Az IoT Suite dokumentációja](index.md)
 
 # Áttekintés
@@ -94,10 +95,20 @@
 ## [Biztonság az alapoktól](securing-iot-ground-up.md)
 
 # Kapcsolódó témakörök
+## Megoldások 
+### [IoT Suite előre konfigurált megoldások](/azure/iot-suite) 
+### [IoT-központ](https://docs.microsoft.com/microsoft-iot-central/) 
+## Platformszolgáltatások 
+### [IoT Hub](/azure/iot-hub) 
+### [IoT Hub eszközregisztrációs szolgáltatás](/azure/iot-dps)
+### [IoT szolgáltatásoldali SDK-k](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
+### [Location Based Services](/azure/location-based-services) 
+### [Time Series Insights](/azure/time-series-insights) 
+## Edge 
+### [IoT Edge](/azure/iot-edge) 
+### [IoT eszközoldali SDK-k](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 ## [Stream Analytics](/azure/stream-analytics/)
 ## [Event Hubs](/azure/event-hubs/)
-## [IoT Hub](/azure/iot-hub/)
-## [Microsoft IoT-központ](/azure/index#pivot=services&panel=iot)
 ## [Machine Learning](/azure/machine-learning/)
 
 # További források

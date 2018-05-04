@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Storage tűzfalak és a virtuális hálózatok konfigurálása |} Microsoft Docs"
-description: "A tárfiók rétegezett hálózati biztonságának konfigurálása."
+title: Az Azure Storage tűzfalak és a virtuális hálózatok konfigurálása |} Microsoft Docs
+description: A tárfiók rétegezett hálózati biztonságának konfigurálása.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: cbrooksmsft
 manager: cbrooks
 editor: cbrooks
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 52d904e7a7e8e5d520d2abd799ef0ae7e99b9894
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage tűzfalak és a virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé téve a storage-fiókok egy meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha hálózati szabályok úgy vannak konfigurálva, csak az engedélyezett hálózatokhoz alkalmazások férhet hozzá a tárfiók.  Egy engedélyezett hálózatból meghívásakor az alkalmazások továbbra is szükséges megfelelő jogosultságokkal (egy érvényes tárelérési kulccsal vagy SAS-token) a tárfiók eléréséhez szükséges.
@@ -37,11 +37,9 @@ Ha a hálózati szabályok vonatkoznak, azok minden olyan kérelem esetében ér
 
 Virtuális gép lemezét forgalom (beleértve a csatlakoztatási és műveletek leválasztásához és lemez IO) **nem** hálózati-szabályok.  Lapblobokat REST hozzáférést hálózati szabályok védik.
 
-> [!NOTE]
-> Biztonsági mentése és visszaállítása a virtuális gépek használata a nem felügyelt lemezek tárfiókokban hálózati szabálya jelenleg nem támogatott.  További információkért lásd: [vonatkozó korlátozások biztonsági mentése és visszaállítása egy virtuális gép](/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)
->
-
 Klasszikus tárfiókokat **nem** támogatja a tűzfalak és a virtuális hálózatok.
+
+Biztonsági mentése és visszaállítása a virtuális gépek használata a nem felügyelt lemezek tárfiókokban hálózati szabálya támogatott keresztül létrehoz egy kivételt, ahogy a [kivételek](/storage/common/storage-network-security#exceptions) című szakaszát.  Tűzfalkivételek alkalmazhatók nem felügyelt lemezzel már kezeli őket az Azure-ban.
 
 ## <a name="change-the-default-network-access-rule"></a>Az alapértelmezett hálózati hozzáférési szabály módosítása
 Alapértelmezés szerint a storage-fiókok a hálózaton lévő ügyfelek kapcsolatokat fogadjon.  A kijelölt hálózatokhoz való hozzáférés korlátozásához, először módosítania kell az alapértelmezett művelet.
@@ -291,6 +289,7 @@ Ha a "Megbízható Microsoft-szolgáltatások" kivétel engedélyezve van, a kö
 
 |Szolgáltatás|Erőforrás-szolgáltató neve|Cél|
 |:------|:---------------------|:------|
+|Azure Backup|Microsoft.Backup|Hajtsa végre a biztonsági mentések és a nem felügyelt lemezek visszaállítások az infrastruktúra-szolgáltatási virtuális gépeket. (nem felügyelt lemezek esetén szükséges). [További információk](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Egyéni lemezkép létrehozásának és az összetevő-telepítést.  [További információk](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény közzétételének engedélyezése.  [További információk](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Az Event Hubs rögzítése archiválja.  [További](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|

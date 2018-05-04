@@ -1,25 +1,23 @@
 ---
-title: "Hibaelhárítás Spark on Azure HDInsight segítségével |} Microsoft Docs"
-description: "Az Apache Spark és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok."
-keywords: "Az Azure HDInsight Spark, gyakran ismételt kérdések, hibaelhárítási útmutató, gyakori problémákat, Alkalmazáskonfiguráció, Ambari"
+title: Hibaelhárítás Spark on Azure HDInsight segítségével |} Microsoft Docs
+description: Az Apache Spark és az Azure HDInsight kapcsolatos gyakori kérdésekre adott válaszok.
+keywords: Az Azure HDInsight Spark, gyakran ismételt kérdések, hibaelhárítási útmutató, gyakori problémákat, Alkalmazáskonfiguráció, Ambari
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 25D89586-DE5B-4268-B5D5-CC2CE12207ED
 ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: b75aca7d9f78cb425099cc33034b44a80d7b6b81
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c097a346e64fa378f171e0a0fe03155551da98ed
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Hibaelhárítás Spark on Azure HDInsight segítségével
 
@@ -27,7 +25,7 @@ A legfőbb problémákat és azok megoldásait ismerje meg az Apache Ambari az A
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Hogyan konfigurálhatom a Spark-alkalmazások fürtök az Ambari használatával?
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 A konfigurációs értékeket az eljárás végrehajtásához a Hdinsightban korábban beállított. Határozza meg, melyik Spark konfigurációk kell állítani, és milyen értékeket, olvassa el [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
@@ -96,7 +94,7 @@ Ezek a változások fürt kiterjedő, de a Spark feladat elküldése felülbír�
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hogyan konfigurálhatom a Spark-alkalmazások fürtökön Jupyter notebook használatával?
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Határozza meg, melyik Spark konfigurációk kell állítani, és milyen értékeket, olvassa el [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception).
 
@@ -111,7 +109,7 @@ Ezek a változások fürt kiterjedő, de a Spark feladat elküldése felülbír�
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-livy-on-clusters"></a>Hogyan konfigurálhatom a Spark-alkalmazások fürtökön Livy használatával?
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Határozza meg, melyik Spark konfigurációk kell állítani, és milyen értékeket, olvassa el [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
@@ -128,7 +126,7 @@ Ezek a változások fürt kiterjedő, de a Spark feladat elküldése felülbír�
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfigurálhatók a alkalmazás használatával spark-elküldeni egy Spark-fürtökön?
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Határozza meg, melyik Spark konfigurációk kell állítani, és milyen értékeket, olvassa el [mi okozza a Spark OutofMemoryError Alkalmazáskivétel](#what-causes-a-spark-application-outofmemoryerror-exception).
 
@@ -193,7 +191,7 @@ java.lang.OutOfMemoryError
 
 Ennek a kivételnek ennek legvalószínűbb oka, hogy nincs elég memória a halommemória a Java virtuális gépek (JVMs) van lefoglalva. Ezek JVMs végrehajtója, vagy az illesztőprogramok végrehajtása a Spark alkalmazás részeként. 
 
-### <a name="resolution-steps"></a>Megoldási lépések
+### <a name="resolution-steps"></a>A megoldás lépései
 
 1. Határozza meg a maximális méretét az adatok a Spark alkalmazás kezeli. Egy becslés, a bemeneti adatok, a köztes adatokat a bemeneti adatok átalakítása által létrehozott és a kimeneti adatok, ha az alkalmazás további van a köztes adatok átalakítása előállított maximális mérete alapján végezheti el. Ez a folyamat az ismétlődő lehet, ha egy kezdeti formális becslés nem hajtható végre. 
 

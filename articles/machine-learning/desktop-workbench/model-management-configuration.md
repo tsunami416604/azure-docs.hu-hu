@@ -1,6 +1,6 @@
 ---
-title: "Az Azure gépi tanulási modell felügyeleti beállítás és konfiguráció |} Microsoft Docs"
-description: "Ez a dokumentum ismerteti a lépéseket és fogalmak beállításáról és konfigurálásáról a modell kezelése az Azure Machine Learning részt."
+title: Az Azure gépi tanulási modell felügyeleti beállítás és konfiguráció |} Microsoft Docs
+description: Ez a dokumentum ismerteti a lépéseket és fogalmak beállításáról és konfigurálásáról a modell kezelése az Azure Machine Learning részt.
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
 ms.openlocfilehash: 45ddd4dc6fb5559c020706e2784158b1319f9b52
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="model-management-setup"></a>Modell kezelésének beállítása
 
@@ -38,7 +38,7 @@ Az összes többi rendszeren akkor kell telepíteni a CLIs.
 
 ### <a name="installing-or-updating-on-windows"></a>A Windows telepítése (vagy frissítése)
 
-Python https://www.python.org/ telepítse. Győződjön meg arról, hogy megadta a pip telepítése.
+Telepítse a Python https://www.python.org/. Győződjön meg arról, hogy megadta a pip telepítése.
 
 Nyisson meg egy parancssort, használja a Futtatás rendszergazdaként, és futtassa a következő parancsokat:
 
@@ -83,7 +83,7 @@ Indítsa el a helyi telepítés, ellenőrizze, hogy a modell és kód működik,
 Elindítani, akkor be kell állítania a telepítési környezet. A környezetet, adott ideje feladat. A telepítés befejezése után újra felhasználhatja a környezetben a következő központi telepítések elvégzéséhez. A következő részben részletesebben.
 
 Ha a környezetben a telepítés befejezése:
-- Jelentkezzen be Azure kéri. A bejelentkezéshez egy webböngésző segítségével nyissa meg a lap https://aka.ms/devicelogin, és adja meg a hitelesítéshez a megadott kód.
+- Jelentkezzen be Azure kéri. Jelentkezzen be, egy webböngésző segítségével nyissa meg a lap https://aka.ms/devicelogin , és írja be a megadott kód hitelesítéséhez.
 - A hitelesítési folyamat során kéri egy olyan fiók való hitelesítéshez szükséges. Fontos: Válasszon egy érvényes Azure-előfizetés és a fiókban. az erőforrások létrehozásához szükséges engedélyekkel rendelkező fiók - napló a befejeződése után az előfizetési adatai számára jelenik meg, és a rendszer megkérdezi, hogy folytatni szeretné a kiválasztott fiókot.
 
 ### <a name="environment-setup"></a>Környezet beállítása

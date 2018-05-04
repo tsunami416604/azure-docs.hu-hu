@@ -9,11 +9,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d534e138af7a22b32fbf64e2200016091beac62f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>SQL-adatbázis teljesítményének javítása érdekében a kötegelés használata
 Az Azure SQL Database-műveletek kötegelése jelentősen javítja a teljesítményét és méretezhetőségét, az alkalmazások. Előnyeinek megismerése, hogy ez a cikk első része ismertet néhány minta vizsgálati eredmények, hasonlítsa össze az SQL-adatbázis szekvenciális és kötegelt kérelmek. A cikk fennmaradó a technikák, a forgatókönyvek és a szempontokat tartalmaz, amelyek segítséget nyújtanak az Azure-alkalmazásokban sikeresen kötegelés használandó jeleníti meg.
@@ -32,9 +32,9 @@ Az SQL-adatbázis használatának előnyei egyike, hogy nem kell az adatbázist 
 A dokumentum első része SQL-adatbázis használata a .NET-alkalmazások különböző kötegelési technikák megvizsgálja. Az utolsó két szakaszok fedik le a kötegelési irányelvek és forgatókönyvek.
 
 ## <a name="batching-strategies"></a>Kötegelési stratégiák
-### <a name="note-about-timing-results-in-this-topic"></a>Megjegyzés: Ebben a témakörben időzítési eredmény
+### <a name="note-about-timing-results-in-this-article"></a>Megjegyzés: Ebben a cikkben időzítési eredmény
 > [!NOTE]
-> Eredmények nem referenciaalapokhoz képest, de van kialakítva, hogy megjelenítése **relatív teljesítménye**. Időzítés legalább 10 teszt futtatása átlagosan alapulnak. Műveletek esetében a beszúrások, a program üres táblát. Ezek a tesztek mért előtti-12-es verzióra, és ezek nem feltétlenül felelnek meg, hogy Ön is szembesülhet egy 12-es verziójú adatbázis, az új átviteli [szolgáltatásszintek](sql-database-service-tiers.md). A relatív előnye, hogy a kötegelési technika hasonlónak kell lenniük.
+> Eredmények nem referenciaalapokhoz képest, de van kialakítva, hogy megjelenítése **relatív teljesítménye**. Időzítés legalább 10 teszt futtatása átlagosan alapulnak. Műveletek esetében a beszúrások, a program üres táblát. Ezek a tesztek mért előtti-12-es verzióra, és ezek nem feltétlenül felelnek meg, hogy Ön is szembesülhet egy 12-es verziójú adatbázis, az új átviteli [DTU szolgáltatásszintek](sql-database-service-tiers-dtu.md) vagy [vCore szolgáltatásszintek](sql-database-service-tiers-vcore.md). A relatív előnye, hogy a kötegelési technika hasonlónak kell lenniük.
 > 
 > 
 
@@ -86,7 +86,7 @@ Az alábbi táblázat néhány alkalmi vizsgálati eredményeket jeleníti meg. 
 
 **Az Azure-bA helyszíni**:
 
-| Műveletek | No Transaction (ms) | Transaction (ms) |
+| Műveletek | Nincs tranzakció (ms) | Tranzakció (ms) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -95,7 +95,7 @@ Az alábbi táblázat néhány alkalmi vizsgálati eredményeket jeleníti meg. 
 
 **Azure-az Azure-ba (ugyanabban az adatközpontban)**:
 
-| Műveletek | No Transaction (ms) | Transaction (ms) |
+| Műveletek | Nincs tranzakció (ms) | Tranzakció (ms) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -209,7 +209,7 @@ SQL tömeges másolási egy másik módja a nagy mennyiségű adat elhelyezni a 
         }
     }
 
-Néhány esetben, ha tömeges másolás előnyben részesített tábla értékű paraméter felett van. Tekintse meg a tábla értékű paraméter és a következő témakör TÖMEGES beszúrási műveletek összehasonlító táblázatot [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb510489.aspx).
+Néhány esetben, ha tömeges másolás előnyben részesített tábla értékű paraméter felett van. Tekintse meg a tábla értékű paramétert, és TÖMEGES beszúrási műveletek a cikkben összehasonlító táblázatot [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb510489.aspx).
 
 A következő alkalmi vizsgálati eredmények megjelenítése a kötegelés teljesítményének **SqlBulkCopy** ezredmásodpercben.
 
@@ -309,7 +309,7 @@ A tesztelés során történt általában nagy kötegek ossza kisebb csoportjai 
 > 
 > 
 
-Láthatja, hogy-e a legjobb teljesítményt 1000 sor elküldeni őket egyszerre. Más tesztekben (itt nem látható) történt egy 10000 sor kötegelt felosztása két kötegek 5000 jobb a teljesítménye kis. Azonban ezekben a tesztekben a következő tábla sémáját viszonylag egyszerű, végre kell hajtania az adatokat és a Köteg mérete ezen eredmények ellenőrzése tesztek.
+Láthatja, hogy-e a legjobb teljesítményt 1000 sor elküldeni őket egyszerre. Más tesztekben (itt nem látható) egy 10000 sor kötegelt felosztása két kötegek 5000 jobb a teljesítménye kis történt. Azonban ezekben a tesztekben a következő tábla sémáját viszonylag egyszerű, végre kell hajtania az adatokat és a Köteg mérete ezen eredmények ellenőrzése tesztek.
 
 Egy másik szempont az, hogy, hogy a teljes kötegelt túl nagyra nő, ha SQL-adatbázis előfordulhat, hogy sávszélesség-szabályozási és elutasítja a kötegelt véglegesítéséhez. A legjobb eredmény elérése érdekében tesztelje az adott forgatókönyv annak meghatározásához, hogy van-e az épp ezért tökéletes választás a köteg méretének. Ellenőrizze a Köteg mérete konfigurálható teljesítmény vagy hibák alapján gyors módosításának engedélyezése a futási időben.
 
@@ -592,7 +592,7 @@ A következő tárolt eljárás létrehozása, vagy kiírhatja a MERGE utasítá
 További információkért lásd: a dokumentáció és példák a MERGE utasításban. Bár a többlépéses tárolt ugyanaz a munkahelyi sikerült végezhető el a eljáráshívási külön INSERT, és frissítési műveleteket, a MERGE utasítás hatékonyabban. Adatbázis kód hogyan hozhat létre a MERGE utasítás közvetlenül nélkül két adatbázis hívások az INSERT vagy UPDATE használó Transact-SQL-hívások is.
 
 ## <a name="recommendation-summary"></a>A javaslat összefoglaló
-Az alábbi lista a jelen témakörben bemutatott kötegelési ajánlások összegzését tartalmazza:
+Az alábbi lista a cikkben szereplő kötegelési ajánlások összegzését tartalmazza:
 
 * Pufferelés és kötegelés segítségével növelheti a teljesítményét és méretezhetőségét SQL adatbázis-alkalmazások.
 * Ismerje meg a mellékhatásokkal kötegelés/pufferelés és a rugalmasság között. Adott szerepkör meghibásodás során a egy feldolgozatlan kötegelt az üzleti szempontból kritikus fontosságú adatok elvesztését kockáztatja a teljesítmény előnye, hogy kötegelés előfordulhat, hogy járó.

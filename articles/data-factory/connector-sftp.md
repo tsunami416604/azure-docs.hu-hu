@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 917f2e3ff498641acfbdf537b71543f989b4bc16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 31716b758f90a5252370323afc345ee122e63ce3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory SFTP-kiszolgáló
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -181,10 +181,15 @@ Adatok másolása az SFTP, állítsa be a type tulajdonságot az adathalmaz **f�
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adathalmaz értékre kell állítani: **fájlmegosztás** |Igen |
 | folderPath | A mappa elérési útját. Például: mappát vagy almappát / |Igen |
-| fileName | Adja meg a fájl nevét a **folderPath** Ha át kívánja másolni a megadott fájlt. Ha nem ad meg ehhez a tulajdonsághoz értéket, a DataSet adatkészlet mutat a mappában lévő összes fájl forrásaként. |Nem |
-| fileFilter | Adjon meg egy szűrőt, amely minden fájl helyett a fájlok Tárolónév részhalmazának kiválasztására szolgál. Érvényes, csak ha nincs megadva fájlnév. <br/><br/>Helyettesítő karakterek engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/>-1. példa: `"fileFilter": "*.log"`<br/>– 2. példa: `"fileFilter": 2017-09-??.txt"` |Nem |
+| fileName |  **Név vagy helyettesítő karakter szűrő** az alatt a megadott "folderPath" (oka) t. Ha nem adja meg egy értéket ehhez a tulajdonsághoz a DataSet adatkészlet mutat, a mappában lévő összes fájlt. <br/><br/>Szűrő, az engedélyezett a helyettesítő karaktereket: `*` (több karaktert) és `?` (egyetlen karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"` |Nem |
 | Formátumban | Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha szeretne elemezni egy adott formátumú fájlok, a következő formátumban típusú támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |
 | Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |
+
+>[!TIP]
+>Másolja az összes fájlt egy mappában, adja meg a **folderPath** csak.<br>Adja meg a megadott nevű egyetlen fájl másolásához **folderPath** mappa megadó és **Fájlnév** fájlnévvel.<br>Másol egy mappát a fájlok egy részét, adja meg a **folderPath** mappa megadó és **Fájlnév** helyettesítő szűrővel.
+
+>[!NOTE]
+>Ha a fájl szűrő használt "fileFilter" tulajdonság, az továbbra is támogatott-van, amíg a "fájlnevet" továbbítja a hozzáadandó új szűrő funkció használatához javasoltak.
 
 **Példa**
 

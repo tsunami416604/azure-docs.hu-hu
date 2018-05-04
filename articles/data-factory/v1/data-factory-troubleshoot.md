@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4cf77a2267cd2a49a873c1a1c742dc4205cad29a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a9a4f7b19d6ef08562d17474e252ce72fd0977dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
 > [!NOTE]
@@ -34,7 +34,7 @@ Amennyiben ezt a hibaüzenetet kapja, az Azure Data Factory erőforrás-szolgál
 2. Jelentkezzen be az Azure-fiókjával az alábbi parancs segítségével.
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. A következő parancsot az Azure Data Factory-szolgáltató regisztrálásához.
 
@@ -45,7 +45,7 @@ Amennyiben ezt a hibaüzenetet kapja, az Azure Data Factory erőforrás-szolgál
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Probléma: Nem engedélyezett hiba a Data Factory parancsmag futtatásakor
 Valószínűleg nem a megfelelő Azure-fiókot vagy előfizetést használja az Azure PowerShell futtatásához. Az alábbi parancsmagokkal válassza ki a megfelelő Azure-fiókot és előfizetést az Azure PowerShell használatához.
 
-1. Login-AzureRmAccount - használja a megfelelő felhasználói Azonosítót és jelszót
+1. Connect-AzureRmAccount - használja a megfelelő felhasználói Azonosítót és jelszót
 2. Get-AzureRmSubscription – a fiókhoz tartozó előfizetések megtekintéséhez.
 3. SELECT-AzureRmSubscription &lt;előfizetés neve&gt; -válassza ki a megfelelő előfizetést. Használja ugyanazt, adat-előállító létrehozása az Azure portál használatával.
 

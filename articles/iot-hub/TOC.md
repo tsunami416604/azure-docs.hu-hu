@@ -1,7 +1,7 @@
+# [Azure IoT – alapok](../iot-fundamentals/index.yml)
 # [Az IoT Hub dokumentációja](index.md)
 
 # Áttekintés
-## [Az Azure és az IoT](iot-hub-what-is-azure-iot.md)
 ## [Mi az Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
 ## [Az eszközfelügyelet áttekintése](iot-hub-device-management-overview.md)
 
@@ -78,6 +78,7 @@
 #### [Kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md)
 #### [Díjszabási példák](iot-hub-devguide-pricing.md)
 #### [Eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md)
+#### [Fejlesztés mobileszközökhöz](iot-hub-how-to-develop-for-mobile-devices.md)
 #### [MQTT-támogatás](iot-hub-mqtt-support.md)
 #### [Szószedet](iot-hub-devguide-glossary.md)
 ### [A C IoT eszközoldali SDK-jának használata](iot-hub-device-sdk-c-intro.md)
@@ -169,7 +170,7 @@
 ##### [Tanúsítványok létrehozása – PowerShell](iot-hub-security-x509-create-certificates.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=iot-hub)
 ## [Azure CLI](/cli/azure/iot)
 ## [.NET (Szolgáltatás)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (Eszközök)](/dotnet/api/microsoft.azure.devices.client)
@@ -186,11 +187,18 @@
 ## [REST (Feladatok)](https://docs.microsoft.com/rest/api/iothub/jobapi)
 
 # Kapcsolódó témakörök
-## [Az Azure IoT Suite](https://azure.microsoft.com/documentation/suites/iot-suite/)
-## [Azure IoT Hub Device Provisioning Service](https://azure.microsoft.com/documentation/services/iot-dps/)
-## [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)
-## [Stream Analytics](https://azure.microsoft.com/documentation/services/stream-analytics/)
-## [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
+## Megoldások 
+### [IoT Suite előre konfigurált megoldások](/azure/iot-suite) 
+### [IoT-központ](https://docs.microsoft.com/microsoft-iot-central/) 
+## Platformszolgáltatások 
+### [IoT Hub](/azure/iot-hub) 
+### [IoT Hub eszközregisztrációs szolgáltatás](/azure/iot-dps)
+### [IoT szolgáltatásoldali SDK-k](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
+### [Location Based Services](/azure/location-based-services) 
+### [Time Series Insights](/azure/time-series-insights) 
+## Edge 
+### [IoT Edge](/azure/iot-edge) 
+### [IoT eszközoldali SDK-k](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 
 # További források
 ## [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/)

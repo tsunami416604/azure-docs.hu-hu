@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 014c9ea34f35e915c6c4eac5a96c55201549e18a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: eb00bd3a9680091827a6e1d768a9b828a15d1b97
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -38,10 +38,10 @@ Mindegyik útvonal tartalmaz egy címelőtagot és a következő ugrás típusá
 |-------|---------                                               |---------      |
 |Alapértelmezett|Egyedi a virtuális hálózaton                           |Virtuális hálózat|
 |Alapértelmezett|0.0.0.0/0                                               |Internet       |
-|Alapértelmezett|10.0.0.0/8                                              |Nincs           |
-|Alapértelmezett|172.16.0.0/12                                           |None           |
-|Alapértelmezett|192.168.0.0/16                                          |None           |
-|Alapértelmezett|100.64.0.0/10                                           |None           |
+|Alapértelmezett|10.0.0.0/8                                              |None           |
+|Alapértelmezett|172.16.0.0/12                                           |Nincs           |
+|Alapértelmezett|192.168.0.0/16                                          |Nincs           |
+|Alapértelmezett|100.64.0.0/10                                           |Nincs           |
 
 Az előző táblában szereplő következő ugrástípusok azt jelölik, hogyan irányítja az Azure a listában szereplő címelőtagokra irányuló forgalmat. Itt a következő ugrás típusainak magyarázatait láthatja:
 
@@ -122,7 +122,9 @@ Egy helyszíni hálózati átjáró útvonalakat cserélhet egy Azure virtuális
 - **VPN**: Igény szerint használhatja a BGP-t. Részletes információért lásd a [BGP helyek közötti VPN-kapcsolatokkal](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) témakört.
 
 Amikor a BGP használatával útvonalakat cserél az Azure-ban, a rendszer minden meghirdetett előtag esetében külön útvonalat ad hozzá a virtuális hálózat összes alhálózatának útvonaltáblájához. Az útvonal forrásaként és következő ugrásának típusaként *Virtuális hálózati átjáró* van feltüntetve. 
- 
+
+A BGP-útvonalpropagálás letiltható az alhálózaton az útválasztási táblázat tulajdonságának segítségével. Amikor a BGP használatával útvonalakat cserél az Azure-ban, az útvonalak nincsenek hozzáadva az összes alhálózat útválasztási táblázatához, amelyeknél a BGP-útvonalpropagálás le lett tiltva. A VPN-kapcsolatok egyéni útvonalak](#custom-routes) használatával jönnek létre következő ugrás VPN-típussal. Részletekért tekintse meg a [BGP-útvonalpropagálás letiltását](/manage-route-table#create-a-route-table.md) ismertető cikket.
+
 ## <a name="how-azure-selects-a-route"></a>Az Azure útvonalválasztásának módja
 
 Ha a kimenő adatforgalmat a rendszer egy alhálózatról küldi ki, az Azure kiválaszt egy útvonalat a cél IP-cím alapján, a leghosszabb előtag-megfeleltetési algoritmus használatával. Tegyük fel például, hogy egy útvonaltábla két útvonallal rendelkezik. Az egyik útvonal a 10.0.0.0/24, a másik pedig a 10.0.0.0/16 címelőtagot adja meg. Az Azure a 10.0.0.5 címre irányuló adatforgalmat az útvonalban meghatározott következő ugrástípushoz irányítja, amely a 10.0.0.0/24 előtaggal rendelkezik, mert a 10.0.0.0/24 hosszabb előtag, mint a 10.0.0.0/16, annak ellenére, hogy a 10.0.0.5 mindkét címelőtagba beletartozik. Az Azure a 10.0.1.5 címre irányuló adatforgalmat az útvonalban meghatározott következő ugrástípushoz irányítja, amely a 10.0.0.0/16 előtaggal rendelkezik, mert a 10.0.1.5 nincs benne a 10.0.0.0/24 címelőtagban, ezért a 10.0.0.0/16 címelőtagot tartalmazó útvonal a leghosszabb előtag, amelyik megfelel a feltételeknek.
@@ -246,7 +248,7 @@ A *Subnet2* a képen látható útvonaltáblája a következő útvonalakat tart
 |Alapértelmezett |Aktív |0.0.0.0/0           |Internet                  |                   |
 |Alapértelmezett |Aktív |10.0.0.0/8          |None                      |                   |
 |Alapértelmezett |Aktív |100.64.0.0/10       |None                      |                   |
-|Alapértelmezett |Aktív |172.16.0.0/12       |Nincs                      |                   |
+|Alapértelmezett |Aktív |172.16.0.0/12       |None                      |                   |
 |Alapértelmezett |Aktív |192.168.0.0/16      |None                      |                   |
 
 A *Subnet2* útvonaltáblája tartalmazza az összes, Azure által létrehozott alapértelmezett útvonalat és a választható virtuális hálózatok közötti társviszony és a virtuális hálózati átjáró választható útvonalait. Az Azure a virtuális hálózaton lévő összes alhálózathoz hozzáadta a választható útvonalakat, amikor az átjáró és a társviszony a virtuális hálózathoz lett adva. Az Azure eltávolította a 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 és 100.64.0.0/10 címelőtagok útvonalait a *Subnet1* útvonaltáblából, amikor a 0.0.0.0/0 címelőtag felhasználó által megadott útvonala a *Subnet1* alhálózathoz került.  

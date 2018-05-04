@@ -1,6 +1,6 @@
 ---
-title: "Adatok előkészítése az Azure Machine Learning adatok átalakítások használata |} Microsoft Docs"
-description: "Ez a cikk érhető el az Azure Machine Learning adatok előkészítése átalakítások teljes listáját tartalmazza."
+title: Adatok előkészítése az Azure Machine Learning adatok átalakítások használata |} Microsoft Docs
+description: Ez a cikk érhető el az Azure Machine Learning adatok előkészítése átalakítások teljes listáját tartalmazza.
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 9cd6e6cdf8d8dc2b1872d6f7b76821122fd427fa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Adatok előkészítése az Azure Machine Learning adatok átalakítások használata
 
@@ -34,7 +34,7 @@ A helyi menüben csak a kiválasztott típusú érvényes átalakítások jelen�
 
 Kattintson a jobb gombbal egy cella egy szűk részhalmaza a környezetfüggő átalakítások áll rendelkezésre. Ezek átalakítások másolatok, cserélje le, és szűréséhez. Ezek a típus-kompatibilis, adatok, úgy, hogy egy oszlophoz eltérő számú oszlop beállítások.
 
-## <a name="derive-column-by-example"></a>Példa alapján oszlop származtatni
+## <a name="derive-column-by-example"></a>Oszlopok származtatása példa alapján
 A transzformáció segítségével leszármazottja, egy vagy több meglévő oszlopok egy olyan új oszlop létrehozása. A transzformáció bemeneti ellenőrzi, hogy a bemeneti (kijelölt) oszlopok és a fenti példában, és majd határozza meg a kívánt kimeneti az új oszlopban. 
 
 A transzformáció, válasszon egy vagy több oszlopot. Vegyen fel egy új (üres) származtatott oszlopot példa alapján. Írja be a kívánt a származtatott oszlop (feltéve, hogy más oszlopokat is meg van származtatva), és a "által példa" technológia megkísérli adja meg az oszlopban levő összes többi cellák példát. 

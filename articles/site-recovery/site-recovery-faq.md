@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Site Recovery: Gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk ismerteti, amelyek a népszerű kérdések Azure Site Recoveryvel kapcsolatos."
+title: 'Az Azure Site Recovery: Gyakori kérdések |} Microsoft Docs'
+description: Ez a cikk ismerteti, amelyek a népszerű kérdések Azure Site Recoveryvel kapcsolatos.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: 5d1010a65a112b97124a8d7d46caceb3d61e2cac
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0ec7f9e692dd4269ccb428d644c673e5c27b413a
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 A cikk az Azure Site Recovery kapcsolatos gyakran ismételt kérdések tartalmaz. Ha kérdése van a cikk elolvasása után, az fel őket a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
 A Site Recovery funkciója hozzájárul az üzletmenet folytonosságát és a vész-helyreállítási (BCDR) stratégia, a levezényli és automatizálja a replikáció Azure virtuális gépek közötti régiókban, a helyszíni virtuális gépek és fizikai kiszolgálók Azure-ba, és a helyszíni gépeket egy másodlagos adatközpont. [További információk](site-recovery-overview.md).
 
@@ -68,7 +68,7 @@ VMware virtuális gépek védelméhez vSphere hipervizorra van szükség, a virt
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Elérhető a vészhelyreállítás a fiókirodák számára a Site Recoveryvel?
 Igen. A Site Recovery használatával replikációs és feladatátvételi levezényelni a fiókirodában használt, egy központi helyen egy egységes vezénylési és a nézet az összes a fiókiroda számítási feladatait fog kapni. A központi telephelyről könnyen intézheti a feladatátvételt és a vészhelyreállítást az összes fiókiroda tekintetében anélkül, hogy el kellene látogatnia a fiókirodák telephelyeire.
 
-## <a name="pricing"></a>Díjszabás
+## <a name="pricing"></a>Árképzés
 Az árazással kapcsolatos kérdésekre, tekintse meg a következő gyakori kérdések [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/en-in/pricing/details/site-recovery/).
 
 ## <a name="security"></a>Biztonság
@@ -84,13 +84,13 @@ Igen. A Site Recovery-tárolóban egy régióban létrehozásakor gondoskodunk r
 ### <a name="does-site-recovery-encrypt-replication"></a>A Site Recovery titkosítja a replikációt?
 A virtuális gépek és fizikai kiszolgálók a helyszíni helyek titkosítási az átvitel közötti replikálása esetén támogatott. A virtuális gépek és fizikai kiszolgálók replikálása Azure-ba, mindkét titkosítási az átvitel és [titkosítási nyugalmi (az Azure-ban)](https://docs.microsoft.com/azure/storage/storage-service-encryption) támogatottak.
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 ### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>Replikálhatok, pont-pont VPN-Azure-bA?
 Az Azure Site Recovery replikálja az adatokat egy Azure storage-fiókot, egy nyilvános végpontot keresztül. Replikációs nem található a pont-pont VPN-kapcsolaton keresztül. A telephelyek közötti VPN, létrehozhat egy Azure virtuális hálózatra. Ez nem zavarja a Site Recovery replikációs.
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>ExpressRoute használatával virtuális gépek replikálása Azure-bA?
-Igen, ExpressRoute segítségével virtuális gépek replikálása Azure-bA. Az Azure Site Recovery replikálja az adatokat egy Azure Storage-fiók egy nyilvános végpontot keresztül. Állítson be kell [nyilvános társviszony](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) Site Recovery replikációs ExpressRoute használandó. Miután a virtuális gép keresztül lett hibába ütközött egy Azure virtuális hálózatra elérheti őket használatával a [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) beállítása az Azure virtuális hálózathoz.
+Igen, [ExpressRoute használható](concepts-expressroute-with-site-recovery.md) a helyszíni virtuális gépek replikálása Azure-bA. Az Azure Site Recovery replikálja az adatokat egy Azure Storage-fiók egy nyilvános végpontot keresztül. Állítson be kell [nyilvános társviszony](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoft-peering) Site Recovery replikációs ExpressRoute használandó. A Microsoft társviszony-létesítés a replikáció az ajánlott útválasztási tartomány. Miután a virtuális gép keresztül lett hibába ütközött egy Azure virtuális hálózatra elérheti őket használatával a [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) beállítása az Azure virtuális hálózathoz. Replikációs magánhálózati társviszony-létesítés keresztül nem támogatott.
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Van valamilyen előfeltétele a virtuális gépek Azure-ba való replikációjának?
 [VMware virtuális gépek](vmware-physical-azure-support-matrix.md#replicated-machines) és [Hyper-V virtuális gépek](hyper-v-azure-support-matrix.md#replicated-vms) a replikálni kívánt Azure meg kell felelnie az Azure-követelményeknek.

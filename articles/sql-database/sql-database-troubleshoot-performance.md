@@ -11,11 +11,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: v-shysun
-ms.openlocfilehash: 440f3bf41cd2dcedf964e7476323d7b3a1527624
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 710d517621cb9d4d9d2e9bf29e4facf7d75ab481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-and-performance-tuning"></a>Figyelés és teljesítményének hangolása
 
@@ -49,8 +49,8 @@ Is lehetővé Azure SQL-adatbázis [automatikusan a a lekérdezések teljesítm�
 
 ## <a name="improving-database-performance-with-more-resources"></a>További erőforrások az adatbázis teljesítményének növelése
 
-Végezetül végrehajtható elem, amely az adatbázis teljesítményének esetén módosíthatja az Azure SQL-adatbázis elérhető erőforrások mennyisége. További erőforrások hozzárendeléséhez módosítása a [szolgáltatásréteg](sql-database-service-tiers.md) egy önálló adatbázis vagy a bármikor a rugalmas készlet edtu-inak növelését.
-1. Az önálló adatbázisok esetén is [szolgáltatásszintek módosítása](sql-database-service-tiers.md) igény szerinti adatbázis teljesítményének javítása érdekében.
+Végezetül végrehajtható elem, amely az adatbázis teljesítményének esetén módosíthatja az Azure SQL-adatbázis elérhető erőforrások mennyisége. További erőforrások hozzárendeléséhez módosítása a [DTU szolgáltatásréteg](sql-database-service-tiers-dtu.md) egy önálló adatbázis vagy a bármikor a rugalmas készlet edtu-inak növelését. Másik lehetőségként használata a [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md), módosíthatja a szolgáltatási rétegben, vagy növelje az adatbázis számára elkülönített erőforrások. 
+1. Az önálló adatbázisok esetén is [szolgáltatásszintek módosítása](sql-database-service-tiers-dtu.md) vagy [számítási erőforrásokat](sql-database-service-tiers-vcore.md)igény szerinti adatbázis teljesítményének javítása érdekében.
 2. Több adatbázis esetén érdemes [rugalmas készletek](sql-database-elastic-pool-guidance.md) erőforrások automatikus méretezése.
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>Finomhangolja és azonosítóterületen alkalmazás vagy adatbázis-kód

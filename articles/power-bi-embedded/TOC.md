@@ -28,7 +28,7 @@
 # Referencia
 ## API-k
 ### [Az Azure erőforráskezelési REST API-jai](https://docs.microsoft.com/rest/api/power-bi-embedded/)
-### [A Power BI REST API-jai](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
+### [A Power BI REST API-jai](https://msdn.microsoft.com/library/mt147898.aspx)
 
 # További források
 ## [Power BI-közösség](http://community.powerbi.com/t5/Developer/bd-p/Developer)

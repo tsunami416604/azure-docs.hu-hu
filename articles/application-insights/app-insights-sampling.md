@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8f0c6e6567e82f885bb5cd0c6b6af797b393969c
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -38,7 +38,8 @@ Mintavételi csökkenti a forgalom és az adatok költségeket, és segít elker
 ## <a name="types-of-sampling"></a>Mintavételi típusai
 Alternatív mintavételi három módszer áll rendelkezésre:
 
-* **Adaptív mintavételi** automatikusan beállítja az SDK-t az ASP.NET-alkalmazás által küldött telemetriai adatok mennyiségét. SDK-v 2.0.0-beta3 kezdve ez a mintavételi mód az alapértelmezett. Adaptív mintavételi jelenleg csak az ASP.NET kiszolgálóoldali telemetriai használható. 
+* **Adaptív mintavételi** automatikusan beállítja az SDK-t az ASP.NET-alkalmazás által küldött telemetriai adatok mennyiségét. SDK-v 2.0.0-beta3 kezdve ez a mintavételi mód az alapértelmezett. Adaptív mintavételi jelenleg csak az ASP.NET kiszolgálóoldali telemetriai használható. Az Asp.NET Core alkalmazások adatforráselemhez teljes keretrendszer, adaptív mintavételi érhető el a Microsoft.ApplicationInsights.AspNetCore SDK 1.0.0 verzióját. Az Asp.NET Core alkalmazások adatforráselemhez NetCore adaptív mintavételi megtalálható a Microsoft.ApplicationInsights.AspNetCore SDK 2.2.0-beta1.
+
 * **Rögzített mintavételi** az ASP.NET- vagy Java kiszolgálóról, és a felhasználók böngészőjének a telemetriai adatok mennyiségét csökkenti. A sebesség beállítása. Az ügyfél és kiszolgáló szinkronizálja a mintavételi, a keresés, navigálhat kapcsolódó Lapmegtekintések és kérések között.
 * **Adatfeldolgozást mintavételi** működik az Azure portálon. Törli az alkalmazást, a mintavételi ráta, amely nem érkezik telemetriai adatok némelyike. Az alkalmazásból küldött telemetriai forgalom nem csökkenthető, de lehetővé teszi a havi kvótán belül. Adatfeldolgozást mintavételi fő előnye, hogy a mintavételi ráta állíthatja be az alkalmazás üzembe helyezésével, és minden kiszolgálók és ügyfelek egységesen működik. 
 
@@ -335,7 +336,7 @@ Az SDK-t 2.0.0 ASP.NET verziókat és a Java SDK verzió 2.0.1 rögzített minta
 
 A mintavételi algoritmus úgy dönt, mely telemetriai elemek eldobása, és melyeket kívánja megtartani (az SDK-ban vagy akár az Application Insights szolgáltatásban). A mintavételi döntési különböző szabályok, célja, hogy minden egymáshoz adatpontok változatlanok maradnak, egy diagnosztikai megoldást vezet be, hogy végrehajthatóként és megbízhatóbb, még akkor is csökkentett adatkészlet az Application insightsban karbantartása megőrzése alapul. Például ha a sikertelen kérelmek az alkalmazás további telemetriai elemeket (például kivétel és naplózza a kérést a nyomkövetések) küld, mintavételi nem elválasztja az ehhez a kérelemhez és egyéb telemetriai adatokat. Az tartja vagy együtt elutasítja azokat. Emiatt ha a kérelem részletes adatait az Application Insightsban tekinti meg, bármikor megtekintheti a kérelem és a kapcsolódó telemetriai elemek. 
 
-Az alkalmazások, amelyek meghatározzák a "user" (Ez azt jelenti, hogy a legjellemzőbb webalkalmazások), a mintavételi döntést a felhasználói azonosítóját, ami azt jelenti, hogy bármely adott felhasználó összes telemetriai adat vagy megőrzi, vagy kihagyott kivonatának alapul. Milyen típusú alkalmazások felhasználók számára (például a web services) nem meghatározó a mintavételi döntési alapul a Műveletazonosító a kérelem. Végezetül cikkeknél a telemetriai adatok sem be (például telemetriai elemek nem http-környezetben az aszinkron szál jelentett) és a felhasználó nem művelet azonosítója mintavételi egyszerűen rögzíti a rendelkezésre álló telemetriai elemek százalékaként. 
+A mintavételi döntési alapul a kérést, ami azt jelenti, hogy egy adott művelethez tartozó összes telemetriai elemet vagy megőrzi, vagy kihagyott művelet azonosítója. A telemetriai elemek, amelyek nem rendelkeznek művelet azonosítója (meg van adva példa telemetriai elemek nem http-környezetben az aszinkron szál jelentett) mintavételi egyszerűen telemetriai elemek típusonkénti százalékaként rögzíti. .NET SDK 2.5.0-beta2, és az ASP.NET Core SDK 2.2.0-beta3, mielőtt a mintavételi döntési alapján volt a kivonat, a felhasználói azonosító az alkalmazások, amelyek meghatározzák a "user" (Ez azt jelenti, hogy a legjellemzőbb webalkalmazások). Az alkalmazásokat, amelyek a felhasználók számára (például a web services) nem meghatározott típusú a mintavételi döntést a kérelem művelet azonosító lett alapján.
 
 Telemetria bemutató vissza, ha az Application Insights szolgáltatás a metrikák a azonos mintavételi arány kiegyensúlyozása érdekében a hiányzó adatpontokat gyűjtemény, idején használt állítja be. Ezért ha az Application Insights telemetria, a felhasználók azért jelent meg, statisztikailag megfelelő becsléseket, amelyek nagyon közel valós számok.
 

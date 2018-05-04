@@ -1,0 +1,127 @@
+- name: Application Gateway – dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Az alkalmazásátjárók ismertetése
+      href: overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Webes forgalom irányítása – Portal
+      href: quick-create-portal.md
+    - name: Webes forgalom irányítása – PowerShell
+      href: quick-create-powershell.md
+    - name: Webes forgalom irányítása – Azure CLI
+      href: quick-create-cli.md
+- name: Oktatóanyagok
+  items:
+    - name: Webes forgalom kezelése
+      href: tutorial-manage-web-traffic-cli.md
+    - name: Webes forgalom korlátozása
+      href: tutorial-restrict-web-traffic-cli.md
+    - name: Védelem az SSL-lel
+      href: tutorial-ssl-cli.md
+    - name: Több webhely üzemeltetése
+      href: tutorial-multiple-sites-cli.md
+    - name: Útválasztás URL-cím alapján
+      href: tutorial-url-route-cli.md
+    - name: Webes forgalom átirányítása
+      href: tutorial-url-redirect-cli.md
+- name: Példák
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
+- name: Alapelvek
+  items:
+    - name: Web application firewall (Webalkalmazási tűzfal)
+      href: waf-overview.md
+    - name: URL-útválasztás
+      href: url-route-overview.md
+    - name: Több webhely üzemeltetése
+      href: multiple-site-overview.md
+    - name: SSL leállítása
+      href: ssl-overview.md
+    - name: URL-cím átirányítása
+      href: redirect-overview.md
+- name: Útmutatók
+  items:
+    - name: Alkalmazásátjáró létrehozása
+      items:
+        - name: Sablon
+          href: create-vmss-template.md
+        - name: Webalkalmazások – PowerShell
+          href: create-web-app.md
+    - name: SSL leállításának engedélyezése – Portal
+      href: create-ssl-portal.md
+    - name: Több webhely üzemeltetése – Portal
+      href: create-multiple-sites-portal.md
+    - name: Külső forgalom átirányítása
+      items:
+        - name: Azure PowerShell
+          href: redirect-external-site-powershell.md
+        - name: Azure CLI
+          href: redirect-external-site-cli.md
+    - name: HTTP átirányítása HTTPS-re
+      items:
+        - name: Azure PowerShell
+          href: redirect-http-to-https-powershell.md
+        - name: Azure CLI
+          href: redirect-http-to-https-cli.md
+    - name: Belső forgalom átirányítása
+      items:
+        - name: Azure PowerShell
+          href: redirect-internal-site-powershell.md
+        - name: Azure CLI
+          href: redirect-internal-site-cli.md
+    - name: Webes forgalom korlátozása – Portal
+      href: create-waf-portal.md
+    - name: Útválasztás URL-cím alapján – Portal
+      href: create-url-route-portal.md
+    - name: Webes forgalom kezelése az Azure PowerShell használatával
+      href: tutorial-manage-web-traffic-powershell.md
+    - name: Webes forgalom korlátozása az Azure PowerShell használatával
+      href: tutorial-restrict-web-traffic-powershell.md
+    - name: SSL leállítása az Azure PowerShell használatával
+      href: tutorial-ssl-powershell.md
+    - name: Több webhely üzemeltetése az Azure PowerShell használatával
+      href: tutorial-multiple-sites-powershell.md
+    - name: Webes forgalom irányítása az Azure PowerShell használatával
+      href: tutorial-url-route-powershell.md
+    - name: Webes forgalom átirányítása az Azure PowerShell használatával
+      href: tutorial-url-redirect-powershell.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network/application-gateway
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/applicationgateway
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: További források
+  items:
+    - name: Szerzői sablonok
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Közösségi sablonok
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-application-gateway'
+    - name: GYIK
+      href: application-gateway-faq.md

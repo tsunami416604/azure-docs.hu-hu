@@ -1,11 +1,11 @@
 ---
-title: "HPC Pack 2016 fürt az Azure-ban |} Microsoft Docs"
-description: "Megtudhatja, hogyan HPC Pack 2016-fürt üzembe helyezése az Azure-ban"
+title: HPC Pack 2016 fürt az Azure-ban |} Microsoft Docs
+description: Megtudhatja, hogyan HPC Pack 2016-fürt üzembe helyezése az Azure-ban
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3dde6a68-e4a6-4054-8b67-d6a90fdc5e3f
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 03/09/2018
 ms.author: danlep
-ms.openlocfilehash: c26dd85d896445e19efb9906d953fd535fc1fb5c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91f067de33d1ff4bc272773e3db49de47fac2feb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>HPC Pack 2016-fürt üzembe helyezése az Azure-ban
 
@@ -56,7 +56,7 @@ A tanúsítvány létrehozása után az aktuális felhasználó tárolójában, 
 
 ### <a name="upload-certificate-to-an-azure-key-vault"></a>Az egy az Azure key vault-tanúsítvány feltöltése
 
-A HPC-fürt telepítése előtt a PFX-tanúsítvány feltöltése egy [az Azure key vault](../../key-vault/index.md) titkos kulcs és rekord a telepítés során használja a következő információkat: **tároló neve**, **tároló Erőforráscsoport**, **tanúsítvány URL-címe**, és **tanúsítvány ujjlenyomata**.
+A HPC-fürt telepítése előtt a PFX-tanúsítvány feltöltése egy [az Azure key vault](../../key-vault/index.yml) titkos kulcs és rekord a telepítés során használja a következő információkat: **tároló neve**, **tároló Erőforráscsoport**, **tanúsítvány URL-címe**, és **tanúsítvány ujjlenyomata**.
 
 A következő egy PowerShell-parancsfájlpélda a tanúsítvány feltöltése, a kulcstároló létrehozása és a szükséges adatokat. További információ a tanúsítvány feltöltése egy az Azure key vault: [Ismerkedés az Azure Key Vault](../../key-vault/key-vault-get-started.md).
 

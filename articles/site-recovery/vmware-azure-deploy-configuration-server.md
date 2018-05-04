@@ -1,6 +1,6 @@
 ---
-title: "A konfigurációs kiszolgáló VMware vész-helyreállítási az Azure Site Recovery üzembe |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan VMware vész-helyreállítási az Azure Site Recovery konfigurációs kiszolgálók központi telepítéséhez"
+title: A konfigurációs kiszolgáló VMware vész-helyreállítási az Azure Site Recovery üzembe |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan VMware vész-helyreállítási az Azure Site Recovery konfigurációs kiszolgálók központi telepítéséhez
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 99b368ca364bd7c5bebfc00c2df0f04333293388
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -35,7 +35,7 @@ A kiszolgáló méretezési követelményei a potenciális adatmódosítási ar�
 | --- | --- | --- | --- | --- |
 | 8 Vcpu (2 sockets * @ 2,5 GHz, 4 mag) |16 GB |300 GB |500 GB vagy kevesebb |100-nál kevesebb gépek replikálása. |
 | 12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag) |18 GB |600 GB |1 TB 500 GB |100-150 gépek replikálása. |
-| 16 Vcpu (2 sockets * @ 2,5 GHz-es 8 mag) |32 GB |1 TB |1 TB to 2 TB |150-200 gépek replikálása. |
+| 16 Vcpu (2 sockets * @ 2,5 GHz-es 8 mag) |32 GB |1 TB |1 TB-os és 2 TB |150-200 gépek replikálása. |
 
 
 Ha VMware virtuális gépeket replikál, tudjon meg többet az [kapacitástervezésének szempontjai](/site-recovery-plan-capacity-vmware.md). Futtassa a [Deployment planner eszköz](site-recovery-deployment-planner.md) a VMWare-replikáció.
@@ -108,6 +108,11 @@ Ha meg szeretne adni egy további hálózati Adapterre a konfigurációs kiszolg
 8. A **virtuális gép hitelesítő adatok beállítása**, írja be a felhasználónevet és az Azure Site Recovery mobilitási szolgáltatás automatikusan telepítse az gépekre, ha engedélyezve van a replikáció használandó jelszót. A Windows-alapú gépek esetében a fióknak helyi rendszergazdai jogosultságokkal kell rendelkeznie a replikálni kívánt gépeken. Linux-alapú gépeken a rendszergazdai fiók adatait adja meg.
 9. Válassza ki **véglegesítő konfigurációs** regisztráció befejezéséhez. 
 10. A regisztráció befejezését követően ellenőrizze az Azure Portalon, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepelnek-e a tároló **Forrás** lapján. Ezután válassza az **OK** gombot a célbeállítások konfigurálásához.
+
+
+## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló verziófrissítése
+
+A kiszolgáló frissítése a legújabb verzióra, olvassa el a lépéseket [Itt](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)
 
 
 ## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása

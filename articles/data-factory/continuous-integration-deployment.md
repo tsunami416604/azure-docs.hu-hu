@@ -10,19 +10,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 6ad0f554161937a4fdb10179e2b310facbb91945
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 16eec117514d040dc91b5d18b73d4cc6025c901e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integrációt és üzembe helyezés az Azure Data Factory
 
 Folyamatos integrációt az eljárást minden módosításakor azelőtt tesztelése a codebase automatikusan és a lehető leghamarabb. Folyamatos üzembe helyezés követi a tesztelés folyamatos integráció során történik, és leküldéses értesítések módosításokat egy átmeneti vagy üzemi rendszerre.
 
 Az Azure Data Factory folyamatos integrációt és a központi telepítés azt jelenti, hogy a másikra a környezetek (fejlesztési, tesztelési, éles) mozgó adat-előállító adatcsatornák. Ehhez az folyamatos integrációt és telepítése, használata Data Factory UI integration Azure Resource Manager-sablonok. A Data Factory felhasználói felület hozhat létre a Resource Manager-sablon, amikor kiválaszt a **ARM-sablon** beállítások. Ha bejelöli **exportálása ARM-sablon**, a portál létrehozza a Resource Manager-sablon az adat-előállító és a kapcsolatok karakterláncok és más paramétereket tartalmazó konfigurációs fájlt. Majd kell létrehoznia egy konfigurációs fájl (fejlesztési, tesztelési, éles) környezetben. A fő Resource Manager sablon fájlt a környezetek változatlan marad.
+
+Kilenc perces bevezető és a szolgáltatás bemutató tekintse meg a következő videót:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>Minden környezet Resource Manager sablon létrehozása
 Válassza ki **exportálása ARM-sablon** a data factory a fejlesztési környezetet az erőforrás-kezelő sablonjának exportálása.

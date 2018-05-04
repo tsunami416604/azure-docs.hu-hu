@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 01/17/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 0956f42812307f88e37ef12078a86eb85f407ce6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3473cb5260773fda0534c4f0aca1db731cce74eb
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="templates-for-azure-policy"></a>Sablonok az Azure-házirend
 
@@ -79,6 +79,9 @@ A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalm
 | [Engedélyezett erőforrástípusok](scripts/allowed-res-types.md) | Biztosítja, hogy csak a jóváhagyott erőforrástípusok vannak telepítve. Megadja az engedélyezett típusok egy tömbjét.  |
 | [A tárfiók termékváltozatok engedélyezett](scripts/allowed-stor-acct-skus.md) | Megköveteli, hogy a storage-fiókok egy jóváhagyott SKU használja. Megadhatja a jóváhagyott termékváltozatok tömbjét. |
 | [Alkalmazza a címke és az alapértelmezett értékre](scripts/apply-tag-def-val.md) | Hozzáfűz egy megadott tag nevét és értékét, ha a címke nem áll rendelkezésre. Megadhatja a címke nevét és az érték érvényes.  |
+| [SQL adatbázis-titkosítás naplózása](scripts/sql-database-encryption-audit.md) | Ha az SQL-adatbázis nem rendelkezik engedélyezett átlátható adattitkosítás eseményeket. |
+| [Naplózási SQL Server naplózási beállítások](scripts/sql-server-audit.md) | Naplózás SQL server e engedélyezve vannak-e a naplózási beállítások alapján. |
+| [Data Lake Store titkosításának kényszerítése](scripts/enforce-datalakestore-encryption.md) | Minden Data Lake Store-fiókok, amelyek nem rendelkeznek engedélyezhető a titkosítás megtagadja. |
 | [Címke és annak értéke](scripts/enforce-tag-val.md) | Egy megadott tag neve és értéke szükséges. Megadhatja a címke nevét és értékét érvényesítését.  |
 | [Nem engedélyezett típusú erőforrások](scripts/not-allowed-res-type.md) | Ez a beállítás letiltja a megadott erőforrás típusú központi telepítés. Megadhat letilthatja az erőforrástípusok tömbjét.  |
 | [SQL Server verziója 12.0 megkövetelése](scripts/req-sql-12.md) | Szükséges SQL-kiszolgálók 12.0 verzióját használja.  |

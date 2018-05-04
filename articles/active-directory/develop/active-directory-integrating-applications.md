@@ -15,11 +15,11 @@ ms.date: 04/18/2018
 ms.author: mtillman
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: ebf6653fada0897c23ebb84ab14de1040a963552
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19eb8399c59efa94e68c0d334ba708f900ce841a
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Alkalmazások integrálása az Azure Active Directoryban
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -71,7 +71,7 @@ Például egy webes ügyfélalkalmazás rendszernek végig kell olvasnia a felha
 
 A hozzájárulási keretrendszer épül OAuth 2.0 és a különböző adatfolyamok, például engedélyezési code grant és az ügyfél hitelesítő adatai megadják, nyilvános vagy titkos ügyfél használatával. OAuth 2.0 használatával az Azure AD lehetővé teszi számos különböző típusú ügyfélalkalmazások, például a telefon, táblagép, kiszolgáló vagy egy webalkalmazás létrehozása és a szükséges erőforrások eléréséhez.
 
-OAuth2.0 engedélyt biztosít a hozzájárulási keretrendszer használatával kapcsolatban további információkért lásd: [az OAuth 2.0 és az Azure AD használatával webes alkalmazásokhoz való hozzáférés engedélyezésére](active-directory-protocols-oauth-code.md) és[hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md). További információ a hitelesített hozzáférést Microsoft Graph keresztül Office 365: [App hitelesítést a Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
+OAuth2.0 engedélyt biztosít a hozzájárulási keretrendszer használatával kapcsolatban további információkért lásd: [az OAuth 2.0 és az Azure AD használatával webes alkalmazásokhoz való hozzáférés engedélyezésére](active-directory-protocols-oauth-code.md) és [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md). További információ a hitelesített hozzáférést Microsoft Graph keresztül Office 365: [App hitelesítést a Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
 
 #### <a name="example-of-the-consent-experience"></a>A hozzájárulási élmény példája
 

@@ -15,7 +15,7 @@ ms.date: 11/27/2017
 ms.author: daveba
 ms.openlocfilehash: 2b3651eaf702cfe2f73320fcaf2ab469dd7c478a
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
 ---

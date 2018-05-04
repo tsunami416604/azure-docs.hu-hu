@@ -11,14 +11,14 @@ ms.assetid: 0c23a079-981a-4079-b3f7-ad147b4609e5
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 04/23/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: cc5d48b881ba59679c19baa3506c3c14c0db8048
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fd0daae8289839b64e7b54d97c78719587c18e7d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>A Linux-alapú HDInsight Hive használatával repülési késleltetés adatok elemzése
 
@@ -34,6 +34,8 @@ ms.lasthandoff: 04/16/2018
 * **Azure SQL Database** Azure SQL-adatbázis használata a cél-tárolóban. Ha egy SQL-adatbázis nem rendelkezik, tekintse meg a [Azure SQL-adatbázis létrehozása az Azure portálon](../sql-database/sql-database-get-started.md).
 
 * **Azure parancssori felület (CLI)**. Ha még nem telepítette az Azure parancssori felület, lásd: [telepítse az Azure CLI 1.0](../cli-install-nodejs.md) a további lépéseket.
+
+* **Egy SSH-ügyfél**. További információért lásd: [Csatlakozás a HDInsighthoz (Hadoop) SSH-val](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>A felé továbbított adatok letöltése
 
@@ -54,24 +56,21 @@ ms.lasthandoff: 04/16/2018
 
 1. Az alábbi parancs segítségével a .zip fájlt feltölteni a HDInsight fürt átjárócsomópontjába:
 
-    ```
-    scp FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
+    ```bash
+    scp FILENAME.zip sshuser@clustername-ssh.azurehdinsight.net:
     ```
 
-    Cserélje le *Fájlnév* a nevet, a .zip fájlt. Cserélje le *felhasználónév* a HDInsight-fürthöz az SSH-bejelentkezéskor. Cserélje le *CLUSTERNAME* a HDInsight-fürt nevét.
-
-   > [!NOTE]
-   > Jelszó segítségével hitelesíti az SSH-bejelentkezéskor, ha kéri a jelszót. Ha egy nyilvános kulcsot használ, szükség lehet használni a `-i` paraméter és a kapcsolódó titkos kulcs elérési útja. Például: `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.
+    Cserélje le `FILENAME` a nevet, a .zip fájlt. Cserélje le `sshuser` a HDInsight-fürthöz az SSH-bejelentkezéskor. Cserélje le `clustername` a HDInsight-fürt nevét.
 
 2. Miután befejeződött a feltöltés, csatlakozzon a fürthöz SSH segítségével:
 
-    ```ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net```
-
-    További információért lásd: [Csatlakozás a HDInsighthoz (Hadoop) SSH-val](hdinsight-hadoop-linux-use-ssh-unix.md).
+    ```bash
+    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ```
 
 3. Az alábbi parancs segítségével bontsa ki a .zip fájlt:
 
-    ```
+    ```bash
     unzip FILENAME.zip
     ```
 
@@ -79,7 +78,7 @@ ms.lasthandoff: 04/16/2018
 
 4. Az alábbi parancs segítségével hozzon létre egy könyvtárat a HDInsight-tárolóba, majd másolja a fájlt a könyvtárba:
 
-    ```
+    ```bash
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
     hdfs dfs -put FILENAME.csv /tutorials/flightdelays/data/
     ```
@@ -90,7 +89,7 @@ Az alábbi lépések segítségével adatokat importálhat a .csv fájl nevű Hi
 
 1. A következő paranccsal hozhat létre és szerkeszthet egy új fájlt **flightdelays.hql**:
 
-    ```
+    ```bash
     nano flightdelays.hql
     ```
 
@@ -160,13 +159,13 @@ Az alábbi lépések segítségével adatokat importálhat a .csv fájl nevű Hi
 
 3. Hive elindításához és a **flightdelays.hql** fájlt, a következő paranccsal:
 
-    ```
+    ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
 4. Miután a __flightdelays.hql__ parancsfájlt futtató befejeződik, nyisson meg egy interaktív Beeline-munkamenetet a következő paranccsal:
 
-    ```
+    ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
@@ -200,13 +199,13 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 
 1. FreeTDS telepítéséhez használja a fürthöz az SSH-kapcsolat a következő parancsot:
 
-    ```
+    ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
 3. A telepítés befejezése után a következő paranccsal az SQL Database-kiszolgálóhoz való kapcsolódáshoz. Cserélje le **kiszolgálónév** az SQL-adatbázis-kiszolgáló nevével. Cserélje le **adminLogin** és **adminPassword** SQL-adatbázis a bejelentkezéskor. Cserélje le **databaseName** az adatbázis nevével.
 
-    ```
+    ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -p 1433 -D <databaseName>
     ```
 
@@ -224,7 +223,7 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 
 4. : A `1>` kéri, adja meg a következő sorokat:
 
-    ```
+    ```hiveql
     CREATE TABLE [dbo].[delays](
     [origin_city_name] [nvarchar](50) NOT NULL,
     [weather_delay] float,
@@ -237,7 +236,7 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 
     A következő lekérdezés segítségével győződjön meg arról, hogy a tábla jött létre:
 
-    ```
+    ```hiveql
     SELECT * FROM information_schema.tables
     GO
     ```
@@ -255,7 +254,7 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 
 1. A következő parancs használatával győződjön meg arról, hogy a Sqoop látja-e az SQL-adatbázis:
 
-    ```
+    ```bash
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
     ```
 
@@ -263,7 +262,7 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 
 2. Az alábbi parancs segítségével exportál adatokat az hivesampletable a késést tábla:
 
-    ```
+    ```bash
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
@@ -271,13 +270,13 @@ Ha még nem rendelkezik SQL-adatbázis, olvassa el a [Azure SQL-adatbázis létr
 
 3. A sqoop parancs befejezése után a tsql segédprogrammal az adatbázishoz való kapcsolódáshoz:
 
-    ```
+    ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
     Győződjön meg arról, hogy az adatok késések táblához exportált használja az alábbi utasításokat:
 
-    ```
+    ```sql
     SELECT * FROM delays
     GO
     ```

@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/27/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cc833e456571b63fa03574808529c8c501d7ab5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19cdf81a355bae4d59cb49c1c588b995b040309b
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -50,7 +50,7 @@ Ha tárolókészlet foglalási módban létrehozott Batch-fiók **felhasználói
 | [Egyidejű feladatok](batch-parallel-node-tasks.md) egyes számítási csomópontjain |csomópont magok száma 4 x |
 | [Alkalmazások](batch-application-packages.md) / Batch-fiókhoz. |20 |
 | Alkalmazáscsomagok alkalmazásonként |40 |
-| Csomag mérete (minden) |Approx. 195GB<sup>1</sup> |
+| Csomag mérete (minden) |KB. 195GB<sup>1</sup> |
 | Maximális kezdő tevékenység mérete | 32768 karakterek<sup>2</sup> |
 | Maximális feladatütemezés élettartama | 7 nap<sup>3</sup> |
 | A csomópontok közötti kommunikáció a számítási csomópontok készlet engedélyezve | 100 |

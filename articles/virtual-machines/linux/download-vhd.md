@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d62fe702e42929fde2bb2a0dee4ea2cc8621ff99
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 93f165d08813506f9c4d4c0fbb885ddc958e8391
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Töltse le a Linux virtuális merevlemez az Azure-ból
 
@@ -35,7 +35,7 @@ Virtuális merevlemez nem lehet letölteni az Azure-ból, ha egy virtuális gép
 
 Más virtuális gépek létrehozásához használja a virtuális merevlemez képként, végezze el az alábbi lépéseket:
 
-1. SSH, a fiók nevét és a virtuális gép nyilvános IP-címe használatával kapcsolódni hozzá, és kiosztásának megszüntetése azt. A nyilvános IP-cím található [az hálózati nyilvános ip-megjelenítése](https://docs.microsoft.com/en-us/cli/azure/network/public-ip#az-network-public-ip-show). A + felhasználói paraméter is eltávolítja az utolsó kiépített felhasználói fiókot. Ha a fiók hitelesítő adatait a virtuális géphez vannak sütés, hagyja ki ennek + a user paraméterhez. A következő példában eltávolítjuk a legutóbbi kiépített felhasználói fiók:
+1. SSH, a fiók nevét és a virtuális gép nyilvános IP-címe használatával kapcsolódni hozzá, és kiosztásának megszüntetése azt. A nyilvános IP-cím található [az hálózati nyilvános ip-megjelenítése](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). A + felhasználói paraméter is eltávolítja az utolsó kiépített felhasználói fiókot. Ha a fiók hitelesítő adatait a virtuális géphez vannak sütés, hagyja ki ennek + a user paraméterhez. A következő példában eltávolítjuk a legutóbbi kiépített felhasználói fiók:
 
     ```bash
     ssh azureuser@<publicIpAddress>

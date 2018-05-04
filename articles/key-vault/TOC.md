@@ -1,4 +1,4 @@
-# [A Key Vault dokumentációja](index.md)
+# [A Key Vault dokumentációja](index.yml)
 
 # Áttekintés
 ## [Key Vault – áttekintés](key-vault-overview.md)
@@ -9,13 +9,13 @@
 ## [Key Vault létrehozása – Portal](quick-create-portal.md)
 
 # Oktatóanyagok
-## [Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához ](tutorial-web-application-keyvault.md)
-# Példák
-## [Kódminták](https://azure.microsoft.com/resources/samples/?service=key-vault)
-# Alapelvek
+## [A Key Vault titkos kulcsainak olvasása ](tutorial-web-application-keyvault.md)
 ## [Ismerkedés a Key Vaulttal](key-vault-get-started.md)
 ## [A kulcsforgatás és a naplózás beállítása](key-vault-key-rotation-log-monitoring.md)
 ## [A Key Vault használata a webalkalmazásokból](key-vault-use-from-web-application.md)
+# Példák
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=key-vault)
+# Alapelvek
 ## [Biztonsági világok](key-vault-ovw-security-worlds.md)
 ## [Helyreállítható törlés](key-vault-ovw-soft-delete.md)
 ## [Tárfiókkulcsok](key-vault-ovw-storage-keys.md)

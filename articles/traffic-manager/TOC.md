@@ -34,7 +34,7 @@
 ### [Az Azure Traffic Manager csökkentett teljesítményének elhárítása](traffic-manager-troubleshooting-degraded.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=traffic-manager)
 ## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)

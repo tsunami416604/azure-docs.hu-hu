@@ -1,25 +1,25 @@
 ---
-title: "Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon | Microsoft Docs"
-description: "Bejelentkezési tevékenységekre vonatkozó jelentések hibakódjainak referenciája."
+title: Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon | Microsoft Docs
+description: Bejelentkezési tevékenységekre vonatkozó jelentések hibakódjainak referenciája.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e5d477aa74d3d0588e33363888d84e860d4b2f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon
 
@@ -65,6 +65,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |50055|Érvénytelen jelszó, lejárt jelszót írt be.|
 |50057|A felhasználói fiók le van tiltva.|
 |50058|Nem található információ a felhasználó identitásáról a megadott hitelesítő adatokban vagy a felhasználó nem található a bérlőben vagy csendes bejelentkezési kérést küldtek, de nem jelentkezett be felhasználó vagy a szolgáltatás nem tudta hitelesíteni a felhasználót.|
+|50072|A felhasználónak kéttényezős hitelesítést kell igényelnie (interaktív)|
 |50074|A felhasználó nem adott jó választ az MFA-kérdésre.|
 |50079|A felhasználónak kéttényezős hitelesítést kell igényelnie.|
 |50089|A folyamattoken érvényesítése sikertelen volt, mert a folyamattoken lejárt.|
@@ -97,7 +98,6 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |81013|Nem található a felhasználói objektum a felhasználó Kerberos-jegyének információi alapján.|
 |90014|Különböző esetekben használatos, amikor egy várt mező nincs jelen a hitelesítő adatokban.|
 |90093|A kéréshez a rendszer tiltott hibakódú gráfot adott vissza.|
-
 
 
 ## <a name="next-steps"></a>További lépések

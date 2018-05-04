@@ -1,6 +1,6 @@
 ---
-title: "Adathiány hibaelhárítása – Application Insights .NET-hez"
-description: "Nem jelennek meg adatok az Azure Application Insights? Próbálja meg itt."
+title: Adathiány hibaelhárítása – Application Insights .NET-hez
+description: Nem jelennek meg adatok az Azure Application Insights? Próbálja meg itt.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
 ms.openlocfilehash: 951a3217d795df6360cd3cfa2d47db08c11f978e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>A telemetriai adatok némelyike hiányzik
@@ -65,7 +65,7 @@ A jelek szerint valami hiba történt, miközben telepíti a Application Insight
 
 A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza a **Application Insights > konfigurálja az Application Insights**. Olyan párbeszédpanel, amely felkéri, hogy jelentkezzen be az Azure-bA kap, és létrehozza az Application Insights-erőforrást, vagy használja ismét egy meglévőt.
 
-## <a name="NuGetBuild"></a>"NuGet csomag hiányoznak a" saját build kiszolgálón
+## <a name="NuGetBuild"></a> "NuGet csomag hiányoznak a" saját build kiszolgálón
 *Minden buildek OK I vagyok hibakeresés a fejlesztési számítógépen, de a NuGet hiba jelenik meg a build kiszolgálón.*
 
 Ellenőrizze a [NuGet-csomagok visszaállításának](http://docs.nuget.org/Consume/Package-Restore) és [automatikus csomagok visszaállításának](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
@@ -124,7 +124,7 @@ Javítás:
     Van néhány összefoglaló diagramok megjelenik. Kattinthat, révén azokat a részletek megtekintéséhez.
 * A Visual Studióban amíg az alkalmazás hibakeresése, kattintson a Application Insights gombra.
 
-## <a name="q03"></a>Nincs server-adatok (vagy egyáltalán nem adatok)
+## <a name="q03"></a> Nincs server-adatok (vagy egyáltalán nem adatok)
 *Szeretnék saját alkalmazás futott, és majd megnyitni az Application Insights szolgáltatás a Microsoft Azure-ban, de a diagram megjelenítése "Megtudhatja, hogyan gyűjtéséhez..." vagy "Nincs beállítva."* Másik lehetőségként *csak nézet és a felhasználói adatok, de nem a server-adatok.*
 
 * Futtassa az alkalmazást hibakeresési módban, a Visual Studio (F5). Használja az alkalmazást úgy, hogy néhány telemetriai készítése. Ellenőrizze, hogy látja-e a Visual Studio kimeneti ablakában naplózott eseményeket. 

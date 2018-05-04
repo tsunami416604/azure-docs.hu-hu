@@ -1,9 +1,9 @@
 ---
-title: "Az Azure Data Lake Analytics kvótakorlát"
-description: "Megtudhatja, hogyan állítsa be, és növelje a kvótakorlát az Azure Data Lake Analytics (ADLA) esetében."
+title: Az Azure Data Lake Analytics kvótakorlát
+description: Megtudhatja, hogyan állítsa be, és növelje a kvótakorlát az Azure Data Lake Analytics (ADLA) esetében.
 services: data-lake-analytics
 keywords: Azure Data Lake Analytics
-documentationcenter: 
+documentationcenter: ''
 author: omidm1
 editor: omidm1
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
@@ -12,11 +12,11 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: 22774511720173915207da80a6ca33d5dbc83e19
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Az Azure Data Lake Analytics kvótakorlát
 
@@ -24,9 +24,13 @@ Megtudhatja, hogyan állítsa be, és növelje a kvótakorlát az Azure Data Lak
 
 ## <a name="azure-subscriptions-limits"></a>Azure-előfizetések korlátok
 
-**Előfizetésenként fiókok ADLA maximális száma:** 5
+**Régiónként előfizetésenként fiókok ADLA maximális száma:** 5
 
-Ez az előfizetésenként régiónként hozhat létre ADLA fiókok maximális számát. Hozzon létre egy hatodik ADLA fiókot kísérli meg, ha egy hiba jelenik "Elérte a maximális száma Data Lake Analytics-fiókok engedélyezett [5] terület előfizetési néven". Ebben a helyzetben választhat egy másik régióban, ha a megfelelő, vagy törölje azokat nem használt ADLA a fiókokat az azonos régióban, vagy forduljon Azure támogatását azzal, [egy támogatási jegy megnyitásakor](#increase-maximum-quota-limits) a kvóta növelését.
+Hozzon létre egy hatodik ADLA fiókot kísérli meg, ha egy hiba jelenik "Elérte a maximális száma Data Lake Analytics-fiókok engedélyezett [5] terület előfizetési néven". 
+
+Ha szeretné ezt a határt túlmutató, próbálja meg ezeket a beállításokat:
+* egy másik régiót válassza, ha megfelelő
+* Kérje az Azure támogatási által [egy támogatási jegy megnyitásakor](#increase-maximum-quota-limits) a kvóta növelését.
 
 ## <a name="adla-account-limits"></a>ADLA korlátai
 

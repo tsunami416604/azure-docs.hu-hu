@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d7abfd1ac6f914c75297ff49462590e5b6169dbd
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakran ismételt kérdések
 
@@ -69,7 +69,7 @@ A részletek a projekt típusától függ. Egy webes alkalmazáshoz:
 * Ezek a fájlok hozzáadása a projekthez:
 
   * ApplicationInsights.config.
-  * ai.js
+  * AI.js
 * A NuGet-csomagok telepíti:
 
   * *Application Insights API* – az alapszintű API
@@ -254,15 +254,37 @@ Lehetővé teszi a webkiszolgáló telemetriai adatokat küldeni a végpontok ht
 
 ### <a name="proxy"></a>Proxy
 
-Útvonal-forgalom a kiszolgáló egy átjárót az intraneten, úgy, hogy ez az ApplicationInsights.config:
+Útvonal-forgalmat a kiszolgálótól az átjáró az intraneten által overwritting ezeket a beállításokat, a példában ApplicationInsights.config. A "Végpont" tulajdonságok nem szerepelnek a config, ezeket az osztályokat rendszer használata esetén az alapértelmezett értékeket, az alábbi példában látható módon.
 
-```XML
-<TelemetryChannel>
-    <EndpointAddress>your gateway endpoint</EndpointAddress>
-</TelemetryChannel>
+#### <a name="example-applicationinsightsconfig"></a>Példa ApplicationInsights.config:
+```xml
+<ApplicationInsights>
+    ...
+    <TelemetryChannel>
+         <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+    </TelemetryChannel>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
 ```
 
-Az átjáró kell továbbítani a forgalmat https://dc.services.visualstudio.com:443/v2/track
+_Megjegyzés: ApplicationIdProvider érhető v2.6.0 kezdődően_
+
+Az átjáró kell továbbítani a forgalmat https://dc.services.visualstudio.com:443
+
+Cserélje le a fenti értékek: `http://<your.gateway.address>/<relative path>`
+ 
+Példa: 
+```
+http://<your.gateway.endpoint>/v2/track 
+http://<your.gateway.endpoint>/api/profiles/{0}/apiId
+```
+
+
+
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Futtatható-e rendelkezésre állási webes tesztjeinek használatát egy intranetes kiszolgálóra?
 

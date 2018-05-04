@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: a3d0770d3b9c8702dbe4dac86f86030bea4090c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3035d0e8642310698274e4351a95013e204e2f14
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Alkalmazások kezelése több környezethez
 
@@ -48,8 +48,8 @@ Megadja a konfigurációs két kategóriába oszthatók:
 
 A Service Fabric egy elnevezett alkalmazáspéldányok létrehozásakor lehetősége van a paraméterek adjon át. Ennek módja attól függ, az alkalmazáspéldány létrehozásában.
 
-  - A PowerShell a [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmag egy kivonattáblát a alkalmazás paraméterek fogadja el.
-  - Sfctl, használja a [ `sfctl application create` ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) parancs paraméterek fogadja el a JSON-karakterláncban. A install.sh parancsfájl sfctl használja.
+  - A PowerShell a [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmag egy kivonattáblát a alkalmazás paraméterek fogadja el.
+  - Sfctl, használja a [ `sfctl application create` ](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) parancs paraméterek fogadja el a JSON-karakterláncban. A install.sh parancsfájl sfctl használja.
   - A Visual Studio tesz lehetővé a paraméter fájlokat a projektet, a paraméterek mappában. A Visual Studio, a Visual Studio Team szolgáltatás vagy a Team Foundation Server közzététele a paraméter-fájlok esetén használatos. A Visual Studio a paraméter fájlok vannak folyamatban átadja a telepítés-FabricApplication.ps1 parancsfájl.
 
 ## <a name="next-steps"></a>További lépések

@@ -1,31 +1,31 @@
 ---
-title: "Az App Service szolgáltatások alkalmazás Azure Active Directory-hitelesítés konfigurálása"
-description: "Tudnivalók az App Service szolgáltatások alkalmazás Azure Active Directory-hitelesítés konfigurálása."
+title: Az App Service szolgáltatások alkalmazás Azure Active Directory-hitelesítés konfigurálása
+description: Tudnivalók az App Service szolgáltatások alkalmazás Azure Active Directory-hitelesítés konfigurálása.
 author: mattchenderson
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 990fab9aeea71b8cf344b9a49a5ed438db6663c0
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 2530cb55cb054c02df5d55ccb86e959a061e2499
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-login"></a>App Service-alkalmazás Azure Active Directory bejelentkezési használandó konfigurálása
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure App Service szolgáltatások, Azure Active Directory egy hitelesítésszolgáltatót használandó.
 
-## <a name="express"></a>Azure Active Directory konfigurálása gyorsbeállítások használatával
+## <a name="express"> </a>Konfigurálja az Azure Active Directory gyorsbeállítások használatával
 1. Az a [Azure-portálon], keresse meg az App Service alkalmazáshoz. Válassza ki a bal oldali navigációs **hitelesítési / engedélyezési**.
 2. Ha **hitelesítési / engedélyezési** nem engedélyezve, jelölje be **a**.
 3. Válassza ki **Azure Active Directory**, majd válassza ki **Express** alatt **üzemmód**.
@@ -37,10 +37,10 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az Azure App Service szolgáltatás
 
 Most már készen áll az App Service-alkalmazás hitelesítéshez használt Azure Active Directoryban.
 
-## <a name="advanced"></a>(Alternatív módszer) manuális konfigurálása az Azure Active Directory speciális beállításokkal
+## <a name="advanced"> </a>(Alternatív módszer) Manuális konfigurálása az Azure Active Directory speciális beállításokkal
 Másik lehetőségként konfigurációs lehetőségeket biztosít manuálisan. Ez az az előnyben részesített megoldás, ha az AAD-bérlőt használni kívánt eltér a tenant, amelyhez jelentkezzen be Azure. A konfigurálás befejezéséhez, először létre kell hoznia egy regisztrációs az Azure Active Directoryban, és meg kell adni az egyes a regisztrációs adatokat az App Service.
 
-### <a name="register"></a>App Service-alkalmazás regisztrálása az Azure Active Directoryval
+### <a name="register"> </a>App Service-alkalmazás regisztrálása az Azure Active Directoryval
 1. Jelentkezzen be a [Azure-portálon], és keresse meg az App Service alkalmazáshoz. Másolja az alkalmazás **URL-cím**. Az Azure Active Directory-alkalmazás regisztráció konfigurálásához használandó.
 2. Navigáljon a **Active Directory**, majd jelölje be a **App regisztrációk**, kattintson a **új alkalmazás regisztrációja** elindítani az új alkalmazás regisztrációjának tetején. 
 3. Az a **létrehozása** lapján adja meg a **neve** az alkalmazás regisztrációját, válassza ki a **Web App / API** írja be a a **bejelentkezési URL-cím** mezőbe illessze be a alkalmazás URL-CÍMÉT (1. lépés). Kattintson a **létrehozása**.
@@ -52,9 +52,9 @@ Másik lehetőségként konfigurációs lehetőségeket biztosít manuálisan. E
 9. Zárja be a **regisztrált alkalmazás** lap. A a **App regisztrációk** lapján kattintson a a **végpontok** gombra az oldal tetején, majd másolja a **összevonási metaadat-dokumentum** URL-cím. 
 10. Nyisson meg egy új böngészőablakot, és beillesztés, és keresse meg az XML-oldalra keresse meg az URL-címet. A dokumentum tetején van egy **EntityDescriptor** elem, kell lennie egy **entityid beállítást** attribútum az űrlap `https://sts.windows.net/` a bérlő (más néven "bérlő azonosítója") egy adott GUID követ. Másolja ezt az értéket – Ez a **kiállítójának URL-címe**. Az alkalmazás későbbi használatra konfigurál.
 
-### <a name="secrets"></a>App Service-alkalmazás Azure Active Directory hozzáadása információk
+### <a name="secrets"> </a>App Service-alkalmazás Azure Active Directory-adatokat hozzáadni
 1. Vissza a [Azure-portálon], keresse meg az App Service alkalmazáshoz. Kattintson a **hitelesítési/engedélyezési**. Ha a hitelesítési/engedélyezési szolgáltatás nincs engedélyezve, kapcsolja be a kapcsoló **a**. Kattintson a **Azure Active Directory**, a hitelesítési szolgáltatók, az alkalmazás konfigurálásához. (Választható) Alapértelmezés szerint az App Service hitelesítést nyújt, de nem engedélyezett hozzáférés korlátozása a tartalom és API-k. Kell engedélyeznie a felhasználók az alkalmazás kódját. Állítsa be **hitelesítetlen kérés esetén elvégzendő művelet** való **bejelentkezés Azure Active Directoryval**. Ez a beállítás megköveteli, hogy az összes kérelem hitelesítését, és minden nem hitelesített a kérelmet átirányítja az Azure Active Directory-hitelesítéshez.
-2. a Active Directory-hitelesítés konfiguráció kattintson **speciális** alatt **üzemmód**. Illessze be az Alkalmazásazonosító ügyfél-azonosító (a 8. lépés), és illessze be a entityid beállítást (a 10. lépés) azokat a kiállító URL-címével. Ezután kattintson az **OK** gombra.
+2. Kattintson az Active Directory-hitelesítés konfiguráció **speciális** alatt **üzemmód**. Illessze be az Alkalmazásazonosító ügyfél-azonosító (a 8. lépés), és illessze be a entityid beállítást (a 10. lépés) azokat a kiállító URL-címével. Ezután kattintson az **OK** gombra.
 3. Az Active Directory-hitelesítés konfiguráció lapján kattintson a **mentése**.
 
 Most már készen áll az App Service-alkalmazás hitelesítéshez használt Azure Active Directoryban.
@@ -74,7 +74,7 @@ Az Azure Active Directory segítségével is natív ügyfelek regisztrálása na
 
 Ezzel beállította egy webalkalmazást az App Service alkalmazáshoz hozzáférő.
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+## <a name="related-content"> </a>Kapcsolódó tartalom
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->

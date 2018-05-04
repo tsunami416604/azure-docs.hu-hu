@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 6ccb095f3739a90bdab2408965a742f9cbc19359
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6d440a49cb30210d3c0eed7d24e4811cc56925b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Azure-szolgáltatásokat az Azure portálon újabb metrika riasztásai
 Azure figyelő mostantól támogatja az Új riasztási típust. Az újabb riasztások Miben különböznek a [klasszikus metrika riasztások](insights-alerts-portal.md) néhány módon:
@@ -35,7 +35,7 @@ Az Azure portál egy újabb metrika riasztás létrehozása, lásd: [riasztási 
 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portál, PowerShell, a parancssori felület, a többi támogatja
-Jelenleg csak az Azure-portálon vagy REST API újabb metrika riasztásokat hozhat létre. PowerShell-lel újabb riasztások konfigurálásának a támogatását, és az az Azure parancssori felület (Azure CLI 2.0) hamarosan.
+Jelenleg csak az Azure-portálon, létrehozhat újabb metrika riasztások [REST API](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template) vagy [Resource Manager-sablonok](monitoring-create-metric-alerts-with-templates.md). PowerShell-lel újabb riasztások konfigurálásának a támogatását, és az az Azure parancssori felület (Azure CLI 2.0) hamarosan.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metrikák és a támogatott méretek
 Újabb metrika riasztások támogatja a dimenziók metrikák vonatkozó riasztások elküldésére. A metrika a megfelelő szintre szűréséhez használja a dimenziók is. Az összes támogatott metrikák mellett alkalmazható dimenziók felfedezte, és a ábrázolt [Azure figyelője – Metrikaböngésző (előzetes verzió)](monitoring-metric-charts.md).
@@ -50,13 +50,19 @@ Az Azure figyelő metrika források támogatja az újabb riasztások teljes list
 |Microsoft.Cache/Redis     |    –     |[Redis Cache](monitoring-supported-metrics.md#microsoftcacheredis)|
 |Microsoft.Compute/virtualMachines     |    –     | [Virtuális gépek](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
 |Microsoft.Compute/virtualMachineScaleSets     |   –      |[Virtuálisgép-méretezési csoportok](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.ContainerInstance/containerGroups | Igen| [Tárolócsoportok](monitoring-supported-metrics.md#microsoftcontainerinstancecontainergroups)|
+|Microsoft.DataFactory/datafactories| Igen| [Adat-előállítók 1-es verzió](monitoring-supported-metrics.md#microsoftdatafactorydatafactories)|
 |Microsoft.DataFactory/factories     |   Igen     |[Adat-előállítók V2](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
 |Microsoft.DBforMySQL/servers     |   –      |[A MySQL adatbázis](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
-|Microsoft.DBforPostgreSQL/servers     |    –     | [DB for PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
+|Microsoft.DBforPostgreSQL/servers     |    –     | [PostgreSQL DB](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
 |Microsoft.EventHub/namespaces     |  Igen      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
+|Microsoft.KeyVault/vaults| Nem | [Tárolók](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     –    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
 |Microsoft.Network/applicationGateways     |    –     | [Alkalmazásátjárót](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/dnsZones | –| [DNS-zónák](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
+|(Csak a Standard termékváltozat) Microsoft.Network/loadBalancers| Igen| [Terheléselosztók](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/publicipaddresses     |  –       |[Nyilvános IP-cím Addreses](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.PowerBIDedicated/capacities | – | [Kapacitás](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices     |   –      |[Keresési szolgáltatások](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Igen       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
 |Microsoft.Storage/storageAccounts     |    Igen     | [Tárfiókok](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
@@ -88,8 +94,8 @@ Metrika neve/részletei  |Támogatott méretek  | Napló típusa  |
 |   Average_ % szabad terület    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
 | Average_Available memória (MB)     |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
 | Average_ % előjegyzett memória    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
-| Average_Bytes Received/sec    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
-|  Average_Bytes Sent/sec    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
+| Fogadott Average_Bytes/mp    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
+|  Küldött Average_Bytes/mp    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
 |  Average_Bytes száma/s    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
 |  Average_ a processzor kihasználtsága (%)    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |
 |   Average_Processor várólistájának hossza    |     Igen – számítógép, ObjectName, InstanceName, Számláló_elérési_útja & SourceSystem    |   Windows teljesítményszámláló      |

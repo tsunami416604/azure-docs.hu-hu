@@ -1,6 +1,6 @@
 ---
-title: CI/CD folyamatokat létrehozni az Azure-ban Team Services |} Microsoft Docs
-description: Útmutató egy olyan Visual Studio Team Services folyamatot folyamatos integrációt és kézbesítését, hogy a webes alkalmazás telepíti az IIS-hez a Windows virtuális gép létrehozása
+title: Az oktatóanyag - CI/CD folyamatokat létrehozni az Azure-ban Team Services |} Microsoft Docs
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy Visual Studio Team Services folyamat folyamatos integrációt és kézbesítését, hogy egy webes alkalmazást telepíti egy Windows Azure-ban az IIS.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d017f2453bbd757c16e2df034f5879f24ffe42f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Visual Studio Team Services és az IIS egy folyamatos integrációt folyamat létrehozása
+# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Oktatóanyag: Hozzon létre egy folyamatos integrációt folyamat Visual Studio Team Services és az IIS
 A build, a vizsgálati és a telepítési fázisai alkalmazásfejlesztés automatizálását, használhatja a folyamatos integrációt és a központi telepítés (CI/CD) folyamat. Ebben az oktatóanyagban létrehoz egy Visual Studio Team Services és a Windows rendszerű virtuális gép (VM) használata az IIS-t futtató Azure CI/CD folyamat. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ A build, a vizsgálati és a telepítési fázisai alkalmazásfejlesztés automa
 > * Hozzon létre egy kiadási közzététele az új webes API-definíciót az IIS-csomagok központi telepítése
 > * A CI/CD-feldolgozási folyamat tesztelése
 
-Az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.7.0 szükséges vagy újabb. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 
 ## <a name="create-project-in-team-services"></a>A Team Services-projekt létrehozása
@@ -94,29 +94,30 @@ Tekintse meg a build üzemeltetett ügynökön van ütemezve, majd megkezdi. A k
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 Adjon meg egy platform, az ASP.NET webalkalmazás futtatásához, IIS-t futtató Windows rendszerű virtuális gép van szükség. Vonja össze a szolgáltatások által használt kommunikál az IIS-példány, a kódot és buildek véglegesíti az ügynök által kiváltott.
 
-Windows Server 2016 VM létre [a parancsfájl minta](../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json). A parancsfájl futtatásához és a virtuális gép létrehozásához néhány percet vesz igénybe. A virtuális gép létrehozása után, nyissa meg a 80-as port webes forgalom a [Add-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermresourcegroup) az alábbiak szerint:
+Windows Server 2016 virtuális gép létrehozása az [új AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* a a *USA keleti régiója* helyét. Az erőforráscsoport *myResourceGroupVSTS* és a támogató hálózati erőforrások is jönnek létre. Webes forgalomban, az TCP-port engedélyezéséhez *80* a virtuális gép meg van nyitva. Amikor a rendszer kéri, adja meg a felhasználónevet és jelszót, amely a bejelentkezési hitelesítő adatok a virtuális gép használható:
 
 ```powershell
-Get-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName $resourceGroup `
-  -Name "myNetworkSecurityGroup" | `
-Add-AzureRmNetworkSecurityRuleConfig `
-  -Name "myNetworkSecurityGroupRuleWeb" `
-  -Protocol "Tcp" `
-  -Direction "Inbound" `
-  -Priority "1001" `
-  -SourceAddressPrefix "*" `
-  -SourcePortRange "*" `
-  -DestinationAddressPrefix "*" `
-  -DestinationPortRange "80" `
-  -Access "Allow" | `
-Set-AzureRmNetworkSecurityGroup
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a virtual machine
+New-AzureRmVM `
+  -ResourceGroupName "myResourceGroupVSTS" `
+  -Name "myVM" `
+  -Location "East US" `
+  -ImageName "Win2016Datacenter" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -SecurityGroupName "myNetworkSecurityGroup" `
+  -PublicIpAddressName "myPublicIp" `
+  -Credential $cred `
+  -OpenPorts 80
 ```
 
 Csatlakoztassa a virtuális Gépet, szerezze be a nyilvános IP-cím [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) az alábbiak szerint:
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup | Select IpAddress
+Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 ```
 
 A virtuális Gépet egy távoli asztali munkamenetet létrehozni:

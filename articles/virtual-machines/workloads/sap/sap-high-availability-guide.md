@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d00db895ffcf9ba9a51e3df2dae5d33c0277dd6f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e65f38b6fb4f5434c840af1866ccf09671111f3e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Az Azure virtuális gépek magas rendelkezésre állás a SAP NetWeaver
 
@@ -304,7 +304,7 @@ Eléréséhez SAP alkalmazás magas rendelkezésre állású, többek között a
 
 * SAP Application Server-példány
 * SAP ASC/SCS példány
-* DBMS server
+* Adatbázis-kezelő kiszolgáló
 
 Tudnivalók az SAP-összetevők a magas rendelkezésre állású forgatókönyvek védelméről további információkért lásd: [Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver][planning-guide-11].
 
@@ -608,7 +608,7 @@ A fenti példában a DNS-szolgáltatás telepítve és konfigurálva van a Windo
 
 | Virtuálisgép-szerepkör | Virtuális gép állomásneve | Hálózati kártya neve | Statikus IP-cím |
 | --- | --- | --- | --- |
-| First DNS server |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
+| Első DNS-kiszolgáló |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
 | Második DNS-kiszolgáló |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
 ### <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a> Állomásnév és a statikus IP-címet a SAP ASC/SCS fürtözött példány és az adatbázis-kezelő fürtözött példány
@@ -618,7 +618,7 @@ A helyszíni telepítéshez szüksége ezek fenntartott állomásneve és IP-cí
 | Virtuális állomás neve szerepkör | Virtuális állomás neve | Virtuális statikus IP-cím |
 | --- | --- | --- |
 | SAP ASC/SCS első fürt virtuális host name (kezelő) |pr1-ascs-vir |10.0.0.42 |
-| SAP ASC/SCS példány virtuális állomás neve |pr1-ascs-sap |10.0.0.43 |
+| SAP ASC/SCS példány virtuális állomás neve |PR1-ASC-sap |10.0.0.43 |
 | SAP DBMS második fürt virtuális állomásnevet (kezelő) |pr1-dbms-vir |10.0.0.32 |
 
 A fürt létrehozásakor hozzon létre a virtuális állomásnevek **pr1-ASC-vir** és **pr1-dbms-vir** és a társított IP-címek, amely egyrészt a fürt kezeléséhez. Ezzel kapcsolatos további információkért lásd: [fürtcsomópontok fürtkonfiguráció gyűjtése][sap-ha-guide-8.12.1].
@@ -650,8 +650,8 @@ A jelen példában vezetünk be a virtuális gépek és a statikus IP-címek:
 | Második SAP Application Server-példány |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
 | ... |... |... |... |
 | Utolsó SAP Application Server-példány |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
-| Első fürtcsomópontra ASC/SCS-példány |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
-| Második fürtcsomópont ASC/SCS-példány |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
+| Első fürtcsomópontra ASC/SCS-példány |PR1-ASC-0 |pr1-nic-ascs-0 |10.0.0.40 |
+| Második fürtcsomópont ASC/SCS-példány |PR1-ASC-1 |pr1-nic-ascs-1 |10.0.0.41 |
 | Adatbázis-kezelő példány első fürtcsomópontra |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
 | Adatbázis-kezelő példány második fürtcsomópont |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
 
@@ -679,7 +679,7 @@ Ebben a példában két Azure belső terheléselosztók a statikus IP-címmel re
 
 | Az Azure belső terheléselosztási szerepköréhez | Az Azure belső terheléselosztó neve | Statikus IP-cím |
 | --- | --- | --- |
-| SAP ASC/SCS példány belső terheléselosztót |pr1-lb-ascs |10.0.0.43 |
+| SAP ASC/SCS példány belső terheléselosztót |PR1-lb-ASC |10.0.0.43 |
 | SAP DBMS belső terheléselosztó |pr1-lb-dbms |10.0.0.33 |
 
 
@@ -697,17 +697,17 @@ Szükséges belső terheléselosztási végpontok, először hozzon létre a ter
 
 | Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Konkrét portok (példányszámának 00 példány ASC) (SSZON 10) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3200* |32 <*InstanceNumber*> |3200 |
-| ABAP Message Server / *lbrule3600* |36 <*InstanceNumber*> |3600 |
-| Internal ABAP Message / *lbrule3900* |39 <*InstanceNumber*> |3900 |
-| Message Server HTTP / *Lbrule8100* |81-es <*InstanceNumber*> |8100 |
+| Sorba helyezni Server / *lbrule3200* |32 <*InstanceNumber*> |3200 |
+| ABAP üzenet Server / *lbrule3600* |36 <*InstanceNumber*> |3600 |
+| Belső ABAP üzenet / *lbrule3900* |39 <*InstanceNumber*> |3900 |
+| A kiszolgáló HTTP-üzenet / *Lbrule8100* |81-es <*InstanceNumber*> |8100 |
 | SAP Start Service ASCS HTTP / *Lbrule50013* |5 <*InstanceNumber*> 13 |50013 |
 | SAP Start Service ASCS HTTPS / *Lbrule50014* |5 <*InstanceNumber*> 14 |50014 |
 | Sorba helyezni replikációs / *Lbrule50016* |5 <*InstanceNumber*> 16 |50016 |
 | SAP Start Service ERS HTTP *Lbrule51013* |5 <*InstanceNumber*> 13 |51013 |
 | SAP Start Service ERS HTTP *Lbrule51014* |5 <*InstanceNumber*> 14 |51014 |
 | Erőforrás-kezelő Win *Lbrule5985* | |5985 |
-| File Share *Lbrule445* | |445 |
+| Fájlmegosztás *Lbrule445* | |445 |
 
 _**1. táblázat:** portszámokat SAP NetWeaver ABAP ASC példánya_
 
@@ -715,9 +715,9 @@ Ezután hozzon létre a terheléselosztást a SAP NetWeaver Java SCS portok vég
 
 | Szolgáltatás/terheléselosztási szabály neve | Alapértelmezett portszámok | Konkrét portok (SCS példány példányszámának 01) (SSZON 11) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3201* |32 <*InstanceNumber*> |3201 |
+| Sorba helyezni Server / *lbrule3201* |32 <*InstanceNumber*> |3201 |
 | Átjárókiszolgáló / *lbrule3301* |33 <*InstanceNumber*> |3301 |
-| Java Message Server / *lbrule3900* |39 <*InstanceNumber*> |3901 |
+| Java-üzenet Server / *lbrule3900* |39 <*InstanceNumber*> |3901 |
 | Message Server HTTP / *Lbrule8101* |81-es <*InstanceNumber*> |8101 |
 | SAP Start Service SCS HTTP / *Lbrule50113* |5 <*InstanceNumber*> 13 |50113 |
 | SAP Start Service SCS HTTPS / *Lbrule50114* |5 <*InstanceNumber*> 14 |50114 |
@@ -725,7 +725,7 @@ Ezután hozzon létre a terheléselosztást a SAP NetWeaver Java SCS portok vég
 | SAP Start Service ERS HTTP *Lbrule51113* |5 <*InstanceNumber*> 13 |51113 |
 | SAP Start Service ERS HTTP *Lbrule51114* |5 <*InstanceNumber*> 14 |51114 |
 | Erőforrás-kezelő Win *Lbrule5985* | |5985 |
-| File Share *Lbrule445* | |445 |
+| Fájlmegosztás *Lbrule445* | |445 |
 
 _**2. táblázat:** portszámot az SAP NetWeaver Java SCS-példányok_
 
@@ -773,7 +773,7 @@ Mindkét fürtcsomópont az SAP ASC/SCS példány beállításjegyzék-bejegyzé
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
 | Érték |120000 |
-| Dokumentáció csatolása |[https://technet.microsoft.com/en-us/library/cc957549.aspx](https://technet.microsoft.com/en-us/library/cc957549.aspx) |
+| Dokumentáció csatolása |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**3. táblázat:** módosítsa az első TCP/IP-paraméter_
 
@@ -784,7 +784,7 @@ Ezt követően adja hozzá a Windows beállításjegyzék-bejegyzések mindkét 
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
 | Érték |120000 |
-| Dokumentáció csatolása |[https://technet.microsoft.com/en-us/library/cc957548.aspx](https://technet.microsoft.com/en-us/library/cc957548.aspx) |
+| Dokumentáció csatolása |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**4. táblázat:** módosítása a második TCP/IP-paraméter_
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 1d8f8d903046f1d471f7abbe08a957b81522e391
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4f0d41dbc2438217cb4f382da7c44833379b9637
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
 Ez az oktatóanyag a sorozat második része, amely azt mutatja be, hogyan helyezhetők üzembe az Azure Service Fabric-alkalmazások egy új fürtön az Azure-ban, közvetlenül a Visual Studióból.
@@ -34,6 +34,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md)
 > * Az alkalmazás üzembe helyezése egy távoli fürtön
+> * [HTTPS-végpont hozzáadása ASP.NET Core kezelőfelületi szolgáltatáshoz](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [A CI/CD konfigurálása a Visual Studio Team Services használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -103,4 +104,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [A folyamatos integráció beállítása a Visual Studio Team Services segítségével](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [HTTPS engedélyezése](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)

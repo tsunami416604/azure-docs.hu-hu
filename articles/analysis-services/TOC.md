@@ -1,18 +1,22 @@
 # [Az Analysis Services dokumentációja](index.md)
 
 # Áttekintés
-## [Tudnivalók az Analysis Servicesről](analysis-services-overview.md)
-## [Támogatott adatforrások](analysis-services-datasource.md)
-## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
-## [Csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)
-## [Kompatibilitási szint](analysis-services-compat-level.md)
-## [Magas rendelkezésre állás](analysis-services-bcdr.md)
+## [Mi az Azure Analysis Services?](analysis-services-overview.md)
+
 
 # Bevezetés
 ## [Kiszolgáló létrehozása az Azure Portalon](analysis-services-create-server.md)
 ## [Kiszolgáló létrehozása az Azure PowerShell-lel](analysis-services-create-powershell.md)
 ## [Modell üzembe helyezése a Visual Studióból](analysis-services-deploy.md)
 ## [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
+
+# Alapelvek
+## [Támogatott adatforrások](analysis-services-datasource.md)
+## [Csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)
+## [Kapcsolódás kiszolgálókhoz](analysis-services-connect.md)
+## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
+## [Kompatibilitási szint](analysis-services-compat-level.md)
+## [Magas rendelkezésre állás](analysis-services-bcdr.md)
 
 # Használati útmutató 
 ## [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
@@ -21,9 +25,9 @@
 ## [Frissítés a REST API-val](analysis-services-async-refresh.md)
 ## [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
 ## Adminisztratív feladatok automatizálása
-### [Egyszerű szolgáltatásnév létrehozása – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [Egyszerű szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-### [Egyszerű szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
+### [Szolgáltatásnév létrehozása – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [Szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
 ## Kiszolgálófelügyelet
 ### [Kiszolgálónév aliasának konfigurálása](analysis-services-server-alias.md)
 ### [Kiszolgáló kezelése](analysis-services-manage.md)

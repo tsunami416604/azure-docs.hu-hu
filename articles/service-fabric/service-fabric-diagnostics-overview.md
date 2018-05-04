@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/03/2018
+ms.date: 04/25/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 03fa2862bbce39ac9ee6b7da02bd93b02b05f216
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: dd2446fda204f4026ac8080c658ca1aa9419f1bd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Megfigyelési és diagnosztikai az Azure Service Fabric
 
@@ -33,19 +33,20 @@ Az alkalmazásfigyelés nyomon követi, hogyan szolgáltatásait és összetevő
 
 A Service Fabric is beállíthatják az alkalmazás kódja a megfelelő nyomkövetéseket és telemetriai számos lehetőség támogatja. Azt javasoljuk, hogy használja-e Application Insights (AI). AI tartozó integrációját a Service Fabric tartalmaz tooling eszköz feladatait, a Visual Studio és az Azure portálon, és a Service Fabric adott mérőszámok, egy átfogó out-of-az-box naplózási élményt biztosít. Bár sok naplók automatikusan létrehozott és gyűjtik az Ön AI, javasoljuk, hogy adja hozzá további egyéni naplózási az alkalmazások részletesebb diagnosztikai környezetet. Az Application insights szolgáltatással a Service Fabric: használatának első lépéseivel kapcsolatos további [esemény elemzése az Application insights szolgáltatással](service-fabric-diagnostics-event-analysis-appinsights.md).
 
-![AI nyomrészletek](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
-
 ## <a name="platform-cluster-monitoring"></a>Platform (fürt) figyelése
 A Service Fabric-fürt figyelési fontos biztosításában, hogy a platform és minden munkaterhelést módon futnak készült. A Service Fabric célok egyik alkalmazások rugalmas tarthatja hardver meghibásodása. A cél a gazdafájlon keresztül, a platform system szolgáltatások képességét infrastrukturális problémára, és gyorsan feladatátvételi munkaterhelések más csomópontok észlelése a fürtben. De az adott esetben, mi történik, ha a rendszer szolgáltatásoknak problémákba? Vagy ha az megpróbálta áthelyezni a munkaterhelés, a szolgáltatások elhelyezésre szabályok nem sikeres? A fürt figyelési lehetővé teszi-tevékenységre figyelmeztető üzenetre a fürt, amely segít a problémák diagnosztizálása és elhárítása hatékonyan értesüljön. Néhány kulcsfontosságú dolgot keres szeretné a következők:
 * A Service Fabric működése a megfelelően, helyezi el az alkalmazások és a fürt megkerülése terheléselosztás? 
 * A fürt vonatkozik, és a várt módon végre készít felhasználói műveletek? Ez akkor különösen fontos, ha a fürt méretezése.
 * A Service Fabric kezeli az adatokat és a szolgáltatások kommunikációs, a fürtben található megfelelően?
 
-A Service Fabric események első használatkor a működési és az adat & Messaging csatornákon keresztül széles választékát nyújtja. A Windows, ezek olyan formájában egyetlen ETW-szolgáltató megfelelő számú `logLevelKeywordFilters` válasszon másik csatorna segítségével. Linux a platform események keresztül LTTng és üzembe egy olyan táblát, ahol azok szűrhetők igény szerint a. 
+A Service Fabric események a kezdő verzióról széles választékát nyújtja. Ezek [Service Fabric események](service-fabric-diagnostics-events.md) a EventStore API-k, illetve a működési csatornán (a platform által elérhetővé tett esemény csatorna) keresztül érhető el. 
+* EventStore - (elérhető a Windows verziókban 6.2-es és újabb verziók, ez a cikk az utolsó frissítés dátuma frissítésétől a folyamatban lévő Linux), EventStore (REST-végpontok keresztül, vagy az ügyféloldali kódtár keresztül elérhető) API-készlet használatával ezek az események közzététele. További információk a következő EventStore a [EventStore áttekintése](service-fabric-diagnostics-eventstore.md).
+* A Service Fabric csatornák - a Windows, a Service Fabric eseményeinek érhetők el olyan egyetlen ETW-szolgáltató megfelelő számú `logLevelKeywordFilters` válasszon Operational és adat & Messaging csatorna - használt ez módja a azt ki kimenő külön A szolgáltatás szükség esetén a szűrni kívánt háló események. Linux a Service Fabric események LTTng keresztül, és üzembe egy tárolási tábla, ahol azok szűrhetők igény szerint a. Ezeknek a csatornáknak válogatott, strukturált az eseményeket, amelyek segítségével jobb megértése érdekében a fürt állapotát tartalmazza. Diagnosztika alapértelmezés szerint engedélyezve vannak a fürt létrehozása során, ami hozzon létre egy Azure Storage táblát, ha ezeket a csatornákat származó események kerülnek ahhoz, hogy a jövőben lekérdezése. 
 
-Ezeknek a csatornáknak válogatott, strukturált az eseményeket, amelyek segítségével jobb megértése érdekében a fürt állapotát tartalmazza. Diagnosztika alapértelmezés szerint engedélyezve vannak a fürt létrehozása során, ami hozzon létre egy Azure Storage táblát, ha ezeket a csatornákat származó események kerülnek ahhoz, hogy a jövőben lekérdezése. További, a fürt figyelésével kapcsolatos [Platform szintű esemény és a naplófájlok generációs](service-fabric-diagnostics-event-generation-infra.md).
+Azt javasoljuk, hogy használja a EventStore gyors elemzés céljára, valamint hogy a pillanatkép meghatározni, hogy a fürt működéséről, és ha dolog hogy a várt. A naplók és a rendszer a fürt által létrehozott események gyűjtéséhez általában javasoljuk a [Azure Diagnostics bővítmény](service-fabric-diagnostics-event-aggregation-wad.md). Ez jól integrálható a Service Fabric elemzés, OMS Log Analytics Service Fabric bizonyos megoldást, amely tartalmaz egy egyéni irányítópultot Service Fabric-fürtök megfigyelésére szolgáló, és lehetővé teszi, hogy a fürt események és riasztások beállítása. További információk a következő [esemény elemzésekről az OMS](service-fabric-diagnostics-event-analysis-oms.md). 
 
-A naplók és a rendszer a fürt által létrehozott események gyűjtéséhez általában javasoljuk a [Azure Diagnostics bővítmény](service-fabric-diagnostics-event-aggregation-wad.md). Ez jól integrálható a OMS napló Analytics Service Fabric bizonyos megoldást, Service Fabric elemzés, amely tartalmaz egy egyéni irányítópultot Service Fabric-fürtök megfigyelésére szolgáló, és lehetővé teszi a fürt események és értesítések beállítása. További információk a következő [esemény elemzésekről az OMS](service-fabric-diagnostics-event-analysis-oms.md). 
+ További, a fürt figyelésével kapcsolatos [Platform szintű esemény és a naplófájlok generációs](service-fabric-diagnostics-event-generation-infra.md).
+
 
  ![OMS ú megoldás](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 

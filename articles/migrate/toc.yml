@@ -24,6 +24,8 @@
           href: migrate-scenarios-overview.md
         - name: 1. forgatókönyv – Helyszíni erőforrások értékelése az Azure-ba való migráláshoz
           href: migrate-scenarios-assessment.md
+        - name: 2. forgatókönyv – Átemeléses migrálás az Azure-ba
+          href: migrate-scenarios-lift-and-shift.md
     - name: Nagy méretű környezet felderítése és értékelése
       href: how-to-scale-assessment.md
     - name: Gépek csoportosítása

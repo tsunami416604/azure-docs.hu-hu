@@ -10,19 +10,19 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 30dce6caefc0b95435d1dadc48aa927be475fc66
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f86c53465636f82cf36d5099699fc9e6efeb55a5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-ruby-to-query-an-azure-sql-database"></a>Ruby használata Azure SQL Database-adatbázis lekérdezéséhez
 
-Ez a rövid útmutató azt ismerteti, hogyan használható a [Ruby](https://www.ruby-lang.org) egy olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.
+Ez a rövid útmutató azt ismerteti, hogyan használható a [Ruby](https://www.ruby-lang.org) egy olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató végrehajtásához győződjön meg arról, hogy megfelel az alábbi előfeltételeknek:
+A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 

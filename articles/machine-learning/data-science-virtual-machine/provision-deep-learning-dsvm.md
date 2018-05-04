@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 76149ce3864811cf2b5648f8dc0aa214e5820d9f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2172acfd61188c09693b9c7dacf37ff7a638d7f4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>A virtuális gépet az Azure tanulási mély kiépítése 
 
@@ -44,9 +44,9 @@ A részletes tanulási-virtuális gép példány létrehozásához lépései a k
       6. **Hely**: válassza ki a legjobban megfelelő adatközpont. Általában az adatközpont, amely az adatok, vagy a helynév leggyorsabb hálózati hozzáférési legközelebb. 
       
 > [!NOTE]
-> Mivel Azure NC-sorozat GPU Virtuálisgép-példányok DLVM van megadva, választania kell a helyek Feldolgozóegységekkel rendelkező Azure-ban. A helyeket az GPU virtuális gépeket jelenleg: **USA keleti régiója, északi középső Régiójában, déli középső Régiójában, USA nyugati régiója 2. régiója, Észak-Európában, Nyugat-Európában**. A legújabb listája, tekintse meg a [Azure termékek régió lap](https://azure.microsoft.com/en-us/regions/services/) , és keressen **NC-sorozat** alatt **számítási**. 
+> A DLVM minden NC és ND adatsorozat GPU Virtuálisgép-példányok támogatja. A DLVM létesítésekor választania kell a helyek Feldolgozóegységekkel rendelkező Azure-ban. Ellenőrizze a [Azure termékek régió lap](https://azure.microsoft.com/regions/services/) lapon az elérhető helyeket, és keresse meg **NC-sorozat**, **NCv2-sorozat**, **NCv3-sorozat** , vagy **ND-sorozat** alatt **számítási**. 
 
-   2. **Beállítások**: válassza ki, amely megfelel a funkcionális és költség megkötések NC-sorozat gpu-t a virtuális gép mérete. Hozzon létre egy tárfiókot a virtuális gép számára.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   2. **Beállítások**: Válasszon egy hálózati vezérlő által adatsorozat (NC, NCv2, NCv3) vagy ND adatsorozat GPU virtuálisgép-méretek, amely megfelel a funkcionális és költség megkötések. Hozzon létre egy tárfiókot a virtuális gép számára.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    3. **Összefoglalás**: Győződjön meg arról, hogy az összes megadott adatok helyesek.
    5. **Vásároljon**: kattintson a **megvásárlása** kiépítési elindításához. Hivatkozás a tranzakció feltételeit valósul meg. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretéhez számítási túl további díjakat a **mérete** lépés. 

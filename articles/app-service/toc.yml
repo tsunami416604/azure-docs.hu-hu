@@ -187,6 +187,10 @@
           href: web-sites-create-web-jobs.md
         - name: WebJobs-feladatok fejlesztése VS használatával
           href: websites-dotnet-deploy-webjobs.md
+        - name: Bevezetés a WebJobs SDK használatába
+          href: webjobs-sdk-get-started.md
+        - name: A WebJobs SDK használata
+          href: webjobs-sdk-how-to.md
 - name: Referencia
   items:
     - name: Azure CLI
@@ -253,6 +257,8 @@
           href: app-service-web-troubleshoot-http-502-http-503.md
         - name: Teljesítményproblémák elhárítása
           href: app-service-web-troubleshoot-performance-degradation.md
+        - name: Tartománnyal és tanúsítvánnyal kapcsolatos hibák kezelése
+          href: app-service-web-troubleshoot-domain-ssl-certificates.md
         - name: GYIK
           items:
             - name: 'Rendelkezésre állással, teljesítménnyel és alkalmazásokkal kapcsolatos gyakori kérdések'

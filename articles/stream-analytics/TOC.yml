@@ -1,0 +1,173 @@
+- name: Stream Analytics-dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Stream Analytics?
+      href: stream-analytics-introduction.md
+- name: Gyors útmutatók
+  items:
+    - name: Feladat létrehozása – Azure Portal
+      href: stream-analytics-quick-create-portal.md
+    - name: Feladat létrehozása – PowerShell
+      href: stream-analytics-quick-create-powershell.md
+- name: Oktatóanyagok
+  items:
+    - name: 1 – Feladat létrehozása/kezelése
+      href: stream-analytics-manage-job.md
+    - name: 2 – Az Azure Functions futtatása
+      href: stream-analytics-with-azure-functions.md
+    - name: 3 – JavaScript UDF futtatása
+      href: stream-analytics-javascript-user-defined-functions.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+- name: Alapelvek
+  items:
+    - name: Feladatok bemenettípusai
+      href: stream-analytics-add-inputs.md
+      items:
+        - name: Streamadat típusú bemenetek
+          href: stream-analytics-define-inputs.md
+        - name: Referenciaadat típusú bemenetek
+          href: stream-analytics-use-reference-data.md
+    - name: Feladatok kimenettípusai
+      href: stream-analytics-define-outputs.md
+      items:
+        - name: Kimenet a Cosmos DB-be
+          href: stream-analytics-documentdb-output.md
+    - name: Ablakfunkciók
+      href: stream-analytics-window-functions.md
+    - name: Kompatibilitási szint
+      href: stream-analytics-compatibility-level.md
+    - name: Gyakori lekérdezési minták
+      href: stream-analytics-stream-analytics-query-patterns.md
+    - name: Eseményrendezési szempontok
+      href: stream-analytics-out-of-order-and-late-events.md
+    - name: Ellenőrzőpont és visszajátszás
+      href: stream-analytics-concepts-checkpoint-replay.md
+- name: Útmutatók
+  items:
+    - name: Kezelés
+      items:
+        - name: Feladat frissítése
+          href: stream-analytics-job-reliability.md
+        - name: Hitelesítő adatok frissítése
+          href: stream-analytics-login-credentials-inputs-outputs.md
+        - name: Riasztások konfigurálása
+          href: stream-analytics-set-up-alerts.md
+        - name: A feladat tesztelése
+          href: stream-analytics-test-query.md
+        - name: Eredmények megtekintése az irányítópulton
+          href: stream-analytics-power-bi-dashboard.md
+    - name: Megoldások kiépítése
+      items:
+        - name: Twitter-hangulatelemzés
+          href: stream-analytics-twitter-sentiment-analysis-trends.md
+        - name: Valós idejű csalásészlelés
+          href: stream-analytics-real-time-fraud-detection.md
+        - name: Feladatok futtatása az IoT Edge-en
+          href: stream-analytics-edge.md
+        - name: Fizetőkapu érzékelőadatainak elemzése
+          href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+        - name: JavaScript UDA futtatása
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: Nagy gyakoriságú kereskedelem
+          href: stream-analytics-high-frequency-trading.md
+        - name: IoT-streamadatok feldolgozása
+          href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+    - name: Figyelés
+      items:
+        - name: Feladatok monitorozása – Azure Portal
+          href: stream-analytics-monitoring.md
+        - name: Feladatok monitorozása – PowerShell
+          href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+        - name: Feladatok monitorozása – Azure .NET SDK
+          href: stream-analytics-monitor-jobs.md
+    - name: Méretezés
+      items:
+        - name: Skálázás streamelési egységekkel
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Skálázás párhuzamos lekérdezési folyamatokkal
+          href: stream-analytics-parallelization.md
+          items:
+            - name: Az átviteli sebesség növelése
+              href: stream-analytics-scale-jobs.md
+        - name: Skálázás Machine Learning-függvényekkel
+          href: stream-analytics-scale-with-machine-learning-functions.md
+    - name: Automatizálás
+      items:
+        - name: A .NET SDK használata
+          href: stream-analytics-dotnet-management-sdk.md
+        - name: Az Azure PowerShell használata
+          href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
+    - name: Visual Studio-eszközök
+      items:
+        - name: Eszközök telepítése
+          href: stream-analytics-tools-for-visual-studio-install.md
+        - name: Felhőalapú feladat fejlesztése
+          href: stream-analytics-tools-for-visual-studio.md
+        - name: Edge-feladatok fejlesztése
+          href: stream-analytics-tools-for-visual-studio-edge-jobs.md
+        - name: CI-/CD-folyamat beállítása
+          href: stream-analytics-tools-for-visual-studio-cicd.md
+    - name: Hibaelhárítás
+      items:
+        - name: Hibaelhárítási lépések
+          href: stream-analytics-troubleshooting-guide.md
+        - name: Gyakori problémák
+          href: stream-analytics-common-troubleshooting-issues.md
+        - name: Feladatábra
+          href: stream-analytics-job-diagram-with-metrics.md
+        - name: Diagnosztikai naplók
+          href: stream-analytics-job-diagnostic-logs.md
+        - name: Erőforrás állapotának ellenőrzése
+          href: stream-analytics-resource-health.md
+        - name: SELECT INTO utasítás
+          href: stream-analytics-select-into.md
+        - name: Event Hub-érzékelők
+          href: stream-analytics-event-hub-consumer-groups.md
+    - name: Integráció a Machine Learninggel
+      items:
+        - name: Hangulatelemzés Machine Learning-modellekkel
+          href: stream-analytics-machine-learning-integration-tutorial.md
+        - name: Rendellenességek észlelése
+          href: stream-analytics-machine-learning-anomaly-detection.md
+        - name: REST API-k használata
+          href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.streamanalytics
+    - name: Lekérdezés nyelve
+      href: 'https://msdn.microsoft.com/library/azure/dn834998'
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.streamanalytics
+    - name: REST
+      href: /rest/api/streamanalytics
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Blog
+      href: 'http://blogs.msdn.com/b/streamanalytics/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
+    - name: Visszajelzési fórum
+      href: 'http://feedback.azure.com/forums/270577-azure-stream-analytics'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-stream-analytics'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics'
+    - name: Ügyféleset-tanulmányok
+      href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
+    - name: Tanulmány – Valós idejű eseményfeldolgozás
+      href: stream-analytics-real-time-event-processing-reference-architecture.md

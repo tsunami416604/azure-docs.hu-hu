@@ -69,9 +69,9 @@
 ## [ACS migrálása](active-directory-acs-migration.md)
 ## [Ajánlott hibakezelési eljárások az ADAL-hoz](active-directory-devhowto-adal-error-handling.md)
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Hitelesítési tárak (ADAL)](active-directory-authentication-libraries.md)
-## [Kódmintákat tartalmazó cikk](active-directory-code-samples.md)
+## [Kódminták forgatókönyv szerint](active-directory-code-samples.md)
 ## [Szószedet](active-directory-dev-glossary.md)
 ## [Hitelesítési protokollok](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -97,7 +97,8 @@
 ### Mobil- és asztali appok
 #### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
-#### [.NET (asztali Windows)](guidedsetups/active-directory-windesktop.md)
+#### [Windows asztali .NET](guidedsetups/active-directory-windesktop.md)
+#### [Univerzális Windows-platform](guidedsetups/active-directory-uwp-v2.md)
 ### Webalkalmazások
 #### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
@@ -109,8 +110,10 @@
 #### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## Útmutatók
 ### [Alkalmazás regisztrálása](active-directory-v2-app-registration.md)
+### [Alkalmazásregisztráció-referencia](active-directory-v2-registration-portal.md)
 ## Referencia
 ### [Hitelesítési tárak](active-directory-v2-libraries.md)
+### [2.0-s verziójú kódminták forgatókönyv szerint](active-directory-v2-code-samples.md)
 ### [2.0-s hitelesítési protokollok](active-directory-v2-protocols.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
 #### [OAuth 2.0 hitelesítési kódmegadás](active-directory-v2-protocols-oauth-code.md)

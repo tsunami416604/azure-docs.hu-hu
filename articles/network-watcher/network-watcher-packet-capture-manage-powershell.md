@@ -1,11 +1,11 @@
 ---
-title: "Csomag rögzíti az Azure hálózati figyelőt - PowerShell kezelése |} Microsoft Docs"
-description: "Ezen a lapon ismerteti, hogyan kezelheti a csomag rögzítési szolgáltatása hálózati figyelőt PowerShell használatával"
+title: Csomag rögzíti az Azure hálózati figyelőt - PowerShell kezelése |} Microsoft Docs
+description: Ezen a lapon ismerteti, hogyan kezelheti a csomag rögzítési szolgáltatása hálózati figyelőt PowerShell használatával
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 04d82085-c9ea-4ea1-b050-a3dd4960f3aa
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: b27e0684b0914764f22b59e050e75c7be3a82cc6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6ffb1aec91899b54a153e264e346910caee84cc0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Csomag rögzítésekre kezelése a PowerShell használata Azure hálózati figyelőt
 
@@ -96,7 +96,7 @@ Győződjön meg arról, hogy az ügynök telepítve van-e, futtassa a `Get-Azur
 Get-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Az alábbi minta futtatását a válasz példája`Get-AzureRmVMExtension`
+Az alábbi minta futtatását a válasz példája `Get-AzureRmVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -266,7 +266,7 @@ Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -Packe
 
 ## <a name="download-a-packet-capture"></a>A csomagrögzítéssel letöltése
 
-A csomag rögzítési munkamenet befejezése után a rögzítési fájl is fel kell tölteni a blob storage vagy a virtuális gép helyi fájlba. A tárolási helye a csomagrögzítéssel definiálása a munkamenet létrehozását. Eszköz eléréséhez rögzítési-fájlokat egy tárfiókkal a Microsoft Azure Tártallózó, amely innen tölthető le: http://storageexplorer.com/
+A csomag rögzítési munkamenet befejezése után a rögzítési fájl is fel kell tölteni a blob storage vagy a virtuális gép helyi fájlba. A tárolási helye a csomagrögzítéssel definiálása a munkamenet létrehozását. Eszköz eléréséhez rögzítési-fájlokat egy tárfiókkal a Microsoft Azure Tártallózó, amely innen tölthető le:  http://storageexplorer.com/
 
 Ha egy tárfiókot meg van adva, csomag rögzítési fájlok kerülnek a storage-fiókok a következő helyen:
 
@@ -278,7 +278,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 Csomag rögzíti a virtuális gép a riasztások megtekintésével automatizálása [riasztási kiváltott csomagrögzítéssel létrehozása](network-watcher-alert-triggered-packet-capture.md)
 
-Keresése, ha bizonyos forgalom engedélyezett kívül a virtuális gép orr ellátogatva [ellenőrizze IP folyamat ellenőrzése](network-watcher-check-ip-flow-verify-portal.md)
+Keresése, ha bizonyos forgalom engedélyezett kívül a virtuális gép orr ellátogatva [ellenőrizze IP folyamat ellenőrzése](diagnose-vm-network-traffic-filtering-problem.md)
 
 <!-- Image references -->
 

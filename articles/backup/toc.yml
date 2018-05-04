@@ -69,16 +69,18 @@
               href: backup-mabs-unattended-install.md
         - name: Számítási feladatok védelme
           items:
-            - name: VMware-kiszolgáló biztonsági mentése az Azure Backup Server használatával
+            - name: VMware-kiszolgáló
               href: backup-azure-backup-server-vmware.md
-            - name: Az Exchange biztonsági mentése az Azure Backup Server használatával
+            - name: Exchange
               href: backup-azure-exchange-mabs.md
-            - name: SharePoint-farm biztonsági mentése az Azure Backup Server használatával
+            - name: SharePoint-farm
               href: backup-azure-backup-sharepoint-mabs.md
-            - name: Az SQL biztonsági mentése az Azure Backup Server használatával
+            - name: SQL Server
               href: backup-azure-sql-mabs.md
             - name: A rendszer állapotának védelme és operációs rendszer nélküli helyreállítás
               href: backup-mabs-system-state-and-bmr.md
+            - name: Fájlok és alkalmazások az Azure Stackben
+              href: backup-mabs-files-applications-azure-stack.md
         - name: Adatok helyreállítása az Azure Backup Serverről
           href: backup-azure-alternate-dpm-server.md
     - name: Azure-fájlmegosztások

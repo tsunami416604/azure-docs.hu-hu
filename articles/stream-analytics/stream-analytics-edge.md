@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 1c02f8f7b086d0441c2def0e92c54cce72fad85e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9a9608825cf041007c000729becb34e9a3063f92
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Az Azure Stream Analytics IoT oldal (előzetes verzió)
 
@@ -60,11 +60,10 @@ Követésével [részletes oktatóanyag](https://docs.microsoft.com/azure/iot-ed
 
 
 #### <a name="create-an-asa-edge-job"></a>ASA peremhálózati feladat létrehozása
-1. Az Azure-portálon hozzon létre egy új "Stream Analytics-feladat". [Hozzon létre egy új ASA feladatot a közvetlen hivatkozás](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
-
 > [!Note]
-> ASA, által támogatott minden régióban él feladatokat hozhat létre **"USA nyugati 2" régióban kivéve**.
-> Ez a korlátozás hamarosan el lesz távolítva.
+> Ez az oktatóanyag összpontosít ASA feladat létrehozása az Azure portál használatával. Emellett [ASA peremhálózati feladat létrehozása a Visual Studio beépülő modul használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+
+1. Az Azure-portálon hozzon létre egy új "Stream Analytics-feladat". [Hozzon létre egy új ASA feladatot a közvetlen hivatkozás](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
 
 2. A létrehozási képernyőn válassza ki a **peremhálózati** , **üzemeltetési környezet** (lásd az alábbi képen) ![feladat létrehozása](media/stream-analytics-edge/ASAEdge_create.png)
 3. Feladatdefiníció
@@ -147,7 +146,6 @@ Azonban a következő funkciók még nem támogatottak a peremhálózati feladat
 * Az Azure ML funkciók.
 * Több mint 14 aggregátumok használata egyetlen lépésben.
 * Az AVRO formátum a bemeneti/kimeneti. Jelenleg csak a fürt megosztott kötetei szolgáltatás és a JSON támogatott.
-* A bemeneti JSON tömörítést.
 * A következő SQL-operátorok:
     * AnomalyDetection
     * A földrajzi kezelők:
@@ -210,6 +208,7 @@ Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytic
 * [További információ az Azure Iot oldal](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [Az IoT-Edge oktatóanyag ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [A csapat a felmérés használatával küldhet visszajelzést](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [Visual Studio eszközök használatával Stream Analytics peremhálózati feladatok fejlesztése](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

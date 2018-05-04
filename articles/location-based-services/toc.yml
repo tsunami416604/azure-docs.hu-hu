@@ -1,3 +1,5 @@
+- name: Azure IoT – alapok
+  href: ../iot-fundamentals/index.yml
 - name: Azure Location Based Services – Dokumentáció
   href: index.yml
 - name: Áttekintés
@@ -47,6 +49,32 @@
       href: 'https://docs.microsoft.com/rest/api/location-based-services-management/'
     - name: Térkép vezérlőelem-API – Javascript
       href: 'https://docs.microsoft.com/javascript/api/location-based-services-javascript/'
+- name: Kapcsolódó témakörök
+  items:
+    - name: Megoldások
+      items:
+        - name: IoT Suite előre konfigurált megoldások
+          href: /azure/iot-suite
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub eszközkiépítési szolgáltatás
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Szolgáltatási SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
     - name: Azure IoT fejlesztői központ

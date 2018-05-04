@@ -1,30 +1,24 @@
 ---
-title: "Az Azure Search szolgáltatás REST API-verzió 2016 09-01. dátumú előnézeti |} Microsoft Docs"
-description: "Az Azure Search szolgáltatás REST API-verzió 2016 09-01. dátumú előnézeti például szinonimák és moreLikeThis keresések kísérleti funkciót tartalmaz."
-services: search
-documentationcenter: na
+title: Az Azure Search szolgáltatás REST API-verzió 2016 09-01. dátumú előnézeti |} Microsoft Docs
+description: Az Azure Search szolgáltatás REST API-verzió 2016 09-01. dátumú előnézeti például moreLikeThis keresések kísérleti funkciót tartalmaz.
 author: mhko
 manager: jlembicz
-editor: 
-ms.assetid: 3dba3bf8-9c83-42f6-82bc-04727bd11037
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: search
-ms.date: 10/25/2017
+ms.topic: reference
+ms.date: 04/18/2018
 ms.author: nateko
-ms.openlocfilehash: 082c207f892fcc277d30d66c6165dd9920d3ab27
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8eae54c912711a11c015737903b6898b98fd5159
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-search-service-rest-api-version-2016-09-01-preview"></a>Az Azure Search szolgáltatás REST API-ja: Verzió 2016 09-01. dátumú előnézeti
-Ez a cikk a referenciadokumentációt tartalmaz `api-version=2016-09-01-Preview`. Ez az előnézet kibővíti az aktuális általánosan elérhető verzió [api-version = 2016-09-01](https://msdn.microsoft.com/library/dn798935.aspx), a következő kísérleti funkciók megadásával:
+Ez a cikk a referenciadokumentációt tartalmaz `api-version=2016-09-01-Preview`. Ez az előnézet kibővíti az aktuális általánosan elérhető verzió [api-version = 2016-09-01](https://docs.microsoft.com/rest/api/searchservice), a következő kísérleti funkciók megadásával:
 
-* [Szinonimák API](search-synonyms.md) szinonimát maps, és bontsa ki a keresés.
-* [`moreLikeThis`lekérdezésparaméter](search-more-like-this.md) , amelyek megfelelnek egy adott dokumentum a dokumentumok kereséséhez.
+* [`moreLikeThis` lekérdezésparaméter](search-more-like-this.md) , amelyek megfelelnek egy adott dokumentum a dokumentumok kereséséhez.
 
 Győződjön meg arról, amelyekre a minta API-verzió `api-version=2016-09-01-Preview` ezek a kísérleti funkciók kipróbálásához. A következő példa bemutatja, hogyan előzetes api-verzió van megadva egy több-szerű a lekérdezés létrehozása során.
 
@@ -33,4 +27,4 @@ Győződjön meg arról, amelyekre a minta API-verzió `api-version=2016-09-01-P
 > [!NOTE]
 > Előzetes verziójú funkciók érhetők el a teszteléshez és kísérletezhet azzal a céllal, a visszajelzéseket és bármikor megváltozhat. **Kifejezetten ajánlott termelési alkalmazások API-k megtekintés ellen.**
 
-Az Azure Search szolgáltatás több verzióban érhető el. Tekintse meg [keresési Service Versioning](http://msdn.microsoft.com/library/azure/dn864560.aspx) részleteiről.
+Az Azure Search szolgáltatás több verzióban érhető el. Tekintse meg [keresési Service Versioning](https://docs.microsoft.com/azure/search/search-api-versions) részleteiről.

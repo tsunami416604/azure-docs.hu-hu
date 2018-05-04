@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 376e153f7efcf78f824c42cc2f957bc97286f389
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 490b162bcab0656388ef0b211ea693809d446346
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure tarifacsomagok MySQL-adatbázis
 
@@ -44,7 +44,7 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 
 | **Az Azure-régió** | **4. generációból** | **5. generációból** |
 |:---|:----------:|:--------------------:|
-| USA középső régiója |  | X |
+| USA középső régiója | X |  |
 | USA keleti régiója | X | X |
 | USA 2. keleti régiója | X | X |
 | USA északi középső régiója | X |  |
@@ -55,7 +55,7 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 | Kelet-Kanada | X | X |
 | Dél-Brazília | X | X |
 | Észak-Európa | X | X |
-| Nyugat-Európa | X | X |
+| Nyugat-Európa |  | X |
 | Az Egyesült Királyság nyugati régiója |  | X |
 | Az Egyesült Királyság déli régiója |  | X |
 | Kelet-Ázsia | X |  |

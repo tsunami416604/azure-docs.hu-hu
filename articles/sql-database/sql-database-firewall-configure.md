@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: d68ae802e37b5d0b8421099894da43a0559f2fc2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f43e380d1af846a0c77d61b4e8827c8b45fb08a6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Az Azure SQL Database kiszolgáló- és adatbázis tűzfalszabályok 
 
@@ -208,7 +208,7 @@ A következő szempontokat vegye figyelembe, ha a Microsoft Azure SQL Database s
 * **Helyi tűzfal konfigurációja:** Mielőtt a számítógépe hozzáférne az Azure SQL Database szolgáltatáshoz, lehet, hogy létre kell hoznia egy tűzfalkivételt a számítógépén az 1433-as TCP-port számára. Ha az Azure-felhő határain belül létesít kapcsolatokat, előfordulhat, hogy további portokat is meg kell nyitnia. További információkért lásd: a **SQL-adatbázis: kívül és belül** szakasza [kívüli ADO.NET 4.5 és az SQL-adatbázis 1433-as portokon](sql-database-develop-direct-route-ports-adonet-v12.md).
 * **Hálózati címfordítás (NAT):** A NAT miatt a számítógépe által az Azure SQL Database szolgáltatáshoz való csatlakozáshoz használt IP-cím eltérhet a számítógép IP-konfigurációs beállításai között megjelenő IP-címtől. A számítógép által az Azure-hoz való csatlakozáshoz használt IP-cím megtekintéséhez jelentkezzen be a portálra, és lépjen az adatbázist futtató kiszolgáló **Konfigurálás** lapjára. Az **Engedélyezett IP-címek** szakasz alatt jelenik meg az **Ügyfél aktuális IP-címe**. Kattintson a **Hozzáadás** lehetőségre az **Engedélyezett IP-címek** között, ha szeretné engedélyezni a számítógép számára a kiszolgáló elérését.
 * **Az engedélyezési lista módosításai még nem léptek érvénybe:** Az Azure SQL Database tűzfalkonfigurációján végzett módosítások érvénybe lépéséig akár öt perc is eltelhet.
-* **A bejelentkezés nem engedélyezett, vagy helytelen jelszó lett használva:** Ha egy bejelentkezés nem rendelkezik engedélyekkel az Azure SQL Database-kiszolgálón, vagy a használt jelszó érvénytelen, akkor a rendszer megtagadja az Azure SQL Database-kiszolgálóhoz való csatlakozást. Egy tűzfalbeállítás létrehozása lehetővé teszi az ügyfelek számára a kiszolgálóhoz való csatlakozás megkísérlését, azonban minden egyes ügyfélnek meg kell adnia a szükséges biztonsági hitelesítő adatokat. A bejelentkezések előkészítésével kapcsolatos további információkért lásd az adatbázisok, bejelentkezések és felhasználók Azure SQL Database-ben történő kezelésével foglalkozó cikket.
+* **A bejelentkezés nem engedélyezett, vagy helytelen jelszó lett használva:** Ha egy bejelentkezés nem rendelkezik engedélyekkel az Azure SQL Database-kiszolgálón, vagy a használt jelszó érvénytelen, akkor a rendszer megtagadja az Azure SQL Database-kiszolgálóhoz való csatlakozást. Egy tűzfalbeállítás létrehozása lehetővé teszi az ügyfelek számára a kiszolgálóhoz való csatlakozás megkísérlését, azonban minden egyes ügyfélnek meg kell adnia a szükséges biztonsági hitelesítő adatokat. Bejelentkezések előkészítésével kapcsolatos további információkért lásd: [adatbázisok kezelése, a bejelentkezési adatok és a felhasználók az Azure SQL Database](sql-database-manage-logins.md).
 * **Dinamikus IP-cím**: Ha az internetkapcsolata dinamikus IP-címkezeléssel rendelkezik, és problémákat okoz a tűzfalon való átjutás, próbálja ki a következő megoldások valamelyikét:
   
   * Kérje el az internetszolgáltatójától az Azure SQL Database-kiszolgáló eléréséhez használt ügyfélszámítógépeihez társított IP-címtartományt, majd adja meg ezt az IP-címtartományt egy tűzfalszabályként.

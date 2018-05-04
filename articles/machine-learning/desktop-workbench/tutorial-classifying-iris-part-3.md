@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 0b56b15af7c573304db9a1b6e6e9f37453a63458
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>3. oktatóanyag: Írisz osztályozása: Modellek üzembe helyezése
 Az Azure Machine Learning (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
@@ -120,7 +120,7 @@ A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van e
 
 Most már készen áll arra, hogy előkészítse a környezetet a modell üzembe helyezéséhez.
 
-## <a name="prepare-to-operationalize-locally"></a>Üzembe helyezés helyi előkészítése
+## <a name="prepare-to-operationalize-locally-for-development-and-testing-your-service"></a>Üzembe helyezés helyi előkészítése [A szolgáltatás fejlesztéséhez és teszteléséhez]
 Használja a _helyi módú_ üzembe helyezést a helyi számítógépen lévő Docker-tárolókban történő futtatáshoz.
 
 A _helyi mód_ fejlesztési és tesztelési célokra használható. A Docker Engine-nek helyileg kell futnia a modell üzembe helyezése következő lépéseinek végrehajtásához. Az egyes parancsok végén található `-h` jelző segítségével megjelenítheti a megfelelő súgóüzenetet.
@@ -257,7 +257,7 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
    docker ps
    ```
 
-## <a name="create-a-real-time-web-service-by-using-separate-commands"></a>Valós idejű webszolgáltatás létrehozása külön parancsokkal
+## <a name="optional-alternative-create-a-real-time-web-service-by-using-separate-commands"></a>[Választható alternatíva] Valós idejű webszolgáltatás létrehozása külön parancsokkal
 Az előző **az ml service create realtime** parancs alternatívájaként külön-külön is végrehajthatja a lépéseket. 
 
 Először regisztrálja a modellt. Ezután hozza létre a jegyzéket, állítsa össze a Docker-rendszerképet, és hozza létre a webszolgáltatást. Ezzel a lépésekre bontott eljárással minden lépést rugalmasabban hajthat végre. Ráadásul így újból felhasználhatja az előző lépésekben létrehozott entitásokat, és csak szükség esetén kell őket újraépítenie.

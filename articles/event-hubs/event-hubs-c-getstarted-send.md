@@ -1,12 +1,12 @@
 ---
-title: "Események küldése az Azure Event Hubs C használatával |} Microsoft Docs"
-description: "Események küldése az Azure Event Hubs C használatával"
+title: Események küldése az Azure Event Hubs C használatával |} Microsoft Docs
+description: Események küldése az Azure Event Hubs C használatával
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: c
@@ -14,18 +14,18 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 12/4/2017
 ms.author: sethm
-ms.openlocfilehash: 2b714c5de96a8fb7ed66a30c62daaa38b84fdc5b
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 430135113f4b26db6690feb6bc6ddcc0700c6d11
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Események küldése az Azure Event Hubs C használatával
 
 ## <a name="introduction"></a>Bevezetés
 Az Event Hubs egy kiválóan méretezhető fogadórendszer, amely is több millió eseményt másodpercenként, az alkalmazás engedélyezése feldolgozni, és elemezze a nagy mennyiségű adatot a csatlakoztatott eszközök és alkalmazások által létrehozott. Miután egy eseményközpontba való összegyűjtését, átalakítás és tárolására is használható adatok bármilyen valós idejű elemzési szolgáltató vagy tárolási fürt használatával.
 
-További információkért lásd: a [Event Hubs – áttekintés] [Event Hubs – áttekintés].
+További információkért lásd: a [Event Hubs – áttekintés](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-overview).
 
 Ez az oktatóanyag ismerteti, hogyan lehet események küldése az event hubs egy konzolalkalmazás használatával a c kiszolgálóra. További események fogadása, kattintson a bal oldali tartalomjegyzék a megfelelő fogadó nyelvet.
 
@@ -150,7 +150,7 @@ Ebben a szakaszban is küldi az eseményeket az eseményközpontjába C alkalmaz
     > Ez a kód egy kimenő 1-ablakban kimenő üzenetek minél hamarabb kényszerítése használja. Javasoljuk, hogy az alkalmazás megpróbálja kötegelt üzenetek növelheti a teljesítményt. Tekintse meg a [Qpid AMQP Messenger lap](https://qpid.apache.org/proton/messenger.html) olvashat ebben és más környezetekben, illetve a platformok, amelynek kötések találhatók Qpid Proton tár használatára (jelenleg Perl, PHP, Python vagy Ruby).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)

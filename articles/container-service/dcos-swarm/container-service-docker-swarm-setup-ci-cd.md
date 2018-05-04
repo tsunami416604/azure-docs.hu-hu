@@ -1,19 +1,19 @@
 ---
-title: "CI/CD-ről az Azure Tárolószolgáltatás és a Swarm"
-description: "Azure Tárolószolgáltatás használja a Docker Swarm, egy Azure-tároló beállításkulcs, és a Visual Studio Team Services folyamatosan egy több tároló .NET Core alkalmazás képes biztosítani"
+title: CI/CD-ről az Azure Tárolószolgáltatás és a Swarm
+description: Azure Tárolószolgáltatás használja a Docker Swarm, egy Azure-tároló beállításkulcs, és a Visual Studio Team Services folyamatosan egy több tároló .NET Core alkalmazás képes biztosítani
 services: container-service
 author: jcorioland
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 38877afb63e993eeaab723a6ea5f4c40d3c956a5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 81a07fdfe1c862bc30fb9d567db9a393c0610990
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Teljes CI/CD adatcsatorna egy Azure tárolószolgáltatás a Docker Swarmmal Visual Studio Team Services segítségével többszörös tároló alkalmazás központi telepítése
 
@@ -220,6 +220,6 @@ A kiadási munkafolyamat két feladatot hozzáadott tevődik össze.
 
 Most, hogy a konfiguráció befejezése után is tesztelheti az új CI/CD adatcsatornát. A tesztek legkönnyebben frissítése a forráskódot, és véglegesítse a módosításokat a GitHub-tárházban történő. Néhány másodperccel azután leküldéses a kód jelenik meg a Visual Studio Team Services rendszert futtató új buildverziót. Sikeres befejezést követően az új kiadási indul, és az Azure Tárolószolgáltatás-fürthöz az alkalmazás új verzióját telepíti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Visual Studio Team Services CI/CD kapcsolatos további információkért tekintse meg a [VSTS összeállítása – áttekintés](https://www.visualstudio.com/docs/build/overview).

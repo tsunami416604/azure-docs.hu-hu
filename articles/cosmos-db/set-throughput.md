@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: 0e89b93764f51873d991524a5e226464c224b649
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="set-throughput-for-azure-cosmos-db-containers"></a>Az Azure Cosmos DB tárolókat átviteli beállítása
+# <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Állítsa be, és átviteli Azure Cosmos DB tárolók beolvasása
 
 Átviteli sebesség az az Azure Cosmos DB tárolókat az Azure portálon vagy az ügyfél SDK-k segítségével állíthatja be. 
 
@@ -96,6 +96,43 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
+## <a id="GetLastRequestStatistics"></a>Átviteli sebesség MongoDB API GetLastRequestStatistics parancs segítségével könnyebben nyerhet
+
+A MongoDB API támogatja egy egyéni parancs *getLastRequestStatistics*, az a kérelem díjak egy adott művelethez.
+
+Például a Mongo rendszerhéj hajtható végre a kérelem díjat ellenőrizni szeretné a műveletet.
+```
+> db.sample.find()
+```
+
+Ezután hajtsa végre a parancsot *getLastRequestStatistics*.
+```
+> db.runCommand({getLastRequestStatistics: 1})
+{
+    "_t": "GetRequestStatisticsResponse",
+    "ok": 1,
+    "CommandName": "OP_QUERY",
+    "RequestCharge": 2.48,
+    "RequestDurationInMilliSeconds" : 4.0048
+}
+```
+
+Ennek tudatában, egy fenntartott átviteli sebességet, az alkalmazás által igényelt mennyisége becslése módja a kérelem egység kell fizetni társított tipikus műveleteket futtatott egy reprezentatív elem, amelyet az alkalmazás és majd becslése a hajtsa végre a másodpercenként várhatóan műveletek száma.
+
+> [!NOTE]
+> Ha méretét és az indexelt tulajdonságok száma jelentősen eltérő típusú elemekre, majd jegyezze fel a megfelelő műveletet kérelem egység kell fizetni társított minden egyes *típus* jellemző elem.
+> 
+> 
+
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Átviteli sebesség MongoDB API portál mérőszámok segítségével könnyebben nyerhet
+
+A legegyszerűbben úgy beszerezni a helyes becsült kérelem egység költségek a MongoDB API-adatbázis, hogy használja a [Azure-portálon](https://portal.azure.com) metrikákat. Az a *kérelem* és *kérelem kell fizetni* diagramokat, a kérelem egységek minden művelet nem használ-e, és hány kérelemegység használják ki egy másik viszonyítva becsült kaphat.
+
+![MongoDB API portál metrikák][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> Meghaladja a fenntartott átviteli sebességének korlátai a MongoDB API-ban.
+Alkalmazások, amelyek mérete meghaladja a létesített átviteli sebesség a tároló lehet sebessége korlátozott felhasználási aránya a kiosztott átviteli sebesség alá süllyed. A sebesség korlátozása esetén a háttér megelőző jelleggel véget ér a kérelmet egy `16500` hibakód - `Too Many Requests`. Alapértelmezés szerint a MongoDB API automatikusan újrapróbálkozik legfeljebb 10-szer kell a visszatérésre egy `Too Many Requests` hibakód. Ha sok kap `Too Many Requests` hibakódok, érdemes lehet fontolja meg, vagy egy újrapróbálkozási logika a az alkalmazás hibakezelési rutinok vagy [növelje a kiosztott átviteli sebesség a tároló](set-throughput.md).
+
 ## <a name="throughput-faq"></a>Átviteli – gyakori kérdések
 
 **I állíthatja az átviteli sebesség kisebb, mint 400 RU/mp?**
@@ -109,3 +146,5 @@ Nincs átviteli sebesség beállításához MongoDB API kiterjesztés nélkül. 
 ## <a name="next-steps"></a>További lépések
 
 Üzembe helyezési és folyamatos bolygónk-méretezéssel Cosmos DB, kapcsolatos további információkért lásd: [particionálás és méretezést Cosmos DB,](partition-data.md).
+
+[1]: ./media/set-throughput/api-for-mongodb-metrics.png

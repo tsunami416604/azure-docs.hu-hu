@@ -10,15 +10,15 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: ea13126030bb7a2672dcd153b36f1d5d63623903
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f69b818e86e84a797ef6cad6eb178c6310017bb5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
-Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre SQL Database-adatbázist az Azure-ban a [DTU-alapú vásárlási modell](sql-database-service-tiers.md#vcore-based-purchasing-model-preview) használatával. Az Azure SQL Database egy adatbázis-szolgáltatási ajánlat, amellyel magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet a felhőben. Ez a rövid útmutató bemutatja, hogyan teheti meg az SQL Database-adatbázisok létrehozásának első lépéseit az Azure Portalon.
+Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre SQL-adatbázist az Azure-ban a [DTU-alapú vásárlási modell](sql-database-service-tiers.md#vcore-based-purchasing-model-preview) segítségével. Az Azure SQL Database egy adatbázis-szolgáltatási ajánlat, amellyel magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet a felhőben. Ez a rövid útmutató bemutatja, hogyan teheti meg az SQL Database-adatbázisok létrehozásának első lépéseit az Azure Portalon.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -78,7 +78,7 @@ Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó 
    >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    >
 
-7. Ezen gyors üzembehelyezési útmutatóban válassza a **Standard** szolgáltatásszintet, majd a csúszkával állítson be **10 DTU (S0)** egységet, illetve **1** GB tárhelyet.
+7. Ehhez a rövid útmutatóhoz válassza a **Standard** szolgáltatásszintet, majd a csúszkával válassza ki a **10 DTU (S0)** egységet, illetve **1** GB tárhelyet.
 
    ![adatbázis létrehozása-s1](./media/sql-database-get-started-portal/create-database-s1.png)
 

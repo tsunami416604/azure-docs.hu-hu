@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams
-ms.openlocfilehash: f678cb9819a2c03f97bcca5a2092160212779328
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 24e6ab7e94d8a1bdbfa0b5ee9112aaaff7e358ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence megoldásértékelési eszköz
 ## <a name="overview"></a>Áttekintés
@@ -97,7 +97,7 @@ A sloution az Azure SQL- vagy Azure SQL DW erőforrásokat az Azure Active Direc
 | --- | --- |
 | SQL-adatbázis és az SQL Data Warehouse az aad-ben | [Az SQL Database vagy az SQL Data Warehouse hitelesítéshez használandó Azure Active Directory-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) |
 | Konfigurálhatja és kezelheti az aad-ben | [Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) |
-| Azure WebApps authentication | [Hitelesítési és engedélyezési az Azure App Service-ben](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) |
+| Az Azure webalkalmazás-hitelesítés | [Hitelesítési és engedélyezési az Azure App Service-ben](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) |
 | Webalkalmazás konfigurálása az aad-ben | [Az App Service alkalmazás használhatja az Azure Active Directory bejelentkezési konfigurálása](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
 
 ### <a name="datasets-accessible-to-end-users-should-support-role-based-access-control"></a>Végfelhasználók számára elérhető adatkészletek támogatnia kell a szerepköralapú hozzáférés-vezérlés
@@ -121,7 +121,7 @@ Az Azure SQL és Azure SQL DW is támogatja a transzparens adatok titkosítás (
 
 | További információ | Ebben a cikkben találhat |
 | --- | --- |
-| Transparent Data Encryption (TDE) | [Átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
+| Az átlátható adattitkosítás (TDE) | [Átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
 | Az Azure SQL Data Warehouse TDE | [SQL Data Warehouse Encrption TDE TSQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-encryption-tde-tsql) |
 | Az Azure SQL TDE konfigurálása | [Az Azure SQL Database átlátható adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) |
 | Mindig titkosítja az Azure SQL konfigurálása | [SQL-adatbázis mindig titkosítja az Azure Key Vault](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)|
@@ -195,7 +195,7 @@ Megőrzési webszolgáltatások AzureML létrehozásáról további információ
 Azure Data Factory használatával modell betanítási folyamatának automatizálásával kapcsolatos további információkért lásd: [frissítése Azure Machine Learning modellek használata az Update-Erőforrástevékenység](https://docs.microsoft.com/azure//data-factory/v1/data-factory-azure-ml-update-resource-activity).
 
 ## <a name="existing-documentation"></a>Meglévő dokumentáció
-[A Microsoft Azure hitelesített nő, a felhő üzleti](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
+[A Microsoft Azure hitelesített nő, a felhő üzleti](https://azure.microsoft.com/marketplace/programs/certified/)
 
-[A Microsoft Azure Cortana Intellignece tanúsítva](https://azure.microsoft.com/en-us/marketplace/programs/certified/cortana/)
+[A Microsoft Azure Cortana Intellignece tanúsítva](https://azure.microsoft.com/marketplace/programs/certified/cortana/)
 

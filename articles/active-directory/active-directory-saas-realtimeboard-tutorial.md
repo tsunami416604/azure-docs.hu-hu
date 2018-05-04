@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált RealtimeBoard |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és RealtimeBoard között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált RealtimeBoard |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és RealtimeBoard között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 2796280d4c8d5d2b11424cba866500aee38414ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5734d9ae2f5633fc7386b5cb0754769af9bf96bc
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>Oktatóanyag: Azure Active Directoryval integrált RealtimeBoard
 
@@ -108,13 +108,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk RealtimeBoard tartomány és az URL-címek](./media/active-directory-saas-realtimeboard-tutorial/tutorial_realtimeboard_url.png)
 
-    Az a **azonosító** szövegmező, adja meg az URL-címet:`https://realtimeboard.com/`
+    Az a **azonosító** szövegmező, adja meg az URL-címet: `https://realtimeboard.com/`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-realtimeboard-tutorial/tutorial_realtimeboard_url2.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet:`https://realtimeboard.com/sso/saml`
+    Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet: `https://realtimeboard.com/sso/saml`
 
 5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
@@ -124,7 +124,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-realtimeboard-tutorial/tutorial_general_400.png)
 
-7. Egyszeri bejelentkezés konfigurálása **RealtimeBoard** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [RealtimeBoard támogatási csoport](mailto:support@realtimeboard.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+7. Az egyszeri bejelentkezés beállítása a **RealtimeBoard** oldalán, hajtsa végre a [RealtimeBoard utasításokat](https://help.realtimeboard.com/support/solutions/articles/11000023465-saml-based-single-sign-on-), és használja a letöltött adatait **metaadatainak XML-kódja**.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

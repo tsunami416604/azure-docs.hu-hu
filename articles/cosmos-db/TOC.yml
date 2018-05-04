@@ -1,6 +1,5 @@
-metadata: {}
 items:
-  - name: Cosmos DB-dokumentáció
+  - name: Azure Cosmos DB-dokumentáció
     href: index.yml
   - name: Áttekintés
     items:
@@ -67,100 +66,27 @@ items:
             href: create-cassandra-dotnet.md
           - name: Python
             href: create-cassandra-python.md
-  - name: Oktatóanyagok
-    items:
-      - name: 1 – Létrehozás
-        items:
-          - name: SQL
-            href: tutorial-develop-sql-api-dotnet.md
-          - name: MongoDB .NET-tel
-            href: tutorial-develop-mongodb.md
-          - name: MongoDB Angularral
-            href: tutorial-develop-mongodb-nodejs.md
-          - name: MongoDB Reacttel
-            href: tutorial-develop-mongodb-react.md
-          - name: Tábla
-            href: tutorial-develop-table-dotnet.md
-          - name: Graph
-            href: tutorial-develop-graph-dotnet.md
-          - name: Cassandra
-            href: tutorial-develop-cassandra-java.md
-      - name: 2 – Importálás
-        items:
-          - name: SQL
-            href: import-data.md
-          - name: MongoDB
-            href: mongodb-migrate.md
-          - name: Tábla
-            href: table-import.md
-          - name: Cassandra
-            href: cassandra-import-data.md
-      - name: 3 – Lekérdezés
-        items:
-          - name: SQL
-            href: tutorial-query-sql-api.md
-          - name: MongoDB
-            href: tutorial-query-mongodb.md
-          - name: Tábla
-            href: tutorial-query-table.md
-          - name: Graph
-            href: tutorial-query-graph.md
-      - name: 4 – Globális elosztás
-        items:
-          - name: SQL
-            href: tutorial-global-distribution-sql-api.md
-          - name: MongoDB
-            href: tutorial-global-distribution-mongodb.md
-          - name: Tábla
-            href: tutorial-global-distribution-table.md
-          - name: Graph
-            href: tutorial-global-distribution-graph.md
-      - name: 5 – Helyi fejlesztés
-        items:
-          - name: Az emulátor használata
-            href: local-emulator.md
-          - name: Tanúsítványok exportálása
-            href: local-emulator-export-ssl-certificates.md
-      - name: 6 – Integrálás a függvényekkel
-        items:
-          - name: HTTP eseményindító
-            href: tutorial-functions-http-trigger.md
-  - name: Példák
-    items:
-      - name: Azure CLI
-        href: cli-samples.md
-      - name: PowerShell
-        href: powershell-samples.md
-      - name: Azure Resource Manager-sablonok
-        href: 'https://azure.microsoft.com/resources/templates/?term=cosmos+db&pageNumber=1'
   - name: Alapelvek
     items:
-      - name: Kiszolgáló nélküli adatbázis
-        href: serverless-computing-database.md
       - name: Globális terjesztés
         href: distribute-data-globally.md
       - name: Particionálás
         href: partition-data.md
-      - name: Egyedi kulcsok
-        href: unique-keys.md
-      - name: Konzisztencia
-        href: consistency-levels.md
       - name: Teljesítmény
         href: request-units.md
-      - name: Többmodelles API-k
-        items:
-          - name: SQL
-            href: sql-api-introduction.md
-          - name: MongoDB
-            href: mongodb-introduction.md
-          - name: Tábla
-            href: table-introduction.md
-          - name: Graph
-            href: graph-introduction.md
-          - name: Cassandra
-            href: cassandra-introduction.md
+      - name: Konzisztencia
+        href: consistency-levels.md
+      - name: Egyedi kulcsok
+        href: unique-keys.md
+      - name: Kiszolgáló nélküli adatbázis
+        href: serverless-computing-database.md
       - name: Biztonság
         href: database-security.md
+        items:
+          - name: Titkosítás inaktív állapotban
+            href: database-encryption-at-rest.md
+          - name: Az adathozzáférés biztonságossá tétele
+            href: secure-access-to-data.md
       - name: Teljes birtoklási költség
         href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: Használati esetek
@@ -168,40 +94,18 @@ items:
         items:
           - name: Közösségimédia-alkalmazások
             href: social-media-apps.md
-  - name: Útmutatók
+  - name: Többmodelles
+    expanded: true
     items:
-      - name: Fejlesztés
+      - name: SQL API-dokumentumok
         items:
-          - name: SQL API
-            href: sql-api-index.md
+          - name: Áttekintés
             items:
-              - name: További források
-                href: sql-api-resources.md
-              - name: SQL-lekérdezések
-                href: sql-api-sql-query.md
-              - name: SQL-lekérdezések teljesítménye
-                href: sql-api-sql-query-metrics.md
-              - name: SQL-játszótér
-                href: 'https://aka.ms/cosmos-db-playground'
-              - name: SQL-adatparticionálás
-                href: sql-api-partition-data.md
-              - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
-                href: programming.md
-              - name: Teljesítménytesztelés
-                href: performance-testing.md
-              - name: Teljesítménnyel kapcsolatos tippek Async Javához
-                href: performance-tips-async-java.md
-              - name: Teljesítménnyel kapcsolatos tippek .NET-hez
-                href: performance-tips.md
-              - name: Teljesítménnyel kapcsolatos tippek Javához
-                href: performance-tips-java.md
-              - name: Több főkiszolgálós telepítés
-                href: multi-region-writers.md
-              - name: Dátum/idő
-                href: working-with-dates.md
-              - name: Dokumentumadatok modellezése
-                href: modeling-data.md
-              - name: Oktatóanyagok
+              - name: Az SQL API ismertetése
+                href: sql-api-introduction.md
+          - name: Oktatóanyagok
+            items:
+              - name: 1 – Létrehozás
                 items:
                   - name: Az első alkalmazás megírása
                     items:
@@ -227,30 +131,179 @@ items:
                         href: sql-api-java-application.md
                       - name: Python Flask
                         href: sql-api-python-application.md
-              - name: Példák
+              - name: 2 – Importálás
+                href: import-data.md
+              - name: 3 – Lekérdezés
+                href: tutorial-query-sql-api.md
+              - name: 4 – Globális elosztás
+                href: tutorial-global-distribution-sql-api.md
+              - name: 5 – Helyi fejlesztés
                 items:
-                  - name: .NET-minták
-                    href: sql-api-dotnet-samples.md
-                  - name: Java-példák
-                    href: sql-api-java-samples.md
-                  - name: Node.js-példák
-                    href: sql-api-nodejs-samples.md
-                  - name: Python-példák
-                    href: sql-api-python-samples.md
+                  - name: Az emulátor használata
+                    href: local-emulator.md
+                  - name: Tanúsítványok exportálása
+                    href: local-emulator-export-ssl-certificates.md
+              - name: 6 – Integrálás a függvényekkel
+                items:
+                  - name: HTTP eseményindító
+                    href: tutorial-functions-http-trigger.md
+          - name: Példák
+            items:
+              - name: Azure CLI
+                href: cli-samples.md
+              - name: PowerShell
+                href: powershell-samples.md
+              - name: .NET-minták
+                href: sql-api-dotnet-samples.md
+              - name: Node.js-példák
+                href: sql-api-nodejs-samples.md
+              - name: Python-példák
+                href: sql-api-python-samples.md
+              - name: Java-példák
+                href: sql-api-java-samples.md
+          - name: Alapelvek
+            items:
               - name: További források
+                href: sql-api-resources.md
+              - name: Dokumentumadatok modellezése
+                href: modeling-data.md
+              - name: Több főkiszolgálós telepítés
+                href: multi-region-writers.md
+          - name: Útmutatók
+            items:
+              - name: Lekérdezés
                 items:
-                  - name: SQL-szintaxis – adatlap
-                    href: sql-api-sql-query-cheat-sheet.md
-                  - name: Videók
-                    href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
-                  - name: Szolgáltatási hírek
-                    href: 'https://azure.microsoft.com/updates/?product=cosmos-db'
-                  - name: Tanulmány a sémafüggetlen indexelésről
-                    href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
-                  - name: 'S1, S2, S3 kivonása'
-                    href: performance-levels.md
-          - name: MongoDB API
-            href: mongodb-index.md
+                  - name: SQL-lekérdezések végrehajtása
+                    href: sql-api-sql-query.md
+                  - name: Lekérdezési teljesítmény hangolása
+                    href: sql-api-sql-query-metrics.md
+              - name: Index
+                href: indexing-policies.md
+              - name: SQL-adatparticionálás
+                href: sql-api-partition-data.md
+              - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
+                href: programming.md
+              - name: Csatorna módosítása
+                href: change-feed.md
+              - name: Adattípusok
+                items:
+                  - name: Dátum/idő
+                    href: working-with-dates.md
+                  - name: Térinformatikai
+                    href: geospatial.md
+              - name: Teljesítmény hangolása
+                items:
+                  - name: Teljesítményteszt
+                    href: performance-testing.md
+                  - name: Teljesítménnyel kapcsolatos tippek Async Javához
+                    href: performance-tips-async-java.md
+                  - name: Teljesítménnyel kapcsolatos tippek .NET-hez
+                    href: performance-tips.md
+                  - name: Teljesítménnyel kapcsolatos tippek Javához
+                    href: performance-tips-java.md
+              - name: Integráció más Azure-szolgáltatásokkal
+                items:
+                  - name: Lambda architektúra megvalósítása a HDInsight használatával
+                    href: lambda-architecture.md
+                  - name: Csatlakozás a Sparkhoz
+                    href: spark-connector.md
+                  - name: Streamelés a Kafka és a Spark használatával a HDInsighton
+                    href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
+                  - name: Webhely üzembe helyezése az Azure App Service-szel
+                    href: create-website.md
+                  - name: Alkalmazásnaplózás a Logic Apps használatával
+                    href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
+                  - name: Kötés az Azure Functionshöz
+                    href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
+                  - name: Integrálás az Azure Search szolgáltatással
+                    href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
+                  - name: Adatok áthelyezése az Azure Data Factoryvel
+                    href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
+                  - name: Valós idejű adatok elemzése az Azure Stream Analyticsszel
+                    href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
+                  - name: Módosított HL7 FHIR-rekord beszerzése a Logic Apps használatával
+                    href: change-feed-hl7-fhir-logic-apps.md
+                  - name: Érzékelőktől kapott adatok valós idejű feldolgozása
+                    href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
+                  - name: Adatok megjelenítése Power BI használatával
+                    href: powerbi-visualize.md
+                  - name: Az ODBC-illesztő felhasználása az adatmegjelenítéshez
+                    href: odbc-driver.md
+                  - name: Spring Boot Starter használata SQL API-kkal
+                    href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json'
+          - name: Referencia
+            items:
+              - name: Async Java
+                href: sql-api-sdk-async-java.md
+              - name: Java
+                href: sql-api-sdk-java.md
+              - name: .NET
+                href: sql-api-sdk-dotnet.md
+              - name: .NET – Csatorna módosítása
+                href: sql-api-sdk-dotnet-changefeed.md
+              - name: .NET Core
+                href: sql-api-sdk-dotnet-core.md
+              - name: Node.js
+                href: sql-api-sdk-node.md
+              - name: Python
+                href: sql-api-sdk-python.md
+              - name: REST
+                href: /rest/api/cosmos-db/
+              - name: REST erőforrás-szolgáltató
+                href: /rest/api/cosmos-db-resource-provider/
+              - name: SQL
+                href: sql-api-sql-query-reference.md
+          - name: További források
+            items:
+              - name: Visual Studio Code-bővítmény
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+              - name: Tanulmány a sémafüggetlen indexelésről
+                href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
+              - name: SQL-játszótér
+                href: 'https://aka.ms/cosmos-db-playground'
+      - name: MongoDB API-dokumentumok
+        items:
+          - name: Áttekintés
+            items:
+              - name: A MongoDB API ismertetése
+                href: mongodb-introduction.md
+              - name: A MongoDB támogatása
+                href: mongodb-feature-support.md
+          - name: Oktatóanyagok
+            items:
+              - name: 1 – Létrehozás
+                items:
+                  - name: Node.js
+                    href: mongodb-samples.md
+                  - name: Node.js és Angular
+                    items:
+                      - name: 1. rész – Bevezetés
+                        href: tutorial-develop-mongodb-nodejs.md
+                      - name: 2. rész – Csomópont-alkalmazás létrehozása
+                        href: tutorial-develop-mongodb-nodejs-part2.md
+                      - name: 3. rész – Angular felhasználói felület hozzáadása
+                        href: tutorial-develop-mongodb-nodejs-part3.md
+                      - name: 4. rész – Cosmos DB létrehozása
+                        href: tutorial-develop-mongodb-nodejs-part4.md
+                      - name: 5. rész – Csatlakozás Cosmos DB-hez
+                        href: tutorial-develop-mongodb-nodejs-part5.md
+                      - name: 6. rész – Írás az alkalmazásba
+                        href: tutorial-develop-mongodb-nodejs-part6.md
+                  - name: Node.js és React
+                    href: tutorial-develop-mongodb-react.md
+              - name: 2 – Importálás
+                href: mongodb-migrate.md
+              - name: 3 – Lekérdezés
+                href: tutorial-query-mongodb.md
+              - name: 4 – Globális elosztás
+                href: tutorial-global-distribution-mongodb.md
+              - name: 5 – Helyi fejlesztés
+                items:
+                  - name: Az emulátor használata
+                    href: local-emulator.md
+                  - name: Tanúsítványok exportálása
+                    href: local-emulator-export-ssl-certificates.md
+          - name: Útmutatók
             items:
               - name: Csatlakozás a MongoDB-fiókhoz
                 href: connect-mongodb-account.md
@@ -264,182 +317,144 @@ items:
                 href: mongodb-readpreference.md
               - name: Indexelés
                 href: mongodb-indexing.md
-              - name: A MongoDB-funkciók támogatása
-                href: mongodb-feature-support.md
-              - name: Angular oktatóanyag-sorozat
-                items:
-                  - name: 2. rész – Csomópont-alkalmazás létrehozása
-                    href: tutorial-develop-mongodb-nodejs-part2.md
-                  - name: 3. rész – Angular felhasználói felület hozzáadása
-                    href: tutorial-develop-mongodb-nodejs-part3.md
-                  - name: 4. rész – Cosmos DB létrehozása
-                    href: tutorial-develop-mongodb-nodejs-part4.md
-                  - name: 5. rész – Csatlakozás Cosmos DB-hez
-                    href: tutorial-develop-mongodb-nodejs-part5.md
-                  - name: 6. rész – Írás az alkalmazásba
-                    href: tutorial-develop-mongodb-nodejs-part6.md
-              - name: További oktatóanyagok
-                items:
-                  - name: Node.js-konzolalkalmazás
-                    href: mongodb-samples.md
-          - name: Graph API
+              - name: Adatok megjelenítése Power BI használatával
+                href: powerbi-visualize.md
+          - name: További források
             items:
+              - name: Visual Studio Code-bővítmény
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+      - name: Graph API-dokumentumok
+        items:
+          - name: Áttekintés
+            items:
+              - name: A Graph API ismertetése
+                href: graph-introduction.md
               - name: Gremlin-támogatás
                 href: gremlin-support.md
+          - name: Oktatóanyagok
+            items:
+              - name: 1 – Létrehozás
+                href: tutorial-develop-graph-dotnet.md
+              - name: 2 – Lekérdezés
+                href: tutorial-query-graph.md
+              - name: 3 – Globális elosztás
+                href: tutorial-global-distribution-graph.md
+          - name: Útmutatók
+            items:
               - name: Graph-particionálás
                 href: graph-partitioning.md
-          - name: Tábla API
+              - name: Integrálás
+                items:
+                  - name: Csatlakozás a Spark GraphX-hez
+                    href: spark-connector-graph.md
+          - name: Referencia
             items:
+              - name: .NET
+                href: graph-sdk-dotnet.md
+          - name: További források
+            items:
+              - name: Visual Studio Code-bővítmény
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+      - name: Table API-dokumentumok
+        items:
+          - name: Áttekintés
+            items:
+              - name: A Table API ismertetése
+                href: table-introduction.md
               - name: A Table fejlesztése
                 href: table-support.md
-              - name: Table API-műveletek a PowerShell-lel
-                href: table-powershell.md
-              - name: Azure Table Storage
-                items:
-                  - name: A Table Storage áttekintése
-                    href: table-storage-overview.md
-                  - name: Tervezési útmutató a Table Storage-hoz
-                    href: table-storage-design-guide.md
-                  - name: Table Storage REST API-k
-                    href: /rest/api/storageservices/Table-Service-Concepts
-                  - name: Fejlesztés
-                    items:
-                      - name: .NET
-                        href: table-storage-how-to-use-dotnet.md
-                      - name: 'F#'
-                        href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
-                      - name: Node.js
-                        href: table-storage-cloud-service-nodejs.md
-                      - name: Java
-                        href: table-storage-how-to-use-java.md
-                      - name: Node.js
-                        href: table-storage-how-to-use-nodejs.md
-                      - name: C++
-                        href: table-storage-how-to-use-c-plus.md
-                      - name: PHP
-                        href: table-storage-how-to-use-php.md
-                      - name: Python
-                        href: table-storage-how-to-use-python.md
-                      - name: Ruby
-                        href: table-storage-how-to-use-ruby.md
-                      - name: PowerShell
-                        href: table-storage-how-to-use-powershell.md
-          - name: Csatorna módosítása
-            href: change-feed.md
-          - name: Térinformatikai
-            href: geospatial.md
-          - name: Indexelés
-            href: indexing-policies.md
-      - name: Kezelés
-        items:
-          - name: Költséghatékony írások és olvasások
-            href: key-value-store-cost.md
-          - name: Adatok automatikus elévülése
-            href: time-to-live.md
-          - name: Biztonsági mentés és visszaállítás
-            href: online-backup-and-restore.md
-          - name: Régiónkénti feladatátvétel
-            href: regional-failover.md
-          - name: Teljesítmény beállítása
-            href: set-throughput.md
-          - name: SLA-k figyelése
-            href: monitor-accounts.md
-          - name: Használati mérőszámok
-            href: use-metrics.md
-          - name: Diagnosztikai naplózás
-            href: logging.md
-          - name: Kulcsok és konzisztencia kezelése
-            href: manage-account.md
-          - name: Hozzáférés-vezérlés
-            href: access-control.md
-          - name: Azure Storage Explorer
-            href: storage-explorer.md
-          - name: Biztonság
+          - name: Oktatóanyagok
             items:
-              - name: Titkosítás inaktív állapotban
-                href: database-encryption-at-rest.md
-              - name: Tűzfaltámogatás
-                href: firewall-support.md
-              - name: Az adathozzáférés biztonságossá tétele
-                href: secure-access-to-data.md
-      - name: Integrálás
+              - name: 1 – Létrehozás
+                href: tutorial-develop-table-dotnet.md
+              - name: 2 – Importálás
+                href: table-import.md
+              - name: 3 – Lekérdezés
+                href: tutorial-query-table.md
+              - name: 4 – Globális elosztás
+                href: tutorial-global-distribution-table.md
+          - name: Példák
+            items:
+              - name: .NET
+                href: table-storage-how-to-use-dotnet.md
+              - name: 'F#'
+                href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+              - name: Node.js
+                href: table-storage-cloud-service-nodejs.md
+              - name: Java
+                href: table-storage-how-to-use-java.md
+              - name: Node.js
+                href: table-storage-how-to-use-nodejs.md
+              - name: C++
+                href: table-storage-how-to-use-c-plus.md
+              - name: PHP
+                href: table-storage-how-to-use-php.md
+              - name: Python
+                href: table-storage-how-to-use-python.md
+              - name: Ruby
+                href: table-storage-how-to-use-ruby.md
+              - name: PowerShell
+                href: table-storage-how-to-use-powershell.md
+          - name: Referencia
+            items:
+              - name: .NET
+                href: table-sdk-dotnet.md
+              - name: Java
+                href: table-sdk-java.md
+              - name: Node.js
+                href: table-sdk-nodejs.md
+              - name: Python
+                href: table-sdk-python.md
+          - name: További források
+            items:
+              - name: A Table Storage áttekintése
+                href: table-storage-overview.md
+              - name: Tervezési útmutató a Table Storage-hoz
+                href: table-storage-design-guide.md
+              - name: Table Storage REST API-k
+                href: /rest/api/storageservices/Table-Service-Concepts
+      - name: Cassandra API-dokumentumok
         items:
-          - name: Lambda architektúra megvalósítása a HDInsight használatával
-            href: lambda-architecture.md
-          - name: Csatlakozás a Sparkhoz
-            href: spark-connector.md
-          - name: Csatlakozás a Spark GraphX-hez
-            href: spark-connector-graph.md
-          - name: Streamelés a Kafka és a Spark használatával a HDInsighton
-            href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
-          - name: Webhely üzembe helyezése az Azure App Service-szel
-            href: create-website.md
-          - name: Alkalmazásnaplózás a Logic Apps használatával
-            href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
-          - name: Kötés az Azure Functionshöz
-            href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
-          - name: Integrálás az Azure Search szolgáltatással
-            href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
-          - name: Adatok áthelyezése az Azure Data Factoryvel
-            href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
-          - name: Valós idejű adatok elemzése az Azure Stream Analyticsszel
-            href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
-          - name: Módosított HL7 FHIR-rekord beszerzése a Logic Apps használatával
-            href: change-feed-hl7-fhir-logic-apps.md
-          - name: Érzékelőktől kapott adatok valós idejű feldolgozása
-            href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
-          - name: Adatok megjelenítése Power BI használatával
-            href: powerbi-visualize.md
-          - name: Az ODBC-illesztő felhasználása az adatmegjelenítéshez
-            href: odbc-driver.md
-          - name: Spring Boot Starter használata SQL API-kkal
-            href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json'
-  - name: Referencia
+          - name: Áttekintés
+            items:
+              - name: A Cassandra API ismertetése
+                href: cassandra-introduction.md
+          - name: Oktatóanyagok
+            items:
+              - name: 1 – Létrehozás
+                href: tutorial-develop-cassandra-java.md
+              - name: 2 – Importálás
+                href: cassandra-import-data.md
+  - name: Útmutatók
     items:
-      - name: Kódminták
-        href: 'https://azure.microsoft.com/resources/samples/?service=cosmos-db'
-      - name: SQL API-k
-        items:
-          - name: Async Java
-            href: sql-api-sdk-async-java.md
-          - name: Java
-            href: sql-api-sdk-java.md
-          - name: .NET
-            href: sql-api-sdk-dotnet.md
-          - name: .NET – Csatorna módosítása
-            href: sql-api-sdk-dotnet-changefeed.md
-          - name: .NET Core
-            href: sql-api-sdk-dotnet-core.md
-          - name: Node.js
-            href: sql-api-sdk-node.md
-          - name: Python
-            href: sql-api-sdk-python.md
-          - name: REST
-            href: /rest/api/cosmos-db/
-          - name: REST erőforrás-szolgáltató
-            href: /rest/api/cosmos-db-resource-provider/
-          - name: SQL
-            href: sql-api-sql-query-reference.md
-      - name: Tábla API-k
-        items:
-          - name: .NET
-            href: table-sdk-dotnet.md
-          - name: Java
-            href: table-sdk-java.md
-          - name: Node.js
-            href: table-sdk-nodejs.md
-          - name: Python
-            href: table-sdk-python.md
-      - name: Graph API-k
-        items:
-          - name: .NET
-            href: graph-sdk-dotnet.md
+      - name: Kulcsok és konzisztencia
+        href: manage-account.md
+      - name: Teljesítmény
+        href: set-throughput.md
+      - name: Tűzfaltámogatás
+        href: firewall-support.md
+      - name: Mérőszámok
+        href: use-metrics.md
+      - name: SLA-k figyelése
+        href: monitor-accounts.md
+      - name: Biztonsági mentés és visszaállítás
+        href: online-backup-and-restore.md
+      - name: Régiónkénti feladatátvétel
+        href: regional-failover.md
+      - name: Diagnosztikai naplózás
+        href: logging.md
+      - name: Költséghatékony írások és olvasások
+        href: key-value-store-cost.md
+      - name: Adatok automatikus elévülése
+        href: time-to-live.md
   - name: További források
     items:
       - name: Lekérdezésekre vonatkozó hasznos tanácsok
         href: query-cheat-sheet.md
       - name: 20 napi tipp
         href: 20-days-of-tips.md
+      - name: Videók
+        href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
       - name: Azure-ütemterv
         href: 'https://azure.microsoft.com/roadmap/'
       - name: Az Azure Cosmos DB ingyenes kipróbálása
@@ -450,5 +465,3 @@ items:
         href: faq.md
       - name: Az adatkonzisztencia magyarázata a baseball példáján
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
-      - name: Az Azure Cosmos DB hibaelhárítása
-        href: troubleshoot-azure-cosmosdb.md

@@ -5,15 +5,15 @@ services: azure-policy
 keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/18/2018
+ms.date: 04/30/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 8b89e1c8ccfcfd7b53ecdd9172590424d1c7ae4c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 285ee153a86270fe65846dc6a22786e007a8a595
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -70,7 +70,7 @@ A **mód** határozza meg, milyen típusú erőforrások kiértékelendő tábla
 * `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése
 * `indexed`: csak értékelje ki, amely támogatja a címkék és a hely típusú erőforrások
 
-Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy Azure CLI-t használ, meg kell adnia a **mód** paraméter manuálisan. Ha a házirend-definíció nem tartalmaz egy **mód** érték azt az alapértelmezett érték a `indexed` a visszamenőleges kompatibilitás.
+Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy az Azure parancssori felület, megadhatja a **mód** paraméter manuálisan. Ha a házirend-definíció nem tartalmaz egy **mód** érték azt az alapértelmezett érték a `all` Azure PowerShell és a `null` az Azure parancssori felület, amely megegyezik `indexed`, a visszamenőleges kompatibilitás.
 
 `indexed` kell használni, amikor a házirendek létrehozásával kényszeríti ki a címkéket és a helyek. Ez azonban nem kötelező, de megakadályozza, hogy erőforrásokat, amelyek nem támogatják a címkék és a helyek jelennek meg, nem kompatibilis a megfelelőségi eredmények a. Az egyetlen kivétel ez alól **erőforráscsoportok**. Házirendek kényszerítése, hely vagy egy erőforráscsoportot a címkék megkísérlő-et kell beállítania **mód** való `all` és kifejezetten célja a `Microsoft.Resources/subscriptions/resourceGroup` típusa. Egy vonatkozó példáért lásd: [erőforráscímkék csoport kényszerítése](scripts/enforce-tag-rg.md).
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 489b2a66cadb77a338f9ae00443c072a4e19edfd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0cef0a261b0362fcb9776e63c10e96aedc408b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonsági technikai lehetőségeit
 
@@ -134,7 +134,7 @@ Azure Active Directory B2C használata esetén a felhasználók regisztrálhatna
 
 #### <a name="device-registration"></a>Eszközregisztráció
 
-[Az Azure AD eszközregisztrációval](https://docs.microsoft.com/en-us/azure/active-directory/device-management-introduction) az alapja eszközalapú [feltételes hozzáférés](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-device-registration-on-premises-setup) forgatókönyvek. Amikor regisztrál egy eszközt, az Azure AD eszközregisztrációval látja el az eszközt, amikor a felhasználó bejelentkezik az eszköz hitelesítésére használt identitással. A hitelesített eszköz és az eszköz attribútumai ezután a feltételes hozzáférési házirendek betartatásához használhatók a felhőben és a helyszínen tárolt alkalmazások esetében.
+[Az Azure AD eszközregisztrációval](https://docs.microsoft.com/azure/active-directory/device-management-introduction) az alapja eszközalapú [feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup) forgatókönyvek. Amikor regisztrál egy eszközt, az Azure AD eszközregisztrációval látja el az eszközt, amikor a felhasználó bejelentkezik az eszköz hitelesítésére használt identitással. A hitelesített eszköz és az eszköz attribútumai ezután a feltételes hozzáférési házirendek betartatásához használhatók a felhőben és a helyszínen tárolt alkalmazások esetében.
 
 Együtt egy [mobileszköz-kezelés (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) megoldással, például az Intune-ban, az eszközattribútumokon az Azure Active Directoryban frissítődik az eszközzel kapcsolatos további információk. Ez lehetővé teszi további feltételes hozzáférési szabályok létrehozását, amelyek arra kényszerítik az eszközhozzáféréseket, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak.
 

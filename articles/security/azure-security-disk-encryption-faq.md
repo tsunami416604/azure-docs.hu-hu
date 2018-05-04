@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2018
-ms.author: devtiw
-ms.openlocfilehash: cb523b4fbf6e8abdf5c5158ab041d3485add9b23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/27/2018
+ms.author: barclayn
+ms.openlocfilehash: 47ccf91a64653c928cc4da01bc98535c97440d37
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Az Azure Disk Encryption – gyakori kérdések
 
@@ -34,7 +34,7 @@ Az Azure lemez titkosítási GA támogatja az Azure Resource Manager-sablonok, A
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Milyen mértékű nem költségű Azure Disk Encryption?
 
-Használata virtuális gépek lemezei az Azure Disk Encryption titkosítási díjmentes.
+Virtuális gépek lemezei az Azure Disk Encryption titkosítási ingyenesek, de nincsenek az Azure Key Vault használatával járó díjakat. További információk az Azure Key Vault költségek tekintse meg a [Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/) lap.
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Mely virtuálisgép-réteg nem támogatja az Azure Disk Encryption?
 
@@ -68,7 +68,7 @@ Az Azure Disk Encryption támogatott a következő Linux server disztribúciók 
 | SLES | Prioritás: 11-SP4 | Adatlemez |
 | SLES | 11 SP4 | Adatlemez |
 
-*__Adatlemez az RHEL ADE esetén támogatott. A jelenlegi ADE implementációja operációsrendszer-lemez esetében működik, de közösen jelenleg nem támogatott. A Microsoft és a Red Hat dolgozik közösen támogatott megoldás. Az idő alatt is hivatkozni lehessen a ADE tanulmány a Linux operációs rendszert futtató lemeztitkosítás [Itt](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).__
+*__Adatlemez az RHEL ADE esetén támogatott. A jelenlegi ADE implementációja operációsrendszer-lemez esetében működik, de közösen jelenleg nem támogatott. A Microsoft és a Red Hat dolgozik közösen támogatott megoldás. Az idő alatt is hivatkozni lehessen a ADE tanulmány a Linux operációs rendszert futtató lemeztitkosítás [Itt](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Hogyan tudom kezdheti Azure Disk Encryption?
 

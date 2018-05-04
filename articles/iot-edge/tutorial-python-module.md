@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d5bad277e6a54b23f0e3ef7321e82d212ae885d3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3c46df85f95377f5740526542ac1baf5a8fd77c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device---preview"></a>Fejlesztés és Python IoT peremhálózati modul telepítése a szimulált eszköz – előzetes
 
@@ -29,7 +29,7 @@ Az IoT-Edge modulok, amely megvalósítja az üzleti logikát, közvetlenül az 
 Az IoT-Edge modul, amely ebben az oktatóanyagban létrehozhat szűrők az eszköz által létrehozott hőmérséklet adatokat. Ez csak akkor küldi el üzenetek előtt Ha hőmérséklete meghaladja a küszöbértéket. Ilyen típusú elemzés peremére akkor hasznos, ha továbbítani, és a felhőben tárolt adatok mennyisége csökkenteni. 
 
 > [!IMPORTANT]
-> Jelenleg a Python modul a amd64 Linux tárolók csak futnia. Nem fut a Windows-tárolók és ARM-alapú tárolók. 
+> Jelenleg a Python modul csak futtatható amd64 Linux tárolókban; azt a Windows-tárolók és ARM-alapú tárolók nem futtatható. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Az IoT-Edge modul, amely ebben az oktatóanyagban létrehozhat szűrők az eszk�
 * [A Visual Studio Code Python bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
 * [Docker](https://docs.docker.com/engine/installation/) ugyanazon a számítógépen, amelyen a Visual Studio Code. A közösségi Edition (CE) is használhatók ehhez az oktatóanyaghoz. 
 * [Python](https://www.python.org/downloads/).
-* [A pip](https://pip.pypa.io/en/stable/installing/#installation) a Python-csomag telepítését.
+* [A pip](https://pip.pypa.io/en/stable/installing/#installation) Python-csomagokat (általában a Python-telepítés mellékelt) telepítéséhez.
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 Ebben az oktatóanyagban a VS Code-hoz készült Azure IoT Edge bővítménnyel épít fel egy modult és hoz létre egy **tárolórendszerképet** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
@@ -57,10 +57,10 @@ Ehhez az oktatóanyaghoz bármilyen Docker-kompatibilis beállításjegyzéket h
 ## <a name="create-an-iot-edge-module-project"></a>Az IoT-Edge modul projekt létrehozása
 A következő lépések bemutatják a hozzon létre egy Visual Studio Code és az Azure IoT peremhálózati bővítmény IoT peremhálózati Python modult.
 1. A Visual Studio Code, válassza ki **nézet** > **integrált terminál** a Visual STUDIO Code integrált terminál megnyitásához.
-2. Az integrált terminált, adja meg a következő parancs futtatásával telepítse (vagy frissítse) a **cookiecutter**:
+2. Az integrált terminált, adja meg a következő parancs futtatásával telepítse (vagy frissítse) **cookiecutter** (javasoljuk, hogy ezzel a virtuális környezetbe, vagy a felhasználó telepítésként alább látható módon):
 
     ```cmd/sh
-    pip install -U cookiecutter
+    pip install --upgrade --user cookiecutter
     ```
 
 3. Hozzon létre egy projektet az új modulhoz. A következő parancs létrehozza a projektmappa **FilterModule**, és a tároló-tárház. A paraméter `image_repository` formájában kell `<your container registry name>.azurecr.io/filtermodule` Azure tároló beállításjegyzék használata. Írja be a következő parancsot az aktuális munkakönyvtárba:
@@ -78,11 +78,11 @@ A következő lépések bemutatják a hozzon létre egy Visual Studio Code és a
     import json
     ```
 
-8. Adja hozzá a `TEMPERATURE_THRESHOLD` és `TWIN_CALLBACKS` a globális számlálók. A hőmérséklet küszöbértéket ahhoz, hogy az adatokat az IoT-központ küldendő beállítja az haladhatja meg a mért hőmérséklet értéket.
+8. Adja hozzá a `TEMPERATURE_THRESHOLD`, `RECEIVE_CALLBACKS`, és `TWIN_CALLBACKS` a globális számlálók. A hőmérséklet küszöbértéket ahhoz, hogy az adatokat az IoT-központ küldendő beállítja az haladhatja meg a mért hőmérséklet értéket.
 
     ```python
     TEMPERATURE_THRESHOLD = 25
-    TWIN_CALLBACKS = 0
+    TWIN_CALLBACKS = RECEIVE_CALLBACKS = 0
     ```
 
 9. A függvény frissítése `receive_message_callback` a tartalom alatt.
@@ -97,16 +97,16 @@ A következő lépések bemutatják a hozzon létre egy Visual Studio Code és a
         message_buffer = message.get_bytearray()
         size = len(message_buffer)
         message_text = message_buffer[:size].decode('utf-8')
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
+        print("    Data: <<<{}>>> & Size={:d}".format(message_text, size))
         map_properties = message.properties()
         key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
+        print("    Properties: {}".format(key_value_pair))
         RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
+        print("    Total calls received: {:d}".format(RECEIVE_CALLBACKS))
         data = json.loads(message_text)
         if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
             map_properties.add("MessageType", "Alert")
-            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+            print("Machine temperature {} exceeds threshold {}".format(data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
         hubManager.forward_event_to_output("output1", message, 0)
         return IoTHubMessageDispositionResult.ACCEPTED
     ```
@@ -118,14 +118,14 @@ A következő lépések bemutatják a hozzon létre egy Visual Studio Code és a
     def device_twin_callback(update_state, payload, user_context):
         global TWIN_CALLBACKS
         global TEMPERATURE_THRESHOLD
-        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
+        print("\nTwin callback called with:\nupdateStatus = {}\npayload = {}\ncontext = {}".format(update_state, payload, user_context))
         data = json.loads(payload)
         if "desired" in data and "TemperatureThreshold" in data["desired"]:
             TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
         if "TemperatureThreshold" in data:
             TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
         TWIN_CALLBACKS += 1
-        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+        print("Total calls confirmed: {:d}\n".format(TWIN_CALLBACKS))
     ```
 
 11. Osztály `HubManager`, az új sort a `__init__` metódust is, a `device_twin_callback` függvény az előzőekben adott hozzá.

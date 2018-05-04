@@ -1,6 +1,6 @@
 ---
-title: "Támogatott ellenőrök érhető el az Azure Machine Learning adatok előkészítése |} Microsoft Docs"
-description: "Ez a dokumentum érhető el az Azure Machine Learning adatok előkészítése ellenőrök teljes listáját tartalmazza."
+title: Támogatott ellenőrök érhető el az Azure Machine Learning adatok előkészítése |} Microsoft Docs
+description: Ez a dokumentum érhető el az Azure Machine Learning adatok előkészítése ellenőrök teljes listáját tartalmazza.
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 5d5797ede15be0779873f0a023433f0a915dd74a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Az Azure Machine Learning data előkészítése Preview ellenőrök támogatott
 Ez a dokumentum ismerteti az előzetes verzióban elérhető ellenőrök készletét.
@@ -39,7 +39,7 @@ Numerikus oszlopoknál a inspector számos különböző statisztikák az oszlop
 
 
 ### <a name="options"></a>Beállítások 
-- Nincs
+- None
 
 ## <a name="histogram"></a>Hisztogram 
 Kiszámítja, és egyetlen numerikus oszlopban hisztogram jeleníti meg. Az alapértelmezett számú gyűjtőbe Scott szabály használatával történik. Azonban a szabály a beállítások segítségével felülbírálható.

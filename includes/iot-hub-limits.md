@@ -42,7 +42,7 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat tartalma
 
 
 > [!NOTE]
-> Csatlakozhat egy IoT-központ eszközök maximális számát jelenleg 500 000 értéket. Ha azt szeretné, a korlát növeléséhez, forduljon a [Microsoft Support](https://azure.microsoft.com/en-us/support/options/).
+> Csatlakozhat egy IoT-központ eszközök maximális számát jelenleg 500 000 értéket. Ha azt szeretné, a korlát növeléséhez, forduljon a [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 Az IoT Hub szolgáltatás szabályozza a kéréseket az alábbi kvóták átlépése esetén:
 

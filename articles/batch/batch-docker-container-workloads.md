@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: danlep
-ms.openlocfilehash: fc8af53b0e0cfbe19a6509e8d126646badd0abbb
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 128bf85fae71b44b0deebb3974d4a9b317e6a380
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch tároló alkalmazások futtatásához
 
@@ -138,7 +138,7 @@ pool.Commit();
 
 ### <a name="prefetch-images-for-container-configuration"></a>Előzetesen lehívott a tároló konfigurációjának lemezképei lapok
 
-Előzetesen lehívott lapok tároló képek a készlet, adja hozzá a tároló lemezképek listáját (`containerImageNames`) számára a `ContainerConfiguration`, és nevezze el a képlista. Az alábbi példa feltételezi, hogy a egyéni Ubuntu 16.04 LTS kép, előzetesen lehívott lapok egy TensorFlow lemezkép [Docker Hub](https://hub.docker.com), és a kezdő tevékenység TensorFlow elindításához.
+Előzetesen lehívott lapok tároló képek a készlet, adja hozzá a tároló lemezképek listáját (`containerImageNames`) számára a `ContainerConfiguration`, és nevezze el a képlista. Az alábbi példa feltételezi, hogy egy egyéni Ubuntu 16.04 LTS lemezképet használ, és előzetesen lehívott lapok egy TensorFlow lemezkép [Docker Hub](https://hub.docker.com). Ebben a példában a Virtuálisgép-gazda készlet csomópontjain futó start feladat tartalmazza. Erre akkor lehet szükség, például olyan fájlkiszolgálót, mely elérhető legyen a tárolók csatlakoztatni.
 
 ```csharp
 // Specify container configuration, prefetching Docker images
@@ -151,15 +151,8 @@ VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConf
     containerConfiguration: containerConfig,
     nodeAgentSkuId: "batch.node.ubuntu 16.04");
 
-// Set a native command line start task
+// Set a native host command line start task
 StartTask startTaskNative = new StartTask( CommandLine: "<native-host-command-line>" );
-
-// Define container settings
-TaskContainerSettings startTaskContainerSettings = new TaskContainerSettings (
-    imageName: "tensorflow/tensorflow:latest-gpu");
-StartTask startTaskContainer = new StartTask(
-    CommandLine: "<docker-image-command-line>",
-    TaskContainerSettings: startTaskContainerSettings);
 
 // Create pool
 CloudPool pool = batchClient.PoolOperations.CreatePool(

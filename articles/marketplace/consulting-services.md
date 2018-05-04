@@ -14,18 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 918af6da62e0e3a1409528691bdd460b2ad61a3e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7cd902f289d0743b4aecf004f5f64a04024aa790
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-marketplace-consulting-services"></a>Az Azure piactér Consulting Services tanácsadó szolgálat
 Microsoft-partnerek tanácsadás Azure piactéren biztosít a csatlakozó ügyfelek szolgáltatások támogatása és az Azure használatát kiterjesztése célját. Az Azure piactéren támogatja a Microsoft partnerei rendszert integráló (SI) tanácsadás szolgáltatásajánlatok listája. 
 
 Ezek tanácsadás szolgáltatásajánlatok olyan specifikus kapcsolattartás során. Ezek által rögzített és időtartamától is lehet rögzített ár vagy szabad és rendelkezik egy definiált eredménye. A lehetséges ügyfeleket lehet kapcsolatot létesíteni, amelyeket a partnerek kérjen. Partnerek értesítést kap, a CRM-rendszerbe, és 48 órán belül a kérelmek megválaszolásához irányulnak.
 
-Az Azure piactér vs AppSource kirakat tanácsadás a piactér kirakatokkal összhangban legyenek célcsoportok és a felhőalapú Microsoft-termékek szükséges található ügyfelek számára. Minden egyes áruháznak speciális közzétételi beállítások segítségével maximalizálhatja a közzétételi befektetéseit. Az alábbi táblázat foglalja össze ezeket a beállításokat:
+## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Az Azure piactér vs AppSource kirakat tanácsadási szolgáltatásokat
+A piactér kirakatokkal célcsoportok és a Microsoft cloud termékek szükséges található ügyfelek összhangban legyenek. Minden egyes áruháznak speciális közzétételi beállítások segítségével maximalizálhatja a közzétételi befektetéseit. Az alábbi táblázat foglalja össze ezeket a beállításokat:
 
 |         |Azure Piactér  |AppSource |
 |---------|---------|---------|

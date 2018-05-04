@@ -1,0 +1,117 @@
+- name: Traffic Manager-dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az a Traffic Manager?
+      href: traffic-manager-overview.md
+- name: Első lépések
+  items:
+    - name: Traffic Manager-profil létrehozása
+      href: traffic-manager-create-profile.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: Oktatóanyagok
+  items:
+    - name: Forgalom irányítása végpont földrajzi helye alapján
+      href: traffic-manager-configure-geographic-routing-method.md
+    - name: Forgalom irányítása az alacsony késés érdekében
+      href: traffic-manager-configure-performance-routing-method.md
+    - name: Forgalom elosztása végpontok között
+      href: traffic-manager-configure-weighted-routing-method.md
+    - name: Forgalom irányítása magas prioritású végpontra
+      href: traffic-manager-configure-priority-routing-method.md
+- name: Alapelvek
+  items:
+    - name: Útválasztási módszerek
+      href: traffic-manager-routing-methods.md
+      items:
+        - name: A Traffic Manager által használt ország-/régióhierarchia
+          href: traffic-manager-geographic-regions.md
+    - name: Beágyazott Traffic Manager-profilok
+      href: traffic-manager-nested-profiles.md
+    - name: Végponttípusok
+      href: traffic-manager-endpoint-types.md
+    - name: Végpont-monitorozás
+      href: traffic-manager-monitoring.md
+    - name: Valós felhasználói mérések
+      href: traffic-manager-rum-overview.md
+    - name: Forgalomnézet
+      href: traffic-manager-traffic-view-overview.md
+    - name: Gyakori kérdések
+      href: traffic-manager-FAQs.md
+- name: Útmutató
+  items:
+    - name: Valós felhasználói mérések küldése a Traffic Managerbe
+      items:
+        - name: A Visual Studio SDK használata
+          href: traffic-manager-create-rum-visual-studio.md
+        - name: Weblapok használata
+          href: traffic-manager-create-rum-web-pages.md
+    - name: Végpontkezelés
+      href: traffic-manager-manage-endpoints.md
+    - name: Profilok kezelése
+      href: traffic-manager-manage-profiles.md
+    - name: Traffic Manager-beállítások ellenőrzése
+      href: traffic-manager-testing-settings.md
+    - name: Többféle terheléselosztási szolgáltatás használata
+      href: traffic-manager-load-balancing-azure.md
+    - name: A Traffic Manager teljesítményének mérése
+      href: traffic-manager-performance-considerations.md
+    - name: A Traffic Manager kezelése az Azure PowerShell-lel
+      href: traffic-manager-powershell-arm.md
+    - name: Az internetes tartomány átirányítása a Traffic Managerhez
+      href: traffic-manager-point-internet-domain.md
+    - name: Hibaelhárítás
+      items:
+        - name: Az Azure Traffic Manager csökkentett teljesítményének kezelése
+          href: traffic-manager-troubleshooting-degraded.md
+- name: Referencia
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=traffic-manager'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.trafficmanager
+    - name: Azure CLI
+      href: /cli/azure/network/traffic-manager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.trafficmanager
+    - name: Node.js
+      href: 'http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/'
+    - name: Ruby
+      href: 'http://www.rubydoc.info/gems/azure_mgmt_traffic_manager'
+    - name: Python
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html'
+    - name: REST
+      href: 'https://msdn.microsoft.com/library/mt163667.aspx'
+- name: Kapcsolódó témakörök
+  items:
+    - name: Application Gateway
+      href: /azure/application-gateway/
+    - name: Load Balancer
+      href: /azure/load-balancer/
+    - name: Azure DNS
+      href: /azure/dns/
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking/'
+    - name: MSDN fórum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/traffic-manager/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási korlátozások
+      href: '../azure-subscription-service-limits.md#traffic-manager-limits'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/traffic-manager/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=traffic-manager'

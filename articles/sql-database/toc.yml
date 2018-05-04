@@ -74,8 +74,10 @@
       href: sql-database-servers-databases.md
     - name: Felügyelt példány
       href: sql-database-managed-instance.md
-    - name: Szolgáltatásszintek
-      href: sql-database-service-tiers.md
+    - name: DTU-alapú szolgáltatásszintek
+      href: sql-database-service-tiers-dtu.md
+    - name: vCore-alapú szolgáltatásszintek
+      href: sql-database-service-tiers-vcore.md
     - name: Felskálázás olvasása
       href: sql-database-read-scale-out.md
     - name: DTU-alapú erőforráskorlátok
@@ -412,8 +414,12 @@
               href: saas-tenancy-schema-management.md
             - name: Bérlők közötti jelentéskészítés
               href: saas-tenancy-cross-tenant-reporting.md
-            - name: ETL elemzéshez
-              href: saas-tenancy-tenant-analytics.md
+            - name: Bérlőelemzés
+              items:
+                - name: SQL DB-vel
+                  href: saas-tenancy-tenant-analytics.md
+                - name: SQL DW-vel
+                  href: saas-tenancy-tenant-analytics-adf.md
             - name: Vészhelyreállítás georedundáns visszaállítással
               href: saas-dbpertenant-dr-geo-restore.md
             - name: Vészhelyreállítás adatbázis georeplikációjával

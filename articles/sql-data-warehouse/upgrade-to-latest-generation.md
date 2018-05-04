@@ -10,20 +10,20 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 673386ad236f596aa4c64fe2e8c885fb86afe170
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 8ca8156d98932e0e7313375cadc1ace2a3088881
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
 Azure SQL Data Warehouse frissítsen az Azure hardver- és tároló-architektúra legújabb generációját.
 
 ## <a name="why-upgrade"></a>Miért frissíteni?
-Mostantól zökkenőmentesen frissítheti a számítási teljesítmény rétegben az Azure portálon optimalizálása. Ha a rugalmasság adatraktár egy optimalizált, ajánlott frissítése. Frissítse, használhatja a legújabb generációját Azure hardver, és a bővített tároló-architektúra. Kihasználhatja a gyorsabb teljesítményt, a méretezhetőség és a korlátlan oszlopos tárolás. 
+Mostantól zökkenőmentesen frissítheti az SQL Data Warehouse Gen2 az Azure portálon. Ha egy Gen1 adatraktár, ajánlott frissítése. Frissítse, használhatja a legújabb generációját Azure hardver, és a bővített tároló-architektúra. Kihasználhatja a gyorsabb teljesítményt, a méretezhetőség és a korlátlan oszlopos tárolás. 
 
 ## <a name="applies-to"></a>A következőkre vonatkozik
-Ez a frissítés a rugalmasság teljesítményszinttel optimalizálása az adatraktárak vonatkozik.
+Ez a frissítés Gen1 adatraktárak vonatkozik.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -31,22 +31,22 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 > [!NOTE]
-> Ha a rugalmasság adatraktár nincs optimalizálva a meglévő régióban adott optimalizálva számítási érhető el, akkor [georedundáns helyreállítás a számítási optimalizálása](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) egy támogatott régióban a Powershellen keresztül.
+> Ha a meglévő Gen1 adatraktár nincs olyan régióban, ahol Gen2 lehetőség, akkor [georedundáns helyreállítás való Gen2](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) egy támogatott régióban a Powershellen keresztül.
 > 
 >
 
-1. Ha a frissítendő rugalmasság adatraktár optimalizálása fel van függesztve, [folytathatja az adatraktár](pause-and-resume-compute-portal.md).
+1. Ha a frissítendő Gen1 adatraktár fel van függesztve, [folytathatja az adatraktár](pause-and-resume-compute-portal.md).
 2. Néhány perc leállás mellett készíteni. 
 
 
 
 ## <a name="start-the-upgrade"></a>A frissítés megkezdése
 
-1. Keresse fel a rugalmasság adatraktárát az Azure portálon, és kattintson a optimalizálása **számítás optimalizált frissítés**: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Keresse fel a Gen1 adatraktárát az Azure portálon, és kattintson a **Gen2 frissítsen**: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
 
-2. Alapértelmezés szerint **válassza ki a javasolt teljesítményszintje** az adatraktár alapján a jelenlegi teljesítményszintje a rugalmasság optimalizálása az alábbi leképezés használatával:
+2. Alapértelmezés szerint **válassza ki a javasolt teljesítményszintje** az adatraktár alapján a jelenlegi teljesítményszintje Gen1 az alábbi leképezés használatával:
     
-| Rugalmasságra optimalizált | Számítási teljesítményre optimalizált |
+| Gen1 | Gen2 |
 | :----------------------: | :-------------------: |
 |      DW100 – DW1000      |        DW1000c        |
 |          DW1200          |        DW1500c        |
@@ -56,7 +56,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 |          DW6000          |        DW6000c        |
 
 
-3. Győződjön meg arról, a munkaterhelés befejeződött fut, valamint leépítésére frissítése előtt. Néhány percig, mielőtt az adatraktár újra online állapotba, mint az adatraktár számítási optimalizálása leállásra lesz. **Kattintson a frissítés**. A számítási teljesítmény rétegben optimalizálása ára le tiltva jelenleg félig-a próbaidőszak alatt:
+3. Győződjön meg arról, a munkaterhelés befejeződött fut, valamint leépítésére frissítése előtt. Néhány percig, mielőtt az adatraktár újra online állapotba, mint egy Gen2 adatraktár leállásra lesz. **Kattintson a frissítés**. A Gen2 teljesítményszinttel ára le tiltva jelenleg félig-a próbaidőszak alatt:
     
     ![Upgrade_2](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_2.png)
 
@@ -68,7 +68,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
    
    A frissítési folyamat második lépése az adatáttelepítés ("a frissítés - Online"). Adatok áttelepítése egy online trickle háttérfolyamatként, amely lassan a régi tároló-architektúra oszlopos adatokat az új tároló-architektúra, ami a helyi SSD-gyorsítótárba helyezi. Ebben az időszakban az adatraktár lekérdezésére és betöltése online lesz. Az adatok lekérdezése, függetlenül attól, hogy az áttelepítés vagy nem lesz. Az adatáttelepítés attól függően, hogy az adatok mérete, a teljesítményszintet és a oszlopcentrikus szegmensek száma különböző ütemben történik. 
 
-5. **Nem kötelező javaslat:** az adatok áttelepítési háttér folyamat lebonyolításához, javasoljuk, hogy azonnal kényszerítheti az adatmozgás futtatásával [Alter Index rebuild](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) összes oszlopcentrikus táblán egy nagyobb slo-t és az erőforrás az osztály. Ezt a műveletet offline állapotban a trickle háttérfolyamatként; képest azonban adatáttelepítés lesz sokkal gyorsabb, ahol, majd teljes mértékben kihasználhassa az új egyszer kész, de jó minőségű rowgroups emelt szintű tároló-architektúra. 
+5. **Nem kötelező javaslat:** az adatok áttelepítési háttér folyamat lebonyolításához, javasoljuk, hogy azonnal kényszerítheti az adatmozgás futtatásával [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) összes oszlopcentrikus táblán egy nagyobb slo-t és az erőforrás az osztály. Ezt a műveletet offline állapotban a trickle háttérfolyamatként; képest azonban adatáttelepítés lesz sokkal gyorsabb, ahol, majd teljes mértékben kihasználhassa az új egyszer kész, de jó minőségű rowgroups emelt szintű tároló-architektúra. 
 
 A következő lekérdezés állít elő, az áttelepítési folyamat lebonyolításához szükséges az Alter Index Rebuild parancsokat:
 

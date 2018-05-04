@@ -61,8 +61,8 @@ Ismerje meg a felhő inicializálás Azure kapcsolatos további részletek:
 - [Automatikus Virtuálisgép-konfiguráció használata felhő inicializálás oktatóanyag próbálja](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
-## <a name="powershell-dsc"></a>PowerShell DSC
-[PowerShell kívánt állapot konfigurációs szolgáltatása (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) olyan felügyeleti platform célszámítógépekre konfigurációjának meghatározása. A DSC használata Linux keresztül a [Open Management Infrastructure (OMI) kiszolgáló](https://collaboration.opengroup.org/omi/).
+## <a name="powershell-dsc"></a>A PowerShell DSC
+[PowerShell kívánt állapot konfigurációs szolgáltatása (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) olyan felügyeleti platform célszámítógépekre konfigurációjának meghatározása. A DSC használata Linux keresztül a [Open Management Infrastructure (OMI) kiszolgáló](https://collaboration.opengroup.org/omi/).
 
 A DSC-konfigurációk határozza meg, mi egy számítógépre telepítéséhez és a gazdagép konfigurálása. A helyi Configuration Manager (LCM) motor dolgozza fel a kért műveletek megnyomott konfigurációk alapján minden cél csomóponton fut. A lekérési kiszolgálójával egy webszolgáltatás, amelyet a DSC-konfigurációk és a kapcsolódó erőforrások egy központi gazdagépen futtatja. A lekérési kiszolgálójával kommunikál a LCM motor adja meg a konfigurálást, és a megfelelőségi jelentés minden egyes megcélzott gazdagépen.
 

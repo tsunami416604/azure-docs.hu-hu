@@ -16,6 +16,8 @@
       href: cdn-map-content-to-custom-domain.md
     - name: HTTPS konfigurálása egyéni tartományon
       href: cdn-custom-ssl.md
+    - name: Gyorsítótárazási szabályok beállítása
+      href: cdn-caching-rules-tutorial.md
 - name: Példák
   items:
     - name: Kódminták
@@ -156,6 +158,8 @@
           href: cdn-pop-locations.md
         - name: POP-helyek rövidítés alapján
           href: cdn-pop-abbreviations.md
+    - name: Az Azure CDN számlázásának ismertetése
+      href: cdn-billing.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN-fórum

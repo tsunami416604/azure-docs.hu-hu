@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 396f1d3d8c69ba3204d16f06d49656fd138a1126
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 07ddf1c2b76230c8d753426d70098603ff14ec4d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Ismertető a service fabric-fürt
 A Service Fabric fürt erőforrás-kezelő biztosít több fürt leíró mechanizmusok. Futásidőben a fürt erőforrás-kezelő ezt az információt használja a fürtben futó szolgáltatások magas rendelkezésre állásának biztosításához. Miközben a fontos szabályok, is megkísérli a fürtön belül a hálózatierőforrás-fogyasztás optimalizálása.
@@ -39,7 +39,7 @@ Fontos, hogy tartalék tartományok megfelelően vannak beállítva a Service Fa
 > [!WARNING]
 > Fontos, hogy a tartalék tartomány információkat biztosít a Service Fabric pontos-e. Tételezzük fel például, hogy a Service Fabric-fürt csomópontja öt fizikai állomáson futnak, 10 virtuális gépeken belül futnak. Ebben az esetben, annak ellenére, hogy nincsenek 10 virtuális gépet, nincsenek csak 5 különböző (a legfelső szintű) tartományok fault. Ugyanazon a fizikai gazdagépen megosztása hatására a virtuális gépek megosztani a legfelső szintű tartalék tartománynak, mivel a virtuális gépek koordinált hiba fordulhat elő, ha a fizikai gazdagép meghibásodik.  
 >
-> A Service Fabric egy csomópont nem az, hogy módosítsa a tartalék tartomány vár. Más mechanizmusok, például a biztosítsa a magas rendelkezésre állású virtuális gépek [magas rendelkezésre ÁLLÁSÚ virtuális gépek](https://technet.microsoft.com/en-us/library/cc967323.aspx) okozhat ütközik a Service Fabric, mivel ezek a virtuális gépek egyik gazdagépről egy másikra átlátszó áttelepítési. Ezek a mechanizmusok ne konfigurálja újra, és értesíti a virtuális Gépen belül futó kód. Így azok **nem támogatott** , környezetekben a Service Fabric rendszert futtató fürtöket. A Service Fabric alkalmazott csak magas rendelkezésre állású technológia kell lennie. Például a virtuális gép élő áttelepítést, a mechanizmusok San hálózatok, vagy mások számára nem szükséges. Ha a Service Fabric, ezek a mechanizmusok együtt használható _csökkentése_ alkalmazás rendelkezésre állásának és megbízhatóságának vezetnek nagyobb fokú összetettségével jár, mert hiba központi adatforrások hozzáadása, és megbízhatósági és rendelkezésre állási stratégiát, amely ütközik a Service Fabric a felhasználását. 
+> A Service Fabric egy csomópont nem az, hogy módosítsa a tartalék tartomány vár. Más mechanizmusok, például a biztosítsa a magas rendelkezésre állású virtuális gépek [magas rendelkezésre ÁLLÁSÚ virtuális gépek](https://technet.microsoft.com/library/cc967323.aspx) okozhat ütközik a Service Fabric, mivel ezek a virtuális gépek egyik gazdagépről egy másikra átlátszó áttelepítési. Ezek a mechanizmusok ne konfigurálja újra, és értesíti a virtuális Gépen belül futó kód. Így azok **nem támogatott** , környezetekben a Service Fabric rendszert futtató fürtöket. A Service Fabric alkalmazott csak magas rendelkezésre állású technológia kell lennie. Például a virtuális gép élő áttelepítést, a mechanizmusok San hálózatok, vagy mások számára nem szükséges. Ha a Service Fabric, ezek a mechanizmusok együtt használható _csökkentése_ alkalmazás rendelkezésre állásának és megbízhatóságának vezetnek nagyobb fokú összetettségével jár, mert hiba központi adatforrások hozzáadása, és megbízhatósági és rendelkezésre állási stratégiát, amely ütközik a Service Fabric a felhasználását. 
 >
 >
 

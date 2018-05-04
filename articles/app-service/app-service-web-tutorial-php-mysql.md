@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ecf83dd21b0803a6ceb4139d117a8b989b070403
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6e2803410c50b47fdaa80654e5e6e61a3807fb43
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Oktatóanyag: PHP- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -164,10 +164,10 @@ Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL
 
 A Cloud Shellben hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) paranccsal.
 
-Az alábbi parancsban a _&lt;mysql_server_name>_ helyőrzőt cserélje le a MySQL-kiszolgáló nevére (érvényes karakterek: `a-z`, `0-9` és `-`). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql_server_name>.database.windows.net`), és globálisan egyedinek kell lennie.
+Az alábbi parancsban írjon egy egyedi kiszolgálónevet a *\<mysql_server_name>*, egy felhasználónevet az *\<admin_user>*, valamint egy jelszót az *\<admin_password>* helyőrző helyére. A kiszolgálónév a postgreSQL-végpont (`https://<mysql_server_name>.mysql.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban.
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd!
+az mysql server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
 
 > [!NOTE]
@@ -179,14 +179,33 @@ A MySQL-kiszolgáló létrehozása után az Azure CLI az alábbi példához haso
 
 ```json
 {
-  "administratorLogin": "adminuser",
-  "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql_server_name>.database.windows.net",
+  "additionalProperties": {},
+  "administratorLogin": "<admin_user>",
+  "earliestRestoreDate": "2018-04-19T22:56:40.990000+00:00",
+  "fullyQualifiedDomainName": "<mysql_server_name>.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
-  "location": "northeurope",
+  "location": "westeurope",
   "name": "<mysql_server_name>",
   "resourceGroup": "myResourceGroup",
-  ...
+  "sku": {
+    "additionalProperties": {},
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
+    "size": null,
+    "tier": "GeneralPurpose"
+  },
+  "sslEnforcement": "Enabled",
+  "storageProfile": {
+    "additionalProperties": {},
+    "backupRetentionDays": 7,
+    "geoRedundantBackup": "Disabled",
+    "storageMb": 5120
+  },
+  "tags": null,
+  "type": "Microsoft.DBforMySQL/servers",
+  "userVisibleState": "Ready",
+  "version": "5.7"
 }
 ```
 
@@ -198,12 +217,16 @@ A Cloud Shellben az [`az mysql server firewall-rule create`](/cli/azure/mysql/se
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
+> [!TIP] 
+> Még szigorúbb tűzfalszabályt is megadhat, ha [csak azokat a kimenő IP-címeket használja, amelyeket alkalmazása használ](app-service-ip-addresses.md#find-outbound-ips).
+>
+
 ### <a name="connect-to-production-mysql-server-locally"></a>Helyi csatlakozás éles MySQL-kiszolgálóhoz
 
-A helyi terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. A _&lt;mysql_server_name>_ helyőrzőnél használja a korábban megadott értéket. Amikor a rendszer jelszót kér, használja a _My5up3r$tr0ngPa$w0rd!_ jelszót, amelyet az adatbázis-kiszolgáló létrehozásakor adott meg.
+A helyi terminálablakban csatlakozzon az Azure-ban található MySQL-kiszolgálóhoz. A _&lt;mysql_server_name>_ helyőrzőnél használja a korábban megadott értéket. Amikor a rendszer jelszót kér, használja azt a jelszót, amelyet az adatbázis létrehozásakor adott meg az Azure-ban.
 
 ```bash
-mysql -u adminuser@<mysql_server_name> -h <mysql_server_name>.database.windows.net -P 3306 -p
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com-P 3306 -p
 ```
 
 ### <a name="create-a-production-database"></a>Éles adatbázis létrehozása
@@ -245,7 +268,7 @@ APP_DEBUG=true
 APP_KEY=
 
 DB_CONNECTION=mysql
-DB_HOST=<mysql_server_name>.database.windows.net
+DB_HOST=<mysql_server_name>.mysql.database.azure.com
 DB_DATABASE=sampledb
 DB_USERNAME=phpappuser@<mysql_server_name>
 DB_PASSWORD=MySQLAzure2017
@@ -341,7 +364,7 @@ A Cloud Shellben a környezeti változókat _alkalmazásbeállításként_ adhat
 Az alábbi parancs a `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` és `DB_PASSWORD` alkalmazásbeállítást konfigurálja. Cserélje le az _&lt;appname>_ és a _&lt;mysql_server_name>_ helyőrzőt.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.database.windows.net" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
 A beállítások eléréséhez a PHP [getenv](http://www.php.net/manual/function.getenv.php) metódust használhatja. A Laravel-kód egy [env](https://laravel.com/docs/5.4/helpers#method-env) burkolót használ a PHP `getenv` helyett. A _config/database.php_ fájlban található MySQL-konfiguráció például az alábbi kódhoz hasonlít:

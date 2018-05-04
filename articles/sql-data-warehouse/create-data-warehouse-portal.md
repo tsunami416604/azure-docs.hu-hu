@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 284cfd3562a951da928697c91aa8234719056fa4
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: e9501d023ad1e0bfdf692f31ec61ae59959c0f23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rövid útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése az Azure Portalon
 
@@ -72,15 +72,15 @@ Az alábbi lépéseket követve létrehozhat egy SQL-adattárházat az Adventure
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **Teljesítményszint** elemre, és adja meg az adattárház teljesítménykonfigurációját.
+6. Kattintson a **teljesítményszintet** az adatraktár a teljesítmény konfiguráció megadásához.
 
-7. A jelen oktatóanyag esetében válassza a **Rugalmasságra optimalizált** teljesítményszintet. A csúszka alapértelmezés szerint a **DW400** értéken áll.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
+7. A jelen oktatóanyag esetében válassza ki a **Gen2**. A csúszka alapértelmezés szerint van beállítva **DW1000c**.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
 
     ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. Kattintson az **Alkalmaz** gombra.
 
-9. Most, hogy kitöltötte az SQL Database űrlapját, kattintson a **Létrehozás** gombra az adatbázis létrehozásához. Az üzembe helyezés eltarthat néhány percig. 
+9. Most, hogy az SQL Data Warehouse űrlap befejeződött, kattintson a **létrehozása** az adatbázis létrehozásához. Az üzembe helyezés eltarthat néhány percig. 
 
     ![kattintson a létrehozás parancsra](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -96,7 +96,7 @@ Az SQL Data Warehouse szolgáltatás egy tűzfalat hoz létre a kiszolgáló szi
 > Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
 >
 
-1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintőoldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20171113.database.windows.net**), valamint a további konfigurálható beállítások. 
+1. A telepítés befejezése után kattintson **SQL-adatraktárak** a bal oldali menüből, és kattintson a **mySampleDatabase** a a **SQL-adatraktárak** lap. Áttekintő lapjára jut az adatbázis nyit meg, hogy bemutatja a kiszolgáló teljesen minősített nevét (például **mynewserver-20180430.database.windows.net**) és további konfigurációs lehetőségeket. 
 
 2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. A kiszolgáló beállításainak megnyitásához kattintson a kiszolgálónévre.
 
@@ -127,8 +127,8 @@ Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz errő
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
-3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név a következő: mynewserver-20171113.database.windows.net. 
+2. Válassza ki **SQL-adatraktárak** elemet a bal oldali menüből, kattintson az adatraktár a **SQL datawarehouses** lap. 
+3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljesen minősített név nem mynewserver-20180430.database.windows.net. 
 
     ![kapcsolatadatok](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -143,7 +143,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
    | Beállítás       | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-   | Kiszolgálónév | A teljes kiszolgálónév | Például: **mynewserver-20171113.database.windows.net**. |
+   | Kiszolgálónév | A teljes kiszolgálónév | Példa: **mynewserver-20180430.database.windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
    | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
@@ -197,7 +197,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 2. Ha el szeretné távolítani az adattárházat, hogy a számítási és tárolási erőforrásokért se kelljen fizetnie, kattintson a **Törlés** parancsra.
 
-3. A korábban létrehozott SQL-kiszolgáló eltávolításához kattintson az előző képen látható **mynewserver-20171113.database.windows.net** elemre, majd a **Törlés** parancsra.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
+3. Kattintson a létrehozott SQL server **mynewserver-20180430.database.windows.net** az előző ábrán, majd **törlése**.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
 
 4. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 

@@ -1,11 +1,11 @@
 ---
-title: "A JavaScript SDK használata az Azure Mobile Apps szolgáltatásban"
-description: "Az Azure Mobile Apps v használata"
+title: A JavaScript SDK használata az Azure Mobile Apps szolgáltatásban
+description: Az Azure Mobile Apps v használata
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,18 +14,18 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 9494e40a27895def450de856bbf806573daedfdb
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>A JavaScript ügyféloldali kódtár használata az Azure Mobile Apps-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 Ez az útmutató útmutatást ad teszi a végrehajtását szolgáltatást a legújabb használó általános forgatókönyvhöz [JavaScript SDK az Azure Mobile Apps]. Ha most ismerkedik az Azure Mobile Apps, először végezzen [Azure Mobile Apps gyors üzembe helyezés] -háttéralkalmazás létrehozása, és hozzon létre egy táblát. Ebben az útmutatóban azt összpontosítani a mobil-háttéralkalmazások használatával HTML/JavaScript webes alkalmazásokhoz.
 
-## <a name="supported-platforms"></a>A támogatott platformok
+## <a name="supported-platforms"></a>Támogatott platformok
 Jelenleg korlátozza a ismertebb böngésző aktuális és az utolsó verzióiban támogatott böngésző: Google Chrome, a Microsoft Edge, a Microsoft Internet Explorer vagy a Mozilla Firefox.  Várhatóan viszonylag modern böngészők függvényt SDK.
 
 A csomag terjesztésekor modulként univerzális JavaScript, így támogatja a globális változók globals, AMD, és az CommonJS formátumú.
@@ -105,4 +105,4 @@ Miután a háttér-frissítéseket, lesz, az új visszacsatolási URL-címek has
 
 [Azure Portalra]: https://portal.azure.com/
 [JavaScript SDK az Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
-[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

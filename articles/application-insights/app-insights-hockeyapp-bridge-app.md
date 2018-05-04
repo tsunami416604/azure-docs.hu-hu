@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights Hockeyappra adatainak felfedezése |} Microsoft Docs"
-description: "Elemezze a használati és teljesítményadatokat az Azure-alkalmazás az Application insights szolgáltatással."
+title: Azure Application Insights Hockeyappra adatainak felfedezése |} Microsoft Docs
+description: Elemezze a használati és teljesítményadatokat az Azure-alkalmazás az Application insights szolgáltatással.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,18 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: bec2b2dc8a29e5c94e3d3c7f2f0333e07bfe3a4f
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: cd185d799be5051340c2bfea44a1d1e69a1eb002
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Az Application Insightsban Hockeyappra adatok
 
 > [!NOTE]
-> Visual Studio alkalmazás Center mostantól a Microsoft ajánlott szolgáltatás új mobilalkalmazások figyelésre. [Ismerje meg, hogyan állíthat be az alkalmazások App-központ és az Application Insights](app-insights-mobile-center-quickstart.md).
-> 
-> 
+> Új alkalmazások Hockeyappra már nem érhető el. Hockeyappra meglévő telepítések továbbra is működni fog. Visual Studio alkalmazás Center mostantól a Microsoft ajánlott szolgáltatás új mobilalkalmazások figyelésre. [Ismerje meg, hogyan állíthat be az alkalmazások App-központ és az Application Insights](app-insights-mobile-center-quickstart.md).
 
 [Hockeyappra](https://azure.microsoft.com/services/hockeyapp/) szolgáltatás történő élő az asztali és mobil alkalmazások figyelését. A Hockeyappra egyéni küldhet és nyomkövetési telemetria megfigyeléséhez és annak elősegítéséhez diagnosztikai (mellett első összeomlási adatait). Ez az adatfolyam telemetriai adatot lekérdezhetők, használja a hatékony [Analytics](app-insights-analytics.md) szolgáltatása [Azure Application Insights](app-insights-overview.md). Emellett képes [exportálja az egyéni, és nyomkövetési telemetria](app-insights-export-telemetry.md). Ahhoz, hogy ezeket a szolgáltatásokat, akkor egy híd beállítása, amely a Hockeyappra egyéni adatok az Application Insights részére továbbítja.
 
@@ -69,6 +67,6 @@ A folyamatos exportálás lehetővé teszi az adatok exportálása az Azure Blob
 
 [További információ a folyamatos exportálás](app-insights-export-telemetry.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az adatok Analytics alkalmazása](app-insights-analytics-tour.md)
 

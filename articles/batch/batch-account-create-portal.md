@@ -1,11 +1,11 @@
 ---
-title: "Batch-fiók létrehozása az Azure Portalon | Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Portalon nagyméretű párhuzamos számítási feladatok futtatásához a felhőben"
+title: Batch-fiók létrehozása az Azure Portalon | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Portalon nagyméretű párhuzamos számítási feladatok futtatásához a felhőben
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
 ms.workload: big-compute
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5efe804806cb9c14a483e7393f0e8202897d53d6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -58,7 +58,7 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
     d. **Hely**: Az az Azure-régió, amelyben a Batch-fiókot létrehozza. Csak az előfizetése és az erőforráscsoportja által támogatott régiók jelennek meg lehetőségként.
 
-    e. **Tárfiók** (nem kötelező): Olyan általános célú Azure Storage-fiók, amelyet a Batch-fiókhoz társít. A legtöbb Batch-fiókhoz ajánlott a használata. Részletekért lásd az alábbi, a [társított Azure Storage-fiókról](#linked-azure-storage-account) szóló szakaszt.
+    e. **Tárfiók** (nem kötelező): Egy Azure Storage-fiók, amelyet a Batch-fiókhoz társít. A legtöbb Batch-fiókhoz ajánlott a használata. Részletekért lásd az alábbi, a [társított Azure Storage-fiókról](#linked-azure-storage-account) szóló szakaszt.
 
 4. A fiók létrehozásához kattintson a **Létrehozás** gombra.
 
@@ -85,11 +85,11 @@ A fiók létrehozása után kattintson rá a beállításai és tulajdonságai e
 
 ## <a name="linked-azure-storage-account"></a>Társított Azure Storage-fiók
 
-Egy általános célú Azure Storage-fiókot társíthat a Batch-fiókjához, ami számos esetben hasznos lehet. A Batch [alkalmazáscsomagok](batch-application-packages.md) funkciója Azure Blob Storage-ot használ, ahogyan a [Batch File Conventions .NET](batch-task-output.md) könyvtár is. Ezek a választható funkciók segítik a Batch-feladatok által futtatott alkalmazások üzembe helyezését és az általuk létrehozott adatok megőrzését.
+Egy Azure Storage-fiókot társíthat a Batch-fiókjához, ami számos esetben hasznos lehet. A Batch [alkalmazáscsomagok](batch-application-packages.md) funkciója Azure Blob Storage-ot használ, ahogyan a [Batch File Conventions .NET](batch-task-output.md) könyvtár is. Ezek a választható funkciók segítik a Batch-feladatok által futtatott alkalmazások üzembe helyezését és az általuk létrehozott adatok megőrzését.
 
-Érdemes létrehozni egy új Storage-fiókot kifejezetten a Batch-fiók általi használatra. Az Azure Batch jelenleg kizárólag az általános célú Storage-fiók típusát támogatja. Erről a fióktípusról [az Azure Storage-fiókokkal kapcsolatos tudnivalók](../storage/common/storage-create-storage-account.md) 5. lépésében, a [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md#create-a-storage-account) alatt talál egy leírást.
+A Batch szolgáltatásban elérhető tárfiók-lehetőségekről további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md#azure-storage-account) talál.
 
-![Általános célú tárfiók létrehozása][storage_account]
+![Tárfiók létrehozása][storage_account]
 
 > [!NOTE]
 > Körültekintően járjon el, amikor újból létrehozza a társított Storage-fiók hozzáférési kulcsait. A Storage-fiókhoz csak egy hozzáférési kulcsot hozzon létre ismét, és kattintson a társított tárfiók lapján a **Kulcsok szinkronizálása** gombra. Várjon öt percet, hogy a rendszer propagálja a hozzáférési kulcsokat a készletekben található számítási csomópontokra, majd szükség esetén hozza létre újra és szinkronizálja a másik hozzáférési kulcsot. Ha mindkét hozzáférési kulcsot egyszerre hozza létre újra, a számítási csomópontok nem tudják szinkronizálni egyiket sem, és elveszítik a Storage-fiókhoz való hozzáférést.

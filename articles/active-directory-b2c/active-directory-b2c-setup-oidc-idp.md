@@ -6,20 +6,24 @@ documentationcenter: ''
 author: davidmu1
 manager: mtillman
 editor: parakhj
+ms.assetid: 357d193a-e33b-469c-8a93-0a8f45a60a9f
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 04/27/2018
 ms.author: davidmu
-ms.openlocfilehash: 52cefd4fad96e94dd2cf0871fac12a9a4d74b96f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 46223f1ec6b82828983861dae26ec8d777b77b86
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="azure-active-directory-b2c-add-a-custom-openid-connect-identity-provider-in-built-in-policies"></a>Az Azure Active Directory B2C: OpenID Connect identitás egyéni szolgáltatók beépített házirendek is hozzáadhatók.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) egy olyan hitelesítési protokoll az OAuth 2.0, felhasználók biztonságos aláírásához használt platformra épül. A legtöbb Identitásszolgáltatók, amely használja ezt a protokollt, például Azure AD, az Azure AD B2C támogatottak. Ez a cikk azt ismerteti, hogyan adhat hozzá egyéni OpenID Connect Identitásszolgáltatók a beépített házirendbe.
+>[!NOTE]
+> A funkció jelenleg nyilvános előzetes verziójához. Üzemi környezetben ne használja a szolgáltatást.
+
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) egy olyan hitelesítési protokoll az OAuth 2.0, felhasználók biztonságos aláírásához használt platformra épül. A legtöbb Identitásszolgáltatók, mint például a protokollt használó [az Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), az Azure AD B2C támogatottak. Ez a cikk azt ismerteti, hogyan adhat hozzá egyéni OpenID Connect Identitásszolgáltatók a beépített házirendbe.
 
 ## <a name="configuring-a-custom-openid-connect-identity-provider"></a>Egyéni OpenID Connect identitásszolgáltató konfigurálása
 
@@ -68,7 +72,7 @@ A válasz módja határozza meg, amellyel küldheti az adatokat újból az egyé
 * `query`: A kód vagy a token változatlanul adódik vissza egy lekérdezési paraméter.
 
 
-#### <a name="domain-hint"></a>Tartomány mutató
+#### <a name="domain-hint"></a>Tartományemlékeztető
 
 A tartomány mutató ugorjon közvetlenül a bejelentkezési oldal, a megadott identitásszolgáltató, ahelyett, hogy a felhasználó válasszon között rendelkezésre álló Identitásszolgáltatók használható. Lehetővé teszi az ilyen viselkedést, adjon meg egy értéket a tartomány mutató.
 

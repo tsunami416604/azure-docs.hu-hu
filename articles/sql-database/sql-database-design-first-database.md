@@ -9,11 +9,11 @@ ms.custom: mvc,develop databases
 ms.topic: tutorial
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: b09807e1fa7624ed134a24c7df4a61abf2a1d723
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="design-your-first-azure-sql-database-using-ssms"></a>Az első Azure SQL-adatbázis megtervezése SSMS használatával
 
@@ -147,7 +147,7 @@ Az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server
 
    | Beállítás       | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
+   | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték. |
    | Kiszolgálónév | A teljes kiszolgálónév | A névnek a következőhöz hasonlónak kell lennie: **mynewserver20170824.database.windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
    | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |

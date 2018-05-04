@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik;aljo
-ms.openlocfilehash: 37425f8a076be2579726e5a83bec3da8c6eb5fff
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 948b1bb2ce5a19007906262a4efb0ecca8e40482
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>A Windows Server a Service Fabric önálló csomag tartalma
 Az a [letöltött](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric önálló csomag található a következő fájlokat:
@@ -47,7 +47,7 @@ Az a [letöltött](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric
 | ClusterConfig.Windows.MultiMachine.json |A fürt mintát tartalmazó konfigurációs fájlt egy biztonságos, több számítógép (vagy virtuális gép) fürtöt Windows biztonsági a párbeszédeket minden olyan gép, amely a biztonságos tagja az összes beállítás. A fürt használatával lett biztonságossá [Windows identitások](https://msdn.microsoft.com/library/ff649396.aspx). |
 | ClusterConfig.x509.DevCluster.json |A fürt mintát tartalmazó konfigurációs fájlt egy biztonságos, három csomópontos egyszámítógépes (vagy a virtuális gép) fejlesztési fürtöt, a fürt minden csomópontja számára információkat is beleértve az összes beállítás. A fürt használatával lett biztonságossá téve x509 tanúsítványokat. |
 | ClusterConfig.x509.MultiMachine.json |A fürt mintát tartalmazó konfigurációs fájlt a biztonságos, több számítógép (vagy virtuális gép) fürt, beleértve az egyes csomópontok információkat a biztonságos fürt az összes beállítás. A fürt használatával lett biztonságossá téve x509 tanúsítványokat. |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |A fürt mintát tartalmazó konfigurációs fájlt a biztonságos, több számítógép (vagy virtuális gép) fürt, beleértve az egyes csomópontok információkat a biztonságos fürt az összes beállítás. A fürt használatával lett biztonságossá téve [csoportosan felügyelt szolgáltatásfiókok](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx). |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |A fürt mintát tartalmazó konfigurációs fájlt a biztonságos, több számítógép (vagy virtuális gép) fürt, beleértve az egyes csomópontok információkat a biztonságos fürt az összes beállítás. A fürt használatával lett biztonságossá téve [csoportosan felügyelt szolgáltatásfiókok](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
 
 ## <a name="cluster-configuration-samples"></a>Fürt konfigurációs minták
 A GitHub-oldalon fürt konfigurációs sablonok legújabb verziói találhatók: [önálló fürt konfigurációs minták](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).

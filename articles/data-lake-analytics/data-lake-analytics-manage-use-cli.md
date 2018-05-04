@@ -15,7 +15,7 @@ ms.date: 01/29/2018
 ms.author: sngun
 ms.openlocfilehash: a78a7ea619be28f01372a7b80d3cb4a5d35bd50e
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
 ---

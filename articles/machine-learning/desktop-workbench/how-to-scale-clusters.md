@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Tárolószolgáltatás-fürt méretezése a Machine Learning szolgáltatáshoz |} Microsoft Docs"
-description: "Az ACS-fürt - automatikus skálázás és statikus skálázás; skálázás a fürt a csomópontok száma skálázás"
+title: Az Azure Tárolószolgáltatás-fürt méretezése a Machine Learning szolgáltatáshoz |} Microsoft Docs
+description: Az ACS-fürt - automatikus skálázás és statikus skálázás; skálázás a fürt a csomópontok száma skálázás
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
 ms.openlocfilehash: 58709b5a5b060552e1bc349a6f720d3f45348ba0
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Webes szolgáltatás teljesítmény kezelését a fürt méretezése
 
@@ -86,10 +86,10 @@ Például beállítása `autoscale-min-replicas` 5 a öt replikákat hoz létre.
 | Paraméter neve | Típus | Leírás |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | logikai | Meghatározza, hogy engedélyezve van-e az automatikus skálázási. Alapértelmezett: igaz |
-| `autoscale-min-replicas` | integer | Három munkaállomás-csoporttal minimális számát határozza meg. 0 vagy nagyobb szám lehet. Alapértelmezett: 1 |
-| `autoscale-max-replicas` | integer | Meghatározza a három munkaállomás-csoporttal maximális számát. 1 vagy nagyobb lehet. Ha automatikus skálázás-maximális-replikák kisebb, mint az automatikus skálázás-min-replikák, automatikus skálázás-maximális-replikák figyelmen kívül hagyja. Alapértelmezett: 10 |
-| `autoscale-refresh-period-seconds` | integer | Megadja azt az időtartamot másodpercben automatikus skálázás frissítései között. Alapértelmezett: 1 |
-| `autoscale-target-utilization` | integer | Adja meg az automatikus skálázás fertőzi, 1 és 100 közötti kihasználtsági százalék. Alapértelmezett: 70 |
+| `autoscale-min-replicas` | egész szám | Három munkaállomás-csoporttal minimális számát határozza meg. 0 vagy nagyobb szám lehet. Alapértelmezett: 1 |
+| `autoscale-max-replicas` | egész szám | Meghatározza a három munkaállomás-csoporttal maximális számát. 1 vagy nagyobb lehet. Ha automatikus skálázás-maximális-replikák kisebb, mint az automatikus skálázás-min-replikák, automatikus skálázás-maximális-replikák figyelmen kívül hagyja. Alapértelmezett: 10 |
+| `autoscale-refresh-period-seconds` | egész szám | Megadja azt az időtartamot másodpercben automatikus skálázás frissítései között. Alapértelmezett: 1 |
+| `autoscale-target-utilization` | egész szám | Adja meg az automatikus skálázás fertőzi, 1 és 100 közötti kihasználtsági százalék. Alapértelmezett: 70 |
 
 Automatikus skálázási működik, győződjön meg arról az alábbi két feltétel:
 

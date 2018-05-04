@@ -1,6 +1,6 @@
 ---
-title: "Nagy fájlok olvasása és írása |} Microsoft Docs"
-description: "Olvasási és írási nagy fájlok az Azure Machine Learning kísérleteket."
+title: Nagy fájlok olvasása és írása |} Microsoft Docs
+description: Olvasási és írási nagy fájlok az Azure Machine Learning kísérleteket.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
 ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Módosítások megőrzése, és a nagy fájlok használata
 Az Azure Machine Learning kísérletezhet szolgáltatással végrehajtási célok számos konfigurálhatja. Néhány célpontjai helyi, például a helyi számítógépen vagy egy Docker-tároló a helyi számítógépen. A távoli, például egy távoli gépen vagy a HDInsight-fürtöt a Docker-tároló. További információkért lásd: [áttekintés az Azure Machine Learning kísérletezhet végrehajtási szolgáltatás](experimentation-service-configuration.md). 

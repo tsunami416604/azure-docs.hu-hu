@@ -1,11 +1,11 @@
 ---
-title: "Folyamatos integrációt, a Visual STUDIO Team Services használatával Azure erőforráscsoport-projektek |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet a Visual Studio Team Services folyamatos integráció beállítása a Visual Studio használatával Azure erőforráscsoport-telepítési projektek alapján."
+title: Folyamatos integrációt, a Visual STUDIO Team Services használatával Azure erőforráscsoport-projektek |} Microsoft Docs
+description: Ismerteti, hogyan lehet a Visual Studio Team Services folyamatos integráció beállítása a Visual Studio használatával Azure erőforráscsoport-telepítési projektek alapján.
 services: visual-studio-online
 documentationcenter: na
 author: mlearned
 manager: erickson-doug
-editor: 
+editor: ''
 ms.assetid: b81c172a-be87-4adc-861e-d20b94be9e38
 ms.service: azure-resource-manager
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc5a45c899cd72c051dd08f7db039565a57381a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>A Visual Studio Team Services használatával Azure erőforráscsoport-telepítési projektek folyamatos integrációt
 Központi telepítése egy Azure-sablon alapján, hogy feladatokat különböző szakaszaiban: Build, tesztelési, másolása az Azure-ba (más néven "Tesztelés"), és a sablon telepítéséhez. Sablonok telepíteni a Visual Studio Team Services (Visual STUDIO Team Services) két különböző módja van. Mindkét módszer adja meg ugyanazokat az eredményeket, tehát azt, amelyik a legjobban megfelel a munkafolyamat.
@@ -74,7 +74,7 @@ Az alábbi eljárások végigvezetik a Visual STUDIO Team Services, amelyen a Po
       ![Szolgáltatás egyszerű beállítás][5]
    5. Adja hozzá az Azure-előfizetés adatainak a **Azure-előfizetés hozzáadása** párbeszédpanel megnyitásához. Meg kell adni a következő elemek:
       
-      * Előfizetés-azonosító
+      * Előfizetés azonosítója
       * Előfizetés neve
       * Egyszerű szolgáltatás azonosítója
       * Szolgáltatás egyszerű kulcs
@@ -106,7 +106,7 @@ Az alábbi eljárások végigvezetik a Visual STUDIO Team Services, amelyen a Po
    
    | Paraméter | Leírás |
    | --- | --- |
-   | -ResourceGroupLocation |A földrajzihely-értéket, ahol az erőforráscsoport megtalálható, például **eastus** vagy **"USA keleti régiója"**. (Ha adja hozzá szimpla idézőjelben a névben szóköz található.) Lásd: [Azure-régiókat](https://azure.microsoft.com/en-us/regions/) további információt. |
+   | -ResourceGroupLocation |A földrajzihely-értéket, ahol az erőforráscsoport megtalálható, például **eastus** vagy **"USA keleti régiója"**. (Ha adja hozzá szimpla idézőjelben a névben szóköz található.) Lásd: [Azure-régiókat](https://azure.microsoft.com/regions/) további információt. |
    | -ResourceGroupName |Az ehhez a központi telepítéshez használt erőforráscsoport neve. |
    | -UploadArtifacts |Ezt a paramétert, ha létezik, azt jelenti, hogy a helyi rendszerről az Azure-bA feltölteni kívánt igénylő összetevőket. Csak kell erre a kapcsolóra lesz beállítva, ha a sablon telepítéséhez szükséges további összetevők, amelyet szeretne tesztelése (például a parancsfájlokat vagy beágyazott sablonok) a PowerShell-parancsfájl használatával. |
    | -StorageAccountName |A szakasz az összetevők ehhez a központi telepítéshez használt tárfiók neve. Ezt a paramétert csak akkor használja, ha meg vannak átmeneti összetevőket a telepítéshez. Ha meg van adva ez a paraméter, egy új tárfiókot jön létre, ha a parancsfájl nem létrehozva egy korábbi központi telepítés során. Ha a paraméter van megadva, a tárfiók már léteznie kell. |
@@ -125,7 +125,7 @@ Az alábbi eljárások végigvezetik a Visual STUDIO Team Services, amelyen a Po
    
    Amikor végzett, a **parancsfájl argumentumai** mezőben a következő lista kell hasonlítania:
    
-   ![Parancsfájl argumentumai][11]
+   ![Szkript argumentumai][11]
 9. Miután az Azure PowerShell összeállítása lépés való felvételét a szükséges elemeket, válassza ki azt a **várólista** Szerkesztés gomb billentyűkombinációt a projekt létrehozásához. A **Build** a képernyőn látható a PowerShell-parancsfájl kimenete.
 
 ### <a name="detailed-walkthrough-for-option-2"></a>2. lehetőség részletes bemutató
@@ -177,7 +177,7 @@ Az alábbi eljárások végigvezetik a Visual STUDIO Team Services beépített f
      ![Azure erőforráscsoport-telepítési feladat konfigurálása][17]
 7. A szükséges elemeket hozzáadása után a build definition mentés, és válassza **új build várólistára** tetején.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvasási [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md) további információt az Azure Resource Manager és az Azure erőforráscsoport-sablonok.
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png

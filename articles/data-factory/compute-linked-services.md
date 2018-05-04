@@ -3,20 +3,19 @@ title: Azure Data Factory által támogatott környezetek számítási |} Micros
 description: További információk a számítási környezetek esetén, amelyek segítségével az Azure Data Factory folyamatok (például az Azure HDInsight)-átalakítási és folyamat-adatokat.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: shengc
-ms.openlocfilehash: 806d0db3536a00dea4e421f847cf0f75bcfc218c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: douglasl
+ms.openlocfilehash: 6f9f0f9a9bab7e6865ae5a48552ac702ae2bf6fb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezeteket, melyekkel folyamat vagy átalakítási adatok. Emellett biztosítja az adat-előállító támogatott, ha ezek linking összekapcsolt szolgáltatások konfigurálása (igény szerinti és kapcsolja a saját) különböző konfigurációkkal kapcsolatos részletek számítási környezetek számára egy Azure data factory.

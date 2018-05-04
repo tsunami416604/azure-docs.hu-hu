@@ -1,6 +1,6 @@
 ---
-title: "Tranzakciók és a zárolási mód az Azure Service Fabric megbízható gyűjtemények |} Microsoft Docs"
-description: "Az Azure Fabric megbízható állapot szolgáltatáskezelő és megbízható gyűjtemények tranzakciók és zárolása."
+title: Tranzakciók és a zárolási mód az Azure Service Fabric megbízható gyűjtemények |} Microsoft Docs
+description: Az Azure Fabric megbízható állapot szolgáltatáskezelő és megbízható gyűjtemények tranzakciók és zárolása.
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.openlocfilehash: 3452473f5b2f86d29e46339c997193bc6403736a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9d431d94a6df9636a48e1b2aaa59aaa576e2dc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és az Azure Service Fabric megbízható gyűjtemények zárolási mód
 
 ## <a name="transaction"></a>Tranzakció
 Egy tranzakció a munka egyetlen logikai egységként végrehajtott műveletek sorozata.
-Egy tranzakció kell mutatnak a következő ACID tulajdonságokat. (lásd: https://technet.microsoft.com/en-us/library/ms190612)
+Egy tranzakció kell mutatnak a következő ACID tulajdonságokat. (lásd: https://technet.microsoft.com/library/ms190612)
 * **Atomicity**: egy tranzakciót egy atomi munkaegység kell lennie. Más szóval vagy az adatok változtatás történik, vagy egyikük sem történik.
 * **Konzisztencia**: befejezése után egy tranzakció konzisztens állapotban kell hagynia minden adat. Az összes belső adatszerkezetek helyes-e a tranzakció végén kell lennie.
 * **Elkülönítési**: párhuzamos tranzakciók által végrehajtott módosítások el kell különíteni a párhuzamos tranzakciók által végrehajtott módosítások a. A művelet végrehajtása a IReliableState belül egy ITransaction művelet használt elkülönítési szint határozza meg.
@@ -34,13 +34,13 @@ Egy tranzakció kell mutatnak a következő ACID tulajdonságokat. (lásd: https
 Elkülönítési szint határozza meg, amelyhez a tranzakció legyen különítve a többi tranzakciók által végrehajtott módosítások a mértékben.
 Két, a megbízható gyűjtemények támogatott elkülönítési szinten van:
 
-* **Ismételhető olvasás**: meghatározza, hogy utasítás nem tudja olvasni a módosított, de más tranzakciók által még nem véglegesített adatokat, és, hogy más tranzakciók módosíthatja adatokat, amíg befejeződik az aktuális tranzakció által az aktuális tranzakció beolvasva. További részletekért lásd: [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+* **Ismételhető olvasás**: meghatározza, hogy utasítás nem tudja olvasni a módosított, de más tranzakciók által még nem véglegesített adatokat, és, hogy más tranzakciók módosíthatja, hogy az aktuális tranzakció csak az aktuális tranzakció beolvasva adatok befejeződik. További részletekért lásd: [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
 * **Pillanatkép**: Megadja, hogy egy tranzakció utasítás által beolvasott adatok az adatokat, hogy a tranzakció kezdetekor tranzakciós úton megegyező verziójának.
   A tranzakció csak módosítása, hogy a tranzakció kezdete előtt véglegesítése volt felismerhető.
   Az aktuális tranzakció elindítása után más tranzakciók által végrehajtott módosítása utasítás végrehajtása az aktuális tranzakcióban nem láthatók.
   A hatás, mintha a tranzakció lévő utasítások adott verzióját a tranzakció kezdetekor kaphat a véglegesített adatokat pillanatképet.
   A pillanatképek egységesek megbízható gyűjtemények.
-  További részletekért lásd: [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+  További részletekért lásd: [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
 
 Megbízható gyűjtemények automatikusan válasszon egy adott olvasási művelet attól függően, hogy a művelet és a replika szerepkörét az tranzakció létrehozásának időpontjában használandó elkülönítési szintjét.
 Az alábbiakban az a táblázat, amely megbízható szótár és várólista műveletek elkülönítési szint alapértelmezései ábrázol.
@@ -87,7 +87,7 @@ Ebben az esetben egyik vagy mindkét a műveletek lesznek túllépi az időkorl�
 
 Ebben a forgatókönyvben holtpont példája egy nagyszerű hogyan módosítási zárolást előfordulhat, hogy holtpont.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Megbízható szolgáltatások értesítések](service-fabric-reliable-services-notifications.md)
 * [Megbízható szolgáltatások biztonsági mentése és visszaállítása (katasztrófa utáni helyreállítás)](service-fabric-reliable-services-backup-restore.md)

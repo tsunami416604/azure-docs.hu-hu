@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
 
@@ -145,6 +145,9 @@ A rendszer létrehoz egy egyedi kiszolgálónevet. Ez a név a `<server_name>.da
 Adjon meg egy rendszergazdai felhasználónevet és jelszót. A jelszó „összetettségére” vonatkozó követelményeket a [jelszavakra vonatkozó szabályzattal](/sql/relational-databases/security/password-policy) foglalkozó cikkben tekintheti meg.
 
 Jegyezze meg ezt a felhasználónevet és jelszót. Később szüksége lesz rájuk a logikaikiszolgáló-példány kezeléséhez.
+
+> [!IMPORTANT]
+> Bár a kapcsolati karakterláncokban lévő jelszava maszkolva van (a Visual Studióban és az App Service szolgáltatásban is), a tény, hogy valamilyen rendszer tárolja, növeli az alkalmazás támadható felületét. Az App Service megszüntetheti ezt a kockázatot [felügyelt szolgáltatásidentitások](app-service-managed-service-identity.md) használatával, feleslegessé téve a titkos kódokat az alkalmazáskonfigurációban. További információ: [Következő lépések](#next-steps).
 
 ![SQL Server-példány létrehozása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
@@ -413,8 +416,6 @@ Alapértelmezés szerint a portál megjeleníti az **Áttekintés** oldalt. Ezen
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
-<a name="next"></a>
-
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
@@ -427,7 +428,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Naplók streamelése az Azure-ból a saját terminálba
 > * Az alkalmazás kezelése az Azure Portalon
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
+A következő oktatóanyag azt mutatja be, hogyan növelheti könnyedén az Azure SQL Database szolgáltatással létrehozott kapcsolat biztonságát.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](app-service-web-tutorial-custom-domain.md)
+> [Biztonságos hozzáférés az SQL Database-hez felügyelt szolgáltatásidentitás használatával](app-service-web-tutorial-connect-msi.md)

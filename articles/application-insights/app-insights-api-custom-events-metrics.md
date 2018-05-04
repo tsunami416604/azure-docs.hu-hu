@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 072ce2952e3cdea47b02ef7656ca67d4bc0ae8f1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e93b3348c933f65067114bfce4ac517f1204af34
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni események és metrikák
 
@@ -45,7 +45,7 @@ Ha egy hivatkozás még nem rendelkezik az Application Insights SDK:
 
   * [ASP.NET project](app-insights-asp-net.md)
   * [Java project](app-insights-java-get-started.md)
-  * [Node.js project](app-insights-nodejs.md)
+  * [NODE.js-projekt](app-insights-nodejs.md)
   * [Az összes weboldal JavaScript](app-insights-javascript.md) 
 * Az eszköz vagy a web server kódjában a következők:
 
@@ -79,7 +79,7 @@ Egy példányát `TelemetryClient` (csak a JavaScript weblapok):
 
 TelemetryClient szálbiztos.
 
-Az ASP.NET és a Java-projektek esetében a bejövő HTTP-kérelmek automatikus rögzítése. Előfordulhat, hogy kíván létrehozni az alkalmazás más modul TelemetryClient további példányai. Például előfordulhat, hogy egy TelemetryClient példány jelentés üzleti logika eseményekre a köztes osztályban. Beállítható például a felhasználói azonosítóját és DeviceId gépének azonosítását. Ezt az információt elküldi a instace eseményeit van csatolva. 
+Az ASP.NET és a Java-projektek esetében a bejövő HTTP-kérelmek automatikus rögzítése. Előfordulhat, hogy kíván létrehozni az alkalmazás más modul TelemetryClient további példányai. Például előfordulhat, hogy egy TelemetryClient példány jelentés üzleti logika eseményekre a köztes osztályban. Beállítható például a felhasználói azonosítóját és DeviceId gépének azonosítását. Ez az információ minden események által küldött a példány van csatolva. 
 
 *C#*
 
@@ -152,7 +152,7 @@ Metrikák küldhet az Application Insights részére, használhatja a `TrackMetr
 
 * Egyetlen értéket. Minden alkalommal, amikor az alkalmazás hajt végre egy mérték, az Application Insights küld a megfelelő értékkel. Tegyük fel például, hogy rendelkezik-e a tárolóban lévő elemek száma leíró metrikát. Egy adott időszakon belül mindhárom elem helyezze a tárolóba, és két elem távolítsa el. Ennek megfelelően meghívta `TrackMetric` kétszer: először átadja a érték `3` , majd értéke `-2`. Az Application Insights mindkét értéket tárolja az Ön nevében. 
 
-* Aggregation. Az metrikák használatakor minden egyetlen mérési ritkán érdekében áll. Ehelyett fontos Mi történt egy adott időszakon belül összegzését. Ilyen összegzését nevezik _összesítési_. A fenti példában az adott időszakra vonatkozó összesített metrika összegük van `1` , a szám a metrika értékének `2`. Az összesítési módszer használata esetén csak indításakor `TrackMetric` egyszer egy adott időszakra vonatkozóan, valamint az összesített értékek küldéséhez. Ez az az ajánlott módszer, mivel jelentősen csökkentheti a költségek és a teljesítmény terhet elküldésével kevesebb adatpontok Application insights részére, továbbra is az összes vonatkozó információk összegyűjtése közben.
+* Összesítést. Az metrikák használatakor minden egyetlen mérési ritkán érdekében áll. Ehelyett fontos Mi történt egy adott időszakon belül összegzését. Ilyen összegzését nevezik _összesítési_. A fenti példában az adott időszakra vonatkozó összesített metrika összegük van `1` , a szám a metrika értékének `2`. Az összesítési módszer használata esetén csak indításakor `TrackMetric` egyszer egy adott időszakra vonatkozóan, valamint az összesített értékek küldéséhez. Ez az az ajánlott módszer, mivel jelentősen csökkentheti a költségek és a teljesítmény terhet elküldésével kevesebb adatpontok Application insights részére, továbbra is az összes vonatkozó információk összegyűjtése közben.
 
 ### <a name="examples"></a>Példák:
 
@@ -1104,7 +1104,7 @@ Helyett a instrumentation kulcs lekérése a konfigurációs fájlban, beállít
 
 A weboldalakon érdemes lehet, hogy állítson be úgy a webalkalmazás-kiszolgáló állapota, nem pedig kódolási szó a parancsprogramba a. Például a egy weblap ASP.NET alkalmazás hozott létre:
 
-*JavaScript in Razor*
+*JavaScript Razor*
 
     <script type="text/javascript">
     // Standard Application Insights webpage script:

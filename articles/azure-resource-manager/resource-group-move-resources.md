@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 341ee58904cb08a024ac9f14839cf011e72b4dd2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8ad73132839aaa77166c115feff9a70db864ba12
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -148,7 +148,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Tárolás
 * Tekintse meg a tároló (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * A Stream Analytics - feladatok nem helyezhető át, ha a Stream Analytics állapotban.
-* SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek.
+* SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek. Ez magában foglalja az Azure SQL Database és az Azure SQL Data Warehouse-adatbázist. 
 * Traffic Manager
 * Virtuális gépek - felügyelt lemezzel rendelkező virtuális gép nem helyezhető át. Lásd: [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Virtuális gépek (klasszikus) - lásd [klasszikus telepítési korlátozásai](#classic-deployment-limitations)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/29/2018
 ms.author: billmath
-ms.openlocfilehash: 208a65c09b13acad62c9b6d8e55b6050041c9f5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal.  Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat.
@@ -96,7 +96,7 @@ A naplózás megkezdéséhez kövesse az alábbi eljárást:
 2. Kattintson a Naplók megtekintése elemre.</br>
 ![Esemény naplózása](media/active-directory-tou/tou8.png)
 3.  Az Azure AD naplókat megjelenítő képernyőjén a rendelkezésre álló legördülő menük segítségével szűrheti az információkat, amennyiben adott naplózási információkra kíváncsi.
-![Esemény naplózása](media/active-directory-tou/tou9.png)
+[Esemény naplózása](media/active-directory-tou/tou9.png)
 4.  Az információkat helyi felhasználás céljából egy .csv fájlba is mentheti.
 
 ## 

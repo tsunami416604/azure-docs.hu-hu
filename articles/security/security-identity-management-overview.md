@@ -1,5 +1,5 @@
 ---
-title: "Az Azure biztonsági funkciói segítenek az identity management alkalmazással |} Microsoft Docs"
+title: Az Azure biztonsági funkciói segítenek az identity management alkalmazással |} Microsoft Docs
 description: " Ez a cikk az alapvető áttekintést nyújt az Azure biztonsági funkciókat, amelyek segítenek az identity management alkalmazással. Microsoft identitások és hozzáférések felügyeleti megoldások Súgó informatikai védelme alkalmazásokhoz és erőforrásokhoz való hozzáférést az vállalati adatközpontban és a felhőben, például a többtényezős hitelesítés és a feltételes hozzáférési házirendek ellenőrzéséhez további szintek engedélyezése. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 921d7eef90a86216dc13804d3dc4dd216247fb87
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: dcfc295de39e909bf157edee4fec1ba51a583750
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure-identitás biztonsági – áttekintés
 Microsoft identitások és hozzáférések felügyeleti megoldások Súgó informatikai védelme alkalmazásokhoz és erőforrásokhoz való hozzáférést az vállalati adatközpontban és a felhőben, például a többtényezős hitelesítés és a feltételes hozzáférési házirendek ellenőrzéséhez további szintek engedélyezése. Gyanús tevékenységek figyelése keresztül speciális biztonsági jelentések, a naplózás és a riasztási segít mérsékelni a potenciális biztonsági problémákat. [Az Azure Active Directory Premium](../active-directory/active-directory-editions.md) biztosítja az egyszeri bejelentkezés felhő több ezer (SaaS) alkalmazások és webalkalmazások hozzáférést a helyszíni futtatása.
@@ -75,8 +75,8 @@ Az Azure többtényezős hitelesítés (MFA), amely egynél több ellenőrzési 
 További információ:
 
 * [Többtényezős hitelesítés](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Mi az az Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
-* [Azure multi-factor Authentication működése](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+* [Mi az az Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md)
+* [Azure multi-factor Authentication működése](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Biztonsági figyelést, a riasztások és a machine learning-alapú jelentések
 A biztonság ellenőrzése és a riasztások és a machine learning-alapú jelentések, amelyek azonosítják az inkonzisztens hozzáférési mintázatokat segítségével védelmet az üzleti. Azure Active Directory hozzáférési és használati jelentések segítségével hogy lássák az integritásra és a munkahely címtárában biztonságát. Ezt az információt a directory-rendszergazda is jobban meghatározhatja, ahol lehetséges biztonsági kockázatokat a vizsgálandó, hogy azok megfelelően megtervezheti kockázatok csökkentésének lehetőségeit.
@@ -142,7 +142,7 @@ Az Azure AD Identity Protection olyan biztonsági szolgáltatás, amely a kocká
 
 További információ:
 
-* [Az Azure Active Directory azonosító adatok védelmét](../active-directory/active-directory-identityprotection.md)
+* [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
 * [9. csatornán: Az Azure AD és az Identity: Identity Protection előzetes kiadásának](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-management"></a>Hibrid Identitáskezelés

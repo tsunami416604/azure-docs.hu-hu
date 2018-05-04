@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b7ad535976508cb195991c374995b0a0b6e45e10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -39,6 +39,217 @@ Az Azure AD fogadja folyamatos fejlesztéseket. Maradjon naprakész a legújabb 
 -   Módosítások tervek
 
 Ezen a lapon a havi frissül, ezért le újra rendszeresen.
+
+
+## <a name="april-2018"></a>2018. április
+ 
+
+
+### <a name="azure-ad-b2c-access-token-are-ga"></a>Az Azure AD B2C Access Token GA
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** B2C - felhasználói Identitáskezelés  
+**A termék képesség:** B2B/B2C
+ 
+
+Most már elérheti az Web API Azure AD B2C biztonságos hozzáférési jogkivonatok használatával. A funkció a nyilvános előzetes áthelyezése GA Az Azure AD B2C-alkalmazások és a webes API beállítása a felhasználói felületi élmény javult, és egyéb kisebb fejlesztések történtek.
+ 
+További információkért lásd: [az Azure AD B2C: kérelmező hozzáférési jogkivonatok](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-access-tokens).
+
+
+---
+ 
+
+### <a name="test-single-sign-on-configuration-for-saml-based-applications"></a>Egyszeri bejelentkezés konfiguráció SAML-alapú alkalmazások tesztelése
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** vállalati alkalmazások  
+**A termék képesség:** egyszeri bejelentkezés
+ 
+
+Konfigurálása SAML-alapú egyszeri Bejelentkezést alkalmazások elkülönítésével lehetővé tesztelése az integráció a konfiguráció lapon. Ha a bejelentkezés során hibát észlel, megadhatja, hogy a tesztelési élményt nyújt a hiba, és az Azure AD megoldási lépések az adott probléma megoldásához nyújt.
+
+További információkért lásd:
+
+- [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
+- [SAML-alapú egyszeri bejelentkezés az Azure Active Directoryban alkalmazások hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+
+
+---
+ 
+### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Az Azure AD-használati most már rendelkezik felhasználói jelentési
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** használati feltételek  
+**A termék képesség:** megfelelőségi
+ 
+
+A rendszergazdák mostantól egy adott használati feltételek kiválasztása és tekintse meg az összes olyan felhasználót, hozzájárult, hogy, hogy a használati feltételek és mi dátum/idő azt került sor.
+
+
+További információkért lásd: a [használati feltételek az Azure AD szolgáltatás](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+ 
+
+---
+ 
+### <a name="azure-ad-connect-health-risky-ip-for-ad-fs-extranet-lockout-protection"></a>Az Azure AD Connect Health: Kockázatos IP-cím az AD FS extranet kizárás védelemre 
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** más  
+**A termék képesség:** figyelés és jelentéskészítés
+ 
+
+Connect Health mostantól támogatja a képes észlelni az IP-címek, amelyek mérete meghaladja a küszöbértéket, napi vagy óránkénti alapon sikertelen U/P bejelentkezések. Ez a szolgáltatás által biztosított a funkciók a következők:
+
+- Átfogó jelentés megjeleníti az IP-cím és testre szabható küszöbértéket az óránként vagy naponta alapján jön létre a sikertelen bejelentkezések száma.
+- E-mail alapú értesítések megjelenítése, amikor egy adott IP-cím túllépte a küszöbértéket sikertelen U/P bejelentkezések óránként vagy naponta alapon.
+- Egy letöltés beállítása ehhez a részletes adatok elemzése
+
+
+További információkért lásd: [kockázatos IP-jelentés](https://aka.ms/aadchriskyip).
+
+ 
+
+---
+ 
+
+### <a name="easy-app-config-with-metadata-file-or-url"></a>Egyszerű alkalmazások konfigurációja metaadatfájl vagy URL-címe
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** vállalati alkalmazások  
+**A termék képesség:** egyszeri bejelentkezés
+ 
+
+A vállalati alkalmazások lapon rendszergazdák fájlt tölthet fel SAML metaadatok SAML-alapú bejelentkezés az AAD mind a nem-gyűjteménye alkalmazás konfigurálása.
+
+Emellett használhatja az Azure AD alkalmazás összevonási metaadatainak URL-CÍMÉT egyszeri bejelentkezés konfigurálása a megcélzott alkalmazáskiszolgálóval.
+
+További információkért lásd: [konfigurálása egyszeri bejelentkezés alkalmazásokhoz, amelyek nincsenek rajta az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps).
+ 
+
+---
+ 
+
+### <a name="azure-ad-terms-of-use-now-generally-available"></a>Az Azure AD használati feltételek mostantól általánosan elérhető
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** használati feltételek  
+**A termék képesség:** megfelelőségi
+ 
+
+Az Azure AD-használati átkerült a nyilvános előzetes általánosan elérhető.
+
+További információkért lásd: a [használati feltételek az Azure AD szolgáltatás](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+
+ 
+
+---
+ 
+
+### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Engedélyezi vagy letiltja az adott vállalatoknak B2B felhasználók meghívást
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** B2B  
+**A termék képesség:** B2B/B2C
+ 
+
+Mostantól megadhatja melyik fiókpartner-szervezetek megosztani, és az Azure AD B2B együttműködés együttműködni. Ehhez az szükséges, ha szeretné specifikus listájának létrehozása engedélyezi vagy megtagadja a tartományok. Ha egy tartomány blokkolva van, ezek a képességek segítségével, az alkalmazottak már nem küldhet meghívókat személyek számára az adott tartományban.
+
+Ezzel a megoldással az erőforrásokhoz való hozzáférés vezérlésére egy zökkenőmentes élményt a jóváhagyott felhasználók engedélyezése során.
+
+A B2B együttműködés funkció érhető el az összes Azure Active Directory-ügyfél számára, és használható együtt az Azure AD Premium-szolgáltatások, mint az feltételes hozzáférési és identity protection részletesebben vezérelhető, mikor és hogyan külső üzleti a felhasználók bejelentkeznek a és a hozzáférést.
+
+További információkért lásd: [adott vállalatoknak B2B felhasználók engedélyezési vagy tiltólista meghívókat](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
+
+ 
+
+---
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Azure AD-alkalmazásgyűjtemény elérhető új összevont alkalmazásokba
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** vállalati alkalmazások  
+**A termék képesség:** 3. fél integrációja
+ 
+
+Április 2018 jelentek meg a gyűjtemény összevonással a következő 13 új alkalmazások támogatják:
+
+
+
+HCM, feltételnek [FiscalNote](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fiscalnote-tutorial), [titkos Server (helyszíni)](https://docs.microsoft.com/azure/active-directory/active-directory-saas-secretserver-on-premises-tutorial), [dinamikus jel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-dynamicsignal-tutorial), [mindWireless](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mindwireless-tutorial), [szervezeti diagram Most](https://docs.microsoft.com/azure/active-directory/active-directory-saas-orgchartnow-tutorial), [Ziflow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ziflow-tutorial), [AppNeta Teljesítményfigyelő](https://docs.microsoft.com/azure/active-directory/active-directory-saas-appneta-tutorial), [Elium](https://docs.microsoft.com/azure/active-directory/active-directory-saas-elium-tutorial) , [Fluxx Labs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fluxxlabs-tutorial), [ Cisco felhő](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ciscocloud-tutorial), forgalomban, [SafetyNet](https://docs.microsoft.com/azure/active-directory/active-directory-saas-safetynet-tutorial)
+
+
+
+ A rendelkezésre álló oktatóanyagok listáját találja: [ https://aka.ms/appstutorial ](https://aka.ms/appstutorial).
+
+További információkért lásd: [alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+
+
+ 
+
+---
+ 
+### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>Támogatás B2B az Azure AD férhetnek hozzá a helyszíni alkalmazások (nyilvános előzetes verzió)
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** B2B  
+**A termék képesség:** B2B/B2C
+ 
+
+Azure Active Directory (Azure AD) B2B együttműködés szolgáltatásait használja az Azure AD az erőforráspartner-szervezetek Vendég felhasználóknak szánt meghívó szervezetként mostantól megadhatja a B2B felhasználók helyszíni alkalmazásokhoz való hozzáférés. Ezek a helyszíni alkalmazások használhatják SAML-alapú hitelesítés vagy integrált Windows-hitelesítéssel (IWA) és a Kerberos által korlátozott delegálás (KCD).
+
+További információkért lásd: [Grant B2B az Azure AD férhetnek hozzá a helyszíni alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-hybrid-cloud-to-on-premises)
+ 
+
+---
+ 
+### <a name="get-sso-integration-tutorials-from-the-azure-marketplace"></a>Egyszeri bejelentkezés integrációs oktatóanyagok beolvasása az Azure piactérről
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** más  
+**A termék képesség:** 3. fél integrációja
+ 
+
+Ha egy alkalmazás szerepel-e a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) támogatja a SAML alapú egyszeri bejelentkezést, kattintson a **most töltse le innen** tesz lehetővé az adott alkalmazáshoz tartozó integrációs oktatóanyag. 
+
+
+---
+
+### <a name="faster-performance-of-azure-ad-automatic-user-provisioning-to-saas-applications"></a>Az Azure AD automatikus felhasználólétesítés SaaS-alkalmazásokhoz való jobb teljesítmény
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** App kiépítése  
+**A termék képesség:** 3. fél integrációja
+ 
+
+Korábban, a kiépítés összekötők az SaaS-alkalmazásokhoz (például Salesforce, a ServiceNow és mezőben) Azure Active Directory-felhasználó ügyfelek sikerült teljesítménycsökkenés nagyon Ha az Azure AD-bérlő több mint 100 000 kombinált felhasználók és csoportok, és annak meghatározásához, hogy mely felhasználók üzembe kell felhasználó és csoport-hozzárendelések használna.
+
+Április 2. a nagyon fontos teljesítményjavítás telepítve vannak az Azure AD létesítési szolgáltatás, amely jelentősen csökkenti a szinkronizálások közötti Azure Active Directory és a cél SaaS-alkalmazások végrehajtásához szükséges időt.
+
+
+Emiatt sok ügyfél, amely kellett szinkronizálások alkalmazásokra, amelyek hány napon tartott vagy soha nem fejeződött be, pár perc vagy órán belül most hiba.
+
+További információkért lásd: [mi történik a kiépítés során?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning#what-happens-during-provisioning)
+
+---
+ 
+
+### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>Az önkiszolgáló jelszó-visszaállítást a Windows 10 zárolási képernyő az Azure AD hibrid csatlakozó gépek
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** önkiszolgáló jelszó-változtatási  
+**A termék képesség:** felhasználói hitelesítés
+ 
+
+A Windows 10-es önkiszolgáló jelszó-Változtatási szolgáltatás támogatását csatlakozott az Azure AD hibrid gépeken lett frissítve. Ez a funkció érhető el a Windows 10 RS4 lehetővé teszi a felhasználóknak a zárolási képernyő, a Windows 10 gépek a jelszó visszaállítása. Engedélyezve van, és az önkiszolgáló jelszó-visszaállításhoz regisztrált felhasználók használhatják ezt a szolgáltatást.
+
+További információkért lásd: [az Azure AD-jelszó alaphelyzetbe állítani a bejelentkezési képernyőt](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows).
+ 
+
+---
+
+
 
 ## <a name="march-2018"></a>2018 március
  
@@ -362,7 +573,7 @@ További információkért lásd: [a SAML-jogkivonat a vállalati alkalmazások 
 
 Alkalmazás központi telepítésének megkönnyítése, és csökkentheti a felügyelettel járó többletterhelést, mostantól támogatjuk a helyettesítő karaktereket használó alkalmazások közzétételére képes. Helyettesítő alkalmazás közzététele, hajtsa végre a szabványos alkalmazás közzétételi folyamata, de használja egy helyettesítő karaktert a belső és külső URL-címek.
 
-További információkért lásd: [helyettesítő alkalmazásokat az Azure Active Directory alkalmazásproxyt](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-wildcard)
+További információkért lásd: [helyettesítő alkalmazásokat az Azure Active Directory alkalmazásproxyt](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-wildcard)
 
  
 
@@ -503,7 +714,7 @@ A következő alkalmazások kerülnek. február végéig
 
 - Microsoft PowerBI
 
-- Microsoft Launcher
+- Microsoft indítója
 
 - Microsoft számlázás
 
@@ -521,7 +732,7 @@ További információkért lásd:
 
 **Típus:** módosulás a szolgáltatás  
 **Szolgáltatás kategória:** használati feltételek  
-**A termék képesség:** irányítás
+**A termék képesség:** megfelelőségi
  
 
 Amikor megjelennek a használati feltételeket, most kattintson **problémába rendelkező? Kattintson ide**. Ez a hivatkozás megnyitja a használati feltételeket natív módon az eszközön. A betűméret a dokumentumban és az eszköz képernyő méretétől függetlenül nagyítás, és elolvasni a dokumentumot, igény szerint. 
@@ -656,7 +867,7 @@ További információkért lásd:
 
 **Típus:** új szolgáltatás  
 **Szolgáltatás kategória:** használati feltételek  
-**A termék képesség:** Cégirányítási/megfelelőségi
+**A termék képesség:** megfelelőségi
  
 Most már a hozzáférési panel megnyithatja és megtekintheti a használati feltételeket, amelyek korábban elfogadott.
 
@@ -707,7 +918,7 @@ További információkért lásd: [kevesebb bejelentkezési kérdésben: az új 
 
 **Típus:** új szolgáltatás  
 **Szolgáltatás kategória:** használati feltételek  
-**A termék képesség:** Cégirányítási/megfelelőségi
+**A termék képesség:** megfelelőségi
  
 A beállítás a rendszergazdák a felhasználónak kell bontsa ki a használati feltételeket a feltételek elfogadása előtt.
 
@@ -864,7 +1075,7 @@ További információkért lásd:
 
 **Típus:** új szolgáltatás    
 **Szolgáltatás kategória:** használati feltételek  
-**A termék képesség:** Cégirányítási/megfelelőségi
+**A termék képesség:** megfelelőségi
 
 
 
@@ -1154,7 +1365,7 @@ További információkért lásd: [a többtényezős hitelesítés az Azure port
 
 **Típus:** új szolgáltatás  
 **Szolgáltatás kategória:** használati feltételek  
-**A termék képesség:** Cégirányítási/megfelelőségi  
+**A termék képesség:** megfelelőségi  
 
 
 
@@ -1197,7 +1408,7 @@ További információkért lásd: [Privileged Identity Management az Azure-erőf
 
 **Típus:** új szolgáltatás  
 **Szolgáltatás kategória:** értékelést eléréséhez  
-**A termék képesség:** Cégirányítási/megfelelőségi  
+**A termék képesség:** megfelelőségi  
 
 
 

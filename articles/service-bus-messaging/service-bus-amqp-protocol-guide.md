@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
-ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 9af578cef9a89b4ae953b26f261f99593b79deb2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 04/30/2018
+ms.author: clemensv
+ms.openlocfilehash: e124ea3f932a81634191785e7ee69c2492cb32fa
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 Azure Service Bus és az Event Hubs protokoll útmutató
 
@@ -358,10 +358,10 @@ A protokoll hitelesítési mód egy kérelem/válasz az exchange felügyeleti sp
 
 A kérelemüzenetben a következő alkalmazás tulajdonságokkal rendelkeznek:
 
-| Kulcs | Optional | Érték típusa | Érték tartalma |
+| Kulcs | Nem kötelező | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
 | művelet |Nem |karakterlánc |**a PUT-jogkivonat** |
-| type |Nem |karakterlánc |Mivel ez egy put a jogkivonat típusa. |
+| típus |Nem |karakterlánc |Mivel ez egy put a jogkivonat típusa. |
 | név |Nem |karakterlánc |A "célközönség", amely a token vonatkozik. |
 | lejárat |Igen |időbélyeg |A jogkivonat lejárati idejét. |
 
@@ -377,7 +377,7 @@ Jogkivonatok jogosultságokkal rendelkezik. A Service Bus ismer három alapvető
 
 A válaszüzenet rendelkezik-e a következő *alkalmazástulajdonságok* értékek
 
-| Kulcs | Optional | Érték típusa | Érték tartalma |
+| Kulcs | Nem kötelező | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
 | állapotkód-: |Nem |int |HTTP-válaszkód **[RFC2616]**. |
 | állapot-leírása |Igen |karakterlánc |Az állapot leírása. |

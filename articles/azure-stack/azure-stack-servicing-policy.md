@@ -3,7 +3,7 @@ title: Házirend karbantartási Azure verem |} Microsoft Docs
 description: További tudnivalók az Azure verem karbantartási házirend, és hogyan kell fenntartani az integrált rendszer támogatott állapotban.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.assetid: caac3d2f-11cc-4ff2-82d6-52b58fee4c39
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/18/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 160ba42c5cbdd3e8b999040cba8254d4c87f7c63
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure verem karbantartása házirend
 Ez a cikk ismerteti a karbantartási házirend integrált Azure verem rendszerekhez, és hogy a rendszer egy támogatott állapotban kell tennie. 
@@ -55,6 +55,9 @@ Továbbra is támogatja, az Azure Alkalmazásveremben üzembe kell tartani, aktu
 Például ha a rendelkezésre álló legfrissebb frissített verzióra 1805, és az előző két frissítési csomagokat volt 1804 és 1803, 1803 és a 1804 maradnak támogatása. 1802 azonban nem támogatott. A házirend igaz, ha az egy vagy két nincs felszabadítás. Például ha a jelenlegi kiadásban 1805, és nem 1804 kiadás történt, az előző két frissítési csomagokat 1803 és 1802 továbbra is támogatott.
 
 A Microsoft a szoftverfrissítési csomagokat nem összesítő és a korábbi csomag előfeltételként igényel. Ha úgy dönt, hogy egy vagy több frissítés késleltetésének, fontolja meg a teljes futásidejű, ha le szeretné kérdezni a legújabb verzióra. 
+
+## <a name="get-support"></a>Támogatás kérése
+Az Azure verem, az Azure támogatási folyamatot követi. A vállalati ügyfelek ismertetett folyamatot követve [létrehozása az Azure támogatási kérelmet](/azure/azure-supportability/how-to-create-azure-support-request). Ha egy ügyfél az egy Felhőszolgáltató (CSP), lépjen kapcsolatba a kriptográfiai Szolgáltató támogatásához.  További információkért lásd: a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/). 
 
 
 ## <a name="next-steps"></a>További lépések

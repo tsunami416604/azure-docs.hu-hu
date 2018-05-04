@@ -45,6 +45,8 @@
       href: container-instances-troubleshooting.md
     - name: Jenkins-buildügynökök az ACI-ban
       href: container-instances-jenkins.md
+    - name: Processzor- és memóriahasználat monitorozása
+      href: container-instances-monitor.md
     - name: Adatkötetek konfigurálása
       items:
         - name: Azure Files

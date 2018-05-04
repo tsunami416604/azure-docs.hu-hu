@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 09/07/2017
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: aa0c26a722ecddabee70127bf4b4fd67855a1523
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Az Azure Search-indexelőt, blob JSON-blobok indexelő
 Ez a cikk bemutatja, hogyan konfigurálhatja egy Azure Search blob indexelőt strukturált tartalom kibontása a JSON-blobok az Azure Blob Storage tárolóban.
@@ -36,7 +36,7 @@ JSON-blobok indexelő hasonlít az összes indexelő az Azure Search közös Há
 
 Az első lépés arra, hogy az indexelő által használt adatforrás kapcsolati adatait. A megadott típus adatforrás-ként `azureblob`, meghatározza, hogy mely adatok kinyerése viselkedések az indexelő hívják. JSON-BLOB indexelő az adatforrás megadása definition megegyezik a JSON-dokumentumokat és a tömbök. 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -88,7 +88,7 @@ Az indexelési művelet törzsében konfigurációs valósul meg. A visszaírás
 
 Egy teljesen megadott kérelem a következő lehet:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -190,7 +190,7 @@ Is hivatkozni lehet az egyes tömbelemek a nulla alapú indexét. Válassza ki a
 
 A következő példa a teljes mértékben megadott indexelő hasznos adatok között, beleértve mező hozzárendelések:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

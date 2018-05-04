@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 07e6e5beb96042c2da82ac8be19e391d6153eabd
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP API-k tartós funkciók (az Azure Functions)
 
@@ -131,6 +131,7 @@ A válasz hasznos a **200-as HTTP** és **HTTP 202** esetben egy JSON-objektum a
 |-----------------|-----------|-------------|
 | runtimeStatus   | karakterlánc    | A példány futtatási állapota. Értékek: *futtató*, *függőben lévő*, *sikertelen*, *visszavonva*, *kilépett*, *Befejeződött*. |
 | Bemeneti           | JSON      | A példány inicializáló JSON-adatokat. |
+| customStatus    | JSON      | A JSON-adatokat használja az egyéni vezénylési állapotot. Ez a mező `null` Ha nincs beállítva. |
 | output          | JSON      | A példány JSON-kimenetét. Ez a mező `null` Ha a példány nem kész állapotú. |
 | createdTime     | karakterlánc    | Az az idő, ahol a példány létrehozása. ISO 8601 notation kiterjesztett használja. |
 | lastUpdatedTime | karakterlánc    | Az az idő, ahol a példány utolsó megőrzött. ISO 8601 notation kiterjesztett használja. |
@@ -180,6 +181,7 @@ A válasz hasznos a **200-as HTTP** és **HTTP 202** esetben egy JSON-objektum a
       }
   ],
   "input": null,
+  "customStatus": { "nextActions": ["A", "B", "C"], "foo": 2 },
   "lastUpdatedTime": "2018-02-28T05:18:54Z",
   "output": [
       "Hello Tokyo!",

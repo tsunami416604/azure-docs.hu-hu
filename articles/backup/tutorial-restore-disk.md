@@ -1,34 +1,36 @@
 ---
-title: "Virtuálisgép-lemez visszaállítása az Azure Backuppal | Microsoft Docs"
-description: "Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan hozhat létre és állíthat helyre egy virtuális gépet az Azure-ban a Backup és a Recovery Services használatával."
+title: Virtuálisgép-lemez visszaállítása az Azure Backuppal | Microsoft Docs
+description: Megtudhatja, hogyan állíthatja vissza a lemezt, valamint hogyan hozhat létre és állíthat helyre egy virtuális gépet az Azure-ban a Backup és a Recovery Services használatával.
 services: backup
 documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 2/14/2018
+ms.date: 4/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 571d40c46771f43ad5ea78fe92398de09e87393c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2b82725362517d12dd4e7df7b2bb083fa107253
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Lemez visszaállítása és helyreállított virtuális gép létrehozása az Azure-ban
-Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk a teljes virtuális gép visszaállításának módját ismerteti. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk a teljes virtuális gép parancssori felülettel való visszaállításának módját ismerteti. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Helyreállítási pontok listázása és kiválasztása
 > * Lemez visszaállítása egy helyreállítási pontból
 > * Virtuális gép létrehozása a visszaállított lemezről
+
+További információért a PowerShell a lemez visszaállításhoz és egy helyreállított virtuális gép létrehozásához való használatáról, tekintse meg a [Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel](backup-azure-vms-automation.md#restore-an-azure-vm) című részt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

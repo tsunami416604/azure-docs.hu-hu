@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c39f11eae08e74e1bb29a5587fa4a8f0ba7c6a5b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 72c3968b59fda10d81af553cbf2324a2683c596b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy a hálózati illesztő törlése
 
@@ -216,7 +216,7 @@ Mindegyik hálózati interfész egy virtuális géphez csatolt a hatékony bizto
 4. Válassza ki **hatékony biztonsági szabályok** alatt **támogatási + hibaelhárítás**.
 5. Tekintse át a hatékony biztonsági szabályok használatával határozza meg, ha a szükséges bejövő és kimenő kommunikáció szerepel a megfelelő szabály listáját. További információk láthatók a lista [hálózati biztonsági csoport – áttekintés](security-overview.md).
 
-Az IP-adatfolyam ellenőrizze, hogy az Azure hálózati figyelőt szolgáltatása is segítségével meghatározhatja, hogy ha a biztonsági szabályok akadályozzák a virtuális gép és a végpontok közötti kommunikáció. További tudnivalókért lásd: [IP folyamata ellenőrizze](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Az IP-adatfolyam ellenőrizze, hogy az Azure hálózati figyelőt szolgáltatása is segítségével meghatározhatja, hogy ha a biztonsági szabályok akadályozzák a virtuális gép és a végpontok közötti kommunikáció. További tudnivalókért lásd: [IP folyamata ellenőrizze](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Parancsok**
 
@@ -233,7 +233,7 @@ A hálózati illesztő a virtuális géphez csatolt hatékony útvonalak bármel
 4. Válassza ki **hatékony útvonalak** alatt **támogatási + hibaelhárítás**.
 5. Tekintse át a meghatározásához, hogy a helyes útvonalak vannak-e a szükséges bejövő és kimenő kommunikáció a hatékony útvonalak listáját. További információk láthatók a lista [Útválasztás – áttekintés](virtual-networks-udr-overview.md).
 
-Az Azure hálózati figyelőt a következő ugrás szolgáltatása is segítségével meghatározhatja, hogy ha útvonalak akadályozzák a virtuális gép és a végpontok közötti kommunikáció. További tudnivalókért lásd: [a következő Ugrás](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Az Azure hálózati figyelőt a következő ugrás szolgáltatása is segítségével meghatározhatja, hogy ha útvonalak akadályozzák a virtuális gép és a végpontok közötti kommunikáció. További tudnivalókért lásd: [a következő Ugrás](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Parancsok**
 

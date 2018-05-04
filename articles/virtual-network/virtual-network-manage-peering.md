@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: f200e4ae019d918bfe7e8dfc3200a4568a50dfdf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 773bfd3c4106bead85542970b3d27fd5dad25049
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy törlése a virtuális hálózati társviszony-létesítés
 
@@ -127,7 +127,7 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációra, de nem m
 - Egy virtuális hálózatot is társítottak, egy másik virtuális hálózathoz, és is csatlakoztatható egy Azure virtuális hálózati átjárót egy másik virtuális hálózathoz. Ha a virtuális hálózatok társviszony-létesítés és egy átjárón keresztül csatlakoznak, a virtuális hálózatok közötti forgalom áthaladó a társviszony-létesítési konfiguráció ahelyett, hogy az átjáró.
 - Egy névleges díj vonatkozik a társhálózati viszonyt használó bejövő és kimenő forgalomra. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
 * <a name="cross-region"></a>A ugyanabban a régióban, illetve a különböző régiókban lévő virtuális hálózatok is partnert. A következő korlátozások vonatkoznak csak akkor érvényesíthetők, ha mindkét virtuális hálózat a *azonos* régió, de alkalmazza, ha a virtuális hálózatok globálisan társviszonyban van: 
-    - A virtuális hálózatok csak akkor létezhet, a következő régióban: nyugati középső Régiójában (Wyoming), USA nyugati régiója (Washington), 2 (Iowa) USA középső RÉGIÓJA, Amerikai keleti régiója 2 (Virginia), Kanada központi (Toronto), Kanada keleti (Quebec város), Délkelet-Ázsia (szingapúri) koreai Dél (Buscan), Dél India (Chennai), közép-Indiában (Pune), (Mumbai) Nyugat-Indiában, Dél UK (Budapest), Egyesült Királyság nyugati (Cardiffi), Nyugat-Európában (Hollandia)
+    - A virtuális hálózatok bármely Azure nyilvános felhőjében régióban, de nem Azure nemzeti felhők létezhet.
     - Egy virtuális hálózatán lévő erőforrásokat nem lehet kommunikálni az Azure belső terheléselosztót a peered virtuális hálózat IP-címét. A terheléselosztó és az erőforrásokat, amelyek kommunikálni az azonos virtuális hálózatban kell lennie.
     - Nem lehet távoli átjárók használatára, vagy átjáró átvitel engedélyezése. Távoli átjárók használatára, vagy engedélyezze az átjáró átvitel során, a társviszony-létesítés mindkét virtuális hálózat ugyanabban a régióban léteznie kell. 
 

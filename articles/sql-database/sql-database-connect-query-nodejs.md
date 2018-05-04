@@ -10,15 +10,15 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ebc199f740179ce14c7fb374e8be8862d24d6c32
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 0d1cdd40264ff76b0175c861b3084ed7e7b62a31
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-nodejs-to-query-an-azure-sql-database"></a>Node.js használata Azure SQL Database-adatbázis lekérdezéséhez
 
-Ez a rövid útmutató azt ismerteti, hogyan használható a [Node.js](https://nodejs.org/en/) egy olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.
+Ez a rövid útmutató azt ismerteti, hogyan használható a [Node.js](https://nodejs.org/en/) egy olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory B2C használata felhasználói hitelesítéshez egy ASP.NET-webalkalmazásban – oktatóanyag
+title: Oktatóanyag – Webalkalmazások fiókokkal történő hitelesítésének engedélyezése az Azure Active Directory B2C használatával | Microsoft Docs
 description: Arra vonatkozó útmutató, hogyan használhatja az Azure Active Directory B2C-t felhasználói bejelentkezés biztosításához egy ASP.NET-es webalkalmazás esetén.
 services: active-directory-b2c
 author: davidmu1
@@ -8,13 +8,13 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 19629f383bdab19a2541ca33dd2937574c2ced17
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 10e7c6a8e9e92a559352886095e367585dc484ef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Oktatóanyag: Felhasználók hitelesítése az Azure Active Directory B2C-vel egy ASP.NET-webalkalmazásban
+# <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Oktatóanyag: Webalkalmazások fiókokkal történő hitelesítésének engedélyezése az Azure Active Directory B2C használatával
 
 Az oktatóanyag azt mutatja be, hogyan használhatja az Azure Active Directory (Azure AD) B2C-t felhasználók bejelentkeztetéséhez és regisztrálásához egy ASP.NET-webalkalmazásban. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati, vállalati és Azure Active Directory-fiókokon.
 
@@ -40,22 +40,22 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-b
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Az Azure Portalon válassza az **Azure AD B2C** lehetőséget a szolgáltatások listájából.
+1. Az Azure Portalon válassza az **Azure AD B2C** lehetőséget a szolgáltatások listájából. 
 
-2. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **Hozzáadás** lehetőségre.
+2. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **Hozzáadás** lehetőségre. 
 
     A mintául szolgáló webalkalmazás bérlőben történő regisztrálásához használja a következő beállításokat:
 
     ![Új alkalmazás hozzáadása](media/active-directory-b2c-tutorials-web-app/web-app-registration.png)
-
+    
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **Name (Név)** | Mintául szolgáló saját webalkalmazás | Adjon meg egy olyan **nevet**, amely megfelelően körülírja az alkalmazást a felhasználók számára. | 
     | **Webalkalmazás vagy webes API szerepeltetése** | Igen | Webalkalmazásokhoz válassza az **Igen** lehetőséget. |
     | **Implicit folyamat engedélyezése** | Igen | Válassza az **Igen** lehetőséget, mivel az alkalmazás [OpenID Connect bejelentkezést](active-directory-b2c-reference-oidc.md) használ. |
     | **Válasz URL-cím** | `https://localhost:44316` | A válasz URL-címek olyan végpontok, amelyeken keresztül az Azure AD B2C visszaadja az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut (localhost), és a 44316-os porton figyel. |
-    | **Natív ügyfél** | Nem | Mivel ez egy webalkalmazás, nem pedig egy natív ügyfél, válassza a Nem lehetőséget. |
-
+    | **Natív ügyfél belefoglalása** | Nem | Mivel ez egy webalkalmazás, nem pedig egy natív ügyfél, válassza a Nem lehetőséget. |
+    
 3. Kattintson a **Létrehozás** gombra az alkalmazás regisztrálásához.
 
 A regisztrált alkalmazások az Azure AD B2C-bérlő alkalmazásainak listájában jelennek meg. Válassza ki a webalkalmazását a listáról. Ekkor megjelenik a webalkalmazás tulajdonságpanelje.
@@ -70,7 +70,7 @@ Az Azure AD B2C az OAuth2 engedélyezést használja az [ügyfélalkalmazásokho
 
 1. Válassza ki a regisztrált webalkalmazás Kulcsok lapját, és kattintson a **Kulcs létrehozása** elemre.
 
-2. A kulcs megjelenítéséhez kattintson a **Mentés** gombra.
+2. Az alkalmazáskulcs megjelenítéséhez kattintson a **Mentés** gombra.
 
     ![alkalmazás általános kulcsok oldala](media/active-directory-b2c-tutorials-web-app/app-general-keys-page.png)
 
@@ -112,7 +112,7 @@ Ahhoz, hogy a felhasználók saját maguk is alaphelyzetbe állíthassák felhas
     | **Name (Név)** | SiPe | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SiPe** nevét fogja használni. | 
     | **Identitásszolgáltató** | Bejelentkezés helyi fiókba | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
     | **Profilattribútumok** | Megjelenítendő név és postai irányítószám | Válassza ki azokat az attribútumokat, amelyeket a felhasználók módosíthatnak a profilszerkesztés során. |
-    | **Alkalmazásjogcímek** | Megjelenítendő név, postai irányítószám, új felhasználó, a felhasználó objektumazonosítója | Válassza ki azokat a [jogcímeket](../active-directory/develop/active-directory-dev-glossary.md#claim), amelyeket egy sikeres profilszerkesztés után szerepeltetni szeretne a [hozzáférési jogkivonatban](../active-directory/develop/active-directory-dev-glossary.md#access-token). |
+    | **Alkalmazásjogcímek** | Megjelenítendő név, postai irányítószám, a felhasználó objektumazonosítója | Válassza ki azokat a [jogcímeket](../active-directory/develop/active-directory-dev-glossary.md#claim), amelyeket egy sikeres profilszerkesztés után szerepeltetni szeretne a [hozzáférési jogkivonatban](../active-directory/develop/active-directory-dev-glossary.md#access-token). |
 
 2. Kattintson a **Létrehozás** gombra a szabályzat létrehozásához. 
 
@@ -134,7 +134,7 @@ Ha engedélyezni szeretné az új jelszavak kérését az alkalmazásban, létre
 
 ## <a name="update-web-app-code"></a>Webalkalmazás kódjának frissítése
 
-Most, hogy regisztrálta a webalkalmazást és létrehozta a szabályzatokat, konfigurálnia kell az alkalmazást az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban egy mintául szolgáló webalkalmazást fog konfigurálni. 
+Most, hogy regisztrálta a webalkalmazást és létrehozta a szabályzatokat, konfigurálnia kell az alkalmazást az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban a GitHubról letölthető, mintául szolgáló webalkalmazást fog konfigurálni. 
 
 [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
 
@@ -142,7 +142,7 @@ Most, hogy regisztrálta a webalkalmazást és létrehozta a szabályzatokat, ko
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-A mintául szolgáló ASP.NET-webalkalmazás egy egyszerű feladatlista-alkalmazás, amellyel feladatlistát lehet létrehozni és frissíteni. Az alkalmazás által használt [Microsoft OWIN köztes összetevők](https://docs.microsoft.com/en-us/aspnet/aspnet/overview/owin-and-katana/) lehetővé teszik, hogy a felhasználók regisztráljanak az alkalmazás Azure AD B2C-bérlőben történő használatához. Egy Azure AD B2C-szabályzat létrehozása lehetővé teszi a felhasználók számára, hogy egy meglévő közösségi hálózati fiókot vagy egy újonnan létrehozott fiókot használjanak azonosítóként az alkalmazás eléréséhez. 
+A mintául szolgáló ASP.NET-webalkalmazás egy egyszerű feladatlista-alkalmazás, amellyel feladatlistát lehet létrehozni és frissíteni. Az alkalmazás által használt [Microsoft OWIN köztes összetevők](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/) lehetővé teszik, hogy a felhasználók regisztráljanak az alkalmazás Azure AD B2C-bérlőben történő használatához. Egy Azure AD B2C-szabályzat létrehozása lehetővé teszi a felhasználók számára, hogy egy meglévő közösségi hálózati fiókot vagy egy újonnan létrehozott fiókot használjanak azonosítóként az alkalmazás eléréséhez. 
 
 Két projekt szerepel a mintául szolgáló megoldásban:
 
@@ -154,7 +154,7 @@ Módosítania kell az alkalmazást ahhoz, hogy használni tudja az alkalmazás r
 
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 
-2. A **TaskWebApp** webalkalmazás-projektben nyissa meg a **Web.config** fájlt, és hajtsa végre a következő frissítéseket:
+2. A **TaskWebApp** webalkalmazás-projektben nyissa meg a **Web.config** fájlt, és hajtsa végre a következő frissítéseket a már meglévő kulcsokon:
 
     ```C#
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
@@ -163,7 +163,7 @@ Módosítania kell az alkalmazást ahhoz, hogy használni tudja az alkalmazás r
     
     <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
     ```
-3. Frissítse a szabályzatbeállításokat a szabályzat létrehozásakor megadott névvel.
+3. Frissítse a meglévő kulcsokat az előző lépésben létrehozott szabályzatnevek értékeivel. Ne felejtse el hozzáadni a *b2c_1_* előtagot.
 
     ```C#
     <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />

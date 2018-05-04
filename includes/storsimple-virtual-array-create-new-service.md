@@ -1,6 +1,6 @@
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
 
-1.  Jelentkezzen be az Azure Portalra a Microsoft-fiók hitelesítő adataival a következő címen: <https://portal.azure.com/>. Ha az eszközt kormányzati portál telepítésével, jelentkezzen be: <https://portal.azure.us/>
+1.  Microsoft fiók hitelesítő adataival, jelentkezzen be az Azure portálra az URL-címen: <https://portal.azure.com/>. Ha az eszközt kormányzati portál telepítésével, jelentkezzen be: <https://portal.azure.us/>
 
 2.  Az Azure portálon kattintson **+ hozzon létre egy erőforrást** &gt; **tárolási** &gt; **StorSimple virtuális adatsorozat**.
 
@@ -18,7 +18,7 @@
 
         -   Ha meglévő alkalmazások, amelyek akkor is telepíteni szeretne a StorSimple eszközt az Azure-ban, azt javasoljuk, hogy használja-e azt az adatközpontot.
 
-        -   A StorSimple Device Manager és az Azure storage két külön helyen lehet. Ilyen esetben a StorSimple-eszközkezelő fiókot és az Azure-tárfiókot külön kell létrehoznia. Azure-tárfiók létrehozásához keresse meg az Azure Storage szolgáltatást az Azure Portalon, és kövesse az [Azure-tárfiók létrehozása](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account) című szakasz lépéseit. Ha létrehozta a fiókot, az [Új tárfiók konfigurálása a szolgáltatáshoz](https://azure.microsoft.com/en-us/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service) című szakasz lépéseit követve adja hozzá a StorSimple-eszközkezelő szolgáltatáshoz.
+        -   A StorSimple Device Manager és az Azure storage két külön helyen lehet. Ilyen esetben a StorSimple-eszközkezelő fiókot és az Azure-tárfiókot külön kell létrehoznia. Azure-tárfiók létrehozásához keresse meg az Azure Storage szolgáltatást az Azure Portalon, és kövesse az [Azure-tárfiók létrehozása](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account) című szakasz lépéseit. Ha létrehozta a fiókot, az [Új tárfiók konfigurálása a szolgáltatáshoz](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service) című szakasz lépéseit követve adja hozzá a StorSimple-eszközkezelő szolgáltatáshoz.
 
         -   Ha a virtuális eszközt a kormányzati portál üzembe, a StorSimple Device Manager szolgáltatás Velünk Iowa és Velünk Virginia helyen érhető.
 

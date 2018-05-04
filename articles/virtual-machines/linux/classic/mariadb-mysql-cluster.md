@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 5438bfb75abaac2bed55a76b38f69790f7fc87fa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4a3eede532345f8628af1722a06531571f01afbf
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) fürt: Azure útmutató
 > [!IMPORTANT]
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager](../../../resource-manager-deployment-model.md) és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén az Azure Resource Manager modellt használja.
 
 > [!NOTE]
-> MariaDB vállalati fürt most nem áll rendelkezésre az Azure piactéren. Az új ajánlat automatikusan telepíteni fogja az Azure Resource Manager MariaDB Galera fürt. Az új ajánlat használjon [Azure piactér](https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/).
+> MariaDB vállalati fürt most nem áll rendelkezésre az Azure piactéren. Az új ajánlat automatikusan telepíteni fogja az Azure Resource Manager MariaDB Galera fürt. Az új ajánlat használjon [Azure piactér](https://azure.microsoft.com/marketplace/partners/mariadb/cluster-maxscale/).
 >
 >
 

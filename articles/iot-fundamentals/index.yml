@@ -1,0 +1,102 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure IoT – alapok
+metadata:
+  title: Azure IoT – alapok
+  description: Az Azure IoT a Microsoft által felügyelt felhőszolgáltatások gyűjteménye, amelyek az eszközök internetes hálózatához (IoT) csatlakozó eszközök millióit kötik össze, monitorozzák és irányítják.
+  services: iot
+  author: BryanLa
+  manager: timlt
+  ms.service: iot
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/20/2018
+  ms.author: bryanla
+  ms.openlocfilehash: a86827616c96dd877a88fdd89cb5b0205c2cface
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/28/2018
+abstract:
+  description: Üdvözöljük a Microsoft Azure-ban és az eszközök internetes hálózatában (Internet of Things, IoT). Az Azure IoT olyan szolgáltatások és megoldások átfogó gyűjteménye, amelyek segítséget nyújtanak a végpontok közötti IoT-alkalmazások Azure-ban történő létrehozásához. Az Azure IoT számos lehetőséget és eszközt biztosít a teljeskörűen üzemeltetett és kezelt szolgáltatott szoftveres (SaaS) megoldásoktól az egyedi és specializált szolgáltatásként nyújtott platform (PaaS) ajánlatokon át az intelligens peremhálózat kiépítésére szolgáló technológiákig, amelyek az adott ipari igényekhez, vállalati képességekhez és erőforrásokhoz igazodnak.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: A következő rövid útmutatók áttekintésével könnyen és gyorsan megismerheti az Azure IoT-t
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-central/quick-deploy-iot-central">Új Azure IoT központi alkalmazás létrehozása.</a>
+    - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">IoT Hub létrehozása és az első szimulált eszköz csatlakoztatása az Azure-hoz (Node.js).</a>
+    - html: <a href="/azure/iot-edge/quickstart-linux">Az első IoT Edge-modul üzembe helyezése és az adatok feldolgozása szimulált eszközön Windows-, Linux- vagy Mac gépen.</a>
+    - html: <a href="/azure/location-based-services/quick-demo-map-app">Térképes keresőalkalmazás készítése az Azure Location Based Services (előzetes verzió) segítségével.</a>
+    - html: <a href="/azure/time-series-insights/time-series-quickstart">Ismerkedés a Time Series Insights szolgáltatással.</a>
+- title: Technológiák és megoldások
+  items:
+  - type: paragraph
+    text: Az előre konfigurált megoldások és az SaaS-ajánlatok rövid bemutatása.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-suite">IoT Suite</a>
+    - html: <a href="/azure/iot-central">IoT-központ</a>
+  - type: paragraph
+    text: Szolgáltatásként nyújtott platform (PaaS) ajánlatok felhasználása.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-hub">IoT Hub</a>
+    - html: <a href="/azure/iot-dps">IoT Hub eszközregisztrációs szolgáltatások</a>
+    - html: <a href="/azure/location-based-services">Azure Location Based Services</a>
+    - html: <a href="/azure/time-series-insights">Azure Time Series Insights</a>
+    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks">IoT szolgáltatásoldali SDK-k</a>
+  - type: paragraph
+    text: Az intelligens peremhálózat felépítése.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-edge">IoT Edge</a>
+    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks">IoT eszközoldali SDK-k</a>
+- title: Példák
+  items:
+  - type: paragraph
+    text: Minták keresése gyakori eszközökhöz és nyelvekhez.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0">Az összes minta</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0&platform=C">C-minták</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0&platform=dotnet">.NET-minták</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0&platform=python">Python-minták</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=iot-hub&sort=0&platform=nodejs">Node.js-minták</a>
+- title: Videók
+  items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-18-Contoso-HVACs-Digital-transformation-through-Internet-of-Things-solutions/player
+      html: <p>A Contoso HVAC digitális átalakítása IoT-megoldásokkal</p>
+      image:
+        src: media/index/i_video.png
+      title: Bevezetés
+    - href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-88-Codeless-IoT-Solution/player
+      html: <p>Kód nélküli IoT-megoldások az Azure IoT-központtal</p>
+      image:
+        src: media/index/i_video.png
+      title: Bemutató
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="/cli/azure/iot">Azure CLI</a></p><p><a href="https://github.com/Azure/azure-iot-cli-extension">Azure IoT CLI-bővítmény</a></p>
+    - title: Nyelvek
+      html: '<p><a href="/azure/iot-hub/iot-hub-devguide-sdks">Azure IoT SDK-k a következőkhöz: .Net, C, Java, Node.js, Python</a></p>'
+    - title: REST
+      html: <p><a href="/rest/api/iothub">IoT Hub</a></p><p><a href="/rest/api/iot-dps">IoT Hub eszközregisztrációs szolgáltatás</a></p><p><a href="/rest/api/location-based-services-management/">A Location Based Services kezelése</a></p><p><a href="/rest/api/location-based-services/">A Location Based Services funkciói</a></p><p><a href="/rest/api/time-series-insights-management/">A Time Series Insights kezelése</a></p><p><a href="/rest/api/time-series-insights/">Time Series Insights</a></p>

@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 85a0157751a1c26fb7f37152d7c12f56b1c423d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
@@ -67,9 +67,9 @@ Az alábbi táblázat néhány tulajdonságok, Transact SQL keresztül érhető 
 
 ![Egyszeri bejelentkezés](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model"></a>alapjául szolgáló vásárlási modell vCore-alapú
+## <a name="vcore-based-purchasing-model-preview"></a>vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)
 
-A vCore-alapú alapjául szolgáló vásárlási modell biztosítja, a rugalmasságot, vezérlő, átláthatóság és egy egyszerű módon lefordítani a helyszíni munkaterhelési követelményeinek a felhőbe. Ez a modell méretezési számítási, memória és az alkalmazások és szolgáltatások igényeik alapján tároló lehetővé teszi. A vCore modell nem is jogosult fel a 30 százalékos megtakarítások a [Azure hibrid használja az SQL Server juttatása](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+VCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió) biztosít, a rugalmasságot, vezérlő, átláthatóság és egy egyszerű módon lefordítani a helyszíni munkaterhelési követelményeinek a felhőbe. Ez a modell méretezési számítási, memória és az alkalmazások és szolgáltatások igényeik alapján tároló lehetővé teszi. A vCore modell nem is jogosult fel a 30 százalékos megtakarítások a [Azure hibrid használja az SQL Server juttatása](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
 Egy virtuális core jelenti. a logikai Processzor érhető el, hogy a hardver generációja közül választhat.
 - A Gen 4 logikai CPU-k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokon alapulnak.
@@ -186,7 +186,7 @@ Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen fel
 Az áttelepítési módszer SQL biztonsági mentés az Azure blob storage kihasználja. Azure storage-blob tárolt biztonsági is állítható helyre közvetlenül kezelt példány. A felügyelt példánya egy meglévő SQL-adatbázis visszaállításához a következőket teheti:
 
 - Használjon [adatok áttelepítési szolgáltatás (DMS)](/sql/dma/dma-overview). Az oktatóanyagok esetén lásd: [áttelepítése az Azure adatbázis áttelepítési szolgáltatás (DMS) használatával felügyelt példányra](../dms/tutorial-sql-server-to-managed-instance.md) adatbázis biztonsági másolatból való visszaállítása
-- Használja a [T-SQL RESTORE parancs](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql). 
+- Használja a [T-SQL RESTORE parancs](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Az oktatóanyag bemutatja, hogyan állítsa vissza a Wide World Importers - szabványos adatbázis biztonságimásolat-fájlt, tekintse meg a [állítsa vissza biztonsági másolatból egy felügyelt példányon](sql-database-managed-instance-restore-from-backup-tutorial.md). Ez az oktatóanyag bemutatja, hogy biztonságimásolat-fájl feltöltése Azure blog tárolási és biztonságos közös hozzáférési jogosultságkód (SAS) kulccsal.
   - URL-címről visszaállítási kapcsolatos információkért lásd: [URL-címről natív VISSZAÁLLÍTÁSA](sql-database-managed-instance-migrate.md#native-restore-from-url).
 - [BACPAC-fájlból való importálása](sql-database-import.md)

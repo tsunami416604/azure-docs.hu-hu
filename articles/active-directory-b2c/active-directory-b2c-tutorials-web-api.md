@@ -1,22 +1,22 @@
 ---
-title: Az Azure Active Directory B2C használata az ASP.NET webes API védelméhez – oktatóanyag
+title: Oktatóanyag – ASP.NET webes API-hoz való hozzáférés engedélyezése egy webalkalmazásból az Azure Active Directory B2C használatával | Microsoft Docs
 description: Arra vonatkozó útmutató, hogyan használhatja az Active Directory B2C-t egy ASP.NET webes API védelmére és meghívására egy ASP.NET-webalkalmazásból.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 editor: ''
 ms.author: davidmu
-ms.date: 1/23/2018
+ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: f4e1c18f151a9c815258f01ea198d3d173d0b44e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f61a3b103d8738e1b86fb64aff99dab9c6986fdf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="tutorial-use-azure-active-directory-b2c-to-protect-an-aspnet-web-api"></a>Oktatóanyag: Az Azure Active Directory B2C használata az ASP.NET webes API védelméhez
+# <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Oktatóanyag: ASP.NET webes API-hoz való hozzáférés engedélyezése egy webalkalmazásból az Azure Active Directory B2C használatával
 
 Az oktatóanyag azt mutatja be, hogyan hívhat meg egy Azure Active Directory (Azure AD) B2C-vel védett webes API-erőforrást az ASP.NET-webalkalmazásból.
 
@@ -45,7 +45,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-b
 
 1. Az Azure Portalon válassza az **Azure AD B2C** lehetőséget a szolgáltatások listájából.
 
-2. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **+ Hozzáadás** lehetőségre.
+2. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **Hozzáadás** lehetőségre.
 
     A mintául szolgáló webes API bérlőben történő regisztrálásához használja a következő beállításokat.
     
@@ -89,11 +89,13 @@ Az API hatóköreinek konfigurálásához adja meg a következő bejegyzéseket.
 | **Hatókör** | Hello.Read | Olvasási hozzáférés a Hellóhoz |
 | **Hatókör** | Hello.Write | Írásii hozzáférés a Hellóhoz |
 
+Kattintson a **Save** (Mentés) gombra.
+
 A közzétett hatókörök segítségével ügyfélalkalmazás-engedélyeket biztosíthat a webes API-nak.
 
 ### <a name="grant-app-permissions-to-web-api"></a>Alkalmazásengedélyek megadása a webes API-nak
 
-Egy védett webes API alkalmazásból történő hívásához alkalmazásengedélyeket kell biztosítania az API számára. 
+Egy védett webes API alkalmazásból történő hívásához alkalmazásengedélyeket kell biztosítania az API számára. Ebben az oktatóanyagban használja azt a webalkalmazást, amely az [Azure Active Directory B2C használata felhasználói hitelesítéshez egy ASP.NET-webalkalmazásban](active-directory-b2c-tutorials-web-app.md) című oktatóanyagban lett létrehozva. 
 
 1. Válassza ki az Azure Portalon az **Azure AD B2C** elemet a szolgáltatások listájáról, majd kattintson az **Alkalmazások** lehetőségre a regisztrált alkalmazások listájának megjelenítéséhez.
 
@@ -109,7 +111,7 @@ Egy védett webes API alkalmazásból történő hívásához alkalmazásengedé
 
 A **Mintául szolgáló saját webalkalmazás** regisztrálva van a védett **Mintául szolgáló saját webes API** hívásához. A webalkalmazás használatához a felhasználó az Azure AD B2C-vel [hitelesíti magát](../active-directory/develop/active-directory-dev-glossary.md#authentication). A webalkalmazás lekéri az [engedélyezést](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant) az Azure AD B2C-ből a védett webes API-hoz való hozzáféréshez.
 
-## <a name="update-web-api-code"></a>Webes API kódjának frissítése
+## <a name="update-code"></a>Kód frissítése
 
 Most, hogy regisztrálta a webes API-t és meghatározta a hatóköröket, konfigurálnia kell a webes API kódját az Azure AD B2C-bérlő használatához. Ebben az oktatóanyagban egy mintául szolgáló webes API-t fog konfigurálni. 
 
@@ -137,11 +139,11 @@ Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 
 3. Konfigurálja az API URI-ját. Ezt az URI-t a webalkalmazás az API-kérelem leadásához használja. A kért engedélyeket is konfigurálja.
 
-```C#
-<add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
-<add key="api:ReadScope" value="Hello.Read" />
-<add key="api:WriteScope" value="Hello.Write" />
-```
+    ```C#
+    <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
+    <add key="api:ReadScope" value="Hello.Read" />
+    <add key="api:WriteScope" value="Hello.Write" />
+    ```
 
 ### <a name="configure-the-web-api"></a>A webes API konfigurálása
 
@@ -162,7 +164,7 @@ Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 4. Frissítse a szabályzat beállítását a regisztrálási és bejelentkezési szabályzat létrehozásakor megadott névvel.
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
     ```
 
 5. Konfigurálja a hatókör beállításait, hogy egyezzenek a portálon korábban létrehozottakkal.
@@ -172,7 +174,7 @@ Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
     <add key="api:WriteScope" value="Hello.Write" />
     ```
 
-## <a name="run-the-sample-web-app-and-web-api"></a>A mintául szolgáló webalkalmazás és webes API futtatása
+## <a name="run-the-sample"></a>Minta futtatása
 
 A **TaskWebApp** és a **TaskService** projektet is futtatnia kell. 
 

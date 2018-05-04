@@ -5,14 +5,14 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 03/27/2018
+ms.date: 04/27/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: e68e87bb19b8c64cf06c03831b22cf43d773efde
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 03b7ce49f935c36b0e0652925c41deea987a2a26
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 Adat-előállító egy több-bérlős szolgáltatást a következő alapértelmezett korlátokat érdekében győződjön meg arról, hogy az ügyfél-előfizetések védettek, a másik fél munkaterhelések érvényben. A korlátok számos könnyen emelhető az előfizetéséhez, a maximális határértéket akár lépjen kapcsolatba az ügyfélszolgálattal.
 
@@ -26,12 +26,13 @@ Adat-előállító egy több-bérlős szolgáltatást a következő alapértelme
 | Egy adat-előállító belül eseményindítók | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Egy adat-előállító belül összekapcsolt szolgáltatások | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Egy adat-előállító belül integrációs futtatókörnyezetek <sup>4</sup> | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Egy előfizetéshez tartozó teljes CPU-magokat az Azure-SSIS-integráció Runtime(s) | 100 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Folyamat fut egyidejűleg folyamat | 20 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Feldolgozási sor / maximális tevékenységek | 20 | 30 |
 | Feldolgozási sor / maximális paraméterek | 20 | 30 |
 | Adatcsatorna objektumok objektumonként bájt <sup>1</sup> | 200 KB | 200 KB |
 | Bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> | 100 KB | 2000 KB |
-| A felhő adatok adatátviteli egység <sup>3</sup> | 256 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Adatok adatátviteli egység / tevékenységfuttatási felhőalapú <sup>3</sup> | 256 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Újbóli próbálkozások száma az adatcsatorna tevékenység fut | 1 day(timeout) | 1 nap (timeout) |
 | Az API-hívásokban írása | 2500/hr<br/><br/> Ez korlátozva által Azure erőforrás-kezelő nem az Azure Data Factory. | [Forduljon a támogatási szolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Olvassa el az API-hívásokban | 12 500/hr<br/><br/> Ez korlátozva által Azure erőforrás-kezelő nem az Azure Data Factory. | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
@@ -48,7 +49,7 @@ Adat-előállító egy több-bérlős szolgáltatást a következő alapértelme
 | Adatcsatorna objektumok objektumonként bájt <sup>1</sup> |200 KB |200 KB |
 | Bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> |100 KB |2000 KB |
 | A HDInsight fürt igény szerinti magok előfizetésen belül <sup>2</sup> |60 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| A felhő adatok adatátviteli egység <sup>3</sup> |32 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Adatok adatátviteli egység / tevékenységfuttatási felhőalapú <sup>3</sup> |32 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Újbóli próbálkozások száma az adatcsatorna tevékenység fut |1000 |MaxInt (32 bites) |
 
 <sup>1</sup> folyamat, a DataSet adatkészlet és a társított szolgáltatás objektumok határoz meg a számítási feladatok logikai csoportosítása. Ezek az objektumok korlátairól áthelyezni, és az Azure Data Factory szolgáltatással feldolgozni adatok mennyisége nem kapcsolódnak. Adat-előállító méretezési adatmennyiségig kezelésére szolgál.

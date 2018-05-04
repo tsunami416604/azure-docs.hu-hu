@@ -1,26 +1,26 @@
 ---
-title: "SAP HANA-műveletek az Azure-on |} Microsoft Docs"
-description: "Üzemeltetési útmutató a SAP HANA-rendszerek üzembe helyezett Azure virtuális gépeken."
+title: SAP HANA-műveletek az Azure-on |} Microsoft Docs
+description: Üzemeltetési útmutató a SAP HANA-rendszerek üzembe helyezett Azure virtuális gépeken.
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: juergent
 manager: patfilot
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2017
+ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cb715960a516c6b2ca16376c12cb6f796e0b395
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 959a483d293caa45180c946e92ac824fc56db084
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>Az Azure üzemeltetési útmutatójának SAP HANA
 Ez a dokumentum nyújt útmutatást rendszerűeket SAP HANA telepített Azure natív virtuális gépek (VM). Ez a dokumentum nem célja, hogy cserélje le a szabványos SAP dokumentációját, amely a következőket tartalmazza:
@@ -177,7 +177,7 @@ Nincsenek Azure prémium szintű Storage a VHD-k, amely támogatja-e írási gyo
 - Egy M128xx 16 virtuális merevlemezek méretű VM
 - Egy M64xx 8 virtuális merevlemezek méretű VM
 
-Ahhoz, hogy Azure írási gyorsító részletes útmutatást a cikkben található [Azure írási gyorsító SAP telepítések](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator).
+Ahhoz, hogy Azure írási gyorsító részletes útmutatást a cikkben található [írási gyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 Részletek és Azure írási gyorsító korlátozásai a azonos dokumentációjában található.
 

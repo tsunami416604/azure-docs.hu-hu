@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric-alkalmazás üzembe helyezése folyamatos integrációval (Team Services) | Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Service Fabric-alkalmazáshoz a Visual Studio Team Services használatával.  Helyezzen üzembe egy alkalmazást az Azure Service Fabric-fürtjén."
+title: Azure Service Fabric-alkalmazás üzembe helyezése folyamatos integrációval (Team Services) | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Service Fabric-alkalmazáshoz a Visual Studio Team Services használatával.  Helyezzen üzembe egy alkalmazást az Azure Service Fabric-fürtjén.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 3f5ccd40e2b46cc68b4f7aeb67577fb66dbd5355
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b61b7f89c127b297f058082d86952f2a45d766a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
-Ez az oktatóanyag, amely egy sorozat harmadik része, azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Service Fabric-alkalmazáshoz a Visual Studio Team Services használatával.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [.NET alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) szakaszban létrehozott alkalmazás szolgál.
+Ez az oktatóanyag, amely egy sorozat negyedik része, azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Service Fabric-alkalmazáshoz a Visual Studio Team Services használatával.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [.NET alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) szakaszban létrehozott alkalmazás szolgál.
 
 A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
@@ -36,6 +36,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md)
 > * [Az alkalmazás üzembe helyezése egy távoli fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [HTTPS-végpont hozzáadása ASP.NET Core kezelőfelületi szolgáltatáshoz](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * A CI/CD konfigurálása a Visual Studio Team Services használatával
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -124,7 +125,7 @@ Engedélyezze a folyamatos üzembe helyezés eseményindítóját, hogy a kiadá
 
 ![Eseményindító engedélyezése][enable-trigger]
 
-Válassza a **+Release** -> **Create Release** -> **Create** (+Kiadás > Kiadás létrehozása > Létrehozás) lehetőséget a kiadás manuális létrehozásához.  Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és lépjen a következő címre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”. 
+Válassza a **+Release** -> **Create Release** -> **Create** (+Kiadás > Kiadás létrehozása > Létrehozás) lehetőséget a kiadás manuális létrehozásához.  Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”. 
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Módosítások véglegesítse és leküldése, kiadás indítása
 A folyamatos integrációs folyamat működésének ellenőrzéséhez adjon be néhány kódmódosítást a Team Servicesbe.    
@@ -143,7 +144,7 @@ A Team Services szolgáltatásba leküldött módosítások automatikusan aktiv�
 
 A build folyamatának ellenőrzéséhez váltson át a Visual Studio **Team Explorer** területének **Builds** (Buildek) lapjára.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási definíciót, amely telepíti az alkalmazást egy fürtre.
 
-Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és lépjen a következő címre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170815.3”.
+Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170815.3”.
 
 ![Service Fabric Explorer][sfx1]
 

@@ -16,7 +16,7 @@
 ## [2. feladat: a hálózati beállítások konfigurálása](active-directory-ds-getting-started-network.md)
 ## [3. feladat: rendszergazdai csoport konfigurálása és az Azure AD Domain Services engedélyezése](active-directory-ds-getting-started-admingroup.md)
 ## [4. feladat: a virtuális hálózat DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)
-## [5. feladat: jelszavak szinkronizálásának engedélyezése](active-directory-ds-getting-started-password-sync.md)
+## [5. feladat: jelszókivonatok szinkronizálásának engedélyezése](active-directory-ds-getting-started-password-sync.md)
 
 # Útmutató
 ## [Felügyelt tartomány állapotának az ellenőrzése](active-directory-ds-check-health.md)
@@ -56,7 +56,7 @@
 
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # Kapcsolódó témakörök
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

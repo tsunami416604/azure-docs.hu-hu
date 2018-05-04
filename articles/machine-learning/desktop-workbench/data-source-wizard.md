@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Data Source varázsló az Azure Machine Learning |} Microsoft Docs"
-description: "Ismerteti az adatforrás varázsló AML munkaterület"
+title: Az Azure Data Source varázsló az Azure Machine Learning |} Microsoft Docs
+description: Ismerteti az adatforrás varázsló AML munkaterület
 services: machine-learning
 author: cforbe
 ms.author: cforbe
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
 ms.openlocfilehash: 4f9a2249142220f3c57cb2e479a175d4227749fd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-source-wizard"></a>Adatforrás varázsló #
 
@@ -22,7 +22,7 @@ Az adatforrás varázsló módja a gyorsan és könnyen elvégezhető dataset vo
 
 ## <a name="step-1-trigger-the-data-source-wizard"></a>1. lépés: Az adatforrás varázsló indítás ## 
 
-Ahhoz, hogy az adatokat az adatforrás varázsló használatával projektbe. Válassza ki a  **+**  mellett a keresőmezőbe a adatnézetben gombra, majd válassza ki az adatforrás hozzáadása. 
+Ahhoz, hogy az adatokat az adatforrás varázsló használatával projektbe. Válassza ki a **+** mellett a keresőmezőbe a adatnézetben gombra, majd válassza ki az adatforrás hozzáadása. 
 
 ![Adja hozzá az adatforrást](media/data-source-wizard/add-data-source.png)
 

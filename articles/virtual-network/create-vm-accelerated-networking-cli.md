@@ -18,7 +18,7 @@ ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: a5e657d3c171b63734ad4bf6c0097a3142993360
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
 ---

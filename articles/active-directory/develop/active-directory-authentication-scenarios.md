@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 04/24/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ef0dcfa0b63ffc9674c88a90f37546e3cc96de90
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f85898d566ea5c6791350df809e960f7e951012d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Az Azure Active Directory hitelesítési forgatókönyvei
 
-Azure Active Directory (Azure AD) identitás megadásával, egy szolgáltatás, például az OAuth 2.0 és az OpenID Connect szabványos protokollt támogat, valamint nyílt forráskódú tárak segítségével különböző platformokon egyszerűbbé teszi a fejlesztők hitelesítési elkezdésére gyorsan. Ez a témakör segít megérteni a különböző forgatókönyvek az Azure AD által támogatott, és bemutatják a kezdéshez. Ez a következő részből áll:
+Azure Active Directory (Azure AD) identitás megadásával, egy szolgáltatás, például az OAuth 2.0 és az OpenID Connect szabványos protokollt támogat, valamint nyílt forráskódú tárak segítségével különböző platformokon egyszerűbbé teszi a fejlesztők hitelesítési elkezdésére gyorsan. Ez a cikk segít megérteni a különböző forgatókönyvek az Azure AD által támogatott, és bemutatják a kezdéshez. Ez a következő részből áll:
 
 * [Az Azure AD hitelesítési alapjai](#basics-of-authentication-in-azure-ad)
 * [Az Azure AD biztonsági jogkivonatokat a jogcím](#claims-in-azure-ad-security-tokens)
@@ -48,14 +48,9 @@ A fenti ábrának szem előtt, az itt található különböző összetevőinek 
 
 * Az Azure AD az identitásszolgáltató felelős a felhasználók és az alkalmazásokat, amelyek a szervezetek könyvtárában identitásának ellenőrzésére, és végső soron a biztonsági jogkivonatokat ezen felhasználók és az alkalmazások sikeres hitelesítés után kiadása.
 * Olyan alkalmazás, amely az Azure AD hitelesítési kihelyező szeretne regisztrálni kell az Azure AD, ami regisztrálja, és egyedileg azonosítja az alkalmazást a címtárban.
-* A fejlesztők a nyílt forráskódú az Azure AD hitelesítési könyvtárat a hitelesítés a protokoll alfolyamatot kezelnek, megkönnyítése. Lásd: [Azure Active Directory hitelesítési Kódtárai](active-directory-authentication-libraries.md) további információt.
-
-• A felhasználó hitelesítése után, az alkalmazásnak ellenőriznie kell a felhasználó biztonsági jogkivonat biztosításához, hogy a hitelesítés sikerült a tervezett felek számára. A megadott hitelesítési könyvtárak segítségével kezeli az Azure AD, beleértve a JSON Web Tokens (JWT) vagy a SAML 2.0-s bármely jogkivonat érvényesítése. Ha azt szeretné, manuálisan érvényességi végrehajtásához, tekintse meg a [JWT jogkivonat-kezelő](https://msdn.microsoft.com/library/dn205065.aspx) dokumentációját.
-
-> [!IMPORTANT]
-> Az Azure AD nyilvános kulcsú hitelesítésen használja a jogkivonatok aláírásához, és győződjön meg arról, hogy azok érvényesek. További tudnivalók a szükséges logika telepíteni kell a győződjön meg arról, hogy az alkalmazás mindig frissítése a legújabb kulccsal rendelkező című [fontos információkat a kulcsváltás az Azure AD](active-directory-signing-key-rollover.md).
-
-• A kérelmeit és válaszait a hitelesítési folyamathoz határozzák meg a hitelesítési protokoll, amelyet használt, például az OAuth 2.0, az OpenID Connect, vagy a WS-Federation, SAML 2.0-s. Ezek a protokollok részletes ismertetése a [Azure Active Directory hitelesítési protokolljai](active-directory-authentication-protocols.md) cikk és az alábbi szakaszokban.
+* A fejlesztők a nyílt forráskódú az Azure AD hitelesítési könyvtárat a hitelesítés a protokoll alfolyamatot kezelnek, megkönnyítése. További információkért lásd: [Azure Active Directory hitelesítési Kódtárai](active-directory-authentication-libraries.md).
+* A felhasználó hitelesítését követően az alkalmazás ellenőrizni kell a felhasználó biztonsági jogkivonat biztosításához, hogy a hitelesítés sikeres volt.  Mi az alkalmazás kell tennie a nyelv és keretrendszer a különböző mintáit tudunk [GitHub](https://github.com/Azure-Samples?q=active-directory).  Ha az ASP.NET webalkalmazás most felépítése, tekintse meg a [bejelentkezhet egy ASP.NET web app útmutató hozzáadása](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp).  Ha a webes API-erőforráshoz az ASP.NET éppen felépítése, tekintse meg a [webes API-k – első lépések útmutató](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
+* A kérelem és válasz a hitelesítési folyamathoz határozzák meg a hitelesítési protokoll, amelyet használt, például az OAuth 2.0, az OpenID Connect, vagy a WS-Federation, SAML 2.0-s. Ezek a protokollok részletes ismertetése a [Azure Active Directory hitelesítési protokolljai](active-directory-authentication-protocols.md) cikk és az alábbi szakaszokban.
 
 > [!NOTE]
 > Az Azure AD támogatja az OAuth 2.0-s, és OpenID Connect szabványok, amelyek nagy mennyiségű használja a tulajdonosi jogkivonatok, beleértve a tulajdonosi jogkivonatok JWTs-ként. A *tulajdonosi jogkivonattal* egy egyszerűsített biztonsági jogkivonat, amely védett erőforrásokhoz való hozzáférést a "tulajdonos". Abban az értelemben a "tulajdonos", amely a token is jelenthet félre. Egy entitás először hitelesítenie kell magát a tulajdonosi jogkivonattal, fogadni az Azure AD, ha a szükséges lépéseket a rendszer nem hajtja végre a lexikális elem szerepel az átvitel, illetve tárolás biztosításához, ha hozzá, és egy nem kívánt félnek használják. Míg néhány biztonsági jogkivonatokat egy beépített mechanizmust meggátolja, hogy a nem hitelesített felek használja őket, a tulajdonosi jogkivonatok nem rendelkezik a mechanizmus, és kell szállítani, például a transport layer security (HTTPS) biztonságos csatorna. Egy tulajdonosi jogkivonatot továbbított szövegként, ha a-átjárójának támadás segítségével egy rosszindulatú fél jogkivonat és a védett erőforrásokhoz való illetéktelen hozzáférés használni. Az azonos biztonsági elveket alkalmazza, ha a tárolást, vagy a gyorsítótárazás tulajdonosi jogkivonatok későbbi használatra. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságos módon tárolja a tulajdonosi jogkivonatokhoz. További biztonsági szempontok a tulajdonosi jogkivonatok, lásd: [RFC 6750 szakasz 5](http://tools.ietf.org/html/rfc6750).
@@ -64,7 +59,7 @@ Most, hogy az alapok, olvassa el az alábbiakban megtudhatja, hogy hogyan létes
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Az Azure AD biztonsági jogkivonatokat a jogcím
 
-Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat) az Azure AD által kiadott jogcímeket vagy helyességi feltételek hitelesítése tulajdonos információinak tartalmaz. Ezeket a jogcímeket a különböző feladatokhoz használhatják az alkalmazást. Például alkalmazások jogcímek használata ellenőrzése a jogkivonat, a tulajdonos directory-bérlő azonosíthatja, felhasználói információk megjelenítése, megállapítása a tulajdonos, és így tovább. A jogcímeket bármely adott biztonsági jogkivonat szerepel token, a felhasználó és az alkalmazás konfigurációját hitelesítéséhez használt hitelesítő adat típusának típusától függenek. Minden Azure AD által kibocsátott jogcím típusú rövid leírása az alábbi táblázatban találhatók. További információkért tekintse meg [támogatott jogkivonatok és jogcímtípusok](active-directory-token-and-claims.md).
+Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat), az Azure AD által kiadott jogcímeket vagy helyességi feltételek hitelesítése tulajdonos információinak tartalmaz. Ezeket a jogcímeket a különböző feladatokhoz használhatják az alkalmazást. Például alkalmazások jogcímek használata ellenőrzése a jogkivonat, a tulajdonos directory-bérlő azonosíthatja, felhasználói információk megjelenítése, megállapítása a tulajdonos, és így tovább. A jogcímeket bármely adott biztonsági jogkivonat szerepel token, a felhasználó és az alkalmazás konfigurációját hitelesítéséhez használt hitelesítő adat típusának típusától függenek. Minden Azure AD által kibocsátott jogcím típusú rövid leírása az alábbi táblázatban találhatók. További információkért tekintse meg [támogatott jogkivonatok és jogcímtípusok](active-directory-token-and-claims.md).
 
 | Jogcím | Leírás |
 | --- | --- |
@@ -93,10 +88,10 @@ Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat) az Azur
 
 Bármely alkalmazás, amely az Azure AD hitelesítési outsources regisztrálni kell a könyvtárban található. Ez a lépés magában foglalja a szólítja fel az Azure AD a alkalmazásról, beleértve az URL-címet, akkor rendelkezik helyét, küldje a választ az URI-t az alkalmazást, és több azonosítása a hitelesítés után az URL-cím. Ezek az információk néhány főbb okból is szükséges:
 
-* Az Azure AD kell kommunikálnia a az alkalmazás bejelentkezésre vagy cserélő jogkivonatok kezelésekor. Az információk az Azure AD között továbbított és az alkalmazás adja meg a következőket:
+* Az Azure AD kell kommunikálnia a az alkalmazás bejelentkezésre vagy cserélő jogkivonatok kezelésekor. Az információk az Azure AD között továbbított és az alkalmazás a következőket tartalmazza:
   
   * **Application ID URI** -alkalmazás azonosítója. Ez az érték az Azure AD-hitelesítés során küldött jelzi, hogy melyik alkalmazás a hívó szeretne rendelni egy token. Emellett ez az érték megtalálható a jogkivonatot, hogy az alkalmazás ismeri a kívánt célkörnyezet volt.
-  * **Válasz URL-cím** és **átirányítási URI-** -web API vagy webes alkalmazás esetén a válasz URL-címe a hely, ahol az Azure AD a hitelesítési válaszra, beleértve a jogkivonatot, ha a hitelesítés sikerült küld. Esetében a natív alkalmazás átirányítási URI-t egy egyedi azonosítója, amelyhez az Azure AD átirányítja a felhasználói ügynök egy OAuth 2.0-lekérdezésben.
+  * **Válasz URL-cím** és **átirányítási URI-** -web API vagy webes alkalmazás, a válasz URL-CÍMEN az a hely, ahol az Azure AD a hitelesítési válaszra, beleértve a jogkivonatot, ha a hitelesítés sikerült küld. Egy natív alkalmazás átirányítási URI-egyedi azonosítója, amelyhez az Azure AD átirányítja a felhasználói ügynök egy OAuth 2.0-lekérdezésben.
   * **Alkalmazásazonosító** -az azonosító egy alkalmazás, amely jön létre az Azure ad az alkalmazás regisztrálásakor. Az engedélyezési kód vagy a token igénylésekor az alkalmazás Azonosítóját és kulcsát kerülnek az Azure AD-hitelesítés során.
   * **Kulcs** -együtt küldött egy Alkalmazásazonosítót hitelesítéséhez az Azure AD a webes API-hívás a kulcsot.
 * Az Azure AD kell ellenőrizze az alkalmazás rendelkezik-e a szükséges engedélyekkel, hozzáférhet a címtár adataihoz, a szervezet más alkalmazásokat, és így tovább.
@@ -115,7 +110,7 @@ A jelen dokumentumban szereplő minden egyes forgatókönyv, mely leírja az üz
 
 ## <a name="application-types-and-scenarios"></a>Alkalmazástípusok és forgatókönyvek
 
-Az itt leírt forgatókönyvek mindegyikének fejleszthetők a különböző nyelvekhez és platformokhoz használatával. Azok az összes üzemelnek által biztosított teljes Kódminták a [kód minták útmutató](active-directory-code-samples.md), vagy közvetlenül a megfelelő [minta GitHub-adattárak](https://github.com/Azure-Samples?utf8=%E2%9C%93&query=active-directory). Emellett ha az alkalmazásnak egy adott vagy egy végpontok közötti forgatókönyv szegmens, a legtöbb esetben funkció felveheti egymástól függetlenül. Például ha egy natív alkalmazás, amely behívja a webes API-k, egyszerűen hozzáadhatja a webes API-t is meghívó webalkalmazás. A következő diagram azt ábrázolja, ezek a forgatókönyvek és alkalmazástípusokat, és hogyan felveheti különböző összetevőket:
+Az itt leírt forgatókönyvek mindegyikének fejleszthetők a különböző nyelvekhez és platformokhoz használatával. Azok az összes által támogatott teljes mintakódok érhető el a [mintakódok útmutató](active-directory-code-samples.md), vagy közvetlenül a megfelelő [minta GitHub-adattárak](https://github.com/Azure-Samples?q=active-directory). Emellett ha az alkalmazásnak egy adott vagy egy végpontok közötti forgatókönyv szegmens, a legtöbb esetben funkció felveheti egymástól függetlenül. Például ha egy natív alkalmazás, amely behívja a webes API-k, egyszerűen hozzáadhatja a webes API-t is meghívó webalkalmazás. A következő diagram azt ábrázolja, ezek a forgatókönyvek és alkalmazástípusokat, és hogyan felveheti különböző összetevőket:
 
 ![Alkalmazástípusok és forgatókönyvek](./media/active-directory-authentication-scenarios/application_types_and_scenarios.png)
 
@@ -138,13 +133,13 @@ Ez a szakasz olyan alkalmazás, amely hitelesíti a felhasználót egy böngész
 #### <a name="description-of-protocol-flow"></a>Protokoll folyamat leírása
 
 1. Amikor a felhasználó felkeresi a alkalmazást, és jelentkezzen be, a rendszer visszairányítja a hitelesítési végpont bejelentkezési kérelem keresztül az Azure ad-ben.
-2. A felhasználó bejelentkezik a bejelentkezési oldalon.
-3. Sikeres hitelesítés esetén az Azure AD egy hitelesítési jogkivonatot hoz létre, és a bejelentkezési választ küld az alkalmazás válasz URL-címet adott meg az Azure portálon. Termelési alkalmazások esetében a válasz URL-CÍMEN HTTPS kell lennie. A visszaküldött jogkivonat felhasználói és az Azure AD szükséges jogcímeket, az alkalmazás ellenőrzése a jogkivonat tartalmazza.
-4. Az alkalmazás használatával egy nyilvános aláírási kulcs és a kiállítói információk érhetők el az összevonási metaadatok dokumentum az Azure AD érvényesíti a jogkivonatot. Után az alkalmazás érvényesíti a jogkivonatot, az Azure AD egy új munkamenet a felhasználó indul. A munkamenet a felhasználó az alkalmazás eléréséhez, amíg le nem jár.
+1. A felhasználó bejelentkezik a bejelentkezési oldalon.
+1. Sikeres hitelesítés esetén az Azure AD egy hitelesítési jogkivonatot hoz létre, és a bejelentkezési választ küld az alkalmazás válasz URL-címet adott meg az Azure portálon. Termelési alkalmazások esetében a válasz URL-CÍMEN HTTPS kell lennie. A visszaküldött jogkivonat felhasználói és az Azure AD szükséges jogcímeket, az alkalmazás ellenőrzése a jogkivonat tartalmazza.
+1. Az alkalmazás használatával egy nyilvános aláírási kulcs és a kiállítói információk érhetők el az összevonási metaadatok dokumentum az Azure AD érvényesíti a jogkivonatot. Után az alkalmazás érvényesíti a jogkivonatot, az Azure AD egy új munkamenet a felhasználó indul. A munkamenet a felhasználó az alkalmazás eléréséhez, amíg le nem jár.
 
 #### <a name="code-samples"></a>Kódminták
 
-A Kódminták talál webböngésző webalkalmazás forgatókönyvek. És foglalkozzon gyakran--jelenleg felvenni új minták folyamatosan. [Webes alkalmazás](active-directory-code-samples.md#web-applications).
+A Kódminták talál webböngésző webalkalmazás forgatókönyvek. És gyakran foglalkozzon – új mintát gyakran kerülnek. [Webes alkalmazás](active-directory-code-samples.md#web-applications).
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -159,7 +154,7 @@ A felhasználói munkamenet lejár, ha az Azure AD által kibocsátott jogkivona
 
 Ez a szakasz ismerteti a hitelesítési egyetlen oldal alkalmazás esetében, amely használja az Azure AD és az OAuth 2.0 típusú implicit engedélyezési adja meg a webes API vissza end biztonságossá. Egyetlen lap alkalmazások általában felépítése rétegként JavaScript bemutató (előtér-), amelyen a böngésző és a Web API háttérből, amely az olyan kiszolgálón fut, és megvalósítja az alkalmazás üzleti logikát. További tudnivalók az implicit hitelesítésengedélyezési, és segít eldönteni, hogy az alkalmazás forgatókönyv szerint jobb [OAuth2 implicit ismertetése adja meg az Azure Active Directoryban folyamat](active-directory-dev-understanding-oauth2-implicit-grant.md).
 
-Ebben a forgatókönyvben, amikor a felhasználó bejelentkezik, a JavaScript első célból használ [Active Directory hitelesítési tár JavaScript (adal-t. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev) és az beszerzése egy azonosító jogkivonatot (id_token) az Azure AD implicit hitelesítésengedélyezési. A jogkivonat található a gyorsítótárban, és az ügyfél csatolja a kérelem a tulajdonosi jogkivonattal, akkor a Web API háttér, amely az OWIN köztes használatával lett biztonságossá téve. 
+Ebben a forgatókönyvben, amikor a felhasználó bejelentkezik, a JavaScript első célból használ [Active Directory hitelesítési tár JavaScript (adal-t. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és az beszerzése egy azonosító jogkivonatot (id_token) az Azure AD implicit hitelesítésengedélyezési. A jogkivonat található a gyorsítótárban, és az ügyfél csatolja a kérelem a tulajdonosi jogkivonattal, akkor a Web API háttér, amely az OWIN köztes használatával lett biztonságossá téve. 
 
 #### <a name="diagram"></a>Ábra
 
@@ -168,17 +163,17 @@ Ebben a forgatókönyvben, amikor a felhasználó bejelentkezik, a JavaScript el
 #### <a name="description-of-protocol-flow"></a>Protokoll folyamat leírása
 
 1. A felhasználók megnyitják a webes alkalmazás.
-2. Az alkalmazás a JavaScript előtér (bemutató réteg) és a böngésző ad vissza.
-3. A felhasználói bejelentkezés, például kezdeményez egy szereplő bejelentkezési hivatkozásra kattintva. A böngészőben egy GET küld az Azure AD engedélyezési végpont egy azonosító jogkivonatot kérni. A kérelem lekérdezési paraméterekhez az alkalmazás Azonosítóját és a válasz URL-CÍMÉT tartalmazza.
-4. Az Azure AD ellenőrzi a válasz URL-CÍMEN, szemben a regisztrált válasz URL-címet adott meg az Azure portálon.
-5. A felhasználó bejelentkezik a bejelentkezési oldalon.
-6. Sikeres hitelesítés esetén az Azure AD egy azonosító adatblokkot hoz létre, és visszaadja egy URL-cím kódrészletet (#), a kérelem-válasz URL-CÍMEN. Termelési alkalmazások esetében a válasz URL-CÍMEN HTTPS kell lennie. A visszaküldött jogkivonat felhasználói és az Azure AD szükséges jogcímeket, az alkalmazás ellenőrzése a jogkivonat tartalmazza.
-7. A böngészőjében futó JavaScript-ügyfél kód a token kiolvassa a hívások az alkalmazás webes API vissza end védelméhez használandó válasz.
-8. A böngésző meghívja az alkalmazás webes API vissza a engedélyezési fejléc végződhet a hozzáférési jogkivonat.
+1. Az alkalmazás a JavaScript előtér (bemutató réteg) és a böngésző ad vissza.
+1. A felhasználói bejelentkezés, például kezdeményez egy bejelentkezési hivatkozásra kattintva. A böngészőben egy GET küld az Azure AD engedélyezési végpont egy azonosító jogkivonatot kérni. A kérelem lekérdezési paraméterekhez az alkalmazás Azonosítóját és a válasz URL-CÍMÉT tartalmazza.
+1. Az Azure AD ellenőrzi a válasz URL-CÍMEN, szemben a regisztrált válasz URL-címet adott meg az Azure portálon.
+1. A felhasználó bejelentkezik a bejelentkezési oldalon.
+1. Sikeres hitelesítés esetén az Azure AD egy azonosító adatblokkot hoz létre, és visszaadja egy URL-cím kódrészletet (#), a kérelem-válasz URL-CÍMEN. Termelési alkalmazások esetében a válasz URL-CÍMEN HTTPS kell lennie. A visszaküldött jogkivonat felhasználói és az Azure AD szükséges jogcímeket, az alkalmazás ellenőrzése a jogkivonat tartalmazza.
+1. A böngészőjében futó JavaScript-ügyfél kód a token kiolvassa a hívások az alkalmazás webes API vissza end védelméhez használandó válasz.
+1. A böngésző meghívja az alkalmazás webes API vissza a engedélyezési fejléc végződhet a hozzáférési jogkivonat.
 
 #### <a name="code-samples"></a>Kódminták
 
-Tekintse meg a mintakódok lap alkalmazás (SPA) forgatókönyvek esetén. Ügyeljen arra, hogy gyakran foglalkozzon – jelenleg felvenni új minták folyamatosan. [Egyetlen lap alkalmazás (SPA)](active-directory-code-samples.md#single-page-applications).
+Tekintse meg a mintakódok lap alkalmazás (SPA) forgatókönyvek esetén. Ügyeljen arra, hogy gyakran foglalkozzon – új mintát gyakran kerülnek. [Egyetlen lap alkalmazás (SPA)](active-directory-code-samples.md#single-page-applications).
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -189,7 +184,12 @@ Az alkalmazás a regisztrálás után azt be kell állítani az OAuth 2.0 Implic
 
 #### <a name="token-expiration"></a>Jogkivonat lejáratáról
 
-Ha ADAL.js használatával kezelheti az Azure AD hitelesítési, kihasználhatja a több funkciót is lehetővé teszi egy lejárt jogkivonat frissítését, valamint a jogkivonatok lekérésének további webes API-erőforrások, amelyeket a lehetséges, hogy az alkalmazás. Amikor a felhasználó sikeresen hitelesíti az Azure ad-vel, a cookie-k által védett munkamenet a felhasználó a böngésző és az Azure AD között. Fontos megjegyezni, hogy a munkamenet létezik-e a felhasználó és az Azure AD között és kapcsolat nem a felhasználó és a webalkalmazás fut a kiszolgálón. Amikor egy jogkivonat lejár, ADAL.js ehhez a munkamenethez segítségével csendes egy másik jogkivonat beszerzése. Ennek érdekében egy rejtett iFrame használatával küldésére és fogadására a kérelem, az OAuth Implicit Grant protokoll használatával. ADAL.js segítségével is ugyanezzel a módszerrel csendes hozzáférési tokenek beszerzése érdekében, az Azure AD, hogy az alkalmazás hívások mindaddig, amíg ezek az erőforrások támogatja az eltérő eredetű erőforrások megosztása (CORS) van regisztrálva az a felhasználó, és a webes API erőforrások számára szükséges beleegyezést bejelentkezéskor a felhasználó által adtak meg.
+A segítségével ADAL.js használatával:
+
+* egy lejárt jogkivonat frissítését
+* a kért olyan hozzáférési jogkivonatot hívni egy webes API-erőforrás
+
+A sikeres hitelesítést követően az Azure AD hozzon létre egy munkamenetet a felhasználó böngészőben a cookie-k ír.  Vegye figyelembe, hogy létezik-e a munkamenet a felhasználó és az Azure AD (nem a felhasználó és a webes alkalmazás közötti) között. Amikor egy jogkivonat lejár, ADAL.js ehhez a munkamenethez segítségével csendes egy másik jogkivonat beszerzése. ADAL.js rejtett iFrame küldésére és fogadására a kérelem, az OAuth Implicit Grant protokollal használja. ADAL.js segítségével is ugyanezzel a módszerrel csendes más webes API-k erőforrások, az alkalmazás hívja, amíg ezek az erőforrások támogatja az eltérő eredetű erőforrások megosztása (CORS), a felhasználó regisztrált, és minden szükséges beleegyezést lett hozzáférési tokenek beszerzése érdekében a felhasználó megadott bejelentkezés során.
 
 ### <a name="native-application-to-web-api"></a>Natív alkalmazás webes API-hoz
 
@@ -204,18 +204,18 @@ Ez a szakasz ismerteti a natív alkalmazás, amely behívja a webes API-k egy fe
 Ha az AD-hitelesítési kódtárakkal használ, a protokoll részleteit az alábbiakban a legtöbb történik meg, például a böngészőben előugró ablak, a token-gyorsítótárazási és a frissítési jogkivonatokat kezelése.
 
 1. Egy böngészővel előugró, a natív alkalmazás egy kérést küld az engedélyezési végpont Azure AD-ben. Ehhez a kérelemhez tartalmazza az alkalmazás Azonosítóját és az átirányítási URI-t a natív alkalmazás, ahogy az az Azure-portálon, és az alkalmazás URI azonosítója a webes API. Ha a felhasználó még nem jelentkezett be, meg kell újból bejelentkezni
-2. Az Azure AD akkor hitelesíti a felhasználót. Ha olyan több-bérlős alkalmazás, és hozzájárulási kell használni az alkalmazást, a felhasználó beleegyezését, ha azok még nem tette meg kell. Hozzájárulás megadása után, és a sikeres hitelesítés után az Azure AD kibocsát egy engedélyezési kód válaszul vissza az ügyfél-alkalmazás átirányítási URI-t.
-3. Ha az Azure AD kibocsát egy engedélyezési kód válaszul vissza az átirányítási URI-t, az ügyfélalkalmazás leállítja a böngésző interakció, és a válaszban szereplő engedélyezési kódot kibontja. Az engedélyezési kód használatával, az ügyfélalkalmazás kérést küld az Azure AD token végpontot, amely engedélyezési kódot tartalmaz, akkor az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrás kapcsolatos információk (alkalmazás URI azonosítója a a webes API-k).
-4. Az Azure AD érvényesíti az engedélyezési kód és az alkalmazás és a webes API-ja kapcsolatos információkat. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT jogkivonat és egy frissítési JWT jogkivonat. Ezenkívül az Azure AD a felhasználó, például a megjelenítendő nevét és a bérlői azonosító alapvető információt ad vissza
-5. A HTTPS PROTOKOLLOKON keresztül az ügyfélalkalmazás az visszaadott JWT jogkivonat a JWT karakterlánc a "Tulajdonos" megnevezés a kérés hitelesítési fejlécéhez modul hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
-6. Ha a hozzáférési jogkivonat lejár, az ügyfélalkalmazás program hibaüzenetet, amely jelzi, hogy a felhasználónak újra hitelesíteni kell. Ha az alkalmazás egy érvényes frissítési jogkivonat, azt segítségével szerezzen be egy új hozzáférési jogkivonat jelentkezhet be a felhasználó értesítése nélkül. Ha a frissítési jogkivonat lejár, az alkalmazás kell ismét interaktív módon a felhasználó hitelesítésére.
+1. Az Azure AD akkor hitelesíti a felhasználót. Ha olyan több-bérlős alkalmazás, és hozzájárulási kell használni az alkalmazást, a felhasználó beleegyezését, ha azok még nem tette meg kell. Hozzájárulás megadása után, és a sikeres hitelesítés után az Azure AD kibocsát egy engedélyezési kód válaszul vissza az ügyfél-alkalmazás átirányítási URI-t.
+1. Ha az Azure AD kibocsát egy engedélyezési kód válaszul vissza az átirányítási URI-t, az ügyfélalkalmazás leállítja a böngésző interakció, és a válaszban szereplő engedélyezési kódot kibontja. Az engedélyezési kód használatával, az ügyfélalkalmazás kérést küld az Azure AD token végpontot, amely engedélyezési kódot tartalmaz, akkor az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrás kapcsolatos információk (alkalmazás URI azonosítója a a webes API-k).
+1. Az Azure AD érvényesíti az engedélyezési kód és az alkalmazás és a webes API-ja kapcsolatos információkat. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT jogkivonat és egy frissítési JWT jogkivonat. Ezenkívül az Azure AD a felhasználó, például a megjelenítendő nevét és a bérlői azonosító alapvető információt ad vissza
+1. A HTTPS PROTOKOLLOKON keresztül az ügyfélalkalmazás az visszaadott JWT jogkivonat a JWT karakterlánc a "Tulajdonos" megnevezés a kérés hitelesítési fejlécéhez modul hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
+1. Ha a hozzáférési jogkivonat lejár, az ügyfélalkalmazás program hibaüzenetet, amely jelzi, hogy a felhasználónak újra hitelesíteni kell. Ha az alkalmazás egy érvényes frissítési jogkivonat, azt segítségével szerezzen be egy új hozzáférési jogkivonat jelentkezhet be a felhasználó értesítése nélkül. Ha a frissítési jogkivonat lejár, az alkalmazás kell ismét interaktív módon a felhasználó hitelesítésére.
 
 > [!NOTE]
 > Az Azure AD által kiadott frissítési jogkivonat segítségével több erőforrások elérését. Például ha egy ügyfél-alkalmazás, amely jogosult két webes API-k hívására, a frissítési jogkivonat segítségével szerezze be a hozzáférési tokent a más webes API-hoz is.
 
 #### <a name="code-samples"></a>Kódminták
 
-Tekintse meg a mintakódok natív alkalmazás számára, hogy a webes API-forgatókönyvek. És foglalkozzon gyakran--jelenleg felvenni új minták folyamatosan. [Webes API-t natív alkalmazás](active-directory-code-samples.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
+Tekintse meg a mintakódok natív alkalmazás számára, hogy a webes API-forgatókönyvek. És foglalkozzon gyakran--jelenleg az új mintát gyakran felvenni. [Webes API-t natív alkalmazás](active-directory-code-samples.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -240,35 +240,35 @@ Ez a szakasz ismerteti a webalkalmazás, amelyet a webes API-k erőforrások lek
 
 #### <a name="description-of-protocol-flow"></a>Protokoll folyamat leírása
 
-Az Alkalmazásidentitás és a delegált felhasználói identitás típusok az alábbi folyamat ismerteti. A fő különbség a kettő között, hogy a felhasználó delegált identitása először kell szerezni az engedélyezési kód, mielőtt a felhasználó bejelentkezési és a webes API-k eléréséhez.
+Az Alkalmazásidentitás és a delegált felhasználói identitás típusok az alábbi folyamat ismerteti. A fő különbség a kettő között, hogy a felhasználó delegált identitása először kell szerezni az engedélyezési kód, mielőtt a felhasználó bejelentkezhet és a webes API-k eléréséhez.
 
 ##### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Adja meg az Alkalmazásidentitás OAuth 2.0 ügyfél-hitelesítő adatokkal
 
 1. A felhasználó van bejelentkezve az Azure AD-t a webes alkalmazás (lásd a [webböngészőt a webes alkalmazás](#web-browser-to-web-application) fent).
-2. A webalkalmazásnak kell szerezni a hozzáférési tokent, hogy a webes API-t a hitelesítéshez és a kívánt erőforrás lekérése. Ez egy kérést küld az Azure AD token-végpont, a hitelesítő adatokat, Alkalmazásazonosítót és webes API-alkalmazás URI azonosítója.
-3. Az Azure AD hitelesíti az alkalmazást, és adja vissza a JWT jogkivonat, amellyel a webes API hívása.
-4. A HTTPS PROTOKOLLOKON keresztül a webes alkalmazás használatával az visszaadott JWT jogkivonat a kérés hitelesítési fejlécéhez a "Tulajdonos" megjelölés JWT karakterlánc hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
+1. A webalkalmazásnak kell szerezni a hozzáférési tokent, hogy a webes API-t a hitelesítéshez és a kívánt erőforrás lekérése. Ez egy kérést küld az Azure AD token-végpont, a hitelesítő adatokat, Alkalmazásazonosítót és webes API-alkalmazás URI azonosítója.
+1. Az Azure AD hitelesíti az alkalmazást, és adja vissza a JWT jogkivonat, amellyel a webes API hívása.
+1. A HTTPS PROTOKOLLOKON keresztül a webes alkalmazás használatával az visszaadott JWT jogkivonat a kérés hitelesítési fejlécéhez a "Tulajdonos" megjelölés JWT karakterlánc hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
 
 ##### <a name="delegated-user-identity-with-openid-connect"></a>Az OpenID Connect delegált felhasználói azonosító
 
 1. A felhasználó van bejelentkezve az Azure AD használata ingyenes webalkalmazás (lásd a [webböngészőt a webes alkalmazás](#web-browser-to-web-application) fenti szakaszban). Ha a felhasználó a webalkalmazás nem még hozzájárult lehetővé téve a webes alkalmazás a webes API hívásához a nevében, a felhasználó beleegyezését kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyek, a címtárban a normál felhasználók nem fogják tudni hozzájárulás. A hozzájárulási folyamat csak több-bérlős alkalmazásra vonatkozik, nem egyetlen bérlői alkalmazások, mint az alkalmazás már rendelkezik a szükséges engedélyekkel. Amikor a felhasználó jelentkezik be, a webes alkalmazás kapott egy azonosító jogkivonat a felhasználó, valamint az engedélyezési kód kapcsolatos információkat.
-2. Az Azure AD által kiadott engedélyezési kódot használja, a webes alkalmazás kérést küld, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrás (Alkalmazásazonosító URI-alkalmazás a webes API) az Azure AD-jogkivonat végpontjához.
-3. Az Azure AD érvényesíti az engedélyezési kódot és az információt a webalkalmazás és a webes API. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT jogkivonat és egy frissítési JWT jogkivonat.
-4. A HTTPS PROTOKOLLOKON keresztül a webes alkalmazás használatával az visszaadott JWT jogkivonat a kérés hitelesítési fejlécéhez a "Tulajdonos" megjelölés JWT karakterlánc hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
+1. Az Azure AD által kiadott engedélyezési kódot használja, a webes alkalmazás kérést küld, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrás (Alkalmazásazonosító URI-alkalmazás a webes API) az Azure AD-jogkivonat végpontjához.
+1. Az Azure AD érvényesíti az engedélyezési kódot és az információt a webalkalmazás és a webes API. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT jogkivonat és egy frissítési JWT jogkivonat.
+1. A HTTPS PROTOKOLLOKON keresztül a webes alkalmazás használatával az visszaadott JWT jogkivonat a kérés hitelesítési fejlécéhez a "Tulajdonos" megjelölés JWT karakterlánc hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
 
 ##### <a name="delegated-user-identity-with-oauth-20-authorization-code-grant"></a>Az OAuth 2.0 kód hitelesítésengedélyezési delegált felhasználók identitását
 
 1. A felhasználó már bejelentkezett egy webes alkalmazás, amelynek hitelesítési módszer használata az Azure AD független.
-2. A webalkalmazás az engedélyezési kód Szerezzen be a hozzáférési tokent, így azt a böngészőben egy kérelmet ad ki az Azure AD hitelesítési végpontra, Alkalmazásazonosító megadása és a sikeres hitelesítést követően a webes alkalmazás átirányítási URI-címe van szükség. A felhasználó bejelentkezik az Azure ad Szolgáltatásba.
-3. Ha a felhasználó a webalkalmazás nem még hozzájárult lehetővé téve a webes alkalmazás a webes API hívásához a nevében, a felhasználó beleegyezését kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyek, a címtárban a normál felhasználók nem fogják tudni hozzájárulás. A hozzájárulási egyetlen és több-bérlős alkalmazásra vonatkozik.  Az egyetlen bérlő esetében egy rendszergazda hajthat végre a rendszergazda jóváhagyását a hozzájárulási azok a felhasználók nevében.  Ehhez használja a `Grant Permissions` gombra a [Azure Portal](https://portal.azure.com). 
-4. Miután a felhasználó hozzájárult, a webalkalmazás kap olyan hozzáférési jogkivonatot szerezni szükséges engedélyezési kódot.
-5. Az Azure AD által kiadott engedélyezési kódot használja, a webes alkalmazás kérést küld, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrás (Alkalmazásazonosító URI-alkalmazás a webes API) az Azure AD-jogkivonat végpontjához.
-6. Az Azure AD érvényesíti az engedélyezési kódot és az információt a webalkalmazás és a webes API. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT jogkivonat és egy frissítési JWT jogkivonat.
-7. A HTTPS PROTOKOLLOKON keresztül a webes alkalmazás használatával az visszaadott JWT jogkivonat a kérés hitelesítési fejlécéhez a "Tulajdonos" megjelölés JWT karakterlánc hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
+1. A webalkalmazás az engedélyezési kód Szerezzen be a hozzáférési tokent, így azt a böngészőben egy kérelmet ad ki az Azure AD hitelesítési végpontra, Alkalmazásazonosító megadása és a sikeres hitelesítést követően a webes alkalmazás átirányítási URI-címe van szükség. A felhasználó bejelentkezik az Azure ad Szolgáltatásba.
+1. Ha a felhasználó a webalkalmazás nem még hozzájárult lehetővé téve a webes alkalmazás a webes API hívásához a nevében, a felhasználó beleegyezését kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyek, a címtárban a normál felhasználók nem fogják tudni hozzájárulás. A hozzájárulási egyetlen és több-bérlős alkalmazásra vonatkozik.  Az egyetlen bérlő esetében egy rendszergazda hajthat végre a rendszergazda jóváhagyását a hozzájárulási azok a felhasználók nevében.  Ehhez használja a `Grant Permissions` gombra a [Azure Portal](https://portal.azure.com). 
+1. Miután a felhasználó hozzájárult, a webalkalmazás kap olyan hozzáférési jogkivonatot szerezni szükséges engedélyezési kódot.
+1. Az Azure AD által kiadott engedélyezési kódot használja, a webes alkalmazás kérést küld, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrás (Alkalmazásazonosító URI-alkalmazás a webes API) az Azure AD-jogkivonat végpontjához.
+1. Az Azure AD érvényesíti az engedélyezési kódot és az információt a webalkalmazás és a webes API. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT jogkivonat és egy frissítési JWT jogkivonat.
+1. A HTTPS PROTOKOLLOKON keresztül a webes alkalmazás használatával az visszaadott JWT jogkivonat a kérés hitelesítési fejlécéhez a "Tulajdonos" megjelölés JWT karakterlánc hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
 
 #### <a name="code-samples"></a>Kódminták
 
-A Kódminták talál Web API forgatókönyvek webalkalmazás. És foglalkozzon gyakran--jelenleg felvenni új minták folyamatosan. Webes [alkalmazás webes API-hoz](active-directory-code-samples.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
+A Kódminták talál Web API forgatókönyvek webalkalmazás. És gyakran foglalkozzon – új mintát gyakran kerülnek. Webes [alkalmazás webes API-hoz](active-directory-code-samples.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 
 #### <a name="registering"></a>Regisztrálása
 
@@ -296,21 +296,21 @@ A forgatókönyvhöz egy kiszolgálói alkalmazás kell egy webes API-hívás es
 ##### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Adja meg az Alkalmazásidentitás OAuth 2.0 ügyfél-hitelesítő adatokkal
 
 1. Először a kiszolgálóalkalmazás kell hitelesítenie magát az Azure ad szolgáltatással, mint például az interaktív bejelentkezési párbeszédpanel emberi beavatkozás nélkül. Ez egy kérést küld az Azure AD token-végpont, a hitelesítő adatok, a Alkalmazásazonosító és az alkalmazás URI azonosítója.
-2. Az Azure AD hitelesíti az alkalmazást, és adja vissza a JWT jogkivonat, amellyel a webes API hívása.
-3. A HTTPS PROTOKOLLOKON keresztül a webes alkalmazás használatával az visszaadott JWT jogkivonat a kérés hitelesítési fejlécéhez a "Tulajdonos" megjelölés JWT karakterlánc hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
+1. Az Azure AD hitelesíti az alkalmazást, és adja vissza a JWT jogkivonat, amellyel a webes API hívása.
+1. A HTTPS PROTOKOLLOKON keresztül a webes alkalmazás használatával az visszaadott JWT jogkivonat a kérés hitelesítési fejlécéhez a "Tulajdonos" megjelölés JWT karakterlánc hozzáadása a webes API-t. A webes API-k majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, akkor adja vissza a kívánt erőforrás.
 
 ##### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>OAuth 2.0 On-Behalf-Of vázlat meghatározásával delegált felhasználói azonosító
 
 Az alábbiakban tárgyalt folyamata azt feltételezi, hogy, hogy a felhasználó hitelesítése egy másik alkalmazástól (például egy natív alkalmazás), és a felhasználói identitás már használja egy hozzáférési jogkivonatát az első szintű webes API-k megszerzésére.
 
 1. A natív alkalmazás küld az első szintű webes API-t a hozzáférési jogkivonat.
-2. Az első szintű webes API-t egy kérést küld az Azure AD token-végpont, így az alkalmazás Azonosítóját és hitelesítő adatait, valamint a felhasználói jogkivonat. Emellett a kérelem nem jut egy on_behalf_of paraméter, amely azt jelzi, a webes API által kért új jogkivonatai és az eredeti felhasználó nevében alsóbb rétegbeli webes API-hívás.
-3. Az Azure AD ellenőrzi, hogy az első szintű webes API-k jogosult az elérésére, a második szintű webes API-t, és érvényesíti a kérelem egy JWT jogkivonatot ad vissza, és a jwt-t frissítési token az első szintű webes API-hoz.
-4. A HTTPS PROTOKOLLOKON keresztül az első szintű web API majd meghívja a második szintű webes API-t a kérés hitelesítési fejlécéhez a lexikális elem karakterlánca hozzáfűzésével. Az első szintű webes API-t továbbra is a második szintű webes API-k hívható meg, amíg a hozzáférési jogkivonat és frissítési jogkivonatok érvényesek.
+1. Az első szintű webes API-t egy kérést küld az Azure AD token-végpont, így az alkalmazás Azonosítóját és hitelesítő adatait, valamint a felhasználói jogkivonat. Emellett a kérelem nem jut egy on_behalf_of paraméter, amely azt jelzi, a webes API által kért új jogkivonatai és az eredeti felhasználó nevében alsóbb rétegbeli webes API-hívás.
+1. Az Azure AD ellenőrzi, hogy az első szintű webes API-k jogosult az elérésére, a második szintű webes API-t, és érvényesíti a kérelem egy JWT jogkivonatot ad vissza, és a jwt-t frissítési token az első szintű webes API-hoz.
+1. A HTTPS PROTOKOLLOKON keresztül az első szintű web API majd meghívja a második szintű webes API-t a kérés hitelesítési fejlécéhez a lexikális elem karakterlánca hozzáfűzésével. Az első szintű webes API-t továbbra is a második szintű webes API-k hívható meg, amíg a hozzáférési jogkivonat és frissítési jogkivonatok érvényesek.
 
 #### <a name="code-samples"></a>Kódminták
 
-Tekintse meg a mintakódok démon vagy webes API-forgatókönyvek kiszolgálói alkalmazás. És foglalkozzon gyakran--jelenleg felvenni új minták folyamatosan. [Kiszolgáló vagy démon alkalmazás webes API-hoz](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Tekintse meg a mintakódok démon vagy webes API-forgatókönyvek kiszolgálói alkalmazás. És gyakran foglalkozzon – új mintát gyakran kerülnek. [Kiszolgáló vagy démon alkalmazás webes API-hoz](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 #### <a name="registering"></a>Regisztrálása
 

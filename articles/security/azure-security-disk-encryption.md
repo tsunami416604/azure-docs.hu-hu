@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw
-ms.openlocfilehash: df13f23908aa787bfcc579340ed0aa6cb0d5ed29
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 813124ae7c0dd76a27dcbaea6f0d7aa19bc1e49c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption
 A Microsoft Azure elkötelezett a kifejezetten a adatvédelem, az adatok közös joghatóság alá és a lehetővé teszi, hogy az Azure tárolt adatok végig a vezérlő speciális technológiák titkosításához, szabályozása és titkosítási kulcsok kezeléséhez az adatok vezérlő & naplózási hozzáférést. Ez rugalmasságot biztosít, Azure-ügyfél és válassza ki a saját üzleti igényeinek leginkább megfelelő megoldást. A dokumentum azt kódelemeit egy új technológia megoldás "Azure Disk Encryption for Windows és Linux infrastruktúra-szolgáltatási virtuális gép által" és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni segítségével. A dokumentum biztosít részletes útmutatás a lemezt Azure titkosítási szolgáltatásai, beleértve a támogatott forgatókönyveket, és a felhasználói élmény.
@@ -141,7 +141,7 @@ Mielőtt engedélyezte a támogatott forgatókönyveket, a "Overview" szakaszban
 > [!NOTE]
 > Windows Server 2008 R2 rendelkeznie kell az Azure-titkosítás engedélyezése előtt telepített .NET-keretrendszer 4.5. Telepítheti a Windows Update szolgáltatással a Microsoft .NET-keretrendszer 4.5.2-es verzióját a Windows Server 2008 R2 x64-alapú rendszerek nem kötelező frissítés telepítésével ([KB2901983](https://support.microsoft.com/kb/2901983)).
 
-* Az Azure Disk Encryption csak a megadott Azure-katalógus alapú Linux server disztribúciók és verziók.  A jelenleg támogatott verziók listáját, olvassa el a [Azure lemez titkosítási GYIK](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq).
+* Az Azure Disk Encryption csak a megadott Azure-katalógus alapú Linux server disztribúciók és verziók.  A jelenleg támogatott verziók listáját, olvassa el a [Azure lemez titkosítási GYIK](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq).
 
 * Az Azure Disk Encryption megköveteli, hogy a kulcstartó és a virtuális gépek találhatók az azonos Azure-régió, és az előfizetés.
 
@@ -783,7 +783,7 @@ Használja a [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.asp
 
 ##### <a name="prerequisites-for-os-disk-encryption"></a>Az operációs rendszer lemeztitkosítás előfeltételei
 
-* A virtuális Gépet kell használnia egy kompatibilis operációs rendszer lemeztitkosítás terjesztési céljuk a [Azure lemez titkosítási – gyakori kérdések](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
+* A virtuális Gépet kell használnia egy kompatibilis operációs rendszer lemeztitkosítás terjesztési céljuk a [Azure lemez titkosítási – gyakori kérdések](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
 * A virtuális gép kell létrehozni a Piactéri lemezképből az Azure Resource Manager.
 * Az Azure virtuális gép, és legalább 4 GB RAM (mérete 7 GB ajánlott).
 * (Az RHEL és CentOS) Tiltsa le a SELinux. Tiltsa le a SELinux, lásd a "4.4.2. SELinux "található letiltásával a [SELinux felhasználói és rendszergazdai útmutató](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) a virtuális Gépen.

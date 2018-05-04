@@ -1,3 +1,5 @@
+- name: Azure IoT – alapok
+  href: ../iot-fundamentals/index.yml
 - name: Az Azure IoT Edge dokumentációja
   href: index.yml
 - name: Áttekintés
@@ -51,6 +53,8 @@
           href: how-to-vscode-debug-csharp-module.md
         - name: Azure-függvények hibakeresése
           href: how-to-vscode-debug-azure-function.md
+    - name: CI/CD a VSTS-ben
+      href: how-to-ci-cd.md
     - name: Adatok tárolása a peremhálózaton
       href: sql-storage.md
     - name: Hibaelhárítás
@@ -76,6 +80,32 @@
       href: security.md
     - name: IoT Edge-szószedet
       href: iot-edge-glossary.md
+- name: Kapcsolódó témakörök
+  items:
+    - name: Megoldások
+      items:
+        - name: IoT Suite előre konfigurált megoldások
+          href: /azure/iot-suite
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub eszközkiépítési szolgáltatás
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Szolgáltatási SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
     - name: Azure Certified for IoT eszközkatalógus

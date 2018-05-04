@@ -1,4 +1,26 @@
-
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 794fd51c38f66b24193c7da7a145d58f7a225b30
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="setting-up-your-web-server-or-project"></a>A webkiszolgáló vagy a projekt létrehozása
 
 > Ez a minta-projekt letöltése helyette inkább? 
@@ -7,7 +29,7 @@
 > vagy
 > - [Töltse le a projektfájlok](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) helyi webkiszolgáló, például a Python
 >
-> Majd folytassa a és a [konfigurációs lépés](#create-an-application-express) a kódminta konfigurálása előtt futtatnia kell.
+> Majd folytassa a és a [konfigurációs lépés](#register-your-application) a kódminta konfigurálása előtt futtatnia kell.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Például egy helyi webkiszolgálót [Python http.server](https://www.python.org/downloads/), [http-kiszolgáló](https://www.npmjs.com/package/http-server/), [.NET Core](https://www.microsoft.com/net/core), vagy az IIS Express integrációja [Visual Studio 2017](https://www.visualstudio.com/downloads/) Ez az interaktív telepítés futtatásához szükséges. 
@@ -16,12 +38,12 @@ Ez az útmutató utasításait a Python és a Visual Studio 2017 alapulnak, de s
 
 ## <a name="create-your-project"></a>A projekt létrehozása 
 
-> ### <a name="option-1-visual-studio"></a>Option 1: Visual Studio 
+> ### <a name="option-1-visual-studio"></a>1. lehetőség: A Visual Studio 
 > Ha a Visual Studio használ, és a rendszer létrehoz egy új projektet, kövesse az alábbi lépéseket egy új Visual Studio megoldás létrehozásához:
-> 1.    A Visual Studio:`File` > `New` > `Project`
-> 2.    A `Visual C#\Web`, jelölje be`ASP.NET Web Application (.NET Framework)`
+> 1.    A Visual Studio:  `File` > `New` > `Project`
+> 2.    A `Visual C#\Web`, jelölje be `ASP.NET Web Application (.NET Framework)`
 > 3.    Az alkalmazás neve, és kattintson a *OK*
-> 4.    A `New ASP.NET Web Application`, jelölje be`Empty`
+> 4.    A `New ASP.NET Web Application`, jelölje be `Empty`
 
 <p/><!-- -->
 

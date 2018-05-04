@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c0db53a8eadefe661837ab0dbc84fd2eb4bf6057
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 98f20e8a185e1c36f4114d3a196db61a9dccc3c9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>Oktatóanyag: .NET Core- és SQL Database-webalkalmazás összeállítása az Azure App Service-ben
 
@@ -132,6 +132,10 @@ Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](../s
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
+
+> [!TIP] 
+> Még szigorúbb tűzfalszabályt is megadhat, ha [csak azokat a kimenő IP-címeket használja, amelyeket alkalmazása használ](app-service-ip-addresses.md#find-outbound-ips).
+>
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása
 

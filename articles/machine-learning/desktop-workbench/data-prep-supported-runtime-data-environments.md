@@ -1,6 +1,6 @@
 ---
-title: "Végrehajtási és az adatok környezetek kombinációját támogatott az Azure Machine Learning adatok előkészített |} Microsoft Docs"
-description: "Ez a dokumentum különböző futtatókörnyezetek és adatforrások támogatott kombinációi teljes listáját biztosít az Azure Machine Learning adatok elkezdése"
+title: Végrehajtási és az adatok környezetek kombinációját támogatott az Azure Machine Learning adatok előkészített |} Microsoft Docs
+description: Ez a dokumentum különböző futtatókörnyezetek és adatforrások támogatott kombinációi teljes listáját biztosít az Azure Machine Learning adatok elkezdése
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,20 +8,20 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: bdd1c51c915787d9e9522f6691ae0ff06d546484
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-matrix-for-this-release"></a>Ebben a kiadásban támogatott mátrix 
 Ha a kód adatokat tölt az Azure Machine Learning adatforrások vagy az Azure Machine Learning adatok előkészített, vagy egy Pandas első használatával, vagy a Spark dataframe, kísérlet a következő kombinációk számítási és az adatok helyek támogatottak:
 
-|     |Helyi fájlok  |Azure Blob Storage  |SQL Server database***  |
+|     |Helyi fájlok  |Azure Blob Storage  |SQL Server adatbázis x  |
 |---------|---------|---------|---------|---------|
 |Helyi Python    |     Támogatott    |Nem támogatott         | Nem támogatott        |         |
 |Python docker (Linux virtuális gép)     |Project fájlok csak a támogatott *         | Nem támogatott        |        Nem támogatott |         |
@@ -29,7 +29,7 @@ Ha a kód adatokat tölt az Azure Machine Learning adatforrások vagy az Azure M
 |Az Azure Data tudományos virtuális gép Python     |Project fájlok csak a támogatott *         |Nem támogatott         |Nem támogatott         |         |
 |Az Azure Data tudományos virtuális gép PySPark     | Project fájlok csak a támogatott *        |Nem támogatott         |Nem támogatott         |         |
 |Azure HDInsight PySpark     | Nem támogatott        |Támogatott         |Támogatott**         |         |
-|Azure HDInsight Python     | Nem támogatott        | Nem támogatott        | Nem támogatott        |         |
+|Az Azure HDInsight Python     | Nem támogatott        | Nem támogatott        | Nem támogatott        |         |
 
 Azure Data Lake Store jelenleg nem támogatott a számítási cél.
 

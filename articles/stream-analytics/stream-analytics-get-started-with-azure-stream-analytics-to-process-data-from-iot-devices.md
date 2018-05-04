@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: hero-article
 ms.date: 03/28/2017
-ms.openlocfilehash: 491b0fdba464e5b0c6225a75c534ca6abb710855
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8bee80647d692b60898880a85652189a684426f7
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Ismerje meg az Azure Stream Analytics használ azát és az IoT-eszközökről származó ad azok feldolgozását
 Ez az oktatóanyag bemutatja, hogyan hozhat létre streamfeldolgozó logikákat, és hogyan gyűjthet velük adatokat az eszközök internetes hálózatára kapcsolódó (IoT-) eszközökről. Egy valódi, az IoT-re épülő gyakorlati esettel fogjuk bemutatni, hogyan hozhat létre egy megoldást gyorsan és gazdaságosan.
@@ -27,19 +27,21 @@ A Contoso egy vállalat az ipari automatizálás területén, amely teljesen aut
 
 Itt az adatokat egy Texas Instrument Sensor Tag eszköz állítja elő. A hasznos adatok JSON formátumban vannak, és a következőképpen néznek ki:
 
-    {
-        "time": "2016-01-26T20:47:53.0000000",  
-        "dspl": "sensorE",  
-        "temp": 123,  
-        "hmdt": 34  
-    }  
+```json
+{
+    "time": "2016-01-26T20:47:53.0000000",  
+    "dspl": "sensorE",  
+    "temp": 123,  
+    "hmdt": 34  
+}  
+```
 
 A valós forgatókönyvekben több száz ilyen érzékelő állíthat elő eseményeket streamként. Ideális esetben van egy átjáróeszköz, amely egy bizonyos kód futtatásával elküldi ezeket az eseményeket az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT Hubs](https://azure.microsoft.com/services/iot-hub/) részére. A Stream Analytics-feladatok felhasználják az Event Hubs eseményeit, és a streameken valós idejű lekérdezéseket futtatnak. Ezután elküldheti az eredményeket az egyik [támogatott kimenetre](stream-analytics-define-outputs.md).
 
 A használat megkönnyítése érdekében ez a Kezdeti lépések útmutató valódi SensorTag eszközökről származó mintaadatfájlokat biztosít. Ezeken lekérdezéseket futtathat, és megtekintheti az eredményeiket. A következő útmutatókból megtudhatja, hogyan csatlakoztathatja a feladatait bemenetekhez és kimenetekhez, és hogyan helyezheti üzembe őket az Azure szolgáltatásban.
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
-1. Az [Azure Portalban](http://portal.azure.com) kattintson a plusz jelre, majd írja be **STREAM ANALYTICS** a jobb oldalon lévő szövegablakba. Ezután válassza ki **Stream Analytics-feladat** az eredménylistában.
+1. Az [Azure Portalban](https://portal.azure.com) kattintson a plusz jelre, majd írja be **STREAM ANALYTICS** a jobb oldalon lévő szövegablakba. Ezután válassza ki **Stream Analytics-feladat** az eredménylistában.
    
     ![Új Stream Analytics-feladat létrehozása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 2. Adjon meg egy egyedi feladat nevet, és ellenőrizze, hogy az előfizetés megfelelő a feladatához. Ezután hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt az előfizetésén.

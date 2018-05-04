@@ -1,26 +1,24 @@
 ---
-title: "Spark strukturált adatfolyamként való továbbítás az Azure HDInsight |} Microsoft Docs"
-description: "Spark strukturált adatfolyam-alkalmazások használata a HDInsight Spark-fürtök."
+title: Spark strukturált adatfolyamként való továbbítás az Azure HDInsight |} Microsoft Docs
+description: Spark strukturált adatfolyam-alkalmazások használata a HDInsight Spark-fürtök.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: aa56c1e2f1f506be51f449a1cf10b4f0bc57a152
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: ca4a248e9da2c0d50aaf320370b1f3050a0ff263
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="overview-of-spark-structured-streaming"></a>A strukturált Spark Streaming áttekintése
 
@@ -120,7 +118,7 @@ Az azonos SparkSession, a lekérdezés futtatása közben a sparksql-hez lekérd
 Ez a lekérdezés eredményeit az alábbihoz hasonló eredményez:
 
 
-| ablak |  Min(Temp) | avg(temp) | max(temp) |
+| ablak |  Min(Temp) | AVG(Temp) | Max(Temp) |
 | --- | --- | --- | --- |
 |{u'start': ' 2016 u-07-26T02:00:00.000Z ", u'end"... |    95 |    95.231579 | 99 |
 |{u'start': ' 2016 u-07-26T03:00:00.000Z ", u'end"...  |95 |   96.023048 | 99 |

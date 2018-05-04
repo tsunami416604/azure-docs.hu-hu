@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning-munkaterület használatával például átalakítással oszlop felosztásához"
-description: "A \"Oszlop felosztása a példa alapján\" transzformáció a referenciadokumentum"
+title: Azure Machine Learning-munkaterület használatával például átalakítással oszlop felosztásához
+description: A "Oszlop felosztása a példa alapján" transzformáció a referenciadokumentum
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -12,10 +12,10 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 497c1725fc4554792add11c0ec069d1628a89fbd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="split-column-by-example-transformation"></a>Példa átalakítással osztott oszlop
 A transzformáció predictively felhasználói beavatkozást nem igénylő felosztja a jelentéssel bíró határokon belül oszlop tartalmát. A felosztott algoritmus a határok kiválasztja az oszlop tartalmának elemzése után. Ezek a hatókörök sikerült határozza meg
@@ -120,12 +120,12 @@ Itt látható egy másik példa több tetszőleges elválasztó karaktert. Ebben
 |logtext|
 |:-----|
 |192.128.138.20--[16 Oct/2016. december 16:22:33-0200] "GET /images/picture.gif HTTP/1.1" 234 343 www.yahoo.com "http://www.example.com/" "Mozilla vagy 4.0-s verzióját (kompatibilis; MSIE 4)""-"|
-|10.128.72.213--[17 Oct/2016. december 12:43:12 +0300] "GET /news/stuff.html HTTP/1.1" 200 "http://www.sample.com/" "Mozilla/5.0 (MSIE)" 6233 www.aol.com "-"|
+|10.128.72.213--[17 Oct/2016. december 12:43:12 +0300] "GET /news/stuff.html HTTP/1.1" 200 6233 www.aol.com "http://www.sample.com/" "Mozilla/5.0 (MSIE)" "-"|
 |192.165.71.165--[november 12/2016 14:22:44-0500] "GET /sample.ico HTTP/1.1" 342 7342 www.facebook.com "-" "Mozilla/5.0 (Windows; U; Windows NT 5.1; RV:1.7.3) ""-"|
-|10.166.64.165 - - [23/Nov/2016 01:52:45 -0800] "GET /style.css HTTP/1.1" 200 2552 www.google.com "http://www.test.com/index.html" "Mozilla/5.0 (Windows)" "-"|
+|10.166.64.165--[23 november/2016. december 01:52:45-0800] "GET /style.css HTTP/1.1" 200 2552 www.google.com "http://www.test.com/index.html" "Mozilla/5.0 (Windows)" "-"|
 |192.167.1.193--[16/Jan/2017 22:34:56 +0200] "GET /js/ads.js HTTP/1.1" 200 23462 www.microsoft.com "http://www.illustration.com/index.html" "Mozilla/5.0 (Windows)" "-"|
 |192.147.76.193--[28/Jan/2017 26:36:16 +0800] "GET /search.php HTTP/1.1" 400 1777 www.bing.com "-" "Mozilla vagy 4.0-s verzióját (kompatibilis; MSIE 6.0; Windows NT 5.1)""-"|
-|192.166.64.165 - - [23/Mar/2017 01:55:25 -0800] "GET /style.css HTTP/1.1" 200 2552 www.google.com "http://www.test.com/index.html" "Mozilla/5.0 (Windows)" "-"|
+|192.166.64.165--[23/gyel/2017 01:55:25-0800] "GET /style.css HTTP/1.1" 200 2552 www.google.com "http://www.test.com/index.html" "Mozilla/5.0 (Windows)" "-"|
 |11.167.1.193--[16/6%/4!a/2017 11:34:36 +0200] "GET /js/ads.js HTTP/1.1" 200 23462 www.microsoft.com "http://www.illustration.com/index.html" "Mozilla/5.0 (Windows)" "-"|
 
 Lekérdezi ossza fel:
@@ -137,7 +137,7 @@ Lekérdezi ossza fel:
 |192.165.71.165|12 november/2016. december|14:22:44|-0500|GET|sample.ico|HTTP|1.1|342|7342|www.facebook.com|-|Mozilla|5.0|Windows; U; Windows NT 5.1; RV:1.7.3|
 |10.166.64.165|23 november/2016. december|01:52:45|-0800|GET|Style.css|HTTP|1.1|200|2552|www.google.com|http://www.test.com/index.html|Mozilla|5.0|Windows|
 |192.167.1.193|16/Jan/2017|22:34:56|+0200|GET|js/ads.js|HTTP|1.1|200|23462|www.microsoft.com|http://www.illustration.com/index.html|Mozilla|5.0|Windows|
-|192.147.76.193|28/Jan/2017|26:36:16|+0800|GET|search.php|HTTP|1.1|400|1777|www.bing.com|-|Mozilla|4.0|kompatibilis; MSIE 6.0; Windows NT 5.1|
+|192.147.76.193|28/Jan/2017|26:36:16|+0800|GET|Search.php|HTTP|1.1|400|1777|www.bing.com|-|Mozilla|4.0|kompatibilis; MSIE 6.0; Windows NT 5.1|
 |192.166.64.165|23/gyel/2017|01:55:25|-0800|GET|Style.css|HTTP|1.1|200|2552|www.google.com|http://www.test.com/index.html|Mozilla|5.0|Windows|
 |11.167.1.193|16/6%/4!a/2017|11:34:36|+0200|GET|js/ads.js|HTTP|1.1|200|23462|www.microsoft.com|http://www.illustration.com/index.html|Mozilla|5.0|Windows|
 

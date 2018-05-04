@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-networking"></a>Az Azure hálózatkezelés
 
@@ -37,7 +37,7 @@ Azure biztosít a különböző hálózati képességekkel, amelyek együtt vagy
 
 Azure-erőforrások, például a virtuális gépek, a Cloud Services, a virtuális gépek méretezési csoportok és az Azure App Service Environment-környezetek is közvetlenül egymással kommunikálnak az Azure Virtual Network (VNet) keresztül. A virtuális hálózat kijelölve a Azure-felhő logikai elkülönítése a [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Megvalósíthat több Vnetek belül minden Azure-előfizetés és Azure [régió](https://azure.microsoft.com/regions). Minden egyes virtuális hálózat el különítve a más Vnetekről. Minden egyes vnet a következő műveletek végezhetők el:
 
-- Adjon meg egy egyéni privát IP-címtér nyilvános és titkos (az RFC 1918) címeket használnak. Azure rendel erőforrások a VNet egy magánhálózati IP-cím keresztül kapcsolódik a címterület lehet kijelölni.
+- Megadhat egy egyéni magánhálózati IP-címteret nyilvános és magánhálózati (RFC 1918) címek használatával. Azure rendel erőforrások a VNet egy magánhálózati IP-cím keresztül kapcsolódik a címterület lehet kijelölni.
 - A VNet szegmentálni be egy vagy több alhálózatból, és foglaljon le a VNet-címterek minden alhálózat egy része.
 - Azure által biztosított névfeloldás használata, vagy adjon meg egy Vnetet csatlakoztatott a saját DNS-kiszolgáló számára.
 
@@ -64,7 +64,7 @@ Az alábbi képen látható több számítógép és egy virtuális hálózat k�
 
 ![Pont–hely kapcsolat](./media/networking-overview/point-to-site.png)
 
-Ez a kapcsolat létrejön egy egyedi számítógép és egy virtuális hálózat között. A kapcsolat típusa nem nagyszerű, ha Ön most csak az első lépések az Azure-ral, vagy a fejlesztők számára, mert azt a meglévő hálózati kevéssé vagy egyáltalán ne módosítását igényli. Célszerű is kényelmesen használható, ha csatlakozik egy távoli helyre, például egy konferenciaterem vagy otthoni. Pont – hely kapcsolatok gyakran összekapcsolt webhelyek kapcsolaton keresztül az azonos virtuális hálózati átjárón keresztül. A kapcsolat az SSTP protokoll segítségével, titkosított kommunikációt biztosít a számítógép és a virtuális hálózat között az interneten keresztül. A pont-pont típusú VPN várakozási is előre nem látható, mivel a forgalom halad át az interneten.
+Ez a kapcsolat létrejön egy egyedi számítógép és egy virtuális hálózat között. Ez a kapcsolattípus remek választás, ha csak most ismerkedik az Azure szolgáltatással, illetve a fejlesztők számára, mert a meglévő hálózatot csak kis mértékben vagy egyáltalán nem kell módosítani. Célszerű is kényelmesen használható, ha csatlakozik egy távoli helyre, például egy konferenciaterem vagy otthoni. Pont – hely kapcsolatok gyakran összekapcsolt webhelyek kapcsolaton keresztül az azonos virtuális hálózati átjárón keresztül. A kapcsolat az SSTP protokoll segítségével, titkosított kommunikációt biztosít a számítógép és a virtuális hálózat között az interneten keresztül. A pont-pont típusú VPN várakozási is előre nem látható, mivel a forgalom halad át az interneten.
 
 **Pont-pont (IPsec/IKE VPN-alagút)**
 
@@ -76,7 +76,7 @@ Ezt a kapcsolatot a helyszíni VPN-eszköz és az Azure VPN-átjáró között. 
 
 ![ExpressRoute](./media/networking-overview/expressroute.png)
 
-Ilyen típusú kapcsolat hoznak létre a hálózat és az Azure-ban egy ExpressRoute-partner keresztül. Ezt a kapcsolatot a sajátja. Forgalom nem bejárják az interneten. Az ExpressRoute-kapcsolat a késési is előre jelezhető, mivel a forgalom nem haladnak át az interneten. ExpressRoute össze lehet kombinálni webhelyek kapcsolatot.
+Ilyen típusú kapcsolat hoznak létre a hálózat és az Azure-ban egy ExpressRoute-partner keresztül. Ez a kapcsolat nem nyilvános. Forgalom nem bejárják az interneten. Az ExpressRoute-kapcsolat a késési is előre jelezhető, mivel a forgalom nem haladnak át az interneten. ExpressRoute össze lehet kombinálni webhelyek kapcsolatot.
 
 Az előző kapcsolódási beállítás kapcsolatos további tudnivalókért olvassa el a [kapcsolat topológiai diagramot](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 
@@ -155,7 +155,7 @@ Telepítheti és konfigurálhatja az Azure-hálózati erőforrások a következ�
 
 ## <a name="pricing"></a>Díjszabás
 
-Az Azure hálózati szolgáltatások rendelkeznek járnak, míg mások szabad. Nézet a [virtuális hálózati](https://azure.microsoft.com/pricing/details/virtual-network), [VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway), [Alkalmazásátjáró](https://azure.microsoft.com/en-us/pricing/details/application-gateway/), [terheléselosztó](https://azure.microsoft.com/pricing/details/load-balancer), [hálózatifigyelőt](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) és [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) árképzési lapok további információt.
+Az Azure hálózati szolgáltatások rendelkeznek járnak, míg mások szabad. Nézet a [virtuális hálózati](https://azure.microsoft.com/pricing/details/virtual-network), [VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway), [Alkalmazásátjáró](https://azure.microsoft.com/pricing/details/application-gateway/), [terheléselosztó](https://azure.microsoft.com/pricing/details/load-balancer), [hálózatifigyelőt](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) és [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) árképzési lapok további információt.
 
 ## <a name="next-steps"></a>További lépések
 

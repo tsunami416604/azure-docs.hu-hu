@@ -1,23 +1,23 @@
 ---
-title: "Az Azure Kubernetes-fürthöz tartozó egyszerű szolgáltatás"
-description: "Kubernetes-fürthöz tartozó Azure Active Directory szolgáltatásnév létrehozása és felügyelete az AKS-ben"
+title: Az Azure Kubernetes-fürthöz tartozó egyszerű szolgáltatás
+description: Kubernetes-fürthöz tartozó Azure Active Directory szolgáltatásnév létrehozása és felügyelete az AKS-ben
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: get-started-article
-ms.date: 02/24/2018
+ms.date: 04/19/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a7c80b64a33f4f71c694f80bf3e68f39ecd01828
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 81f455668e81c2a6c21b66d85199da3f475e7265
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Szolgáltatásnevek és az Azure Container Service (AKS)
 
-Az AKS-fürtöknek szükségük van egy [Azure Active Directory egyszerű szolgáltatásra][aad-service-principal] az Azure API-kkal való kommunikációhoz. Az egyszerű szolgáltatással dinamikusan kezelhet olyan erőforrásokat, mint a [felhasználó által meghatározott útvonalak][user-defined-routes] és a [4. rétegű Azure Load Balancer][azure-load-balancer-overview].
+Az AKS-fürtöknek szükségük van egy [Azure Active Directory egyszerű szolgáltatásra][aad-service-principal] az Azure API-kkal való kommunikációhoz. Az egyszerű szolgáltatással dinamikusan hozhat létre és kezelhet olyan erőforrásokat, mint az [Azure Load Balancer][azure-load-balancer-overview].
 
 Ebben a cikkben különböző lehetőségeket talál arra, hogyan állíthat be egy szolgáltatásnevet a Kubernetes-fürtökhöz az AKS-ben.
 
@@ -80,10 +80,10 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 
 * A Kubernetes egyszerű szolgáltatása része a fürtkonfigurációnak. Azonban nem ajánlott az identitást használni a fürt üzembe helyezésére.
 * Minden egyszerű szolgáltatás társítva van egy Azure AD-alkalmazáshoz. A Kubernetes-fürt egyszerű szolgáltatása társítható bármilyen érvényes Azure AD-alkalmazásnévhez (például: `https://www.contoso.org/example`). Az alkalmazás URL-címének nem szükséges valódi végpontnak lennie.
-* Amikor megadja az egyszerű szolgáltatás **ügyfél-azonosítóját**, használhatja az `appId` értékét (ahogyan az a cikkben látható) vagy a megfelelő egyszerű szolgáltatást `name` (például: `https://www.contoso.org/example`).
+* Amikor megadja az egyszerű szolgáltatásnév **ügyfél-azonosítóját**, használja az `appId` értékét (ahogyan az a cikkben látható) vagy a megfelelő egyszerű szolgáltatásnév `name` értékét (például: `https://www.contoso.org/example`).
 * A Kubernetes-fürt mester és csomópont virtuális gépein az egyszerű szolgáltatás hitelesítő adatai az `/etc/kubernetes/azure.json` fájlban lesznek tárolva.
-* Ha az `az aks create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesítő adatai a `~/.azure/acsServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
-* Az `az aks create` használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott egyszerű szolgáltatás nem törlődik. A következő paranccsal törölheti: `az ad sp delete --id $clientID`.
+* Ha az `az aks create` parancsot használja az egyszerű szolgáltatás automatikus létrehozásához, az egyszerű szolgáltatás hitelesítő adatai a `~/.azure/aksServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
+* Az `az aks create` használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott egyszerű szolgáltatás nem törlődik. A következő paranccsal törölje: `az ad sp delete --id $clientID`.
 
 ## <a name="next-steps"></a>További lépések
 

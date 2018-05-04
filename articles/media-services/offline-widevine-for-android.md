@@ -1,12 +1,12 @@
 ---
-title: "A kapcsolat nélküli adatfolyamként való küldése a Widevine védett tartalom - Azure fiókjának konfigurálása"
-description: "Ez a témakör bemutatja a konfigurálása az Azure Media Services-fiókjához offline adatfolyamként való küldése a Widevine védett tartalom."
+title: A kapcsolat nélküli adatfolyamként való küldése a Widevine védett tartalom - Azure fiókjának konfigurálása
+description: Ez a témakör bemutatja a konfigurálása az Azure Media Services-fiókjához offline adatfolyamként való küldése a Widevine védett tartalom.
 services: media-services
-keywords: "Widevine-kapcsolat nélküli módban, ExoPlayer, Android DASH, DRM,"
-documentationcenter: 
+keywords: Widevine-kapcsolat nélküli módban, ExoPlayer, Android DASH, DRM,
+documentationcenter: ''
 author: willzhan
 manager: steveng
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: b27ffcbf5749d612e63ba08df0adad72f357a83a
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 158b58c13aee4d6241900db4a5e2b3fe8a45cc3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Kapcsolat nélküli Widevine streaming androidhoz
 
@@ -112,9 +112,9 @@ Az alábbi listán szereplő osztályok elősegítheti a offline mód az ExoPlay
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ErrorStateDrmSession.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
 - library/core/src/main/java/com/google/android/exoplayer2/offline/SegmentDownloader.java
-- library/core/src/main/java/com/google/android/exoplayer2/offline/DownloaderConstructorHelper.java 
-- library/core/src/main/java/com/google/android/exoplayer2/offline/Downloader.java
-- library/dash/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/DownloaderConstructorHelper.Java 
+- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/Downloader.Java
+- Library/dash/src/Main/Java/com/Google/Android/exoplayer2/Source/dash/offline/DashDownloader.Java 
 
 A fejlesztők hivatkoznia kell a [ExoPlayer – útmutató fejlesztőknek](https://google.github.io/ExoPlayer/guide.html) és a megfelelő [fejlesztői blogja](https://medium.com/google-exoplayer) az alkalmazások fejlesztése során. Google nem adott ki a kapcsolat nélküli Widevine támogató jelenleg, úgy az adatokat pedig csak a fejlesztői útmutató és blog ExoPlayer alkalmazás teljesen dokumentált hivatkozás végrehajtása vagy a minta kódját. 
 
@@ -122,7 +122,7 @@ A fejlesztők hivatkoznia kell a [ExoPlayer – útmutató fejlesztőknek](https
 
 Néhány régebbi Android-eszközökhöz, meg kell adni a következő értékek **policy_overrides** tulajdonságok (definiált [Widevine-licencsablon](media-services-widevine-license-template-overview.md): **rental_duration_seconds**, **playback_duration_seconds**, és **license_duration_seconds**. Másik lehetőségként állíthatja őket nulla, ami azt jelenti, hogy a végtelen korlátlan időtartama.  
 
-Az értékeket kell állítani egy egész túlcsordulási hiba elkerülése érdekében. A problémával kapcsolatos további magyarázatát lásd: https://github.com/google/ExoPlayer/issues/3150 és https://github.com/google/ExoPlayer/issues/3112. <br/>Ha az értékek nem meg explicit módon, a nagyon nagy értékeket **PlaybackDurationRemaining** és **LicenseDurationRemaining** lesz hozzárendelve, (például 9223372036854775807, azaz a maximálisan pozitív értéket egy 64 bites egész szám). Ennek eredményeképpen a Widevine-licenc lejárt jelenik meg, és ezért a visszafejtés nem fog megtörténni. 
+Az értékeket kell állítani egy egész túlcsordulási hiba elkerülése érdekében. A problémával kapcsolatos további ismertetése https://github.com/google/ExoPlayer/issues/3150 és https://github.com/google/ExoPlayer/issues/3112. <br/>Ha az értékek nem meg explicit módon, a nagyon nagy értékeket **PlaybackDurationRemaining** és **LicenseDurationRemaining** lesz hozzárendelve, (például 9223372036854775807, azaz a maximálisan pozitív értéket egy 64 bites egész szám). Ennek eredményeképpen a Widevine-licenc lejárt jelenik meg, és ezért a visszafejtés nem fog megtörténni. 
 
 Ez a probléma jelentkezik Android 5.0 Egyszerű fejrészalakzat vagy újabb Android 5.0 az első Android verziója, amely úgy tervezték, hogy teljes mértékben támogassa az ARMv8 óta ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) és 64 bites platformon, Android 4.4 KitKat közben eredetileg arra tervezték, hogy ARMv7 és más régebbi Android verzióival 32 bites platformon.
 
@@ -148,7 +148,7 @@ Ha a mobil Chrome böngésző v62 (vagy újabb rendszerre) frissítése során a
 
 A fenti nyílt forráskódú Project Web Access alkalmazásnak a Node.js-ben hozta létre. Ha szeretné futtatni a saját egy Ubuntu server verziója, vegye figyelembe a következő általános talált hibák, amelyek megakadályozhatják a lejátszás:
 
-1. A CORS-hiba: A mintaalkalmazás videó minta https://storage.googleapis.com/biograf-video-files/videos/ van tárolva. Google van állítva a CORS minden, a Google Cloud Storage gyűjtő tárolt vizsgálati minták. Azok a CORS fejlécek, a CORS-bejegyzés explicit megadásával szolgáltatott: https://biograf-155113.appspot.com (a tartomány mely google üzemelteti a minta) által a webhelyek elérésének megakadályozásához. Ha, látni fogja a következő HTTP-hiba: nem sikerült betölteni a https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: nincs "Hozzáférés-vezérlési-engedélyezése-forrás" fejléc-e a kért erőforrás. Forrás "https://13.85.80.81:8080" ezért nem engedélyezett a hozzáférés. Ha egy nem átlátszó választ szolgál az igényeinek, "no-cors" az erőforrást beolvasni a CORS le van tiltva a kérelem mód beállítása.
+1. A CORS probléma: A minta a mintaalkalmazás videó üzemeltetett https://storage.googleapis.com/biograf-video-files/videos/. Google van állítva a CORS minden, a Google Cloud Storage gyűjtő tárolt vizsgálati minták. Azok a CORS fejlécek, a CORS-bejegyzés explicit megadásával szolgáltatott: https://biograf-155113.appspot.com (a tartomány mely google üzemelteti a minta) által a webhelyek elérésének megakadályozásához. Ha megpróbál, látni fogja a következő HTTP-hiba: nem sikerült betölteni a https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: nincs "Hozzáférés-vezérlési-engedélyezése-forrás" fejléc-e a kért erőforrás. Forrás "https://13.85.80.81:8080" ezért nem megengedett hozzáférést. Ha egy nem átlátszó választ szolgál az igényeinek, "no-cors" az erőforrást beolvasni a CORS le van tiltva a kérelem mód beállítása.
 2. A probléma tanúsítvány: Chrome v 58 kezdve a Widevine EME HTTPS PROTOKOLLT igényel. Ezért egy X509 HTTPS-KAPCSOLATON keresztüli mintaalkalmazás tárolásához szükséges tanúsítvány. A szokásos teszttanúsítványt a következő követelmények miatt nem működik: be kell szereznie egy tanúsítványt a következő minimális követelményeknek:
     - Chrome és Firefox szükséges SAN-tulajdonos alternatív neve a beállítást, ha a tanúsítvány szerepel
     - Kell a tanúsítvány megbízható Hitelesítésszolgáltatói és önaláírt fejlesztési tanúsítványt nem működik.
@@ -172,7 +172,7 @@ Ez azt jelenti, hogy az üzleti logika és ügyféleszköz/adatokat adja hozzá 
 
 ### <a name="question"></a>Kérdés
 
-Widevine biztonsági szintek, a Google [Widevine DRM architektúra – áttekintés doc](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentáció, akkor három különböző biztonsági szintet határozza meg. Azonban a [Widevine-licencsablon Azure Media Services-dokumentációja](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview), vázolt öt különböző biztonsági szint. Mi az a kapcsolatot, vagy a két különböző biztonsági szintek közötti leképezést?
+Widevine biztonsági szintek, a Google [Widevine DRM architektúra – áttekintés doc](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentáció, akkor három különböző biztonsági szintet határozza meg. Azonban a [Widevine-licencsablon Azure Media Services-dokumentációja](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), vázolt öt különböző biztonsági szint. Mi az a kapcsolatot, vagy a két különböző biztonsági szintek közötti leképezést?
 
 ### <a name="answer"></a>Válasz
 
@@ -182,7 +182,7 @@ A Google [Widevine DRM-architektúra áttekintése](https://storage.googleapis.c
 2.  Biztonsági szint 2: Végez cryptography (de nem videó feldolgozási) belül a TEE: visszafejtett pufferek alkalmazástartományt vissza, és külön videó hardveres vagy szoftveres keresztül. 2. szint azonban kriptográfiai információk feldolgozása van csak a TEE belül.
 3.  3. biztonsági szint nem rendelkezik egy TEE az eszközön. Előfordulhat, hogy a titkosított adatok és a visszafejtett tartalmat a gazda operációs rendszer védelme hajtja végre a megfelelő intézkedéseket. A 3. szint megvalósításának tartalmazhat egy hardver kriptográfiai motor azonban, hogy csak javítja a teljesítményt, nem biztonsági.
 
-Ugyanakkor, a [Widevine-licencsablon Azure Media Services-dokumentációja](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview), content_key_specs security_level tulajdonságának rendelkezhet a következő öt különböző érték (szolgáltatás megbízhatóságára vonatkozó ügyfélkövetelmények lejátszás):
+Ugyanakkor, a [Widevine-licencsablon Azure Media Services-dokumentációja](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), content_key_specs security_level tulajdonságának rendelkezhet a következő öt különböző érték (szolgáltatás megbízhatóságára vonatkozó ügyfélkövetelmények lejátszás):
 
 1.  A szoftveres whitebox titkosítási szükség.
 2.  Szoftver titkosítási és egy rejtjelezett dekóder szükség.

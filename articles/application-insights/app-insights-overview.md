@@ -1,8 +1,8 @@
 ---
 title: Mi az Azure Application Insights? | Microsoft Docs
-description: "Alkalmazásteljesítmény-felügyelet és élő webalkalmazások használatának nyomon követése.  Észlelheti, osztályozhatja és diagnosztizálhatja a problémákat, valamint megismerheti, hogy a felhasználók miként használják alkalmazását."
+description: Alkalmazásteljesítmény-felügyelet és élő webalkalmazások használatának nyomon követése.  Észlelheti, osztályozhatja és diagnosztizálhatja a problémákat, valamint megismerheti, hogy a felhasználók miként használják alkalmazását.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 379721d1-0f82-445a-b416-45b94cb969ec
@@ -14,11 +14,11 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 05/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2e2a9e8491ad56bcbc42be64729715016f7ed17b
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 6e4cc8b399a3d3b1db1c52aafc8a73edb784d13b
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Sokféle platform alkalmazásaival együttműködik, ilyen többek között a .NET, a Node.js és a J2EE platform helyszíni vagy felhőbeli tárolás esetén is. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes megfigyelni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center és a HockeyApp integrálásával.
@@ -121,7 +121,7 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 * **[Rendelkezésre állási tesztek](app-insights-monitor-web-app-availability.md)** – rendszeresen pingelheti webhelyét kiszolgálóinkról.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Első lépések futtatáskor:
 
 * [IIS-kiszolgáló](app-insights-monitor-performance-live-website-now.md)
@@ -151,13 +151,13 @@ Első lépések fejlesztéskor:
 
 <!--Link references-->
 
-[android]: https://github.com/Microsoft/ApplicationInsights-Android
+[android]: app-insights-mobile-center-quickstart.md
 [azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [desktop]: app-insights-windows-desktop.md
 [detect]: app-insights-detect-triage-diagnose.md
 [greenbrown]: app-insights-asp-net.md
-[ios]: https://github.com/Microsoft/ApplicationInsights-iOS
+[ios]: app-insights-mobile-center-quickstart.md
 [java]: app-insights-java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: app-insights-platforms.md

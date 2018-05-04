@@ -3,8 +3,8 @@ title: Ismerkedés a Microsoft Azure biztonsági |} Microsoft Docs
 description: Ez a cikk a Microsoft Azure biztonsági képességei és, hogy az eszközök és a szervezetek számára általános szempontok áttekintése.
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbaldwin
 editor: TomSh
 ms.assetid: 8d8a0088-c85a-48e7-bd04-2bc7b78b0691
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 7d3fab20ec238bff0664fc98c2067c919e97a7c2
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: d0443128064332a37c95d5c39cd73b759a002cca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>A Microsoft Azure Security használatának első lépései
+
 Build, vagy a felhőbeli szolgáltató telepíthet át informatikai eszközök, az alkalmazások és a szolgáltatások és a biztonsági a felhő alapú eszközök kezelésére adathordozóira vezérlők adatok védelme érdekében, hogy szervezete képességek vannak hagyatkoznia.
 
 Az Azure infrastruktúráját úgy tervezték, hogy képes legyen ügyfelek millióit egyidejűleg kiszolgáló alkalmazásokat üzemeltetni, és olyan megbízható alapot nyújtson, amely megfelel a vállalatok biztonsági igényeinek. Számos konfigurálható biztonsági beállítással is rendelkezik, amelyek testreszabásával a különböző környezetek egyedi követelményeinek megfelelő biztonsági megoldások alakíthatók ki.
@@ -31,6 +32,7 @@ Az Azure biztonsági szolgáltatásait áttekintő cikkünkben a következőkkel
 * A Microsoft hogyan segít megvédeni az adatok és alkalmazások az Azure-infrastruktúra biztosítja.
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
+
 Az informatikai infrastruktúrához, adatokhoz és alkalmazásokhoz való hozzáférés szabályozása alapvető fontosságú. A Microsoft Azure ezeket a képességeket nyújt, például az Azure Active Directory (Azure AD), az Azure Storage és a támogatási szolgáltatások számos szabványok és API-k által.
 
 [Az Azure AD](../active-directory/active-directory-whatis.md) identitás tárház és motor, amely hitelesítési, engedélyezési és hozzáférés-vezérlés biztosít a szervezet felhasználók, csoportok, és objektumokat. Az Azure AD emellett hatékony módszert kínál a fejlesztők számára az identitáskezelésnek az alkalmazásokba való integrálásához. Szabványos protokollok, mint [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0), [WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx), és [OpenID Connect](http://openid.net/connect/) bejelentkezési lehetséges adja meg a platformokon, például .NET, Java, Node.js és a PHP.
@@ -38,6 +40,7 @@ Az informatikai infrastruktúrához, adatokhoz és alkalmazásokhoz való hozzá
 A REST-alapú Graph API használata bármelyik platformról lehetővé teszi a fejlesztők számára a címtár olvasását és írását. Támogatásával [OAuth 2.0](http://oauth.net/2/), fejlesztők létrehozhatják mobil és webes alkalmazásokhoz, amely integrálható a Microsoft és külső webes API-khoz, és állítsa be a saját biztonságos webes API-k. Nyílt forráskódú klienskódtárak érhetők el .Net, Windows Áruház, iOS és Android platformra, további kódtárak pedig fejlesztés alatt állnak.
 
 ### <a name="how-azure-enables-identity-and-access-management"></a>Hogyan biztosítja az Azure az identitás- és hozzáférés-kezelést?
+
 Az Azure AD használható szervezete önálló, felhőbeli címtáraként, illetve a meglévő helyszíni Active Directoryval integrált megoldásként. Az integrációs szolgáltatások közé tartozik például a címtár-szinkronizálás és az egyszeri bejelentkezés (SSO). Ezek révén a meglévő helyszíni identitások az kiterjeszti a felhőbe, és a rendszergazdai és felhasználói élmény javítása.
 
 Az identitás- és hozzáférés-kezelés egyéb funkciói többek között a következők:
@@ -50,6 +53,7 @@ Az identitás- és hozzáférés-kezelés egyéb funkciói többek között a k�
 * [Az Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) egy magas rendelkezésre állású globális identitás szolgáltatást biztosít a felhasználók felé néző alkalmazások száz millió identitások alkalmazkodnak. Mobil- és webes platformokba is integrálható. A felhasználók bármikor beléphet, testre szabható felhasználói élmény mellett az alkalmazások új vagy meglévő közösségi fiókjaik használatával.
 
 ## <a name="data-access-control-and-encryption"></a>Adatok hozzáférés-vezérlése és titkosítása
+
 A Microsoft a feladatkörök elkülönítésének és a [legkisebb jogosultságnak](https://en.wikipedia.org/wiki/Principle_of_least_privilege) az elvét alkalmazza az Azure üzemeltetése során. Ahhoz, hogy az Azure támogatási személyzete hozzáférhessen az Ön adataihoz, a kifejezett engedélyére van szükség. A naplózott, csak a szükséges időpontban kiadható engedélyt a megbízás befejezését követően visszavonjuk.
 
 Azure is biztosít több lehetőségeket biztosít az átvitel során, és inaktív adatok védelmét. Ez magában foglalja az adatok, fájlok, alkalmazások, szolgáltatások, kommunikációs és meghajtók titkosítását. Információk az Azure-ban helyezés előtt titkosítja, és is a helyszíni adatközpontját a kulcsok tárolása.
@@ -57,6 +61,7 @@ Azure is biztosít több lehetőségeket biztosít az átvitel során, és inakt
 ![Microsoft Antimalware szolgáltatás az Azure-ban](./media/azure-security-getting-started/sec-azgsfig1.PNG)
 
 ### <a name="azure-encryption-technologies"></a>Azure titkosítási technológiák
+
 A rendszergazdai hozzáféréssel az előfizetési környezetben végrehajtott eseményekről az [Azure AD jelentéskészítési funkciójával](../active-directory/active-directory-reporting-audit-events.md) gyűjthet adatokat. Konfigurálható [a BitLocker meghajtótitkosítás](https://technet.microsoft.com/library/cc732774.aspx) Azure bizalmas adatokat tartalmazó virtuális merevlemezen.
 
 Az Azure egyéb, az adatok biztonságát elősegítő funkciói a következők:
@@ -70,6 +75,7 @@ Az Azure egyéb, az adatok biztonságát elősegítő funkciói a következők:
 * Azure támogatja, és számos titkosítási mechanizmusok, beleértve az SSL/TLS, az IPsec és az AES, attól függően, hogy az adattípusok, tárolók és átviteli módokat használja.
 
 ## <a name="virtualization"></a>Virtualizáció
+
 Az Azure platform virtualizált környezetet használ. A felhasználói példányok működhetnek önálló virtuális gépek, amelyek nem rendelkeznek hozzáféréssel a fizikai kiszolgáló, és kikényszeríti a elkülönítés használatával fizikai [processzor (ring-0/ring-3) a jogosultsági szintek](https://en.wikipedia.org/wiki/Protection_ring).
 
 A „Ring 0” a legmagasabb, a „Ring 3” a legalacsonyabb jogosultsági szint. A vendég operációs rendszer fut egy alacsonyabb szintű jogosultságokat igénylő Ring 1, és alkalmazások futnak, a minimális jogosultságokkal rendelkező Ring 3. A fizikai erőforrások ilyen módszerrel történő virtualizálása következtében egyértelműen elkülönül a vendég operációs rendszer és a hipervizor, ez pedig a két rendszer további biztonsági elkülönülését eredményezi.
@@ -79,6 +85,7 @@ Az Azure hipervizor úgy viselkedik, mint egy micro kernel és átadja az össze
 ![Microsoft Antimalware szolgáltatás az Azure-ban](./media/azure-security-getting-started/sec-azgsfig2.PNG)
 
 ### <a name="how-azure-implements-virtualization"></a>Hogyan valósítja meg az Azure a virtualizációt?
+
 Azure van megvalósítva a hipervizor és a háló vezérlő ügynök által konfigurált hipervizor tűzfal (csomagszűrők) használja. Ez segít megvédeni a bérlőket a jogosulatlan hozzáféréstől. Alapértelmezés szerint minden forgalmat blokkol, amikor létrejön egy virtuális gép, és ezután a fabric controller ügynök konfigurálja a csomag-szűrő hozzáadása *szabályok és kivételek* engedélyezett forgalom engedélyezésére.
 
 Az itt programozott szabályok két kategóriába sorolhatók:
@@ -87,6 +94,7 @@ Az itt programozott szabályok két kategóriába sorolhatók:
 * **Szerepkör konfigurációs fájl**: Ez határozza meg, hogy a bejövő hozzáférés-vezérlési listái (ACL) alapján a bérlő szolgáltatásmodellt. Például ha egy bérlőt egy előtér-webkiszolgáló 80-as porton egyes virtuális gépen, majd Azure megnyitja 80-as TCP-portot, az összes IP-cím beállításakor a végpont a [Azure klasszikus üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md). Ha a virtuális gép fut, hátsó vége vagy feldolgozói szerepkör ezt követően megnyitja a feldolgozói szerepkör csak azokra a virtuális gép belül ugyanannak a bérlőnek.
 
 ## <a name="isolation"></a>Elkülönítés
+
 Egy másik fontos felhőalapú biztonsági követelmény elválasztását, hogy megakadályozza a jogosulatlan és nem szándékos adatátvitel központi telepítések a megosztott, több-bérlős architektúrák közötti.
 
 Az Azure valósít meg [hálózati hozzáférés-vezérlés](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) és elkülönítése keresztül VLAN-elkülönítéssel, hozzáférés-vezérlési listákat, terheléselosztók, és az IP-szűrők betöltése. Korlátozza a külső forgalom bejövő portok és protokollok a virtuális gépeken, Ön által meghatározott. Azure valósítja meg a hálózati szűrés hamisított forgalom és megbízható webplatform-összetevők bejövő és kimenő forgalom korlátozása érdekében. Olyan forgalmi szabályzatok települnek a határon lévő védelmi eszközökre, amelyek alapértelmezés szerint letiltják a forgalmat.
@@ -98,6 +106,7 @@ Hálózati címfordítással (NAT) különítjük el a belső hálózati forgalm
 Az Azure virtuális gépek a külső forgalom hozzáférés-vezérlési listák segítségével tűzfallal útválasztók, terheléselosztók, és a 3. rétegbeli kapcsolók. Csak bizonyos ismert protokollok engedélyezettek. Hozzáférés-vezérlési listák, hogy a többi VLAN hálózattól-kezelésre szolgáló a Vendég virtuális gépekről származó forgalom korlátozása. Emellett a gazdagép operációs rendszer további IP-szűrők keresztül szűrt forgalom korlátozza a forgalom mindkét adatok kapcsolat és hálózati rétegek.
 
 ### <a name="how-azure-implements-isolation"></a>Hogyan valósítja meg az Azure az elkülönítést?
+
 Az Azure Fabric Controller bérlői munkaterheléseket infrastruktúrához kapcsolódó erőforrások lefoglalása felelős, és a gazdagép és virtuális gépek egyirányú kommunikációt kezeli. Az Azure hipervizor kikényszeríti a memória és a folyamat elkülönítése virtuális gépeket, és biztonságosan irányítja a hálózati forgalmat a vendég operációs rendszer bérlők számára. Azure is a bérlők számára, a tárolás és a virtuális hálózatok elkülönítési valósítja meg.
 
 * Minden Azure AD-bérlő logikailag elkülönített biztonsági határokat használatával.
@@ -105,6 +114,7 @@ Az Azure Fabric Controller bérlői munkaterheléseket infrastruktúrához kapcs
 * Virtuális hálózatok logikailag elszigetelt egyedi magánhálózati IP-címek, a tűzfalak és a hozzáférés-vezérlési listák IP keresztül. A terheléselosztók végpont-definíciók alapján irányítják át a forgalmat a megfelelő bérlőkhöz.
 
 ## <a name="virtual-networks-and-firewalls"></a>Virtuális hálózatok és a tűzfalon
+
 A [elosztott és a virtuális hálózatok](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx) Azure súgó gondoskodjon arról, hogy a saját hálózati forgalom logikailag más Azure virtuális hálózat adatforgalmának szigetelve.
 
 ![Microsoft Antimalware szolgáltatás az Azure-ban](./media/azure-security-getting-started/sec-azgsfig4.PNG)
@@ -134,6 +144,7 @@ A következő Azure virtuális hálózati technológiák használatával biztons
 * [**Partnerhálózati biztonsági megoldások**](https://azure.microsoft.com/marketplace/). Számos hálózati biztonsági partnermegoldások, amely az Azure piactéren érheti el.
 
 ### <a name="how-azure-implements-virtual-networks-and-firewalls"></a>Hogyan Azure megvalósítja-e a virtuális hálózatok és a tűzfalon
+
 Azure csomagokat szűrő tűzfalak megvalósítja az összes gazdagép és Vendég virtuális gép alapértelmezés szerint. Windows operációs Rendszeri lemezképek az Azure piactérről is a Windows tűzfal alapértelmezés szerint engedélyezve van. Nyilvánosan elérhető Azure-hálózatok vezérlő kommunikáció a szervezet határain terheléselosztók IP hozzáférés-vezérlési listák felhasználói rendszergazdák által kezelt alapján.
 
 Amikor az Azure a normál működés részeként vagy egy katasztrófa során áthelyezi a felhasználói adatokat, ezt privát, titkosított kommunikációs csatornákon keresztül teszi. A virtuális hálózatok és a tűzfalon használandó Azure által alkalmazott egyéb funkciók a következők:
@@ -145,6 +156,7 @@ Amikor az Azure a normál működés részeként vagy egy katasztrófa során á
 * **Virtuális hálózati átjáró**: A [Azure virtuális hálózati átjáró](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) a munkaterhelés Azure virtuális hálózatra csatlakozik a helyszíni helyek létesítmények közötti átjáróként is szolgál. A helyszíni helyekhez való csatlakozáshoz szükséges [IPsec-helyek VPN-alagutat](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), vagy [ExpressRoute](../expressroute/expressroute-introduction.md) kapcsolatok. Az IPsec/IKE VPN-alagutat az átjárók IKE kézfogások végrehajtani, és létrehozni az IPsec S2S VPN-alagutat a virtuális hálózatok és a helyszíni helyek közötti. Virtuális hálózati átjárók is leáll [pont-pont VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md).
 
 ## <a name="secure-remote-access"></a>Biztonságos távoli elérése
+
 A felhőben tárolt adatok esetében megfelelő védelmi eszközöket kell alkalmazni a biztonsági rések elkerülése, illetve az átvitel közben az adatok bizalmas jellegének és integritásának fenntartása érdekében. Ide tartoznak a hálózati vezérlők, amelyek illeszkednek a szervezetek házirendalapú, ellenőrizhető identitás- és hozzáférés-felügyeleti mechanizmusaihoz.
 
 A beépített titkosítási technológia lehetővé teszi a kommunikáció titkosítását az egyes üzemelő példányokon belül és azok között, az Azure-régiók között, valamint az Azure és a helyszíni adatközpontok között. Virtuális gépek keresztül rendszergazdai hozzáférés [távoli asztali munkamenetek](../virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json), [távoli Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx), és mindig titkosítja az Azure-portálon.
@@ -152,11 +164,13 @@ A beépített titkosítási technológia lehetővé teszi a kommunikáció titko
 Biztonságos kiterjesztése a helyszíni adatközpontját a felhőre, Azure biztosít a [telephelyek közötti VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) és [pont – hely típusú VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md), és a dedikált hivatkozások [ExpressRoute](../expressroute/expressroute-introduction.md) (az Azure virtuális hálózataihoz VPN-kapcsolaton keresztül kapcsolatok titkosítása).
 
 ### <a name="how-azure-implements-secure-remote-access"></a>Hogyan valósítja meg az Azure a biztonságos távoli hozzáférést?
+
 Az Azure portál mindig kell hitelesíteni, és igényelnek-e az SSL/TLS. A felügyeleti tanúsítványokat konfigurálhatja úgy, hogy engedélyezzék a biztonságos felügyeletet. Például a szabványos biztonsági protokollokat [SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) és [IPsec](https://en.wikipedia.org/wiki/IPsec) teljes mértékben támogatottak.
 
 Az [Azure ExpressRoute](../expressroute/expressroute-introduction.md) használatával privát kapcsolatok hozhatók létre az Azure-adatközpontok és a helyszíni vagy a bérelt kiszolgálói környezetben üzemelő infrastruktúra között. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. További megbízhatóságát, gyorsabb sebességű, kisebb késések és nagyobb biztonságot nyújtana tipikus internetes hivatkozások biztosítanak. Néhány esetben az adatok közötti átviteléhez a helyszíni helyek és Azure ExpressRoute kapcsolattal is partíciónként akár jelentős költségelőnyökhöz juthat.
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
+
 Azure biztonsági-kapcsolódó eseményeket, amelyek létrehozzák elővizsgálati hitelesített naplózása biztosít, és azt kell lennie az illetéktelen módosítás ellen védett fejthetők vissza. Ez magában foglalja a rendszer-információkat, például a virtuális gépek Azure-infrastruktúra és az Azure AD and security event logs. Biztonsági figyelésének tartalmazza, például a DHCP vagy DNS-kiszolgáló IP-címek; változásait események gyűjtése Kísérlet történt a hozzáférési portok, protokollok vagy IP-címek zárolt azért; biztonsági házirend, vagy a tűzfal beállításainak; változásai fiók vagy csoport létrehozása; nem várt folyamatok vagy és illesztőprogram-telepítőfájl.
 
 ![Microsoft Antimalware szolgáltatás az Azure-ban](./media/azure-security-getting-started/sec-azgsfig5.PNG)
@@ -164,6 +178,7 @@ Azure biztonsági-kapcsolódó eseményeket, amelyek létrehozzák elővizsgála
 A naplók rögzítik a rendszerjogosultságú felhasználói hozzáféréseket és tevékenységeket, a hitelesített és jogosulatlan hozzáférési kísérleteket, a rendszerkivételeket, és ezeket az információbiztonsági eseményeket a rendszer a megadott ideig megőrzi. A naplók megőrzési idejét Ön választhatja meg, mivel a naplógyűjtés és -megőrzés konfigurálását a saját igényeihez igazíthatja.
 
 ### <a name="how-azure-implements-logging-and-monitoring"></a>Hogyan valósítja meg az Azure a naplózást és a figyelést?
+
 Az Azure felügyeleti ügynököket (MA) és Azure Security Monitor- (ASM-) ügynököket helyez üzembe az összes felügyelt számítási, tárolási vagy hálócsomópontban, legyen az natív vagy virtuális. Minden felügyeleti ügynök úgy van beállítva, hogy az Azure -tanúsítványtárolóból kapott tanúsítvánnyal hitelesítse magát egy szolgáltatási csoport tárfiókján, és előre konfigurált diagnosztikai és eseményadatokat továbbítson a tárfiókba. Ezek az ügynökök nem települnek az ügyfelek virtuális gépeire.
 
 Az Azure rendszergazdák a naplók hitelesített és ellenőrzött elérésére szolgáló webes portálon keresztül férhetnek hozzá a naplókhoz. A rendszergazdák feldolgozhatják, szűrhetik és elemezhetik a naplókat, illetve összefüggéseket kereshetnek közöttük. Az Azure szolgáltatási csoport naplók számára fenntartott tárfiókja védve van a közvetlen rendszergazdai hozzáféréssel szemben, így megakadályozható a naplók illetéktelen módosítása.
@@ -173,11 +188,13 @@ Microsoft gyűjti a naplókat, a Syslog-protokollt használó hálózati eszköz
 Az [Azure Diagnostics](https://msdn.microsoft.com/library/azure/gg433048.aspx) az Azure diagnosztikai szolgáltatása, amely lehetővé teszi diagnosztikai adatok gyűjtését az Azure-ban futó alkalmazásokról. Ez az a Hibakeresés és hibaelhárítás, méri a teljesítményt, erőforrás-használat, a forgalom elemzése, a kapacitástervezési figyelés és naplózás diagnosztikai adatokat. A diagnosztikai adatok begyűjtését követően az adatok egy Azure-tárfiókba továbbíthatók megőrzés céljából. Átvitel vagy ütemezése vagy az igény szerinti.
 
 ## <a name="threat-mitigation"></a>Fenyegetés-megoldás
+
 Az elkülönítés, a titkosítás és a szűrés mellett az Azure számos veszélyelhárítási mechanizmust és folyamatot alkalmaz az infrastruktúra és a szolgáltatások védelme érdekében. Ide tartoznak azok a belső funkciók és technológiák, amelyek a magasabb szintű fenyegetések, mint például a szolgáltatásmegtagadással járó támadás (DDoS), a jogosultságszint-emelés vagy az [OWASP Top-10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) listán szereplő fenyegetések felismerésére és orvoslására szolgálnak.
 
 Ezeket a biztonsági funkciókat és kockázatkezelési eljárásokat a Microsoft a felhőalapú infrastruktúra biztonságossá tétele és a biztonsági események kockázatának csökkentése érdekében alkalmazza. Abban az esetben, ha az esemény akkor következik be, a biztonsági incidens Management (SIM) csoport a Microsoft Online biztonsági szolgáltatásait és megfelelőségi (OSSC) csapaton belüli készen áll a bármikor válaszol.
 
 ### <a name="how-azure-implements-threat-mitigation"></a>Hogyan valósítja meg az Azure a veszélyelhárítást?
+
 Azure rendelkezik biztonsági vezérlők fenyegetés megoldás megvalósításához és ügyfelek csökkentik a környezetükben potenciális fenyegetéseket. Az alábbi lista képességeit összegzi a veszély csökkentése Azure által kínált:
 
 * [Az Azure kártevőirtó](azure-security-antimalware.md) összes infrastruktúra-kiszolgálók alapértelmezés szerint engedélyezve van. Opcionálisan engedélyezheti azt a saját virtuális gépekről.
@@ -187,6 +204,7 @@ Azure rendelkezik biztonsági vezérlők fenyegetés megoldás megvalósításá
 * Az integrált központi telepítési rendszerek kezelik a biztonsági javítások terjesztését és telepítését az Azure platformon keresztül.
 
 ## <a name="next-steps"></a>További lépések
+
 [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/)
 
 [Az Azure Security csapat blogja](http://blogs.msdn.com/b/azuresecurity/)

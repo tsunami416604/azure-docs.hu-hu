@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Bus-üzenetsorok használata Python |} Microsoft Docs"
-description: "Útmutató: a Python Azure Service Bus-üzenetsorok használata."
+title: Azure Service Bus-üzenetsorok használata Python |} Microsoft Docs
+description: 'Útmutató: a Python Azure Service Bus-üzenetsorok használata.'
 services: service-bus-messaging
 documentationcenter: python
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 08/10/2017
-ms.author: sethm;lmazuel
-ms.openlocfilehash: e1e81ad1d7b4fe0e044917f090cac59dfd5b6332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/30/2018
+ms.author: sethm
+ms.openlocfilehash: aa0f243f4a5bc3d84c580b950bcf0ed7a78362e7
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus-üzenetsorok használata Python
 
@@ -107,7 +107,7 @@ Még nincs hozzárendelve az üzenetsorban lévő időtúllépés, és ha az alk
 
 Abban az esetben, ha az alkalmazás összeomlik, de előtte az üzenet feldolgozása után a **törlése** metódust, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt gyakran nevezik **legalább egyszeri feldolgozásnak**, ez azt jelenti, hogy minden üzenet legalább egyszer dolgoz fel, de bizonyos helyzetekben a a ugyanazon üzenet újbóli kézbesítése is lehet. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran érhető el, használja a **MessageId** az üzenet, amely állandó marad a kézbesítési kísérletek tulajdonságát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy rendelkezik megismerte a Service Bus-üzenetsorok alapjait, tanulmányozza a további.
 
 * [Üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions]

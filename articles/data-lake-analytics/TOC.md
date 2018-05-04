@@ -24,26 +24,30 @@
 ### [A kvótakorlátok beállítása](data-lake-analytics-quota-limits.md)
 
 ## U-SQL-programok fejlesztése
-### [Az U-SQL alapjai](data-lake-analytics-u-sql-get-started.md)
-### [U-SQL nyelvi referencia](https://msdn.microsoft.com/library/azure/mt591959)
-### [U-SQL-katalógus](data-lake-analytics-u-sql-catalog.md)
-### [Felhasználó által definiált operátorok az U-SQL-ben](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-### [A U-SQL Python-bővítményei](data-lake-analytics-u-sql-python-extensions.md)
-### [A U-SQL R-bővítményei](data-lake-analytics-u-sql-r-extensions.md)
-### [Az U-SQL kognitív bővítményei](data-lake-analytics-u-sql-cognitive.md)
-### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)
-### [U-SQL egyéni kód a Visual Studio Code-hoz](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
-### [U-SQL a Visual Studio Code-hoz](data-lake-analytics-data-lake-tools-for-vscode.md)
-### [U-SQL adatbázis exportálása](data-lake-analytics-data-lake-tools-export-database.md)
 
-## U-SQL-programok hibakeresése
-### [Feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-### [Rendellenes ismétlődő feladat hibaelhárítása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
-### [C#-kód hibaelhárítása a U-SQL-ben](data-lake-analytics-debug-u-sql-jobs.md)
-### [A feladatböngésző és a Feladat nézet használata](data-lake-analytics-data-lake-tools-view-jobs.md)
-### [A Vertex végrehajtási nézet használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
-### [Helyi futtatás és hibakeresés a VSCode-ban](data-lake-tools-for-vscode-local-run-and-debug.md)
-### [U-SQL programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
+### U-SQL nyelv
+#### [Az U-SQL alapjai](data-lake-analytics-u-sql-get-started.md)
+#### [U-SQL nyelvi referencia](https://msdn.microsoft.com/library/azure/mt591959)
+#### [U-SQL-katalógus](data-lake-analytics-u-sql-catalog.md)
+#### [Felhasználó által definiált operátorok az U-SQL-ben](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+#### [A U-SQL Python-bővítményei](data-lake-analytics-u-sql-python-extensions.md)
+#### [A U-SQL R-bővítményei](data-lake-analytics-u-sql-r-extensions.md)
+#### [Az U-SQL kognitív bővítményei](data-lake-analytics-u-sql-cognitive.md)
+#### [U-SQL programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
+#### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)
+#### [Feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+### Visual Studio
+#### [A feladatböngésző és a Feladat nézet használata](data-lake-analytics-data-lake-tools-view-jobs.md)
+#### [C#-kód hibaelhárítása a U-SQL-ben](data-lake-analytics-debug-u-sql-jobs.md)
+#### [Rendellenes ismétlődő feladat hibaelhárítása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
+#### [A Vertex végrehajtási nézet használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+#### [U-SQL adatbázis exportálása](data-lake-analytics-data-lake-tools-export-database.md)
+
+### Visual Studio Code
+#### [U-SQL a Visual Studio Code-hoz](data-lake-analytics-data-lake-tools-for-vscode.md)
+#### [U-SQL egyéni kód a Visual Studio Code-hoz](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+#### [Helyi futtatás és hibakeresés a VSCode-ban](data-lake-tools-for-vscode-local-run-and-debug.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 84363a92445991d08a2593bb3ade863db06b8670
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 622d9f1f498435ae36d1b35b938b513849efc3c5
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problémamegoldás telepítését Windows virtuális gép az Azure-ban
 
@@ -95,10 +95,6 @@ Illesztőprogramok Windows-alapú virtuális gépek találhatók [Itt](n-series-
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>A GPU példánya nem található a N sorozatú virtuális Gépen belül
 
 Windows Server 2016 vagy a Windows Server 2012 R2 rendszert futtató Azure N sorozatú virtuális gépek GPU lehetőségeinek előnyeit, telepítenie kell NVIDIA video-illesztőprogramok minden egyes virtuális gépen a telepítés utáni. Illesztőprogram-telepítő információ [Windows virtuális gépek](n-series-driver-setup.md) és [Linux virtuális gépek](../linux/n-series-driver-setup.md).
-
-## <a name="are-client-images-supported-for-n-series"></a>Ügyfél képek N-adatsorozathoz támogatottak?
-
-Jelenleg Azure csak támogatja az N-sorozat a Windows Server és Linux operációs rendszert futtató virtuális gépeken.
 
 ## <a name="is-n-series-vms-available-in-my-region"></a>Érhető el N sorozatú virtuális gépek régiómban?
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d9fbfd07de9a5d536cf458dc478aade851d4b23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0440eccbdf76fc58fadf46de2508d362c0de6cc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Az Azure-ban kezelt lemezek áttelepítésére Amazon Web Services (AWS) és más platformokra
 
@@ -96,7 +96,7 @@ Alapértelmezés szerint a gyorsítótárazási házirend lemez van *csak olvash
 
 ### <a name="pricing"></a>Díjszabás
 
-Tekintse át a [kezelt lemezek árképzési](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Prémium szintű felügyelt lemez árképzési legyen, mint a nem felügyelt Premium lemezek. Azonban a standard szintű felügyelt lemez árképzési más nem felügyelt Standard lemezeknél.
+Tekintse át a [kezelt lemezek árképzési](https://azure.microsoft.com/pricing/details/managed-disks/). Prémium szintű felügyelt lemez árképzési legyen, mint a nem felügyelt Premium lemezek. Azonban a standard szintű felügyelt lemez árképzési más nem felügyelt Standard lemezeknél.
 
 
 ## <a name="next-steps"></a>További lépések

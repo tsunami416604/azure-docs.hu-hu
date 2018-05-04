@@ -1,0 +1,32 @@
+- name: Azure IoT – alapok
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Bevezetés
+      href: iot-introduction.md
+    - name: Azure IoT-szolgáltatások és -technológiák
+      href: iot-services-and-technologies.md
+- name: Megoldások
+  items:
+    - name: IoT Suite előre konfigurált megoldások
+      href: /azure/iot-suite
+    - name: IoT-központ
+      href: 'https://docs.microsoft.com/microsoft-iot-central/'
+- name: Platformszolgáltatások
+  items:
+    - name: IoT Hub
+      href: /azure/iot-hub
+    - name: IoT Hub eszközkiépítési szolgáltatás
+      href: /azure/iot-dps
+    - name: Location Based Services
+      href: /azure/location-based-services
+    - name: Szolgáltatási SDK-k
+      href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+- name: Edge
+  items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: IoT eszközoldali SDK-k
+      href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

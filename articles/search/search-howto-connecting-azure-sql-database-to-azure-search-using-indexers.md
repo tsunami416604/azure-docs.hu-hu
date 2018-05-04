@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 02b4e8cb4963a5c12b528630e8e7906d6c5307fe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: aa24c3197af28101b2f3a0acda6d0ae81b9e96d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Csatlakozás Azure SQL adatbázis Azure Search használatával az indexelők
 
@@ -61,7 +61,7 @@ Attól függően, hogy az adatok vonatkozó számos tényező az Azure SQL index
 1. Az adatforrás létrehozása:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2016-09-01
+    POST https://myservice.search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -80,7 +80,7 @@ Attól függően, hogy az adatok vonatkozó számos tényező az Azure SQL index
 3. Hozzon létre az indexelő adjon neki egy nevet, és az adatok forrása és célja index hivatkozik:
 
     ```
-    POST https://myservice.search.windows.net/indexers?api-version=2016-09-01
+    POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -93,7 +93,7 @@ Attól függően, hogy az adatok vonatkozó számos tényező az Azure SQL index
 
 Ily módon létrehozta az indexelő nem tartozhat olyan ütemezés. Ha már létrehozott automatikusan futtatja. Futtatható újra az összes idő a **indexelő futtatása** kérelem:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2016-09-01
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
     api-key: admin-key
 
 Testre szabhatja a indexelő viselkedését, például a kötegméretet és hány dokumentumokat is kimarad, mielőtt egy indexelő végrehajtása meghiúsul számos tulajdonságát. További információkért lásd: [indexelő API létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
@@ -102,7 +102,7 @@ Szükség lehet az adatbázishoz való kapcsolódáshoz Azure-szolgáltatások e
 
 Az indexelő állapotát és végrehajtási előzményei (indexelt elemek, hiba stb. száma) figyelése egy **indexelő állapot** kérelem:
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2016-09-01
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
     api-key: admin-key
 
 A válasz a következőhöz hasonlóan kell kinéznie:
@@ -144,7 +144,7 @@ További információt a válasz megtalálhatók [indexelő állapotának beolva
 ## <a name="run-indexers-on-a-schedule"></a>Indexelő fussanak ütemezés szerint
 Az indexelő rendszeres ütemezés szerint futtatni is rendezheti. Ehhez adja hozzá a **ütemezés** létrehozásakor vagy frissítésekor az indexelő tulajdonság. Az alábbi példában látható a PUT kérés az indexelő frissítése:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2016-09-01
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 

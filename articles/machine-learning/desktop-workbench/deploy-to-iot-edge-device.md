@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Machine Learning modell rendszerbe állítása Azure IoT peremhálózati eszköz |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan telepíthetők Azure Machine Learning modellek Azure IoT peremeszközök."
+title: Az Azure Machine Learning modell rendszerbe állítása Azure IoT peremhálózati eszköz |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan telepíthetők Azure Machine Learning modellek Azure IoT peremeszközök.
 services: machine-learning
 author: tedway
 ms.author: tedway
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
 ms.openlocfilehash: ceab96b1ef28527c8aa2692b83d3609f133f339c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Az Azure Machine Learning modell Azure IoT peremhálózati eszköz telepítése
 
@@ -31,11 +31,11 @@ Az alábbiakban további ügyeljen a következőkre.
 ### <a name="add-registry-credentials-to-the-edge-runtime-on-your-edge-device"></a>Adja hozzá a peremhálózati eszköz a peremhálózati runtime beállításjegyzék hitelesítő adatokat
 A számítógépen, ahol az IoT-Edge, amelyen vegye fel a hitelesítő adatokat, a beállításjegyzék, a futtatókörnyezet is hozzáférhet a tároló lekéréses.
 
-A Windows a következő parancsot:
+Windowson futtassa az alábbi parancsot:
 ```cmd/sh
 iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password>
 ```
-A Linux a következő parancsot:
+Linuxon futtassa az alábbi parancsot:
 ```cmd/sh
 sudo iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password>
 ```

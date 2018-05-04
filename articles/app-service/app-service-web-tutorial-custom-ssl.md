@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fd68658d2549e47f69005af4012c2c328e192631
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez
 
@@ -232,9 +232,17 @@ Az alkalmazása alapértelmezés szerint engedélyezi a [TLS](https://wikipedia.
 
 A webalkalmazás lapjának bal oldali navigációs sávján válassza az **SSL settings** (SSL-beállítások) elemet. Ezután a **TLS version** (TLS-verzió) szakaszban válassza ki a kívánt TLS minimális verzióját.
 
-![HTTPS kényszerítése](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+![A TLS 1.1 vagy 1.2 kényszerítése](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziójú kapcsolatokat.
+
+## <a name="renew-certificates"></a>Tanúsítványok megújítása
+
+A bejövő IP-cím kötések törlésekor változhat, akkor is, ha a kötés IP-alapú. Ez akkor kifejezetten fontos, ha egy olyan tanúsítványt újít meg, amely már egy IP-alapú kötésben található. Annak érdekében, hogy az alkalmazás IP-címe ne változzon, kövesse sorrendben az alábbi lépéseket:
+
+1. Töltse fel az új tanúsítványt.
+2. Kösse az új tanúsítványt a kívánt egyéni tartományhoz anélkül, hogy törölné a régit. Ez a művelet lecserélni a kötést ahelyett, hogy eltávolítaná a régit.
+3. Törölje a régi tanúsítványt. 
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
@@ -278,7 +286,7 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Nyilvános tanúsítványok (nem kötelező)
-Feltölthet [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) a webalkalmazásba. App Service Environment környezetekben is használhat nyilvános tanúsítványokat az alkalmazásokhoz. Ha a LocalMachine tanúsítványtárolóban kell tárolnia a tanúsítványt, webalkalmazást kell használnia az App Service Environmentben. További információt [a nyilvános tanúsítványoknak a webalkalmazás számára történő konfigurálását](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) ismertető cikkben tekinthet meg.
+Feltölthet [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) a webalkalmazásba, így az alkalmazás elérhet olyan külső szolgáltatásokat is, amelyekhez tanúsítványalapú hitelesítés szükséges.  A nyilvános tanúsítványok az alkalmazásokba való feltöltésével és használatával kapcsolatos további információkért lásd az [SSL-tanúsítvány az alkalmazáskódban az Azure App Service-ben való használatát](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load) ismertető cikket.  App Service Environmentekben is használhat nyilvános tanúsítványokat az alkalmazásokkal. Ha a LocalMachine tanúsítványtárolóban kell tárolnia a tanúsítványt, webalkalmazást kell használnia az App Service Environmentben. További információt [a nyilvános tanúsítványoknak a webalkalmazás számára történő konfigurálását](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) ismertető cikkben tekinthet meg.
 
 ![Nyilvános tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

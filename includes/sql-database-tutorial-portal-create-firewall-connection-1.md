@@ -4,7 +4,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Üres SQL-adatbázis létrehozása
 
-Az Azure SQL-adatbázis [számítási és tárolási erőforrások](../articles/sql-database/sql-database-service-tiers.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../articles/azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL Database logikai kiszolgálón](../articles/sql-database/sql-database-features.md) jön létre. 
+Az Azure SQL-adatbázis [számítási és tárolási erőforrások](../articles/sql-database/sql-database-service-tiers-dtu.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../articles/azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL Database logikai kiszolgálón](../articles/sql-database/sql-database-features.md) jön létre. 
 
 Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához. 
 

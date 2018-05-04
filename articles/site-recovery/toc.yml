@@ -129,6 +129,8 @@
           items:
             - name: Azure-beli virtuális gépek vészhelyreállítása az Azure-ba való migrálás után
               href: azure-to-azure-replicate-after-migration.md
+            - name: Azure-beli virtuális gépek vészhelyreállítása a PowerShell használatával
+              href: azure-to-azure-powershell.md
         - name: 'Replikáció, feladatátvétel és feladat-visszavétel'
           items:
             - name: Azure-ról Azure-ba történő replikálás engedélyezése

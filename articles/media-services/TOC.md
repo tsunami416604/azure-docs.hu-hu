@@ -229,7 +229,7 @@
 ### [Újrapróbálkozási logika](media-services-retry-logic-in-dotnet-sdk.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=media-services)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [Azure PowerShell (Szolgáltatásfelügyelet)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)

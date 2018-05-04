@@ -1,19 +1,19 @@
 ---
-title: "Az Azure Policy használata szabályzatok létrehozásához és kezeléséhez a vállalati megfelelőségi szabályzatok kikényszerítéséhez | Microsoft Docs"
-description: "Az Azure Policy szabványok kikényszerítésére, előírt megfelelőségi és naplózási követelmények teljesítésére, költségek szabályozására, a konzisztens biztonság és teljesítmény fenntartására és az egész vállalatra kiterjedő tervezési alapelvek meghatározására használható."
+title: Az Azure Policy használata szabályzatok létrehozásához és kezeléséhez a vállalati megfelelőségi szabályzatok kikényszerítéséhez | Microsoft Docs
+description: Az Azure Policy szabványok kikényszerítésére, előírt megfelelőségi és naplózási követelmények teljesítésére, költségek szabályozására, a konzisztens biztonság és teljesítmény fenntartására és az egész vállalatra kiterjedő tervezési alapelvek meghatározására használható.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/18/2018
+ms.date: 04/19/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e50c2330c03e5fc36e608b672fe8390a1f19e99b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
 
@@ -372,7 +372,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Nem megfelelő vagy elutasított erőforrás mentesítése Kizárás használatával
 
-A fenti példát követve, miután hozzárendelte a szabályzatdefiníciót az SQL Server 12.0-ás verziójának megköveteléséhez, egy eltérő verziójú SQL-kiszolgáló létrehozását a rendszer elutasítja. Ez a szakasz egy eltérő verziójú SQL-kiszolgáló létrehozására tett elutasított kísérlet kizárás kérelmezésével történő feloldásán vezeti végig. A kizárás lényegében a szabályzat kikényszerítését akadályozza meg. A kizárás alkalmazható erőforráscsoportra, vagy leszűkíthető egyéni erőforrásokra is.
+A fenti példát követve, miután hozzárendelte a szabályzatdefiníciót az SQL Server 12.0-s verziójának megköveteléséhez, egy 12.0-stól eltérő verziójú SQL-kiszolgáló létrehozását a rendszer elutasítja. Ez a szakasz egy SQL-kiszolgáló létrehozására tett elutasított kísérlet meghatározott erőforrások kizárásának kérelmezésével történő feloldásán vezeti végig. A kizárás lényegében a szabályzat kikényszerítését akadályozza meg. A következő példában bármely SQL-kiszolgálóverzió megengedett. A kizárás alkalmazható erőforráscsoportra, vagy leszűkíthető egyéni erőforrásokra is.
 
 1. Válassza ki a **Hozzárendelések** elemet a bal oldali panelen.
 2. Tallózzon az összes szabályzat-hozzárendelés között, majd nyissa meg az *Az SQL Server 12.0-ás verziójának megkövetelése* hozzárendelést.
@@ -384,7 +384,7 @@ A fenti példát követve, miután hozzárendelte a szabályzatdefiníciót az S
 
 4. Kattintson a **Hozzárendelés** gombra.
 
-Ebben a szakaszban feloldotta a 12.0-ás verziójú SQL Server létrehozására tett kísérlet elutasítását az erőforrások kizárásának kérelmezésével.
+Ebben a szakaszban feloldotta az SQL-kiszolgáló létrehozására tett kísérlet elutasítását az erőforrások kizárásának kérelmezésével.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning előzetes verziójú funkciók elméleti áttekintése |} Microsoft Docs"
-description: "Az előzetes verziójú funkciók (például előfizetések, fiókok, munkaterületek, projektek) az Azure Machine Learning elméleti áttekintését."
+title: Azure Machine Learning előzetes verziójú funkciók elméleti áttekintése |} Microsoft Docs
+description: Az előzetes verziójú funkciók (például előfizetések, fiókok, munkaterületek, projektek) az Azure Machine Learning elméleti áttekintését.
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
 ms.openlocfilehash: ea9da6f23fd08c09f9e805519487648480816f35
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning---concepts"></a>Az Azure Machine Learning - fogalmak
 
@@ -34,7 +34,7 @@ Ez a cikk határozza meg, és az Azure Machine Learning használatához tudnia k
 - **Munkaterület:** munkaterület összetevő az elsődleges megosztására és az Azure ml együttműködés. Projektek munkaterület belül vannak csoportosítva. A munkaterület aztán megoszthat a kísérleti fiókhoz hozzáadott több felhasználóval rendelkező.
 
 
-- **A projekt:** az Azure Machine Learning, a projekt az összes a végrehajtás alatt egy probléma megoldására logikai tárolója. Azt a helyi lemezen egyetlen fájlmappa van leképezve, és adhat hozzá azon fájlok vagy mappák hozzá sub. A projekt is lehet társítva van egy Git-tárház verziókezelő és együttműködés.  
+- **A projekt:** az Azure Machine Learning, a projekt az összes a végrehajtás alatt egy probléma megoldására logikai tárolója. Egyetlen, a helyi lemezen lévő mappára vannak leképezve, és tetszőleges számú fájl vagy almappa adható hozzájuk. A projekt is lehet társítva van egy Git-tárház verziókezelő és együttműködés.  
 
 - **Kísérlet:** Azure ml, egy kísérlet egy vagy több forrás kódot (oka) t, amely egy-egy belépési pont hajthatók végre. Feladatokhoz, mint az adatfeldolgozást, a szolgáltatás mérnöki csapathoz, a tanítási modell vagy a modell kiértékelése tartalmazhat. Jelenleg Azure ML támogatja a Python, vagy csak a PySpark kísérleteket.
 

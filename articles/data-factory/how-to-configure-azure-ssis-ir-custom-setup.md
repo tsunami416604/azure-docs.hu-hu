@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 8390284f969fe9375a70801724881db26806a1d8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: af92eec8b6461563a366805d5eb4cbb964b028a5
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS-integrációs futásidejű egyéni beállítása
 
@@ -29,13 +29,7 @@ Az ingyenes vagy a nem licencelt, és fizetett vagy licencelt összetevői is te
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
--   Parancsfájlok, hívja az xcopy vagy robocopy vagy hasonló eszközök most átmásolása közvetlenül nem használható. Megoldás létrehozása a `cmd` fájlt, amely tartalmazza az xcopy vagy a robocopy eszközzel hívó parancsprogramok (például `install.cmd`), és hívja meg ezt `cmd` fájl helyett. Példa:
-
-    ```
-    start /wait cmd /c "call install.cmd > %CUSTOM\_SETUP\_SCRIPT\_LOG\_DIR%\\install.cmd.log"
-    ```
-
--   Közvetlenül nem hívható `gacutil.exe` időpontban való telepítéséhez szerelvényeket a globális szerelvény gyorsítótárban (GAC) található a. A probléma megoldásához használja `gacinstall.cmd` (a nyilvános előzetes verzió-tárolóban megadott).
+-   Ha a használni kívánt `gacutil.exe` szerelvényeket a globális szerelvény gyorsítótárban (GAC) a telepítéséhez adja meg az egyéni telepítés részeként, vagy a nyilvános előzetes verzió-tárolóban megadott másolási szüksége.
 
 -   Ha egy Vnetet az Azure-SSIS-IR egyéni telepítés csatlakoztatni kell, csak az Azure Resource Manager hálózatok esetén támogatott. Klasszikus virtuális hálózat nem támogatott.
 
@@ -125,7 +119,7 @@ Az Azure-SSIS-IR testreszabásához kell a következőket:
 
     c. Válassza ki a csatlakoztatott Public Preview tárolót, és kattintson duplán a `CustomSetupScript` mappát. Ez a mappa a következő elemek a következők:
 
-       1. A `Sample` mappa, amely tartalmaz egy egyéni telepítendő alapvető feladat minden egyes csomópontjára az Azure-SSIS infravörös A tevékenység nincs hatása, de néhány másodpercre alvó. A mappa is tartalmaz `gacinstall.cmd` lecseréli `gacutil.exe`.
+       1. A `Sample` mappa, amely tartalmaz egy egyéni telepítendő alapvető feladat minden egyes csomópontjára az Azure-SSIS infravörös A tevékenység nincs hatása, de néhány másodpercre alvó. A mappa is tartalmaz egy `gacutil` mappát, amelybe `gacutil.exe`.
 
        2. A `UserScenarios` mappát, amelybe a felhasználó forgatókönyvek esetén nyolc egyéni beállításokat.
 
@@ -133,21 +127,23 @@ Az Azure-SSIS-IR testreszabásához kell a következőket:
 
     d. Kattintson duplán a `UserScenarios` mappát. Ez a mappa a következő elemek a következők:
 
-       1. A `BCP` mappába, amely tartalmaz egy egyéni telepítendő SQL Server parancssori segédeszközök (`MsSqlCmdLnUtils.msi`), beleértve a tömeges másolási funkciójával (`bcp`), az Azure-SSIS infravörös minden egyes csomópontjára
+       1. A `.NET FRAMEWORK 3.5` mappa, amely tartalmazza a .NET-keretrendszer, amely az Azure-SSIS infravörös minden egyes csomópontjára egyéni összetevők szükség lehet egy korábbi telepítése egyéni telepítés
 
-       2. Egy `EXCEL` mappába, amely tartalmaz egy egyéni telepítendő nyílt forráskódú szerelvények (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, és `ExcelDataReader.dll`) az Azure-SSIS infravörös minden egyes csomópontjára
+       2. A `BCP` mappába, amely tartalmaz egy egyéni telepítendő SQL Server parancssori segédeszközök (`MsSqlCmdLnUtils.msi`), beleértve a tömeges másolási funkciójával (`bcp`), az Azure-SSIS infravörös minden egyes csomópontjára
 
-       3. Egy `MSDTC` mappa, amely tartalmaz egy egyéni telepítés engedélyezése és a Microsoft elosztott tranzakciók koordinátora (MSDTC) szolgáltatás elindítása az Azure-SSIS infravörös minden egyes csomópontjára
+       3. Egy `EXCEL` mappába, amely tartalmaz egy egyéni telepítendő nyílt forráskódú szerelvények (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, és `ExcelDataReader.dll`) az Azure-SSIS infravörös minden egyes csomópontjára
 
-       4. Egy `ORACLE ENTERPRISE` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd`) és a csendes telepítést a konfigurációs fájl (`client.rsp`) az Oracle OCI illesztőprogram telepítéséhez az Azure-SSIS IR Enterprise Edition (magán előnézetben) minden egyes csomóponton. Ez a beállítás lehetővé teszi a Csatlakozáskezelő Oracle, a forrás és a cél. Először meg kell letölteni `winx64_12102_client.zip` a [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) , majd töltse fel együtt `main.cmd` és `client.rsp` a tárolóba. TNS csatlakozni az Oracle használatakor is kell letölteni `tnsnames.ora`, szerkesztheti, majd töltse fel a tárolóba, akkor lehet másolni az Oracle telepítési mappájába a telepítés során.
+       4. Egy `MSDTC` mappa, amely tartalmazza a hálózati és biztonsági beállításait a Microsoft elosztott tranzakciók koordinátora (MSDTC) példány minden egyes csomóponton az Azure-SSIS infravörös módosítani egy egyéni telepítés.
 
-       5. Egy `ORACLE STANDARD` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd`) az Oracle ODP.NET illesztőprogram telepítéséhez az Azure-SSIS infravörös minden egyes csomópontjára Ez a beállítás lehetővé teszi a ADO.NET Connection Manager, a forrás és a cél. Először töltse le `ODP.NET_Managed_ODAC122cR1.zip` a [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), majd töltse fel együtt `main.cmd` a tárolóba.
+       5. Egy `ORACLE ENTERPRISE` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd`) és a csendes telepítést a konfigurációs fájl (`client.rsp`) az Oracle OCI illesztőprogram telepítéséhez az Azure-SSIS IR Enterprise Edition (magán előnézetben) minden egyes csomóponton. Ez a beállítás lehetővé teszi a Csatlakozáskezelő Oracle, a forrás és a cél. Először meg kell letölteni `winx64_12102_client.zip` a [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) , majd töltse fel együtt `main.cmd` és `client.rsp` a tárolóba. TNS csatlakozni az Oracle használatakor is kell letölteni `tnsnames.ora`, szerkesztheti, majd töltse fel a tárolóba, akkor lehet másolni az Oracle telepítési mappájába a telepítés során.
 
-       6. Egy `SAP BW` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd`) telepítése a SAP .NET összekötő szerelvény (`librfc32.dll`) az Azure-SSIS IR Enterprise Edition (magán előnézetben) minden egyes csomóponton. Ez a beállítás lehetővé teszi a SAP BW Connection Manager, a forrás és a cél. Első lépésként töltse fel a 64 bites vagy 32 bites verziója `librfc32.dll` az SAP telepítési mappájából a tárolóba, együtt `main.cmd`. Ezután másolja a SAP szerelvényből a `%windir%\SysWow64` vagy `%windir%\System32` mappa a telepítés során.
+       6. Egy `ORACLE STANDARD` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd`) az Oracle ODP.NET illesztőprogram telepítéséhez az Azure-SSIS infravörös minden egyes csomópontjára Ez a beállítás lehetővé teszi a ADO.NET Connection Manager, a forrás és a cél. Először töltse le `ODP.NET_Managed_ODAC122cR1.zip` a [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), majd töltse fel együtt `main.cmd` a tárolóba.
 
-       7. A `STORAGE` mappa, amely tartalmazza az Azure PowerShell telepítése az Azure-SSIS infravörös minden egyes csomópontjára egyéni telepítés Ez a beállítás lehetővé teszi a központi telepítése és futtatása SSIS-csomagok futtató [PowerShell-parancsfájlok segítségével kezelheti az Azure Storage-fiók](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell). Másolás `main.cmd`, egy minta `AzurePowerShell.msi` (vagy telepítse a legújabb verziót), és `storage.ps1` a tárolóhoz. A csomagok PowerShell.dtsx sablonként használni. A csomagot a sablon egyesíti egy [Azure Blob letöltési feladat](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), mely letöltések `storage.ps1` módosíthatóvá PowerShell-parancsfájlként, és egy [folyamat feladat végrehajtása](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) , amely végrehajtja a parancsfájl minden egyes csomóponton.
+       7. Egy `SAP BW` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd`) telepítése a SAP .NET összekötő szerelvény (`librfc32.dll`) az Azure-SSIS IR Enterprise Edition (magán előnézetben) minden egyes csomóponton. Ez a beállítás lehetővé teszi a SAP BW Connection Manager, a forrás és a cél. Első lépésként töltse fel a 64 bites vagy 32 bites verziója `librfc32.dll` az SAP telepítési mappájából a tárolóba, együtt `main.cmd`. Ezután másolja a SAP szerelvényből a `%windir%\SysWow64` vagy `%windir%\System32` mappa a telepítés során.
 
-       8. A `TERADATA` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd)`, az adott fájl (`install.cmd`), és csomagok (`.msi`). Ezeket a fájlokat a Teradata összekötők, az Tpt-vel API-t és az ODBC-illesztőprogram az Azure-SSIS IR Enterprise Edition (magán előnézetben) minden egyes csomópontjára telepítse. Ez a beállítás lehetővé teszi a Teradata Connection Manager, a forrás és a cél. Első lépésként töltse le a Teradata-eszközök és segédprogramok (TTU) 15.x zip-fájl (például `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) a [Teradata](http://partnerintelligence.teradata.com), majd töltse fel a fenti együtt `.cmd` és `.msi` fájlokat a tárolóba.
+       8. A `STORAGE` mappa, amely tartalmazza az Azure PowerShell telepítése az Azure-SSIS infravörös minden egyes csomópontjára egyéni telepítés Ez a beállítás lehetővé teszi a központi telepítése és futtatása SSIS-csomagok futtató [PowerShell-parancsfájlok segítségével kezelheti az Azure Storage-fiók](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell). Másolás `main.cmd`, egy minta `AzurePowerShell.msi` (vagy telepítse a legújabb verziót), és `storage.ps1` a tárolóhoz. A csomagok PowerShell.dtsx sablonként használni. A csomagot a sablon egyesíti egy [Azure Blob letöltési feladat](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), mely letöltések `storage.ps1` módosíthatóvá PowerShell-parancsfájlként, és egy [folyamat feladat végrehajtása](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) , amely végrehajtja a parancsfájl minden egyes csomóponton.
+
+       9. A `TERADATA` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd)`, az adott fájl (`install.cmd`), és csomagok (`.msi`). Ezeket a fájlokat a Teradata összekötők, az Tpt-vel API-t és az ODBC-illesztőprogram az Azure-SSIS IR Enterprise Edition (magán előnézetben) minden egyes csomópontjára telepítse. Ez a beállítás lehetővé teszi a Teradata Connection Manager, a forrás és a cél. Első lépésként töltse le a Teradata-eszközök és segédprogramok (TTU) 15.x zip-fájl (például `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) a [Teradata](http://partnerintelligence.teradata.com), majd töltse fel a fenti együtt `.cmd` és `.msi` fájlokat a tárolóba.
 
     ![A felhasználó forgatókönyvek mappában található mappák](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

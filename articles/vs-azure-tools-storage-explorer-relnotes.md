@@ -16,7 +16,7 @@ ms.date: 07/31/2017
 ms.author: cawa
 ms.openlocfilehash: 6274e4ebbc9f3c5b21c479b10e112459000fd28b
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
 ---

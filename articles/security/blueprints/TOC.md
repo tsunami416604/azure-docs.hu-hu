@@ -6,7 +6,7 @@
 ## [Működési biztonság engedélyezése](../azure-operational-security.md)
 ## [Irányítás az Azure-ban](../governance-in-azure.md)
 ## [Elkülönítés az Azure-felhőben](../azure-isolation.md)
-## [Biztonságos hibrid hálózati architektúra](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
+## [Biztonságos hibrid hálózati architektúra](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
 ## [Biztonságtechnikai képességek](../azure-security-technical-capabilities.md)
 
 # [Adatbiztonság és titkosítás](../security-azure-encryption-overview.md)

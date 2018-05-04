@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.openlocfilehash: 4270bf0b8002b5328241c6d31f399511fc38274e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9c2ce75b2bfb4b8ddab11ac94e5a8e50c2fad6ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reliable-services-lifecycle"></a>A Reliable Services életciklusa
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ Szolgáltatásokról, amelyek nem szabályszerűen kezeli lemondás is több pro
 
 Mivel a szolgáltatások állapotalapú, akkor valószínű is, hogy használja-e a szolgáltatások [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md). A Service Fabric egy elsődleges lefokozása, az első dolog, ami történik esetén meg kell, hogy a mögöttes állapota írási visszavonva. Ennek eredménye, hogy egy második problémákat, amelyek hatással lehetnek a szolgáltatási életciklus. A visszatérési kivételek időzítése, és hogy a replika áthelyezik alapuló gyűjtemények vagy leáll. Fontos az ilyen kivételek megfelelően kezeli. 
 
-A Service Fabric által kiváltott kivételekre is ki vagy állandó [(`FabricException`)](https://docs.microsoft.com/en-us/java/api/system.fabric.exception) vagy átmeneti [(`FabricTransientException`)](https://docs.microsoft.com/en-us/java/api/system.fabric.exception._fabric_transient_exception). Állandó kivételek legyen naplózva, és fel. Átmeneti kivételek követően újra megkísérelhető újrapróbálkozási logika alapján.
+A Service Fabric által kiváltott kivételekre is ki vagy állandó [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) vagy átmeneti [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception._fabric_transient_exception). Állandó kivételek legyen naplózva, és fel. Átmeneti kivételek követően újra megkísérelhető újrapróbálkozási logika alapján.
 
 Tesztelése és ellenőrzése a Reliable Services fontos része a kivételeket, amelyeket a használatával kezeli a `ReliableCollections` szolgáltatás életciklus-események együtt. Azt javasoljuk, hogy mindig a szolgáltatás terhelés alatt. Is végre kell hajtania frissítések és [chaos tesztelés](service-fabric-controlled-chaos.md) üzemi környezetben üzembe helyezése előtt. Az alábbi alapvető lépések segítségével, győződjön meg arról, hogy a szolgáltatás megfelelően van megvalósítva, és megfelelően kezeli az életciklus-események.
 

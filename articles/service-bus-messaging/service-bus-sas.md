@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
-ms.author: sethm;clemensv
-ms.openlocfilehash: 21e9e0a20842e365e40b71ac96888e7cd2056e52
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: sethm
+ms.openlocfilehash: 420f4573fbe8b5139a4e1e5fa4dea3404c4e099d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>A Service Bus hozzáférés-vezérlés megosztott hozzáférési aláírásokkal
 
@@ -255,17 +255,17 @@ A következő táblázat a különféle műveletek a Service Bus erőforrásaina
 | Művelet | Jogcím szükséges | Jogcím-hatókör |
 | --- | --- | --- |
 | **Namespace** | | |
-| A névtér engedélyezési szabály konfigurálása |Kezelés |Minden névtér cím |
+| A névtér engedélyezési szabály konfigurálása |Felügyelet |Minden névtér cím |
 | **Service Registry** | | |
-| Magánfelhő házirendek felsorolása |Kezelés |Minden névtér cím |
+| Magánfelhő házirendek felsorolása |Felügyelet |Minden névtér cím |
 | A névtér figyelését |Figyelés |Minden névtér cím |
 | Üzenetek küldése egy névtérben figyelő |Küldés |Minden névtér cím |
-| **Queue** | | |
-| Üzenetsor létrehozása |Kezelés |Minden névtér cím |
-| Üzenetsor törlése |Kezelés |Bármilyen érvényes várósor címe |
-| A várólisták számbavétele |Kezelés |$ Erőforrások/várólisták |
-| A várólista leírás beolvasása |Kezelés |Bármilyen érvényes várósor címe |
-| A várólisták engedélyezési szabály konfigurálása |Kezelés |Bármilyen érvényes várósor címe |
+| **Várólista** | | |
+| Üzenetsor létrehozása |Felügyelet |Minden névtér cím |
+| Üzenetsor törlése |Felügyelet |Bármilyen érvényes várósor címe |
+| A várólisták számbavétele |Felügyelet |$ Erőforrások/várólisták |
+| A várólista leírás beolvasása |Felügyelet |Bármilyen érvényes várósor címe |
+| A várólisták engedélyezési szabály konfigurálása |Felügyelet |Bármilyen érvényes várósor címe |
 | Történő küldése az üzenetsorba |Küldés |Bármilyen érvényes várósor címe |
 | Üzenetek fogadása egy üzenetsorból |Figyelés |Bármilyen érvényes várósor címe |
 | Szakítsa vagy üzenetek befejezése után az üzenetet kapta a betekintés-zárolási mód |Figyelés |Bármilyen érvényes várósor címe |
@@ -275,25 +275,25 @@ A következő táblázat a különféle műveletek a Service Bus erőforrásaina
 | Állítsa be a üzenet-várólista munkamenethez tartozó állapotát |Figyelés |Bármilyen érvényes várósor címe |
 | Üzenet a későbbi kézbesítésre, ütemezés például [ScheduleMessageAsync()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Figyelés | Bármilyen érvényes várósor címe
 | **A témakör** | | |
-| Üzenettémakör létrehozása |Kezelés |Minden névtér cím |
-| Egy témakör törlése |Kezelés |Bármilyen érvényes témakör cím |
-| Témakörök számbavétele |Kezelés |$ Erőforrások/kapcsolatos témakörök |
-| A témakör leírás beolvasása |Kezelés |Bármilyen érvényes témakör cím |
-| A témakör az engedélyezési szabály konfigurálása |Kezelés |Bármilyen érvényes témakör cím |
+| Üzenettémakör létrehozása |Felügyelet |Minden névtér cím |
+| Egy témakör törlése |Felügyelet |Bármilyen érvényes témakör cím |
+| Témakörök számbavétele |Felügyelet |$ Erőforrások/kapcsolatos témakörök |
+| A témakör leírás beolvasása |Felügyelet |Bármilyen érvényes témakör cím |
+| A témakör az engedélyezési szabály konfigurálása |Felügyelet |Bármilyen érvényes témakör cím |
 | A témakör küldése |Küldés |Bármilyen érvényes témakör cím |
 | **Előfizetés** | | |
-| Előfizetés létrehozása |Kezelés |Minden névtér cím |
-| Előfizetés törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Előfizetések számbavétele |Kezelés |.. / myTopic/előfizetések |
-| Előfizetés leírását beolvasása |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Előfizetés létrehozása |Felügyelet |Minden névtér cím |
+| Előfizetés törlése |Felügyelet |.. /myTopic/Subscriptions/mySubscription |
+| Előfizetések számbavétele |Felügyelet |.. / myTopic/előfizetések |
+| Előfizetés leírását beolvasása |Felügyelet |.. /myTopic/Subscriptions/mySubscription |
 | Szakítsa vagy üzenetek befejezése után az üzenetet kapta a betekintés-zárolási mód |Figyelés |.. /myTopic/Subscriptions/mySubscription |
 | Késlelteti a későbbi beolvasásához üzenet |Figyelés |.. /myTopic/Subscriptions/mySubscription |
 | Kézbesítetlen levelek üzenet |Figyelés |.. /myTopic/Subscriptions/mySubscription |
 | A témakör munkamenethez tartozó állapot beolvasása |Figyelés |.. /myTopic/Subscriptions/mySubscription |
 | A témakör munkamenethez tartozó állapot beállítása |Figyelés |.. /myTopic/Subscriptions/mySubscription |
 | **Szabályok** | | |
-| Szabály létrehozása |Kezelés |.. /myTopic/Subscriptions/mySubscription |
-| Szabály törlése |Kezelés |.. /myTopic/Subscriptions/mySubscription |
+| Szabály létrehozása |Felügyelet |.. /myTopic/Subscriptions/mySubscription |
+| Szabály törlése |Felügyelet |.. /myTopic/Subscriptions/mySubscription |
 | Szabályok számbavétele |Kezelése vagy figyelésére |.. /myTopic/Subscriptions/mySubscription/Rules 
 
 ## <a name="next-steps"></a>További lépések

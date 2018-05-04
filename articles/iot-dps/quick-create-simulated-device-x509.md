@@ -5,25 +5,25 @@ services: iot-dps
 keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 12/20/2017
+ms.date: 04/16/2018
 ms.topic: hero-article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 484b82b79d796536a2c9a527b42e90f4e37c7bda
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e5fe9282dd10bd6bdc41c63718a884a92da4d7c6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-provision-an-x509-simulated-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Ezek a lépések bemutatják, hogyan hozhat létre szimulált X.509-eszközt egy Windows operációs rendszert futtató fejlesztői gépen, és hogyan használhat egy kódmintát, hogy ezt a szimulált eszközt összekösse az eszközkiépítési szolgáltatással és az IoT Hubbal. 
 
-A folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit.
+Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. A folytatás előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
 [!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 
@@ -51,7 +51,7 @@ A folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás b
     cd cmake
     ```
 
-6. Futtassa az alábbi parancsot az üzembe helyezési ügyfél Visual Studio-megoldásának létrehozásához.
+6. A kódminta X.509-tanúsítványt használ az X.509-hitelesítéssel történő igazoláshoz. Futtassa az alábbi parancsot, hogy egy olyan SDK-verziót hozzon létre, amely igazodik az Ön által használt fejlesztésiügyfél-platformhoz és [igazolási eljáráshoz](concepts-security.md#attestation-mechanism) (X.509-tanúsítvány). Ez egy Visual Studio megoldást is létrehoz a szimulált eszközhöz. 
 
     ```cmd
     cmake -Duse_prov_client:BOOL=ON ..
@@ -62,7 +62,7 @@ A folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás b
 
 <a id="portalenroll"></a>
 
-## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Eszközök beléptetése bejegyzés létrehozása az eszközkiépítési szolgáltatásban
+## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>Önaláírt X.509-eszköztanúsítvány és egyéni regisztrációs bejegyzés létrehozása
 
 1. Nyissa meg a *cmake* mappában létrehozott `azure_iot_sdks.sln` nevű megoldást, és építse fel azt a Visual Studióban.
 
@@ -72,18 +72,18 @@ A folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás b
 
 4. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson az **Összes erőforrás** gombra, és nyissa meg az eszközkiépítési szolgáltatását.
 
-4. Nyissa meg a szolgáltatás **Regisztrációk kezelése** paneljét. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Hozzáadás** gombra. 
+5. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni beléptetések** fület, és kattintson a felül lévő **Hozzáadás** gombra. 
 
-5. A **Beléptetési listabejegyzés hozzáadása** területen adja meg a következő információkat:
+6. A **Regisztráció hozzáadása** panelen adja meg a következő információkat:
     - Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
-    - A *Tanúsítvány .pem- vagy .cer-fájl* területen válassza ki az előző lépésben létrehozott **_X509testcert.pem_** tanúsítványfájlt a *Fájlkezelő* vezérlővel.
+    - Az *Elsődleges tanúsítványfájl (.pem vagy .cer)* területen kattintson a *Fájl kiválasztása* elemre, és válassza ki az előző lépésekben létrehozott **X509testcert.pem** tanúsítványfájlt.
     - Ha kívánja, megadhatja az alábbi információkat is:
-        - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
-        - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor. 
-        - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
+      - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
+      - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor. 
+      - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
     - Ha végzett, kattintson a **Mentés** gombra. 
 
-    ![Írja be az X.509-eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device-x509/enter-device-enrollment.png)  
+    [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/quick-create-simulated-device-x509/individual-enrollment.png)](./media/quick-create-simulated-device-x509/individual-enrollment.png#lightbox)
 
    Sikeres beléptetés esetén az X.509-eszköz **riot-device-cert** azonosítóval megjelenik a *Regisztrációs azonosító* oszlopban az *Egyéni beléptetések* lapon. 
 

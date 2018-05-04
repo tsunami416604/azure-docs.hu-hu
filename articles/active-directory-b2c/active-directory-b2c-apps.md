@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: davidmu1
-ms.openlocfilehash: 011426f3d8eab4eb2513270a9bcd1562e3c12b31
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0329cb9e49196f77ba12940e5987487eb2b6fda9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: Alkalmazások típusai
-Az Azure Active Directory (Azure AD) B2C számos különböző modern alkalmazásarchitektúrához használható hitelesítést tartalmaz. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ebben a dokumentumban röviden leírjuk, hogy milyen típusú alkalmazásokat hozhat létre. Mindez független a programozási nyelvtől vagy a használt platformtól. A cikk segíthet az összetettebb feladatok megértésében, ezért érdemes elolvasni, mielőtt nekifog [az alkalmazások létrehozásának](active-directory-b2c-overview.md#get-started).
+Az Azure Active Directory (Azure AD) B2C számos különböző modern alkalmazásarchitektúrához használható hitelesítést tartalmaz. Ezek mindegyike az iparági szabványnak számító [OAuth 2.0](active-directory-b2c-reference-protocols.md) vagy [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollon alapul. Ebben a dokumentumban röviden leírjuk, hogy milyen típusú alkalmazásokat hozhat létre. Mindez független a programozási nyelvtől vagy a használt platformtól. A cikk segíthet az összetettebb feladatok megértésében, ezért érdemes elolvasni, mielőtt nekifog [az alkalmazások létrehozásának](active-directory-b2c-overview.md).
 
 ## <a name="the-basics"></a>Az alapok
 Az Azure AD B2C-t használó alkalmazásokat az [Azure Portalon](https://portal.azure.com/) keresztül regisztrálni kell az Ön [B2C-címtárában](active-directory-b2c-get-started.md). Az alkalmazásregisztrációs művelet során a rendszer összegyűjt bizonyos adatokat, majd értékeket rendel az alkalmazáshoz:
@@ -30,16 +30,9 @@ Az Azure AD B2C-t használó alkalmazásokat az [Azure Portalon](https://portal.
 * **Redirect URI** (Átirányítási URI), amely az alkalmazásnak küldött közvetlen válaszokhoz használható.
 * Más, az adott feladathoz tartozó értékek. További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](active-directory-b2c-app-registration.md).
 
-Az alkalmazás a regisztrációt követően az Azure AD v2.0-végpontokra küldött kérésekkel kommunikál az Azure AD-vel:
-
-```
-https://login.microsoftonline.com/common/oauth2/v2.0/authorize
-https://login.microsoftonline.com/common/oauth2/v2.0/token
-```
-
 Az Azure AD B2C-nek küldött kérések meghatároznak egy **szabályzatot** is. A szabályzatok vezérlik az Azure AD működését. A végpontok segítségével ezenfelül testre szabható felhasználói élmények is létrehozhatók. Gyakran használt szabályzatok például a következők: regisztráció, bejelentkezés, profilmódosítás és így tovább. Ha nincs tisztában a szabályzatokkal, a folytatás előtt olvasson utána az Azure AD B2C [bővíthető szabályzat-keretrendszernek](active-directory-b2c-reference-policies.md).
 
-Az alkalmazások és a v2.0-végpontok közötti interakció minden esetben hasonló felső szintű mintát követ:
+Az alkalmazások közötti interakció minden esetben hasonló felső szintű mintát követ:
 
 1. Az alkalmazás elirányítja a felhasználót a v2.0-végpontra a [szabályzat](active-directory-b2c-reference-policies.md) végrehajtása érdekében.
 2. A felhasználó a szabályzat definíciója szerint teljesíti a szabályzat feltételeit.
@@ -49,7 +42,7 @@ Az alkalmazások és a v2.0-végpontok közötti interakció minden esetben haso
 6. Az alkalmazás rendszeres időközönként frissíti a biztonsági jogkivonatot.
 
 <!-- TODO: Need a page for libraries to link to -->
-Ezek a lépések a létrehozandó alkalmazás típusától függően némileg eltérőek lehetnek. A részleteket nyílt forráskódú kódtárakból is megismerheti.
+Ezek a lépések a létrehozandó alkalmazás típusától függően némileg eltérőek lehetnek.
 
 ## <a name="web-apps"></a>Webalkalmazások
 A kiszolgálón futtatott és böngészőn keresztül elért webalkalmazások (ideértve a .NET- , a PHP-, a Java-, a Ruby-, a Python- és a Node.js-alapú alkalmazásokat) esetében az Azure AD B2C az összes felhasználói élmény esetében támogatja az [OpenID Connect](active-directory-b2c-reference-protocols.md) protokollt. Ide tartozik a bejelentkezés, a regisztráció és a profilkezelés is. Az OpenID Connect Azure AD B2C-implementációjában a webalkalmazás az Azure AD felé küldött hitelesítési kérések alapján indítja el a különböző felhasználói élményeket. A kérés eredménye egy `id_token`. Ez a biztonsági jogkivonat tartalmazza a felhasználó identitását. Ezenfelül jogcímek formájában információkat nyújt a felhasználóról is:
@@ -75,7 +68,7 @@ A webalkalmazásban a [szabályzat](active-directory-b2c-reference-policies.md) 
 
 A felhasználó identitásának ellenőrzéséhez elegendő az Azure AD-tól kapott nyilvános aláírókulcs segítségével ellenőrizni a `id_token`érvényességét. Ezzel egyúttal beállít egy munkamenetcookie-t is, amely a következő lapkérések során azonosítja a felhasználót.
 
-Ha szeretné élőben is megtekinteni a folyamatot, próbálja ki valamelyik webalkalmazás-bejelentkezési kódmintát [a kezdeti lépéseket bemutató cikkből](active-directory-b2c-overview.md#get-started).
+Ha szeretné élőben is megtekinteni a folyamatot, próbálja ki valamelyik webalkalmazás-bejelentkezési kódmintát [a kezdeti lépéseket bemutató cikkből](active-directory-b2c-overview.md).
 
 A bejelentkezés biztosítása mellett a webkiszolgáló-alkalmazásban szükség lehet webes háttérszolgáltatások elérésére is. Ebben az esetben a webalkalmazást egy némileg különböző [OpenID Connect-folyamat](active-directory-b2c-reference-oidc.md) elvégzésére is be lehet állítani, amelynek keretében hitelesítési kódok és frissítési jogkivonatok segítségével szerzi be a jogkivonatokat. Ezt a folyamatot a következő, [Webes API-k](#web-apis) című fejezet írja le.
 
@@ -105,7 +98,7 @@ A webes API számos különböző típusú ügyféltől (például webalkalmazá
 
 Ha többet szeretne tudni a hitelesítési kódokról, frissítési jogkivonatokról, valamint a jogkivonatok lekérésének lépéseiről, olvasson az [OAuth 2.0-protokollról](active-directory-b2c-reference-oauth-code.md).
 
-Ha szeretné megtanulni, hogyan biztosíthat védelmet a webes API-k számára az Azure AD B2C segítségével, olvassa el a [kezdeti lépéseket bemutató cikk](active-directory-b2c-overview.md#get-started) webes API-kra vonatkozó oktatóanyagát.
+Ha szeretné megtanulni, hogyan biztosíthat védelmet a webes API-k számára az Azure AD B2C segítségével, olvassa el a [kezdeti lépéseket bemutató cikk](active-directory-b2c-overview.md) webes API-kra vonatkozó oktatóanyagát.
 
 ## <a name="mobile-and-native-apps"></a>Mobil- és natív alkalmazások
 Az eszközökre telepített alkalmazások (többek között a mobil- és asztali alkalmazások) gyakran igényelnek hozzáférést háttérszolgáltatásokhoz vagy webes API-khoz a felhasználók nevében. Az Azure AD B2C és az [OAuth 2.0 hitelesítésikód-folyamata](active-directory-b2c-reference-oauth-code.md) segítségével egyedi identitáskezelési eszközöket adhat a natív alkalmazásokhoz, valamint biztonságosan megoldhatja a háttérszolgáltatások behívását is.  

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 0de596f454a1e79b1f5540854897bd15f8de88c4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Az OMS Szolgáltatáshoz, az Azure bővítése (Másolás) riasztások
 Verziótól **2018. május 14.**, a konfigurált riasztások minden felhasználója [a Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), az Azure kiterjesztése. Riasztásokat, amelyek az Azure-bA bővítve lettek OMS a megszokott módon működik. Megfigyelési lehetőségek változatlanok maradnak. Az Azure-bA OMS létrehozott riasztások kiterjesztése számos előnyt kínál. Az előnyei és a folyamat, amely a riasztásokat az OMS Szolgáltatáshoz Azure kapcsolatos további információkért lásd: [terjessze ki a riasztások az OMS Szolgáltatáshoz Azure](monitoring-alerts-extend.md).
@@ -221,7 +221,7 @@ Jelzi, hogy a riasztások fut az Azure, 2-es verzióját jelöli. Ezen verziója
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás 
-A során, amely a riasztásokat az OMS Szolgáltatáshoz az Azure lehet, hogy a rendszer a szükséges létrehozása alkalmanként problémák [művelet csoportok](monitoring-action-groups.md). Ilyen esetekben egy hibaüzenet jelenik meg az OMS-portálon keresztül szalagcím figyelmeztetési és a GET hívást API történik.
+A során, amely a riasztásokat az OMS Szolgáltatáshoz az Azure lehet alkalmi hibát, amely megakadályozza, hogy a rendszer létrehozásához szükséges [művelet csoportok](monitoring-action-groups.md). Ilyen esetekben egy hibaüzenet jelenik meg az OMS-portálon keresztül szalagcím figyelmeztetési és a GET hívást API történik.
 
 Az alábbiakban a javítási lépéseket minden egyes hibához:
 1. **Hiba: Az előfizetés nincs regisztrálva a következő névtérben: "microsoft.insights" használandó**: ![OMS portál riasztási beállítások lapján regisztrációs hibaüzenet](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
@@ -236,6 +236,14 @@ Az alábbiakban a javítási lépéseket minden egyes hibához:
     a. Ha hatókör zárolása engedélyezett, előfizetéshez vagy erőforráscsoporthoz Naplóelemzés (OMS) munkaterületet; tartalmazó új változást korlátozása a rendszer nem tud (Másolás) riasztások kiterjeszti az Azure és a szükséges intézkedéseket csoportok létrehozása.
     
     b. Megoldásához törölje a *ReadOnly* az előfizetés vagy az erőforrás-részleg a munkaterületet tartalmazó; az Azure-portálon, Powershell, az Azure parancssori felület vagy API zárolását. További tudnivalókért tekintse meg a cikk a [erőforrás zárolási kihasználtsága](../azure-resource-manager/resource-group-lock-resources.md). 
+    
+    c. Miután feloldotta a cikkben ismertetett lépések szerint, OMS kiterjed a riasztásokat az Azure belül a következő napra ütemezett futtatását; nincs szükség semmilyen művelet vagy kezdeményezés.
+
+3. **Hiba: A előfizetés-erőforráscsoport szintjén szerepel házirend**: ![OMS portál riasztási beállítások lapján házirend hibaüzenet](./media/monitor-alerts-extend/ErrorPolicy.png)
+
+    a. Ha [Azure házirend](../azure-policy/azure-policy-introduction.md) van érvényben, bármely új erőforrás előfizetéshez vagy erőforráscsoporthoz Naplóelemzés (OMS) munkaterületet; tartalmazó korlátozása a rendszer nem tudja (Másolás) riasztások kiterjeszti az Azure és a szükséges intézkedéseket csoportok létrehozása.
+    
+    b. Megoldásához módosítsa a házirendet, amely *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* hiba, amely megakadályozza az új erőforrások az előfizetés vagy az erőforrás a munkaterületet tartalmazó csoport létrehozását. Az Azure-portált használja, Powershell, az Azure parancssori felület vagy API; Hiba, amely a megfelelő házirend kereséséhez műveletek naplózhatók. További tudnivalókért tekintse meg a cikk a [műveletek naplózása tevékenység naplók megtekintése](../azure-resource-manager/resource-group-audit.md). 
     
     c. Miután feloldotta a cikkben ismertetett lépések szerint, OMS kiterjed a riasztásokat az Azure belül a következő napra ütemezett futtatását; nincs szükség semmilyen művelet vagy kezdeményezés.
 

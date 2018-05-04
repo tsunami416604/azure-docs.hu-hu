@@ -86,5 +86,5 @@
 
 
 # További források
-## [Azure-ütemterv](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)
+## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=developer-tools)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

@@ -1,11 +1,33 @@
-
-# <a name="call-the-microsoft-graph-api-from-an-android-app"></a>A Microsoft Graph API hívása az Android-alkalmazás
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: aa21168f1e19ccddc190379b30e1b612d96b56d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/28/2018
+---
+# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Bejelentkezés – felhasználók és az Android-alkalmazás az összes Microsoft Graph API
 
 Ez az útmutató ismerteti, hogyan natív Android-alkalmazás szereznie egy hozzáférési jogkivonatot és a Microsoft Graph API vagy egyéb szükséges hozzáférési jogkivonatok az Azure Active Directory v2 végpont az API-k hívása.
 
 Amikor befejezte az útmutatóban, az alkalmazás képes fogadni a személyes fiókok (például outlook.com, live.com, és egyéb) és a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely az Azure Active Directory bejelentkezések lesz. Az alkalmazás ezután hívja az API-k, az Azure Active Directory v2 végpont által védett.  
 
-## <a name="how-this-sample-works"></a>Ez a minta működése
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által generált mintaalkalmazás működése
 ![Ez a minta működése](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
 A mintaalkalmazás, amely létrehozta a jelen útmutató egy olyan forgatókönyvet, ahol egy Android-alkalmazás, amely az Azure Active Directory v2 végpont (Microsoft Graph API, ebben az esetben) származó jogkivonatokat fogad el egy webes API lekérdezésére szolgál alapul. Ebben a forgatókönyvben az alkalmazás kiegészíti a megszerzett jogkivonattal hitelesítési fejlécéhez via HTTP-kérelmekre. A Microsoft hitelesítési könyvtár (MSAL) kezeli a token beszerzése és -megújítás meg.

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált QPrism |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és QPrism között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált QPrism |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és QPrism között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f697b95074e0fc9dbb3e8c7800e69f8ece9e0b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b924ea1df926518ba1d86909f8e6a78deabd5468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Oktatóanyag: Azure Active Directoryval integrált QPrism
 
@@ -37,7 +37,7 @@ Az Azure AD SaaS alkalmazásintegráció kapcsolatos további tudnivalókért l�
 Konfigurálása az Azure AD-integrációs QPrism, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Egy QPrism egyszeri bejelentkezés engedélyezve van az előfizetésben
+- Egy QPrism egyszeri bejelentkezés engedélyezve van az előfizetés
 
 Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
 
@@ -103,41 +103,22 @@ Ebben a szakaszban engedélyezze az Azure AD az egyszeri bejelentkezés az Azure
 
     ![Az egyszeri bejelentkezés információk QPrism tartomány és az URL-címek](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be egy URL-címet, amely a következő mintát használ:`https://<customer domain>.qmyzone.com/login`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be egy URL-címet, amely a következő mintát használ: `https://<customer domain>.qmyzone.com/login`
 
-    b. Az a **azonosító** szövegmezőbe írja be egy URL-címet, amely a következő mintát használ:`https://<customer domain>.qmyzone.com/metadata.php`
+    b. Az a **azonosító** szövegmezőbe írja be egy URL-címet, amely a következő mintát használ: `https://<customer domain>.qmyzone.com/metadata.php`
          
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. A tényleges azonosítójú frissítheti ezeket az értékeket és bejelentkezés URL-CÍMÉT. Ügyfél [QPrism ügyfél-támogatási csoport](mailto:qsupport-ce@quatrro.com) beolvasni ezeket az értékeket. 
 
-4. Létrehozásához a **metaadatok** URL-címe, tegye a következőket:
+4. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
 
-    a. Válassza ki **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés app regisztrációk konfigurálásához](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appregistrations.png)
-   
-    b. Válassza ki **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Egyszeri bejelentkezési végpont konfigurálása](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpointicon.png)
-
-    c. Kattintson a Másolás gombra, majd másolja a **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezési végpont konfigurálása](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpoint.png)
-     
-    d. Most lépjen a tulajdonságlapján **QPrism**, és másolja a **Alkalmazásazonosító** használatával **másolása**. Majd illessze be azt a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés Alkalmazásazonosító konfigurálása](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** használatával a következő mintát:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>` 
+     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_certificate.png)
 
 5. Kattintson a **Mentés** gombra.
 
     ![Egyszeri bejelentkezés mentési gomb konfigurálása](./media/active-directory-saas-qprism-tutorial/tutorial_general_400.png)
     
-6. Az egyszeri bejelentkezés beállítása a **QPrism** oldalán, küldjön a **metaadatainak URL-CÍMÉT** számára a [QPrism támogatási csoport](mailto:qsupport-ce@quatrro.com). Azok a győződjön meg arról, hogy a SAML-alapú egyszeri bejelentkezés kapcsolat mindkét oldalán megfelelően beállítva.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg a állítja be az alkalmazást. Ez az alkalmazás a hozzáadása után a **Active Directory** > **vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott eléréséhez a dokumentáció a **konfigurációs** alsó szakasz. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD dokumentációjában beágyazott]( https://go.microsoft.com/fwlink/?linkid=845985).
+6. Egyszeri bejelentkezés konfigurálása **QPrism** oldalon kell küldeniük a **alkalmazás összevonási metaadatainak URL-címe** való [QPrism támogatási csoport](mailto:qsupport-ce@quatrro.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 

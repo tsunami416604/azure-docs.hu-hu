@@ -1,6 +1,6 @@
 ---
-title: "A szolgáltatással modell adatok gyűjtése az Azure Machine Learning-munkaterület |} Microsoft Docs"
-description: "Ez a cikk a modell adatok gyűjtemény szolgáltatás használata az Azure Machine Learning-munkaterület beszél"
+title: A szolgáltatással modell adatok gyűjtése az Azure Machine Learning-munkaterület |} Microsoft Docs
+description: Ez a cikk a modell adatok gyűjtemény szolgáltatás használata az Azure Machine Learning-munkaterület beszél
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
 ms.openlocfilehash: 2251f8d241f3ec47d46c04160caf997bcd025124
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Adatgyűjtés a modell adatainak gyűjtéséről
 

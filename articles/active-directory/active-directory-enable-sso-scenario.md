@@ -16,7 +16,7 @@ ms.author: markvi
 ms.reviewer: asteen
 ms.openlocfilehash: c6f01a16f5f60193c81a03a7374649f87eeb270a
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
 ---

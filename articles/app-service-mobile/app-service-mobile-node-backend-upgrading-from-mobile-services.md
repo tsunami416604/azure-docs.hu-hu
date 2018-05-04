@@ -1,11 +1,11 @@
 ---
-title: "Az Azure App Service - Node.js mobilszolgáltatások frissítés"
-description: "Ismerje meg a Mobile Services alkalmazás az App Service Mobile Apps könnyen frissítése"
+title: Az Azure App Service - Node.js mobilszolgáltatások frissítés
+description: Ismerje meg a Mobile Services alkalmazás az App Service Mobile Apps könnyen frissítése
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 9a641bc667d07d1b674d2864c1f29151d527f46a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 07ebf23270addc63793278d4e0510c187289b82c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>Frissítse a meglévő Node.js Azure Mobile szolgáltatást az App Service
 App Service Mobile új módja a Microsoft Azure használatával mobil alkalmazásokat hozhatnak létre. További tudnivalókért lásd: [Mik azok a Mobile Apps?].
@@ -61,12 +61,12 @@ A teljes vázlat a frissítési folyamat a következőképpen történik:
 
 Törlés akkor fordulhat elő, ha nem lát minden forgalom az eredeti áttelepített mobil szolgáltatáson.
 
-## <a name="install-npm-package"></a>Az előfeltételek telepítése
+## <a name="install-npm-package"></a> Az előfeltételek telepítése
 [Csomópont] a helyi számítógépre kell telepíteni.  A kompatibilitási csomagot kell telepíteni.  Csomópont telepítése után a következő parancsot futtathatja egy új cmd vagy a PowerShell-parancssorba:
 
 ```npm i -g azure-mobile-apps-compatibility```
 
-## <a name="obtain-ams-scripts"></a>Az Azure Mobile Services parancsfájlok beszerzése
+## <a name="obtain-ams-scripts"></a> Az Azure Mobile Services parancsfájlok beszerzése
 * Jelentkezzen be az [Azure Portalra].
 * Használatával **összes erőforrás** vagy **alkalmazásszolgáltatások**, a Mobile Services webhely található.
 * A webhelyen, kattintson a **eszközök** -> **Kudu** -> **lépjen** a Kudu webhely megnyitásához.
@@ -76,14 +76,14 @@ Törlés akkor fordulhat elő, ha nem lát minden forgalom az eredeti áttelepí
 
 A ZIP-formátum parancsfájlok letöltése.  Hozzon létre egy új könyvtárat a helyi számítógépen, és csomagolja ki a `scripts.ZIP` fájl a könyvtárban található.  Ezzel létrehoz egy `scripts` directory.
 
-## <a name="scaffold-app"></a>Ezek az új Azure Mobile Apps-háttéralkalmazás
+## <a name="scaffold-app"></a> Ezek az új Azure Mobile Apps-háttéralkalmazás
 A következő parancsot a parancsfájlok könyvtárat tartalmazó könyvtár:
 
 ```scaffold-mobile-app scripts out```
 
 Ezzel létrehoz egy generált Azure Mobile Apps-háttéralkalmazás a a `out` könyvtár.  Bár nem kötelező megadni, akkor célszerű ellenőrizni a `out` könyvtárhoz, az Ön által választott forráskódraktárban be.
 
-## <a name="deploy-ama-app"></a>Azure Mobile Apps-háttéralkalmazásának telepítése
+## <a name="deploy-ama-app"></a> Azure Mobile Apps-háttéralkalmazásának telepítése
 A telepítés során szüksége lesz a következőkre:
 
 1. Hozzon létre egy új Mobile alkalmazás a [Azure Portalra].
@@ -159,7 +159,7 @@ Ha készen áll az új ügyfél verziója, próbálja ki a frissített kiszolgá
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service díjszabás]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[App Service díjszabás]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [hitelesítési fogalmakkal]: ../app-service/app-service-authentication-overview.md
 [hitelesítés gyorsindító]: app-service-mobile-auth.md

@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9968d18f9e27d7a138831394658b40a483b66709
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dbd96187ad73a9c7e27b28f137e25fe66e2944ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Bevezetés a megoldások létrehozásába a Batch ügyfél .NET-es kódtárával
 
@@ -40,12 +40,8 @@ Ez a cikk a C# és a Visual Studio gyakorlati ismeretét feltételezi. Azt is fe
 ### <a name="accounts"></a>Fiókok
 * **Azure-fiók**: Ha még nincs Azure-előfizetése, [hozzon létre egy ingyenes Azure-fiókot][azure_free_account].
 * **Batch-fiók**: Ha már rendelkezik Azure-előfizetéssel, [hozzon létre egy Azure Batch-fiókot](batch-account-create-portal.md).
-* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) cikk [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md#create-a-storage-account) szakaszát.
+* **Storage-fiók**: A Batch szolgáltatásban elérhető tárfiók-lehetőségekről további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md#azure-storage-account) talál.
 
-> [!IMPORTANT]
-> A Batch jelenleg *csak* az **általános célú** tárfióktípust támogatja, amelynek leírása a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) fejezet 5., [Tárfiók létrehozása](../storage/common/storage-create-storage-account.md#create-a-storage-account) című szakaszában található.
->
->
 
 ### <a name="visual-studio"></a>Visual Studio
 A mintaprojekt összeállításához **Visual Studio 2015 vagy újabb** szükséges. A Visual Studio ingyenes és próbaverzióit a [Visual Studio-termékek áttekintésében][visual_studio] találja.
@@ -101,11 +97,6 @@ private const string BatchAccountUrl  = "";
 private const string StorageAccountName = "";
 private const string StorageAccountKey  = "";
 ```
-
-> [!IMPORTANT]
-> Ahogy a korábbiakban említettük, most meg kell adnia egy **általános célú** Azure Storage-tárfiók hitelesítő adatait. A Batch-alkalmazások a Blob Storage-ot fogják használni az **általános célú** Storage-fiókon belül. Ne olyan Storage-fiók hitelesítő adatait adja meg, amelyet a *Blob Storage* fióktípus kiválasztásával hozott létre.
->
->
 
 A Batch- és a Storage-fiók hitelesítő adatai a szolgáltatások fiókpaneljein találhatók az [Azure Portalon][azure_portal]:
 

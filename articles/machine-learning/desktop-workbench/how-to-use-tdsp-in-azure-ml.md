@@ -1,12 +1,12 @@
 ---
-title: "A csapat adatok tudományos folyamatsablont-projektek szerkezeti |} Microsoft Docs"
-description: "Hogyan hozható létre csoport adatok tudományos folyamat (TDSP) sablonok az Azure Machine Learning, amely az együttműködési projektek struktúra"
+title: A csapat adatok tudományos folyamatsablont-projektek szerkezeti |} Microsoft Docs
+description: Hogyan hozható létre csoport adatok tudományos folyamat (TDSP) sablonok az Azure Machine Learning, amely az együttműködési projektek struktúra
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/16/2017
 ms.author: bradsev
 ms.openlocfilehash: 0f7a6d0a58e2dcfd94e20a81ae12b42f238016c8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>A csapat adatok tudományos folyamatsablont struktúra-projektek
 
@@ -69,7 +69,7 @@ Hozzon létre egy új projektet, nyissa meg az Azure Machine Learning. A **proje
    1. Adja meg a paraméterek és az adatok a megfelelő jelölőnégyzet vagy listáját:
 
       - Projektnév
-      - Projekt könyvtárában
+      - Projektkönyvtár
       - Projekt leírása
       - Egy üres Git-tárház elérési útja
       - Munkaterület neve

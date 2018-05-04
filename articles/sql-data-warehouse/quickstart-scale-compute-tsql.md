@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b4e123475679cf1afce09630c157377ee67b5202
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7d7d3f6a773fad0b0d4ba0593230af5ff5a1e443
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Gyors útmutató: Azure SQL Data Warehouse-beli számítási bővítés T-SQL segítségével
 
@@ -25,8 +25,6 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 ## <a name="before-you-begin"></a>Előkészületek
 
 Töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) legújabb verzióját.
-
-Ez feltételezi, hogy elvégezte a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyors útmutatót. A létrehozási és csatlakozási útmutató elvégzése után tudja, hogyan csatlakozzon, létrehozott egy **mySampleDataWarehouse** nevű adattárházat, és létrehozott egy tűzfalszabályt is, mely engedélyezi az ügyfélnek a kiszolgáló elérését.
  
 ## <a name="create-a-data-warehouse"></a>Adattárház létrehozása
 
@@ -45,7 +43,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
    | Kiszolgálónév | A teljes kiszolgálónév | Például: **mynewserver-20171113.database.windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
-   | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
+   | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
 
     ![kapcsolódás a kiszolgálóhoz](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -91,11 +89,42 @@ Az adattárházegységek számának módosításához:
 1. Kattintson jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget.
 2. Módosítsa a szolgáltatási célt az [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) T-SQL-utasítással. Az alábbi lekérdezést futtatva például beállíthatja a DW300 szolgáltatási célt. 
 
-```Sql
-ALTER DATABASE mySampleDataWarehouse
-MODIFY (SERVICE_OBJECTIVE = 'DW300')
-;
-```
+    ```Sql
+    ALTER DATABASE mySampleDataWarehouse
+    MODIFY (SERVICE_OBJECTIVE = 'DW300')
+    ;
+    ```
+
+## <a name="monitor-scale-change-request"></a>Méretmódosítási kérés monitorozása
+Az előző módosítási kérés állapotának megtekintéséhez használhatja a `WAITFORDELAY` T-SQL szintaxist a sys.dm_operation_status dinamikus felügyeleti nézet (DMV) lekérdezéséhez.
+
+A szolgáltatásobjektum módosítási állapotának lekérdezése:
+
+1. Kattintson jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget.
+2. Futtassa az alábbi lekérdezést a sys.dm_operation_status DMV lekérdezéséhez.
+
+    ```sql
+    WHILE 
+    (
+        SELECT TOP 1 state_desc
+        FROM sys.dm_operation_status
+        WHERE 
+            1=1
+            AND resource_type_desc = 'Database'
+            AND major_resource_id = 'MySampleDataWarehouse'
+            AND operation = 'ALTER DATABASE'
+        ORDER BY
+            start_time DESC
+    ) = 'IN_PROGRESS'
+    BEGIN
+        RAISERROR('Scale operation in progress',0,0) WITH NOWAIT;
+        WAITFOR DELAY '00:00:05';
+    END
+    PRINT 'Complete';
+    ```
+3. A kimenet az állapotlekérdezések naplóját jeleníti meg.
+
+    ![Művelet állapota](media/quickstart-scale-compute-tsql/polling-output.png)
 
 ## <a name="check-data-warehouse-state"></a>Az adattárház állapotának ellenőrzése
 
@@ -103,7 +132,7 @@ A szüneteltetett adattárházakhoz nem tud T-SQL-utasításokkal csatlakozni. A
 
 ## <a name="check-operation-status"></a>Műveleti állapot ellenőrzése
 
-Ha szeretne információt kapni az SQL-adattárházon végzett felügyeleti műveletről, futtassa a következő lekérdezést a [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) dinamikus felügyeleti nézeten. Ez a lekérdezés visszaadja a műveletet és annak állapotát, mely vagy IN_PROGRESS, vagy COMPLETED.
+Ha szeretne információt kapni az SQL-adattárházon végzett felügyeleti műveletről, futtassa a következő lekérdezést a [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) dinamikus felügyeleti nézeten. A lekérdezés például visszaadja a műveletet és annak állapotát, amely IN_PROGRESS, vagy COMPLETED lehet.
 
 ```sql
 SELECT *
@@ -112,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySQLDW'
+    major_resource_id = 'MySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>További lépések
-Ebből az útmutatóból megtudhatta, hogyan tudja méterezni egy adattárház számítási kapacitását. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
+Ebben az útmutatóban megismerhette, hogyan skálázható egy adattárház számítási kapacitása. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 >[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 66994dfcd84db1de0ba072e9e3a45e7ec11fcec0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 2053ed8cc420183d493097eeb2cd2ad93c82c70c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>A Virtual Machine Learning mély használatával
 
@@ -35,7 +35,7 @@ A keretrendszer-alapú minták mellett átfogó forgatókönyvek készlete is bi
 
 - [Lemezképek termékek észleléséhez egy végpont megoldás – útmutató útmutatóját](https://github.com/Azure/cortana-intelligence-product-detection-from-images): kép észlelési a keresse meg és lemezképek objektumainak besorolása technika. Ez a technológia nem kapcsolja a hatalmas megtérüléséhez sok valós üzleti tartományok. Például illetve a kiskereskedelemben segítségével ezzel a technikával határozza meg, melyik termék ügyfél rendelkezik felvenni, a forgalomban a. Ezt az információt viszonzásul segíti a termék kezelése tárolja. 
 
-- [A PubMed kivonatok entitás kibontási nevű](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) Ez az oktatóanyag bemutatja, hogyan elnevezett entitások, például a kábítószerrel nevek vagy elleni nevek, kinyerése strukturálatlan szöveg. Az egy egyéni word, az a szöveg corpus a 18 millió PubMed kivonatok beágyazás betanítja entitás kiolvasásához hosszú rövid távú memória (LSTM) ismétlődő Neurális hálózat modell létrehozásához használ, hogy a modell és jeleníti meg, hogy a modell beágyazás tartományspecifikus word outperform is egy általános word beágyazás entitás kiolvasásához.
+- [A PubMed kivonatok entitás kibontási nevű](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) Ez az oktatóanyag bemutatja, hogyan elnevezett entitások, például a kábítószerrel nevek vagy elleni nevek, kinyerése strukturálatlan szöveg. Az egy egyéni word, az a szöveg corpus a 18 millió PubMed kivonatok beágyazás betanítja entitás kiolvasásához hosszú rövid távú memória (LSTM) ismétlődő Neurális hálózat modell létrehozásához használ, hogy a modell és jeleníti meg, hogy a modell beágyazás tartományspecifikus word outperform is egy általános word beágyazás entitás kiolvasásához.
 
 - [Learning hang a mély](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) Ez az oktatóanyag bemutatja, hogyan kell még betanítani hang esemény észlelése mély tanulási modellt az a [városi hangok dataset](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) és hangadatok használata az nyújt áttekintést.
 

@@ -21,6 +21,14 @@
       href: ../aks/tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+    - name: Tárolórendszerképek létrehozása (előzetes verzió)
+      items:
+        - name: 1 – Rendszerképek létrehozása az Azure-ban
+          href: container-registry-tutorial-quick-build.md
+        - name: 2 – Rendszerképek létrehozásának automatizálása
+          href: container-registry-tutorial-build-task.md
+        - name: 3 – Rendszerkép alapszintű frissítésének létrehozása
+          href: container-registry-tutorial-base-image-update.md
     - name: Georeplikáció (előzetes verzió)
       items:
         - name: 1 – A tárolóregisztrációs adatbázis előkészítése

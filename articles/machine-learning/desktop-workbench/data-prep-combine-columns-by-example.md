@@ -1,6 +1,6 @@
 ---
-title: "Oszlopok használata az Azure Machine Learning-munkaterület példa átalakítással egyesítése"
-description: "A \"Oszlopok egyesítése példa\" transzformáció a referenciadokumentum"
+title: Oszlopok használata az Azure Machine Learning-munkaterület példa átalakítással egyesítése
+description: A "Oszlopok egyesítése példa" transzformáció a referenciadokumentum
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -12,10 +12,10 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 469fefa48ea795a56b0e7525f99634c5149a780f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>Példa átalakítással oszlopok egyesítése
 Ez a transzformáció lehetővé teszi a felhasználó számára egy olyan új oszlop hozzáadása kombinálásával több oszlop értékeit. Felhasználó adjon meg egy elválasztó és példákkal kombinált értékek ehhez a transzformációhoz végrehajtásához. Amikor a felhasználó kombinációja példákat tartalmaz, az átalakítás kezeli azonos **-példa** motor, amely használatban van a **Célosztályából oszlop példa alapján** átalakító.
@@ -68,12 +68,12 @@ Az érték a **félkövér** példaként lett megadva.
 
 |Dátum|Hónap|év|Óra|Perc|Másodperc|Összetett oszlop|
 |:----|:----|:----|:----|:----|:----|:----|
-|13|okt.|2016|15|01|23|**13-Oct-2016 15:01:23 PDT**|
+|13|okt.|2016|15|01|23|**13-Oct-2016 15:01:23 CET**|
 |16|okt.|2016|16|22|33|16-Oct-2016 15:01:33 CET|
-|17|okt.|2016|12|43|12|17-Oct-2016 15:01:12 PDT|
-|12|nov.|2016|14|22|44|12-Nov-2016 15:01:44 PDT|
-|23|nov.|2016|01|52|45|23-Nov-2016 15:01:45 PDT|
+|17|okt.|2016|12|43|12|17-Oct-2016 15:01:12 CET|
+|12|nov.|2016|14|22|44|12-november-2016 15:01:44 CET|
+|23|nov.|2016|01|52|45|23-november-2016 15:01:45 CET|
 |16|jan.|2017|22|34|56|16-Jan-2016 15:01:56 CET|
-|23|már.|2017|01|55|25|23-Mar-2016 15:01:25 PDT|
+|23|már.|2017|01|55|25|23-gyel-2016 15:01:25 CET|
 |16|ápr.|2017|11|34|36|16-6%/4!a-2016 15:01:36 CET|
 

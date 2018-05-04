@@ -6,19 +6,18 @@ services: application-gateway
 author: amsriva
 manager: rossort
 editor: amsriva
-ms.assetid: 04b362bc-6653-4765-86f6-55ee8ec2a0ff
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 4/16/2018
 ms.author: amsriva
-ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 35a7e60dc65b54cbddfcd85fa0e704823152889e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
@@ -60,7 +59,7 @@ A webalkalmazási tűzfal alapértelmezés szerint a CRS 3.0-s verziójával van
 * HTTP protokoll megsértése elleni védelem
 * HTTP protokollanomáliák (például hiányzó gazdagép-felhasználói ügynök és Accept (Elfogadás) fejlécek) elleni védelem
 * Robotprogramok, webbejárók és képolvasók elleni védelem
-* Alkalmazások (vagyis Apache, IIS stb.) gyakori konfigurációs hibáinak észlelése
+* Alkalmazások (pl. Apache, IIS stb.) gyakori konfigurációs hibáinak észlelése
 
 A szabályok és a hozzájuk tartozó védelmi megoldások részletesebb listáját az [Alapvető szabálykészletek](#core-rule-sets) című szakasz tartalmazza.
 
@@ -74,9 +73,7 @@ A mellékelt 3.0-s alapvető szabálykészlet 13 szabálycsoportot tartalmaz, ah
 
 |Szabálycsoport|Leírás|
 |---|---|
-|**[REQUEST-910-IP-REPUTATION](application-gateway-crs-rulegroups-rules.md#crs910)**|Az ismert levélszemétküldők és kártékony tevékenységek ellen védelmet biztosító szabályokat tartalmaz.|
 |**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Egyes metódusok (például PUT, PATCH< stb.) zárolásához tartalmaz szabályokat.|
-|**[REQUEST-912-DOS-PROTECTION](application-gateway-crs-rulegroups-rules.md#crs912)**| A szolgáltatásmegtagadási támadások ellen védelmet biztosító szabályokat tartalmaz.|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| A port- és környezetleolvasók ellen védelmet biztosító szabályokat tartalmaz.|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|A protokoll- és a kódolási problémák ellen védelmet biztosító szabályokat tartalmaz.|
 |**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|A fejlécinjektálás, a kéréscsempészet és a válaszfelosztás ellen védelmet biztosító szabályokat tartalmaz.|
@@ -166,7 +163,6 @@ Az Application Gateway WAF részletes jelentéseket biztosít az összes észlel
 
 A webalkalmazási tűzfal az új WAF termékváltozatban érhető el. Ez a termékváltozat kizárólag az Azure Resource Manager üzembe helyezési modelljében érhető el, a klasszikus üzemi modellben nem. A WAF termékváltozat csak közepes és nagy méretű alkalmazásátjáró-példányokhoz használható. Az alkalmazásátjárókra vonatkozó összes korlátozás a WAF termékváltozatra is érvényes. A díjszabás az átjárópéldányok óránkénti díján és az adatfeldolgozási díjon alapul. A WAF termékváltozathoz tartozó óránkénti átjáródíj eltér a normál termékváltozat díjaitól, és az [Application Gateway díjszabását](https://azure.microsoft.com/pricing/details/application-gateway/) ismertető webhelyen tekinthető meg. Az adatfeldolgozási díjak nem változnak. Nincsenek szabályonként vagy szabálycsoportonként kiszabott díjak. Ugyanazzal a webalkalmazási tűzfallal több webalkalmazást is elláthat védelemmel, többletköltség nélkül. 
 
-A WAF számlázási időszaka 2017. május 5-től indul, addig a WAF termékváltozathoz tartozó átjárók esetében is a normál díjszabás lesz érvényben.
 
 ## <a name="next-steps"></a>További lépések
 

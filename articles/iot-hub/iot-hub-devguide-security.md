@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: c410db9a7255a039ab9b41ae39f2fe1018719f8f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: MT
+ms.openlocfilehash: d1f9d1a9163eee0f3a6c3b418e5e8d4fec0581de
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -358,7 +358,7 @@ A [Azure IoT szolgáltatás SDK for C#] [ lnk-service-sdk] (verzió 1.0.8+) tám
 
 ### <a name="c-support"></a>C\# támogatása
 
-A **RegistryManager** osztály programozott módon kell regisztrálni egy eszközt biztosít. Különösen a **AddDeviceAsync** és **UpdateDeviceAsync** módszerek lehetővé teszik a regisztrálja, és frissítse egy eszközt az IoT-központ identitásjegyzékhez. Ez a két módszer igénybe vehet egy **eszköz** példány bemeneti adatként. A **eszköz** osztály tartalmaz egy **hitelesítési** tulajdonság, amely lehetővé teszi az elsődleges és másodlagos X.509 tanúsítvány-ujjlenyomatok megadását. Az ujjlenyomat (kódolással bináris DER tárolt) X.509-tanúsítvány egy SHA-1 kivonatoló jelöli. Lehetősége van egy elsődleges ujjlenyomatot vagy egy másodlagos ujjlenyomatot, vagy mindkettő megadására. Elsődleges és másodlagos ujjlenyomatok tanúsítvány helyettesítő helyzetek kezelésére használhatók.
+A **RegistryManager** osztály programozott módon kell regisztrálni egy eszközt biztosít. Különösen a **AddDeviceAsync** és **UpdateDeviceAsync** módszerek lehetővé teszik a regisztrálja, és frissítse egy eszközt az IoT-központ identitásjegyzékhez. Ez a két módszer igénybe vehet egy **eszköz** példány bemeneti adatként. A **eszköz** osztály tartalmaz egy **hitelesítési** tulajdonság, amely lehetővé teszi az elsődleges és másodlagos X.509 tanúsítvány-ujjlenyomatok megadását. Az ujjlenyomat (kódolással bináris DER tárolt) X.509-tanúsítvány egy SHA256-kivonata jelöli. Lehetősége van egy elsődleges ujjlenyomatot vagy egy másodlagos ujjlenyomatot, vagy mindkettő megadására. Elsődleges és másodlagos ujjlenyomatok tanúsítvány helyettesítő helyzetek kezelésére használhatók.
 
 Íme egy minta C\# kódrészletet kell regisztrálni egy eszközt, az X.509 tanúsítvány ujjlenyomata:
 

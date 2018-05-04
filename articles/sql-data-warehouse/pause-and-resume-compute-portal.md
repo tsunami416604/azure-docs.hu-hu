@@ -1,27 +1,23 @@
 ---
-title: "Gyors üzembe helyezés: Szüneteltetése és folytatása számítási az Azure SQL Data Warehouse - Azure-portál |} Microsoft Docs"
-description: "Az Azure portál feladatok szüneteltetése számítási az Azure SQL Data Warehouse költségek csökkentése érdekében. Amikor készen áll az adatraktárat, folytathatja a számítást."
+title: 'Gyors üzembe helyezés: Szüneteltetése és folytatása számítási az Azure SQL Data Warehouse - Azure-portál |} Microsoft Docs'
+description: Az Azure portálon szünet számítási használja az Azure SQL Data Warehouse költségek csökkentése érdekében. Amikor készen áll az adatraktárat, folytathatja a számítást.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 01/23/2018
-ms.author: barbkess
-ms.openlocfilehash: 30dede32b35f995f89e2946af34da10353f55212
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 162bc44bccc04d97ea4d631d0e95defa342e6616
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors üzembe helyezés: Felfüggesztése és folytatása számítási az Azure SQL Data Warehouse az Azure-portálon
-Felfüggesztés számítási az Azure SQL Data Warehouse költségek csökkentése érdekében. [Folytathatja a számítást](sql-data-warehouse-manage-compute-overview.md) Ha készen áll az adatraktárat.
+Az Azure portálon szünet számítási használja az Azure SQL Data Warehouse költségek csökkentése érdekében. [Folytathatja a számítást](sql-data-warehouse-manage-compute-overview.md) Ha készen áll az adatraktárat.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -38,8 +34,8 @@ Költségek csökkentése érdekében szüneteltetése, és folytassa a számít
 
 Kövesse az alábbi lépéseket egy SQL data warehouse felfüggesztését.
 
-1. Kattintson a **SQL-adatbázisok** az Azure portál bal oldalán.
-2. Válassza ki **mySampleDataWarehouse** a a **SQL-adatbázisok** lap. Ekkor megnyílik az adatraktárba. 
+1. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
+2. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház. 
 3. Az a **mySampleDataWarehouse** lapon, a közlemény **állapot** van **Online**.
 
     ![Online számítási](media/pause-and-resume-compute-portal/compute-online.png)
@@ -59,8 +55,8 @@ Kövesse az alábbi lépéseket egy SQL data warehouse felfüggesztését.
 ## <a name="resume-compute"></a>Folytatás számítási
 Kövesse az alábbi lépéseket egy SQL data warehouse folytatni.
 
-1. Kattintson a **SQL-adatbázisok** az Azure portál bal oldalán.
-2. Válassza ki **mySampleDataWarehouse** a a **SQL-adatbázisok** lap. Ekkor megnyílik az adatraktárba. 
+1. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
+2. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház. 
 3. Az a **mySampleDataWarehouse** lapon, a közlemény **állapot** van **felfüggesztve**.
 
     ![Kapcsolat nélküli számítási](media/pause-and-resume-compute-portal/compute-offline.png)

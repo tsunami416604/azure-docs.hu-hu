@@ -17,7 +17,7 @@ ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
 ms.openlocfilehash: 38556392624e87611d59e3b96ae63ce8ea30afbd
 ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
 ---

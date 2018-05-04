@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: c0bc3c8774b68b49be95d5df86319a2e0463e6ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 54dc97c0d20f90d3b57b715fb21714a11e5a1525
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Az Azure Data Encryption nyugalmi
 Nincsenek több eszközt a vállalati biztonsági és megfelelőségi igényeknek megfelelő adatok védelme a Microsoft Azure-ban. A dokumentum koncentrál:
@@ -234,12 +234,12 @@ Microsoft Azure-szolgáltatások minden támogatásához legalább egy, a többi
 
 Minden ügyfél Azure infrastruktúra (IaaS) szolgáltatás használatával szolgáltatások érhető el az infrastruktúra-szolgáltatási virtuális gépeket és a lemezek keresztül Azure Disk Encryption titkosítását. További információ az Azure lemezen titkosítási: a [Azure Disk Encryption dokumentáció](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).
 
-#### <a name="azure-storage"></a>Azure Storage tárterület
+#### <a name="azure-storage"></a>Azure Storage
 
-Az Azure Blob, és a fájl titkosítását támogatja a kiszolgálóoldali titkosított forgatókönyvek, valamint a titkosított adatok (ügyféloldali titkosítás).
+Minden Azure Storage szolgáltatás (Blob-tároló, a Queue storage, Table storage és Azure-fájlok) támogatja a kiszolgálóoldali titkosítását, az egyes szolgáltatások kulcsok ügyfél által felügyelt és az ügyféloldali titkosítás támogatása.  
 
-- Kiszolgálóoldali: az Azure blob storage használatával az ügyfelek titkosítását az Azure storage erőforrás számlára engedélyezheti. Az alkalmazás egyszer engedélyezett kiszolgálóoldali titkosítás átlátható módon történik. Lásd: [Azure Storage szolgáltatás titkosítási inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption) további információt.
-- Ügyféloldali: az Azure BLOB ügyféloldali titkosítás használata támogatott. Ha ügyféloldali titkosítás ügyfelek használatával titkosítja az adatokat és az adatokat egy titkosított blob feltöltése. Az ügyfél kulcskezelés végezhető el. Lásd: [ügyféloldali titkosítás és a Microsoft Azure tárolás az Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) további információt.
+- Kiszolgálóoldali: Minden Azure Storage szolgáltatás kiszolgálóoldali titkosítás engedélyezése a kulcsokkal szolgáltatás által felügyelt, ez az átlátható az alkalmazás alapértelmezés szerint. További információkért lásd: [Azure Storage szolgáltatás titkosítási inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption). Az Azure Blob storage és Azure fájlokat is támogatja az ügyfél által felügyelt kulcsokat az Azure Key Vault. További információkért lásd: [Storage szolgáltatás titkosítási kulcsokkal ügyfél által felügyelt Azure Key Vault a](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption-customer-managed-keys).
+- Ügyféloldali: Azure-blobot, táblát és üzenetsort támogatja az ügyféloldali titkosítás. Ügyféloldali titkosítás használata esetén az ügyfelek titkosítja az adatokat, és töltse fel az adatokat egy titkosított blob. Az ügyfél kulcskezelés végezhető el. További információkért lásd: [ügyféloldali titkosítás és a Microsoft Azure tárolás az Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
 #### <a name="sql-azure"></a>SQL Azure
@@ -259,14 +259,14 @@ Kiszolgáló titkosítási jelenleg támogatását az átlátható adattitkosít
 | SQL Server (IaaS)                |                | Igen                 | Igen                          | Igen                          | Igen    |
 | SQL Azure (PaaS)                 |                | Igen                 | Igen                          | -                            | Igen    |
 | Az Azure Storage (blokk/Lapblobokat) |                | Igen                 | Igen                          | -                            | Igen    |
-| Azure Storage (Files)            |                | Igen                 | -                            | -                            | -      |
-| Az Azure Storage (táblák, üzenetsorok)   |                | -                   | -                            | -                            | Igen    |
+| Azure Storage (Files)            |                | Igen                 | Igen                          | -                            | -      |
+| Az Azure Storage (táblák, üzenetsorok)   |                | Igen                 | -                            | -                            | Igen    |
 | A cosmos DB (dokumentum DB)          |                | Igen                 | -                            | -                            | -      |
 | StorSimple                       |                | Igen                 | -                            | -                            | Igen    |
-| Biztonsági mentés                           |                | -                   | -                            | -                            | Igen    |
+| Tartalék                           |                | -                   | -                            | -                            | Igen    |
 | **Az eszközintelligencia és az elemzések**       |                |                     |                              |                              |        |
 | Azure Data Factory               |                | Igen                 | -                            | -                            | -      |
-| Azure Machine Learning           |                | -                   | Előzetes verzió                      | -                            | -      |
+| Azure Machine Learning           |                | -                   | Preview                      | -                            | -      |
 | Azure Stream Analytics           |                | Igen                 | -                            | -                            | -      |
 | HDInsights (az Azure Blob-tároló)  |                | Igen                 | -                            | -                            | -      |
 | HDInsights (Data Lake-tároló)   |                | Igen                 | -                            | -                            | -      |

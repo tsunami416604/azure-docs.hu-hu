@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 0118e78ee7240c139ff808582d6b9b47c6b64b4b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: ede354516afbd34372215a08d633969cf74b1562
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -114,7 +114,7 @@ A PreferredLocations érték bármely Azure-régiókban Cosmos DB érhető áll�
 ### <a name="is-there-anything-i-should-be-aware-of-when-distributing-data-across-the-world-via-the-azure-datacenters"></a>Van-e, hogy ügyelnie, ha osztja el az adatokat az Azure adatközpontjaiban keresztül a világon között? 
 Azure Cosmos-adatbázis az összes Azure-régiók megadott között megtalálható a [Azure-régiók](https://azure.microsoft.com/regions/) lap. Mivel az alapvető szolgáltatásához, minden új datacenter rendelkezik egy Azure Cosmos DB jelenlétét. 
 
-Ha úgy állítja be a régió, ne feledje, hogy Azure Cosmos DB tiszteletben tartja a állami és kormányzati felhők. Ez azt jelenti, hogy egy szuverén régióban létrehoz egy fiókot, ha nem replikálja szuverén régió kívül. Hasonlóképpen nem engedélyezhető a replikálás be más szuverén helyeken kívül fiókból. 
+Ha úgy állítja be a régió, ne feledje, hogy Azure Cosmos DB tiszteletben tartja a állami és kormányzati felhők. Ez azt jelenti, hogy a fiók létrehozásakor egy [szuverén régió](https://azure.microsoft.com/global-infrastructure/), kívül, amely nem replikálja [szuverén régió](https://azure.microsoft.com/global-infrastructure/). Hasonlóképpen nem engedélyezhető a replikálás be más szuverén helyeken kívül fiókból. 
 
 ## <a name="develop-against-the-sql-api"></a>Az SQL API elleni fejlesztése
 
@@ -170,6 +170,9 @@ Igen, mert Azure Cosmos DB egy RESTful szolgáltatás, erőforrás-hivatkozások
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Az SQL API-t egy helyi példányát érhető el?
 Igen. A [Azure Cosmos DB emulátor](local-emulator.md) egy valósághű emuláció a Cosmos DB szolgáltatást biztosít. Támogatja a funkciót, amely azonos Azure Cosmos DB, például létrehozása, és lekérdezi a JSON-dokumentumokat, kiépítés és gyűjtemények skálázás, és végrehajtása tárolt eljárásokként és eseményindítókként. Fejlesztése és tesztelése az alkalmazások az Azure Cosmos DB Emulator használatával, és telepítheti őket egy globális léptékű azáltal, hogy módosítsa a csatlakozási végpont az Azure Cosmos DB egyetlen konfigurációja.
 
+### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Miért értékeket hosszú lebegőpontos kerekíti a portálon adatkezelő megtekintve dokumentumban. 
+Ez a korlátozás a JavaScript. JavaScript számok kétszeres pontosságú lebegőpontos formázása használja, mint a megadott IEEE 754 és biztonságosan jelenthet közötti - számokat (253 - 1) és 253 – 1 (azaz 9007199254740991) csak.
+
 ## <a name="develop-against-the-api-for-mongodb"></a>Az API-t elleni mongodb fejlesztése
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Mi az az Azure Cosmos DB API a MongoDB?
 Az Azure Cosmos DB API a MongoDB, amely lehetővé teszi az alkalmazások egyszerűen és könnyen kommunikáljanak a natív Azure Cosmos-adatbázis adatbázis-kezelő Apache MongoDB API-k és az illesztőprogramok meglévő, a Közösség által támogatott kompatibilitási réteg. A fejlesztők most már használhatja meglévő MongoDB eszköz láncok és képességek előnyeit Azure Cosmos DB alkalmazásokat hozhatnak létre. A fejlesztők igénybe vehesse az Azure Cosmos DB, az egyedi képességeit, például az automatikus indexeléshez, a biztonsági mentési karbantartási, pénzügyi biztonsági szolgáltatásszint-szerződések (SLA), és így tovább.
@@ -215,10 +218,10 @@ Bizonyos különbségek vannak a viselkedést, amely az Azure Table storage érk
 A REST API tekintetében számos végpontok/lekérdezési lehetőségek Azure Cosmos DB tábla API által nem támogatott:
 | REST-metódussal | REST-végpont/lekérdezési lehetőség | DOC URL-címek | Magyarázat |
 | ------------| ------------- | ---------- | ----------- |
-| SZÜKSÉGE VAN, AMELYRE AZ | /?restype=service@comp=properties| [Table szolgáltatás tulajdonságainak beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) és [Table szolgáltatás tulajdonságainak beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ezt a végpontot a naplózási beállítások, a CORS szabályok és a tárolási konfigurációja beállítására használatos. A CORS jelenleg nem támogatott, és elemzés és a naplózás az Azure Cosmos Adatbázisba az Azure Storage-táblákat mint másképpen kezeli |
+| SZÜKSÉGE VAN, AMELYRE AZ | /? restype =service@comp= tulajdonságai| [Table szolgáltatás tulajdonságainak beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) és [Table szolgáltatás tulajdonságainak beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ezt a végpontot a naplózási beállítások, a CORS szabályok és a tárolási konfigurációja beállítására használatos. A CORS jelenleg nem támogatott, és elemzés és a naplózás az Azure Cosmos Adatbázisba az Azure Storage-táblákat mint másképpen kezeli |
 | BEÁLLÍTÁSOK | / <-erőforrás-táblanév > | [Előzetes repülési CORS tábla kérelem](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | A CORS, amely Azure Cosmos DB jelenleg nem támogatja a része. |
 | GET | /? restype =service@comp= statisztikák | [Table szolgáltatás statisztikák beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Milyen gyorsan adat replikálódik elsődleges és másodlagos adatbázisok közötti információkat nyújt. Ez nem szükséges Cosmos DB, a replikáció írások részét képezi. |
-| SZÜKSÉGE VAN, AMELYRE AZ | /mytable?comp=acl | [ACL-tábla](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) és [tábla hozzáférés-vezérlési lista beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Ez lekérdezi és beállítja a tárolt hozzáférési házirendek kezelése megosztott hozzáférési aláírásokkal (SAS) használt. SAS támogatják, de ezeket beállítása és másképp kezeli. |
+| SZÜKSÉGE VAN, AMELYRE AZ | /mytable? comp = acl | [ACL-tábla](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) és [tábla hozzáférés-vezérlési lista beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Ez lekérdezi és beállítja a tárolt hozzáférési házirendek kezelése megosztott hozzáférési aláírásokkal (SAS) használt. SAS támogatják, de ezeket beállítása és másképp kezeli. |
 
 Azure Cosmos DB tábla API csak támogatja továbbá a JSON formátum nem ATOM.
 
@@ -231,7 +234,7 @@ A .NET SDK-ban, van néhány osztályok és az Azure Cosmos DB jelenleg nem tám
 | CloudTableClient | \*ServiceProperties* |
 |                  | \*ServiceStats* |
 | CloudTable | SetPermissions* |
-|            | GetPermissions* |
+|            | GetPermissions * |
 | TableServiceContext | * (Ez az osztály ténylegesen elavult) |
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |

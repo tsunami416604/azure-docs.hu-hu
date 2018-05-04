@@ -94,6 +94,8 @@
       items:
         - name: Identitásszolgáltatók konfigurálása
           items:
+            - name: Egyéni OpenID Connect
+              href: active-directory-b2c-setup-oidc-idp.md
             - name: Microsoft-fiók
               href: active-directory-b2c-setup-msa-app.md
             - name: Facebook
@@ -159,6 +161,8 @@
                   href: active-directory-b2c-custom-setup-li-idp.md
                 - name: Twitter
                   href: active-directory-b2c-custom-setup-twitter-idp.md
+                - name: Több-bérlős
+                  href: active-directory-b2c-setup-commonaad-custom.md
             - name: SAML-szolgáltatók konfigurálása
               items:
                 - name: ADFS
@@ -195,12 +199,12 @@
                   href: active-directory-b2c-reference-password-change-custom.md
                 - name: A bejelentkezve maradás engedélyezése
                   href: active-directory-b2c-reference-kmsi-custom.md
-            - name: A felhasználók viselkedésének nyomon követése
-              href: active-directory-b2c-custom-guide-eventlogger-appins.md
             - name: Hibaelhárítás
               items:
                 - name: Naplók gyűjtése az Application Insights használatával
                   href: active-directory-b2c-troubleshoot-custom.md
+                - name: A felhasználók viselkedésének nyomon követése
+                  href: active-directory-b2c-custom-guide-eventlogger-appins.md
         - name: Referencia
           items:
             - name: Kibocsátási megjegyzések

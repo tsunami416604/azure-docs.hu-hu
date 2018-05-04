@@ -8,4 +8,4 @@ Használja az Azure App Service Mobile Apps szolgáltatásának [Azure Notificat
 Most már csatlakozott egy értesítési központot a Mobile Apps háttér-projekthez. Később konfigurálhatja az értesítési központ egy platform notification system (PNS), majd az eszközökre való kapcsolódáshoz.
 
 [Azure-portálon]: https://portal.azure.com/
-[Azure Notification Hubs]: https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-push-notification-overview/
+[Azure Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-push-notification-overview/

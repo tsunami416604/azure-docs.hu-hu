@@ -47,7 +47,7 @@
 ### [Eseményközpontok létrehozása és üzembe helyezése Resource Manager-sablonnal](event-hubs-resource-manager-namespace-event-hub.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=event-hubs)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=event-hubs)
 ## Java
 ### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
 ### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)

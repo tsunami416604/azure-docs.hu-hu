@@ -1,24 +1,18 @@
 ---
-title: "Azure Search SQL Virtuálisgép-kapcsolat |} Microsoft Docs"
-description: "Engedélyezze a titkosított kapcsolatokat, és a tűzfalon engedélyezni az SQL Server egy Azure virtuális gépen (VM) az Azure Search indexelőt konfigurálása."
-services: search
-documentationcenter: 
+title: Azure Search SQL Virtuálisgép-kapcsolat |} Microsoft Docs
+description: Engedélyezze a titkosított kapcsolatokat, és a tűzfalon engedélyezni az SQL Server egy Azure virtuális gépen (VM) az Azure Search indexelőt konfigurálása.
 author: HeidiSteen
-manager: pablocas
-editor: 
-ms.assetid: 46e42e0e-c8de-4fec-b11a-ed132db7e7bc
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: bb61330ba5511955e0da16dcd5b8b19529d0e44b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34c5d1999625d1728e884adb794af235ba415c26
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Egy kapcsolat egy Azure Search-indexelőt, és az SQL Server konfigurálása az Azure virtuális gépen
 Leírtaknak megfelelően [csatlakozás az Azure SQL Database az Azure Search használatával az indexelők](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), elleni indexelők létrehozása **az Azure virtuális gépeken futó SQL Server** (vagy **SQL Azure virtuális gépek** röviden) Azure Search által támogatott, de néhány biztonsági Előfeltételek az első végrehajtására. 
@@ -85,6 +79,6 @@ Egy harmadik életképes (de nem a különösen biztonságos) megoldás, az IP-c
 #### <a name="include-the-azure-search-portal-ip-addresses"></a>Tartalmazza az Azure Search portál IP-címek
 Ha az Azure portál segítségével hozzon létre egy indexelőt, Azure Search portál logikát is létrehozás közbeni hozzá kell férnie az SQL Azure virtuális gép. Az Azure search portál IP-címek található történő megpingelésével `stamp2.search.ext.azure.com`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A bevezetés konfigurációval megadhat egy SQL Server Azure virtuális gépen egy Azure Search-indexelőt adatok forrásaként. Lásd: [csatlakozás az Azure SQL Database az Azure Search használatával az indexelők](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) további információt.
 

@@ -11,16 +11,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 800105d29fa284531e02ce80db69eff3a9915652
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás (nyilvános előzetes verzió) App Service és az Azure Functions használatával
 
 > [!NOTE] 
 > Az App Service és az Azure Functions felügyelt Szolgáltatásidentitás jelenleg előzetes verzió. Linux és a tárolók webalkalmazást az App Service jelenleg nem támogatottak.
+
+
+> [!Important] 
+> Az App Service és az Azure Functions felügyelt Szolgáltatásidentitás nem várakozásoknak megfelelően működik, ha az alkalmazás előfizetések/bérlők keresztül telepítik át. Az alkalmazás kell szereznie egy új identitásra, és a meglévő identitás nem lehet megfelelően törölni magát a helyet törlése nélkül. Az alkalmazás kell újból létre kell hozni egy új identitásra, és az alsóbb rétegbeli erőforrásokat kell rendelkeznie a hozzáférési házirendek frissítése az új identitás használatára.
+
 
 Ez a témakör bemutatja, hogyan hoz létre egy felügyelt alkalmazást az App Service és az Azure Functions alkalmazásokhoz és egyéb erőforrásainak elérésére használatával. Az Azure Active Directory felügyelt szolgáltatásidentitás lehetővé teszi az alkalmazás egyszerűen hozzáférhessenek más AAD által védett erőforrások, például az Azure Key Vault. Az azonosító az Azure platform kezeli, és nem kell kiosztania vagy a titkos kulcsok elforgatása. Felügyelt Szolgáltatásidentitás kapcsolatban bővebben lásd: a [Szolgáltatásidentitás felügyelete – áttekintés](../active-directory/managed-service-identity/overview.md).
 

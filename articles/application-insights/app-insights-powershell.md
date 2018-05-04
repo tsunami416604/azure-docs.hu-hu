@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d6bc4f69386cc8a9119aa852693456f6465f59ce
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Hozzon létre egy Application Insights-erőforrást PowerShell használatával
 Ez a cikk bemutatja, hogyan létrehozása és frissítése [Application Insights](app-insights-overview.md) erőforrások automatikusan az Azure Resource Manager használatával. Akkor lehet hasznos, például így a felépítési folyamat részeként. Alapszintű Application Insights-erőforrások, valamint létrehozhat [webteszt rendelkezésre állási](app-insights-monitor-web-app-availability.md), állítsa be a következőt [riasztások](app-insights-alerts.md), beállíthatja a [séma árképzési](app-insights-pricing.md), és más Azure-erőforrások létrehozása .
@@ -52,7 +52,6 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – tegyük neki `template1.j
                 "allowedValues": [
                     "web",
                     "java",
-                    "HockeyAppBridge",
                     "other"
                 ],
                 "metadata": {
@@ -155,7 +154,7 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – tegyük neki `template1.j
 ## <a name="create-application-insights-resources"></a>Application Insights-erőforrások létrehozása
 1. A PowerShellben jelentkezzen be az Azure-bA:
    
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 2. Ehhez hasonló parancs futtatása:
    
     ```PS

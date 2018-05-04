@@ -1,3 +1,26 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: cf6604a0e22ca72c8aabd0603e42469cc71c9680
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/28/2018
+---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés a Microsoft ASP.NET webalkalmazás hozzáadása
 
 Ez az útmutató bemutatja, hogyan egy ASP.NET MVC-megoldással egy hagyományos webböngésző-alapú webalkalmazás OpenID Connect használatával a Microsoft bejelentkezési megvalósításához. 
@@ -6,11 +29,11 @@ Ez az útmutató végén az alkalmazás fogja tudni fogadja el a bejelentkezési
 
 > Ez az útmutató a Visual Studio 2015 Update 3 vagy a Visual Studio 2017 van szükség.  Nem rendelkezik?  [A Visual Studio 2017 ingyenesen letölthető](https://www.visualstudio.com/downloads/)
 
-## <a name="how-this-guide-works"></a>Ez az útmutató működése
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által generált mintaalkalmazás működése
 
 ![Ez az útmutató működése](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.png)
 
-Ez az útmutató alapján a forgatókönyvet, ahol a böngésző hozzáfér-e ASP.NET-webhely, a felhasználó egy bejelentkezési gomb segítségével kér. Ebben a forgatókönyvben a lehet megjeleníteni a weblapot a munka nagyobb része a kiszolgáló oldalán következik be.
+Ez az útmutató által létrehozott mintaalkalmazást a forgatókönyvet, ahol a felhasználó használja a böngészőben egy ASP.NET-webhely kér a felhasználó egy bejelentkezési gomb segítségével alapul. Ebben a forgatókönyvben a lehet megjeleníteni a weblapot a munka nagyobb része a kiszolgáló oldalán következik be.
 
 ## <a name="libraries"></a>Szalagtárak
 

@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/30/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 5b881c17b6ad1c9a7e46492f8549f563cfd6d796
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 84ca616856f363e4d3d68ab1cc45b97f7c589185
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Nyissa meg az Azure-verem API-verzió profilok használata
 
@@ -33,7 +33,7 @@ Egy profil a különböző szolgáltatásokhoz különböző verzióival külön
 Nyissa meg SDK profilok alatt érhetők el a profilok / elérési utat, a verziót a **éééé-hh-nn** formátumban. Most, a legújabb Azure verem profil verzió **2017-03-09**. Egy profil importálni egy adott szolgáltatáshoz, szüksége a megfelelő modul importálása a profilt. Ahhoz például, hogy importálja **számítási** a szolgáltatás **2017-03-09** profil:
 
 ````go
-import "github.com/Azure/azure-sdk-for-go/profi1es/2e17-e3-eg/compute/mgmt/compute" 
+import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute" 
 ````
 
 ## <a name="install-azure-sdk-for-go"></a>Nyissa meg az Azure SDK telepítése

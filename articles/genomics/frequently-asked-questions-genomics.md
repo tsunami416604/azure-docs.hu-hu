@@ -1,7 +1,7 @@
 ---
-title: "Microsoft Genomics: Gyakori kérdések |} Microsoft Docs"
+title: 'Microsoft Genomics: Gyakori kérdések |} Microsoft Docs'
 titleSuffix: Azure
-description: "Gyakori kérdések az ügyfelek adott válaszok kérdezze Microsoft Genomics."
+description: Gyakori kérdések az ügyfelek adott válaszok kérdezze Microsoft Genomics.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -11,15 +11,15 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 2077eeb5177b07c458476ae900f81b72e35f0dc3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b3f30dc5d185615370a8273f71554f784d286cd9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Gyakori kérdések
 
-Ez a cikk az első lehetséges, hogy lekérdezések kapcsolódik a Microsoft Genomics sorolja fel. A Microsoft Genomics szolgáltatás további információkért lásd: [Újdonságok a Microsoft Genomics?](overview-what-is-genomics.md) 
+Ez a cikk ismerteti a leggyakoribb lekérdezések, akkor előfordulhat, hogy rendelkezik kapcsolódó Microsoft Genomics. A Microsoft Genomics szolgáltatás további információkért lásd: [Újdonságok a Microsoft Genomics?](overview-what-is-genomics.md). Hibaelhárítással kapcsolatos további információkért lásd: a [hibaelhárítási útmutató](troubleshooting-guide-genomics.md). 
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Mi az a szolgáltatásiszint-szerződés, Microsoft Genomics?
@@ -35,7 +35,7 @@ Elérhető parancsok és argumentumok teljes listájának lekéréséhez futtass
 ## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>Mi a leggyakrabban használt parancsok a `msgen` ügyfél?
 A leggyakrabban használt parancsok argumentumai a `msgen` ügyfél tartalmazza: 
 
- |**A parancs**          |  **Mező leírása** |
+ |**Parancs**          |  **Mező leírása** |
  |:--------------------|:-------------         |
  |`list`               |Elküldött feladatok listáját adja vissza. Argumentumok, lásd: `msgen help list`.  |
  |`submit`             |Munkafolyamat kérést küld a szolgáltatást. Argumentumok, lásd: `msgen help submit`.|
@@ -57,7 +57,7 @@ A bemeneti fájlok olvasását és írását a kimeneti fájlok a Microsoft Geno
 ## <a name="what-genome-references-can-i-use"></a>Milyen genom hivatkozik használhatok?
 
 Ezek a hivatkozások támogatottak:
- |Referencia              | Az érték`-pa/--process-args` |
+ |Leírások              | Az érték `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
@@ -74,13 +74,13 @@ Elválasztó karakter a rendszer figyelmen kívül hagyja.
 
  |Parancssori argumentumot            | A konfigurációs fájl sora |
  |:-------------                   |:-------------                 |
- |`-u/--api-url-base https://url`  | *api_url_base:https://URL*    |
+ |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
  |`-k/--access-key KEY`            | *access_key:key*              |      
  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a Microsoft Genomics használja a következőket:
-- Ismerkedés a Microsoft Genomics szolgáltatáson keresztül az első munkafolyamat futtatásával. [Egy munkafolyamat futtatásához a Microsoft Genomics szolgáltatáson keresztül](quickstart-run-genomics-workflow-portal.md)
+- Ismerkedés a Microsoft Genomics szolgáltatáson keresztül az első munkafolyamat futtatásával. [Egy munkafolyamat futtatásához a Microsoft Genomics szolgáltatáson keresztül ](quickstart-run-genomics-workflow-portal.md)
 - A saját adatok feldolgozásra küldése a Microsoft Genomics szolgáltatás: [FASTQ párosítva](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [több FASTQ vagy BAM](quickstart-input-multiple.md) 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: f56810d6520edd19ce757a91712698714902e668
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6ea915ac10314f6304c98e40a50b26e3d1ee79eb
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és Naplóelemzési által használt IP-címek
 A [Azure Application Insights](app-insights-overview.md) szolgáltatás által használt IP-címek száma. Szükség lehet tudja ezeket a címeket, ha a figyelt alkalmazás egy tűzfal mögött található.
@@ -49,11 +49,6 @@ Néhány kimenő portok megnyitása a kiszolgáló engedélyezéséhez az Applic
 | Konfiguráció |`auth.gfx.ms` | |`443` |
 | Konfiguráció |`login.live.com` | |`443` |
 | Telepítés |`packages.nuget.org` , `nuget.org`, `api.nuget.org`, `az320820.vo.msecnd.net` (NuGet-letöltések) | |`443` |
-
-## <a name="hockeyapp"></a>HockeyApp
-| Cél | URL-cím | IP | Portok |
-| --- | --- | --- | --- |
-| Összeomlási adatok |gate.hockeyapp.net |104.45.136.42 |80, 443 |
 
 ## <a name="availability-tests"></a>Rendelkezésre állási tesztek
 A lista, amelyből címek [webteszt rendelkezésre állási](app-insights-monitor-web-app-availability.md) futnak. Ha szeretné indítani a webes tesztjeinek használatát az alkalmazásnak, de a webkiszolgáló bizonyos ügyfelek szolgáltató korlátozódik, majd kell bejövő forgalom engedélyezése a rendelkezésre állási a teszt kiszolgálók.
@@ -218,7 +213,7 @@ Megjegyzés: *. applicationinsights.io tartomány Application Insights csapat tu
 
 Megjegyzés: *. loganalytics.io tartomány a Log Analyticshez csapat tulajdonában van.
 
-## <a name="application-insights-azure-portal-extension"></a>Az Application Insights az Azure portál bővítmény
+## <a name="application-insights-azure-portal-extension"></a>Application Insights Azure portal bővítmény
 
 | Cél | URI | IP | Portok |
 | --- | --- | --- | --- |

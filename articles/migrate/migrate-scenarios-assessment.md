@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 04/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ac6c3e428148a6609b264b0b8f8cff416b0fa4d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 33e31c47a6125ac363410a9a78e9c9310c74d51e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>1. forgatókönyv: Helyszíni számítási feladatok Azure-ba való migrálásának értékelése
 
@@ -285,7 +285,7 @@ Mielőtt hozzálátna, vegye figyelembe, hogy az adatgyűjtő jelenleg csak az �
 5. A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
     - Adja meg a vCenter-kiszolgáló nevét (FQDN, teljes tartománynév) vagy IP-címét.
     - A **Username** (Felhasználónév) és a **Password** (Jelszó) mezőben adja meg a csak olvasási jogokkal rendelkező fiók hitelesítő adatait, amelyet a gyűjtő a virtuális gépek felderítéséhez használ majd a vCenter-kiszolgálón.
-    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1000-nél több virtuális gépet. 
+    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet. 
 
     ![Csatlakozás a vCenterhez](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 

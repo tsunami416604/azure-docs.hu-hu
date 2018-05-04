@@ -9,15 +9,22 @@ ms.custom: mvc,security
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: daredis
-ms.openlocfilehash: 4d2f5ce387a1e9b36fd1625210f42525a272c270
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 68a2a61dd5821470d30e3735ea6a2df89360cbb2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Az Azure SQL Database-adatbázis védelme
 
-Az SQL Database úgy biztosítja az adatai védelmét, hogy korlátozza az adatbázishoz való hozzáférést tűzfalszabályokkal, a felhasználókat az azonosságuk igazolására kényszerítő hitelesítési mechanizmusokkal, engedélyezéssel az adatokhoz szerepalapú tagságok és engedélyek útján, valamint sorszintű biztonsággal és dinamikus adatmaszkolással.
+Az SQL Database a következőképpen védi az adatait: 
+- Az adatbázishoz való hozzáférés korlátozása tűzfalszabályok használatával 
+- Identitást igénylő hitelesítési mechanizmusok használata
+- Az adathozzáférés engedélyezése szerepköralapú tagságok és engedélyek segítségével 
+- Sorszintű biztonság
+- Dinamikus adatmaszkolás
+
+Az SQL Database ezenfelül kifinomult monitorozást, naplózást és fenyegetésészlelést biztosít. 
 
 Mindössze néhány lépés végrehajtásával fokozhatja az adatbázis védelmét a rosszindulatú felhasználókkal és a jogosulatlan hozzáféréssel szemben. Ebben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
@@ -155,7 +162,7 @@ Az Azure SQL Database transzparens adattitkosítási (TDE) funkciója automatiku
 
 3. Ha szükséges, állítsa BE értékűre az **Adattitkosítás** beállítást, majd kattintson a **Mentés** gombra.
 
-A háttérben elindul a titkosítási folyamat. Az állapot monitorozásához csatlakozzon az SQL Database-adatbázishoz az [SQL Server Management Studióval](./sql-database-connect-query-ssms.md) a `sys.dm_database_encryption_keys` nézet encryption_state oszlopának lekérdezésével.
+A háttérben elindul a titkosítási folyamat. Az állapot monitorozásához csatlakozzon az SQL Database-adatbázishoz az [SQL Server Management Studióval](./sql-database-connect-query-ssms.md), és kérdezze le a [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) nézet encryption_state oszlopát. Ha az állapot 3, akkor az adatbázis titkosított. 
 
 ## <a name="enable-sql-database-auditing-if-necessary"></a>Az SQL Database naplózási funkciójának engedélyezése szükség esetén
 

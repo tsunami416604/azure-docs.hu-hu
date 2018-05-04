@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danis
-ms.openlocfilehash: 09e23885bf9773712bd9c2ce5a6441c467642858
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fc097fb6abe74dad6a0e1155318468ce3ba80497
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>A Windows MOBILE virtuálisgép-bővítmény
 
@@ -38,7 +38,7 @@ Az Azure Security Center automatikusan látja el az OMS-ügynököt, és azt az 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 Az OMS-ügynököt bővítmény Windows megköveteli, hogy a cél virtuális gép csatlakozik az internethez. 
 
-## <a name="extension-schema"></a>A séma kiterjesztése
+## <a name="extension-schema"></a>Bővítményséma
 
 A következő JSON jeleníti meg az OMS-ügynököt bővítmény sémáját. A bővítmény szükséges a munkaterület azonosítója és a cél OMS-munkaterület kulcsát, ezek találhatók az OMS-portálon. A munkaterület-kulcs bizalmas adatokat kell kezelni, mert azt egy védett beállítás konfigurációban kell tárolni. Az Azure Virtuálisgép-bővítmény védett beállítás adatokat titkosít, és csak visszafejti a cél virtuális gépen. Vegye figyelembe, hogy **workspaceId** és **workspaceKey** -és nagybetűk.
 
@@ -73,7 +73,7 @@ A következő JSON jeleníti meg az OMS-ügynököt bővítmény sémáját. A b
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| workspaceId (e.g) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceId (például) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
@@ -172,4 +172,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>Támogatás
 
-Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/en-us/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/en-us/support/options/) válassza ki a Get-támogatási szolgálathoz. Támogatja az Azure használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/en-us/support/faq/).
+Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza ki a Get-támogatási szolgálathoz. Támogatja az Azure használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

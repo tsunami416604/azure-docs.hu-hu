@@ -10,15 +10,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: carlrab
-ms.openlocfilehash: f22a6d38648cf60bac09a751697e1c1d63d1db4f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e8928a69436cfa0fc601c4a0c544433f3b87a90f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Python használata Azure SQL Database-adatbázis lekérdezéséhez
 
- Ez a rövid útmutató azt ismerteti, hogyan lehet a [Python](https://python.org) használatával Azure SQL Database-adatbázishoz csatlakozni, valamint a Transact-SQL-utasításokkal adatokat lekérdezni. Az SDK-val kapcsolatos további részletekért tekintse meg a [referenciadokumentációt](https://docs.microsoft.com/python/api/overview/azure/sql), a [pyodbc-mintát](https://github.com/mkleehammer/pyodbc/wiki/Getting-started) és a [pyodbc](https://github.com/mkleehammer/pyodbc/wiki/) GitHub-adattárat.
+ Ez a rövid útmutató azt ismerteti, hogyan lehet a [Python](https://python.org) használatával Azure SQL Database-adatbázishoz csatlakozni, valamint a Transact-SQL-utasítások használatával adatokat lekérdezni. Az SDK-val kapcsolatos további részletekért tekintse meg a [referenciadokumentációt](https://docs.microsoft.com/python/api/overview/azure/sql), a [pyodbc-mintát](https://github.com/mkleehammer/pyodbc/wiki/Getting-started) és a [pyodbc](https://github.com/mkleehammer/pyodbc/wiki/) GitHub-adattárat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

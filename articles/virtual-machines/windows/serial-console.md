@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gép soros konzolon (előzetes verzió) 
 
@@ -109,7 +109,7 @@ Ha Windows rendszertöltő engedélyezni kell a megadását kéri, a soros konzo
 
 Ez a szakasz Példaparancsok végrehajtható gyakori feladatok forgatókönyvekben, ahol szükség lehet a virtuális Gépet, például az RDP csatlakozási hibák elhárítása való eléréséhez használható SAC tartalmazza.
 
-SAC szerepel a Windows összes verzióján óta Windows Server 2003, de alapértelmezés szerint le van tiltva. SAC támaszkodik a `sacdrv.sys` kernel-illesztőprogram, a `Special Administration Console Helper` szolgáltatás (`sacsvr`), és a `sacsess.exe` folyamat. További információkért lásd: [sürgős felügyeleti eszközök és beállítások](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
+SAC szerepel a Windows összes verzióján óta Windows Server 2003, de alapértelmezés szerint le van tiltva. SAC támaszkodik a `sacdrv.sys` kernel-illesztőprogram, a `Special Administration Console Helper` szolgáltatás (`sacsvr`), és a `sacsess.exe` folyamat. További információkért lásd: [sürgős felügyeleti eszközök és beállítások](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
 
 SAC lehetővé teszi a futó operációs rendszer soros porton keresztül csatlakozni. A SAC, CMD elindításakor `sacsess.exe` elindítja `cmd.exe` a futó operációs rendszeren belül. Láthatja, hogy a feladat kezelő, ha meg egyszerre a virtuális gép RDP alkalommal, amikor csatlakozik SAC keresztül a soros konzol szolgáltatás. Az Ön érhetnek el SAC CMD megegyezik `cmd.exe` RDP-kapcsolaton keresztül csatlakozáskor használ. Ugyanazokat a parancsok és eszközök érhetők el, beleértve a indítsa el a Powershellt a CMD példányról. A fő különbség SAC között, amelyek a Windows helyreállítási környezet (WinRE), hogy SAC van és kezelheti a futó operációs rendszer, ha betölti a WinRE egy másik, a minimális operációsrendszer. Amíg az Azure virtuális gépek nem támogatják a WinRE, hozzáférhet a soros konzol szolgáltatás Azure virtuális gépek SAC keresztül is felügyelhetők.
 
@@ -266,11 +266,11 @@ Ebben a példában a virtuális hálózati adapter illesztőprogramja, amely net
 #### <a name="scan-for-system-file-corruption"></a>Meghibásodott rendszerfájl vizsgálata
 `sfc /scannow`
 
-Lásd még: [javítsa ki a Windows-lemezkép](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Lásd még: [javítsa ki a Windows-lemezkép](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
 #### <a name="scan-for-system-file-corruption"></a>Meghibásodott rendszerfájl vizsgálata
 `dism /online /cleanup-image /scanhealth`
 
-Lásd még: [javítsa ki a Windows-lemezkép](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Lásd még: [javítsa ki a Windows-lemezkép](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
 #### <a name="export-file-permissions-to-text-file"></a>Fájlengedélyek exportálása szövegfájlba
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 #### <a name="save-file-permissions-to-acl-file"></a>Fájlengedélyek ACL-fájl mentése
@@ -516,7 +516,7 @@ Azure-példányokon metaadatok lekérheti például osType helyét, vmSize, vmId
 
 Kifogástalan Vendég hálózati kapcsolatot, példány metaadatok lekérdezéséhez van szükség, mert így egy REST-hívást a példány metaadatok szolgáltatáshoz Azure gazdagépen keresztül. Ezért ha példány metaadatok lekérdezni, amely szerint a Vendég képes az Azure által üzemeltetett szolgáltatás történő, hálózaton keresztüli kommunikációra.
 
-További információkért lásd: [Azure példány metaadat-szolgáltatás](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service).
+További információkért lásd: [Azure példány metaadat-szolgáltatás](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service).
 
 #### <a name="instance-metadata"></a>Példány metaadatok
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

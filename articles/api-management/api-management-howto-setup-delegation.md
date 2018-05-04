@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 9e5a6aab48a722f6d000dce37f510c09f5acdd7f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 02c3a3d996fa253cf56e551a37e098639bf73533
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez
 Delegálás lehetővé teszi a meglévő webhely használatát fejlesztői bejelentkezési-a/regisztrációs és termékek a fejlesztői portálra beépített funkcióval szemben-előfizetés kezeléséhez. Ez lehetővé teszi, hogy a webhely tulajdonosai a felhasználó adatait, és hajtsa végre az alábbi lépéseket az érvényesítés egy egyedi módon.
@@ -173,7 +173,7 @@ Delegálás további információkért tekintse meg a következő videót:
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
 [egyszeri bejelentkezéses (SSO) jogkivonatot kérni]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
-[Felhasználó létrehozása]: https://docs.microsoft.com/en-us/rest/api/apimanagement/user/createorupdate
+[Felhasználó létrehozása]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
 [termék-előfizetéshez tartozó REST API hívása]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
 [Next steps]: #next-steps
 [alábbi példakód]: #delegate-example-code

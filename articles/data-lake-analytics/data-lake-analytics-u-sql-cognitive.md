@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Analytics U-SQL kognitív képességek segítségével |} Microsoft Docs"
-description: "Az eszközintelligencia kognitív képességek használata U-SQL-ben"
+title: Az Azure Data Lake Analytics U-SQL kognitív képességek segítségével |} Microsoft Docs
+description: Az eszközintelligencia kognitív képességek használata U-SQL-ben
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: ec48a07af0aba78f2e508bad232f34102f0c2073
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: cd06e1ae56efdfdcfcd4fec5b2c17ee843d9e9dd
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>Oktatóanyag: Ismerkedés a U-SQL kognitív lehetőségeinek
 
@@ -37,8 +37,8 @@ A következő kognitív lehetőségek érhetők el:
 
 A teljes folyamat felettébb egyszerű:
 
-* A referencia szerelvény utasítás használható a U-SQL parancsfájl kognitív funkciók lehetővé tétele
-* A FOLYAMATOT használja egy kognitív UDO segítségével egy kimenete egy bemeneti sorkészlet sorhalmaz
+* Használja a `REFERENCE ASSEMBLY` utasítás kognitív funkciók lehetővé tétele a U-SQL parancsfájl
+* Használja a `PROCESS` egy bemeneti sorkészlet egy kimenete egy kognitív UDO segítségével a sorhalmaz
 
 ### <a name="detecting-objects-in-images"></a>A képek objektumok észlelése
 
@@ -82,7 +82,7 @@ OUTPUT @tags_serialized
 ```
 További példákért tekintse meg a **U-SQL/Cognitive minták** a a **további lépések** szakasz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [U-SQL/kognitív minták](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
 * [U-SQL ablak függvények használata az Azure Data Lake Analytics-feladatok](data-lake-analytics-use-window-functions.md)
