@@ -110,6 +110,8 @@
           href: disk-scalability-targets.md
         - name: Lemezek biztonsági mentése és vészhelyreállítása
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Írásgyorsító engedélyezése
+          href: how-to-enable-write-accelerator.md
         - name: Csatlakoztatott virtuális merevlemezek hibaelhárítása
           href: troubleshoot-vhds.md
     - name: Hálózat
@@ -183,6 +185,8 @@
           href: move-vm.md
         - name: Virtuális gép méretének módosítása
           href: change-vm-size.md
+        - name: Operációsrendszer-lemez cseréje
+          href: os-disk-swap.md
         - name: Virtuális gép címkézése
           href: tag.md
         - name: Szkriptek futtatása virtuális gépeken

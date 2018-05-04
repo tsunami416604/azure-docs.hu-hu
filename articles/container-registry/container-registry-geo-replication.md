@@ -1,27 +1,27 @@
 ---
-title: "Egy Azure-tárolót beállításjegyzék földrajzi replikálása"
-description: "Ismerkedés a létrehozása és kezelése az Azure-tárolót georeplikált nyilvántartó."
+title: Egy Azure-tárolót beállításjegyzék földrajzi replikálása
+description: Ismerkedés a létrehozása és kezelése az Azure-tárolót georeplikált nyilvántartó.
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview-article
 ms.date: 10/24/2017
 ms.author: stevelas
-ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 6b82f49d2bf4ed321f5e847d11780535e01531f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="geo-replication-in-azure-container-registry"></a>Azure-tárolót beállításjegyzék georeplikáció
+# <a name="geo-replication-in-azure-container-registry"></a>Georeplikáció az Azure Container Registryben
 
 Egy helyi vagy a működés közbeni biztonsági másolatot, kívánó vállalatok válassza ki a több Azure-régiók szolgáltatások futtatásához. Ajánlott eljárásként helyezi el a tároló beállításjegyzék minden egyes régió, ahol képek futnak engedélyezi a hálózati bezárású műveleteket, gyors és megbízható kép réteg átvitel engedélyezése.
 
 A georeplikáció lehetővé teszi, hogy az Azure-tárolót beállításjegyzék egy egyetlen beállításjegyzék működhet több régióba szolgál a több főkiszolgálós regionális internetregiszterek.
 
 > [!IMPORTANT]
-> A georeplikáció Azure tároló beállításjegyzék használata a jelenleg a **előzetes**. Az előzetes verziójú funkciók elérhetővé válnak, a feltétellel, hogy elfogadja a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Ez a funkció az egyes funkcióit általános elérhetőségével (GA) előtt módosíthatja.
+> Az Azure Container Registry georeplikációs funkciója jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
 
 Georeplikált beállításjegyzék a következő előnyöket nyújtja:
@@ -59,8 +59,8 @@ Az több nyilvántartó tipikus kihívások közé tartozik:
 
 Az Azure-tároló beállításjegyzék georeplikáció szolgáltatásával, a következő előnyökkel is vannak tudjuk:
 
-* Minden egyes egyetlen beállításjegyzék kezelését:`contoso.azurecr.io`
-* Minden egyes használt a kép URL-CÍMÉRE felügyelete az lemezképek központi telepítésére egyetlen konfigurálása:`contoso.azurecr.io/public/products/web:1.2`
+* Minden egyes egyetlen beállításjegyzék kezelését: `contoso.azurecr.io`
+* Minden egyes használt a kép URL-CÍMÉRE felügyelete az lemezképek központi telepítésére egyetlen konfigurálása: `contoso.azurecr.io/public/products/web:1.2`
 * ACR kezeli a georeplikáció, beleértve a helyi értesítések regionális webhookok egy egyetlen beállításjegyzék nyomni
 
 ## <a name="configure-geo-replication"></a>Aktív georeplikáció konfigurálása
@@ -74,11 +74,11 @@ A georeplikáció a prémium szintű beállításjegyzék konfigurálása, jelen
 
 Az Azure-tároló beállításjegyzék váltson, és jelölje ki **replikációk**:
 
-![Az Azure portál tároló beállításjegyzék felhasználói felület replikációk](media/container-registry-geo-replication/registry-services.png)
+![Replikációk az Azure Portal tárolójegyzékeinek felhasználói felületén](media/container-registry-geo-replication/registry-services.png)
 
 Olyan térképet jelenik meg, melyen az összes jelenlegi Azure-régiókat:
 
- ![Az Azure portálon régió térkép](media/container-registry-geo-replication/registry-geo-map.png)
+ ![Régiótérkép az Azure Portalon](media/container-registry-geo-replication/registry-geo-map.png)
 
 * Kék hatszögek képviselő aktuális replikák
 * Zöld hatszögek képviselő lehetséges replika régiók
@@ -86,7 +86,7 @@ Olyan térképet jelenik meg, melyen az összes jelenlegi Azure-régiókat:
 
 Konfigurálhatja egy replikát, jelöljön ki egy zöld hatszög, majd **létrehozása**:
 
- ![Replikációs felhasználói felület létrehozása az Azure portálon](media/container-registry-geo-replication/create-replication.png)
+ ![Replikáció létrehozásának felhasználói felülete az Azure Portalon](media/container-registry-geo-replication/create-replication.png)
 
 További replikák konfigurálásához a zöld hatszögek más területen, majd kattintson **létrehozása**.
 

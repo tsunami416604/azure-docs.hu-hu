@@ -4,15 +4,14 @@ description: Olvassa el a helyszíni adatközpontok az Azure-ba történő migr�
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 04/08/2018
+ms.topic: conceptual
+ms.date: 04/21/2018
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: be322596da0c3e5ba18aa64285c437cdb823fc4b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 8ba490998ea5f20efca591327716a6e39e9c1ba8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrating-your-on-premises-workloads-to-azure"></a>Helyszíni számítási feladatok migrálása az Azure-ba
 
@@ -27,11 +26,11 @@ Ez a migrálásról szóló cikksorozat bemutatja, hogyan tervezhet és állíth
 
 **Forgatókönyv** | **Megoldás** | **Szolgáltatások** | **Cikk** 
 --- | --- | --- | ---
-[1. forgatókönyv: Felderítés és értékelés](migrate-scenarios-assessment.md) | Helyszíni alkalmazások és adatok felderítése és kiértékelése az Azure-ba való migráláshoz | Data Migration Assistant, Azure Migrate szolgáltatás  | Már elérhető
-**2. forgatókönyv: Átemeléses migrálás** | Belső alkalmazások üzemeltetésének áthelyezése az Azure-ba. Optimalizálás az Azure-ban migrálás után. | Azure Site Recovery, Azure Database Migration Service, Azure SQL Managed Instance | Már elérhető
-**3. forgatókönyv: Újrabontás és migrálás** | Helyszíni ügyfélalkalmazások modernizálása és újrabontása az Azure-ba történő migrálás közben. | Tervezés alatt | Tervezve
-**4. forgatókönyv: Újratervezés és migrálás** | Ügyféltranzakciós webhelyek újratervezése és migrálása az Azure-ba történő migrálás közben. | Tervezés alatt | Tervezve
-**5. forgatókönyv: Újraépítés** |Ügyfélalkalmazás és adatok újraépítése és migrálása az Azure-ba | Tervezés alatt | Tervezve
+[1. forgatókönyv: Felderítés és értékelés](migrate-scenarios-assessment.md) | Fedezze fel és mérje fel a helyszíni alkalmazások, adatok, és az áttelepítéshez az Azure infrastruktúra | Data Migration Assistant, Azure Migrate szolgáltatás  | Már elérhető
+**[2. forgatókönyv: Áthelyezési alkalmazás](migrate-scenarios-lift-and-shift.md)** | Növekedési és shift alkalmazások az Azure-bA. | Azure Site Recovery, Azure Database Migration Service, Azure SQL Managed Instance | Már elérhető
+**3. forgatókönyv: Azonosítóterületen alkalmazás** | Refactor alkalmazások az Azure-bA az áttelepítés során. | Tervezés alatt | Tervezve
+**4. forgatókönyv: Rearchitect alkalmazás** | Rearchitect alkalmazások az Azure-bA az áttelepítés során. | Tervezés alatt | Tervezve
+**5. forgatókönyv: Rebuild alkalmazás** |Építse újra az alkalmazások az Azure-bA az áttelepítés során | Tervezés alatt | Tervezve
 
 
 

@@ -1,12 +1,12 @@
 ---
-title: "Hibák a tartós funkciók - Azure kezelése"
-description: "További tudnivalók az Azure Functions a tartós funkciók bővítményben hibák kezelésének módját."
+title: Hibák a tartós funkciók - Azure kezelése
+description: További tudnivalók az Azure Functions a tartós funkciók bővítményben hibák kezelésének módját.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ee5362d33bb9dadadb4194457cfd7726f4825f56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 108c6020956b398effb8ba9dd4471190362359d6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák a tartós funkciók (az Azure Functions) kezelése
 
@@ -26,7 +26,7 @@ Tartós függvény álló üzenettípusok összehangolását kódba, és a hiba-
 
 ## <a name="errors-in-activity-functions"></a>Hibák a tevékenység-funkciók
 
-Bármely, amely egy tevékenység függvényben történt kivétel vissza az orchestrator függvény a hívott és vált ki, mint egy `TaskFailedException`. Kezelési és a hibakódot az orchestrator függvényben igényeinek megfelelő írhat.
+Bármely, amely egy tevékenység függvényben történt kivétel vissza az orchestrator függvény a hívott és vált ki, mint egy `FunctionFailedException`. Kezelési és a hibakódot az orchestrator függvényben igényeinek megfelelő írhat.
 
 Vegyük példaként a következő orchestrator függvény alapok átviszi az egyik fiókból másikba:
 
@@ -80,7 +80,7 @@ public static async Task Run(DurableOrchestrationContext context)
         firstRetryInterval: TimeSpan.FromSeconds(5),
         maxNumberOfAttempts: 3);
 
-    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions);
+    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
     
     // ...
 }
@@ -132,7 +132,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 
 Ha egy orchestrator-függvény sikertelen, és nem kezelt kivételt, a kivétel részletei naplózza, és a példány befejeződik, az egy `Failed` állapotát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a problémák diagnosztizálásához](durable-functions-diagnostics.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: ef0d135a744cd37d888496073c7959ddc815ec91
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: MT
+ms.openlocfilehash: f1c578b6ebb766f71d6e8b65b02724d91dde3126
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Az IoT-központ lekérdezési nyelv eszköz twins, a feladatok és az üzenet-útválasztás
 
@@ -29,9 +29,9 @@ Az IoT-központ biztosít egy hatékony SQL-szerű nyelv való adatbeolvasás vo
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-twin-queries"></a>Eszköz iker lekérdezések
-[Eszköz twins] [ lnk-twins] tetszőleges JSON-objektumok címkék és a tulajdonságok is tartalmazhat. Az IoT-központ lehetővé teszi lekérdezés eszköz twins JSON-dokumentumként egyetlen tartalmazó összes iker eszközadatokat.
-Tegyük fel például, hogy az IoT hub eszköz twins rendelkezik-e az alábbi szerkezettel:
+## <a name="device-and-module-twin-queries"></a>Eszköz- és modul iker lekérdezések
+[Eszköz twins] [ lnk-twins] és modul twins tetszőleges JSON-objektumok címkék és a tulajdonságok is tartalmazhat. Az IoT-központ segítségével lekérdezés eszköz twins és modul twins JSON-dokumentumként egyetlen tartalmazó összes iker információt.
+Tegyük fel például, hogy az IoT hub eszköz twins rendelkezik-e az alábbi szerkezettel (modul iker lenne hasonló, csak az olyan további moduleId):
 
 ```json
 {
@@ -82,6 +82,8 @@ Tegyük fel például, hogy az IoT hub eszköz twins rendelkezik-e az alábbi sz
     }
 }
 ```
+
+### <a name="device-twin-queries"></a>Eszköz iker lekérdezések
 
 Az IoT-központ nevű dokumentum gyűjteményként elérhetővé teszi az eszköz twins **eszközök**.
 Ezért az alábbi lekérdezés lekéri az eszköz twins teljes készletét:
@@ -158,6 +160,26 @@ A leképezési lekérdezésekre a fejlesztők olyan érdeklő tulajdonságait ad
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+```
+
+### <a name="module-twin-queries"></a>A két moduljánál a lekérdezés
+
+A modul twins lekérdezése hasonló eszköz twins a lekérdezéshez, de egy másik gyűjtemény/névteret használ, azaz "az eszközök" helyett kérdezhetők le
+
+```sql
+SELECT * FROM devices.modules
+```
+
+Nem lehetővé, hogy az eszközök és devices.modules gyűjtemények között. A lekérdezés modul twins az eszközön, akkor tegye címkék alapján. A lekérdezés által visszaadott összes modul twins, minden eszközön, a vizsgálati állapotú:
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning'
+```
+
+Ez a lekérdezés visszaállítja az összes modul twins vizsgálati állapotú, de csak az eszközök megadott részhalmazát.
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>C# – példa
@@ -578,9 +600,9 @@ Twins és az egyetlen támogatott feladatok lekérdezésekor függvény van:
 | CONCAT (x, y,...) | Karakterlánc, amely legalább két karakterlánc-értékek hozzáfűzésével eredményét adja vissza. |
 | LENGTH(x) | A megadott karakterlánc-kifejezés karakterek számát adja vissza.|
 | Lower(x) | Egy karakterlánc-kifejezés után nagybetűt adatok kisbetűssé alakításával adja vissza. |
-| UPPER(x) | Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza. |
+| Upper(x) | Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza. |
 | SUBSTRING (karakterlánc, start [, hossz]) | A megadott karakter nulla pozíciótól kezdődően karakterlánc-kifejezés részét adja vissza, és továbbra is fennáll, a megadott időtartam, illetve a karakterlánc végén. |
-| INDEX_OF(string, fragment) | A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés az első megadott karakterlánc-kifejezés vagy -1, ha a karakterlánc nem található.|
+| (Karakterlánc, töredék) INDEX_OF | A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés az első megadott karakterlánc-kifejezés vagy -1, ha a karakterlánc nem található.|
 | STARTS_WITH (x, y) | Visszaadja egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés kezdődik-e a második. |
 | ENDS_WITH (x, y) | Adja vissza egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés a második végződik. |
 | CONTAINS(x,y) | Visszaadja egy logikai, amely jelzi, hogy az első karakterlánc-kifejezés tartalmazza a második. |

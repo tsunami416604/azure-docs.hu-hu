@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 111217e9335b16659c93da88731e0b7ce6d5fecd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffa60e24b93caaaefcab70c99fa2c76065d97233
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Azure-az Azure-bA replikációs architektúrája
 
@@ -46,7 +46,7 @@ Ha engedélyezi az Azure Virtuálisgép-replikációt, az alábbi erőforrások 
 
 **Erőforrás** | **Részletek**
 --- | ---
-**Cél-erőforráscsoport** | Az erőforráscsoport, amelybe a replikált virtuális gépek a feladatátvételt követően tartoznak.
+**Cél-erőforráscsoport** | Az erőforráscsoport, amelybe a replikált virtuális gépek a feladatátvételt követően tartoznak. Ez az erőforráscsoport helye bármely Azure-régió, kivéve az Azure-régió, ahol a forrás virtuális gépek üzemeltetett lehet.
 **Virtuális hálózati cél** | A virtuális hálózatot, amelyben replikált virtuális gépek a feladatátvétel után. A hálózatleképezés jön létre a forrás és cél virtuális hálózatok között, és ez fordítva is igaz.
 **Gyorsítótár-storage-fiókok** | Ahhoz a forrás virtuális gép változásai replikálódnak a cél tárfiókkal, ezeket nyomon követheti és a gyorsítótár tárfiók a forráshely küldött. Ez a lépés biztosítja a virtuális Gépen futó termelési alkalmazások gyakorolt minimális hatás mellett.
 **Cél storage-fiókok (Ha a forrás virtuális gép nem használ által kezelt lemezeken)**  | Storage-fiók, amelyhez a rendszer replikálja az adatokat a célhelyre.

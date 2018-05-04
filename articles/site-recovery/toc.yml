@@ -111,6 +111,8 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: Információk az Azure Traffic Manager Site Recoveryvel történő használatáról
       href: concepts-traffic-manager-with-site-recovery.md
+    - name: ExpressRoute és Site Recovery
+      href: concepts-expressroute-with-site-recovery.md
     - name: GYIK
       href: site-recovery-faq.md
 - name: Útmutatók
@@ -119,12 +121,14 @@
       items:
         - name: Hálózat
           items:
-            - name: Hálózat kezelése az Azure-beli virtuális gépek vészhelyreállításához (előzetes verzió)
+            - name: Hálózatkezelés az Azure-beli virtuális gépek vészhelyreállításához
               href: azure-to-azure-about-networking.md
             - name: Hálózatleképezés előkészítése az Azure-beli virtuális gépek vészhelyreállításához
               href: azure-to-azure-network-mapping.md
             - name: IP-címzés beállítása feladatátvételhez
               href: site-recovery-retain-ip-azure-vm-failover.md
+            - name: ExpressRoute és Azure-beli virtuális gépek vészhelyreállítása
+              href: azure-vm-disaster-recovery-with-expressroute.md
         - name: Vészhelyreállítás
           items:
             - name: Azure-beli virtuális gépek vészhelyreállítása az Azure-ba való migrálás után

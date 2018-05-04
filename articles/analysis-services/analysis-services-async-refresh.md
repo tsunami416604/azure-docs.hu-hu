@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 74ef8ae45215badf2b5a83cc2d82c3db1eef8980
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API aszinkron frissítés
 Bármely programozási nyelv, amely támogatja a REST-hívások segítségével az Azure Analysis Services rendszerbeli táblázatos modellek aszinkron adatfrissítési műveleteket végezheti el. Ez magában foglalja a lekérdezés kibővített írásvédett replikák szinkronizálását. 
@@ -198,7 +198,7 @@ Ez a C# példakód az első lépésekhez, [a Githubon RestApiSample](https://git
 1.  Klónozza, vagy töltse le a tárházban. Nyissa meg a RestApiSample megoldást.
 2.  A sorban található **ügyfél. A BaseAddress =...** és adja meg a [alap URL](#base-url).
 
-A kódminta használható interaktív bejelentkezés, a felhasználónév/jelszó, vagy [egyszerű](#service-principle).
+A kódminta használható interaktív bejelentkezés, a felhasználónév/jelszó, vagy [egyszerű](#service-principal).
 
 #### <a name="interactive-login-or-usernamepassword"></a>Interaktív bejelentkezés vagy felhasználónév és jelszó
 
@@ -235,7 +235,7 @@ Az űrlap-hitelesítés szükséges, az Azure-alkalmazások hozható létre a sz
 
 #### <a name="service-principal"></a>Szolgáltatásnév
 
-Lásd: [szolgáltatás elv - Azure-portálon hozzon létre](../azure-resource-manager/resource-group-create-service-principal-portal.md) és [adja hozzá a szolgáltatás funkciókat az a kiszolgáló-rendszergazdai szerepkör](analysis-services-addservprinc-admins.md) állítson be egy egyszerű szolgáltatást, és rendelje hozzá a szükséges engedélyekkel, az Azure-AS módjáról további információk . Miután végrehajtotta a lépéseket, hajtsa végre az alábbi kiegészítő lépéseket:
+Lásd: [szolgáltatásnév - Azure-portálon hozzon létre](../azure-resource-manager/resource-group-create-service-principal-portal.md) és [egyszerű szolgáltatás hozzáadása a kiszolgáló-rendszergazdai szerepkör](analysis-services-addservprinc-admins.md) állítson be egy egyszerű szolgáltatást, és rendelje hozzá a szükséges engedélyekkel, az Azure-AS módjáról további információk . Miután végrehajtotta a lépéseket, hajtsa végre az alábbi kiegészítő lépéseket:
 
 1.  Ebben a kódmintában keresse **karakterlánc-szolgáltató =...** , cserélje le **közös** a szervezet bérlőazonosítóra azonosítóját.
 2.  Megjegyzés/állítsa vissza, a SecurityMode osztály szolgál az adatok objektumpéldány. Győződjön meg arról a \<Alkalmazásazonosító > és \<Alkalmazáskulcs > biztonságos módon érik el vagy az szolgáltatásnevekről tanúsítvány alapú hitelesítést használ.

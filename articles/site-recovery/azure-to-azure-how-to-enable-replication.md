@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: asgang
-ms.openlocfilehash: e5947242295a9c57b1c73e202c061d222cd0842f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4479f7bbe657908d4c1ed94f5eaa00401efcb87e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Az Azure virtuális gépek replikálása Azure-régió, egy másik
 
@@ -48,7 +48,7 @@ Engedélyezheti a replikálást. Ez az eljárás azt feltételezi, hogy az első
 4. A **beállítások**, cél hely beállításait konfigurálhatja:
 
     - **Célhelye**: A hely, ahol a forrás virtuális gép adatait a rendszer replikálja. Attól függően, a kijelölt gépekhez helyét, a Site Recovery biztosítja azokat a megfelelő cél régiók listáját. Azt javasoljuk, hogy őrizze meg a célhely ugyanazt a Recovery Services-tároló helyként.
-    - **Célként megadott erőforráscsoportja**: az erőforráscsoport, ahol az összes a replikált virtuális gépek tartoznak. Alapértelmezés szerint Azure Site Recovery hoz létre egy új erőforráscsoportot a cél régióban "automatikus" utótaggal rendelkező nevét. Erőforráscsoport létrehozásánál Azure Site Recovery által már létezik, a rendszer újra. Választhatja azt is, ahogy az alábbi szakasz testre szabhatja.
+    - **Célként megadott erőforráscsoportja**: az erőforráscsoport, ahol az összes a replikált virtuális gépek tartoznak. Alapértelmezés szerint Azure Site Recovery hoz létre egy új erőforráscsoportot a cél régióban "automatikus" utótaggal rendelkező nevét. Erőforráscsoport létrehozásánál Azure Site Recovery által már létezik, a rendszer újra. Választhatja azt is, ahogy az alábbi szakasz testre szabhatja. A célként megadott erőforráscsoportja helyét bármely Azure-régió, kivéve a régiót, amelyben a forrás virtuális gépek üzemeltetett lehet.
     - **Virtuális hálózati cél**: alapértelmezés szerint a Site Recovery hoz létre egy új virtuális hálózat a cél régióban "automatikus" utótaggal rendelkező neve. Ez a forrás hálózati leképezve, és minden jövőbeli védelmi használt. [További](site-recovery-network-mapping-azure-to-azure.md) kapcsolatos hálózatra való leképezés.
     - **Cél Storage-fiókok (Ha a forrás virtuális gép nem használ által kezelt lemezeken)**: alapértelmezés szerint a Site Recovery hoz létre egy új cél tárfiók mimicking a forrás virtuális gép tárolási konfigurációt. A tárfiók már létezik, a rendszer újra.
     - **A replika (Ha a forrás virtuális gép használja a felügyelt lemezek) által kezelt lemezeken**: a Site Recovery hoz létre új kezelt lemezek mappába történő tükrözésének felügyelt lemezeket a forrás virtuális gép (Standard vagy prémium) azonos tárolási módot, a forrás virtuális gép kezeli a lemez a cél régióban.

@@ -36,7 +36,7 @@
 ##### [Hogyan működik?](active-directory-aadconnect-sso-how-it-works.md)
 ##### [Gyakori kérdések](active-directory-aadconnect-sso-faq.md)
 ##### [Hibaelhárítás](active-directory-aadconnect-troubleshoot-sso.md)
-##### [GDPR](active-directory-aadconnect-sso-gdpr.md)
+##### [Felhasználói adatok védelme és az Azure AD közvetlen egyszeri bejelentkezése](active-directory-aadconnect-sso-gdpr.md)
 #### [Átmenő hitelesítés](active-directory-aadconnect-pass-through-authentication.md)
 ##### [Első lépések](active-directory-aadconnect-pass-through-authentication-quick-start.md)
 ##### [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
@@ -46,7 +46,7 @@
 ##### [Gyakori kérdések](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Hibaelhárítás](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [A biztonság részletes bemutatása](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
-##### [GDPR](active-directory-aadconnect-pass-through-authentication-gdpr.md)
+##### [Felhasználói adatok védelme és az Azure Active Directory átmenő hitelesítése](active-directory-aadconnect-pass-through-authentication-gdpr.md)
 ### [Többtartományos támogatás összevonási szolgáltatásokhoz](active-directory-aadconnect-multiple-domains.md)
 ### [Automatikus frissítés](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez](active-directory-aadconnect-federation-saml-idp.md)
@@ -54,7 +54,8 @@
 
 
 ## Azure AD Connect-szinkronizálás kezelése
-### [GDPR-megfelelőség és az Azure AD Connect](active-directory-aadconnect-gdpr.md)
+### [Felhasználói adatok védelme és az Azure AD Connect](active-directory-aadconnect-gdpr.md)
+### [Az O365-erőforrások adatainak előnyben részesített helye](active-directory-aadconnectsync-feature-preferreddatalocation.md)
 ### [Véletlen törlések megakadályozása](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [Jelszókivonat szinkronizálása](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 ### [Azure AD-szolgáltatásfiók](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -91,7 +92,7 @@
 ### [Helyreállítás 10 GB-ra korlátozott LocalDB adatbázisból](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Identitásszinkronizálás és ismétlődő attribútumok rugalmassága](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [Hibrid identitás – szükséges portok és protokollok](active-directory-aadconnect-ports.md)
 ## [Az előzetes verzió szolgáltatásai](active-directory-aadconnect-feature-preview.md)

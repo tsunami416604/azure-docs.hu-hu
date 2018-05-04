@@ -9,18 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: 0dae04ab3de16e2ef51134ec6979c6c289a6da3f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: dbe991ddaa4d85ee3d117dc3c0c246a642b53f2f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-dtu-benchmark-overview"></a>Az Azure SQL Database DTU teljesítménytesztek áttekintése
 ## <a name="overview"></a>Áttekintés
-A DTU-alapú alapjául szolgáló vásárlási modell, a Microsoft Azure SQL Database nyújt három [szolgáltatásszintek](sql-database-service-tiers.md) különböző teljesítményszintek. Egyes tartalmaz egy növekvő erőforrásokhoz, vagy a "power", egyre nagyobb átviteli sebesség továbbít.
+A DTU-alapú alapjául szolgáló vásárlási modell, a Microsoft Azure SQL Database nyújt három [szolgáltatásszintek](sql-database-service-tiers-dtu.md) különböző teljesítményszintek. Egyes tartalmaz egy növekvő erőforrásokhoz, vagy a "power", egyre nagyobb átviteli sebesség továbbít.
 
 > [!IMPORTANT]
-> Az Azure SQL Database mostantól támogatja a vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió). További információ: [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
+> Az Azure SQL Database mostantól támogatja a vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió). További információ: [alapjául szolgáló vásárlási modell vCore alapú](sql-database-service-tiers-vcore.md).
 
 Fontos tudni számlálása hogyan fordítja le a növekvő hatványra emelésének egyes megnövekedett adatbázis teljesítménye. A Microsoft ehhez fejlesztett ki, az Azure SQL adatbázis Referenciaalap (ASDB). A javasolt gyakorolja vegyesen található összes OLTP-munkaterhelések az alapvető műveleteket. Az átviteli sebesség teljesíteni az egyes futó adatbázisok mérjük.
 
@@ -126,6 +126,8 @@ Az Azure SQL adatbázis teljesítményteszt méri az Azure SQL Database kereszt�
 ## <a name="resources"></a>További források
 [SQL-adatbázis bemutatása](sql-database-technical-overview.md)
 
-[Szolgáltatásszintek és teljesítményszintek](sql-database-service-tiers.md)
+[DTU-alapú szolgáltatásszintjei és teljesítményszintjei](sql-database-service-tiers-dtu.md)
+
+[vCore-alapú szolgáltatásszintjei és teljesítményszintjei](sql-database-service-tiers-vcore.md)
 
 [Az önálló adatbázisok teljesítményének útmutató](sql-database-performance-guidance.md)

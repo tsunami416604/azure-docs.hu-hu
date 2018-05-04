@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: be4aa45c919f579355c6ac6c5682c1537e9cc0cb
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b2b690978c2d67dbf26b74ecd38a408cece91566
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózat az Azure API Management szolgáltatással
 Azure virtuális hálózatok, az Azure API Management kezelheti API-k nem érhető el, az interneten. A kapcsolat VPN technológiáin számos érhetők el. Az API Management olyan virtuális hálózaton belül két fő módban telepíthető:
@@ -87,11 +87,11 @@ Az API Management szolgáltatásnak, például a "contoso" nevű létrehozásako
 
 API-kezelés szolgáltatás a végpontokkal eléréséhez hozzon létre egy virtuális gép a virtuális hálózathoz van telepítve az API Management alhálózat. Ha a szolgáltatás belső virtuális IP-cím 10.0.0.5, leképezheti a hosts fájl % SystemDrive%\drivers\etc\hosts, az alábbiak szerint:
 
-   * 10.0.0.5     contoso.azure-api.net
+   * 10.0.0.5 contoso.azure-api.net
 
-   * 10.0.0.5     contoso.portal.azure-api.net
+   * 10.0.0.5 contoso.portal.azure-api.net
 
-   * 10.0.0.5     contoso.management.azure-api.net
+   * 10.0.0.5 contoso.management.azure-api.net
 
    * 10.0.0.5     contoso.scm.azure-api.net
 
@@ -115,7 +115,7 @@ Ezután hozzáférhetnek a Szolgáltatásvégpontok létrehozott virtuális gép
 További tudnivalókért tekintse meg a következő cikkeket:
 * [Általános hálózati konfigurációs problémák egy virtuális hálózatot az Azure API Management beállítása közben][Common network configuration problems]
 * [Virtuális hálózat – gyakori kérdések](../virtual-network/virtual-networks-faq.md)
-* [A DNS-rekord létrehozása](https://msdn.microsoft.com/en-us/library/bb727018.aspx)
+* [A DNS-rekord létrehozása](https://msdn.microsoft.com/library/bb727018.aspx)
 
 [api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-menu.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png

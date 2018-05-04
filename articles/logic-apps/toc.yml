@@ -61,6 +61,8 @@
           href: logic-apps-content-type.md
         - name: Hibák és kivételek kezelése
           href: logic-apps-exception-handling.md
+        - name: Nagyméretű üzenetek kezelése
+          href: logic-apps-handle-large-messages.md
         - name: A logikai alkalmazások védelme
           href: logic-apps-securing-a-logic-app.md
         - name: Egyéni összekötők fejlesztése

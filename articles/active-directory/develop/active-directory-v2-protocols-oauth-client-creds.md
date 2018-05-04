@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD v2.0 használják a felhasználói beavatkozás nélkül biztonságos erőforrások eléréséhez |} Microsoft Docs"
-description: "A webalkalmazások Azure AD végrehajtása az OAuth 2.0 hitelesítési protokoll használatával."
+title: Az Azure AD v2.0 használják a felhasználói beavatkozás nélkül biztonságos erőforrások eléréséhez |} Microsoft Docs
+description: A webalkalmazások Azure AD végrehajtása az OAuth 2.0 hitelesítési protokoll használatával.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
 ms.workload: identity
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 28616657c5aae4f6ada1ec592a2a6287e8607b6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ea681244edd81bcba1269886acc725175f779bfb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Az Azure Active Directory v2.0 és az OAuth 2.0 ügyfél hitelesítő adatok folyamata
-Használhatja a [OAuth 2.0 ügyfél hitelesítő adatai megadják](http://tools.ietf.org/html/rfc6749#section-4.4), más néven *két Egyszárú OAuth*, az alkalmazáshoz a webkiszolgáló által szolgáltatott erőforrások eléréséhez. Gyakran engedélyezze az ilyen típusú kiszolgálók – olyan műveleteket, amelyek kell a háttérben futnak, a felhasználó azonnali közreműködése nélkül szolgál. Ilyen típusú alkalmazások gyakran nevezik *démonok* vagy *szolgáltatásfiókok*.
+Használhatja a [OAuth 2.0 ügyfél hitelesítő adatai megadják](http://tools.ietf.org/html/rfc6749#section-4.4) RFC 6749, más néven megadott *két Egyszárú OAuth*, az alkalmazáshoz a webkiszolgáló által szolgáltatott erőforrások eléréséhez. Gyakran engedélyezze az ilyen típusú kiszolgálók – olyan műveleteket, amelyek kell a háttérben futnak, a felhasználó azonnali közreműködése nélkül szolgál. Ilyen típusú alkalmazások gyakran nevezik *démonok* vagy *szolgáltatásfiókok*.
 
 > [!NOTE]
 > A v2.0-végpontra nem támogatja, minden Azure Active Directory forgatókönyvek és funkciók. Annak megállapításához, hogy a v2.0-végponttal kell használnia, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
@@ -49,8 +49,8 @@ Ez a hitelesítési típus közös démonok és szolgáltatásfiókokat, el kell
 ### <a name="application-permissions"></a>Alkalmazásengedélyek
 Hozzáférés-vezérlési listák helyett API-k segítségével teszi közzé az alkalmazást engedélyekkel. Egy alkalmazás engedélyt kap egy alkalmazás egy szervezet rendszergazdája, és csak az adott szervezet és az alkalmazottak tulajdonában lévő adatokat eléréséhez használható. Például a Microsoft Graph több alkalmazás engedélyek a következő mutatja:
 
-* E-mailek olvasása az összes postaládában
-* E-mailek olvasása és írása az összes postaládában
+* Az összes postaládában e-mailek olvasása
+* Mailek olvasása és írása az összes postaládában
 * E-mailek küldése bármely felhasználó nevében
 * Címtáradatok olvasása
 
@@ -60,7 +60,7 @@ Alkalmazásengedélyek az alkalmazás használatához hajtsa végre a lépéseke
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az alkalmazás regisztrációs portálon engedélyek kéréséhez
 1. Keresse fel az alkalmazást a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), vagy [hozzon létre egy alkalmazást](active-directory-v2-app-registration.md), ha még nem tette meg. Szüksége lesz legalább egy alkalmazás titkos kulcs használatára, az alkalmazás létrehozásakor.
-2. Keresse meg a **közvetlen Alkalmazásengedélyek** szakaszt, és adja meg az alkalmazáshoz szükséges engedélyeket.
+2. Keresse meg a **Mcrosoft Graph engedélyek** szakaszt, és adja hozzá a **Alkalmazásengedélyek** , amely az alkalmazás használatához.
 3. **Mentés** az alkalmazás regisztrálása.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Ajánlott: Beléptetni a felhasználót az alkalmazáshoz
@@ -90,7 +90,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
-| Bérlői |Szükséges |A directory-bérlőt, amelyet az engedélyt. Ez lehet GUID vagy rövid név formátumban. Ha nem biztos lehet bérlői a felhasználó tagja, és azt szeretné, hogy azok jelentkezzen be minden bérlő, használjon, amely `common`. |
+| bérlő |Szükséges |A directory-bérlőt, amelyet az engedélyt. Ez lehet GUID vagy rövid név formátumban. Ha nem biztos lehet bérlői a felhasználó tagja, és azt szeretné, hogy azok jelentkezzen be minden bérlő, használjon, amely `common`. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
 | redirect_uri |Szükséges |Az átirányítási URI, ha azt szeretné, hogy a válasz küldését az alkalmazások kezeléséhez. Az pontosan egyeznie kell az átirányítási URI-k, a portál regisztrált azzal a különbséggel, hogy az URL-kódolású kell lennie, és további szegmenst veheti fel. |
 | state |Ajánlott |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
@@ -106,7 +106,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 | Paraméter | Leírás |
 | --- | --- | --- |
-| Bérlői |A directory-bérlőhöz, amely engedéllyel rendelkezik az alkalmazás a kért, GUID formátumban. |
+| bérlő |A directory-bérlőhöz, amely engedéllyel rendelkezik az alkalmazás a kért, GUID formátumban. |
 | state |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
 | admin_consent |Beállítása **igaz**. |
 
@@ -130,11 +130,14 @@ Miután az alkalmazás jut hozzá a szükséges engedélyt, folytatásához a ho
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Először. eset: egy közös titkot a hozzáférési token kérelem
 
 ```
-POST /common/oauth2/v2.0/token HTTP/1.1
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials
+client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
+&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
+&client_secret=qWgdYAmab0YSkuL1qKv5bPX
+&grant_type=client_credentials
 ```
 
 ```
@@ -143,26 +146,32 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
+| bérlő |Szükséges | A directory-bérlőt az alkalmazás tervek szerint működik, GUID vagy a tartománynév formátumban. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
-| Hatókör |Szükséges |Átadott értéknek a `scope` a kérésben paraméternek kell lennie az erőforrás-azonosító (alkalmazás azonosítója URI), a kívánt, elhelyezni az erőforrás a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. Ez az érték tájékoztatja arról, hogy minden közvetlen alkalmazás engedélyeit az alkalmazás már konfigurálta, akkor kell ki a használni kívánt erőforráshoz tartozó megfelelően a jogkivonat a v2.0-végponttól. |
+| scope |Szükséges |Átadott értéknek a `scope` a kérésben paraméternek kell lennie az erőforrás-azonosító (alkalmazás azonosítója URI), a kívánt, elhelyezni az erőforrás a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. Ez az érték tájékoztatja arról, hogy minden közvetlen alkalmazás engedélyeit az alkalmazás már konfigurálta, akkor kell ki a használni kívánt erőforráshoz tartozó megfelelően a jogkivonat a v2.0-végponttól. |
 | client_secret |Szükséges |Az alkalmazás az app-regisztrációs portálon létrehozott Alkalmazáskulcsot. |
 | grant_type |Szükséges |Kell `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>A második esetben: hozzáférési jogkivonat kérelem tanúsítvánnyal
 
 ```
-POST /common/oauth2/v2.0/token HTTP/1.1
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg&grant_type=client_credentials
+scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
+&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg
+&grant_type=client_credentials
 ```
 
 | Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
+| bérlő |Szükséges | A directory-bérlőt az alkalmazás tervek szerint működik, GUID vagy a tartománynév formátumban. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
-| Hatókör |Szükséges |Átadott értéknek a `scope` a kérésben paraméternek kell lennie az erőforrás-azonosító (alkalmazás azonosítója URI), a kívánt, elhelyezni az erőforrás a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. Ez az érték tájékoztatja arról, hogy minden közvetlen alkalmazás engedélyeit az alkalmazás már konfigurálta, akkor kell ki a használni kívánt erőforráshoz tartozó megfelelően a jogkivonat a v2.0-végponttól. |
-| client_assertion_type |Szükséges |Az értéknek kell lennie`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| scope |Szükséges |Átadott értéknek a `scope` a kérésben paraméternek kell lennie az erőforrás-azonosító (alkalmazás azonosítója URI), a kívánt, elhelyezni az erőforrás a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. Ez az érték tájékoztatja arról, hogy minden közvetlen alkalmazás engedélyeit az alkalmazás már konfigurálta, akkor kell ki a használni kívánt erőforráshoz tartozó megfelelően a jogkivonat a v2.0-végponttól. |
+| client_assertion_type |Szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |Szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz. További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
 | grant_type |Szükséges |Kell `client_credentials`. |
 

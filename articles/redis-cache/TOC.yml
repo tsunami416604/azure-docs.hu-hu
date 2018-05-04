@@ -2,23 +2,9 @@
   href: index.md
 - name: Áttekintés
   items:
-    - name: A Redis Cache használatának előnyei
-      href: 'https://azure.microsoft.com/services/cache/'
-    - name: Ismerkedés a prémiumszintű funkciókkal
-      href: cache-premium-tier-intro.md
-    - name: Forgatókönyvek
-      items:
-        - name: Gyorsítótár elemeinek elérése
-          href: 'cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache'
-        - name: Magas rendelkezésre állás konfigurálása
-          href: 'https://azure.microsoft.com/pricing/details/cache/'
-        - name: Biztonságos kapcsolódás az SSL-lel
-          href: 'cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache'
-        - name: Áttelepítés Managed Cache Service szolgáltatásból
-          href: cache-migrate-to-redis.md
-        - name: Minták és eljárások – gyorsítótárazási útmutató
-          href: ../best-practices-caching.md?toc=%2fazure%2fredis-cache%2ftoc.json
-- name: Bevezetés
+    - name: Az Azure Redis Cache névjegye
+      href: cache-overview.md
+- name: Gyors útmutatók
   items:
     - name: ASP.NET
       href: cache-web-app-howto.md
@@ -30,9 +16,27 @@
       href: cache-java-get-started.md
     - name: Python
       href: cache-python-get-started.md
-    - name: Redis Cache – gyakori kérdések
-      href: cache-faq.md
-- name: Útmutató
+- name: Oktatóanyagok
+  items:
+    - name: Gyorsítótárazási ranglista
+      href: cache-web-app-cache-aside-leaderboard.md
+- name: Példák
+  items:
+    - name: Redis Cache-minták
+      href: cache-redis-samples.md
+    - name: Azure PowerShell
+      href: cache-howto-manage-redis-cache-powershell.md
+    - name: Azure CLI
+      href: cli-samples.md
+- name: Alapelvek
+  items:
+    - name: Ajánlott eljárások
+      items:
+        - name: Azure Redis Cache – ajánlott eljárások
+          href: 'https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f'
+        - name: Azure-architektúra ajánlott eljárásai gyorsítótárazáshoz
+          href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+- name: Útmutatók
   items:
     - name: Felkészülés
       items:
@@ -72,6 +76,8 @@
           href: 'cache-administration.md#reboot'
         - name: Frissítések ütemezése
           href: 'cache-administration.md#schedule-updates'
+        - name: A redis-cli.exe hozzáférésének konfigurálása
+          href: cache-how-to-redis-cli-tool.md
     - name: Figyelés és hibaelhárítás
       items:
         - name: Monitorozás az Azure Portalon
@@ -114,5 +120,9 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cache/'
-    - name: Redis Cache-minták
-      href: cache-redis-samples.md
+    - name: Redis Cache – gyakori kérdések
+      href: cache-faq.md
+    - name: Videók
+      href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache&filter=alltypes&sort=lastpostdesc'

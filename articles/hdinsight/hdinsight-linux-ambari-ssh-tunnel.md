@@ -11,21 +11,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 05e06d6ed8c2a3bec0d12f81aae6f7022a56b942
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 797538a6d023e1a4b95680057eb0f72489290f40
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>SSH Tunneling Ambari webes felhasználói felület, JobHistory, NameNode, Oozie és egyéb web UI eléréséhez használja
 
-Linux-alapú HDInsight-fürtök Ambari webes felhasználói felület hozzáférést biztosítanak az interneten keresztül, de a felhasználói felület egyes funkciók nem állnak. Ha például a webes felhasználói felületen keresztül Ambari illesztett más szolgáltatásokhoz. Az Ambari webes felhasználói felület funkcióját hogy a fürt head SSH-alagút kell használnia.
+A HDInsight-fürtök az Ambari webes felhasználói felület hozzáférést biztosítanak az interneten keresztül, de bizonyos funkciók szükségesek az SSH-alagutat. Például a webes felhasználói felület az Oozie-szolgáltatás nem érhető el az SSh-alagút nélkül az interneten keresztül.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Miért érdemes használni az SSH-alagút
 
-A menüket az Ambari számos csak támogatott eszközplatformokon működnek az SSH-alagúton keresztül. Ezek a menük webhelyek és az egyéb csomóponttípusok, például a feldolgozó csomópontok szolgáltatás támaszkodnak. Gyakran ezek a webhelyek nem biztonságosak, ezért nem biztonságos közvetlenül tegye őket elérhetővé az interneten.
+A menüket az Ambari számos csak támogatott eszközplatformokon működnek az SSH-alagúton keresztül. Ezek a menük webhelyek és az egyéb csomóponttípusok, például a feldolgozó csomópontok szolgáltatás támaszkodnak.
 
 A következő Web UI SSH-alagút megkövetelése:
 
@@ -35,14 +35,14 @@ A következő Web UI SSH-alagút megkövetelése:
 * Oozie webes felhasználói felület
 * A HBase Master és a naplókat a felhasználói felület
 
-Ha a Parancsfájlműveletek segítségével testre szabhatja a fürt, lehetnek szolgáltatások vagy a segédeszközök telepítése a webes felhasználói felület visszaállítását lesz szükség az SSH-alagút. Például egy parancsfájl műveletével Hue telepítése SSH-alagutat a a Hue webes felhasználói felület eléréséhez kell használnia.
+A Parancsfájlműveletek segítségével testre szabhatja a fürthöz, ha lehetnek szolgáltatások vagy a segédeszközök telepítése egy webszolgáltatás-bővítmény visszaállítását szükséges SSH-alagutat. Például egy parancsfájl műveletével Hue telepítése SSH-alagutat a a Hue webes felhasználói felület eléréséhez kell használnia.
 
 > [!IMPORTANT]
 > Ha a virtuális hálózaton keresztül a HDInsight közvetlen hozzáféréssel rendelkezzenek, nem kell SSH-alagutak használatára. Közvetlenül a virtuális hálózaton keresztül férnek hozzá a HDInsight példáért lásd: a [a helyszíni hálózathoz való csatlakozás HDInsight](connect-on-premises-network.md) dokumentum.
 
 ## <a name="what-is-an-ssh-tunnel"></a>Mi az az SSH-alagút
 
-[Secure Shell (SSH) bújtatás](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) irányítja a forgalmat a helyi munkaállomáson egy portra küldi. A forgalom az SSH-kapcsolatot a HDInsight fürt átjárócsomópontjába keresztül történik. A kérelem meg van oldva, mintha az átjárócsomópont származna. A válasz majd áthalad vissza az alagutat a munkaállomáson.
+[Secure Shell (SSH) bújtatás](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) egy portot a helyi számítógép csatlakozik egy HDInsight átjárócsomópontjához. A helyi portra küldött forgalmat az SSH-kapcsolat az átjárócsomóponthoz keresztül történik. A kérelem meg van oldva, mintha az átjárócsomópont származna. A válasz majd áthalad vissza az alagutat a munkaállomáson.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +51,7 @@ Ha a Parancsfájlműveletek segítségével testre szabhatja a fürt, lehetnek s
 * Egy olyan webböngésző, beállítható úgy, hogy egy SOCKS5 proxy használatára.
 
     > [!WARNING]
-    > A Windows beépített SOCKS proxy támogatási SOCKS5 nem támogatja, és nem működik a jelen dokumentumban leírt lépések. Az alábbi böngészők Windows proxybeállítások alapulnak, és a jelen dokumentumban leírt lépések jelenleg nem működnek:
+    > A Windows Internet beállítások épített SOCKS proxy támogatási SOCKS5 nem támogatja, és nem működik a jelen dokumentumban leírt lépések. Az alábbi böngészők Windows proxybeállítások alapulnak, és a jelen dokumentumban leírt lépések jelenleg nem működnek:
     >
     > * Microsoft Edge
     > * Microsoft Internet Explorer
@@ -60,10 +60,10 @@ Ha a Parancsfájlműveletek segítségével testre szabhatja a fürt, lehetnek s
 
 ## <a name="usessh"></a>Hozzon létre egy alagúton, az SSH-parancs használatával
 
-Használja a következő paranccsal egy SSH-alagút használatával a `ssh` parancsot. Cserélje le **felhasználónév** az SSH-felhasználó a HDInsight-fürtöt, és cserélje le a **CLUSTERNAME** nevű, a HDInsight-fürt:
+Használja a következő paranccsal egy SSH-alagút használatával a `ssh` parancsot. Cserélje le **sshuser** az SSH-felhasználó a HDInsight-fürtöt, és cserélje le a **clustername** nevű, a HDInsight-fürt:
 
 ```bash
-ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 ```
 
 Ez a parancs kapcsolatot hoz létre, amely irányítja a forgalmat helyi port 9876 a fürthöz az SSH-n keresztül. A következő lehetőségek közül választhat:
@@ -119,10 +119,10 @@ Ha a parancs a helyi számítógépen 9876 portra küldi továbbítódik a head 
 
 A fürt létrehozása után az alábbi lépések segítségével győződjön meg arról, hogy elérhető szolgáltatás web UI az Ambari webes:
 
-1. A böngészőben nyissa meg a http://headnodehost:8080. A `headnodehost` a fürthöz, és hárítsa el a headnode Ambari futó történő címet zajlik az alagúton keresztül. Amikor a rendszer kéri, adja meg a rendszergazdai felhasználónevet (rendszergazda) és a jelszót a fürt számára. Kérheti még egyszer az Ambari webes felhasználói felület által. Ha igen, írja be újra az adatokat.
+1. A böngészőben nyissa meg a http://headnodehost:8080. A `headnodehost` cím a fürthöz, és hárítsa el az átjárócsomóponthoz, hogy fut-Ambari az alagúton keresztül zajlik. Amikor a rendszer kéri, adja meg a rendszergazdai felhasználónevet (rendszergazda) és a jelszót a fürt számára. Kérheti még egyszer az Ambari webes felhasználói felület által. Ha igen, írja be újra az adatokat.
 
    > [!NOTE]
-   > Használatakor a http://headnodehost:8080 a cím, csatlakozzon a fürthöz, az alagúton keresztül kapcsolódik. Kommunikációs használatával lett biztonságossá téve az SSH-alagút HTTPS kapcsolat helyett. Az interneten, HTTPS-kapcsolaton keresztül csatlakozni, használja a https://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
+   > Használatakor a http://headnodehost:8080 a cím, csatlakozzon a fürthöz, az alagúton keresztül kapcsolódik. Kommunikációs használatával lett biztonságossá téve az SSH-alagút HTTPS kapcsolat helyett. Az interneten, HTTPS-kapcsolaton keresztül csatlakozni, használja a https://clustername.azurehdinsight.net, ahol **clustername** a fürt neve.
 
 2. Az Ambari webes felhasználói felületén jelölje ki a lap bal oldali listában a HDFS.
 

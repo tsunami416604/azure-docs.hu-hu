@@ -1,7 +1,7 @@
 ---
-ms.assetid: 
-title: "Az Azure Key Vault Tárfiókkulcsok"
-description: "Tárfiókkulcsok az Azure Storage-fiókot adjon meg egy Azure Key Vault és a kulcs alapú hozzáférés seemless integrációjával."
+ms.assetid: ''
+title: Az Azure Key Vault Tárfiókkulcsok
+description: Tárfiókkulcsok az Azure Storage-fiókot adjon meg egy Azure Key Vault és a kulcs alapú hozzáférés seemless integrációjával.
 ms.topic: article
 services: key-vault
 ms.service: key-vault
@@ -9,11 +9,11 @@ author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 10/12/2017
-ms.openlocfilehash: a3f8d540c7e4c8a86b151540980724777fd150fd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4f42a47a6d934bf0538efccbcf7f057fd28e2c03
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault Tárfiókkulcsok
 
@@ -136,7 +136,7 @@ $storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup"
 $servicePrincipalId = $(Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093).Id
 ```
 
-Ezután állítsa be a **fiókja** annak érdekében, hogy a Key Vault a tárolási engedélyekkel kezelheti. Az alábbi példában az Azure-fiókra van  _developer@contoso.com_ .
+Ezután állítsa be a **fiókja** annak érdekében, hogy a Key Vault a tárolási engedélyekkel kezelheti. Az alábbi példában az Azure-fiókra van _developer@contoso.com_.
 
 ```powershell
 # Searching our Azure Active Directory for our account's ObjectId
@@ -189,7 +189,7 @@ Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Contain
 
 ### <a name="get-sas-tokens"></a>A SAS-jogkivonatok lekérésére
 
-A megfelelő SAS-jogkivonatok lekérésére, és a Storage-hívások. `-SecretName` a bemeneti segítségével jön létre a `AccountName` és `Name` hajtja végre paramétereket [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/en-us/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition).
+A megfelelő SAS-jogkivonatok lekérésére, és a Storage-hívások. `-SecretName` a bemeneti segítségével jön létre a `AccountName` és `Name` hajtja végre paramétereket [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition).
 
 ```powershell
 $readSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$readSasName").SecretValueText

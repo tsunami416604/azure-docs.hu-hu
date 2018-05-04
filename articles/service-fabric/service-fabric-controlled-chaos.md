@@ -1,6 +1,6 @@
 ---
-title: "A Service Fabric-fürtök idéz elő Chaos |} Microsoft Docs"
-description: "Van, és a fürt Analysis Service API-k kezelése segítségével Chaos a fürtben."
+title: A Service Fabric-fürtök idéz elő Chaos |} Microsoft Docs
+description: Van, és a fürt Analysis Service API-k kezelése segítségével Chaos a fürtben.
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 81206257cb2c7157bbb1ffcf3a79ced7c896ef80
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 40ceb62e544d2aa71296e24da957cb062029da9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>A Service Fabric-fürtök ellenőrzött Chaos idéz elő
 Nagy méretű elosztott rendszerek, például a felhőalapú infrastruktúrák nem eredendően megbízhatóak. Az Azure Service Fabric lehetővé teszi a fejlesztők egy nem megbízható infrastruktúrán megbízható elosztott szolgáltatások írni. Egy nem megbízható infrastruktúrán robusztus elosztott szolgáltatások írni fejlesztők kell tesztelni szolgáltatásaik stabilitását, míg az alapul szolgáló megbízhatatlan infrastruktúra megy keresztül bonyolult Állapotváltások hibák miatt.
@@ -33,7 +33,7 @@ Miután konfigurálta a Chaos sebessége és milyen típusú hibákat, megkezdhe
 > A jelenlegi formában az Chaos kapott csak biztonságos hibák, ami azt jelenti, hogy külső hibák hiányában a kvórum elvesztése vagy adatvesztés soha nem történik.
 >
 
-Chaos futtatása közben különböző események pillanatnyilag a Futtatás állapotát rögzítő hoz létre. Például egy ExecutingFaultsEvent tartalmaz, amelyek Chaos úgy döntött, hogy a munkamenetben végrehajtani minden hibájával. Egy ValidationFailedEvent érvényesítési hibája (állapotfigyelő és stabilitását hibát) a fürt ellenőrzése során talált részleteit tartalmazza. A GetChaosReport API (C#, Powershell vagy REST) Chaos futtatásakor a jelentés megtekintése hívhat meg. Beolvasása őrzi meg ezeket az eseményeket egy [megbízható szótár](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections), amelynek van két konfigurációban meghatározni csonkolása házirend: **MaxStoredChaosEventCount** (alapértelmezett értéke 25000) és **StoredActionCleanupIntervalInSeconds** (alapértelmezett értéke 3600). Minden *StoredActionCleanupIntervalInSeconds* Chaos ellenőrzések és az összes, de a legutóbbi *MaxStoredChaosEventCount* események, a megbízható szótárból kiürítésekor.
+Chaos futtatása közben különböző események pillanatnyilag a Futtatás állapotát rögzítő hoz létre. Például egy ExecutingFaultsEvent tartalmaz, amelyek Chaos úgy döntött, hogy a munkamenetben végrehajtani minden hibájával. Egy ValidationFailedEvent érvényesítési hibája (állapotfigyelő és stabilitását hibát) a fürt ellenőrzése során talált részleteit tartalmazza. A GetChaosReport API (C#, Powershell vagy REST) Chaos futtatásakor a jelentés megtekintése hívhat meg. Beolvasása őrzi meg ezeket az eseményeket egy [megbízható szótár](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), amelynek van két konfigurációban meghatározni csonkolása házirend: **MaxStoredChaosEventCount** (alapértelmezett értéke 25000) és **StoredActionCleanupIntervalInSeconds** (alapértelmezett értéke 3600). Minden *StoredActionCleanupIntervalInSeconds* Chaos ellenőrzések és az összes, de a legutóbbi *MaxStoredChaosEventCount* események, a megbízható szótárból kiürítésekor.
 
 ## <a name="faults-induced-in-chaos"></a>A Chaos előidézett hibák
 Chaos állít elő hibák teljes Service Fabric-fürt között, és tömöríti olyan néhány órát a hónap vagy év láthatók. Kihagyásos hibák a magas gyakorisága a kombinációja, amelyek egyébként kimaradhatnak esetekben keresi. Ebben a gyakorlatban az Chaos a szolgáltatást kód minőségének jelentős fejlesztéseket vezet.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: bwren
-ms.openlocfilehash: 5e01ea901f1ba07c0ee5a99720c00c5f03574365
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: cf1842c6abbbfd767184d8f480a5f3a5fd654ed0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>A Naplóelemzési riasztások ismertetése
 
@@ -67,7 +67,7 @@ A riasztási szabályok határozzák meg a következő adatokat:
  
     - **Téves riasztások**. Egyes esetekben riasztási lekérések úgy terveztek, hogy az események hiányára. Egy példa erre van annak ellenőrzése, ha egy virtuális gép kapcsolat nélküli a kihagyott szívverések keresve. Fent, ha a szívverés nem érhető el keresési belül a riasztási időszak, majd riasztást jön létre, mert a szívverés adatok még nem volt kereshető, és ezért hiányzik. Ez az ugyanazt az eredményt, mintha a virtuális gép szabályosan offline állapotban volt, és nincs által generált szívverés adatot nem. A lekérdezés végrehajtásakor, a következő napon keresztül a megfelelő időszak jeleníti meg, hogy nincsenek-szívverés és riasztási nem sikerült. Valójában a szívverések fejeződtek nem érhető el a kereséshez, mert a riasztás időszak túl kicsi volt beállítva.
 
-- **Gyakoriság**.  Itt adhatja meg, milyen gyakran a lekérdezés kell futtatni, és a riasztások a normál esetben gyorsabb végrehajtásához használható. Az érték 5 perc és 24 óra közötti lehet, és a riasztási időszak-nél kisebb vagy azzal egyenlőnek kell lennie.  Ha az érték nagyobb, mint az időszak, majd azzal kockáztatja alatt nem talált rekordokat.<br>A cél az, ha a megbízható késlelteti akár 30 percet és normál késleltetési idő legyen 10 perc, a időszak egy óra és a gyakoriság értéke 10 percnek kell lennie. Ez megjelenik egy figyelmeztetés, az adatok, amelyek eltérő 10 perces adatfeldolgozást késleltetést 10 és 20-percek száma, az a riasztási adatok létrehozásakor.<br>Az adatok több riasztásokat hoznak létre, mert a időszak túl széles elkerülése érdekében a [figyelmeztetések mellőzése](log-analytics-tutorial-response.md#create-alerts) beállítás használható arra, hogy letiltsa a riasztások legalább, amíg a időszak.
+- **Gyakoriság**.  Itt adhatja meg, milyen gyakran a lekérdezés kell futtatni, és a riasztások a normál esetben gyorsabb végrehajtásához használható. Az érték 5 perc és 24 óra közötti lehet, és a riasztási időszak-nél kisebb vagy azzal egyenlőnek kell lennie.  Ha az érték nagyobb, mint az időszak, majd azzal kockáztatja alatt nem talált rekordokat.<br>A cél az, ha a megbízható késlelteti akár 30 percet és normál késleltetési idő legyen 10 perc, a időszak egy óra és a gyakoriság értéke 10 percnek kell lennie. Ez megjelenik egy figyelmeztetés, az adatok, amelyek eltérő 10 perces adatfeldolgozást késleltetést 10 és 20-percek száma, az a riasztási adatok létrehozásakor.<br>Az adatok több riasztásokat hoznak létre, mert a időszak túl széles elkerüléséhez a riasztások letiltásához beállítás segítségével legalább, amíg a időszak értesítések mellőzése.
   
 - **Küszöbérték**. A naplófájl-keresési eredmények kiértékelése annak meghatározásához, hogy riasztást kell létrehozni. A küszöbérték nem azonos a különböző típusú riasztási szabályok.
 

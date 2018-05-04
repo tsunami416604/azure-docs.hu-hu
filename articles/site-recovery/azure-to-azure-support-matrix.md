@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/25/2018
 ms.author: sujayt
-ms.openlocfilehash: a20ec14181e49443b5caf6ed0bcfaedcd4601b1c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 215874020395faebd70b6dd15a29f1bf23638a84
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Az Azure-régió, egy másik replikálásához támogatási mátrix
 
@@ -30,7 +30,7 @@ Ez a cikk az Azure Site Recovery replikálódik, és az Azure virtuális gépek 
 --- | ---
 **Azure Portal** | Támogatott
 **Klasszikus portál** | Nem támogatott
-**PowerShell** | Jelenleg nem támogatott.
+**PowerShell** | [Előzetes verzió](azure-to-azure-powershell.md)
 **REST API** | Jelenleg nem támogatott.
 **Parancssori felület** | Jelenleg nem támogatott.
 
@@ -95,22 +95,22 @@ Az alábbi támogatási esetén alkalmazható bármilyen munkaterhelést futtat�
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
-14.04 LTS | 9.11 | a 3.13.0-125-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-83-generic 4.4.0-21-Generic |
 14.04 LTS | 9.12 | a 3.13.0-132-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-96-generic 4.4.0-21-Generic |
 14.04 LTS | 9.13 | a 3.13.0-137-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-104-generic 4.4.0-21-Generic |
 14.04 LTS | 9.14 | a 3.13.0-141-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-112-generic 4.4.0-21-Generic |
-16.04 LTS | 9.11 | a 4.4.0-83-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-27-generic 4.10.0-14-Generic |
+14.04 LTS | 9.15 | a 3.13.0-143-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-116-generic 4.4.0-21-Generic |
 16.04 LTS | 9.12 | a 4.4.0-96-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-35-generic 4.10.0-14-Generic |
 16.04 LTS | 9.13 | a 4.4.0-104-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic 4.10.0-14-Generic |
 16.04 LTS | 9.14 | a 4.4.0-112-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-32-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1009-azure 4.13.0-1005-Azure |
+16.04 LTS | 9.15 | a 4.4.0-116-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-37-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1012-azure 4.13.0-1005-Azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Az Azure virtuális gépek támogatott Debian kernel-verziók
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
-Debian 7 | 9.14 | a 3.2.0-5-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.5-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
+Debian 7 | 9.14, 9.15 | a 3.2.0-5-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14, 9.15 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.5-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Támogatott fájlrendszerek és a Vendég tárolási konfigurációk alakíthatók ki Linux operációs rendszert futtató Azure virtuális gépeken
 
@@ -125,7 +125,7 @@ Replikálja, és a virtuális gépek helyreállítása földrajzi fürt bármely
 **Földrajzi fürt** | **Azure-régiók**
 -- | --
 Amerikai | Kanada keleti, Kanada központi, Dél-USA középső RÉGIÓJA, központi USA nyugati régiója, USA keleti régiója, USA keleti régiója 2. régiója, USA nyugati régiója, 2 USA nyugati régiója, USA középső RÉGIÓJA, Észak USA középső RÉGIÓJA
-Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa
+Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európában, Nyugat-Európa, Franciaország központi, Franciaország déli régiója
 Ázsia | Dél-Indiában, közép-Indiában, Délkelet-Ázsiában, kelet-ázsiai keleti, japán, Nyugat-japán, koreai központi koreai Dél
 Ausztrália   | Kelet-Ausztrália Ausztrália óceáni térség délkeleti régiója
 Azure Government    | USA – (kormányzati) Virginia, USA – (kormányzati) Iowa, USA – (kormányzati) Arizona, USA – (kormányzati) Texas, USA DOD kelet, USA DOD középső régiója

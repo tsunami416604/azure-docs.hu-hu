@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: b6ecedac8e5d040c2e75d28e1dc8e8309f359a1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c63429e80b2e38e9e5c08c6b589afa0086e7171d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database metrikák és diagnosztikai naplózás 
 Az Azure SQL-adatbázis el tudná küldeni, metrikákat és diagnosztikai naplókat a könnyebb figyelése. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -39,7 +39,7 @@ Metrikák és diagnosztikai naplózás engedélyezése esetén meg kell adnia a 
 
 - Log Analytics
 - Event Hubs
-- Tárolás 
+- Storage 
 
 Új Azure-erőforrás kiépítése, vagy jelöljön ki egy meglévő erőforrást. Miután kiválasztotta a tárolási erőforrások, meg kell adnia az összegyűjtendő adatok. Elérhető lehetőségek a következők:
 
@@ -51,6 +51,7 @@ Metrikák és diagnosztikai naplózás engedélyezése esetén meg kell adnia a 
 - [Időtúllépések](sql-database-metrics-diag-logging.md#time-outs-dataset): időtúllépés történt egy adatbázis adatait tartalmazza.
 - [Blockings](sql-database-metrics-diag-logging.md#blockings-dataset): adatbázis ideje eseményeket blokkolja adatait tartalmazza.
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): intelligens Insights tartalmazza. [További tudnivalók az intelligens Insights](sql-database-intelligent-insights.md).
+- **Naplózási** / **SQLSecurityAuditEvents**: jelenleg nem érhető el.
 
 Ha az Event Hubs vagy egy tárfiókot, megadhat egy megőrzési házirend. Ezzel a házirend-egy kiválasztott időszakban régebbi adatokat törli. A Naplóelemzési ad meg, ha az adatmegőrzési függ a kijelölt tarifacsomag. További információkért lásd: [Naplóelemzési árképzési](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
@@ -277,8 +278,8 @@ Megtudhatja, hogyan [metrikák és diagnosztikai naplókat letölteni az tárol�
 |OperationName|A művelet neve. Always: QueryStoreRuntimeStatisticsEvent|
 |Erőforrás|Az erőforrás nevét.|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
-|SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
-|ResourceGroup|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
+|Előfizetés-azonosító|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
+|Erőforráscsoport|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
 |LogicalServerName_s|A kiszolgáló, amelyhez tartozik az adatbázis neve.|
 |ElasticPoolName_s|A rugalmas készlet, amely az adatbázis tartozik, ha van ilyen neve.|
 |DatabaseName_s|Az adatbázis nevét.|
@@ -328,8 +329,8 @@ További információ [Lekérdezéstár futásidejű statisztikai adatok](https:
 |OperationName|A művelet neve. Always: QueryStoreWaitStatisticsEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
-|SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
-|ResourceGroup|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
+|Előfizetés-azonosító|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
+|Erőforráscsoport|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
 |LogicalServerName_s|A kiszolgáló, amelyhez tartozik az adatbázis neve.|
 |ElasticPoolName_s|A rugalmas készlet, amely az adatbázis tartozik, ha van ilyen neve.|
 |DatabaseName_s|Az adatbázis nevét.|
@@ -366,8 +367,8 @@ További információ [Lekérdezéstár várjon statisztikai adatok](https://doc
 |OperationName|A művelet neve. Mindig: ErrorEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
-|SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
-|ResourceGroup|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
+|Előfizetés-azonosító|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
+|Erőforráscsoport|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
 |LogicalServerName_s|A kiszolgáló, amelyhez tartozik az adatbázis neve.|
 |ElasticPoolName_s|A rugalmas készlet, amely az adatbázis tartozik, ha van ilyen neve.|
 |DatabaseName_s|Az adatbázis nevét.|
@@ -395,8 +396,8 @@ További információ [SQL Server hibaüzenetek](https://msdn.microsoft.com/libr
 |OperationName|A művelet neve. Always: DatabaseWaitStatisticsEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
-|SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
-|ResourceGroup|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
+|Előfizetés-azonosító|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
+|Erőforráscsoport|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
 |LogicalServerName_s|A kiszolgáló, amelyhez tartozik az adatbázis neve.|
 |ElasticPoolName_s|A rugalmas készlet, amely az adatbázis tartozik, ha van ilyen neve.|
 |DatabaseName_s|Az adatbázis nevét.|
@@ -424,8 +425,8 @@ További információ [várakozási statisztika adatbázis](https://docs.microso
 |OperationName|A művelet neve. Mindig: TimeoutEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
-|SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
-|ResourceGroup|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
+|Előfizetés-azonosító|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
+|Erőforráscsoport|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
 |LogicalServerName_s|A kiszolgáló, amelyhez tartozik az adatbázis neve.|
 |ElasticPoolName_s|A rugalmas készlet, amely az adatbázis tartozik, ha van ilyen neve.|
 |DatabaseName_s|Az adatbázis nevét.|
@@ -447,8 +448,8 @@ További információ [várakozási statisztika adatbázis](https://docs.microso
 |OperationName|A művelet neve. Mindig: BlockEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
-|SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
-|ResourceGroup|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
+|Előfizetés-azonosító|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
+|Erőforráscsoport|Az erőforráscsoport, amelyhez tartozik az adatbázis neve.|
 |LogicalServerName_s|A kiszolgáló, amelyhez tartozik az adatbázis neve.|
 |ElasticPoolName_s|A rugalmas készlet, amely az adatbázis tartozik, ha van ilyen neve.|
 |DatabaseName_s|Az adatbázis nevét.|

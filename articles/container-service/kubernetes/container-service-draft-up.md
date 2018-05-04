@@ -1,19 +1,19 @@
 ---
-title: "Az Azure Tárolószolgáltatás és a Azure vázlat használata tároló beállításjegyzék"
-description: "Hozzon létre egy ACS Kubernetes-fürtöt és egy Azure Container Registryt az első alkalmazás létrehozására az Azure-ban a Draft segítségével."
+title: Az Azure Tárolószolgáltatás és a Azure vázlat használata tároló beállításjegyzék
+description: Hozzon létre egy ACS Kubernetes-fürtöt és egy Azure Container Registryt az első alkalmazás létrehozására az Azure-ban a Draft segítségével.
 services: container-service
 author: squillace
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: de1e8ec1b712aeb5572c7972b22412f2ae90b7b9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 68ad44bae0856ff000f2847049a15a946d83c0a3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>A Draft használata az Azure Container Service-szel és az Azure Container Registryvel alkalmazások készítéséhez és a Kubernetesben való üzembe helyezéséhez
 
@@ -99,8 +99,8 @@ Most, hogy kész a fürt, importálhatja a hitelesítő adatokat az [az acs kube
 ## <a name="install-and-configure-draft"></a>A draft telepítése és konfigurálása
 
 
-1. A környezetnek a https://github.com/Azure/draft/releases vázlat letöltése és telepítése az elérési ÚTHOZ, hogy a parancs is használható.
-2. Töltse le a környezetnek a https://github.com/kubernetes/helm/releases helm és [telepítse azt az elérési út, hogy a parancs is használható](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+1. Töltse le a környezetnek a Vázlat https://github.com/Azure/draft/releases és az elérési út telepítse, hogy a parancs is használható.
+2. Töltse le a környezetnek a helm https://github.com/kubernetes/helm/releases és [telepítse azt az elérési út, hogy a parancs is használható](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Konfigurálja a Draftot a beállításjegyzék használatára, és hozzon létre altartományt minden általa létrehozott Helm-diagramhoz. A Draft konfigurálásához a következők szükségesek:
   - Az Azure Container Registry neve (a példában `draftacsdemo`)
   - A beállításkulcs vagy jelszó a következőből: `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.
