@@ -36,6 +36,7 @@
 ## [Alkalmazásregisztráció](active-directory-integrating-applications.md)
 ## [Több-bérlős alkalmazások](active-directory-devhowto-multi-tenant-overview.md)
 ## [Feltételes hozzáférés](active-directory-conditional-access-developer.md)
+## [Engedélyek](active-directory-permissions.md)
 ## OAuth és OpenID Connect
 ### [OpenID Connect-protokoll](active-directory-protocols-openid-connect-code.md)
 ### [Oauth 2.0 hitelesítésikód-engedélyezés](active-directory-protocols-oauth-code.md)
