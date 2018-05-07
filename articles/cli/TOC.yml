@@ -1,0 +1,9 @@
+- name: Parancssori felület (CLI)
+  href: index.yml
+  items:
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Azure parancssori felület (CLI)
+      href: /cli/azure
+    - name: PowerShell Tools for Visual Studio 2015
+      href: 'https://adamdriscoll.gitbooks.io/powershell-tools-documentation/content/'

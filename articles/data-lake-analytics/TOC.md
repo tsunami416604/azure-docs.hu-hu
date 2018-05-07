@@ -6,7 +6,6 @@
 # Bevezetés
 ## [Azure Portal](data-lake-analytics-get-started-portal.md)
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-## [Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 ## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [Azure CLI](data-lake-analytics-get-started-cli2.md)
 
@@ -20,41 +19,41 @@
 ### [Python SDK](data-lake-analytics-manage-use-python-sdk.md)
 ### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
 ### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### [Házirendek](data-lake-analytics-policies.md)
 ### [Diagnosztikai naplók elérése](data-lake-analytics-diagnostic-logs.md)
 ### [A kvótakorlátok beállítása](data-lake-analytics-quota-limits.md)
 
 ## U-SQL-programok fejlesztése
 
 ### U-SQL nyelv
-#### [Az U-SQL alapjai](data-lake-analytics-u-sql-get-started.md)
-#### [U-SQL nyelvi referencia](https://msdn.microsoft.com/library/azure/mt591959)
-#### [U-SQL-katalógus](data-lake-analytics-u-sql-catalog.md)
-#### [Felhasználó által definiált operátorok az U-SQL-ben](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-#### [A U-SQL Python-bővítményei](data-lake-analytics-u-sql-python-extensions.md)
-#### [A U-SQL R-bővítményei](data-lake-analytics-u-sql-r-extensions.md)
-#### [Az U-SQL kognitív bővítményei](data-lake-analytics-u-sql-cognitive.md)
-#### [U-SQL programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
+#### [Alapvető beállítások](data-lake-analytics-u-sql-get-started.md)
+#### [Nyelvi referencia](https://msdn.microsoft.com/library/azure/mt591959)
+#### [Katalógus](data-lake-analytics-u-sql-catalog.md)
+#### [Felhasználó által definiált operátorok](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+#### [Python-bővítmények](data-lake-analytics-u-sql-python-extensions.md)
+#### [R-bővítmények](data-lake-analytics-u-sql-r-extensions.md)
+#### [Cognitive-bővítmények](data-lake-analytics-u-sql-cognitive.md)
+#### [Programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
+
+### Visual Studio
+#### [Feladatok tallózása és megtekintése](data-lake-analytics-data-lake-tools-view-jobs.md)
+#### [Egyéni C#-kód hibakeresése](data-lake-analytics-debug-u-sql-jobs.md)
+#### [Ismétlődő feladatok hibaelhárítása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
+#### [Vertex-végrehajtás részletei](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+#### [U-SQL adatbázis exportálása](data-lake-analytics-data-lake-tools-export-database.md)
 #### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)
 #### [Feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-### Visual Studio
-#### [A feladatböngésző és a Feladat nézet használata](data-lake-analytics-data-lake-tools-view-jobs.md)
-#### [C#-kód hibaelhárítása a U-SQL-ben](data-lake-analytics-debug-u-sql-jobs.md)
-#### [Rendellenes ismétlődő feladat hibaelhárítása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
-#### [A Vertex végrehajtási nézet használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
-#### [U-SQL adatbázis exportálása](data-lake-analytics-data-lake-tools-export-database.md)
-
 ### Visual Studio Code
-#### [U-SQL a Visual Studio Code-hoz](data-lake-analytics-data-lake-tools-for-vscode.md)
-#### [U-SQL egyéni kód a Visual Studio Code-hoz](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
-#### [Helyi futtatás és hibakeresés a VSCode-ban](data-lake-tools-for-vscode-local-run-and-debug.md)
+#### [Tartalomkészítés](data-lake-analytics-data-lake-tools-for-vscode.md)
+#### [Egyéni kód](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+#### [Helyi futtatás és hibakeresés](data-lake-tools-for-vscode-local-run-and-debug.md)
 
 # Referencia
-## [Kódminták](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
-## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)
+## [Python](https://docs.microsoft.com/en-us/python/api/overview/azure/data-lake-analytics?view=azure-python)
 ## [REST](/rest/api/datalakeanalytics/)
 ## [Parancssori felület](https://docs.microsoft.com/cli/azure/dla)
 
@@ -68,3 +67,4 @@
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-analytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

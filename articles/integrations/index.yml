@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Developer Tool Integrations
+metadata:
+  title: Developer Tool Integrations
+  meta.description: from-team
+  services: from-team
+  author: 
+  manager: from-team
+  layout: LandingPage
+  ms.assetid: 
+  ms.service: from-team
+  ms.tgt_pltfrm: from-team
+  ms.devlang: from-team
+  ms.topic: landing-page
+  ms.date: 09/15/2017
+  ms.author: from-team
+  ms.openlocfilehash: 8ed2db241ae79b549f96581b67625114fd658c67
+  ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/04/2018
+abstract:
+  description: 
+sections:
+- title: 
+  items:
+  - type: list
+    style: cards
+    className: cardsA
+    items:
+    - html: <a href="/java/azure/intellij/azure-toolkit-for-intellij"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_intellij.svg" alt=""> <br><b>IntelliJ</b></a> <p>Az IntelliJ-hez készült Azure-eszközkészlet olyan sablonokat és funkciókat biztosít, amelyekkel könnyen hozhat létre, fejleszthet, tesztelhet és helyezhet üzembe Azure-alkalmazásokat az IntelliJ integrált fejlesztőkörnyezetben (IDE).</p>
+    - html: <a href="/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_maven.svg" alt=""> <br><b>Maven</b></a> <p>Az Azure Web Apps for Apache Mavenhez készült Maven bővítmény lehetővé teszi az Azure App Service zökkenőmentes integrálását a Maven-projektekbe, valamint leegyszerűsíti a webalkalmazások Azure App Service-be való üzembe helyezésének folyamatát a fejlesztők számára.</p>
+    - html: <a href="/java/azure/eclipse/azure-toolkit-for-eclipse"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_eclipse.svg" alt=""> <br><b>Eclipse</b></a> <p>Az Eclipse-hez készült Azure-eszközkészlet olyan sablonokat és funkciókat biztosít, amelyekkel könnyen hozhat létre, fejleszthet, tesztelhet és helyezhet üzembe felhőalapú alkalmazásokat az Azure-ba az Eclipse integrált fejlesztőkörnyezetén (IDE) belül.</p>
+    - html: <a href="/azure/ansible/"> <img height="48" width="48" src="../media/index/ansible.svg" alt=""> <br><b>Ansible</b></a> <p>A felhőalapú üzembe helyezés, a konfigurációkezelés, valamint az alkalmazások üzembe helyezésének automatizálására szolgáló megoldás.</p>
+    - html: <a href="/azure/jenkins/"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_jenkins.svg" alt=""> <br><b>Jenkins</b></a> <p>A felhőben állíthat össze alkalmazásokat, és üzembe helyezheti őket az Azure-ban.</p>
+    - html: <a href="/azure/terraform/"> <img height="48" width="48" src="../media/index/terraform.png" alt=""> <br><b>Terraform</b></a> <p>Megbízható módon hozhat létre és verziószámozhat infrastruktúrákat az Azure rendszerén belül.</p>

@@ -141,8 +141,14 @@
           href: active-directory-b2c-reference-language-customization.md
         - name: A jelentéskészítő API használata
           href: active-directory-b2c-reference-usage-reporting-api.md
+        - name: Hozzáférés az auditnaplókhoz
+          href: active-directory-b2c-reference-audit-logs.md
         - name: Felhasználók migrálása
           href: active-directory-b2c-user-migration.md
+        - name: A b2clogin.com használata
+          href: b2clogin.md
+        - name: Koralapú korlátozás használata
+          href: basic-age-gating.md
     - name: Identity Experience Framework
       items:
         - name: Egyéni szabályzatok
@@ -153,8 +159,10 @@
               href: active-directory-b2c-get-started-custom.md
             - name: OIDC/OAUTH-szolgáltatók konfigurálása
               items:
-                - name: Azure AD
+                - name: Azure AD (egybérlős)
                   href: active-directory-b2c-setup-aad-custom.md
+                - name: Azure AD (több-bérlős)
+                  href: active-directory-b2c-setup-commonaad-custom.md
                 - name: Microsoft-fiók
                   href: active-directory-b2c-custom-setup-msa-idp.md
                 - name: Google +
@@ -163,8 +171,6 @@
                   href: active-directory-b2c-custom-setup-li-idp.md
                 - name: Twitter
                   href: active-directory-b2c-custom-setup-twitter-idp.md
-                - name: Több-bérlős
-                  href: active-directory-b2c-setup-commonaad-custom.md
             - name: SAML-szolgáltatók konfigurálása
               items:
                 - name: ADFS

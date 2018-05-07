@@ -162,44 +162,13 @@
         - name: Személyes adatok védelme az Azure jelentéskészítő eszközeinek használatával
           href: protection-personal-data-azure-reporting-tools.md
     - name: FEDRAMP
-      href: ./blueprints/fedramp.md
       items:
-        - name: Biztonsági vezérlők áttekintése
-          href: ./blueprints/fedramp-controls-overview.md
-        - name: Hozzáférés-vezérlés
-          href: ./blueprints/fedramp-access-controls.md
-        - name: Naplózás és felelősségre vonhatóság
-          href: ./blueprints/fedramp-audit-accountability-controls.md
-        - name: Tájékoztatás és képzés
-          href: ./blueprints/fedramp-awareness-training-controls.md
-        - name: Konfigurációkezelés
-          href: ./blueprints/fedramp-configuration-manager-controls.md
-        - name: Válságterv készítése
-          href: ./blueprints/fedramp-contingency-planning-controls.md
-        - name: Azonosítás és hitelesítés
-          href: ./blueprints/fedramp-identification-authentication-controls.md
-        - name: Incidensmegoldás
-          href: ./blueprints/fedramp-incident-response-controls.md
-        - name: Karbantartás
-          href: ./blueprints/fedramp-maintenance-controls.md
-        - name: Adathordozók védelme
-          href: ./blueprints/fedramp-media-protection-controls.md
-        - name: Személyzet biztonsága
-          href: ./blueprints/fedramp-personnel-security-controls.md
-        - name: Fizikai és környezeti védelem
-          href: ./blueprints/fedramp-physical-environmental-protection-controls.md
-        - name: Tervezés
-          href: ./blueprints/fedramp-planning-controls.md
-        - name: Kockázatfelmérés
-          href: ./blueprints/fedramp-risk-assessment-controls.md
-        - name: Biztonság felmérése és engedélyezése
-          href: ./blueprints/fedramp-security-assessment-authorization-controls.md
-        - name: Rendszer- és kommunikációvédelem
-          href: ./blueprints/fedramp-system-communications-protection-controls.md
-        - name: Rendszerek és információk integritása
-          href: ./blueprints/fedramp-system-information-integrity-controls.md
-        - name: Rendszerek és szolgáltatások beszerzése
-          href: ./blueprints/fedramp-system-services-acquisition-controls.md
+        - name: Adatelemzés
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: Adattárház
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS-webalkalmazás
+          href: ./blueprints/fedramp-iaaswa-overview.md
     - name: PCI DSS
       href: ./blueprints/payment-processing-blueprint.md
       items:

@@ -21,7 +21,7 @@ ms.lasthandoff: 04/20/2018
 
 Idő adatsorozat Insights épül, tárolás, megjeleníteni és nagy mennyiségű időt adatsorozat adatok, például az IoT-eszközök által generált lekérdezése.  Ha szeretné tárolni, kezelheti, lekérdezése vagy idő adatsorozat adato a felhőben, idő adatsorozat Insights valószínű jogot az Ön számára.  
 
-! [Idő adatsorozat Insights folyamatábra] (media/overview/time-series-insights-flowchart.png)
+![Idő adatsorozat Insights folyamatábra] (media/overview/time-series-insights-flowchart.png)
 
 Idő adatsorozat Insights négy fő feladatok rendelkezik:
 
@@ -68,7 +68,7 @@ Első lépések kevesebb, mint 5 percet vesz igénybe.
 4.  Az adatok megjelenítéséhez idő adatsorozat Insights Explorer percben.
 
 ## <a name="time-series-insights-explorer"></a>Time Series Insights Explorer
-Ez az ábra szemlélteti, a time series insights megtekinteni az Intéző:! [Idő adatsorozat Insights explorer] (media/time-series-insights-explorer/explorer4.png)
+Ez az ábra szemlélteti, a time series insights megtekinteni az Intéző: ![Idő adatsorozat Insights explorer] (media/time-series-insights-explorer/explorer4.png)
 
 ## <a name="next-steps"></a>További lépések
  - [Megismerkedhet a bemutató környezetben idő adatsorozat Insights Explorerrel](./time-series-quickstart.md)
