@@ -1,27 +1,27 @@
 ---
-title: "Töltse le a számla és a napi használati adatok számlázási Azure |} Microsoft Docs"
-description: "Ismerteti az Azure számlázási számla és a napi használati adatok megtekintése és letöltése."
-keywords: "számlázási számla, számla letöltési, azure számla, azure kihasználtsága"
-services: 
-documentationcenter: 
+title: Töltse le a számla és a napi használati adatok számlázási Azure |} Microsoft Docs
+description: Ismerteti az Azure számlázási számla és a napi használati adatok megtekintése és letöltése.
+keywords: számlázási számla, számla letöltési, azure számla, azure kihasználtsága
+services: ''
+documentationcenter: ''
 author: genlin
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eea55735d0e17de4fe543847d0d521b0e8c0c3f7
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 6fa9f9ae4ef2bd39f3c6d3ec7c6d757aa50b2fd1
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Az Azure számlázási számla és a napi használati adatok megtekintése és letöltése
 A számla a programot letöltheti a [Azure-portálon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy annak az e-mailben küldött. A napi használat letöltéséhez keresse fel a [Azure Account Center](https://account.azure.com/Subscriptions). Csak egyes szerepkörök engedélye számlázási számla és használati adatokat, például a fiók rendszergazdájához. Első számlázási információhoz való hozzáféréssel kapcsolatos további információkért lásd: [Azure számlázási szerepkörök használatával való hozzáférés kezelése](billing-manage-access.md).
@@ -90,7 +90,7 @@ Csak a Fiókadminisztrátor az Azure Account Center férhetnek hozzá. Más szá
 
 A napi használatával kapcsolatos további információkért lásd: [a számlázási megérteni a Microsoft Azure](billing-understand-your-bill.md). Költségek kezelésére, lásd: [Azure számlázás és költség felügyeleti váratlan költségek megakadályozása](billing-getting-started.md).
 
-## <a name="noinvoice"></a>Miért nem látja a legutóbbi számlázási időszakban számla?
+## <a name="noinvoice"></a> Miért nem látja a legutóbbi számlázási időszakban számla?
 
 Számla nem látható több oka lehet:
 

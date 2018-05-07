@@ -9,15 +9,17 @@ ms.date: 04/30/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 285ee153a86270fe65846dc6a22786e007a8a595
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: ba5380813266b3baf981eaf39eda384ad8c91d5a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
 Erőforrás házirend-definíció Azure házirend által használt lehetővé teszi a szervezet erőforrások egyezmények létrehozása: Ha a házirend érvényesítve van-e, és a végrehajtandó műveletet. Egyezmények meghatározásával szabályozhatja költségeit, és több könnyen kezelheti az erőforrásokat. Megadhatja például, hogy engedélyezve legyenek-e a virtuális gépek csak bizonyos típusú. Vagy megkövetelheti, hogy minden erőforrás egy bizonyos címkével rendelkezik. Összes gyermek-erőforrás által örökölt házirendek. Igen a házirend vonatkozik egy erőforráscsoport, esetén alkalmazandó az erőforráscsoport összes erőforrást.
+
+Az Azure-házirend által használt séma itt található: [https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
 
 JSON házirend-definíció létrehozására használhatja. A házirend-definíció a elemeket tartalmazza:
 
@@ -184,7 +186,7 @@ A feltétel e egy **mező** meghatározott feltételeknek eleget. A támogatott 
 
 Használatakor a **például** és **notLike** feltételek, megadhatja a helyettesítő karakter (*) értékét.
 
-Használata esetén a **megfelelő** és **notMatch** feltételek, `#` képviselő számjegy, `?` betűvel, és bármely más karaktert adott tényleges karakter helyettesítéséhez. Tekintse meg a [jóváhagyott Virtuálisgép-rendszerképek](scripts/allowed-custom-images.md).
+Használata esetén a **megfelelő** és **notMatch** feltételek, `#` képviselő számjegy, `?` betűvel, és bármely más karaktert adott tényleges karakter helyettesítéséhez. Tekintse meg a [lehetővé teszi több mintában](scripts/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Mezők
 Feltételek mezőkkel jöttek létre. A mező képviseli tulajdonság az erőforrás-kérések forgalma, amellyel ismertetik az erőforrás állapotát.  

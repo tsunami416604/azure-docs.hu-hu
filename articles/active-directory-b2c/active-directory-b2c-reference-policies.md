@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 424186a0acfe17cd7cb96f3ba7f8201e8b2b38ec
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Az Azure Active Directory B2C: Beépített házirendek
 
@@ -81,6 +81,10 @@ Ez a házirend mindkét fogyasztói előfizetési & bejelentkezési élmény egy
 ## <a name="create-a-password-reset-policy"></a>Új jelszó kérésére vonatkozó szabályzat létrehozása
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
+
+## <a name="preview-policies"></a>Előnézet-házirendek
+
+Azt kiadás új funkciókat, mivel ezek némelyike nem lehet érhető el a meglévő szabályzatokat.  Cserélje le a legújabb azonos típusú régebbi verziók után ezek a házirendek GA adja meg tervezzük  A meglévő szabályzatokat nem változik, és ezek a új szolgáltatások előnyeinek kihasználásához kell új szabályzatokat hozhat létre.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

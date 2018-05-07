@@ -1,27 +1,27 @@
 ---
-title: "Hozzon létre egy alkalmazás SSL-lezárást - Azure-portál |} Microsoft Docs"
-description: "Megtudhatja, hogyan Alkalmazásátjáró létrehozása és hozzáadása egy tanúsítványt az SSL-lezárást az Azure portál használatával."
+title: Hozzon létre egy alkalmazás SSL-lezárást - Azure-portál |} Microsoft Docs
+description: Megtudhatja, hogyan Alkalmazásátjáró létrehozása és hozzáadása egy tanúsítványt az SSL-lezárást az Azure portál használatával.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: daab3ada5ef0cc20883130e4c12b1dc3570e63b1
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 10796000f913428e39a0ffbd0aa2cbe0c515eb7a
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Hozzon létre egy alkalmazást az Azure portál használatával SSL-lezárást
 
 Az Azure-portálon hozhat létre egy [Alkalmazásátjáró](application-gateway-introduction.md) egy SSL-lezárást használ a virtuális gépek háttérkiszolgálók tanúsítványával.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Önaláírt tanúsítvány létrehozása
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [http://portal.azure.com](http://portal.azure.com)
+Jelentkezzen be az Azure-portálon: [http://portal.azure.com](http://portal.azure.com)
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
@@ -98,11 +98,11 @@ Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti ko
 1. Kattintson a **összes erőforrás** a bal oldali menüből, majd **myVNet** erőforrások listából.
 2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
 
-    ![Hozzon létre az alhálózatot](./media/application-gateway-ssl-portal/application-gateway-subnet.png)
+    ![Alhálózat létrehozása](./media/application-gateway-ssl-portal/application-gateway-subnet.png)
 
 3. Adja meg *myBackendSubnet* neveként az alhálózati majd **OK**.
 
-## <a name="create-backend-servers"></a>Háttér-kiszolgálókat hoz létre
+## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
 Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolgálóként használandó hoz létre. Is telepíteni az IIS ellenőrizze, hogy az Alkalmazásátjáró sikeresen létrejött-e a virtuális gépeken.
 
@@ -113,15 +113,15 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 3. Adja meg a virtuális gép ezeket az értékeket:
 
     - *myVM* – a virtuális gép nevét.
-    - *azureuser* – a rendszergazdai felhasználónevet.
+    - A rendszergazda felhasználóneve: *azureuser*.
     - *Azure123456!* a jelszó.
     - Válassza ki **meglévő**, majd válassza ki *myResourceGroupAG*.
 
 4. Kattintson az **OK** gombra.
-5. Válassza ki **DS1_V2** a virtuális gépet, majd kattintson a méretét **válasszon**.
+5. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
 6. Győződjön meg arról, hogy **myVNet** van kiválasztva a virtuális hálózat és az alhálózat van **myBackendSubnet**. 
-7. Kattintson a **letiltott** letiltani a rendszerindítási diagnosztika.
-8. Kattintson a **OK**, tekintse át a beállításokat az Összegzés lapon, és kattintson a **létrehozása**.
+7. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
+8. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
@@ -161,11 +161,11 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 
     ![Rekord alkalmazás átjáró nyilvános IP-címe](./media/application-gateway-ssl-portal/application-gateway-ag-address.png)
 
-2. Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt jelölje ki a részleteket, majd nyissa meg a képernyőn látható weblapon:
+2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt jelölje ki a részleteket, majd nyissa meg a képernyőn látható weblapon:
 
     ![Biztonságos figyelmeztetés](./media/application-gateway-ssl-portal/application-gateway-secure.png)
 
-    A biztonságos IIS-webhelyet akkor jelenik meg, az alábbi példában látható módon:
+    Ekkor a biztonságos IIS-webhely a következő példához hasonlóan jelenik meg:
 
     ![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-ssl-portal/application-gateway-iistest.png)
 

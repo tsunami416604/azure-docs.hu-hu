@@ -1,27 +1,27 @@
 ---
-title: "Hozzon létre egy alkalmazás webalkalmazási tűzfal - Azure-portál |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy alkalmazás webalkalmazási tűzfal az Azure portál használatával."
+title: Hozzon létre egy alkalmazás webalkalmazási tűzfal - Azure-portál |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy alkalmazás webalkalmazási tűzfal az Azure portál használatával.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: d2b8fc65e6cd03f61151dbae66bb89821cdab13b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 9967813b193159b68aa0f008dae4440aa6e533dc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Hozzon létre egy alkalmazást az Azure portál használatával webalkalmazási tűzfal
 
 Az Azure-portálon hozhat létre egy [Alkalmazásátjáró](application-gateway-introduction.md) rendelkező egy [webalkalmazási tűzfal](application-gateway-web-application-firewall-overview.md) (waf-ot). A WAF használatát [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) szabályokat, hogy az alkalmazás védelme. Ezek a szabályok közé tartoznak például az SQL-injektálás támadások, a többhelyes parancsfájlok futtatására és a munkamenet kihasználásának elleni védelem.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Hozzon létre egy alkalmazás WAF engedélyezve
@@ -32,7 +32,7 @@ Ebből a cikkből megismerheti, hogyan:
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [http://portal.azure.com](http://portal.azure.com)
+Jelentkezzen be az Azure-portálon: [http://portal.azure.com](http://portal.azure.com)
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
@@ -68,11 +68,11 @@ Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti ko
 1. Kattintson a **összes erőforrás** a bal oldali menüből, majd **myVNet** erőforrások listából.
 2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
 
-    ![Hozzon létre az alhálózatot](./media/application-gateway-web-application-firewall-portal/application-gateway-subnet.png)
+    ![Alhálózat létrehozása](./media/application-gateway-web-application-firewall-portal/application-gateway-subnet.png)
 
 3. Adja meg *myBackendSubnet* neveként az alhálózati majd **OK**.
 
-## <a name="create-backend-servers"></a>Háttér-kiszolgálókat hoz létre
+## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
 Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolgálóként használandó hoz létre. Is telepíteni az IIS ellenőrizze, hogy az Alkalmazásátjáró sikeresen létrejött-e a virtuális gépeken.
 
@@ -83,15 +83,15 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 3. Adja meg a virtuális gép ezeket az értékeket:
 
     - *myVM* – a virtuális gép nevét.
-    - *azureuser* – a rendszergazdai felhasználónevet.
+    - A rendszergazda felhasználóneve: *azureuser*.
     - *Azure123456!* a jelszó.
     - Válassza ki **meglévő**, majd válassza ki *myResourceGroupAG*.
 
 4. Kattintson az **OK** gombra.
-5. Válassza ki **DS1_V2** a virtuális gépet, majd kattintson a méretét **válasszon**.
+5. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
 6. Győződjön meg arról, hogy **myVNet** van kiválasztva a virtuális hálózat és az alhálózat van **myBackendSubnet**. 
-7. Kattintson a **letiltott** letiltani a rendszerindítási diagnosztika.
-8. Kattintson a **OK**, tekintse át a beállításokat az Összegzés lapon, és kattintson a **létrehozása**.
+7. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
+8. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
@@ -132,7 +132,7 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 Ebben az oktatóanyagban az Alkalmazásátjáró tárfiók adatok használ felderítésére és megelőzésére célokra. Log Analytics vagy az Eseményközpont kiválasztásával adatok rögzítéséhez is használhatja.
 
 1. Kattintson a **új** az Azure portál bal felső sarkában található.
-2. Válassza ki **tárolási**, majd válassza ki **tárfiók - blob, a fájl, a tábla, a várólista**.
+2. Válassza a **Storage** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.
 3. Adja meg a tárfiók, jelölje be a nevét **használata meglévő** az erőforráscsoportot, és válassza a **myResourceGroupAG**. Ebben a példában a tárfiók neve van *myagstore1*. Fogadja el a további beállításoknál az alapértelmezett értékeket, és kattintson a **létrehozása**.
 
 ## <a name="configure-diagnostics"></a>Diagnosztika konfigurálása
@@ -155,7 +155,7 @@ Erőforrásrekord-adatokat a diagnosztika konfigurálja azokat a ApplicationGate
 
     ![Rekord alkalmazás átjáró nyilvános IP-címe](./media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png)
 
-2. Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
+2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
     ![Alkalmazásátjáró tesztelése](./media/application-gateway-web-application-firewall-portal/application-gateway-iistest.png)
 

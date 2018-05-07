@@ -1,6 +1,6 @@
 ---
-title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation – biztonsági vizsgálata és engedélyezés"
-description: "FedRAMP webes alkalmazások Automation - biztonsági értékelést és engedélyezés"
+title: Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation – biztonsági vizsgálata és engedélyezés
+description: FedRAMP webes alkalmazások Automation - biztonsági értékelést és engedélyezés
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: d1c9846589adaef0baeeaf16077c8e74bef1cd9f
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="security-assessment-and-authorization-ca"></a>Biztonsági értékelési és engedélyezési (CA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök], amely célú, a hatókör, a szerepkörök, a feladatkörei, a felügyeleti biztonsági értékelési és engedélyezési házirend előfizetési, koordinálásának szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a biztonsági értékelési és engedélyezési házirend és a társított biztonsági értékelési és engedélyezési vezérlők; végrehajtásának megkönnyítése ellenőrzi, és frissíti az aktuális biztonsági értékelési és engedélyezési házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és biztonsági értékelési és engedélyezési eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-2.a** a szervezet alakul ki a biztonsági kockázatfelmérési terv, amely leírja a biztonsági vezérlők és az alatt assessment vezérlő fejlesztések többek között az értékelési körét; eljárások állapítható meg, biztonsági ellenőrzést érdekében; és értékelési környezet, assessment team, és értékelési szerepkörök és felelősségek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-2.b** a szervezet biztonsági ellenőrzéseket értékelésére a információs rendszer és a környezet művelet [hozzárendelés: szervezet által meghatározott gyakoriság] mértékét, amelyhez a vezérlők valósíthatók meg megfelelően, működő a tervezett és jelentéskészítés a kívánt eredménytől tekintetében értekezlet létrehozott biztonsági követelményeinek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-2.c** a szervezet, amely dokumentálja a eredményei biztonsági assessment jelentést készít.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-2.d** a szervezet biztosítja a eredményei biztonsági vezérlő számára [hozzárendelés: szervezet által definiált egyéni felhasználók vagy szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-2 (1)** a szervezet védett vizsgáztatók vagy assessment csoportokat, [hozzárendelés: függetlenség szervezet által megadott mértékét] biztonsági vezérlő értékelések elvégzésére.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-2 (2)** biztonsági vezérlő felméréseket, részeként tartalmazza a szervezet [hozzárendelés: szervezet által meghatározott gyakorisága], [kijelölés: közzétett; jelentett], [kijelölés (egy vagy több): részletes figyelési; biztonsági rések keresése; rosszindulatú felhasználók tesztelése; belső fenyegetések assessment; víruskeresőké/tesztelési; [Hozzárendelés: szervezet által meghatározott biztonsági értékelést más formáinak]].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-2 (3)** a szervezet fogad értékelése eredményeit [hozzárendelés: szervezet által megadott információk rendszer] által végzett [hozzárendelés: külső szervezet szervezet által meghatározott] Ha az értékelés megfelel [hozzárendelés: szervezet által meghatározott követelmények].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-3.a** a szervezet más információs rendszerekkel használt összekapcsolás biztonsági megállapodások révén azokat az információkat rendszerből kapcsolatok engedélyezi.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-3.b** ezekről a szervezet dokumentumokat, minden egyes összekapcsolás, kapcsolódási, biztonsági követelmények és információk jellegét.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-3** a szervezet ellenőrzi, és frissíti összekapcsolás biztonsági megállapodások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-3 (3)** a szervezet nem engedélyezi a közvetlen kapcsolatot egy [hozzárendelés: szervezet által meghatározott nem besorolt, nem saját biztonsági rendszer] egy külső hálózathoz használata nélkül [hozzárendelés; szervezet által meghatározott határ védelem eszköz].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-3 (5)** alkalmaz a szervezet [kijelölés: engedélyezése – minden, megtagadása-által-kivétel; megtagadása – minden, a kivétel-engedély]-házirend engedélyezése [hozzárendelés: szervezet által megadott információk rendszerek] külső információs rendszerekkel való kapcsolódáshoz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-5.a** a szervezet házon belül fejlesztett alkalmazásokra műveletterv megléte és dokumentálja a szervezet adatokat rendszer mérföldkövek tervezett gyenge vagy a biztonsági vezérlők és az értékelés során hiányosságokat korrekciós műveletek csökkentheti vagy kiküszöbölheti az ismert biztonsági rések a rendszerben.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-5.b** a szervezet frissíti a meglévő csomag művelet és mérföldkövek [hozzárendelés: szervezet által meghatározott gyakoriság] biztonsági vezérlők felméréseket, biztonsági hatás elemzések és folyamatos figyelési tevékenységek eredmények alapján.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-6.a** a szervezet hozzárendel egy vezető szintű segítségét, vagy az információs rendszer engedélyező hivatalos-kezelő.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-6.b** a szervezet biztosítja, hogy a engedélyező hivatalos engedélyezi-e az információs rendszer feldolgozási műveletek megkezdése előtt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-6.c lépést** a szervezet frissíti a biztonsági engedélyezése [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.a** a szervezet egy folyamatos felügyeleti stratégia fejleszt, és megvalósítja az folyamatos figyelési program létrehozása tartalmazza [hozzárendelés: metrikák szervezet által meghatározott] figyelni.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.b** a szervezet egy folyamatos felügyeleti stratégia fejleszt, és megvalósítja az folyamatos figyelési program létrehozása tartalmazza [hozzárendelés: szervezet által meghatározott gyakoriságot] figyelés és [hozzárendelése: szervezet által meghatározott gyakoriságot] az ilyen figyelést támogató értékeléseket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.c** a szervezet egy folyamatos felügyeleti stratégia fejleszt, és megvalósítja az folyamatos figyelési program tartalmazza a biztonság folyamatos ellenőrző vizsgálatok során a szervezeti folyamatos felügyeleti stratégia összhangban.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.d** a szervezet egy folyamatos felügyeleti stratégia fejleszt, és megvalósítja az folyamatos ellenőrzési programot, amely tartalmazza az állapot a biztonság folyamatos ellenőrzése a szervezet által meghatározott mérőszámok megfelel-e a szervezeti folyamatos felügyeleti stratégia.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.e** A szervezet egy folyamatos felügyeleti stratégia fejleszt, és megvalósítja az folyamatos figyelési program korrelációs és elemzése az értékelések és a figyelő által létrehozott biztonsági adatokat tartalmazza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.f** a szervezet egy folyamatos felügyeleti stratégia fejleszt, és megvalósítja az folyamatos figyelési program sérülésével kapcsolatos válaszműveletek az elemzés eredményeinek cím a biztonsággal kapcsolatos információkat tartalmazza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.g** a szervezet egy folyamatos felügyeleti stratégia fejleszt, és megvalósítja az folyamatos figyelési program tartalmazza a szervezet és a rendszer adatokat biztonsági állapotának reporting [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7 (1)** a szervezet védett vizsgáztatók vagy assessment csoportokat, [hozzárendelés: függetlenség szervezet által megadott mértékét] figyelheti a biztonsági funkciók folyamatos információs rendszerben.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7 (3)** a szervezet alkalmazta a trend elemzéseket meghatározni, hogy a biztonsági megvalósítások szabályozásához folyamatos figyelési tevékenységek és/vagy a tevékenységek a folyamatos figyelés során használt típusú gyakoriságát lehet módosítani tapasztalati adatok alapján.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-8** a szervezet használt behatolást vagy a biztonság tesztelése [hozzárendelés: szervezet által meghatározott gyakoriság] a [hozzárendelés: szervezet által megadott információk rendszerek vagy rendszerösszetevők].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-8 (1)** a szervezet alkalmaz egy független behatolás ügynök vagy a behatolást vagy a biztonság csoport, a rendszer vagy a rendszer összetevőit tesztelés behatolás végrehajtásához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-9.a** a szervezet engedélyezi a belső kapcsolatok [hozzárendelés: szervezet által megadott információk rendszerösszetevők vagy az összetevők osztályok] az információk rendszerre.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-9.b** ezekről a szervezet dokumentumokat, minden egyes belső kapcsolat, kapcsolódási, biztonsági követelmények és információk jellegét.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

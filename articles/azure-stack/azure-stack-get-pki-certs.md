@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cbc1efaee7404c3ffc82acea0846136c43eba2a9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b65d0d88fd57dea59c79d2f72bab60967856e015
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Az Azure verem tanúsítványok aláírási kérelem létrehozása
 
-A jelen cikkben ismertetett Azure verem készültségi ellenőrző eszköz [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az eszköz létrehoz egy Azure Alkalmazásveremben üzembe alkalmas aláíró tanúsítványkérelmek (ügyfélszolgálati). Tanúsítványok legyen kért, jön létre, és elegendő időt a telepítés előtt tesztelje érvényesíteni. 
+A jelen cikkben ismertetett Azure verem készültségi ellenőrző eszköz [a PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az eszköz létrehoz egy Azure Alkalmazásveremben üzembe alkalmas aláíró tanúsítványkérelmek (ügyfélszolgálati). Tanúsítványok legyen kért, jön létre, és elegendő időt a telepítés előtt tesztelje érvényesíteni.
 
 A Azure verem készültségi-ellenőrző eszközt (AzsReadinessChecker) a következő tanúsítványkérelmek hajtja végre:
 
  - **Standard tanúsítványkérelmek**  
-    A következők szerint kérelem [PKI-tanúsítványok létrehozása az Azure verem üzembe helyezéséhez](azure-stack-get-pki-certs.md). 
+    A következők szerint kérelem [PKI-tanúsítványok létrehozása az Azure verem üzembe helyezéséhez](azure-stack-get-pki-certs.md).
  - **Kérelemtípus**  
-    Kérelem több helyettesítő SAN, a több tartomány tanúsítványt egyetlen helyettesítő tanúsítványt kér.
+    Megadja, függetlenül attól, a tanúsítvány-aláírási kérelem egyetlen kérelem, vagy több kérést.
  - **Platform,--szolgáltatás**  
     Opcionálisan a platform,--szolgáltatás (PaaS) nevek a megadott tanúsítványok kérése [Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények - választható PaaS tanúsítványokat](azure-stack-pki-certs.md#optional-paas-certificates).
 
@@ -44,6 +44,9 @@ A rendszer a PKI-tanúsítványok telepítését bemutató Azure verem CSR(s) l�
     - Külső, teljesen minősített tartománynevét (FQDN)
     - Tárgy
  - Windows 10 vagy Windows Server 2016
+ 
+  > [!NOTE]
+  > Amikor megjelenik a tanúsítványok biztonsági a hitelesítésszolgáltatótól származó lépéseit [előkészítése Azure verem PKI-tanúsítványok](azure-stack-prepare-pki-certs.md) hajtható végre, ugyanarra a rendszerre kell!
 
 ## <a name="generate-certificate-signing-requests"></a>A tanúsítvány-aláírási kérelem (kérelmek) létrehozása
 
@@ -68,10 +71,23 @@ Használja ezeket a lépéseket az Azure verem PKI-tanúsítványok ellenőrzés
     ````PowerShell  
     $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
     ````
+4.  Deklarálja rendszer azonosítása
 
-4. Deklarálja **régió neve** és egy **külső FQDN** az Azure-verem használandók.
+    Azure Active Directory
 
-    ```PowerShell  
+    ```PowerShell
+    $IdentitySystem = "AAD"
+    ````
+
+    Active Directory összevonási szolgáltatások
+
+    ```PowerShell
+    $IdentitySystem = "ADFS"
+    ````
+
+5. Deklarálja **régió neve** és egy **külső FQDN** az Azure-verem használandók.
+
+    ```PowerShell
     $regionName = 'east'
     $externalFQDN = 'azurestack.contoso.com'
     ````
@@ -79,19 +95,23 @@ Használja ezeket a lépéseket az Azure verem PKI-tanúsítványok ellenőrzés
     > [!note]  
     > `<regionName>.<externalFQDN>` alapját adja meg, amely minden külső DNS-nevek Azure verem létrejönnek, ebben a példában, a portál lenne `portal.east.azurestack.contoso.com`.
 
-5. Egy tanúsítványkérelem létrehozásához a több alternatív tulajdonosnevek PaaS szolgáltatások szükséges is beleértve:
+6. A tulajdonos alternatív neveket egyetlen tanúsítványkérelem létrehozása:
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IncludePaaS
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-6. Egyedi tanúsítvány-aláírási kérelem minden DNS-név nélkül PaaS szolgáltatások létrehozásához:
+    Tartalmazza a PaaS szolgáltatások adja meg a kapcsoló ```-IncludePaaS```
+
+7. Egyedi tanúsítvány-aláírási kérelem minden DNS-név létrehozásához:
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-7. Tekintse át a kimenetet:
+    Tartalmazza a PaaS szolgáltatások adja meg a kapcsoló ```-IncludePaaS```
+
+8. Tekintse át a kimenetet:
 
     ````PowerShell  
     AzsReadinessChecker v1.1803.405.3 started
@@ -109,9 +129,8 @@ Használja ezeket a lépéseket az Azure verem PKI-tanúsítványok ellenőrzés
     AzsReadinessChecker Completed
     ````
 
-8.  Küldje el a **. KÉRÉS** fájl jön létre a hitelesítésszolgáltatóhoz (belső vagy nyilvános).  A kimeneti könyvtár **Start-AzsReadinessChecker** elküldése a hitelesítésszolgáltatónak kell CSR(s) tartalmazza.  A kérés generálásakor, referenciaként használt INF-fájlokat tartalmazó gyermek könyvtár is tartalmaz. Ne feledje, hogy a hitelesítésszolgáltató létrehozza-e tanúsítványok segítségével létrehozott kérését, amelyek megfelelnek a [Azure verem nyilvános kulcsokra épülő infrastruktúra követelményei](azure-stack-pki-certs.md).
+9.  Küldje el a **. KÉRÉS** fájl jön létre a hitelesítésszolgáltatóhoz (belső vagy nyilvános).  A kimeneti könyvtár **Start-AzsReadinessChecker** elküldése a hitelesítésszolgáltatónak kell CSR(s) tartalmazza.  A kérés generálásakor, referenciaként használt INF-fájlokat tartalmazó gyermek könyvtár is tartalmaz. Ne feledje, hogy a hitelesítésszolgáltató létrehozza-e tanúsítványok segítségével létrehozott kérését, amelyek megfelelnek a [Azure verem nyilvános kulcsokra épülő infrastruktúra követelményei](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>További lépések
 
 [Azure verem PKI-tanúsítványok előkészítése](azure-stack-prepare-pki-certs.md)
-

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 48beb0d1c70b0f9c524ba91934a1a0a7b5e8505d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory alkalmazástervezési a koncepció igazolása: építőelemek
 
@@ -275,7 +275,7 @@ Hozzávetőleges időt Complete: 60 perc
 | Előfeltétel | További források |
 | --- | --- |
 | Az Azure AD Connect telepítése és konfigurálása | Építőelem: [a címtár-szinkronizálás - Jelszókivonat-szinkronizálás](#directory-synchronization--password-hash-sync-phs--new-installation) |
-| ADLDS példány értekezlet követelmények | [Általános LDAP-összekötő technikai útmutató: az általános LDAP-összekötő áttekintése](./connect/active-directory-aadconnectsync-connector-genericldap.md#overview-of-the-generic-ldap-connector) |
+| ADLDS példány értekezlet követelmények | [Általános LDAP-összekötő technikai útmutató: az általános LDAP-összekötő áttekintése](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
 | Felhasználók által használt, munkaterhelések és az ilyen terhelések tartozó attribútumok listája | [Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
 
 
@@ -283,7 +283,7 @@ Hozzávetőleges időt Complete: 60 perc
 
 | Lépés | További források |
 | --- | --- |
-| Általános LDAP-összekötő hozzáadása | [Általános LDAP-összekötő műszaki útmutatója: hozzon létre egy új összekötőt](./connect/active-directory-aadconnectsync-connector-genericldap.md#create-a-new-connector) |
+| Általános LDAP-összekötő hozzáadása | [Általános LDAP-összekötő műszaki útmutatója: hozzon létre egy új összekötőt](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
 | (A teljes importálás, különbözeti importálás, teljes szinkronizálást, a különbözeti szinkronizálás, exportálás) létrehozott összekötőhöz futtatási profilok létrehozása | [A felügyeleti ügynök futtatási profil létrehozásához](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Az az Azure AD Connect szinkronizálási Service Manager-összekötők használata](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
 | Teljes importálás profil futtatni, és ellenőrizze, hogy nincsenek-e objektumokat a kapcsolódási térbe | [Egy összekötő terület objektum keresése](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Összekötők használata a az Azure AD Connect Sync Service Manager: Összekötőtér keresése](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
 | Szinkronizálási szabályok létrehozása, hogy a Metaverzumban található objektumok munkaterhelések szükséges attribútumokkal rendelkeznek | [Azure AD Connect szinkronizálása: gyakorlati tanácsok az alapértelmezett konfiguráció módosításának: szinkronizálási szabályok módosításai](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect szinkronizálása: Understanding deklaratív kiépítés](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect szinkronizálása: deklaratív kiépítés kifejezések ismertetése](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |

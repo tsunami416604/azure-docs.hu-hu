@@ -1,10 +1,10 @@
 ---
-title: "Hibaelhárítás \"csökkentett teljesítményű\" állapota az Azure Traffic Manager"
-description: "Traffic Manager-profilok hibaelhárítása, amikor azt mutatja, mint a \"csökkentett teljesítményű\" állapota."
+title: Hibaelhárítás "csökkentett teljesítményű" állapota az Azure Traffic Manager
+description: Traffic Manager-profilok hibaelhárítása, amikor azt mutatja, mint a "csökkentett teljesítményű" állapota.
 services: traffic-manager
-documentationcenter: 
-author: kumudd
-manager: timlt
+documentationcenter: ''
+author: chadmath
+manager: cshepard
 ms.assetid: 8af0433d-e61b-4761-adcc-7bc9b8142fc6
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: kumud
-ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: f5b2f471b13db67411f15f32abad5afc644c04ba
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Hibaelhárítás "csökkentett teljesítményű" állapota az Azure Traffic Manager
 
@@ -43,12 +43,12 @@ Ha a Traffic Manager állapotát jeleníti meg egy **inaktív** állapot, akkor 
 Mintavételi hiba elhárításához szükség van olyan eszköz, amely a HTTP-állapotkód: visszatérési mutatja a mintavételi URL-címről. Nincsenek a számos elérhető eszköz, amely a nyers HTTP-válasz is láthat.
 
 * [Fiddler](http://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
+* [Curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 Az Internet Explorer az F12 hibakeresési eszközök a hálózati lapján használhatja is, a HTTP-válaszok megtekintése.
 
-Ehhez a példához szeretnénk megnézni a mintavételi URL-címhez válasza: http://watestsdp2008r2.cloudapp.net:80/mintavétel. A következő PowerShell-példa szemlélteti a problémát.
+Ehhez a példához szeretnénk megnézni a mintavételi URL-címhez válasza: http://watestsdp2008r2.cloudapp.net:80/Probe. A következő PowerShell-példa szemlélteti a problémát.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -79,7 +79,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Traffic Manager forgalom-útválasztási módszerei](traffic-manager-routing-methods.md)
 

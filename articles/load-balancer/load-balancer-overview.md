@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 05/02/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2d9e0fc50bed4e8301a24a062407b490d688803d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 690bfa55166b6d5d4e418daa321fafad2f4b6293
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az Azure Load Balancer?
 
@@ -73,7 +73,11 @@ Terheléselosztó TCP és UDP-alkalmazásokhoz a következő alapvető lehetős�
 
 * **Független és átlátható alkalmazás**
 
-    Terheléselosztó közvetlenül kommunikál TCP vagy UDP vagy az alkalmazási rétegre és bármely TCP vagy UDP-alapú forgatókönyvet támogatja. Például bár a Load Balancer nem szünteti meg magát a TLS, létrehozhatja és TLS alkalmazások a horizontális felskálázáshoz használ a Load Balancer és majd állítsa le a TLS-kapcsolatot, a virtuális Gépre magát. Terheléselosztó nem szünteti meg a folyamat, és a protokoll kézfogások mindig közvetlenül az ügyfél és a háttér-készlet kivonatoló által kiválasztott példánya között történik. Például a TCP-kézfogás mindig akkor fordul elő, az ügyfél és a kijelölt háttér-virtuális gép között. A rendszer egy választ, amely a háttér-virtuális gép jön létre egy előtér kérelmet egy választ. Load Balancer kimenő hálózati teljesítmény csak a virtuális gép Termékváltozat választja korlátozza, és változatlan marad életben hosszabb ideig Ha soha nem éri el az üresjárati időkorlát.
+    Terheléselosztó közvetlenül kommunikál TCP vagy UDP vagy az alkalmazási rétegre és bármely TCP vagy UDP-alapú forgatókönyvet támogatja.  Terheléselosztó nem bontható vagy adatfolyamok származnak, kommunikál a folyamat hasznos biztosít alkalmazás réteg átjáró függvény, és protokoll kézfogások mindig közvetlenül az ügyfél és a háttér-készlet példány között történik.  Egy bejövő Attribútumfolyam választ mindig egy virtuális gép választ.  Ha a folyamat érkezik, a virtuális gépen, az eredeti IP-forráscím is megőrződik.  Néhány további mutatja be az átláthatóság példák:
+    - A TCP-kézfogás mindig következik be, az ügyfél és a kijelölt háttér-virtuális gép között. A rendszer generált háttér-virtuális gép választ előtér kérelmet egy választ. Ebben a forgatókönyvben a kapcsolat ellenőrzése TCP ping kell használnia.  Használjon [psping](https://docs.microsoft.com/en-us/sysinternals/downloads/psping) vagy [nmap](https://nmap.org) ellenőrizze, hogy a megfelelő virtuális gépekkel a kézfogás sikeres. Vegye figyelembe az ICMP egy másik IP-protokoll UDP vagy TCP-nál, és erre a célra nem támogatott.
+    - Alkalmazás hasznos adat található átlátszó terheléselosztó és bármely UDP vagy TCP-alapú alkalmazás támogatja. Az ehhez szükséges HTTP-kérelem feldolgozása vagy módosításán alkalmazás réteg hasznos adatot (pl. elemzése HTTP URL-címek), használjon egy olyan réteggel 7 munkaterhelések terheléselosztó hasonló [Alkalmazásátjáró](https://azure.microsoft.com/en-us/services/application-gateway).
+    - Mivel terheléselosztó TCP tartalomban független, és a TLS-kiszervezés ("SSL") nem áll rendelkezésre, végpontok közötti titkosított forgatókönyveket terheléselosztó használatával létrehozhatja és TLS-alkalmazások kibővítési nagy nyerhet leállítja a virtuális gépen, maga a TLS-kapcsolatot.  Például a TLS-munkamenet kapacitás kulcsváltásnak csak korlátozza a virtuális gépeket ad hozzá a háttér-készlet száma és típusa.  Ha az "SSL kiszervezésével", alkalmazás réteg kezelés vagy delegálása az Azure tanúsítványkezelés szeretné van szüksége, használjon Azure 7 réteg terheléselosztó [Alkalmazásátjáró](https://azure.microsoft.com/en-us/services/application-gateway) helyette.
+        
 
 * **Automatikus újrakonfigurálása**
 

@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 6ef0b1ce589bd19693d45a9e4f579ef260530a40
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 63bf7d5a0ad988ff7a6b498b4e91e90de97b507b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Olvasási és írási adatokat az Azure SQL database HDInsight Spark-fürt használatával
 
@@ -87,7 +87,7 @@ Ebben a szakaszban adatokat olvasni a tábla (például **SalesLT.Address**), am
 
     A kódcella futtatásához nyomja le a **SHIFT + ENTER** billentyűparancsot.  
 
-2. Az alábbi kódrészletben összeállít egy JDBC URL-címet, amely képes továbbadni a Spark dataframe API-kat hoz létre egy `Properties` ahhoz, hogy a paraméterek objektum. Illessze be a kódrészletet a kód cellába, majd nyomja le az **SHIFT + ENTER** futtatásához.
+2. Használja az alábbi részlet egy JDBC URL-címet, amely képes továbbadni a Spark dataframe API-kat hoz létre egy `Properties` ahhoz, hogy a paraméterek objektum. Illessze be a kódrészletet a kód cellába, majd nyomja le az **SHIFT + ENTER** futtatásához.
 
        import java.util.Properties
 
@@ -96,7 +96,7 @@ Ebben a szakaszban adatokat olvasni a tábla (például **SalesLT.Address**), am
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")         
 
-3. Az alábbi részlet egy dataframe az adatokat az Azure SQL adatbázis egyik táblája hoz létre. Ezt a kódrészletet használjuk a **SalesLT.Address** táblázatot, amely elérhető egy részének a **AdventureWorksLT** adatbázis. Illessze be a kódrészletet a kód cellába, majd nyomja le az **SHIFT + ENTER** futtatásához.
+3. Az alábbi részlet segítségével hozzon létre egy dataframe az adatokat az Azure SQL adatbázis egyik táblája. Ezt a kódrészletet használjuk a **SalesLT.Address** táblázatot, amely elérhető egy részének a **AdventureWorksLT** adatbázis. Illessze be a kódrészletet a kód cellába, majd nyomja le az **SHIFT + ENTER** futtatásához.
 
        val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
 
@@ -141,7 +141,7 @@ Ebben a szakaszban használatával egy CSV-mintafájlt érhető el a fürt létr
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")
 
-3. Az alábbi kódrészletben kibontja a séma HVAC.csv adatainak és a séma segítségével az adatok betöltése az egy dataframe, a fürt megosztott kötetei szolgáltatás `readDf`. Illessze be a kódrészletet a kód cellába, majd nyomja le az **SHIFT + ENTER** futtatásához.
+3. A következő kódrészletet használja a séma HVAC.csv adatok kibontása, és a séma segítségével az adatok betöltése az egy dataframe, a fürt megosztott kötetei szolgáltatás `readDf`. Illessze be a kódrészletet a kód cellába, majd nyomja le az **SHIFT + ENTER** futtatásához.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -165,6 +165,10 @@ Ebben a szakaszban használatával egy CSV-mintafájlt érhető el a fürt létr
 
     ![Csatlakozás az SQL database szolgáltatáshoz az SSMS használatával](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Csatlakozás SQL Database szolgáltatáshoz az SSMS használatával")
 
+7. A lekérdezés futtatása a szolgáltatáshoz az ssms a táblában az oszlopok megjelenítéséhez.
+
+        SELECT * from hvactable
+
 ## <a name="stream-data-into-azure-sql-database"></a>Az adatfolyam adatok az Azure SQL-adatbázisba
 
 Ez a szakasz azt adatok folyamatos átviteléhez azokat a **hvactable** már létrehozott Azure SQL-adatbázis az előző szakaszban.
@@ -184,7 +188,7 @@ Ez a szakasz azt adatok folyamatos átviteléhez azokat a **hvactable** már lé
 3. Azt az adatok folyamatos átviteléhez a **HVAC.csv** a hvactable be. HVAC.csv fájl érhető el a fürthöz */HdiSamples/HdiSamples/SensorSampleData/HVAC/*. A következő kódrészletet a azt először beolvasni a közzétett adatok a sémát. Ezután azt hozzon létre egy adatfolyam-továbbítási dataframe adott sémáját használja. Illessze be a kódrészletet a kód cellába, majd nyomja le az **SHIFT + ENTER** futtatásához.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
-       val readStreamDf = spark.readStream.schema(userSchema1).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
+       val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
        readStreamDf.printSchema
 
 4. A kimenet látható sémája **HVAC.csv**. A **hvactable** , valamint az ugyanazon séma van. A kimenet a tábla oszlopai sorolja fel.

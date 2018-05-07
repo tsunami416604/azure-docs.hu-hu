@@ -1,26 +1,26 @@
 ---
-title: "Hozzon létre egy alkalmazást a virtuális gép méretezési - Azure CLI |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy alkalmazást egy virtuálisgép-méretezési beállítása az Azure parancssori felület használatával."
+title: Hozzon létre egy alkalmazást a virtuális gép méretezési - Azure CLI |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy alkalmazást egy virtuálisgép-méretezési beállítása az Azure parancssori felület használatával.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: 9a0119e0db834f008a1a3999ff546580499e73c3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: 22eef26750bf4d45d87f222d0d34fbd56ad589df
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Alkalmazásátjáró hozzon létre egy virtuálisgép-méretezési beállítása az Azure parancssori felület használatával
 
 Az Azure parancssori felület használatával hozzon létre egy [Alkalmazásátjáró](application-gateway-introduction.md) használ, amely egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) háttérkiszolgálókhoz. Ebben a példában a méretezési tartalmazza az Alkalmazásátjáró alapértelmezett háttérkészlet által hozzáadott két virtuálisgép-példánya.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
@@ -93,7 +93,7 @@ az network application-gateway create \
 - *appGatewayFrontendIP* -hozzárendel *myAGPublicIPAddress* való *appGatewayHttpListener*.
 - *Szabály1* - útválasztási szabály társított alapértelmezett *appGatewayHttpListener*.
 
-## <a name="create-a-virtual-machine-scale-set"></a>Hozzon létre egy virtuálisgép-méretezési csoport
+## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
 Ebben a példában hozzon létre egy virtuálisgép-méretezési csoport, amely biztosítja az Alkalmazásátjáró a háttérkészlet kiszolgálók. A méretezési csoportban lévő virtuális gépek társított *myBackendSubnet* és *appGatewayBackendPool*. A skála létrehozásához állítsa be, használhatja [az vmss létrehozása](/cli/azure/vmss#az_vmss_create).
 
@@ -122,12 +122,12 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-Ahhoz, hogy az alkalmazás átjáró nyilvános IP-címét, használhatja a [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
+Ahhoz, hogy az alkalmazás átjáró nyilvános IP-címét, használhatja a [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
 ```azurepowershell-interactive
 az network public-ip show \

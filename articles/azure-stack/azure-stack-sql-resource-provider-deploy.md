@@ -3,7 +3,7 @@ title: SQL-adatbázisok használata Azure veremben |} Microsoft Docs
 description: Ismerje meg, hogyan telepítheti az SQL-adatbázisok Azure verem és a Gyorsműveletek központi telepítése az SQL Server erőforrás-szolgáltató adapter szolgáltatásként.
 services: azure-stack
 documentationCenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,99 +11,74 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: mabrigg
+ms.date: 05/01/2018
+ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: bd3618367f91fe043cc8412481b38a9c996a5275
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 70b07cae9a1dc8b45e27f95e19fbc84f06a0b6d3
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
+Az Azure verem SQL Server erőforrás-szolgáltató használatával teszi közzé az SQL-adatbázisok Azure verem szolgáltatásként. Az SQL-erőforrás-szolgáltató szolgáltatás fut az SQL-erőforrás-szolgáltató egy Windows Server core virtuális gép virtuális gép.
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+## <a name="prerequisites"></a>Előfeltételek
+Nincsenek több előfeltételnek kell, mielőtt telepíthetné a verem SQL Azure erőforrás-szolgáltató szükséges. Egy olyan számítógépen, férhetnek hozzá a kiemelt végpont VM, hajtsa végre az alábbi lépéseket:
 
-Az SQL Server erőforrás-szolgáltató adapter segítségével teszi közzé az SQL-adatbázisok a szolgáltatásként [Azure verem](azure-stack-poc.md). Az erőforrás-szolgáltató telepítése, és csatlakoztassa egy vagy több SQL Server-példányokat, után és a felhasználók hozhat létre:
-- Adatbázisok natív felhőalapú alkalmazásokhoz.
-- SQL alapuló webhelyeket.
-- SQL alapuló munkaterhelések.
-Rendszerű virtuális gép (VM), amely futtatja az SQL Server, minden alkalommal, amikor nincs.
+- Ön még nem tette meg, ha [regisztrálni Azure verem](.\azure-stack-registration.md) az Azure-ral, hogy az Azure piactéren elemek is letöltheti.
+- A verem Azure piactér úgy, hogy letölti a szükséges Windows Server core virtuális gép hozzáadása a **Windows Server 2016 Server core** kép. Ha egy frissítés telepítésére van szüksége, elhelyezhet egy. A helyi függőségi elérési MSU-csomagot. Ha egynél több. MSU fájl található, SQL erőforrás-szolgáltató telepítése sikertelen lesz.
+- Töltse le a bináris SQL erőforrás-szolgáltató, és futtassa az ideiglenes könyvtár tartalmának önkibontó. Az erőforrás-szolgáltató build minimális megfelelő Azure verem rendelkezik. Győződjön meg arról, a megfelelő bináris Azure verem, Ön által futtatott verziójának letöltéséhez:
+    - Az Azure verem 1802 (1.0.180302.1) verziója: [SQL RP verzió 1.1.18.0](https://aka.ms/azurestacksqlrp1802).
+    - Az Azure verem verzió 1712 (1.0.180102.3, 1.0.180103.2 vagy 1.0.180106.1 (integrált rendszert)): [SQL RP verzió 1.1.14.0](https://aka.ms/azurestacksqlrp1712).
+- Csak integrált rendszerek telepítések esetén meg kell adnia az SQL PaaS PKI-tanúsítványt a választható PaaS tanúsítványok szakaszában leírtak szerint [Azure verem PKI követelményektől](.\azure-stack-pki-certs.md#optional-paas-certificates), úgy, hogy a .pfx fájlt a helyen által a **DependencyFilesLocalPath** paraméter.
+- Győződjön meg arról, hogy a [Azure verem PowerShell legújabb verziójának](.\azure-stack-powershell-install.md) (v1.2.11) telepítve. 
 
-Az erőforrás-szolgáltató nem támogatja az összes adatbázis felügyeleti funkcióit biztosítja [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Például a rugalmas adatbáziskészletek és tárcsázza adatbázis teljesítményének felfelé és lefelé automatikusan képes nem érhetők el. Azonban az erőforrás biztosítja által támogatott szolgáltatók hasonló létrehozása, olvasása, frissítése és Törlés (CRUD) típusú műveletek. Az API nem található kompatibilis SQL-adatbázis.
+## <a name="deploy-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató telepítése
+Miután sikeresen előkészítette az SQL erőforrás-szolgáltató telepítése teljesíti az összes előfeltétel, most futtathatja a **DeploySqlProvider.ps1** parancsfájl központi telepítése az SQL erőforrás-szolgáltató. A DeploySqlProvider.ps1 parancsfájl ki kell olvasni az SQL erőforrás-szolgáltató bináris részeként, hogy letöltötte az Azure-verem verziója megfelelő. 
 
-## <a name="sql-resource-provider-adapter-architecture"></a>SQL erőforrás-szolgáltató adapter architektúrája
-Az erőforrás-szolgáltató három összetevőből áll:
+> [!IMPORTANT]
+> A rendszer, ahol a parancsfájlt egy Windows 10 vagy Windows Server 2016 rendszert a legújabb verzióra a .NET-futtatókörnyezet telepítve kell lennie.
 
-- **Az SQL erőforrás szolgáltató adapter VM**, vagyis a Windows rendszert futtató virtuális gépet a szolgáltató szolgáltatásoktól.
-- **Az erőforrás-szolgáltató maga**, amely feldolgozza a kiépítési kérelmekre, és tesz elérhetővé adatbázis-erőforrások.
-- **SQL Server kiszolgálók**, adatbázisok kapacitást nyújt üzemeltetési kiszolgáló neve.
 
-Meg kell hozzon létre egy (vagy több) az SQL Server példányai és/vagy a külső SQL Server-példányokat hozzáférést biztosítanak.
+Az SQL erőforrás-szolgáltató telepítéséhez nyisson meg egy új emelt szintű (felügyeleti) PowerShell-konzolt, és nyissa meg azt a könyvtárat, ahová kicsomagolta az SQL erőforrás szolgáltató bináris fájlok.
 
 > [!NOTE]
-> Üzemeltető kiszolgálók Azure verem telepített integrált rendszerek bérlői előfizetéssel kell létrehozni. Az alapértelmezett szolgáltató előfizetésből nem hozhatók létre. A bérlői portálon vagy egy PowerShell munkamenetből rendelkező megfelelő bejelentkezési objektumokat létre kell hozni. Minden üzemeltetési kiszolgáló terhelhető virtuális gép, és megfelelő licenccel kell rendelkeznie. A szolgáltatás-rendszergazdát a bérlő előfizetés tulajdonosának lehet.
+> Új PowerShell-konzolablakot használja a rendszer helytelen PowerShell-modul, amely már be van töltve az esetlegesen felmerülő problémák elkerülése érdekében.
 
-## <a name="deploy-the-resource-provider"></a>Az erőforrás-szolgáltató telepítése
+Futtassa a DeploySqlProvider.ps1 parancsfájlt, amely a következő lépéseket végzi el:
+- A tanúsítványok és egyéb összetevők feltölt egy tárfiókot, Azure veremben.
+- Gyűjteményelem csomagok tesz közzé, úgy, hogy az SQL-adatbázisok a gyűjtemény telepítése.
+- Közzétesz egy gyűjteménycsomag üzemeltetési kiszolgáló telepítéséhez.
+- A virtuális gépek telepíti a Windows Server 2016 lemezkép, az 1. lépésben létrejött, és telepíti az erőforrás-szolgáltató használatával.
+- Regisztrálja a helyi DNS-rekordot, amely a virtuális gép erőforrás-szolgáltató van leképezve.
+- Az erőforrás-szolgáltató regisztrálása az a helyi Azure Resource Manager (felhasználó és rendszergazda).
+- Opcionálisan telepítése egyetlen Windows-frissítési RP telepítése során.
 
-1. Ha még nem tette meg, regisztrálja a szoftverfejlesztői készlet, és töltse le a Windows Server 2016 Datacenter Core kép letölthető piactér felügyelet használatával. A Windows Server 2016 Core lemezképet kell használnia. Parancsfájl használata létrehozásához egy [Windows Server 2016 kép](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image). (Ügyeljen arra, hogy válassza ki a Core.)
+Erőforrás-szolgáltató telepítési SQL kezdődik, és a system.local.sqladapter erőforrás csoportot hoz létre. Ez az erőforráscsoport a négy kötelező központi telepítések elvégzéséhez legfeljebb 75 percig is eltarthat.
 
-2. Jelentkezzen be egy olyan gazdagépre, férhetnek hozzá a kiemelt végpont virtuális gép.
+### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 paraméterek
+Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter érvényesítése sikertelen, a szükséges paraméterek megadását kéri.
 
-    - A Azure verem szoftverfejlesztői készlet telepítésekre jelentkezzen be a fizikai állomáson.
-
-    - Több csomópontos rendszerek esetében a gazdagép egy rendszer, amely hozzáférhet a kiemelt végpont kell lennie.
-    
-    >[!NOTE]
-    > A rendszer, ha a parancsfájl futtatása *kell* egy Windows 10 vagy Windows Server 2016 rendszert a legújabb verzióra a .NET-futtatókörnyezet telepítve lesz. Ellenkező esetben nem telepíthető. Az Azure verem SDK állomás megfelel-e ezt a feltételt.
-
-
-3. Töltse le az SQL erőforrás-szolgáltató bináris. Futtassa a önkibontó kicsomagolása egy ideiglenes könyvtárhoz.
-
-    >[!NOTE] 
-    > Az erőforrás-szolgáltató build minimális megfelelő Azure verem rendelkezik. Győződjön meg arról, a megfelelő bináris futtató Azure verem verziójának letöltéséhez.
-
-    | Az Azure verem build | Erőforrás-szolgáltató telepítő SQL |
-    | --- | --- |
-    | 1802: 1.0.180302.1 | [SQL RP 1.1.18.0 verziója](https://aka.ms/azurestacksqlrp1802) |
-    | 1712: 1.0.180102.3, 1.0.180103.2 vagy 1.0.180106.1 (több csomópontos) | [SQL RP 1.1.14.0 verziója](https://aka.ms/azurestacksqlrp1712) |
-    | 1711: 1.0.171122.1 | [SQL RP 1.1.12.0 verziója](https://aka.ms/azurestacksqlrp1711) |
-    | 1710: 1.0.171028.1 | [SQL RP 1.1.8.0 verziója](https://aka.ms/azurestacksqlrp1710) |
-  
-
-4. Az Azure verem SDK-ban önaláírt tanúsítvány jön létre a folyamat során. Integrált rendszerek esetén meg kell adnia a megfelelő tanúsítványt.
-
-   Adja meg a tanúsítvány, tegyen egy .pfx-fájlra a **DependencyFilesLocalPath** az alábbiak szerint:
-
-    - Vagy egy helyettesítő tanúsítvány \*.dbadapter.\< a régióban\>.\< külső fqdn\> vagy egyhelyes tanúsítvány köznapi neve a sqladapter.dbadapter.\< a régióban\>.\< külső fqdn\>.
-
-    - Ezt a tanúsítványt megbízhatónak kell lennie. Ez azt jelenti, hogy a megbízhatósági lánc léteznie kell anélkül, hogy a köztes tanúsítványok.
-
-    - Csak egyetlen fájl a könyvtárban, a DependencyFilesLocalPath paraméter által hivatkozott létezhet.
-
-    - A fájl neve nem tartalmazhat különleges karaktereket vagy szóköz.
+| Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
+| --- | --- | --- |
+| **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _Szükséges_ |
+| **AzCredential** | Az Azure-verem szolgáltatás rendszergazdai fiók hitelesítő adatait. Azure verem telepítéséhez használt használja ugyanazokat a hitelesítő adatokat. | _Szükséges_ |
+| **VMLocalCredential** | Az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _Szükséges_ |
+| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végpont DNS-nevét. |  _Szükséges_ |
+| **DependencyFilesLocalPath** | A .pfx fájl a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ integrált rendszerekhez) |
+| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ |
+| **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
+| **RetryDuration** | Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
+| **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
+| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
 
 
-5. Nyissa meg a **új** emelt szintű (felügyeleti) PowerShell-konzolt, és módosítsa a könyvtárra, amelybe kibontotta a fájlokat. Egy új ablak segítségével a rendszer helytelen PowerShell-modul, amely már be van töltve az esetlegesen felmerülő problémák elkerülése érdekében.
 
-6. [Telepítse az Azure PowerShell verziója 1.2.11](azure-stack-powershell-install.md).
+## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>Az SQL erőforrás-szolgáltató használatával egyéni parancsfájl központi telepítése
+Szükséges információk manuális bevitelét, ha fut a DeploySqlProvider.ps1 parancsfájl elkerüléséhez testre az alapértelmezett fiók- és igény szerint módosítsa úgy az alábbi mintaparancsfájl:
 
-7. Futtassa a DeploySqlProvider.ps1 parancsfájlt, amely végrehajtja ezeket a lépéseket:
-
-    - A tanúsítványok és egyéb összetevők feltölt egy tárfiókot, Azure veremben.
-    - Gyűjteményelem csomagok tesz közzé, úgy, hogy az SQL-adatbázisok a gyűjtemény telepítése.
-    - Közzétesz egy gyűjteménycsomag üzemeltetési kiszolgáló telepítéséhez.
-    - A virtuális gépek telepíti a Windows Server 2016 lemezkép, az 1. lépésben létrejött, és telepíti az erőforrás-szolgáltató használatával.
-    - Regisztrálja a helyi DNS-rekordot, amely a virtuális gép erőforrás-szolgáltató van leképezve.
-    - Az erőforrás-szolgáltató regisztrálása az a helyi Azure Resource Manager (felhasználó és rendszergazda).
-    - Opcionálisan telepíti egy Windows-frissítés RP telepítése során
-
-8. Azt javasoljuk, hogy töltse le a legújabb Windows Server 2016 Core kép a piactér felügyelet alól. Ha egy frissítés telepítésére van szüksége, elhelyezhet egy. A helyi függőségi elérési MSU-csomagot. Ha egynél több. MSU fájl található, a parancsfájl futtatása sikertelen lesz.
-
-
-Íme egy példa a PowerShell-parancssorból futtatható. (Ne feledje módosítani a fiók- és igény szerint.)
-
-```
+```powershell
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
@@ -144,28 +119,11 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -DependencyFilesLocalPath $tempDir\cert
  ```
 
-### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 paraméterek
-Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter érvényesítése sikertelen, a szükséges paraméterek megadását kéri.
-
-| Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
-| --- | --- | --- |
-| **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _Szükséges_ |
-| **AzCredential** | Az Azure-verem szolgáltatás rendszergazdai fiók hitelesítő adatait. Azure verem telepítéséhez használt használja ugyanazokat a hitelesítő adatokat. | _Szükséges_ |
-| **VMLocalCredential** | Az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _Szükséges_ |
-| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végpont DNS-nevét. |  _Szükséges_ |
-| **DependencyFilesLocalPath** | A .pfx fájl a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ több csomópont) |
-| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ |
-| **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
-| **RetryDuration** | Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
-| **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
-| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
-
-
 ## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>A verem Azure portál használatával a telepítés ellenőrzése
+Ebben a szakaszban a lépések segítségével győződjön meg arról, hogy az SQL erőforrás-szolgáltató sikeresen települt.
 
 > [!NOTE]
->  A telepítési parancsfájl végeztével akkor kell frissítenie a portálhoz, és a felügyeleti panelt.
-
+>  A telepítési parancsfájl végeztével frissítse a portált, az admin panel megnyitásához, és a gyűjtemény elemeket kell.
 
 1. Jelentkezzen be a felügyeleti portál a szolgáltatás-rendszergazdaként.
 
@@ -174,201 +132,6 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
       ![Az SQL erőforrás-szolgáltató telepítésének ellenőrzése](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
 
 
-## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>Az SQL erőforrás-szolgáltató adapter (több csomópontos csak, buildek 1710 és újabb verziók) frissítése
-Új SQL-erőforrás szolgáltató adapter előfordulhat, hogy mikorra várható, Azure verem buildek frissítésekor. A meglévő adapter továbbra is működik, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. Ahhoz telepíteni kell a frissítéseket: verziók nem hagyható ki (lásd a 3. lépésében táblát [telepíteni az erőforrás-szolgáltató](#deploy-the-resource-provider)).
-
-Az erőforrás-szolgáltató használata frissíteni a *UpdateSQLProvider.ps1* parancsfájl. A folyamat hasonlít a folyamat egy erőforrás-szolgáltató telepítéséhez használt leírtak szerint a [telepíteni az erőforrás-szolgáltató](#deploy-the-resource-provider) című szakaszát. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi.
-
-A *UpdateSQLProvider.ps1* parancsfájlt hoz létre egy új virtuális Gépet a legújabb erőforrás-szolgáltató kódot, és a beállítások áttelepítése a régi virtuális gépről az új virtuális Gépet. Telepítse át a beállításokat adatbázis és a helyet adó kiszolgáló adatait, és a szükséges DNS-rekordja.
-
-A parancsfájl a DeploySqlProvider.ps1 parancsfájl ugyanazokkal az argumentumokkal ismertetett használatát igényli. Adja meg itt tanúsítványt is. 
-
-Azt javasoljuk, hogy töltse le a legújabb Windows Server 2016 Core kép a piactér felügyelet alól. Ha egy frissítés telepítésére van szüksége, elhelyezhet egy. A helyi függőségi elérési MSU-csomagot. Ha egynél több. MSU fájl található, a parancsfájl futtatása sikertelen lesz.
-
-Az alábbiakban látható egy példa a *UpdateSQLProvider.ps1* parancsfájlt, amely a PowerShell-parancssorból futtatható. Győződjön meg arról, a fiók- és igény szerint módosíthatja: 
-
-> [!NOTE]
-> A frissítési folyamat csak az integrált rendszerekre vonatkozik.
-
-```
-# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
-Install-Module -Name AzureRm.BootStrapper -Force
-Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
-
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
-$domain = "AzureStack"
-
-# For integrated systems, use the IP address of one of the ERCS virtual machines
-$privilegedEndpoint = "AzS-ERCS01"
-
-# Point to the directory where the resource provider installation files were extracted.
-$tempDir = 'C:\TEMP\SQLRP'
-
-# The service admin account (can be Azure AD or AD FS).
-$serviceAdmin = "admin@mydomain.onmicrosoft.com"
-$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
-
-# Set credentials for the new Resource Provider VM.
-$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
-
-# And the cloudadmin credential required for privileged endpoint access.
-$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
-
-# Change the following as appropriate.
-$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-
-# Change directory to the folder where you extracted the installation files.
-# Then adjust the endpoints.
-. $tempDir\UpdateSQLProvider.ps1 -AzCredential $AdminCreds `
-  -VMLocalCredential $vmLocalAdminCreds `
-  -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint $privilegedEndpoint `
-  -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert
- ```
-
-### <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 parameters
-Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter érvényesítése sikertelen, a szükséges paraméterek megadását kéri.
-
-| Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
-| --- | --- | --- |
-| **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _Szükséges_ |
-| **AzCredential** | Az Azure-verem szolgáltatás rendszergazdai fiók hitelesítő adatait. Az Azure-verem telepítéséhez használt hitelesítő használja. | _Szükséges_ |
-| **VMLocalCredential** | Az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _Szükséges_ |
-| **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végpont DNS-nevét. |  _Szükséges_ |
-| **DependencyFilesLocalPath** | A .pfx fájl a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ több csomópont) |
-| **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ |
-| **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
-| **RetryDuration** |Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
-| **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
-| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
-
-
-## <a name="collect-diagnostic-logs"></a>Diagnosztikai naplók gyűjtésére
-Az SQL erőforrás-szolgáltató nem egy zárolt a virtuális gép működik. Ha szükségessé válik a virtuális gép, egy PowerShell csak elég adminisztrációs (JEA) végpont gyűjteni _DBAdapterDiagnostics_ valósul meg erre a célra. Nincsenek elérhető ezen a végponton keresztül két parancsot:
-
-* Get-AzsDBAdapterLog - előkészíti a függő Entitás diagnosztikai naplók tartalmazó zip-csomagját, és hozzáadja a munkamenet felhasználói meghajtón. A parancs paraméter nélküli hívható, és összegyűjti a naplók utolsó négy óra.
-* Remove-AzsDBAdapterLog - megtisztítja a meglévő napló-csomagokat a VM erőforrás-szolgáltató
-
-Egy felhasználói fiókot _dbadapterdiag_ RP központi telepítés vagy frissítés a diagnosztika végpont RP naplók kibontott való csatlakozás során jön létre. A fiókhoz tartozó jelszó megegyezik a telepítés/frissítés közben a helyi rendszergazdai fiókhoz megadott jelszóval.
-
-Ezek a parancsok használatához szüksége lesz az erőforrás-szolgáltató virtuális géphez a távoli PowerShell-munkamenetet létrehozni, és meghívja a parancsot. FromDate és ToDate paraméterekkel is megadhat. Egyik vagy mindkét esetben nem adja meg, ha a FromDate lesz az aktuális időpont előtt négy óra, és a ToDate lesz az aktuális idővel.
-
-Ez a parancsfájlpélda bemutatja, hogy ezek a parancsok:
-
-```
-# Create a new diagnostics endpoint session.
-$databaseRPMachineIP = '<RP VM IP>'
-$diagnosticsUserName = 'dbadapterdiag'
-$diagnosticsUserPassword = '<see above>'
-
-$diagCreds = New-Object System.Management.Automation.PSCredential `
-        ($diagnosticsUserName, $diagnosticsUserPassword)
-$session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
-        -ConfigurationName DBAdapterDiagnostics
-
-# Sample captures logs from the previous one hour
-$fromDate = (Get-Date).AddHours(-1)
-$dateNow = Get-Date
-$sb = {param($d1,$d2) Get-AzSDBAdapterLog -FromDate $d1 -ToDate $d2}
-$logs = Invoke-Command -Session $session -ScriptBlock $sb -ArgumentList $fromDate,$dateNow
-
-# Copy the logs
-$sourcePath = "User:\{0}" -f $logs
-$destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
-Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
-
-# Cleanup logs
-$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
-# Close the session
-$session | Remove-PSSession
-```
-
-## <a name="maintenance-operations-integrated-systems"></a>A karbantartási műveleteket (integrált rendszerek)
-Az SQL erőforrás-szolgáltató nem egy zárolt a virtuális gép működik. Az erőforrás szolgáltató virtuális gép biztonsági frissítése végezhető el a PowerShell csak elég adminisztrációs (JEA) végpont _DBAdapterMaintenance_.
-
-A parancsfájl az e műveletek megkönnyítése érdekében a RP-telepítési csomaggal valósul meg.
-
-### <a name="update-the-virtual-machine-operating-system"></a>A virtuális gép operációs rendszerének frissítése
-Többféleképpen is lehet frissíteni a Windows Server virtuális Gépet:
-* Telepítse a legújabb szolgáltató erőforráscsomag jelenleg javított Windows Server 2016 Core lemezkép használatával
-* A telepítés vagy a függő Entitás frissítése során a Windows Update csomag telepítése
-
-
-### <a name="update-the-virtual-machine-windows-defender-definitions"></a>A virtuális gép Windows Defender-definíciók frissítése
-
-Kövesse az alábbi lépéseket a Defender definícióinak frissítéséhez:
-
-1. A Windows Defender-definíciók frissítéséhez letöltési [Windows Defender definíciós](https://www.microsoft.com/en-us/wdsi/definitions)
-
-    Ez az oldal "Manuálisan töltse le és telepítse a definíciók" le "Windows Defender víruskereső Windows 10 és Windows 8.1" 64 bites fájlrendszer. 
-    
-    Közvetlen kapcsolat: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
-
-2. Hozzon létre egy PowerShell-munkamenetben virtuális gép SQL RP adapter karbantartási végponthoz
-3. A definíciók frissítési fájlok másolása a DB adapter a gépet, a karbantartási végpont munkamenet használatával
-4. A karbantartási PowerShell a munkamenet meghívása a _frissítés-DBAdapterWindowsDefenderDefinitions_ parancs
-5. Telepítése után ajánlott eltávolítani a használt definíciókat fájl. A karbantartási munkamenet használatával el kell távolítani a _Remove-ItemOnUserDrive)_ parancsot.
-
-
-Íme egy minta parancsfájlt Defender definíciófrissítését a (helyettesítse be a címet, vagy a tényleges értékkel a virtuális gép neve):
-
-```
-# Set credentials for the diagnostic user
-$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$diagCreds = New-Object System.Management.Automation.PSCredential `
-    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
-
-# Public IP Address of the DB adapter machine
-$databaseRPMachine  = "XX.XX.XX.XX"
-$localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
- 
-# Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
-Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
-    -Outfile $localPathToDefenderUpdate 
-
-# Create session to the maintenance endpoint
-$session = New-PSSession -ComputerName $databaseRPMachine `
-    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
-# Copy defender update file to the db adapter machine
-Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
-     -Destination "User:\mpam-fe.exe"
-# Install the update file
-Invoke-Command -Session $session -ScriptBlock `
-    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
-# Cleanup the definitions package file and session
-Invoke-Command -Session $session -ScriptBlock `
-    {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
-$session | Remove-PSSession
-```
-
-## <a name="remove-the-sql-resource-provider-adapter"></a>Az SQL erőforrás-szolgáltató adapter eltávolítása
-
-Távolítsa el az erőforrás-szolgáltató, fontos először távolítsa el a függőségeket.
-
-1. Győződjön meg arról, hogy rendelkezik-e az eredeti központi telepítési csomag ezen verzióját az SQL erőforrás-szolgáltató adapter letöltött.
-
-2. Összes felhasználói adatbázis törölni kell az erőforrás-szolgáltató. (A felhasználói adatbázis törlése nem törli az adatokat.) Ez a feladat a felhasználók maguk kell elvégezni.
-
-3. A rendszergazda az üzemeltetési kiszolgáló törölni kell az SQL erőforrás-szolgáltató adapter.
-
-4. A rendszergazda törölnie kell az SQL erőforrás-szolgáltató adapter hivatkozó bármely tervek.
-
-5. A rendszergazda minden termékváltozatok és az SQL erőforrás-szolgáltató adapter társított kvóták kell törölnie.
-
-6. Futtassa újra a telepítési parancsprogram a következő elemeket:
-    - A - paraméter eltávolítása
-    - Az Azure Resource Manager-végpontok
-    - A DirectoryTenantID
-    - A szolgáltatás-rendszergazdai fiók hitelesítő adatait
-
-
 ## <a name="next-steps"></a>További lépések
 
-[Adja hozzá az üzemeltetési kiszolgáló](azure-stack-sql-resource-provider-hosting-servers.md) és [adatbázisok létrehozására](azure-stack-sql-resource-provider-databases.md).
-
-Próbálja más [PaaS szolgáltatások](azure-stack-tools-paas-services.md) hasonlóan a [MySQL Server erőforrás-szolgáltató](azure-stack-mysql-resource-provider-deploy.md) és a [alkalmazásszolgáltatások erőforrás-szolgáltató](azure-stack-app-service-overview.md).
+[Üzemeltetési kiszolgáló hozzáadása](azure-stack-sql-resource-provider-hosting-servers.md)

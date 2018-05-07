@@ -1,11 +1,11 @@
 ---
-title: "Létrehozása, szerkesztése vagy JSON kiterjesztése a logikai alkalmazás definícióiról - Azure Logic Apps |} Microsoft Docs"
-description: "Szerzői és testre szabhatja a logikai alkalmazás definícióiról a JSON-ban"
+title: Létrehozása, szerkesztése vagy JSON kiterjesztése a logikai alkalmazás definícióiról - Azure Logic Apps |} Microsoft Docs
+description: Szerzői és testre szabhatja a logikai alkalmazás definícióiról a JSON-ban
 author: ecfan
 manager: SyntaxC4
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f37f600d001b110775d8ca0e78950e3b8743df82
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>Létrehozása, szerkesztése vagy JSON logic app-definíciók testreszabása
 
@@ -49,7 +49,7 @@ A Visual Studio nyissa meg a logic apps létrehozott és telepített vagy közve
 
 2. Keresse meg, és nyissa meg a logic app-definíciót, amely alapértelmezés szerint megjelenik egy [Resource Manager-sablon](../azure-resource-manager/resource-group-overview.md#template-deployment)nevű **LogicApp.json**. Használjon, és a különböző környezetekben való központi telepítési sablon testreszabása.
 
-3. Nyissa meg a logic app-definíciót és a sablon helyi menüje. Válassza ki **nyissa meg a Logic App tervezővel**.
+3. Nyissa meg a logic app-definíciót és a sablon helyi menüje. Válassza a lehetőséget az elem **megnyitására a Logikaialkalmazás-tervezővel**.
 
    ![Nyissa meg logikai alkalmazást a Visual Studio megoldás](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
@@ -81,7 +81,7 @@ Az a [első példa logikai alkalmazás](../logic-apps/quickstart-create-first-lo
 
 2. Az a `When_a_feed-item_is_published` művelet található a `queries` szakaszt, és cserélje le a lekérdezés értékét `"feedUrl": "#@{parameters('currentFeedUrl')}"`. 
 
-   **Before**
+   **Előtt**
    ``` json
    }
       "queries": {
@@ -119,7 +119,7 @@ Központi telepítés életciklusának általában, fejlesztési, átmeneti és 
 
 ``` json
 {
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "uri": {
@@ -170,7 +170,7 @@ A Logic Apps rendelkezik a különböző funkciók karakterláncok használata. 
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "order": {
@@ -231,7 +231,7 @@ Ez a munkafolyamat például néhány kategóriák meghatározása szerint a par
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "specialCategories": {
@@ -321,7 +321,7 @@ A dátumok formázásához karakterlánc is használhatja. Például a RFC1123, 
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "order": {

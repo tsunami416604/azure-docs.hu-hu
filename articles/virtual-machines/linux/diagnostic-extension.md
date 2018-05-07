@@ -1,19 +1,19 @@
 ---
-title: "Az Azure Compute - Linux diagnosztikai bővítmény |} Microsoft Docs"
-description: "Hogyan konfigurálható az Azure Linux diagnosztikai bővítmény (LAD) gyűjtéséhez és az Azure-ban futó Linux virtuális gépek események naplózása."
+title: Az Azure Compute - Linux diagnosztikai bővítmény |} Microsoft Docs
+description: Hogyan konfigurálható az Azure Linux diagnosztikai bővítmény (LAD) gyűjtéséhez és az Azure-ban futó Linux virtuális gépek események naplózása.
 services: virtual-machines-linux
-author: jasonzio
-manager: anandram
+author: abhijeetgaiha
+manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
-ms.author: jasonzio
-ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: agaiha
+ms.openlocfilehash: 84be206ef02cca9cc321e9764c016ca79816edf5
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai kiterjesztésének használatával figyelheti a metrikák és a naplókat
 
@@ -146,7 +146,7 @@ A szükséges SAS-jogkivonatot az Azure portálon keresztül egyszerűen állít
 1. Ellenőrizze a megfelelő szakaszait, mint korábban leírt
 1. A "Készítése SAS" gombra.
 
-![image](./media/diagnostic-extension/make_sas.png)
+![Kép](./media/diagnostic-extension/make_sas.png)
 
 A generált SAS másolja az storageAccountSasToken mezőjébe; Távolítsa el a bevezető kérdőjel ("?").
 
@@ -423,7 +423,7 @@ A beépített metrika szolgáltató a forrása a metrikák a legérdekesebb a fe
 * Processzor
 * Memory (Memória)
 * Network (Hálózat)
-* Filesystem
+* Fájlrendszer
 * Lemez
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>a processzor osztály beépített metrikák
@@ -686,7 +686,7 @@ A `resourceId` konfigurációjában egyeznie kell, hogy a virtuális gép vagy v
 
 Az Azure portál segítségével teljesítményadatainak megjelenítéséhez, vagy állítson be riasztásokat:
 
-![image](./media/diagnostic-extension/graph_metrics.png)
+![Kép](./media/diagnostic-extension/graph_metrics.png)
 
 A `performanceCounters` adatok mindig egy Azure Storage táblázatban vannak tárolva. Az Azure Storage API-k sok nyelvekhez és platformokhoz érhetők el.
 
@@ -699,7 +699,7 @@ Emellett a felhasználói felület eszközök segítségével érik el az adatok
 
 A Microsoft Azure Tártallózó munkamenet pillanatképe jeleníti meg a létrehozott Azure Storage-táblákat és a tárolók egy megfelelően konfigurált LAD 3.0 bővítmény a teszteléshez használt virtuális Gépen. A kép nem felel meg pontosan a [LAD 3.0 mintakonfiguráció](#an-example-lad-30-configuration).
 
-![image](./media/diagnostic-extension/stg_explorer.png)
+![Kép](./media/diagnostic-extension/stg_explorer.png)
 
 Tekintse meg a megfelelő [EventHubs dokumentáció](../../event-hubs/event-hubs-what-is-event-hubs.md) megtudhatja, hogyan EventHubs végpont közzétett üzenetek felhasználását.
 

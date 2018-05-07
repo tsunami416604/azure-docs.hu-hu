@@ -1,39 +1,35 @@
 ---
-title: "Kiszolgálók Azure veremben üzemeltető SQL |} Microsoft Docs"
-description: "SQL-példány az SQL Adapter erőforrás-szolgáltató használatával történő üzembe helyezéséhez hozzáadása"
+title: Kiszolgálók Azure veremben üzemeltető SQL |} Microsoft Docs
+description: SQL-példány az SQL Adapter erőforrás-szolgáltató használatával történő üzembe helyezéséhez hozzáadása
 services: azure-stack
-documentationCenter: 
-author: mattbriggs
+documentationCenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: 0a29ef133a045b2828777050f2d7a204c0add4a8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 05/01/2018
+ms.author: jeffgilb
+ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>Az SQL-adapter általi használatra üzemeltetési kiszolgáló hozzáadása
-
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
-
+# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató az üzemeltetési kiszolgáló hozzáadása
 A virtuális gépeken belül az SQL Server-példányok is használhatja a [Azure verem](azure-stack-poc.md), vagy kívül az Azure verem környezet, az erőforrás-szolgáltató példánya tud hozzá csatlakozni. Az általános követelmények a következők:
 
 * A függő Entitás- és felhasználói feladatait által az SQL-példány dedikált való használatra. Bármely más fogyasztó, beleértve az App Service szolgáltatások által használt SQL-példány nem használható.
-* A függő Entitás adapter nincs tartományhoz csatlakoztatva, és csak kapcsolódhatnak az SQL-hitelesítéssel.
-* A függő Entitás számára megfelelő jogosultságokkal rendelkező fiókkal kell konfigurálnia.
-* A függő Entitás és a felhasználók például a Web Apps használ a felhasználói hálózati, így az SQL-példány a hálózati kapcsolatra szükség. Ez a követelmény általában azt jelenti, hogy az IP-Címek az SQL Server-példányok nyilvános hálózaton kell lennie.
-* Az SQL Server-példányok és gazdagépeik felügyeleti rendszer Öntől; a függő Entitás nem javítási, biztonsági mentés végrehajtásához, hitelesítőadat-Elforgatás stb.
+* Az SQL-erőforrás-szolgáltató VM nincs tartományhoz csatlakoztatva, és csak kapcsolódhatnak az SQL-hitelesítéssel.
+* Konfigurálnia kell egy fiók megfelelő jogosultságokkal az erőforrás-szolgáltató általi használatra.
+* Az erőforrás-szolgáltató és a felhasználók számára, például webalkalmazások, használ a felhasználói hálózati, így az SQL-példány a hálózati kapcsolatra szükség. Ez a követelmény általában azt jelenti, hogy az IP-Címek az SQL Server-példányok nyilvános hálózaton kell lennie.
+* Az SQL Server-példányok és gazdagépeik felügyeleti rendszer Öntől; az erőforrás-szolgáltató nem javítási, biztonsági mentés végrehajtásához, hitelesítőadat-Elforgatás stb.
 * SKU használható osztályokat hozhatnak létre különböző SQL funkcióit, például a teljesítmény érdekében mindig a stb.
 
-
-SQL IaaS virtuális számítógépképet számos a piactér-kezelési funkción keresztül érhetők el. Ellenőrizze, hogy mindig a virtuális gép egy Piactéri elemet központi telepítése előtt töltse le az SQL IaaS bővítmény legújabb verziója. Az SQL-rendszerképek ugyanazok, mint az SQL virtuális gépen elérhető az Azure-ban. Ezeket a lemezképeket, az IaaS-bővítmény a létrehozott SQL virtuális gépen, és a megfelelő portál fejlesztései biztosítják az automatikus javítás és a biztonsági mentési funkciókat szolgáltatásokat.
+SQL IaaS virtuális számítógépképet számos a piactér-kezelési funkción keresztül érhetők el. Győződjön meg arról, hogy mindig a legújabb verziójának letöltése a **SQL IaaS bővítmény** egy virtuális gép egy Piactéri elemet központi telepítése előtt. Az SQL-rendszerképek ugyanazok, mint az SQL virtuális gépen elérhető az Azure-ban. Ezeket a lemezképeket, az IaaS-bővítmény a létrehozott SQL virtuális gépen, és a megfelelő portál fejlesztései biztosítják az automatikus javítás és a biztonsági mentési funkciókat szolgáltatásokat.
 
 Egyéb módon telepítéséhez SQL virtuális gépeken, beleértve a sablonokat a [Azure verem gyorsindítási galéria](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -65,7 +61,7 @@ Már kiépített kiszolgálót futtató önálló hozzáadásához kövesse az a
 
   A **SQL üzemeltető kiszolgálók** panel, amelyen keresztül csatlakozhat az SQL Server erőforrás-szolgáltató, amely az erőforrás-szolgáltató háttér módon ellenőrizhető, hogy az SQL Server tényleges példányait.
 
-  ![Hosting Servers](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
+  ![Üzemeltetési kiszolgáló](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
 
 3. Az űrlap kitöltése a kapcsolódási adatait. az SQL Server-példány.
 
@@ -84,7 +80,10 @@ Már kiépített kiszolgálót futtató önálló hozzáadásához kövesse az a
 
   A termékváltozat tükröznie kell tulajdonságait, hogy a felhasználók megfelelően elhelyezheti az adatbázisokat. A termékváltozatban minden üzemeltetési kiszolgáló ugyanazokat a képességeket kell rendelkeznie.
 
-    Példa:
+> [!IMPORTANT]
+> Nem támogatottak a különleges karaktereket, szóközöket és időszakok, beleértve a **termékcsalád** vagy **réteg** neve, amikor az SQL és a MySQL-szolgáltatók hoz létre a Termékváltozat.
+
+Példa:
 
 ![Termékváltozatok](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
@@ -130,7 +129,7 @@ SQL Always On üzemeltetési kiszolgáló hozzáadásához kövesse az alábbi l
 
 4. SQL Always On rendelkezésre állási csoportnak példányok támogatásának engedélyezése jelölőnégyzet.
 
-    ![Hosting Servers](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
+    ![Üzemeltetési kiszolgáló](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
 5. Adja hozzá az SQL Always On példány egy másikra. Önálló kiszolgálók nem keverhetők az Always On osztályt a azonos Termékváltozat. Amely az első üzemeltető kiszolgálót hozzáadásakor határozza meg. Ezt követően kombinálhat típusokhoz próbál hibát eredményez.
 
@@ -140,27 +139,6 @@ SQL Always On üzemeltetési kiszolgáló hozzáadásához kövesse az alábbi l
 Tervek és SQL-adatbázisok a felhasználók számára elérhetővé ajánlatok létrehozása. A Microsoft.SqlAdapter szolgáltatás hozzáadása a tervet, és adja hozzá vagy egy meglévő kvóta, vagy hozzon létre egy újat. Kvóta létrehozása, ha a kapacitás, a felhasználó adja meg.
 
 ![Tervek és adatbázisokat tartalmazza ajánlatok létrehozása](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
-
-## <a name="maintenance-of-the-sql-adapter-rp"></a>Az SQL-Adapter RP karbantartása
-
-SQL-példánya karbantartási nem érvényes itt, elforgatás jelszóadatokat kivételével. Ön felelősséggel tartozik javítását és az SQL-adapterrel használt adatbázis-kiszolgálók biztonsági mentési vagy helyreállítási.
-
-### <a name="patching-and-updating"></a>Javítás és frissítése
- Az SQL-Adapter nem kiszolgált Azure verem részeként, mert az bővítménye. Microsoft fogják biztosítani a frissítések az SQL-adapter szükség szerint. Az SQL-Adapter példányosítani egy _felhasználói_ virtuális gép az alapértelmezett szolgáltató előfizetésben. Ezért fontos adja meg a Windows javítások, vírusvédelmi aláírások, stb. A Windows frissítése a csomagok által biztosított javítási és frissítési ciklusában részét is lehet használni a frissítések alkalmazása a Windows virtuális gép. Egy frissített adapter megjelenésekor, a parancsfájl a frissítés alkalmazásához valósul meg. Ezt a parancsfájlt hoz létre egy új RP virtuális Gépet, és telepítse át a már állapotokat.
-
- ### <a name="backuprestoredisaster-recovery"></a>Backup/Restore/katasztrófa utáni helyreállítás
- Az SQL-Adapter nincs biztonsági másolata Azure verem BC-vész-Helyreállítási folyamat részeként, mert az bővítménye. Parancsfájlok megkönnyítésére biztosítja:
-- A szükséges állapotadatokat (egy verem Azure storage-fiókban tárolt) biztonsági mentése
-- A függő Entitás visszaállítása, abban az esetben, ha a teljes verem helyreállítás akkor van szükség.
-Adatbázis-kiszolgálók helyre kell állítani az első (ha szükséges), a függő Entitás visszaállítására.
-
-### <a name="updating-sql-credentials"></a>SQL-hitelesítő adatainak frissítése
-
-Ön felelősséggel tartozik létrehozására és karbantartására rendszer rendszergazdai fiókokhoz az SQL-kiszolgálón. A függő Entitás ezek a felhasználók nevében adatbázisok kezelése engedéllyel rendelkező fiók szükséges, mert nem kell ezeket az adatbázisokat az adatokhoz való hozzáférés. Ha az SQL-kiszolgálón a rendszergazdai (SA) jelszó frissíteni kell, a frissítési funkció, a függő Entitás rendszergazdai felület segítségével a függő Entitás által használt tárolt jelszó megváltoztatásához. Ezek a jelszavak a kulcstároló, az Azure-verem példányon tárolják.
-
-A beállítások módosításához kattintson **Tallózás** &gt; **felügyeleti erőforrások** &gt; **SQL üzemeltető kiszolgálók** &gt; **SQL-Bejelentkezésekben** válassza ki a bejelentkezési nevet. A módosítani kell az SQL-példányon először (és bármilyen replikákat, ha szükséges). Az a **beállítások** panelen, kattintson a **jelszó**.
-
-![Frissítés a rendszergazdai jelszó](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
 
 ## <a name="next-steps"></a>További lépések

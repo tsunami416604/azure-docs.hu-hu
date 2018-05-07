@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 79161d0be407a5b5692e1ad0ee25c609aefb2fb5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -82,6 +82,7 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 ## <a name="linux-distributions"></a>Linux-Disztribúciók
 |  | Elem neve | Leírás | Közzétevő |
 | --- | --- | --- | --- |
+| ![Törölje a Linux operációs rendszer](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Törölje a Linux operációs rendszer](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | A Linux-disztribúció Intel architektúra optimalizálva hivatkozást. | Törölje a Linux-projekt |
 | ![Tároló Linux által CoreOS](media/azure-stack-marketplace-azure-items/coreos.png) | [Tároló Linux által CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Tároló Linux a modern és minimális Linux terjesztési tárolók futtatásához, a fürtök kezeléséhez és a zökkenőmentesen frissítése a kiszolgálók egyszerű módot biztosít - összetevők, amelyek lehetővé teszik az adatraktár-skálázási számítási. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server a globális legnépszerűbb Linux felhőalapú környezetek. | Canonical |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux egyike a legnépszerűbb Linux terjesztéseket. | credativ |

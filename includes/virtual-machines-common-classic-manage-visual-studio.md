@@ -128,6 +128,6 @@ Konfigurálja a virtuális gépet, és a szoftverek telepítését, célszerű r
 1. A Server Explorer eszközben válassza ki a kívánt állítsa le a virtuális gép a **Azure virtuális gépek** csomópont.
 2. A helyi menüben, vagy válassza ki a **leállítási** parancsot, vagy válasszon **konfigurálása** megtekintéséhez a virtuális gép konfigurációs lapján, és válassza ki a **leállítási** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Virtuális gépek létrehozásával kapcsolatos további tudnivalókért lásd: [hozzon létre egy virtuális gép futó Linux](../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [az Azure betekintő portálon Windows rendszerű virtuális gép létrehozása](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

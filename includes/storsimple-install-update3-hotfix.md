@@ -3,7 +3,7 @@
 #### <a name="to-download-hotfixes"></a>Gyorsjavítások letöltése
 Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update katalógusból történő letöltéséhez.
 
-1. Indítsa el az Internet Explorert, és keresse fel a [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com) címet.
+1. Indítsa el az Internet Explorert és keresse meg [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
     ![Katalógus telepítése](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 3. A keresési mezőbe, a Microsoft Update katalógus, adja meg a Tudásbázis (KB) le szeretné tölteni, például a gyorsjavítás **3186843**, és kattintson a **keresési**.
@@ -11,7 +11,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
     A gyorsjavítás-lista megjelenik, például **összegző szoftverfrissítési csomagot frissítés 3.0 a StorSimple 8000 Series**.
    
     ![Keresés a katalógusban](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
-4. Kattintson az **Add** (Hozzáadás) parancsra. Ezzel a frissítést hozzáadja a kosárhoz.
+4. Kattintson a **Hozzáadás** parancsra. Ezzel a frissítést hozzáadja a kosárhoz.
 5. A fenti táblázatban szereplő további gyorsjavítások keresése (**3186859**), és adja hozzá a kosárhoz mindegyik.
 6. Kattintson a **Kosár megtekintése** gombra.
 7. Kattintson a **Letöltés** gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. A szoftverfrissítések letöltése a megadott helyre és a neve megegyezik a frissítési alárendelt mappába helyezi. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.

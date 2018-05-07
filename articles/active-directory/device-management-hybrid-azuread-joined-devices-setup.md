@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 934b79977369e5cf8e6f09e85669c7fca299737c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -83,8 +83,20 @@ Győződjön meg arról, hogy a következő URL-címekkel érhető el az Azure A
 
 - https://device.login.microsoftonline.com
 
-Ha a szervezet az interneten keresztül egy kimenő proxy hozzáférésre van szüksége, meg kell valósítania webes Proxy automatikus felderítését a lekérdezés (WPA) lehetővé teszik a Windows 10 számítógépek regisztrálása az Azure ad Szolgáltatásba.
+- A szervezet STS (összevont tartományt)
 
+Ha nem tette meg, a szervezet STS (az összevont tartományt) szerepelnie kell a felhasználó helyi intranet beállításait.
+
+A szervezet tervezi, hogy zökkenőmentes SSO használata, ha a szervezeten belüli számítógépek elérhetőnek kell lennie kell a következő URL-címeket, és azok is szerepelnie kell a felhasználó helyi intranet zóna:
+
+- https://autologon.microsoftazuread-sso.com
+
+- https://aadg.windows.net.nsatc.net
+
+- Emellett a következő beállítást engedélyezni kell a felhasználó intranet zóna: "Beállítható a frissítések állapotsor parancsfájl használatával."
+
+
+Ha a szervezet az interneten keresztül egy kimenő proxy hozzáférésre van szüksége, meg kell valósítani webes Proxy automatikus felderítését a lekérdezés (WPA) lehetővé teszik a Windows 10 számítógépek regisztrálása az Azure ad Szolgáltatásba.
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 

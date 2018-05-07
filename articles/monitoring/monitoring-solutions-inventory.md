@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 05/01/2018
 ms.author: bwren
-ms.openlocfilehash: 2a8313640d2d0bd678d0e10da39c87de8cfce00b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: cab92187c6c36dc4670e202b15b35db8ad510239
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Az gyűjtemény adatait a felügyeleti megoldások Azure-ban
 Ez a cikk felsorolja a [megoldások](monitoring-solutions.md) a Microsoft által kínált mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A metódus és a Log Analyticshez való használatra vonatkozó adatok gyűjtésének gyakorisága információkat is biztosít.  Ez a cikk a információt elérhető különböző megoldások azonosítására és a különböző felügyeleti megoldások adatok megismeréséhez és kapcsolat követelmények megértése érdekében használhatja. 
@@ -53,7 +53,7 @@ Az oszlopok magyarázata a következők:
 | [Az Azure alkalmazás átjáró elemzés](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | az értesítés |
 | **Felügyeleti megoldás** | **Platform** | **A Microsoft figyelési ügynök** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött** | **Gyűjtemény gyakorisága** |
 | [Azure hálózati biztonsági csoport elemzés](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | az értesítés |
-| [Az Azure SQL elemzés (előzetes verzió)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 10 perc |
+| [Az Azure SQL elemzés (előzetes verzió)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 perc |
 | [Biztonsági mentés](../backup/backup-introduction-to-azure-backup.md) | Azure |  |  |  |  |  | n/a |
 | [Kapacitást és teljesítményt (előzetes verzió)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |érkezésükkor |
 | [Változáskövetés](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |óránként |

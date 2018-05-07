@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: d1f9d1a9163eee0f3a6c3b418e5e8d4fec0581de
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: c5a9a56d444da232717b023cb7057b96c291c265
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -393,27 +393,27 @@ var authMethod = new DeviceAuthenticationWithX509Certificate("<device id>", x509
 var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 ```
 
-## <a name="custom-device-authentication"></a>Egyéni eszközhitelesítés
+## <a name="custom-device-and-module-authentication"></a>Egyéni eszköz és a modul hitelesítés
 
-Használhatja az IoT Hub [identitásjegyzékhez] [ lnk-identity-registry] eszközönkénti biztonsági hitelesítő adatok beállítása és a hozzáférés vezérlése segítségével [jogkivonatok][lnk-sas-tokens]. Ha egy IoT-megoldás már van egy egyéni identitás beállításjegyzék és/vagy hitelesítési séma, érdemes létrehozni egy *token service* Ez az infrastruktúra integrálása az IoT-központ. Ily módon használhatja más IoT-szolgáltatásokat a megoldásban.
+Használhatja az IoT Hub [identitásjegyzékhez] [ lnk-identity-registry] /-eszköz/modul biztonsági hitelesítő adatok konfigurálása és a hozzáférés vezérlése segítségével [jogkivonatok] [ lnk-sas-tokens]. Ha egy IoT-megoldás már van egy egyéni identitás beállításjegyzék és/vagy hitelesítési séma, érdemes létrehozni egy *token service* Ez az infrastruktúra integrálása az IoT-központ. Ily módon használhatja más IoT-szolgáltatásokat a megoldásban.
 
-A jogkivonat-szolgáltatás egy olyan egyéni felhőalapú szolgáltatás. Az IoT-központ használ *megosztott hozzáférési házirend* rendelkező **DeviceConnect** létrehozásához szükséges engedélyek *eszköz hatókörű* jogkivonatokat. Ezeket a jogkivonatokat engedélyezheti az IoT hub való kapcsolódáshoz.
+A jogkivonat-szolgáltatás egy olyan egyéni felhőalapú szolgáltatás. Az IoT-központ használ *megosztott hozzáférési házirend* rendelkező **DeviceConnect** vagy **ModuleConnect** létrehozásához szükséges engedélyek *eszköz hatókörű* vagy *modul hatókörű* jogkivonatokat. Ezeket a jogkivonatokat egy eszköz és a modul csatlakozni az IoT hub engedélyezése.
 
 ![A jogkivonat-szolgáltatás minta lépései][img-tokenservice]
 
 A jogkivonat-szolgáltatás minta fő lépései a következők:
 
-1. Az IoT-központot, megosztott hozzáférési házirend létrehozása **DeviceConnect** az IoT hub engedélyeit. Ezt a házirendet hozhat létre a [Azure-portálon] [ lnk-management-portal] vagy programon keresztül. A jogkivonat-szolgáltatás használja ezt a házirendet hoz létre a jogkivonatok aláírásához.
-1. Ha egy eszközt az IoT hub hozzáférésre van szüksége, egy aláírt jogkivonat kér a jogkivonat-szolgáltatás. Az eszköz hitelesíthető az egyéni identitás-beállításjegyzék/hitelesítési séma annak meghatározásához, hogy a jogkivonat-szolgáltatás a jogkivonat létrehozásához használja az eszközidentitást.
-1. A jogkivonat-szolgáltatás egy jogkivonatot ad vissza. A jogkivonat segítségével hozhatók létre `/devices/{deviceId}` , `resourceURI`, a `deviceId` hitelesített eszközként. A jogkivonat-szolgáltatás a megosztott elérési házirendet használja a jogkivonat létrehozásához.
-1. Az eszköz közvetlenül és az IoT hub használja a jogkivonatot.
+1. Az IoT-központot, megosztott hozzáférési házirend létrehozása **DeviceConnect** vagy **ModuleConnect** az IoT hub engedélyeit. Ezt a házirendet hozhat létre a [Azure-portálon] [ lnk-management-portal] vagy programon keresztül. A jogkivonat-szolgáltatás használja ezt a házirendet hoz létre a jogkivonatok aláírásához.
+1. Ha egy eszköz vagy modul az IoT hub hozzáférésre van szüksége, egy aláírt jogkivonat kér a jogkivonat-szolgáltatás. Az eszköz hitelesíthető az egyéni identitás beállításjegyzék/hitelesítési séma, amely a jogkivonat létrehozásához használja a jogkivonat-szolgáltatás eszköz/modul identitásának meghatározásához.
+1. A jogkivonat-szolgáltatás egy jogkivonatot ad vissza. A jogkivonat segítségével hozhatók létre `/devices/{deviceId}` vagy `/devices/{deviceId}/module/{moduleId}` , `resourceURI`, a `deviceId` hitelesített eszközként vagy `moduleId` hitelesített modulként. A jogkivonat-szolgáltatás a megosztott elérési házirendet használja a jogkivonat létrehozásához.
+1. Az eszköz/modul közvetlenül és az IoT hub használja a jogkivonatot.
 
 > [!NOTE]
 > Használhatja a .NET-osztályt [SharedAccessSignatureBuilder] [ lnk-dotnet-sas] vagy a Java-osztály [IotHubServiceSasToken] [ lnk-java-sas] a jogkivonat-szolgáltatás a jogkivonat létrehozásához.
 
-A jogkivonat-szolgáltatás tetszés szerint állíthatja be a jogkivonat lejáratáról. Amikor a jogkivonat lejár, az IoT-központ kiszolgálója az eszköz kapcsolata. Ezt követően az eszköz egy új jogkivonatot kell kérniük a jogkivonat-szolgáltatás. Egy rövid lejárati idejének fokozott terhelést jelent a jogkivonat-szolgáltatás és az eszközhöz.
+A jogkivonat-szolgáltatás tetszés szerint állíthatja be a jogkivonat lejáratáról. Amikor a jogkivonat lejár, az IoT hub folyamat eszköz vagy modul. Ezt követően az eszköz/modul egy új jogkivonatot kell kérniük a jogkivonat-szolgáltatás. Egy rövid lejárati idejének fokozott terhelést jelent az eszköz/modul és a jogkivonat-szolgáltatás is.
 
-Egy eszköz szeretne az elosztóhoz csatakoztatni, hozzá kell adnia továbbra is azt az IoT-központ identitásjegyzékhez – annak ellenére, hogy az eszköz használ egy jogkivonatot, és nem eszközkulcs való csatlakozáshoz. Ezért továbbra is engedélyezésével vagy letiltásával eszköz identitásokat az eszköz hozzáférés-vezérlés használata a [identitásjegyzékhez][lnk-identity-registry]. Ez a megközelítés azzal csökkenti az a tokenek használatára hosszú lejárati idő feltüntetésével kockázatát.
+Egy eszköz vagy modul szeretne az elosztóhoz csatakoztatni, hozzá kell adnia továbbra is azt az IoT-központ identitásjegyzékhez – annak ellenére, hogy az informatikai használ egy jogkivonatot, és nem egy kulcs való csatlakozáshoz. Ezért továbbra is használja a /-eszköz / /-modul hozzáférés-vezérlés engedélyezésével vagy letiltásával eszköz/modul identitások a [identitásjegyzékhez][lnk-identity-registry]. Ez a megközelítés azzal csökkenti az a tokenek használatára hosszú lejárati idő feltüntetésével kockázatát.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Egy egyéni átjáró összehasonlítása
 
@@ -431,7 +431,7 @@ Az alábbi táblázat az engedélyeket, használhatja az IoT hub való hozzáfé
 | --- | --- |
 | **RegistryRead** |Olvasási hozzáférést biztosít az identitásjegyzékhez. További információkért lásd: [identitásjegyzékhez][lnk-identity-registry]. <br/>Háttér-felhőszolgáltatások használja ezt az engedélyt. |
 | **RegistryReadWrite** |Biztosít az olvasási és írási hozzáférést biztosít az identitásjegyzékhez. További információkért lásd: [identitásjegyzékhez][lnk-identity-registry]. <br/>Háttér-felhőszolgáltatások használja ezt az engedélyt. |
-| **ServiceConnect** |Cloud service irányuló kommunikációra és figyelési végpontok biztosít hozzáférést. <br/>Engedélyt ad eszközről a felhőbe üzeneteket fogadni, felhőalapú-eszközre küldött üzenetek küldése és a megfelelő kézbesítési visszaigazolások beolvasása. <br/>Engedélyt beolvasása kézbesítési a nyugtázás a fájl feltöltése. <br/>Engedélyt ad a címkék és a kívánt tulajdonságok frissítése, jelentett tulajdonságainak beolvasása és lekérdezéseket futtathat eszköz twins eléréséhez. <br/>Háttér-felhőszolgáltatások használja ezt az engedélyt. |
+| **ServiceConnect** |Cloud service irányuló kommunikációra és figyelési végpontok biztosít hozzáférést. <br/>Engedélyt ad eszközről a felhőbe üzeneteket fogadni, felhőalapú-eszközre küldött üzenetek küldése és a megfelelő kézbesítési visszaigazolások beolvasása. <br/>Engedélyt beolvasása kézbesítési a nyugtázás a fájl feltöltése. <br/>Engedélyt ad a hozzáférési twins címkék és a kívánt tulajdonságok frissítése, a jelentett tulajdonságainak beolvasása és a lekérdezések futtatása. <br/>Háttér-felhőszolgáltatások használja ezt az engedélyt. |
 | **DeviceConnect** |Engedélyezi a hozzáférést a eszköz felé néző végpontok. <br/>Engedélyt ad felhő eszközre üzeneteket eszköz a felhőbe küldött üzeneteket küldjön és fogadjon. <br/>Engedélyt ad egy eszközről fájlfeltöltés végrehajtásához. <br/>Eszköz szükséges iker tulajdonság értesítéseket, és frissítse az eszköz a két engedélyt jelentett tulajdonságait. <br/>Engedélyt hajtsa végre a fájl feltöltése. <br/>Ez az engedély eszközöket használják. |
 
 ## <a name="additional-reference-material"></a>További referenciaanyag
@@ -482,7 +482,7 @@ Ha azt szeretné, hogy próbálja ki azokat a jelen cikkben ismertetett fogalmak
 [lnk-java-sas]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.auth._iot_hub_service_sas_token
 [lnk-tls-psk]: https://tools.ietf.org/html/rfc4279
 [lnk-protocols]: iot-hub-protocol-gateway.md
-[lnk-custom-auth]: iot-hub-devguide-security.md#custom-device-authentication
+[lnk-custom-auth]: iot-hub-devguide-security.md#custom-device-and-module-authentication
 [lnk-x509]: iot-hub-devguide-security.md#supported-x509-certificates
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
 [lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md

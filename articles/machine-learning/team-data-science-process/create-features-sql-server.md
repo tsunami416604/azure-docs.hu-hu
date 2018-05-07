@@ -3,7 +3,7 @@ title: Az adatok funkciók létrehozása az SQL Server SQL és Python |} Microso
 description: Folyamat adatokat az SQL Azure-ból
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: ''
 ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev
-ms.openlocfilehash: 5eaa7b5b30617cabedc7ed15a8fc7b174ecc68f2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 206ae59ff84699eb8419d068d2f2102759ac82c1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Funkciók létrehozása az adatokhoz az SQL Serveren SQL és Python használatával
 Ez a dokumentum bemutatja, hogyan létrehozni az SQL Server virtuális gép az Azure-on tárolt adatok, amelyek segítenek az adatokból hatékonyabban további algoritmusok szolgáltatásai. SQL- vagy egy programozási nyelv, például a Python segítségével ennek a feladatnak. Mindkét megközelítés itt egy.

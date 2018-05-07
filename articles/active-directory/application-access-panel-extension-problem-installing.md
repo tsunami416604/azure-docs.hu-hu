@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 5/4/18
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 87396204933ca964634656f9eb84c6d245c0c6c0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="install-the-access-panel-browser-extension"></a>A hozzáférési panel bővítmény telepítése
 
@@ -83,6 +83,12 @@ Emellett letöltheti a bővítmény Chrome és peremhálózati közvetlenül a k
    3. Keresse meg a személyes alkalmazások portálon elérhető alkalmazás.
    4. A keresési eredmények listájában válassza ki az alkalmazást.  
        Már használta az utolsó három alkalmazások megjelennek a **legutóbbi** helyi listát.
+       
+* A belső vállalati URL-címek, miközben távoli használatához tegye a következőket:
+    1. [Proxy konfigurálása](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) a tenant
+    2. [Az alkalmazás közzététele](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) és -proxyn keresztül történő URL-címe
+    3. A bővítmény telepítéséhez, és jelentkezzen be azt bejelentkezési kiválasztásával első lépések
+    4. A belső vállalati URL-cím, noha a távoli most tallózással
 
 > [!NOTE]
 > Az előző beállítások csak él, Chrome és Firefox érhetők el.

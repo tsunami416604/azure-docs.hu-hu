@@ -10,16 +10,16 @@ tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
-ms.author: mobandyo;sirishap;bryanla
-ms.openlocfilehash: 8ddb81078e8019284c0481d4ea8d72253d3f0a5a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: mobandyo
+ms.openlocfilehash: 487636ffb0efc35c282e14d835c6669ed9d47315
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Felhő Cruiser és a Microsoft Azure számlázási API-integráció
 Ez a cikk ismerteti, hogyan az új Microsoft Azure számlázási API-k összegyűjtött adatok használható felhőalapú Cruiser munkafolyamat költség szimuláció és elemzésére.
@@ -112,7 +112,7 @@ A felső graph költség összehasonlítása szolgáltatások, a munkaterhelés 
 Az alsó grafikon azt ábrázolja, ugyanazokat az adatokat, de részleg által lebontva. Minden részleg futtatni WAP és az Azure, a munkaterhelés és a különbség a kettő között a költségek (zöld) a megtakarítások sáv jelenik meg.
 
 ## <a name="azure-usage-api"></a>Az Azure használati API
-### <a name="introduction"></a>Bemutatás
+### <a name="introduction"></a>Bevezetés
 A Microsoft nemrég vezette be az Azure használati API, lehetővé téve a használati adatokat betekintést nyerhet a fogyasztás programozott módon le tudja előfizetők. Felhő Cruiser ügyfelek kihasználhatja az API-n keresztül elérhető gazdagabb DataSet.
 
 Felhő Cruiser használhatja az integráció többféle módon használati API-val. A granularitási (óránkénti használati adatai) és erőforrás-metaadatait az API-n keresztül elérhető rugalmas visszajelzés vagy jóváírási modell támogatásához szükséges dataset biztosít. 
@@ -198,13 +198,13 @@ Most már csak ellenőriznünk kell a használati adatok közzététele lépés 
 
 A legjobb része, hogy csak akkor kell egyszer végrehajtania ezt a folyamatot. A munkafüzet befejezése után vegye fel a Feladatütemező egyszerűen, és óránként vagy naponta fusson a megadott időpontban. Akkor célszerű csak egy függetlenül attól, hogy új jelentések létrehozásakor, vagy ahhoz, hogy a jelentéssel bíró elemzések lekérése a felhő használati adatok elemzése testreszabása a már meglévőket.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 * Felhő Cruiser munkafüzeteket és a jelentések létrehozásának részletes utasításokért lásd felhő Cruiser online [dokumentáció](http://docs.cloudcruiser.com/) (érvényes bejelentkezési adatait).  Felhő Cruiser kapcsolatos további információkért forduljon [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
 * Lásd: [betekintést nyerhet a Microsoft Azure erőforrás-felhasználás](billing-usage-rate-card-overview.md) az Azure erőforrás-használat és RateCard API-k áttekintését.
 * Tekintse meg a [Azure számlázási REST API-referencia](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) mindkét API-k bővebben, az Azure Resource Manager által nyújtott API-kat készletét részét képező.
 * Ha szeretné jobb alaposabban tanulmányozhatja a mintakódot, tekintse meg a Microsoft Azure számlázási API Kódminták a [Azure mintakódok](https://azure.microsoft.com/documentation/samples/?term=billing).
 
-### <a name="learn-more"></a>További tudnivalók
+### <a name="learn-more"></a>További információ
 * Az Azure Resource Managerrel kapcsolatos további információkért lásd: a [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md) cikk.
 
 <!--Image references-->

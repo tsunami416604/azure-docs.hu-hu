@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/01/2018
 ms.author: shlo
-ms.openlocfilehash: e6846661370fcad139730fc0443d9df54fa12a70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 58faed48f5031b26f1340f3766fdd8bdc6bd2ccb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Az Azure Data Factory webes tevékenység
 A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára. 
@@ -68,7 +68,7 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 név | A webes tevékenység neve. | Karakterlánc | Igen
 type | Meg kell **WebActivity**. | Karakterlánc | Igen
-metódus | REST API-metódusra a cél-végponthoz. | Karakterlánc. <br/><br/>A támogatott típusok: "GET", "POST", "PUT" | Igen
+method | REST API-metódusra a cél-végponthoz. | Karakterlánc. <br/><br/>A támogatott típusok: "GET", "POST", "PUT" | Igen
 url | Cél-végponthoz és elérési útja | Karakterlánc (vagy a resultType kifejezés karakterlánc). A tevékenység időtúllépési lesz a hibával 1 perc, ha nem kapott választ a végpontról. | Igen
 fejlécek | A kérelemben küldött fejléceket. Ahhoz például, hogy állítsa be a nyelvét és típusát kérelem: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Igen, a Content-type fejléc szükség. `"headers":{ "Content-Type":"application/json"}`
 törzs | A tartalom a végpontnak küldött jelöli. A PUT/POST metódusok szükséges.  | Karakterlánc (vagy a resultType kifejezés karakterlánc). <br/><br/>Tekintse meg a séma, a kérelem hasznos [kérelem hasznos séma](#request-payload-schema) szakasz. | Nem
@@ -79,9 +79,19 @@ linkedServices | Végpont átadott összekapcsolt szolgáltatások listája. | A
 > [!NOTE]
 > A webes tevékenység elindítja a REST-végpontok egy válasz JSON típusú kell visszaadnia. A tevékenység időtúllépési lesz a hibával 1 perc, ha nem kapott választ a végpontról.
 
+Az alábbi táblázat a JSON-tartalmak követelményei:
+
+| Érték típusa | Kérelem törzse | Választörzs |
+|---|---|---|
+|JSON-objektum | Támogatott | Támogatott |
+|JSON-tömb | Támogatott <br/>(Jelenleg JSON-tömbök nem működnek a hiba miatt. Javítás folyamatban van.) | Nem támogatott |
+| JSON-érték | Támogatott | Nem támogatott |
+| Nem-JSON típusa | Nem támogatott | Nem támogatott |
+||||
+
 ## <a name="authentication"></a>Hitelesítés
 
-### <a name="none"></a>Nincs
+### <a name="none"></a>None
 Ha a hitelesítés nem szükséges, nem tartalmaznak a "hitelesítés" tulajdonság.
 
 ### <a name="basic"></a>Alapszintű

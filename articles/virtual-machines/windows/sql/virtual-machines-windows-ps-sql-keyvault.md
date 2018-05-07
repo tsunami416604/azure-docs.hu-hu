@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/23/2017
+ms.date: 04/30/2018
 ms.author: jroth
-ms.openlocfilehash: 7df0bc4b74694baa6b1c8a30d0c126b248e51168
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2b398f59aed1610825f495a6089990d393531305
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>SQL Server az Azure Key Vault-integráció konfigurálása az Azure virtuális gépeken (erőforrás-kezelő)
+
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-ps-sql-keyvault.md)
 > * [Klasszikus](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/29/2018
 ## <a name="overview"></a>Áttekintés
 Nincsenek több SQL Server titkosítási szolgáltatások, például a [átlátható adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [oszlop a blokkszintű titkosítás (törlése)](https://msdn.microsoft.com/library/ms173744.aspx), és [a biztonsági másolat titkosításához](https://msdn.microsoft.com/library/dn449489.aspx). Titkosítási űrlapok kell kezelése és a titkosításhoz használt kriptográfiai kulcsok tárolásához. Az Azure Key Vault (AKV) szolgáltatás szolgáltatást javítására készült, a biztonsági és kezelésére, ezek a kulcsok egy magas rendelkezésre állású és biztonságos helyen. A [SQL Server-összekötő](http://www.microsoft.com/download/details.aspx?id=45344) lehetővé teszi, hogy ezek a kulcsok Azure Key Vault a használni kívánt SQL Server.
 
-Ha Ön a helyszíni SQL Server rendszert futtató gépek esetében nincs vannak [lépések követésével hozzáférni a helyszíni SQL Server-számítógépen az Azure Key Vault](https://msdn.microsoft.com/library/dn198405.aspx). Az SQL Server Azure virtuális gépeken, időt takaríthat meg használatával, de a *Azure Key Vault-integráció* szolgáltatás.
+SQL Server helyszíni gépeken futtatja, hogy van-e [lépések követésével hozzáférni a helyszíni SQL Server-számítógépen az Azure Key Vault](https://msdn.microsoft.com/library/dn198405.aspx). Az SQL Server Azure virtuális gépeken, időt takaríthat meg használatával, de a *Azure Key Vault-integráció* szolgáltatás.
 
 Ha ez a funkció engedélyezve van, automatikusan telepíti az SQL Server-összekötő, konfigurálja az Azure Key Vault eléréséhez EKM-szolgáltatóval, és lehetővé teszi a tároló eléréséhez a hitelesítő adatot hoz létre. A korábban említett helyszíni ismertetettek nézett, láthatja, hogy ez a szolgáltatás automatizálja a 2. és 3. Még mindig manuálisan kell egyedül, ha a kulcstartó és a kulcsokat. Ott a teljes telepítése az SQL virtuális gép automatikus. Ez a funkció a telepítés befejezése után hajthat végre T-SQL utasítást, hogy az adatbázis vagy a biztonsági mentések titkosításához, a szokásos módon megkezdéséhez.
 
@@ -39,7 +40,7 @@ Ha ez a funkció engedélyezve van, automatikusan telepíti az SQL Server-össze
 Kiépítés során AKV-integráció engedélyezéséhez, vagy konfigurálja úgy a meglévő virtuális gépekhez.
 
 ### <a name="new-vms"></a>Új virtuális gépek
-Ha egy új SQL Server virtuális gép a Resource Manager kiépíteni, az Azure-portálon biztosít egy lépést, amely az Azure Key Vault-integráció engedélyezése. Az Azure Key Vault szolgáltatás csak az Enterprise, Developer és SQL Server kiadásai próbaverzióját érhető el.
+Ha egy új SQL Server virtuális gép a Resource Manager kiépíteni, az Azure-portálon biztosítja az Azure Key Vault-integráció engedélyezéséhez. Az Azure Key Vault szolgáltatás csak az Enterprise, Developer és SQL Server kiadásai próbaverzióját érhető el.
 
 ![SQL Azure Key Vault-integráció](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - fizikai és környezeti védelmi"
-description: "FedRAMP webes alkalmazások Automation - fizikai és környezeti védelmi"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - fizikai és környezeti védelmi
+description: FedRAMP webes alkalmazások Automation - fizikai és környezeti védelmi
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 792b9da0f4e5ec73c39f56a6e4805cf3c37133c4
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="physical-and-environmental-protection-pe"></a>Fizikai és környezeti védelmi (PE)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy fizikai és környezeti védelmi házirendje, amely a célja, a hatókör, a szerepkörök, a feladatkörei, a felügyeleti megoldást előfizetési, koordinálásának szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a fizikai és környezeti védelmi házirendet és a kapcsolódó fizikai és környezeti védelmi vezérlők; végrehajtásának megkönnyítése ellenőrzi, és frissíti az aktuális fizikai és környezeti védelmi házirend [hozzárendelés: szervezet által meghatározott gyakorisága]; és a fizikai és környezeti védelmi eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-2.a** a szervezet házon belül fejlesztett alkalmazásokra, jóvá és a létesítmény, ahol az adatokat a található engedélyezett hozzáféréssel rendelkező személyek listáját.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-2.b** a szervezet állít ki engedélyezési létesítmény hozzáférési hitelesítő adatait.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-2.c** a szervezet ellenőrzi, hogy a hozzáférési lista, és részletesen leírja az egyéni felhasználók által engedélyezett létesítmény hozzáférési [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-2.d** a szervezet távolít el egyéni felhasználók számára a létesítmény hozzáférési amikor hozzáférési már nincs szükség.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -95,13 +95,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | A Microsoft Azure megvalósítja ezt a követelményt ügyfeleik nevében. A Microsoft Azure automatikusan letiltja a hozzáférést a hozzáférés hozzárendelése záró dátum elérésekor. Hozzáférés már nincs szükség, amikor datacenter biztonsági tisztviselő vagy felügyeleti manuálisan kérni fogja a datacenter-elérés eszközt a hozzáférés megszűnését. Emellett a Microsoft Azure eltávolítja az felesleges hozzáférési engedélyek miatt a lista áttekintése c. részében leírt felderített. |
 
 
- ## <a name="nist-800-53-control-pe-3a"></a>NIST 800-53 Control PE-3.a
+ ## <a name="nist-800-53-control-pe-3a"></a>A NIST 800-53 vezérlő PE-3.a
 
 #### <a name="physical-access-control"></a>Fizikai hozzáférés-vezérlés
 
 **PE-3.a** a szervezet érvénybe lépteti a fizikai hozzáférési engedélyek [hozzárendelés: szervezet által meghatározott kilépést mutat a létesítmény az információs rendszert tartalmazó] egyedi hozzáférési engedélyek megadása előtt ellenőrzésével a hozzáférést a létesítmény; belépés és kilépés a létesítmény történő vezérlő [kijelölés (egy vagy több): [hozzárendelés: fizikai hozzáférés szervezet által meghatározott rendszerek/eszközök]; megóvja].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3.b** a szervezet fizikai hozzáférés a naplókban talál tart fenn [hozzárendelés: szervezet által meghatározott kilépést pontok].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3** biztosít a szervezet [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] belül a létesítmény hivatalosan kijelölt nyilvánosan elérhető való hozzáférés szabályozása.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3.d** a szervezet kísérő látogatók személyek és figyeli a látogatói tevékenység [hozzárendelés: szervezet által meghatározott körülmények között igénylő látogató kísérő személyek és figyelési].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3.e** A szervezet biztosítja a kulcsokat, kombinációk és más fizikai hozzáférést biztosító eszközök.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3.f** a szervezet készletek [hozzárendelés: fizikai hozzáférés szervezet által meghatározott eszközök] minden [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3.g** a szervezet kombinációk és kulcsok módosítása [hozzárendelés: szervezet által meghatározott gyakoriság] és/vagy a kulcsok elvesznek, ha kombinációk integritása sérül, vagy egyéni átvitt vagy leállt.  
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3 (1)** a szervezet érvénybe lépteti a információk rendszer mellett a fizikai hozzáférés-vezérléssel: a létesítmény fizikai hozzáférési engedélyek [hozzárendelés: szervezet által meghatározott fizikai szóközt tartalmazó egy vagy több összetevője az információk rendszer].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-4** a szervezet vezérel való fizikai hozzáférés [hozzárendelés: szervezet által megadott információk rendszer terjesztési és átviteli sorok] belül szervezeti létesítményekben használatával [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] .
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-5** a szervezet adatokat kimeneti a Rendszereszközök segítségével akadályozni, hogy illetéktelen személyek a kimeneti fizikai elérését szabályozza.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-6.a** a szervezet a létesítmény, ahol az adatokat a található észlelése és a fizikai biztonsági incidensekre való fizikai hozzáférés figyelése.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-6.b** belépési naplók ellenőrzi, hogy a szervezet [hozzárendelés: szervezet által meghatározott gyakoriság] és a előfordulása [hozzárendelés: szervezet által meghatározott események vagy potenciális jelzések események].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-6.c lépést** a szervezet koordinálja az ellenőrzések és a szervezeti incidensválasz-képességgel rendelkező vizsgálat eredményeit. 
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) PE-6** a szervezet fizikai behatolás riasztásokat és felügyeleti berendezések figyeli.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-6 (4)** a szervezet figyeli a fizikai hozzáférés információk mellett a létesítmény, mint a fizikai hozzáférés figyelése [hozzárendelés: az információ egy vagy több összetevőt tartalmazó szervezet által meghatározott fizikai szóközöket a rendszer].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -307,11 +307,11 @@ ms.lasthandoff: 02/11/2018
 
  ## <a name="nist-800-53-control-pe-8a"></a>A NIST 800-53 vezérlő PE-8.a
 
-#### <a name="visitor-access-records"></a>Visitor Access Records
+#### <a name="visitor-access-records"></a>Látogató Access rekordok
 
 **PE-8.a** a szervezet kezeli a létesítmény, ahol a információ található a látogatói access rekordok [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -321,11 +321,11 @@ ms.lasthandoff: 02/11/2018
 
  ## <a name="nist-800-53-control-pe-8b"></a>A NIST 800-53 vezérlő PE-8.b
 
-#### <a name="visitor-access-records"></a>Visitor Access Records
+#### <a name="visitor-access-records"></a>Látogató Access rekordok
 
 **PE-8.b** látogató access rekordok ellenőrzi, hogy a szervezet [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-8 (1)** a szervezet funkcióit használja az automatikus mechanizmusok lehetővé teszi a karbantartási és a látogató access rekordok át kell tekinteni.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -347,13 +347,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | A Microsoft Azure datacenter hozzáférés rekordok jóváhagyott DCAT kérelmek formájában DCAT tart fenn. DCAT kérelmek csak a DCM-csapat jóvá. Hozzáférési szintek az adatközponton belül társítva, vagy felügyelt DCAT belül. Datacenter hozzáférés felül negyedévente vizsgálni. Azure adatközpontjaiban hozzáférésének DCAT rögzített, és későbbi esetleges vizsgálatok érhető el. Kell kísért mindig a látogatók szükségesek. Az adatközponton belül a kíséreti hozzáférés a felügyeleti rendszer, és ha szükséges a látogató adott területre a jövőbeli felülvizsgálatra is összefüggő riasztás belül kerül. Látogató hozzáférés áttekintik folyamatosan a hozzárendelt kíséreti és a vezérlő hely felügyelő zárt láncú TV és a riasztás megfigyelési rendszere keresztül. Látogatók nem kapnak hozzáférést, és kell adni a bájtméretet a kísérő személyek mindig. |
 
 
- ## <a name="nist-800-53-control-pe-9"></a>NIST 800-53 Control PE-9
+ ## <a name="nist-800-53-control-pe-9"></a>A NIST 800-53 vezérlő PE-9
 
 #### <a name="power-equipment-and-cabling"></a>Energiagazdálkodási berendezések és kábelezése
 
 **PE-9** a szervezet power berendezések és az információs rendszer kárt és megsemmisítése kábelek power védi.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-10.a** a szervezet lehetővé teszi az összetevők vészhelyzetben a rendszer vagy az egyes rendszer, az energiagazdálkodási kikapcsolása.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-10.b** a szervezet helyezi vészhelyzeti gyors kapcsolók, illetve eszközcsoportjához [hozzárendelés: szervezet által meghatározott helyre információk rendszer vagy rendszerösszetevő] személyzetet biztonságosan és könnyen megkönnyítése érdekében.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-10.c** a szervezet vészhelyzeti energiagazdálkodási gyors képesség megakadályozza a jogosulatlan aktiválás.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-11** a szervezet nyújt a rövid távú szünetmentes áramforrás megkönnyítése érdekében [kijelölés (egy vagy több): a információs rendszer szabályosan leállítja; átmenet hosszú távú alternatív energiagazdálkodási adatokat rendszerrel], egy forrás az elsődleges áramellátás megszakadása.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-11 (1)** a információs rendszer, amely képes a karbantartásának minimálisan szükséges az elsődleges áramellátás forrás egy kiterjesztett adatvesztés üzemeltetési kapacitása kínál a szervezet egy hosszú távú alternatív tápegység.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-12** a szervezet alkalmazza, és automatikus vészhelyzeti megvilágítási számára az információs rendszer, amely aktiválja áramkimaradás vagy megszakítása és, amely lefedi vészhelyzeti kilép, és a létesítmény belül kiürítési útvonalak tart fenn.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-13** a szervezet alkalmazza, és tart fenn a tűz tiltási és észlelési eszközök/információk rendszer által támogatott rendszerek független energia forrás.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-13 (1)** eszközök/rendszerek az adatokat a rendszer automatikusan aktiválja, és értesíti a szervezet védett érvényesítést [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] és [hozzárendelés: szervezet által meghatározott sürgős válaszadók] tűz.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-13 (2)** tiltási eszközök/rendszerek bármely az aktiválás automatikus értesítést küldenek az információk rendszerhez a szervezet védett érvényesítést [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] és [hozzárendelése: szervezet által meghatározott vészhelyzeti válaszadók].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **(3) PE-13** a szervezet funkcióit használja az automatikus tűz tiltási magasabb a információs rendszer, ha a létesítmény nem személyzettel folyamatosan.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-14.a** a szervezeten belül a létesítmény, ahol a információ található a hőmérséklet és a páratartalom szintek tart fenn [hozzárendelés: elfogadható szintű szervezet által meghatározott].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-14.b** a szervezet figyeli a hőmérséklet és a páratartalom szintek [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) PE-14** a szervezet alkalmazta a hőmérséklet és a páratartalom figyelést, egy riasztás vagy potenciálisan káros változásairól szóló értesítések nyújt tanácsadási csoporthoz vagy a készülék.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-15** a szervezet a információs rendszer megvédi a fő kikapcsolása vagy elkülönítési szelepek, amelyek a elérhető, akkor működik megfelelően, és ismert kulcsfontosságú személyzet megadásával vízjel kiszivárgásának károk.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) PE-15** a szervezet alkalmazza a rendszer és a riasztások közelében vízjel észleléséhez automatizált mechanizmusok [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-16** a szervezet engedélyezi, figyeli, és szabályozza [hozzárendelés: szervezet által meghatározott típusú információk rendszerösszetevők] belépés és kilépés a létesítmény és tart fenn a rekordok azok az elemek.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-17.a** alkalmaz a szervezet [hozzárendelés: szervezet által meghatározott biztonsági vezérlők] munkahelyi másodlagos helyeken.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-17.b** a szervezet értékelésére ez megvalósítható, biztonsági hatékonyságát másik munkahelyi helyek szabályozza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-17.c** a szervezet lehetővé teszi az alkalmazottak információk biztonsági csoporthoz biztonsági incidensek és problémák esetén folytatott kommunikációhoz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-18** a szervezet adatokat rendszerösszetevők belül a létesítmény minimalizálása érdekében a fellépő potenciális károknak pozíciók [hozzárendelés: szervezet által meghatározott fizikai és környezeti veszélyek] és minimalizálása érdekében a lehetőséget, a nem engedélyezett a hozzáférés.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|

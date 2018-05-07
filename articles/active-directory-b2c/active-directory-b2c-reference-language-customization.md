@@ -11,17 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d0f1f2ffd02873df2e2e7eab9894d9c3421b0f7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C nyelvi testreszabása
-
->[!NOTE]
->A funkció jelenleg nyilvános előzetes verziójához.
->
 
 Az Azure Active Directory B2C nyelvi testreszabási (az Azure AD B2C) lehetővé teszi, hogy a házirend különböző nyelveken az ügyfelek igényeinek megfelelően.  A Microsoft biztosít a fordításainak [36 nyelvet](#supported-languages), de is megadhatja a saját fordítások egyik nyelven. Akkor is, ha a felhasználói élmény előírt csak egyetlen nyelvet, testre szabhatja a lapokon szöveg.  
 
@@ -49,7 +45,7 @@ Ha engedélyezi a nyelvi beállítások alapján egy házirendet, szabályozhatj
 5. Olvassa el a párbeszédpanelt, és válassza ki **Igen**.
 
 ## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>Válassza ki a felhasználói használatában a nyelveket engedélyezve vannak 
-Engedélyezze a felhasználó útra mikor fordítandó nyelvek készlete a `ui_locales` paraméter nincs megadva.
+Engedélyezze a felhasználó használatában fordítandó nélkül a böngésző által kért nyelv készlete a `ui_locales` paraméter.
 1. Ügyeljen arra, hogy a házirend engedélyezve van az előző utasítások nyelvi testreszabása.
 2. Az a **házirend szerkesztése** lapon jelölje be **nyelvi testreszabási**.
 3. Válasszon egy nyelvet, amelyeket támogatni kíván.
@@ -102,7 +98,7 @@ Cserélje le `<ExtensionAttribute>` az egyéni felhasználói attribútum nevév
 Cserélje le `<ExtensionAttributeValue>` megjelenő új karakterlánccal.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>LocalizedCollections használatával biztosítja az értékek listája
-Ha szeretne biztosítani meghatározott számítógéplistán szereplő értékek a válaszok, szeretné-e létrehozni egy `LocalizedCollections` attribútum.  `LocalizedCollections` a tömb `Name` és `Value` párokat. Hozzáadandó `LocalizedCollections`, használja a következő formátumot:
+Ha szeretne biztosítani meghatározott számítógéplistán szereplő értékek a válaszok, szeretné-e létrehozni egy `LocalizedCollections` attribútum.  `LocalizedCollections` a tömb `Name` és `Value` párokat. Az elemek sorrendje lesz a sorrendben jelennek meg.  Hozzáadandó `LocalizedCollections`, használja a következő formátumot:
 
 ```JSON
 {
@@ -153,9 +149,9 @@ A lap betöltése `fr`. Az oldal HTML- és CSS tartalmat kéri le, amikor a rend
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="add-custom-locales"></a>Adja hozzá az egyéni területi beállításokhoz
+## <a name="add-custom-languages"></a>Egyéni nyelvek hozzáadása
 
-A Microsoft jelenleg nem fordítások a nyelveket is hozzáadhat. Adja meg a szabályzat minden karakterlánc fordítások lesz szüksége.
+A Microsoft jelenleg nem fordítások a nyelveket is hozzáadhat. Adja meg a szabályzat minden karakterlánc fordítások lesz szüksége.  Nyelvi és területi kódok korlátozódnak 639-1 ISO szabvány. 
 
 1. Az a **házirend szerkesztése** lapon jelölje be **nyelvi testreszabási**.
 2. Válassza ki **egyéni nyelv hozzáadása** az oldal tetején.
@@ -165,6 +161,10 @@ A Microsoft jelenleg nem fordítások a nyelveket is hozzáadhat. Adja meg a sza
 6. Válassza ki **engedélyezése**, és a csoportházirend is megjelennek a felhasználók adott nyelven.
 7. Mentse a nyelvet.
 
+>[!IMPORTANT]
+>Az egyéni nyelvek engedélyezéséhez, vagy töltse fel a felülbírálások az mentése előtt kell.
+>
+
 ## <a name="additional-information"></a>További információ
 
 ### <a name="page-ui-customization-labels-as-overrides"></a>Lap felhasználói felületének testreszabása címkék felülbírálások szerint
@@ -172,7 +172,7 @@ Nyelvi testreszabási engedélyezésekor címkék használatával lap felhaszná
 ### <a name="up-to-date-translations"></a>Naprakész fordítások
 A Microsoft elkötelezett a szolgáltató a legújabb fordítások a használatra. A Microsoft folyamatosan növeli a fordítások, és szinkronizálja azok megfelelőségi meg. Microsoft azonosítsa, hibákat és változások a globális terminológia, és a frissítések, amelyek működnek a zökkenőmentesen teszi a felhasználó használatában.
 ### <a name="support-for-right-to-left-languages"></a>Jobbról balra író nyelvek támogatása
-A Microsoft jelenleg nem biztosít támogatást jobbról balra író nyelvek esetén. Ha ez a funkció van szüksége, adjon szavazhatnak az [Azure visszajelzés](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
+A Microsoft jelenleg nem biztosít támogatást jobbról balra író nyelvek esetén. Ez a használatával egyéni területi beállításokat, és CSS segítségével módosíthatja, miként jelenik meg a karakterlánc érhető el.  Ha ez a funkció van szüksége, adjon szavazhatnak az [Azure visszajelzés](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
 ### <a name="social-identity-provider-translations"></a>Közösségi identity provider fordítások
 A Microsoft biztosít a `ui_locales` közösségi bejelentkezések OIDC paraméter. Azonban néhány közösségi Identitásszolgáltatók, beleértve a Facebook-on és a Google, nem veszi őket. 
 ### <a name="browser-behavior"></a>Böngésző viselkedése
@@ -191,7 +191,7 @@ Chrome és Firefox mindkét kérhetnek a nyelv beállítása. Ha egy támogatott
 | spanyol               | es            |
 | finn               | fi            |
 | francia                | fr            |
-| gudzsaráti              | gu            |
+| gudzsaráti              | Gu            |
 | hindi                 | szia            |
 | horvát              | óra            |
 | magyar             | hu            |
@@ -200,11 +200,11 @@ Chrome és Firefox mindkét kérhetnek a nyelv beállítása. Ha egy támogatott
 | kannada               | kn            |
 | koreai                | ko            |
 | malajálam             | ml            |
-| maráthi               | mr            |
+| maráthi               | MR            |
 | maláj                 | ms            |
 | Norvég Bokmal      | nb            |
 | holland                 | nl            |
-| pandzsábi               | pa            |
+| pandzsábi               | szolgáltatói            |
 | lengyel                | pl            |
 | Portugál - Brazília   | pt-br         |
 | Portugál - Portugália | pt-pt         |

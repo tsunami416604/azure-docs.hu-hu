@@ -77,7 +77,7 @@ Kövesse az alábbi lépéseket, telepítése és futtatása a MongoDB Windows S
 
     ![Végpontok][Image7]
 
-13. Kattintson az **Add** (Hozzáadás) parancsra.
+13. Kattintson a **Hozzáadás** parancsra.
 
 14. "Mongo" protokoll nevű végpont hozzáadása **TCP**, és mindkét **nyilvános** és **titkos** portok "27017" értékre. Ez a port megnyitása lehetővé teszi, hogy a MongoDB távoli elérését.
 

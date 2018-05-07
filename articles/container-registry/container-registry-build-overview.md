@@ -6,13 +6,13 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/01/2018
 ms.author: marsma
-ms.openlocfilehash: 0e10b415f3d1c7ca502cfd63ebd27a6adcb69635
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 7506351c0d65fb167136478d2dc383cdabd81835
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Az operációs rendszer és a keretrendszer javítását az ACR Build automatizálása
 
@@ -58,7 +58,7 @@ ACR Build dinamikusan felderíti az alapjául szolgáló lemezképhez függősé
 További tudnivalók az operációs rendszer és a keretrendszer javítását a harmadik ACR Build oktatóanyagban [automatizálás kép alapjául szolgáló lemezképhez frissítés épít, az Azure tároló beállításjegyzék Build](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> ACR összeállítása jelenleg előzetes verzióban érhető, amíg alapjául szolgáló lemezképhez frissítések eseményindítót hoz létre, csak ha az alkalmazás és a képek megtalálható az azonos Azure-tárolót beállításjegyzék.
+> A kezdeti előzetes alapjául szolgáló lemezképhez frissítések eseményindító épít, csak akkor, ha az alkalmazás és a képek a azonos Azure-tárolót beállításjegyzék található.
 
 ## <a name="next-steps"></a>További lépések
 

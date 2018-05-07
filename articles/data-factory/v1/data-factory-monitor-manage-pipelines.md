@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 94b3c1e812bdf3345d5fb1f7308fb7a55be8f922
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 860a09d004c16de992093e79c0dbda4c469bb775
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Figyelheti és kezelheti az Azure Data Factory-folyamatok az Azure portál és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -28,11 +28,13 @@ ms.lasthandoff: 03/29/2018
 > [!NOTE]
 > Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [felügyeletéhez és kezeléséhez az adat-előállító adatcsatornák 2-es](../monitor-visually.md).
 
+Ez a cikk ismerteti, hogyan figyeléséhez, kezeléséhez és a folyamatok hibakeresése az Azure-portál és a PowerShell használatával.
+
 > [!IMPORTANT]
 > A figyelés a & felügyeleti alkalmazás figyelése és az adatok folyamatok kezelését és hibaelhárítását probléma merül fel egy jobb támogatást biztosít. Az alkalmazás használatával kapcsolatos részletekért lásd: [felügyeletéhez és kezeléséhez az adat-előállító adatcsatornák a figyelés és felügyelet alkalmazással](data-factory-monitor-manage-app.md). 
 
-
-Ez a cikk ismerteti, hogyan figyeléséhez, kezeléséhez és a folyamatok hibakeresése az Azure-portál és a PowerShell használatával.
+> [!IMPORTANT]
+> Az Azure Data Factory-verzió 1 most használja az új [Azure figyelő riasztási infrastruktúra](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). A régi riasztási infrastruktúra elavult. Ennek eredményeképpen a meglévő riasztást beállítást verzió 1 adat-előállítók nem fog működni. A meglévő adat-előállítók v1 riasztások nem települnek át automatikusan. Ezek a riasztások az Új riasztási infrastruktúra újból rendelkezik. Jelentkezzen be az Azure portál és select **figyelő** új riasztások létrehozásához a metrikák (például a futtatása sikertelen vagy sikeres futtatása) verziójának 1 adat-előállítók.
 
 ## <a name="understand-pipelines-and-activity-states"></a>Adatcsatornák és a tevékenység állapota
 Az Azure portál használatával a következő műveletek végezhetők el:
@@ -196,7 +198,8 @@ Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName produc
 ## <a name="debug-pipelines"></a>Folyamatok hibakeresése
 Az Azure Data Factory debug vagy folyamatok hibaelhárítása az Azure portál és az Azure PowerShell használatával gazdag lehetőségeket kínál.
 
-> [! Megjegyzés:} sokkal könnyebb a figyelés és a felügyeleti alkalmazás troubleshot hibák. Az alkalmazás használatával kapcsolatos részletekért lásd: [felügyeletéhez és kezeléséhez az adat-előállító adatcsatornák a figyelés és felügyelet alkalmazással](data-factory-monitor-manage-app.md) cikk. 
+> [!NOTE] 
+> Könnyebb lesz a figyelés és a felügyeleti alkalmazás troubleshot hibákat is. Az alkalmazás használatával kapcsolatos részletekért lásd: [felügyeletéhez és kezeléséhez az adat-előállító adatcsatornák a figyelés és felügyelet alkalmazással](data-factory-monitor-manage-app.md) cikk. 
 
 ### <a name="find-errors-in-a-pipeline"></a>Hiba található egy folyamatot
 Ha a tevékenység futtatása sikertelen, a folyamat, a folyamat által létrehozott adatkészlet állapotban van hiba hibája miatt. Hibakeresés, és az Azure Data Factory hibáinak elhárítása az alábbi módszerek segítségével.
@@ -296,6 +299,35 @@ A "frissítés"típusa "Upstreaminpipeline paramétert", ami azt jelenti, hogy a
 ```powershell
 Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
+## <a name="create-alerts-in-the-azure-portal"></a>Riasztás létrehozása az Azure-portálon
+
+1.  Jelentkezzen be az Azure portál és select **figyelő -> riasztások** riasztások lapjának megnyitásához.
+
+    ![Nyissa meg a riasztások lapon.](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
+
+2.  Válassza ki **+ Új riasztási szabály** létrehozni egy új riasztás.
+
+    ![Hozzon létre egy új riasztás](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
+
+3.  Adja meg a **riasztási feltétel**. (Ügyeljen arra, hogy válasszon **adat-előállítók** a a **erőforrástípus szűrés** mezőben.) Azt is megadhatja az értékeket **dimenziók**.
+
+    ![A riasztási feltétel – válassza ki a cél megadása](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
+
+    ![Adja meg a riasztás feltétel – adja meg a riasztási feltételeket](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
+
+    ![Adja meg a riasztás feltétel – a riasztás logika hozzáadása](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
+
+4.  Adja meg a **riasztás részletei**.
+
+    ![Adja meg a riasztás részletei](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
+
+5.  Adja meg a **művelet csoport**.
+
+    ![A művelet csoportot - művelet új csoport létrehozása](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
+
+    ![A művelet csoportot - tulajdonságainak beállítása](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
+
+    ![A művelet csoportot - létrehozott új művelet csoport](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>Egy adat-előállító áthelyezése egy másik erőforráscsoportban vagy előfizetés
 Áthelyezheti egy adat-előállító egy másik erőforráscsoportban vagy egy másik előfizetésben található használatával a **áthelyezése** sáv gombjára a data factory kezdőlapján parancsot.

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: davidmu
-ms.openlocfilehash: 1d64c031b1504dd8c35c1b498bbd931945fcad31
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: ca7160d39d5d26ca69345ce636f22afbe44b25db
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Az Azure AD B2C: Az egyszeri bejelentkezés (SSO) munkamenet-kezelés
 
@@ -67,9 +67,6 @@ Ez a szolgáltató munkamenetben jogcímek tárolására használható. Ez a szo
 ```
 
 A munkamenet jogcímek hozzáadásához használja a `<PersistedClaims>` a műszaki profil elemének. Ha a szolgáltatót használja a tudja kezelni a munkamenetet, a megőrzött jogcímeket hozzáadja a jogcímek tulajdonságcsomagjait. `<OutputClaims>` a jogcímeket kér le a munkamenet szolgál.
-
-> [!NOTE]
-> Amikor a DefaultSSOSessionProvider használatával jogcímek munkamenet használatával, meg kell győződjön meg arról, hogy jogcímeket kell juttatni az alkalmazás vagy a későbbi lépésekben előtti feltételek által használt tárolja a munkamenet vagy a felhasználók profilból olvasási kiegészítve könyvtár. Ez biztosítja, hogy a hitelesítési útvonal be nem sikertelen lesz a jogcímek hiányzik.
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 

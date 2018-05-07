@@ -1,22 +1,22 @@
 ---
-title: "Az Azure-ban címfeloldási DNS áttekintése |} Microsoft Docs"
-description: "Megtudhatja, hogyan címfeloldási DNS működik, és hogyan használható az Azure-ban"
+title: Az Azure-ban címfeloldási DNS áttekintése |} Microsoft Docs
+description: Megtudhatja, hogyan címfeloldási DNS működik, és hogyan használható az Azure-ban
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: 08f4f4aca20efad8f51ebc9ca8c6df8de8d0d4c7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: kumud
+ms.openlocfilehash: 1ce14360d0f62a01172a8003e1d78a45885166f6
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>A címfeloldási DNS- és támogatás az Azure-ban – áttekintés
 
@@ -86,7 +86,7 @@ A PTR típusú rekord IP-cím "192.0.2.129" lekérdezésekhez névlekérdezés "
 
 ### <a name="ipv6"></a>IPv6
 
-Egy IPv6-névkeresési zóna neve a következő formátumban kell lennie:`<IPv6 network prefix in reverse order>.ip6.arpa`
+Egy IPv6-névkeresési zóna neve a következő formátumban kell lennie: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
 Például. Ha vannak létrehozása egy névkeresési zónát, hogy állomásrekordokat állomások IP-címek, amelyek a 2001:db8:1000:abdc:: / 64 előtag Zónanév hozhatók létre azoknak a hálózati előtag a cím (2001:db8:abdc::). Ezután bontsa ki az IPv6 hálózati előtag eltávolításához [tömörítés nulla](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), ha való jelentős mértékben csökkentse az IPv6-címelőtagot (2001:0db8:abdc:0000::). Fordított sorrendben, időszak használja, mint a fordított hálózati előtag létrehozásához az előtag hexadecimális számoknak közötti elválasztó karaktert (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`), és adja hozzá a utótag `.ip6.arpa`.
 

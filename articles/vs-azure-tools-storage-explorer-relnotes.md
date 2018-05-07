@@ -14,17 +14,112 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 6274e4ebbc9f3c5b21c479b10e112459000fd28b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Tártallózó kibocsátási megjegyzései
 
-A cikkben a kibocsátási megjegyzések a 0.9.6. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
+Ez a cikk az Azure Tártallózó 1.0.0 kiadás kibocsátási megjegyzései, valamint a kibocsátási megjegyzések a korábbi verziók tartalmazza.
 
 [A Microsoft Azure Tártallózó](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux rendszeren.
+
+## <a name="version-100"></a>1.0.0 verzió
+04/16/2018
+
+### <a name="download-azure-storage-explorer-100"></a>Töltse le az Azure Storage Explorer 1.0.0
+- [A Windows Azure Tártallózó 1.0.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Az Azure Storage Explorer 1.0.0 Mac rendszerre](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Az Azure Storage Explorer 1.0.0 Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Új
+* Továbbfejlesztett hitelesítési, amely lehetővé teszi, hogy a Visual Studio 2017 az azonos fióktároló használandó Tártallózó. Ez a funkció használatához szüksége lesz a fiók ismételt bejelentkezni, és újra szűrt előfizetése.
+* Azure verem fiókok AAD által támogatott a Tártallózó most lekéri Azure verem előfizetések "Cél Azure verem" engedélyezésekor a rendszer. Már nincs szüksége egy egyéni bejelentkezési környezetet hozhat létre.
+* Több parancsikonok hozzáadott gyorsabb navigációs engedélyezése. Ezek közé tartoznak a különböző való átváltással és szerkesztők közötti áthelyezése. A Nézet menü További részletekért tekintse meg.
+* Tárolási Explorer visszajelzés most él a Githubon. A problémák lap bal vagy a csatlakozás a(z) alsó visszajelzés gombra kattintva érheti el [ https://github.com/Microsoft/AzureStorageExplorer/issues ](https://github.com/Microsoft/AzureStorageExplorer/issues). Nyugodtan javaslatokat, jelenthetem a problémát, kérdései vannak, vagy visszajelzés jellegű hagyja.
+* Ha az SSL-tanúsítvánnyal kapcsolatos problémák futnak, és nem található a hibát okozó tanúsítvány, most már elindíthatja a Tártallózó parancsot a parancssorból a `--ignore-certificate-errors` jelzőt. Ez a jelző indításakor Tártallózó figyelmen kívül hagyja SSL-tanúsítvány hibák.
+* Már létezik a helyi menü blob és a fájl egy "Letöltés" lehetőséget.
+* Továbbfejlesztett kisegítő és képernyős olvasó támogatása. Ha kisegítő lehetőségeit, tekintse meg a [kisegítő dokumentáció](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) további információt.
+* Most már a Tártallózó elektronsugaras 1.8.3.
+
+### <a name="breaking-changes"></a>Módosítások megszakítása
+* A Tártallózó átváltott egy új hitelesítési könyvtárat. A kapcsolót, hogy a szalagtár részeként szüksége lesz a fiók ismételt bejelentkezni, és újra szűrt előfizetése
+* A bizalmas adatok titkosítására használt módszer megváltozott. Ez azt eredményezheti, a újra hozzáadásra kellene gyorselérési elemek egy része, és/vagy is csatlakoztatva kell lennie objektumkörnyezetben erőforrásokat.
+
+### <a name="fixes"></a>Javítások
+* Egyes felhasználók mögött proxyk kellene csoport blob feltöltések vagy egy nem lehet feloldani megszakadt letöltéseket hibaüzenet jelenik meg. A probléma javítását.
+* Ha a bejelentkezés során egy közvetlen hivatkozást, kattintson a "Bejelentkezés" megkötéseket használ egy üres párbeszédpanelt kellene felugró volt szükség. A probléma javítását.
+* Linux, ha Tártallózó nem tudja elindítani egy GPU folyamat összeomlása miatt most értesítést kap, az összeomlások, használja a rendszergazda a "--disable-gpu" kapcsolót, és automatikusan indítsa újra a kapcsolóval, ha engedélyezve van a Tártallózó lesz.
+* Érvénytelen hozzáférési házirendek a hozzáférési házirendek párbeszédpanelen identitás nehéz volt. Érvénytelen házirend azonosítók most módszereket a vörös színt pedig további látható.
+* A műveletnapló néha kellene tevékenységgel különböző részei között szóközt nagy területeket. A probléma javítását.
+* A tábla lekérdezés-szerkesztő Ha egy Timestamp típusú záradék érvénytelen állapotban marad, és ezután módosítását kísérelte meg egy másik záradékot, a szerkesztő volna rögzítése. A szerkesztő most visszaállítja a Timestamp típusú záradék utolsó érvényes állapotában egy másik záradékot változás észlelésekor.
+* Ha felfüggesztette a fanézetben a keresési lekérdezés, írja be, a keresés volna megsértésével fókusz volna ellopják, a szövegmezőben. Most hogy kell explicit módon kezdeni a keresést a "Enter" billentyű megnyomásával, vagy a start keresési gombra kattintva.
+* A "Get közös hozzáférésű Jogosultságkód" parancs néha szeretné letiltani, egy fájlt egy fájlmegosztást a jobb gombbal kattintva. A probléma javítását.
+* Ha az erőforrás facsomópont az aktuális keresés közben ki lett szűrve, meg nem sikerült a erőforrás fába lapon és a nyílbillentyűk segítségével keresse meg az erőforrás-fa. Most ha a célzott erőforrás facsomópont rejtett, az első csomópontot az erőforrás-fa lesz automatikusan fordítani.
+* Az extra elválasztó néha lenne a szerkesztő eszköztárban látható. A probléma javítását.
+* A webhely-navigációs szövegmező néha túlcsordulást. A probléma javítását.
+* A Blob és a fájlmegosztás szerkesztők néha folyamatosan frissíti, amikor egyszerre sok fájlok feltöltése. A probléma javítását.
+* A "Mappa statisztika" szolgáltatás nem célja a megosztás pillanatképek Fájlkezelés nézetben kellett. Most már le lett tiltva.
+* Linux a Fájl menü nem jelent meg. A probléma javítását.
+* Feltöltésekor a rendszer egy mappát egy fájlmegosztáshoz, alapértelmezés szerint, csak a mappa tartalmát is töltődött fel. Most az alapértelmezés lesz töltse fel a mappa tartalmát egy megfelelő mappába a fájlmegosztásban.
+* Gombok számos párbeszédpanelt a rendezés kellett lettek fordítva. A probléma javítását.
+* Különféle biztonsági javításokat.
+
+### <a name="known-issues"></a>Ismert problémák
+* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors elérés érdekében. Ezt követően a fókusz, frissítse az összes is.
+* Ha Azure verem célzó, bizonyos fájlokat, hozzáfűző blobok feltöltése meghiúsulhat.
+* Után a "Mégse gombra" kattintva meg olyan feladatra, ez eltarthat egy kis ideig, megszakítja a tevékenység. Ennek oka az itt leírt Mégse szűrő megoldást használunk. 
+* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd akkor kell biztosítani, hogy a döntési elfelejti Tártallózó újraindítására.
+* Blobok (külön-külön vagy átnevezett blob tárolóhoz belül) átnevezése nem őrzi meg a pillanatképeket. Minden más tulajdonságok és metaadatok BLOB-, fájl-és entitások egy átnevezési megőriz.
+* Bár az Azure-verem jelenleg nem támogatja a fájlmegosztásokat, fájlmegosztások csomópont továbbra is egy csatolt verem Azure storage-fiók alatt jelenik meg.
+* A Tártallózó által használt elektronsugár rendszerhéj problémák léptek fel néhány (grafikus processzorral) GPU-hardveres gyorsítás rendelkezik. A Tártallózó (üres) üres fő ablak megjelenítése, ha megpróbálhatja Tártallózó indítása a parancssorból, és a GPU gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* A Linux-felhasználók számára, szüksége lesz a telepítendő [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Ubuntu 14.04 felhasználójához, meg kell győződnie arról ÖET folyamatosan naprakész adatokat tartalmazzon – ezt megteheti a következő parancsok futtatásával, és indítsa újra a számítógépet:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a számítógépet erre:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Korábbi kiadások
+
+* [0.9.6 verzió](#version-096)
+* [0.9.5 verzió](#version-095)
+* [0.9.4 és 0.9.3-as verzió](#version-094-and-093)
+* [0.9.2 verzió](#version-092)
+* [0.9.1 és 0.9.0-s verziója](#version-091-and-090)
+* [0.8.16 verzió](#version-0816)
+* [0.8.14 verzió](#version-0814)
+* [0.8.13 verzió](#version-0813)
+* [0.8.12 és 0.8.11 és 0.8.10 verzió](#version-0812-and-0811-and-0810)
+* [0.8.9 és 0.8.8 verzió](#version-089-and-088)
+* [0.8.7 verzió](#version-087)
+* [0.8.6 verzió](#version-086)
+* [0.8.5 verzió](#version-085)
+* [0.8.4 verzió](#version-084)
+* [0.8.3 verzió](#version-083)
+* [0.8.2 verzió](#version-082)
+* [0.8.0 verzió](#version-080)
+* [0.7.20160509.0 verzió](#version-07201605090)
+* [0.7.20160325.0 verzió](#version-07201603250)
+* [0.7.20160129.1 verzió](#version-07201601291)
+* [0.7.20160105.0 verzió](#version-07201601050)
+* [0.7.20151116.0 verzió](#version-07201511160)
 
 ## <a name="version-096"></a>0.9.6 verzió
 02/28/2018
@@ -66,30 +161,6 @@ A cikkben a kibocsátási megjegyzések a 0.9.6. Azure Tártallózó (előzetes 
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Korábbi kiadások
-
-* [0.9.5 verzió](#version-095)
-* [0.9.4 és 0.9.3-as verzió](#version-094-and-093)
-* [0.9.2 verzió](#version-092)
-* [0.9.1 és 0.9.0-s verziója](#version-091-and-090)
-* [0.8.16 verzió](#version-0816)
-* [0.8.14 verzió](#version-0814)
-* [0.8.13 verzió](#version-0813)
-* [0.8.12 és 0.8.11 és 0.8.10 verzió](#version-0812-and-0811-and-0810)
-* [0.8.9 és 0.8.8 verzió](#version-089-and-088)
-* [0.8.7 verzió](#version-087)
-* [0.8.6 verzió](#version-086)
-* [0.8.5 verzió](#version-085)
-* [0.8.4 verzió](#version-084)
-* [0.8.3 verzió](#version-083)
-* [0.8.2 verzió](#version-082)
-* [0.8.0 verzió](#version-080)
-* [0.7.20160509.0 verzió](#version-07201605090)
-* [0.7.20160325.0 verzió](#version-07201603250)
-* [0.7.20160129.1 verzió](#version-07201601291)
-* [0.7.20160105.0 verzió](#version-07201601050)
-* [0.7.20151116.0 verzió](#version-07201511160)
 
 ## <a name="version-095"></a>0.9.5 verzió
 02/06/2018

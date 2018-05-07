@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: 10b2bf863540330a57b5aecac438f2b9e4bc8a74
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 7e489db0d9a65b850df41360ce11616d518c5265
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>VPN-átjáró Azure verem kapcsolatos
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
@@ -94,7 +94,7 @@ Az alábbi táblázatban az átjárótípusok és azok becsült összesített á
 |**Nagy teljesítményű Termékváltozat** | 200 Mbps    | 5 |
 ***(1)***  A VPN esetén átviteli sebesség nem garantált átviteli sebességgel létesítmények közötti kapcsolatok az interneten keresztül. Ez a maximális mérhető teljesítmény.  
 ***(2)***  Maximális alagutak száma nem haladhatja meg az összes előfizetést Azure verem üzemelő példányonként.  
-***(3)***  Az alapszintű termékváltozat nem támogatott a BGP.  
+***(3)***  Az alapszintű termékváltozat nem támogatott a BGP.
 
 ## <a name="next-steps"></a>További lépések
 További tudnivalók [VPN-átjárók beállításainak](azure-stack-vpn-gateway-settings.md) Azure verem.

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: f92629a3a5d20cce050aa7f124b140b1f4eb32d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 41b756855ea91db291f4fdb5a963993de4b9cd7e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Az Azure Active Directory B2C: Egyéni házirendek konfigurálása a felhasználói felület testreszabása
 
@@ -143,7 +143,7 @@ A legfelső szintű alatt *\<TrustFrameworkPolicy\>* címke, keresse meg *\<Buil
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése **futtatása most**
 
-1. Az a **az Azure AD B2C** paneljén lépjen **összes házirendek**.
+1. Az a **az Azure AD B2C** paneljén lépjen **házirend**.
 2. Válassza ki az egyéni házirendet, feltöltött, majd kattintson a **futtatása most** gombra.
 3. Az e-mail címükkel iratkozhat fel kell lennie.
 

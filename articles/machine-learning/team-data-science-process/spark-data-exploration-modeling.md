@@ -3,7 +3,7 @@ title: Az adatok feltárása és Spark modellezés |} Microsoft Docs
 description: Az feltárására és modellezési képességek az Azure-on a Spark MLlib eszközkészlet bővíthető.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: b989b918-5ba5-4696-b8d0-76ae510a23f4
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: bradsev
-ms.openlocfilehash: c796cc5f19ac3a30d2cdf72b8fea2813a1586c1b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: d505d432897eb7f4e792b45a95ec91ce1802eeb8
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -908,7 +908,7 @@ Coefficients: [0.00457675809917, -0.0226314167349, -0.0191910355236, 0.246793409
 
 INTERCEPT: 0.853872718283
 
-RMSE = 1.24190115863
+GYÖKÁTLAGOS = 1.24190115863
 
 R-sqr = 0.608017146081
 
@@ -960,7 +960,7 @@ Ebben a szakaszban a kód bemutatja, hogyan képzése, értékelje ki és mentse
 
 **A KIMENETRE:**
 
-RMSE = 0.891209218139
+GYÖKÁTLAGOS = 0.891209218139
 
 R-sqr = 0.759661334921
 
@@ -1017,7 +1017,7 @@ R-sqr = 0.753835096681
 
 Cella fent ideje: 34.52 másodperc
 
-**Plot**
+**Ábrázolása**
 
 *tmp_results* az előző cella Hive tábla néven van regisztrálva. Kerülnek a kimenetbe az eredményeket a táblából a *sqlResults* adatok-keret ábrázolásához. A kód itt látható
 

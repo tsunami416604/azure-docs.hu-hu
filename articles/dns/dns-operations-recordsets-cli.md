@@ -1,10 +1,10 @@
 ---
-title: "Az Azure DNS az Azure CLI 2.0 használatával DNS-rekordok kezelése |} Microsoft Docs"
-description: "DNS-rekordhalmazok és az Azure DNS-rekordok kezelése esetén az Azure DNS-tartomány. Minden CLI 2.0 parancsok rekordhalmazokat és rekordokat műveleteket."
+title: Az Azure DNS az Azure CLI 2.0 használatával DNS-rekordok kezelése |} Microsoft Docs
+description: DNS-rekordhalmazok és az Azure DNS-rekordok kezelése esetén az Azure DNS-tartomány. Minden CLI 2.0 parancsok rekordhalmazokat és rekordokat műveleteket.
 services: dns
 documentationcenter: na
 author: KumudD
-manager: carmonm
+manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: kumud
-ms.openlocfilehash: 6f8a462a8de93d75f0555397bea548d2b5122c09
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3b083f8c090fda861def7099479985419a698856
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>DNS-rekordok és az az Azure CLI 2.0 verziót használja Azure DNS rekordhalmazok kezelése
 
@@ -223,7 +223,7 @@ Nem hozzáadása, eltávolítása vagy módosítása a rekordokat az automatikus
 
 Ellentétben a legtöbb más rekordtípusokhoz egy olyan CNAME-rekordhalmazt csak egyetlen rekordot tartalmazhat.  Felvesz egy új bejegyzést, és a meglévő rekord, mint a más rekordtípusokhoz eltávolításával, ezért nem cserélhető le a jelenlegi érték.
 
-Ehelyett egy olyan CNAME rekordot módosításához használható `az network dns record-set cname set-record`. Útmutatásért lásd:`az network dns record-set cname set-record --help`
+Ehelyett egy olyan CNAME rekordot módosításához használható `az network dns record-set cname set-record`. Útmutatásért lásd: `az network dns record-set cname set-record --help`
 
 A példa módosítja a CNAME rekord *www* a zónában *contoso.com*, erőforráscsoportban *MyResourceGroup*, mutasson a "www.fabrikam.net" helyett a meglévő értéket:
 

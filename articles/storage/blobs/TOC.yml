@@ -108,34 +108,51 @@
           href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Lapblobok funkciói
           href: storage-blob-pageblob-overview.md
-        - name: Prémium szintű Storage
+        - name: Azure Disks
           items:
-            - name: Linux
+            - name: Prémium szintű Storage
               items:
-                - name: Nagy teljesítményű Premium Storage szolgáltatás virtuálisgép-lemezekhez
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage'
-                - name: Áttelepítés a Premium Storage-ba az Azure Site Recoveryvel
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery'
-                - name: Nagy teljesítményű rendszer tervezése
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage-performance'
-            - name: Windows
+                - name: Linux
+                  items:
+                    - name: Nagy teljesítményű Premium Storage szolgáltatás virtuálisgép-lemezekhez
+                      href: ../../virtual-machines/linux/premium-storage.md
+                    - name: Áttelepítés a Premium Storage-ba az Azure Site Recoveryvel
+                      href: ../../virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery.md
+                    - name: Nagy teljesítményű rendszer tervezése
+                      href: ../../virtual-machines/linux/premium-storage-performance.md
+                - name: Windows
+                  items:
+                    - name: Nagy teljesítményű Premium Storage szolgáltatás virtuálisgép-lemezekhez
+                      href: ../../virtual-machines/windows/premium-storage.md
+                    - name: Áttelepítés a Premium Storage-ba az Azure Site Recoveryvel
+                      href: ../../virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery.md
+                    - name: Nagy teljesítményű rendszer tervezése
+                      href: ../../virtual-machines/windows/premium-storage-performance.md
+            - name: Standard szintű Storage
               items:
-                - name: Nagy teljesítményű Premium Storage szolgáltatás virtuálisgép-lemezekhez
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage'
-                - name: Áttelepítés a Premium Storage-ba az Azure Site Recoveryvel
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery'
-                - name: Nagy teljesítményű rendszer tervezése
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance'
-        - name: Standard szintű Storage
-          items:
-            - name: Linux
+                - name: Linux
+                  items:
+                    - name: Standard szintű tárolás virtuálisgép-lemezekhez
+                      href: ../../virtual-machines/linux/standard-storage.md
+                - name: Windows
+                  items:
+                    - name: Standard szintű tárolás virtuálisgép-lemezekhez
+                      href: ../../virtual-machines/windows/standard-storage.md
+            - name: Csatlakoztatott virtuális merevlemezek hibaelhárítása
+              href: storage-troubleshoot-vhds.md
               items:
-                - name: Standard szintű tárolás virtuálisgép-lemezekhez
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/standard-storage'
-            - name: Windows
-              items:
-                - name: Standard szintű tárolás virtuálisgép-lemezekhez
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage'
+                - name: Linux
+                  items:
+                    - name: Tárolási erőforrások törlési hibái
+                      href: ../../virtual-machines/linux/storage-resource-deletion-errors.md
+                    - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
+                      href: ../../virtual-machines/linux/unexpected-reboots-attached-vhds.md
+                - name: Windows
+                  items:
+                    - name: Tárolási erőforrások törlési hibái
+                      href: ../../virtual-machines/windows/storage-resource-deletion-errors.md
+                    - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
+                      href: ../../virtual-machines/windows/unexpected-reboots-attached-vhds.md
     - name: Biztonságos
       items:
         - name: Biztonsági útmutató

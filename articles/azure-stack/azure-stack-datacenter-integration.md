@@ -1,25 +1,25 @@
 ---
-title: "Általános datacenter integrációs szempontjai Azure verem integrált rendszerek |} Microsoft Docs"
-description: "Ismerje meg, mi mindent most tervezhető meg és készítse elő a datacenter integrációja több csomópontos Azure verem."
+title: Általános datacenter integrációs szempontjai Azure verem integrált rendszerek |} Microsoft Docs
+description: Ismerje meg, mi mindent most tervezhető meg és készítse elő a datacenter integrációja több csomópontos Azure verem.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 25ef6ba9ff105486f39cee8b6181a8c63e64ec13
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integrált Azure verem rendszerek Datacenter integrációs szempontjai
 Ha érdekli, egy integrált Azure verem rendszerben, tisztában kell lennie egy központi telepítés, és hogy a rendszer hogyan illeszkedik az Adatközpont a fő szempontokat. Ez a cikk a magas szintű áttekintést nyújt az ezeket a szempontokat segítséget nyújtanak az Azure-verem többcsomópontos rendszer fontos infrastruktúra döntéseket. Ezeket a szempontokat megértését megkönnyíti módon működik-e az OEM hardver gyártójánál azok telepítése Azure verem az Adatközpont.  
@@ -50,7 +50,9 @@ Ha magasabb szintű hozzáférési problémák megoldásához, amelyek nem megol
 ## <a name="identity-considerations"></a>Identitás kapcsolatos szempontok
 
 ### <a name="choose-identity-provider"></a>Válassza ki az identitásszolgáltató
-Fontolja meg, melyik identitásszolgáltató az Azure Alkalmazásveremben üzembe, vagy Azure AD vagy AD FS használni kívánt lesz szüksége. Identitás-szolgáltatóktól nem lehet átállítani a központi telepítés nélkül teljes rendszer újbóli üzembe helyezése után.
+Fontolja meg, melyik identitásszolgáltató az Azure Alkalmazásveremben üzembe, vagy Azure AD vagy AD FS használni kívánt lesz szüksége. Identitás-szolgáltatóktól nem lehet átállítani a központi telepítés nélkül teljes rendszer újbóli üzembe helyezése után. Ha nem rendelkezik az Azure AD-fiókot, és a Felhőszolgáltató által biztosított olyan fiókot használjon, és úgy dönt, hogy a szolgáltató váltson, és használjon egy másik Azure AD fiókot, ezen a ponton fog kell fordulnia annak érdekében, hogy a megoldás f újbóli telepítéséhez vagy, a költség mellett.
+
+
 
 Az identitás szolgáltató választásra nincs hatással a bérlői virtuális gépeket, a identitásrendszere és fiókokat használnak, hogy lehetővé teszi azok csatlakoztatását egy Active Directory-tartomány, stb. Ez a külön.
 

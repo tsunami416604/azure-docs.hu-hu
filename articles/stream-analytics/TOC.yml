@@ -76,6 +76,8 @@
           href: stream-analytics-high-frequency-trading.md
         - name: IoT-streamadatok feldolgozása
           href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+        - name: Küszöbérték-alapú szabályok
+          href: stream-analytics-threshold-based-rules.md
     - name: Figyelés
       items:
         - name: Feladatok monitorozása – Azure Portal

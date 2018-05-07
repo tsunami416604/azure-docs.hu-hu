@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - tervezése"
-description: "FedRAMP webes alkalmazások Automation - tervezése"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - tervezése
+description: FedRAMP webes alkalmazások Automation - tervezése
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: d5e5666db71ac9f5a136c9acb448fb13bf39a853
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="planning-pl"></a>Tervezési (PL)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy biztonsági házirend célja, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás, koordinációs orvosló tervezése szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a biztonsági házirend és biztonsági vezérlők; tervezési tervezési végrehajtásának megkönnyítése ellenőrzi, és frissíti az aktuális biztonsági házirend tervezése [hozzárendelés: szervezet által meghatározott gyakoriság]; biztonsági tervezési eljárásokat és [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -39,13 +39,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-pl-2a"></a>NIST 800-53 Control PL-2.a
+ ## <a name="nist-800-53-control-pl-2a"></a>A NIST 800-53 vezérlő PL-2.a
 
 #### <a name="system-security-plan"></a>Rendszer biztonsági csomag
 
 **PL-2.a** a szervezet házon belül fejlesztett alkalmazásokra a adatokat a rendszer, amely megfelel a szervezet vállalati architektúra; explicit módon határozza meg a rendszer engedélyezési határa; ismerteti a működési környezetben, egy biztonsági tervezése az információk rendszer feladatok és az üzleti folyamatok; Itt az adatokat a rendszer, beleértve a profilkategóriák; támogató biztonsági kategorizálása ismerteti, a rendszer és kapcsolatokkal vagy más információs rendszerekkel használt; kapcsolatok működési környezetbe a rendszer a biztonsági követelmények áttekintése bármely megfelelő átfedések azonosítja, ha van ilyen; ismerteti a biztonsági intézkedések, vagy a tervezett teljesíti-e követelményeket, ideértve a tailoring döntéseket; egy indoklása és tekintse át, és jóváhagyott engedélyező hivatalos vagy kijelölt képviselő terv végrehajtása előtt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -53,13 +53,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-pl-2b"></a>NIST 800-53 Control PL-2.b
+ ## <a name="nist-800-53-control-pl-2b"></a>A NIST 800-53 vezérlő PL-2.b
 
 #### <a name="system-security-plan"></a>Rendszer biztonsági csomag
 
 **PL-2.b** a szervezet a biztonsági tervnek másolatait továbbítja, és a terv bekövetkező változások kommunikál [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-2.c** a szervezet ellenőrzi, hogy az adatokat a rendszer biztonsági tervezése [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-2.d** a szervezet a terv frissíti az adatokat rendszer/környezet művelet vagy terv végrehajtása vagy a biztonsági vezérlő értékelések során azonosított problémák cím módosításai.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-2.e** A szervezet védje a biztonsági tervnek a jogosulatlan és a módosítása.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-2 (3)** a szervezeti terveket és koordinálja a rendszer adatokat érintő biztonsági tevékenységek [hozzárendelés: szervezet által meghatározott személyek vagy csoportok] ahhoz, hogy gyakorolt hatása csökkenthető az ilyen tevékenységek végrehajtása előtt egyéb szervezeti entitások.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-4.a** a szervezet hoz létre, és könnyen hozzáférhetővé teszi egyéni felhasználók számára az információs rendszer való hozzáférést igénylő a szabályokat, a felelősségeket és az információkat és adatokat rendszer várt működése használat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-4.b** a szervezet a aláírt visszaigazolás fogad ilyen egyéni felhasználók számára, jelezve, hogy azok olvasási megértése és elfogadják a viselkedés, a szabályok információkat és az információs rendszer való hozzáférés engedélyezése előtt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-4.c** a szervezet ellenőrzi, és frissíti a viselkedési szabályai [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-4.d** a szervezet megköveteli használhatják, akik regisztráltak a szabályokat, működés, hogy olvassa és írja alá újra a módosított/frissített a szabályok működés esetén egy korábbi verziója.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-4 (1)** a szervezet viselkedés, a közösségi média/hálózati helyek használatának explicit korlátozásai és a szervezeti adatok közzétételét a nyilvános webhelyeken szabályokat tartalmazza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-8.a** a szervezet házon belül fejlesztett alkalmazásokra egy információk biztonsági architektúrája a információs rendszer, amely leírja a teljes alapvetően, követelmények és megközelítést a titkosítás, integritás, védelme végrehajtandó és szervezeti információk; leírja, hogyan információk biztonsági architektúrájának integrálva van, és támogatja a vállalati architektúra; és bármely információ biztonsági feltételezéseket, és a függőségek, külső szolgáltatások ismerteti.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-8.b** a szervezet ellenőrzi, és frissíti az adatokat biztonsági architektúra [hozzárendelés: szervezet által meghatározott gyakoriság] frissítések a vállalati architektúra megfelelően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **PL-8.c** a szervezet biztosítja, hogy tervezett információk biztonsági architektúra módosítások megjelennek a biztonsági tervnek, a biztonsági műveletek koncepció (KONCEPCIÓ) és a szervezeti beszerzésekkel/kérése.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

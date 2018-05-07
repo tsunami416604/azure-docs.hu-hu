@@ -1,25 +1,25 @@
 ---
-title: "Szolgáltatástelepítési konfigurációk az Azure verem Development Kit (ASDK) a POST |} Microsoft Docs"
-description: "Az Azure verem Development Kit (ASDK) telepítése után ellenőrizze az ajánlott konfiguráció változásait ismerteti."
+title: Szolgáltatástelepítési konfigurációk az Azure verem Development Kit (ASDK) a POST |} Microsoft Docs
+description: Az Azure verem Development Kit (ASDK) telepítése után ellenőrizze az ajánlott konfiguráció változásait ismerteti.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 2183576e87aa2fb31f8be8f676a5aee7d52f68df
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4b58f3496b25e4fc04761b9df6e27f8313b35fe9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK telepítés utáni konfigurációs feladatok
 Miután [telepítése a ASDK](asdk-install.md), van néhány ajánlott telepítés utáni konfigurációs módosításokat végezni. 
@@ -37,7 +37,10 @@ Set-PSRepository `
 
  Azure verem kompatibilis AzureRM-modulok API-verzió profilok keresztül telepített. Azure verem a 2017-03-09-profil API verziója profilt, amely érhető el a AzureRM.Bootstrapper-modul telepítése szükséges. 
  
- A verem Azure PowerShell vagy a ASDK gazdaszámítógéphez internetkapcsolat nélkül telepítheti:
+ A legújabb Azure verem PowerShell-modul is telepíthet, vagy a ASDK gazdaszámítógéphez internetkapcsolat nélkül:
+
+> [!IMPORTANT]
+> A szükséges verzió telepítése előtt győződjön meg arról, hogy [távolítsa el a meglévő Azure PowerShell modul](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
 
 - **Internetkapcsolat** az ASDK állomásról. Ezek a modulok telepítését az development kit telepítése a következő PowerShell-parancsfájl futtatása:
 

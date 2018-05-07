@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy Azure Application Gateway - Azure CLI 1.0 |} Microsoft Docs"
-description: "Útmutató Alkalmazásátjáró létrehozása az Azure CLI 1.0 erőforrás-kezelő használatával"
+title: Hozzon létre egy Azure Application Gateway - Azure CLI 1.0 |} Microsoft Docs
+description: Útmutató Alkalmazásátjáró létrehozása az Azure CLI 1.0 erőforrás-kezelő használatával
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: davidmu
-ms.openlocfilehash: fe50fb3a7434702101dc5ae7a9dd176a33423119
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 3d67e896da5e616e443fc4e1edd9aaafb0f0e2f9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Alkalmazásátjáró létrehozása az Azure parancssori felület használatával
 
@@ -67,7 +67,7 @@ Nyissa meg a **Microsoft Azure parancssori**, és jelentkezzen be.
 azure login
 ```
 
-Miután beírta a fenti példában, a kód valósul meg. Nyissa meg a böngészőben a bejelentkezési folyamat folytatásához https://aka.ms/devicelogin.
+Miután beírta a fenti példában, a kód valósul meg. Navigáljon a https://aka.ms/devicelogin egy böngészőben a bejelentkezési folyamat folytatásához.
 
 ![cmd megjelenítő eszköz-bejelentkezés][1]
 

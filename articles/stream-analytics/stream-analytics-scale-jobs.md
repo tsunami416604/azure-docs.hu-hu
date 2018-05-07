@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2868ebd459f937f8621086b16c63f89842f376be
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Egy Azure Stream Analytics-feladat átviteli sebesség növelése méretezése
 Ez a cikk bemutatja, hogyan finomhangolhatják a Stream Analytics lekérdezési Streaming Analytics-feladatok átviteli sebesség növelése. Ez az útmutató segítségével méretezni a feladat magasabb terhelés kezelésére, és több rendszererőforrást (például a nagyobb sávszélességet, több Processzor-erőforrások, több memória) előnyeit.
@@ -31,7 +31,8 @@ Ha a lekérdezés nem teljesen eredendően párhuzamosítható bemeneti partíci
         - Ha a probléma fogadó szabályozás miatt, szükség lehet a kimeneti partíciók számának növelése (és is a partíciók teljesen párhuzamosítható tartani a feladat bemeneti), vagy növelje a gyűjtő (például CosmosDB kérelem egységek száma) erőforrásainak mennyiségét.
     - A feladat ábra esetében egy partíció várakozó esemény metrikáját minden beviteli /. A várakozó események metrika tartja a növelését, esetén is azt jelzi, hogy a rendszer erőforrás által korlátozott (vagy kimeneti fogadó sávszélesség-szabályozás, vagy a nagy CPU miatt).
 4.  Miután megadta, hogy egy 6 SU feladat érheti határain, úgy extrapolálják lineárisan a feldolgozási kapacitás, a feladat hozzáadása során több SUS-t, feltéve, hogy nincs döntés adatokat, amelyek bizonyos partíció "Forró".
->[!Note]
+
+> [!NOTE]
 > Válassza ki a megfelelő Streaming Units számát: a Stream Analytics a feldolgozási főcsomópont hoz létre, az egyes 6 SU hozzáadni, mert érdemes ellenőrizze a bemeneti partíciók száma osztója a csomópontok számát, a partíciók egyenletes eloszlású a csomópontjai között.
 > Például a 6 mért SU feladat érhető el a 4 MB/s feldolgozási sebesség és a bemeneti partíciók száma érték a 4. Ha szeretné, a feladat futtatásához 12 SU körülbelül 8 MB/s feldolgozási sebességét eléréséhez, vagy 24 SU 16 MB/s eléréséhez. Ezután eldöntheti, ha a feladat milyen értéket, és a bemeneti függvényében SU számának növeléséhez.
 

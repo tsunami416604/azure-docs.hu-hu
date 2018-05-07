@@ -3,7 +3,7 @@ title: Az Azure DNS - PowerShell DNS-zónák kezelése |} Microsoft Docs
 description: DNS-zónák Azure Powershell használatával kezelheti. Ez a cikk ismerteti, hogyan frissítés, törlés és DNS-zóna létrehozása az Azure DNS szolgáltatásra
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.assetid: a67992ab-8166-4052-9b28-554c5a39e60c
 ms.service: dns
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
-ms.author: gwallace
-ms.openlocfilehash: b9c263acf754a72cde5b2716703b8e771a349457
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: kumud
+ms.openlocfilehash: e7b0bc32d3fa8fbcf73298b6988655fca7cfa793
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell-lel DNS-zónák kezelése
 
@@ -52,7 +52,7 @@ A következő példa bemutatja, hogyan hozzon létre egy DNS-zónát és két [A
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Az Azure DNS most is támogatja a saját DNS-zóna (jelenleg a nyilvános előzetes verzió).  További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md). Például a saját DNS-zóna létrehozását, [Ismerkedés az Azure DNS-titkos zónák PowerShell-lel](./private-dns-getstarted-powershell.md).
+Az Azure DNS már támogatja a privát DNS-zónák használatát (jelenleg nyilvános előzetes verzióban érhető el).  További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md). További információt a privát DNS-zónák létrehozásáról [az Azure DNS privát zónái PowerShell segítségével történő használatának első lépéseit](./private-dns-getstarted-powershell.md) ismertető cikkben olvashat.
 
 ## <a name="get-a-dns-zone"></a>A DNS-zóna beolvasása
 
@@ -71,23 +71,23 @@ NumberOfRecordSets    : 2
 MaxNumberOfRecordSets : 5000
 ```
 
-## <a name="list-dns-zones"></a>Lista DNS-zónák
+## <a name="list-dns-zones"></a>DNS-zónák listázása
 
-A zóna nevét a kihagyásával őriznek `Get-AzureRmDnsZone`, minden zóna erőforráscsoportban enumerálása. Ez a művelet a zóna objektumok tömbjét adja vissza.
+Ha kihagyja a zóna nevét a `Get-AzureRmDnsZone` parancsból, felsorolhatja az egy erőforráscsoportba tartozó összes zónát. Ez a művelet zónaobjektumok tömbjét adja vissza.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
-A zóna nevét, mind az erőforráscsoport neve a kihagyásával őriznek `Get-AzureRmDnsZone`, az Azure-előfizetés az összes zóna enumerálása.
+Ha a zóna és az erőforráscsoport nevét is kihagyja a `Get-AzureRmDnsZone` parancsból, felsorolhatja az Azure-előfizetéshez tartozó összes zónát.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone
 ```
 
-## <a name="update-a-dns-zone"></a>A DNS-zóna frissítéséhez
+## <a name="update-a-dns-zone"></a>DNS-zóna frissítése
 
-A DNS-zóna erőforrás is lehet módosítani a `Set-AzureRmDnsZone`. Ez a parancsmag nem frissíti a DNS-rekordhalmazok a zónán belül (lásd: [kezelése DNS-rekordok hogyan](dns-operations-recordsets.md)). Csak a zóna erőforrás maga tulajdonságainak frissítésére szolgál. Az írható zóna tulajdonságai jelenleg csak a [Azure Resource Manager "címkék" a zóna erőforrás](dns-zones-records.md#tags).
+A DNS-zóna erőforrásai a `Set-AzureRmDnsZone` parancsmaggal módosíthatók. Ez a parancsmag nem frissíti a zóna egy DNS-rekordhalmazát sem (lásd a [DNS-rekordok kezeléséről szóló részt](dns-operations-recordsets.md)). Csak a zónaerőforrás tulajdonságainak frissítésére használatos. Az írható zóna tulajdonságai jelenleg csak a [Azure Resource Manager "címkék" a zóna erőforrás](dns-zones-records.md#tags).
 
 A DNS-zóna frissítéséhez az alábbi két módszer egyikével:
 
@@ -99,7 +99,7 @@ Ez a megközelítés lecseréli a meglévő zóna címkék megadott értékek.
 Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Adjon meg egy $zone objektum használatával
+### <a name="specify-the-zone-using-a-zone-object"></a>Zóna megadása egy $zone objektum használatával
 
 Ez a megközelítés átveszi a meglévő zóna objektumot, módosítja a címkék és majd véglegesíti a módosításokat. Ezzel a módszerrel meglévő címkék megőrizhetők.
 
@@ -119,34 +119,34 @@ Set-AzureRmDnsZone -Zone $zone
 
 Használata esetén `Set-AzureRmDnsZone` $zone objektummal [Etag ellenőrzi](dns-zones-records.md#etags) biztosítják az egyidejű változtatások nem íródnak felül. A választható használható `-Overwrite` kapcsoló ezen ellenőrzések letiltásához.
 
-## <a name="delete-a-dns-zone"></a>Delete a DNS Zone
+## <a name="delete-a-dns-zone"></a>A DNS-zóna törlése
 
 DNS-zónák segítségével törölhetők a `Remove-AzureRmDnsZone` parancsmag.
 
 > [!NOTE]
-> Is egy DNS-zóna törlésével törli az összes DNS-rekordokat a zónán belül. Ez a művelet nem vonható vissza. Ha a DNS-zóna használatban van, a zóna szolgáltatásokat sikertelen lesz a zóna törlődik.
+> A DNS-zónák törlésével a zónában található összes DNS-rekord is törlődni fog. Ez a művelet nem vonható vissza. Ha a DNS-zóna használatban van, a zónát használó szolgáltatások futtatása meghiúsul a zóna törlésekor.
 >
->A zóna véletlen törlés elleni védelem érdekében, lásd: [hogyan védi a DNS-zónák és rekordok](dns-protect-zones-recordsets.md).
+>A zónák véletlen törlése elleni védelemről további információt talál a [DNS-zónák és -rekordok védelme](dns-protect-zones-recordsets.md) című szakaszban.
 
 
-Használja a DNS-zóna törlése a következő két módszer egyikével:
+DNS-zónák törléséhez használja az alábbi két módszer egyikét:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Adja meg a zóna nevét és az erőforráscsoport-név használatával
+### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Zóna megadása a zóna és az erőforráscsoport nevének használatával
 
 ```powershell
 Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Adjon meg egy $zone objektum használatával
+### <a name="specify-the-zone-using-a-zone-object"></a>Zóna megadása egy $zone objektum használatával
 
-Megadhatja a zónát, hogy törölni kell a `$zone` által visszaadott objektum `Get-AzureRmDnsZone`.
+A törölni kívánt zóna egy, a `Get-AzureRmDnsZone` parancs által visszaadott `$zone` objektummal adható meg.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 Remove-AzureRmDnsZone -Zone $zone
 ```
 
-A zóna objektum is átirányítható paraméterként átadott helyett:
+A zónaobjektum paraméterként való továbbítása helyett át is adhatja azt.
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureRmDnsZone
@@ -155,17 +155,17 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 A `Set-AzureRmDnsZone`, adja meg a zóna használatával egy `$zone` objektum lehetővé teszi, hogy a Etag ellenőrzi, hogy ellenőrizze a egyidejű változtatások nem törlődnek. Használja a `-Overwrite` kapcsoló ezen ellenőrzések letiltásához.
 
-## <a name="confirmation-prompts"></a>Megerősítés
+## <a name="confirmation-prompts"></a>Megerősítési kérések
 
-A `New-AzureRmDnsZone`, `Set-AzureRmDnsZone`, és `Remove-AzureRmDnsZone` parancsmagok minden megerősítés támogatja.
+A `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` és `Remove-AzureRmDnsZone` parancsmagok mind támogatják a megerősítési kérések használatát.
 
-Mindkét `New-AzureRmDnsZone` és `Set-AzureRmDnsZone` megerősítés kérése, ha a `$ConfirmPreference` PowerShell preferenciaváltozót értéke `Medium` vagy alacsonyabb. Törli a DNS-zónát, potenciálisan nagy jelentőségű miatt a `Remove-AzureRmDnsZone` parancsmag kell megerősítést kérni fogja, ha a `$ConfirmPreference` PowerShell változó értéke bármely eltérő `None`.
+A `New-AzureRmDnsZone` és a `Set-AzureRmDnsZone` egyaránt kér megerősítést, ha a `$ConfirmPreference` PowerShell-preferenciaváltozó értéke `Medium` vagy kisebb. A DNS-zónák lehetséges súlyos hatásai miatt a `Remove-AzureRmDnsZone` parancsmag felkéri a művelet megerősítésére, ha a `$ConfirmPreference` PowerShell-változó értéke más, mint `None`.
 
-Az alapértelmezett érték óta `$ConfirmPreference` van `High`, csak `Remove-AzureRmDnsZone` alapértelmezés szerint rákérdez.
+Mivel a `$ConfirmPreference` alapértelmezett értéke `High`, csak a `Remove-AzureRmDnsZone` parancsmag kér alapértelmezés szerint megerősítést.
 
-Ha szeretné felülbírálni az aktuális `$ConfirmPreference` használatának beállítása a `-Confirm` paraméter. Ha megad `-Confirm` vagy `-Confirm:$True` , a parancsmag megerősítést kér, mielőtt futtatja. Ha megad `-Confirm:$False` , a parancsmag nem figyelmeztet megerősítést kér.
+A jelenlegi `$ConfirmPreference` beállítás a `-Confirm` paraméter használatával írható felül. Ha `-Confirm` vagy `-Confirm:$True` értéket ad meg, a parancsmag megerősítést fog kérni a futtatása előtt. Ha `-Confirm:$False` értéket ad meg, a parancsmag nem kér megerősítést.
 
-További információ `-Confirm` és `$ConfirmPreference`, lásd: [kapcsolatos Preferenciaváltozók](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
+A `-Confirm` és `$ConfirmPreference` értékekkel kapcsolatos további információt [a preferenciaváltozók bemutatását](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables) tartalmazó részben talál.
 
 ## <a name="next-steps"></a>További lépések
 

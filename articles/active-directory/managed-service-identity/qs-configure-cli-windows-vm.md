@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 0f167fef2303ff3b552b9924db3eae9a07c1cb69
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 6b8497f03281028c8a26cd66ac6afabf63911a65
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Felügyelt szolgáltatás identitásának (MSI) konfigurálása az Azure virtuális gép Azure parancssori felület használatával
 
@@ -113,10 +113,11 @@ Ez a szakasz végigvezeti egy felhasználó lehet hozzárendelve identitás hozz
    az group create --name <RESOURCE GROUP> --location <LOCATION>
    ```
 
-2. Hozzon létre egy felhasználó lehet hozzárendelve identitás használatával [az identitás létrehozása](/cli/azure/identity#az_identity_create).  A `-g` paraméter határozza meg az erőforráscsoportot, ahol a felhasználó identitása jön létre, és a `-n` paraméter határozza meg a nevét.
+2. Hozzon létre egy felhasználó lehet hozzárendelve identitás használatával [az identitás létrehozása](/cli/azure/identity#az_identity_create).  A `-g` paraméter határozza meg az erőforráscsoportot, ahol a felhasználó identitása jön létre, és a `-n` paraméter határozza meg a nevét.    
     
     > [!IMPORTANT]
-    > A felhasználói identitások a különleges karakterek (pl. aláhúzásjel) nevében létrehozása jelenleg nem támogatott. Alfanumerikus karaktereket használja. Biztonsági frissítések ellenőrzése.  További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
+    > A felhasználói identitások létrehozása csak alfanumerikus és kötőjel (0 – 9 vagy a-z vagy A-Z vagy -) karaktereket. Emellett nevét kell korlátozni a virtuális gép/VMSS helyes működéséhez hozzárendelés 24 karakter hosszúságot. Biztonsági frissítések ellenőrzése. További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
+
 
     ```azurecli-interactive
     az identity create -g myResourceGroup -n myUserAssignedIdentity

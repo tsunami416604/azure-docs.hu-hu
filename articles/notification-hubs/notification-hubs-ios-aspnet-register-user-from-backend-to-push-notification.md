@@ -1,11 +1,11 @@
 ---
-title: "Az aktuális felhasználó a leküldéses értesítések regisztrálása webes API használatával |} Microsoft Docs"
-description: "Útmutató az iOS-alkalmazásoknak az Azure Notification Hubs a leküldéses értesítési regisztrációban kérése regisztrálás ASP.NET Web API hajtja végre."
+title: Az aktuális felhasználó a leküldéses értesítések regisztrálása webes API használatával |} Microsoft Docs
+description: Útmutató az iOS-alkalmazásoknak az Azure Notification Hubs a leküldéses értesítési regisztrációban kérése regisztrálás ASP.NET Web API hajtja végre.
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 46eb0dab60856d774c8ad2bf7ab55e1ffc6ddb66
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Az aktuális felhasználó a leküldéses értesítések regisztrálása ASP.NET használatával
 > [!div class="op_single_selector"]
@@ -98,7 +98,7 @@ Ez a témakör bemutatja, hogyan kérjen az Azure Notification Hubs leküldéses
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    Az első sor inicializálja a **deviceinfo információja** egypéldányos. A második sor elindul a regisztráció a leküldéses értesítések, amelyek már létezik rendszer már végrehajtotta a [Ismerkedés a Notification Hubs] oktatóanyag.
+    Az első sor inicializálja a **deviceinfo információja** egypéldányos. A második sor elindul a regisztráció a leküldéses értesítések, amelyek már létezik, ha már végrehajtotta a [Ismerkedés a Notification Hubs] oktatóanyag.
 7. A PushToUserAppDelegate.m, valósítja meg a **didRegisterForRemoteNotificationsWithDeviceToken** a AppDelegate a, és adja hozzá a következő kódot:
    
         self.deviceInfo.deviceToken = deviceToken;

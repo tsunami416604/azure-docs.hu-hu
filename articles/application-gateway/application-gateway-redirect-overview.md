@@ -4,7 +4,7 @@ description: További tudnivalók az Azure Application Gateway átirányítási 
 services: application-gateway
 documentationcenter: na
 author: amsriva
-manager: timlt
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
-ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e6352873ea055965b433fbf3e6e46162890e5fec
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="application-gateway-redirect-overview"></a>Átjáró átirányítási – áttekintés
 
@@ -28,7 +28,7 @@ Egy általános forgatókönyv számos webes alkalmazásokhoz, annak érdekében
 2. Elérési út-alapú átirányítási. Az ilyen típusú átirányítási lehetővé teszi, hogy HTTP átirányítást HTTPS csak egy adott hely területre példa egy vásárlásra szolgáló bevásárlókocsiból területre jelölik/bevásárlókocsiból / *.
 3. Külső webhely átirányítása.
 
-![redirect](./media/application-gateway-redirect-overview/redirect.png)
+![az átirányítási](./media/application-gateway-redirect-overview/redirect.png)
 
 Ez a módosítás az ügyfelek kellene hozzon létre egy új átirányítási konfigurációs objektum, amely azt adja meg a cél figyelő vagy a külső helyen, amelyhez átirányítási van szükség. A konfigurációs elem lehetővé az URI elérési út és a lekérdezési karakterlánc hozzáfűzése az átirányított URL-címet is támogatja. Az ügyfelek is sikerült adja átirányítási egyikét (HTTP-állapotkód 302) ideiglenes és állandó átirányítás (HTTP-állapotkód 301). Az átirányítási konfigurációs létrehozása után az új szabály forrás figyelőt van csatolva. Egy alapszintű szabály használata esetén az átirányítási konfigurációs forrás figyelő társított, és globális átirányítás. Elérési út alapú szabály használata esetén az átirányítási konfigurációs az URL-cím elérési út leképezés van definiálva, és ezért csak egy webhely a megadott elérési út területére.
 

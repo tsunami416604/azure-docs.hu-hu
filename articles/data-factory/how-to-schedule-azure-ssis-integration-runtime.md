@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 2ccde1a4eaff391dccf1b5f624257479acb263cb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
 Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)). Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Ebben a cikkben leírt magas szintű lépései a következők:
@@ -69,21 +69,20 @@ Ha egy Azure Automation-fiók nem rendelkezik, hozzon létre ebben a lépésben 
 
 ### <a name="import-data-factory-modules"></a>Adat-előállító modul importálása
 
-1. Válassza ki **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és ellenőrizze, hogy rendelkezik **AzureRM.Profile** és **AzureRM.DataFactoryV2** modulok listáján. Ha még nincs telepítve, válassza ki a **Tallózás gallery** az eszköztáron.
+1. Válassza ki **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és ellenőrizze, hogy rendelkezik **AzureRM.Profile** és **AzureRM.DataFactoryV2** modulok listáján. Ha nem a listán, válassza ki a **Tallózás gallery** az eszköztáron és folytassa a következő lépésekkel.
 
-    ![Automatizálási kezdőlap](./media/how-to-schedule-azure-ssis-integration-runtime/automation-modules.png)
-2. Az a **Tallózás gyűjtemény** ablakot, írja be **AzureRM.Profile** a keresési ablak, és nyomja le az **ENTER**. Válassza ki **AzureRM.Profile** a listában. Kattintson a **importálási** az eszköztáron. 
+    > [!IMPORTANT]
+    > Jelenleg, csak használható **AzureRM.DataFactoryV2 0.5.2** és **AzureRM.Profile 4.5.0** modulok.
 
-    ![Válassza ki a AzureRM.Profile](./media/how-to-schedule-azure-ssis-integration-runtime/select-azurerm-profile.png)
-1. Az a **importálási** ablakban válassza ki **elfogadom frissíti az összes Azure modulok** lehetőséget, majd kattintson a **OK**.  
+    ![A szükséges modulokat ellenőrzése](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-    ![AzureRM.Profile importálása](./media/how-to-schedule-azure-ssis-integration-runtime/import-azurerm-profile.png)
-4. Zárja be a windows kattintva visszatérhet a **modulok** ablak. A listában az importálás állapotának kell megjelennie. A lista frissítéséhez kattintson a **Frissítés** gombra. Várjon, amíg megjelenik a **állapot** , **elérhető**.
+2.  A PowerShell-galériában navigáljon a [AzureRM.DataFactoryV2 0.5.2 modul](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2), jelölje be **központi telepítése az Azure Automation**, az Automation-fiók, majd válassza ki és **OK**. Megtekintéséhez lépjen vissza **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és várjon, amíg megjelenik a **állapot** , a **AzureRM.DataFactoryV2 0.5.2**  modul módosítás **elérhető**.
 
-    ![Importálás állapota](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-profile.png)
-1. Ismételje meg az importálandó a **AzureRM.DataFactoryV2** modul. Győződjön meg arról, hogy ez a modul állapotának értéke **elérhető** a folytatás előtt. 
+    ![A Data Factory modul ellenőrzése](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-    ![Végső importálási állapota](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-datafactoryv2.png)
+3.  A PowerShell-galériában navigáljon a [AzureRM.Profile 4.5.0 modul](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0), kattintson a **központi telepítése az Azure Automation**, az Automation-fiók, majd válassza ki és **OK**. Megtekintéséhez lépjen vissza **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és várjon, amíg megjelenik a **állapot** , a **AzureRM.Profile 4.5.0** modul módosítás **elérhető**.
+
+    ![A profil modul ellenőrzése](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
 ### <a name="create-a-powershell-runbook"></a>PowerShell-runbook létrehozása
 Az alábbi eljárások ismertetik PowerShell runbook létrehozása. A parancsfájl vagy a runbookhoz társított elindul vagy leáll egy Azure SSIS-IR alapján állít be a parancsot a **művelet** paraméter. Ez a szakasz nem biztosítanak a részletek runbook létrehozása. További információkért lásd: [létrehozhat egy](../automation/automation-quickstart-create-runbook.md) cikket.

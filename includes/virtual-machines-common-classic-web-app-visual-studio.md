@@ -34,7 +34,7 @@ Egy webalkalmazás létrehozásakor egy virtuális gép létrehozásához köves
     
     ![][5]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha szeretné testre szabni a közzétett parancsfájlok, olvassa el részletesebb információt: [Windows PowerShell parancsfájlok használata a közzététel a fejlesztési és tesztkörnyezetek](http://msdn.microsoft.com/library/dn642480.aspx).
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG

@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy egyéni mintavételt - Azure Application Gateway - Azure portálon |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy egyéni mintavétel az Alkalmazásátjáró a portál használatával"
+title: Hozzon létre egy egyéni mintavételt - Azure Application Gateway - Azure portálon |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy egyéni mintavétel az Alkalmazásátjáró a portál használatával
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: davidmu
-ms.openlocfilehash: bb77c9b39e1aa89f6411de8ec3b1fca41e954bf2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 45737c1c378ec56a5e2bedec8c1f7b7bc7ba6225
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Hozzon létre egy egyéni mintavétel az Alkalmazásátjáró a portál használatával
 
@@ -52,8 +52,8 @@ Mintavételt egy kétlépéses folyamat, a portálon keresztül lehet konfigurá
   |---|---|---|
   |**Name (Név)**|customProbe|Ez az érték egy rövid nevet az vizsgálatot, amely elérhető a portál.|
   |**Protocol (Protokoll)**|HTTP vagy HTTPS | A protokoll, amely a állapotmintáihoz használja.|
-  |**Állomás**|Egytényezős contoso.com|Ez az érték a gazdagép neve a mintavétel használt. Alkalmazandó csak akkor, ha több hely van beállítva az alkalmazás-átjárón, ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásnevét.|
-  |**Elérési út**|/ vagy egy másik elérési utat|A teljes URL-címet az egyéni vizsgálat további része. Érvényes elérési utat kezdődik "/". Az alapértelmezett elérési útja pedig csak http://contoso.com használja "/" |
+  |**Gazdagép**|Egytényezős contoso.com|Ez az érték a gazdagép neve a mintavétel használt. Alkalmazandó csak akkor, ha több hely van beállítva az alkalmazás-átjárón, ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásnevét.|
+  |**Elérési út**|/ vagy egy másik elérési utat|A teljes URL-címet az egyéni vizsgálat további része. Érvényes elérési utat kezdődik "/". Az alapértelmezett elérési útjának http://contoso.com használja "/" |
   |**Időtartam (másodperc)**|30|Milyen gyakran a mintavétel futtassa a állapotának ellenőrzése. Nem ajánlott beállítani az alacsonyabb mint 30 másodperc.|
   |**Időkorlátja (másodperc)**|30|A mintavétel vár, mielőtt túllépné idő mennyiségét. Az időkorlát kell lennie, elég nagy, hogy egy http hívni is győződjön meg arról, a háttér health-oldal érhető el.|
   |**Sérült küszöbérték**|3|Akkor, ha a nem megfelelő sikertelen bejelentkezési kísérletek számát. 0, akkor a küszöbérték, ha a rendszerállapot-ellenőrzés sikertelen a háttér-határozza meg. a nem megfelelő azonnal.|

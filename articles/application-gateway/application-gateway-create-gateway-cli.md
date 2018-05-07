@@ -1,22 +1,22 @@
 ---
-title: "Hozzon létre egy alkalmazás - Azure CLI |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre olyan átjárót az Azure parancssori felület használatával."
+title: Hozzon létre egy alkalmazás - Azure CLI |} Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre olyan átjárót az Azure parancssori felület használatával.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: azurecli
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: bf7e22e86e593045d25a9f31166aebe992caeb45
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 791cc8bca95fc2264b485c23f30e24254067f513
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>Az Azure parancssori felület használatával Alkalmazásátjáró létrehozása
 
@@ -60,13 +60,13 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-backend-servers"></a>Háttér-kiszolgálókat hoz létre
+## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
 Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolgálóként használandó hoz létre. Ellenőrizze, hogy az Alkalmazásátjáró sikeresen létrejött-e a virtuális gépeken telepítése NGINX is.
 
 ### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
 
-A felhő inicializálás konfigurációs fájl segítségével NGINX telepítheti és futtathatja a "Hello, World" Node.js alkalmazást egy Linux virtuális gépen. Az aktuális rendszerhéjban hozzon létre egy fájlt felhő-init.txt, másolja és illessze be a következő konfigurációs a rendszerhéj. Győződjön meg arról, hogy a teljes másolása felhő inicializálás fájl helyes, különösen az első sor:
+Egy cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy „Hello World” Node.js-alkalmazást a Linux rendszerű virtuális gépeken. Az aktuális parancshéjban hozzon létre egy cloud-init.txt nevű fájlt, majd másolja és illessze be a következő konfigurációt a parancshéjba. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -110,7 +110,7 @@ runcmd:
   - nodejs index.js
 ```
 
-A hálózati adapterek létrehozása [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#az_network_nic_create). A virtuális gépek létrehozása [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create).
+A hálózati adapterek létrehozása [az hálózat összevont hálózati létrehozása](/cli/azure/network/nic#az_network_nic_create). Hozza létre a virtuális gépeket az [az vm create](/cli/azure/vm#az_vm_create) paranccsal.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -160,7 +160,7 @@ Az alkalmazás-átjáró hozható létre több percig is eltarthat. Az Alkalmaz�
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-A nyilvános IP-cím, az alkalmazás-átjáró használatához [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
+A nyilvános IP-cím, az alkalmazás-átjáró használatához [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -182,5 +182,5 @@ az group delete --name myResourceGroupAG
  
 ## <a name="next-steps"></a>További lépések
 
-A gyors üzembe helyezés, a létrehozott egy erőforráscsoport, a hálózati erőforrások és a háttérkiszolgálókhoz. Alkalmazásátjáró létrehozásához használt erőforrások majd. További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.
+Ebben a rövid útmutatóban egy erőforráscsoportot, hálózati erőforrásokat és háttérkiszolgálókat hozott létre. Alkalmazásátjáró létrehozásához használt erőforrások majd. További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.
 

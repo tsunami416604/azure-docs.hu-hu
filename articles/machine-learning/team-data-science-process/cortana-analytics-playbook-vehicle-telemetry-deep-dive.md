@@ -1,9 +1,9 @@
 ---
-title: "Ismerteti, hogyan lehet vehicle állapotát, és ki irányítja az előrejelzése részletes bemutatója a szokásokat - Azure |} Microsoft Docs"
-description: "A Cortana Intelligence szolgáltatásai segítségével a vehicle állapotát, és ki irányítja a valós idejű és prediktív dcu szokásokat."
+title: Ismerteti, hogyan lehet vehicle állapotát, és ki irányítja az előrejelzése részletes bemutatója a szokásokat - Azure |} Microsoft Docs
+description: A Cortana Intelligence szolgáltatásai segítségével a vehicle állapotát, és ki irányítja a valós idejű és prediktív dcu szokásokat.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: d8866fa6-aba6-40e5-b3b3-33057393c1a8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: bradsev
-ms.openlocfilehash: 370ab807ef85240238c51d1693796c26981edb15
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: deguhath
+ms.openlocfilehash: 10fe87757a6da8a64e4fbd7fb624fef3e666714c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Vehicle Telemetriai elemzési megoldások forgatókönyv: mély alaposabban tanulmányozhatja a megoldás
 Ez a forgatókönyv szakaszait menü hivatkozásokat: 
@@ -49,7 +49,7 @@ A JSON-formátumú adatkészlet a következő sémát tartalmaz.
 | Üzemanyag |A vehicle üzemanyag szintje |Véletlenszerűen létrehozott szám 0 és 100 (üzemanyag százalékos értéke jelzi) |
 | EngineOil |A vehicle motor olaj szintje |Véletlenszerűen létrehozott szám 0 és 100 (motor olaj százalékos értéke jelzi) |
 | Kulcsszava nyomás |A vehicle kulcsszava nyomás |Véletlenszerűen létrehozott szám 0 és 50 (kulcsszava nyomás százalékos értéke jelzi) |
-| Odometer |A vehicle kilométer olvasása |0 és 200 000 véletlenszerűen létrehozott szám |
+| Kilométer |A vehicle kilométer olvasása |0 és 200 000 véletlenszerűen létrehozott szám |
 | Accelerator_pedal_position |A vehicle gyorsító tartásához lehetőleg keveset pozíciója |Véletlenszerűen létrehozott szám 0 és 100 (gyorsító százalékos értéke jelzi) |
 | Parking_brake_status |Azt jelzi, hogy a vehicle kell itt tartózkodnia vagy sem |IGAZ vagy hamis |
 | Headlamp_status |Azt jelzi, hogy a fényszóró meg vagy nem |IGAZ vagy hamis |

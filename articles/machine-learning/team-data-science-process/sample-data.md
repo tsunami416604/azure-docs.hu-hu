@@ -3,7 +3,7 @@ title: Az Azure blob-tárolókban, SQL Server-adatokat, és a Hive táblák |} M
 description: Hogyan különböző Azure enviromnents tárolt adatokba.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 80a9dfae-e3a6-4cfb-aecc-5701cfc7e39d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 3dede87191b2122168cc9ad2cdf0a27c5e4908b4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 73b0d3992627b7787ee46e61f62717a545c5b9e2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="heading"></a>Az Azure blob-tárolókban, SQL Server-adatokat, és a Hive táblák
 Ez a dokumentum a cikkeket a három különböző Azure helyek egyikén tárolt adatok módjának mutató hivatkozásokat tartalmaz:

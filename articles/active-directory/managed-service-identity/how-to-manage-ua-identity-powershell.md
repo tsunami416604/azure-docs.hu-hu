@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 0f4041bd34a0b4978d820b64b45afd1f155cd6ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: cebe48b5d92c53c6f7a740c328c8d03c0d677bb8
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-azure-powershell"></a>Lista létrehozása, vagy egy Azure PowerShell használatával a felhasználói identitás törlése
 
@@ -39,7 +39,7 @@ Ebből a cikkből megismerheti, hogyan létrehozása, listázása és törlése 
 Egy felhasználó lehet hozzárendelve identitás létrehozásához használja a [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) parancsot. A `ResourceGroupName` paraméter határozza meg az erőforráscsoportot, a felhasználói identitás létrehozásának a helyét és a `-Name` paraméter határozza meg a nevét. Cserélje le a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterértékeket a saját értékekkel:
 
 > [!IMPORTANT]
-> A felhasználói identitások a különleges karakterek (pl. aláhúzásjel) nevében létrehozása jelenleg nem támogatott. Alfanumerikus karaktereket használja. Biztonsági frissítések ellenőrzése.  További információ: [– gyakori kérdések és ismert problémákat](known-issues.md).
+> A felhasználói identitások létrehozása csak alfanumerikus és kötőjel (0 – 9 vagy a-z vagy A-Z vagy -) karaktereket. Emellett nevét kell korlátozni a virtuális gép/VMSS helyes működéséhez hozzárendelés 24 karakter hosszúságot. Biztonsági frissítések ellenőrzése. További információkért lásd: [– gyakori kérdések és ismert problémák](known-issues.md)
 
  ```azurepowershell-interactive
 New-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>

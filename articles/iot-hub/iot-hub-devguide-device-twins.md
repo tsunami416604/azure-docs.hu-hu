@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01e94298aa3691d5bce33a12745b54fd398c7ad3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ef048967bc08fed1a108872d2d7eecc2a66993fa
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Ismertetés és az IoT Hub eszköz twins használata
 
@@ -318,7 +318,7 @@ Példa:
 
 Ezek az információk megőrzése érdekében távolítsa el a objektum kulcsok frissítések tartják minden szinten (nem csak a JSON struktúrában leaves).
 
-## <a name="optimistic-concurrency"></a>Egyidejű hozzáférések optimista
+## <a name="optimistic-concurrency"></a>Optimista párhuzamosság
 Címkék, szükséges, és a Tulajdonságok jelentett összes támogatási hozzáférések optimista.
 Címkék rendelkezik egy ETag megfelelően [RFC7232], amely jelzi, hogy a címke JSON-megjelenítés. A megoldás háttérrendszeréhez feltételes frissítési műveletek ETag-EK használatával biztosítják a konzisztenciát.
 
@@ -352,6 +352,7 @@ Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
 ## <a name="next-steps"></a>További lépések
 Most már rendelkezik megismerte eszköz twins, előfordulhat, hogy érdeklődik a következő IoT Hub fejlesztői útmutató témakörei:
 
+* [Ismertetés és modul twins használja az IoT hubon][lnk-module-twins]
 * [Az eszközön közvetlen metódus][lnk-methods]
 * [Több eszközön feladatok ütemezése][lnk-jobs]
 
@@ -385,5 +386,6 @@ Próbálja ki azokat a jelen cikkben ismertetett fogalmakat, olvassa el az aláb
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
+[lnk-module-twins]:iot-hub-devguide-module-twins.md
 
 [img-twin]: media/iot-hub-devguide-device-twins/twin.png

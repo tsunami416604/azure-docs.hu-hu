@@ -1,6 +1,6 @@
 ---
-title: Hogyan hajthat végre egy áttekintése a Privileged Identity Management, az Azure-erőforrások |} Microsoft Docs
-description: Ez a dokumentum ismerteti, hogyan hajtsa végre, és tekintse át a PIM az Azure-erőforrások eléréséhez.
+title: Az Azure-erőforrások hajtsa végre egy áttekintése Privileged Identity Management |} Microsoft Docs
+description: Ez a dokumentum ismerteti az Azure-erőforrások, hajtsa végre egy áttekintése PIM erőforrás szerepkör szerint.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,36 +14,37 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 4afb923058143dd1771043db8433aa3a65541bf7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 47d981ce8034d725fe2b119392334a156852698d
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="privileged-identity-management---resource-role---perform-access-review"></a>Hajtsa végre a privileged Identity Management - szerepkör erőforrás - hozzáférési áttekintése
-A privileged Identity Management az Azure-erőforrások egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az erőforrások az Azure-ban privilegizált hozzáférést. 
+# <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>Hajtsa végre egy áttekintése PIM, erőforrás szerepkör alapján
+Privileged Identity Management (PIM) az Azure-erőforrások egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az erőforrások az Azure-ban privilegizált hozzáférést. 
 
-Ha egy rendszergazdai szerepkör van rendelve, a szervezete kiemelt szerepkörű rendszergazda megkérheti, hogy rendszeresen győződjön meg arról, hogy továbbra is szerepkörre van szüksége, hogy a feladat. Előfordulhat, hogy kap egy e-mailt, amely tartalmaz egy hivatkozást, vagy elvégezheti a rögtön a [Azure-portálon](https://portal.azure.com). Kövesse a cikkben egy önálló tekintse át a hozzárendelt szerepkörök végrehajtásához.
+Ha egy rendszergazdai szerepkör van rendelve, a szervezet kiemelt szerepkörű rendszergazda fel, hogy rendszeresen győződjön meg arról, hogy továbbra is szerepkörre van szüksége, hogy a feladat. Előfordulhat, hogy kap egy e-mailt, amely tartalmaz egy hivatkozást, vagy elvégezheti a rögtön a [Azure-portálon](https://portal.azure.com). Kövesse a cikkben egy önálló tekintse át a hozzárendelt szerepkörök végrehajtásához.
 
 Ha egy kiemelt szerepkörű rendszergazda hozzáférést értékelést iránt érdeklődik, ezzel további adatokat, [egy hozzáférési felülvizsgálat indítása](pim-resource-roles-start-access-review.md).
 
 ## <a name="add-the-privileged-identity-management-application"></a>A Privileged Identity Management alkalmazás felvétele
-Az Azure AD Privileged Identity Management (PIM) alkalmazást is használhatja a [Azure-portálon](https://portal.azure.com/) a felülvizsgálat végrehajtása.  Ha az Azure AD Privileged Identity Management alkalmazás nem rendelkezik a portálon, kövesse az alábbi lépéseket a kezdéshez.
+Az Azure Active Directory (Azure AD) PIM alkalmazást is használhatja a [Azure-portálon](https://portal.azure.com/) a felülvizsgálat végrehajtása. Ha az alkalmazás nem rendelkezik a portálon, kövesse az alábbi lépéseket a kezdéshez.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Jelölje be az Azure-portálon, és válassza ki a könyvtárat, ahol meg fog jobb felső sarokban a felhasználónevére működik.
-3. Válassza a **Minden szolgáltatás** lehetőséget, és a Szűrő szövegmezővel keresse meg az **Azure AD Privileged Identity Management** elemet.
-4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
+2. Válassza ki a felhasználó neve az Azure portál jobb felső sarkában, és válassza ki a könyvtárat, ahol meg fog működik.
+3. Válassza ki **minden szolgáltatás**, és használja a **szűrő** mező használatával keresheti meg *Azure AD Privileged Identity Management*.
+4. Ellenőrizze **rögzítés az irányítópulton**, majd válassza ki **létrehozása**. A PIM alkalmazást nyitja meg.
 
 ## <a name="approve-or-deny-access"></a>Hagyja jóvá vagy nem engedélyezik a hozzáférést
-Hagyja jóvá vagy nem engedélyezik a hozzáférést, akkor még csak szólítja fel a felülvizsgáló e továbbra is használhatja ezt a szerepkört vagy nem. Válasszon **jóváhagyás** Ha azt szeretné, hogy a szerepkör belül vagy **Megtagadás** Ha már nincs szüksége a hozzáférés. Az állapota nem azonnal, megváltoztatni, amíg meg nem a felülvizsgáló vonatkozik az eredményeket.
-Kövesse az alábbi lépéseket található, majd fejezze be a áttekintése:
-1. Nyissa meg az Azure AD Privileged Identity Management alkalmazás.
-2. Válassza ki a felülvizsgálati hozzáférési panel
+Hagyja jóvá vagy nem engedélyezik a hozzáférést, akkor még csak szólítja fel a felülvizsgáló e továbbra is használhatja ezt a szerepkört vagy nem. Válasszon **jóváhagyás** Ha azt szeretné, hogy a szerepkör belül vagy **Megtagadás** Ha már nincs szüksége a hozzáférés. Az állapot változik, csak akkor, ha a felülvizsgáló vonatkozik az eredményeket.
 
-![](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
+Kövesse az alábbi lépéseket található, majd fejezze be a áttekintése:
+1. Tallózással keresse meg az Azure AD PIM alkalmazást.
+2. Válassza ki a **tekintse át a hozzáférési** panelen.
+
+   ![Képernyőfelvétel a PIM alkalmazást, a kiválasztott felülvizsgálati hozzáférési panel](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
 
 3. Válassza ki a végrehajtani kívánt áttekintése. 
-4. Válasszon **jóváhagyása** vagy **megtagadása**. Szükség lehet a döntés okát közé tartozik a **okot** szövegmezőben.
+4. Válasszon **jóváhagyása** vagy **megtagadása**. Az a **adjon meg egy OK mezőben**, szükség lehet közé tartozik a döntési okát.
 
-![](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+   ![Képernyőfelvétel a felülvizsgálati részleteit megjelenítő oldalra](media/azure-pim-resource-rbac/rbac-access-review-choice.png)

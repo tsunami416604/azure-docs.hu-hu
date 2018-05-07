@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: f58fb5090aba3c5052d1bbdec76225d0ae50e8f2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 531ca6d781ae62aacd85dce600e3ea8b46ccf360
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Tártallózó hibaelhárítási útmutató
 
@@ -61,6 +61,7 @@ Ha nem találja az előző lépéseket követve bármely önaláírt tanúsítv�
 
 Ha nem sikerül bejelentkezni, próbálkozzon az alábbi hibaelhárítási módszerek:
 
+* Ha macOS dolgozik, és a bejelentkezési ablakban soha nem keresztül a "Várakozás a hitelesítési..." párbeszédpanel jelenik meg, majd próbálja meg [ezeket a lépéseket](#Resetting-the-Mac-Keychain)
 * Indítsa újra a Tártallózó alkalmazással
 * Ha a hitelesítési ablak üres, várja meg a párbeszédpanel bezárása előtt legalább egy percig.
 * Győződjön meg arról, hogy a proxy- és megfelelőek-e a gép és a Tártallózó tanúsítvány
@@ -96,7 +97,8 @@ Ha nem tudja eltávolítani a csatlakoztatott partner vagy tárolási erőforrá
 
 Először is győződjön meg arról, hogy minden helyesen-e a következő adatokat a megadott:
 
-* A proxykiszolgáló URL-CÍMÉT és portszámát * felhasználónév és a jelszót, ha az szükséges a proxy
+* A proxykiszolgáló URL-cím és port száma
+* Felhasználónevet és jelszót, ha az szükséges a proxy
 
 ### <a name="common-solutions"></a>Közös megoldások
 
@@ -129,7 +131,7 @@ Ha a proxybeállításai megfelelőek, előfordulhat, hogy a proxy server rendsz
 
 Ha proxyn keresztül csatlakoznak az Azure-ba, győződjön meg arról, hogy a proxybeállítások helyességéről. Ha az előfizetés vagy a fiók tulajdonosának a hozzáférési volt engedélyezni lehessen egy erőforrást, győződjön meg arról, olvasási, vagy erőforrás engedélyeinek listázása
 
-### <a name="issues-with-sas-url"></a>SAS URL-cím problémái
+## <a name="issues-with-sas-url"></a>SAS URL-cím problémái
 Ha a szolgáltatás egy SAS URL-cím segítségével, és ezt a hibát tapasztaló csatlakozik:
 
 * Győződjön meg arról, hogy az URL-cím biztosít-e olvasási és erőforrások sorolja fel a szükséges engedélyekkel.
@@ -152,6 +154,19 @@ A Linux disztribúciókkal eltérő Ubuntu 16.04 szükség lehet manuálisan kel
 * Naprakész ÖET
 
 Attól függően, hogy a distro lehet többi csomagot, telepítenie kell. A Tártallózó [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciókkal az adott lépést tartalmaznak.
+
+## <a name="resetting-the-mac-keychain"></a>A Mac kulcslánc alaphelyzetbe állítása
+A macOS kulcslánc néha tud bejutni olyan állapotban, amely a tárolási Explorer hitelesítési tár kapcsolatos problémát okoz. A beolvasandó a kulcsláncban a állapotát próbálja ki az alábbi lépéseket:
+1. Zárja be Tártallózóval.
+2. Nyissa meg kulcslánc (**cmd + terület**, írja be a kulcsláncban történik, kattintson a adja meg).
+3. Válassza ki a "bejelentkezés" kulcsláncban történik.
+4. Kattintson a lakat ikonra a (a lakat, amikor végzett, attól függően, hogy rendelkezik alkalmazások nyissa meg néhány másodpercet vehet igénybe zárolt helyre lesz animálására) kulcsláncban zárolja.
+
+    ![Kép](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
+
+5. Indítsa el a Tártallózó alkalmazással.
+6. Pop fel kell megjelennie bármelyiket például "központ szolgáltatás hozzá kíván férni a kulcslánc", adja meg a Mac-rendszergazdai fiók jelszavát, majd kattintson **mindig** (vagy **engedélyezése** Ha **mindigengedélyezése** nem érhető el).
+7. Próbáljon meg bejelentkezni.
 
 ## <a name="next-steps"></a>További lépések
 

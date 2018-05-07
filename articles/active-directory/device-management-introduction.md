@@ -1,11 +1,11 @@
 ---
-title: "Kezelés az Azure Active Directoryban bemutatása |} Microsoft Docs"
-description: "Ismerje meg, hogyan Eszközkezelés segítségével tehet szert az erőforrásoknak a környezetben elérő eszközök vezérlését."
+title: Kezelés az Azure Active Directoryban bemutatása |} Microsoft Docs
+description: Ismerje meg, hogyan Eszközkezelés segítségével tehet szert az erőforrásoknak a környezetben elérő eszközök vezérlését.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: faea960d2b6207aab5a2f5df8dc65fddc9ba5b54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Kezelés az Azure Active Directoryban bemutatása
 
@@ -73,7 +73,7 @@ Az Azure AD csatlakoztatott eszközök célja leegyszerűsítése érdekében:
 
 
 Ezen célok lehet elvégezni a felhasználók egy önkiszolgáló felhasználói élmény biztosítása számára a munkahelyi által birtokolt eszközök az Azure AD felügyelete alatt.  
-**Az Azure AD Join** , amelyek a felhő-első / csak felhőalapú szervezetek számára készült. Ezek rendszerint azok a helyszíni Windows Server Active Directory infrastruktúrával nem rendelkező kis - és közepes méretű vállalkozások. 
+**Az Azure AD Join** szervezeteknek, amelyek a felügyelni kívánt kell a felhő-first vagy csak felhőalapú számára készült. Nincs korlátozva a méretét vagy a szervezeteknek, amelyek telepítheti az Azure AD Join típusú. Az Azure AD Join works is jól még egy hibrid környezetben, és engedélyezheti a helyszíni alkalmazásokhoz és erőforrásokhoz való hozzáférést.
 
 Az Azure AD csatlakoztatott eszközök végrehajtási tesz lehetővé a következő előnyöket biztosítja:
 
@@ -81,11 +81,14 @@ Az Azure AD csatlakoztatott eszközök végrehajtási tesz lehetővé a követke
 
 - **Vállalati kompatibilis központi** a felhasználói beállítások csatlakoztatott eszközön. Csatlakozás a Microsoft-fiókkal (például Hotmail) eszközön beállítások megtekintéséhez nem kell.
 
-- **A vállalati Windows áruház elérésének** AD fiók használatával. A felhasználók a szervezet által előre kiválasztott alkalmazások leltárt közül választhatnak.
+- **A vállalati Windows áruház elérésének** használata az Azure AD-fiókot. A felhasználók a szervezet által előre kiválasztott alkalmazások leltárt közül választhatnak.
 
 - **A Windows Hello** erőforrásokhoz való biztonságosabb és kényelmesebb hozzáférés támogatása.
 
 - **Hozzáférés korlátozása** alkalmazások csak olyan eszközökön, amelyek megfelelnek a megfelelőségi szabályzatnak.
+
+- **A helyi erőforrásokhoz való zavartalan hozzáférés** Ha az eszköz rendelkezik-e sor a láthatáron a helyi tartományvezérlőre.
+
 
 Az Azure AD join elsődlegesen a helyi Windows Server Active Directory infrastruktúrával nem rendelkező szervezeteknek, amíg is alapértékekkel is helyzetekben használhatja, ahol:
 
@@ -125,7 +128,7 @@ Az Azure AD hibrid csatlakoztatott eszközöket kell használnia, ha:
 
 Konfigurálhatja a Hybrid Azure AD csatlakoztatott eszközök a Windows 10-es és régebbi eszközök, például a Windows 8 és Windows 7.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az eszköz kezelése az Azure ad-ben a következőket teheti: 
 
@@ -163,7 +166,7 @@ A görgetőgomb szabályként kell használnia:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Áttekintést az Azure portálon eszközök felügyelete, lásd: [az Azure portál használatával eszközök kezelése](device-management-azure-portal.md)
 

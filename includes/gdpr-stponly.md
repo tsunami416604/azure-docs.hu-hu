@@ -5,4 +5,4 @@ MS.Service: azure-házirend ms.topic: közé tartoznak a ms.date: 04/24/2018 ms.
 ---
 
 >[!Note] 
->Ha további általános információt GDPR van szüksége, tekintse meg a [GDPR szakasza a szolgáltatás adatvédelmi központ](https://www.microsoft.com/en-us/TrustCenter/Privacy/gdpr/default.aspx).
+>Ha további általános információt GDPR van szüksége, tekintse meg a [GDPR szakasz a szolgáltatás megbízható portál](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

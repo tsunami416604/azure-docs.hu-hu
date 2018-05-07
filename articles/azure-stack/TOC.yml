@@ -190,18 +190,25 @@
               href: azure-stack-delegated-provider.md
             - name: Kvótatípusok
               href: azure-stack-quota-types.md
-        - name: SQL vagy MySQL ajánlása PaaS-ként
+        - name: PaaS szolgáltatások áttekintése
+          href: azure-stack-tools-paas-services.md
+        - name: 'SQL kínálnak, PaaS'
+          href: azure-stack-sql-resource-provider.md
           items:
-            - name: PaaS szolgáltatások áttekintése
-              href: azure-stack-tools-paas-services.md
-            - name: MySQL típusú erőforrás-szolgáltató üzembe helyezése
-              href: azure-stack-mysql-resource-provider-deploy.md
-            - name: SQL típusú erőforrás-szolgáltató üzembe helyezése
+            - name: Az erőforrás-szolgáltató SQL Server telepítése
               href: azure-stack-sql-resource-provider-deploy.md
             - name: Üzemeltetési kiszolgáló hozzáadása
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: SQL-adatbázis létrehozása
               href: azure-stack-sql-resource-provider-databases.md
+            - name: Frissítés az SQL Server erőforrás-szolgáltató
+              href: azure-stack-sql-resource-provider-update.md
+            - name: Az SQL Server erőforrás-szolgáltató karbantartása
+              href: azure-stack-sql-resource-provider-maintain.md
+            - name: Az SQL Server erőforrás-szolgáltató eltávolítása
+              href: azure-stack-sql-resource-provider-remove.md
+        - name: Az ajánlat MySQL PaaS
+          href: azure-stack-mysql-resource-provider-deploy.md
         - name: App Service ajánlása PaaS-ként
           items:
             - name: Az Azure Stack App Service szolgáltatásának áttekintése

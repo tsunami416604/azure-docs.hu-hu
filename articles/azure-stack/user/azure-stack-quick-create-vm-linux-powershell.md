@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 86597defad7c76d41065270030a4c77ee901b014
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 1e2dbc6020dd317e96c4116811f8e3bf87680bfb
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Gyors üzembe helyezés: Linux server virtuális gép létrehozása Azure-készletben a PowerShell használatával
 
@@ -28,6 +28,7 @@ ms.lasthandoff: 04/28/2018
 Ubuntu Server 16.04 LTS virtuális gép Azure verem PowerShell használatával is létrehozhat. Kövesse a cikkben történő létrehozásáról és használatáról a virtuális gép.  Ez a cikk is lehetővé teszi a lépéseket:
 
 * Csatlakoztassa a virtuális gép egy távoli ügyfélhez.
+* A NGINX-webkiszolgáló telepítéséhez, és az alapértelmezett kezdőlapja a lapnak a megtekintésére.
 * Nem használt erőforrások törlése.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -218,6 +219,26 @@ ssh <Public IP Address>
 ```
 
 Amikor a rendszer kéri, adja meg a bejelentkezési felhasználói azureuser. Ha az SSH-kulcsok létrehozásakor használt jelszó szükséges, adja meg a jelszót kell.
+
+## <a name="install-the-nginx-web-server"></a>Az NGINX-webkiszolgáló telepítése
+
+Csomag erőforrásokat, és telepítse a legújabb NGINX-csomagot, futtassa a következő parancsfájlt:
+
+```bash
+#!/bin/bash
+
+# update package source
+apt-get -y update
+
+# install NGINX
+apt-get -y install nginx
+```
+
+## <a name="view-the-nginx-welcome-page"></a>Az NGINX kezdőlapjának megtekintése
+
+Az NGINX telepítve, és a virtuális gépen nyissa meg a 80-as porton a webkiszolgálón, a virtuális gép nyilvános IP-cím használatával végezheti el. Nyisson meg egy webböngészőt, és keresse meg a ```http://<public IP address>```.
+
+![NGINX web server kezdőlap](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

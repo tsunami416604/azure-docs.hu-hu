@@ -3,7 +3,7 @@ title: Adattudomány Scala és Spark használata az Azure-on |} Microsoft Docs
 description: Hogyan használható a Scala a felügyelt gépi tanulási feladatok a Spark méretezhető MLlib és Spark ML-csomagba egy Azure HDInsight Spark-fürtön.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: a7c97153-583e-48fe-b301-365123db3780
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: dbd68508d83936964d213d94d5a30c15548cbdfc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 8f8b252d8771dff23d0a8c89e057fc17ba321a65
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
 Ez a cikk bemutatja, hogyan Scala felügyelt gépi tanulási feladatok a Spark méretezhető MLlib és Spark ML-csomagba egy Azure HDInsight Spark-fürt használatára. Az végigvezeti a feladatok alkotó a [Adattudomány folyamat](http://aka.ms/datascienceprocess): adatfeldolgozást és a feltárása, a képi megjelenítés, a szolgáltatás mérnöki csapathoz, a modellezési és a model felhasználás. A cikkben szereplő modellek között logisztikai és lineáris regressziós, véletlenszerű erdők és színátmenetes súlyozott fák (GBTs) két általános felügyelt gépi tanulási feladatok mellett:

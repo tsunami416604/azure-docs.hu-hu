@@ -4,7 +4,7 @@ description: A Microsoft Azure szolgáltatást tartalmazó titkos DNS áttekint�
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jennoc
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: dns
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 7f1bd8cdcab7bdd61b3f006acf6090c53db8eda6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1c805819a22d26e650d13b0e41ebac00c4e52d91
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-azure-dns-for-private-domains"></a>A privát tartományok Azure DNS-sel
 A tartománynévrendszer, vagy a DNS-, felelős fordítása (vagy feloldása) a szolgáltatás nevét az IP-címét. Az Azure DNS egy olyan üzemeltetési szolgáltatás DNS-tartományok, biztosítani a névfeloldást a Microsoft Azure-infrastruktúra használatával.  Mellett az internetre irányuló DNS-tartományok Azure DNS-ben mostantól is támogatja a saját DNS-tartományok, előzetes verziójú funkciók.  
@@ -75,7 +75,7 @@ A nyilvános előzetes saját DNS-zónák az ingyenesen elérhető. Általános 
 
 Megtudhatja, hogyan hozzon létre egy titkos zónát az Azure DNS-ben a [PowerShell](./private-dns-getstarted-powershell.md) vagy [CLI](./private-dns-getstarted-cli.md).
 
-Olvassa olyan gyakori forgatókönyveket tartalmaz a [saját zóna forgatókönyvek](./private-dns-scenarios.md) , amelyek a saját zónákat az Azure DNS kell megvalósítani.
+Néhány gyakori forgatókönyv ([Privát zónák – Forgatókönyvek](./private-dns-scenarios.md)), amelyek megvalósíthatók az Azure DNS privát zónáiban.
 
 Olvassa a a [gyakran ismételt kérdések](./dns-faq.md#private-dns) a néhány gyakori kérdések és válaszok a saját zónákat az Azure DNS-ben, beleértve az adott viselkedést számíthat bizonyos műveletek típusú. 
 

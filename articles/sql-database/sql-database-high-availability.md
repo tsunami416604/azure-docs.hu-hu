@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 839cadffc37a1c4a6ceae77fbe1e01020c28fe1d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 Az Azure SQL adatbázis Platformszolgáltatási ajánlat kezdete óta a Microsoft tett a felhőalkalmazások nyújtotta az ügyfelek, amelyek a szolgáltatás részét magas rendelkezésre állású (HA), és az ügyfelek nem szükséges üzemeltetéséhez, különleges logika hozzáadása, és magas rendelkezésre ÁLLÁSÚ körül döntéseket. A Microsoft fenntartja a magas rendelkezésre ÁLLÁSÚ rendszerkonfiguráció és a művelet, teljes hozzáféréssel, szolgáltatásiszint-szerződésben garantált kínál az ügyfeleknek. A magas rendelkezésre ÁLLÁSÚ SLA régióban SQL-adatbázis vonatkozik, és nem nyújt védelmet a teljes tartomány hibák, amely kívül a Microsoft irányítása alá tartozó tényezők miatt esetekben (például természeti katasztrófa, war, tevékenységéért terrorakció is történhet, lázadások, kormányzati műveletet, vagy egy hálózati vagy az eszköz hiba a Microsoft adatközpontokban, beleértve az ügyfél helyeken vagy a felhasználói helyek és a Microsoft-adatközpont közti külső).
@@ -30,7 +30,7 @@ Az ügyfelek tervezheti meg a saját adatbázis rugalmasságát és kisebb rugal
 
 Adatok, az SQL-adatbázis közvetlen csatlakoztatott lemezek/VHD-alapú helyi tárolás (LS) és a prémium szintű Azure Storage lapblobokat-alapú távoli tárolás (r) használja. 
 - A prémium szintű storage szerepel, vagy fontos üzleti (előzetes verzió) adatbázisok és rugalmas készletek, amelyek tervezett bevetésirányító kritikus OLTP alkalmazások magas IOPS-követelményekkel rendelkező helyi. 
-- Távoli tároló Basic és Standard szolgáltatásszintek célú költségvetés üzleti munkaterhelések tárolási rendszerre van szüksége, és számítási teljesítményt méretezését készült szolgál. Egyetlen oldalakra vonatkozó blob adatbázishoz és naplófájlokhoz, és beépített tárolókezelési replikációs és feladatátvételi mechanizmusok használják.
+- Távoli tároló Basic, Standard és az általános célú szolgáltatásrétegekben, keret célú üzleti munkaterhelések tárolási rendszerre van szüksége, és számítási teljesítményt méretezését tervezett használata. Egyetlen oldalakra vonatkozó blob adatbázishoz és naplófájlokhoz, és beépített tárolókezelési replikációs és feladatátvételi mechanizmusok használják.
 
 Mindkét esetben a replikáció, a tárhelyhiba-észlelés és a feladatátvételi mechanizmusok SQL-adatbázis teljesen automatizált, és emberi beavatkozás nélkül. Ez az architektúra győződjön meg arról, hogy véglegesített adatok soha nem elvész, és hogy adatok tartóssága elsőbbséget élvez az összes más célja.
 
@@ -56,7 +56,7 @@ A [Service Fabric](../service-fabric/service-fabric-overview.md) feladatátvéte
 
 ## <a name="remote-storage-configuration"></a>Távoli tárolás beállítása
 
-Távoli tárolókonfigurációkkal (Basic és Standard rétegek) pontosan egy másolás megőrződik távoli blob, a rendszer lehetőségeit tartósságot, a redundancia és a bit-rothadás észlelési használatával. 
+Távoli tárolókonfigurációkkal (alapszintű, Standard vagy általános célú rétegek) pontosan egy másolás megőrződik távoli blob, a rendszer lehetőségeit tartósságot, a redundancia és a bit-rothadás észlelési használatával. 
 
 A magas rendelkezésre állású architektúra által az alábbi ábrán látható:
  

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8271c4c88245e98fd3709c7279904d36ad009682
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Hozzáférés-vezérlést az Azure Active Directory feltételes hozzáférés 
 
@@ -75,13 +75,13 @@ A multi-factor authentication segítségével erőforrások védelme a fent konf
 
 ### <a name="compliant-device"></a>Megfelelő eszköz
 
-Konfigurálhatja, amelyek az eszközalapú feltételes hozzáférési szabályzatokat. Eszközalapú feltételes hozzáférési házirend célja a hozzáférési jogot a konfigurált erőforrások megbízható eszközökről. Megfelelő eszközökre használata egy beállítást meg kell adnia a megbízható eszközök. Ezt a beállítást, ha a feltételes hozzáférési házirend engedélyezi a hozzáférést a hozzáférés kísérletek az eszközöket, amelyek az Azure Active Directory tartományhoz, és az MDM-megoldásnak megfelelő legyen megjelölve.
+Konfigurálhatja, amelyek az eszközalapú feltételes hozzáférési szabályzatokat. Eszközalapú feltételes hozzáférési házirend célja hozzáférés biztosítása csak a konfigurált erőforrásait [által felügyelt eszközök](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Megfelelő eszközökre használata egy beállítás határozza meg, hogy milyen kezelt eszközt. Ezt a beállítást, ha a feltételes hozzáférési házirend engedélyezi a hozzáférést a hozzáférés kísérletek eszközökkel, amelyek [regisztrált](device-management-introduction.md) Azure Active Directory és a jelölte meg megfelelőnek MDM-megoldásként.
 
 További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférés szabályzatainak beállítása](active-directory-conditional-access-policy-connected-applications.md).
 
-### <a name="domain-joined-device"></a>Tartományhoz csatlakozó eszközök
+### <a name="hybrid-azure-ad-joined-device"></a>Az Azure AD hibrid csatlakoztatott eszközről
 
-A tartományhoz csatlakoztatott eszközön egy másik lehetőség igénylő be kell állítania eszközalapú feltételes hozzáférési szabályzatokat. Ez a követelmény a Windows asztali számítógépek, laptopok és a helyszíni Active Directory tartományhoz csatlakoztatott vállalati táblagépek hivatkozik. Ha ezt a beállítást, a feltételes hozzáférési házirend engedélyezi a hozzáférést a hozzáférés a helyszíni Active Directory és az Azure Active Directory tartományhoz csatlakoztatott eszközökkel rendelkező kísérletek.  
+Az Azure AD csatlakoztatott eszközről lehetősége be kell állítania az eszközalapú feltételes hozzáférési házirendek hibrid igénylő. Ez a követelmény a Windows asztali számítógépek, laptopok és a helyszíni Active Directory tartományhoz csatlakoztatott vállalati táblagépek hivatkozik. Ha ezt a beállítást, a feltételes hozzáférési házirend engedélyezi a hozzáférést a hozzáférés a helyszíni Active Directory és az Azure Active Directory tartományhoz csatlakoztatott eszközökkel rendelkező kísérletek.  
 
 További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférés szabályzatainak beállítása](active-directory-conditional-access-policy-connected-applications.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Hogyan hajthat végre egy áttekintése a Privileged Identity Management, az Azure-erőforrások |} Microsoft Docs
-description: Ez a dokumentum ismerteti, hogyan hajtsa végre, és tekintse át a PIM az Azure-erőforrások eléréséhez.
+title: 'Áttekintés: A Privileged Identity Management egy hozzáférési felülvizsgálat végrehajtása az Azure-erőforrások |} Microsoft Docs'
+description: Ez a dokumentum ismerteti, hogyan hajthat végre egy áttekintése a PIM, az Azure-erőforrások.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,20 +14,28 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: f1bcf114b997c3056016b84cafc28253ea1af28e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 61be9873cac462c096599680a6e071e104f3a54c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="resource-dashboards"></a>Erőforrás-irányítópultok
+# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Egy erőforrás Irányítópult segítségével hajtsa végre egy áttekintése
 
-A felügyelet nézet irányítópult négy elsődleges összetevőből áll. Grafikus ábrázolása erőforrás szerepkör aktiválások az elmúlt hét napban. Az adatok hatóköre a kiválasztott erőforrás a, és megjeleníti a leggyakrabban használt szerepkörök (tulajdonos, közreműködő, felhasználói hozzáférés adminisztrátora) és az összes szerepkör kombinált aktiválást.
+Egy erőforrás-Irányítópult segítségével Privileged Identity Management (PIM) egy hozzáférési felülvizsgálat végrehajtása az Azure-erőforrások. A felügyelet nézet irányítópult három elsődleges összetevőből áll:
 
-Az a diagram jobb oldalán aktiválások van két diagramot, amely a szerepkör-hozzárendelések terjesztési hozzárendelés-típus, a felhasználókat és csoportokat egyaránt megjeleníthető. Válassza a diagram szelet módosítja százalékos (vagy fordítva) értékét.
+- Erőforrás szerepkör aktiválások grafikus ábrázolása.
+- A szerepkör-hozzárendelések terjesztési megjeleníthető hozzárendelés-típus két diagramot.
+- Egy új szerepkör-hozzárendelések vonatkozó adatok területen.
 
-![](media/azure-pim-resource-rbac/rbac-overview-top.png)
+![Képernyőfelvétel: a felügyelet nézet irányítópult diagramjait és diagramokat](media/azure-pim-resource-rbac/rbac-overview-top.png)
 
-Alább a diagramok a felhasználókat és csoportokat az új szerepkör-hozzárendelések száma az elmúlt 30 napban (bal oldali) és a teljes hozzárendelések (csökkenő) szerint rendezve szerepkörök listáját láthatja.
+![Képernyőfelvétel: a felügyelet nézet irányítópult adatok listája](media/azure-pim-resource-rbac/role-settings.png)
 
-![](media/azure-pim-resource-rbac/role-settings.png)
+Az erőforrás szerepkör aktiválások grafikus ábrázolása hozzá van rendelve az elmúlt hét napban. Az adatok hatóköre a kiválasztott erőforrás a, és a leggyakrabban használt szerepkörök (tulajdonos, közreműködő, felhasználói hozzáférés adminisztrátora), valamint az összes szerepkör kombinált aktiválások jeleníti meg.
+
+Jobb oldalán a aktiválások grafikon két diagramok megjelenítéséhez szerepkör-hozzárendelések terjesztési hozzárendelés-típus, a felhasználókat és csoportokat egyaránt. Az érték a százalék (vagy fordítva), a diagram szelet kiválasztásával módosíthatja.
+
+Alább a diagramok a felhasználókat és csoportokat az új szerepkör-hozzárendelések száma az elmúlt 30 napban, és a teljes hozzárendelések (csökkenő sorrendben) szerint rendezve szerepkörök listáját láthatja.
+
+

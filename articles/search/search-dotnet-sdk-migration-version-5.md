@@ -6,13 +6,13 @@ manager: jlembicz
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/01/2018
 ms.author: brjohnst
-ms.openlocfilehash: 018388cd2bd85eb86ad7b62ee247bccd6329e9ac
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 88949f4cf0e4408f5d1e4d9c9a5833b041b5a5ab
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Az Azure Search .NET SDK 5-ös verzió frissítése
 Ha szeretne megtudni a 4.0-preview vagy a régebbi verzióját a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít frissíteni az alkalmazást, 5-ös verzió használatára.
@@ -57,7 +57,7 @@ A legtöbb jelentős használhatatlanná tévő változást az 5-ös verzió, ho
  - `Microsoft.Azure.Search`: A csomag egy metaadat-, amely tartalmazza az összes többi Azure Search csomagot szerint függőségeinek. Frissítés egy korábbi SDK, egyszerűen a csomag frissítése és újbóli összeállítása kell elegendő elindítani az új verziót használja.
  - `Microsoft.Azure.Search.Data`: Használja ezt a csomagot, ha egy .NET-alkalmazást az Azure Search kidolgozása, és csak lekérdezni, vagy az indexek dokumentumainak frissíteni kell. Ha is kell létrehozni vagy frissíteni az indexek, szinonima maps, vagy más szolgáltatásiszint-erőforrások, használja a `Microsoft.Azure.Search` csomag helyette.
  - `Microsoft.Azure.Search.Service`: Használja ezt a csomagot, ha az Azure Search-indexek, szinonima maps, indexelők, adatforrások vagy más szolgáltatásiszint-erőforrások kezeléséhez .NET automatikus. Ha csak kell lekérdezés vagy a frissítés dokumentumot az indexben, használja a `Microsoft.Azure.Search.Data` csomag helyette. Ha módosítania kell az Azure Search összes funkcióját, használja a `Microsoft.Azure.Search` csomag helyette.
-- `Microsoft.Azure.Search.Common`: Az Azure Search .NET-kódtárakra igényli általános típusok. Nem kell használni a csomag közvetlenül az alkalmazás; Csak célja, hogy a függőség beállításához használható.
+ - `Microsoft.Azure.Search.Common`: Az Azure Search .NET-kódtárakra igényli általános típusok. Nem kell használni a csomag közvetlenül az alkalmazás; Csak célja, hogy a függőség beállításához használható.
  
 Ez a változás technikailag feltörésével, mivel számos különböző került szerelvények között. Ezért az alkalmazás újraépítése szükség ahhoz, hogy frissítsen az SDK 5-ös verzióját.
 

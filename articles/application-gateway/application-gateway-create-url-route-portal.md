@@ -10,17 +10,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 554618b055ce5afcc67f95afa0242d36e74fabc0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy alkalmazás elérési útja-alapú útválasztási szabályokat az Azure portál használatával
 
 Az Azure portál segítségével konfigurálhatja [URL-cím elérési út-alapú útválasztási szabályok](application-gateway-url-route-overview.md) létrehozásakor egy [Alkalmazásátjáró](application-gateway-introduction.md). Ebben az oktatóanyagban létrehoz virtuális gépeknek háttérkészletek menüpontot. Ezután hozzon létre útválasztási szabályokat, győződjön meg arról, hogy a webes forgalom érkezik a készletek a megfelelő kiszolgálókat.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Application Gateway létrehozása
@@ -82,16 +82,16 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 2. Kattintson a **számítási** majd **Windows Server 2016 Datacenter** kiemelt listájában.
 3. Adja meg a virtuális gép ezeket az értékeket:
 
-    - *myVM1* – a virtuális gép nevét.
-    - *azureuser* – a rendszergazdai felhasználónevet.
+    - A virtuális gép neve: *myVM1*.
+    - A rendszergazda felhasználóneve: *azureuser*.
     - *Azure123456!* a jelszó.
     - Válassza ki **meglévő**, majd válassza ki *myResourceGroupAG*.
 
 4. Kattintson az **OK** gombra.
-5. Válassza ki **DS1_V2** a virtuális gépet, majd kattintson a méretét **válasszon**.
+5. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
 6. Győződjön meg arról, hogy **myVNet** van kiválasztva a virtuális hálózat és az alhálózat van **myBackendSubnet**. 
-7. Kattintson a **letiltott** letiltani a rendszerindítási diagnosztika.
-8. Kattintson a **OK**, tekintse át a beállításokat az Összegzés lapon, és kattintson a **létrehozása**.
+7. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
+8. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
@@ -102,7 +102,7 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 2. A következő parancsot az IIS telepítése a virtuális gépen: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -119,7 +119,7 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Háttér-címkészletek létrehozása a virtuális gépekkel
 
 1. Kattintson a **összes erőforrás** majd **myAppGateway**.
-2. Kattintson a **háttérkészletek**. Alapértelmezett címkészlet automatikusan jött létre az Alkalmazásátjáró. Click **appGatewayBackendPool**.
+2. Kattintson a **háttérkészletek**. Alapértelmezett címkészlet automatikusan jött létre az Alkalmazásátjáró. Kattintson a **appGatewayBackendPool**.
 3. Kattintson a **Hozzáadás cél** hozzáadása *myVM1* appGatewayBackendPool számára.
 
     ![Adja hozzá a háttérkiszolgálókon](./media/application-gateway-create-url-route-portal/application-gateway-backend.png)
@@ -153,7 +153,7 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 
     ![Rekord alkalmazás átjáró nyilvános IP-címe](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába. Például a http://http://40.121.222.19.
+2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például a http://http://40.121.222.19.
 
     ![Az alkalmazás átjáró alap URL-cím tesztelése](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 

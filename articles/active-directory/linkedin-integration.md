@@ -9,21 +9,24 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 05/02/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 33e3305288edc3990ed88b39c819293a8adc2dfe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ab59033fd032cfccd2602a1a518e51a08e09581
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>LinkedIn fiók kapcsolatok a Microsoft-alkalmazások és szolgáltatások
 Ebből a cikkből megismerheti az Azure Active Directory (Azure AD) felügyeleti központban a bérlő LinkedIn fiók kapcsolatok kezelésére. 
 
 > [!IMPORTANT]
 > LinkedIn fiók kapcsolatok használatának van jelenleg megkezdődött az Azure AD bérlők számára. Ha annak frissítése a bérlő, alapértelmezés szerint engedélyezve van. Nincs elérhető az Amerikai Egyesült Államok kormányzati ügyfelek és a szervezetek számára az Exchange Online szolgáltatásban működő Ausztrália, Kanada, Kína, Franciaország, Németország, India, Dél-Korea, Egyesült Királyságban, japán, és Dél-afrikai postaládák. Ezeket a postaláda-helyeket támogatása hamarosan elérhető.  Bevezetés információk naprakészen nézetet, tekintse meg a [Office 365 terv](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc) lap.
+
+## <a name="benefit-to-users"></a>Kihasználhatja a felhasználók számára
+Felhasználók LinkedIn-fiókjuk kapcsolódás után LinkedIn adatok személyre szabott adatok és a szolgáltatások különböző Microsoft-alkalmazások vagy szolgáltatások megjelenítése. Felhasználók láthatják a személyek észrevételeket működnek együtt a Microsoft profil kártya, akkor is, ha azokat a szervezeten kívüli személyek. Az idő múlásával LinkedIn tapasztalataikat is vált megfelelő, és a munkahelyi következőkhöz ideális. Például a LinkedIn is javaslat alapján új kapcsolatok felhasználók dolgozni, vagy adott napon a naptárban, az emberek észrevételeket alapján.
 
 ## <a name="how-linkedin-account-connections-appear-to-the-user"></a>Hogyan LinkedIn fiók kapcsolatok jelennek meg, a felhasználó számára
 LinkedIn fiók kapcsolatok engedélyezése a felhasználók a Microsoft-alkalmazások némelyike belül nyilvános LinkedIn profil információk megjelenítéséhez. A bérlő a felhasználók eldönthetik, LinkedIn és a Microsoft munkahelyi vagy iskolai fiókok LinkedIn-profil további információk megjelenítéséhez. További információkért lásd: [LinkedIn információkat és a Microsoft-alkalmazások és szolgáltatások funkciókat](https://go.microsoft.com/fwlink/?linkid=850740).

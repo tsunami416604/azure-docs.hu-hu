@@ -1,26 +1,26 @@
 ---
-title: "Alkalmazásátjáró létrehozása az Azure CLI - tanúsítvány |} Microsoft Docs"
-description: "Megtudhatja, hogyan Alkalmazásátjáró létrehozása és hozzáadása egy tanúsítványt az SSL-lezárást az Azure parancssori felület használatával."
+title: Alkalmazásátjáró létrehozása az Azure CLI - tanúsítvány |} Microsoft Docs
+description: Megtudhatja, hogyan Alkalmazásátjáró létrehozása és hozzáadása egy tanúsítványt az SSL-lezárást az Azure parancssori felület használatával.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
-ms.author: davidmu
-ms.openlocfilehash: b055bfcd077ae0c16c471aaa9c31e61303068ca5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: 645ccad03997256a050b48aab7104e9fe9ae7ef3
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>HTTP, HTTPS átirányítás az Azure parancssori felület használatával hozhat létre olyan átjárót
 
 Az Azure parancssori felület használatával hozzon létre egy [Alkalmazásátjáró](application-gateway-introduction.md) egy SSL-lezárást tanúsítványával. Útválasztási szabályainak használt HTTP-forgalom átirányítása a HTTPS-portot az Alkalmazásátjáró. Ebben a példában is létrehozhat egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) az Alkalmazásátjáró két virtuálisgép-példányok tartalmazó háttérkészlet számára.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Önaláírt tanúsítvány létrehozása
@@ -172,7 +172,7 @@ az network application-gateway rule create \
   --redirect-config httpToHttps
 ```
 
-## <a name="create-a-virtual-machine-scale-set"></a>Hozzon létre egy virtuálisgép-méretezési csoport
+## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
 Ebben a példában hoz létre egy virtuálisgép-méretezési beállítása a nevesített *myvmss* kiszolgálók biztosít az Alkalmazásátjáró a háttérkészlet számára. A méretezési csoportban lévő virtuális gépek társított *myBackendSubnet* és *appGatewayBackendPool*. A skála létrehozásához állítsa be, használhatja [az vmss létrehozása](/cli/azure/vmss#az_vmss_create).
 
@@ -203,13 +203,13 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-Ahhoz, hogy az alkalmazás átjáró nyilvános IP-címét, használhatja a [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
+Ahhoz, hogy az alkalmazás átjáró nyilvános IP-címét, használhatja a [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show). Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
 ```azurepowershell-interactive
 az network public-ip show \

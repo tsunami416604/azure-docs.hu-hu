@@ -2,7 +2,7 @@
 title: Gyors fejlesztési tudományos adatok - projektek Azure Machine Learning |} Microsoft Docs
 description: Hogyan fejlesztők hajthat végre egy tudományos adatprojekthez egy rendszeres, a szabályozott verzióját és az együttműködési módot a projektcsapattal az Team tudományos folyamat használatával.
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev
-ms.openlocfilehash: dbaf2df0f5572c9b269000c741f1d736a7521d73
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 03bc287969559308e743a5b8cc192cddfdc085cc
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="agile-development-of-data-science-projects"></a>Az adatok tudományos projektek gyors fejlesztés
 
@@ -121,7 +121,7 @@ A szolgáltatások, a szövegek és a feladatok létrehozását követően megte
 
 Ez a cikk ismerteti, hogyan állíthat be egy gyors adatok tudományos folyamatsablont használ a TDSP adatok tudományos életciklusának szakaszait, és nyomon követi a Visual Studio Online (vso) munkaelemek. Az alábbi lépésein végighaladva beállítása az adatok tudományos-specifikus gyors példát lépéseket feldolgozni sablon *AgileDataScienceProcess* és tudományos munkaelemek a sablon alapján létrehozását mutatják be.
 
-### <a name="agile-data-science-process-template-setup"></a>Agile Data Science Process Template Setup
+### <a name="agile-data-science-process-template-setup"></a>Agilis adatok tudományos folyamat sablon beállítása
 
 1. Navigáljon a kiszolgálón-kezdőlap, **konfigurálása** -> **folyamat**.
 

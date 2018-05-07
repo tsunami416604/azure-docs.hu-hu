@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 93ef76729123c7187c3dd616419b5771324fe2cb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 83ce49d9ac368404edcc2d68859493476e74869e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Használja az Azure Key Vault-webalkalmazások
 
@@ -157,7 +157,7 @@ Teszttanúsítványt létrehozásával kapcsolatos további információkért l�
 
 ### <a name="associate-the-certificate-with-an-azure-ad-application"></a>A tanúsítvány társítása egy Azure AD-alkalmazást
 
-Most, hogy rendelkezik egy tanúsítvánnyal, rendelje hozzá azt egy Azure AD-alkalmazást szeretné. Jelenleg az Azure-portál nem támogatja a munkafolyamat; Ez a PowerShell használatával elvégezhető. Futtassa a következő parancsok futtatásával assoicate a tanúsítvány az Azure AD-alkalmazást:
+Most, hogy rendelkezik egy tanúsítvánnyal, rendelje hozzá azt egy Azure AD-alkalmazást szeretné. Jelenleg az Azure-portál nem támogatja a munkafolyamat; Ez a PowerShell használatával elvégezhető. A tanúsítvány társítása az Azure AD-alkalmazás a következő parancsok futtatásával:
 
 ```ps
 $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2

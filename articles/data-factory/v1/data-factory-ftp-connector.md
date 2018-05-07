@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 17dea2d1106a57aa678a88db6647c71048d8c38f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7799eeb65a109a6ff517d50bb9603fe83f80ed14
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Adatok áthelyezése az FTP-kiszolgáló Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -75,6 +75,9 @@ A következő táblázat ismerteti a JSON-elemek szerepelnek az FTP-kapcsolódó
 | port |Adja meg a portot, amelyet az FTP-kiszolgáló figyel. |Nem |21 |
 | enableSsl |Adja meg, hogy a TLS/SSL csatornán FTP használata. |Nem |true |
 | enableServerCertificateValidation |Adja meg, hogy engedélyezze a kiszolgálói SSL-tanúsítvány hitelesítése a TLS/SSL csatornán keresztül FTP használata esetén. |Nem |true |
+
+>[!NOTE]
+>Az FTP-összekötő támogatja elérése során FTP-kiszolgáló nincs titkosítás vagy az SSL/TLS titkosítás explicit; implicit SSL/TLS titkosítás nem támogatja.
 
 ### <a name="use-anonymous-authentication"></a>Névtelen hitelesítés
 

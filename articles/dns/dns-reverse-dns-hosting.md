@@ -1,22 +1,22 @@
 ---
-title: "Az Azure DNS-névkeresési DNS-címkeresési zónák gazdagép |} Microsoft Docs"
-description: "A névkeresési DNS-címkeresési zónák az IP-címtartományok tárolásához Azure DNS használata"
+title: Az Azure DNS-névkeresési DNS-címkeresési zónák gazdagép |} Microsoft Docs
+description: A névkeresési DNS-címkeresési zónák az IP-címtartományok tárolásához Azure DNS használata
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: d5dc152af6acb510e12cd42503b6128dc6492e89
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: kumud
+ms.openlocfilehash: c5d53838ffb77ff8d33fee9d10aea4a74f3c523c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Állomás névkeresési DNS-címkeresési zónák Azure DNS-ben
 
@@ -33,7 +33,7 @@ Ez a cikk végigvezeti a lépéseken, az első névkeresési DNS-zóna-rekord l�
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Az a **Hub** menüjében válassza **új** > **hálózati**, majd válassza ki **DNS-zóna**.
 
-   !["DNS zone" selection](./media/dns-reverse-dns-hosting/figure1.png)
+   !["DNS-zóna" kiválasztása](./media/dns-reverse-dns-hosting/figure1.png)
 
 1. Az a **hozzon létre DNS-zóna** ablaktáblán, a DNS-zóna neve. A zóna nevét kialakított az IPv4 és IPv6-előtagok másképp van. Kövesse az utasításokat a [IPv4](#ipv4) vagy [IPv6](#ipv6) a zóna nevét. Amikor elkészült, válassza ki a **létrehozása** a zóna létrehozása.
 
@@ -52,7 +52,7 @@ A következő példa bemutatja, hogyan hozzon létre egy C osztályú címfelold
 
  !["DNS-zóna létrehozása" ablaktáblán, a mezők kitöltése](./media/dns-reverse-dns-hosting/figure2.png)
 
-**Erőforráscsoport helye** határozza meg az erőforrásnak a helyét. Ne legyen hatással van a DNS-zónát. A DNS-zóna helye mindig "globális", és nem jelenik meg.
+**Erőforráscsoport helye** határozza meg az erőforrásnak a helyét. Ne legyen hatással van a DNS-zónát. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
 A következő példák bemutatják, hogyan befejezheti a feladatot az Azure PowerShell és az Azure parancssori felület használatával.
 
@@ -83,7 +83,7 @@ A következő példa bemutatja, hogyan hozzon létre egy IPv6 névkeresési DNS-
 
  !["DNS-zóna létrehozása" ablaktáblán, a mezők kitöltése](./media/dns-reverse-dns-hosting/figure3.png)
 
-**Erőforráscsoport helye** határozza meg az erőforrásnak a helyét. Ne legyen hatással van a DNS-zónát. A DNS-zóna helye mindig "globális", és nem jelenik meg.
+**Erőforráscsoport helye** határozza meg az erőforrásnak a helyét. Ne legyen hatással van a DNS-zónát. A DNS-zóna helye mindig „globális”, és nem jelenik meg.
 
 A következő példák bemutatják, hogyan befejezheti a feladatot az Azure PowerShell és az Azure parancssori felület használatával.
 
@@ -194,7 +194,7 @@ A létrehozott rekordok megtekintéséhez keresse meg azt a DNS-zónát az Azure
 
 A **DNS-zóna** ablaktábla megjeleníti azokat a IPv4 PTR-rekordok:
 
-!["DNS zone" pane with IPv4 records](./media/dns-reverse-dns-hosting/figure8.png)
+![IPv4-rekordok "DNS-zóna" ablaktábla](./media/dns-reverse-dns-hosting/figure8.png)
 
 A következő példák szemléltetik a PTR rekordok megtekintése a PowerShell vagy az Azure parancssori felület használatával.
 

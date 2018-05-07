@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - karbantartás"
-description: "FedRAMP webes alkalmazások Automation - karbantartás"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - karbantartás
+description: FedRAMP webes alkalmazások Automation - karbantartás
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: de7dd5b4651f7f74d90d9d026af71cd676c720e6
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="maintenance-ma"></a>Karbantartási (MA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy rendszer karbantartására vonatkozó házirend célja, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás, koordinációs orvosló szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a rendszer karbantartására vonatkozó házirend és a kapcsolódó rendszer karbantartási vezérlők; végrehajtásának megkönnyítése ellenőrzi, és frissíti az aktuális rendszer karbantartására vonatkozó házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és rendszer-karbantartási eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2.a** a szervezet ütemezi, hajt végre, dokumentumokat, és ellenőrzi, hogy rekordok karbantartási és a javítások információk rendszer összetevőinek vagy gyártójához specifikációk és/vagy a szervezeti követelményeknek megfelelően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2.b** a szervezet jóvá, és figyeli az összes karbantartás tevékenység, akár a helyen, vagy távolról, és hogy a készülék szervizelt helyen, vagy eltávolítani egy másik helyre.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2.c** a szervezet megköveteli, hogy [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] explicit módon a rendszer vagy a szervezeti berendezések a telephelytől távoli karbantartás vagy javítások rendszerösszetevők eltávolításának jóváhagyását.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2.d** a szervezet sanitizes berendezések eltávolítani a hozzá tartozó adathordozó szervezeti berendezések a telephelytől távoli karbantartás vagy javítások eltávolítása előtt az összes információit.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2.e** A szervezet összes esetlegesen érintett biztonsági vezérlők győződjön meg arról, hogy a vezérlők továbbra is megfelelően működnek megfelelően a következő karbantartási és javítási műveletek ellenőrzi.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2.f** a szervezet tartalmaz [hozzárendelés: karbantartási kapcsolódó információk szervezet által meghatározott] szervezeti karbantartási rekordokban.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2 (2) sémaszintjén** a szervezet automatizált mechanizmusokat, ütemezés, a viselkedési, és a dokumentum karbantartási és a javítások funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2 (2) .b** a szervezet fel dátumig, pontos, hozza létre, és minden karbantartási és a javítási művelet teljes rekordok kért, ütemezett folyamat során, és befejeződött.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-3** a szervezet jóvá, vezérlők, és figyeli a rendszer-felügyeleti eszközök információkat.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-3 (1)** a szervezet megvizsgálja a karbantartási személyzet nem megfelelő vagy illetéktelen módosítások azokat a létesítmény végzett karbantartási eszközökkel.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-3 (2)** a szervezet adathordozót tartalmazó diagnosztikai és a vizsgálati programok rosszindulatú kódot előtt ellenőrzi az adathordozót a információs rendszerben használt.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-3 (3)** a szervezet megakadályozza, hogy a szervezeti adatokat tartalmazó ellenőrzi, hogy nincs szervezeti adatait a készülék; tisztítására vagy megsemmisítése karbantartási berendezések jogosulatlan eltávolítása a berendezések; a készülék belül a létesítmény; megőrzése vagy az beszerzése alóli [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] explicit módon engedélyezése a készülék a létesítmény az eltávolítása.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4.a** a szervezet jóvá és nem helyi karbantartási és diagnosztikai tevékenységek figyeli.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4.b** a szervezet engedélyezi, hogy a nem helyi karbantartási és a diagnosztika csak, szervezeti házirend konzisztens eszközökhöz, és részletes ismertetését lásd: a biztonsági tervnek az információk rendszerhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4.c** a szervezet nem helyi karbantartási és diagnosztikai munkamenet létrehozásában erős hitelesítők funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4.d** a szervezet kezeli a nem helyi karbantartási és diagnosztikai tevékenységeket rögzíti.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4.e** A szervezet munkamenet és hálózati kapcsolatok megszakítása, ha a nem helyi karbantartás befejeződött.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4 (2)** a szervezet dokumentumok, a biztonsági csomagban az adatokat a rendszer, a házirendek és eljárások létrehozásáról és a nem helyi karbantartási és diagnosztikai kapcsolatok.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4 (3)** a szervezet megköveteli, hogy a nem helyi karbantartási és diagnosztikai szolgáltatásokban hajtható végre, amely megvalósítja a funkció a rendszeren jelenleg kiszolgált; megvalósított összehasonlítható egy biztonsági funkció, vagy eltávolítja az adatokat rendszerből az összetevő nem helyi karbantartás vagy-szolgáltatások diagnosztikai információk rendszerből kiszolgálásra sanitizes (tekintetében a szervezeti adatok) az összetevő a szervezeti létesítményekben, és a szolgáltatás eltávolítása előtt végre, ellenőrzi és sanitizes az összetevő (tekintetében a potenciálisan kártevő szoftverek) az összetevő információs rendszer újracsatlakozás előtt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4 (6)** az információs rendszer megvalósítja az integritásra és a titkosítás nem helyi karbantartási és diagnosztikai kommunikáció védelme érdekében titkosítási mechanizmus.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-5.a** a szervezet egy folyamatot, karbantartási személyzet engedély létesít, és listát készít a jogosult karbantartási szervezetek vagy személyek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-5.b** a szervezet biztosítja, hogy nem kísért személyzet karbantartás elvégzése az információk rendszeren szükséges hozzáférési engedélyeket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-5.c** a szervezet meg, míg a hozzáférési engedélyek és műszaki hatáskörét felügyeli karbantartási személyzet, akik nem rendelkeznek a hozzáférési engedélyek szervezeti csoporthoz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-5 (1) sémaszintjén** a szervezete bevezet, nem rendelkezik megfelelő biztonsági engedély, vagy amelyek nem USA építését, amelyek tartalmazzák a következő követelmények karbantartási személyzet nem rendelkezik a szükséges karbantartás személyzet alkalmazását eljárásai hozzáférési engedélyek, távolság, vagy formális hozzáférés jóváhagyások kísért és felügyeli, karbantartási és diagnosztikai tevékenység az információs rendszer alatt a jóváhagyott szervezeti személyzet teljesen, rendelkeznek-e megfelelő hozzáférési engedélyek, és amelyeket technikailag minősített; kezdeményező karbantartás vagy a személyzet diagnosztikai tevékenységek számára tegye nem rendelkezik a szükséges hozzáférési engedélyek, távolság vagy formális hozzáférés jóváhagyások, minden "volatile" adatokat tárolási összetevőinek információk rendszerből vannak fertőtlenítsék és az összes nem felejtő tárolási adathordozókon eltávolítja vagy fizikailag bontotta a kapcsolatot a rendszer és védett.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-5 (1) .b** a szervezet házon belül fejlesztett alkalmazásokra és valósít meg alternatív biztonsági óvintézkedéseket, abban az esetben egy információk rendszerösszetevő nem lehet fertőtlenítsék, törölve vagy bontotta a kapcsolatot a rendszer.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-6** a szervezet beszerzi karbantartási a támogatási és/vagy tartalék részek [hozzárendelés: szervezet által megadott információk rendszerösszetevők] belül [hozzárendelés: szervezet által meghatározott időszak] hiba.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|

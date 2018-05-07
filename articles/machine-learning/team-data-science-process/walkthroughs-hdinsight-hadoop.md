@@ -1,24 +1,24 @@
 ---
-title: "HDInsight Hadoop adatok tudományos forgatókönyvek Azure a Hive használatával |} Microsoft Docs"
-description: "Példák az Team tudományos folyamat, amely a prediktív elemzés végrehajtásához Azure HDInsight hadoop Hive segítségével ismerteti."
+title: HDInsight Hadoop adatok tudományos forgatókönyvek Azure a Hive használatával |} Microsoft Docs
+description: Példák az Team tudományos folyamat, amely a prediktív elemzés végrehajtásához Azure HDInsight hadoop Hive segítségével ismerteti.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: cef2dac8651933765c83410579eafb23460960f9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: deguhath
+ms.openlocfilehash: 00a7c197223dcdd45181afbba98f66178b944c46
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>HDInsight Hadoop adatok tudományos forgatókönyvek az Azure-on a Hive eszközzel 
 
@@ -41,7 +41,7 @@ A forgatókönyv a Hive segítségével van megvalósítva egy [Azure HDInsight 
 A [használata Azure HDInsight Hadoop-fürtök az 1 TB méretű dataset](hive-criteo-walkthrough.md) forgatókönyv használ egy nyilvánosan elérhető [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) kattintson dataset előre jelezni, hogy tipp fizetnek és a tartomány díjak a várható. A forgatókönyv a Hive segítségével van megvalósítva egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolására, megismerkedhet a beállítást, a visszafejtés és mintaadatokat tölthet le. Az Azure Machine Learning segítségével felépítéséhez, betanítását és pontozását egy bináris osztályozási modell előrejelzése, hogy a felhasználó hirdetmény kattint. Megjelenik a forgatókönyv bemutatja, hogyan közzététele egy ezek a modellek webszolgáltatásként.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fő összetevőből épül fel az Team tudományos folyamat tárgyalását lásd: [Team adatok tudományos folyamat áttekintése](overview.md).
 

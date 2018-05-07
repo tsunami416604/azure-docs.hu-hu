@@ -1,30 +1,30 @@
 ---
-title: "Az Azure Event rács előfizetés séma"
-description: "Az előfizetés a Azure esemény rács esemény tulajdonságait ismerteti."
+title: Az Azure Event rács előfizetés séma
+description: Az előfizetés a Azure esemény rács esemény tulajdonságait ismerteti.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: babanisa
-ms.openlocfilehash: 888196225ec5998405113842344469d02a2cf5c7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 406eb2c1974958eef5e83915e6b21e385cf7d2c7
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="event-grid-subscription-schema"></a>Esemény rács előfizetés séma
 
 Esemény rács előfizetéssel, hozzon létre, az esemény létrehozása előfizetés működéséhez kérést kell küldenie. Használja a következő formátumot:
 
-```
+```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
 Például egy esemény-előfizetést a tárfiók létrehozásához nevű `examplestorage` erőforráscsoportban nevű `examplegroup`, használja a következő formátumot:
 
-```
+```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
@@ -51,7 +51,7 @@ A cikk ismerteti a tulajdonságok és a kérelem törzse sémáját.
 | includedEventTypes | tömb | Egyezés, ha az esemény típusát az eseményüzenet pontos egyezést e esemény típusnevek egyikére. Riasztást a hiba, ha az esemény neve nem egyezik meg a következő eseményforrás regisztrált esemény típusneve. Alapértelmezett megfelel az összes eseménytípust. |
 | subjectBeginsWith | karakterlánc | Előtag-egyezés a mezőben az üzenet szűrésére. Az alapértelmezett vagy üres karakterlánc megfelel. | 
 | subjectEndsWith | karakterlánc | Utótag-egyezés a mezőben az üzenet szűrésére. Az alapértelmezett vagy üres karakterlánc megfelel. |
-| subjectIsCaseSensitive | karakterlánc | Kis-és nagybetűket szűrőknek megfelelő vezérlőket. |
+| isSubjectCaseSensitive | karakterlánc | Kis-és nagybetűket szűrőknek megfelelő vezérlőket. |
 
 
 ## <a name="example-subscription-schema"></a>Példa előfizetés séma
@@ -69,7 +69,7 @@ A cikk ismerteti a tulajdonságok és a kérelem törzse sémáját.
       "includedEventTypes": [ "Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted" ],
       "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
       "subjectEndsWith": ".jpg",
-      "subjectIsCaseSensitive": "true"
+      "isSubjectCaseSensitive ": "true"
     }
   }
 }

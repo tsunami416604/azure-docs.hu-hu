@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 64fe217cf3d845e6a09fe67d03648e79e8a4cadd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b95f5bb2aa93fb29999994ccd83dc898f88f1072
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>Egy sablon használatával felügyelt VMSS szolgáltatás identitásának beállítása
 
@@ -36,7 +36,7 @@ Ebből a cikkből megtanulhatja a műveleteket a következő felügyelt Szolgál
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-Az Azure portál és parancsfájl-kezelési, Azure Resource Manager-sablonok telepíthet egy Azure erőforráscsoport által meghatározott új vagy megváltozott erőforrásokat adjon meg. Több lehetőség is elérhető Sablonszerkesztés és a központi telepítés, helyi és portálalapú, beleértve:
+Csakúgy, mint az Azure portál és parancsfájl-kezelési, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) sablonok lehetővé teszi egy Azure erőforráscsoport által meghatározott új vagy megváltozott erőforrásokat telepítését adja meg. Több lehetőség is elérhető Sablonszerkesztés és a központi telepítés, helyi és portálalapú, beleértve:
 
    - Használatával egy [egyéni sablont az Azure piactérről](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi teljesen új sablon létrehozása, vagy létrehozhatja azt egy meglévő közös vagy [gyorsindítási sablonon](https://azure.microsoft.com/documentation/templates/).
    - Egy sablon exportálása vagy egy meglévő erőforráscsoportot, a Származtatás [az eredeti telepítési](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), vagy a [az üzemelő példány aktuális állapotának](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
@@ -51,13 +51,11 @@ Ebben a szakaszban engedélyezze, és tiltsa le a rendszer Azure Resource Manage
 
 ### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vmss-or-an-existing-azure-vmss"></a>Hozzárendelt azonosító létrehozása az Azure VMSS, vagy egy meglévő Azure VMSS rendszer engedélyezése
 
-1. Bejelentkezik az Azure-bA helyileg vagy az Azure-portálon, hogy olyan fiókot használjon, amely társított Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoport.
-
-2. A sablon betöltése a szerkesztő, után keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakasz. Saját tűnhet kissé eltér attól függően, hogy a szerkesztő használata a következő képernyőfelvételen látható, és hogy szerkeszti egy sablont egy új központi telepítés vagy a meglévők egyikét.
+1. A sablon betöltése a szerkesztő, keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakasz. Saját tűnhet kissé eltér attól függően, hogy a szerkesztő használata a következő képernyőfelvételen látható, és hogy szerkeszti egy sablont egy új központi telepítés vagy a meglévők egyikét.
    
    ![Képernyőkép a sablon - keresse meg a virtuális gép](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
 
-3. A hozzárendelt rendszeridentitás engedélyezéséhez vegye fel a `"identity"` tulajdonság ugyanazon a szinten az `"type": "Microsoft.Compute/virtualMachineScaleSets"` tulajdonság. A következő szintaxissal:
+2. A hozzárendelt rendszeridentitás engedélyezéséhez vegye fel a `"identity"` tulajdonság ugyanazon a szinten az `"type": "Microsoft.Compute/virtualMachineScaleSets"` tulajdonság. A következő szintaxissal:
 
    ```JSON
    "identity": { 
@@ -65,7 +63,7 @@ Ebben a szakaszban engedélyezze, és tiltsa le a rendszer Azure Resource Manage
    },
    ```
 
-4. (Választható) Adja hozzá a virtuális gép méretezési MSI kiterjesztésű fájlt egy `extensionsProfile` elemet. Ez a lépés nem kötelező, hasonlóan az Azure példány metaadatok szolgáltatás (IMDS) identitás, valamint a jogkivonatok beolvasása.  A következő szintaxissal:
+3. (Választható) Adja hozzá a virtuális gép méretezési MSI kiterjesztésű fájlt egy `extensionsProfile` elemet. Ez a lépés nem kötelező, hasonlóan az Azure példány metaadatok szolgáltatás (IMDS) identitás, valamint a jogkivonatok beolvasása.  A következő szintaxissal:
 
    >[!NOTE] 
    > Az alábbi példa azt feltételezi, hogy a Windows virtuálisgép-méretezési virtuáliskapcsoló-kiterjesztés beállítása (`ManagedIdentityExtensionForWindows`) telepítése történik. Beállíthatja úgy is Linux használatával `ManagedIdentityExtensionForLinux` ehelyett a `"name"` és `"type"` elemeket.
@@ -89,7 +87,7 @@ Ebben a szakaszban engedélyezze, és tiltsa le a rendszer Azure Resource Manage
             }
    ```
 
-5. Amikor elkészült, a sablon a következő hasonlóan kell kinéznie:
+4. Amikor elkészült, a sablon a következő hasonlóan kell kinéznie:
 
    ![Képernyőkép a frissítés után sablon](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
 
@@ -100,41 +98,18 @@ Ebben a szakaszban engedélyezze, és tiltsa le a rendszer Azure Resource Manage
 
 Ha egy virtuálisgép-méretezési beállítása, amely már nem rendelkezik hozzárendelt identitás rendszer kell, de továbbra is hozzá kell a felhasználói identitások:
 
-1. Bejelentkezik az Azure-bA helyileg vagy az Azure-portálon, hogy olyan fiókot használjon, amely társított Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoport.
-
-2. Az identity típus a `'UserAssigned'`
+- A sablon betöltése a szerkesztő és az identity típus a `'UserAssigned'`
 
 ## <a name="user-assigned-identity"></a>A felhasználói identitás
 
-Ebben a szakaszban egy felhasználó lehet hozzárendelve az identitás- és egy Azure VMSS Azure Resource Manager-sablonnal hoz létre.
+Ebben a szakaszban rendel egy hozzárendelt felhasználói azonosító az Azure VMSS Azure Resource Manager-sablon használatával.
 
-### <a name="create-and-assign-a-user-assigned-identity-to-an-azure-vmss"></a>Létrehozni és hozzárendelni egy a felhasználói identitás egy Azure VMSS
+> [!Note]
+> Egy Azure Resource Manager-sablonnal a felhasználói identitás létrehozásához lásd: [nem hoz létre a felhasználói](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity).
 
-1. A szakaszban a lépés végrehajtása az első [engedélyezése a hozzárendelt rendszeridentitás létrehozása az Azure VMSS, egy meglévő VMSS a](qs-configure-template-windows-vmss.md#enable-system-assigned-identity-during-creation-of-an-azure-vmss-or-an-existing-azure-vmss).
+### <a name="assign-a-user-assigned-identity-to-an-azure-vmss"></a>Egy a felhasználói identitás egy Azure VMSS hozzárendelése
 
-2. A változók szakaszban, amely tartalmazza a konfigurációs változók a Azure VMSS adjon hozzá egy bejegyzést, az alábbihoz hasonló felhasználói hozzárendelt azonosító nevet.  Ez a felhasználó identitását az Azure VMSS létrehozási folyamata során értéke:
-    
-    > [!IMPORTANT]
-    > A felhasználói identitások a különleges karakterek (pl. aláhúzásjel) nevében létrehozása jelenleg nem támogatott. Alfanumerikus karaktereket használja. Biztonsági frissítések ellenőrzése.  További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
-
-    ```json
-    "variables": {
-        "vmssPrefix": "vmss",
-        "vmssName": "[concat(variables('vmssPrefix'), uniquestring(resourceGroup().id,deployment().name))]",
-        //other vm configuration variables...
-        "identityName": "[concat(variables('vmssName'), 'id')]"
-    ```
-3. Az a `resources` elem hozzáadása a következő bejegyzést hoz létre egy felhasználó lehet hozzárendelve:
-
-    ```json
-    {
-        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-        "name": "[variables('identityName')]",
-        "apiVersion": "2015-08-31-PREVIEW",
-        "location": "[resourceGroup().location]"
-    },
-    ```
-4. Ezután bontsa a `resources` elem hozzáadása a felhasználói identitás hozzárendelése a VMSS a következő bejegyzést:
+1. Az a `resources` elemet, adja hozzá a következő bejegyzést a VMSS hozzárendelt felhasználói azonosítót hozzárendelni.  Ügyeljen arra, hogy a csere `<USERASSIGNEDIDENTITY>` nevű, a felhasználó identitásának létrehozott.
 
     ```json
     {
@@ -144,13 +119,13 @@ Ebben a szakaszban egy felhasználó lehet hozzárendelve az identitás- és egy
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/, variables('identityName'))]"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITY>)']"
             ]
         }
 
     }
     ```
-5. (Választható) Adja hozzá a következő bejegyzést a `extensionProfile` a felügyelt identity bővítmény hozzárendelése a VMSS elemet. Ez a lépés nem kötelező, hasonlóan a Azure példány metaadatok szolgáltatás (IMDS) identitás végpont, valamint a jogkivonatok beolvasása. A következő szintaxissal:
+2. (Választható) Adja hozzá a következő bejegyzést a `extensionProfile` a felügyelt identity bővítmény hozzárendelése a VMSS elemet. Ez a lépés nem kötelező, hasonlóan a Azure példány metaadatok szolgáltatás (IMDS) identitás végpont, valamint a jogkivonatok beolvasása. A következő szintaxissal:
    
     ```JSON
        "extensionProfile": {
@@ -169,11 +144,9 @@ Ebben a szakaszban egy felhasználó lehet hozzárendelve az identitás- és egy
                     }
                 }
    ```
-6.  Amikor elkészült, a sablon a következő hasonlóan kell kinéznie:
-    > [!NOTE]
-    > A sablon nem listázza az összes szükséges változó a VMSS létrehozásához.  `//other configuration variables...` helyett kivonatosan mutatja az összes szükséges konfigurációs változót használja.
-
-      ![A felhasználói identitás képernyőképe](../media/msi-qs-configure-template-windows-vmss/template-vmss-user-assigned-identity.png)
+3.  Amikor elkészült, a sablon a következő hasonlóan kell kinéznie:
+   
+      ![A felhasználói identitás képernyőképe](./media/qs-configure-template-windows-vmss/qs-configure-template-windows-final.PNG)
 
 ## <a name="next-steps"></a>További lépések
 

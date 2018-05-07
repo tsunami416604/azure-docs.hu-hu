@@ -3,7 +3,7 @@ title: Hive táblák létrehozása és az adatok betöltése az Azure Blob Stora
 description: Hive táblák létrehozása és a hive táblák blob adatainak betöltése
 services: machine-learning,storage
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: cff9280d-18ce-4b66-a54f-19f358d1ad90
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 593df249429bf1dcc5a59312830ed78f7cf642e8
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: deguhath
+ms.openlocfilehash: 7634a8bdc7492d674801a256a4d5bb73170311ee
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage
 Ebből a témakörből megismerheti, hogy a Hive táblák létrehozása és az adatok betöltése az Azure blob storage általános Hive-lekérdezéseket. Néhány is útmutatást a Hive Táblák particionálása és az optimalizált sor oszlopos (ORC) lekérdezés teljesítmény javítása érdekében formázás használatával.
@@ -63,7 +63,7 @@ Jelentkezzen be a Hadoop-fürt átjárócsomópontjához, nyissa meg a Hadoop pa
 
 Háromféleképpen elküldeni a Hive-lekérdezéseket a Hadoop parancssorban:
 
-* directly
+* közvetlenül
 * .hql fájlok használata
 * a Hive parancs konzol
 
@@ -84,7 +84,7 @@ A Hive-lekérdezések bonyolultabb, és több vonal van, a parancssor vagy a Hiv
 Alapértelmezés szerint a Hadoop parancssorban Hive-lekérdezés elküldése után a térkép vagy csökkentse a feladat előrehaladását nyomtatása a képernyőn. A képernyő Nyomtatás a térkép vagy csökkentse a feladat előrehaladását a mellőzése, argumentumot is használhat `-S` ("S" nagybetűvel) a parancsban sor az alábbiak szerint:
 
     hive -S -f "<path to the .hql file>"
-.    hive -S -e "<Hive queries>"
+.    Hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Küldje el a Hive parancskonzolról Hive-lekérdezéseket.
 Először is megadhat a Hive parancskonzolról parancs futtatásával `hive` a Hadoop parancssor, és küldje el a Hive parancskonzolról Hive-lekérdezéseket. Íme egy példa. Ebben a példában a két piros mezőkbe írja be a Hive parancskonzolról használt parancsok, és a Hive-lekérdezés Hive parancskonzolról, illetve benyújtott jelöljön ki. A zöld mező a Hive-lekérdezések eredményének mutatja be.
@@ -143,10 +143,10 @@ Ez a Hive lekérdezés, amely egy Hive táblát hoz létre.
 Az alábbiakban a mezőket, amelyeknek kell csatlakoztatni és egyéb beállításokra leírása:
 
 * **<database name>**: a létrehozni kívánt adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a lekérdezés *adatbázis létrehozása...*  kihagyható.
-* **<table name>**: a táblázat, amely szeretne létrehozni a megadott adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a tábla is közvetlenül elé  *<table name>*  nélkül <database name>.
+* **<table name>**: a táblázat, amely szeretne létrehozni a megadott adatbázis nevét. Ha szeretné használni az alapértelmezett adatbázis, a tábla is közvetlenül elé *<table name>* nélkül <database name>.
 * **<field separator>**: az elválasztó, amely az adatfájlban a Hive tábla feltölteni kívánt mezőket.
 * **<line separator>**: az elválasztó, amely az adatfájl sorainak.
-* **<storage location>**: az Azure storage-helyre menteni az adatokat a Hive táblák. Ha nincs megadva *hely <storage location>* , az adatbázis és a táblázatok tárolja *hive/adatraktár/* könyvtárban lévő az alapértelmezett tároló alapértelmezés szerint a Hive-fürt. Ha meg szeretné határozni a tárolási helye, a tárolási hely nem lehet az adatbázis és a táblák alapértelmezett tárolóban. Ezen a helyen van, a fürt formátumban viszonyítva az alapértelmezett tároló helye elé *"wasb: / / / < 1 könyvtár > /"* vagy *"wasb: / / / < 1 könyvtár > / < directory 2 > /"*stb. A lekérdezés végrehajtása után a relatív könyvtárak alapértelmezett tárolóban jönnek létre.
+* **<storage location>**: az Azure storage-helyre menteni az adatokat a Hive táblák. Ha nincs megadva *hely <storage location>* , az adatbázis és a táblázatok tárolja *hive/adatraktár/* könyvtárban lévő az alapértelmezett tároló alapértelmezés szerint a Hive-fürt. Ha meg szeretné határozni a tárolási helye, a tárolási hely nem lehet az adatbázis és a táblák alapértelmezett tárolóban. Ezen a helyen van, a fürt formátumban viszonyítva az alapértelmezett tároló helye elé *"wasb: / / / < 1 könyvtár > /"* vagy *"wasb: / / / < 1 könyvtár > / < directory 2 > /"* stb. A lekérdezés végrehajtása után a relatív könyvtárak alapértelmezett tárolóban jönnek létre.
 * **TBLPROPERTIES("Skip.Header.line.Count"="1")**: Ha az adatfájl fejléc, fel kell vennie a tulajdonság **végén** , a *tábla létrehozása* lekérdezés. Ellenkező esetben a fejlécsort a táblázathoz rekordként be van töltve. Ha az adatok fájlban nincs fejléc, ez a konfiguráció elhagyható a lekérdezésben.
 
 ## <a name="load-data"></a>Adatok betöltése a Hive táblák
@@ -154,7 +154,7 @@ Ez a Hive-lekérdezés, amely adatokat tölt be egy Hive tábla.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **<path to blob data>**: Ha a blob-fájlt fel kell tölteni a Hive táblát a HDInsight Hadoop-fürt, az alapértelmezett tároló a  *<path to blob data>*  formátumban kell megadni *"wasb: / / /<directory in this container> / <blob file name>'*. A blob fájl is lehet egy további tárolót a HDInsight Hadoop-fürt. Ebben az esetben  *<path to blob data>*  formátumban kell megadni *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
+* **<path to blob data>**: Ha a blob-fájlt fel kell tölteni a Hive táblát a HDInsight Hadoop-fürt, az alapértelmezett tároló a *<path to blob data>* formátumban kell megadni *"wasb: / / /<directory in this container> / <blob file name>'*. A blob fájl is lehet egy további tárolót a HDInsight Hadoop-fürt. Ebben az esetben *<path to blob data>* formátumban kell megadni *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
 
   > [!NOTE]
   > A blobadatokat feltöltendő Hive táblát nem lehet az alapértelmezett vagy a tárfiók a Hadoop-fürt további tárolóban. Ellenkező esetben a *adatok betöltése* lekérdezés nem sikerült panaszos, hogy az adatok nem férhet hozzá.
@@ -230,7 +230,7 @@ Válassza az 1. lépésben a külső tábla az adatok és az ORC táblázat besz
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Biztonságos dobja el a  *<external textfile table name>*  amikor után minden adat a következő lekérdezéssel e behelyezve  *<database name>.<ORC table name>* :
+Biztonságos dobja el a *<external textfile table name>* amikor után minden adat a következő lekérdezéssel e behelyezve *<database name>.<ORC table name>*:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a873aa9835ffab8b0d195d9fc9588167ea134128
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2b0cb1ed92694a7859912dfe0339ef719c0d15ef
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB adatbázis biztonsági
 
@@ -78,7 +78,7 @@ Most dig részletesen mindegyiknél be.
 |Válaszoljon a támadások által.|A potenciális támadási jelentést az Azure támogatási csatlakoztak, ha a program egy 5. lépés az incidensekre adott reakciók folyamat kezdődött el. Az 5. lépés folyamat célja normál szolgáltatás biztonsága és műveletei minél gyorsabban visszaállítása után a rendszer problémát észlelt, és a vizsgálat elindult.<br><br>További információ: [Microsoft Azure biztonsági válasz a felhőben](https://aka.ms/securityresponsepaper).|
 |Geokerítések|Azure Cosmos DB biztosítja az adatok irányítási és a megfelelőségi szuverén régiókhoz (például Németország, Kína Velünk – (kormányzati)).|
 |Védett létesítményekben|Az Azure Cosmos Adatbázisba tárolja az Azure által védett adatközpontokban SSD-k.<br><br>További információ: [Microsoft globális adatközpont](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
-|HTTPS/SSL/TLS encryption|Minden ügyfél – szolgáltatás Azure Cosmos DB kapcsolati SSL/TLS 1.2 kényszerített. Minden helyen belüli datacenter és határokon datacenter replikációs is SSL/TLS 1.2 kényszerített.|
+|HTTPS/SSL/TLS encryption|Minden ügyfél – szolgáltatás Azure Cosmos DB kapcsolati SSL/TLS 1.2-es képes. Minden helyen belüli datacenter és határokon datacenter replikációs is SSL/TLS 1.2 kényszerített.|
 |Titkosítás inaktív állapotban|Az Azure Cosmos DB tárolt összes adat titkosítása. További információ: [Azure Cosmos DB titkosítását](.\database-encryption-at-rest.md)|
 |Javított kiszolgálók|Egy felügyelt adatbázisként Azure Cosmos DB szükségtelenné teszi kezelése és a kiszolgálók, javítás, automatikusan elvégzett.|
 |Az erős jelszóval rendelkező rendszergazdai fiókok|Már rögzített feltételezi, még akkor is kell említse meg ezt a követelményt, de eltérően néhány a versenytársak lehetetlen jelszó nélküli rendszergazdai fiókokkal rendelkeznek az Azure Cosmos-Adatbázisba.<br><br> Az SSL és HMAC titkos alapú hitelesítéssel biztonsági alapértelmezés szerint a sütik.|

@@ -1,24 +1,24 @@
 ---
-title: "SQL Server data tudományos forgatókönyvek R, Python, és T-SQL használatával |} Microsoft Docs"
-description: "Végezze el a használatát, R, Python, illetve az SQL Server T-SQL a prediktív elemzés példákat."
+title: SQL Server data tudományos forgatókönyvek R, Python, és T-SQL használatával |} Microsoft Docs
+description: Végezze el a használatát, R, Python, illetve az SQL Server T-SQL a prediktív elemzés példákat.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 3f7d6a0b7b1f874d87e10c490d0b48fe6e6083ef
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: deguhath
+ms.openlocfilehash: 1de293885c691aa7112eb9288eaa48554d81bdb2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server data tudományos forgatókönyvek R, Python, és T-SQL használatával
 
@@ -47,7 +47,7 @@ A [adatok tudományos forgatókönyv R és az SQL Server](https://docs.microsoft
 A [használata T-SQL az SQL Server Python Services](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) forgatókönyv SQL programozók nyújt a machine learning-megoldás az SQL Server felépítése élmény. Azt mutatja be egy alkalmazás Python kódját felvételével tárolt eljárások Python beépítse.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fő összetevőből épül fel az Team tudományos folyamat tárgyalását lásd: [Team adatok tudományos folyamat áttekintése](overview.md).
 

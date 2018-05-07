@@ -8,16 +8,16 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/18/2018
+ms.date: 4/30/2018
 ms.author: jlian
-ms.openlocfilehash: 8d495bf89697a5e14ff79953ab98f241ef8972e8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 8d1eb3229f22b2da3a356562250fedb3c35c4816
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programozott módon létrehozása az Azure vállalati előfizetések (előzetes verzió)
 
@@ -65,19 +65,19 @@ Azure válaszol az összes regisztrációs fiók rendelkezik hozzáféréssel li
 {
   "value": [
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
-      "name": "<enrollmentAccountId>",
+      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "Microsoft.Billing/enrollmentAccounts",
       "properties": {
-        "principalName": "MobileOnboardingEng@contoso.com"
+        "principalName": "SignUpEngineering@contoso.com"
       }
     },
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
-      "name": "<enrollmentAccountId>",
+      "id": "/providers/Microsoft.Billing/enrollmentAccounts/4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "Microsoft.Billing/enrollmentAccounts",
       "properties": {
-        "principalName": "MobileBackendEng@contoso.com"
+        "principalName": "BillingPlatformTeam@contoso.com"
       }
     }
   ]
@@ -98,8 +98,8 @@ Azure válaszol, a fiókok objektumazonosítók és az e-mail címek listáját.
 
 ```azurepowershell
 ObjectId                               | PrincipalName
-<enrollmentAccountId>   | MobileOnboardingEng@contoso.com
-<enrollmentAccountId>   | MobileBackendEng@contoso.com
+747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | SignUpEngineering@contoso.com
+4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -117,19 +117,19 @@ Azure válaszol, a fiókok objektumazonosítók és az e-mail címek listáját.
 {
   "value": [
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
-      "name": "<enrollmentAccountId>",
+      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "Microsoft.Billing/enrollmentAccounts",
       "properties": {
-        "principalName": "MobileOnboardingEng@contoso.com"
+        "principalName": "SignUpEngineering@contoso.com"
       }
     },
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
-      "name": "<enrollmentAccountId>",
+      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "Microsoft.Billing/enrollmentAccounts",
       "properties": {
-        "principalName": "MobileBackendEng@contoso.com"
+        "principalName": "BillingPlatformTeam@contoso.com"
       }
     }
   ]
@@ -142,14 +142,14 @@ Használja a `principalName` tulajdonság segítségével azonosítja a fiókot,
 
 ## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Egy adott beléptetési fiókhoz tartozó előfizetések létrehozása 
 
-Az alábbi példakód létrehozza a nevű előfizetést létrehozására vonatkozó kérelem *fejlesztői csapat előfizetés* és előfizetés ajánlat *MS-AZR - 0017P* (rendszeres EA). A beléptetési fiók `<enrollmentAccountId>`, ez az a regisztráció fiók MobileOnboardingEng@contoso.com. Azt is hozzáadja a két felhasználókat RBAC tulajdonosként az előfizetéshez.
+Az alábbi példakód létrehozza a nevű előfizetést létrehozására vonatkozó kérelem *fejlesztői csapat előfizetés* és előfizetés ajánlat *MS-AZR - 0017P* (rendszeres EA). A beléptetési fiók `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (helyőrző értékét, ez az egy GUID), amely beléptetési fiókjának van SignUpEngineering@contoso.com. Azt is hozzáadja a két felhasználókat RBAC tulajdonosként az előfizetéshez.
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
 Használja a `id` , a `enrollmentAccount` az előfizetés létrehozására vonatkozó kérelem elérési útját.
 
 ```json
-POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
+POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
 
 {
   "displayName": "Dev Team Subscription",
@@ -177,16 +177,17 @@ A válaszban vissza egy `subscriptionOperation` objektum figyelésre. Ha az elő
 
 Ez a minta modul használatához telepítse futtatásával `Install-Module AzureRM.Subscription -AllowPrerelease` első. Győződjön meg arról, hogy `-AllowPrerelease` működik, a PowerShellGet legújabb verziójának telepítése [PowerShellGet lekérési modulja](/powershell/gallery/psget/get_psget_module).
 
-Használja a [New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) együtt `enrollmentAccount` neve, mint a `EnrollmentAccountObjectId` paraméter segítségével hozzon létre egy új előfizetést. 
+Használja a [New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) együtt `enrollmentAccount` objektumazonosító, a `EnrollmentAccountObjectId` paraméter segítségével hozzon létre egy új előfizetést. 
 
 ```azurepowershell-interactive
-New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountId> -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
+New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
 ```
 
 | Elem neve  | Szükséges | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | Nem      | Karakterlánc | Az előfizetés megjelenítendő nevét. Ha nincs megadva, a nevét, például a "Microsoft Azure Enterprise". az ajánlat beállítása                                 |
 | `OfferType`   | Igen      | Karakterlánc | Az ajánlat az előfizetés. A két beállítás megadása a EA [MS-AZR - 0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles környezetben való használathoz) és [MS-AZR - 0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (fejlesztési és tesztelési célú, kell lennie [-e kapcsolva a EA portálon](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
+| `EnrollmentAccountObjectId`      | Igen       | Karakterlánc | Az eszközregisztráció-fiók, hogy az előfizetés alapján létre és terhelve objektum azonosítója. A kapott GUID-érték `Get-AzureRmEnrollmentAccount`. |
 | `OwnerObjectId`      | Nem       | Karakterlánc | Minden olyan felhasználó, amelyeket meg szeretne létrehozásakor adja hozzá az előfizetés RBAC tulajdonost objektum azonosítója.  |
 | `OwnerSignInName`    | Nem       | Karakterlánc | Minden olyan felhasználó, amelyeket meg szeretne létrehozásakor adja hozzá az előfizetés RBAC tulajdonost e-mail címe. Ez a paraméter nem használható `OwnerObjectId`.|
 | `OwnerApplicationId` | Nem       | Karakterlánc | Az alkalmazás Azonosítóját a bármely szolgáltatás egyszerű, amelyeket meg szeretne létrehozásakor adja hozzá az előfizetés RBAC tulajdonost. Ez a paraméter nem használható `OwnerObjectId`.| 
@@ -197,16 +198,17 @@ Minden paraméterek teljes listájának megtekintéséhez lásd: [New-AzureRmSub
 
 A kép bővítmény használatával telepítse futtatásával `az extension add --name subscription` első.
 
-Használja a [az fiók létrehozása](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) együtt `enrollmentAccount` neve, mint a `enrollment_account_name` paraméter segítségével hozzon létre egy új előfizetést.
+Használja a [az fiók létrehozása](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) együtt `enrollmentAccount` objektumazonosító, a `enrollment-account-object-id` paraméter segítségével hozzon létre egy új előfizetést.
 
 ```azurecli-interactive 
-az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-name "<enrollmentAccountId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
+az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
 | Elem neve  | Szükséges | Típus   | Leírás                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | Nem      | Karakterlánc | Az előfizetés megjelenítendő nevét. Ha nincs megadva, a nevét, például a "Microsoft Azure Enterprise". az ajánlat beállítása                                 |
 | `offer-type`   | Igen      | Karakterlánc | Az ajánlat az előfizetés. A két beállítás megadása a EA [MS-AZR - 0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles környezetben való használathoz) és [MS-AZR - 0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (fejlesztési és tesztelési célú, kell lennie [-e kapcsolva a EA portálon](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
+| `enrollment-account-object-id`      | Igen       | Karakterlánc | Az eszközregisztráció-fiók, hogy az előfizetés alapján létre és terhelve objektum azonosítója. A kapott GUID-érték `az billing enrollment-account list`. |
 | `owner-object-id`      | Nem       | Karakterlánc | Minden olyan felhasználó, amelyeket meg szeretne létrehozásakor adja hozzá az előfizetés RBAC tulajdonost objektum azonosítója.  |
 | `owner-upn`    | Nem       | Karakterlánc | Minden olyan felhasználó, amelyeket meg szeretne létrehozásakor adja hozzá az előfizetés RBAC tulajdonost e-mail címe. Ez a paraméter nem használható `owner-object-id`.|
 | `owner-spn` | Nem       | Karakterlánc | Az alkalmazás Azonosítóját a bármely szolgáltatás egyszerű, amelyeket meg szeretne létrehozásakor adja hozzá az előfizetés RBAC tulajdonost. Ez a paraméter nem használható `owner-object-id`.| 
@@ -217,12 +219,12 @@ Minden paraméterek teljes listájának megtekintéséhez lásd: [az fiók létr
 
 ## <a name="delegate-access-to-an-enrollment-account-using-rbac"></a>Egy olyan beléptetési fiókot az RBAC használata delegálása
 
-Egy másik felhasználó vagy szolgáltatás egyszerű adhat egy adott fiók-előfizetések létrehozása olyan [számukra az RBAC tulajdonosi szerepkört, a beléptetési fiók a hatókörben](../active-directory/role-based-access-control-manage-access-rest.md). Az alábbi példában a felhasználó adja meg a bérlői `principalId` a `<userObjectId>` (a MobileOnboardingEng@contoso.com) egy tulajdonosi szerepkört, a beléptetési fiók. 
+Egy másik felhasználó vagy szolgáltatás egyszerű adhat egy adott fiók-előfizetések létrehozása olyan [számukra az RBAC tulajdonosi szerepkört, a beléptetési fiók a hatókörben](../active-directory/role-based-access-control-manage-access-rest.md). Az alábbi példában a felhasználó adja meg a bérlői `principalId` a `<userObjectId>` (a SignUpEngineering@contoso.com) egy tulajdonosi szerepkört, a beléptetési fiók. 
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
 ```json
-PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
+PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
 
 {
   "properties": {
@@ -238,7 +240,7 @@ Tulajdonosi szerepkör sikeresen hozzá van rendelve, a beléptetési fiók hat�
   "properties": {
     "roleDefinitionId": "/providers/Microsoft.Billing/enrollmentAccounts/providers/Microsoft.Authorization/roleDefinitions/<ownerRoleDefinitionId>",
     "principalId": "<userObjectId>",
-    "scope": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
+    "scope": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "createdOn": "2018-03-05T08:36:26.4014813Z",
     "updatedOn": "2018-03-05T08:36:26.4014813Z",
     "createdBy": "<assignerObjectId>",
@@ -255,7 +257,7 @@ Tulajdonosi szerepkör sikeresen hozzá van rendelve, a beléptetési fiók hat�
 Használja a [New-AzureRmRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) adhat egy másik felhasználónak tulajdonosi hozzáférés igénylés fiókjára.
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>
+New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -263,7 +265,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Sc
 Használja a [az szerepkör-hozzárendelés létrehozása](../active-directory/role-based-access-control-manage-access-azure-cli.md) adhat egy másik felhasználónak tulajdonosi hozzáférés igénylés fiókjára.
 
 ```azurecli-interactive 
-az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>
+az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 ----

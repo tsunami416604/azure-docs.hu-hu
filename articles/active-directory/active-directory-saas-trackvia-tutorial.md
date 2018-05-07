@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált TrackVia |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és TrackVia között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált TrackVia |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és TrackVia között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 51b040e1dfaba8fff8136e8947edf716919f53b0
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 54e830f2ead2887c941d81a97ed619ae5cb1c750
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Oktatóanyag: Azure Active Directoryval integrált TrackVia
 
@@ -108,13 +108,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk TrackVia tartomány és az URL-címek](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_url.png)
 
-    Az a **azonosító** szövegmező, írja be az értéket:`TrackVia`
+    Az a **azonosító** szövegmező, írja be az értéket: `TrackVia`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
     ![Az egyszeri bejelentkezés információk TrackVia tartomány és az URL-címek](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://companyname.trackvia.com`
+    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://companyname.trackvia.com`
      
     > [!NOTE] 
     > Bejelentkezési URL-cím értéke nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [TrackVia ügyfél-támogatási csoport](mailto:support@trackvia.com) lekérni ezt az értéket.
@@ -126,11 +126,22 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 6. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-trackvia-tutorial/tutorial_general_400.png)
-    
-7. Egyszeri bejelentkezés konfigurálása **TrackVia** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [TrackVia támogatási csoport](mailto:support@trackvia.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. A a **TrackVia konfigurációs** kattintson **konfigurálása TrackVia** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** a a **rövid összefoglaló szakasz.**
+
+    ![TrackVia konfiguráció](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_configure.png)
+    
+8. Különböző böngészőablakban jelentkezzen be a TrackVia vállalati webhely rendszergazdaként.
+
+9. Kattintson a Trackvia **saját fiók** beállításokat, majd válassza ki **egyszeri bejelentkezés** lapra, hajtsa végre a következő lépéseket:
+
+    ![TrackVia konfiguráció](./media/active-directory-saas-trackvia-tutorial/configure1.png)
+
+    a. Az a **Identity Provider Entitásazonosító** szövegmezőhöz Beillesztés **SAML Entitásazonosító** értéket, amely az Azure portálról másolta.
+
+    b. Válassza ki a **Choose File** feltöltése az Azure-portálról letöltött metaadatait tartalmazó fájl.
+
+    c. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -212,8 +223,6 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_01.png
@@ -227,4 +236,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_203.png
-

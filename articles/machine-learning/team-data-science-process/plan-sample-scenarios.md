@@ -1,9 +1,9 @@
 ---
-title: "Az Azure Machine Learning speciális elemzésekre forgatókönyveinek |} Microsoft Docs"
-description: "Válassza ki a megfelelő forgatókönyvek speciális az Team tudományos folyamat a prediktív elemzés megteheti."
+title: Az Azure Machine Learning speciális elemzésekre forgatókönyveinek |} Microsoft Docs
+description: Válassza ki a megfelelő forgatókönyvek speciális az Team tudományos folyamat a prediktív elemzés megteheti.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 53aecc1e-5089-42cf-8d44-77678653f92d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b6a92f4f4615954902124c59adca25560182de6
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: 7b1b8f00e109776a3a5d3cc8c2224e8160b85704
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
 Ez a cikk ismerteti a különböző minta adatforrások és a cél-szolgáltatásokat, amelyek kezelhetik a [Team adatok tudományos folyamat (TDSP)](overview.md). A TDSP munkacsoportok számára az intelligens alkalmazások rendszeres megközelítését ismerteti. Az itt bemutatott esetekben bemutatják lehetőségeit adatok feldolgozása a munkafolyamatban, amely a adatjellemzők, az adatforrás helyének és a cél tárházak találhatók, az Azure-ban függ.
@@ -35,7 +35,7 @@ A következő szakaszok mindegyikének megadja egy mintaforgatókönyv. Az egyes
 > **Az összes a következő esetekben kell:**
 > <br/>
 > 
-> * [A storage-fiók létrehozása](../../storage/common/storage-create-storage-account.md)
+> * [Tárfiók létrehozása](../../storage/common/storage-create-storage-account.md)
 >   <br/>
 > * [Az Azure Machine Learning-munkaterület létrehozása](../studio/create-workspace.md)
 > 

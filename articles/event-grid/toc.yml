@@ -59,6 +59,8 @@
       href: monitor-event-delivery.md
     - name: Esemény-előfizetések lekérdezése
       href: query-event-subscriptions.md
+    - name: CloudEvents-séma használata
+      href: cloudevents-schema.md
 - name: Referencia
   items:
     - name: Azure CLI

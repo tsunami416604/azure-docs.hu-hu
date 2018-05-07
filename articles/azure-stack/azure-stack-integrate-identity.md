@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure verem datacenter integrációs - identitás
 Az identitás-szolgáltatóktól Azure verem Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) használatával telepítheti. Azure verem központi telepítése előtt meg kell nyitnia a választás. AD FS segítségével központi telepítés is nevezzük Azure verem kapcsolat nélküli módban való telepítése.
@@ -60,6 +60,8 @@ Követelmények:
 
 ## <a name="setting-up-graph-integration"></a>Graph-integráció beállítása
 
+Graph csak egyetlen Active Directory-erdőben való integráció támogatja. Ha több erdő, csak a konfigurációban megadott erdő beolvasási felhasználók és csoportok lesz használható.
+
 A következő információkra szükség az automation paraméterek bemeneteként:
 
 
@@ -95,12 +97,14 @@ Ez az eljárás az adatközponti hálózat, amely képes kommunikálni a kiemelt
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
-   Amikor a rendszer kéri, adja meg a Graph-szolgáltatáshoz (például graphservice) használni kívánt felhasználói fiók hitelesítő adatait.
+   Amikor a rendszer kéri, adja meg a Graph-szolgáltatáshoz (például graphservice) használni kívánt felhasználói fiók hitelesítő adatait. A Register-DirectoryService parancsmag bemenete kell lennie az erdő neve / legfelső szintű tartomány az erdőben, nem pedig az erdő más tartományokba.
 
    > [!IMPORTANT]
    > Várja meg a hitelesítő adatok előugró (Get-Credential parancsmag nem támogatott a rendszerjogosultságú végpont) és a Graph-szolgáltatásfiók hitelesítő adatokat.
 
 #### <a name="graph-protocols-and-ports"></a>Graph protokollok és portok
+
+Azure verem Graph szolgáltatás a következő protokollok és portok használatával kommunikálni egy írható globális katalógus kiszolgáló (GC) és a kulcsszolgáltató (KDC), amely képes a bejelentkezési kérések a cél az Active Directory-erdőben.
 
 Graph szolgáltatás Azure-készletben a következő protokollokat és portokat használ a cél az Active Directory folytatott kommunikációhoz:
 

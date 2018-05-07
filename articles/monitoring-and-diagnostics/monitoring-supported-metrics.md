@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: 34d115f36e64a34b4382ce4e11e93a0c06215c5d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: a5c0d529357d8ab92cf63ca4a0293753d55801d6
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
 Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat. Más metrikákkal portálon vagy az örökölt API-k használatával érhetők el. Ez a lista alatt csak tartalmazza a metrikák érhető el a összevont Azure-figyelő metrika-feldolgozási folyamat használatával. A metrikák kereshet és eléréséhez kérjük, használja a [2018-01-01 api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -425,6 +425,16 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |---|---|---|---|---|---|
 |CpuUsage|CPU-használat|Darabszám|Átlag|CPU-használat a millicores az összes mag.|ContainerName|
 |MemoryUsage|Memóriahasználat|Bájt|Átlag|Teljes memóriahasználatát bájt.|ContainerName|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|kube_node_status_allocatable_cpu_cores|Egy felügyelt fürt elérhető Processzormagok száma összesen|Darabszám|Összes|Egy felügyelt fürt elérhető Processzormagok száma összesen|Nincs dimenzió|
+|kube_node_status_allocatable_memory_bytes|Egy felügyelt fürt rendelkezésre álló memória teljes mennyiségétől|Bájt|Összes|Egy felügyelt fürt rendelkezésre álló memória teljes mennyiségétől|Nincs dimenzió|
+|kube_pod_status_ready|Három munkaállomás-csoporttal üzemkész állapotban száma|Darabszám|Összes|Három munkaállomás-csoporttal üzemkész állapotban száma|névtér, pod|
+|kube_node_status_condition|A csomópont különböző feltételeket állapotok|Darabszám|Összes|A csomópont különböző feltételeket állapotok|az állapot, az állapot, a csomópont|
+|kube_pod_status_phase|Három munkaállomás-csoporttal által fázis száma|Darabszám|Összes|Három munkaállomás-csoporttal által fázis száma|fázis, a névtér, pod|
 
 ## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
 
@@ -1012,6 +1022,20 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |CPUXNS|Processzorhasználat névterenként|Százalék|Maximum|Prémium szintű Service Bus-névtér CPU-használati metrikája|Nincs dimenzió|
 |WSXNS|Felhasznál memória mérete névterenként|Százalék|Maximum|Prémium szintű Service Bus-névtér memóriahasználati metrikája|Nincs dimenzió|
 
+## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|ConnectionCount|Kapcsolatok száma|Darabszám|Maximum|Felhasználói kapcsolat mennyisége.|Nincs dimenzió|
+|ConnectionCountPerSecond|Kapcsolatok száma másodpercenként|Egység/s|Átlag|Az átlagos kapcsolatok száma másodpercenként.|Nincs dimenzió|
+|MessageCount|Üzenetek száma|Darabszám|Maximum|A teljes rendszermemóriához viszonyítva üzenet az adott hónapban|Nincs dimenzió|
+|MessageCountPerSecond|Üzenetek száma másodpercenként|Egység/s|Átlag|Az üzenet átlagos száma|Nincs dimenzió|
+|MessageUsed|Használni|Százalék|Maximum|A hónap használtak üzenetek százaléka|Nincs dimenzió|
+|ConnectionUsed|A használt kapcsolat|Százalék|Maximum|A kapcsolatok aránya fel lett használva.|Nincs dimenzió|
+|UserErrors|Felhasználói hibák|Százalék|Maximum|Felhasználói hibáinak aránya|Nincs dimenzió|
+|SystemErrors|Rendszerhibák|Százalék|Maximum|A hibáinak aránya|Nincs dimenzió|
+|SystemLoad|Rendszerterhelés|Százalék|Maximum|A rendszer terhelését aránya|Nincs dimenzió|
+
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -1147,6 +1171,30 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |DeserializationError|A deszerializálás bemeneti hibái|Darabszám|Összes|A deszerializálás bemeneti hibái|Nincs dimenzió|
 |EarlyInputEvents|Események, amelyeknél az alkalmazásbeli pontos idő korábbi, mint az érkezési idejük.|Darabszám|Összes|Események, amelyeknél az alkalmazásbeli pontos idő korábbi, mint az érkezési idejük.|Nincs dimenzió|
 
+## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|IngressReceivedMessages|Érkező üzenetek fogadása|Darabszám|Összes|Minden Event hubs vagy az IoT-központ eseményforrások olvasni üzenetek száma|Nincs dimenzió|
+|IngressReceivedInvalidMessages|Érvénytelen üzeneteket érkező kapott|Darabszám|Összes|Minden Event hubs vagy az IoT-központ eseményforrások olvasni érvénytelen üzenetek száma|Nincs dimenzió|
+|IngressReceivedBytes|Érkező fogadott bájtok|Bájt|Összes|Minden esemény forrásból beolvasott bájtok száma|Nincs dimenzió|
+|IngressStoredBytes|Érkező tárolt bájt|Bájt|Összes|Sikeresen feldolgozott és lekérdezhetők események teljes mérete|Nincs dimenzió|
+|IngressStoredEvents|Érkező tárolt események|Darabszám|Összes|Sikeresen feldolgozott és lekérdezhetők egybesimított események száma|Nincs dimenzió|
+|IngressReceivedMessagesTimeLag|A fogadott üzenetek Időeltolódást érkező|másodperc|Maximum|A, amely az üzenet a várólistában levő a forrás és az idő érkező feldolgozásra közötti különbség|Nincs dimenzió|
+|IngressReceivedMessagesCountLag|Érkező fogadott üzenetek száma késés|Darabszám|Átlag|Utolsó várólistán lévő üzenetek sorszáma különbségének a forrás-érkező a feldolgozás alatt álló üzenet partíció és a sorrend száma|Nincs dimenzió|
+
+## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|IngressReceivedMessages|Érkező üzenetek fogadása|Darabszám|Összes|Az esemény forrásoldali üzenetek száma|Nincs dimenzió|
+|IngressReceivedInvalidMessages|Érvénytelen üzeneteket érkező kapott|Darabszám|Összes|Az esemény forrásoldali érvénytelen üzenetek száma|Nincs dimenzió|
+|IngressReceivedBytes|Érkező fogadott bájtok|Bájt|Összes|Az esemény forrásból beolvasott bájtok száma|Nincs dimenzió|
+|IngressStoredBytes|Érkező tárolt bájt|Bájt|Összes|Sikeresen feldolgozott és lekérdezhetők események teljes mérete|Nincs dimenzió|
+|IngressStoredEvents|Érkező tárolt események|Darabszám|Összes|Sikeresen feldolgozott és lekérdezhetők egybesimított események száma|Nincs dimenzió|
+|IngressReceivedMessagesTimeLag|A fogadott üzenetek Időeltolódást érkező|másodperc|Maximum|A, amely az üzenet a várólistában levő a forrás és az idő érkező feldolgozásra közötti különbség|Nincs dimenzió|
+|IngressReceivedMessagesCountLag|Érkező fogadott üzenetek száma késés|Darabszám|Átlag|Utolsó várólistán lévő üzenetek sorszáma különbségének a forrás-érkező a feldolgozás alatt álló üzenet partíció és a sorrend száma|Nincs dimenzió|
+
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -1181,6 +1229,19 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AppConnections|Kapcsolatok|Darabszám|Átlag|Kapcsolatok|Példány|
 |Leírók|Leírók száma|Darabszám|Átlag|Leírók száma|Példány|
 |Szálak|Szálak száma|Darabszám|Átlag|Szálak száma|Példány|
+|IoReadBytesPerSecond|IO olvasott bájtok száma másodpercenként|Bájt/s|Összes|IO olvasott bájtok száma másodpercenként|Példány|
+|IoWriteBytesPerSecond|I/O írási bájt / mp|Bájt/s|Összes|I/O írási bájt / mp|Példány|
+|IoOtherBytesPerSecond|IO más bájt / mp|Bájt/s|Összes|IO más bájt / mp|Példány|
+|IoReadOperationsPerSecond|I/O olvasási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O olvasási műveletek másodpercenkénti száma|Példány|
+|IoWriteOperationsPerSecond|I/O írási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O írási műveletek másodpercenkénti száma|Példány|
+|IoOtherOperationsPerSecond|IO más műveletek másodpercenkénti száma|Bájt/s|Összes|IO más műveletek másodpercenkénti száma|Példány|
+|RequestsInApplicationQueue|Az alkalmazás várólista kérelmek|Darabszám|Átlag|Az alkalmazás várólista kérelmek|Példány|
+|CurrentAssemblies|Szerelvények pillanatnyi száma|Darabszám|Átlag|Szerelvények pillanatnyi száma|Példány|
+|TotalAppDomains|Teljes alkalmazás tartományok|Darabszám|Átlag|Teljes alkalmazás tartományok|Példány|
+|TotalAppDomainsUnloaded|Teljes alkalmazás tartományok eltávolítása|Darabszám|Átlag|Teljes alkalmazás tartományok eltávolítása|Példány|
+|Gen0Collections|0. generációs szemétgyűjtések|Darabszám|Összes|0. generációs szemétgyűjtések|Példány|
+|Gen1Collections|1. generációs szemétgyűjtések|Darabszám|Összes|1. generációs szemétgyűjtések|Példány|
+|Gen2Collections|2. generációs szemétgyűjtések|Darabszám|Összes|2. generációs szemétgyűjtések|Példány|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkciók)
 
@@ -1193,6 +1254,19 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
 |FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Összes|Függvény-végrehajtási egység|Példány|
 |FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Összes|Függvény végrehajtásainak száma|Példány|
+|IoReadBytesPerSecond|IO olvasott bájtok száma másodpercenként|Bájt/s|Összes|IO olvasott bájtok száma másodpercenként|Példány|
+|IoWriteBytesPerSecond|I/O írási bájt / mp|Bájt/s|Összes|I/O írási bájt / mp|Példány|
+|IoOtherBytesPerSecond|IO más bájt / mp|Bájt/s|Összes|IO más bájt / mp|Példány|
+|IoReadOperationsPerSecond|I/O olvasási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O olvasási műveletek másodpercenkénti száma|Példány|
+|IoWriteOperationsPerSecond|I/O írási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O írási műveletek másodpercenkénti száma|Példány|
+|IoOtherOperationsPerSecond|IO más műveletek másodpercenkénti száma|Bájt/s|Összes|IO más műveletek másodpercenkénti száma|Példány|
+|RequestsInApplicationQueue|Az alkalmazás várólista kérelmek|Darabszám|Átlag|Az alkalmazás várólista kérelmek|Példány|
+|CurrentAssemblies|Szerelvények pillanatnyi száma|Darabszám|Átlag|Szerelvények pillanatnyi száma|Példány|
+|TotalAppDomains|Teljes alkalmazás tartományok|Darabszám|Átlag|Teljes alkalmazás tartományok|Példány|
+|TotalAppDomainsUnloaded|Teljes alkalmazás tartományok eltávolítása|Darabszám|Átlag|Teljes alkalmazás tartományok eltávolítása|Példány|
+|Gen0Collections|0. generációs szemétgyűjtések|Darabszám|Összes|0. generációs szemétgyűjtések|Példány|
+|Gen1Collections|1. generációs szemétgyűjtések|Darabszám|Összes|1. generációs szemétgyűjtések|Példány|
+|Gen2Collections|2. generációs szemétgyűjtések|Darabszám|Összes|2. generációs szemétgyűjtések|Példány|
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
@@ -1219,6 +1293,19 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AppConnections|Kapcsolatok|Darabszám|Átlag|Kapcsolatok|Példány|
 |Leírók|Leírók száma|Darabszám|Átlag|Leírók száma|Példány|
 |Szálak|Szálak száma|Darabszám|Átlag|Szálak száma|Példány|
+|IoReadBytesPerSecond|IO olvasott bájtok száma másodpercenként|Bájt/s|Összes|IO olvasott bájtok száma másodpercenként|Példány|
+|IoWriteBytesPerSecond|I/O írási bájt / mp|Bájt/s|Összes|I/O írási bájt / mp|Példány|
+|IoOtherBytesPerSecond|IO más bájt / mp|Bájt/s|Összes|IO más bájt / mp|Példány|
+|IoReadOperationsPerSecond|I/O olvasási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O olvasási műveletek másodpercenkénti száma|Példány|
+|IoWriteOperationsPerSecond|I/O írási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O írási műveletek másodpercenkénti száma|Példány|
+|IoOtherOperationsPerSecond|IO más műveletek másodpercenkénti száma|Bájt/s|Összes|IO más műveletek másodpercenkénti száma|Példány|
+|RequestsInApplicationQueue|Az alkalmazás várólista kérelmek|Darabszám|Átlag|Az alkalmazás várólista kérelmek|Példány|
+|CurrentAssemblies|Szerelvények pillanatnyi száma|Darabszám|Átlag|Szerelvények pillanatnyi száma|Példány|
+|TotalAppDomains|Teljes alkalmazás tartományok|Darabszám|Átlag|Teljes alkalmazás tartományok|Példány|
+|TotalAppDomainsUnloaded|Teljes alkalmazás tartományok eltávolítása|Darabszám|Átlag|Teljes alkalmazás tartományok eltávolítása|Példány|
+|Gen0Collections|0. generációs szemétgyűjtések|Darabszám|Összes|0. generációs szemétgyűjtések|Példány|
+|Gen1Collections|1. generációs szemétgyűjtések|Darabszám|Összes|1. generációs szemétgyűjtések|Példány|
+|Gen2Collections|2. generációs szemétgyűjtések|Darabszám|Összes|2. generációs szemétgyűjtések|Példány|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 

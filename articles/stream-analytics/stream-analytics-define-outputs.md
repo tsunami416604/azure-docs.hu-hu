@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 10d7b5d3670bd7a5f289a6f9f2754ecc6aa18795
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 3bd87090df048f2b67de88f5202998af02d42491
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics kimeneteinek ismertetése
 Ez a cikk ismerteti a különböző típusú kimenetek egy Azure Stream Analytics-feladat érhető el. Kimenetek lehetővé teszik, hogy tárolja, és mentse a Stream Analytics-feladat eredményét. A kimeneti adatok használatával, elvégezhető a további üzleti elemzések és az adatraktározás terén, az adatok. 
@@ -43,12 +43,12 @@ A Stream Analytics támogatja [Azure Data Lake Store](https://azure.microsoft.co
 | Tulajdonság neve | Leírás | 
 | --- | --- |
 | Kimeneti alias | Egy rövid nevet a lekérdezés kimenete a Data Lake Store a lekérdezésekben használt. | 
-| Fiók neve | A Data Lake-tárfiókra ahol küldendő a kimeneti neve. A legördülő listából válassza ki a Data Lake Store-fiókok az előfizetésben elérhető jelenik meg. |
+| Fióknév | A Data Lake-tárfiókra ahol küldendő a kimeneti neve. A legördülő listából válassza ki a Data Lake Store-fiókok az előfizetésben elérhető jelenik meg. |
 | Elérési út előtagmintája | A megadott Data Lake Store-fiók található a fájl írásához használt elérési. A {date} egy vagy több példányát adhatja meg, és {time} változók.</br><ul><li>1. példa: mappa1/logs / {date} / {time}</li><li>2. példa: mappa1/logs / {date}</li></ul>Ha a fájl elérési út mintája nem tartalmaz egy záró "/", a rendszer a legutóbbi minta elérési útjának fájlnév előtag. </br></br>Új fájlok jönnek létre ilyen körülmények között:<ul><li>A kimeneti sémával módosítása</li><li>Külső vagy belső indítsa újra a feladatok.</li></ul> |
 | Dátumformátum | Választható. Ha a dátum jogkivonat a előtag elérési útját, válassza a dátumformátum, amelyben a fájlok vannak rendezve. . Példa: Éééé/hh/nn |
 |Időformátum | Választható. Ha a idő jogkivonat előtag elérési, adja meg az időformátum, amelyben a fájlok vannak rendezve. Jelenleg az egyetlen támogatott érték HH. |
 | Eseményszerializációs formátum | A kimeneti adatok szerializálási formátum. JSON, CSV és az avro-hoz támogatott.| 
-| Kódolás | Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.|
+| Encoding | Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.|
 | Elválasztó karakter | Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogatja a CSV-adatok szerializálása során. Támogatott értékei, vesszővel, pontosvesszővel válassza el, lemezterület, lapon, majd függőleges vonal.|
 | Formátum | Csak a JSON-szerializálás alkalmazható. Sorral elválasztott beállítás megadja, hogy a formázott azzal, hogy minden JSON-objektum sortöréssel elválasztva. A tömb határozza meg, hogy a formázott JSON-objektumokat tömbként. A tömb csak akkor, ha a feladat leáll vagy a Stream Analytics rendelkezik áthelyezni a következő alkalommal ablakra van zárva. Általában célszerű sor használandó elválasztott JSON, mivel nem igényel semmilyen különleges kezelést való továbbra is van a kimeneti fájl írása közben.|
 
@@ -59,14 +59,14 @@ Hitelesítés megújítása **leállítása** a feladat > lépjen a Data Lake St
 
 ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
-## <a name="sql-database"></a>SQL-adatbázis
+## <a name="sql-database"></a>SQL Database
 [Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) használható kimenetként a relációs jellegű adatokhoz, vagy olyan alkalmazásnál, amely egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni a meglévő tábla Azure SQL-adatbázisban.  A következő tábla sémáját pontosan meg kell egyeznie a mezők és azok típusát, a feladat kimenete alatt. Egy [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) keresztül, valamint az SQL-adatbázis output paraméter kimenetként is megadható. Az alábbi táblázat felsorolja a tulajdonság nevét és egy SQL-adatbázis kimenet létrehozása leírását.
 
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias |Egy rövid nevet a lekérdezés kimenete az adatbázist a lekérdezésekben használt. |
 | Adatbázis | Az adatbázis, ahol küldendő a kimeneti neve. |
-| Kiszolgáló neve | Az SQL Database kiszolgáló neve. |
+| Kiszolgálónév | Az SQL Database kiszolgáló neve. |
 | Felhasználónév | A felhasználónév, amely hozzáfér a databas írni. |
 | Jelszó | A jelszót a databas.e |
 | Tábla | A tábla neve, ahol a kimeneti írása. A táblanév nem kis-és nagybetűket, és ezt a táblázatot a séma mezőket és a rendszer a feladat kimenetére által létrehozott típusok száma annak pontosan meg kell egyeznie. |
@@ -83,14 +83,14 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a blob
 | Tulajdonság neve | Leírás | 
 | --- | --- |
 | A kimeneti Alias | Egy rövid nevet a blob storage a lekérdezés kimenete a lekérdezésekben használt. |
-| Tárolási fiók | A tárfiók, ahol küldendő a kimeneti neve. |
+| Tárfiók | A tárfiók, ahol küldendő a kimeneti neve. |
 | Tárfiók kulcsa | A storage-fiókjához tartozó titkos kulcsot. |
 | A tároló | Tárolók adja meg a Microsoft Azure Blob szolgáltatásban tárolt blobok logikai csoportosítását. Amikor egy blob feltöltése a Blob szolgáltatás, meg kell adnia, hogy a blob tárolója. |
 | Elérésiút-minta | Választható. A fájl elérési út mintája a megadott tárolóban található blobok írásához használt. </br> Az elérési út mintája választhatja a következő 2 változó egy vagy több példányát használja a blobok írt gyakorisága: </br> a {date}, {time} </br> 1. példa: cluster1/logs / {date} / {time} </br> 2. példa: cluster1/logs / {date} <BR> <BR> A következő egyezmény fájlelnevezésnél követi: </br> {Elérési előtag Pattern}/schemaHashcode_Guid_Number.extension </br></br> Példa kimeneti fájlok: </br>Myoutput/20170901/00/45434_gguid_1.csv </br> Myoutput/20170901/01/45434_gguid_1.csv |
 | Dátumformátum | Választható. Ha a dátum jogkivonat a előtag elérési útját, válassza a dátumformátum, amelyben a fájlok vannak rendezve. . Példa: Éééé/hh/nn |
 | Időformátum | Választható. Ha a idő jogkivonat előtag elérési, adja meg az időformátum, amelyben a fájlok vannak rendezve. Jelenleg az egyetlen támogatott érték HH. |
 | Eseményszerializációs formátum | A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott.
-| Kódolás | Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
+| Encoding | Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | Elválasztó karakter | Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogatja a CSV-adatok szerializálása során. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 | Formátum | Csak a JSON-szerializálás alkalmazható. Sorral elválasztott beállítás megadja, hogy a formázott azzal, hogy minden JSON-objektum sortöréssel elválasztva. A tömb határozza meg, hogy a formázott JSON-objektumokat tömbként. A tömb csak akkor, ha a feladat leáll vagy a Stream Analytics rendelkezik áthelyezni a következő alkalommal ablakra van zárva. Általában célszerű sor használandó elválasztott JSON, mivel nem igényel semmilyen különleges kezelést való továbbra is van a kimeneti fájl írása közben. |
 
@@ -113,11 +113,11 @@ Nincsenek, amelyek szükségesek ahhoz, hogy konfigurálta az Event Hubs adatfol
 | Kimeneti alias | Egy rövid nevet a lekérdezés kimenete az Event Hubs a lekérdezésekben használt. |
 | Eseményközpont-névtér |Egy Eseményközpont-névtér az üzenetküldési entitások készletének tárolója. Egy új Eseményközpont létrehozásakor egy Eseményközpont-névtér is létrejött. |
 | Eseményközpont neve | Az Event Hubs kimeneti neve. |
-| Eseményközpont házirendjének neve | A megosztott elérési házirendet, amely az Event Hub konfigurálása lapon is létrehozható. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. |
+| Eseményközpont szabályzatának neve | A megosztott elérési házirendet, amely az Event Hub konfigurálása lapon is létrehozható. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. |
 | Eseményközpont házirendjének kulcsa | A megosztott hozzáférési kulcs való hitelesítéshez szükséges hozzáférés az Event Hubs-névtérhez. |
 | Partíciókulcs-oszlopot [opcionális] | Ez az oszlop a partíciókulcs az Event Hubs a kimenet tartalmazza. |
 | Eseményszerializációs formátum | A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott. |
-| Kódolás | A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
+| Encoding | A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum. |
 | Elválasztó karakter | Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 | Formátum | Csak a JSON-szerializálás alkalmazható. Sorral elválasztott beállítás megadja, hogy a formázott azzal, hogy minden JSON-objektum sortöréssel elválasztva. A tömb határozza meg, hogy a formázott JSON-objektumokat tömbként. A tömb csak akkor, ha a feladat leáll vagy a Stream Analytics rendelkezik áthelyezni a következő alkalommal ablakra van zárva. Általában célszerű sor használandó elválasztott JSON, mivel nem igényel semmilyen különleges kezelést való továbbra is van a kimeneti fájl írása közben. |
 
@@ -214,11 +214,11 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a vár
 | --- | --- |
 | Kimeneti alias |Egy rövid nevet a lekérdezés a Service Bus-üzenetsorba kimenete a lekérdezésekben használt. |
 | Service Bus-névtér |A Service Bus-névtér az üzenetküldési entitások készletének tárolója. |
-| Sor neve |A Service Bus-üzenetsorba neve. |
+| Üzenetsor neve |A Service Bus-üzenetsorba neve. |
 | Sor házirendjének neve |Amikor létrehoz egy sort, a sor konfigurálása lapon is létrehozhat a megosztott elérési házirendeket. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. |
 | Sor házirendjének kulcsa |A megosztott elérési kulcsot a Service Bus-névtér való hozzáférés hitelesítéséhez használt |
 | Eseményszerializációs formátum |A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott. |
-| Kódolás |A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
+| Encoding |A fürt megosztott kötetei szolgáltatás és a JSON UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
 | Elválasztó karakter |Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 | Formátum |Csak érvényes JSON-típus. Sorral elválasztott beállítás megadja, hogy a formázott azzal, hogy minden JSON-objektum sortöréssel elválasztva. A tömb határozza meg, hogy a formázott JSON-objektumokat tömbként. |
 
@@ -237,7 +237,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a táb
 | Téma házirendjének neve |Amikor létrehoz egy témát, a témakör konfigurálása lapon is létrehozhat a megosztott elérési házirendeket. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal van |
 | Téma házirendjének kulcsa |A megosztott elérési kulcsot a Service Bus-névtér való hozzáférés hitelesítéséhez használt |
 | Eseményszerializációs formátum |A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott. |
-| Kódolás |Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
+| Encoding |Ha a fürt megosztott kötetei szolgáltatás- vagy JSON formátumban, kódolással meg kell adni. Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum |
 | Elválasztó karakter |Csak a fürt megosztott kötetei szolgáltatás szerializálási alkalmazható. A Stream Analytics számos általánosan használt elválasztó karaktert támogat az adatok CSV formátumban történő szerializálásához. Támogatott értékei vesszővel, pontosvesszővel válassza el, hely, lap és függőleges vonal. |
 
 A partíciók száma [a Service Bus SKU és mérete alapján](../service-bus-messaging/service-bus-partitioning.md). Partíciós kulcs egyedi egész szám érték minden partíció esetében.
@@ -286,15 +286,15 @@ A következő táblázat összefoglalja a partíció támogatása és az egyes k
 | Kimenet típusa | Particionálás támogatása | Partíciókulcs  | Kimeneti írók száma | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Igen | Használja {a date} és {time} jogkivonatok az elérési út előtag mintában. Válassza ki a dátum formátumban, például éééé/hh/nn, nn/hh/éééé, hh-nn-éééé formátumra Konvertálni. Az időformátum ÓÓ használható. | A bemeneti particionálás a következő [teljesen párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
-| Azure SQL Database | Nem | Egyik sem | Nem alkalmazható. | 
+| Azure SQL Database | Nem | None | Nem alkalmazható. | 
 | Azure Blob Storage | Igen | Használja {a date} és {time} az elérési út mintája jogkivonatokat. Válassza ki a dátum formátumban, például éééé/hh/nn, nn/hh/éééé, hh-nn-éééé formátumra Konvertálni. Az időformátum ÓÓ használható. | A bemeneti particionálás a következő [teljesen párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
 | Azure Event Hub | Igen | Igen | Partíció igazítás függ.</br> Az Event Hubs partíciókulcs egyaránt igazodik a felsőbb rétegbeli (korábbi) lekérdezés lépést, írók száma megegyezik a számát kimenetét kimenethez Eseményközpont partíciókat. Minden egyes író használja az EventHub tartozó [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) is küldi az eseményeket az adott partícióra. </br> Ha a felsőbb rétegbeli (korábbi) lekérdezés lépést, írók száma nem igazodik partíciókulcs Eseményközpont kimenete megegyezik a korábbi lépésben partíciók száma. Minden egyes író használ EventHubClient [SendBatchAsync osztály](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) eseményt küldeni a kimeneti partíciókat. |
-| Power BI | Nem | Egyik sem | Nem alkalmazható. | 
-| Azure Table Storage | Igen | A kimeneti oszlop.  | A bemeneti particionálás a következő [lekérdezések teljes mértékben mozgáskorlátozottak](stream-analytics-scale-jobs.md). | 
+| Power BI | Nem | None | Nem alkalmazható. | 
+| Azure Table Storage | Igen | A kimeneti oszlop.  | A bemeneti particionálás a következő [teljesen a lekérdezések párhuzamos működésű](stream-analytics-scale-jobs.md). | 
 | Az Azure Service Bus-témakörbe | Igen | Automatikusan választott. A partíciók számának alapul a [Service Bus SKU és mérete](../service-bus-messaging/service-bus-partitioning.md). Partíciós kulcs egyedi egész szám érték minden partíció esetében.| Ugyanaz, mint a kimeneti témakörben található partíciók száma.  |
 | Az Azure Service Bus-üzenetsorba | Igen | Automatikusan választott. A partíciók számának alapul a [Service Bus SKU és mérete](../service-bus-messaging/service-bus-partitioning.md). Partíciós kulcs egyedi egész szám érték minden partíció esetében.| Ugyanaz, mint a kimeneti várólistában lévő partíciók száma. |
-| Azure Cosmos DB | Igen | {Partition} token gyűjteménynévmintája használja. {partition} érték a PARTITION BY záradék a lekérdezés alapul. | A bemeneti particionálás a következő [lekérdezések teljes mértékben mozgáskorlátozottak](stream-analytics-scale-jobs.md). |
-| Azure Functions | Nem | Egyik sem | Nem alkalmazható. | 
+| Azure Cosmos DB | Igen | {Partition} token gyűjteménynévmintája használja. {partition} érték a PARTITION BY záradék a lekérdezés alapul. | A bemeneti particionálás a következő [teljesen a lekérdezések párhuzamos működésű](stream-analytics-scale-jobs.md). |
+| Azure Functions | Nem | None | Nem alkalmazható. | 
 
 ## <a name="output-batch-size"></a>Kimeneti kötegmérete
 Az Azure Stream Analytics változó méretű kötegekben feldolgozni az eseményeket és kimenetek írásához használja. Általában a Stream Analytics-motor nem írási egy üzenet egyszerre és a hatékonyság kötegek használja. Ha mind a bejövő és kimenő események sebessége nagy nagyobb kötegek használ. Ha a kimenő forgalom sebessége alacsony, tartsa alacsony késleltetésű kisebb kötegekben használ. 

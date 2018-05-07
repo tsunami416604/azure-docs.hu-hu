@@ -1,33 +1,33 @@
 ---
-title: "Hozzon létre egy alkalmazás több webhely-üzemeltetés – az Azure portálon |} Microsoft Docs"
-description: "Ismerje meg, amelyen az Azure portál használatával több hely Alkalmazásátjáró létrehozása."
+title: Hozzon létre egy alkalmazás több webhely-üzemeltetés – az Azure portálon |} Microsoft Docs
+description: Ismerje meg, amelyen az Azure portál használatával több hely Alkalmazásátjáró létrehozása.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 403c6c254d8547b09e42f0b1561e5eff350a1f9b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: f3dd092b2298bfc97cac30b8706e0588a466e1e0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Hozzon létre egy alkalmazás több helyrendszerszerepkört üzemeltető, az Azure portál használatával
 
 Az Azure portál segítségével konfigurálhatja [több webhely tárolása](application-gateway-multi-site-overview.md) létrehozásakor egy [Alkalmazásátjáró](application-gateway-introduction.md). Ebben az oktatóanyagban hoz létre a virtuálisgép-méretezési csoportok használatával háttérkészletek menüpontot. Ezután konfigurálja figyelők és szabályok alapján a tartományok, amelyek a saját győződjön meg arról, hogy a webes forgalom érkezik a készletek a megfelelő kiszolgálókat. Ez az oktatóanyag feltételezi, hogy Ön a tulajdonosa több tartományok és felhasználási mintái *www.contoso.com* és *www.fabrikam.com*.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Application Gateway létrehozása
 > * Virtuális gépek háttérkiszolgálókhoz létrehozása
 > * Hozzon létre háttérkészletek menüpontot a háttérkiszolgálókon
 > * Figyelők és útválasztási szabályok létrehozása
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 ![Többhelyes útválasztási – példa](./media/application-gateway-create-multisite-portal/scenario.png)
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [http://portal.azure.com](http://portal.azure.com)
+Jelentkezzen be az Azure-portálon: [http://portal.azure.com](http://portal.azure.com)
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
@@ -70,7 +70,7 @@ Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti ko
 1. Kattintson a **összes erőforrás** a bal oldali menüből, majd **myVNet** erőforrások listából.
 2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
 
-    ![Hozzon létre az alhálózatot](./media/application-gateway-create-multisite-portal/application-gateway-subnet.png)
+    ![Alhálózat létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-subnet.png)
 
 3. Adja meg *myBackendSubnet* neveként az alhálózati majd **OK**.
 
@@ -83,15 +83,15 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 3. Adja meg a virtuális gép ezeket az értékeket:
 
     - *contosoVM* – a virtuális gép nevét.
-    - *azureuser* – a rendszergazdai felhasználónevet.
+    - A rendszergazda felhasználóneve: *azureuser*.
     - *Azure123456!* a jelszó.
     - Válassza ki **meglévő**, majd válassza ki *myResourceGroupAG*.
 
 4. Kattintson az **OK** gombra.
-5. Válassza ki **DS1_V2** a virtuális gépet, majd kattintson a méretét **válasszon**.
+5. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
 6. Győződjön meg arról, hogy **myVNet** van kiválasztva a virtuális hálózat és az alhálózat van **myBackendSubnet**. 
-7. Kattintson a **letiltott** letiltani a rendszerindítási diagnosztika.
-8. Kattintson a **OK**, tekintse át a beállításokat az Összegzés lapon, és kattintson a **létrehozása**.
+7. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
+8. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
@@ -102,7 +102,7 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 2. A következő parancsot az IIS telepítése a virtuális gépen: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -154,7 +154,7 @@ Ebben a példában két új szabályt hoz létre, és törölje az alapértelmez
 6. Hozzon létre egy második szabály nevének használatával *fabrikamRule*, *fabrikamListener*, és *fabrikamPool*.
 7. Törli az alapértelmezett szabályt nevű *Szabály1* kattintson rá, majd **törlése**.
 
-## <a name="create-a-cname-record-in-your-domain"></a>Create a CNAME record in your domain
+## <a name="create-a-cname-record-in-your-domain"></a>Hozzon létre egy CNAME rekordot a tartományban
 
 Nyilvános IP-címmel az Alkalmazásátjáró létrehozása után lekérni a DNS-címét, és hozzon létre egy CNAME rekordot a tartomány segítségével. A-rekordok használata nem ajánlott, mert a VIP módosíthatja az Alkalmazásátjáró újraindításakor.
 
@@ -162,11 +162,11 @@ Nyilvános IP-címmel az Alkalmazásátjáró létrehozása után lekérni a DNS
 
     ![Rekord Alkalmazásátjáró DNS-címét](./media/application-gateway-create-multisite-portal/application-gateway-multisite-dns.png)
 
-2. Copy the DNS address and use it as the value for a new CNAME record in your domain.
+2. Másolja a DNS-címét, és használja az értékeként egy CNAME rekordban a tartományban.
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-1. Adjon meg a tartománynevet a böngésző címsorába. Such as, http://www.contoso.com.
+1. Adjon meg a tartománynevet a böngésző címsorába. Például a http://www.contoso.com.
 
     ![Az alkalmazás átjáró contoso hely tesztelése](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
 
@@ -183,7 +183,7 @@ Ebben a cikkben megtanulta, hogyan:
 > * Virtuális gépek háttérkiszolgálókhoz létrehozása
 > * Hozzon létre háttérkészletek menüpontot a háttérkiszolgálókon
 > * Figyelők és útválasztási szabályok létrehozása
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Alkalmazásátjáró teendők](application-gateway-introduction.md)

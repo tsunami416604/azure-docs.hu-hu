@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ede354516afbd34372215a08d633969cf74b1562
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 6d783a5b36fd71fbcc020025e21aed49e8fd6e05
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -214,6 +214,7 @@ Bizonyos különbségek vannak a viselkedést, amely az Azure Table storage érk
 * A táblanevek, az Azure Table storage-és nagybetűk nem, de a Azure Cosmos DB tábla API
 * Alább Azure Cosmos DB belső formátumok kódolási információkat, például bináris mezők jelenleg nem annyira hatékony, például előfordulhat, hogy egy. Ezért ennek hatására váratlan korlátozások adatok mérete. Például jelenleg egyik nem használható a teljes 1 Meg egy tábla entitás bináris adatok tárolására, mert a kódolás növeli az adatok méretét.
 * Entitás tulajdonság neve "Id" jelenleg nem támogatott
+* TableQuery TakeCount nem korlátozódik 1000
 
 A REST API tekintetében számos végpontok/lekérdezési lehetőségek Azure Cosmos DB tábla API által nem támogatott:
 | REST-metódussal | REST-végpont/lekérdezési lehetőség | DOC URL-címek | Magyarázat |

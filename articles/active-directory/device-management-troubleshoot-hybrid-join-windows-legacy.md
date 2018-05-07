@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 43c1907bf3f9bb8eea92dc02889df24a5a0cc9e3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi eszközök 
 
@@ -90,7 +90,7 @@ Ha a hybrid Azure AD join nem volt sikeres, a párbeszédpanel biztosít inform�
     
     - Autoworkplace.exe nem tudja az Azure AD vagy AD FS csendes hitelesíteni. Ezt okozhatja egy kimenő kötött hálózati problémák az Azure AD URL-címek (az Előfeltételek ellenőrzése). Azt is lehet, hogy többtényezős hitelesítés (MFA) a felhasználó számára engedélyezett/konfigurálva és WIAORMUTLIAUTHN nincs konfigurálva az összevonási kiszolgálón (ellenőrzés konfigurációs lépések). Egy másik lehetőség, a hitelesítőtartomány felderítése (HRD) lap arra vár, hogy felhasználói beavatkozást, amely megakadályozza a **autoworkplace.exe** jogkivonat csendes beszerezni.
     
-    - A szervezet használja az Azure AD zökkenőmentes egyszeri bejelentkezést, `https://autologon.microsoftazuread-sso.com` nincs jelen az Internet Explorer intranetes beállításai az eszközt, és **beállítható a frissítések állapotsor keresztül parancsfájl** nincs engedélyezve az Intranet zóna.
+    - A szervezet használja az Azure AD zökkenőmentes egyszeri bejelentkezést, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem találhatók meg az eszköz Internet Explorer intranetes beállításai, és **beállítható a frissítések állapotsor keresztül parancsfájl** nincs engedélyezve az Intranet zóna.
 
 - A kvóta elérve
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 8da7573d8790bae8c54d2055fd355372625eccf7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: af35bbeb203df90878408add030c47291cd94db9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -36,10 +36,10 @@ A szolgáltatás általánosan elérhető Azure-régiók érhető el. Nem minden
 
 Régiók                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Minden általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Általánosan elérhető   | 2017-04-02, 2017-08-01, 2017-12-01
+[Minden általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Általánosan elérhető   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Általánosan elérhető | 2017-04-02,2017-08-01
-[Azure China](https://www.azure.cn/)                                                           | Általánosan elérhető | 2017-04-02,2017-08-01
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Általánosan elérhető | 2017-04-02,2017-08-01
+[Az Azure Kínában](https://www.azure.cn/)                                                           | Általánosan elérhető | 2017-04-02,2017-08-01
+[Az Azure-Németország](https://azure.microsoft.com/overview/clouds/germany/)                    | Általánosan elérhető | 2017-04-02,2017-08-01
 
 Ez a táblázat frissülni fog, amikor a szolgáltatás frissítések érhetők el, és vagy új verziók érhetők el
 
@@ -75,8 +75,8 @@ A következő táblázat a más adatok formátumok API-k támogathatja a hivatko
 
 API | Alapértelmezett adatformátum | Eltérő formátumban
 --------|---------------------|--------------
-/instance | json | Szöveg
-/scheduledevents | json | nincs
+/instance | JSON-ban | Szöveg
+/scheduledevents | JSON-ban | nincs
 
 Egy nem alapértelmezett válaszformátum szeretne használni, adja meg a kért formátumát a kérelem lekérdezési karakterlánc paraméterként. Példa:
 
@@ -303,10 +303,11 @@ zóna | [Rendelkezésre állási zóna](../../availability-zones/az-overview.md)
 ipv4/privateIpAddress | A virtuális gép helyi IPv4-címe | 2017-04-02
 ipv4/publicIpAddress | A virtuális gép nyilvános IPv4-cím | 2017-04-02
 subnet/address | A virtuális gép alhálózati cím | 2017-04-02 
-subnet/prefix | Példa 24 alhálózati előtag | 2017-04-02 
+/ előtagot. | Példa 24 alhálózati előtag | 2017-04-02 
 ipv6/ipAddress | A virtuális gép helyi IPv6-cím | 2017-04-02 
 MacAddress | Virtuális gép mac-cím | 2017-04-02 
 scheduledevents | Lásd: [ütemezett események](scheduled-events.md) | 2017-08-01
+identity | (Előzetes verzió) Felügyelt szolgáltatás identitásának. Lásd: [szerezzen be egy hozzáférési jogkivonatot:](../../active-directory/managed-service-identity/how-to-use-vm-token.md) | 2018-02-01 
 
 ## <a name="example-scenarios-for-usage"></a>Példa használati forgatókönyvek  
 

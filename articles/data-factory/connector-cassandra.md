@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 72d2eb9e6cf235a90c5b1cf1c125fb6719c65317
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fe68797090926f2e0e0e2fbb66ba2bb7f6d940e7
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Cassandra
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ A következő tulajdonságok Cassandra kapcsolódó szolgáltatás támogatottak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **Cassandra** |Igen |
-| gazdagép |One or more IP addresses or host names of Cassandra servers.<br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
+| gazdagép |Egy vagy több IP-címek vagy Cassandra kiszolgálók állomás nevét.<br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
 | port |A TCP-portot, amelyen a Cassandra kiszolgáló ügyfélkapcsolatokat. |Nem (alapértelmezett érték 9042) |
 | authenticationType | A Cassandra adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető**, és **névtelen**. |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
@@ -91,12 +91,12 @@ A következő tulajdonságok Cassandra kapcsolódó szolgáltatás támogatottak
 
 Szakaszok és meghatározása adatkészletek esetében elérhető tulajdonságok teljes listájáért tekintse meg az adatkészletek cikket. Ez a témakör Cassandra dataset által támogatott tulajdonságokról.
 
-Adatok másolása Cassandra, az adatkészlet típus tulajdonságának beállítása **RelationalTable**. A következő tulajdonságok támogatottak:
+Adatok másolása Cassandra, az adatkészlet típus tulajdonságának beállítása **CassandraTable**. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adathalmaz értékre kell állítani: **CassandraTable** | Igen |
-| keyspace |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Nem (ha van megadva a "query" a "CassandraSource") |
+| kulcstérértesítések használatával |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Nem (ha van megadva a "query" a "CassandraSource") |
 | tableName |A tábla Cassandra adatbázis neve. |Nem (ha van megadva a "query" a "CassandraSource") |
 
 **Példa**
@@ -173,11 +173,11 @@ Az adatok másolása Cassandra, amikor az Azure Data Factory ideiglenes adattíp
 |:--- |:--- |
 | ASCII |Karakterlánc |
 | BIGINT |Int64 |
-| BLOB |Byte] |
+| A BLOB |Byte] |
 | LOGIKAI ÉRTÉK |Logikai |
 | DECIMÁLIS |Decimális |
 | DUPLA |Dupla |
-| LEBEGŐPONTOS |Egyedülálló |
+| LEBEGŐPONTOS |Önálló |
 | INET |Karakterlánc |
 | INT |Int32 |
 | SZÖVEG |Karakterlánc |
@@ -226,7 +226,7 @@ A következő alaptáblában az eredeti adatbázis táblából a gyűjteményeke
 
 Az alábbi táblázatok bemutatják az adatokat a listában, térkép és StringSet oszlopokból renormalize virtuális táblákhoz. Az oszlopok kiderül, hogy a "_index" vagy "_kulcsvédelmi" adja meg az adatokat az eredeti lista vagy a térkép pozícióját. "_Value" végződő nevű oszlopot tartalmazhat a kibontott adatok a gyűjteményből.
 
-**Table "ExampleTable_vt_List":**
+**"ExampleTable_vt_List". tábla:**
 
 | pk_int | List_index | List_value |
 | --- | --- | --- |
@@ -244,7 +244,7 @@ Az alábbi táblázatok bemutatják az adatokat a listában, térkép és String
 | --- | --- | --- |
 | 1 |S1 |A |
 | 1 |S2 |b |
-| 3 |S1 |t |
+| 3 |S1 |T |
 
 **Table "ExampleTable_vt_StringSet":**
 

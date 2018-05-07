@@ -1,9 +1,9 @@
 ---
-title: "Helyezze át az adatokat, vagy az Azure Blob Storage SSIS-összekötők használata |} Microsoft Docs"
-description: "Azure Blob Storage SSIS-összekötők használata adatok áthelyezéséről."
+title: Helyezze át az adatokat, vagy az Azure Blob Storage SSIS-összekötők használata |} Microsoft Docs
+description: Azure Blob Storage SSIS-összekötők használata adatok áthelyezéséről.
 services: machine-learning,storage
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 96a1b5fb-34d1-4b9b-8d99-2bb8289e0398
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 24237173876f2b292141d9373b346721a489bc56
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 39feca23532264c1f4c17017f89b064af09e9c1c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Helyezze át az adatokat, vagy az Azure Blob Storage SSIS-összekötők használata
 A [SQL Server Integration Services funkciócsomag a Azure](https://msdn.microsoft.com/library/mt146770.aspx) biztosít az Azure-ban való kapcsolódáshoz összetevők adatátviteli Azure és a helyszíni adatforrások és az Azure-ban tárolt folyamat adatok között.
@@ -72,7 +72,7 @@ A paraméterek, a feladat használja a dokumentum ismerteti:
 | **BlobContainer** |Megadja a blob-tároló, amely a feltöltött fájlok, blobok tárolására nevét. |
 | **BlobDirectory** |Megadja a blob könyvtárat egy blokkblob, a feltöltött fájl tárolására. A blob könyvtár virtuális hierarchikus. Ha a blob már létezik, it ia helyett. |
 | **LocalDirectory** |Megadja a helyi könyvtárat, amely tartalmazza a feltölteni kívánt fájlokat. |
-| **Fájlnév** |Adja meg a név szűrőt a megadott minta fájlok. Például MySheet\*.xls\* például MySheet001.xls és MySheetABC.xlsx fájlokat tartalmazza |
+| **FileName** |Adja meg a név szűrőt a megadott minta fájlok. Például MySheet\*.xls\* például MySheet001.xls és MySheetABC.xlsx fájlokat tartalmazza |
 | **TimeRangeFrom/TimeRangeTo** |Megadja, idő tartomány szűrőt. A fájlok után módosítva *TimeRangeFrom* és előtt *TimeRangeTo* tartalmazza. |
 
 > [!NOTE]

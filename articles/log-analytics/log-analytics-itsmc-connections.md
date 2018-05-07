@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fdf3c7d1a6621437c414e2c1fe0628f2f585d98a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Csatlakozás ITSM termékek vagy szolgáltatások IT Service Management-összekötő
 Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból és az informatikai szolgáltatás Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analyticshez központilag a a munkaelemek kezeléséhez. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -271,7 +271,10 @@ Ha a felhasználó sikeresen létrejött, állapotának **ellenőrizze telepít�
 
 > [!NOTE]
 
-> ITSM összekötő telepítve a ServiceNow-példányon más modulok nélkül küldhet a ServiceNow incidensek. Ha EventManagement modul a ServiceNow példányát használja, és létrehozza az események és riasztások a ServiceNow az összekötővel, a következő szerepkörök hozzáadása az integráció felhasználói: – evt_mgmt_integration - evt_mgmt_operator  
+> ITSM összekötő telepítve a ServiceNow-példányon más modulok nélkül küldhet a ServiceNow incidensek. ServiceNow betűtípusainak EventManagement modul használ, és létrehozza az események és riasztások a ServiceNow az összekötővel, ha az integrációs felhasználó hozzáadása a következő szerepkörök:
+
+>    - evt_mgmt_integration
+>    - evt_mgmt_operator  
 
 
 ## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>IT-szolgáltatás Provance csatlakozni az Azure-ban Management-összekötő

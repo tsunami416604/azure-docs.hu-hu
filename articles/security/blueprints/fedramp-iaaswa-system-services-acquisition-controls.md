@@ -1,6 +1,6 @@
 ---
-title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - rendszer és a szolgáltatások beszerzési"
-description: "FedRAMP webes alkalmazások Automation - rendszer és a szolgáltatások beszerzési"
+title: Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - rendszer és a szolgáltatások beszerzési
+description: FedRAMP webes alkalmazások Automation - rendszer és a szolgáltatások beszerzési
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 490632a77fd9fb72bda075b996c40378a394f389
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="system-and-services-acquisition-sa"></a>Rendszer és a szolgáltatások beszerzési (SA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy rendszer és a szolgáltatások beszerzési házirendet, amely célú, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás a koordinációs szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a rendszer és a szolgáltatások beszerzési házirend és a kapcsolódó rendszer és a szolgáltatások beszerzési vezérlők; végrehajtásának megkönnyítése ellenőrzi, hogy és frissíti az aktuális rendszer és szolgáltatások beszerzési házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és a rendszer és a szolgáltatások beszerzési eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-2.a** a szervezet kritikus/üzleti folyamat tervezési információk biztonsági követelményei a rendszer vagy információk rendszerszolgáltatás határozza meg.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-2.b** a szervezet határozza meg, dokumentumokat és a rendszer vagy információk rendszerszolgáltatás a beruházási tervezési és a befektetés ellenőrzési folyamat részeként védelméhez szükséges erőforrásokat foglal le.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-2.c** a szervezet hoz létre a különálló sor elem információ-biztonság szervezeti programozási és költségvetési dokumentációja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -81,13 +81,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-3a"></a>NIST 800-53 Control SA-3.a
+ ## <a name="nist-800-53-control-sa-3a"></a>A NIST 800-53 vezérlő SA-3.a
 
 #### <a name="system-development-life-cycle"></a>Rendszer fejlesztési életciklus
 
 **SA-3.a** a szervezetem kezeli az adatokat rendszer a [hozzárendelés: a rendszer szervezet által meghatározott fejlesztési életciklust], amely magában foglalja a információk biztonsági szempontok.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -95,13 +95,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-3b"></a>NIST 800-53 Control SA-3.b
+ ## <a name="nist-800-53-control-sa-3b"></a>A NIST 800-53 vezérlő SA-3.b
 
 #### <a name="system-development-life-cycle"></a>Rendszer fejlesztési életciklus
 
 **SA-3.b** a szervezet határozza meg, és információk biztonsági szerepkörök és felelősségek meghatározása során a rendszer fejlesztési életciklus-dokumentumokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-3** a szervezet adatokat biztonsági szerepkörök és felelősségek rendelkező egyének azonosítja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-3.d** a szervezet a szervezeti adatok biztonsági kockázatot felügyelete folyamat integrálása a fejlesztési életciklus rendszertevékenységét.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4** a szervezet magában foglalja az alábbi követelményeket, leírások és feltételek, explicit módon vagy hivatkozással, a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás összhangban beszerzési szerződése a Szövetségi alkalmazandó törvények, végrehajtó rendeléseket irányelvek, házirendek, szabványok, szabványok, útmutatást, és szervezeti kritikus/üzleti igények: biztonsági funkcionális követelményeinek; biztonsági erősségére vonatkozó követelmények; biztonsági biztonsági követelmény; biztonsági követelményeket; a biztonsággal kapcsolatos dokumentáció; védelmére vonatkozó követelményeinek az információk rendszer fejlesztési környezet és a környezet, amelyben a rendszer célja, hogy működik; leírása és feltételek elfogadását.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (1)** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás adja meg a biztonsági funkciók alkalmazandó működési tulajdonságainak leírását.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (2)** a szervezet megköveteli a információs rendszer rendszerösszetevő, fejlesztői vagy rendszerszolgáltatás kell lennie a biztonsági funkciók tervezési és megvalósítási információk alkalmazott, amely információkat tartalmaz: [kijelölés (egy vagy több): biztonsági vonatkozó külső rendszer kapcsolódási; magas szintű tervezését; alacsony szintű tervezési; Forrás kód vagy hardver tervezés; [Hozzárendelés: szervezet által meghatározott tervezési/implementációs információk]] a(z) [hozzárendelés: részletességi szervezet által meghatározott].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (8)** a szervezet megköveteli a fejlesztő tervet előállítani a(z) folyamatosan figyelje a biztonsági ellenőrzés hatékonysága, amely tartalmazza a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás [hozzárendelése: szervezet által meghatározott részletességi szint].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (9)** a szervezet megköveteli az adatokat a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás azonosításához korai szakaszában a rendszer fejlesztési életciklusba, a Funkciók, a portok, protokollok, szolgáltatások és szánt fejlesztői szervezeti használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (10)** a szervezet csak informatikai termékek a szervezeti adatok rendszerek belül végrehajtani személyes identitás ellenőrzése (PIV) képességhez FIPS 201-jóváhagyott termékek listában funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -221,13 +221,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5a"></a>NIST 800-53 Control SA-5.a
+ ## <a name="nist-800-53-control-sa-5a"></a>A NIST 800-53 vezérlő SA-5.a
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
 **SA-5.a** a szervezet jut hozzá a rendszergazda dokumentációját a rendszer, rendszerösszetevő vagy információs rendszer szolgáltatás, amely leírja a biztonságos konfigurációt, telepítés és a rendszer, összetevő vagy szolgáltatás; művelet hatékony használata és karbantartása a biztonsági funkciók/mechanizmusok; és biztonsági konfigurációs és felügyeleti felhasználására vonatkozóan (azaz, emelt szintű) funkciók.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -235,13 +235,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5b"></a>NIST 800-53 Control SA-5.b
+ ## <a name="nist-800-53-control-sa-5b"></a>A NIST 800-53 vezérlő SA-5.b
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
 **SA-5.b** a szervezet jut hozzá a felhasználói dokumentáció az információk rendszer, a rendszer összetevője, vagy a rendszer szolgáltatás, amely ismerteti felhasználó által elérhető biztonsági funkciók/mechanizmusok és hatékony használata az említett biztonsági funkciók /mechanisms; felhasználói beavatkozást, amely lehetővé teszi az egyéni felhasználók számára a rendszer, összetevő vagy szolgáltatás használata biztonságosabb módon; módszerei és a felhasználó felelőssége, a rendszer, összetevő vagy szolgáltatás biztonságának fenntartásában.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -249,13 +249,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5c"></a>NIST 800-53 Control SA-5.c
+ ## <a name="nist-800-53-control-sa-5c"></a>A NIST 800-53 vezérlő SA-5.c
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
 **SA-5.c** a szervezet dokumentumok próbálja megszerezni a rendszer, rendszerösszetevő vagy információk rendszer szolgáltatás dokumentációjában talál, amikor ilyen dokumentáció nem érhető el, vagy nem létező és tart [hozzárendelése: szervezet által meghatározott műveleteket] válaszként.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -263,13 +263,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5d"></a>NIST 800-53 Control SA-5.d
+ ## <a name="nist-800-53-control-sa-5d"></a>A NIST 800-53 vezérlő SA-5.d
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
 **SA-5.d** a szervezet védi a kockázatkezelési stratégiát megfelelően szükség szerint dokumentációját.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -277,13 +277,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-5e"></a>NIST 800-53 Control SA-5.e
+ ## <a name="nist-800-53-control-sa-5e"></a>A NIST 800-53 vezérlő SA-5.e
 
 #### <a name="information-system-documentation"></a>Információk rendszer dokumentációjában talál.
 
 **SA-5.e** A szervezet osztja el a dokumentációt, amelyik [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -291,13 +291,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-8"></a>NIST 800-53 Control SA-8
+ ## <a name="nist-800-53-control-sa-8"></a>A NIST 800-53 vezérlő SA-8
 
 #### <a name="security-engineering-principles"></a>Mérnöki csapathoz rendszerbiztonsági
 
 **SA-8** a szervezet mérnöki alapelveket a megadását, tervezési, fejlesztési, megvalósítása és módosítása az adatokat a rendszer az információ rendszerbiztonság vonatkozik.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9.a** a szervezet megköveteli, hogy külső adatokat rendszer szolgáltatók ahhoz a szervezeti adatok biztonsági követelmények és alkalmaz [hozzárendelés: szervezet által meghatározott biztonsági vezérlők] összhangban Szövetségi törvényi, végrehajtó rendelések, irányelvek, házirendek, szabványok, szabványok és útmutatást.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9.b** a szervezet határozza meg, és dokumentumokat kormányzati felügyeletet és a felhasználói szerepkörök és felelősségek külső adatokat rendszerszolgáltatások tekintetében.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9.c** alkalmaz a szervezet [hozzárendelés: szervezet által meghatározott folyamatok, módszerek és technikák] külső szolgáltatók folyamatos biztonsági vezérlő megfelelőségének figyeléséhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9 (1) sémaszintjén** a szervezet egy szervezeti kockázatbecslés az beszerzése előtt vagy dedikált információk biztonsági szolgáltatások kiszervezési végez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9 (1) .b** a szervezet biztosítja, hogy a beszerzési vagy dedikált információk biztonsági szolgáltatások kiszervezési jóváhagyta [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9 (2)** a szervezet megköveteli a szolgáltatók [hozzárendelés: külső szervezet által megadott információk rendszerszolgáltatások] függvényeket, portok, protokollok és egyéb szolgáltatások használatához szükséges szolgáltatások azonosításához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9 (4)** alkalmaz a szervezet [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] annak érdekében, hogy a érdekében [hozzárendelés: szervezet által meghatározott külső szolgáltatók] egyeztethetők össze, és megfelelően szervezeti érdekében.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-9 (5)** a szervezet helyének korlátozza [kijelölés (egy vagy több): feldolgozási információt; / adatok; információk rendszerszolgáltatások] való [hozzárendelés: helyek szervezet által meghatározott] alapján [hozzárendelés: szervezet által meghatározott követelmények vagy -feltételeken].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10.a** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás konfigurációkezelés végrehajtása során a rendszer, összetevő vagy szolgáltatás [kijelölés (egy vagy több): tervezési; fejlesztési ; megvalósítási; a művelet].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10.b** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás-dokumentum, kezelése és szabályozása módosításainak sértetlenségének [hozzárendelés: szervezet által meghatározott konfigurációs elemek a konfigurációkezelés].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10.c** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy rendszerszolgáltatás információk csak a szervezet jóváhagyott módosításokat a rendszer, összetevő vagy szolgáltatás.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10.d** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás dokumentálja a jóváhagyott változtatásokat a rendszer, az összetevő vagy szolgáltatás és a potenciális biztonsági hatások változások.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10.e** A szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás nyomon követésére biztonsági hiányosságokat és hibája feloldási belül a rendszer, összetevő vagy a szolgáltatás és a jelentés megállapítások [hozzárendelés: szervezet által meghatározott a személyzet].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10-es (1)** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás ahhoz, hogy a szoftver-és a belső vezérlőprogram rendszerintegritás-ellenőrzést.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11.a** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információs rendszer szolgáltatás létrehozása és egy biztonsági kockázatfelmérési terv megvalósításához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11.b** a szervezet megköveteli a fejlesztő hajtsa végre a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás [kijelölés (egy vagy több): egység; integrációs; rendszer; regressziós] tesztelés/értékeléséhez [hozzárendelése: szervezet által meghatározott mélységében és érvényességének];
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11.c** a szervezet megköveteli a biztonsági kockázatfelmérési terv és a biztonsági tesztelés/értékelés eredményét végrehajtásának igazolja a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás fejlesztőjével.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11.d** a szervezet megköveteli a fejlesztő, a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás ellenőrizhető hibája szervizelési folyamat végrehajtásához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11.e** A szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás biztonsági tesztelés/kiértékelés során azonosított hibák elhárításához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (1)** a szervezet megköveteli a fejlesztő, a rendszer, rendszerösszetevő vagy rendszerszolgáltatás tervezni a statikus és elemzésére szolgáló eszközöket közös hibái azonosításához, és az elemzés eredményeinek dokumentum code információkat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (2)** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás fenyegetés és a biztonsági rés elemzések elvégzéséhez és a későbbi vizsgálat/értékelése, beépített rendszer összetevő, vagy a szolgáltatás.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (8)** a szervezet megköveteli a fejlesztő, a rendszer, rendszerösszetevő vagy rendszer service dinamikus bevezetését code elemzésére szolgáló eszközöket közös hibái azonosításához, és az elemzés eredményeinek dokumentum információkat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-12** alkalmazásával leküzdheti a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás ellátási lánc ellen védi a szervezet [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] egy átfogó részeként védelmi a körének információk biztonsági stratégiájának.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -627,13 +627,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-15a"></a>NIST 800-53 Control SA-15.a
+ ## <a name="nist-800-53-control-sa-15a"></a>A NIST 800-53 vezérlő SA-15.a
 
 #### <a name="development-process-standards-and-tools"></a>Platform fejlesztési folyamata, szabványok és eszközök
 
 **SA-15.a** a szervezet megköveteli a információs rendszer rendszerösszetevő, fejlesztői, és a dokumentált fejlesztői követéséhez rendszerszolgáltatás feldolgozni, amely explicit módon információk biztonsági követelmények címek; azonosítja a szabványoknak megfelelő a fejlesztési folyamat; használt és eszközök dokumentumok az adott eszköz beállításai és a fejlesztési folyamat; a használt eszköz-konfigurációk és dokumentumok, kezeli, és biztosítja a folyamat és/vagy a fejlesztési használt eszközök módosításai integritását.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -641,13 +641,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-sa-15b"></a>NIST 800-53 Control SA-15.b
+ ## <a name="nist-800-53-control-sa-15b"></a>A NIST 800-53 vezérlő SA-15.b
 
 #### <a name="development-process-standards-and-tools"></a>Platform fejlesztési folyamata, szabványok és eszközök
 
 **SA-15.b** a szervezet ellenőrzi, hogy a fejlesztési folyamat, szabványok, eszközök és beállítások/konfigurált [hozzárendelés: szervezet által meghatározott gyakoriság] határozza meg, hogy a folyamat szabványos, eszközök és beállítások/konfigurációk eszköz kijelölt és alkalmazott felel [hozzárendelés: szervezet által meghatározott biztonsági követelmények].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-16** a szervezet megköveteli a fejlesztő adja meg a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás [hozzárendelés: szervezet által meghatározott betanítása] megfelelő használata és a megvalósított biztonsági működésére Funkciók, vezérlők, és/vagy mechanizmusokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-17.a** a szervezet megköveteli a fejlesztő, a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás egy Tervező-specifikációt és biztonsági architektúra, amely konzisztens, és a szervezet támogató létrehozásához biztonsági architektúra, amely belül jön létre, és a szervezete vállalati architektúra szerves része.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-17.b** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás egy Tervező-specifikációt és biztonsági architektúra, amely pontosan és teljes mértékben ismerteti a szükséges létrehozásához biztonsági funkciókat, és a biztonsági vezérlőket fizikai és logikai összetevők közötti elosztását.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-17.c** a szervezet megköveteli a fejlesztő a rendszer, rendszerösszetevő vagy információk rendszerszolgáltatás egy Tervező specification és egyes biztonsági funkciók kifejezze biztonsági architektúrája olyan mechanizmusok és szolgáltatások együttműködése biztosításához szükséges biztonsági képességei és egy egyesített megközelítést a védelem.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

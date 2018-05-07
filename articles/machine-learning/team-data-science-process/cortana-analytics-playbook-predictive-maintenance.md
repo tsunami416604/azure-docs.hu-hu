@@ -1,8 +1,8 @@
 ---
-title: "Az Azure - Cortana Intelligence megoldássablonban űrtechnikai a prediktív karbantartási |} Microsoft Docs"
-description: "A Microsoft a Cortana Intelligence űrtechnikai, segédprogramok és szállítására prediktív karbantartási megoldás sablon."
+title: A prediktív karbantartási megoldások Azure AI alkalmazástervezési |} Microsoft Docs
+description: A prediktív karbantartási megoldásokat több függőleges iparágakban megoldásaira épül, adattudomány átfogó leírást.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 05/01/2018
 ms.author: fboylu
-ms.openlocfilehash: da7826c49c3548600187956908f5369cc4891065
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ad06617fb8c14928dca7d9ce18ad86190e8255fe
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="cortana-intelligence-solution-template-playbook-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>A Cortana Intelligence megoldás sablon alkalmazástervezési űrtechnikai és más vállalatok prediktív karbantartás
+# <a name="azure-ai-playbook-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldások Azure AI forgatókönyv 
 ## <a name="executive-summary"></a>Vezetői összefoglaló
 Prediktív karbantartás költségmegtakarítások nagy mennyiségű unarguable előnyt prediktív elemzés leginkább kért alkalmazások egyike. Ez a forgatókönyv célja egy hivatkozást a prediktív karbantartási megoldásokat, különös tekintettel a főbb használati eseteket.
 Ahhoz, hogy megkapja az olvasó a leggyakrabban használt üzleti forgatókönyvek prediktív karbantartási kihívásai jogosult az ilyen megoldások, oldja meg ezeket üzleti problémák, a prediktív modellezési módszereket a szükséges adatok az üzleti problémák megértése kész Ezek az adatok és ajánlott eljárások használata minta megoldás architektúrák megoldás felépítéséhez.

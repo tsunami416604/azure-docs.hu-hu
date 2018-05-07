@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/04/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 3a7c7663bc13b7169ec9d31aa21365219ec39059
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: ef7517e91965b0d7444d158f041b1d2bddea6bd2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Esemény elemzése és a képi megjelenítés az Application insights szolgáltatással
 
@@ -32,7 +32,7 @@ Ez a cikk célja bemutatják, hogyan megismerésében, illetve háríthatóak el
 
 ## <a name="monitoring-in-app-insights"></a>App Insights ellenőrzése
 
-Az Application Insights egy gazdag kívül a Service Fabric mezőt tartalmaz. Az Áttekintés lap AI például a válaszidő és a feldolgozott kérelmek száma a szolgáltatás a főbb információkat biztosít. A lap tetején a "Search" gombra kattintva, lásd: a legutóbbi kérelmek listáját az alkalmazásban. Emellett akkor tudná ide a sikertelen kérelmek megtekintéséhez, és előfordulhat, hogy milyen hibák diagnosztizálása.
+Az Application Insights egy gazdag a kezdőélmény rendelkezik, a Service Fabric használatakor. Az Áttekintés lap AI például a válaszidő és a feldolgozott kérelmek száma a szolgáltatás a főbb információkat biztosít. A lap tetején a "Search" gombra kattintva, lásd: a legutóbbi kérelmek listáját az alkalmazásban. Emellett akkor tudná ide a sikertelen kérelmek megtekintéséhez, és előfordulhat, hogy milyen hibák diagnosztizálása.
 
 ![AI áttekintése](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
@@ -109,7 +109,7 @@ Ha EventFlow az összegyűjtött eseményeket használ, ügyeljen arra, hogy imp
 
 Javasoljuk, hogy használható EventFlow és ÜVEGVATTA összesítési megoldások, mert lehetővé teszik több moduláris megközelítése diagnosztika és figyelést, vagyis ha szeretné módosítani a kimenetek a EventFlow, szükség van nem változik a tényleges instrumentation csak egy egyszerű módosítása a konfigurációs fájlhoz. Ha azonban úgy dönt, hogy az Application Insights segítségével beruházásának, és valószínűleg nem módosítható a különböző platform, kell keresnie az való összesítése eseményeket, és elküldi őket AI AI tartozó új SDK használatával. Ez azt jelenti, hogy már nem kell konfigurálnia a adatokat küldeni a AI EventFlow, de ehelyett a ApplicationInsight Service Fabric NuGet csomag telepíti. A csomag a részletek megtalálhatók [Itt](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-[Az Application Insights mikroszolgáltatások létrehozására és a tárolók támogatása](https://azure.microsoft.com/en-us/blog/app-insights-microservices/) elsajátíthatja, hogy néhány új szolgáltatásai a (jelenleg továbbra is a bétaverzió) működő, amely engedélyezi, hogy gazdagabb out-of-az-box figyelési beállítások AI rendelkezik. Ezek közé tartozik a függőségi követési (a szolgáltatások és alkalmazások egy fürt és a köztük folyó kommunikációt egy AppMap létrehozásakor használt), és a szolgáltatások (segíti a hatékonyabb felügyelő a munkafolyamat egy alkalmazás vagy szolgáltatás problémát) érkező nyomkövetési jobb összekapcsolását.
+[Az Application Insights mikroszolgáltatások létrehozására és a tárolók támogatása](https://azure.microsoft.com/blog/app-insights-microservices/) elsajátíthatja, hogy néhány új szolgáltatásai a (jelenleg továbbra is a bétaverzió) működő, amely engedélyezi, hogy gazdagabb out-of-az-box figyelési beállítások AI rendelkezik. Ezek közé tartozik a függőségi követési (a szolgáltatások és alkalmazások egy fürt és a köztük folyó kommunikációt egy AppMap létrehozásakor használt), és a szolgáltatások (segíti a hatékonyabb felügyelő a munkafolyamat egy alkalmazás vagy szolgáltatás problémát) érkező nyomkövetési jobb összekapcsolását.
 
 Ha a .NET fejleszt, és valószínűleg használ, a Service Fabric programozási modellek és AI használják a platform megjelenítése és esemény és naplózási adatok elemzése a hajlandó, majd ajánlott lépjen a keresztül a AI SDK útvonal, a figyelési, diagnosztikai munkafolyamat. Olvasási [ez](../application-insights/app-insights-asp-net-more.md) és [ez](../application-insights/app-insights-asp-net-trace-logs.md) használatába AI gyűjtése ki és jelenítheti meg a naplók segítségével.
 

@@ -2,7 +2,7 @@
 title: Éles – Azure Machine Learning modellek telepítése |} Microsoft Docs
 description: Ügyfélszoftverek központi telepítése a modellek üzemi környezetben, lehetővé téve a fontos szerep üzleti döntések meghozatalában.
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: bradsev
-ms.openlocfilehash: 681f227a04802c4e27e42083c1eb63f620a8fc77
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.author: deguhath
+ms.openlocfilehash: ce12247f9b3e4ad3ffff307ee8848662ed7f5046
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="deploy-models-in-production"></a>Modellek üzembe helyezése éles környezetben
 

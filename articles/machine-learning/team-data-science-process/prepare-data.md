@@ -1,9 +1,9 @@
 ---
-title: "Tisztítsa meg és készítse elő az adatokat az Azure Machine Learning |} Microsoft Docs"
-description: "Előre feldolgozzák a, és hogy felkészítse az gépi tanulás adatait."
+title: Tisztítsa meg és készítse elő az adatokat az Azure Machine Learning |} Microsoft Docs
+description: Előre feldolgozzák a, és hogy felkészítse az gépi tanulás adatait.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: bdf659ec-4881-4324-8b9c-747cbfa0c3cd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 7f0c1f0f549e746cc99db3b47f6c90bb51145d5d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: f3d05030e293c53c958aa1ba501fe9a2ba7a11b5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Az adatok bővített gépi tanulásra való előkészítésének feladatai
 Előzetesen feldolgozni, és az adatok tisztítása, amelyek általában kell elvégzése előtt a DataSet adatkészlet nem használható hatékonyan gépi tanulás fontos feladatokat. Nyers adatok gyakran zajos vagy nem megbízható, és előfordulhat, hogy értékek hiányzik. Ilyen adatok használata a modellezési félrevezető eredményeket hozhat létre. Ezeket a feladatokat a csapat adatok tudományos folyamat (TDSP) a részét képezik, és általában hajtsa végre egy kezdeti feltárása a DataSet adatkészlet felderítése, és tervezze meg a szükséges előzetes feldolgozás segítségével. Részletes utasítások a TDSP folyamathoz, lásd: a leírt lépéseket a [Team adatok tudományos folyamat](overview.md).

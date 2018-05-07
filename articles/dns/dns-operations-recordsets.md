@@ -1,9 +1,9 @@
 ---
-title: "Az Azure DNS az Azure PowerShell DNS-rekordok kezelése |} Microsoft Docs"
-description: "DNS-rekordhalmazok és az Azure DNS-rekordok kezelése esetén az Azure DNS-tartomány. Az összes PowerShell-parancsokat rekordhalmazokat és rekordokat műveleteket."
+title: Az Azure DNS az Azure PowerShell DNS-rekordok kezelése |} Microsoft Docs
+description: DNS-rekordhalmazok és az Azure DNS-rekordok kezelése esetén az Azure DNS-tartomány. Az összes PowerShell-parancsokat rekordhalmazokat és rekordokat műveleteket.
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: gwallace
-ms.openlocfilehash: fee96a77436f09e5cf2841b36b244e2d03f57f74
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: kumud
+ms.openlocfilehash: 511af342727dc46369ae70d60a7e9a3171bf986d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>DNS-rekordok és az Azure PowerShell használata Azure DNS rekordhalmazok kezelése
 
@@ -379,15 +379,15 @@ A rekordhalmaz objektum is átirányítható paraméterként átadott helyett:
 Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzureRmDnsRecordSet
 ```
 
-## <a name="confirmation-prompts"></a>Megerősítés
+## <a name="confirmation-prompts"></a>Megerősítési kérések
 
-A `New-AzureRmDnsRecordSet`, `Set-AzureRmDnsRecordSet`, és `Remove-AzureRmDnsRecordSet` parancsmagok minden megerősítés támogatja.
+A `New-AzureRmDnsRecordSet`, `Set-AzureRmDnsRecordSet` és `Remove-AzureRmDnsRecordSet` parancsmagok mind támogatják a megerősítési kérések használatát.
 
 Minden parancsmagot jóváhagyást kérni fogja, ha a `$ConfirmPreference` PowerShell preferenciaváltozót értéke `Medium` vagy alacsonyabb. Az alapértelmezett érték óta `$ConfirmPreference` van `High`, ezek az üzenetek nem adja az alapbeállításokat PowerShell használata esetén.
 
-Ha szeretné felülbírálni az aktuális `$ConfirmPreference` használatának beállítása a `-Confirm` paraméter. Ha megad `-Confirm` vagy `-Confirm:$True` , a parancsmag megerősítést kér, mielőtt futtatja. Ha megad `-Confirm:$False` , a parancsmag nem figyelmeztet megerősítést kér. 
+A jelenlegi `$ConfirmPreference` beállítás a `-Confirm` paraméter használatával írható felül. Ha `-Confirm` vagy `-Confirm:$True` értéket ad meg, a parancsmag megerősítést fog kérni a futtatása előtt. Ha `-Confirm:$False` értéket ad meg, a parancsmag nem kér megerősítést. 
 
-További információ `-Confirm` és `$ConfirmPreference`, lásd: [kapcsolatos Preferenciaváltozók](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
+A `-Confirm` és `$ConfirmPreference` értékekkel kapcsolatos további információt [a preferenciaváltozók bemutatását](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables) tartalmazó részben talál.
 
 ## <a name="next-steps"></a>További lépések
 

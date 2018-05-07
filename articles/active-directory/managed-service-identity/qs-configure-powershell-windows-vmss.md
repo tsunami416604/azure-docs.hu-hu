@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 2b3651eaf702cfe2f73320fcaf2ab469dd7c478a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 8dad00995ab9f90e9eebec16697d55f4491431e0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurálja a VMSS felügyelt szolgáltatás identitás (MSI) PowerShell használatával
 
@@ -121,7 +121,8 @@ Egy a felhasználói identitás egy meglévő Azure VMSS hozzárendelése:
 2. Először kérjen le a virtuális gép tulajdonságok a `Get-AzureRmVM` parancsmag. Egy felhasználó lehet hozzárendelve identitás hozzárendelése az Azure VMSS, kövesse a `-IdentityType` és `-IdentityID` váltani a [frissítés-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) parancsmag. Cserélje le `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` saját értékekkel.
 
    > [!IMPORTANT]
-   > A felhasználói identitások a különleges karakterek (pl. aláhúzásjel) nevében létrehozása jelenleg nem támogatott. Alfanumerikus karaktereket használja. Biztonsági frissítések ellenőrzése.  További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
+   > A felhasználói identitások létrehozása csak alfanumerikus és kötőjel (0 – 9 vagy a-z vagy A-Z vagy -) karaktereket. Emellett nevét kell korlátozni a virtuális gép/VMSS helyes működéséhez hozzárendelés 24 karakter hosszúságot. Biztonsági frissítések ellenőrzése. További információkért lásd: [– gyakori kérdések és ismert problémák](known-issues.md)
+
 
    ```powershell
    $vmss = Get-AzureRmVmss -ResourceGroupName <RESOURCE GROUP> -Name <VMSS NAME>

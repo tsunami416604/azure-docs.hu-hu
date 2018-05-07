@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy egyéni mintavétel - Azure Application Gateway - klasszikus PowerShell |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy egyéni mintavétel az Alkalmazásátjáró a klasszikus üzembe helyezési modellel PowerShell használatával"
+title: Hozzon létre egy egyéni mintavétel - Azure Application Gateway - klasszikus PowerShell |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy egyéni mintavétel az Alkalmazásátjáró a klasszikus üzembe helyezési modellel PowerShell használatával
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-service-management
 ms.assetid: 338a7be1-835c-48e9-a072-95662dc30f5e
 ms.service: application-gateway
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: davidmu
-ms.openlocfilehash: b167a0584740a4e583a35bd6d44ec5d616ba04f7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 97d1376dc7908b72d8e8ec15145229cf3cf4acae
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Hozzon létre egy egyéni mintavétel az Azure Application Gateway (klasszikus) PowerShell használatával
 
@@ -151,8 +151,8 @@ A konfigurációs paraméterek a következők:
 |---|---|
 |**Name (Név)** |Egyéni mintavétel hivatkozás neve. |
 * **Protokoll** | Használt protokoll (a lehetséges értékek: HTTP vagy HTTPS).|
-| **Állomás** és **elérési útja** | Fejezze be az URL-címet, amelyet az Alkalmazásátjáró példány állapotának meghatározására. Például ha egy webhely http://contoso.com/, majd az egyéni vizsgálat is konfigurálható "http://contoso.com/path/custompath.htm" mintavételi ellenőrzi, hogy rendelkezik a sikeres HTTP-válasz.|
-| **Időköz** | Konfigurálja a mintavételi intervallum ellenőrzések másodpercben.|
+| **Állomás** és **elérési útja** | Fejezze be az URL-címet, amelyet az Alkalmazásátjáró példány állapotának meghatározására. Például, ha rendelkezik webhellyel http://contoso.com/, akkor az egyéni vizsgálat konfigurálhatja a "http://contoso.com/path/custompath.htm" a mintavételi ellenőrzi, hogy rendelkezik a sikeres HTTP-válasz.|
+| **Intervallum** | Konfigurálja a mintavételi intervallum ellenőrzések másodpercben.|
 | **Időtúllépés** | Egy HTTP-válasz ellenőrzése mintavételi időtúllépésének meghatározása.|
 | **UnhealthyThreshold** | A szükséges jelzőt a háttér-példányához, a sikertelen HTTP-válaszok száma *sérült*.|
 

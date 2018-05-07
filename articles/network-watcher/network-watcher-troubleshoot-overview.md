@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 646caa5e4aacd58377c0a2b5985a69277d00cec3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Bevezetés az Azure hálózati figyelőt a hibakeresési erőforrás
 
@@ -77,7 +77,7 @@ Az alábbi táblázatok bemutatják a különböző tartalék típusok (azonosí
 | Hitelesítés | Előmegosztott kulcsa eltérő | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
 | IkePolicyMismatch | A társ átjáró rendelkezik IKE szabályzatok Azure által nem támogatott. | Igen|
-| WfpParse Error | Hiba történt a Windows Fájlvédelem napló elemzésekor. |Igen|
+| WfpParse hiba | Hiba történt a Windows Fájlvédelem napló elemzésekor. |Igen|
 
 ## <a name="supported-gateway-types"></a>Támogatott átjáró típusok
 
@@ -211,7 +211,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan diagnosztizálhatja VPN-átjárók és kapcsolatok a portálon keresztül ellátogatva [átjáró hibaelhárítás – Azure-portálon](network-watcher-troubleshoot-manage-portal.md).
+Átjáró vagy gateway-kapcsolatot a probléma diagnosztizálása érdekében, lásd: [hálózatok közötti kommunikációs problémák diagnosztizálásához](diagnose-communication-problem-between-networks.md).
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

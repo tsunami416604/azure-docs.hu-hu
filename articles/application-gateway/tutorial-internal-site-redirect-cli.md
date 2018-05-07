@@ -1,9 +1,9 @@
 ---
-title: "Hozzon létre egy alkalmazás belső átirányítási - Azure CLI |} Microsoft Docs"
-description: "Ismerje meg, amely átirányítja a megfelelő készlethez, az Azure parancssori felület használatával a belső webes forgalom Alkalmazásátjáró létrehozása."
+title: Hozzon létre egy alkalmazás belső átirányítási - Azure CLI |} Microsoft Docs
+description: Ismerje meg, amely átirányítja a megfelelő készlethez, az Azure parancssori felület használatával a belső webes forgalom Alkalmazásátjáró létrehozása.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
@@ -11,25 +11,25 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
-ms.author: davidmu
-ms.openlocfilehash: 4228a3f534a5dc58ab2efa3c5cf0edd4caee43c9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: 5bd9e8f2521120dd1d12eb9630663493b89f5844
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Hozzon létre egy alkalmazás belső átirányítása, az Azure parancssori felület használatával
 
 Az Azure CLI segítségével konfigurálhatja [webes forgalom átirányítása](application-gateway-multi-site-overview.md) létrehozásakor egy [Alkalmazásátjáró](application-gateway-introduction.md). Ebben az oktatóanyagban létrehoz egy virtuálisgép-méretezési csoport használatával háttérkészlet. Ezután konfigurálja figyelők és szabályok alapján a tartományok, amelyek a saját győződjön meg arról, hogy a webes forgalom érkezik a megfelelő készlethez. Ez az oktatóanyag feltételezi, hogy Ön a tulajdonosa több tartományok és felhasználási mintái *www.contoso.com* és *www.contoso.org*.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
 > * Application Gateway létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
 > * Hozzon létre egy virtuálisgép-méretezési háttérkészlet állítható be
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -190,11 +190,11 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="create-cname-record-in-your-domain"></a>Create CNAME record in your domain
+## <a name="create-cname-record-in-your-domain"></a>CNAME rekord létrehozására a tartományban
 
 Nyilvános IP-címmel az Alkalmazásátjáró létrehozása után lekérni a DNS-címét, és hozzon létre egy CNAME rekordot a tartomány segítségével. Használhat [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show) lekérni a DNS-címét az Alkalmazásátjáró. Másolás a *fqdn* a DNSSettings értékének és az legyen az Ön által létrehozott CNAME rekord értékét. A-rekordok használata nem ajánlott, mert a VIP módosíthatja az Alkalmazásátjáró újraindításakor.
 
@@ -208,11 +208,11 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-Adjon meg a tartománynevet a böngésző címsorába. Such as, http://www.contoso.com.
+Adjon meg a tartománynevet a böngésző címsorába. Például a http://www.contoso.com.
 
 ![Az alkalmazás átjáró contoso hely tesztelése](./media/tutorial-internal-site-redirect-cli/application-gateway-nginxtest.png)
 
-Módosítsa a címet a más tartományokba, például http://www.contoso.org és látnia kell, hogy a forgalom átirányítva vissza a figyelő a www.contoso.com.
+Módosítsa a címet a tartományhoz, például http://www.contoso.org és láthatja, hogy a forgalom átirányítva vissza a figyelő a www.contoso.com.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -223,7 +223,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Application Gateway létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
 > * Hozzon létre egy virtuálisgép-méretezési háttérkészlet állítható be
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Alkalmazásátjáró teendők](./application-gateway-introduction.md)

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>A Naplóelemzési tároló figyelés megoldás
 
@@ -34,8 +34,9 @@ A megoldás bemutatja, hogy mely tárolók fut, a tároló képet azok futtatja,
 - Service Fabric
 - Red Hat OpenShift
 
+Ha érdekli a alkalmazások teljesítményének monitorozásához telepítve Kubernetes környezetekben üzemeltetett a AKS (az Azure Tárolószolgáltatás) című [figyelése az Azure Tárolószolgáltatás](../monitoring/monitoring-container-health.md).  A tároló figyelésére szolgáló megoldás nem tartalmaz támogatási platformra figyelésére.  
 
-Az alábbi ábrán látható a különböző tároló gazdagépek és az OMS ügynökök közötti kapcsolatokat.
+Az alábbi ábrán látható a különböző tároló gazdagépek és Naplóelemzési ügynökök közötti kapcsolatokat.
 
 ![Tárolók diagramja](./media/log-analytics-containers/containers-diagram.png)
 
@@ -51,7 +52,7 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Szolgáltatás<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Szolgáltatás<br>Háló | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Red Hat megnyitása<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(önálló) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux-kiszolgáló<br>(önálló) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -91,7 +92,7 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 ## <a name="installing-and-configuring-the-solution"></a>Telepítése és a megoldás konfigurálása
 Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
 
-1. A tároló figyelésére szolgáló megoldás hozzáadása az OMS-munkaterület a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy ismertetett folyamatot követve [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
+1. A tároló figyelésére szolgáló megoldás hozzáadni a Naplóelemzési munkaterület [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy ismertetett folyamatot követve [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
 
 2. Telepítheti és használhatja a Docker az OMS-ügynököt. Az operációs rendszer és a Docker orchestrator alapul, használhatja az alábbi módszerek konfigurálása az ügynök.
   - Önálló gazdagépek:
@@ -116,15 +117,15 @@ Tekintse át a [Docker-motorhoz Windows](https://docs.microsoft.com/virtualizati
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Telepítse és konfigurálja a Linux-tároló állomások
 
-Ha már telepítette a Docker, használja a következő beállításokat, a tároló állomás Docker használható az ügynök konfigurálása. Először szükség van a OMS-munkaterület azonosítója és a kulcs, amely az Azure portálon található. A munkaterületen kattintson **gyors üzembe helyezés** > **számítógépek** megtekintéséhez a **munkaterület azonosítója** és **elsődleges kulcs**.  Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
+Ha már telepítette a Docker, használja a következő beállításokat, a tároló állomás Docker használható az ügynök konfigurálása. Először szükség van a Naplóelemzési munkaterület azonosítója és a kulcs, amely az Azure portálon található. A munkaterületen kattintson **gyors üzembe helyezés** > **számítógépek** megtekintéséhez a **munkaterület azonosítója** és **elsődleges kulcs**.  Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
 
 **Linux tároló állomások CoreOS kivételével:**
 
-- További információkat és lépéseket az OMS-ügynök telepítése Linux [csatlakozzon a Linux rendszerű számítógépek Operations Management Suite (OMS)](log-analytics-agent-linux.md).
+- További információkat és lépéseket az OMS-ügynök telepítése Linux [a Linux számítógépek csatlakoztatása a Log Analyticshez](log-analytics-concept-hybrid.md).
 
 **Az összes Linux tároló gazdagépek CoreOS beleértve:**
 
-Indítsa el az OMS-tároló, amely segítségével nyomon követni kívánt. Módosítsa és használja a következő példát:
+Indítsa el a tárolóhoz, amelybe a figyelni kívánt. Módosítsa és használja a következő példát:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
@@ -132,7 +133,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 **Minden Azure Government Linux tároló gazdagépek CoreOS beleértve:**
 
-Indítsa el az OMS-tároló, amely segítségével nyomon követni kívánt. Módosítsa és használja a következő példát:
+Indítsa el a tárolóhoz, amelybe a figyelni kívánt. Módosítsa és használja a következő példát:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
@@ -142,9 +143,9 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 Ha korábban a közvetlenül telepített ügynök használt, és használja a tárolóban futó ügynök szeretne, el kell távolítania az OMS-ügynököt Linux. Lásd: [az OMS-ügynök eltávolítása Linux](log-analytics-agent-linux.md) annak megértése, hogyan sikeresen távolítsa el az ügynököt.  
 
-#### <a name="configure-an-oms-agent-for-docker-swarm"></a>A Docker Swarmra OMS-ügynököt konfigurálása
+#### <a name="configure-an-oms-agent-for-docker-swarm"></a>Konfigurálja az OMS-ügynököt a Docker swarm használata
 
-A Docker Swarmról az OMS-ügynököt is futhat, a globális szolgáltatás. Az alábbi információk használatával hozzon létre egy OMS-ügynököt szolgáltatást. Helyezze be az OMS-munkaterület azonosítója és az elsődleges kulcs van szüksége.
+A Docker Swarmról az OMS-ügynököt is futhat, a globális szolgáltatás. Az alábbi információk használatával hozzon létre egy OMS-ügynököt szolgáltatást. Meg kell adnia a naplót Analytics munkaterület azonosítója és az elsődleges kulcs.
 
 - Futtassa a következő fő csomóponton.
 
@@ -190,8 +191,8 @@ Nincsenek három módszerrel adhat hozzá az OMS-ügynököt Red Hat OpenShift t
 
 Ebben a szakaszban foglalkozunk azt egy OpenShift démon beállított az OMS-ügynök telepítéséhez szükséges lépéseket.  
 
-1. Jelentkezzen be a OpenShift fő csomópont, és másolja az yam [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) a Githubból a fő csomópontra, és módosítsa az OMS-munkaterület azonosítója és az elsődleges kulcs értékét.
-2. A következő parancsokat az OMS-projekt létrehozása és beállítása a felhasználói fiók.
+1. Jelentkezzen be a OpenShift fő csomópont, és másolja az yam [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) a Githubból a fő csomópontra, és módosítsa az értéket, a napló Analytics munkaterület azonosítója és az elsődleges kulcsra.
+2. A következő parancsokat a Log Analytics-projekt létrehozása és beállítása a felhasználói fiók.
 
     ```
     oadm new-project omslogging --node-selector='zone=default'
@@ -227,10 +228,10 @@ Ebben a szakaszban foglalkozunk azt egy OpenShift démon beállított az OMS-üg
     No events.  
     ```
 
-Ha szeretné védeni kell az OMS-munkaterület azonosítója és az elsődleges kulcs, amikor az OMS-ügynököt démon-set yam fájl használata a titkos kulcsok segítségével, a következő lépésekkel.
+Ha azt szeretné, a titkos kulcsok biztonságossá tétele érdekében használja a napló Analytics munkaterület azonosítója és az elsődleges kulcs az OMS-ügynököt démon-set yam fájl használata esetén, hajtsa végre az alábbi lépéseket.
 
-1. Jelentkezzen be a OpenShift fő csomópont, és másolja az yam [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) és a titkos kulcs parancsfájljának [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) a Githubról.  Ezt a parancsfájlt hoz létre a titkos kulcsok yam fájlt az OMS-munkaterület azonosítója és az elsődleges kulcs biztonságossá tételéhez a secrete információkat.  
-2. A következő parancsokat az OMS-projekt létrehozása és beállítása a felhasználói fiók. A titkos kulcs parancsfájljának kér az OMS-munkaterület azonosítója <WSID> és az elsődleges kulcs <KEY> és befejezésekor a ocp-secret.yaml fájlt hoz létre.  
+1. Jelentkezzen be a OpenShift fő csomópont, és másolja az yam [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) és a titkos kulcs parancsfájljának [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) a Githubról.  Ezt a parancsfájlt hoz létre a titkos kulcsok yam fájl napló Analytics munkaterület azonosítója és az elsődleges kulcs biztonságossá tételéhez a secrete információkat.  
+2. A következő parancsokat a Log Analytics-projekt létrehozása és beállítása a felhasználói fiók. A titkos kulcs parancsfájljának kér a napló Analytics munkaterület azonosítója <WSID> és az elsődleges kulcs <KEY> és befejezésekor a ocp-secret.yaml fájlt hoz létre.  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  
@@ -314,7 +315,7 @@ Ha szeretné omsagent DaemonSets létrehozása, vagy a titkos kulcsok nélkül.
     1. Másolja a parancsfájlt és a titkos sablonfájl, és győződjön meg arról, ezek is ugyanabban a könyvtárban.
         - Titkos kulcs parancsprogram - secret-gen.sh létrehozása
         - titkos sablon - secret-template.yaml
-    2. Futtassa a parancsfájlt, az alábbi példához hasonló. A parancsprogram kéri az OMS-munkaterület azonosítója és az elsődleges kulcs, és azokat megadása után a parancsfájl létrehoz egy titkos yam ezért is futtathatja.   
+    2. Futtassa a parancsfájlt, az alábbi példához hasonló. A parancsprogram kéri a napló Analytics munkaterület azonosítója és az elsődleges kulcs, és azokat megadása után a parancsfájl létrehoz egy titkos yam ezért is futtathatja.   
 
         ```
         #> sudo bash ./secret-gen.sh
@@ -548,20 +549,20 @@ Az alábbi táblázat a tároló figyelésére szolgáló megoldás és az adato
 | Adattípus | A naplófájl-keresési adattípust tartalmaz | Mezők |
 | --- | --- | --- |
 | A gazdagépek és a tárolók teljesítmény | `Perf` | Számítógép, ObjectName, CounterName &#40;kihasználtsága (%), a lemez beolvassa MB, szabad MB memória kihasználtsága (MB), írja hálózati fogadott bájtok, hálózati küldését bájt, a processzor kihasználtsága mp, hálózati&#41;, ellenértéknek, TimeGenerated, Számláló_elérési_útja, SourceSystem |
-| Tároló leltár | `ContainerInventory` | TimeGenerated, Computer, container name, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Tároló leltár | `ContainerInventory` | TimeGenerated, a számítógép, a tároló neve, ContainerHostname, kép, ImageTag, ContainerState, ExitCode, EnvironmentVar, a parancs, CreatedTime, StartedTime, FinishedTime, SourceSystem, Tárolóazonosító, ImageID |
 | Tároló kép készlet | `ContainerImageInventory` | TimeGenerated, számítógép, kép, ImageTag, ImageSize, VirtualSize, futó, szünetel, leállítását követően nem sikerült, SourceSystem, ImageID, TotalContainer |
 | Tároló-napló | `ContainerLog` | TimeGenerated, a számítógép, a lemezkép-Azonosítót, a tároló neve, LogEntrySource, LogEntry, SourceSystem, Tárolóazonosító |
 | Tároló szolgáltatás bejelentkezési | `ContainerServiceLog`  | TimeGenerated, számítógép, TimeOfCommand, kép, a parancs, SourceSystem, Tárolóazonosító |
-| Tároló csomópont készlet | `ContainerNodeInventory_CL`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Tároló csomópont készlet | `ContainerNodeInventory_CL`| TimeGenerated, számítógép, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
 | Kubernetes készlet | `KubePodInventory_CL` | TimeGenerated, Computer, PodLabel_deployment_s, PodLabel_deploymentconfig_s, PodLabel_docker_registry_s, Name_s, Namespace_s, PodStatus_s, PodIp_s, PodUid_g, PodCreationTimeStamp_t, SourceSystem |
 | Tároló folyamat | `ContainerProcess_CL` | TimeGenerated, számítógép, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
-| Kubernetes események | `KubeEvents_CL` | TimeGenerated, Computer, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, Message |
+| Kubernetes események | `KubeEvents_CL` | TimeGenerated, számítógép, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, üzenet |
 
 Címkék fűzött *PodLabel* adattípusok a következők saját címkét. A hozzáfűzött PodLabel címkék a táblázatban szereplő példák. Igen `PodLabel_deployment_s`, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` lesznek a környezet adatkészlet különböznek és általános hasonlítanak `PodLabel_yourlabel_s`.
 
 
 ## <a name="monitor-containers"></a>Tárolók figyelése
-Miután az OMS-portálon, a megoldás a **tárolók** csempe a tároló gazdagépek és a tárolók az állomáson fut összegző információit jeleníti meg.
+Miután a Log Analytics-portálon, a megoldás a **tárolók** csempe a tároló gazdagépek és a tárolók az állomáson fut összegző információit jeleníti meg.
 
 ![Tárolók csempe](./media/log-analytics-containers/containers-title.png)
 

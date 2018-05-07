@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 4aea42bd20f01b4dae9e940b0ed101020d64c00c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 365775f840f85efe1792f376880145c7e7db1312
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Adatok másolása az Azure-adatbázis az Azure Data Factory használatával PostgreSQL 
 
@@ -47,6 +47,13 @@ A következő tulajdonságok támogatott Azure-adatbázis PostgreSQL kapcsolód�
 | type | A type tulajdonságot kell beállítani: **AzurePostgreSql** | Igen |
 | connectionString | Az ODBC kapcsolati karakterlánc PostgreSQL Azure adatbázishoz való kapcsolódáshoz. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+
+Egy tipikus kapcsolati karakterlánc `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>`. A case / beállítható további tulajdonságokat:
+
+| Tulajdonság | Leírás | Beállítások | Szükséges |
+|:--- |:--- |:--- |:--- |:--- |
+| EncryptionMethod (rendszer)| A módszer az illesztőprogram az illesztőprogram és az adatbázis-kiszolgáló között küldött adatok titkosítására használja. Például `ValidateServerCertificate=<0/1/6>;`| 0 (nincs titkosítás) **(alapértelmezett)** / 1 (SSL) vagy 6 (RequestSSL) | Nem |
+| ValidateServerCertificate (VSC) | Meghatározza, hogy az illesztőprogram érvényesíti a tanúsítványt, ha engedélyezve van az SSL-titkosítást az adatbázis-kiszolgáló által küldött (titkosítási módszer = 1). Például `ValidateServerCertificate=<0/1>;`| 0 (letiltva) **(alapértelmezett)** / 1 (engedélyezve) | Nem |
 
 **Példa**
 
@@ -90,7 +97,7 @@ Adatok másolása az Azure Database PostgreSQL, állítsa be a type tulajdonság
 
 Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör PostgreSQL forrás Azure-adatbázis által támogatott tulajdonságokról.
 
-### <a name="azurepostgresqlsource-as-source"></a>AzurePostgreSqlSource as source
+### <a name="azurepostgresqlsource-as-source"></a>AzurePostgreSqlSource forrásaként
 
 Adatok másolása az Azure Database PostgreSQL, állítsa be a forrás típusa a másolási tevékenység **AzurePostgreSqlSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
 

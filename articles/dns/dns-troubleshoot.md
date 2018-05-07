@@ -1,11 +1,11 @@
 ---
-title: "Az Azure DNS-hibaelhárítási útmutatója |} Microsoft Docs"
-description: "Az Azure DNS kapcsolatos gyakori hibák elhárítása"
+title: Az Azure DNS-hibaelhárítási útmutatója |} Microsoft Docs
+description: Az Azure DNS kapcsolatos gyakori hibák elhárítása
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: carmonm
-editor: 
+author: chadmath
+manager: cshepard
+editor: ''
 ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
 ms.service: dns
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
-ms.author: jonatul
-ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 55db36f1312030cde8e820d9eca9b699ec8cdd4c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Az Azure DNS-hibaelhárítási útmutatója
 
@@ -94,12 +94,12 @@ Példák az SRV-rekordnevekre („sip” szolgáltatásnév, „tcp” protokoll
 
 [DNS-zónák és -rekordok](dns-zones-records.md)
 <br>
-[DNS-rekordhalmazok és -rekordok létrehozása az Azure Portal használatával](dns-getstarted-create-recordset-portal.md)
+[DNS-rekordhalmazok és rekordok létrehozása az Azure-portál használatával](dns-getstarted-create-recordset-portal.md)
 <br>
-[SRV rekordtípus (Wikipédia)](https://en.wikipedia.org/wiki/SRV_record)
+[SRV rekord típusa (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók [Azure DNS-zónák és rekordok](dns-zones-records.md)
 * Azure DNS használatának megkezdéséhez megtudhatja, hogyan [hozzon létre egy DNS-zóna](dns-getstarted-create-dnszone-portal.md) és [DNS-rekordok létrehozása](dns-getstarted-create-recordset-portal.md).

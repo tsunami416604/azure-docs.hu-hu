@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - azonosítási és hitelesítési"
-description: "FedRAMP webes alkalmazások Automation - azonosítási és hitelesítési"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - azonosítási és hitelesítési
+description: FedRAMP webes alkalmazások Automation - azonosítási és hitelesítési
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 21b5c453716f99be26c8dd6400bb3489477b4956
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="identification-and-authentication-ia"></a>Azonosítási és hitelesítési (IA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy célú, a hatókör, a szerepkörök, a feladatkörei, a felügyeleti orvosló azonosítási és hitelesítési házirend előfizetési, koordinálásának szervezeti entitásokat, és a megfelelőségi; és eljárások végrehajtására azonosítási és hitelesítési házirend és kapcsolódó azonosítási és hitelesítési ellenőrzések; ellenőrzi, és frissíti az aktuális azonosítási és hitelesítési házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és az azonosítási és hitelesítési eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2** az információs rendszer egyedileg azonosítja, és hitelesíti a szervezeti felhasználók (vagy a szervezeti felhasználók nevében eljáró folyamatok).
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (1)** a információk rendszer megvalósítja a többtényezős hitelesítést a hálózati hozzáférésű fiókokhoz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (2)** a információk rendszer megvalósítja a többtényezős hitelesítést a hálózati hozzáféréshez rendszerjogosultsággal nem rendelkező fiókok.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (3)** a információk rendszer megvalósítja a többtényezős hitelesítést a helyi hozzáférésű fiókokhoz.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (4)** a információk rendszer megvalósítja a többtényezős hitelesítés rendszerjogosultsággal nem rendelkező fiókok helyi elérésére.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (5)** a szervezet megköveteli az egyéni felhasználók számára, ha egy csoport hitelesítő egyedi hitelesítők hitelesíteni.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (8)** a információk rendszer megvalósítja a visszajátszás-ellenálló hitelesítési mechanizmusokkal hálózati hozzáférésű fiókokhoz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (9)** a információk rendszer megvalósítja a visszajátszás-ellenálló hitelesítési mechanizmusok rendszerjogosultsággal nem rendelkező fiókok hálózati hozzáféréshez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (11)** a információk rendszer megvalósítja a többtényezős hitelesítést a távelérés szolgáltatás kiemelt és rendszerjogosultsággal nem rendelkező fiókok, hogy hozzáférjenek a rendszer külön eszköz által biztosított egyik tényező, és az eszköz megfelel-e [ Hozzárendelés: mechanizmus követelmények szervezet által meghatározott erősségével].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (12)** az információs rendszer fogad el, és elektronikus úton ellenőrzi a személyes identitás ellenőrzése (PIV) hitelesítő adatokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-3** az információs rendszer egyedileg azonosítja, és ezzel hitelesíti [hozzárendelés: szervezet által meghatározott specifikus és/vagy eszköztípusokat] létrehozó előtt egy [kijelölés (egy vagy több): helyi; távoli; hálózati] kapcsolat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.a** a szervezet adatokat rendszer azonosítók felügyel fogadása az engedélyezési [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] hozzárendelése egy személy, csoport, a szerepkör vagy az eszköz azonosítója.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.b** a szervezet adatokat rendszer azonosítók kezeli, amely azonosítja az egy adott azonosítót kiválasztásával csoport, a szerepkör vagy az eszköz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.c** a szervezet adatokat rendszer azonosítók kezeli a azonosítót rendel a megfelelő személy, a csoport, a szerepkör vagy az eszköz.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.d** a szervezetem kezeli információk rendszer azonosítók azonosítók használatának letiltásával [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.e** A szervezet adatokat rendszer azonosítók felügyel letiltása után a azonosítója [hozzárendelés: szervezet által meghatározott tétlen időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4 (4)** a szervezet egyedi azonosítók kezeli úgy, hogy minden egyes személy, amely egyedileg azonosítja [hozzárendelés: szervezet által meghatározott jellemző egyéni állapot azonosító].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -277,13 +277,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ## <a name="nist-800-53-control-ia-5a"></a>NIST 800-53 Control IA-5.a
+ ## <a name="nist-800-53-control-ia-5a"></a>A NIST 800-53 vezérlő IA-5.a
 
 #### <a name="authenticator-management"></a>Felügyeleti hitelesítő
 
 **IA-5.a** a szervezetem kezeli a rendszer hitelesítő adatokat ellenőrzésével, a kezdeti hitelesítő terjesztési, az egyéni identitás, csoport, szerepkör vagy a hitelesítő készülék részeként.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.b** a szervezet kezeli a rendszer hitelesítő adatokat úgy, hogy a szervezet által meghatározott hitelesítők kezdeti hitelesítő tartalom létrehozásáról.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.c** a szervezetem kezeli a rendszer hitelesítő adatokat, hitelesítők rendelkezik-e elegendő erőssége felhasználásra mechanizmus biztosításával.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.d** a szervezet kezeli a rendszer hitelesítő adatokat úgy, hogy és végrehajtása során felügyeleti eljárások kezdeti hitelesítő terjesztéshez, elveszett vagy sérült vagy sérült hitelesítők, és visszavonása hitelesítők.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.e** A szervezet kezeli a rendszer hitelesítő adatokat úgy, hogy hitelesítő adatokat a rendszer telepítés előtti alapértelmezett tartalmának módosítása.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.f** a szervezet kezeli a rendszer hitelesítő adatokat úgy, hogy minimális és maximális élettartama korlátozások és újbóli feltételeket hitelesítők számára.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.g** a szervezet kezeli a rendszer hitelesítő adatokat úgy, hogy hitelesítők módosítása vagy frissítése [hozzárendelés: szervezet által meghatározott időszakra vonatkozó hitelesítő típus szerint].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.h** a szervezet kezeli a rendszer hitelesítő adatokat úgy, hogy hitelesítő tartalom védelme a jogosulatlan és módosítását.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.i** a szervezetem kezeli a rendszer hitelesítő adatokat azzal, hogy érvénybe egyéni felhasználók számára, és rendelkező eszközök megvalósításához, konkrét biztonsági megvédi hitelesítők védelme érdekében.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.j** a szervezetem kezeli a rendszer hitelesítő adatokat hitelesítők csoport vagy szerepkör fiókok módosításával, amikor azok tagsági fiókok módosításokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) sémaszintjén** az információk rendszerhez, jelszóalapú hitelesítési érvénybe lépteti a jelszó minimális összetettsége [hozzárendelés: nagybetűk, a karakterek számát, a szervezet által meghatározott követelmények kombinálhatók-nagybetűk, amelyben a betűk, számok és speciális karakterek, beleértve a minimális követelmények az egyes].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .b** az információk rendszerhez, jelszóalapú hitelesítési érvénybe lépteti legalább a következő számú módosított karakterek új jelszavak létrehozásakor: [hozzárendelés: szervezet által megadott szám].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .c** az információk rendszerhez, jelszóalapú hitelesítési tárolja, és továbbítja a jelszavakat csak titkosítással védett.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .d** az információk rendszerhez, jelszóalapú hitelesítési érvénybe lépteti a jelszó minimális és maximális élettartama korlátozásait [hozzárendelés: minimális, maximális élettartama-élettartam-szervezet által meghatározott számát].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .e** Az információk rendszerhez, jelszóalapú hitelesítési tiltja, hogy a jelszó újbóli [hozzárendelés: szervezet által megadott szám] generációt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .f** adatokat a rendszer, jelszóalapú hitelesítés lehetővé teszi, hogy a rendszer bejelentkezések egy azonnali módosítását, hogy állandó jelszó ideiglenes jelszó használatát.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (2) sémaszintjén** adatokat a rendszer, a PKI-alapú hitelesítéshez ellenőrzi a tanúsítványok hozhat létre, és a tanúsítványlánc egy elfogadott megbízhatósági kapcsolati alappal, beleértve a tanúsítványok állapotára vonatkozó információkat ellenőrzése a ellenőrzése.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (2) .b** információs rendszer PKI-alapú hitelesítés érvénybe lépteti a jogosult a megfelelő titkos kulcsnak a hozzáférést.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (2) .c** információkat a rendszer, a PKI-alapú hitelesítés van leképezve a hitelesített identitást a az egyéni fiókot vagy csoportot.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (2) .d** adatokat a rendszer, a PKI-alapú hitelesítéshez valósítja meg a helyi gyorsítótárba visszavonási adatkészleteket elérési felderítés és az ellenőrzés esetén nem tudja elérni a visszavont tanúsítványok adatait a hálózaton keresztül.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (3)** a szervezet megköveteli, hogy a regisztrációs fogadásához feldolgozni [hozzárendelés: és/vagy a szervezet által meghatározott típusú adott hitelesítők] végezni [kijelölés: személy; megbízható harmadik fél] előtt [hozzárendelés: szervezet által meghatározott regisztrációszolgáltató] az engedélyezési által [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (4)** a szervezet funkcióit használja annak meghatározására, hogy ha a jelszó hitelesítők megfelelően szigorú kielégítéséhez automatizált eszközök [hozzárendelés: szervezet által meghatározott követelményeknek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (6)** a szervezet a Biztonság kategória az információ, amelyre a hitelesítő hatékonysága lehetővé teszi access arányos hitelesítők védelmet nyújt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (7)** a szervezet biztosítja, hogy titkosítatlan statikus hitelesítők nem beágyazott alkalmazások vagy a hozzáférés parancsfájlok vagy a funkcióbillentyűket tárolt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (8)** a szervezet valósít meg [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] biztonsági sérülése miatt több információs rendszerekkel használt fiókok, amelyek egyéni kockázatának kezelésére.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (11)** adatokat a rendszer, a hardver jogkivonat-alapú hitelesítéshez, alkalmazza a mechanizmusok, amelyek megfelelnek [hozzárendelés: token szolgáltatásminőségi szervezet által meghatározott követelményeinek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (13)** az adatokat a rendszer nem engedélyezi az után gyorsítótárazott hitelesítők használata [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-6** az adatokat a rendszer elrejti a visszajelzés hitelesítési adatok illetéktelen személyek által lehetséges kihasználásának/használatát az információk védelme érdekében a hitelesítési folyamat során.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-7** az információs rendszer valósítja meg, amelyek megfelelnek a követelményeinek Szövetségi törvényi, végrehajtó rendelések, irányelvek, házirendek, szabványok, szabványok és ilyen útmutatás kriptográfiai modulra hitelesítési mechanizmusok hitelesítés.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8** az információs rendszer egyedileg azonosítja, és ezzel hitelesíti a nem szervezeti felhasználók (vagy nem szervezeti felhasználók nevében eljáró folyamatok).
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (1)** az információs rendszer fogad el, és elektronikus úton ellenőrzi az egyéb Szövetségi szerveinek személyes identitás ellenőrzése (PIV) hitelesítő adatokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (2)** az információs rendszer fogad FICAM jóváhagyott csak külső hitelesítő adatokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (3)** a szervezet csak FICAM jóváhagyott információk rendszerösszetevők a védett [hozzárendelés: szervezet által megadott információk rendszerek] külső hitelesítő adatok fogadására.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (4)** FICAM által kiállított profilok az információs rendszer megfelel-e.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

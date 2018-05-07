@@ -1,21 +1,21 @@
 ---
-title: "Alkalmazásátjáró - létrehozása az Azure portálon |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre olyan átjárót az Azure-portál használatával."
+title: Alkalmazásátjáró - létrehozása az Azure portálon |} Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre olyan átjárót az Azure-portál használatával.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: df9235bc7ff61943de52a0bcc4064bf9fab6636a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 0df71c445d2c5fc6827b69f708203a3b3e6e2b53
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-portal"></a>Az Azure portál használatával Alkalmazásátjáró létrehozása
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure portálon, a [http://portal.azure.com](http://portal.azure.com)
+Jelentkezzen be az Azure-portálon: [http://portal.azure.com](http://portal.azure.com)
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
@@ -60,11 +60,11 @@ Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti ko
 1. Kattintson a **összes erőforrás** a bal oldali menüből, majd **myVNet** erőforrások listából.
 2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
 
-    ![Hozzon létre az alhálózatot](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
+    ![Alhálózat létrehozása](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
 
 3. Adja meg *myBackendSubnet* neveként az alhálózati majd **OK**.
 
-## <a name="create-backend-servers"></a>Háttér-kiszolgálókat hoz létre
+## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
 Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolgálóként használandó hoz létre. Is telepíteni az IIS ellenőrizze, hogy az Alkalmazásátjáró sikeresen létrejött-e a virtuális gépeken.
 
@@ -75,15 +75,15 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 3. Adja meg a virtuális gép ezeket az értékeket:
 
     - *myVM* – a virtuális gép nevét.
-    - *azureuser* – a rendszergazdai felhasználónevet.
+    - A rendszergazda felhasználóneve: *azureuser*.
     - *Azure123456!* a jelszó.
     - Válassza ki **meglévő**, majd válassza ki *myResourceGroupAG*.
 
 4. Kattintson az **OK** gombra.
-5. Válassza ki **DS1_V2** a virtuális gépet, majd kattintson a méretét **válasszon**.
+5. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
 6. Győződjön meg arról, hogy **myVNet** van kiválasztva a virtuális hálózat és az alhálózat van **myBackendSubnet**. 
-7. Kattintson a **letiltott** letiltani a rendszerindítási diagnosztika.
-8. Kattintson a **OK**, tekintse át a beállításokat az Összegzés lapon, és kattintson a **létrehozása**.
+7. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
+8. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
@@ -110,7 +110,7 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 ### <a name="add-backend-servers"></a>Adja hozzá a háttérkiszolgálókon
 
 3. Kattintson a **összes erőforrás**, és kattintson a **myAppGateway**.
-4. Kattintson a **háttérkészletek**. Alapértelmezett címkészlet automatikusan jött létre az Alkalmazásátjáró. Click **appGatewayBackendPool**.
+4. Kattintson a **háttérkészletek**. Alapértelmezett címkészlet automatikusan jött létre az Alkalmazásátjáró. Kattintson a **appGatewayBackendPool**.
 5. Kattintson a **Hozzáadás cél** minden létrehozott virtuális gép hozzáadása a háttérkészlet.
 
     ![Adja hozzá a háttérkiszolgálókon](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
@@ -123,7 +123,7 @@ Ebben a példában két virtuális gép az Alkalmazásátjáró háttér-kiszolg
 
     ![Rekord alkalmazás átjáró nyilvános IP-címe](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)
 
-2. Másolja a nyilvános IP-címet, és illessze be a böngésző címsorába.
+2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
     ![Alkalmazásátjáró tesztelése](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
@@ -134,4 +134,4 @@ Ha már nincs szükség, az erőforráscsoport, Alkalmazásátjáró és minden 
 
 ## <a name="next-steps"></a>További lépések
 
-A gyors üzembe helyezés, a létrehozott egy erőforráscsoport, a hálózati erőforrások és a háttérkiszolgálókhoz. Alkalmazásátjáró létrehozásához használt erőforrások majd. További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.
+Ebben a rövid útmutatóban egy erőforráscsoportot, hálózati erőforrásokat és háttérkiszolgálókat hozott létre. Alkalmazásátjáró létrehozásához használt erőforrások majd. További információt a alkalmazásátjárót és a kapcsolódó erőforrások, továbbra is a útmutatókat.

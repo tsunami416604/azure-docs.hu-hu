@@ -200,7 +200,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
-                                                <h4>Tárolás</h4>
+                                                <h4>Storage</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
                                                 </ul>
@@ -285,7 +285,7 @@ Terraform </a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
-                                    <h3>Számítás</h3>
+                                    <h3>Compute</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/virtual-machines/linux/">
@@ -598,7 +598,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/virtual-network/ddos-protection-overview">
                                                 <img src="media/index/ddos.svg" alt="" />
-                                                <p>DDoS elleni védelem</p>
+                                                <p>DDoS Protection</p>
                                             </a>
                                         </li>
                                         <li>
@@ -608,7 +608,7 @@ Terraform </a>
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>Mesterséges intelligencia és gépi tanulás</h3>
+                                    <h3>AI + Machine Learning</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/machine-learning/">
@@ -751,7 +751,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home">
                                                 <img src="media/index/API_Custom_Speech.svg" alt="" />
-                                                <p>Egyéni beszédszolgáltatás</p>
+                                                <p>Custom Speech Service</p>
                                             </a>
                                         </li>
                                         <li>
@@ -793,7 +793,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/cognitive-services/video-indexer/video-indexer-overview">
                                                 <img src="media/index/API_VideoIndexer.svg" alt="" />
-                                                <p>Videóindexelő</p>
+                                                <p>Video Indexer</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -801,12 +801,12 @@ Terraform </a>
                             </li>
                             <li>
                                 <div class="group">
-                                    <h3>Tárolás</h3>
+                                    <h3>Storage</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/storage/">
                                                 <img src="media/index/Storage.svg" alt="" />
-                                                <p>Tárolás</p>
+                                                <p>Storage</p>
                                             </a>
                                         </li>
                                         <li>
@@ -818,7 +818,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/virtual-machines/windows/about-disks-and-vhds">
                                                 <img src="media/index/Disks-color.svg" alt="" />
-                                                <p>Lemezes tárolás</p>
+                                                <p>Disk Storage</p>
                                             </a>
                                         </li>
                                         <li>
@@ -848,7 +848,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Biztonsági mentés</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -989,7 +989,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/iot-dps/">
                                                 <img src="media/index/dps.svg" alt="" />
-                                                <p>IoT Hub eszközkiépítési szolgáltatás</p>
+                                                <p>IoT Hub Device Provisioning Service</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1159,7 +1159,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/multi-factor-authentication/">
                                                 <img src="media/index/MultiFactorAuthentication.svg" alt="" />
-                                                <p>Többtényezős hitelesítés</p>
+                                                <p>Multi-Factor Authentication</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1204,7 +1204,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Biztonsági mentés</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1216,7 +1216,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/automation/">
                                                 <img src="media/index/automation.svg" alt="" />
-                                                <p>Automatizálás</p>
+                                                <p>Automation</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1261,7 +1261,7 @@ Terraform </a>
                         </ul>
                     </li>
                     <li>
-                        <a data-default="true" href="#Compute">Számítás</a>
+                        <a data-default="true" href="#Compute">Compute</a>
                         <ul id="Compute" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-machines/linux/">
@@ -1659,7 +1659,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>DDoS elleni védelem</h3>
+                                                    <h3>DDoS Protection</h3>
                                                     <p>Az alkalmazások védelme az elosztott szolgáltatásmegtagadásos (DDoS-) támadásokkal szemben</p>
                                                 </div>
                                             </div>
@@ -1702,7 +1702,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Tárolás</h3>
+                                                    <h3>Storage</h3>
                                                     <p>Tartós, magas rendelkezésre állású és rendkívül rugalmasan skálázható felhőalapú tárolás</p>
                                                 </div>
                                             </div>
@@ -1740,7 +1740,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Lemezes tárolás</h3>
+                                                    <h3>Disk Storage</h3>
                                                     <p>Állandó, biztonságos, virtuális gépeket támogató lemezbeállítások</p>
                                                 </div>
                                             </div>
@@ -1835,7 +1835,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Biztonsági mentés</h3>
+                                                    <h3>Backup</h3>
                                                     <p>Adatok védelme szolgáltatásként nyújtott, felhőalapú biztonsági mentéssel</p>
                                                 </div>
                                             </div>
@@ -2550,7 +2550,7 @@ Terraform </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#ai">Mesterséges intelligencia és gépi tanulás</a>
+                        <a href="#ai">AI + Machine Learning</a>
                         <ul id="ai" class="cardsA">
                             <li class="fullSpan">
                                 <h2>Mesterséges intelligencia</h2>
@@ -2704,7 +2704,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>IoT Hub eszközkiépítési szolgáltatás</h3>
+                                                    <h3>IoT Hub Device Provisioning Service</h3>
                                                     <p>Érintésmentes, igény szerinti kiépítés Azure IoT Hubon</p>
                                                 </div>
                                             </div>
@@ -3227,7 +3227,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Többtényezős hitelesítés</h3>
+                                                    <h3>Multi-Factor Authentication</h3>
                                                     <p>Az adatok és az alkalmazások biztonságának növelése a felhasználók terhelése nélkül</p>
                                                 </div>
                                             </div>
@@ -3484,7 +3484,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Biztonsági mentés</h3>
+                                                    <h3>Backup</h3>
                                                     <p>A kiszolgálók egyszerű és megbízható biztonsági mentése a felhőbe</p>
                                                 </div>
                                             </div>
@@ -3522,7 +3522,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Automatizálás</h3>
+                                                    <h3>Automation</h3>
                                                     <p>Egyszerűbb felhőfelügyelet a folyamatok automatizálásával</p>
                                                 </div>
                                             </div>

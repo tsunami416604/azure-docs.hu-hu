@@ -1,9 +1,9 @@
 ---
-title: "Hozzon létre egy alkalmazás több webhely-üzemeltetés – Azure parancssori Felülettel |} Microsoft Docs"
-description: "Ismerje meg, amelyen az Azure parancssori felület használatával több hely Alkalmazásátjáró létrehozása."
+title: Hozzon létre egy alkalmazás több webhely-üzemeltetés – Azure parancssori Felülettel |} Microsoft Docs
+description: Ismerje meg, amelyen az Azure parancssori felület használatával több hely Alkalmazásátjáró létrehozása.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
@@ -11,25 +11,25 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: df475cb6eed2b75275e573721f754e7de87698f5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: 2e1367db9c2c1d47f34cc35fc088a9eecf00247b
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Hozzon létre egy alkalmazás több helyet üzemeltető az Azure parancssori felület használatával
 
 Az Azure CLI segítségével konfigurálhatja [több webhely tárolása](application-gateway-multi-site-overview.md) létrehozásakor egy [Alkalmazásátjáró](application-gateway-introduction.md). Ebben az oktatóanyagban hoz létre a virtuálisgép-méretezési csoportok használatával háttérkészletek menüpontot. Ezután konfigurálja figyelők és szabályok alapján a tartományok, amelyek a saját győződjön meg arról, hogy a webes forgalom érkezik a készletek a megfelelő kiszolgálókat. Ez az oktatóanyag feltételezi, hogy Ön a tulajdonosa több tartományok és felhasználási mintái *www.contoso.com* és *www.fabrikam.com*.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
 > * Application Gateway létrehozása
 > * Figyelők és útválasztási szabályok létrehozása
 > * A háttérkészlet hozzon létre virtuálisgép-méretezési csoportok
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 ![Többhelyes útválasztási – példa](./media/tutorial-multisite-cli/scenario.png)
 
@@ -205,12 +205,12 @@ for i in `seq 1 2`; do
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
     --settings '{
-  "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 done
 ```
 
-## <a name="create-a-cname-record-in-your-domain"></a>Create a CNAME record in your domain
+## <a name="create-a-cname-record-in-your-domain"></a>Hozzon létre egy CNAME rekordot a tartományban
 
 Nyilvános IP-címmel az Alkalmazásátjáró létrehozása után lekérni a DNS-címét, és hozzon létre egy CNAME rekordot a tartomány segítségével. Használhat [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip#az_network_public_ip_show) lekérni a DNS-címét az Alkalmazásátjáró. Másolás a *fqdn* a DNSSettings értékének és az legyen az Ön által létrehozott CNAME rekord értékét. 
 
@@ -226,7 +226,7 @@ A-rekordok használata nem ajánlott, mert a VIP módosíthatja az Alkalmazásá
 
 ## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
 
-Adjon meg a tartománynevet a böngésző címsorába. Such as, http://www.contoso.com.
+Adjon meg a tartománynevet a böngésző címsorába. Például a http://www.contoso.com.
 
 ![Az alkalmazás átjáró contoso hely tesztelése](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
 
@@ -243,7 +243,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Application Gateway létrehozása
 > * Figyelők és útválasztási szabályok létrehozása
 > * A háttérkészlet hozzon létre virtuálisgép-méretezési csoportok
-> * Create a CNAME record in your domain
+> * Hozzon létre egy CNAME rekordot a tartományban
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Alkalmazásátjáró teendők](application-gateway-introduction.md)

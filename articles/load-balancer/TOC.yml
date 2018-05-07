@@ -22,6 +22,8 @@
       href: powershell-samples.md
 - name: Oktatóanyagok
   items:
+    - name: Virtuális gépek belső bejövő forgalmának terheléselosztása
+      href: tutorial-load-balancer-basic-internal-portal.md
     - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Virtuális gép terheléselosztása adott rendelkezésre állási zónán belül

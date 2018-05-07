@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 0c316a2c73b451e4d8f67ace7b41c38dcfbc52f0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 345be83d687c3d7de252db5d671660ba78137c75
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) PowerShell használatával
 
@@ -152,7 +152,8 @@ Felhasználó hozzárendelése egy meglévő Azure virtuális gép identitásán
 2. Hozzon létre egy felhasználó lehet hozzárendelve identitást használja a [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) parancsmag.  Megjegyzés: a `Id` kimenet mivel szüksége lesz a következő lépésben.
 
     > [!IMPORTANT]
-    > A felhasználói identitások a különleges karakterek (pl. aláhúzásjel) nevében létrehozása jelenleg nem támogatott. Alfanumerikus karaktereket használja. Biztonsági frissítések ellenőrzése.  További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
+    > A felhasználói identitások létrehozása csak alfanumerikus és kötőjel (0 – 9 vagy a-z vagy A-Z vagy -) karaktereket. Emellett nevét kell korlátozni a virtuális gép/VMSS helyes működéséhez hozzárendelés 24 karakter hosszúságot. Biztonsági frissítések ellenőrzése. További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
+
 
   ```powershell
   New-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
@@ -199,20 +200,3 @@ Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -VirtualMachine $
   
   - [A Windows rendszerű virtuális gép létrehozása a PowerShell használatával](../../virtual-machines/windows/quick-create-powershell.md) 
   - [Linux virtuális gép létrehozása a PowerShell használatával](../../virtual-machines/linux/quick-create-powershell.md) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

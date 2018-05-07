@@ -1,6 +1,6 @@
 ---
-title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - Incidensválasz"
-description: "FedRAMP webes alkalmazások Automation - Incidensválasz"
+title: Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - Incidensválasz
+description: FedRAMP webes alkalmazások Automation - Incidensválasz
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: bcdb2b151c4d14af59e8133bd871ef6c3c0b9f73
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="incident-response-ir"></a>Incidensválaszra (IR)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy incidensválasz-szabályzattal, célja, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás, koordinációs címek szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy az incidensválasz-házirend és a társított incidensválasz-vezérlők; végrehajtásának megkönnyítése ellenőrzi, és frissíti az aktuális incidensválasz-házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és incidensmegoldásra vonatkozó eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-2.a** a vállalat által incidensválasz-képzési információk rendszer felhasználók rendelt szerepkörök és felelősségek belül konzisztens [hozzárendelés: szervezet által meghatározott időszak], feltéve, hogy az incidensválasz-szerepkör vagy felelős.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-2.b** a vállalat által incidensválasz-képzési információk rendszer felhasználók konzisztens rendelt szerepkörök és felelősségek meghatározása, ha rendszer változtatások miatt szükség van.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-2.c** a vállalat által incidensválasz-képzési információk rendszer felhasználók rendelt szerepkörök és felelősségek konzisztens [hozzárendelés: szervezet által meghatározott gyakoriság] ezt követően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) 2-infravörös** a szervezet szimulált események az incidensekre adott reakciók, lehetővé teszi a tényleges válasz a személyzet hatékony eszközöknek betanítása magában foglalja a.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) IR-2** a szervezet több alapos és reális incidensválasz képzési környezet automatikus mechanizmusokat funkcióit használja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-3** a szervezet teszteli a incidensválasz funkció az információkat rendszerhez [hozzárendelés: szervezet által meghatározott gyakoriság] használata [hozzárendelés: szervezet által meghatározott tesztek] meghatározásához az incidensekre adott reakciók hatékonyságát és az eredmények a dokumentumokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-3 (2)** a szervezet koordinálja az incidensekre adott reakciók, kapcsolódó tervek felelős szervezeti elemekkel tesztelése.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4.a** a szervezete bevezet egy incidenst, amely tartalmazza az előkészítés, észlelési és elemzés, elszigetelési, felszámolására és helyreállítási funkció biztonsági incidensek kezelése.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4.b** a szervezet incidens kezelési tevékenységek koordinálja a tervezési tevékenységek eseti.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4.c** a szervezet magában foglalja a incidensválasz eljárások, a modell betanítására, és tesztelésére, folyamatban lévő incidens kezelési tevékenységek tanulságait és valósít meg a kapott változik.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (1)** a szervezet funkcióit használja az automatizált mechanizmusok az incidens kezelési folyamat támogatásához.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) IR-4** a szervezet tartalmaz dinamikus újrakonfigurálása [hozzárendelés: szervezet által megadott információk rendszerösszetevők] az incidensválasz-funkció részeként.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (3)** azonosítja a szervezet [hozzárendelés: incidensek a szervezet által meghatározott osztályait] és [hozzárendelés: szervezet által meghatározott műveleteket kell elvégezni az incidensek osztályok válaszul] szervezeti feladatok fenntartása biztosításához és üzleti funkciók.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **(4) IR-4** a szervezet ad eredményül, incidens adatai és egyéni incidens válaszok incidens tájékoztatási és a válasz egy szervezeti perspektíva eléréséhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -242,7 +242,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (6)** a szervezete bevezet incidens kezelési képesség a belső fenyegetésekkel szemben.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -256,7 +256,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (8)** a szervezet koordinálja a [hozzárendelés: külső szervezetek szervezet által meghatározott] egyeztetéséhez és megosztása [hozzárendelés: incidens adatai szervezet által meghatározott] egy kereszt-szervezet perspektíva incidensre eléréséhez tájékoztatási és hatékonyabb incidens válaszokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -270,7 +270,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-5** a szervezet nyomon követi, és információt rendszer biztonsági incidensek dokumentumokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -284,7 +284,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) IR-5** a szervezet funkcióit használja az automatizált mechanizmusokat, segítik a követési biztonsági incidensek és a gyűjtemény és az incidens adatai elemzését.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -298,7 +298,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-6.a** a szervezet megköveteli a csoporthoz, és biztonsági incidensek belül szervezeti incidensválasz képes gyanús jelentés [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -312,7 +312,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-6.b** a szervezet biztonsági incidens adatai a jelentést [hozzárendelés: szervezet által meghatározott hatóságok].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -326,7 +326,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) IR-6** a szervezet alkalmazza a biztonsági események jelentés segít automatizált mechanizmusokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -340,7 +340,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-7** a szervezet biztosítja az incidensekre adott reakciók támogatási erőforrás, a szervezeti incidensválasz-funkció, amely útmutatásként, és segítséget nyújt, a felhasználók az információs rendszer kezelésére és a jelentéskészítés biztonsági integrált incidensek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -354,7 +354,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-7 (1)** a szervezet funkcióit használja az automatizált mechanizmusok incidens válasz kapcsolatos információk és támogatás rendelkezésre állásának növelése érdekében.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -362,13 +362,13 @@ ms.lasthandoff: 02/11/2018
 | **A szolgáltató (Microsoft Azure)** | Nem alkalmazható |
 
 
- ### <a name="nist-800-53-control-ir-7-2a"></a>NIST 800-53 Control IR-7 (2).a
+ ### <a name="nist-800-53-control-ir-7-2a"></a>A NIST 800-53 IR-7 (2) sémaszintjén szabályozása
 
 #### <a name="incident-response-assistance--coordination-with-external-providers"></a>Incidensválasz-támogatás |} Külső szolgáltatók együtt
 
 **(2) IR-7 sémaszintjén** a szervezet közvetlen, együttműködési között létesít kapcsolatot az incidensválasz-funkció és a külső szolgáltatók információk rendszer védelme terén.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -382,7 +382,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) IR-7 .b** a szervezet azonosítja a külső szolgáltatókkal szervezeti incidensválasz-csoport tagjai.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -396,7 +396,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-8.a** a szervezet házon belül fejlesztett alkalmazásokra a szervezetből, akik a terv biztosít az incidensválasz-funkció végrehajtási; ismerteti a struktúra és a szervezet az incidensválasz-funkció incidensválaszra vonatkozó tervvel; biztosít a magas szintű megközelítést, hogy hogyan illeszkedik az incidensekre adott reakciók képes a teljes szervezet; megfelel az egyedi a szervezet, amely kritikus, méret, felépítését és funkciók; határozza meg az incidensek bemutatandó; metrikákat biztosít méri a incidensválasz-funkció a szervezetben; határozza meg az erőforrások és a szükséges hatékony karbantartása, és számos olyan incidensekre adott reakciók lehetőséggel;-kezelési támogatás vizsgálni és jóvá [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -410,7 +410,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-8.b** a szervezet terjeszti az incidensekre adott reakciók terv példánya [hozzárendelés: (név és/vagy szerepkör által azonosított) szervezet által meghatározott incidensválasz-csoporthoz és szervezeti elemek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -424,7 +424,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-8.c** a szervezet ellenőrzi, hogy a incidensválasz-tervnek [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -438,7 +438,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-8.d** a szervezet frissíti az incidensekre adott reakciók tervet rendszer szervezeti módosítások vagy terv végrehajtására, a végrehajtási vagy a tesztelés során észlelt problémákat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -452,7 +452,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-8.e** A szervezete incidensválaszra terv módosításait kommunikál [hozzárendelés: (név és/vagy szerepkör által azonosított) szervezet által meghatározott incidensválasz-csoporthoz és szervezeti elemek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -466,7 +466,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-8.f** a szervezet megakadályozza a incidensválasz-tervnek jogosulatlan és módosítását.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -480,7 +480,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9.a** a szervezet válaszol-e adatokat kijutás a információk rendszer fertőzés információinak azonosításával.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -494,7 +494,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9.b** a szervezet válaszol információk kijutás riasztási [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] adatok kerülnek a metódussal nem társított feltűntetni kommunikációs.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -508,7 +508,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9.c** a szervezet válaszol-e adatokat kijutás a fertőzött rendszer vagy rendszerösszetevő elkülönítésével.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -522,7 +522,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9.d** a szervezet válaszol információk kijutás felszámolása a fertőzött rendszer vagy az összetevő információival.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -536,7 +536,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9.e** A szervezet más információs rendszerekkel, vagy előfordulhat, hogy rendelkezik lett ezt követően szennyezett rendszerösszetevő azonosításával információk kijutás válaszol.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -550,7 +550,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-9.f** a szervezet válaszol-e adatokat kijutás más elvégzésével [hozzárendelés: szervezet által meghatározott műveleteket].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -564,7 +564,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) IR-9** hozzárendeli a szervezet [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] válaszol az információk felelős Önt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -578,7 +578,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) IR-9** a szervezet nyújt információkat helyet választ képzési [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -592,7 +592,7 @@ ms.lasthandoff: 02/11/2018
 
 **(3) IR-9** a szervezet valósít meg [hozzárendelés: szervezet által meghatározott eljárást] annak érdekében, hogy a szervezeti csoporthoz információk hatása kijutás továbbra is hozzárendelt feladatok ellátásához, amíg folyamatban van a fertőzött rendszerek javítási műveleteket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -606,7 +606,7 @@ ms.lasthandoff: 02/11/2018
 
 **(4) IR-9** alkalmaz a szervezet [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket] az belül nem érhető el az adatokat csoporthoz hozzárendelt hozzáférési engedélyek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

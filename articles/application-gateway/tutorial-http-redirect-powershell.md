@@ -2,20 +2,20 @@
 title: A HTTP, HTTPS átirányítás - Azure PowerShell hozhat létre olyan átjárót |} Microsoft Docs
 description: Megtudhatja, hogyan hozzon létre egy alkalmazás átirányított forgalmat a HTTP és HTTPS Azure PowerShell használatával.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
-ms.author: davidmu
-ms.openlocfilehash: d67ed204ee263c139b09232b63ad18a85af1e82e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.author: victorh
+ms.openlocfilehash: dedb9b8083f2e41de5709bc46a8cee3bdedb3f73
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>HTTP, HTTPS átirányítása Azure PowerShell használatával hozhat létre olyan átjárót
 
@@ -303,7 +303,7 @@ New-AzureRmVmss `
 ### <a name="install-iis"></a>Az IIS telepítése
 
 ```powershell
-$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1"); 
+$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
 Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `

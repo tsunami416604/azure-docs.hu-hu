@@ -1,9 +1,9 @@
 ---
-title: "Adatok áthelyezése az Azure SQL Database az Azure Machine Learning |} Microsoft Docs"
-description: "SQL-tábla és az adatok betöltése az SQL-tábla létrehozása"
+title: Adatok áthelyezése az Azure SQL Database az Azure Machine Learning |} Microsoft Docs
+description: SQL-tábla és az adatok betöltése az SQL-tábla létrehozása
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 50f8b862-4d32-44b2-a1e2-4fbc8024acaa
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 323861d078e9beeb197333dc7e2d0314014dfdb0
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 03104b497034ef92ddb2c6216d6e9200e65168b0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
 Ez a témakör bemutatja a beállítások megköveteli az adatok strukturálatlan fájlból (CSV vagy TSV formátumban), vagy az Azure SQL-adatbázis egy helyi SQL Server tárolt adatok. Ezeket a feladatokat az adatok áthelyezését a felhőbe az Team tudományos folyamat részét képezik.
@@ -48,13 +48,13 @@ Az itt leírt eljárások szükség van:
 
 A saját adatok az itt leírt eljárásokat igazítja, vagy hajtsa végre a következőt: Taxi adatkészlet szerint. Töltse fel a következőt: Taxi dataset a helyszíni SQL Server-adatbázisba, kövesse az ismertetett eljárás [tömeges adatok importálása az SQL Server-adatbázisba](sql-walkthrough.md#dbload). Ezek az utasítások az Azure virtuális gép az SQL Server, de a helyszíni SQL Server feltöltését eljárás megegyezik.
 
-## <a name="file-to-azure-sql-database"></a>Egybesimított fájl forrásból származó adatok Azure SQL-adatbázis áthelyezése
+## <a name="file-to-azure-sql-database"></a> Egybesimított fájl forrásból származó adatok Azure SQL-adatbázis áthelyezése
 A tömeges beszúrás SQL lekérdezést használva Azure SQL-adatbázis (CSV vagy TSV formázott) egybesimított fájlok adatainak helyezheti át.
 
-### <a name="bulk-insert-sql-query"></a>A tömeges beszúrás SQL-lekérdezés
+### <a name="bulk-insert-sql-query"></a> A tömeges beszúrás SQL-lekérdezés
 A tömeges beszúrás SQL lekérdezést használva eljárás lépései hasonlóak az adatok áthelyezése egy egybesimított fájl forrásból SQL Server egy Azure virtuális gépen szakaszaiban ismertetett. További információkért lásd: [tömeges beszúrás SQL-lekérdezés](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a>Adatok áthelyezése a helyszíni SQL Server az Azure SQL-adatbázis
+## <a name="sql-on-prem-to-sazure-sql-database"></a> Adatok áthelyezése a helyszíni SQL Server az Azure SQL-adatbázis
 Az adatok egy helyi SQL Server tárolja, ha van az adatok áthelyezése az Azure SQL Database különböző lehetőségeit:
 
 1. [Egybesimított fájl exportálása](#export-flat-file)

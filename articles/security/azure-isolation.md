@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 302859bce7abda547a893d9de2cb763ae8fa779c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Az Azure nyilvános Felhőjében elszigeteléséről
 ##  <a name="introduction"></a>Bevezetés
@@ -210,7 +210,7 @@ A biztonsági Társítások azt jelenti, hogy azt is adja meg egy ügyfél korl�
 IP-tárolási adatok védelme a jogosulatlan felhasználók egy hálózati mechanizmus, amellyel lefoglalni egy dedikált vagy dedikált IP-tárolási forgalom-alagúton keresztül.
 
 ### <a name="encryption"></a>Titkosítás
-Azure kínálja a következő adatok védelme érdekében titkosítási típusok:
+Az Azure a következő típusú adatok védelme érdekében titkosítási kínál:
 -   Az átvitel során titkosítás
 
 -   Titkosítás inaktív állapotban

@@ -1,9 +1,9 @@
 ---
-title: "Az adatokat az Azure HDInsight Hive táblák |} Microsoft Docs"
-description: "Lefelé (Hadopop) Azure HDInsight Hive táblák az adatok mintavétele"
+title: Az adatokat az Azure HDInsight Hive táblák |} Microsoft Docs
+description: Lefelé (Hadopop) Azure HDInsight Hive táblák az adatok mintavétele
 services: machine-learning,hdinsight
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: f31e8d01-0fd4-4a10-b1a7-35de3c327521
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: d765c2adc8a3aa77d903490875c7f8ad622ef4d2
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: b40aae9d494f3e7ebeae56fcad48f0ff47798bbc
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Adatmintavétel az Azure HDInsight Hive-táblákban
 Ez a cikk ismerteti lefelé-minta még kezelhetőbbé teszik elemzéshez méretre csökkenteni a Hive-lekérdezésekkel Azure HDInsight Hive táblákban tárolt adatokat. Azt a három popularly használt mintavételi módszerek terjed ki:
@@ -39,10 +39,10 @@ Ez a mintavételi feladat Ez a lépés a [Team adatok tudományos folyamat (TDSP
 ## <a name="how-to-submit-hive-queries"></a>Hogyan lehet elküldeni a Hive-lekérdezések
 A parancssori Hadoop-konzolon, a Hadoop-fürt átjárócsomópontjához a Hive-lekérdezések küldheti el. Ehhez jelentkezzen be a Hadoop-fürt átjárócsomópontjához, nyissa meg a Hadoop parancssori konzolt, és küldje el a Hive-lekérdezések ott. A Hadoop parancssori konzolon Hive-lekérdezések elküldése, lásd: [hogyan küldhetnek Hive-lekérdezések](move-hive-tables.md#submit).
 
-## <a name="uniform"></a>Egységes véletlenszerű mintavétel
+## <a name="uniform"></a> Egységes véletlenszerű mintavétel
 Egységes véletlenszerű mintavételi jelenti, hogy az adatkészlet egyes soraihoz alatt mintát egyenlő esélyét. Ad hozzá egy kiegészítő mezőt rand() az adatkészletben a belső "select" lekérdezési, és a külső "select" lekérdezési feltételhez véletlenszerű mező hajtható végre.
 
-Íme egy példa lekérdezést:
+Itt láthat egy példalekérdezést:
 
     SET sampleRate=<sample rate, 0-1>;
     select
@@ -57,7 +57,7 @@ Egységes véletlenszerű mintavételi jelenti, hogy az adatkészlet egyes sorai
 
 Itt `<sample rate, 0-1>` azt jelzi, hogy a felhasználók mintát szeretne arányát határozza meg.
 
-## <a name="group"></a>A csoportok véletlenszerű mintavétel
+## <a name="group"></a> A csoportok véletlenszerű mintavétel
 Ha mintavételi kategorikus adatok, érdemes lehet akár vagy kizárja a minden egyes kategorikus változó értéke a előfordulása. Az ilyen mintavételi "mintavételi csoport" nevezik. Például, ha egy kategorikus változó "*állapot*", például NY, MA, CA, NJ és PA értékeket tartalmaz, minden állapotot együtt, hogy azok lekérdező vagy nem származó rekordokat szeretne.
 
 Íme példalekérdezést adott minták csoport szerint:
@@ -89,7 +89,7 @@ Ha mintavételi kategorikus adatok, érdemes lehet akár vagy kizárja a minden 
 ## <a name="stratified"></a>Rétegzett mintavétel
 Véletlenszerű mintavételi műanyaggal a rétegezett kategorikus változó tekintetében, ha a kapott minták kategorikus értékek, amelyek egy-egy található, mint a szülő feltöltése a. Az előző példát a fenti, tegyük fel, hogy az adatok a következő megfigyelések rendelkezik államok: NJ van 100 megfigyelések NY van 60 megfigyelések, és WA 300 megfigyelések rendelkezik. Ha 0,5 kell rétegzett mintavételi arány ad meg, majd a mintát a kell rendelkeznie körülbelül 50, 30 és 150 megfigyelések NJ, NY és WA rendre.
 
-Íme egy példa lekérdezést:
+Itt láthat egy példalekérdezést:
 
     SET sampleRate=<sample rate, 0-1>;
     select

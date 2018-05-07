@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: ce03ee0e0936cea4b96e48fbc949f40ee0fe83a0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 2336277a960925a92af3578850453ba6ae78abda
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>A felügyelt tartományok érvénytelen hálózati konfiguráció hibaelhárítása
 Ez a cikk segít elhárításához és hárítsa el a hálózati konfigurációs hibákat, amelyek a következő figyelmeztető üzenet:
@@ -28,6 +28,13 @@ Ez a cikk segít elhárításához és hárítsa el a hálózati konfigurációs
 
 Érvénytelen NSG-konfiguráció olyan hálózati hibák leggyakoribb oka az Azure AD tartományi szolgáltatásokhoz. A hálózati biztonsági csoport (NSG)-e konfigurálva ehhez a virtuális hálózati hozzáférést kell engedélyeznie [adott portok](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services). Ha ezeket a portokat a letiltott a Microsoft nem figyelése, vagy a felügyelt tartományok frissítése. Emellett az Azure AD-címtár és a felügyelt tartományok közötti szinkronizálás kihatással van. Az NSG létrehozásakor tartani ezeket a portokat nyissa meg a szolgáltatás megszakadásának elkerülése érdekében.
 
+### <a name="checking-your-nsg-for-compliance"></a>Az NSG-t a megfelelőség ellenőrzése
+
+1. Keresse meg a [hálózati biztonsági csoportok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) oldal az Azure portálon
+2. A táblából válassza ki, amelyben a felügyelt tartományok engedélyezve van az alhálózathoz társított NSG.
+3. A **beállítások** kattintson a bal oldali panel **bejövő biztonsági szabályok**
+4. Tekintse át a szabályokat a helyen, és azonosíthatja a mely szabályokat blokkolják a hozzáférést [ezeket a portokat](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services).
+5. A megfelelőség biztosítása a szabály törlése, szabály hozzáadása, vagy hozzon létre egy új NSG teljesen NSG szerkesztése. A szükséges további lépéseket [szabály hozzáadása](#add-a-rule-to-a-network-security-group-using-the-azure-portal) vagy [hozzon létre egy új, megfelelő NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell) az alábbi.
 
 ## <a name="sample-nsg"></a>minta NSG
 Az alábbi táblázat mutatja be egy minta NSG-t, amely megakadályozná a felügyelt tartományok biztonságos úgy, hogy a Microsoft figyeléséhez, kezeléséhez és információk frissítése közben.
@@ -47,7 +54,7 @@ Ha nem szeretné, ha a PowerShell segítségével, az NSG-k az Azure portál has
 5. Ellenőrizze, hogy a szabály a szabályok tábla megkeresésével jött létre.
 
 
-## <a name="create-an-nsg-for-azure-ad-domain-services-using-powershell"></a>Hozzon létre egy NSG-t az Azure AD tartományi szolgáltatások PowerShell használatával
+## <a name="create-a-nsg-for-azure-ad-domain-services-using-powershell"></a>Hozzon létre egy NSG-t az Azure AD tartományi szolgáltatásokhoz PowerShell használatával
 Az NSG-t a porton bármely egyéb nem kívánt bejövő hozzáférés megtagadása történt Azure AD tartományi szolgáltatások által igényelt bejövő adatforgalom engedélyezésére van konfigurálva.
 
 **Előfeltétel: Telepítse és konfigurálja az Azure Powershellt** kövesse az utasításokat [telepítse az Azure PowerShell-modult, és csatlakozzon az Azure-előfizetéshez](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 521c5a3c0ad55afa0b71628195be7782b0e43b67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 324a1e08e92a2c7ae76d7a6df56536540dc772a1
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Egy sablon használatával egy virtuális gép felügyelt Szolgáltatásidentitás konfigurálása
 
@@ -34,7 +34,7 @@ Ebből a cikkből megtanulhatja a műveleteket a következő felügyelt Szolgál
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-Az Azure portál és parancsfájl-kezelési, Azure Resource Manager-sablonok telepíthet egy Azure erőforráscsoport által meghatározott új vagy megváltozott erőforrásokat adjon meg. Több lehetőség is elérhető Sablonszerkesztés és a központi telepítés, helyi és portálalapú, beleértve:
+Csakúgy, mint az Azure portál és parancsfájl-kezelési, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) sablonok lehetővé teszi egy Azure erőforráscsoport által meghatározott új vagy megváltozott erőforrásokat telepítését adja meg. Több lehetőség is elérhető Sablonszerkesztés és a központi telepítés, helyi és portálalapú, beleértve:
 
    - Használatával egy [egyéni sablont az Azure piactérről](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi teljesen új sablon létrehozása, vagy létrehozhatja azt egy meglévő közös vagy [gyorsindítási sablonon](https://azure.microsoft.com/documentation/templates/).
    - Egy sablon exportálása vagy egy meglévő erőforráscsoportot, a Származtatás [az eredeti telepítési](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), vagy a [az üzemelő példány aktuális állapotának](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
@@ -112,59 +112,14 @@ Ha egy virtuális Gépet, amely már nincs szüksége a felügyelt szolgáltatá
 
 ## <a name="user-assigned-identity"></a>A felhasználói identitás
 
-Ebben a szakaszban hoz létre a felhasználó identitása és azon Azure virtuális gép Azure Resource Manager-sablonnal.
+Ebben a szakaszban rendel egy hozzárendelt felhasználói azonosító az Azure virtuális gép Azure Resource Manager-sablon használatával.
 
- ### <a name="create-and-assign-a-user-assigned-identity-to-an-azure-vm"></a>Létrehozni és hozzárendelni egy a felhasználói identitás egy Azure virtuális Gépen
+> [!Note]
+> Egy Azure Resource Manager-sablonnal a felhasználói identitás létrehozásához lásd: [nem hoz létre a felhasználói](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity).
 
-1. A szakaszban a lépés végrehajtása az első [hozzárendelt rendszeridentitás engedélyezése az Azure virtuális gép vagy egy meglévő virtuális gép a létrehozása közben](#enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm)
+ ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>Rendelje hozzá egy a felhasználói identitás egy Azure virtuális Gépen
 
-2.  A változók szakaszban, amely tartalmazza az Azure virtuális gép konfigurációs változóinak adjon hozzá egy bejegyzést, az alábbihoz hasonló felhasználói hozzárendelt azonosító nevet.  Ez a felhasználó identitását az Azure virtuális gép létrehozási folyamata során hozza létre:
-    
-    > [!IMPORTANT]
-    > A felhasználói identitások a különleges karakterek (pl. aláhúzásjel) nevében létrehozása jelenleg nem támogatott. Alfanumerikus karaktereket használja. Biztonsági frissítések ellenőrzése.  További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
-
-    ```json
-    "variables": {
-        "vmName": "[parameters('vmName')]",
-        //other vm configuration variables...
-        "identityName": "[concat(variables('vmName'), 'id')]"
-    ```
-
-3. Az a `resources` elem, egy hozzárendelt felhasználói azonosító létrehozása a következő bejegyzést:
-
-    ```json
-    {
-        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-        "name": "[variables('identityName')]",
-        "apiVersion": "2015-08-31-PREVIEW",
-        "location": "[resourceGroup().location]"
-    },
-    ```
-
-4. Ezután bontsa a `resources` elem hozzáadása a felügyelt identitás-bővítmények hozzárendelése a virtuális Gépet a következő bejegyzést:
-
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
-        "apiVersion": "2015-05-01-preview",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForLinux",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
-        }
-    }
-    ```
-5. Ezt követően adja hozzá a felhasználó identitása hozzárendelni a virtuális Gépet a következő bejegyzést:
-
+1. Az a `resources` elemet, adja hozzá a következő bejegyzést hozzárendelt felhasználói azonosítót rendel a virtuális Gépet.  Ügyeljen arra, hogy a csere `<USERASSIGNEDIDENTITY>` nevű, a felhasználó identitásának létrehozott.
     ```json
     {
         "apiVersion": "2017-12-01",
@@ -174,15 +129,36 @@ Ebben a szakaszban hoz létre a felhasználó identitása és azon Azure virtuá
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', variables('identityName'))]"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITYNAME>)']"
             ]
         },
     ```
-6.  Amikor elkészült, a sablon a következő hasonlóan kell kinéznie:
-    > [!NOTE]
-    > A sablon nem listázza az összes, a virtuális gép létrehozásához szükséges változók.  `//other configuration variables...` helyett kivonatosan mutatja az összes szükséges konfigurációs változót használja.
+    
+2. (Választható) Ezután bontsa a `resources` elemet, adja hozzá a következő bejegyzést a felügyelt identity bővítmény hozzárendelése a virtuális Gépet. Ez a lépés nem kötelező, hasonlóan a Azure példány metaadatok szolgáltatás (IMDS) identitás végpont, valamint a jogkivonatok beolvasása. A következő szintaxissal:
+    ```json
+    {
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+        "apiVersion": "2015-05-01-preview",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+        ],
+        "properties": {
+            "publisher": "Microsoft.ManagedIdentity",
+            "type": "ManagedIdentityExtensionForWindows",
+            "typeHandlerVersion": "1.0",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+                "port": 50342
+            }
+        }
+    }
+    ```
+    
+3.  Amikor elkészült, a sablon a következő hasonlóan kell kinéznie:
 
-      ![A felhasználói identitás képernyőképe](../media/msi-qs-configure-template-windows-vm/template-user-assigned-identity.png)
+      ![A felhasználói identitás képernyőképe](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
 
 
 ## <a name="related-content"></a>Kapcsolódó tartalom

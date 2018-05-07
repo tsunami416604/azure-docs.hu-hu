@@ -1,9 +1,9 @@
 ---
-title: "Hozza létre, és a gépi tanulási modellek használata az SQL Server egy Azure virtuális gépen telepíteni |} Microsoft Docs"
-description: "Bővített Analitikát folyamat és a technológia, működés közben"
+title: Hozza létre, és a gépi tanulási modellek használata az SQL Server egy Azure virtuális gépen telepíteni |} Microsoft Docs
+description: Bővített Analitikát folyamat és a technológia, működés közben
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 03def1f07d45b9bde5f54922984c33879a80744c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: deguhath
+ms.openlocfilehash: 1e53814c0c0598380944d576e1937e38d1e1d792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A művelet az Team tudományos folyamat: SQL Server használata
 Az oktatóanyag ismerteti a folyamatot, amely létrehozása és telepítése a gépi tanulási modellek SQL Server és a nyilvánosan elérhető dataset – a [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szabványos adatelemezési munkafolyamatot: betöltési, és áttekintheti az adatokat, a visszafejtés szolgáltatások megkönnyítése tanulási, majd építsenek, és a modell rendszerbe állítása.
@@ -75,8 +75,8 @@ Az Azure Adattudomány környezet beállítása:
    > [!NOTE]
    > A mintaparancsfájlok és IPython notebookok a rendszer letölti a Adattudomány virtuális géphez a telepítés során. A virtuális gép telepítés utáni parancsfájl befejezése után a virtuális gép dokumentumtár lehet, a mintákat:  
    > 
-   > * Minta parancsfájlok:`C:\Users\<user_name>\Documents\Data Science Scripts`  
-   > * A minta IPython notebookok:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+   > * Minta parancsfájlok: `C:\Users\<user_name>\Documents\Data Science Scripts`  
+   > * A minta IPython notebookok: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
    >   Ha `<user_name>` a virtuális gép Windows bejelentkezési név. A minta mappák hivatkozik **mintaparancsfájlok** és **minta IPython notebookok**.
    > 
    > 
@@ -111,7 +111,7 @@ Betöltés/átvitele a nagy mennyiségű adat egy SQL-adatbázis és a lekérdez
    
    * Kattintson a jobb gombbal a bal oldali panelen az SQL Server nevét, és kattintson a **tulajdonságok**.
      
-       ![SQL Server Properties][14]
+       ![SQL-kiszolgáló tulajdonságai][14]
    * Válassza ki **adatbázis beállításainak** a a **oldal kijelölése** a bal oldali listában.
    * Ellenőrizze és/vagy módosításához a **adatbázis alapértelmezett helyek** való a **adatlemez** az Ön által választott helyen. Ez azért, ahol új adatbázisok találhatók, ha az alapértelmezett hely beállításokkal hozza létre.
      
@@ -578,7 +578,7 @@ Ebben a gyakorlatban azt már megismerkedett és fejthetők vissza az adatokat a
    
     ![Az Azure Machine Learning-adatok beolvasása][17]
 2. Válassza ki **Azure SQL Database** , a **adatforrás** a a **tulajdonságok** panel.
-3. Az adatbázis DNS-nevét adja meg a **adatbázis-kiszolgáló neve** mező. Formátum:`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Az adatbázis DNS-nevét adja meg a **adatbázis-kiszolgáló neve** mező. Formátum: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg a **adatbázisnév** a megfelelő mezőben.
 5. Adja meg a **SQL felhasználónév** a a ** Server aqccount felhasználónevet és a jelszót a **kiszolgáló felhasználói fiók jelszavát**.
 7. Az a **adatbázis-lekérdezés** szöveg terület szerkesztése, illessze be a lekérdezést, amely a szükséges adatbázis-mezők (beleértve a számított mezőket a címkéket például) és régebbi minták a kívánt mintájának méretét az adatokat.

@@ -1,24 +1,24 @@
 ---
-title: "PySpark és Scala használatával az Azure HDInsight Spark-forgatókönyvek |} Microsoft Docs"
-description: "Példák az Team tudományos folyamat, amely a prediktív elemzés végrehajtásához az Azure HDInsight Spark Scala és a PySpark ismerteti."
+title: PySpark és Scala használatával az Azure HDInsight Spark-forgatókönyvek |} Microsoft Docs
+description: Példák az Team tudományos folyamat, amely a prediktív elemzés végrehajtásához az Azure HDInsight Spark Scala és a PySpark ismerteti.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 76c9382cc5210bb5ac8551ebb7b16ecabe0dcd39
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: deguhath
+ms.openlocfilehash: 06498f55b38be98441ddceb8f1667c89d257f8fd
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>PySpark és Scala használatával az Azure HDInsight Spark adatok tudományos forgatókönyvek
 
@@ -45,7 +45,7 @@ Lásd: [speciális adatok feltárása és Spark modellezés](spark-advanced-data
 A [használata Scala a Spark on Azure](scala-walkthrough.md) forgatókönyv előre jelezni, hogy tipp fizetnek, és a tartomány díjak várhatóan fizetendő Győr taxikra adatait használja. Azt illusztrálja, hogyan Scala használandó felügyelt gépi tanulási feladatok a Spark gépi tanulási (MLlib) és a SparkML csomagok egy Azure HDInsight Spark-fürtön. Az végigvezeti a feladatok alkotó a [adatok tudományos folyamat](http://aka.ms/datascienceprocess): adatfeldolgozást és a feltárása, a képi megjelenítés, a szolgáltatás mérnöki csapathoz, a modellezési és a model felhasználás. A beépített modellek logisztikai és lineáris regressziós, véletlenszerű erdők és átmenetes súlyozott fák tartalmazza.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fő összetevőből épül fel az Team tudományos folyamat tárgyalását lásd: [Team adatok tudományos folyamat áttekintése](overview.md).
 

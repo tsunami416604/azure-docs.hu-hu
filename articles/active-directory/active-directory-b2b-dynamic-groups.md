@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 12/14/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: d96fefb859cba5db65382801fb1ac143df12b647
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 5f628f20cbe86d48b1757644df64b36a27dc526c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dinamikus csoportok és az Azure Active Directory B2B együttműködés
 
@@ -47,12 +47,7 @@ Milyen ilyen csoporthoz nézhet ki:
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg az Azure AD B2B együttműködés további cikkeit:
-
-* [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B együttműködés felhasználó tulajdonságai](active-directory-b2b-user-properties.md)
-* [Egy szerepkör B2B együttműködés felhasználók hozzáadása](active-directory-b2b-add-guest-to-role.md)
-* [B2B együttműködés meghívókat delegálása](active-directory-b2b-delegate-invitations.md)
-* [B2B együttműködés kód és a PowerShell-példák](active-directory-b2b-code-samples.md)
-* [B2B együttműködés SaaS-alkalmazások konfigurálása](active-directory-b2b-configure-saas-apps.md)
+- [B2B együttműködés felhasználó tulajdonságai](active-directory-b2b-user-properties.md)
+- [Egy szerepkör B2B együttműködés felhasználók hozzáadása](active-directory-b2b-add-guest-to-role.md)
+- [Feltételes hozzáférés a B2B együttműködés felhasználók](active-directory-b2b-mfa-instructions.md)
 

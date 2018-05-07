@@ -1,8 +1,8 @@
 ---
-title: "Szolgáltatások közötti hitelesítés: Data Lake Store az Azure Active Directoryhoz |} Microsoft Docs"
-description: "Útmutató: az Azure Active Directory használatával a Data Lake Store elérése a szolgáltatások közötti hitelesítés"
+title: 'Szolgáltatások közötti hitelesítés: Data Lake Store az Azure Active Directoryhoz |} Microsoft Docs'
+description: 'Útmutató: az Azure Active Directory használatával a Data Lake Store elérése a szolgáltatások közötti hitelesítés'
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 0b3f19bb92d1eeb214150bf118d546cd1c67cd78
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 58f269fa9c153a37a792d9d4efdaf0bd74eb265a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés a Data Lake Store az Azure Active Directoryval
 > [!div class="op_single_selector"]
@@ -77,6 +77,9 @@ Bejelentkezéskor programozott módon, a azonosító szükséges az alkalmazásh
 7. Az a **egyéni hozzáférés hozzáadása** panelen kattintson a **OK**. Az újonnan létrehozott csoport a társított engedélyekkel láthatók a **hozzáférés** panelen.
    
     ![Engedélyeket csoportosításához](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "csoportosításához engedélyek hozzárendelése")
+
+> [!NOTE]
+> Ha azt tervezi, az Azure Active Directory-alkalmazás, egy adott mappához korlátozása, is szüksége lesz az adott azonos Azure Active directory-alkalmazás adhat **Execute** permisison a legfelső szintű fájl létrehozása hozzáférésének engedélyezése a. NET SDK.
 
 > [!NOTE]
 > Ha azt szeretné, az SDK-k használata a Data Lake Store-fiók létrehozásához, az erőforráscsoporthoz, amelyben a Data Lake Store-fiók létrehozása az Azure AD webalkalmazás szerepkörként kell megadnia.

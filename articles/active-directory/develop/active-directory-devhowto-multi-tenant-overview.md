@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 281f50a942a9396bf1163f5a20feb98bf450e6eb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: f31ef7285e07467fe233d5e10534340bc912ed1c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Bármely a több-bérlős alkalmazásminta használó Azure Active Directory felhasználói bejelentkezés
 Ha egy szoftver számos szervezet hasonló szolgáltatás alkalmazásként, konfigurálhatja az alkalmazás Azure Active Directory (AD) a panelhez bejelentkezések fogadására. Ez a konfiguráció elnevezése, így az alkalmazás több-bérlős. Bármely Azure AD-bérlő felhasználók fog tudni bejelentkezni az alkalmazás után hozzájárul ahhoz, hogy a fiókot használja az alkalmazással.  
@@ -57,7 +57,8 @@ Ha az Azure AD meg az/Common kérelem érkezik a végponthoz, azt a felhasznál�
 
 Az alkalmazás ezután a bejelentkezési választ a felhasználó jelképező jogkivonatot tartalmazza. A jogkivonatot kibocsátó értéke be van állítva egy alkalmazás a felhasználó milyen bérlő. Ha választ ad vissza, a/Common végpont, a jogkivonat kiállítójának értéke megfelel a felhasználó-bérlő. 
 
-> [! IMPORTANTNT] a/Common végpont nem a bérlőt, és nincs kibocsátó, hogy csak a multiplexer. / Common használata esetén az alkalmazás érvényesíthet jogkivonatokat logika figyelembe ennek frissíteni kell. 
+> [!IMPORTANT]
+> A/közös végpont nem a bérlőt, és nincs kibocsátó, a csupán a multiplexer. / Common használata esetén az alkalmazás érvényesíthet jogkivonatokat logika figyelembe ennek frissíteni kell. 
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Frissítse a kódot több kibocsátó érték kezelése
 Webalkalmazások és webes API-k kap, és érvényesítse az Azure AD.  
@@ -156,9 +157,6 @@ Felhasználók és rendszergazdák vissza tudja vonni a bármikor az alkalmazás
 * A rendszergazdák alkalmazások hozzáférés megvonása ehhez távolítsa el az Azure AD használatával a [vállalati alkalmazások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) szakasza a [Azure-portálon][AZURE-portal].
 
 Járul hozzá a rendszergazda egy alkalmazás a bérlő a összes felhasználója számára, ha a felhasználók hozzáférést külön-külön nem visszavonása. Csak a rendszergazda visszavonhatja a hozzáférést, és csak a teljes alkalmazáshoz.
-
-### <a name="consent-and-protocol-support"></a>Hozzájárulás és protokollok támogatása
-Hozzájárulás támogatott keresztül az OAuth, OpenID Connect, az Azure AD-ben és a WS-Federation, SAML protokoll. A WS-Federation és az SAML protokoll nem támogatják a `prompt=admin_consent` paraméter, így a rendszergazda jóváhagyását csak az OAuth és az OpenID Connect keresztül lehetséges.
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Több-bérlős alkalmazásokhoz és a hozzáférési jogkivonatok gyorsítótár
 Több-bérlős alkalmazásokhoz is kérheti le a hozzáférési jogkivonatok az Azure AD által védett API-k meghívásához. Gyakori hiba az Active Directory Authentication Library (ADAL) használata egy több-bérlős alkalmazás esetén először kérjen egy token/Common, használó felhasználó kapott választ, akkor kérjen az, hogy a felhasználók is használja a/Common későbbi tokent. Mivel az Azure ad-válasz nem származik a bérlő vagy közös, ADAL gyorsítótárazza a jogkivonatot, hogy a bérlőtől. Olyan hozzáférési jogkivonatot beolvasni a felhasználói/Common későbbi hívása sikertelen a gyorsítótári bejegyzést, és kéri a felhasználót, hogy jelentkezzen be újra. Hiányzik a gyorsítótár elkerülése érdekében győződjön meg arról, hogy a tenant végpont már bejelentkezett felhasználók további hívások történik.

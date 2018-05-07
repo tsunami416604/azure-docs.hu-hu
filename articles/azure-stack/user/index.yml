@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: a9da65ec8634f0e8905d44ef690eb7885fbf6a80
-  ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-  ms.translationtype: HT
+  ms.openlocfilehash: 4b258290b197ff4fdee9490012a36519b041622c
+  ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/23/2018
+  ms.lasthandoff: 05/04/2018
 abstract:
   description: A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat használhat a szervezete vagy a szolgáltatója adatközpontjából. Fejlesztőként létrehozhat alkalmazásokat az Azure Stackben. Ezeket üzembe helyezheti magában az Azure Stackben vagy az Azure-ban is, vagy létrehozhat valódi hibrid alkalmazásokat is, amelyek az Azure Stack felhő és az Azure közötti kapcsolatot használják ki. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat és helyezhet üzembe alkalmazásokat.<br/><br/>Ha Ön kezeli az infrastruktúra és szolgáltatásokat biztosít az Azure-verem kezelők, tekintse meg a <a href="/azure/azure-stack/">operátor dokumentáció</a>.<br/><br/>Ha érdekelt a a Azure verem Development Kit (ASDK), töltse le és használja az ingyenes Azure-verem egycsomópontos telepítése Azure verem kezelőként tekintse meg a <a href="/azure/azure-stack/asdk">ASDK dokumentáció</a>.
 sections:
@@ -66,6 +66,8 @@ sections:
     style: ordered
     items:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">Alkalmazások üzembe helyezése az Azure Stacken és az Azure-ban</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-identity">Hibrid felhőalapú identitás konfigurálása az Azure és az Azure-verem alkalmazásokkal</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-connectivity">Hibrid felhő kapcsolat konfigurálása az Azure és az Azure-verem</a>
 - title: Leírások
   items:
   - type: list

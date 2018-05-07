@@ -1,23 +1,23 @@
 ---
-title: "Azure fenntartott virtuálisgép-példányok kedvezményes alkalmazás megértése |} Microsoft Docs"
-description: "Ismerje meg, hogyan Azure fenntartott Virtuálisgép-példány kedvezményes alkalmazott futó virtuális gépek."
+title: Azure fenntartott virtuálisgép-példányok kedvezményes alkalmazás megértése |} Microsoft Docs
+description: Ismerje meg, hogyan Azure fenntartott Virtuálisgép-példány kedvezményes alkalmazott futó virtuális gépek.
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: vikramdesai01
 manager: vikdesai
-editor: 
+editor: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: vikdesai
-ms.openlocfilehash: 2a3854077c7c8bdb20804c6b3e77500659c3c484
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 6e551fddfc5ba8924cd8c71a1775307e7569b847
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-how-the-reserved-virtual-machine-instance-discount-is-applied"></a>A fenntartott virtuális gép példány kedvezményeket alkalmazásának a módját ismertetése
 Után vásárol egy fenntartott Virtuálisgép-példány, a rendszer automatikusan alkalmaz a Foglalás kedvezményeket az attribútumokat és a foglalási mennyiség virtuális gépek. A foglalási hozzá van rendelve az infrastrukturális költségek a virtuális gépek. A következő táblázat bemutatja a virtuális gép költségek foglalás megvásárlása után. Minden esetben van szó, a tárolás és a hálózatkezelés, a szokásosnál.
@@ -43,7 +43,7 @@ Után vásárol egy fenntartott Virtuálisgép-példány, a rendszer automatikus
 Megértéséhez, valamint az alkalmazás a foglalások a számlázási használati jelentések megtekintése, lásd: [fenntartott Virtuálisgép-példány megértéséhez használati](https://go.microsoft.com/fwlink/?linkid=862757).
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>A Windows virtuális gépek foglalás kedvezményes alkalmazása
-Ha Windows Virtuálisgép-példány futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows virtuális gépek esetén a virtuális gép infrastruktúra használati díjait foglalási megegyezik esetében nem - Windows virtuális gépek. Van szó, külön-külön a Windows software / vCPU alapon. Lásd: [Windows szoftverek költségeit rendelkező](https://go.microsoft.com/fwlink/?linkid=862756). A Windows licencelési költségek rendelkező [Azure hibrid juttatás for Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) is foglalkozik.
+Ha Windows Virtuálisgép-példány futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows virtuális gépek esetén a virtuális gép infrastruktúra használati díjait foglalási megegyezik esetében nem - Windows virtuális gépek. Van szó, külön-külön a Windows software / vCPU alapon. Lásd: [Windows szoftverek költségeit rendelkező](https://go.microsoft.com/fwlink/?linkid=862756). Is fedik le a Windows-licencelési költségeit [Azure hibrid előnye a Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
 
 ## <a name="next-steps"></a>További lépések
 Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a következő cikkekben talál.

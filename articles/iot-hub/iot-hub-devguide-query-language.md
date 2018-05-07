@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Hub lekérdezési nyelv megismerése |} Microsoft Docs
-description: Fejlesztői útmutató – az SQL-szerű IoT Hub lekérdezési nyelv eszköz twins és feladatok kapcsolatos információkat kérdezi le az IoT hub leírása.
+description: Fejlesztői útmutató – az SQL-szerű IoT Hub leírása lekérdezési eszköz/modul twins és feladatok kapcsolatos információkat kérdezi le az IoT hub nyelv.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: f1c578b6ebb766f71d6e8b65b02724d91dde3126
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 27ddc41c463c00a061a396098f0ccfaa6cec80a1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Az IoT-központ lekérdezési nyelv eszköz twins, a feladatok és az üzenet-útválasztás
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Az IoT-központ lekérdezési nyelv eszköz és a modul twins, a feladatok és az üzenet-útválasztás
 
 Az IoT-központ biztosít egy hatékony SQL-szerű nyelv való adatbeolvasás vonatkozó [eszköz twins] [ lnk-twins] és [feladatok][lnk-jobs], és [üzenet útválasztási][lnk-devguide-messaging-routes]. Ez a cikk mutatja be:
 

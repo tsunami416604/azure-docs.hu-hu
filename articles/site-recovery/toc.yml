@@ -145,6 +145,12 @@
           items:
             - name: Az Azure-ból Azure-ba történő replikálás hibaelhárítása
               href: azure-to-azure-troubleshoot-errors.md
+            - name: Az Azure Site Recovery bővítmény hibaelhárítása
+              href: site-recovery-extension-troubleshoot.md
+        - name: Kezelés
+          items:
+            - name: A mobilitási szolgáltatás bővítmény automatikus frissítése
+              href: azure-to-azure-autoupdate.md
     - name: VMware-ről/fizikai eszközről Azure-ra
       items:
         - name: Hálózat

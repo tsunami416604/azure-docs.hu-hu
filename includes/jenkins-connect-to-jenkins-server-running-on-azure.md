@@ -20,7 +20,7 @@
 
 1. Másolja a vágólapra a jelszavát, amelyet a bash vagy a Terminálszolgáltatások ablakban jelenik meg.
 
-1. A böngészőben navigáljon `http://localhost:8080`.
+1. A böngészőjében lépjen a `http://localhost:8080` helyre.
 
 1. Illessze be a jelszót a korábban kapott a **rendszergazdai jelszó** mezőjét, majd válassza **Folytatás**.
 

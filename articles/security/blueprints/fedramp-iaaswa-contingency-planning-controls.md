@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - készenléti tervezése"
-description: "FedRAMP webes alkalmazások Automation - készenléti tervezése"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - készenléti tervezése
+description: FedRAMP webes alkalmazások Automation - készenléti tervezése
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: f993271656e9484881ccac357acb3d50830c219e
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="contingency-planning-cp"></a>Készenléti terv készítése (CP)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] tervezési célja, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás orvosló házirend eseményre a koordinációs szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a házirend és vezérlők; tervezési társított eseti tervezési eseti végrehajtásának megkönnyítése és ellenőrzi, és frissíti az aktuális eseti házirend megtervezése [hozzárendelés: szervezet által meghatározott gyakoriság]; eseti tervezési eljárásokat és [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2.a** a szervezet házon belül fejlesztett alkalmazásokra, amely azonosítja az alapvető feladatok és az üzleti funkciók és a kapcsolódó készenléti követelmények; helyreállítási céljait, visszaállítás prioritás, nyújt információkat rendszer készenléti tervet és metrikák; készenléti, felelősségeket, kapcsolattartási adatokat; személytől hozzárendelt címek alapvető feladatok és üzleti funkciók annak ellenére, hogy egy információk rendszer megszűnésének, biztonsági sérülése vagy hibája; fenntartása címek rendszer-visszaállítást a biztonsági óvintézkedéseket romlása nélkül eredetileg tervezett és végrehajtott; végleges, teljes információk címek vizsgálni és jóvá [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2.b** a szervezet osztja el a készenléti terv példánya [hozzárendelés: szervezet által meghatározott kulcsfontosságú készenléti személyzet (név és/vagy szerepkör által azonosított) és a szervezeti elemek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2.c** a szervezet készenléti tervezési tevékenységeket koordinálja az esemény tevékenységek kezelése.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.d** a szervezet ellenőrzi, hogy az információk rendszer készenléti tervezése [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-2.e** A szervezet frissíti a készenléti terv történő címet érintő módosításait a szervezet, a rendszer vagy a környezet és a készenléti terv végrehajtására, a végrehajtási vagy a tesztelés során észlelt problémákat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2.f** a szervezet kommunikál készenléti terv módosításait [hozzárendelés: szervezet által meghatározott kulcsfontosságú készenléti személyzet (név és/vagy szerepkör által azonosított) és a szervezeti elemek].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2.g** a szervezet a készenléti terv védelme a jogosulatlan és -módosítási.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2 (1)** a szervezet koordinálja a készenléti terv fejlesztése a szervezeti elemek kapcsolódó tervek felelős.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2 (2)** a szervezet használt az kapacitástervezés, úgy, hogy létezik-e adatokat feldolgozó, távközlési és környezeti támogatása szükséges kapacitás készenléti műveletek során.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2 (3)** alapvető feladatok és üzleti függvények újbóli szervezeti terveket a [hozzárendelés: szervezet által meghatározott időszakra vonatkozó] készenléti terv aktiválás.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **(4) CP-2** összes feladatok és üzleti függvények újbóli szervezeti terveket a [hozzárendelés: szervezet által meghatározott időszakra vonatkozó] készenléti terv aktiválás.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2 (5)** a szervezet alapvető feladatok és üzleti funkciók folyamatos működésének kevéssé vagy egyáltalán ne adatvesztés folyamatosságának tervez, és információra rendszer visszaállítás elsődleges feldolgozási, amíg a folytonosságának éri és/vagy tárolási helyek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-2 (8)** a szervezet kritikus információk rendszer eszközök alapvető feladatok és üzleti funkciók támogatása azonosítja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-3.a** a vállalat által készenléti képzési információk rendszer felhasználók rendelt szerepkörök és felelősségek belül konzisztens [hozzárendelés: szervezet által meghatározott időszak], feltéve, hogy a készenléti szerepkör vagy a felelős.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-3.b** a vállalat által készenléti képzési információk rendszer felhasználók konzisztens rendelt szerepkörök és felelősségek meghatározása, ha rendszer változtatások miatt szükség van.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-3** a vállalat által készenléti képzési információk rendszer felhasználók rendelt szerepkörök és felelősségek konzisztens [hozzárendelés: szervezet által meghatározott gyakoriság] ezt követően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-3 (1)** a szervezet szimulált események a tényleges válasz a személyzet hatékony eszközöknek megkönnyítésére készenléti betanítása magában foglalja a.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-4.a** a szervezet teszteli, az információs rendszer készenléti tervezése [hozzárendelés: szervezet által meghatározott gyakoriság] használata [hozzárendelés: szervezet által meghatározott tesztek] meghatározásához a terv és a szervezeti hatékonyságát a terv készen állnak.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-4.b** a szervezet ellenőrzi, hogy a készenléti terv vizsgálati eredményeket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-4.c** a szervezet javítási műveleteket kezdeményez, szükség esetén.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-4 (1)** a szervezet koordináták készenléti terv tesztelés felelős szervezeti elemekkel kapcsolatos tervek.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-4 (2) sémaszintjén** a szervezet teszteli a készenléti tervet, a másodlagos hely készenléti személyzet megismerkednie a létesítményt a személyes és a rendelkezésre álló erőforrások.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-4 (2) .b** a szervezet teszteli a készenléti tervet, a másodlagos hely készenléti műveletek támogatásához a másodlagos hely lehetőségeinek kiértékeléséhez.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-6.a** a szervezet egy másik tárolási helyet, többek között a tárolási és információ a rendszer biztonsági mentési információ lekérése engedélyezéséhez szükséges megállapodások hoz létre.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-6.b** a szervezet biztosítja, hogy az alternatív tárolócsoport hely információkat nyújt az elsődleges hely, amely megfelelő biztonsági óvintézkedéseket.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-6 (1)** a szervezet egy másik tárolási helyet, amely elkülönül az azonos fenyegetéseket szabványosságnak csökkentése érdekében elsődleges tárolási helyét azonosítja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-6 (2)** a szervezetnél konfigurálva van az alternatív tárolócsoport hely helyreállításához szükséges időt és a helyreállításipont-céljai helyreállítási műveletek megkönnyítése érdekében.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-6 (3)** a szervezet az alternatív tárolócsoport helyre terület kiterjedő megszakítása vagy katasztrófa esetén lehetséges kisegítő problémákat ismertet, és explicit megoldás műveleteket ismerteti.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-7.a** a szervezet egy másik hely többek között az átvitel és újbóli engedélyezéséhez szükséges megállapodások létesít [hozzárendelés: szervezet által megadott információk rendszerműveletekről] alapvető feladatok/vállalati belül működik [hozzárendelés: szervezet által meghatározott időszakra vonatkozó helyreállítási idő-és helyreállításipont-céljai konzisztens] Ha az elsődleges feldolgozási képességek nem érhetők el.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-7.b** a szervezet biztosítja, hogy berendezések és helyezi át, és folytathatja műveleteket szükséges készletek érhetők el a másodlagos hely, vagy szerződések, hogy kézbesíteni lehessen a hely támogatja a szervezet által meghatározott időn belül van átviteli/folytatása élettartama.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-7.c** a szervezet biztosítja, hogy a másodlagos hely információk biztonsági védelmet nyújt az elsődleges hely egyenértékű.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-7 (1)** a szervezet egy másik feldolgozási helyet, amely a azonos fenyegetések szabványosságnak csökkentése érdekében az elsődleges felderítésfeldolgozó hely elkülönül azonosítja.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-7 (2)** a szervezet a másodlagos hely terület kiterjedő megszakítása vagy katasztrófa esetén a lehetséges kisegítő problémákat ismertet, és explicit megoldás műveleteket ismerteti.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-7 (3)** a szervezet házon belül fejlesztett alkalmazásokra alternatív feldolgozási hely megállapodások, amelyek tartalmazzák a prioritás szolgáltatások rendelkezések (beleértve a helyreállítási időre vonatkozó célkitűzések) szervezeti rendelkezésre állási követelményeinek megfelelően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-7 (4)** a szervezet előkészíti a másodlagos hely úgy, hogy a hely alapvető feladatok és üzleti funkciók támogatása működési helyének használatra kész.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-8** a szervezet létesít alternatív távközlési szolgáltatások újbóli engedélyezéséhez szükséges megállapodások beleértve [hozzárendelés: szervezet által megadott információk rendszerműveletekről] alapvető feladatok és a business belül működik [hozzárendelés: szervezet által meghatározott időszak] Ha az elsődleges távközlési képességek érhetők el az elsődleges vagy másodlagos feldolgozási vagy a tárolási helyek.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-8 (1) sémaszintjén** a szervezet házon belül fejlesztett alkalmazásokra elsődleges és másodlagos távközlési szolgáltatás prioritás szolgáltatások rendelkezések (beleértve a helyreállítási idő szervezeti rendelkezésre állási követelményeinek megfelelően tartalmazó megállapodások célok).
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-8 (1) .b** a szervezet összes távközlési szolgáltatásokat használják az nemzetbiztonsági vészhelyzeti készenlét abban az esetben, ha az elsődleges vagy másodlagos távközlési szolgáltatások kérések távközlési szolgáltatás prioritása a közös szolgáltatója biztosítja.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-8 (2)** a szervezet jut hozzá a másik távközlési szolgáltatások csökkenteni szeretné annak valószínűségét megosztásának hibaérzékeny pontok kialakulását elsődleges távközlési szolgáltatásokkal.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-8 (3)** a szervezet alternatív távközlési szolgáltatások beolvassa a szolgáltatóktól, egymástól, az elsődleges szolgáltatók azonos fenyegetéseket szabványosságnak csökkentése érdekében.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-8 (4) sémaszintjén** a szervezet megköveteli elsődleges és másodlagos távközlési rendelkezik a szolgáltatók.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-8 (4) .b** szolgáltató készenléti tervek annak érdekében, hogy a csomagok követelményeknek szervezeti készenléti ellenőrzi, hogy a szervezet.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **(4) CP-8 .c** a szervezet jut hozzá a szolgáltatók által tesztelés/képzési eseti igazolása [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-9.a** a szervezet használt biztonsági mentések a információs rendszerben tárolt felhasználói szintű információ [hozzárendelés: konzisztens helyreállítási idő-és helyreállításipont-céljai szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-9.b** a szervezet használt biztonsági mentések a információs rendszerben tárolt rendszerszintű információ [hozzárendelés: konzisztens helyreállítási idő-és helyreállításipont-céljai szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-9.c** a szervezet használt információk rendszer dokumentációját, köztük dokumentációhoz biztonsági másolatainak [hozzárendelés: konzisztens helyreállítási idő-és helyreállításipont-céljai szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-9.d** a szervezet védi, a titkosítás, integritás és rendelkezésre állását a tárolási helyen lévő biztonsági mentési adatokat.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-9 (1)** a szervezet biztonsági mentési információt tesztek [hozzárendelés: szervezet által meghatározott gyakoriság] media megbízhatósági és adatait sértetlenségének ellenőrzéséhez.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-9 (2)** a szervezet biztonsági mentési információt mintát használ, a kijelölt adatokat a rendszer funkciókat tesztelés készenléti terv részeként a visszaállítást.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-9 (3)** a szervezet tárolja a biztonsági másolat [hozzárendelés: szervezet által megadott kritikus információk rendszerszoftver és egyéb biztonsági adatokat] egy külön helyen vagy egy tűz-értékelés tároló, amely nem a közös elhelyezésű a műveleti rendszerfiókok.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-9 (5)** a szervezet információ a rendszer biztonsági mentési információ küld az alternatív tárolócsoport helyre [hozzárendelés: szervezet által meghatározott időszakban és átviteli értékelje a helyreállítási idő-és helyreállításipont-céljai konzisztens].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -759,7 +759,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-10** a szervezet biztosít a helyreállítási és az információs rendszer ismert állapotba rekonstrukcióját megszűnésének, biztonsági sérülése vagy hibája után.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **A CP-10-es (2)** az információs rendszer valósítja meg a tranzakció helyreállítást a rendszerek, amelyek a tranzakció alapú.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **CP-10-es (4)** a szervezet lehetővé teszi az információk rendszerösszetevők belül visszaállítása [hozzárendelés: szervezet által meghatározott visszaállítás időszakok] konfigurációs által szabályozott és sértetlenség-védelemmel ellátott adatok egy ismert, működési állapot összetevőket képviselő.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

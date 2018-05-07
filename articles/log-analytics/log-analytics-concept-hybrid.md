@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 05/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1ac956d638be1e79547ff931ba5b0c7e5de1ae65
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Adatgyűjtés a Naplóelemzési a környezetében lévő számítógépek
 
@@ -28,7 +28,7 @@ Az Azure Naplóelemzés gyűjtenek, majd intézkedjen szereplő Windows vagy Lin
 * Az adatközpontja fizikai kiszolgálóként vagy virtuális gépek
 * Virtuális gép egy felhőben üzemeltetett szolgáltatás például az Amazon Web Services (AWS)
 
-A környezetében üzemeltetett számítógépek közvetlenül lehet csatlakoztatni Naplóelemzési, vagy ha már figyeli a System Center Operations Manager 2012 R2 vagy 2016 ezeken a számítógépeken, a kezelése az Operations management csoport integrálható a Naplóelemzési és továbbra is a szolgáltatási műveletek folyamatok és stratégia fenntartása.  
+A környezetében üzemeltetett számítógépek közvetlenül lehet csatlakoztatni Naplóelemzési, vagy ha már figyel ezeken a számítógépeken, a System Center Operations Manager 2012 R2 2016 vagy 1801-es verzió, a műveletek kezelése felügyeleti csoportban található, integrálhatja Elemzés jelentkezzen, és továbbra is az informatikai szolgáltatás műveletek folyamatok karbantartása.  
 
 ## <a name="overview"></a>Áttekintés
 
@@ -36,15 +36,11 @@ A környezetében üzemeltetett számítógépek közvetlenül lehet csatlakozta
 
 Előtt elemzése és a gyűjtött adatok alapján, először telepítse, és csatlakozzon az ügynököt az összes számítógépet, amelyet szeretne adatokat küldeni a Naplóelemzés szolgáltatás. Ügynökök telepítővel, parancssor, a helyszíni számítógépekre vagy a Szükségeskonfiguráció-konfiguráló (DSC) az Azure Automationben telepíthető. 
 
-Az ügynök a Linux és a Windows 443-as TCP-porton keresztül kommunikál a Log Analytics szolgáltatással kimenő, és ha a számítógép csatlakozik egy tűzfal vagy a proxy-kiszolgálót kommunikálnak az interneten keresztül [proxykiszolgálóval használható az ügynök konfigurálása vagy az OMS-átjáró](#configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway) milyen konfiguráció módosításait fogja tudni alkalmazni kell. Ha a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2-ben futtató számítógép többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli a Log Analytics szolgáltatással lehet [Operations Manager ](log-analytics-om-agents.md). Az Operations Manager felügyeleti csoport integrálva van a Naplóelemzési által figyelt Linux rendszerű számítógépek nem kapják konfigurálás adatforrások és a felügyeleti csoporton keresztül továbbítandó összegyűjtött adatokat. A Windows-ügynök is tud jelentéseket legfeljebb négy munkaterületek, míg a Linux-ügynök csak támogatja egyetlen munkaterület jelentéskészítés.  
+Az ügynök a Linux és a Windows 443-as TCP-porton keresztül kommunikál a Log Analytics szolgáltatással kimenő, és ha a számítógép csatlakozik egy tűzfal vagy a proxy-kiszolgálót kommunikálnak az interneten keresztül [Előfeltételek szakaszában](#prerequisites) számára Ismerje meg a hálózati konfiguráció szükséges.  Ha az IT-biztonsági házirendeknek nem engedélyezi a számítógépek az internethez való kapcsolódáshoz a hálózaton, beállíthatja az [OMS átjáró](log-analytics-oms-gateway.md) , majd konfigurálja az ügynök szolgáltatáshoz az átjárón keresztül csatlakozni. Az ügynök ezután fogadni a konfigurációs adatokat, és attól függően, hogy milyen adatok gyűjtési szabályok és a megoldások engedélyezte az összegyűjtött adatok küldése. 
 
-Az ügynök a Linux és a Windows nem csak a Log Analyticshez való kapcsolódás, azt is támogatja a gazdagép a hibrid forgatókönyv-feldolgozói szerepkör és felügyeleti megoldások, például a változások követése és a frissítések kezelése az Azure Automation szolgáltatásban csatlakozást.  A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid forgatókönyv-feldolgozó](../automation/automation-offering-get-started.md#automation-architecture-overview).  
+Ha a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2-ben futtató számítógép többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli a Log Analytics szolgáltatással lehet [Operations Manager ](log-analytics-om-agents.md). Az Operations Manager felügyeleti csoport integrálva van a Naplóelemzési által figyelt Linux rendszerű számítógépek nem kapják konfigurálás adatforrások és a felügyeleti csoporton keresztül továbbítandó összegyűjtött adatokat. A Windows-ügynök is tud jelentéseket legfeljebb négy munkaterületek, míg a Linux-ügynök csak támogatja egyetlen munkaterület jelentéskészítés.  
 
-Ha az IT-biztonsági házirendeknek nem engedélyezi a számítógépek a hálózat csatlakozik az internethez, az ügynök beállítható úgy, hogy az OMS-átjárón, attól függően, hogy a megoldás engedélyezte az összegyűjtött adatok küldésére és fogadására a konfigurációs adatokat. További információk és a Linux vagy a Windows ügynök kommunikációja áthaladjon egy OMS-átjáró a Log Analytics szolgáltatás konfigurálásával kapcsolatos lépéseket, [számítógépeket csatlakoztatni az OMS Szolgáltatáshoz az OMS-átjáró](log-analytics-oms-gateway.md). 
-
-> [!NOTE]
-> Az ügynök a Windows csak a Transport Layer Security (TLS) 1.0 és 1.1 támogatja.  
-> 
+Az ügynök a Linux és a Windows nem csak a Log Analyticshez való kapcsolódás, Azure Automation állomás a hibrid forgatókönyv-feldolgozói szerepkör és felügyeleti megoldások, például a változások követése és a frissítések kezelése is támogatja.  A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid forgatókönyv-feldolgozó](../automation/automation-offering-get-started.md#automation-architecture-overview).  
 
 ## <a name="prerequisites"></a>Előfeltételek
 Megkezdése előtt tekintse át a következő adatok ellenőrzése a minimális követelményeknek.
@@ -54,6 +50,9 @@ A Windows operációs rendszer következő verzióiban hivatalosan támogatja a 
 
 * Windows Server 2008 Service Pack 1 (SP1) vagy újabb verzió
 * Windows 7 SP1 és újabb verziók.
+
+> [!NOTE]
+> Az ügynök a Windows csak a Transport Layer Security (TLS) 1.0 és 1.1 támogatja.  
 
 #### <a name="network-configuration"></a>Hálózati konfiguráció
 Az alábbi lista a proxy és tűzfal konfigurációs adatokat, a Windows-ügynök Naplóelemzési folytatott kommunikációhoz szükséges információt. Akkor kimenő forgalomról beszélünk a hálózatról a Log Analytics szolgáltatásba. 

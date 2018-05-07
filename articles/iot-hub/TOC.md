@@ -71,6 +71,7 @@
 #### [Eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)
 #### [IoT Hub-hozzáférés szabályozása](iot-hub-devguide-security.md)
 #### [Az ikereszközök áttekintése](iot-hub-devguide-device-twins.md)
+#### [Az ikermodulok áttekintése](iot-hub-devguide-module-twins.md)
 #### [Közvetlen metódusok meghívása eszközökön](iot-hub-devguide-direct-methods.md)
 #### [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
 #### [IoT Hub-végpontok](iot-hub-devguide-endpoints.md)
@@ -106,6 +107,9 @@
 #### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-getstarted.md)
 #### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-getstarted.md)
 #### [Python-háttérrendszer/Python-eszköz](iot-hub-python-twin-getstarted.md)
+### Ismerkedés az ikermodulokkal
+#### [Portal-háttérrendszer/.NET-eszköz](iot-hub-portal-csharp-module-twin-getstarted.md)
+#### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-module-twin-getstarted.md)
 ### Közvetlen metódusok használata
 #### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-direct-methods.md)
 #### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-direct-methods.md)

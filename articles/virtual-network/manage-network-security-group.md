@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: f9de86f33fcedacad9ccde074a252111df62c992
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy a hálózati biztonsági csoport törlése
 
@@ -79,7 +79,7 @@ Adja meg a keresési mezőbe, a portál felső, *hálózati biztonsági csoporto
 ### <a name="change-a-network-security-group"></a>Hálózati biztonsági csoport módosítása
 
 1. Adja meg a keresési mezőbe, a portál felső, *hálózati biztonsági csoportok* be a keresőmezőbe. Ha **hálózati biztonsági csoportok** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Válassza ki a módosítani kívánt hálózati biztonsági csoport. A leggyakoribb változások a következők [hozzáadása](#create-a-security-rule) vagy [eltávolítása](#delete-a-security-rule) biztonsági szabályok és [Associating vagy az vagy egy alhálózat vagy a hálózati illesztő hálózati biztonsági csoport törléséhez](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource).
+2. Válassza ki a módosítani kívánt hálózati biztonsági csoport. A leggyakoribb változások a következők [hozzáadása](#create-a-security-rule) vagy [eltávolítása](#delete-a-security-rule) biztonsági szabályok és [Associating vagy az vagy egy alhálózat vagy a hálózati illesztő hálózati biztonsági csoport törléséhez](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
 
 **Parancsok**
 

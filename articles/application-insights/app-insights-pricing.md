@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2c06c2220d3a3ed0a27b4f0febb4de95b2137ddc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Az Application Insightsban tarifa- és adatok kötet kezelése
 
@@ -40,11 +40,8 @@ Lásd: az a régió és aktuális árak [Application Insights árképzési][pric
 
 Az alapszintű csomag az alapérték árképzési terv, amikor létrejön egy új Application Insights-erőforrást. Az alapszintű csomag el legoptimálisabban az összes ügyfél számára, kivéve azokat, aki rendelkezik az Operations Management Suite-előfizetéssel.
 
-* Az alapszintű csomag által adatmennyiség van szó. Adatmennyiség telemetriai adatot az Application Insights által fogadott bájtok száma. 
-    
-    A tömörítetlen JSON adatok csomag érkezett az Application Insights által az alkalmazás adatainak mennyisége kell mérni.
-
-    A [Analytics importált táblázatos adatok](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), adatmennyiség Application insights szolgáltatásnak elküldött fájlok tömörítetlen méretének mérése történik.
+* Az alapszintű csomag által adatmennyiség van szó. Adatmennyiség telemetriai adatot az Application Insights által fogadott bájtok száma. A tömörítetlen JSON adatok csomag érkezett az Application Insights által az alkalmazás adatainak mennyisége kell mérni. A [Analytics importált táblázatos adatok](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), adatmennyiség Application insights szolgáltatásnak elküldött fájlok tömörítetlen méretének mérése történik.
+* Az alkalmazás adatokat kötet díjak most jelentett nevű új számlázási mérő **adatfeldolgozást** április 2018 től. Ez az új mérő oszthatók meg technológiák, például alkalmazások elemzések és Naplóelemzési figyelését, és jelenleg a szolgáltatás neve alatt **alkalmazásszolgáltatások** (és hamarosan módosítása a **Naplóelemzési**). 
 * [Élő Stream metrikák](app-insights-live-stream.md) adatok díjszabási célra nem számítanak.
 * [A folyamatos exportálás](app-insights-export-telemetry.md) és a [Azure Naplóelemzés összekötő](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) érhetők el külön díjfizetés nélkül az alapszintű csomag április 2018 től.
 
