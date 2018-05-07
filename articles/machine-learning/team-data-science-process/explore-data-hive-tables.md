@@ -1,9 +1,9 @@
 ---
-title: "A Hive-lekérdezéseket a Hive táblák adatokba |} Microsoft Docs"
-description: "A Hive-lekérdezésekkel Hive táblák adatokba."
+title: A Hive-lekérdezéseket a Hive táblák adatokba |} Microsoft Docs
+description: A Hive-lekérdezésekkel Hive táblák adatokba.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 0d46cea5-2b4c-4384-9bfa-fa20f6f75148
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 9cf205abcf9782ceac4d9ac5a920e136b69c57b6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: e85530e5297618b9e87f46a5a274621b060fe1fc
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>A Hive-táblákban tárolt adatok megismerése Hive-lekérdezésekkel
 Ez a dokumentum minta Hive parancsfájlok, amely segítségével a Hive táblák egy HDInsight Hadoop-fürt adatokba nyújt.
@@ -37,11 +37,11 @@ Ez a cikk feltételezi, hogy rendelkezik:
 * Ha útmutatást nyújt a Hive-lekérdezések van szüksége, tekintse meg [hogyan küldhetnek Hive-lekérdezések](move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Példa Hive lekérdezés parancsfájlok adatok feltárása
-1. A szám megfigyelések partíciónként`SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Napi megfigyeléseket szám`SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. A szám megfigyelések partíciónként  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Napi megfigyeléseket szám  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. A szintek kategorikus oszlopban beolvasása  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. A szintek számának beolvasása a kombinációja kategorikus kétoszlopos`SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. A szintek számának beolvasása a kombinációja kategorikus kétoszlopos  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. A numerikus oszlopok terjesztése beolvasása  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Rekordok kinyerése két tábla illesztése

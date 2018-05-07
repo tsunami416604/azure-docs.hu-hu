@@ -53,6 +53,7 @@
 #### [Meghívó e-mail](active-directory-b2b-invitation-email.md)
 #### [Meghívó beváltása](active-directory-b2b-redemption-experience.md)
 #### [B2B-felhasználók hozzáadása meghívás nélkül](active-directory-b2b-add-user-without-invite.md)
+#### [Meghívások engedélyezése vagy letiltása](active-directory-b2b-allow-deny-list.md)
 #### [Feltételes hozzáférés B2B-hez](active-directory-b2b-mfa-instructions.md)
 #### [B2B megosztási szabályzatok](active-directory-b2b-delegate-invitations.md)
 #### [B2B-felhasználó hozzáadása szerepkörhöz](active-directory-b2b-add-guest-to-role.md)
@@ -273,6 +274,7 @@
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 ### [A rendszergazdai fiókok vészhelyzeti hozzáférésének kezelése](active-directory-admin-manage-emergency-access-accounts.md)
+### [Kiemelt szerepkörök védelme](admin-roles-best-practices.md)
 
 ## Hozzáférési felülvizsgálatok
 ### [Hozzáférési felülvizsgálatok áttekintése](active-directory-azure-ad-controls-access-reviews-overview.md)

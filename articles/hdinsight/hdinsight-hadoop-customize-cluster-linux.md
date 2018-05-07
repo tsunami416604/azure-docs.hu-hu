@@ -4,7 +4,7 @@ description: Linux-alapú HDInsight-fürtök Parancsfájlműveletek segítségé
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
@@ -12,24 +12,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 05/01/2018
 ms.author: larryfr
-ms.openlocfilehash: ff8b8ffc66ea4c90ca2f11edc36aac670f24eac2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 856a94b0cf64a20fbe9267b76422c47d88d21f43
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>A Parancsfájlműveletek Linux-alapú HDInsight-fürtök testreszabása
 
-A HDInsight lehetővé nevű konfigurációs beállítás **parancsfájlművelet** , amely elindítja az egyéni parancsfájlok, amelyek a fürt testreszabása. További összetevők és konfigurációs beállításokat módosítaná, ezek a parancsfájlok segítségével. A Parancsfájlműveletek használható során vagy a fürt létrehozása után.
+HDInsight nevű konfigurációs módszert biztosít a **parancsfájl-műveletek** , amely meghívja a fürt testreszabása egyéni parancsfájlok. További összetevők és konfigurációs beállításokat módosítaná, ezek a parancsfájlok segítségével. A Parancsfájlműveletek használható során vagy a fürt létrehozása után.
 
 > [!IMPORTANT]
 > A Parancsfájlműveletek használhatja egy már futó fürt Linux-alapú HDInsight-fürtök csak érhető el.
 >
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-A Parancsfájlműveletek is tehetők közzé az Azure piactéren HDInsight-alkalmazásokat. E dokumentumban szereplő példák némelyike bemutatják, hogyan telepíthet a HDInsight-alkalmazások parancsfájl művelet parancsokat a PowerShell és a .NET SDK használatával. További információk a HDInsight-alkalmazások: [közzé HDInsight-alkalmazások az Azure piactéren](hdinsight-apps-publish-applications.md).
+A Parancsfájlműveletek is tehetők közzé az Azure piactéren HDInsight-alkalmazásokat. További információk a HDInsight-alkalmazások: [közzé HDInsight-alkalmazások az Azure piactéren](hdinsight-apps-publish-applications.md).
 
 ## <a name="permissions"></a>Engedélyek
 

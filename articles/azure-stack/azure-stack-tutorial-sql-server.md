@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/22/2017
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0e1eed2601946ddff6fa15f1a1f82398706c920d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL-adatbázisok Azure verem felhasználók számára történő elérhetővé
 Rendszergazdaként Azure verem felhő ajánlatokat, amelyek segítségével a felhasználók hozhat létre (bérlőkkel), amely a felhő-natív alkalmazások, webhelyek és a munkaterhelések használhatják SQL-adatbázisok létrehozására. Egyéni, igény szerinti, felhőalapú adatbázist biztosít a felhasználók számára, mentheti azokat időt és erőforrásokat. Ennek beállításához a fogja végrehajtani:
@@ -34,8 +34,8 @@ Rendszergazdaként Azure verem felhő ajánlatokat, amelyek segítségével a fe
 
 A telepítési folyamat részletes leírása a [Azure verem cikken használja az SQL adatbázisok](azure-stack-sql-resource-provider-deploy.md), és a következő fő lépésből áll:
 
-1. [Az SQL erőforrás-szolgáltató telepítéséhez]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
-2. [A telepítés ellenőrzése]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
+1. [Az SQL erőforrás-szolgáltató telepítéséhez](azure-stack-sql-resource-provider-deploy.md).
+2. [A telepítés ellenőrzése](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
 3. Adja meg a kapacitás üzemeltetési SQL-kiszolgálójához.
 
 ## <a name="create-an-offer"></a>Ajánlat létrehozása

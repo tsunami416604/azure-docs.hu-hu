@@ -1,6 +1,6 @@
 ---
-title: "Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - tájékoztatási és képzési"
-description: "FedRAMP webes alkalmazások Automation - tájékoztatási és képzési"
+title: Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - tájékoztatási és képzési
+description: FedRAMP webes alkalmazások Automation - tájékoztatási és képzési
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: a019f76929ea3c7d27492f8a9d6b6994e471aabe
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="awareness-and-training-at"></a>Tájékoztatási és képzési (AT)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy biztonsági tájékoztatási és képzési házirend célja, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás orvosló a koordinációs szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a biztonsági és a képzési házirend és a kapcsolódó biztonsági és a képzési vezérlők; végrehajtásának megkönnyítése ellenőrzi, és frissíti az aktuális biztonsági tájékoztatási és képzési házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és a biztonsági, és a képzési eljárások [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-2.a** a szervezet alapvető biztonsági tájékoztatási képzési felhasználók számára lehetővé információk rendszer (beleértve a kezelők, a felső vezetők és alvállalkozói) az új felhasználók kezdeti képzési részeként.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-2.b** a szervezet alapvető biztonsági tájékoztatási képzési biztosít (beleértve a kezelők, a felső vezetők és alvállalkozói) információt felhasználója által rendszer változtatások szükség esetén.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-2.c** a szervezet alapvető biztonsági tájékoztatási képzési nyújt információkat rendszer felhasználóknak (beleértve a kezelők, a felső vezetők és alvállalkozói) [hozzárendelés: szervezet által meghatározott gyakoriság] ezt követően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) AT-2** a szervezet biztonsági tájékoztatási ismer fel, és a belső fenyegetés lehetséges utaló reporting betanítása tartalmazza.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-3.a** a szervezet szerepköralapú biztonsági képzés csoporthoz hozzárendelt biztonsági szerepkörök és felelősségek nyújt információkat a hálózati hozzáférés engedélyezése, vagy elvégzik feladatokat kiosztása előtt.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-3.b** a szervezet csoporthoz rendelt biztonsági szerepkörök és felelősségek meghatározása, ha rendszer változtatások miatt szükség van a szerepkör alapú biztonsági képzés biztosít.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-3** a vállalat által szerepköralapú biztonsági képzés csoporthoz hozzárendelt biztonsági szerepkörök és felelősségek [hozzárendelés: szervezet által meghatározott gyakoriság] ezt követően.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **(3) AT-3** a szervezet gyakorlati gyakorlatokat tartalmaz, amely képzési célokra megerősítése biztonsági képzés.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **(4) AT-3** a szervezet alkalmazottai képzési biztosít a [hozzárendelés: kártékony kódot a szervezet által meghatározott utaló] ismeri fel a gyanús kommunikációt és a rendellenes viselkedés a szervezeti adatok rendszerekben.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-4.a** a szervezet dokumentumokat és a figyelők egyedi rendszer biztonsági képzés tevékenységeket többek között az alapvető biztonsági tájékoztatási képzési és a konkrét információk rendszer biztonsági képzés.
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-4.b** a szervezet őrzi meg az egyedi képzési rekordjai [hozzárendelés: szervezet által meghatározott időszak].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|

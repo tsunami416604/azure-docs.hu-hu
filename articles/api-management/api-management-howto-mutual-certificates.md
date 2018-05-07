@@ -3,7 +3,7 @@ title: Háttér-szolgáltatásaihoz ügyfél használatával biztonságos tanús
 description: Megtudhatja, mennyire biztonságos a háttér-szolgáltatásaihoz ügyféltanúsítvány-alapú hitelesítés használata az Azure API Management.
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: afa5c6a07432456d703020c0b8c5c3606478b8fe
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: c3060765022cabcb877041927886b59d6725c7cf
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Az Azure API Management tanúsítványhitelesítés biztonságossá tétele a háttér-szolgáltatásaihoz ügyfél használatával
 API-kezelés lehetővé teszi a biztonságos hozzáférés a háttér-szolgáltatásra, az API-k az ügyféltanúsítványok. Ez az útmutató bemutatja az API-közzétevő portálon tanúsítványok kezelése és konfigurálása egy API-t egy tanúsítványt a háttér-szolgáltatás elérésére használhat.
 
-Tanúsítványok, az API Management REST API használatával történő kezelésével kapcsolatos információkért lásd: [Azure API Management REST API tanúsítvány entitás][Azure API Management REST API Certificate entity].
+Tanúsítványok, az API Management REST API használatával történő kezelésével kapcsolatos információkért lásd: <a href="https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API tanúsítvány entitás</a>.
 
 ## <a name="prerequisites"> </a>Előfeltételek
 Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgáltatáspéldány ügyféltanúsítvány-alapú hitelesítés használatát a háttér-szolgáltatás számára az API-k eléréséhez. Ez a témakör a lépések végrehajtása előtt rendelkeznie kell a háttér-szolgáltatás ügyféltanúsítvány-alapú hitelesítés beállítása ([konfigurálása az Azure Websitesra tanúsítványhitelesítés tekintse meg a cikk][to configure certificate authentication in Azure WebSites refer to this article]), és a tanúsítvány feltöltése az API Management publisher portálon a tanúsítvány és a jelszó hozzáféréssel rendelkeznek.
@@ -58,7 +58,7 @@ Kattintson a **feltöltése** töltse fel a tanúsítványt.
 > 
 > 
 
-![Tanúsítvány feltöltve][api-management-certificate-uploaded]
+![Feltöltött tanúsítvány][api-management-certificate-uploaded]
 
 A tanúsítvány a feltöltést követően megjelenik az **ügyféltanúsítványok** fülre. Ha több tanúsítvány, akkor a tulajdonos jegyezze fel, vagy az ujjlenyomat az utolsó négy számjegyét, válassza ki a tanúsítványt egy API-t a tanúsítványok, konfigurálásakor, az alábbi szabályozott módon használt [konfigurálása egy API-t használja a ügyféltanúsítvány a átjáró hitelesítési] [ Configure an API to use a client certificate for gateway authentication] szakasz.
 

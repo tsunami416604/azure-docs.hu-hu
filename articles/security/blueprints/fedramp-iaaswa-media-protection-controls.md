@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - adathordozó védelme"
-description: "FedRAMP webes alkalmazások Automation - adathordozó védelme"
+title: Az Azure biztonsági és megfelelőségi tervezetének - FedRAMP webes alkalmazások Automation - adathordozó védelme
+description: FedRAMP webes alkalmazások Automation - adathordozó védelme
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 37812c2f7ee79685f9014a7999b4355e649ca6e1
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="media-protection-mp"></a>Média védelme (MP)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-1** a szervezet házon belül fejlesztett alkalmazásokra, dokumentumokat, és hogy terjeszti [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök] egy media védelmi házirendje, amely célra, hatókör, szerepkörök, feladatok, felügyeleti kötelezettségvállalás, koordinációs szervezeti entitásokat, és a megfelelőségi; és eljárásokat azzal, hogy a media védelmi házirendet és a hozzá tartozó adathordozó védelmére vezérlők; végrehajtásának megkönnyítése és ellenőrzi, és frissíti az aktuális media védelmi házirend [hozzárendelés: szervezet által meghatározott gyakoriság]; és media védelmi eljárásai [hozzárendelés: szervezet által meghatározott gyakoriság].
 
-**Feladatkörök:**`Customer Only`
+**Feladatok:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-2** a szervezet korlátozza a hozzáférést [hozzárendelés: digitális és/vagy nem digitális media szervezet által meghatározott típusú] való [hozzárendelés: szervezet által meghatározott csoporthoz vagy a szerepkörök].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-3.a** a szervezet, amely jelzi, a terjesztési korlátozások vonatkoznak, figyelmeztetések, és a megfelelő biztonsági jelölések (ha vannak) az adatok kezelésével rendszer adathordozó jelöli meg.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-3.b** a szervezet mentesíti [hozzárendelés: rendszer adathordozó szervezet által meghatározott típusú] jelölheti meg, amíg az adathordozó lépje [hozzárendelés: szervezet által meghatározott szabályozott területek].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -83,11 +83,11 @@ ms.lasthandoff: 02/11/2018
 
  ## <a name="nist-800-53-control-mp-4a"></a>A NIST 800-53 vezérlő MP-4.a
 
-#### <a name="media-storage"></a>Media Storage
+#### <a name="media-storage"></a>Tároló adathordozó
 
 **MP-4.a** a szervezet fizikailag vezérli, és tárolja biztonságos helyen [hozzárendelés: digitális és/vagy nem digitális media szervezet által meghatározott típusú] belül [hozzárendelés: szervezet által meghatározott szabályozott területek].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -97,11 +97,11 @@ ms.lasthandoff: 02/11/2018
 
  ## <a name="nist-800-53-control-mp-4b"></a>A NIST 800-53 vezérlő MP-4.b
 
-#### <a name="media-storage"></a>Media Storage
+#### <a name="media-storage"></a>Tároló adathordozó
 
 **MP-4.b** a szervezet rendszer adathordozó védi, addig, amíg az adathordozót megsemmisülnek vagy berendezések technikák és eljárások megtisztított használata engedélyezett.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-5.a** a szervezet védi, és szabályozza [hozzárendelés: rendszer adathordozó szervezet által meghatározott típusú] ellenőrzött területek kívül kerüljön [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-5.b** a szervezet az elszámolási kötelezettségéről szóló információkat rendszer adathordozó ellenőrzött területeken kívül kerüljön tart fenn.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-5.c** a szervezet dokumentumokat az átviteli információk rendszer adathordozó társított tevékenységet.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-5.d** a szervezet korlátozza az átviteli információk rendszer adathordozóján az arra jogosult személyek társított tevékenységet.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-5 (4)** a információk rendszer megvalósítja a bizalmas és ellenőrzött területeken kívül kerüljön digitális adathordozón tárolt adatok sértetlenségének védelme érdekében titkosítási mechanizmus.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-6.a** a szervezet sanitizes [hozzárendelés: szervezet által megadott információk rendszer adathordozóján] kívül szervezeti vezérlő felszabadítása előtt, vagy kiadását újbóli használata [hozzárendelés: szervezet által meghatározott tisztítási technikák és eljárások] alkalmazható szövetségi és szervezeti szabványok és házirendek megfelelően.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-6.b** a szervezet tisztítási mechanizmusok erőssége és integritásának arányos a Biztonság kategória vagy információknak az funkcióit használja.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **Felügyeleti pont – 6 (1)** a szervezet ellenőrzi, hogy jóvá, nyomon követi, dokumentumokat és media tisztítási és kivezetési műveletek ellenőrzi.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **Felügyeleti pont – 6 (2)** a szervezet tesztek tisztítási berendezések és eljárások [hozzárendelés: szervezet által meghatározott gyakoriság] ellenőrizheti, hogy a tervezett tisztítási érik.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **Felügyeleti pont – 6 (3)** a szervezet visszafordítható tisztítási technikák vonatkozik hordozható tárolóeszközök előtt ilyen típusú eszközök gazdarendszerhez csatlakozik az információkat a következő esetekben: [hozzárendelés: szervezet által meghatározott hordozható tárolóeszközök tisztítási igénylő esetekben].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-7** a szervezet [kijelölés: korlátozza; Ez a beállítás letiltja] használata [hozzárendelés: rendszer adathordozó szervezet által meghatározott típusú] a [hozzárendelés: szervezet által megadott információk rendszerek vagy rendszerösszetevők] használatával [hozzárendelés: szervezet által meghatározott biztonsági óvintézkedéseket].
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **Felügyeleti pont – 7 (1)** a szervezet a szervezeti adatok rendszerek tiltja hordozható tárolóeszközök használatát, ha ilyen típusú eszközök nem azonosítható tulajdonosa.
 
-**Feladatkörök:**`Azure Only`
+**Feladatok:** `Azure Only`
 
 |||
 |---|---|

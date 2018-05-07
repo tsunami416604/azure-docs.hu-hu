@@ -1,24 +1,24 @@
 ---
-title: "Azure Data Lake data tudományos forgatókönyvek U-SQL használatával |} Microsoft Docs"
-description: "Ismerteti az Azure Data Lake prediktív elemzési ehhez a U-SQL használatával példákat."
+title: Azure Data Lake data tudományos forgatókönyvek U-SQL használatával |} Microsoft Docs
+description: Ismerteti az Azure Data Lake prediktív elemzési ehhez a U-SQL használatával példákat.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 100f75c5d21d5723bd7438b49e982ff116b75908
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: deguhath
+ms.openlocfilehash: c6d94f11134c582320269f60a148b02fe885e188
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Azure Data Lake data tudományos forgatókönyvek U-SQL használatával
 
@@ -32,7 +32,7 @@ További adatok tudományos forgatókönyvek, amelyek az Team tudományos folyam
 A [használata Azure Data Lake adattudomány](data-lake-walkthrough.md) forgatókönyv bemutatja, hogyan kell az adatok feltárása használni az Azure Data Lake és bináris fájlosztályozási feladatokhoz a következőt: a minta taxiköltség adatkészlet-e tipp: az ügyfél fizeti előrejelzése céljából. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fő összetevőből épül fel az Team tudományos folyamat tárgyalását lásd: [Team adatok tudományos folyamat áttekintése](overview.md).
 

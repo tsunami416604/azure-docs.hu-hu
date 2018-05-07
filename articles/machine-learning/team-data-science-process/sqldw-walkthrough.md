@@ -3,7 +3,7 @@ title: 'Az Team tudományos folyamat működés közben: az SQL Data Warehouse |
 description: Bővített Analitikát folyamat és a technológia, működés közben
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: bradsev
-ms.openlocfilehash: 6566db5f186b92179df3125deaf5ad17c6f9e974
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: b6b78c5ae4506c1405428b60887567f272d6e268
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Az Team tudományos folyamat működés közben: az SQL Data Warehouse
 Az oktatóanyag azt ismerteti létrehozása és telepítése a gépi tanulási modellek az SQL Data Warehouse (SQL DW) keresztül egy nyilvánosan elérhető adatkészlet--a [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított képes-e tipp fizetnek útnak, és multiclass besorolás és regressziós modell, amely a terjesztési megjósolható a fizetős tipp adatmennyiség is ismertetése.
@@ -80,7 +80,7 @@ Azt a három előrejelzés problémák alapján állítson össze a *tipp\_össz
 Kövesse a dokumentációban a [SQL Data Warehouse létrehozása](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) egy SQL Data Warehouse-példányokhoz kiépítéséhez. Győződjön meg arról, hogy, hogy a következő SQL-adatraktár hitelesítő adatok a későbbi lépésekben használt jelölések.
 
 * **Kiszolgálónév**: <server Name>. database.windows.net
-* **SQLDW (Database) Name**
+* **SQLDW (adatbázis) neve**
 * **Felhasználónév**
 * **Jelszó**
 
@@ -125,7 +125,7 @@ Az a *- DestDir*, a következő PowerShell-parancsfájl végrehajtása felügyel
 
     ./SQLDW_Data_Import.ps1
 
-Ha a PowerShell-parancsfájl futtatása először, a rendszer kéri, hogy adjon meg az Azure SQL DW és az Azure blob storage-fiók. A PowerShell parancsfájl befejeződésekor először, a hitelesítő adatok futtató meg bemeneti fog készült SQLDW.conf konfigurációs fájlt a jelenlegi munkakönyvtárát. A jövőbeli Futtatás a PowerShell parancsfájl az összes szükséges paraméterek a konfigurációs fájlból olvasható lehetősége van. Egyes paraméterek módosítani szeretné, ha paraméterei a kérés esetén a képernyő törölni a konfigurációs fájlt, és a bevitel a paraméterek értékét, a rendszer kéri a felhasználótól, vagy választhatja a paraméterértékeket a aSQLDW.conffájlszerkesztésévelmódosíthatja*- DestDir* könyvtár.
+Ha a PowerShell-parancsfájl futtatása először, a rendszer kéri, hogy adjon meg az Azure SQL DW és az Azure blob storage-fiók. A PowerShell parancsfájl befejeződésekor először, a hitelesítő adatok futtató meg bemeneti fog készült SQLDW.conf konfigurációs fájlt a jelenlegi munkakönyvtárát. A jövőbeli Futtatás a PowerShell parancsfájl az összes szükséges paraméterek a konfigurációs fájlból olvasható lehetősége van. Egyes paraméterek módosítani szeretné, ha paraméterei a kérés esetén a képernyő törölni a konfigurációs fájlt, és a bevitel a paraméterek értékét, a rendszer kéri a felhasználótól, vagy választhatja a paraméterértékeket a aSQLDW.conffájlszerkesztésévelmódosíthatja *- DestDir* könyvtár.
 
 > [!NOTE]
 > Ahhoz, hogy a séma neve ütközik az alábbiakhoz már létezik az Azure SQL DW, ha Fájlolvasási paraméterek közvetlenül a SQLDW.conf elkerülése érdekében 3 számjegyű véletlenszerűen kerül a séma nevének a SQLDW.conf fájlból minden egyes futtatásához alapértelmezett séma neveként. A PowerShell parancsfájl kérheti a séma nevének: felhasználói belátása neve adható meg.

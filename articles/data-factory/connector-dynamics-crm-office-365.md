@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 2f56443eb41e2a7f723e95f86f39c5cc47e82f6f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b4baced183721d666354667f457f4cc5954b0d11
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása Dynamics 365 (közös adatszolgáltatás) vagy a Dynamics CRM és Azure Data Factory használatával
 
@@ -276,7 +276,11 @@ Adatok másolása Dynamics, állítsa be a fogadó típusa a másolási tevéken
 | ignoreNullValues | Azt jelzi, hogy a bemeneti adatokból (kivéve a kulcsmezők) null értékek kihagyása írási művelet során.<br/>Két érték engedélyezett **igaz** és **hamis**.<br>- **Igaz**: változatlanul a célobjektum adatainak upsert/frissítési művelet végrehajtásakor. Szúrja be egy meghatározott alapértelmezett értéket, ha így tesz, az insert művelet.<br/>- **Hamis**: frissítse az adatokat a célobjektum NULL upsert/frissítési művelet végrehajtásakor. Helyezze be NULL értékre, ha így tesz, az insert művelet. | Nem (alapértelmezett értéke "false") |
 
 >[!NOTE]
->Az alapértelmezett érték a fogadó writeBatchSize és a másolási tevékenység [parallelCopies](copy-activity-performance.md#parallel-copy) a Dynamics fogadó a rendszer mind a 10. Ezért 100 rekordig elküldi Dynamics egyidejűleg.
+>Az alapértelmezett érték a fogadó "**writeBatchSize**"és a másolási tevékenység"**[parallelCopies](copy-activity-performance.md#parallel-copy)**" a Dynamics fogadó a rendszer mind a 10. Ezért 100 rekordig elküldi Dynamics egyidejűleg.
+
+Dynamics 365 online, a maximális száma nincs [szervezet 2 egyidejű kötegelt hívásszám](https://msdn.microsoft.com/en-us/library/jj863631.aspx#Run-time%20limitations). Ha túllépi ezt a határértéket, a "Kiszolgáló elfoglalt" hiba történt legalább egyszer az első kérelem végrehajtása előtt. "WriteBatchSize" tartása, legfeljebb 10 ne volna ilyen sávszélesség-szabályozás számos egyidejű hívás.
+
+Az optimális kombinációja "**writeBatchSize**"és"**parallelCopies**" függ a séma az entitás pl. száma oszlopok, sorméret csatlakoztatnia beépülő modulok/munkafolyamatok/munkafolyamat-tevékenységek száma e hívás, stb. Az alapértelmezett beállítás a 10 writeBatchSize * 10 parallelCopies a javaslat alapján Dynamics szolgáltatást, amely a legtöbb Dynamics entitás azonban nem lehet lehető legjobb teljesítményt is működhetnek. A teljesítmény észlelheti a beállításával a másolási tevékenység beállítások kombinációja.
 
 **Példa**
 
@@ -322,12 +326,13 @@ A Data Factory megfelelő adattípus konfigurálása egy adatkészlet-szerkezete
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Hosszú | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Logikai | ✓ | ✓ |
+| AttributeType.Customer | GUID | ✓ | | 
 | AttributeType.DateTime | Dátum és idő | ✓ | ✓ |
 | AttributeType.Decimal | Decimális | ✓ | ✓ |
 | AttributeType.Double | Dupla | ✓ | ✓ |
 | AttributeType.EntityName | Karakterlánc | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | GUID | ✓ | |
+| AttributeType.Lookup | GUID | ✓ | ✓ |
 | AttributeType.ManagedProperty | Logikai | ✓ | |
 | AttributeType.Memo | Karakterlánc | ✓ | ✓ |
 | AttributeType.Money | Decimális | ✓ | ✓ |
