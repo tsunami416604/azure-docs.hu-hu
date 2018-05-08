@@ -372,7 +372,7 @@ Most, hogy az alkalmazás az App Service át van még több szolgáltatást is h
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service díjszabás]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service szolgáltatás díjszabása]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatikus méretezése]: ../app-service/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-web-overview.md

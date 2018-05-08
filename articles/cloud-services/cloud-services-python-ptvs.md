@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés a Pythonnal és az Azure Cloud Serviceszel | Microsoft Docs"
-description: "Azure felhőszolgáltatások, például webes és feldolgozói szerepkörök létrehozása a Python Tools for Visual Studio eszközzel."
+title: Ismerkedés a Pythonnal és az Azure Cloud Serviceszel | Microsoft Docs
+description: Azure felhőszolgáltatások, például webes és feldolgozói szerepkörök létrehozása a Python Tools for Visual Studio eszközzel.
 services: cloud-services
 documentationcenter: python
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5489405d-6fa9-4b11-a161-609103cbdc18
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 030a09c05ac4b480c9326b8a9ebc585339f312b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6bd89c160387abbb2b0339a5a5f62d998c0c84e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python webes és feldolgozói szerepkörök a Visual Studio eszközzel
 
@@ -172,6 +172,7 @@ Ezután hozza létre a **PrepPython.ps1** és a **PipInstaller.ps1** fájlokat a
 Ez a parancsfájl telepíti a Pythont. Ha a **PYTHON2** környezeti változó értéke **on**, akkor a rendszer a Python 2.7-et telepíti. Egyéb esetben a Python 3.5 lesz telepítve.
 
 ```powershell
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 $is_emulated = $env:EMULATED -eq "true"
 $is_python2 = $env:PYTHON2 -eq "on"
 $nl = [Environment]::NewLine
@@ -328,7 +329,7 @@ Az üzembe helyezés néhány percet vesz igénybe, majd a webes és/vagy feldol
 ### <a name="investigate-logs"></a>Naplók vizsgálata
 A felhőszolgáltatás virtuális gépének elindulása és a Python telepítése után áttekintheti, hogy vannak-e a naplókban hibaüzenetek. Ezek a naplók a **C:\Resources\Directory\\{szerepkör}\LogFiles** mappában találhatók. A **PrepPython.err.txt** fájlban legalább egy hiba található, amely akkor keletkezik, amikor a szkript megpróbálja észlelni, hogy a Python telepítve van-e. Az is előfordulhat, hogy a **PipInstaller.err.txt** jelzi a pip elavult verziójának használatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A PVTS dokumentációban további információkat találhat a webes és feldolgozói szerepkörök használatáról Python Tools for Visual Studio eszközben:
 
 * [Cloud Service-projektek][Cloud Service Projects]

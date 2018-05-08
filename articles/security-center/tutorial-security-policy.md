@@ -3,7 +3,7 @@ title: Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatá
 description: Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatározása és értékelése
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: yurid
-ms.openlocfilehash: a740cec8a3177e0de5f33b362d5c4956671cd427
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 16dc8553fdc1209d1973934a87660ff61df8e68a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Oktatóanyag: Biztonsági szabályzatok meghatározása és értékelése
 A Security Center a számítási feladatokhoz tartozó kívánt konfigurációk biztonsági szabályzatokkal történő meghatározásával segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Az Azure-előfizetésekre vonatkozó szabályzatok meghatározása és azoknak a számítási feladat típusához vagy az adatok érzékenységéhez történő igazítása után a Security Center biztonsági javaslatokat kínál a számítási, hálózati, SQL- és tárolási, illetve az alkalmazásokra vonatkozó erőforrásokhoz. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -47,7 +47,7 @@ Várja meg, amíg a Security Center feldolgozza a szabályzatokat, és létrehoz
 ## <a name="assess-security-of-resources"></a>Biztonsági erőforrások felmérése
 1. Az engedélyezett biztonsági szabályzatnak megfelelően a Security Center elkészíti a szükséges biztonsági javaslatokat. Érdemes a virtuális gépekre és számítógépekre vonatkozó javaslatokkal kezdenie. A Security Center irányítópultján kattintson az **Áttekintés**, majd a **Számítás** elemre.
 
-  ![Számítás](./media/tutorial-security-policy/tutorial-security-policy-fig2.png)
+  ![Compute](./media/tutorial-security-policy/tutorial-security-policy-fig2.png)
 
   Tekintse át az egyes javaslatokat a pirossal kiemeltekkel kezdve (ezek a legmagasabb proiritásúak). A javaslatok némelyike a Security Centerből közvetlenül alkalmazható szervizelési megoldást tartalmaz, amilyen például [a végpontvédelem kérdése](https://docs.microsoft.com/azure/security-center/security-center-install-endpoint-protection). Más javaslatok csak útmutatást fogalmaznak meg a szervizeléshez, például a hiányzó lemeztitkosításra vonatkozóan.
 

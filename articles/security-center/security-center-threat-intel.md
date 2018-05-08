@@ -1,11 +1,11 @@
 ---
-title: "Fenyegetések felderítése az Azure Security Centerben | Microsoft Docs"
-description: "Ebben a dokumentumban megismerkedhet az Azure Security Center fenyegetésfelderítési funkcióinak használatával, amelyek segítségével azonosíthatja a potenciális fenyegetéseket a virtuális gépein és számítógépein."
+title: Fenyegetések felderítése az Azure Security Centerben | Microsoft Docs
+description: Ebben a dokumentumban megismerkedhet az Azure Security Center fenyegetésfelderítési funkcióinak használatával, amelyek segítségével azonosíthatja a potenciális fenyegetéseket a virtuális gépein és számítógépein.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: yurid
-ms.openlocfilehash: b5bdeb1c70893c2477413df02c7b1a4a07999e93
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9654c25bf6b51d48dc195d6a536b61312fdcbeff
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Fenyegetések felderítése az Azure Security Centerben
 Ez a cikk segít az Azure Security Center fenyegetésfelderítésének a biztonsággal kapcsolatos problémák kezeléséhez történő használatában.
@@ -90,7 +90,7 @@ Azure-beli virtuális gépek esetén csak az ügynökön keresztüláramló hál
 - DNS-események (Type=DnsEvents)
 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ebben a cikkben megismerkedett a fenyegetésfelderítés a Security Centerben a gyanús tevékenységek azonosítására történő használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.

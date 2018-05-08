@@ -1,11 +1,11 @@
 ---
-title: "Identitás és hozzáférés figyelése az Azure Security Centerben | Microsoft Docs"
-description: "Itt megtudhatja, hogyan használható az Azure Security Center identitási és hozzáférési funkciója a felhasználók hozzáférési tevékenységeinek és identitással kapcsolatos problémáinak figyelésére."
+title: Identitás és hozzáférés figyelése az Azure Security Centerben | Microsoft Docs
+description: Itt megtudhatja, hogyan használható az Azure Security Center identitási és hozzáférési funkciója a felhasználók hozzáférési tevékenységeinek és identitással kapcsolatos problémáinak figyelésére.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: yurid
-ms.openlocfilehash: 842045fbcb5b4f661cc006a207f4087370a7b4ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ee263ef8fb0f20049215eda53e0d58a45342b7e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center"></a>Identitás és hozzáférés figyelése az Azure Security Centerben
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -60,7 +60,7 @@ Az identitáshoz és a hozzáféréshez kapcsolódó aktuális tevékenységek m
     
 A kiválasztott csempétől függetlenül a megjelenő irányítópult a naplókeresési lekérdezésen alapul. Az egyetlen különbség a lekérdezés típusa és az eredmény. Egy elemet, például egy számítógépet kiválasztva továbbra is megtekintheti a releváns adatokat. 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ebben a cikkben megismerkedett az identitás és a hozzáférés a Security Centerben való figyelésével. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.

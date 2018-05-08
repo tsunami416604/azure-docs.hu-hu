@@ -1,11 +1,11 @@
 ---
-title: "Észlelési funkciók az Azure Security Centerben | Microsoft Docs"
-description: "Ebből a dokumentumból megismerheti, hogyan működnek az Azure Security Center észlelési funkciót."
+title: Észlelési funkciók az Azure Security Centerben | Microsoft Docs
+description: Ebből a dokumentumból megismerheti, hogyan működnek az Azure Security Center észlelési funkciót.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 4c5599cc-99a1-430f-895f-601615ef12a0
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: yurid
-ms.openlocfilehash: edef9bc1ba2420a4b7d95f891fd8b0b7e144c2ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 636f81361a59c1bfe1ba778722b79564609fb02a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Az Azure Security Center észlelési funkciói
 Ez a dokumentum az Azure Security Center speciális észlelési funkciót ismerteti, amelyek segítségével azonosíthatja a Microsoft Azure-erőforrásokra irányuló aktív fenyegetéseket, és betekintést nyújt a gyors reagálás lehetőségeibe.
@@ -79,7 +79,7 @@ Az Azure Security Center biztonsági kutatással és adattudománnyal foglalkoz�
 
 Ezek az egyesített erőfeszítések új és hatékonyabb észleléseket eredményeznek, amelyeknek azonnal hasznát veheti anélkül, hogy bármit is tennie kellene.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ebben a dokumentumban megismerkedhetett az Azure Security Center észlelési funkcióinak működésével. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)

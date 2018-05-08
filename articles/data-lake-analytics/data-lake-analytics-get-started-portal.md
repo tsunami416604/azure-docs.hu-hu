@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: saveenr
-ms.openlocfilehash: bdd9ff78e8f720a7f1318c320d10070cbdd2d566
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Az Azure Data Lake Analytics használatának első lépései az Azure Portallal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -68,8 +68,7 @@ OUTPUT @a
 2. Illessze be a fent bemutatott U-SQL-szkript szövegét. 
 3. Kattintson a **Feladat elküldése** elemre.   
 4. Várjon, amíg a feladat állapota **Sikeres** nem lesz.
-5. Sikertelen művelet esetén lásd: [Data Lake Analytics-feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
-6. Kattintson a **Kimenet** fülre, majd a `data.csv` elemre. 
+5. Kattintson a **Kimenet** fülre, majd a `data.csv` elemre. 
 
 ## <a name="see-also"></a>Lásd még
 

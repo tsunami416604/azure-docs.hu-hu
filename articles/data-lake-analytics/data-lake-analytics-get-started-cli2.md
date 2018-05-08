@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Analytics használatának első lépései az Azure CLI 2.0 használatával | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan használhatja az Azure CLI 2.0-s verzióját egy Data Lake Analytics-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozásához U-SQL használatával, valamint a feladat elküldéséhez. "
+title: Az Azure Data Lake Analytics használatának első lépései az Azure CLI 2.0 használatával | Microsoft Docs
+description: 'Ebből a cikkből megtudhatja, hogyan használhatja az Azure CLI 2.0-s verzióját egy Data Lake Analytics-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozásához U-SQL használatával, valamint a feladat elküldéséhez. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.openlocfilehash: fbd4f1ae5eeec971a378c41761508629e530887c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e7ce65446a6af49f15b3ce1881757b16f8fcaa35
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>Az Azure Data Lake Analytics használatának első lépései az Azure parancssori felületének 2.0-s verziójával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -193,26 +193,6 @@ Például:
 
 ```
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
-```
-
-## <a name="pipelines-and-recurrences"></a>Folyamatok és ismétlődések
-
-**Folyamatok és ismétlődések adatainak lekérése**
-
-A korábban elküldött feladatok folyamatadatait az `az dla job pipeline` paranccsal tekintheti meg.
-
-```
-az dla job pipeline list --account "<Data Lake Analytics Account Name>"
-
-az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
-```
-
-A korábban elküldött feladatok ismétlődési adatait az `az dla job recurrence` paranccsal tekintheti meg.
-
-```
-az dla job recurrence list --account "<Data Lake Analytics Account Name>"
-
-az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
 ## <a name="next-steps"></a>További lépések

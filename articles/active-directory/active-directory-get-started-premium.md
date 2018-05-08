@@ -1,25 +1,23 @@
 ---
-title: "Prémium szintű Azure Active Directory – Regisztráció | Microsoft Docs"
-description: "Azt ismerteti, hogyan regisztrálhat a Prémium szintű Azure Active Directory-kiadásra"
+title: Prémium szintű Azure Active Directory – Regisztráció | Microsoft Docs
+description: Azt ismerteti, hogyan regisztrálhat a Prémium szintű Azure Active Directory-kiadásra
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: 391764e5-c4eb-4ae6-b8a9-3d09f0de04a6
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
 ms.date: 09/07/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro;
-ms.openlocfilehash: e7aa1757ec1720f15ac9d1f00129fd38f86f0668
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4048df1c5e536a4a33af39466e57b1b38c080c06
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>Gyors útmutató: Prémium szintű Azure Active Directory – Regisztráció
 Az Azure Active Directory (Azure AD) Prémium szintű kiadásával folytatott munka megkezdéséhez megvásárolhatja a licenceket, és hozzárendelheti őket Azure-előfizetéséhez. Ha új Azure-előfizetést hoz létre, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is a következő szakaszokban leírtak szerint. 
@@ -92,7 +90,7 @@ Amikor az Ön által megvásárolt licencek érvénybe lépnek a címtárban, eg
 
 Az aktiválás mindössze néhány percet vesz igénybe. Ezután hozzáférhet Azure AD-jéhez, és kezelni is tudja. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a gyors útmutatóban megismerheti, hogyan regisztrálhat a Prémium szintű Azure AD-kiadásra, és hogyan aktiválhatja az Azure Active Directory hozzáférését. 
 
 Ha már van Azure-előfizetése, a következő hivatkozással megkezdhet egy próbaidőszakot, vagy vásárolhat Prémium szintű licenceket az Azure Portalon.

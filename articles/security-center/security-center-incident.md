@@ -1,11 +1,11 @@
 ---
-title: "Biztonsági riasztások kezelése az Azure Security Centerben | Microsoft Docs"
-description: "Ebből a dokumentumból elsajátíthatja az Azure Security Center a biztonsági incidensek kezeléséhez szükséges képességeinek alkalmazását."
+title: Biztonsági riasztások kezelése az Azure Security Centerben | Microsoft Docs
+description: Ebből a dokumentumból elsajátíthatja az Azure Security Center a biztonsági incidensek kezeléséhez szükséges képességeinek alkalmazását.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: yurid
-ms.openlocfilehash: a302f8cb2555eef469a24da2523fdd9b97cc5730
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f87edc0717631775acec315dda61323b8fa5909
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>Biztonsági incidensek kezelése az Azure Security Centerben
 A biztonsági riasztások osztályba sorolása és kivizsgálása még a legképzettebb biztonsági elemzők számára is időigényes feladat lehet, sokak számára pedig már annak megtalálása is nehézséget okoz, hogy hol kezdjenek hozzá. A különálló [biztonsági riasztások](security-center-managing-and-responding-alerts.md) adatait összekapcsoló [elemzési szolgáltatások](security-center-detection-capabilities.md) alkalmazásával a Security Center a támadássorozatot és az összes kapcsolódó riasztást egyetlen nézetben jeleníti meg, így gyorsan áttekinthetővé válnak a támadó által végrehajtott műveletek és az érintett erőforrások.
@@ -52,7 +52,7 @@ A panelen megjelenő információk a riasztástól függően változnak. Ezen ri
 * Egy új szűrő alkalmazásával testre szabhatja a nézetet csak incidensek, csak riasztások vagy mindkettő megjelenítésére.
 * Egy adott riasztás kezelhető egy incidens (ha van) részeként, valamint önálló riasztásként is.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ebben a dokumentumban megismerkedhetett a Security Center biztonságiincidens-kezelési képességeinek használatával. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
