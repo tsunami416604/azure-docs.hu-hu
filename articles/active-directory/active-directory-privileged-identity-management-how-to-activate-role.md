@@ -1,25 +1,23 @@
 ---
-title: "Aktiválása vagy deaktiválása |} Microsoft Docs"
-description: "Útmutató a kiemelt jogosultságú identitások az Azure Privileged Identity Management alkalmazással szerepkörök aktiválása."
+title: Aktiválása vagy deaktiválása |} Microsoft Docs
+description: Útmutató a kiemelt jogosultságú identitások az Azure Privileged Identity Management alkalmazással szerepkörök aktiválása.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 1ce9e2e7-452b-4f66-9588-0d9cd2539e45
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 02/14/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: a524e1f9d739b42cd63de82291d98ff8c59f2f5f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c12ba7ed076d531c75b5f9a473d124b94a6f0362
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management
 Az Azure Active Directory (AD) Privileged Identity Management egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az erőforrások az Azure AD és más Microsoft online szolgáltatások, például az Office 365-öt vagy a Microsoft Intune privilegizált hozzáférést.  
@@ -33,7 +31,7 @@ Az Azure AD Privileged Identity Management alkalmazást használja a [Azure-port
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Jelölje be az Azure-portálon, és válassza ki a könyvtárat, ahol meg fog jobb felső sarokban a felhasználónevére működik.
-3. Válassza ki **minden szolgáltatás** , és keresse meg a Szűrő mezőbe segítségével **Azure AD Privileged Identity Management**.
+3. Válassza a **Minden szolgáltatás** lehetőséget, és a Szűrő szövegmezővel keresse meg az **Azure AD Privileged Identity Management** elemet.
 4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
 
 ## <a name="activate-a-role"></a>A szerepkör aktiválása

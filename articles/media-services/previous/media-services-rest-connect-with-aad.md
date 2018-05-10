@@ -1,11 +1,11 @@
 ---
-title: "Azure Media Services API többi eléréséhez használja az Azure AD hitelesítési |} Microsoft Docs"
-description: "Útmutató: Azure Active Directory-hitelesítéssel Azure Media Services API hozzáférhet a többi."
+title: Azure Media Services API többi eléréséhez használja az Azure AD hitelesítési |} Microsoft Docs
+description: 'Útmutató: Azure Active Directory-hitelesítéssel Azure Media Services API hozzáférhet a többi.'
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: willzhan
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Az Azure Media Services API REST eléréséhez használja az Azure AD-alapú hitelesítés
 

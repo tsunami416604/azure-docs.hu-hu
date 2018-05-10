@@ -8,18 +8,17 @@ manager: michael.tillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: c21706a591d0e1aa00279edf7a5534ada95fd8c1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 1cfd85eda9ef59a2265a991cabe5f1b6ee83563d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) elnevezési vonatkozó szabályzat alkalmazása
 
@@ -186,7 +185,7 @@ Outlook iOS és Android-alkalmazás | Az Outlook-alkalmazásokban létrehozott c
 Csoportok mobilalkalmazás | A csoportok mobilalkalmazásban létrehozott csoportok a szabályzatnak megfelelő elnevezési. Csoportok mobilalkalmazás nem jeleníti meg az előzetes verzióját a névadási, és nem ad vissza egyéni tiltott szót hibák, amikor a felhasználó megadja a csoport nevét. De a elnevezési házirend létrehozásakor vagy szerkesztésekor a csoport automatikusan érvényes, és a felhasználók számára jelenik meg a megfelelő hibákkal egyéni tiltott szót a csoport nevét vagy aliasát esetén.
 Planner | A névadási Planner megfelel. Planner elnevezési házirend előzetes jeleníti meg, a csomag nevét beírásához. Amikor a felhasználó adja meg egy egyéni tiltott szót, egy hibaüzenet jelenik meg a csomag létrehozásakor.
 Az ügyfél Engagement Dynamics 365 | Az ügyfél Engagement Dynamics 365 megfelel az elnevezési házirendet. Dynamics 365 elnevezési kényszerített házirend nevét jeleníti meg, amikor a felhasználó egy csoport nevét vagy a csoport e-mail aliasát. Amikor a felhasználó adja meg egy egyéni tiltott szót, egy hibaüzenet jelenik meg tiltott szót tartalmazó, a felhasználó el is távolíthatja.
-School Data Sync (SDS) | SDS keresztül létrehozott csoportok elnevezési házirend felel meg, de a névadási nem automatikusan alkalmazza. SDS rendszergazdáknak kell az előtagok és utótagok hozzáfűzése osztályneveket, amelynek csoportok kell létrehozni és SDS majd feltölteni. Csoport létrehozása vagy szerkesztése más módon fognak működni.
+Iskolai adatszinkronizálás (SDS) | SDS keresztül létrehozott csoportok elnevezési házirend felel meg, de a névadási nem automatikusan alkalmazza. SDS rendszergazdáknak kell az előtagok és utótagok hozzáfűzése osztályneveket, amelynek csoportok kell létrehozni és SDS majd feltölteni. Csoport létrehozása vagy szerkesztése más módon fognak működni.
 Outlook ügyfél Manager (OCM) | Outlook ügyfél Manager megfelel az elnevezési házirendet, amely a rendszer automatikusan alkalmaz az Outlook ügyfél kezelőt hozott létre a csoport. Ha egy egyéni tiltott szót észlel, csoport létrehozása a OCM le van tiltva, és a felhasználó le van tiltva a OCM alkalmazással.
 Számítógéptermi alkalmazás | Számítógéptermi alkalmazásban létrehozott csoportok felel meg az elnevezési szabályzatának, de elnevezési nincs érvényben automatikusan, és az elnevezési házirend előzetes nem jelennek meg a felhasználók egy osztályteremben csoportnév beírása közben. Felhasználók meg kell adnia az előtagok és utótagok kényszerített osztályteremben csoport nevét. Ha nem, akkor a osztályteremben csoport létrehozása vagy szerkesztése hibák művelet meghiúsul.
 Power BI | A Power BI munkaterületek érhetők a szabályzatnak megfelelő elnevezési.    

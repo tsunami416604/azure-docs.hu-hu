@@ -3,7 +3,7 @@ title: Azure biztonsági és megfelelőségi tervezetének - FFIEC pénzügyi sz
 description: Azure biztonsági és megfelelőségi tervezetének - FFIEC pénzügyi szabályozott munkaterhelések
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 17794288-9074-44b5-acc8-1dacceb3f56c
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 497c5a987753cbbe577c1d042d6bf61be9d905ab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: f1339af22132d19f14ea8ebb72fe0e6bd45b7fad
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure biztonsági és megfelelőségi tervezetének - FFIEC pénzügyi szabályozott munkaterhelések
 
@@ -42,7 +42,7 @@ Az architektúra a következő összetevőkből áll, és az Azure PCI DSS megfe
 - **A központi telepítési sablonok**. Ebben a felállásban [Azure Resource Manager-sablonok](/azure/azure-resource-manager/resource-group-overview#template-deployment) automatikusan központi telepítésével a architektúra összetevői a Microsoft Azure konfigurációs paraméterek megadásával a telepítés során.
 - **Automatikus központi telepítési parancsfájlok**. Ezek a parancsfájlok segítségével a végpont megoldás üzembe helyezéséhez. A parancsfájlok foglalják magukban:
     - A házirendmodul-telepítésének és [globális rendszergazda](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) telepítési parancsfájl használatával telepítse, és győződjön meg arról, hogy a szükséges PowerShell-modulok és a globális rendszergazdai szerepkörök helyesen vannak konfigurálva. 
-    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample). a tartalom. Ez a megoldás forráskódját készen áll a felülvizsgálatra [fizetés feldolgozása tervezetének kód tárház][code-repo]. 
+    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample). a tartalom. Ez a megoldás forráskódját készen áll a felülvizsgálatra [fizetés feldolgozása tervezetének kód tárház] [kódot-tárház]. 
 
 ## <a name="architectural-diagram"></a>Architekturális diagramja
 
@@ -305,7 +305,7 @@ Alapértelmezett telepítési célja, hogy a megfelelő és biztonságos konfigu
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
-A megoldás telepítéséhez összetevők érhetők el a [tervezetének kód tárház][code-repo]. A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez adott meg a `-customHostName` váltani a 2. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
+A megoldás telepítéséhez összetevők érhetők el a [tervezetének kód tárház] [kódot-tárház]. A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez adott meg a `-customHostName` váltani a 2. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
 
 A parancsfájlok tartományi felhasználók hozzáadása az Azure AD-bérlő megadott. A Microsoft javasolja létrehozása egy új Azure AD bérlői kívánja használni, mint egy tesztet.
 
@@ -388,8 +388,3 @@ Egy adatfolyam-diagram (DFD) és a Contoso webes tároló a minta fenyegetések 
 - Összes felhasználói nevét, a tranzakció rekordok és a kapcsolódó adatokat ezen a lapon nem valóságosak, a legalapvetőbb architektúra hoztak létre, és csak illusztrációs célokat szolgálnak. Nincs valós association vagy a kapcsolat célja, és nincs műve.  
 - Ez a megoldás fejlesztette ki közösen Microsoft és a Avyan tanácsadás, és, akkor a [MIT licenccel](https://opensource.org/licenses/MIT).
 
-### <a name="document-authors"></a>A dokumentum szerzője
-
-* *Frank Simorjay (Microsoft)*  
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "Kód tárház"

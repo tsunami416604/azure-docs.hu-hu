@@ -1,25 +1,24 @@
 ---
-title: "A bejelentkezési oldal testreszabása az Azure Active Directory-bérlő |} Microsoft Docs"
-description: "Útmutató: a vállalati arculat megjelenítése a Azure bejelentkezési oldal"
+title: A bejelentkezési oldal testreszabása az Azure Active Directory-bérlő |} Microsoft Docs
+description: 'Útmutató: a vállalati arculat megjelenítése a Azure bejelentkezési oldal'
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 03a6b82f769ed9a36c5d3ff9934de75d1536e1ae
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ac8562b77ba43dbb07e886dfa235586198027796
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Gyors üzembe helyezés: Adja hozzá a vállalati arculat megjelenítése a bejelentkezési oldal az Azure ad-ben
 A félreértések elkerülése végett számos vállalat igyekszik egységes megjelenést adni az általa kezelt összes webhelynek és szolgáltatásnak. Azure Active Directory (Azure AD) azáltal, hogy a vállalat emblémájának elhelyezésével és egyéni színsémák alkalmazásával a bejelentkezési oldal testreszabása biztosítja ezt a lehetőséget. A bejelentkezési oldal akkor jelenik meg, amikor bejelentkezik a web-alapú például Office 365-öt használó alkalmazások az Azure AD az identitás-szolgáltatóként. Ön a szolgáltatóosztályokkal ezen a lapon adja meg a hitelesítő adatokat.
@@ -33,7 +32,7 @@ A félreértések elkerülése végett számos vállalat igyekszik egységes meg
 
 <!--You can customize the following elements on the sign-in page: <attach image>-->
 
-Márkajelzési testreszabások az Azure AD bejelentkezési lapon jelenik meg, amikor a felhasználó hozzáfér egy bérlőspecifikus URL-CÍMMEL, például a vállalat [ *https://outlook.com/contoso.com*](https://outlook.com/contoso.com).
+Márkajelzési testreszabások az Azure AD bejelentkezési lapon jelenik meg, amikor a felhasználó hozzáfér egy bérlőspecifikus URL-CÍMMEL, például a vállalat [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com).
 
 Például amikor a felhasználók által felkeresett www.office.com, a bejelentkezési oldal bármely vállalati arculat megjelenítése a testreszabások, mert a felhasználó még nem lépett hitelesítő adatok nem mutatja. Miután a felhasználó megadja a felhasználói Azonosítóját, vagy a felhasználói csempe kiválasztása, vállalati arculat megjelenítése jeleníti meg.
 

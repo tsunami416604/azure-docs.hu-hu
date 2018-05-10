@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2018
+ms.date: 5/4/2018
 ms.author: raiye
-ms.openlocfilehash: b4206d90ddd65f58bcdb92661f64d005a5e40563
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e97b5535ac635fb5982b4dc6fb384414e3a2cfc7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrix
 Itt való naprakész információkat a legújabb Azure vendég operációs rendszer feloldja a Felhőszolgáltatásai számára. Ez az információ segít a frissítési lépések megtervezéséről, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissíti a [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], nem elengedhetetlen, hogy olvassa el ezen a lapon.
@@ -42,6 +42,9 @@ Itt való naprakész információkat a legújabb Azure vendég operációs rends
 Nem tudja, hogy milyen a vendég operációs rendszer, vagy hogyan a vendég operációs rendszer feloldja a munkát? Olvasási [ez](#how-it-works) szakasz.
 
 ## <a name="news-updates"></a>Hírek
+###### <a name="may-4-2018"></a>**2018. május 4.**
+A április vendég operációs rendszer adott ki.
+
 ###### <a name="april-6-2018"></a>**2018. április 6.**
 A március vendég operációs rendszer adott ki.
 
@@ -69,14 +72,6 @@ Szeptembertől vendég operációs rendszer adott ki. A Windows Server 2016. sze
 ###### <a name="september-14-2017"></a>**2017. szeptember 14.**
 Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és a tervezett kiadását. október 9 rendelkezik.
 
-###### <a name="august-24-2017"></a>**2017. augusztus 24.**
-Augusztus vendég operációs rendszer adott ki.
-
-###### <a name="august-3-2017"></a>**2017. augusztus 3.**
-Július vendég operációs rendszer adott ki.
-
-###### <a name="july-19-2017"></a>**2017. július 19.**
-Július vendég operációs rendszer bevezetés július 19 indul, és a tervezett kiadását augusztus 8 rendelkezik.
 
 
 ## <a name="releases"></a>Kiadások
@@ -93,8 +88,9 @@ Július vendég operációs rendszer bevezetés július 19 indul, és a tervezet
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.18_201804-01 |2018. május 4. |POST 5.20 |TBD |
 | WA-GUEST-OS-5.17_201803-01 |2018. április 6. |POST 5.19 |TBD |
-| WA-GUEST-OS-5.16_201802-01 |2018. március 12. |POST 5.18 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.16_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
 |~~WA-GUEST-OS-5.15_201801-01~~ |2018. január 4. |2018. április 6. |TBD |
 |~~WA-GUEST-OS-5.14_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |2017. december 14. |2018. január 4.|TBD |
@@ -105,8 +101,7 @@ Július vendég operációs rendszer bevezetés július 19 indul, és a tervezet
 |~~WA-GUEST-OS-5.8_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-GUEST-OS-5.7_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-GUEST-OS-5.6_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
-|~~WA-GUEST-OS-5.5_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
-|~~WA-GUEST-OS-5.4_201612-01~~ |2017. január 10. |2017. június 5.|TBD |
+
 
 ## <a name="family-4-releases"></a>Feloldja a családja 4
 **Windows Server 2012 R2**
@@ -120,8 +115,9 @@ Július vendég operációs rendszer bevezetés július 19 indul, és a tervezet
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.53_201804-01 |2018. május 4. |POST 4.55 |TBD |
 | WA-GUEST-OS-4.52_201803-01 |2018. április 6. |POST 4.54 |TBD |
-| WA-GUEST-OS-4.51_201802-01 |2018. március 12. |POST 4,53 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.51_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
 |~~WA-GUEST-OS-4.50_201801-01~~ |2018. január 4. |2018. április 6. |TBD |
 |~~WA-GUEST-OS-4.49_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |2017. december 14. |2018. január 4. |TBD |
@@ -132,8 +128,7 @@ Július vendég operációs rendszer bevezetés július 19 indul, és a tervezet
 |~~WA-GUEST-OS-4.43_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-GUEST-OS-4.42_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-GUEST-OS-4.41_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
-|~~WA-GUEST-OS-4.40_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
-|~~WA-GUEST-OS-4.39_201612-01~~ |2017. január 10. |2017. június 5. |TBD |
+
 
 ## <a name="family-3-releases"></a>Feloldja a családja 3
 **Windows Server 2012**
@@ -147,8 +142,9 @@ Július vendég operációs rendszer bevezetés július 19 indul, és a tervezet
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.60_201804-01 |2018. május 4. |POST 3.62 |TBD |
 | WA-GUEST-OS-3.59_201803-01 |2018. április 6. |POST 3.61 |TBD |
-| WA-GUEST-OS-3.58_201802-01 |2018. március 19. |POST 3.60 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.58_201802-01~~ |2018. március 19. |2018. május 4. |TBD |
 |~~WA-GUEST-OS-3.57_201801-01~~ |2018. január 29. |2018. április 6. |TBD |
 |~~WA-GUEST-OS-3.56_201712-01~~ |2018. január 4. |2018. március 19. |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |2017. december 14. |2018. január 29. |TBD |
@@ -159,8 +155,7 @@ Július vendég operációs rendszer bevezetés július 19 indul, és a tervezet
 |~~WA-GUEST-OS-3.50_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
 |~~WA-GUEST-OS-3.49_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-GUEST-OS-3.48_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
-|~~WA-GUEST-OS-3.47_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
-|~~WA-GUEST-OS-3.46_201612-01~~ |2017. január 10. |2017. június 5. |TBD |
+
 
 ## <a name="family-2-releases"></a>Feloldja a családja 2
 **Windows Server 2008 R2 SP1**
@@ -174,8 +169,9 @@ Július vendég operációs rendszer bevezetés július 19 indul, és a tervezet
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.73_201804-01 |2018. május 4. |POST 2.75 |TBD |
 | WA-GUEST-OS-2.72_201803-01 |2018. április 6. |POST 2.74 |TBD |
-| WA-GUEST-OS-2.71_201802-01 |2018. március 12. |POST 2,73 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.71_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
 |~~WA-GUEST-OS-2.70_201801-01~~ |2018. január 29. |2018. április 6. |TBD |
 |~~WA-GUEST-OS-2.69_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
 |~~WA-GUEST-OS-2.68_201711-01~~ |2017. december 14. |2018. január 29. |TBD |
@@ -187,8 +183,6 @@ Július vendég operációs rendszer bevezetés július 19 indul, és a tervezet
 |~~WA-GUEST-OS-2.62_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
 |~~WA-GUEST-OS-2.61_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 |~~WA-GUEST-OS-2.60_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
-|~~WA-GUEST-OS-2.59_201701-01~~ |2017. január 10. |2017. június 5. |TBD |
-|~~WA-GUEST-OS-2.58_201612-01~~ |2017. január 10. |2017. május 9.|TBD |
 
 
 ## <a name="msrc-patch-updates"></a>MSRC javítás frissítések

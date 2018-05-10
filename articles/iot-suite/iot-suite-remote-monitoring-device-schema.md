@@ -1,7 +1,7 @@
 ---
-title: "A távoli felügyeleti megoldás - Azure eszköz séma |} Microsoft Docs"
-description: "Ez a cikk ismerteti a JSON-séma, amely meghatározza a szimulált eszköz a távoli felügyeleti megoldás."
-services: 
+title: A távoli felügyeleti megoldás - Azure eszköz séma |} Microsoft Docs
+description: Ez a cikk ismerteti a JSON-séma, amely meghatározza a szimulált eszköz a távoli felügyeleti megoldás.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 364698a529623958695f93a245bab28a89f6bd4c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 24aeb9c3f73d04a3d05f09ebd2ba0859a38e7ad8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-the-device-model-schema"></a>Az eszköz modellsémát ismertetése
 
@@ -29,7 +29,7 @@ A jelen cikkben kapcsolódó a következő cikkeket:
 * [Az eszköz modell viselkedés](iot-suite-remote-monitoring-device-behavior.md) használhatja a szimulált eszköz viselkedés JavaScript fájlokat ismerteti.
 * [Hozzon létre egy új szimulált eszköz](iot-suite-remote-monitoring-test.md) együtt helyezi, és bemutatja, hogyan telepíthet egy új szimulált eszköz típusa a megoldás.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 >[!div class="checklist"]
 > * A szimulált eszköz modellek meghatározásához a JSON-fájl használatával
@@ -85,8 +85,8 @@ Az a `Simulation` szakaszban adhat meg a belső állapotot, a szimulált eszköz
 
 Az eszköz állapotát definíciója két elemmel rendelkezik:
 
-* `InitialState`az objektum összes tulajdonságának értéke az eszköz állapota kezdeti értékeinek meghatározása.
-* `Script`a JavaScript-fájlt, amely az eszköz állapotát frissítése ütemezés szerint futtatott azonosítja. A parancsfájl segítségével az eszköz által küldött telemetriai értékek ügyfélfuttatási.
+* `InitialState` az objektum összes tulajdonságának értéke az eszköz állapota kezdeti értékeinek meghatározása.
+* `Script` a JavaScript-fájlt, amely az eszköz állapotát frissítése ütemezés szerint futtatott azonosítja. A parancsfájl segítségével az eszköz által küldött telemetriai értékek ügyfélfuttatási.
 
 A JavaScript-fájlt, amely frissíti az eszköz állapotobjektum kapcsolatos további információkért lásd: [eszköz modell viselkedésének megértése](iot-suite-remote-monitoring-device-behavior.md).
 
@@ -104,10 +104,10 @@ A következő példa bemutatja egy szimulált hűtő eszköz számára az eszkö
     "pressure_unit": "psig",
     "simulation_state": "normal_pressure"
   },
-  "Script": {
+  "Interval": "00:00:10",
+  "Scripts": {
     "Type": "javascript",
-    "Path": "chiller-01-state.js",
-    "Interval": "00:00:05"
+    "Path": "chiller-01-state.js"
   }
 }
 ```
@@ -155,9 +155,9 @@ Az alábbi példa JSON telemetriai üzenetet küld a 10 másodpercenként `floor
 ]
 ```
 
-`MessageTemplate`a JSON-üzenet, a szimulált eszköz által küldött struktúrát határozza meg. A helyőrzőket `MessageTemplate` a szintaxissal `${NAME}` ahol `NAME` a kulcs a [állapot eszközobjektum](#simulation). Meg kell adni a karakterlánc, szám nem kell.
+`MessageTemplate` a JSON-üzenet, a szimulált eszköz által küldött struktúrát határozza meg. A helyőrzőket `MessageTemplate` a szintaxissal `${NAME}` ahol `NAME` a kulcs a [állapot eszközobjektum](#simulation). Meg kell adni a karakterlánc, szám nem kell.
 
-`MessageSchema`a szimulált eszköz által küldött üzenet sémájának definiálásához. Az üzenet-sémát is háttér alkalmazások értelmezni a bejövő telemetriai adatokat felhasználhatja az IoT-központ van közzétéve.
+`MessageSchema` a szimulált eszköz által küldött üzenet sémájának definiálásához. Az üzenet-sémát is háttér alkalmazások értelmezni a bejövő telemetriai adatokat felhasználhatja az IoT-központ van közzétéve.
 
 Jelenleg csak használható JSON üzenet sémák. A séma szereplő mezőket a következő típusúak lehetnek:
 

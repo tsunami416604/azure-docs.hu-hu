@@ -1,6 +1,6 @@
 ---
-title: "-Microsoft fenyegetés modellezési eszköz - érvényesítési Azure bemeneti |} Microsoft Docs"
-description: "a fenyegetések modellezése eszköz felfedett fenyegetések megoldást"
+title: -Microsoft fenyegetés modellezési eszköz - érvényesítési Azure bemeneti |} Microsoft Docs
+description: a fenyegetések modellezése eszköz felfedett fenyegetések megoldást
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: c416ae23565870223abc3f2db1ac460e8bea77f6
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d26d869748283718375e35ae4183eef0e51a96ed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Biztonsági keret: Bemeneti ellenőrzés |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/24/2018
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [XSLT Security](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings.EnableScript Property](http://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
@@ -66,7 +66,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [IE8 Biztonsági rész - átfogó védelmének](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
@@ -135,7 +135,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [XML entitás bővítése](http://capec.mitre.org/data/definitions/197.html), [XML szolgáltatásmegtagadási támadások és Védelmekkel](http://msdn.microsoft.com/magazine/ee335713.aspx), [MSXML biztonsági áttekintése](http://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [gyakorlati tanácsok biztonságossá tétele az MSXML kód](http://msdn.microsoft.com/library/ms759188(VS.85).aspx), [ NSXMLParserDelegate protokoll referenciája](http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [külső hivatkozások feloldása](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
@@ -197,7 +197,7 @@ Vegye figyelembe, hogy az MSXML6, ProhibitDTD igaz értékre van beállítva (a 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -208,7 +208,7 @@ Vegye figyelembe, hogy az MSXML6, ProhibitDTD igaz értékre van beállítva (a 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Fájl feltöltése korlátozás](https://www.owasp.org/index.php/Unrestricted_File_Upload), [aláírás tábla](http://www.garykessler.net/library/file_sigs.html) |
@@ -324,7 +324,7 @@ A legutóbbi pont fájl formátumának aláírás érvényesítése kapcsolatban
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -340,7 +340,7 @@ using System.Data.SqlClient;
 using (SqlConnection connection = new SqlConnection(connectionString))
 { 
 DataSet userDataset = new DataSet(); 
-SqlDataAdapter myCommand = new SqlDataAdapter(LoginStoredProcedure", connection); 
+SqlDataAdapter myCommand = new SqlDataAdapter("LoginStoredProcedure", connection); 
 myCommand.SelectCommand.CommandType = CommandType.StoredProcedure; 
 myCommand.SelectCommand.Parameters.Add("@au_id", SqlDbType.VarChar, 11); 
 myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text; 
@@ -354,18 +354,18 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb, mint 11 karakter
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Metaadat-attribútumok](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [nyilvános kulcs biztonsági biztonsági rés és a megoldás](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [háttértár-hozzárendelést az ASP.NET MVC teljes körű útmutatót](http://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [MVC használatával EF első lépések](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
-| **Lépések** | <ul><li>**Mikor kell keresni túlküldéses biztonsági rések? -** Túlküldéses biztonsági rések modell osztályok kötést létrehozni a felhasználói bevitel bárhol fordulhat. Például MVC keretrendszerek jelenthet a felhasználói adatok .NET egyéni osztályokat, beleértve az egyszerű régi CLR objektumok (POCOs). MVC automatikusan tölti fel ezeket az adatokat a kérésből modell osztályokat biztosít a felhasználói bevitel kapcsolatos kényelmes megjelenítése. Ezeket az osztályokat tartalmazzák a felhasználó nem állítható tulajdonságokat, ha az alkalmazás ki van téve a túlküldéses támadások, amelyek lehetővé teszik az adatok, az alkalmazás soha nem célja a felhasználói vezérlő lehet. MVC modellkötést, például adatbázis technológiák, például az Entity Framework objektum relációs mappers például gyakran is támogatás igénybe vételét POCO objektumok adatbázis adatok használatával. Ezen adatok modell osztályok adja meg az adatbázis adatok MVC nem felhasználói bevitel kezelésével foglalkozó azonos kényelmi. Mert MVC és az adatbázis is támogatja a hasonló modellek POCO objektumok, például tűnik könnyen újra felhasználhatja a azonos osztályok mindkét célokra. Ez az eljárás nem tudja aggályokat elkülönítése megőrzése, és egy közös területen, ahol nem kívánt tulajdonságai vannak kitéve modellkötést túlzott könyvelési támadások engedélyezése.</li><li>**Miért nem használható a modell nem szűrt adatbázisosztályokkal paraméterként a saját MVC műveletek? -** Mert MVC modellkötést köti, semmit a szóban forgó osztályban. Akkor is, ha az adatok nem jelenik meg a nézet, egy rosszindulatú felhasználó képes HTTP-kérelem elküldeni ezeket az adatokat tartalmazza, és az MVC legszívesebben köti, mert a művelet szerint a adatbázis osztály az alakzat, hogy fogadja el a felhasználói adatok.</li><li>**Miért érdemes az alakzat modell kötések létrehozására használt érdeklik? -** Modellkötést használ az ASP.NET MVC túlságosan széleskörű modellekkel való közzétesz egy alkalmazást túlküldéses támadások. Túlzott könyvelési lehetővé teszi a támadók milyen a fejlesztői szánt, például az ár egy elem vagy egy olyan fiók biztonsági jogosultságokkal felülbírálása túl adatainak módosítása. Alkalmazások művelet-specifikus modellek (vagy adott engedélyezett szűrő tulajdonságlisták) explicit megadását kötés szerződés milyen nem megbízható bemenet modellkötést keresztül kell használnia.</li><li>**Csak a kód duplikálását külön kötést modellek nehézségekkel? -** Nem, akkor aggályokat elkülönítését pár. Ha adatbázis modellek műveletmetódusokhoz szeretné újrafelhasználni, akkor véleményét bármely (vagy az alárendelt tulajdonság) abban, hogy az osztály egy HTTP-kérelem a felhasználó által állítható be. Ez nem ajánlott MVC a teendő, ha szüksége szűrőlista vagy egy külön osztály alakzat MVC milyen adatok származhatnak felhasználói bevitel helyette.</li><li>**A felhasználói bevitelhez külön kötést modellek van, ha rendelkezik saját adatok jegyzet attribútumok ismétlődő? -** Nem feltétlenül. Az adatbázis-modell osztály MetadataTypeAttribute segítségével a metaadatokat egy modellosztállyal kötés kapcsolódik. Csak vegye figyelembe, hogy a MetadataTypeAttribute által hivatkozott típus (rendelkezhet kevesebb tulajdonság, de nem lehet több) hivatkozó típusú részkészletének kell lennie.</li><li>**Adatok áthelyezése oda-vissza felhasználói bemeneti modellek és adatbázis-modellek között fárasztó. Is szeretnék csak másolja át az összes tulajdonság a következőt reflexió használatával? -** Igen. A kötés modellek megjelenő csak tulajdonságok biztonsága a felhasználói bevitelhez megadta, hogy azok. Nincs, amely megakadályozza a reflexió használatával másolja át az összes tulajdonságai között két modell közös létező biztonsági OK.</li><li>**Mi a helyzet [kötése (kizárása = "â" ¦")]. Használható, amelyek ahelyett, hogy külön kötést modellek? -** Ez a módszer nem ajánlott. Használatával [kötése (kizárása = "â" ¦")] azt jelenti, hogy minden új tulajdonság köthető alapértelmezés szerint. Amikor új tulajdonság ad hozzá, egy további lépést megjegyezhető dolgot biztonságban van, nem pedig a Tervező képezniük alapértelmezés szerint biztonságos. Attól függően, hogy a fejlesztő a lista ellenőrzése minden alkalommal, amikor egy tulajdonság hozzáadása kockázatos.</li><li>**Van [kötése (Belefoglalás = "â" ¦")] Szerkesztés műveletekhez hasznos? -** Nem. [Kötése (Belefoglalás = "â" ¦")] csak alkalmas INSERT stílusú operations (az új adatok hozzáadása). A frissítés stílusú műveleteket (a meglévő adatok módosítása), egy másik módszert használja, például hogy külön kötést modellek vagy tulajdonságok engedélyezett explicit listáját átadni UpdateModel vagy TryUpdateModel. Hozzáadása egy [kötése (Belefoglalás = ":" ¦")] attribútum szerkesztési művelet azt jelenti, hogy MVC fog egy objektumpéldányra beállítása csak a felsorolt tulajdonságokat, a többi alapértelmezett értékükön hagyja. Amikor az adatok, azzal lecseréli a meglévő entitás-, a gyári beállítások visszaállításával minden elhagyott tulajdonságok értékeit az alapértelmezett teljes egészében. Például, ha IsAdmin kimaradt egy [kötése (Belefoglalás = ":" ¦")] attribútum szerkesztési művelet esetén minden olyan felhasználó, amelynek a neve szerkesztették keresztül ez a művelet vissza kellene állítani a IsAdmin = false (bármely módosított felhasználói elveszítik rendszergazdai állapota). Ha meg szeretné akadályozni, hogy a frissítések bizonyos tulajdonságokra, használja a fenti más megoldások egyikét. Vegye figyelembe, hogy egyes verziói MVC tooling készítése tartalmazó vezérlő osztályok [kötése (Belefoglalás = ":" ¦")] műveletek szerkesztése és utalnak, hogy a lista alapján tulajdonság eltávolítása megakadályozza a túlzott könyvelési támadásokat. Azonban fentiekben ismertetettek szerint ezt a megközelítést nem működik megfelelően, és helyette alaphelyzetbe egyetlen megadott adattal sem a nincs megadva tulajdonságok az alapértelmezett értékekre.</li><li>**A Create műveleteket, vannak-e bármilyen figyelmeztetések segítségével [kötése (Belefoglalás = "â" ¦")] ahelyett, hogy külön kötést modellek? -** Igen. Ez a megközelítés először nem működik Szerkesztés forgatókönyvek esetén igénylő összes túlzott könyvelési biztonsági rés kiküszöböléséhez két külön megközelítés karbantartása. Második, különálló kötés modellek válassza szét az alakzat használt felhasználói bevitel és az adatmegőrzési, alakzatot közötti kérdések valami [kötése (Belefoglalás = "â" ¦")] nem. Harmadik, vegye figyelembe, hogy [kötése (Belefoglalás = "â" ¦")] kezelni tud a csak legfelső szintű tulajdonságok; az attribútum nem engedélyezheti a alárendelt tulajdonságait (például "Details.Name") csak egy részeit. Végül, és lehet, hogy a legfontosabb, használja [kötése (Belefoglalás = "â" ¦")] hozzáadja egy további lépést, amely a osztály bármikor veszni modellkötést szolgál. Ha egy új műveletmetódus közvetlenül az adatok osztály kötődik, és felvenni elfelejti a [kötési (Include = ":" ¦")] attribútum, azok ki van téve a túlküldéses támadások, ezért a [kötése (Include =": "¦")] Alapértelmezés szerint kevésbé biztonságos megoldás. Használatakor [kötése (Belefoglalás = "â" ¦")], ügyeljen arra mindig, ne felejtse el megadni, akkor minden alkalommal, amikor a adatosztályokat művelet a metódusok paramétereihez jelennek meg.</li><li>**A létrehozás műveleteket, mi a helyzet üzembe a [kötése (Belefoglalás = "â" ¦")] a modell osztály attribútuma? Nem ez a módszer nem kelljen jegyezze meg a attribútum elhelyezése minden tartozó műveleti módszer? -** Ezt a módszert használja bizonyos esetekben működik. Használatával [kötése (Include = "â" ¦")] a modell típus saját magát (és nem a művelet paramétereinek Ez az osztály használatával), kelljen ne felejtse el bevenni a [kötése (Include ="â "¦")] attribútumot minden tartozó műveleti módszer. Az attribútum az osztály a közvetlenül elkülöníti a egy külön felületének Ez az osztály a modell adatkötéshez. Azonban ez a megközelítés csak egy modell kötés alakzat / modellosztállyal lehetővé teszi. Ha egy tartozó műveleti módszer kell (például egy csak rendszergazdai műveletet, amely frissíti a felhasználói szerepkörök) mező modellkötést engedélyezése és egyéb műveleteket kell ennek a mezőnek modellkötést akadályozni, ez a módszer nem fog működni. Minden osztály csak rendelkezhet egy modell kötés alakzat; Ha különböző műveleteket kell másik modellhez kötés alakzatok, szükségük vagy külön modell kötés osztályokat külön alakzatok képviseli, vagy külön [kötése (Belefoglalás = "â" ¦")] attribútumok használatát a műveletmetódusokhoz.</li><li>**Mi köti modellek? Ugyanaz, mint a modellek vannak? -** Ezek a két kapcsolódó fogalmak. A kötés modell hivatkozik egy modell művelet használt osztály kifejezés paraméterlista (az alakzat származó MVC a művelet metódusnak átadott). A kifejezés nézet modell egy nézet egy művelet metódusból átadott modell osztályra hivatkozik. Egy nézet-specifikus modell használata egy általánosan használt megközelítés beállítását adatok átadására egy művelet metódus nézetre. Gyakran ez az alakzat is modellkötést alkalmas, és a kifejezés nézet modell segítségével tekintse meg a ugyanannak a modellnek mindkét helyen használja. Ahhoz, hogy pontos, ezzel az eljárással beszél kifejezetten modellek az alakzat, a művelet, amely fontos információk tömeges hozzárendelés céljából átadott összpontosító kötés.</li></ul>| 
+| **Lépések** | <ul><li>**Mikor kell keresni túlküldéses biztonsági rések? -** Túlküldéses biztonsági rések modell osztályok kötést létrehozni a felhasználói bevitel bárhol fordulhat. Például MVC keretrendszerek jelenthet a felhasználói adatok .NET egyéni osztályokat, beleértve az egyszerű régi CLR objektumok (POCOs). MVC automatikusan tölti fel ezeket az adatokat a kérésből modell osztályokat biztosít a felhasználói bevitel kapcsolatos kényelmes megjelenítése. Ezeket az osztályokat tartalmazzák a felhasználó nem állítható tulajdonságokat, ha az alkalmazás ki van téve a túlküldéses támadások, amelyek lehetővé teszik az adatok, az alkalmazás soha nem célja a felhasználói vezérlő lehet. MVC modellkötést, például adatbázis technológiák, például az Entity Framework objektum relációs mappers például gyakran is támogatás igénybe vételét POCO objektumok adatbázis adatok használatával. Ezen adatok modell osztályok adja meg az adatbázis adatok MVC nem felhasználói bevitel kezelésével foglalkozó azonos kényelmi. Mert MVC és az adatbázis is támogatja a hasonló modellek POCO objektumok, például tűnik könnyen újra felhasználhatja a azonos osztályok mindkét célokra. Ez az eljárás nem tudja aggályokat elkülönítése megőrzése, és egy közös területen, ahol nem kívánt tulajdonságai vannak kitéve modellkötést túlzott könyvelési támadások engedélyezése.</li><li>**Miért nem használható a modell nem szűrt adatbázisosztályokkal paraméterként a saját MVC műveletek? -** Mert MVC modellkötést köti, semmit a szóban forgó osztályban. Akkor is, ha az adatok nem jelenik meg a nézet, egy rosszindulatú felhasználó képes HTTP-kérelem elküldeni ezeket az adatokat tartalmazza, és az MVC legszívesebben köti, mert a művelet szerint a adatbázis osztály az alakzat, hogy fogadja el a felhasználói adatok.</li><li>**Miért érdemes az alakzat modell kötések létrehozására használt érdeklik? -** Modellkötést használ az ASP.NET MVC túlságosan széleskörű modellekkel való közzétesz egy alkalmazást túlküldéses támadások. Túlzott könyvelési lehetővé teszi a támadók milyen a fejlesztői szánt, például az ár egy elem vagy egy olyan fiók biztonsági jogosultságokkal felülbírálása túl adatainak módosítása. Alkalmazások művelet-specifikus modellek (vagy adott engedélyezett szűrő tulajdonságlisták) explicit megadását kötés szerződés milyen nem megbízható bemenet modellkötést keresztül kell használnia.</li><li>**Csak a kód duplikálását külön kötést modellek nehézségekkel? -** Nem, akkor aggályokat elkülönítését pár. Ha adatbázis modellek műveletmetódusokhoz szeretné újrafelhasználni, akkor véleményét bármely (vagy az alárendelt tulajdonság) abban, hogy az osztály egy HTTP-kérelem a felhasználó által állítható be. Ez nem ajánlott MVC a teendő, ha szüksége szűrőlista vagy egy külön osztály alakzat MVC milyen adatok származhatnak felhasználói bevitel helyette.</li><li>**A felhasználói bevitelhez külön kötést modellek van, ha rendelkezik saját adatok jegyzet attribútumok ismétlődő? -** Nem feltétlenül. Az adatbázis-modell osztály MetadataTypeAttribute segítségével a metaadatokat egy modellosztállyal kötés kapcsolódik. Csak vegye figyelembe, hogy a MetadataTypeAttribute által hivatkozott típus (rendelkezhet kevesebb tulajdonság, de nem lehet több) hivatkozó típusú részkészletének kell lennie.</li><li>**Adatok áthelyezése oda-vissza felhasználói bemeneti modellek és adatbázis-modellek között fárasztó. Is szeretnék csak másolja át az összes tulajdonság a következőt reflexió használatával? -** Igen. A kötés modellek megjelenő csak tulajdonságok biztonsága a felhasználói bevitelhez megadta, hogy azok. Nincs, amely megakadályozza a reflexió használatával másolja át az összes tulajdonságai között két modell közös létező biztonsági OK.</li><li>**Mi a helyzet [kötése (kizárása = "â" ¦")]. Használható, amelyek ahelyett, hogy külön kötést modellek? -** Ez a módszer nem ajánlott. Használatával [kötése (kizárása = "â" ¦")] azt jelenti, hogy minden új tulajdonság köthető alapértelmezés szerint. Amikor új tulajdonság ad hozzá, egy további lépést megjegyezhető dolgot biztonságban van, nem pedig a Tervező képezniük alapértelmezés szerint biztonságos. Attól függően, hogy a fejlesztő a lista ellenőrzése minden alkalommal, amikor egy tulajdonság hozzáadása kockázatos.</li><li>**Van [kötése (Belefoglalás = "â" ¦")] Szerkesztés műveletekhez hasznos? -** Nem. [Kötése (Belefoglalás = "â" ¦")] csak alkalmas INSERT stílusú operations (az új adatok hozzáadása). A frissítés stílusú műveleteket (a meglévő adatok módosítása), egy másik módszert használja, például hogy külön kötést modellek vagy tulajdonságok engedélyezett explicit listáját átadni UpdateModel vagy TryUpdateModel. Hozzáadása egy [kötése (Belefoglalás = ":" ¦")] attribútum szerkesztési művelet azt jelenti, hogy MVC fog egy objektumpéldányra beállítása csak a felsorolt tulajdonságokat, a többi alapértelmezett értékükön hagyja. Amikor az adatok, azzal lecseréli a meglévő entitás-, a gyári beállítások visszaállításával minden elhagyott tulajdonságok értékeit az alapértelmezett teljes egészében. Például, ha IsAdmin kimaradt egy [kötése (Belefoglalás = ":" ¦")] attribútum szerkesztési művelet esetén minden olyan felhasználó, amelynek a neve szerkesztették keresztül ez a művelet vissza kellene állítani a IsAdmin = false (bármely módosított felhasználói elveszítik rendszergazdai állapota). Ha meg szeretné akadályozni, hogy a frissítések bizonyos tulajdonságokra, használja a fenti más megoldások egyikét. Vegye figyelembe, hogy egyes verziói MVC tooling készítése tartalmazó vezérlő osztályok [kötése (Belefoglalás = ":" ¦")] műveletek szerkesztése és utalnak, hogy a lista alapján tulajdonság eltávolítása megakadályozza a túlzott könyvelési támadásokat. Azonban fentiekben ismertetettek szerint ezt a megközelítést nem működik megfelelően, és helyette alaphelyzetbe egyetlen megadott adattal sem a nincs megadva tulajdonságok az alapértelmezett értékekre.</li><li>**A Create műveleteket, vannak-e bármilyen figyelmeztetések segítségével [kötése (Belefoglalás = "â" ¦")] ahelyett, hogy külön kötést modellek? -** Igen. Ez a megközelítés először nem működik Szerkesztés forgatókönyvek esetén igénylő összes túlzott könyvelési biztonsági rés kiküszöböléséhez két külön megközelítés karbantartása. Második, különálló kötés modellek válassza szét az alakzat használt felhasználói bevitel és az adatmegőrzési, alakzatot közötti kérdések valami [kötése (Belefoglalás = "â" ¦")] nem. Harmadik, vegye figyelembe, hogy [kötése (Belefoglalás = "â" ¦")] kezelni tud a csak legfelső szintű tulajdonságok; az attribútum nem engedélyezheti a alárendelt tulajdonságait (például "Details.Name") csak egy részeit. Végül, és lehet, hogy a legfontosabb, használja [kötése (Belefoglalás = "â" ¦")] hozzáadja egy további lépést, amely a osztály bármikor veszni modellkötést szolgál. Ha egy új műveletmetódus közvetlenül az adatok osztály kötődik, és felvenni elfelejti a [kötési (Include = ":" ¦")] attribútum, azok ki van téve a túlküldéses támadások, ezért a [kötése (Include =": "¦")] Alapértelmezés szerint kevésbé biztonságos megoldás. Használatakor [kötése (Belefoglalás = "â" ¦")], ügyeljen arra mindig, ne felejtse el megadni, akkor minden alkalommal, amikor a adatosztályokat művelet a metódusok paramétereihez jelennek meg.</li><li>**A létrehozás műveleteket, mi a helyzet üzembe a [kötése (Belefoglalás = "â" ¦")] a modell osztály attribútuma? Nem ez a módszer nem kelljen jegyezze meg a attribútum elhelyezése minden tartozó műveleti módszer? -** Ezt a módszert használja bizonyos esetekben működik. Használatával [kötése (Include = "â" ¦")] a modell típus saját magát (és nem a művelet paramétereinek Ez az osztály használatával), kelljen ne felejtse el bevenni a [kötése (Include ="â "¦")] attribútumot minden tartozó műveleti módszer. Az attribútum az osztály a közvetlenül elkülöníti a egy külön felületének Ez az osztály a modell adatkötéshez. Azonban ez a megközelítés csak egy modell kötés alakzat / modellosztállyal lehetővé teszi. Ha egy tartozó műveleti módszer kell (például egy csak rendszergazdai műveletet, amely frissíti a felhasználói szerepkörök) mező modellkötést engedélyezése és egyéb műveleteket kell ennek a mezőnek modellkötést akadályozni, ez a módszer nem fog működni. Minden osztály csak rendelkezhet egy modell kötés alakzat; Ha különböző műveleteket kell másik modellhez kötés alakzatok, szükségük vagy külön modell kötés osztályokat külön alakzatok képviseli, vagy külön [kötése (Belefoglalás = "â" ¦")] attribútumok használatát a műveletmetódusokhoz.</li><li>**Mi köti modellek? Ugyanaz, mint a modellek vannak? -** Ezek a két kapcsolódó fogalmak. A kifejezés kötés modell egy művelet paraméter-lista (az alakzat származó MVC a művelet metódusnak átadott) modell osztályra hivatkozik. A kifejezés nézet modell egy nézet egy művelet metódusból átadott modell osztályra hivatkozik. Egy nézet-specifikus modell használata egy általánosan használt megközelítés beállítását adatok átadására egy művelet metódus nézetre. Gyakran ez az alakzat is modellkötést alkalmas, és a kifejezés nézet modell segítségével tekintse meg a ugyanannak a modellnek mindkét helyen használja. Ahhoz, hogy pontos, ezzel az eljárással beszél kifejezetten modellek az alakzat, a művelet, amely fontos információk tömeges hozzárendelés céljából átadott összpontosító kötés.</li></ul>| 
 
 ## <a id="rendering"></a>Nem megbízható webes kimeneti megjelenítés előtt kódolása
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, Web Forms, MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [ASP.NET-parancsainak többhelyes megakadályozása](http://msdn.microsoft.com/library/ms998274.aspx), [parancsfájlok](http://cwe.mitre.org/data/definitions/79.html), [lehetővé (helyközi telephelyek közötti) megelőzési Cheat lap](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) |
@@ -390,7 +390,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb, mint 11 karakter
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Érvényesítési hozzáadása](http://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [modell az adatok egy MVC alkalmazás](http://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [irányadó elvek az ASP.NET MVC-alkalmazások](http://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -401,7 +401,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb, mint 11 karakter
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Nem biztonságos bemenet kódolása](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [HTML Sanitizer](https://github.com/mganss/HtmlSanitizer) |
@@ -412,7 +412,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb, mint 11 karakter
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -427,14 +427,14 @@ $("#userName").html(res.Name);
 return $('<div/>').html(value)
 $('body').append(resHTML);   
 ```
-Ne használjon `innerHtml`; Ehelyett használjon `innerText`. Hasonlóképpen, ahelyett, hogy `$("#elm").html()`, használata`$("#elm").text()` 
+Ne használjon `innerHtml`; Ehelyett használjon `innerText`. Hasonlóképpen, ahelyett, hogy `$("#elm").html()`, használata `$("#elm").text()` 
 
 ## <a id="redirect-safe"></a>Ellenőrizheti az alkalmazáson belül átirányítások lezárt vagy biztonságosan történik
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [OAuth 2.0 hitelesítési keretrendszer - nyitott átirányító](http://tools.ietf.org/html/rfc6749#section-10.15) |
@@ -445,7 +445,7 @@ Ne használjon `innerHtml`; Ehelyett használjon `innerText`. Hasonlóképpen, a
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [A modell adatai egy MVC alkalmazás ellenőrzése](http://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [irányadó elvek az ASP.NET MVC-alkalmazások](http://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -456,7 +456,7 @@ Ne használjon `innerHtml`; Ehelyett használjon `innerText`. Hasonlóképpen, a
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, Web Forms, MVC5, MVC6  |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [DefaultRegexMatchTimeout Property ](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
@@ -474,7 +474,7 @@ Például a következő konfigurációs kivételhibát egy RegexMatchTimeoutExce
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -492,14 +492,14 @@ Az alábbiakban egy nem biztonságos példa látható:
         </div>
 </div>
 ```
-Ne használjon `Html.Raw()` kivéve, ha szeretné megjeleníteni a jelölés során. Ez a módszer nem hajt végre implicit módon kódolás kimenete. Más ASP.NET segítő például használata`@Html.DisplayFor()` 
+Ne használjon `Html.Raw()` kivéve, ha szeretné megjeleníteni a jelölés során. Ez a módszer nem hajt végre implicit módon kódolás kimenete. Más ASP.NET segítő például használata `@Html.DisplayFor()` 
 
 ## <a id="stored-proc"></a>Ne használjon dinamikus lekérdezések a tárolt eljárások
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -559,10 +559,10 @@ AS
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Az ASP.NET Web API Modellellenőrzés](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Hivatkozások**              | [Az ASP.NET Web API Modellellenőrzés ](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Lépések** | Egy ügyfél adatokat küld egy webes API-t, esetén kötelező minden elvégzése előtt az adatok érvényesítéséhez. Az ASP.NET Web API-kat elfogadó bemenetként, modellek segítségével adatokat jegyzetek modell ellenőrzési szabályok a modell tulajdonságai.|
 
 ### <a name="example"></a>Példa
@@ -616,7 +616,7 @@ namespace MyApi.Controllers
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, MVC 5, 6 MVC |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [A modell adatai egy MVC alkalmazás ellenőrzése](http://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [irányadó elvek az ASP.NET MVC-alkalmazások](http://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -627,7 +627,7 @@ namespace MyApi.Controllers
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -643,7 +643,7 @@ using System.Data.SqlClient;
 using (SqlConnection connection = new SqlConnection(connectionString))
 { 
 DataSet userDataset = new DataSet(); 
-SqlDataAdapter myCommand = new SqlDataAdapter(LoginStoredProcedure", connection); 
+SqlDataAdapter myCommand = new SqlDataAdapter("LoginStoredProcedure", connection); 
 myCommand.SelectCommand.CommandType = CommandType.StoredProcedure; 
 myCommand.SelectCommand.Parameters.Add("@au_id", SqlDbType.VarChar, 11); 
 myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text; 
@@ -657,7 +657,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb, mint 11 karakter
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure Document DB rendszerbe | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Az Azure Cosmos DB SQL Parameterization bejelentése](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
@@ -668,7 +668,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb, mint 11 karakter
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
@@ -679,7 +679,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb, mint 11 karakter
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL Phase**               | Felépítés |  
+| **SDL fázis**               | Felépítés |  
 | **Alkalmazandó technológiák** | Általános, NET-keretrendszer 3 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure tartós funkciók egységek tesztelése"
-description: "Megtudhatja, hogyan egységhez tartós funkciók tesztelése."
+title: Az Azure tartós funkciók egységek tesztelése
+description: Megtudhatja, hogyan egységhez tartós funkciók tesztelése.
 services: functions
 author: kadimitr
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: kadimitr
-ms.openlocfilehash: a8d2a2281dcaf6e5e308ad4a2aafb167f9ba9121
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7de9a6f0d4dfcb45932b89504c0d38c3c70283e9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="durable-functions-unit-testing"></a>Tartós funkciók egységek tesztelése
 
@@ -28,7 +28,7 @@ Egységek tesztelése modern software development eljárások fontos része. Egy
 
 Ebben a cikkben szereplő példák a következő fogalmakat és keretrendszerek kapcsolódó ismeretek szükségesek: 
 
-* Egységek tesztelése
+* Egységtesztelés
 
 * Tartós függvények 
 
@@ -128,7 +128,7 @@ Az egységteszt kell után kombinálásával az összes lépést, a következő 
 
 ## <a name="unit-testing-orchestrator-functions"></a>Az orchestrator funkciók tesztelés egység
 
-Az orchestrator funkciók még ennél is érdekesebb megoldást tesztelését, mivel általában sokkal több üzleti logikai egységéhez. Az Orchestrator függvények jelenleg csak a C# valósítható.
+Az orchestrator funkciók még ennél is érdekesebb megoldást tesztelését, mivel általában sokkal több üzleti logikai egységéhez.
 
 Ebben a szakaszban a egység tesztek kimenetét fogja ellenőrizni a `E1_HelloSequence` Orchestrator-funkció:
 

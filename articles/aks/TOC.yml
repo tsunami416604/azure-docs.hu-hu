@@ -1,4 +1,4 @@
-- name: Azure Container Service (AKS)
+- name: Azure Kubernetes Service (AKS)
   href: ./index.yml
 - name: Áttekintés
   items:
@@ -25,9 +25,7 @@
       href: tutorial-kubernetes-scale.md
     - name: 6 – Alkalmazás frissítése
       href: tutorial-kubernetes-app-update.md
-    - name: 7 – Monitorozás a Log Analytics használatával
-      href: tutorial-kubernetes-monitor.md
-    - name: 8 – Fürt frissítése
+    - name: 7 – Fürt frissítése
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: Alapelvek
   items:
@@ -57,12 +55,16 @@
           href: azure-files-dynamic-pv.md
     - name: Hálózatkezelés konfigurálása
       items:
+        - name: Hálózatok – áttekintés
+          href: networking-overview.md
         - name: Statikus IP-cím
           href: static-ip.md
         - name: Belső terheléselosztó
           href: internal-lb.md
         - name: Bejövő forgalom és TLS
           href: ingress.md
+        - name: HTTP-alkalmazások útválasztása
+          href: http-application-routing.md
     - name: Biztonság és hitelesítés
       items:
         - name: Egyszerű szolgáltatás létrehozása

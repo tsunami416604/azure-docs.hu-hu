@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 032412c329e79ec671f59a049da7d8ddc0b9dd08
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 23dbd1f359f947b8e87ab4115887120dfd55907a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Az IoT-központ (iOS) felhő eszközre-üzenetek
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -47,8 +47,8 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 - Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
 - Az aktív IoT-központ az Azure-ban. 
 - A kód mintát [Azure-minták](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip) .
-- A legújabb [XCode](https://developer.apple.com/xcode/), az iOS SDK legújabb verzióját. A gyors üzembe helyezés az XCode 9.3 és iOS 11.3 teszteltük.
-- A legújabb [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
+- Az iOS SDK legújabb verzióját futtató [XCode](https://developer.apple.com/xcode/) legújabb verziója. A rövid útmutató tesztelése az XCode 9.3-as és az iOS 11.3-as verziójával történt.
+- A [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) legújabb verziója.
 
 
 ## <a name="simulate-an-iot-device"></a>Az IoT-eszközök szimulálása
@@ -56,23 +56,23 @@ Ebben a szakaszban szimulálása felhő eszközre üzenetek fogadása az IoT hub
 
 Ez az a cikk a minta-minta eszköz [telemetriai adatokat küldhet egy eszközről IoT hubhoz]. Ha már rendelkezik, hogy fut, ugorjon ebben a szakaszban.
 
-### <a name="install-cocoapods"></a>Telepítse a CocoaPods
+### <a name="install-cocoapods"></a>A CocoaPods telepítése
 
-CocoaPods kezeléséhez külső szalagtárak használó iOS-projektek függőségeit.
+A CocoaPods a külső gyártótól származó kódtárakat használó iOS-projektek függőségeit kezeli.
 
-Egy terminálablakot navigáljon az Azure IoT-minták-iOS-mappa az Előfeltételek letöltött. Ezt követően navigáljon a minta projekt:
+Egy terminálablakban lépjen az Azure-IoT-Samples-iOS mappához, amelyet az előfeltételek részben töltött le. Ezután lépjen a mintaprojekthez:
 
 ```sh
 cd quickstart/sample-device
 ```
 
-Győződjön meg arról, hogy az XCode befejeződik, majd futtassa a következő parancsot a CocoaPods táblákon telepítéséhez a **podfile** fájlt:
+Győződjön meg arról, hogy az XCode be van zárva, majd futtassa az alábbi parancsot a **podfile** fájlban szereplő CocoaPods telepítéséhez:
 
 ```sh
 pod install
 ```
 
-A projekthez szükséges három munkaállomás-csoporttal telepítése, valamint a telepítési parancsot is létrejön, az XCode munkaterület fájl, amely már be van állítva a három munkaállomás-csoporttal használandó függőségek. 
+A projekthez szükséges podok telepítésén kívül a telepítési parancs egy XCode-munkaterületfájlt is létrehozott, amely már konfigurálva van a podok függőségekhez való használatára. 
 
 ### <a name="run-the-sample-device-application"></a>Futtassa a mintaalkalmazást eszköz 
 
@@ -82,28 +82,28 @@ A projekthez szükséges három munkaállomás-csoporttal telepítése, valamint
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {YourDeviceID} --output table
     ```
 
-1. Nyissa meg a minta munkaterületet az xcode-ban.
+1. Nyissa meg a minta munkaterületet az XCode-ban.
 
    ```sh
    open "MQTT Client Sample.xcworkspace"
    ```
 
 2. Bontsa ki a **MQTT ügyfél minta** projekt és az azonos nevű mappa.  
-3. Nyissa meg **ViewController.swift** az xcode-ban szerkesztésre. 
+3. Nyissa meg **ViewController.swift** fájlt az XCode-ban való szerkesztéshez. 
 4. Keresse meg a **connectionString** változót, és frissítse az értéket, az eszköz kapcsolattal az első lépésben másolt karakterlánc.
 5. Mentse a módosításokat. 
-6. A projekt az eszköz-emulátorban való futtatásához a **létrehozása és futtatása** gomb vagy a kulcs kombinált **parancs + r**. 
+6. Futtassa a projektet az eszközemulátorban a **Létrehozás és futtatás** gombbal vagy a **command + r** billentyűkombinációval. 
 
-   ![A projekt futtatásához](media/quickstart-send-telemetry-ios/run-sample.png)
+   ![A projekt futtatása](media/quickstart-send-telemetry-ios/run-sample.png)
 
 
 ## <a name="simulate-a-service-device"></a>A szolgáltatás eszköze szimulálása
 
 Ebben a szakaszban egy második iOS-eszközön, amely a felhő-eszközön keresztül küld üzeneteket az IoT hub Swift alkalmazással szimulálásához. Ez a konfiguráció akkor hasznos, az IoT-forgatókönyvek esetén, ahol van egy iPhone vagy iPad tartományvezérlőként működik-e az egyéb iOS-eszközök csatlakozik az IoT-központ. 
 
-### <a name="install-cocoapods"></a>Telepítse a CocoaPods
+### <a name="install-cocoapods"></a>A CocoaPods telepítése
 
-CocoaPods kezeléséhez külső szalagtárak használó iOS-projektek függőségeit.
+A CocoaPods a külső gyártótól származó kódtárakat használó iOS-projektek függőségeit kezeli.
 
 Keresse meg az iOS Azure IoT-mintákat az előfeltételeket a mappát. Ezt követően navigáljon a minta-projekt:
 
@@ -111,13 +111,13 @@ Keresse meg az iOS Azure IoT-mintákat az előfeltételeket a mappát. Ezt köve
 cd quickstart/sample-service
 ```
 
-Győződjön meg arról, hogy az XCode befejeződik, majd futtassa a következő parancsot a CocoaPods táblákon telepítéséhez a **podfile** fájlt:
+Győződjön meg arról, hogy az XCode be van zárva, majd futtassa az alábbi parancsot a **podfile** fájlban szereplő CocoaPods telepítéséhez:
 
 ```sh
 pod install
 ```
 
-A projekthez szükséges három munkaállomás-csoporttal telepítése, valamint a telepítési parancsot is létrejön, az XCode munkaterület fájl, amely már be van állítva a három munkaállomás-csoporttal használandó függőségek.
+A projekthez szükséges podok telepítésén kívül a telepítési parancs egy XCode-munkaterületfájlt is létrehozott, amely már konfigurálva van a podok függőségekhez való használatára.
 
 ### <a name="run-the-sample-service-application"></a>Futtassa a mintaalkalmazást szolgáltatás
 
@@ -127,14 +127,14 @@ A projekthez szükséges három munkaállomás-csoporttal telepítése, valamint
     az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
     ```
 
-2. Nyissa meg a minta munkaterületet az xcode-ban.
+2. Nyissa meg a minta munkaterületet az XCode-ban.
 
    ```sh
    open AzureIoTServiceSample.xcworkspace
    ```
 
 3. Bontsa ki a **AzureIoTServiceSample** projektre, majd bontsa ki az azonos nevű mappát.  
-4. Nyissa meg **ViewController.swift** az xcode-ban szerkesztésre. 
+4. Nyissa meg **ViewController.swift** fájlt az XCode-ban való szerkesztéshez. 
 5. Keresse meg a **connectionString** változót, és frissítse az értéket a korábban kimásolt kapcsolati karakterláncot.
 6. Mentse a módosításokat. 
 7. Az xcode-ban módosítsa az emulátor beállításokat egy másik iOS-eszközön, mint amennyit az IoT-eszközök futtatásához használt. XCode nem futtatható több emulátorok ugyanabba a típusba tartozik. 
@@ -143,7 +143,7 @@ A projekthez szükséges három munkaállomás-csoporttal telepítése, valamint
 
 8. A projekt az eszköz-emulátorban való futtatásához a **létrehozása és futtatása** gomb vagy a kulcs kombinált **parancs + r**. 
 
-   ![A projekt futtatásához](media/iot-hub-ios-swift-c2d/run-app.png)
+   ![A projekt futtatása](media/iot-hub-ios-swift-c2d/run-app.png)
 
 
 ## <a name="send-a-cloud-to-device-message"></a>Felhő eszközre üzenet küldése
@@ -166,7 +166,7 @@ A kimenet az alábbihoz hasonlóan kell kinéznie:
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
 
-Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Azure IoT Suite].
+Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [megoldásgyorsító Azure IoT távoli megfigyelési].
 
 Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
 
@@ -185,4 +185,4 @@ Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure portal]: https://portal.azure.com
-[Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[megoldásgyorsító Azure IoT távoli megfigyelési]: https://azure.microsoft.com/documentation/suites/iot-suite/

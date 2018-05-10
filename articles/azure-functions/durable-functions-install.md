@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3a83ed5f7dba3e4d68204a2c9dffb4459cadfef9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4dd4bbb9c382b772f8f60b259844e7e471ec73e3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Telepítse a tartós funkciók bővítményt, és minták (az Azure Functions)
 
 A [tartós funkciók](durable-functions-overview.md) Azure Functions kiterjesztése a NuGet-csomag megadott [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Ez a cikk bemutatja, hogyan telepíthetik a csomagot és minták a következő fejlesztési környezetben:
 
-* A Visual Studio 2017 (ajánlott) 
-* Visual Studio Code
+* A Visual Studio 2017 (C# esetén ajánlott) 
+* A Visual Studio Code (JavaScript ajánlott)
 * Azure Portal
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
@@ -36,7 +36,7 @@ A Visual Studio jelenleg a legjobb élményt nyújt a tartós funkciók használ
 
 * Telepítse a [Visual Studio legújabb verziójának](https://www.visualstudio.com/downloads/) (15.3 vagy újabb verziója). Tartalmazza a **Azure fejlesztési** munkaterhelés a telepítési beállítások.
 
-### <a name="start-with-sample-functions"></a>Indítsa el a minta-funkciók
+### <a name="start-with-sample-functions"></a>Indítsa el a minta-funkciók 
 
 1. Töltse le a [mintaalkalmazás .zip-fájlt a Visual Studio](https://azure.github.io/azure-functions-durable-extension/files/VSDFSampleApp.zip). Nem kell a NuGet hivatkozás hozzáadása, mert a minta-projekt már tartalmaz.
 2. Telepítheti és futtathatja [Azure Storage Emulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) 5.2-es vagy újabb verziója. Másik megoldásként frissítheti a *local.appsettings.json* valós Azure Storage kapcsolati karakterláncok fájlt.
@@ -48,11 +48,11 @@ A Visual Studio jelenleg a legjobb élményt nyújt a tartós funkciók használ
 Mint a minta kezdve azonos útmutatásait, de a következő lépések letöltésük helyett a *.zip* fájlt:
 
 1. Hozzon létre egy függvény App projektet.
-2. Keresse meg a következő NuGet csomag hivatkozás segítségével *Nuget-csomagok kezelése* és adja hozzá a projekthez: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.1.0 beta2 (ellenőrzése *közé tartoznak az előzetes* Ez a csomag keresése)
+2. Keresse meg a következő NuGet csomag hivatkozás segítségével *NuGet-csomagok kezelése* és adja hozzá a projekthez: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.4.0 (ellenőrizze *prerelease tartalmazza* számára Keresse meg a csomag)
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-A Visual Studio Code vonatkozó összes fő platformok – a Windows, a macOS és a Linux helyi fejlesztési élményt nyújt.  A funkciók futtatható helyileg, és az Azure-ba is tehetők közzé. Egy üres projektet vagy minta funkciók is elindítható.
+A Visual Studio Code vonatkozó összes fő platformok – a Windows, a macOS és a Linux helyi fejlesztési élményt nyújt.  A funkciók futtatható helyileg, és szintén közzé kell tenni, az Azure-bA. Egy üres projektet vagy minta funkciók is elindítható.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -63,24 +63,51 @@ A Visual Studio Code vonatkozó összes fő platformok – a Windows, a macOS é
     >[!IMPORTANT]
     > Ha már rendelkezik az Azure funkciók Cross Platform eszközök, frissítse azokat az elérhető legújabb verzióra.
 
-*  Telepítheti és futtathatja [Azure Storage Emulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) 5.2-es vagy újabb verziója. Másik megoldásként frissítheti a *local.appsettings.json* valós Azure Storage-kapcsolattal rendelkező fájl. 
+    >[!IMPORTANT]
+    >A JavaScript tartós funkciók verziójára van szükség az Azure Functions Core eszközök 2.x.
+
+*  Ha Windows-gépen, telepíteni és futtatni [Azure Storage Emulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) 5.2-es vagy újabb verziója. Másik megoldásként frissítheti a *local.appsettings.json* valós Azure Storage-kapcsolattal rendelkező fájl. 
 
 
 ### <a name="start-with-sample-functions"></a>Indítsa el a minta-funkciók
+
+#### <a name="c"></a>C#
 
 1. Klónozott a [tartós funkciók tárház](https://github.com/Azure/azure-functions-durable-extension.git).
 2. A számítógépen keresse meg a [C# minták parancsfájlmappa](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx). 
 3. Azure Functions tartós bővítményének telepítése a következő parancs futtatásával Rákérdezés / terminál ablakban:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.2.0-beta3
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
     ```
 4. Azure Functions Twilio-kiterjesztés telepítése a következő parancs futtatásával Rákérdezés / terminál ablakban:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta4
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta5
     ```
 5. Futtassa az Azure Storage Emulator vagy a frissítés a *local.appsettings.json* fájl valós Azure Storage kapcsolati karakterlánccal.
+6. Nyissa meg a projektet a Visual Studio Code. 
+7. A minta futtatásához útmutatást, kezdje [működéséhez láncolás – feladatütemezési példa Hello](durable-functions-sequence.md). A minta helyileg történő futtatása, vagy az Azure-bA közzé.
+8. Indítsa el a projekt parancsban Rákérdezés / terminál a következő parancs futtatásával:
+    ```bash
+    func host start
+    ```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+1. Klónozott a [tartós funkciók tárház](https://github.com/Azure/azure-functions-durable-extension.git).
+2. A számítógépen keresse meg a [JavaScript minták mappa](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
+3. Azure Functions tartós bővítményének telepítése a következő parancs futtatásával Rákérdezés / terminál ablakban:
+
+    ```bash
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    ```
+4. Állítsa vissza az npm csomagok a következő parancs futtatásával Rákérdezés / terminál ablakban:
+    
+    ```bash
+    npm install
+    ``` 
+5. Frissítés a *local.appsettings.json* valós Azure Storage kapcsolati karakterlánccal rendelkező fájl.
 6. Nyissa meg a projektet a Visual Studio Code. 
 7. A minta futtatásához útmutatást, kezdje [működéséhez láncolás – feladatütemezési példa Hello](durable-functions-sequence.md). A minta helyileg történő futtatása, vagy az Azure-bA közzé.
 8. Indítsa el a projekt parancsban Rákérdezés / terminál a következő parancs futtatásával:
@@ -94,7 +121,7 @@ A Visual Studio Code vonatkozó összes fő platformok – a Windows, a macOS é
 2. Az Azure-funkciók tartós bővítményének telepítése a következő parancs futtatásával Rákérdezés / terminál ablakban:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.1.0-beta2
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
     ```
 3. Függvény-alkalmazás projekt létrehozása a következő parancs futtatásával:
 
@@ -119,6 +146,9 @@ A Visual Studio Code vonatkozó összes fő platformok – a Windows, a macOS é
 ## <a name="azure-portal"></a>Azure Portal
 
 Tetszés szerint használhatja az Azure-portálon a tartós funkciók fejlesztése.
+
+   > [!NOTE]
+   > A JavaScript tartós funkciók még nem állnak rendelkezésre a portálon.
 
 ### <a name="create-an-orchestrator-function"></a>Az orchestrator-függvény létrehozása
 

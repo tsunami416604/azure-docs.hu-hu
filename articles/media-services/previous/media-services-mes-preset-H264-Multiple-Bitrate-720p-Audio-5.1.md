@@ -1,11 +1,11 @@
 ---
-title: "H264 Több sávszélességű 720p hang 5.1 |} Microsoft Docs"
-description: "A témakör a andverview biztosít a ** H264 Multiple Bitrate 720p hang 5.1* * feladat készletet."
+title: H264 Több sávszélességű 720p hang 5.1 |} Microsoft Docs
+description: A témakör a andverview biztosít a **H264 Multiple Bitrate 720p hang 5.1** feladat az adott néven beállítás.
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 92da14ad-7b04-4bd9-8eb5-9103f38441be
 ms.service: media-services
 ms.workload: media
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
 ms.openlocfilehash: 29934b255a6f9f303f427bf5fb3875634da89b0f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="h264-multiple-bitrate-720p-audio-51"></a>H264 Több sávszélességű 720p hang 5.1
-`Media Encoder Standard`Meghatározza a kódolási készletek kódolási feladatok létrehozásakor használható. Használhatja a `preset name` adhatja meg, melyik formátumba kódolja a médiafájl szeretné. Másik lehetőségként létrehozhat saját JSON- vagy XML-alapú készletek (UTF-8 vagy UTF-16 kódolás használatával. Az egyéni készletet a kódoló majd át lesz. Ez által támogatott összes előre definiált nevek listája `Media Encoder Standard` kódoló, lásd: [feladat készletek a Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` Meghatározza a kódolási készletek kódolási feladatok létrehozásakor használható. Használhatja a `preset name` adhatja meg, melyik formátumba kódolja a médiafájl szeretné. Másik lehetőségként létrehozhat saját JSON- vagy XML-alapú készletek (UTF-8 vagy UTF-16 kódolás használatával. Az egyéni készletet a kódoló majd át lesz. Ez által támogatott összes előre definiált nevek listája `Media Encoder Standard` kódoló, lásd: [feladat készletek a Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  Ez a témakör bemutatja a `H264 Multiple Bitrate 720p Audio 5.1` beállított XML és a JSON formátumban.  
   

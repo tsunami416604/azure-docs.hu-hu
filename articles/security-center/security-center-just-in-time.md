@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 05/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 8c2a7e723d21f79f21e92da31fbc4fd49d64fd37
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4f0afe48c37c6cb5dc8c1658f0a7beed4f0e6140
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>JIT-virtuális gép hozzáférés kezelése
 
@@ -41,7 +41,7 @@ Egy találgatásos támadással való kitettség csökkentése érdekében módj
 
 Ha az igény szerinti hozzáférés engedélyezve van, a Security Center minden, az Azure-beli virtuális gépekre érkező forgalmat zárol egy NSG-szabály létrehozásával. Kiválaszthatja a a virtuális Gépre, amelyre a bejövő forgalom lesz zárolva. Ezeket a portokat szabályozzák az imént idő megoldásban.
 
-Amikor egy felhasználó egy virtuális Géphez való hozzáférést igényel, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) írási hozzáférést biztosítson a virtuális gép az engedélyeket. Ha, írási jogosultsággal rendelkeznek, a kérelem jóváhagyása és a Security Center automatikusan konfigurálja a hálózati biztonsági csoportok (NSG-k) a bejövő forgalom a felügyeleti portokat ennyi ideig való adott meg. Az időszak lejárta után a Security Center az NSG-ket visszaállítja korábbi állapotába.
+Amikor egy felhasználó egy virtuális Géphez való hozzáférést igényel, a Security Center ellenőrzi, hogy a felhasználó rendelkezik-e [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) írási hozzáférést biztosítson a virtuális gép az engedélyeket. Ha írási engedélyek lettek, a kérelem jóváhagyása és a Security Center automatikusan konfigurálja a hálózati biztonsági csoportok (NSG-k) a kijelölt porton ennyi ideig bejövő adatforgalom engedélyezésére adott meg. Az időszak lejárta után a Security Center az NSG-ket visszaállítja korábbi állapotába.
 
 > [!NOTE]
 > Biztonsági központ csak a virtuális gép elérhető jelenleg csak virtuális gépek Azure Resource Manager használatával telepített. Ismerje meg, a klasszikus és Resource Manager üzembe helyezési modellel kapcsolatos információkért tekintse meg a [Azure Resource Manager és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md).

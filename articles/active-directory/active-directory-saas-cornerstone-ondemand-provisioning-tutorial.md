@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: a1d2261eb0d4d57b5bf8b5c7baae792a0ff41862
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9754058869d790f99e3c44db6ddd31b0ecb7a4e4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés legfontosabb feladatai közé tartoznak OnDemand konfigurálása
 
@@ -106,7 +106,7 @@ Ez a szakasz végigvezeti az Azure AD szolgáltatás kiépítését, módosítá
 
 5. Az a **rendszergazdai hitelesítő adataival** területen adjon meg a **rendszergazda felhasználóneve**, **rendszergazdai jelszó**, és **tartomány** , a legfontosabb feladatai közé tartoznak OnDemand fiók.
 
-    *   Az a **rendszergazda felhasználóneve** mezőbe feltöltése a legfontosabb feladatai közé tartoznak OnDemand tenant a rendszergazdai fiók felhasználónevét. Példa: a rendszergazdának.
+    *   Az a **rendszergazda felhasználóneve** mezőben, a rendszergazda fiók a legfontosabb feladatai közé tartoznak OnDemand tenant tartomány\felhasználónév feltöltéséhez. Példa: contoso\admin.
 
     *   Az a **rendszergazdai jelszó** mezőbe a jelszót a rendszergazdai felhasználónév megfelelő feltöltéséhez.
 

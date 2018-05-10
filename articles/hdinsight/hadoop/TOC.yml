@@ -1,8 +1,8 @@
 - name: "Azure HDInsight\_– dokumentáció"
   href: /azure/hdinsight
-- name: Hadoop on HDInsight
+- name: Áttekintés
   items:
-    - name: Áttekintés
+    - name: Tudnivalók a HDInsight-alapú Hadoopról
       href: apache-hadoop-introduction.md
     - name: Hadoop-architektúra a HDInsightban
       href: ../hdinsight-hadoop-architecture.md
@@ -10,20 +10,32 @@
     - name: Hadoop-összetevők a HDInsighton
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Bevezetés
+- name: Első lépések
   items:
-    - name: Első lépések a Hadoopban
+    - name: Hadoop-fürt létrehozása – Portál
+      href: apache-hadoop-linux-create-cluster-get-started-portal.md
+    - name: Hadoop-fürt létrehozása – Resource Manager
       href: apache-hadoop-linux-tutorial-get-started.md
-    - name: Hadoop-tesztkörnyezet
-      href: apache-hadoop-emulator-get-started.md
-    - name: HDInsight-alkalmazások telepítése
-      href: ../hdinsight-apps-install-applications.md
+- name: Oktatóanyagok
+  items:
+    - name: ETL-műveletek végrehajtása
+      href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
+    - name: Igény szerinti fürtök létrehozása
+      href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+      maintainContext: true
+- name: Alapelvek
+  items:
     - name: A fürtök kapacitástervezése
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: Rendelkezésre állás és megbízhatóság
+      href: ../hdinsight-high-availability-linux.md
+      maintainContext: true
 - name: Útmutató
   items:
+    - name: Hadoop-tesztkörnyezet használata
+      href: apache-hadoop-emulator-get-started.md
     - name: Fürttároló használata
       items:
         - name: Az Azure Storage használata
@@ -144,9 +156,6 @@
         - name: Tárolt tweetek elemzése
           href: ../hdinsight-analyze-twitter-data-linux.md
           maintainContext: true
-        - name: Repülőjáratok késési adatainak elemzése
-          href: ../hdinsight-analyze-flight-delay-data-linux.md
-          maintainContext: true
         - name: Javaslatok létrehozása a Mahout használatával
           href: apache-hadoop-mahout-linux-mac.md
         - name: Webhelynaplók elemzése a Hive használatával
@@ -164,6 +173,9 @@
           maintainContext: true
     - name: Fürtök kiterjesztése
       items:
+        - name: HDInsight-alkalmazások telepítése
+          href: ../hdinsight-apps-install-applications.md
+          maintainContext: true
         - name: Fürtök testreszabása a Bootstrap használatával
           href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
           maintainContext: true
@@ -260,9 +272,6 @@
             - name: Használjon Azure Resource Manager-sablonokat
               href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
               maintainContext: true
-        - name: Igény szerinti fürtök létrehozása
-          href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-          maintainContext: true
         - name: Hadoop-fürtök kezelése
           href: ../hdinsight-administer-use-portal-linux.md
           maintainContext: true
@@ -329,9 +338,6 @@
           maintainContext: true
         - name: Áttelepítés Resource Manager fejlesztői eszközökre
           href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
-          maintainContext: true
-        - name: Rendelkezésre állás és megbízhatóság
-          href: ../hdinsight-high-availability-linux.md
           maintainContext: true
         - name: A HDInsight-fürt frissítése újabb verzióra
           href: ../hdinsight-upgrade-cluster.md

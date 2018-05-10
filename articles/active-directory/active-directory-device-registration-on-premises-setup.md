@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0ce4497a8bebf9078363509c1f962728ab4189f8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>A helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációs használatával
 Ha munkahelyi-csatlakozás a felhasználók saját eszközét, az Azure Active Directory (Azure AD) eszközregisztrációs szolgáltatását, az eszközeik jelölhető, amelyről ismert, hogy a szervezet. Az alábbiakban részletesen ismerteti az Active Directory összevonási szolgáltatások (AD FS) a Windows Server 2012 R2 használatával a helyszíni alkalmazások feltételes hozzáférést tesz lehetővé.
@@ -86,7 +86,7 @@ Kövesse az ellenőrzőlista engedélyezése és konfigurálása az Azure Active
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>3. lépés: Engedélyezze az Azure AD eszközvisszaíró
 | Tevékenység | Leírások |
 | --- | --- |
-| Fejezze be a második rész a "Eszközvisszaírás engedélyezése az Azure AD Connectben." Amikor végzett, térjen vissza az útmutató. |[Eszközvisszaírás engedélyezése az Azure AD Connectben](#upgrade-your-active-directory-domain-services-schema) |
+| Fejezze be a második rész a "Eszközvisszaírás engedélyezése az Azure AD Connectben." Amikor végzett, térjen vissza az útmutató. |[Eszközvisszaírás engedélyezése az Azure AD Connectben](./connect/active-directory-aadconnect-feature-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Választható] 4. lépés: Az többtényezős hitelesítés engedélyezése
 Határozottan javasoljuk, hogy a multi-factor Authentication több lehetőség közül választhat. Ha azt szeretné, hogy többtényezős hitelesítést, lásd: [válassza ki a multi-factor Authentication biztonsági megoldást,](authentication/concept-mfa-whichversion.md). Ez magában foglalja az egyes megoldások, és hivatkozások segítségével konfigurálja a megoldást az Ön által választott leírását.

@@ -1,6 +1,6 @@
 ---
-title: "Kubelet naplók lekérése az Azure tároló szolgáltatás (AKS)"
-description: "Azure tároló szolgáltatás (AKS) fürtcsomópontok kubelet naplók beolvasása"
+title: Kubelet naplók lekérése az Azure Kubernetes szolgáltatás (AKS)
+description: Azure Kubernetes szolgáltatás (AKS) fürtcsomópontok kubelet naplók beolvasása
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 56e20a9f9d17eac01e6f85007db41dcc417f83e4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: 0467be7e91fdbf4685fc41a375ea86a503e26009
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-kubelet-logs-from-azure-container-service-aks-cluster-nodes"></a>Azure tároló szolgáltatás (AKS) fürtcsomópontok kubelet naplók beolvasása
+# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes szolgáltatás (AKS) fürtcsomópontok kubelet naplók beolvasása
 
-Alkalmanként szükség lehet egy Azure tároló szolgáltatás (AKS) csomópont hibaelhárítási célból kubelet naplók beolvasása. Ez a dokumentum részletesen megoldás lehet, ha ezek a naplók húzza.
+Alkalmanként szükség lehet egy Azure Kubernetes szolgáltatás (AKS) csomópont hibaelhárítási célból kubelet naplók beolvasása. Ez a dokumentum részletesen megoldás lehet, ha ezek a naplók húzza.
 
 ## <a name="create-an-ssh-connection"></a>Az SSH-kapcsolat létrehozása
 
-Először hozzon létre egy SSH-kapcsolat a csomóponthoz, amelyre kubelet naplók lekéréses kell. Ez a művelet részleteit a a [SSH-ból Azure tároló szolgáltatás (AKS) fürtcsomópontok] [ aks-ssh] dokumentum.
+Először hozzon létre egy SSH-kapcsolat a csomóponthoz, amelyre kubelet naplók lekéréses kell. Ez a művelet részleteit a a [SSH-ból Azure Kubernetes szolgáltatás (AKS) fürtcsomópontok] [ aks-ssh] dokumentum.
 
-## <a name="get-kubelet-logs"></a>Kubelet naplófájlok
+## <a name="get-kubelet-logs"></a>Kubelet-naplók beszerzése
 
 Egyszer csatlakozott a csomópontra, a következő parancsot a kubelet naplók le tudja.
 

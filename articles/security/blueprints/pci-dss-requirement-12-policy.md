@@ -1,9 +1,9 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - házirenddel kapcsolatos követelmények"
-description: "PCI DSS követelmény 12"
+title: Az Azure támogatási feldolgozási tervezetének - házirenddel kapcsolatos követelmények
+description: PCI DSS követelmény 12
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: a79d59d8-20e3-4efe-8686-c8f4ed80e220
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 05e9ed7c886d37a024db1eedbc541705b7d8a9a9
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 2fb238e9b95180d6156159c87ec008a71943e698
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="policy-requirements-for-pci-dss-compliant-environments"></a>Házirend követelményeinek PCI DSS-kompatibilis környezetben  
 ## <a name="pci-dss-requirement-12"></a>PCI DSS követelmény 12
@@ -38,8 +38,8 @@ Egy erős biztonsági szabályzatot állítja be a biztonsági hangjelzés után
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozásáért és fenntartásáért az információk biztonsági házirend.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozásáért és fenntartásáért az információk biztonsági házirend.|
 
 
 
@@ -51,8 +51,8 @@ Egy erős biztonsági szabályzatot állítja be a biztonsági hangjelzés után
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége, legalább évente frissítése az információk biztonsági házirendet, vagy ha a kártya tulajdonosát adatok környezet (CDE) módosult.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége, legalább évente frissítése az információk biztonsági házirendet, vagy ha a kártya tulajdonosát adatok környezet (CDE) módosult.|
 
 
 
@@ -68,8 +68,8 @@ Egy erős biztonsági szabályzatot állítja be a biztonsági hangjelzés után
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége, amely követelmény 12.2 szereplő összes fenyegetést kockázat értékelési folyamat megvalósítása.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége, amely követelmény 12.2 szereplő összes fenyegetést kockázat értékelési folyamat megvalósítása.|
 
 
 
@@ -85,8 +85,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -98,8 +98,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -111,8 +111,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -124,8 +124,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -137,8 +137,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -150,8 +150,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -163,8 +163,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége felhőalapú virtuális gépek, tárolás és a támogató szolgáltatások elfogadható hálózati helyek meghatározásához.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége felhőalapú virtuális gépek, tárolás és a támogató szolgáltatások elfogadható hálózati helyek meghatározásához.|
 
 
 
@@ -176,8 +176,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége felhőalapú virtuális gépek, tárolás és a támogató szolgáltatások elfogadható hálózati helyek meghatározásához.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége felhőalapú virtuális gépek, tárolás és a támogató szolgáltatások elfogadható hálózati helyek meghatározásához.|
 
 
 
@@ -189,8 +189,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure a Microsoft vállalati AD munkamenet lock funkciót, amely érvényesíti a munkamenet zárolási elemek adott ideig tartó tétlenség után használja. Hálózati kapcsolatok leállítása 30 perc inaktivitás után van. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure a Microsoft vállalati AD munkamenet lock funkciót, amely érvényesíti a munkamenet zárolási elemek adott ideig tartó tétlenség után használja. Hálózati kapcsolatok leállítása 30 perc inaktivitás után van. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -202,8 +202,8 @@ Győződjön meg arról, a használati házirendek a következők szükségesek.
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -216,8 +216,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége annak biztosítása, hogy személyzet kártya tulajdonosát adatait távelérés-technológiák keresztül érik el tilos a másolása, áthelyezés és kártya tulajdonosát adattárolás a helyi merevlemez-meghajtók és elektronikus cserélhető adathordozóra, kivéve, ha kifejezetten engedélyezi egy adott üzleti igényeknek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége annak biztosítása, hogy személyzet kártya tulajdonosát adatait távelérés-technológiák keresztül érik el tilos a másolása, áthelyezés és kártya tulajdonosát adattárolás a helyi merevlemez-meghajtók és elektronikus cserélhető adathordozóra, kivéve, ha kifejezetten engedélyezi egy adott üzleti igényeknek.|
 
 
 
@@ -229,8 +229,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -247,8 +247,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek, akik a szolgáltatók a PCI megfelelőségi program dokumentálásáért felelősek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek, akik a szolgáltatók a PCI megfelelőségi program dokumentálásáért felelősek.|
 
 
 
@@ -260,8 +260,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége meghatározása, és rendelje hozzá a információk biztonsági feladataikat az alkalmazottak számára.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége meghatározása, és rendelje hozzá a információk biztonsági feladataikat az alkalmazottak számára.|
 
 
 
@@ -273,8 +273,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége meghatározása, és rendelje hozzá a információk biztonsági feladataikat az alkalmazottak számára.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége meghatározása, és rendelje hozzá a információk biztonsági feladataikat az alkalmazottak számára.|
 
 
 
@@ -286,8 +286,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége meghatározása, és rendelje hozzá a információk biztonsági feladataikat az alkalmazottak számára.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége meghatározása, és rendelje hozzá a információk biztonsági feladataikat az alkalmazottak számára.|
 
 
 
@@ -299,8 +299,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -312,8 +312,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -325,8 +325,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége létrehozására és karbantartására Diktálás megfelelő használati, megvalósítása és a kritikus technológiák belül a CDE hitelesítési házirendek.|
 
 
 
@@ -338,8 +338,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége létrehozása és a biztonsági kiszolgáló és a CDE hozzáféréssel rendelkező munkatársak körülvevő házirendek karbantartására.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége létrehozása és a biztonsági kiszolgáló és a CDE hozzáféréssel rendelkező munkatársak körülvevő házirendek karbantartására.|
 
 
 
@@ -354,8 +354,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége annak biztosítása az alkalmazottak valamint információ-biztonság és PCI DSS tájékoztatási betanítása legalább évente.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége annak biztosítása az alkalmazottak valamint információ-biztonság és PCI DSS tájékoztatási betanítása legalább évente.|
 
 
 
@@ -367,8 +367,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége annak biztosítása az alkalmazottak valamint információ-biztonság és PCI DSS tájékoztatási betanítása legalább évente.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége annak biztosítása az alkalmazottak valamint információ-biztonság és PCI DSS tájékoztatási betanítása legalább évente.|
 
 
 
@@ -383,8 +383,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelősek hozzáféréssel rendelkező munkatársak számára a CDE változni alapos átvilágítást.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelősek hozzáféréssel rendelkező munkatársak számára a CDE változni alapos átvilágítást.|
 
 
 
@@ -396,8 +396,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelősek PCI-megfelelőséget a szolgáltatók, akikkel kártya tulajdonosát adatok megosztott vagy befolyásolhatják a CDE biztonságát. Az ügyfelek kezelnie kell az összes szolgáltatás listáját biztosít a CDE történik.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelősek PCI-megfelelőséget a szolgáltatók, akikkel kártya tulajdonosát adatok megosztott vagy befolyásolhatják a CDE biztonságát. Az ügyfelek kezelnie kell az összes szolgáltatás listáját biztosít a CDE történik.|
 
 
 
@@ -410,8 +410,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelősek PCI-megfelelőséget a szolgáltatók, akikkel kártya tulajdonosát adatok megosztott vagy befolyásolhatják a CDE biztonságát. Az ügyfelek kezelnie kell az összes szolgáltatás listáját biztosít a CDE történik.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelősek PCI-megfelelőséget a szolgáltatók, akikkel kártya tulajdonosát adatok megosztott vagy befolyásolhatják a CDE biztonságát. Az ügyfelek kezelnie kell az összes szolgáltatás listáját biztosít a CDE történik.|
 
 
 
@@ -426,8 +426,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége írásbeli szerződés fenntartása a kártya tulajdonosát adatok biztonságának fenntartása felelősséget igazolása szolgáltatókkal.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége írásbeli szerződés fenntartása a kártya tulajdonosát adatok biztonságának fenntartása felelősséget igazolása szolgáltatókkal.|
 
 
 
@@ -439,8 +439,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége annak biztosítása, egy meghatározott folyamat folytatásához, beleértve a megfelelő gondossággal előtt lejáró engagement szolgáltatók van.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége annak biztosítása, egy meghatározott folyamat folytatásához, beleértve a megfelelő gondossággal előtt lejáró engagement szolgáltatók van.|
 
 
 
@@ -452,8 +452,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek szolgáltatók PCI DSS megfelelőségi állapot figyelése évente legalább egy program karbantartásáért felelős.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek szolgáltatók PCI DSS megfelelőségi állapot figyelése évente legalább egy program karbantartásáért felelős.|
 
 
 
@@ -465,8 +465,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége másolatának megőrzése a [felelős összegzés mátrix](https://aka.ms/pciblueprintcrm32), amely ismerteti, hogy az ügyfél és a Microsoft Azure felelőssége felelőssége PCI DSS követelmények.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége másolatának megőrzése a [felelős összegzés mátrix](https://aka.ms/pciblueprintcrm32), amely ismerteti, hogy az ügyfél és a Microsoft Azure felelőssége felelőssége PCI DSS követelmények.|
 
 
 
@@ -481,8 +481,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek, amelyek szolgáltatók megőrzéséhez a PCI-megfelelőséget feladataik igazolása felelősek. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek, amelyek szolgáltatók megőrzéséhez a PCI-megfelelőséget feladataik igazolása felelősek. |
 
 
 
@@ -494,8 +494,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
 
 
 
@@ -514,8 +514,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
 
 
 
@@ -528,8 +528,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
 
 
 
@@ -541,8 +541,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
 
 
 
@@ -554,8 +554,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
 
 
 
@@ -567,8 +567,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
 
 
 
@@ -580,8 +580,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelei felelősek az infravörös tervek és tesztelését, amelyek figyelembe veszi a megosztott touch pontok és az Azure infrastruktúrája kihasználva vevő alkalmazások vevői vezérlőket. Feladata az ügyfél pontos kapcsolattartási adatok megadása az Azure-ba, abban az esetben, ha egy incidenst kell jelenteni kell őket, ami hatással lehet az alkalmazás vagy adatokat.|
 
 
 
@@ -603,8 +603,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek, akik szolgáltatók felelősek az értékelést általában PCI megfelelőségi ellenőrzési teljesítményének folyamatok dokumentálása.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek, akik szolgáltatók felelősek az értékelést általában PCI megfelelőségi ellenőrzési teljesítményének folyamatok dokumentálása.|
 
 
 
@@ -622,8 +622,8 @@ Ha egy engedélyezett üzleti igény, a használati házirendek követelheti meg
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek, akik szolgáltatók felelősek az értékelést általában PCI megfelelőségi ellenőrzési teljesítményének folyamatok dokumentálása.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek, akik szolgáltatók felelősek az értékelést általában PCI megfelelőségi ellenőrzési teljesítményének folyamatok dokumentálása.|
 
 
 

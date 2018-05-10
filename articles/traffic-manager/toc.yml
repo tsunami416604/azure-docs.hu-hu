@@ -8,12 +8,6 @@
   items:
     - name: Traffic Manager-profil létrehozása
       href: traffic-manager-create-profile.md
-- name: Példák
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Oktatóanyagok
   items:
     - name: Forgalom irányítása végpont földrajzi helye alapján
@@ -24,6 +18,12 @@
       href: traffic-manager-configure-weighted-routing-method.md
     - name: Forgalom irányítása magas prioritású végpontra
       href: traffic-manager-configure-priority-routing-method.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Alapelvek
   items:
     - name: Útválasztási módszerek

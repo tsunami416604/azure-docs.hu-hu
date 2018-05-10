@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8ad73132839aaa77166c115feff9a70db864ba12
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -53,7 +53,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  Ha a bérlő azonosítók a forrás és cél előfizetésekhez nem egyeznek, az alábbi módszerekkel egyeztetni a bérlő azonosítók: 
+  Ha a bérlő azonosítók a forrás és cél előfizetésekhez nem egyeznek, az alábbi módszerekkel egyeztetni a bérlő azonosítók:
 
   * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
   * [Azure-előfizetés társítása vagy az Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
@@ -112,7 +112,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * App Service apps (webalkalmazások) – lásd: [App Service korlátozásai](#app-service-limitations)
 * App Service-tanúsítvány
 * Application Insights
-* Automatizálás
+* Automation
 * Azure Cosmos DB
 * Batch
 * Bing Térképek
@@ -145,7 +145,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Kiszolgálófelügyelet
 * Service Bus
 * Service Fabric
-* Tárolás
+* Storage
 * Tekintse meg a tároló (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * A Stream Analytics - feladatok nem helyezhető át, ha a Stream Analytics állapotban.
 * SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek. Ez magában foglalja az Azure SQL Database és az Azure SQL Data Warehouse-adatbázist. 
@@ -166,7 +166,7 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * Azure Database for MySQL
 * BizTalk Services
 * Tanúsítványok – jelzi, hogy áthelyezhetők-e a App Service-tanúsítványokkal, de feltöltött tanúsítványok [korlátozások](#app-service-limitations).
-* Container Service
+* Kubernetes szolgáltatás
 * DevTest Labs - helyezze át az új erőforráscsoport ugyanahhoz az előfizetéshez engedélyezve van, de több előfizetés áthelyezése nem engedélyezett.
 * Dynamics LCS
 * Express Route
@@ -203,13 +203,13 @@ Virtuális hálózat nem helyezhető át egy másik előfizetésben található,
 
 ## <a name="app-service-limitations"></a>App Service korlátozásai
 
-A korlátozások vonatkoznak az App Service-erőforrások áthelyezésére attól függően változnak, hogy helyez át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést. 
+A korlátozások vonatkoznak az App Service-erőforrások áthelyezésére attól függően változnak, hogy helyez át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést.
 
 Az ezekben a szakaszokban ismertetett korlátozások érvényesek, a feltöltött tanúsítványok, nem App Service-tanúsítványokkal. App Service-tanúsítványokkal áthelyezése egy új erőforráscsoportot, vagy a korlátozások nélkül. Ha még több webes használó alkalmazások ugyanazt a alkalmazás Service tanúsítványt, először helyezze át a webes alkalmazások majd helyezze át a tanúsítványt.
 
 ### <a name="moving-within-the-same-subscription"></a>Egyazon előfizetésen belül
 
-Ha áthelyezi a webes alkalmazás _egyazon előfizetésen belül_, a feltöltött SSL-tanúsítványok nem helyezhető át. Azonban áthelyezheti egy webalkalmazást az új erőforráscsoport anélkül, hogy a feltöltött SSL-tanúsítványt, és az alkalmazás SSL funkció továbbra is működik. 
+Ha áthelyezi a webes alkalmazás _egyazon előfizetésen belül_, a feltöltött SSL-tanúsítványok nem helyezhető át. Azonban áthelyezheti egy webalkalmazást az új erőforráscsoport anélkül, hogy a feltöltött SSL-tanúsítványt, és az alkalmazás SSL funkció továbbra is működik.
 
 Ha szeretné helyezni az SSL-tanúsítványt a Web App, kövesse az alábbi lépéseket:
 
@@ -227,7 +227,7 @@ Ha áthelyezi a webes alkalmazás _előfizetésekhez_, a következő korlátozá
     - Feltöltött vagy importált SSL-tanúsítványok
     - App Service-környezetek
 - Az erőforráscsoport összes App Service erőforrások csak együtt helyezhetők.
-- App Service-erőforrások csak eltolható az erőforráscsoport, amelyekben azokat eredetileg létrehozott. Ha egy App Service-erőforrás már nem az eredeti erőforráscsoportban, azt kell vissza kell helyezni az eredeti erőforráscsoport először, és majd akkor helyezheti át előfizetésekhez. 
+- App Service-erőforrások csak eltolható az erőforráscsoport, amelyekben azokat eredetileg létrehozott. Ha egy App Service-erőforrás már nem az eredeti erőforráscsoportban, azt kell vissza kell helyezni az eredeti erőforráscsoport először, és majd akkor helyezheti át előfizetésekhez.
 
 ## <a name="classic-deployment-limitations"></a>Klasszikus üzembe helyezési korlátozásai
 

@@ -4,7 +4,7 @@ description: Ez a cikk áttekintést az Azure operational biztonsági.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20dfbd2c5c2c38abddf332dc6a20ddb271c95ace
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure operational biztonsági áttekintése
 Az Azure Operational biztonsági hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelmére az adatok, alkalmazások és egyéb eszközök a Microsoft Azure-ban. [Az Azure Operational biztonsági](https://docs.microsoft.com/azure/security/azure-operational-security) egy keretrendszer, amely magában foglalja a Tudásbázis a különböző képességeket, amelyeket a Microsoft, beleértve a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response egyedi keresztül szerzett Center programot, és részletes tájékoztatást nyújthatnak a számítógépes biztonsági fenyegetésekről alkotott képet.
@@ -42,17 +42,17 @@ OMS egy olyan felhőalapú informatikai felügyeleti megoldás a sok ajánlatoka
 Az OMS legfontosabb funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg. Mert az tartalmazza:
 
 -   Log Analytics
--   Automatizálás
--   Biztonsági mentés
+-   Automation
+-   Backup
 -   Site Recovery
 
 ### <a name="log-analytics"></a>Log Analytics
 A [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) figyelési szolgáltatásokat biztosít az OMS számára a felügyelt erőforrások adatainak egy központi tárházba gyűjtésével. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Ezzel a módszerrel konszolidálhatja a különféle forrásokból származó adatokat, így az Azure-szolgáltatásokból származó adatok egyesíthetők a meglévő helyszíni környezet adataival. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
 
-### <a name="automation"></a>Automatizálás
+### <a name="automation"></a>Automation
 Microsoft [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) módot biztosít a felhasználók számára a felhőalapú és nagyvállalati környezetben általában végrehajtott manuális, hosszan futó, hibákhoz vezethet, és gyakran ismétlődő feladatok automatizálásához. Ezzel idő takarítható meg, továbbá nő a rendszeres adminisztratív feladatok megbízhatósága, valamint még ütemezhetők is a feladatok, hogy adott időközönként automatikusan végrehajtsa őket a rendszer. A folyamatokat automatizálhatja forgatókönyvek segítségével, vagy automatizálhat konfigurációkezelést a Célállapot-konfigurációval (DSC).
 
-### <a name="backup"></a>Biztonsági mentés
+### <a name="backup"></a>Backup
 [Azure biztonsági mentés](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) biztonsági mentése (vagy védelme) is használhatja az Azure-alapú szolgáltatás, és állítsa vissza az adatokat a Microsoft felhőben. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Tekintse meg a [Azure biztonsági mentés összetevők tábla](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use).
 
 ### <a name="site-recovery"></a>A Site recovery

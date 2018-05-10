@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API management házirend minta - naplózás Stackify küldési hibák |} Microsoft Docs"
-description: "Az Azure API management házirend minta - bemutatja, hogyan hibák küldendő Stackify naplózási hiba naplózási házirend hozzáadása..."
+title: Az Azure API management házirend minta - naplózás Stackify küldési hibák |} Microsoft Docs
+description: Az Azure API management házirend minta - bemutatja, hogyan hibák küldendő Stackify naplózási hiba naplózási házirend hozzáadása...
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 34319e43789d0f2c7d3e48a0277926eb598e88fc
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: 86408e77c7f80a133e514d399cd3ccefe70d0cee
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>Hibák küldése a Stackify naplózás
 
@@ -27,9 +27,7 @@ Ez a cikk ismerteti, amely bemutatja, hogyan hibák küldendő Stackify naplóz�
 
 Illessze be a kódot a **hiba** blokkot.
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Log errors to Stackify.policy.xml)]
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók APIM házirendek:
 

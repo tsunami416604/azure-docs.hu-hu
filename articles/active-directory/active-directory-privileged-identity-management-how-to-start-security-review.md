@@ -1,30 +1,28 @@
 ---
-title: "Hogyan kell elindítani egy áttekintése |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy áttekintése a kiemelt jogosultságú identitások az Azure Privileged Identity Management alkalmazással."
+title: Hogyan kell elindítani egy áttekintése |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy áttekintése a kiemelt jogosultságú identitások az Azure Privileged Identity Management alkalmazással.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 3e52b731-55f4-4c8a-ba87-9fd34033f52f
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 05/04/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: f57a32ca1914d18540289ebb05421a7ae9618094
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1923890e01b351f884837e14b5e2ca736ec687ce
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management egy hozzáférési felülvizsgálat indítása
 Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók privilegizált hozzáférést, amelyek többé nem kell. Ahhoz, hogy ezek elavult szerepkör-hozzárendelések a kockázatának csökkentéséhez kiemelt szerepkörű rendszergazda rendszeresen tekintse át a szerepköröket, amelyek a felhasználóknak. Ez a dokumentum egy hozzáférés-ellenőrzés indítása az Azure AD Privileged Identity Management (PIM) a lépéseket ismerteti.
 
-## <a name="start-an-access-review"></a>Hozzáférés-ellenőrzés indítása
+## <a name="start-an-access-review"></a>Hozzáférési felülvizsgálat indítása
 > [!NOTE]
 > Ha a PIM alkalmazást az irányítópulton nem adott meg az Azure portálon, olvassa el a [Ismerkedés az Azure Privileged Identity Management szolgáltatással](active-directory-privileged-identity-management-getting-started.md)
 > 

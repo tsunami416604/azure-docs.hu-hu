@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/25/2017
 ms.author: raynew
-ms.openlocfilehash: 9e8e1fb918d9cd35b12e71abdd23ca101239ae26
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 026d9f632bdcf4b40163acfeec167fbf22057a64
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Csoport gépek gép függőségi leképezés használata
 
@@ -20,18 +20,18 @@ Ez a cikk ismerteti a gépcsoport létrehozása [Azure áttelepítése](migrate-
 ## <a name="prepare-machines-for-dependency-mapping"></a>A függőség leképezést gépek előkészítése
 Gépek függőségeinek megtekintése, meg kell töltse le és telepítse az ügynököt minden a helyszíni gépen, amelyet ki kell számítani. Emellett, ha internetkapcsolat nélküli gépek, kell letöltéséhez és telepítéséhez [OMS átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
 
-### <a name="download-and-install-the-vm-agents"></a>Töltse le és telepítse a virtuális gép ügynökök
+### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
 1. A **áttekintése**, kattintson a **kezelése** > **gépek**, és jelölje ki a szükséges gépet.
 2. Az a **függőségek** oszlopban kattintson **ügynökök telepítése**. 
 3. Az a **függőségek** lapon, töltse le és telepítse a Microsoft Monitoring Agent (MMA) és a függőségi ügynök egyes virtuális gépek ki kell számítani.
-4. Másolja a munkaterület azonosítója és kulcsa. Szükség van ezekre az MMA a helyi számítógépen való telepítésekor.
+4. Másolja ki a munkaterület-azonosítót és -kulcsot. Szükség van ezekre az MMA a helyi számítógépen való telepítésekor.
 
-### <a name="install-the-mma"></a>Telepítse a MMA
+### <a name="install-the-mma"></a>Az MMA telepítése
 
 Az ügynök telepítése Windows-gépen:
 
-1. Kattintson duplán a letöltött ügynök.
-2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. Az a **licencfeltételeket** kattintson **elfogadom** elfogadja a licencfeltételeket.
+1. Kattintson duplán a letöltött ügynökre.
+2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
 3. A **célmappa**, hagyja, vagy módosítsa az alapértelmezett telepítési mappa > **következő**. 
 4. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés** > **következő**. 
 5. Kattintson a **Hozzáadás** hozzáadása egy új munkaterületet. Illessze be a munkaterület azonosítója és a portál fájlból másolt kulcsot. Kattintson a **Tovább** gombra.
@@ -51,7 +51,7 @@ Az ügynök telepítése Linux gépen:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[További](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) a függőségi ügynök által támogatott operációs rendszerekkel kapcsolatban. 
+[További](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) a függőségi ügynök által támogatott operációs rendszerekkel kapcsolatban. 
 
 ## <a name="create-a-group"></a>Hozzon létre egy csoportot
 
@@ -65,7 +65,7 @@ Az ügynök telepítése Linux gépen:
     - A gépen futó folyamatok, minden gép mezőben folyamatokat bővítheti
     - Minden számítógépen, ha azt szeretné, hogy a részletek megjelenítéséhez kattintson például a teljesen minősített tartománynevét, operációs rendszer, az egyes gépek MAC-cím stb tulajdonságok,
 
- ![Gép függőségeinek megtekintése](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
+ ![Gépek függőségeinek megtekintése](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
 
 4. Vessen egy pillantást függőségek különböző idő időtartamra az időtartamig, idő tartomány feliratában kattintva. Alapértelmezés szerint a tartománya egy óra. Módosítsa az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
 5. Miután függő csoportba a kívánt gépek állapította meg, a Ctrl + kattintással jelölje ki a térképen több gép, majd kattintson **gépek**.

@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure tároló szolgáltatás (AKS) belső terheléselosztó
-description: A belső terheléselosztók Azure tároló szolgáltatás (AKS) használja.
+title: Hozzon létre egy Azure Kubernetes szolgáltatás (AKS) belső terheléselosztó
+description: A belső terheléselosztók Azure Kubernetes szolgáltatás (AKS) használja.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7b9ecdb5364f7c0f5bb68ce693e53bc2c5327337
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: MT
+ms.openlocfilehash: 6a657df82e1670f7a9d604dd5166ab53bb38bf74
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-an-internal-load-balancer-with-azure-container-service-aks"></a>A belső terheléselosztók használata Azure tároló szolgáltatás (AKS)
+# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>A belső terheléselosztók használata Azure Kubernetes szolgáltatás (AKS)
 
-Belső terheléselosztás Kubernetes szolgáltatás számára elérhető lesz a Kubernetes fürt azonos virtuális hálózaton futó alkalmazások. A dokumentum részletek a belső terheléselosztók Azure tároló szolgáltatás (AKS) létrehozása.
+Belső terheléselosztás Kubernetes szolgáltatás számára elérhető lesz a Kubernetes fürt azonos virtuális hálózaton futó alkalmazások. A dokumentum részletek a belső terheléselosztók Azure Kubernetes szolgáltatás (AKS) létrehozása.
 
 ## <a name="create-internal-load-balancer"></a>Belső terheléselosztó létrehozása
 
@@ -38,11 +38,11 @@ spec:
     app: azure-vote-front
 ```
 
-Amennyiben telepített, az Azure terheléselosztó létrehozása, és szeretné elérhetővé tenni a AKS fürttel azonos virtuális hálózaton. 
+Amennyiben telepített, az Azure terheléselosztó létrehozása, és szeretné elérhetővé tenni a AKS fürttel azonos virtuális hálózaton.
 
 ![Belső terheléselosztó AKS képe](media/internal-lb/internal-lb.png)
 
-Ha a szolgáltatás beolvasása részleteit, az IP-cím a `EXTERNAL-IP` oszlop a belső terheléselosztó IP-címét. 
+Ha a szolgáltatás beolvasása részleteit, az IP-cím a `EXTERNAL-IP` oszlop a belső terheléselosztó IP-címét.
 
 ```console
 $ kubectl get service azure-vote-front
@@ -71,7 +71,7 @@ spec:
     app: azure-vote-front
 ```
 
-Ha a szolgáltatás adatainak beolvasása, az IP-cím a a `EXTERNAL-IP` egyeznie kell a megadott IP-cím. 
+Ha a szolgáltatás adatainak beolvasása, az IP-cím a a `EXTERNAL-IP` egyeznie kell a megadott IP-cím.
 
 ```console
 $ kubectl get service azure-vote-front

@@ -1,26 +1,26 @@
 ---
-title: "Tartós funkciók áttekintés – Azure (előzetes verzió)"
-description: "Bevezetés az Azure Functions a tartós funkciók bővítmény."
+title: Tartós funkciók áttekintés – Azure
+description: Bevezetés az Azure Functions a tartós funkciók bővítmény.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b5269bb51c787c927b4224b3520d5514b6d24501
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d253562e0ecb0d53739a4cdc5f9747e33d7e1171
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="durable-functions-overview-preview"></a>Tartós Functions áttekintése (előzetes verzió)
+# <a name="durable-functions-overview"></a>Tartós funkciók áttekintése
 
 *Tartós funkciók* kiterjesztése [Azure Functions](functions-overview.md) és [Azure webjobs-feladatok](../app-service/web-sites-create-web-jobs.md) , amely lehetővé teszi az állapotalapú írást egy kiszolgáló nélküli környezetben. A bővítmény állapotát, az ellenőrzőpontok és újraindul kezeli az Ön.
 
@@ -31,7 +31,7 @@ A bővítmény lehetővé teszi az állapotalapú munkafolyamatok definiálhatja
 * Ezek automatikusan ellenőrzőpontot a folyamatban, amikor a függvény várja. Helyi állapot soha nem elvész, ha a folyamat újrahasznosítása vagy a virtuális gép újraindul.
 
 > [!NOTE]
-> Tartós függvények jelenleg előzetes verzióban érhető, és az Azure Functions, amely nem megfelelő összes alkalmazás speciális bővítménye. Ez a cikk többi feltételezi, hogy rendelkezik-e egy erős ismeretét [Azure Functions](functions-overview.md) fogalmakat és kihívásai kiszolgáló nélküli alkalmazásfejlesztés részt.
+> Tartós funkciók speciális bővítménye, amely nincs megfelelő alkalmazásokhoz az Azure Functions. Ez a cikk többi feltételezi, hogy rendelkezik-e egy erős ismeretét [Azure Functions](functions-overview.md) fogalmakat és kihívásai kiszolgáló nélküli alkalmazásfejlesztés részt.
 
 Az elsődleges használati eset tartós függvények van egyszerűsítése összetett, állapot-nyilvántartó koordinációs felmerülő problémák kiszolgáló nélküli. A következő szakaszok ismertetik az egyes alkalmazások mintázatok tartós funkciók előnyeit is.
 
@@ -42,6 +42,8 @@ Az elsődleges használati eset tartós függvények van egyszerűsítése össz
 ![Függvény titkosításblokkoló diagramja](media/durable-functions-overview/function-chaining.png)
 
 Tartós funkciók kódban ebben a mintában tömören teszi lehetővé.
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task<object> Run(DurableOrchestrationContext ctx)
@@ -60,6 +62,19 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```js
+const df = require("durable-functions");
+
+module.exports = df(function*(ctx) {
+    const x = yield ctx.df.callActivityAsync("F1");
+    const y = yield ctx.df.callActivityAsync("F2", x);
+    const z = yield ctx.df.callActivityAsync("F3", y);
+    return yield ctx.df.callActivityAsync("F4", z);
+});
+```
+
 A "F1", "F2", "F3" és "F4" értékei egyéb funkciók, a függvény alkalmazás nevét. Folyamatábrán szerkezetek kódolási normál imperatív segítségével van megvalósítva. Ez azt jelenti, hogy a kód felülről lefelé végrehajtja, és meglévő nyelvi ellenőrzési folyamata szemantikáját, például conditionals és hurkok magába foglaló.  Hiba történt az logika kezelése try vagy catch vagy finally blokkok tartalmazhat.
 
 A `ctx` paraméter ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)) egyéb funkciók meghívása neve, a paraméterek átadása, és vissza a függvény kimeneti metódusokat biztosít. Minden alkalommal, amikor a kód hívások `await`, a tartós funkciók keretrendszer *ellenőrzőpontokat* az aktuális függvény példány előrehaladását. Ha a folyamat vagy a virtuális gép újraindul parancsból félúton, a függvény példány folytatja az előző `await` hívható meg. Viselkedés később bővebben újraindításához.
@@ -70,7 +85,9 @@ A `ctx` paraméter ([DurableOrchestrationContext](https://azure.github.io/azure-
 
 ![Fan-kimenő/fan-lévő diagramja](media/durable-functions-overview/fan-out-fan-in.png)
 
-Normál funkciók, a szellőztető végezhető el több üzenetek küldése egy üzenetsorba funkciót ellátó. Vissza a szellőztető azonban sokkal több kihívást. Kód írása nyomon követésére, amikor a várólista-eseményindítókkal aktivált függvényeket végén, és tárolja a függvény kimenetek kellene. A tartós funkciók bővítmény kezeli az ebben a mintában viszonylag egyszerű kóddal.
+Normál funkciók, a szellőztető végezhető el több üzenetek küldése egy üzenetsorba funkciót ellátó. Vissza a szellőztető azonban sokkal több kihívást. Kód írása a várólista-eseményindítókkal aktivált függvényeket végén, és tárolja a függvény kimenetek nyomkövetéséhez kellene. A tartós funkciók bővítmény kezeli az ebben a mintában viszonylag egyszerű kóddal.
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -91,6 +108,28 @@ public static async Task Run(DurableOrchestrationContext ctx)
     int sum = parallelTasks.Sum(t => t.Result);
     await ctx.CallActivityAsync("F3", sum);
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```js
+const df = require("durable-functions");
+
+module.exports = df(function*(ctx) {
+    const parallelTasks = [];
+
+    // get a list of N work items to process in parallel
+    const workBatch = yield ctx.df.callActivityAsync("F1");
+    for (let i = 0; i < workBatch.length; i++) {
+        parallelTasks.push(ctx.df.callActivityAsync("F2", workBatch[i]));
+    }
+
+    yield ctx.df.task.all(parallelTasks);
+
+    // aggregate all N outputs and send result to F3
+    const sum = parallelTasks.reduce((prev, curr) => prev + curr, 0);
+    yield ctx.df.callActivityAsync("F3", sum);
+});
 ```
 
 A kívánt szétterítési munkahelyi terjesztése függvény több példánya `F2`, és követi nyomon a munkahelyi feladatokat dinamikus listáját használja. A .NET `Task.WhenAll` API hívása várja meg az összes, a hívott függvény befejezéséhez. Ezt követően a `F2`függvény a dinamikus feladatlista összesítik és a átadva, és kiírja a `F3` függvény.
@@ -151,7 +190,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` paraméter értéke az a `orchestrationClient` kimeneti, kötelező, amely a tartós funkciók bővítmény része. Módszerek kezdési, küldő az események, leáll, és lekérdezi-e új vagy meglévő orchestrator-funkció példányok biztosít. A fenti példában egy HTTP indított-függvény veszi a `functionName` értéket a bejövő URL-cím és, hogy egy érték fázisok [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). A kötés API majd visszaküldi a választ, amely tartalmazza a `Location` fejléc és a példányon, amely később segítségével keressen további információt a elindított példány állapotának regisztrálnia, vagy állítsa le azt.
+A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` paraméter értéke az a `orchestrationClient` kimeneti, kötelező, amely a tartós funkciók bővítmény része. Módszerek kezdési, küldő az események, leáll, és lekérdezi-e új vagy meglévő orchestrator-funkció példányok biztosít. Az előző példában egy HTTP indított-függvény veszi a `functionName` értéket a bejövő URL-cím és, hogy egy érték fázisok [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). A kötés API majd visszaküldi a választ, amely tartalmazza a `Location` fejléc és a példányon, amely később segítségével keressen további információt a elindított példány állapotának regisztrálnia, vagy állítsa le azt.
 
 ## <a name="pattern-4-monitoring"></a>#4 mintát: figyelése
 
@@ -162,6 +201,8 @@ Példa a korábbi aszinkron HTTP API forgatókönyv volna lehet felcserélni. Ah
 ![A figyelő diagramja](media/durable-functions-overview/monitor.png)
 
 Tartós funkciókat használ, több monitor, ahol a tetszőleges végpontot néhány sornyi kód hozhatók létre. A figyelők végrehajtásának befejezése bizonyos feltétel teljesül, vagy azonnali hatállyal a [DurableOrchestrationClient](durable-functions-instance-management.md), és a várakozási időközt módosíthatja a bizonyos feltétel (például az exponenciális leállítási.) A következő kód egy alapszintű figyelő valósítja meg.
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -189,6 +230,34 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```js
+const df = require("durable-functions");
+const df = require("moment");
+
+module.exports = df(function*(ctx) {
+    const jobId = ctx.df.getInput();
+    const pollingInternal = getPollingInterval();
+    const expiryTime = getExpiryTime();
+
+    while (moment.utc(ctx.df.currentUtcDateTime).isBefore(expiryTime)) {
+        const jobStatus = yield ctx.df.callActivityAsync("GetJobStatus", jobId);
+        if (jobStatus === "Completed") {
+            // Perform action when condition met
+            yield ctx.df.callActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration will sleep until this time
+        const nextCheck = moment.utc(ctx.df.currentUtcDateTime).add(pollingInterval, 's');
+        yield ctx.df.createTimer(nextCheck.toDate());
+    }
+
+    // Perform further work here, or let the orchestration end
+});
+```
+
 Amikor egy kérelem érkezik, egy új vezénylési példány létrehozásakor a feladat azonosítóját. A példány állapota kérdezi le, amíg a feltétel teljesül, és a hurok van kilépett. Tartós időzítő segítségével szabályozhatja a lekérdezési időközt. További munkára majd hajtható végre, vagy az orchestration fejezheti. Ha a `ctx.CurrentUtcDateTime` meghaladja a `expiryTime`, a figyelő végpontok.
 
 ## <a name="pattern-5-human-interaction"></a>#5. minta: Emberi beavatkozást igényel
@@ -200,6 +269,8 @@ Például egy üzleti folyamat, amely magában foglalja a emberi beavatkozást i
 ![Emberi beavatkozást igényel diagramja](media/durable-functions-overview/approval.png)
 
 Ebben a mintában az orchestrator függvény használatával valósítható meg. Az orchestrator szeretné használni a [tartós időzítő](durable-functions-timers.md) jóváhagyás-igénylést és időtúllépés esetén az ilyen. A várakoznia egy [külső esemény](durable-functions-external-events.md), amely az egyes emberi beavatkozást igényel által létrehozott értesítés lenne.
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -224,7 +295,39 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```js
+const df = require("durable-functions");
+const moment = require('moment');
+
+module.exports = df(function*(ctx) {
+    yield ctx.df.callActivityAsync("RequestApproval");
+
+    const dueTime = moment.utc(ctx.df.currentUtcDateTime).add(72, 'h');
+    const durableTimeout = ctx.df.createTimer(dueTime.toDate());
+
+    const approvalEvent = ctx.df.waitForExternalEvent("ApprovalEvent");
+    if (approvalEvent === yield ctx.df.Task.any([approvalEvent, durableTimeout])) {
+        durableTimeout.cancel();
+        yield ctx.df.callActivityAsync("ProcessApproval", approvalEvent.result);
+    } else {
+        yield ctx.df.callActivityAsync("Escalate");
+    }
+});
+```
+
 Hozza létre a tartós időzítő hívása `ctx.CreateTimer`. Az értesítés érkezik `ctx.WaitForExternalEvent`. És `Task.WhenAny` határozza meg, hogy az ilyen beszerzését (időtúllépés történik első) jóváhagyási folyamat (a jóváhagyási időtúllépés érkezik).
+
+Egy külső ügyfél az eseményértesítés biztosíthat a várakozási orchestrator függvény használatával a [beépített HTTP API-k](durable-functions-http-api.md#raise-event) vagy használatával [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) az API egy másik függvényen:
+
+```csharp
+public static async Task Run(string instanceId, DurableOrchestrationClient client)
+{
+    bool isApproved = true;
+    await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
+}
+```
 
 ## <a name="the-technology"></a>A technológia
 
@@ -244,7 +347,7 @@ A visszajátszás viselkedés kódot, amely egy orchestrator függvényben csak 
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-C# jelenleg az egyetlen támogatott nyelvi a tartós funkcióihoz. Ez magában foglalja a tevékenységet és az orchestrator függvények. A jövőben minden nyelven, amely támogatja az Azure Functions támogatni fogják azt. Tekintse meg az Azure Functions [GitHub tárház problémák listájába](https://github.com/Azure/azure-functions-durable-extension/issues) legfrissebb állapotát a további nyelv támogatja tekintheti meg.
+Jelenleg a C# (funkciók v1 és v2) és a JavaScript (csak funkciók 2) a tartós funkciók az egyetlen támogatott nyelvek vonatkoznak. Ez magában foglalja a tevékenységet és az orchestrator függvények. A jövőben minden nyelven, amely támogatja az Azure Functions támogatni fogják azt. Tekintse meg az Azure Functions [GitHub tárház problémák listájába](https://github.com/Azure/azure-functions-durable-extension/issues) legfrissebb állapotát a további nyelv támogatja tekintheti meg.
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
@@ -275,7 +378,7 @@ A TABLE storage a futtatási előzményei orchestrator fiókok tárolására szo
 
 ## <a name="known-issues-and-faq"></a>Ismert problémák és gyakran ismételt kérdések
 
-Általában minden ismert problémákat kell követhető nyomon a [GitHub problémák](https://github.com/Azure/azure-functions-durable-extension/issues) listája. Ha problémába ütközik, és a probléma nem találja a Githubon, nyisson meg egy új problémát, és a probléma részletes leírását tartalmazza. Akkor is, ha egyszerűen kívánt tegyen fel kérdést, nyugodtan nyissa meg a GitHub probléma címkével kérdésként.
+Minden ismert problémák követhető nyomon a [GitHub problémák](https://github.com/Azure/azure-functions-durable-extension/issues) listája. Ha problémába ütközik, és a probléma nem találja a Githubon, nyisson meg egy új problémát, és a probléma részletes leírását tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Promapp |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Promapp között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Promapp |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Promapp között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4a0630bf015361833ed3a6949ea7b29450d53701
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8b8a15143d38b7d835f85b8d196af5f33f5de18b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Oktatóanyag: Azure Active Directoryval integrált Promapp
 
@@ -113,23 +113,22 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
     | |
     |--|
-    | `https://demo.promapp.com/TENANTNAME`|
-    | `https://go.promapp.com/TENANTNAME`|
-    | `https://demoau.promapp.com/TENANTNAME`|
-    | `https://au.promapp.com/TENANTNAME`|
-    | `https://demous.promapp.com/TENANTNAME`|
-    | `https://us.promapp.com/TENANTNAME`|
-    | `https://dev.promapp.com/TENANTNAME`|
-    | `https://test.promapp.com/TENANTNAME`|
-    | `https://staging.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME/`|
+    | `https://au.promapp.com/TENANTNAME/`|
+    | `https://us.promapp.com/TENANTNAME/`|
+    | `https://eu.promapp.com/TENANTNAME/`|
+    | `https://ca.promapp.com/TENANTNAME/`|
     
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
+    > [!NOTE] 
+    > Jelenleg az Azure AD integrálása Promapp csak lett konfigurálva a szolgáltatás kezdeményezett hitelesítési pl. Promapp URL-címen indít el a hitelesítést. Azonban a válasz URL-cím mező kitöltése kötelező.
+    
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
+    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosítóját és válasz URL-CÍMEN. Ügyfél [Promapp ügyfél-támogatási csoport](https://www.promapp.com/about-us/contact-us/) beolvasni ezeket az értékeket.
@@ -240,11 +239,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ez a szakasz célja a hozzáférési panelen az Azure AD SSO-konfigurációjának tesztelése.
-
-Az alkalmazás tesztelése **IDP** kezdeményezett mód, kattintson a a hozzáférési Panel Promapp mozaik meg kell beolvasni automatikusan bejelentkezett az Promapp alkalmazáshoz.
-
-Az alkalmazás tesztelése **SP** kezdeményezett mód, szüksége lesz a hitelesítés a Promapp helyről kezdeményezheti. Ezt megteheti a jelszó mező üres hagyásával bejelentkezéskor miközben **nem kötelező** mód engedélyezve van.
+Az alkalmazás tesztelése **SP** kezdeményezett mód, szüksége lesz a hitelesítés a Promapp helyről kezdeményezheti. A bejelentkezési oldalon a "Bejelentkezés az egyszeri bejelentkezéshez" gombra kattintva ehhez ugyanakkor **nem kötelező** mód engedélyezve van.
 
 ## <a name="additional-resources"></a>További források
 

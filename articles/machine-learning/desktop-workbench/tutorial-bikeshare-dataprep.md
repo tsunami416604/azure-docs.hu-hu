@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 77729ad52f101f0d57fe24115525795c6b4f2db2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 51ed7dbead7f9085de563d2fb20c4e4a08f90bb2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Oktatóanyag: Az Azure Machine Learning Workbench használata haladó adat-előkészítéshez (Kerékpármegosztási adatok)
 Az Azure Machine Learning (előzetes verzió) egy adatszakértőknek készült, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőméretű üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Azure Machine Learning Workbench helyileg telepített példánya. További információkért kövesse a [rövid telepítési útmutatót](../service/quickstart-installation.md).
-* Ha nincs telepítve az Azure CLI, kövesse az utasításokat az [Azure parancssori felület (CLI) legújabb verziójának telepítéséhez](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Ha nincs telepítve az Azure CLI, kövesse az utasításokat az [Azure parancssori felület (CLI) legújabb verziójának telepítéséhez](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Egy az Azure-ban létrehozott [HDInsight Spark-fürt](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal).
 * Egy Azure-tárfiók.
 * Az új projektek Workbenchben való létrehozásának ismerete.

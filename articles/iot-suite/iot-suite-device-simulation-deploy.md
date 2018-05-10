@@ -1,6 +1,6 @@
 ---
-title: "Az eszköz szimuláció megoldás - Azure üzembe helyezése |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan azureiotsuite.com az eszköz szimuláció megoldást kiépítéséhez."
+title: Az eszköz szimuláció megoldás - Azure üzembe helyezése |} Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan azureiotsuite.com az eszköz szimuláció megoldást kiépítéséhez.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: da9fb95ed5d3387c98c3274a53769d3f5f945371
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 52890c51b06777a2d74fcf143bee4e5e8919ba75
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-the-azure-iot-device-simulation-solution"></a>Az Azure IoT eszköz szimuláció megoldás üzembe helyezéséhez
 
@@ -39,7 +39,7 @@ Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. T
 
 Csak a megoldás telepítheti az Azure-előfizetéshez, ki kell választania néhány konfigurálási beállításhoz:
 
-1. Jelentkezzen be [azureiotsuite.com](https://www.azureiotsuite.com) az Azure használatával fiók hitelesítő adatait, és kattintson a  **+**  egy új megoldás létrehozásához:
+1. Jelentkezzen be [azureiotsuite.com](https://www.azureiotsuite.com) az Azure használatával fiók hitelesítő adatait, és kattintson a **+** egy új megoldás létrehozásához:
 
     ![Új megoldás létrehozása](media/iot-suite-device-simulation-deploy/createnewsolution.png)
 
@@ -47,7 +47,7 @@ Csak a megoldás telepítheti az Azure-előfizetéshez, ki kell választania né
 
     ![Válassza ki az eszköz szimulálása](media/iot-suite-device-simulation-deploy/select.png)
 
-1. A a **létrehozása szimuláció megoldás** lapján adjon meg egy **megoldás neve** eszköz szimuláció megoldást.
+1. Az a **létrehozása eszköz szimuláció megoldás** lapján adjon meg egy **megoldás neve** eszköz szimuláció megoldást.
 
 1. Válassza ki a megoldás kiépítéséhez használni kívánt **Előfizetést** és **Régiót**.
 

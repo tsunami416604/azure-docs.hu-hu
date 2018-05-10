@@ -1,12 +1,12 @@
 ---
-title: "Az Azure IoT Suite és az Azure Active Directory |} Microsoft Docs"
-description: "Ismerteti, hogyan Azure IoT Suite az Azure Active Directory használatával kezeli az engedélyeket."
-services: 
+title: Az Azure IoT-megoldás gyorsítók és az Azure Active Directory |} Microsoft Docs
+description: Ismerteti, hogyan Azure IoT-megoldás gyorsítók az Azure Active Directory használatával kezeli az engedélyeket.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e5804cda921e9d598d0ed02c4fafccdb40fbe7a5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b7360ca4df63cac114b0eb1f93375367da6735cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Engedélyek az azureiotsuite.com webhelyen
 
@@ -29,35 +29,35 @@ Az első bejelentkezéskor, [azureiotsuite.com][lnk-azureiotsuite], a hely hatá
 
 1. Először töltse fel adatokkal a bérlők mellett a felhasználónévnek látható listáját, a hely szerzi meg az Azure-ból mely AAD-bérlő tartozik. Jelenleg a hely csak szerezhet be egy bérlői felhasználói jogkivonatokhoz egyszerre. Ezért amikor a bérlők a legördülő lista használatával jobb felső sarokban, a hely naplózza a arra a bérlőre, hogy a bérlő a tokenek beszerzése.
 
-2. A hely a következő megkeresése, melyik előfizetések vannak társítva a kiválasztott bérlő az Azure-ból. Megjelenik az elérhető előfizetésekkel, amikor létrehoz egy új előkonfigurált megoldást.
+2. A hely a következő megkeresése, melyik előfizetések vannak társítva a kiválasztott bérlő az Azure-ból. Amikor létrehoz egy új megoldásgyorsító megjelenik az elérhető előfizetésekkel.
 
-3. Végezetül a hely veszi át összes lévő erőforrásokat a előfizetésekhez és erőforráscsoportokhoz előkonfigurált megoldásokat címkével rendelkeznek, és feltölti a csempék a kezdőlapon.
+3. Végül a hely lekéri az összes lévő erőforrásokat a előfizetésekhez és erőforráscsoportokhoz megoldás gyorsítók megjelölhető tölti fel a csempék a kezdőlapon.
 
-A következő szakaszok ismertetik a szerepköröket, amelyek hozzáférést az előre konfigurált megoldásokhoz.
+A következő szakaszok ismertetik a szerepköröket, amelyek hozzáférést a megoldás gyorsítók számára.
 
 ## <a name="aad-roles"></a>Az AAD-szerepkörök
 
-Az AAD-szerepkörök szabályozhatja a képes előre konfigurált rendelkezés megoldások, és előre konfigurált megoldás a felhasználók kezeléséhez.
+Az AAD-szerepkörök a képességét kiépítési megoldás gyorsítók szabályozhatja, és egy megoldásgyorsító a felhasználók kezeléséhez.
 
-Tudnivalók a rendszergazdai szerepkörökről további információkat talál az aad-ben a [rendszergazdai szerepkörök hozzárendelése az Azure AD][lnk-aad-admin]. A jelen cikkben összpontosít a **globális rendszergazda** és a **felhasználói** directory szerepkörök az előkonfigurált megoldásokat által használt.
+Tudnivalók a rendszergazdai szerepkörökről további információkat talál az aad-ben a [rendszergazdai szerepkörök hozzárendelése az Azure AD][lnk-aad-admin]. A jelen cikkben összpontosít a **globális rendszergazda** és a **felhasználói** directory szerepkörök, a megoldás gyorsítók használják.
 
 ### <a name="global-administrator"></a>Globális rendszergazda
 
 Az AAD bérlőnként globális rendszergazdák közül sokan lehet:
 
 * Amikor létrehoz egy AAD-bérlőt, áll alapértelmezés szerint, hogy a bérlő globális rendszergazdája.
-* A globális rendszergazda hozhat létre egy egyszerű és szabványos előkonfigurált megoldásokat.
+* A globális rendszergazda hozhat létre egy egyszerű és szabványos megoldás gyorsítókra.
 
 ### <a name="domain-user"></a>Tartományi felhasználó
 
 AAD-bérlőt sok tartományi felhasználók lehet:
 
-* Egy olyan tartományi felhasználó egyszerű előkonfigurált megoldást építhető ki a [azureiotsuite.com] [ lnk-azureiotsuite] hely.
-* Egy tartományi felhasználót a parancssori felület használatával alapvető előkonfigurált megoldást hozhat létre.
+* A tartományi felhasználók építhető ki egy alapszintű megoldásgyorsító keresztül a [azureiotsuite.com] [ lnk-azureiotsuite] hely.
+* Egy olyan tartományi felhasználó létrehozhat egy alapszintű megoldásgyorsító a parancssori felület használatával.
 
 ### <a name="guest-user"></a>Vendég felhasználó
 
-Az AAD bérlőnként számos Vendég felhasználó lehet. Vendégfelhasználók rendelkeznek korlátozott jogok az AAD-bérlőben. Ennek eredményeképpen a vendégfelhasználók az AAD-bérlőt az előkonfigurált megoldás nem használhatók.
+Az AAD bérlőnként számos Vendég felhasználó lehet. Vendégfelhasználók rendelkeznek korlátozott jogok az AAD-bérlőben. Ennek eredményeképpen vendégfelhasználók nem használhatók egy megoldásgyorsító az AAD-bérlőben.
 
 Felhasználók és szerepkörök az aad-ben kapcsolatos további információkért lásd a következőket:
 
@@ -94,7 +94,7 @@ Tekintse meg az alábbi ábrában útmutatást:
 Ha bizonyos Azure-előfizetéssel rendelkezik, a bérlő hozzárendelése az előfizetéshez, és ellenőrizheti a megfelelő bérlő a legördülő listában kiválasztott. Ha ellenőrizte, hogy a kívánt bérlő megfelelő, kövesse a fenti ábrán és az előfizetés és az AAD-bérlőt a leképezés érvényesítése.
 
 ## <a name="next-steps"></a>További lépések
-És folytathatja az IoT Suite, tekintse meg, hogyan zajlik [előkonfigurált megoldás testreszabása][lnk-customize].
+És folytathatja az IoT-megoldás gyorsítók, tekintse meg, hogyan zajlik [testre szabhatja a megoldásgyorsító][lnk-customize].
 
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: c1c3191ba198b56386f813b6f9d2588b895633c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 50f95dc1af334468db25bce68f2ca00e0965a28b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>Eszköz-felhő és a felhő-eszközt az IoT-központ az üzenetküldési
 
@@ -31,7 +31,7 @@ Az IoT-központ az eszközök által kommunikálni üzenetküldési használja:
 
 Az IoT-központ üzenetküldési funkció Core tulajdonságai, a megbízhatóság és a tartós üzenetek. Ezek a Tulajdonságok időszakos csatlakozási a eszköz oldalon, és a felhő oldalán Eseményfeldolgozási igényeiben jelentkező betöltése a rugalmasság engedélyezése. Az IoT-központ megvalósítja *legalább egyszer* kézbesítési biztosítja, hogy az eszközről a felhőbe és a felhő eszközre üzenetek.
 
-A funkciókat az IoT-központot, témakörben megismerkedhet a cikkek [Azure és az eszközök internetes hálózatát] [ lnk-azure-iot] és [az Azure IoT-központ szolgáltatás áttekintése][lnk-iot-hub-overview].
+A funkciókat az IoT-központot, témakörben megismerkedhet a [az Azure IoT-központ szolgáltatás áttekintése][lnk-iot-hub-overview].
 
 ## <a name="when-to-use-iot-hub-messaging"></a>Üzenetküldés az IoT-központ használatával
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0e91cf994306c115911d9dd9cf0018f7947502d8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Repülési késleltetés adatok elemzése a Hive HDInsight használatával
 Hive lehetővé teszi egy SQL-szerű nevű programozási nyelv használatával a feladatok Hadoop MapReduce futó  *[HiveQL][hadoop-hiveql]*, amelyek alkalmazhatók felé összefoglalójához, kérdez le, és nagy mennyiségű adatot elemzése.
@@ -259,7 +259,8 @@ Az adatfájl és a HiveQL parancsfájlok feltöltése (lásd: [B függelék](#ap
     <tr><td>Időszak szűrése</td><td>Január</td></tr>
     <tr><td>Mezők</td><td>*Év*, *FlightDate*, *UniqueCarrier*, *szolgáltatónként*, *FlightNum*, *OriginAirportID*, *Származási*, *OriginCityName*, *OriginState*, *DestAirportID*, *cél*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (a többi mező törlése)</td></tr>
     </table>
-3. Kattintson a **letöltése**.
+
+3. Kattintson a **Letöltés** gombra.
 4. Bontsa ki a fájlt a **C:\Tutorials\FlightDelay\2013Data** mappa. Minden fájlt egy CSV-fájl, és körülbelül 60 GB-nál.
 5. Nevezze át a fájlt a benne található adatok hónap nevét. Például a január adatokat tartalmazó fájl neve volna *January.csv*.
 6. Ismételje meg a 2. és 5 fájlok letöltéséhez az egyes 2013 12 hónapig. Szüksége lesz legalább egy fájlt az oktatóanyag futtatásához.
@@ -273,6 +274,7 @@ Az adatfájl és a HiveQL parancsfájlok feltöltése (lásd: [B függelék](#ap
     <tr><td>$storageAccountName</td><td>Az Azure Storage-fiók hol szeretne feltölteni az adatokat.</td></tr>
     <tr><td>$blobContainerName</td><td>A Blob tároló, ahol szeretne feltölteni az adatokat.</td></tr>
     </table>
+    
 2. Nyissa meg az Azure PowerShell ISE.
 3. A parancsfájl ablaktáblára illessze be a következő parancsfájlt:
 

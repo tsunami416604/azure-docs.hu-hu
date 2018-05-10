@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 33d8a36cc88bd1c263f2c4a38a59e04e1253357c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: ac013cf234fdc7249d4d71992435adcc27fcc64e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -90,10 +90,10 @@ Az a MXChip IoT DevKit csatlakoztatva a számítógéphez:
 ## <a name="next-steps"></a>További lépések
 
 Megtanulta, hogyan:
-- Csatlakoztasson egy MXChip IoT DevKit eszközt az Azure IoT Suite.
+- Csatlakoztasson egy MXChip IoT DevKit eszközt az Azure IoT távoli megfigyelési megoldásgyorsító.
 - Az Azure IoT eszköz twins függvény segítségével értelemben, és szabályozhatja a DevKit RGB LED színét.
 
 A javasolt következő lépések a következők:
 
-* [Az Azure IoT Suite – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
+* [Az Azure IoT távoli figyelési megoldást gyorsító áttekintése](https://docs.microsoft.com/azure/iot-suite/)
 * [Csatlakoztasson egy MXChip IoT DevKit eszközt a Microsoft IoT Central alkalmazás](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

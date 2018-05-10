@@ -1,26 +1,24 @@
 ---
-title: "A csoport az Azure Active Directoryban licenc teljesítése |} Microsoft Docs"
-description: "Hogyan azonosítása és elhárítása licenc hozzárendelése Azure Active Directory biztonságicsoport-alapú licencelési használatakor"
+title: A csoport az Azure Active Directoryban licenc teljesítése |} Microsoft Docs
+description: Hogyan azonosítása és elhárítása licenc hozzárendelése Azure Active Directory biztonságicsoport-alapú licencelési használatakor
 services: active-directory
-keywords: "Az Azure AD-licencelés"
-documentationcenter: 
+keywords: Az Azure AD-licencelés
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bd28eeb8d67dc0dcb3303fdb0e3c20b32f7c431
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e91b0a79e7b45ce7e0de1b7cf4aa3123550692af
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>A csoport az Azure Active Directoryban licenc hozzárendelése problémák azonosításához és megoldásához
 
@@ -52,7 +50,7 @@ Csoportalapú használatakor licencelési, akkor fordulhat elő, a hibákat, de 
 
 Az alábbiakban adjon meg leírást minden lehetséges problémákról és feloldásához.
 
-## <a name="not-enough-licenses"></a>Nincs elegendő licenc
+## <a name="not-enough-licenses"></a>Nincs elég licenc
 
 **Probléma:** nincs elég rendelkezésre álló licence az egyik terméket, amely a csoport szerepel. Vásároljon több licencet a termékhez, vagy szabadítson fel más felhasználóknak vagy csoportoknak a használaton kívüli licenccel kell.
 
@@ -62,7 +60,7 @@ Mely felhasználók és csoportok által felhasznált licencek megtekintéséhez
 
 **PowerShell:** PowerShell-parancsmagok jelentse a hibát, _CountViolation_.
 
-## <a name="conflicting-service-plans"></a>Ütköző service-csomagokról
+## <a name="conflicting-service-plans"></a>Ütköző szolgáltatási csomagok
 
 **Probléma:** az egyik terméket, amely a csoport szerepel egy service-csomagot, amely ütközik a már hozzá van rendelve egy másik termékkel a felhasználó egy másik service-csomag tartalmazza. Néhány service-csomagok olyan módon, hogy azok nem lehet hozzárendelni egy másik, a kapcsolódó service-csomag a felhasználónak vannak konfigurálva.
 
@@ -77,7 +75,7 @@ Oldja meg az ütközést, tiltsa le a tervek két kell. Letilthatja a E1 licenc,
 
 **PowerShell:** PowerShell-parancsmagok jelentse a hibát, _MutuallyExclusiveViolation_.
 
-## <a name="other-products-depend-on-this-license"></a>Ez a licenc függenek más termékek
+## <a name="other-products-depend-on-this-license"></a>Más termékek függenek ettől a licenctől
 
 **Probléma:** az egyik terméket, amely a csoport szerepel, amely egy másik service-csomag egy másik termék működéséhez engedélyezni kell a service-csomag tartalmazza. Ez a hiba akkor fordul elő, amikor az Azure AD megpróbálja eltávolítani az alapul szolgáló service-csomag. Ez például akkor fordulhat elő, amikor a felhasználó eltávolítása a csoportból.
 
@@ -155,7 +153,7 @@ Attól függően, hogy milyen lépéseket, hogy fordítani javítsa ki a hibáka
 
 Például ha szabadítsa fel néhány licencek közvetlen licenc-hozzárendeléseivel eltávolításával a felhasználóktól, szeretné elindítani, amely korábban nem sikerült teljesen az összes felhasználó tag licenc csoportok feldolgozása. Újból feldolgozza a csoport, nyissa meg a csoport panelen megnyitott **licencek**, majd válassza ki a **újból feldolgozza** gomb az eszköztáron.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Más esetekben a Licenckezelés csoportokon keresztül kapcsolatos további tudnivalókért olvassa el a következőket:
 

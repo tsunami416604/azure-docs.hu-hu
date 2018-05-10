@@ -3,8 +3,8 @@ title: Hozzon létre egy Azure virtuális gép a hálózat elérését gyorsítj
 description: Megtudhatja, hogyan hozzon létre egy Linux virtuális gép a hálózat elérését gyorsítja fel.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: gsilva5
+manager: gedegrac
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,21 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/02/2018
-ms.author: jdial
+ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: a5e657d3c171b63734ad4bf6c0097a3142993360
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 0f7f389df96f38bea3634bf712af3f9bf4bdde09
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Linux virtuális gép létrehozása
-
-> [!IMPORTANT] 
-> Virtuális gépek léteznie kell a hálózat elérését gyorsítja fel engedélyezve van. Ez a funkció nem engedélyezhető a meglévő virtuális gépeken. Az alábbi lépésekkel engedélyezése a hálózat elérését gyorsítja fel:
->   1. Törölje a virtuális gépet.
->   2. Hozza létre a virtuális gép a hálózat elérését gyorsítja fel engedélyezve van.
->
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy Linux virtuális gép (VM) a hálózat elérését gyorsítja fel. A hálózat elérését gyorsítja fel, a Windows virtuális gépek létrehozásához lásd: [Windows virtuális gép létrehozása az elérését gyorsítja fel hálózatkezelési](create-vm-accelerated-networking-powershell.md). Gyorsított hálózatkezelés lehetővé teszi, hogy az egygyökerű i/o-virtualizálás (SR-IOV) egy virtuális géphez, a hálózati teljesítmény nagy mértékben javítva. A nagy teljesítményű elérési út nincs hatással a gazdagép a datapath, így csökkentve a késést, a jitter és a CPU felhasználását, a legnagyobb igénybevételt jelentő munkaterheléseit támogatott Virtuálisgép-típusokon való használatra. Az alábbi képen látható rendelkező és anélküli gyorsított hálózatkezelés két virtuális gépek közötti kommunikáció:
 
@@ -46,29 +40,39 @@ A gyorsított hálózat előnyeit, hogy engedélyezve van a virtuális gép csak
 * **Csökkent a CPU-felhasználás:** kevesebb hálózati forgalom feldolgozása a CPU-használatot a virtuális kapcsoló a gazdagép megkerülésével vezet.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-* **Ubuntu 16.04**: 4.11.0-1013 vagy nagyobb kernel-verzió
-* **SLES 12 SP3**: 4.4.92-6.18 vagy nagyobb kernel-verzió
-* **RHEL 7.4**: 7.4.2017120423 vagy nagyobb kernel-verzió
-* **CentOS 7.4**: 7.4.20171206 vagy nagyobb kernel-verzió
+A következő terjesztési az Azure katalógusából nem támogatottak: 
+* **Ubuntu 16.04** 
+* **SLES 12 SP3** 
+* **7.4 RHEL**
+* **7.4 centOS**
+* **CoreOS Linux**
+* **Debian "Stretch" rendelkező backports kernel**
+* **7.4 Oracle Linux**
 
-## <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
-Gyorsított hálózatkezelés legtöbb általános célú és számítási optimalizált példány mérete 4 vagy több Vcpu a támogatott. -Példányokon például D/DSv3 vagy E/ESv3, amely támogatja a Hyper-Threading technológia az elérését gyorsítja fel a hálózat támogatott 8 vagy több Vcpu a Virtuálisgép-példányok.  Támogatott adatsorokat: D/DSv2, D/DSv3, E/ESv3, F/Fs/Fsv2 és Ms/Mms. 
+## <a name="limitations-and-constraints"></a>Korlátozások és megkötések
+
+### <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
+Gyorsított hálózatkezelés legtöbb általános célú és számítási optimalizált példány mérete, 2 vagy több Vcpu esetén támogatott.  A támogatott adatsorokat: D/DSv2 és F/Fs
+
+-Példányokon, amely támogatja a Hyper-Threading technológia az elérését gyorsítja fel a hálózat támogatott 4 vagy több Vcpu a Virtuálisgép-példányok. Támogatott adatsorokat: D/DSv3, E/ESv3, Fsv2 és Ms/Mms.
 
 További információ a Virtuálisgép-példányok: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="regions"></a>Régiók
+### <a name="regions"></a>Régiók
 Elérhető az összes Azure-régiók, valamint Azure Government felhők.
 
-## <a name="limitations"></a>Korlátozások
-A következő korlátozások vonatkoznak az e funkció használata esetén:
+### <a name="network-interface-creation"></a>Hálózati illesztő létrehozása 
+Gyorsított hálózat csak akkor engedélyezhető, az új hálózati Nem engedélyezhető az egy meglévő hálózati adaptert.
+### <a name="enabling-accelerated-networking-on-a-running-vm"></a>A futó virtuális gép hálózati gyorsított engedélyezése
+Egy támogatott Virtuálisgép-méretet engedélyezve gyorsított hálózatkezelés nélkül csak van a szolgáltatás engedélyezve van a leállítása és felszabadítása.  
+### <a name="deployment-through-azure-resource-manager"></a>Központi telepítés az Azure Resource Manager használatával
+Virtuális gépek (klasszikus) nem telepíthető a hálózat elérését gyorsítja fel.
 
-* **A hálózati illesztő létrehozása:** gyorsított hálózat csak akkor engedélyezhető, az új hálózati Nem engedélyezhető az egy meglévő hálózati adaptert.
-* **Virtuális gép létrehozása:** A hálózati adapter engedélyezve gyorsított hálózattal csak akkor csatolható a virtuális géphez a virtuális gép létrehozásakor. A hálózati adapter nem lehet csatolni, egy meglévő virtuális gépre. Ha a virtuális gép hozzáadása egy meglévő rendelkezésre állási, a rendelkezésre állási csoport virtuális gépeinek kell is rendelkezik az elérését gyorsítja fel engedélyezett hálózati.
-* **Telepítés csak Azure Resource Manageren keresztül:** virtuális gépek (klasszikus) nem állítható rendszerbe, a hálózat elérését gyorsítja fel.
+## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Linux virtuális gép létrehozása az Azure gyorsított hálózattal
 
 Bár ez a cikk ismerteti a virtuális gép létrehozása az Azure parancssori felület használatával gyorsított hálózattal, is [virtuális gép létrehozása az Azure portál használatával gyorsított hálózattal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Létrehozásakor egy virtuális gépet a portálon, a **beállítások**, jelölje be **engedélyezve**a **elérését gyorsítja fel a hálózat**. Gyorsított hálózatkezelés lehetővé teszi nem szerepel a portálon, kivéve, ha a kijelölt egy [támogatott operációs rendszer](#supported-operating-systems) és [Virtuálisgép-méretet](#supported-vm-instances). A virtuális gép létrehozása után végre kell hajtania a utasításait [győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés](#confirm-that-accelerated-networking-is-enabled).
 
-## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
 Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login). A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevekre *myResourceGroup*, *myNic*, és *myVm*.
 
@@ -91,7 +95,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
+### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). A következő példa a *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hozza létre:
 
 ```azurecli
@@ -117,7 +121,7 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-## <a name="create-a-network-interface-with-accelerated-networking"></a>Hozzon létre egy adott hálózati csatoló gyorsított hálózatkezelés
+### <a name="create-a-network-interface-with-accelerated-networking"></a>Hozzon létre egy adott hálózati csatoló gyorsított hálózatkezelés
 
 Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) paranccsal. A nyilvános IP-cím nem szükséges, ha nem tervezi a virtuális gép az internetről való eléréséhez, de ez a cikk a végrehajtásához, szükség rá.
 
@@ -140,7 +144,7 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="create-a-vm-and-attach-the-nic"></a>Hozzon létre egy virtuális Gépet, és csatlakoztassa a hálózati adapter
+### <a name="create-a-vm-and-attach-the-nic"></a>Hozzon létre egy virtuális Gépet, és csatlakoztassa a hálózati adapter
 A virtuális gép létrehozásakor adja meg a hálózati adapter segítségével létrehozott `--nics`. Válasszon ki egy mérete és a felsorolt terjesztési [Linux az elérését gyorsítja fel hálózati](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM* UbuntuLTS kép és a méretet, amely támogatja a hálózat elérését gyorsítja fel (*Standard_DS4_v2*):
@@ -173,7 +177,7 @@ A virtuális gép létrehozása után a következő egy példa a kimenetre hason
 }
 ```
 
-## <a name="confirm-that-accelerated-networking-is-enabled"></a>Győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés
+### <a name="confirm-that-accelerated-networking-is-enabled"></a>Győződjön meg arról, hogy engedélyezve van-e a gyorsított hálózatkezelés
 
 Használja az alábbi parancsot egy SSH-munkamenet létrehozásához a virtuális géphez. Cserélje le `<your-public-ip-address>` a nyilvános IP-címmel hozzárendelni a virtuális gép alapján létrehozott, és cserélje le *azureuser* meg más értéket használatakor `--admin-username` a virtuális gép létrehozásakor.
 
@@ -210,3 +214,84 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 Gyorsított hálózatkezelés engedélyezve van a virtuális gép számára.
+
+## <a name="enable-accelerated-networking-on-existing-vms"></a>A meglévő virtuális gépeken az elérését gyorsítja fel hálózati engedélyezése
+Létrehozott egy virtuális hálózat elérését gyorsítja fel nélkül, akkor lehet engedélyezni ezt a szolgáltatást egy meglévő virtuális gép.  A virtuális gép támogatnia kell a hálózat elérését gyorsítja fel, az alábbi előfeltételek is fent vázolt értekezlet:
+
+* A virtuális Gépet egy támogatott mérete, a hálózati az elérését gyorsítja fel kell lennie.
+* A virtuális gép kell lennie, a támogatott Azure-katalógus kép (és a kernel verzió Linux)
+* Minden virtuális gép rendelkezésre állási csoportba vagy VMSS kell leállt/felszabadítása ahhoz, hogy a hálózatot az elérését gyorsítja fel a hálózati adapterek
+
+### <a name="individual-vms--vms-in-an-availability-set"></a>Az egyes virtuális gépek és virtuális gépek rendelkezésre állási beállítása
+Először állítsa le vagy felszabadítani a virtuális Gépet, vagy ha a rendelkezésre állási csoport, a készlet összes virtuális gépet:
+
+```azurecli
+az vm deallocate \
+    --resource-group myResourceGroup \
+    --name myVM
+```
+
+Fontos, adjon Megjegyzés: Ha a virtuális gép, egy rendelkezésre állási csoportot, hogy csak nem lett létrehozva kell ahhoz, hogy az elérését gyorsítja fel a hálózat egyes VM leállítása/felszabadítani.  A virtuális gép rendelkezésre állási csoportok hozták létre, ha a rendelkezésre állási csoport szereplő összes virtuális gép leállítása/felszabadítása kell ahhoz, hogy a hálózati adapterek egyikén az elérését gyorsítja fel hálózati kell. 
+
+A Leállítás után engedélyezése az elérését gyorsítja fel a hálózati adapter által a virtuális gép hálózati:
+
+```azurecli
+az network nic update \
+    --name myVM -n myNic \
+    --resource-group myResourceGroup \
+    --accelerated-networking true
+```
+
+Indítsa újra a virtuális gép vagy, ha a rendelkezésre állási csoport, a készlet összes virtuális gépet, és győződjön meg arról, hogy engedélyezve van-e a hálózat elérését gyorsítja fel: 
+
+```azurecli
+az vm start --resource-group myResourceGroup \
+    --name myVM
+```
+
+### <a name="vmss"></a>VMSS
+VMSS kis mértékben eltér, de a következő ugyanabban a munkafolyamatban.  Először állítsa le a virtuális gépek:
+
+```azurecli
+az vmss deallocate \
+    --name myvmss \
+    --resource-group myrg
+```
+
+A virtuális gépek leállnak, frissíti a hálózat elérését gyorsítja fel tulajdonság a hálózati kapcsolat:
+
+```azurecli
+az vmss update --name myvmss \
+    --resource-group myrg \
+    --set virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].enableAcceleratedNetworking=true
+```
+
+Adja a Megjegyzés, egy VMSS kifejezetten a VM-frissítéseket az három különböző beállításokkal, az automatikus, a működés közbeni és a kézi frissítés alkalmazása.  Az alábbi utasításokat a házirend automatikusra van beállítva, hogy a VMSS felveszi a módosítások újraindítás után azonnal.  Állítsa be automatikus, hogy a módosítások azonnal átveszik: 
+
+```azurecli
+az vmss update \
+    --name myvmss \
+    --resource-group myrg \
+    --set upgradePolicy.mode="automatic"
+```
+
+Végezetül indítsa újra a VMSS:
+
+```azurecli
+az vmss start \
+    --name myvmss \
+    --resource-group myrg
+```
+
+Egyszer, indítsa újra, várjon, amíg befejeződik a frissítéseket, de amint befejeződött, a VF jelenik meg a virtuális Gépen belül.  (Ellenőrizze, hogy a támogatott operációs rendszer és a virtuális gép mérete használja.)
+
+### <a name="resizing-existing-vms-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel a meglévő virtuális gépek átméretezésével
+
+Gyorsított hálózatkezelési engedélyezett virtuális gépek csak a virtuális gépekhez, amelyek támogatják a hálózat elérését gyorsítja fel is átméretezhetők.  
+
+A hálózat elérését gyorsítja fel engedélyezve van egy virtuális Gépet egy Virtuálisgép-példányhoz, amely nem támogatja az átméretezés használatával az elérését gyorsítja fel hálózati nem méretezhetők.  Ehelyett átméretezni a virtuális gépeken egyikét: 
+
+* A virtuális gép leállítása/Deallocate vagy egy rendelkezésre állási készlet/VMSS, ha a stop/felszabadítani a készlet/VMSS összes virtuális.
+* Gyorsított hálózatkezelés a a hálózati Adapteren a virtuális gép vagy egy rendelkezésre állási készlet/VMSS, a set/VMSS virtuális gépeinek Ha le kell tiltani.
+* Miután az elérését gyorsítja fel a hálózat le van tiltva, a virtuális gép vagy rendelkezésre állási készlet/VMSS helyezheti át egy új méret, amely nem támogatja a hálózat elérését gyorsítja fel, és újraindul.  
+

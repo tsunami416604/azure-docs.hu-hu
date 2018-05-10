@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mazha
-ms.openlocfilehash: ed6f0b2c021fc4b31b85986c07df0502dba826f2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fcb4676325066dd6960070d996b1779fb3471dd9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Vezérlő Azure CDN a lekérdezési karakterláncok - standard csomagra gyorsítótárazásának
 > [!div class="op_single_selector"]
@@ -27,11 +27,10 @@ ms.lasthandoff: 04/05/2018
 > 
 
 ## <a name="overview"></a>Áttekintés
-Lekérdezési karakterláncok gyorsítótárazása, az Azure Content Delivery Network (CDN) szabályozza, hogyan kerül a gyorsítótárba egy webes kérelem lekérdezési karakterláncot tartalmazó. A webes kérelem lekérdezési karakterláncot a lekérdezési karakterlánc része a kérelmet, amely után a kérdőjel (?). A lekérdezési karakterlánc tartalmazhat egy vagy több kulcs-érték párok, amely a mező nevét és az értéke egyenlőségjelnek (=) elválasztva. Minden kulcs-érték párt elválasztott ampersand (&). For example, http:\//www.contoso.com/content.mov?field1=value1&field2=value2. Ha a kérelem lekérdezési karakterláncként egynél több kulcs-érték pár, a sorrendjük nincs jelentősége. 
+Az Azure Content Delivery Network (CDN), megadhatja a hogyan kerül a gyorsítótárba egy lekérdezési karakterláncot tartalmazó webes kérelem számára. A webes kérelem lekérdezési karakterláncot a lekérdezési karakterlánc része a kérelmet, amely után a kérdőjel (?). A lekérdezési karakterlánc tartalmazhat egy vagy több kulcs-érték párok, amely a mező nevét és az értéke egyenlőségjelnek (=) elválasztva. Minden kulcs-érték párt elválasztott ampersand (&). Ha például a http:\//www.contoso.com/content.mov?field1=value1 & mező2 = érték2. Ha a kérelem lekérdezési karakterláncként egynél több kulcs-érték pár, a sorrendjük nincs jelentősége. 
 
-> [!NOTE]
-> Az Azure CDN standard és premium termékek adja meg ugyanazt a lekérdezési karakterláncot gyorsítótárazási funkció, de a felhasználói felület különböző.  Ez a cikk ismerteti a felület **Azure CDN Standard Akamai** és **Azure CDN Standard verizon**. A lekérdezési karakterláncok gyorsítótárazása a **verizon Azure CDN Premium**, lásd: [vezérlő Azure CDN a lekérdezési karakterláncok - prémium csomagban gyorsítótárazásának](cdn-query-string-premium.md).
->
+> [!IMPORTANT]
+> Az Azure CDN standard és premium termékek adja meg ugyanazt a lekérdezési karakterláncot gyorsítótárazási funkció, de a felhasználói felület különböző. Ez a cikk ismerteti a felület **Azure CDN Standard Microsoft**, **Azure CDN Standard Akamai** és **Azure CDN Standard verizon**. A lekérdezési karakterláncok gyorsítótárazása a **verizon Azure CDN Premium**, lásd: [vezérlő Azure CDN a lekérdezési karakterláncok - prémium csomagban gyorsítótárazásának](cdn-query-string-premium.md).
 
 Lekérdezés-karakterlánc három módot érhetők el:
 
@@ -58,9 +57,10 @@ Lekérdezés-karakterlánc három módot érhetők el:
    ![A CDN a lekérdezési karakterláncban a gyorsítótár](./media/cdn-query-string/cdn-query-string.png)
 
 > [!IMPORTANT]
-> A regisztráció CDN propagálásához időt vesz igénybe, mert a gyorsítótár karakterlánc módosításait nem feltétlenül azonnal látható: 
+> A regisztráció CDN propagálásához időt vesz igénybe, mert a gyorsítótár karakterlánc módosításait nem feltétlenül azonnal látható:
+> - A **Azure CDN Standard Microsoft** -profilok propagálása általában befejezi tíz perc múlva. 
 > - A **Azure CDN Standard Akamai** -profilok propagálása általában befejezi egy percen belül. 
-> - A **Azure CDN Standard verizon** -profilok propagálása általában befejezi 90 percen belül.
->
+> - A **Azure CDN Standard verizon** és **verizon Azure CDN Premium** -profilok propagálása általában befejezi 90 percen belül. 
+
 
 

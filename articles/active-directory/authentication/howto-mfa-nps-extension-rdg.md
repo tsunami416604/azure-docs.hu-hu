@@ -1,26 +1,20 @@
 ---
 title: Távoli asztali átjáró integrációja Azure MFA NPS kiterjesztésű |} Microsoft Docs
-description: Ez a cikk ismerteti, amelyek a távoli asztali átjáró infrastruktúra integrálása az Azure MFA használata a hálózati házirend-kiszolgáló (NPS) bővítmény a Microsoft Azure.
-services: active-directory
-keywords: Az Azure MFA integrálja a távoli asztali átjáró, Azure Active Directoryban, hálózati házirend-kiszolgáló bővítmény
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
+description: A távoli asztali átjáró infrastruktúra integrálása az Azure MFA használata a hálózati házirend-kiszolgáló bővítmény a Microsoft Azure
+services: multi-factor-authentication
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 0c050ee237650be7d43be2454a2bc3c07f096b8c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 839b248fb6410fd36a1741beb1ae3598fe93b0a3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 #  <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítményt, és az Azure AD integrálása
 

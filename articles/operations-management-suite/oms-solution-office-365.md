@@ -1,35 +1,35 @@
 ---
-title: "Az Office 365-megoldás az Operations Management Suite (OMS) |} Microsoft Docs"
-description: "Ez a cikk részletesen konfigurációs és használja az Office 365-megoldás az OMS Szolgáltatáshoz.  A Naplóelemzési létrehozott Office 365-rekordok részletes leírását tartalmazza."
+title: Az Office 365 felügyeleti megoldás az Azure-ban |} Microsoft Docs
+description: Ez a cikk részletesen konfigurációs és használja az Office 365-megoldás az Azure-ban.  A Naplóelemzési létrehozott Office 365-rekordok részletes leírását tartalmazza.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 711071eaff7ab5e5199793663aa3cbb36a1e8d8a
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 8797e08ad942687b7d2defd765f4fe3f9765812f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="office-365-solution-in-operations-management-suite-oms"></a>Az Office 365-megoldás az Operations Management Suite (OMS)
+# <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure (előzetes verzió)
 
 ![Az Office 365-embléma](media/oms-solution-office-365/icon.png)
 
-Az Office 365-megoldás az Operations Management Suite (OMS) az Office 365-környezethez az Naplóelemzési figyelését teszi lehetővé.  
+Az Office 365 felügyeleti megoldás az Office 365-környezethez az Naplóelemzési figyelését teszi lehetővé.
 
 - Az Office 365-fiókok elemezheti a használati szokásokat, valamint a viselkedési trendek azonosításához felhasználói tevékenység figyelésének. Például is kibonthat egy konkrét használati forgatókönyvek, például a szervezet vagy a legnépszerűbb SharePoint-webhelyek kívül megosztott fájlokat.
 - Rendszergazdai tevékenységek nyomon követéséhez a konfigurációs módosítások vagy magas jogosultsági műveletek figyelését.
 - Észleli, és vizsgálja meg a nem kívánt felhasználói viselkedés, amely a szervezet igényeinek testre is szabható.
 - Naplózási és megfelelőségi bemutatása. Például fájl hozzáférési műveleteket bizalmas fájlokat, amely segíthet a naplózási és megfelelőségi eljárásait a figyelheti.
-- Hajtsa végre a működési hibaelhárítása fölött Office 365-tevékenységek adatait a szervezet OMS keresési használatával.
+- A működési hibaelhárítás [keresések jelentkezzen](../log-analytics/log-analytics-log-search.md) Office 365-tevékenységek adatait a szervezet felett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő szükség, mielőtt a megoldás telepítve és konfigurálva.
@@ -47,7 +47,7 @@ Ez a megoldás a csatlakoztatott felügyeleti csoportok nem telepíti a felügye
 ## <a name="configuration"></a>Konfiguráció
 Egyszer, [az Office 365-megoldás az előfizetéshez hozzáadott](../log-analytics/log-analytics-add-solutions.md), csatlakozni az Office 365-előfizetéssel rendelkezik.
 
-1. A Riasztáskezelési megoldás hozzáadása az OMS-munkaterület ismertetett eljárással [megoldások hozzáadása](../log-analytics/log-analytics-add-solutions.md).
+1. A Riasztáskezelési megoldás hozzáadni a Naplóelemzési munkaterület ismertetett eljárással [megoldások hozzáadása](../log-analytics/log-analytics-add-solutions.md).
 2. Ugrás a **beállítások** az OMS-portálon.
 3. A **csatlakoztatott források**, jelölje be **Office 365**.
 4. Kattintson a **csatlakozni az Office 365**.<br>![Kapcsolat az Office 365](media/oms-solution-office-365/configure.png)
@@ -63,7 +63,7 @@ Az Office 365-megoldás nem adatainak lekérése bármelyikét a [OMS-ügynökö
 Az Office 365 küld egy [webhook értesítési](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) szükséges részletes adatok Naplóelemzési minden alkalommal létrejön egy bejegyzés.
 
 ## <a name="using-the-solution"></a>A megoldás használata
-Ha az Office 365-megoldás az OMS-munkaterület ad hozzá a **Office 365** csempe nem kerülnek be az OMS-irányítópulton. Ez a csempe a környezetben jelenleg elérhető számítógépek számát és grafikus ábrázolását jeleníti meg, valamint a frissítési megfelelőségi állapotukat.<br><br>
+Ha az Office 365-megoldás hozzáadni a Naplóelemzési munkaterület a **Office 365** csempe nem kerülnek be az irányítópulton. Ez a csempe a környezetben jelenleg elérhető számítógépek számát és grafikus ábrázolását jeleníti meg, valamint a frissítési megfelelőségi állapotukat.<br><br>
 ![Az Office 365 összefoglalás Csempéje](media/oms-solution-office-365/tile.png)  
 
 Kattintson a **Office 365** csempére kattintva nyissa meg a **Office 365** irányítópult.
@@ -92,15 +92,15 @@ A következő tulajdonságok megegyeznek az összes Office 365 bejegyzésre.
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Típus | *OfficeActivity* |
-| Ügyfélip | Az eszköz, amikor a tevékenység naplózott használt IP-címét. Az IP-cím IPv4 vagy IPv6 cím formátumban jelenik meg. |
+| ClientIP | Az eszköz, amikor a tevékenység naplózott használt IP-címét. Az IP-cím IPv4 vagy IPv6 cím formátumban jelenik meg. |
 | OfficeWorkload | Az Office 365 szolgáltatás, amely a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Művelet | A felhasználói vagy rendszergazdai tevékenység nevét.  |
 | A szervezeti | A szervezet Office 365-bérlő GUID azonosítója. Ez az érték mindig lesz ugyanaz a szervezet az Office 365 szolgáltatást, amely függetlenül. |
 | recordType | A végrehajtott művelet típusa. |
 | ResultStatus | Azt jelzi, hogy (a művelet tulajdonságban megadott) a művelet sikeres volt-e vagy sem. Lehetséges értékek: sikeres, PartiallySucceded vagy sikertelen. Az Exchange felügyeleti tevékenység, értéke pedig IGAZ vagy hamis. |
-| Felhasználói azonosítóját | Az UPN (egyszerű felhasználónév) a felhasználó hajtotta végre a műveletet, amelyek a rekord, a naplózott; például my_name@my_domain_name. Vegye figyelembe, hogy rendszer fiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenység rekordok is szerepelnek. | 
+| UserId | Az UPN (egyszerű felhasználónév) a felhasználó hajtotta végre a műveletet, amelyek a rekord, a naplózott; például my_name@my_domain_name. Vegye figyelembe, hogy rendszer fiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenység rekordok is szerepelnek. | 
 | UserKey | A UserId tulajdonság a megadott felhasználó alternatív azonosító.  Például ezt a tulajdonságot a passport egyedi azonosítója (PUID) és az Exchange a SharePoint, a onedrive vállalati verzió a felhasználók által végrehajtott események telepítéskor. Ez a tulajdonság is meghatározza, ugyanazt az értéket a UserID tulajdonság a szolgáltatások és rendszerfiókok által végzett események előforduló események|
-| UserType | A felhasználó által végrehajtott a művelet típusát.<br><br>Rendszergazda<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Foglalt<br>Szolgáltatásnév<br>Rendszer |
+| UserType | A felhasználó által végrehajtott a művelet típusát.<br><br>Adminisztratív körzet<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Foglalt<br>Szolgáltatásnév<br>Rendszer |
 
 
 ### <a name="azure-active-directory-base"></a>Az Azure Active Directory-alap
@@ -234,7 +234,7 @@ Ezek a Tulajdonságok megegyeznek a minden SharePoint-rekordot.
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
-| Eseményforrás | Meghatározza, hogy az esemény történt-e a SharePoint. Lehetséges értékek a következők: a SharePoint vagy ObjectModel. |
+| EventSource | Meghatározza, hogy az esemény történt-e a SharePoint. Lehetséges értékek a következők: a SharePoint vagy ObjectModel. |
 | ItemType | A típusú objektum, amely nem érhető el, vagy módosították. Részletekért tekintse meg az ItemType táblázatot objektumok típusával. |
 | MachineDomainInfo | Eszköz szinkronizálási műveleteire vonatkozó adatokat. Ezek az információk csak akkor, ha a kérelem szerepel az elvártnak. |
 | MachineId |   Eszköz szinkronizálási műveleteire vonatkozó adatokat. Ezek az információk csak akkor, ha a kérelem szerepel az elvártnak. |
@@ -280,9 +280,9 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 | Lekérdezés | Leírás |
 | --- | --- |
-|Az Office 365-előfizetés az összes műveletek száma |Típus = OfficeActivity &#124; mérték count() művelet |
-|SharePoint-webhelyek használata|Típus = OfficeActivity OfficeWorkload = sharepoint &#124; mérheti count() SiteUrl &#124; darabszámként Count asc rendezése|
-|Hozzáférés fájlműveletek felhasználói típus szerint|Típus = OfficeActivity OfficeWorkload sharepoint művelet = = FileAccessed &#124; mérték count() UserType által|
+|Az Office 365-előfizetés az összes műveletek száma |Típus = OfficeActivity &#124; művelet count() mérésére |
+|SharePoint-webhelyek használata|Típus = OfficeActivity OfficeWorkload = sharepoint &#124; count() mértékcsoport által SiteUrl darabszámként &#124; száma asc rendezése|
+|Hozzáférés fájlműveletek felhasználói típus szerint|Típus = OfficeActivity OfficeWorkload sharepoint művelet = = FileAccessed &#124; által UserType count() mérésére|
 |Egy adott kulcsszóval keresése|Típus OfficeActivity OfficeWorkload = "MyTest" azureactivedirectory =|
 |A figyelő külső műveletek Exchange|Típus = OfficeActivity OfficeWorkload = exchange ExternalAccess = true|
 
@@ -294,13 +294,13 @@ Ha az Office 365-megoldás nem gyűjt adatokat várt módon, ellenőrizze az ál
 
 | status | Leírás |
 |:--|:--|
-| Aktív | Az Office 365-előfizetés nem aktív, és a munkaterhelés sikeresen csatlakozik-e az OMS-munkaterület. |
-| Függőben | Az Office 365-előfizetés nem aktív, de a munkaterhelés van még nincs hozzákapcsolva az OMS-munkaterület sikeresen megtörtént. Csatlakozás az Office 365-előfizetéssel, először a munkaterhelések lesz ez az állapot addig, amíg sikeresen csatlakoznak. Várjon 24 órában aktív Váltás a munkaterhelések. |
-| Inaktív | Az Office 365-előfizetéssel inaktív állapotban van. Ellenőrizze az Office 365 felügyeleti a lapot. Az Office 365-előfizetés aktiválása után szüntesse meg a kapcsolatát az OMS-munkaterület, és ismét indítsa el az adatok fogadása a hivatkozás. |
+| Aktív | Az Office 365-előfizetés nem aktív, és a munkaterhelés sikeresen csatlakoztatva van a Naplóelemzési munkaterület. |
+| Függőben | Az Office 365-előfizetés nem aktív, de a munkaterhelés van még nincs hozzákapcsolva a Naplóelemzési munkaterület sikeresen megtörtént. Csatlakozás az Office 365-előfizetéssel, először a munkaterhelések lesz ez az állapot addig, amíg sikeresen csatlakoznak. Várjon 24 órában aktív Váltás a munkaterhelések. |
+| Inaktív | Az Office 365-előfizetéssel inaktív állapotban van. Ellenőrizze az Office 365 felügyeleti a lapot. Az Office 365-előfizetés aktiválása után szüntesse meg a Naplóelemzési munkaterületet, és ismét indítsa el az adatok fogadása a hivatkozás. |
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-searches.md) Naplókeresés funkciójával is megtekintheti.
 * [Hozzon létre egy saját irányítópultok](../log-analytics/log-analytics-dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
 * [Hozzon létre a riasztások](../log-analytics/log-analytics-alerts.md) proaktív értesíti a fontos Office 365-tevékenységek.  

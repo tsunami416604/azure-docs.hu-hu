@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan kell telepíteni, és az SAP HANA (nagy példányok) konfigurálása az Azure-on
 
 Az alábbiakban néhány fontos definíciókat az útmutató olvasása előtt. A [SAP HANA (nagy példányok) – áttekintés és Azure architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) HANA nagy példány egység, amelyek két különböző osztályú bevezetett azt:
 
 - S72, S72m, S144, S144m, S192 és S192m, amely a "Type i. osztály" lesz az SKU.
-- S384, S384m, S384xm, S576, S768 és S960, amely a "típusú class" SKU lesz az.
+- S384, S384m, S384xm, S576m, S768m és S960m, amely a "típusú class" SKU lesz az.
 
 A osztály megadása lesz használható a HANA nagy példány dokumentációban végül különböző képességeket és HANA nagy példány termékváltozatok követelmények vonatkoznak.
 
@@ -51,13 +51,13 @@ Ellenőrizze ismét, különösen akkor, ha a tervezési HANA 2.0-s verzióját 
 
 A specifikus, ellenőrizze a következő paramétereket, és végül állítva:
 
-- net.core.rmem_max = 16777216
-- net.core.wmem_max = 16777216
+- NET.Core.rmem_max = 16777216
+- NET.Core.wmem_max = 16777216
 - net.core.rmem_default = 16777216
 - net.core.wmem_default = 16777216
 - net.core.optmem_max = 16777216
 - net.ipv4.tcp_rmem = 65536 16777216 16777216
-- net.ipv4.tcp_wmem = 65536 16777216 16777216
+- NET.IPv4.tcp_wmem 65536 16777216 16777216 =
 
 RHEL 7.2 és SLES12 SP1-től kezdődően ezeket a paramétereket kell állítani a /etc/sysctl.d könyvtárban a konfigurációs fájlban. Például a konfigurációs fájlt, amely a 91-NetApp-HANA.conf nevét kell létrehozni. A régebbi SLES és RHEL kiadásai ezek a paraméterek beállítása in/etc/sysctl.conf kell lennie.
 
@@ -65,7 +65,7 @@ Minden RHEL kiadott és SLES12, kezdve a
 - sunrpc.tcp_slot_table_entries = 128
 
 a paraméter in/etc/modprobe.d/sunrpc-local.conf kell beállítani. Ha a fájl nem létezik, akkor létre kell hozni a következő bejegyzés hozzáadásával: 
-- options sunrpc tcp_max_slot_table_entries=128
+- beállítások sunrpc tcp_max_slot_table_entries = 128
 
 **Negyedik lépés** annak ellenőrzése, a rendszer pontos ideje HANA nagy példány egységének. A példányok telepítik, amelyek megfelelnek az Azure-régió, a HANA nagy példány Stamp található helyét rendszer időzónát. Szabadon rendszeridő vagy a saját példányok időzónájának módosítása. Ennek során, és a bérlői további példányokat rendelés, készüljön, hogy szeretné-e az újonnan kézbesített példányok időzónájának igazítja. A Microsoft operations nem állít be a osztályt átadása után a rendszer időzóna betekintést rendelkezik. Ezért újonnan telepített példányok előfordulhat, hogy nem állítható be ugyanabban az időzónában megegyezik a értékre módosult. Ennek eredményeképpen feladata a ellenőrizze és szükség esetén az-példányokat, átadná időzónájának ügyfélként. 
 
@@ -92,7 +92,7 @@ Két IP-címek hozzárendelve a panel-konfiguráció nem megfelelő HANA replik�
 
 
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 A tárolási elrendezés SAP Hana Azure (nagy példányok) be van állítva az Azure szolgáltatásfelügyeleti ajánlott útmutatás, ahogy SAP keresztül SAP HANA [SAP HANA tárhellyel kapcsolatos követelmények](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) találhatók meg. A különböző köteteket a különböző nagy HANA-példányok termékváltozatok nyers mérete a kapott részletes ismertetését lásd: [SAP HANA (nagy példány) – áttekintés és Azure architektúra](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -139,7 +139,7 @@ A tárolóvezérlő nagy példány bélyegzők csomópontjának szinkronizálja 
 Ahhoz, hogy optimalizálja a SAP HANA alatt használt tárhelyhez, a következő SAP HANA-konfigurációs paramétereket is be kell állítani:
 
 - max_parallel_io_requests 128
-- async_read_submit on
+- a async_read_submit
 - async_write_submit_active on
 - minden async_write_submit_blocks
  
@@ -234,7 +234,7 @@ A YAST váltson Szoftverkarbantartást és smt megkereséséhez. Válassza ki a 
 ![A yast SMT](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Fogadja el a kijelölés a smtserver telepítésre. Telepítése után nyissa meg a SMT kiszolgálókonfiguráció, és adja meg a szervezeti hitelesítő adatokat a SUSE ügyfél központjából korábban kapott. Az Azure virtuális gép állomásnevet is adja meg az SMT kiszolgáló URL-címet. Ebben a bemutatóban volt https://smtserver a következő grafikus megjelenő.
+Fogadja el a kijelölés a smtserver telepítésre. Telepítése után nyissa meg a SMT kiszolgálókonfiguráció, és adja meg a szervezeti hitelesítő adatokat a SUSE ügyfél központjából korábban kapott. Az Azure virtuális gép állomásnevet is adja meg az SMT kiszolgáló URL-címet. Ebben a bemutatóban lett https://smtserver a következő grafikus megjelenő.
 
 ![SMT kiszolgáló konfigurációja](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

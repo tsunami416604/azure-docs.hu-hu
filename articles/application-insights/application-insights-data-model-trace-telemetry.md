@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights Telemetria-adatmodell - nyomkövetési Telemetria |} Microsoft Docs"
-description: "Application Insights – nyomkövetési telemetria tartozó adatmodell"
+title: Azure Application Insights Telemetria-adatmodell - nyomkövetési Telemetria |} Microsoft Docs
+description: Application Insights – nyomkövetési telemetria tartozó adatmodell
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0398774e21d89fd084e6929bc5e410697d2aafaa
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: d93ed9f292b6c05d0a3fb3202567f4024f62e35e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Nyomkövetési telemetria: Application Insights adatmodell
 
@@ -36,7 +36,7 @@ Nyomkövetési súlyossági szint. Az érték lehet `Verbose`, `Information`, `W
 
 [!INCLUDE [application-insights-data-model-properties](../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [.NET nyomkövetési naplók megtekintése az Application Insights felfedezés](app-insights-asp-net-trace-logs.md).
 - [Fedezze fel az Application Insights nyomkövetési naplók Java](app-insights-java-trace-logs.md).

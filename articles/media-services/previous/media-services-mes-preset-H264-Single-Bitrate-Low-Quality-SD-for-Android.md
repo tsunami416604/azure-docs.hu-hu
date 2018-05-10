@@ -1,11 +1,11 @@
 ---
-title: "H264 Alacsony sávszélességű minőségi SD egyetlen Android |} Microsoft Docs"
-description: "A témakör áttekintést a ** H264 egyetlen sávszélességű alacsony minőségi SD Android ** feladat készlet."
+title: H264 Alacsony sávszélességű minőségi SD egyetlen Android |} Microsoft Docs
+description: A témakör áttekintést a **H264 egyetlen sávszélességű alacsony minőségi SD Android** feladat az adott néven beállítás.
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 67d3446d-e3b8-419f-bbf8-e5149c108531
 ms.service: media-services
 ms.workload: media
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
 ms.openlocfilehash: af10b703615e35c28038ef5b8e15f3e58e0eecb1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="h264-single-bitrate-low-quality-sd-for-android"></a>H264 Egyetlen sávszélességű alacsony minőségi SD Android rendszerhez
-`Media Encoder Standard`Meghatározza a kódolási készletek kódolási feladatok létrehozásakor használható. Használhatja a `preset name` adhatja meg, melyik formátumba kódolja a médiafájl szeretné. Másik lehetőségként létrehozhat saját JSON- vagy XML-alapú készletek (UTF-8 vagy UTF-16 kódolás használatával. Az egyéni készletet a kódoló majd át lesz. Ez által támogatott összes előre definiált nevek listája `Media Encoder Standard` kódoló, lásd: [feladat készletek a Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` Meghatározza a kódolási készletek kódolási feladatok létrehozásakor használható. Használhatja a `preset name` adhatja meg, melyik formátumba kódolja a médiafájl szeretné. Másik lehetőségként létrehozhat saját JSON- vagy XML-alapú készletek (UTF-8 vagy UTF-16 kódolás használatával. Az egyéni készletet a kódoló majd át lesz. Ez által támogatott összes előre definiált nevek listája `Media Encoder Standard` kódoló, lásd: [feladat készletek a Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  Ez a témakör bemutatja a `H264 Single Bitrate Low Quality SD for Android` beállított XML és a JSON formátumban.  
   

@@ -1,11 +1,11 @@
 ---
-title: "Naplóelemzési adatok megoldást vezetéknélküli |} Microsoft Docs"
-description: "Átviteli adatokat az OMS-ügynököt, beleértve az Operations Manager és a Windows-csatlakoztatott ügynökök rendelkező számítógépekről összevont hálózati és a teljesítmény adatai. Hálózati adatok a naplóadatok segítséget adatainak együtt."
+title: Naplóelemzési adatok megoldást vezetéknélküli |} Microsoft Docs
+description: Átviteli adatokat az OMS-ügynököt, beleértve az Operations Manager és a Windows-csatlakoztatott ügynökök rendelkező számítógépekről összevont hálózati és a teljesítmény adatai. Hálózati adatok a naplóadatok segítséget adatainak együtt.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 658d92900763249aeeb3542132f4fe0c43ba005f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>A Naplóelemzési átviteli adatok 2.0 (előzetes verzió) megoldás
 
@@ -58,8 +58,8 @@ Azonban mivel megtekintett metaadatok, célszerű nem feltétlenül részletes h
 
 | **Csatlakoztatott adatforrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Igen | Átviteli adatokat elemzi, és a Windows-ügynök számítógépekről gyűjt adatokat. <br><br> Kívül a [OMS-ügynököt](log-analytics-windows-agent.md), Windows-ügynökök szükséges a Microsoft függőségi ügynök. Tekintse meg a [támogatott operációs rendszerek](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
-| Linux-ügynökök | Igen | Átviteli adatokat elemzi, és a Linux-ügynök számítógépekről gyűjt adatokat.<br><br> Kívül a [OMS-ügynököt](log-analytics-quick-collect-linux-computer.md), Linux-ügynököt a Microsoft függőségi ügynök szükséges. Tekintse meg a [támogatott operációs rendszerek](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
+| Windows-ügynökök | Igen | Átviteli adatokat elemzi, és a Windows-ügynök számítógépekről gyűjt adatokat. <br><br> Kívül a [OMS-ügynököt](log-analytics-windows-agent.md), Windows-ügynökök szükséges a Microsoft függőségi ügynök. Tekintse meg a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
+| Linux-ügynökök | Igen | Átviteli adatokat elemzi, és a Linux-ügynök számítógépekről gyűjt adatokat.<br><br> Kívül a [OMS-ügynököt](log-analytics-quick-collect-linux-computer.md), Linux-ügynököt a Microsoft függőségi ügynök szükséges. Tekintse meg a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
 | System Center Operations Manage felügyeleti csoport | Igen | Átviteli adatokat elemzi, és összegyűjti az adatokat a Windows és Linux-ügynökök a csatlakoztatott [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md). <br><br> Naplóelemzési a System Center Operations Manager ügynök számítógépről közvetlen kapcsolatra szükség. Adatok Naplóelemzési továbbítódik a felügyeleti csoportból. |
 | Azure Storage-fiók | Nem | Átviteli adatokat adatokat gyűjt a ügynök számítógépekről, nincsenek adatok, az Azure Storage-ból gyűjtését. |
 
@@ -115,7 +115,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| Operációs rendszer verziója | Kernel-verzió |
+| **Operációs rendszer verziója** | **Kernel-verzió** |
 | --- | --- |
 | 7.0 | 3.10.0-123 |
 | 7.1 | 3.10.0-229 |
@@ -124,7 +124,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| Operációs rendszer verziója | Kernel-verzió |
+| **Operációs rendszer verziója** | **Kernel-verzió** |
 | --- | --- |
 | 6.0 | 2.6.32-71 |
 | 6.1 | 2.6.32-131 |
@@ -138,7 +138,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="red-hat-linux-5"></a>Red Hat Linux 5
 
-| Operációs rendszer verziója | Kernel-verzió |
+| **Operációs rendszer verziója** | **Kernel-verzió** |
 | --- | --- |
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
@@ -149,7 +149,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 
-| Operációs rendszer verziója | Kernel-verzió |
+| **Operációs rendszer verziója** | **Kernel-verzió** |
 | --- | --- |
 | 6.2 | Oracle 2.6.32-300 (UEK R1) |
 | 6.3 | Oracle 2.6.39-200 (UEK R2) |
@@ -159,7 +159,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="oracle-linux-5"></a>Oracle Linux 5
 
-| Operációs rendszer verziója | Kernel-verzió |
+| **Operációs rendszer verziója** | **Kernel-verzió** |
 | --- | --- |
 | 5.8 | Oracle 2.6.32-300 (UEK R1) |
 | 5.9 | Oracle 2.6.39-300 (UEK R2) |
@@ -170,7 +170,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="suse-linux-11"></a>SUSE Linux 11
 
-| Operációs rendszer verziója | Kernel-verzió |
+| **Operációs rendszer verziója** | **Kernel-verzió** |
 | --- | --- |
 | 11 | 2.6.27 |
 | 11 SP1 | 2.6.32 |
@@ -180,7 +180,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="suse-linux-10"></a>SUSE Linux 10
 
-| Operációs rendszer verziója | Kernel-verzió |
+| **Operációs rendszer verziója** | **Kernel-verzió** |
 | --- | --- |
 | 10 SP4 | 2.6.16.60 |
 
@@ -252,12 +252,12 @@ InstallDependencyAgent-Linux64.bin -help
 
 A függőségi ügynök fájlok kerülnek, a következő könyvtárban:
 
-| Fájlok | **Hely** |
+| **Fájlok** | **Hely** |
 | --- | --- |
 | Alapvető fájljait | /opt/microsoft/dependency-agent |
 | Naplófájlok | /var/opt/microsoft/dependency-agent/log |
 | Olyan konfigurációs fájlt | /etc/opt/microsoft/dependency-agent/config |
-| Végrehajtható fájlok | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
+| Végrehajtható fájlok | /OPT/Microsoft/Dependency-Agent/bin/Microsoft-Dependency-Agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
 | A tároló bináris fájljai | /var/opt/microsoft/dependency-agent/storage |
 
 ### <a name="installation-script-examples"></a>Telepítési parancsfájl példák
@@ -364,7 +364,7 @@ A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMoni
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
-Telepítése és a megoldás konfigurálása
+**Telepítése és a megoldás konfigurálása**
 
 Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
 
@@ -438,11 +438,11 @@ A típusú rekord _WireData_ jön létre az egyes bemeneti adatokat. WireData r�
 | LocalPortNumber | Helyi port száma |
 | RemoteIP | A távoli számítógép által használt távoli IP-cím |
 | RemotePortNumber | A távoli IP-cím által használt portszám |
-| SessionID | Két IP-címek közötti kommunikáció munkamenetet azonosító egyedi érték |
+| Munkamenet-azonosító | Két IP-címek közötti kommunikáció munkamenetet azonosító egyedi érték |
 | SentBytes | Küldött bájtok száma |
 | TotalBytes | A munkamenetben küldött bájtok teljes száma |
 | ApplicationProtocol | A használt hálózati protokoll típusa   |
-| ProcessID | Windows-folyamat azonosítója |
+| Folyamatazonosító | Windows-folyamat azonosítója |
 | Folyamatnév | A folyamat elérési útját és nevét |
 | RemoteIPLongitude | IP-hosszúság érték |
 | RemoteIPLatitude | IP-szélesség értéke |

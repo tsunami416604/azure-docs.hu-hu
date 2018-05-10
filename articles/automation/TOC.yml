@@ -179,6 +179,8 @@
           href: automation-invoke-runbook-from-omsla-alert.md
         - name: Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
           href: automation-deploy-template-runbook.md
+        - name: Az Azure Automation integrálása az Event Grid és a Microsoft Teams szolgáltatással
+          href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
     - name: Figyelés
       items:
         - name: Azure Automation-feladat adatainak továbbítása a Log Analyticsbe

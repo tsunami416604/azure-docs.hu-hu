@@ -25,7 +25,7 @@
       href: quickstart-docker-go.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Adatbázist használó alkalmazás
+    - name: Adatbázist használó alkalmazás
       items:
         - name: .NET Core és SQL-adatbázis
           href: tutorial-dotnetcore-sqldb-app.md
@@ -37,14 +37,16 @@
           href: tutorial-nodejs-mongodb-app.md
         - name: Python egyéni tároló és PostgreSQL
           href: tutorial-docker-python-postgresql-app.md
-    - name: 1 – Egyéni Docker-rendszerkép
+    - name: Egyéni Docker-rendszerkép
       href: tutorial-custom-docker-image.md
-    - name: 2 – Egyéni tartomány leképezése
+    - name: Egyéni tartomány leképezése
       href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: 3 – SSL-tanúsítvány kötése
+    - name: SSL-tanúsítvány kötése
       href: ../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: 4 – CDN hozzáadása
+    - name: CDN hozzáadása
       href: ../app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Felhasználók hitelesítése
+      href: tutorial-auth-aad.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -65,6 +67,8 @@
       href: ../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Üzembe helyezés típusának kiválasztása
       href: choose-deployment-type.md
+    - name: Diagnosztika
+      href: ../app-service-diagnostics.md
 - name: Útmutatók
   items:
     - name: Az alkalmazás konfigurálása
@@ -113,6 +117,8 @@
               href: ../app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: Hitelesítés a Twitterrel
               href: ../app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Hitelesítés testreszabása
+          href: ../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: TLS kölcsönös hitelesítés beállítása
           href: ../app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Az alkalmazás méretezése

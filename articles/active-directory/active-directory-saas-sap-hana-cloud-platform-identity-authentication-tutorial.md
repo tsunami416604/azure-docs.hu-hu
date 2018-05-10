@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció SAP felhő Platform identitás hitelesítéssel |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP felhőalapú Platform identitás hitelesítés között."
+title: 'Oktatóanyag: Azure Active Directory-integráció SAP felhő Platform identitás hitelesítéssel |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP felhőalapú Platform identitás hitelesítés között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 0c7dd884eaadd1fba4fcbc19b6c9cf92c68a59ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 69a8eba2e099e9333d19d139fb5af503fd582dda
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>Oktatóanyag: Azure Active Directory-integráció SAP felhő Platform identitás hitelesítéssel
 
@@ -126,21 +126,25 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
  
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_samlbase.png)
 
-3. Ha az alkalmazás a konfigurálni kívánt **IDP** indított módban, a **SAP felhő Platform identitás hitelesítési tartomány és az URL-címek** részben, a a **azonosító** mezőbe Írja be olyan URL-címe a következő mintát: `https://<entity-id>.accounts.ondemand.com`.  
+3. Ha az alkalmazás a konfigurálni kívánt **IDP** indított módban, a **SAP felhő Platform identitás hitelesítési tartomány és az URL-címek** területen tegye a következőket:  
 
     ![Az egyszeri bejelentkezés információk SAP felhő Platform identitás hitelesítési tartomány és az URL-címek](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url.png)
 
-    > [!NOTE] 
-    > Ez az érték nem valódi. Frissítse ezt az értéket a tényleges azonosítója. Lépjen kapcsolatba a [SAP felhő Platform identitás hitelesítési ügyfél-támogatási csoport](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) lekérni ezt az értéket. Ha ez az érték nem világos, olvassa el a SAP felhő Platform identitás Authentication – dokumentáció [bérlői SAML 2.0 konfigurációs](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
+    a. Az a **azonosító** mezőbe írja be a következő mintát olyan URL-címe: `<IAS-tenant-id>.accounts.ondemand.com`
 
-4. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módot, válassza **megjelenítése speciális URL-beállításainak**. 
+    b. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe: `https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
+
+    > [!NOTE]
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Lépjen kapcsolatba a [SAP felhő Platform identitás hitelesítési ügyfél-támogatási csoport](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) beolvasni ezeket az értékeket. Ha azonosító értéke nem világos, olvassa el a SAP felhő Platform identitás Authentication – dokumentáció [bérlői SAML 2.0 konfigurációs](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
+
+4. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módot, válassza **megjelenítése speciális URL-beállításainak**.
 
     ![Az egyszeri bejelentkezés információk SAP felhő Platform identitás hitelesítési tartomány és az URL-címek](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url1.png)
 
-    Az a **URL-cím bejelentkezési** mezőbe írja be olyan URL-címe a következő mintát: `https://<entity-id>.accounts.ondemand.com/admin`.
+    Az a **URL-cím bejelentkezési** mezőbe írja be olyan URL-címe a következő mintát: `{YOUR BUSINESS APPLICATION URL}`.
 
-    > [!NOTE] 
-    > Ez az érték nem valódi. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Lépjen kapcsolatba a [SAP felhő Platform identitás hitelesítési ügyfél-támogatási csoport](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) lekérni ezt az értéket.
+    > [!NOTE]
+    > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Az adott üzleti alkalmazás bejelentkezési URL-CÍMÉT használja. Lépjen kapcsolatba a [SAP felhő Platform identitás hitelesítési ügyfél-támogatási csoport](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) Ha kétségei vannak.
 
 5. Az a **SAML-aláíró tanúsítványa** szakaszban jelölje be **metaadatainak XML-kódja**. Mentse a metaadat-fájlt a számítógépen.
 
@@ -289,4 +293,3 @@ A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_203.png
-

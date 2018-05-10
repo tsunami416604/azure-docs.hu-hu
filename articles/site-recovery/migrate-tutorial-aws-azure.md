@@ -1,6 +1,6 @@
 ---
-title: "Virtuális gépek áttelepítése az AWS-ből az Azure-ba az Azure Site Recoveryvel | Microsoft Docs"
-description: "Ez a cikk azt ismerteti, hogyan migrálhatók az Amazon Web Servicesben (AWS-ben) futó Windows rendszerű virtuális gépek az Azure-ba az Azure Site Recovery használatával."
+title: Virtuális gépek áttelepítése az AWS-ből az Azure-ba az Azure Site Recoveryvel | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan migrálhatók az Amazon Web Servicesben (AWS-ben) futó Windows rendszerű virtuális gépek az Azure-ba az Azure Site Recovery használatával.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,17 +9,18 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 59a09b5d67391f2b48d338d721369f14ed6b4ede
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3ad4f46585be9cf61e3ef8343b5cb05308c972d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
 Az oktatóanyag bemutatja, hogyan telepítheti át az Amazon Web Services-beli (AWS) virtuális gépeket (VM-eket) Azure-beli virtuális gépekre a Site Recovery használatával. Az EC2-példányok az Azure-ba való áttelepítésekor a rendszer a virtuális gépeket úgy kezeli, mintha azok fizikai, helyszíni számítógépek lennének. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+> * Előfeltételek ellenőrzése
 > * Azure-erőforrások előkészítése
 > * Az AWS EC2-példányok előkészítése az áttelepítésre
 > * Konfigurációs kiszolgáló üzembe helyezése
@@ -29,6 +30,22 @@ Az oktatóanyag bemutatja, hogyan telepítheti át az Amazon Web Services-beli (
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
+## <a name="prerequisites"></a>Előfeltételek
+- Ellenőrizze, hogy a migrálni kívánt virtuális gépek támogatott operációsrendszer-verziót futtatnak-e, amelyek a következők: 
+    - A Windows Server 2008 R2 SP1 vagy újabb 64 bites verziója, 
+    - Windows Server 2012,
+    - Windows Server 2012 R2, 
+    - Windows Server 2016
+    - Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok), és csak Citrix PV- vagy AWS PV-illesztőkkel rendelkezhet. A RedHat PV-illesztőket futtató példányok **nem** támogatottak.
+
+- A mobilitási szolgáltatásnak az összes replikálni kívánt virtuális gépen telepítve kell lennie. 
+
+> [!IMPORTANT]
+> A Site Recovery automatikusan telepíti ezt a szolgáltatást, ha engedélyezi a virtuális gép replikálását. Az automatikus telepítéshez elő kell készíteni egy fiókot az EC2-példányokon, amelynek használatával a Site Recovery eléri a virtuális gépet. Tartományi vagy helyi fiókot egyaránt használhat. 
+> - Linux virtuális gépek esetében a fióknak rendszergazdai fióknak kell lennie a Linux-forráskiszolgálón. 
+> - Windowsos virtuális gépek esetében, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen: Adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést a beállításjegyzékben a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** elemhez, és állítsa az értékét 1-re.
+
+- Egy külön EC2-példányra lesz szükség, amelyet Site Recovery konfigurációs kiszolgálóként használhat. A példányon Windows Server 2012 R2 operációs rendszernek kell futnia.
 
 ## <a name="prepare-azure-resources"></a>Azure-erőforrások előkészítése
 
@@ -74,19 +91,6 @@ Amikor az áttelepítés (feladatátvétel) után létrejönnek az Azure-beli vi
 8. Ne módosítsa az **Alhálózat** alapértelmezett értékeit, sem a **Név**, sem az **IP-címtartomány** mezőben.
 9. A **Szolgáltatásvégpontok** beállítást hagyja letiltva.
 10. Ha végzett, kattintson a **Létrehozás** gombra.
-
-
-## <a name="prepare-the-ec2-instances"></a>Az EC2-példányok előkészítése
-
-Szükség lesz egy vagy több áttelepíteni kívánt virtuális gépre. Az EC2-példánynak a Windows Server 2008 R2 SP1 vagy újabb, a Windows Server 2012, a Windows Server 2012 R2, a Windows Server 2016 vagy a Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok) 64 bites verzióját kell futtatnia. A kiszolgáló csak Citrix PV vagy AWS PV illesztőprogramokkal rendelkezhet. A RedHat PV illesztőprogramokat futtató példányok nem támogatottak.
-
-A mobilitási szolgáltatásnak az összes replikálni kívánt virtuális gépen telepítve kell lennie. A Site Recovery automatikusan telepíti ezt a szolgáltatást, ha engedélyezi a virtuális gép replikálását. Az automatikus telepítéshez elő kell készíteni egy fiókot az EC2-példányokon, amelynek használatával a Site Recovery eléri a virtuális gépet.
-
-Tartományi vagy helyi fiókot egyaránt használhat. Linux virtuális gépek esetében a fióknak rendszergazdai fióknak kell lennie a Linux-forráskiszolgálón. Windows virtuális gépek esetében, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen:
-
-  - Adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést a beállításjegyzékben a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** területen, és állítsa az értékét 1-re.
-
-Egy külön EC2-példányra is szükség lesz, amelyet Site Recovery konfigurációs kiszolgálóként használhat. A példányon Windows Server 2012 R2 operációs rendszernek kell futnia.
 
 
 ## <a name="prepare-the-infrastructure"></a>Az infrastruktúra előkészítése

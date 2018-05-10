@@ -1,12 +1,12 @@
 ---
-title: "Az Azure service fabric biztonsági ellenőrzőlista |} Microsoft Docs"
-description: "Ez a cikk ellenőrzőlista biztosít az Azure-hálót biztonsági biztonsági."
+title: Az Azure service fabric biztonsági ellenőrzőlista |} Microsoft Docs
+description: Ez a cikk ellenőrzőlista biztosít az Azure-hálót biztonsági biztonsági.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 526f10bab30b7d0fae796e47f5a27a58428b9a3b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ef404b106d600f5cb25a46319d75c8978148b466
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Az Azure Service Fabric biztonsági ellenőrzőlista
 Ez a cikk egy könnyen használható ellenőrzőlistát, amely segít az Azure Service Fabric-környezet biztonságának tartalmazza.
@@ -37,7 +37,7 @@ A következő ellenőrzőlista segítségével győződjön meg arról, hogy kih
 |[Fürtbiztonság](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) | <ul><li>A fürt biztonsági forgatókönyvek például a csomópontok biztonsági, ügyfél-csomópont biztonsági [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles).</li></ul>|
 |[Fürt hitelesítés](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) | <ul><li>Hitelesíti [csomópontok kommunikáció](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-cluster-security.md) fürt összevonási. </li></ul>|
 |[Kiszolgálóhitelesítés](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) | <ul><li>Hitelesíti a [fürt felügyeleti végpontok](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal) felügyeleti ügyfél számára.</li></ul>|
-|[Az alkalmazásbiztonság](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)| <ul><li>Titkosítás és visszafejtés az alkalmazáskonfigurációs értékeket.</li><li>   Replikáció során az adatok csomópontok közötti titkosítása.</li></ul>|
+|[Alkalmazások biztonsága](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)| <ul><li>Titkosítás és visszafejtés az alkalmazáskonfigurációs értékeket.</li><li>   Replikáció során az adatok csomópontok közötti titkosítása.</li></ul>|
 |[Fürt tanúsítvány](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security) | <ul><li>Ez a tanúsítvány szükséges a fürt a csomópontok közötti kommunikáció biztonságossá tételére.</li><li>    Állítsa be az elsődleges tanúsítvány ujjlenyomatát a ujjlenyomat szakaszban, valamint a másodlagos ThumbprintSecondary változók.</li></ul>|
 |[ServerCertificate](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)| <ul><li>Ezt a tanúsítványt az ügyfél áll rendelkezésre, ha csatlakozik a fürthöz. Frissítés két különböző kiszolgálói tanúsítványok, egy elsődleges és másodlagos használható.</li></ul>|
 |ClientCertificateThumbprints| <ul><li>Ez olyan tanúsítványokat, amelyek a hitelesített ügyfelek telepíteni szeretné. </li></ul>|
@@ -46,7 +46,7 @@ A következő ellenőrzőlista segítségével győződjön meg arról, hogy kih
 |Key Vault| <ul><li>Az Azure Service Fabric-fürtök tanúsítványai kezelésére használható.  </li></ul>|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Service Fabric-fürt verziófrissítés folyamatáról és az Ön elvárásainak](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade)
 - [A Service Fabric-alkalmazások, a Visual Studio kezelése](https://docs.microsoft.com/azure/service-fabric/service-fabric-manage-application-in-visual-studio).
 - [Service Fabric állapotfigyelő modell bemutatása](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction).

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
 ms.author: v-masebo;dobett
-ms.openlocfilehash: 02edb06d2d871cffac717358e33a6720c444a9b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: baed8a4c5086a9e3c757a3ecb8a6811c7be6b09e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-messages-with-iot-hub-node"></a>Üzenetek (csomópont) az IoT hubbal
 
@@ -231,7 +231,7 @@ Ebben az oktatóanyagban megtudta, hogyan megbízhatóan átirányítani az eszk
 
 A [IoT hubbal felhő eszközre üzenetek küldése] [ lnk-c2d] bemutatja, hogyan üzenetek küldése az eszközöket a megoldás háttérből.
 
-Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Azure IoT Suite][lnk-suite].
+Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [megoldásgyorsító Azure IoT távoli megfigyelési][lnk-suite].
 
 Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
 

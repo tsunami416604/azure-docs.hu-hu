@@ -1,8 +1,8 @@
 ---
-title: "Hozzon létre videóklipeket Azure Media Webmontázskészítő |} Microsoft Docs"
-description: "Azure Media Webmontázskészítő, egy eszköz használatával történő megtervezésével media videóklipeket eszközökből áttekintése"
+title: Hozzon létre videóklipeket Azure Media Webmontázskészítő |} Microsoft Docs
+description: Azure Media Webmontázskészítő, egy eszköz használatával történő megtervezésével media videóklipeket eszközökből áttekintése
 services: media-services
-keywords: "Klip; subclip; kódolás; adathordozó"
+keywords: Klip; subclip; kódolás; adathordozó
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: f3822386d0d16b1feaf16853424329558a18f910
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Az Azure Media Webmontázskészítő videóklipeket létrehozása
 Az Azure Media Webmontázskészítő egy ingyenes JavaScript-függvénytárat, amely lehetővé teszi webes fejlesztők számára a felhasználói felülettel történő media videóklipeket létrehozása. Az eszköz integrálhatók a weblapokat, és API felületeket biztosít az eszközök betöltésekor és Kivágás feladatok elküldésekor.
@@ -33,7 +33,7 @@ Az alábbi ábrán a Webmontázskészítő felület: ![Azure Media Webmontázsk�
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 Tekintse meg az alábbi lista a Webmontázskészítő blogbejegyzés, különböző ismert problémák és a legújabb kiadása a Webmontázskészítő a változásnaplója:
-- [Blogbejegyzés](https://azure.microsoft.com/blog/azure-media-clipper/)
+- [blogbejegyzés](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [Ismert problémák listája](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
 - [Változásnaplója](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 
@@ -63,8 +63,8 @@ A Webmontázskészítő widget a következő 18 nyelveken érhető el:
 - japán
 - koreai
 - lengyel
-- portugál (brazíliai)
-- portugál (általános)
+- portugál (Brazília)
+- portugál (Portugália)
 - orosz
 - spanyol
 - svéd

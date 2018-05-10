@@ -1,11 +1,11 @@
 ---
-title: "Fájlok feltöltése be egy Azure Media Services-fiókhoz használó többi |} Microsoft Docs"
-description: "Útmutató a médiatartalom feltölti a Media Services létrehozásával és feltöltésével eszközök."
+title: Fájlok feltöltése be egy Azure Media Services-fiókhoz használó többi |} Microsoft Docs
+description: Útmutató a médiatartalom feltölti a Media Services létrehozásával és feltöltésével eszközök.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: juliako
 ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése a Media Services-fiók használatával REST
 > [!div class="op_single_selector"]
@@ -53,9 +53,9 @@ Media Services REST API használatával az alábbiakat is érvényesek:
 * Media Services REST API használatával entitások elérésekor be kell meghatározott fejlécmezők és értékek a HTTP-kérelmekre. További információkért lásd: [a Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md). <br/>A jelen oktatóanyagban használt Postman gyűjtemény gondoskodik a szükséges fejlécek beállítása.
 * A Media Services a IAssetFile.Name tulajdonság értékét használja, amikor az adatfolyam-tartalmak (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) a URL-címek kiépítéséhez Emiatt százalék-kódolás nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék kódolás-fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnévkiterjesztés.
 * A név hossza nem lehet hosszabb 260 karakternél.
-* A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. Lásd: [ez](media-services-quotas-and-limitations.md) szóló cikkben olvashat a méretű fájlt választhat.
+* A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a cikkben talál.
 
-## <a name="set-up-postman"></a>Postman beállítása
+## <a name="set-up-postman"></a>A Postman beállítása
 
 Ez az oktatóanyag Postman beállítása lépéseiért lásd: [konfigurálása Postman](media-rest-apis-with-postman.md).
 
@@ -184,7 +184,7 @@ Például a Postman a kis .mp4 fájl feltöltéséhez használjuk. Lehet egy fá
 A feltöltés kérelme, mert az nem része a **AzureMedia** gyűjtemény. 
 
 Hozza létre, és állítson be egy új kérelmet:
-1. Nyomja le az  **+** , hogy hozzon létre egy új kérelmet a lapon.
+1. Nyomja le az **+**, hogy hozzon létre egy új kérelmet a lapon.
 2. Válassza ki **PUT** művelet és a Beillesztés **{{UploadURL}}** az URL-címben.
 2. Hagyja **engedélyezési** lapon, mert a (számára ne adja meg azt a **tulajdonosi jogkivonat**).
 3. Az a **fejlécek** lapra, adja meg: **kulcs**: "x-ms-blob-type" és **érték**: "BlockBlob".

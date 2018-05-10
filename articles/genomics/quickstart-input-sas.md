@@ -11,11 +11,11 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 03/02/2018
-ms.openlocfilehash: b6d84428749d8f5f78374efcca22ef913ee96c5e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 802e300ac453baa4ea9bd9183223315abced2ea1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="submit-a-workflow-using-a-sas-instead-of-a-storage-account-key"></a>Munkafolyamat elküldése tárfiókkulcs helyett SAS használatával
 
@@ -50,7 +50,7 @@ SAS-tokent kétféleképpen lehet létrehozni: az Azure Storage Explorer haszná
 
 Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) az Azure Storage-ban tárolt erőforrások kezelésére szolgáló eszköz.  Az Azure Storage Explorer használatáról [itt](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) talál további információt.
 
-A bemeneti fájlokhoz tartozó SAS-kód hatókörének az adott bemeneti fájlra (blobra) kell kiterjednie. SAS-token létrehozásához [kövesse ezeket az utasításokat](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-storage-explorer#work-with-shared-access-signatures). Az SAS létrehozása után a lekérdezési karakterlánccal ellátott teljes URL-cím, illetve a lekérdezési karakterlánc önmagában is megjelenik a képernyőn, ahonnan mindkettő másolható.
+A bemeneti fájlokhoz tartozó SAS-kód hatókörének az adott bemeneti fájlra (blobra) kell kiterjednie. SAS-token létrehozásához [kövesse ezeket az utasításokat](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer#work-with-shared-access-signatures). Az SAS létrehozása után a lekérdezési karakterlánccal ellátott teljes URL-cím, illetve a lekérdezési karakterlánc önmagában is megjelenik a képernyőn, ahonnan mindkettő másolható.
 
  ![Genomics SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS Storage Explorer")
 

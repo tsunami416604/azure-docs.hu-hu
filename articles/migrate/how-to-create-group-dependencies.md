@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
-ms.openlocfilehash: a7c1dcae5708164252fa04a0fd1471eb1ae9bf90
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 897b45782dee14099d5d7a7b12c49e2bfd60b309
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Pontosítsa a csoportot a függőségi leképezése
 
@@ -24,18 +24,18 @@ Ez a cikk ismerteti a csoport finomíthatja a csoport összes gép Függőségek
 # <a name="prepare-the-group-for-dependency-visualization"></a>A csoport függőségi a képi megjelenítéshez tartozó előkészítése
 Egy csoport függőségeinek megtekintése, meg kell töltse le és telepítse az ügynököt minden a helyszíni gépen, amely a csoport tagja. Emellett, ha internetkapcsolat nélküli gépek, kell letöltéséhez és telepítéséhez [OMS átjáró](../log-analytics/log-analytics-oms-gateway.md) rajtuk.
 
-### <a name="download-and-install-the-vm-agents"></a>Töltse le és telepítse a virtuális gép ügynökök
+### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
 1. A **áttekintése**, kattintson a **kezelése** > **csoportok**, keresse fel a szükséges csoportot.
 2. Gépek, a listában a a **függőségi ügynök** oszlopban kattintson **telepítése szükséges** letöltése és telepítése az ügynökök vonatkozó lépéseit.
 3. Az a **függőségek** lapon töltse le és telepítse a Microsoft Monitoring Agent (MMA), és a függőségi ügynök a csoport részét képező virtuális gépek.
-4. Másolja a munkaterület azonosítója és kulcsa. Szükség van ezekre a MMA telepítésekor a helyszíni gépeket.
+4. Másolja ki a munkaterület-azonosítót és -kulcsot. Szükség van ezekre a MMA telepítésekor a helyszíni gépeket.
 
-### <a name="install-the-mma"></a>Telepítse a MMA
+### <a name="install-the-mma"></a>Az MMA telepítése
 
 Az ügynök telepítése Windows-gépen:
 
-1. Kattintson duplán a letöltött ügynök.
-2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. Az a **licencfeltételeket** kattintson **elfogadom** elfogadja a licencfeltételeket.
+1. Kattintson duplán a letöltött ügynökre.
+2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
 3. A **célmappa**, hagyja, vagy módosítsa az alapértelmezett telepítési mappa > **következő**. 
 4. A **ügynök telepítésének beállításai**, jelölje be **Azure Naplóelemzés** > **következő**. 
 5. Kattintson a **Hozzáadás** hozzáadása egy új munkaterületet. Illessze be a munkaterület azonosítója és a portál fájlból másolt kulcsot. Kattintson a **Tovább** gombra.
@@ -55,7 +55,7 @@ Az ügynök telepítése Linux gépen:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[További](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) a függőségi ügynök által támogatott operációs rendszerekkel kapcsolatban. 
+[További](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) a függőségi ügynök által támogatott operációs rendszerekkel kapcsolatban. 
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>A csoportok függőségi képi megjelenítés alapján finomítható
 Miután a csoport minden számítógépen telepített ügynökök, a függőségeket, a csoport ábrázolhatja és pontosítás a következő az alábbi lépéseket.
@@ -69,7 +69,7 @@ Miután a csoport minden számítógépen telepített ügynökök, a függőség
     - A gépen futó folyamatok, minden gép mezőben folyamatokat bővítheti
     - Minden számítógépen, ha azt szeretné, hogy a részletek megjelenítéséhez kattintson például a teljesen minősített tartománynevét, operációs rendszer, az egyes gépek MAC-cím stb tulajdonságok,
 
-     ![Csoport függőségeinek megtekintése](./media/how-to-create-group-dependencies/view-group-dependencies.png)
+     ![Csoportos függőségek megtekintése](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. Részletesebb függőségek megtekintéséhez kattintson az időtartományt módosítható. Alapértelmezés szerint a tartománya egy óra. Módosítsa az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
 4. Ellenőrizze a függő gépek, a folyamat minden gépen futó, és azonosíthatja a gépek kell hozzáadni vagy eltávolítani a csoportból.

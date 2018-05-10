@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 8a642b569389d960e7a3a1fa2c7cb0f2d87bd809
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 707f25a71a22f136a3cfc537ec3dd939e06dea08
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Solr HDInsight Hadoop-fürtök
 
@@ -87,7 +87,7 @@ Az alábbi lépések segítségével Példa adatok hozzáadása a Solr, és majd
     További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
      > [!IMPORTANT]
-     > A jelen dokumentum lépéseit az SSL-protokollbújtatás való csatlakozáskor használandó a Solr webes felhasználói felületen. Ezen lépések használatához, az SSL-protokollbújtatás létrehozására és a böngésző használják majd beállítása.
+     > A jelen dokumentum lépéseit az SSH-alagút való csatlakozáskor használandó a Solr webes felhasználói felületen. Ezen lépések használatához, az SSH-alagút létrehozására és a böngésző használják majd beállítása.
      >
      > További információkért lásd: a [használata SSH Tunneling hdinsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentum.
 

@@ -1,45 +1,45 @@
 ---
-title: "Az Azure Notification Hubs eldobott értesítési elemzés céljából"
-description: "Útmutató az Azure Notification Hubs eldobott értesítések kapcsolatos gyakori hibák diagnosztizálása érdekében."
+title: Az Azure Notification Hubs eldobott értesítési elemzés céljából
+description: Útmutató az Azure Notification Hubs eldobott értesítések kapcsolatos gyakori hibák diagnosztizálása érdekében.
 services: notification-hubs
 documentationcenter: Mobile
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: 
+editor: spelluru
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 3925208fe56bcd9513ec4c0f21aa1e2dd8fbf9c5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: bc9ef70560f0485da81c1f54aa955cee76d280ab
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Az eldobott értesítések a Notification Hubs diagnosztizálása
 
 A leggyakoribb kérdések az Azure Notification Hubs-ügyfél egyik hibaelhárítása, amikor egy alkalmazás küldött üzenetek nem jelennek meg az ügyféleszközökön. Szeretnék tudni, hogy hol és miért értesítések eldobva és hárítsa el a problémát. Ez a cikk azonosítja, ezért előfordulhat, hogy első eldobott vagy nem fogadhatják a eszközök értesítések. Megtudhatja, hogyan elemezheti és okának meghatározásához. 
 
-Fontos, hogy először tájékozódjon a hogyan Notification Hubs leküldéses értesítések értesítést egy eszközre.
+Fontos, hogy először tájékozódjon a módját a Notification Hubs szolgáltatás leküldéses értesítések értesítést egy eszközre.
 
 ![Notification Hubs-architektúra][0]
 
 Egy tipikus send notification folyamatában, az üzenet érkezik a *alkalmazás háttér* a Notification hubs használatával. Notification hubs használatával végzi a regisztrációk néhány terhelése. A feldolgozási figyelembe veszi, a konfigurált címkék és a címke kifejezések meghatározásához "célok." A célpontjai a leküldéses értesítések fogadásához szükséges összes regisztrációját. A regisztrációk is kiterjedhet bármely vagy a támogatott platformok: iOS-, Google, a Windows, Windows Phone, Kindle és Kína Android a Baidu.
 
-A meghatározott célkitűzések, a Notification Hubs leküldéses értesítések értesítések a *leküldéses értesítési szolgáltatás* az adott eszközplatform. Például az Apple Push Notification szolgáltatás (APNs) az Apple és Firebase Cloud Messaging (FCM) a Google. Notification Hubs leküldéses értesítések értesítések-e osztani több kötegek regisztrációk. A megfelelő leküldéses értesítési szolgáltatás, amely az Azure portálon, a hitelesítő adatok alapján hitelesíti a Notification Hubs **értesítési központ konfigurálása**. A leküldéses értesítési szolgáltatás majd továbbítja az értesítések a megfelelő *ügyféleszközök*. 
+A meghatározott célkitűzések, a Notification Hubs szolgáltatás értesítések leküldéses értesítések a *leküldéses értesítési szolgáltatás* az adott eszközplatform. Például az Apple Push Notification szolgáltatás (APNs) az Apple és Firebase Cloud Messaging (FCM) a Google. Notification Hubs leküldéses értesítések értesítések-e osztani több kötegek regisztrációk. A megfelelő leküldéses értesítési szolgáltatás, amely az Azure portálon, a hitelesítő adatok alapján hitelesíti a Notification Hubs **értesítési központ konfigurálása**. A leküldéses értesítési szolgáltatás majd továbbítja az értesítések a megfelelő *ügyféleszközök*. 
 
-Vegye figyelembe, hogy az értesítések kézbesítése utolsó szakasza történik, a platform leküldéses értesítéseket kezelő szolgáltatása és az eszközök között. A leküldéses értesítési (ügyfél, alkalmazás háttér, a Notification Hubs és a platform leküldéses értesítéseket kezelő szolgáltatása) folyamat négy fő összetevőből bármelyikét okozhat értesítések megszakad. A Notification Hubs architektúrájával kapcsolatos további információkért lásd: [Notification Hubs – áttekintés].
+A lekérdezésértesítés-kézbesítés utolsó szakasza a platform leküldéses értesítéseket kezelő szolgáltatása és az eszköz között történik. A leküldéses értesítési (ügyfél, alkalmazás háttér, a Notification Hubs és a platform leküldéses értesítéseket kezelő szolgáltatása) folyamat négy fő összetevőből bármelyikét okozhat értesítések megszakad. A Notification Hubs architektúrájával kapcsolatos további információkért lásd: [Notification Hubs – áttekintés].
 
 Értesítéseket hiba léphet fel a kezdeti során teszt/átmeneti fázisban. Az eldobott értesítések ezen a ponton jelezhetik konfigurációs hiba lépett fel. Hiba esetén értesítéseket éles környezetben, néhány vagy összes értesítést veszhetnek el. Ebben az esetben egy mélyebb alkalmazást vagy az üzenetkezelési minta probléma jelzi. 
 
 A következő szakasz ellenőrzi, hogy az forgatókönyvek, amelyben értesítések veszhetnek el, a beállításnak több ritka és gyakori közötti.
 
 ## <a name="notification-hubs-misconfiguration"></a>Notification Hubs helytelen konfigurálása
-Az értesítések sikeresen küldését a megfelelő leküldéses értesítéseket kezelő szolgáltatása, a Notification Hubs melyekkel hitelesítenie tudja magát a fejlesztői alkalmazás környezetében. A fejlesztői ez megtörténik, a megfelelő platform (Google, Apple, Windows és így tovább) hoz létre a fejlesztői fiók létrehozása. A fejlesztői, majd regisztrálja az alkalmazásokban a platform, ahol azok beszerezni a hitelesítő adatokat. 
+Az értesítések sikeresen küldését a megfelelő leküldéses értesítéseket kezelő szolgáltatása, a Notification Hubs szolgáltatás melyekkel hitelesítenie tudja magát a fejlesztői alkalmazás környezetében. A fejlesztői ez megtörténik, a megfelelő platform (Google, Apple, Windows és így tovább) hoz létre a fejlesztői fiók létrehozása. A fejlesztői, majd regisztrálja az alkalmazásokban a platform, ahol azok beszerezni a hitelesítő adatokat. 
 
 Hozzá kell adnia az Azure-portálon platformhitelesítő adataival. Ha az eszköz nincs értesítések elérni próbált, az első lépés annak érdekében, hogy a megfelelő hitelesítő adatok konfigurálva vannak-e a Notification Hubs kell lennie. A hitelesítő adatoknak egyezniük kell az alkalmazást, amely egy platform-specifikus fejlesztő fiókkal jön létre. 
 
@@ -88,7 +88,7 @@ Az alábbiakban néhány gyakori konfigurációs hibák kereséséhez:
 
 * **Érvénytelen a regisztrációk**
 
-    Ha az értesítési központ konfigurálva lett, és bármely címkék vagy címke kifejezések helytelenül használták, érvényes célok találhatók. Az ezeken a célokon kell értesítéseket küldeni. A Notification Hubs majd ki párhuzamosan több feldolgozási kötegek következik be. Minden egyes üzeneteket küld a regisztrációk készlete. 
+    Ha az értesítési központ konfigurálva lett, és bármely címkék vagy címke kifejezések helytelenül használták, érvényes célok találhatók. Az ezeken a célokon kell értesítéseket küldeni. A Notification Hubs szolgáltatást, majd ki párhuzamosan több feldolgozási kötegek következik be. Minden egyes üzeneteket küld a regisztrációk készlete. 
 
     > [!NOTE]
     > Párhuzamos feldolgozás hajtja végre, mert a sorrendet, amelyben az értesítések kézbesítése nem garantált. 
@@ -102,7 +102,7 @@ Az alábbiakban néhány gyakori konfigurációs hibák kereséséhez:
     Ahhoz, hogy hiba további információt a sikertelen kézbesítési kísérlet egy regisztrációs ellen, használhatja a Notification hub REST API-k [üzenet Telemetriai: első értesítési üzenet Telemetriai](https://msdn.microsoft.com/library/azure/mt608135.aspx) és [PNS visszajelzés](https://msdn.microsoft.com/library/azure/mt705560.aspx). Mintakód, tekintse meg a [küldése REST példa](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample).
 
 ## <a name="push-notification-service-issues"></a>Leküldéses értesítési szolgáltatás kapcsolatos hibák elhárítása
-Miután az értesítési üzenetet kapott a platform leküldéses értesítéseket kezelő szolgáltatása, feladata az értesítés kézbesítése az eszközön a leküldéses értesítési szolgáltatást. A Notification Hubs ezen a ponton a kép kívül esik, és rendelkezik befolyással keresztül, amikor, vagy ha az értesítést a rendszer az eszköz. 
+Miután az értesítési üzenetet kapott a platform leküldéses értesítéseket kezelő szolgáltatása, feladata az értesítés kézbesítése az eszközön a leküldéses értesítési szolgáltatást. A Notification Hubs szolgáltatást ezen a ponton a kép kívül esik, és rendelkezik befolyással keresztül, amikor, vagy ha az értesítést a rendszer az eszköz. 
 
 Mivel a platform értesítési szolgáltatások robusztus, értesítések általában néhány másodpercen belül a leküldéses értesítési szolgáltatásból eszközök eléréséhez. A leküldéses értesítéseket kezelő szolgáltatása a szabályozás, ha a Notification Hubs exponenciális vissza az indító stratégia vonatkozik. A leküldéses értesítéseket kezelő szolgáltatása 30 percig marad nem érhető el, ha egy házirend tudunk lejárjanak és azokat az üzeneteket véglegesen drop helyen. 
 
@@ -226,7 +226,7 @@ Az üzenet azt jelzi, hogy érvénytelen hitelesítő adatok a Notification hubs
    
         ![Notification Hubs – áttekintés irányítópult][5]
    
-    2. Az a **figyelő** lapon mélyebb betekintést sok más platform-specifikus metrikáinak is hozzáadhat. Vessen egy pillantást kifejezetten visszaadott, ha értesítést küldeni a leküldéses értesítéseket kezelő szolgáltatása megpróbálja a Notification Hubs a leküldéses értesítéseket kezelő szolgáltatása kapcsolatos hibákat. 
+    2. Az a **figyelő** lapon mélyebb betekintést sok más platform-specifikus metrikáinak is hozzáadhat. Vessen egy pillantást kifejezetten visszaadott, ha a Notification Hubs szolgáltatás megpróbálja a leküldéses értesítési szolgáltatáshoz értesítést küldeni a leküldéses értesítéseket kezelő szolgáltatása kapcsolatos hibákat. 
    
         ![Az Azure portál műveletnapló][6]
    

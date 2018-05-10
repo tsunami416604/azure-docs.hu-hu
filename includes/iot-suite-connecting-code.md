@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: c835b5594676edc39b85a1b10cc04afc7486731d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>Az IoT eszköz viselkedésének meghatározása
 
 Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg az eszköz és az IoT Hub közötti üzenetek formátumát.
@@ -78,7 +94,7 @@ Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg a
 
 Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott viselkedést.
 
-1. Adja hozzá a következő visszahíváskezelőt, amely akkor fut, ha az eszköz új jelentett tulajdonságértékeket küldött az előre konfigurált megoldásnak:
+1. Adja hozzá a következő visszahívás-kezelő, amely akkor fut, amikor az eszköz új jelentett tulajdonságértékek elküldte a megoldásgyorsító:
 
     ```c
     /* Callback after sending reported properties */
@@ -221,7 +237,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
     }
     ```
 
-1. Adja hozzá a következő függvény, amely tulajdonságokkal üzenetet küld az előkonfigurált megoldás:
+1. A következő tulajdonságokkal rendelkező üzenetet küld a megoldásgyorsító függvény hozzáadása:
 
     ```c
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size, char* schema)
@@ -260,7 +276,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
     }
     ```
 
-1. Adja hozzá a következő függvényt, amely összekapcsolja az eszközt az előre konfigurált megoldással a felhőben, és adatcserét végez. Ez a függvény a következő lépéseket hajtja végre:
+1. Adja hozzá a következő függvény csatlakoztassa az eszközt a megoldásgyorsító a felhőben, és az exchange-adatok. Ez a függvény a következő lépéseket hajtja végre:
 
     - Inicializálja a platformot.
     - Regisztrálja a Contoso névteret a szerializációs kódtárban.
@@ -396,7 +412,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
     }
     ```
 
-    Referenciaként itt egy példa az előre konfigurált megoldás számára küldött **telemetria** üzenetekre:
+    Összehasonlításul, Íme egy minta **Telemetriai** a megoldásgyorsító küldött üzenet:
 
     ```
     Device: [myCDevice],

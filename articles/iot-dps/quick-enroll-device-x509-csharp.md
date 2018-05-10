@@ -12,18 +12,18 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 51fd3e12344fb20056012c00d6b38edf0355b0a4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ef00191e524e93d1ed578193d37fb6002c15a0b8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>X.509-eszközök regisztrációja az IoT Hub Device Provisioning Service-be a C# szolgáltatásoldali SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
 
-Ezek a lépések bemutatják, hogyan hozhat létre programozott módon regisztrációs csoportot egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítványhoz a [C# szolgáltatásoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp) és egy C# .NET Core-mintaalkalmazás használatával. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview). Bár a cikkben ismertetett lépések Windows és Linux rendszerű gépeken egyaránt alkalmazhatók, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ.
+Ezek a lépések bemutatják, hogyan hozhat létre programozott módon regisztrációs csoportot egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítványhoz a [C# szolgáltatásoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp) és egy C# .NET Core-mintaalkalmazás használatával. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). Bár a cikkben ismertetett lépések Windows és Linux rendszerű gépeken egyaránt alkalmazhatók, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ.
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
@@ -33,7 +33,7 @@ Ezek a lépések bemutatják, hogyan hozhat létre programozott módon regisztr�
 4. Egy .pem vagy .cer fájlra lesz szüksége, amely egy olyan köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítvány nyilvános részét tartalmazza, amely fel lett töltve és hitelesítve lett a kiépítési szolgáltatás által. Az [Azure IoT c SDK](https://github.com/Azure/azure-iot-sdk-c) tartalmazza azokat az eszközöket, amelyek segítségével létrehozhat egy X.509-tanúsítványláncot, feltölthet egy fő- vagy köztes tanúsítványt a láncból, valamint végrehajthat egy tulajdonlástanúsítási eljárást a szolgáltatással a tanúsítvány hitelesítéséhez. Az eszközkészlet használatához töltse le az [azure-iot-sdk-c/tools/CACertificates](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) mappa tartalmát a számítógépén található munkamappába, és kövesse az [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) lépéseit. A C SDK-ban található eszközkészleten kívül a **C# szolgáltatásoldali SDK-ban** található [Csoporttanúsítvány-hitelesítési minta](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample) a tulajdonostanúsítási eljárás elvégzését is bemutatja egy meglévő köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítvánnyal. 
 
   > [!IMPORTANT]
-  > Az SDK-eszközkészlettel létrehozott tanúsítványokat csak fejlesztési célokra tervezték. Az éles kódnak megfelelő tanúsítványok beszerzésével kapcsolatos további információt az [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) című részben, az Azure IoT Hub dokumentációjában talál.
+  > Az SDK-eszközkészlettel létrehozott tanúsítványokat csak fejlesztési célokra tervezték. Az éles kódnak megfelelő tanúsítványok beszerzésével kapcsolatos további információt az [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) című részben, az Azure IoT Hub dokumentációjában talál.
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>A kiépítési szolgáltatás kapcsolati karakterláncának lekérése
 
@@ -45,7 +45,7 @@ A rövid útmutatóban lévő mintához szüksége lesz a kiépítési szolgált
 
 ## <a name="create-the-enrollment-group-sample"></a>A regisztrációs csoport mintájának létrehozása 
 
-A jelen szakaszban szereplő lépések bemutatják, hogyan lehet létrehozni egy .NET Core-konzolalkalmazást, amely hozzáad egy regisztrációs csoportot a kiépítési szolgáltatáshoz. Néhány módosítással ezeket a lépéseket követve létrehozhat egy [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot)-konzolalkalmazást is a regisztrációs csoport hozzáadásához. További információk az IoT Core használatával való fejlesztésről: [Windows IoT Core – fejlesztői dokumentáció](https://docs.microsoft.com/en-us/windows/iot-core/).
+A jelen szakaszban szereplő lépések bemutatják, hogyan lehet létrehozni egy .NET Core-konzolalkalmazást, amely hozzáad egy regisztrációs csoportot a kiépítési szolgáltatáshoz. Néhány módosítással ezeket a lépéseket követve létrehozhat egy [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot)-konzolalkalmazást is a regisztrációs csoport hozzáadásához. További információk az IoT Core használatával való fejlesztésről: [Windows IoT Core – fejlesztői dokumentáció](https://docs.microsoft.com/windows/iot-core/).
 1. A Visual Studióban adjon hozzá egy Visual C# .NET Core konzolalkalmazás-projektet az új megoldáshoz a **Console App (.NET Core)** (Konzolalkalmazás (.NET Core)) projektsablonnal. A Microsoft .NET-keretrendszer 4.5.1-es vagy újabb verzióját használja. Adja a projektnek a **CreateEnrollmentGroup** nevet.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt](media//quick-enroll-device-x509-csharp/create-app.png)

@@ -3,7 +3,7 @@ title: Az Azure Application Insights pillanatkép-hibakereső .NET-alkalmazások
 description: Debug pillanatképek vannak automatikusan gyűjti a program kivételek éles .NET-alkalmazásokban
 services: application-insights
 documentationcenter: ''
-author: pharring
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0ba58f1384d7c93af30f9b175a5a154811c9a1e0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: MT
+ms.author: mbullwin; pharring
+ms.openlocfilehash: a742dc3c3538cd9fc5053fd9cd9aeec740ec0394
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazásokban kivételek pillanatképek hibakeresése
 
@@ -55,7 +55,7 @@ A következő környezetekben támogatottak:
         <!-- DeveloperMode is a property on the active TelemetryChannel. -->
         <IsEnabledInDeveloperMode>false</IsEnabledInDeveloperMode>
         <!-- How many times we need to see an exception before we ask for snapshots. -->
-        <ThresholdForSnapshotting>5</ThresholdForSnapshotting>
+        <ThresholdForSnapshotting>1</ThresholdForSnapshotting>
         <!-- The maximum number of examples we create for a single problem. -->
         <MaximumSnapshotsRequired>3</MaximumSnapshotsRequired>
         <!-- The maximum number of problems that we can be tracking at any time. -->
@@ -146,8 +146,8 @@ A következő környezetekben támogatottak:
        "InstrumentationKey": "<your instrumentation key>"
      },
      "SnapshotCollectorConfiguration": {
-       "IsEnabledInDeveloperMode": true,
-       "ThresholdForSnapshotting": 5,
+       "IsEnabledInDeveloperMode": false,
+       "ThresholdForSnapshotting": 1,
        "MaximumSnapshotsRequired": 3,
        "MaximumCollectionPlanSize": 50,
        "ReconnectInterval": "00:15:00",
@@ -213,7 +213,7 @@ A hibakeresési pillanatkép nézetben láthatja a hívási verem és a változ�
 
 ![Nézet Debug pillanatkép a portálon](./media/app-insights-snapshot-debugger/open-snapshot-portal.png)
 
-A pillanatképek kényes információt is tartalmazhat, és alapértelmezés szerint nincsenek megtekinthető. A pillanatképek megtekintéséhez rendelkeznie kell a `Application Insights Snapshot Debugger` Önhöz rendelt szerepkör.
+A pillanatképek tartalmazhatnak bizalmas adatokat, és alapértelmezés szerint nem látható. A pillanatképek megtekintéséhez rendelkeznie kell a `Application Insights Snapshot Debugger` Önhöz rendelt szerepkör.
 
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>A Visual Studio 2017 vállalati pillanatképek hibakeresése
 1. Kattintson a **letöltése pillanatkép** gombra kattintva töltse le a `.diagsession` fájlhoz, amely a Visual Studio 2017 Enterprise nyithatja meg.
@@ -228,7 +228,22 @@ A letöltött pillanatkép bármely alkalmazás webkiszolgálón található szi
 
 ## <a name="how-snapshots-work"></a>A pillanatképek működése
 
-Az alkalmazás indításakor egy külön pillanatkép feltöltése folyamat jön létre, amely az alkalmazás a pillanatkép-kéréseket figyeli. Pillanatkép van szükség, ha a futó folyamattal árnyékmásolatát körülbelül 10-20 ezredmásodpercben történik. Az árnyékmásolat-folyamat majd elemzésnek, és egy pillanatkép jön létre, amíg a fő folyamat tovább fut és forgalmat szolgálja ki a felhasználók számára. A pillanatkép majd tölt fel az Application insights szolgáltatással együtt megfelelő szimbólum (.pdb) fájlok, amelyek szükségesek ahhoz, hogy az adatok megtekintését.
+A pillanatkép-gyűjtő valósul meg egy [Application Insights Telemetria processzor](app-insights-configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Az alkalmazás futtatásakor az alkalmazás telemetria-feldolgozási folyamat a pillanatkép adatgyűjtő Telemetriai processzor egészül ki.
+Minden alkalommal, amikor az alkalmazás hívások [TrackException](app-insights-asp-net-exceptions.md#exceptions), a pillanatkép-gyűjtő kiszámítja a típusból merültek fel kivételhiba és a rtesítő módszer probléma azonosítója.
+Minden alkalommal, amikor egy alkalmazás meghívja TrackException, a számláló értéke eggyel növekszik a megfelelő probléma azonosítóját. Ha a számláló eléri a `ThresholdForSnapshotting` érték, a probléma azonosítója bekerül a gyűjtési terv.
+
+A pillanatkép-gyűjtő is figyeli a kivételek, mivel azok előfizetés által okozott a [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) esemény. Az esemény akkor következik be, ha a probléma azonosítója a kivétel számított, és összehasonlítja a probléma azonosítók a gyűjtési terv.
+Ha van egyezés, akkor a futó folyamattal pillanatképe jön létre. A pillanatkép hozzá van rendelve egy egyedi azonosítót, és a kivétel ilyen azonosítójú van megjelölve. Miután a FirstChanceException kezelő adja vissza, a kivétel kivétel normál feldolgozása. Végül a kivétel eléri a TrackException metódus újra ahol, és a pillanatkép azonosítója bejelentések Application Insights.
+
+A fő folyamat tovább fut, és kevés megszakítás rendelkező felhasználók forgalom osztja ki. Eközben a pillanatkép elkészül pillanatkép feltöltése folyamatához. A pillanatkép feltöltése egy kis memóriakép létrehozása, és feltölti azt az Application Insights bármely megfelelő szimbólumfájlok (.pdb) együtt.
+
+> [!TIP]
+> - A folyamat pillanatkép a futó folyamattal felfüggesztett klónja.
+> - A pillanatkép létrehozásához vesz a körülbelül 10-20 ezredmásodperc.
+> - Az alapértelmezett érték `ThresholdForSnapshotting` 1. Ez egyben a minimális értéknél. Ezért az alkalmazás is ugyanazt a kivételt kiváltó **kétszer** pillanatkép létrehozása előtt.
+> - Állítsa be `IsEnabledInDeveloperMode` igaz értékre, ha szeretné létrehozni a pillanatképek hibakeresése a Visual Studio során.
+> - A pillanatkép-létrehozási sebessége korlátozza a `SnapshotsPerTenMinutesLimit` beállítást. Alapértelmezés szerint a határértéke egy pillanatképet minden tíz perc.
+> - Naponta legfeljebb 50 pillanatképek fel kell tölteni.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
@@ -242,22 +257,42 @@ A pillanatkép-hibakereső van szükség, szimbólumfájlok dekódolni a változ
 Azure számítási és más típusú, győződjön meg arról, hogy a szimbólum a fő alkalmazás .dll fájl ugyanabban a mappában (általában `wwwroot/bin`) vagy az aktuális útvonalon érhetők el.
 
 ### <a name="optimized-builds"></a>Optimalizált buildek
-Bizonyos esetekben helyi változók nem lehet megtekinteni kiadás buildekben létrehozása során alkalmazott optimalizálás miatt.
+Bizonyos esetekben helyi változók nem lehet megtekinteni kiadás buildekben a fordító által alkalmazott optimalizálás miatt.
+Azonban az Azure App Service szolgáltatások, a pillanatkép-gyűjtő is deoptimize a gyűjtési terv részét képező rtesítő módszerek.
+
+> [!TIP]
+> Telepítse az Application Insights-hely bővítmény kérhet deoptimization támogatást az App Service-ben.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ezek a tippek a pillanatkép-hibakereső kapcsolatos problémák hibaelhárítása érdekében.
 
+## <a name="use-the-snapshot-health-check"></a>A pillanatkép állapotának ellenőrzése
+Ha egy adott kivétel érhető el pillanatkép nem látja, több okból is beleértve outdate pillanatkép adatgyűjtő verzióit, naponta küszöbérték találat okozhatja, a pillanatkép csak fel kell tölteni, és így tovább időt vesz igénybe. Ahhoz, hogy ezek a problémák diagnosztizálásával segítséget nyújt, azt a beépített területeivel elemzéséhez, ezért nem pillanatkép van pillanatkép állapotát ellenőrző szolgáltatás.
+
+Kivétel társított pillanatképek nem látható, ha lesz egy hivatkozást a végpont nyomkövetési megjelenítő panelen pillanatkép állapotellenőrzése megadásához.
+
+![Adja meg a pillanatkép állapotellenőrzése](./media/app-insights-snapshot-debugger/enter-snapshot-health-check.png)
+
+Akkor megjelenik egy interaktív Csevegés-botot például a munkamenet különböző szempontja, hogy a szolgáltatás állapotának ellenőrzése fut, és jelentést kínál.
+
+![Az állapot-ellenőrzéssel](./media/app-insights-snapshot-debugger/healthcheck.png)
+
+Van még néhány manuális diagnosztizálhatja a pillanatkép-szolgáltatásának állapotát is van. Tekintse meg az alábbi szakaszokat:
+
 ### <a name="verify-the-instrumentation-key"></a>Ellenőrizze a rendszerállapot-kulcsot
 
-Győződjön meg arról, hogy a közzétett alkalmazást a megfelelő instrumentation kulcsot használ. Az Application Insights általában a instrumentation kulcs beolvassa az ApplicationInsights.config fájl. Győződjön meg arról, hogy az érték azonos a instrumentation kulcs az Application Insights-erőforrás, melyek megjelennek a portálon.
+Győződjön meg arról, hogy a helyes instrumentation kulcsot használ a közzétett alkalmazáshoz. Az Application Insights általában a instrumentation kulcs beolvassa az ApplicationInsights.config fájl. Ellenőrizze, hogy a értéke ugyanaz, mint az Application Insights-erőforrást, melyek megjelennek a portálon instrumentation kulcsa.
+
+### <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Frissítse a legújabb verzióra a NuGet-csomag
+
+Visual Studio NuGet Package Manager segítségével győződjön meg arról, hogy a legújabb Microsoft.ApplicationInsights.SnapshotCollector használata. Kibocsátási megjegyzések technológiáról: https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
 ### <a name="check-the-uploader-logs"></a>Ellenőrizze a feltöltése naplókat
 
-Pillanatkép létrehozása után egy kis memóriakép fájl (.dmp) jön létre a lemezen. Egy külön feltöltése folyamat veszi, hogy kis memóriakép fájl, és feltölti azt, és minden társított PDB-fájlok, az Application Insights pillanatkép hibakereső tárhelyre. Után a kis memóriakép sikeresen fel van töltve, hanem törli a lemezen. A naplófájlok a feltöltése folyamat megőrzi a lemezen. Egy App Service environment-környezetben található a naplók a `D:\Home\LogFiles`. A Kudu felügyeleti webhely az App Service segítségével ezekben a naplófájlokban található.
+Pillanatkép létrehozása után egy kis memóriakép fájl (.dmp) jön létre a lemezen. A különálló feltöltése folyamat adott kis memóriakép fájlt hoz létre, és feltölti azt, és minden társított PDB-fájlok, az Application Insights pillanatkép hibakereső tárhelyre. Után a kis memóriakép sikeresen fel van töltve, hanem törli a lemezen. A naplófájlok a feltöltése folyamat lemezen tárolja. Egy App Service environment-környezetben található a naplók a `D:\Home\LogFiles`. A Kudu felügyeleti webhely az App Service segítségével ezekben a naplófájlokban található.
 
 1. Nyissa meg az App Service-alkalmazás az Azure portálon.
-
 2. Válassza ki a **speciális eszközök** panelen, vagy keressen a **Kudu**.
 3. Kattintson a **Ugrás**.
 4. Az a **hibakereső konzol** legördülő listáján jelölje ki **CMD**.
@@ -292,7 +327,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 ```
 
 > [!NOTE]
-> A fenti példában a Microsoft.ApplicationInsights.SnapshotCollector Nuget-csomag 1.2.0 verziója van. A korábbi verziókban a feltöltése folyamathoz `MinidumpUploader.exe` és a napló kevésbé részletes.
+> A fenti példában a Microsoft.ApplicationInsights.SnapshotCollector NuGet-csomag 1.2.0 verziója van. A korábbi verziókban a feltöltése folyamathoz `MinidumpUploader.exe` és a napló kevésbé részletes.
 
 Az előző példában a instrumentation kulcsa `c12a605e73c44346a984e00000000000`. Ezt az értéket meg kell felelnie a instrumentation billentyűt az alkalmazás.
 A kis memóriakép társítva a azonosítójú pillanatkép `139e411a23934dc0b9ea08a626db16c5`. Ezt az Azonosítót később segítségével keresse meg a társított kivételtelemetria Application Insights Analytics.
@@ -316,7 +351,7 @@ Az alkalmazások, amelyek _nem_ üzemelteti az App Service-ben, a feltöltése f
 Cloud Services szerepkörénél az alapértelmezett ideiglenes mappa túl kicsi ahhoz, hogy a memóriaképfájl, ami elveszett pillanatképek lehet.
 A lemezterületre van szükség az alkalmazás és a megfelelő számú párhuzamos pillanatkép teljes munkakészletének függ.
 A 32 bites ASP.NET webes szerepkör munkakészletének általában 200 MB és 500 MB közé esik.
-Legalább két egyidejű pillanatkép-készítési engedélyezze.
+Legalább két egyidejű pillanatkép-készítési engedélyezése.
 Például ha az alkalmazás teljes munkakészletének 1 GB, akkor győződjön meg arról, hogy van-e legalább 2 GB szabad lemezterület-pillanatképek.
 Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigurálása a pillanatképek helyi dedikált erőforrással.
 
@@ -366,7 +401,7 @@ Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigu
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Használja az Application Insights keresési pillanatképekkel kivételek kereséséhez
 
-Egy pillanatkép jön létre, amikor a rtesítő kivétel címkéje egy pillanatkép. Ha a kivételtelemetria bejelentések Application Insights, hogy a pillanatkép azonosítója megtalálható egyéni tulajdonság. Az összes telemetriai adat található Application Insights a Search paneljét használ, a `ai.snapshot.id` egyéni tulajdonság.
+Egy pillanatkép jön létre, amikor a rtesítő kivétel címkéje egy pillanatkép. A pillanatkép azonosítója megtalálható egyéni tulajdonság, az Application Insights – kivételtelemetria a jelentésekor. Az összes telemetriai adat található Application Insights a Search paneljét használ, a `ai.snapshot.id` egyéni tulajdonság.
 
 1. Keresse meg az Application Insights-erőforrást az Azure portálon.
 2. Kattintson a **keresési**.
@@ -383,6 +418,10 @@ Keresse meg a feltöltése naplókból egy adott pillanatkép-azonosító, a ker
 2. A feltöltése naplóból időbélyeg használatával, állítsa be úgy a fedik le az adott időtartományt a keresés időtartományát szűrő.
 
 Ha még nem látja a pillanatkép Azonosítóval rendelkező kivételek, a kivételtelemetria Application Insights nem jelzett. Ez a helyzet akkor fordulhat elő, ha az alkalmazás összeomlott követően a pillanatkép által, de a kivételtelemetria jelentette előtt. Ebben az esetben a naplófájlokban App Service alatt `Diagnose and solve problems` megtekintéséhez, hogy voltak-e váratlan újraindítása vagy a nem kezelt kivételeket.
+
+### <a name="edit-network-proxy-or-firewall-rules"></a>Hálózati proxy és tűzfal vonatkozó szabályok szerkesztése
+
+Ha az alkalmazás csatlakozik az internethez a proxy vagy a tűzfalon keresztül, szükség lehet a szabályokat, hogy a pillanatkép-hibakereső szolgáltatással való kommunikációra az alkalmazás szerkesztése. Itt [IP-címek és a pillanatkép-hibakereső által használt portok listája](app-insights-ip-addresses.md#snapshot-debugger).
 
 ## <a name="next-steps"></a>További lépések
 

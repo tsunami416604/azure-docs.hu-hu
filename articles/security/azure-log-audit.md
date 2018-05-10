@@ -4,7 +4,7 @@ description: További tudnivalók arról, hogyan használja a naplózási adatok
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c0ca120da27daa7a498f73b9c62530e3af26e539
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Az Azure naplózása és naplózás
 ## <a name="introduction"></a>Bevezetés
@@ -358,7 +358,7 @@ A négy különböző módon [naplókat és az Azure-szolgáltatások metrikáj�
 |Application Insights||     Összekötő|  Összekötő|  [Az Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Connector (előzetes verzió)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
 |Automation-fiókok|   Microsoft.Automation/<br>AutomationAccounts|    Diagnosztika||       [További információ](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Batch-fiókok|    Microsoft.Batch/<br>batchAccounts|  Diagnosztika|    Diagnosztika||
-|Klasszikus cloud services csomag||       Tárolás||       [További információ](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
+|Klasszikus cloud services csomag||       Storage||       [További információ](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
 |Kognitív szolgáltatások|    Microsoft.CognitiveServices/<br>fiókok|       Diagnosztika|||
 |A Data Lake analytics|   Microsoft.DataLakeAnalytics/<br>fiókok|   Diagnosztika|||
 |A Data Lake store|   Microsoft.DataLakeStore/<br>fiókok|   Diagnosztika|||
@@ -372,10 +372,10 @@ A négy különböző módon [naplókat és az Azure-szolgáltatások metrikáj�
 |Helyreállítási tárolók|   Microsoft.RecoveryServices/<br>Tárolók|||[Az Azure Recovery Services Analytics (előzetes verzió)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Szolgáltatások keresése|   Microsoft.Search/<br>searchServices|    Diagnosztika|    Diagnosztika||
 |Service Bus-névtér| Microsoft.ServiceBus/<br>Névterek|    Diagnosztika|Diagnosztika|    [Service Bus Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-|Service Fabric||       Tárolás||    [Service Fabric Analytics (előzetes verzió)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
+|Service Fabric||       Storage||    [Service Fabric Analytics (előzetes verzió)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>kiszolgálók /<br>adatbázisok||       Diagnosztika||
 ||Microsoft.Sql/<br>kiszolgálók /<br>elasticPools||||
-|Tárolás|||         Szkript| [Az Azure Storage Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
+|Storage|||         Szkript| [Az Azure Storage Analytics (előzetes verzió)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
 |Virtuális gépek|  Microsoft.Compute/<br>virtuális gép|  Mellék|  Mellék||
 ||||Diagnosztika||
 |Virtuális gépek méretezési csoportok|   Microsoft.Compute/<br>virtuális gép    ||Diagnosztika||

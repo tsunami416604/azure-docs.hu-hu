@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8ca8156d98932e0e7313375cadc1ace2a3088881
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 58d65ef05ed872bb357070de9866253baea5dc70
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
 Azure SQL Data Warehouse frissítsen az Azure hardver- és tároló-architektúra legújabb generációját.
@@ -68,7 +68,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
    
    A frissítési folyamat második lépése az adatáttelepítés ("a frissítés - Online"). Adatok áttelepítése egy online trickle háttérfolyamatként, amely lassan a régi tároló-architektúra oszlopos adatokat az új tároló-architektúra, ami a helyi SSD-gyorsítótárba helyezi. Ebben az időszakban az adatraktár lekérdezésére és betöltése online lesz. Az adatok lekérdezése, függetlenül attól, hogy az áttelepítés vagy nem lesz. Az adatáttelepítés attól függően, hogy az adatok mérete, a teljesítményszintet és a oszlopcentrikus szegmensek száma különböző ütemben történik. 
 
-5. **Nem kötelező javaslat:** az adatok áttelepítési háttér folyamat lebonyolításához, javasoljuk, hogy azonnal kényszerítheti az adatmozgás futtatásával [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) összes oszlopcentrikus táblán egy nagyobb slo-t és az erőforrás az osztály. Ezt a műveletet offline állapotban a trickle háttérfolyamatként; képest azonban adatáttelepítés lesz sokkal gyorsabb, ahol, majd teljes mértékben kihasználhassa az új egyszer kész, de jó minőségű rowgroups emelt szintű tároló-architektúra. 
+5. **A Gen2 adatraktár található** az SQL-adatbázis Tallózás paneljének használatával. 
+
+> [!NOTE]
+> Probléma van a jelenleg hol keresse meg a Gen2 adatok során nem jelenik meg az SQL data warehouse a panelen. Az SQL-adatbázis Tallózás panel segítségével az újonnan frissített Gen2 data warehouse található. Folyamatosan dolgozunk a javítás.
+> 
+
+6. **Nem kötelező javaslat:** az adatok áttelepítési háttér folyamat lebonyolításához, javasoljuk, hogy azonnal kényszerítheti az adatmozgás futtatásával [Alter Index rebuild](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) összes oszlopcentrikus táblán egy nagyobb slo-t és az erőforrás az osztály. Ezt a műveletet offline állapotban a trickle háttérfolyamatként; képest azonban adatáttelepítés lesz sokkal gyorsabb, ahol, majd teljes mértékben kihasználhassa az új egyszer kész, de jó minőségű rowgroups emelt szintű tároló-architektúra. 
 
 A következő lekérdezés állít elő, az áttelepítési folyamat lebonyolításához szükséges az Alter Index Rebuild parancsokat:
 

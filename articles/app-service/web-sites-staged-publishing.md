@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ec2399c955f718186bbedc0e4bad61ccc61fd972
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2fabf0d61ffd2f526fab49816eab36a86497a358
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezet az Azure App Service beállítása
 <a name="Overview"></a>
@@ -30,11 +30,7 @@ A webalkalmazás, webes alkalmazás a Linux, mobil háttér és API-alkalmazás 
 * Központilag telepíthetők az alkalmazások a tárhely először és csere az éles környezetben biztosítja, hogy a összes példányát a tárolóhely Mielőtt éles környezetben felcserélés folyamatban vannak tárolóhelyspecifikus. Ez megszünteti állásidő, az alkalmazás központi telepítésekor. A forgalom átirányítása zökkenőmentes-kérelmek nem dobja swap műveletek miatt. A teljes munkafolyamat konfigurálásával automatizálható [automatikus felcserélés](#Auto-Swap) , ha nincs szükség a előtti swap érvényesítése.
 * Egy felcserélés után a tárolóhely korábban előkészített alkalmazással most már rendelkezik az előző éles alkalmazások. Ha a módosításokat, azokat az éles tárolóhelyre felcserélve nem a várt módon, közvetlenül a "utolsó ismert helyes"nevű hely eléréséhez a azonos virtuális végezhet vissza.
 
-Minden kiválasztása az App Service-csomaghoz támogatja az üzembe helyezési oszlopaik száma különböző. Tárolóhely száma megállapítása: az alkalmazás támogatja, lásd: [App szolgáltatásra vonatkozó korlátozások](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits).
-
-* Ha az alkalmazás több tárolóhelye van, a réteg nem módosítható.
-* Skálázás nem érhető el a nem végleges pont felcserélése.
-* Csatolt erőforrás-kezelés nem végleges pont felcserélése nem támogatott. Az a [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) csak, úgy kerülheti el a lehetséges hatásairól az éles tárhely ideiglenesen áthelyezése másik App Service-csomag réteghez a nem éles tárolóhelyre. Vegye figyelembe, hogy az nem éles tárhely kell ismét közös ugyanabban a rétegben az éles tárolóhelyre ahhoz, hogy a két felcserélése is.
+Minden kiválasztása az App Service-csomaghoz támogatja az üzembe helyezési oszlopaik száma különböző. Tárolóhely száma megállapítása: az alkalmazás támogatja, lásd: [App szolgáltatásra vonatkozó korlátozások](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). Másik réteghez alkalmazás skálázása a cél réteg támogatnia kell az alkalmazás már használja a helyek száma. Például, ha az alkalmazás 5-nél több tárolóhelye van, nem lehet méretezni azt le a **szabványos** rétegben, mert **szabványos** réteg csak 5 üzembe helyezési támogatja.
 
 <a name="Add"></a>
 

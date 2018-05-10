@@ -1,25 +1,23 @@
 ---
-title: "A napló használata az Azure AD Privileged Identity Management |} Microsoft Docs"
-description: "Útmutató: az auditnapló használata az Azure Privileged Identity Management bővítmény."
+title: A napló használata az Azure AD Privileged Identity Management |} Microsoft Docs
+description: 'Útmutató: az auditnapló használata az Azure Privileged Identity Management bővítmény.'
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 5d13a6dd-1fcb-4e76-82fb-cb2f4f0e4357
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 02/14/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: dd6cecf9211dada02025d93e4d63234ff0a73949
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 20fd9c5ee90947cc2d3816a0590d4780408baa2f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-the-audit-log-in-pim"></a>A PIM a napló használatával
 A Privileged Identity Management (PIM) napló segítségével tekintse meg a felhasználó-hozzárendeléseket és aktiválások egy adott időtartamon belül. Ha meg szeretné tekinteni a teljes naplózási előzmények a bérlői rendszergazda, a végfelhasználó és a szinkronizálási tevékenység, beleértve a tevékenység használhatja a [Azure Active Directory hozzáférési és használati jelentések.](active-directory-view-access-usage-reports.md)
@@ -57,6 +55,6 @@ Ha úgy dönt, a **egyéni** gomb, Ön által megadott egy **a** dátummezője �
 Ellenőrizze, vagy törölje a jelet a **szerepkör** vagy kizárja a a naplóból szerepkörönként jelölőnégyzetét.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

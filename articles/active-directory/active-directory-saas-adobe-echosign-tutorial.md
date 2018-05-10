@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ff059b27dc2bdcbfa8cecad1e46e9c2f268ef8c7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Oktatóanyag: Azure Active Directory-integráció Adobe bejelentkezési
 
@@ -103,7 +103,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
 
 3. Az a **Adobe bejelentkezési tartomány és az URL-címek** területen tegye a következőket:
@@ -115,8 +115,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.echosign.com`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Adobe bejelentkezési ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html) beolvasni ezeket az értékeket. 
- 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Adobe bejelentkezési ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html) beolvasni ezeket az értékeket.
+
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
@@ -127,15 +127,34 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 6. A a **Adobe bejelentkezési konfigurációs** kattintson **konfigurálása Adobe bejelentkezési** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png)
 
-7. Egy másik webes böngészőablakban jelentkezzen be a Adobe bejelentkezési vállalati webhely rendszergazdaként.
+7. Konfigurációs előtt kapcsolatba kell lépnie [Adobe bejelentkezési ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html) számára engedélyezett az Adobe bejelentkezési a tartományt. Kövesse a következő lépések végrehajtásával adja hozzá a tartományban:
 
-8. A SAML menüben kattintson a **Fiókbeállítások**, és kattintson a **SAML beállítások**.
+    a. [Az Adobe bejelentkezési ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html) fog küldeni egy véletlenszerűen generált jogkivonat. A tartományba, a jogkivonat hasonló lesz: **adobe-bejelentkezés-ellenőrző = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
+
+    b. Szüksége lesz az érvényesítési jogkivonat közzététele a DNS-szöveg bejegyzést, és értesíti a [Adobe bejelentkezési ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html).
+    
+    > [!NOTE]
+    > Várható, hogy ez eltarthat néhány nap és esetleg már. Vegye figyelembe, hogy DNS terjesztési késedelmeket jelenti azt, hogy a DNS-ben közzétett érték nem lehet látható egy óráig vagy tovább. A rendszergazdának kell lennie a token közzététele a DNS-rekord szöveg ismerő várhatóan.
+    
+    c. Ha Ön úgy [Adobe bejelentkezési ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html) keresztül a támogatási jegy után a token közzé van téve, hogy a tartomány ellenőrzése és adja hozzá a fiókjához.
+    
+    d. Általános lépéseket kell elvégeznie a egy DNS-rekord - jogkivonat közzététele
+
+    * Jelentkezzen be a tartományi fiók
+    * A lap keresése a DNS-bejegyzésének frissítése. Ez a lap neve DNS-kezelési, neve kiszolgáló kezelése vagy speciális beállítások.
+    * A TXT-rekord található a tartományhoz.
+    * Adja hozzá a TXT-rekord Adobe által biztosított teljes token értékre
+    * Mentse a módosításokat.
+
+8. Egy másik webes böngészőablakban jelentkezzen be a Adobe bejelentkezési vállalati webhely rendszergazdaként.
+
+9. A SAML menüben kattintson a **Fiókbeállítások**, és kattintson a **SAML beállítások**.
    
     ![Fiók](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "fiók")
 
-9. Az a **SAML beállítások** területen tegye a következőket:
+10. Az a **SAML beállítások** területen tegye a következőket:
   
     ![SAML-alapú beállítások](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML-beállítások")
    
@@ -265,4 +284,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
-

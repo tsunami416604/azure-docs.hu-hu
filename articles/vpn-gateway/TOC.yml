@@ -4,14 +4,14 @@
   items:
     - name: Információk a VPN Gateway-ről
       href: vpn-gateway-about-vpngateways.md
-- name: Példák
-  items:
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Oktatóanyagok
   items:
     - name: VPN-átjáró létrehozása és kezelése
       href: vpn-gateway-tutorial-create-gateway-powershell.md
+- name: Példák
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Alapelvek
   items:
     - name: A VPN Gateway tervezése és kialakítása

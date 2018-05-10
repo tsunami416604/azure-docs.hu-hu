@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 976b1c6b65036faeff3c4cc21e91ccf798eb0df3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b2660a98139068a8472c018de5cfbd29d6867c5a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Az Azure Blob Storage tárolóban az Azure Search dokumentumok indexelő
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-fájlok, a Microsoft Office-dokumentumok, és számos egyéb gyakori formátumok) az Azure Blob Storage tárolóban tárolja. Első lépésként beállítása és konfigurálása a blob indexelő használatának alapjait ismerteti. Ezt követően viselkedésmódok mélyebb feltárása kínál, és forgatókönyvek lehetséges hibát.
@@ -279,7 +279,7 @@ Is tovább indexelő Ha hibák bármikor feldolgozási, blobok elemzése közben
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Növekményes indexelő és törlési észlelése
-Beállításakor egy blob indexelő ütemezés szerint futtatni, azt újra indexek csak a módosított blobok a blob alapján `LastModified` időbélyegző.
+Egy blob indexelő ütemezés szerint futtatni beállításakor azt reindexes csak a módosított blobok a blob alapján `LastModified` időbélyegző.
 
 > [!NOTE]
 > Nem kell megadnia a módosítás szabályzat – növekményes indexelő engedélyezve van, automatikusan.

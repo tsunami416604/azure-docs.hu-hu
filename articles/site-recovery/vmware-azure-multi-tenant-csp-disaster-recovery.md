@@ -1,18 +1,18 @@
 ---
-title: "VMware-replikáció az Azure Site Recovery és a Cloud Solution Provider (CSP) program segítségével több-bérlős környezet beállítása |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet létrehozni és CSP keresztül a bérlői előfizetések kezelése és Azure Site Recovery üzembe egy több-bérlős beállítása"
+title: VMware-replikáció az Azure Site Recovery és a Cloud Solution Provider (CSP) program segítségével több-bérlős környezet beállítása |} Microsoft Docs
+description: Ismerteti, hogyan lehet létrehozni és CSP keresztül a bérlői előfizetések kezelése és Azure Site Recovery üzembe egy több-bérlős beállítása
 services: site-recovery
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/03/2018
 ms.author: manayar
-ms.openlocfilehash: 25591acb3f046744400f5dcf20a7ea651a7bcf54
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a9c77179aa77b7920646d0415ce4d244892215e4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A Cloud Solution Provider (CSP) programmal több-bérlős környezetben VMware-replikáció beállítása
 
@@ -24,10 +24,10 @@ Ez a cikk ismerteti, hogyan partnerként hozhat létre és bérlői előfizetés
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A VMware-replikáció beállítása kell a következőket teheti:
+VMware-replikáció beállításához meg kell tegye a következőket:
 
 - [Készítse elő](tutorial-prepare-azure.md) Azure-erőforrások, például az Azure-előfizetéssel, Azure virtuális hálózat és a storage-fiók.
-- [Készítse elő](vmware-azure-tutorial-prepare-on-premises.md) helyszíni VMware-kiszolgálók és virtuális gépek. 
+- [Készítse elő](vmware-azure-tutorial-prepare-on-premises.md) helyszíni VMware-kiszolgálók és virtuális gépek.
 - Az egyes bérlők számára hozzon létre egy külön felügyeleti kiszolgáló, amely képes kommunikálni a bérlői virtuális gépek és a vCenter-kiszolgáló. Csak partnerként kell rendelkezik hozzáférési jogosultsággal ehhez a felügyeleti kiszolgálóhoz. További információ [több-bérlős környezetekben](vmware-azure-multi-tenant-overview.md).
 
 ## <a name="create-a-tenant-account"></a>Bérlői fiók létrehozása
@@ -35,7 +35,7 @@ A VMware-replikáció beállítása kell a következőket teheti:
 1. Keresztül [Microsoft Partner Center](https://partnercenter.microsoft.com/), jelentkezzen be a CSP-fiókjába.
 2. Az a **irányítópult** menü **ügyfelek**.
 3. A megnyíló lapon kattintson a **Hozzáadás ügyfél** gombra.
-4. A **új ügyfél** lapján adja meg a fiók adatai a bérlő számára. 
+4. A **új ügyfél** lapján adja meg a fiók adatai a bérlő számára.
 
     ![A fiók adatai lap](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
@@ -58,47 +58,43 @@ A bérlő előfizetés a Microsoft Partner Center irányítópultjának kereszt�
 
 4. Hozzáférés az Azure Active Directory felső hivatkozásra kattintva ellenőrizheti az Azure-portálon sarkában.
 
-    ![Azure Active Directory link](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
+    ![Az Azure Active Directory-hivatkozás](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
 
 Ezután hajtsa végre és kezelése az Azure-portálon a bérlőhöz tartozó összes Site Recovery-műveleteket. A bérlői előfizetéshez eléréséhez CSP keresztül felügyelt vész-helyreállítási kövesse a korábban ismertetett folyamatot.
 
-## <a name="deploy-resources-to-the-tenant-subscription"></a>A bérlői előfizetéshez erőforrások telepítése
-
-1. Az Azure portálon hozzon létre egy erőforráscsoportot, és a Recovery Services-tárolónak a szokásos folyamatonként telepíteni.
-2. Töltse le a tároló regisztrációs kulcsát.
-3. A Tanúsítványszolgáltatások regisztrálja a bérlő a tárolóbeli regisztrációs kulcs használatával.
-
-4. Adja meg a két hozzáférési fiókokat, a vCenter-kiszolgáló és a virtuális gép eléréséhez a fiók eléréséhez a fióknak a hitelesítő adatait.
-
-    ![Kezelői konfigurációs kiszolgáló fiókok](./media/vmware-azure-multi-tenant-csp-disaster-recovery/config-server-account-display.png)
-
-## <a name="register-servers-in-the-vault"></a>Regisztrálja a kiszolgálót a tárolóban
-
-1. Az Azure portálon, a tárolóban lévő, korábban létrehozott regisztrálja a vCenter-kiszolgáló és a konfigurációs kiszolgáló, a létrehozott vCenter fiók használatával. 
-2. Az "Infrastruktúra előkészítése" folyamat befejezéséhez a Site Recovery a szokásos folyamatonként.
-3. A virtuális gépek replikálása most már készen áll. Ellenőrizze, hogy csak a bérlői virtuális gépek jelennek-e a **replikálása** > **válassza ki a virtuális gépek**.
-
-
 ## <a name="assign-tenant-access-to-the-subscription"></a>Bérlői hozzáférés hozzárendelése az előfizetéshez
 
-1. Győződjön meg arról, hogy a vész-helyreállítási infrastruktúra be van-e beállítva. Vegye figyelembe, hogy a CSP portál, a vész-helyreállítási felügyeletét e regarless vagy önkiszolgáló keresztül kell elérnie bérlői előfizetések. Állítsa be a tárolóba, és regisztrálja a bérlői előfizetések infrastruktúrát.
-2. Adja meg a bérlői a [létrehozott fiókot](#create-a-tenant-account)
+1. Győződjön meg arról, hogy a vész-helyreállítási infrastruktúra be van-e beállítva. Partnerek a CSP-portálon, függetlenül attól, hogy katasztrófa utáni helyreállítás felügyelt vagy az önkiszolgáló bérlői előfizetések érhető el. Állítsa be a tárolóba, és regisztrálja a bérlői előfizetések infrastruktúrát.
+2. Adja meg a bérlői a [létrehozott fiókot](#create-a-tenant-account).
 3. Hozzáadhat egy új felhasználót a CSP-portálon keresztül a bérlői előfizetéshez az alábbiak szerint:
 
     a) nyissa meg a bérlői CSP előfizetés oldalát, és válassza a **felhasználók és licencek** lehetőséget.
 
-        ![The tenant's CSP subscription page](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+      ![A bérlő CSP-előfizetés lapján](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) most hozzon létre egy új felhasználót, írja be a vonatkozó adatokat, majd válassza az engedélyeket, vagy fel kell tölteni egy CSV-fájlban szereplő felhasználók listáját.
+      b) most hozzon létre egy új felhasználót, írja be a vonatkozó adatokat, majd válassza az engedélyeket, vagy fel kell tölteni egy CSV-fájlban szereplő felhasználók listáját.
     c) új felhasználó létrehozása, után térjen vissza az Azure-portálon. Az a **előfizetés** lapon, válassza ki a megfelelő előfizetést.
     d) válassza **hozzáférés-vezérlés (IAM)**, és kattintson a **Hozzáadás**, hozzáadni egy felhasználót a megfelelő hozzáférési szinttel. A felhasználók, a CSP-portálon keresztül hozta létre automatikusan megjelennek az olyan hozzáférési szint kattintás után megjelenő oldalon.
 
-        ![Add a user](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+      ![Felhasználó hozzáadása](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
 - A legtöbb felügyeleti műveleteket a *közreműködő* szerepkör is elegendő. Ez a hozzáférési szint rendelkező felhasználók is mindent meg azzal a különbséggel hozzáférési szint módosítása előfizetés (amelynek *tulajdonos*-szintű hozzáféréssel kell).
 - A Site Recovery is rendelkezik három [előre meghatározott felhasználói szerepkörök](site-recovery-role-based-linked-access-control.md), amely tovább korlátozhatja a hozzáférési szintek szükség szerint használható.
 
+## <a name="multi-tenant-environments"></a>Több-bérlős környezetekben
+
+Három fő több-bérlős modell van:
+
+* **A megosztott üzemeltetési szolgáltatásokat szolgáltató (HSP)**: A partner birtokolja a fizikai infrastruktúra, és a által használt megosztott erőforrások (vCenter, adatközpontok, fizikai tárhelyet, és így tovább) több bérlői virtuális gépek üzemeltetéséhez ugyanazon az infrastruktúrán. A partner biztosíthat a vész-helyreállítási felügyeleti felügyelt szolgáltatásként, vagy a bérlői önkiszolgáló megoldás vész-helyreállítási rendelkezhet.
+
+* **Üzemeltetési szolgáltató dedikált**: A partner birtokolja a fizikai infrastruktúra, de a dedikált erőforrások (több Vcenter, fizikai datastores, és így tovább) használ a külön infrastruktúra minden egyes bérlői virtuális gépekre. A partner biztosíthat a vész-helyreállítási felügyeleti felügyelt szolgáltatásként, vagy a bérlő rendelkezhet önkiszolgáló megoldás.
+
+* **Felügyelt szolgáltatások szolgáltató (MSP)**: az ügyfél birtokolja a fizikai infrastruktúra, amely a virtuális gépet futtat, és a partner biztosít a vész-helyreállítási engedélyezése és kezelése.
+
+Bérlői előfizetések beállítása, a cikkben leírtak szerint, gyorsan megkezdheti az összes releváns több-bérlős modell ügyfelek engedélyezése. További információ a különböző több-bérlős modell és engedélyezése a helyszíni hozzáférés-vezérlést [Itt](vmware-azure-multi-tenant-overview.md).
+
 ## <a name="next-steps"></a>További lépések
-- [További](site-recovery-role-based-linked-access-control.md) vonatkozó szerepköralapú hozzáférés-vezérlést az Azure Site Recovery központi telepítések felügyeletéhez szükséges.
-- [További](vmware-azure-architecture.md) kapcsolatos VMware Azure replikációs architektúrát.
+- További információ [szerepköralapú hozzáférés-vezérlés](site-recovery-role-based-linked-access-control.md) Azure Site Recovery központi telepítések felügyeletéhez szükséges.
+- További tudnivalók az Azure-bA VMware [replikációs architektúra](vmware-azure-architecture.md).
 - [Tekintse át az oktatóanyag](vmware-azure-tutorial.md) a VMware virtuális gépek replikálása Azure-bA.
+További információ [több-bérlős környezetekben](vmware-azure-multi-tenant-overview.md) a VMware virtuális gépek replikálása Azure-bA.

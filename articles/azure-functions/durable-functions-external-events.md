@@ -1,12 +1,12 @@
 ---
-title: "A tartós funkciók - Azure külső események kezelésére"
-description: "Útmutató az Azure Functions a tartós funkciók bővítményben külső események leíróját."
+title: A tartós funkciók - Azure külső események kezelésére
+description: Útmutató az Azure Functions a tartós funkciók bővítményben külső események leíróját.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5ffbe6a7d74f0be2193d711d304f19e62ab08741
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 77087f04ea641c24a92edd2091432cbcb4329ecd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>A tartós függvények (az Azure Functions) külső események kezelésére
 
@@ -27,6 +27,8 @@ Az orchestrator várja meg, és a külső események figyelésére van. Ez a szo
 ## <a name="wait-for-events"></a>Várjon, amíg az események
 
 A [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) módszer lehetővé teszi, hogy az orchestrator függvény aszinkron módon várja meg, és a külső esemény figyelésére. A figyelő az orchestrator függvény deklarálja a *neve* az esemény és a *alakzat adatok* kíván fogadni.
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -45,9 +47,26 @@ public static async Task Run(
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const approved = yield context.df.waitForExternalEvent("Approval");
+    if (approved) {
+        // approval granted - do the approved action
+    } else {
+        // approval denied - send a notification
+    }
+});
+```
+
 Az előző példában figyeli az adott eseményhez, és végrehajtja a műveletet, amikor a fogadja.
 
 Több események figyelheti meg egyidejűleg, például a következő példának, amely három lehetséges eseményértesítések vár a.
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("Select")]
@@ -74,7 +93,30 @@ public static async Task Run(
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const event1 = context.df.waitForExternalEvent("Event1");
+    const event2 = context.df.waitForExternalEvent("Event2");
+    const event3 = context.df.waitForExternalEvent("Event3");
+
+    const winner = yield context.df.Task.any([event1, event2, event3]);
+    if (winner === event1) {
+        // ...
+    } else if (winner === event2) {
+        // ...
+    } else if (winner === event3) {
+        // ...
+    }
+});
+```
+
 Az előző példában figyeli a *bármely* több események. Akkor is várakozási *összes* események.
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -94,12 +136,31 @@ public static async Task Run(
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const applicationId = context.df.getInput();
+
+    const gate1 = context.df.waitForExternalEvent("CityPlanningApproval");
+    const gate2 = context.df.waitForExternalEvent("FireDeptApproval");
+    const gate3 = context.df.waitForExternalEvent("BuildingDeptApproval");
+
+    // all three departments must grant approval before a permit can be issued
+    yield context.df.Task.all([gate1, gate2, gate3]);
+
+    yield context.df.callActivityAsync("IssueBuildingPermit", applicationId);
+});
+```
+
 [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) néhány bemeneti határozatlan ideig vár.  Lehet, hogy a függvény app biztonságosan memóriából való várakozás során. Egy esemény érkezik a vezénylési példány, ha automatikusan aktiválva van, és azonnal dolgozza fel az eseményt.
 
 > [!NOTE]
 > Függvény alkalmazása használja-e a felhasználási tervezze meg, ha adatforgalmi díjak sem merülnek fel, amíg az orchestrator függvény vár a feladat `WaitForExternalEvent`, függetlenül attól, hogy mennyi ideig vár.
 
-Ha az eseménytartalom nem konvertálható a várt típus `T`, kivétel történik.
+A .NET, ha az eseménytartalom nem konvertálható a várt típus `T`, kivétel történik.
 
 ## <a name="send-events"></a>Események küldése
 

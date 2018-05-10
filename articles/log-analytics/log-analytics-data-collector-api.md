@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 167c36d2fa9bc182b6e37c0f47f838fde1ba01df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d42069e8ed72a834973b56df55488955d62e71f2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analyticshez a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan használja a HTTP adatok adatgyűjtő API REST API-ügyfél Naplóelemzési adatküldéshez.  Bemutatja, hogyan lehet a parancsfájl vagy az alkalmazás által összegyűjtött adatok formázása, adja hozzá a kérelem és a kérésre Naplóelemzési engedélyezve van.  A példák PowerShell, a C# és Python.
@@ -57,8 +57,8 @@ A HTTP-adatokat gyűjtő API használatához hozzon létre egy POST kérést, am
 | Fejléc | Leírás |
 |:--- |:--- |
 | Engedélyezés |Az engedélyezési aláírás. A cikk későbbi részében olvashat létrehozása egy HMAC-SHA256-fejlécben. |
-| Napló-típusa |Adja meg az adatok küldése folyamatban rekord típusát. A napló típusa jelenleg csak alfanumerikus karaktereket tartalmazhat. Nem támogatja írhatók vagy speciális karaktereket. |
-| x-ms-date |A kérelem feldolgozása, RFC 1123 formátumban dátuma. |
+| Napló-típusa |Adja meg az adatok küldése folyamatban rekord típusát. A napló típusa jelenleg csak alfanumerikus karaktereket tartalmazhat. Nem támogatja írhatók vagy speciális karaktereket. A méretkorlát a paraméter nem 100 karakternél. |
+| x-ms-dátuma |A kérelem feldolgozása, RFC 1123 formátumban dátuma. |
 | time-generated-field |Az adatok, amely tartalmazza az elem a Timestamp típusú mező neve. Ha a megadott mező, akkor annak tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, az alapértelmezett **TimeGenerated** a alkalom, hogy az üzenet van okozhatnak. A mező tartalmának érdemes követnie az ISO 8601 formátum éééé-hh-SSz. |
 
 ## <a name="authorization"></a>Engedélyezés
@@ -134,7 +134,7 @@ A tulajdonság adattípusát kikereséséhez Naplóelemzési hozzáadja egy utó
 
 | Tulajdonságadat-típus | Utótag |
 |:--- |:--- |
-| Karakterlánc |_s |
+| Karakterlánc |z |
 | Logikai |_b |
 | Dupla |_d |
 | Dátum és idő |_t |

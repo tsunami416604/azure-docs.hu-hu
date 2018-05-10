@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: bwren
-ms.openlocfilehash: 1e22aab85976fcab8ec270bdea1b8988b4d3bfe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="management-solutions-in-azure"></a>Az Azure-ban megoldások
 Megoldások kihasználhatja az Azure arra, hogy egy adott alkalmazás vagy szolgáltatás működésének nyújt további betekintést. Ez a cikk megoldások Azure-ban és részletek rövid áttekintést nyújt a használatával, és telepíteni kell őket.
 
 Megoldások általában Log Analyticshez való információgyűjtés, és adja meg a napló keresések és nézetek összegyűjtött adatok elemzésére. Más szolgáltatásokon, például az alkalmazáshoz vagy szolgáltatáshoz kapcsolódó műveletek elvégzéséhez Azure Automation is előfordulhat, hogy kihasználja.
 
-Alkalmazások és szolgáltatások Azure-előfizetése megoldásokat is hozzáadhat. Általában érhetők el: nem tudta meghívni a használati díjak költség, de a gyűjtés adatokat. A Microsoft által biztosított megoldások mellett partnereinknek és ügyfeleinknek is [létrehozása kezelési megoldásai](../operations-management-suite/operations-management-suite-solutions-creating.md) a saját környezetben használt vagy elérhetővé tenni az ügyfelek a közösségi keresztül.
+Alkalmazások és szolgáltatások Azure-előfizetése megoldásokat is hozzáadhat. Általában érhetők el: nem tudta meghívni a használati díjak költség, de a gyűjtés adatokat. A Microsoft által biztosított megoldások mellett partnereinknek és ügyfeleinknek is [létrehozása kezelési megoldásai](../monitoring/monitoring-solutions-creating.md) a saját környezetben használt vagy elérhetővé tenni az ügyfelek a közösségi keresztül.
 
 ## <a name="using-management-solutions"></a>Felügyeleti megoldás használata
 A **áttekintése** az egyes Naplóelemzési munkaterület megjeleníti minden megoldás a munkaterületen telepítve egy csempe lapon. Kattintson a csempére a részletesebb elemzés tartalmazó nézet megnyitásához a megoldás az összegyűjtött adatokat.

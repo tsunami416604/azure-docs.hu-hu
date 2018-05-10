@@ -1,6 +1,6 @@
 ---
-title: Az Apache Spark feladat futtatása Azure tároló szolgáltatás (AKS)
-description: Az Apache Spark feladat futtatásához használt Azure tároló szolgáltatás (AKS)
+title: Az Apache Spark feladat futtatása Azure Kubernetes szolgáltatás (AKS)
+description: Az Apache Spark feladat futtatásához használt Azure Kubernetes szolgáltatás (AKS)
 services: container-service
 author: lenadroid
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 627cb80a055fb4b66fcc428a1de87d754af6991e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: fbeddb60ce968ff0d32e2ddb6a4f62d2036d80aa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark feladatok futó AKS
 
-[Az Apache Spark on] [ apache-spark] egy gyors motor nagy méretű adatok feldolgozásához. A a [Spark 2.3.0 kiadás][spark-latest-release], Apache Spark támogatja a natív integráció az Kubernetes fürtökkel. Azure tároló szolgáltatás (AKS) az Azure-ban futó felügyelt Kubernetes környezetben. Ez a dokumentum részletesen előkészítése és futó Apache Spark feladatok Azure tároló szolgáltatás (AKS) fürtökön.
+[Az Apache Spark on] [ apache-spark] egy gyors motor nagy méretű adatok feldolgozásához. A a [Spark 2.3.0 kiadás][spark-latest-release], Apache Spark támogatja a natív integráció az Kubernetes fürtökkel. Azure Kubernetes szolgáltatás (AKS) az Azure-ban futó felügyelt Kubernetes környezetben. Ez a dokumentum részletesen előkészítése és futó Apache Spark feladatok Azure Kubernetes szolgáltatás (AKS) fürtökön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Ez a cikk belül lépések végrehajtásához a következők szükségesek.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Spark nagy méretű adatok feldolgozásához használt, és megköveteli, hogy a külső erőforrások követelményeinek megfelelően Kubernetes csomópontok mérete. Azt javasoljuk, hogy a minimális méret `Standard_D3_v2` az Azure-tároló szolgáltatás (AKS) csomópontok.
+Spark nagy méretű adatok feldolgozásához használt, és megköveteli, hogy a külső erőforrások követelményeinek megfelelően Kubernetes csomópontok mérete. Azt javasoljuk, hogy a minimális méret `Standard_D3_v2` az Azure Kubernetes szolgáltatás (AKS) csomópontok.
 
 Ha egy AKS fürt, amely megfelel a minimális javaslaton van szüksége, a következő parancsokat.
 

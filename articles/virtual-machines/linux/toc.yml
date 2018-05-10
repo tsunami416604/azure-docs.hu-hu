@@ -199,6 +199,8 @@
           href: use-remote-desktop.md
         - name: Virtuális gép csatlakoztatása az Azure Active Directoryhoz
           href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+        - name: Bejelentkezés az Azure Active Directory hitelesítő adatokkal
+          href: login-using-aad.md
         - name: Frissítések és javítások
           items:
             - name: A Red Hat frissítési infrastruktúrája

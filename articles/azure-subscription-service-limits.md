@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: f8b97aeb4c37578b884c924bd1919a59fa0f1cf8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 28b6f6c269dfb1550b4ed12af3366b483d402f86
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -53,6 +53,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Automatizálás](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Event Grid](#azure-event-grid-limits)
+* [Az Azure Maps](#azure-maps-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)
@@ -61,7 +62,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Felhőszolgáltatások](#cloud-services-limits)
 * [Tárolópéldányok](#container-instances-limits)
 * [Container Registry](#container-registry-limits)
-* [A Tárolószolgáltatás (AKS)](#container-service-aks-limits)
+* [Kubernetes szolgáltatás](#container-service-aks-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake analitikai szolgáltatás](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
@@ -69,12 +70,12 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
 * [IoT Hub](#iot-hub-limits)
-* [IoT Hub eszköz kiépítése szolgáltatáshoz](#iot-hub-device-provisioning-service-limits)
+* [IoT Hub eszközregisztrációs szolgáltatás](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobilmarketing](#mobile-engagement-limits)
-* [Mobile Services](#mobile-services-limits)
+* [Mobilszolgáltatások](#mobile-services-limits)
 * [Figyelés](#monitor-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [Hálózat](#networking-limits)
@@ -88,7 +89,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
 * [Storage](#storage-limits)
-* [StorSimple System](#storsimple-system-limits)
+* [StorSimple rendszer](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
 * [Traffic Manager](#traffic-manager-limits)
@@ -129,7 +130,7 @@ Az alábbi táblázat részletezi a szolgáltatások és a Basic, Standard és P
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 
-### <a name="container-service-aks-limits"></a>Korlátozza a tároló szolgáltatás (AKS)
+### <a name="kubernetes-service-limits"></a>Kubernetes szolgáltatásra vonatkozó korlátozások
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>Hálózatkezelési korlátok
@@ -281,6 +282,9 @@ További kapcsolatos részletesebb felügyeletét, például a dokumentum méret
 ### <a name="azure-event-grid-limits"></a>Az Azure Event rács korlátok
 [!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
 
+### <a name="azure-maps-limits"></a>Az Azure Maps korlátok
+[!INCLUDE [maps-limits](../includes/maps-limits.md)]
+
 ### <a name="storsimple-system-limits"></a>StorSimple rendszer korlátok
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
@@ -305,7 +309,7 @@ További kapcsolatos részletesebb felügyeletét, például a dokumentum méret
 ### <a name="key-vault-limits"></a>Key Vault korlátok
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Automatizálási korlátok

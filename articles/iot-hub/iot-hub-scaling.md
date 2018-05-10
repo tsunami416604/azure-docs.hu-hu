@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/02/2018
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3237ee41f8596ed3ce508857adf7dc29cee1ada
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 01e6c3a6fb922a649f0ae139af9c8515fcb8b2e0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT-központ szint kiválasztása
 
@@ -48,7 +48,7 @@ Az IoT hub létrehozása után frissítheti az alapszintű rétegben standard cs
 | [Eszközök telepítési szolgáltatásával](../iot-dps/about-iot-dps.md) | Igen | Igen |
 | [Megfigyelési és diagnosztikai](iot-hub-monitor-resource-health.md) | Igen | Igen |
 | [Felhő eszközre üzenetkezelés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
-| [Eszköz twins](iot-hub-devguide-device-twins.md) és [Eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
+| [Eszköz twins](iot-hub-devguide-device-twins.md), [modul twins](iot-hub-devguide-module-twins.md) és [Eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
 | [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Igen |
 
 Az IoT-központ is biztosít, egy ingyenes szint, amely készült tesztelésében és értékelésében. A standard szint, de korlátozott üzenetkezelési támogatás minden képességet tartalmaz. Ingyenes szint az alapszintű vagy standard nem verzióról. 
@@ -61,19 +61,26 @@ A támogatott képességek közötti különbség a basic és standard rétegek 
 | --- | ---------- | ------------- |
 | [Eszköz törlése](https://docs.microsoft.com/rest/api/iothub/deviceapi/deletedevice) | Igen | Igen |
 | [Eszköz](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice) | Igen | Igen |
+| A modul törlése | Igen | Igen |
+| Modul beolvasása | Igen | Igen |
 | [Megtekintheti a beállításjegyzék statisztikákat](https://docs.microsoft.com/rest/api/iothub/deviceapi/getregistrystatistics) | Igen | Igen |
 | [Get-szolgáltatásokra vonatkozó statisztikák](https://docs.microsoft.com/rest/api/iothub/deviceapi/getservicestatistics) | Igen | Igen |
 | [Helyezze az eszközt](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Igen | Igen |
+| PUT modul | Igen | Igen |
 | [Eszközök lekérdezése](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Igen | Igen |
+| Lekérdezés-modulok | Igen | Igen |
 | [Fájl feltöltése SAS URI-t létrehozni](https://docs.microsoft.com/rest/api/iothub/httpruntime/createfileuploadsasuri) | Igen | Igen |
 | [Eszköz kötött értesítés](https://docs.microsoft.com/rest/api/iothub/httpruntime/receivedeviceboundnotification) | Igen | Igen |
 | [Esemény küldése](https://docs.microsoft.com/rest/api/iothub/httpruntime/senddeviceevent) | Igen | Igen |
+| A modul esemény küldése | Igen | Igen |
 | [Fájl feltöltése állapotának frissítése](https://docs.microsoft.com/rest/api/iothub/httpruntime/updatefileuploadstatus) | Igen | Igen |
 | [Tömeges eszköz művelet](https://docs.microsoft.com/rest/api/iothub/deviceapi/bulkdeviceoperation) | Igen, kivéve a IoT biztonsági képességei | Igen | 
 | [A parancs várólista törlése](https://docs.microsoft.com/rest/api/iothub/deviceapi/purgecommandqueue) |   | Igen |
 | [A két eszköz beolvasása](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/getdevicetwin) |   | Igen |
+| A két modul beolvasása |   | Igen |
 | [Eszköz metódus meghívása](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/invokedevicemethod) |   | Igen |
 | [A két eszköz frissítése](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/updatedevicetwin) |   | Igen | 
+| A modul iker frissítése |   | Igen | 
 | [Eszköz kötött értesítési Abandon](https://docs.microsoft.com/rest/api/iothub/httpruntime/abandondeviceboundnotification) |   | Igen |
 | [Teljes eszköz értesítést kötött](https://docs.microsoft.com/rest/api/iothub/httpruntime/completedeviceboundnotification) |   | Igen |
 | [Megszakítása](https://docs.microsoft.com/rest/api/iothub/jobapi/canceljob) |   | Igen |

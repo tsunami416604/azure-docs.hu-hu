@@ -1,9 +1,9 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - hozzáférési követelmények"
-description: "PCI DSS követelmény 7"
+title: Az Azure támogatási feldolgozási tervezetének - hozzáférési követelmények
+description: PCI DSS követelmény 7
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: ac3afee9-0471-465d-a115-67488a1635a6
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 5a3c9eac552fb96309cfa791a2e72a7102662e60
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: fb16a7973022421525e13313f53f615120caa38a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="access-requirements-for-pci-dss-compliant-environments"></a>Hozzáférési követelmények PCI DSS-kompatibilis környezetben 
 ## <a name="pci-dss-requirement-7"></a>PCI DSS követelmény 7
@@ -40,8 +40,8 @@ Annak érdekében, hogy kritikus fontosságú adatokat csak arra jogosult szemé
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure Azure személyzet hozzáférés az Azure-összetevőkkel, az access control hatékonyságának ellenőrzése tekintetében, csak az idő biztosítása mellett a meglévő ISMS házirendek érvénybe lépteti rendszergazdai hozzáférést, ha már nem szükséges, és biztosítani kell személyzet hozzáférés visszavonása üzleti elérése az Azure platformon környezetben van szükség. Felhasználói környezetben Azure hozzáférést erősen korlátozott, és csak az ügyfél jóváhagyásának engedélyezett.<br /><br />Eljárások az Adatközpont engedéllyel rendelkező alkalmazottak, szállítók, alvállalkozói és látogatók való fizikai hozzáférés korlátozása bevezetett. A belső data center létesítményt a személyes ideiglenes hozzáférést igénylő személyzet biztonsági ellenőrzést, és be szükségesek. Belépési naplók negyedévente felülvizsgálata Azure csoportok. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Felhasználók korlátozása a hozzáférés-összetevőkkel és kártya tulajdonosát az adatokat csak feladatokkal ilyen hozzáférést igényel a személyek felelősek. Korlátozza és a hozzáférés korlátozása az Azure felügyeleti portálon fiókok vagy szerepkörök megadása a hozhat létre, valamint módosítana vagy törölne PaaS szolgáltatások.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure Azure személyzet hozzáférés az Azure-összetevőkkel, az access control hatékonyságának ellenőrzése tekintetében, csak az idő biztosítása mellett a meglévő ISMS házirendek érvénybe lépteti rendszergazdai hozzáférést, ha már nem szükséges, és biztosítani kell személyzet hozzáférés visszavonása üzleti elérése az Azure platformon környezetben van szükség. Felhasználói környezetben Azure hozzáférést erősen korlátozott, és csak az ügyfél jóváhagyásának engedélyezett.<br /><br />Eljárások az Adatközpont engedéllyel rendelkező alkalmazottak, szállítók, alvállalkozói és látogatók való fizikai hozzáférés korlátozása bevezetett. A belső data center létesítményt a személyes ideiglenes hozzáférést igénylő személyzet biztonsági ellenőrzést, és be szükségesek. Belépési naplók negyedévente felülvizsgálata Azure csoportok. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Felhasználók korlátozása a hozzáférés-összetevőkkel és kártya tulajdonosát az adatokat csak feladatokkal ilyen hozzáférést igényel a személyek felelősek. Korlátozza és a hozzáférés korlátozása az Azure felügyeleti portálon fiókok vagy szerepkörök megadása a hozhat létre, valamint módosítana vagy törölne PaaS szolgáltatások.|
 
 
 
@@ -55,8 +55,8 @@ Annak érdekében, hogy kritikus fontosságú adatokat csak arra jogosult szemé
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége meghatározása és a felhasználói azonosító jóváhagyási folyamat dokumentálása, legalacsonyabb jogosultságok meghatározása, kártya tulajdonosát elérésének korlátozásával, egyedi azonosítók használata, feladataik elválasztását igénylik biztosítása és visszavonni a hozzáférést, ha már nem szükséges.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége meghatározása és a felhasználói azonosító jóváhagyási folyamat dokumentálása, legalacsonyabb jogosultságok meghatározása, kártya tulajdonosát elérésének korlátozásával, egyedi azonosítók használata, feladataik elválasztását igénylik biztosítása és visszavonni a hozzáférést, ha már nem szükséges.|
 
 
 
@@ -68,8 +68,8 @@ Annak érdekében, hogy kritikus fontosságú adatokat csak arra jogosult szemé
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure elfogadta a megfelelő vállalati és szervezeti biztonsági házirendek, beleértve az információk biztonsági házirend. A házirendek rendelkezik lett jóváhagyott, közzétett és a Windows Azure közli. A Microsoft Azure információk biztonsági házirend szükséges, hogy biztosított legyen-e alapján üzleti indoklásának, az eszköz tulajdonosa engedélyt a Microsoft Azure eszközökhöz való hozzáférést, és "szükség alapú tudás" és "legalacsonyabb jogosultsági" alapelvek alapján. A házirend is címek hozzáférés-kezelés életciklusának beleértve a kiépítés, hozzáférés-engedélyezési, hitelesítési hozzáférési jogok eltávolítása követelményei, és ellenőrzi, hogy időszakos hozzáférés. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). Felhasználói szerepkörök feladataik dokumentált bemutató forgatókönyv alapján korlátozódnak.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure elfogadta a megfelelő vállalati és szervezeti biztonsági házirendek, beleértve az információk biztonsági házirend. A házirendek rendelkezik lett jóváhagyott, közzétett és a Windows Azure közli. A Microsoft Azure információk biztonsági házirend szükséges, hogy biztosított legyen-e alapján üzleti indoklásának, az eszköz tulajdonosa engedélyt a Microsoft Azure eszközökhöz való hozzáférést, és "szükség alapú tudás" és "legalacsonyabb jogosultsági" alapelvek alapján. A házirend is címek hozzáférés-kezelés életciklusának beleértve a kiépítés, hozzáférés-engedélyezési, hitelesítési hozzáférési jogok eltávolítása követelményei, és ellenőrzi, hogy időszakos hozzáférés. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). Felhasználói szerepkörök feladataik dokumentált bemutató forgatókönyv alapján korlátozódnak.|
 
 
 
@@ -81,8 +81,8 @@ Annak érdekében, hogy kritikus fontosságú adatokat csak arra jogosult szemé
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). Felhasználói szerepkörök feladataik dokumentált bemutató forgatókönyv alapján korlátozódnak.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). Felhasználói szerepkörök feladataik dokumentált bemutató forgatókönyv alapján korlátozódnak.|
 
 
 
@@ -94,8 +94,8 @@ Annak érdekében, hogy kritikus fontosságú adatokat csak arra jogosult szemé
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Felhasználók korlátozása a hozzáférés-összetevőkkel és kártya tulajdonosát az adatokat csak feladatokkal ilyen hozzáférést igényel a személyek felelősek. Korlátozza és a hozzáférés korlátozása az Azure felügyeleti portálon fiókok vagy szerepkörök megadása a hozhat létre, valamint módosítana vagy törölne PaaS szolgáltatások.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Felhasználók korlátozása a hozzáférés-összetevőkkel és kártya tulajdonosát az adatokat csak feladatokkal ilyen hozzáférést igényel a személyek felelősek. Korlátozza és a hozzáférés korlátozása az Azure felügyeleti portálon fiókok vagy szerepkörök megadása a hozhat létre, valamint módosítana vagy törölne PaaS szolgáltatások.|
 
 
 
@@ -111,8 +111,8 @@ A hozzáférés-vezérlő rendszerében a következőket kell tartalmazniuk:
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló csak a kijelölt felhasználók hozzáférését korlátozni az Azure Active Directory. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló csak a kijelölt felhasználók hozzáférését korlátozni az Azure Active Directory. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -124,8 +124,8 @@ A hozzáférés-vezérlő rendszerében a következőket kell tartalmazniuk:
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló dokumentációja tartalmaz a használati esetek és egy leírást, aki CHD használja, és hogyan használja fel CHD kapcsolatban.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló dokumentációja tartalmaz a használati esetek és egy leírást, aki CHD használja, és hogyan használja fel CHD kapcsolatban.|
 
 
 

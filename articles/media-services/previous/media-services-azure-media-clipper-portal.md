@@ -1,8 +1,8 @@
 ---
-title: "Kövesse a portálon, az Azure Media Webmontázskészítő |} Microsoft Docs"
-description: "Azure Media Webmontázskészítő az Azure portálról használatával videóklipeket létrehozása"
+title: Kövesse a portálon, az Azure Media Webmontázskészítő |} Microsoft Docs
+description: Azure Media Webmontázskészítő az Azure portálról használatával videóklipeket létrehozása
 services: media-services
-keywords: "Klip; subclip; kódolás; adathordozó"
+keywords: Klip; subclip; kódolás; adathordozó
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 1deca68cd6a61ede7536c4d5544036a10c54209b
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Az Azure Media Webmontázskészítő videóklipeket létrehozása a portálon
 Azure Media Webmontázskészítő a portálon hozhat létre videóklipeket eszközökből, a media services partnerek. A kezdéshez navigáljon a portálon a media services-fiókhoz. Ezután válassza ki a **Subclip** fülre.
@@ -39,5 +39,5 @@ Az alábbi ábrán a Webmontázskészítő módban dinamikus jegyzék szűrő az
 ## <a name="submitting-clipping-jobs"></a>Kivágás feladatok elküldése
 Ha a klip létrehozásának befejezése után, válassza ki a kezdeményezése a küldési feladat gombra, a megfelelő Kivágás feladat vagy a dinamikus jegyzék hívás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure Media Webmontázskészítő használatának megkezdéséhez olvassa el a [bevezetés](media-services-azure-media-clipper-getting-started.md) cikkben talál részletes információt a widget központi telepítéséről.

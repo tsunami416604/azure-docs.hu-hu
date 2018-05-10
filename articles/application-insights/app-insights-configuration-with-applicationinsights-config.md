@@ -3,8 +3,7 @@ title: ApplicationInsights.config referencia - Azure |} Microsoft Docs
 description: Engedélyezze vagy tiltsa le az adatok gyűjtése modulok, és adja hozzá a teljesítményszámlálók és más paramétereket.
 services: application-insights
 documentationcenter: ''
-author: OlegAnaniev-MSFT
-editor: mrbullwinkle
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 6e397752-c086-46e9-8648-a1196e8078c2
 ms.service: application-insights
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: mbullwin
-ms.openlocfilehash: 62ecacb16c891905eb67a6bae08cf81ac2cdb173
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: mbullwin; olegan
+ms.openlocfilehash: 670600d4370be0b675c71d1c6cf09b17c7bd2597
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights) telemetriai adatok küldése az Application Insights az API-t biztosít. [További csomagok](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követése a telemetriai adatok az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetria-modulokat és az inicializálók, és némelyikük paramétereinek megadása.
@@ -288,7 +287,7 @@ A két megvalósítások nyújtunk a [Microsoft.ApplicationInsights](https://www
 
 ### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
 
-Ez az a profil Api csomagolásának. Azt fogja adatátviteli kérések és a gyorsítótár eredmények.
+Ez az a profil API csomagolásának. Azt fogja adatátviteli kérések és a gyorsítótár eredmények.
 
 A konfigurációs fájlhoz hozzá a szolgáltatót, vagy telepítésekor [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) vagy [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)
 

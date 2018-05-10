@@ -1,9 +1,9 @@
 ---
-title: "Észlelési - hiba rendellenességek észlelését, és az Application Insightsban intelligens |} Microsoft Docs"
-description: "Riasztást küld, azt a webalkalmazást a sikertelen kérelmek számát szokatlan változásairól, és diagnosztikai elemzés biztosít. Nincs a konfigurációra nincs szükség."
+title: Észlelési - hiba rendellenességek észlelését, és az Application Insightsban intelligens |} Microsoft Docs
+description: Riasztást küld, azt a webalkalmazást a sikertelen kérelmek számát szokatlan változásairól, és diagnosztikai elemzés biztosít. Nincs a konfigurációra nincs szükség.
 services: application-insights
-documentationcenter: 
-author: yorac
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
-ms.author: mbullwin
-ms.openlocfilehash: ca484f4d11cf8ab18db2d0c6152f369a90311f10
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; yossiy
+ms.openlocfilehash: 29ae81551d4bd4be4123c8e7780b8b5ecc259f09
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens észlelési - hiba rendellenességek észlelését
 [Az Application Insights](app-insights-overview.md) automatikusan értesíti a felhasználót közel valós idejű Ha a webalkalmazás szokatlan mértékben megnőtt a sikertelen kérelmek számát. Azt észleli, hogy egy szokatlan megnövekedhet a HTTP-kérelmek vagy sikertelenként jelentett függőségi hívások gyakorisága. A kéréseket a sikertelen kérelmek rendszerint rendelkező válaszkódot 400 vagy magasabb. Segítséget osztályozhatja és diagnosztizálhatja a problémát, a hibák és a kapcsolódó telemetriai adatok elemzését az értesítés valósul meg. Az Application Insights portáljáról további elemzés céljából mutató hivatkozásokat is vannak. A szolgáltatás nem beállításról, sem a konfigurációban kell, mert gépi tanulási algoritmusok a normál hibaaránya előre jelezni.
@@ -140,7 +140,7 @@ Intelligens tegye a hiba rendellenességek észlelését más hasonló kiegész�
 
 * A várakozó fájlok számát a riasztás letiltását van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A diagnosztikai eszközök segítségével vizsgálja meg az alkalmazás a telemetriai adatok:
 
 * [Metrika explorer](app-insights-metrics-explorer.md)

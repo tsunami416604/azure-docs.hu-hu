@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50be809df0938272a3e1d710b879ca3dd5de9428
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3bdc7820910540b789fd11533389f79aa9f297f5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Az Azure Cosmos-Adatbázisba az SQL API-val particionálás
 
@@ -43,7 +43,7 @@ Első lépésként kóddal, töltse le a projektet a [Azure Cosmos DB teljesítm
 
 ## <a name="partition-keys"></a>Partíciós kulcsok
 
-Az SQL API-t a partíciós kulcs definíciójában egy JSON-útvonal formájában kell megadni. Az alábbi táblázat példákat partíció fontos definíciókat és a megfelelő értékeket. A partíciós kulcs van megadva egy elérési utat, mint pl. `/department` jelenti. a tulajdonság részleg. 
+Az SQL API-t a partíciós kulcs definíciójában egy JSON-útvonal formájában kell megadni. Az alábbi táblázat példákat partíció fontos definíciókat és a megfelelő értékeket. A partíciós kulcs van megadva egy elérési utat, mint például `/department` jelenti. a tulajdonság részleg. 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -81,9 +81,9 @@ Nézzük milyen hatással van a partíciós kulcs kiválasztásakor az alkalmaz�
 Az Azure Cosmos DB támogatása az automatikus particionálási [REST API verziója 2015-12-16](/rest/api/cosmos-db/). Particionált tárolók létrehozásához le kell töltenie 1.6.0 SDK verzió vagy újabb valamelyik támogatott SDK platformon (.NET, Node.js, Java, Python, MongoDB). 
 
 ### <a name="creating-containers"></a>Tárolók létrehozása
-A következő példában egy .NET-részlet létrehozni egy tárolót a 20 000 kérelemegység / s átviteli eszköz telemetriai adatainak tárolásához. Az SDK-t állítja be a OfferThroughput (amelyek viszont beállítja a `x-ms-offer-throughput` kérelem fejléce a REST API-ban). Itt be van állítva a `/deviceId` partíciókulcsnak. A partíciós kulcs választott mentett a tároló metaadatait, például a nevét, és az indexelési házirendet a többi mellett.
+A következő példában egy .NET-részlet létrehozni egy tárolót a 20 000 kérelemegység / s átviteli eszköz telemetriai adatainak tárolásához. Az SDK-t állítja be a OfferThroughput (amelyek viszont beállítja a `x-ms-offer-throughput` kérelem fejléce a REST API-ban). Itt meg a `/deviceId` partíciókulcsnak. A partíciós kulcs választott mentett a tároló metaadatait, például a nevét, és az indexelési házirendet a többi mellett.
 
-Az ebben a példában azt kivételezett `deviceId` tudjuk, hogy (a) óta eszközök nagy számú, mivel a írások terjeszthető partíciók között egyenlően, és lehetővé téve, hogy a nagy mennyiségű adatot betöltési adatbázis méretezése és (b) számos a kérések, például egy eszköz a legújabb olvasási beolvasása egyetlen deviceId hatóköre, és egyetlen partícióra lekérhetők.
+Ez a minta kivételezett `deviceId` tudja, hogy (a) nincsenek nagyszámú eszköz, mivel egyenletes elosztása partíciók között is ír, és lehetővé téve az adatbázis betöltési nagy mennyiségű adatok és (b) a kérelmek például beolvasása számos egy eszköz a legújabb olvasásra egyetlen deviceId hatóköre, és egyetlen partícióra lekérhetők.
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
@@ -102,10 +102,10 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
-Ez a módszer lehetővé teszi a REST API hívása Cosmos DB, és a szolgáltatás kiépíti a kért átviteli sebesség alapján létrehozott partícióknak számos. A teljesítmény kell fejlődnek tudja módosítani az átviteli sebesség a tároló. 
+Ez a módszer lehetővé teszi a REST API hívása Cosmos DB, és a szolgáltatás kiépíti a kért átviteli sebesség alapján létrehozott partícióknak számos. A teljesítmény igények fejlődnek megfelelően módosíthatja az átviteli sebesség a tároló vagy egy tárolók. 
 
 ### <a name="reading-and-writing-items"></a>Olvasott és írt elemek
-Most tegyük beszúrni Cosmos DB adatokat. Íme egy minta osztály, amely tartalmazza egy eszközt, olvasása, és egy tárolóba olvasása új eszköz beszúrása Documentclient hívásakor. Ez az az SQL API-t, ami például:
+Most tegyük beszúrni Cosmos DB adatokat. Íme egy minta osztály, amely tartalmazza egy eszközt, olvasása, és egy tárolóba olvasása új eszköz beszúrása Documentclient hívásakor. Az alábbiakban látható egy példa kódrészletet, amely az SQL API-t használja:
 
 ```csharp
 public class DeviceReading
@@ -144,7 +144,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Most olvassa el a cikk a partíciókulcs és azonosító, a frissítést, és utolsó lépésként, törölje azt partíciókulcs és azonosítója. Vegye figyelembe, hogy a beolvasások egy PartitionKey értéket is tartalmaznak (a REST API `x-ms-documentdb-partitionkey` kérelemfejlécének megfelelően).
+Most olvassa el a cikk a partíciókulcs és azonosító, a frissítést, és utolsó lépésként, törölje azt partíciókulcs és azonosítója. Olvasási PartitionKey értéket tartalmazza (a megfelelő a `x-ms-documentdb-partitionkey` kérelem fejléce a REST API-ban).
 
 ```csharp
 // Read document. Needs the partition key and the ID to be specified
@@ -178,7 +178,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
     
-A következő lekérdezés nem rendelkezik a partíciókulcsra (DeviceId) vonatkozó szűrővel, és minden partícióra kiterjed, ahol a partíció indexén lesz végrehajtva. Ne feledje, hogy meg kell adnia az EnableCrossPartitionQuery értékét (`x-ms-documentdb-query-enablecrosspartition` a REST API-ban) ahhoz, hogy az SDK egy lekérdezést az összes partíción futtasson.
+A következő lekérdezés nem rendelkezik a partíciókulcsra (DeviceId) vonatkozó szűrővel, és minden partícióra kiterjed, ahol a partíció indexén lesz végrehajtva. Meg kell adnia a EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` REST API-ja) kell rendelkeznie az SDK partíciók között a lekérdezés végrehajtásához.
 
 ```csharp
 // Query across partition keys
@@ -188,7 +188,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-Támogatja a cosmos DB [aggregátumfüggvények](sql-api-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`, `SUM` és `AVG` over particionálva tárolók indítása az SDK-k 1.12.0 és újabb SQL használatával. Lekérdezések tartalmaznia kell egy egyetlen összesítő operátor, és egyetlen értéket kell adni a leképezésben.
+Cosmos DB támogatja [aggregátumfüggvények](sql-api-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`,, és `AVG` over particionálva tárolók indítása az SDK-k 1.12.0 és újabb SQL használatával. Lekérdezések tartalmaznia kell egy egyetlen összesítő operátor, és egyetlen értéket kell adni a leképezésben.
 
 ### <a name="parallel-query-execution"></a>Lekérdezések párhuzamos végrehajtása
 A Cosmos DB SDK-k 1.9.0 és hajthat végre a particionált gyűjtemények, lekérdezések kis késés, még akkor is, amikor sok partíciók touch kell támogatási párhuzamos lekérdezés végrehajtási beállítások fent. A következő lekérdezés például a partíciókon való párhuzamos futtatásra van konfigurálva.
@@ -204,13 +204,13 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-* Úgy, hogy `MaxDegreeOfParallelism`, például a tároló partíciók egyidejű hálózati kapcsolatok maximális száma párhuzamos fokának szabályozhatja. Ha ez az érték -1, a párhuzamosság szintjét az SDK felügyeli. Ha a `MaxDegreeOfParallelism` nem megadott vagy kell állítani, 0, amely az alapértelmezett érték, a tároló partíciók egyetlen hálózati kapcsolattal lesz.
-* A `MaxBufferedItemCount` értékének beállításával kompromisszum alakítható ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha kihagyja ezt a paramétert vagy -1 értéket ad meg, akkor a párhuzamos lekérdezés-végrehajtás során pufferelt elemek számát az SDK felügyeli.
+* Úgy, hogy `MaxDegreeOfParallelism`, szabályozhatja, hogy milyen párhuzamossági Ez azt jelenti, hogy a tároló partíciók egyidejű hálózati kapcsolatok maximális számát. Ha ez a tulajdonság értéke -1, milyen párhuzamossági az SDK kezeli. Ha a `MaxDegreeOfParallelism` nem megadott vagy kell állítani, 0, amely az alapértelmezett érték, a tároló partíciók egyetlen hálózati kapcsolattal lesz.
+* A `MaxBufferedItemCount` értékének beállításával kompromisszum alakítható ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha kihagyja ezt a paramétert, vagy ez a tulajdonság értéke -1, párhuzamos lekérdezés-végrehajtás során pufferelt elemek száma. az SDK kezeli.
 
 Ha a gyűjtemény állapota azonos, a párhuzamos lekérdezés ugyanazon sorrendben adja vissza az értékeket, mint a soros lekérdezés esetén. Rendezés (ORDER BY és/vagy felső) tartalmazó kereszt-partíció lekérdezés végrehajtásakor a az Azure Cosmos DB SDK állít ki a párhuzamos lekérdezés partíciók között, és egyesíti globálisan rendezett eredmények eredményezett ügyféloldali részben rendezett eredményez.
 
 ### <a name="executing-stored-procedures"></a>Tárolt eljárások végrehajtása
-Ilyen azonosítójú eszköz,-dokumentumokon végzett atomi tranzakciók is futtathat, például ha összesítések vagy csak egy elemet az eszközök aktuális állapotát most karbantartása. 
+Is végrehajthat atomi tranzakciókról dokumentumok ilyen azonosítójú eszköz, például ha összesítések vagy csak egy elemet az eszközök aktuális állapotát most karbantartása. 
 
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
@@ -219,10 +219,10 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     "XMS-001-FE24C");
 ```
    
-A következő szakaszban úgy tekintünk, hogyan viheti át a particionált tárolók egypartíciós tárolókból.
+A következő szakaszban megnézzük hogyan viheti át a particionált tárolók egypartíciós tárolókból.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben azt használata Azure Cosmos DB tároló SQL API-val particionálás áttekintését biztosítja. Lásd még: [particionálás és horizontális skálázás](../cosmos-db/partition-data.md) fogalmakat és ajánlott eljárások az Azure Cosmos DB API-k a particionálás áttekintését. 
+Ez a cikk használata Azure Cosmos DB tároló SQL API-val particionálás áttekintését biztosítja. Lásd még: [particionálás és horizontális skálázás](../cosmos-db/partition-data.md) fogalmakat és ajánlott eljárások az Azure Cosmos DB API-k a particionálás áttekintését. 
 
 * Hajtsa végre a méretezés és teljesítmény Azure Cosmos DB tesztelték. Lásd: [teljesítmény- és Mérettesztelés az Azure Cosmos DB](performance-testing.md) egy minta.
 * Ismerkedés a kódolási a [SDK-k](sql-api-sdk-dotnet.md) vagy a [REST API-n](/rest/api/cosmos-db/)

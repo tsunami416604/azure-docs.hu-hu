@@ -1,9 +1,9 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - titkosítási követelmények"
-description: "PCI DSS követelmény 4"
+title: Az Azure támogatási feldolgozási tervezetének - titkosítási követelmények
+description: PCI DSS követelmény 4
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 43f75ba9-cb4e-49ab-b3f4-09e48310bc18
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 3eb5b663558c2a68c13368b179ff942dd3c53716
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 6de3290fc2147e3c8ed63642b6e8470093898ef6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="encryption-requirements-for-pci-dss-compliant-environments"></a>Adattitkosítási követelmények PCI DSS-kompatibilis környezetben 
 ## <a name="pci-dss-requirement-4"></a>PCI DSS követelmény 4
@@ -52,8 +52,8 @@ Bizalmas adatokat titkosítani kell átvitel közben könnyen rosszindulatú tá
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló egy PaaS megoldás, amely megvalósítja az erős titkosítás a központi telepítés a következőképpen:<br /><br />A titkosított adatokat nyugalmi követelményeinek megfelelően, [Azure Storage](https://azure.microsoft.com/services/storage/) a következőt:<br /><br /><ul><li>[Az Azure Storage szolgáltatás titkosítási (SSE) inaktív adatok](/azure/storage/storage-service-encryption)</li><li>SQL-adatbázis: A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).</li><li>[Az Azure Disk Encryption (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>Az Azure Key Vault használatával igazodik Azure Government, PCI DSS és HIPAA követelményeket.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló egy PaaS megoldás, amely megvalósítja az erős titkosítás a központi telepítés a következőképpen:<br /><br />A titkosított adatokat nyugalmi követelményeinek megfelelően, [Azure Storage](https://azure.microsoft.com/services/storage/) a következőt:<br /><br /><ul><li>[Az Azure Storage szolgáltatás titkosítási (SSE) inaktív adatok](/azure/storage/storage-service-encryption)</li><li>SQL-adatbázis: A Platformszolgáltatásos SQL Database-példányt, adatbázis biztonsági intézkedéseket megjelenítve szolgál. További információkért lásd: [PCI útmutatást - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).</li><li>[Az Azure Disk Encryption (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>Az Azure Key Vault használatával igazodik Azure Government, PCI DSS és HIPAA követelményeket.|
 
 
 
@@ -65,8 +65,8 @@ Bizalmas adatokat titkosítani kell átvitel közben könnyen rosszindulatú tá
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Vezeték nélküli és SNMP nem valósult meg a megoldást.|
 
 
 
@@ -78,8 +78,8 @@ Bizalmas adatokat titkosítani kell átvitel közben könnyen rosszindulatú tá
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló nincs minden üzenetküldési megoldást megvalósítva, amely nem védett elsődleges fiók száma (PÁSZTÁZÁS) adatokat küldhet.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló nincs minden üzenetküldési megoldást megvalósítva, amely nem védett elsődleges fiók száma (PÁSZTÁZÁS) adatokat küldhet.|
 
 
 
@@ -91,8 +91,8 @@ Bizalmas adatokat titkosítani kell átvitel közben könnyen rosszindulatú tá
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége dokumentálásáért és kártya tulajdonosát adatokat tartalmazó adatátvitel titkosításához.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek felelőssége dokumentálásáért és kártya tulajdonosát adatokat tartalmazó adatátvitel titkosításához.|
 
 
 

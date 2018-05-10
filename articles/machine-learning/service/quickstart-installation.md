@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 0a24adb94930024f6eaaa5ac270ae7fc35520132
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 61f51063ea7542e11ec8488c1f526c0fff1e5e38
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>Rövid útmutató: Az Azure Machine Learning-szolgáltatások telepítése és az első lépések
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) átfogó, integrált és fejlett adatelemzési megoldások. A hivatásos adatszakértők számára nyújt segítséget az adatok előkészítésében, a kísérletek kidolgozásában és a modellek felhőszinten való üzembe helyezésében.
@@ -64,7 +64,7 @@ Azure Machine Learning-fiókokat az Azure Portalon hozhat létre:
    Erőforráscsoport | _Az erőforráscsoport_ | Az előfizetése valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához a kísérletezési fiók számára. 
    Hely | _A felhasználókhoz legközelebb eső régió_ | Válassza ki a felhasználókhoz és az adatforrásokhoz legközelebb eső helyet.
    Munkaállomások száma | 2 | Adja meg a munkaállomások számát. Itt találhat további tudnivalókat arról, [hogyan befolyásolja a munkaállomások száma a díjszabást](https://azure.microsoft.com/pricing/details/machine-learning/).<br/><br/>Ehhez a rövid útmutatóhoz csak két munkaállomásra van szükség. A munkaállomások igény szerint adhatók hozzá és távolíthatók el az Azure Portalon.
-   Tárfiók | _Egyedi név_ | Válassza az **Új létrehozása** elemet, és adjon meg egy nevet az [Azure Storage-fiók](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal) létrehozásához. A név 3–24 karakter hosszúságú lehet, és csak alfanumerikus karaktereket tartalmazhat. Másik lehetőségként válassza a **Meglévő használata** lehetőséget, majd a legördülő listából válasszon egy meglévő tárfiókot. A tárfiók megadása kötelező, hiszen a projektösszetevőket és a futtatási előzményadatokat tárolja. 
+   Tárfiók | _Egyedi név_ | Válassza az **Új létrehozása** elemet, és adjon meg egy nevet az [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal) létrehozásához. A név 3–24 karakter hosszúságú lehet, és csak alfanumerikus karaktereket tartalmazhat. Másik lehetőségként válassza a **Meglévő használata** lehetőséget, majd a legördülő listából válasszon egy meglévő tárfiókot. A tárfiók megadása kötelező, hiszen a projektösszetevőket és a futtatási előzményadatokat tárolja. 
    A Kísérletezés-fiók munkaterülete | IrisGarden<br/>(az oktatóanyagokban használt név) | Adja meg a fiók munkaterületének nevét. A név 2–32 karakter hosszúságú lehet. A név csak alfanumerikus és kötőjel (-) karaktert tartalmazhat. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
    A munkaterülethez társított tulajdonos | _Saját fiók_ | Válassza ki a saját fiókját a munkaterület tulajdonosaként.
    Modellkezelési fiók létrehozása | **bejelölve** |Hozzon létre egy modellkezelési fiókot, hogy ez az erőforrás elérhető legyen, amikor valós idejű webszolgáltatásként szeretné üzembe helyezni és felügyelni a modelleket. <br/><br/>Ez nem kötelező, de javasoljuk, hogy a kísérletezési fiókkal egy időben hozza létre a modellkezelési fiókot.

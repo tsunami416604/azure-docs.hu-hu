@@ -1,18 +1,18 @@
 ---
-title: "A Site Recovery feladatátvételi |} Microsoft Docs"
-description: "Az Azure Site Recovery koordinálja a replikálása, feladatátvétele és helyreállítási virtuális gépek és fizikai kiszolgálók. További információk a feladatátvétel az Azure vagy egy másodlagos adatközpontba."
+title: A Site Recovery feladatátvételi |} Microsoft Docs
+description: Az Azure Site Recovery koordinálja a replikálása, feladatátvétele és helyreállítási virtuális gépek és fizikai kiszolgálók. További információk a feladatátvétel az Azure vagy egy másodlagos adatközpontba.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: ponatara
-ms.openlocfilehash: f7a60cd82508629ad3cf46882564aa68995ba3e6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 40f35cde2b55da0763f6ee65b065f5dd8a55b9c6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="failover-in-site-recovery"></a>Feladatátvétel a Site Recoveryben
 Ez a cikk ismerteti, hogyan feladatátvételi virtuális gépek és fizikai kiszolgálók Site Recovery által védett.

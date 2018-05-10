@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure IoT Hub eszköz twins (Java) |} Microsoft Docs"
-description: "Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT-eszközök SDK Java segítségével valósítja meg az eszköz alkalmazás és az Azure IoT szolgáltatás Java SDK egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása végrehajtásához."
+title: Ismerkedés az Azure IoT Hub eszköz twins (Java) |} Microsoft Docs
+description: Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT-eszközök SDK Java segítségével valósítja meg az eszköz alkalmazás és az Azure IoT szolgáltatás Java SDK egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása végrehajtásához.
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 6d306d4742a53789d8e69c80d7fbdfc4e1ade4bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8611b55f6e4f33f8946d8c7c481163166d24049c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-device-twins-java"></a>Ismerkedés az eszköz twins (Java)
 
@@ -40,8 +40,6 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
-
-Ha inkább hozzon létre az eszközidentitást programozott módon, olvassa el a megfelelő részt a [csatlakoztassa az eszközt az IoT hub Java használatával](iot-hub-java-java-getstarted.md#create-a-device-identity) cikk.
 
 ## <a name="create-the-service-app"></a>A service-alkalmazás létrehozása
 
@@ -349,7 +347,7 @@ Most már készen áll a konzol alkalmazások futtatásához.
 
     Miután elküldte az eszköz a **connectivityType** IoT-központ tulajdonságot, a második lekérdezés visszaadja az eszközt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Fel van véve eszköz metaadatait címkék egy háttér-alkalmazásból, és egy eszköz alkalmazásának megírt az eszköz a két jelentés eszköz kapcsolódási adatok. Is megismerte az SQL-szerű IoT Hub lekérdezési nyelv használatával kettős eszközadatokat lekérdezése.
 

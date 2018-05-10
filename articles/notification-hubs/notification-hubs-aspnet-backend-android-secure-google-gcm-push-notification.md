@@ -1,11 +1,11 @@
 ---
-title: "Biztonságos leküldéses értesítések küldése az Azure Notification hubs használatával"
-description: "Útmutató: a biztonságos leküldéses értesítések küldésére Android-alkalmazás az Azure-ból. Kódminták Java és a C#."
+title: Biztonságos leküldéses értesítések küldése az Azure Notification hubs használatával
+description: 'Útmutató: a biztonságos leküldéses értesítések küldésére Android-alkalmazás az Azure-ból. Kódminták Java és a C#.'
 documentationcenter: android
-keywords: "leküldéses értesítési, leküldéses értesítések leküldéses üzenetek, android leküldéses értesítések"
-author: ysxu
-manager: erikre
-editor: 
+keywords: leküldéses értesítési, leküldéses értesítések leküldéses üzenetek, android leküldéses értesítések
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
@@ -13,13 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 29f8c516e611c13fb73c7edc15e7c52708c75bb0
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/25/2018
+ms.author: dimazaid
+ms.openlocfilehash: 58f6967c59a5060baa10ff83752b9c6ed08226cb
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Biztonságos leküldéses értesítések küldése az Azure Notification hubs használatával
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Magas szinten a folyamat a következőképpen történik:
    * Az Android-eszközön kapcsolatba lép a háttér-kérő a biztonságos forgalma.
    * Az alkalmazás a tartalom megjeleníthető értesítésként az eszközön.
 
-Fontos megjegyezni, hogy az előző folyamatában (és ebben az oktatóanyagban), feltételezzük, hogy az eszköz tárol egy hitelesítési jogkivonatot helyi tároló, a felhasználó bejelentkezése után. Ez biztosítja, hogy teljesen zökkenőmentes élményt, mivel az eszköz le az értesítési biztonságos tartalom a tokent. Ha az alkalmazás nem tárolja a hitelesítési tokenek az eszközön, vagy ezeket a jogkivonatokat is lejárt, az eszköz alkalmazást, és a leküldéses értesítés fogadásakor megjelenjen-e a felhasználó megkérdezése általános értesítési indíthatja el az alkalmazást. Az alkalmazás majd hitelesíti a felhasználót, és az értesítési tartalom jeleníti meg.
+Fontos megjegyezni, hogy az előző folyamatában (és ebben az oktatóanyagban), feltételezzük, hogy az eszköz tárol egy hitelesítési jogkivonatot a helyi tároló, a felhasználó bejelentkezése után. Ez a megközelítés biztosítja, hogy az zökkenőmentes élményt, az eszköz le az értesítési biztonságos tartalom a token használatával. Ha az alkalmazás nem tárolja a hitelesítési tokenek az eszközön, vagy ezeket a jogkivonatokat is lejárt, az eszköz alkalmazást, és a leküldéses értesítés fogadásakor megjelenjen-e a felhasználó megkérdezése általános értesítési indíthatja el az alkalmazást. Az alkalmazás majd hitelesíti a felhasználót, és az értesítési tartalom jeleníti meg.
 
 Ez az oktatóanyag bemutatja, hogyan biztonságos leküldéses értesítések küldéséhez. Buildekről nyújtanak a [felhasználók értesítése](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) oktatóanyag, ezért el kell végeznie a lépéseket, hogy az oktatóanyagban először Ha még nem tette meg.
 
@@ -63,7 +63,7 @@ Ez az oktatóanyag bemutatja, hogyan biztonságos leküldéses értesítések k�
 Most, hogy módosította, a app háttér küldése csak a *azonosító* egy leküldéses értesítés az Android-alkalmazás az értesítés, és a háttér-letölteni a biztonságos üzenetet megjelenítendő visszahívási módosítani kell.
 E cél eléréséhez, akkor győződjön meg arról, hogy az Android-alkalmazás meg tudja a háttér-hitelesítse magát a leküldéses értesítések fogadásakor.
 
-A Microsoft most módosítja a *bejelentkezési* folyamat ahhoz, hogy az alkalmazás a közös beállításokat mentse a hitelesítési fejléc értéke. Hasonló mechanizmusok bármely hitelesítési jogkivonat (pl. OAuth jogkivonatok), amely az alkalmazást kell használnia, anélkül, hogy a felhasználói hitelesítő adatok tárolására használható.
+Most, módosítsa a *bejelentkezési* folyamat ahhoz, hogy az alkalmazás a közös beállításokat mentse a hitelesítési fejléc értéke. Hasonló mechanizmusok bármely hitelesítési jogkivonat (például az OAuth jogkivonatok), anélkül, hogy a felhasználói hitelesítő adatok használatára van az alkalmazás tárolására használható.
 
 1. Az Android-alkalmazás projektben adja hozzá a következő állandókat tetején a **MainActivity** osztály:
    
@@ -86,7 +86,7 @@ A Microsoft most módosítja a *bejelentkezési* folyamat ahhoz, hogy az alkalma
    
         import android.content.SharedPreferences;
 
-Most azt fogja módosítani a kezelő is nevezett, az értesítés fogadásakor.
+Módosítsa a kezelő is nevezett, az értesítés fogadásakor.
 
 1. Az a **MyHandler** osztályban módosítsa a `OnReceive()` metódust kell tartalmaznia:
    
@@ -126,10 +126,10 @@ Most azt fogja módosítani a kezelő is nevezett, az értesítés fogadásakor.
 
 Ez a metódus meghívja az alkalmazás háttér-a a közös beállításokat tárolt hitelesítő adatok használatával értesítési tartalmának lekéréséhez, és azt egy normál értesítés jelenik meg. Az értesítés megvizsgálja, hogy az alkalmazás felhasználói akárcsak bármely más leküldéses értesítést.
 
-Ne feledje, hogy az esetek hiányzó hitelesítési fejléc tulajdonság vagy elutasítása kezelésére által a háttér-érdemes. Ezekben az esetekben adott kezelésének legtöbbször a cél felhasználói élményét függ. Egy lehetőség egy értesítés megjelenítése egy általános kérdéshez a felhasználó hitelesítésére a tényleges értesítési beolvasása.
+Célszerű a esetek hiányzó hitelesítési fejléc tulajdonság vagy elutasítása kezelésére által a háttérszolgáltatáshoz. Ezekben az esetekben adott kezelésének legtöbbször a cél felhasználói élményét függ. Egy lehetőség egy értesítés megjelenítése egy általános kérdéshez a felhasználó hitelesítésére a tényleges értesítési beolvasása.
 
 ## <a name="run-the-application"></a>Futtassa az alkalmazást
-Futtassa az alkalmazást, tegye a következőket:
+Az alkalmazás futtatásához a következő műveleteket hajthatja végre:
 
 1. Győződjön meg arról, hogy **AppBackend** a rendszer az Azure-ban. Ha a Visual Studio használatával, futtassa a **AppBackend** webes API-alkalmazás. Az ASP.NET-weblap jelenik meg.
 2. Az eclipse-ben futtassa az alkalmazást egy fizikai Android-eszköz vagy az emulátorban.

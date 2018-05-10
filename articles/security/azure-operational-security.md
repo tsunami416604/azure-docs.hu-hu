@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Operational biztonsági |} Microsoft Docs"
-description: "További tudnivalók a Microsoft Operations Management Suite (OMS), a szolgáltatások és annak működéséről."
+title: Az Azure Operational biztonsági |} Microsoft Docs
+description: További tudnivalók a Microsoft Operations Management Suite (OMS), a szolgáltatások és annak működéséről.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8528eeb4eac8397beaa3d0dca37ce9eb33167b32
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d5bea758a0b2a950f51ec443707d9d32dee9cbc4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security"></a>Az Azure Operational biztonsági
 ## <a name="introduction"></a>Bevezetés
@@ -52,11 +52,11 @@ Ez a dokumentum belül a Microsoft Azure cloud platform a Microsoft Azure operat
 6.  [Az Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-operations-management-suite"></a>A Microsoft Operations Management Suite szolgáltatásban
+## <a name="microsoft-operations-management-suite"></a>Microsoft Operations Management Suite
 
 A Microsoft Operations Management Suite (OMS) az informatikai felügyeleti megoldás a hibrid felhő. Önmagában vagy a meglévő System Center telepítési kiterjesztéséhez OMS lehetővé teszi a maximális rugalmasságot és a felhő alapú felügyeleti infrastruktúra.
 
-![A Microsoft Operations Management Suite szolgáltatásban](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Microsoft Operations Management Suite](./media/azure-operational-security/azure-operational-security-fig1.png)
 
 Az OMS-ben a felhő, beleértve a helyszíni, Azure, AWS, Windows Server, Linux, VMware és OpenStack, mint versenyképes megoldások alacsonyabb költségekkel szereplő bármely példány kezelheti. A felhő-első globális készült, OMS biztosít egy új megközelítés a vállalat, amely a lehető leggyorsabb és legköltséghatékonyabb módon új üzleti kihívást és olyan új munkaterhelések, alkalmazások és a felhő környezeteiben.
 
@@ -67,8 +67,8 @@ Az OMS legfontosabb funkcióit az Azure-ban futó szolgáltatások biztosítják
 | Szolgáltatás  | Leírás|
 | :------------- | :-------------|
 | Log Analytics | Figyeli és elemzi a különféle erőforrások, köztük a fizikai és virtuális gépek rendelkezésre állását és teljesítményét. |
-|Automatizálás | Automatizálja a manuális folyamatokat, és érvényesíti a fizikai és virtuális gépekre vonatkozóan megadott konfigurációkat. |
-| Biztonsági mentés | Készítsen biztonsági másolatot, és a fontos adatok helyreállítását. |
+|Automation | Automatizálja a manuális folyamatokat, és érvényesíti a fizikai és virtuális gépekre vonatkozóan megadott konfigurációkat. |
+| Backup | Készítsen biztonsági másolatot, és a fontos adatok helyreállítását. |
 | Site Recovery | Biztosítja a kritikus fontosságú alkalmazások magas rendelkezésre állását. |
 
 ### <a name="log-analytics"></a>Log Analytics
@@ -193,7 +193,7 @@ Ezek a naplók az erőforrás által kibocsátott, és adja meg az erőforrás a
 
 Például Windows rendszer-eseménynaplói diagnosztikai napló a virtuális gépek és a blob, a tábla egy kategóriát, és várólista naplók diagnosztikai naplók kategóriáinak storage-fiókok.
 
-Diagnosztikai naplók eltérnek a [tevékenységnapló (korábbi nevén napló tartalmát, vagy a műveleti napló)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). A műveletnapló erőforrást az előfizetésében a végrehajtott műveletek betekintést nyújt. Diagnosztikai naplók Észreveheti az olyan műveletek, hogy az erőforrás végre magát.
+Diagnosztikai naplók eltérnek a [tevékenységnapló (korábbi nevén napló tartalmát, vagy a műveleti napló)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). A műveletnapló erőforrást az előfizetésében a végrehajtott műveletek betekintést nyújt. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
 
 ### <a name="metrics"></a>Mérőszámok
 
@@ -213,13 +213,13 @@ Azure figyelő címinfrastruktúra megjelenítési lehetőségeinek a teljesítm
 
 A funkció, amely lehetővé teszi a telepített alkalmazás diagnosztikai adatok gyűjtésére Azure belül. Használja a diagnosztika bővítményét a különböző forrásokból. A rendszer jelenleg támogatott [Azure Cloud Service webes és feldolgozói szerepkörök](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/overview) Microsoft Windows rendszerű és [Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics). Más Azure-szolgáltatásokkal rendelkezik saját külön diagnosztika.
 
-## <a name="azure-network-watcher"></a>Az Azure hálózati figyelőt
+## <a name="azure-network-watcher"></a>Azure Network Watcher
 
 A hálózati biztonsági naplózás létfontosságú a hálózati biztonsági rések észlelése és az IT-biztonsági és szabályozási irányítás modell betartását. Biztonsági csoport nézet a konfigurált hálózati biztonsági csoport és a biztonsági szabályok és a hatékony biztonsági szabályok kérheti le. A szabályok alkalmazása listáját azt is meghatározhatja a portok nyitva, és a hálózati biztonsági rések értékelése.
 
 [Hálózati figyelő](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) regionális szolgáltatás, amely lehetővé teszi figyelése és diagnosztizálása feltételek hálózati szintű az, hogy és az Azure-ból. Hálózati diagnosztika és a képi megjelenítés eszközök is elérhetők a hálózati figyelőt segítenek megérteni, diagnosztizálása és információt kaphat a hálózathoz, az Azure-ban. A szolgáltatás része a csomagrögzítéssel, a következő ugrás, az IP-adatfolyam győződjön meg arról, biztonsági csoport megtekintése, NSG folyamata naplókat. Forgatókönyv szintű figyelési jeleníti meg egy végpontok közötti hálózati erőforrások ellentétben egyes hálózati erőforrás-figyelése.
 
-![Az Azure hálózati figyelőt](./media/azure-operational-security/azure-operational-security-fig8.png)
+![Azure Network Watcher](./media/azure-operational-security/azure-operational-security-fig8.png)
 
 Hálózati figyelőt jelenleg a következő képességekkel rendelkezik:
 
@@ -305,7 +305,7 @@ Az Azure AD naplózási jelentés események kerülnek 180 napig tart.
 
 Az ügyfelek tárolása iránt érdeklődik a [naplózása](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events) hosszabb megőrzési ideig, a Reporting API segítségével rendszeresen lekéréses külön adattárba események naplózása.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk ezekkel az Ön adatainak védelmében, és miközben nagy szoftverek és -szolgáltatások, amelyek segítenek az adatok védelme a szervezet informatikai infrastruktúrájának kezelése. Microsoft felismeri, hogy azok megbízni másoknak adataikat, amikor adott megbízhatósági szigorú biztonsági igényel. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Biztonságossá tétele és az adatok védelmének a Microsoft a legnagyobb prioritással.
 
@@ -328,7 +328,7 @@ Ez a cikk ismerteti
 </ul>
 </ul>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tervezési és a működési biztonság](https://www.microsoft.com/trustcenter/security/designopsecurity)
 

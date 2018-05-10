@@ -1,19 +1,34 @@
 - name: Azure HDInsight – dokumentáció
   href: /azure/hdinsight
-- name: Kafka on HDInsight
+- name: Áttekintés
   items:
-    - name: Áttekintés
+    - name: Tudnivalók a Kafka HDInsightról
       href: apache-kafka-introduction.md
     - name: Összetevő verziókezelése
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Bevezetés
+- name: Gyors útmutatók
   items:
-    - name: Kafka-fürt létrehozása
+    - name: Kafka-fürt létrehozása – Portál
       href: apache-kafka-get-started.md
-    - name: HDInsight-alkalmazások telepítése
-      href: ../hdinsight-apps-install-applications.md
+    - name: Kafka-fürt létrehozása – PowerShell
+      href: apache-kafka-quickstart-powershell.md
+    - name: Kafka-fürt létrehozása – Sablon
+      href: apache-kafka-quickstart-resource-manager-template.md
+- name: Oktatóanyagok
+  items:
+    - name: Kafka és Spark
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
+    - name: Kafka és Storm
+      href: ../hdinsight-apache-storm-with-kafka.md
+      maintainContext: true
+    - name: A Kafka Producer és Consumer API-k
+      href: apache-kafka-producer-consumer-api.md
+    - name: A Kafka Streams API
+      href: apache-kafka-streams-api.md
+- name: Alapelvek
+  items:
     - name: Kapacitástervezés
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -23,6 +38,11 @@
       href: apache-kafka-high-availability.md
 - name: Útmutató
   items:
+    - name: Automatikus témakör-létrehozás engedélyezése
+      href: apache-kafka-auto-create-topics.md
+    - name: HDInsight-alkalmazások telepítése
+      href: ../hdinsight-apps-install-applications.md
+      maintainContext: true
     - name: A Kafka használata virtuális hálózaton
       href: apache-kafka-connect-vpn-gateway.md
     - name: Kafka-adatok replikálása
@@ -31,17 +51,11 @@
       href: apache-kafka-log-analytics-operations-management.md
     - name: Streaming folyamatok létrehozása
       items:
-        - name: Kafka és Spark (strukturált stream)
-          href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-          maintainContext: true
-        - name: Strukturált streamelés a Kafkából az Azure CosmosDB-be
+        - name: 'Spark, Kafka és Azure Cosmos DB'
           href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
           maintainContext: true
         - name: Kafka és Spark (DStream)
           href: ../hdinsight-apache-spark-with-kafka.md
-          maintainContext: true
-        - name: Kafka és Storm
-          href: ../hdinsight-apache-storm-with-kafka.md
           maintainContext: true
         - name: A Kafka használata az Azure Container Service-szel
           href: apache-kafka-azure-container-services.md
@@ -49,10 +63,6 @@
           href: apache-kafka-azure-functions.md
     - name: Fejlesztés
       items:
-        - name: A Kafka Producer and Consumer API használata
-          href: apache-kafka-producer-consumer-api.md
-        - name: A Kafka Streams API használata
-          href: apache-kafka-streams-api.md
         - name: Üres élcsomópontok használata
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true

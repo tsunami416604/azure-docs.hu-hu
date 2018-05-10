@@ -1,12 +1,12 @@
 ---
-title: "HLS offline Apple FairPlay - Azure tartalom védelméhez |} Microsoft Docs"
-description: "Ez a témakör áttekintést nyújt, és bemutatja, hogyan Azure Media Services segítségével dinamikusan titkosítani a HTTP-Live Streaming (HLS) az Apple FairPlay offline módban."
+title: HLS offline Apple FairPlay - Azure tartalom védelméhez |} Microsoft Docs
+description: Ez a témakör áttekintést nyújt, és bemutatja, hogyan Azure Media Services segítségével dinamikusan titkosítani a HTTP-Live Streaming (HLS) az Apple FairPlay offline módban.
 services: media-services
-keywords: "Kapcsolat nélküli, HLS, DRM, FairPlay Streaming (FPS), iOS 10"
-documentationcenter: 
+keywords: Kapcsolat nélküli, HLS, DRM, FairPlay Streaming (FPS), iOS 10
+documentationcenter: ''
 author: willzhan
 manager: steveng
-editor: 
+editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/01/2017
 ms.author: willzhan, dwgeo
 ms.openlocfilehash: dc38772097dddb7c7135d55598373d7ab544f9ea
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Kapcsolat nélküli FairPlay Streaming iOS-hez 
  Az Azure Media Services számos tetszetős [védelmi szolgáltatások tartalom](https://azure.microsoft.com/services/media-services/content-protection/) adott tartalma:

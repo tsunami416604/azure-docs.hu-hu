@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e6f3ae71a924840c973b2536d332070b9a12d0dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer szabványos áttekintése
 
@@ -59,7 +59,7 @@ Tekintse át az alábbi táblázatban a szabványos terheléselosztó és alapve
 | Magas rendelkezésre ÁLLÁSÚ portok | Belső terheléselosztó | / |
 | Alapértelmezés szerint biztonságos | alapértelmezett le a következő nyilvános IP-cím és a terheléselosztó végpontokat és a hálózati biztonsági csoport kell használni kifejezetten engedélyezett forgalom áramlását felé | alapértelmezett megnyitva, a hálózati biztonsági csoport nem kötelező |
 | Kimenő kapcsolatok | Egy szabályban a több frontends lemondáshoz. Egy kimenő forgatókönyv _kell_ explicit módon hozhatók létre a virtuális gép nem használható a kimenő kapcsolat.  [Virtuális hálózat Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) kimenő kapcsolat nélkül elérhető, és nem számítanak bele a feldolgozott adatokat.  Nyilvános IP-címek, beleértve az Azure PaaS szolgáltatások nem érhetők el a virtuális hálózat szolgáltatás végpontként kell kimenő kapcsolat és a feldolgozott adatok felé száma keresztül érhető el. Ha csak egy belső terheléselosztó van egy virtuális gépet szolgáltató, alapértelmezett SNAT keresztül kifelé irányuló kapcsolatok nem érhetők el. Kimenő SNAT programozás az átviteli protokoll adott protokoll a bejövő terheléselosztási szabály alapján. | Egyetlen előtér véletlenszerűen kiválasztott, ha több frontends jelen.  Csak belső terheléselosztó van egy virtuális gépet szolgáltató, amikor az alapértelmezett SNAT szolgál. |
-| Több frontends | Bejövő és kimenő | Csak bejövő |
+| Több előtérrendszer | Bejövő és kimenő | Csak bejövő |
 | Felügyeleti műveletek | A legtöbb műveletek < 30 másodperc | 60-90 másodpercet tipikus |
 | SLA | a két kifogástalan állapotú virtuális gép elérési útja 99,99 %-os | A virtuális gép SLA implicit | 
 | Díjszabás | A szabályok száma alapján, adatfeldolgozási bejövő vagy kimenő társított erőforrás  | Nem kell fizetni |
@@ -137,7 +137,7 @@ A kulcs tenets megjegyezhető az szabványos terheléselosztó használatakor az
 - kimenő forgatókönyvek a következők explicit, és a kimenő kapcsolat nem létezik, amíg meg van adva.
 - terheléselosztási szabályok következtethető ki, hogyan SNAT programozott-e. Terheléselosztási szabályok adott protokoll. SNAT adott protokoll és konfigurációs kell ennek megfelelően helyett hozzon létre egy mellékhatása.
 
-#### <a name="multiple-frontends"></a>Több frontends
+#### <a name="multiple-frontends"></a>Több előtérrendszer
 Ha azt szeretné további SNAT portok, mert számított vagy már a kimenő kapcsolatok nagy igényt ró tapasztal, azt is megteheti növekményes SNAT port készlet további frontends, szabályok és háttérkészletek ugyanahhoz a virtuális géphez erőforrások.
 
 #### <a name="control-which-frontend-is-used-for-outbound"></a>A vezérlő melyik előtér használt kimenő
@@ -218,11 +218,12 @@ Standard terheléselosztó terheléselosztási szabályok konfigurálva és az �
 
 ## <a name="limitations"></a>Korlátozások
 
-- Betöltési terheléselosztó háttér példányok nem található a virtuális hálózatok társviszonyban most. Háttér-példányainak ugyanabban a régióban kell lennie.
 - Termékváltozat nem változtatható. A meglévő erőforrás Termékváltozata nem módosítható.
 - Egy különálló virtuális gép erőforrás rendelkezésre állási csoport erőforrás, vagy a virtuálisgép-méretezési készlet erőforrás egyik Termékváltozatáról, soha nem is hivatkozhat.
-- [Riasztások figyelése Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenleg nem támogatottak.
+- Terheléselosztó szabály két virtuális hálózatok nem terjedhetnek.  Frontends és azok kapcsolódó háttér példányok objektumának ugyanabban a virtuális hálózatban kell lennie.  
+- Load Balancer frontends között a globális virtuális hálózati társviszony-létesítés nem érhetők el.
 - [Előfizetés műveletek áthelyezése](../azure-resource-manager/resource-group-move-resources.md) Standard Termékváltozat LB és PIP erőforrások esetén nem támogatottak.
+- Webes feldolgozói szerepkörök nélkül egy VNet és egyéb Microsoft-platform szolgáltatás elérhető lehet, ha csak egy belső szabványos terheléselosztó használata miatt a hogyan előtti-VNet-szolgáltatások és az egyéb platform szolgáltatás függvény egyik mellékhatása. Meg nem lehetnek jelen, a megfelelő service magát, vagy az alapul szolgáló platform minden külön értesítés nélkül módosíthatja. Hogy mindig részlegnek feltételeznie kell létrehozásához szükséges [kimenő kapcsolat](load-balancer-outbound-connections.md) explicit módon, ha egy belső szabványos terheléselosztó csak használata esetén szükséges.
 
 ## <a name="next-steps"></a>További lépések
 

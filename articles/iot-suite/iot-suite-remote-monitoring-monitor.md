@@ -1,7 +1,7 @@
 ---
-title: "A távoli felügyeleti megoldás - Azure figyelés speciális |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan figyelheti a távoli felügyeleti megoldás irányítópultja rendelkező eszközök."
-services: 
+title: A távoli felügyeleti megoldás - Azure figyelés speciális |} Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan figyelheti a távoli felügyeleti megoldás irányítópultja rendelkező eszközök.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,17 +12,17 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fe0d936b4ee0d7703222c86c00959869b99f7851
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Hajtsa végre a távoli felügyeleti megoldást használni speciális figyelésére
 
 Ez az oktatóanyag bemutatja a távoli figyelési irányítópult képességeit. Ezek a képességek szemléltetésére az oktatóprogram egy olyan forgatókönyvet a Contoso IoT-alkalmazásban.
 
-Az oktatóanyag segítségével két szimulált Contoso teherautó eszköz megtudhatja, hogyan figyelheti az eszközök az előkonfigurált megoldás irányítópulton. Contoso operátorként szeretné figyelni a hely és a mezőben a teherautók viselkedését.
+Ebben az oktatóanyagban a két szimulált Contoso teherautó eszköz áttekintésével megismerheti, hogyan figyelheti az eszközök a megoldás gyorsító irányítópultról használhatja. Contoso operátorként szeretné figyelni a hely és a mezőben a teherautók viselkedését.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -30,14 +30,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az irányítópult eszközök szűréséhez
 > * Nézet valós idejű telemetriai adat
 > * Eszköz részleteinek megtekintése
-> * Nézet riasztások adott területen működő eszközök
+> * Az eszközök a riasztások megtekintése
 > * A rendszer a KPI-k megtekintése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez az oktatóanyag van szükség a távoli felügyeleti megoldás telepített példányát az Azure-előfizetésben.
 
-Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [a távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
+Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
 
 ## <a name="choose-the-devices-to-display"></a>Válassza ki az eszközök megjelenítéséhez
 
@@ -57,7 +57,7 @@ Létrehozásához, szerkesztéséhez és szűrők törlése, válassza a **szűr
 
 ## <a name="view-real-time-telemetry"></a>Nézet valós idejű telemetriai adat
 
-Az előkonfigurált megoldás részletes valós idejű telemetriai adatokat a diagramon rajzolja meg a **irányítópult** lap. A telemetriai adatokat a diagram az eszközök, az aktuális szűrőkészlet szerint telemetriai információit jeleníti meg:
+A megoldásgyorsító részletes valós idejű telemetriai adatokat a diagramon rajzolja meg a **irányítópult** lap. A telemetriai adatokat a diagram az eszközök, az aktuális szűrőkészlet szerint telemetriai információit jeleníti meg:
 
 ![Teherautó telemetriai rajzot](media/iot-suite-remote-monitoring-monitor/dashboardtelemetryview.png)
 
@@ -65,29 +65,31 @@ Válassza ki a telemetriai adatok értékeit, megtekintéséhez, a diagram tetej
 
 ![Teherautó telemetriai rajzot](media/iot-suite-remote-monitoring-monitor/dashboardselecttelemetry.png)
 
-Az élő telemetriai megjelenítési szüneteltethető, válassza a **Flowing**. Az élő megjelenítési újbóli engedélyezéséhez válassza **szünet**:
+<!-- 05/01 - this features appears to have been removed
+To pause the live telemetry display, choose **Flowing**. To re-enable the live display, choose **Pause**:
 
-![Szüneteltetése, és indítsa újra a telemetriai adatok megjelenítése](media/iot-suite-remote-monitoring-monitor/dashboardtelemetrypause.png)
+![Pause and restart telemetry display](media/iot-suite-remote-monitoring-monitor/dashboardtelemetrypause.png)-->
 
 ## <a name="use-the-map"></a>A térkép használata
 
 A térkép a szimulált teherautók szerint az aktuális szűrőkészlet információit jeleníti meg. Nagyítás, és több vagy kevesebb részletes helyeket jelenítsen meg a térképen pásztázáshoz. A térképen az eszköz ikonok jelzik bármely **riasztások** vagy **figyelmeztetések** , amelyek aktívak az eszközön. Hány összegzését **riasztások** és **figyelmeztetések** bal oldalán a térképen jeleníti meg.
 
-Az eszköz részletes adatainak megtekintéséhez pásztázáshoz Nagyítás a térképen keresse meg az eszközöket, majd kattintson az eszközre a térképen. A részletek a következők:
+<!-- 05/01 - cannot select a deice on the map
+To view the device details, pan and zoom the map to locate the devices, then click the device on the map. The details include:
 
-* Legutóbbi telemetriai értékek
-* Az eszköz támogatja metódusok
-* Eszköztulajdonságok
+* Recent telemetry values
+* Methods the device supports
+* Device properties
 
-![Az irányítópulton lévő eszközök részleteinek megtekintése](media/iot-suite-remote-monitoring-monitor/dashboarddevicedetail.png)
+![View device details on the dashboard](media/iot-suite-remote-monitoring-monitor/dashboarddevicedetail.png)-->
 
-## <a name="view-alarms-from-your-devices"></a>Nézet riasztások adott területen működő eszközök
+## <a name="view-alerts-from-your-devices"></a>Az eszközök a riasztások megtekintése
 
-A térkép kiemeli az aktuális szűrővel rendelkező eszközök **riasztások** és **figyelmeztetések**. A **rendszer riasztások** panel az eszközökről a legutóbbi riasztás részletes adatait jeleníti meg:
+A térkép kiemeli az aktuális szűrővel rendelkező eszközök **riasztások** és **figyelmeztetések**. A **riasztások** panel az eszközökről a legfrissebb riasztások részletes információit jeleníti meg:
 
-![Az irányítópult nézet rendszer riasztások](media/iot-suite-remote-monitoring-monitor/dashboardsystemalarms.png)
+![Az irányítópult rendszer riasztások megtekintése](media/iot-suite-remote-monitoring-monitor/dashboardsystemalarms.png)
 
-Használhatja a **rendszer riasztások** úgy, hogy a legutóbbi riasztások időtartamának szűrő. Alapértelmezés szerint a panel megjeleníti az elmúlt órában a riasztás:
+Használhatja a **irányítópult** úgy, hogy a legújabb riasztások időtartamának szűrő. Alapértelmezés szerint a panel megjeleníti a riasztások az elmúlt egy óra:
 
 ![A riasztások szűrése idő](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
 
@@ -95,9 +97,9 @@ Használhatja a **rendszer riasztások** úgy, hogy a legutóbbi riasztások id�
 
 A **irányítópult** lap KPI-k system jelenik meg:
 
-![A riasztások szűrése idő](media/iot-suite-remote-monitoring-monitor/dashboardkpis.png)
+![Irányítópult KPI-k](media/iot-suite-remote-monitoring-monitor/dashboardkpis.png)
 
-Használhatja a **rendszer KPI** úgy, hogy a KPI-összesítési időtartamának szűrő. A panel alapértelmezés szerint a KPI-k az elmúlt egy óra alatt összesített értéket jelenít meg.
+Használhatja a **irányítópult** úgy, hogy a KPI-összesítési időtartamának szűrő. A panel alapértelmezés szerint a KPI-k az elmúlt egy óra alatt összesített értéket jelenít meg.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -108,7 +110,7 @@ Ez az oktatóanyag bemutatta, hogyan használható a **irányítópult** lap sz�
 > * Az irányítópult eszközök szűréséhez
 > * Nézet valós idejű telemetriai adat
 > * Eszköz részleteinek megtekintése
-> * Nézet riasztások adott területen működő eszközök
+> * Az eszközök a riasztások megtekintése
 > * A rendszer a KPI-k megtekintése
 
 Most, hogy az eszközök figyelése megtanulhatta,-e a javasolt lépések megtudhatja, hogyan:

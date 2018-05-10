@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 26c77b706f17f49eff782e6d0d73087050739874
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 36d4cd910f841a323dfada49d65f7acb4bdf3138
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-stack-1803-update"></a>Az Azure verem 1803 frissítés
 
@@ -40,8 +40,18 @@ Az Azure verem 1803 frissítés buildszáma **20180329.1**.
 
 
 ### <a name="prerequisites"></a>Előfeltételek
-- Telepítse az Azure-verem [1802 frissítése](azure-stack-update-1802.md) az Azure verem 1803 frissítés alkalmazása előtt.    
+- Telepítse az Azure-verem [1802 frissítése](azure-stack-update-1802.md) az Azure verem 1803 frissítés alkalmazása előtt.   
 
+- Telepítés **AzS gyorsjavítás – 1.0.180312.1-Build 20180222.2** az Azure verem 1803 frissítés alkalmazása előtt. A gyorsjavítás a Windows Defender frissítések, és akkor használható, ha a frissítések letöltése Azure verem.
+
+  Telepítse a gyorsjavítást, hajtsa végre a normál eljárásai [frissítések telepítése Azure verem](azure-stack-apply-updates.md). A frissítés neve jelenik meg **AzS gyorsjavítás – 1.0.180312.1**, és a következő fájlokat tartalmazza: 
+    - PUPackageHotFix_20180222.2-1.exe
+    - PUPackageHotFix_20180222.2-1.bin
+    - Metadata.XML
+
+  Feltöltése után ezeket a fájlokat egy tárfiók és tároló, a felügyeleti portálon frissítés csempén futtatja a telepítést. 
+  
+  Azure verem frissítése, ellentétben a frissítés telepítése nincs hatással Azure verem verzióját. Annak ellenőrzéséhez, hogy a frissítés telepítve van, a lista megtekintése **telepített frissítések**.
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
 - 1803 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).
@@ -130,7 +140,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 
 
-#### <a name="compute"></a>Számítás
+#### <a name="compute"></a>Compute
 - A virtuálisgép-méretezési csoportok skálázási beállításai nem érhetők el a portálon. Áthidaló megoldásként használja [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
 
 - Nyissa meg a portálon beállított rendelkezésre állási létrehozásakor **új** > **számítási** > **rendelkezésre állási csoport**, csak hozhat létre egy rendelkezésre állási csoport egy tartalék tartomány és a frissítési tartomány 1. A probléma megoldásához, amikor egy új virtuális gép létrehozása, hozzon létre a rendelkezésre állási csoportot a powershellel, CLI-t, vagy a portálon.

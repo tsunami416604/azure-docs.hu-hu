@@ -1,5 +1,5 @@
 ---
-title: Blobok feltöltése, listázása és törlése az Azure Storage segítségével a böngészőben JavaScript és HTML használatával
+title: Azure rövid útmutató – Blob létrehozása objektumtárban JavaScript és HTML böngészőben való használatával
 description: Megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat egy BlobService-példánnyal és JavaScripttel egy HTML-oldalon.
 services: storage
 keywords: tároló, javascript, html
@@ -10,23 +10,18 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 83db6539e6ad8ec8e18d99bf7eedbc037d95509e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-with-azure-storage-using-javascripthtml-in-the-browser"></a>Rövid útmutató: Blobok feltöltése, listázása és törlése az Azure Storage segítségével a böngészőben JavaScript/HTML használatával
-Ez a rövid útmutató ismerteti, hogyan kezelheti a blobokat a teljes mértékben a böngészőben futó kódból a szükséges biztonsági intézkedésekkel együtt a Blob Storage-fiók védett hozzáférésének biztosítása érdekében. A rövid útmutató elvégzéséhez szüksége lesz egy [Azure-előfizetésre](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Rövid útmutató: Blobok feltöltése, listázása és törlése a böngészőben JavaScript/HTML használatával
+Ebből a rövid útmutatóból megtudhatja, hogy hogyan kezelheti a blobokat böngészőben futó kóddal. Az itt bemutatott megközelítés szemlélteti a megfelelő biztonsági eszközök használatát is a Blob Storage-fiók biztonságos elérése érdekében. A rövid útmutató elvégzéséhez szüksége lesz egy [Azure-előfizetésre](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
-
-### <a name="copy-security-settings"></a>Biztonsági beállítások másolása
-A rövid útmutató során szüksége lesz néhány biztonsággal kapcsolatos értékre egy biztonsági jogkivonat létrehozásához. A portálról egy szövegszerkesztőbe másolhatja az értékeket későbbi használatra. 
-
-Válassza ki a tárfiókot a portálon, és keresse meg a **Beállítások** szakaszt. A Beállítások területen válassza a **Hozzáférési kulcsok** elemet, és tegye félre a **key1** fejléc alatti **Tárfiók neve** és **Kulcs** értékeket. (A beviteli mező jobb oldalán lévő „másolás” gombbal másolhatja az értéket a vágólapra.)
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Tárfiók CORS-szabályainak beállítása 
 Ahhoz, hogy a webalkalmazás hozzáférhessen a Blob Storage-hez az ügyfélről, a fiókot először úgy kell konfigurálni, hogy lehetővé tegye az [eltérő eredetű erőforrások megosztását](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services), más néven a CORS-t. 
@@ -55,7 +50,7 @@ Ezután az Azure Cloud Shell-lel létrehoz egy biztonsági jogkivonatot.
 ## <a name="create-a-shared-access-signature"></a>Közös hozzáférésű jogosultságkód létrehozása
 A böngészőben futó kód a közös hozzáférésű jogosultságkóddal (SAS) hitelesíti a Blob Storage-ba érkező kéréseket. Az SAS használatával az ügyfél a fiók hozzáférési kulcsa vagy kapcsolati karakterlánca nélkül végezhet hitelesítést. Az SAS-sel kapcsolatos további információkat a [közös hozzáférésű jogosultságkód (SAS) használatát ismertető](../common/storage-dotnet-shared-access-signature-part-1.md) cikkben olvashat.
 
-Létrehozhat egy SAS-t az Azure CLI használatával az Azure Cloud Shellen keresztül. A következő tábla azon paramétereket sorolja fel, amelyek értékét meg kell adni SAS létrehozása érdekében.
+Létrehozhat egy SAS-t az Azure CLI használatával az Azure Cloud Shellen keresztül vagy az Azure Storage Explorerrel. A következő tábla azon paramétereket sorolja fel, amelyek értékét meg kell adnia SAS CLI-vel való létrehozásakor.
 
 | Paraméter      |Leírás  | Helyőrző |
 |----------------|-------------|-------------|
@@ -93,7 +88,7 @@ Most, hogy létrejött az SAS, másolja a konzolban visszaadott értéket a szö
 ## <a name="implement-the-html-page"></a>A HTML-oldal implementálása
 
 ### <a name="set-up-the-web-application"></a>A webalkalmazás beállítása
-Az Azure Storage JavaScript-ügyfélkódtárai nem működnek közvetlenül a fájlrendszerből, és ezeket webkiszolgálónak kell kiszolgálnia. Ezért a következő lépések bemutatják, hogyan használható az egyszerű helyi webkiszolgáló Node.js-el.
+Az Azure Storage JavaScript-ügyfélkódtárai nem működnek közvetlenül a fájlrendszerből, és ezeket webkiszolgálónak kell kiszolgálnia. Ezért a következő lépések bemutatják, hogyan használhat egy egyszerű helyi webkiszolgálót Node.js-el.
 
 > [!NOTE]
 > Ez a szakasz ismerteti, hogyan hozhat létre olyan helyi webkiszolgálót, amelyhez a Node.js-nek telepítve kell lennie a gépen. Ha nem szeretné telepíteni a Node.js-t, más módon futtathat helyi webkiszolgálót.
@@ -121,7 +116,7 @@ Végül a parancssorba írja be az `npm start` parancsot a webkiszolgáló elind
 npm start
 ```
 
-### <a name="get-the-blob-storage-client-scripts"></a>A Blob Storage-ügyfélszkriptek lekérése
+### <a name="get-the-blob-storage-client-library"></a>A Blob Storage-ügyfélkódtár beszerzése
 [Töltse le a JavaScript-ügyfélkódtárakat](https://aka.ms/downloadazurestoragejs), bontsa ki a zip tartalmát, és helyezze a *bundle* mappában lévő szkriptfájlokat a *scripts* mappába.
 
 ### <a name="add-the-client-script-reference-to-the-page"></a>Az ügyfél szkriptreferenciájának hozzáadása az oldalhoz
@@ -153,7 +148,7 @@ A kód a következőket adja hozzá az oldalhoz:
 - fájlok feltöltéséhez használható *INPUT* elem
 - tárolóval kapcsolatos kód helyőrzője
 
-### <a name="create-a-blob-service"></a>Blob szolgáltatás létrehozása 
+### <a name="create-an-instance-of-blobservice"></a>BlobService-példány létrehozása 
 A [Blob szolgáltatás](https://azure.github.io/azure-storage-node/BlobService.html) csatlakozást biztosít az Azure Blob Storage-hoz. A szolgáltatás egy példányának létrehozásához meg kell adnia a tárfiók nevét és a korábbi lépésben létrehozott SAS-t.
 
 ```javascript
@@ -184,7 +179,7 @@ document.getElementById('create-button').addEventListener('click', () => {
 ```
 
 ### <a name="upload-a-blob"></a>Blob feltöltése
-Ha HTML formátumból szeretne blobot feltölteni, először a kiválasztott fájl hivatkozását kapja meg egy *INPUT* elem `files` tömbjén keresztül, amelynek *típusa* *fájl*.
+Ha HTML-űrlapból kíván blobot feltölteni, be kell szereznie a választott fájl hivatkozását egy *INPUT* elemből. A választott fájl a `files` tömbben érhető el az olyan elemeknél, amelyek *type* tulajdonsága a *file* értékre van állítva.
 
 A szkriptből hivatkozhat a HTML-elemre, és átadhatja a kiválasztott fájlt a Blob szolgáltatásba.
 
@@ -227,6 +222,9 @@ document.getElementById('list-button').addEventListener('click', () => {
     
 });
 ```
+
+A *listBlobsSegmented* metódus visszaadja a blobok gyűjteményét. A gyűjtemény alapértelmezés szerint 5000 blobot tartalmaz, de ezt az értéket testreszabhatja az igényeinek megfelelően. A [folytatásos mintakód](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js#L132) bemutatja, hogyan dolgozhat nagyszámú blobbal, és hogy az ügyfélkódtár miként támogatja a lapozást. 
+
 
 ### <a name="delete-blobs"></a>Blobok törlése
 A [deleteBlobIfExists](https://azure.github.io/azure-storage-node/BlobService.html#deleteBlobIfExists__anchor) meghívásával törölheti a feltöltött blobot.

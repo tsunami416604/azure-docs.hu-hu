@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: iainfou
-ms.openlocfilehash: f174837b8d370ffabdf4148b18d3425d9f3d9f10
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e06db46d5e1d7862f7b47b75e38d0b10df628f48
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows virtuális gép képek létrehozása az Azure-ban a csomagoló segítségével
 Minden virtuális gép (VM) az Azure-ban, amely meghatározza a Windows terjesztési és az operációs rendszer verziója lemezkép jön létre. Lemezképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactéren sok első és a külső képek biztosít a leggyakrabban használt operációs rendszer, és alkalmazás környezetekben, vagy a saját egyéni lemezképek igényeinek igazított hozhat létre. Ez a cikk részletesen a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
@@ -27,7 +27,7 @@ Minden virtuális gép (VM) az Azure-ban, amely meghatározza a Windows terjeszt
 ## <a name="create-azure-resource-group"></a>Azure erőforráscsoport létrehozása
 A létrehozási folyamat során a csomagoló ideiglenes Azure-erőforrások létrehozza a, a forrás Virtuálisgép-buildekről nyújtanak. A forrás virtuális gép képként rögzíti, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport tárolja a csomagoló felépítési folyamat kimenetét.
 
-Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -221,6 +221,8 @@ New-AzureRmVm `
     -OpenPorts 80 `
     -Image "myPackerImage"
 ```
+
+Ha létrehozott egy virtuális gépet egy másik erőforráscsoportban található vagy a régió, mint a csomagoló lemezkép, adja meg a lemezkép neve helyett a lemezkép-Azonosítót. Ezt úgy szerezheti be a lemezkép-Azonosítót a [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
 
 A csomagoló lemezképből a virtuális gép létrehozásához néhány percet vesz igénybe.
 

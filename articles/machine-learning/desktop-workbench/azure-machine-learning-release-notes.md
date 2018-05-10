@@ -9,21 +9,32 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: e30943426ad68171e1464f828a9c8672b06c975a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Az Azure Machine Learning újdonságai
 
-Ebből a cikkből megtudhatja, az új verziókról [Azure Machine Learning szolgáltatás](../service/overview-what-is-azure-ml.md). 
+Ebből a cikkből megtudhatja, az új verziókról [Azure Machine Learning](../service/overview-what-is-azure-ml.md). 
+
+
+## <a name="2018-05-sprint-5"></a>2018-05 (sprint 5)
+
+Ebben a kiadásban az Azure Machine Learning segítségével:
++ Featurize képek ResNet 50 quantized verziójával betanítása besorolás alapján ezeket a szolgáltatásokat, és [, hogy a modell rendszerbe állítása egy Azure FPGA](../service/how-to-deploy-fpga-web-service.md) az egészen kis késleltetésű inferencing.
+
++ Gyorsan és és üzembe magas pontos gépi tanulás használatával mély tanulási modellek [egyéni Azure Machine Learning csomagok](../service/reference-python-package-overview.md) a következő tartományban:
+  + [Számítógép stratégiai](../service/how-to-build-deploy-image-classification-models.md)
+  + [Szövegelemzés](../service/how-to-build-deploy-text-classification-models.md)
+  + [Az előrejelzés](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03 (sprint 4)
 **Verziószám**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([találnia, amelynek a](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 
-Üdvözli az Azure Machine Learning-munkaterület ötödik frissítést. A következő frissítéseket számos visszajelzése közvetlen eredményeként történik. Adjon válaszadás hamarosan!
+A következő frissítéseket számos visszajelzése közvetlen eredményeként történik. Adjon válaszadás hamarosan!
 
 **Fontos új funkciók és módosítások**
 

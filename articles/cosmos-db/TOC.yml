@@ -80,6 +80,8 @@ items:
         href: unique-keys.md
       - name: Kiszolgáló nélküli adatbázis
         href: serverless-computing-database.md
+      - name: A BulkExecutor áttekintése
+        href: bulk-executor-overview.md
       - name: Biztonság
         href: database-security.md
         items:
@@ -87,8 +89,6 @@ items:
             href: database-encryption-at-rest.md
           - name: Az adathozzáférés biztonságossá tétele
             href: secure-access-to-data.md
-      - name: Teljes birtoklási költség
-        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: Használati esetek
         href: use-cases.md
         items:
@@ -171,6 +171,10 @@ items:
                 href: multi-region-writers.md
           - name: Útmutatók
             items:
+              - name: BulkExecutor – .NET
+                href: bulk-executor-dot-net.md
+              - name: BulkExecutor – Java
+                href: bulk-executor-java.md
               - name: Lekérdezés
                 items:
                   - name: SQL-lekérdezések végrehajtása
@@ -247,6 +251,10 @@ items:
                 href: sql-api-sdk-node.md
               - name: Python
                 href: sql-api-sdk-python.md
+              - name: BulkExecutor – .NET
+                href: sql-api-sdk-bulk-executor-dot-net.md
+              - name: BulkExecutor – Java
+                href: sql-api-sdk-bulk-executor-java.md
               - name: REST
                 href: /rest/api/cosmos-db/
               - name: REST erőforrás-szolgáltató
@@ -257,8 +265,6 @@ items:
             items:
               - name: Visual Studio Code-bővítmény
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-              - name: Tanulmány a sémafüggetlen indexelésről
-                href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
               - name: SQL-játszótér
                 href: 'https://aka.ms/cosmos-db-playground'
       - name: MongoDB API-dokumentumok
@@ -433,6 +439,8 @@ items:
         href: set-throughput.md
       - name: Tűzfaltámogatás
         href: firewall-support.md
+      - name: Virtuális hálózati szolgáltatásvégpont beállítása
+        href: vnet-service-endpoint.md
       - name: Mérőszámok
         href: use-metrics.md
       - name: SLA-k figyelése
@@ -465,3 +473,5 @@ items:
         href: faq.md
       - name: Az adatkonzisztencia magyarázata a baseball példáján
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+      - name: Tanulmányok
+        href: whitepapers.md

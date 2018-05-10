@@ -1,25 +1,23 @@
 ---
-title: "Zónázással biztosítson hozzáférést a Privileged Identity Management - Azure hogyan |} Microsoft Docs"
-description: "Útmutató: a szerepkörök hozzáadása az Azure Active Directory Privileged Identity Management bővítmény rendelkező felhasználók részére, így a PIM kezelésére."
+title: Zónázással biztosítson hozzáférést a Privileged Identity Management - Azure hogyan |} Microsoft Docs
+description: 'Útmutató: a szerepkörök hozzáadása az Azure Active Directory Privileged Identity Management bővítmény rendelkező felhasználók részére, így a PIM kezelésére.'
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: d4c53b53-2b37-41e6-813c-96ec08a1c897
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 39caeef2648730194827e04e020d8eaea5414f4f
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: f7e08e35ce4575715a72b0880d038ce0db766b66
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Adjon hozzáférést a Azure AD Privileged Identity Management kezelésére
 A globális rendszergazda Azure AD Privileged Identity Management (PIM) egy olyan szervezet automatikusan lehetővé teszi, hogy le a szerepkör-hozzárendelések és a PIM elérésére. Más írási hozzáféréssel alapértelmezés szerint kap, azonban más globális rendszergazdákat is. Más globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók rendelkezik az Azure AD PIM olvasási hozzáférést. A hozzáférésének PIM, az első felhasználó rendelhet másoknak a **kiemelt szerepkörű rendszergazda** szerepkör. Ehhez a hozzárendeléshez maga PIM belül kell végrehajtani, és a PowerShell vagy más portálokon keresztül nem módosítható.

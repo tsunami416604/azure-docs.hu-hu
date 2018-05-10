@@ -1,26 +1,24 @@
 ---
-title: "Csoportok használata az Azure Active Directoryban erőforrásokhoz való hozzáférés kezelése |} Microsoft Docs"
-description: "Hogyan csoportok használata az Azure Active Directoryban felügyelheti a felhasználók hozzáférését a helyszíni és felhőalapú alkalmazásokhoz és erőforrásokhoz."
+title: Csoportok használata az Azure Active Directoryban erőforrásokhoz való hozzáférés kezelése |} Microsoft Docs
+description: Hogyan csoportok használata az Azure Active Directoryban felügyelheti a felhasználók hozzáférését a helyszíni és felhőalapú alkalmazásokhoz és erőforrásokhoz.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 714120d0-cdf9-465d-afee-39bef591c6b3
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: aaccc501526d313a572692ff8f2f5c9da38849d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ef218abb1bef4a51880187fb5764cebfb40afadd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Az Azure Active Directoryval erőforrásokhoz való hozzáférés kezelése
 Azure Active Directory (Azure AD) egy átfogó identitás- és hozzáférés felügyeleti megoldás, amely egy robusztus több funkciót biztosít hozzáférést a helyszíni és felhőalapú alkalmazásokhoz és erőforrásokhoz, beleértve az Office 365-höz hasonló Microsoft online szolgáltatások kezelése és egy a globális Microsoft SaaS-alkalmazásokhoz. Ez a cikk áttekintést nyújt, de ha Elindítja most csoportosítja az Azure AD, kövesse az utasításokat a [biztonsági csoportok kezelése az Azure AD](active-directory-groups-create-azure-portal.md). Ha meg szeretné tekinteni, hogyan használhatja PowerShell kezelése az Azure Active Directoryban további a [eszközcsoport-kezelés Azure Active Directory-parancsmagjai](active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
@@ -72,7 +70,7 @@ Próbálja ki. Használja ki az Azure AD-csoportok elvégezhető alapvető felad
 * [Egy helyi csoport az Azure-bA az Azure AD Connect használatával szinkronizálása](active-directory-aadconnect.md)
 * [Egy csoport tulajdonosainak kezelése](active-directory-accessmanagement-managing-group-owners.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy a kezelési alapjait rendelkezik megértését, az alábbiakban néhány további speciális funkciókat az Azure Active Directoryban érhető el az alkalmazások és az erőforrásokhoz való hozzáférés.
 
 * [Attribútumok használata speciális szabályok létrehozásához](active-directory-groups-dynamic-membership-azure-portal.md)

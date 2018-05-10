@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: aa24c3197af28101b2f3a0acda6d0ae81b9e96d5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5545b2e40777496ab8c808a8c2692b346d3509c5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Csatlakozás Azure SQL adatbázis Azure Search használatával az indexelők
 
@@ -50,7 +50,7 @@ Attól függően, hogy az adatok vonatkozó számos tényező az Azure SQL index
 |----------|---------|
 | Egyetlen tábla vagy nézet származik adatok | Ha az adatok több tábla van tárolja, az adatok egyetlen nézetben is létrehozhat. Azonban ha egy nézetben sem lesz integrált SQL Server-címváltozásának felderítését segítségével frissítse egy index ugyanezzel a növekményes változásokat. További információkért lásd: [rögzítése módosított és törölt sorok](#CaptureChangedRows) alatt. |
 | Adattípusok kompatibilisek. | Nem minden a SQL típusok támogatottak az Azure Search-index. Az útmutató, [adattípusok leképezési](#TypeMapping). |
-| Nincs szükség a valós idejű adatok szinkronizálása | Az indexelő indexelheti újra a tábla legfeljebb 5 perc. Ha az adatok gyakran változnak, és a változások figyelembe kell venni az indexben vagy egyetlen perceken belül, azt javasoljuk, a [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) vagy [.NET SDK](search-import-data-dotnet.md) frissített sorok leküldéses közvetlenül. |
+| Nincs szükség a valós idejű adatok szinkronizálása | Az indexelő legfeljebb 5 percenként is újraindexelése a táblában. Ha az adatok gyakran változnak, és a változások figyelembe kell venni az indexben vagy egyetlen perceken belül, azt javasoljuk, a [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) vagy [.NET SDK](search-import-data-dotnet.md) frissített sorok leküldéses közvetlenül. |
 | Növekményes indexelő lehetőség | Ha egy nagy adatkészlet és a terv az indexelő ütemezés szerint futtatni, Azure Search lehet hatékonyan tudja azonosítani az új, módosított vagy törölt sor kell lennie. Nem növekményes indexelő csak engedélyezett, ha az igény szerinti (nem a ütemezés) indexelő, vagy kevesebb, mint 100 000 sor indexelése. További információkért lásd: [rögzítése módosított és törölt sorok](#CaptureChangedRows) alatt. |
 
 > [!NOTE] 
@@ -178,7 +178,7 @@ Hozzáadása, módosítása, vagy törölje a meglévő indexelőt ütemezésén
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>Új, módosított és törölt sorok rögzítése
 
-Használja az Azure Search **növekményes indexelő** kívánja kerülni indexelik újra a teljes táblázathoz, vagy minden alkalommal, amikor az indexelő futása megtekintéséhez. Az Azure Search biztosít két észlelési szabályzatok támogatja a növekményes indexelő módosítása. 
+Használja az Azure Search **növekményes indexelő** kívánja kerülni a teljes táblázat újraindexelése, vagy minden alkalommal, amikor az indexelő futása megtekintéséhez. Az Azure Search biztosít két észlelési szabályzatok támogatja a növekményes indexelő módosítása. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Az SQL integrált változáskövetési házirend
 Ha az SQL-adatbázis támogatja [a változáskövetés](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), azt javasoljuk, **SQL integrált módosítása követési házirend**. Ez egy, a leghatékonyabb házirend. Emellett lehetővé teszi a Azure Search törölt soraihoz azonosításához anélkül, hogy egy explicit "helyreállítható törlésre" oszlop hozzáadása a táblához.

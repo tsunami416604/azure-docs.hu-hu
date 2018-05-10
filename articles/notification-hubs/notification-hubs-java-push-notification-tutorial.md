@@ -1,29 +1,29 @@
 ---
-title: "A Notification Hubs használata Java"
-description: "Megtudhatja, hogyan használja a Azure Notification Hubs from Java háttér."
+title: A Notification Hubs használata Java
+description: Megtudhatja, hogyan használja a Azure Notification Hubs from Java háttér.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 4c3f966d-0158-4a48-b949-9fa3666cb7e4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: java
 ms.devlang: java
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 41f978750ddef9f7e878c65b0017e909720154aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 88e3ab3cc03cc1e760672120bc5c484af1ba4722
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Notification Hubs Java használatával
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Ez a témakör ismerteti a kulcsfontosságú szolgáltatásokat az új teljes mértékben támogatott hivatalos Azure Notification Hub Java SDK. Ez egy nyílt forráskódú projektként, és megtekintheti a teljes SDK kódot [Java SDK]. 
+Ez a témakör ismerteti a kulcsfontosságú szolgáltatásokat az új teljes mértékben támogatott hivatalos Azure Notification Hub Java SDK. Ebben a projektben egy nyílt forráskódú projektet, és megtekintheti a teljes SDK kódot [Java SDK]. 
 
 Általában elérhető összes értesítési központok szolgáltatás egy Java/PHP/Python vagy Ruby-háttér használata a Notification Hub REST interfész, az MSDN-témakörben leírtak szerint [Notification hub REST API-k](http://msdn.microsoft.com/library/dn223264.aspx). A Java SDK kínál egy vékony Java nyelven, a többi kapcsolatokon. 
 
@@ -102,7 +102,7 @@ Hasonlóképpen regisztrációk hozhat létre Android (GCM), a Windows Phone (MP
     reg.getHeaders().put("X-WNS-Type", "wns/toast");
     hub.createRegistration(reg);
 
-**A regisztrálás létrehozása registrationid + upsert létre minta**
+**A regisztrálás létrehozása regisztrációs Azonosítót + upsert létre minta**
 
 Eltávolítja az ismétlődő elveszett válaszokat miatt, ha az eszközön lévő regisztrációs azonosítók tárolására:
 
@@ -122,23 +122,27 @@ Eltávolítja az ismétlődő elveszett válaszokat miatt, ha az eszközön lév
 
 * **Egyetlen regisztrációs beolvasása:**
   
-    hub.getRegistration(regid);
+        hub.getRegistration(regid);
+
 * **Minden regisztrációk központban érhető el:**
   
-    hub.getRegistrations();
+        hub.getRegistrations();
+
 * **Töltse le a regisztrációk címkével:**
   
-    hub.getRegistrationsByTag("myTag");
+        hub.getRegistrationsByTag("myTag");
+
 * **Töltse le a regisztrációk csatornánként:**
   
-    hub.getRegistrationsByChannel("devicetoken");
+        hub.getRegistrationsByChannel("devicetoken");
+
 
 Az összes lekérdezés $top és folytatási jogkivonatokat támogatja.
 
 ### <a name="installation-api-usage"></a>Telepítési API használata
-Telepítés API alternatív módszereket a regisztrációs felügyeleti. Helyett karbantartása több regisztrációk, amelyet a rendszer nem triviális könnyen tehetik tévesen vagy töredezetté, akkor most lehet egyetlen telepítés objektummal. Telepítés tartalmaz mindent, amire szüksége: csatorna (eszköz jogkivonatát), a címkéket, a sablonok, a másodlagos csempék leküldéses (a wns-ből és APNS). Meghívja a szolgáltatást azonosító már - csak GUID vagy bármely más azonosító létrehozása, eszközön legyen, és küldhet leküldéses csatorna (eszköz jogkivonatát) és a háttérkiszolgáló nem kell. A háttérkiszolgálón csak akkor tegye a hívást: CreateOrUpdateInstallation, teljes mértékben idempotent, ezért úgy, hogy szükség esetén próbálja meg újra.
+Telepítés API alternatív módszereket a regisztrációs felügyeleti. Helyett karbantartása több regisztrációk, amelyeket a rendszer nem triviális könnyen tehetik tévesen vagy töredezetté, akkor most lehet egyetlen telepítés objektummal. Telepítés tartalmaz mindent, amire szüksége: csatorna (eszköz jogkivonatát), a címkéket, a sablonok, a másodlagos csempék leküldéses (a wns-ből és APNS). Meghívja a szolgáltatást azonosító már - csak GUID vagy bármely más azonosító létrehozása, eszközön legyen, és küldhet leküldéses csatorna (eszköz jogkivonatát) és a háttérkiszolgáló nem kell. A háttérkiszolgálón csak akkor tegye a hívást: CreateOrUpdateInstallation, teljes mértékben idempotent, ezért úgy, hogy szükség esetén próbálja meg újra.
 
-Az Amazon Kindle tűz példaként néz ki:
+Az Amazon Kindle tűz példaként:
 
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
@@ -150,7 +154,7 @@ Ha szeretné a frissítést:
     installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
     hub.createOrUpdateInstallation(installation);
 
-Ha speciális célú tudunk részleges frissítési funkció, amely lehetővé teszi, hogy a telepítési objektum csak adott tulajdonságainak módosítása. Alapvetően részleges update egy részhalmazát JSON javítási műveletek telepítési objektum is futtathatók.
+Speciális forgatókönyvek esetén használja a részleges frissítési funkció, amely lehetővé teszi, hogy a telepítési objektum csak adott tulajdonságainak módosítása. Részleges update egy részhalmazát JSON javítási műveletek telepítési objektum is futtathatók.
 
     PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
     PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
@@ -161,9 +165,9 @@ Telepítés törléséhez:
 
     hub.deleteInstallation(installation.getInstallationId());
 
-CreateOrUpdate, a javítás és a Delete idővel konzisztenssé váljanak a Get. A kért művelet csak a hívás során a rendszer várólistára kerül, és végrehajtja a háttérben. Vegye figyelembe, hogy a fő futásidejű forgatókönyv, de csak a Hibakeresés és hibaelhárítás céljából nem arra terveztük, Get, a szolgáltatás szorosan leszabályozza.
+CreateOrUpdate, a javítás és a Delete nincs idővel konzisztenssé váljanak a Get. A kért művelet csak a hívás során a rendszer várólistára kerül, és a háttérben végrehajtása. Get nem arra terveztük fő futásidejű forgatókönyvhöz, de csak a Hibakeresés és hibaelhárítás céljából az szorosan folyamatban van a szolgáltatás.
 
-Küldési telepítés folyamatábrája ugyanaz, mint a regisztráció. Jelenleg már csak rendszerben jelent meg, hogyan szeretné megcélozni értesítést a telepítési – csak használja a címke "végrehajtott: {szükségeskonfiguráció-azonosító}". A fenti esetben azt néz ki:
+Küldési telepítés folyamatábrája ugyanaz, mint a regisztráció. Értesítést az adott telepítési cél-címke használja "végrehajtott: {szükségeskonfiguráció-azonosító}". Ebben az esetben a kód a következő:
 
     Notification n = Notification.createWindowsNotification("WNS body");
     hub.sendNotification(n, "InstallationId:{installation-id}");
@@ -186,7 +190,7 @@ Azonos rendszeres küldési megegyezik, azonban egy további paraméter - schedu
     hub.scheduleNotification(n, c.getTime());
 
 ### <a name="importexport-available-for-standard-tier"></a>Importálási/exportálási (STANDARD csomagban érhető el)
-Néha regisztrációk tömeges művelet végrehajtásához van szükség. Általában egy másik rendszeren való integrációra van, vagy csak egy nagy mondja ki a javítást a címkék frissítése. Nem erősen ajánlott a Get-/ frissítési folyamat használatára, ha azt regisztrációk ezer vannak van szó. Importálási/exportálási képesség célja, hogy a forgatókönyv foglalkozik. Alapvetően egy hozzáférést szeretne biztosítani néhány blob tároló a tárfiók a bejövő adatok és a kimeneti helyet forrásként.
+Néha regisztrációk tömeges művelet végrehajtásához van szükség. Általában egy másik rendszeren való integrációra van, vagy csak egy nagy mondja ki a javítást a címkék frissítése. Nem ajánlott a Get-/ frissítési folyamat használatára, ha a regisztrációk ezer van szó. Importálási/exportálási képesség célja, hogy a forgatókönyv foglalkozik. Alapvetően egy hozzáférést szeretne biztosítani néhány blob tároló a tárfiók a bejövő adatok és a kimeneti helyet forrásként.
 
 **Exportálási feladat elküldése:**
 
@@ -217,7 +221,7 @@ Néha regisztrációk tömeges művelet végrehajtásához van szükség. Által
 
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**SAS-aláírással rendelkező URI:** Ez az egyes blob fájl vagy a blob tároló URL-CÍMÉT, valamint paraméterkészletet például engedélyek és a lejárati idő és a fiókhoz tartozó SAS-kulcs használatával létrehozott összes lépést aláírás. Az Azure Storage Java SDK rendelkezik sokoldalú képességeit, beleértve az ilyen típusú URI-azonosítók létrehozását. Egyszerű alternatív ImportExportE2E teszt osztály (helyről a githubon) amely aláírási algoritmus nagyon egyszerű és kompakt végrehajtásának egy pillantást is igénybe vehet.
+**SAS-aláírással rendelkező URI:** Ez az URL néhány blob fájl vagy a blob tároló URL-CÍMÉT, valamint paraméterkészletet például engedélyek és a lejárati idő és a fiókhoz tartozó SAS-kulcs használatával létrehozott összes lépést aláírás. Az Azure Storage Java SDK rendelkezik sokoldalú képességeit, beleértve az ilyen típusú URI-azonosítók létrehozását. Egyszerű alternatív ImportExportE2E teszt osztály (helyről a githubon) amely aláírási algoritmus alapvető és kompakt végrehajtásának egy pillantást is igénybe vehet.
 
 ### <a name="send-notifications"></a>Értesítések küldése
 Az értesítési objektum nagyon egyszerűen a fejlécek törzs, néhány segédprogram-metódusokat a natív és a sablon értesítések objektumok létrehozásakor.
@@ -271,8 +275,8 @@ Az értesítési objektum nagyon egyszerűen a fejlécek törzs, néhány segéd
 
 A Java kódja most kell előállítania egy értesítés jelenik meg a céleszközön.
 
-## <a name="next-steps"></a>Következő lépések
-Ebben a témakörben azt bemutatta, hogyan hozhat létre egy egyszerű Java REST-ügyfél a Notification Hubs. Itt a következőket teheti:
+## <a name="next-steps"></a>További lépések
+Ez a témakör egy egyszerű Java REST ügyfélbeállítások a Notification Hubs bemutatta. Itt a következőket teheti:
 
 * Töltse le a teljes [Java SDK], amely tartalmazza a teljes SDK kódot. 
 * A mintákkal lejátszása:

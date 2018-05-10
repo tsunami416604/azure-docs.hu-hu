@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 1da2b6568125c61db2c4dda3bd81abb8f1a59ec7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fbea3d4b6bb82ac002550434d737f27c441d439e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
 
@@ -47,9 +47,9 @@ A Service Bus jelenleg két forgatókönyvhöz küld eseményeket.
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * [DeadletterMessagesAvailable](#dead-lettered-messages-available-event)
 
-Emellett a Service Bus a standard Event Grid biztonsági és [hitelesítési mechanizmusokat](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication) használja.
+Emellett a Service Bus a standard Event Grid biztonsági és [hitelesítési mechanizmusokat](https://docs.microsoft.com/azure/event-grid/security-authentication) használja.
 
-További információk: [Azure Event Grid-eseménysémák](https://docs.microsoft.com/en-us/azure/event-grid/event-schema).
+További információk: [Azure Event Grid-eseménysémák](https://docs.microsoft.com/azure/event-grid/event-schema).
 
 #### <a name="active-messages-available-event"></a>Elérhető aktív üzenetek esemény
 
@@ -138,7 +138,7 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 
 ## <a name="azure-cli-instructions"></a>Azure CLI utasítások
 
-Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). Nyomja le a **Windows + X** billentyűkombinációt, és nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
+Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Nyomja le a **Windows + X** billentyűkombinációt, és nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
 
 Hajtsa végre a következő kódot:
 
@@ -154,7 +154,7 @@ az eventgrid event-subscription create --resource-id $namespaceid --name “<YOU
 
 ## <a name="powershell-instructions"></a>PowerShell-utasítások
 
-Győződjön meg róla, hogy telepítve van az Azure PowerShell. [Töltse le a telepítőt](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.4.0). Nyomja le a **Windows + X** billentyűkombinációt, és nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
+Győződjön meg róla, hogy telepítve van az Azure PowerShell. [Töltse le a telepítőt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.4.0). Nyomja le a **Windows + X** billentyűkombinációt, és nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
 
 ```PowerShell-interactive
 Connect-AzureRmAccount
@@ -175,10 +175,10 @@ Innen felfedezheti a többi beállítási lehetőséget, vagy [tesztelheti az es
 ## <a name="next-steps"></a>További lépések
 
 * Service Bus és Event Grid [példák](service-bus-to-event-grid-integration-example.md) megtekintése.
-* További tudnivalók az [Event Grid](https://docs.microsoft.com/en-us/azure/azure-functions/) szolgáltatásról.
-* További tudnivalók az [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/) szolgáltatásról.
-* További tudnivalók a [Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/) szolgáltatásról
-* További tudnivalók a [Service Bus](https://docs.microsoft.com/en-us/azure/azure-functions/) szolgáltatásról.
+* További tudnivalók az [Event Grid](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.
+* További tudnivalók az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.
+* További tudnivalók a [Logic Apps](https://docs.microsoft.com/azure/logic-apps/) szolgáltatásról
+* További tudnivalók a [Service Bus](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

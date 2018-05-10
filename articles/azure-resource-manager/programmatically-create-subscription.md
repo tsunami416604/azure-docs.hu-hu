@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2018
 ms.author: jlian
-ms.openlocfilehash: 8d1eb3229f22b2da3a356562250fedb3c35c4816
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f55f878d53b3813ea2ff2510998d47820de76a6a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programozott módon létrehozása az Azure vállalati előfizetések (előzetes verzió)
 
@@ -49,7 +49,7 @@ Az Azure EA tagság fiók tulajdonos van hozzá, Azure fiókregisztrálást kapc
 - Rendelkezik egy vagy több EA vagy EA fejlesztési és tesztelési célú előfizetés, ami azt jelenti, hogy Ön már állapotba keresztül előfizetési manuális legalább egyszer
 - Jelentkezett be a fiók tulajdonosának *kezdőkönyvtár*, amely az, hogy a könyvtár, előfizetések alapértelmezés szerint létrehozott
 
-A fenti két feltétel teljesülése esetén egy `enrollmentAccount` erőforrás ad vissza, és az adott fiók előfizetések létrehozásához. A fiók alatt létrehozott összes előfizetés számlázása a Nagyvállalati beléptetés, amely a fiók felé.
+A fenti három feltétel teljesülése esetén egy `enrollmentAccount` erőforrás ad vissza, és az adott fiók előfizetések létrehozásához. A fiók alatt létrehozott összes előfizetés számlázása a Nagyvállalati beléptetés, amely a fiók felé.
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 

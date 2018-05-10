@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4db14bc250bf9d6740380f3c4376f43d6f315b01
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 390559922b3b8fb293d1c8b38f36dfd0a1df9ebd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>A Microsoft Graph API meghívása egy univerzális Windows Platform (UWP) alkalmazásból
 
-Ez az útmutató ismerteti, hogyan egy natív univerzális Windows Platform (XAML) alkalmazás szereznie egy hozzáférési jogkivonatot és a hozzáférés toke használatával hívható meg Microsoft Graph API vagy egyéb Azure Active Directory v2 végpont a hozzáférési jogkivonatok igénylő API-k.
+Ez az útmutató ismerteti, hogyan egy natív univerzális Windows Platform (XAML) alkalmazás szereznie egy hozzáférési jogkivonatot és a hozzáférési jogkivonat használatával hívható meg Microsoft Graph API vagy egyéb Azure Active Directory v2 végpont a hozzáférési jogkivonatok igénylő API-k.
 
 Ez az útmutató végén az alkalmazás fogja tudni hívható meg egy védett API használatával személyes fiókok (például outlook.com, live.com és mások) valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely Azure Active Directory.  
 
@@ -33,7 +33,7 @@ Ez az útmutató végén az alkalmazás fogja tudni hívható meg egy védett AP
 
 ![Ez az útmutató működése](media/active-directory-mobileanddesktopapp-windowsuniversalplatform-introduction/uwp-intro.png)
 
-Ez az útmutató által létrehozott mintaalkalmazás lehetővé teszi, hogy egy univerzális Windows Platform-alkalmazást a Microsoft Graph API vagy egy webes API, amely az Azure Active Directory v2 végpont jogkivonatokat fogad el. Ebben az esetben jogkivonat adni a hitelesítési fejlécéhez via HTTP-kérelmekre. Token beszerzése és -megújítás kezelése a Microsoft hitelesítési könyvtár (MSAL).
+Ez az útmutató által létrehozott mintaalkalmazás lehetővé teszi, hogy egy UWP-alkalmazást Microsoft Graph API vagy egy webes API, amely az Azure Active Directory v2 végpont származó jogkivonatokat fogad el. Ebben az esetben jogkivonat adni a hitelesítési fejlécéhez via HTTP-kérelmekre. Token kérése és megújításokat kezelése a Microsoft hitelesítési könyvtár (MSAL).
 
 ### <a name="nuget-packages"></a>NuGet-csomagok
 
@@ -46,9 +46,9 @@ Ez az útmutató a következő NuGet-csomagok használja:
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ez a szakasz részletesen arról, hogyan hozzon létre egy új projektet bemutatják, hogyan integrálhatja a Windows asztali .NET-alkalmazás (XAML) rendelkező *jelentkezzen be Microsoft* azt lekérdezhesse jogkivonat igénylő webes API-k.
+Ez a témakör részletes útmutatást ad a Windows asztali .NET-alkalmazás (XAML) integrálása a *jelentkezzen be Microsoft* azt lekérdezhesse a webes API-k jogkivonatot, például a Microsoft Graph API szükséges.
 
-Ez az útmutató által létrehozott alkalmazás közzététele egy diagramot és az eredmények képernyőn és kijelentkezési gomb megjelenítése gombra.
+Ez az útmutató által létrehozott alkalmazás lekérdezése a Graph API-val, a Kijelentkezés gombra, és a hívások eredményének megjelenítése szövegmezők szolgáló gomb jeleníti meg.
 
 > Ez a minta Visual Studio-projekt letöltése helyette inkább? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip) és ugorjon a [regisztrációja](#register-your-application "alkalmazás regisztrációs lépésében") lépéssel konfigurálhatja a kódminta végrehajtása előtt.
 
@@ -61,7 +61,7 @@ Ez az útmutató által létrehozott alkalmazás közzététele egy diagramot é
 5. Ha a rendszer kéri, válassza ki az összes verziót szabad csökkent *cél* és *minimális* verziót, és kattintson az "Ok" gombra:<br/><br/>![Minimális és a cél-verziók](media/active-directory-uwp-v2.md/vs-minimum-target.png)
 
 ## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>A Microsoft hitelesítési könyvtár (MSAL) hozzáadása a projekthez
-1. A Visual Studio: **eszközök** > **Nuget-Csomagkezelő** > **Csomagkezelő konzol**
+1. A Visual Studio: **eszközök** > **NuGet-Csomagkezelő** > **Csomagkezelő konzol**
 2. Másolja és illessze be a Package Manager Console ablakban a következő parancsot:
 
     ```powershell
@@ -83,8 +83,8 @@ Ebben a lépésben hozzon létre egy osztályt, például jogkivonatokat kezelé
 2. Adja hozzá a következő két sort az alkalmazás osztály (belső <code>sealed partial class App : Application</code> blokk):
 
     ```csharp
-    //Below is the clientId of your app registration. 
-    //You have to replace the below with the Application Id for your app registration
+    // Below is the clientId of your app registration. 
+    // You have to replace the below with the Application Id for your app registration
     private static string ClientId = "your_client_id_here";
     
     public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
@@ -120,15 +120,15 @@ Ez a szakasz bemutatja, hogyan MSAL segítségével a Microsoft Graph API a szol
     ```csharp
     using Microsoft.Identity.Client;
     ```
-2. Cserélje le a kódját a <code>MainPage</code> osztály a következőre:
+2. Cserélje le a kódját a <code>MainPage</code> az osztályban:
 
     ```csharp
     public sealed partial class MainPage : Page
     {
-        //Set the API Endpoint to Graph 'me' endpoint
+        // Set the API Endpoint to Graph 'me' endpoint
         string graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
     
-        //Set the scope for API call to user.read
+        // Set the scope for API call to user.read
         string[] scopes = new string[] { "user.read" };
     
         public MainPage()
@@ -212,7 +212,7 @@ Végül a `AcquireTokenSilentAsync` metódus sikertelen lesz. A hiba oka lehet, 
         try
         {
             var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
-            //Add the token in Authorization header
+            // Add the token in Authorization header
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             response = await httpClient.SendAsync(request);
             var content = await response.Content.ReadAsStringAsync();
@@ -304,21 +304,21 @@ Most kell regisztrálnia az alkalmazást a *Microsoft alkalmazásregisztrációs
 
 Ahhoz, hogy a Windows-hitelesítés egy összevont Azure Active Directory-tartomány használata esetén, az alkalmazás jegyzékében engedélyeznie kell a további lehetőségeket:
 
-1. Kattintson duplán **Package.appxmanifest**
+1. Kattintson duplán a **Package.appxmanifest**
 2. Válassza ki **képességek** lapra, és győződjön meg arról, hogy engedélyezve vannak-e a következő beállításokat:
 
     - Vállalati hitelesítés
     - Magánhálózatok (ügyfél és kiszolgáló)
     - Megosztott felhasználói tanúsítványok 
 
-3. Ezután nyissa meg **App.xaml.cs**, és adja hozzá a következő alkalmazás konstruktorában:
+3. Ezután nyissa meg **App.xaml.cs**, és adja hozzá a következő sort az alkalmazás konstruktorban:
 
     ```csharp
     App.PublicClientApp.UseCorporateNetwork = true;
     ```
 
 > [!IMPORTANT]
-> Integrált Windows-hitelesítés nem értéke alapértelmezés szerint ez a minta, mert a kért alkalmazások a *vállalati hitelesítési* vagy *megosztott felhasználói tanúsítványok* lehetőségekhez szükség egy a Windows áruház verificationby magasabb szintű és nem minden fejlesztők végrehajtandó a magasabb szintű ellenőrzést. Engedélyezze ezt a beállítást csak akkor, ha egy összevont Azure Active Directory-tartomány a Windows-hitelesítés szükséges.
+> Integrált Windows-hitelesítés nem értéke alapértelmezés szerint ez a minta, mert a kért alkalmazások a *vállalati hitelesítési* vagy *megosztott felhasználói tanúsítványok* lehetőségekhez szükség egy a Windows áruház és nem minden fejlesztők magasabb szintű végrehajtandó a magasabb szintű ellenőrzést. Engedélyezze ezt a beállítást csak akkor, ha egy összevont Azure Active Directory-tartomány a Windows-hitelesítés szükséges.
 
 
 ## <a name="test-your-code"></a>Tesztelheti a kódját
@@ -327,7 +327,7 @@ Az alkalmazás teszteléséhez nyomja le az `F5` a projektet a Visual Studio fut
 
 ![Alkalmazás felhasználói felületén](media/active-directory-uwp-v2.md/testapp-ui.png)
 
-Amikor készen áll a tesztelése, kattintson *Microsoft Graph API hívása* és a Microsoft Azure Active Directory (szervezeti fiók) vagy egy Microsoft Account (live.com, outlook.com) fiók használatával jelentkezzen be. Ha először, jelentkezzen be a felhasználó kérő ablak jelenik meg:
+Amikor készen áll a tesztelése, kattintson *Microsoft Graph API hívása* és a Microsoft Azure Active Directory (szervezeti fiók) vagy egy Microsoft Account (live.com, outlook.com) fiók használatával jelentkezzen be. Ha most először, a felhasználó bejelentkezhet kérő ablak jelenik meg:
 
 ![Bejelentkezési oldal](media/active-directory-uwp-v2.md/sign-in-page.png)
 
@@ -365,18 +365,18 @@ A felhasználók naptáraiban a környezetben, az alkalmazások eléréséhez ve
 
 ### <a name="issue-1"></a>1. hiba:
 Az alkalmazást egy összevont Azure Active Directory-tartomány az a következő hibák, amikor bejelentkezési egyike jelenhet meg:
- - "Nem érvényes ügyfél-tanúsítvány található a kérelemben.
+ - Nem található a kérelemben érvényes ügyféltanúsítványt.
  - Nem a felhasználó tanúsítványtárolójában található érvényes tanúsítvány.
- - Próbálja meg újra a másik hitelesítési módszer kiválasztása. "
+ - Válasszon egy másik hitelesítési módszert.
 
 **OK:** vállalati és a tanúsítványok képességek nem engedélyezettek.
 
 **Megoldás:** kövesse a [összevont tartományt integrált hitelesítés](#enable-integrated-authentication-on-federated-domains-optional)
 
 ### <a name="issue-2"></a>2. hiba:
-Engedélyezi a ésőbb [összevont tartományt integrált hitelesítés](#enable-integrated-authentication-on-federated-domains-optional) próbálja használni a Windows Hello Windows 10-es számítógépre jelentkezik be egy több-factor-hitelesítés konfigurációja tartalmazó környezetben, a tanúsítványok listájának számára jelenik meg , azonban ha a PIN-kód használatát választja, a PIN-kód ablak számára nem jelenik meg.
+Miután engedélyezte a [összevont tartományt integrált hitelesítés](#enable-integrated-authentication-on-federated-domains-optional) és használhatják a Windows Hello a a Windows 10 rendszerű számítógépeket a jelentkezzen be egy olyan környezetben több-factor-hitelesítéssel konfigurált próbálja, tanúsítványok listája jelenik meg, azonban ha a PIN-kód használatát választja, a PIN-kód ablak számára nem jelenik meg.
 
-**OK:** Ez az egy ismert korlátozás a Windows 10 asztali verzió (működik a Windows 10 Mobile finom) futó UWP-alkalmazás a Webeshitelesítés-szervező
+**OK:** ismert futó Windows 10 asztali verzió (működik a Windows 10 Mobile finom) UWP-alkalmazás a webeshitelesítés-Szervezővel kapcsolatos korlátozás
 
-**Megkerülő megoldás:** megoldás a felhasználók kell úgy, hogy jelentkezzen be az egyéb beállításokat, és válassza a *jelentkezzen be egy felhasználónevet és jelszót* Ehelyett válassza meg a jelszavát, és ezután nyissa meg a telefon hitelesítésen keresztül.
+**Megkerülő megoldás:** úgy, hogy jelentkezzen be az egyéb beállításokat, és válassza a felhasználóknak kell *jelentkezzen be egy felhasználónevet és jelszót* Ehelyett válassza meg a jelszavát, és ezután nyissa meg a telefon hitelesítésen keresztül.
 

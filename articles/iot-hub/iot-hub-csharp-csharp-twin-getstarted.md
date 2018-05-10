@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure IoT Hub eszköz twins (.NET/.NET) |} Microsoft Docs"
-description: "Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT-eszközök a .NET SDK használatával valósítja meg a szimulált eszköz alkalmazás és az Azure IoT szolgáltatás SDK for .NET egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása végrehajtásához."
+title: Ismerkedés az Azure IoT Hub eszköz twins (.NET/.NET) |} Microsoft Docs
+description: Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT-eszközök a .NET SDK használatával valósítja meg a szimulált eszköz alkalmazás és az Azure IoT szolgáltatás SDK for .NET egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása végrehajtásához.
 services: iot-hub
 documentationcenter: node
 author: dsk-2015
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f7e23b6e-bfde-4fba-a6ec-dbb0f0e005f4
 ms.service: iot-hub
 ms.devlang: node
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: dkshir
-ms.openlocfilehash: 6073d594117e69676b753a1e3af25fffa3583a2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b337e463ac4aefd7e4644af4c2cdcad4f3c5300a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Ismerkedés az eszköz twins (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -42,8 +42,6 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
-
-Ha szeretne létrehozni az eszközidentitást programozott módon helyette, olvassa el a megfelelő részt a [a szimulált eszköz csatlakoztatása az IoT hub .NET használatával] [ lnk-device-identity-csharp] cikk.
 
 ## <a name="create-the-service-app"></a>A service-alkalmazás létrehozása
 Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) a társított eszközök a két hely metaadatok hozzáadó létrehozása **myDeviceId**. Ezután lekérdezi az eszköz twins tárolja az IoT hub, az eszközök az Egyesült Államok, és a gazdarendszerhez a mobilhálózat kapcsolat jelentett kiválasztása.
@@ -99,7 +97,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) a társított
         Console.WriteLine("Press Enter to exit.");
         Console.ReadLine();
 
-1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **AddTagsAndQuery** projekt **Start**. A megoldás felépítéséhez.
+1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **AddTagsAndQuery** projekt **Start**. Hozza létre a megoldást.
 1. Az alkalmazás futtatásához a jobb gombbal a **AddTagsAndQuery** projektet, majd válassza **Debug**, utána pedig **Start új példányt**. Megjelenik az eredmények között egy eszközön a lekérdezés kérni a minden eszköz a mappában lévő **Redmond43** és a lekérdezés, amely korlátozza az eredmények mobilhálózati használó eszközök sem.
    
     ![Lekérdezés eredményei ablakban][img-addtagapp]
@@ -187,7 +185,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás, amely kapcsolódik a hub, létreh
        Console.WriteLine("Press Enter to exit.");
        Console.ReadLine();
 
-1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **ReportConnectivity** projekt **Start**. A megoldás felépítéséhez.
+1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **ReportConnectivity** projekt **Start**. Hozza létre a megoldást.
 1. Az alkalmazás futtatásához a jobb gombbal a **ReportConnectivity** projektet, majd válassza **Debug**, utána pedig **Start új példányt**. A kettős adatainak lekérése, és elküldi a kapcsolattípust láthatja a *tulajdonság jelentett*.
    
     ![Eszköz-alkalmazás futtatása jelentés kapcsolatához][img-rundeviceapp]
@@ -197,7 +195,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás, amely kapcsolódik a hub, létreh
    
     ![Sikeresen jelentett eszközkapcsolatok][img-tagappsuccess]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Fel van véve eszköz metaadatait címkék egy háttér-alkalmazásból, és a szimulált eszköz alkalmazásának megírt az eszköz a két jelentés eszköz kapcsolódási adatok. Megtudta, ezt az információt az SQL-szerű IoT Hub lekérdezési nyelv lekérdezése is.
 
 A következő források segítségével megtudhatja, hogyan:

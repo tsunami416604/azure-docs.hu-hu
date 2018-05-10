@@ -1,8 +1,8 @@
 ---
-title: "További tudnivalók az Azure Media Services által ajánlott kódolók |} Microsoft Docs"
-description: "További információk a media services által ajánlott kódolók"
+title: További tudnivalók az Azure Media Services által ajánlott kódolók |} Microsoft Docs
+description: További információk a media services által ajánlott kódolók
 services: media-services
-keywords: "kódolás; kódolók; adathordozó"
+keywords: kódolás; kódolók; adathordozó
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: d0c5536d2339470eac058250cc14e1f250b86d90
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott a helyszíni kódolókkal
 Amikor élő adatfolyam-az Azure Media Services, megadhatja, hogyan történjen a csatorna a bemeneti adatfolyam fogadására. Ha egy helyszíni kódoló egy élő kódolás Channel használatát választja, a kódoló leküldéses egy kiváló minőségű egyféle sávszélességű adatfolyamokat output típusúként. Ha a csatorna továbbítása helyszíni kódoló használatát választja, a kódoló leküldéses többféle sávszélességűvé minden kívánt kimeneti minőségű kimenetként. További információkért lásd: [élő Stream továbbítása helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).

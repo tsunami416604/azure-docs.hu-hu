@@ -1,9 +1,9 @@
 ---
 title: Munkafolyamat Definition Language funkciók - Azure Logic Apps |} Microsoft Docs
-description: További információk a logic app munkafolyamat-definíciókban használható funkciók
+description: További információk a logic apps Munkafolyamatdefiníciós nyelve a való létrehozásának funkciók
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/25/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 0155e35641a0407fe48c4da07400fa188152b0af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8240ddf8a93c6589f89f3ad680c1c99c594742c9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Munkafolyamat definícióját nyelvi funkciók dokumentáció az Azure Logic Apps
 
-Ez a cikk ismerteti a Funkciók, amelyekkel a munkafolyamatok létrehozásakor [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Logikai alkalmazás definícióiról kapcsolatban bővebben lásd: [az Azure Logic Apps Munkafolyamatdefiníciós nyelve](../logic-apps/logic-apps-workflow-definition-language.md). 
+Ez a cikk ismerteti a Funkciók, amelyekkel a munkafolyamatok létrehozásakor [Azure Logic Apps](../logic-apps/logic-apps-overview.md). A logikai alkalmazás definícióiról funkciók kapcsolatos további információkért lásd: [az Azure Logic Apps Munkafolyamatdefiníciós nyelve](../logic-apps/logic-apps-workflow-definition-language.md#functions). 
 
 > [!NOTE]
 > A paraméter-definíciók szintaxisának a kérdőjel (?), amely akkor jelenik meg, miután egy paraméter azt jelenti, hogy a paraméter nem kötelező megadni. Lásd például: [getFutureTime()](#getFutureTime).

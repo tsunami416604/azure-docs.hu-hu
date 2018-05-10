@@ -1,13 +1,13 @@
 ---
-title: "Linux – gyakori kérdések az Azure App Service |} Microsoft Docs"
-description: "Az Azure App Service Linux – gyakori kérdések."
-keywords: "az Azure app service, webalkalmazás, gyakran ismételt kérdések, linux, oss"
+title: Linux – gyakori kérdések az Azure App Service |} Microsoft Docs
+description: Az Azure App Service Linux – gyakori kérdések.
+keywords: az Azure app service, webalkalmazás, gyakran ismételt kérdések, linux, oss
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: b22d5f3497c388192764aa6b4ee8c95fec568bd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux – gyakori kérdések az Azure App Service
 
@@ -46,6 +46,10 @@ Ez a művelet nem ugyanaz, mint a Docker újraindítása.
 **Secure Shell (SSH) segítségével csatlakozzon az alkalmazás tároló virtuális gép (VM)?**
 
 Igen, akkor teheti meg a forrás-vezérlő (SCM) felügyeleti webhelyen keresztül.
+
+> [!NOTE] 
+> Keresztül is csatlakozhat a alkalmazástárolóval közvetlenül gépről a helyi fejlesztési segítségével SSH, SFTP vagy Visual Studio Code (az élő hibakeresési Node.js alkalmazások). További információkért lásd: [távoli hibakereséssel és az App Service Linux SSH](https://aka.ms/linux-debug).
+>
 
 **Hogyan hozható létre egy Linux App Service-csomag az SDK vagy az Azure Resource Manager-sablon használatával?**
 
@@ -155,8 +159,8 @@ Az alkalmazásbeállítások csak betűket (A-Z, a – z), számok (0-9), és az
 
 A képet, elküldheti a [webalkalmazások visszajelzési fórumon](https://aka.ms/webapps-uservoice). Adja hozzá a ötlet címe "[Linux]".
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi az Azure App Service Linux?](app-service-linux-intro.md)
-* [Átmeneti környezet az Azure App Service beállítása](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Átmeneti környezetek beállítása az Azure App Service-ben](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [A tárolók a webes alkalmazás folyamatos üzembe helyezés](./app-service-linux-ci-cd.md)

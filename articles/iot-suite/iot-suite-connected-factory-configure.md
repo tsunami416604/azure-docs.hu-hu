@@ -1,12 +1,12 @@
 ---
-title: "A csatlakoztatott gyári topológia konfigurálása |} Microsoft Docs"
-description: "A csatlakoztatott gyár topológia konfigurálása előre konfigurált megoldás."
-services: 
+title: A csatlakoztatott gyári topológia konfigurálása |} Microsoft Docs
+description: Hogyan konfigurálható a csatlakoztatott gyári megoldásgyorsító topológiája.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 19e0f48ab817428a1f953c80296b2e23effe5a8a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 4230914c6fb35201a8c162e2e7ecb31262d2bdca
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="configure-the-connected-factory-preconfigured-solution"></a>Az előre konfigurált csatlakoztatott gyári megoldás konfigurálása
+# <a name="configure-the-connected-factory-solution-accelerator"></a>A csatlakoztatott gyári megoldásgyorsító konfigurálása
 
-Az előre konfigurált csatlakoztatott gyári megoldás szimulált irányítópult egy kitalált, Contoso vállalat jelennek meg. A vállalatnak előállítók számos globális helyeken globálisan.
+A csatlakoztatott gyári megoldásgyorsító szimulált irányítópult egy kitalált, Contoso vállalat jelennek meg. A vállalatnak előállítók számos globális helyeken globálisan.
 
 Ez a cikk Contoso példaként ismertetik a csatlakoztatott gyári megoldás topológiát használja.
 
@@ -34,7 +34,7 @@ Minden Contoso gyári rendelkezik, amely három állomások áll éles sorok. Mi
 * Állomás tesztelése
 * Csomagoló állomás
 
-Ezek OPC EE-kiszolgálóknak rendelkezniük OPC EE-csomópontok és [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) csatlakoztatott gyári ezeket a csomópontokat értékének küld. Ehhez a következőket:
+Ezek OPC EE-kiszolgálóknak rendelkezniük OPC EE-csomópontok és [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) ezeket a csomópontokat értékének küld gyári csatlakoztatva. Ehhez a következőket:
 
 * Például az aktuális energiafogyasztását aktuális működési állapotát.
 * Éles információkat, például a termékek száma hozott létre.
@@ -66,7 +66,7 @@ A topológia összes csomópontjában tartozik egy közös meghatározó tulajdo
 
 ## <a name="topology-configuration-file"></a>Topológia konfigurációs fájl
 
-Az előző szakaszban felsorolt tulajdonságok konfigurálásához a csatlakoztatott gyári megoldás nevű konfigurációs fájlt használ [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+Az előző szakaszban felsorolt tulajdonságok konfigurálásához a csatlakoztatott gyári megoldás nevű konfigurációs fájlt használja [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
 
 Ez a fájl megtalálható a megoldás forráskódját a `WebApp/Contoso/Topology` mappát.
 
@@ -114,13 +114,13 @@ A `<factory_configuration>` és `<production_line_configuration>` útjuk tulajdo
 
   A topológia csomópont egyedi azonosítására szolgál.
 
-`<factory_configuration>`tulajdonsággal rendelkezik:
+`<factory_configuration>` tulajdonsággal rendelkezik:
 
 * **Hely** (típus `<location_definition>`)
 
   Itt adhatja meg, ahol a gyári.
 
-`<station_configuration>`tulajdonságokkal rendelkezik:
+`<station_configuration>` tulajdonságokkal rendelkezik:
 
 * **OpcUri** (írja be a karakterláncot.)
 
@@ -129,7 +129,7 @@ A `<factory_configuration>` és `<production_line_configuration>` útjuk tulajdo
 
 * **OpcNodes**, amelyeket OPC EE-csomópontok tömbje (típus `<opc_node_description>`)
 
-`<location_definition>`tulajdonságokkal rendelkezik:
+`<location_definition>` tulajdonságokkal rendelkezik:
 
 * **Város** (írja be a karakterláncot.)
 
@@ -147,7 +147,7 @@ A `<factory_configuration>` és `<production_line_configuration>` útjuk tulajdo
 
   A földrajzi hosszúság értéke annak a helynek
 
-`<performance_definition>`tulajdonságokkal rendelkezik:
+`<performance_definition>` tulajdonságokkal rendelkezik:
 
 * **Minimális** (kettős típusa)
 
@@ -193,7 +193,7 @@ A `<factory_configuration>` és `<production_line_configuration>` útjuk tulajdo
   * **CallOpcMethod**: a csomópont adatok és a paraméterek a OPC EE metódus hívása a következő formátumban: "NodeId szülőcsomópont, NodeId metódus hívása, a OPC EE-kiszolgáló URI."
   * **OpenWebPage**: az URL-cím megjelenítése a böngészőablakban.
 
-`<opc_node_description>`állomás (OPC EE-kiszolgáló) OPC EE csomópontjának adatait tartalmazza. A csomópontokra, amelyeket nem létező OPC EE-csomópontok képviselik, de a csatlakoztatott gyári számítási logikájának tárolóként szolgálnak is érvényesek. A következő tulajdonságokkal rendelkezik:
+`<opc_node_description>` állomás (OPC EE-kiszolgáló) OPC EE csomópontjának adatait tartalmazza. A csomópontokra, amelyeket nem létező OPC EE-csomópontok képviselik, de a csatlakoztatott gyári számítási logikájának tárolóként szolgálnak is érvényesek. A következő tulajdonságokkal rendelkezik:
 
 * **NodeId** (írja be a karakterláncot.)
 
@@ -267,7 +267,7 @@ A konfigurációs fájlban használt összes tulajdonságok különböző kateg�
 
 ### <a name="visual-appearance"></a>Vizuális megjelenését
 
-Ebbe a kategóriába tartozó tulajdonságok meghatározása a csatlakoztatott gyári irányítópult annak vizuális megjelenését. Példák erre vonatkozóan:
+Ebbe a kategóriába tartozó tulajdonságok meghatározása a csatlakoztatott gyári Irányítópult megjelenésének. Példák erre vonatkozóan:
 
 * Name (Név)
 * Leírás
@@ -287,7 +287,7 @@ A csatlakoztatott gyári szimuláció OEE/KPI adatok paraméterezni vannak:
 * A számítási szereplő OPC EE csomópont értékeket.
 * Hogyan ábra számított a telemetria-értékek.
 
-Csatlakoztatott gyári a http://oeeindustrystandard.oeefoundation.org által közzétett OEE képleteket használja.
+Csatlakoztatott gyári használja a OEE képletek által közzétett a http://oeeindustrystandard.oeefoundation.org.
 
 Az állomásokon OPC EE objektumok engedélyezése címkézés OEE/KPI számítás használatra. A **relevanciájának** a tulajdonság azt jelzi, hogy mely OEE/KPI. ábra a OPC EE-csomópont értéket kell használni. A **opkód** tulajdonság határozza meg, hogyan értékét a számítási szerepel.
 
@@ -308,7 +308,7 @@ Az egyes műveletek, például megjelenítése a legutóbbi érték vagy idő ad
 
   Azonosítja (globálisan egyedi) a OPC EE-kiszolgáló a telemetriai adat származik. A feldolgozott üzenetek, ez a tulajdonság legyen elküldve, **ApplicationUri**.
 
-* **NodeId**
+* **nodeId**
 
   Azonosítja a csomópont-érték a OPC EE-kiszolgálón. A tulajdonság a következő formátumban kell megadni a OPC EE-specifikáció megadottak szerint. A feldolgozott üzenetek, ez a tulajdonság legyen elküldve, **NodeId**.
 
@@ -318,7 +318,7 @@ Ellenőrizze [ez](https://github.com/Azure/iot-edge-opc-publisher) bővebben hog
 
 A konfiguráció a `ContosoTopologyDescription.json` fájl szabályozza OEE/KPI adatok kiszámítási módját. A következő példa bemutatja, hogyan szabályozza a fájl tulajdonságok a KPI1 elkészítése.
 
-A csatlakoztatott gyári KPI1 segítségével száma sikeresen feldolgozott termékek az elmúlt órában. Minden állomáshoz (OPC EE-kiszolgáló) a csatlakoztatott gyári szimuláció biztosít egy OPC EE-csomópont (`NodeId: "ns=2;i=385"`), amely biztosítja, hogy a telemetria bekapcsolásával számítási ez KPI-t.
+A gyári KPI1 csatlakozó segítségével sikeresen feldolgozott termékek száma az elmúlt órában. Minden állomáshoz (OPC EE-kiszolgáló) a csatlakozó gyári szimuláció biztosít egy OPC EE-csomópont (`NodeId: "ns=2;i=385"`), amely biztosítja, hogy a telemetria bekapcsolásával számítási ez KPI-t.
 
 Ez a OPC EE-csomópont konfigurációjának a következő kódrészletet néz ki:
 
@@ -339,10 +339,10 @@ Ez a konfiguráció lehetővé teszi, hogy ez a csomópont idő adatsorozat Insi
 * Az összes érték átlagának.
 * Minden értékeinek összege egyedi **OpcUri** (**ApplicationUri**), **NodeId** a megadott timespan érték párokat.
 
-Egy jellemző a **NumberOfManufactureredProducts** értéke csomópont, hogy csak növeli. A TimeSpan érték, a gyártott számának kiszámítása csatlakoztatva a gyári használja a **opkód** **SubMaxMin**. A számítási lekéri a minimális elején a timespan és maximális értéke a timespan végén.
+Egy jellemző a **NumberOfManufactureredProducts** értéke csomópont, hogy csak növeli. Csatlakoztatott gyári akkor használja a timespan a gyártott számának kiszámítása a **opkód** **SubMaxMin**. A számítási lekéri a minimális elején a timespan és maximális értéke a timespan végén.
 
 A **opkód** konfigurálja a számítási logika maximális és minimális érték különbségét értékének kiszámítása a konfiguráció. Az eredmények fogja halmozott alsó legfelső szintű (globális) szintre, és az irányítópulton látható.
 
 ## <a name="next-steps"></a>További lépések
 
-A javasolt következő lépésre megtudhatja, hogyan [egy átjáró a Windows vagy Linux az előre konfigurált csatlakoztatott gyári megoldás üzembe helyezéséhez](iot-suite-connected-factory-gateway-deployment.md).
+A javasolt következő lépésre megtudhatja, hogyan [telepítsen egy átjárót a csatlakoztatott gyári megoldásgyorsító a Windows vagy Linux](iot-suite-connected-factory-gateway-deployment.md).

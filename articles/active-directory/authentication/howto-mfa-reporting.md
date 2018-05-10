@@ -2,23 +2,19 @@
 title: Az Azure MFA hozzáférési és használati jelentések |} Microsoft Docs
 description: Ez ismerteti az Azure multi-factor Authentication szolgáltatás - jelentéseket.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: 3f6b33c4-04c8-47d4-aecb-aa39a61c4189
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 3a29d1b17924b519167f362e6116f405e182bf75
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a3e7390e0df707c4898ad9573baa96b567499de1
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure multi-factor Authentication jelentései
 

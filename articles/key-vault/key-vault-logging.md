@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -235,32 +235,32 @@ Az alábbi táblázat az operationName műveleteket és a megfelelő REST API-pa
 | operationName | REST API-parancs |
 | --- | --- |
 | Hitelesítés |Az Azure Active Directory végpontján keresztül |
-| VaultGet |[Kulcstároló adatainak lekérése](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx) |
-| VaultPut |[Kulcstároló létrehozása vagy frissítése](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx) |
-| VaultDelete |[Kulcstároló törlése](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx) |
+| VaultGet |[Kulcstároló adatainak lekérése](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
+| VaultPut |[Kulcstároló létrehozása vagy frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| VaultDelete |[Kulcstároló törlése](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
 | VaultPatch |[Kulcstároló frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultList |[Az erőforráscsoport összes kulcstárolójának listázása](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx) |
-| KeyCreate |[Kulcs létrehozása](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx) |
-| KeyGet |[Kulcs adatainak lekérése](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx) |
-| KeyImport |[Kulcs importálása egy tárolóba](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx) |
-| KeyBackup |[Kulcs biztonsági mentése](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx). |
-| KeyDelete |[Kulcs törlése](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx) |
-| KeyRestore |[Kulcs helyreállítása](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx) |
-| KeySign |[Aláírás kulccsal](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx) |
-| KeyVerify |[Ellenőrzés kulccsal](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx) |
-| KeyWrap |[Kulcs becsomagolása](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx) |
-| KeyUnwrap |[Kulcs kicsomagolása](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx) |
-| KeyEncrypt |[Titkosítás kulccsal](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx) |
-| KeyDecrypt |[Visszafejtés kulccsal](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx) |
-| KeyUpdate |[Kulcs frissítése](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx) |
-| KeyList |[Egy tároló kulcsainak listázása](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx) |
-| KeyListVersions |[Kulcs verzióinak listázása](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx) |
-| SecretSet |[Titkos kulcs létrehozása](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx) |
-| SecretGet |[Titkos kulcs lekérése](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx) |
-| SecretUpdate |[Titkos kulcs frissítése](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx) |
-| SecretDelete |[Titkos kulcs törlése](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx) |
-| SecretList |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
-| SecretListVersions |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
+| VaultList |[Az erőforráscsoport összes kulcstárolójának listázása](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
+| KeyCreate |[Kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| KeyGet |[Kulcs adatainak lekérése](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
+| KeyImport |[Kulcs importálása egy tárolóba](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| KeyBackup |[Kulcs biztonsági mentése](https://msdn.microsoft.com/library/azure/dn878058.aspx). |
+| KeyDelete |[Kulcs törlése](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| KeyRestore |[Kulcs helyreállítása](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| KeySign |[Aláírás kulccsal](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
+| KeyVerify |[Ellenőrzés kulccsal](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| KeyWrap |[Kulcs becsomagolása](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| KeyUnwrap |[Kulcs kicsomagolása](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
+| KeyEncrypt |[Titkosítás kulccsal](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| KeyDecrypt |[Visszafejtés kulccsal](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| KeyUpdate |[Kulcs frissítése](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| KeyList |[Egy tároló kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
+| KeyListVersions |[Kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
+| SecretSet |[Titkos kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| SecretGet |[Titkos kulcs lekérése](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| SecretUpdate |[Titkos kulcs frissítése](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
+| SecretDelete |[Titkos kulcs törlése](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
+| SecretList |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
+| SecretListVersions |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
 ## <a id="loganalytics"></a>A Log Analytics használata
 

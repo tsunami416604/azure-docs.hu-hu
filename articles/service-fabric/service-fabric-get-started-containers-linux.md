@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric-tárolóalkalmazás létrehozása Linuxon | Microsoft Docs"
-description: "Hozza létre első saját, Linux-alapú tárolóalkalmazását az Azure Service Fabricban.  Az alkalmazással elkészíthet egy Docker-rendszerképet, amelyet leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba, majd összeállíthat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást."
+title: Azure Service Fabric-tárolóalkalmazás létrehozása Linuxon | Microsoft Docs
+description: Hozza létre első saját, Linux-alapú tárolóalkalmazását az Azure Service Fabricban. Az alkalmazással elkészíthet egy Docker-rendszerképet, amelyet leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba, majd összeállíthat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0e7e0f1262ee8c31bc6e71b49e9ef62129887f2c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ba4e5996a87596c88822d96faf3e80e8243ad78b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-A meglévő alkalmazások Service Fabric-fürtökön lévő Linux-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk ismerteti a Python [Flask](http://flask.pocoo.org/)-webalkalmazást tartalmazó Docker-rendszerképek létrehozását, illetve egy Service Fabric-fürtön való üzembe helyezését.  Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával.  A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
+A meglévő alkalmazások Service Fabric-fürtökön lévő Linux-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk ismerteti a Python [Flask](http://flask.pocoo.org/)-webalkalmazást tartalmazó Docker-rendszerképek létrehozását, illetve egy Service Fabric-fürtön való üzembe helyezését. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Egy fejlesztői számítógép, amelyen a következők futnak:
@@ -38,7 +38,7 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Linux-tárolókban v
 ## <a name="define-the-docker-container"></a>A Docker-tároló definiálása
 Állítson össze egy rendszerképet a Docker Hubban található [Python-rendszerkép](https://hub.docker.com/_/python/) alapján. 
 
-Definiálja a Docker-tárolót egy Docker-fájlban. A Docker-fájl tartalmazza a környezet tárolón belüli beállítására, a futtatni kívánt alkalmazás betöltésére és a portok hozzárendelésére vonatkozó utasításokat. A Docker-fájl a `docker build` parancs bemenete, amely a rendszerképet létrehozza. 
+Adja meg a Docker-tárolót egy Docker-fájlban. A Docker-fájl a környezet tárolón belüli beállítására, a futtatni kívánt alkalmazás betöltésére és a portok hozzárendelésére vonatkozó utasításokat tartalmazza. A Docker-fájl a `docker build` parancs bemenete, amely a rendszerképet létrehozza. 
 
 Hozzon létre egy üres könyvtárat és a *Docker-fájlt* (fájlkiterjesztés nélkül). Adja hozzá a következőket a *Docker-fájlhoz*, és mentse a módosításokat:
 
@@ -67,13 +67,13 @@ CMD ["python", "app.py"]
 
 További információkért olvassa el a [Docker-fájlra vonatkozó referenciákat](https://docs.docker.com/engine/reference/builder/).
 
-## <a name="create-a-simple-web-application"></a>Egyszerű webalkalmazás létrehozása
-Hozzon létre egy olyan Flask-webalkalmazást, amely a 80-as portot figyeli, és a „Hello World!” szöveget adja vissza.  Ugyanebben a könyvtárban hozza létre a *requirements.txt* fájlt.  Adja hozzá a következőket, és mentse a módosításokat:
+## <a name="create-a-basic-web-application"></a>Alapszintű webalkalmazás létrehozása
+Hozzon létre egy olyan Flask-webalkalmazást, amely a 80-as portot figyeli, és a „Hello World!” szöveget adja vissza. Ugyanebben a könyvtárban hozza létre a *requirements.txt* fájlt. Adja hozzá a következőket, és mentse a módosításokat:
 ```
 Flask
 ```
 
-Hozza létre az *app.py* fájlt, és adja hozzá a következőket:
+Hozza létre az *app.py* fájlt, és adja hozzá a következő kódrészletet:
 
 ```python
 from flask import Flask
@@ -96,7 +96,7 @@ Futtassa a(z) `docker build` parancsot a webalkalmazást futtató rendszerkép l
 docker build -t helloworldapp .
 ```
 
-Ez a parancs létrehozza az új rendszerképet a Docker-fájlban foglalt utasítások alapján, és elnevezi (-t címkézés) a rendszerképet „helloworldapp”-nak. A rendszerképek készítése során a rendszer lekéri az alaprendszerképet a Docker Hubból, és létrehoz egy olyan új rendszerképet, amelyben az alkalmazás hozzá van adva az alaprendszerképhez.  
+Ez a parancs létrehozza az új rendszerképet a Docker-fájlban foglalt utasítások alapján, és a `helloworldapp` nevet adja a rendszerképnek (-t címkézéssel). A tárolórendszerkép létrehozásához először az alaprendszerképet kell letöltenie a Docker Hubról, és ahhoz kell hozzáadnia az alkalmazást. 
 
 Miután az összeállító parancs lefutott, futtassa a `docker images` parancsot az új rendszerkép információinak megtekintéséhez:
 
@@ -108,7 +108,7 @@ helloworldapp                 latest              86838648aab6        2 minutes 
 ```
 
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
-Ellenőrizze a tárolóalapú alkalmazás helyi működését, mielőtt leküldené a tárolóregisztrációs adatbázisba.  
+Ellenőrizze a tárolóalapú alkalmazás helyi működését, mielőtt leküldené a tárolóregisztrációs adatbázisba. 
 
 Futtassa az alkalmazást, amivel számítógép 4000-es portját a tároló elérhető 80-as portjához rendeli hozzá:
 
@@ -118,7 +118,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 A *name* nevet ad a futtató tárolónak (a tárolóazonosító helyett).
 
-Csatlakozzon a futó tárolóhoz.  Nyisson meg egy webböngészőt, majd a 4000-es porton visszaadott IP-címet, például http://localhost:4000 . A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd a 4000-es porton visszaadott IP-címet, például: http://localhost:4000. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ![Hello World!][hello-world]
 
@@ -139,7 +139,7 @@ Miután ellenőrizte, hogy az alkalmazás fut-e a Dockerben, küldje le a rendsz
 
 Futtassa a(z) `docker login` parancsot a tároló-beállításjegyzékbe való bejelentkezéshez a [beállításjegyzékhez tartozó hitelesítő adataival](../container-registry/container-registry-authentication.md).
 
-Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/active-directory-application-objects.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz.  Vagy bejelentkezhet a beállításjegyzékhez tartozó felhasználónevével és jelszavával.
+Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/active-directory-application-objects.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy bejelentkezhet a beállításjegyzékhez tartozó felhasználónevével és jelszavával.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -160,9 +160,9 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="package-the-docker-image-with-yeoman"></a>A Docker-rendszerkép becsomagolása a Yeomannal
 A Linux Service Fabric SDK tartalmaz egy [Yeoman](http://yeoman.io/)-generátort, amely megkönnyíti az alkalmazás létrehozását és egy tárolórendszerkép hozzáadását. Hozzunk létre egy alkalmazást, amely egyetlen, *SimpleContainerApp* nevű Docker-tárolóval rendelkezik.
 
-Service Fabric-tárolóalkalmazás létrehozásához nyisson meg egy terminálablakot, és futtassa a következőt: `yo azuresfcontainer`.  
+Service Fabric-tárolóalkalmazás létrehozásához nyisson meg egy terminálablakot, és futtassa a következőt: `yo azuresfcontainer`. 
 
-Adjon nevet az alkalmazásnak (például: „mycontainer”) és az alkalmazásszolgáltatásnak (például: „myservice”).
+Adjon nevet az alkalmazásnak (például: `mycontainer`) és az alkalmazásszolgáltatásnak (például: `myservice`).
 
 A rendszerkép neveként adja meg a tárolóregisztrációs adatbázisban található tároló rendszerképéhez tartozó URL-címet (például: „myregistry.azurecr.io/samples/helloworldapp”). 
 
@@ -173,7 +173,7 @@ Adja meg az „1” példányszámát.
 ![Tárolókhoz készült Service Fabric Yeoman-generátor][sf-yeoman]
 
 ## <a name="configure-port-mapping-and-container-repository-authentication"></a>A porthozzárendelés és a tárolóadattár hitelesítésének konfigurálása
-A tárolóalapú szolgáltatáshoz szükség van egy kommunikációs végpontra.  Most hozzáadhatja a protokoll, a port és a típus adatait egy `Endpoint`-objektumhoz a ServiceManifest.xml fájlban, a „Resources” (Erőforrások) címke alatt. Ebben a cikkben a tárolóalapú szolgáltatás a 4000-es portot figyeli: 
+A tárolóalapú szolgáltatáshoz szükség van egy kommunikációs végpontra. Most hozzáadhatja a protokoll, a port és a típus adatait egy `Endpoint`-objektumhoz a ServiceManifest.xml fájlban, a „Resources” (Erőforrások) címke alatt. Ebben a cikkben a tárolóalapú szolgáltatás a 4000-es portot figyeli: 
 
 ```xml
 
@@ -189,7 +189,7 @@ A tárolóalapú szolgáltatáshoz szükség van egy kommunikációs végpontra.
  
 Az `UriScheme` megadásával a tároló végpontja automatikusan regisztrálva lesz a Service Fabric elnevezési szolgáltatásban, így felderíthető lesz. A cikk végén talál egy például szolgáló teljes ServiceManifest.xml fájlt. 
 
-A tárolóport-gazdagépport leképezés konfigurálásához adjon meg egy `PortBinding` szabályzatot az ApplicationManifest.xml fájl `ContainerHostPolicies` elemében.  Ebben a cikkben a `ContainerPort` értéke 80 (a tároló a 80-as portot használja a Docker-fájlban foglalt beállítások szerint), az `EndpointRef` pedig „myServiceTypeEndpoint” értékű (a szolgáltatásjegyzékben definiált végpont).  A szolgáltatáshoz a 4000-es porton beérkező kérések a tárolón a 80-as portra vannak leképezve.  Ha a tárolót hitelesíteni kell egy magántárolóval, adja hozzá a `RepositoryCredentials` elemet.  Ebben a cikkben a myregistry.azurecr.io tárolóregisztrációs adatbázis fióknevét és jelszavát adja meg. Ügyeljen arra, hogy a szabályzat hozzá legyen adva a „ServiceManifestImport” címke alatt, és a megfelelő szervizcsomagra vonatkozzon.
+A tárolóport-gazdagépport leképezés konfigurálásához adjon meg egy `PortBinding` szabályzatot az ApplicationManifest.xml fájl `ContainerHostPolicies` elemében. Ebben a cikkben a `ContainerPort` értéke 80 (a tároló a 80-as portot használja a Docker-fájlban foglalt beállítások szerint), az `EndpointRef` pedig „myServiceTypeEndpoint” értékű (a szolgáltatásjegyzékben definiált végpont). A szolgáltatáshoz a 4000-es porton beérkező kérések a tárolón a 80-as portra vannak leképezve. Ha a tárolót hitelesíteni kell egy magántárolóval, adja hozzá a `RepositoryCredentials` elemet. Ebben a cikkben a myregistry.azurecr.io tárolóregisztrációs adatbázis fióknevét és jelszavát adja meg. Ügyeljen arra, hogy a szabályzat hozzá legyen adva a „ServiceManifestImport” címke alatt, és a megfelelő szervizcsomagra vonatkozzon.
 
 ```xml
    <ServiceManifestImport>
@@ -203,7 +203,7 @@ A tárolóport-gazdagépport leképezés konfigurálásához adjon meg egy `Port
    </ServiceManifestImport>
 ``` 
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK konfigurálása 
-A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK**, a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). A tároló állapotának monitorozása céljából ténylegesen elvégzett ellenőrzésre mutató **HEALTHCHECK** utasításnak szerepelnie kell a tárolórendszerkép létrehozásához használt **dockerfile** fájlban. 
+A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK**, a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). A tároló állapotának monitorozása céljából ténylegesen elvégzett ellenőrzésre mutató **HEALTHCHECK** utasításnak szerepelnie kell a tárolórendszerkép létrehozásához használt Docker-fájlban. 
 
 ![HealthCheckHealthy][1]
 
@@ -252,7 +252,7 @@ Használja a sablonban megadott telepítési szkriptet az alkalmazáscsomag a f�
 
 Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorert a következő címen: http://localhost:19080/Explorer (a Vagrant Mac OS X rendszeren való használata esetében a localhost helyett használja a virtuális gép magánhálózati IP-címét). Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
 
-Csatlakozzon a futó tárolóhoz.  Nyisson meg egy webböngészőt, majd a 4000-es porton visszaadott IP-címet, például http://localhost:4000 . A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd a 4000-es porton visszaadott IP-címet, például: http://localhost:4000. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ![Hello World!][hello-world]
 
@@ -348,7 +348,7 @@ Itt találja a jelen cikkben használt teljes szolgáltatás- és alkalmazásjeg
          
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
     <Service Name="myservice">
-      <!-- On a local development cluster, set InstanceCount to 1.  On a multi-node production 
+      <!-- On a local development cluster, set InstanceCount to 1. On a multi-node production 
       cluster, set InstanceCount to -1 for the container service to run on every node in 
       the cluster.
       -->
@@ -363,7 +363,7 @@ Itt találja a jelen cikkben használt teljes szolgáltatás- és alkalmazásjeg
 
 Ha egy másik tárolószolgáltatást szeretne hozzáadni a Yeoman használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 
-1. Lépjen a meglevő alkalmazás gyökérkönyvtárába.  Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
+1. Lépjen a meglevő alkalmazás gyökérkönyvtárába. Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
 2. Futtassa a `yo azuresfcontainer:AddService` parancsot.
 
 <a id="manually"></a>
@@ -371,7 +371,7 @@ Ha egy másik tárolószolgáltatást szeretne hozzáadni a Yeoman használatáv
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>A tároló kényszerített leállítását megelőző időköz beállítása
 
-Konfigurálhat egy időintervallumot a futtatókörnyezet számára, ezzel megadva, hogy az mennyit várjon a tároló eltávolítása előtt, miután megkezdődött a szolgáltatás törlése (vagy másik csomópontba áthelyezése). Az időintervallum konfigurálásával a `docker stop <time in seconds>` parancsot küldi a tárolónak.   További információ: [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). A várakozási időköz a `Hosting` szakaszban van meghatározva. Az alábbi fürtjegyzék kódrészlete azt mutatja be, hogyan adható meg a várakozási időköz:
+Konfigurálhat egy időintervallumot a futtatókörnyezet számára, ezzel megadva, hogy az mennyit várjon a tároló eltávolítása előtt, miután megkezdődött a szolgáltatás törlése (vagy másik csomópontba áthelyezése). Az időintervallum konfigurálásával a `docker stop <time in seconds>` parancsot küldi a tárolónak.  További információ: [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). A várakozási időköz a `Hosting` szakaszban van meghatározva. Az alábbi fürtjegyzék kódrészlete azt mutatja be, hogyan adható meg a várakozási időköz:
 
 
 ```json
@@ -391,7 +391,7 @@ Az alapértelmezett időintervallum 10 másodperc. Mivel ez egy dinamikus konfig
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Futtatókörnyezet konfigurálása a nem használt tárolórendszerképek eltávolításához
 
-A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem használt tárolórendszerképeket a csomópontról. Ez a konfiguráció lehetővé teszi a lemezterület visszanyerését, ha túl sok tárolórendszerkép található a csomóponton.  A funkció engedélyezéséhez frissítse a fürtjegyzék `Hosting` szakaszát az alábbi kódrészletben látható módon: 
+A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem használt tárolórendszerképeket a csomópontról. Ez a konfiguráció lehetővé teszi a lemezterület visszanyerését, ha túl sok tárolórendszerkép található a csomóponton. A funkció engedélyezéséhez frissítse a fürtjegyzék `Hosting` szakaszát az alábbi kódrészletben látható módon: 
 
 
 ```json
@@ -416,7 +416,7 @@ A `ContainerImagesToSkip` paraméternél megadhatja azokat a rendszerképeket, a
 
 ## <a name="configure-container-image-download-time"></a>Tárolórendszerkép letöltési idejének konfigurálása
 
-Alapértelmezés szerint a Service Fabric futásideje 20 percet jelöl ki a tárolórendszerképek letöltésére és kicsomagolására, és ez a tárolórendszerképek többségénél elegendő is. Nagyobb rendszerképek esetében, vagy ha a hálózati kapcsolat lassú, szükséges lehet növelni a rendszerkép letöltésének és kibontásának megszakításáig rendelkezésre álló időtartamot. Ez a **ContainerImageDownloadTimeout** attribútum segítségével állítható be a fürtjegyzék **Üzemeltetés** szakaszában az alábbi kódrészletben látható módon:
+A Service Fabric futtatókörnyezete 20 percet foglal le a tárolórendszerképek letöltésére és kicsomagolására, és ez a tárolórendszerképek többségénél elegendő is. Nagyobb rendszerképek esetében, vagy ha a hálózati kapcsolat lassú, szükséges lehet növelni a rendszerkép letöltésének és kibontásának megszakításáig rendelkezésre álló időtartamot. Ez az időtúllépési érték a **ContainerImageDownloadTimeout** attribútummal állítható be a fürtjegyzék **Üzemeltetés** szakaszában, az alábbi kódrészletben látható módon:
 
 ```json
 {
@@ -439,8 +439,25 @@ A tárolóindítási hibák diagnosztizálásának elősegítése céljából a 
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-A **ContainersRetentionCount** beállítása megadja a hiba esetén megőrzendő tárolók számát. Ha negatív érték van megadva, a rendszer minden olyan tárolót megőriz, amelyen hiba jelentkezik. Ha a **ContainersRetentionCount** attribútum nincs megadva, a rendszer nem őriz meg tárolókat. A **ContainersRetentionCount** attribútum az Alkalmazásparamétereket is támogatja, így a felhasználók különböző értékeket adhatnak meg a tesztelési és az éles fürtökön. Ezen funkciók használatakor javasolt elhelyezésre vonatkozó korlátozások használata, hogy a tárolószolgáltatás egy adott csomóponton maradjon, és a rendszer ne helyezze át más csomópontokra. Az ezzel a funkcióval megőrzött tárolókat manuálisan kell eltávolítani.
+A **ContainersRetentionCount** beállítása megadja a hiba esetén megőrzendő tárolók számát. Ha negatív érték van megadva, a rendszer minden olyan tárolót megőriz, amelyen hiba jelentkezik. Ha a **ContainersRetentionCount** attribútum nincs megadva, a rendszer nem őriz meg tárolókat. A **ContainersRetentionCount** attribútum az Alkalmazásparamétereket is támogatja, így a felhasználók különböző értékeket adhatnak meg a tesztelési és az éles fürtökön. A funkció használatakor alkalmazzon elhelyezési korlátozásokat, hogy a tárolószolgáltatás egy adott csomóponton maradjon, és a rendszer ne kerüljön át más csomópontokra. Az ezzel a funkcióval megőrzött tárolókat manuálisan kell eltávolítani.
 
+## <a name="start-the-docker-daemon-with-custom-arguments"></a>A Docker-démon indítása egyéni argumentumokkal
+
+A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-démon egyéni argumentumokkal is elindítható. Ha egyéni argumentumok vannak megadva, a Service Fabric csak a `--pidfile` argumentumot továbbítja a Docker-motornak. A `--pidfile` argumentumként való megadása ezért nem szükséges. Emellett az argumentumnak továbbra is meg kell határoznia, hogy a Docker-démon figyelje a Windows (vagy Linux esetén a Unix-tartománycsatorna) nevesített csövét, hogy a Service Fabric kommunikálni tudjon a démonnal. Az egyéni argumentumok a **ContainerServiceArguments** **Üzemeltetés** szakaszában, a fürtjegyzékben adhatók meg. Az alábbi kódrészletben látható erre egy példa: 
+ 
+
+```json
+{ 
+   "name": "Hosting", 
+        "parameters": [ 
+          { 
+            "name": "ContainerServiceArguments", 
+            "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
+          } 
+        ] 
+} 
+
+```
 
 ## <a name="next-steps"></a>További lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).

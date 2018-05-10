@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ea48300e83e1faa1250d2fba7c37a82825c820f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
@@ -372,7 +372,7 @@ A Machine Learning Ingyenes szintje nem igényel különálló tárterületet, i
 
 **Támogatja a Machine Learning a magas szintű rendelkezésre állást?**
 
-Igen. Részletekért és a szolgáltatói szerződés (SLA) ismertetéséért lásd a [Machine Learning díjszabását](https://azure.microsoft.com/en-us/pricing/details/machine-learning/) ismertető cikket.
+Igen. Részletekért és a szolgáltatói szerződés (SLA) ismertetéséért lásd a [Machine Learning díjszabását](https://azure.microsoft.com/pricing/details/machine-learning/) ismertető cikket.
 
 **Konkrétan milyen számítási erőforrásokon fognak futni az éles üzemi API-hívásaim?**
 

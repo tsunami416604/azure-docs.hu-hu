@@ -1,25 +1,23 @@
 ---
-title: "Hogyan hajthat végre egy áttekintése |} Microsoft Docs"
-description: "Útmutató az Azure Privileged Identity Management alkalmazással felülvizsgálat végrehajtása."
+title: Hogyan hajthat végre egy áttekintése |} Microsoft Docs
+description: Útmutató az Azure Privileged Identity Management alkalmazással felülvizsgálat végrehajtása.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 49ee2feb-7d2e-4acf-82c1-40ff23062862
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: d9885fc286e31100e14a5c8a1001df079829dcbe
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b3cc71fc11a567c0c5c62b220e25be4169bd8348
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management egy hozzáférési felülvizsgálat végrehajtása
 Az Azure Active Directory (AD) Privileged Identity Management egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az erőforrások az Azure AD és más Microsoft online szolgáltatások, például az Office 365-öt vagy a Microsoft Intune privilegizált hozzáférést.  
@@ -33,7 +31,7 @@ Az Azure AD Privileged Identity Management (PIM) alkalmazást is használhatja a
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Jelölje be az Azure-portálon, és válassza ki a könyvtárat, ahol meg fog jobb felső sarokban a felhasználónevére működik.
-3. Válassza ki **minden szolgáltatás** , és keresse meg a Szűrő mezőbe segítségével **Azure AD Privileged Identity Management**.
+3. Válassza a **Minden szolgáltatás** lehetőséget, és a Szűrő szövegmezővel keresse meg az **Azure AD Privileged Identity Management** elemet.
 4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
 
 ## <a name="approve-or-deny-access"></a>Hagyja jóvá vagy nem engedélyezik a hozzáférést

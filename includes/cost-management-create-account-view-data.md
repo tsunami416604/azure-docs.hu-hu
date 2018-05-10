@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: cost-management
+author: bandersmsft
+ms.service: cost-management
+ms.topic: include
+ms.date: 04/26/2018
+ms.author: banders
+manager: dougeby
+ms.custom: include file
+ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="view-cost-data"></a>Költségadatok megtekintése
 
 A Cloudyn Azure Cost Management megoldása a felhőerőforrásban tárolt összes adatához hozzáférést biztosít. Az irányítópulti jelentések között a standard és egyéni jelentéseket is megtalálja többlapos nézetben. A következőkben példákat láthat népszerű irányítópultokra és egy jelentésre, amely azonnal megmutatja a költségadatokat.

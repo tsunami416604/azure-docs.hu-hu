@@ -3,7 +3,7 @@ title: Az Azure Application Insights telemetria mintavételi |} Microsoft Docs
 description: Hogyan kell fenntartani a vezérlése alatt telemetriai adatok mennyiségét.
 services: application-insights
 documentationcenter: windows
-author: vgorbenko
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
-ms.author: mbullwin
-ms.openlocfilehash: 8f0c6e6567e82f885bb5cd0c6b6af797b393969c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: mbullwin; vitalyg
+ms.openlocfilehash: 53753a3202362c73356e8e39bfca9d813f6387e0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -38,7 +38,7 @@ Mintavételi csökkenti a forgalom és az adatok költségeket, és segít elker
 ## <a name="types-of-sampling"></a>Mintavételi típusai
 Alternatív mintavételi három módszer áll rendelkezésre:
 
-* **Adaptív mintavételi** automatikusan beállítja az SDK-t az ASP.NET-alkalmazás által küldött telemetriai adatok mennyiségét. SDK-v 2.0.0-beta3 kezdve ez a mintavételi mód az alapértelmezett. Adaptív mintavételi jelenleg csak az ASP.NET kiszolgálóoldali telemetriai használható. Az Asp.NET Core alkalmazások adatforráselemhez teljes keretrendszer, adaptív mintavételi érhető el a Microsoft.ApplicationInsights.AspNetCore SDK 1.0.0 verzióját. Az Asp.NET Core alkalmazások adatforráselemhez NetCore adaptív mintavételi megtalálható a Microsoft.ApplicationInsights.AspNetCore SDK 2.2.0-beta1.
+* **Adaptív mintavételi** automatikusan beállítja az SDK-t az ASP.NET-alkalmazás által küldött telemetriai adatok mennyiségét. SDK-v 2.0.0-beta3 kezdve ez a mintavételi mód az alapértelmezett. Adaptív mintavételi jelenleg csak az ASP.NET kiszolgálóoldali telemetriai használható. Az Asp.NET Core alkalmazások teljes keretrendszer célzó adaptív mintavételi megtalálható a Microsoft.ApplicationInsights.AspNetCore SDK 1.0.0 verzióját. Az Asp.NET Core alkalmazások NetCore célzó adaptív mintavételi megtalálható a Microsoft.ApplicationInsights.AspNetCore SDK 2.2.0-beta1.
 
 * **Rögzített mintavételi** az ASP.NET- vagy Java kiszolgálóról, és a felhasználók böngészőjének a telemetriai adatok mennyiségét csökkenti. A sebesség beállítása. Az ügyfél és kiszolgáló szinkronizálja a mintavételi, a keresés, navigálhat kapcsolódó Lapmegtekintések és kérések között.
 * **Adatfeldolgozást mintavételi** működik az Azure portálon. Törli az alkalmazást, a mintavételi ráta, amely nem érkezik telemetriai adatok némelyike. Az alkalmazásból küldött telemetriai forgalom nem csökkenthető, de lehetővé teszi a havi kvótán belül. Adatfeldolgozást mintavételi fő előnye, hogy a mintavételi ráta állíthatja be az alkalmazás üzembe helyezésével, és minden kiszolgálók és ügyfelek egységesen működik. 

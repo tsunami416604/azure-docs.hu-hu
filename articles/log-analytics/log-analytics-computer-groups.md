@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: a6f0aa58762966f8da76387f3da7a7895801fcb9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c4a1edc8e4ff129a8b073f008e1d20bb20941ae1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>A Naplóelemzési számítógépcsoportok jelentkezzen keresések
 
@@ -56,14 +56,6 @@ A következő eljárással hozzon létre egy számítógépcsoportot napló kere
 2. Nyissa meg **naplófájl-keresési** majd **mentett keresések** a képernyő tetején.
 3. Kattintson a **Hozzáadás** és adjon meg értékeket a számítógép csoport minden egyes tulajdonsága.
 4. Válassza ki **lekérdezés mentése számítógépcsoportként** kattintson **OK**.
-
-
-A következő eljárással hozzon létre egy számítógépcsoportot napló keresési az OMS-portálon.
-
-1. Nyissa meg **naplófájl-keresési** , és hozzon létre a naplófájl keressen rá a számítógép (csoport).  
-2. Kattintson a **mentése** gomb a képernyő tetején.
-3. Válassza ki **Igen** való **lekérdezés mentése számítógépcsoportként**.
-5. Adja meg a számítógépcsoport mindegyik tulajdonság értékét. 
 
 
 

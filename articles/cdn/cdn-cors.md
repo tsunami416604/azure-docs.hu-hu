@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>Az Azure CDN a CORS használatával
 ## <a name="what-is-cors"></a>Mi az a CORS?
@@ -47,7 +47,7 @@ A CORS kérelmek két különböző *egyszerű kérelmek* és *összetett kérel
 
 ### <a name="for-complex-requests"></a>Összetett kérelmeknél:
 
-Egy összetett vonatkozó kérés, mert a CORS kérelem ahol a böngésző küldéséhez szükséges egy *ellenőrzési kérés* (azaz egy előzetes mintavételt) a tényleges CORS kérelem elküldése előtt. Az ellenőrzési kérés a kiszolgáló engedélyt kér Ha az eredeti CORS lépne, és igényeljen egy `OPTIONS` kérelem azonos URL-címét.
+Egy összetett vonatkozó kérés, mert a CORS kérelem ahol a böngésző küldéséhez szükséges egy *ellenőrzési kérés* (Ez azt jelenti, hogy egy előzetes mintavételt) a tényleges CORS kérelem elküldése előtt. Az ellenőrzési kérés a kiszolgáló engedélyt kér Ha az eredeti CORS lépne, és igényeljen egy `OPTIONS` kérelem azonos URL-címét.
 
 > [!TIP]
 > A CORS-adatfolyamok és közös nehézségek további részleteket a [való REST API CORS](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
@@ -57,7 +57,7 @@ Egy összetett vonatkozó kérés, mert a CORS kérelem ahol a böngésző küld
 ## <a name="wildcard-or-single-origin-scenarios"></a>Helyettesítő karakteres vagy egyetlen forrás forgatókönyvek
 Az Azure CDN CORS automatikusan együttműködve további konfigurációra amikor a **hozzáférés-vezérlési-engedélyezése-forrás** fejléc értéke helyettesítő karakter (*) vagy egy egyetlen forrása.  A CDN gyorsítótárazhatják az első válasz, és később fogja használni a azonos fejléc.
 
-Ha a kérések már végzett és a CDN CORS a beállítása előtt a a forrás, szüksége lesz a végpont tartalom töltse be újra a tartalmat a tartalom kiürítése a **hozzáférés-vezérlési-engedélyezése-forrás** fejléc.
+Ha kérelmek már végzett CORS a forrás beállítása előtt a CDN, szüksége lesz a végpont tartalom töltse be újra a tartalmat a tartalom kiürítése a **hozzáférés-vezérlési-engedélyezése-forrás** fejléc.
 
 ## <a name="multiple-origin-scenarios"></a>Több forrás forgatókönyv
 Ha szeretné engedélyezni a források számára engedélyezett a CORS adott listáját, részek lesznek egy kicsit bonyolultabb. A probléma akkor fordul elő, amikor gyorsítótárba helyezi azt a CDN a **hozzáférés-vezérlési-engedélyezése-forrás** fejléc az első CORS-forrás.  Ha egy másik CORS származási későbbi kérést, a gyorsítótárazott teljesíti-e a a CDN **hozzáférés-vezérlési-engedélyezése-forrás** fejléc, amelyek nem egyeznek.  Ennek számos módja van.
@@ -67,7 +67,7 @@ Ennek legjobb módja **verizon Azure CDN Premium**, amely azt mutatja, néhány 
 
 Kell [hozzon létre egy szabályt](cdn-rules-engine.md) ellenőrizni a **származási** a kérelem fejléce.  Ha egy érvényes forrás, a szabály állítja be a **hozzáférés-vezérlési-engedélyezése-forrás** fejléc a következő a forrás, a kérelemben.  Ha a forrás megadott a **származási** fejléc nem engedélyezett, a szabály el kell hagynia a **hozzáférés-vezérlési-engedélyezése-forrás** fejlécet, amely hatására a böngésző elutasítja a kérelmet. 
 
-Ehhez a szabályok motorral két módja van.  Mindkét esetben a **hozzáférés-vezérlési-engedélyezése-forrás** a fájl forráskiszolgálóról fejléc teljesen figyelmen kívül hagyja, a CDN szabálymotor teljes körű kezelése a CORS engedélyezett eredetet.
+Ehhez a szabályok motorral két módja van. Mindkét esetben a **hozzáférés-vezérlési-engedélyezése-forrás** fejléc származási fájlkiszolgálóról a rendszer figyelmen kívül hagyja, és a CDN szabálymotor teljes körű kezelése a CORS engedélyezett eredetet.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Minden érvényes eredet egy reguláris kifejezések
 Ebben az esetben létre fog hozni egy reguláris kifejezés, amely tartalmazza az összes is engedélyezni szeretné a tartalmazza: 
@@ -75,7 +75,7 @@ Ebben az esetben létre fog hozni egy reguláris kifejezés, amely tartalmazza a
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Verizon Azure CDN** használ [Perl kompatibilis reguláris kifejezések](http://pcre.org/) , a reguláris kifejezések motor.  Egy eszköz, például használhatja [reguláris kifejezések 101](https://regex101.com/) a reguláris kifejezés érvényesítése.  Vegye figyelembe, hogy a "/" karakter érvényes reguláris kifejezések, és nem kell megjelölni, azonban ez a karakter escape ajánlott eljárás, és néhány regex érvényesség-ellenőrzők által várt.
+> **Verizon Azure CDN Premium** használ [Perl kompatibilis reguláris kifejezések](http://pcre.org/) , a reguláris kifejezések motor.  Egy eszköz, például használhatja [reguláris kifejezések 101](https://regex101.com/) a reguláris kifejezés érvényesítése.  Vegye figyelembe, hogy a "/" karakter érvényes reguláris kifejezések, és nem kell megjelölni, azonban ez a karakter escape ajánlott eljárás, és néhány regex érvényesség-ellenőrzők által várt.
 > 
 > 
 
@@ -93,6 +93,6 @@ Ahelyett, hogy a reguláris kifejezések, akkor inkább szabályt hozhat létre 
 > 
 > 
 
-### <a name="azure-cdn-standard"></a>Az Azure CDN Standard
-Az Azure CDN Standard profilok, a csak mechanizmust, amely lehetővé teszi több források helyettesítő eredeti használata nélkül, hogy használja [lekérdezési karakterláncok gyorsítótárazása](cdn-query-string.md).  Engedélyezze a CDN-végpont a lekérdezési karakterlánc beállítást, majd egy egyedi lekérdezési karakterlánc minden olyan engedélyezett tartományhoz érkező kérésekhez szükség. Ez azt eredményezi, hogy a CDN-t egy külön objektum minden egyes egyedi lekérdezési karakterlánc gyorsítótárazását. Ez a megközelítés ideális nem, azonban módon gyorsítótárazza a CDN ugyanazon fájl több másolatát okoz.  
+### <a name="azure-cdn-standard-profiles"></a>Az Azure standard szintű CDN-profil
+Az Azure CDN standard profilok (**Azure CDN Standard Microsoft**, **Azure CDN Standard Akamai**, és **Azure CDN Standard verizon**), csak mechanizmusa a helyettesítő származási használandó használata nélkül lehetővé teszi több források [lekérdezési karakterláncok gyorsítótárazása](cdn-query-string.md). Engedélyezze a lekérdezési karakterlánc beállítást a CDN-végponthoz, majd egy egyedi lekérdezési karakterlánc minden engedélyezett tartományt a érkező kéréseket. Ezzel azt eredményezi, hogy a CDN-t egy külön objektum minden egyes egyedi lekérdezési karakterlánc gyorsítótárazását. Ez a megközelítés ideális nem, azonban módon gyorsítótárazza a CDN ugyanazon fájl több másolatát okoz.  
 

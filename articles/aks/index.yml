@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Container Service (AKS)
+title: Azure Kubernetes Service (AKS)
 metadata:
   document_id: 
-  title: Az Azure Container Service (AKS) dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  title: Az Azure Kubernetes Service (AKS) dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   meta.description: AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.
   services: container-service
   author: carolz
@@ -14,13 +14,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
-  ms.openlocfilehash: 7b18da63a74059e48d41f9e0a068a4f7618aa97a
-  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+  ms.openlocfilehash: b67814bc2dd622758ade1fc76f1fade99f718bd6
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/18/2018
+  ms.lasthandoff: 05/07/2018
 abstract:
-  description: Az Azure Container Service (AKS) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.<div class="IMPORTANT alert"><p>Fontos</p><p>Az Azure Container Service (AKS) jelenleg <strong>előzetes verzióban</strong> érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a <a href="https://azure.microsoft.com/support/legal/preview-supplemental-terms/">kiegészítő használati feltételekbe</a>. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.</p></div>
+  description: Az Azure Kubernetes Service (AKS) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.<div class="IMPORTANT alert"><p>Fontos</p><p>Az Azure Kubernetes Service (AKS) jelenleg <strong>előzetes verzióban</strong> érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a <a href="https://azure.microsoft.com/support/legal/preview-supplemental-terms/">kiegészítő használati feltételekbe</a>. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.</p></div>
 sections:
 - title: 5 perces gyors útmutatók
   items:

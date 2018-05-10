@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio használatával Azure virtuális géphez |} Microsoft Docs"
-description: "Visual Studio használatával Azure virtuális géphez."
+title: Visual Studio használatával Azure virtuális géphez |} Microsoft Docs
+description: Visual Studio használatával Azure virtuális géphez.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -15,11 +15,11 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: e5b289b2be982653461c4f5b933e1ec444fa9716
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3e37edbf8d29441541e77ed0660dc9a71618fdee
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="visual-studio-images-on-azure"></a>A Visual Studio képek az Azure-on
 Visual Studio egy előre konfigurált Azure virtuális gépen (VM) használata egy gyors és egyszerű módot eljusson semmi sem egy összesítő és futó fejlesztői környezetben. A Visual Studio különböző konfigurációival rendszerkép érhetők el a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -29,12 +29,13 @@ Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure
 ## <a name="what-configurations-and-versions-are-available"></a>Milyen konfigurációk és verziói érhetők el?
 A legutóbbi Főverziók, a Visual Studio 2017 és a Visual Studio 2015-öt, képek található az Azure piactéren. Minden egyes főverzió látja, eredetileg kiadott (RTW) verziója és a legújabb frissített verziója. A Visual Studio Enterprise és a Visual Studio Community kiadások szövegek kínál. Ezeket a lemezképeket legalább havonta frissítve lett, hogy tartalmazza a legújabb Visual Studio és a Windows-frissítéseket. A képek nevének azonban változatlan marad, mindegyik lemezkép leírása tartalmazza a telepített verzió és a lemezkép "dátum".
 
-| Verzió              | Kiadás            | Termék verziószáma     |
-|:-----------------------------------------:|:----------------------------:|:-----------------------:|
-| A Visual Studio 2017: Legújabb (15.5 verzió) |    Enterprise, Community     |      15.6.0 verzió     |
-|         Visual Studio 2017: RTW           |    Enterprise, Community     |      15.0.10 verzió    |
-|   Visual Studio 2015-öt: Legújabb (3. frissítés)   |    Enterprise, Community     |  14.0.25431.01 verzió  |
-|         Visual Studio 2015: RTW           |              Nincs            | (A karbantartáshoz lejárt) |
+| Verzió                                              | Kiadás                     |     Termék verziószáma     |
+|:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
+| A Visual Studio 2017: Legújabb (15.7 verzió)                    |    Vállalati, közösségi     |      15.7.0 verzió     |
+| A Visual Studio 2017: Legújabb előzetes (15.8, 1 előzetes verzió) |    Vállalati, közösségi     |      15.8.1 verzió     |
+|         Visual Studio 2017: RTW                              |    Vállalati, közösségi     |      15.0.13 verzió    |
+|   Visual Studio 2015-öt: Legújabb (3. frissítés)                      |    Vállalati, közösségi     |  14.0.25431.01 verzió  |
+|         Visual Studio 2015: RTW                              |             None             | (A karbantartáshoz lejárt) |
 
 > [!NOTE]
 > Megfelel-e a Microsoft karbantartása házirend a Visual Studio 2015 eredetileg végleges (RTW) verziójának karbantartáshoz érvényessége lejárt. A Visual Studio 2015 Update 3 az egyetlen fennmaradó verzió érhető el a Visual Studio 2015-öt sor a rendszer.

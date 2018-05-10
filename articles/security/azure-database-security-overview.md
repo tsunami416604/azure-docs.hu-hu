@@ -1,12 +1,12 @@
 ---
-title: "Azure-adatbázis biztonsági áttekintése |} Microsoft Docs"
-description: "Ez a cikk áttekintést az Azure-adatbázis biztonsági funkciók."
+title: Azure-adatbázis biztonsági áttekintése |} Microsoft Docs
+description: Ez a cikk áttekintést az Azure-adatbázis biztonsági funkciók.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 3c83645f61cd42c8c2b46f787c9e7531726d3fbb
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: b5e9e412fddf727237b008e37238fa2c547694de
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-database-security-overview"></a>Azure-adatbázis biztonsági áttekintése
 
@@ -99,14 +99,14 @@ Ezenkívül mindig titkosítja hajt végre titkosítás átlátható alkalmazás
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 A biztonság garantálása érdekében az SQL Database IP-cím alapján történő kapcsolatkorlátozást érvényesítő tűzfalszabályokkal, a felhasználói identitás igazolását megkövetelő hitelesítési mechanizmusokkal, illetve csak bizonyos műveletek és adatok elérését lehetővé tévő engedélyezési mechanizmusokkal vezérli a hozzáférést.
 
-### <a name="database-access"></a>Adatbázis-elérés
+### <a name="database-access"></a>Adatbázis-hozzáférés
 
 Az adatvédelem kezdődik a adatokhoz való hozzáférés szabályozása. Adatközpont meghibásodását az adatokat fizikai hozzáférés kezeli, amíg beállíthatja, hogy a tűzfal, a hálózati rétegben biztonság kezeléséhez. Akkor is hozzáférést bejelentkezések a hitelesítés konfigurálása és engedélyek a kiszolgáló és az adatbázis-szerepkörök meghatározása.
 
 Ez a szakasz a döntésről bővebben:
 
 -   Tűzfal és tűzfalszabályok
--   Authentication
+-   Hitelesítés
 -   Engedélyezés
 
 #### <a name="firewall-and-firewall-rules"></a>Tűzfal és tűzfalszabályok
@@ -115,14 +115,14 @@ A Microsoft Azure SQL Database egy relációs adatbázis-szolgáltatást nyújt 
 
 A [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) szolgáltatás 1433-as TCP-porton keresztül csak érhető el. Ha a helyi számítógépről szeretné elérni az SQL Database-t, akkor ellenőrizze, hogy az ügyfélszámítógépen lévő tűzfal engedélyezi-e a kimenő kommunikációt az 1433-as TCP-porton keresztül. Ha más alkalmazásoknak nincs szüksége rá, akkor blokkolja az 1433-as TCP-port bejövő kapcsolatait.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Hitelesítés
 
 Az SQL Database-hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való csatlakozáskor. Az SQL Database két hitelesítési típust támogat:
 
 -   **SQL-hitelesítés:** egyszeri bejelentkezési fiókot jön létre, amikor egy logikai SQL-példányhoz hoz létre, az SQL-adatbázis előfizető fiókja. Ez a fiók csatlakozik használatával [SQL Server-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (felhasználónév és jelszó). Ez a fiók rendszergazdának számít a logikai kiszolgáló példányán és a példányhoz csatolt összes felhasználói adatbázisban. Az előfizetői fiók engedélyei nem korlátozhatók. Ilyen fiókból csak egy létezhet.
 -   **Az Azure Active Directory-hitelesítés:** [az Azure Active Directory hitelesítési](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) identitásokkal az Azure Active Directoryban (Microsoft Azure SQL Database és az SQL Data Warehouse kapcsolódni egy mechanizmus Az Azure AD). Ez lehetővé teszi, hogy az adatbázis-felhasználók identitásainak kezelése a központilag.
 
-![Authentication](./media/azure-databse-security-overview/azure-database-fig2.png)
+![Hitelesítés](./media/azure-databse-security-overview/azure-database-fig2.png)
 
  Azure Active Directory-hitelesítés előnyei a következők:
   - SQL Server-hitelesítés helyett biztosít.
@@ -211,7 +211,7 @@ Biztonsági tisztviselő vagy más kijelölt rendszergazdák kérheti le az azon
 Az Azure Piactér olyan online alkalmazás- és szolgáltatáspiactér, amelyen az induló vállalkozások és a független szoftverszállítók kínálhatják megoldásaikat az Azure-szolgáltatásokat világszerte használó ügyfeleknek.
 Az Azure Piactér egyetlen platformban ötvözi a Microsoft Azure partneri rendszereit ügyfeleink és partnereink magasabb színvonalú kiszolgálása érdekében. Kattintson a [Itt](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1) áttekintő adatbázis biztonsági termékek Azure piactéren elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [az Azure SQL Database biztonságos](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial).
 - További információ [az Azure Security Center és az Azure SQL Database szolgáltatás](https://docs.microsoft.com/azure/security-center/security-center-sql-database).

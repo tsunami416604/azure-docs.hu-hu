@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2018
+ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 0bc24fb0206455c723acf5e6f4b82d82002f727c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9ba48a9072a85e7d8e6e9fb17957efbf27711df8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -103,7 +103,7 @@ Szolgáltatás egyszerű AAD alkalmazás jogkivonat hitelesítési módszer hasz
     - Alkalmazás kulcs
     - Bérlőazonosító
 
-2. **[Egy Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**  az Azure SQL Server az Azure portálon, ha még nem tette meg. Az AAD-rendszergazda lehet egy AAD felhasználó vagy csoport aad-ben. Ha a csoportban található MSI engedélyez egy rendszergazdai szerepkört, hagyja ki 3. és 4 alatt, a rendszergazda a DB teljes hozzáféréssel rendelkezik.
+2. **[Egy Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Server az Azure portálon, ha még nem tette meg. Az AAD-rendszergazda lehet egy AAD felhasználó vagy csoport aad-ben. Ha a csoportban található MSI engedélyez egy rendszergazdai szerepkört, hagyja ki 3. és 4 alatt, a rendszergazda a DB teljes hozzáféréssel rendelkezik.
 
 3. **Hozzon létre egy tartalmazott adatbázis-felhasználó a szolgáltatás egyszerű**, csatlakozzon a adatraktárát/amelyek át kívánja másolni az adatok például az SSMS használatával, az AAD-ben identitás rendelkezik legalább ALTER minden FELHASZNÁLÓNAK engedélyt, és a következő T-SQL végrehajtása . További tudnivalókért a tartalmazott adatbázis-felhasználót [Itt](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
     
@@ -114,7 +114,7 @@ Szolgáltatás egyszerű AAD alkalmazás jogkivonat hitelesítési módszer hasz
 4. **Adja meg a szükséges engedélyekkel a szolgáltatás egyszerű** szokásos módon az SQL-felhasználók, pl. alatt végrehajtásával:
 
     ```sql
-    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your application name];
     ```
 
 5. ADF konfigurálja az Azure SQL Data Warehouse társított szolgáltatás.
@@ -151,6 +151,9 @@ Szolgáltatás egyszerű AAD alkalmazás jogkivonat hitelesítési módszer hasz
 
 Egy adat-előállító társítható egy [-identitás (MSI)](data-factory-service-identity.md), amely jelenti, hogy az adott adat-előállítóban. A szolgáltatásidentitás használhatja az Azure SQL Data Warehouse-hitelesítést, amely lehetővé teszi, hogy a kijelölt gyári való hozzáférés és a/az adatraktár.
 
+> [!IMPORTANT]
+> Vegye figyelembe a PolyBase jelenleg nem támogatott a MSI authentcation.
+
 Használja az MSI-alapú AAD alkalmazás tokent használó hitelesítés, kövesse az alábbi lépéseket:
 
 1. **Hozzon létre egy csoportot az Azure ad-ben, és adja hozzá a gyári MSI a csoport**.
@@ -163,7 +166,7 @@ Használja az MSI-alapú AAD alkalmazás tokent használó hitelesítés, köves
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Egy Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**  az Azure SQL Server az Azure portálon, ha még nem tette meg.
+2. **[Egy Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Server az Azure portálon, ha még nem tette meg.
 
 3. **Hozzon létre egy tartalmazott adatbázis-felhasználót az AAD-csoport**, csatlakozzon a adatraktárát/amelyek át kívánja másolni az adatok például az SSMS használatával, az AAD-ben identitás rendelkezik legalább ALTER minden FELHASZNÁLÓNAK engedélyt, és a következő T-SQL végrehajtása. További tudnivalókért a tartalmazott adatbázis-felhasználót [Itt](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
     
@@ -174,7 +177,7 @@ Használja az MSI-alapú AAD alkalmazás tokent használó hitelesítés, köves
 4. **Adja meg a szükséges engedélyekkel az AAD-csoport** szokásos módon az SQL-felhasználók, pl. alatt végrehajtásával:
 
     ```sql
-    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
 5. ADF konfigurálja az Azure SQL Data Warehouse társított szolgáltatás.
@@ -381,7 +384,7 @@ Használatával **[PolyBase](https://docs.microsoft.com/sql/relational-databases
 * Ha a forrás-tárolót és formátum eredetileg nem támogatott a PolyBase által, használhatja a **[előkészített másolása a PolyBase használatával](#staged-copy-using-polybase)** inkább a beállítást. Is biztosít, nagyobb átviteli sebesség automatikusan adatok PolyBase-kompatibilis formátumra való konvertálása, és az adatok tárolása az Azure Blob Storage tárolóban. Majd betölti az SQL Data Warehouse-adatok.
 
 > [!IMPORTANT]
-> Megjegyzés: a PolyBase csak támogatja az Azure SQL Data Warehouse SQL authentcation viszont nem az Azure Active Directory-hitelesítés.
+> Megjegyzés: a PolyBase jelenleg nem támogatott felügyelt szolgáltatás identitásának (MSI) alapú token authentcation AAD-alkalmazást.
 
 ### <a name="direct-copy-using-polybase"></a>A PolyBase használatával közvetlen másolása
 

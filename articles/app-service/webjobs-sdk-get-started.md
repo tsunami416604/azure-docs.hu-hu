@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 324b578a7736719eb953cab4eca4e9a3e9bfa35d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: b1de898ec4f661c54b5227367ad416a5edec80ed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-the-webjobs-sdk"></a>Ismerkedés a WebJobs SDK-val
 
@@ -293,7 +293,7 @@ Ebben a szakaszban most felépíti és a projekt helyi futtatása és indul el, 
 
 ## <a name="add-application-insights-logging"></a>Az Application Insights naplózási hozzáadása
 
-Futtatásakor a projektet az Azure-ban, a függvény végrehajtása nem tud figyelni a konzol kimeneti megtekintésével. A figyelési megoldást javasoljuk, hogy van [Application Insights](../application-insights/app-insights-overview.md). A telemetriai adatokat eljárásai hasonlóak [figyelése az Azure Functions](../azure-functions/functions-monitoring.md#view-telemetry-data).
+Futtatásakor a projektet az Azure-ban, a függvény végrehajtása nem tud figyelni a konzol kimeneti megtekintésével. A figyelési megoldást javasoljuk, hogy van [Application Insights](../application-insights/app-insights-overview.md). További információkért lásd: [figyelése az Azure Functions](../azure-functions/functions-monitoring.md).
 
 Ebben a szakaszban hajtsa végre az Application Insights-naplózás előtt telepítse az Azure beállítása a következő feladatokat:
 

@@ -1,9 +1,9 @@
 ---
-title: "Elemzés - a hatékony keresési eszköz az Azure Application Insights segítségével |} Microsoft Docs"
-description: "Az elemzés, az Application Insights a hatékony diagnosztikai keresési eszköz használatával. "
+title: Elemzés - a hatékony keresési eszköz az Azure Application Insights segítségével |} Microsoft Docs
+description: 'Az elemzés, az Application Insights a hatékony diagnosztikai keresési eszköz használatával. '
 services: application-insights
-documentationcenter: 
-author: danhadari
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: c3b34430-f592-4c32-b900-e9f50ca096b3
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
-ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="using-analytics-in-application-insights"></a>Az Application Insightsban Analytics használatával
 [Elemzés](app-insights-analytics.md) a hatékony keresési funkciója [Application Insights](app-insights-overview.md). Ezeken a lapokon a Log Analytics lekérdezési nyelv ismertetik.
@@ -109,7 +109,7 @@ Ha úgy gondolja, hogy nem minden, a várt eredményt is lát, van néhány lehe
 
   * [TOP 100 alapján időbélyeg](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) 
   * [100 igénybe](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/take-operator)
-  * [összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
+  * [Összefoglalója ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
   * [Ha időbélyeg > ago(3d)](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)
 
 (Több mint 10 KB-os sor szeretné? Érdemes lehet [a folyamatos exportálás](app-insights-export-telemetry.md) helyette. Elemzés készült elemzés, nem pedig nyers adatok lekérése során.)
@@ -184,7 +184,7 @@ Szerezzen be egy hivatkozást a **exportálás megosztás hivatkozás** , amely 
 (A hivatkozás a lekérdezés szövegének után jelenik meg "? q =", gzip tömörített és base-64 kódolású. Kód létrehozásához adja meg a felhasználóknak mélyhivatkozással lehet írni. Azonban az ajánlott módszer kódból Analytics futtatásához segítségével el a [REST API](https://dev.applicationinsights.io/).)
 
 
-## <a name="automation"></a>Automatizálás
+## <a name="automation"></a>Automation
 
 Használja a [Data Access REST API](https://dev.applicationinsights.io/) elemzési lekérdezések futtatásához. [Például](https://dev.applicationinsights.io/apiexplorer/query?appId=DEMO_APP&apiKey=DEMO_KEY&query=requests%0A%7C%20where%20timestamp%20%3E%3D%20ago%2824h%29%0A%7C%20count) (a PowerShell használatával):
 

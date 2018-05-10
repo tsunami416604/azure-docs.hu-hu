@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 35877831c7f63c20fee2f2bc3838e73bb98328c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4e7b7b6af1f41eb0077d8a8605eb2a553c251f8e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-kimenő/fan-a forgatókönyv tartós funkciókkal – felhő biztonsági mentési – példa
 
@@ -57,7 +57,13 @@ A `E2_BackupSiteContent` függvény használja a normál *function.json* az orch
 
 A kód, amely megvalósítja az orchestrator függvény itt látható:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
 Az orchestrator függvény alapvetően a következőket teszi:
 
@@ -67,9 +73,11 @@ Az orchestrator függvény alapvetően a következőket teszi:
 4. Minden feltöltések befejezéséhez vár.
 5. Az összeg összes bájt, amely az Azure Blob Storage töltődtek adja vissza.
 
-Figyelje meg a `await Task.WhenAll(tasks);` sor. Minden a hívások a `E2_CopyFileToBlob` függvény volt *nem* rá várakozni. Ez a szándékos és párhuzamosan futnak. Ha azt át a feladatok tömbje `Task.WhenAll`, azt vissza egy feladat, amelyik nem fejeződött be *mindaddig, amíg a másolási műveletek befejeződtek*. Ha ismeri az a feladat párhuzamos könyvtár (TPL) a .NET, akkor ez nem új Önnek. Az különbség, hogy ezeket a feladatokat egyszerre több virtuális gépeken volt futnia, és a tartós funkciók bővítmény biztosítja, hogy a végpont végrehajtási rugalmasak folyamatok újrahasznosítása.
+Figyelje meg a `await Task.WhenAll(tasks);` (C#) és `yield context.df.Task.all(tasks);` (JS) sor. Minden a hívások a `E2_CopyFileToBlob` függvény volt *nem* rá várakozni. Ez a szándékos és párhuzamosan futnak. Ha azt át a feladatok tömbje `Task.WhenAll`, azt vissza egy feladat, amelyik nem fejeződött be *mindaddig, amíg a másolási műveletek befejeződtek*. Ha ismeri az a feladat párhuzamos könyvtár (TPL) a .NET, akkor ez nem új Önnek. Az különbség, hogy ezeket a feladatokat egyszerre több virtuális gépeken volt futnia, és a tartós funkciók bővítmény biztosítja, hogy a végpont végrehajtási rugalmasak folyamatok újrahasznosítása.
 
-A várakozás után `Task.WhenAll`, tudjuk, hogy minden függvényhívások befejeződött, és vissza kellett volna értékek biztonsági másolatot a számunkra. Minden egyes `E2_CopyFileToBlob` bájtok száma töltheti fel, így a teljes összeg bájtszáma kiszámítása kell mindazokat az értékeket együtt visszaadni hozzáadása értéket ad vissza.
+Feladatok nagyon hasonlóak a tett JavaScript fogalmát. Azonban `Promise.all` van néhány különbség a `Task.WhenAll`. A fogalom `Task.WhenAll` részeként a keresztül legelterjedtebb a `durable-functions` JavaScript modul, és csak azt.
+
+A várakozás után `Task.WhenAll` (vagy a készítésére `context.df.Task.all`), tudjuk, hogy minden függvényhívások befejeződött, és vissza kellett volna értékek biztonsági másolatot a számunkra. Minden egyes `E2_CopyFileToBlob` bájtok száma töltheti fel, így a teljes összeg bájtszáma kiszámítása kell mindazokat az értékeket együtt visszaadni hozzáadása értéket ad vissza.
 
 ## <a name="helper-activity-functions"></a>Tevékenység súgófunkciókat
 
@@ -79,7 +87,15 @@ Tevékenység súgófunkciókat, csakúgy, mint a más minták olyan csak rendsz
 
 És itt végrehajtására:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
+
+JavaScript végrehajtása `E2_GetFileList` használja a `readdirp` rekurzív módon modult, olvassa el a könyvtárstruktúra.
 
 > [!NOTE]
 > Miért, nem csupán helyezték ezt a kódot közvetlenül az orchestrator függvény talán kíváncsi. Ön volt, de ez egyik feladatokat az orchestrator az alapvető szabály, amely, hogy azok soha nem kell tennie i/o, beleértve a helyi fájlrendszer elérése megszűnését.
@@ -88,9 +104,17 @@ A *function.json* fájlt `E2_CopyFileToBlob` hasonlóképpen egyszerű:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-A megvalósítás egyben közérthető egyszerű. Történik, használhatja néhány speciális szolgáltatások az Azure Functions kötések (Ez azt jelenti, hogy a használatát a `Binder` paraméter), de nem kell foglalkoznia a bemutató céljából adatai.
+A C# megvalósítási egyben közérthető egyszerű. Történik, használhatja néhány speciális szolgáltatások az Azure Functions kötések (Ez azt jelenti, hogy a használatát a `Binder` paraméter), de nem kell foglalkoznia a bemutató céljából adatai.
+
+### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+JavaScript végrehajtása nem rendelkezik hozzáféréssel a `Binder` funkció az Azure Functions szolgáltatásról, ezért a [Azure Storage szolgáltatás SDK csomópont](https://github.com/Azure/azure-storage-node) a történik. Vegye figyelembe, hogy az SDK-t igényel egy `AZURE_STORAGE_CONNECTION_STRING` Alkalmazásbeállítás.
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
 A megvalósítás betölti a fájlt a lemezről, és aszinkron módon adatfolyamokat be a "biztonsági mentések" tárolóban azonos nevű blob tartalma. A visszatérési érték a tárhelyet, majd az orchestrator függvény által a teljes összeg kiszámításához másolandó bájtok száma.
 

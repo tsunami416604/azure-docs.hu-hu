@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 25a68fb535300e80efdf2adf9f3a8afe1b304667
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -34,7 +34,7 @@ Munkaterület létrehozásához az alábbiak szükségesek:
 ## <a name="determine-the-number-of-workspaces-you-need"></a>A szükséges munkaterületek számának meghatározása
 A munkaterület egy Azure-erőforrás, továbbá egy tároló is, amelyben az adatok összegyűjtése, összesítése, elemzése és az Azure Portalon való megjelenítése történik.
 
-Azure-előfizetésenként több munkaterülettel rendelkezhet, és több munkaterülethez is hozzáférhet. Korábban csak az aktuális munkaterületen belüli adatokat lehetett elemezni, ami korlátozta az előfizetésben megadott többi munkaterület lekérdezését. Most már [több munkaterületről hajthat végre lekérdezést](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search), így a teljes rendszerre kiterjedően megtekintheti az adatait. Ez a szakasz azt ismerteti, hogy mikor lehet hasznos egynél több munkaterület létrehozása.
+Azure-előfizetésenként több munkaterülettel rendelkezhet, és több munkaterülethez is hozzáférhet. Korábban csak az aktuális munkaterületen belüli adatokat lehetett elemezni, ami korlátozta az előfizetésben megadott többi munkaterület lekérdezését. Most már [több munkaterületről hajthat végre lekérdezést](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search), így a teljes rendszerre kiterjedően megtekintheti az adatait. Ez a szakasz azt ismerteti, hogy mikor lehet hasznos egynél több munkaterület létrehozása.
 
 A munkaterületek jelenleg a következőket biztosítják:
 

@@ -1,18 +1,18 @@
 ---
-title: "Események fogadása Azure esemény rács egy HTTP-végpont"
-description: "Ismerteti, hogyan lehet HTTP-végponttal, akkor kap, és ellenőrizheti deszerializálni Azure esemény rácsban események"
+title: Események fogadása Azure esemény rács egy HTTP-végpont
+description: Ismerteti, hogyan lehet HTTP-végponttal, akkor kap, és ellenőrizheti deszerializálni Azure esemény rácsban események
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: 179f7c46186762eed2f7f8ac90620ac2fec9caf3
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
-ms.translationtype: MT
+ms.openlocfilehash: db79629c5f806fe50d22200574c29052a485dd06
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
@@ -27,9 +27,9 @@ Ez a cikk ismerteti, hogyan [ellenőrzése HTTP-végponttal](security-authentica
 
 ## <a name="add-dependencies"></a>Adja hozzá a függőségek
 
-A .net, fejlesztői [hozzáadjon egy függőséget](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) a függvénynek a a `Microsoft.Azure.EventGrid` [Nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). SDK-k más nyelveken érhetők el a [közzététele SDK-k](./sdk-overview.md#publish-sdks) hivatkozás. Ezek a csomagok tartalmaznak, mint a modelleket a natív eseménytípusok `EventGridEvent`, `StorageBlobCreatedEventData`, és `EventHubCaptureFileCreatedEventData`.
+A .NET, fejlesztői [hozzáadjon egy függőséget](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) a függvénynek a a `Microsoft.Azure.EventGrid` [Nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). SDK-k más nyelveken érhetők el a [közzététele SDK-k](./sdk-overview.md#data-plane-sdks) hivatkozás. Ezek a csomagok tartalmaznak, mint a modelleket a natív eseménytípusok `EventGridEvent`, `StorageBlobCreatedEventData`, és `EventHubCaptureFileCreatedEventData`.
 
-Ehhez az szükséges, az Azure-függvény (jobb oldali legtöbb ablaktáblán az az Azure functions portálon) a "Nézet fájlok" hivatkozásra, és hozzon létre egy project.json nevű fájlt. Adja hozzá a következő tartalmat a `project.json` fájlt, és mentse azt:
+Az Azure-függvény (jobb oldali legtöbb ablaktáblán az az Azure functions portálon) a "Nézet fájlok" hivatkozásra, és hozzon létre egy project.json nevű fájlt. Adja hozzá a következő tartalmat a `project.json` fájlt, és mentse azt:
 
  ```json
 {
@@ -41,19 +41,17 @@ Ehhez az szükséges, az Azure-függvény (jobb oldali legtöbb ablaktáblán az
     }
    }
 }
-
 ```
 
-![A hozzáadott Nuget-csomag](./media/receive-events/add-dependencies.png)
+![A hozzáadott NuGet-csomag](./media/receive-events/add-dependencies.png)
 
 ## <a name="endpoint-validation"></a>Végpont érvényesítése
 
-Elsőként azt szeretné, akkor kezeli `Microsoft.EventGrid.SubscriptionValidationEvent` események. Minden alkalommal, amikor egy új Eseményelőfizetés jön létre, esemény rács küld egy érvényesítési esemény a végpont egy `validationCode` az adatokat tartalmaz. A végpont nem szükséges ebben a az adott válasz törzsének az echo [igazolnia a végpont nem érvényes, és a tulajdonosuk](security-authentication.md#webhook-event-delivery). Ha használ egy [rács eseményindító](../azure-functions/functions-bindings-event-grid.md) helyett egy WebHook működésbe. a függvény végpont érvényesítésről meg.
+Először is meg szeretné akkor kezeli `Microsoft.EventGrid.SubscriptionValidationEvent` események. Minden alkalommal, amikor valaki előfizet egy eseményt, esemény rács küld egy érvényesítési esemény a végpont egy `validationCode` az adatokat tartalmaz. A végpont nem szükséges ebben a az adott válasz törzsének az echo [igazolnia a végpont nem érvényes, és a tulajdonosuk](security-authentication.md#webhook-event-delivery). Ha használ egy [rács eseményindító](../azure-functions/functions-bindings-event-grid.md) helyett egy WebHook működésbe. a függvény végpont érvényesítésről meg. Ha egy külső API szolgáltatását használja (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), előfordulhat, hogy nem fogja tudni a Ellenőrzőkód programozottan echo. Ezek a szolgáltatások esetén manuálisan ellenőrizheti az előfizetés az előfizetés érvényesítése esemény küldött érvényesítési URL-cím. Másolja az URL-címet a `validationUrl` tulajdonság, majd küldje el egy GET kérelem a többi ügyfél, illetve a webböngésző keresztül.
 
-Az alábbi kód használatával kezeli az előfizetés érvényesítése:
+A Ellenőrzőkód programozottan echo, használja a következő kódot:
 
 ```csharp
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -102,7 +100,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 
 module.exports = function (context, req) {
@@ -122,7 +119,6 @@ module.exports = function (context, req) {
     }
     context.done();
 };
-
 ```
 
 ### <a name="test-validation-response"></a>Érvényesítési válasz tesztelése
@@ -130,7 +126,6 @@ module.exports = function (context, req) {
 A érvényesítési válasz függvény tesztelése a teszt mezőbe, a függvény a mintaesemény beillesztésével:
 
 ```json
-
 [{
   "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -143,7 +138,6 @@ A érvényesítési válasz függvény tesztelése a teszt mezőbe, a függvény
   "metadataVersion": "1",
   "dataVersion": "1"
 }]
-
 ```
 
 Ha a Futtatás gombra kattint, a kimeneti le kell 200 OK és `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` törzsében:
@@ -152,10 +146,9 @@ Ha a Futtatás gombra kattint, a kimeneti le kell 200 OK és `{"ValidationRespon
 
 ## <a name="handle-blob-storage-events"></a>A Blob storage-események kezelésére
 
-Azt most kiterjesztheti a függvény kezelésére `Microsoft.Storage.BlobCreated`:
+Most tegyük kiterjesztése kezelésére függvény `Microsoft.Storage.BlobCreated`:
 
 ```cs
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -211,7 +204,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 
 module.exports = function (context, req) {
@@ -245,7 +237,6 @@ module.exports = function (context, req) {
 Az új funkciókat, a függvény tesztelése tegyen egy [Blob storage esemény](./event-schema-blob-storage.md#example-event) a teszt pedig fut:
 
 ```json
-
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/xstoretestaccount",
   "subject": "/blobServices/default/containers/testcontainer/blobs/testfile.txt",
@@ -269,23 +260,21 @@ Az új funkciókat, a függvény tesztelése tegyen egy [Blob storage esemény](
   "dataVersion": "",
   "metadataVersion": "1"
 }]
-
 ```
 
 Az függvényt tartalmaz a blob URL-cím kimenetnek kell megjelennie:
 
 ![Kimeneti naplót](./media/receive-events/blob-event-response.png)
 
-Azt is tesztelni az élő out, hozzon létre egy Blob storage-fiók vagy általános célú V2 (GPv2) Storage-fiók esetén [hozzáadásával és az esemény előfizetés](../storage/blobs/storage-blob-event-quickstart.md), és a végpont beállítása a függvény URL-cím:
+Azt is tesztelni, hozzon létre egy Blob storage-fiók vagy általános célú V2 (GPv2) Storage-fiók esetén [hozzáadásával és az esemény előfizetés](../storage/blobs/storage-blob-event-quickstart.md), és a végpont beállítása a függvény URL-cím:
 
 ![Függvény URL-címe](./media/receive-events/function-url.png)
 
 ## <a name="handle-custom-events"></a>Egyéni események kezelésére
 
-Végezetül lehetővé teszi, hogy a funkció még egyszer kiterjesztése az, hogy az egyéni események is kezelni tud. Azt a-ellenőrzéssel kell kiegészíteni saját esemény `Contoso.Items.ItemReceived`. A végső kódot kell kinéznie:
+Végezetül lehetővé teszi, hogy a funkció még egyszer kiterjesztése az, hogy az egyéni események is kezelni tud. Egy esemény-ellenőrzéssel kell kiegészíteni `Contoso.Items.ItemReceived`. A végső kódot hasonlóan kell kinéznie:
 
 ```cs
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -354,7 +343,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 var t = require('tcomb');
 
@@ -401,7 +389,6 @@ module.exports = function (context, req) {
 Végül tesztelheti, hogy a bővített függvény már tudja kezelni az egyéni esemény típusa:
 
 ```json
-
 [{
     "subject": "Contoso/foo/bar/items",
     "eventType": "Microsoft.EventGrid.CustomEventType",
@@ -415,7 +402,6 @@ Végül tesztelheti, hogy a bővített függvény már tudja kezelni az egyéni 
     "dataVersion": "",
     "metadataVersion": "1"
 }]
-
 ```
 
 Is tesztelheti ezt a funkciót élő által [CURL az egyéni esemény küldése a portálról](./custom-event-quickstart-portal.md) vagy [egy egyéni témához könyvelési](./post-to-custom-topic.md) használatával olyan szolgáltatást vagy alkalmazást, amely egy olyan végpont például KÜLDHET[Postman](https://www.getpostman.com/). Hozzon létre egy egyéni témakör és egy esemény-előfizetést állítja be a függvény URL-címet a végpont.

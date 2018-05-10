@@ -1,11 +1,10 @@
 ---
-title: "Az Azure Application Insights SQL exportálása |} Microsoft Docs"
-description: "Application Insights adatainak folyamatos exportálása Stream Analytics használ SQL."
+title: Az Azure Application Insights SQL exportálása |} Microsoft Docs
+description: Application Insights adatainak folyamatos exportálása Stream Analytics használ SQL.
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
-editor: mrbullwinkle
 ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
 ms.service: application-insights
 ms.workload: tbd
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
 ms.author: mbullwin
-ms.openlocfilehash: 8d008727d964df56d128265b632dafa4ab776f98
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: e410bb87d017a7659c3eaffbedef378aaf7f5716
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Forgatókönyv: Az Application Insights Stream Analytics használ SQL exportálása
 Ez a cikk bemutatja, hogyan kívánja áthelyezni a telemetriai adatokat a [Azure Application Insights] [ start] használatával az Azure SQL adatbázishoz [a folyamatos exportálás] [ export] és [az Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -171,10 +170,10 @@ Az elérési út előtag mintája határozza meg, hogyan Stream Analytics keress
 
 Ebben a példában:
 
-* `webapplication27`Application Insights-erőforrások, neve **minden a nagybetűs**. 
-* `1234...`az Application Insights-erőforrások instrumentation kulcsa **az eltávolított kötőjelek**. 
-* `PageViews`az adatok elemzéséhez szeretnénk típusa van. A használható típusok a folyamatos exportálás beállítása szűrő függ. Vizsgálja meg az exportált adatok megtekintéséhez a használható típusok, és tekintse meg a [exportálja az adatokat az adatmodellbe](app-insights-export-data-model.md).
-* `/{date}/{time}`a minta írt szó.
+* `webapplication27` Application Insights-erőforrások, neve **minden a nagybetűs**. 
+* `1234...` az Application Insights-erőforrások instrumentation kulcsa **az eltávolított kötőjelek**. 
+* `PageViews` az adatok elemzéséhez szeretnénk típusa van. A használható típusok a folyamatos exportálás beállítása szűrő függ. Vizsgálja meg az exportált adatok megtekintéséhez a használható típusok, és tekintse meg a [exportálja az adatokat az adatmodellbe](app-insights-export-data-model.md).
+* `/{date}/{time}` a minta írt szó.
 
 Ahhoz, hogy a név és az Application Insights-erőforrás iKey, nyissa meg az Essentials az Áttekintés lap, vagy nyissa meg a beállításokat.
 

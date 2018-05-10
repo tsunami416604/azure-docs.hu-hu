@@ -9,17 +9,17 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d0a508f6430bd97e7c76aee686f4837acf246ad3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e4753cf0ffdedcc2ddc694fba67c560363789e3a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning egy IoT peremhálózati modulként telepítése – előzetes
 
-Az IoT-Edge modulok, amely megvalósítja az üzleti logikát, közvetlenül az IoT peremhálózati eszköz a kód telepítésére használhatja. Ez az oktatóanyag bemutatja, hogyan üzembe helyezése az Azure Machine Learning modulban, ha egy eszköz sikertelen a szimulált IoT peremhálózati eszközön létrehozott érzékelőadatait alapján előrejelzi a [telepítése Azure IoT Edge a szimulált eszköz Windows] [ lnk-tutorial1-win] vagy [Linux] [ lnk-tutorial1-lin] oktatóanyagok. 
+Az IoT-Edge modulok, amely megvalósítja az üzleti logikát, közvetlenül az IoT peremhálózati eszköz a kód telepítésére használhatja. Ez az oktatóanyag bemutatja, hogyan üzembe helyezése az Azure Machine Learning modulban, ha egy eszköz sikertelen a szimulált IoT peremhálózati eszközön létrehozott érzékelőadatait alapján előrejelzi a [telepítése Azure IoT Edge a szimulált eszköz Windows] [ lnk-tutorial1-win] vagy [Linux] [ lnk-tutorial1-lin] oktatóanyagok.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure Machine Learning-modul
@@ -27,28 +27,28 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az IoT-peremhálózati eszköz egy Azure Machine Learning-modul telepítése
 > * A létrejött adatok megtekintése
 
-Az Azure Machine Learning modul, amely ebben az oktatóanyagban létrehozhat az eszköz állítja elő a környezeti adatokat olvas, és a feliratok rendellenes tevékenységként ismeri az üzeneteket, vagy nem. 
+Az Azure Machine Learning modul, amely ebben az oktatóanyagban létrehozhat az eszköz állítja elő a környezeti adatokat olvas, és a feliratok rendellenes tevékenységként ismeri az üzeneteket, vagy nem.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Azure IoT peremhálózati eszköz, a gyors üzembe helyezés vagy első oktatóanyaga, amely létrehozta.
 * Az IoT hub, amely az IoT-peremhálózati eszköz csatlakozik az IoT-központ kapcsolati karakterláncát.
-* Egy Azure Machine Learning-fiók. Fiók létrehozásához kövesse a [létrehozása az Azure Machine Learning fiókok, és telepítse az Azure Machine Learning-munkaterület](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nem kell telepíteni a munkaterületet üzemeltető alkalmazás ehhez az oktatóanyaghoz. 
+* Egy Azure Machine Learning-fiók. Fiók létrehozásához kövesse a [létrehozása az Azure Machine Learning fiókok, és telepítse az Azure Machine Learning-munkaterület](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nem kell telepíteni a munkaterületet üzemeltető alkalmazás ehhez az oktatóanyaghoz.
 * Modul kezelése az Azure ML a számítógépen. Állítsa be a környezetet, és hozzon létre egy fiókot, kövesse az utasításokat a [modell kezelésének beállítása](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration).
 
-Az Azure Machine Learning modul nem támogatja a ARM processzor. 
+Az Azure Machine Learning modul nem támogatja a ARM processzor.
 
 ## <a name="create-the-azure-ml-container"></a>Az Azure ML-tároló létrehozása
-Ebben a szakaszban a betanított modell fájlok letöltéséhez, és alakíthatja át őket az Azure ML-tárolóba.  
+Ebben a szakaszban a betanított modell fájlok letöltéséhez, és alakíthatja át őket az Azure ML-tárolóba.
 
-Azon a számítógépen, amelyen a modul kezelése az Azure ML, töltse le és mentse [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) és [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) az az Azure ML IoT eszközkészlet a Githubon. Ezek a fájlok határozza meg azt a betanított gépi tanulási modellt az Iot-peremhálózati eszközön telepíteni. 
+Azon a számítógépen, amelyen a modul kezelése az Azure ML, töltse le és mentse [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) és [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) az az Azure ML IoT eszközkészlet a Githubon. Ezek a fájlok határozza meg azt a betanított gépi tanulási modellt az Iot-peremhálózati eszközön telepíteni.
 
 A betanított modell segítségével hozzon létre olyan tároló, amely IoT peremeszközök telepíthetők. Az alábbi parancsot használja:
 
    * A modell regisztrálni.
    * Hozzon létre egy jegyzéket.
    * Hozzon létre egy Docker-tároló nevű kép *machinelearningmodule*.
-   * A lemezkép központi telepítését az Azure-tároló szolgáltatás (AKS) fürthöz.
+   * A lemezkép központi telepítését az Azure Kubernetes szolgáltatás (AKS) fürthöz.
 
 ```cmd
 az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
@@ -72,12 +72,12 @@ Adja hozzá az Edge-futtatókörnyezethez a beállításjegyzék hitelesítő ad
 
 Linux:
    ```cmd
-   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password> 
+   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
    ```
 
 Windows:
    ```cmd
-   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password> 
+   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password>
    ```
 
 ## <a name="run-the-solution"></a>A megoldás futtatása
@@ -96,7 +96,7 @@ Windows:
     1. Az a **kép** mezőbe írja be a kép címét, például `<registry_name>.azurecr.io/machinelearningmodule:1`.
     1. Kattintson a **Mentés** gombra.
 1. Az **Add Modules** (Modulok hozzáadása) lépésben kattintson a **Next** (Tovább) gombra.
-1. Az **Útvonalak megadása** lépésben másolja az alábbi JSON-t a szövegmezőbe. Az első útvonal szállításokkal a hőmérséklet-érzékelő üzeneteit a machine learning modulra "amlInput" végpont keresztül ez az a végpont, amelyek az összes Azure Machine Learning modulok használják. A második útvonal szállításokkal üzenetek IoT-központ a machine learning modulban. Ez az útvonal "amlOutput". a végpont, amelyek az összes Azure Machine Learning modulok kimeneti adatai, és "előtt$" jelöli az IoT-központ. 
+1. Az **Útvonalak megadása** lépésben másolja az alábbi JSON-t a szövegmezőbe. Az első útvonal szállításokkal a hőmérséklet-érzékelő üzeneteit a machine learning modulra "amlInput" végpont keresztül ez az a végpont, amelyek az összes Azure Machine Learning modulok használják. A második útvonal szállításokkal üzenetek IoT-központ a machine learning modulban. Ez az útvonal "amlOutput". a végpont, amelyek az összes Azure Machine Learning modulok kimeneti adatai, és "előtt$" jelöli az IoT-központ.
 
     ```json
     {
@@ -105,24 +105,24 @@ Windows:
             "machineLearningToIoTHub": "FROM /messages/modules/machinelearningmodule/outputs/amlOutput INTO $upstream"
         }
     }
-    ``` 
+    ```
 
-1. Kattintson a **Tovább** gombra. 
-1. A **Sablon áttekintése** lépésben válassza a **Küldés** lehetőséget. 
+1. Kattintson a **Tovább** gombra.
+1. A **Sablon áttekintése** lépésben válassza a **Küldés** lehetőséget.
 1. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre.  Láthatja, hogy az új **machinelearningmodule** fut, valamint a **tempSensor** modul és a IoT peremhálózati futásidejű modult.
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-Megtekintheti az eszközről a felhőbe üzeneteket, amelyek az IoT-peremhálózati eszköz használatával küld a [IoT-központ explorer](https://github.com/azure/iothub-explorer) vagy a Visual Studio Code Azure IoT eszközkészlet kiterjesztését. 
+Megtekintheti az eszközről a felhőbe üzeneteket, amelyek az IoT-peremhálózati eszköz használatával küld a [IoT-központ explorer](https://github.com/azure/iothub-explorer) vagy a Visual Studio Code Azure IoT eszközkészlet kiterjesztését.
 
-1. A Visual Studio Code, válassza ki **IoT Hub-eszközöknek**. 
-2. Válassza ki **...**  válassza **IoT Hub kapcsolati karakterlánc beállítása** a menüből. 
+1. A Visual Studio Code, válassza ki **IoT Hub-eszközöknek**.
+2. Válassza ki **...**  válassza **IoT Hub kapcsolati karakterlánc beállítása** a menüből.
 
    ![Az IoT Hub-eszközöknek további menü](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. A lap tetején megjelenik a szövegmezőben adjon meg az IoT Hub a iothubowner kapcsolati karakterláncot. Az IoT-peremhálózati eszköz meg kell jelennie az IoT Hub-eszközöknek listájában.
 4. Válassza ki **...**  újra, majd válassza ki **D2C üzenet figyelni**.
-5. Vizsgálja meg az üzeneteket, ötpercenként tempSensor érkező. Az üzenettörzs tartalmazza a tulajdonságot, **anomáliadetektálási** a machinelearningmodule biztosító igaz vagy hamis értékű. A **AzureMLResponse** tulajdonsága tartalmazza az "OK" értéket, ha a modell már sikeresen futott. 
+5. Vizsgálja meg az üzeneteket, ötpercenként tempSensor érkező. Az üzenettörzs tartalmazza a tulajdonságot, **anomáliadetektálási** a machinelearningmodule biztosító igaz vagy hamis értékű. A **AzureMLResponse** tulajdonsága tartalmazza az "OK" értéket, ha a modell már sikeresen futott.
 
    ![Az üzenet törzse Azure ML válasz](./media/tutorial-deploy-machine-learning/ml-output.png)
 

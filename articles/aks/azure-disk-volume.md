@@ -1,6 +1,6 @@
 ---
-title: "Azure-lemezeket használata AKS"
-description: "Azure-lemezeket használata AKS"
+title: Azure-lemezeket használata AKS
+description: Azure-lemezeket használata AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a2f46aba80ad47335b7cd9b5e8d615c1d895cccb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 33d9a01f063ee8ad531a3f7e01dcfbf1c4ba8901
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="volumes-with-azure-disks"></a>Az Azure-lemezeket kötetek
 
-Tároló-alapú alkalmazások gyakran kell elérni, és egy külső adatmennyiség adatok megőrzéséhez. Azure-lemezeket a külső adattár használható. Ez a cikk adatokat Azure lemezzel Azure tároló szolgáltatás (AKS)-fürtben lévő Kubernetes kötetként.
+Tároló-alapú alkalmazások gyakran kell elérni, és egy külső adatmennyiség adatok megőrzéséhez. Azure-lemezeket a külső adattár használható. Ez a cikk adatokat Azure lemezzel Azure Kubernetes szolgáltatás (AKS)-fürtben lévő Kubernetes kötetként.
 
 Kubernetes köteteken további információkért lásd: [Kubernetes kötetek][kubernetes-volumes].
 
@@ -38,7 +38,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-Használja a [az lemez létrehozása] [ az-disk-create] parancsot lemezt az Azure létrehozásához. 
+Használja a [az lemez létrehozása] [ az-disk-create] parancsot lemezt az Azure létrehozásához.
 
 Ez a példa használ, frissítse `--resource-group` az erőforráscsoport nevét és `--name` az Ön által választott névre.
 
@@ -58,7 +58,7 @@ A lemez létrehozása, a következőhöz hasonló kimenetnek kell megjelennie. E
 
 ## <a name="mount-disk-as-volume"></a>Csatlakoztassa a lemezt kötetként
 
-A kötet konfigurálása a tároló spec csatlakoztassa azokat a pod lemezt az Azure. 
+A kötet konfigurálása a tároló spec csatlakoztassa azokat a pod lemezt az Azure.
 
 Hozzon létre egy új fájlt `azure-disk-pod.yaml` a következő tartalommal. Frissítés `diskName` nevű az újonnan létrehozott lemezt, és `diskURI` lemez azonosítóval. Továbbá jegyezze fel az a `mountPath`, amelynél a lemezt az Azure csatlakoztatva van a fogyasztanak elérési útja.
 

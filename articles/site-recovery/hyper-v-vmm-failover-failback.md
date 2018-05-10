@@ -1,24 +1,24 @@
 ---
-title: "A feladatátvétel és a sikertelen biztonsági Hyper-V virtuális gépek replikálása egy másodlagos adatközpontba Site Recovery szolgáltatással |} Microsoft Docs"
-description: "Megtudhatja, hogyan Hyper-V virtuális gépek feladatátvétele a másodlagos helyszíni helyre, és vissza az elsődleges hely, az Azure Site Recovery sikertelen"
+title: A feladatátvétel és a sikertelen biztonsági Hyper-V virtuális gépek replikálása egy másodlagos adatközpontba Site Recovery szolgáltatással |} Microsoft Docs
+description: Megtudhatja, hogyan Hyper-V virtuális gépek feladatátvétele a másodlagos helyszíni helyre, és vissza az elsődleges hely, az Azure Site Recovery sikertelen
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 3740ec9917499f6a1e87905befe86598a18f68e6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f4207b8def3a5cd240b7a3ecdffde34a27f2a833
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>A feladatátvétel, és sikertelen lesz a másodlagos helyszíni helyre replikált Hyper-V virtuális gépek biztonsági
 
 A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás kezeli, és koordinálja a replikációt, a feladatátvételi és a feladat-visszavétel a helyszíni gépeket, és az Azure virtuális gépek (VM).
 
-A cikk ismerteti, hogy áthelyezze a feladatokat a Hyper-V virtuális gépek kezelése a System Center Virtual Machine Manager (VMM) felhő, egy másodlagos VMM-helyre. A feladatátvétel után visszaadja a feladatokat a helyszíni helyre, amint az elérhetővé válik. Ebből a cikkből megismerheti, hogyan:
+A cikk ismerteti, hogy áthelyezze a feladatokat a Hyper-V virtuális gépek kezelése a System Center Virtual Machine Manager (VMM) felhő, egy másodlagos VMM-helyre. A feladatátvétel után visszaadja a feladatokat a helyszíni helyre, amint az elérhetővé válik. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Feladatok átadása a Hyper-V virtuális gépek egy elsődleges felhőből a VMM egy másodlagos VMM-felhő

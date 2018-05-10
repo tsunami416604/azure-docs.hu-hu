@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/05/2018
 ms.author: shlo
-ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: 0a321de96b26b183432a30868829081c1656be3f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Az Azure Data Factory keresési tevékenység
 Keresési tevékenység olvasására vagy külső forrásból kereshet egy rekord, a tábla neve vagy az érték használható. Erre a kimenetre a későbbi tevékenységek is hivatkozhatnak. 
@@ -31,22 +31,7 @@ Keresési tevékenység akkor hasznos, ha azt szeretné, dinamikusan egy konfigu
 
 A következő adatforrások jelenleg támogatott keresési:
 
-- Amazon Redshift
-- Azure Blob Storage
-- Azure Cosmos DB
-- Azure Data Lake Store
-- Az Azure File storage
-- Azure SQL Database
-- Azure SQL Data Warehouse
-- Azure Table Storage
-- Dynamics 365
-- Dynamics CRM
-- Fájlrendszer
-- PostgreSQL
-- Salesforce
-- Salesforce Service Cloud
-- SFTP
-- SQL Server
+[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
 A keresési tevékenység által visszaadott sorok maximális száma **5000**, és legfeljebb **10MB** mérete.
 
@@ -74,7 +59,7 @@ A keresési tevékenység által visszaadott sorok maximális száma **5000**, �
 Name (Név) | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
 Adatkészlet | Az adatkészlet-hivatkozásban biztosít a kereséshez. Beolvasása – részletek minden egyes megfelelő összekötő cikkben "Adatkészlet tulajdonságai" szakaszában. | Kulcs/érték pár | Igen
-forrás | Adatkészlet-specifikus forrás tulajdonságait, ugyanaz, mint a másolási tevékenység forrását tartalmazza. Beolvasása – részletek minden egyes megfelelő összekötő cikkben "Másolása a tevékenység tulajdonságai" szakaszában. | Kulcs/érték pár | Igen
+source | Adatkészlet-specifikus forrás tulajdonságait, ugyanaz, mint a másolási tevékenység forrását tartalmazza. Beolvasása – részletek minden egyes megfelelő összekötő cikkben "Másolása a tevékenység tulajdonságai" szakaszában. | Kulcs/érték pár | Igen
 firstRowOnly | Azt jelzi, hogy csak az első sor vagy az összes sor visszaadása. | Logikai | Nem. Az alapértelmezett szint a `true`.
 
 Vegye figyelembe a következő szempontokat:

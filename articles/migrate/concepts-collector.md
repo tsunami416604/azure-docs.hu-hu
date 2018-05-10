@@ -4,14 +4,14 @@ description: A gyűjtő készüléket és konfigurálásának áttekintése.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 05/03/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99f34bce942626cd931c9270192766cc76105f5b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="collector-appliance"></a>Adatgyűjtő-készülék
 
@@ -36,7 +36,7 @@ A lépéseket követve hozhat létre a gyűjtő ide - [a gyűjtő virtuális gé
 | -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
 | Gyűjtő      | Azure Migrate szolgáltatás | 443-as TCP                                  | Gyűjtő képes kommunikálni a szolgáltatás, az SSL-port 443-as porton keresztül kell lennie. |
 | Gyűjtő      | vCenter Server        | Alapértelmezett: 443                             | Kell, hogy a gyűjtő képes kommunikálni a vCenter-kiszolgáló. Alapértelmezés szerint csatlakozik a 443-as vCenter. Ha egy másik porton figyel a vCenter, ezt a portot, a gyűjtő kimenő port elérhetőnek kell lennie |
-| Gyűjtő      | RDP|   | TCP 3389 | Ahhoz, hogy a gyűjtő géppé RDP tudja |
+| Gyűjtő      | RDP|   | 3389-ES TCP | Ahhoz, hogy a gyűjtő géppé RDP tudja |
 
 
 
@@ -73,7 +73,7 @@ Az ellenőrzés emellett is megpróbálja ellenőrizni a kapcsolatot a következ
 *.oneget.org:443 | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul. | PowerCLI telepítése nem sikerül. A modul manuális telepítése.
 *.windows.net:443 | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul. | PowerCLI telepítése nem sikerül. A modul manuális telepítése.
 *.windowsazure.com:443 | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul. | PowerCLI telepítése nem sikerül. A modul manuális telepítése.
-*.powershellgallery.com:443 | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul. | PowerCLI telepítése nem sikerül. A modul manuális telepítése.
+*. powershellgallery.com:443 | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul. | PowerCLI telepítése nem sikerül. A modul manuális telepítése.
 *.msecnd.net:443 | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul. | PowerCLI telepítése nem sikerül. A modul manuális telepítése.
 *.visualstudio.com:443 | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul. | PowerCLI telepítése nem sikerül. A modul manuális telepítése.
 
@@ -89,7 +89,7 @@ A gyűjtő győződjön meg arról, a rendszer hitelesíti a kéréseket a inter
 
 Az Azure áttelepítése gyűjtő szolgáltatásának kell futnia a számítógépen. A szolgáltatás automatikusan elindul, amikor a gép elindul. Ha a szolgáltatás nem fut, megkezdheti a *Azure áttelepítése adatgyűjtő* szolgáltatás Vezérlőpulton. A gyűjtő szolgáltatás felelős a vCenter-kiszolgáló csatlakozik, a gép metaadatok és a teljesítmény adatok gyűjtéséhez és a szolgáltatásnak.
 
-### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5 
+### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5
 
 A VMware PowerCLI powershell-modul telepítve kell lennie, hogy a gyűjtő képes kommunikálni a vCenter-kiszolgáló és a lekérdezés megadása a gép összes adatát és a teljesítményadatokat. A powershell-modul automatikusan letölti és telepíti a előfeltétel-ellenőrzés. Automatikus letöltés szükséges néhány URL-címek szerepel az engedélyezési listán, vagy ha ez vagy meg kell adnia elérhet által engedélyezett, vagy manuálisan telepíteni a modult.
 
@@ -103,7 +103,7 @@ A modul telepítése manuálisan az alábbi lépéseket követve:
 
 A gyűjtő kell a vCenter-kiszolgálóhoz csatlakozni és tudja lekérdezni a virtuális gépet, a metaadatok és a teljesítményszámlálók. Ezeket az adatokat a projekt értékelését kiszámításához használt.
 
-1. A vCenter Server eléréséhez az alábbi táblázatban megadott engedélyekkel rendelkező egy csak olvasható fiók használható a felderítés végrehajtásakor. 
+1. A vCenter Server eléréséhez az alábbi táblázatban megadott engedélyekkel rendelkező egy csak olvasható fiók használható a felderítés végrehajtásakor.
 
     |Tevékenység  |Szükséges szerepkör/fiók  |Engedélyek  |
     |---------|---------|---------|
@@ -118,13 +118,13 @@ A gyűjtő kell a vCenter-kiszolgálóhoz csatlakozni és tudja lekérdezni a vi
 > Csak vCenter Server 5.5, 6.0 és 6.5 hivatalosan támogatott verzióival.
 
 > [!IMPORTANT]
-> Azt javasoljuk, hogy a számlálók megfelelően vannak összegyűjtött legnagyobb közös szintjének (3) a statisztika szint beállítása. Ha vCenter egy alacsonyabb szinten adja meg, csak néhány számlálók gyűjtik be teljesen, és a többi értéke 0. Az értékelés majd előfordulhat, hogy megjelenítése nem teljes adatokat. 
+> Azt javasoljuk, hogy a számlálók megfelelően vannak összegyűjtött legnagyobb közös szintjének (3) a statisztika szint beállítása. Ha vCenter egy alacsonyabb szinten adja meg, csak néhány számlálók gyűjtik be teljesen, és a többi értéke 0. Az értékelés majd előfordulhat, hogy megjelenítése nem teljes adatokat.
 
 ### <a name="selecting-the-scope-for-discovery"></a>A felderítési hatókörének megadása kiválasztása
 
 Miután csatlakozott a vCenter, kiválaszthatja a hatókör felderítéséhez. A hatókör kiválasztása deríti fel a megadott vCenter szoftverleltár elérési úton található összes virtuális gépet.
 
-1. A hatókör lehet egy adatközpontban, a mappa vagy ESXi-állomáson. 
+1. A hatókör lehet egy adatközpontban, a mappa vagy ESXi-állomáson.
 2. Egyszerre csak egy hatókör jelölhet ki. Válassza ki további virtuális gépek, végezze el az egyik felderítés, és indítsa újra a felderítési folyamatot az új hatókör.
 3. Jelölhet ki, amelynek hatókör *kisebb, mint 1500 virtuális gépek*.
 
@@ -141,14 +141,15 @@ Után elindul a felderítést, a vCenter virtuális gépek felderítése, és a 
 
 ### <a name="what-data-is-collected"></a>Összegyűjtött adatok?
 
-A feladat felderíti a következő statikus metaadatait a kiválasztott virtuális gépek. 
+A feladat felderíti a következő statikus metaadatait a kiválasztott virtuális gépek.
 
 1. Virtuális gép megjelenített neve (a vCenter)
 2. A virtuális gép szoftverleltár elérési útvonala (gazdagép vagy mappa a vCenter)
 3. IP-cím
 4. MAC-cím
+5. Operációs rendszer
 5. Magok, a lemezek, a hálózati adapterek száma
-6. RAM mérete
+6. Memória mérete, a lemez mérete
 7. És a virtuális gép, lemez és az alábbi táblázatban szereplő hálózati teljesítményszámlálók.
 
 A következő táblázat a teljesítményszámlálók gyűjtése, valamint is felsorolja az értékelési eredmények, amelyek érintettek, ha a számláló nem gyűjtött a program.
@@ -190,7 +191,7 @@ A gyűjtő a petesejtek ismét letöltése nélkül frissítheti a legújabb ver
 2. Győződjön meg arról, hogy a letöltött gyorsjavítás biztonságos, nyissa meg a rendszergazdai parancsablakot, és a ZIP-fájl a kivonat létrehozásához a következő parancsot. A generált kivonatoló meg kell felelnie a kettős kereszttel említett szemben az adott verzió:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
+
     (például használati C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256)
 3. A zip-fájl másolása az Azure adatgyűjtő virtuális gép áttelepítése (adatgyűjtő készülék).
 4. Kattintson a jobb gombbal a zip-fájl, és válassza ki az összes kibontása.

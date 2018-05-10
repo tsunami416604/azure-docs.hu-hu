@@ -1,24 +1,24 @@
 ---
-title: "A távoli felügyeleti megoldás - Azure beolvasása használatába |} Microsoft Docs"
-description: "Ez az oktatóanyag a távoli felügyeleti előkonfigurált megoldás bevezetése szimulált forgatókönyvek használja. Ezek a forgatókönyvek a távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez, először hoz létre."
-services: 
+title: A távoli felügyeleti megoldás - Azure beolvasása használatába |} Microsoft Docs
+description: Ez az oktatóanyag szimulált forgatókönyvek való telepítéséhez a távoli felügyeleti megoldásgyorsító használja. Ezek a forgatókönyvek jönnek létre, először a távoli felügyeleti megoldásgyorsító központi telepítésekor.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 720269ad22bfe4a7f5871c934be77b680627e2f7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás funkcióinak felfedezése
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>A távoli felügyeleti megoldásgyorsító lehetőségeinek felfedezése
 
 Ez az oktatóanyag bemutatja, hogy a távoli figyelési megoldást a főbb képességei. Ezek a képességek szemléltetésére az oktatóanyag ügyfél szolgáltatást használó általános forgatókönyvhöz IoT alkalmazás szimulált Contoso nevű vállalat bővíthető.
 
@@ -28,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 >[!div class="checklist"]
 > * Megjelenítheti és az irányítópult eszközök szűréséhez
-> * Egy riasztás válaszolni
+> * Riasztás válaszolni
 > * Az eszközök a belső vezérlőprogram frissítése
 > * Az eszközök rendszerezéséhez
 > * Állítsa le és indítsa el a szimulált eszköz
@@ -41,14 +41,14 @@ A következő videó bemutatja a távoli felügyeleti megoldás részletes útmu
 
 Az oktatóanyag elvégzéséhez kell a távoli felügyeleti megoldás telepített példányát az Azure-előfizetéshez.
 
-Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [a távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
+Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>A Contoso IoT üzembe helyezési minta
 
 Használhatja a Contoso IoT üzembe helyezési minta az alapvető forgatókönyv megérteni a távoli felügyeleti megoldás biztosítja, a-kész. Ezek a forgatókönyvek a valós IoT központi telepítések alapulnak. Nagy valószínűséggel lesznek szeretné testre szabhatja a távoli felügyeleti megoldás az adott igényeknek, de a Contoso minta segít az alapvető.
 
 > [!NOTE]
-> Ha a parancssori felület az előkonfigurált megoldás, a fájl központi telepítéséhez használt `deployment-{your deployment name}-output.json` központi telepítést végez a telepített minta eléréséhez URL-CÍMÉT például információkat tartalmaz.
+> Ha a parancssori felület a fájlt a megoldásgyorsító központi telepítéséhez használt `deployment-{your deployment name}-output.json` központi telepítést végez a telepített minta eléréséhez URL-CÍMÉT például információkat tartalmaz.
 
 A Contoso minta látja a szimulált eszköz és a szabályok meg őket. Miután megismerte az alapvető forgatókönyv, felfedezése több megoldás szolgáltatásainak folytathatja [végezze el a speciális eszközfigyelés a távoli felügyeleti megoldást használni](iot-suite-remote-monitoring-monitor.md).
 
@@ -65,9 +65,9 @@ A következő táblázat a kiépített eszköztípusok összegzését jeleníti 
 
 | Eszköztípus        | Telemetria                                  | Tulajdonságok                                  | Címkék                    | Metódusok                                                                                      |
 | ------------------ | ------------------------------------------ | ------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
-| Chiller            | Hőmérséklet, páratartalom, nyomás            | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, emelet, egyetemi | Indítsa újra a belső vezérlőprogram frissítési, vészhelyzeti szelep kiadásban növekedése nyomás                          |
+| Hűtő            | Hőmérséklet, páratartalom, nyomás            | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, emelet, egyetemi | Indítsa újra a belső vezérlőprogram frissítési, vészhelyzeti szelep kiadásban növekedése nyomás                          |
 | Prototípusának eszköz | Hőmérséklet, terhelés, földrajzi helyhez        | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, mód          | Indítsa újra, belső vezérlőprogram frissítési áthelyezés eszköz, Stop eszköz, hőmérséklet-kiadás, hőmérséklet növelése |
-| Motor             | Tartály üzemanyag szint hűtőközeg érzékelő, vibráció | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, emelet, egyetemi | Indítsa újra, belső vezérlőprogram frissítési üres tartály, kitöltés tartály                                              |
+| Motor             | Tartály üzemanyag szint hűtőközeg érzékelő, vibráció | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, emelet, egyetemi | Belső vezérlőprogram frissítése, üres tartály, kitöltés tartály                                              |
 | Teherautó              | Földrajzi hely, sebessége rakomány hőmérséklet     | Típus, a belső vezérlőprogram-verziója, a modell               | Hely, betöltése          | Alacsonyabb rakomány hőmérséklet, növelje rakomány hőmérséklet, belső vezérlőprogram frissítése                         |
 | Foglalhatja           | Emelet, vibráció, hőmérséklet              | Típusa, a belső vezérlőprogram-verziója, Model, földrajzi helyhez | Hely, a központ        | Állítsa le a foglalhatja, kezdő foglalhatja belső vezérlőprogram frissítése                                               |
 
@@ -83,48 +83,40 @@ A Contoso operátorok ismeri a küszöbértékeket, amelyek meghatározzák, hog
 | Hűtő nyomás túl magas | Riasztást küld, ha hőmérsékletű elérni nagyobbnak, mint a szokásos terhelés szintek   |P > 250 psi       | Kritikus | Hőmérsékletű            |
 | Prototípusának eszköz temp túl magas  | Riasztást küld, ha prototípusának eszközök elérni nagyobbnak, mint a normál hőmérséklet szintek  |T>80&deg; F |Kritikus | Prototípusának eszközök |
 | Üres motor tartály  | Riasztást küld, ha motor tüzelőanyagtartály üres kerül.                     | F < 5 gallon | Információ     | Végrehajtók             |
-| Nagyobb, mint a normál rakomány hőmérséklet | Ha teherautó tartozó rakomány hőmérséklet értéke magasabb, mint a normál                 | T<45&deg; F |Figyelmeztetés  | Teherautók              |
+| Nagyobb, mint a normál rakomány hőmérséklet | Ha teherautó tartozó rakomány hőmérséklet értéke magasabb, mint a normál                 | T &LT; 45&deg; F |Figyelmeztetés  | Teherautók              |
 | Foglalhatja vibráció leállt      | Riasztást küld, ha foglalhatja nem teljesen (vibráció szint alapján)                     | V < 0,1 mm |Figyelmeztetés  | Felvonók           |
 
 ### <a name="operate-the-contoso-sample-deployment"></a>Működik a Contoso üzembe helyezési minta
 
-A Contoso mintában a kezdeti telepítés most láthatta. A következő szakaszok ismertetik a Contoso minta három olyan forgatókönyvek, amelyek bemutatják, hogyan használhatja a kezelőnek a az előkonfigurált megoldás.
+A Contoso mintában a kezdeti telepítés most láthatta. A következő szakaszok ismertetik, amelyek bemutatják, hogyan használhatja a kezelőnek a a megoldásgyorsító Contoso minta három forgatókönyv.
 
-## <a name="respond-to-a-pressure-alarm"></a>A terhelés riasztás válaszolni
+## <a name="respond-to-a-pressure-alert"></a>A terhelés riasztások válaszolni
 
-Ez a forgatókönyv bemutatja, hogyan azonosításához, és válaszolhat azokra hűtő eszköz által elindított egy riasztás. A hűtő Redmond, található 43, emelet 2 fejlesztése során.
+Ez a forgatókönyv bemutatja, hogyan azonosításához, és riasztást hűtő eszköz által elindított válaszolni. A hűtő Redmond, található 43, emelet 2 fejlesztése során.
 
-Kezelőként megjelenik az irányítópulton, hogy van-e egy egy hűtő nyomás kapcsolatos riasztás. Pásztázás, és a részletek megtekintéséhez a térképen nagyítás.
+Kezelőként megjelenik az irányítópulton, hogy nincs-e egy hűtő nyomás kapcsolatos riasztás. Pásztázás, és a részletek megtekintéséhez a térképen nagyítás.
 
-1. Az a **irányítópult** lap a **rendszer riasztások** rács, megtekintheti a **hűtő nyomás túl magas** riasztás. A hűtő is ki van jelölve, a térképen:
+1. Az a **irányítópult** lap a **riasztások** rács, megtekintheti a **hűtő nyomás túl magas** riasztás. A hűtő is ki van jelölve, a térképen:
 
     ![Irányítópult nyomás riasztás és az eszköz mutatja a térképen](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
 
-1. Az eszköz részletes adatainak és telemetriai megtekintéséhez kattintson a kijelölt hűtő a térképen. A telemetriai adatokat egy nyomás csúcs jeleníti meg:
+1. Navigáljon a **karbantartási** lapon, válassza ki **karbantartási** a navigációs menü. Az a **karbantartási** lapon megtekintheti az adatokat a szabály a hűtő nyomás riasztást kiváltó.
 
-    ![Válassza ki a térképre részletesen eszközt](media/iot-suite-remote-monitoring-explore/dashboarddetail.png)
-
-1. Bezárás **eszköz részletei**.
-
-1. Navigáljon a **karbantartási** lapon, válassza ki **karbantartási** a navigációs menü.
-
-Az a **karbantartási** lapon megtekintheti az adatokat a szabály a hűtő nyomás riasztás kiváltó.
-
-1. Az értesítések listájában a szám, ahányszor a riasztás kiváltása, a visszaigazolások és a nyitott és lezárt riasztásokat jeleníti meg:
+1. Riasztások listája a szám, ahányszor a figyelmeztetés, a visszaigazolások és a nyitott és lezárt riasztásokat jeleníti meg:
 
     ![Karbantartási lap rendelkezik kiváltott riasztások listáját jeleníti meg.](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. A lista első riasztás, a legutóbbi egy. Kattintson a **hűtő nyomás túl magas** riasztás társított eszközök és telemetriai adatainak megtekintése. A telemetriai adatok nyomás igényeiben jelentkező a hűtő a jeleníti meg:
+1. A legutolsó riasztás a listában, a legutóbbi egy. Kattintson a **hűtő nyomás túl magas** riasztások kiválasztásával megtekintheti a társított eszközök és telemetriai adatokat. A telemetriai adatok nyomás igényeiben jelentkező a hűtő a jeleníti meg:
 
-    ![Karbantartási lap megjeleníti a kiválasztott riasztáshoz telemetriai adat](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
+    ![Karbantartási lap megjeleníti a kijelölt riasztás telemetriai adat](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
-Most azonosította a problémát, amely aktiválódik a riasztás és a társított eszköz. Kezelőként a következő lépésekre megerősíti a riasztás és a probléma elhárítása érdekében.
+Most azonosította a problémát, amely aktiválódik a riasztás és a társított eszköz. Kezelőként a következő lépésekre megerősíti a riasztást, és a probléma elhárítása érdekében.
 
-1. Azt jelzi, hogy most dolgozik a riasztás, módosítsa a **állapota riasztás** való **Visszaigazolva**:
+1. Azt jelzi, hogy most dolgozik a riasztást, módosítsa a **riasztási állapot** való **Visszaigazolva**:
 
     ![Válassza ki, és megerősíti a riasztás](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
 
-1. Hogy intézkedjen a hűtő, válassza ki azt, és válassza a **ütemezés**. Válassza ki **EmergencyValveRelease**, adja hozzá a projekt nevét **ChillerPressureRelease**, és válassza a **alkalmaz**. Ezek a beállítások azonnal végrehajtó feladat létrehozása:
+1. Hogy intézkedjen a hűtő, válassza ki azt, és válassza a **feladatok**. Válassza ki **Run metódus**, majd **EmergencyValveRelease**, adja hozzá a projekt nevét **ChillerPressureRelease**, és válassza a **alkalmaz**. Ezek a beállítások azonnal végrehajtó feladat létrehozása:
 
     ![Válassza ki az eszközt, és ütemezés szerinti művelet](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
@@ -136,11 +128,11 @@ Végül ellenőrizze, hogy a hűtő telemetriai értékeinek vissza a normál é
 
 1. A riasztások rács megtekintéséhez nyissa meg a **irányítópult** lap.
 
-1. A telemetriát nézetben válassza ki a eredeti riasztás a térképen az eszközt, és ellenőrizze, hogy egy vissza a normál értéket.
+1. A telemetriát nézetben válassza ki azt az eredeti riasztást a térképen az eszközt, és ellenőrizze, hogy egy vissza a normál értéket.
 
-1. Az incidens lezárása, lépjen a **karbantartási** lapon válassza ki a riasztást, és az állapot beállítása **lezárva**:
+1. Az incidens lezárása, lépjen a **karbantartási** lapon jelölje ki a riasztást, és az állapot beállítása **lezárva**:
 
-    ![Válassza ki, majd zárja be a riasztás](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
+    ![Válassza ki, és a riasztás lezárása](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
 
 ## <a name="update-device-firmware"></a>Eszköz belső vezérlőprogram frissítése
 
@@ -159,7 +151,7 @@ A szükséges feladatok végrehajtásához használja a **eszközök** lap. Ind�
 
     ![Jelöljön ki egy eszközt, az eszközök lapon](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. Kattintson a **ütemezés** gombra, majd válassza a **vezérlőprogram-frissítés**. Adja meg az értékeket **feladatnév**, **belsővezérlőprogram-verziónként**, és **belső vezérlőprogram URI**. Válasszon **alkalmaz** a feladat futtatása most ütemezése:
+1. Kattintson a **feladatok** gombra, válassza a **Run metódus**, és válassza a **vezérlőprogram-frissítés**. Adja meg az értékeket **feladatnév**, **belsővezérlőprogram-verziónként**, és **belső vezérlőprogram URI**. Válasszon **alkalmaz** a feladat futtatása most ütemezése:
 
     ![Az eszköz belső vezérlőprogram-frissítés ütemezése](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
@@ -176,17 +168,18 @@ Használhatja a **karbantartási** lapon nyomon követheti a feladat futtatása 
 
 1. Keresse meg a létrehozott a feladathoz kapcsolódó esemény. Győződjön meg arról, hogy a belső vezérlőprogram frissítési folyamat megfelelően kezdeményezték.
 
-Létrehozhat egy szűrőt, amely a belső vezérlőprogram verziójának frissítése megfelelően ellenőrizze.
+<!-- 05/01 broken 
+You can create a filter to verify the firmware version updated correctly.
 
-1. Létrehozhat egy szűrőt, lépjen a **eszközök** lapon, és válassza **szűrők kezelése**:
+1. To create a filter, navigate to the **Devices** page and select **Manage device groups**:
 
-    ![Eszköz szűrők kezelése](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Manage device groups](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
-1. Csak a belső vezérlőprogram verziójának eszközt magában foglal, szűrő létrehozása:
+1. Create a filter that includes only devices with the new firmware version:
 
-    ![Eszköz szűrő létrehozása](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
+    ![Create device filter](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
 
-1. Lépjen vissza a **eszközök** lapon, és ellenőrizze, hogy az eszköz rendelkezik-e az új belső vezérlőprogram-verziója.
+1. Return to the **Devices** page and verify that the device has the new firmware version. -->
 
 ## <a name="organize-your-assets"></a>Az eszközök rendszerezéséhez
 
@@ -203,7 +196,7 @@ Eszközök használata a címkenevek hozhat létre.
 
     ![Minden eszköz megjelenítése](media/iot-suite-remote-monitoring-explore/devicesalldevices.png)
 
-1. Válassza ki a **teherautók** és **prototípusának** eszközök. Válassza a **címke**:
+1. Válassza ki a **teherautók** és **prototípusának** eszközök. Válassza a **feladatok**:
 
     ![Válassza ki a prototípus és teherautó eszközöket](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
@@ -211,19 +204,19 @@ Eszközök használata a címkenevek hozhat létre.
 
     ![Címke hozzáadása prototípus és teherautó eszközök](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
-1. Válassza ki a **hűtő**, **foglalhatja**, és **motor** eszközök. Válassza a **címke**:
+1. Válassza ki a **hűtő**, **foglalhatja**, és **motor** eszközök. Válassza a **feladatok**:
 
     ![Válassza ki a hűtő motor és foglalhatja eszközöket](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. Válasszon **címke** és hozzon létre egy új szöveges címke nevű **FieldService** értékű **SmartBuilding**. Válassza ki a feladat nevét. Kattintson a **mentése**:
+1. Válasszon **címke** és hozzon létre egy új szöveges címke nevű **FieldService** értékű **SmartBuilding**. Válassza ki a feladat nevét. Kattintson a **alkalmaz**:
 
     ![Címke hozzáadása hűtő, motor és foglalhatja eszközök](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 
 -Szűrők létrehozásához használhatja az előfizetéscímkék értékeit.
 
-1. Az a **eszközök** lapon, válassza ki **szűrők kezelése**:
+1. Az a **eszközök** lapon, válassza ki **eszközcsoportok kezelése**:
 
-    ![Eszköz szűrők kezelése](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Eszközcsoportok kezelése](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
 1. Hozzon létre egy új, a címke nevét használja szűrő **FieldService** és érték **SmartBuilding**. A szűrő mentése másként **intelligens épület**.
 
@@ -237,9 +230,17 @@ A beállítások menü használatával állítsa le a szimulált eszköz. Ez seg
 
 1. Válassza ki a **beállítások** ikonra.
 
-1. Majd átváltása **futtató** be- és kikapcsolása:
+1. Majd átváltása **Flowing** be- és kikapcsolása:
 
     ![Gépház menü](media/iot-suite-remote-monitoring-explore/settings.png)
+
+## <a name="customize-the-ui"></a>A felhasználói felület testreszabása
+
+A beállítások menüből alapvető customisations alkalmazhat a távoli megfigyelési megoldásgyorsító. A következőket teheti:
+
+- A világos és sötét téma közötti váltáshoz.
+- A megoldás nevének módosítása.
+- Egyéni embléma feltöltéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -247,7 +248,7 @@ Ebben az oktatóprogramban megismerte a:
 
 >[!div class="checklist"]
 > * Megjelenítheti és az irányítópult eszközök szűréséhez
-> * Egy riasztás válaszolni
+> * Riasztás válaszolni
 > * Az eszközök a belső vezérlőprogram frissítése
 > * Az eszközök rendszerezéséhez
 > * Állítsa le és indítsa el a szimulált eszköz

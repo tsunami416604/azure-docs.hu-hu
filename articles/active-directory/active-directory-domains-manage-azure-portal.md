@@ -1,25 +1,23 @@
 ---
-title: "Az Azure Active Directoryban egyéni tartománynevek kezelése |} Microsoft Docs"
-description: "Felügyeleti fogalmakat és a tartomány nevét az Azure Active Directory felügyeletéhez használati útmutatók"
+title: Az Azure Active Directoryban egyéni tartománynevek kezelése |} Microsoft Docs
+description: Felügyeleti fogalmakat és a tartomány nevét az Azure Active Directory felügyeletéhez használati útmutatók
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 5063cd0a-dba2-4ba9-aa65-b8117490d73a
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 64c1be4358305a736ac1dd8a1b7194c80100d256
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 81c2371d5dbb17399071c80ff4e8b81813ed014c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
 A tartománynév sok címtárerőforrásokkal azonosítója fontos része: felhasználói név vagy e-mail cím egy felhasználó, a cím egy csoport része, és hozzájárulhat az alkalmazás az alkalmazás URI azonosítója. Az Azure Active Directory (Azure AD) erőforrás lehetnek egy tartomány nevét, amely már ellenőrizve, a könyvtárban, amely tartalmazza az erőforrás tulajdonosa. Csak egy globális rendszergazda Azure AD-ben végrehajthat tartomány feladatokat.
@@ -28,7 +26,7 @@ A tartománynév sok címtárerőforrásokkal azonosítója fontos része: felha
 A könyvtár jön létre, a kezdeti tartománynevet, például "contoso.onmicrosoft.com," esetén is az elsődleges tartomány nevét. Az elsődleges tartomány az alapértelmezett tartomány nevét az új felhasználó esetén létrehoz egy új felhasználót. Elsődleges tartománynév beállítása leegyszerűsíti és felgyorsítja a rendszergazda számára hozzon létre új felhasználók a portálon. Az elsődleges tartomány nevének módosítása:
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki **az Azure Active Directory**.
+2. Válassza az **Azure Active Directory** elemet.
 3. Válassza ki **egyéni tartománynevek**.
      
    ![Nyitó felhasználók kezelése](./media/active-directory-domains-manage-azure-portal/add-custom-domain.png)
@@ -65,6 +63,6 @@ A legtöbb kezelési feladatot az Azure Active Directoryban tartománynevek is e
 * [Tartománynevek kezelése az Azure AD PowerShell segítségével](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Tartománynevek kezelése az Azure AD Graph API segítségével](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Egyéni tartománynevek hozzáadása](add-custom-domain.md)
 

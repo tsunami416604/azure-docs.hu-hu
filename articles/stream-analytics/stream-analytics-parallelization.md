@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.openlocfilehash: fd373093264122fda45697acc81929d3c723c957
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/07/2018
+ms.openlocfilehash: 44a7c0721d8a0683162d2219bff0e4a4ecb117e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési párhuzamos folyamatkezelést biztosítja
 Ez a cikk bemutatja, hogyan Azure Stream Analytics párhuzamos folyamatkezelést biztosítja előnyeit. Megismerheti a Stream Analytics-feladatok méretezése bemeneti partíciók beállításával, és az elemzés Lekérdezésdefiníció hangolása.
@@ -35,7 +35,15 @@ Minden Azure Stream Analytics-bevitel kihasználhatják a particionálás:
 
 ### <a name="outputs"></a>Kimenetek
 
-A Stream Analytics használata, kihasználhatja a legtöbb kimeneti mosdók particionálás. További információ a kimeneti particionálás érhető el a [a kimeneti oldal szakasza particionálás](stream-analytics-define-outputs.md#partitioning).
+A Stream Analytics használata, kihasználhatja a kimenetek a particionálás:
+-   Azure Data Lake Storage
+-   Azure Functions
+-   Azure-tábla
+-   A BLOB storage (állíthatja be a partíciós kulcs explicit módon)
+-   CosmosDB (kell megadni, a partíciós kulcs explicit módon)
+-   Az EventHub (kell megadni, a partíciós kulcs explicit módon)
+-   Az IoT-központ (kell megadni, a partíciós kulcs explicit módon)
+-   Service Bus
 
 Power BI, az SQL és az SQL-adatraktár kimenetek nem támogatják a particionálást. Azonban Ön is továbbra is partícióazonosító a bemeneti leírtak [Ez a szakasz](#multi-step-query-with-different-partition-by-values) 
 
@@ -54,13 +62,13 @@ Egy *embarrassingly párhuzamos* az Azure Stream Analytics tudunk legjobban mér
 
 3. A kimenet a legtöbb kihasználhatják a particionálás, azonban egy kimeneti típus használata, amely nem támogatja a particionálás a feladat nem fogja teljesen párhuzamos. Tekintse meg a [szakasz kimeneti](#outputs) további részleteket.
 
-4. A bemeneti partíciók számának egyenlőnek kell lennie a kimeneti partíciók számát. BLOB storage-kimenet jelenleg nem támogatja a partíciókat. Azonban ez nem probléma, mert a particionálási sémát a felsőbb rétegbeli lekérdezés örökli. Az alábbiakban néhány lehetséges, amelyek lehetővé teszik a teljes párhuzamos feladat partíció érték:  
+4. A bemeneti partíciók számának egyenlőnek kell lennie a kimeneti partíciók számát. A BLOB storage kimeneti is támogatja a partíciókat, és a felsőbb rétegbeli lekérdezés particionálási sémát örököl. Ha egy partíciókulcsot BLOB tároló meg van adva, adatok particionálása bemeneti partíciónként, így az eredmény nem továbbra is teljes mértékben párhuzamos. Az alábbiakban néhány lehetséges, amelyek lehetővé teszik a teljes párhuzamos feladat partíció érték:
 
    * 8 event hub bemeneti partíciók és 8 eseményközpont kimeneti partíciók
-   * 8 event hub bemeneti partíciókat és a blob storage kimeneti  
-   * 8 Iot hub bemeneti partíciók és 8 eseményközpont kimeneti partíciók
-   * bemeneti partíciók 8 blob storage és a blob storage kimeneti  
-   * 8 blob-tároló bemeneti partíciók és 8 event hub kimeneti partíciók  
+   * 8 event hub bemeneti partíciókat és a blob storage kimeneti
+   * 8 event hub bemeneti partíciók és blob storage kimeneti tárolóhelyeinek egy egyéni mező tetszőleges kardinalitása
+   * bemeneti partíciók 8 blob storage és a blob storage kimeneti
+   * 8 blob-tároló bemeneti partíciók és 8 event hub kimeneti partíciók
 
 Az alábbi szakaszok néhány példát arra, hogy embarrassingly párhuzamos tárgyalják.
 

@@ -1,13 +1,13 @@
 ---
-title: "Alapszintű Linux virtuális gép létrehozása az Azure-ban Ansible használatával |} Microsoft Docs"
-description: "Ansible létrehozása és kezelése az Azure-ban alapvető Linux virtuális gépek használata"
+title: Alapszintű Linux virtuális gép létrehozása az Azure-ban Ansible használatával |} Microsoft Docs
+description: Ansible létrehozása és kezelése az Azure-ban alapvető Linux virtuális gépek használata
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 80406994402b488f4172069b13dca593c470efe4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a2bf047d5a08bfd3df6a6c76116d2b9b9ab81fad
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Alapszintű virtuális gép létrehozása az Azure-ban Ansible
 Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk bemutatja, hogyan hozzon létre egy egyszerű virtuális gép Ansible. Azt is megtudhatja hogyan [hozzon létre egy teljes körű Virtuálisgép-környezetet Ansible](ansible-create-complete-vm.md).
@@ -29,7 +29,7 @@ Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfi
 Ansible az Azure-erőforrások kezeléséhez, a következőkre lesz szüksége:
 
 - Ansible és a gazdagép a rendszerre telepített Azure Python SDK-moduljai.
-    - Ansible telepíthető [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), és [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2)
+    - Ansible telepíthető [CentOS 7.4](ansible-install-configure.md#centos-74), [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), és [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2)
 - Az Azure hitelesítő adatait, és Ansible konfigurált is használhatja őket.
     - [Az Azure hitelesítő adatok létrehozása és Ansible konfigurálása](ansible-install-configure.md#create-azure-credentials)
 - Az Azure CLI 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. 

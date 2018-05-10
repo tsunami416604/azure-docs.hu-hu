@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések az Azure Tárolószolgáltatásban
-description: Azure Tárolószolgáltatás kapcsolatos gyakori kérdésekre adott válaszok biztosít.
+title: Gyakori kérdések az Azure Kubernetes szolgáltatás
+description: A témakör válaszokat ad Azure Kubernetes szolgáltatással kapcsolatos gyakori kérdésekre.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -8,21 +8,21 @@ ms.service: container-service
 ms.topic: article
 ms.date: 2/14/2018
 ms.author: nepeters
-ms.openlocfilehash: 5eb949e420d9b055d014b973d452dc95fc358f83
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 55006a3f0193c96849c52f87ab01dc13ac0c7a16
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-about-azure-container-service-aks"></a>Gyakori kérdések kapcsolatos Azure tároló szolgáltatás (AKS)
+# <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések kapcsolatos Azure Kubernetes szolgáltatás (AKS)
 
-Ez a cikk címek gyakran használják az Azure tároló szolgáltatás (AKS) kapcsolatos kérdésekre.
+Ez a cikk címek gyakran használják az Azure Kubernetes szolgáltatás (AKS) kapcsolatos kérdésekre.
 
 > [!IMPORTANT]
-> Az Azure Container Service (AKS) jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> A jelenleg a rendszer az Azure Kubernetes szolgáltatás (AKS) **előzetes**. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
 
-## <a name="which-azure-regions-provide-the-azure-container-service-aks-today"></a>Mely Azure-régiók ma biztosít az Azure-tároló szolgáltatás (AKS)?
+## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Mely Azure-régiók ma biztosít az Azure Kubernetes szolgáltatás (AKS)?
 
 - Közép-Kanada
 - Kelet-Kanada

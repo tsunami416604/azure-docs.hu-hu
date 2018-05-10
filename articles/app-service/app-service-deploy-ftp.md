@@ -1,11 +1,11 @@
 ---
-title: "Telepítse az alkalmazást az Azure App Service FTP/S használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse az alkalmazást az Azure App Service FTP vagy ftps-t használ."
+title: Telepítse az alkalmazást az Azure App Service FTP/S használatával |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse az alkalmazást az Azure App Service FTP vagy ftps-t használ.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin;dariac
-ms.openlocfilehash: fcd079306a8968505349bb3f4a805f203a5c9999
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 561f317cd7afd740b83709efc8a75ed515626192
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Telepítse az alkalmazást az Azure App Service segítségével FTP/S
 
@@ -36,13 +36,13 @@ Az FTP-kiszolgáló, az alkalmazás eléréséhez először üzembe helyezési h
 ## <a name="step-2-get-ftp-connection-information"></a>2. lépés: FTP-kiszolgáló kapcsolati adatainak lekérése
 
 1. Az a [Azure-portálon](https://portal.azure.com), nyissa meg az alkalmazás [erőforrás oldala](../azure-resource-manager/resource-group-portal.md#manage-resources).
-2. Válassza ki **áttekintése** a bal oldali menüben, majd jegyezze fel a értékeit **FTP vagy üzembe helyező felhasználó**, **FTP-állomás neve**, és **állomásnév FTPS**. 
+2. Válassza ki **áttekintése** a bal oldali navigációs, majd jegyezze fel a értékeinek **FTP vagy üzembe helyező felhasználó**, **FTP-állomás neve**, és **állomásnév FTPS**. 
 
     ![FTP-kapcsolat információi](./media/app-service-deploy-ftp/FTP-Connection-Info.PNG)
 
     > [!NOTE]
     > Az FTP-kiszolgáló megfelelő segítséget nyújt a **FTP vagy üzembe helyező felhasználó** az Azure portál által megjelenített érték tartalmazza az alkalmazás nevére.
-    > Ugyanazokat az információkat található kiválasztásakor **tulajdonságok** a bal oldali menüben. 
+    > Ugyanazokat az információkat található kiválasztásakor **tulajdonságok** a bal oldali navigációs. 
     >
     > Emellett a telepítési jelszó soha nem jelenik meg. Ha elfelejti a központi telepítés jelszavát, lépjen vissza a [1. lépés](#step1) és a központi telepítés jelszó.
     >
@@ -64,6 +64,42 @@ Az FTP-kiszolgáló, az alkalmazás eléréséhez először üzembe helyezési h
 > Létre manuálisan a helyi számítógépen a szükséges fájlokat, és telepítheti azokat az alkalmazás együtt.
 >
 >
+
+## <a name="enforce-ftps"></a>FTPS kényszerítése
+
+A fokozott biztonság érdekében engedélyezze FTP SSL-en keresztül csak. Ha nem adja meg FTP telepítési FTP és a ftps-t is letilthatók.
+
+Az alkalmazás erőforrás lapján [Azure-portálon](https://portal.azure.com), jelölje be **Alkalmazásbeállítások** a bal oldali navigációs.
+
+Titkosítatlan FTP letiltásához válassza **FTPS csak**. FTP és a ftps-t teljesen letiltásához válassza **letiltása**. Ha befejezte, kattintson a **mentése**.
+
+![Tiltsa le az FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
+
+## <a name="troubleshoot-ftp-deployment"></a>FTP telepítési hibáinak elhárítása
+
+- [Hogyan háríthatom FTP telepítési?](#how-can-i-troubleshoot-ftp-deployment)
+- [I nem lehet FTP, és tegye közzé a saját kód. Hogyan lehet megoldani a problémát?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [Hogyan lehet kapcsolódni az Azure App Service FTP passzív módra keresztül?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+
+### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Hogyan háríthatom FTP telepítési?
+
+Az első lépés FTP üzembe helyezés hibaelhárítása van elkülönítése a egy futásidejű alkalmazásproblémák egy központi telepítési probléma.
+
+Egy központi telepítési probléma általában a fájlok vagy hibás fájlok, az alkalmazás központi telepítése nem eredményez. Az FTP-telepítés vizsgálja, vagy jelöljön ki egy alternatív telepítési elérési utat (például a verziókövetési rendszerrel) által korrigálható.
+
+A futásidejű alkalmazásproblémák általában eredményez a az alkalmazás, de nem megfelelő alkalmazások viselkedése telepített fájlok megfelelő halmazát. Kód viselkedés futásidőben összpontosít, és vizsgálja a konkrét hiba elérési utak korrigálható.
+
+A központi telepítés, illetve runtime jelöléssel probléma megállapításához lásd: [futásidejű problémák és telepítési](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
+
+ 
+### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>I nem lehet FTP, és tegye közzé a saját kód. Hogyan lehet megoldani a problémát?
+Ellenőrizze, hogy helyesen adta a megfelelő állomásnév és [hitelesítő adatok](#step-1--set-deployment-credentials). Ellenőrizze azt is, hogy a számítógépen a következő FTP-portok nem blokkolja tűzfal:
+
+- FTP-vezérlőkapcsolati port: 21
+- FTP-adatok csatlakozási portja: 989, 10001-10300
+ 
+### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Hogyan lehet kapcsolódni az Azure App Service FTP passzív módra keresztül?
+Az Azure App Service támogatja az aktív és passzív módú keresztül kapcsolódik. Passzív módú használata ajánlott, mivel a központi telepítés gépek általában (az operációs rendszer vagy üzleti hálózati vagy otthoni részeként) tűzfal mögött található. Lásd: egy [példa a WinSCP dokumentációs](https://winscp.net/docs/ui_login_connection). 
 
 ## <a name="next-steps"></a>További lépések
 

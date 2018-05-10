@@ -1,6 +1,6 @@
 ---
-title: OpenFaaS használata az Azure Tárolószolgáltatás (AKS)
-description: Üzembe helyezés és használat OpenFaaS Azure tároló szolgáltatás (AKS)
+title: Az Azure Kubernetes szolgáltatáshoz (AKS) OpenFaaS használható
+description: Üzembe helyezés és használat OpenFaaS Azure Kubernetes szolgáltatás (AKS)
 services: container-service
 author: justindavies
 manager: timlt
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: d531bb40421716bf9fb3c253a3e76207b2806912
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 778fa5ddcdf8006d28c092746e4ac17a497baa5f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-openfaas-on-aks"></a>A AKS OpenFaaS használatával
 
-[OpenFaaS] [ open-faas] keretrendszere, amely fölött tárolók kiszolgáló nélküli funkciók felépítése. Nyílt forráskódú projektként azt köszönhetően Közösségen belüli nagyméretű bevezetését. Ez a dokumentum részletesen telepítéséről és használatáról az Azure-tároló szolgáltatás (AKS) fürt OpenFaas.
+[OpenFaaS] [ open-faas] keretrendszere, amely fölött tárolók kiszolgáló nélküli funkciók felépítése. Nyílt forráskódú projektként azt köszönhetően Közösségen belüli nagyméretű bevezetését. Ez a dokumentum részletesen telepítéséről és használatáról az Azure Kubernetes szolgáltatás (AKS) fürt OpenFaas.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk belül lépések végrehajtásához a következők szükségesek.
 
 * Kubernetes kapcsolatos alapvető ismeretekkel.
-* Az Azure-tároló szolgáltatás (AKS) fürt és a fejlesztői rendszeren konfigurált AKS hitelesítő adatokat.
+* Az Azure Kubernetes szolgáltatás (AKS) fürt és a fejlesztői rendszeren konfigurált AKS hitelesítő adatokat.
 * Az Azure CLI-t a fejlesztői rendszeren telepítve.
 * Git parancssori eszközök van telepítve a rendszeren.
 
@@ -39,7 +39,7 @@ git clone https://github.com/openfaas/faas-netes
 Módosítsa a klónozott tárház a könyvtárba.
 
 ```azurecli-interactive
-cd faas-netes 
+cd faas-netes
 ```
 
 ## <a name="deploy-openfaas"></a>OpenFaaS telepítése
@@ -54,7 +54,7 @@ kubectl create namespace openfaas
 
 Hozzon létre egy második OpenFaaS funkciók névteret.
 
-```azurecli-interactive 
+```azurecli-interactive
 kubectl create namespace openfaas-fn
 ```
 
@@ -64,7 +64,7 @@ A klónozott tárház OpenFaaS Helm diagramot tartalmazza. Ez a diagram segíts�
 helm install --namespace openfaas -n openfaas \
   --set functionNamespace=openfaas-fn, \
   --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/ 
+  --set rbac=false chart/openfaas/
 ```
 
 Kimenet:
@@ -95,7 +95,7 @@ Nyilvános IP-címnek a OpenFaaS átjáró eléréséhez jön létre. Az IP-cím
 kubectl get service -l component=gateway --namespace openfaas
 ```
 
-Kimeneti. 
+Kimeneti.
 
 ```console
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
@@ -130,8 +130,8 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 Kimenet:
 
 ```console
- _   _      _ _            _                        
-| | | | ___| | | ___      / \    _____   _ _ __ ___ 
+ _   _      _ _            _
+| | | | ___| | | ___      / \    _____   _ _ __ ___
 | |_| |/ _ \ | |/ _ \    / _ \  |_  / | | | '__/ _ \
 |  _  |  __/ | | (_) |  / ___ \  / /| |_| | | |  __/
 |_| |_|\___|_|_|\___/  /_/   \_\/___|\__,_|_|  \___|
@@ -140,7 +140,7 @@ Kimenet:
 
 ## <a name="create-second-function"></a>Második függvény létrehozása
 
-Most hozzon létre egy második függvényt. Ebben a példában a OpenFaaS parancssori felület használatával telepíti, és egy egyéni tároló lemezképet és az adatok lekérdezése egy Cosmos DB tartalmazza. Több elemet be kell állítani a függvény létrehozása előtt. 
+Most hozzon létre egy második függvényt. Ebben a példában a OpenFaaS parancssori felület használatával telepíti, és egy egyéni tároló lemezképet és az adatok lekérdezése egy Cosmos DB tartalmazza. Több elemet be kell állítani a függvény létrehozása előtt.
 
 Először hozzon létre egy új erőforráscsoportot a Cosmos-adatbázis számára.
 
@@ -148,13 +148,13 @@ Először hozzon létre egy új erőforráscsoportot a Cosmos-adatbázis számá
 az group create --name serverless-backing --location eastus
 ```
 
-Központi telepítése egy CosmosDB példány típusú `MongoDB`. A példány kell egy egyedi nevet, a frissítéskezelés `openfaas-cosmos` valamely különleges a környezetben. 
+Központi telepítése egy CosmosDB példány típusú `MongoDB`. A példány kell egy egyedi nevet, a frissítéskezelés `openfaas-cosmos` valamely különleges a környezetben.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
 ```
 
-A Cosmos adatbázis-kapcsolati karakterlánc beolvasása és tárolható egy változóban. 
+A Cosmos adatbázis-kapcsolati karakterlánc beolvasása és tárolható egy változóban.
 
 Frissítse az értéket a `--resource-group` argumentum az erőforráscsoport nevét és a `--name` argumentum a Cosmos-adatbázis nevét.
 
@@ -180,7 +180,7 @@ A Cosmos DB teszt adatokkal most feltöltéséhez. Hozzon létre egy fájlt `pla
 }
 ```
 
-Használja a *mongoimport* eszköz adatokkal CosmosDB-példányok betöltéséhez. 
+Használja a *mongoimport* eszköz adatokkal CosmosDB-példányok betöltéséhez.
 
 Szükség esetén telepítse a MongoDB-eszközök. A következő példa telepíti ezeket az eszközöket brew, tekintse meg a [MongoDB dokumentációt] [ install-mongo] lehetőségek.
 
@@ -232,7 +232,7 @@ Azt is tesztelni, a függvény a OpenFaaS felhasználói felületen belül.
 
 ## <a name="next-steps"></a>További lépések
 
-OpenFaas alapértelmezett telepítését OpenFaaS átjáró és a funkciók zárolni kell. [Alex Ellis blogbejegyzés](https://blog.alexellis.io/lock-down-openfaas/) további részleteket tartalmaz a biztonságos konfigurációs beállításokat. 
+OpenFaas alapértelmezett telepítését OpenFaaS átjáró és a funkciók zárolni kell. [Alex Ellis blogbejegyzés](https://blog.alexellis.io/lock-down-openfaas/) további részleteket tartalmaz a biztonságos konfigurációs beállításokat.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

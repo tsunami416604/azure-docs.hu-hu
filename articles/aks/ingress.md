@@ -1,25 +1,25 @@
 ---
-title: Azure tároló szolgáltatás (AKS) fürt érkező konfigurálása
-description: Telepítse és konfigurálja az NGINX érkező vezérlőhöz egy Azure tároló szolgáltatás (AKS) fürt.
+title: Azure Kubernetes szolgáltatás (AKS) fürt érkező konfigurálása
+description: Telepítse és konfigurálja az NGINX érkező vezérlőhöz egy Azure Kubernetes szolgáltatás (AKS) fürt.
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 03/03/2018
+ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: a6c9036a85e1c979d649896a9361e401f6f7cc0a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="https-ingress-on-azure-container-service-aks"></a>Azure tárolószolgáltatás (AKS) HTTPS érkező
+# <a name="https-ingress-on-azure-kubernetes-service-aks"></a>HTTPS érkező Azure Kubernetes-szolgáltatáshoz (AKS)
 
 Az érkező vezérlőhöz egy adott szoftver, amely fordított proxy, konfigurálható a forgalom útválasztásához megszüntetése, és a TLS Kubernetes szolgáltatásokhoz. Kubernetes érkező erőforrások érkező szabályok és az egyes Kubernetes szolgáltatások útvonalak konfigurálására szolgálnak. Az érkező vezérlőhöz és érkező szabályokat használ, egy külső cím forgalom irányítására vonatkozik több szolgáltatásra Kubernetes fürtben használható.
 
-Ez a dokumentum végigvezeti egy minta központi telepítése a [NGINX érkező vezérlő] [ nginx-ingress] Azure tároló szolgáltatás (AKS) fürtben. Emellett a [KUBE-LEGO] [ kube-lego] projekt használt automatikus létrehozása és konfigurálása [most titkosítása] [ lets-encrypt] tanúsítványokat. Végül több alkalmazást futtathatók a AKS fürtben, amelyek érhető el egyetlen címen keresztül.
+Ez a dokumentum végigvezeti egy minta központi telepítése a [NGINX érkező vezérlő] [ nginx-ingress] Azure Kubernetes szolgáltatás (AKS) fürtben. Emellett a [KUBE-LEGO] [ kube-lego] projekt használt automatikus létrehozása és konfigurálása [most titkosítása] [ lets-encrypt] tanúsítványokat. Végül több alkalmazást futtathatók a AKS fürtben, amelyek érhető el egyetlen címen keresztül.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -46,9 +46,9 @@ A telepítés során az Azure nyilvános IP-címet a érkező tartományvezérl�
 ```console
 $ kubectl get service -l app=nginx-ingress --namespace kube-system
 
-NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                      AGE
-eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   13.82.238.45   80:30920/TCP,443:30426/TCP   20m
-eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>         80/TCP                       20m
+NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
+eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
 Nincs érkező szabály létrejött, ha a nyilvános IP-címét, mert a rendszer irányítja az NGINX érkező tartományvezérlők alapértelmezett 404-es lapra.
@@ -63,7 +63,7 @@ Mivel a HTTPS-tanúsítványok használata esetén kell egy teljes tartománynev
 #!/bin/bash
 
 # Public IP address
-IP="52.224.125.195"
+IP="51.145.155.210"
 
 # Name to associate with public IP address
 DNSNAME="demo-aks-ingress"

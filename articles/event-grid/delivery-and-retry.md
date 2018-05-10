@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 017cb5850788bd230c4a4ba256997f2776c07bec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: db16a4ba2177e92fa4500af0969c44471004ba73
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Esemény rács üzenetkézbesítést, és próbálkozzon újra 
 
@@ -35,7 +35,7 @@ A következő HTTP-válaszkódot azt jelzi, hogy az esemény kézbesítése megt
 
 ### <a name="failure-codes"></a>Hibát kódok
 
-A következő HTTP-válaszkódot azt jelzi, hogy az esemény kézbesítési tett kísérlet meghiúsult. Esemény rács megpróbálja újra elküldeni az esemény. 
+A következő HTTP-válaszkódot azt jelzi, hogy az esemény kézbesítési tett kísérlet meghiúsult. 
 
 - 400 Hibás kérés
 - 401 nem engedélyezett
@@ -46,9 +46,9 @@ A következő HTTP-válaszkódot azt jelzi, hogy az esemény kézbesítési tett
 - 503 A szolgáltatás nem érhető el
 - 504 Időtúllépés az átjárón
 
-Bármely más válaszkód vagy hiányoznak a választ egy hibát jelez. Esemény rács kézbesítési próbálkozások. 
+Esemény rács kap, amely jelzi, hogy a végpont nem érhető el hiba, ha megkísérli ismét elküldeni a eseményt. 
 
-## <a name="retry-intervals"></a>Újrapróbálkozási időközök
+## <a name="retry-intervals-and-duration"></a>Ismételje meg a időközöket és időtartama
 
 Esemény rács az exponenciális leállítási újrapróbálkozási házirend esemény kézbesítési használ. A webhook nem válaszol vagy hibakódot ad vissza, ha az esemény rács újrapróbálja kézbesítése a következő ütemezés szerint:
 
@@ -62,9 +62,7 @@ Esemény rács az exponenciális leállítási újrapróbálkozási házirend es
 
 Esemény rács intervallumokban újra egy kis véletlenszerű hozzáadja. Egy óra múlva esemény kézbesítési a rendszer ismét megkísérli óránként.
 
-## <a name="retry-duration"></a>Ismételje meg az időtartama
-
-Azure esemény rács összes eseményt, amely nem érkeznek meg 24 órán belül lejár.
+Alapértelmezés szerint esemény rács összes eseményt, amely nem érkeznek meg 24 órán belül lejár.
 
 ## <a name="next-steps"></a>További lépések
 

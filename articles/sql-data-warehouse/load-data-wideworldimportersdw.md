@@ -1,31 +1,24 @@
 ---
 title: 'Oktatóanyag: Adatok betöltése az Azure SQL Data Warehouse-ba | Microsoft Docs'
-description: Ez az oktatóanyag az Azure Portal és az SQL Server Management Studio segítségével tölti be a WideWorldImportersDW adattárházat az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba.
+description: Ez az oktatóanyag az Azure Portal és az SQL Server Management Studio segítségével tölti be a WideWorldImportersDW adattárházat egy nyilvános Azure-blobból az Azure SQL Data Warehouse-ba.
 services: sql-data-warehouse
-documentationcenter: ''
 author: ckarst
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.custom: mvc,develop data warehouses
-ms.devlang: na
-ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/06/2018
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
 ms.author: cakarst
-ms.reviewer: barbkess
-ms.openlocfilehash: 7e7d9a299e141ef8fd564e7f97077471264420ea
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
+ms.reviewer: igorstan
+ms.openlocfilehash: 0b28bb07006ed58a82af80afe42fe472d4878971
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure SQL Data Warehouse-ba
 
-Ez az oktatóanyag betölti a WideWorldImportersDW adattárházat az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) használja a következőkhöz: 
+Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW adattárházat az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba. Az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 
 > [!div class="checklist"]
 > * Adattárház létrehozása az Azure Portalon
@@ -42,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) legújabb verzióját.
+Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
@@ -51,7 +44,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL-adattárház létrehozása
 
-Az Azure SQL Data Warehouse [számítási erőforrások](performance-tiers.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
+Az Azure SQL Data Warehouse [számítási erőforrások](memory-and-concurrency-limits.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
 
 Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához. 
 
@@ -92,7 +85,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához.
     ![teljesítmény konfigurálása](media/load-data-wideworldimportersdw/configure-performance.png)
 
 8. Kattintson az **Alkalmaz** gombra.
-9. Az SQL Data Warehouse lapon válasszon **rendezést** az üres adatbázishoz. A jelen oktatóanyag esetében használja az alapértelmezett értéket. A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations.md)
+9. Az SQL Data Warehouse lapon válasszon **rendezést** az üres adatbázishoz. A jelen oktatóanyag esetében használja az alapértelmezett értéket. A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations)
 
 11. Most, hogy kitöltötte az SQL Database űrlapját, kattintson a **Létrehozás** gombra az adatbázis létrehozásához. Az üzembe helyezés eltarthat néhány percig. 
 
@@ -147,7 +140,7 @@ Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Kés�
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Csatlakozás a kiszolgálóhoz kiszolgáló-rendszergazdaként
 
-Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) használatával építjük fel a kapcsolatot az Azure SQL-kiszolgálóval.
+Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával építjük fel a kapcsolatot az Azure SQL-kiszolgálóval.
 
 1. Nyissa meg az SQL Server Management Studiót.
 
@@ -171,7 +164,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 ## <a name="create-a-user-for-loading-data"></a>Felhasználó létrehozása az adatok betöltéséhez
 
-A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A [memória maximális értékei](performance-tiers.md#memory-maximums) [teljesítményszint](performance-tiers.md) és [erőforrásosztály](resource-classes-for-workload-management.md) szerint vannak definiálva. 
+A kiszolgáló rendszergazdai fiókjának célja, hogy felügyeleti műveleteket végezzenek vele, és nem alkalmas a felhasználói adatok lekérdezésére. Az adatok betöltése memóriaigényes művelet. A memória maximális értékei a használt SQL Data Warehouse létrehozása, az [adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) és az [erőforrásosztály](resource-classes-for-workload-management.md) szerint vannak definiálva. 
 
 Érdemes létrehozni egy adatok betöltésére kijelölt felhasználót és fiókot. Ezután adja hozzá a betöltést végző felhasználót egy olyan [erőforrásosztályhoz](resource-classes-for-workload-management.md), amely lehetővé teszi a megfelelő mértékű maximális memórialefoglalást.
 
@@ -238,7 +231,7 @@ Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó
     CREATE MASTER KEY;
     ```
 
-4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql.md) utasítást az Azure blob helyének meghatározásához. Ez a külső taxiadatok helye.  A lekérdezési ablakhoz hozzáfűzött parancsok futtatásához jelölje ki a futtatni kívánt parancsokat, majd kattintson az **Execute** (Végrehajtás) elemre.
+4. Futtassa a következő [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) utasítást az Azure blob helyének meghatározásához. Ez a külső taxiadatok helye.  A lekérdezési ablakhoz hozzáfűzött parancsok futtatásához jelölje ki a futtatni kívánt parancsokat, majd kattintson az **Execute** (Végrehajtás) elemre.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -249,7 +242,7 @@ Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó
     );
     ```
 
-5. Futtassa a következő [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql.md) T-SQL-utasítást a külső adatfájl formázási jellemzőinek és beállításainak megadásához. Ez az utasítás adja meg, hogy a külső adatok szövegként legyenek tárolva, továbbá azt is, hogy az értékeket függőleges vonal („|”) karakter válassza el egymástól.  
+5. Futtassa a következő [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) T-SQL-utasítást a külső adatfájl formázási jellemzőinek és beállításainak megadásához. Ez az utasítás adja meg, hogy a külső adatok szövegként legyenek tárolva, továbbá azt is, hogy az értékeket függőleges vonal („|”) karakter válassza el egymástól.  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -264,7 +257,7 @@ Futtassa a következő SQL-szkripteket a betölteni kívánt adatokra vonatkozó
     );
     ```
 
-6.  Futtassa a következő [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql.md)-utasításokat egy séma a külső fájlformátum számára történő létrehozásához. A séma lehetővé teszi a létrehozni kívánt külső táblák rendszerezését. A wwi-séma rendszerezi a standard táblákat, amelyek majd az adatokat tartalmazzák. 
+6.  Futtassa a következő [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql)-utasításokat egy séma a külső fájlformátum számára történő létrehozásához. A séma lehetővé teszi a létrehozni kívánt külső táblák rendszerezését. A wwi-séma rendszerezi a standard táblákat, amelyek majd az adatokat tartalmazzák. 
 
     ```sql
     CREATE SCHEMA ext;
@@ -559,7 +552,7 @@ Ez a szakasz az imént definiált külső táblák használatával tölti be a p
 > Ez az oktatóanyag az adatokat közvetlenül a végső táblázatba tölti be. Éles környezetben általában a CREATE TABLE AS SELECT utasítás használatával végez betöltést egy előkészítési táblába. Amíg az adatok az előkészítési táblában vannak, bármilyen szükséges átalakítás elvégezhető rajtuk. Az előkészítési táblában lévő adatok éles táblához való hozzáfűzéséhez használhatja az INSERT...SELECT utasítást. További információkért lásd: [Adatok beszúrása egy éles táblába](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 > 
 
-A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Amikor a kiválasztási utasítás egy külső táblából választ, az SQL Data Warehouse egy relációs táblába importálja az adatokat az adattárházban. 
+A szkript a [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-utasítást használja az adatok betöltéséhez az Azure Storage-blobból az adattárházban található új táblákba. A CTAS egy új táblát hoz létre egy kiválasztási utasítás eredményei alapján. Az új tábla oszlopai és adattípusai megegyeznek a kiválasztási utasítás eredményeivel. Amikor a kiválasztási utasítás egy külső táblából választ, az SQL Data Warehouse egy relációs táblába importálja az adatokat az adattárházban. 
 
 A szkript nem tölt be adatokat a wwi.dimension_Date és a wwi.fact_Sales táblába. Ezek a táblák egy későbbi lépésben jönnek létre, hogy a tábláknak megfelelő számú sora legyen.
 
@@ -953,12 +946,13 @@ Ez a szakasz létrehozza a wwi.dimension_Date és wwi.fact_Sales táblát. Létr
         END;
 
     END;
+    ```
 
-## Generate millions of rows
-Use the stored procedures you created to generate millions of rows in the wwi.fact_Sales table, and corresponding data in the wwi.dimension_Date table. 
+## <a name="generate-millions-of-rows"></a>Sorok millióinak előállítása
+A létrehozott tárolt eljárásokat használhatja arra, hogy sorok millióit állítsa elő a wwi.fact_Sales táblában, illetve a hozzájuk tartozó adatokat a wwi.dimension_Date táblában. 
 
 
-1. Run this procedure to seed the [wwi].[seed_Sale] with more rows.
+1. Futtassa ezt az eljárást, hogy a [wwi].[seed_Sale] további sorokkal töltődjön fel.
 
     ```sql    
     EXEC [wwi].[InitialSalesDataPopulation]

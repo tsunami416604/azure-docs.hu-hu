@@ -1,30 +1,26 @@
 ---
-title: "Az Azure Active Directory-alapú hitelesítés – első lépések |} Microsoft Docs"
-description: "Tanúsítványalapú hitelesítés konfigurálása a környezetben"
-author: MarkusVi
-documentationcenter: na
-manager: mtillman
-ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
+title: Ismerkedés az Azure Active Directory-alapú hitelesítés
+description: Tanúsítványalapú hitelesítés konfigurálása a környezetben
+services: active-directory
 ms.service: active-directory
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 01/15/2018
-ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 5c96f33b8f678155dc4b7a84718e5eadc541f441
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: annaba
+ms.openlocfilehash: db2c19bdc303f6f7773772dd7873878ceb892cc3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Ismerkedés az Azure Active Directory-alapú hitelesítés
 
 Tanúsítvány alapú hitelesítést lehetővé teszi, hogy hitelesítse Azure Active Directory ügyféltanúsítvánnyal egy Windows-, Android vagy iOS eszközön az Exchange online fiókot való csatlakozáskor:
 
-- A Microsoft mobilalkalmazás például a Microsoft Outlook és a Microsoft Word   
-
+- A Microsoft mobilalkalmazás például a Microsoft Outlook és a Microsoft Word
 - Exchange ActiveSync (EAS) ügyfeleket
 
 Ez a funkció beállítása szükségtelenné teszi adjon meg egy felhasználónév és jelszó kombinációjával egyes mail és a Microsoft Office-alkalmazásokat a mobileszközön.
@@ -32,43 +28,31 @@ Ez a funkció beállítása szükségtelenné teszi adjon meg egy felhasználón
 Ez a témakör:
 
 - Konfigurálja és Tanúsítványalapú hitelesítés a felhasználók számára a bérlő használata az Office 365 vállalati, vállalati, oktatási és Amerikai Egyesült államokbeli kormányzati csomagokban biztosít. Ez a funkció érhető el az előzetes verzió az Office 365 Kína, a US Government védelmet és a US Government Szövetségi csomagokban.
-
-- Feltételezi, hogy már rendelkezik egy [nyilvános kulcsokra épülő infrastruktúra (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) és [AD FS](connect/active-directory-aadconnectfed-whatis.md) konfigurálva.    
-
+- Feltételezi, hogy már rendelkezik egy [nyilvános kulcsokra épülő infrastruktúra (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) és [AD FS](connect/active-directory-aadconnectfed-whatis.md) konfigurálva.
 
 ## <a name="requirements"></a>Követelmények
 
-A tanúsítvány alapú hitelesítést, a következő teljesülnie kell:  
+Tanúsítványalapú hitelesítés konfigurálásához a következő utasításokat kell teljesülniük:
 
-- Tanúsítvány alapú hitelesítést (CBA) csak külső környezeteket böngészőalkalmazásokban vagy natív modern hitelesítést (ADAL) használó ügyfelek esetén támogatott. Az egyetlen kivétel ez alól az Exchange Active Sync (EAS), mind a összevont, és a kezelt fiókok használható EXO a.
-
-- A legfelső szintű hitelesítésszolgáltatót és köztes hitelesítésszolgáltatót kell állítani az Azure Active Directoryban.  
-
-- Minden egyes hitelesítésszolgáltató visszavont tanúsítványok listájának (CRL), amely az Internet felé néző URL-cím használatával lehet hivatkozni kell rendelkeznie.  
-
-- Rendelkeznie kell legalább egy hitelesítésszolgáltatót az Azure Active Directoryban konfigurált. A kapcsolódó lépései a [konfigurálása a hitelesítésszolgáltatók](#step-2-configure-the-certificate-authorities) szakasz.  
-
-- Exchange ActiveSync-ügyfelek az ügyféltanúsítvány rendelkeznie kell a felhasználó irányítható e-mail címet az Exchange online az egyszerű felhasználónév vagy a tulajdonos alternatív neve mezőben RFC822 nevének értékét. Az Azure Active Directory RFC822 értéke van leképezve a proxykiszolgáló címét attribútum a címtárban.  
-
-- Az ügyféleszköz hozzá kell férniük legalább egy hitelesítésszolgáltató által kiállított tanúsítványt.  
-
-- Ügyféltanúsítványt az ügyfél-hitelesítés lett kiállítva az ügyfélnek.  
-
-
-
+- Tanúsítvány alapú hitelesítést (CBA) csak külső környezeteket böngészőalkalmazásokban vagy natív modern hitelesítést (ADAL) használó ügyfelek esetén támogatott. Az egyetlen kivétel ez alól az Exchange Active Sync (EAS) az Exchange Online (EXO), amely összevont és a kezelt fiókok is használható.
+- A legfelső szintű hitelesítésszolgáltatót és köztes hitelesítésszolgáltatót kell állítani az Azure Active Directoryban.
+- Minden egyes hitelesítésszolgáltató visszavont tanúsítványok listájának (CRL), amely az Internet felé néző URL-cím használatával lehet hivatkozni kell rendelkeznie.
+- Rendelkeznie kell legalább egy hitelesítésszolgáltatót az Azure Active Directoryban konfigurált. A kapcsolódó lépései a [konfigurálása a hitelesítésszolgáltatók](#step-2-configure-the-certificate-authorities) szakasz.
+- Exchange ActiveSync-ügyfelek az ügyféltanúsítvány rendelkeznie kell a felhasználó irányítható e-mail címet az Exchange online az egyszerű felhasználónév vagy a tulajdonos alternatív neve mezőben RFC822 nevének értékét. Az Azure Active Directory RFC822 értéke van leképezve a proxykiszolgáló címét attribútum a címtárban.
+- Az ügyféleszköz hozzá kell férniük legalább egy hitelesítésszolgáltató által kiállított tanúsítványt.
+- Ügyféltanúsítványt az ügyfél-hitelesítés lett kiállítva az ügyfélnek.
 
 ## <a name="step-1-select-your-device-platform"></a>1. lépés: Válassza ki az eszközplatformhoz
 
 Első lépésként, a fontos adatokhoz, eszközplatform kell tekintse meg a következőket:
 
 - Az Office-mobilalkalmazások támogatása
-- A megadott megvalósítási követelmények  
+- A megadott megvalósítási követelmények
 
 A kapcsolódó információk a következő eszközplatformokat létezik:
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
-
 
 ## <a name="step-2-configure-the-certificate-authorities"></a>2. lépés: A hitelesítésszolgáltatók konfigurálása
 
@@ -81,7 +65,7 @@ A sémát a hitelesítésszolgáltatótól a következőképpen néz ki:
 
     class TrustedCAsForPasswordlessAuth
     {
-       CertificateAuthorityInformation[] certificateAuthorities;    
+       CertificateAuthorityInformation[] certificateAuthorities;
     }
 
     class CertificateAuthorityInformation
@@ -93,7 +77,7 @@ A sémát a hitelesítésszolgáltatótól a következőképpen néz ki:
         string deltaCrlDistributionPoint;
         string trustedIssuer;
         string trustedIssuerSKI;
-    }                
+    }
 
     enum CertAuthorityType
     {
@@ -101,14 +85,14 @@ A sémát a hitelesítésszolgáltatótól a következőképpen néz ki:
         IntermediateAuthority = 1
     }
 
-A konfigurációt, használhatja a [Azure Active Directory PowerShell 2-es verzió](/powershell/azure/install-adv2?view=azureadps-2.0):  
+A konfigurációt, használhatja a [Azure Active Directory PowerShell 2-es verzió](/powershell/azure/install-adv2?view=azureadps-2.0):
 
 1. Indítsa el a Windows PowerShell rendszergazdai jogosultságokkal.
-2. Az Azure AD-modul telepítése. Verziót telepíteni kell [2.0.0.33 ](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) vagy újabb verzióját.  
+2. Az Azure AD-modul verzió telepítése [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) vagy újabb verzióját.
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
-Első lépésként konfiguráció a bérlő kapcsolatot kell. Amint a bérlő kapcsolat létezik, áttekintheti, adja hozzá, törlése és módosítása a megbízható tanúsítványszolgáltatók, amely a könyvtárban van meghatározva.
+Első lépésként konfiguráció a bérlő kapcsolatot kell. Amint a bérlő kapcsolat létezik, tekintse át, adja hozzá, törlése, és módosítsa a megbízható tanúsítványszolgáltatók, amely a könyvtárban van meghatározva.
 
 ### <a name="connect"></a>Kapcsolódás
 
@@ -116,13 +100,11 @@ A bérlő-kapcsolatot létrehozni, használja a [Connect-AzureAD](/powershell/mo
 
     Connect-AzureAD
 
-
 ### <a name="retrieve"></a>Beolvasása
 
 A megbízható tanúsítványszolgáltatók a címtárban definiált lekéréséhez használja a [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmag.
 
     Get-AzureADTrustedCertificateAuthority
-
 
 ### <a name="add"></a>Hozzáadás
 
@@ -135,7 +117,6 @@ Megbízható hitelesítésszolgáltató létrehozásához használja a [New-Azur
     $new_ca.crlDistributionPoint=”<CRL Distribution URL>”
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-
 ### <a name="remove"></a>Eltávolítás
 
 Megbízható hitelesítésszolgáltató eltávolításához használja a [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot:
@@ -143,15 +124,13 @@ Megbízható hitelesítésszolgáltató eltávolításához használja a [Remove
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
-
-### <a name="modfiy"></a>Modfiy
+### <a name="modify"></a>Módosítás
 
 Megbízható hitelesítésszolgáltató módosításához használja a [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot:
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
-
 
 ## <a name="step-3-configure-revocation"></a>3. lépés: A visszavont tanúsítványok konfigurálása
 
@@ -181,7 +160,6 @@ Az alábbi lépéseket vázoltuk frissítése és az engedélyezési jogkivonat 
 
 A dátum, beállíthatja a jövőben kell lennie. Ha a dátum nem a jövőben a **StsRefreshTokensValidFrom** tulajdonsága nincs beállítva. Ha a dátumot a jövőben **StsRefreshTokensValidFrom** beállítása a jelenlegi időpontnál (nem a dátum szerint a Set-MsolUser paranccsal).
 
-
 ## <a name="step-4-test-your-configuration"></a>4. lépés: A konfiguráció tesztelése
 
 ### <a name="testing-your-certificate"></a>A tanúsítvány tesztelése
@@ -191,8 +169,7 @@ Való bejelentkezéshez használja a konfiguráció első teszteléséhez, mint 
 Ha a bejelentkezés sikeres, akkor tudja, hogy:
 
 - A felhasználói tanúsítvány van kiépítve a vizsgálati eszköz
-- Az AD FS megfelelően van konfigurálva.  
-
+- Az AD FS megfelelően van konfigurálva.
 
 ### <a name="testing-office-mobile-applications"></a>Office-mobilalkalmazások tesztelése
 
@@ -214,11 +191,17 @@ Az EAS-profil a következő adatokat kell tartalmazniuk:
 
 - Az EAS-végpont (például outlook.office365.com)
 
-Az EAS-profil konfigurálhatók és elhelyezett keresztül a mobileszköz-kezelés (MDM) például az Intune-ban, vagy manuálisan helyezi el a tanúsítványt az EAS-profil az eszköz használata az eszközön.  
+Az EAS-profil konfigurálhatók és elhelyezett keresztül a mobileszköz-kezelés (MDM) például az Intune-ban, vagy manuálisan helyezi el a tanúsítványt az EAS-profil az eszköz használata az eszközön.
 
 ### <a name="testing-eas-client-applications-on-android"></a>Az Android EAS-ügyfél alkalmazások tesztelése
 
-**Tanúsítványalapú hitelesítés tesztelése:**  
+**Tanúsítványalapú hitelesítés tesztelése:**
 
-1. Adja meg az alkalmazást, amely eleget tesz a fenti EAS-profil.  
+1. Adja meg az alkalmazást, amely eleget tesz a korábbi szakaszában az EAS-profil.
 2. Indítsa el az alkalmazást, és győződjön meg arról, hogy mail szinkronizál.
+
+## <a name="next-steps"></a>További lépések
+
+[Tanúsítvány alapú való továbbításához végzett hitelesítés további információt az Android-eszközökön.](active-directory-certificate-based-authentication-android.md)
+
+[Tanúsítvány alapú való továbbításához végzett hitelesítés további információt az iOS-eszközökön.](active-directory-certificate-based-authentication-ios.md)

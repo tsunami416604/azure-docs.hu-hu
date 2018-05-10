@@ -9,11 +9,11 @@ ms.custom: load & move data
 ms.date: 04/10/2018
 ms.author: carlrab
 ms.topic: article
-ms.openlocfilehash: 4279630816b6d5f7cf15b7555bf951d3f2a5f95a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd9554a18775cf98f4415ebd5d4b0d52edc53718
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Új Azure SQL-adatbázis BACPAC fájl importálása
 
@@ -113,6 +113,8 @@ Ezekben a varázslókban is használhatja:
 * Megtudhatja, hogyan csatlakozhat, és az importált SQL-adatbázis lekérdezése, lásd: [Csatlakozás SQL Database adatbázishoz az SQL Server Management Studio eszközt, és végezze el a T-SQL-mintalekérdezés](sql-database-connect-query-ssms.md).
 * További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 * A teljes SQL Server adatbázis áttelepítési folyamat, többek között teljesítmény javaslatok leírását lásd: [egy SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
+* Megtudhatja, hogyan kezelheti és kulcsok tárolási és közös hozzáférésű signitures biztonságosan, lásd: [Azure Storage biztonsági útmutató](https://docs.microsoft.com/azure/storage/common/storage-security-guide). 
 
 
+  
 

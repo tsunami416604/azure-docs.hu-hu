@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 37d1397b0601e09b12c0c05ff0adc6a916d66d70
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65e1f8a907c8bf64497f7439e5b635ad336cd23a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia - IoT-központ kvóták és sávszélesség-szabályozás
 
@@ -49,6 +49,8 @@ A következő táblázat a kényszerített szabályozások. Értékek egyes hubh
 | Kettős (eszköz és modul)<sup>1</sup> | 10/mp | Magasabb 10 másodpercenként vagy 1/mp/egység | 50/mp/egység |
 | Operatív feladatok<sup>1</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
 | Feladatok eszközönkénti művelet átviteli<sup>1</sup> | 10/mp | Magasabb 10 másodpercenként vagy 1/mp/egység | 50/mp/egység |
+| És peremhálózati központi<sup>1</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 0.33/sec/Unit (20 perc/egységenként) | 0.33/sec/Unit (20 perc/egységenként) | 0.33/sec/Unit (20 perc/egységenként) |
+
 
 <sup>1</sup>a szolgáltatás nem érhető el az IoT-központ alapszintű rétegben. További információkért lásd: [kiválasztása a megfelelő IoT-központ](iot-hub-scaling.md). <br/><sup>2</sup>8 KB-os sávszélesség-szabályozás mérő mérete.
 
@@ -76,6 +78,9 @@ Az IoT-központ érvényesíti a más működési korlátai:
 | Üzenetküldési eszközről a felhőbe | Maximális üzenet mérete 256 KB |
 | Felhő eszközre üzenetküldési<sup>1</sup> | Maximális méret 64 KB. Függőben levő üzenetek a szállítási maximális érték 50. |
 | A közvetlen módszer<sup>1</sup> | Maximális közvetlen módszer hasznos mérete 128 KB. |
+| Konfigurációk | 20 konfigurációk / hub. |
+| Peremhálózati központi telepítések | 20 központi telepítések / hub. üzemelő példányonként 20 modulok. |
+| Twins | Egy két szakaszban (címkék, kívánt tulajdonságokkal, jelentett Tulajdonságok) maximális mérete: 8 KB-os |
 
 <sup>1</sup>a szolgáltatás nem érhető el az IoT-központ alapszintű rétegben. További információkért lásd: [kiválasztása a megfelelő IoT-központ](iot-hub-scaling.md).
 

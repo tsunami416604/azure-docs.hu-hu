@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 05/07/2018
 ms.author: sngun
-ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: bede91ed3ffc456740a0eb63ed7a15278e99ebe2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Állítsa be, és átviteli Azure Cosmos DB tárolók beolvasása
 
-Átviteli sebesség az az Azure Cosmos DB tárolókat az Azure portálon vagy az ügyfél SDK-k segítségével állíthatja be. 
+Átviteli sebesség a Azure Cosmos DB tárolók vagy a tárolókat az Azure portálon vagy az ügyfél SDK-k segítségével állíthatja be. 
 
 A következő táblázat felsorolja a rendelkezésre álló tárolók az átviteli sebesség:
 
@@ -31,15 +31,18 @@ A következő táblázat felsorolja a rendelkezésre álló tárolók az átvite
             <td valign="top"><p></p></td>
             <td valign="top"><p><strong>Az egypartíciós tároló</strong></p></td>
             <td valign="top"><p><strong>Particionált tároló</strong></p></td>
+            <td valign="top"><p><strong>Tárolók készlete</strong></p></td>
         </tr>
         <tr>
             <td valign="top"><p>Minimális átviteli sebesség</p></td>
             <td valign="top"><p>400 kérelem egység / másodperc</p></td>
-            <td valign="top"><p>1000 kérelem egység / másodperc</p></td>
+            <td valign="top"><p>1 000 kérelemegység / másodperc</p></td>
+            <td valign="top"><p>50 000 kérelemegység / másodperc</p></td>
         </tr>
         <tr>
             <td valign="top"><p>Maximális átviteli sebesség</p></td>
             <td valign="top"><p>10 000 kérelemegység / másodperc</p></td>
+            <td valign="top"><p>Korlátlan</p></td>
             <td valign="top"><p>Korlátlan</p></td>
         </tr>
     </tbody>
@@ -62,6 +65,7 @@ A következő kódrészletet lekérdezi az aktuális átviteli, és nem módosí
 
 ```csharp
 // Fetch the offer of the collection whose throughput needs to be updated
+// To change the throughput for a set of containers, use the database's selflink instead of the collection's selflink
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
@@ -82,6 +86,7 @@ A következő kódrészletet lekérdezi az aktuális átviteli, és nem módosí
 
 ```Java
 // find offer associated with this collection
+// To change the throughput for a set of containers, use the database's resource id instead of the collection's resource id
 Iterator < Offer > it = client.queryOffers(
     String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
 assertThat(it.hasNext(), equalTo(true));
@@ -131,7 +136,7 @@ A legegyszerűbben úgy beszerezni a helyes becsült kérelem egység költsége
 ![MongoDB API portál metrikák][1]
 
 ### <a id="RequestRateTooLargeAPIforMongoDB"></a> Meghaladja a fenntartott átviteli sebességének korlátai a MongoDB API-ban.
-Alkalmazások, amelyek mérete meghaladja a létesített átviteli sebesség a tároló lehet sebessége korlátozott felhasználási aránya a kiosztott átviteli sebesség alá süllyed. A sebesség korlátozása esetén a háttér megelőző jelleggel véget ér a kérelmet egy `16500` hibakód - `Too Many Requests`. Alapértelmezés szerint a MongoDB API automatikusan újrapróbálkozik legfeljebb 10-szer kell a visszatérésre egy `Too Many Requests` hibakód. Ha sok kap `Too Many Requests` hibakódok, érdemes lehet fontolja meg, vagy egy újrapróbálkozási logika a az alkalmazás hibakezelési rutinok vagy [növelje a kiosztott átviteli sebesség a tároló](set-throughput.md).
+Alkalmazások, amelyek mérete meghaladja a kiosztott átviteli sebesség egy tároló vagy egy tárolók sebessége korlátozott lesz, amíg a használat gyakorisága a kiosztott átviteli sebesség alá süllyed. A sebesség korlátozása esetén a háttér megelőző jelleggel véget ér a kérelmet egy `16500` hibakód - `Too Many Requests`. Alapértelmezés szerint a MongoDB API automatikusan újrapróbálkozik legfeljebb 10-szer kell a visszatérésre egy `Too Many Requests` hibakód. Ha sok kap `Too Many Requests` hibakódok, érdemes lehet fontolja meg, vagy egy újrapróbálkozási logika a az alkalmazás hibakezelési rutinok vagy [növelje a kiosztott átviteli sebesség a tároló](set-throughput.md).
 
 ## <a name="throughput-faq"></a>Átviteli – gyakori kérdések
 
@@ -139,7 +144,7 @@ Alkalmazások, amelyek mérete meghaladja a létesített átviteli sebesség a t
 
 400 RU/mp a minimális átviteli sebesség érhető el a Cosmos DB egypartíciós tárolók (1000 RU/mp az particionált tárolókat minimális). Kérelem egységek 100 RU/mp intervallumok belül vannak beállítva, de az átviteli sebesség nem állítható be 100 RU/mp vagy bármely érték kisebb, mint a 400 RU/mp. Ha fejlesztéséhez és teszteléséhez Cosmos DB költséghatékony módszert keres, akkor használhatja az ingyenes [Azure Cosmos DB emulátor](local-emulator.md), amely központilag telepíthető helyileg ingyenesen. 
 
-**Hogyan állíthatom be a MongoDB API-jával througput?**
+**Hogyan állíthatom be a MongoDB API-jával átviteli?**
 
 Nincs átviteli sebesség beállításához MongoDB API kiterjesztés nélkül. A javaslat, hogy az SQL API-t használó, ahogy az [az átviteli sebesség beállítása a .NET-hez az SQL API használatával](#set-throughput-sdk).
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cbdb4691bac01843a451c988e09d77dd10f97461
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -29,34 +29,46 @@ ms.lasthandoff: 03/30/2018
 
 ![Application Insights Metrikaböngésző](media/functions-monitoring/metrics-explorer.png)
 
-Funkciók is rendelkezik beépített figyelést, amely nem használja az Application insights szolgáltatással. Az Application Insights azt javasoljuk, mert további adatok és az adatok elemzésére jobb mód kínál. A beépített figyelésével kapcsolatos további információkért lásd: a [utolsó szakaszban ismertetett](#monitoring-without-application-insights).
+Funkciók is rendelkezik [beépített figyelést, nem használja az Application Insights](#monitoring-without-application-insights). Az Application Insights azt javasoljuk, mert további adatok és az adatok elemzésére jobb mód kínál.
 
-## <a name="enable-application-insights-integration"></a>Az Application Insights-integráció engedélyezése
+## <a name="application-insights-pricing-and-limits"></a>Az Application Insights árképzési és korlátozások
 
-Egy függvény alkalmazás adatokat küldhet az Application Insights kell ismernie a instrumentation kulcsot az Application Insights-példány. Két módon, hogy a kapcsolat a [Azure-portálon](https://portal.azure.com):
+Kipróbálhatja az Application Insights-integráció függvény alkalmazásokkal szabad. Azonban mennyi adatot szabad feldolgozandó napi korlátja, és előfordulhat, hogy kattintson a tesztelés során ezt a határértéket. Azure portál és az e-mail értesítéseket biztosít, ha a kezdi megközelíteni a napi korlátot.  De ha teljesíti-e riasztások, és elérte a korlátot, az új naplók nem jelenik meg az Application Insights lekérdezések. Ezért figyelembe szükségtelen hibaelhárítási idő elkerülése érdekében a korlátot. További információkért lásd: [kezelése az Application Insightsban tarifa- és adatok kötet](../application-insights/app-insights-pricing.md).
 
-* [Hozzon létre egy csatlakoztatott Application Insights-példányt, a függvény alkalmazás létrehozásakor](#new-function-app).
-* [Az Application Insights-példány csatlakoztatása egy meglévő függvény alkalmazást](#existing-function-app).
+## <a name="enable-app-insights-integration"></a>App Insights integrációjának engedélyezése
+
+Egy függvény alkalmazás adatokat küldhet az Application Insights kell tudni, hogy az Application Insights-erőforrás instrumentation kulcsa. A kulcsot meg kell adni a APPINSIGHTS_INSTRUMENTATIONKEY nevű Alkalmazásbeállítás rendelkezik.
+
+Ezt a kapcsolatot a állíthat be a [Azure-portálon](https://portal.azure.com):
+
+* [Automatikusan az új függvény alkalmazás](#new-function-app)
+* [Csatlakozás kézzel egy App Insights-erőforrás](#manually-connect-an-app-insights-resource)
 
 ### <a name="new-function-app"></a>Új függvényalkalmazás
 
-Az Application Insights az függvény alkalmazás engedélyezése **létrehozása** lap:
+1. Nyissa meg a függvény alkalmazásba **létrehozása** lap.
 
 1. Állítsa be a **Application Insights** kapcsoló **a**.
 
 2. Válasszon egy **Application Insights hely**.
 
+   Válassza ki a régiót, a függvény app régió legközelebb van az egy [Azure geográfiai](https://azure.microsoft.com/global-infrastructure/geographies/) Ha azt szeretné, hogy az adatok tárolását.
+
    ![Egy függvény alkalmazás létrehozásakor az Application Insights engedélyezése](media/functions-monitoring/enable-ai-new-function-app.png)
 
-### <a name="existing-function-app"></a>Meglévő függvény alkalmazás
+3. Adja meg a szükséges információt.
 
-A rendszerállapot-kulcs beszerzése, és mentse azt egy függvény alkalmazásban:
+1. Kattintson a **Létrehozás** gombra.
 
-1. Az Application Insights-példány létrehozása. Alkalmazás típusa **általános**.
+A következő lépés [tiltsa le a beépített naplózást](#disable-built-in-logging).
 
-   ![Hozzon létre egy Application Insights-példányt, írja be az általános](media/functions-monitoring/ai-general.png)
+### <a name="manually-connect-an-app-insights-resource"></a>Csatlakozás kézzel egy App Insights-erőforrás 
 
-2. Másolja az instrumentation-kulcsot a **Essentials** lap az Application Insights-példány. A megjelenített kulcsérték beolvasandó végén rámutat egy **másolásához kattintson a** gombra.
+1. Az Application Insights-erőforrás létrehozása. Alkalmazás típusa **általános**.
+
+   ![Általános írja be az Application Insights-erőforrás létrehozása](media/functions-monitoring/ai-general.png)
+
+2. Másolja az instrumentation-kulcsot a **Essentials** Application Insights-erőforrások oldalán. A megjelenített kulcsérték beolvasandó végén rámutat egy **másolásához kattintson a** gombra.
 
    ![Az Application Insights instrumentation kulcs másolása](media/functions-monitoring/copy-ai-key.png)
 
@@ -70,13 +82,46 @@ A rendszerállapot-kulcs beszerzése, és mentse azt egy függvény alkalmazásb
 
 Ha engedélyezi az Application Insights, azt javasoljuk, hogy tiltsa le a [beépített naplózást, amely használja az Azure storage](#logging-to-storage). A beépített naplózást hasznos könnyű munkaterhelések szolgáltatással való tesztelés, de nem nagyléptékű üzemi használatra készült. Az éles figyelés az Application Insights ajánlott. Ha beépített naplózási éles környezetben használja, a naplózás rekord az Azure Storage szabályozás miatt hiányosak lehetnek.
 
-Beépített naplózási letiltásához törölje a `AzureWebJobsDashboard` Alkalmazásbeállítás. Az Azure portálon Alkalmazásbeállítások törlésével kapcsolatos információkért lásd: a **Alkalmazásbeállítások** szakasza [egy függvény alkalmazás kezelése](functions-how-to-use-azure-function-app-settings.md#settings).
+Beépített naplózási letiltásához törölje a `AzureWebJobsDashboard` Alkalmazásbeállítás. Az Azure portálon Alkalmazásbeállítások törlésével kapcsolatos információkért lásd: a **Alkalmazásbeállítások** szakasza [egy függvény alkalmazás kezelése](functions-how-to-use-azure-function-app-settings.md#settings). Az Alkalmazásbeállítás törlése, előtt ellenőrizze, nem létező funkciók az azonos függvény alkalmazásban használni, az Azure Storage eseményindítók és kötések esetén használandó.
 
-Az Application Insights és beépített naplózás letiltása, engedélyezése esetén a **figyelő** az Azure portálon függvény viszi Application Insights lapján.
+## <a name="view-telemetry-in-monitor-tab"></a>Nézet telemetriai figyelő lap
 
-## <a name="view-telemetry-data"></a>Telemetriai adatok megtekintése
+A telemetriai adatokat tekintheti állított be az Application Insights-integráció a korábbi szakaszokban ismertetett módon, a **figyelő** fülre.
 
-Keresse meg a kapcsolódó Application Insights-példány egy függvény alkalmazásból a portálon, válassza ki a **Application Insights** a függvény app hivatkozásra kattintva **áttekintése** lap.
+1. A függvény app lapon válassza egy függvényt, amely legalább egyszer lefutott, miután az Application Insights lett konfigurálva, és jelölje ki a **figyelő** fülre.
+
+   ![Válassza ki a figyelés lapján](media/functions-monitoring/monitor-tab.png)
+
+2. Válassza ki **frissítése** rendszeres időközönként, amíg a függvény meghívásához listája jelenik meg.
+
+   A lista megjelenik, a telemetriai ügyfél kötegekben adatait a kiszolgáló átviteli módjának legfeljebb 5 percig is eltarthat. (Ez a késés nem vonatkozik a [metrikák adatfolyamot](../application-insights/app-insights-live-stream.md). A service csatlakozik a funkciók gazdagép betöltésekor a lapon, a naplók átvitt közvetlenül az oldal számára.)
+
+   ![Indítások listája](media/functions-monitoring/monitor-tab-ai-invocations.png)
+
+2. Egy adott függvény meghívása a naplókat, jelölje ki a **dátum** adott hívás oszlop hivatkozását.
+
+   ![Meghívás Részletek hivatkozása](media/functions-monitoring/invocation-details-link-ai.png)
+
+   A naplózási kimeneti adott meghívásnál új lap jelenik meg.
+
+   ![Hívás részletei](media/functions-monitoring/invocation-details-ai.png)
+
+Két lap (a meghívási lista és a részletek) az Application Insights Analytics lekérdezést, amely lekéri az adatokat mutató hivatkozás létrehozása:
+
+![Futtassa az Application Insightsban](media/functions-monitoring/run-in-ai.png)
+
+![Application Insights Analytics meghívási lista](media/functions-monitoring/ai-analytics-invocation-list.png)
+
+Ezeket a lekérdezéseket a láthatja, hogy a meghívási lista korlátozódik az utolsó 30 nap, legfeljebb 20 sorok (`where timestamp > ago(30d) | take 20`) és a meghívási részletek listája nincs korlátozva az elmúlt 30 napban.
+
+További információkért lásd: [telemetriai adatokat lekérdezni](#query-telemetry-data) című cikkben.
+
+## <a name="view-telemetry-in-app-insights"></a>Az App Insights nézet telemetria
+
+Nyissa meg az Application Insights egy függvény alkalmazásból az Azure portálon, válassza ki a **Application Insights** hivatkozásra a **konfigurált szolgáltatások** szakaszban, a függvény alkalmazás **áttekintése** lap.
+
+![Application Insights hivatkozásra kattintva – áttekintés oldalra](media/functions-monitoring/ai-link.png)
+
 
 Az Application Insights használatával kapcsolatos információkért lásd: a [Application Insights dokumentáció](https://docs.microsoft.com/azure/application-insights/). Ez a szakasz néhány olyan adatok megtekintése az Application Insightsban jeleníti meg. Ha már ismeri az Application insights szolgáltatással, lépjen közvetlenül [konfigurálásáról és testreszabásáról a telemetriai adatok szakaszok](#configure-categories-and-log-levels).
 
@@ -155,13 +200,13 @@ Az az Azure functions naplózó is magában foglalja a *naplózási szintjének*
 
 |LogLevel    |Kód|
 |------------|---|
-|Profilelemzés       | 0 |
+|Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
-|Tájékoztatás | 2. |
+|Információ | 2 |
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|Egyik sem        | 6 |
+|None        | 6 |
 
 Naplózási szintjének `None` esetén, tekintse meg a következő szakaszban. 
 
@@ -221,7 +266,7 @@ Ezek a naplók "kérelmek", az Application Insights megjelenítése. Azt jelzik,
 
 Ezek a naplók íródtak `Information` szinten, ezért ha szűrheti a `Warning` vagy újabb verziók esetén nem látja az adatok.
 
-### <a name="category-hostaggregator"></a>Category Host.Aggregator
+### <a name="category-hostaggregator"></a>Kategória Host.Aggregator
 
 Ezek a naplók biztosít számát, valamint a függvény meghívásához átlagok képest egy [konfigurálható](#configure-the-aggregator) időszakának idő. Az alapértelmezett időtartam 30 másodperc vagy 1000 eredményeket, amelyik előbb következik be. 
 
@@ -256,7 +301,7 @@ Az előző szakaszban leírtaknak megfelelően a futtatókörnyezet függvény v
 
 ## <a name="configure-sampling"></a>A mintavétel konfigurálása
 
-Az Application Insights rendelkezik egy [mintavételi](../application-insights/app-insights-sampling.md) funkciója, amely védeni az előállító néha a csúcsterhelés túl sok telemetriai adatokat. A telemetriai adatok elemek száma meghaladja a megadott mértékben, az Application Insights hozzákezd véletlenszerűen figyelmen kívül hagyja a bejövő elemek egy része. Beállíthatja, hogy a mintavételi *host.json*.  Például:
+Az Application Insights rendelkezik egy [mintavételi](../application-insights/app-insights-sampling.md) funkciója, amely védeni az előállító néha a csúcsterhelés túl sok telemetriai adatokat. A telemetriai adatok elemek száma meghaladja a megadott mértékben, az Application Insights hozzákezd véletlenszerűen figyelmen kívül hagyja a bejövő elemek egy része. A másodpercenként elemek maximális számát alapértelmezett érték 5. Beállíthatja, hogy a mintavételi *host.json*.  Például:
 
 ```json
 {
@@ -489,13 +534,19 @@ Az Application Insights-integráció funkciók a probléma, vagy egy javaslat va
 
 ## <a name="monitoring-without-application-insights"></a>Az Application Insights nélkül figyelése
 
-Az Application Insights monitorozási funkciók, ez ugyanis további adatok és az adatok elemzésére jobb mód javasolt. De is találhatók naplók és telemetriai adatokat az Azure portál lapjai függvény alkalmazások.
+Az Application Insights monitorozási funkciók, ez ugyanis további adatok és az adatok elemzésére jobb mód javasolt. De ha inkább a beépített naplózási rendszer Azure Storage használó, továbbra is használja.
 
 ### <a name="logging-to-storage"></a>A naplózás tárolási
 
-Beépített naplózást a kapcsolati karakterlánc által meghatározott tárolási fiókját használja a `AzureWebJobsDashboard` Alkalmazásbeállítás. Ha az adott Alkalmazásbeállítás van konfigurálva, megtekintheti a naplózási adatokat az Azure portálon. A tárolási erőforrások keresse meg fájlokat, jelölje be a szolgáltatás a függvény, és folytassa a `LogFiles > Application > Functions > Function > your_function` megtekintéséhez a naplófájlba írást. Függvény app lapon, a függvény, és válassza ki a **figyelő** fülre, és függvény végrehajtások listájának lekérése. Válassza ki a függvény végrehajtása az időtartam, a bemeneti adatok, a hibák és a kapcsolódó naplófájlok áttekintéséhez.
+Beépített naplózást a kapcsolati karakterlánc által meghatározott tárolási fiókját használja a `AzureWebJobsDashboard` Alkalmazásbeállítás. Függvény app lapon, a függvény, és válassza ki a **figyelő** lapot, és biztosítható, hogy klasszikus nézetben válassza ki.
 
-Ha az Application Insights használ, és rendelkezik [beépített naplózás le van tiltva](#disable-built-in-logging), a **figyelő** lapon viszi Application insights szolgáltatással.
+![A hagyományos nézetre váltani](media/functions-monitoring/switch-to-classic-view.png)
+
+ Függvény végrehajtások listájának lekérése. Válassza ki a függvény végrehajtása az időtartam, a bemeneti adatok, a hibák és a kapcsolódó naplófájlok áttekintéséhez.
+
+Ha korábban engedélyezve van az Application Insights, de most szeretné lépjen vissza a beépített naplózást is, tiltsa le az Application Insights manuálisan, és válassza ki a **figyelő** fülre. Az Application Insights integrációs letiltásához törölje a APPINSIGHTS_INSTRUMENTATIONKEY Alkalmazásbeállítás.
+
+Akkor is, ha a **figyelő** lap megjeleníti az Application Insights adatokat úgy is, hogy naplóadatait a fájlrendszer Ha még nem [le van tiltva a beépített naplózási](#disable-built-in-logging). A tárolási erőforrások keresse meg fájlokat, jelölje be a szolgáltatás a függvény, és folytassa a `LogFiles > Application > Functions > Function > your_function` megtekintéséhez a naplófájlba írást.
 
 ### <a name="real-time-monitoring"></a>Valós idejű figyelése
 

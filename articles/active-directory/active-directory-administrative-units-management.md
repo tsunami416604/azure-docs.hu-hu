@@ -1,26 +1,24 @@
 ---
-title: "Az Azure Active Directory felügyeleti egység felügyeleti előzetes verzió"
-description: "Adminisztratív egységei használ az Azure Active Directory engedélyeit részletesebb delegálása"
+title: Az Azure Active Directory felügyeleti egység felügyeleti előzetes verzió
+description: Adminisztratív egységei használ az Azure Active Directory engedélyeit részletesebb delegálása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 8464cd6b-1d1a-470d-a4fb-ee29b8eab4c4
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.component: users-groups-roles
 ms.workload: identity
 ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d657eda25f3b26cb793a7ba1a4546f98c08b7e65
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 373983413ea83e5924b52fbbcbc666aa1a188d80
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Az adminisztrációs egységek felügyelete az Azure AD - nyilvános előzetes verzió
 Ez a cikk ismerteti adminisztratív egységei – egy új Azure Active Directory-tárolót az erőforrásokat, amelyek rendszergazdai engedélyek delegálása felhasználók és a felhasználók egy részének fog alkalmazni házirendeket részhalmaza keresztül is használható. Az Azure Active Directoryban adminisztratív egységei engedélyezése központi rendszergazdák regionális rendszergazdák vonatkozó engedélyek delegálása vagy alapszinten házirend beállítása.

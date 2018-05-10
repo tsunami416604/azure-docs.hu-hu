@@ -1,18 +1,18 @@
 ---
-title: "A hálózatleképezés a Hyper-V virtuális gép (a VMM-mel) replikáció az Azure Site Recovery szolgáltatással kapcsolatos |} Microsoft Docs"
-description: "Ismerteti, hogyan állíthatja be a hálózatra való leképezést a VMM-felhőkben, az Azure Site Recovery szolgáltatással felügyelt Hyper-V virtuális gépek replikációját."
+title: A hálózatleképezés a Hyper-V virtuális gép (a VMM-mel) replikáció az Azure Site Recovery szolgáltatással kapcsolatos |} Microsoft Docs
+description: Ismerteti, hogyan állíthatja be a hálózatra való leképezést a VMM-felhőkben, az Azure Site Recovery szolgáltatással felügyelt Hyper-V virtuális gépek replikációját.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f7c6e3eeb8db75a3857e687fecc9ee2748e92696
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Hálózatleképezés előkészítése Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
 
@@ -55,7 +55,7 @@ A hálózatleképezés a következőképpen működik:
 
 **Hely** | **VMM-kiszolgáló** | **A Virtuálisgép-hálózatok** | **Leképezve**
 ---|---|---|---
-New York | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicagói leképezve
+New York | A VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicagói leképezve
  |  | VMNetwork2-NewYork | Nincsenek leképezve:
 Chicago | A VMM-Chicagói| VMNetwork1-Chicagói | VMNetwork1-NewYork leképezve
  | | VMNetwork1-Chicagói | Nincsenek leképezve:
@@ -82,7 +82,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicagói | VMNetwork1-Chicagói
- | LogicalNetwork2Chicago | VMNetwork2-Chicago
+ | LogicalNetwork2Chicago | VMNetwork2-Chicagói
 
 ### <a name="target-network-settings"></a>Cél hálózati beállításai
 
@@ -92,7 +92,7 @@ Ezek a beállítások alapján a célként megadott Virtuálisgép-hálózat kiv
 ---|---|---|---
 VMNetwork1-Chicagói | SilverCloud1 | SilverCloud2 | Elérhető
  | GoldCloud1 | GoldCloud2 | Elérhető
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Nincs
+VMNetwork2-Chicagói | SilverCloud1 | SilverCloud2 | Nincs
  | GoldCloud1 | GoldCloud2 | Elérhető
 
 
@@ -111,7 +111,7 @@ Vm2 virtuális gépnek (VM1 replika) | VMNetwork1-Chicagói
 
 Ezekkel a beállításokkal tekintsük át, mi történik, több lehetséges forgatókönyv szerint.
 
-**Scenario** | **Eredménye**
+**Forgatókönyv** | **Eredménye**
 ---|---
 A feladatátvételt követően VM-2 hálózati tulajdonságok nem módosult. | VM-1 a forrás hálózati kapcsolatban marad.
 VM-2 hálózati tulajdonságainak a feladatátvételt követően módosulnak, és le van választva. | VM-1 le van választva.

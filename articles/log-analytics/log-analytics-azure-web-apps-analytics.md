@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 66c07b757a034501eb66a4b23fc4c75bb94f8b10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Az Azure-webalkalmazás-erőforrások között metrikáihoz analitikai adatok megtekintése
 
@@ -57,7 +57,7 @@ Legtöbb egyéb Naplóelemzési megoldásoktól eltérően adatokat nem gyűjtö
 Hajtsa végre a következő lépésekkel állíthatja be az Azure Web Apps Analytics megoldás a munkaterületek.
 
 1. Engedélyezze az Azure Web Apps Analytics megoldást [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) vagy ismertetett folyamatot követve [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
-2. [Az OMS Szolgáltatáshoz a PowerShell használatával Azure erőforráscsoport metrikák naplózását](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
+2. [Azure-erőforrás metrikák naplózását a PowerShell használatával Naplóelemzési](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
 
 Az Azure Web Apps elemzési megoldások metrikák két készletét gyűjti az Azure-ból:
 
@@ -77,10 +77,6 @@ Az Azure Web Apps elemzési megoldások metrikák két készletét gyűjti az Az
   - Memóriahasználat (%)
 
 App Service-csomag metrikái összegyűjtése csak egy dedikált service-csomag használata. Ez nem vonatkozik ingyenes vagy közös App Service-csomagokról.
-
-A megoldás az OMS-portálon való hozzáadásakor a következő csempe láthatja. Kell [az OMS Szolgáltatáshoz a PowerShell használatával Azure erőforráscsoport metrikák naplózását](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
-
-![Értékelés értesítési végrehajtása](./media/log-analytics-azure-web-apps-analytics/performing-assessment.png)
 
 Miután konfigurálta a megoldás, adatokat kell kezdődnie, 15 percen belül a munkaterület halad.
 

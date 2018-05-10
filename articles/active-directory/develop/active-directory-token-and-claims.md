@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/22/2018
+ms.date: 05/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 82069b31ee51e0dd60691edca490b1a60384288a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-ad-token-reference"></a>Az Azure AD-jogkivonatok referenciájából
 Azure Active Directory (Azure AD) bocsát ki biztonsági jogkivonatainak feldolgozása minden hitelesítési folyamat során számos különböző. Ez a dokumentum ismerteti a formátumát, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát. 
@@ -164,6 +164,8 @@ Frissítési jogkivonatok érvénytelenítve, vagy bármikor, számos okból vis
 
 > [!NOTE]
 >Ha a hitelesítési módszer nem jelszó nem használható (a Windows Hello-, a hitelesítő alkalmazása, például egy oldallal vagy az ujjlenyomat biometria) a token eléréséhez, a jelszó módosítása nem kényszeríti a felhasználónak újra hitelesíteni (de ez arra kényszeríti a hitelesítő alkalmazás újra hitelesíteni).  Ez azért, mert a kiválasztott hitelesítési bemeneti (a arc, pl.) nem változott, és ezért használható újra újra hitelesíteni.
+>
+> Jelszó módosítása által okozott hibával találkozzanak, bizalmas ügyfelek nem érinti.  A jelszó módosítása továbbra is, hogy frissítési jogkivonat használatával további jogkivonatokhoz abl kiadott frissítési jogkivonatok bizalmas ügyfél. 
 
 ## <a name="sample-tokens"></a>A minta jogkivonatok
 

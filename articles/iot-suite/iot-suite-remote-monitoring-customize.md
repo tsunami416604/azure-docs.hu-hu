@@ -1,7 +1,7 @@
 ---
-title: "A távoli felügyeleti megoldás - Azure testreszabása |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan érheti el a távoli felügyeleti előkonfigurált megoldás forráskódját."
-services: 
+title: A távoli figyelésére szolgáló megoldás UI - Azure testreszabása |} Microsoft Docs
+description: Ez a cikk bemutatja hogyan használható a távoli megfigyelési megoldásgyorsító felhasználói felület forráskódja és néhány testreszabásokat.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,256 +12,457 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: f5d38091b59110859d4376a5cd16a19f24dad65b
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: be20d45b380f66208884f15f4644f36f2a403837
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="customize-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás testreszabása
+# <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli megfigyelési megoldásgyorsító testreszabása
 
-Ez a cikk ismerteti, hogyan hozzáférni a forráskódot, és a távoli figyelésének testreszabása, előre konfigurált megoldás. A cikk ismerteti:
+Ez a cikk bemutatja hogyan hozzáférni a forráskódot, és a távoli megfigyelési megoldásgyorsító felhasználói felület testreszabása. A cikk ismerteti:
 
-* A GitHub-adattárak, amely a forráskódot, és a mikroszolgáltatások az előkonfigurált megoldás alkotó forrásokat tartalmazza.
-* Írja be például az új eszköz hozzáadása a testreszabási szabhatják.
+## <a name="prepare-a-local-development-environment-for-the-ui"></a>A helyi környezet előkészítése a felhasználói felületen
 
-A következő videó bemutatja a távoli felügyeleti előkonfigurált megoldás testreszabására szolgáló beállítások áttekintése:
+A távoli megfigyelési megoldásgyorsító UI kód React.js keretében segítségével van megvalósítva. Megtalálhatja a forráskódban a [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub-tárházban.
 
->[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
+A felhasználói felület módosításához helyileg futtathatja egy példányát. A helyi példány csatlakozik a megoldás például telemetriai adatainak lekérése műveletek elvégzéséhez telepített példányát.
 
-## <a name="project-overview"></a>Projekt áttekintése
+A helyi felhasználói felület fejlesztési környezet beállítása a folyamat lépései:
 
-### <a name="implementations"></a>Megvalósítások
+1. Központi telepítése egy **alapvető** a megoldás gyorsító használatával példánya a **számítógépek** parancssori felület. Jegyezze fel a nevét, valamint a központi telepítés a virtuális géphez megadott hitelesítő adatok. További információkért lásd: [telepítheti a parancssori felület használatával](iot-suite-remote-monitoring-deploy-cli.md).
 
-A távoli felügyeleti megoldás .NET és a Java-megvalósítások rendelkezik. Mindkét megoldások hasonló funkciókat biztosít, és az azonos alapul szolgáló Azure-szolgáltatás támaszkodnak. A legfelső szintű GitHub-adattárak itt található:
+1. Az Azure-portálon vagy a [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ahhoz, hogy a virtuális géphez, amelyen a megoldásban mikroszolgáltatások SSH-elérést. Példa:
 
-* [.NET-megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Java-megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+    ```sh
+    az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
+    ```
 
-### <a name="microservices"></a>Mikroszolgáltatások
+1. Az Azure-portálon vagy a [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nevét és a virtuális gép nyilvános IP-cím kereséséhez. Példa:
 
-Ha érdekli a megoldás egy adott szolgáltatása, minden egyes mikroszolgáltatási a GitHub-adattárak végezheti el. Minden mikroszolgáltatási valósítja meg a megoldást funkciót egy másik része. Általános architektúrája kapcsolatos további információkért lásd: [megoldásarchitektúra távoli megfigyelési előre konfigurált](iot-suite-remote-monitoring-sample-walkthrough.md).
+    ```sh
+    az resource list --resource-group {your solution name} -o table
+    az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
+    ```
 
-Ez a táblázat minden egyes nyelvekhez tartozó mikroszolgáltatási aktuális rendelkezésre állását foglalja össze:
+1. Az SSH használata a virtuális gépet, az IP-címet az előző lépést, és a futtatásakor megadott hitelesítő adatok használatával csatlakozni **számítógépek** üzembe helyezéséhez.
 
-<!-- please add links for each of the repos in the table, you can find them here https://github.com/Azure/azure-iot-pcs-team/wiki/Repositories-->
+1. Ahhoz, hogy a helyi UX való csatlakozáshoz, futtassa az alábbi parancsokat a rendszerhéjakba a virtuális gépen:
 
-| Microservice      | Leírás | Java | .NET |
-| ----------------- | ----------- | ---- | ---- |
-| Web UI            | Webalkalmazás távoli figyelési megoldást igényelnek. Felhasználói felület React.js keretrendszer használatával valósít meg. | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) |
-| IoT Hub Manager   | Az IoT Hub kommunikációt kezeli.        | [Rendelkezésre álló](https://github.com/Azure/iothub-manager-java) | [Rendelkezésre álló](https://github.com/Azure/iothub-manager-dotnet)   |
-| Hitelesítés    |  Kezeli az Azure Active Directory-integráció.  | Még nem érhető el | [Rendelkezésre álló](https://github.com/Azure/pcs-auth-dotnet)   |
-| Eszközszimuláció | Kezeli a szimulált eszköz készletét. | Még nem érhető el | [Rendelkezésre álló](https://github.com/Azure/device-simulation-dotnet)   |
-| Telemetria         | Elérhetővé teszi telemetriát a felhasználói felületen. | [Rendelkezésre álló](https://github.com/Azure/device-telemetry-java) | [Rendelkezésre álló](https://github.com/Azure/device-telemetry-dotnet)   |
-| Telemetria ügynök   | Elemzi a telemetriai adatok adatfolyam tárolja az üzeneteket az Azure IoT Hub és meghatározott szabályok szerint riasztásokat állít elő.  | [Rendelkezésre álló](https://github.com/Azure/telemetry-agent-java) | [Rendelkezésre álló](https://github.com/Azure/telemetry-agent-dotnet)   |
-| Felhasználói felület Config         | A felhasználói felület a konfigurációs adatok kezeli. | [Rendelkezésre álló](https://github.com/azure/pcs-ui-config-java) | [Rendelkezésre álló](https://github.com/azure/pcs-ui-config-dotnet)   |
-| Tárolási adapter   |  Kezeli a társzolgáltatás interakció.   | [Rendelkezésre álló](https://github.com/azure/pcs-storage-adapter-java) | [Rendelkezésre álló](https://github.com/azure/pcs-storage-adapter-dotnet)   |
-| Fordított proxy     | Egy egyedi végpontot keresztül felügyelt módon tesz elérhetővé a saját erőforrásokat. | Még nem érhető el | [Rendelkezésre álló](https://github.com/Azure/reverse-proxy-dotnet)   |
+    ```sh
+    cd /app
+    sudo ./start.sh --unsafe
+    ```
 
-A Java megoldásokkal jelenleg használ, a .NET hitelesítés, a szimuláció és a fordított proxy mikroszolgáltatások létrehozására. Ezek mikroszolgáltatások helyébe Java-verziót, amint azok elérhetővé válnak.
+1. Miután meggyőződött arról, a parancs végrehajtását, és a webhely elindul, leválaszthatja, a virtuális gépről.
 
-## <a name="presentation-and-visualization"></a>Bemutató és -megjelenítésre
+1. A helyi példánya a [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) -tárházban, szerkesztése a **.env** fájl hozzáadása a telepített megoldás URL-címe:
 
-A következő szakaszok ismertetik a távoli felügyeleti megoldás bemutató és képi megjelenítéseket réteg beállításait:
+    ```config
+    NODE_PATH = src/
+    REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
+    ```
 
-### <a name="change-the-logo-in-the-ui"></a>Módosítsa a felhasználói felületen az embléma
-
-Az alapértelmezett telepítési a Contoso vállalat neve és embléma használ a felhasználói felületen. A felhasználói felületi elemei a vállalat nevének és embléma megjelenítendő módosítása:
-
-1. Az alábbi parancs segítségével a webes felhasználói felületén tárház klónozása:
+1. A helyi másolat készítése a parancsot a parancssorba a `azure-iot-pcs-remote-monitoring-webui` mappa, a szükséges kódtárak telepítése, és helyi futtatásra felhasználói felülete a következő parancsokat:
 
     ```cmd/sh
-    git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
+    npm install
+    npm start
     ```
 
-1. A vállalatnév módosításához nyissa meg a `src/common/lang.js` fájlt egy szövegszerkesztőben.
+1. Az előző parancsot futtatja a felhasználói felület lévő helyi http://localhost:3000/dashboard. A kód szerkesztése a hely futása közben, és dinamikusan frissítéséhez látható.
 
-1. A fájlban keresse meg a következő sort:
+## <a name="customize-the-layout"></a>Az elrendezés testreszabása
 
-    ```js
-    CONTOSO: 'Contoso',
+A távoli figyelésére szolgáló megoldás oldalainak tevődnek össze a vezérlők, a továbbiakban *panelek* a forráskód. Például a **irányítópult** lap öt panelek épül fel: áttekintése, térkép, riasztások, Telemetriai és KPI-k. A forráskód minden lapon és a panelek definiáló található a [számítógépek-távelérési-figyelés-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub-tárházban. Például, ha a kódot, amely meghatározza a **irányítópult** lap, az elrendezés és a panelek az oldalon található a [irányítópult src/összetevőinek/lapok](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) mappát.
+
+A panelek kezeli a saját elrendezés és a méretezés, mert a lap elrendezése könnyen módosíthatja. Például a következő módosításai a **PageContent** eleme a `src/components/pages/dashboard/dashboard.js` fájl felcserélni a hellyel korábban a térkép és telemetriai panelt, és a térkép és a KPI panelek relatív szélességének módosítása:
+
+```nodejs
+<PageContent className="dashboard-container" key="page-content">
+  <Grid>
+    <Cell className="col-1 devices-overview-cell">
+      <OverviewPanel
+        openWarningCount={openWarningCount}
+        openCriticalCount={openCriticalCount}
+        onlineDeviceCount={onlineDeviceCount}
+        offlineDeviceCount={offlineDeviceCount}
+        isPending={kpisIsPending || devicesIsPending}
+        error={devicesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-5">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-4">
+    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+        <MapPanel
+          azureMapsKey={azureMapsKey}
+          devices={devices}
+          devicesInAlarm={devicesInAlarm}
+          mapKeyIsPending={azureMapsKeyIsPending}
+          isPending={devicesIsPending || kpisIsPending}
+          error={azureMapsKeyError || devicesError || kpisError}
+          t={t} />
+      </PanelErrorBoundary>
+    </Cell>
+    <Cell className="col-6">
+      <KpisPanel
+        topAlarms={topAlarmsWithName}
+        alarmsPerDeviceId={alarmsPerDeviceType}
+        criticalAlarmsChange={criticalAlarmsChange}
+        warningAlarmsChange={warningAlarmsChange}
+        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || kpisError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+  </Grid>
+</PageContent>
+```
+
+![Változás paraméterpanel-elrendezése](media/iot-suite-remote-monitoring-customize/layout.png)
+
+> [!NOTE]
+> A térkép nincs konfigurálva a helyi környezetben.
+
+Azt is megteheti az azonos panel több példányát, vagy több verziója Ha Ön [duplikált, és szabja testre a panel](#duplicate-and-customize-an-existing-control). A következő példa bemutatja, hogyan adja hozzá a telemetriai adatok panel két példánya szerkesztésével a `src/components/pages/dashboard/dashboard.js` fájlt:
+
+```nodejs
+<PageContent className="dashboard-container" key="page-content">
+  <Grid>
+    <Cell className="col-1 devices-overview-cell">
+      <OverviewPanel
+        openWarningCount={openWarningCount}
+        openCriticalCount={openCriticalCount}
+        onlineDeviceCount={onlineDeviceCount}
+        offlineDeviceCount={offlineDeviceCount}
+        isPending={kpisIsPending || devicesIsPending}
+        error={devicesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-2">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-4">
+    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+        <MapPanel
+          azureMapsKey={azureMapsKey}
+          devices={devices}
+          devicesInAlarm={devicesInAlarm}
+          mapKeyIsPending={azureMapsKeyIsPending}
+          isPending={devicesIsPending || kpisIsPending}
+          error={azureMapsKeyError || devicesError || kpisError}
+          t={t} />
+      </PanelErrorBoundary>
+    </Cell>
+    <Cell className="col-6">
+      <KpisPanel
+        topAlarms={topAlarmsWithName}
+        alarmsPerDeviceId={alarmsPerDeviceType}
+        criticalAlarmsChange={criticalAlarmsChange}
+        warningAlarmsChange={warningAlarmsChange}
+        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || kpisError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+  </Grid>
+</PageContent>
+```
+
+Megtekintheti a különféle telemetriai minden panelen:
+
+![Több telemetriai panelek](media/iot-suite-remote-monitoring-customize/multiple-telemetry.png)
+
+> [!NOTE]
+> A térkép nincs konfigurálva a helyi környezetben.
+
+## <a name="duplicate-and-customize-an-existing-control"></a>Duplikált, és szabja testre a meglévő vezérlőelem
+
+A lépései használata a **riasztások** panel példa bemutatja, hogy egy meglévő panel ismétlődő, módosítsa ezt a és a módosított verzióját használja:
+
+1. A tárház helyi példánya, a másolat készítése a **riasztások** mappájában a `src/components/pages/dashboard/panels` mappát. Az új név **cust_alarms**.
+
+1. A a **alarmsPanel.js** fájlt a **cust_alarms** mappában kell lennie az osztály nevét szerkesztése **CustAlarmsPanel**:
+
+    ```nodejs
+    export class CustAlarmsPanel extends Component {
     ```
 
-1. Cserélje le `Contoso` a vállalat nevével. Példa:
+1. Adja hozzá a következő sort a `src/components/pages/dashboard/panels/index.js` fájlt:
 
-    ```js
-    CONTOSO: 'YourCo',
+    ```nodejs
+    export * from './cust_alarms';
     ```
 
-1. Mentse a fájlt.
+1. Cserélje le `AlarmsPanel` rendelkező `CustAlarmsPanel` a a `src/components/pages/dashboard/dashboard.js` fájlt:
 
-1. Az embléma frissítéséhez adja hozzá az új SVG-fájl a `assets/icons` mappát. A meglévő embléma a `assets/icons/Contoso.svg` fájlt.
+    ```nodejs
+    import {
+      OverviewPanel,
+      CustAlarmsPanel,
+      TelemetryPanel,
+      KpisPanel,
+      MapPanel,
+      transformTelemetryResponse,
+      chartColors
+    } from './panels';
 
-1. Nyissa meg a `src/components/layout/leftNav/leftNav.js` fájlt egy szövegszerkesztőben.
+    ...
 
-1. A fájlban keresse meg a következő sort:
-
-    ```js
-    import ContosoIcon from '../../../assets/icons/Contoso.svg';
+    <Cell className="col-3">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
     ```
 
-1. Cserélje le `Contoso.svg` a nevet, a embléma fájlt. Példa:
+Az eredeti most kicserélt **riasztások** nevű másolatát Vezérlőpult **CustAlarms**. Ezt a másolatot megegyezik az eredeti. Módosíthatja a példány most. Ahhoz például, hogy alakítani az oszlopot a rendezési a **riasztások** panel:
 
-    ```js
-    import ContosoIcon from '../../../assets/icons/YourCo.svg';
+1. Nyissa meg az `src/components/pages/dashboard/panels/cust_alarms/alarmsPanel.js` fájlt.
+
+1. Az oszlopdefiníciók módosíthatja, ahogy az a következő kódrészletet:
+
+    ```nodejs
+    this.columnDefs = [
+      rulesColumnDefs.severity,
+      {
+        headerName: 'rules.grid.count',
+        field: 'count'
+      },
+      {
+        ...rulesColumnDefs.ruleName,
+        minWidth: 200
+      },
+      rulesColumnDefs.explore
+    ];
     ```
 
-1. A fájlban keresse meg a következő sort:
+Az alábbi képernyőfelvételen látható új verzióját a **riasztások** panel:
 
-    ```js
-    alt="ContosoIcon"
+![Riasztások panel frissítése](media/iot-suite-remote-monitoring-customize/reorder-columns.png)
+
+## <a name="customize-the-telemetry-chart"></a>A telemetriai adatok diagram testreszabása
+
+A telemetriai adatok diagram a **irányítópult** lap határozzák meg a fájlokat a `src/components/pages/dashboard/panels/telemtry` mappát. A felhasználói felület a megoldás háttérrendszeréhez a telemetriai adatok átveszi a `src/services/telemetryService.js` fájlt. A következő lépések bemutatják az adott időszakban jelenik meg a telemetriai adatok diagram 15 perc és 5 perc módosítása:
+
+1. Az a `src/services/telemetryService.js` fájlt, keresse meg a hívott függvény **getTelemetryByDeviceIdP15M**. Ez a függvény egy példányának, és módosítsa a példányt a következőképpen:
+
+    ```nodejs
+    static getTelemetryByDeviceIdP5M(devices = []) {
+      return TelemetryService.getTelemetryByMessages({
+        from: 'NOW-PT5M',
+        to: 'NOW',
+        order: 'desc',
+        devices
+      });
+    }
     ```
 
-1. Cserélje le `ContosoIcon` rendelkező a `alt` szöveg. Példa:
+1. A telemetriai adatok diagram feltöltése az új funkció használatával, nyissa meg a `src/components/pages/dashboard/dashboard.js` fájlt. Keresse meg, amely a telemetriai adatok adatfolyam inicializálja a sort, és módosítsa a következőképpen:
 
-    ```js
-    alt="YourCoIcon"
+    ```node.js
+    const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
-1. Mentse a fájlt.
+A telemetriai adatok diagram láthatók az öt perc telemetriai adatok:
 
-1. A módosítások ellenőrzéséhez futtathatja a módosított `webui` a helyi számítógépen. Megtudhatja, hogyan lehet létrehozni, és futtassa a `webui` megoldás helyileg, lásd: [Build, futtatása és a vizsgálati helyileg](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/README.md#build-run-and-test-locally) a a `webui` GitHub tárház információs fájl.
+![Telemetria diagramját egy nap](media/iot-suite-remote-monitoring-customize/telemetry-period.png)
 
-1. A módosítások központi telepítéséhez lásd: a [fejlesztői útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide).
+## <a name="add-a-new-kpi"></a>Új KPI hozzáadása
 
-<!--
+A **irányítópult** lap megjeleníti a KPI-k a **rendszer KPI-k** panel. Ezen KPI-k a kiszámítása a `src/components/pages/dashboard/dashboard.js` fájlt. A KPI-k által megjelennek-e a `src/components/pages/dashboard/panels/kpis/kpisPanel.js` fájlt. A következő lépések azt ismertetik, hogyan új KPI érték kiszámításához és a a **irányítópult** lap. A bemutatott példában százalékos módosítást hozzáadása a figyelmeztető riasztások KPI:
 
-### Add a new KPI to the Dashboard page
+1. Nyissa meg az `src/components/pages/dashboard/dashboard.js` fájlt. Módosítsa a **initialState** objektum tartalmazza a **warningAlarmsChange** tulajdonság az alábbiak szerint:
 
-The following steps describe how to add a new KPI to display on the **Dashboard** page. The new KPI shows information about the number of alarms with specific status values as a pie chart:
+    ```nodejs
+    const initialState = {
+      ...
 
-1. Step 1
+      // Kpis data
+      currentActiveAlarms: [],
+      topAlarms: [],
+      alarmsPerDeviceId: {},
+      criticalAlarmsChange: 0,
+      warningAlarmsChange: 0,
+      kpisIsPending: true,
+      kpisError: null,
 
-1. Step 2
--->
+      ...
+    };
+    ```
 
-### <a name="customize-the-map"></a>A térkép testreszabása
+1. Módosítsa a **currentAlarmsStats** felvenni objektum **totalWarningCount** tulajdonságként:
+
+    ```nodejs
+    return {
+      openWarningCount: (acc.openWarningCount || 0) + (isWarning && isOpen ? 1 : 0),
+      openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
+      totalWarningCount: (acc.totalWarningCount || 0) + (isWarning ? 1 : 0),
+      totalCriticalCount: (acc.totalCriticalCount || 0) + (isCritical ? 1 : 0),
+      alarmsPerDeviceId: updatedAlarmsPerDeviceId
+    };
+    ```
+
+1. Az új KPI kiszámításához. A kritikus riasztások darabszám számítását található. A kód duplikált, és módosítsa a példányt a következőképpen:
+
+    ```nodejs
+    // ================== Warning Alarms Count - START
+    const currentWarningAlarms = currentAlarmsStats.totalWarningCount;
+    const previousWarningAlarms = previousAlarms.reduce(
+      (cnt, { severity }) => severity === 'warning' ? cnt + 1 : cnt,
+      0
+    );
+    const warningAlarmsChange = ((currentWarningAlarms - previousWarningAlarms) / currentWarningAlarms * 100).toFixed(2);
+    // ================== Warning Alarms Count - END
+    ```
+
+1. Tartalmazza az új **warningAlarmsChange** a KPI-adatfolyamban KPI:
+
+    ```nodejs
+    return ({
+      kpisIsPending: false,
+
+      // Kpis data
+      currentActiveAlarms,
+      topAlarms,
+      criticalAlarmsChange,
+      warningAlarmsChange,
+      alarmsPerDeviceId: currentAlarmsStats.alarmsPerDeviceId,
+
+      ...
+    });
+
+1. Include the new **warningAlarmsChange** KPI in the state data used to render the UI:
+
+    ```nodejs
+    const {
+      ...
+
+      currentActiveAlarms,
+      topAlarms,
+      alarmsPerDeviceId,
+      criticalAlarmsChange,
+      warningAlarmsChange,
+      kpisIsPending,
+      kpisError,
+
+      ...
+    } = this.state;
+    ```
+
+1. A KPI-k panel átadott adatok frissítéséhez:
+
+    ```node.js
+    <KpisPanel
+      topAlarms={topAlarmsWithName}
+      alarmsPerDeviceId={alarmsPerDeviceType}
+      criticalAlarmsChange={criticalAlarmsChange}
+      warningAlarmsChange={warningAlarmsChange}
+      isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+      error={devicesError || rulesError || kpisError}
+      colors={chartColorObjects}
+      t={t} />
+    ```
+
+Most már befejezte a változásai a `src/components/pages/dashboard/dashboard.js` fájlt. A következő lépések írják le a változások végezze el a `src/components/pages/dashboard/panels/kpis/kpisPanel.js` fájlt az új KPI megjelenítéséhez:
+
+1. Módosítsa a következő kódsort az új KPI értékének beolvasása az alábbiak szerint:
+
+    ```nodejs
+    const { t, isPending, criticalAlarmsChange, warningAlarmsChange, error } = this.props;
+    ```
+
+1. Módosítsa a kód az új KPI érték megjelenítéséhez az alábbiak szerint:
+
+    ```nodejs
+    <div className="kpi-cell">
+      <div className="kpi-header">{t('dashboard.panels.kpis.criticalAlarms')}</div>
+      <div className="critical-alarms">
+        {
+          criticalAlarmsChange !== 0 &&
+            <div className="kpi-percentage-container">
+              <div className="kpi-value">{ criticalAlarmsChange }</div>
+              <div className="kpi-percentage-sign">%</div>
+            </div>
+        }
+      </div>
+      <div className="kpi-header">{t('Warning alarms')}</div>
+      <div className="critical-alarms">
+        {
+          warningAlarmsChange !== 0 &&
+            <div className="kpi-percentage-container">
+              <div className="kpi-value">{ warningAlarmsChange }</div>
+              <div className="kpi-percentage-sign">%</div>
+            </div>
+        }
+      </div>
+    </div>
+    ```
+
+A **irányítópult** lap most új KPI értékét jeleníti meg:
+
+![Figyelmeztetés KPI](media/iot-suite-remote-monitoring-customize/new-kpi.png)
+
+## <a name="customize-the-map"></a>A térkép testreszabása
 
 Tekintse meg a [testreszabás térkép](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map) a lapot a Githubon a leképezési összetevők a megoldásban.
 
 <!--
-### Customize the telemetry chart
-
-See the [Customize telemetry chart](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of the telemetry chart components in the solution.
-
 ### Connect an external visualization tool
 
 See the [Connect an external visualization tool](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to connect an external visualization tool.
 
-### Duplicate an existing control
-
-To duplicate an existing UI element such as a chart or alert, see the [Duplicate a control](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub.
-
 -->
 
-### <a name="other-customization-options"></a>Egyéb testreszabási lehetőségek
+## <a name="other-customization-options"></a>Egyéb testreszabási lehetőségek
 
-További módosításához a bemutató és képi megjelenítéseket réteg a távoli felügyeleti megoldás, szerkesztheti a kódot. A megfelelő GitHub-adattárak a következők:
+A távoli figyelésére szolgáló megoldás a bemutató és képi megjelenítéseket réteg további módosításához, szerkesztheti a kódot. A megfelelő GitHub-adattárak a következők:
 
-* [UIConfig (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [UIConfig (Java)](https://github.com/Azure/pcs-ui-config-java/)
-* [Az Azure rendszerű számítógépek távoli megfigyelési WebUI](https://github.com/Azure/pcs-remote-monitoring-webui)
-
-## <a name="device-connectivity-and-streaming"></a>Eszközkapcsolatok és adatfolyamként történő továbbítását
-
-A következő szakaszok ismertetik az eszköz kapcsolat és a távoli felügyeleti megoldás a folyamatos átviteli réteg beállításait. [Eszközmodellek](https://github.com/Azure/device-simulation-dotnet/wiki/Device-Models) írják le, az eszköz- és telemetria a megoldásban. Eszközmodellek szimulált és a fizikai eszközök használhatja.
-
-A fizikai eszköz megvalósítási példát talál [csatlakoztassa az eszközt a távoli felügyeleti előkonfigurált megoldás](iot-suite-connecting-devices-node.md).
-
-Ha használ egy _fizikai eszköz_, meg kell adnia az ügyfélalkalmazás az eszköz modell, amely az eszköz metaadatait és telemetria-meghatározást tartalmaz.
-
-Az alábbi szakaszok ismertetik a szimulált eszköz eszközmodellek használata:
-
-### <a name="add-a-telemetry-type"></a>A telemetria-típus hozzáadása
-
-A Contoso bemutató megoldásban a eszköztípusok esetében adja meg mindegyik eszköztípus küldő telemetriai adatok. A további telemetriai típusoknak a megadásához, hogy egy eszköz küldhet telemetriai definíciók metaadat, a megoldás. Ha ezt a formátumot használja, az irányítópult-t használ fel a telemetriát és a rendelkezésre álló metódusok dinamikusan, és nem kell módosítani a felhasználói felületen. Azt is megteheti módosíthatja az eszköz típus definíciója a megoldásban.
-
-További információt az egyéni telemetriai hozzáadása a _eszköz szimulátor_ mikroszolgáltatási, lásd: [a megoldás tesztelése szimulált eszközökkel](iot-suite-remote-monitoring-test.md).
-
-### <a name="add-a-device-type"></a>Eszköz-típus hozzáadása
-
-A Contoso bemutató megoldás egyes minta eszköztípusok határozza meg. A megoldás lehetővé teszi, hogy az adott alkalmazás követelményeknek megfelelő egyéni eszköztípus adható meg. Például a vállalat használhatja egy ipari átjárót az elsődleges eszköz, a megoldás csatlakozik.
-
-Az eszköz egy pontos ábrázolását létrehozásához módosítania kell a megfelelő az eszköz követelményei az eszközön futó alkalmazást.
-
-További információt az új eszköz típust a _eszköz szimulátor_ mikroszolgáltatási, lásd: [a megoldás tesztelése szimulált eszközökkel](iot-suite-remote-monitoring-test.md).
-
-### <a name="define-custom-methods-for-simulated-devices"></a>A szimulált eszköz egyéni módszerek meghatározása
-
-A szimulált eszköz egyéni módszerek definiálása a távoli felügyeleti megoldás, lásd: [Eszközmodellek](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Device-Models) a GitHub-tárházban.
-
-<!--
-#### Using the simulator service
-
-TODO: add steps for the simulator microservice here
--->
-
-#### <a name="using-a-physical-device"></a>Fizikai eszköz használata
-
-A fizikai eszközök módszerek és a feladatok végrehajtásához a következő IoT-központ cikkekben talál:
-
-* [Ismertetés és az IoT-központ közvetlen metódusok](../iot-hub/iot-hub-devguide-direct-methods.md).
-* [Több eszközön feladatok ütemezése](../iot-hub/iot-hub-devguide-jobs.md).
-
-### <a name="other-customization-options"></a>Egyéb testreszabási lehetőségek
-
-Az eszköz kapcsolat és a távoli felügyeleti megoldás a folyamatos átviteli réteg további módosításához, szerkesztheti a kódot. A megfelelő GitHub-adattárak a következők:
-
-* [Telemetriát (.NET)](https://github.com/Azure/device-telemetry-dotnet)
-* [Telemetriát (Java)](https://github.com/Azure/device-telemetry-java)
-* [Telemetria ügynök (.NET)](https://github.com/Azure/telemetry-agent-dotnet)
-* [Telemetria ügynök (Java)](https://github.com/Azure/telemetry-agent-java)
-
-## <a name="data-processing-and-analytics"></a>Adatfeldolgozás és -elemzés
-
-<!--
-The following sections describe options to customize the data processing and analytics layer in the remote monitoring solution:
-
-### Rules and actions
-
-See the [Customize rules and actions](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to customize the rules and actions in solution.
-
-
-### Other customization options
--->
-
-Adatok feldolgozása és a távoli felügyeleti megoldás analytics réteg módosítása, szerkesztheti a kódot. A megfelelő GitHub-adattárak a következők:
-
-* [Telemetria ügynök (.NET)](https://github.com/Azure/telemetry-agent-dotnet)
-* [Telemetria ügynök (Java)](https://github.com/Azure/telemetry-agent-java)
-
-## <a name="infrastructure"></a>Infrastruktúra
-
-<!--
-The following sections describe options for customizing the infrastructure services in the remote monitoring solution:
-
-### Change storage
-
-The default storage service for the remote monitoring solution is Cosmos DB. See the [Customize storage service](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to change the storage service the solution uses.
-
-### Change log storage
-
-The default storage service for logs is Cosmos DB. See the [Customize log storage service](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to change the storage service the solution uses for logging.
-
-### Other customization options
--->
-
-Az infrastruktúra a távoli felügyeleti megoldás módosítása, szerkesztheti a kódot. A megfelelő GitHub-adattárak a következők:
-
-* [IOT hubbal Manager (.NET)](https://github.com/Azure/iothub-manager-dotnet)
-* [IoTHub Manager (Java)](https://github.com/Azure/iothub-manager-java)
-* [Tárolóadapter (.NET)](https://github.com/Azure/pcs-storage-adapter-dotnet)
-* [Tárolóadapter (Java)](https://github.com/Azure/pcs-storage-adapter-java)
+* [A konfigurációs mikroszolgáltatási az Azure IoT-megoldások (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
+* [A konfigurációs mikroszolgáltatási Azure IoT-megoldások (Java)](https://github.com/Azure/pcs-ui-config-java/)
+* [Az Azure IoT-számítógépek távoli webes felhasználói felület figyelése](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta segítségével testre szabhatja az előkonfigurált megoldás rendelkezésre álló erőforrásokról.
+Ebben a cikkben megtanulta kapcsolatos segítséget a távoli megfigyelési megoldásgyorsító a webes felhasználói felület testreszabása számára elérhető erőforrások.
 
-Fogalmi kapcsolatos további információkért a távoli felügyeleti előkonfigurált megoldás lásd: [távoli figyelési architektúrája](iot-suite-remote-monitoring-sample-walkthrough.md)
+További elméleti kapcsolatos további információkért a távoli megfigyelési megoldásgyorsító: [távoli megfigyelési architektúrája](iot-suite-remote-monitoring-sample-walkthrough.md)
 
-A távoli felügyeleti megoldás testreszabásával kapcsolatos további információkért lásd:
-
-* [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
-* [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-
+A távoli figyelésére szolgáló megoldás testreszabásával kapcsolatos további információkért lásd: [testreszabás és helyezze üzembe újra egy mikroszolgáltatási](iot-suite-microservices-example.md)
 <!-- Next tutorials in the sequence -->

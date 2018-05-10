@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>Az Azure CDN HTTP/2-támogatás
 
@@ -29,7 +29,7 @@ A HTTP/2 előnyei a következők:
 
 *   **Multiplexáló és feldolgozási**
 
-    HTTP 1.1 több és több erőforrás-kérelmek több TCP-kapcsolatot igényel, és minden egyes kapcsolathoz teljesítményigény társítva van. HTTP/2 lehetővé teszi, hogy több erőforrás vonatkozó egyetlen TCP-kapcsolatot.
+    HTTP 1.1 több erőforrás kérést több TCP-kapcsolatot igényel, és minden egyes kapcsolathoz teljesítményigény társítva van. HTTP/2 lehetővé teszi, hogy több erőforrás vonatkozó egyetlen TCP-kapcsolatot.
 
 *   **Fejléc tömörítése**
 
@@ -37,12 +37,12 @@ A HTTP/2 előnyei a következők:
 
 *   **Adatfolyam-függőségek**
 
-    Adatfolyam-függőségek engedélyezi az ügyfél megjelenítésével jelzi a kiszolgáló, amely erőforrások prioritással rendelkezik.
+    Adatfolyam-függőségek engedélyezi az ügyfél megjelenítésével jelzi a kiszolgáló, mely erőforrásokat prioritással rendelkezik.
 
 
 ## <a name="http2-browser-support"></a>A HTTP/2 webböngésző támogatása
 
-Az összes ismertebb böngésző alkalmaztunk, hogy HTTP/2-támogatás az aktuális verzióban. Nem támogatott böngészők lesz automatikusan tartalék HTTP/1.1.
+Az összes ismertebb böngésző alkalmaztunk, hogy HTTP/2-támogatás az aktuális verzióban. Nem támogatott böngészők automatikusan tartalék HTTP/1.1.
 
 |Böngésző|Minimális verzió|
 |-------------|------------|
@@ -54,7 +54,7 @@ Az összes ismertebb böngésző alkalmaztunk, hogy HTTP/2-támogatás az aktuá
 
 ## <a name="enabling-http2-support-in-azure-cdn"></a>Az Azure CDN HTTP/2-támogatás engedélyezése
 
-Jelenleg aktív a HTTP/2 támogatási **Akamai Azure CDN** és **Azure CDN Verizon** profilok. Az ügyfelek semmilyen további műveletet kell biztosítania.
+A HTTP/2 támogatási jelenleg aktív, az összes Azure CDN-profil. Az ügyfelek semmilyen további műveletet kell biztosítania.
 
 ## <a name="next-steps"></a>További lépések
 

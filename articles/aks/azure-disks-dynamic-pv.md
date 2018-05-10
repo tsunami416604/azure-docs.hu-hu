@@ -8,17 +8,17 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5c82659e4dd980b9285d81d51eb17b227ec33035
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Az Azure-lemezeket állandó kötetek
 
 Egy állandó kötet egy adat Kubernetes három munkaállomás-csoporttal való használatra van kiépítve tároló jelöli. Egy állandó kötet segítségével egy vagy több három munkaállomás-csoporttal, és dinamikusan vagy statikusan létesíthetők. Kubernetes állandó köteteken további információkért lásd: [Kubernetes állandó kötetek][kubernetes-volumes].
 
-Ez a dokumentum adatokat állandó kötetek használata Azure-lemezeket Azure tároló szolgáltatás (AKS)-fürtben lévő.
+Ez a dokumentum adatokat állandó kötetek használata Azure-lemezeket Azure Kubernetes szolgáltatás (AKS)-fürtben lévő.
 
 > [!NOTE]
 > Egy Azure lemez csak a hozzáférési mód típusú ReadWriteOnce, amely lehetővé teszi az egyetlen AKS csomópont lehet csatlakoztatni. Ha kellene megosztani egy állandó köteten több csomópont között, fontolja meg [Azure fájlok][azure-files-pvc].

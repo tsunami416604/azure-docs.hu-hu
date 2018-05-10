@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: dobett
-ms.openlocfilehash: fea9ccc53bd019039cf1e989d72db7a218e4517c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e0bd023e73088897303fe0f9de47641cd6ea0389
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-azure-iot-suite-connected-factory"></a>Mi az Azure IoT Suite csatlakoztatott gyári?
 
@@ -71,5 +71,5 @@ Csatlakoztatott gyári az alábbi szolgáltatásokat tartalmazza:
 
 További információ a csatlakoztatott gyári előre konfigurált megoldásról elolvasni a következő cikkeket:
 
-* [Előre konfigurált csatlakoztatott gyári megoldás forgatókönyv](iot-suite-connected-factory-sample-walkthrough.md)
-* [A beépített csatlakoztatott egy átjáró üzembe helyezéséhez]( iot-suite-connected-factory-gateway-deployment.md)
+* [Csatlakoztatott gyári előre konfigurált megoldás forgatókönyv](iot-suite-connected-factory-sample-walkthrough.md)
+* [Telepítsen egy átjárót a beépített csatlakoztatva]( iot-suite-connected-factory-gateway-deployment.md)

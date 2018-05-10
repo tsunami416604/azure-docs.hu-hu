@@ -1,12 +1,12 @@
 ---
-title: "Windows-eszközök a távoli figyelése c. - Azure kiépítése |} Microsoft Docs"
-description: "Eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldást a Windows rendszeren futó C alkalmazással ismerteti."
-services: 
+title: Windows-eszközök a távoli figyelése c. - Azure kiépítése |} Microsoft Docs
+description: Ismerteti, hogyan lehet egy eszköz csatlakozni a távoli megfigyelési megoldásgyorsító, a C Windows rendszeren futó alkalmazást használ.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 34e39a58-2434-482c-b3fa-29438a0c05e8
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: 83d0427a3ba8c634699608c38ab22efb1f275e52
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4dafcb939aa59d163e7df7f49906979fb181587c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>Csatlakoztassa az eszközt a távoli felügyeleti előkonfigurált megoldás (Windows)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Csatlakoztassa az eszközt a távoli felügyeleti megoldásgyorsító (Windows)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti előkonfigurált megoldás.
+Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti megoldásgyorsító.
 
 ## <a name="create-a-c-client-solution-on-windows"></a>C ügyfél megoldás létrehozása a Windows rendszeren
 
@@ -121,7 +121,7 @@ Adja hozzá a meghívni kívánt kódot a **távoli\_figyelési\_futtatása** fu
 
 1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **RMDevice** projektre, válassza a **Debug**, és válassza a **Start új példányt** a minta futtatásához . A konzol üzenetet jeleníti meg:
 
-    * Az alkalmazás minta telemetriai adatokat küld az előkonfigurált megoldás.
+    * Az alkalmazás minta telemetriai adatokat küld a megoldásgyorsító.
     * A megoldás irányítópultjának beállítani kívánt tulajdonságértékek kap.
     * A megoldás irányítópultja metódusokra válaszol.
 

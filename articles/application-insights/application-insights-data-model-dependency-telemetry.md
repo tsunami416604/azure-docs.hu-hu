@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights Telemetria-adatmodell - függőségi Telemetria |} Microsoft Docs"
-description: "Application Insights – függőségi telemetria tartozó adatmodell"
+title: Azure Application Insights Telemetria-adatmodell - függőségi Telemetria |} Microsoft Docs
+description: Application Insights – függőségi telemetria tartozó adatmodell
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: aa305c30dc358997420be6802d43fa69e45f4a5f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 019b24839c20e7f8f46eeccf4a7b9622d18b0ad6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>– Függőségi telemetria: Application Insights adatmodell
 
 – Függőségi Telemetria (a [Application Insights](app-insights-overview.md)) a figyelt összetevő egy távoli összetevő, például az SQL- vagy HTTP-végponttal való jelöli.
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
 Ez a függőségi hívás értékkel kezdeményezték a parancs nevét. Alacsony cardinality értéke. Többek között a tárolt eljárás nevét és URL-cím elérési út sablont.
 
@@ -38,7 +38,7 @@ Ez a függőségi hívás által kezdeményezett parancsot. Többek között az 
 
 A függőségi típusnév. A függőségek logikai jellegű csoportosítását és más mezők, például a commandName és resultCode értelmezése alacsony cardinality értéke. Többek között az SQL Azure-tábla és a HTTP.
 
-## <a name="target"></a>cél
+## <a name="target"></a>Cél
 
 A függőségi hívás célhelyre. Például a kiszolgáló neve, a gazdagép címe. További információkért lásd: [korrelációs](application-insights-correlation.md) lap.
 
@@ -63,7 +63,7 @@ Sikeres vagy sikertelen hívás megjelölése.
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Állítsa be a követési függőségi [.NET](app-insights-asp-net-dependencies.md).
 - Állítsa be a követési függőségi [Java](app-insights-java-agent.md).

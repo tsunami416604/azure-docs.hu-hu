@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: e0e0fdbb3702ec16e9d5a33659c1ddbee589b989
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9893ab83584e2fc93ea9cf29c0b74b957080d5ad
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja hogyan készülhet fel a Red Hat Enterprise Linux (RHEL) virtuális gépek használata az Azure-ban. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. A hipervizorok előkészítése az ebben a cikkben ismertetett a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware. Red Hat Felhőelérést programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Felhőelérést webhely](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-on futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -159,7 +159,7 @@ Jelen szakaszban feltételezzük, hogy már egy ISO-fájlt kapott a Red Hat webh
 
 5. Győződjön meg arról, hogy a hálózati szolgáltatás rendszerindításkor indul a következő parancs futtatásával:
 
-        # sudo chkconfig network on
+        # sudo systemctl enable network
 
 6. Regisztrálja a Red Hat előfizetés engedélyezése az RHEL tárházból csomagok telepítése a következő parancs futtatásával:
 
@@ -411,7 +411,7 @@ Jelen szakaszban feltételezzük, hogy már egy ISO-fájlt kapott a Red Hat webh
 
 6. Győződjön meg arról, hogy a hálózati szolgáltatás rendszerindításkor indul a következő parancs futtatásával:
 
-        # chkconfig network on
+        # sudo systemctl enable network
 
 7. Regisztrálja a Red Hat előfizetés engedélyezhető az RHEL összetevőtárházat-csomagok telepítése a következő parancs futtatásával:
 
@@ -665,7 +665,7 @@ Ez a szakasz azt feltételezi, hogy még telepítette RHEL virtuális gép VMwar
 
 3. Győződjön meg arról, hogy a hálózati szolgáltatás rendszerindításkor indul a következő parancs futtatásával:
 
-        # sudo chkconfig network on
+        # sudo systemctl enable network
 
 4. Regisztrálja a Red Hat előfizetés engedélyezése az RHEL tárházból csomagok telepítése a következő parancs futtatásával:
 

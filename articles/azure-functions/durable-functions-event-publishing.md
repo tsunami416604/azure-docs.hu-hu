@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6e7fdd4faa4213681813733aa8afe81d56835862
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 50e517e5719fb102fd91072abe59d3908176278e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Tartós működik teszik közzé az Azure Event rács (előzetes verzió)
 
@@ -220,7 +220,7 @@ Tekintse meg a naplókat, a függvény az Azure-portálon létrehozott.
         "functionName": "Sample",
         "instanceId": "055d045b1c8a415b94f7671d8df693a6",
         "reason": "",
-        "eventType": 0
+        "runtimeStatus": "Running"
     },
     "eventType": "orchestratorEvent",
     "eventTime": "2018-04-20T09:28:19.6492068Z",
@@ -239,7 +239,7 @@ Tekintse meg a naplókat, a függvény az Azure-portálon létrehozott.
         "functionName": "Sample",
         "instanceId": "055d045b1c8a415b94f7671d8df693a6",
         "reason": "",
-        "eventType": 1
+        "runtimeStatus": "Completed"
     },
     "eventType": "orchestratorEvent",
     "eventTime": "2018-04-20T09:28:36.5061317Z",
@@ -261,7 +261,7 @@ Az alábbi lista ismerteti a életciklus-események séma:
     * **Függvénynév**: Orchestrator függvény neve.
     * **instanceId**: tartós funkciók instanceId.
     * **OK**: a nyomkövetési esemény társított további adatokat. További információkért lásd: [diagnosztika a tartós funkciók (az Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-diagnostics)
-    * **esemény típusa**: Vezénylési futási állapotának. 0: fut, 1: befejeződött, 2: ContinuedAsNew, 3: nem sikerült, 4: megszakítva, 5: megszakadt, 6: függőben. 
+    * **runtimeStatus**: Vezénylési futási állapotának. Rendszert futtató, befejezett, sikertelen, megszakítva. 
 * **esemény típusa**: "orchestratorEvent"
 * **eventTime**: az esemény időpontja (UTC).
 * **dataVersion**: az életciklus-esemény séma változatát.

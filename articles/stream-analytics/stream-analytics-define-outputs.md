@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.openlocfilehash: 3bd87090df048f2b67de88f5202998af02d42491
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 05/07/2018
+ms.openlocfilehash: 54bf0cd80d1fcc6d761f977484a1a5539d581361
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics kimeneteinek ismertetése
 Ez a cikk ismerteti a különböző típusú kimenetek egy Azure Stream Analytics-feladat érhető el. Kimenetek lehetővé teszik, hogy tárolja, és mentse a Stream Analytics-feladat eredményét. A kimeneti adatok használatával, elvégezhető a további üzleti elemzések és az adatraktározás terén, az adatok. 
@@ -86,7 +86,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a blob
 | Tárfiók | A tárfiók, ahol küldendő a kimeneti neve. |
 | Tárfiók kulcsa | A storage-fiókjához tartozó titkos kulcsot. |
 | A tároló | Tárolók adja meg a Microsoft Azure Blob szolgáltatásban tárolt blobok logikai csoportosítását. Amikor egy blob feltöltése a Blob szolgáltatás, meg kell adnia, hogy a blob tárolója. |
-| Elérésiút-minta | Választható. A fájl elérési út mintája a megadott tárolóban található blobok írásához használt. </br> Az elérési út mintája választhatja a következő 2 változó egy vagy több példányát használja a blobok írt gyakorisága: </br> a {date}, {time} </br> 1. példa: cluster1/logs / {date} / {time} </br> 2. példa: cluster1/logs / {date} <BR> <BR> A következő egyezmény fájlelnevezésnél követi: </br> {Elérési előtag Pattern}/schemaHashcode_Guid_Number.extension </br></br> Példa kimeneti fájlok: </br>Myoutput/20170901/00/45434_gguid_1.csv </br> Myoutput/20170901/01/45434_gguid_1.csv |
+| Elérésiút-minta | Választható. A fájl elérési út mintája a megadott tárolóban található blobok írásához használt. </br></br> Az elérési út mintája dönthet a dátum-idő változó egy vagy több példányát használja a blobok írt gyakorisága: </br> a {date}, {time} </br> </br>Előfordulhat, hogy is egy {oszlop} a mezőnevet határozza meg az adatok alapján a partíció blobok által, ahol a mező nevét az alfanumerikus, és tartalmazhat szóközöket, kötőjeleket és aláhúzásjeleket tartalmazhat. Egyéni mezők korlátozásai a következők: <ul><li>(Másik oszlop "ID" és "id" oszlop között nem) iránti érzéketlensége eset</li><li>Beágyazott mezői nem engedélyezettek (helyette használja alias a feladat lekérdezésben szereplő "egybesimítására" mező)</li><li>A mezőnév nem használhatók kifejezések</li></ul>Példák: <ul><li>1. példa: cluster1/logs / {date} / {time}</li><li>2. példa: cluster1/logs / {date}</li><li>3. példa: cluster1 / {client_id} / {date} / {time}</li><li>4. példa: cluster1 / {myField} ahol ez: SELECT data.myField, myField a bemeneti;</li></ul><BR> A következő egyezmény fájlelnevezésnél követi: </br> {Elérési előtag Pattern}/schemaHashcode_Guid_Number.extension </br></br> Példa kimeneti fájlok: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Dátumformátum | Választható. Ha a dátum jogkivonat a előtag elérési útját, válassza a dátumformátum, amelyben a fájlok vannak rendezve. . Példa: Éééé/hh/nn |
 | Időformátum | Választható. Ha a idő jogkivonat előtag elérési, adja meg az időformátum, amelyben a fájlok vannak rendezve. Jelenleg az egyetlen támogatott érték HH. |
 | Eseményszerializációs formátum | A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott.
@@ -96,12 +96,14 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a blob
 
 A blob storage használata kimenetként, egy új fájl jön létre a BLOB a következő esetekben:
 
-* Ha a fájl túllépte az engedélyezett blokkok maximális számát. Előfordulhat, hogy a maximális engedélyezett száma nem érte el a maximális megengedett blob mérete érhető el. Például ha a kimeneti sebessége nagy, láthatja, hogy több bájt / blokk, és a fájl mérete nagyobb. Ha a kimeneti arány alacsony, valamennyi blokkja kevesebb adatot tartalmaz, és a fájl mérete kisebb.
+* Ha a fájl túllépte az engedélyezett blokkok (jelenleg 50 000) maximális számát. Előfordulhat, hogy a maximális engedélyezett száma nem érte el a maximális megengedett blob mérete érhető el. Például ha a kimeneti sebessége nagy, láthatja, hogy több bájt / blokk, és a fájl mérete nagyobb. Ha a kimeneti arány alacsony, valamennyi blokkja kevesebb adatot tartalmaz, és a fájl mérete kisebb.
 * Ha a séma módosítva lett a kimenetben, és a kimeneti formátum igényel rögzített sémájába (fürt megosztott kötetei szolgáltatás és az Avro).  
-* Ha a feladat újraindításakor vagy külső vagy belső újra kell indítani a feladatot.  
+* Ha a feladat újraindítása, külsőleg azt indítása és leállítása, felhasználó által vagy belső rendszer-karbantartási vagy a hiba helyreállítási.  
 * Ha a lekérdezés teljes particionálása, minden egyes kimeneti partíció új fájl jön létre a rendszer.  
 * Ha a felhasználó egy fájl vagy egy tárolót a tárfiók törlése.  
 * A kimenet az idő az elérési út előtag mintát használ, ha egy új blob használatos, ha a lekérdezés helyezi át a következő órában.
+* Ha a kimeneti particionálva van egy egyéni mező, egy új blob partíciós kulcs / létrejön, ha nem létezik.
+*   A kimenet egy egyéni mező, ahol a partíciós kulcs számossága meghaladja 8000 particionálva van, ha egy új blob / partíciókulcs lehet létrehozni.
 
 ## <a name="event-hub"></a>Eseményközpont
 A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatása jól skálázható közzétételi-feliratkozási eseménybetöltőnek. Gyűjthet, hogy a több millió esemény / másodperc. Egy Eseményközpont kimenetként használata a Stream Analytics-feladat eredményének válásakor a bemeneti adatfolyam egy másik feladat.

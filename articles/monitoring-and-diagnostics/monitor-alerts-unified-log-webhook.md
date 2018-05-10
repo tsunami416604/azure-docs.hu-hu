@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: a786ac2e241657cc0020ecfe9438e3d1a5e4c5fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályok webhookműveletek
 Ha egy [riasztást hoz létre az Azure-ban ](monitor-alerts-unified-usage.md), lehetősége van a [konfigurálása művelet csoportok használatával](monitoring-action-groups.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különböző webhookműveletek és a részletek a egyéni JSON-alapú webhook konfigurálásával.
@@ -161,9 +161,6 @@ Az alábbiakban látható egy minta hasznos szabványos webhook *egyéni Json-be
     }
 }
 ```
-
-> [!NOTE]
-> Az Application Insights riasztásainak naplózási jelenleg nyilvános előzetes - funkcióit és felhasználói élmény változhat.
 
 #### <a name="log-alert-with-custom-json-payload"></a>Egyéni JSON-adattartalmat napló riasztás
 Például egy egyéni adattartalom, amely tartalmazza a riasztás neve és a keresési eredmények létrehozásához használhatja a következő: 

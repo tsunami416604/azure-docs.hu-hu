@@ -14,11 +14,11 @@ ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
 ms.custom: end-user
-ms.openlocfilehash: 8fa9a24b5b402ebebb69bc69f7cda47092436642
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e25ccdad5285bfaa96f538aca415746942523d85
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 **Vonatkozik:**
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/28/2018
 A Microsoft Authenticator alkalmazás biztonsági mentést készít a fiók hitelesítő adatait és a kapcsolódó alkalmazások beállításai, például a fiókok sorrendjét a felhőbe. Biztonsági mentés, után is használhatja az alkalmazás helyreállításához az Ön új eszköz, adatai potenciálisan elkerülve az első zárolva out való vagy hozza létre a fiókokat.
 
 >[!IMPORTANT]
-> Szükség van egy személyes Microsoft-fiók- és iCloud-fiókjával minden egyes biztonsági másolatok tárolóját. Azonban, hogy tárolási helyen készíthet biztonsági mentést különböző fiókok. Például egy személyes fiók, egy iskolai e-mail címének és a Facebook, Google, például egy harmadik fél fiókot, és így tovább.<br><br>Csak a fiók hitelesítő adatait tárolja, amely magában foglalja a felhasználónév és a 8 számjegyű fiók ellenőrző kódja, amely szükséges a Microsoft Authenticator alkalmazást a személyazonosság igazolásához. Bármely egyéb információk is társítva vannak a fiókok, beleértve az e-maileket és a fájlok nem tároljuk. Azt is nem hozzárendelése vagy bármely olyan módon, vagy a termék vagy szolgáltatás fiókjának megosztani. És végül a rendszergazda nem jelenik meg bármelyik semmilyen információt.
+> Szükség van egy személyes Microsoft-fiók- és iCloud-fiókjával minden egyes biztonsági másolatok tárolóját. Azonban, hogy tárolási helyen készíthet biztonsági mentést különböző fiókok. Például egy személyes fiók, egy iskolai e-mail címének és a Facebook, Google, például egy harmadik fél fiókot, és így tovább.<br><br>Csak a személyes és a 3. fél fiók hitelesítő adatait tárolja, amely magában foglalja a felhasználónév és a fiók ellenőrző kódja, amely a személyazonosság szükséges. Bármely egyéb információk is társítva vannak a fiókok, beleértve az e-maileket és a fájlok nem tároljuk. Azt is nem hozzárendelése vagy bármely olyan módon, vagy a termék vagy szolgáltatás fiókjának megosztani. És végül a rendszergazda nem jelenik meg bármelyik semmilyen információt.
 
 ## <a name="back-up-your-account-credentials"></a>Készítsen biztonsági másolatot a hitelesítő adatait
 Készíthet biztonsági másolatot a hitelesítő adatait, mielőtt is kell rendelkeznie:

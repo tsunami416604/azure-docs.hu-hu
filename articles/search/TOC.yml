@@ -2,11 +2,13 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure Search névjegye
+    - name: Mi az az Azure Search?
       href: search-what-is-azure-search.md
 - name: Gyors útmutatók
   expanded: true
   items:
+    - name: A kognitív keresés kipróbálása
+      href: cognitive-search-quickstart-blob.md
     - name: Szolgáltatás létrehozása
       href: search-create-service-portal.md
     - name: Portál
@@ -37,13 +39,15 @@
           href: search-fiddler.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Az Azure SQL Database indexelése
+    - name: Indexelés kognitív kereséssel
+      href: cognitive-search-tutorial-blob.md
+    - name: Az Azure SQL Database indexelése
       href: search-indexer-tutorial.md
-    - name: 2 – Azure-blobok indexelése
+    - name: Azure-blobok indexelése
       href: search-semi-structured-data.md
-    - name: 3 – Szinonimák felvétele a .NET-ben
+    - name: Szinonimák felvétele a .NET-ben
       href: search-synonyms-tutorial-sdk.md
-    - name: 4 – Útmutató a portál használatához
+    - name: Útmutató a Portal használatához
       href: search-get-started-portal.md
 - name: Példák
   items:
@@ -53,14 +57,18 @@
       href: 'https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search'
 - name: Alapelvek
   items:
+    - name: Kognitív keresés (előzetes verzió)
+      href: cognitive-search-concept-intro.md
     - name: Teljes szöveges keresés
       href: search-lucene-query-architecture.md
+    - name: Nyelvi elemzés
+      href: search-analyzers.md
     - name: Indexelés
       href: search-what-is-data-import.md
     - name: Index definíciója
       href: search-what-is-an-index.md
-    - name: Nyelvi elemzés
-      href: search-analyzers.md
+    - name: Indexelők
+      href: search-indexer-overview.md
 - name: Útmutatók
   items:
     - name: Tervezés és kialakítás
@@ -123,8 +131,6 @@
           href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
     - name: Adatok indexelése
       items:
-        - name: Az indexelők áttekintése
-          href: search-indexer-overview.md
         - name: Azure Blob Storage-indexelő
           href: search-howto-indexing-azure-blob-storage.md
         - name: Azure Table Storage-indexelő
@@ -141,7 +147,25 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Mezőleképezések az indexelőkben
           href: search-indexer-field-mappings.md
-    - name: Keresés
+        - name: Index újraépítése
+          href: search-howto-reindex.md
+    - name: Kognitív keresés (előzetes verzió)
+      items:
+        - name: Képességcsoport megadása
+          href: cognitive-search-defining-skillset.md
+        - name: Hivatkozás jegyzetre
+          href: cognitive-search-concept-annotations-syntax.md
+        - name: Leképezés index mezőire
+          href: cognitive-search-output-field-mapping.md
+        - name: Képeken szereplő információk feldolgozása és kinyerése
+          href: cognitive-search-concept-image-scenarios.md
+        - name: Egyéni képesség integrálása
+          href: cognitive-search-custom-skill-interface.md
+        - name: Példa – egyéni képesség
+          href: cognitive-search-create-custom-skill-example.md
+        - name: Hibaelhárítási tippek
+          href: cognitive-search-concept-troubleshooting.md
+    - name: Teljes szöveges keresés
       items:
         - name: Alapszintű lekérdezési konstrukció
           href: search-query-overview.md
@@ -165,7 +189,7 @@
           href: search-filters.md
         - name: Aspektus szűrői
           href: search-filters-facets.md
-        - name: OData-kifejezések szintaxisa
+        - name: Kifejezési szintaxis szűrése
           href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
     - name: Felügyelet és elemzés
       items:
@@ -187,10 +211,41 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html'
     - name: REST
       href: /rest/api/searchservice
+      items:
+        - name: 2016. 09. 01. dátumú előzetes verzió
+          href: search-api-2016-09-01-preview.md
     - name: REST (Management)
       href: /rest/api/searchmanagement
-    - name: Szolgáltatási REST (előzetes verzió)
-      href: search-api-2016-09-01-preview.md
+    - name: Kognitív keresés (előzetes verzió)
+      items:
+        - name: 2017. 11. 11. dátumú előzetes verzió (REST)
+          href: search-api-2017-11-11-preview.md
+          items:
+            - name: Képességcsoport létrehozása (előzetes verzió)
+              href: ref-create-skillset.md
+            - name: Indexelő létrehozása (előzetes verzió)
+              href: ref-create-indexer.md
+        - name: Előre megadott képesség
+          href: cognitive-search-predefined-skills.md
+          items:
+            - name: Kulcskifejezések kinyerése
+              href: cognitive-search-skill-keyphrases.md
+            - name: Nyelvfelismerés
+              href: cognitive-search-skill-language-detection.md
+            - name: Megnevezett entitások felismerése
+              href: cognitive-search-skill-named-entity-recognition.md
+            - name: Szövegegyesítő
+              href: cognitive-search-skill-textmerger.md
+            - name: Szöveg felosztása
+              href: cognitive-search-skill-textsplit.md
+            - name: Hangulat
+              href: cognitive-search-skill-sentiment.md
+            - name: Képelemzés
+              href: cognitive-search-skill-image-analysis.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: Formázó
+              href: cognitive-search-skill-shaper.md
 - name: További források
   items:
     - name: GYIK – Gyakori kérdések
@@ -199,6 +254,8 @@
       href: 'https://azure.microsoft.com/pricing/details/search/'
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: A kognitív keresés dokumentációja
+      href: cognitive-search-resources-documentation.md
     - name: Oktatóanyagok és -programok
       items:
         - name: Videók és oktatóanyagok

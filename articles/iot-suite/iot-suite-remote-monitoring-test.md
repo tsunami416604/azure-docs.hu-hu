@@ -1,7 +1,7 @@
 ---
-title: "Eszköz szimulálása a távoli felügyeleti megoldás - Azure |} Microsoft Docs"
-description: "Az oktatóanyag bemutatja, az eszköz szimulátor használata a távoli felügyeleti előkonfigurált megoldás."
-services: 
+title: Eszköz szimulálása a távoli felügyeleti megoldás - Azure |} Microsoft Docs
+description: Az oktatóanyag bemutatja, az eszköz szimulátor használata a távoli felügyeleti megoldásgyorsító.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,15 +12,19 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: 5cbd1738bd53179cb9705a86886b6cf811e9988a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="create-a-new-simulated-device"></a>Hozzon létre egy új szimulált eszköz
+# <a name="create-a-new-simulated-device"></a>Új szimulált eszköz létrehozása
 
-Az oktatóanyag bemutatja, hogyan szabhatja testre az eszköz szimulátor mikroszolgáltatási a távoli felügyeleti előkonfigurált megoldás. Ez az oktatóanyag két esetben használja a Contoso IoT alkalmazásban megjelenítése az eszköz szimulátor képességeit.
+Az oktatóanyag bemutatja, hogyan szabhatja testre az eszköz szimulátor mikroszolgáltatási a távoli felügyeleti megoldásgyorsító a. Ez az oktatóanyag két esetben használja a Contoso IoT alkalmazásban megjelenítése az eszköz szimulátor képességeit.
+
+A következő videó bemutatja az eszköz szimulátor mikroszolgáltatási testreszabására szolgáló beállítások áttekintése:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 Az első esetben Contoso szeretné egy új intelligens villanykörte eszközt. A tesztek kerülnek végrehajtásra, létrehozhat egy új szimulált eszköz a következő jellemzőkkel:
 
@@ -32,13 +36,13 @@ Az első esetben Contoso szeretné egy új intelligens villanykörte eszközt. A
 | Fényerő               | 0 és 100 közötti                    |
 | Becsült hátralévő élettartamát | 10 000 óra visszaszámlálási |
 
-*Telemetry*
+*Telemetria*
 
 A következő táblázat a villanykörte a felhőbe, mint egy adatfolyam jelentések adatainak megjelenítése:
 
 | Name (Név)   | Értékek      |
 | ------ | ----------- |
-| status | "on", "off" |
+| status | "a" "off" |
 | Hőmérséklet | F fok |
 | online | IGAZ, hamis |
 
@@ -68,7 +72,7 @@ A következő táblázat az eszköz kezdeti állapotának megjelenítése:
 
 A második forgatókönyvben hozzáadhat egy új telemetriai típus contoso meglévő **hűtő** eszköz.
 
-Az oktatóanyag bemutatja, az eszköz szimulátor használata a távoli figyelési előkonfigurált megoldást:
+Az oktatóanyag bemutatja, az eszköz szimulátor használata a távoli felügyeleti megoldásgyorsító:
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -86,7 +90,7 @@ A következő videó bemutatja, a forgatókönyv szimulált és valós eszközö
 
 Ez az oktatóanyag az alábbiak szükségesek:
 
-* A távoli felügyeleti megoldás az Azure-előfizetéshez telepített példányát. Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [a távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
+* A távoli felügyeleti megoldás az Azure-előfizetéshez telepített példányát. Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
 
 * Visual Studio 2017. Ha nincs telepítve a Visual Studio 2017, érdemes letöltenie a szabad [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) kiadását.
 
@@ -221,7 +225,7 @@ Ebben az oktatóanyagban, akivel együttműködik a **eszköz-szimuláció** és
 1. A .NET-verziója, a Klónozás a **tárolóadapter** -tárházban, futtassa a következő parancsot:
 
     ```cmd
-    git clone https://github.com/Azure/storage-adapter.git
+    git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
     Az eszköz szimuláció szolgáltatás a társzolgáltatás adapter használja az Azure-ban a Cosmos DB szolgáltatásához. A távoli felügyeleti megoldás a szimulált eszköz konfigurációs adatok Cosmos DB adatbázisban tárolja.
@@ -289,10 +293,10 @@ A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például 
         "temperature_unit": "F",
         "status": "on"
       },
-      "Script": {
+      "Interval": "00:00:20",
+      "Scripts": {
         "Type": "javascript",
-        "Path": "lightbulb-01-state.js",
-        "Interval": "00:00:20"
+        "Path": "lightbulb-01-state.js"
       }
     },
     ```
@@ -474,7 +478,7 @@ Most már készen áll az új szimulált villanykörte típusának tesztelése e
 
     ![Csatlakoztatott eszközök száma](media/iot-suite-remote-monitoring-test/connecteddevices.png)
 
-1. A böngészőben navigáljon a **irányítópult** távoli figyelési megoldást. A telemetriai adatok panelen a **irányítópult**, jelölje be **hőmérséklet**. A két szimulált eszköz hőmérséklete a diagram jelenik meg:
+1. A böngészőben navigáljon a **irányítópult** távoli figyelési megoldást. A telemetriai adatok panelen a **irányítópult**, jelölje be **hőmérséklet**. A diagramon az összes a szimulált eszköz hőmérséklete jeleníti meg:
 
     ![Hőmérséklet-telemetria](media/iot-suite-remote-monitoring-test/telemetry.png)
 
@@ -532,7 +536,7 @@ A következő lépések azt feltételezik, hogy rendelkezik-e a tárház nevű *
     publish.cmd
     ```
 
-1. A feltöltés ellenőrzéséhez navigáljon [https://hub.docker.com/](https://hub.docker.com/). Keresse meg a **villanykörte** tárház válassza **részletek**. Válassza a **címkék**:
+1. A feltöltés ellenőrzéséhez navigáljon [ https://hub.docker.com/ ](https://hub.docker.com/). Keresse meg a **villanykörte** tárház válassza **részletek**. Válassza a **címkék**:
 
     ![Docker központ](media/iot-suite-remote-monitoring-test/dockerhub.png)
 

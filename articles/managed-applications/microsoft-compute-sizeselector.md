@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3966de95233f32a09d4799630632c2bb6a490d78
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a38a5461e96d741b3a0d556990418e022afdb305
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI element
 Egy vagy több virtuálisgép-példányok méretét kiválasztására szolgáló vezérlő.
@@ -39,7 +39,9 @@ Egy vagy több virtuálisgép-példányok méretét kiválasztására szolgáló
   ],
   "constraints": {
     "allowedSizes": [],
-    "excludedSizes": []
+    "excludedSizes": [],
+    "numAvailabilityZonesRequired": 3,
+    "zone": "3"
   },
   "osPlatform": "Windows",
   "imageReference": {
@@ -60,6 +62,7 @@ Egy vagy több virtuálisgép-példányok méretét kiválasztására szolgáló
 - `osPlatform` meg kell adni, és lehet **Windows** vagy **Linux**. Határozza meg a virtuális gépek hardverköltségek szolgál.
 - `imageReference` Nincs megadva a belső lemezképek, de a megadott külső képek. A virtuális gépek szoftverek költségeit meghatározására szolgál.
 - `count` az elem a megfelelő szorzószáma beállítására használatos. Egy állandó érték, például támogatja **2**, vagy egy másik elem dinamikus értéket, például `[steps('step1').vmCount]`. Az alapértelmezett érték **1**.
+- A `numAvailabilityZonesRequired` 1, 2 vagy 3 lehet.
 
 ## <a name="sample-output"></a>Példa kimenet
 ```json

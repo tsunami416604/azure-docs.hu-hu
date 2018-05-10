@@ -3,7 +3,7 @@ title: Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI
 description: Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 2f1e00a8-0dd6-477f-9453-75424d06a1df
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 5851d5499c61cf99d7f85d07642a292f3b8c19d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
 
@@ -43,7 +43,7 @@ A legalapvetőbb architektúra a következő összetevőkből áll:
 - **A központi telepítési sablonok**. Ebben a felállásban [Azure Resource Manager-sablonok](/azure/azure-resource-manager/resource-group-overview#template-deployment) automatikusan központi telepítésével a architektúra összetevői a Microsoft Azure konfigurációs paraméterek megadásával a telepítés során.
 - **Automatikus központi telepítési parancsfájlok**. Ezek a parancsfájlok segítségével a végpont megoldás üzembe helyezéséhez. A parancsfájlok foglalják magukban:
     - A házirendmodul-telepítésének és [globális rendszergazda](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) telepítési parancsfájl használatával telepítse, és győződjön meg arról, hogy a szükséges PowerShell-modulok és a globális rendszergazdai szerepkörök helyesen vannak konfigurálva.
-    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample). a tartalom. Ez a megoldás forráskódját készen áll a felülvizsgálatra [ tervezetének kód tárház][code-repo]. 
+    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample). a tartalom. Ez a megoldás forráskódját készen áll a felülvizsgálatra [tervezetének kód tárház] [kódot-tárház]. 
 
 ## <a name="architectural-diagram"></a>Architekturális diagramja
 
@@ -299,7 +299,7 @@ Alapértelmezett telepítési célja, hogy a security center javaslatait, egy me
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
-A megoldás telepítéséhez összetevők érhetők el a [PCI tervezetének kód tárház][code-repo]. A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez adott meg a `-customHostName` váltani a 2. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
+A megoldás telepítéséhez összetevők érhetők el a [PCI tervezetének kód tárház] [kódot-tárház]. A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez adott meg a `-customHostName` váltani a 2. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
 
 A parancsfájlok tartományi felhasználók hozzáadása az Azure AD-bérlő megadott. Ajánlott létrehozni egy új Azure AD-bérlő kívánja használni, mint egy tesztet.
 
@@ -384,11 +384,3 @@ A megoldás Coalfire Systems, Inc. (PCI DSS minősített biztonsági vizsgáztat
 - Összes felhasználói nevét, a tranzakció rekordok és a kapcsolódó adatokat ezen a lapon nem valóságosak, a legalapvetőbb architektúra hoztak létre, és csak illusztrációs célokat szolgálnak. Nincs valós association vagy a kapcsolat célja, és nincs műve.  
 - Ez a megoldás fejlesztette ki közösen Microsoft és a Avyan tanácsadás, és, akkor a [MIT licenccel](https://opensource.org/licenses/MIT).
 - Ez a megoldás Coalfire, a Microsoft PCI DSS auditor vizsgálja felül. A [PCI megfelelőség áttekintése](https://aka.ms/pciblueprintcrm32) biztosít egy független, a külső át kell tekinteni a megoldás, és az összetevők kell figyelembe venni. 
-
-### <a name="document-authors"></a>A dokumentum szerzője
-
-- *Frank Simorjay (Microsoft)*  
-- *Gururaj Pandurangi (Avyan tanácsadás)*
-
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "Kód tárház"

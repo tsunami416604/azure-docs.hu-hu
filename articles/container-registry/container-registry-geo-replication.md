@@ -6,23 +6,17 @@ author: stevelas
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview-article
-ms.date: 10/24/2017
+ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 6b82f49d2bf4ed321f5e847d11780535e01531f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e4695428b03961f5e899007609dfb1088dde77a8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikáció az Azure Container Registryben
 
-Egy helyi vagy a működés közbeni biztonsági másolatot, kívánó vállalatok válassza ki a több Azure-régiók szolgáltatások futtatásához. Ajánlott eljárásként helyezi el a tároló beállításjegyzék minden egyes régió, ahol képek futnak engedélyezi a hálózati bezárású műveleteket, gyors és megbízható kép réteg átvitel engedélyezése.
-
-A georeplikáció lehetővé teszi, hogy az Azure-tárolót beállításjegyzék egy egyetlen beállításjegyzék működhet több régióba szolgál a több főkiszolgálós regionális internetregiszterek.
-
-> [!IMPORTANT]
-> Az Azure Container Registry georeplikációs funkciója jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
->
+Egy helyi vagy a működés közbeni biztonsági másolatot, kívánó vállalatok válassza ki a több Azure-régiók szolgáltatások futtatásához. Ajánlott eljárásként helyezi el a tároló beállításjegyzék minden egyes régió, ahol képek futnak engedélyezi a hálózati bezárású műveleteket, gyors és megbízható kép réteg átvitel engedélyezése. A georeplikáció lehetővé teszi, hogy az Azure-tárolót beállításjegyzék egy egyetlen beállításjegyzék működhet több régióba szolgál a több főkiszolgálós regionális internetregiszterek.
 
 Georeplikált beállításjegyzék a következő előnyöket nyújtja:
 

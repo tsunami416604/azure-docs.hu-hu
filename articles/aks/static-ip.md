@@ -1,6 +1,6 @@
 ---
-title: Egy statikus IP-címet használ az Azure-tároló szolgáltatás (AKS) terheléselosztó
-description: Egy statikus IP-címet használ az Azure-tároló szolgáltatás (AKS) terheléselosztót.
+title: Egy statikus IP-címet használ az Azure Kubernetes szolgáltatás (AKS) terheléselosztó
+description: Egy statikus IP-címet használ az Azure Kubernetes szolgáltatás (AKS) terheléselosztót.
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 623ba423d4f60fee0d18ad9455cc06effeff482a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: MT
+ms.openlocfilehash: da1fc4cd31a4b4f13da5b527e2a62e147799bfef
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-a-static-ip-address-with-the-azure-container-service-aks-load-balancer"></a>Egy statikus IP-címet használ az Azure-tároló szolgáltatás (AKS) terheléselosztó
+# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Egy statikus IP-címet használ az Azure Kubernetes szolgáltatás (AKS) terheléselosztó
 
-Bizonyos esetekben az Azure-tároló szolgáltatás (AKS) betöltése terheléselosztó újból létrejön, illetve terheléselosztó típussal rendelkező Kubernetes szolgáltatások jönnek létre újból, mint például a nyilvános IP-cím a Kubernetes szolgáltatás módosíthatja. Ez a dokumentum adatokat egy statikus IP-címet a Kubernetes szolgáltatások konfigurálása.
+Egyes esetekben például az Azure Kubernetes szolgáltatás (AKS) betöltése terheléselosztó újból létrejön, illetve terheléselosztó típussal rendelkező Kubernetes szolgáltatások jönnek létre újból, a nyilvános IP-cím a Kubernetes szolgáltatás módosíthatja. Ez a dokumentum adatokat egy statikus IP-címet a Kubernetes szolgáltatások konfigurálása.
 
 ## <a name="create-static-ip-address"></a>Statikus IP-cím létrehozása
 
@@ -116,7 +116,7 @@ Events:
 ```
 
 <!-- LINKS - External -->
-[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/ 
+[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 98969cf2f6604843bc1502990222264e7acc363b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>A Naplóelemzési megoldás VMware figyelése (előzetes verzió)
 
@@ -37,7 +37,7 @@ Az alábbi információk segítségével telepítse és konfigurálja a megoldá
 * A VMware figyelésére szolgáló megoldás hozzáadása az előfizetéshez ismertetett eljárással [felügyeleti megoldás hozzáadása](log-analytics-add-solutions.md#add-a-management-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Támogatott VMware ESXi-gazdagépek
-a vSphere ESXi-gazdagép 5.5 és 6.0
+a vSphere ESXi-állomáson, 5.5, 6.0 és 6.5
 
 #### <a name="prepare-a-linux-server"></a>Linux-kiszolgáló előkészítése
 Hozzon létre egy Linux operációs rendszer virtuális gép összes syslog-adatot ESXi gazdagépek számára. A [OMS Linux-ügynök](log-analytics-linux-agents.md) összes ESXi állomás syslog-adatot gyűjtemény pontja. Több ESXi-gazdagépek továbbítani a naplók egy Linux-kiszolgálóhoz, az alábbi példában látható módon használhatja.  
@@ -45,7 +45,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gép összes syslog-adat
    ![Syslog folyamat](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Syslog gyűjtemény konfigurálása
-1. A VSphere syslog-továbbító beállítása. Syslog-továbbító beállítása segítségével részletes információkért lásd: [syslog konfigurálása ESXi 5.x és 6.0 (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás a **ESXi-állomáson konfigurációs** > **szoftver** > **speciális beállítások** > **Syslog**.
+1. A VSphere syslog-továbbító beállítása. Syslog-továbbító beállítása segítségével részletes információkért lásd: [syslog ESXi 5.0-s és újabb rendszer (2003322) konfigurálása](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás a **ESXi-állomáson konfigurációs** > **szoftver** > **speciális beállítások** > **Syslog**.
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. Az a *Syslog.global.logHost* mezőben, adja hozzá a Linux-kiszolgálóra és a portszám *1514*. Például `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
 3. A syslog ESXi állomás tűzfal megnyitásához. **A gazdagép-konfigurálás ESXi** > **szoftver** > **biztonsági profil** > **tűzfal** , és nyissa meg a **Tulajdonságok**.  
@@ -154,7 +154,7 @@ A megoldás tartalmaz további hasznos lekérdezések, amelyek segítségével k
 
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-![Lekérdezések](./media/log-analytics-vmware/queries.png)
+![lekérdezés](./media/log-analytics-vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Lekérdezések mentése

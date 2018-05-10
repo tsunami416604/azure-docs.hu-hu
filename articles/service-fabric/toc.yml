@@ -27,11 +27,9 @@
           href: service-fabric-tutorial-create-dotnet-app.md
         - name: 2 – Az alkalmazás telepítése
           href: service-fabric-tutorial-deploy-app-to-party-cluster.md
-        - name: 3 – HTTPS engedélyezése
-          href: service-fabric-tutorial-dotnet-app-enable-https-endpoint.md
-        - name: 4 – A CI/CD beállítása
+        - name: 3 – A CI/CD beállítása
           href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
-        - name: 5 – Monitorozás és diagnosztika
+        - name: 4 – Monitorozás és diagnosztika
           href: service-fabric-tutorial-monitoring-aspnet.md
     - name: Java-alkalmazás üzembe helyezése
       items:
@@ -563,42 +561,36 @@
           href: service-fabric-patch-orchestration-application-linux.md
     - name: Megfigyelés és diagnosztika
       items:
-        - name: Alkalmazások figyelése
+        - name: Elemzés az OMS szolgáltatással
           items:
-            - name: Elemzés az Application Insights segítségével
-              href: service-fabric-diagnostics-event-analysis-appinsights.md
-            - name: Naplózás hozzáadása az alkalmazáshoz
-              href: service-fabric-how-to-diagnostics-log.md
-            - name: Események összesítése az EventFlow segítségével
-              href: service-fabric-diagnostics-event-aggregation-eventflow.md
-            - name: Tárolók figyelése
-              href: service-fabric-diagnostics-oms-containers.md
-        - name: Fürtök monitorozása
-          items:
-            - name: EventStore API-k lekérdezése
-              href: service-fabric-diagnostics-eventstore-query.md
-            - name: Windows Azure Diagnostics
-              href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Linux Azure Diagnostics
-              href: service-fabric-diagnostics-event-aggregation-lad.md
             - name: OMS Log Analytics beállítása
               href: service-fabric-diagnostics-oms-setup.md
+            - name: Az OMS-ügynök hozzáadása
+              href: service-fabric-diagnostics-oms-agent.md
             - name: Monitorozás az OMS-szel
               href: service-fabric-diagnostics-event-analysis-oms.md
-        - name: Infrastruktúra monitorozása
+            - name: Tárolók figyelése
+              href: service-fabric-diagnostics-oms-containers.md
+        - name: Elemzés az Application Insights segítségével
+          href: service-fabric-diagnostics-event-analysis-appinsights.md
+        - name: Események összesítése – EventFlow
+          href: service-fabric-diagnostics-event-aggregation-eventflow.md
+        - name: Események összesítése – Azure Diagnostics
           items:
-            - name: Teljesítményfigyelés WAD használatával
-              href: service-fabric-diagnostics-perf-wad.md
-            - name: Teljesítménymonitorozás az OMS-ügynökkel
-              href: service-fabric-diagnostics-oms-agent.md
-        - name: Az állapot monitorozása
-          items:
-            - name: Állapot jelentése és ellenőrzése
-              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-            - name: Hibaelhárítás rendszerállapot-jelentések segítségével
-              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-            - name: Állapotjelentések megtekintése
-              href: service-fabric-view-entities-aggregated-health.md
+            - name: Windows
+              href: service-fabric-diagnostics-event-aggregation-wad.md
+            - name: Linux
+              href: service-fabric-diagnostics-event-aggregation-lad.md
+        - name: Teljesítményfigyelés WAD használatával
+          href: service-fabric-diagnostics-perf-wad.md
+        - name: Állapot jelentése és ellenőrzése
+          href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+        - name: Naplózás hozzáadása a szolgáltatáshoz
+          href: service-fabric-how-to-diagnostics-log.md
+        - name: Hibaelhárítás rendszerállapot-jelentések segítségével
+          href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+        - name: Állapotjelentések megtekintése
+          href: service-fabric-view-entities-aggregated-health.md
         - name: A helyi fürt hibaelhárítása
           href: service-fabric-troubleshoot-local-cluster-setup.md
 - name: Referencia

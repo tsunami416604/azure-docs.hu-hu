@@ -1,24 +1,24 @@
 ---
-title: "Platformok közötti értesítések küldése a felhasználóknak az Azure Notification Hubs (ASP.NET)"
-description: "Megtudhatja, hogyan egyetlen kérelem, platformfüggetlen megcélzó platform-független értesítést küldeni a Notification Hubs-sablonok használatával."
+title: Platformok közötti értesítések küldése a felhasználóknak az Azure Notification Hubs (ASP.NET)
+description: Megtudhatja, hogyan egyetlen kérelem, platformfüggetlen megcélzó platform-független értesítést küldeni a Notification Hubs-sablonok használatával.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 3c6dde338cb154f0cbe02642e4ff0f81d070aa25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 95793aac3c25563e3af39f3c47cebdd06e25e35f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Platformok közötti értesítések küldése a felhasználóknak a Notification hubs használatával
 Egy korábbi oktatóanyagban [értesítse a felhasználókat a Notification hubs használatával], megtudta, hogyan leküldéses értesítések az összes, egy adott hitelesített felhasználó számára regisztrált eszközre. Hogy az oktatóanyag több kérés kellett minden támogatott ügyfélplatform értesítést küldeni. Az Azure Notification Hubs támogatja a sablonok, amellyel megadhatja, hogyan egy adott eszköz azt szeretné, ha értesítést szeretne kapni. Ez a módszer egyszerűbbé teszi a platformok közötti értesítések küldése. 
@@ -81,16 +81,16 @@ Platformok közötti értesítések küldéséhez sablonokkal, tegye a következ
             return Request.CreateResponse(HttpStatusCode.OK);
         }
    
-    Ezt a kódot értesítést küld az összes platformra egy időben, a megadása nélkül a natív hasznos adatok között. Notification Hubs alapszik, és továbbítja a megfelelő tartalom minden eszköz a megadott *címke* érték, a regisztrált sablonok megadott.
+    Ezt a kódot értesítést küld az összes platformra egyszerre, nélkül lépett fel a natív hasznos adatok között adja meg. Notification Hubs alapszik, és továbbítja a megfelelő tartalom minden eszköz a megadott *címke* érték, a regisztrált sablonok megadott.
 
-4. Újra tegye közzé a WebApi háttérrendszerből projekthez.
+4. A WebApi háttérrendszerből projekt közzé.
 
 5. Futtassa újra az ügyfél alkalmazást, és ellenőrizze, hogy sikerült-e a regisztrációt.
 
 6. (Választható) Az ügyfélalkalmazás telepítése egy másik eszközön, és futtassa az alkalmazást.
-    Vegye figyelembe, hogy minden egyes eszközön megjelenik egy értesítés.
+    Minden egyes eszközön megjelenik egy értesítés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy ez az oktatóanyag befejezése többet szeretne tudni a Notification Hubs és a sablonok a következő témakörökben talál:
 
 * [Use Notification Hubs to send breaking news]: Demonstrates another scenario for using templates.

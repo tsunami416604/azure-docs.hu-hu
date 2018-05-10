@@ -1,12 +1,12 @@
 ---
-title: "Ellenőrzőpontok és a tartós funkciók - Azure ismétlés"
-description: "Ismerje meg, hogyan ellenőrzőpontok létrehozása és a válasz működik a tartós funkciók bővítményt az Azure Functions."
+title: Ellenőrzőpontok és a tartós funkciók - Azure ismétlés
+description: Ismerje meg, hogyan ellenőrzőpontok létrehozása és a válasz működik a tartós funkciók bővítményt az Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: b1bca62e256c1ede5df6888dd7c47ce2aa816bb9
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 39cdb9b2c6eae9a3176aedc64b8d187e298fdfdd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Ellenőrzőpontok és a tartós függvények (az Azure Functions) ismétlés
 
@@ -28,7 +28,9 @@ Ennek ellenére tartós funkciók álló üzenettípusok összehangolását megb
 
 ## <a name="orchestration-history"></a>Vezénylési előzmények
 
-Tegyük fel, a következő orchestrator függvény.
+Tegyük fel, a következő orchestrator-funkció:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -46,7 +48,22 @@ public static async Task<List<string>> Run(
 }
 ```
 
-Minden egyes `await` utasítás, a tartós feladat keretrendszer ellenőrzőpontokat a függvény a táblázat tároló végrehajtási állapotát. Ebben az állapotban, hogy mi a neve a *vezénylési előzmények*.
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const output = [];
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "Tokyo"));
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "Seattle"));
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "London"));
+
+    return output;
+});
+```
+
+Minden egyes `await` (C#) vagy `yield` (JavaScript) utasítás, a tartós feladat keretrendszer ellenőrzőpontokat a függvény a táblázat tároló végrehajtási állapotát. Ebben az állapotban, hogy mi a neve a *vezénylési előzmények*.
 
 ## <a name="history-table"></a>Előzménytábla
 
@@ -63,10 +80,10 @@ Az ellenőrzőpont végrehajtása után az orchestrator függvény szabad eltáv
 
 Létrehozása után a korábban bemutatott függvény előzményeinek jelenjenek meg a következőhöz Azure Table Storage (illusztrációs célokat szolgálnak rövidítése):
 
-| PartitionKey (InstanceId)                     | Esemény típusa             | Időbélyeg               | Input (Bemenet) | Név             | Eredmény                                                    | status | 
+| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | status | 
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     | 
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | NULL értékű  | E1_HelloSequence |                                                           |                     | 
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     | 
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     | 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     | 
@@ -79,7 +96,7 @@ Létrehozása után a korábban bemutatott függvény előzményeinek jelenjenek
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello London!" ""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokió!" ",""Hello Seattle!" ",""Hello London!" "]" | Befejezve           | 
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokió!" ",""Hello Seattle!" ",""Hello London!" "]" | Befejeződött           | 
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
 
 Néhány megjegyzések oszlop értékeit:
@@ -141,7 +158,7 @@ Az itt leírt végrehajtási viselkedésének kell segítenek megérteni, miért
 
 Hogyan tartós feladat keretében végrehajtja az orchestrator funkciók további információt szeretne, a legjobb hozzá kell esetén kövesse a [tartós feladat forrás kódja a Githubon](https://github.com/Azure/durabletask). Különösen, lásd: [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) és [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók példánykezelés](durable-functions-instance-management.md)

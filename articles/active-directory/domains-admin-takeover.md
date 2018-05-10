@@ -6,31 +6,29 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: cd11ea68f298395236abf83295b939462ba00964
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b1185fef53797a88ae929e35be56d2bc79067b49
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Egy nem felügyelt directory átveszi az Azure Active Directoryban rendszergazdaként
-Ez a cikk ismerteti a két módon vegye át egy DNS-tartománynév, az Azure Active Directory (Azure AD) egy nem felügyelt könyvtárban. Egy önkiszolgáló felhasználó előfizet egy felhőalapú szolgáltatás által használt Azure AD, ha hozzáadja őket egy nem felügyelt Azure AD-címtár az e-mail tartománya alapján. Önkiszolgáló, vagy a szolgáltatás "ugrásszerű" létrehozni kapcsolatban bővebben lásd: [Mi az az Azure Active Directory önkiszolgáló regisztráció?]()
+Ez a cikk ismerteti a két módon vegye át egy DNS-tartománynév, az Azure Active Directory (Azure AD) egy nem felügyelt könyvtárban. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló, vagy a szolgáltatás "ugrásszerű" létrehozni kapcsolatban bővebben lásd: [Mi az az Azure Active Directory önkiszolgáló regisztráció?]()
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Eldöntheti, hogyan egy nem felügyelt directory átvétele
-A rendszergazda felvásárlási során igazolhatja tulajdonjogát a [egy egyéni tartománynév hozzáadása az Azure AD](add-custom-domain.md). A következő szakaszok ismertetik a rendszergazdai feladatok részletes, de összegzése:
+A rendszergazdai átvétel során az [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md) című cikkben leírt módon bizonyíthatja tulajdonjogát. A következő szakaszok részletesen ismertetik a rendszergazdai feladatokat, amelyek összegzése itt olvasható:
 
-* Ha egy ["belső" rendszergazda felvásárlási](#internal-admin-takeover) egy nem felügyelt Azure címtár kerülnek a nem felügyelt címtár globális rendszergazdájaként. Nincs felhasználók, a tartományok vagy a service-csomagokról felügyelhető bármely más könyvtárba lesznek áttelepítve.
+* Ha [„belső” rendszergazdai átvételt](#internal-admin-takeover) végez egy nem felügyelt Azure-címtáron, a rendszer hozzáadja Önt a nem felügyelt címtár globális rendszergazdájaként. Semmilyen felhasználó, tartomány vagy szolgáltatáscsomag nem lesz migrálva az Ön által felügyelt más címtárakba.
 
-* Ha egy ["external" admin felvásárlási](#external-admin-takeover) egy nem felügyelt Azure-címtárhoz, a DNS-tartománynév, a nem felügyelt könyvtár hozzáadása az felügyelt Azure-címtár. Amikor a tartomány nevét, a felhasználók, erőforrások hozzárendelése létrejön az felügyelt Azure-címtár, hogy a felhasználók továbbra is hozzáférjen a szolgáltatásokhoz megszakítás nélkül. 
+* Ha [„külső” rendszergazdai átvételt](#external-admin-takeover) végez egy nem felügyelt Azure-címtáron, hozzáadja a nem felügyelt címtár DNS-tartománynevét az Ön által felügyelt Azure-címtárhoz. A tartománynév hozzáadásakor az Ön által felügyelt Azure-címtárban létrejön a felhasználók és erőforrások közötti kapcsolatok leképezése, így a felhasználók továbbra is megszakítás nélkül érhetik el a szolgáltatásokat. 
 
 ## <a name="internal-admin-takeover"></a>Belső rendszergazda felvásárlási
 

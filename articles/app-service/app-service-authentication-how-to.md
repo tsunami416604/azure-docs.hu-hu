@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: ed87eab6250eea753bc3b0abd97182d1b869420c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c41cb3ef2939fe7271b1f8738fcf0cb95c4b1111
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Hitelesítési és engedélyezési az Azure App Service testreszabása
 
@@ -25,7 +25,8 @@ Ez a cikk bemutatja, hogyan szabhatja testre [hitelesítési és engedélyezési
 
 Gyorsan használatba, tekintse meg az alábbi oktatóanyagok egyikét:
 
-* [Oktatóanyag: Helyszerepkörre, és felhasználók-végpont az Azure App Service-ben](app-service-web-tutorial-auth-aad.md)
+* [Oktatóanyag: Helyszerepkörre, és felhasználók-végpont az Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
+* [Oktatóanyag: Helyszerepkörre, és felhasználók-végpont az Azure App Service Linux](containers/tutorial-auth-aad.md)
 * [Az alkalmazás konfigurálása az Azure Active Directory-bejelentkezés használatára](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Az alkalmazás konfigurálása a Facebook-bejelentkezés használatára](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Az alkalmazás konfigurálása a Google-bejelentkezés használatára](app-service-mobile-how-to-configure-google-authentication.md)
@@ -148,4 +149,5 @@ Kattintson a **szerkesztése**, módosítsa a következő tulajdonság, majd **P
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Helyszerepkörre, és felhasználók-végpontok](app-service-web-tutorial-auth-aad.md)
+> [Oktatóanyag: Helyszerepkörre, és felhasználók-végpont (Windows)](app-service-web-tutorial-auth-aad.md)
+> [oktatóanyag: hitelesítését és engedélyezését felhasználók-végpont (Linux)](containers/tutorial-auth-aad.md)

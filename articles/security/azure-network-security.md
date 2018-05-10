@@ -4,7 +4,7 @@ description: További információk a felhőalapú számítási szolgáltatás, 
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: cc64ef8d820db6a072b708323eb110d62ed0a83c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 774d678c00b830f3932455c5b79fb44bde284d91
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-network-security"></a>Azure hálózati biztonság
 
@@ -530,7 +530,7 @@ Erőforrásokat ad vissza, a kapcsolatot, akkor a két van modellezve.
 
 - **Kapcsolódó** – A hálózati adapter kapcsolódik a virtuális gépek.
 
-#### <a name="variable-packet-capture"></a>Változó csomagrögzítéssel
+#### <a name="variable-packet-capture"></a>Változó csomagrögzítés
 
 Hálózati figyelő [változó csomagrögzítéssel](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) lehetővé teszi a csomag rögzítési munkamenetek nyomon követéséhez forgalma és a virtuális gép létrehozásához. Csomag rögzítési segítségével mindkét hálózati rendellenességeket reaktív diagnosztizálásához és proactivity. Egyéb felhasználásra tartalmazzák a hálózati statisztikákat, hálózati behatolások, ügyfél-kiszolgáló közötti kommunikációt, és még sok más hibakeresési információkat való összegyűjtéséhez.
 

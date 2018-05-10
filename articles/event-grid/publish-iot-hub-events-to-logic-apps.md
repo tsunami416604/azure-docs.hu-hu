@@ -1,22 +1,22 @@
 ---
-title: "Az IoT-központ események elindítani az Azure Logic Apps |} Microsoft Docs"
-description: "Az esemény Azure esemény rács útválasztási szolgáltatás használatával hozhat létre automatikus folyamatot az IoT-központ események alapján Azure Logic Apps-műveletek elvégzéséhez."
+title: Az IoT-központ események elindítani az Azure Logic Apps |} Microsoft Docs
+description: Az esemény Azure esemény rács útválasztási szolgáltatás használatával hozhat létre automatikus folyamatot az IoT-központ események alapján Azure Logic Apps-műveletek elvégzéséhez.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: f54db95b0dfe5dc39c8e2a85375e56a93d1562ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 4fed42a45f8d291bd3ba1e4fd5d636b7d0b0fbfc
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>E-mail értesítést kapjanak a Logic Apps segítségével Azure IoT Hub-események
 
@@ -156,7 +156,7 @@ Mielőtt kilép a Logic Apps Designer, másolja az URL-cím, mely a logic Apps a
 Ebben a szakaszban konfigurálhatja az IoT Hub közzé eseményeket azok bekövetkezésekor. 
 
 1. Az Azure-portálon lépjen az IoT hub. 
-2. Válassza ki **esemény rács**.
+2. Válassza ki **események**.
 
    ![Nyissa meg a rács esemény részletei](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 

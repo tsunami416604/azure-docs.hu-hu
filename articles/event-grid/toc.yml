@@ -9,24 +9,36 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Blob Storage-események irányítása – Azure CLI
+    - name: Blob Storage-események – Azure CLI
       href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Blob Storage-események irányítása – Azure PowerShell
+    - name: Blob Storage-események – PowerShell
       href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Egyéni esemény létrehozása – Azure CLI
+    - name: Egyéni események – Azure CLI
       href: custom-event-quickstart.md
-    - name: Egyéni esemény létrehozása – Azure PowerShell
+    - name: Egyéni események – PowerShell
       href: custom-event-quickstart-powershell.md
-    - name: Egyéni esemény létrehozása – Azure Portal
+    - name: Egyéni események – Portál
       href: custom-event-quickstart-portal.md
+    - name: Események küldése a Queue Storage-be
+      href: custom-event-to-queue-storage.md
 - name: Oktatóanyagok
   items:
-    - name: Virtuális gépek változásainak monitorozása logikai alkalmazásokkal
+    - name: E-mail küldése a virtuális gép változásakor
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
     - name: A feltöltött képek átméretezése
       href: resize-images-on-storage-blob-upload-event.md
     - name: Az Automation-runbook elindítása
       href: ensure-tags-exists-on-new-virtual-machines.md
+    - name: E-mail küldése IoT Hub-eszköz hozzáadásakor
+      href: publish-iot-hub-events-to-logic-apps.md
+    - name: Válasz küldése Service Bus-eseményekre
+      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Adatok streamelése az Event Hubsból
+      href: event-grid-event-hubs-integration.md
+    - name: Media Services-események irányítása
+      href: ../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Irányítás hibrid kapcsolatra
+      href: custom-event-to-hybrid-connection.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -43,22 +55,22 @@
       href: security-authentication.md
     - name: Teljesítés és újrapróbálkozás
       href: delivery-and-retry.md
+    - name: Eseményforrások
+      href: event-sources.md
+    - name: Eseménykezelők
+      href: event-handlers.md
 - name: Útmutatók
   items:
     - name: Közzététel egyéni témakörben
       href: post-to-custom-topic.md
     - name: Események fogadása HTTP-végponton
       href: receive-events.md
-    - name: Adatok streamelése az Event Hubsból adattárházba
-      href: event-grid-event-hubs-integration.md
-    - name: Értesítések küldése az IoT Hub eseményeiről
-      href: publish-iot-hub-events-to-logic-apps.md
-    - name: Service Bus-események figyelése a Functions és a Logic Apps használatával
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Eseménykézbesítés figyelése
       href: monitor-event-delivery.md
     - name: Esemény-előfizetések lekérdezése
       href: query-event-subscriptions.md
+    - name: Egyéni mezők leképezése sémára
+      href: input-mappings.md
     - name: CloudEvents-séma használata
       href: cloudevents-schema.md
 - name: Referencia
@@ -84,8 +96,12 @@
           href: event-schema-event-hubs.md
         - name: IoT Hub
           href: event-schema-iot-hub.md
+        - name: Media Services
+          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Erőforráscsoportok
           href: event-schema-resource-groups.md
+        - name: Service Bus
+          href: event-schema-service-bus.md
 - name: További források
   items:
     - name: Azure-ütemterv

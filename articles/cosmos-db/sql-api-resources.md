@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0fc8a977a172a859d6691a5b587135caf14e03f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20af4611920328ddcaa6e658101184451217a011
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Az Azure Cosmos DB hierarchikus erőforrás-modellje és alapfogalmai
 
@@ -31,7 +31,7 @@ Ez a cikk az alábbi kérdéseket:
 * Mik azok a rendszer meghatározott felhasználói erőforrások figyelésekor erőforrásokat?
 * Hogyan kezelje a egy erőforrást?
 * Hogyan működik a gyűjteményekkel?
-* Hogyan működik a tárolt eljárások, eseményindítók és felhasználó által megadott funkciókat (UDF)?
+* Hogyan működik a tárolt eljárások, eseményindítók és felhasználó által definiált függvényeket (UDF)?
 
 Az alábbi videó az Azure Cosmos DB Programvezető Andrew Liu végigvezeti az Azure Cosmos DB erőforrás-modellje. 
 
@@ -58,7 +58,7 @@ Erőforrások munkakezdéshez kell [adatbázisfiók létrehozása](create-sql-ap
 | Adatbázis |Egy adatbázis a dokumentumtároló gyűjtemények között particionált logikai tárolója. Akkor is a felhasználók tárolójába kerülnek. |
 | Felhasználó |Az engedélyek hatókörének logikai névtere. |
 | Engedély |Egy adott erőforráshoz való hozzáférés egy felhasználó társított engedélyezési jogkivonatot. |
-| Gyűjtemény |A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló. Egy gyűjtemény egy számlázható entitás, ahol a [költség](performance-levels.md) a gyűjteményhez társított teljesítményszint határozza meg. A gyűjtemények egy vagy több partícióra/kiszolgálóra is kiterjedhetnek, valamint gyakorlatilag korlátlan mennyiségű tárterület vagy átviteli sebesség kezelésére méretezhetők. |
+| Gyűjtemény |A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló. A gyűjtemények egy vagy több partícióra/kiszolgálóra is kiterjedhetnek, valamint gyakorlatilag korlátlan mennyiségű tárterület vagy átviteli sebesség kezelésére méretezhetők. |
 | Tárolt eljárás |A JavaScript, amely regisztrálva gyűjtemény és tranzakciós úton futtatásuk az adatbázismotor írt alkalmazás logikáját. |
 | Eseményindító |Úgy az alkalmazáslogikát végrehajtása előtt vagy után vagy egy INSERT utasítás, JavaScript nyelven írt csere vagy törlési művelet. |
 | AZ UDF |JavaScript nyelven írt alkalmazás logikáját. Felhasználó által megadott függvények lehetővé teszik egy egyéni lekérdezés operátor modell, és ezáltal kiterjesztése a core SQL API lekérdező nyelve. |
@@ -166,14 +166,14 @@ Egy Cosmos DB adatbázisa egy logikai tároló egy vagy több gyűjtemények és
 ![Fiók és a gyűjtemények hierarchikus adatbázismodell][2]  
 **Egy adatbázis egy olyan logikai tároló, a felhasználók és gyűjtemények**
 
-Egy adatbázis gyakorlatilag korlátlan dokumentumtároló gyűjtemények belül particionált tartalmazhat.
+Egy adatbázis korlátlan dokumentumtároló gyűjtemények belül particionált tartalmazhat.
 
 ### <a name="elastic-scale-of-an-azure-cosmos-db-database"></a>Rugalmasan méretezhető Azure Cosmos DB adatbázis
 A Cosmos DB adatbázisa alapértelmezés – petabájt dokumentumtároló biztonsági SSD és a létesített átviteli sebesség és a néhány GB közötti rugalmas. 
 
 Ellentétben a hagyományos RDBMS adatbázis Cosmos-adatbázis egy adatbázis nem egyetlen gép hatókörét. A Cosmos DB az alkalmazás skálázási igények nő, létrehozhat több gyűjteményt, adatbázisok vagy mindkettőt. Valóban különböző első felek alkalmazásainak a Microsofton belül használt Azure Cosmos DB egy fogyasztói léptékű által a dokumentumtároló terabájt az egyes gyűjtemények tartalmazó ezer rendkívül nagy Azure Cosmos DB adatbázisok létrehozásához. Növekedhet, és egy adatbázis zsugorítása hozzáadásával vagy eltávolításával a gyűjtemények az alkalmazás méretezési követelmények teljesítéséhez. 
 
-Az ajánlat függvényében adatbázisban lévő gyűjtemények tetszőleges számú hozhat létre. Minden gyűjtemény rendelkezik, a biztonsági SSD-tárolóba, a kiválasztott teljesítményszint függvényében meg kiosztott átviteli sebesség.
+Az ajánlat függvényében adatbázisban lévő gyűjtemények tetszőleges számú hozhat létre. Minden gyűjtemény, vagy olyan-készletek (adatbázis) belül, SSD biztonsági készített tárolási és attól függően, hogy a kiválasztott ajánlat az Ön kiosztott átviteli sebesség.
 
 Egy Azure Cosmos DB adatbázis is egy olyan tároló, a felhasználók. Egy felhasználó, szolgálna, az engedélyek egy készletét, amely minden részletre kiterjedő engedélyezési és a gyűjtemények, dokumentumok és mellékletek eléréséhez logikai névterét.  
 
@@ -183,7 +183,7 @@ Egyéb erőforrásokat az Azure Cosmos DB erőforrás-modellje, adatbázisokat h
 A Cosmos DB gyűjtemény egy olyan tároló, a JSON-dokumentumok. 
 
 ### <a name="elastic-ssd-backed-document-storage"></a>Rugalmas biztonsági SSD-dokumentumtároló
-Egy gyűjtemény belsőleg rugalmas – automatikusan növekszik, és vegye fel vagy távolítsa el a dokumentumok mértékben változik. Gyűjtemények logikai erőforrások, egy vagy több fizikai partíciók, sem kiszolgálók is kiterjedhetnek. A gyűjteményen belül partíciók száma Cosmos DB a tárhely méretét és a létesített átviteli sebesség a gyűjtemény alapján határozza meg. Minden partíció Cosmos DB SSD-biztonsági tárolási társítva a rögzített méretű rendelkezik, és a magas rendelkezésre állású replikálódik. Partíció felügyeleti teljes mértékben felügyelt Azure Cosmos DB, és komplex kódot írnia, vagy a partíciók kezelésére nem rendelkeznek. A cosmos DB gyűjtemények **gyakorlatilag korlátlan** tárolási és átviteli tekintetében. 
+Egy gyűjtemény belsőleg rugalmas – automatikusan növekszik, és vegye fel vagy távolítsa el a dokumentumok mértékben változik. Gyűjtemények logikai erőforrások, egy vagy több fizikai partíciók, sem kiszolgálók is kiterjedhetnek. A gyűjteményhez társított partíciók számának a tárméret alapján Cosmos-adatbázis és a gyűjtemény vagy a gyűjtemények kiosztott átviteli sebesség határozza meg. Minden partíció Cosmos DB SSD-biztonsági tárolási társítva a rögzített méretű rendelkezik, és a magas rendelkezésre állású replikálódik. Partíció felügyeleti teljes mértékben felügyelt Azure Cosmos DB, és komplex kódot írnia, vagy a partíciók kezelésére nem rendelkeznek. A cosmos DB gyűjtemények **korlátlan** tárolási és átviteli tekintetében. 
 
 ### <a name="automatic-indexing-of-collections"></a>Az automatikus indexeléshez gyűjtemények
 Azure Cosmos-adatbázis egy valódi sémamentes adatbázisrendszer. Az feltételez vagy igényel semmilyen sémát a JSON-dokumentumok. Egy gyűjteményhez való hozzáadása során dokumentumok, Azure Cosmos DB automatikusan elvégzi a őket, és elérhetők lekérdezését. Automatikus indexelés dokumentumok anélkül, hogy a séma vagy a másodlagos indexek Azure Cosmos DB kulcs képesség és írási optimalizált, a zárolás ingyenes, és a naplószerkezetű karbantartási eljárások szerint engedélyezve van. Azure Cosmos-adatbázis konzisztens lekérdezések szolgálatban nagyon gyorsan írások tartós kötet támogatja. A dokumentum és a index tárolási rendszer kiszámítja a minden gyűjtemény által felhasznált tárterület. A tárterületi és teljesítménybeli kompromisszumot társított indexelő az indexelési házirendet egy gyűjtemény konfigurálásával szabályozhatja. 
@@ -195,7 +195,7 @@ Az indexelési házirendet az egyes gyűjtemények lehetővé teszi, hogy a telj
 * Válasszon, hogy vagy egyedi elérési utak vagy dokumentumok minták kizárja az indexből. Érhet el ez a beállítás includedPaths és a gyűjtemény indexingPolicy excludedPaths rendre. A tárterületi és teljesítménybeli kompromisszumot ideális tartomány- és kivonatoló a megadott elérési út minták is konfigurálhatja. 
 * Itt választhat szinkron (konzisztens) és aszinkron (lazy) index frissítéseket. Alapértelmezés szerint az index frissítése szinkron módon minden insert, replace vagy egy dokumentumot – így a gyűjtemény törlése. Ez lehetővé teszi, hogy a lekérdezések tiszteletben konzisztencia szintjét, a dokumentum olvasása. Míg Azure Cosmos DB írási optimalizált, és támogatja a szinkron index karbantartási és egységes lekérdezések szolgáltató együtt dokumentum írások tartós kötetek, egyes gyűjtemények indexét lazily frissítésére is konfigurálhat. A lusta indexelési a hanghatások írási további, és tömeges adatfeldolgozást forgatókönyvek elsősorban az olvasási műveleteket gyűjtemények ideális.
 
-Az indexelési házirendet a gyűjteményen hajtja végre a PUT módosítható. Ez lehet érhető el, vagy a [ügyfél SDK](sql-api-sdk-dotnet.md), a [Azure-portálon](https://portal.azure.com) vagy a [REST API-k](/rest/api/cosmos-db/).
+Az indexelési házirendet a gyűjteményen hajtja végre a PUT módosítható. Ez lehet érhető el, vagy a [ügyfél SDK](sql-api-sdk-dotnet.md), a [Azure-portálon](https://portal.azure.com), vagy a [REST API-k](/rest/api/cosmos-db/).
 
 ### <a name="querying-a-collection"></a>A gyűjtemény lekérdezése
 A dokumentumok a gyűjteményen belül lehet tetszőleges sémák és lekérdezheti a dokumentumok egy gyűjteményen belül anélkül, hogy semmilyen sémát, illetve másodlagos indexek előzetes megfizetése esetén. A gyűjtemény segítségével lekérheti a [Azure Cosmos adatbázis SQL-szintaxis hivatkozás](https://msdn.microsoft.com/library/azure/dn782250.aspx), pedig a gazdag hierarchikus, relációs és térbeli operátorokat és bővíthetőséget JavaScript-alapú felhasználó által megadott függvények biztosítja. A JSON-szintaxis lehetővé teszi, hogy a fa csomópontjai címkék JSON-dokumentumok fákként modellezési. Ez az SQL API automatikus indexelési technikái, valamint az Azure Cosmos DB SQL dialektusa szerint kihasználni. Az SQL lekérdező nyelve három fő szempontjait foglalja magában:   
@@ -222,7 +222,7 @@ A részletes elkötelezettségének JavaScript és JSON közvetlenül az adatbá
 * Párhuzamossági hatékony végrehajtásának szabályozásához helyreállítási, automatikus a JSON objektumgrafikonok közvetlenül a az adatbázismotor indexelése
 * Természetesen kifejező folyamatábrán, változó hatókörének, hozzárendelése és kivételkezelő primitívek az adatbázis tranzakcióihoz közvetlenül tekintetében a JavaScript programozási nyelv integrációja
 
-A JavaScript-logika regisztrálva, a gyűjtemény szintjén majd adhat ki az adott gyűjtemény a dokumentumok a Helyadatbázis-műveletek. Az Azure Cosmos DB implicit módon becsomagolja a JavaScript-alapú tárolt eljárások és eseményindítók belül egy környezeti ACID-tranzakciókat pillanatkép-elkülönítéssel egy gyűjteményen belül dokumentumok között. Ha a futtatása során a JavaScript kivételt jelez, a teljes tranzakció megszakad. Az eredményül kapott programozási modell nagyon egyszerű még hatékony. JavaScript fejlesztők "tartós" programozási modellt kap a szalagtár primitívek, valamint a megszokott nyelvi szerkezetek továbbra is használatakor.   
+A JavaScript-logika regisztrálva, a gyűjtemény szintjén majd adhat ki az adott gyűjtemény a dokumentumok a Helyadatbázis-műveletek. Az Azure Cosmos DB implicit módon becsomagolja a JavaScript-alapú tárolt eljárások és eseményindítók pillanatkép-elkülönítéssel környezeti ACID tranzakción belül a gyűjteményen belül dokumentumok között. Ha a futtatása során a JavaScript kivételt jelez, a teljes tranzakció megszakad. Az eredményül kapott programozási modell felettébb egyszerű még hatékony. JavaScript fejlesztők "tartós" programozási modellt kap a szalagtár primitívek, valamint a megszokott nyelvi szerkezetek továbbra is használatakor.   
 
 JavaScript végrehajtása közvetlenül az adatbázismotor ugyanazt a címtartományt, a pufferkészlet belül teszi lehetővé teszi, hogy performant és adatbázis-művelet a dokumentumokon végzett gyűjtemény tranzakciós végrehajtását. Cosmos-adatbázis adatbázis-kezelő lehetővé teszi a JSON mély kötelezettségvállalás továbbá JavaScript megszünteti az a típus rendszerek alkalmazás és az adatbázis bármely impedancia eltérő.   
 
@@ -282,7 +282,7 @@ Tárolt eljárások és eseményindítók kommunikálni egy gyűjtemény és a d
 Az SQL API-gyűjteményére is létrehozható, törölt, olvassa el, vagy felsorolt segítségével egyszerűen a [REST API-k](/rest/api/cosmos-db/) vagy annak bármelyik a [ügyfél SDK-k](sql-api-sdk-dotnet.md). Az SQL API-t mindig vagy a metaadat-gyűjtemény lekérdezése az erős konzisztencia biztosítja. A gyűjtemény törlése automatikusan biztosítja, hogy a dokumentumok, a mellékleteket, a tárolt eljárások, eseményindítók sem tudja már használni, és az abban szereplő felhasználó által megadott függvények.   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>Tárolt eljárások, eseményindítók és felhasználó definiált függvény (UDF)
-Az előző szakaszban leírtak írhat az alkalmazáslogikát, hogy közvetlenül az adatbázis motorján belül tranzakción belül futtatni. Az alkalmazáslogika teljes egészében a JavaScript írhatók, és a tárolt eljárás, eseményindító vagy egy UDF modellezhető. A tárolt eljárás vagy eseményindító JavaScript-kód beszúrása, cserélje le, olvassa el vagy lekérdezni a dokumentumok a gyűjteményen belül. Másrészről, egy UDF belül a JavaScript nem lehet beszúrni, cserélje le, vagy törölhetnek dokumentumokat. Felhasználó által megadott függvények számba venni a lekérdezés eredményhalmazából dokumentumok, és előállít egy másik eredményhalmaz. A több-bérlős Azure Cosmos DB kényszeríti a szigorú foglalásalapú erőforrás cégirányítási. Minden egyes tárolt eljárás, eseményindító vagy egy UDF lekérdezi a rögzített quantum az operációs rendszer-erőforrás a munkájuk elvégzéséhez. Továbbá a tárolt eljárások, eseményindítók és felhasználó által megadott függvények külső JavaScript szalagtárak szemben nem lehet csatolni, és is feketelistára teszi a számukra kiosztott erőforrás költségvetések túllépése esetén. Regisztrálja, a tárolt eljárások, eseményindítók és felhasználó által megadott függvények gyűjtemény regisztrációját a REST API-k használatával.  Regisztráláskor tárolt eljárás, eseményindító vagy egy UDF, előre összeállított és a rendszer bájt kódú, amelyek később hajtsa végre. A következő ssection illustrateshow az Azure Cosmos DB JavaScript SDK segítségével regisztrálja, végrehajtási és regisztrációjának törlése a tárolt eljárás, eseményindító és egy UDF. A JavaScript SDK egy egyszerű burkoló felett. a [REST API-k](/rest/api/cosmos-db/). 
+Az előző szakaszban leírtak írhat az alkalmazáslogikát, hogy közvetlenül az adatbázis motorján belül tranzakción belül futtatni. Az alkalmazáslogika teljes egészében a JavaScript írhatók, és a tárolt eljárás, eseményindító vagy egy UDF modellezhető. A tárolt eljárás vagy eseményindító JavaScript-kód beszúrása, cserélje le, olvassa el vagy lekérdezni a dokumentumok a gyűjteményen belül. Másrészről, egy UDF belül a JavaScript nem lehet beszúrni, cserélje le, vagy törölhetnek dokumentumokat. Felhasználó által megadott függvények számba venni a lekérdezés eredményhalmazából dokumentumok, és előállít egy másik eredményhalmaz. A több-bérlős Azure Cosmos DB kényszeríti a szigorú foglalásalapú erőforrás cégirányítási. Minden egyes tárolt eljárás, eseményindító vagy egy UDF lekérdezi a rögzített quantum az operációs rendszer-erőforrás a munkájuk elvégzéséhez. Továbbá a tárolt eljárások, eseményindítók és felhasználó által megadott függvények külső JavaScript szalagtárak szemben nem lehet csatolni, és is feketelistára teszi a számukra kiosztott erőforrás költségvetések túllépése esetén. Regisztrálja, a tárolt eljárások, eseményindítók és felhasználó által megadott függvények gyűjtemény regisztrációját a REST API-k használatával.  Regisztráláskor tárolt eljárás, eseményindító vagy egy UDF, előre összeállított és a rendszer bájt kódú, amelyek később hajtsa végre. A következő szakasz bemutatja, hogyan használhatja az Azure Cosmos DB JavaScript SDK regisztrálásához, hajtható végre, és a tárolt eljárás, eseményindító és egy UDF. A JavaScript SDK egy egyszerű burkoló felett. a [REST API-k](/rest/api/cosmos-db/). 
 
 ### <a name="registering-a-stored-procedure"></a>A tárolt eljárás regisztrálása
 Regisztrációs tárolt eljárás egy új tárolt eljárás erőforrás egy gyűjtemény HTTP POST használatával hoz létre.  
@@ -322,7 +322,7 @@ A következő tárolt eljárás végrehajtása egy HTTP POST meglévő tárolt e
         });
 
 ### <a name="unregistering-a-stored-procedure"></a>A regisztráció megszüntetését tárolt eljárás
-Beállításjegyzékből való törlésekor a tárolt eljárás egy HTTP DELETE elleni meglévő tárolt eljárás erőforrás kiállításával egyszerűen történik.   
+Egy HTTP DELETE elleni meglévő tárolt eljárás erőforrás kiállításával beállításjegyzékből való törlésekor a tárolt eljárás történik.   
 
     client.deleteStoredProcedureAsync(createdStoredProcedure.resource._self)
         .then(function (response) {
@@ -364,7 +364,7 @@ Egy eseményindító végrehajtása egy meglévő eseményindító nevét megad�
         });
 
 ### <a name="unregistering-a-pre-trigger"></a>A regisztráció megszüntetését előtti eseményindító
-Egy eseményindító regisztrációját kiadása egy HTTP DELETE eseményindító erőforrással ellen használatával egyszerűen történik.  
+Kiállító egy HTTP DELETE eseményindító erőforrással elleni használatával történik a beállításjegyzékből való törlésekor egy eseményindító.  
 
     client.deleteTriggerAsync(createdPreTrigger._self);
         .then(function(response) {
@@ -415,7 +415,7 @@ Bár a fenti kódtöredékek bemutatta a regisztrációs (POST), (PUT) regisztr�
 ## <a name="documents"></a>Dokumentumok
 Akkor is beszúrása, cserélje le, törlése, olvasása, számbavétele és lekérdezni egy gyűjtemény tetszőleges JSON-dokumentumokat. Azure Cosmos-adatbázis nem határozza meg, semmilyen sémát, és nem igényel másodlagos indexek támogatása érdekében egy gyűjtemény dokumentumok lekérdezését. A dokumentum maximális mérete 2 MB.   
 
-Folyamatban egy valóban megnyitott adatbázis-szolgáltatás, Azure Cosmos DB nem találjon ki semmilyen speciális adattípusok (például: dátum idő) vagy a JSON-dokumentumokat az adott kódolások. Azure Cosmos-adatbázis nem igényel semmilyen különleges JSON egyezmények kodifikálni a különböző dokumentumok; közötti kapcsolatok az Azure Cosmos-adatbázis SQL-szintaxis szolgáló lekérdezés és a projekt dokumentumok különleges jegyzeteket vagy dokumentumok közötti kapcsolatok kodifikálni kell nélkül megkülönböztető tulajdonságok nagyon hatékony hierarchikus és relációs lekérdezés biztosít.  
+Folyamatban egy valóban megnyitott adatbázis-szolgáltatás, Azure Cosmos DB nem találjon ki semmilyen speciális adattípusok (például: dátum idő) vagy a JSON-dokumentumokat az adott kódolások. Azure Cosmos-adatbázis nem igényel semmilyen különleges JSON egyezmények kodifikálni a különböző dokumentumok; közötti kapcsolatok az Azure Cosmos-adatbázis SQL-szintaxis szolgáló lekérdezés és a projekt dokumentumok különleges jegyzeteket vagy dokumentumok közötti kapcsolatok kodifikálni kell nélkül megkülönböztető tulajdonságok hatékony hierarchikus és relációs lekérdezés biztosít.  
 
 Mint minden más erőforrásnál dokumentumok hozhatók létre, cseréje esetén törlése, olvasása, számba, és könnyen használatával a REST API-k vagy annak bármelyik lekérdezése a [ügyfél SDK-k](sql-api-sdk-dotnet.md). Dokumentum törlése azonnal területet szabadít fel a megfelelő összes beágyazott melléklet kvótát. A dokumentumok olvasási konzisztenciát mértékét az adatbázis-fiókot a konzisztencia-házirend következik. Ez a házirend attól függően, hogy az adatok konzisztenciájának követelményeinek, az alkalmazás kérelem alapon felülbírálható. Dokumentumok lekérdezésekor az olvasási konzisztenciával követi a indexelési mód beállítása a gyűjteményben. A "konzisztens" Ez a következő a fiók konzisztencia házirend. 
 
@@ -426,11 +426,11 @@ Fontolja meg egy közösségi olvasási alkalmazás, amely Azure Cosmos-adatbáz
 
 * A könyv maga a tartalom vagy tárolódik a média-tároló vagy egy távoli médiatárbeli Azure Cosmos DB adatbázisfiók részeként érhető el. 
 * Az alkalmazás minden felhasználó tárolhatjuk egy különálló dokumentumként – például /colls/joe/docs/book1 által hivatkozott dokumentum Füzet1 Joe metaadatait tárolja. 
-* A mellékletek mutat egy felhasználó egy adott könyv lapjain például a megfelelő dokumentum tárolt tartalom, /colls/joe/docs/book1/chapter1, /colls/joe/docs/book1/chapter2 stb. 
+* Egy felhasználó egy adott könyv tartalom lapok mutató melléklet tárolási alatt az megfelelő dokumentum, például /colls/joe/docs/book1/chapter1, /colls/joe/docs/book1/chapter2 stb. 
 
 A fenti példák rövid azonosítók segítségével átadja az erőforrás-hierarchiában. Erőforrások keresztül egyedi erőforrás-azonosítókat megtalálhatja a REST API-kon keresztül érhetők el. 
 
-Az adathordozó Azure Cosmos DB által felügyelt a melléklet _media tulajdonságának hivatkozik az adathordozó által az URI. Az Azure Cosmos DB biztosíthatja, hogy az adathordozó a szemétgyűjtési gyűjtése, ha az összes fennmaradó hivatkozást a rendszer eldobja. Azure Cosmos DB automatikusan hoz létre a mellékletet, ha az új adathordozó feltöltött tölti fel a _media úgy, hogy az újonnan hozzáadott adathordozó mutasson. Ha az adathordozó tárolása egy távoli blob-tároló felügyeli azt (például a OneDrive, Azure Storage stb dropbox-bA), az adathordozó hivatkozni továbbra is használhatja a mellékleteket. Ebben az esetben fog létrehozni a mellékletet, és feltölti a _media tulajdonsága.   
+Az adathordozó Azure Cosmos DB által felügyelt a melléklet _media tulajdonságának hivatkozik az adathordozó által az URI. Az Azure Cosmos DB biztosíthatja, hogy az adathordozó a szemétgyűjtési gyűjtése, ha az összes fennmaradó hivatkozást a rendszer eldobja. Azure Cosmos DB automatikusan hoz létre a mellékletet, ha az új adathordozó feltöltött tölti fel a _media úgy, hogy az újonnan hozzáadott adathordozó mutasson. Ha az adathordozó tárolása egy távoli blob-tároló felügyeli azt (például a OneDrive, Azure Storage, DropBox stb.) választja, az adathordozó hivatkozni továbbra is használhatja a mellékletek. Ebben az esetben fog létrehozni a mellékletet, és feltölti a _media tulajdonsága.   
 
 Összes többi erőforrása is hozható létre mellékleteket, cserélni, törlése, olvasása vagy számba egyszerűen a REST API-k vagy bármely, az ügyfél SDK-k használatával. Csakúgy, mint a dokumentumok, az olvasási konzisztenciával szintű mellékletek következik a konzisztencia-házirend az adatbázis-fiókot. Ez a házirend attól függően, hogy az adatok konzisztenciájának követelményeinek, az alkalmazás kérelem alapon felülbírálható. Mellékletek lekérdezésekor az olvasási konzisztenciával követi az indexelési mód beállítása a gyűjtemény. A "konzisztens" Ez a következő a fiók konzisztencia házirend. 
  
@@ -457,7 +457,7 @@ Más erőforrások, például felhasználói Azure Cosmos DB hozhatók létre, c
 ## <a name="permissions"></a>Engedélyek
 Access control szempontból, erőforrások, például adatbázis-fiókokat, adatbázisok, felhasználók és engedéllyel minősülnek *felügyeleti* erőforrásokat, mivel ezek a rendszergazdai engedélyek szükségesek. Másrészről, erőforrások, például a gyűjtemények, dokumentumok, a mellékleteket, tárolt eljárások, eseményindítók, és a felhasználó által megadott függvények alapján egy adott adatbázisnak hatókörű, és figyelembe veendő *alkalmazás-erőforrásokat*. A két típusú erőforrások és a szerepköröket, amelyek elérhet (azaz a rendszergazdai és felhasználói) megfelelő, a használt engedélyezési modellt meghatározása kétféle *hívóbetűk*: *főkulcs* és  *Az erőforráskulcs*. A főkulcs a következő adatbázisfiókot része, és a rendszer átadja a fejlesztői (vagy a rendszergazda) ki van kiépítés az adatbázis-fiókot. A főkulcs szemantikájú rendszergazda, abban, hogy a felügyeleti és a alkalmazás erőforrásokhoz való hozzáférés engedélyezésére használható. Ezzel szemben egy erőforrás kulcsa a részletes elérési kulcsot, amely lehetővé teszi a hozzáférést egy *adott* alkalmazás erőforrás. Ebből kifolyólag rögzíti a felhasználó az adatbázis és az engedélyek a felhasználó rendelkezik-e egy adott erőforrás (például gyűjteményt, a dokumentum, melléklet, tárolt eljárás, eseményindító vagy UDF) közötti kapcsolat.   
 
-A csak egy erőforrás-kulcs beszerzése, egy adott felhasználói engedélyt erőforrás létrehozása. Vegye figyelembe, hogy létrehozásához vagy engedély beolvasni, főkulcs biztosítani kell a hitelesítési fejléc. Engedély erőforrás kötelékek az erőforrás, a hozzáférés és a felhasználó. A felhasználó engedélye erőforrás létrehozása után csak kell a társított erőforráskulcs ahhoz, hogy a megfelelő erőforrás eléréséhez jelenthet. Egy erőforrás-kulcsot, ezért a logikai és kompakt megjelenítése az engedély erőforrás tekinthetők.  
+A csak egy erőforrás-kulcs beszerzése, egy adott felhasználói engedélyt erőforrás létrehozása. Ahhoz, hogy hozzon létre vagy engedély beolvasni, a főkulcs kell jelenik meg a hitelesítési fejléc. Engedély erőforrás kötelékek az erőforrás, a hozzáférés és a felhasználó. A felhasználó engedélye erőforrás létrehozása után csak kell a társított erőforráskulcs ahhoz, hogy a megfelelő erőforrás eléréséhez jelenthet. Egy erőforrás-kulcsot, ezért a logikai és kompakt megjelenítése az engedély erőforrás tekinthetők.  
 
 Mint minden más erőforrások, az Azure Cosmos Adatbázisba engedélyek hozhatók létre, cserélni, törlése, olvassa el vagy számba egyszerűen a REST API-k vagy bármely, az ügyfél SDK-k használatával. Azure Cosmos DB mindig nyújt erős konzisztenciát biztosít a olvasása vagy kérdez le a metaadatokat az engedély. 
 

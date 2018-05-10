@@ -1,18 +1,18 @@
 ---
-title: "Azure Event rács és az Event Hubs-integráció"
-description: "Ismerteti, hogyan lehet Azure esemény rács és az Event Hubs használatával telepítse át az adatokat egy SQL Data Warehouse"
+title: Azure Event rács és az Event Hubs-integráció
+description: Ismerteti, hogyan lehet Azure esemény rács és az Event Hubs használatával telepítse át az adatokat egy SQL Data Warehouse
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dba17a860dffd87b3784c53cf288b7a312c77e33
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 60857327685fca9a5f97588ab51909ce2537d68f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Az adatfolyam big Data típusú adatok az data warehouse-bA
 
@@ -66,7 +66,7 @@ Esemény rács elosztása az eseményadatok az előfizetőknek. A következő p�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez kell rendelkeznie:
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 * [A Visual studio 15.3.2 2017 verzió vagy újabb](https://www.visualstudio.com/vs/) a munkaterhelések: .NET asztali fejlesztési, Azure fejlesztési, az ASP.NET és a webes fejlesztési, Node.js fejlesztői és Python fejlesztői.
@@ -118,71 +118,45 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 1. Nyissa meg a [EventHubsCaptureEventGridDemo mintaprojektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a Visual Studio 2017 (15.3.2 vagy újabb).
 
-2. A Megoldáskezelőben kattintson a jobb gombbal **FunctionDWDumper**, és válassza ki **közzététel**.
+1. A Megoldáskezelőben kattintson a jobb gombbal **FunctionEGDWDumper**, és válassza ki **közzététel**.
 
    ![Függvény alkalmazás közzététele](media/event-grid-event-hubs-integration/publish-function-app.png)
 
-3. Válassza ki **Azure függvény App** és **válasszon meglévő**. Kattintson az **OK** gombra.
+1. Válassza ki **Azure függvény App** és **válasszon meglévő**. Válassza ki **közzététele**.
 
    ![Cél függvény alkalmazás](media/event-grid-event-hubs-integration/pick-target.png)
 
-4. Válassza ki a funkció a sablon segítségével telepített alkalmazást. Kattintson az **OK** gombra.
+1. Válassza ki a funkció a sablon segítségével telepített alkalmazást. Kattintson az **OK** gombra.
 
    ![Függvény alkalmazás kiválasztása](media/event-grid-event-hubs-integration/select-function-app.png)
 
-5. Visual Studio a profil konfigurálásakor válassza ki a **közzététel**.
+1. Visual Studio a profil konfigurálásakor válassza ki a **közzététel**.
 
    ![Válassza ki közzététele](media/event-grid-event-hubs-integration/select-publish.png)
 
-6. Miután közzétette a függvény, navigáljon a [Azure-portálon](https://portal.azure.com/). Válassza ki az erőforrás-csoport és függvény alkalmazást.
-
-   ![Függvény alkalmazás megtekintése](media/event-grid-event-hubs-integration/view-function-app.png)
-
-7. Válassza ki a függvényt.
-
-   ![Függvény kiválasztása](media/event-grid-event-hubs-integration/select-function.png)
-
-8. Az URL-cím beszerzése a függvény. Az esemény-előfizetés létrehozásakor kell az URL-cím.
-
-   ![Függvény URL-címének beolvasása](media/event-grid-event-hubs-integration/get-function-url.png)
-
-9. Másolja az értékét.
-
-   ![URL-Címének másolása](media/event-grid-event-hubs-integration/copy-url.png)
+Miután közzétette a függvény, készen áll az esemény előfizetni.
 
 ## <a name="subscribe-to-the-event"></a>Az esemény előfizetés
 
-Az Azure parancssori felület vagy a portál segítségével az esemény előfizetni. Ez a cikk mindkét megközelítés jeleníti meg.
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/). Válassza ki az erőforrás-csoport és függvény alkalmazást.
 
-### <a name="portal"></a>Portál
+   ![Függvény alkalmazás megtekintése](media/event-grid-event-hubs-integration/view-function-app.png)
 
-1. Válassza ki az Event Hubs névtér **esemény rács** a bal oldalon.
+1. Válassza ki a függvényt.
 
-   ![Válassza ki az esemény rács](media/event-grid-event-hubs-integration/select-event-grid.png)
+   ![Függvény kiválasztása](media/event-grid-event-hubs-integration/select-function.png)
 
-2. Adjon hozzá egy esemény-előfizetést.
+1. Válassza ki **hozzáadása esemény rács előfizetés**.
 
-   ![Az esemény-előfizetés felvétele](media/event-grid-event-hubs-integration/add-event-subscription.png)
+   ![Előfizetés hozzáadása](media/event-grid-event-hubs-integration/add-event-grid-subscription.png)
 
-3. Adja meg az esemény-előfizetést. Az Azure Functions URL-cím használata másolt. Kattintson a **Létrehozás** gombra.
+9. Adjon meg egy nevet a rács Eseményelőfizetés. Használjon **Event Hubs névterek** az esemény típusa. Jelölje be az Event Hubs névtér példányát adja meg. Az előfizető végpont hagyja meg a megadott érték. Kattintson a **Létrehozás** gombra.
 
-   ![Adja meg az előfizetés értékek](media/event-grid-event-hubs-integration/provide-values.png)
-
-### <a name="azure-cli"></a>Azure CLI
-
-Az esemény előfizetni a következő parancsokat (igénylő 2.0.24 verzió vagy újabb, az Azure CLI):
-
-```azurecli-interactive
-namespaceid=$(az resource show --namespace Microsoft.EventHub --resource-type namespaces --name <your-EventHubs-namespace> --resource-group rgDataMigrationSample --query id --output tsv)
-az eventgrid event-subscription create \
-  --resource-id $namespaceid \
-  --name captureEventSub \
-  --endpoint <your-function-endpoint>
-```
+   ![Előfizetés létrehozása](media/event-grid-event-hubs-integration/set-subscription-values.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Futtassa az alkalmazást létrehozni
 
-Az event hubs, az SQL data warehouse, Azure függvény app és Eseményelőfizetés beállítása befejeződött. A megoldás készen áll a át adatokat az event hubs az adatraktárba. Mielőtt futtatná az olyan alkalmazás, amely az eseményközpont adatokat állít elő, kell néhány értékeket állíthat be.
+Az event hubs, az SQL data warehouse, Azure függvény app és Eseményelőfizetés beállításának befejezése után. A megoldás készen áll a át adatokat az event hubs az adatraktárba. Mielőtt futtatná az olyan alkalmazás, amely az eseményközpont adatokat állít elő, kell néhány értékeket állíthat be.
 
 1. A portálon válassza ki az event hub névtér. Válassza ki **kapcsolati karakterláncok**.
 
@@ -198,14 +172,14 @@ Az event hubs, az SQL data warehouse, Azure függvény app és Eseményelőfizet
 
 4. Lépjen vissza, ha a Visual Studio-projektet. A WindTurbineDataGenerator projektben nyissa meg a **program.cs**.
 
-5. Cserélje le a két konstans érték. A másolt értéket **EventHubConnectionString**. Használja az eseményközpont neveként az **EventHubName**.
+5. Cserélje le a két konstans érték. A másolt értéket **EventHubConnectionString**. Használjon **hubdatamigration** az eseményközpont neveként.
 
    ```cs
-   private const string EventHubConnectionString = "Endpoint=sb://tfdatamigratens.servicebus.windows.net/...";
+   private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. A megoldás felépítéséhez. Futtassa a WindTurbineGenerator.exe alkalmazást. Után néhány perc alatt a táblának az adatraktár az áttelepített adatok lekérdezése.
+6. Hozza létre a megoldást. Futtassa a WindTurbineGenerator.exe alkalmazást. Után néhány perc alatt a táblának az adatraktár az áttelepített adatok lekérdezése.
 
 ## <a name="next-steps"></a>További lépések
 

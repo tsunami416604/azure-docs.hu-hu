@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: baea799dbab2625e64140a565064b3c41310b4ad
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0e573b4973ea30b990043b54c5cdcf0805135a40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Példányok a tartós függvények (az Azure Functions) kezelése
 
@@ -50,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-A .NET nyelv, a függvény kimeneti kötése elindítani az új példányokat is használható. Ebben az esetben bármilyen szerializálható JSON objektum, amely rendelkezik a fenti három paraméterek mezők használható. Vegyük példaként a következő Node.js-függvény:
+A .NET nyelv, a függvény kimeneti kötése elindítani az új példányokat is használható. Ebben az esetben bármilyen szerializálható JSON objektum, amely rendelkezik a fenti három paraméterek mezők használható. Vegyük példaként a következő JavaScript-funkció:
 
 ```js
 module.exports = function (context, input) {
@@ -100,9 +100,6 @@ public static async Task Run(
 }
 ```
 
-> [!NOTE]
-> Példány lekérdezés jelenleg csak a C# orchestrator funkcióihoz támogatott.
-
 ## <a name="terminating-instances"></a>Leállítja a példányok
 
 Egy futó példány vezénylési használatával kell szüntetni a [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metódusában a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály. A két paraméter egy `instanceId` és egy `reason` karakterláncot, amely a naplókat, és a példány állapota lesz írva. A leállított példánya, amint a következő eléri le fog állni `await` pontot, vagy megszünteti az azonnal Ha már be egy `await`. 
@@ -117,9 +114,6 @@ public static Task Run(
     return client.TerminateAsync(instanceId, reason);
 }
 ```
-
-> [!NOTE]
-> Példány lezárást jelenleg csak a C# orchestrator funkcióihoz támogatott.
 
 > [!NOTE]
 > Jelenleg nem propagál példány megszüntetése. Tevékenység funkciók és alárendelt álló üzenettípusok összehangolását végrehajtása, függetlenül attól, hogy a vezénylési példány nevezett azokat le lett állítva.
@@ -146,9 +140,6 @@ public static Task Run(
     return client.RaiseEventAsync(instanceId, "MyEvent", eventData);
 }
 ```
-
-> [!NOTE]
-> Események kiváltása jelenleg csak a C# orchestrator funkcióihoz támogatott.
 
 > [!WARNING]
 > Ha nincs vezénylési példány a megadott *-példány azonosítója* , vagy ha a példány nem vár a megadott *eseménynév*, a rendszer törli az eseményüzenet. Ez a viselkedés kapcsolatos további információkért tekintse meg a [GitHub probléma](https://github.com/Azure/azure-functions-durable-extension/issues/29).

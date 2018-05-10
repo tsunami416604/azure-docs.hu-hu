@@ -14,29 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bb757ab115d03ab04dac4468d23f446696a971a9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Ország Azure CDN-tartalom korlátozása
 
 ## <a name="overview"></a>Áttekintés
-Amikor egy felhasználó alapértelmezés szerint a tartalmat igényel, függetlenül attól, ahol a felhasználó kérelmet ezt a kiszolgált a tartalmat. Bizonyos esetekben érdemes lehet a tartalmat az ország való hozzáférésének korlátozásához. Ez a témakör ismerteti, hogyan a **földrajzi-szűrés** szolgáltatás a szolgáltatás engedélyezi vagy letiltja a hozzáférést, ország konfigurálásához.
+Amikor egy felhasználó alapértelmezés szerint a tartalmat igényel, függetlenül attól, ahol a felhasználó kérelmet ezt a kiszolgált a tartalmat. Bizonyos esetekben érdemes lehet a tartalmat az ország való hozzáférésének korlátozásához. Ez a cikk ismerteti, hogyan a *földrajzi-szűrés* szolgáltatás a szolgáltatás engedélyezi vagy letiltja a hozzáférést, ország konfigurálásához.
 
 > [!IMPORTANT]
-> Verizon és Akamai termékek funkcionalitása azonos földrajzi-szűrés, de egy kis értékkülönbségeket te országhívó számokat támogatják-e. Tekintse meg a 3. lépés a különbségek mutató hivatkozást.
+> Az Azure CDN termék összes funkcionalitása azonos földrajzi-szűrés, de egy kis értékkülönbségeket te országhívó számokat támogatják-e. Tekintse meg a 3. lépés a különbségek mutató hivatkozást.
 
 
-Az ilyen korlátozásokat konfigurálására vonatkozó megfontolások kapcsolatos információkért lásd: a [szempontok](cdn-restrict-access-by-country.md#considerations) szakasz a témakör végén.  
+Az ilyen korlátozásokat konfigurálására vonatkozó megfontolások kapcsolatos információkért lásd: [szempontok](cdn-restrict-access-by-country.md#considerations).  
 
 ![Ország szerinti szűrés](./media/cdn-filtering/cdn-country-filtering-akamai.png)
 
 ## <a name="step-1-define-the-directory-path"></a>1. lépés: A könyvtár elérési útjának megadása
+> [!IMPORTANT]
+> **Az Azure CDN Standard Microsoft** profilok nem támogatják az elérési út alapú földrajzi-szűrés.
+>
+
+
 Válassza ki a végponthoz, a portálon, és ez a szolgáltatás található a bal oldali navigációs a földrajzi-szűrés lapon található.
 
-Ország szűrő konfigurálásakor meg kell adnia a relatív elérési útját, amelyhez felhasználók engedélyez vagy megtagadta a hozzáférést. Az összes fájl földrajzi-szűrés alkalmazhatja "/" vagy a kijelölt mappák elérési útjaiban "/ képek /" megadásával. Is alkalmazhat földrajzi-szűrés egyetlen fájl megadása a fájl, és a záró perjelet kihagyva "/ képek/város.png".
+Ország szűrő konfigurálásakor meg kell adnia a relatív elérési útját, amelyhez felhasználók engedélyez vagy megtagadta a hozzáférést. Kérhet földrajzi-szűrés perjellel (/) vagy a kijelölt mappák a fájlok elérési útjainak megadásával */pictures/*. Is alkalmazhat földrajzi-szűrés egyetlen fájl megadása a fájl, és a záró perjelet kihagyva */pictures/city.png*.
 
 Példa könyvtár elérési útja szűrő:
 
@@ -60,10 +65,13 @@ A szabály az blokkolás /Photos/Strasbourgban/például fájlok például szűr
 
 
 ### <a name="country-codes"></a>Országkódok
-A **földrajzi-szűrés** szolgáltatás országhívó számokat használ, amelyből a kérelem fogja engedélyezett vagy letiltott biztonságos könyvtár országok meghatározására. Megtalálja az ország kódok [Azure CDN országhívószámok](https://msdn.microsoft.com/library/mt761717.aspx). 
+A földrajzi-szűrés szolgáltatás országhívó számokat használ, amelyből a kérelem fogja engedélyezett vagy letiltott biztonságos könyvtár országok meghatározására. Bár az összes Azure CDN termék funkcionalitása azonos földrajzi-szűrés, nincs az országhívószámok támogatják-e kis eltérőek lesznek. További információ: [Azure CDN országhívószámok](https://msdn.microsoft.com/library/mt761717.aspx). 
 
-## <a id="considerations"></a>Szempontok
-* Verizon vagy néhány percig Akamai, a szűrés konfigurálásának életbelépéséhez országa 90 percig is eltarthat.
+## <a name="considerations"></a>Megfontolandó szempontok
+* Közvetlenül a ország szűrési konfigurációjának módosításai nem lépnek érvénybe:
+   * A **Azure CDN Standard Microsoft** -profilok propagálása általában befejezi tíz perc múlva. 
+   * A **Azure CDN Standard Akamai** -profilok propagálása általában befejezi egy percen belül. 
+   * A **Azure CDN Standard verizon** és **verizon Azure CDN Premium** -profilok propagálása általában befejezi 90 percen belül.  
 * Ez a funkció nem támogatja a helyettesítő karakterek (például "*").
 * A földrajzi-szűrés konfigurációs társított a következő relatív elérési út rekurzív módon alkalmazza lesz.
 * Csak egy szabály alkalmazhatja a azonos relatív elérési (nem hozható létre több ország szűrőket, amelyek ugyanazt az relatív elérési utat. Azonban a mappa több országban szűrő állhat. Ez az ország szűrők rekurzív jellemzői miatt. Más szóval a korábban konfigurált mappa almappája más országban szűrő rendelhetők.

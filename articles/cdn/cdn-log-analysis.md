@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: rli; v-deasim
-ms.openlocfilehash: 3f475c5cc9b766ea9aa5bd39d4a378e8deed5e35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 61fbe6e29df787048a9694138d3c9095f5cba76b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Az Azure CDN használati mintáinak elemzése
 
@@ -26,7 +26,7 @@ Miután engedélyezte a CDN az alkalmazáshoz, CDN megfigyeléséhez, ellenőriz
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplók keresztül egyszerűsített analitika
 
-Egyszerűsített analitika Akamai (normál) CDN-profilok és Verizon (Standard és prémium) tartozó összes CDN-végpontok érhető el. Az Azure diagnosztikai naplóihoz egyszerűsített analitika az Azure storage, az event hubs vagy Naplóelemzési exportálni. A Naplóelemzési egy grafikonon, amelyek a felhasználó által konfigurálható és testre szabható megoldást kínál. További információkért lásd: [Azure diagnosztikai naplók](cdn-azure-diagnostic-logs.md).
+Egyszerűsített analitika összes tarifacsomagok CDN-végpontok érhető el. Az Azure diagnosztikai naplóihoz egyszerűsített analitika az Azure storage, az event hubs vagy Azure Naplóelemzés exportálni. Az Azure Naplóelemzés egy grafikonon, amelyek a felhasználó által konfigurálható és testre szabható megoldást kínál. Az Azure diagnosztikai naplók kapcsolatos további információkért lásd: [Azure diagnosztikai naplók](cdn-azure-diagnostic-logs.md).
 
 ## <a name="verizon-core-reports"></a>Verizon core jelentések
 
@@ -36,7 +36,7 @@ Az Azure CDN-felhasználóként egy **Azure CDN Standard verizon** vagy **verizo
 
 Az Azure CDN-felhasználóként egy **Azure CDN Standard verizon** vagy **verizon Azure CDN Premium** profil, Verizon egyéni jelentések megtekintéséhez a Verizon kiegészítő portálon. Verizon egyéni jelentések keresztül érhető el a **kezelése** lehetőséget az Azure portálról. A szegély Azure CDN-profilhoz tartozó CName az Verizon egyéni jelentések lapon látható minden egyes átvitt találatok vagy adatok száma. Az adatok HTTP-válasz kódja vagy gyorsítótár állapot szerint csoportosíthatók bármely meghatározott időtartamra vonatkozóan. További információkért lásd: [egyéni jelentések verizon](cdn-verizon-custom-reports.md).
 
-## <a name="verizon-premium-reports"></a>Verizon premium jelentések
+## <a name="azure-cdn-premium-from-verizon-reports"></a>Verizon Azure CDN Premium jelentések
 
 A **verizon Azure CDN Premium**, az alábbi jelentések is elérhető:
    * [Speciális HTTP-jelentések](cdn-advanced-http-reports.md)

@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 12/08/2016
-ms.openlocfilehash: e871fa8cd2228067b3a1511b74ff7a425d1dc9fe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 86260e1929e8bd5c31682ef7f59cacae19a66020
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Azure Search-index létrehozása REST API használatával
 > [!div class="op_single_selector"]
@@ -83,12 +83,12 @@ Vegye figyelembe, hogy az indexben csakis egy `Edm.String` típusú mező lehet 
 A fenti indexdefiníció egy nyelvi elemzőt használ a `description_fr` mező esetében, mivel annak francia nyelvű szöveget kell tartalmaznia. A nyelvi elemzőkkel kapcsolatos további információkért lásd a [Nyelvi támogatás című témakört](https://docs.microsoft.com/rest/api/searchservice/Language-support), valamint a vonatkozó [blogbejegyzést](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
 ## <a name="issue-the-http-request"></a>A HTTP-kérelem küldése
-1. Az indexdefiníció kérelemtörzsként való használatához küldjön egy HTTP POST-kérelmet az Azure Search szolgáltatásvégpontjának URL-címére. Ügyeljen arra, hogy az URL-címben a szolgáltatásnevet használja állomásnévként, és hogy a megfelelő `api-version` szerepeljen a lekérdezési karakterlánc paraméterként (a dokumentum közzétételének időpontjában az aktuális API-verzió a `2016-09-01`).
+1. Az indexdefiníció kérelemtörzsként való használatához küldjön egy HTTP POST-kérelmet az Azure Search szolgáltatásvégpontjának URL-címére. Ügyeljen arra, hogy az URL-címben a szolgáltatásnevet használja állomásnévként, és hogy a megfelelő `api-version` szerepeljen a lekérdezési karakterlánc paraméterként (a dokumentum közzétételének időpontjában az aktuális API-verzió a `2017-11-11`).
 2. A kérelem fejlécében a `Content-Type` számára adja meg az `application/json` beállítást. Az `api-key` fejlécben is meg kell adni a szolgáltatás I. lépésben azonosított adminisztrációs kulcsát.
 
 Az alábbi kérelem küldéséhez meg kell adnia a saját szolgáltatásnevét és API-kulcsát:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [api-key]
 
@@ -97,7 +97,7 @@ Ha a kérelem sikeres, a 201-es állapotkód (Létrehozva) jelenik meg. További
 
 Miután végzett az index használatával, és törölni szeretné, csak küldjön egy HTTP DELETE kérelmet. A „hotels” nevű index például a következőképpen törölhető:
 
-    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2016-09-01
+    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11
     api-key: [api-key]
 
 

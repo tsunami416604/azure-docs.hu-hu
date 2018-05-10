@@ -3,7 +3,7 @@ title: Alkalmazás-hozzárendelés Azure Application insightsban |} Microsoft Do
 description: Az alkalmazás-hozzárendelés rendelkező összetett alkalmazás topológiák figyelése
 services: application-insights
 documentationcenter: ''
-author: SoubhagyaDash
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: mbullwin
-ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: mbullwin; Soubhagya.Dash
+ms.openlocfilehash: a02d345c0f624f2d1694b4b9622bf3c82c009429
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Osztályozhatja elosztott alkalmazások
 Alkalmazás-hozzárendelés segít direkt szűk keresztmetszetek vagy hiba csatlakozási pontokhoz termékcsalád összes tagjára vonatkozó az elosztott alkalmazás. Minden csomópont a térképen képviseli, alkalmazás-összetevő, illetve annak függőségeit; és KPI állapot és riasztások állapotát. Kattintva keresztül valamelyik összetevő a részletesebb diagnosztikai, például az Application Insights események. Ha az alkalmazás Azure-szolgáltatásokat használja, akkor is átkattintással is Azure Diagnostics, például az SQL Database Advisor-javaslatokra.

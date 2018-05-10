@@ -1,10 +1,26 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 103cdd24ca5f47ee12196cd153d528f19bb35b20
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Az eszközök internetes hálózatát biztonsági másolatot az alapoktól
 
 A az eszközök internetes hálózatát (IoT) működő vállalkozásoknak világszerte egyedi biztonsági, adatvédelmi és megfelelőségi kihívást jelent. Hagyományos számítógépes technológia, ahol a problémák szoftver, és hogyan megvalósított köré szerveződik, eltérően IoT vonatkozik, mi történik, ha a számítógépes és a fizikai világot átszervezését. Az IoT-megoldások védelmét biztosítja az eszközöket, ezek az eszközök és a felhőben és a feldolgozás és a tárolás során a felhőben biztonságos adatvédelem közötti biztonságos kapcsolat biztonságos kiépítése igényel. Eszközök fejlesztésének ilyen funkció, azonban a következők erőforrás-korlátozott eszközök, központi telepítések földrajzi eloszlása, és számos olyan megoldást belüli eszközök.
 
-Ez a cikk ismerteti, hogyan a Microsoft Azure IoT Suite biztonságban az eszközök internetes hálózatát felhőmegoldást biztosít. Az Azure IoT Suite egy teljes végpont megoldás az alapoktól minden szakaszban beépített biztonsági nyújt. A Microsoft fejlesztett biztonságos szoftver része a szoftver mérnöki gyakorlat, feltört eszköz, a Microsoft évtizedekben hosszú élménye biztonságos szoftver fejlesztése. Ennek biztosítására, biztonságos fejlesztési Életciklussal (SDL) eligazodást fejlesztési módszert, az infrastruktúra-szintű biztonsági szolgáltatásokat, például működési biztonsági megbízhatósági (OSA) és a Microsoft digitális milyen egység, Microsoft rengeteg alapján kialakulhat Security Response Center, és a Microsoft Malware Protection Center.
+Ez a cikk ismerteti, hogyan az IoT-megoldás gyorsítók biztonságban az eszközök internetes hálózatát felhőalapú megoldást nyújt. A megoldás gyorsítók egy teljes végpont megoldás az alapoktól minden szakaszban beépített biztonsági biztosításához. A Microsoft fejlesztett biztonságos szoftver része a szoftver mérnöki gyakorlat, feltört eszköz, a Microsoft évtizedekben hosszú élménye biztonságos szoftver fejlesztése. Ennek biztosítására, biztonságos fejlesztési Életciklussal (SDL) eligazodást fejlesztési módszert, az infrastruktúra-szintű biztonsági szolgáltatásokat, például működési biztonsági megbízhatósági (OSA) és a Microsoft digitális milyen egység, Microsoft rengeteg alapján kialakulhat Security Response Center, és a Microsoft Malware Protection Center.
 
-Az Azure IoT Suite egyedi funkciókat nyújtja, hogy ellenőrizze a kiépítési, csatlakozik, és az egyszerű és átlátható az IoT-eszközökről származó adatok tárolja, és minden, a legtöbb biztonságáról. Ez a cikk megvizsgálja-e az Azure IoT Suite funkciókat, és a központi telepítési stratégiák biztonsági, adatvédelmi és megfelelőségi kihívást biztosításához tárgyalja.
+A megoldás gyorsítók egyedi lehetőségeket kínálunk, hogy ellenőrizze a kiépítési, csatlakozik, és az egyszerű és átlátható az IoT-eszközökről származó adatok tárolja, és minden, a legtöbb biztonságáról. Ez a cikk az Azure IoT-megoldás gyorsítók funkciókat megvizsgálja, és a központi telepítési stratégiák biztonsági, adatvédelmi és megfelelőségi kihívást biztosításához tárgyalja.
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -26,17 +42,17 @@ A Microsoft Azure biztosít egy teljes felhőalapú megoldáson, egyet, amely eg
 
 A Microsoft systems adja meg, folyamatos behatolásérzékelési és megelőzési, szolgáltatás támadás megelőzése, rendszeres behatolás tesztelése és törvényszéki eszközök, amelyek segítenek azonosítani és elhárítani a fenyegetéseket. [A multi-factor authentication](../articles/active-directory/authentication/multi-factor-authentication.md) végfelhasználók hozzáférhessenek a hálózati biztonsági további réteget biztosít. Valamint az alkalmazás és a gazdagép-szolgáltató, a Microsoft hozzáférés-vezérlés, figyelés, kártevőirtó, biztonsági rések keresése, javítások és konfigurációkezelés.
 
-A Microsoft Azure IoT Suite kihasználja a biztonsági és adatvédelmi épített biztonságos fejlesztési és az összes Microsoft szoftver művelet SDL és OSA folyamatok együtt az Azure platformon. Ezekkel az eljárásokkal infrastruktúra védelme, hálózatvédelmi és alapvető biztonsági megoldások identitás- és felügyeleti funkciókat biztosítanak.
+A megoldás gyorsítók biztonsági és adatvédelmi biztonságos fejlesztési és az összes Microsoft szoftver művelet SDL és OSA folyamatok együtt az Azure platformon épített előnyeit. Ezekkel az eljárásokkal infrastruktúra védelme, hálózatvédelmi és alapvető biztonsági megoldások identitás- és felügyeleti funkciókat biztosítanak.
 
-A [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) belül a [IoT Suite](../articles/iot-suite/iot-suite-what-is-azure-iot.md) teljes körűen felügyelt szolgáltatást, amely lehetővé teszi az IoT-eszközök és az Azure-szolgáltatások közötti megbízható és biztonságos kétirányú kommunikáció például [ Az Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) és [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) eszközönkénti hitelesítő adatokat és a hozzáférés-vezérlés használatával.
+A [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) belül a [IoT-megoldás gyorsítók](../articles/iot-suite/iot-suite-what-is-azure-iot.md) teljes körűen felügyelt szolgáltatást, amely lehetővé teszi, mint az IoT-eszközök és az Azure-szolgáltatások közötti megbízható és biztonságos kétirányú kommunikáció [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) és [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) eszközönkénti hitelesítő adatokat és a hozzáférés-vezérlés használatával.
 
-A biztonság és adatvédelem az Azure IoT Suite épített legjobb kommunikációhoz, ez a cikk a három elsődleges biztonsági területre suite megszakad.
+A biztonság és adatvédelem az Azure IoT-megoldás gyorsítók épített legjobb kommunikációhoz, ez a cikk a három elsődleges biztonsági területre suite megszakad.
 
-![Azure IoT Suite](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
+![Azure IoT-megoldástámogatók](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>Kiépítés biztonságos eszköz és a hitelesítés
 
-Az Azure IoT Suite titkosítja az eszközök, amíg azok ki a mezőben egy egyedi identitása kulcs az egyes eszközök, bár ez a művelet az eszköz kommunikáljon az IoT-infrastruktúra által felhasználható megadásával. A folyamat gyorsan és egyszerűen állíthat be. A felhasználó által kiválasztott eszközazonosítójú létrehozott kulcs az eszköz és az Azure IoT Hub közötti összes kommunikáció során használt jogkivonat alapját.
+A megoldás gyorsítók biztonságos eszközök amikor ki a mezőben egy egyedi identitása kulcs az egyes eszközök, bár ez a művelet az eszköz kommunikáljon az IoT-infrastruktúra által felhasználható megadásával. A folyamat gyorsan és egyszerűen állíthat be. A felhasználó által kiválasztott eszközazonosítójú létrehozott kulcs az eszköz és az Azure IoT Hub közötti összes kommunikáció során használt jogkivonat alapját.
 
 Eszköz azonosítóját (amely Flash van, memóriájában rögzített hardver megbízhatósági modulban) gyártási lehet eszközhöz társított, vagy használhat egy meglévő rögzített identity (például CPU sorozatszámokat) proxyként. Mivel a módosítása a azonosító adatokat az eszköz nem egyszerű, fontos bevezetni logikai eszköz azonosítóját, abban az esetben, ha az alapul szolgáló eszköz hardvermódosításokat, de a logikai eszköz változatlan marad. Bizonyos esetekben egy eszközidentitás társítását fordulhat elő, eszköz központi telepítéskor (például egy hitelesített mező mérnököt fizikailag konfigurálja egy új eszközt a megoldás háttéralkalmazással való kommunikáció során.). A [Azure IoT Hub identitásjegyzékhez](../articles/iot-hub/iot-hub-devguide.md) eszköz identitások és a biztonsági kulcsok megoldás biztonságos tárolására szolgál. Személy vagy eszköz identitások csoportok felveheti egy engedélyezési lista vagy egy tiltólista engedélyezése a teljes felügyeletet gyakorolhat az eszközök elérést.
 
@@ -64,9 +80,9 @@ Kapcsolat további biztonsági szolgáltatások a következők:
 
 ### <a name="secure-processing-and-storage-in-the-cloud"></a>Biztonságos feldolgozása és tárolása a felhőben
 
-A titkosított kommunikáció feldolgozási adatok a felhőben az Azure IoT Suite segít a biztonságos. További titkosítási és a biztonsági kulcsok kezelése végrehajtásához rugalmasságot biztosít.
+A titkosított kommunikáció a felhőben tárolt adatainak feldolgozását a a megoldás gyorsítók adatok biztonsága érdekében. További titkosítási és a biztonsági kulcsok kezelése végrehajtásához rugalmasságot biztosít.
 
-Azure Active Directory (AAD) használ a felhasználói hitelesítés és engedélyezés, Azure IoT Suite biztosíthat egy csoportházirend-alapú engedélyezési modellt az adatok a felhőben naplózva, és tekintse át, mennyire egyszerű a hozzáférés felügyeletének engedélyezésére. Ez a modell is lehetővé teszi, hogy a felhőben tárolt adatainak eléréséhez, valamint az Azure IoT Suite csatlakoztatott eszközök szinte azonnali visszavonás.
+Azure Active Directory (AAD) használ a felhasználói hitelesítés és engedélyezés, a Azure IoT-megoldás gyorsítók egy csoportházirend-alapú engedélyezési modellt az adatok a felhőben naplózva, és tekintse át, mennyire egyszerű a hozzáférés felügyeletének engedélyezésére biztosíthat. Ez a modell is lehetővé teszi, hogy a felhőben tárolt adatainak eléréséhez, valamint az Azure IoT-megoldás gyorsítók csatlakoztatott eszközök szinte azonnali visszavonás.
 
 Ha adatok a felhőben, feldolgozni, és bármely felhasználó által definiált munkafolyamat tárolja. Minden az adatok egy részét a hozzáférést az Azure Active Directoryval, attól függően, hogy a társzolgáltatás használt vezérlik.
 
@@ -76,11 +92,11 @@ Az IoT-infrastruktúra által használt összes kulcs váltása abban az esetben
 
 Az eszközök internetes hálózatát kezdődik-e a dolgok – a legfontosabb dolgokról szolgáltatnak a vállalkozások számára. Az IoT biztosíthat elképesztő érték üzleti költségek csökkentése, árbevétel növelését, és üzleti átalakítása. Sikerült az átalakítás nagymértékben függ a megfelelő IoT szoftver és szolgáltatás szolgáltató kiválasztásához. Ez azt jelenti, hogy olyan szolgáltatót, amely nem csak az átalakítás által az üzleti igények ismertetése és követelmények catalyzes, de emellett a szolgáltatások és szoftverek biztonsági, adatvédelmi, átláthatóság és megfelelőségi fő tervezési megfontolások a következővel keresése. A Microsoft szerzett, kiterjedt tapasztalatunkat fejlesztésük és biztonságos szoftverek és szolgáltatások telepítése és egy vezető továbbra is az új élettartamát az eszközök internetes hálózatát.
 
-A Microsoft Azure IoT Suite hoz létre a biztonsági intézkedéseket úgy lett kialakítva, javíthatják a hatékonyságukat, meghajtó működési teljesítmény innováció engedélyezése, és a speciális elemzés vállalatok átalakítására alkalmaz az eszközök biztonságos figyelés engedélyezése. A réteges megközelítésének biztonsági, több biztonsági funkcióiról és kialakítási minta felé, az Azure IoT Suite segítségével olyan infrastruktúra, amely megbízható átalakítását, minden üzleti telepítése.
+A megoldás gyorsítók hozhat létre biztonsági intézkedéseket a Tervező, eszközök javíthatják a hatékonyságukat, biztonságos figyelés engedélyezése meghajtó működési teljesítmény innováció engedélyezése, és a speciális elemzés alkalmaz átalakítására vállalatok számára. A réteges megközelítésének biztonsági, több biztonsági szolgáltatásokat és kialakítási minta felé, és a megoldás gyorsítók súgó olyan infrastruktúra, amely megbízható átalakítását, minden üzleti telepítése.
 
 ## <a name="additional-information"></a>További információ
 
-Minden Azure IoT Suite előkonfigurált megoldás, mint a Azure services példányát hozza létre:
+Minden egyes megoldásgyorsító létrehozza Azure-szolgáltatáshoz, például:
 
 * [**Az Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): az átjáró a felhőben csatlakozó eszközöket. Eszköz hitelesítést támogató segít a megoldás biztonságos hub és a folyamat nagy mennyiségű adatot kapcsolatok több millió méretezheti.
 * [**Az Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): egy méretezhető, teljes mértékben indexelt dokumentumadatbázis-szolgáltatás, amely felügyeli az eszközök metaadatok félig strukturált adatok ellátásához, például az attribútumokat, a konfiguráció és a biztonsági tulajdonságait. Azure Cosmos DB nagy teljesítményű és nagy átviteli feldolgozás, a séma-független indexelő adatokat, és egy részletes SQL-lekérdezési felületet kínál.

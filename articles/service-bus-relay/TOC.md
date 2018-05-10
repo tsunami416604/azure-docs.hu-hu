@@ -8,8 +8,10 @@
 ## [Névtér létrehozása](relay-create-namespace-portal.md)
 ## [Hibrid helyszíni/felhőbeli alkalmazás létrehozása](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hibrid kapcsolatok
-### [.NET](relay-hybrid-connections-dotnet-get-started.md)
-### [Node](relay-hybrid-connections-node-get-started.md)
+### [.NET WebSocketek](relay-hybrid-connections-dotnet-get-started.md)
+### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+### [Node.js WebSocketek](relay-hybrid-connections-node-get-started.md)
+### [Node.js HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
 ## [WCF-továbbító](relay-wcf-dotnet-get-started.md)
 ## [Útmutató a WCF-továbbítóhoz](service-bus-relay-tutorial.md)
 ## [WCF Relay REST oktatóanyag](service-bus-relay-rest-tutorial.md)

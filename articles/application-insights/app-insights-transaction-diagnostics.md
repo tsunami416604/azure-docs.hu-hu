@@ -1,22 +1,22 @@
 ---
-title: "Az Azure Application Insights tranzakció diagnosztika |} Microsoft Docs"
-description: "Application Insights-végpontok közötti tranzakció diagnosztika"
+title: Az Azure Application Insights tranzakció diagnosztika |} Microsoft Docs
+description: Application Insights-végpontok közötti tranzakció diagnosztika
 services: application-insights
 documentationcenter: .net
-author: SoubhagyaDash
-manager: victormu
+author: mrbullwinkle
+manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: sdash
-ms.openlocfilehash: 1c7eaafe99717324ad03287a1f1e0699d77cc74f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: mbullwin;sdash
+ms.openlocfilehash: 7a4e4f74c02358fc117e0a66977ee3f0aef5b1dd
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített kereszt-összetevő tranzakció diagnosztika
 
@@ -80,9 +80,9 @@ Ezen az ablaktáblán látható a bal oldali vagy a két szakasz a kiválasztott
 
 [Application Insights Profilkészítő](app-insights-profiler.md) vagy [pillanatkép hibakereső](app-insights-snapshot-debugger.md) súgó a kód szintű diagnosztika a teljesítmény és meghibásodási problémákra. Ez a felület a szolgáltatásprofil-elemzői adat megjelenik, vagy kattintson a egyetlen összetevők közül bármelyik pillanatképeinek.
 
-Ha nem sikerült a Profilkészítő működik-e, lépjen kapcsolatba**serviceprofilerhelp@microsoft.com**
+Ha nem sikerült a Profilkészítő működik-e, lépjen kapcsolatba **serviceprofilerhelp@microsoft.com**
 
-Ha nem sikerült a pillanatkép-hibakereső működik-e, lépjen kapcsolatba**snapshothelp@microsoft.com**
+Ha nem sikerült a pillanatkép-hibakereső működik-e, lépjen kapcsolatba **snapshothelp@microsoft.com**
 
 ![Integráció a hibakereső](media/app-insights-e2eTxn-diagnostics/debugSnapshot.png)
 

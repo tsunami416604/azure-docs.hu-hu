@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Suite távoli figyelés – gyakori kérdések |} Microsoft Docs
-description: Gyakori kérdések a távoli felügyeleti előkonfigurált megoldás IoT Suite
+title: Távoli figyelés megoldásgyorsító – gyakori kérdések |} Microsoft Docs
+description: Gyakori kérdések a megoldásgyorsító távoli figyelése
 services: iot-suite
 suite: iot-suite
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b0d6dbb567f66537c599d7ac3e4337988b3374c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1cc260710d025428a1ca77c41c104dc172447e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-remote-monitoring-preconfigured-solution"></a>Gyakori kérdések a távoli felügyeleti előkonfigurált megoldás IoT Suite
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Gyakori kérdések a megoldásgyorsító távoli figyelése
 
 Lásd még az általános [gyakran ismételt kérdések](iot-suite-faq.md).
 
 ### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Nem mennyibe kiépíteni az új távoli figyelési megoldást igényelnek?
 
-Az új előkonfigurált megoldás két telepítési lehetőségeket nyújtja:
+Az új megoldásgyorsító két telepítési lehetőségeket nyújtja:
 
 * A *alapvető* lehetőség, a fejlesztők alacsonyabb fejlesztési költségek vagy az ügyfelek keresése bemutató vagy a koncepció igazolása keres.
 * A *szabványos* lehetőséget szeretne telepíteni egy éles használatra kész infrastruktúra vállalatok számára készült.
@@ -44,15 +44,11 @@ Telepítési lehetőségek válaszol-e a különböző igényeinek. Az alapszint
 
 További információkért lásd: [frissítési leképezés kulcs eszközök megtekintéséhez a dinamikus térképen](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Hány ingyenes Bing Térképek API-t adhatok meg egy előfizetésben?
-
-Kettőt. Az Azure-előfizetéssel csak két belső tranzakciók szintjét 1 a Bing Maps vállalati terveket hozhat létre. A távoli figyelési megoldást igényelnek a belső tranzakció szintjét 1 csomaggal alapértelmezett lett kiépítve. Ezért csak legfeljebb két távoli figyelő megoldást adhat meg a nem módosított előfizetésekben.
-
 ### <a name="next-steps"></a>További lépések
 
-Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltatásait és funkcióit is:
+Egyes más szolgáltatásait és képességeit mutatja az IoT-megoldás gyorsítók is ismerheti:
 
-* [A távoli felügyeleti előkonfigurált megoldás funkcióinak felfedezése](iot-suite-remote-monitoring-explore.md)
-* [Előre konfigurált prediktív karbantartási megoldás áttekintése](iot-suite-predictive-overview.md)
-* [Előre konfigurált csatlakoztatott gyári megoldási áttekintés](iot-suite-connected-factory-overview.md)
+* [A távoli felügyeleti megoldásgyorsító lehetőségeinek felfedezése](iot-suite-remote-monitoring-explore.md)
+* [A prediktív karbantartási megoldás gyorsító – áttekintés](iot-suite-predictive-overview.md)
+* [Csatlakoztatott gyári megoldás gyorsító – áttekintés](iot-suite-connected-factory-overview.md)
 * [Az IoT biztonsági másolatot az alapoktól](securing-iot-ground-up.md)

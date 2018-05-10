@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 6d783a5b36fd71fbcc020025e21aed49e8fd6e05
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -190,7 +190,7 @@ MongoDB gyakori hibakódokat mellett a MongoDB API a saját konkrét hibakódok 
 
 | Hiba               | Kód  | Leírás  | Megoldás  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | A felhasznált kérelem egységek száma a gyűjtemény a kiépített kérelem-egység arány meghaladta, és már elindította. | Fontolja meg az Azure-portálon a gyűjtemény átviteli skálázás, vagy újra próbálkozna. |
+| TooManyRequests     | 16500 | A felhasznált kérelem egységek száma a gyűjtemény a kiépített kérelem-egység arány meghaladta, és már elindította. | Vegye figyelembe, hogy a hozzárendelt egy tároló vagy egy lemezkészlet tárolók újra az Azure portál vagy újrapróbálása átviteli méretezés. |
 | ExceededMemoryLimit | 16501 | A több-bérlős szolgáltatásként a művelet túllépte az ügyfél memória allokációs arányt. | Csökkentse a műveletet az szigorúbb feltételek hatókörét, vagy forduljon a támogatási szolgálathoz a [Azure-portálon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Példa:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {név: "ADAM"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {kor: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 ## <a name="develop-with-the-table-api"></a>A tábla API fejlesztése
@@ -386,7 +386,7 @@ A tábla API Azure Table storage azonos lekérdezés funkciókat biztosít. Az A
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Mikor kell módosítani a táblázat API TableThroughput?
 TableThroughput kell módosítani, ha érvényes a következő feltételek valamelyike:
 * Helyreállítást hajt végre egy kinyerési, átalakítási és betöltési (ETL) az adatok, vagy nagy mennyiségű adat rövid időn belül feltölteni kívánt. 
-* További átviteli, a háttér-tárolójából van szüksége. Például láthatja, hogy a használt átviteli sebesség több, mint a létesített átviteli sebesség, és hogy szabályozott első. További információkért lásd: [Set átviteli az Azure Cosmos DB tárolókat](set-throughput.md).
+* További átviteli sebesség a tárolóból vagy a hátteret a konténerek kategóriára van szüksége. Például láthatja, hogy a használt átviteli sebesség több, mint a létesített átviteli sebesség, és hogy szabályozott első. További információkért lásd: [Set átviteli az Azure Cosmos DB tárolókat](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Növelheti vagy csökkentheti a teljesítményt a tábla API tábla? 
 Igen, az Azure Cosmos DB portal méretezési ablaktábla segítségével méretezhető, az átviteli sebesség. További információkért lásd: [Set átviteli](set-throughput.md).
@@ -401,7 +401,7 @@ Nincs. Nincs meglévő Azure Table storage-ügyfeleknek az ár nem változik.
 Az ár attól függ, hogy a lefoglalt TableThroughput. 
 
 ### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Hogyan kezelik, a sávszélesség-szabályozás a táblák tábla API ajánlatban? 
-Ha a kérelmek aránya meghaladja a létesített átviteli sebesség a mögöttes tároló kapacitását, hibaüzenetet kap, és az SDK újrapróbálkozik a hívás úgy, hogy az újrapróbálkozási házirendet alkalmazza.
+Ha a kérelem meghaladja a kapacitását a létesített átviteli sebesség a mögöttes tároló vagy egy tárolók, hibaüzenetet kap, és az SDK újrapróbálkozik a hívás úgy, hogy az újrapróbálkozási házirendet alkalmazza.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Miért kell választania egy átviteli sebesség előnyeit az Azure Cosmos DB tábla API elérhető PartitionKey és RowKey?
 Azure Cosmos-adatbázis a egy alapértelmezett átviteli sebesség a tároló beállítja, ha nem ad meg az app.config fájlban, illetve a portálon. 

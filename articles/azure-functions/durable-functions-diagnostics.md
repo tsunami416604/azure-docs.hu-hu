@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4829ea88e0b6507159c192c111acf8ec7e5088e2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnosztika a tartós funkciók (az Azure Functions)
 
@@ -28,7 +28,7 @@ Több lehetőség a problémák diagnosztizálásával [tartós funkciók](durab
 
 [Az Application Insights](../application-insights/app-insights-overview.md) ennek a diagnosztikai és a felügyelet az Azure Functions ajánlott módja. Ugyanez érvényes a tartós funkciók. Megtudhatja, hogyan használhatók ki az Application Insights az függvény alkalmazásban, [figyelése az Azure Functions](functions-monitoring.md).
 
-Az Azure Functions tartós bővítmény is bocsát ki *nyomon követés* Ez lehetővé teszi annak nyomon követése az orchestration-végpontok közötti végrehajtása. Ezek található, és megkérdezi a használatával a [Application Insights Analytics](../application-insights/app-insights-analytics.md) eszköz az Azure portálon.
+Az Azure Functions tartós bővítmény is bocsát ki *nyomon követés* , amelyek lehetővé teszik az orchestration-végpontok közötti végrehajtása nyomon követését. Ezek található, és megkérdezi a használatával a [Application Insights Analytics](../application-insights/app-insights-analytics.md) eszköz az Azure portálon.
 
 ### <a name="tracking-data"></a>Nyomon követési adatok
 
@@ -68,7 +68,7 @@ Az Application Insights részére kibocsátott adatokról nyilvántartásával r
 
 Alapértelmezés szerint minden nyomkövetési események kibocsátott. Az adatok mennyisége csökkenthető úgy, hogy `Host.Triggers.DurableTask` való `"Warning"` vagy `"Error"` ebben az esetben nyomon követés fog csak kell kibocsátott kivételes helyzetekben.
 
-> [!WARNING]
+> [!NOTE]
 > Alapértelmezés szerint az Application Insights telemetria által az Azure Functions futtatókörnyezettel adatok túl gyakran kibocsátó elkerülése érdekében mintát venni. Ennek hatására a nyomon követési adatok elveszhetnek, rövid idő alatt sok életciklus-események előfordulásakor. A [Azure Functions figyelési cikk](functions-monitoring.md#configure-sampling) Ez a viselkedés konfigurálását ismerteti.
 
 ### <a name="single-instance-query"></a>Egypéldányos lekérdezés
@@ -124,6 +124,8 @@ A példány azonosítók listáját és azok futási állapotának eredménye.
 
 Fontos, az orchestrator ismétlési viselkedés szem előtt tartani naplók közvetlenül az orchestrator függvényből írásakor. Vegyük példaként a következő orchestrator-funkció:
 
+#### <a name="c"></a>C#
+
 ```cs
 public static async Task Run(
     DurableOrchestrationContext ctx,
@@ -137,6 +139,22 @@ public static async Task Run(
     await ctx.CallActivityAsync("F3");
     log.Info("Done!");
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context){
+    context.log("Calling F1.");
+    yield context.df.callActivityAsync("F1");
+    context.log("Calling F2.");
+    yield context.df.callActivityAsync("F2");
+    context.log("Calling F3.");
+    yield context.df.callActivityAsync("F3");
+    context.log("Done!");
+});
 ```
 
 Az eredményül kapott naplóadatokat kinéznie a következőhöz hasonló lesz:
@@ -182,6 +200,49 @@ Calling F3.
 Done!
 ```
 
+> [!NOTE]
+> A `IsReplaying` tulajdonság még nem érhető el a JavaScript.
+
+## <a name="custom-status"></a>Egyéni állapota
+
+Egyéni vezénylési állapot lehetővé teszi az orchestrator-függvény egyéni állapot értékének beállítása. A HTTP-állapot lekérdezés API biztosítja az állapot vagy a `DurableOrchestrationClient.GetStatusAsync` API. Egyéni vezénylési állapota lehetővé teszi, hogy az orchestrator funkciók gazdagabb figyelését. Például az orchestrator függvény kódot tartalmazhatnak `DurableOrchestrationContext.SetCustomStatus` hívások frissítése hosszú futású művelet előrehaladását. Egy ügyfél, például egy weblap vagy más külső rendszer, majd lekérdezhet rendszeresen gazdagabb végrehajtási adatok HTTP-állapot lekérdezés API-k. A minta használata `DurableOrchestrationContext.SetCustomStatus` lejjebb tekinthetők meg:
+
+```csharp
+public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
+{
+    // ...do work...
+
+    // update the status of the orchestration with some arbitrary data
+    var customStatus = new { completionPercentage = 90.0, status = "Updating database records" };
+    ctx.SetCustomStatus(customStatus);
+
+    // ...do more work...
+}
+```
+
+A vezénylési futása közben, a külső ügyfelek lehet beolvasni az egyéni állapotát:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/instance123
+
+```
+
+Az ügyfelek a következő válasz jelenik meg: 
+
+```http
+{
+  "runtimeStatus": "Running",
+  "input": null,
+  "customStatus": { "completionPercentage": 90.0, "status": "Updating database records" },
+  "output": null,
+  "createdTime": "2017-10-06T18:30:24Z",
+  "lastUpdatedTime": "2017-10-06T19:40:30Z"
+}
+```
+
+> [!WARNING]
+>  Az egyéni adattartalom korlátozódik a 16 KB-os UTF-16 JSON-szöveg, mert fel kell tudni az Azure Table Storage oszlop elfér. Külső tárolót is használhatja, ha nagyobb payload van szüksége.
+
 ## <a name="debugging"></a>Hibakeresés
 
 Függvény kód hibakereséséhez közvetlenül az Azure Functions támogatja, és azonos támogató hordoz magában, ha előre tartós funkciók, hogy az Azure-beli vagy helyi. Van azonban néhány konfigurációk határozhatják meg kell ügyelnie, ha hibakeresési:
@@ -193,7 +254,7 @@ Függvény kód hibakereséséhez közvetlenül az Azure Functions támogatja, �
 > [!TIP]
 > Beállításakor töréspontok, ha azt szeretné, csak hibájához nem ismétlési végrehajtásakor, beállíthat feltételes töréspont adott oldaltörések csak akkor, ha `IsReplaying` van `false`.
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 Alapértelmezés szerint a tartós funkciók tárolja az Azure Storage állapotát. Ez azt jelenti, hogy a álló eszközökkel, például a üzenettípusok összehangolását állapotának vizsgálhatja [Microsoft Azure Tártallózó](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

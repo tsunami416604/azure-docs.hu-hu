@@ -1,13 +1,13 @@
 ---
-title: "A csatlakoztatott gyári megoldás - Azure testreszabása |} Microsoft Docs"
-description: "Az előre konfigurált csatlakoztatott gyári megoldás beállításainak testreszabása leírását."
-services: 
+title: A csatlakoztatott gyári megoldás - Azure testreszabása |} Microsoft Docs
+description: Hogyan szabhatja testre a csatlakoztatott gyári megoldásgyorsító viselkedésének leírása.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: c#
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 48c8036d0bc9534ce94529b96d32b004769246c1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5d074a5cf0dd5191b5d94531068341ad1b953391
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Testre szabhatja, hogy a csatlakoztatott gyári megoldás OPC EE-kiszolgálóinak adatait jeleníti meg
 
-A csatlakoztatott gyári megoldás összesíti, és a megoldás kapcsolódó OPC EE-kiszolgálók adatait jeleníti meg. Keresse meg, és parancsainak elküldését a OPC EE-kiszolgálók a megoldásban. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md) fejezetben talál további információt.
+A csatlakoztatott gyári megoldás összesíti, és a megoldás kapcsolódó OPC EE-kiszolgálók adatait jeleníti meg. Keresse meg, és parancsainak elküldését a OPC EE-kiszolgálók a megoldásban. OPC EE kapcsolatos további információkért tekintse meg a [csatlakoztatott gyári gyakran ismételt kérdések](iot-suite-faq-cf.md).
 
 Összesített adatai a megoldás például a teljes berendezések hatékonyságát (OEE) és fő teljesítménymutatók (KPI-k), megtekinthető az irányítópulton a gyári, a sor és az állomás szintjén. Az alábbi képernyőfelvételen látható OEE és KPI értékeit a **szerelvény** állomás, a **termelési sor 1**, a a **München** gyári:
 
@@ -65,14 +65,14 @@ A csatlakoztatott OPC EE-kiszolgáló küldhet a megoldás az irányítópulton 
 
 ## <a name="map-the-data"></a>Az adatok leképezése
 
-A csatlakoztatott gyári megoldás le, és a közzétett adatelemeket összesíti a OPC EE-kiszolgálóról a különböző nézetek a megoldásban. Ha a megoldás a csatlakoztatott gyári megoldás központilag telepíti az Azure-fiókjával. A JSON-fájl, a Visual Studio csatlakoztatott gyári megoldásban ez leképezési információkat tárolja. Megtekintheti és módosíthatja a Visual Studio megoldás a csatlakoztatott gyárban JSON-konfigurációs fájlt. A módosítást követően központilag telepítheti a megoldás.
+A csatlakoztatott gyári megoldás le, és a közzétett adatelemeket összesíti a OPC EE-kiszolgálóról a különböző nézetek a megoldásban. Ha a megoldás a csatlakoztatott gyári megoldás központilag telepíti az Azure-fiókjával. A JSON-fájl, a Visual Studio csatlakoztatott gyári megoldásban ez leképezési információkat tárolja. Megtekintheti és módosíthatja a JSON-konfigurációs fájlt a csatlakoztatott gyári Visual Studio-megoldásban. A módosítást követően központilag telepítheti a megoldás.
 
 A konfigurációs fájlt is használhatja:
 
 - A meglévő szimulált előállítók, éles sorok és állomások szerkesztése.
 - Valós OPC EE-kiszolgálókhoz, amelyek a megoldással az adatok leképezése.
 
-Leképezési, és az adatokat az adott igényeknek összesítése kapcsolatos további információkért lásd: [konfigurálása a csatlakoztatott gyári előre konfigurált megoldás ](iot-suite-connected-factory-configure.md).
+Leképezési, és az adatokat az adott igényeknek összesítése kapcsolatos további információkért lásd: [konfigurálása a csatlakoztatott gyári megoldásgyorsító ](iot-suite-connected-factory-configure.md).
 
 ## <a name="deploy-the-changes"></a>A módosítások telepítése
 
@@ -80,14 +80,14 @@ Miután végzett a módosítások elvégzése az **ContosoTopologyDescription.js
 
 A **azure iot-csatlakoztatott-gyári** tárház tartalmaz egy **build.ps1** PowerShell parancsprogram, amellyel újraépítéséhez és a megoldás üzembe helyezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a csatlakoztatott gyári előre konfigurált megoldásról elolvasni a következő cikkeket:
+További tudnivalók a kapcsolódó gyári megoldásgyorsító elolvasni a következő cikkeket:
 
-* [Előre konfigurált csatlakoztatott gyár megoldás – bemutató][lnk-rm-walkthrough]
-* [A beépített csatlakoztatott egy átjáró üzembe helyezéséhez][lnk-connect-cf]
+* [Csatlakoztatott gyári megoldás gyorsító forgatókönyv][lnk-rm-walkthrough]
+* [Telepítsen egy átjárót a beépített csatlakoztatva][lnk-connect-cf]
 * [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
-* [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md)
+* [Csatlakoztatott gyári – gyakori kérdések](iot-suite-faq-cf.md)
 * [GYAKORI KÉRDÉSEK][lnk-faq]
 
 

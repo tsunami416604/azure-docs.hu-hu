@@ -1,39 +1,40 @@
 ---
-title: "A Notification Hubs - vállalati leküldéses architektúrája"
-description: "Útmutató az Azure Notification Hubs használatával vállalati környezetben"
+title: A Notification Hubs - vállalati leküldéses architektúrája
+description: Útmutató az Azure Notification Hubs használatával vállalati környezetben
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 903023e9-9347-442a-924b-663af85e05c6
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: c626d6415a27f8495304eeaab480ab62606102ea
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: d7066b58330d35e5dba66cfe6ed5cfaddff4b68a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Útmutató a vállalati leküldési architektúrákhoz
-A vállalatok ma egyre fokozatosan áthelyezése felé létrehozása vagy az alkalmazásokat a végfelhasználók számára (külső) vagy (belső) az alkalmazottak számára. Létező háttérrendszerek helyen kell azt Nagyszámítógépek vagy néhány LoB-alkalmazások, amelyek integrálni kell a mobilalkalmazás-architektúra rendelkeznek. Ez az útmutató előadás hogyan legjobb, ha ez az integráció ajánló lehetséges megoldás a gyakori forgatókönyvek.
+A vállalatok ma egyre fokozatosan áthelyezése felé létrehozása vagy az alkalmazásokat a végfelhasználók számára (külső) vagy (belső) az alkalmazottak számára. Létező háttérrendszerek helyen kell azt Nagyszámítógépek vagy néhány LoB-alkalmazások, amelyek integrálni kell a mobilalkalmazás-architektúra rendelkeznek. Ez az útmutató hogyan legjobb, ha ez az integráció ajánló lehetséges megoldás a gyakori forgatókönyvek beszél.
 
-Gyakori követelmény van a leküldéses értesítések küldését a felhasználók számára a mobilalkalmazás keresztül, a háttér-rendszer egyik fontos esemény bekövetkezésekor. Például egy bank ügyfél, a bank banki alkalmazást az iPhone rendelkező szeretne értesítést tartozik szeretné tenni saját fiók vagy egy intranetes forgatókönyvet, ahol a pénzügyi részleg egy alkalmazott, a költségvetési jóváhagyást alkalmazások a Windows Phone rendelkező szeretné nem lehet egy bizonyos összeg felett Ha a jóváhagyási kérelem kapjuk egadott.
+Gyakori követelmény van a leküldéses értesítések küldését a felhasználók számára a mobilalkalmazás keresztül, a háttér-rendszer egyik fontos esemény bekövetkezésekor. például egy bank ügyfél, a bank banki alkalmazás iPhone rendelkező szeretne értesítést, ha tartozik egy bizonyos mennyiség a fiók vagy egy intranetes forgatókönyvet, ahol azt szeretné a pénzügyi részleg egy alkalmazott, aki rendelkezik egy költségvetési jóváhagyási alkalmazást a Windows Phone újabb  Ha értesítést szeretne kapni a jóváhagyási kérelem érkezik.
 
-A banki vagy jóváhagyási feldolgozási valószínű, hogy néhány háttérrendszer, amely egy leküldéses a felhasználónak kell kezdeményeznie végezhető. Előfordulhat, hogy több ilyen kell az összes build az eseményt akkor váltja ki egy értesítést leküldéses megvalósítási logika ugyanolyan típusú háttér rendszereket. Itt összetettségét létrejönnie egy egyetlen leküldéses rendszert, ahol lehetséges, hogy a végfelhasználók számára különböző értesítések előfizetett és még akkor is előfordulhat, például intranet mobilalkalmazások esetében több mobilalkalmazások Ha az egyik több háttérrendszerek integrálása mobilalkalmazás előfordulhat, hogy értesítést szeretne kapni a több ilyen háttérrendszerek. A háttérrendszerek nem ismeri vagy tudniuk kell, hogy leküldéses szemantikáját/technológia, így a közös megoldást-ra volt egy összetevő, amely lekérdezi a háttérrendszerek bármely események számára, és a leküldéses üzenetek küldéséért felelős bevezetni a az ügyfél.
-Itt előadás egy használó Azure Service Bus - témakört/előfizetést modell, amely csökkenti a összetettségét a megoldás méretezhető tétele közben is jobb megoldás.
+A banki vagy jóváhagyási feldolgozási valószínű, hogy néhány háttérrendszer, amely egy leküldéses a felhasználónak kell kezdeményeznie végezhető. Előfordulhat, hogy több ilyen háttér rendszerek, amelyek kell az összes build ugyanezeket a programot, majd, ha az eseményt akkor váltja ki egy értesítést. Itt összetettségét és egy egyetlen leküldéses rendszer, ahol lehetséges, hogy a végfelhasználók számára különböző értesítések előfizetett és is lehet több mobilalkalmazások több háttérrendszerek integrálása létrejönnie. Például intranet mobilalkalmazások ahol egy mobilalkalmazás előfordulhat, hogy értesítést szeretne kapni a több ilyen háttérrendszerek. A háttérrendszerek nem ismeri vagy tudniuk kell, hogy leküldéses szemantikáját/technológia, így a közös megoldást-ra volt egy összetevő, amely lekérdezi a háttérrendszerek bármely események számára, és a leküldéses üzenetek küldéséért felelős bevezetni a az ügyfél.
+
+Jobb megoldás, hogy Azure Service Bus - témakört/előfizetést modell, amely méretezhető és a megoldás csökkenti a összetettségét használja.
 
 Ez a megoldás általános architektúrájának (több mobilalkalmazásokkal általános, de egyaránt alkalmazható, ha csak egy mobilalkalmazás)
 
 ## <a name="architecture"></a>Architektúra
 ![][1]
 
-A kulcs darab a architekturális diagram Azure Service Bus, amely a témakörök/előfizetések programozási modellt biztosít (további sablonokat a [Service Bus Pub/Sub programozási]). A fogadó, amely ebben az esetben a mobil-háttéralkalmazást (általában [Azure Mobile Services mobilszolgáltatás], amely indít el a mobilalkalmazások leküldéses) kapott üzenetek közvetlenül a háttérrendszerről, de ehelyett egy köztes tudunk hardverabsztrakciós réteg által biztosított [Azure Service Bus] lehetővé teszi a mobil-háttéralkalmazást üzenetek fogadása egy vagy több háttérrendszerek. A Service Bus-témakörbe kell létrehozni az egyes a háttérrendszerek pl. fiók HR, pénzügyi, amelyek alapvetően "témakörök" iránt, amelyek indít el, leküldéses értesítést küldeni. A háttérrendszerek témákhoz üzenetet szeretne küldeni. A mobil-háttéralkalmazás kérhet le egy vagy több ilyen témakörök által a Service Bus-előfizetés létrehozása. Ez feljogosítja a mobil-háttéralkalmazást is megkapja az értesítéseket a megfelelő háttér rendszerből. Mobil-háttéralkalmazást továbbra is az üzeneteket az előfizetések és, amint egy üzenet érkezik, akkor kapcsolja vissza, és elküldi az értesítési központba értesítésként. A Notification hubs majd végül kézbesíti az üzenetet a mobilalkalmazásban. Úgy, hogy összesítse a legfontosabb összetevők, vezetünk be:
+A kulcs darab architekturális ezen a diagramon az Azure Service Bus, amely a témakörök/előfizetések programozási modellt biztosít (további sablonokat a [Service Bus Pub/Sub programozási]). A fogadó, amely ebben az esetben a mobil-háttéralkalmazást (általában [Azure Mobile Services mobilszolgáltatás], amely kezdeményezi egy leküldéses a mobilalkalmazások) kapott üzenetek közvetlenül a háttérrendszerről azonban ehelyett köztes absztrakciós réteg megadott [Azure Service Bus által, amely lehetővé teszi a mobil-háttéralkalmazást üzenetek fogadása egy vagy több háttérrendszerek. A Service Bus-témakörbe kell létrehozni minden, a háttér-rendszerek, például a fiók, a HR, a pénzügyi, amely alapvetően "témakörök" iránt, amely kezdeményezi, leküldéses értesítést küldeni. A háttérrendszerek üzenetek küldése a következő témaköröket. A mobil-háttéralkalmazás kérhet le egy vagy több ilyen témakörök által a Service Bus-előfizetés létrehozása. Feljogosítja a a mobil-háttéralkalmazást is megkapja az értesítéseket a megfelelő háttér rendszerből. Mobil-háttéralkalmazást továbbra is az üzeneteket az előfizetések és, amint egy üzenet érkezik, akkor kapcsolja vissza, és elküldi az értesítési központba értesítésként. A Notification hubs majd végül kézbesíteni az üzenetet a mobilalkalmazásban. A legfontosabb összetevők listája itt található:
 
 1. A háttérrendszerek (LoB/örökölt rendszerek)
    * Service Bus-témakörbe létrehozása
@@ -47,37 +48,37 @@ A kulcs darab a architekturális diagram Azure Service Bus, amely a témakörök
 
 ### <a name="benefits"></a>Előnyei:
 1. A fogadó (app/mobilszolgáltatás Notification Hub használatával) és a feladó (háttérrendszerek) közötti leválasztásával lehetővé teszi, hogy további háttérrendszerek integrálva van a minimális módosítása.
-2. Így a több mobilalkalmazások tudnak majd egy vagy több háttérrendszerről származó események fogadására a forgatókönyvet.  
+2. A forgatókönyv éppen egy vagy több háttérrendszerről származó események fogadására képes több mobilalkalmazásából lesz.  
 
 ## <a name="sample"></a>Minta:
 ### <a name="prerequisites"></a>Előfeltételek
-El kell végeznie az alábbi oktatóanyagok megismerkednie a fogalmakat, valamint közös létrehozása és konfigurációs lépéseket:
+Hajtsa végre az alábbi oktatóanyagok megismerkednie a fogalmakat, valamint a gyakori létrehozása a & konfigurációs lépéseket:
 
-1. [Service Bus Pub/Sub programozási] -ebben a részben működik-e a Service Bus témakörök/előfizetések, részleteit tartalmazó témakörök/előfizetésekre, a névtér létrehozása hogyan üzeneteket fogadjon & küldése.
-2. [A Notification Hubs - oktatóanyag univerzális Windows-] -ezt ismerteti, hogyan állítson be egy Windows Áruházbeli alkalmazást és regisztrálja, és ezután kapni az értesítések a Notification Hubs használatával.
+1. [Service Bus Pub/Sub programozási] -Ez az oktatóanyag azt ismerteti, működik-e a Service Bus témakörök/előfizetések, részleteit tartalmazó témakörök/előfizetésekre, a névtér létrehozása hogyan üzeneteket fogadjon & küldése.
+2. [A Notification Hubs - oktatóanyag univerzális Windows-] -Ez az oktatóanyag azt ismerteti, hogyan állítson be egy Windows Áruházbeli alkalmazást és regisztrálja, és ezután kapni az értesítések a Notification Hubs használatával.
 
 ### <a name="sample-code"></a>Mintakód
 A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három összetevővel:
 
 1. **EnterprisePushBackendSystem**
    
-    a. Ez a projekt használja a *WindowsAzure.ServiceBus* Nuget-csomag alapozva [Service Bus Pub/Sub programozási].
+    a. Ez a projekt használja a *WindowsAzure.ServiceBus* NuGet-csomag alapozva [Service Bus Pub/Sub programozási].
    
-    b. Ez az egy egyszerű C# Konzolalkalmazás egy LoB szimulálására kezdeményező a mobilalkalmazás küldendő üzenet.
+    b. Ez az alkalmazás egy egyszerű C# Konzolalkalmazás szimulálására egy LoB, amely kezdeményezi a mobilalkalmazás küldendő üzenet.
    
         static void Main(string[] args)
         {
             string connectionString =
                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
    
-            // Create the topic where we will send notifications
+            // Create the topic
             CreateTopic(connectionString);
    
             // Send message
             SendMessage(connectionString);
         }
    
-    c. `CreateTopic`létrehozásához használt a Service Bus-témakörbe ahol üzenetet küldünk.
+    c. `CreateTopic` a Service Bus-témakörbe létrehozására szolgál.
    
         public static void CreateTopic(string connectionString)
         {
@@ -92,7 +93,7 @@ A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három
             }
         }
    
-    d. `SendMessage`az üzenetek küldése a Service Bus-témakörbe szolgál. Itt azt egyszerűen küldenek véletlenszerű üzenetek készleteit a témakörhöz, rendszeres időközönként a minta céljából. Általában nem lesznek egy háttér-rendszert, amely üzenetet szeretne küldeni, ha az esemény akkor következik be.
+    d. `SendMessage` az üzenetek küldése a Service Bus-témakörbe szolgál. Ez a kód rendszeres időközönként a minta céljából a következő témakörben egyszerűen küld véletlenszerű üzenetek készleteit. Nincs szokásos módon a háttérrendszer, amely üzeneteket küld, amikor az esemény akkor következik be.
    
         public static void SendMessage(string connectionString)
         {
@@ -124,23 +125,23 @@ A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három
         }
 2. **ReceiveAndSendNotification**
    
-    a. Ez a projekt használja a *WindowsAzure.ServiceBus* és *Microsoft.Web.WebJobs.Publish* Nuget a csomagok és alapuló [Service Bus Pub/Sub programozási].
+    a. Ez a projekt használja a *WindowsAzure.ServiceBus* és *Microsoft.Web.WebJobs.Publish* NuGet a csomagok és alapuló [Service Bus Pub/Sub programozási].
    
-    b. Ez az egy másik C# konzolalkalmazást, amely jelenleg fut egy [Azure webjobs-feladat] mivel folyamatosan figyelni a LoB-/ háttérrendszerek üzeneteit futtatásához rendelkezik. Ez a mobil-háttéralkalmazást része lesz.
+    b. A következő Konzolalkalmazás fut egy [Azure webjobs-feladat] mivel folyamatosan figyelni a LoB-/ háttérrendszerek üzeneteit futtatásához rendelkezik. Ez az alkalmazás a mobil-háttéralkalmazást részét képezi.
    
         static void Main(string[] args)
         {
             string connectionString =
                      CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
    
-            // Create the subscription which will receive messages
+            // Create the subscription that receives messages
             CreateSubscription(connectionString);
    
             // Receive message
             ReceiveMessageAndSendNotification(connectionString);
         }
    
-    c. `CreateSubscription`segítségével hozzon létre egy Service Bus-előfizetést, a témakör ahol a háttérrendszer fog üzeneteket küldeni. Attól függően, hogy az üzleti terület Ez az összetevő hoz létre egy vagy több előfizetés (pl. néhány lehetséges, hogy lehet üzenetek fogadása HR rendszer, egyes pénzügyi rendszer, és így tovább) kapcsolódó témakörök
+    c. `CreateSubscription` használt előfizetés létrehozása a Service Bus a témakör a háttérrendszer ahol üzeneteket küld. Attól függően, hogy az üzleti terület ezt az összetevőt a megfelelő témakörök legalább egy előfizetést hoz létre (például néhány lehetséges, hogy lehet üzenetek fogadása HR rendszer, egyes pénzügyi rendszer, és így tovább)
    
         static void CreateSubscription(string connectionString)
         {
@@ -204,11 +205,11 @@ A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három
             await hub.SendWindowsNativeNotificationAsync(message);
         }
    
-    e. Közzététel ezt egy **webjobs-feladat**, a Visual Studio-megoldásban kattintson a jobb gombbal, és válassza ki **webjobs-feladat közzététel**
+    e. Ez az alkalmazás-közzététel egy **webjobs-feladat**, a Visual Studio-megoldásban kattintson a jobb gombbal, és válassza ki **webjobs-feladat közzététel**
    
     ![][2]
    
-    f. Válassza ki a közzétételi profilt, és hozzon létre egy új Azure-webhelyre, ha még nem létezik már fogja tárolni, amely a webjobs-feladat, és ha a webhely majd **közzététel**.
+    f. Válassza ki a közzétételi profilt, és hozzon létre egy új Azure-webhelyre, ha még nem létezik, amely a webjobs-feladat, és ha a webhely majd **közzététel**.
    
     ![][3]
    
@@ -217,7 +218,7 @@ A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három
     ![][4]
 3. **EnterprisePushMobileApp**
    
-    a. Ez az egy Windows Áruházbeli alkalmazással, amely bejelentési értesítések fogadása a webjobs-feladat a mobil-háttéralkalmazást részeként fut, és megjeleníti azt. Ez a alapul [A Notification Hubs - oktatóanyag univerzális Windows-].  
+    a. Ez az alkalmazás egy Windows Áruházbeli alkalmazást, amely a webjobs-feladat a mobil-háttéralkalmazást részeként bejelentési értesítést kap, és megjeleníti azt. Ez a kód alapján [A Notification Hubs - oktatóanyag univerzális Windows-].  
    
     b. Győződjön meg arról, hogy az alkalmazás engedélyezve van-e bejelentési értesítéseket fogadni.
    
@@ -240,9 +241,9 @@ A teljes minta kódja megtalálható [Notification Hub minták]. A oszlik három
         }
 
 ### <a name="running-sample"></a>A minta fut:
-1. Győződjön meg arról, hogy a webjobs-feladat sikeresen fut, és a "Folyamatos Futtatás" ütemezett.
-2. Futtassa a **EnterprisePushMobileApp** amely indul el a Windows áruház egy alkalmazásához.
-3. Futtassa a **EnterprisePushBackendSystem** konzolalkalmazást, amely szimulálni fogja a LoB háttér és küldésének megkezdése üzeneteket, és a következő megjelenő bejelentési értesítést kell megjelennie:
+1. Győződjön meg arról, hogy a webjobs-feladat sikeresen fut, és ütemezett folyamatosan.
+2. Futtassa a ** EnterprisePushMobileApp, amely elindítja a Windows áruház egy alkalmazásához.
+3. Futtassa a **EnterprisePushBackendSystem** konzolalkalmazásra, amely a LoB-háttérrendszer szimulálja, és elindítja a küld üzeneteket, és például az alábbi képen szereplő bejelentési értesítést kell megjelennie:
    
     ![][5]
 4. Service Bus-témaköröktől, amely a Service Bus-előfizetések műveleteit a webes projekt által figyelt eredetileg elküldött üzenetek. Üzenet érkezett, miután értesítést létrejött, de a mobilalkalmazás küldött. A webjobs-feladat bejegyzéseit, amelyek a naplók hivatkozásra lépve, győződjön meg arról, hogy a feldolgozási keresztül meggyőződhet [Azure-portálon] a webes projekt:

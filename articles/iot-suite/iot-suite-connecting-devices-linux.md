@@ -1,12 +1,12 @@
 ---
-title: "Távoli megfigyeléséhez, a C - Azure Linux rendszerű eszközre továbbítani |} Microsoft Docs"
-description: "Eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldást igényelnek a futó Linux C alkalmazással ismerteti."
-services: 
+title: Távoli megfigyeléséhez, a C - Azure Linux rendszerű eszközre továbbítani |} Microsoft Docs
+description: Ismerteti, hogyan lehet egy eszköz csatlakozni a távoli megfigyelési megoldásgyorsító a futó Linux C alkalmazás segítségével.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0c7c8039-0bbf-4bb5-9e79-ed8cff433629
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: 2c6b245e938b44891314c3e752c064ff152f2c9a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9ccf2b185c5aa67b41aab650989ad0326aba0215
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>Csatlakoztassa az eszközt a távoli felügyeleti előkonfigurált megoldás (Linux)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Csatlakoztassa az eszközt a távoli felügyeleti megoldásgyorsító (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti előkonfigurált megoldás.
+Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti megoldásgyorsító.
 
 ## <a name="create-a-c-client-project-on-linux"></a>C ügyfél-projekt létrehozása Linux rendszeren
 

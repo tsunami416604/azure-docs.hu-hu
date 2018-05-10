@@ -3,22 +3,22 @@ title: Az Útválasztás és címke kifejezések
 description: Ez a témakör ismerteti az Azure notification hubs használatával az Útválasztás és a címke a kifejezéseket.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: c3266698a6077e85806286fadf1f48b7194a4d88
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: e08fca0b6b57d654f2b2ff7b935f38d8c517487b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-and-tag-expressions"></a>Az Útválasztás és címke kifejezések
 ## <a name="overview"></a>Áttekintés
@@ -33,7 +33,7 @@ Az alkalmazás háttéralkalmazása a regisztrációk egy adott értesítés cé
 3. **Címke kifejezés**: az értesítést fogadó összes regisztrációját, amelynek címkék készlete megfelelnek a megadott kifejezésnek.
 
 ## <a name="tags"></a>Címkék
-Karakterlánc, legfeljebb 120, alfanumerikus tartalmazó és a következő nem alfanumerikus karakterek címke lehet: "_", "@", '#', '. ',': ","-". A következő példa bemutatja egy alkalmazás, amelyből adott zene csoportok bejelentési értesítést kaphat. Ebben a forgatókönyvben egy egyszerű útvonal értesítések módja, amelyben a különböző szalagokhoz, ahogy az alábbi képen egy címke címke regisztráció.
+Karakterlánc, legfeljebb 120, alfanumerikus tartalmazó és a következő nem alfanumerikus karakterek címke lehet: "_", "@", '#', '. ',': ","-". A következő példa bemutatja egy alkalmazás, amelyből adott zene csoportok bejelentési értesítést kaphat. Ebben a forgatókönyvben egy egyszerű útvonal értesítések módja, amelyben a különböző szalagokhoz, ahogy az alábbi képen egy címke címke regisztrációk:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
@@ -69,11 +69,11 @@ Több aggályokat címkéket (például "band_Beatles" vagy "follows_Charlie") i
 A címkék használata az érdeklődési körök alapján történő teljes részletes oktatóanyaga, lásd: [Megtörje hírek](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
 ## <a name="using-tags-to-target-users"></a>A cél felhasználók számára címkék használatával
-Egy másik címkék használata módja, ha egy adott felhasználó összes eszköz azonosítása. Regisztráció prioritáscímkékkel való ellátását, amely tartalmazza a felhasználói azonosítóját, ahogy az alábbi képen egy címkét:
+Egy másik címkék használata módja, ha egy adott felhasználó összes eszköz azonosítása. Regisztráció prioritáscímkékkel való ellátását, amely tartalmazza a felhasználói Azonosítóját, ahogy az alábbi képen egy címkét:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-A képen látható az üzenet címkézett uid:Alice eléri összes regisztrációk címkézett uid:Alice; ezért Ágnes eszközeiről.
+A képen látható, az üzenet címkézett uid: Alice eléri az összes regisztrációk címkézett uid:Alice; ezért Ágnes eszközeiről.
 
 ## <a name="tag-expressions"></a>Címke kifejezések
 Előfordulhatnak olyan esetek, egy értesítés, amelyekre a regisztrációk csoportja, amely nem egy egyetlen címke, hanem egy logikai kifejezés címkéket, amelynél tartozik.

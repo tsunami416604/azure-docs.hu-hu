@@ -1,19 +1,19 @@
 ---
-title: "Docker-tárolófürt üzembe helyezése – Azure CLI"
-description: "Kubernetes-, DC/OS- vagy Docker Swarm-megoldás üzembe helyezése az Azure Container Service-ben az Azure CLI 2.0 használatával"
+title: Docker-tárolófürt üzembe helyezése – Azure CLI
+description: Kubernetes-, DC/OS- vagy Docker Swarm-megoldás üzembe helyezése az Azure Container Service-ben az Azure CLI 2.0 használatával
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 40d5ea0e7abce165659219db8842ab64ac75fda7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 037834fa94a4ef6ecf6ab87055ed1369a3c8f1fb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-cli-20"></a>Docker tárolóüzemeltetési megoldás üzembe helyezése az Azure CLI 2.0 használatával
 
@@ -38,7 +38,7 @@ Kövesse az utasításokat az interaktív bejelentkezéshez. A bejelentkezés eg
 
 ### <a name="set-your-azure-subscription"></a>Azure-előfizetés beállítása
 
-Ha több Azure-előfizetéssel rendelkezik, állítsa be az alapértelmezett előfizetést. Példa:
+Ha több Azure-előfizetéssel rendelkezik, állítsa be az alapértelmezett előfizetést. Például:
 
 ```
 az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
@@ -46,7 +46,7 @@ az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
 
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Javasoljuk, hogy mindegyik fürthöz hozzon létre egy erőforráscsoportot. Válasszon ki egy Azure-régiót, amelyben az Azure Container Service [elérhető](https://azure.microsoft.com/en-us/regions/services/). Példa:
+Javasoljuk, hogy mindegyik fürthöz hozzon létre egy erőforráscsoportot. Válasszon ki egy Azure-régiót, amelyben az Azure Container Service [elérhető](https://azure.microsoft.com/regions/services/). Például:
 
 ```azurecli
 az group create -n acsrg1 -l "westus"
@@ -129,7 +129,7 @@ az acs delete -g acsrg1 -n acs-cluster
 ```
 Ez a parancs nem törli a tárolószolgáltatás létrehozásakor létrehozott összes (hálózati és tárolási) erőforrást. Az összes erőforrás egyszerű törléséhez ajánlott minden egyes fürtöt külön erőforráscsoportban üzembe helyezni. Ezután törölje az erőforráscsoportot, ha a fürtre már nincs szükség.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy működő fürtje van, tekintse meg ezeket a dokumentumokat a kapcsolatra és a felügyeletre vonatkozó részletekért:
 
 * [Csatlakozás Azure Container Service-fürthöz](../container-service-connect.md)

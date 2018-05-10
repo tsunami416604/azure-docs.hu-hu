@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 3b908f1df9228505b2f3bce18bd42d9b502844c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e4995146433d0090849fe17175b152a6e45809f4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Teljesítmény és méretezhetőség, az Azure Cosmos DB tesztelése
 
@@ -96,7 +96,7 @@ Lásd az alábbi lépéseket: első lépések a leggyorsabban fordításához é
     Press any key to exit...
 
 
-**(Ha szükséges), a 4. lépés:** az eszköze (RU/mp) jelentett átviteli azonosnak kell lennie, vagy nagyobb, mint a gyűjtemény a létesített átviteli sebesség. Ha nem, a kis lépésekkel DegreeOfParallelism növelése segíthetnek eléri a határértéket. Ha az ügyfél alkalmazásból átviteli trületek, indítsa el az alkalmazás több példánya további ügyfélszámítógépekre. Ha ebben a lépésben segítségre van szüksége, e-mailben askcosmosdb@microsoft.com vagy a támogatási jegy fájl a [Azure-portálon](https://portal.azure.com).
+**(Ha szükséges), a 4. lépés:** az eszköze (RU/mp) jelentett átviteli ugyanaz legyen, vagy nagyobb, mint a létesített átviteli sebesség a gyűjtemény vagy egy gyűjteményt. Ha nem, a kis lépésekkel DegreeOfParallelism növelése segíthetnek eléri a határértéket. Ha az ügyfél alkalmazásból átviteli trületek, indítsa el az alkalmazás több példánya további ügyfélszámítógépekre. Ha ebben a lépésben segítségre van szüksége, e-mailben askcosmosdb@microsoft.com vagy a támogatási jegy fájl a [Azure-portálon](https://portal.azure.com).
 
 Miután az alkalmazás futását, próbálkozzon másik [házirendek indexelő](indexing-policies.md) és [konzisztenciaszintek](consistency-levels.md) átviteli sebesség és a késleltetés gyakorolt hatásuk megértéséhez. Is ajánlott felülvizsgálni a forráskódot, és a saját tesztelési programcsomagok vagy üzemi környezetben működő alkalmazásokhoz hasonló konfigurációkat valósítja meg.
 

@@ -18,7 +18,7 @@
 ## Automatizálás
 ### [Az Azure Automation áttekintése](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
-## Biztonsági mentés
+## Backup
 ### [A biztonsági mentés áttekintése](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [A Site Recovery áttekintése](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -32,8 +32,8 @@
 ### [Webes alapkonfiguráció-felmérés](oms-security-web-baseline-assessment.md)
 
 ## Megoldások használata
-### [Felügyeleti megoldások](operations-management-suite-solutions.md)
-### [Célmegoldások](operations-management-suite-solution-targeting.md)
+### [Felügyeleti megoldások](../monitoring/monitoring-solutions.md)
+### [Célmegoldások](../monitoring/monitoring-solution-targeting.md)
 ### Betekintés és elemzés
 #### [AD-elemzés](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-replikáció állapota](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -46,10 +46,10 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric-elemzés](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Szolgáltatástérkép
-##### [Útmutatás](operations-management-suite-walkthrough-servicemap.md)
-##### [Használat](operations-management-suite-service-map.md)
-##### [Konfigurálás](operations-management-suite-service-map-configure.md)
-##### [Integrálás az Operations Managerrel](operations-management-suite-service-map-scom.md)
+##### [Útmutatás](../monitoring/monitoring-walkthrough-servicemap.md)
+##### [Használat](../monitoring/monitoring-service-map.md)
+##### [Konfigurálás](../monitoring/monitoring-service-map-configure.md)
+##### [Integrálás az Operations Managerrel](../monitoring/monitoring-service-map-scom.md)
 #### [SQL-elemzés](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Frissítési elemzés](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -62,12 +62,12 @@
 #### [Kártevőirtók felmérése](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Megoldások létrehozása
-### [Tervezés és felépítés](operations-management-suite-solutions-creating.md)
-### [Megoldásfájl](operations-management-suite-solutions-solution-file.md)
-### [Automation-erőforrások](operations-management-suite-solutions-resources-automation.md)
-### [Naplókeresések és riasztások](operations-management-suite-solutions-resources-searches-alerts.md)
-### [Nézetek](operations-management-suite-solutions-resources-views.md)
-### [Ajánlott eljárások](operations-management-suite-solutions-best-practices.md)
+### [Tervezés és felépítés](../monitoring/monitoring-solutions-creating.md)
+### [Megoldásfájl](../monitoring/monitoring-solutions-solution-file.md)
+### [Automation-erőforrások](../monitoring/monitoring-solutions-resources-automation.md)
+### [Naplókeresések és riasztások](../monitoring/monitoring-solutions-resources-searches-alerts.md)
+### [Nézetek](../monitoring/monitoring-solutions-resources-views.md)
+### [Ajánlott eljárások](../monitoring/monitoring-solutions-best-practices.md)
 
 ## Felügyeleti forgatókönyvek
 ### [Elemzési adatok gyűjtése a runbookból](operations-management-suite-runbook-datacollect.md)
@@ -77,6 +77,6 @@
 # Referencia
 ## [SDK](operations-management-suite-sdk.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

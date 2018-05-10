@@ -1,26 +1,24 @@
 ---
-title: "Állítsa vissza az Azure Active Directory törölt Office 365 csoport |} Microsoft Docs"
-description: "Hogyan lehet visszaállítani a törölt csoportban, visszaállítható csoportok megtekintése és az Azure Active Directory csoport permamnently törlése"
+title: Állítsa vissza az Azure Active Directory törölt Office 365 csoport |} Microsoft Docs
+description: Hogyan lehet visszaállítani a törölt csoportban, visszaállítható csoportok megtekintése és az Azure Active Directory csoport permamnently törlése
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: cc5f232a-1e77-45c2-b28b-1fcb4621725c
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 66b76b9bfd63f270c1bb86454908e2bae0897d04
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 388c5617a040da396cb0c6a05b5697fb5fd22248
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Állítsa vissza egy törölt Office 365-csoport az Azure Active Directoryban
 
@@ -75,7 +73,7 @@ Győződjön meg arról, hogy sikeresen már visszaállította az Office 365-cso
 - A csoport érhetők el az Exchange-végpontok és más Office 365 számítási feladattal, amely támogatja az Office 365-csoportokat
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezek a cikkek további információkkal az Azure Active Directory csoportokat.
 
 * [Tekintse meg a meglévő csoportok](active-directory-groups-view-azure-portal.md)

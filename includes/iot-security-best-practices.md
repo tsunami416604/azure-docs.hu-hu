@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 2c6f5cf2d89da0c2418ac58ca5d47a8aa05e732f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-best-practices"></a>Az eszközök internetes hálózatát ajánlott biztonsági eljárások
 
 Az eszközök internetes hálózatát (IoT)-infrastruktúra védelmének biztosítása megköveteli a szigorú jellegű biztonsági stratégia. Ezt a stratégiát kell biztosítani az adatokat a felhőben, az átvitel alatt adatintegritás a nyilvános interneten keresztül védheti meg és biztonságosan ellátja az eszközöket. Minden egyes réteg hoz létre a nagyobb biztonság a teljes infrastruktúrában.
@@ -7,7 +23,7 @@ Az eszközök internetes hálózatát (IoT)-infrastruktúra védelmének biztos�
 E jellegű biztonsági stratégia fejlesztett, és a gyártási, fejlesztési és az IoT-eszközök és infrastruktúra központi telepítése a szerepet játszó különféle résztvevői aktív részvétele végrehajtásra. Az alábbiakban az ezeket a magas szintű leírását.
 
 * **Az IoT hardver gyártója/integráló**: ezeket általában IoT alatt üzembe helyezett hardverekre, különböző gyártók vagy beszállítói hardver biztosítva az IoT központi telepítésének hardver összeállításakor kiegészítők gyártói gyártott vagy más szállítók által integrált.
-* **Az IoT-megoldás fejlesztői**: egy IoT-megoldás fejlesztése általában egy megoldás fejlesztő végzi. A fejlesztői is része egy belső fejlesztésű csoport vagy ezzel a tevékenységgel szakosodott rendszert integráló (SI). Az IoT-megoldás fejlesztői fejlesztése teljesen új IoT-megoldás különböző összetevői, integrálni vásárolt vagy nyílt forráskódú összetevők vagy elfogadják a kisebb kiigazítása előkonfigurált megoldásokat.
+* **Az IoT-megoldás fejlesztői**: egy IoT-megoldás fejlesztése általában egy megoldás fejlesztő végzi. A fejlesztői is része egy belső fejlesztésű csoport vagy ezzel a tevékenységgel szakosodott rendszert integráló (SI). Az IoT-megoldás fejlesztői fejlesztése teljesen új IoT-megoldás különböző összetevői, vásárolt vagy nyílt forráskódú összetevők integrálni vagy elfogadják a kisebb kiigazítása megoldás gyorsítókra.
 * **Az IoT-megoldás deployer**: után az IoT-megoldás fejlesztése, a mezőben telepíteni kell. A folyamat során telepítési hardverek, eszközök összekapcsolása és központi telepítését a hardvereszközök megoldások vagy a felhőben.
 * **Az IoT-megoldás operátor**: után IoT-megoldás van telepítve, a hosszú távú működésre, ellenőrzésre, frissítések és karbantartás van szükség. Ezeket a feladatokat egy vállalaton belüli csoport, amely magában foglalja az információk informatikai szakemberek számára, a hardver műveletek és a karbantartás csoportok és a tartomány szakembereket alkalmaznak, akik a helyes működése általános IoT-infrastruktúra figyelése úgy teheti meg.
 

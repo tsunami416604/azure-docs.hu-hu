@@ -3,7 +3,7 @@ title: Mongodb-protokolltámogatással az Azure Cosmos DB API mongoimport és mo
 description: Adatok importálása egy API-t a MongoDB-fiók mongoimport és mongorestore használata
 keywords: mongoimport, mongorestore
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
 documentationcenter: ''
 ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
-ms.author: anhoh
+ms.date: 05/07/2018
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 5c87483e384a09591aca496292638d7b68476beb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 36d098a76e57b65ba82c24ed81ebbe3d21489a9f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Az Azure Cosmos DB: Import MongoDB adatok 
 
@@ -28,7 +28,7 @@ Ha a MongoDB-ből a MongoDB API-val rendelkező Azure Cosmos DB-fiókba kívánj
 * Töltse le vagy *mongoimport.exe* vagy *mongorestore.exe* a a [MongoDB letöltőközpontból](https://www.mongodb.com/download-center).
 * Kérje le a [MongoDB API kapcsolati karakterláncát](connect-mongodb-account.md).
 
-Ha a MongoDB importál adatokat, és szeretne használni, az Azure Cosmos DB, használja a [adatáttelepítési eszközét](import-data.md) adatainak importálásához.
+Ha a MongoDB importál adatokat, és tervezi használni az Azure Cosmos DB SQL API-val, használja a [adatáttelepítési eszközét](import-data.md) adatainak importálásához.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Átviteli sebesség növelése: az adatok áttelepítés időtartama függ átviteli állít be a gyűjteményekben. Győződjön meg arról, növelheti a teljesítményt nagyobb adatok áttelepítésre. Az áttelepítés befejezése után csökkenti az átviteli sebesség költségek csökkentése érdekében. További információ az átviteli sebesség növelése a [Azure-portálon](https://portal.azure.com), lásd: [teljesítményszintet és az Azure Cosmos Adatbázisba tarifacsomagok](performance-levels.md).
+* Átviteli sebesség növelése: az adatok áttelepítés időtartama állít be egy egyedi gyűjtemény átviteli mennyisége vagy egy gyűjtemények függ. Győződjön meg arról, növelheti a teljesítményt nagyobb adatok áttelepítésre. Az áttelepítés befejezése után csökkenti az átviteli sebesség költségek csökkentése érdekében. További információ az átviteli sebesség növelése a [Azure-portálon](https://portal.azure.com), lásd: [teljesítményszintet és az Azure Cosmos Adatbázisba tarifacsomagok](performance-levels.md).
 
 * SSL engedélyezése: Azure Cosmos-adatbázis a szigorú biztonsági követelmények és szabványok tartoznak. Ne aktiválja az SSL-fiókja folytatott kommunikáció során. Az a cikk többi részében szereplő eljárások közé tartozik a mongoimport és mongorestore SSL engedélyezése.
 
@@ -47,10 +47,11 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali ablaktáblán kattintson a **Azure Cosmos DB** bejegyzés.
 2. Az a **előfizetések** ablaktáblán válassza ki a fiók nevét.
-3. Az a **kapcsolati karakterlánc** panelen kattintson a **kapcsolati karakterlánc**.  
-A jobb oldali ablaktáblán a fiók sikeresen csatlakozni kell az összes információt tartalmazza.
+3. Az a **kapcsolati karakterlánc** panelen kattintson a **kapcsolati karakterlánc**.
 
-    ![Kapcsolati karakterlánc panel](./media/mongodb-migrate/ConnectionStringBlade.png)
+   A jobb oldali ablaktáblán a fiók sikeresen csatlakozni kell az összes információt tartalmazza.
+
+   ![Kapcsolati karakterlánc panel](./media/mongodb-migrate/ConnectionStringBlade.png)
 
 ## <a name="import-data-to-the-api-for-mongodb-by-using-mongoimport"></a>Adatok importálása a mongodb-protokolltámogatással API mongoimport használatával
 
@@ -80,9 +81,27 @@ Példa:
 
 1. Előre létrehozni, illetve skálázni a gyűjtemények:
         
-    * Alapértelmezés szerint Azure Cosmos DB látja el egy új MongoDB gyűjtemény 1000 kérelem egységek használatával (RUs). Az áttelepítés előtt mongoimport, mongorestore vagy mongomirror használatával, előre létrehozni a összes gyűjteményt a [Azure-portálon](https://portal.azure.com) vagy a MongoDB-illesztőprogramok és eszközök. Ha a gyűjtemény 10 GB-nál nagyobb, ügyeljen arra, hogy hozzon létre egy [szilánkos/particionált gyűjtemény](partition-data.md) megfelelő shard kulccsal.
+    * Alapértelmezés szerint Azure Cosmos DB látja el egy új MongoDB gyűjtemény 1000 kérelem egységek használatával (RUs/másodperc). Az áttelepítés előtt mongoimport, mongorestore vagy mongomirror használatával, előre létrehozni a összes gyűjteményt a [Azure-portálon](https://portal.azure.com) vagy a MongoDB-illesztőprogramok és eszközök. Ha a gyűjtemény 10 GB-nál nagyobb, ügyeljen arra, hogy hozzon létre egy [szilánkos/particionált gyűjtemény](partition-data.md) megfelelő shard kulccsal.
 
-    * Az a [Azure-portálon](https://portal.azure.com), a gyűjtemények átviteli sebesség 1000 RUs egypartíciós gyűjtemény és az áttelepítés számára egy szilánkos gyűjtemény 2500 RUs növelése. A nagyobb átviteli sebességgel elkerülheti a sávszélesség-szabályozás, és kevesebb idő alatt át. Óránkénti számlázási Azure Cosmos DB, csökkentheti az átviteli sebesség közvetlenül a költségek csökkentése érdekében az áttelepítés után.
+    * Az a [Azure-portálon](https://portal.azure.com), növelje a gyűjtemények átviteli 1000 RUs másodpercenkénti egypartíciós gyűjtemény, és csak az áttelepítés szilánkos gyűjteményét 2500 RUs/mp. A nagyobb átviteli sebességgel elkerülheti a sávszélesség-szabályozás, és kevesebb idő alatt át. Óránkénti számlázási Azure Cosmos DB, csökkentheti az átviteli sebesség közvetlenül a költségek csökkentése érdekében az áttelepítés után.
+
+    * Üzembe helyezési RUs/mp a gyűjtemény szintjén, mellett is azon gyűjtemények a szülőszinten adatbázis előfordulhat, hogy kiépítése RU/mp. Ehhez szükséges előre létrehozni az adatbázis és a gyűjtemények, valamint a gyűjtemény egy shard kulcsot meghatározó.
+
+    * A kedvenc eszköz, az illesztőprogram, vagy az SDK szilánkos gyűjteményeket hozhat létre. Ebben a példában a Mongo rendszerhéj használjuk szilánkos gyűjtemény létrehozásához:
+
+        ```
+        db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
+        ```
+    
+        Eredmények:
+
+        ```JSON
+        {
+            "_t" : "ShardCollectionResponse",
+            "ok" : 1,
+            "collectionsharded" : "admin.people"
+        }
+        ```
 
 2. A költségszámítás hozzávetőleges RU egy egyetlen dokumentum írásra:
 
@@ -92,7 +111,7 @@ Példa:
     
         ```db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })```
         
-    c. Futtatás ```db.runCommand({getLastRequestStatistics: 1})``` és a jelen szoftverhez hasonló választ kap:
+    c. Futtatás ```db.runCommand({getLastRequestStatistics: 1})``` és a következő választ kap:
      
         ```
         globaldb:PRIMARY> db.runCommand({getLastRequestStatistics: 1})
@@ -111,7 +130,7 @@ Példa:
     
     a. A MongoDB-rendszerhéjból részletes naplózás engedélyezése a parancs segítségével: ```setVerboseShell(true)```
     
-    b. Egy egyszerű lekérdezést futtassa az adatbázison: ```db.coll.find().limit(1)```. Az alábbihoz hasonló választ kap:
+    b. Egy egyszerű lekérdezést futtassa az adatbázison: ```db.coll.find().limit(1)```. A következőhöz hasonló választ kap:
 
         ```
         Fetched 1 record(s) in 100(ms)

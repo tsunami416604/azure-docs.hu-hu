@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/9/2017
 ms.author: mobandyo
-ms.openlocfilehash: 7b573c906ee4ced803369606c3e318fd452a426a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d94536bd0ab10c3e380855b66bc10dc9af6195a3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure számlázás API-k segítségével az Azure használatának programozott módon webhelynaplókat
 Azure számlázás API-k segítségével lekéréses használati és erőforrás adatokat be a kívánt adatok elemzésére szolgáló eszközöket. Az Azure erőforrás-használat és RateCard API-k segítségével pontosan előre jelezni, és a költségek kezelésére. Az API-kat használják, mint a egy erőforrás-szolgáltató és az Azure Resource Manager által közzétett API-kban család része.  
@@ -73,5 +73,5 @@ Az alábbiakban néhány lehetséges a használati és a RateCard API-k végreha
 
 * Az Azure Resource Managerrel kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md). 
 
-* További információk az eszközkészlet a szükséges segítségnyújtáshoz felhő ismeretét kiadásokat, Gartner cikkben [piaci útmutató informatikai pénzügyi Management (ITFM) eszközök](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb).
+
 

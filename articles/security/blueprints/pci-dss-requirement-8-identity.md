@@ -1,9 +1,9 @@
 ---
-title: "Az Azure támogatási feldolgozási tervezetének - identitáskövetelmények"
-description: "PCI DSS követelmény 8"
+title: Az Azure támogatási feldolgozási tervezetének - identitáskövetelmények
+description: PCI DSS követelmény 8
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 1a398601-8c48-4f8e-b3d4-eba94edad61c
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: f77cc3c9926b5316913c70e5f4412383e55c5193
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: a83040a6b5174307ea73e5473165835458d217f6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="identity-requirements-for-pci-dss-compliant-environments"></a>Identitáskövetelmények PCI DSS-kompatibilis környezetben 
 ## <a name="pci-dss-requirement-8"></a>PCI DSS követelmény 8
@@ -42,8 +42,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezési minta használati esetek és egy leírást a helyes szintaxis a rendszergazdák biztosít.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezési minta használati esetek és egy leírást a helyes szintaxis a rendszergazdák biztosít.|
 
 
 
@@ -55,8 +55,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló megvalósítja az Azure Active Directoryban, és Azure Active Directory Role-Based hozzáférés-vezérlés (RBAC) ahhoz, hogy minden felhasználó rendelkezik egy egyedi azonosítót. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló megvalósítja az Azure Active Directoryban, és Azure Active Directory Role-Based hozzáférés-vezérlés (RBAC) ahhoz, hogy minden felhasználó rendelkezik egy egyedi azonosítót. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -68,8 +68,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló megvalósítja az Azure Active Directoryban, és Azure Active Directory Role-Based hozzáférés-vezérlés (RBAC) ahhoz, hogy minden felhasználó rendelkezik egy egyedi azonosítót. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló megvalósítja az Azure Active Directoryban, és Azure Active Directory Role-Based hozzáférés-vezérlés (RBAC) ahhoz, hogy minden felhasználó rendelkezik egy egyedi azonosítót. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -81,8 +81,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló használja az Azure Active Directory a felhasználók kezelése. A felhasználók a visszavont tanúsítványok az Active Directoryban végezhető.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló használja az Azure Active Directory a felhasználók kezelése. A felhasználók a visszavont tanúsítványok az Active Directoryban végezhető.|
 
 
 
@@ -94,8 +94,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló Azure Active Directory használ a felhasználókezeléshez. A `-enableADDomainPasswordPolicy` beállítás is, annak érdekében, jelszavak 90 nap múlva lejár.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló Azure Active Directory használ a felhasználókezeléshez. A `-enableADDomainPasswordPolicy` beállítás is, annak érdekében, jelszavak 90 nap múlva lejár.|
 
 
 
@@ -109,8 +109,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure elfogadta a megfelelő vállalati és szervezeti biztonsági házirendek, beleértve az információk biztonsági házirend. A házirendek lett jóváhagyott, közzétett, és a Microsoft Azure továbbítani. Információk biztonsági házirend a engedélyezhető a Microsoft Azure eszközökhöz való hozzáférés üzleti indoklásának, az eszköz tulajdonosa engedélyt az alapján, és a "szükség alapú tudás" és "legalacsonyabb jogosultsági" alapelvek alapján korlátozott használatához. Ezenkívül a házirend is javítja a hozzáférés-kezelés életciklusának többek között a hozzáférés-kiépítés, a hitelesítés, a hozzáférés-engedélyezési követelményei, eltávolítás hozzáférési jogokkal, és az időszakos hozzáférés értékelést. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló bemutató javítást alkalmazott, Azure Active Directory és Azure Active Directory Role-Based hozzáférés-vezérlés kezelése a telepítés a felhasználó hozzáférést. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure elfogadta a megfelelő vállalati és szervezeti biztonsági házirendek, beleértve az információk biztonsági házirend. A házirendek lett jóváhagyott, közzétett, és a Microsoft Azure továbbítani. Információk biztonsági házirend a engedélyezhető a Microsoft Azure eszközökhöz való hozzáférés üzleti indoklásának, az eszköz tulajdonosa engedélyt az alapján, és a "szükség alapú tudás" és "legalacsonyabb jogosultsági" alapelvek alapján korlátozott használatához. Ezenkívül a házirend is javítja a hozzáférés-kezelés életciklusának többek között a hozzáférés-kiépítés, a hitelesítés, a hozzáférés-engedélyezési követelményei, eltávolítás hozzáférési jogokkal, és az időszakos hozzáférés értékelést. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló bemutató javítást alkalmazott, Azure Active Directory és Azure Active Directory Role-Based hozzáférés-vezérlés kezelése a telepítés a felhasználó hozzáférést. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -122,8 +122,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Contoso webes tároló egyértelmű elkülönítése feladataik (GYEPTÉGLA) a bemutató minden felhasználó részére van megvalósítva. További információkért lásd: ""Azure Active Directory identitás védelem" [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Contoso webes tároló egyértelmű elkülönítése feladataik (GYEPTÉGLA) a bemutató minden felhasználó részére van megvalósítva. További információkért lásd: ""Azure Active Directory identitás védelem" [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -135,8 +135,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Felhasználók létrehozása, érvényesítése és PCI DSS követelményekkel kompatibilis jelszóházirend figyelési felelősek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Felhasználók létrehozása, érvényesítése és PCI DSS követelményekkel kompatibilis jelszóházirend figyelési felelősek.|
 
 
 
@@ -148,8 +148,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Felhasználók létrehozása, érvényesítése és PCI DSS követelményekkel kompatibilis jelszóházirend figyelési felelősek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Felhasználók létrehozása, érvényesítése és PCI DSS követelményekkel kompatibilis jelszóházirend figyelési felelősek.|
 
 
 
@@ -164,8 +164,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló megvalósítása a többtényezős hitelesítés le van tiltva, könnyen használható a bemutató a biztosításához. Többtényezős hitelesítés használatával valósítható [Azure multi-factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló megvalósítása a többtényezős hitelesítés le van tiltva, könnyen használható a bemutató a biztosításához. Többtényezős hitelesítés használatával valósítható [Azure multi-factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/).|
 
 
 
@@ -177,8 +177,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure létesített kulcskezelés eljárások az életciklus (pl. generációs, terjesztési, Visszavonás) teljes titkosítási kulcsok kezeléséhez. A Microsoft Azure a Microsoft vállalati nyilvános kulcsokra ÉPÜLŐ infrastruktúra használja. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure létesített kulcskezelés eljárások az életciklus (pl. generációs, terjesztési, Visszavonás) teljes titkosítási kulcsok kezeléséhez. A Microsoft Azure a Microsoft vállalati nyilvános kulcsokra ÉPÜLŐ infrastruktúra használja. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
 
 
 
@@ -191,8 +191,8 @@ Jelszó hatékonyságát nagymértékben határozza meg a megtervezését és me
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure létesített kulcskezelés eljárások az életciklus (pl. generációs, terjesztési, Visszavonás) teljes titkosítási kulcsok kezeléséhez. A Microsoft Azure a Microsoft vállalati nyilvános kulcsokra ÉPÜLŐ infrastruktúra használja. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure létesített kulcskezelés eljárások az életciklus (pl. generációs, terjesztési, Visszavonás) teljes titkosítási kulcsok kezeléséhez. A Microsoft Azure a Microsoft vállalati nyilvános kulcsokra ÉPÜLŐ infrastruktúra használja. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -207,8 +207,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti.|
 
 
 
@@ -220,8 +220,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló Azure Active Directory használ a felhasználókezeléshez. A `-enableADDomainPasswordPolicy` lehetőséget annak érdekében, hogy a jelszavak lejárnak 90 naponta legalább egyszer állítható be.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló Azure Active Directory használ a felhasználókezeléshez. A `-enableADDomainPasswordPolicy` lehetőséget annak érdekében, hogy a jelszavak lejárnak 90 naponta legalább egyszer állítható be.|
 
 
 
@@ -233,8 +233,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -246,8 +246,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló erős jelszavakat, a telepítési útmutatóban leírt érvénybe lépteti. További információkért lásd: [PCI útmutatást - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -263,8 +263,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure rendszergazdák szükség a multi-factor authentication karbantartási és Azure rendszerekbe és a kiszolgálók felügyeleti végrehajtásakor elérésére használhat. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure rendszergazdák szükség a multi-factor authentication karbantartási és Azure rendszerekbe és a kiszolgálók felügyeleti végrehajtásakor elérésére használhat. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva.|
 
 
 
@@ -279,8 +279,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure rendszergazdák szükség a multi-factor authentication karbantartási és Azure rendszerekbe és a kiszolgálók felügyeleti végrehajtásakor elérésére használhat. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure rendszergazdák szükség a multi-factor authentication karbantartási és Azure rendszerekbe és a kiszolgálók felügyeleti végrehajtásakor elérésére használhat. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva.|
 
 
 
@@ -293,8 +293,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Azure rendszergazdák szükség a multi-factor authentication karbantartási és Azure rendszerekbe és a kiszolgálók felügyeleti végrehajtásakor elérésére használhat. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure rendszergazdák szükség a multi-factor authentication karbantartási és Azure rendszerekbe és a kiszolgálók felügyeleti végrehajtásakor elérésére használhat. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva.|
 
 
 
@@ -310,8 +310,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Az ügyfelek a következő útmutatás és dokumentálásáért és hitelesítési eljárások és az összes felhasználóra házirendek kommunikáció felelősek.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Az ügyfelek a következő útmutatás és dokumentálásáért és hitelesítési eljárások és az összes felhasználóra házirendek kommunikáció felelősek.|
 
 
 
@@ -326,8 +326,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva.|
 
 
 
@@ -342,8 +342,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-ügyfelek nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Microsoft Azure-ügyfelek nem alkalmazható.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | A Microsoft Azure-ügyfelek nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Microsoft Azure-ügyfelek nem alkalmazható.|
 
 
 
@@ -357,8 +357,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva. Minden hozzáférés keresztül felügyelt [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), amely segítségével megakadályozhatja a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló üzembe helyezése során hoz létre három fiók: rendszergazda, sqladmin, és edna (az alapértelmezett felhasználó bejelentkezik a web app, bemutató végrehajtása során). A multi-factor authentication a bemutató nincs implementálva. Minden hozzáférés keresztül felügyelt [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), amely segítségével megakadályozhatja a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos. |
 
 
 
@@ -373,8 +373,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kártya tulajdonosát adatok védelmét az Azure Key Vault, és a rekordok titkosítási van a központi telepítési dokumentációjában leírt. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | A Contoso webes tároló összes kártya tulajdonosát adatok védelmét az Azure Key Vault, és a rekordok titkosítási van a központi telepítési dokumentációjában leírt. További információkért lásd: [PCI útmutatást - titkosítás](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
 
 
 
@@ -386,8 +386,8 @@ A jelszavak/jelszavak azt is megteheti, rendelkeznie kell összetettségét és 
 
 |||
 |---|---|
-| **Szolgáltató<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
-| **Ügyfél<br />(PCI &#8209; DSS&nbsp;tervezetének)** | Ügyfelek felelőssége, hogy a biztonsági házirendek és az azonosítási és hitelesítési műveleti eljárásokká dokumentálva, valamint használatban van, és ismert, hogy az összes érintett fél biztosítja.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Nem alkalmazható. |
+| **Ügyfél<br />(PCI&#8209;DSS&nbsp;tervezetének)** | Ügyfelek felelőssége, hogy a biztonsági házirendek és az azonosítási és hitelesítési műveleti eljárásokká dokumentálva, valamint használatban van, és ismert, hogy az összes érintett fél biztosítja.|
 
 
 

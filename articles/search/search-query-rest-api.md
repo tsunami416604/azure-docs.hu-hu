@@ -7,12 +7,12 @@ ms.author: brjohnst
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/12/2017
-ms.openlocfilehash: d51726ee1387b8e1cae05084d9c60eb93a28c112
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 035dc4ac349513867253e5593e01fab4fec62f6b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>Az Azure Search-index lekérdezése a REST API használatával
 > [!div class="op_single_selector"]
@@ -45,9 +45,9 @@ Indexlekérdezéshez a lekérdezési kulcsok egyikét használhatja. A rendszerg
 ## <a name="formulate-your-query"></a>A lekérdezés meghatározása
 Kétféleképpen [keresheti meg az indexet a REST API használatával](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Az egyik lehetőség egy HTTP POST kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kéréstörzs JSON-objektumában. A másik lehetőség egy HTTP GET kérés kiadása azon a helyen, ahol a lekérdezési paraméterek vannak meghatározva a kérés URL-címén belül. A lekérdezési paraméterek méretének tekintetében a POST több [enyhe korlátozással](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) rendelkezik, mint a GET. Éppen ezért a POST használatát javasoljuk, hacsak nem állnak fenn olyan speciális körülmények, amelyek a GET használatát kényelmesebbé tennék.
 
-A POST és a GET esetében egyaránt meg kell majd adnia a *szolgáltatás nevét*, az *index nevét*, valamint a megfelelő *API-verziót* (a jelen dokumentum kiadásakor érvényes API-verzió: `2016-09-01`) a kérés URL-címében. A GET esetében a lekérdezési paramétereket az URL-cím végén található *lekérdezési karakterláncban* kell megadni. Az URL-cím formátuma alább látható:
+A POST és a GET esetében egyaránt meg kell majd adnia a *szolgáltatás nevét*, az *index nevét*, valamint a megfelelő *API-verziót* (a jelen dokumentum kiadásakor érvényes API-verzió: `2017-11-11`) a kérés URL-címében. A GET esetében a lekérdezési paramétereket az URL-cím végén található *lekérdezési karakterláncban* kell megadni. Az URL-cím formátuma alább látható:
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2016-09-01
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
 
 A POST esetében a formátum ugyanez, azzal a kiegészítéssel, hogy a lekérdezési karakterlánc paraméterei között csak az API-verzió szerepel.
 
@@ -57,9 +57,9 @@ Alább néhány példa látható a „hotels” nevű index lekérdezéseire. Ez
 A teljes indexben keres a „budget” kifejezésre, és csak a `hotelName` mezőt adja vissza:
 
 ```
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=budget&$select=hotelName&api-version=2016-09-01
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=budget&$select=hotelName&api-version=2017-11-11
 
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
 {
     "search": "budget",
     "select": "hotelName"
@@ -69,9 +69,9 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 Egy olyan szűrőt alkalmaz az indexen, amely az éjszakánkénti 150 dollárnál olcsóbb szállodákra keres rá, majd visszaadja a `hotelId` és `description` mezőket:
 
 ```
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2016-09-01
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2017-11-11
 
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
 {
     "search": "*",
     "filter": "baseRate lt 150",
@@ -82,9 +82,9 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 A teljes indexen végrehajtja a keresést, azt egy adott mező (`lastRenovationDate`) szerint csökkenő sorrendbe rendezi, veszi az első két találatot, majd kizárólag a `hotelName` és `lastRenovationDate` mezőket jeleníti meg:
 
 ```
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate&api-version=2016-09-01
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate&api-version=2017-11-11
 
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
 {
     "search": "*",
     "orderby": "lastRenovationDate desc",
@@ -106,7 +106,7 @@ A GET esetében kettő, a POST esetében három kérésfejlécet kell meghatáro
 Az alábbiakban megtekintheti a „hotels” index Azure Search REST API használatával történő kereséséhez tartozó HTTP GET kérést, amely a „motel” kifejezésre egy egyszerű lekérdezéssel keres rá:
 
 ```
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=motel&api-version=2016-09-01
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=motel&api-version=2017-11-11
 Accept: application/json
 api-key: [query key]
 ```
@@ -114,7 +114,7 @@ api-key: [query key]
 Az alábbiakban ugyanazt a példalekérdezést láthatja a HTTP POST használatával:
 
 ```
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
 Content-Type: application/json
 Accept: application/json
 api-key: [query key]

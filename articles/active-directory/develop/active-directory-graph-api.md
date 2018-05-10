@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: c0f5110fe73fb48cf6cf5307de08045bd843cb5a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 00ca193b281f0a8d24935dd8673cae4e05b4d167
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 > [!IMPORTANT]
@@ -50,7 +50,7 @@ Az Azure AD Graph API a következő szolgáltatásokat biztosítja:
 * **Védi-engedélyhatókörök**: Azure AD Graph API-val tesz elérhetővé, amelyek lehetővé teszik az OAuth 2.0 verziót használja az Azure AD-adatokhoz való biztonságos hozzáférés engedélyhatókörök. Ügyfél típusú alkalmazás, beleértve a különböző támogatja:
   
   * felhasználói felületek, amelyek hozzáférő delegált engedélyezési adatokat (delegált) bejelentkezett felhasználó
-  * szolgáltatás/démon alkalmazások, hogy a háttérben, anélkül, hogy a bejelentkezett felhasználó műveletet, és használhatja alkalmazás által meghatározott szerepköralapú hozzáférés-vezérlő
+  * szolgáltatás/démon alkalmazásokat, amelyek megtalálhatók-e bejelentkezett felhasználó nélküli a háttérben fog, és használja az alkalmazás által meghatározott szerepköralapú hozzáférés-vezérlés
     
     Mindkét meghatalmazott, és Alkalmazásengedélyek felel meg az Azure AD Graph API által elérhetővé tett jogosultság, és igényelhet ügyfélalkalmazások alkalmazás regisztrációs engedélyek funkciók a révén a [Azure-portálon](https://portal.azure.com). [Az Azure AD Graph API-Engedélyhatókörök](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) bemutatja, mi az az ügyfélalkalmazás által használható.
 

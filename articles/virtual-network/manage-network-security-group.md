@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy a hálózati biztonsági csoport törlése
 
@@ -34,6 +34,8 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 - Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.4.1 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 - Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.28 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
+Hozzá kell rendelni a fiókot, jelentkezzen be, vagy csatlakozzon az Azure-bA a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [engedélyek ](#permissions).
+
 ## <a name="work-with-network-security-groups"></a>Hálózati biztonsági csoportok használata
 
 Létrehozhat, [összes](#view-all-network-security-groups), [részleteinek megtekintése](#view-details-of-a-network-security-group), [módosítása](#change-a-network-security-group), és [törlése](#delete-a-network-security-group) hálózati biztonsági csoport. Emellett [hozzárendelése vagy leválasztani](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) alhálózati vagy hálózati illesztő hálózati biztonsági csoport.
@@ -44,7 +46,7 @@ Hány hálózati biztonsági csoportokat is létrehozhat egy Azure-beli hely és
 
 1. Válassza ki a portál bal felső sarkában **+ hozzon létre egy erőforrást**.
 2. Válassza ki **hálózati**, majd jelölje be **hálózati biztonsági csoport**.
-3. Adjon meg egy **neve** a hálózati biztonsági csoportot, válassza ki a **előfizetés**, hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő erőforráscsoportot, válassza ki a **Hely**, majd válassza ki **létrehozása**. 
+3. Adjon meg egy **neve** a hálózati biztonsági csoportot, válassza ki a **előfizetés**, hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő erőforráscsoportot, válassza ki a **Hely**, majd válassza ki **létrehozása**.
 
 **Parancsok**
 
@@ -67,7 +69,7 @@ Adja meg a keresési mezőbe, a portál felső, *hálózati biztonsági csoporto
 3. A közös Azure-beállítások kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
     *   [Tevékenységnapló](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-    *   [Címkék](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zárolások feloldása](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automatizálási parancsfájl](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -211,7 +213,7 @@ Módosíthatja az egyes beállítások, például a címkék és a meglévő alk
 
 ### <a name="delete-an-application-security-group"></a>Az alkalmazás biztonsági csoport törlése
 
-Egy alkalmazás biztonsági csoport nem törölhető, azt a hálózati illesztők e azt. El kell távolítani az összes hálózati illesztő az alkalmazáscsoport biztonsági vagy hálózati kapcsolati beállítások módosításával, vagy a hálózati adapterek törlését. További információkért lásd: [való hozzáadását vagy eltávolítását a hálózati illesztő alkalmazás a biztonsági csoportokból](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) vagy [hálózati illesztő törlése](virtual-network-network-interface.md#delete-a-network-interface).
+Egy alkalmazás biztonsági csoport nem törölhető, azt a hálózati illesztők e azt. Minden hálózati interfészen eltávolítása az alkalmazáscsoport biztonsági vagy hálózati kapcsolati beállítások módosításával, vagy a hálózati adapterek törlését. További információkért lásd: [való hozzáadását vagy eltávolítását a hálózati illesztő alkalmazás a biztonsági csoportokból](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) vagy [hálózati illesztő törlése](virtual-network-network-interface.md#delete-a-network-interface).
 
 **Parancsok**
 
@@ -220,18 +222,33 @@ Egy alkalmazás biztonsági csoport nem törölhető, azt a hálózati illesztő
 
 ## <a name="permissions"></a>Engedélyek
 
-A hálózati biztonsági csoportok, a biztonsági szabályok és a biztonsági csoportok feladatait, a fiókot hozzá kell rendelni a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkör, amely hozzá van rendelve a megfelelő engedélyek a következő táblázatban:
+A hálózati biztonsági csoportok, a biztonsági szabályok és a biztonsági csoportok feladatait, a fiókot hozzá kell rendelni a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely hozzá van rendelve a az alábbi táblázatban felsorolt megfelelő engedélyei:
 
-|Művelet                                                       |   Művelet neve                               |
-|--------------------------------------------------------------  |   -------------------------------------------  |
-|Microsoft.Network/ruleTables/read                              |   Hálózati biztonsági csoport lekérése                              |
-|Microsoft.Network/ruleTables/write                             |   Létrehozni vagy frissíteni a hálózati biztonsági csoport                 |
-|Microsoft.Network/ruleTables/delete                            |   Hálózati biztonsági csoport törlése                           |
-|Microsoft.Network/ruleTables/join/action                       |   Csatlakoztassa a hálózati biztonsági csoport                             |
-|Microsoft.Network/ruleTables/rules/read                       |   -Szabályának beolvasása                                    |
-|Microsoft.Network/ruleTables/rules/write                      |   Szabályának létrehozása vagy frissítése                       |
-|Microsoft.Network/ruleTables/rules/delete                     |   A szabály törlése                                 |
-|Microsoft.Network/networkInterfaces/effectiveruleTable/action  |   Hálózati illesztő hatékony hálózati biztonsági csoport lekérése  | 
-|Microsoft.Network/networkWatchers/nextHop/action                |   A következő ugrás a virtuális gép beolvasása                  |
+### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
-A *hálózati biztonsági csoport illesztése* kell társítani a hálózati biztonsági csoport alhálózathoz.
+| Műveletek                                                        |   Name (Név)                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/ruleTables/read                             |   Hálózati biztonsági csoport lekérése                                          |
+| Microsoft.Network/ruleTables/write                            |   Létrehozni vagy frissíteni a hálózati biztonsági csoport                             |
+| Microsoft.Network/ruleTables/delete                           |   Hálózati biztonsági csoport törlése                                       |
+| Microsoft.Network/ruleTables/join/action                      |   Társítsa az alhálózatra vagy a hálózati illesztő hálózati biztonsági csoport |
+| Microsoft.Network/ruleTables/rules/read                       |   -Szabályának beolvasása                                                            |
+| Microsoft.Network/ruleTables/rules/write                      |   Szabályának létrehozása vagy frissítése                                               |
+| Microsoft.Network/ruleTables/rules/delete                     |   A szabály törlése                                                         |
+| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   Hálózati illesztő hatékony hálózati biztonsági csoport lekérése              |
+| Microsoft.Network/networkWatchers/nextHop/action              |   A következő ugrás a virtuális gép beolvasása                                         |
+
+### <a name="application-security-groups"></a>Alkalmazásbiztonsági csoportok
+
+| Műveletek                                                                     | Name (Név)                                                     |
+| --------------------------------------------------------------             | -------------------------------------------              |
+| Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | IP-konfigurációt csatlakoztatása egy alkalmazás biztonsági csoport|
+| Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Csatlakoztassa a szabály az alkalmazás biztonsági csoport    |
+| Microsoft.Network/applicationSecurityGroups/read                           | Az alkalmazás biztonsági csoport lekérése                        |
+| Microsoft.Network/applicationSecurityGroups/write                          | Hozzon létre vagy egy alkalmazás biztonsági csoport frissítése           |
+| Microsoft.Network/applicationSecurityGroups/delete                         | Az alkalmazás biztonsági csoport törlése                     |
+
+## <a name="next-steps"></a>További lépések
+
+- Hozzon létre egy hálózaton vagy a biztonsági csoport használó [PowerShell](powershell-samples.md) vagy [Azure CLI](cli-samples.md) parancsfájlok, vagy az Azure használatával [Resource Manager-sablonok](template-samples.md)
+- Létrehozása és alkalmazása [Azure házirend](policy-samples.md) virtuális hálózatok

@@ -316,22 +316,24 @@
           href: compute-linked-services.md
     - name: Átvitelvezérlés
       items:
-        - name: If Condition tevékenység
-          href: control-flow-if-condition-activity.md
-        - name: Until tevékenység
-          href: control-flow-until-activity.md
-        - name: Webes tevékenység
-          href: control-flow-web-activity.md
-        - name: Keresési tevékenység
-          href: control-flow-lookup-activity.md
-        - name: Metaadatok beolvasása tevékenység
-          href: control-flow-get-metadata-activity.md
         - name: Folyamat végrehajtása tevékenység
           href: control-flow-execute-pipeline-activity.md
+        - name: Tevékenységszűrés
+          href: control-flow-filter-activity.md
         - name: Minden egyes tevékenységhez
           href: control-flow-for-each-activity.md
+        - name: Metaadatok beolvasása tevékenység
+          href: control-flow-get-metadata-activity.md
+        - name: If Condition tevékenység
+          href: control-flow-if-condition-activity.md
+        - name: Keresési tevékenység
+          href: control-flow-lookup-activity.md
+        - name: Until tevékenység
+          href: control-flow-until-activity.md
         - name: Wait tevékenység
           href: control-flow-wait-activity.md
+        - name: Webes tevékenység
+          href: control-flow-web-activity.md
         - name: Kifejezés nyelve
           href: control-flow-expression-language-functions.md
         - name: Rendszerváltozók

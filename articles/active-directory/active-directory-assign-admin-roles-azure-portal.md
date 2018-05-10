@@ -8,18 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 88cd8fd99b61a8332d443e4969e30eac39916d66
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: fc7a67c644894606b09ed3ad594ff9f87b29f307
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -151,7 +150,7 @@ Az Azure AD bejelentkezési jelentések és a naplók megtekintése<br>Vállalat
 | Privileged Identity Management |<ul><li>Az olvasó biztonsági szerepkörhöz tartozó jogosultságok.<li>**Nem lehet** kezelése az Azure AD szerepkörtagságok vagy beállítások. |
 | <p>A figyelő az Office 365 szolgáltatás állapota</p><p>Az Office 365 biztonsági és megfelelőségi központ |<ul><li>Az olvasó biztonsági szerepkörhöz tartozó jogosultságok.<li>Az Advanced Threat Protection szolgáltatás (kártevők & vírus védelmet, rosszindulatú URL-cím config, URL nyomkövetésének, stb.) az összes beállításait is konfigurálhatja. |
 
-### <a name="service-administrator"></a>Szolgáltatásadminisztrátor
+### <a name="service-administrator"></a>Szolgáltatás-rendszergazda
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
 | <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p> |<p>Felhasználói jelszavak átállítása</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p> |

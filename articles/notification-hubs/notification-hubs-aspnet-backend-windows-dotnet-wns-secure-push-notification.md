@@ -1,10 +1,10 @@
 ---
-title: "Biztonságos Azure Notification Hubs leküldéses"
-description: "Útmutató: a biztonságos leküldéses értesítéseket küldeni az Azure-ban. A kódminták C# nyelven íródtak, a .NET API használatával."
+title: Biztonságos Azure Notification Hubs leküldéses
+description: 'Útmutató: a biztonságos leküldéses értesítéseket küldeni az Azure-ban. A kódminták C# nyelven íródtak, a .NET API használatával.'
 documentationcenter: windows
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 9c626ec1534c4899588150a58c0da57b9d963f6f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 8d051107a5e114ed8aa5f4b5a629a439519157b3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Biztonságos Azure Notification Hubs leküldéses
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Biztonságos leküldéses az oktatóanyag bemutatja, hogyan biztonságosan lekü
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-windows-phone-project"></a>A Windows Phone-projekt módosítása
-1. Az a **NotifyUserWindowsPhone** projektre, adja hozzá a következő kódot regisztrálni a leküldéses háttérfeladat App.xaml.cs. Adja hozzá a következő kódsort végén a `OnLaunched()` módszert:
+1. Az a **NotifyUserWindowsPhone** projektre, adja hozzá a következő kódot regisztrálni a leküldéses háttérfeladat App.xaml.cs. Szúrja be az alábbi kódsort az `OnLaunched()` metódus végén:
    
         RegisterBackgroundTask();
 2. Továbbra is az App.xaml.cs fájlban adja hozzá a következő kód után azonnal a `OnLaunched()` módszert:

@@ -1,9 +1,9 @@
 ---
-title: "Az Azure Application Insights Telemetriai adatokat a modell - Telemetriai kérelem |} Microsoft Docs"
-description: "Application Insights – kéréstelemetria tartozó adatmodell"
+title: Az Azure Application Insights Telemetriai adatokat a modell - Telemetriai kérelem |} Microsoft Docs
+description: Application Insights – kéréstelemetria tartozó adatmodell
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0073f38097ffbebd669754eac5f2d48a620941bf
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: e0bdaf132474d8e5eaac6a9c65093d27d673d343
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetriai kérelem: az Application Insights adatmodell
 
@@ -24,7 +24,7 @@ A kérelem telemetriai elemet (a [Application Insights](app-insights-overview.md
 
 Telemetria támogatja a szabványos bővíthetőségi modell egyéni kérelem `properties` és `measurements`.
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
 A kérés neve kódútvonala. a kérelem feldolgozásának jelöli. Alacsony számossága értéket kérelmek jobban csoportosítása. A HTTP-kérelmek azt jelöli, a HTTP-metódus és URL-cím elérési út sablont, például `GET /values/{id}` nélkül a tényleges `id` érték.
 
@@ -62,7 +62,7 @@ Maximális hossz: 1024 karakter hosszú lehet
 
 ## <a name="success"></a>Sikeres
 
-Sikeres vagy sikertelen hívás megjelölése. A mező kitöltése kötelező. Ha nincs beállítva az explicit módon `false` -kérés sikeres legyen tekinthető. Ez az érték beállítása `false` Ha művelet kivétel miatt megszakadt vagy a eredmény hibakódot adott vissza.
+Sikeres vagy sikertelen hívás megjelölése. A mezőt kötelező kitölteni. Ha nincs beállítva az explicit módon `false` -kérés sikeres legyen tekinthető. Ez az érték beállítása `false` Ha művelet kivétel miatt megszakadt vagy a eredmény hibakódot adott vissza.
 
 A webes alkalmazásokhoz az Application Insights határozza meg kérelem sikertelen volt, amikor ez a válaszkód kisebb, mint a `400` vagy annál `401`. Azonban előfordulhatnak olyan esetek, amikor az alapértelmezett leképezés nem felel meg az alkalmazás a szemantikai. A válaszkód `404` jelezheti, hogy "nincs rekordok", amely rendszeres folyamat része lehet. Azt is jelezheti egy megszakadt hivatkozás. A nem működő hivatkozások még összetettebb logikát is létrehozható. Csak akkor, ha ezeket a hivatkozásokat URL-cím hivatkozó elemzésével a ugyanazon a helyen lévő hivatkozások is megjelölése hibák. Vagy azok megjelölése hibák, amikor a vállalat mobilalkalmazás érik el. Hasonlóképpen `301` és `302` az ügyfélről, amely nem támogatja az átirányítási elérésekor hibát jelez.
 
@@ -78,7 +78,7 @@ További a kérelem eredménye elolvashatja és az állapot kód a [blogbejegyz�
 
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni – kéréstelemetria írása](app-insights-api-custom-events-metrics.md#trackrequest)
 - Lásd: [adatmodell](application-insights-data-model.md) Application Insights-típusok és az adatok modell.

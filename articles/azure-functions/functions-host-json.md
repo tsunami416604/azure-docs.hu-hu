@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 8187a4bc6278f917c28418baf3cda2d75ea4e3d8
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d1dec6f2da4f6fcbeb38585fc6a1cfcd9d622c4a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>az Azure Functions Host.JSON referenciája
 
@@ -142,6 +142,46 @@ Szabályozza a [Application Insights szolgáltatással mintavételi](functions-m
 |IsEnabled|true|Engedélyezheti vagy letilthatja a mintavétel.| 
 |maxTelemetryItemsPerSecond|5|A küszöbérték, mely mintavételi kezdődik.| 
 
+## <a name="durabletask"></a>durableTask
+
+Konfigurációs beállításainak [tartós funkciók](durable-functions-overview.md).
+
+```json
+{
+  "durableTask": {
+    "HubName": "MyTaskHub",
+    "ControlQueueBatchSize": 32,
+    "PartitionCount": 4,
+    "ControlQueueVisibilityTimeout": "00:05:00",
+    "WorkItemQueueVisibilityTimeout": "00:05:00",
+    "MaxConcurrentActivityFunctions": 10,
+    "MaxConcurrentOrchestratorFunctions": 10,
+    "AzureStorageConnectionStringName": "AzureWebJobsStorage",
+    "TraceInputsAndOutputs": false,
+    "EventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+    "EventGridKeySettingName":  "EventGridKey"
+  }
+}
+```
+
+Feladatnév hub kell betűvel kezdődhet, és csak betűkből és számokból állhat. Ha nincs megadva, alapértelmezés szerint a feladat hub függvény alkalmazások ez **DurableFunctionsHub**. További információkért lásd: [hubok feladat](durable-functions-task-hubs.md).
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------|
+|hubName|DurableFunctionsHub|Alternatív [feladat hub](durable-functions-task-hubs.md) nevei különítheti el egymástól, több tartós funkciók alkalmazások használhatók, még akkor is, ha a ugyanazon tároló háttér használják.|
+|ControlQueueBatchSize|32|A vezérlő várólistában egyszerre lekéréses üzenetek száma.|
+|PartitionCount |4|A vezérlő várólista partíciók száma. Egy 1 és 16 közötti pozitív egész lehet.|
+|ControlQueueVisibilityTimeout |5 perc|A várólista-üzenetek várólistából kivéve vezérlő láthatósági időkorlátot.|
+|WorkItemQueueVisibilityTimeout |5 perc|A cikk üzenetek várólistából kivéve munkahelyi láthatósági időkorlátot.|
+|MaxConcurrentActivityFunctions |10 x az aktuális gép processzorainak száma|Az egyszerre feldolgozandó egyetlen példányán tevékenység funkciók maximális száma.|
+|MaxConcurrentOrchestratorFunctions |10 x az aktuális gép processzorainak száma|Az egyszerre feldolgozandó egyetlen példányán tevékenység funkciók maximális száma.|
+|AzureStorageConnectionStringName |AzureWebJobsStorage|Az Alkalmazásbeállítás, amely rendelkezik az alapul szolgáló Azure Storage-erőforrások kezeléséhez használt Azure Storage kapcsolati karakterlánc neve.|
+|TraceInputsAndOutputs |false|Egy érték a be- és kimenetekkel a függvényhívások nyomon követéséhez. Az alapértelmezett viselkedést, ha a függvény végrehajtása események nyomkövetés bájtok száma szerepeljenek a szerializált be- és kimenetekkel a függvényhívások. Ez hogyan bemenetekhez és kimenetekhez meg a naplók puffadás vagy véletlenül teszi ki a naplókat a bizalmas információk nélkül minimális információkat biztosít. Ez a tulajdonság true értékre való állítására az alapértelmezett függvény naplózási bejelentkezési függvény bemenetekhez és kimenetekhez teljes tartalmát.|
+|EventGridTopicEndpoint ||Egy Azure esemény rács egyéni témakör végpont URL-CÍMÉT. Ha ez a tulajdonság értéke, ehhez a végponthoz vezénylési életciklus értesítési események kerülnek közzétételre.|
+|EventGridKeySettingName ||Az Azure Event rács egyéni témakört a hitelesítéséhez szeretne használni a kulcsot tartalmazó alkalmazásbeállítás neve `EventGridTopicEndpoint`.
+
+Ezek számos megfelelően teljesítményének optimalizálásához. További információkért lásd: [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md).
+
 ## <a name="eventhub"></a>eventHub
 
 Konfigurációs beállításainak [Eseményközpont eseményindítók és kötések](functions-bindings-event-hubs.md).
@@ -150,7 +190,7 @@ Konfigurációs beállításainak [Eseményközpont eseményindítók és köté
 
 ## <a name="functions"></a>functions
 
-A feladat gazdagépen futtatandó funkciók listáját.  Üres tömb azt jelenti, hogy minden függvények futtatása.  Készült, csak ha [helyileg futó](functions-run-local.md). Függvény alkalmazásokban, használja a *function.json* `disabled` helyett ezt a tulajdonságot a *host.json*.
+A feladat gazdagépen futtatandó funkciók listáját. Üres tömb azt jelenti, hogy minden függvények futtatása. Készült, csak ha [helyileg futó](functions-run-local.md). Függvény alkalmazásokban, használja a *function.json* `disabled` helyett ezt a tulajdonságot a *host.json*.
 
 ```json
 {
@@ -190,7 +230,7 @@ Konfigurációs beállításainak [állomás figyelő](https://github.com/Azure/
 |healthCheckInterval|10 másodperc|A háttérben történő rendszeres állapotfigyelő közötti időközt ellenőrzi. | 
 |healthCheckWindow|2 perc|Egy alkalommal csúszóablak együtt használható a `healthCheckThreshold` beállítást.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzéssel maximálisan megengedett számú meghiúsulhatnak előtt állomás újrahasznosítást lehet kezdeményezni.| 
-|counterThreshold|0.80|A küszöbérték, amelynél a teljesítményszámláló akkor veszi figyelembe a nem megfelelő.| 
+|counterThreshold|0,80|A küszöbérték, amelynél a teljesítményszámláló akkor veszi figyelembe a nem megfelelő.| 
 
 ## <a name="http"></a>http
 
@@ -211,7 +251,7 @@ Ha több függvény alkalmazások között megosztott tárfiókot, győződjön 
 }
 ```
 
-## <a name="logger"></a>logger
+## <a name="logger"></a>Naplózó
 
 Vezérlők szerint naplók szűrése egy [ILogger objektum](functions-monitoring.md#write-logs-in-c-functions) vagy [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
 
@@ -299,21 +339,6 @@ Egy [megosztott kód könyvtárak](functions-reference-csharp.md#watched-directo
     "watchDirectories": [ "Shared" ]
 }
 ```
-
-## <a name="durabletask"></a>durableTask
-
-[A feladat hub](durable-functions-task-hubs.md) nevet [tartós funkciók](durable-functions-overview.md).
-
-```json
-{
-  "durableTask": {
-    "HubName": "MyTaskHub"
-  }
-}
-```
-
-Feladatnév hub kell betűvel kezdődhet, és csak betűkből és számokból állhat. Ha nincs megadva, alapértelmezés szerint a feladat hub függvény alkalmazások ez **DurableFunctionsHub**. További információkért lásd: [hubok feladat](durable-functions-task-hubs.md).
-
 
 ## <a name="next-steps"></a>További lépések
 

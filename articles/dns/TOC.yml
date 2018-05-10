@@ -12,10 +12,6 @@
       href: dns-getstarted-powershell.md
     - name: DNS-zónák és -rekordok létrehozása – CLI
       href: dns-getstarted-cli.md
-- name: Példák
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
 - name: Oktatóanyagok
   items:
     - name: Privát DNS-zónák és -rekordok létrehozása
@@ -24,6 +20,10 @@
       href: dns-delegate-domain-azure-dns.md
     - name: Webalkalmazások egyéni DNS-rekordjainak létrehozása
       href: dns-web-sites-custom-domain.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
 - name: Alapelvek
   items:
     - name: DNS-zónák és -rekordok

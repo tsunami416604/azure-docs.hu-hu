@@ -1,12 +1,12 @@
 ---
-title: "A csatlakoztatott gyári átjáró - Azure üzembe helyezéséhez |} Microsoft Docs"
-description: "Központi telepítése a Windows vagy Linux engedélyezéséhez a csatlakoztatott gyári és átjáró előre konfigurált megoldás."
-services: 
+title: A csatlakoztatott gyári átjáró - Azure üzembe helyezéséhez |} Microsoft Docs
+description: Ügyfélszoftverek központi telepítése egy átjáró a Windows vagy a Linux és a kapcsolódó gyári megoldásgyorsító engedélyezéséhez.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 956da99a5d67d7a2225ab3ea64b4e5a9d41ee3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>A Windows vagy Linux előre konfigurált csatlakoztatott gyári megoldás egy peremhálózati átjáró üzembe helyezéséhez
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>A Windows vagy Linux a csatlakoztatott gyári megoldásgyorsító egy peremhálózati átjáró üzembe helyezéséhez
 
-Egy a peremhálózati átjáró üzembe helyezéséhez két szoftverösszetevőket van szüksége a *csatlakoztatott gyári* előre konfigurált megoldást:
+Egy a peremhálózati átjáró üzembe helyezéséhez két szoftverösszetevőket van szüksége a *csatlakoztatott gyári* megoldásgyorsító:
 
-- A *OPC Proxy* csatlakoztatott gyári kapcsolat jön létre. A OPC Proxy várakozik a böngészőből integrált OPC a csatlakoztatott gyári megoldás portálon futó parancs és a vezérlő üzenetek.
+- A *OPC Proxy* gyári csatlakoztatott kapcsolat jön létre. A OPC Proxy majd megvárja-e a parancs és a vezérlő üzenetek a böngészőből integrált OPC, amelyen a kapcsolódó gyári megoldás portálon.
 
-- A *OPC Publisher* csatlakozik a meglévő helyszíni OPC EE-kiszolgálók és telemetriai üzenetek továbbítja őket a csatlakoztatott gyári. Egy OPC klasszikus eszköz használatával is elérheti a [OPC EE-adaptert klasszikus OPC](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
+- A *OPC Publisher* meglévő helyszíni OPC EE kiszolgálók csatlakozik, és továbbítja telemetriai üzenetek őket gyári csatlakoztatva. Egy OPC klasszikus eszköz használatával is elérheti a [OPC EE-adaptert klasszikus OPC](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
 
 Mindkét összetevők nyílt forráskódú és érhetők el a Githubon forrás és a DockerHub Docker-tároló:
 
@@ -37,7 +37,7 @@ Mindkét összetevők nyílt forráskódú és érhetők el a Githubon forrás �
 
 Nem kell egy nyilvánosan elérhető IP-cím vagy az átjáró tűzfal megnyitott bejövő portra vagy összetevőhöz. A OPC Proxy és OPC szoftvergyártó összetevők csak a 443-as kimenő porton használja.
 
-A cikkben leírt lépéseket mutatja be egy Docker használata a Windows vagy Linux peremhálózati átjáró üzembe helyezéséhez. Az átjáró lehetővé teszi, hogy a kapcsolatot a csatlakoztatott gyári előre konfigurált megoldáshoz. Az összetevők csatlakoztatott gyári nélkül is használható.
+A cikkben leírt lépéseket mutatja be egy Docker használata a Windows vagy Linux peremhálózati átjáró üzembe helyezéséhez. Az átjáró lehetővé teszi, hogy a kapcsolatot a csatlakoztatott gyári megoldásgyorsító. Csatlakoztatott gyári nélkül is használhatja az összetevőket.
 
 > [!NOTE]
 > A modulok összetevőket egyaránt használható [Azure IoT peremhálózati](https://github.com/Azure/iot-edge).
@@ -143,17 +143,17 @@ OPC Proxy menti a kapcsolati karakterláncot a telepítés során. Utólagosan k
 
 ## <a name="enable-your-gateway"></a>Az átjáró engedélyezése
 
-Az alábbi lépésekkel ahhoz, hogy az átjáró a csatlakoztatott gyári előre konfigurált megoldásban:
+Az alábbi lépésekkel az átjáró a csatlakoztatott gyári megoldásgyorsító engedélyezése:
 
 1. Összetevőket egyaránt futtatásakor tallózással keresse meg a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás. Ezen a lapon csak rendszergazdák számára érhető el a megoldás. Adja meg a kiadó végponti URL-cím (opc.tcp://publisher: 62222), majd **Connect**.
 
-1. A csatlakoztatott gyári portal és OPC szoftvergyártó közötti megbízhatósági kapcsolat létrehozására. Amikor megjelenik egy tanúsítványfigyelmeztetés, kattintson **folytatása**. Ezt követően, hogy a OPC Publisher nem megbízható a EE-webügyfél hibaüzenet jelenik meg. Ez a hiba megoldása érdekében másolja a **EE-webügyfél** a tanúsítvány a `<SharedFolder>/CertificateStores/rejected/certs` mappát a `<SharedFolder>/CertificateStores/trusted/certs` az átjáró mappájába. Nem kell indítsa újra az átjárót.
+1. A csatlakoztatott gyári portal és OPC Publisher közötti megbízhatósági kapcsolat létrehozására. Amikor megjelenik egy tanúsítványfigyelmeztetés, kattintson **folytatása**. Ezt követően, hogy a OPC Publisher nem megbízható a EE-webügyfél hibaüzenet jelenik meg. Ez a hiba megoldása érdekében másolja a **EE-webügyfél** a tanúsítvány a `<SharedFolder>/CertificateStores/rejected/certs` mappát a `<SharedFolder>/CertificateStores/trusted/certs` az átjáró mappájába. Nem kell indítsa újra az átjárót.
 
 Most csatlakozhat az átjáró a felhőből, és készen áll a OPC EE-kiszolgálók hozzáadása a megoldáshoz.
 
 ## <a name="add-your-own-opc-ua-servers"></a>A saját OPC EE-kiszolgálók hozzáadása
 
-A saját OPC EE-kiszolgálók hozzáadása a csatlakoztatott gyári előre konfigurált megoldást:
+A saját OPC EE-kiszolgálók hozzáadása a csatlakoztatott gyári megoldásgyorsító:
 
 1. Keresse meg a **csatlakoztassa a saját OPC EE kiszolgálót** lapjára a csatlakoztatott gyári megoldás.
 
@@ -164,12 +164,12 @@ A saját OPC EE-kiszolgálók hozzáadása a csatlakoztatott gyári előre konfi
 
         ![Megoldásportál](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
 
-1. Keresse meg a OPC EE csomópontok fájának OPC EE-kiszolgálóját, kattintson a jobb gombbal a OPC csomópontok értékek küldeni a csatlakoztatott gyári, és válassza ki a kívánt **közzététele**.
+1. Keresse meg a OPC EE csomópontok fájának OPC EE-kiszolgálóját, kattintson a jobb gombbal a OPC csomópontok értékek küldeni a gyári csatlakoztatva, és válassza ki a kívánt **közzététele**.
 
 1. Telemetria most zajlik az átjáró eszközről. A telemetriai adatok megtekintéséhez a **gyári helyek** a csatlakoztatott gyári portál ábrázolása **új előállító**.
 
 ## <a name="next-steps"></a>További lépések
 
-Az előre konfigurált csatlakoztatott gyári megoldás architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári előre konfigurált megoldás forgatókönyv](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
+A csatlakoztatott gyári megoldásgyorsító architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári megoldás gyorsító forgatókönyv](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
 
 További tudnivalók a [OPC Publisher hivatkozás megvalósítási](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).

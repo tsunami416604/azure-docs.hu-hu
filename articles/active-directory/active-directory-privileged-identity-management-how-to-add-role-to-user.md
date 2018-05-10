@@ -1,23 +1,22 @@
 ---
-title: "Hogyan lehet hozzáadni vagy eltávolítani egy felhasználói szerepkört |} Microsoft Docs"
-description: "Útmutató a szerepkörök hozzáadása a kiemelt jogosultságú identitások az Azure Active Directory Privileged Identity Management alkalmazással."
+title: Hogyan lehet hozzáadni vagy eltávolítani egy felhasználói szerepkört |} Microsoft Docs
+description: Útmutató a szerepkörök hozzáadása a kiemelt jogosultságú identitások az Azure Active Directory Privileged Identity Management alkalmazással.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 01/03/2018
-ms.author: billmath
-ms.openlocfilehash: 53deb04a33a5f878c5e3f765099c54d30e6ac005
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.author: curtand
+ms.openlocfilehash: 6024016d7c59551e5678069cb6a6e1e7ab45ad6e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: Felhasználói szerepkör hozzáadása vagy eltávolítása
 Az Azure Active Directory (AD), egy globális rendszergazda (vagy vállalati rendszergazda) frissítheti felhasználók amelyek **véglegesen** rendelt szerepkörök az Azure ad-ben. Ez történik, például a PowerShell-parancsmagokkal `Add-MsolRoleMember` és `Remove-MsolRoleMember`. Vagy az Azure-portálon az használhatják a [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](active-directory-assign-admin-roles.md).

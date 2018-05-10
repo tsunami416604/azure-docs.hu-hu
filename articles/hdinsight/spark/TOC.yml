@@ -1,27 +1,32 @@
 - name: "Azure HDInsight\_– dokumentáció"
   href: /azure/hdinsight
-- name: Spark on HDInsight
+- name: Áttekintés
   items:
-    - name: Áttekintés
+    - name: Tudnivalók a HDInsight-alapú Sparkról
       href: apache-spark-overview.md
     - name: Hadoop-összetevők a HDInsighton
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Bevezetés
+- name: Gyors útmutatók
   items:
-    - name: Spark-fürt létrehozása
+    - name: Spark-fürt létrehozása – Portál
+      href: apache-spark-jupyter-spark-sql-use-portal.md
+    - name: Spark-fürt létrehozása – PowerShell
+      href: apache-spark-jupyter-spark-sql-use-powershell.md
+    - name: Spark-fürt létrehozása – Sablon
       href: apache-spark-jupyter-spark-sql.md
+- name: Oktatóanyagok
+  items:
     - name: Lekérdezések futtatása Spark-fürtön
       href: apache-spark-load-data-run-query.md
     - name: Adatok elemzése BI-eszközökkel
       href: apache-spark-use-bi-tools.md
-    - name: Fürterőforrások kezelése
-      href: apache-spark-resource-manager.md
-    - name: Hibakeresés Spark-feladatokban
-      href: apache-spark-job-debugging.md
-    - name: HDInsight-alkalmazások telepítése
-      href: ../hdinsight-apps-install-applications.md
-      maintainContext: true
+    - name: Streamelési feladat futtatása
+      href: apache-spark-eventhub-streaming.md
+    - name: Machine Learning-alkalmazás létrehozása
+      href: apache-spark-ipython-notebook-machine-learning.md
+    - name: Spark-alkalmazás létrehozása az IntelliJ használatával
+      href: apache-spark-create-standalone-application.md
 - name: Útmutató
   items:
     - name: Fürttároló használata
@@ -34,8 +39,6 @@
           maintainContext: true
     - name: Fejlesztés
       items:
-        - name: Önálló alkalmazás létrehozása
-          href: apache-spark-create-standalone-application.md
         - name: Interaktív Spark Shell használata
           href: apache-spark-shell.md
         - name: Távoli feladatok a Livyvel
@@ -110,8 +113,6 @@
           href: apache-spark-streaming-exactly-once.md
     - name: Spark és Machine Learning
       items:
-        - name: HVAC-teljesítmény előrejelzése
-          href: apache-spark-ipython-notebook-machine-learning.md
         - name: Élelmiszer-vizsgálati eredmények előrejelzése
           href: apache-spark-machine-learning-mllib-ipython.md
         - name: Webhelynaplók elemzése
@@ -205,6 +206,8 @@
           maintainContext: true
     - name: Kezelés
       items:
+        - name: Fürterőforrások kezelése
+          href: apache-spark-resource-manager.md
         - name: A Spark beállításainak konfigurálása
           href: apache-spark-settings.md
         - name: Spark-feladatok optimalizálása
@@ -311,6 +314,8 @@
           maintainContext: true
     - name: Hibaelhárítás
       items:
+        - name: Hibakeresés Spark-feladatokban
+          href: apache-spark-job-debugging.md
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
           href: ../hdinsight-troubleshoot-failed-cluster.md
           maintainContext: true

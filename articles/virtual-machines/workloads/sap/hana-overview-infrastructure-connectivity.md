@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 51089ffa05168d2309bd2a96ec44b2ce0fed75f9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolat 
 
 Néhány definíciók előzetes megfizetése esetén ez az útmutató olvasása előtt. A [SAP HANA (nagy példányok) – áttekintés és Azure architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) HANA nagy példány egység, amelyek két különböző osztályú bevezetett azt:
 
 - S72, S72m, S144, S144m, S192 és S192m, amely a "Type i. osztály" lesz az SKU.
-- S384, S384m, S384xm, S576, S768 és S960, amely a "típusú class" SKU lesz az.
+- S384, S384m, S384xm, S576m, S768m és S960m, amely a "típusú class" SKU lesz az.
 
 Az osztály kulcsszavak használatával a HANA nagy példány dokumentációban végül tekintse meg a különböző képességeket és a követelmények alapján HANA nagy példány termékváltozatok fog.
 
@@ -213,7 +213,7 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 Ebben a példában a HighPerformance gateway SKU lett megadva. Az alábbi lehetőségek állnak HighPerformance vagy UltraPerformance csak átjáróként termékváltozatok SAP Hana Azure (nagy példányok) támogatott.
 
 > [!IMPORTANT]
-> Az SKU nagy példányai HANA meg kell adnia S384, S384m, S384xm, S576, S768 és S960 (típusú osztály termékváltozatok), az átjáró-Termékváltozat UltraPerformance használatát megadása kötelező.
+> Az SKU nagy példányai HANA meg kell adnia S384, S384m, S384xm, S576m, S768m és S960m (típusú osztály termékváltozatok), az átjáró-Termékváltozat UltraPerformance használatát megadása kötelező.
 
 ### <a name="linking-vnets"></a>Hivatkozási Vnetek
 

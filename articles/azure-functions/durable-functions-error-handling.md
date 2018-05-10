@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 108c6020956b398effb8ba9dd4471190362359d6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 944fab5ccc55bc9a697e870208338bd0e697672d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák a tartós funkciók (az Azure Functions) kezelése
 
@@ -127,6 +127,9 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
     }
 }
 ```
+
+> [!NOTE]
+> A mechanizmus ténylegesen állítsa le a folyamatban lévő tevékenységek függvény végrehajtása. Ehelyett egyszerűen lehetővé teszi az orchestrator függvény figyelmen kívül hagyja az eredményt, és helyezze át. Tekintse meg a [időzítők](durable-functions-timers.md#usage-for-timeout) dokumentációjában talál további információt.
 
 ## <a name="unhandled-exceptions"></a>Nem kezelt kivételek
 

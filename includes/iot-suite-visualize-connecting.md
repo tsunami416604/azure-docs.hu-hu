@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 8eada6b88c320396b30ecdeb96c95e4ec61679ce
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
 ## <a name="view-device-telemetry"></a>Eszköztelemetria megtekintése
 
 Az eszközről küldött telemetriai adatok megtekintheti a **eszközök** lap a megoldásban.
@@ -41,4 +57,4 @@ Az eszközök metódusok meghívása, használja a **eszközök** lap a távoli 
 
 ## <a name="next-steps"></a>További lépések
 
-A cikk [testre szabhatja a távoli felügyeleti előkonfigurált megoldás](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) testre szabhatja az előkonfigurált megoldás néhány módját ismerteti.
+A cikk [testre szabhatja a távoli felügyeleti megoldásgyorsító](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) testre szabhatja a megoldásgyorsító néhány módját ismerteti.

@@ -16,15 +16,15 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a02844c678c08d8aefbceb16d3908faeffd755fb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 396452faf36bc43a185fd6492f952b7bfd9511cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Azure Data Lake Store-erőforrások kezelése a Storage Explorerrel
 
-Az [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview) szolgáltatás nagy mennyiségű strukturálatlan adat, például szövegek vagy bináris adatok tárolására használható. HTTP-n vagy HTTPS-en keresztül bárhonnan hozzáférhet az adataihoz. A Data Lake Store az Azure Storage Explorerben lehetővé teszi Data Lake Store-adatok és -erőforrások elérését és kezelését, az egyéb Azure-entitásokkal (pl. blobokkal és üzenetsorokkal) együtt. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat.
+Az [Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) szolgáltatás nagy mennyiségű strukturálatlan adat, például szövegek vagy bináris adatok tárolására használható. HTTP-n vagy HTTPS-en keresztül bárhonnan hozzáférhet az adataihoz. A Data Lake Store az Azure Storage Explorerben lehetővé teszi Data Lake Store-adatok és -erőforrások elérését és kezelését, az egyéb Azure-entitásokkal (pl. blobokkal és üzenetsorokkal) együtt. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat.
 
 A megoldás másik előnye, hogy nincs szükség előfizetési engedélyre a Data Lake Store-adatok kezeléséhez. A Storage Explorerben a Data Lake Store-útvonal csatolható a **Helyi és csatolt** csomóponthoz, ha a valaki ezt engedélyezi.
 
@@ -32,7 +32,7 @@ A megoldás másik előnye, hogy nincs szükség előfizetési engedélyre a Dat
 A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz szüksége:
 
 *   Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial).
-*   Azure Data Lake Store-fiók. A fióklétrehozás módjával kapcsolatban tekintse meg [az Azure Data Lake Store használatának első lépéseit ismertető](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal) témakört.
+*   Azure Data Lake Store-fiók. A fióklétrehozás módjával kapcsolatban tekintse meg [az Azure Data Lake Store használatának első lépéseit ismertető](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal) témakört.
 
 ## <a name="install-storage-explorer"></a>A Storage Explorer telepítése
 
@@ -197,7 +197,7 @@ Az URL-címeket egyszerűen beírhatja a Fájlkezelő vagy a böngésző címsor
 
 ## <a name="next-steps"></a>További lépések
 * A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com).
-* Megismerheti, hogyan [kezelhető az Azure Cosmos DB az Azure Storage Explorerben](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer).
-* [A Storage Explorer használatának első lépései](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Az Azure Data Lake Store használatának első lépései](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview).
+* Megismerheti, hogyan [kezelhető az Azure Cosmos DB az Azure Storage Explorerben](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
+* [A Storage Explorer használatának első lépései](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* [Az Azure Data Lake Store használatának első lépései](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
 * Tekintse meg ezt a [YouTube-videót az Azure Cosmos DB az Azure Storage Explorerben történő használatáról](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).

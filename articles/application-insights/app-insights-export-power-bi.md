@@ -1,9 +1,9 @@
 ---
-title: "A Power bi-bA az Azure Application Insights exportálása |} Microsoft Docs"
-description: "A Power BI elemzési lekérdezések olvasható."
+title: A Power bi-bA az Azure Application Insights exportálása |} Microsoft Docs
+description: A Power BI elemzési lekérdezések olvasható.
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: 19595983ba49a88d9139c85afbf38d3106d4a81d
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c9b53c26eea0a5eced32acf196204aef3c3bb125
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights hírcsatorna a Power bi-ban
 [A Power BI](http://www.powerbi.com/) üzleti eszközök szükséges, amely segít az adatok elemezheti és megoszthatja az elemzések csomagja. Gazdag az irányítópultok olyan rendelkezésre álljanak minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések adatok kombinálhatja [Azure Application Insights](app-insights-overview.md).
@@ -121,8 +121,8 @@ Ha csökkenti az Analytics-lekérdezés érkező adatkészlet nem felel meg a k�
 
 1. Hozzon létre egy [API-kulcs](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. A Power BI M parancsfájlt, amely azáltal, hogy az Azure Resource Manager URL-címet az Application Insights API Analytics exportált frissítése.
-   * Cserélje le **https://management.azure.com/subscriptions/...**
-   * a **https://api.applicationinsights.io/beta/apps/...**
+   * Cserélje le  **https://management.azure.com/subscriptions/...**
+   * a  **https://api.applicationinsights.io/beta/apps/...**
 3. Végül frissítse a hitelesítő adatokat egyszerű, és az API-kulcsot használ.
   
 
@@ -139,7 +139,7 @@ Ha csökkenti az Analytics-lekérdezés érkező adatkészlet nem felel meg a k�
 Ha az alkalmazás nagy mennyiségű adatot küld, előfordulhat, hogy használni kívánt az adaptív mintavételi funkció, amely csak a telemetriai adatok százaléka küld. Ugyanez igaz Ha állított mintavételi manuálisan vagy az SDK-t vagy a adatfeldolgozást. [További információ a mintavételi](app-insights-sampling.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Power BI - információ](http://www.powerbi.com/learning/)
 * [Elemzés oktatóanyag](app-insights-analytics-tour.md)
 

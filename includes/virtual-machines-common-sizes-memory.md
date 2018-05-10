@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 75b89ad7f118d107f570b5e323d61bbc9b94bc40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 A memóriaoptimalizált VM-méretek ajánlat egy nagy memória-CPU arányú, amelyek kiváló relációs adatbázis-kiszolgálók, közepes vagy nagyméretű gyorsítótárak és memórián belüli elemzés. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 
@@ -26,9 +26,9 @@ A memóriaoptimalizált VM-méretek ajánlat egy nagy memória-CPU arányú, ame
 
 * A Ev3-sorozat szolgáltatások E5-2673 v4 2.3 GHz (Broadwell) processzor többszálú konfiguráció esetén a legtöbb általános célú munkaterhelések jobb értékajánlatához biztosítása, és a Ev3 üzembe igazítását az általános célú virtuális gépek a legtöbb más felhők.  Memória (a 7 GiB/vCPU való 8 GiB/vCPU) ki lett terjesztve, amíg a lemez-és hálózati korrigálták való megfelelés érdekében a Hyper-Threading technológia való átálláskor / core alapon.  A Ev3, a D/Dv2 családtagjai felső memóriaterület Virtuálisgép-méretek legfeljebb végezze.
 
-## <a name="esv3-series-sup1sup"></a>Esv3-sorozat <sup>1</sup>
+## <a name="esv3-series"></a>Esv3-sorozat 
 
-ACU: 160–190
+ACU: 160-190 <sup>1</sup>
 
 Az ESv3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) processzoron alapulnak, amelynek az órajele akár 3,5 GHz-re is növelhető az Intel Turbo Boost Technology 2.0 alkalmazásával, valamint prémium szintű tárolás használatára is képes. Az Ev3-sorozat példányai ideálisak a memóriaigényes vállalati alkalmazásokhoz.
 
@@ -51,9 +51,9 @@ Az ESv3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) pr
 <sup>3</sup> példány el különítve az egyetlen ügyfél számára dedikált hardver.
 
 
-## <a name="ev3-series-sup1sup"></a>Ev3-sorozat <sup>1</sup>
+## <a name="ev3-series"></a>Ev3-sorozat 
 
-ACU: 160–190 
+ACU: 160-190 <sup>1</sup>
 
 Az Ev3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) processzoron alapulnak, amelynek az órajele akár 3,5 GHz-re is növelhető az Intel Turbo Boost Technology 2.0 alkalmazásával. Az Ev3-sorozat példányai ideálisak a memóriaigényes vállalati alkalmazásokhoz.
 
@@ -75,9 +75,9 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 <sup>2</sup> használható core méret korlátozott. 
 
 
-## <a name="m-series-sup1sup"></a>M-sorozat <sup>1</sup>
+## <a name="m-series"></a>M sorozat 
 
-ACU: 160–180
+ACU: 160-180 <sup>1</sup>
 
 | Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
@@ -95,9 +95,9 @@ ACU: 160–180
 <sup>4</sup> példány el különítve az egyetlen ügyfél számára dedikált hardver.
 <br>
 
-## <a name="gs-series-sup1sup"></a>GS sorozatnak <sup>1</sup>
+## <a name="gs-series"></a>GS sorozat 
 
-ACU: 180–240
+ACU: 180-240 <sup>1</sup>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 |---|---|---|---|---|---|---|---|
@@ -131,9 +131,9 @@ ACU: 180–240
 <br>
 
 
-## <a name="dsv2-series-sup1sup"></a>DSv2-sorozat <sup>1</sup>
+## <a name="dsv2-series"></a>DSv2-sorozat 
 
-ACU: 210–250
+ACU: 210-250 <sup>1</sup>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -174,9 +174,9 @@ ACU: 210–250
 
 <br>
 
-## <a name="ds-series-sup1sup"></a>DS sorozatnak <sup>1</sup>
+## <a name="ds-series"></a>DS-sorozat 
 
-ACU: 160
+ACU: 160 <sup>1</sup>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

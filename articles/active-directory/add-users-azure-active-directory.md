@@ -1,25 +1,23 @@
 ---
-title: "Adja hozzá, vagy az Azure Active Directory felhasználók törlése |} Microsoft Docs"
-description: "Ismerteti, hogyan új felhasználók hozzáadása, vagy törölje a meglévő felhasználók az Azure Active Directoryban"
+title: Adja hozzá, vagy az Azure Active Directory felhasználók törlése |} Microsoft Docs
+description: Ismerteti, hogyan új felhasználók hozzáadása, vagy törölje a meglévő felhasználók az Azure Active Directoryban
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: f0f18f377f194e78c05e63e9b6cbc31c1b945335
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 3e8b7061e57c1baf222e5f565a5b7efc6b997507
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>Gyors üzembe helyezés: Új felhasználók hozzáadása az Azure Active Directoryban
 Ez a cikk ismerteti a címkék törlése és felhasználók hozzáadása a szervezet az Azure portál használatával a orgnization Azure Active Directory (Azure AD) bérlői vagy szinkronizálása a helyszíni Windows Server AD felhasználói fiók adatait. 
@@ -50,7 +48,7 @@ Ez a cikk ismerteti a címkék törlése és felhasználók hozzáadása a szerv
 * [Egy másik címtárból adja hozzá a vendégfelhasználók számára](active-directory-b2b-what-is-azure-ad-b2b.md) 
 * [Felhasználó hozzárendelése egy szerepkörhöz az Azure AD-ben](active-directory-users-assign-role-azure-portal.md)
 * [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
-* [A törölt felhasználói visszaállítása](active-directory-users-restore.md)
+* [Törölt felhasználó visszaállítása](active-directory-users-restore.md)
 
 
 

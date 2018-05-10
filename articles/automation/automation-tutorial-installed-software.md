@@ -1,20 +1,20 @@
 ---
-title: "A gépekre telepített szoftverek felderítése az Azure Automation használatával | Microsoft Docs"
-description: "Az Inventory használatával felderítheti, milyen szoftverek vannak telepítve a környezetében működő gépeken."
+title: A gépekre telepített szoftverek felderítése az Azure Automation használatával | Microsoft Docs
+description: Az Inventory használatával felderítheti, milyen szoftverek vannak telepítve a környezetében működő gépeken.
 services: automation
-keywords: "leltár, automatizálás, változás, követés"
+keywords: leltár, automatizálás, változás, követés
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 02/28/2018
+ms.date: 04/11/2018
 ms.topic: tutorial
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 97cd2c91ca2c70b044518c43d49356918202d5ff
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: bd9fdc237a3c6f1c2a57ddf0f4448d7c3402a798
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Az Azure- és nem Azure-gépeken telepített szoftverek felderítése
 
@@ -23,7 +23,9 @@ Ez az oktatóanyag bemutatja, hogyan derítheti fel a környezetében telepítet
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Virtuális gép felvétele a Change Tracking és az Inventory megoldásba
+> * A megoldás engedélyezése
+> * Azure-beli virtuális gép előkészítése
+> * Nem Azure-beli virtuális gép előkészítése
 > * Telepített szoftverek megtekintése
 > * Telepített szoftverek keresése az Inventory-naplókban
 
@@ -37,14 +39,15 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
-Az oktatóanyag első lépéseként engedélyeznie kell a Change Tracking és az Inventory megoldást a virtuális gépen. Ha korábban engedélyezte a **változáskövetési** megoldást a virtuális gép számára, erre a lépésre nincs szükség.
+Az oktatóanyag első lépéseként engedélyeznie kell a Change Tracking és az Inventory megoldást. Ha korábban engedélyezte a **Change Tracking** megoldást, erre a lépésre nincs szükség.
 
-1. A bal oldali menüben kattintson a **Virtuális gépek** elemre, majd válasszon ki egy virtuális gépet a listából.
-2. A bal oldali menüben, a **Műveletek** szakaszban kattintson az **Inventory** elemre. Ekkor megjelenik a **Change Tracking és Inventory** lap.
+Lépjen az Automation-fiókjára, és a **KONFIGURÁCIÓKEZELÉS** területen válassza az **Inventory** megoldást.
+
+A megoldás engedélyezéséhez válassza ki a Log Analytics-munkaterületet és az Automation-fiókot, majd kattintson az **Engedélyezés** gombra. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 ![Az Inventory felvételének konfigurációs szalagcíme](./media/automation-tutorial-installed-software/enableinventory.png)
 
@@ -57,15 +60,31 @@ A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne 
 A megoldás engedélyezését követően a virtuális gépen telepített szoftverekkel és változásokkal kapcsolatos adatok elkezdenek beérkezni a Log Analytics szolgáltatásba.
 Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
+## <a name="onboard-a-vm"></a>Virtuális gép előkészítése
+
+Az Automation-fiókjában keresse meg az **Inventory** megoldást a **KONFIGURÁCIÓKEZELÉS** területen.
+
+Az **+ Azure-beli virtuális gép hozzáadása** elemre kattintva megnyílik a **Virtuális gépek** lap, amelyen kiválaszthat egy meglévő virtuális gépet a listából. Válassza ki az előkészíteni kívánt virtuális gépet. A megnyíló lapon kattintson az **Engedélyezés** gombra a megoldás engedélyezéséhez a virtuális gépen. A rendszer telepíti a Microsoft Management Agentet a virtuális gépre, és konfigurálja az ügynököt, hogy az a megoldás engedélyezésekor konfigurált Log Analytics-munkaterülettel beszélgessen. Az előkészítés végrehajtása eltarthat pár percig. Ezen a ponton kiválaszthat egy új virtuális gépet a listából, és előkészítheti azt.
+
+## <a name="onboard-a-non-azure-machine"></a>Nem Azure-beli gép előkészítése
+
+Nem Azure-beli gépek hozzáadásához telepítse a [Windows-](../log-analytics/log-analytics-agent-windows.md) vagy [Linux](automation-linux-hrw-install.md)-ügynököt, operációs rendszertől függően. Az ügynök telepítése után lépjen az Automation-fiókjára, majd a **KONFIGURÁCIÓKEZELÉS** területen az **Inventory** megoldásra. A **Gépek kezelése** gombra kattintva megjelenik a Log Analytics-munkaterületre jelentő gépek listája, amelyeken a megoldás nincs engedélyezve. Válassza a környezetnek megfelelő beállítást.
+
+* **Engedélyezés az összes elérhető gépen** – Ez a beállítás a megoldást az adott pillanatban a Log Analytics-munkaterületre jelentő összes gépen engedélyezi.
+* **Engedélyezés az összes elérhető és jövőbeli gépen** – Ez a beállítás a megoldást az adott pillanatban a Log Analytics-munkaterületre jelentő összes gépen, majd később a munkaterülethez hozzáadott összes további gépen engedélyezi.
+* **Engedélyezés a kijelölt gépeken** – Ez a beállítás a megoldást csak a kijelölt gépeken engedélyezi.
+
+![Gépek kezelése](./media/automation-tutorial-installed-software/manage-machines.png)
+
 ## <a name="view-installed-software"></a>Telepített szoftverek megtekintése
 
 A Change Tracking és az Inventory megoldás engedélyezését követően az eredmények az **Inventory** lapon tekinthetők meg.
 
-A virtuális gépen kattintson az **Inventory** elemre a **MŰVELETEK** területen.
+Az Automation-fiókban kattintson az **Inventory** elemre a **KONFIGURÁCIÓKEZELÉS** területen.
 
 Az **Inventory** lapon kattintson a **Szoftver** lapra.
 
-A **Szoftver** lapon egy táblázat formátumú lista jeleníti meg a felderített szoftvereket. A szoftverek név és verzió szerint vannak csoportosítva.
+A **Szoftver** lapon egy táblázat listázza a felderített szoftvereket. A szoftverek név és verzió szerint vannak csoportosítva.
 
 Az egyes szoftverrekordok részletes információi megtekinthetők a táblázatban. Ilyen részletek például a szoftver neve, verziója, közzétevője, a legutóbbi frissítés időpontja (a legutóbbi frissítési idő a csoport egyik gépének jelentése alapján), valamint azon gépek száma, amelyekre a szoftver telepítve van.
 
@@ -83,28 +102,29 @@ Például a „Contoso” kifejezésre keresve a rendszer minden olyan szoftvert
 Az Inventory által létrehozott naplóadatok a Log Analyticsbe lesznek továbbítva. Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **Log Analytics** elemre az **Inventory** ablak felső részén.
 
 A rendszer az Inventory-adatokat a **ConfigurationData** típus alatt tárolja.
-A következő Log Analytics-mintalekérdezés azokat a közzétevőket adja vissza, amelyek tartalmazzák a „Microsoft” kifejezést, valamint az egyes közzétevőkhöz tartozó szoftverrekordok számát (szoftvernév és számítógép alapján csoportosítva).
+A következő Log Analytics-mintalekérdezés az Inventory-eredményeket adja vissza, ahol a Közzétevő a „Microsoft Corporation”.
 
-```
+```loganalytics
 ConfigurationData
-| summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 | where ConfigDataType == "Software"
-| search Publisher:"Microsoft"
-| summarize count() by Publisher
+| where Publisher == "Microsoft Corporation"
+| summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
 A naplófájlok a Log Analytics szolgáltatásban való futtatásával és keresésével kapcsolatos további információkért tekintse meg az [Azure Log Analyticsszel](https://docs.loganalytics.io/index) kapcsolatos cikket.
 
 ### <a name="single-machine-inventory"></a>Leltár egyetlen gépről
 
-Egyetlen gép szoftverleltárának megtekintéséhez az Inventory az Azure-beli virtuális gép erőforráslapjáról is elérhető, vagy a Log Analytics segítségével szűrhet a megfelelő gépre. Az alábbi Log Analytics lekérdezési példa egy ContosoVM nevű gép szoftverlistáját adja vissza.
+Egyetlen gép szoftverleltárának megtekintéséhez az Inventory az Azure-beli virtuális gép erőforráslapjáról is elérhető, vagy a Log Analytics segítségével szűrhet a megfelelő gépre.
+Az alábbi Log Analytics lekérdezési példa egy ContosoVM nevű gép szoftverlistáját adja vissza.
 
-```
+```loganalytics
 ConfigurationData
-| where ConfigDataType == "Software" 
+| where ConfigDataType == "Software"
 | summarize arg_max(TimeGenerated, *) by SoftwareName, CurrentVersion
 | where Computer =="ContosoVM"
 | render table
+| summarize by Publisher, SoftwareName
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -112,7 +132,9 @@ ConfigurationData
 Ez az oktatóanyag bemutatta, hogyan tekintheti meg a szoftverleltárt, és ennek keretében hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Virtuális gép felvétele a Change Tracking és az Inventory megoldásba
+> * A megoldás engedélyezése
+> * Azure-beli virtuális gép előkészítése
+> * Nem Azure-beli virtuális gép előkészítése
 > * Telepített szoftverek megtekintése
 > * Telepített szoftverek keresése az Inventory-naplókban
 

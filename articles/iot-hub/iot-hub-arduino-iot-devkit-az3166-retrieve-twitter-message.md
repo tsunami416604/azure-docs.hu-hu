@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 8bcc1b2c76ff1e312d1435997ef6d677656510d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy Tweetet a Shake – letölteni egy Twitter-üzenetet az Azure Functions!
 
@@ -188,6 +188,6 @@ Ha más problémákat tapasztal, tekintse meg a [– gyakori kérdések](https:/
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik megismerte a DevKit eszköz csatlakoztatása az Azure IoT Suite és lekérni egy tweetet, az alábbiakban a javasolt lépéseket:
+Most, hogy rendelkezik megismerte a DevKit eszköz csatlakoztatása az Azure IoT távoli megfigyelési megoldásgyorsító és lekérni egy tweetet, az alábbiakban a javasolt lépéseket:
 
-* [Az Azure IoT Suite – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
+* [Az Azure IoT távoli figyelési megoldást gyorsító áttekintése](https://docs.microsoft.com/azure/iot-suite/)

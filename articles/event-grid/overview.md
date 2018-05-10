@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0be2952dc39064eaf2814806e81f16e882a6a6fe
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event rács bemutatása
 
@@ -24,11 +24,15 @@ Esemény rács jelenleg a következő régióban:
 
 * Ázsia óceáni térség délkeleti régiója
 * Ázsiai keleti régiója
+* Kelet-Ausztrália
+* Délkelet-Ausztrália
 * USA középső régiója
 *   USA keleti régiója
 *   USA 2. keleti régiója
 * Nyugat-Európa
 * Észak-Európa
+* Kelet-Japán
+* Nyugat-Japán
 *   USA nyugati középső régiója
 *   USA nyugati régiója
 *   USA nyugati régiója, 2.
@@ -45,10 +49,13 @@ Jelenleg az Azure-szolgáltatásokat esemény rácshoz küldő események támog
 * Egyéni kapcsolatos témakörök
 * Event Hubs
 * IoT Hub
+* Media Services
 * Erőforráscsoportok (műveletek)
 * Service Bus
 * Storage Blob
 * Tárolási célú v2 (GPv2)
+
+Hivatkozásokat minden eseményforrás használatát mutatják be, lásd: [eseményforrások Azure esemény rácsban](event-sources.md).
 
 ## <a name="event-handlers"></a>Az eseménykezelők
 
@@ -57,11 +64,15 @@ Jelenleg az Azure-szolgáltatásokat kezelési események esemény rácsban tám
 * Azure Automation
 * Azure Functions
 * Event Hubs
+* Hibrid kapcsolatok
 * Logic Apps
 * Microsoft Flow
+* Queue Storage
 * Webhookok
 
 Az Azure Functions kezelőként használjon az esemény rács eseményindító általános HTTP-eseményindítók helyett. Az Event Grid automatikusan érvényesíti az Event Grid függvény eseményindítóit. Általános HTTP-eseményindítók esetén meg kell valósítani az [érvényesítési választ](security-authentication.md#webhook-event-delivery).
+
+Hivatkozásokat minden eseménykezelő használatát mutatják be, lásd: [eseménykezelők Azure esemény rácsban](event-handlers.md).
 
 ## <a name="concepts"></a>Alapelvek
 

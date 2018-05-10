@@ -6,27 +6,27 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 4b9ab8aaef091573d204b8de58115cc03707aa01
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Esemény rács biztonsági és hitelesítési 
 
 Az Azure Event rács három típusú hitelesítés van:
 
 * Esemény-előfizetések
-* Esemény közzététele
+* Események közzététele
 * WebHook esemény kézbesítés
 
 ## <a name="webhook-event-delivery"></a>WebHook esemény kézbesítés
 
 Webhook olyan események fogadása Azure esemény rács számos módja közül. Amikor készen áll az új esemény, az esemény rács Webhook HTTP-kérelmet küld a beállított HTTP-végpont a törzsben szereplő eseménnyel.
 
-Ha saját WebHook végpont regisztrálása esemény rács, küld, akkor egy POST kérést egy egyszerű érvényességi kóddal igazolnia a végpont tulajdonosa. Az alkalmazás kell válaszolnia által echo vissza az érvényesítési kódot. Esemény rács WebHook végpontok, amelyek még nem kapott az érvényesítés nem kézbesíteni.
+Ha saját WebHook végpont regisztrálása esemény rács, küld, akkor egy POST kérést egy egyszerű érvényességi kóddal igazolnia a végpont tulajdonosa. Az alkalmazás kell válaszolnia által echo vissza az érvényesítési kódot. Esemény rács WebHook végpontok, amelyek még nem kapott az érvényesítés nem kézbesíteni. Ha egy külső API szolgáltatását használja (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), előfordulhat, hogy nem fogja tudni a Ellenőrzőkód programozottan echo. Ezek a szolgáltatások esetén manuálisan ellenőrizheti az előfizetés az előfizetés érvényesítése esemény küldött érvényesítési URL-cím. Másolja az URL-címet, és a többi ügyfél, illetve a webböngésző keresztül GET kérés küldése.
 
 ### <a name="validation-details"></a>Ellenőrzési részletek
 
@@ -34,6 +34,7 @@ Ha saját WebHook végpont regisztrálása esemény rács, küld, akkor egy POST
 * Az esemény "AEG ügyet Eseménytípus: SubscriptionValidation" fejléc értéke tartalmazza.
 * Az esemény törzsében van ugyanazon séma más esemény rács eseményként is rögzíti.
 * Az eseményadat tartalmazza egy véletlenszerűen generált karakterlánc "validationCode" tulajdonságot. Például "validationCode: acb13...".
+* Az eseményadat tartalmazza egy URL-cím "validationUrl" tulajdonság manuálisan a az előfizetés érvényesítése.
 * A tömb csak az érvényesítési esemény tartalmazza. A további események küldése egy külön kérelmet a után echo vissza az érvényesítési kódot.
 
 Példa SubscriptionValidationEvent van az alábbi példában látható módon:
@@ -44,7 +45,8 @@ Példa SubscriptionValidationEvent van az alábbi példában látható módon:
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "subject": "",
   "data": {
-    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
+    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6",
+    "validationUrl": "https://rp-eastus2.eventgrid.azure.net:553/eventsubscriptions/estest/validate?id=B2E34264-7D71-453A-B5FB-B62D0FDC85EE&t=2018-04-26T20:30:54.4538837Z&apiVersion=2018-05-01-preview&token=1BNqCxBBSSE9OnNSfZM4%2b5H9zDegKMY6uJ%2fO2DFRkwQ%3d"
   },
   "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
   "eventTime": "2018-01-25T22:12:19.4556811Z",
@@ -60,6 +62,9 @@ Végpont igazolva, hogy echo vissza a Ellenőrzőkód validationResponse tulajdo
   "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
 }
 ```
+
+Vagy manuálisan ellenőrizze az előfizetés GET kérést küld az érvényesítési URL-címet. Az esemény előfizetés amíg érvényesítve függő állapotban marad.
+
 ### <a name="event-delivery-security"></a>Esemény szállítási biztonság
 
 Egy esemény előfizetés létrehozásakor lekérdezési paraméterek hozzáadásával a webhook URL-cím biztonságossá teheti a webhook-végpontot. Állítsa be a következő lekérdezési paraméterek kell lennie, mint a titkos kulcs egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token) használó a webhook is ismeri fel az esemény érkezik esemény rács érvényes engedélyekkel. Esemény rács minden esemény kézbesítése a következő webhook vegye fel a lekérdezési paramétereket.

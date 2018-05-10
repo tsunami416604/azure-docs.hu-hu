@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: c161b8fb70f20ef7d82834e6c61daff759726b93
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Az Azure virtuálisgép-skálázási készletekben – gyakori kérdések
 
@@ -450,9 +450,9 @@ A bővítmény-definíció a virtuálisgép-méretezési, ha a modell frissül, 
 
 Ha egy meglévő virtuális gép szolgáltatás beforrott, újraindítás jelenik meg, és vannak a bővítmények nem futtatják újra. Ha rendszerképének, például a forrás lemezkép az operációs rendszer meghajtó lecserélését is. Bármely futtató és specializációt bővítmények, például a legújabb modellből futnak.
  
-### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-azure-ad-domain"></a>Hogyan csatlakozzon a beállítása az Azure AD-tartomány virtuálisgép-méretezési?
+### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>Hogyan csatlakozzon a egy virtuálisgép-méretezési állítsa be az Active Directory-tartományhoz?
 
-A virtuálisgép-méretezési beállítása az Azure Active Directory (Azure AD) tartományhoz csatlakozik egy bővítmény adhat meg. 
+A virtuálisgép-méretezési állítsa be az Active Directory (AD) tartományhoz csatlakozik egy bővítmény adhat meg. 
 
 Egy bővítmény megadásához használja a JsonADDomainExtension tulajdonság:
 

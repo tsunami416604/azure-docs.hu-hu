@@ -71,7 +71,7 @@
 #### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
-### [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](cloud-services-dotnet-diagnostics-storage.md)
+### [Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](../monitoring-and-diagnostics/azure-diagnostics-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json )
 ### [Felhőszolgáltatás követése a Diagnostics használatával](cloud-services-dotnet-diagnostics-trace-flow.md)
 
 ## Hibaelhárítás

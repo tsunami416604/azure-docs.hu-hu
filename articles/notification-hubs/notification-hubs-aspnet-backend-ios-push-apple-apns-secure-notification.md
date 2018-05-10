@@ -1,10 +1,10 @@
 ---
-title: "Biztonságos Azure Notification Hubs leküldéses"
-description: "Megtudhatja, hogyan biztonságos leküldéses értesítések küldéséhez iOS-alkalmazásokhoz az Azure-ból. Kódminták Objective-C és C#."
+title: Biztonságos Azure Notification Hubs leküldéses
+description: Megtudhatja, hogyan biztonságos leküldéses értesítések küldéséhez iOS-alkalmazásokhoz az Azure-ból. Kódminták Objective-C és C#.
 documentationcenter: ios
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: e5f09fb3716303bb21fe7442aa6fa8832174838e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/25/2018
+ms.author: dimazaid
+ms.openlocfilehash: d3ba967a164a35af5bf66f7e74d5f95b5dc2a37f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Biztonságos Azure Notification Hubs leküldéses
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Magas szinten a folyamat a következőképpen történik:
    * Az eszköz kapcsolatot létesít a háttér-kérő a biztonságos tartalom.
    * Az alkalmazás a tartalom megjeleníthető értesítésként az eszközön.
 
-Fontos megjegyezni, hogy az előző folyamatában (és ebben az oktatóanyagban), feltételezzük, hogy az eszköz tárol egy hitelesítési jogkivonatot helyi tároló, a felhasználó bejelentkezése után. Ez biztosítja, hogy teljesen zökkenőmentes élményt, mivel az eszköz le az értesítési biztonságos tartalom a tokent. Ha az alkalmazás nem tárolja a hitelesítési tokenek az eszközön, vagy ezeket a jogkivonatokat is lejárt, az eszköz alkalmazást, és az értesítés fogadásakor megjelenjen-e a felhasználó megkérdezése általános értesítési indíthatja el az alkalmazást. Az alkalmazás majd hitelesíti a felhasználót, és az értesítési tartalom jeleníti meg.
+Fontos megjegyezni, hogy az előző folyamatában (és ebben az oktatóanyagban), feltételezzük, hogy az eszköz tárol egy hitelesítési jogkivonatot helyi tároló, a felhasználó bejelentkezése után. Ez biztosítja, hogy zökkenőmentes élményt, mivel az eszköz le az értesítési biztonságos tartalom a tokent. Ha az alkalmazás nem tárolja a hitelesítési tokenek az eszközön, vagy ezeket a jogkivonatokat is lejárt, az eszköz alkalmazást, és az értesítés fogadásakor megjelenjen-e a felhasználó megkérdezése általános értesítési indíthatja el az alkalmazást. Az alkalmazás majd hitelesíti a felhasználót, és az értesítési tartalom jeleníti meg.
 
 Biztonságos leküldéses az oktatóanyag bemutatja, hogyan biztonságosan leküldéses értesítés küldéséhez. Az oktatóanyag épít, a [felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyag, ezért el kell végeznie a lépéseket, hogy az oktatóanyagban először.
 
@@ -58,7 +58,7 @@ Most, hogy módosította, a app háttér küldése csak a *azonosító* egy ért
 
 E cél eléréséhez, igazolnia kell a biztonságos tartalmat lekérjen a app háttér-logika írását.
 
-1. A **AppDelegate.m**, győződjön meg arról, hogy az alkalmazás regisztrálása a beavatkozás nélküli értesítések, akkor feldolgozza a háttérrendszer által küldött értesítés-azonosítója. Adja hozzá a **UIRemoteNotificationTypeNewsstandContentAvailability** didFinishLaunchingWithOptions beállítást:
+1. A **AppDelegate.m**, győződjön meg arról, hogy az alkalmazás regiszterekben csendes értesítéseket, akkor feldolgozza az értesítés-azonosítója küldése a háttérrendszerből. Adja hozzá a **UIRemoteNotificationTypeNewsstandContentAvailability** didFinishLaunchingWithOptions beállítást:
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 2. Az a **AppDelegate.m** adja hozzá az implementációs szakaszban a következő nyilatkozattal felső:

@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 72c3968b59fda10d81af553cbf2324a2683c596b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65e461eaebaafab6f8a95bed333928d017c540d4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy a hálózati illesztő törlése
 
 Megtudhatja, hogyan hozzon létre, beállításainak módosítása és törlése a hálózati adaptert. Egy adott hálózati csatoló lehetővé teszi, hogy az Azure virtuális gép internet, Azure és a helyszíni erőforrások folytatott kommunikációhoz. Az Azure portál használatával virtuális gép létrehozásakor a portál alapértelmezett beállításokkal, hoz létre egy hálózati adapterrel. Ehelyett választhatja, hogy egyéni beállításokkal hozza létre a hálózati adapterek, és adja hozzá a virtuális gép egy vagy több hálózati illesztőre létrehozásakor. Érdemes lehet is, módosíthatja az alapértelmezett hálózati kapcsolati beállítások egy meglévő hálózati illesztő. Ez a cikk azt ismerteti, hogyan hozzon létre egy adott hálózati csatoló egyéni beállításokkal, módosítsa a meglévő beállítások, például hálózati szűrő (hálózati biztonsági csoport) hozzárendelés alhálózat-hozzárendelés, DNS-kiszolgáló beállításai vagy IP-továbbítást, és a hálózati illesztő törlése.
 
 Ha kell hozzáadása, módosítása, vagy távolítsa el a hálózati illesztő IP-címek, lásd: [kezelése IP-címek](virtual-network-network-interface-addresses.md). Ha hozzá kell adnia, vagy távolítsa el a hálózati adapterek virtuális gépekről, tekintse meg a hálózati adapterek [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md).
-
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -37,7 +36,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 - Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.4.1 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 - Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.28 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
-A fiók az Azure-bA kell rendelni, a hálózat közreműködő szerepkört az előfizetés minimális, engedélyeit. Szerepkörök és engedélyek hozzárendelése a fiókok kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+Hozzá kell rendelni a fiókot, jelentkezzen be, vagy csatlakozzon az Azure-ba, a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [engedélyek ](#permissions).
 
 ## <a name="create-a-network-interface"></a>A hálózati illesztő létrehozása
 
@@ -88,7 +87,7 @@ Megtekintheti és módosíthatja a legtöbb beállítást egy adott hálózati c
     - **Tulajdonságok:** jeleníti meg a hálózati felületén, beleértve a MAC-címét (Ha a hálózati adapter nincs csatlakoztatva a virtuális géphez üres), és az előfizetés megtalálható a vonatkozó beállítások kulcsát.
     - **Hatékony biztonsági szabályokat:** biztonsági szabály szerepel a listában, ha a hálózati illesztő csatlakozik egy futó virtuális gépre, és az NSG tartozik a hálózati adapter vagy az alhálózat van hozzárendelve. Mi jelenjen meg kapcsolatos további információkért lásd: [hatékony biztonsági szabályok megtekintéséhez](#view-effective-security-rules). Az NSG-k kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](security-overview.md).
     - **Hatékony útvonalak:** útvonalak találhatók, ha a hálózati illesztő csatlakozik egy futó virtuális gépre. Az útvonalak is az Azure alapértelmezett útvonalak, bármely felhasználó által definiált útvonalak és a BGP-útvonalakat, amelyek az alhálózat, a hálózati illesztő hozzá van rendelve. Előfordulhat, hogy létezik. Mi jelenjen meg kapcsolatos további információkért lásd: [hatékony útvonalak megtekintése](#view-effective-routes). Az Azure alapértelmezett útvonalak és a felhasználó által definiált útvonalak kapcsolatos további információkért lásd: [Útválasztás – áttekintés](virtual-networks-udr-overview.md).
-    - **Közös Azure Resource Manager-beállítások:** közös Azure Resource Manager beállításaival kapcsolatos további tudnivalókért lásd: [tevékenységnapló](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [címkék](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags), [Zárolja](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), és [automatizálási parancsfájl](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
+    - **Közös Azure Resource Manager-beállítások:** közös Azure Resource Manager beállításaival kapcsolatos további tudnivalókért lásd: [tevékenységnapló](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Zárolja](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), és [automatizálási parancsfájl](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Parancsok**
 
@@ -204,7 +203,7 @@ Ha töröl egy adott hálózati csatoló, bármely MAC vagy IP-címek hozzárend
 
 ## <a name="resolve-connectivity-issues"></a>Kapcsolódási problémák megoldásához
 
-Ha nem tud kommunikálni a hálózati adapterre vagy a virtuális gép, a hálózati biztonsági csoport biztonsági szabályai, vagy egy adott hálózati csatoló hatékony útvonalak okozza a problémát. Lehetősége van a következő a probléma megoldása érdekében:
+Ha nem lehet kommunikálni az vagy egy virtuális gép, hálózati biztonsági csoport biztonsági szabályai vagy egy adott hálózati csatoló hatékony útvonalakat, okozza a problémát. Lehetősége van a következő a probléma megoldása érdekében:
 
 ### <a name="view-effective-security-rules"></a>Hatékony biztonsági szabályok megtekintése
 
@@ -240,11 +239,30 @@ Az Azure hálózati figyelőt a következő ugrás szolgáltatása is segítség
 - Az Azure CLI: [az hálózati nic megjelenítése-hatályos-útvonal-tábla](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
 - PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
 
-## <a name="next-steps"></a>További lépések
-Hozzon létre egy virtuális gép több hálózati adapterrel vagy IP-címek, olvassa el a következő cikkeket:
+## <a name="permissions"></a>Engedélyek
 
-|Tevékenység|Eszköz|
-|---|---|
-|Több hálózati adapterrel rendelkező virtuális gép létrehozása|[Parancssori felület](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Hozzon létre egy hálózati adapter virtuális több IPv4-címekkel|[Parancssori felület](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
-|Hozzon létre egy hálózati adapter virtuális magánhálózati IPv6-cím (mögött egy Azure Load Balancer)|[Parancssori felület](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager-sablon](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+A hálózati adaptereken feladatait, a fiókot hozzá kell rendelni a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkör, amely hozzá van rendelve a megfelelő engedélyekkel a következő táblázatban felsorolt:
+
+| Műveletek                                                                     | Name (Név)                                                      |
+| ---------                                                                  | -------------                                             |
+| Microsoft.Network/networkInterfaces/read                                   | Hálózati illesztő beolvasása                                     |
+| Microsoft.Network/networkInterfaces/write                                  | Létrehozni vagy frissíteni a hálózati illesztőt                        |
+| Microsoft.Network/networkInterfaces/join/action                            | Egy hálózati adapter csatlakoztatása egy virtuális géphez           |
+| Microsoft.Network/networkInterfaces/delete                                 | A hálózati illesztő törlése                                  |
+| Microsoft.Network/networkInterfaces/joinViaPrivateIp/action                | Egy erőforrás csatlakoztatása egy hálózati adapteren keresztül egy szerviz...     |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action             | Hálózati illesztő effektív útvonaltábla beolvasása               |
+| Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action  | Hálózati illesztő hatékony biztonsági csoport lekérése           |
+| Microsoft.Network/networkInterfaces/loadBalancers/read                     | Hálózati illesztő terheléselosztóinak beolvasása                      |
+| Microsoft.Network/networkInterfaces/serviceAssociations/read               | Szolgáltatás-társítás beolvasása                                   |
+| Microsoft.Network/networkInterfaces/serviceAssociations/write              | Létrehozni vagy frissíteni a szolgáltatás társítása                    |
+| Microsoft.Network/networkInterfaces/serviceAssociations/delete             | Szolgáltatás-társítás törlése                                |
+| Microsoft.Network/networkInterfaces/serviceAssociations/validate/action    | Ellenőrizze a szolgáltatás társítása                              |
+| Microsoft.Network/networkInterfaces/ipconfigurations/read                  | Hálózati illesztő IP-konfiguráció beolvasása                    |
+
+## <a name="next-steps"></a>További lépések
+
+- Segítségével több hálózati adapterrel rendelkező virtuális gép létrehozása a [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- Hozzon létre egy hálózati adapter virtuális gép, és több IPv4-címek használata a [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) vagy [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+- Hozzon létre egy hálózati adapter virtuális egy titkos IPv6 cím (mögött egy Azure Load Balancer) használatával a [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), vagy [Azure Resource Manager-sablon](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Hozzon létre egy hálózati illesztő használatával [PowerShell](powershell-samples.md) vagy [Azure CLI](cli-samples.md) parancsfájlok, vagy az Azure használatával [Resource Manager-sablonok](template-samples.md)
+- Létrehozása és alkalmazása [Azure házirend](policy-samples.md) virtuális hálózatok

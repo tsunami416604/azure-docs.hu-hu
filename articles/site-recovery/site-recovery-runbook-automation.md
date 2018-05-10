@@ -12,13 +12,13 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 942c7f13c5cb37017f8907c9f0c94493af53d008
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a0a57e4a604a8cadedd5d715acf5f76a147da6d1
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbook hozzáadása a helyreállítási terv
 Ez a cikk azt ismerteti hogyan integrálható az Azure Site Recovery Azure Automation segítséget a helyreállítási terv. A helyreállítási terv lehet levezényelni a Site Recovery védett virtuális gépek helyreállítása. A helyreállítási terv a replikációs másodlagos felhőhöz, és a replikálást az Azure-működik. A helyreállítási terv is segít a helyreállítási **következetesen pontos**, **ismételhető**, és **automatizált**. A rendszer átadja a virtuális gépek Azure-ba, ha az integráció az Azure Automation szolgáltatásban, a helyreállítási terv terjeszti ki. A runbookok, amelyek hatékony automatizálási feladatok végrehajtásához használható.

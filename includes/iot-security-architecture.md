@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 62856d4743d853d5685503b5c21faedc46575e55
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-architecture"></a>Az eszközök internetes hálózatát biztonsági architektúrája
 
 A rendszer tervezésekor fontos megérteni, hogy a rendszer potenciális fenyegetések, majd a megfelelő védelmekkel ennek megfelelően adja meg, a rendszer tervezett és tervezett. Fontos tervezési kezdetétől a termék a biztonságot szem előtt tartva, mert ismertetése, hogy egy támadó lehet a rendszerbe segítségével győződjön meg arról, hogy megfelelő megoldást legyenek érvényben az elejétől.
@@ -220,7 +236,7 @@ Eszközök, az eszközök és az mező átjárók és az eszköz és a felhő á
 
 **Információk felfedése:** egy támadó előfordulhat, hogy kihallgassa a közvetítés és engedély nélkül információkhoz **szolgáltatásmegtagadást:** egy támadó előfordulhat, hogy a szórási jel dzsem, és a megtagadási információk terjesztési
 
-#### <a name="storage"></a>Tárolás
+#### <a name="storage"></a>Storage
 
 Minden eszköz és a mező átjáró storage (az adatok, az operációs rendszer lemezkép tárolási Queuing ideiglenes) rendelkezik.
 

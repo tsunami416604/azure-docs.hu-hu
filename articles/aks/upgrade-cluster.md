@@ -1,6 +1,6 @@
 ---
-title: Azure Container Service- (AKS-) fürt frissítése
-description: Azure Container Service- (AKS-) fürt frissítése
+title: Az Azure Kubernetes szolgáltatás (AKS) fürt frissítése
+description: Az Azure Kubernetes szolgáltatás (AKS) fürt frissítése
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 5f5cfc49bd7b5e1c06adf97bc6f6ba88fc81f77a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 3fae465512501b0642d0215df7b73c9879a1a3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="upgrade-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt frissítése
+# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Az Azure Kubernetes szolgáltatás (AKS) fürt frissítése
 
-Az Azure Container Service (AKS) segítségével egyszerűen hajthatók végre az általános felügyeleti tevékenységek, például a Kubernetes-fürtök frissítése.
+Az Azure Kubernetes szolgáltatás (AKS) megkönnyíti a Kubernetes fürtök frissítése beleértve közös felügyeleti feladatok elvégzésére.
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS-fürt frissítése
 
@@ -100,7 +100,7 @@ Kimenet:
 }
 ```
 
-Győződjön meg arról, hogy az sikeres volt-e a frissítés a `az aks show` parancsot.
+Az `az aks show` paranccsal ellenőrizze, hogy sikerült-e a frissítés.
 
 ```azurecli-interactive
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table

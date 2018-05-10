@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9fb1426e66df6cd8085342743b7d045c297743e5
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9bf51bf6a4e2b84771edb9841e1b0ae18953826c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-phone-silverlight-apps"></a>Ismerkedés az Azure Mobile Engagement Windows Phone Silverlight-alkalmazásokkal való használatával
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobil
 Ez az oktatóanyag a Mobile Engagementet használó egyszerű küldési forgatókönyvet mutat be. Az oktatóanyagban létrehoz egy üres Windows Phone Silverlight-alkalmazást, amely alapszintű adatokat gyűjt, és leküldéses értesítéseket fogad a Microsoft leküldéses értesítéseket kezelő szolgáltatása (MPNS) használatával.
 
 > [!NOTE]
-> Az Azure Mobile Engagement szolgáltatást 2018 márciusától megszüntetjük, és jelenleg csak meglévő ügyfelek számára érhető el. További információkért lásd: [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> Az Azure Mobile Engagement szolgáltatást 2018 márciusától megszüntetjük, és jelenleg csak meglévő ügyfelek számára érhető el. További információkért lásd: [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/).
 
 > [!NOTE]
 > A Windows Phone 8.1-es és korábbi verziójú projektek nem támogatottak a Visual Studio 2017-ben.  További információ: [A Visual Studio 2017 platform célcsoportkezelése és kompatibilitása](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).

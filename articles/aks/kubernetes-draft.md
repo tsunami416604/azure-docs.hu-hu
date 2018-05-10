@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: f474921acbd3a5082afea03dd982bcfa9c52dcda
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-draft-with-azure-container-service-aks"></a>Az Azure Tárolószolgáltatás (AKS) vázlat használata
+# <a name="use-draft-with-azure-kubernetes-service-aks"></a>Vázlat használata Azure Kubernetes szolgáltatásnál (AKS)
 
 Vázlat egy nyílt forráskódú eszköz, amely segít tartalmazhat, és ezek Kubernetes fürtben, így a fejlesztési ciklus – a "belső hurkot" koncentrált fejlesztési összpontosíthat szabadon tároló üzembe helyezése. Vázlat működik, a kód még fejlesztés alatt, de előtt véglegesítése verziókövetésbe. Vázlat gyorsan központilag telepítheti az alkalmazás Kubernetes kód változás. Kapcsolatos további információkért lásd: a [dokumentációnkat a Githubon vázlatszintű][draft-documentation].
 
@@ -27,7 +27,7 @@ A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozot
 
 Meg kell egy titkos Docker beállításjegyzék Azure tároló beállításjegyzék (ACR) is. ACR példány telepítésével kapcsolatos útmutatásért lásd: a [Azure tároló beállításjegyzék gyors üzembe helyezés][acr-quickstart].
 
-Helm is telepíteni kell a AKS fürtben. Helm telepítésével kapcsolatos további információkért lásd: [használata Helm Azure tároló szolgáltatás (AKS)][aks-helm].
+Helm is telepíteni kell a AKS fürtben. Helm telepítésével kapcsolatos további információkért lásd: [használata Helm Azure Kubernetes szolgáltatás (AKS)][aks-helm].
 
 Végül, telepítenie kell a [Docker](https://www.docker.com).
 

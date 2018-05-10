@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: af853a378a36c97edd74ea99fc5dcce92a073fea
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b8b0742054b0348ded39b6357d00f6eac3449f99
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Ütemezés és a feladatok (Java)
 
@@ -64,7 +64,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-Ha inkább hozzon létre az eszközidentitást programozott módon, olvassa el a megfelelő részt a [csatlakoztassa az eszközt az IoT hub Java használatával](iot-hub-java-java-getstarted.md#create-a-device-identity) cikk. Használhatja a [IoT-bővítményt az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) hozzáad egy eszközt az IoT hub eszköz.
+Használhatja a [IoT-bővítményt az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) hozzáad egy eszközt az IoT hub eszköz.
 
 ## <a name="create-the-service-app"></a>A service-alkalmazás létrehozása
 

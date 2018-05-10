@@ -46,7 +46,7 @@
     - name: Virtuális hálózat az Azure-szolgáltatásokhoz
       href: virtual-network-for-azure-services.md
     - name: Tárolóalapú hálózatkezelés
-      href: container-networking.md
+      href: ../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: Az üzletmenet folytonossága
       href: virtual-network-disaster-recovery-guidance.md
     - name: IP-címzés

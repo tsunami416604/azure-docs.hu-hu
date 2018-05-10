@@ -54,6 +54,12 @@
 ### [Áttelepítés az .NET 2.0-ba](key-vault-dotnet2api-release-notes.md)
 ### [Webalkalmazás titkos kulcsának mentése](vs-secure-secret-appsettings.md)
 ### [Szolgáltatáshitelesítés a .NET-keretrendszerrel](service-to-service-authentication.md)
+### A Visual Studio használata
+#### [A Key Vault csatlakoztatott szolgáltatás használata](vs-key-vault-add-connected-service.md)
+#### [Bevezetés az ASP.NET-projektek használatába](vs-key-vault-aspnet-get-started.md)
+#### [Mi történt az ASP.NET-projektemmel?](vs-key-vault-aspnet-what-happened.md)
+#### [Bevezetés az ASP.NET Core-projektek használatába](vs-key-vault-aspnet-core-get-started.md)
+#### [Mi történt az ASP.NET Core-projektemmel?](vs-key-vault-aspnet-core-what-happened.md)
 
 # További források
 ## [A szolgáltatás áttekintése](https://azure.microsoft.com/services/key-vault/)

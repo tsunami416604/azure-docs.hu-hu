@@ -30,6 +30,8 @@
       href: app-service-app-service-environment-geo-distributed-scale.md
     - name: ASEv1
       href: app-service-app-service-environment-intro.md
+    - name: Diagnosztika
+      href: ../app-service-diagnostics.md
 - name: Útmutatók
   items:
     - name: ASE használata
@@ -81,7 +83,7 @@
       href: /powershell
     - name: REST API
       href: /rest/api/appservice/
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'

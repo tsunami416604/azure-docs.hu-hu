@@ -1,6 +1,6 @@
 ---
-title: Azure tárolószolgáltatás (AKS) Feldolgozóegységekkel
-description: Azure tárolószolgáltatás (AKS) Feldolgozóegységekkel használata
+title: Feldolgozóegységekkel Azure Kubernetes-szolgáltatáshoz (AKS)
+description: Feldolgozóegységekkel használata Azure Kubernetes-szolgáltatáshoz (AKS)
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 6c30c966ad88f904ee652d88abd1717819077d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 1e07845591583c7159958d4e2eb7eeb2f126b75f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="using-gpus-on-aks"></a>A AKS Feldolgozóegységekkel használatával
+# <a name="using-gpus-on-aks"></a>GPU-k használata az AKS-en
 
 AKS kompatibilis GPU csomópont készletek létrehozását támogatja. Azure tartalmaz egy vagy több GPU engedélyezett virtuális gépeket. GPU engedélyezve van a virtuális gépek számítási igényű grafikai igényű és a képi megjelenítés munkaterhelések készültek. A GPU listáját engedélyezve van a virtuális gépek található [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
 Feldolgozóegységekkel általában a számítási-igényes munkaterhelések, például grafikai igényű és a képi megjelenítés munkaterhelések van szükség. Tekintse meg a következő [dokumentum](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) meghatározásához a munkaterhelés jobb Virtuálisgép-méretet.
-Azt javasoljuk, hogy a minimális méret `Standard_NC6` az Azure-tároló szolgáltatás (AKS) csomópontok.
+Azt javasoljuk, hogy a minimális méret `Standard_NC6` az Azure Kubernetes szolgáltatás (AKS) csomópontok.
 
 > [!NOTE]
 > GPU engedélyezett virtuális gépeket tartalmaz, amelyek magasabb tarifa- és régió rendelkezésre állási hatálya alá tartozik, speciális hardverre. További információkért lásd: a [árképzési](https://azure.microsoft.com/pricing/) eszköz és [régiónkénti elérhetőség](https://azure.microsoft.com/global-infrastructure/services/) webhelyen olvashat.
@@ -50,7 +50,7 @@ az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
 
 ## <a name="confirm-gpus-are-schedulable"></a>Győződjön meg róla Feldolgozóegységekkel ütemezhető
 
-Futtassa a következő parancsok futtatásával győződjön meg róla a Feldolgozóegységekkel keresztül Kubernetes ütemezhető. 
+Futtassa a következő parancsok futtatásával győződjön meg róla a Feldolgozóegységekkel keresztül Kubernetes ütemezhető.
 
 A csomópontok aktuális listájának lekérdezése.
 
@@ -165,7 +165,7 @@ spec:
       volumes:
         - name: nvidia
           hostPath:
-            path: /usr/local/nvidia         
+            path: /usr/local/nvidia
 ```
 
 Használja a [kubectl létrehozása] [ kubectl-create] parancsot kell futtatni a feladatot. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.

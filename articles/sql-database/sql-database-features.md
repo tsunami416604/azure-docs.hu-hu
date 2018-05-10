@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: bf9069df55352b4d7884e989be741fc42e06bfdf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7e3b084f833b6d84e5c5102555eb586e306e9de8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
@@ -51,7 +51,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Tartalmazott felhasználók](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Igen | Igen |
 | [Attribútumfolyam nyelvi kulcsszavak ellenőrzése](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Igen | Igen |
 | [Kereszt-adatbázis-lekérdezések](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem - látható [rugalmas lekérdezések](sql-database-elastic-query-overview.md) | Igen, valamint [rugalmas lekérdezések](sql-database-elastic-query-overview.md) |
-| [Adatbázisközi tranzakciók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem | Igen |
+| [Adatbázisközi tranzakciók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem | Igen – lásd: [csatolt kiszolgáló különbségek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#linked-servers) |
 | [A kurzorok](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | Igen |Igen | 
 | [Adatok tömörítése](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | Igen |Igen |
 | [Az adatbázisbeli levelezés](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | Nem | Igen |
@@ -69,8 +69,8 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [A DML-utasítások](https://docs.microsoft.com/sql/t-sql/queries/queries) | Igen | Igen |
 | [A DML-eseményindítók](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | Most – tekintse meg az egyes utasítások |  Igen |
 | [DMV-k](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Most – tekintse meg az egyes dinamikus felügyeleti nézetek |  Igen – lásd: [T-SQL különbségek](sql-database-managed-instance-transact-sql-information.md) |
-|[Dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[Igen](sql-database-dynamic-data-masking-get-started.md)| Igen |
-| [Rugalmas készletek](sql-database-elastic-pool.md) | Igen | egy felügyelt példányban lehet több adatbázis ugyanazon erőforráskészletet használó |
+|[Dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[Igen](sql-database-dynamic-data-masking-get-started.md)| [Igen](sql-database-dynamic-data-masking-get-started.md) |
+| [Rugalmas készletek](sql-database-elastic-pool.md) | Igen | Beépített-felügyelt egypéldányos rendelkezhet több adatbázis ugyanazon erőforráskészletet használó |
 | [Eseményértesítések](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nem - látható [riasztások](sql-database-insights-alerts-portal.md) | Igen |
 | [Kifejezések](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Igen | Igen |
 | [Bővített események](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Egyes - láthatnak [kiterjesztett események az SQL-adatbázis](sql-database-xevent-db-diff-from-svr.md) | Igen – lásd: [kiterjesztett események különbségek ](sql-database-managed-instance-transact-sql-information.md#extended-events) |
@@ -83,7 +83,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Georeplikáció](sql-database-geo-replication-overview.md) | Igen | Nem |
 | [Graph feldolgozása](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Igen | Igen |
 | [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [csak a prémium és üzleti Critial rétegek](sql-database-in-memory.md) | Nem |
-| [JSON-adatok támogatása](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | Igen | Igen |
+| [JSON-adatok támogatása](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Igen](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [Igen](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |
 | [Nyelvi elemei](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Most – tekintse meg az egyéni elemekké |  Igen – lásd: [T-SQL különbségek](sql-database-managed-instance-transact-sql-information.md) |
 | [Csatolt kiszolgálók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem - látható [rugalmas lekérdezés](sql-database-elastic-query-horizontal-partitioning.md) | Csak az SQL Server és SQL-adatbázis |
 | [Naplóküldés](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) |[Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) |
@@ -103,7 +103,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Csoportházirend-alapú felügyelet](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nem | Nem |
 | [Predikátumok](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Igen | Igen |
 | [R-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Előzetes; Lásd: [What's new in gépi tanulás](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nem |
-| [Erőforrás-vezérlő](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nem | Nem |
+| [Erőforrás-vezérlő](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nem | Igen |
 | [A RESTORE utasítás](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nem | Igen – lásd: [különbségek visszaállítása](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
 | [Adatbázis visszaállítása biztonsági másolatból](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Az automatikus biztonsági mentés csak - látható [SQL-adatbázis helyreállítása](sql-database-recovery-using-backups.md) | Automatikus biztonsági másolatból - lásd: [SQL-adatbázis helyreállítási](sql-database-recovery-using-backups.md) , és teljes biztonsági másolatból - [különbségek biztonsági mentése](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Sorszintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) | Igen | Igen |
@@ -132,7 +132,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Rendszertáblák](https://docs.microsoft.com/sql/relational-databases/system-tables/system-tables-transact-sql) | Néhány – tekintse meg az egyes táblák | Igen – lásd: [T-SQL különbségek](sql-database-managed-instance-transact-sql-information.md) |
 | [Rendszer katalógusnézetekre](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | Egyes - tekintse meg az egyes nézetek | Igen – lásd: [T-SQL különbségek](sql-database-managed-instance-transact-sql-information.md) |
 | [ideiglenes táblákkal](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | Helyi és adatbázis-hatóköre globális ideiglenes táblák | Helyi és a példány hatóköre globális ideiglenes táblák |
-| [Historikus táblák](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | Igen | Igen |
+| [Historikus táblák](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Igen](https://docs.microsoft.com/azure/sql-database/sql-database-temporal-tables) | [Igen](https://docs.microsoft.com/azure/sql-database/sql-database-temporal-tables) |
 |Fenyegetések észlelése|  [Igen](sql-database-threat-detection.md)|[Igen](sql-database-managed-instance-threat-detection.md)|
 | [Követésjelzői](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nem | Nem |
 | [Változók](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Igen | Igen |

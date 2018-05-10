@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a51b7d115a8287340450b3525a9b1a325702485b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5f8ddc9c57df878137ee1ff1b6431e40acfd5eb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatikus online biztonsági mentés és helyreállítás Azure Cosmos DB
 Azure Cosmos-adatbázis rendszeres időközönként automatikusan az adatok biztonsági másolatainak vesz igénybe. Automatikus biztonsági mentés készül anélkül, hogy befolyásolná a teljesítmény vagy a rendelkezésre álló a Helyadatbázis-műveletekhez. A biztonsági mentések külön-külön tárolják egy másik tárhelyre, és azokat a biztonsági mentések globálisan replikálva vannak a rugalmasságot regionális vészhelyzetek ellen. Ha véletlenül törli a a Cosmos DB tárolót, és később a adat-helyreállítás vagy egy vész-helyreállítási megoldást igényelnek szánt forgatókönyvek az automatikus biztonsági mentésekhez.  
@@ -50,7 +50,11 @@ Az alábbi ábrán a Georedundáns Azure Storage összes Cosmos DB entitásának
 ## <a name="backup-retention-period"></a>Biztonsági mentés megőrzési időtartam
 A fent leírtaknak megfelelően Azure Cosmos DB veszi pillanatképeket készíteni a négy óránként a partíció szinten. Egy adott időpontban csak az utolsó két pillanatképet megőrzi. Azonban a gyűjtő adatbázisban törlődik, ha azt megőrizni a meglévő pillanatképeket, a törölt partíciók belül az adott gyűjteményhez, illetve az adatbázis összes 30 napig.
 
-Ha meg szeretné tartani a saját pillanatképeket, használhatja az Exportálás JSON beállítást az Azure Cosmos DB [adatáttelepítési eszközét](import-data.md#export-to-json-file) további biztonsági mentés ütemezése.
+Az SQL API-t, ha meg szeretné tartani a saját pillanatképek használhatja az Exportálás JSON beállítást az Azure Cosmos DB [adatáttelepítési eszközét](import-data.md#export-to-json-file) további biztonsági mentés ütemezése.
+
+> [!NOTE]
+> Ha Ön "Rendelkezés átviteli állítja be a tároló adatbázis szintjén" – Ne feledje, a visszaállítás teljes adatbázis fiók szintjén történik. Szükség ügyeljen arra, hogy elérheti a támogatásához 8 órán belül, ha véletlenül törli a tároló - gyűjtemény vagy tábla/graph ezen új szolgáltatás használatakor. 
+
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Adatbázis visszaállítása az online biztonsági mentés
 Ha véletlenül törli az adatbázis vagy a gyűjtemény, akkor [fájlt egy támogatási jegy](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) vagy [Azure az ügyfélszolgálat](https://azure.microsoft.com/support/options/) az adatok biztonsági másolatból történő visszaállítását a legutóbbi automatikus. Ha szeretné visszaállítani az adatbázist, mert adatsérülés következett be (tartalmazza a esetekben, ahol egy gyűjteményen belül dokumentumok törlődnek) című [adatsérülés kezelése](#handling-data-corruption) szüksége további lépéseket a sérült adatok felülírja a meglévő biztonsági másolatok. A visszaállítandó biztonsági másolat egy adott pillanatképet Cosmos DB megköveteli, hogy az adatok volt elérhető a biztonsági mentési ciklus, hogy a pillanatkép idejére.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: f3110e81a7229f8f279609a64949c7f0ce78d338
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b867976c637cdd4dd9b696382103c63f1af2e8b3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetek küldése a felhőből az eszközre az IoT Hub (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -48,7 +48,7 @@ Ez az oktatóanyag végén két .NET konzol alkalmazások futtatása:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Visual Studio 2015-öt vagy a Visual Studio 2017
+* Visual Studio 2015 vagy Visual Studio 2017
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
 
 ## <a name="receive-messages-in-the-device-app"></a>Az eszköz alkalmazásban az üzenetek fogadásához
@@ -176,7 +176,7 @@ Ebben a szakaszban módosítsa a **SendCloudToDevice** alkalmazásnak, hogy a vi
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
 
-Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Azure IoT Suite].
+Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [megoldásgyorsító Azure IoT távoli megfigyelési].
 
 Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
 
@@ -195,5 +195,5 @@ Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért 
 [IoT Hub fejlesztői útmutató]: iot-hub-devguide.md
 [Ismerkedés az IoT-központ]: iot-hub-csharp-csharp-getstarted.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[Azure IoT Suite]: https://docs.microsoft.com/azure/iot-suite/
+[megoldásgyorsító Azure IoT távoli megfigyelési]: https://docs.microsoft.com/azure/iot-suite/
 [Azure IoT-eszközök SDK-k]: iot-hub-devguide-sdks.md

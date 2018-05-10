@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: aa1d70d33e1f9cefee4d06ea182ffb3fc960e07a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f668b233cd2bb44012c6132fee55626ddc3597e0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Python és az Azure Portal használatával
 
@@ -47,24 +47,7 @@ A gráfadatbázis létrehozásához először létre kell hoznia egy Gremlin- (G
 
 ## <a name="add-a-graph"></a>Gráf hozzáadása
 
-Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozására is használhatja. 
-
-1. Kattintson az **Adatkezelő** > **Új gráf** lehetőségre.
-
-    A jobb szélen megjelenik a **Gráf hozzáadása** terület. Előfordulhat, hogy jobbra kell görgetnie, hogy lássa.
-
-    ![Az Azure Portal Adatkezelő, Gráf hozzáadása oldal](./media/create-graph-python/azure-cosmosdb-data-explorer-graph.png)
-
-2. A **Gráf hozzáadása** oldalon adja meg az új gráf beállításait.
-
-    Beállítás|Ajánlott érték|Leírás
-    ---|---|---
-    Adatbázis-azonosító|sample-database|Az új adatbázisnak adja a *sample-database* nevet. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóközt.
-    Gráfazonosító|sample-graph|Az új gyűjteménynek adja a *sample-graph* nevet. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
-    Tárkapacitás|Rögzített méretű (10 GB)|Ne módosítsa az alapértelmezett **Rögzített méretű (10 GB)** értéket. Ez az érték az adatbázis tárkapacitása.
-    Teljesítmény|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
-
-3. Miután kitöltötte az űrlapot, kattintson az **OK** elemre.
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -90,7 +73,7 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-graph-python-getting-started\ mappában található `connect.py` fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-information) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-graph-python-getting-started\ mappában található connect.py fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-information) szakaszra. 
 
 * A Gremlin `client` inicializálása a `connect.py` 104. sorában történik:
 

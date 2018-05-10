@@ -65,14 +65,20 @@
           href: insights-alerts-command-line-interface.md
         - name: Klasszikus riasztások beállítása az Azure PowerShell-lel
           href: insights-alerts-powershell.md
+        - name: Webhook meghívatása klasszikus metrikariasztással
+          href: insights-webhooks-alerts.md
         - name: Naplóriasztásokra vonatkozó webhook-műveletek
           href: monitor-alerts-unified-log-webhook.md
+        - name: Naplóriasztás létrehozása Resource Manager-sablonnal
+          href: monitor-alerts-unified-log-template.md
         - name: Új metrikariasztás létrehozása Resource Manager-sablonnal
           href: monitoring-create-metric-alerts-with-templates.md
         - name: Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
           href: monitoring-enable-alerts-using-template.md
         - name: Riasztások másolása az OMS-portálról az Azure Portalba
           href: monitoring-alerts-extend-tool.md
+        - name: Riasztások dinamikus küszöbértékekkel
+          href: monitoring-alerts-dynamic-thresholds.md
     - name: Műveletcsoportok használata riasztásokkal
       items:
         - name: Információ a webhook sémáról
@@ -83,6 +89,8 @@
           href: monitoring-alerts-rate-limiting.md
         - name: Műveletcsoportok létrehozása a Resource Managerrel
           href: monitoring-create-action-group-with-resource-manager-template.md
+        - name: Logikai alkalmazási művelet megvalósítása
+          href: monitoring-action-groups-logic-app.md
     - name: Diagnosztikai naplók használata
       items:
         - name: Archívum
@@ -123,6 +131,8 @@
           href: insights-powershell-samples.md
     - name: Az Azure Diagnostics bővítmény használata
       items:
+        - name: Küldés az Azure Storage-be
+          href: azure-diagnostics-storage.md
         - name: Küldés az Application Insightsba
           href: azure-diagnostics-configure-application-insights.md
         - name: Küldés az Event Hubsba
@@ -173,6 +183,13 @@
       href: monitoring-activity-log-schema.md
     - name: Azure Diagnostics-bővítményséma
       href: azure-diagnostics-schema.md
+      items:
+        - name: 1.3-as és újabb verziók
+          href: azure-diagnostics-schema-1dot3-and-later.md
+        - name: 1.2
+          href: azure-diagnostics-schema-1dot2.md
+        - name: 1
+          href: azure-diagnostics-schema-1dot0.md
 - name: További források
   items:
     - name: Azure-ütemterv

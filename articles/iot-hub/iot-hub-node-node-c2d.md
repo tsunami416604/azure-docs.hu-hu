@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 526fdce85df388fec04dd5df35183200c1478570
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 01150db589b2210e38ed6fd4e45429c1500d9588
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Az IoT-központ (csomópont) felhő eszközre-üzenetek
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -181,7 +181,7 @@ Most már készen áll az alkalmazások futtatására.
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
 
-Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Azure IoT Suite].
+Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [megoldásgyorsító Azure IoT távoli megfigyelési].
 
 Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
 
@@ -199,4 +199,4 @@ Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [átmeneti hiba kezelése]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure-portálon]: https://portal.azure.com
-[Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[megoldásgyorsító Azure IoT távoli megfigyelési]: https://azure.microsoft.com/documentation/suites/iot-suite/

@@ -12,16 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2018
+ms.date: 5/4/2018
 ms.author: raiye
-ms.openlocfilehash: df5844ff53d8196eb1143913b420d933ba43920f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea7c01075d9f65ed262681c216f5770d19466507
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC) frissítések alkalmazása az Azure vendég operációs rendszeren. Ez a cikk határozza meg, ha az adott frissítés használ, a vendég operációs rendszer összes keresése. Frissítések mindig áthozott az adott [termékcsalád] [ family-explain] bevezetett azokat.
+
+## <a name="april-guest-os"></a>Április vendég operációs rendszer
+| Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| 18-04-rel | [4093119] |Windows 10-biztonsági |5.18 |2018. április 10. |
+| 18-04-rel | [4093108] |Csak a Windows biztonsági |2,73 |2018. április 10. |
+| 18-04-rel | [4093122] |Csak a Windows biztonsági |3.60 |2018. április 10. |
+| 18-04-rel | [4093115] |Csak a Windows biztonsági |4,53 |2018. április 10. |
+| 18-04-rel | [4092946] |Internet Explorer |2,73, 3.60, 4,53 |2018. április 10. |
+| 18-04-rel | [4093110] |Flash |3.60, 4,53, 5.18 |2018. április 10. |
+| – | [4088875] |Március nem a biztonság összegzése |2,73 |2018. március 13. |
+| – | [4099950] |Március nem biztonsági kumulatív előfeltételeként|2,73 |2018. március 13. |
+| – | [4088877] |Március nem a biztonság összegzése |3.60 |2018. március 13. |
+| – | [4088876] |Március nem a biztonság összegzése |4,53 |2018. március 13. |
 
 ## <a name="march-guest-os"></a>. Március a vendég operációs rendszer.
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -613,6 +627,18 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | – |[3007054] |PIN-kóddal védett nyomtatás a beállítás mindig jeleníti meg, amikor egy Windows Áruházbeli alkalmazást, a Windows belül dokumentum nyomtatása |4.15, 3.22, 2.34 |Január 13 2015 |
 | – |[2999802] |Pontozott vonal helyett folytonos vonal lista tartalmazza a Windows rendszerben |4.15, 3.22, 2.34 |Január 13 2015 |
 | – |[2896881] |A felhasználók nyomtatók hozzárendelését a Windows bejelentkezési folyamat során a AddPrinterConnection VBScript parancs használatakor hosszú bejelentkezési idő |4.15, 3.22, 2.34 |Január 13 2015 |
+
+
+[4093119]: http://support.microsoft.com/kb/4093119
+[4093108]: http://support.microsoft.com/kb/4093108 
+[4093122]: http://support.microsoft.com/kb/4093122
+[4093115]: http://support.microsoft.com/kb/4093115
+[4092946]: http://support.microsoft.com/kb/4092946
+[4093110]: http://support.microsoft.com/kb/4093110
+[4088875]: http://support.microsoft.com/kb/4088875
+[4099950]: http://support.microsoft.com/kb/4099950
+[4088877]: http://support.microsoft.com/kb/4088877
+[4088876]: http://support.microsoft.com/kb/4088876
 
 [4088787]: http://support.microsoft.com/kb/4088787
 [4088776]: http://support.microsoft.com/kb/4088776 

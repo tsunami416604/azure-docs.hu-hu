@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 2b69b3b5fee0d1148a762f817d9c5a8bc67806e7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7290c12e7d96ac01c66d97103920793f98120b38
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB egység kérése
 
@@ -32,9 +32,9 @@ Kiszámítható teljesítmény elérése érdekében kell lefoglalni átviteli e
 A cikk elolvasása után képes lesz a következő kérdések megválaszolásához:  
 
 * Mik azok a kérelemegység és az Azure Cosmos Adatbázisba kérelem díjak?
-* Hogyan adja meg egy tároló kérelem egység kapacitás az Azure Cosmos DB?
+* Hogyan adjon meg egy tárolót vagy tárolók kérelem egység kapacitás az Azure Cosmos Adatbázisba?
 * Hogyan becsléséhez, az alkalmazás kérelem egység van szüksége?
-* Mi történik, ha szeretnék haladhatja meg a kérelem egység kapacitása egy tároló az Azure Cosmos DB?
+* Mi történik, ha szeretnék haladhatja meg a kérelem egység kapacitás egy tárolót vagy Azure Cosmos DB a tárolók?
 
 Mivel Azure Cosmos DB több modellre adatbázis; fontos vegye figyelembe, hogy ez a cikk összes adatmodellekben és API-k Azure Cosmos DB alkalmazandó. Ebben a cikkben, mint az általános feltételek *tároló* és egy *elem* hivatkozik az általános egy gyűjtemény, diagramot, vagy egy tábla és egy dokumentum, egy csomópontot vagy entitás, illetve.
 
@@ -50,14 +50,19 @@ Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, amelyben Azur
 > 
 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Adja meg a kérelem egység kapacitás az Azure Cosmos DB
-Új tároló indításakor, az itt megadott kérelemegység (RU / másodperc) másodpercenként kívánt foglalt. A létesített átviteli sebesség alapján, Azure Cosmos DB foglal le a tároló üzemeltetésére fizikai partíciók és elágazást/rebalances adatok között partíciók növekedésével azt.
 
-Azure Cosmos DB konténerek létrehozhatók, rögzített vagy korlátlan. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. Hozzon létre egy korlátlan számú tárolót meg kell adnia egy minimális átviteli sebességgel 1000 RU/mp és egy [partíciókulcs](partition-data.md). Az adatok kell kell-e osztani több partíciót, szükség egy partíciós kulcs, amely rendelkezik egy nagy számosságot (több millió különböző értékeket 100) kiválasztásához. A partíciós kulcs számos különböző értékekkel kiválasztásával, győződjön meg arról, hogy a tároló/tábla/graph és a kérelmek is méretezhető egységesen Azure Cosmos DB. 
+Megadhatja, hogy hány kérés egység / másodperc (RU / másodperc) kívánt foglalt, mind az egyes tároló, vagy azon tárolók. A létesített átviteli sebesség alapján, Azure Cosmos DB foglal le a tárolója és elágazást/rebalances adatokat tároló partíciók között, akkor növekedésével fizikai partíciókat.
+
+Az egyes tároló szintjén RU/mp hozzárendelésekor a tárolók hozhatók létre *rögzített* vagy *korlátlan*. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. Hozzon létre egy korlátlan számú tárolót, meg kell adnia egy minimális átviteli sebességgel 1000 RU/mp és egy [partíciókulcs](partition-data.md). Az adatok kell kell-e osztani több partíciót, szükség egy partíciós kulcs, amely rendelkezik egy nagy számosságot (több millió különböző értékeket 100) kiválasztásához. A partíciós kulcs számos különböző értékekkel kiválasztásával, győződjön meg arról, hogy a tároló/tábla/graph és a kérelmek is méretezhető egységesen Azure Cosmos DB. 
+
+RU/mp tárolók egy készlete közötti hozzárendelésekor a tárolók ebbe a csoportba tartozó tekintendők *korlátlan* tárolók és a partíciókulcs kell megadnia.
+
+![Az egyes tárolók és a tárolók beállított kérelemegység kiépítése][6]
 
 > [!NOTE]
 > A partíciós kulcs, a logikai határ, és nem egy fizikai egy. Emiatt nem kell külön partíciókulcs-értékek számának korlátozása. Valójában célszerűbb értékűeknek több partíciós kulcs kisebb, mint Azure Cosmos DB rendelkezik további terheléselosztási beállításai.
 
-Íme egy tároló 3000 kérelem egység / második .NET SDK használatával való létrehozásának egy kódrészletet:
+Íme egy tároló 3000 kérelem egység / másodperc az egyes tároló az SQL API .NET SDK használatával való létrehozásának egy kódrészletet:
 
 ```csharp
 DocumentCollection myCollection = new DocumentCollection();
@@ -70,12 +75,41 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-Azure Cosmos DB átviteli foglalás modellt működik. Ez azt jelenti, hogy kell fizetni az átviteli sebesség *fenntartott*, függetlenül attól, hogy átviteli mekkora aktívan *használt*. Az alkalmazás által könnyen méretezheti mennyisége fel és le terhelés, az adatok és a használati minták módosítása fenntartott RUs SDK-k, vagy használja a [Azure Portal](https://portal.azure.com).
+Íme egy kódrészletet az üzembe helyezési 100 000 egység / másodperc között az SQL API .NET SDK használatával tárolók készlete kérelem:
 
-Minden egyes tárolóban van rendelve egy `Offer` Azure Cosmos DB, amelynek metaadatait a létesített átviteli sebesség erőforrás. A megfelelő ajánlat erőforrás egy tároló keresése, akkor új átviteli értékű frissítése módosíthatja a kiosztott átviteli sebesség. Íme egy kódrészletet a az átviteli sebesség a tároló módosítása a 5 000 kérelemegység / második .NET SDK használatával:
+```csharp
+// Provision 100,000 RU/sec at the database level. 
+// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
+// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
+Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
+
+DocumentCollection sharedCollection1 = new DocumentCollection();
+sharedCollection1.Id = "sharedCollection1";
+sharedCollection1.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
+
+DocumentCollection sharedCollection2 = new DocumentCollection();
+sharedCollection2.Id = "sharedCollection2";
+sharedCollection2.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
+
+DocumentCollection dedicatedCollection = new DocumentCollection();
+dedicatedCollection.Id = "dedicatedCollection";
+dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
+```
+
+
+Azure Cosmos DB átviteli foglalás modellt működik. Ez azt jelenti, hogy kell fizetni az átviteli sebesség *fenntartott*, függetlenül attól, hogy átviteli mekkora aktívan *használt*. Az alkalmazás által könnyen méretezheti száma fel és le terhelés, az adatok és a használati minták módosítása fenntartott RUs SDK-k, vagy használja a [Azure Portal](https://portal.azure.com).
+
+Minden egyes tároló vagy elosztott tárolókban, van rendelve egy `Offer` Azure Cosmos DB, amelynek metaadatait a létesített átviteli sebesség erőforrás. A megfelelő ajánlat erőforrás egy tároló keresése, akkor új átviteli értékű frissítése módosíthatja a kiosztott átviteli sebesség. Íme egy kódrészletet a az átviteli sebesség a tároló módosítása a 5 000 kérelemegység / második .NET SDK használatával:
 
 ```csharp
 // Fetch the resource to be updated
+// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
 Offer offer = client.CreateOfferQuery()
                 .Where(r => r.ResourceLink == collection.SelfLink)    
                 .AsEnumerable()
@@ -88,28 +122,28 @@ offer = new OfferV2(offer, 5000);
 await client.ReplaceOfferAsync(offer);
 ```
 
-Ha megváltoztatja az átviteli sebesség, nincs hatással a következő rendelkezésre állási, a tároló. Az új fenntartott átviteli sebességet általában hatékony alkalmazásra, az új átviteli másodpercen belül.
+Ha megváltoztatja az átviteli sebesség, nincs hatással a tároló rendelkezésre állását, vagy a tárolók, készletét. Az új fenntartott átviteli sebességet általában hatékony alkalmazásra, az új átviteli másodpercen belül.
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>Átviteli sebesség elkülönítési globálisan elosztott adatbázisok
 
-Ha az adatbázis replikálása egynél több régióban, Azure Cosmos DB el vannak különítve átviteli annak érdekében, hogy egy régióban RU használati nem befolyásolja a RU használati egy másik régióban. Például ha adatokat írni egy régió tartozik, és adatokat olvasni egy másik régióban, a RUs fogja végrehajtani az írási művelet régióban *A* nem hajtja végre a RUs az olvasási művelet régióban használt elhagyja *B*. RUs vannak nincs-e osztani a régiókban, ahol telepítése után. Minden egyes régió, ahol az adatbázis replikálódik rendelkezik kiépített RUs teljes mennyisége. Globális replikációval kapcsolatos további információkért lásd: [miként ossza el a globális adatok Azure Cosmos DB](distribute-data-globally.md).
+Ha az adatbázis replikálása egynél több régióban, Azure Cosmos DB el vannak különítve átviteli annak érdekében, hogy egy régióban RU használati nem befolyásolja a RU használati egy másik régióban. Például ha adatokat írni egy régió tartozik, és adatokat olvasni egy másik régióban, a RUs fogja végrehajtani az írási művelet régióban *A* nem hajtja végre a RUs az olvasási művelet régióban használt elhagyja *B*. RUs vannak nincs-e osztani a régiókban, ahol telepítése után. Minden egyes régió, ahol az adatbázis replikálódik rendelkezik kiépített RUs teljes száma. Globális replikációval kapcsolatos további információkért lásd: [miként ossza el a globális adatok Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="request-unit-considerations"></a>Kérelem egység kapcsolatos szempontok
-Kiépítését az Azure Cosmos DB tároló kérelemben egységek számának becslése, fontos figyelembe venni a következő változókat:
+Kiépítését kérelem egységek számának becslése, fontos figyelembe venni a következő változókat:
 
 * **Konfigurációelem-méret**. Mérete nő, száma olvasni vagy írni felhasznált kérelemegység is növekszik.
 * **Konfigurációelem-tulajdonság száma**. Feltéve, hogy alapértelmezett indexelő levő összes tulajdonság írása a dokumentum/csomópont/entitás növelését a a tulajdonság számának növekedése használt mértékegységet.
 * **Adatkonzisztencia**. Például az erős, vagy a kötött elavulási konzisztencia adatmodellekben használata esetén további kérelemegység felhasznált elemek olvasására.
-* **Indexelt tulajdonságok**. Egy index házirendet minden egyes tároló meghatározza, hogy mely tulajdonságok indexelt alapértelmezés szerint. Az indexelt tulajdonságok számának korlátozása vagy engedélyezése a Lusta indexelő csökkentése érdekében a kérelem egység fogyasztás.
+* **Indexelt tulajdonságok**. Egy index házirendet minden egyes tároló meghatározza, hogy mely tulajdonságok indexelt alapértelmezés szerint. Az indexelt tulajdonságok számának korlátozása vagy engedélyezése a Lusta indexelő csökkentése érdekében a kérelem egység felhasználás az írási műveletek.
 * **A dokumentum indexelő**. Alapértelmezés szerint minden elem automatikusan indexelt. Ha úgy dönt, hogy az elemek egy része nem index felhasznált kevesebb kérelemegység.
-* **Lekérdezési minták**. A lekérdezés összetettsége hatással van a kérelem egységek művelet végrehajtásánál. Predikátumok a száma, a predikátum, leképezések, felhasználó által megadott függvények száma és mérete a forrásadatok - jellege összes befolyásolják a lekérdezési műveletek költségét.
+* **Lekérdezési minták**. A lekérdezés összetettsége hatással van a kérelem egységek művelet végrehajtásánál. A lekérdezési eredmények számát, predikátumok száma, a predikátum, leképezések, felhasználó által megadott függvények száma és mérete a forrásadatok - jellege összes befolyásolják a lekérdezési műveletek költségét.
 * **Parancsfájl-használati**.  Csakúgy, mint a lekérdezéseket, a tárolt eljárások és eseményindítók végrehajtott műveletek összetettsége alapján kérelemegység felhasználni. Az alkalmazás elkészítéséhez, vizsgálja meg jobb megértése érdekében hogyan egyes műveletek nem használ-e kérelem egység kapacitás kérelemfejléc kell fizetni.
 
 ## <a name="estimating-throughput-needs"></a>Átviteli sebesség igények becslése
 A kérelem egység mérőszáma normalizált kérelemfeldolgozáshoz költség. Egy egyetlen kérelem egységet jelöli a feldolgozási kapacitás egy egyetlen 1 KB cikk álló (kivéve a rendszer tulajdonságai) 10 egyedi tulajdonságértékek (keresztül self link vagy azonosítója) olvasásához szükséges. A kérelem létrehozása (insert), cseréje vagy azonos elem törlése fogyaszt, több folyamatot, a szolgáltatásból, és ezáltal több kérelemegység.   
 
 > [!NOTE]
-> Az alapkonfiguráció 1 kérelem egység egy 1 KB cikk megfelel egy egyszerű GET self link vagy az elem azonosítója.
+> Az alapkonfiguráció 1 kérelem egység egy 1 KB-os elem egy egyszerű GET self link vagy a cikk azonosítója felel meg.
 > 
 > 
 
@@ -174,11 +208,11 @@ Az eszköz az adattárolási igények kielégítésére megadta minta cikkek ala
 
 Az eszköz használata egyszerű:
 
-1. Töltsön fel egy vagy több jellemző elemet (pl. egy minta-JSON-dokumentum).
+1. Töltsön fel egy vagy több jellemző elemet (például egy minta-JSON-dokumentumot).
    
     ![Töltse fel a kérelem egység Számológép elemek][2]
-2. Az adatok tárolási követelményeinek becslése, írja be a teljes száma (pl., dokumentumok, táblák vagy diagramjait) elemek várhatóan tárolni.
-3. Adja meg a létrehozási, olvasási, frissítési és delete művelethez szükséges (a másodpercenként alapján). A kérelem egység díjak elem frissítési műveletek becsléséhez, töltse fel az 1. lépés a fenti tipikus mező frissítéseket tartalmazó minta elem másolatának.  Például, ha elem frissítések általában két tulajdonságainak módosítása nevű *lastLogin* és *userVisits*, majd egyszerűen minta másolása, e két tulajdonság értéket, és töltse fel a másolt elem.
+2. Az adatok tárolási követelményeinek becslése, írja be a teljes száma (például a dokumentumok, sort vagy csúcsban) elemek várhatóan tárolni.
+3. Adja meg a létrehozási, olvasási, frissítési és delete művelethez szükséges (a másodpercenként alapján). A kérelem egység díjak elem frissítési műveletek becsléséhez, töltse fel az 1. lépés a fenti tipikus mező frissítéseket tartalmazó minta elem másolatának.  Például, ha elem frissítések általában két tulajdonságainak módosítása nevű *lastLogin* és *userVisits*, majd egy minta elem másolása, e két tulajdonság értéket, és töltse fel a másolt elem.
    
     ![Adja meg a kérelem egység Számológép átviteli követelmények][3]
 4. Kattintson a kiszámításához, és vizsgálja meg az eredményeket.
@@ -210,7 +244,7 @@ Példa:
 6. A megadott műveletek másodpercenkénti futtatásához várhatóan becsült száma szükséges kérelemegység kiszámításához.
 
 ## <a name="a-request-unit-estimate-example"></a>A kérelem egység becsült – példa
-Vegye figyelembe a következő ~ 1 KB méretű dokumentum:
+Vegye figyelembe a következő ~ 1 KB-os dokumentum:
 
 ```json
 {
@@ -299,7 +333,7 @@ Az információ megbecsülheti a RU követelmények az alkalmazáshoz, művelete
 | Válassza ki a étele csoport szerint |10 |700 |
 | Válassza ki a felső 10 |15 |150 összesen |
 
-Ebben az esetben egy 1,275 RU/s átlagos átviteli sebességgel követelmény várt.  Kerekítése a legközelebbi 100, akár az alkalmazás a tároló 1300 RU/mp volna kiépítéséhez.
+Ebben az esetben egy 1,275 RU/s átlagos átviteli sebességgel követelmény várt.  Kerekítése a legközelebbi 100, akár 1300 RU/mp az alkalmazás tárolóhoz (vagy tárolók) lenne kiépítéséhez.
 
 ## <a id="RequestRateTooLarge"></a> Az Azure Cosmos Adatbázisba meghaladó fenntartott átviteli sebességének korlátai
 A visszaírási, hogy kérelem egység fogyasztás másodpercenként sebességgel legyen-e kiértékelve. Az olyan alkalmazások, amelyek mérete meghaladja a kiépített kérelmek egység aránya kérelmek lehet sebessége korlátozott mértékben a létesített átviteli sebesség szint alá süllyed. Egy kérelem lekérdezi sebessége korlátozott, ha a kiszolgáló megelőző jelleggel karakterlánccal végződik-e a kérelem `RequestRateTooLargeException` (HTTP-állapotkód: 429), és adja vissza a `x-ms-retry-after-ms` fejléc jelző idő ezredmásodpercben, hogy a felhasználónak meg kell várnia, mielőtt megpróbálná megismételni a kérelmet.
@@ -310,7 +344,7 @@ A visszaírási, hogy kérelem egység fogyasztás másodpercenként sebességge
 
 Ha a .NET SDK-ügyfél és a LINQ-lekérdezések, majd a legtöbbször ennek soha nem kell a .NET SDK-ügyfél aktuális verziója implicit módon ezt a választ ki, ez a kivétel kezelésére használ, tiszteletben tartja a kiszolgáló által megadott újrapróbálkozási után fejlécet, és újrapróbálkozik a automatikusan kérelmet. Kivéve, ha a fiók több ügyfélnek egyszerre használja, a következő újrapróbálkozási sikeres lesz.
 
-Ha a kérelmek aránya felett összesítve működő egynél több ügyfél, az alapértelmezett újrapróbálási viselkedése nem elegendők, és az ügyfél kivételhibát egy `DocumentClientException` állapotú code 429 az alkalmazáshoz. Ilyen esetben érdemes lehet figyelembe venni az újrapróbálási viselkedése és az alkalmazás hibakezelési rutinok a logikai, vagy növelje a kiosztott átviteli sebesség a tároló.
+Ha a kérelmek aránya felett összesítve működő egynél több ügyfél, az alapértelmezett újrapróbálási viselkedése nem elegendők, és az ügyfél kivételhibát egy `DocumentClientException` állapotú code 429 az alkalmazáshoz. Ilyen esetben érdemes lehet figyelembe venni az újrapróbálási viselkedése és az alkalmazás hibakezelési rutinok a logikai vagy a tároló (vagy a tárolók) kiosztott átviteli sebesség növelése.
 
 ## <a name="next-steps"></a>További lépések
 További információt az Azure Cosmos DB adatbázisok fenntartott átviteli sebességet, ismerheti meg ezeket az erőforrásokat:
@@ -326,3 +360,4 @@ Első lépésként a méretezés és teljesítmény Azure Cosmos DB tesztelést,
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
+[6]: ./media/request-units/provisioning_set_containers.png

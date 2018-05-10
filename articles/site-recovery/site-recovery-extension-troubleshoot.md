@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: asgang
-ms.openlocfilehash: 44f2016dacf1433cfe3a61058a167c42700e37d6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9bfe181b2271f4e8af6f43e1728167712dade8ee
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Azure Site Recovery bővítmény hibák elhárítása: az ügynök vagy a bővítmény problémái
 
@@ -31,6 +31,13 @@ Hibakód: "151076"
 **2. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **3. ok: [frissítése vagy nem tölthető be a Site Recovery-kiterjesztés sikertelen](#the-site-recovery-extension-fails-to-update-or-load)**  
 
+Hibaüzenet: "előző hely helyreállítási műveletet több ideig tart a vártnál."<br>
+Hibakód: "150066"<br>
+
+**1. ok: [az ügynök telepítve legyen a virtuális Géphez, de azok nem válaszoló (a Windows-alapú virtuális gépek)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**2. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**3. ok: [a Site Recovery bővítmény állapota nem megfelelő](#the-site-recovery-extension-fails-to-update-or-load)**  
+
 ## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Védelem sikertelen lesz, mivel a Virtuálisgép-ügynök nem válaszol
 
 Hibaüzenet: "feladat végrehajtása túllépte az időkorlátot követési bővítmény indítható el művelet közben."<br>
@@ -43,7 +50,11 @@ A állapotának Azure Vendég ügynöke a [Azure-portálon](https://portal.azure
 **2. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
+Hibaüzenet: "feladat végrehajtása túllépte az időkorlátot követési bővítmény indítható el művelet közben."<br>
+Hibakód: "151095"<br>
 
+Ez történhet, ha a Linux rendszerű számítógépen az ügynök verziója túl régi. Fejezze be a következő hibaelhárítási lépéseket.<br>
+  **1. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 ## <a name="causes-and-solutions"></a>Okait és megoldásait
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Az ügynök telepítve van a virtuális gép, de nem válaszoló (a Windows-alapú virtuális gépek)

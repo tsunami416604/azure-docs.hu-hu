@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 9c4908775ab9a471201cc4bb0c35ab863f5d6d50
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cd9c5888724b634002d3029cccd42cfda4a433af
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Az adatáttelepítési eszköz
 
@@ -433,7 +433,7 @@ Egyetlen gyűjtemény importálásához adja meg, amelyhez adatok Importálja, �
 A gyűjtemény neve megadása után válassza ki a kívánt átviteli sebességgel (a 250 000 RUs 400 RUs) a következő gyűjtemény(ek) készleteit szinkronizálja. Importálás legjobb teljesítmény érdekében válasszon egy nagyobb átviteli sebesség. Teljesítmény szintekkel kapcsolatos további információkért lásd: [teljesítményszintek az Azure Cosmos Adatbázisba](performance-levels.md). Bármely importálás átviteli gyűjtemények > 10 000 RUs partíciós kulcs szükséges. Ha több mint 250 000 RUs választ, küldje el a kérést a portálon, a fiók növelni szeretné.
 
 > [!NOTE]
-> Az átviteli sebesség beállítás csak a webhelycsoport létrehozása vonatkozik. A megadott gyűjtemény már létezik, az átviteli sebesség nem módosítható.
+> Az átviteli sebesség beállítás csak a gyűjtemény vagy az adatbázis létrehozása vonatkozik. A megadott gyűjtemény már létezik, az átviteli sebesség nem módosítható.
 > 
 > 
 

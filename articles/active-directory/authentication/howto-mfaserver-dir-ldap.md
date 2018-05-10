@@ -1,26 +1,23 @@
 ---
 title: LDAP-hitelesítés és Azure MFA-kiszolgáló | Microsoft Docs
-description: Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt az LDAP-hitelesítés és az Azure Multi-Factor Authentication-kiszolgáló telepítéséhez.
+description: LDAP-hitelesítés és az Azure multi-factor Authentication kiszolgáló telepítését.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: e1a68568-53d1-4365-9e41-50925ad00869
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
-ms.openlocfilehash: 7a66a10dc8d7339577e2e51fc12e0f802eaa9316
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 2fca59b9b486012367b3d996e0ec76044f48f690
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-hitelesítés és az Azure multi-factor Authentication kiszolgáló
+
 Alapértelmezés szerint az Azure Multi-Factor Authentication-kiszolgáló úgy van konfigurálva, hogy a felhasználókat az Active Directoryból importálja vagy szinkronizálja. Azonban konfigurálható úgy különböző LDAP-címtárakhoz való kötésre is, például ADAM-címtárhoz vagy adott Active Directory-tartományvezérlőkhöz. LDAP keresztül könyvtár való csatlakozáskor az Azure multi-factor Authentication kiszolgáló a hitelesítés végrehajtásához LDAP-proxyként működhet. Ezenkívül lehetővé teszi, hogy az LDAP-kötést felhasználja RADIUS-célként az IIS-hitelesítést használó felhasználók előhitelesítésére illetve elsődleges hitelesítésre az Azure MFA felhasználói portálon.
 
 Használja az Azure multi-factor Authentication LDAP-proxyként, helyezze az Azure multi-factor Authentication kiszolgáló között az LDAP-ügyfél (például a VPN-készülék, az alkalmazás) és az LDAP címtárkiszolgálón. Az Azure Multi-Factor Authentication-kiszolgálót úgy kell konfigurálni, hogy az ügyfélkiszolgálókkal és az LDAP-címtárral is kommunikáljon. Ebben a konfigurációban az Azure Multi-Factor Authentication-kiszolgáló fogadja az ügyfélkiszolgálóktól és alkalmazásoktól érkező LDAP-kéréseket, majd továbbítja őket a cél LDAP-címtárkiszolgálónak az elsődleges hitelesítő adatok ellenőrzéséhez. Ha az LDAP-címtár ellenőrzi az elsődleges hitelesítő adatait, Azure multi-factor Authentication második azonosító ellenőrzi és elküld egy választ, az LDAP-ügyfélnek. A teljes hitelesítés csak akkor lesz sikeres, ha az LDAP-kiszolgálón való hitelesítés és a kétlépéses hitelesítés is sikeres.

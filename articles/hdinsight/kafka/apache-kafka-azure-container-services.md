@@ -1,6 +1,6 @@
 ---
-title: Azure Tárolószolgáltatás használata a HDInsight Kafka |} Microsoft Docs
-description: Megtudhatja, hogyan Kafka használata a HDInsight a tároló lemezképeinek üzemeltetett Azure tároló szolgáltatás (AKS).
+title: Azure Kubernetes szolgáltatás használata a HDInsight Kafka |} Microsoft Docs
+description: Megtudhatja, hogyan Kafka használata a HDInsight a tároló lemezképeinek üzemeltetett Azure Kubernetes szolgáltatás (AKS).
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2018
+ms.date: 05/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f54039a0e702aa3c789363969120e000760f6ef5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>Azure-tárolót Services használata a HDInsight Kafka
+# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Azure Kubernetes szolgáltatás használata a HDInsight Kafka
 
-Ismerje meg, hogyan használható Azure tároló szolgáltatás (AKS) Kafka HDInsight-fürt. A jelen dokumentumban leírt lépések AKS tárolt Node.js-alkalmazás használatával Kafka való kapcsolat ellenőrzésére. Ez az alkalmazás használja a [kafka-csomópont](https://www.npmjs.com/package/kafka-node) csomag Kafka folytatott kommunikációhoz. Használja [Socket.io](https://socket.io/) az esemény üzenetküldési a böngészőalapú ügyfél és a háttér-AKS üzemeltetett között.
+Ismerje meg, hogyan használható Azure Kubernetes szolgáltatás (AKS) Kafka HDInsight-fürt. A jelen dokumentumban leírt lépések AKS tárolt Node.js-alkalmazás használatával Kafka való kapcsolat ellenőrzésére. Ez az alkalmazás használja a [kafka-csomópont](https://www.npmjs.com/package/kafka-node) csomag Kafka folytatott kommunikációhoz. Használja [Socket.io](https://socket.io/) az esemény üzenetküldési a böngészőalapú ügyfél és a háttér-AKS üzemeltetett között.
 
-Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. Az Azure Tárolószolgáltatás az üzemeltetett Kubernetes környezethez kezeli, és teszi gyorsan és egyszerűen indexelése alkalmazások központi telepítése. Egy Azure virtuális hálózatot használ, a két szolgáltatást is elérheti.
+Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. Azure Kubernetes szolgáltatás a szolgáltatott Kubernetes környezet kezeli, és teszi gyorsan és egyszerűen indexelése alkalmazások központi telepítése. Egy Azure virtuális hálózatot használ, a két szolgáltatást is elérheti.
 
 > [!NOTE]
-> A jelen dokumentum elsősorban a tárolószolgáltatások Azure hdinsight Kafka kommunikálni engedélyezéséhez szükséges lépéseket. A példa magát a csak alapvető, annak bemutatásához, hogy működik-e a konfigurációs Kafka ügyfél.
+> A jelen dokumentum elsősorban a HDInsight Kafka kommunikálni Azure Kubernetes szolgáltatás engedélyezése szükséges lépéseket. A példa magát a csak alapvető, annak bemutatásához, hogy működik-e a konfigurációs Kafka ügyfél.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,10 +37,10 @@ Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott s
 Jelen dokumentum céljából feltételezzük, hogy jártas létrehozása és használata az Azure-szolgáltatásokat:
 
 * Kafka on HDInsight
-* Azure Container Service
+* Azure Kubernetes szolgáltatás
 * Azure virtuális hálózatok
 
-Ez a dokumentum is feltételezi, hogy rendelkezik telefonon a [Azure tárolószolgáltatások oktatóanyag](../../aks/tutorial-kubernetes-prepare-app.md). Ebben az oktatóanyagban létrehoz egy tároló szolgáltatást, egy Kubernetes fürtöt, a tároló beállításjegyzék hoz létre, és konfigurálja a `kubectl` segédprogram.
+Ez a dokumentum is feltételezi, hogy rendelkezik telefonon a [Azure Kubernetes szolgáltatás oktatóanyag](../../aks/tutorial-kubernetes-prepare-app.md). Ebben az oktatóanyagban létrehoz egy tároló szolgáltatást, egy Kubernetes fürtöt, a tároló beállításjegyzék hoz létre, és konfigurálja a `kubectl` segédprogram.
 
 ## <a name="architecture"></a>Architektúra
 
@@ -56,12 +56,12 @@ A következő ábra szemlélteti a hálózati topológia itt:
 > [!IMPORTANT]
 > Névfeloldás nem engedélyezett a peered hálózatok között, így az IP-címzés használatos. Alapértelmezés szerint a HDInsight Kafka állomásnév helyett IP-címek vissza, ha az ügyfelek van konfigurálva. A jelen dokumentumban leírt lépések módosításához az IP-címet használ Kafka hirdetési helyette.
 
-## <a name="create-an-azure-container-service-aks"></a>Hozzon létre egy Azure Tárolószolgáltatás (AKS)
+## <a name="create-an-azure-kubernetes-service-aks"></a>Hozzon létre egy Azure Kubernetes szolgáltatást (AKS)
 
 Ha még nem rendelkezik egy AKS fürthöz, a következő dokumentumokat segítségével megtudhatja, hogyan hozzon létre egyet:
 
-* [Fürt üzembe helyezése Azure tároló szolgáltatás (AKS) - portál](../../aks/kubernetes-walkthrough-portal.md)
-* [Fürt üzembe helyezése Azure tároló szolgáltatás (AKS) - parancssori felület](../../aks/kubernetes-walkthrough.md)
+* [Fürt üzembe helyezése Azure Kubernetes szolgáltatás (AKS) - portál](../../aks/kubernetes-walkthrough-portal.md)
+* [Fürt üzembe helyezése Azure Kubernetes szolgáltatás (AKS) - parancssori felület](../../aks/kubernetes-walkthrough.md)
 
 > [!NOTE]
 > AKS a telepítés során létrehoz egy virtuális hálózatot. Ezen a hálózaton nincsenek társviszonyban, hogy a HDInsight a következő szakaszban létrehozott.
@@ -154,11 +154,11 @@ Az alábbi lépésekkel konfigurálhatja Kafka tartománynevek helyett IP-címek
 
 ## <a name="test-the-configuration"></a>Tesztelje a konfigurációt
 
-Ezen a ponton Kafka és az Azure Tárolószolgáltatás van a peered virtuális hálózatok a kommunikáció. Ez a kapcsolat teszteléséhez tegye a következőket:
+Ezen a ponton Kafka és Azure Kubernetes szolgáltatás van a peered virtuális hálózatok a kommunikáció. Ez a kapcsolat teszteléséhez tegye a következőket:
 
 1. Hozzon létre egy Kafka témakör, amely a tesztelési alkalmazás használja. Létrehozásával kapcsolatos információkat Kafka témakörök, tekintse meg a [Kafka fürt létrehozása](apache-kafka-get-started.md) dokumentum.
 
-2. Töltse le a mintaalkalmazás az [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test). 
+2. Töltse le a mintaalkalmazás az [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test).
 
 3. Szerkessze a `index.js` fájlt, és módosítsa a következő sorokat:
 
@@ -184,7 +184,7 @@ Ezen a ponton Kafka és az Azure Tárolószolgáltatás van a peered virtuális 
     ```
 
     > [!NOTE]
-    > Ha nem ismeri az Azure-tároló beállításjegyzék nevét vagy a biztosan ismeri az Azure CLI használata az Azure Tárolószolgáltatás tekintse meg a [AKS oktatóanyagok](../../aks/tutorial-kubernetes-prepare-app.md).
+    > Ha nem ismeri az Azure-tároló beállításjegyzék nevét vagy a biztosan ismeri az Azure CLI használata az Azure Kubernetes szolgáltatással tekintse meg a [AKS oktatóanyagok](../../aks/tutorial-kubernetes-prepare-app.md).
 
 6. A helyi címke `kafka-aks-test` , az ACR loginServer lemezkép. Is hozzáadhat `:v1` jelzi a lemezkép verziója célból:
 

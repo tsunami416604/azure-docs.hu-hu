@@ -1,11 +1,11 @@
 ---
-title: "Üzenetek az Azure IoT Hub (.Net) |} Microsoft Docs"
-description: "How Azure IoT Hub eszközről a felhőbe üzenetek feldolgozásához átirányítani más háttérszolgáltatások üzenetek útválasztási szabályokat és az egyéni végpontokat használatával."
+title: Üzenetek az Azure IoT Hub (.Net) |} Microsoft Docs
+description: How Azure IoT Hub eszközről a felhőbe üzenetek feldolgozásához átirányítani más háttérszolgáltatások üzenetek útválasztási szabályokat és az egyéni végpontokat használatával.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5177bac9-722f-47ef-8a14-b201142ba4bc
 ms.service: iot-hub
 ms.devlang: csharp
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 4794f81787fd575c34fa8a2ef66431d85dcf4a5d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 84a74a59417d3d1b9ebe0e2ede6c105b6fb3a576
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-messages-with-iot-hub-net"></a>Üzenetek az IoT Hub (.NET)
 
@@ -214,7 +214,7 @@ Ebben az oktatóanyagban megtudta, hogyan megbízhatóan átirányítani az eszk
 
 A [IoT hubbal felhő eszközre üzenetek küldése] [ lnk-c2d] bemutatja, hogyan üzenetek küldése az eszközöket a megoldás háttérből.
 
-Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Azure IoT Suite][lnk-suite].
+Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [megoldásgyorsító Azure IoT távoli megfigyelési][lnk-suite].
 
 Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
 

@@ -1,9 +1,9 @@
 ---
-title: "Kibocsátási megjegyzések a Visual Studio bővítmény az fejlesztői használatával"
-description: "A Visual Studio eszközök fejlesztői Analytics legújabb frissítéseit."
+title: Kibocsátási megjegyzések a Visual Studio bővítmény az fejlesztői használatával
+description: A Visual Studio eszközök fejlesztői Analytics legújabb frissítéseit.
 services: application-insights
-documentationcenter: 
-author: acearun
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: mbullwin
-ms.openlocfilehash: b1181698deee265e4b6b2df8bb18e2297cdc8599
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; aruna
+ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Developer Analytics Tools kibocsátási megjegyzései
 
@@ -210,7 +210,7 @@ Ha az Application Insights SDK ASP.NET-alkalmazások, a következő lépések ha
 3. Ha még nem regisztrált az Application insights szolgáltatással, a keresési ablak hibakeresési munkamenetben telemetriai üzemmódban megnyitott.
 4. Kattintson a **keresési** ikonra a helyi telemetriai adatok megjelenítéséhez.
 
-![Teljes feltöltése](./media/app-insights-release-notes-vsix/LocalSearch.png)
+![Feltöltés befejezve](./media/app-insights-release-notes-vsix/LocalSearch.png)
 
 ## <a name="version-42"></a>4.2-es verzió
 Ebben a kiadásban hozzáadott szolgáltatások könnyebb események, környezetében adatok keresésének kód Ugrás a további adatok események és a naplózási adatokat küldhet az Application Insights egyszerű élményt lehetősége. Ezt a bővítményt a havi frissül. Ha visszajelzést vagy szolgáltatás kérelmeket, küldje el azt aidevtools@microsoft.com.
@@ -247,7 +247,7 @@ A következőkkel egészült ki új lapon, a telemetria eseményhez kapcsolódó
 ### <a name="forward-and-back-history-in-search"></a>Előre és a keresési vissza előzmények
 Most lépjen vissza oda keresési eredmények között.
 
-![menj vissza](./media/app-insights-release-notes-vsix/GoBAck.png)
+![Vissza](./media/app-insights-release-notes-vsix/GoBAck.png)
 
 ## <a name="version-41"></a>4.1-es verziója
 Ez a kiadás számos új funkciókat és frissítéseket tartalmaz. 1. frissítést telepíti ezt a kiadást telepíteni kell.
@@ -289,8 +289,3 @@ Jelentkezzen be Azure Application Insights csomagok hozzáadása a projekthez, v
 
 ![Új projekt párbeszédpanelje](./media/app-insights-release-notes-vsix/newproject.png)
 
-### <a name="device-support"></a>Eszköztámogatás
-A *csatlakozás;* 2015, azt [bejelentette](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/) , hogy a mobil fejlesztők számára az eszközök-e a Hockeyappra. Hockeyappra segítségével beta buildek a tesztelők webhelyről való terjesztése, gyűjtése és elemzése a alkalmazás összes összeomlik és visszajelzés gyűjtésére közvetlenül az ügyfelektől.
-Hockeyappra az alkalmazás bármelyik úgy dönt, hogy összeállítani, iOS, Android, vagy a Windows vagy Xamarin, Cordova vagy Unity többplatformos megoldás, amely legyenek platform használatát támogatja.
-
-A jövőbeli kiadásokban az Application Insights-bővítmény, lesz bemutatása után egy több integrált élmény Hockeyappra és a Visual Studio között. Most elindíthatja a Hockeyappra egyszerűen adja hozzá a NuGet-hivatkozás. Tekintse meg a [dokumentáció](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone) további információt.

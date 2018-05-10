@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2018
 ms.author: raynew
-ms.openlocfilehash: c80b47dcf2477fda5406c2e6efe3ee87ad1188d6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: fc5fceb0105726cdd7fc45df25c8a3a21d270502
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -141,12 +141,13 @@ IPv4 | Igen
 Tartsa meg a forrás IP-címe | Igen
 Azure virtuális hálózat szolgáltatás-végpontok<br/><br/> (Az azure Storage tűzfalak és virtuális hálózatok) | Nem
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 **Összetevő** | **Támogatott**
 --- | ---
 Állomás NFS | VMware Igen<br/><br/> Fizikai kiszolgálók esetében nem
 Állomás SAN (ISCSI) | Igen
 Állomás többutas (MPIO) | A Microsoft DSM, EMC PowerPath 5.7 SP4 EMC PowerPath DSM CLARiiON Igen, tesztelve
+Virtuális Gazdaköteteket (VVols) | VMware Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló vmdk-fájl | Igen
 Vendég-kiszolgáló EFI/UEFI| Részleges (Azure a Windows Server 2012 és újabb verziók VMware virtuális gépek csak áttelepítés) </br></br> Lásd a táblázat végén a megjegyzést
 Vendég-kiszolgáló megosztott fürtlemez | Nem

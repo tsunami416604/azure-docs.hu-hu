@@ -177,8 +177,6 @@
               href: vmware-azure-set-up-process-server-scale.md
         - name: Vészhelyreállítás
           items:
-            - name: Több-bérlős támogatással és felhőszolgáltatással rendelkező VMware virtuális gépek vészhelyreállítása
-              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
             - name: VMware virtuális gépek replikálása az Azure-ba PowerShell használatával
               href: vmware-azure-disaster-recovery-powershell.md
             - name: Fizikai kiszolgálók vészhelyreállítása az Azure-ba
@@ -199,12 +197,14 @@
               href: vmware-azure-exclude-disk.md
             - name: VMware virtuális gépek replikációjának engedélyezése
               href: vmware-azure-enable-replication.md
+            - name: Több-bérlős rendszer CSP-vel VMware-alapú virtuális gépekhez
+              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: A mobilitási szolgáltatás telepítése
           items:
+            - name: Mobilitási szolgáltatások áttekintése
+              href: vmware-azure-install-mobility-service.md
             - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
               href: vmware-azure-mobility-install-configuration-mgr.md
-            - name: A mobilitási szolgáltatás üzembe helyezése az Azure Automation DSC-vel
-              href: vmware-azure-mobility-deploy-automation-dsc.md
         - name: Feladatátvétel és feladat-visszavétel
           items:
             - name: Vészhelyreállítási próba végrehajtása az Azure-ba

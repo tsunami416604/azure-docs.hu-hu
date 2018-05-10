@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 6377b79d986d32fba8f84c670d6b69d5eda98b8a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 24d89b617c347bc9443b437c92cb034acb3e05cb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 Hozzon létre egy virtuális gépet (VM), indítsa újra a leállított (felszabadított) virtuális gépek vagy átméretezni egy virtuális Gépet, a Microsoft Azure előfizetéshez számítási erőforrásokat foglal le. Azt is folyamatosan terhelésnél további infrastruktúrával, és győződjön meg arról, hogy mindig minden virtuális gép esetében keresletének támogató szolgáltatások. Egyedülálló növekszik az Azure meghatározott régióiba-szolgáltatások igény miatt azonban erőforrás pufferallokációs hibák alkalmanként tapasztalhatja. Ez a probléma akkor fordulhat elő, létrehozásához, vagy indítsa el a virtuális gépek régióban közben a virtuális gépek a következő hibakód és üzenet megjelenítése közben:
 
@@ -35,7 +35,7 @@ A forgatókönyvet, amely a legjobban illik az Ön esetében azonosítása, majd
 
 Kérelem méretezze át egy virtuális Gépet, vagy adja hozzá a virtuális gépek rendelkezésre állási készlet kell próbálkozik a rendszer az eredeti fürt, amelyen a meglévő rendelkezésre állási, állítsa be. A kért Virtuálisgép-méretet a fürt által támogatott, de a fürt jelenleg nincs elegendő kapacitással. 
 
-### <a name="workaround"></a>Megkerülő megoldás
+### <a name="workaround"></a>Áthidaló megoldás
 
 A virtuális gép egy másik rendelkezésre állási készlet része lehet, ha egy másik rendelkezésre állási csoport (ugyanabban a régióban) a virtuális gép létrehozása. Új virtuális gép felvehető ugyanahhoz a virtuális hálózathoz.
 
@@ -50,7 +50,7 @@ Ez a lépés biztosítja, hogy fut-e egy új foglalási kísérlet és, hogy egy
 
 Részleges felszabadítás azt jelenti, hogy (felszabadított) egy vagy több leállt, de nem minden, a rendelkezésre állási virtuális gépeket. Ha egy virtuális gép felszabadítani a kapcsolódó erőforrások kiadásakor. Részlegesen felszabadított rendelkezésre állási csoportban lévő virtuális gépek újraindításával megegyezik a virtuális gépek hozzáadása egy meglévő rendelkezésre állási csoportot. Ezért az eredeti fürt, hogy a gazdagép a meglévő rendelkezésre állási csoport, amely előfordulhat, hogy rendelkezik-e elegendő kapacitással a próbált kell a memóriafoglalási kérelem.
 
-### <a name="workaround"></a>Megkerülő megoldás
+### <a name="workaround"></a>Áthidaló megoldás
 
 Állítsa le (felszabadítása) minden virtuális gép ugyanabban a rendelkezésre állási állítsa be, majd indítsa újra a minden egyes.
 Leállítása: kattintson az erőforráscsoportok > [az erőforráscsoport] > erőforrások > [a rendelkezésre állási csoport] > virtuális gépek > [a virtuális gép] > leállítása.
@@ -63,7 +63,7 @@ Ezzel biztosíthatja, hogy fut-e egy új foglalási kísérlet és, hogy egy új
 
 Teljes felszabadítás azt jelenti, hogy leállította (felszabadítva) minden virtuális gép rendelkezésre állási csoportba. A virtuális gépek újraindítására a memóriafoglalási kérelem által megcélzott összes fürt, amely támogatja a kívánt méretet, a régiót vagy zóna belül. A cikkben szereplő javaslatok / memóriafoglalási kérelem módosítsa, majd ismételje meg a kérelmet a eséllyel sikerül, felosztási javítása érdekében. 
 
-### <a name="workaround"></a>Megkerülő megoldás
+### <a name="workaround"></a>Áthidaló megoldás
 
 Ha a régebbi Virtuálisgép-sorozat vagy méretek, például a d.v.1, DSv1, Av1, D15v2 vagy DS15v2, fontolja meg újabb verzióit. Lásd: ezek a javaslatok, az adott VM-méretek.
 Ha nem is használhat egy másik Virtuálisgép-méretet, próbálja másik belül az azonos földrajzi régióban üzembe helyezni. További információ az elérhető Virtuálisgép-méretek minden régióban: https://aka.ms/azure-regions
@@ -80,7 +80,7 @@ Azt bontsa ki az Azure-infrastruktúra, mivel azt telepíteni van kialakítva, h
 |----------------------|----------------------------|--------------------|
 |Av1-sorozat|[Av2-sorozat](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |D.v.1 vagy DSv1-sorozat (D5 a D1)|[Dv3 vagy DSv3-sorozat](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|D.v.1 vagy DSv1-sorozat (a D14 D11)|[Ev3 vagy ESv3-sorozat](../articles/virtual-machines/windows/sizes-memory.md#esv3-series-sup1sup)|
+|D.v.1 vagy DSv1-sorozat (a D14 D11)|[Ev3 vagy ESv3-sorozat](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)|
 |D15v2 vagy DS15v2|Ha a nagyobb Virtuálisgép-méretek kihasználása érdekében theResource Manager telepítési modellt használ, fontolja meg D16v3/DS16v3 vagy D32v3/DS32v3. Ezek a legújabb generációs hardver futtatásra tervezték. Ha a Resource Manager üzembe helyezési modellel segítségével ellenőrizze, hogy a Virtuálisgép-példány az egyetlen ügyfél számára dedikált hardverre elkülönített, fontolja meg az új elszigetelt Virtuálisgép-méretek, E64i_v3 vagy E64is_v3, amely a legújabb generációs hardverre futnak. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Pufferallokációs hibák nagy méretű telepítéséhez (több mint 500 mag)

@@ -4,7 +4,7 @@ description: Tudnivalók az Azure biztonsági szolgáltatásait és annak műkö
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 51d0f1f6d2689e37c1c39bf4a5e8078a2482c76d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a7b8c480291360cb50af1ce4ae36cd406f0ddc21
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági
 ## <a name="overview"></a>Áttekintés
@@ -148,7 +148,7 @@ Az Application Diagnostics felületén tekintheti meg a következő módokon cso
 -   Az alkalmazáshibák (a kivételesemények megjelenítése)
 -   Teljesítmény (a teljesítménnyel kapcsolatos események megjelenítése)
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 A témakör az Azure storage biztonsági és összefoglaló információt ezeket a képességeket a legfontosabb funkcióira vonatkozó további információkat.
 
 ### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
@@ -306,7 +306,7 @@ Rendelkezésre álló hálózati ajánlások a következők:
 -   [Internetre irányuló végpont-en keresztüli hozzáférés korlátozása](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints) azt javasolja, hogy az NSG-ket konfigurálhat a bejövő forgalomra vonatkozó szabályokat.
 
 
-## <a name="compute"></a>Számítás
+## <a name="compute"></a>Compute
 
 A szakasz vonatkozóan nyújt további információkat a legfontosabb jellemzők ezeket a képességeket a terület és összefoglaló információt.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: v-deasim
-ms.openlocfilehash: 09efd5cd54fbd05d85939b3ae08bfbb37e91058d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dcae29c49035775cd9ff983bbc99bab06c7f16dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-azure-cdn-with-sas"></a>Az Azure CDN használatával a SAS használatával
 
@@ -49,7 +49,7 @@ Beállítás paraméterekkel kapcsolatos további információkért lásd: [SAS 
 
 ### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>1. lehetőség: SAS használatával csatlakoztatott a blob Storage Azure CDN
 
-Ez a beállítás a legegyszerűbb, és egyetlen SAS tokent, az eredeti kiszolgálóra átadott Azure CDN használ. Támogatják a **Azure CDN Verizon** és **Akamai Azure CDN**. 
+Ez a beállítás a legegyszerűbb, és egyetlen SAS tokent, az eredeti kiszolgálóra átadott Azure CDN használ. Támogatják a **Azure CDN Standard verizon** és **Azure CDN Standard Akamai** profilok. 
  
 1. Válasszon ki egy végpontot, jelölje be **szabályok gyorsítótárazás**, majd jelölje be **minden egyedi URL-cím gyorsítótárazása** a a **lekérdezési karakterláncok gyorsítótárazása** listája.
 

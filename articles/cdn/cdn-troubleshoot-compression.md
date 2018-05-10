@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CDN fájltömörítés elhárítása |} Microsoft Docs"
-description: "Azure CDN fájltömörítés elhárítása."
+title: Az Azure CDN fájltömörítés elhárítása |} Microsoft Docs
+description: Azure CDN fájltömörítés elhárítása.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14d50cb7cac77af75dd4b7293812154d1f24e47c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>A CDN-fájlok tömörítési hibáinak elhárítása
 Ez a cikk segít elhárítása [CDN fájltömörítés](cdn-improve-performance.md).
@@ -61,9 +61,9 @@ Először azt kell tennie a kérelem gyors megerősítést ellenőrzése.  A bö
 
 ![CDN-kérelemfejlécekben](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-standard-cdn-profile"></a>Ellenőrizze a tömörítési beállítások (standard szintű CDN-profil)
+### <a name="verify-compression-settings-standard-cdn-profiles"></a>Ellenőrizze a tömörítési beállítások (standard szintű CDN-profil)
 > [!NOTE]
-> Ez a lépés csak akkor alkalmazza, ha a CDN-profilt egy **Azure CDN Standard verizon** vagy **Azure CDN Standard Akamai** profil. 
+> Ez a lépés csak akkor, ha a CDN-profil vonatkozik egy **Azure CDN Standard Microsoft**, **Azure CDN Standard verizon**, vagy **Azure CDN Standard Akamai** profil. 
 > 
 > 
 
@@ -74,9 +74,9 @@ A következőben szereplő végpontnál: keresse meg a [Azure-portálon](https:/
 
 ![CDN-tömörítési beállítások](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-premium-cdn-profile"></a>Ellenőrizze a tömörítési beállítások (prémium szintű CDN-profil)
+### <a name="verify-compression-settings-premium-cdn-profiles"></a>Ellenőrizze a tömörítési beállítások (prémium szintű CDN-profil)
 > [!NOTE]
-> Ez a lépés csak akkor alkalmazza, ha a CDN-profilt egy **verizon Azure CDN Premium** profil.
+> Ez a lépés csak akkor, ha a CDN-profil vonatkozik egy **verizon Azure CDN Premium** profil.
 > 
 > 
 
@@ -88,9 +88,9 @@ A következőben szereplő végpontnál: keresse meg a [Azure-portálon](https:/
 
 ![CDN premium tömörítési beállítások](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached"></a>Ellenőrizze, hogy a tartalom gyorsítótárazva van
+### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>Ellenőrizze a tartalom gyorsítótárazott (Verizon CDN-profil)
 > [!NOTE]
-> Ez a lépés csak akkor alkalmazza, ha a CDN-profilt egy **Azure CDN Verizon** profil (Standard vagy prémium).
+> Ez a lépés csak akkor, ha a CDN-profil vonatkozik egy **Azure CDN Standard verizon** vagy **verizon Azure CDN Premium** profil.
 > 
 > 
 
@@ -101,9 +101,9 @@ A böngésző fejlesztői eszközök segítségével, ellenőrizze annak érdek�
 
 ![CDN-válaszfejlécek](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements"></a>Ellenőrizze a fájl megfelel-e a kötetméretek követelményeit
+### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Ellenőrizze a fájl megfelel-e a kötetméretek követelményeit (Verizon CDN-profil)
 > [!NOTE]
-> Ez a lépés csak akkor alkalmazza, ha a CDN-profilt egy **Azure CDN Verizon** profil (Standard vagy prémium).
+> Ez a lépés csak akkor, ha a CDN-profil vonatkozik egy **Azure CDN Standard verizon** vagy **verizon Azure CDN Premium** profil.
 > 
 > 
 

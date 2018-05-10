@@ -1,9 +1,9 @@
 ---
-title: "Észlelési - teljesítményanomáliákat intelligens |} Microsoft Docs"
-description: "Az Application Insights hajtja végre az alkalmazás telemetriai intelligens elemzése és figyelmezteti, potenciális problémákat. Ez a funkció a telepítés nem kell."
+title: Észlelési - teljesítményanomáliákat intelligens |} Microsoft Docs
+description: Az Application Insights hajtja végre az alkalmazás telemetriai intelligens elemzése és figyelmezteti, potenciális problémákat. Ez a funkció a telepítés nem kell.
 services: application-insights
 documentationcenter: windows
-author: antonfrMSFT
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3310239b5569ca5b63bd39acb4d192a4e54780e4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: mbullwin; antonfr
+ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelési - Teljesítményanomáliákat
 
@@ -42,7 +42,7 @@ Nem, egy értesítés nem jelenti azt, hogy az alkalmazás véglegesen rendelkez
 
 ## <a name="how-do-i-fix-it"></a>Hogyan tegye megjavítani?
 
-Az értesítések tárgya lehet a diagnosztikai adatokat. Íme egy példa:
+Az értesítések tárgya lehet a diagnosztikai adatokat. Például:
 
 
 ![Íme egy példa a kiszolgáló válasza idő teljesítménycsökkenést észlelés](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
@@ -87,8 +87,8 @@ E-mailek kapcsolatos intelligens észlelések teljesítményanomáliákat / nap 
   * Nem.  Azt nem véglegesíthető a minden, érdemes lehet rendellenes viselkedés észlelése.
 
 
-* *Ha nem tesz semmit, a válasz egy adott értesítésre, I kap egy emlékeztető?*
-  * Nem, egy üzenetet kap minden problémával kapcsolatos csak egyszer. Ha a probléma továbbra is fennáll, az adatcsatorna-panel Intelligens észlelését frissíti.
+* *Ha nem tesz semmit, egy értesítés válaszként, I kap egy emlékeztető?*
+  * Nem, egy üzenetet kap minden problémával kapcsolatos csak egyszer. Ha a probléma továbbra is fennáll, a hírcsatorna panel Intelligens észlelését frissíti.
 * *Az e-mailt elvész. Hol található az értesítéseket a portálon?*
   * Az Application Insights az alkalmazás áttekintésében, kattintson a **intelligens észlelési** csempére. Nem lesz az értesítések találja mentése 90 nap biztonsági.
 
@@ -132,7 +132,7 @@ A válasz idő teljesítménycsökkenést értesítés, miszerint:
 * Hivatkozásokat tartalmaz, akkor a probléma diagnosztizálása érdekében.
   * Szolgáltatásprofil-elemzői adat megjelenítéséhez, ahol művelet töltött idő, van (a hivatkozás akkor használható, ha ehhez a művelethez az észlelési időszak során összegyűjtött Profilkészítő nyomkövetési példák). 
   * Teljesítmény-jelentések a metrika Intézőben, ahol Ön is részletekbe menően idő tartományszűrő ehhez a művelethez.
-  * Keresse meg a hívások adott hívások tulajdonságainak megtekintése.
+  * Keresse meg a hívás adott hívás tulajdonságainak megtekintése.
   * Hiba – Ha jelent ez azt jelenti, hogy hiba történt a művelet, amely előfordulhat, hogy hozzájárultak teljesítménycsökkenés > 1 száma.
 
 ## <a name="dependency-duration-degradation"></a>A függőségi időtartama teljesítménycsökkenése
@@ -152,7 +152,7 @@ Figyelje meg, amely jelzi, hogy:
 * Hivatkozások segítséget nyújtanak a probléma diagnosztizálása
   * Teljesítmény jelentéseinek a függőség metrika Explorerben
   * Keresse meg a függőségi hívás hívások tulajdonságainak megtekintése
-  * Hiba – Ha jelent > 1 Ez jelenti, hogy történtek az észlelési időszakban, előfordulhat, hogy hozzájárultak időtartama teljesítménycsökkenést nem sikerült függőségi hívások száma. 
+  * Hiba jelentések – Ha az észlelési időszakban, előfordulhat, hogy hozzájárultak időtartama teljesítménycsökkenést hívások száma > 1 Ez azt jelenti, hogy a függőségi sikertelen volt. 
   * Nyissa meg a függőségi időtartamát és a count számító lekérdezéseket elemzés  
 
 ## <a name="smart-detection-of-slow-performing-patterns"></a>A lassú teljesítő minták intelligens észlelése 

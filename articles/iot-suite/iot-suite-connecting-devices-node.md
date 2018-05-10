@@ -1,7 +1,7 @@
 ---
 title: Ellátja az eszközöket a node.js - Azure távoli megfigyeléshez |} Microsoft Docs
-description: Eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldást igényelnek olyan alkalmazással Node.js nyelven írt ismerteti.
-services: ''
+description: Ismerteti, hogyan lehet egy eszköz csatlakozni a távoli megfigyelési megoldásgyorsító Node.js nyelven írt alkalmazás segítségével.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: df89150867a3c95116ba8ca8cd684af4b32a36de
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0edc2d71d5f2ceac9c631fedaa160ca7291e9d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Csatlakoztassa az eszközt a távoli felügyeleti előkonfigurált megoldás (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Csatlakoztassa az eszközt a távoli felügyeleti megoldásgyorsító (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti előkonfigurált megoldás. Ebben az oktatóanyagban akkor az Node.js, amely minimális erőforrás-korlátozásokkal rendelkező környezetek jó választás.
+Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti megoldásgyorsító. Ebben az oktatóanyagban akkor az Node.js, amely minimális erőforrás-korlátozásokkal rendelkező környezetek jó választás.
 
 ## <a name="create-a-nodejs-solution"></a>Node.js megoldás létrehozása
 
@@ -175,7 +175,7 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
 
 1. Adja hozzá a következő függvény kezelni a **FirmwareUpdate** metódushívások a megoldásban való közvetlen. A függvény ellenőrzi az átadott paraméterek: a közvetlen módszer hasznos, és aszinkron módon fut egy belső vezérlőprogram frissítési szimuláció:
 
-    ```node.js
+    ```nodejs
     function onFirmwareUpdate(request, response) {
       // Get the requested firmware version from the JSON request body
       var firmwareVersion = request.payload.Firmware;
@@ -204,7 +204,7 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
 
 1. Adja hozzá a következő függvényt, ezzel szimulálva a hosszan futó belső vezérlőprogram frissítési folyamat, amely a folyamatban lévő jelentést küld vissza a megoldás:
 
-    ```node.js
+    ```nodejs
     // Simulated firmwareUpdate flow
     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
       console.log('Simulating firmware update flow...');
@@ -282,7 +282,7 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
 
 1. Adja hozzá a következő kódot a telemetrikus adatokat küldeni a megoldás. Az ügyfélalkalmazás azonosítására az üzenet séma az üzenet tulajdonságainak hozzáadása:
 
-    ```node.js
+    ```nodejs
     function sendTelemetry(data, schema) {
       if (deviceOnline) {
         var d = new Date();

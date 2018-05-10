@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f3952ce87394270051bd37fae271162abc04a675
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 370e6e2c569aaf6d9289bddccde2174b4dd2ee97
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Kötések tartós függvények (az Azure Functions)
 
@@ -36,17 +36,12 @@ Az Azure Functions a Visual Studio eszközök használata esetén a vezénylési
 {
     "name": "<Name of input parameter in function signature>",
     "orchestration": "<Optional - name of the orchestration>",
-    "version": "<Optional - version label of this orchestrator function>",
     "type": "orchestrationTrigger",
     "direction": "in"
 }
 ```
 
 * `orchestration` a vezénylési neve van. Ez az érték ügyfelek szeretne elindítani az új példányokat orchestrator függvény segítségével. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény nevét használja.
-* `version` a vezénylési verzió címkét van. Ügyfelek, indítsa el az orchestration egy új példányát tartalmaznia kell a megfelelő verzió címkét. Ez a tulajdonság nem kötelező. Ha nincs megadva, a üres karakterláncot kell használni. Versioning további információkért lásd: [Versioning](durable-functions-versioning.md).
-
-> [!NOTE]
-> A beállítás értéke a `orchestration` vagy `version` tulajdonságok jelenleg nem ajánlott.
 
 Belső eseményindító kötés kérdezze le az alapértelmezett tárfiókot, a függvény alkalmazás várólistákból sorozata. Ezek a várólisták belső megvalósítás részletei bővítmény, ezért explicit módon nincsenek beállítva a kötési tulajdonságok.
 
@@ -69,12 +64,11 @@ A bemeneti és kimeneti az orchestration eseményindító kötése támogatja. A
 * **bemenetek** -támogatás csak Vezénylési működik [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) paramétertípusaként. Közvetlenül a függvényaláíráshoz a bemeneti adatok deszerializálása nem támogatott. Kódot kell használnia a [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) metódus lehívása orchestrator függvény bemenet. A bemeneti JSON-szerializálható típusnak kell lennie.
 * **kimeneti** -Vezénylési eseményindítók támogatja a kimeneti értékeit, valamint a bemeneti adatok. A függvény visszatérési értéke a kimeneti értéket hozzárendelni szolgál, és JSON-szerializálhatónak kell lennie. Ha egy olyan függvényt ad vissza `Task` vagy `void`, egy `null` értéket a rendszer menti a kimenetként.
 
-> [!NOTE]
-> Vezénylési eseményindítók csak támogatottak a C# most.
-
 ### <a name="trigger-sample"></a>Eseményindító minta
 
-A következő egy példa hogyan nézhet ki a "Hello World" C# legegyszerűbb orchestrator függvény:
+A következő egy példa hogyan nézhet ki a "Hello, World" legegyszerűbb orchestrator függvény:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -85,7 +79,23 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    return `Hello ${name}!`;
+});
+```
+
+> [!NOTE]
+> JavaScript orchestrators használandó `return`. A `durable-functions` könyvtár hívása gondoskodik a `context.done` metódust.
+
 A legtöbb orchestrator függvény tevékenység funkciók, hívható meg, a "Hello, World" példa azt mutatja be, hogyan hívhatja meg egy tevékenység függvényben:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -96,6 +106,18 @@ public static async Task<string> Run(
     string result = await context.CallActivityAsync<string>("SayHello", name);
     return result;
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    const result = yield context.df.callActivityAsync("SayHello", name);
+    return result;
+});
 ```
 
 ## <a name="activity-triggers"></a>Tevékenység eseményindítók
@@ -110,17 +132,12 @@ Fejlesztési használata az Azure-portálon, a tevékenység indítási határoz
 {
     "name": "<Name of input parameter in function signature>",
     "activity": "<Optional - name of the activity>",
-    "version": "<Optional - version label of this activity function>",
     "type": "activityTrigger",
     "direction": "in"
 }
 ```
 
 * `activity` a tevékenység esetén. Ez az érték az orchestrator funkciók segítségével a tevékenység függvény meghívása. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény nevét használja.
-* `version` a tevékenység verzió címke van. Az orchestrator függvények meghívása tevékenységgel tartalmaznia kell a megfelelő verzió címke. Ez a tulajdonság nem kötelező. Ha nincs megadva, a üres karakterláncot kell használni. További információkért lásd: [Versioning](durable-functions-versioning.md).
-
-> [!NOTE]
-> A beállítás értéke a `activity` vagy `version` tulajdonságok jelenleg nem ajánlott.
 
 Belső eseményindító kötés kérdezze le az alapértelmezett tárfiókot, a függvény alkalmazás üzenetsorból. A várólista egy belső végrehajtási részletei bővítmény, ezért a kötési tulajdonságok explicit módon nincs konfigurálva.
 
@@ -144,12 +161,11 @@ A bemeneti és kimeneti, csakúgy, mint a vezénylési eseményindító a tevék
 * **kimeneti** -tevékenység funkciókat támogatja a kimeneti értékeit, valamint a bemeneti adatok. A függvény visszatérési értéke a kimeneti értéket hozzárendelni szolgál, és JSON-szerializálhatónak kell lennie. Ha egy olyan függvényt ad vissza `Task` vagy `void`, egy `null` értéket a rendszer menti a kimenetként.
 * **metaadatok** -tevékenység funkciók köthető egy `string instanceId` paraméter használatával beolvassa az a szülő vezénylési Példányazonosítója.
 
-> [!NOTE]
-> Tevékenység eseményindítók jelenleg nem támogatottak a Node.js-funkciók.
-
 ### <a name="trigger-sample"></a>Eseményindító minta
 
-A következő egy példa hogyan nézhet ki egy egyszerű "Hello World" C# tevékenység függvény:
+A következő egy példa hogyan nézhet ki egy egyszerű "Hello, World" tevékenység függvény:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
@@ -160,7 +176,17 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+module.exports = function(context) {
+    context.done(null, `Hello ${context.bindings.name}!`);
+};
+```
+
 Az alapértelmezett paraméter típusa a `ActivityTriggerAttribute` kötés `DurableActivityContext`. Azonban a tevékenység eseményindítók is közvetlenül a JSON-serializeable kötelező támogatási típusokat (beleértve a primitív típusok), ugyanezt a funkciót sikerült egyszerűsített, mint a következő:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
@@ -168,6 +194,14 @@ public static string SayHello([ActivityTrigger] string name)
 {
     return $"Hello {name}!";
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (csak funkciók v2)
+
+```javascript
+module.exports = function(context, name) {
+    context.done(null, `Hello ${name}!`);
+};
 ```
 
 ### <a name="passing-multiple-parameters"></a>Több paraméterek átadása 
@@ -302,9 +336,9 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 }
 ```
 
-#### <a name="nodejs-sample"></a>NODE.js-mintát
+#### <a name="javascript-sample"></a>JavaScript-minta
 
-A következő példa bemutatja, hogyan használhatja a tartós orchestration-függvény új példányt a Node.js-függvény történő kötés:
+A következő példa bemutatja, hogyan használhatja a tartós orchestration-függvény új példányt a JavaScript függvény történő kötés:
 
 ```js
 module.exports = function (context, input) {

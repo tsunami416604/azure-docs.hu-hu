@@ -1,0 +1,54 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Media Services v3 (előzetes verzió) dokumentációja
+metadata:
+  document_id: 
+  title: Az Azure Media Services v3 dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  meta.description: Learn how to stream on-demand, broadcast live, and analyze your videos with Media Services. Tutorials, API references, and more.
+  services: media-services
+  author: Juliako
+  manager: cfowler
+  ms.service: media-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03-20-2018
+  ms.author: juliako
+  ms.openlocfilehash: 1ac829c8d9643401cada1f7cd558a39b63da87c2
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Ismerje meg, hogyan streamelhet videókat igény szerint, hogyan közvetíthet élőben és hogyan elemezheti videóit a Media Services használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Megtudhatja, hogyan hozhat létre egy Media Services-fiókot, hogyan kezdheti el saját videói kódolását, és hogyan játszhatja le azokat az Azure Media Player használatával:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/media-services.svg
+      text: Videofájlok streamelése
+      href: /azure/media-services/latest/stream-files-dotnet-quickstart
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Ismerje meg, hogyan streamelhet fájlokat és hogyan elemezheti videóit a Media Services használatával.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/media-services/latest/stream-files-tutorial-with-api">Videók feltöltése, kódolása és streamelése</a>
+    - html: <a href="/azure/media-services/latest/analyze-videos-tutorial-with-api">Videók elemzése</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest">Azure CLI</a></p>
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/rest/api/media/">REST API</a></p>

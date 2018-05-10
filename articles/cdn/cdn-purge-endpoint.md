@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CDN-végpont törlése |} Microsoft Docs"
-description: "Ismerje meg, hogy minden gyorsítótárazott tartalom kiürítése az Azure CDN-végponton."
+title: Az Azure CDN-végpont törlése |} Microsoft Docs
+description: Ismerje meg, hogy minden gyorsítótárazott tartalom kiürítése az Azure CDN-végponton.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b6157ddaf320f942a704d32f066b821425596308
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 262a8f7385ba5f74d21991772599540260a145fc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Az Azure CDN-végpont törlése
 ## <a name="overview"></a>Áttekintés
@@ -51,14 +51,14 @@ Ez az oktatóanyag bemutatja, hogyan eszközök kiürítése a végpont összes 
    > 
    > 
 4. Válassza ki milyen eszközöket kívánja kiüríteni peremhálózati csomópontjából.  Ha törli az összes eszközt, kattintson a **összes** jelölőnégyzetet.  Ellenkező esetben adja meg az elérési útját minden egyes a kiüríteni kívánt eszközt a **elérési** szövegmező. Az elérési út által támogatott formátumok alatt.
-    1. **Egyetlen URL-cím kiürítése**: a teljes URL-címet, vagy a fájl kiterjesztése például anélkül megadásával eszköz egyedi kiürítése`/pictures/strasbourg.png`;`/pictures/strasbourg`
+    1. **Egyetlen URL-cím kiürítése**: a teljes URL-címet, vagy a fájl kiterjesztése például anélkül megadásával eszköz egyedi kiürítése`/pictures/strasbourg.png`; `/pictures/strasbourg`
     2. **Helyettesítő karakteres kiürítés**: csillag (\*) helyettesítő karakter is használható. Törli az összes mappa, almappák és fájlok a végpont `/*` kiürítése vagy az elérési utat minden almappák és fájlok egy adott mappában a mappa megadásával követ `/*`, például`/pictures/*`.  Vegye figyelembe, hogy helyettesítő karakteres kiürítés nem támogatott Akamai Azure CDN által jelenleg. 
     3. **Legfelső szintű tartomány kiürítése**: törli a végpont a "/" elérési gyökérmappájában.
    
    > [!TIP]
    > Elérési utak meg kell adni a kiürítési, és egy relatív URL-cím a következő illeszkedő kell [reguláris kifejezés](https://msdn.microsoft.com/library/az24scfc.aspx). **Összes** és **helyettesítő karakteres kiürítés** nem támogatja a **Akamai Azure CDN** jelenleg.
-   > > Egyetlen URL-cím kiürítése`@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
-   > > Lekérdezési karakterlánc`@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
+   > > Egyetlen URL-cím kiürítése `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
+   > > Lekérdezési karakterlánc `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > Helyettesítő karakteres kiürítés `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
    > 
    > További **elérési** szövegmezők lehetővé teszi több eszközök listájának összeállítása szöveg megadása után jelenik meg.  Eszközök a három ponttal (…) gombra kattintva törölheti a listából.
@@ -68,11 +68,11 @@ Ez az oktatóanyag bemutatja, hogyan eszközök kiürítése a végpont összes 
     ![Kiürítése gomb](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Kiürítési kérelmeket feldolgozni a körülbelül 2-3 percet vehet igénybe **Azure CDN Verizon** (Standard és prémium), és körülbelül 7 perc **Akamai Azure CDN**.  Az Azure CDN maximális száma 50 egyidejű kérelmek kiüríteni egy adott időpontban a profil szinten van. 
+> Kiürítési kérelmeket feldolgozni a körülbelül 2-3 percet vehet igénybe **Azure CDN Verizon** (standard és premium), és körülbelül 7 perc **Akamai Azure CDN**.  Az Azure CDN maximális száma 50 egyidejű kérelmek kiüríteni egy adott időpontban a profil szinten van. 
 > 
 > 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Eszközök előzetes betöltése Azure CDN-végponton](cdn-preload-endpoint.md)
 * [Az Azure CDN REST API-referencia - kiürítése, vagy a végpont előzetes betöltése](https://msdn.microsoft.com/library/mt634451.aspx)
 

@@ -1,26 +1,24 @@
 ---
-title: "SaaS-alkalmazásokhoz való hozzáférés kezelése csoport segítségével |} Microsoft Docs"
-description: "Hogyan használható az Azure Active Directory prémium vagy alapszintű kiadásra csoportok hozzáférés hozzárendelése az Azure Active Directoryval integrált SaaS-alkalmazásokhoz."
+title: SaaS-alkalmazásokhoz való hozzáférés kezelése csoport segítségével |} Microsoft Docs
+description: Hogyan használható az Azure Active Directory prémium vagy alapszintű kiadásra csoportok hozzáférés hozzárendelése az Azure Active Directoryval integrált SaaS-alkalmazásokhoz.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: ab8dee63-bedc-46ca-8852-234f5c16ae98
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: 4aee5b28fd42be98fac8f9c7d61538319e3efd9a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bdcda54d4e43c81bde587b949cdc12a0237469a9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>Hozzáférés kezelése SaaS alkalmazásokhoz egy csoport használatával
 Az Azure Active Directoryval (Azure AD) az Azure AD prémium vagy alapszintű Azure AD-licenccel rendelkező, segítségével csoportok hozzáférés hozzárendelése integrálva van az Azure AD SaaS-alkalmazás. Például szeretne hozzárendelni a marketingrészleg használatára öt különböző SaaS-alkalmazásokhoz hozzáférést, ha akkor is hozzon létre egy csoportot, amely tartalmazza a felhasználók a marketingosztályon belül, és hozzárendelheti csoport ezek öt SaaS-alkalmazások által használt a marketingrészleg. Így időt takaríthat meg egy helyen a marketingrészleg tagjainak kezelésével. Felhasználók majd vannak hozzárendelve az alkalmazás hozzáadásuk után a marketing csoport tagjaként, és a hozzárendeléseik eltávolította az alkalmazásból a marketing csoport eltávolításakor. Ez a funkció több száz alkalmazásokat, amelyek adhat hozzá az Azure AD Application Gallery használható.

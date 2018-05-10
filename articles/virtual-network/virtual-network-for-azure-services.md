@@ -1,13 +1,13 @@
 ---
-title: "Azure-szolgáltatások a virtuális hálózati |} Microsoft Docs"
-description: "További tudnivalók a erőforrásokat üzembe helyezi a virtuális hálózatba előnyeit. A virtuális hálózatokon, erőforrások kommunikálhatnak egymással, és a helyszíni erőforrások, az interneten áthaladó forgalom nélkül."
+title: Azure-szolgáltatások a virtuális hálózati |} Microsoft Docs
+description: További tudnivalók a erőforrásokat üzembe helyezi a virtuális hálózatba előnyeit. A virtuális hálózatokon, erőforrások kommunikálhatnak egymással, és a helyszíni erőforrások, az interneten áthaladó forgalom nélkül.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 15a5ede13aebb039c1d17f118ee1acdcf9031d50
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ecfe3fb6db6b0fb0561e31b3c8aa70b74785b807
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózati integráció az Azure-szolgáltatások
 
@@ -48,7 +48,7 @@ A virtuális hálózaton belül szolgáltatások telepítése a következő lehe
 Minden szolgáltatás közvetlenül helyezett virtuális hálózati rendelkezik konkrét követelmények útválasztást és a típusú forgalom,-alhálózatok engedélyezni kell. További információkért lásd: 
  
 - Virtuális gépek: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Service fabric](../service-fabric/service-fabric-patterns-networking.md?toc=%2fazure%2fvirtual-network%2ftoc.json#existingvnet)
+- [A Service fabric](../service-fabric/service-fabric-patterns-networking.md?toc=%2fazure%2fvirtual-network%2ftoc.json#existingvnet)
 - [Virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [App Service Environment](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -56,7 +56,8 @@ Minden szolgáltatás közvetlenül helyezett virtuális hálózati rendelkezik 
 - [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Az Alkalmazásátjáró (belső)](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Az Azure tároló szolgáltatás vezérlőprogramja](../container-service/container-service-intro.md?toc=%2fazure%2fvirtual-network%2ftoc.json): az Azure Tárolószolgáltatás egy alapértelmezett virtuális hálózatot hoz létre. Létrehozhat egy egyéni virtuális hálózat használata a [Azure tároló szolgáltatás vezérlőprogramja](https://github.com/Azure/acs-engine/tree/master/examples/vnet).
+- [Az Azure Kubernetes szolgáltatás (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Az Azure tároló szolgáltatás vezérlőprogramja](https://github.com/Azure/acs-engine) együtt az Azure virtuális hálózat CNI [beépülő modul](https://github.com/Azure/acs-engine/tree/master/examples/vnet)
 - [Az Azure Active Directory tartományi szolgáltatások](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json): virtuális hálózat (klasszikus) csak
 - [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)
 - [A felhőalapú szolgáltatások](https://msdn.microsoft.com/library/azure/jj156091): virtuális hálózat (klasszikus) csak

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/27/2018
+ms.date: 05/07/2018
 ms.author: danis
-ms.openlocfilehash: f04a9b812a86f999d5c0ec52be85f77158094c27
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f5d3754d97e44d9944cd09f1ec082e9c04ad206
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Linux OMS virtuálisgép-bővítmény
 
@@ -47,6 +47,7 @@ A következő táblázat az OMS-VM verziójának leképezéseket bővítményt, 
 
 | OMS Linux virtuális gép kiterjesztés verziója | OMS-ügynököt csomag verziója | 
 |--------------------------------|--------------------------|
+| 1.6.42.0 | [1.6.42.0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
 | 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
 | 1.4.58.7 | [14.2-125](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-125)|
@@ -199,6 +200,7 @@ A következő fájl kerül a bővítmény végrehajtás kimenetének:
 | 10 | Virtuális gép már csatlakoztatva van a Naplóelemzési munkaterület | A virtuális gép csatlakozik a bővítmény sémában megadott munkaterület, stopOnMultipleConnections értéke HAMIS, a nyilvános beállításai, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép lekérdezi számlázva után az egyes munkaterületeken van csatlakoztatva. |
 | 11 | A bővítmény megadott Érvénytelen konfiguráció | Kövesse a fenti példákban beállítása a telepítéshez szükséges minden tulajdonság értékével. |
 | 12 | A dpkg package manager zárolva van | Győződjön meg arról, hogy minden dpkg frissítési műveletek a számítógépen végzett, és próbálkozzon újra. |
+| 19 | OMI telepítési hiba | 
 | 20 | Az SCX csomag telepítési hiba |
 | 51 | Ezt a bővítményt a virtuális gép operációs rendszer nem támogatott | |
 | 55 | Nem lehet kapcsolódni a Microsoft Operations Management Suite szolgáltatással | Ellenőrizze, hogy a rendszernek van-e Internet-hozzáféréssel, vagy adtak meg, hogy érvényes HTTP-proxy. Ezenkívül ellenőrizze a helyességét a munkaterület azonosítóját. |

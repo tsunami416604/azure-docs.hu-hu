@@ -1,67 +1,88 @@
 ---
 title: Munkafolyamat-eseményindítók és műveletek - Azure Logic Apps |} Microsoft Docs
-description: Az eseményindítók és műveletek automatizált munkafolyamatok és a folyamatok létrehozni a logic apps megismerése
+description: Eseményindítók és műveletek a munkafolyamat-definícióhoz tartozó Azure Logic Apps megismerése
 services: logic-apps
-author: divyaswarnkar
-manager: anneta
+author: kevinlam1
+manager: SyntaxC4
 editor: ''
 documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: article
-ms.date: 10/13/2017
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
+ms.topic: reference
+ms.date: 5/8/2018
 ms.author: klam; LADocs
-ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="triggers-and-actions-for-logic-app-workflows"></a>Eseményindítók és műveletek a logic app munkafolyamatok
+# <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Eseményindítók és az Azure Logic Apps a munkafolyamat-definícióhoz műveletei
 
-Minden a logic apps indítsa el az eseményindító műveletek követ. Ez a cikk ismerteti az ilyen, eseményindítók és műveletek rendszer Integrációk létrehozásához, és üzleti munkafolyamatok és a folyamatok automatizálása a logic apps épület használható. 
-  
-## <a name="triggers-overview"></a>Eseményindítók áttekintése 
+A [Azure Logic Apps](../logic-apps/logic-apps-overview.md), minden logic app munkafolyamat kezdődnie eseményindítók műveletek követ. Ez a cikk ismerteti az eseményindítók és műveleteit, amelyekkel automatizálása üzleti munkafolyamatok és a folyamatok lévő a integrációs megoldásokat a logic Apps alkalmazásokat készíthet. A logic apps vizuálisan a Logic Apps tervezővel, vagy közvetlen szerzői műveletek az alapul szolgáló, a munkafolyamat-definícióhoz hozhat létre a [Munkafolyamatdefiníciós nyelve](../logic-apps/logic-apps-workflow-definition-language.md). Az Azure portálon vagy a Visual Studio is használhatja. Megtudhatja, hogyan [eseményindítók és műveletek works árképzési](../logic-apps/logic-apps-pricing.md).
 
-Minden a logic apps indítsa el az eseményindító, amely azt adja meg a hívásokat, elindíthatja a logikai alkalmazás futtatásához. Eseményindítók használható típusú itt találhatók:
+<a name="triggers-overview"></a>
+
+## <a name="triggers-overview"></a>Eseményindítók áttekintése
+
+Az eseményindító, amely meghatározza a hívásokat, amely hozható létre, és indítsa el a logic app munkafolyamat minden a logic apps indítsa el. Eseményindítók használható típusú itt találhatók:
 
 * A *lekérdezési* eseményindító, amely rendszeres időközönként ellenőrzi az adott szolgáltatás HTTP-végpont
 * A *leküldéses* indít, amely a [munkafolyamat szolgáltatás REST API](https://docs.microsoft.com/rest/api/logic/workflows)
-  
-Indítók a legfelső szintű elemet tartalmaznak:  
+ 
+Indítók rendelkezik a legfelső szintű ezeket az elemeket, annak ellenére, hogy egyes nem kötelező:  
   
 ```json
-"<myTriggerName>": {
-    "type": "<triggerType>",
-    "inputs": { <callSettings> },
-    "recurrence": {  
-        "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
-        "interval": "<recurrence-interval-based-on-frequency>"
-    },
-    "conditions": [ <array-with-required-conditions> ],
-    "splitOn": "<property-used-for-creating-runs>",
-    "operationOptions": "<options-for-operations-on-the-trigger>"
+"<triggerName>": {
+   "type": "<triggerType>",
+   "inputs": { "<trigger-behavior-settings>" },
+   "recurrence": { 
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": "<recurrence-interval-based-on-frequency>"
+   },
+   "conditions": [ <array-with-required-conditions> ],
+   "splitOn": "<property-used-for-creating-runs>",
+   "operationOptions": "<optional-trigger-operations>"
 }
 ```
 
-## <a name="trigger-types-and-inputs"></a>Eseményindító típusok és a bemeneti adatok  
+*Szükséges*
 
-Minden egyes indítási típus egy másik felülettel rendelkezik, és különböző *bemenetek* annak viselkedését meghatározó. 
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| <*Eseményindító_neve*> | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
+| type | Karakterlánc | Az eseményindító adja meg, például: "Http" vagy "ApiConnection" | 
+| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| recurrence | JSON-objektum | A gyakoriság és az időközt, amely leírja, milyen gyakran az eseményindító akkor következik be |  
+| frequency | Karakterlánc | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
+| interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran az eseményindító akkor következik be, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
+|||| 
+
+*Nem kötelező*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| [Feltételek](#trigger-conditions) | Tömb | Egy vagy több olyan feltételeket, amelyek meghatározzák, hogy a munkafolyamat futtatásához | 
+| [splitOn](#split-on-debatch) | Karakterlánc | Egy kifejezés, amely felosztja a, vagy *debatches*, tömb elemeinek történő feldolgozásra több munkafolyamat-példányok. Ez a beállítás nem érhető el, hogy olyan tömböt adjon vissza eseményindítók és egyetlen, ha közvetlenül a kód nézetre. | 
+| [operationOptions](#trigger-operation-options) | Karakterlánc | Néhány eseményindítók lehetővé teszik, hogy az alapértelmezett eseményindító megváltozzon kiegészítő lehetőségeket biztosítanak. | 
+||||| 
+
+## <a name="trigger-types-and-details"></a>Eseményindítók típusai és részletek  
+
+Minden eseményindító rendelkezik egy másik felületen és a bemeneti adatok, amelyek meghatározzák az indítási viselkedést. 
 
 | Indítási típus | Leírás | 
 | ------------ | ----------- | 
-| **Ismétlődés** | Akkor következik be, a megadott ütemezés szerint. Beállíthatja, hogy egy jövőbeli dátumot és időt az eseményindító kiváltó. A gyakoriság alapján azt is megadhatja, időpontok és a munkafolyamat futtatási nap. | 
-| **Kérés**  | A Logic Apps alkalmazást teszi az olyan végponttal, amely hívása, más néven "manual" eseményindító. | 
-| **HTTP** | Ellenőrzi, vagy *szavazások*, webes HTTP-végponttal. A HTTP-végpont meg kell felelnie egy meghatározott eseményindító szerződés "202" aszinkron minta használatával vagy tömböt ad vissza. | 
-| **ApiConnection** | Például egy HTTP-eseményindítóval kérdezi le, de használja [Microsoft által felügyelt API-k](../connectors/apis-list.md). | 
-| **HTTPWebhook** | Lehetővé teszi a Logic Apps alkalmazást az hívható végpont, például a **kérelem** indítható el, de meghívja a megadott URL-cím regisztrálása és a regisztráció megszüntetését. |
-| **ApiConnectionWebhook** | Működik, mint a **HTTPWebhook** eseményindító, de a Microsoft által felügyelt API-kat használ. | 
+| [**Ismétlődés**](#recurrence-trigger) | Akkor következik be, a megadott ütemezés szerint. Beállíthatja, hogy egy jövőbeli dátumot és időt az eseményindító kiváltó. A gyakoriság alapján azt is megadhatja, időpontok és a munkafolyamat futtatási nap. | 
+| [**Kérelem**](#request-trigger)  | Lehetővé teszi a Logic Apps alkalmazást az hívható végpont, más néven "manual" eseményindító. Lásd például: [hívja, eseményindító, vagy a HTTP-végpontokról munkafolyamatok beágyazásához](../logic-apps/logic-apps-http-endpoint.md). | 
+| [**HTTP**](#http-trigger) | Ellenőrzi, vagy *szavazások*, webes HTTP-végponttal. A HTTP-végpont meg kell felelnie egy meghatározott eseményindító szerződés "202" aszinkron minta használatával vagy tömböt ad vissza. | 
+| [**ApiConnection**](#apiconnection-trigger) | Működik, mint a HTTP-eseményindítóval, de használja [Microsoft által felügyelt API-k](../connectors/apis-list.md). | 
+| [**HTTPWebhook**](#httpwebhook-trigger) | A kérelem eseményindító hasonlóan működik, de meghívja a megadott URL-cím regisztrálása és a regisztráció megszüntetését. |
+| [**ApiConnectionWebhook**](#apiconnectionwebhook-trigger) | A HTTPWebhook eseményindító hasonlóan működik, de használja [Microsoft által felügyelt API-k](../connectors/apis-list.md). | 
 ||| 
-
-További információkért lásd: [Munkafolyamatdefiníciós nyelve](../logic-apps/logic-apps-workflow-definition-language.md). 
 
 <a name="recurrence-trigger"></a>
 
@@ -69,161 +90,265 @@ További információkért lásd: [Munkafolyamatdefiníciós nyelve](../logic-ap
 
 Ehhez az eseményindítóhoz a megadott ismétlődési és ütemezés alapján fut, és egyszerű módot nyújt rendszeresen futó munkafolyamat. 
 
-Íme egy egyszerű ismétlődés eseményindító példa, amely naponta fut:
-
-```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Day",
-        "interval": 1
-    }
-}
-```
-
-A kezdési dátummal és idővel a kiváltó az eseményindító is ütemezhető. Például minden hétfőn heti jelentés elindításához is ütemezheti a logikai alkalmazást ebben a példában például egy adott hétfőn elindításához: 
-
-```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Week",
-        "interval": "1",
-        "startTime": "2017-09-18T00:00:00Z"
-    }
-}
-```
-
 Az eseményindító definícióját a következő:
 
 ```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "second|minute|hour|day|week|month",
-        "interval": <recurrence-interval-based-on-frequency>,
-        "schedule": {
-            // Applies only when frequency is Day or Week. Separate values with commas.
-            "hours": [ <one-or-more-hour-marks> ], 
-            // Applies only when frequency is Day or Week. Separate values with commas.
-            "minutes": [ <one-or-more-minute-marks> ], 
-            // Applies only when frequency is Week. Separate values with commas.
-            "weekDays": [ "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday" ] 
-        },
-        "startTime": "<start-date-time-with-format-YYYY-MM-DDThh:mm:ss>",
-        "timeZone": "<specify-time-zone>"
-    }
+"Recurrence": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month",
+      "interval": <recurrence-interval-based-on-frequency>,
+      "startTime": "<start-date-time-with-format-YYYY-MM-DDThh:mm:ss>",
+      "timeZone": "<time-zone>",
+      "schedule": {
+         // Applies only when frequency is Day or Week. Separate values with commas.
+         "hours": [ <one-or-more-hour-marks> ], 
+         // Applies only when frequency is Day or Week. Separate values with commas.
+         "minutes": [ <one-or-more-minute-marks> ], 
+         // Applies only when frequency is Week. Separate values with commas.
+         "weekDays": [ "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday" ] 
+      }
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
+}
+```
+*Szükséges*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| Ismétlődés | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
+| type | Karakterlánc | Eseményindító-típus, amely "Ismétlődési" | 
+| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| recurrence | JSON-objektum | A gyakoriság és az időközt, amely leírja, milyen gyakran az eseményindító akkor következik be |  
+| frequency | Karakterlánc | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
+| interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran az eseményindító akkor következik be, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
+|||| 
+
+*Nem kötelező*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| startTime | Karakterlánc | A kezdő dátum és idő formátuma: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha megad egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-SSz, ha nem adja meg a időzóna <p>Így például, ha 2017. szeptember 18., 2:00 PM, majd adja meg "2017-09-18T14:00:00", és adja meg például a "Csendes-óceáni téli idő" időzóna, vagy adjon meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** hajtsa végre a kezdési ideje a [ISO 8601 dátuma a megadott időpont](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Időzóna nem adja meg, ha hozzá kell adnia a levél "Z" szóközt nélkül végén. A "Z" hivatkozik a egyenértékű [navigációs idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezés, a kezdési idő nem az első olyan, az összetett ütemezéseket, az eseményindító a kezdési időpontnál bármilyen hamarabb nem érvényesítést. További információ a kezdő dátum és idő: [létrehozása és rendszeresen futó feladatok ütemezése](../connectors/connectors-native-recurrence.md). | 
+| timeZone | Karakterlánc | Vonatkozik, csak ha a kezdési időpontot, mert az eseményindító nem fogadja el [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Adja meg az alkalmazni kívánt időzónáját. | 
+| hours | Egész szám vagy az egész tömb | Ha adja meg a "Day" vagy "Hetente" `frequency`, megadhat egy vagy több egész számok 0 és 23, a nap, ha azt szeretné, a munkafolyamat futtatási órára vesszővel elválasztva. <p>Például ha megadja a "10", "12" és "14", kapott 2 PM, az óra közötti, de 10, 12 PM. | 
+| minutes | Egész szám vagy az egész tömb | Ha adja meg a "Day" vagy "Hetente" `frequency`, megadhat egy vagy több egész számok 0 és 59 elválasztva, ha a munkafolyamatot futtatni szeretné az óra perc. <p>Például megadhatja a perc megjelölés "30", és elérhetővé az előző példa óra, nap, 10:30 AM, 12:30 PM és 2:30 PM. | 
+| weekDays | Karakterlánc vagy karakterlánctömb | Ha adja meg a "Hét" `frequency`, megadhat egy vagy több napot, egymástól vesszővel elválasztva, ha azt szeretné, a munkafolyamat futtatásához: "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat" és "Vasárnap" | 
+| Egyidejűségi | JSON-objektum | Ismétlődő és jelenség eseményindítók esetén ezt az objektumot határozza meg, egyidejűleg futtatható munkafolyamat-példányok maximális száma. Ez az érték segítségével korlátozhatja a kérelmeket, amelyek megkapják a háttérrendszerek. <p>Például ez az érték 10 példányokhoz a feldolgozási korlátot állít be: `"concurrency": { "runs": 10 }` | 
+| operationOptions | Karakterlánc | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
+|||| 
+
+*1. példa*
+
+Az alapvető ismétlődési eseményindító naponta fut:
+
+```json
+"recurrenceTriggerName": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-| Elem neve | Szükséges | Típus | Leírás | 
-| ------------ | -------- | ---- | ----------- | 
-| frequency | Igen | Karakterlánc | A egysége milyen gyakran az eseményindító következik be. Csak az egyik ezeket az értékeket használja: "második", "perc", "hour", "day", "hét" vagy "honap" | 
-| interval | Igen | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran a munkafolyamat fut, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
-| timeZone | Nem | Karakterlánc | Vonatkozik, csak ha a kezdési időpontot, mert az eseményindító nem fogadja el [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Adja meg az alkalmazni kívánt időzónáját. | 
-| startTime | Nem | Karakterlánc | Adja meg a kezdő dátum és idő formátuma: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha megad egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-SSz, ha nem adja meg a időzóna <p>Így például, ha 2017. szeptember 18., 2:00 PM, majd adja meg "2017-09-18T14:00:00", és adja meg például a "Csendes-óceáni téli idő" időzónát. Másik lehetőségként adja meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** hajtsa végre a kezdési ideje a [ISO 8601 dátuma a megadott időpont](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Időzóna nem adja meg, ha hozzá kell adnia a levél "Z" szóközt nélkül végén. A "Z" hivatkozik a egyenértékű [navigációs idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezés, a kezdési idő nem az első olyan, az összetett ütemezéseket, az eseményindító a kezdési időpontnál bármilyen hamarabb nem érvényesítést. További információ a kezdő dátum és idő: [létrehozása és rendszeresen futó feladatok ütemezése](../connectors/connectors-native-recurrence.md). | 
-| weekDays | Nem | Karakterlánc vagy karakterlánctömb | Ha adja meg a "Hét" `frequency`, megadhat egy vagy több napot, egymástól vesszővel elválasztva, ha azt szeretné, a munkafolyamat futtatásához: "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat" és "Vasárnap" | 
-| hours | Nem | Egész szám vagy az egész tömb | Ha adja meg a "Day" vagy "Hetente" `frequency`, megadhat egy vagy több egész számok 0 és 23, a nap, ha azt szeretné, a munkafolyamat futtatási órára vesszővel elválasztva. <p>Például ha megadja a "10", "12" és "14", kapott 2 PM, az óra közötti, de 10, 12 PM. | 
-| minutes | Nem | Egész szám vagy az egész tömb | Ha adja meg a "Day" vagy "Hetente" `frequency`, megadhat egy vagy több egész számok 0 és 59 elválasztva, ha a munkafolyamatot futtatni szeretné az óra perc. <p>Például megadhatja a perc megjelölés "30", és elérhetővé az előző példa óra, nap, 10:30 AM, 12:30 PM és 2:30 PM. | 
-||||| 
+*2. példa*
 
-Például az ismétlődési eseményindító meghatározza, hogy fut-e a logikai alkalmazás hetente minden hétfőn: 10:30 AM, 12:30 PM és 2:30 PM csendes-óceáni téli idő, kezdési 2017. szeptember 9., 2:00 PM legkorábban:
+A kezdési dátummal és idővel a kiváltó az eseményindító is megadhat. Az ismétlődési eseményindító a megadott napon kezdődik, és majd akkor következik be, naponta:
+
+```json
+"recurrenceTriggerName": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1,
+      "startTime": "2017-09-18T00:00:00Z"
+   }
+}
+```
+
+*3. példa*
+
+Az ismétlődési eseményindító kezdődik a 2017. szeptember 9., 2:00 PM, és akkor következik be, hetente minden hétfőn 10:30 AM, 12:30 PM és 2:30 PM csendes-óceáni téli idő:
 
 ``` json
 "myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Week",
-        "interval": 1,
-        "schedule": {
-            "hours": [
-                10,
-                12,
-                14
-            ],
-            "minutes": [
-                30
-            ],
-            "weekDays": [
-                "Monday"
-            ]
-        },
-       "startTime": "2017-09-07T14:00:00",
-       "timeZone": "Pacific Standard Time"
-    }
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Week",
+      "interval": 1,
+      "schedule": {
+         "hours": [ 10, 12, 14 ],
+         "minutes": [ 30 ],
+         "weekDays": [ "Monday" ]
+      },
+      "startTime": "2017-09-07T14:00:00",
+      "timeZone": "Pacific Standard Time"
+   }
 }
 ```
 
-Az ismétlődési és a kezdési idő példák az ehhez az eseményindítóhoz további információkért lásd: [létrehozása és rendszeresen futó feladatok ütemezése](../connectors/connectors-native-recurrence.md).
+További információt és példákat az eseményindító, lásd: [létrehozása és rendszeresen futó feladatok ütemezése](../connectors/connectors-native-recurrence.md).
+
+<a name="request-trigger"></a>
 
 ## <a name="request-trigger"></a>Kérelem eseményindító
 
-Ehhez az eseményindítóhoz olyan végponttal, amely használható a Logic Apps alkalmazást egy HTTP-kérelem keresztül hívása funkcionál. A kérelem eseményindító ebben a példában néz ki:  
-  
+Ehhez az eseményindítóhoz lehetővé teszi a Logic Apps alkalmazást hívható hozzon létre egy végpontot, amely elfogadja a bejövő HTTP-kérelmek. Ehhez az eseményindítóhoz meghívásához kell használnia a `listCallbackUrl` API-nak a [munkafolyamat szolgáltatás REST API](https://docs.microsoft.com/rest/api/logic/workflows). Ehhez az eseményindítóhoz használandó HTTP-végponttal, lásd: [hívja, eseményindító, vagy a HTTP-végpontokról munkafolyamatok beágyazásához](../logic-apps/logic-apps-http-endpoint.md).
+
 ```json
-"myRequestTrigger": {
-    "type": "Request",
-    "kind": "Http",
-    "inputs": {
-        "schema": {
-            "type": "Object",
-            "properties": {
-                "myInputProperty1": { "type" : "string" },
-                "myInputProperty2": { "type" : "number" }
-            },
-            "required": [ "myInputProperty1" ]
-        }
-    }
-} 
-```
-
-Az eseményindító tulajdonsága nem kötelező nevű `schema`:
-  
-| Elem neve | Szükséges | Típus | Leírás |
-| ------------ | -------- | ---- | ----------- |
-| Séma | Nem | Objektum | A JSON-séma, amely megvizsgálja a bejövő kérelem. Hasznos segítséget nyújt a soron következő munkafolyamat lépéseket tudja, mely tulajdonságokat kell hivatkoznia. | 
-||||| 
-
-Ehhez az eseményindítóhoz végpontjaként meghívni, meg kell hívnia a `listCallbackUrl` API. Lásd: [munkafolyamat szolgáltatás REST API](https://docs.microsoft.com/rest/api/logic/workflows).
-
-## <a name="http-trigger"></a>HTTP eseményindító  
-
-Ehhez az eseményindítóhoz lekérdezi a megadott végpontot, és ellenőrzi a válasz határozza meg, hogy a munkafolyamat futtasson-e vagy sem. Itt a `inputs` objektum e egy HTTP-hívás megalkotásához szükséges paramétereket fogadja: 
-
-| Elem neve | Szükséges | Típus | Leírás | 
-| ------------ | -------- | ---- | ----------- | 
-| method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
-| uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
-| Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
-| fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
-| retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
-| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). <p>Ütemező túl van egy több támogatott tulajdonságot: `authority`. Alapértelmezés szerint ez az érték van `https://login.windows.net` Ha nincs megadva, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
-||||| 
-
-A *újrapróbálkozási házirendet* 408 429 és 5xx mellett minden csatlakozási kivétel időszakos hibák, mint a HTTP-állapotkódok jellemzőek vonatkozik. Megadhatja a házirend a `retryPolicy` objektum az itt látható módon:
-  
-```json
-"retryPolicy": {
-    "type": "<retry-policy-type>",
-    "interval": <retry-interval>,
-    "count": <number-of-retry-attempts>
+"manual": {
+   "type": "Request",
+   "kind": "Http",
+   "inputs": {
+      "method": "GET | POST | PUT | PATCH | DELETE | HEAD",
+      "relativePath": "<relative-path-for-accepted-parameter>",
+      "schema": {
+         "type": "object",
+         "properties": { 
+            "<propertyName>": {
+               "type": "<property-type>"
+            }
+         },
+         "required": [ "<required-properties>" ]
+      }
+   }
 }
 ```
 
-Működnek jól a Logic Apps alkalmazást, a HTTP-eseményindítóval előírja, hogy a HTTP API egy adott minta megfelel. Az eseményindító ismeri fel ezeket a tulajdonságokat:  
+*Szükséges*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| Manuális | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
+| type | Karakterlánc | Eseményindító-típus, amely "Kérelmek" | 
+| típusa | Karakterlánc | A kérelem, amely "Http" típusa | 
+| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+|||| 
+
+*Nem kötelező*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| method | Karakterlánc | A metódus azon kérelmek használatával kell hívható meg az eseményindító: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" |
+| RelativePath | Karakterlánc | A paraméter, amely fogadja a HTTP-végpont URL-cím relatív elérési útja | 
+| Séma | JSON-objektum | A JSON-séma, amely ismerteti, és ellenőrzi a tartalom, vagy az eseményindító kap a bejövő kérelem felhasználandó. A séma segítségével tudja a Tulajdonságok hivatkozhasson rá az ezt követő munkafolyamat-műveleteket. | 
+| properties | JSON-objektum | A JSON-séma, amely leírja a tartalom egy vagy több tulajdonságának | 
+| Szükséges | Tömb | Egy vagy több tulajdonságának értékeket igénylő | 
+|||| 
+
+*Példa*
+
+A kérelem eseményindító Megadja, hogy egy bejövő kérelem HTTP POST metódussal az eseményindító és a séma, amely megvizsgálja a bejövő kérelem bemeneti: 
+
+```json
+"myRequestTrigger": {
+   "type": "Request",
+   "kind": "Http",
+   "inputs": {
+      "method": "POST",
+      "schema": {
+         "type": "Object",
+         "properties": {
+            "customerName": {
+               "type": "String"
+            },
+            "customerAddress": { 
+               "type": "Object",
+               "properties": {
+                  "streetAddress": {
+                     "type": "String"
+                  },
+                  "city": {
+                     "type": "String"
+                  }
+               }
+            }
+         }
+      }
+   }
+} 
+```
+
+<a name="http-trigger"></a>
+
+## <a name="http-trigger"></a>HTTP eseményindító  
+
+Ehhez az eseményindítóhoz lekérdezi a megadott végpontot, és ellenőrzi a választ. A válasz határozza meg, hogy a munkafolyamat futtasson-e vagy sem. A `inputs` JSON-objektumot tartalmaz, és megköveteli a `method` és `uri` a HTTP-hívás megalkotásához szükséges paraméterek:
+
+```json
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET | PUT | POST | PATCH | DELETE | HEAD",
+      "uri": "<HTTP-or-HTTPS-endpoint-to-poll>",
+      "queries": "<query-parameters>",
+      "headers": { "<headers-for-request>" },
+      "body": { "<payload-to-send>" },
+      "authentication": { "<authentication-method>" },
+      "retryPolicy": {
+          "type": "<retry-policy-type>",
+          "interval": "<retry-interval>",
+          "count": <number-retry-attempts>
+      }
+   },
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": <recurrence-interval-based-on-frequency>
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
+}
+```
+
+*Szükséges*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| HTTP | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
+| type | Karakterlánc | A "http" indítási típus | 
+| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| method | Igen | Karakterlánc | A megadott végpontot a lekérdezés a HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
+| uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPS végpont URL-címet, amely az eseményindító ellenőrző vagy kérdezze le az <p>Maximális méret: 2 KB | 
+| recurrence | JSON-objektum | A gyakoriság és az időközt, amely leírja, milyen gyakran az eseményindító akkor következik be |  
+| frequency | Karakterlánc | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
+| interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran az eseményindító akkor következik be, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
+|||| 
+
+*Nem kötelező*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| lekérdezés | JSON-objektum | A lekérdezés paramétereket, amelyeket a URL-címet szeretne <p>Például ez az elem hozzáadása a `?api-version=2015-02-01` lekérdezési karakterlánc URL-címet: <p>`"queries": { "api-version": "2015-02-01" }` <p>Eredmény: `https://contoso.com?api-version=2015-02-01` | 
+| fejlécek | JSON-objektum | A kérés küldése egy vagy több fejlécek <p>Ha például a nyelvét és típusát a kérelmek beállítása: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| törzs | JSON-objektum | A végpont küldendő forgalma (adatok) | 
+| hitelesítés | JSON-objektum | A módszert, amelyet a bejövő kérelem hitelesítést kell használnia. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). Ütemező túl a `authority` tulajdonság támogatott. Ha nincs megadva, az alapértelmezett érték: `https://login.windows.net`, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
+| retryPolicy | JSON-objektum | Ez az objektum testreszabása az időszakos hibák, amelyek 4xx vagy 5xx állapotkódok újrapróbálási viselkedése. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
+| Egyidejűségi | JSON-objektum | Ismétlődő és jelenség eseményindítók esetén ezt az objektumot határozza meg, egyidejűleg futtatható munkafolyamat-példányok maximális száma. Ez az érték segítségével korlátozhatja a kérelmeket, amelyek megkapják a háttérrendszerek. <p>Például ez az érték 10 példányokhoz a feldolgozási korlátot állít be: <p>`"concurrency": { "runs": 10 }` | 
+| operationOptions | Karakterlánc | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
+|||| 
+
+Ahhoz, hogy működnek jól a Logic Apps alkalmazást, a HTTP-eseményindítóval van szükség, hogy megfelelnek-e a HTTP API egy adott mintával. A HTTP-eseményindítóval ismeri fel ezeket a tulajdonságokat:  
   
 | Válasz | Szükséges | Leírás | 
 | -------- | -------- | ----------- |  
-| Állapotkód | Igen | Az állapotkód: 200 ("OK") futtató okoz. Bármely más állapotkód futtató nem okoz. | 
-| Újrapróbálkozási után fejléc | Nem | Amíg a logic app kérdezze le a végpont újra másodpercek számát. | 
+| Állapotkód | Igen | A "200 OK" állapotkód futtató kezdődik. Bármely más állapotkód futtató nem indul el. | 
+| Újrapróbálkozási után fejléc | Nem | Amíg a logic app kérdezze le a végpont újra másodpercben | 
 | Hely fejléc | Nem | Hívja a következő lekérdezési időköz az URL-címe. Ha nincs megadva, az eredeti URL-címet használja. | 
 |||| 
 
-Íme néhány példa viselkedés a kérelmek különböző típusú:
-  
-| Válaszkód | Újrapróbálkozás | Viselkedés | 
-| ------------- | ----------- | -------- | 
+*Például különböző kérelmek működése*
+
+| Állapotkód | Újrapróbálkozás | Viselkedés | 
+| ----------- | ----------- | -------- | 
 | 200 | {nincs} | A munkafolyamatot futtatni, majd újra keressen további adatok a megadott ismétlődési után. | 
 | 200 | 10 másodperc | A munkafolyamatot futtatni, majd újra keressen további adatok 10 másodperc után. |  
 | 202 | 60 másodperc | A munkafolyamat nem indítható el. A következő kísérlet történik, egy perc alatt, a megadott ismétlődési vonatkoznak. Ha a megadott ismétlődési kevesebb mint egy perc, a újrapróbálkozási után fejléc lép érvénybe. Ellenkező esetben a megadott ismétlődési szolgál. | 
@@ -231,181 +356,314 @@ Működnek jól a Logic Apps alkalmazást, a HTTP-eseményindítóval előírja,
 | 500 | {nincs}| Kiszolgálóhiba, ne futtassa a munkafolyamat. Ha nincs `retryPolicy` van definiálva, akkor az alapértelmezett házirend. Miután a rendszer elérte az újbóli próbálkozások számát, az eseményindító újra-adatokat keresi meg a megadott ismétlődési után. | 
 |||| 
 
-Az alábbiakban a HTTP-eseményindító kimenetek: 
-  
+### <a name="http-trigger-outputs"></a>HTTP-eseményindítóval kimenete
+
 | Elem neve | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| fejlécek | Objektum | A fejléceket a HTTP-válaszok | 
-| törzs | Objektum | A HTTP-válasz törzsében | 
+| fejlécek | JSON-objektum | A fejléceket a HTTP-válasz | 
+| törzs | JSON-objektum | A HTTP-válasz törzsében | 
 |||| 
 
 <a name="apiconnection-trigger"></a>
 
 ## <a name="apiconnection-trigger"></a>APIConnection eseményindító  
 
-Az alapvető funkciókat ehhez az eseményindítóhoz működik, mint a HTTP-eseményindítóval. A művelet azonosítására szolgáló paraméterek azonban eltérőek. Például:   
-  
+Ehhez az eseményindítóhoz működik, mint a [HTTP-eseményindítóval](#http-trigger), de használja [Microsoft által felügyelt API-k](../connectors/apis-list.md) , a paraméterek az eseményindító térnek el egymástól. 
+
+Itt az eseményindító definícióját, annak ellenére, hogy sok szakaszt kötelező megadni, így a trigger elem viselkedés attól függ, szakaszok megtalálhatók-e:
+
 ```json
-"myDailyReportTrigger": {
-    "type": "ApiConnection",
-    "inputs": {
-        "host": {
-            "api": {
-                "runtimeUrl": "https://myarticles.example.com/"
-            }
-        },
-        "connection": {
-            "name": "@parameters('$connections')['myconnection'].name"
-        }
-    },  
-    "method": "POST",
-    "body": {
-        "category": "myCategory"
-    }
+"<APIConnectionTriggerName>": {
+   "type": "ApiConnection",
+   "inputs": {
+      "host": {
+         "api": {
+            "runtimeUrl": "<managed-API-endpoint-URL>"
+         },
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>'].name"
+         },
+      },
+      "method": "GET | PUT | POST | PATCH | DELETE | HEAD",
+      "queries": "<query-parameters>",
+      "headers": { "<headers-for-request>" },
+      "body": { "<payload-to-send>" },
+      "authentication": { "<authentication-method>" },
+      "retryPolicy": {
+          "type": "<retry-policy-type>",
+          "interval": "<retry-interval>",
+          "count": <number-retry-attempts>
+      }
+   },
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": "<recurrence-interval-based-on-frequency>"
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
 }
 ```
 
-| Elem neve | Szükséges | Típus | Leírás | 
-| ------------ | -------- | ---- | ----------- | 
-| gazdagép | Igen | Objektum | Az üzemeltetett átjáró és az API-alkalmazás azonosítója | 
-| method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
-| Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
-| fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
-| retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
-| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). | 
-||||| 
+*Szükséges*
 
-Az a `host` objektumot, az alábbiakban a tulajdonságok:  
-  
-| Elem neve | Szükséges | Leírás | 
-| ------------ | -------- | ----------- | 
-| API runtimeUrl | Igen | A felügyelt API-végpont | 
-| Kapcsolat neve |  | A munkafolyamat által használt felügyelt API-kapcsolat neve. Hivatkoznia kell nevű paraméter `$connection`. |
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| *APIConnectionTriggerName* | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
+| type | Karakterlánc | Eseményindító-típus, amely "ApiConnection" | 
+| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| gazdagép | JSON-objektum | A JSON-objektumból, amely leírja a gazdagép átjáró és az Azonosítóját a felügyelt API-hoz. <p>A `host` JSON objektumnak ezeket az elemeket: `api` és `connection` | 
+| api-t | JSON-objektum | A végpont URL-címe a felügyelt API-val: <p>`"runtimeUrl": "<managed-API-endpoint-URL>"` | 
+| kapcsolat | JSON-objektum | A nevet a felügyelt API-kapcsolat a munkafolyamat által használt, amelynek tartalmaznia kell egy hivatkozást nevű paraméter `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>'].name"` | 
+| method | Karakterlánc | A felügyelt API-val való kommunikációhoz HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
+| recurrence | JSON-objektum | A gyakoriság és az időközt, amely leírja, milyen gyakran az eseményindító akkor következik be |  
+| frequency | Karakterlánc | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
+| interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran az eseményindító akkor következik be, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
 |||| 
 
-A *újrapróbálkozási házirendet* 408 429 és 5xx mellett minden csatlakozási kivétel időszakos hibák, mint a HTTP-állapotkódok jellemzőek vonatkozik. Megadhatja a házirend a `retryPolicy` objektum az itt látható módon:
-  
+*Nem kötelező*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| lekérdezés | JSON-objektum | A lekérdezés paramétereket, amelyeket a URL-címet szeretne <p>Például ez az elem hozzáadása a `?api-version=2015-02-01` lekérdezési karakterlánc URL-címet: <p>`"queries": { "api-version": "2015-02-01" }` <p>Eredmény: `https://contoso.com?api-version=2015-02-01` | 
+| fejlécek | JSON-objektum | A kérés küldése egy vagy több fejlécek <p>Ha például a nyelvét és típusát a kérelmek beállítása: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| törzs | JSON-objektum | A JSON-objektum, amely leírja a forgalma (adatok) küldése a felügyelt API-val | 
+| hitelesítés | JSON-objektum | A módszert, amelyet olyan bejövő kérelemre hitelesítést kell használnia. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
+| retryPolicy | JSON-objektum | Ez az objektum testreszabása az újrapróbálási viselkedése időszakos hibák, amelyek 4xx vagy 5xx állapotkódok: <p>`"retryPolicy": { "type": "<retry-policy-type>", "interval": "<retry-interval>", "count": <number-retry-attempts> }` <p>További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
+| Egyidejűségi | JSON-objektum | Ismétlődő és jelenség eseményindítók esetén ezt az objektumot határozza meg, egyidejűleg futtatható munkafolyamat-példányok maximális száma. Ez az érték segítségével korlátozhatja a kérelmeket, amelyek megkapják a háttérrendszerek. <p>Például ez az érték 10 példányokhoz a feldolgozási korlátot állít be: `"concurrency": { "runs": 10 }` | 
+| operationOptions | Karakterlánc | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
+||||
+
+*Példa*
+
 ```json
-"retryPolicy": {
-    "type": "<retry-policy-type>",
-    "interval": <retry-interval>,
-    "count": <number-of-retry-attempts>
+"Create_daily_report": {
+   "type": "ApiConnection",
+   "inputs": {
+      "host": {
+         "api": {
+            "runtimeUrl": "https://myReportsRepo.example.com/"
+         },
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>'].name"
+         }     
+      },
+      "method": "POST",
+      "body": {
+         "category": "statusReports"
+      }  
+   },
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-Az alábbiakban egy API-kapcsolat eseményindító kimenetek:
-  
+### <a name="apiconnection-trigger-outputs"></a>APIConnection eseményindító kimenete
+ 
 | Elem neve | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| fejlécek | Objektum | A fejléceket a HTTP-válaszok | 
-| törzs | Objektum | A HTTP-válasz törzsében | 
+| fejlécek | JSON-objektum | A fejléceket a HTTP-válasz | 
+| törzs | JSON-objektum | A HTTP-válasz törzsében | 
 |||| 
 
-További információ [hogyan működik az API-kapcsolat díjszabása elindítja](../logic-apps/logic-apps-pricing.md#triggers).
+<a name="httpwebhook-trigger"></a>
 
 ## <a name="httpwebhook-trigger"></a>HTTPWebhook trigger  
 
-Ehhez az eseményindítóhoz biztosít egy végpontot, hasonlóan a `Request` eseményindító, de a HTTPWebhook eseményindító is meghívja a megadott URL-cím regisztrálása és a regisztráció megszüntetését. Íme egy példa hogyan nézhet ki egy HTTPWebhook eseményindító:
+Ehhez az eseményindítóhoz működik, mint a [kérelem eseményindító](#request-trigger) hozzon létre egy hívható végpont a logikai alkalmazásnak. Azonban az eseményindító is meghívja a megadott végponti URL-cím regisztrálása vagy előfizetés regisztrációját. Megadhat egy webhook eseményindító korlátok ugyanúgy, mint [HTTP aszinkron korlátok](#asynchronous-limits). 
+
+Itt eseményindító definícióját, ha sok szakaszt nem kötelező, és az eseményindító viselkedése attól függ, a következő szakaszok használja, vagy hagyja el:
 
 ```json
-"myAppsSpotTrigger": {
+"HTTP_Webhook": {
     "type": "HttpWebhook",
     "inputs": {
         "subscribe": {
             "method": "POST",
-            "uri": "https://pubsubhubbub.appspot.com/subscribe",
-            "headers": {},
+            "uri": "<subscribe-to-endpoint-URL>",
+            "headers": { "<headers-for-request>" },
             "body": {
                 "hub.callback": "@{listCallbackUrl()}",
                 "hub.mode": "subscribe",
-                "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+                "hub.topic": "<subscription-topic>"
             },
             "authentication": {},
             "retryPolicy": {}
         },
         "unsubscribe": {
             "method": "POST",
-            "url": "https://pubsubhubbub.appspot.com/subscribe",
+            "url": "<unsubscribe-from-endpoint-URL>",
             "body": {
                 "hub.callback": "@{workflow().endpoint}@{listCallbackUrl()}",
                 "hub.mode": "unsubscribe",
-                "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+                "hub.topic": "<subscription-topic>"
             },
             "authentication": {}
         }
     },
-    "conditions": []
 }
 ```
 
-Ezek a szakaszok számos nem kötelező, és a HTTPWebhook eseményindító viselkedés attól függ, a következő szakaszok adja meg, vagy hagyja ki. Az alábbiakban a HTTPWebhook eseményindító tulajdonságait:
-  
-| Elem neve | Szükséges | Leírás | 
-| ------------ | -------- | ----------- |  
-| előfizetés | Nem | Megadja a kimenő kérelem az eseményindító jön létre, és elvégzi a kezdeti regisztráció hívására. | 
-| előfizetés lemondása | Nem | Megadja a kimenő kérelem hívására az eseményindító törlődik. | 
+*Szükséges*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| HTTP_Webhook | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
+| type | Karakterlánc | Eseményindító-típus, amely "HttpWebhook" | 
+| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| előfizetés | JSON-objektum| A kimenő kérelem és a kezdeti regisztráció elvégzéséhez az eseményindító létrehozásakor. Ez a hívás akkor történik meg, hogy az eseményindító elindíthatja az események a végpont figyel. További információkért lásd: [szolgáltatásra, és leiratkozhat](#subscribe-unsubscribe). | 
+| method | Karakterlánc | Az előfizetés a kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
+| uri azonosító | Karakterlánc | A végponti URL-Címének hova küldje a előfizetés kérelem | 
 |||| 
 
-Megadhat egy webhook eseményindító korlátok ugyanúgy, mint [HTTP aszinkron korlátok](#asynchronous-limits). Itt az kapcsolatos további információ a `subscribe` és `unsubscribe` műveletek:
+*Nem kötelező*
 
-* `subscribe` nevezik, hogy az eseményindító elindíthatja események figyel. A kimenő hívás kezdődik-e az ugyanezen paraméterekkel, mint szabványos HTTP-műveleteket. Ez a hívás történik, ha a munkafolyamat-módosításai bármely olyan módon, például a hitelesítő adatok már megkezdődött, vagy az eseményindító bemeneti paraméterek módosításához. 
-  
-  Ez a hívás támogatásához a `@listCallbackUrl()` függvény a munkafolyamat egy ehhez az eseményindítóhoz egyedi URL-címet adja vissza. Az URL-címet jelenti. a szolgáltatás REST API-t használó végpontokon egyedi azonosítója.
-  
-* `unsubscribe` Ha egy műveletet ehhez az eseményindítóhoz érvénytelen, beleértve az e műveletek Renderelés automatikusan neve:
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| előfizetés lemondása | JSON-objektum | A kimenő kérelem automatikusan és az előfizetés megszüntetése, ha egy olyan műveletet hajt végre az eseményindító érvénytelen. További információkért lásd: [szolgáltatásra, és leiratkozhat](#subscribe-unsubscribe). | 
+| method | Karakterlánc | A lemondási kérelmet használandó HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
+| uri azonosító | Karakterlánc | Hova küldje a lemondási kérelmet a végponti URL-címe | 
+| törzs | JSON-objektum | A JSON-objektumból, amely leírja a forgalma (adatok) az előfizetés vagy a megszakítási kérés | 
+| hitelesítés | JSON-objektum | A módszert, amelyet olyan bejövő kérelemre hitelesítést kell használnia. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
+| retryPolicy | JSON-objektum | Ez az objektum testreszabása az újrapróbálási viselkedése időszakos hibák, amelyek 4xx vagy 5xx állapotkódok: <p>`"retryPolicy": { "type": "<retry-policy-type>", "interval": "<retry-interval>", "count": <number-retry-attempts> }` <p>További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
+|||| 
 
-  * Törlése, vagy az eseményindító letiltása. 
-  * Törlése, vagy a munkafolyamat letiltása. 
-  * Törlése, vagy az előfizetés letiltása. 
-  
-  Ez a függvény paramétereinek ugyanazok, mint a HTTP-eseményindítóval.
+*Példa*
 
-Az alábbiakban a HTTPWebhook a kimeneteinek indul el, és a bejövő kérelem:
-  
+```json
+"myAppSpotTrigger": {
+   "type": "HttpWebhook",
+   "inputs": {
+      "subscribe": {
+         "method": "POST",
+         "uri": "https://pubsubhubbub.appspot.com/subscribe",
+         "headers": {},
+         "body": {
+            "hub.callback": "@{listCallbackUrl()}",
+            "hub.mode": "subscribe",
+            "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+         },
+      },
+      "unsubscribe": {
+         "method": "POST",
+         "url": "https://pubsubhubbub.appspot.com/subscribe",
+         "body": {
+            "hub.callback": "@{workflow().endpoint}@{listCallbackUrl()}",
+            "hub.mode": "unsubscribe",
+            "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+         },
+      }
+   },
+}
+```
+
+<a name="subscribe-unsubscribe"></a>
+
+### <a name="subscribe-and-unsubscribe"></a>`subscribe` és `unsubscribe`
+
+A `subscribe` hívás történik, ha a munkafolyamat-módosításai bármely olyan módon, például amikor megújítani hitelesítő adatokat, vagy az eseményindító bemeneti paraméterek módosítása. A hívás az ugyanezen paraméterekkel használja, mint szabványos HTTP-műveletek. 
+ 
+A `unsubscribe` hívás automatikusan történik, ha egy olyan műveletet hajt végre a HTTPWebhook eseményindító érvénytelen, például:
+
+* Törlése, vagy az eseményindító letiltása. 
+* Törlése, vagy a munkafolyamat letiltása. 
+* Törlése, vagy az előfizetés letiltása. 
+
+Az adott hívások támogatásához a `@listCallbackUrl()` a függvény egy egyedi "visszahívási URL-címe" az eseményindító. Az URL-címet jelenti. a szolgáltatás REST API-t használó végpontokon egyedi azonosítója. Ez a függvény paramétereinek ugyanazok, mint a HTTP-eseményindítóval.
+
+### <a name="httpwebhook-trigger-outputs"></a>HTTPWebhook eseményindító kimenete
+
 | Elem neve | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| fejlécek | Objektum | A fejléceket a HTTP-válaszok | 
-| törzs | Objektum | A HTTP-válasz törzsében | 
+| fejlécek | JSON-objektum | A fejléceket a HTTP-válasz | 
+| törzs | JSON-objektum | A HTTP-válasz törzsében | 
 |||| 
+
+<a name="apiconnectionwebhook-trigger"></a>
+
+## <a name="apiconnectionwebhook-trigger"></a>ApiConnectionWebhook eseményindító
+
+Ehhez az eseményindítóhoz működik, mint a [HTTPWebhook eseményindító](#httpwebhook-trigger), de használja [Microsoft által felügyelt API-k](../connectors/apis-list.md). 
+
+Az eseményindító definícióját a következő:
+
+```json
+"<ApiConnectionWebhookTriggerName>": {
+   "type": "ApiConnectionWebhook",
+   "inputs": {
+      "host": {
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>']['connectionId']"
+         }
+      },        
+      "body": {
+          "NotificationUrl": "@{listCallbackUrl()}"
+      },
+      "queries": "<query-parameters>"
+   }
+}
+```
+
+*Szükséges*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| <*ApiConnectionWebhookTriggerName*> | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
+| type | Karakterlánc | Eseményindító-típus, amely "ApiConnectionWebhook" | 
+| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| gazdagép | JSON-objektum | A JSON-objektumból, amely leírja a gazdagép átjáró és az Azonosítóját a felügyelt API-hoz. <p>A `host` JSON objektumnak ezeket az elemeket: `api` és `connection` | 
+| kapcsolat | JSON-objektum | A nevet a felügyelt API-kapcsolat a munkafolyamat által használt, amelynek tartalmaznia kell egy hivatkozást nevű paraméter `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>']['connectionId']"` | 
+| törzs | JSON-objektum | A JSON-objektum, amely leírja a forgalma (adatok) küldése a felügyelt API-val | 
+| NotificationUrl | Karakterlánc | Visszaadja egy egyedi "visszahívási URL-címe" az eseményindító a felügyelt API-t használó | 
+|||| 
+
+*Nem kötelező*
+
+| Elem neve | Típus | Leírás | 
+| ------------ | ---- | ----------- | 
+| lekérdezés | JSON-objektum | A lekérdezés paramétereket, amelyeket a URL-címet szeretne <p>Például ez az elem hozzáadása a `?folderPath=Inbox` lekérdezési karakterlánc URL-címet: <p>`"queries": { "folderPath": "Inbox" }` <p>Eredmény: `https://<managed-API-URL>?folderPath=Inbox` | 
+|||| 
+
+<a name="trigger-conditions"></a>
 
 ## <a name="triggers-conditions"></a>Eseményindítók: feltételek
 
-Bármely eseményindító egy vagy több feltételt segítségével határozza meg, hogy a munkafolyamat futtasson-e vagy sem. Ebben a példában a jelentés csak eseményindítók során a munkafolyamat `sendReports` paraméter értéke igaz. 
+Bármely eseményindító tömb része lehet egy vagy több feltételt, amelyek meghatározzák, hogy a munkafolyamat futtasson-e vagy sem. Ebben a példában a jelentés eseményindító akkor következik be, csak a munkafolyamat közben `sendReports` paraméter értéke igaz. 
 
 ```json
 "myDailyReportTrigger": {
-    "type": "Recurrence",
-    "conditions": [ 
-        {
-            "expression": "@parameters('sendReports')"
-        } 
-    ],
-    "recurrence": {
-        "frequency": "Day",
-        "interval": 1
-    }
+   "type": "Recurrence",
+   "conditions": [ {
+      "expression": "@parameters('sendReports')"
+   } ],
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-Végezetül a feltételeket az állapotkód: az eseményindító hivatkozhat. Például egy munkafolyamat kezdődnek, csak akkor, ha a webhely egy állapotkódot 500 adja vissza:
-  
+Feltételek is, az eseményindító állapotkód is hivatkozhatnak. Tegyük fel, hogy el szeretné indítani egy munkafolyamatot, csak akkor, ha a webhely egy "500" állapotkódot adja vissza:
+
 ``` json
-"conditions": [ 
-    {  
-      "expression": "@equals(triggers().code, 'InternalServerError')"  
-    }  
-]  
+"conditions": [ {
+   "expression": "@equals(triggers().code, 'InternalServerError')"  
+} ]  
 ```  
 
 > [!NOTE]
-> Alapértelmezés szerint egy eseményindító akkor következik be, csak a fogadás egy "200 OK" választ. Egy kifejezés hivatkozik egy eseményindító állapotkód bármely olyan módon, ha az eseményindító alapértelmezett viselkedés váltja fel. Igen ha azt szeretné, hogy az eseményindító több állapotkód esetében, például alapján tűz, állapotkód: 200 és 201-es állapotkód, meg kell adnia a jelen nyilatkozat, a feltétel: 
+> Alapértelmezés szerint egy eseményindító akkor következik be, csak a fogadás egy "200 OK" választ. Egy kifejezés hivatkozik egy eseményindító állapotkód bármely olyan módon, ha az eseményindító alapértelmezett viselkedés váltja fel. Igen ha azt szeretné, hogy az eseményindító az érvényesítést több állapotkód esetében, például az állapotkód 200-as és a 201-es, állapotkód meg kell adnia a jelen nyilatkozat, a feltétel: 
 >
 > `@or(equals(triggers().code, 200),equals(triggers().code, 201))` 
 
 <a name="split-on-debatch"></a>
 
-## <a name="triggers-process-an-array-with-multiple-runs"></a>Eseményindítók: Feldolgozni egy tömb több futtatása
+## <a name="triggers-split-an-array-into-multiple-runs"></a>Eseményindítók: Tömb felosztása több fut.
 
 Az eseményindító feldolgozni a logikai alkalmazásnak tömböt ad vissza, ha egyes esetekben "az egyes" hurkot minden tömb elem túl sok tarthat. Ehelyett használhatja a **SplitOn** az eseményindító tulajdonsága *debatch* a tömb. 
 
@@ -442,7 +700,7 @@ A Logic Apps alkalmazást csak szüksége van a tartalom `Rows`, hogy létrehozh
     "type": "Http",
     "recurrence": {
         "frequency": "Second",
-        "interval": "1"
+        "interval": 1
     },
     "inputs": {
         "uri": "https://mydomain.com/myAPI",
@@ -476,21 +734,36 @@ Most már használhatja a munkafolyamat-definíciót `@triggerBody().name` beolv
     }
 }
 ```
-  
-## <a name="triggers-fire-only-after-all-active-runs-finish"></a>Eseményindítók: Csak az összes aktív futtatása Befejezés tűz
 
-Ismétlődés eseményindítók beállíthatja, hogy azok érvényesítést, csak ha az összes aktív futtatása befejeződött. Ez a beállítás konfigurálásához állítsa a `operationOptions` tulajdonságot `singleInstance`:
+<a name="trigger-operation-options"></a>
+
+## <a name="triggers-operation-options"></a>Eseményindítók: Művelet beállítások
+
+Ezek az eseményindítók adja meg a további beállítások, amelyek lehetővé teszik az alapértelmezett viselkedés módosítása.
+
+| Eseményindító | A művelet beállítás | Leírás |
+|---------|------------------|-------------|
+| [Ismétlődés](#recurrence-trigger), <br>[HTTP](#http-trigger), <br>[ApiConnection](#apiconnection-trigger) | singleInstance | Csak az összes aktív eseményindító fut tűz befejeződött. |
+||||
+
+<a name="single-instance"></a>
+
+### <a name="triggers-fire-only-after-active-runs-finish"></a>Eseményindítók: Érvényesítést csak aktív futtatása befejezés után
+
+Eseményindítók, amelyen beállíthatja az ismétlődést megadhatja, hogy az eseményindító tűz csak az összes aktív futtatása befejeződött. Ütemezett ismétlődése akkor fordul elő, miközben a munkafolyamat-példány fut, ha az eseményindító kihagyja, és megvárja, amíg a következő ütemezett ismétlődési újra keresése előtt. Példa:
 
 ```json
-"myTrigger": {
-    "type": "Http",
-    "inputs": { },
-    "recurrence": { },
+"myRecurringTrigger": {
+    "type": "Recurrence",
+    "recurrence": {
+        "frequency": "Hour",
+        "interval": 1,
+    },
     "operationOptions": "singleInstance"
 }
 ```
 
-Ha egy ütemezett ismétlődési történik, a munkafolyamat-példányok futása közben, az eseményindító kihagyja, és megvárja a következő ütemezett ismétlési időköz újra.
+<a name="actions-overview"></a>
 
 ## <a name="actions-overview"></a>Műveletek áttekintése
 
@@ -548,12 +821,12 @@ Itt a `inputs` objektum e egy HTTP-hívás megalkotásához szükséges paramét
 | ------------ | -------- | ---- | ----------- | 
 | method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
 | uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
-| Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
-| fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
-| retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
+| lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
+| fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
+| retryPolicy | Nem | JSON-objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
-| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). <p>Ütemező túl van egy több támogatott tulajdonságot: `authority`. Alapértelmezés szerint ez az érték van `https://login.windows.net` Ha nincs megadva, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
+| hitelesítés | Nem | JSON-objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). <p>Ütemező túl van egy több támogatott tulajdonságot: `authority`. Alapértelmezés szerint ez az érték van `https://login.windows.net` Ha nincs megadva, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
 ||||| 
 
 HTTP-műveletek és támogatja a APIConnection műveletek *ismételje meg a házirendek*. Újrapróbálkozási házirendje érvényes időszakos hibák, mint a HTTP-állapotkódok jellemzőek 408 429 és 5xx minden csatlakozási kivétel mellett. Megadhatja a házirend a `retryPolicy` objektum az itt látható módon:
@@ -649,15 +922,15 @@ Ez a művelet egy Microsoft által felügyelt összekötő, egy hivatkozást egy
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| gazdagép | Igen | Objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
+| gazdagép | Igen | JSON-objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
 | method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
 | elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
-| Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
-| fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
-| retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
+| lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
+| fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
+| retryPolicy | Nem | JSON-objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
-| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
+| hitelesítés | Nem | JSON-objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
 Újrapróbálkozási házirendje érvényes időszakos hibák, mint a HTTP-állapotkódok jellemzőek 408 429 és 5xx minden csatlakozási kivétel mellett. Megadhatja a házirend a `retryPolicy` objektum az itt látható módon:
@@ -703,14 +976,14 @@ A APIConnectionWebhook művelet a Microsoft által felügyelt összekötők hiva
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| gazdagép | Igen | Objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
+| gazdagép | Igen | JSON-objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
 | elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
-| Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
-| fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
-| retryPolicy | Nem | Objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
+| lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
+| fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
+| retryPolicy | Nem | JSON-objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
-| hitelesítés | Nem | Objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
+| hitelesítés | Nem | JSON-objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
 ## <a name="response-action"></a>Válasz művelet  
@@ -794,9 +1067,9 @@ Ez a művelet lehetővé teszi, hogy jelentik és hívás egy [Azure függvény]
 | ------------ | -------- | ---- | ----------- |  
 | függvény azonosítója | Igen | Karakterlánc | Az Azure függvény hívása kívánt erőforrás-azonosító. | 
 | method | Nem | Karakterlánc | A függvény használt HTTP-metódus. Ha nincs megadva, a "POST" az alapértelmezett mód. | 
-| Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
-| fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
+| lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
+| fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
 |||||
 
 A Logic Apps alkalmazást mentésekor a Logic Apps motor ellenőrzi néhány a hivatkozott függvény:
@@ -853,7 +1126,7 @@ Ahhoz például, hogy állítsa le, amely rendelkezik futtató `Failed` állapot
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | runStatus | Igen | Karakterlánc | Futtatási tartozó állapotát, amely vagy `Failed` vagy `Cancelled` |
-| runError | Nem | Objektum | A hiba részletes adatait. Támogatott csak akkor, ha `runStatus` értéke `Failed`. |
+| runError | Nem | JSON-objektum | A hiba részletes adatait. Támogatott csak akkor, ha `runStatus` értéke `Failed`. |
 | runError kód | Nem | Karakterlánc | A Futtatás hibakód: |
 | runError üzenet | Nem | Karakterlánc | A Futtatás hibaüzenet | 
 ||||| 
@@ -990,9 +1263,9 @@ Azt is megteheti várakozási idő az adott néhány percet, használhatja a pé
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| lejárati idő: | Nem | Objektum | A pontok alapján időben várakozási időtartama | 
+| lejárati idő: | Nem | JSON-objektum | A pontok alapján időben várakozási időtartama | 
 | amíg időbélyeg | Igen | Karakterlánc | Az az időpont [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) várakozási lejáratának | 
-| interval | Nem | Objektum | A várakozási időtartama időköze és száma alapján | 
+| interval | Nem | JSON-objektum | A várakozási időtartama időköze és száma alapján | 
 | időköze | Igen | Karakterlánc | Az idő egységét. Csak az egyik ezeket az értékeket használja: "második", "perc", "hour", "day", "hét" vagy "honap" | 
 | időköz száma | Igen | Egész szám | A várakozási időtartamot időintervallum-egység szám, amely pozitív egész szám | 
 ||||| 
@@ -1029,9 +1302,9 @@ Ez a művelet lehetővé teszi a munkafolyamat ágyazhatók be. A Logic Apps mot
 | ------------ | -------- | ---- | ----------- |  
 | állomás azonosítója | Igen | Karakterlánc| Az erőforrás-azonosítója a hívni kívánt munkafolyamat | 
 | állomás Eseményindító_neve | Igen | Karakterlánc | A meghívni kívánt eseményindító nevét | 
-| Lekérdezések | Nem | Objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
-| fejlécek | Nem | Objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| törzs | Nem | Objektum | A tartalom a végpontnak küldött jelöli. | 
+| lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
+| fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
 ||||| 
 
 Ez a művelet kimenetének alapján a meghatározása a `Response` a gyermek munkafolyamat művelet. Ha nem ad meg az alárendelt munkafolyamat egy `Response` művelet, a kimenetek üresek.
@@ -1042,7 +1315,7 @@ Segítségével meghatározhatja a munkafolyamat-végrehajtási, a gyűjtemény 
 
 ## <a name="if-action"></a>Ha a művelet
 
-Ez a művelet, amely feltételes utasítás, lehetővé teszi olyan feltétel értékelése és alapján, hogy a kifejezés igaz ág hajtható végre. Ha a feltétel sikeresen igaz, a következő feltételt: "Sikeres" van megjelölve. A műveletek a `actions` vagy `else` objektumok értékelhetők ezeket az értékeket:
+Ez a művelet, amely feltételes utasítás, lehetővé teszi olyan feltétel értékelése és alapján, hogy a kifejezés igaz ág hajtható végre. Ha a feltétel sikeresen igaz, a következő feltételt: "Sikeres" állapottal van megjelölve. A műveletek a `actions` vagy `else` objektumok értékelhetők ezeket az értékeket:
 
 * "Sikeres" Amikor futtatni, és a sikeres
 * "Sikertelen" futtatni, és sikertelen
@@ -1076,9 +1349,9 @@ További információ [feltételes utasítások a logic apps](../logic-apps/logi
 
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
-| műveletek | Igen | Objektum | A belső műveletek futtatása mikor `expression` kiértékelésének eredménye `true` | 
+| műveletek | Igen | JSON-objektum | A belső műveletek futtatása mikor `expression` kiértékelésének eredménye `true` | 
 | kifejezés | Igen | Karakterlánc | A kiértékelendő kifejezés |
-| más | Nem | Objektum | A belső műveletek futtatása mikor `expression` kiértékelésének eredménye `false` |
+| más | Nem | JSON-objektum | A belső műveletek futtatása mikor `expression` kiértékelésének eredménye `false` |
 ||||| 
 
 Példa:
@@ -1133,14 +1406,14 @@ Ez a művelet, amely egy switch utasításban, egy objektum, kifejezés vagy tok
    "type": "Switch",
    "expression": "<evaluate-this-object-expression-token>",
    "cases": {
-      "myCase1" : {
-         "actions" : {
+      "myCase1": {
+         "actions": {
            "myAction1": {}
          },
          "case": "<result1>"
       },
       "myCase2": {
-         "actions" : {
+         "actions": {
            "myAction2": {}
          },
          "case": "<result2>"
@@ -1158,10 +1431,10 @@ Ez a művelet, amely egy switch utasításban, egy objektum, kifejezés vagy tok
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | kifejezés | Igen | Karakterlánc | Az objektum, a kifejezés vagy a token által kiértékelése | 
-| esetek | Igen | Objektum | A kifejezés eredménye alapján futtatnak belső műveleteket tartalmaznak. | 
+| esetek | Igen | JSON-objektum | A kifejezés eredménye alapján futtatnak belső műveleteket tartalmaznak. | 
 | Eset | Igen | Karakterlánc | A eredményeképpen teljesüléséhez szükséges értéke | 
-| műveletek | Igen | Objektum | A belső végrehajtandó műveleteket, az a kifejezés eredményének megfelelő eset futtatása | 
-| alapérték | Nem | Objektum | A belső végrehajtandó futtatását, amikor egyetlen eset megfelelő eredménye | 
+| műveletek | Igen | JSON-objektum | A belső végrehajtandó műveleteket, az a kifejezés eredményének megfelelő eset futtatása | 
+| alapérték | Nem | JSON-objektum | A belső végrehajtandó futtatását, amikor egyetlen eset megfelelő eredménye | 
 ||||| 
 
 Példa:
@@ -1172,13 +1445,13 @@ Példa:
    "expression": "@body('Send_approval_email')?['SelectedOption']",
    "cases": {
       "Case": {
-         "actions" : {
+         "actions": {
            "Send_an_email": {...}
          },
          "case": "Approve"
       },
       "Case_2": {
-         "actions" : {
+         "actions": {
            "Send_an_email_2": {...}
          },
          "case": "Reject"
@@ -1219,7 +1492,7 @@ Ez a ismétlési művelet tömb telepítéseket, és minden tömb elemen belső 
 
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
-| műveletek | Igen | Objektum | A belső műveletek futtatása a hurkon belül | 
+| műveletek | Igen | JSON-objektum | A belső műveletek futtatása a hurkon belül | 
 | foreach | Igen | Karakterlánc | A tömböt az iterációt | 
 | operationOptions | Nem | Karakterlánc | Adja meg a műveletet lehetőségeket viselkedés testreszabása. Jelenleg csak `Sequential` ahol párhuzamos-e az alapértelmezett viselkedés egymás után futtatási ismétlési. |
 ||||| 
@@ -1279,9 +1552,9 @@ A ismétlési művelet a futás belső műveletek, amíg a feltétel igaz. Tová
 
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
-| műveletek | Igen | Objektum | A belső műveletek futtatása a hurkon belül | 
+| műveletek | Igen | JSON-objektum | A belső műveletek futtatása a hurkon belül | 
 | kifejezés | Igen | Karakterlánc | A kifejezés kiértékelése mindegyik iteráció után | 
-| Korlát | Igen | Objektum | A hurok korlátok. Legalább egy korlátot kell definiálnia. | 
+| Korlát | Igen | JSON-objektum | A hurok korlátok. Legalább egy korlátot kell definiálnia. | 
 | darab | Nem | Egész szám | Az ismétlések végrehajtásához számára vonatkozó korlátozást | 
 | timeout | Nem | Karakterlánc | Az időkorlátot a [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601) , amely megadja, hogy mennyi ideig kell futtatnia a hurok |
 ||||| 
@@ -1332,7 +1605,7 @@ Ez a művelet lehetővé teszi a logikailag a munkafolyamat műveleteit. A ható
 
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- |  
-| műveletek | Igen | Objektum | A belső műveletek hatókörében |
+| műveletek | Igen | JSON-objektum | A belső műveletek hatókörében |
 ||||| 
 
 ## <a name="next-steps"></a>További lépések

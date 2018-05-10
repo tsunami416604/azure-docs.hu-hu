@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Fabric ajánlott biztonsági eljárások |} Microsoft Docs"
-description: "Ez a cikk ajánlott eljárások az Azure Service Fabric biztonsági biztosít."
+title: Az Azure Service Fabric ajánlott biztonsági eljárások |} Microsoft Docs
+description: Ez a cikk ajánlott eljárások az Azure Service Fabric biztonsági biztosít.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b908589903d243b2d284e2a23b6111785229c16f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárások
 Gyors, egyszerű és költséghatékony Azure-alkalmazás központi telepítése. Mielőtt éles környezetben a felhő alkalmazást telepít központilag, tekintse át az alapvető és ajánlott gyakorlati tanácsok a biztonságos fürtök megvalósítása az alkalmazásban listáját.
@@ -126,7 +126,7 @@ Replikációs konfigurációk konfigurálása a replikátor, amely feladata, hog
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>Az SSL konfigurálása az Azure Service Fabric
 A kiszolgáló hitelesítési folyamat [hitelesíti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) a fürt felügyeleti végpontok felügyeleti ügyfél számára. A felügyeleti ügyfél majd felismeri, ha a valós fürthöz. Ez a tanúsítvány is biztosít egy [SSL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) a HTTPS-szolgáltatásfelügyeleti API és a Service Fabric Explorer HTTPS-KAPCSOLATON keresztül.
-Be kell szereznie egy egyéni tartománynevet a fürt számára. Ha tanúsítványt kérhet egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosának nevét meg kell egyeznie az egyéni tartománynév, amely a fürt használhatja.
+Egyéni tartománynevet kell beszereznie a fürt számára. Ha tanúsítványt kérhet egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosának nevét meg kell egyeznie az egyéni tartománynév, amely a fürt használhatja.
 
 SSL konfigurálása az alkalmazáshoz, először a hitelesítésszolgáltató által aláírt SSL-tanúsítvány beszerzése. A hitelesítésszolgáltató által kiállított tanúsítványok SSL biztonsági okokból megbízható harmadik fél. Ha még nem rendelkezik SSL-tanúsítvány, akkor beszerzése utólag egy vállalat, amely SSL-tanúsítványok értékesít.
 
@@ -182,6 +182,6 @@ Az alkalmazásokat a határoz meg a fürt létrehozása után a felhasználók a
 
 Azure Service Fabric hozzáférés-vezérlési kétféle támogatja az ügyfelek csatlakoznak a [Service Fabric-fürt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm): rendszergazdai és felhasználói. A fürt rendszergazdai hozzáférés-vezérlés használatával korlátozhatja az egyes különböző felhasználói csoportokhoz a fürt működését. Hozzáférés-vezérlés lehetővé teszi a fürt biztonságosabb.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Állítsa be a Service Fabric [fejlesztőkörnyezet](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started).
 - További tudnivalók [Service Fabric támogatási lehetőségek](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).

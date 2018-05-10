@@ -1,25 +1,20 @@
 ---
 title: Hibaelhárítási hibakódok az Azure MFA NPS-kiterjesztés |} Microsoft Docs
-description: A hálózati házirend-kiszolgáló kiterjesztésű problémák elhárításáról Azure multi-factor Authentication leggyakoribb hibaüzenetek adott feloldását kapcsolatos súgó elérése
+description: Az Azure multi-factor Authentication a hálózati házirend-kiszolgáló kiterjesztésű problémák megoldásával kapcsolatos súgó elérése
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: c82c96136dc5c1030deeae6a71e196aba2747490
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: aa140bceb5f7ad5e638f747fa8d88803c27f02a3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hárítsa el a hálózati házirend-kiszolgáló bővítmény hibaüzeneteket az Azure multi-factor Authentication
 
@@ -85,8 +80,8 @@ Ha egy ezeket a hibákat észlel, azt javasoljuk, hogy Ön [forduljon a támogat
 | Hibakód | Hibaüzenet |
 | ---------- | ------------- |
 | **InvalidParameter** | Kérelem nem lehet null. |
-| **InvalidParameter** | ObjectId nem lehet null vagy üres a ReplicationScope: {0} |
-| **InvalidParameter** | Cégnév hosszát \{0} \ hosszabb, mint a maximális engedélyezett hosszt {1} |
+| **InvalidParameter** | ObjectId nem lehet null vagy üres a ReplicationScope:{0} |
+| **InvalidParameter** | Cégnév hosszát \{0} \ hosszabb, mint a megengedett maximális hossza {1} |
 | **InvalidParameter** | UserPrincipalName nem lehet null vagy üres |
 | **InvalidParameter** | A megadott TenantId nem a megfelelő formátumban van. |
 | **InvalidParameter** | Munkamenet-azonosító nem lehet null vagy üres |

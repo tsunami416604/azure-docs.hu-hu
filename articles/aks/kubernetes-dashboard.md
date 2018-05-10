@@ -1,6 +1,6 @@
 ---
-title: "Webes felhasználói felület Azure Kubernetes fürt kezelése"
-description: "Az Kubernetes irányítópulttal AKS"
+title: Webes felhasználói felület Azure Kubernetes fürt kezelése
+description: Az Kubernetes irányítópulttal AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 47608993320d987822422ea103e4e2043de2d2e8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
-ms.translationtype: MT
+ms.openlocfilehash: ab137c8397f747ba07475910cd4461d88951d6be
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Kubernetes irányítópult Azure tároló szolgáltatás (AKS)
+# <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Kubernetes irányítópult Azure Kubernetes szolgáltatás (AKS)
 
 Az Azure CLI segítségével a Kubernetes irányítópult elindításához. Ez a dokumentum végigvezeti a Kubernetes irányítópult kezdődően az Azure parancssori felület, és néhány alapvető irányítópult művelet is végigvezeti. További információ a Kubernetes irányítópult lásd [Kubernetes webes felhasználói felületének irányítópultja][kubernetes-dashboard].
 
@@ -51,7 +51,7 @@ Az alkalmazás állapotát a Kubernetes irányítópulton látható. Ha az alkal
 
 Az alkalmazás három munkaállomás-csoporttal kapcsolatos további információk megtekintéséhez kattintson a **három munkaállomás-csoporttal** a bal oldali menüből, majd válassza ki a **NGINX** pod. Itt látható, például az erőforrás-felhasználás pod-specifikus adatait.
 
-![Kubernetes Resources](./media/container-service-kubernetes-ui/running-pods.png)
+![Kubernetes erőforrások](./media/container-service-kubernetes-ui/running-pods.png)
 
 Az alkalmazás az IP-cím kereséséhez kattintson az **szolgáltatások** a bal oldali menüből, majd válassza ki a **NGINX** szolgáltatás.
 

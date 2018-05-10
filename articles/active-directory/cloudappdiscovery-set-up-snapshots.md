@@ -1,26 +1,24 @@
 ---
-title: "A Cloud App Discovery pillanatkép jelentések létrehozása az Azure Active Directoryban |} Microsoft Docs"
-description: "Információk keresése és alkalmazások kezelése az a Cloud App Discovery, milyen előnyökkel és annak működéséről."
+title: A Cloud App Discovery pillanatkép jelentések létrehozása az Azure Active Directoryban |} Microsoft Docs
+description: Információk keresése és alkalmazások kezelése az a Cloud App Discovery, milyen előnyökkel és annak működéséről.
 services: active-directory
-keywords: "a cloud app discovery alkalmazások kezelése"
-documentationcenter: 
+keywords: a cloud app discovery alkalmazások kezelése
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.custom: it-pro
-ms.openlocfilehash: 69a633b39e68596c536700dbb2c7c8d35f3b44bb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.openlocfilehash: ad4591223c72893a4488f5515d8ceb83e0d7f8cf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-cloud-app-discovery-snapshot-reports"></a>A Cloud App Discovery pillanatkép jelentések létrehozása
 
@@ -38,7 +36,7 @@ Mielőtt beállítaná a automatikus naplógyűjtő, a napló manuális feltölt
 4. Válassza ki a **adatforrás** amelyen el szeretné a naplófájlok feltöltéséhez.
 5. Győződjön meg arról, hogy megfelelően van formázva megfelelően a minta letöltheti a naplóformátumban ellenőrzése. Kattintson a **nézet, és ellenőrizze** majd **letöltési napló minta**. Győződjön meg arról, hogy a kompatibilis megadott mintával majd hasonlítsa össze a naplót.
   
-  ![Ellenőrizze a naplóformátumban](./media/cloudappdiscovery-set-up-snapshots/create-snapshot-verify.png)
+  ![Naplóformátum ellenőrzése](./media/cloudappdiscovery-set-up-snapshots/create-snapshot-verify.png)
   >  [!NOTE]
   > Az FTP-minta formátum a pillanatképek támogatott, és automatikus feltöltés közben syslog csak az automatikus feltöltés esetén támogatott. Egy mintanaplót FTP egy mintanaplót letöltése tölti le.
 6. **Válassza ki a forgalmi naplók** , amelyet szeretne feltölteni. Egyszerre legfeljebb 20 fájlt tölthet. Tömörített és tömörített fájlok is támogatottak.
@@ -49,7 +47,7 @@ Mielőtt beállítaná a automatikus naplógyűjtő, a napló manuális feltölt
   
   ![Pillanatkép-jelentések kezelése](./media/cloudappdiscovery-set-up-snapshots/create-snapshot-manage.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD Cloud App Discovery használatának megkezdése](cloudappdiscovery-get-started.md)
 * [A folyamatos jelentési automatikus naplófeltöltés beállítása](https://docs.microsoft.com/cloud-app-security/discovery-docker)

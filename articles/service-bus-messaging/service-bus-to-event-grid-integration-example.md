@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: fd30a8eb5149647a24ff04e099bf5c3e187459ef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Példák Azure Service Bus – Azure Event Grid integrációra
 
@@ -62,7 +62,7 @@ Az üzenetek Service Bus-témakörbe történő elküldéséhez bármilyen metó
 
 A teljes forgatókönyv végrehajtása előtt hozzon létre legalább egy kisebb tesztfüggvényt a hibakereséshez és az eseményfolyam megtekintéséhez.
 
-1. Az Azure Portalon hozzon létre egy új Azure Functions-alkalmazást. Az Azure Functions alapismereteivel kapcsolatban tekintse meg az [Azure Functions dokumentációját](https://docs.microsoft.com/en-us/azure/azure-functions/).
+1. Az Azure Portalon hozzon létre egy új Azure Functions-alkalmazást. Az Azure Functions alapismereteivel kapcsolatban tekintse meg az [Azure Functions dokumentációját](https://docs.microsoft.com/azure/azure-functions/).
 
 2. Az újonnan létrehozott függvényben kattintson a pluszjelre (+) egy HTTP által aktivált függvény hozzáadásához:
 

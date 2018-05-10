@@ -1,25 +1,25 @@
 ---
-title: "A modulok figyeli, hogy Azure IoT peremhálózati |} Microsoft Docs"
-description: "A peremhálózati eszközön futó modulok kezelése"
+title: A modulok figyeli, hogy Azure IoT peremhálózati |} Microsoft Docs
+description: A peremhálózati eszközön futó modulok kezelése
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: cc7d1e290465d9254cbd7fe9e8ba71cc740b0368
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 6d024dfdd661d6bebe7d163b96659d6e169cc5cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Központi telepítése és figyelése IoT peremhálózati modulok léptékű – előzetes
 
 Azure IoT peremhálózati lehetővé teszi analytics áthelyezése a peremhálózaton, és a felhő felületet biztosít, így kezelheti és figyelheti az IoT-peremeszközök anélkül, hogy minden egyes fizikailag eléréséhez. Távolról kezelheti az eszközöket képesség, egyre fontosabb az eszközök internetes hálózatát megoldások nagyobb és összetettebb folyamatosan nőnek. Az üzleti céljaihoz, függetlenül attól, hány eszközt ad hozzá Azure IoT peremhálózati terveztek.
 
-Egyes eszközök kezeléséhez és a modulok telepíteni őket egyenként. Azonban ha azt szeretné, nagy léptékű eszközökre módosításokat, létrehozhat egy **IoT peremhálózati telepítési**. Központi telepítések dinamikus folyamatok, amelyek lehetővé teszik több modul egyszerre több eszközre telepíteni, állapota és a modulok állapotának nyomon, és szükség esetén módosítása. 
+Egyes eszközök kezeléséhez és a modulok telepíteni őket egyenként. Azonban ha azt szeretné, nagy léptékű eszközökre módosításokat, létrehozhat egy **IoT peremhálózati automatikus központi telepítési**, amely az IoT hubon automatikus kezelés része. Központi telepítések dinamikus folyamatok, amelyek lehetővé teszik több modul egyszerre több eszközre telepíteni, állapota és a modulok állapotának nyomon, és szükség esetén módosítása. 
 
 ## <a name="identify-devices-using-tags"></a>Címkék használatával eszközök azonosítása
 
@@ -67,7 +67,7 @@ Azure Stream Analytics egy modul hozzáadásához kövesse az alábbi lépéseke
 1. Válassza ki **mentése** a modul hozzá szeretne adni a telepítéshez. 
 
 Adja hozzá az egyéni kódot modulként, vagy manuálisan adja hozzá az Azure-szolgáltatások modul, kövesse az alábbi lépéseket:
-1. Válassza ki **hozzáadása IoT peremhálózati modul**.
+1. Válassza az **Add IoT Edge module** (IoT Edge-modul hozzáadása) lehetőséget.
 1. A modul adjon egy **neve**.
 1. Az a **lemezkép URI** mezőbe írja be a Docker-tároló kép a modulhoz. 
 1. Adja meg az esetleges **tároló létrehozása beállítások** , amely a tárolóban kell átadni. További információkért lásd: [docker létrehozása][lnk-docker-create].
@@ -166,7 +166,7 @@ Ha töröl egy központi telepítést, azokat az eszközöket, a következő leg
 1. Válassza a **Törlés** elemet.
 1. A kérdés tájékoztatja, hogy ez a művelet törli a központi telepítés és az összes eszköz korábbi állapotának visszaállításához.  Ez azt jelenti, hogy az alacsonyabb prioritású központi telepítés alkalmazza.  Ha nincs másik üzemelő példány, nincsenek modulok törlődik. Az ügyfelek érdemes alkalmazni, ha szükségük nulla modulok egy központi telepítés létrehozásához, és telepítse azt a azonos eszközökre. Válassza ki **Igen** Ha továbbra is szeretné. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [modulok telepítése peremeszközök][lnk-deployments].
 

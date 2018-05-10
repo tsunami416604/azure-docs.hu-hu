@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 224cd365e6b3ca4fd963b530dbaa289b763d53ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1e5515486afac5a6d84a35bca33f55ae98e287d3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Az Azure Resource Manager telepítési modelljét Azure virtuális gép biztonsági mentési csomagjának frissítése
 A Resource Manager üzembe helyezési modellben a virtuális gép (VM) biztonsági mentési verem frissítés a következő továbbfejlesztett szolgáltatásokat nyújtja:
@@ -45,8 +45,6 @@ Alapértelmezés szerint pillanatfelvételek megmaradnak hét napja. Ez a funkci
 
 ## <a name="considerations-before-upgrade"></a>Frissítés előtt kapcsolatos szempontok
 * A virtuális gép biztonsági mentési csomagjának frissítése egyike irányt. Így minden biztonsági mentés nyissa meg a folyamatot. Engedélyezve van az előfizetés szintjén, mert ez a folyamat kísérhet minden virtuális gép. Az összes új funkciót elemek ugyanazt a vermet alapulnak. Ez a házirend szinten későbbi hamarosan vezérlése kiadását.
-
-* Prémium szintű lemezekhez rendelkező virtuális gépek során, és csak az első biztonsági mentés befejezése, győződjön meg arról, hogy nincs elegendő szabad hellyel a tárfiók. A virtuális gép egyenlőnek kell lennie.
 
 * A pillanatképek helyileg tárolja a helyreállítási pont létrehozása növelése érdekében és visszaállítási felgyorsítása érdekében. Ezért tekintse meg, amelyek megfelelnek a 7 napos időszak alatt a pillanatképek tárolási költségeket.
 

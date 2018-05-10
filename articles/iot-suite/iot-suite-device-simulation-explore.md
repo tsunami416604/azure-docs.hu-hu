@@ -1,6 +1,6 @@
 ---
 title: Ismerkedjen meg az eszköz szimuláció megoldás - Azure |} Microsoft Docs
-description: Az IoT Suite szimuláció megoldás olyan eszköz, amely segít a fejlesztési és tesztelési egy IoT-megoldás is használható. A szimuláció szolgáltatás az önálló ajánlat, amely más előkonfigurált megoldásokat együtt használják, vagy a saját egyéni megoldások használni.
+description: Az IoT-megoldás gyorsítók szimuláció megoldás olyan eszköz, amely segít a fejlesztési és tesztelési egy IoT-megoldás is használható. A szimuláció szolgáltatás az önálló ajánlat, amely más megoldás gyorsítók együtt használják, vagy a saját egyéni megoldások használni.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,15 +12,15 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7dfd56d06e180dd163fa84d4289e6daf4baefc51
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Eszköz szimuláció forgatókönyv
 
-Azure IoT-eszközök szimuláció olyan eszköz, amely segít a fejlesztési és tesztelési egy IoT-megoldás is használható. Eszköz szimuláció használható együtt más előkonfigurált megoldásokat, illetve saját egyéni megoldásokat kínál önálló.
+Azure IoT-eszközök szimuláció olyan eszköz, amely segít a fejlesztési és tesztelési egy IoT-megoldás is használható. Eszköz szimuláció ajánlat használható együtt más megoldás gyorsítókat vagy a saját egyéni megoldások önálló.
 
 Ez az oktatóanyag bemutatja, hogyan néhány eszköz szimuláció szolgáltatást. Ez a bemutatja, hogyan akkor működik, és lehetővé teszi a saját IoT-megoldások teszteléséhez használandó.
 
@@ -39,7 +39,7 @@ Ha az eszköz szimuláció még nem telepítette még, el kell végeznie a [tele
 
 ## <a name="configuring-device-simulation"></a>Eszköz szimuláció konfigurálása
 
-Konfigurálja, és teljesen az eszköz szimuláció futtatni az irányítópulton. Az irányítópult megnyitása a IoT Suite [kiépített megoldások](https://www.azureiotsuite.com/) lap. Kattintson a **indítása** az új eszköz szimuláció központi telepítés alatt.
+Konfigurálja, és teljesen az eszköz szimuláció futtatni az irányítópulton. Az irányítópult megnyitása a IoT-megoldás gyorsítók [kiépített megoldások](https://www.azureiotsuite.com/) lap. Kattintson a **indítása** az új eszköz szimuláció központi telepítés alatt.
 
 ### <a name="target-iot-hub"></a>Cél IoT-központ
 

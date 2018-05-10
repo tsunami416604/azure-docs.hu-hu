@@ -1,11 +1,11 @@
 ---
-title: "Védve a tartalmat az Azure Media Services |} Microsoft Docs"
-description: "Ez a cikk áttekintést a Media Services tartalomvédelem."
+title: Védve a tartalmat az Azure Media Services |} Microsoft Docs
+description: Ez a cikk áttekintést a Media Services tartalomvédelem.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
 ms.openlocfilehash: 13447fd9193374d80ed5c2e6af8543f11b95e709
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="content-protection-overview"></a>A védett tartalom áttekintése
  Azure Media Services segítségével biztonságos az adathordozó a tárhely, feldolgozás és kézbesítési keresztül elhagyja óta. A Media Services, az élő és igény tartalom Advanced Encryption Standard (AES-128) vagy a három fő digitális tartalomvédelmi (DRM) felügyeleti rendszerek dinamikusan titkosított biztosíthat: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services is biztosít egy szolgáltatás, amelynek segítségével a AES-kulcsok és DRM hitelesített ügyfelek (PlayReady, Widevine és FairPlay) licenceket. 

@@ -1,13 +1,13 @@
 ---
-title: "Gyári megoldás gyakori kérdések – Azure csatlakoztatott |} Microsoft Docs"
-description: "Az IoT Suite csatlakoztatott factory gyakran ismételt kérdések"
-services: 
+title: Gyári megoldás gyakori kérdések – Azure csatlakoztatott |} Microsoft Docs
+description: Gyakori kérdések a csatlakoztatott gyári megoldásgyorsító
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 12ebd8b8dfa90ab736190e842b35744dbf1c5b96
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Gyakori kérdések az IoT Suite csatlakoztatott beépített, előre konfigurált megoldás
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott gyári megoldásgyorsító
 
-Lásd még az általános [gyakran ismételt kérdések](iot-suite-faq.md) IoT Suite.
+Lásd még az általános [gyakran ismételt kérdések](iot-suite-faq.md) az IoT-megoldás gyorsítókra.
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solution"></a>Hol található az előkonfigurált megoldás forráskódját?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Hol található a megoldásgyorsító a kódot?
 
 A forráskód a következő GitHub-tárházban tárolja:
 
-* [Előre konfigurált csatlakoztatott gyári megoldás](https://github.com/Azure/azure-iot-connected-factory)
+* [Csatlakoztatott gyári megoldásgyorsító](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-is-opc-ua"></a>Mi az a OPC EE?
 
@@ -40,7 +40,7 @@ OPC egyesített architektúra révén, 2008, amely a szabványos platformfügget
 * Technológia
 * Folyamatok
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Miért Microsoft adta meg OPC EE a csatlakoztatott gyári előre konfigurált megoldáshoz?
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Miért Microsoft adta meg OPC EE számára a gyári csatlakoztatott megoldásgyorsító?
 
 Microsoft OPC EE választotta, mert a nyitott, a nem tulajdonosi platform független, iparági ismeri fel és bevált szabványnak. Ez feltétele Industrie 4.0-s verzióját (RAMI4.0) referencia architektúra megoldások gyártási eljárások széles körét és berendezések együttműködésével biztosítása. Microsoft látja az ügyfelek igény Industrie 4.0 megoldások létrehozásához. OPC EE támogatása segítségével csökkenthető az ügyfelek számára a kitűzött célokat a korlát, és azonnali üzleti értéket ad a őket.
 
@@ -74,7 +74,7 @@ Ha telepítette a www.azureiotsuite.com megoldást, nem tud bejelentkezni virtu�
 1. A felhasználónév használata: `docker`.
 1. A jelszó használata a központi telepítéséhez használt verziójától függ:
     * A megoldások a build.ps1 parancsfájl használatával előtt 2017. június 1. telepítve, a jelszó nem: `Passw0rd`.
-    * A megoldások a build.ps1 parancsfájl használatával után 2017. június 1. telepítve, a jelszót a megtalálhatja a `<name of your deployment>.config.user` fájlt. A jelszó tárolódik a **VmAdminPassword** beállítást. A jelszó jön létre véletlenszerűen központi telepítéskor kivéve ha megadja azt a `build.ps1` parancsfájl-paraméter`-VmAdminPassword`
+    * A megoldások a build.ps1 parancsfájl használatával után 2017. június 1. telepítve, a jelszót a megtalálhatja a `<name of your deployment>.config.user` fájlt. A jelszó tárolódik a **VmAdminPassword** beállítást. A jelszó jön létre véletlenszerűen központi telepítéskor kivéve ha megadja azt a `build.ps1` parancsfájl-paraméter `-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Hogyan állítsa le és indítsa el az összes docker-folyamat a szimuláció VM?
 
@@ -146,13 +146,13 @@ Ha nem az IoT-központ küldött adatokat, majd nincs a szimuláció kapcsolatos
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Hogyan engedélyezhető az interaktív térkép a csatlakoztatott gyári-megoldásban?
 
-Ahhoz, hogy a csatlakoztatott gyári megoldásban interaktív térkép, rendelkeznie kell egy meglévő Bing térképek API vállalati terv.
+Ahhoz, hogy a kapcsolódó gyári megoldásban interaktív térkép, rendelkeznie kell egy meglévő Bing térképek API vállalati terv.
 
 A központi telepítésekor [www.azureiotsuite.com](http://www.azureiotsuite.com), a telepítési folyamat ellenőrzi, hogy az előfizetés egy engedélyezett Bing térképek API vállalati terv rendelkezik, és automatikusan telepíti az interaktív térkép csatlakoztatott gyári be. Ha nem ez a helyzet, továbbra is engedélyezheti egy interaktív leképezés a központi telepítésben az alábbiak szerint:
 
-Központi telepítésekor használ a `build.ps1` parancsfájl csatlakoztatott gyári GitHub-tárházban, és a Bing térképek API vállalati terv rendelkezik, a környezeti változót `$env:MapApiQueryKey` a build ablakban, a lekérdezési kulcsot a csomag számára. Az interaktív térkép majd automatikusan engedélyezve lesz.
+Központi telepítésekor használ a `build.ps1` parancsfájl a csatlakoztatott gyári github tárház, és a Bing térképek API vállalati terv rendelkezik, és állítsa a környezeti változó `$env:MapApiQueryKey` a build ablakban, a lekérdezési kulcsot a csomag számára. Az interaktív térkép majd automatikusan engedélyezve lesz.
 
-Ha nem rendelkezik a Bing térképek API vállalati terv, telepítheti a csatlakoztatott gyári megoldást [www.azureiotsuite.com](http://www.azureiotsuite.com) használatával vagy a `build.ps1` parancsfájl. Majd adja hozzá a Bing térképek API vállalati terv az előfizetés a [hogyan hozható létre a Bing térképek API vállalati fiók?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). A fiókhoz tartozó lekérdezési kulcs kereshető [a Bing térképek API beszerzése a vállalati QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) , és mentse ezt a kulcsot. Navigáljon az Azure portálra, és a csatlakoztatott gyári környezetben App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** a lekérdezési kulcsot kapott. A beállítások mentéséhez, majd lépjen **áttekintése** , és indítsa újra az App Service.
+Ha még nem rendelkezik a Bing térképek API vállalati terv, központi telepítése a csatlakoztatott gyári megoldást [www.azureiotsuite.com](http://www.azureiotsuite.com) használatával vagy a `build.ps1` parancsfájl. Majd adja hozzá a Bing térképek API vállalati terv az előfizetés a [hogyan hozható létre a Bing térképek API vállalati fiók?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). A fiókhoz tartozó lekérdezési kulcs kereshető [a Bing térképek API beszerzése a vállalati QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) , és mentse ezt a kulcsot. Navigáljon az Azure portálra, és a kapcsolódó gyári környezetben App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** a lekérdezési kulcsot kapott. A beállítások mentéséhez, majd lépjen **áttekintése** , és indítsa újra az App Service.
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Hogyan hozható létre a Bing térképek API vállalati fiók
 
@@ -162,7 +162,7 @@ Kérhet egy ingyenes *belső tranzakciók szintjét 1 a Bing Maps vállalati* te
 
 ### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>A Bing térképek API beszerzése a vállalati QueryKey
 
-Miután létrehozta a Bing térképek API-t a vállalati terv, a Bing Maps vállalati erőforrás hozzáadása az Azure-portálon a csatlakoztatott gyári megoldás erőforráscsoportját.
+Miután létrehozta a Bing térképek API-t a vállalati terv, a Bing Maps vállalati erőforrás hozzáadása az erőforráscsoport, a kapcsolódó gyári megoldás az Azure portálon.
 
 1. Az Azure-portálon lépjen a Bing térképek API-t a vállalati terv tartalmazó erőforráscsoportot.
 
@@ -182,9 +182,9 @@ Az interaktív térkép közben helyileg hibakeresést engedélyezéséhez áll�
 
 Módosítsa a statikus kép io látható az irányítópult kezdőlapján cserélje le a lemezképet `WebApp\Content\img\world.jpg`. Majd újraépítése, és telepítse újra a webalkalmazást.
 
-### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Miként használható az eszközök nem OPC EE csatlakoztatott Factory?
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Hogyan használjam nem OPC EE eszközök csatlakoztatott Factory?
 
-A telemetriai adatokat küldeni a nem OPC EE eszközök csatlakoztatott gyári:
+A telemetriai adatokat küldeni nem OPC EE az eszközök gyári csatlakoztatva:
 
 1. [Egy új állomás konfigurálása a csatlakoztatott gyári topológia](iot-suite-connected-factory-configure.md) a a `ContosoTopologyDescription.json` fájlt.
 
@@ -204,14 +204,14 @@ A telemetriai adatokat küldeni a nem OPC EE eszközök csatlakoztatott gyári:
     ]
     ```
 
-1. Formátuma `<timestamp>` van:`2017-12-08T19:24:51.886753Z`
+1. Formátuma `<timestamp>` van: `2017-12-08T19:24:51.886753Z`
 
-1. Indítsa újra a csatlakoztatott gyári App Service.
+1. Indítsa újra a csatlakoztatott gyári App szolgáltatást.
 
 ### <a name="next-steps"></a>További lépések
 
-Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltatásait és funkcióit is:
+Egyes más szolgáltatásait és képességeit mutatja az IoT-megoldás gyorsítók is ismerheti:
 
-* [Előre konfigurált prediktív karbantartási megoldás áttekintése](iot-suite-predictive-overview.md)
-* [Előre konfigurált csatlakoztatott gyári megoldási áttekintés](iot-suite-connected-factory-overview.md)
+* [A prediktív karbantartási megoldás gyorsító – áttekintés](iot-suite-predictive-overview.md)
+* [Csatlakoztatott gyári megoldás gyorsító – áttekintés](iot-suite-connected-factory-overview.md)
 * [Az IoT biztonsági másolatot az alapoktól](securing-iot-ground-up.md)

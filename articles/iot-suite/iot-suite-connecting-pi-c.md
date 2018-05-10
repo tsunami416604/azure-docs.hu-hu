@@ -1,12 +1,12 @@
 ---
-title: "Távoli figyelésével C - Azure használatával málna Pi kiépítése |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet egy málna Pi eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldást c nyelven írt alkalmazás segítségével"
+title: Távoli figyelésével C - Azure használatával málna Pi kiépítése |} Microsoft Docs
+description: Ismerteti, hogyan lehet a Pi málna eszköz csatlakozni a távoli megfigyelési megoldásgyorsító c nyelven írt alkalmazást használ
 services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: e3fb95bc5084bb633541f70a5e68cc8d6af83298
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 79a97dda31308cdd0ffeb1196a8a11e0f431803e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>A Pi málna eszköz csatlakozni a távoli felügyeleti előkonfigurált megoldás (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>A Pi málna eszköz csatlakozni a távoli felügyeleti megoldásgyorsító (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti előkonfigurált megoldás. Csakúgy, mint a beágyazott korlátozott eszközökön futó alkalmazások, az ügyfélkód a málna Pi eszköz alkalmazás íródott a c kiszolgálóra. Ebben az oktatóanyagban hoz létre az alkalmazás egy málna Pi Raspbian operációs rendszert futtató.
+Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti megoldásgyorsító. Csakúgy, mint a beágyazott korlátozott eszközökön futó alkalmazások, az ügyfélkód a málna Pi eszköz alkalmazás íródott a c kiszolgálóra. Ebben az oktatóanyagban hoz létre az alkalmazás egy málna Pi Raspbian operációs rendszert futtató.
 
 ### <a name="required-hardware"></a>Szükséges hardver
 
@@ -49,7 +49,7 @@ SSH-ügyfél van szüksége az asztali gépen ahhoz, hogy a parancssor a málna 
 
 Ez a cikk feltételezi, hogy a legújabb verziójának telepítése a [a málna Pi Raspbian operációs](https://www.raspberrypi.org/learning/software-guide/quickstart/).
 
-A következő lépések bemutatják egy C alkalmazás, amely kapcsolódik az előkonfigurált megoldás létrehozása a málna Pi előkészítése:
+A következő lépések bemutatják egy C alkalmazás, amely kapcsolódik a megoldásgyorsító összeállítása a málna Pi előkészítése:
 
 1. Kapcsolódás a málna Pi **ssh**. További információkért lásd: [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) a a [málna Pi webhely](https://www.raspberrypi.org/).
 

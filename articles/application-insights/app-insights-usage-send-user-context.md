@@ -1,9 +1,9 @@
 ---
-title: "Küldése a felhasználói környezet azonosítók használatának engedélyezése az Azure Application Insights észlel |} Microsoft Docs"
-description: "Nyomon követheti, hogyan felhasználók halad át a szolgáltatás egy egyedi, állandó azonosító karakterláncot az Application Insightsban rendel hozzájuk."
+title: Küldése a felhasználói környezet azonosítók használatának engedélyezése az Azure Application Insights észlel |} Microsoft Docs
+description: Nyomon követheti, hogyan felhasználók halad át a szolgáltatás egy egyedi, állandó azonosító karakterláncot az Application Insightsban rendel hozzájuk.
 services: application-insights
-documentationcenter: 
-author: abgreg
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: mbullwin
-ms.openlocfilehash: fe4481cf851fc021b3073a6d9d6254f546218785
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: mbullwin;abgreg
+ms.openlocfilehash: 196eeb7b5a817ff932f99c7db86ead5625b5f206
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Felhasználói környezet használata felhasználói élményt Azure Application Insights az azonosítók küldése
 
@@ -26,7 +26,7 @@ Az Application Insights figyeléséhez és nyomon követéséhez a felhasználó
 * [Felhasználók, munkamenetek, események](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 * [Tölcsérek](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 * [Megőrzés](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
-* Cohorts
+* Kohorszok
 * [Munkafüzetek](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
 Nyomon követheti a felhasználók funkciója adott idő alatt, az Application Insights Azonosítót kell minden egyes felhasználó vagy a munkamenet. Tartalmazza a következő azonosítót minden egyéni esemény vagy a lap nézetben.

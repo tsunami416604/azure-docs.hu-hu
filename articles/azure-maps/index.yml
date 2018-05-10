@@ -1,0 +1,55 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Maps dokumentációja
+metadata:
+  document_id: 
+  title: Az Azure Maps dokumentációja | Microsoft Docs
+  meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
+  services: azure-maps
+  author: philmea
+  manager: timlt
+  ms.service: azure-maps
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2018
+  ms.author: philmea
+  ms.openlocfilehash: 5561f4720a396a90dbffe08e420d3b9ee66ec206
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Ez a szolgáltatás egy Azure One API-kompatibilis REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik az egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: Térképes keresőalkalmazás készítése az Azure Mapsszel.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/sql-database/media/index/portal.svg
+      text: Bemutató térképes alkalmazás indítása
+      href: /azure/azure-maps/quick-demo-map-app
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Térinformatikai webalkalmazás készítése, amellyel hasznos helyeket kereshet, és útvonalat tervezhet egy adott helyre az Azure Maps használatával.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/azure-maps/tutorial-search-location">Hasznos helyek keresése</a>
+    - html: <a href="/azure/azure-maps/tutorial-route-location">Útvonal egy hasznos helyhez</a>
+    - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Útvonalak utazási mód alapján</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsW
+    items:
+    - title: Nyelvek
+      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Térkép vezérlőelem-API – Javascript</a></p>
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/rest/api/maps/">Működő API – REST</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">Felügyeleti API – REST</a></p>

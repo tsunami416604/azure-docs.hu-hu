@@ -1,11 +1,11 @@
 ---
-title: "Az Azure IoT Hub Java eszközökről fájlok feltöltése |} Microsoft Docs"
-description: "Hogyan tölt fel az eszközről a felhőbe Javához készült Azure IoT-eszközök SDK használatával. Egy Azure blob tároló feltöltött fájlok tárolják."
+title: Az Azure IoT Hub Java eszközökről fájlok feltöltése |} Microsoft Docs
+description: Hogyan tölt fel az eszközről a felhőbe Javához készült Azure IoT-eszközök SDK használatával. Egy Azure blob tároló feltöltött fájlok tárolják.
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: java
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: b6e1ef5a5b3f9298134a7c312ac7d1927cf41a7f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 794ebd3b2d25f6b7d5dcb86b0834380fce9b9a27
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Az eszközről a felhőbe, IoT-központ fájlok feltöltése
 
@@ -36,7 +36,7 @@ A [Ismerkedés az IoT-központ](iot-hub-java-java-getstarted.md) és [IoT Hub-fe
 * Nagy gyakoriságú lekérdező vibráció adatok
 * Valamilyen előre feldolgozott adatokat.
 
-Ezek a fájlok jellemzően eszközökkel, mint a felhőben feldolgozható [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.md) verem. Ha egy eszközről kell felvidéki fájlok, a biztonsága és megbízhatósága szempontjából az IoT-központ továbbra is használhatja.
+Ezek a fájlok jellemzően eszközökkel, mint a felhőben feldolgozható [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) verem. Ha egy eszközről kell felvidéki fájlok, a biztonsága és megbízhatósága szempontjából az IoT-központ továbbra is használhatja.
 
 Ez az oktatóanyag végén két Java konzol alkalmazások futtatása:
 

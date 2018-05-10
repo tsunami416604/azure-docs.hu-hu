@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service-környezet használata"
-description: "Hogyan létrehozását, közzétételét és alkalmazásokat az Azure App Service-környezet skálázása"
+title: Azure App Service-környezet használata
+description: Hogyan létrehozását, közzétételét és alkalmazásokat az Azure App Service-környezet skálázása
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4aaef3fb6748eb974bc9d129b2bd8d42393e1cb8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
 
@@ -58,19 +58,28 @@ A webalkalmazás létrehozása a Service-környezetben:
 
 4. Adjon meg egy új erőforráscsoport nevét, vagy válasszon **meglévő** , és válassza ki a legördülő listából.
 
+5. Válassza ki az operációs rendszer. 
+
+    * Egy új, előzetes verziójú funkciók üzemeltető egy Linux app Service-környezetben, így javasoljuk, hogy nem kell hozzáadni Linux alkalmazások be egy ASE termelési számítási feladatokhoz folyamatban. 
+    * A Linux-alkalmazás hozzáadása egy ASE be azt jelenti, hogy a ASE is csak előzetes módban működik. 
+
 5. Válassza ki a ASE meglévő App Service-csomagot, vagy hozzon létre egy újat az alábbiak szerint:
 
     a. Válassza ki **új**.
 
     b. Adja meg az App Service-csomag nevét.
 
-    c. Válassza ki a ASE a a **hely** legördülő listából.
+    c. Válassza ki a ASE a a **hely** legördülő listából. Egy Linux app Service-környezetben futtató csakis 6 régiókban pillanatnyilag: **USA nyugati régiója, USA keleti régiója, Nyugat-Európában, Észak-Európa, Kelet-Ausztrália, Délkelet-Ázsia.** 
 
     d. Válasszon egy **elszigetelt** tarifacsomagra vált. Válassza ki **válasszon**.
 
     e. Kattintson az **OK** gombra.
     
     ![Elkülönített tarifacsomagok][2]
+
+    > [!NOTE]
+    > Linux-webalkalmazások és a Windows web apps a azonos App Service-csomag nem lehet, de a azonos App Service Environment-környezetben lehet. 
+    >
 
 6. Kattintson a **Létrehozás** gombra.
 

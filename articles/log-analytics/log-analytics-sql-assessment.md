@@ -1,11 +1,11 @@
 ---
-title: "Az SQL Server-környezet az Azure Naplóelemzés optimalizálása |} Microsoft Docs"
-description: "Az Azure Naplóelemzés használhatja az SQL állapotának ellenőrzése megoldás rendszeres időközönkénti a kockázat és a környezetek állapotának felmérésére."
+title: Az SQL Server-környezet az Azure Naplóelemzés optimalizálása |} Microsoft Docs
+description: Az Azure Naplóelemzés használhatja az SQL állapotának ellenőrzése megoldás rendszeres időközönkénti a kockázat és a környezetek állapotának felmérésére.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: 47f912932f9a0e1383ef5f82d1d3e33b5ababa9c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>A Naplóelemzési az SQL Server állapotának ellenőrzése megoldás SQL környezetében optimalizálása
 
@@ -54,7 +54,7 @@ Hajtsa végre a rendszerállapot-ellenőrzést futtat az SQL Server-kiszolgáló
 
 1. Telepítse a [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Ha a kiszolgáló nem már figyel a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2.
 2. Ha a számítógép megfigyelés alatt áll a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2 és a felügyeleti csoport nem integrálva van a Naplóelemzési szolgáltatás, a kiszolgáló többhelyű a Log Analyticshez az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is lehet az Operations Manager általi megfigyelés alatt.  
-3. Ellenkező esetben, ha az Operations Manager felügyeleti csoportjának integrálva van a szolgáltatás, kell hozzáadnia a tartományvezérlők, az adatok gyűjtésével a következő lépéseket a szolgáltatás által [ügynök által felügyelt számítógépek hozzáadása](log-analytics-om-agents.md#connecting-operations-manager-to-oms) engedélyezése után a megoldás a munkaterületen.  
+3. Ellenkező esetben, ha az Operations Manager felügyeleti csoportjának integrálva van a szolgáltatás, kell hozzáadnia a tartományvezérlők, az adatok gyűjtésével a következő lépéseket a szolgáltatás által [ügynök által felügyelt számítógépek hozzáadása](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) engedélyezése után a megoldás a munkaterületen.  
 
 Az ügynököt az SQL Server, az Operations Manager felügyeleti csoport jelentéseket gyűjti az adatokat, továbbítja a hozzárendelt felügyeleti kiszolgálóhoz, és a Log Analytics szolgáltatás közvetlenül a felügyeleti kiszolgálótól érkező majd érkezik.  Az adatok nem szerepel az Operations Manager-adatbázishoz.  
 

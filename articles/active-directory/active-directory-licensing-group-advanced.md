@@ -1,32 +1,30 @@
 ---
-title: "Az Azure Active Directory biztonságicsoport-alapú további forgatókönyvek licencelési |} Microsoft Docs"
-description: "Azure Active Directory biztonságicsoport-alapú licencelési további forgatókönyvei"
+title: Az Azure Active Directory biztonságicsoport-alapú további forgatókönyvek licencelési |} Microsoft Docs
+description: Azure Active Directory biztonságicsoport-alapú licencelési további forgatókönyvei
 services: active-directory
-keywords: "Az Azure AD-licencelés"
-documentationcenter: 
+keywords: Az Azure AD-licencelés
+documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: piotrci
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf18076c81ecf7471771674fe40d36dba3b9866d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb8bd727618eda2a887cc9e1b739889204eb87fa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és a csoportok használatával felügyeli a licencelés az Azure Active Directoryban ismert problémák
 
 Használja a következő útmutatást és példákat tájékozottabbak Azure Active Directory (Azure AD) Csoportalapú licencelés eléréséhez.
 
-## <a name="usage-location"></a>Használat helye
+## <a name="usage-location"></a>Felhasználás helye
 
 Egyes Microsoft-szolgáltatások nem érhetők el az összes helyen. Licenc rendelhet egy felhasználót, mielőtt a rendszergazda adja meg, hogy a **felhasználási hely** tulajdonságát a felhasználó. A [az Azure-portálon](https://portal.azure.com), megadhat **felhasználói** &gt; **profil** &gt; **beállítások**.
 
@@ -139,7 +137,7 @@ A PowerShell-parancsfájl segítségével ellenőrizze, hogy ha a felhasználók
 
 1. Futtassa a `connect-msolservice` parancsmag a hitelesítéshez és csatlakozáshoz a bérlő.
 
-2. `Get-MsolAccountSku`a bérlő összes kiosztott terméklicencek felderítéséhez használható.
+2. `Get-MsolAccountSku` a bérlő összes kiosztott terméklicencek felderítéséhez használható.
 
   ![A Get-Msolaccountsku parancsmag képernyőképe](media/active-directory-licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -230,7 +228,7 @@ Csoportalapú licencelési használatakor célszerű Ismerkedjen meg az alábbi 
 
 - Csoportalapú licencelési nem rögzíti a hibákat, ha a licenc nem lehet hozzárendelni egy felhasználó egy duplikált proxy cím konfigurációja miatt az Exchange Online; Ezek a felhasználók rendszer eltekint a licenc-hozzárendelést. Azonosítása és a probléma megoldásához kapcsolatos további információkért lásd: [ebben a szakaszban](./active-directory-licensing-group-problem-resolution-azure-portal.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Más esetekben a Licenckezelés Csoportalapú licenceléssel kapcsolatos további információkért lásd:
 

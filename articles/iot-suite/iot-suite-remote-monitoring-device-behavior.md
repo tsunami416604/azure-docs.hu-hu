@@ -1,7 +1,7 @@
 ---
-title: "A távoli felügyeleti megoldás - Azure eszközviselkedés szimulált |} Microsoft Docs"
-description: "Ez a cikk ismerteti a szimulált eszköz viselkedésének meghatározása a távoli felügyeleti megoldás a JavaScript használatával."
-services: 
+title: A távoli felügyeleti megoldás - Azure eszközviselkedés szimulált |} Microsoft Docs
+description: Ez a cikk ismerteti a szimulált eszköz viselkedésének meghatározása a távoli felügyeleti megoldás a JavaScript használatával.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e5846893166c3e65b75e84d02849c2b8ab78e079
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2a2cbe5379adbd2c4ad6534b621871ecc30bfc81
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="implement-the-device-model-behavior"></a>Az eszköz modell viselkedés
 
@@ -25,7 +25,7 @@ A cikk [megérteni az eszköz modellsémát](iot-suite-remote-monitoring-device-
 - **Állapot** JavaScript-fájlokat, amelyek a belső állapotot, az eszköz frissítése rögzített időközönként futnak.
 - **Módszer** JavaScript fájlok futtatását, amikor a megoldás hív meg, egy metódust az eszközön.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 >[!div class="checklist"]
 > * A szimulált eszköz állapotának ellenőrzése
@@ -36,8 +36,8 @@ Ebből a cikkből megismerheti, hogyan:
 
 A [szimuláció](iot-suite-remote-monitoring-device-schema.md#simulation) eszköz modellsémát szakasza határozza meg a belső állapotot, a szimulált eszköz:
 
-- `InitialState`az objektum összes tulajdonságának értéke az eszköz állapota kezdeti értékeinek meghatározása.
-- `Script`a JavaScript-fájlt, amely az eszköz állapotát frissítése ütemezés szerint futtatott azonosítja.
+- `InitialState` az objektum összes tulajdonságának értéke az eszköz állapota kezdeti értékeinek meghatározása.
+- `Script` a JavaScript-fájlt, amely az eszköz állapotát frissítése ütemezés szerint futtatott azonosítja.
 
 A következő példa bemutatja egy szimulált hűtő eszköz számára az eszköz állapota objektum definíciója:
 
@@ -53,10 +53,10 @@ A következő példa bemutatja egy szimulált hűtő eszköz számára az eszkö
     "pressure_unit": "psig",
     "simulation_state": "normal_pressure"
   },
-  "Script": {
+  "Interval": "00:00:05",
+  "Scripts": {
     "Type": "javascript",
-    "Path": "chiller-01-state.js",
-    "Interval": "00:00:05"
+    "Path": "chiller-01-state.js"
   }
 }
 ```
@@ -66,7 +66,7 @@ A szimulált eszköz, az állapota a `InitialState` területen van a szimuláci�
 A következő példa egy tipikus vázlat `main` függvény:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   // Use the previous device state to
   // generate the new device state
@@ -78,9 +78,9 @@ function main(context, previousState) {
 
 A `context` paraméter a következő tulajdonságokkal rendelkeznek:
 
-- `currentTime`formátummal karakterláncként`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, például`Simulated.Chiller.123`
-- `deviceModel`, például`Chiller`
+- `currentTime` formátummal karakterláncként `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, például `Simulated.Chiller.123`
+- `deviceModel`, például `Chiller`
 
 A `state` a paraméter tartalmazza az eszköz állapotát, az eszköz szimuláció szolgáltatás által kezelt. Ez az érték a `state` a korábbi hívás által visszaadott objektum `main`.
 
@@ -108,7 +108,7 @@ function restoreState(previousState) {
   }
 }
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   restoreState(previousState);
 
@@ -133,7 +133,7 @@ function vary(avg, percentage, min, max) {
 }
 
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     restoreState(previousState);
 
@@ -192,28 +192,31 @@ A szimulált eszköz, az állapota a `InitialState` szakasz a séma birtokolja a
 A következő példa egy tipikus vázlat `main` függvény:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
 }
 ```
 
 A `context` paraméter a következő tulajdonságokkal rendelkeznek:
 
-- `currentTime`formátummal karakterláncként`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, például`Simulated.Chiller.123`
-- `deviceModel`, például`Chiller`
+- `currentTime` formátummal karakterláncként `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, például `Simulated.Chiller.123`
+- `deviceModel`, például `Chiller`
 
 A `state` a paraméter tartalmazza az eszköz állapotát, az eszköz szimuláció szolgáltatás által kezelt.
 
-A metódus viselkedés érdekében használható két globális függvények van:
+A `properties` paraméter tulajdonságok, az eszköz írt száma, az IoT Hub eszköz iker jelentett tulajdonságait tartalmazza.
 
-- `updateState`a szimuláció szolgáltatás tartja az állapot frissítésére.
-- `sleep`szimulálása hosszan futó feladat végrehajtásának felfüggesztése.
+A metódus viselkedés érdekében használható három globális függvények van:
+
+- `updateState` a szimuláció szolgáltatás tartja az állapot frissítésére.
+- `updateProperty` egyetlen eszköztulajdonságon frissítésére.
+- `sleep` szimulálása hosszan futó feladat végrehajtásának felfüggesztése.
 
 A következő példa bemutatja egy rövidített a **IncreasePressure-method.js** a szimulált hűtő eszköz által használt parancsfájlt:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     log("Starting 'Increase Pressure' method simulation (5 seconds)");
 

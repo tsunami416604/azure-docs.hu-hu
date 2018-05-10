@@ -1,11 +1,11 @@
 ---
-title: "A Haivision KB kódoló egyféle sávszélességű élő adatfolyamot küldeni az Azure-bA |} Microsoft Docs"
-description: "Ez a témakör bemutatja, hogyan konfigurálhatja a Haivision KB élő kódoló egy egyféle sávszélességű adatfolyamot küldeni AMS élő kódolásra képes csatornák."
+title: A Haivision KB kódoló egyféle sávszélességű élő adatfolyamot küldeni az Azure-bA |} Microsoft Docs
+description: Ez a témakör bemutatja, hogyan konfigurálhatja a Haivision KB élő kódoló egy egyféle sávszélességű adatfolyamot küldeni AMS élő kódolásra képes csatornák.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: dbgeorge
 manager: vsood
-editor: 
+editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: juliako;dbgeorge
 ms.openlocfilehash: 25077cd9338a2764c6dff9e755812033685f6641
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Használja a Haivision KB élő kódoló egy egyféle sávszélességű élő adatfolyamot küldeni
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/01/2018
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
-> * [Wirecast](media-services-configure-wirecast-live-encoder.md)
+> * [wirecast](media-services-configure-wirecast-live-encoder.md)
 
 Ez a témakör ismerteti, hogyan konfigurálható a [Havision KB élő kódoló](https://www.haivision.com/products/kb-series/) kódoló egy egyfajta sávszélességű adatfolyamot AMS-csatorna is küldhet a valós idejű kódolásra engedélyezve vannak. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
 
@@ -65,7 +65,7 @@ Videó:
 -   Keret aránya: 30
 
 Hang:
--   Codec: AAC (LC)
+-   A kodek: AAC (LC)
 -   Átviteli sebesség: 192 Kbit/s
 -   Mintavételi gyakoriság: 44,1 kHz
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/12/2018
+ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 70255ead4a556204689e9918b9c89e396f8122c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: 6ab1b2357e88525f4730b5ad550cfcf3acbb906e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Hozzon létre egy egyszerű szolgáltatást egy tanúsítványt az Azure PowerShell használatával
 
@@ -31,6 +31,8 @@ Ha egy alkalmazás vagy parancsfájlt, amely erőforrások hozzáférésre van s
 > Egy egyszerű szolgáltatás létrehozása, helyett érdemes az Azure AD felügyelete a Szolgáltatásidentitást az az alkalmazásidentitás. Az Azure AD MSI az Azure Active Directoryban, amely egyszerűbbé teszi a kód identitás létrehozása a nyilvános előzetes verziójú funkciók. Ha a kódot, amely támogatja az Azure AD MSI és fér hozzá az erőforrásokat, amelyek támogatják az Azure Active Directory hitelesítési szolgáltatás fut, Azure AD MSI beállítás jobban meg. További információt az Azure AD MSI, beleértve a szolgáltatások jelenleg támogatják a forgatókönyvet, tekintse meg a [Szolgáltatásidentitás felügyelt Azure-erőforrások](../active-directory/managed-service-identity/overview.md).
 
 Ez a cikk bemutatja, hogyan hozzon létre egy egyszerű, amely hitelesíti a tanúsítvánnyal. A szolgáltatás egyszerű jelszó beállításához tekintse meg a [hozzon létre egy Azure szolgáltatás egyszerű az Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+
+Rendelkeznie kell a [legújabb verziójára](/powershell/azure/get-started-azureps) PowerShell ebben a cikkben.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
@@ -58,61 +60,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 
 A példa alvó állapotban van, várja meg, hogy az új szolgáltatáshoz Azure Active Directory teljes propagálása egyszerű 20 másodpercig. Ha a parancsfájl nem elég hosszú várja meg, láthatja, egy üzenet szerint: "{} Azonosítójú rendszerbiztonsági tag nem létezik a következő könyvtárban: {DIR-azonosító}." Ez a hiba megoldásához Várjon egy kicsit, majd futtassa a **New-AzureRmRoleAssignment** újra a parancsot.
 
-A következő példában bonyolultabb, mivel lehetővé teszi a szerepkör-hozzárendelés, amely eltér a jelenlegi Azure-előfizetés hatókörének beállításához. Itt adhatja meg, a ResourceGroup paraméter csak korlátozhatja azon szerepkör-hozzárendelés erőforráscsoporthoz. Ha a szerepkör-hozzárendelés során hiba lép fel, a hozzárendelés újrapróbálkozik. Azure PowerShell 2.0 a Windows 10 vagy Windows Server 2016 kell rendelkeznie.
-
-```powershell
-Param (
-
- # Use to set scope to resource group. If no value is provided, scope is set to subscription.
- [Parameter(Mandatory=$false)]
- [String] $ResourceGroup,
-
- # Use to set subscription. If no value is provided, default subscription is used. 
- [Parameter(Mandatory=$false)]
- [String] $SubscriptionId,
-
- [Parameter(Mandatory=$true)]
- [String] $ApplicationDisplayName
- )
-
- Connect-AzureRmAccount
- Import-Module AzureRM.Resources
-
- if ($SubscriptionId -eq "") 
- {
-    $SubscriptionId = (Get-AzureRmContext).Subscription.Id
- }
- else
- {
-    Set-AzureRmContext -Subscription $SubscriptionId
- }
-
- if ($ResourceGroup -eq "")
- {
-    $Scope = "/subscriptions/" + $SubscriptionId
- }
- else
- {
-    $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
- }
-
- $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleappScriptCert" -KeySpec KeyExchange
- $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
-
- $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
- Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
-
- $NewRole = $null
- $Retries = 0;
- While ($NewRole -eq $null -and $Retries -le 6)
- {
-    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
-    Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
-    $Retries++;
- }
-```
+Hatókörét megadhatja a szerepkör-hozzárendelést adott erőforráscsoporthoz használatával a **ResourceGroupName** paraméter. Hatókörét megadhatja egy adott erőforrás is használatával a **ResourceType** és **ResourceName** paraméterek. 
 
 Ha Ön **nem rendelkeznek Windows 10 vagy Windows Server 2016**, le kell töltenie a [önaláírt tanúsítvány generátor](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) Microsoft Script Center. Bontsa ki a tartalmát, és importálni kell a parancsmagot.
 
@@ -137,35 +85,14 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 Amikor jelentkezik be, és egy egyszerű szolgáltatást, meg kell adnia annak a könyvtárnak a bérlő azonosítója az AD-alkalmazás. A bérlő az Azure Active Directory példánya.
 
 ```powershell
-Param (
- 
- [Parameter(Mandatory=$true)]
- [String] $CertSubject,
- 
- [Parameter(Mandatory=$true)]
- [String] $ApplicationId,
+$TenantId = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
+$ApplicationId = (Get-AzureRmADApplication -DisplayNameStartWith exampleapp).ApplicationId
 
- [Parameter(Mandatory=$true)]
- [String] $TenantId
- )
-
- $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -match $CertSubject }).Thumbprint
+ $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -match "CN=exampleappScriptCert" }).Thumbprint
  Connect-AzureRmAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
-```
-
-Az Alkalmazásazonosító és a bérlő azonosítója nem különbözőnek számítanak, így közvetlenül a parancsfájlban beágyazhatók. Ha szeretné beolvasni a bérlő Azonosítóját, használja:
-
-```powershell
-(Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
-```
-
-Ha szeretné beolvasni az alkalmazás Azonosítóját, használja:
-
-```powershell
-(Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
 ```
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Egyszerű szolgáltatásnév létrehozása hitelesítésszolgáltatótól származó tanúsítvánnyal
@@ -264,13 +191,13 @@ Az AD-alkalmazás, vagy a biztonsági sérülés vagy a hitelesítő adatok érv
 Az alkalmazás hitelesítő adatok eltávolításához használja:
 
 ```powershell
-Remove-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -All
+Get-AzureRmADApplication -DisplayName exampleapp | Remove-AzureRmADAppCredential
 ```
 
 Tanúsítvány érték hozzáadása, hozzon létre egy önaláírt tanúsítványt, ebben a cikkben ismertetett módon. Ezután használja:
 
 ```powershell
-New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 `
+Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
   -CertValue $keyValue `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore

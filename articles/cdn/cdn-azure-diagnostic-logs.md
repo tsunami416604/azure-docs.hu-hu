@@ -3,8 +3,8 @@ title: Az Azure diagnosztikai naplók |} Microsoft Docs
 description: Ügyfél engedélyezheti a webhelynapló elemzése Azure CDN szolgáltatás használata.
 services: cdn
 documentationcenter: ''
-author: ''
-manager: ''
+author: dksimpson
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
-ms.author: v-deasim
-ms.openlocfilehash: c367cffa8f0453a0f7e230571d861d039122c291
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: rli
+ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -28,7 +28,7 @@ Az Azure diagnosztikai naplók egyszerűsített analitika tekintheti meg és men
  - Azure Event Hubs
  - [A Naplóelemzési munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
-Ez a szolgáltatás az összes CDN-végpontok Verizon (Standard és prémium) és a CDN-profilra Akamai (általános) tartozó érhető el. 
+Ez a szolgáltatás összes tarifacsomagok CDN-végpontok érhető el. 
 
 Az Azure diagnosztikai naplóihoz alapvető a szoftverhasználati mérési adatok exportálása a CDN-végpontot különböző forrásokból, így képes felhasználni azokat egy egyedi módon. Például a következő típusú adatok exportálása teheti meg:
 
@@ -156,10 +156,10 @@ Az alapvető analitikai adatok eléréséhez az Azure Storage-fiókjához, elős
 
 **Mezők leírása:**
 
-|érték|leírás|
+|Érték|Leírás|
 |-------|---------|
 |Előfizetés azonosítója    |Az Azure-előfizetés Guid formátumban azonosítója.|
-|Erőforrás |Csoport neve neve az erőforráscsoport, amelybe a CDN-erőforrások tartoznak.|
+|Erőforráscsoport neve |Az erőforráscsoport, amelybe a CDN-erőforrások tartoznak neve.|
 |Profilnév |A CDN-profil neve|
 |A végpont neve |A CDN-végpont neve|
 |év|  az év, például 2017 4 számjegyből álló ábrázolása|
@@ -276,47 +276,49 @@ Húzza és dobja el a diagramok típusú, és töltse ki az elemezni kívánt ad
     
 ## <a name="log-data-delays"></a>Naplózási adatok késleltetése
 
-Verizon napló adatok késleltetése | Akamai napló adatok késleltetése
---- | ---
-Verizon naplóadatokat 1 óra késleltetett, és indítsa el a végpont-propagálás befejezését követően megjelenő 2 órát igénybe vehet. | Akamai naplóadatokat késik 24 óránként; Ha több mint 24 órája hozták létre, start megjelenő 2 órát vesz igénybe. Ha nemrég készült, start jelenik meg a naplófájlokat akár 25 órát is igénybe vehet.
+Az alábbi táblázatban láthatók a naplózási adatok késésének **Azure CDN Standard Microsoft**, **Azure CDN Standard Akamai**, és **Azure CDN Standard vagy prémium verizon**.
+
+Microsoft naplózási adatok késleltetése | Verizon napló adatok késleltetése | Akamai napló adatok késleltetése
+--- | --- | ---
+1 órával később. | 1 órával késleltetett, és indítsa el a végpont-propagálás befejezését követően megjelenő 2 órát is igénybe vehet. | Késleltetett 24 óránként; Ha több mint 24 órája hozták létre, start megjelenő 2 órát vesz igénybe. Ha nemrég készült, start jelenik meg a naplófájlokat akár 25 órát is igénybe vehet.
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Diagnosztikai naplófájl típusokat CDN egyszerűsített analitika
 
 Jelenleg csak alapvető analytics naplók, metrikák HTTP-válaszok statisztikai adatainak és a kimenő forgalom statisztika alapegységét megjelenítő a CDN POP/széleit tartalmazó fel.
 
 ### <a name="core-analytics-metrics-details"></a>Core analytics metrikák részletei
-A következő táblázat a core analytics naplókban elérhető metrikák listáját tartalmazza. Nem minden metrikák érhetők el minden szolgáltató, annak ellenére, hogy ezek az eltérések minimális. Az alábbi táblázatban is látható, ha egy metrika érhető el a szolgáltató által. Ne feledje, hogy a metrikák csak ezek CDN-végpontok, amelyek azokat a forgalom érhető el.
+A következő táblázat érhető el az alapvető metrikák listáját tartalmazza az elemzési naplókat **Azure CDN Standard Microsoft**, **Azure CDN Standard Akamai**, és **Azure CDN Standard vagy Premium verizon**. Nem minden metrikák érhetők el minden szolgáltató, annak ellenére, hogy ezek az eltérések minimális. A tábla megjeleníti, hogy egy metrika olyan szolgáltató érhető el. Ne feledje, hogy a metrikák csak ezek CDN-végpontok, amelyek azokat a forgalom érhető el.
 
 
-|Metrika                     | Leírás   | Verizon  | Akamai 
-|---------------------------|---------------|---|---|
-| RequestCountTotal         |Ebben az időszakban kérést találatok száma összesen| Igen  |Igen   |
-| RequestCountHttpStatus2xx |Egy 2xx HTTP kódot (például 200, 202) eredményezett összes kérelem száma              | Igen  |Igen   |
-| RequestCountHttpStatus3xx | Egy 3xx HTTP kódot (például 300, 302) eredményezett összes kérelem száma              | Igen  |Igen   |
-| RequestCountHttpStatus4xx |Egy 4xx HTTP kódot (például 400, 404) eredményezett összes kérelem száma               | Igen   |Igen   |
-| RequestCountHttpStatus5xx | 5xx HTTP kódot (például 500, 504) eredményezett összes kérelem száma              | Igen  |Igen   |
-| RequestCountHttpStatusOthers |  Minden más HTTP-kód (kívül 2xx-5xx) száma | Igen  |Igen   |
-| RequestCountHttpStatus200 | 200 HTTP kód válaszul eredményező összes kérelmek száma              |Nem   |Igen   |
-| RequestCountHttpStatus206 | A 206-os HTTP kód válaszul eredményező összes kérelmek száma              |Nem   |Igen   |
-| RequestCountHttpStatus302 | HTTP 302-es kód választ eredményező összes kérelmek száma              |Nem   |Igen   |
-| RequestCountHttpStatus304 |  304-es HTTP-kód választ eredményező összes kérelmek száma             |Nem   |Igen   |
-| RequestCountHttpStatus404 | HTTP 404-es kód választ eredményező összes kérelmek száma              |Nem   |Igen   |
-| RequestCountCacheHit |A gyorsítótár találati eredményező összes kérelmek száma. Az eszköz állítása és kiszolgálása között a POP-ről az ügyfélnek.               | Igen  |Nem   |
-| RequestCountCacheMiss | A gyorsítótár-tévesztései eredményező összes kérelmek száma. Ez azt jelenti, hogy az eszköz nem található meg az ügyfél legközelebb POP, és ezért be lett olvasva a forrásból.              |Igen   | Nem  |
-| RequestCountCacheNoCache | Az eszköz minden kérelemhez, amely megakadályozta a gyorsítótárba egy felhasználói konfiguráció az oldal miatt száma.              |Igen   | Nem  |
-| RequestCountCacheUncacheable | Az eszközökhöz, amely megakadályozza az eszköz a Cache-Control és Expires fejléc, amely jelzi, hogy azt nem gyorsítótárazza a POP- vagy HTTP-ügyfél által a gyorsítótárba összes kérelmek száma                |Igen   |Nem   |
-| RequestCountCacheOthers | Gyorsítótár állapotú fent nem vonatkozik minden kérelmek száma.              |Igen   | Nem  |
-| EgressTotal | Kimenő adatátvitel GB-ban              |Igen   |Igen   |
-| EgressHttpStatus2xx | Kimenő adatátviteli * a válaszok a 2xx HTTP-állapotkódok GB-ban            |Igen   |Nem   |
-| EgressHttpStatus3xx | Kimenő adatátvitel a válaszok a 3xx HTTP-állapotkódok GB-ban              |Igen   |Nem   |
-| EgressHttpStatus4xx | Kimenő adatátvitel a válaszok a 4xx HTTP-állapotkódok GB-ban               |Igen   | Nem  |
-| EgressHttpStatus5xx | Kimenő adatátvitel 5xx HTTP-állapotkódok GB-ban a válaszok               |Igen   |  Nem |
-| EgressHttpStatusOthers | Kimenő adatátvitel válaszok az egyéb HTTP-állapotkódok GB-ban                |Igen   |Nem   |
-| EgressCacheHit |  Kimenő adatátvitel kapott válaszok közvetlenül a CDN-gyorsítótárból a CDN POP/szegély  |Igen   |  Nem |
-| EgressCacheMiss | Kimenő adatátvitel a válaszok nem található a legközelebbi POP-kiszolgálón, és lekérése a forráskiszolgálóról              |Igen   |  Nem |
-| EgressCacheNoCache | Kimenő adatátvitel eszközök, amely megakadályozta a felhasználói konfiguráció az oldal miatt a gyorsítótárba.                |Igen   |Nem   |
-| EgressCacheUncacheable | Kimenő adatátvitel eszközök, amelyek a rendszer megakadályozza az eszköz a Cache-Control vagy Expires fejléc által a gyorsítótárba. Azt jelzi, hogy azt nem gyorsítótárazza a POP vagy a HTTP-ügyfél.                   |Igen   | Nem  |
-| EgressCacheOthers |  Kimenő adatátvitel más gyorsítótár forgatókönyvek esetén.             |Igen   | Nem  |
+|Metrika                     | Leírás | Microsoft | Verizon | Akamai |
+|---------------------------|-------------|----------|---------|--------|
+| RequestCountTotal         | Ebben az időszakban kérést találatok összesített száma | Igen | Igen |Igen |
+| RequestCountHttpStatus2xx | Egy 2xx HTTP kódot (például 200, 202) eredményezett összes kérelem száma. | Igen | Igen |Igen |
+| RequestCountHttpStatus3xx | Egy 3xx HTTP kódot (például 300, 302) eredményezett összes kérelem száma. | Igen | Igen |Igen |
+| RequestCountHttpStatus4xx | Egy 4xx HTTP kódot (például 400, 404) eredményezett összes kérelem száma. | Igen | Igen |Igen |
+| RequestCountHttpStatus5xx | 5xx HTTP kódot (például 500, 504) eredményezett összes kérelem száma. | Igen | Igen |Igen |
+| RequestCountHttpStatusOthers | Minden más HTTP-kód (kívül 2xx-5xx) száma. | Igen | Igen |Igen |
+| RequestCountHttpStatus200 | 200 HTTP kód válaszul eredményező összes kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus206 | A 206-os HTTP kód válaszul eredményező összes kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus302 | HTTP 302-es kód választ eredményező összes kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus304 | 304-es HTTP-kód választ eredményező összes kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountHttpStatus404 | HTTP 404-es kód választ eredményező összes kérelmek száma. | Igen | Nem  |Igen |
+| RequestCountCacheHit | A gyorsítótár találati eredményező összes kérelmek száma. Az eszköz állítása és kiszolgálása között a POP-ről az ügyfélnek. | Igen | Igen | Nem  |
+| RequestCountCacheMiss | A gyorsítótár-tévesztései eredményező összes kérelmek száma. Ez azt jelenti, hogy az eszköz nem található meg az ügyfél legközelebb POP, és ezért be lett olvasva a forrásból. | Igen | Igen | Nem |
+| RequestCountCacheNoCache | Az eszköz minden kérelemhez, amely megakadályozta a gyorsítótárba egy felhasználói konfiguráció az oldal miatt száma. | Igen | Igen | Nem |
+| RequestCountCacheUncacheable | Az eszközökhöz, amely megakadályozza az eszköz a Cache-Control és Expires fejléc, amely jelzi, hogy azt nem gyorsítótárazza a POP- vagy HTTP-ügyfél által a gyorsítótárba összes kérelmek száma. | Igen | Igen | Nem |
+| RequestCountCacheOthers | Gyorsítótár állapotú fent nem vonatkozik minden kérelmek száma. | Nem | Igen | Nem  |
+| EgressTotal | Kimenő adatátvitel GB-ban | Igen |Igen |Igen |
+| EgressHttpStatus2xx | Kimenő adatátviteli * a válaszok a 2xx HTTP-állapotkódok GB-ban. | Igen | Igen | Nem  |
+| EgressHttpStatus3xx | Kimenő adatátvitel a válaszok a 3xx HTTP-állapotkódok GB-ban. | Igen | Igen | Nem  |
+| EgressHttpStatus4xx | Kimenő adatátvitel a válaszok a 4xx HTTP-állapotkódok GB-ban. | Igen | Igen | Nem  |
+| EgressHttpStatus5xx | Kimenő adatátvitel a válaszok a 5xx HTTP-állapotkódok GB-ban. | Igen | Igen | Nem |
+| EgressHttpStatusOthers | Kimenő adatátvitel válaszok az egyéb HTTP-állapotkódok GB-ban. | Igen | Igen | Nem  |
+| EgressCacheHit | Kimenő adatátvitel kapott válaszok közvetlenül a CDN-gyorsítótárból a CDN POP/szélén. | Igen | Igen | Nem |
+| EgressCacheMiss. | Kimenő adatátvitel a válaszok nem található a legközelebbi POP-kiszolgálón, és olvassa be az eredeti kiszolgálóra. | Igen | Igen | Nem |
+| EgressCacheNoCache | Kimenő adatátvitel eszközök, amely megakadályozta a felhasználói konfiguráció az oldal miatt a gyorsítótárba. | Igen | Igen | Nem |
+| EgressCacheUncacheable | Kimenő adatátvitel eszközök, amelyek a rendszer megakadályozza az eszköz a Cache-Control vagy Expires fejléc által a gyorsítótárba. Azt jelzi, hogy azt nem gyorsítótárazza a POP vagy a HTTP-ügyfél. | Igen | Igen | Nem |
+| EgressCacheOthers | Kimenő adatátvitel más gyorsítótár forgatókönyvek esetén. | Nem | Igen | Nem |
 
 * Kimenő forgalom CDN POP-ra kiszolgálókról kézbesítve lenne az ügyfél hivatkozik.
 
@@ -368,7 +370,7 @@ A következő táblázat a core analytics naplókban elérhető metrikák listá
 }
 ```
 
-Ahol a "time" jelenti az óra határ, amelynek a statisztikáit jelentett kezdési idejét. Amikor metrika nem támogatott a CDN-szolgáltató helyett egy double vagy egész szám, a rendszer null értékű. A null érték metrika jelezné, és eltér a 0 értéket. Nincs a végponthoz tartományonként metrikákat egy készletét.
+Ha *idő* az óra határ, amelynek a statisztikáit jelentett a kezdési időt jelenti. Amikor metrika nem támogatott a CDN-szolgáltató helyett egy double vagy egész szám, a rendszer null értékű. A null érték metrika jelezné, és eltér a 0 értéket. Nincs a végponthoz tartományonként metrikákat egy készletét.
 
 Példa tulajdonságai:
 

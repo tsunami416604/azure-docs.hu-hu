@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: b80ad9837939af5406989d08e18f6f3d9fe3064f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB aszinkron Java SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -31,8 +31,8 @@ ms.lasthandoff: 04/28/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 A SQL API aszinkron Java SDK abban tér el az SQL API Java SDK-támogatása az aszinkron műveletek megadásával a [Netty könyvtár](http://netty.io/). A már meglévő [SQL API Java SDK](sql-api-sdk-java.md) nem támogatja az aszinkron műveletek. 
 
@@ -63,7 +63,7 @@ A SQL API aszinkron Java SDK abban tér el az SQL API Java SDK-támogatása az a
 * Javítsa ki a munkameneti jogkivonat átadása a fő erőforrások olvasásakor elkerülése érdekében.
 * További példák hozzá.
 * További összehasonlítási forgatókönyvek hozzá.
-* Rögzített Java fejlécfájlok megfelelő javadoc létrehozásánál.
+* Rögzített Java fejlécfájlok megfelelő java doc létrehozása céljából.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK-val nem blokkoló IO használatával végpont támogatása a [Netty könyvtár](http://netty.io/) átjáró módban. 
@@ -71,7 +71,7 @@ A SQL API aszinkron Java SDK abban tér el az SQL API Java SDK-támogatása az a
 ## <a name="release-and-retirement-dates"></a>Kiadás és a használatból való kivonást dátuma
 Microsoft legalább értesítést küldenek **12 hónapon keresztül** SDK eltávolítása érdekében vagy újabb támogatott verzióra való áttérés előtt.
 
-Új szolgáltatásait és funkcióit és optimalizálás csak hozzá az aktuális SDK, így javasoljuk, hogy mindig a legújabb SDK verzióra frissít legkorábban lehető.
+Az aktuális SDK csak hozzáadni a új szolgáltatások és funkciók és optimalizálási lehetőségeit. Ezért ajánlott, hogy mindig a legújabb SDK verzióra frissít lehető leghamarabb.
 
 A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 

@@ -1,25 +1,23 @@
 ---
-title: "Az Azure AD Privileged Identity Management adatvédelmi varázslója"
-description: "Az Azure Active Directory Privileged Identity Management bővítmény, az első használatakor választhat egy biztonsági varázslót. Ez a cikk a varázsló lépéseit ismerteti."
+title: Az Azure AD Privileged Identity Management adatvédelmi varázslója
+description: Az Azure Active Directory Privileged Identity Management bővítmény, az első használatakor választhat egy biztonsági varázslót. Ez a cikk a varázsló lépéseit ismerteti.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: a53a3719-8cc7-4fc7-8164-aafca192871b
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 02/27/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 4a45e1bdbce299dce38a01a17a65024dc41a353f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4b3856d74b1109b20a1ff9f93b76ee36b66ee312
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management biztonsági varázslóval 
 Ha Ön az első személy a szervezeténél Azure Privileged Identity Management (PIM) futtatásához, választhat egy varázslót. A varázsló segít megérteni a biztonsági kockázatok kiemelt jogosultságú identitások és a PIM használata a kockázatok csökkentése érdekében. Nem kell módosítaniuk a varázslóban a meglévő szerepkör-hozzárendelések, ha később szeretné végrehajtani.
@@ -40,6 +38,6 @@ Módosításokat hajtott végre, miután a varázsló már nem jelennek meg. A k
 * Ha azt szeretné, adja hozzá vagy felhasználók eltávolítása a szerepkörök vagy-hozzárendelések módosítása az állandó támogatható, további információ: [hozzáadása vagy eltávolítása a felhasználói szerepkör](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
 * Ha azt szeretné, a további felhasználók hozzáférésének kezelése a PIM, további információ: [hogyan kezelhetik a PIM hozzáférést](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

@@ -1,0 +1,73 @@
+- name: Media Services – dokumentáció
+  href: ./index.yml
+- name: Áttekintés
+  items:
+    - name: A Media Services ismertetése
+      href: media-services-overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Videofájlok streamelése a .NET-tel
+      href: stream-files-dotnet-quickstart.md
+- name: Oktatóanyagok
+  items:
+    - name: 'Feltöltés, kódolás és streamelés'
+      href: stream-files-tutorial-with-api.md
+    - name: Videó elemzése
+      href: analyze-videos-tutorial-with-api.md
+- name: Példák
+  items:
+    - name: Azure-kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+    - name: Azure CLI
+      href: cli-samples.md
+- name: Alapelvek
+  items:
+    - name: Objektumok
+      href: assets-concept.md
+    - name: Adaptív sávszélességi skála automatikus létrehozása
+      href: autogen-bitrate-ladder.md
+    - name: Médiaintelligencia
+      href: intelligence-concept.md
+    - name: Tárfiókok
+      href: storage-account-concept.md
+    - name: Átalakítások és feladatok
+      href: transform-concept.md
+    - name: Reagálás az eseményekre
+      href: reacting-to-media-services-events.md
+- name: Útmutatók
+  items:
+    - name: Fiók létrehozása – parancssori felület
+      href: create-account-cli-how-to.md
+    - name: Adatelérési API-k – parancssori felület
+      href: access-api-cli-how-to.md
+    - name: Feladatállapot-események – parancssori felület
+      href: job-state-events-cli-how-to.md
+    - name: Tartalom feltöltése – .NET
+      items:
+        - name: HTTP-forrásból
+          href: job-input-from-http-how-to.md
+        - name: Egy helyi fájlból
+          href: job-input-from-local-file-how-to.md
+- name: Referencia
+  items:
+    - name: Azure CLI 2.0
+      href: 'https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest'
+    - name: REST
+      href: 'https://go.microsoft.com/fwlink/p/?linkid=873030'
+    - name: Eseménysémák
+      href: media-services-event-schemas.md
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md
+    - name: Kvóták és korlátozások
+      href: limits-quotas-constraints.md

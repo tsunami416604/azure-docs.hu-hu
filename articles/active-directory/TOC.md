@@ -289,6 +289,7 @@
 ## Identitások védelme
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
 #### [Feltételek](active-directory-conditional-access-conditions.md)
+#### [Helyfeltételek](active-directory-conditional-access-locations.md)
 #### [Vezérlők](active-directory-conditional-access-controls.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)

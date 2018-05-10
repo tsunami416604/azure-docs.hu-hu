@@ -1,12 +1,12 @@
 ---
-title: "A Windows-tárolók monitorozása és diagnosztikája az Azure Service Fabricben | Microsoft Docs"
-description: "Ebben az oktatóanyagban beállíthatja az Azure Service Fabricen vezényelt Windows-tárolók monitorozását és diagnosztikáját."
+title: A Windows-tárolók monitorozása és diagnosztikája az Azure Service Fabricben | Microsoft Docs
+description: Ebben az oktatóanyagban beállíthatja az Azure Service Fabricen vezényelt Windows-tárolók monitorozását és diagnosztikáját.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,21 +15,21 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: de77d10e4875173c7a067e945e473887d3cc7422
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 087dafe426b835d447c69a44f6842c41a48cec8c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-oms"></a>Oktatóanyag: A Service Fabricen található Windows-tárolók monitorozása az OMS használatával
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Oktatóanyag: A Service Fabricen található Windows-tárolók monitorozása a Log Analytics használatával
 
-Ez az oktatóanyag harmadik része, amely végigvezeti az OMS beállításán a Service Fabricen vezényelt Windows-tárolók monitorozásához.
+Ez az oktatóanyag harmadik része, amely végigvezeti a Log Analytics beállításán a Service Fabricen vezényelt Windows-tárolók monitorozásához.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * OMS konfigurálása a Service Fabric-fürthöz
-> * OMS-munkaterület használata a tárolók és csomópontok naplóinak megtekintéséhez és lekérdezéséhez
+> * Log Analytics konfigurálása a Service Fabric-fürthöz
+> * Log Analytics-munkaterület használata a tárolók és csomópontok naplóinak megtekintéséhez és lekérdezéséhez
 > * Az OMS-ügynök konfigurálása tároló- és csomópontmetrikák felvételéhez
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -37,24 +37,24 @@ Az oktatóanyag elkezdése előtt:
 - Rendelkeznie kell egy fürttel az Azure-on, vagy [létre kell hoznia egyet ennek az oktatóanyagnak a segítségével](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 - [Üzembe kell helyeznie hozzá egy tárolóba helyezett alkalmazást](service-fabric-host-app-in-a-container.md)
 
-## <a name="setting-up-oms-with-your-cluster-in-the-resource-manager-template"></a>OMS beállítása a fürttel a Resource Manager-sablonban
+## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Log Analytics beállítása a fürttel a Resource Manager-sablonban
 
-Abban az esetben, ha az oktatóanyag első részében [megadott sablont](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) használta, tartalmaznia kell az általános Service Fabric Azure Resource Manager-sablon alábbi kiegészítéseit. Abban az esetben, ha saját fürttel rendelkezik, amelyet a tárolók OMS-sel való monitorozására szeretne használni:
+Abban az esetben, ha az oktatóanyag első részében [megadott sablont](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) használta, tartalmaznia kell az általános Service Fabric Azure Resource Manager-sablon alábbi kiegészítéseit. Ha saját fürttel rendelkezik, amelyet a tárolók Log Analytics szolgáltatással való monitorozására szeretne használni:
 * Hajtsa végre az alábbi módosításokat a Resource Manager-sablonon.
 * Helyezze üzembe a PowerShell használatával a fürt a [sablon üzembe helyezésével](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) történő frissítéséhez. Az Azure Resource Manager megállapítja, hogy az erőforrás létezik, ezután pedig frissítésként közzéteszi.
 
-### <a name="adding-oms-to-your-cluster-template"></a>OMS hozzáadása a fürtsablonhoz
+### <a name="adding-log-analytics-to-your-cluster-template"></a>Log Analytics hozzáadása a fürtsablonhoz
 
 Hajtsa végre a következő módosításokat a *template.json* fájlban:
 
-1. Adja hozzá az OMS-munkaterület helyét és nevét a *parameters* (paraméterek) szakaszhoz:
+1. Adja hozzá a Log Analytics-munkaterület helyét és nevét a *parameters* (paraméterek) szakaszhoz:
     
     ```json
     "omsWorkspacename": {
       "type": "string",
       "defaultValue": "[toLower(concat('sf',uniqueString(resourceGroup().id)))]",
       "metadata": {
-        "description": "Name of your OMS Log Analytics Workspace"
+        "description": "Name of your Log Analytics Workspace"
       }
     },
     "omsRegion": {
@@ -66,7 +66,7 @@ Hajtsa végre a következő módosításokat a *template.json* fájlban:
         "Southeast Asia"
       ],
       "metadata": {
-        "description": "Specify the Azure Region for your OMS workspace"
+        "description": "Specify the Azure Region for your Log Analytics workspace"
       }
     }
     ```
@@ -100,7 +100,7 @@ Hajtsa végre a következő módosításokat a *template.json* fájlban:
     },
     ```
 
-4. Adja hozzá az OMS-munkaterületet önálló erőforrásként. A *resources* (erőforrások) szakaszban, a virtuálisgép-méretezési csoportok erőforrásait követően vegye fel az alábbiakat:
+4. Adja hozzá a Log Analytics-munkaterületet önálló erőforrásként. A *resources* (erőforrások) szakaszban, a virtuálisgép-méretezési csoportok erőforrásait követően vegye fel az alábbiakat:
     
     ```json
     {
@@ -180,17 +180,17 @@ Hajtsa végre a következő módosításokat a *template.json* fájlban:
     },
     ```
 
-Hivatkozási célból [itt](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) található egy (az oktatóanyag első részében használt) mintasablon, amely tartalmazza ezeket a módosításokat. Ezek a módosítások egy OMS Log Analytics-munkaterületet adnak hozzá az erőforráscsoporthoz. A munkaterület úgy lesz konfigurálva, hogy felvegye a Service Fabric-platform eseményeit azon tárolótáblákból, amelyek a [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)-ügynökkel lettek konfigurálva. Az OMS-ügynök (Microsoft Monitoring Agent) szintén hozzá lett adva a fürt minden csomópontjához virtuálisgép-bővítményként – ez azt jelenti, hogy a fürt méretezése közben az ügynököt minden számítógépen automatikusan konfigurálja és ugyanahhoz a munkaterülethez csatolja a rendszer.
+Hivatkozási célból [itt](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) található egy (az oktatóanyag első részében használt) mintasablon, amely tartalmazza ezeket a módosításokat. Ezek a módosítások egy Log Analytics-munkaterületet adnak hozzá az erőforráscsoporthoz. A munkaterület úgy lesz konfigurálva, hogy felvegye a Service Fabric-platform eseményeit azon tárolótáblákból, amelyek a [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)-ügynökkel lettek konfigurálva. Az OMS-ügynök (Microsoft Monitoring Agent) szintén hozzá lett adva a fürt minden csomópontjához virtuálisgép-bővítményként – ez azt jelenti, hogy a fürt méretezése közben az ügynököt minden számítógépen automatikusan konfigurálja és ugyanahhoz a munkaterülethez csatolja a rendszer.
 
-Helyezze üzembe a sablont az új módosításokkal az aktuális fürt frissítéséhez. Miután a művelet befejeződött, az OMS-erőforrásoknak meg kell jelenniük az erőforráscsoportban. Amint a fürt kész, helyezze rajta üzembe a tárolóba helyezett alkalmazást. A következő lépésben a tárolók monitorozását állítjuk be.
+Helyezze üzembe a sablont az új módosításokkal az aktuális fürt frissítéséhez. Miután a művelet befejeződött, a Log Analytics-erőforrásoknak megjelennek az erőforráscsoportban. Amint a fürt kész, helyezze rajta üzembe a tárolóba helyezett alkalmazást. A következő lépésben a tárolók monitorozását állítjuk be.
 
-## <a name="add-the-container-monitoring-solution-to-your-oms-workspace"></a>A tárolómonitorozási megoldás hozzáadása az OMS-munkaterülethez
+## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>A tárolómonitorozási megoldás hozzáadása a Log Analytics-munkaterülethez
 
 A tárolómegoldások beállításához a munkaterületen keresse meg a *Tárolómonitorozási megoldást*, és hozzon létre egy tároló-erőforrást (a Monitoring és felügyelet kategóriában).
 
 ![Tárolómegoldások hozzáadása](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Ha a rendszer kéri az *OMS-munkaterületet*, válassza ki az erőforráscsoportban létrehozott munkaterületet, majd kattintson a **Létrehozás** parancsra. Ezzel hozzáad egy *tárolómonitorozási megoldást* a munkaterülethez, ami miatt a sablon által üzembe helyezett OMS-ügynök automatikusan elkezdi Docker-naplók és -statisztikák gyűjtését. 
+Ha a rendszer kéri a *Log Analytics-munkaterületet*, válassza ki az erőforráscsoportban létrehozott munkaterületet, majd kattintson a **Létrehozás** parancsra. Ezzel hozzáad egy *tárolómonitorozási megoldást* a munkaterülethez, ami miatt a sablon által üzembe helyezett OMS-ügynök automatikusan elkezdi Docker-naplók és -statisztikák gyűjtését. 
 
 Lépjen vissza az *erőforráscsoporthoz*, ahol meg kell jelennie az újonnan hozzáadott monitorozási megoldásnak. Ha a megoldásra kattint, a kezdőlapon meg kell jelennie, hogy hány tárolórendszerképet futtat. 
 
@@ -219,7 +219,7 @@ Az OMS-ügynök használatának egy másik előnye, hogy anélkül módosíthat�
 Ekkor a munkaterületéhez kerül az OMS-portálon, ahol megtekintheti a megoldásokat, létrehozhat egyéni irányítópultokat és konfigurálhatja az OMS-ügynököt. 
 * Kattintson a képernyő jobb felső sarkában található **fogaskerékre** a *Beállítások* menü megnyitásához.
 * Kattintson a **Csatlakoztatott források** > **Windows-kiszolgálók** elemre annak ellenőrzéséhez, hogy *5 Windows rendszerű számítógép van-e csatlakoztatva*.
-* Kattintson az **Adatok** > **Windows-teljesítményszámlálók** elemre a teljesítményszámlálók kereséséhez és új teljesítményszámlálók hozzáadásához. Itt megjelenik az OMS javaslatainak listája a gyűjthető teljesítményszámlálókhoz, valamint egyéb számlálók keresésének lehetősége. Kattintson **A kijelölt teljesítményszámlálók felvétele** elemre a javasolt metrikák gyűjtésének megkezdéséhez.
+* Kattintson az **Adatok** > **Windows-teljesítményszámlálók** elemre a teljesítményszámlálók kereséséhez és új teljesítményszámlálók hozzáadásához. Itt megjelenik a Log Analytics gyűjthető teljesítményszámlálókra vonatkozó javaslatainak listája, valamint egyéb számlálók keresésének lehetősége. Kattintson **A kijelölt teljesítményszámlálók felvétele** elemre a javasolt metrikák gyűjtésének megkezdéséhez.
 
     ![Teljesítményszámlálók](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
 
@@ -235,13 +235,13 @@ Térjen vissza az Azure Portalra, néhány perc múlva **frissítse** a Tároló
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * OMS konfigurálása a Service Fabric-fürthöz
-> * OMS-munkaterület használata a tárolók és csomópontok naplóinak megtekintéséhez és lekérdezéséhez
-> * Az OMS-ügynök konfigurálása tároló- és csomópontmetrikák felvételéhez
+> * Log Analytics konfigurálása a Service Fabric-fürthöz
+> * Log Analytics-munkaterület használata a tárolók és csomópontok naplóinak megtekintéséhez és lekérdezéséhez
+> * A Log Analytics-ügynök konfigurálása tároló- és csomópontmetrikák felvételéhez
 
 Most, hogy beállította a tárolóba helyezett alkalmazás monitorozását, megpróbálkozhat a következőkkel:
 
-* Állítsa be az OMS-t egy Linux-fürthöz, a fentiekhez hasonló lépéseket követve. Hivatkozzon [erre a sablonra](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) a módosítások a Resource Manager-sablonban történő elvégzéséhez.
-* Konfigurálja az OMS-t az [automatizált riasztások](../log-analytics/log-analytics-alerts.md) beállításához, ezzel elősegítve az észlelést és a diagnosztikát.
+* Állítsa be a Log Analytics szolgáltatást egy Linux-fürthöz, a fentiekhez hasonló lépéseket követve. Hivatkozzon [erre a sablonra](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) a módosítások a Resource Manager-sablonban történő elvégzéséhez.
+* Konfigurálja a Log Analytics szolgáltatást az [automatizált riasztások](../log-analytics/log-analytics-alerts.md) beállításához, ezzel elősegítve az észlelést és a diagnosztikát.
 * Tekintse meg a Service Fabric a fürthöz konfigurálható, [ajánlott teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) tartalmazó listáját.
 * Ismerkedjen meg a Log Analytics részét képező [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkcióval.

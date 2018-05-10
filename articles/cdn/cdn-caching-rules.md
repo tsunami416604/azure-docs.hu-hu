@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: v-deasim
-ms.openlocfilehash: 18704f2d2a553d7fafb16575ce81128ab47bf09c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 09705893c50e56cce5d888db097d7b810624b5d8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának működése
 
 > [!NOTE] 
-> Gyorsítótárazás szabályok csak esetén érhetők el **Azure CDN Standard verizon** és **Azure CDN Standard Akamai**. A **verizon Azure CDN Premium**, használhatja a [Azure CDN szabálymotor](cdn-rules-engine.md) a a **kezelése** hasonló funkciókat a portálon.
+> Gyorsítótárazás szabályok csak esetén érhetők el **Azure CDN Standard verizon** és **Azure CDN Standard Akamai** profilok. A **verizon Azure CDN Premium** -profilok kell használnia a [Azure CDN szabálymotor](cdn-rules-engine.md) a a **kezelése** hasonló funkciókat a portálon.
  
 Az Azure Content Delivery Network (CDN) kétféleképpen szabályozhatja, hogy a gyorsítótárba: 
 

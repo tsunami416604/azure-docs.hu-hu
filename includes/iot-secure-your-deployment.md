@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 7d7cd8a197a89781a75f47bb4b4e2ec8fe7c3cb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
 # <a name="secure-your-iot-deployment"></a>Az IoT üzemelő példányának védelme
 
 Ez a cikk a következő részletességi biztosít az Azure IoT-alapú az eszközök internetes hálózatát (IoT) infrastruktúra védelmének biztosítása. Hivatkozik szintű részleteket minden összetevőjének telepítése és konfigurálása. Összehasonlítás és a lehetőségek között a különböző versengő módszer is biztosít.
@@ -12,7 +28,7 @@ Az Azure IoT-telepítés biztonságossá tétele a következő három biztonság
 
 ## <a name="secure-device-provisioning-and-authentication"></a>Kiépítés biztonságos eszköz és a hitelesítés
 
-Az Azure IoT Suite az IoT-eszközök az alábbi két módszer biztonságossá tételére:
+Az IoT-megoldás gyorsítók az IoT-eszközök biztonságos a következő két módszer szerint:
 
 * Az egyes eszközök ad meg egy egyedi identitáskulcs (biztonsági jogkivonatokat), amelyekkel az eszköz kommunikáljon az IoT-központot.
 * A-eszköz segítségével [X.509 tanúsítvány] [ lnk-x509] és titkos kulcsok segítségével hitelesíteni az eszközt az IoT-központ számára. Ez a hitelesítési módszer biztosítja, hogy a titkos kulcs az eszközön nem ismert az eszköz kívül bármikor, így magasabb szintű biztonságot.

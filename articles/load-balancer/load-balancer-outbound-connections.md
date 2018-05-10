@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: c3d6ed2c011cc6be1098ae5e693ee6d904efaa3b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: c12b52c6b8862d00d51b51a5a120292f89c3ac1f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -40,11 +40,11 @@ Egyszerre több [kimenő forgatókönyvek](#scenarios). Ezek a forgatókönyvek 
 
 Az Azure Load Balancer és a kapcsolódó erőforrások explicit módon határozzák meg használatakor [Azure Resource Manager](#arm).  Azure jelenleg három különböző módszert biztosít eléréséhez kimenő kapcsolódás az Azure Resource Manager erőforrások. 
 
-| Forgatókönyv | Módszer | Leírás |
-| --- | --- | --- |
-| [1. Virtuális gép példány szint nyilvános IP-címmel (vagy anélkül terheléselosztó)](#ilpip) | SNAT, színleg nem használt port |Azure használ a nyilvános IP-címet hozzárendelni az IP-konfiguráció, a példány hálózati adaptert. A példány érhető el az összes rövid élettartamú port tartozik. |
-| [2. A virtuális gép (nem példány szint nyilvános IP-cím a példányon) társított nyilvános terheléselosztó](#lb) | A port színleg (PAT) SNAT használ a Load Balancer frontends |Azure több privát IP-címek osztanak meg a nyilvános terheléselosztót frontends nyilvános IP-címét. Azure a PAT frontends elmúló portját használja. |
-| [3. Önálló virtuális gép (nem a terheléselosztóhoz, példány szint nyilvános IP-cím)](#defaultsnat) | A port színleg (PAT) SNAT | Azure automatikusan meg, míg a nyilvános IP-címnek a SNAT, a nyilvános IP-címet oszt meg több privát IP-címek, a rendelkezésre állási csoport és a nyilvános IP-cím elmúló port használja. Ez egy webfarmos tartalék a fenti forgatókönyvek esetén. Nem ajánlott, ha figyelemmel kísérelhetik és vezérelhetik van szüksége. |
+| Forgatókönyv | Módszer | IP-protokollok | Leírás |
+| --- | --- | --- | --- |
+| [1. Virtuális gép példány szint nyilvános IP-címmel (vagy anélkül terheléselosztó)](#ilpip) | SNAT, színleg nem használt port | TCP, UDP, ICMP, ESP | Azure használ a nyilvános IP-címet hozzárendelni az IP-konfiguráció, a példány hálózati adaptert. A példány érhető el az összes rövid élettartamú port tartozik. |
+| [2. A virtuális gép (nem példány szint nyilvános IP-cím a példányon) társított nyilvános terheléselosztó](#lb) | A port színleg (PAT) SNAT használ a Load Balancer frontends | TCP, UDP |Azure több privát IP-címek osztanak meg a nyilvános terheléselosztót frontends nyilvános IP-címét. Azure a PAT frontends elmúló portját használja. |
+| [3. Önálló virtuális gép (nem a terheléselosztóhoz, példány szint nyilvános IP-cím)](#defaultsnat) | A port színleg (PAT) SNAT | TCP, UDP | Azure automatikusan meg, míg a nyilvános IP-címnek a SNAT, a nyilvános IP-címet oszt meg több privát IP-címek, a rendelkezésre állási csoport és a nyilvános IP-cím elmúló port használja. Ez egy webfarmos tartalék a fenti forgatókönyvek esetén. Nem ajánlott, ha figyelemmel kísérelhetik és vezérelhetik van szüksége. |
 
 Ha nem szeretné a virtuális gépek kívül Azure a nyilvános IP-címterület végpontok kommunikálni, a hálózati biztonsági csoportokkal (NSG-k) segítségével letiltja a hozzáférést, igény szerint. A szakasz [megakadályozza a kimenő kapcsolat](#preventoutbound) NSG-ket ismerteti részletesen. Designing útmutatást, megvalósítás, és minden kimenő-hozzáférés nélküli virtuális hálózat kezelése van ez a cikk hatókörén kívül.
 
@@ -243,7 +243,7 @@ Ha egy NSG blokkolja az egészségügyi mintavételi kérelmeit a AZURE_LOADBALA
 
 ## <a name="limitations"></a>Korlátozások
 - DisableOutboundSnat nincs lehetőség egy terheléselosztási szabály portálon konfigurálásakor.  Ehelyett használja a többi, sablon vagy ügyfél eszközök.
-- Webes feldolgozói szerepkörök olyan virtuális hálózaton kívül is elérhetőnek lennie, csak egy belső szabványos terheléselosztó használata miatt a hogyan egyik mellékhatása előtti-VNet szolgáltatások függvény. Kell nem használ, ez a megfelelő szolgáltatást saját magát, vagy az alapul szolgáló platform értesítés nélkül változhatnak. Hogy mindig részlegnek feltételeznie kell létrehozásához szükséges kimenő kapcsolat explicit módon ha egy belső szabványos terheléselosztó csak használata esetén szükséges. 
+- Webes feldolgozói szerepkörök nélkül egy VNet és egyéb Microsoft-platform szolgáltatás elérhető lehet, ha csak egy belső szabványos terheléselosztó használata miatt a hogyan előtti-VNet-szolgáltatások és az egyéb platform szolgáltatás függvény egyik mellékhatása. Meg kell támaszkodjon ezt a mellékhatást, a megfelelő service magát, vagy az alapul szolgáló platform értesítés nélkül változhatnak. Hogy mindig részlegnek feltételeznie kell létrehozásához szükséges kimenő kapcsolat explicit módon ha egy belső szabványos terheléselosztó csak használata esetén szükséges. A [SNAT alapértelmezett](#defaultsnat) cikkben leírt 3. forgatókönyv nem érhető el.
 
 ## <a name="next-steps"></a>További lépések
 

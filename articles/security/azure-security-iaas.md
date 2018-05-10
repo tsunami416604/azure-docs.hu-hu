@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: a6d6e0b7ea844f0a4d60ae7a157ac76dc8bdb8f8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások az Azure IaaS munkaterhelések
 
@@ -85,7 +85,7 @@ Az Azure labs és fejlesztői környezetek lehetővé teszi a szervezetek könny
 
 A [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) használja [átruházásához hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC). RBAC használatával akkor is elkülönítse feladatokat a munkacsoporton belül a szerepköröket, amelyek csak a hozzáférési szintet, a felhasználóknak a munkájuk elvégzéséhez szükséges megadni. Az RBAC előre definiált szerepkörök (tulajdonos, lab-felhasználó és közreműködő) tartalmaz. Ezek a szerepkörök segítségével is külső partnerekkel jogosultságokat rendelhet hozzá, és nagy mértékben egyszerűsítheti az együttműködés.
 
-Mivel a DevTest Labs RBAC használ, azt is létrehozhat további, [egyéni szerepkörök](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nem csak egyszerűbbé teszi a engedélyek, egyszerűbbé teszi a kiépített környezetek folyamatának. Emellett segítséget nyújt az egyéb csoportok fejlesztési és tesztelési környezetben működő tipikus kihívásaival kezelésére. Bizonyos előkészületeket igényel, de a hosszú távú, azt fogja egyszerűbbé a csapat számára.
+Mivel a DevTest Labs RBAC használ, azt is létrehozhat további, [egyéni szerepkörök](../lab-services/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nem csak egyszerűbbé teszi a engedélyek, egyszerűbbé teszi a kiépített környezetek folyamatának. Emellett segítséget nyújt az egyéb csoportok fejlesztési és tesztelési környezetben működő tipikus kihívásaival kezelésére. Bizonyos előkészületeket igényel, de a hosszú távú, azt fogja egyszerűbbé a csapat számára.
 
 Az Azure DevTest Labs funkciók a következők:
 

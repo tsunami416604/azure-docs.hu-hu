@@ -3,7 +3,7 @@ title: Munkafolyamat definícióját nyelvi séma - Azure Logic Apps |} Microsof
 description: Egyéni munkafolyamat definíciója az Azure Logic Apps Munkafolyamatdefiníciós nyelve a írása
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -12,13 +12,13 @@ ms.workload: logic-apps
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: reference
-ms.date: 04/25/2018
+ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 7c253fd83bcc1f1dde93ac6ef0c26da1fa1a9a4b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Logic Apps munkafolyamat-definícióhoz, a munkafolyamat-definíció nyelvi séma
 
@@ -54,7 +54,7 @@ A munkafolyamat-definíció magas szintű struktúra a következő:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az a `parameters` területen fogadja el a futási időben a munkafolyamat bemenetei összes paramétereinek megadása. Ezek a paraméterek a más munkafolyamat szakaszok használata előtt győződjön meg arról, hogy deklarálhatja ezekben a szakaszokban a paramétereket.
+Az a `parameters` területen adja meg a Logic Apps alkalmazást használ a központi telepítés bemeneti adatokat fogad az összes munkafolyamat-paraméterek. Központi telepítés szükség, paraméterdeklaráció és a paraméterértékek. Ezek a paraméterek a más munkafolyamat szakaszok használata előtt győződjön meg arról, hogy deklarálhatja ezekben a szakaszokban a paramétereket. 
 
 Az általános struktúra paraméter definícióját a következő:  
 
@@ -80,7 +80,7 @@ Az általános struktúra paraméter definícióját a következő:
 | Storageaccount_accounttype | Nem | Ugyanaz, mint `type` | Egy tömb, amelyek a paramétert fogad el |  
 | metaadatok | Nem | JSON-objektum | Bármely egyéb paraméter részletek, például a nevét vagy a logikai alkalmazást, vagy a Visual Studio vagy egyéb eszközök által használt tervezési idejű adatok olvasható leírását |  
 ||||
-  
+
 ## <a name="triggers-and-actions"></a>Triggerek és műveletek  
 
 Egy munkafolyamat-definícióban a `triggers` és `actions` szakaszok határozza meg a hívásokat, amely a munkafolyamat végrehajtása során kerül sor. Szintaxis és ezek a szakaszok további információ: [munkafolyamat eseményindítók és műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md).
@@ -88,6 +88,9 @@ Egy munkafolyamat-definícióban a `triggers` és `actions` szakaszok határozza
 ## <a name="outputs"></a>Kimenetek 
 
 Az a `outputs` szakaszban, a munkafolyamat visszatérhet, amikor befejeződött az adatok meghatározásához futtatása. Futni, hanem minden egyes érték vagy egy adott állapotú követéséhez adja meg például, hogy a munkafolyamat kimeneti adott adatait jeleníti meg. 
+
+> [!NOTE]
+> Amikor az válaszol a beérkező kéréseket egy szolgáltatás REST API-n, ne használjon `outputs`. Ehelyett használja a `Response` művelet típusa. További információkért lásd: [munkafolyamat eseményindítók és műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 Itt található általános szerkezetének megadása egy kimeneti definíciója: 
 
@@ -108,9 +111,6 @@ Itt található általános szerkezetének megadása egy kimeneti definíciója:
 ||||| 
 
 Ahhoz, hogy a kimenet egy munkafolyamat futtatásához, tekintse át a logikai alkalmazás futtatási előzményei és az Azure-portálon részletes adatait, vagy használja a [munkafolyamat REST API](https://docs.microsoft.com/rest/api/logic/workflows). Is átadhatja kimeneti a külső rendszerekkel, például a Power BI, hogy az irányítópultok hozhatók létre. 
-
-> [!NOTE]
-> Amikor az válaszol a beérkező kéréseket egy szolgáltatás REST API-n, ne használjon `outputs`. Ehelyett használja a `Response` művelet típusa. További információkért lásd: [munkafolyamat eseményindítók és műveletek](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 <a name="expressions"></a>
 
@@ -219,7 +219,8 @@ A [kifejezések](#expressions) és [funkciók](#functions), operátorok folyamat
 
 ## <a name="functions"></a>Functions
 
-Egyes kifejezések értékeik beolvasása sikertelen lehet, hogy még nem léteznek futtatásához logikai alkalmazás indulásakor futásidejű műveleteket. Ezek az értékek kifejezések dolgozom, illetve hivatkoznak, használhatja *funkciók*. Például használhatja matematikai függvények számítások, például a [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) függvénynek, amely az egész számnak vagy úszó összegét adja vissza. 
+Egyes kifejezések értékeik beolvasása sikertelen lehet, hogy még nem léteznek futtatásához logikai alkalmazás indulásakor futásidejű műveleteket. Ezek az értékek kifejezések dolgozom, illetve hivatkoznak, használhatja [ *funkciók*](../logic-apps/workflow-definition-language-functions-reference.md). Például használhatja matematikai függvények számítások, például a [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) függvénynek, amely az egész számnak vagy úszó összegét adja vissza. Minden függvény kapcsolatos részletes információkért tekintse meg a [szedett áttekintésével foglalkozó cikkben](../logic-apps/workflow-definition-language-functions-reference.md).
+Vagy folytathatja az funkciók és az általános célú.
 
 Csupán néhány példa feladatokat hajthat végre a funkciók a következők: 
 

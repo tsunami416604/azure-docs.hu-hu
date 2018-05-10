@@ -1,12 +1,12 @@
 ---
-title: "Távoli felügyeleti megoldás - Azure architektúra |} Microsoft Docs"
-description: "Részletes útmutatás a távoli felügyeleti előkonfigurált megoldás architektúrája."
-services: 
+title: Távoli felügyeleti megoldás - Azure architektúra |} Microsoft Docs
+description: A távoli felügyeleti megoldásgyorsító architektúrájának részletes útmutatás.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e19ba9c88e4fbe4f065c45ce7029247436f7155c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 3eaaa1ec09e9bd593a2d14e4a3bc751c431869d0
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="remote-monitoring-preconfigured-solution-architecture"></a>Távoli figyelési előkonfigurált megoldás architektúrája
+# <a name="remote-monitoring-solution-accelerator-architecture"></a>Távoli figyelés megoldás gyorsító architektúrája
 
-Az IoT Suite távoli megfigyelési [előre konfigurált megoldás](iot-suite-what-are-preconfigured-solutions.md) egy végpont figyelési megoldást igényelnek több valósítja meg a távoli helyeken. A megoldás fontos Azure-szolgáltatások kombinációját kínálja az üzleti forgatókönyv általános megvalósítása érdekében. Használhatja a megoldás kiindulási pontként a saját végrehajtásához és [testreszabása](iot-suite-remote-monitoring-customize.md) úgy, hogy a saját üzleti követelményeinek megfelelően.
+A távoli megfigyelési [megoldásgyorsító](iot-suite-what-are-solution-accelerators.md) egy végpont figyelési megoldást igényelnek több valósítja meg a távoli helyeken. A megoldás fontos Azure-szolgáltatások kombinációját kínálja az üzleti forgatókönyv általános megvalósítása érdekében. Használhatja a megoldás kiindulási pontként a saját végrehajtásához és [testreszabása](iot-suite-remote-monitoring-customize.md) úgy, hogy a saját üzleti követelményeinek megfelelően.
 
 Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. Ezeknek az ismereteknek a birtokában:
 
@@ -33,13 +33,13 @@ Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemé
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
-A következő ábra bemutatja a távoli figyelési előkonfigurált megoldás, az átfedett logikai összetevőinek a [IoT-architektúra](iot-suite-what-is-azure-iot.md):
+A következő ábra bemutatja a távoli felügyeleti megoldásgyorsító az átfedett logikai összetevőinek a [IoT-architektúra](iot-suite-what-is-azure-iot.md):
 
 ![Logikai architektúra](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
 ## <a name="why-microservices"></a>Miért mikroszolgáltatások létrehozására?
 
-Architektúra változásokon ment keresztül, mert a Microsoft, amely az első előkonfigurált megoldásokat. [Mikroszolgáltatások](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) rendelkezik kiderült, bevált gyakorlat méretezés és rugalmasság eléréséhez fejlesztési sebesség feláldozása nélkül. Több Microsoft-szolgáltatások ebben a mintában architekturális belsőleg használja a nagy megbízhatósági és méretezhetőségi eredményeit. A frissített előkonfigurált megoldásokat ezek learnings gyakorlati helyezze el, révén is kihasználhatja a őket.
+Mivel a Microsoft, amely az első megoldás gyorsítók architektúra változásokon ment keresztül. [Mikroszolgáltatások](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) rendelkezik kiderült, bevált gyakorlat méretezés és rugalmasság eléréséhez fejlesztési sebesség feláldozása nélkül. Több Microsoft-szolgáltatások ebben a mintában architekturális belsőleg használja a nagy megbízhatósági és méretezhetőségi eredményeit. A frissített megoldás gyorsítók ezek learnings gyakorlati helyezze el, révén is kihasználhatja a őket.
 
 > [!TIP]
 > További információk a mikroszolgáltatás-architektúrákról: [.NET-alkalmazás architektúrája](https://www.microsoft.com/net/learn/architecture) és [Mikroszolgáltatások: egy felhőben zajló alkalmazásforradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
@@ -67,7 +67,7 @@ A megoldás portálon az irányítópultról fizikai eszközök építhető ki.
 
 ### <a name="iot-hub-and-the-iot-manager-microservice"></a>Az IoT-központ és az IoT-kezelő mikroszolgáltatási
 
-A [IoT-központ](../iot-hub/index.md) ingests eszközről a felhőbe küldött adatok, és lehetővé teszi a `telemetry-agent` mikroszolgáltatási.
+A [IoT-központ](../iot-hub/index.yml) ingests eszközről a felhőbe küldött adatok, és lehetővé teszi a `telemetry-agent` mikroszolgáltatási.
 
 A megoldásban az IoT Hub ezenkívül a következőket teszi:
 
@@ -112,11 +112,11 @@ A RESTful végpont a mikroszolgáltatási által biztosított segítségével te
 
 ### <a name="storage"></a>Storage
 
-A [tárolóadapter](https://github.com/Azure/pcs-storage-adapter-dotnet) mikroszolgáltatási egy adapter az előkonfigurált megoldás használt fő tárolási szolgáltatás elé. Egyszerű gyűjtemény és a kulcs-érték tároló biztosít.
+A [tárolóadapter](https://github.com/Azure/pcs-storage-adapter-dotnet) mikroszolgáltatási egy adapter elé a megoldásgyorsító használt fő tároló szolgáltatás. Egyszerű gyűjtemény és a kulcs-érték tároló biztosít.
 
-Az előkonfigurált megoldás szabványos telepítési Cosmos DB használja, mint a fő tároló szolgáltatás.
+A normál a megoldásgyorsító központi Cosmos DB használja, mint a fő tároló szolgáltatás.
 
-A Cosmos DB adatbázis adatot tárol az előkonfigurált megoldás. A **tárolóadapter** mikroszolgáltatási úgy működik, mint az adaptert a megoldásban való hozzáférés tárolási szolgáltatások más mikroszolgáltatások létrehozására.
+A Cosmos DB adatbázisban tárol adatokat a megoldásgyorsító. A **tárolóadapter** mikroszolgáltatási úgy működik, mint az adaptert a megoldásban való hozzáférés tárolási szolgáltatások más mikroszolgáltatások létrehozására.
 
 ## <a name="presentation"></a>Bemutató
 
@@ -128,19 +128,19 @@ A [webes felhasználói felülete egy reagálni Javascript-alkalmazás, amely](h
 * CSS való stílussal van.
 * Nyilvános irányuló mikroszolgáltatások AJAX-hívások keresztül kommunikál.
 
-A felhasználói felület az előkonfigurált megoldás funkciókat mutatja be, és kommunikációja más szolgáltatásokkal, mint:
+A felhasználói felület a megoldás gyorsító funkcióit mutatja be, és kommunikációja más szolgáltatásokkal, mint:
 
 * A [hitelesítési](https://github.com/Azure/pcs-auth-dotnet) mikroszolgáltatási felhasználói adatok védelmét.
 * A [IOT hubbal-kezelő](https://github.com/Azure/iothub-manager-dotnet) mikroszolgáltatási listában, és az IoT-eszközök kezeléséhez.
 
 A [ui-config](https://github.com/Azure/pcs-config-dotnet) mikroszolgáltatási lehetővé teszi, hogy a felhasználói felület tárolásához és lekéréséhez a konfigurációs beállításokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné használni a kódot és fejlesztői dokumentációját, indítsa el az egyik a két fő GitHub-adattárak:
 
-* [Előre konfigurált távoli figyelése az Azure IoT (.NET) megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
-* [Előre konfigurált távoli megfigyelés az Azure IoT (Java) megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
-* [Előre konfigurált távoli figyelési architektúra megoldás)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
+* [A távoli figyelése az Azure IoT (.NET) megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
+* [A távoli megfigyelés az Azure IoT (Java) megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
+* [Megoldásgyorsító távoli figyelési architektúra)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
 
-Fogalmi kapcsolatos további információkért a távoli felügyeleti előkonfigurált megoldás lásd: [testre szabhatja az előkonfigurált megoldás](iot-suite-remote-monitoring-customize.md).
+További elméleti kapcsolatos további információkért a távoli felügyeleti megoldásgyorsító: [testre szabhatja a megoldásgyorsító](iot-suite-remote-monitoring-customize.md).

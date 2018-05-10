@@ -1,16 +1,16 @@
 ---
-title: "Hyper-V replikálás az Azure Site Recovery másodlagoshely-architektúra |} Microsoft Docs"
-description: "Ez a cikk áttekintést ad a helyszíni Hyper-V virtuális gépek másodlagos System Center VMM-helyre történő, az Azure Site Recoveryvel végzett replikálásakor használt architektúráról."
+title: Hyper-V replikálás az Azure Site Recovery másodlagoshely-architektúra |} Microsoft Docs
+description: Ez a cikk áttekintést ad a helyszíni Hyper-V virtuális gépek másodlagos System Center VMM-helyre történő, az Azure Site Recoveryvel végzett replikálásakor használt architektúráról.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: a6e20b3f1f804617f78413413509d1b5bd476d23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 39a397edd17327a91882535fbd00222a4ae4dddc
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>Hyper-V replikáció egy másodlagos helyre
 

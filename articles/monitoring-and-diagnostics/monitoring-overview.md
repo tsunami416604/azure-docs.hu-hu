@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 16478d0223f59abb239d39fa27453e41b6980727
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure-alkalmazások és erőforrások figyelése
 
@@ -60,7 +60,7 @@ Alapvető figyelését teszi lehetővé alapvető és szükséges Azure-erőforr
 
 Metrikák érhetők el, amely teljesítménystatisztikáit. Adja meg a különböző erőforrások és még az operációs rendszer a virtuális gépen. Az adat megtekintéséhez az Azure-portálon szoftverkategóriák valamelyikét, és létre riasztásokat, a fenti metrikák alapján. Az Azure biztosít a leggyorsabb metrikák a következő feldolgozási sorban (1 perces le 5 perc), így időt kritikus riasztások és értesítések kell használni.
 
-A metrikák és a naplók Azure Naplóelemzés trendekkel és részletesebb elemzéshez küldése, vagy proaktív értesítik a kritikus fontosságú problémáit elemzés miatt további riasztási szabályok létrehozására is.  
+Trendekkel és részletesebb elemzéshez Azure Naplóelemzés a metrikák és a naplókat küldeni, vagy proaktív értesítik a kritikus fontosságú problémáit elemzés miatt további riasztási szabályok létrehozására is.  
 
 > [!NOTE]
 > Diagnosztikai beállítások útra küldés többdimenziós metrikák Naplóelemzési jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.

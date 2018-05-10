@@ -1,11 +1,11 @@
 ---
-title: "Az Active Directory-környezet az Azure Naplóelemzés optimalizálása |} Microsoft Docs"
-description: "Az Active Directory állapotát ellenőrző megoldás segítségével rendszeres időközönkénti kockázat és a környezetek állapotának megállapítása."
+title: Az Active Directory-környezet az Azure Naplóelemzés optimalizálása |} Microsoft Docs
+description: Az Active Directory állapotát ellenőrző megoldás segítségével rendszeres időközönkénti kockázat és a környezetek állapotának megállapítása.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f026c605b84c5f2b6420e975a06d7c02227efbd9
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: 016b5bafdf6543ad43e36a875e6aa68572b35f97
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Az Active Directory-környezet, az Active Directory állapotát ellenőrző megoldással a Naplóelemzési optimalizálása
 
@@ -54,7 +54,7 @@ A tartományvezérlők, amelyek a tartomány tagjai kiértékelendő állapot-el
 
 1. Telepítse a [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Ha a tartományvezérlő nem már figyel a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2.
 2. Ha a számítógép megfigyelés alatt áll a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2 és a felügyeleti csoport nem integrálva van a Naplóelemzési szolgáltatás, a tartományvezérlő is lehet, többhelyű a Log Analyticshez az adatok gyűjtéséhez és továbbítja a szolgáltatást, és továbbra is az Operations Manager által figyelt.  
-3. Ellenkező esetben, ha az Operations Manager felügyeleti csoportjának integrálva van a szolgáltatás, kell hozzáadnia a tartományvezérlők, az adatok gyűjtésével a következő lépéseket a szolgáltatás által [ügynök által felügyelt számítógépek hozzáadása](log-analytics-om-agents.md#connecting-operations-manager-to-oms) engedélyezése után a megoldás a munkaterületen.  
+3. Ellenkező esetben, ha az Operations Manager felügyeleti csoportjának integrálva van a szolgáltatás, kell hozzáadnia a tartományvezérlők, az adatok gyűjtésével a következő lépéseket a szolgáltatás által [ügynök által felügyelt számítógépek hozzáadása](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) engedélyezése után a megoldás a munkaterületen.  
 
 Az ügynök jelentéseket az Operations Manager felügyeleti csoport gyűjti az adatokat, a tartományvezérlő a hozzárendelt felügyeleti kiszolgálójának továbbítja, és a Log Analytics szolgáltatás közvetlenül a felügyeleti kiszolgálótól érkező majd érkezik.  Az adatok nem szerepel az Operations Manager-adatbázishoz.  
 

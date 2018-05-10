@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Resource Manager sablon struktúra és szintaxis |} Microsoft Docs"
-description: "A struktúra és az Azure Resource Manager-sablonok deklaratív JSON-szintaxis használatával tulajdonságait ismerteti."
+title: Az Azure Resource Manager sablon struktúra és szintaxis |} Microsoft Docs
+description: A struktúra és az Azure Resource Manager-sablonok deklaratív JSON-szintaxis használatával tulajdonságait ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 05/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: b0bc5abd768be0fa5876aaef108cd71a15d94510
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 3b70817f973f0bfbdcec2aa8c76a431eec308bcf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>A struktúra és az Azure Resource Manager-sablonok szintaxisát ismertetése
 Ez a cikk ismerteti az Azure Resource Manager sablon szerkezete. Azt mutatja be a különböző szakaszokat, egy sablon és az elérhető tulajdonságok köre szakaszt. A sablon JSON és összeállítani az üzemelő példány értékeit használó kifejezéseket tartalmaz. A sablonok létrehozásának részletes oktatóanyaga, lásd: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
@@ -32,6 +32,7 @@ A legegyszerűbb struktúra, a sablon a következő elemeket tartalmazza:
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
+    "functions": {  },
     "resources": [  ],
     "outputs": {  }
 }
@@ -43,7 +44,8 @@ A legegyszerűbb struktúra, a sablon a következő elemeket tartalmazza:
 | contentVersion |Igen |A sablon (például 1.0.0.0) verzióját. Bármely érték biztosíthat ehhez az elemhez. A sablon eszközzel való telepítésekor ez az érték segítségével győződjön meg arról, hogy a megfelelő sablon használatban van-e. |
 | paraméterek |Nem |Amikor központi telepítés végrehajtása testre szabhatja az erőforrások telepítése által biztosított értéket. |
 | változók |Nem |A sablon JSON-töredék, egyszerűbbé teheti a sablonnyelvi kifejezéseket használt értékek. |
-| Erőforrások |Igen |Telepített vagy frissített erőforráscsoportban erőforrástípusok esetében. |
+| functions |Nem |Felhasználó által definiált függvények, a sablonon belül elérhető. |
+| erőforrás |Igen |Telepített vagy frissített erőforráscsoportban erőforrástípusok esetében. |
 | kimenetek |Nem |A telepítés utáni visszaadott értékek. |
 
 Minden elem beállítható tulajdonságokat tartalmaz. A következő példa a teljes szintaxissal sablon tartalmazza:
@@ -92,6 +94,25 @@ Minden elem beállítható tulajdonságokat tartalmaz. A következő példa a te
             }
         ]
     },
+    "functions": [
+      {
+        "namespace": "<namespace-for-your-function>",
+        "members": {
+          "<function-name>": {
+            "parameters": [
+              {
+                "name": "<parameter-name>",
+                "type": "<type-of-parameter-value>"
+              }
+            ],
+            "output": {
+              "type": "<type-of-output-value>",
+              "value": "<function-expression>"
+            }
+          }
+        }
+      }
+    ],
     "resources": [
       {
           "condition": "<boolean-value-whether-to-deploy>",
@@ -185,7 +206,60 @@ Az alábbi példában egy egyszerű változó definíciója:
 
 További információ a változók meghatározása: [változók szakaszban az Azure Resource Manager-sablonok](resource-manager-templates-variables.md).
 
-## <a name="resources"></a>Erőforrások
+## <a name="functions"></a>Functions
+
+A sablonon belül létrehozhat saját függvényeket. Ezek a függvények használhatók a sablonban. Általában határozza meg, amely nem kívánt ismételje meg a sablon teljes összetett kifejezés. Kifejezések hoz létre a felhasználó által definiált függvények és [funkciók](resource-group-template-functions.md) , amelyek használata támogatott.
+
+Egy felhasználói függvény definiálásakor van bizonyos korlátozások vonatkoznak:
+
+* A függvény nem tud hozzáférni a változókat.
+* A függvény nem használható a [függvényre](resource-group-template-functions-resource.md#reference).
+* A függvény paraméterei nem alapértelmezett értékek szerint vannak.
+
+A funkciók sablonfüggvényei való ütközések elkerüléséhez névtér értéket kell megadni. A következő példa bemutatja a tárfiók neve függvény:
+
+```json
+"functions": [
+  {
+    "namespace": "contoso",
+    "members": {
+      "uniqueName": {
+        "parameters": [
+          {
+            "name": "namePrefix",
+            "type": "string"
+          }
+        ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
+  }
+],
+```
+
+A függvény hívásakor:
+
+```json
+"resources": [
+  {
+    "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2016-01-01",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "location": "South Central US",
+    "tags": {},
+    "properties": {}
+  }
+]
+```
+
+## <a name="resources"></a>További források
 Erőforrások területen adja meg az erőforrások telepítése vagy frissítése. Ez a szakasz kérheti le bonyolult, mert ismernie kell a típusok esetében helyez üzembe adja meg a megfelelő értékeket.
 
 ```json
@@ -232,7 +306,7 @@ Emellett korlátozva:
 
 Néhány sablon korlátot azért lépheti túl a beágyazott sablon használatával. További információkért lásd: [kapcsolt sablonok használata az Azure-erőforrások telepítésekor](resource-group-linked-templates.md). A paraméterek, változók vagy kimenetek számának csökkentése érdekében kombinálható egy objektum több értéket. További információkért lásd: [paraméterekként objektumok](resource-manager-objects-as-parameters.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 * A sablonon belül használhatja a functions szolgáltatással kapcsolatos részletekért lásd: [Azure Resource Manager Sablonfüggvényei](resource-group-template-functions.md).
 * Egyesítenie több sablon üzembe helyezése során, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).

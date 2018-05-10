@@ -1,6 +1,6 @@
 ---
 title: A node.js - Azure távoli megfigyeléshez Raspberry Pi kiépítése |} Microsoft Docs
-description: Ismerteti egy málna Pi eszköz csatlakoztatása az Azure IoT Suite előre konfigurált távoli figyelési megoldást Node.js nyelven írt alkalmazás segítségével.
+description: Ismerteti, hogyan málna Pi eszköz csatlakozni a távoli megfigyelési megoldásgyorsító Node.js nyelven írt alkalmazás segítségével.
 services: iot-suite
 suite: iot-suite
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 7f489a6b26edb9a58b21d318785d3804197b33cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a47cc34e6791ae03f4da968e3d44660b47e1214d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>A Pi málna eszköz csatlakozni a távoli felügyeleti előkonfigurált megoldás (Node.js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>A Pi málna eszköz csatlakozni a távoli felügyeleti megoldásgyorsító (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti előkonfigurált megoldás. Ebben az oktatóanyagban akkor az Node.js, amely minimális erőforrás-korlátozásokkal rendelkező környezetek jó választás.
+Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti megoldásgyorsító. Ebben az oktatóanyagban akkor az Node.js, amely minimális erőforrás-korlátozásokkal rendelkező környezetek jó választás.
 
 ### <a name="required-hardware"></a>Szükséges hardver
 

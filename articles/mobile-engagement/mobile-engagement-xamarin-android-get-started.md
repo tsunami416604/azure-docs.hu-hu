@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/16/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4ac6e85a0143fc083c22a92e99503689f463d813
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e8635cb057b579f10575cdaf846af9fa604b7993
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-xamarinandroid-apps"></a>Ismerkedés az Azure Mobile Engagement Xamarin.Android-alkalmazásokkal való használatával
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ Ebben a témakörben elsajátíthatja, hogy miként használható az Azure Mobil
 Ez az oktatóanyag a Mobile Engagementet használó egyszerű küldési forgatókönyvet mutat be. Az oktatóanyagban létrehoz egy üres Xamarin.Android-alkalmazást, amely alapszintű adatokat gyűjt, és leküldéses értesítéseket fogad a Google Cloud Messaging (GCM) használatával.
 
 > [!NOTE]
-> Az Azure Mobile Engagement szolgáltatást 2018 márciusától megszüntetjük, és jelenleg csak meglévő ügyfelek számára érhető el. További információkért lásd: [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> Az Azure Mobile Engagement szolgáltatást 2018 márciusától megszüntetjük, és jelenleg csak meglévő ügyfelek számára érhető el. További információkért lásd: [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/).
 
 Az oktatóanyaghoz az alábbiakra lesz szükség:
 

@@ -1,24 +1,24 @@
 ---
-title: "Szempontok a virtuális gépek Azure-készletben és különbségeket |} Microsoft Docs"
-description: "További tudnivalók a különbségek és szempontokat, az Azure-veremben lévő virtuális gépek használatakor."
+title: Szempontok a virtuális gépek Azure-készletben és különbségeket |} Microsoft Docs
+description: További tudnivalók a különbségek és szempontokat, az Azure-veremben lévő virtuális gépek használatakor.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 05/04/2018
 ms.author: brenduns
-ms.openlocfilehash: 50c0f293ac669ade4e45a5f45b0adf9a7c4b6c36
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8c9fd7d5824e5d315a7dd30e5052fe10802d197e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben szempontjai
 
@@ -28,7 +28,7 @@ Virtuális gépek az igény szerinti, méretezhető számítási erőforrások A
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Lap cheat: virtuális gép különbségek
 
-| Szolgáltatás | Azure (global) | Azure Stack |
+| Szolgáltatás | Azure (globális) | Azure Stack |
 | --- | --- | --- |
 | Virtuálisgép-rendszerképek | Az Azure piactéren lemezképeket hozhat létre virtuális gépet tartalmaz. Tekintse meg a [Azure piactér](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) lap használatával jeleníthetők meg az Azure piactéren elérhető képeket listáját. | Alapértelmezés szerint nincs képeket elérhető a verem Azure piactéren. Az Azure-verem felhő rendszergazdájának kell közzétételére, vagy töltse le a lemezképet a verem Azure piactéren előtt a felhasználók használni tudják őket. |
 | Virtuálisgép-méretek | Azure virtuális gépek méretű széles választékát támogatja. Az elérhető méretek és a lehetőségek kapcsolatos információkért tekintse meg a [Windows virtuális gépek méretét](../../virtual-machines/virtual-machines-windows-sizes.md) és [Linux virtuálisgép-méretek](../../virtual-machines/linux/sizes.md) témaköröket. | Az Azure verem támogatja az Azure-ban rendelkezésre álló virtuálisgép-méretek egy részét. A támogatott méretek listájának megtekintéséhez, tekintse meg a [virtuálisgép-méretek](#virtual-machine-sizes) című szakaszát. |
@@ -61,7 +61,7 @@ A következő táblázat felsorolja a virtuális gépek által támogatott Azure
 |Memóriaoptimalizált|Dv2-sorozat     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Memóriaoptimalizált|DSv2-sorozat-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem és az Azure közötti megegyeznek. A konzisztencia például memória, magok száma és a szám vagy méretének hozható létre az adatlemezek tartalmazza. Az ugyanazon Virtuálisgép-méretet Azure verem teljesítményét azonban egy adott Azure verem környezetben alapul szolgáló jellemzői függ.
+Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem és az Azure közötti megegyeznek. A konzisztencia magok száma és a szám vagy méretének hozható létre az adatlemezek memória mennyiségét magában foglalja. Az ugyanazon Virtuálisgép-méretet Azure verem teljesítményét azonban egy adott Azure verem környezetben alapul szolgáló jellemzői függ.
 
 ## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények
 
@@ -93,6 +93,17 @@ Get-AzureRmResourceProvider | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
 A támogatott erőforrástípusai és API-verziók listáját változhat, ha a felhő üzemeltetője a Azure verem környezet frissíti egy újabb verzióra.
+
+## <a name="windows-activation"></a>Windows-aktiválás
+
+A Windows-termékeket termékkel használati jogosultságok és a Microsoft feltételeinek megfelelően kell használni. Használja az Azure verem [automatikus Virtuálisgép-aktiválás](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) Windows Server virtuális gépek (VM) aktiválása (AVMA). 
+ - Az Azure-verem gazdagépen Windows Server 2016 aktiválja az AVMA kulcsokat, mert minden virtuális gép, futtassa a Windows Server 2012 vagy újabb rendszer automatikusan aktiválja.
+ - Futtassa a Windows Server 2008 R2 automatikusan nincs aktiválva, és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx). 
+
+Microsoft Azure használatával, hogy a KMS-aktiválás Windows virtuális gépek aktiválása. Ha áthelyezi a virtuális gépek Azure-veremből Azure és az esetlegesen fellépő problémák aktiválása, lásd: [hibaelhárítása a Windows Azure virtuális gép aktiválással kapcsolatos problémák](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). További információk találhatók a [hibaelhárítás Windows aktiválási hibák Azure virtuális gépeken](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) Azure támogatási csapatának blogja post.
+
+
+
 
 ## <a name="next-steps"></a>További lépések
 

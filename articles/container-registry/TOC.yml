@@ -17,7 +17,7 @@
   items:
     - name: Azure Container Instances
       href: ../container-instances/container-instances-tutorial-prepare-app.md
-    - name: Azure Container Service (AKS)
+    - name: Azure Kubernetes Service (AKS)
       href: ../aks/tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
@@ -29,7 +29,7 @@
           href: container-registry-tutorial-build-task.md
         - name: 3 – Rendszerkép alapszintű frissítésének létrehozása
           href: container-registry-tutorial-base-image-update.md
-    - name: Georeplikáció (előzetes verzió)
+    - name: Georeplikáció
       items:
         - name: 1 – A tárolóregisztrációs adatbázis előkészítése
           href: container-registry-tutorial-prepare-registry.md
@@ -45,7 +45,7 @@
       href: container-registry-storage.md
     - name: Létrehozás és javítás ACR Builddel
       href: container-registry-build-overview.md
-    - name: Georeplikáció (előzetes verzió)
+    - name: Georeplikáció
       href: container-registry-geo-replication.md
     - name: Ajánlott eljárások a beállításjegyzék használatához
       href: container-registry-best-practices.md

@@ -1,25 +1,25 @@
 ---
-title: "A csomagoló Linux Azure Virtuálisgép-lemezképek létrehozása |} Microsoft Docs"
-description: "Csomagoló használata a Linux virtuális gépek létrehozását az Azure-ban"
+title: A csomagoló Linux Azure Virtuálisgép-lemezképek létrehozása |} Microsoft Docs
+description: Csomagoló használata a Linux virtuális gépek létrehozását az Azure-ban
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 49a3e7f3aab3ae95c6f40b167880bb48d0fc851b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7d7ba6a493cca3dd14829e6527136af6df424c05
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Linux virtuális gép képek létrehozása az Azure-ban a csomagoló segítségével
 Minden virtuális gép (VM) az Azure-ban, amely meghatározza a Linux-disztribúció és az operációs rendszer verziója lemezkép jön létre. Lemezképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactéren lehetővé teszi számos első és harmadik fél rendszerképet leggyakoribb disztribúcióiról, valamint az alkalmazás környezetekben, vagy létrehozhat az igényeinek megfelelően igazított a saját egyéni lemezképek. Ez a cikk részletesen a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
@@ -211,9 +211,11 @@ az vm create \
     --generate-ssh-keys
 ```
 
+Ha létrehozott egy virtuális gépet egy másik erőforráscsoportban található vagy a régió, mint a csomagoló lemezkép, adja meg a lemezkép neve helyett a lemezkép-Azonosítót. Ezt úgy szerezheti be a lemezkép-Azonosítót a [az kép megjelenítése](/cli/azure/image#az-image-show).
+
 A virtuális gép létrehozásához néhány percet vesz igénybe. A virtuális gép létrehozása után vegye figyelembe a `publicIpAddress` megjeleníti azokat az Azure parancssori felület. Ezt a címet a webböngésző segítségével NGINX webhely eléréséhez használt.
 
-A virtuális gép elérni kívánt webes forgalom engedélyezéséhez nyissa meg a port 80 az internetről a [az vm-port megnyitása](/cli/azure/vm#open-port):
+Ahhoz, hogy a webes adatforgalom elérje a virtuális gépét, nyissa meg az internetről a 80-as portot az [az vm open-port](/cli/azure/vm#open-port) paranccsal:
 
 ```azurecli
 az vm open-port \
@@ -223,7 +225,7 @@ az vm open-port \
 ```
 
 ## <a name="test-vm-and-nginx"></a>Virtuális gép és NGINX tesztelése
-Most nyisson meg egy webböngészőt, és írja be `http://publicIpAddress` a böngésző címsorába. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Az alapértelmezett NGINX lap jelenik meg az alábbi példában látható módon:
+Most nyisson meg egy webböngészőt, és írja be a `http://publicIpAddress` címet a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. Az alapértelmezett NGINX lap jelenik meg az alábbi példában látható módon:
 
 ![Alapértelmezett NGINX-webhely](./media/build-image-with-packer/nginx.png) 
 

@@ -8,7 +8,7 @@
       href: iot-services-and-technologies.md
 - name: Megoldások
   items:
-    - name: IoT Suite előre konfigurált megoldások
+    - name: IoT-megoldásgyorsítók
       href: /azure/iot-suite
     - name: IoT-központ
       href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -16,10 +16,10 @@
   items:
     - name: IoT Hub
       href: /azure/iot-hub
-    - name: IoT Hub eszközkiépítési szolgáltatás
+    - name: IoT Hub Device Provisioning Service
       href: /azure/iot-dps
-    - name: Location Based Services
-      href: /azure/location-based-services
+    - name: Azure Maps
+      href: /azure/azure-maps
     - name: Szolgáltatási SDK-k
       href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
     - name: Time Series Insights

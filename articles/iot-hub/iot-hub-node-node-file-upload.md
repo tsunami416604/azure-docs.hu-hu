@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: v-masebo;dobett
-ms.openlocfilehash: 7733aa11dd76eac564c115b10c57a84da5666d38
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b28a02462fe7a5a7f831102b3707fe03f84342ad
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Az eszközről a felhőbe, IoT-központ fájlok feltöltése
 
@@ -36,7 +36,7 @@ A [Ismerkedés az IoT-központ](iot-hub-node-node-getstarted.md) oktatóanyag fu
 * Nagy gyakoriságú lekérdező vibráció adatok
 * Valamilyen előre feldolgozott adatokat.
 
-Ezek a fájlok jellemzően eszközökkel, mint a felhőben feldolgozható [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.md) verem. Ha egy eszközről kell felvidéki fájlok, a biztonsága és megbízhatósága szempontjából az IoT-központ továbbra is használhatja.
+Ezek a fájlok jellemzően eszközökkel, mint a felhőben feldolgozható [Azure Data Factory](../data-factory/introduction.md) vagy a [Hadoop](../hdinsight/index.yml) verem. Ha egy eszközről kell felvidéki fájlok, a biztonsága és megbízhatósága szempontjából az IoT-központ továbbra is használhatja.
 
 Ez az oktatóanyag végén, futtatja a Node.js-konzol két alkalmazásokat:
 
@@ -219,7 +219,7 @@ Ebben az oktatóprogramban megismerte fájlfeltöltéseket eszközökről leegys
 
 * [Programozott módon létrehoz egy IoT-központot][lnk-create-hub]
 * [C SDK bemutatása][lnk-c-sdk]
-* [Azure IoT SDKs][lnk-sdks]
+* [Az Azure IoT SDK-k][lnk-sdks]
 
 <!-- Links -->
 [Azure IoT fejlesztői központ]: http://azure.microsoft.com/develop/iot

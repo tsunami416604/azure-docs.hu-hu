@@ -1,6 +1,6 @@
 ---
-title: Az az Azure Tárolószolgáltatásban Kubernetes Jenkins folyamatos üzembe helyezés
-description: A folyamatos üzembe helyezés folyamat telepítésének és frissítésének a tárolóalapú alkalmazást az Azure Tárolószolgáltatásban Kubernetes Jenkins automatizálása
+title: Az Azure Kubernetes szolgáltatásban Kubernetes Jenkins folyamatos üzembe helyezés
+description: A folyamatos üzembe helyezés folyamat telepítésének és frissítésének a tárolóalapú alkalmazást az Azure Kubernetes szolgáltatásban Kubernetes Jenkins automatizálása
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7ebe7a88fcb0a0785b72c512e64a2d9aeb5fc506
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: efdb89c5f4c6bdb9b007b7c0020cbdb8f6034eed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Azure Tárolószolgáltatás és Jenkins folyamatos üzembe helyezés
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Folyamatos üzembe helyezés a Jenkins és Azure Kubernetes Service szolgáltatással
 
-Ez a dokumentum bemutatja, hogyan állíthat be egy alapszintű folyamatos üzembe helyezés munkafolyamat Jenkins és az Azure-tároló szolgáltatás (AKS) fürt között.
+Ez a dokumentum bemutatja, hogyan állíthat be egy alapszintű folyamatos üzembe helyezés munkafolyamat Jenkins és az Azure Kubernetes szolgáltatás (AKS) fürt között.
 
 A példa-munkafolyamat a következő lépésekből áll:
 
@@ -33,7 +33,7 @@ A példa-munkafolyamat a következő lépésekből áll:
 Ebben a cikkben szereplő lépések végrehajtásához a következőkre van szüksége.
 
 - Alapvető ismeretekkel Kubernetes, Git, CI/CD és Azure tároló beállításjegyzék (ACR).
-- Egy [Azure tároló szolgáltatás (AKS) fürt] [ aks-quickstart] és [AKS hitelesítő adatok a konfigurált] [ aks-credentials] a fejlesztői rendszeren.
+- Egy [Azure Kubernetes szolgáltatás (AKS) fürt] [ aks-quickstart] és [AKS hitelesítő adatok a konfigurált] [ aks-credentials] a fejlesztői rendszeren.
 - Egy [Azure tároló beállításjegyzék (ACR) beállításjegyzékbeli][acr-quickstart], a ACR bejelentkezési kiszolgáló nevét, és [ACR hitelesítő adatok] [ acr-authentication] leküldéses és lekéréses hozzáféréssel.
 - Az Azure CLI-t a fejlesztői rendszeren telepítve.
 - A docker a fejlesztői rendszeren telepítve.

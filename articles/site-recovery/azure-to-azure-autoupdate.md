@@ -8,15 +8,15 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: rajanaki
-ms.openlocfilehash: 45f2e2927f699769bb385038c04d4dd23e075a9a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d9b653e4766746d2142a7e1040d6d60ec2aacc44
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Azure-az Azure-bA replikációs a mobilitási szolgáltatás bővítmény automatikus frissítése
 
-Az Azure Site Recovery rendelkezik egy havi kiadás ütemben történik, ha az a meglévő funkciók fejlesztéseivel, illetve újakat hozzáadásakor és az esetleges ismert probléma elhárítása. Ez azt jelenti, hogy maradjon naprakész lesz a szolgáltatás, meg kell terveznie a javítások telepítését havi ütemben történik. A frissítés társított over head elkerülése érdekében felhasználók választhatja kezelheti a frissítéseket az összetevők helyreállítás engedélyezéséhez. A részletes a [architektúra hivatkozás](azure-to-azure-architecture.md) Azure az Azure-bA vész-helyreállítási mobilitási szolgáltatás telepíti az összes Azure virtuális gépeken, amelynek a replikáció engedélyezve van egy Azure virtuális gépek replikálásához közben másik régióhoz. Ez a dokumentum a következő adatokat:
+Az Azure Site Recovery rendelkezik egy havi kiadás ütemben történik, ha az a meglévő funkciók fejlesztéseivel, illetve újakat hozzáadásakor és az esetleges ismert probléma elhárítása. Ez azt jelenti, hogy maradjon naprakész lesz a szolgáltatás, kell végrehajtania a javítások havi telepítését. A frissítés társított over head elkerülése érdekében felhasználók választhatja kezelheti a frissítéseket az összetevők helyreállítás engedélyezéséhez. A részletes a [architektúra hivatkozás](azure-to-azure-architecture.md) Azure az Azure-bA vész-helyreállítási mobilitási szolgáltatás telepíti az összes Azure virtuális gépeken, amelynek a replikáció engedélyezve van egy Azure virtuális gépek replikálásához közben másik régióhoz. Amennyiben az automatikus frissítés engedélyezéséhez a mobilitási szolgáltatás bővítmény frissül minden új kiadásban. Ez a dokumentum a következő adatokat:
 
 - Hogyan működik az automatikus frissítés?
 - Az automatikus frissítések engedélyezése
@@ -25,6 +25,9 @@ Az Azure Site Recovery rendelkezik egy havi kiadás ütemben történik, ha az a
 ## <a name="how-does-automatic-update-work"></a>Hogyan működik az automatikus frissítés
 
 Ha engedélyezi a Site Recovery kezelheti a frissítéseket, (által használt Azure-szolgáltatások) globális runbook automation-fiók, és a tárolónak ugyanahhoz az előfizetéshez létrehozott keresztül van telepítve. Egy automation-fiók egy adott tárolóban szolgál. A runbook ellenőrzi az egyes virtuális gépek az adott tárolóban, amelynek az automatikus frissítések ON vannak kapcsolva, és kezdeményezi a mobilitási szolgáltatás bővítmény frissítését, ha egy újabb verziója érhető el. A runbook recurrs naponta 12:00 órakor a replikált virtuális gép földrajzi időzónája szerint alapértelmezés szerinti ütemezését. A runbook-ütemezés is módosíthatja az automation-fiók használatával a felhasználó, ha szükséges. 
+
+> [!NOTE]
+> Az automatikus frissítések engedélyezése nincs szükség az Azure virtuális gépek újraindítását, és nincs hatással a folyamatban lévő replikáció.
 
 ## <a name="enable-automatic-updates"></a>Az automatikus frissítések engedélyezése
 

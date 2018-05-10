@@ -9,11 +9,11 @@ ms.custom: load & move data
 ms.date: 04/01/2018
 ms.author: carlrab
 ms.topic: article
-ms.openlocfilehash: 7653f0953241fa0b4a1780075641fc3fe5570a23
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 30e89ea940b25e8db4a1203e966000981c47abc9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL-adatbázis BACPAC fájlba exportálása
 
@@ -97,3 +97,4 @@ $exportStatus
 * SQL Server-adatbázishoz egy BACPAC importálásával kapcsolatos további tudnivalókért lásd: [egy BACPCAC importálása az SQL Server-adatbázishoz](https://msdn.microsoft.com/library/hh710052.aspx).
 * Című témakörben olvashat a BACPAC exportálása egy SQL Server-adatbázist, [egy adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) és [telepítse át az első adatbázist](sql-database-migrate-your-sql-server-database.md).
 * Ha exportálja az SQL Server, a prelude áttelepítése az Azure SQL Database, lásd: [egy SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
+* Megtudhatja, hogyan kezelheti és kulcsok tárolási és közös hozzáférésű signitures biztonságosan, lásd: [Azure Storage biztonsági útmutató](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

@@ -8,12 +8,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 12/08/2016
-ms.openlocfilehash: b622cffad66dc5d09df2d737bf2c1d30543a4252
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 53b20c9db7efe1f8876eec7c0167dc151aa38786
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Adatfeltöltés az Azure Search szolgáltatásba a REST API használatával
 > [!div class="op_single_selector"]
@@ -60,9 +60,9 @@ A „value” tömbben található minden JSON-objektum egy-egy indexelendő dok
 Most, hogy összegyűjtötte az indexelési műveletekhez szükséges mezők értékeit, készen áll a tulajdonképpeni HTTP-kérés és a JSON-kérés törzsének létrehozására az adatok importálásához.
 
 #### <a name="request-and-request-headers"></a>Kérés és kérésfejlécek
-Az URL-címben meg kell majd adnia a szolgáltatás nevét, az index nevét (ami ebben az esetben „hotels”), valamint a megfelelő API-verziót (a jelen dokumentum kiadásakor érvényes API-verzió: `2016-09-01`). Meg kell határoznia a `Content-Type` és `api-key` kérésfejléceket is. Az utóbbi esetében használja a szolgáltatás rendszergazdai kulcsainak egyikét.
+Az URL-címben meg kell majd adnia a szolgáltatás nevét, az index nevét (ami ebben az esetben „hotels”), valamint a megfelelő API-verziót (a jelen dokumentum kiadásakor érvényes API-verzió: `2017-11-11`). Meg kell határoznia a `Content-Type` és `api-key` kérésfejléceket is. Az utóbbi esetében használja a szolgáltatás rendszergazdai kulcsainak egyikét.
 
-    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
+    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

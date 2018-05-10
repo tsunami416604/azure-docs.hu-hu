@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: fcc77104103cea91f5eecb972e1d6e872c933015
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a724057981b5b389011ffc4c2fc93994c2b8be9e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Az Azure Search használatával az indexelők Cosmos DB csatlakozás
 
@@ -271,7 +271,7 @@ Ha egy egyéni lekérdezést használ, győződjön meg arról, hogy a `_ts` tul
 
 <a name="IncrementalProgress"></a>
 ### <a name="incremental-progress-and-custom-queries"></a>Növekményes folyamatát és egyéni lekérdezések
-Növekményes folyamat során indexelő biztosítja, hogy ha indexelő végrehajtása megszakad átmeneti hibák vagy a végrehajtási időt, az indexelő is onnan folytathatja az adatgyűjtést, ahol abbahagyta következő futásakor, nem muszáj indexelik újra a teljes gyűjteményt a teljesen. Ez akkor különösen fontosak akkor, ha nagy gyűjteményekre indexelő. 
+Növekményes folyamat során indexelő biztosítja, hogy átmeneti hibák vagy végrehajtási időkorlátot indexelő végrehajtása megszakad, ha az indexelő is onnan folytathatja az adatgyűjtést, ahol abbahagyta következő futásakor, nem muszáj a teljes gyűjteményt a teljesen újraindexelése. Ez akkor különösen fontosak akkor, ha nagy gyűjteményekre indexelő. 
 
 Engedélyezi a növekményes folyamatban van, egy egyéni lekérdezés használata esetén, győződjön meg arról, hogy a lekérdezés rendelések az eredményeket a `_ts` oszlop. Ez lehetővé teszi, hogy rendszeres ellenőrzés felé, amely az Azure Search használatával biztosítja a növekményes folyamatban hibák esetén.   
 

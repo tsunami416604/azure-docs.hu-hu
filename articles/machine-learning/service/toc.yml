@@ -4,17 +4,17 @@
   expanded: true
   items:
     - name: Tudnivalók az Azure Machine Learningről
-      href: ../desktop-workbench/overview-what-is-azure-ml.md
+      href: overview-what-is-azure-ml.md
     - name: A modellkezelés áttekintése
       href: ../desktop-workbench/model-management-overview.md
     - name: Egyéb Machine Learning-termékek
-      href: ../desktop-workbench/overview-more-machine-learning.md
+      href: overview-more-machine-learning.md
     - name: Újdonságok
       href: ../desktop-workbench/azure-machine-learning-release-notes.md
 - name: Gyors útmutatók
   items:
     - name: Telepítés és indítás
-      href: ../desktop-workbench/quickstart-installation.md
+      href: quickstart-installation.md
 - name: Oktatóanyagok
   items:
     - name: '1: Adatok előkészítése'
@@ -29,6 +29,8 @@
   items:
     - name: Fő fogalmak
       href: ../desktop-workbench/overview-general-concepts.md
+    - name: FPGA-gyorsítások
+      href: concept-accelerate-with-fpgas.md
 - name: Útmutatók
   items:
     - name: Leggyakoribb parancssori felületi feladatok
@@ -92,8 +94,10 @@
           href: ../desktop-workbench/how-to-read-write-files.md
         - name: MMLSpark könyvtár használata
           href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: Modellek üzembe helyezése
+    - name: Modellek üzembe helyezése és felhasználása
       items:
+        - name: Modellek üzembe helyezése FPGA-kban
+          href: how-to-deploy-fpga-web-service.md
         - name: Modellkezelés beállítása
           href: ../desktop-workbench/deployment-setup-configuration.md
         - name: Fürtök és szolgáltatások méretezése
@@ -142,6 +146,31 @@
           href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
 - name: Referencia
   items:
+    - name: Python-csomagok
+      href: reference-python-package-overview.md
+      items:
+        - name: Számítógépes látástechnológia
+          items:
+            - name: Csomagok áttekintése és telepítése
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision'
+            - name: Képbesorolási modellek létrehozása és üzembe helyezése
+              href: how-to-build-deploy-image-classification-models.md
+            - name: Modellek pontossága
+              href: how-to-improve-accuracy-for-computer-vision-models.md
+        - name: Előrejelzések
+          items:
+            - name: Áttekintés és telepítés
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview'
+            - name: Előrejelzési modellek létrehozása és üzembe helyezése
+              href: how-to-build-deploy-forecast-models.md
+        - name: FPGA-gyorsítás
+          href: reference-fpga-package-overview.md
+        - name: Szövegelemzés
+          items:
+            - name: Áttekintés és telepítés
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics'
+            - name: Szövegbesorolási modellek létrehozása és üzembe helyezése
+              href: how-to-build-deploy-text-classification-models.md
     - name: Adatok előkészítése
       items:
         - name: Python-bővítmények adatok előkészítéséhez
@@ -191,13 +220,13 @@
     - name: Gyakori kérdések
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Problémák és hibaelhárítás
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
+      href: known-issues-and-troubleshooting-guide.md
     - name: Támogatás és betanítás
-      href: ../desktop-workbench/support-for-aml-services.md
+      href: support-for-aml-services.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás
-      href: ../desktop-workbench/aml-pricing.md
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Csoportos adatelemzési folyamat

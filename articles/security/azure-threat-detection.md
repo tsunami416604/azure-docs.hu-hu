@@ -1,12 +1,12 @@
 ---
-title: "Azure speciális Fenyegetésészlelés |} Microsoft Docs"
-description: "Ismerje meg a azonosító adatok védelmét és képességeit."
+title: Azure speciális Fenyegetésészlelés |} Microsoft Docs
+description: Ismerje meg a azonosító adatok védelmét és képességeit.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d2fab26d8ff9f006cfed82685a738b791d0b0624
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-advanced-threat-detection"></a>Az Azure fejlett fenyegetések észlelése
 ## <a name="introduction"></a>Bevezetés
@@ -56,7 +56,7 @@ Ez a dokumentum elsősorban az Azure platformon és -vezérlők ügyfélkapcsola
 
 [Az Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) szolgáltatása a [Azure AD Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) kiadása, amely a kockázati eseményekről és a szervezet identitásait érintő lehetséges biztonsági rések áttekintést nyújt. Microsoft rendelkezik lett biztonságossá tétele a felhőalapú identitás egy évtizedben keresztül, és az Azure AD Identity Protection Microsoft van ezek azonos védelmi rendszerek elérhetővé tételére vállalati ügyfelek. Azonosító adatok védelmét a meglévő Azure AD anomáliadetektálási észlelési keresztül elérhető szolgáltatásait használja [az Azure AD rendellenes Tevékenységjelentések](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports), és vezet be az új kockázat típusait, amely valós idejű rendellenességek észlelését.
 
-Azonosító adatok védelmét adaptív gépi tanulási algoritmusok és heurisztikus használja a rendellenességek észlelését, és eseményeket, amelyek azt jelzik, hogy identitás feltörték kockázatát. Ezeket az adatokat használva Identity Protection állít elő, jelentéseket és riasztásokat, amelyek lehetővé teszik a kockázati eseményekről vizsgálata, és tegye meg megfelelő szervizelési vagy megoldás művelet.
+Az Identity Protection adaptív gépi tanulási algoritmusok és heurisztika segítségével észleli a rendellenességeket és a kockázati eseményeket, amelyek azt jelezhetik, hogy valamely identitás biztonsága sérült. Ezeket az adatokat használva Identity Protection állít elő, jelentéseket és riasztásokat, amelyek lehetővé teszik a kockázati eseményekről vizsgálata, és tegye meg megfelelő szervizelési vagy megoldás művelet.
 
 De Azure Active Directory Identity Protection több mint egy figyelési és jelentéskészítési eszköz. Identity Protection kockázati események alapján számítja ki minden felhasználó, amely lehetővé teszi, kockázati-alapú házirendek automatikusan védő a szervezete egy felhasználó kockázati szintjét.
 
@@ -88,7 +88,7 @@ Példák néhány módot, amelyek segítségével Azure Identity Protection a fi
 
 A [az Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure),
 
-![Az Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
+![Azure AD Privileged Identity Management](./media/azure-threat-detection/azure-threat-detection-fig2.png)
 
 kezelése, szabályozása, és figyelje a hozzáférést a szervezeten belül. Ebbe beletartozik az Azure AD és más online Microsoft-szolgáltatások, például az Office 365 vagy a Microsoft Intune erőforrásaihoz való hozzáférés.
 
@@ -363,12 +363,12 @@ Eszközöket, amelyek segítenek az árnyékinformatika informatikai kockázatfe
    <td>A Cloud App Security rendelkező informatikai árnyékinformatika. Hogy lássák felderíti az alkalmazások, tevékenységekhez, felhasználók, adatokat és fájlokat a felhőalapú környezetben. A felhőhöz csatlakoztatott külső alkalmazások felderítésére.</td>
  </tr>
  <tr>
-   <td>Vizsgálja meg</td>
+   <td>Vizsgálat</td>
    <td>Vizsgálja meg a felhőalkalmazások eszközökkel felhő Törvényszéki részletesen a kockázatos alkalmazásokat, egyes felhasználók és a hálózati fájlokat. Keresse meg a mintákat a felhőből gyűjtött adatok. A felhőt figyelő jelentéseket készíthetnek.</td>
 
  </tr>
  <tr>
-   <td>Vezérlő</td>
+   <td>Vezérlés</td>
    <td>A kockázatnak a mérséklése úgy, hogy házirendek és riasztások segítségével teljes mértékben hálózati felhőforgalom felett. Biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit a Cloud App Security.</td>
 
  </tr>
@@ -378,7 +378,7 @@ Eszközöket, amelyek segítenek az árnyékinformatika informatikai kockázatfe
 
  </tr>
  <tr>
-   <td>Vezérlő</td>
+   <td>Vezérlés</td>
    <td>A kockázatnak a mérséklése úgy, hogy házirendek és riasztások segítségével teljes mértékben hálózati felhőforgalom felett. Biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit a Cloud App Security.</td>
 
  </tr>
@@ -421,7 +421,7 @@ Az alábbiakban az Azure piactéren elérhető webalkalmazás tűzfalak példát
 
 [Webalkalmazási tűzfal barracuda, Brocade virtuális webalkalmazási tűzfal (Brocade vWAF), Imperva SecureSphere & ThreatSTOP IP a tűzfalon.](https://azure.microsoft.com/marketplace/partners/brocade_communications/brocade-virtual-web-application-firewall-templatevtmcluster/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Security Center észlelési képességei](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities)
 

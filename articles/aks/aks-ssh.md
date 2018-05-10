@@ -1,6 +1,6 @@
 ---
-title: SSH-ból fürtcsomópontok Azure tároló szolgáltatás (AKS)
-description: Az SSH-kapcsolat létrehozása az Azure-tároló szolgáltatás (AKS) fürt a csomópontok
+title: SSH-ból fürtcsomópontok Azure Kubernetes szolgáltatás (AKS)
+description: Az SSH-kapcsolat létrehozása az Azure Kubernetes szolgáltatás (AKS) fürt a csomópontok
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: c2b77e558db0e323370c24b87a75357235677f7e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>SSH-ból fürtcsomópontok Azure tároló szolgáltatás (AKS)
+# <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>SSH-ból fürtcsomópontok Azure Kubernetes szolgáltatás (AKS)
 
-Alkalmanként szükség lehet egy Azure tároló szolgáltatás (AKS) csomópont karbantartási, naplógyűjtést vagy egyéb hibaelhárítási műveletek eléréséhez. Azure-tároló szolgáltatás (AKS) csomópontok nem érhetők el az internethez. Az jelen dokumentumban szereplő lépések segítségével hozzon létre egy SSH-kapcsolat egy AKS csomóponttal.
+Alkalmanként szükség lehet egy Azure Kubernetes szolgáltatás (AKS) csomópont karbantartási, naplógyűjtést vagy egyéb hibaelhárítási műveletek eléréséhez. Az Azure Kubernetes szolgáltatás (AKS) csomópontok nem érhetők el az internethez. Az jelen dokumentumban szereplő lépések segítségével hozzon létre egy SSH-kapcsolat egy AKS csomóponttal.
 
 ## <a name="get-aks-node-address"></a>AKS címe beolvasása
 

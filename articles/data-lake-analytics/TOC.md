@@ -13,12 +13,14 @@
 
 ## A Data Lake Analytics kezelése
 ### [Azure Portal](data-lake-analytics-manage-use-portal.md)
-### [Azure CLI](data-lake-analytics-manage-use-cli.md)
-### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
-### [Python SDK](data-lake-analytics-manage-use-python-sdk.md)
-### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
-### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### Parancssor
+#### [Azure CLI](data-lake-analytics-manage-use-cli.md)
+#### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
+### SDK-k
+#### [.NET](data-lake-analytics-manage-use-dotnet-sdk.md)
+#### [Python](data-lake-analytics-manage-use-python-sdk.md)
+#### [Java](data-lake-analytics-manage-use-java-sdk.md)
+#### [Node.js](data-lake-analytics-manage-use-nodejs.md)
 ### [Házirendek](data-lake-analytics-policies.md)
 ### [Diagnosztikai naplók elérése](data-lake-analytics-diagnostic-logs.md)
 ### [A kvótakorlátok beállítása](data-lake-analytics-quota-limits.md)
@@ -36,6 +38,7 @@
 #### [Programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
 
 ### Visual Studio
+#### [Telepítés](data-lake-analytics-data-lake-tools-install.md)
 #### [Feladatok tallózása és megtekintése](data-lake-analytics-data-lake-tools-view-jobs.md)
 #### [Egyéni C#-kód hibakeresése](data-lake-analytics-debug-u-sql-jobs.md)
 #### [Ismétlődő feladatok hibaelhárítása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

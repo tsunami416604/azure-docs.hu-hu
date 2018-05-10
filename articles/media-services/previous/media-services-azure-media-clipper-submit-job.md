@@ -1,8 +1,8 @@
 ---
-title: "Azure Media Webmontázskészítő Kivágás feladatok elküldéséhez |} Microsoft Docs"
-description: "Azure Media Webmontázskészítő Kivágás-feladatok elküldésekor lépései"
+title: Azure Media Webmontázskészítő Kivágás feladatok elküldéséhez |} Microsoft Docs
+description: Azure Media Webmontázskészítő Kivágás-feladatok elküldésekor lépései
 services: media-services
-keywords: "Klip; subclip; kódolás; adathordozó"
+keywords: Klip; subclip; kódolás; adathordozó
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Az Azure Media Webmontázskészítő Kivágás feladatok elküldéséhez
 Az Azure Media Webmontázskészítő szükséges egy **submitSubclipCallback** Kivágás feladat elküldése kezelése végrehajtandó metódus. Ez a függvény megkülönbözteti a Webmontázskészítő kimeneti webszolgáltatásnak HTTP POST megvalósításához. Ez a webszolgáltatás, ahol is elküldhetik a kódolási feladat. A Webmontázskészítő eredménye vagy a Media Encoder Standard megjelenített feladatok készletet, vagy a REST API forgalma dinamikus jegyzék szűrő hívások kódolást. A csatlakoztatott modell szükség, mert a media services-fiók hitelesítő adatait az ügyfél böngészője nem biztonságosak.

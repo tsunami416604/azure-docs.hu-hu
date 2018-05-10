@@ -1,12 +1,12 @@
 ---
-title: "Azure-adatbázis biztonsági ellenőrzőlista |} Microsoft Docs"
-description: "Ez a cikk ellenőrzőlista biztosít az Azure-adatbázis biztonsági."
+title: Azure-adatbázis biztonsági ellenőrzőlista |} Microsoft Docs
+description: Ez a cikk ellenőrzőlista biztosít az Azure-adatbázis biztonsági.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 37523506369ece144183dba76feb8b23b6c1acb2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7712196caefeea8a62045d432d762fbd16f42011
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-database-security-checklist"></a>Azure-adatbázis biztonsági ellenőrzőlista
 
@@ -32,7 +32,7 @@ Ezek a következők:
 -   Az adatbázis biztonságos kapcsolati karakterláncok használatával biztonságos kapcsolatot
 -   Hozzáférés-kezelés
 -   Adattitkosítás
--   SQL Database auditing
+-   Az SQL Database naplózási funkciója
 -   SQL-adatbázis fenyegetések észlelése
 
 ## <a name="introduction"></a>Bevezetés
@@ -57,8 +57,8 @@ Azt javasoljuk, hogy olvassa el a [Azure adatbázis ajánlott biztonsági eljár
 ## <a name="conclusion"></a>Összegzés
 Azure-adatbázis egy robusztus adatbázis platform, amely sok szervezeti és szabályozási megfelelőségi követelményeknek funkciókat teljes tartománnyal. Adatok egyszerűen megvédheti a adatokhoz való fizikai hozzáférés vezérlése, és számos lehetőséget használ az adatok biztonsági a fájl-, oszlop-vagy sorszintű átlátható adattitkosítási, cellaszintű titkosítását alkalmazza vagy sorszintű biztonság. Mindig titkosított is lehetővé teszi a titkosított adatok műveleteket leegyszerűsítésével alkalmazás frissítések. Viszont naplófájlokat SQL adatbázis-tevékenység hozzáférést biztosít a szükséges információkat, így tudja, hogyan és mikor adatokhoz.
 
-## <a name="next-steps"></a>Következő lépések
-Az adatbázis rosszindulatú felhasználók vagy néhány egyszerű lépésben jogosulatlan hozzáférés elleni védelme is javítható. Ebben az oktatóanyagban elsajátíthatja, hogy:
+## <a name="next-steps"></a>További lépések
+Mindössze néhány lépés végrehajtásával fokozhatja az adatbázis védelmét a rosszindulatú felhasználókkal és a jogosulatlan hozzáféréssel szemben. Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 - Állítson be [tűzfal-szabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) adatbázis és a kiszolgálón.
 - Az adatok védelméhez [titkosítási](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption).

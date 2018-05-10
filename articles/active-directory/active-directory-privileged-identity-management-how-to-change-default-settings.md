@@ -1,25 +1,23 @@
 ---
-title: "Aktiválási beállítások kezelése |} Microsoft Docs"
-description: "Útmutató az Azure Active Directory Privileged Identity Management bővítmény kiemelt identitásokat alapértelmezett beállításait."
+title: Aktiválási beállítások kezelése |} Microsoft Docs
+description: Útmutató az Azure Active Directory Privileged Identity Management bővítmény kiemelt identitásokat alapértelmezett beállításait.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: f6cbcb6a-8a89-4077-afd8-06c94a64f4aa
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 2cf361dc879915c316e7ee907b5c70b5907459c2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 972fd1e322e578516073307d01548132473bc52c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-manage-role-activation-settings-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management szerepkör-aktiválási beállításainak kezelése
 A kiemelt szerepkörű rendszergazda testre szabhatja az Azure AD Privileged Identity Management (PIM) a szervezetek, beleértve az élményét, a felhasználó, aki az aktiválás a megfelelő szerepkör-hozzárendelés módosítása.
@@ -44,21 +42,21 @@ A beállítások lapon az egyes szerepkörökhöz számos a konfigurálható be�
   
   * Alkalmazás-rendszergazda
   * Alkalmazás-Proxy kiszolgáló-rendszergazda
-  * Számlázási rendszergazda  
-  * Megfelelőségi rendszergazda  
+  * Számlázási adminisztrátor  
+  * Szabályozási ügyintéző  
   * CRM szolgáltatás-rendszergazda
   * Ügyfél kulcstároló hozzáférési jóváhagyó
   * Directory írója  
   * Exchange-rendszergazda  
   * Globális rendszergazda
-  * Intune szolgáltatás-rendszergazda
+  * Intune szolgáltatás rendszergazdája
   * Postaláda-rendszergazda  
-  * Partner tier1 támogatása  
-  * Partner tier2 támogatása  
+  * Partnerek 1. rétegbeli támogatása  
+  * Partnerek 2. rétegbeli támogatása  
   * Kiemelt szerepkörű rendszergazda   
   * Biztonsági rendszergazda  
   * SharePoint-rendszergazda  
-  * Skype vállalati rendszergazda  
+  * Skype Vállalati verzió-rendszergazda  
   * Felhasználói fiók rendszergazdája  
 
 További információ a többtényezős hitelesítés használata a PIM: [szükséges többtényezős hitelesítés hogyan](active-directory-privileged-identity-management-how-to-require-mfa.md).
@@ -66,6 +64,6 @@ További információ a többtényezős hitelesítés használata a PIM: [szüks
 <!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

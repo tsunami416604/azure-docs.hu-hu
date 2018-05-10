@@ -1,8 +1,8 @@
 ---
-title: "Azure Media Webmontázskészítő honosítási konfigurálása |} Microsoft Docs"
-description: "Tudnivalók az Azure Media Webmontázskészítő támogatott nyelvek és honosítási támogatása"
+title: Azure Media Webmontázskészítő honosítási konfigurálása |} Microsoft Docs
+description: Tudnivalók az Azure Media Webmontázskészítő támogatott nyelvek és honosítási támogatása
 services: media-services
-keywords: "Klip; subclip; kódolás; adathordozó"
+keywords: Klip; subclip; kódolás; adathordozó
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: dd0fc87741befd92cc41d0129fafcbc64db7ec9e
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="configure-localization"></a>Honosítási konfigurálása
 Az Azure Media Webmontázskészítő 18 nyelveken érhető el. A widget nyelvi beállításához meg kell adnia a `language` paraméter inicializálása során. A kívánt nyelvet kód karakterláncban át az alábbi listából:
@@ -137,7 +137,7 @@ Például az alábbi példa meghatározza, hogy az angol nyelvű honosított kar
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő lépések Azure Media Webmontázskészítő konfigurálásához:
 - [Az Azure Media Webmontázskészítő eszközök betöltése](media-services-azure-media-clipper-load-assets.md)
 - [Egyéni billentyűparancsok konfigurálása](media-services-azure-media-clipper-keyboard-shortcuts.md)
