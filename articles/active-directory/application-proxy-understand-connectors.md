@@ -3,23 +3,23 @@ title: Az Azure AD-alkalmazásproxy összekötők megértése |} Microsoft Docs
 description: Alapvető tudnivalók az Azure AD-alkalmazásproxy összekötők ismerteti.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
-ms.author: billmath
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 14e2b82b5c32e1b36bf730b7b834c9b8ad124629
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy összekötők ismertetése
 
@@ -72,7 +72,7 @@ A bérlők számára a több összekötők az automatikus frissítések célkén
 
 Összekötők lesz automatikusan terheléselosztásához összekötő csoporton belül, amíg fontos is győződjön meg arról, hogy elegendő kapacitással a várt forgalom mennyisége kezelésére összekötők közötti tervezett. Általában a több felhasználó van, a nagyobb gép szüksége lesz. Az alábbiakban egy táblázatot, amely megadja a kötet vázlat különböző gépek kezelheti. Ne feledje, az összes alapul a várt tranzakciók másodpercenkénti második (TP-k) helyett felhasználó óta használati minták eltérőek, ezért nem használható, terhelés előrejelzése céljából.  Ne feledje, hogy néhány különbség a visszajelzések és a háttérkiszolgáló alkalmazás válaszideje mérete alapján lesz - válasz nagyobb méretek és a lassabb válaszidejét eredményezi egy alacsonyabb maximális TP-k.
 
-|Processzormagok|RAM|Késés (MS) várt-P99|Max TPS|
+|Processzormagok|RAM|Késés (MS) várt-P99|Maximális TP-k|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
@@ -157,7 +157,7 @@ A naplók megtekintéséhez nyissa meg az eseménynaplót, nyissa meg a **nézet
 
 A szolgáltatás a szolgáltatások ablakban ellenőrizheti. Az összekötő tartalmazza a két központi Windows-szolgáltatások: a tényleges összekötő, és megtekinti a. Mindkettő folyamatosan kell futtatni.
 
- ![AzureAD Services Local](./media/application-proxy-understand-connectors/aad-connector-services.png)
+ ![AzureAD szolgáltatások helyi](./media/application-proxy-understand-connectors/aad-connector-services.png)
 
 ## <a name="next-steps"></a>További lépések
 

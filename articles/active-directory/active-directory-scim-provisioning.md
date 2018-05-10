@@ -6,8 +6,8 @@ documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
 editor: ''
-ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 19a1ae7ae7acc6fe09a529dd174363735343027e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A tartományok közötti Identity Management rendszert használ automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
 
@@ -35,7 +35,7 @@ Ez a funkció használható együtt a "állapotba hozása a saját alkalmazás" 
 Számos két alkalmazási helyzetei SCIM használata az Azure Active Directoryban.
 
 * **Felhasználók és csoportok SCIM támogató alkalmazások kiépítés** alkalmazásokat, amelyek támogatják az SCIM 2.0 és OAuth tulajdonosi jogkivonatok használnak, a hitelesítés az Azure AD konfigurálása nélkül működik.
-* **Saját kiépítési megoldás az alkalmazások, amelyek támogatják a többi API-alapú üzembe helyezés** nem SCIM alkalmazások, létrehozhat egy SCIM végpont lefordítani az Azure AD SCIM végpont és az alkalmazás támogatja a felhasználó API-k között kiépítés. Is segítséget a SCIM végpont, nyújtunk a közös nyelvi infrastruktúra (CLI) tárak, amelyek bemutatják a adjon meg egy SCIM végpont és SCIM üzenetek fordítása mintakódok együtt.  
+* **Az alkalmazások saját kiépítési megoldás létrehozása, amely támogatja a más API-alapú üzembe helyezés** nem SCIM alkalmazások, létrehozhat egy SCIM végpont lefordítani az Azure AD SCIM végpont és az alkalmazás támogatja-e az API-k között a felhasználók átadása. Segítséget a SCIM végpont, nincsenek közös nyelvi infrastruktúra (CLI) tárak, amelyek bemutatják a adjon meg egy SCIM végpont és SCIM üzenetek fordítása mintakódok együtt.  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Felhasználók és csoportok SCIM támogató alkalmazások kiépítése
 Az Azure AD beállítható úgy, hogy automatikusan a hozzárendelt rendelkezés felhasználókat és csoportokat, amelyek megvalósítják az alkalmazások egy [tartományok közötti identitáskezeléshez 2 (SCIM) rendszer](https://tools.ietf.org/html/draft-ietf-scim-api-19) webes szolgáltatás, és fogadja el az OAuth tulajdonosi jogkivonatokat a hitelesítéshez. Belül a SCIM 2.0-s specifikációnak alkalmazások követelménynek kell megfelelnie:
@@ -56,7 +56,7 @@ Ez a cikk a leírt SCIM profil támogató alkalmazások Azure Active Directory, 
 **Alkalmazást, amely támogatja a SCIM:**
 
 1. Jelentkezzen be [az Azure-portálon](https://portal.azure.com). 
-2. Keresse meg a ** Azure Active Directory > Vállalati alkalmazások, és válassza ki **új alkalmazás > minden > nem-gyűjtemény alkalmazás**.
+2. Keresse meg a **Azure Active Directory > Vállalati alkalmazások**, és válassza ki **új alkalmazás > minden > nem-gyűjtemény alkalmazás**.
 3. Adja meg az alkalmazás nevét, és kattintson a **Hozzáadás** ikonra az alkalmazás objektum létrehozásához.
     
   ![][1]
@@ -131,12 +131,12 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
    FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
   ````
 8. A Windows **Windows-beállítások > hálózat és Internet beállítások**, jelölje be a **Windows tűzfal > Speciális beállítások**, és hozzon létre egy **bejövő forgalomra vonatkozó szabály** , amely lehetővé teszi, hogy a befelé irányuló port 9000.
-9. Ha a Windows-számítógép útválasztó mögött, az útválasztó kell megadni a portot, amely kommunikál az internettel 9000, és a port 9000 a Windows-számítógép közötti hálózati hozzáférési fordítási végrehajtásához. Ez azért szükséges, az Azure AD-be tudják elérni az ehhez a végponthoz, a felhőben.
+9. Ha a Windows-számítógép útválasztó mögött, az útválasztó kell megadni a portot, amely kommunikál az internettel 9000, és a port 9000 a Windows-számítógép közötti hálózati hozzáférési fordítási végrehajtásához. Ebben a konfigurációban kell az Azure AD-be lesz hozzáférése ehhez a végponthoz, a felhőben.
 
 **A minta SCIM végpont regisztrálása az Azure ad-ben:**
 
 1. Jelentkezzen be [az Azure-portálon](https://portal.azure.com). 
-2. Keresse meg a ** Azure Active Directory > Vállalati alkalmazások, és válassza ki **új alkalmazás > minden > nem-gyűjtemény alkalmazás**.
+2. Keresse meg a **Azure Active Directory > Vállalati alkalmazások**, és válassza ki **új alkalmazás > minden > nem-gyűjtemény alkalmazás**.
 3. Adja meg az alkalmazás nevét, és kattintson a **Hozzáadás** ikonra az alkalmazás objektum létrehozásához. Az application objektum létrehozása a cél alkalmazás kellene lenniük történő, és egyszeri bejelentkezés, és nem csak a SCIM végpont végrehajtási képviselő készült.
 4. Az eredményül kapott képernyőn válassza ki a **kiépítési** lapon a bal oldali oszlopban.
 5. Az a **kiépítési üzemmódban** menü **automatikus**.
@@ -144,7 +144,7 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
   ![][2]
   *4. ábra: Konfigurálása kiosztás az Azure portálon*
     
-6. Az a **bérlői URL-cím** mezőbe írja be az internet elérhetővé tett URL-cím és port a SCIM végpont. Ez lehet hasonlót http://testmachine.contoso.com:9000 vagy http://<ip-address>:9000/, ahol a < ip-cím > az interneten közzétéve az IP-cím.  
+6. Az a **bérlői URL-cím** mezőbe írja be az internet elérhetővé tett URL-cím és port a SCIM végpont. A bejegyzés megadása hasonlót http://testmachine.contoso.com:9000 vagy http://<ip-address>:9000/, ahol a < ip-cím > az interneten közzétéve az IP-cím.  
 7. Ha a SCIM végpont az OAuth tulajdonosi jogkivonat nem az Azure AD egy kibocsátótól igényel, majd másolja a szükséges OAuth tulajdonosi jogkivonatot az opcionális **titkos Token** mező. Ez a mező üresen marad, ha az Azure AD tartalmazza az Azure ad-minden egyes kérelemmel kiadott OAuth tulajdonosi jogkivonat. Alkalmazások, az Azure AD használja az identitásszolgáltató azt is ellenőrzi az Azure AD-jogkivonatot ki.
 8. Kattintson a **kapcsolat tesztelése** kell rendelkeznie az Azure Active Directory megpróbál csatlakozni a SCIM végpont gombra. Ha a kísérlet sikertelen, hiba információk jelennek meg.  
 9. Ha a kísérel meg csatlakozni az alkalmazás Succeed, majd kattintson a **mentése** mentéséhez rendszergazdai hitelesítő adatokat.
@@ -239,7 +239,7 @@ A CLI-tárakat használ, a tárak használó fejlesztők tárolhatja bármilyen 
     }
     }
 
-Ez a szolgáltatás egy HTTP címet és a kiszolgáló hitelesítési tanúsítvánnyal kell rendelkeznie, amelynek a legfelső szintű hitelesítésszolgáltató a következők egyikét: 
+Ez a szolgáltatás egy HTTP címet és a kiszolgáló hitelesítési tanúsítvánnyal kell rendelkeznie, amelynek a legfelső szintű hitelesítésszolgáltató egyike a következő szerepel: 
 
 * CNNIC
 * Comodo
@@ -347,12 +347,12 @@ A fejlesztők a SCIM szolgáltatás létrehozása a Microsoft által biztosítot
 ## <a name="user-and-group-schema"></a>Felhasználó- és séma
 Az Azure Active Directory kétféle típusú erőforrások SCIM webszolgáltatásokhoz építhető ki.  Ilyen típusú erőforrások a felhasználók és csoportok.  
 
-Felhasználói erőforrásokat azonosítja a sémaazonosítót urn: ietf:params:scim:schemas:extension:enterprise:2.0:User, amely szerepel a protokoll-meghatározása: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Az alapértelmezett leképezését a felhasználók az Azure Active Directoryban urn: ietf:params:scim:schemas:extension:enterprise:2.0:User erőforrások attribútumait alább tábla 1.  
+Felhasználói erőforrásokat azonosítja a sémaazonosítót "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User", amely szerepel a protokoll-meghatározása: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Az alapértelmezett leképezését a felhasználók az Azure Active Directoryban "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" erőforrások attribútumait alább tábla 1.  
 
 Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Táblázat 2, az alábbi, az alapértelmezett leképezését a csoportok az Azure Active Directoryban attribútumait http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group erőforrásokat.  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>1. táblázat: Alapértelmezett felhasználói címtárattribútum-leképezésben
-| Az Azure Active Directory-felhasználó | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |
+| Az Azure Active Directory-felhasználó | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |aktív |
 | displayName |displayName |
@@ -534,7 +534,7 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq 2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
     Authorization: Bearer ...
   ````
-  Az érték a attribútumok lekérdezési paraméter azonosítója, azt jelzi, hogy, hogy ha egy felhasználói objektum, amely eleget tesz a kifejezést a szűrő lekérdezési paraméter értéke, akkor a szolgáltatás várhatóan urn: ietf:params:scim:schemas:core:2.0:User vagy urn: ietf:params:scim:schemas:extension:enterprise:2.0:User erőforrás, beleértve az adott erőforrás id attribútum értéke csak válaszolni.  Értékét a **azonosító** a kérelmező ismert attribútum. A szűrő lekérdezési paraméter; érték szerepel. az azt kérő célja ténylegesen kérelmet a minimális erőforrás megjelenítése felel meg a szűrési kifejezés arra utal, hogy az összes ilyen objektum létezik-e.   
+  Az érték a attribútumok lekérdezési paraméter "id" azt jelzi, hogy, hogy ha egy felhasználói objektum, amely eleget tesz a kifejezést a szűrő lekérdezési paraméter értéke, akkor a szolgáltatás várhatóan válaszolni egy "urn: ietf:params:scim:schemas:core:2.0: Felhasználó"vagy"urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"erőforrás, például csak az adott erőforrás"id"attribútum értéke.  Értékét a **azonosító** a kérelmező ismert attribútum. A szűrő lekérdezési paraméter; érték szerepel. az azt kérő célja ténylegesen kérelmet a minimális erőforrás megjelenítése felel meg a szűrési kifejezés arra utal, hogy az összes ilyen objektum létezik-e.   
 
   Ha a szolgáltatás a Microsoft által előírt végrehajtási SCIM szolgáltatások közös nyelvi infrastruktúra könyvtárak segítségével lett létrehozva, majd a kérést lefordítását a szolgáltató lekérdezési metódus hívásakor. A paraméterek argumentumnak az értékeként megadott objektum tulajdonságainak értékének a következők: 
   

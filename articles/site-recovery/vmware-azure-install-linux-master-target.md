@@ -1,19 +1,19 @@
 ---
-title: "A Linux-fő célkiszolgáló feladatátvevő telepítése az Azure-ból a helyszíni |} Microsoft Docs"
-description: "A Linux virtuális gép újbóli védelméhez, előtt kell egy Linux fő célkiszolgáló. Megtudhatja, hogyan telepítsen."
+title: A Linux-fő célkiszolgáló feladatátvevő telepítése az Azure-ból a helyszíni |} Microsoft Docs
+description: A Linux virtuális gép újbóli védelméhez, előtt kell egy Linux fő célkiszolgáló. Megtudhatja, hogyan telepítsen.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 986f36cccc9755e5b5a7fc2f81d7e6dff2bf1ccf
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>A Linux fő célkiszolgáló telepítése
 Miután a rendszer átadja a virtuális gépek Azure-ba, akkor is feladat-visszavételt a virtuális gépeket a helyszíni hely. A feladat-visszavételt, állítsa a virtuális gépet az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége van egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -240,18 +240,13 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
 
 1. A Linux fő célkiszolgáló virtuális géphez csatolni egy új 1 TB méretű lemezt, és indítsa el a gépet.
 
-2. Használja a **többutas -inden** parancs további az adatmegőrzési lemez többutas Azonosítóját.
-    
-     `multipath -ll`
+2. Használja a **többutas -inden** parancs az adatmegőrzési lemez többutas azonosítója további: **többutas -inden**
 
-        ![The multipath ID of the retention disk](./media/vmware-azure-install-linux-master-target/media/image22.png)
+    ![A többutas azonosítója](./media/vmware-azure-install-linux-master-target/image22.png)
 
-3. Formázza a meghajtót, és majd létrehozni egy fájlrendszert az új meghajtón.
-
+3. Formázza a meghajtót, és hozza létre a fájlrendszer az új meghajtón: **mkfs.ext4 /dev/leképező/< adatmegőrzési lemez többutas azonosítója >**.
     
-    `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
-    
-    ![A meghajtón fájlrendszer létrehozása](./media/vmware-azure-install-linux-master-target/image23-centos.png)
+    ![Fájlrendszer](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. Miután létrehozta a fájlrendszer, csatlakoztassa az adatmegőrzési lemez.
 
@@ -266,7 +261,7 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
     
     Válassza ki **beszúrása** a fájl szerkeszthető. Hozzon létre egy új sort, és helyezze be a következő szöveg. A kijelölt többutas az előző parancs azonosítója alapján többutas Lemezazonosítót szerkesztése.
 
-     **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
+    **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
 
     Válassza ki **Esc**, majd írja be **: wq** (írása, és lépjen ki a) a szerkesztő ablak bezárásához.
 
@@ -356,7 +351,7 @@ Látni fogja, hogy a **verzió** mező biztosít a fő célkiszolgáló verziós
 
 * Bizonyos egyéni hálózati konfigurációk, mert a hálózati adapter le van tiltva, indításakor, és a fő célkiszolgáló ügynöke nem tudja inicializálni. Győződjön meg arról, hogy helyesen vannak-e beállítva a következő tulajdonságokkal. Ellenőrizze, hogy ezeket a tulajdonságokat a Ethernet a kártya fájl /etc/sysconfig/network-scripts/ifcfg-eth *.
     * BOOTPROTO = dhcp
-    * ONBOOT=yes
+    * ONBOOT = Igen
 
 
 ## <a name="next-steps"></a>További lépések

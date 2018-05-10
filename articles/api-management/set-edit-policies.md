@@ -1,11 +1,11 @@
 ---
-title: "Beállíthatja vagy szerkesztheti az Azure API-felügyeleti házirendek hogyan |} Microsoft Docs"
-description: "Ez a témakör bemutatja, hogyan beállíthatja vagy szerkesztheti az Azure API-felügyeleti házirendek."
+title: Beállíthatja vagy szerkesztheti az Azure API-felügyeleti házirendek hogyan |} Microsoft Docs
+description: Ez a témakör bemutatja, hogyan beállíthatja vagy szerkesztheti az Azure API-felügyeleti házirendek.
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 409069cbc382610a48139df75f0f64b1682d8ee6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Hogyan állítsa be, vagy az Azure API-felügyeleti házirendek szerkesztése
 
@@ -29,8 +29,8 @@ Részletes információ a házirendek: [házirendek az Azure API Management](api
 
 Beállíthatja vagy szerkesztheti a házirend, hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
-2. Keresse meg a APIM példányt.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+2. Tallózzon az APIM-példányra.
 3. Kattintson a **API-k** fülre.
 4. Válasszon egyet a korábban importált API-k.
 5. Válassza ki a **tervezési** fülre.
@@ -38,7 +38,7 @@ Beállíthatja vagy szerkesztheti a házirend, hajtsa végre a következő lép�
 7. Kattintson a Tovább gombra a háromszög a **bejövő** vagy **kimenő** Ceruza.
 8. Válassza ki a **kód szerkesztése** elemet.
 
-    ![Házirend szerkesztése](./media/set-edit-policies/set-edit-policies01.png)
+    ![A szabályzat szerkesztése](./media/set-edit-policies/set-edit-policies01.png)
 
 9. A kívánt házirend kód illessze be a megfelelő blokkok egyikét.
          
@@ -82,7 +82,7 @@ Globális hatókörrel van konfigurálva **minden API-k** APIM példányában.
     ![Globális hatókörű](./media/api-management-howto-policies/global-scope.png)
 
 3. Kattintson a háromszög ikonra.
-4. Válassza ki **kód szerkesztése**.
+4. Válassza a **Kódszerkesztő** lehetőséget.
 5. Házirend hozzáadása vagy szerkesztése.
 6. Nyomja le az **mentése**. 
 
@@ -111,7 +111,7 @@ API-hatókör konfigurálva lett a **összes művelet** a kijelölt API.
 
 2. Válassza ki **összes művelet**
 3. Kattintson a háromszög ikonra.
-4. Válassza ki **kód szerkesztése**.
+4. Válassza a **Kódszerkesztő** lehetőséget.
 5. Házirend hozzáadása vagy szerkesztése.
 6. Nyomja le az **mentése**. 
 
@@ -125,11 +125,11 @@ A kiválasztott művelet műveleti hatókör van konfigurálva.
     ![Műveleti hatókör](./media/api-management-howto-policies/operation-scope.png)
 
 3. Kattintson a háromszög ikonra.
-4. Válassza ki **kód szerkesztése**.
+4. Válassza a **Kódszerkesztő** lehetőséget.
 5. Házirend hozzáadása vagy szerkesztése.
 6. Nyomja le az **mentése**. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kapcsolódó témakörök hivatkozásra a következő:
 

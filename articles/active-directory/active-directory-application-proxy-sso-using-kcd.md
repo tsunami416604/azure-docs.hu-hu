@@ -1,25 +1,25 @@
 ---
-title: "Egyszeri bejelentkezés az alkalmazásproxy |} Microsoft Docs"
-description: "Bemutatja, hogyan adhat meg az egyszeri bejelentkezés az Azure AD-alkalmazásproxy használatával."
+title: Egyszeri bejelentkezés az alkalmazásproxy |} Microsoft Docs
+description: Bemutatja, hogyan adhat meg az egyszeri bejelentkezés az Azure AD-alkalmazásproxy használatával.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: ded0d9c9-45f6-47d7-bd0f-3f7fd99ab621
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: d6f6894d495170221ad8334bc32ef141fb4e62b4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: aee1c1ad44cada857ca0fc8fc42565448b5bfa46
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba a Proxy
 
@@ -98,7 +98,7 @@ Ez a funkció lehetővé teszi, hogy számos olyan szervezeteknek, amelyek kül�
 * Belső több tartományban vannak (joe@us.contoso.com, joe@eu.contoso.com) és a tartományra, a felhőben (joe@contoso.com).
 * Belső nem átirányítható tartomány neve lehet (joe@contoso.usa) és jogi egy, a felhőben.
 * Nem használható tartománynevek belső (joe)
-* Használjon különböző aliasnevet a helyszínen és a felhőben. Például joe-johns@contoso.com vs.joej@contoso.com  
+* Használjon különböző aliasnevet a helyszínen és a felhőben. Például joe-johns@contoso.com vs. joej@contoso.com  
 
 A Proxy válassza ki a Kerberos-jegyet használandó mely identitás. Ez a beállítás akkor alkalmazásonként. A beállítások egy része, amely nem fogadja el az e-mail cím formátumú rendszerek alkalmas, mások számára készültek, alternatív bejelentkezési.
 

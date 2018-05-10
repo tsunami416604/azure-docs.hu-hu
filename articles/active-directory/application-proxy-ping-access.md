@@ -1,25 +1,25 @@
 ---
-title: "Fejléc-alapú hitelesítés PingAccess az az Azure AD alkalmazásproxy |} Microsoft Docs"
-description: "Alkalmazások közzététele az PingAccess és alkalmazás Proxy fejléc-alapú hitelesítés támogatására."
+title: Fejléc-alapú hitelesítés PingAccess az az Azure AD alkalmazásproxy |} Microsoft Docs
+description: Alkalmazások közzététele az PingAccess és alkalmazás Proxy fejléc-alapú hitelesítés támogatására.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bfff8ebff87b6c3c501202e95c463a0f4e235ffc
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: bb341c5700f573e61cdbbe992aa0b0eb99389b2f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Az egyszeri bejelentkezés az alkalmazásproxy és PingAccess fejléc-alapú hitelesítés
 
@@ -95,7 +95,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes l
    ![Válassza ki a fejléc-alapú bejelentkezés](./media/application-proxy-ping-access/sso-header.PNG)
 
 11. Zárja be a vállalati alkalmazások panel vagy görgessen egészen a bal oldali térjen vissza az Azure Active Directory menübe.
-12. Válassza ki **App regisztrációk**.
+12. Válassza az **Alkalmazásregisztrációk** elemet.
 
    ![Válassza ki az alkalmazás-regisztráció](./media/application-proxy-ping-access/app-registrations.png)
 
@@ -110,7 +110,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes l
 
 16. Válassza a **Hozzáadás** lehetőséget. Az API kiválasztása **Windows Azure Active Directory**, majd **válasszon**. Az engedélyek, válassza ki **olvasási és írása az összes alkalmazás** és **jelentkezzen be és felhasználói profil olvasása**, majd **válassza** és **kész**.  
 
-  ![Engedélyek kiválasztása](./media/application-proxy-ping-access/select-permissions.png)
+  ![Engedélyek kijelölése](./media/application-proxy-ping-access/select-permissions.png)
 
 17. Az engedélyek képernyő bezárása előtt adja meg engedélyeket. 
 ![Engedélyek](media/application-proxy-ping-access/grantperms.png)

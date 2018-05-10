@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/08/2018
 ms.author: shlo
-ms.openlocfilehash: 5c81c73bd563dd75103ed0fcb45cbc2205eed02a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 91ef3f9f15797c8c0c599e8c01070369e1af0b58
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Az Azure Data Factory metaadatok tevékenység beolvasása
 GetMetadata tevékenység használható beolvasása **metaadatok** az Azure Data Factory adatok. Ez a tevékenység csak 2-es verzióját az adat-előállítók esetén támogatott. A következő esetekben használhatók:
@@ -74,7 +74,10 @@ A következő metaadat-típusok beolvasása a GetMetadata tevékenység mezőlis
 | contentMD5 | A fájl a MD5-kivonata. A következő fájl csak alkalmazható. |
 | struktúra | A fájl vagy a relációs adatbázis tábla belül adatstruktúra. Kimeneti értéke oszlopnév és oszloptípus listáját. |
 | Oszlopszám | A fájl vagy a relációs tábla belül oszlopok száma. |
-| létezik-e| E egy fájl vagy mappa vagy a tábla létezik-e vagy sem. Megjegyzés: Amennyiben "létezik" van megadva a GetaMetadata mezőlistán, a tevékenység nem sikertelen, akkor is, ha a cikk (fájl/mappa vagy tábla) nem létezik; Ehelyett adja vissza `exists: false` kimenet. |
+| létezik-e| E egy fájl vagy mappa vagy a tábla létezik-e vagy sem. Vegye figyelembe, ha "létezik-e" a GetaMetadata mezőlistán van megadva, a tevékenység nem sikertelen, akkor is, ha a cikk (fájl/mappa vagy tábla) nem létezik; Ehelyett adja vissza `exists: false` kimenet. |
+
+>[!TIP]
+>Ha azt szeretné, ellenőrizze, hogy a fájl vagy mappa vagy a tábla létezik-e vagy sem, adja meg a `exists` a GetMetadata tevékenység mezőlistán, majd ellenőrizheti a `exists: true/false` eredménye a tevékenység kimenetét. Ha `exists` nem szerepel a listán, a GetMetadata tevékenység sikertelen lesz, amikor az objektum nem található.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -107,10 +110,9 @@ A következő metaadat-típusok beolvasása a GetMetadata tevékenység mezőlis
         },
         "typeProperties": {
             "folderPath":"container/folder",
-            "Filename": "file.json",
+            "filename": "file.json",
             "format":{
                 "type":"JsonFormat"
-                "nestedSeperator": ","
             }
         }
     }
@@ -123,12 +125,12 @@ Jelenleg a GetMetadata tevékenység is fetch metaadat-információkat a követk
 
 Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
-Mezőlista | Felsorolja a szükséges metaadatok. A részleteket a [metaadatok](#metadata-options) támogatott metaadatok szakaszt. | Nem 
+Mezőlista | Felsorolja a szükséges metaadatok. A részleteket a [metaadatok](#metadata-options) támogatott metaadatok szakaszt. | Igen 
 Adatkészlet | A referencia-adatkészletnek amelynek metaadatok tevékenysége a GetMetadata tevékenység által kérhető. Lásd: [támogatott képességek](#supported-capabilities) támogatott összekötők a szakaszt, és tekintse meg a dataset szintaxis részletek összekötő témakör. | Igen
 
 ## <a name="sample-output"></a>Példa kimenet
 
-A GetMetadata eredmény megjelenik az tevékenység kimenetét. Az alábbiakban a két minta hivatkozásként mező listában kijelölt teljes körű metaadatok beállításokkal:
+A GetMetadata eredmény megjelenik az tevékenység kimenetét. Az alábbiakban a két minta hivatkozásként mező listában kijelölt teljes körű metaadatok beállításokkal. Az eredmény a soron következő tevékenységek használatához a mintát `@{activity('MyGetMetadataActivity').output.itemName}`.
 
 ### <a name="get-a-files-metadata"></a>A fájl metaadatot beszerezni
 

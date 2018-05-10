@@ -1,30 +1,33 @@
 ---
-title: "Az Azure Active Directory bejelentkezési tevékenység jelentés API-referencia |} Microsoft Docs"
-description: "Az Azure Active Directory bejelentkezési tevékenység jelentés API-referencia"
+title: Az Azure Active Directory bejelentkezési tevékenység jelentés API-referencia |} Microsoft Docs
+description: Az Azure Active Directory bejelentkezési tevékenység jelentés API-referencia
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 859459bbce6b81e2e855201d5c310233d88d0393
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: dbb95b5910def55437f05837986e850824fbe741
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Az Azure Active Directory bejelentkezési tevékenység jelentés API-referencia
-Ez a témakör az Azure Active Directory reporting API-val kapcsolatos témakörök gyűjteményét részét képezi.  
-Az Azure AD jelentéskészítési lehetőséget biztosít az API-k, amely lehetővé teszi a kód és a kapcsolódó eszközök használata a bejelentkezési tevékenység jelentés adatok eléréséhez.
-Ez a témakör a hatóköre biztosításához kapcsolatos útmutatót a **bejelentkezés tevékenység jelentés API**.
+
+> [!TIP] 
+> Tekintse meg az új Microsoft Graph API a [reporting](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit), ami végül lecseréli az API. 
+
+Ez a cikk egy gyűjtemény reporting API-val az Azure Active Directory (Azure AD) ismertető cikk gyűjtemény része. Az Azure AD jelentéskészítési lehetőséget biztosít az API-k, amely lehetővé teszi a kód vagy a kapcsolódó eszközök naplózási adatok eléréséhez.
+Ez a cikk a hatóköre biztosításához kapcsolatos útmutatót a **API naplózási**.
 
 Lásd:
 
@@ -35,9 +38,9 @@ Lásd:
 ## <a name="who-can-access-the-api-data"></a>Az API-adatok hozzáférésének?
 * Felhasználók és a biztonsági rendszergazda vagy a biztonsági olvasó szerepkörben Szolgáltatásnevekről
 * A globális rendszergazdák
-* Bármely alkalmazás, amely rendelkezik hozzáférési az API-t (alkalmazás engedélyezési is lehet a telepítő csak a globális rendszergazdai engedély alapján)
+* Bármely alkalmazás, amely rendelkezik hozzáférési az API-t (alkalmazás engedélyezési beállíthatja a csak a globális rendszergazdai engedély alapján)
 
-Hozzáférés az alkalmazás például bejelentkezik események API-k biztonsági eléréséhez konfigurálásához használja a következő PowerShell az alkalmazások egyszerű szolgáltatásnév az olvasó biztonsági szerepkör hozzáadása
+Egy alkalmazás, például a bejelentkezési események API-k biztonsági eléréséhez hozzáférés konfigurálásához használja a következő PowerShell az alkalmazások egyszerű szolgáltatásnév az olvasó biztonsági szerepkör hozzáadása
 
 ```PowerShell
 Connect-MsolService
@@ -53,7 +56,7 @@ Ez a jelentés eléréséhez a reporting API-n keresztül, rendelkeznie kell:
 * Befejeződött a [Előfeltételek az Azure AD reporting API eléréséhez](active-directory-reporting-api-prerequisites.md). 
 
 ## <a name="accessing-the-api"></a>Az API elérése
-Vagy az API keresztül hozzáférhet a [Graph Explorer](https://graphexplorer2.cloudapp.net) vagy programozott módon, például PowerShell használatával. Ahhoz, hogy megfelelően értelmezni az OData-szűrőszintaxisának AAD Graph REST-hívásokban használt PowerShell, a backtick kell használnia (más néven: aposztróf) "karaktert" a $ karaktert. A backtick karakter funkcionál [PowerShell escape-karakter](https://technet.microsoft.com/library/hh847755.aspx), lehetővé téve a $ karaktert a literális értelmezésének, és elkerülheti a PowerShell változó neveként zavaró, PowerShell (ie: $filter).
+Vagy az API keresztül hozzáférhet a [Graph Explorer](https://graphexplorer2.cloudapp.net) vagy programozott módon, például PowerShell használatával. Használja a backtick (más néven: aposztróf) "karaktert" a $ annak érdekében, hogy a PowerShell tudja értelmezni az OData-szűrőszintaxisának AAD Graph REST-hívásokban használt karakter. A backtick karakter funkcionál [PowerShell escape-karakter](https://technet.microsoft.com/library/hh847755.aspx), így PowerShell $ karaktert a literális értelmezésének, és elkerülheti a zavaró, a PowerShell változó neveként (például $filter).
 
 A jelen témakör elsősorban a Graph Explorer. A PowerShell például megjelenik ez [PowerShell-parancsfájl](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script).
 
@@ -64,19 +67,18 @@ Ez az API a következő alap URI használatával érhető el:
 
 
 
-Az adatok mennyisége miatt az API rendelkezik maximális egymillió visszaadott rekordok száma. 
+Az adatok mennyisége miatt az API rendelkezik egy legfeljebb 1 000 000 visszaadott rekordok. 
 
-Ez a hívás kötegekben adatait jeleníti meg. Minden egyes legfeljebb 1000 rekord rendelkezik.  
-A következő mérési adatköteget a rekordok megtekintéséhez használja a következő hivatkozásra. Beolvasása a [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) adatait az első visszaadott rekordok készletét. A kihagyási lexikális elem az eredmény végén értéke lesz.  
+Ez a hívás kötegekben adatait jeleníti meg. Minden egyes legfeljebb 1000 rekord rendelkezik. A következő mérési adatköteget a rekordok megtekintéséhez használja a következő hivatkozásra. Beolvasása a [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) adatait az első visszaadott rekordok készletét. A kihagyási lexikális elem az eredmény végén értéke lesz.  
 
     https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&%24skiptoken=-1339686058
 
 
 ## <a name="supported-filters"></a>Támogatott szűrők
 Az API-k által visszaadott rekordok számának megadásával szűkíthető hívható meg egy szűrő formában.  
-Bejelentkezés az API-hoz kapcsolódó adatok, a következő szűrőket támogatottak:
+Bejelentkezési API kapcsolatos adatokat a következő szűrők használhatók:
 
-* **$top =\<visszaadott száma\>**  - visszaadott rekordok számát. Ez az egy drága művelet. Ha szeretne visszaállítani az objektumok több ezer ne használjon a szűrőt.  
+* **$top =\<visszaadott száma\>**  - visszaadott rekordok számát. Ez az egy drága művelet. Ez a szűrő ne használjon, ha szeretne visszaállítani az objektumok több ezer.  
 * **$filter =\<a szűrő utasítás\>**  – megadhatja, támogatott szűrő mezők alapján az Önt érdeklő rekordok
 
 ## <a name="supported-filter-fields-and-operators"></a>Támogatott Szűrő mezőket és operátorok
@@ -94,7 +96,7 @@ Adja meg az Önt érdeklő rekordok, egy szűrő utasítást, amely egy vagy a k
 > 
 > 
 
-A visszaadott adatok körének szűkítéséhez, Szűrő mezők és a támogatott szűrők kombinációit hozhat létre. A következő utasítás például a felső 10 rekordokat. július 1-jétől 2016 és a 6. 2016. július között adja vissza:
+A visszaadott adatok körének szűkítéséhez, Szűrő mezők és a támogatott szűrők kombinációit hozhat létre. A következő utasítás például a felső 10 rekordokat. július 1 2016 és 6 2016. július között adja vissza:
 
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta&$top=10&$filter=signinDateTime+ge+2016-07-01T17:05:21Z+and+signinDateTime+le+2016-07-07T00:00:00Z
 
@@ -173,7 +175,7 @@ AppId érték karakterlánc-értéke
 AppDisplayName értéke karakterlánc-értéke
 
 - - -
-### <a name="loginstatus"></a>loginStatus
+### <a name="loginstatus"></a>LoginStatus
 **Támogatott operátorok**: eq
 
 **Példa**:

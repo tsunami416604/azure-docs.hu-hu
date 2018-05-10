@@ -1,25 +1,25 @@
 ---
-title: "Az Azure áttekintés OpenShift |} Microsoft Docs"
-description: "Az Azure-ban OpenShift áttekintése."
+title: Az Azure áttekintés OpenShift |} Microsoft Docs
+description: Az Azure-ban OpenShift áttekintése.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 5d154a1c860a5ebd7af2efd55b470bb14efe6c67
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: c8e740a66271c88b3abb036867d1760cc9e77607
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="openshift-in-azure"></a>Az Azure-ban OpenShift
 
@@ -31,14 +31,14 @@ OpenShift Kubernetes tároló vezénylési és felügyeleti tartalmazza. Fejlesz
 - Egyszerű telepítés és a méretezésről.
 - Hosszú távú a csoportok és alkalmazások életciklusának karbantartási.
 
-OpenShift, amelyek kettő futtatható Azure-ban több verziója is van:
+Több verzió OpenShift érhetők el:
 
 - OpenShift Origin
 - OpenShift tárolóplatform
 - Online OpenShift
 - Dedikált OpenShift
 
-A cikkben szereplő négy verzióinak két érhetők el az ügyfelek számára a saját Azure-ban telepítheti: OpenShift eredete és OpenShift tároló Platform.
+A négy verziók cikkben szereplő, csak két érhető el, hogy az ügyfelek központi telepítése az Azure-ban: OpenShift eredete és OpenShift tároló Platform.
 
 ## <a name="openshift-origin"></a>OpenShift Origin
 
@@ -60,7 +60,7 @@ Ebben a verzióban az ügyfél telepíti a tárolókat, de nem szabályozza, a t
 
 A Red Hat felügyelt dedikált van *single-bérlő* tároló Platform használó OpenShift. Red Hat kezeli az összes, az alkalmazás mögötti infrastruktúra (virtuális gépek, OpenShift fürt hálózati, tárolási, stb.). A fürt egy ügyfél és a nyilvános felhőben (például az AWS vagy a Google, az Azure-ral korai 2018 várható). A kiindulási fürt négy alkalmazás csomópontok 48,000 $ (előre fizetett) évente magában foglalja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A OpenShift közös Előfeltételek konfigurálása az Azure-ban](./openshift-prerequisites.md)
 - [Az Azure-ban OpenShift származási telepítése](./openshift-origin.md)

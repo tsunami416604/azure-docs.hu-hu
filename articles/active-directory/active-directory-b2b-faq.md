@@ -2,25 +2,19 @@
 title: Az Azure Active Directory B2B együttműködés – gyakori kérdések |} Microsoft Docs
 description: Azure Active Directory B2B együttműködés gyakran feltett kérdésekre adott válaszok.
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 03/06/2018
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 2f039361bce9615e8b8b9aa62dc152db504a6dc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6160e3e6f23bf4eabb33295fa19323c71c7ed18d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B együttműködés – gyakori kérdések
 
@@ -129,16 +123,5 @@ További információ a mi licencek, a szervezeti igényeknek használata az Azu
 
 ### <a name="next-steps"></a>További lépések
 
-Ismerje meg az Azure AD B2B együttműködés további cikkeit:
+- [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-* [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Hogyan rendszergazdák az Azure AD B2B együttműködés felhasználók hozzá?](active-directory-b2b-admin-add-users.md)
-* [Hogyan hozzá az információkkal dolgozó szakemberek B2B együttműködés felhasználók?](active-directory-b2b-iw-add-users.md)
-* [A B2B együttműködés meghívó e-mail elemei](active-directory-b2b-invitation-email.md)
-* [B2B együttműködés meghívó érvényesítési](active-directory-b2b-redemption-experience.md)
-* [Az Azure AD B2B együttműködés licencelés](active-directory-b2b-licensing.md)
-* [Hibaelhárítás az Azure AD B2B együttműködés](active-directory-b2b-troubleshooting.md)
-* [Az Azure AD B2B együttműködés API és a Testreszabás](active-directory-b2b-api.md)
-* [Többtényezős hitelesítés a B2B-együttműködés felhasználói számára](active-directory-b2b-mfa-instructions.md)
-* [Adja hozzá a B2B együttműködés felhasználók nélkül](active-directory-b2b-add-user-without-invite.md)
-* [Alkalmazások kezelése az Azure AD-cikk indexe](active-directory-apps-index.md)

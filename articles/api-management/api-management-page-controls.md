@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management Lapvezérlők |} Microsoft Docs"
-description: "További tudnivalók a Lapvezérlők fejlesztői portál sablonok az Azure API Management használható."
+title: Az Azure API Management Lapvezérlők |} Microsoft Docs
+description: További tudnivalók a Lapvezérlők fejlesztői portál sablonok az Azure API Management használható.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-api-management-page-controls"></a>Az Azure API Management Lapvezérlők
 Az Azure API Management a következő vezérlőelemeket biztosítja a fejlesztői használható portál sablonok.  
@@ -43,10 +43,10 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
 -   [előfizetés gomb](#subscribe-button)  
 -   [előfizetés-Mégse](#subscription-cancel)  
   
-##  <a name="app-actions"></a>alkalmazás-műveletek  
+##  <a name="app-actions"></a> alkalmazás-műveletek  
  A `app-actions` vezérlő felhasználói felülete lehetőséget nyújt az alkalmazások a felhasználó oldalon a fejlesztői portálra való interakció.  
   
- ![alkalmazás &#45; műveletek vezérlő](./media/api-management-page-controls/APIM-app-actions-control.png "APIM alkalmazás-műveletek vezérlő")  
+ ![alkalmazás&#45;műveletek vezérlő](./media/api-management-page-controls/APIM-app-actions-control.png "APIM alkalmazás-műveletek vezérlő")  
   
 ### <a name="usage"></a>Használat  
   
@@ -58,17 +58,17 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
   
 |Paraméter|Leírás|  
 |---------------|-----------------|  
-|Alkalmazásazonosító|Az alkalmazás azonosítója.|  
+|appId|Az alkalmazás azonosítója.|  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonok  
  A `app-actions` vezérlő a következő fejlesztői portál sablonok használható:  
   
 -   [Alkalmazások](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a>Basic-bejelentkezés  
+##  <a name="basic-signin"></a> Basic-bejelentkezés  
  A `basic-signin` vezérlő egy felügyeletét biztosítja, a bejelentkezési oldal a fejlesztői portálra felhasználói bejelentkezési adatok gyűjtéséhez.  
   
- ![Basic &#45; signin vezérlő](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic-signin vezérlő")  
+ ![Alapszintű&#45;signin vezérlő](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic-signin vezérlő")  
   
 ### <a name="usage"></a>Használat  
   
@@ -77,14 +77,14 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- nincs.  
+ Nincs.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonok  
  A `basic-signin` vezérlő a következő fejlesztői portál sablonok használható:  
   
 -   [bejelentkezés](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a>lapozófájl-vezérlő  
+##  <a name="paging-control"></a> lapozófájl-vezérlő  
  A `paging-control` lapozás a fejlesztői portálon lapokat biztosít, amelyek elemek listájának megjelenítéséhez.  
   
  ![vezérlő lapozási](./media/api-management-page-controls/APIM-paging-control.png "APIM lapozási vezérlő")  
@@ -96,7 +96,7 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- nincs.  
+ Nincs.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonok  
  A `paging-control` vezérlő a következő fejlesztői portál sablonok használható:  
@@ -107,7 +107,7 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
   
 -   [Termékek listáját](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a>szolgáltatók  
+##  <a name="providers"></a> szolgáltatók  
  A `providers` vezérlő vezérlőt biztosít a bejelentkezési oldalon a fejlesztői portálra hitelesítésszolgáltatókat kiválasztását.  
   
  ![szolgáltatók vezérlő](./media/api-management-page-controls/APIM-providers-control.png "APIM szolgáltatók vezérlő")  
@@ -119,14 +119,14 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- nincs.  
+ Nincs.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonok  
  A `providers` vezérlő a következő fejlesztői portál sablonok használható:  
   
 -   [bejelentkezés](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a>keresési-vezérlő  
+##  <a name="search-control"></a> keresési-vezérlő  
  A `search-control` keresési funkciókat biztosítja a fejlesztői portál által felügyelt oldalak felhívásainak elemek listájának megjelenítéséhez.  
   
  ![Keresés vezérlő](./media/api-management-page-controls/APIM-search-control.png "APIM keresési vezérlőelemet")  
@@ -138,7 +138,7 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- nincs.  
+ Nincs.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonok  
  A `search-control` vezérlő a következő fejlesztői portál sablonok használható:  
@@ -147,10 +147,10 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
   
 -   [Termékek listáját](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a>-előfizetés  
+##  <a name="sign-up"></a> -előfizetés  
  A `sign-up` vezérlő egy felügyeletét biztosítja a fejlesztői portálra a regisztrációs oldalon található felhasználói profillal kapcsolatos információk gyűjtéséhez.  
   
- ![bejelentkezési &#45; vezérlő legfeljebb](./media/api-management-page-controls/APIM-sign-up-control.png "APIM előfizetési vezérlő")  
+ ![bejelentkezési&#45;vezérlő legfeljebb](./media/api-management-page-controls/APIM-sign-up-control.png "APIM előfizetési vezérlő")  
   
 ### <a name="usage"></a>Használat  
   
@@ -159,17 +159,17 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- nincs.  
+ Nincs.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonok  
  A `sign-up` vezérlő a következő fejlesztői portál sablonok használható:  
   
 -   [feliratkozni](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a>előfizetés gomb  
+##  <a name="subscribe-button"></a> előfizetés gomb  
  A `subscribe-button` vezérlőt biztosít a felhasználót, hogy a termék előfizetés.  
   
- ![előfizetés &#45; vezérlőelem](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM előfizetés gomb vezérlőelem")  
+ ![előfizetés&#45;gomb vezérlőelem](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM előfizetés gomb vezérlőelem")  
   
 ### <a name="usage"></a>Használat  
   
@@ -178,17 +178,17 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
 ```  
   
 ### <a name="parameters"></a>Paraméterek  
- nincs.  
+ Nincs.  
   
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonok  
  A `subscribe-button` vezérlő a következő fejlesztői portál sablonok használható:  
   
 -   [A termék](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a>előfizetés-Mégse  
+##  <a name="subscription-cancel"></a> előfizetés-Mégse  
  A `subscription-cancel` vezérlő vezérlőt biztosít a felhasználó oldalon a fejlesztői portálra való előfizetés lemondása.  
   
- ![előfizetés &#45; szakítsa meg a vezérlő](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM előfizetés-Mégse vezérlő")  
+ ![előfizetés&#45;szakítsa meg a vezérlő](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM előfizetés-Mégse vezérlő")  
   
 ### <a name="usage"></a>Használat  
   
@@ -210,5 +210,5 @@ A vezérlő használatához helyezze el a kívánt helyre a fejlesztői portálo
   
 -   [A termék](api-management-product-templates.md#Product)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A sablonok használatának kapcsolatos további információkért lásd: [hogyan szabhatja testre a sablonok segítségével az API Management fejlesztői portálján](api-management-developer-portal-templates.md).

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f5bee7b85a423ba7a1b0b36b4b6910275551849c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="overview"></a>Áttekintés
 Az Azure Media Services (AMS), egy **csatorna** élő adatfolyam-tartalmak feldolgozására adatcsatorna jelöli. A **csatorna** bemeneti élő adatfolyamok megkapja az alábbi két módszer egyikével:
 
-* Egy helyszíni élő kódoló egy egyfajta sávszélességű adatfolyamot küld a csatornának, amelyen engedélyezve van a Media Services használatával történő élő kódolás a következő formátumok egyikében: RTP (MPEG-TS), RTMP vagy Smooth Streaming (töredékes MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* Egy helyszíni élő kódoló egy egyféle sávszélességű adatfolyamot küld a csatornának, amelyen engedélyezve van-e élő kódolásra Media Services a következő formátumok egyikében: RTMP vagy Smooth Streaming (töredékes MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 * Egy helyszíni élő kódolók többféle sávszélességű **RTMP** vagy **Smooth Streaming** (töredékes MP4) a csatornához, hogy AMS élő kódolás nem engedélyezett. A feldolgozott adatfolyamok továbbítása **csatorna**s további feldolgozás nélkül. Ezt a módszert nevezik **áteresztő**. Használhatja a következő élő kódolók képesek kimeneti többféle sávszélességű Smooth Streaming: MediaExcel, Ateme, kommunikációs képzelhető el, Envivo, Cisco és elemi. RTMP-kimenetre a következő élő kódolók képesek: Adobe Flash Media élő kódoló (FMLE), Telestream Wirecast, Haivision, Teradek és Tricaster kódolók.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
   
   > [!NOTE]
@@ -79,7 +79,7 @@ Media Services megkezdődött kezdve a 2016. január 25 automatikusan leáll egy
 A küszöbérték, használaton kívüli időszakra névlegesen 12 órában, de változhat.
 
 ## <a name="live-encoding-workflow"></a>Élő kódolás munkafolyamat
-A következő ábra jelöli, amikor egy csatorna kap az alábbi protokollok egyikével egyféle sávszélességű adatfolyamot élő adatfolyam-továbbítási munkafolyamat: RTMP, Smooth Streaming vagy RTP (MPEG-TS); majd az adatfolyamot többféle sávszélességűvé kódolja. 
+A következő ábra jelöli, amikor egy csatorna kap az alábbi protokollok egyikével egyféle sávszélességű adatfolyamot élő adatfolyam-továbbítási munkafolyamat: RTMP vagy Smooth Streaming; majd az adatfolyamot többféle sávszélességűvé kódolja. 
 
 ![Élő munkafolyamat][live-overview]
 
@@ -91,7 +91,7 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 > 
 > 
 
-1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és konfiguráljon egy helyszíni élő kódoló a kimenetre küldheti egy **egyetlen** sávszélességű adatfolyamot a következő protokollok valamelyikével: RTMP, Smooth Streaming vagy RTP (MPEG-TS). 
+1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és konfiguráljon egy helyszíni élő kódoló a kimenetre küldheti egy **egyetlen** sávszélességű adatfolyamot a következő protokollok valamelyikével: RTMP vagy Smooth Streaming. 
    
     Ezt a lépést a csatorna létrehozása után is elvégezheti.
 2. Hozzon létre és indítson el egy csatornát. 
@@ -125,48 +125,8 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 ### <a id="Ingest_Protocols"></a>Betöltési folyamatos átviteli protokollt
 Ha a **kódolótípusához** értéke **szabványos**, érvényes beállítások:
 
-* **RTP** (MPEG-TS): MPEG-2 Transport Stream RTP keresztül.  
 * Egyszeres sávszélességű **RTMP**
 * Egyszeres sávszélességű **töredékes MP4** (Smooth Streaming)
-
-#### <a name="rtp-mpeg-ts---mpeg-2-transport-stream-over-rtp"></a>RTP (MPEG-TS) - MPEG-2 Transport Stream RTP keresztül.
-Tipikus használati eset: 
-
-Szakmai műsorszolgáltatók általában elemi technológiákat, Ericsson, Ateme, Imagine vagy Envivo elküldeni az adatfolyam szállítóktól származó csúcskategóriás helyszíni élő kódolók képesek együttműködni. Az informatikai részleg és magánhálózatokon együtt gyakran használják.
-
-Szempontok:
-
-* Adjon meg egy egyetlen program átviteli adatfolyamot (SPTS) használata ajánlott. 
-* Legfeljebb 8 hang adatfolyamok over RTP MPEG-2 TS használatával adjon meg. 
-* A video-adatfolyamot rendelkeznie kell egy, a alatt 15 MB/s átlagos átviteli sebesség
-* Az összesített átlagos átviteli hang adatfolyam rövidebbek 1 MB/s
-* Az alábbiakban a támogatott kodekek:
-  
-  * MPEG-2 / H.262 videó 
-    
-    * Fő profil (4:2:0)
-    * Erős (4:2:0, 4:2:2)
-    * 422 profil (4:2:0, 4:2:2)
-  * MPEG-4 AVC / H.264 videó  
-    
-    * Alapkonfiguráció, fő, nagy profil (8 bites 4:2:0)
-    * Magas 10 profil (10 bites 4:2:0)
-    * Magas 422 profil (10 bites 4:2:2)
-  * MPEG-2 AAC-LC hang 
-    
-    * Monó, Sztereó, (5.1, 7.1) között legyen
-    * MPEG-2 stílus ADTS csomagolás
-  * Dolby digitális (AC-3) hang 
-    
-    * Monó, Sztereó, (5.1, 7.1) között legyen
-  * MPEG hang (II és III réteg) 
-    
-    * Monó, sztereó
-* Ajánlott szórás kódolók tartalmazza:
-  
-  * Képzelje el kommunikációs Selenio ENC 1
-  * Képzelje el kommunikációs Selenio ENC 2
-  * Élő elemi
 
 #### <a id="single_bitrate_RTMP"></a>Egyszeres sávszélességű RTMP
 Szempontok:
@@ -232,36 +192,21 @@ Megadhatja, hogy az IP-címek, amelyek számára engedélyezett az előnézeti v
 Ez a szakasz ismerteti, hogyan a csatorna élő kódolója beállításait módosítani lehet, ha a **kódolási típus** csatorna értéke **szabványos**.
 
 > [!NOTE]
-> Ha a bevitel, több nyelv nyomon követi, valamint arról, hogy az Azure-ral élő kódolás, csak RTP beszélő bemenet esetén támogatott. Megadhatja, hogy MPEG-2 TS over RTP használatával legfeljebb 8 hang adatfolyamokat. Választásával dolgozhat fel RTMP vagy Smooth streaming több zeneszámok jelenleg nem támogatott. Mikor történt az élő kódolás [helyszíni élő kódolja](media-services-live-streaming-with-onprem-encoders.md), nincs korlátozás nélkül, mivel egy csatornán keresztül további feldolgozás nélkül átadja függetlenül AMS küld.
+> A hozzájárulás adatcsatorna csak tartalmazhat egyetlen hang nyomon – választásával dolgozhat fel, a több zeneszámok jelenleg nem támogatott. Mikor történt az élő kódolás [helyszíni élő kódolja](media-services-live-streaming-with-onprem-encoders.md), több zeneszámok tartalmazó Smooth Streaming protokoll hírcsatorna hozzájárulás küldhet.
 > 
 > 
 
 ### <a name="ad-marker-source"></a>Az ad jelölőt forrás
 Ad reklámkonfiguráció forrást is megadhat. Alapértelmezett érték **Api**, ami azt jelenti, hogy a csatorna élő kódolója egy aszinkron való figyelnie kell **Ad jelölőt API**.
 
-A másik érvényes lehetőség **Scte35** (engedélyezett, csak ha RTP (MPEG-TS) a bemeneti adatfolyam-továbbítási protokoll van beállítva. Scte35 megadása esetén az élő kódoló a bemeneti adatfolyamból RTP (MPEG-TS) SCTE-35 jelek fogja elemezni.
-
 ### <a name="cea-708-closed-captions"></a>CEA 708 feliratok bezárása
 A bejövő videó beágyazott egy választható jelzőt, amely közli az élő kódoló figyelmen kívül hagyása CEA 708 feliratok adatokat. Ha a jelző értéke hamis (alapértelmezett), a kódoló azonosítja, és újra CEA 708 adatokat beszúrni a kimeneti video-adatfolyamot.
-
-### <a name="video-stream"></a>Video-adatfolyammá alakítja
-Választható. A bemeneti video-adatfolyamot ismerteti. Ha ez a mező nincs megadva, az alapértelmezett érték lesz érvényben. Ez a beállítás csak akkor, ha a bemeneti adatfolyam-protokoll beállítása RTP (MPEG-TS) engedélyezett.
-
-#### <a name="index"></a>Index
-Arról, hogy mely bemeneti video-adatfolyamot kell feldolgozni a csatorna élő kódolója nulla alapú indexét. Ez a beállítás csak akkor, ha érvényes betöltési adatfolyam-protokoll RTP (MPEG-TS).
-
-Alapértelmezett értéke nulla. Javasoljuk, hogy küldjön egy program transport Stream (SPTS). Ha a bemeneti adatfolyam több programokat is tartalmaz, az élő kódoló értelmezi a Program térkép tábla (részlet) a bemeneti adatok, a bemenetek egy adatfolyam típusú nevű MPEG-2 videó vagy H.264 azonosítja és elrendezi a fizetési meghatározott sorrendben A nulla alapú indexét majd szolgál, hogy a megállapodás az n-edik bejegyzés átvételéhez.
-
-### <a name="audio-stream"></a>Hangadatfolyam
-Választható. A bemeneti hang adatfolyamok ismerteti. Ha ez a mező nincs megadva, a megadott alapértelmezett értékek érvényesek. Ez a beállítás csak akkor, ha a bemeneti adatfolyam-protokoll beállítása RTP (MPEG-TS) engedélyezett.
 
 #### <a name="index"></a>Index
 Javasoljuk, hogy küldjön egy program transport Stream (SPTS). Ha a bemeneti adatfolyam több programokat is tartalmaz, a csatorna élő kódolója értelmezi a Program térkép tábla (részlet) a bemeneti, azonosítja a bemenetek egy adatfolyam típusú nevű MPEG-2 AAC ADTS vagy AC-3 rendszer-A vagy B AC-3-rendszer vagy MPEG-2 titkos PES vagy MPEG-1 Hang- vagy MPEG-2 hang, és elrendezi a fizetési meghatározott sorrendben A nulla alapú indexét majd szolgál, hogy a megállapodás az n-edik bejegyzés átvételéhez.
 
 #### <a name="language"></a>Nyelv
 A hangadatfolyam, ISO 639-2, például a ENG. megfelelő nyelvi azonosítója Ha nem található, az alapértelmezett érték (nincs definiálva) és.
-
-Nem határozható meg legfeljebb 8 hangadatfolyam beállítása adni, ha a csatorna bemeneti MPEG-2 TS RTP keresztül. Azonban lehetnek olyan nem két bejegyzés index ugyanarra az értékre.
 
 ### <a id="preset"></a>Rendszer-készlet
 Adja meg a készlet által a csatorna élő kódolója használható. Jelenleg az egyetlen engedélyezett érték **Default720p** (alapértelmezett).
@@ -271,7 +216,7 @@ Vegye figyelembe, hogy ha egyéni készletek van szüksége, forduljon amslived@
 **Default720p** a következő 7 rétegekbe a videó kódolja.
 
 #### <a name="output-video-stream"></a>Kimeneti Video-adatfolyamot
-| Átviteli sebesség | Szélessége | Magassága | MaxFPS | Profil | Kimeneti adatfolyam neve |
+| Átviteli sebesség | Szélesség | Magasság | MaxFPS | Profil | Kimeneti adatfolyam neve |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Magas |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |Elsődleges |Video_960x540_2200kbps |
@@ -387,13 +332,11 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 * Ha a csatorna csak számlázása a **futtató** állapota. További információkért tekintse meg [ez](media-services-manage-live-encoder-enabled-channels.md#states) szakasz.
 * Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
 * Ügyeljen arra, hogy rendelkezik a streamvégpontján, amelyből el kívánja segítségével a tartalmat a **futtató** állapotát.
-* Ha a bevitel, több nyelv nyomon követi, valamint arról, hogy az Azure-ral élő kódolás, csak RTP beszélő bemenet esetén támogatott. Megadhatja, hogy MPEG-2 TS over RTP használatával legfeljebb 8 hang adatfolyamokat. Választásával dolgozhat fel RTMP vagy Smooth streaming több zeneszámok jelenleg nem támogatott. Mikor történt az élő kódolás [helyszíni élő kódolja](media-services-live-streaming-with-onprem-encoders.md), nincs korlátozás nélkül, mivel egy csatornán keresztül további feldolgozás nélkül átadja függetlenül AMS küld.
 * A kódolási beállításkészlet használja a "max sebessége" 30 fps fogalmát. Igen, ha a bemeneti érték 60fps / 59.97i, a bemeneti keretek eldobott/inaktiválása-interlaced 30/29,97 fps számára. A bemeneti érték 50fps/50i, ha a bemeneti keretek eldobott/inaktiválása-interlaced 25 fps számára. Ha 25 fps a bemeneti, kimeneti 25 fps értéken marad.
 * Ne feledje STOP YOUR csatornák végzett. Ha ezt elmulasztja, számlázási továbbra is.
 
 ## <a name="known-issues"></a>Ismert problémák
 * Csatorna indítási ideje átlagosan 2 percet javult, de időnként az igényeknek továbbra is legfeljebb 20 + percet vehet.
-* RTP támogatási szakemberek műsorszolgáltatók felé van catered. Tekintse át a RTP kiegészítő [ez](https://azure.microsoft.com/blog/2015/04/13/an-introduction-to-live-encoding-with-azure-media-services/) blog.
 * Lappal képek meg kell felelnie leírt korlátozások [Itt](media-services-manage-live-encoder-enabled-channels.md#default_slate). Ha úgy próbálja csatornát létrehozni egy alapértelmezett lappal, amely nagyobb, mint 1920 x 1080, az a kérelem rendszer végül hiba.
 * Még egyszer... STOP YOUR csatornák ne feledje, ha befejezte az adatfolyam. Ha ezt elmulasztja, számlázási továbbra is.
 

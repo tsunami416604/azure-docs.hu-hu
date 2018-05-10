@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.reviewers: billgib
 ms.author: genemi
-ms.openlocfilehash: 474b7842c8295be0dd30c2c03b92dc68ce40630d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dc70fe43c63d6b77d4a122f196f59fe51573b7aa
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Horizontálisan skálázott több-bérlős SQL-adatbázisok használó SaaS-alkalmazás a séma kezelése
 
@@ -172,5 +172,5 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 > * Az összes bérlői adatbázis referenciaadatok frissítése
 > * Index létrehozása a táblához az összes bérlői adatbázisban
 
-Ezután tekintse meg a [alkalmi jelentéskészítési oktatóanyag] (saas-multitenantdb-ad hoc-reporting.md) segítségével megismerheti a bérlő elosztott lekérdezések futó adatbázisok.
+Ezt követően próbálja meg a [alkalmi jelentéskészítési oktatóanyag](saas-multitenantdb-adhoc-reporting.md) eltérések felfedezése, elosztott lekérdezések futtatásáért bérlői adatbázisok.
 

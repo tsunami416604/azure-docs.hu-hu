@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 05/09/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 9e28184000964564bcf170a2c8015f3b4c220209
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 8dbb546954f8eee0bf997b3d2f4f92d67c0b7869
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="restore-a-deleted-user-in-azure-active-directory"></a>Az Azure Active Directory törölt felhasználó visszaállítása
 
@@ -31,17 +31,15 @@ Ez a cikk állítsa vissza vagy véglegesen törli a korábban törölt felhaszn
 ## <a name="how-to-restore-a-recently-deleted-user"></a>Közelmúltban törölt felhasználó visszaállítása
 Amikor a felhasználó nemrég törölték, az összes címtár-információ megőrződik. Ha a felhasználó helyreáll, ezt az információt, valamint helyreáll.
 
-1. Az a [az Azure AD felügyeleti központban](https://aad.portal.azure.com), jelölje be **felhasználók és csoportok** &gt; **minden felhasználó**. 
-2. A **megjelenítése**, a lap megjelenítése szűrése **nemrég törölt felhasználók**. 
-3. Válasszon legalább egy nemrég törölt felhasználók.
-4. Válassza ki **visszaállítási felhasználói**.
+1. Az a [az Azure AD felügyeleti központban](https://aad.portal.azure.com), jelölje be **felhasználók** &gt; **törölt felhasználók**. 
+2. Válasszon legalább egy nemrég törölt felhasználók.
+3. Válassza ki **visszaállítási felhasználói**.
 
 ## <a name="how-to-permanently-delete-a-recently-deleted-user"></a>Végleg törölni kívánja a közelmúltban törölt felhasználói útmutató
 
-1. Az a [az Azure AD felügyeleti központban](https://aad.portal.azure.com), jelölje be **felhasználók és csoportok** &gt; **minden felhasználó**. 
-2. A **megjelenítése**, a lap megjelenítése szűrése **nemrég törölt felhasználók**. 
-3. Válasszon legalább egy nemrég törölt felhasználók.
-4. Válassza ki **véglegesen törli**.
+1. Az a [az Azure AD felügyeleti központban](https://aad.portal.azure.com), jelölje be **felhasználók** &gt; **törölt felhasználók**. 
+2. Válasszon legalább egy nemrég törölt felhasználók.
+3. Válassza ki **véglegesen törli**.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 Az alábbi engedélyek megfelelőek a felhasználók visszaállítása.

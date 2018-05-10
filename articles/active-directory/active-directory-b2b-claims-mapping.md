@@ -2,31 +2,25 @@
 title: B2B együttműködés a felhasználói jogcímek hozzárendelése az Azure Active Directoryban |} Microsoft Docs
 description: A felhasználói jogcímeket, amelyeket a SAML-jogkivonat Azure Active Directory (Azure AD) B2B felhasználók testreszabása.
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 04/06/2018
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8f5e471d4e7102300cd5581976b45c9fa8cc57bc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: bab339a07503a042f459c0933e92e0ed4a4fb27e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>B2B együttműködés a felhasználói jogcímek hozzárendelése az Azure Active Directoryban
 
 Az Azure Active Directory (Azure AD) támogatja a SAML-jogkivonat B2B együttműködés felhasználók számára kiállított jogcímek testreszabása. Amikor egy felhasználó hitelesíti magát az alkalmazást, az Azure AD bocsát ki egy SAML-jogkivonat a az alkalmazás, amely tartalmazza az adatokat (vagy jogcímeket), amely egyedileg azonosítja a felhasználóról. Alapértelmezés szerint ez tartalmazza a felhasználó felhasználónevét, e-mail címét, Utónév és Vezetéknév.
 
-Az a [Azure-portálon](https://portal.azure.com), akkor megtekintheti vagy szerkesztheti a küldése az alkalmazásnak a SAML-jogkivonat a jogcímeket. Válassza a beállítások eléréséhez **Azure Active Directory** > **vállalati alkalmazások** > az alkalmazás konfigurált az egyszeri bejelentkezés > **egyszeri bejelentkezés **. Tekintse meg a SAML token beállításait a **felhasználói attribútumok** szakasz.
+Az a [Azure-portálon](https://portal.azure.com), akkor megtekintheti vagy szerkesztheti a küldése az alkalmazásnak a SAML-jogkivonat a jogcímeket. Válassza a beállítások eléréséhez **Azure Active Directory** > **vállalati alkalmazások** > az alkalmazás konfigurált az egyszeri bejelentkezés > **egyszeri bejelentkezés** . Tekintse meg a SAML token beállításait a **felhasználói attribútumok** szakasz.
 
 ![A SAML-jogkivonat attribútumok mutatja a felhasználói felületen](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
 

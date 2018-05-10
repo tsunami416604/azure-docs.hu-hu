@@ -3,23 +3,23 @@ title: Az egyszeri bejelentkezés felügyeleti a vállalati alkalmazásokhoz az 
 description: Egyszeri bejelentkezés beállításainak kezelése vállalati alkalmazások a szervezetben az Azure Active Directory alkalmazáskatalógusában
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
 editor: ''
-ms.assetid: bcc954d3-ddbe-4ec2-96cc-3df996cbc899
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 45141551c502c89311ab7e43b53af50450d8babd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ee8f30bc81d3c3bd0bf4659359a6ca3a9280f734
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Egyszeri bejelentkezés a vállalati alkalmazások kezelése
 
@@ -63,7 +63,7 @@ Ez az adott rendszergazdák megtekintéséhez és szerkesztéséhez a attribútu
 
 A támogatott csak szerkeszthető attribútum a **felhasználói azonosító** attribútum. Ez az attribútum értéke a mező az Azure ad-ben, amely egyedileg azonosítja az egyes felhasználói az alkalmazáson belül. Például ha az alkalmazás telepítve lett, az "E-mail cím" a felhasználónév és azonosítójának használatával, majd a volna értéke a "user.mail" mezőre az Azure ad-ben.
 
-### <a name="saml-signing-certificate"></a>SAML-aláíró tanúsítvány
+### <a name="saml-signing-certificate"></a>SAML-aláíró tanúsítványa
 Ez a szakasz az Azure AD a SAML kiadott jogkivonatokat, minden alkalommal, amikor a felhasználó hitelesíti magát az alkalmazás aláírásához használt tanúsítvány részleteit jeleníti meg. Lehetővé teszi a ellenőrizni kell, hogy az aktuális tanúsítvány tulajdonságainak többek között a lejárati dátum.
 
 ### <a name="application-configuration"></a>Alkalmazáskonfiguráció

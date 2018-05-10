@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: e593f58f6b92e562067401381cfce06d5fb18e29
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 78f29cd4a20861e40bb7f7f398979b8d93387a7b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript fejlesztői útmutató
 
@@ -302,7 +302,7 @@ module.exports = function(context) {
 Meg kell határozni egy `package.json` fájl, a függvény alkalmazás gyökérmappájában. Ennek révén a legjobb teljesítmény érdekében az azonos gyorsítótárazott csomagok megosztani az alkalmazásban funkciók meghatározása a fájl segítségével. Ha verziószáma, hogyan oldható meg hozzáadásával egy `package.json` fájl a mappában, egy adott funkció.  
 
 ## <a name="environment-variables"></a>Környezeti változók
-Egy környezeti változó vagy olyan alkalmazás, beállítás értékét, amelyet `process.env`, ahogy az az alábbi példakód:
+Egy környezeti változó vagy olyan alkalmazás, beállítás értékét, amelyet `process.env`, ahogy az itt látható a `GetEnvironmentVariable` függvény:
 
 ```javascript
 module.exports = function (context, myTimer) {

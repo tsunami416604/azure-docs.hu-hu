@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c90bc4945b613f386f98178949e5451e8fe3673
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: dce0114c19f6153d2cba789cdc00920d42834b2d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub a az identitásjegyzékhez ismertetése
 
@@ -193,7 +193,7 @@ Eszköz identitások helyettesítik JSON-dokumentumokat az alábbi tulajdonságo
 | ETag |szükség esetén csak olvasható |Egy karakterlánc, amely az eszköz identitásának gyenge ETag értékre megfelelően [RFC7232][lnk-rfc7232]. |
 | hitelesítés |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
 | auth.symkey |választható |Egy elsődleges és másodlagos kulcsot, amely egy összetett objektum base64 formátumban tárolja. |
-| status |Szükséges |Az access mutató. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz minden eszköz felé néző végpont nem érhető el. |
+| status |szükséges |Az access mutató. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz minden eszköz felé néző végpont nem érhető el. |
 | statusReason |választható |128 karakter hosszú karakterlánc, amely tárolja az eszköz identitása állapotát az az oka. Minden UTF-8 karakterek használhatók. |
 | statusUpdateTime |csak olvasható |A historikus mutató, a dátum és az utolsó frissítésének idejét. |
 | connectionState |csak olvasható |A kapcsolat állapotát jelző mező: vagy **csatlakoztatva** vagy **Disconnected**. Ez a mező képviseli az IoT Hub nézetben, az eszköz kapcsolati állapotát. **Fontos**: Ez a mező csak fejlesztési/hibakeresési célokra lehetne felhasználni. A kapcsolat állapota csak az eszközök MQTT vagy AMQP frissül. Is (MQTT ping-üzenetek, illetve AMQP ping-üzenetek) protokoll szintű ping-üzenetek alapul, és csak 5 perces késéssel veheti fel. Ezen okok miatt lehet téves, például a csatlakoztatott eszközöket jelentett, de, amely nem kapcsolódik. |
@@ -205,7 +205,7 @@ Eszköz identitások helyettesítik JSON-dokumentumokat az alábbi tulajdonságo
 
 ## <a name="module-identity-properties"></a>A modul identitás tulajdonságai
 
-Eszköz identitások helyettesítik JSON-dokumentumokat az alábbi tulajdonságokkal:
+Modul identitások helyettesítik JSON-dokumentumokat az alábbi tulajdonságokkal:
 
 | Tulajdonság | Beállítások | Leírás |
 | --- | --- | --- |
@@ -215,7 +215,7 @@ Eszköz identitások helyettesítik JSON-dokumentumokat az alábbi tulajdonságo
 | ETag |szükség esetén csak olvasható |Egy karakterlánc, amely az eszköz identitásának gyenge ETag értékre megfelelően [RFC7232][lnk-rfc7232]. |
 | hitelesítés |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
 | auth.symkey |választható |Egy elsődleges és másodlagos kulcsot, amely egy összetett objektum base64 formátumban tárolja. |
-| status |Szükséges |Az access mutató. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz minden eszköz felé néző végpont nem érhető el. |
+| status |szükséges |Az access mutató. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz minden eszköz felé néző végpont nem érhető el. |
 | statusReason |választható |128 karakter hosszú karakterlánc, amely tárolja az eszköz identitása állapotát az az oka. Minden UTF-8 karakterek használhatók. |
 | statusUpdateTime |csak olvasható |A historikus mutató, a dátum és az utolsó frissítésének idejét. |
 | connectionState |csak olvasható |A kapcsolat állapotát jelző mező: vagy **csatlakoztatva** vagy **Disconnected**. Ez a mező képviseli az IoT Hub nézetben, az eszköz kapcsolati állapotát. **Fontos**: Ez a mező csak fejlesztési/hibakeresési célokra lehetne felhasználni. A kapcsolat állapota csak az eszközök MQTT vagy AMQP frissül. Is (MQTT ping-üzenetek, illetve AMQP ping-üzenetek) protokoll szintű ping-üzenetek alapul, és csak 5 perces késéssel veheti fel. Ezen okok miatt lehet téves, például a csatlakoztatott eszközöket jelentett, de, amely nem kapcsolódik. |

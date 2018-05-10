@@ -1,25 +1,25 @@
 ---
-title: "Azure verem tervezése Azure verem tűzfal integrált rendszerek |} Microsoft Docs"
-description: "Több csomópontos Azure verem Azure csatlakozó rendszerekhez Azure verem tűzfal szempontokat ismerteti."
+title: Azure verem tervezése Azure verem tűzfal integrált rendszerek |} Microsoft Docs
+description: Több csomópontos Azure verem Azure csatlakozó rendszerekhez Azure verem tűzfal szempontokat ismerteti.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 05/09/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 919618c0779d47f0add02d5e7d3ab9ab4b5bdd10
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3d8a02cc540251d77b61cf0e5b7e2aa8292f1f5f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure verem tűzfal-integráció
 Javasoljuk, hogy a tűzfal eszközt használ-e biztonságos Azure verem segítségével. Bár tűzfalak segítségére lehetnek többek között elosztott-szolgáltatásmegtagadásos (DDOS-) támadások, a behatolás-észlelés és a tartalomvizsgálat a, a teljesítmény szűk keresztmetszetek az Azure storage szolgáltatások, például a blobot, táblát és üzenetsort is válnának is.
@@ -44,7 +44,7 @@ A NAT nyilvános VIP-címhez használatával downsides vannak:
 Jelenleg javasoljuk, hogy tiltsa le az összes Azure verem forgalom SSL visszafejtése. A jövőbeli frissítéseket támogatja, SSL visszafejtési Azure verem engedélyezésével kapcsolatos útmutatást fog adni.
 
 ## <a name="edge-firewall-scenario"></a>Peremhálózati tűzfal forgatókönyv
-Az él központi telepítése Azure verem közvetlenül a peremhálózati útválasztó vagy a tűzfal mögött van telepítve. Ezekben az esetekben, támogatott a tűzfalon a szegély vagy a szegély eszközként működő, ha az támogatja-e azonos költségű több útvonalas (ECMP) vagy a BGP, vagy a statikus útválasztás.
+Az él központi telepítése Azure verem közvetlenül a peremhálózati útválasztó vagy a tűzfal mögött van telepítve. Ezekben az esetekben a tűzfalat, hogy a szegély (1. forgatókönyv), ahol mindkét aktív-aktív és az aktív-passzív tűzfal-konfigurációk, és ha csak a támogatott aktív-aktív tűzfal és a szegély eszköz (2. forgatókönyv) működő támogatja felett azt esetén támogatott a konfigurációs függő az azonos költségű több útvonalas (ECMP) vagy a BGP, vagy a feladatátvételi statikus útválasztás.
 
 Általában nyilvános elérhető IP-címet adott meg a külső hálózati nyilvános virtuális IP-címkészletet a központi telepítéskor. Az edge esetben nem ajánlott nyilvános irányítható IP-címek használata bármely más hálózati biztonsági okokból. Ebben a forgatókönyvben lehetővé teszi, hogy a felhasználót, hogy a teljes önálló ellenőrzött felhő élményt, például az Azure nyilvános felhő mint tapasztalhat.  
 
@@ -59,7 +59,7 @@ A vállalati intranet vagy szegélyhálózat üzembe helyezés Azure-verem telep
 
 ![Az Azure verem szegélyhálózati hálózati – példa](.\media\azure-stack-firewall\perimeter-network-scenario.png)
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 További információ [Azure verem végpontok által használt portokról és protokollokról](azure-stack-integrate-endpoints.md).
 
 ## <a name="next-steps"></a>További lépések

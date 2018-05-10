@@ -9,11 +9,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 2da6b4e957c7e44f399866fd11853363f7424e7d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 12306b7868fa7fb2321f26657aab81beabb9db35
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális léptékű több főkiszolgálós 
  
@@ -22,6 +22,25 @@ Fejlesztés globálisan elosztott alkalmazásokat, amelyek válaszolni helyi ké
 ![Több főkiszolgálós architektúrája](./media/multi-region-writers/multi-master-architecture.png)
 
 Azure Cosmos DB több főkiszolgálós támogatással írási műveleteket végezheti el az adatok (például gyűjtemények, diagramokat, táblák) bárhol a világon elosztott tárolók. Bármely régióban-adatbázis fiókjához tartozó adatok frissítheti. E adatfrissítések terjeszteni aszinkron módon képes. A gyors hozzáférést és az adatok írási késése mellett, több főkiszolgálós is gyakorlati megoldást kínál a feladatátvétel és terheléselosztás problémák. Összefoglalva, az Azure Cosmos DB kapott írási késése < bárhol a globális, 99.999 % írási és olvasási rendelkezésre állás érdekében bárhol a világon, és mindkét méretezési képességét 99th érték: 10 ms írási és olvasási átviteli bárhol a világon.   
+
+> [!IMPORTANT]
+> Több főkiszolgálós funkció előzetes verzióját használja, magán előnézetben [regisztráljon](#sign-up-for-multi-master-support) most.
+
+## <a name="sign-up-for-multi-master-support"></a>Feliratkozás a több főkiszolgálós támogatása
+
+Ha már rendelkezik Azure-előfizetéssel, regisztrálhat az Azure-portálon a több főkiszolgálós preview program csatlakozni. Ha most ismerkedik az Azure-ba, regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/free) hol szerezheti Azure Cosmos DB szabad hozzáférési 12 hónapig. Kövesse az alábbi lépéseket, hogy hozzáférést igényelhessen a több főkiszolgálós programot.
+
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **hozzon létre egy erőforrást** > **adatbázisok** > **Azure Cosmos DB**.  
+
+2. Az új fiók lapon adja meg az Azure Cosmos DB fiók nevét, válassza ki a API, előfizetés, erőforráscsoportot és helyet.  
+
+3. Ezután válasszon **regisztráljon az előzetes verzióra még ma** Multi Mater Preview mező alatti.  
+
+   ![Regisztrálhat több főkiszolgálós előzetes verziójára](./media/multi-region-writers/sign-up-for-multi-master-preview.png)
+
+4. Az a **regisztráljon az előzetes verzióra még ma** ablaktáblán kattintson a **OK**. A kérelem elküldése után állapota **jóváhagyásra váró** a fiók létrehozása panelen.  
+
+A kérelem elküldése után meg, hogy a kérelem jóváhagyását e-mailben értesítést fog kapni. A nagy mennyiségű kérést, mert egy héten belül értesítést kell kapnia. Nem kell a kérés teljesítéséhez el egy támogatási jegy létrehozását. Kérelem érkezett volt sorrendben felül kell vizsgálni.
 
 ## <a name="a-simple-multi-master-example--content-publishing"></a>Egy egyszerű több főkiszolgálós példa – tartalom közzététele  
 

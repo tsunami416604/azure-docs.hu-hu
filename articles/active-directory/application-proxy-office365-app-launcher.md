@@ -1,25 +1,25 @@
 ---
-title: "Közzétett alkalmazások egyéni kezdőlapját beállítása az Azure AD-alkalmazásproxy használatával |} Microsoft Docs"
-description: "Ismerteti az alapvető tudnivalók az Azure AD-alkalmazásproxy-összekötő"
+title: Közzétett alkalmazások egyéni kezdőlapját beállítása az Azure AD-alkalmazásproxy használatával |} Microsoft Docs
+description: Ismerteti az alapvető tudnivalók az Azure AD-alkalmazásproxy-összekötő
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d31100015a11bc57d488f1d6af93db8526e38968
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1627f3590bd92f2460368cffab48d43c5a82d3c4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Közzétett alkalmazások egyéni kezdőlapját beállítása az Azure AD-alkalmazásproxy használatával
 
@@ -42,7 +42,7 @@ Mielőtt a kezdőlap URL-Címének beállításához vegye figyelembe az alábbi
 
 * Győződjön meg arról, hogy a megadott elérési út egy altartomány elérési útját a legfelső szintű tartomány URL-CÍMÉT.
 
-  Ha a legfelső szintű tartományi URL-CÍMÉT, például https://apps.contoso.com/app1/, a kezdőlap URL-címet, konfigurálnia kell kezdődnie https://apps.contoso.com/app1/.
+  Ha a legfelső szintű tartományi URL-címe, például https://apps.contoso.com/app1/, a kezdőlap URL-címet, konfigurálnia kell kezdődnie https://apps.contoso.com/app1/.
 
 * Ha módosítja a közzétett alkalmazáshoz, a módosítás lehet, hogy állítsa vissza a kezdőlap URL-címet. Ha a jövőben frissíti az alkalmazás, inkább újbóli ellenőrzéséhez és, ha szükséges, frissítse a kezdőlap URL-címe.
 

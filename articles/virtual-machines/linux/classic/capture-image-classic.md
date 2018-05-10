@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 29a1d5bc839fcf533973271638bf283d6e48e93b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6071e025352199c5ec559598a580a918c2e9c666
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>Klasszikus linuxos virtuális gép rögzítése lemezképként
 > [!IMPORTANT]
@@ -107,7 +107,7 @@ A lemezkép készen áll a virtuális gépek létrehozásához használható. Az
 
 Másik megoldásként használhatja a [Azure-portálon](http://portal.azure.com) használatával egyéni virtuális gép létrehozása a **kép** metódus és a létrehozott lemezkép kiválasztása. További információkért lásd: [egyéni virtuális gép létrehozása][How to Create a Custom Virtual Machine].
 
-**További információ:** [Azure Linux ügynök felhasználói útmutatója](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+**További információ:** [Azure Linux ügynök felhasználói útmutatója](../../extensions/agent-linux.md)
 
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom-classic.md

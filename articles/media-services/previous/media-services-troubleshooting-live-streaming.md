@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 7e2fe84c51f93bdeb6cd99e23624d1796aff6c1f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 84e3e9fc18671d7199eeaf638377a6681cf09fb4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Hibaelhárítási útmutató az élő streameléshez
-Ez a témakör nyújt javaslatokat élő adatfolyam-továbbítási problémák elhárításáról.
+Ez a cikk nyújt javaslatokat élő adatfolyam-továbbítási problémák elhárításáról.
 
 ## <a name="issues-related-to-on-premises-encoders"></a>A helyszíni kódolókkal kapcsolatos problémák
 Ez a szakasz a helyszíni kódolókkal egyféle sávszélességű adatfolyamot küldeni AMS élő kódolásra képes csatornák konfigurált kapcsolatos problémák elhárítása javaslatokat nyújt.
@@ -44,23 +44,10 @@ Ez a szakasz a helyszíni kódolókkal egyféle sávszélességű adatfolyamot k
     **Hibaelhárítási lépések**: Győződjön meg arról, hogy a kódoló van már nem kérdez le, hogy AMS, állítsa le, és állítsa alaphelyzetbe a csatornát. Ha újra futtatni, próbáljon a kódoló az új beállításokkal. Ha ezt még nem sikerül megoldani a problémát, próbálja meg létrehozni teljesen új csatornát, néha csatornák megsérül több meghiúsult próbálkozást követően.  
 * **Lehetséges probléma**: a rendszer a GOP méret és kulcskocka beállítások nem optimális. 
   
-    **Hibaelhárítási lépések**: GOP ajánlott méret vagy keyframe időköz érték 2 másodperc. Néhány kódolók kiszámításához képkockaszámát, ennek a beállításnak, míg mások használnak másodperc. Például: 30fps exportálásakor GOP méretének lenne 60 keretek, amely megegyezik 2 perc.  
+    **Hibaelhárítási lépések**: GOP ajánlott méret vagy keyframe időköz: két másodperc. Néhány kódolók kiszámításához képkockaszámát, ennek a beállításnak, míg mások használnak másodperc. Például: 30 fps exportálásakor GOP méretének lenne 60 keretek, amely megegyezik 2 perc.  
 * **Lehetséges probléma**: lezárt portok blokkolják az adatfolyam. 
   
-    **Hibaelhárítási lépések**: amikor streaming RTMP keresztül, ellenőrizze a tűzfal és/vagy a proxy beállításait, és győződjön meg arról, hogy 1935 és 1936 kimenő portjai nyitva-e. RTP streaming használatakor győződjön meg arról, hogy nyitva-e kimenő port: 2010. 
-
-### <a name="problem-when-configuring-the-encoder-to-stream-with-the-rtp-protocol-there-is-no-place-to-enter-a-host-name"></a>Probléma: A kódoló adatfolyam a RTP protokoll konfigurálásakor nincs nincs helyet adjon meg egy állomásnevet.
-* **Lehetséges probléma**: sok RTP kódolók állomásnevek nem engedélyezi, és egy IP-címet kell beolvasni.  
-  
-    **Hibaelhárítási lépések**: az IP-cím található, nyisson meg egy parancssort, minden olyan számítógépen. Ehhez a Windows, nyissa meg a Futtatás indító (WIN + K), és írja be a "cmd" lehetőségre.  
-  
-    Ha nyissa meg a parancssort, írja be a "Ping [AMS állomásnév]". 
-  
-    Az állomásnév, kihagyva a portot a Azure betöltési URL-címet, az alábbi példában a kijelölt származtathatók: 
-  
-    RTP://test2-amstest009.RTP.Channel.mediaservices.Windows.NET:2010 / 
-  
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
+    **Hibaelhárítási lépések**: amikor streaming RTMP keresztül, ellenőrizze a tűzfal és/vagy a proxy beállításait, és győződjön meg arról, hogy 1935 és 1936 kimenő portjai nyitva-e. 
 
 > [!NOTE]
 > Ha az még nem sikerült továbbíthat hibaelhárítási lépések után nyújt egy támogatási jegy az Azure portál használatával.

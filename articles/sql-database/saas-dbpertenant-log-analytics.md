@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 285b8d0acc8a6cbe1a6441a4aabf372de204309e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 02c380c78fa773b56a3c8b666e890836a3d8e54b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Állítson be és Naplóelemzési használja egy több-bérlős SQL adatbázis SaaS-alkalmazáshoz
 
@@ -65,7 +65,7 @@ A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazá
 
 A Naplóelemzési egy külön szolgáltatás, amelyet be kell állítani. A Naplóelemzési naplóadatokat, telemetriai adatok és metrikák Naplóelemzési munkaterület gyűjti. További erőforrások az Azure-ban, mint például a Naplóelemzési munkaterület kell létrehozni. A munkaterület nem szükséges, az általa figyelt alkalmazások ugyanabban az erőforráscsoportban hozható létre. Ez így gyakran az így a legtöbb, ha. A Wingtip jegyek alkalmazás esetén egyetlen erőforráscsoportként működnek segítségével győződjön meg arról, hogy a munkaterület törlése alkalmazásával.
 
-1. Nyissa meg a PowerShell ISE *... \\WingtipTicketsSaaS főkiszolgálós MultiTenantDb\\tanulási modulok\\Teljesítményfigyelő és felügyeleti\\Analytics jelentkezzen\\** bemutató-LogAnalytics.ps1***.
+1. Nyissa meg a PowerShell ISE *... \\WingtipTicketsSaaS főkiszolgálós MultiTenantDb\\tanulási modulok\\Teljesítményfigyelő és felügyeleti\\Analytics jelentkezzen\\bemutató-LogAnalytics.ps1*.
 2. A parancsfájl futtatásához nyomja le az F5 billentyűt.
 
 Most már ki tudja nyitni a Naplóelemzési az Azure-portálon vagy az Operations Management Suite portálját. A Naplóelemzési munkaterület gyűjthet, és láthatóvá tegye azt néhány percet vesz igénybe. A továbbiakban hagyja a rendszer diagnosztikai adatok összegyűjtése, a ennél is érdekesebb megoldást a szolgáltatás. 

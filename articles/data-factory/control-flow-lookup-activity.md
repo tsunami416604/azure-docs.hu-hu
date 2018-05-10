@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2018
+ms.date: 05/08/2018
 ms.author: shlo
-ms.openlocfilehash: 0a321de96b26b183432a30868829081c1656be3f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 18748aafa2b70d349f9914e2a8afc1c7477ca26e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Az Azure Data Factory keresési tevékenység
-Keresési tevékenység olvasására vagy külső forrásból kereshet egy rekord, a tábla neve vagy az érték használható. Erre a kimenetre a későbbi tevékenységek is hivatkozhatnak. 
 
-Keresési tevékenység akkor hasznos, ha azt szeretné, dinamikusan egy konfigurációs fájlban vagy egy adatforrást a fájlok, a rekordok és a táblázatok listájának lekérése. A tevékenység kimenetét további segítségével más tevékenységek hajtsa végre az adott feldolgozási csak azokat az elemeket.
+Keresési tevékenység használható bármelyik az ADF-támogatott adatforrás egy dataset beolvasása.  A következő esetekben használhatók:
+- Dinamikus meghatározásához mely objektumok (fájlok, táblák stb) működését a soron következő tevékenységek, helyett bekódolásának az objektum neve
+
+Keresési tevékenység olvashatja, és egy konfigurációs fájlban, konfigurációs táblázat vagy egy lekérdezés vagy tárolt eljárás végrehajtása eredményét tartalmát adja vissza.  Keresési tevékenység kimenetét a singleton értéke esetén egy további példányát vagy átalakítási tevékenység szerepel, illetve egy ForEach tevékenység szerepel, ha az attribútumok tömbjét.
 
 > [!NOTE]
 > Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd: [A Data Factory 1. verziójának dokumentációja](v1/data-factory-introduction.md).
@@ -33,7 +35,7 @@ A következő adatforrások jelenleg támogatott keresési:
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
-A keresési tevékenység által visszaadott sorok maximális száma **5000**, és legfeljebb **10MB** mérete.
+A keresési tevékenység által visszaadott sorok maximális száma **5000**, és legfeljebb **2MB** mérete.
 
 ## <a name="syntax"></a>Szintaxis
 

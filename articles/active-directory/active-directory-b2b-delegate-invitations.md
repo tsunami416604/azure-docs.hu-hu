@@ -1,26 +1,20 @@
 ---
-title: "Az Azure Active Directory B2B együttműködés meghívókat delegálása |} Microsoft Docs"
-description: "Az Azure Active Directory B2B együttműködés felhasználó tulajdonságainak konfigurálható"
+title: Az Azure Active Directory B2B együttműködés meghívókat delegálása |} Microsoft Docs
+description: Az Azure Active Directory B2B együttműködés felhasználó tulajdonságainak konfigurálható
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: facf0f62823c84742986c9fb585990d7fedb2ab1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a4a1303c3992b8c576650859eea65591392b9b20
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B együttműködés meghívókat delegálása
 
@@ -50,15 +44,10 @@ Alapértelmezés szerint a bérlők #4 vannak állítva. (Az összes olyan felha
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg az Azure AD B2B együttműködés további cikkeit:
+Az Azure AD B2B együttműködés, tekintse meg a következő cikkeket:
 
-* [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B együttműködés felhasználó tulajdonságai](active-directory-b2b-user-properties.md)
-* [Egy szerepkör B2B együttműködés felhasználók hozzáadása](active-directory-b2b-add-guest-to-role.md)
-* [Dinamikus csoportok és a B2B együttműködés](active-directory-b2b-dynamic-groups.md)
-* [B2B együttműködés kód és a PowerShell-példák](active-directory-b2b-code-samples.md)
-* [B2B együttműködés SaaS-alkalmazások konfigurálása](active-directory-b2b-configure-saas-apps.md)
-* [B2B együttműködés felhasználói jogkivonatokhoz](active-directory-b2b-user-token.md)
-* [B2B együttműködés felhasználói jogcímek leképezése](active-directory-b2b-claims-mapping.md)
-* [Külső Office 365-megosztás](active-directory-b2b-o365-external-user.md)
-* [B2B együttműködés aktuális korlátozásai](active-directory-b2b-current-limitations.md)
+- [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Adja hozzá a B2B együttműködés vendégfelhasználók nélkül](active-directory-b2b-add-user-without-invite.md)
+- [Egy szerepkör B2B együttműködés felhasználók hozzáadása](active-directory-b2b-add-guest-to-role.md)
+
+

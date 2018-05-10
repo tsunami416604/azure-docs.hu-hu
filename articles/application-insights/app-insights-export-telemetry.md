@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mbullwin
-ms.openlocfilehash: 05d271eb7d046819bb8fc2be20623cba0000d8f4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 942cc355c186b73e0b8802bfbf79ef8b4b39191a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="export-telemetry-from-application-insights"></a>Az Application Insights telemetria exportálása
 Szeretné megőrizni a telemetriai adat hosszabb, mint a szokásos megőrzési időszakot? Vagy valamilyen speciális módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portáljáról látható JSON formátumban a Microsoft Azure storage exportálhatja. Ott töltse le az adatok és bármit kódját, írási kell feldolgozni azt.  
 
-Használja a folyamatos exportálás járhat egy kell külön fizetni. Ellenőrizze a [fizetési modell](http://azure.microsoft.com/pricing/details/application-insights/).
+Használja a folyamatos exportálás járhat egy kell külön fizetni. Ellenőrizze a [fizetési modell](https://azure.microsoft.com/pricing/details/application-insights/).
 
 A folyamatos exportálás beállítása előtt van néhány más-érdemes figyelembe venni:
 

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/09/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: e6438c353d84510ee918df120e6d54df0607c89d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 752481186167fccb46d5bf3beb87c1507e0f4feb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk információival Azure verem hálózati infrastruktúra segítségével eldöntheti, hogyan Azure verem legjobb integrálhatók a meglévő hálózati környezethez. 
@@ -43,7 +43,7 @@ Az alábbi táblázat a logikai hálózatok és a kapcsolódó IPv4 alhálózati
 | Nyilvános VIP | Azure verem használ a hálózati 32 cím összesen. Nyolc nyilvános IP-címek használhatók a verem Azure-szolgáltatások egy kis készletét, és a többi bérlő virtuális gépek által használt. Ha tervezi az App Service és az SQL erőforrás-szolgáltató, 7 több címet használja. | / 26 (62 gazdagépek) – /22 (1022 gazdagép)<br><br>Ajánlott = /24 (254 gazdagép) | 
 | Kapcsoló-infrastruktúra | Pont-pont típusú IP-címek útválasztásra, dedikált felügyeleti felületek, és a kapcsoló rendelt visszacsatolási címek váltani. | /26 | 
 | Infrastruktúra | Való kommunikációhoz használt Azure verem belső összetevőnél. | /24 |
-| Saját | A tárolóhálózat és titkos virtuális IP-címek használata. | /24 | 
+| Privát | A tárolóhálózat és titkos virtuális IP-címek használata. | /24 | 
 | BMC | A bmc-k, a fizikai állomáson folytatott kommunikációhoz használandó. | /27 | 
 | | | |
 
@@ -70,7 +70,7 @@ Ez/24 van számára kijelölt hálózat belső Azure verem összetevők, hogy ko
 Ez/27 hálózati a kis közé az Azure-verem infrastruktúra-alhálózat már említettük, nem igényel nyilvános IP-címek, de azt internetelérés NAT vagy transzparens Proxy keresztül. Ez a hálózat oszt ki a sürgős helyreállítási konzol rendszer (ERCS) a, a ERCS VM internet-hozzáférést igényel, az Azure regisztrációs és infrastruktúra biztonsági mentés során. A ERCS virtuális Gépet a felügyeleti hálózathoz hibaelhárítási célból irányíthatóknak kell lenniük.
 
 ### <a name="public-vip-network"></a>Nyilvános virtuális IP-hálózat
-A nyilvános virtuális IP-hálózati hozzá van rendelve a hálózati vezérlő Azure-készletben. Egy logikai hálózatot a kapcsoló nincs. A SLB címek készletét használja, és hozzárendeli/32 hálózatokra vonatkozó bérlői munkaterheléseket. A kapcsoló-útválasztási táblázat ezek 32 IP-cím van-e hirdetve BGP keresztül a rendelkezésre álló útvonalként. Ez a hálózat a külső érhető el vagy nyilvános IP-címet tartalmaz. Az Azure-verem infrastruktúra a nyilvános virtuális IP-hálózati 8 címeket használ, amíg a többi bérlői virtuális gépek által használt. Az alhálózaton hálózati mérete között lehet (64 gazdagépek) /26 legalább /22 (1022 gazdagépek) legfeljebb, azt javasoljuk, hogy tervezi-e egy/24 hálózati.
+A nyilvános virtuális IP-hálózati hozzá van rendelve a hálózati vezérlő Azure-készletben. Egy logikai hálózatot a kapcsoló nincs. A SLB címek készletét használja, és hozzárendeli/32 hálózatokra vonatkozó bérlői munkaterheléseket. A kapcsoló-útválasztási táblázat ezek 32 IP-cím van-e hirdetve BGP keresztül a rendelkezésre álló útvonalként. Ez a hálózat a külső érhető el vagy nyilvános IP-címet tartalmaz. Az Azure-verem infrastruktúra az első 31 címet a nyilvános virtuális IP-hálózati foglalja le, amíg a többi bérlői virtuális gépek által használt. Az alhálózaton hálózati mérete között lehet (64 gazdagépek) /26 legalább /22 (1022 gazdagépek) legfeljebb, azt javasoljuk, hogy tervezi-e egy/24 hálózati.
 
 ### <a name="switch-infrastructure-network"></a>Infrastruktúra-hálózati kapcsoló
 Ez/26 hálózati az alhálózatot, amely tartalmazza a point-to-point irányítható IP/30-as (2 gazdagép IP-címekhez) alhálózat és a loopbacks, amelyek dedikált/32-alhálózatok sávon kapcsoló felügyeleti és BGP-útválasztó azonosítója. Lehet, hogy ezt az IP-címek irányítható kívülről, a Azure verem megoldás az adatközponthoz, azokat a magán- vagy nyilvános IP-cím lehet.

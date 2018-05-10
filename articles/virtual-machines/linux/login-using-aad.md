@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/01/2018
+ms.date: 05/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 1a2bb6def032d1790a67e458afb162402c1443a7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -43,14 +43,16 @@ A következő Linux terjesztésekről jelenleg az előzetes funkció támogatja:
 
 | Disztribúció | Verzió |
 | --- | --- |
-| Ubuntu Server | Ubuntu 16.04 LTS és Ubuntu Server 17.10 |
+| CentOS | CentOS 6.9 és 7.4 CentOS |
+| RedHat Enterprise Linux | RHEL 7 | 
+| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 és Ubuntu Server 17.10 |
 
 A következő Azure-régiók jelenleg az előzetes funkció támogatja:
 
-- USA déli középső régiója
+- Minden nyilvános Azure-régió
 
 >[!IMPORTANT]
-> Ezt az előzetes funkciót használ, csak telepítenie kell egy támogatott Linux distro és a támogatott Azure-régiót.
+> Ezt az előzetes funkciót használ, csak telepítenie kell egy támogatott Linux distro és a támogatott Azure-régiót. A funkció nem támogatott Azure Government vagy szuverén felhők.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -79,7 +81,7 @@ Jelentkezzen be az Azure AD hitelesítő adatokkal rendelkező Linux virtuális 
 
 ```azurecli-interactive
 az vm extension set \
-    --publisher Microsoft.Azure.ActiveDirectory.LinuxSSH.Edp \
+    --publisher Microsoft.Azure.ActiveDirectory.LinuxSSH \
     --name AADLoginForLinux \
     --resource-group myResourceGroup \
     --vm-name myVM

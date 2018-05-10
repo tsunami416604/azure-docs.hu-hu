@@ -8,15 +8,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: 853e8fbc0c7044dc97a29254bfd4130e7f81bbbd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: cce10ceb190ac90b57e77bfa5903b30b2c249a2c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="what-is-cognitive-search"></a>Mi az a kognitív keresési?
 
-Kognitív előzetes verziójú funkciók déli középső Régiójában és Nyugat-Európában, az indexelő munkaterhelések AI hozzáadó minden csomagban elérhető Azure keresési művelet. Adatok kinyerése, természetes nyelvű, és lemezkép feldolgozást indexelés során strukturálatlan vagy nem kereshető tartalom a rejtett információkat talál, és lehetővé teszi az Azure Search kereshető.
+Kognitív keresési az előzetes verziójú funkciók [Azure Search](search-what-is-azure-search.md), déli középső Régiójában és Nyugat-Európában, az indexelő munkaterhelések AI hozzáadó minden csomagban érhető el. Adatok kinyerése, természetes nyelvű, és lemezkép feldolgozást indexelés során strukturálatlan vagy nem kereshető tartalom a rejtett információkat talál, és lehetővé teszi az Azure Search kereshető.
 
 AI integrációra van keresztül *kognitív képességek* forrás dokumentumok szekvenciális folyamatok, a keresési indexhez útvonal kiegészítése, amely. 
 

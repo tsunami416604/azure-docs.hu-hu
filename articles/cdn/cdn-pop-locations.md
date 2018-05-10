@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-deasim
-ms.openlocfilehash: 8be750c309ed5a33dd658e5f1b41b0626e4f2357
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 3538b80b8acc239eee518db482ab14bb6f559d12
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cdn-pop-locations-by-region"></a>Az Azure CDN POP-helyek régió szerint
 > [!div class="op_single_selector"]
@@ -37,13 +37,13 @@ Ez a cikk felsorolja a jelenlegi nyújtó jelenléti pontra (POP) helyét, régi
 
 | Régió | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
-| Észak-Amerika | Toronto, Kanada<br />Querétaro, Mexico<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, Illinois, USA<br /> Dallas, TX, USA<br />Jelenti, CO, USA<br />Másik Debrecenben, CA, USA<br />Miami, FL, USA<br />New York közt, NY, USA<br />A Phoenix, AZ, USA<br />Quincy, WA, USA<br />San Antonio, TX, USA<br />Santa Clara, CA, USA<br />| Puebla, mexikói<br />Querétaro, Mexico<br />Atlanta –, ám, USA<br />Boston, MA, USA<br />Chicago, Illinois, USA<br />Dallas, TX, USA<br />Jelenti, CO, USA<br />Másik Debrecenben, CA, USA<br />Miami, FL, USA<br />New York közt, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Budapesti, WA, USA<br />Washington, tartományvezérlő, USA | Kanada<br />Mexikó<br />USA |
+| Észak-Amerika | Toronto, Kanada<br />Querétaro, Mexico<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, Illinois, USA<br /> Dallas, TX, USA<br />Jelenti, CO, USA<br />Másik Debrecenben, CA, USA<br />Miami, FL, USA<br />New York közt, NY, USA<br />A Phoenix, AZ, USA<br />Quincy, WA, USA<br />San Antonio, TX, USA<br />Santa Clara, CA, USA<br />| Hely, mexikói<br />Puebla, mexikói<br />Querétaro, Mexico<br />Atlanta –, ám, USA<br />Boston, MA, USA<br />Chicago, Illinois, USA<br />Dallas, TX, USA<br />Jelenti, CO, USA<br />Másik Debrecenben, CA, USA<br />Miami, FL, USA<br />New York közt, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Budapesti, WA, USA<br />Washington, tartományvezérlő, USA | Kanada<br />Mexikó<br />USA |
 | Dél-Amerika | Campinas, Brazília<br />A Rio de Janeiróban, Brazília<br />Santiago, Chilei | Buenos Aires, argentin<br />A Rio de Janeiróban, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chilei<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Minden jog fenntartva<br />Lima, Peru | Brazília<br />Peru |
-| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br />Marseilles, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Athén, Görögország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />Durham, UK<br />Londoni, UK<br />Manchester, UK | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Londoni, UK | Ausztria<br />Dánia<br />Franciaország<br />Németország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
+| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Athén, Görögország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />Durham, UK<br />Londoni, UK<br />Manchester, UK | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Bromma, svéd<br />Stockholm, Svédország<br />Londoni, UK | Ausztria<br />Dánia<br />Franciaország<br />Németország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
 | Afrika | Fokváros, Dél-Afrika<br />Johannesburg, Dél-Afrika | Johannesburg, Dél-Afrika | |
 | Közel-Kelet | | Muscat, Omán<br />Fujirah, Egyesült Arab emírségekbeli | Katar |
 | India | Chennai, India<br />Mumbai, India | Bangalore-i, India<br />Chennai, India<br />Delhi, India<br />Mumbai, India<br />Újdelhi, India<br /> | India |
-| Ázsia | Hongkong<br />Oszaka, japán<br />Tokió, Japán<br />Koreai Busan<br />Kuala Lumpur, malajziai<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Koreai Szöul déli régiója<br />Tajpej, Tajvan<br />Bangkok, Thaiföld | Hongkong<br />Batam, indonéziai<br />Dzsakarta, indonéziai<br />Oszaka, japán<br />Tokió, Japán<br />Szingapúr<br />Koreai Szöul déli régiója<br />Kaohsiung, Tajvan | Hongkong<br />Indonézia<br />Japán<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Tajvan<br />Thaiföld<br />Vietnam |
+| Ázsia | Hongkong<br />Oszaka, japán<br />Tokió, Japán<br />Kuala Lumpur, malajziai<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Koreai Szöul déli régiója<br />Tajpej, Tajvan<br />Bangkok, Thaiföld | Hongkong<br />Batam, indonéziai<br />Dzsakarta, indonéziai<br />Oszaka, japán<br />Tokió, Japán<br />Szingapúr<br />Koreai Busan déli régiója<br />Koreai Szöul déli régiója<br />Kaohsiung, Tajvan | Hongkong<br />Indonézia<br />Japán<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Tajvan<br />Thaiföld<br />Vietnam |
 | Ausztrália és Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 

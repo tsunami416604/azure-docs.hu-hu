@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a62d52e30b04b525dc8ff685ed6c3033d6029542
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>A Microsoft Azure virtuális Datacenter: Egy hálózati terv
 **A Microsoft Azure**: gyorsabb, költségtakarékosabb munkavégzésben, integrálása a helyszíni alkalmazások és adatok
@@ -101,7 +101,7 @@ ExpressRoute kapcsolatok foglal magában, amelyek révén az ExpressRoute-szolg�
 
 ## <a name="virtual-data-center-overview"></a>Virtuális adatközpont – áttekintés
 
-### <a name="topology"></a>topológia
+### <a name="topology"></a>Topológia
 Hub és küllők modell kiterjesztett a virtuális adatközpont egyetlen Azure régión belül
 
 [![1]][1]
@@ -192,7 +192,7 @@ Infrastruktúra-összetevőihez a következő funkciókat tartalmazza:
 -   [**UDR**][UDR]. Virtuális hálózati adatforgalom a rendszer útválasztási táblázat alapján alapértelmezés szerint történik. Felhasználó megadása útvonal egy egyéni útválasztási táblázat, amely a hálózati rendszergazdák társítható egy vagy több alhálózatból felülírja a rendszer útvonaltábla viselkedését, és meg a virtuális hálózaton belül a kommunikációs elérési utat. Udr-EK jelenléte biztosítja, hogy a kimenő forgalom a meghatározott egyéni virtuális gépek és/vagy a virtuális hálózati berendezések és a jelen, a központban és a küllők terheléselosztók küllős átmenő.
 -   [**NSG**][NSG]. Hálózati biztonsági csoport, amely a szűrést az IP-adatforrások, IP-cél, protokollok, IP-forrás portok és IP-cél portok forgalom összekötőként biztonsági szabályok listáját. Az NSG alhálózathoz, egy Azure virtuális Gépen, vagy mindkettőt társított virtuális hálózati kártya alkalmazhatók. Az NSG-k nélkülözhetetlenek a központban és a küllők megfelelő forgalomszabályozás végrehajtásához. Az NSG által biztosított biztonsági szintje, nyisson meg portokat, és milyen célból. További-a virtuális Gépenkénti szűrők például IPtables állomásalapú tűzfalaknak vagy a Windows tűzfal célszerű telepíteni.
 -   [**DNS**][DNS]. A névfeloldás az erőforrásoknak a Vnetek egy virtualizált tartományvezérlő, DNS-en keresztül valósul meg. Azure DNS-szolgáltatásokat is biztosít [nyilvános][DNS] és [titkos] [ PrivateDNS] nevek feloldása. Személyes zónák mind a virtuális hálózaton belül, és a virtuális hálózatok közötti névfeloldás biztosítása. Személyes zónák csak tartomány ugyanabban a régióban, hanem a régiókban és előfizetések virtuális hálózatok közötti lehet. A nyilvános feloldásához Azure DNS szolgáltatást biztosít a egy üzemeltetési DNS-tartományok biztosítani a névfeloldást a Microsoft Azure-infrastruktúra használatával. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
--   [** Előfizetés] [ SubMgmt] és [erőforráscsoport felügyeleti][RGMgmt]**. Előfizetés az erőforrások több csoport létrehozása az Azure-ban a természetes határ határozza meg. Előfizetés az erőforrások erőforráscsoportok nevű logikai tárolókban lévő együtt tartanak. Az erőforráscsoport egy virtualizált tartományvezérlő erőforrások rendszerezéséhez logikai csoport jelöli.
+-   [**Előfizetés** ] [ SubMgmt] és [ **erőforráscsoport felügyeleti**][RGMgmt]. Előfizetés az erőforrások több csoport létrehozása az Azure-ban a természetes határ határozza meg. Előfizetés az erőforrások erőforráscsoportok nevű logikai tárolókban lévő együtt tartanak. Az erőforráscsoport egy virtualizált tartományvezérlő erőforrások rendszerezéséhez logikai csoport jelöli.
 -   [**RBAC**][RBAC]. Szerepalapú, keresztül térkép szervezeti szerepkörhöz adott Azure-erőforrások, hogy lehetővé teszi a felhasználók korlátozása csak egy bizonyos részét műveletek hozzáférjenek együtt. Az RBAC a megfelelő szerepkör hozzárendelése a felhasználók, csoportok és alkalmazások megfelelő hatókörén belül szerint engedélyezheti a hozzáférést. Szerepkör-hozzárendelés hatóköre lehet az Azure-előfizetéssel, egy erőforráscsoport vagy egy erőforrást. Az RBAC lehetővé teszi, hogy az engedélyek öröklődése. A szülő hatókörben szerepkörrel is benne a gyermekek számára engedélyezi a hozzáférést. Az RBAC használata, elkülönítse a feladatokat, és csak olyan mértékű hozzáférést biztosítania a felhasználóknak a feladataik elvégzéséhez szükséges. Például, hogy egy előfizetésben található virtuális gépek kezeléséhez, miközben egy másik SQL-adatbázisok kezelhető egyazon előfizetésen belül egy alkalmazott RBAC használatát.
 -   [**VNet-társviszony létesítése –**][VNetPeering]. Az alapvető egy virtualizált tartományvezérlő infrastruktúrája létrehozásához használt szolgáltatása Vnetben társviszony-létesítést, egy olyan mechanizmus, amely összeköti a két virtuális hálózatokról (Vnetekről) és az Azure adatközpont-hálózat, illetve Azure világszerte gerincét használatával különböző régiókban ugyanabban a régióban.
 

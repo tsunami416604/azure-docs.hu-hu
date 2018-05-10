@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: v-deasim
-ms.openlocfilehash: c7681d6ed867f218eb871f1e96c18d00813798af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fe1f61c7242cf4213b19e9496d557ae7a2253fe8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabályok motor-funkciók
 Ez a cikk részletes leírását tartalmazza az elérhető szolgáltatások az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
@@ -392,7 +392,7 @@ Ez a szolgáltatás konfigurálása a következő beállításokat is meghatáro
 Beállítás|Leírás
 --|--
 Eredeti elérési útja| A relatív elérési út megadása, amelynek gyorsítótárkulcshoz rendszer újraírja kérelmek típusú. Relatív elérési útnak egy alap forrás elérési útvonalának kiválasztásával, és egy Reguláriskifejezés-mintának majd meghatározása definiálhatók.
-Új elérési útja|Adja meg az új gyorsítótár-kulcs relatív elérési útja. Relatív elérési útnak egy alap forrás elérési útvonalának kiválasztásával, és egy Reguláriskifejezés-mintának majd meghatározása definiálhatók. A relatív elérési út dinamikusan összeállított változók HTTP használatával
+Új elérési útja|Adja meg az új gyorsítótár-kulcs relatív elérési útja. Relatív elérési útnak egy alap forrás elérési útvonalának kiválasztásával, és egy Reguláriskifejezés-mintának majd meghatározása definiálhatók. A relatív elérési út dinamikusan összeállított használatával [HTTP változók](cdn-http-variables.md).
 **Alapértelmezés:** egy kérelem gyorsítótár-kulcs határozza meg a kérelem URI-azonosítója.
 
 [Lap tetejére](#azure-cdn-rules-engine-features)
@@ -884,9 +884,9 @@ A következő műveletek valamelyikét hajthatja végre, a fejléc:
 
 Beállítás|Leírás|Példa
 -|-|-
-Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő kérelem fejléc értékének végéhez.|**A kérelem fejléc értéke (ügyfél):** érték1 <br/> **Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** Value1Value2
-Felülírás|A kérelem fejléc értéke lesz a megadott értékre.|**A kérelem fejléc értéke (ügyfél):** érték1 <br/>**Kérelem fejléc értéke (HTTP szabálymotor):** érték2 <br/>**Új kérelem fejléc értéke:** érték2 <br/>
-Törlés|Törli a megadott kérelemfejlécet.|**A kérelem fejléc értéke (ügyfél):** érték1 <br/> **Ügyfél fejléc konfigurációjának módosítása:** törölje a szóban forgó kérelemfejlécet. <br/>**Eredmény:** a megadott kérelemfejlécet a rendszer nem továbbítja az eredeti kiszolgálóra.
+Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő kérelem fejléc értékének végéhez.|**A kérelem fejléc értéke (ügyfél):**<br/>Érték1<br/>**A kérelem fejléc értéke (szabálymotor):**<br/>Érték2 <br/>**Új kérelem fejléc értéke:** <br/>Value1Value2
+Felülírás|A kérelem fejléc értéke lesz a megadott értékre.|**A kérelem fejléc értéke (ügyfél):**<br/>Érték1<br/>**A kérelem fejléc értéke (szabálymotor):**<br/>Érték2<br/>**Új kérelem fejléc értéke:**<br/> Érték2 <br/>
+Törlés|Törli a megadott kérelemfejlécet.|**A kérelem fejléc értéke (ügyfél):**<br/>Érték1<br/>**Ügyfél kérelem fejléc konfigurációjának módosítása:**<br/>Törölje a szóban forgó kérelemfejlécet.<br/>**Eredmény:**<br/>A megadott kérelemfejlécet a rendszer nem továbbítja az eredeti kiszolgálóra.
 
 Kapcsolatos információkat:
 
@@ -922,9 +922,9 @@ A következő műveletek egyikét a válaszfejléc hajtható végre:
 
 Beállítás|Leírás|Példa
 -|-|-
-Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő válasz fejléc értékének végéhez.|**Válasz állomásfejléc-érték (ügyfél):** érték1 <br/> **Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** Value1Value2
-Felülírás|A válasz fejléc értéke lesz a megadott értékre.|**Válasz állomásfejléc-érték (ügyfél):** érték1 <br/>**Válasz állomásfejléc-érték (HTTP szabálymotor):** érték2 <br/>**Új válasz állomásfejléc-érték:** érték2 <br/>
-Törlés|Törli a megadott válaszfejlécet.|**Válasz állomásfejléc-érték (ügyfél):** érték1 <br/> **Ügyfél válaszfejléc konfigurációjának módosítása:** törölje a szóban forgó válaszfejlécet. <br/>**Eredmény:** a megadott válaszfejlécet a rendszer nem továbbítja a kérelmezőnek.
+Hozzáfűzés|A megadott értékét a rendszer hozzáadja a meglévő válasz fejléc értékének végéhez.|**Válasz állomásfejléc-érték (ügyfél):**<br />Érték1<br/>**Válasz állomásfejléc-érték (szabálymotor):**<br/>Érték2<br/>**Új válasz állomásfejléc-érték:**<br/>Value1Value2
+Felülírás|A válasz fejléc értéke lesz a megadott értékre.|**Válasz állomásfejléc-érték (ügyfél):**<br/>Érték1<br/>**Válasz állomásfejléc-érték (szabálymotor):**<br/>Érték2 <br/>**Új válasz állomásfejléc-érték:**<br/>Érték2 <br/>
+Törlés|Törli a megadott válaszfejlécet.|**Válasz állomásfejléc-érték (ügyfél):**<br/>Érték1<br/>**Ügyfél válasz fejléce konfigurációjának módosítása:**<br/>Törölje a szóban forgó válaszfejlécet.<br/>**Eredmény:**<br/>A megadott válaszfejlécet a rendszer nem továbbítja a kérelmezőnek.
 
 Kapcsolatos információkat:
 
@@ -998,7 +998,7 @@ Kapcsolatos információkat:
 - CDN-specifikus fejléc továbbított érdekében listáról való eltávolításához szóközökkel elválasztott lista fejlécmező található.
 
 A következő HTTP-fejléceket az alapértelmezett listában szerepelnek:
-- keresztül
+- Ezzel
 - X-továbbított-számára
 - X továbbított protokoll
 - X-állomás
@@ -1234,8 +1234,8 @@ Ez a szolgáltatás konfigurációját igényli, a következő beállítások me
 Beállítás|Leírás
 -|-
 Kód|Válassza ki a kérelmezőnek visszaadott válaszának kódja.
-Forrás & minta| Ezek a beállítások megadása a kérelem URI-minta, amely azonosítja a típusát, hogy előfordulhat, hogy átirányítja kérelem. A rendszer átirányítja az URL-cím megfelel a következő feltételek közül mind egyetlen kérelmeket: <br/> <br/> **Forrás (vagy a tartalom-hozzáférési pont):** válasszon, amely azonosítja az eredeti kiszolgálóra relatív elérési utat. Ez az elérési út a _/XXXX/_ szakasz és a végpont neve. <br/> **Forrás (minta):** egy mintát, amely azonosítja a kérelmek relatív elérési utat kell megadni. A reguláris kifejezési minta definiálnia kell egy elérési utat, amely elindítja közvetlenül után a korábban kiválasztott tartalom-hozzáférési pont (lásd fent). <br/> -Győződjön meg arról, hogy a kérelem URI (Ez azt jelenti, hogy a forrás & mintát) korábban megadott feltételek nem ütközik a szolgáltatáshoz tartozó bármely egyezés egyiknek. <br/> -Adjon meg egy minta; a mintát üres értéket használja, ha az összes karakterlánc teljesül.
-Cél| Határozza meg azt az URL-címet, amelyre a fenti kérelmek irányítja. <br/> Az URL-cím használatával dinamikusan össze: <br/> -A reguláris kifejezési minta <br/>-HTTP változók <br/> Helyettesítse be a cél minta $ használatával a forrás mintában rögzített értékek_n_ ahol _n_ azonosítja a sorrendet, amelyben rögzítésének értéket. $1 például közben $2 második értékét jelöli az adatforrás a mintában rögzített első értékét jelöli. <br/> 
+Forrás & minta| Ezek a beállítások megadása a kérelem URI-minta, amely azonosítja a típusát, hogy előfordulhat, hogy átirányítja kérelem. A rendszer átirányítja az URL-cím megfelel a következő feltételek közül mind egyetlen kérelmeket: <br/> <br/> **Forrás (vagy a tartalom-hozzáférési pont):** válasszon, amely azonosítja az eredeti kiszolgálóra relatív elérési utat. Ez az elérési út a _/XXXX/_ szakasz és a végpont neve. <br/><br/> **Forrás (minta):** egy mintát, amely azonosítja a kérelmek relatív elérési utat kell megadni. A reguláris kifejezési minta definiálnia kell egy elérési utat, amely elindítja közvetlenül után a korábban kiválasztott tartalom-hozzáférési pont (lásd fent). <br/> -Győződjön meg arról, hogy a kérelem URI (Ez azt jelenti, hogy a forrás & mintát) korábban megadott feltételek nem ütközik a szolgáltatáshoz tartozó bármely egyezés egyiknek. <br/> -Adjon meg egy minta; a mintát üres értéket használja, ha az összes karakterlánc teljesül.
+Cél| Határozza meg azt az URL-címet, amelyre a fenti kérelmek irányítja. <br/><br/> Az URL-cím használatával dinamikusan össze: <br/> -A reguláris kifejezési minta <br/>- [HTTP-változók](cdn-http-variables.md) <br/><br/> Helyettesítse be a cél minta $ használatával a forrás mintában rögzített értékek_n_ ahol _n_ azonosítja a sorrendet, amelyben rögzítésének értéket. $1 például közben $2 második értékét jelöli az adatforrás a mintában rögzített első értékét jelöli. <br/> 
 Ajánlott egy abszolút URL-CÍMÉT használja. Egy relatív URL-cím használatát előfordulhat, hogy CDN URL-címének átirányítása elérési út érvénytelen.
 
 **Mintaforgatókönyv**
@@ -1276,8 +1276,8 @@ Kapcsolatos információkat:
 
 Beállítás|Leírás
 -|-
- Forrás & minta | Ezek a beállítások határozzák meg a kérelem URI-minta, amely azonosítja a típusát, hogy előfordulhat, hogy be kell írni kérelem. URL-cím megfelel a következő feltételek közül mind egyetlen kérelmek felülíródik: <br/>     - **Forrás (vagy a tartalom-hozzáférési pont):** válasszon, amely azonosítja az eredeti kiszolgálóra relatív elérési utat. Ez az elérési út a _/XXXX/_ szakasz és a végpont neve. <br/> - **Forrás (minta):** egy mintát, amely azonosítja a kérelmek relatív elérési utat kell megadni. A reguláris kifejezési minta definiálnia kell egy elérési utat, amely elindítja közvetlenül után a korábban kiválasztott tartalom-hozzáférési pont (lásd fent). <br/> Győződjön meg arról, hogy a kérelem URI (Ez azt jelenti, hogy a forrás & mintát) korábban megadott feltételek nem ütközik a egyezés feltételek, a szolgáltatáshoz tartozó definiálva. Adjon meg egy minta; a mintát üres értéket használja, ha az összes karakterlánc teljesül. 
- Cél  |Adja meg, amelyhez a fenti kérelmek felülíródik által relatív URL-címe: <br/>    1. A tartalom-hozzáférési pont, amely azonosítja az eredeti kiszolgálóra kiválasztása. <br/>    2. Annak meghatározása, egy relatív elérési út használatával: <br/>        -A reguláris kifejezési minta <br/>        -HTTP változók <br/> <br/> Helyettesítse be a cél minta $ használatával a forrás mintában rögzített értékek_n_ ahol _n_ azonosítja a sorrendet, amelyben rögzítésének értéket. $1 például közben $2 második értékét jelöli az adatforrás a mintában rögzített első értékét jelöli. 
+ Forrás & minta | Ezek a beállítások határozzák meg a kérelem URI-minta, amely azonosítja a típusát, hogy előfordulhat, hogy be kell írni kérelem. URL-cím megfelel a következő feltételek közül mind egyetlen kérelmek felülíródik: <br/><br/>  - **Forrás (vagy a tartalom-hozzáférési pont):** válasszon, amely azonosítja az eredeti kiszolgálóra relatív elérési utat. Ez az elérési út a _/XXXX/_ szakasz és a végpont neve. <br/><br/> - **Forrás (minta):** egy mintát, amely azonosítja a kérelmek relatív elérési utat kell megadni. A reguláris kifejezési minta definiálnia kell egy elérési utat, amely elindítja közvetlenül után a korábban kiválasztott tartalom-hozzáférési pont (lásd fent). <br/> Győződjön meg arról, hogy a kérelem URI (Ez azt jelenti, hogy a forrás & mintát) korábban megadott feltételek nem ütközik a egyezés feltételek, a szolgáltatáshoz tartozó definiálva. Adjon meg egy minta; a mintát üres értéket használja, ha az összes karakterlánc teljesül. 
+ Cél  |Adja meg, amelyhez a fenti kérelmek felülíródik által relatív URL-címe: <br/>    1. A tartalom-hozzáférési pont, amely azonosítja az eredeti kiszolgálóra kiválasztása. <br/>    2. Annak meghatározása, egy relatív elérési út használatával: <br/>        -A reguláris kifejezési minta <br/>        - [HTTP-változók](cdn-http-variables.md) <br/> <br/> Helyettesítse be a cél minta $ használatával a forrás mintában rögzített értékek_n_ ahol _n_ azonosítja a sorrendet, amelyben rögzítésének értéket. $1 például közben $2 második értékét jelöli az adatforrás a mintában rögzített első értékét jelöli. 
  Ez a funkció lehetővé teszi, hogy a POP az URL-cím újraírása egy hagyományos átirányítás végrehajtása nélkül. Ez azt jelenti, hogy a kérelmező megkapja a azonos válaszkód, mintha csak egy átírt URL-CÍMÉT kellett lett kérve.
 
 **Példa: 1. forgatókönyv**

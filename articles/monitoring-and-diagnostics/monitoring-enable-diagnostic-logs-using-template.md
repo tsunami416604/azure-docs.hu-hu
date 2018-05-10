@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 76021642073c7463254f51e84efd9af459af2244
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5b372ae5a7ff2ad26e4bb83675f592df3f08931b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikus engedélyezés a Resource Manager-sablon használatával erőforrás létrehozásakor diagnosztikai beállítások
 Ebben a cikkben megmutatjuk, hogyan használható egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) létrehozásakor erőforrás diagnosztikai beállításainak konfigurálására. Ez lehetővé teszi, hogy automatikusan elindítja a diagnosztikai naplók és a mérni kívánt Event Hubs tárfiókokban archiválás őket, vagy Naplóelemzési elküldi őket egy erőforrás létrehozásakor.
@@ -259,7 +259,7 @@ Ahhoz, hogy a számítási erőforrás diagnosztikai, például egy virtuális g
 3. Adja hozzá a WADCfg XML-fájl tartalmát a XMLCfg tulajdonság, a megfelelő escape-karaktersorozat összes XML-karakter.
 
 > [!WARNING]
-> Ezen utolsó lépésében megszerezni a helyes megkapni. [Ebben a cikkben találhat](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) , amely felosztja a diagnosztika konfigurációs séma escape-karakterrel megjelölve, és megfelelő formátumú változók példát.
+> Ezen utolsó lépésében megszerezni a helyes megkapni. [Ebben a cikkben találhat](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) , amely felosztja a diagnosztika konfigurációs séma escape-karakterrel megjelölve, és megfelelő formátumú változók példát.
 > 
 > 
 

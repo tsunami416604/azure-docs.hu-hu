@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 80ae3b526ff429ead5b42769237ce9ee30f30bbd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -172,7 +172,7 @@ Miután sikeresen engedélyezte a biztonsági mentés, a biztonsági mentési h�
 Ha problémába ütközik a virtuális gép rögzítése, tekintse meg a következő információkat a Virtuálisgép-ügynök telepítése és a hálózati kapcsolatot. Ha az Azure-ban létrehozott virtuális gépek védelmét valószínűleg nem kell a következő információkat. De ha áttelepítette a virtuális gépek Azure-ba, lehet, hogy a Virtuálisgép-ügynök megfelelően telepítve, és, hogy a virtuális gép kommunikálhatnak-e a virtuális hálózat.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>A Virtuálisgép-ügynök telepítése a virtuális gépen
-A biztonsági mentés bővítmény használatához az Azure [Virtuálisgép-ügynök](../virtual-machines/windows/agent-user-guide.md) telepíteni kell az Azure virtuális géphez. Ha a virtuális gép létrehozása az Azure piactérről, a Virtuálisgép-ügynök már telepítve a virtuális gép. 
+A biztonsági mentés bővítmény használatához az Azure [Virtuálisgép-ügynök](../virtual-machines/extensions/agent-windows.md) telepíteni kell az Azure virtuális géphez. Ha a virtuális gép létrehozása az Azure piactérről, a Virtuálisgép-ügynök már telepítve a virtuális gép. 
 
 Olyan esetekben, ahol a következő információ *nem* használatával egy virtuális gép létrehozása az Azure piactérről. Például végezte az áttelepítést egy virtuális Gépet egy olyan helyszíni adatközpontban. Ebben az esetben a Virtuálisgép-ügynök telepítve kell lennie ahhoz, hogy a virtuális gép védelmét.
 
@@ -180,9 +180,9 @@ Ha problémába ütközik az Azure virtuális gép biztonsági mentéséről, az
 
 | **Művelet** | **Windows** | **Linux** |
 | --- | --- | --- |
-| A Virtuálisgép-ügynök telepítése |Töltse le és telepítse az [ügynök MSI-t](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokat igényel. |Telepítse a legújabb [Linux-ügynök](../virtual-machines/linux/agent-user-guide.md). A telepítés befejezéséhez rendszergazdai jogosultságokat igényel. Azt javasoljuk, hogy az ügynök telepítése a telepítési tárházból. A Microsoft *nem javasoljuk* közvetlenül a Githubból a Linux Virtuálisgép-ügynök telepítése.  |
-| A virtuális gép ügynökének frissítése |A Virtuálisgép-ügynök frissítése már egyszerűen újratelepítése a [virtuális gép ügynök bináris fájljai](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br><br>Győződjön meg róla, hogy nem fut biztonsági mentési művelet a virtuálisgép-ügynök frissítése közben. |Kövesse az utasításokat [Linux ügynök frissítése](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Azt javasoljuk, hogy a terjesztési tárházból az ügynök frissítése. A Microsoft *nem javasoljuk* közvetlenül a Githubból a Linux Virtuálisgép-ügynök frissítése.<br><br>Győződjön meg róla, hogy nem fut biztonsági mentési művelet a virtuálisgép-ügynök frissítése közben. |
-| A Virtuálisgép-ügynök telepítésének ellenőrzése |1. Keresse meg az Azure virtuális Gépen a C:\WindowsAzure\Packages mappát. <br><br>2. WaAppAgent.exe fájl található. <br><br>3. Kattintson jobb gombbal a fájlra, válassza a **Tulajdonságok** parancsot, majd nyissa meg a **Részletek** lapot. A **termékverzió** mező lehet 2.6.1198.718 vagy újabb verzióját. |– |
+| A virtuálisgép-ügynök telepítése |Töltse le és telepítse az [ügynök MSI-t](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságok szükségesek. |<li> Telepítse a legújabb [Linux-ügynök](../virtual-machines/extensions/agent-linux.md). A telepítés befejezéséhez rendszergazdai jogosultságok szükségesek. Azt javasoljuk, hogy a terjesztési tárházból ügynök telepítése. A Microsoft **nem javasoljuk** közvetlenül a githubból telepítése Linux Virtuálisgép-ügynök.  |
+| A virtuálisgép-ügynök frissítése |A virtuálisgép-ügynök frissítése a [virtuálisgép-ügynök bináris fájljainak](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) újratelepítéséből áll. <br>Győződjön meg róla, hogy nem fut biztonsági mentési művelet a virtuálisgép-ügynök frissítése közben. |Kövesse a [linuxos virtuálisgép-ügynök frissítését](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ismertető szakasz utasításait. Azt javasoljuk, hogy a terjesztési tárházból ügynök frissítése. A Microsoft **nem javasoljuk** közvetlenül a githubból frissítése Linux Virtuálisgép-ügynök.<br>Győződjön meg róla, hogy nem fut biztonsági mentési művelet a virtuálisgép-ügynök frissítése közben. |
+| A virtuálisgép-ügynök telepítésének érvényesítése |<li>Lépjen a *C:\WindowsAzure\Packages* mappába az Azure virtuális gépen. <li>Itt találja a WaAppAgent.exe fájlt.<li> Kattintson jobb gombbal a fájlra, válassza a **Tulajdonságok** parancsot, majd nyissa meg a **Részletek** lapot. A Termék verziószáma mezőben 2.6.1198.718 vagy újabb verziónak kell lennie. |– |
 
 ### <a name="backup-extension"></a>Backup bővítmény
 A virtuális gépen a Virtuálisgép-ügynök telepítése után az Azure Backup szolgáltatás a Virtuálisgép-ügynök telepítése a tartalék mellék. A biztonsági mentési szolgáltatás zökkenőmentesen frissíti, és a tartalék mellék javításokkal.

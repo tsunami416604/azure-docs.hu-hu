@@ -6,8 +6,8 @@ documentationcenter: ''
 author: asmalser
 manager: mtillman
 editor: ''
-ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: bded73b4a335dc85a84691f5edabac5055f43cca
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b57c6841566f3fd75ca0c48e055f54513247cb30
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Vállalati alkalmazások az Azure portálon kiépítés felhasználói fiók kezelése
 Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azure.com) automatikus felhasználói fiók üzembe helyezést és megszüntetést újra a számítógépet, amelyek támogatják ezt, különösen azokat, a "kiemelt" kategóriából a ahozzáadottalkalmazásokkezelése[ Az Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése és annak működéséről kapcsolatos további információkért lásd: [Felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-app-provisioning.md).
@@ -45,12 +45,12 @@ A **kiépítési** ablaktábla kezdődik egy **mód** menü, amely bemutatja, mi
 Válassza a **automatikus** beállítás, amely négy részből oszlik képernyő jelenik meg:
 
 ### <a name="admin-credentials"></a>Rendszergazdai hitelesítő adatok
-Ez azért, ahol a hitelesítő adatokat az alkalmazás felhasználói felügyeleti API van-e megadva csatlakozni az Azure AD szükséges. A szükséges adatokat az alkalmazástól függően változik. A hitelesítőadat-típusok és adott alkalmazásokra vonatkozó követelmények, lásd: a [konfigurációs oktatóanyag az adott alkalmazás](active-directory-saas-app-provisioning.md).
+Ebben a szakaszban, ahol a hitelesítő adatokat az alkalmazás felhasználói felügyeleti API van-e megadva csatlakozni az Azure AD szükséges. A szükséges adatokat az alkalmazástól függően változik. A hitelesítőadat-típusok és adott alkalmazásokra vonatkozó követelmények, lásd: a [konfigurációs oktatóanyag az adott alkalmazás](active-directory-saas-app-provisioning.md).
 
 Válassza a **kapcsolat tesztelése** gomb lehetővé teszi a hitelesítő adatok tesztelése azzal, hogy az Azure AD kísérlet az alkalmazáshoz tartozó kiépítés alkalmazásokhoz a megadott hitelesítő adatok használatával.
 
 ### <a name="mappings"></a>Leképezések
-Ez az adott rendszergazdák megtekintéséhez és szerkesztéséhez, milyen felhasználói attribútumok folyamat az Azure AD között és a célalkalmazás, ha a felhasználói fiókok vannak kiépítésekor vagy frissítésekor.
+Ebben a szakaszban, ahol rendszergazdák megtekintéséhez és szerkesztéséhez, milyen felhasználói attribútumok folyamat között az Azure AD és a célalkalmazás, ha a felhasználói fiókok vannak kiépítésekor vagy frissítésekor.
 
 Nincs olyan előre konfigurált megfeleltetéseket az Azure AD felhasználói és minden SaaS-alkalmazás felhasználói objektumok között. Egyes alkalmazások más típusú objektumok, például a csoportok vagy névjegyek kezelése. Egyikének kiválasztásával a leképezések az a táblázat a jobbra, ahol azok megtekinthetők és testre szabott hozzárendelési szerkesztőt.
 
@@ -59,13 +59,13 @@ Nincs olyan előre konfigurált megfeleltetéseket az Azure AD felhasználói é
 Támogatott testreszabások a következők:
 
 * Engedélyezése és letiltása adott objektumok, például az SaaS-alkalmazás felhasználói objektum az az Azure AD felhasználói objektum leképezéseit.
-* Szerkesztés az alkalmazás felhasználói objektum az az Azure AD-felhasználói objektum áramolnak mely attribútumok. További információ a címtárattribútum-leképezésben: [attribútum hozzárendelési típusokhoz ismertetése](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
-* Szűrje az Azure AD hajt végre a célzott alkalmazás üzembe helyezési műveleteket. Ahelyett, hogy az Azure AD teljesen-objektumokat szinkronizálni, korlátozhatja a végrehajtott műveletekről. Például kiválasztásával csak **frissítés**, az Azure AD csak frissítések meglévő felhasználói fiókok az alkalmazásban, és nem hoz létre újakat. Csak kiválasztásával **létrehozása**, Azure csak új felhasználói fiókokat hoz létre, de nem frissíti a már meglévőket. Ez a funkció lehetővé teszi, hogy a rendszergazdák számára, hogy a fiók létrehozásához különböző hozzárendelések létrehozása és frissítése a munkafolyamatok.
+* Az attribútumokat, amelyek az Azure AD-felhasználói objektum haladjanak, az alkalmazás felhasználói objektum szerkesztéséhez. További információ a címtárattribútum-leképezésben: [attribútum hozzárendelési típusokhoz ismertetése](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
+* Szűrje az Azure AD hajt végre a célzott alkalmazás üzembe helyezési műveleteket. Ahelyett, hogy a teljes szinkronizálás az objektumok az Azure AD, korlátozhatja a végrehajtott műveletekről. Például kiválasztásával csak **frissítés**, az Azure AD csak frissítések meglévő felhasználói fiókok az alkalmazásban, és nem hoz létre újakat. Csak kiválasztásával **létrehozása**, Azure csak új felhasználói fiókokat hoz létre, de nem frissíti a már meglévőket. Ez a funkció lehetővé teszi, hogy a rendszergazdák számára, hogy a fiók létrehozásához különböző hozzárendelések létrehozása és frissítése a munkafolyamatok.
 
 ### <a name="settings"></a>Beállítások
 Ez a szakasz lehetővé teszi, hogy a rendszergazdák számára, hogy a start és állítsa le az Azure AD a kijelölt alkalmazás, szolgáltatás kiépítését, valamint a nem kötelező a kiépítési gyorsítótárának, és indítsa újra a szolgáltatást.
 
-Ha a kiépítés alatt engedélyezve van az alkalmazás első alkalommal, kapcsolja be a szolgáltatás módosításával a **kiépítési állapot** való **a**. Ennek hatására az Azure AD szolgáltatás kiépítését végrehajtásához egy kezdeti szinkronizálást, ahol a felhasználók a olvassa be a **felhasználók és csoportok** szakaszban azokat a célalkalmazás lekérdezi és hajtja végre az üzembe helyezési általuk meghatározott műveletek az Azure AD-ben **hozzárendelések** szakasz. A folyamat során a létesítési szolgáltatás milyen felhasználói fiókok kezel, a gyorsítótárazott adatokat tárolja, hogy a nem kezelt fiókok belül a célalkalmazások soha nem található a hozzárendelési hatókör megszüntetést műveletek nem érinti. A kezdeti szinkronizálást követően a létesítési szolgáltatás automatikusan szinkronizálja a felhasználói és csoportobjektumok 10 perces időközönként.
+Ha a kiépítés alatt engedélyezve van az alkalmazás első alkalommal, kapcsolja be a szolgáltatás módosításával a **kiépítési állapot** való **a**. Ez a módosítás hatására az Azure AD szolgáltatás kiépítését végrehajtásához egy kezdeti szinkronizálást, ahol a felhasználók a olvassa be a **felhasználók és csoportok** szakaszban azokat a célalkalmazás lekérdezése, és az üzembe helyezési műveleteket hajtja majd végre az Azure AD-ben definiált **hozzárendelések** szakasz. A folyamat során a létesítési szolgáltatás milyen felhasználói fiókok kezel, a gyorsítótárazott adatokat tárolja, hogy a nem kezelt fiókok belül a célalkalmazások soha nem található a hozzárendelési hatókör megszüntetést műveletek nem érinti. A kezdeti szinkronizálást követően a létesítési szolgáltatás automatikusan szinkronizálja a felhasználó- és objektumok 10 perces időközönként.
 
 Módosítása a **kiépítési állapot** való **ki** egyszerűen felfüggeszti a létesítési szolgáltatás. Ebben az állapotban lévő Azure nem létrehozása, frissítése, vagy távolítsa el a felhasználói és csoportobjektumok az alkalmazásban. Váltás az állapot vissza a azt eredményezi, a szolgáltatás, ahol abbahagyta átvételéhez.
 
@@ -74,11 +74,11 @@ Válassza a **törölje az aktuális állapotát, és indítsa újra a szinkroni
 ### <a name="synchronization-details"></a>Szinkronizálás részletei
 Ez a szakasz ismerteti továbbá a létesítési szolgáltatás, beleértve az első és utolsó időpontokat, az alkalmazás, és hogy hány felhasználói és csoportobjektumok felügyelt lefutott a létesítési szolgáltatás működését.
 
-Hivatkozásokkal a **tevékenységgel kapcsolatos jelentés kiépítés**, amely biztosítja, hogy a napló összes felhasználók és csoportok létrehozása, frissítése és eltávolított között az Azure AD és a cél alkalmazás, és a **esetleges hibajelentésben való megjelenítéshezkiépítése** biztosító részletes hibaüzenetek a felhasználó- és csoportobjektumok, melyeknél nem sikerült olvasni, létrehozni, frissíteni vagy eltávolítani. 
+Hivatkozásokkal a **tevékenységgel kapcsolatos jelentés kiépítés** biztosítja az összes felhasználók és csoportok létrehozása, frissítése és eltávolított között az Azure AD naplóját és a cél alkalmazás, és a **esetleges hibajelentésben való megjelenítéshezkiépítése** biztosítja, hogy részletes hibaüzeneteket, felhasználók és csoportok objektumok, melyeknél nem sikerült olvasni, létrehozása, frissítése, vagy eltávolítani. 
 
 ## <a name="feedback"></a>Visszajelzés
 
-Reméljük, például a Azure AD felhasználói élményt. Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó még érdeklődőbbek és felhasználása a shape útmutatást és határozza meg, mi készíteni.
+Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  A mérnöki csapathoz van érdeklődőbbek ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó, és használja az alakzat útmutatást, és adja meg, mit kell készíteni.
 
 
 [0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG

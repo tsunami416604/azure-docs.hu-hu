@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 0896f2b23f9b74e12935c0a8b073b64dc743e6a8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Netezza
 
@@ -50,6 +50,13 @@ A következő tulajdonságok Netezza kapcsolódó szolgáltatás támogatottak:
 | type | A type tulajdonságot kell beállítani: **Netezza** | Igen |
 | connectionString | Az ODBC kapcsolati karakterlánc Netezza való kapcsolódáshoz. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+
+Egy tipikus kapcsolati karakterlánc `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. A case / beállítható további tulajdonságokat:
+
+| Tulajdonság | Leírás | Szükséges |
+|:--- |:--- |:--- |:--- |
+| SecurityLevel | Az illesztőprogram használja a kapcsolat az adattárolóhoz (SSL/TLS) biztonsági szintjét. Például `SecurityLevel=preferredSecured`. Támogatott értékek a következők:<br/>-Csak nem biztonságos (**onlyUnSecured**): az illesztőprogram nem használ SSL.<br/>- **Nem biztonságos (preferredUnSecured) (alapértelmezett) elsődleges**: a kiszolgáló lehetővé téve, ha az illesztőprogram nem SSL használatára. <br/>- **Előnyben részesített (preferredSecured) biztonságos**: a kiszolgáló lehetővé téve, ha az illesztőprogram SSL Protokollt használ-e. <br/>- **Csak biztonságos (onlySecured)**: az illesztőprogram nem kapcsolatot, ha az SSL-kapcsolat nem érhető el | Nem |
+| CA-tanúsítványfájl | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például `UseSystemTrustStore=<cert path>;`| Igen, ha az SSL engedélyezve |
 
 **Példa**
 

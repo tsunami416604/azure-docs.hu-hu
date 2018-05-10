@@ -1,66 +1,66 @@
 ---
-title: Házirend-definíció Azure szerkezetet |} Microsoft Docs
-description: Ismerteti, hogyan erőforrás házirend-definíció Azure házirend létrehozásához használt erőforrásokra vonatkozó konvenciók a szervezet ismertetésével, ha a házirend érvényesítve van-e, és a végrehajtandó műveletet.
+title: Azure szabályzatdefiníciók struktúrája
+description: Ismerteti, hogyan erőforrás házirend-definíció Azure házirend létrehozásához használt erőforrásokra vonatkozó konvenciók a szervezet ismertetésével, ha a házirend érvényesítve van-e, és milyen hatása érvénybe.
 services: azure-policy
 keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/30/2018
+ms.date: 05/07/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: ba5380813266b3baf981eaf39eda384ad8c91d5a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 3750bc409753868566c91c01cf6093f439c599f9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
-Erőforrás házirend-definíció Azure házirend által használt lehetővé teszi a szervezet erőforrások egyezmények létrehozása: Ha a házirend érvényesítve van-e, és a végrehajtandó műveletet. Egyezmények meghatározásával szabályozhatja költségeit, és több könnyen kezelheti az erőforrásokat. Megadhatja például, hogy engedélyezve legyenek-e a virtuális gépek csak bizonyos típusú. Vagy megkövetelheti, hogy minden erőforrás egy bizonyos címkével rendelkezik. Összes gyermek-erőforrás által örökölt házirendek. Igen a házirend vonatkozik egy erőforráscsoport, esetén alkalmazandó az erőforráscsoport összes erőforrást.
+Erőforrás házirend-definíció Azure házirend által használt erőforrások egyezmények létrehozása a szervezet ismertetésével, ha a házirend érvényesítve van-e, és milyen hatása érvénybe teszi lehetővé. Egyezmények meghatározásával szabályozhatja költségeit, és több könnyen kezelheti az erőforrásokat. Megadhatja például, hogy engedélyezve legyenek-e a virtuális gépek csak bizonyos típusú. Vagy megkövetelheti, hogy minden erőforrás egy bizonyos címkével rendelkezik. Összes gyermek-erőforrás által örökölt házirendek. Igen a házirend vonatkozik egy erőforráscsoport, esetén alkalmazandó az erőforráscsoport összes erőforrást.
 
 Az Azure-házirend által használt séma itt található: [https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
 
 JSON házirend-definíció létrehozására használhatja. A házirend-definíció a elemeket tartalmazza:
 
-* mód
-* paraméterek
-* Megjelenített név
-* leírás
-* Házirend szabályai
-  * logikai kiértékelése
-  * hatása
+- mód
+- paraméterek
+- Megjelenített név
+- leírás
+- Házirend szabályai
+  - logikai kiértékelése
+  - hatása
 
 Például a következő JSON mutatja egy házirendet, amely korlátozza, amelyekre központilag telepítették erőforrások:
 
 ```json
 {
-  "properties": {
-    "mode": "all",
-    "parameters": {
-      "allowedLocations": {
-        "type": "array",
-        "metadata": {
-          "description": "The list of locations that can be specified when deploying resources",
-          "strongType": "location",
-          "displayName": "Allowed locations"
+    "properties": {
+        "mode": "all",
+        "parameters": {
+            "allowedLocations": {
+                "type": "array",
+                "metadata": {
+                    "description": "The list of locations that can be specified when deploying resources",
+                    "strongType": "location",
+                    "displayName": "Allowed locations"
+                }
+            }
+        },
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+        "policyRule": {
+            "if": {
+                "not": {
+                    "field": "location",
+                    "in": "[parameters('allowedLocations')]"
+                }
+            },
+            "then": {
+                "effect": "deny"
+            }
         }
-      }
-    },
-    "displayName": "Allowed locations",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
-    "policyRule": {
-      "if": {
-        "not": {
-          "field": "location",
-          "in": "[parameters('allowedLocations')]"
-        }
-      },
-      "then": {
-        "effect": "deny"
-      }
     }
-  }
 }
 ```
 
@@ -69,8 +69,9 @@ Minden Azure házirend sablon minták erővel [sablonok Azure házirend](json-sa
 ## <a name="mode"></a>Mód
 
 A **mód** határozza meg, milyen típusú erőforrások kiértékelendő táblakifejezés házirend. A támogatott módok a következők:
-* `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése
-* `indexed`: csak értékelje ki, amely támogatja a címkék és a hely típusú erőforrások
+
+- `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése
+- `indexed`: csak értékelje ki, amely támogatja a címkék és a hely típusú erőforrások
 
 Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. Az összes házirend-definíciók létrehozása a portál használata révén a `all` mód. Ha a PowerShell vagy az Azure parancssori felület, megadhatja a **mód** paraméter manuálisan. Ha a házirend-definíció nem tartalmaz egy **mód** érték azt az alapértelmezett érték a `all` Azure PowerShell és a `null` az Azure parancssori felület, amely megegyezik `indexed`, a visszamenőleges kompatibilitás.
 
@@ -82,17 +83,16 @@ Paraméterek leegyszerűsíti a Csoportházirend kezelése a házirend-definíci
 
 Például egy erőforrás-tulajdonságok korlátozza a hely, ahol erőforrásokat is telepíthető a házirendet sikerült határozza meg. Ebben az esetben a következő paraméterek volna deklarál, a házirend létrehozásakor:
 
-
 ```json
 "parameters": {
-  "allowedLocations": {
-    "type": "array",
-    "metadata": {
-      "description": "The list of allowed locations for resources.",
-      "displayName": "Allowed locations",
-      "strongType": "location"
+    "allowedLocations": {
+        "type": "array",
+        "metadata": {
+            "description": "The list of allowed locations for resources.",
+            "displayName": "Allowed locations",
+            "strongType": "location"
+        }
     }
-  }
 }
 ```
 
@@ -100,12 +100,12 @@ A paraméter típusa karakterlánc vagy tömb lehet. A metaadat-tulajdonságnak 
 
 A metaadat-tulajdonságnak belül használható **strongType** arra, hogy az Azure-portálon belül beállítások többszörös kiválasztási listája.  Engedélyezett értékek a **strongType** jelenleg tartalmaz:
 
-* `"location"`
-* `"resourceTypes"`
-* `"storageSkus"`
-* `"vmSKUs"`
-* `"existingResourceGroups"`
-* `"omsWorkspace"`
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 A házirend szabályban hivatkozási paraméter a következő szintaxissal:
 
@@ -115,6 +115,15 @@ A házirend szabályban hivatkozási paraméter a következő szintaxissal:
     "in": "[parameters('allowedLocations')]"
 }
 ```
+
+## <a name="definition-location"></a>Definíció helye
+
+Az kezdeményezés, vagy a házirend-definíció létrehozása, során fontos, hogy megadja a Definiálás helye.
+
+A Definiálás helye határozza meg, a hatókör, amelyhez az kezdeményezés, vagy a házirend-definíció rendelhetők hozzá. A hely egy felügyeleti csoportot vagy előfizetés adhat meg.
+
+> [!NOTE]
+> Ha azt tervezi, a házirend-definíció alkalmazása több előfizetést, a hely egy felügyeleti csoportot, amely tartalmazza az előfizetések hozzá fogja rendelni a kezdeményezés, vagy a házirend számára, kell lennie.
 
 ## <a name="display-name-and-description"></a>Megjelenített név és leírás
 
@@ -128,12 +137,12 @@ Az a **majd** blokk, megadhatja a hatást, amelyet akkor fordul elő, amikor a *
 
 ```json
 {
-  "if": {
-    <condition> | <logical operator>
-  },
-  "then": {
-    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
-  }
+    "if": {
+        <condition> | <logical operator>
+    },
+    "then": {
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+    }
 }
 ```
 
@@ -141,9 +150,9 @@ Az a **majd** blokk, megadhatja a hatást, amelyet akkor fordul elő, amikor a *
 
 Támogatott logikai operátorok a következők:
 
-* `"not": {condition  or operator}`
-* `"allOf": [{condition or operator},{condition or operator}]`
-* `"anyOf": [{condition or operator},{condition or operator}]`
+- `"not": {condition  or operator}`
+- `"allOf": [{condition or operator},{condition or operator}]`
+- `"anyOf": [{condition or operator},{condition or operator}]`
 
 A **nem** szintaxis invertálja a feltétel eredménye. A **allOf** szintaxis (a logikai hasonló **és** művelet) igényel minden feltétel igaz értékű lesz. A **anyOf** szintaxis (a logikai hasonló **vagy** művelet) szükséges egy vagy több feltétel igaz értékű lesz.
 
@@ -151,18 +160,17 @@ Logikai operátorok ágyazhatja be. Az alábbi példa mutatja egy **nem** művel
 
 ```json
 "if": {
-  "allOf": [
-    {
-      "not": {
-        "field": "tags",
-        "containsKey": "application"
-      }
-    },
-    {
-      "field": "type",
-      "equals": "Microsoft.Storage/storageAccounts"
-    }
-  ]
+    "allOf": [{
+            "not": {
+                "field": "tags",
+                "containsKey": "application"
+            }
+        },
+        {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+        }
+    ]
 },
 ```
 
@@ -170,42 +178,44 @@ Logikai operátorok ágyazhatja be. Az alábbi példa mutatja egy **nem** művel
 
 A feltétel e egy **mező** meghatározott feltételeknek eleget. A támogatott feltételek esetén:
 
-* `"equals": "value"`
-* `"notEquals": "value"`
-* `"like": "value"`
-* `"notLike": "value"`
-* `"match": "value"`
-* `"notMatch": "value"`
-* `"contains": "value"`
-* `"notContains": "value"`
-* `"in": ["value1","value2"]`
-* `"notIn": ["value1","value2"]`
-* `"containsKey": "keyName"`
-* `"notContainsKey": "keyName"`
-* `"exists": "bool"`
+- `"equals": "value"`
+- `"notEquals": "value"`
+- `"like": "value"`
+- `"notLike": "value"`
+- `"match": "value"`
+- `"notMatch": "value"`
+- `"contains": "value"`
+- `"notContains": "value"`
+- `"in": ["value1","value2"]`
+- `"notIn": ["value1","value2"]`
+- `"containsKey": "keyName"`
+- `"notContainsKey": "keyName"`
+- `"exists": "bool"`
 
 Használatakor a **például** és **notLike** feltételek, megadhatja a helyettesítő karakter (*) értékét.
 
 Használata esetén a **megfelelő** és **notMatch** feltételek, `#` képviselő számjegy, `?` betűvel, és bármely más karaktert adott tényleges karakter helyettesítéséhez. Tekintse meg a [lehetővé teszi több mintában](scripts/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Mezők
+
 Feltételek mezőkkel jöttek létre. A mező képviseli tulajdonság az erőforrás-kérések forgalma, amellyel ismertetik az erőforrás állapotát.  
 
 A következő mezők támogatottak:
 
-* `name`
-* `fullName`
-  * Az erőforrást, beleértve a szülője (pl. "myServer/adatbázis") teljes nevét adja vissza
-* `kind`
-* `type`
-* `location`
-* `tags`
-* `tags.tagName`
-* `tags[tagName]`
-  * Ez a zárójel szintaxis támogatja pontot tartalmazó címke neve
-* tulajdonságának aliasokat - listájáért lásd: [aliasok](#aliases).
+- `name`
+- `fullName`
+  - Az erőforrást, beleértve a szülője (például "myServer/adatbázis") teljes nevét adja vissza
+- `kind`
+- `type`
+- `location`
+- `tags`
+- `tags.tagName`
+- `tags[tagName]`
+  - Ez a zárójel szintaxis támogatja pontot tartalmazó címke neve
+- tulajdonságának aliasokat - listájáért lásd: [aliasok](#aliases).
 
 ### <a name="alternative-accessors"></a>Alternatív leíró.
+
 **A mező** a házirend szabályokban használt elsődleges elérővel. Azt közvetlenül megvizsgálja, hogy az erőforrás. Azonban a házirend támogatja egy más elérőnek **forrás**.
 
 ```json
@@ -215,34 +225,32 @@ A következő mezők támogatottak:
 
 **Forrás** csak a több érték használatát támogatja **művelet**. A művelet az engedélyezési művelet, amely kiértékelése megtörténik a kérelem adja vissza. Engedélyezési műveletek érhetők el az engedélyezési szakaszában a [tevékenységnapló](../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
 
-Ha házirend értékeli a háttérben állítja a meglévő erőforrásokat **művelet** való egy `/write` engedélyezési műveletet az erőforrás-típus.
+Esetén a szabályzat értékeli a háttérben meglévő erőforrásokat, **művelet** való egy `/write` engedélyezési műveletet az erőforrás-típus.
 
 ### <a name="effect"></a>Következmény
+
 A házirend hatása a következő típusú támogatja:
 
-* **Megtagadási**: a biztonsági naplóban generál egy eseményt, és a kérelem sikertelen
-* **Naplózási**: naplót hoz létre a figyelmeztető üzenet, de nem tudja teljesíteni a kérést
-* **Hozzáfűzendő**: a definiált mezők halmaza alapján ad a kéréshez
-* **AuditIfNotExists**: lehetővé teszi a naplózást, ha egy erőforrás nem létezik.
-* **DeployIfNotExists**: erőforrás telepíti, ha még nem létezik. Ebből a célból beépített házirendeken keresztül jelenleg csak támogatott.
+- **Megtagadási**: a biztonsági naplóban generál egy eseményt, és a kérelem sikertelen
+- **Naplózási**: naplót hoz létre a figyelmeztető üzenet, de nem tudja teljesíteni a kérést
+- **Hozzáfűzendő**: a definiált mezők halmaza alapján ad a kéréshez
+- **AuditIfNotExists**: lehetővé teszi a naplózást, ha egy erőforrás nem létezik.
+- **DeployIfNotExists**: erőforrás telepíti, ha még nem létezik. Ebből a célból beépített házirendeken keresztül jelenleg csak támogatott.
 
 A **hozzáfűzése**, meg kell adnia a következő adatokat:
 
 ```json
 "effect": "append",
-"details": [
-  {
+"details": [{
     "field": "field name",
     "value": "value of the field"
-  }
-]
+}]
 ```
 
 Az érték lehet egy karakterlánc vagy egy JSON-formátumú objektum.
 
 A **AuditIfNotExists** és **DeployIfNotExists** értékelje ki a kapcsolódó erőforrások meglétét, és alkalmazza a szabályt, és a megfelelő hatása, ha adott erőforrás nem létezik. Például megkövetelheti, hogy egy hálózati figyelőt az összes virtuális hálózathoz van-e telepítve.
 Példa a naplózást, ha egy virtuálisgép-bővítmény nincs telepítve, tekintse meg [kiterjesztés nem található naplózási](scripts/audit-ext-not-exist.md).
-
 
 ## <a name="aliases"></a>Aliasnevek
 
@@ -369,7 +377,6 @@ Csoportosítása több kezdeményezések engedélyezése vonatkozó házirend-de
 
 A következő példa bemutatja, hogyan létrehozása kezelési két címkék kezdeményezés: `costCenter` és `productName`. Azt a két beépített házirendek segítségével az alapértelmezett címke.
 
-
 ```json
 {
     "properties": {
@@ -390,8 +397,7 @@ A következő példa bemutatja, hogyan létrehozása kezelési két címkék kez
                 }
             }
         },
-        "policyDefinitions": [
-            {
+        "policyDefinitions": [{
                 "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "parameters": {
                     "tagName": {

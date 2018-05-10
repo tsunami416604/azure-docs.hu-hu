@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 5cbd1738bd53179cb9705a86886b6cf811e9988a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: d2523502c20a7cdc4fb4ec388f167f1640919717
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Új szimulált eszköz létrehozása
 
@@ -33,7 +33,7 @@ Az első esetben Contoso szeretné egy új intelligens villanykörte eszközt. A
 | Name (Név)                     | Értékek                      |
 | ------------------------ | --------------------------- |
 | Szín                    | Fehér, a piros, kék            |
-| Fényerő               | 0 és 100 közötti                    |
+| Fényerő               | 0 – 100                    |
 | Becsült hátralévő élettartamát | 10 000 óra visszaszámlálási |
 
 *Telemetria*
@@ -258,7 +258,11 @@ A legegyszerűbben úgy, hogy az eszköz szimuláció szolgáltatásban hozzon l
 
 1. Az a **környezeti változók** területen értékét a **számítógépek\_IOT HUBBAL\_CONNSTRING** változó az IoT-központ kapcsolati karakterláncot kell azt korábban említettük. Mentse a módosításokat.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **eszköz-szimuláció** megoldás válassza **indítási projektek beállítása**. Válasszon **egyetlen kezdőprojekt** válassza **SimulationAgent**. Ezután kattintson az **OK** gombra.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **WebService** projektre, válassza a **tulajdonságok**, és válassza a **Debug**.
+
+1. Az a **környezeti változók** területen értékét a **számítógépek\_IOT HUBBAL\_CONNSTRING** változó az IoT-központ kapcsolati karakterláncot kell azt korábban említettük. Mentse a módosításokat.
+
+1. A Megoldáskezelőben kattintson a jobb gombbal a **eszköz-szimuláció** megoldás válassza **indítási projektek beállítása**. Válasszon **egyetlen kezdőprojekt** válassza **WebService**. Ezután kattintson az **OK** gombra.
 
 1. Minden eszköz rendelkezik a modell JSON-fájl és a kapcsolódó parancsprogramokat a **szolgáltatások/data/devicemodels** mappa. A Megoldáskezelőben, másolja a **hűtő** fájlokat, hogy a **villanykörte** fájlok az alábbi táblázatban látható módon:
 
@@ -294,10 +298,12 @@ A **villanykörte-01.json** fájl határozza meg a típus jellemzői, például 
         "status": "on"
       },
       "Interval": "00:00:20",
-      "Scripts": {
-        "Type": "javascript",
-        "Path": "lightbulb-01-state.js"
-      }
+      "Scripts": [
+        {
+          "Type": "javascript",
+          "Path": "lightbulb-01-state.js"
+        }
+      ]
     },
     ```
 
@@ -468,7 +474,7 @@ A szimulált tesztelés során a megoldás csatlakozó eszközök számának kor
 
 Most már készen áll az új szimulált villanykörte típusának tesztelése eszköz szimuláció-projektek futtatásával foglalkozik helyileg.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal **SimulationAgent**, válassza a **Debug** majd **Start új példányt**.
+1. A Megoldáskezelőben kattintson a jobb gombbal **WebService**, válassza a **Debug** majd **Start új példányt**.
 
 1. Ellenőrizze, hogy a két szimulált eszköz csatlakozik az IoT Hub, az Azure-portál megnyitása a böngészőben.
 

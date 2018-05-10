@@ -1,11 +1,9 @@
 ---
-title: "Az adal-t használó iOS alkalmazások közötti SSO engedélyezése |} Microsoft Docs"
-description: "Hogyan szolgáltatásait is használni az ADAL SDK való egyszeri bejelentkezés engedélyezése az alkalmazások között. "
+title: Az adal-t használó iOS alkalmazások közötti SSO engedélyezése |} Microsoft Docs
+description: 'Hogyan szolgáltatásait is használni az ADAL SDK való egyszeri bejelentkezés engedélyezése az alkalmazások között. '
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: xerners
 manager: mtillman
-editor: 
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +13,11 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a7d93fe6289ade7fbdf3050d49184feb8b370bb5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: c477e7e6fb9ef9a93ceab53c1427b974bab99b37
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Az adal-t használó iOS alkalmazások közötti SSO engedélyezése
 Megadása, hogy a felhasználók csak egyszer adja meg a hitelesítő adataikat, és ezen hitelesítő adatok automatikusan rendelkezésére kell közötti használathoz egyszeri bejelentkezés (SSO) alkalmazások már várt ügyfelek. Nehézsége kis képernyőjű, gyakran alkalommal együtt egy további tényezőt (2FA) például telefonhívást vagy egy fogva kódot, a felhasználónév és jelszó megadása ehhez a termékhez egynél többször van gyors kapcsolatos, ha a felhasználó eredményez.
@@ -160,11 +158,11 @@ Ahhoz, hogy a Microsoft Identity platform tudni, hogy rendelkezik engedélyezett
 
 Előfordulhat, hogy lehet szeretné megtudni, hogy hogyan határozható meg a Microsoft Identity szolgáltatás különböző alkalmazások Ha használja az ugyanazon alkalmazás azonosítóját. A válasz a kérdésre a **átirányítási URI-azonosítók**. Minden alkalmazás több átirányítási URI-azonosítók a bevezetési portálon regisztrált rendelkezhet. A csomagban található összes alkalmazás egy másik átirányítási URI-t fog rendelkezni. Ez megjelenésének például nem éri el:
 
-Az App1 átirányítási URI-ja:`x-msauth-mytestiosapp://com.myapp.mytestapp`
+Az App1 átirányítási URI-ja: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-App2 átirányítási URI-ja:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 átirányítási URI-ja: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-App3 átirányítási URI-ja:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 átirányítási URI-ja: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 

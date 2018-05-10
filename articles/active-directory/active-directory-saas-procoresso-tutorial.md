@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Procore SSO |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Procore SSO között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Procore SSO |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Procore SSO között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: c6bae8e24f252a535571308467b428832b542e48
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4cba8aa046b84fe63b17a662990824b1823c1572
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Azure Active Directoryval integrált Procore egyszeri bejelentkezés
 
@@ -30,14 +30,6 @@ Procore SSO integrálása az Azure AD lehetővé teszi a következő előnyöket
 - Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
-
-<!--## Overview
-
-To enable single sign-on with Procore SSO, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Procore SSO.
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -212,7 +204,7 @@ Kérjük, kövesse a következő lépések végrehajtásával Procore tesztfelha
 
     b. Az a **Vezetéknév** szövegmező, például típus felhasználó vezetékneve **Simon**.
 
-    c. Az a **E-mail cím** szövegmezőhöz típusa a felhasználó e-mail címét, például  **BrittaSimon@contoso.com** .
+    c. Az a **E-mail cím** szövegmezőhöz típusa a felhasználó e-mail címét, például **BrittaSimon@contoso.com**.
 
     d. Válassza ki **engedély sablon** , **engedély sablon alkalmazása később**.
 

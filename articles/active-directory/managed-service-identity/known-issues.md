@@ -8,17 +8,18 @@ manager: mtillman
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
+ms.component: msi
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 78148c6538efa06018628297a89681ec6ec3d32d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 552f9e7cae4d7f46ea1548cfe7d9482bff79e5bc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory
 
@@ -87,7 +88,7 @@ Felügyelt Szolgáltatásidentitás engedélyezésekor a virtuális gép a köve
 
 A felügyelt szolgáltatás identitásának Virtuálisgép-bővítmény jelenleg nem támogatja a séma exportálhat egy erőforrás-sablon olyan. Ennek eredményeképpen a létrehozott sablon nem szerepelnek a felügyelt Szolgáltatásidentitás ahhoz, hogy az erőforrás-konfigurációs paraméterek. Ezek a szakaszok manuálisan következő szereplő példák hozzáadhatók [egy sablon használatával konfigurálja a VM felügyelt Szolgáltatásidentitás](qs-configure-template-windows-vm.md).
 
-Ha a séma exportálási funkció az MSI-Virtuálisgép-bővítmény elérhetővé válik, akkor megjelenik [exportálása erőforrás tartalmazó csoportok Virtuálisgép-bővítmények](../../virtual-machines/windows/extensions-export-templates.md#supported-virtual-machine-extensions).
+Ha a séma exportálási funkció az MSI-Virtuálisgép-bővítmény elérhetővé válik, akkor megjelenik [exportálása erőforrás tartalmazó csoportok Virtuálisgép-bővítmények](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Konfigurációs panel nem jelenik meg az Azure-portálon
 
@@ -119,15 +120,15 @@ Miután a virtuális gép elindul, a címke távolíthatja el a következő para
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-msi-preview"></a>Felhasználó hozzárendelése MSI kapcsolatos ismert problémák *(előzetes verzió)*
+## <a name="known-issues-with-user-assigned-identities"></a>Felhasználói hozzárendelt identitások ismert problémái
 
-- Távolítsa el az összes felhasználó lehet hozzárendelve MSIs csak úgy azáltal, hogy a rendszer tartozik MSI-fájl. 
+- Felhasználói azonosító hozzárendelve hozzárendeléseket a rendszer csak a virtuális gép és VMSS véve. Fontos: Felhasználói hozzárendelt azonosító-hozzárendelések fogja módosítani a jövőbeli hónapon belül.
+- VM/VMSS, ugyanazon ismétlődő felhasználói hozzárendelt identitások hatására a virtuális gép/VMSS sikertelen lesz. Ez magában foglalja a különböző kis-és az adott identitást. például MyUserAssignedIdentity és myuserassignedidentity. 
 - Egy virtuális géphez a Virtuálisgép-bővítmény telepítése sikertelen lehet DNS-keresési hibák miatt. Indítsa újra a virtuális Gépet, és próbálkozzon újra. 
-- A "nem létező" MSI hozzáadása miatt sikertelen a virtuális gép. *Megjegyzés: A javítás sikertelen hozzárendelés-azonosító, ha MSI-fájl nem létezik, folyamatban van a építeni*
-- Azure Storage útmutató jelenleg csak központi Velünk EUAP érhető el. 
-- MSI rendelve speciális karakterek (pl. aláhúzásjel) neve a felhasználó létrehozása nem támogatott.
-- A második felhasználó hozzáadása hozzárendelése az identitás, a clientID nem feltétlenül érhető el a kérelmek jogkivonatainak. A megoldás, mint indítsa újra a MSI Virtuálisgép-bővítmény, az alábbi két bash parancsokkal:
+- A "nem létező" a felhasználói identitás hozzáadása miatt sikertelen a virtuális Gépet. 
+- Egy felhasználó lehet hozzárendelve a különleges karakterek (pl. aláhúzásjel) nevében identitás létrehozása, nem támogatott.
+- A felhasználói identitás nevek a végpontok közötti forgatókönyv 24 karakterből állhat. Felhasználói hozzárendelt identitások 24 karakternél hosszabb nevű nem rendelhetők hozzá.  
+- Egy második felhasználó hozzáadása hozzárendelése az identitás, előfordulhat, hogy a clientID nem állnak rendelkezésre a Virtuálisgép-bővítmény kérések jogkivonatok. A megoldás, mint indítsa újra a MSI Virtuálisgép-bővítmény, az alábbi két bash parancsokkal:
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- A vmagent esetében a Windows jelenleg nem támogatja a felhasználó hozzárendelt MSI-fájl. 
-- Ha egy virtuális gép rendelkezik egy felhasználó lehet hozzárendelve MSI, de a rendszer nem rendelnek MSI, a portál felhasználói felületének fog engedélyezettként MSI-fájl. A rendszer MSI hozzárendelt engedélyezéséhez az Azure Resource Manager-sablon, egy Azure CLI vagy az SDK.
+- Ha egy virtuális gép rendelkezik, a felhasználó identitását, de nincs hozzárendelve identitás rendszer, a portál felhasználói felületének kattintás MSI le van tiltva. A rendszer identitás hozzárendelt engedélyezéséhez az Azure Resource Manager-sablon, egy Azure CLI vagy az SDK.

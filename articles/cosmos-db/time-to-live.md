@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 61db8f85e73d2c071bdec0ace60911813fa4f0e8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13f2caa631817a5745f39b44faccb11252a2d549
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Azure Cosmos DB gyűjtemények automatikusan élettartama adatok lejár
 Alkalmazások létrehozására és hatalmas mennyiségű adat tárolására is használható. Az adatok egy részét, például generált gép esemény adatokat, a naplókat, és a felhasználói munkamenet az információ csak véges időn. Miután az adatok válnak az alkalmazás igényeinek felesleges ezek az adatok kiürítése és a tárolási igényeinek, az alkalmazások biztonságos.
@@ -124,7 +124,7 @@ A dokumentum bármely írási művelet végrehajtásával alaphelyzetbe állíth
     Document readDocument = response.Resource;
     readDocument.TimeToLive = 60 * 30 * 30; // update time to live
     
-    response = await client.ReplaceDocumentAsync(salesOrder);
+    response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="removing-ttl-from-a-document"></a>Egy dokumentum eltávolítása a TTL-t
 Ha már nem szeretné, hogy a dokumentum lejárati TTL be van állítva egy dokumentumot, majd a dokumentum beolvasása, távolítsa el a TTL mező és cserélje le a dokumentumot a kiszolgálón. Az élettartam mező törlődik a dokumentumot, a gyűjtemény az alapértelmezett lépnek érvénybe. Egy dokumentum lejár, és nem örököl a gyűjtemény majd be kell az élettartam értéke -1 értékre.
@@ -136,7 +136,7 @@ Ha már nem szeretné, hogy a dokumentum lejárati TTL be van állítva egy doku
     Document readDocument = response.Resource;
     readDocument.TimeToLive = null; // inherit the default TTL of the collection
     
-    response = await client.ReplaceDocumentAsync(salesOrder);
+    response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disabling-ttl"></a>Élettartam letiltása
 A TTL letiltása teljes egészében a gyűjtemény, majd állítsa le a háttérben folyamatot törölni kell a gyűjtemény DefaultTTL tulajdonsága lejárt dokumentumot keres. Ez a tulajdonság törlése eltér a -1 értékre állítaná. A beállítást, ha a-1 érték azt jelenti, hogy a gyűjteménybe felvett új dokumentumok végtelen lesz élő, de ez felülírható a gyűjtemény adott dokumentumokat. Ez a tulajdonság teljesen eltávolítása a gyűjtemény azt jelenti, hogy a dokumentumok lejár, akkor is, ha vannak, akik explicit módon bírálták felül az előző alapértelmezett dokumentumok.

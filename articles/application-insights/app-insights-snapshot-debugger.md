@@ -10,13 +10,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
+ms.date: 05/08/2018
 ms.author: mbullwin; pharring
-ms.openlocfilehash: a742dc3c3538cd9fc5053fd9cd9aeec740ec0394
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 0721fa42a8d770b82a4b18865b513569bcc8807f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazásokban kivételek pillanatképek hibakeresése
 
@@ -193,11 +193,12 @@ Az Azure-előfizetés tulajdonosainak pillanatképek vizsgálhatja meg. Más fel
 
 Adja meg az engedélyt, rendelje hozzá a `Application Insights Snapshot Debugger` a felhasználók számára, akik vizsgálja a pillanatképek szerepkör. Egyes felhasználók vagy csoportok által a cél Application Insights-erőforrás előfizetésnél tulajdonos vagy a erőforráscsoportba vagy előfizetésbe ehhez a szerepkörhöz is hozzárendelhető.
 
-1. A hozzáférés-vezérlés (IAM) panel megnyitásához.
-1. Kattintson a + Hozzáadás gombra.
-1. Application Insights pillanatkép hibakereső kiválasztása a szerepkörök legördülő listából.
+1. Nyissa meg az Application Insights-erőforrást az Azure portálon.
+1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **+ Hozzáadás** gombra.
+1. Válassza ki **Application Insights pillanatkép hibakereső** a a **szerepkörök** legördülő listából.
 1. Keresse meg és írja be a hozzáadni kívánt felhasználó nevét.
-1. A Mentés gombra kattintva adja hozzá a felhasználót a szerepkörhöz.
+1. Kattintson a **mentése** gombra kattintva adja hozzá a felhasználót a szerepkörhöz.
 
 
 > [!IMPORTANT]
@@ -267,22 +268,22 @@ Azonban az Azure App Service szolgáltatások, a pillanatkép-gyűjtő is deopti
 
 Ezek a tippek a pillanatkép-hibakereső kapcsolatos problémák hibaelhárítása érdekében.
 
-## <a name="use-the-snapshot-health-check"></a>A pillanatkép állapotának ellenőrzése
-Ha egy adott kivétel érhető el pillanatkép nem látja, több okból is beleértve outdate pillanatkép adatgyűjtő verzióit, naponta küszöbérték találat okozhatja, a pillanatkép csak fel kell tölteni, és így tovább időt vesz igénybe. Ahhoz, hogy ezek a problémák diagnosztizálásával segítséget nyújt, azt a beépített területeivel elemzéséhez, ezért nem pillanatkép van pillanatkép állapotát ellenőrző szolgáltatás.
+### <a name="use-the-snapshot-health-check"></a>A pillanatkép állapotának ellenőrzése
+Gyakori eredményezi, a Debug pillanatfelvétel megnyitása nem jelenik meg. Egy elavult pillanatkép-gyűjtő használatára, például; a napi feltöltési korlátot; elérése vagy lehet, hogy a pillanatkép van csak hosszú ideig tart feltölteni. A pillanatkép állapotának ellenőrzése használatával kapcsolatos gyakori problémák elhárításában.
 
-Kivétel társított pillanatképek nem látható, ha lesz egy hivatkozást a végpont nyomkövetési megjelenítő panelen pillanatkép állapotellenőrzése megadásához.
+A végpont nyomkövetési nézetet, amely a pillanatkép állapotának ellenőrzése a kivétel ablaktábláján kapcsolat van.
 
 ![Adja meg a pillanatkép állapotellenőrzése](./media/app-insights-snapshot-debugger/enter-snapshot-health-check.png)
 
-Akkor megjelenik egy interaktív Csevegés-botot például a munkamenet különböző szempontja, hogy a szolgáltatás állapotának ellenőrzése fut, és jelentést kínál.
+A interaktív, csevegési hasonló felület keres a gyakori problémákat, és végig is vezeti Önt javítja őket.
 
 ![Az állapot-ellenőrzéssel](./media/app-insights-snapshot-debugger/healthcheck.png)
 
-Van még néhány manuális diagnosztizálhatja a pillanatkép-szolgáltatásának állapotát is van. Tekintse meg az alábbi szakaszokat:
+Ha ez nem oldja meg a problémát, majd tekintse meg a következő manuális lépéseket.
 
 ### <a name="verify-the-instrumentation-key"></a>Ellenőrizze a rendszerállapot-kulcsot
 
-Győződjön meg arról, hogy a helyes instrumentation kulcsot használ a közzétett alkalmazáshoz. Az Application Insights általában a instrumentation kulcs beolvassa az ApplicationInsights.config fájl. Ellenőrizze, hogy a értéke ugyanaz, mint az Application Insights-erőforrást, melyek megjelennek a portálon instrumentation kulcsa.
+Győződjön meg arról, hogy a helyes instrumentation kulcsot használ a közzétett alkalmazáshoz. Általában a instrumentation kulcs az ApplicationInsights.config fájlból olvasható. Ellenőrizze, hogy a értéke ugyanaz, mint az Application Insights-erőforrást, melyek megjelennek a portálon instrumentation kulcsa.
 
 ### <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Frissítse a legújabb verzióra a NuGet-csomag
 
@@ -293,7 +294,7 @@ Visual Studio NuGet Package Manager segítségével győződjön meg arról, hog
 Pillanatkép létrehozása után egy kis memóriakép fájl (.dmp) jön létre a lemezen. A különálló feltöltése folyamat adott kis memóriakép fájlt hoz létre, és feltölti azt, és minden társított PDB-fájlok, az Application Insights pillanatkép hibakereső tárhelyre. Után a kis memóriakép sikeresen fel van töltve, hanem törli a lemezen. A naplófájlok a feltöltése folyamat lemezen tárolja. Egy App Service environment-környezetben található a naplók a `D:\Home\LogFiles`. A Kudu felügyeleti webhely az App Service segítségével ezekben a naplófájlokban található.
 
 1. Nyissa meg az App Service-alkalmazás az Azure portálon.
-2. Válassza ki a **speciális eszközök** panelen, vagy keressen a **Kudu**.
+2. Kattintson a **speciális eszközök**, vagy keressen **Kudu**.
 3. Kattintson a **Ugrás**.
 4. Az a **hibakereső konzol** legördülő listáján jelölje ki **CMD**.
 5. Kattintson a **naplófájlok**.
@@ -401,7 +402,7 @@ Kövesse az alábbi lépéseket a felhőalapú szolgáltatás szerepkör konfigu
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Használja az Application Insights keresési pillanatképekkel kivételek kereséséhez
 
-Egy pillanatkép jön létre, amikor a rtesítő kivétel címkéje egy pillanatkép. A pillanatkép azonosítója megtalálható egyéni tulajdonság, az Application Insights – kivételtelemetria a jelentésekor. Az összes telemetriai adat található Application Insights a Search paneljét használ, a `ai.snapshot.id` egyéni tulajdonság.
+Egy pillanatkép jön létre, amikor a rtesítő kivétel címkéje egy pillanatkép. A pillanatkép azonosítója megtalálható egyéni tulajdonság, az Application Insights – kivételtelemetria a jelentésekor. Használatával **keresési** az Application Insightsban, az összes telemetriai adat megtalálhatja a `ai.snapshot.id` egyéni tulajdonság.
 
 1. Keresse meg az Application Insights-erőforrást az Azure portálon.
 2. Kattintson a **keresési**.

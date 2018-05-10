@@ -1,25 +1,25 @@
 ---
-title: "Alkalmazásproxy hibaelhárítása |} Microsoft Docs"
-description: "Bemutatja, hogyan adhat az Azure AD alkalmazásproxy hibák elhárítása."
+title: Alkalmazásproxy hibaelhárítása |} Microsoft Docs
+description: Bemutatja, hogyan adhat az Azure AD alkalmazásproxy hibák elhárítása.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 970caafb-40b8-483c-bb46-c8b032a4fb74
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 6fcf360df6da36919c251bef0a8214deba6b5605
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 54e0ebe60981ef429fdfc97cee1b460b03261a9f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása
 Ha hiba történik, a közzétett alkalmazás eléréséhez, vagy az alkalmazás-közzététel, ellenőrizze a megjelenítéséhez, ha a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -34,7 +34,7 @@ Az Azure AD-hibaelhárítás eszközzel kapcsolatos további információkért l
 ## <a name="the-page-is-not-rendered-correctly"></a>A lap nem megfelelően megjelenítése
 Előfordulhat, hogy az alkalmazás megjelenítése, vagy nem megfelelően működik-e anélkül vonatkozó hibaüzeneteket. Ez akkor fordulhat elő, ha a közzétett cikk elérési, de az alkalmazáshoz az szükséges, hogy elérési útja kívül található tartalom.
 
-Például beállíthatja, hogy az elérési út https://yourapp/app, de az alkalmazás képeket hívások https://yourapp/media, ha azok nem jeleníthető meg. Győződjön meg arról, hogy az alkalmazás a legmagasabb szintű elérési úton, meg kell adnia az összes kapcsolódó tartalom közzététele. Ebben a példában http://yourapp/ lenne.
+Például, ha az elérési út közzététele https://yourapp/app , de az alkalmazás képeket meghívja https://yourapp/media, nem lehet megjeleníteni. Győződjön meg arról, hogy az alkalmazás a legmagasabb szintű elérési úton, meg kell adnia az összes kapcsolódó tartalom közzététele. Ebben a példában lenne http://yourapp/.
 
 Ha módosítja a elérési útját hivatkozott tartalmat foglaljon magába, de továbbra is a felhasználók számára, hogy az elérési út mélyebb hivatkozás meg kell, lásd a következő blogbejegyzésben [beállítása a megfelelő hivatkozásra, az alkalmazásproxy-alkalmazások az Azure AD hozzáférési panel és az Office 365 alkalmazás indító](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
 
@@ -78,9 +78,9 @@ Ez a lista azokat a hibákat, a végfelhasználók akkor léphetnek fel, ha pró
 | ----- | ----------------- |
 | A webhely a lap nem jeleníthető meg. | A felhasználó előfordulhat, hogy ez a hibaüzenet az alkalmazást, ha az alkalmazás integrált Windows-Hitelesítést alkalmazás közzétett elérésére tett kísérlet során. A megadott egyszerű Szolgáltatásnevet az alkalmazás helytelen lehet. Integrált Windows-Hitelesítést alkalmazások esetén győződjön meg róla, hogy az egyszerű Szolgáltatásnevet az alkalmazáshoz beállított helyes. |
 | A webhely a lap nem jeleníthető meg. | A felhasználó előfordulhat, hogy ez a hibaüzenet az alkalmazást, ha az alkalmazás az OWA alkalmazás közzétett elérésére tett kísérlet során. Ennek oka lehet a következők egyikét:<br><li>A megadott egyszerű Szolgáltatásnevet az alkalmazás nem megfelelő. Győződjön meg arról, hogy helyesen-e az egyszerű Szolgáltatásnevet az alkalmazáshoz beállított.</li><li>A felhasználó megpróbált hozzáférni az alkalmazáshoz használja a megfelelő vállalati fiók helyett a Microsoft-fiókkal való bejelentkezéshez, vagy egy Vendég felhasználó. Győződjön meg arról, hogy a felhasználó a vállalati fiók, amely megfelel a tartomány a közzétett alkalmazás használatával jelentkezik be. Microsoft Account felhasználók és a vendég nem hozzáférhessenek az integrált Windows-Hitelesítést alkalmazásokhoz.</li><li>A felhasználó megpróbált hozzáférni az alkalmazáshoz megfelelő nincs definiálva a helyszíni oldalon az alkalmazáshoz. Győződjön meg arról, hogy az a felhasználó a megfelelő engedélyekkel rendelkezik a helyszíni gépen háttér alkalmazás meghatározottak szerint. |
-| A vállalati alkalmazás nem érhető el. Ön nem jogosult az alkalmazás eléréséhez. Nem sikerült engedélyezése. Győződjön meg arról, hogy a felhasználó hozzáférést rendel az alkalmazás. | A felhasználók előfordulhat, hogy ez a hibaüzenet a Ha használják a Microsoft-fiókok helyett a vállalati fiók jelentkezzen be a közzétett alkalmazás elérésére tett kísérlet során. Vendégfelhasználók is kaphat ezt a hibát. Microsoft Account felhasználók és a vendégek nem hozzáférhessenek az integrált Windows-Hitelesítést alkalmazásokhoz. Győződjön meg arról, hogy a felhasználó a vállalati fiók, amely megfelel a tartomány a közzétett alkalmazás használatával jelentkezik be.<br><br>Előfordulhat, hogy nem rendelt hozzá a felhasználót az alkalmazáshoz. Lépjen a **alkalmazás** fülre, majd a **felhasználók és csoportok**, a felhasználó vagy felhasználói csoport hozzárendelése ezt az alkalmazást. |
+| A vállalati alkalmazás nem érhető el. Ön nem jogosult az alkalmazás eléréséhez. A hitelesítés sikertelen. Győződjön meg arról, hogy a felhasználó hozzáférést rendel az alkalmazás. | A felhasználók előfordulhat, hogy ez a hibaüzenet a Ha használják a Microsoft-fiókok helyett a vállalati fiók jelentkezzen be a közzétett alkalmazás elérésére tett kísérlet során. Vendégfelhasználók is kaphat ezt a hibát. Microsoft Account felhasználók és a vendégek nem hozzáférhessenek az integrált Windows-Hitelesítést alkalmazásokhoz. Győződjön meg arról, hogy a felhasználó a vállalati fiók, amely megfelel a tartomány a közzétett alkalmazás használatával jelentkezik be.<br><br>Előfordulhat, hogy nem rendelt hozzá a felhasználót az alkalmazáshoz. Lépjen a **alkalmazás** fülre, majd a **felhasználók és csoportok**, a felhasználó vagy felhasználói csoport hozzárendelése ezt az alkalmazást. |
 | A vállalati alkalmazás most nem lehet hozzáférni. Próbálkozzon újra később... Az összekötő túllépte az időkorlátot. | A felhasználók előfordulhat, hogy ez a hibaüzenet az alkalmazást, ha vannak nincs megfelelően definiálva ehhez az alkalmazáshoz a helyszíni oldalon közzétett elérésére tett kísérlet során. Győződjön meg arról, hogy a felhasználók rendelkeznek-e megfelelő engedélyekkel, meghatározottak szerint a háttéralkalmazás a helyszíni gépen. |
-| A vállalati alkalmazás nem érhető el. Ön nem jogosult az alkalmazás eléréséhez. Nem sikerült engedélyezése. Győződjön meg arról, hogy a felhasználó rendelkezik-e az Azure Active Directory prémium vagy alapszintű kiadásra egy licencet. | A felhasználók előfordulhat, hogy ez a hibaüzenet az alkalmazást, ha azok nem explicit módon hozzárendelt prémium vagy alapszintű licenccel rendelkező rendszergazda az előfizető által közzétett elérésére tett kísérlet során. Nyissa meg az Active Directory az előfizető **licencek** lapra, és győződjön meg arról, hogy a felhasználó vagy felhasználói csoport van hozzárendelve a prémium vagy alapszintű kiadásra licenc. |
+| A vállalati alkalmazás nem érhető el. Ön nem jogosult az alkalmazás eléréséhez. A hitelesítés sikertelen. Győződjön meg arról, hogy a felhasználó rendelkezik-e az Azure Active Directory prémium vagy alapszintű kiadásra egy licencet. | A felhasználók előfordulhat, hogy ez a hibaüzenet az alkalmazást, ha azok nem explicit módon hozzárendelt prémium vagy alapszintű licenccel rendelkező rendszergazda az előfizető által közzétett elérésére tett kísérlet során. Nyissa meg az Active Directory az előfizető **licencek** lapra, és győződjön meg arról, hogy a felhasználó vagy felhasználói csoport van hozzárendelve a prémium vagy alapszintű kiadásra licenc. |
 
 ## <a name="my-error-wasnt-listed-here"></a>A hiba nem az itt felsorolt
 

@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 006d04efb0a6bebc424cb005bf63af2b3cd7a42e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: f38054eaf2829149a496f840366b6f2f9e03e12b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>How Azure Search-index újraépítése
 
@@ -35,8 +35,8 @@ A gyakori, teljes terv újraépíti aktív fejlesztése során, amikor index sé
 | Módosítás | Építse újra állapota|
 |--------------|---------------|
 | Módosítsa a mezőnév adattípus, vagy a [indexattribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index) | Egy mező definition általában módosítása azt eredményezi azok háromszorosa rebuild büntetést, kivételével ezek [indexattribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index): lekérhető, SearchAnalyzer, SynonymMaps. Attribútumot is hozzáadhat a lekérhető SearchAnalyzer és SynonymMaps meglévő mezőhöz anélkül, hogy az index újraépítése.|
-| A mező hozzáadása | Az Újraépítés szigorú követelmény. Meglévő indexelt dokumentumok az új mező null értéket kap. A jövőbeli ismételt indexelése a forrásadatok értékek dokumentumok kerülnek. |
-| Mező törlése | Az Újraépítés szigorú követelmény. A törölt mező nem használható, de fizikailag a mező meghatározását és a tartalom marad az index a következő Újraépítés. |
+| A mező hozzáadása | Az Újraépítés szigorú követelmény. Meglévő indexelt dokumentumok az új mező null értéket kap. Egy későbbi ismételt indexelése a forrásadatok értékek cserélje le az Azure Search által hozzáadott nullák. |
+| Mező törlése | Az Azure Search-index közvetlenül egy mező nem törölhető. Ehelyett az alkalmazás figyelmen kívül hagyása elkerülése érdekében használja a "törölt" mező szükséges. Fizikailag a mező meghatározását és a tartalom továbbra is az index a séma, amely kihagyja a szóban forgó mező használatával az index újraépítése addig, amíg.|
 
 > [!Note]
 > Egy rebuild is szükség, ha a rétegek vált. Ha bármikor további kapacitás mellett dönt, nem a helyben történő frissítést. Egy új szolgáltatást kell létrehozni az új kapacitás ponton, és indexek kell kialakítani, a teljesen új szolgáltatás. 

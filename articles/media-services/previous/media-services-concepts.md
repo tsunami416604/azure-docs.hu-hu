@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: cfc8ac74f626ada30dda72b58e4b4bc7f0d9e806
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: f9d51869b9a6ba63c73637c50f5a19e864bc23e4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services alapfogalmaiért
 Ez a témakör áttekintést nyújt a Media Services egyik legfontosabb fogalmak.
@@ -108,7 +108,7 @@ További információ a támogatott kódolók: [kódolók](media-services-encode
 Azure Media Services a csatorna élő adatfolyam-tartalmak feldolgozására adatcsatorna jelöli. Egy csatorna élő bemeneti adatfolyamok megkapja az alábbi két módszer egyikével:
 
 * Egy helyszíni élő kódoló többszörös sávszélességű RTMP vagy Smooth Streaming (töredékes MP4) küld a csatornát. Használhatja a következő élő kódolók képesek kimeneti többféle sávszélességű Smooth Streaming: MediaExcel, Ateme, kommunikációs képzelhető el, Envivo, Cisco és elemi. RTMP-kimenetre a következő élő kódolók képesek: Adobe Flash Live kódoló, Telestream Wirecast, Teradek, Haivision és Tricaster kódolók. A feldolgozott adatfolyamok haladnak át csatornák további átkódolás és kódolás nélkül. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
-* Egy egyféle sávszélességű adatfolyamot (a következő formátumok egyikében: RTP (MPEG-TS)), RTMP vagy Smooth Streaming (töredékes MP4)) küld a csatornának, amelyen engedélyezve van-e a Media Services élő kódolás. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* Egy egyféle sávszélességű adatfolyamot (a következő formátumok valamelyikével: RTMP vagy Smooth Streaming (töredékes MP4)) küld a csatornának, amelyen engedélyezve van-e a Media Services élő kódolás. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
 ### <a name="channel"></a>Csatorna
 A Media Services szolgáltatásban [csatorna](https://docs.microsoft.com/rest/api/media/operations/channel)s felelősek az élő adatfolyam-tartalmak feldolgozása. Egy csatornát biztosít a bemeneti végpontja (feldolgozó URL-CÍMÉT), akkor adja meg az élő transcoder. A csatorna élő transcoder bemeneti élő adatfolyamokat fogad, és lehetővé teszi az adatfolyamként történő egy vagy több Streamvégpontok keresztül. Csatornák előnézeti végpont (előzetes verzió URL-cím), amelyekkel előzetes megtekintéséhez és az adatfolyam érvényesítése előtt további feldolgozás és a szállítási is megadhatja.

@@ -1,26 +1,20 @@
 ---
-title: "Naplózás és a jelentéskészítés az Azure Active Directory B2B együttműködés felhasználói |} Microsoft Docs"
-description: "Vendég felhasználó tulajdonságainak konfigurálható az Azure Active Directory B2B együttműködés"
+title: Naplózás és a jelentéskészítés az Azure Active Directory B2B együttműködés felhasználói |} Microsoft Docs
+description: Vendég felhasználó tulajdonságainak konfigurálható az Azure Active Directory B2B együttműködés
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 04/12/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 38ae8f5f1a8f4292eaf617c15c6a59a48dd348c5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 58b84688ded993b4e592af3dcf6a070d6bf52d6a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Naplózási és jelentéskészítési B2B együttműködés felhasználó
 Vendégfelhasználók az informatikai részleg vizsgálati lehetőségekre hasonló tag felhasználókkal. Íme egy példa a meghívott Sam Oogle meghívó és érvényesítési előzményeit:
@@ -35,16 +29,5 @@ Ezek a naplók exportálása az Azure AD is, és a eszközzel jelentéskészít�
 
 ### <a name="next-steps"></a>További lépések
 
-Ismerje meg az Azure AD B2B együttműködés további cikkeit:
+- [B2B együttműködés felhasználó tulajdonságai](active-directory-b2b-user-properties.md)
 
-* [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B együttműködés felhasználó tulajdonságai](active-directory-b2b-user-properties.md)
-* [Egy szerepkör B2B együttműködés felhasználók hozzáadása](active-directory-b2b-add-guest-to-role.md)
-* [B2bB együttműködés meghívókat delegálása](active-directory-b2b-delegate-invitations.md)
-* [Dinamikus csoportok és a B2B együttműködés](active-directory-b2b-dynamic-groups.md)
-* [B2B együttműködés kód és a PowerShell-példák](active-directory-b2b-code-samples.md)
-* [B2B együttműködés SaaS-alkalmazások konfigurálása](active-directory-b2b-configure-saas-apps.md)
-* [B2B együttműködés felhasználói jogkivonatokhoz](active-directory-b2b-user-token.md)
-* [B2B együttműködés felhasználói jogcímek leképezése](active-directory-b2b-claims-mapping.md)
-* [Külső Office 365-megosztás](active-directory-b2b-o365-external-user.md)
-* [B2B együttműködés aktuális korlátozásai](active-directory-b2b-current-limitations.md)

@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: d71f9fc2b69e1a99b518c2317cccde712ab40fec
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 2d3219f6f2617fec941e308febb2e47efa184170
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Élő adatfolyam-továbbítási az Azure Media Services áttekintése
 
@@ -54,7 +54,7 @@ A **csatorna** egy olyan folyamatot jelent, amely az élő adatfolyamok tartalm�
   > Valamely áteresztő módszer használata a leggazdaságosabb megoldás, ha hosszú időn át több eseményt is közvetít élő adatfolyamként, és már befektetett helyszíni kódolókba. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) nyújt.
   > 
   > 
-* Egy helyszíni élő kódoló egy egyféle sávszélességű adatfolyamot küld a csatornának, amelyen engedélyezve van-e élő kódolásra Media Services a következő formátumok egyikében: RTMP vagy Smooth Streaming (töredezett MP4). RTP (MPEG-TS) is támogatja, feltéve dedikált kapcsolattal rendelkezik az Azure adatközpontba. A következő élő kódolók képesek RTMP kimenet ismert, hogy az ilyen típusú csatornák használata: Telestream Wirecast, FMLE. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* Egy helyszíni élő kódoló egy egyféle sávszélességű adatfolyamot küld a csatornának, amelyen engedélyezve van-e élő kódolásra Media Services a következő formátumok egyikében: RTMP vagy Smooth Streaming (töredezett MP4). A következő élő kódolók képesek RTMP kimenet ismert, hogy az ilyen típusú csatornák használata: Telestream Wirecast, FMLE. A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
 A Media Services 2.10 kiadástól kezdve, amikor létrehoz egy csatornát, megadhatja a milyen módon a csatornának a bemeneti adatfolyam fogadni szeretné, és hogy szeretné-e a csatorna élő kódolásra az adatfolyam. Erre két lehetősége van:
 
@@ -68,7 +68,7 @@ A Media Services támogatott csatorna kétféle összehasonlításával való az
 | --- | --- | --- |
 | Egyszeres sávszélességű bemeneti van kódolva több bitrates a felhőben |Nem |Igen |
 | Maximális felbontás, a rétegek száma |1080p, 8 rétegek 60 + fps |720p, 6 rétegek 30 fps |
-| Bemeneti protokollok |RTMP, Smooth Streaming |RTMP, Smooth Streaming vagy RTP |
+| Bemeneti protokollok |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Ár |Tekintse meg a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Live videó" lap |Tekintse meg a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximálisan engedélyezett futási idő |A hét minden napján, 24 órában elérhető |8 óra |
 | Táblagépükkel beszúrása támogatása |Nem |Igen |

@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: 3220c538e08753ed3515f42a5b8110df71745a63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ef35bbb28f5b13068f92f4bf07c7807b4a5d407a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS adatbázis bérleti minták
 
@@ -88,7 +88,7 @@ Azure SQL Database biztosít az eszközök konfigurálásához, megfigyeléséhe
 
 #### <a name="operations-scale-for-database-per-tenant"></a>Adatbázis-/-bérlő méretezése műveletek
 
-Az Azure SQL Database platform számos felügyeleti szolgáltatást arra tervezték, hogy léptékű, például a is több mint 100 000 adatbázisok adatbázisok felügyeleti nagyszámú rendelkezik.  Ezek a funkciók ellenőrizze az adatbázis-/-bérlő mintát egyértelmű.
+Az Azure SQL Database platform számos felügyeleti szolgáltatást arra tervezték, hogy nagyszámú léptékű, például a is több mint 100 000 adatbázisok adatbázisok rendelkezik.  Ezek a funkciók ellenőrizze az adatbázis-/-bérlő mintát egyértelmű.
 
 Tegyük fel, hogy a rendszer rendelkezik a csak egy adatbázisaként 1000-bérlő adatbázis.  Az adatbázis 20 indexek rendelkezhet.  Ha a rendszer, hogy 1000 single-bérlő adatbázisok alakítja át, indexek mennyisége 20 000 nő.  Az SQL-adatbázis részeként [automatikus hangolása][docu-sql-db-automatic-tuning-771a], az automatikus indexelési funkciók alapértelmezés szerint engedélyezettek.  Automatikus indexeléshez meg minden 20 000 indexek és kezeli a folyamatban lévő létrehozása és az vetett optimalizálás.  Ezek a automatizált műveletek történnek belül egyedi adatbázis, és nem koordinált vagy más adatbázisokban hasonló műveletek korlátozza.  Automatikus indexeléshez kezeli indexek eltérő adatbázisban foglalt mint kevésbé foglalt-adatbázisban.  Az ilyen típusú index felügyeleti testreszabási az adatbázis-/-bérlő léptékű nem célszerű lenne, ha hatalmas felügyeleti feladat kellett manuálisan kell elvégezni.
 
@@ -99,7 +99,7 @@ Egyéb szolgáltatásokat, amelyek jól méretezhető a következők:
 - A lemez titkosítása.
 - Teljesítmény telemetriai adatokat.
 
-#### <a name="automation"></a>Automatizálás
+#### <a name="automation"></a>Automation
 
 A felügyeleti műveletek parancsprogrammal létrehozva, és -létesítésen keresztül felajánlott egy [devops] [ http-visual-studio-devops-485m] modell.  A műveletek még automatikus, és az alkalmazás elérhetővé.
 

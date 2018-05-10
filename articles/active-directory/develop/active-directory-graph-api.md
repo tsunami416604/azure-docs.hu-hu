@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 00ca193b281f0a8d24935dd8673cae4e05b4d167
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: c817964ebab358f8e31e7435b7067fc60e9516fa
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 > [!IMPORTANT]
@@ -46,7 +46,7 @@ Az Azure AD Graph API a következő szolgáltatásokat biztosítja:
 * **Az Azure AD hitelesítési**: Azure AD Graph API kérelmek egy JSON webes jogkivonat (JWT) található a kérés hitelesítési fejlécéhez hozzáfűzésével hitelesíteni kell. Ez a token szerzi a kérést továbbítja az Azure AD-jogkivonat végpontjához, és adja meg érvényes hitelesítő adatokat. Az engedélyezési kód engedélyezése szerezni a jogkivonatot, amellyel meghívhatja a grafikon folyamata, vagy használhatja az OAuth 2.0 ügyfél hitelesítő adatok folyamata. További információ [OAuth 2.0, az Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 * **Szerepkör alapú engedélyezési (RBAC)**: biztonsági csoportok használhatók az Azure AD Graph API RBAC végrehajtásához. Például, ha meg szeretné határozni, hogy egy felhasználó egy adott erőforráshoz való hozzáférés rendelkezik, az alkalmazás meghívhatja a [csoporttagság ellenőrzése (tranzitív)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) művelet, amely igaz vagy hamis értéket ad vissza.
 * **Különbözeti lekérdezés**: különbözeti lekérdezés lehetővé teszi egy könyvtárat, anélkül, hogy így gyakori lekérdezések az Azure AD Graph API két időszakok közötti változásainak követése. Ilyen típusú kérelmet csak a korábbi különbözeti lekérdezés kérelem és a jelenlegi kérelem között végrehajtott módosítások adja vissza. További információkért lásd: [az Azure AD Graph API különbözeti lekérdezés](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query).
-* **Címtárbővítmények**: ou egyéni tulajdonságokat adhat hozzá címtárobjektumok anélkül, hogy egy külső adattároló. Ha az alkalmazás egy Skype-azonosító tulajdonságot minden olyan felhasználóhoz, például a címtárban regisztrálhatja az új tulajdonságot, és minden user objektum használható lesz. További információkért lásd: [az Azure AD Graph API Directory-séma bővítményei](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
+* **Címtárbővítmények**: is hozzáadhat egyéni tulajdonságok címtárobjektumok anélkül, hogy egy külső adattároló. Ha az alkalmazás egy Skype-azonosító tulajdonságot minden olyan felhasználóhoz, például a címtárban regisztrálhatja az új tulajdonságot, és minden user objektum használható lesz. További információkért lásd: [az Azure AD Graph API Directory-séma bővítményei](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
 * **Védi-engedélyhatókörök**: Azure AD Graph API-val tesz elérhetővé, amelyek lehetővé teszik az OAuth 2.0 verziót használja az Azure AD-adatokhoz való biztonságos hozzáférés engedélyhatókörök. Ügyfél típusú alkalmazás, beleértve a különböző támogatja:
   
   * felhasználói felületek, amelyek hozzáférő delegált engedélyezési adatokat (delegált) bejelentkezett felhasználó

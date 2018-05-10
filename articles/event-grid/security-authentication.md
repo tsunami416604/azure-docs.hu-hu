@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: d539475d376e2c3e38c2cbd38de0a10645fcabe4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Esemény rács biztonsági és hitelesítési 
 
@@ -27,6 +27,8 @@ Az Azure Event rács három típusú hitelesítés van:
 Webhook olyan események fogadása Azure esemény rács számos módja közül. Amikor készen áll az új esemény, az esemény rács Webhook HTTP-kérelmet küld a beállított HTTP-végpont a törzsben szereplő eseménnyel.
 
 Ha saját WebHook végpont regisztrálása esemény rács, küld, akkor egy POST kérést egy egyszerű érvényességi kóddal igazolnia a végpont tulajdonosa. Az alkalmazás kell válaszolnia által echo vissza az érvényesítési kódot. Esemény rács WebHook végpontok, amelyek még nem kapott az érvényesítés nem kézbesíteni. Ha egy külső API szolgáltatását használja (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), előfordulhat, hogy nem fogja tudni a Ellenőrzőkód programozottan echo. Ezek a szolgáltatások esetén manuálisan ellenőrizheti az előfizetés az előfizetés érvényesítése esemény küldött érvényesítési URL-cím. Másolja az URL-címet, és a többi ügyfél, illetve a webböngésző keresztül GET kérés küldése.
+
+Manuális érvényesítés jelenleg előzetes verzióban érhető. A használatához telepítenie kell a [esemény rács bővítmény](/cli/azure/azure-cli-extensions-list) a [AZ CLI 2.0](/cli/azure/install-azure-cli). A későbbiekben telepítheti az `az extension add --name eventgrid`. Ha a REST API-t használ, győződjön meg arról, használ `api-version=2018-05-01-preview`.
 
 ### <a name="validation-details"></a>Ellenőrzési részletek
 

@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: db79629c5f806fe50d22200574c29052a485dd06
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 4d88004f37b40fa92e617545e1a94656744a7db0
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
@@ -48,6 +48,8 @@ Az Azure-függvény (jobb oldali legtöbb ablaktáblán az az Azure functions po
 ## <a name="endpoint-validation"></a>Végpont érvényesítése
 
 Először is meg szeretné akkor kezeli `Microsoft.EventGrid.SubscriptionValidationEvent` események. Minden alkalommal, amikor valaki előfizet egy eseményt, esemény rács küld egy érvényesítési esemény a végpont egy `validationCode` az adatokat tartalmaz. A végpont nem szükséges ebben a az adott válasz törzsének az echo [igazolnia a végpont nem érvényes, és a tulajdonosuk](security-authentication.md#webhook-event-delivery). Ha használ egy [rács eseményindító](../azure-functions/functions-bindings-event-grid.md) helyett egy WebHook működésbe. a függvény végpont érvényesítésről meg. Ha egy külső API szolgáltatását használja (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), előfordulhat, hogy nem fogja tudni a Ellenőrzőkód programozottan echo. Ezek a szolgáltatások esetén manuálisan ellenőrizheti az előfizetés az előfizetés érvényesítése esemény küldött érvényesítési URL-cím. Másolja az URL-címet a `validationUrl` tulajdonság, majd küldje el egy GET kérelem a többi ügyfél, illetve a webböngésző keresztül.
+
+Manuális érvényesítés jelenleg előzetes verzióban érhető. A használatához telepítenie kell a [esemény rács bővítmény](/cli/azure/azure-cli-extensions-list) a [AZ CLI 2.0](/cli/azure/install-azure-cli). A későbbiekben telepítheti az `az extension add --name eventgrid`. Ha a REST API-t használ, győződjön meg arról, használ `api-version=2018-05-01-preview`.
 
 A Ellenőrzőkód programozottan echo, használja a következő kódot:
 

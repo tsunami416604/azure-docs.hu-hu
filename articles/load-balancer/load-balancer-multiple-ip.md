@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Terheléselosztás több IP-konfigurációk az Azure portál használatával
 
@@ -120,7 +120,7 @@ Minden webhelyhez (contoso.com és fabrikam.com) konfigurálja az előtér-IP-c�
 
 4. Válassza ki a terheléselosztó (**mylb**), hogy szeretné-e hozzá az előtér-IP-készlet.
 
-5. A **beállítások**, jelölje be **előtér-készletek**. A következő ablaktábla felső részén, jelölje ki **Hozzáadás**.
+5. A **beállítások**, jelölje be **előtérbeli IP-konfiguráció**. A következő ablaktábla felső részén, jelölje ki **Hozzáadás**.
 
 6. Adjon meg egy nevet az előtérbeli IP-cím (például **contosofe** vagy **fabrikamfe**).
 
@@ -128,7 +128,7 @@ Minden webhelyhez (contoso.com és fabrikam.com) konfigurálja az előtér-IP-c�
 
 8. A második előtér-IP-cím létrehozása megismétlésével <a href="#step3-3">3. lépés</a> keresztül <a href="#step3-7">7. lépés</a> ebben a szakaszban.
 
-Az előtér-készlet konfigurálása után az IP-címek láthatók a terheléselosztó **előtérbeli IP-készlet** beállításait. 
+Az előtér-készlet konfigurálása után az IP-címek láthatók a terheléselosztó **előtérbeli IP-konfiguráció** beállításait. 
     
 ### <a name="step-4-configure-the-back-end-pool"></a>4. lépés: A háttér-készlet konfigurálása
 

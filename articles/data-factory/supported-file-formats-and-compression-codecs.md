@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: fdfee4e06994de1b9a63996203b1a1b9fed9b768
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factory tömörítési kodek
 
@@ -452,18 +452,18 @@ Vegye figyelembe a következő szempontokat:
 | SByte | Bájt |
 | Bájt | Rövid |
 | Int16 | Rövid |
-| UInt16 | Int |
+| Csak UInt16 | Int |
 | Int32 | Int |
 | UInt32 | Hosszú |
 | Int64 | Hosszú |
 | UInt64 | Karakterlánc |
-| Egyedülálló | Lebegőpontos |
+| Önálló | Lebegőpontos |
 | Dupla | Dupla |
 | Decimális | Decimális |
 | Karakterlánc | Karakterlánc |
 | DateTime | Időbélyeg |
 | DateTimeOffset | Időbélyeg |
-| TimeSpan | Időbélyeg |
+| A TimeSpan | Időbélyeg |
 | ByteArray | Bináris |
 | GUID | Karakterlánc |
 | Karakter | Char(1) |
@@ -486,27 +486,27 @@ Ha elemezni szeretné a Parquet-fájlokat, vagy Parquet formátumban szeretne ad
 Vegye figyelembe a következő szempontokat:
 
 * Az összetett adattípusok nem támogatottak (MAP, LIST)
-* A Parquet-fájlok a következő tömörítéshez kapcsolódó beállításokat használják: NONE, SNAPPY, GZIP és LZO. A Data Factory a három tömörített formátum bármelyikében lévő ORC-fájlokból támogatja az adatok olvasását. Az adatok olvasásához a metaadatokban szereplő tömörítési kodeket használja. A Parquet-fájlokba való írás esetén azonban a Data Factory a SNAPPY tömörítést választja, amely az alapértelmezett a Parquet-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
+* A Parquet-fájlok a következő tömörítéshez kapcsolódó beállításokat használják: NONE, SNAPPY, GZIP és LZO. Adat-előállító támogatja az adatok olvasása a tömörített formátumban Parquet fájlból. Az adatok olvasásához a metaadatokban szereplő tömörítési kodeket használja. A Parquet-fájlokba való írás esetén azonban a Data Factory a SNAPPY tömörítést választja, amely az alapértelmezett a Parquet-fájlok esetében. Jelenleg nincs lehetőség ennek a viselkedésnek a felülírására.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Adattípus-leképezést Parquet fájlok
 
 | Data factory ideiglenes adattípus | Egyszerű típus parquet | Eredeti típus parquet (deszerializálni) | Eredeti típus parquet (szerializálni) |
 |:--- |:--- |:--- |:--- |
 | Logikai | Logikai | – | – |
-| SByte | Int32 | Int8 | Int8 |
+| SByte | Int32 | int8 | int8 |
 | Bájt | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
-| UInt16 | Int32 | UInt16 | Int32 |
+| Csak UInt16 | Int32 | Csak UInt16 | Int32 |
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/bináris | UInt64 | Decimális |
-| Egyedülálló | Lebegőpontos | – | – |
+| Önálló | Lebegőpontos | – | – |
 | Dupla | Dupla | – | – |
 | Decimális | Bináris | Decimális | Decimális |
 | Karakterlánc | Bináris | Utf8 | Utf8 |
 | DateTime | Int96 | – | – |
-| TimeSpan | Int96 | – | – |
+| A TimeSpan | Int96 | – | – |
 | DateTimeOffset | Int96 | – | – |
 | ByteArray | Bináris | – | – |
 | GUID | Bináris | Utf8 | Utf8 |

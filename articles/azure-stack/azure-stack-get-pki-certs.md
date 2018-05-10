@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b65d0d88fd57dea59c79d2f72bab60967856e015
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 17737c2b272f2a123df3d58c62c471b3da5bebe1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Az Azure verem tanúsítványok aláírási kérelem létrehozása
 
@@ -33,6 +33,8 @@ A Azure verem készültségi-ellenőrző eszközt (AzsReadinessChecker) a követ
     Megadja, függetlenül attól, a tanúsítvány-aláírási kérelem egyetlen kérelem, vagy több kérést.
  - **Platform,--szolgáltatás**  
     Opcionálisan a platform,--szolgáltatás (PaaS) nevek a megadott tanúsítványok kérése [Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények - választható PaaS tanúsítványokat](azure-stack-pki-certs.md#optional-paas-certificates).
+
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,26 +1,26 @@
 ---
-title: "Egy felhasználó vagy csoport-hozzárendelés eltávolítása egy vállalati alkalmazás Azure Active Directoryban |} Microsoft Docs"
-description: "A hozzáférés hozzárendelése egy felhasználóhoz vagy csoporthoz eltávolítása a vállalati alkalmazások az Azure Active Directoryban"
+title: Egy felhasználó vagy csoport-hozzárendelés eltávolítása egy vállalati alkalmazás Azure Active Directoryban |} Microsoft Docs
+description: A hozzáférés hozzárendelése egy felhasználóhoz vagy csoporthoz eltávolítása a vállalati alkalmazások az Azure Active Directoryban
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-editor: 
-ms.assetid: 7b2d365b-ae92-477f-9702-353cc6acc5ea
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 084ffcbe473290a8734b1c8b8847b517dac4f6b6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b3c5c6c4bc1cfd5a9b68277e21fc06f37fa18f3b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport-hozzárendelés eltávolítása egy vállalati alkalmazás Azure Active Directoryban
 Nem lett hozzárendelve hozzáférés a vállalati alkalmazások az Azure Active Directory (Azure AD) egyik felhasználó vagy csoport eltávolítása. A vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.

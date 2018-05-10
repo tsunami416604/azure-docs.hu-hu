@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: antonfr;mbullwin
-ms.openlocfilehash: c847052134b1d83cd606e0e2b51b63b580f7917c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 45d2f39ff7fb2e5a22cda74cd0c794db28e351f1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-public-preview"></a>Riasztások dinamikus küszöbökkel Azure figyelőben (korlátozott nyilvános előzetes verzió)
 
@@ -85,7 +85,7 @@ Dinamikus küszöbértékek riasztások konfigurálható riasztásait az Azure-f
 
    Átmeneti igényeiben jelentkező által előállított riasztások zaj csökkentése érdekében azt javasoljuk, a "Number megsértését jelenti a riasztás aktiválásához" beállításokat. Ez a funkció lehetővé teszi, hogy a rendszer riasztást küld Önnek, csak akkor, ha valaki megsértette a küszöbérték X egymást követő alkalommal vagy Y alkalommal utolsó Z kívül. Példa:
 
-    Riasztást vált ki, ha a probléma folyamatos a 15 perc, 5 perc, az adott időszakban 3 egymást követő alkalommal használja a következő beállításokat:
+    Riasztást vált ki, ha a probléma folyamatos 15 percig, egy adott időszakban, 5 perces 3 egymást követő alkalommal használja a következő beállításokat:
 
    ![Értékelés alapja](./media/monitoring-alerts-dynamic-thresholds/0008.png)
 

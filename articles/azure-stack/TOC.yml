@@ -61,8 +61,22 @@
               href: azure-stack-prepare-pki-certs.md
             - name: PKI-tanúsítványok ellenőrzése
               href: azure-stack-validate-pki-certs.md
-        - name: Identitásintegráció
-          href: azure-stack-integrate-identity.md
+            - name: PKI-tanúsítványok javítása
+              href: azure-stack-remediate-certs.md
+            - name: Telepítési erőforrásai
+              items:
+                - name: Start-AzsReadiness parancsmag-referencia
+                  href: azure-stack-azsreadiness-cmdlet.md
+                - name: A készültségi jelentés megtekintése
+                  href: azure-stack-validation-report.md
+            - name: Identitásintegráció
+              items:
+                - name: Válassza ki az identitásszolgáltató
+                  href: azure-stack-integrate-identity.md
+                - name: Azure-identitás ellenőrzése
+                  href: azure-stack-validate-identity.md
+        - name: Az Azure regisztráció érvényesítése
+          href: azure-stack-validate-registration.md
         - name: Külső figyelése
           href: azure-stack-integrate-monitor.md
         - name: Biztonsági integráció
@@ -123,7 +137,7 @@
               href: azure-stack-manage-storage-accounts.md
             - name: Tárolási kapacitás kezelése
               href: azure-stack-manage-storage-shares.md
-            - name: Azure verem fizikai tárolási kapacitás kezelése
+            - name: Fizikai memória kapacitás kezelése
               href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: A hardver cseréje
           items:
@@ -253,6 +267,10 @@
               href: azure-stack-compute-add-scalesets.md
             - name: Az ajánlat Linux virtuális gépek
               href: azure-stack-linux.md
+            - name: Red Hat virtuális gép hozzáadása
+              href: azure-stack-redhat-create-upload-vhd.md
+            - name: Ajánlat Kubernetes fürt
+              href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Használat és számlázás
           items:
             - name: Áttekintés

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 7679fd253370d8ca9ca9ac57dc080806050f5c3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6452d8f88b91fe0cbf144ce951b84ba4cec0047
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="outbound-connections-classic"></a>Kimenő kapcsolatok (klasszikus)
 
@@ -37,11 +37,11 @@ Egyszerre több [kimenő forgatókönyvek](#scenarios). Ezek a forgatókönyvek 
 
 Azure kimenő kapcsolat klasszikus központi telepítések eléréséhez három különböző módszert biztosít.  Nem minden klasszikus központi telepítések számára elérhető összes három forgatókönyv rendelkezik:
 
-| Forgatókönyv | Módszer | Leírás | Webes feldolgozói szerepkör | IaaS | 
-| --- | --- | --- | --- | --- |
-| [1. Virtuális gép példány szint nyilvános IP-címmel](#ilpip) | SNAT, színleg nem használt port |Azure virtuális géphez hozzárendelt nyilvános IP-címet használ. A példány érhető el az összes rövid élettartamú port tartozik. | Nem | Igen |
-| [2. nyilvános elosztott terhelésű végpont](#publiclbendpoint) | A port színleg (PAT) a nyilvános végpontnak SNAT |Azure több titkos végpont osztanak meg az nyilvános IP-cím nyilvános végpontot. Azure PAT használ a nyilvános végpont elmúló port. | Igen | Igen |
-| [3. Önálló virtuális gép ](#defaultsnat) | A port színleg (PAT) SNAT | Azure automatikusan meg, míg a nyilvános IP-címnek a SNAT, a nyilvános IP-címet oszt meg a teljes telepítési és a nyilvános végpontot IP-cím elmúló port PAT használ. Ez egy webfarmos tartalék a fenti forgatókönyvek esetén. Nem ajánlott, ha figyelemmel kísérelhetik és vezérelhetik van szüksége. | Igen | Igen|
+| Forgatókönyv | Módszer | IP-protokollok | Leírás | Webes feldolgozói szerepkör | IaaS | 
+| --- | --- | --- | --- | --- | --- |
+| [1. Virtuális gép példány szint nyilvános IP-címmel](#ilpip) | SNAT, színleg nem használt port | TCP, UDP, ICMP, ESP | Azure virtuális géphez hozzárendelt nyilvános IP-címet használ. A példány érhető el az összes rövid élettartamú port tartozik. | Nem | Igen |
+| [2. nyilvános elosztott terhelésű végpont](#publiclbendpoint) | A port színleg (PAT) a nyilvános végpontnak SNAT | TCP, UDP | Azure több titkos végpont osztanak meg az nyilvános IP-cím nyilvános végpontot. Azure PAT használ a nyilvános végpont elmúló port. | Igen | Igen |
+| [3. Önálló virtuális gép ](#defaultsnat) | A port színleg (PAT) SNAT | TCP, UDP | Azure automatikusan meg, míg a nyilvános IP-címnek a SNAT, a nyilvános IP-címet oszt meg a teljes telepítési és a nyilvános végpontot IP-cím elmúló port PAT használ. Ez egy webfarmos tartalék a fenti forgatókönyvek esetén. Nem ajánlott, ha figyelemmel kísérelhetik és vezérelhetik van szüksége. | Igen | Igen |
 
 Ez a kimenő kapcsolat funkció érhető el az Azure Resource Manager üzembe helyezések egy részét.  
 

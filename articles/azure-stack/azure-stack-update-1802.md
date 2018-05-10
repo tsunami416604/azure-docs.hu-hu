@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d0641e1c7c09ac081e4dc024d6e231b88bcb58d2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-1802-update"></a>Az Azure verem 1802 frissítés
 
@@ -85,6 +85,8 @@ A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure 
 
 - **Támogatja a több tartalék tartományok**.  További információkért lásd: [magas rendelkezésre állású Azure verem](azure-stack-key-features.md#high-availability-for-azure-stack).
 
+- **Fizikai memória frissítések támogatása** -a kezdeti telepítés után most bővítheti az integrált Azure verem rendszer memóriakapacitása. További információkért lásd: [Azure verem fizikai memória kapacitás kezelése](azure-stack-manage-storage-physical-memory-capacity.md).
+
 - **Különböző javítások** teljesítmény, stabilitásának, biztonsági és az Azure-verem által használt operációs rendszer.
 
 <!--
@@ -142,7 +144,7 @@ Nincsenek ismert problémák 1802 történő frissítés után.
 #### <a name="marketplace"></a>Piactér
 - A felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és láthatja például tervek és ajánlatok felügyeleti elemeket. Ezek az elemek nem működőképes a felhasználók számára is.
 
-#### <a name="compute"></a>Számítás
+#### <a name="compute"></a>Compute
 - A virtuálisgép-méretezési csoportok skálázási beállításai nem érhetők el a portálon. Áthidaló megoldásként használja [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
 
 - <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 

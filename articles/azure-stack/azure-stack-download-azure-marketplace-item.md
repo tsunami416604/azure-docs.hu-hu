@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/27/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f24dd917f4197f933fd58f7c646c18372da8593
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Töltse le a Piactéri elemek az Azure-ból az Azure-verem
 
@@ -31,7 +31,7 @@ Hogy mely tartalmak ahhoz, hogy szerepeljen a verem Azure piactér mellett dönt
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>Töltse le a Piactéri elemek csatlakoztatott forgatókönyv esetében (internetes kapcsolattal rendelkező)
 
 1. Töltse le a Piactéri elemek, először [Azure verem regisztrálni Azure](azure-stack-register.md).
-2. Jelentkezzen be a verem Azure felügyeleti portálra (https://portal.local.azurestack.external).
+2. Jelentkezzen be a verem Azure felügyeleti portálra (a ASDK, használjon https://portal.local.azurestack.external).
 3. Néhány Piactéri elemek tekintélyes lehet. Győződjön meg arról, hogy elegendő lemezterület a számítógépen kattintva **erőforrás-szolgáltató** > **tárolási**.
 
     ![](media/azure-stack-download-azure-marketplace-item/image01.png)
@@ -60,7 +60,7 @@ A piactér szindikálási eszköz használata előtt győződjön meg arról, ho
 
 A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítségével töltse le a szükséges Piactéri elemek:
 
-1. Nyissa meg rendszergazdaként a PowerShell-konzolban és [Azure verem adott PowerShell-modulok telepítése](azure-stack-powershell-install.md). Győződjön meg arról, hogy telepítse **PowerShell 1.2.11 verzió vagy újabb**.  
+1. Nyissa meg rendszergazdaként a PowerShell-konzolban és [Azure verem adott PowerShell-modulok telepítése](azure-stack-powershell-install.md). Győződjön meg arról, hogy telepítse **Azure verem PowerShell modul 1.2.11 verzió vagy újabb**.  
 
 2. Adja hozzá az Azure-fiókot regisztrálni Azure verem használt. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmag paraméter nélkül. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2-factor authentication használatával.  
 
@@ -92,7 +92,7 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
 5. A szindikálási modul importálása, és indítsa el az eszközt a következő parancsok futtatásával:  
 
    ```powershell
-   Import-Module .\ Syndication\AzureStack.MarketplaceSyndication.psm1
+   Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Sync-AzSOfflineMarketplaceItem `
      -destination "<Destination folder path>" `
@@ -100,21 +100,28 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
      -AzureSubscriptionId $AzureContext.Subscription.Id  
    ```
 
-6. Amikor az eszköz fut, a Azure-fiók hitelesítő adatainak megadását kéri. Jelentkezzen be az Azure-fiókot regisztrálni Azure verem használt. Miután a bejelentkezés sikeres, a rendelkezésre álló Piactéri elemek listáját a következő képernyő kell megjelennie.  
+6. Amikor az eszköz fut, a Azure-fiók hitelesítő adatainak megadását kéri. Jelentkezzen be az Azure-fiókot regisztrálni Azure verem használt. Miután a bejelentkezés sikeres, meg kell jelennie a rendelkezésre álló Piactéri elemek listáját a következő képernyő.  
 
    ![Az Azure piactéren elemek előugró ablak](./media/azure-stack-download-azure-marketplace-item/image05.png)
 
 7. Válassza ki a lemezképet, amelyet szeretne letölteni, és jegyezze fel, a lemezkép verziója. A Ctrl billentyűt lenyomva több lemezképet választhat. A kép verzióját használja a következő szakaszban-lemezkép importálása.  Ezután kattintson **Ok**, majd fogadja el a jogi feltételeket kattintva **Igen**. Képek listájának használatával is végezhet a **adja meg a feltételeket** lehetőséget. 
 
-   A letöltés eltart egy ideig, attól függően, hogy a lemezkép méretét. Egyszer kép letöltése érhető el a korábban megadott cél elérési útban. A letöltés Azpkg formátuma VHD fájlt, és a gyűjtemény elemeinek tartalmazza.
+   A letöltés eltart egy ideig, attól függően, hogy a lemezkép méretét. Egyszer kép letöltése érhető el a korábban megadott cél elérési útban. A letöltés tartalmaz egy VHD-fájlt (a virtuális gépek) vagy egy. A ZIP-fájlja (virtuálisgép-bővítmények) és egy gyűjteményelem Azpkg formátumban.
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>A lemezkép importálása, és tegye közzé a verem Azure piactér
+A Piactéri elemek három különböző típusa: virtuális gépek, a virtuálisgép-bővítmények és a megoldás sablonok. Megoldás sablonok alább.
+> [!NOTE]
+> Virtuálisgép-bővítmények jelenleg nem vehető fel Azure verem.
 
 1. A kép és a gyűjtemény csomag letöltése után mentse őket, és a tartalom cserélhető lemezmeghajtókra AzureStack főkiszolgálós eszközök mappában, és másolja az Azure-verem környezetben (másolhatja azt helyileg bárhova például: "C:\MarketplaceImages").     
 
 2. A kép importálása, előtt csatlakoztatni kell az Azure-verem üzemeltető környezetben ismertetett lépések segítségével [Azure verem operátor PowerShell környezet konfigurálása](azure-stack-powershell-configure-admin.md).  
 
-3. A lemezkép importálása Azure verem az Add-AzsVMImage parancsmag segítségével. A parancsmag használatakor győződjön meg arról, hogy a *publisher*, *kínálnak*, és más paraméterértékeket a kép importált értékekkel. Beszerezheti a *publisher*, *kínálnak*, és *sku* értékek a képet az imageReference objektum korábban letöltött Azpkg fájl és a  *verzió* az előző szakaszban 6. lépés értékét.
+3. A letöltés kis 3MB VHD-fájl fixed3.vhd nevű része, akkor a megoldássablon. Ez a fájl nincs szükség; folytassa az 5. Ellenőrizze, hogy minden függő elemek töltse le a leírása a letöltés.
+
+4. A lemezkép importálása Azure verem az Add-AzsVMImage parancsmag segítségével. A parancsmag használatakor győződjön meg arról, hogy a *publisher*, *kínálnak*, és más paraméterértékeket a kép importált értékekkel. Beszerezheti a *publisher*, *kínálnak*, és *sku* értékek a képet az imageReference objektum korábban letöltött Azpkg fájl és a  *verzió* az előző szakaszban 6. lépés értékét.
+
+Az imageReference található, szüksége lesz a AZPKG fájl átnevezése a. A ZIP-bővítmény, bontsa ki, egy ideiglenes helyre, és nyissa meg a DeploymentTemplates\CreateUiDefinition.json fájlt egy szövegszerkesztőben. Ebben a szakaszban található:
 
    ```json
    "imageReference": {
@@ -140,9 +147,9 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
     -Location Local
    ```
 
-4. Töltse fel a Piactéri elemet használja portal (. Azpkg) Azure-verem blobtárolóba. Töltse fel a helyi Azure verem tárterület, vagy töltse fel az Azure-tárhelyre. (A csomag egy ideiglenes helyre szó.) Győződjön meg arról, hogy a blob nyilvánosan elérhető, és jegyezze fel az URI azonosító.  
+5. Töltse fel a Piactéri elemet használja portal (. Azpkg) Azure-verem blobtárolóba. Töltse fel a helyi Azure verem tárterület, vagy töltse fel az Azure-tárhelyre. (A csomag egy ideiglenes helyre szó.) Győződjön meg arról, hogy a blob nyilvánosan elérhető, és jegyezze fel az URI azonosító.  
 
-5. A Piactéri elemet közzétételét Azure verem használatával a **Add-AzsGalleryItem**. Példa:
+6. A Piactéri elemet közzétételét Azure verem használatával a **Add-AzsGalleryItem**. Példa:
 
    ```powershell
    Add-AzsGalleryItem `
@@ -150,7 +157,7 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
      –Verbose
    ```
 
-6. A gyűjteményelem közzététele után tekintheti át a **új** > **piactér** ablaktáblán.  
+7. A gyűjteményelem közzététele után tekintheti át a **új** > **piactér** ablaktáblán. Ha a letöltés a megoldássablon volt, ellenőrizze, hogy a függő Virtuálismerevlemez-kép is letöltött.
 
    ![Piactér](./media/azure-stack-download-azure-marketplace-item/image06.png)
 

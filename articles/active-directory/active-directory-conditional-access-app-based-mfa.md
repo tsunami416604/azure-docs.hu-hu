@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eba67e6fe7d836d7b36d2bcd576eeaf4c70df970
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ac43817fb3f253c35cd69a8ecd8931afca50892b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-configure-per-cloud-app-mfa-with-azure-active-directory-conditional-access"></a>Gyors üzembe helyezés: Felhőalkalmazás többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés konfigurálása 
 
 
-Egyszerűbbé teheti a bejelentkezés során tapasztal élmény a felhasználók, érdemes, és jelentkezzen be a felhőalapú alkalmazások, a felhasználónév és jelszó használatával. Azonban a legtöbb környezetben legalább néhány olyan alkalmazások, amelyekre tanácsos erősebb formája Fiókellenőrzés, például a többtényezős hitelesítés megkövetelése rendelkeznek. Ez lehet például IGAZ, a szervezet e-mail rendszer vagy a HR-alkalmazásokhoz való hozzáféréshez.  
+A bejelentkezés során tapasztal élmény a felhasználók leegyszerűsítése érdemes lehetővé teszik a felhőalapú alkalmazásokhoz, a felhasználónév és jelszó használatával való bejelentkezéshez. Azonban a legtöbb környezetben legalább néhány olyan alkalmazások, amelyekre tanácsos erősebb formája Fiókellenőrzés, például a többtényezős hitelesítés megkövetelése rendelkeznek. Ez lehet például IGAZ, a szervezet e-mail rendszer vagy a HR-alkalmazásokhoz való hozzáféréshez.  
 
 A gyors üzembe helyezés bemutatja, hogyan megkövetelheti a multi-factor authentication csak a kijelölt felhő kapnia a környezet használatával egy [az Azure AD feltételes hozzáférési házirend](active-directory-conditional-access-azure-portal.md).
 
@@ -160,7 +160,7 @@ Az eszköz konfigurálása során **Britta Simon** felhasználóként és **Micr
 
 1. Az a [feltételes hozzáférés - házirendek](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) lapon, a felső menüben kattintson **mi történik, ha**.  
  
-    ![WhatIf](./media/active-directory-conditional-access-app-based-mfa/14.png)
+    ![What If](./media/active-directory-conditional-access-app-based-mfa/14.png)
 
 2. Kattintson a **felhasználók**, jelölje be **Britta Simon**, és kattintson a **válasszon**.
 

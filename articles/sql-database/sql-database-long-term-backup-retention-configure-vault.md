@@ -7,18 +7,22 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0154ec9f08f81d2aa47c607c05f09309f7c23c7e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f26f9b6f1b0ddef348c39df5aa4badc5df93b725
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurálja, és állítsa vissza az Azure SQL Database hosszú távú biztonsági másolatok megőrzésének Azure Recovery Services-tároló használata
 
 Konfigurálhatja az Azure Recovery Services-tároló, majd a biztonsági mentések őrzi meg a tárolónál az Azure portálon vagy a PowerShell használatával adatbázis helyreállítása és az Azure SQL database biztonsági másolatok tárolására.
+
+> [!NOTE]
+> Hosszú távú biztonsági másolatok megőrzésének október 2016 előnézete eredeti kiadását részeként volt tárolja a biztonsági másolatokat az Azure helyreállítási szolgáltatások tárolóban lévő állapottal. A frissítés eltávolítja a függőséget, de a visszamenőleges kompatibilitás érdekében az eredeti API támogatott 2018 előfordulhat, hogy 31-ig. Ha az Azure szolgáltatások Recovery-tárolóban a biztonsági másolatok együttműködhet szüksége, tekintse meg [Azure helyreállítási szolgáltatások tárolót használó hosszú távú biztonsági másolatok megőrzésének](sql-database-long-term-backup-retention-configure-vault.md). 
+
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -30,7 +34,7 @@ Konfigurálja az Azure Recovery Services-tárolónak a [automatikus biztonsági 
 
 1. Nyissa meg a **SQL Server** a kiszolgálóhoz tartozó lapon.
 
-   ![sql server page](./media/sql-database-get-started-portal/sql-server-blade.png)
+   ![SQL server lap](./media/sql-database-get-started-portal/sql-server-blade.png)
 
 2. Kattintson a **Biztonsági másolat hosszú távú megőrzése** elemre.
 

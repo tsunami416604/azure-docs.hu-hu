@@ -1,11 +1,11 @@
 ---
-title: "Segítség eléréséhez, és a személyes alkalmazások portál használata az Azure Active Directoryban |} Microsoft Docs"
-description: "Segítség próbál bejelentkezni, és végrehajtson hétköznapi feladatokat a hozzáférési panelen."
+title: Segítség eléréséhez, és a személyes alkalmazások portál használata az Azure Active Directoryban |} Microsoft Docs
+description: Segítség próbál bejelentkezni, és végrehajtson hétköznapi feladatokat a hozzáférési panelen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 285ee0c4e7f963c372c4f95face73864ba2a4f68
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Való hozzáférés és a személyes alkalmazások portálon elhárítása
 
@@ -29,7 +29,7 @@ Ha történő bejelentkezés vagy a saját alkalmazások portálon problémákat
 
 Próbálja meg ezek általános tippeket:
 
-- Első, a jelölőnégyzet megtekintéséhez, hogy a helyes URL-címet használ [https://myapps.microsoft.com](https://myapps.microsoft.com).
+- Első, a jelölőnégyzet megtekintéséhez, hogy a helyes URL-címet használ [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 - Próbálkozzon a böngésző megbízható helyek ad hozzá az URL-címet.
 - Győződjön meg arról, hogy a jelszó helyes-e, és nem járt le. További információkért lásd: [a munkahelyi vagy iskolai jelszó](active-directory-passwords-update-your-own-password.md).
 - Ellenőrizze, hogy ellenőrizze, hogy a hitelesítési kapcsolattartási adatokat és nem blokkolja-e a hozzáférést. További információkért lásd: [mit Azure multi-factor Authentication jelent a számomra?](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user).
@@ -55,7 +55,7 @@ Ellenőrizze, hogy, hogy a következő webböngészőkre vonatkozó követelmén
 - **Peremhálózati**: a Windows 10 évforduló Edition vagy újabb.
 - **Chrome**: Windows 7-es vagy újabb, és a Mac OS X vagy újabb.
 - **Firefox 26.0 vagy újabb**: Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
-- **Internet Explorer 8, 9, 10, 11**: Windows 7 vagy újabb (korlátozottan támogatja).
+- **Az Internet Explorer 11**: Windows 7 vagy újabb (korlátozottan támogatja).
 
 Emellett letöltheti a bővítmény Chrome és peremhálózati közvetlenül a következő helyekről:
 

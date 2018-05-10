@@ -4,21 +4,21 @@ description: Keresse meg és kezelheti az alkalmazásokat a Cloud App Discovery 
 services: active-directory
 keywords: a cloud app discovery alkalmazások kezelése
 documentationcenter: ''
-author: curtand
+author: barbkess
 manager: mtillman
 tags: ignite
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
-ms.component: users-groups-roles
 ms.topic: article
 ms.date: 04/25/2018
-ms.author: curtand
+ms.author: barbkess
 ms.reviewer: nigu
-ms.openlocfilehash: 3e4907cbeaf06a519761d76a41708eacd3843ed4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 4d1e845dee621bf284cbed91ba74177f9fc4acf3
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Az Azure AD Cloud App Discovery beállítása
 
@@ -106,7 +106,7 @@ Ha a napló nem támogatott, válassza ki a **más** , a **adatforrás** , és a
 
 ## <a name="data-attributes-according-to-vendor-documentation"></a>Adatok attribútumok (megfelelően a forgalmazó dokumentációja)
 
-| Adatforrás         | Célzott alkalmazás URL-címe | Megcélzott alkalmazások IP-cím | Felhasználónév | Forrás IP-cím | Összes forgalom | Feltöltött bájt |
+| Adatforrás         | Célzott alkalmazás URL-címe | Megcélzott alkalmazások IP-cím | Felhasználónév | Forrás IP-cím | Összes forgalom | Feltöltött bájtok |
 |-----------------------------------------|----------------|---------------|----------|-----------|---------------|----------------|
 | Barracuda                               | **Igen**        | **Igen**       | **Igen**  | **Igen**   | Nem            | Nem             |
 | Blue Coat                               | **Igen**        | Nem            | **Igen**  | **Igen**   | **Igen**       | **Igen**        |

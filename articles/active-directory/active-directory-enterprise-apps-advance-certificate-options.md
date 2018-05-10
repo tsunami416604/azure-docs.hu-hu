@@ -1,13 +1,14 @@
 ---
-title: "Speciális tanúsítvány-aláírási előre integrált alkalmazások az Azure Active Directoryban a SAML-jogkivonat beállítások |} Microsoft Docs"
-description: "Speciális tanúsítvány-aláírási előre integrált alkalmazások az Azure Active Directoryban a SAML-jogkivonat beállítások használata"
+title: Speciális tanúsítvány-aláírási előre integrált alkalmazások az Azure Active Directoryban a SAML-jogkivonat beállítások |} Microsoft Docs
+description: Speciális tanúsítvány-aláírási előre integrált alkalmazások az Azure Active Directoryban a SAML-jogkivonat beállítások használata
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jeevansd
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9c035dcb55af451d0dae71d7a0f5548a6ba3c0ed
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 05eb175e3d8306308998780ac230d4f44e611294
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások a SAML-jogkivonat galéria-alkalmazásokhoz az Azure Active Directoryban
 Azure Active Directory (Azure AD) ma támogatja több ezer előre integrált alkalmazások az Azure Active Directory-Alkalmazásgyűjtemény. A telefonszám az 500-nál több alkalmazás, amely támogatja az egyszeri bejelentkezéshez a SAML 2.0 protokoll használatával tartalmaz. Amikor egy felhasználó egy alkalmazást az Azure AD a SAML használatával végez hitelesítést, az Azure AD egy token küld az alkalmazás (HTTP POST). Ezt követően az alkalmazás ellenőrzi, és jelentkezzen be a felhasználó nem kér felhasználónevet és jelszót a jogkivonat alapján. Ezeket a SAML-jogkivonatokat bejelentkezve az Azure AD-ben és a szabványos algoritmusok által létrehozott egyedi tanúsítvány.
@@ -56,7 +57,7 @@ Az Azure AD a SAML-válasz aláírásához két aláírási algoritmust támogat
 
     ![Tanúsítvány-aláírási algoritmus az SHA-1][2]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Alkalmazások kezelése az Azure Active Directoryban cikk indexe](active-directory-apps-index.md)
 * [Egyszeri bejelentkezés alkalmazásokhoz, amelyek nincsenek rajta az Azure Active Directory-Alkalmazásgyűjtemény konfigurálása](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [SAML-alapú egyszeri bejelentkezést hibaelhárítása](develop/active-directory-saml-debugging.md)

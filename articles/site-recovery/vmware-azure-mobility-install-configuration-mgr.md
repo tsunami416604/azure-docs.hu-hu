@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 8382fadc02a7e80b6f28bd777f423013aed9add3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 50328fc3b594a9162ffb9f82f699f43f9106640f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizálható a mobilitási szolgáltatás telepítése a System Center Configuration Managerrel
 
@@ -49,7 +49,7 @@ Alternatív megoldásként automatizálható a mobilitási szolgáltatás telep�
 4. Másolás a **MobSvc.passphrase** fájlt a **MobSvcWindows** mappa a hálózati megosztáson.
 5. Keresse meg a telepítő tárház a konfigurációs kiszolgálón a következő parancs futtatásával:
 
-   `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
+   `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. Másolás a **Microsoft-ASR\_EE\_*verzió*\_Windows\_GA\_*dátum*\_Release.exe**  számára a **MobSvcWindows** mappa a hálózati megosztáson.
 7. Másolja az alábbi kódot, és mentse a fájt **install.bat** azokat a **MobSvcWindows** mappa.
@@ -174,7 +174,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
   | **Paraméter neve** | **Érték** |
   |--|--|
   | Name (Név) | Telepítse a Microsoft Azure mobilitási szolgáltatás (Windows) |
-  | Parancssor | install.bat |
+  | Parancssor | Install.bat |
   | A program futtatható | -E a bejelentkezett felhasználó |
 
   ![Képernyőfelvétel a csomag és Program létrehozása varázsló](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
@@ -230,15 +230,15 @@ A Configuration Manager konzol használatával figyelheti a központi telepíté
 4. Másolás a **MobSvc.passphrase** fájlt a **MobSvcLinux** mappa a hálózati megosztáson.
 5. Keresse meg a konfigurációs kiszolgálón a telepítő tárház a parancs futtatásával:
 
-   `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
+   `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. A következő fájlokat másolja át a **MobSvcLinux** a hálózati megosztáson mappába:
-   * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz
+   * Microsoft-ASR\_EE\*bites RHEL6-64*release.tar.gz
    * Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz
    * Microsoft-ASR\_UA\*OL6-64\*release.tar.gz
-   * Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz
+   * Microsoft-ASR\_EE\*UBUNTU 14.04-64\*release.tar.gz
 
 
 7. Másolja az alábbi kódot, és mentse a fájt **install_linux.sh** azokat a **MobSvcLinux** mappa.

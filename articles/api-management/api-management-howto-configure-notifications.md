@@ -1,11 +1,11 @@
 ---
-title: "Értesítések konfigurálása és az e-mail sablonok az Azure API Management |} Microsoft Docs"
-description: "Útmutató a értesítések konfigurálása és az e-mail sablonok az Azure API Management."
+title: Értesítések konfigurálása és az e-mail sablonok az Azure API Management |} Microsoft Docs
+description: Útmutató a értesítések konfigurálása és az e-mail sablonok az Azure API Management.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 228cbb103e13c478bea460bb04de43d6480bc60e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 60788f76dac58ead10e43e892d587a86bdd3fcad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban
 API-kezelés lehetővé teszi bizonyos események értesítéseinek konfigurálásához, és konfigurálhatja az e-mail-sablonokkal a rendszergazdák és fejlesztők számára az API Management-példány folytatott kommunikációhoz használt. Ez a cikk bemutatja, hogyan használható eseményt az értesítések konfigurálása, és ezeket az eseményeket az e-mail-sablonokat konfigurálásának áttekintése.
@@ -26,7 +26,7 @@ API-kezelés lehetővé teszi bizonyos események értesítéseinek konfigurál�
 
 Ha Ön nem rendelkezik az API Management szolgáltatáspéldány, hajtsa végre a következő gyorsindítási: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
 
-## <a name="publisher-notifications"></a>Értesítések konfigurálása
+## <a name="publisher-notifications"> </a>Értesítések konfigurálása
 
 1. Válassza ki a **API MANAGEMENT** példány.
 2. Kattintson a **értesítések** az elérhető értesítések megtekintéséhez.
@@ -50,7 +50,7 @@ Ha Ön nem rendelkezik az API Management szolgáltatáspéldány, hajtsa végre 
     ![Értesítés címzettjeinek][api-management-email-addresses]
 4. Nyomja meg az **Add** (Hozzáadás) gombot.
 
-## <a name="email-templates"></a>Értesítési sablonok konfigurálása
+## <a name="email-templates"> </a>Értesítési sablonok konfigurálása
 Az API Management értesítési sablonok biztosít a felügyelete, és a szolgáltatás használata során küldött e-mailek. A következő e-mail sablonok találhatók.
 
 * Application gallery küldésének jóváhagyott

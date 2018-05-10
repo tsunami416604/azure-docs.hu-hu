@@ -1,9 +1,9 @@
 ---
-title: "Adatfolyam-figyelési adatok Event hubs Azure |} Microsoft Docs"
-description: "Útmutató: az adatfolyamként küldje el az eseményközpontba megkapják a partner SIEM adatimportáláshoz vagy alkalmazáselemző eszköz, amely a Azure figyelési adatok."
+title: Adatfolyam-figyelési adatok Event hubs Azure |} Microsoft Docs
+description: 'Útmutató: az adatfolyamként küldje el az eseményközpontba megkapják a partner SIEM adatimportáláshoz vagy alkalmazáselemző eszköz, amely a Azure figyelési adatok.'
 author: johnkemnetz
 manager: robb
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9cc4eb8d8f1494a7ea7a63297751f8e251aedf05
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>A figyelés egy eseményközpontba felhasználásra adatok külső eszköz adatfolyam Azure
 
@@ -79,7 +79,7 @@ Vendég operációs rendszer figyelési adatok küldése eseményközpontba ügy
 
 ### <a name="stream-linux-data-to-an-event-hub"></a>Az eseményközpontok felé Linux adatok folyamatos átviteléhez
 
-A [Linux Azure diagnosztikai ügynök](../virtual-machines/linux/diagnostic-extension.md) küldéséhez használható figyelési adatok Linux számítógépről egy eseményközpontba. Ehhez az event hubs hozzáadása a fogadó a LAD a JSON védett fájl beállításait. [Ebben a cikkben találhat további információt a eseményelnyelő hub hozzáadása a Linux Azure diagnosztikai ügynök](../virtual-machines/linux/diagnostic-extension.md#protected-settings).
+A [Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostics-linux.md) küldéséhez használható figyelési adatok Linux számítógépről egy eseményközpontba. Ehhez az event hubs hozzáadása a fogadó a LAD a JSON védett fájl beállításait. [Ebben a cikkben találhat további információt a eseményelnyelő hub hozzáadása a Linux Azure diagnosztikai ügynök](../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
 
 > [!NOTE]
 > Nem állítható be adatfolyamként való küldése a vendég operációs rendszer figyelési adatokat az eseményközpontok felé, a portálon. Ehelyett manuálisan kell szerkeszteni a konfigurációs fájlban.

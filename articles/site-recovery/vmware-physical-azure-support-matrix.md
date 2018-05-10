@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2018
+ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: fc5fceb0105726cdd7fc45df25c8a3a21d270502
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 2c6867b02fd88c4616647c8602906fbf786da414
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -22,7 +22,7 @@ Ez a cikk összefoglalja támogatott összetevők és az Azure-bA VMware virtuá
 
 **Forgatókönyv** | **Részletek**
 --- | ---
-VMware virtuális gépek | Helyszíni VMware virtuális gépek Azure-bA replikálását. Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti.
+VMware virtuális gépek | Helyszíni VMware virtuális gépek Azure-bA replikálását. Ebben a forgatókönyvben, az Azure portálon vagy használatával telepíthet [PowerShell](vmware-azure-disaster-recovery-powershell.md).
 Fizikai kiszolgálók | A helyszíni windowsos/Linuxos fizikai serversto Azure replikációját. Ebben a forgatókönyvben az Azure portálon telepítése.
 
 ## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
@@ -101,7 +101,6 @@ Debian 8 | 9.14, 9.15 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.5-amd64 4.9.0-0.bpo.4
 --- | ---
 fájlrendszer | ext3, ext4, XFS.
 Kötetkezelő | LVM2.
-A többutas szoftver | Eszköz leképező.
 Paravirtualized tárolóeszközök | A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 Több sor blokk IO eszközök | Nem támogatott.
 A HP CCISS tárolóvezérlő fizikai kiszolgálók | Nem támogatott.
@@ -162,7 +161,7 @@ Csíkozott Vendég/server kötetet > 4 TB-os <br><br/>Logikai kötetkezelés (LV
 Vendég/kiszolgáló - tárolóhelyek | Nem
 Vendég/server gyakran használt adatok hozzáadása lemez | Nem
 Vendég/kiszolgáló - kizárási lemez | Igen
-Vendég-kiszolgáló többutas (MPIO) | –
+Vendég-kiszolgáló többutas (MPIO) | Nem
 
 > [!NOTE]
 > UEFI rendszerindítási VMware virtuális gépek Windows Server 2012 rendszert futtató, vagy később is telepíthető az Azure-bA. A következő korlátozások vonatkoznak:

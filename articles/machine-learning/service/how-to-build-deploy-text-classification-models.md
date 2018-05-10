@@ -9,11 +9,11 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
-ms.openlocfilehash: 66d316f50f161c2e905c3f76da30580b44a63a23
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: a970bd889e6994833b2e34adc90af594f9db4d6b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Hozza létre és központi telepítése a szöveg a besorolási modell Azure Machine Learning segítségével
 
@@ -137,7 +137,7 @@ df_test.head()
     <tr style="text-align: right;">
       <th></th>
       <th>Címke</th>
-      <th>Szöveg</th>
+      <th>szöveg</th>
     </tr>
   </thead>
   <tbody>
@@ -420,13 +420,14 @@ text_classifier.fit(df_train)
             text_callable_list=None, text_cols=['text'], text_regex_list=None,
             weight_col=None)
 
-### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>Vizsgálja meg és beállítani a másik folyamat lépéseit
 
-Bár a méretezés, a scikit-modell, további előfeldolgozása történik-e méretezés előfeldolgozóból és featurizer (átalakítása) lépéseket egy folyamat használata előtt. Ezért a hivatkozást egy "folyamat" képzési. Kiértékelésével, a teljes folyamat során, beleértve a előfeldolgozása és scikit – ismerje meg a modell előrejelzéses, tesztelési adatkészlet alkalmazza.
+Során képzési, szöveg és a felirat oszlop kell rendelkeznie. Amíg az előrejelzés csak a szöveges oszlop szükséges. 
+
+### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>Vizsgálja meg és beállítani a másik folyamat lépéseit
+    
+Általában a paraméterek beállítása, ahhoz, hogy elférjen egy modell. 
 
 ***Példa text_word_ngrams megjelenítve*** 
-
-Általában a paraméterek beállítása, ahhoz, hogy elférjen egy modell. 
 
 A következő mintakódok bemutatják a feldolgozási sorban lévő és a modell alapértelmezett paraméterekkel modell betanításához. 
 
@@ -573,7 +574,7 @@ A tesztelési adatkészletnél osztály Előrejelzés létrehozásához a betan�
     <tr style="text-align: right;">
       <th></th>
       <th>Címke</th>
-      <th>Szöveg</th>
+      <th>szöveg</th>
       <th>valószínűség</th>
       <th>Előrejelzés</th>
     </tr>

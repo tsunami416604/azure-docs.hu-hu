@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 204702eee1cf502ac873e0c1f5e3fd257ecce33c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fc32ba4858e7be901d2cd4d773491247e9e0e672
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Az Azure SQL Database vCore alapú vásárlási modell korlátok (előzetes verzió)
 
@@ -25,48 +25,95 @@ ms.lasthandoff: 04/28/2018
 Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és teljesítményszintet szintjén egyszeri adatbázis rendelkezésre álló erőforrások. A szolgáltatási rétegben, teljesítményszintet és egy önálló adatbázis használatára vonatkozó mennyisége állíthatja be a [Azure-portálon](sql-database-single-database-resources.md#manage-single-database-resources-using-the-azure-portal), [Transact-SQL](sql-database-single-database-resources.md#manage-single-database-resources-using-transact-sql), [PowerShell](sql-database-single-database-resources.md#manage-single-database-resources-using-powershell), a [Azure CLI](sql-database-single-database-resources.md#manage-single-database-resources-using-the-azure-cli), vagy a [REST API-t](sql-database-single-database-resources.md#manage-single-database-resources-using-the-rest-api).
 
 ### <a name="general-purpose-service-tier"></a>Általános célú szolgáltatási rétegben
-|Teljesítményszint|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|
-|:--- | --: |--: |--: |--: |--: |
-|H/W létrehozása|4|4|4|4|4|
-|vCores|1|2|4|8|16|
-|Memória (GB)|7|14|28|56|112|
-|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|
-|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|–|N/A|N/A|N/A|–|
-|Tárolási típus|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|
-|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|
-|Maximális adatok (GB)|1024|1024|1536|3072|4096|
-|Maximális naplófájlméret|307|307|461|922|1229|
-|A TempDB size(DB)|32|64|128|256|384|
-|Cél IOPS|320|640|1280|2560|5120|
-|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)
-|Maximális párhuzamos munkavállalók (kérelmek)|200|400|800|1600|3200|
-|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|
-|Replikák száma|1|1|1|1|1|
-|Több-AZ|–|N/A|N/A|N/A|–|
-|Olvassa el a kibővített|–|N/A|N/A|N/A|–|
-|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+
+#### <a name="generation-4-compute-platform"></a>4. generációs számítógépes platform
+|Teljesítményszint|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
+|:--- | --: |--: |--: |--: |--: |--: |
+|H/W létrehozása|4|4|4|4|4|4|
+|Virtuális magok|1|2|4|8|16|24|
+|Memória (GB)|7|14|28|56|112|168|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|–|N/A|N/A|N/A|N/A|–|
+|Tárolási típus|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|
+|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|
+|Maximális adatok (GB)|1024|1024|1536|3072|4096|4096|
+|Maximális naplófájlméret|307|307|461|922|1229|1229|
+|A TempDB size(DB)|32|64|128|256|384|384|
+|Cél IOPS (64 KB)|500|1000|2000|4000|7000|7000|
+|Maximális párhuzamos munkavállalók (kérelmek)|200|400|800|1600|3200|4800|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|30000|
+|Replikák száma|1|1|1|1|1|1|
+|Több-AZ|–|N/A|N/A|N/A|N/A|–|000
+|Olvassa el a kibővített|–|N/A|N/A|N/A|N/A|–|
+|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+|||
+
+#### <a name="generation-5-compute-platform"></a>5. generációs számítógépes platform
+|Teljesítményszint|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_48| GP_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
+|H/W létrehozása|5|5|5|5|5|5|5|
+|Virtuális magok|2|4|8|16|24|32|48|80|
+|Memória (GB)|11|22|44|88|132|176|264|440|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Tárolási típus|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|
+|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|
+|Maximális adatok (GB)|1024|1024|1536|3072|4096|4096|4096|4096|
+|Maximális naplófájlméret|307|307|461|614|1229|1229|1229|1229|
+|A TempDB size(DB)|64|128|256|384|384|384|384|384|
+|Cél IOPS (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
+|Maximális párhuzamos munkavállalók (kérelmek)|200|400|800|1600|2400|3200|4800|8000|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|30000|30000|30000|
+|Replikák száma|1|1|1|1|1|1|1|1|
+|Több-AZ|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Olvassa el a kibővített|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
 ### <a name="business-critical-service-tier"></a>Üzleti kritikus szolgáltatási rétegben
-|Teljesítményszint|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|
-|:--- | --: |--: |--: |--: |--: |
-|H/W létrehozása|4|4|4|4|4|
-|vCores|1|2|4|8|16|
-|Memória (GB)|7|14|28|56|112|
-|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|
-|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|1|2|4|8|20|
-|Tárolási típus|Csatolt SSD|Csatolt SSD|Csatolt SSD|Csatolt SSD|Csatolt SSD|
-|Maximális adatok (GB)|1024|1024|1024|1024|1024|
-|Maximális naplófájlméret|307|307|307|307|307|
-|A TempDB size(DB)|32|64|128|256|384|
-|Cél IOPS|5000|10000|20000|40000|80000|
-|I/O várakozási ideje (hozzávetőleges)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|
-|Maximális párhuzamos munkavállalók (kérelmek)|200|400|800|1600|3200|
-|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|
-|Replikák száma|3|3|3|3|3|
-|Több-AZ|Igen|Igen|Igen|Igen|Igen|
-|Olvassa el a kibővített|Igen|Igen|Igen|Igen|Igen|
-|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+
+#### <a name="generation-4-compute-platform"></a>4. generációs számítógépes platform
+|Teljesítményszint|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |
+|H/W létrehozása|4|4|4|4|4|4|
+|Virtuális magok|1|2|4|8|16|24|
+|Memória (GB)|7|14|28|56|112|168|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|1|2|4|8|20|36|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|Maximális adatok (GB)|1024|1024|1024|1024|1024|1024|
+|Maximális naplófájlméret|307|307|307|307|307|307|
+|A TempDB size(DB)|32|64|128|256|384|384|
+|Cél IOPS (64 KB)|5000|10000|20000|40000|80000|120000|
+|I/O várakozási ideje (hozzávetőleges)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|
+|Maximális párhuzamos munkavállalók (kérelmek)|200|400|800|1600|3200|4800|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|30000|
+|Replikák száma|3|3|3|3|3|3|
+|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
+|Olvassa el a kibővített|Igen|Igen|Igen|Igen|Igen|Igen|
+|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+|||
+
+#### <a name="generation-5-compute-platform"></a>5. generációs számítógépes platform
+|Teljesítményszint|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|H/W létrehozása|5|5|5|5|5|5|5|5|
+|Virtuális magok|2|4|8|16|24|32|48|80|
+|Memória (GB)|11|22|44|88|132|176|264|440|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|1.571|3,142|6.284|15.768|25.252|37.936|68.104|131.64|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|I/O várakozási ideje (hozzávetőleges)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|
+|Maximális adatok (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
+|Maximális naplófájlméret|307|307|307|307|614|1229|1229|1229|
+|A TempDB size(DB)|64|128|256|384|384|384|384|384|
+|Cél IOPS (64 KB)|5000|10000|20000|40000|60000|80000|120000|200000
+|Maximális párhuzamos munkavállalók (kérelmek)|200|400|800|1600|2400|3200|4800|8000|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|30000|30000|30000|
+|Replikák száma|1|1|1|1|1|1|1|1|
+|Több-AZ|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Olvassa el a kibővített|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
 ## <a name="single-database-change-storage-size"></a>Önálló adatbázist: tároló méretének módosítása
@@ -101,51 +148,103 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 > Az egyes adatbázisokat rugalmas készletek erőforrás korlátai által megszabott megegyeznek általában önálló adatbázisok kívül erőforráskészleteket, amelyekben az azonos teljesítmény szinttel rendelkezik. A maximális párhuzamos munkavállalók GP_Gen4_1 adatbázis például 200 munkavállalók. Igen lévő GP_Gen4_1 készlet maximális párhuzamos munkavállalók egyben 200 munkavállalók. Vegye figyelembe, száma párhuzamos munkavállalók GP_Gen4_1 készletben 210.
 
 ### <a name="general-purpose-service-tier"></a>Általános célú szolgáltatási rétegben
-|Teljesítményszint|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|
-|:--- | --: |--: |--: |--: |--: |
-|H/W létrehozása|4|4|4|4|4|
-|vCores|1|2|4|8|16|
-|Memória (GB)|7|14|28|56|112|
-|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|
-|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|–|N/A|N/A|N/A|–|
-|Tárolási típus|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|
-|Maximális adatok (GB)|512|756|1536|2048|3584|
-|Maximális naplófájlméret|154|227|461|614|1075|
-|A TempDB size(DB)|32|64|128|256|384|
-|Cél IOPS|320|640|1280|2560|5120|
-|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|
-|Maximális párhuzamos munkavállalók (kérelmek)|210|420|840|1680|3360|
-|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|
-|Maximális készlet sűrűség|100|200|500|500|500|
-|Minimális és maximális rugalmas készlet kattintson-leáll|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2. régiója|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
-|Replikák száma|1|1|1|1|1|
-|Több-AZ|–|N/A|N/A|N/A|–|
-|Olvassa el a kibővített|–|N/A|N/A|N/A|–|
-|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+
+#### <a name="generation-4-compute-platform"></a>4. generációs számítógépes platform
+|Teljesítményszint|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |
+|H/W létrehozása|4|4|4|4|4|4|
+|Virtuális magok|1|2|4|8|16|24|
+|Memória (GB)|7|14|28|56|112|168|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|–|N/A|N/A|N/A|N/A|–|
+|Tárolási típus|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|
+|Maximális adatok (GB)|512|756|1536|2048|3584|4096|
+|Maximális naplófájlméret|154|227|461|614|1075|1229|
+|A TempDB size(DB)|32|64|128|256|384|384|
+|Cél IOPS (64 KB)|500|1000|2000|4000|7000|7000|
+|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|
+|Maximális párhuzamos munkavállalók (kérelmek)|210|420|840|1680|3360|5040|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|30000|
+|Maximális készlet sűrűség|100|200|500|500|500|500|
+|Minimális és maximális rugalmas készlet kattintson-leáll|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2. régiója|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Replikák száma|1|1|1|1|1|1|
+|Több-AZ|–|N/A|N/A|N/A|N/A|–|
+|Olvassa el a kibővített|–|N/A|N/A|N/A|N/A|–|
+|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+|||
+
+#### <a name="generation-5-compute-platform"></a>5. generációs számítógépes platform
+|Teljesítményszint|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|:--- | --: |--: |--: |--: |--: |--: |--: |--: |
+|H/W létrehozása|5|5|5|5|5|5|5|5|
+|Virtuális magok|2|4|8|16|24|32|48|80|
+|Memória (GB)|11|22|44|88|132|176|264|440|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Tárolási típus|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|Prémium () távtároló|
+|Maximális adatok (GB)|512|756|1536|2048|3072|4096|4096|4096|
+|Maximális naplófájlméret|154|227|461|614|922|1229|1229|1229|
+|A TempDB size(DB)|64|128|256|384|384|384|384|384|
+|Cél IOPS (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
+|I/O várakozási ideje (hozzávetőleges)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|5-7 ms (írás)<br>5-10 ms (olvasni.)|
+|Maximális párhuzamos munkavállalók (kérelmek)|210|420|840|1680|2520|3360|5040|8400
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|30000|30000|30000|
+|Maximális készlet sűrűség|100|200|500|500|500|500|500|500|
+|Minimális és maximális rugalmas készlet kattintson-leáll|0, 0,25, 0,5, 1, 2. régiója|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
+|Replikák száma|1|1|1|1|1|1|1|1|
+|Több-AZ|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Olvassa el a kibővített|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
 ### <a name="business-critical-service-tier"></a>Üzleti kritikus szolgáltatási rétegben
-|Teljesítményszint|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|
-|:--- | --: |--: |--: |--: |--: |
-|H/W létrehozása|4|4|4|4|4|
-|vCores|1|2|4|8|16|
-|Memória (GB)|7|14|28|56|112|
-|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|
-|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|1|2|4|8|20|
-|Tárolási típus|Csatolt SSD|Csatolt SSD|Csatolt SSD|Csatolt SSD|Csatolt SSD|
-|Maximális adatok (GB)|1024|1024|1024|1024|1024|
-|Maximális naplófájlméret|307|307|307|461|614|
-|A TempDB size(DB)|32|64|128|256|384|
-|Cél IOPS|320|640|1280|2560|5120|
-|I/O várakozási ideje (hozzávetőleges)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|
-|Maximális párhuzamos munkavállalók (kérelmek)|210|420|840|1680|3360|
-|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|
-|Maximális készlet sűrűség|–|50|100|100|100|
-|Minimális és maximális rugalmas készlet kattintson-leáll|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2. régiója|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
-|Több-AZ|Igen|Igen|Igen|Igen|Igen|
-|Olvassa el a kibővített|Igen|Igen|Igen|Igen|Igen|
-|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+
+#### <a name="generation-4-compute-platform"></a>4. generációs számítógépes platform
+|Teljesítményszint|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |
+|H/W létrehozása|4|4|4|4|4|4|
+|Virtuális magok|1|2|4|8|16|24|
+|Memória (GB)|7|14|28|56|112|168|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|1|2|4|8|20|36|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|Maximális adatok (GB)|1024|1024|1024|1024|1024|1024|
+|Maximális naplófájlméret|307|307|307|307|307|307|
+|A TempDB size(DB)|32|64|128|256|384|384|
+|Cél IOPS (64 KB)|5000|10000|20000|40000|80000|120000|
+|I/O várakozási ideje (hozzávetőleges)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|
+|Maximális párhuzamos munkavállalók (kérelmek)|210|420|840|1680|3360|5040|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|30000|
+|Maximális készlet sűrűség|–|50|100|100|100|100|
+|Minimális és maximális rugalmas készlet kattintson-leáll|–|0, 0,25, 0,5, 1, 2. régiója|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
+|Olvassa el a kibővített|Igen|Igen|Igen|Igen|Igen|Igen|
+|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
+
+#### <a name="generation-5-compute-platform"></a>5. generációs számítógépes platform
+|Teljesítményszint|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|:--- | --: |--: |--: |--: |--: |--: |--: |--: |
+|H/W létrehozása|5|5|5|5|5|5|5|5|
+|Virtuális magok|2|4|8|16|24|48|64|80|
+|Memória (GB)|11|22|44|88|132|176|264|440|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memórián belüli online Tranzakciófeldolgozási tárhely (GB)|1.571|3,142|6.284|15.768|25.252|37.936|68.104|131.64|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|I/O várakozási ideje (hozzávetőleges)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|1-2 ms (írás)<br>1-2 ms (olvasni.)|
+|Maximális adatok (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
+|Maximális naplófájlméret|307|307|307|307|614|1229|1229|1229|
+|A TempDB size(DB)|64|128|256|384|384|384|384|384|
+|Cél IOPS (64 KB)|5000|10000|20000|40000|60000|80000|120000|200000
+|Maximális párhuzamos munkavállalók (kérelmek)|210|420|840|1680|2520|3360|5040|8400|
+|A maximális munkamenet engedélyezett|30000|30000|30000|30000|30000|30000|30000|30000|
+|Maximális készlet sűrűség|–|50|100|100|100|100|100|100|
+|Minimális és maximális rugalmas készlet kattintson-leáll|–|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
+|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Olvassa el a kibővített|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Biztonsági másolatok tárolásának tartalmazza|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+|||
+
 Ha a rugalmas készlet összes vCores foglalt, a készlet minden egyes adatbázis egy számítási erőforrásokat a lekérdezések feldolgozásához nagyobb mennyiségű kap. Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. A rugalmas készlet erőforrás-megosztás fürtjében ellenkező esetben az egyes adatbázis biztosítani, ha a vCore-k adatbázisonkénti minimális értéke nem nulla értékű erőforrás számú kívül van.
 
 ### <a name="database-properties-for-pooled-databases"></a>Készletezett adatbázisok adatbázis-tulajdonságai
@@ -199,7 +298,7 @@ Magas számítási kihasználtsági észlelt, amikor megoldás lehetőségek a k
 - Az adatbázis vagy a rugalmas készlet biztosítani az adatbázisban több vCores teljesítményszintjének növelését. Lásd: [önálló adatbázist: cVcores módosítása](#single-database-change-vcores) és [rugalmas készlet: vCores módosítása](#elastic-pool-change-vcores).
 - Minden egyes lekérdezés az erőforrás-használat csökkentésére lekérdezések optimalizálása. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 
 Felhasznált lemezterület adatbázis mérete eléri a maximális méretkorlátot, adatbázis beszúrása és frissítések, amelyek az adatok méretének növelése sikertelen és elküld az ügyfélgépeknek egy [hibaüzenet](sql-database-develop-error-messages.md). Adatbázis-választja ki, és törli továbbra is sikeres.
 

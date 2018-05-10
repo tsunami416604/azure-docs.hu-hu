@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 28b6f6c269dfb1550b4ed12af3366b483d402f86
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 8a8482fa93ca902746e4fc8ef6d67b274a926bdc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -27,7 +27,7 @@ Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kv�
 Látogasson el a [Azure díjszabása áttekintése](https://azure.microsoft.com/pricing/) tudhat meg többet az Azure-beli árakról. Van, a költségek használatával megbecsülhető a [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) vagy egy szolgáltatás árképzési részleteit megjelenítő oldalon felkeresésével (például [Windows virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)). Tippek a költségek kezeléséhez, tekintse meg a [Azure számlázás és költség felügyeleti váratlan költségek megakadályozása](billing/billing-getting-started.md).
 
 > [!NOTE]
-> Ha azt szeretné, a korlát vagy a fenti kvóta emelése a **alapértelmezett korlát**, [nyissa meg az online támogatás ügyfélkérés díjmentesen](azure-supportability/resource-manager-core-quotas-request.md). A korlátai nem léptethető elő fent a **maximális** az alábbi táblázatban szereplő érték. Ha nincs **maximális** oszlop, akkor az erőforrás nem állítható korlátokkal rendelkeznek.
+> Ha azt szeretné, a korlát vagy a fenti kvóta emelése a **alapértelmezett korlát**, [nyissa meg az online támogatás ügyfélkérés díjmentesen](azure-resource-manager/resource-manager-quota-errors.md). A korlátai nem léptethető elő fent a **maximális** az alábbi táblázatban szereplő érték. Ha nincs **maximális** oszlop, akkor az erőforrás nem állítható korlátokkal rendelkeznek.
 >
 > [Ingyenes próba-előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy kvóta növekszik. Ha rendelkezik egy [ingyenes próba-előfizetést](https://azure.microsoft.com/offers/ms-azr-0044p), frissíthet egy [használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés. További információkért lásd: [frissítése az Azure ingyenes próbaverzió használatalapú fizetésre](billing/billing-upgrade-azure-subscription.md) és [ingyenes előfizetés – GYIK](https://azure.microsoft.com/free/free-account-faq).
 >
@@ -53,7 +53,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Automatizálás](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Event Grid](#azure-event-grid-limits)
-* [Az Azure Maps](#azure-maps-limits)
+* [Azure Maps](#azure-maps-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)

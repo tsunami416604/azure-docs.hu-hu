@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 934b79977369e5cf8e6f09e85669c7fca299737c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 19c7a0475d975344a1563b8ff5e279059a93fbea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -513,7 +513,7 @@ A következő házirend értékre kell állítani **minden**: **felhasználók e
 
 ### <a name="configure-on-premises-federation-service"></a>A helyi összevonási szolgáltatás konfigurálása 
 
-A helyi összevonási szolgáltatás támogatnia kell a kiállító a **authenticationmehod** és **wiaormultiauthn** jogcímeket a függő entitás tekintetében az Azure AD, kódolt érték resouce_params paraméterrel rendelkező alább látható módon a hitelesítési kérelem fogadása közben:
+A helyi összevonási szolgáltatás támogatnia kell a kiállító a **authenticationmethod** és **wiaormultiauthn** amikor hitelesítési kérelmet okozó az Azure AD függő entitás kap jogcímeket egy resouce_params paraméterhez a kódolt érték látható:
 
     eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
 

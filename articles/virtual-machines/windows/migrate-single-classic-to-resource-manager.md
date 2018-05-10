@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: b81f3719f8781cf6cdb724108f4dd730f3380c86
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Manuális áttelepítésével egy klasszikus virtuális Gépet egy új ARM kezelt lemez virtuális géphez a virtuális merevlemezről 
 
@@ -92,6 +92,8 @@ Készítse elő az állásidő alkalmazását. Egy tiszta az áttelepítés vég
 
 Készítse elő az állásidő alkalmazását. Egy tiszta az áttelepítés végrehajtásához, akkor állítsa le a feldolgozás az aktuális rendszerben. Csak ezután beszerezheti a konzisztens állapotú. Ez az új platformon is áttelepíthetők. Állásidő időtartama áttelepítéséhez a lemezeken mennyiségétől függ.
 
+Ez a kijelző igényel az Azure PowerShell modul verziója 6.0.0 vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Is kell futtatnia `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
+
 
 1.  Első lépésként állítsa be a következő általános paramétereket:
 
@@ -121,11 +123,11 @@ Készítse elő az állásidő alkalmazását. Egy tiszta az áttelepítés vég
 
 2.  Hozzon létre egy felügyelt operációsrendszer-lemez, a klasszikus virtuális gépről a virtuális merevlemez használatával.
 
-    Győződjön meg arról, hogy megadta-e a teljes URI-azonosítója az operációs rendszer VHD-fájlt a $osVhdUri paraméter. Emellett adja meg **- AccountType** , **PremiumLRS** vagy **StandardLRS** alapú lemezek (prémium és Standard) típusú végzi az áttelepítést.
+    Győződjön meg arról, hogy megadta-e a teljes URI-azonosítója az operációs rendszer VHD-fájlt a $osVhdUri paraméter. Emellett adja meg **- AccountType** , **Premium_LRS** vagy **Standard_LRS** alapú lemezek (prémium és Standard) típusú végzi az áttelepítést.
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
+    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
     -ResourceGroupName $resourceGroupName
     ```
 
@@ -134,14 +136,14 @@ Készítse elő az állásidő alkalmazását. Egy tiszta az áttelepítés vég
     ```powershell
     $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
     $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
+    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
 4.  Felügyelt adatlemezt készíteni a VHD-fájlt, és adja hozzá az új virtuális Gépet.
 
     ```powershell
     $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreationDataCreateOption Import '
+    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
     -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
     
     $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '

@@ -1,11 +1,9 @@
 ---
-title: "Bejelentkezés hozzáadása egy iOS-alkalmazást az Azure AD v2.0-végponttól |} Microsoft Docs"
-description: "Egy iOS-alkalmazást, amely képes bejelentkeztetni a felhasználókat, és mindkét személyes Microsoft-fiók létrehozása és a munkahelyi vagy iskolai fiókok külső könyvtárak használatával."
+title: Bejelentkezés hozzáadása egy iOS-alkalmazást az Azure AD v2.0-végponttól |} Microsoft Docs
+description: Egy iOS-alkalmazást, amely képes bejelentkeztetni a felhasználókat, és mindkét személyes Microsoft-fiók létrehozása és a munkahelyi vagy iskolai fiókok külső könyvtárak használatával.
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: xerners
 manager: mtillman
-editor: 
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +13,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 398ddbd004b4a12f4aa79ed64cc85f0e5bc5407a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5323f9a514c3c1c6134656e41af68e479fd8fdc5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Bejelentkezés hozzáadása egy iOS-alkalmazást használ egy külső könyvtár Graph API-t használ a v2.0-végpontra
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. A fejlesztők a függvénytárat, hogy integrálni szeretne a szolgáltatások. Segítségével a fejlesztők a platformot használja a többi könyvtárak, azt korábban írt bemutatják, hogyan lehet kapcsolódni a Microsoft identity platform külső szalagtárak konfigurálása a jelen szoftverhez hasonló néhány forgatókönyvek. A legtöbb tárak, amelyek megvalósítják az [a RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) csatlakozni tud-e a Microsoft identity platform.
@@ -564,7 +562,7 @@ Végezetül nézzük hogyan visszatér az adatokat a MasterViewController. Az ad
 ```
 
 
-## <a name="run-the-sample"></a>A minta futtatásához
+## <a name="run-the-sample"></a>Minta futtatása
 Ha követte a forgatókönyv az alkalmazás most már működik együtt vagy használt a vázat. Indítsa el a szimulátor, és kattintson a **bejelentkezés** használni az alkalmazást.
 
 ## <a name="get-security-updates-for-our-product"></a>A termék biztonsági frissítések beszerzése

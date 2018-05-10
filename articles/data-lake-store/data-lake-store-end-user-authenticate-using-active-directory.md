@@ -1,8 +1,8 @@
 ---
-title: "Végfelhasználói hitelesítési: Data Lake Store az Azure Active Directoryhoz |} Microsoft Docs"
-description: "Megtudhatja, hogyan végfelhasználói hitelesítés az Azure Active Directory használatával a Data Lake Store elérése"
+title: 'Végfelhasználói hitelesítési: Data Lake Store az Azure Active Directoryhoz |} Microsoft Docs'
+description: Megtudhatja, hogyan végfelhasználói hitelesítés az Azure Active Directory használatával a Data Lake Store elérése
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: dca040fba78d6501bc835fdac402e69149d493b5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 39ee32ec8b1d005aac12cb88262d7e2f37898721
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>A Data Lake Store az Azure Active Directoryval végfelhasználói hitelesítés
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ A hivatkozás utasításait követve, miközben gondoskodjon róla, hogy **natí
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>2. lépés: Alkalmazásazonosító beszerzése és átirányítási URI
 
-Lásd: [Alkalmazásazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) beolvasni az Azure AD-natív alkalmazás az alkalmazás Azonosítóját (más néven az ügyfél-Azonosítót a klasszikus Azure portálon).
+Lásd: [Alkalmazásazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) való lekérése az alkalmazáshoz.
 
 Az átirányítási URI-JÁNAK beolvasása, hajtsa végre az alábbi lépéseket.
 
@@ -102,15 +102,15 @@ Az átirányítási URI-JÁNAK beolvasása, hajtsa végre az alábbi lépéseket
 
 2. Az a **beállítások** az alkalmazás paneljén kattintson **szükséges engedélyek**, és kattintson a **Hozzáadás**.
 
-    ![Ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. A a **API-hozzáférés hozzáadása** panelen kattintson a **API kiválasztása**, kattintson a **Azure Data Lake**, és kattintson a **válassza**.
 
-    ![Ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
  
 4.  Az a **API-hozzáférés hozzáadása** panelen kattintson **engedélyként válassza**, jelölje be a jelölőnégyzetet, hogy a **teljes hozzáférés a Data Lake store**, és kattintson a **kiválasztása**.
 
-    ![Ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
     Kattintson a **Done** (Kész) gombra.
 

@@ -1,25 +1,25 @@
 ---
-title: "Az Azure AD alkalmazás Proxy távoli asztal közzététele |} Microsoft Docs"
-description: "Alapvető tudnivalók az Azure AD-alkalmazásproxy összekötők ismerteti."
+title: Az Azure AD alkalmazás Proxy távoli asztal közzététele |} Microsoft Docs
+description: Alapvető tudnivalók az Azure AD-alkalmazásproxy összekötők ismerteti.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: daveba
+ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 44b54ad4331d48202044316486a5b1d1ef9202d2
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 9d013c22041c2ff64af7790836103068ffbf48ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy távoli asztal közzététele
 
@@ -75,14 +75,14 @@ A távoli asztali szolgáltatások környezetbe rendszergazdaként csatlakozhat,
 1. Csatlakozzon a távoli asztali szolgáltatások kiszolgálója a távoli asztali Kapcsolatszervező szerepkör.
 2. Indítsa el **Kiszolgálókezelő**.
 3. Válassza ki **távoli asztali szolgáltatások** a bal oldali ablaktáblán.
-4. Válassza ki **áttekintése**.
+4. Válassza az **Áttekintés** lehetőséget.
 5. A telepítési áttekintés részben jelölje ki a legördülő menüből, és válassza **központi telepítési tulajdonságok szerkesztése**.
 6. A távoli asztali átjáró lapon módosítsa a **kiszolgálónév** mezőjét, amely a távoli asztali állomás végpont alkalmazásproxy a külső URL-címet.
 7. Módosítsa a **bejelentkezési használata** mezőről **jelszó-hitelesítés**.
 
   ![A távoli asztali szolgáltatások telepítési tulajdonságok képernyő](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. Futtassa ezt a parancsot a gyűjtemény. Cserélje le  *\<yourcollectionname\>*  és  *\<proxyfrontendurl\>*  a saját adataival. Ez a parancs lehetővé teszi, hogy az egyszeri bejelentkezés a távoli asztali webes és a távoli asztali átjáró között, és optimalizálja a teljesítmény:
+8. Futtassa ezt a parancsot a gyűjtemény. Cserélje le *\<yourcollectionname\>* és *\<proxyfrontendurl\>* a saját adataival. Ez a parancs lehetővé teszi, hogy az egyszeri bejelentkezés a távoli asztali webes és a távoli asztali átjáró között, és optimalizálja a teljesítmény:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

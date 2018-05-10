@@ -1,24 +1,24 @@
 ---
-title: "Jogcímbarát alkalmazások – az Azure AD alkalmazás Proxy |} Microsoft Docs"
-description: "Fogadja el az AD FS-jogcímek az biztonságos távoli hozzáférést a felhasználók által a helyszínen ASP.NET alkalmazások közzétételének módját."
+title: Jogcímbarát alkalmazások – az Azure AD alkalmazás Proxy |} Microsoft Docs
+description: Fogadja el az AD FS-jogcímek az biztonságos távoli hozzáférést a felhasználók által a helyszínen ASP.NET alkalmazások közzétételének módját.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 91e6211b-fe6a-42c6-bdb3-1fff0312db15
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
-ms.openlocfilehash: a732687e47cffff6b6aae687f8e780bba630243e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7783d08283c2ff3fd277e9c8604c9d4cff242510
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Az alkalmazásproxy jogcímbarát alkalmazásokkal való munka
 [Jogcímbarát alkalmazások](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) végre átirányítás a biztonsági jogkivonat szolgáltatás (STS). Az STS cserébe jogkivonat a felhasználó kéri a hitelesítő adatokat, és ezután átirányítja a felhasználót az alkalmazáshoz. Néhány módon történő együttműködésre ezek átirányítások alkalmazásproxy engedélyezése. Ez a cikk segítségével konfigurálhatja a jogcímbarát alkalmazások központi telepítését. 

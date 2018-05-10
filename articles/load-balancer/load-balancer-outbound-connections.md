@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: c12b52c6b8862d00d51b51a5a120292f89c3ac1f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -119,7 +119,7 @@ Használata esetén [szabványos terheléselosztót, rendelkezésre állási zó
 
 ### <a name="pat"></a>Port színleg SNAT (PAT)
 
-Egy nyilvános terheléselosztó erőforrás társított Virtuálisgép-példányok esetén a rendszer írni minden kimenő kapcsolat forrása. A forrás az előtérbeli nyilvános IP-cím a terheléselosztó a virtuális hálózat privát IP-címtér van újraírja. A nyilvános IP-címtér 5 rekordos a folyamat (forrás IP-cím, forrásport, IP-átviteli protokoll, cél IP-címe, Célport) egyedinek kell lennie.  
+Egy nyilvános terheléselosztó erőforrás társított Virtuálisgép-példányok esetén a rendszer írni minden kimenő kapcsolat forrása. A forrás az előtérbeli nyilvános IP-cím a terheléselosztó a virtuális hálózat privát IP-címtér van újraírja. A nyilvános IP-címtér 5 rekordos a folyamat (forrás IP-cím, forrásport, IP-átviteli protokoll, cél IP-címe, Célport) egyedinek kell lennie.  Port színleg SNAT TCP vagy UDP IP protokoll használható.
 
 Ennek elérése után írja át a magánhálózati IP-forráscím, mert több adatfolyamok egy egyetlen nyilvános IP-címről elmúló port (SNAT portok) segítségével. 
 

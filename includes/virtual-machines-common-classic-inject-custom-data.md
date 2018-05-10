@@ -1,19 +1,19 @@
 
 
 
-Ez a témakör ismerteti, hogyan:
+Ez a cikk ismerteti, hogyan:
 
 * Szúrjon be egy Azure virtuális gép (VM) adatokat, amikor folyamatban van.
 * Beolvasni a Windows és Linux.
 * Egyes rendszerek különleges elérhető eszközök segítségével észleli és automatikusan kezelni az egyéni adatokat.
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan egyéni adatok beszúrhatja egy virtuális Gépet létrehozni az Azure szolgáltatásfelügyeleti API használatával. Az Azure erőforrás-kezelési API használatával, olvassa el [a példa sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+> Ez a cikk ismerteti, hogyan egyéni adatok beszúrhatja egy virtuális gép létrehozása a klasszikus üzembe helyezési modell használatával. Az Azure erőforrás-kezelési API használatával, olvassa el [a példa sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
 > 
 > 
 
 ## <a name="injecting-custom-data-into-your-azure-virtual-machine"></a>Egyéni adatok beszúrva közzététele az Azure virtuális gépen
-Ez a funkció jelenleg csak a támogatott a [Azure parancssori felület](https://github.com/Azure/azure-xplat-cli). Itt létrehozhatunk egy `custom-data.txt` fájlt, amely tartalmazza az adatokat, majd szúrjon, hogy a virtuális gép kiépítése során. De használhat, a beállításokat a `azure vm create` parancsot a következő egy nagyon egyszerű módszert mutatja be:
+Ez a funkció jelenleg csak a támogatott a [Azure parancssori felület](https://github.com/Azure/azure-xplat-cli). Itt létrehozhatunk egy `custom-data.txt` fájlt, amely tartalmazza az adatokat, majd szúrjon, hogy a virtuális gép kiépítése során. De használhat, a beállításokat a `azure vm create` parancsot a következő példa bemutatja egy egyszerű módszer:
 
 ```
     azure vm create <vmname> <vmimage> <username> <password> \  
@@ -29,17 +29,17 @@ Ez a funkció jelenleg csak a támogatott a [Azure parancssori felület](https:/
   > Ha a fájl létezik, a rendszer felülírja. A könyvtár biztonsági beállítása **System: Full Control** és **rendszergazdák: Full Control**.
   > 
   > 
-* Ha az Azure virtuális gép egy Linux-alapú virtuális Gépet, majd egyéni adatok találhatók attól függően, hogy a distro az alábbi helyek egyikét. Valószínűleg az adatok base64 kódolású, szükség lehet az adatok első dekódolási:
+* Ha az Azure virtuális gép egy Linux-alapú virtuális Gépet, majd az egyéni adatok fájl található a distro függően az alábbi helyek egyikét. Valószínűleg az adatok base64 kódolású, szükség lehet az adatok első dekódolási:
   
   * `/var/lib/waagent/ovf-env.xml`
   * `/var/lib/waagent/CustomData`
   * `/var/lib/cloud/instance/user-data.txt` 
 
 ## <a name="cloud-init-on-azure"></a>Azure cloud inicializálás
-Ha az Azure virtuális gép Ubuntu vagy CoreOS lemezképből CustomData egy felhő-config küldendő felhő inicializálás használhatja. Vagy ha az egyéni fájlját egy parancsfájlt, majd felhő inicializálás egyszerűen végrehajtható.
+Ha az Azure virtuális gép Ubuntu vagy CoreOS lemezképből CustomData egy felhő-config küldendő felhő inicializálás használhatja. Vagy ha az egyéni fájlját egy parancsfájlt, majd felhő inicializálás végrehajtható.
 
 ### <a name="ubuntu-cloud-images"></a>Ubuntu felhő lemezképek
-A legtöbb Azure Linux-lemezképekben volna szerkesztése "/ etc/waagent.conf" ideiglenes fájl és az ideiglenes erőforrás lemez konfigurálni. Lásd: [Azure Linux ügynök felhasználói útmutató](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további információt.
+A legtöbb Azure Linux-lemezképekben volna szerkesztése "/ etc/waagent.conf" ideiglenes fájl és az ideiglenes erőforrás lemez konfigurálni. Lásd: [Azure Linux ügynök felhasználói útmutató](../articles/virtual-machines/extensions/agent-linux.md) további információt.
 
 Azonban az Ubuntu felhő képek kell használnia felhő inicializálás konfigurálása az erőforrás (Ez azt jelenti, hogy a "elmúló") lemez és partíció felcserélése. A következő oldal jelenik meg a további részletekért Ubuntu wiki: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
 

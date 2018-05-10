@@ -1,22 +1,23 @@
 ---
-title: "Bejelentkezési automatikus-gyorsítás Hitelesítőtartományának feltárási házirend segítségével az alkalmazás konfigurálása |} Microsoft Docs"
-description: "Azt ismerteti, milyen az Azure AD-bérlő fogalmát, valamint az Azure Active Directoryn keresztül Azure kezelését."
+title: Bejelentkezési automatikus-gyorsítás Hitelesítőtartományának feltárási házirend segítségével az alkalmazás konfigurálása |} Microsoft Docs
+description: Azt ismerteti, milyen az Azure AD-bérlő fogalmát, valamint az Azure Active Directoryn keresztül Azure kezelését.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: barbkess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: it-pro
 ms.date: 11/09/2017
-ms.author: billmath
-ms.openlocfilehash: deaa52a062eb01450f760324e01e520fcbe894e1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.openlocfilehash: 5df12f905595c9b3e8caa8f372b9ba7b54672f81
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-sign-in-auto-acceleration-for-an-application-by-using-a-home-realm-discovery-policy"></a>Bejelentkezési automatikus-gyorsítás az alkalmazás konfigurálása Hitelesítőtartományának feltárási házirendek használatával
 
@@ -35,7 +36,7 @@ A felhasználó hitelesítését a következő helyek valamelyikén kell venni l
 
 -  A helyszíni identitásszolgáltató például az Active Directory összevonási szolgáltatások (AD FS).
 
-## <a name="auto-acceleration"></a>Auto-acceleration 
+## <a name="auto-acceleration"></a>Automatikus-gyorsulás 
 Egyes szervezetek konfigurálása az Azure Active Directory-bérlő egy másik IdP, például az AD FS felhasználói hitelesítés összevonni kívánt.  
 
 Ezekben az esetekben amikor a felhasználó bejelentkezhet egy alkalmazásba, először először jelenjenek meg ezek az az Azure AD bejelentkezési oldalára. Az egyszerű Felhasználónevük beírt, miután azok majd kerül a kiállító terjesztési hely bejelentkezési oldal. Bizonyos körülmények között a rendszergazdák előfordulhat, hogy szeretné, hogy át tudja irányítani a felhasználók számára a bejelentkezési lapon, ha azok most jelentkezik be bizonyos alkalmazásokat. 
@@ -158,7 +159,7 @@ Ebben a példában automatikus-gyorsító felhasználók egy AD FS bejelentkezé
 
 #### <a name="step-1-create-an-hrd-policy"></a>1. lépés: HRD házirend létrehozása
 ``` powershell
-New-AzureADPoly -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
+New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 Ha egyetlen összevont tartományt, amely hitelesíti a felhasználókat az alkalmazások, csak egy HRD-házirend létrehozásához szüksége.  

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: a4b1e30f1350a5e5886899069b05b8b87bb7000d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 34824401ec8d21949c5c5036a11197a09e240bd7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil élő Azure-webalkalmazásokban az Application insights szolgáltatással
 
-*Ez a szolgáltatás az Azure Application Insights szolgáltatás általánosan elérhető az Azure App Service Web Apps szolgáltatása, és jelenleg előzetes verzióban érhető az Azure számítási erőforrásokat.*
+*Ez a szolgáltatás az Azure Application Insights szolgáltatás általánosan elérhető az Azure App Service Web Apps szolgáltatása, és jelenleg előzetes verzióban érhető az Azure számítási erőforrásokat. Információ vonatkozó [helyszíni Profilkészítő használatát](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).*
 
 Ez a cikk ismerteti, amelyek használatakor az egyik módszer az élő webes alkalmazás töltött idő mennyiségét [Application Insights](app-insights-overview.md). Az Application Insights Profilkészítő eszközt jelenít meg részletes profilok volt az alkalmazás által szolgáltatott élő kérelmek. Profilkészítő kiemeli a *gyakran használt adatok elérési útja* , amely a legtöbb időt használja. Különböző válaszidők rendelkező kérelmek esetében a mintavétel alapján vannak csatolást. Módszerek segítségével minimalizálhatja a terhelést a alkalmazással van társítva.
 
@@ -138,7 +138,7 @@ Profilkészítő két perc minden órában véletlenszerűen futtató minden egy
 
 A további kiszolgálók, amelyek elérhetők a kisebb mértékű befolyásolása Profilkészítő rendelkezik-e a az alkalmazás általános teljesítménye az alkalmazás üzemeltetésére. Ennek az az oka a mintavételi algoritmus bármikor kiszolgálók csak 5 százalékát futó Profilkészítő eredményez. Több kiszolgáló használatával ellensúlyozza a kiszolgáló terhelését Profilkészítő futtatásával okozott webes kérelem kiszolgálására érhetők el.
 
-## <a name="disable-profiler"></a>Tiltsa le a Profilkészítő
+## <a name="disable-profiler"></a>Profiler letiltása
 Állítsa le, vagy indítsa újra a Profilkészítő egyedi web apps példánya a **webes feladatok**, keresse fel a Web Apps erőforrás. Profilkészítő törléséhez lépjen a **bővítmények**.
 
 ![A webes projekt Profilkészítő letiltása][disable-profiler-webjob]

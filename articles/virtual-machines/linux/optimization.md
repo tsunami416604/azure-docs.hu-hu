@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 5b0d7eb0767bb18cd74c545dc386aa16be487dae
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 75bba953a7a5737f0388e53a9f6f38dd8324eb83
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 A Linux virtuális gép (VM) létrehozása áll a parancssorból vagy a portálról. Ez az oktatóanyag bemutatja, hogyan annak beállítása, a Microsoft Azure platformon a teljesítmény optimalizálása érdekében. Ez a témakör az Ubuntu Server virtuális gép használja, de is létrehozhat Linux virtuális gép használt [a saját lemezképek sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -28,7 +28,7 @@ A Linux virtuális gép (VM) létrehozása áll a parancssorból vagy a portálr
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a témakör azt feltételezi, hogy már rendelkezik Azure-előfizetés ([ingyenes próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/)) és a virtuális gép már létrehozta az Azure-előfizetése. Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-előfizetése bejelentkezett [az bejelentkezési](/cli/azure/reference-index#az_login) előtt [hozzon létre egy virtuális Gépet](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="azure-os-disk"></a>Azure OS Disk
+## <a name="azure-os-disk"></a>Az Azure operációsrendszer-lemez
 Miután létrehozott egy Linux virtuális Gépet az Azure-ban, két lemez társítva van. **/ dev/sda** az operációsrendszer-lemez van **/dev/sdb** az ideiglenes lemez.  Ne használja a fő operációsrendszer-lemez (**/dev/sda**) számára, mert az operációs rendszer kivételével bármely más virtuális gép gyors rendszerindítás van optimalizálva, és nem biztosítja a megfelelő teljesítmény a munkaterhelések. Egy vagy több lemezt csatolni a beolvasandó állandó VM és az adatok tárolási optimalizált. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>A lemezek hozzáadása a méret és Teljesítménycélok
@@ -132,6 +132,6 @@ Ne feledje, hogy minden optimalizálási vitafórum tesztek végrehajtása előt
 Néhány hasznos további forrásanyagokra mutató hivatkozásokat: 
 
 * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](premium-storage.md)
-* [Azure Linux ügynök felhasználói útmutatója](agent-user-guide.md)
+* [Azure Linux ügynök felhasználói útmutatója](../extensions/agent-linux.md)
 * [Az Azure Linux virtuális gépeken futó MySQL teljesítményének optimalizálása](classic/optimize-mysql.md)
 * [Szoftveres RAID Linux konfigurálása](configure-raid.md)

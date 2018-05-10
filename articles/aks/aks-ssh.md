@@ -3,21 +3,35 @@ title: SSH-ból fürtcsomópontok Azure Kubernetes szolgáltatás (AKS)
 description: Az SSH-kapcsolat létrehozása az Azure Kubernetes szolgáltatás (AKS) fürt a csomópontok
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c2b77e558db0e323370c24b87a75357235677f7e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: c9d142a58f53c28c8f791692cf48b648522ccb99
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>SSH-ból fürtcsomópontok Azure Kubernetes szolgáltatás (AKS)
 
 Alkalmanként szükség lehet egy Azure Kubernetes szolgáltatás (AKS) csomópont karbantartási, naplógyűjtést vagy egyéb hibaelhárítási műveletek eléréséhez. Az Azure Kubernetes szolgáltatás (AKS) csomópontok nem érhetők el az internethez. Az jelen dokumentumban szereplő lépések segítségével hozzon létre egy SSH-kapcsolat egy AKS csomóponttal.
+
+## <a name="reset-ssh-keys"></a>SSH-kulcsok alaphelyzetbe állítása
+
+Ha telepített egy AKS SSH-kulcsok nélkül, vagy nincs hozzáférése a megfelelő SSH-kulcsok, ezek segítségével vissza tudja állítani az Azure-portálon.
+
+Keresse meg a AKS fürt, egy AKS csomópont (virtuális gép), válassza ki és **jelszó-átállítási** alaphelyzetbe állítja a nyilvános SSH-kulcsot.
+
+![A visszaállítási jelszó gombbal AKS VM](media/aks-ssh/reset-password.png)
+
+Válassza ki **alaphelyzetbe SSH nyilvános kulcs**, adja meg a fürt AKS felhasználónév, amely **azueruser** alapértelmezés szerint, és a nyilvános SSH-kulcs másolása. Válassza ki **frissítés** teljes.
+
+![AKS portál virtuális gép visszaállítási jelszó gomb](media/aks-ssh/reset-password-2.png)
+
+Miután az SSH-kulcs alaphelyzetbe lett állítva, hozzon létre egy SSH csatlakozás a megfelelő titkos kulccsal.
 
 ## <a name="get-aks-node-address"></a>AKS címe beolvasása
 
@@ -56,7 +70,7 @@ NAME                       READY     STATUS    RESTARTS   AGE
 aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
 ```
 
-Az SSH-kulcs másolása fogyasztanak, pod neve cserélje le a megfelelő értéket.
+A titkos SSH-kulcs másolása fogyasztanak, pod neve cserélje le a megfelelő értéket.
 
 ```console
 kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa

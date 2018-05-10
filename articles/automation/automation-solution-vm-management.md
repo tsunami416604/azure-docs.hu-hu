@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1a7a711c9b255aabdae76d28908d81f349aebe4a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Indítása/leállítása virtuális gépek során munkaidőn kívüli megoldás (előzetes verzió) az Azure Automationben
 
@@ -26,7 +26,7 @@ A megoldás biztosít egy decentralizált automatizálási lehetősége a felhas
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A runbookok (forgatókönyvek) [Azure-futtatófiókkal](automation-offering-get-started.md#authentication-methods) használhatóak. A Futtatás mint fiók nem az előnyben részesített hitelesítési módszer, mert a tanúsítvány alapú hitelesítést használ, amely lejár, vagy módosítsa gyakran jelszó helyett.
+* A runbookok (forgatókönyvek) [Azure-futtatófiókkal](automation-create-runas-account.md) használhatóak. A Futtatás mint fiók nem az előnyben részesített hitelesítési módszer, mert a tanúsítvány alapú hitelesítést használ, amely lejár, vagy módosítsa gyakran jelszó helyett.
 * Ez a megoldás csak virtuális gépek, amelyek ugyanahhoz az előfizetéshez, mint az Azure Automation-fiók kezelése.
 * Ez a megoldás a rendszer csak a következő Azure-régiók: Ausztrália délkeleti, Kanada központi, közép-Indiában, USA keleti régiója, kelet-japán, Délkelet-Ázsiában, Egyesült Királyság déli régiója és Nyugat-Európában.
 
@@ -80,8 +80,8 @@ Hajtsa végre a következő lépések végrehajtásával adja hozzá a indítás
    * Válassza ki a **ütemezés**. Ez az ismétlődő dátum és idő és a virtuális gépek a cél-erőforráscsoport leállításáért. Alapértelmezés szerint az ütemezés az UTC időzóna van konfigurálva. Egy másik régió kiválasztásával nem érhető el. A megoldás konfigurálása után az ütemezés a megadott időzóna konfigurálásához lásd: [indítási és leállítási ütemezésének módosítása](#modify-the-startup-and-shutdown-schedule).
    * Fogadásához **E-mail értesítések** a SendGrid, fogadja el alapértékként a **Igen** , és adjon meg egy érvényes e-mail címet. Ha **nem** , de egy későbbi időpontban döntse el, hogy szeretne kapni az e-mail értesítések, frissítheti a **External_EmailToAddress** érvényes e-mail címmel rendelkező változó, vesszővel elválasztott, majd a változó módosítása **External_IsSendEmail** értékű **Igen**.
 
-> [!IMPORTANT]
-> Az alapértelmezett érték **célként megadott erőforráscsoport-nevek** van egy **&ast;**. Ez a előfizetés virtuális gépeinek célozza. Ha nem szeretné, hogy a megoldás, amelyekre ezt az értéket meg kell frissíteni, hogy az ütemezések engedélyezése előtt erőforráscsoport-nevek listája az előfizetésében szereplő összes virtuális gépet.
+    > [!IMPORTANT]
+    > Az alapértelmezett érték **célként megadott erőforráscsoport-nevek** van egy **&ast;**. Ez a előfizetés virtuális gépeinek célozza. Ha nem szeretné, hogy a megoldás, amelyekre ezt az értéket meg kell frissíteni, hogy az ütemezések engedélyezése előtt erőforráscsoport-nevek listája az előfizetésében szereplő összes virtuális gépet.
 
 1. Miután konfigurálta a kezdeti a megoldáshoz szükséges beállításokat, kattintson a **OK** bezárásához a **paraméterek** lapon, és válassza **létrehozása**. Minden beállítás ellenőrzését követően a megoldást már telepítették az előfizetéséhez. A folyamat eltarthat néhány másodpercig befejezéséhez, és nyomon követheti a folyamat állapotát **értesítések** a menüből.
 
@@ -218,7 +218,7 @@ Mindegyik forgatókönyvben között a **External_Start_ResourceGroupNames**, **
 
 ### <a name="schedules"></a>Ütemezések
 
-A következő táblázat felsorolja az egyes az alapértelmezett ütemezését az Automation-fiókban létrehozni.  Módosíthatja azokat, vagy hozzon létre egy saját egyéni ütemezést. Alapértelmezés szerint minden egyes letiltottak kivételével **Scheduled_StartVM** és **Scheduled_StopVM**.
+A következő táblázat felsorolja az egyes az alapértelmezett ütemezését az Automation-fiókban létrehozni. Módosíthatja azokat, vagy hozzon létre egy saját egyéni ütemezést. Alapértelmezés szerint minden egyes letiltottak kivételével **Scheduled_StartVM** és **Scheduled_StopVM**.
 
 Az ütemezést, mert ez előfordulhat, hogy létre átfedő ütemezés műveletek ne engedélyezze. A legcélszerűbb határozza meg, melyik optimalizálást, hajtsa végre, és ennek megfelelően módosítsa. Tekintse meg a kapcsolódó további tájékoztatást a áttekintés szakaszban szereplő példakörnyezetek.
 
@@ -226,7 +226,7 @@ Az ütemezést, mert ez előfordulhat, hogy létre átfedő ütemezés művelete
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 óránként | Futtatja a AutoStop_CreateAlert_Parent runbookot 8 óránként, ami pedig leállítja a Virtuálisgép-alapú External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames, és értékeit External_ExcludeVMNames Azure Automation-változók. Azt is megteheti virtuális gépek vesszővel tagolt listáját is megadhat a VMList paraméter használatával.|
 |Scheduled_StopVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy paraméterrel a *leállítása* , a megadott időpontban naponta. Automatikusan leállítja az összes virtuális gépet, amelyek megfelelnek az eszköz változó által meghatározott szabályok. Engedélyeznie kell a kapcsolódó ütemezés **ütemezett-StartVM**.|
-|Scheduled_StartVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy paraméterrel a *Start* , a megadott időpontban naponta.  Minden virtuális gépek, amelyek megfelelnek a szabályok határozzák meg a megfelelő változók automatikusan elindul. Engedélyeznie kell a kapcsolódó ütemezés **ütemezett-StopVM**.|
+|Scheduled_StartVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy paraméterrel a *Start* , a megadott időpontban naponta. Minden virtuális gépek, amelyek megfelelnek a szabályok határozzák meg a megfelelő változók automatikusan elindul. Engedélyeznie kell a kapcsolódó ütemezés **ütemezett-StopVM**.|
 |Előkészített StopVM | 13:00:00 (UTC) szerint péntekenként | A Sequenced_Parent runbookot futtat egy paraméterrel a *leállítása* péntekenként, a megadott időpontban. Egymás után (növekvő) leállítja az összes virtuális gépet a címkével ellátott **SequenceStop** határozzák meg a megfelelő változókat. Tekintse meg a Runbookok című szakaszban talál további információt előfizetéscímkék értékeit és eszköz változókat. Engedélyeznie kell a kapcsolódó ütemezés **Sequenced-StartVM**.|
 |Előkészített StartVM | 1:00 PM idő szerint (UTC), minden hétfőn | A Sequenced_Parent runbookot futtat egy paraméterrel a *Start* minden hétfőn, a megadott időpontban. Egymás után minden virtuális gép (csökkenő) elindítja a címkével ellátott **SequenceStart** határozzák meg a megfelelő változókat. Tekintse meg a Runbookok című szakaszban talál további információt előfizetéscímkék értékeit és eszköz változókat. Engedélyeznie kell a kapcsolódó ütemezés **Sequenced-StopVM**.|
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ac956d638be1e79547ff931ba5b0c7e5de1ae65
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2597b434bc6db0d5639709a9ce869462c3e47f56
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Adatgyűjtés a Naplóelemzési a környezetében lévő számítógépek
 
@@ -40,7 +40,7 @@ Az ügynök a Linux és a Windows 443-as TCP-porton keresztül kommunikál a Log
 
 Ha a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2-ben futtató számítógép többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli a Log Analytics szolgáltatással lehet [Operations Manager ](log-analytics-om-agents.md). Az Operations Manager felügyeleti csoport integrálva van a Naplóelemzési által figyelt Linux rendszerű számítógépek nem kapják konfigurálás adatforrások és a felügyeleti csoporton keresztül továbbítandó összegyűjtött adatokat. A Windows-ügynök is tud jelentéseket legfeljebb négy munkaterületek, míg a Linux-ügynök csak támogatja egyetlen munkaterület jelentéskészítés.  
 
-Az ügynök a Linux és a Windows nem csak a Log Analyticshez való kapcsolódás, Azure Automation állomás a hibrid forgatókönyv-feldolgozói szerepkör és felügyeleti megoldások, például a változások követése és a frissítések kezelése is támogatja.  A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid forgatókönyv-feldolgozó](../automation/automation-offering-get-started.md#automation-architecture-overview).  
+Az ügynök a Linux és a Windows nem csak a Log Analyticshez való kapcsolódás, Azure Automation állomás a hibrid forgatókönyv-feldolgozói szerepkör és felügyeleti megoldások, például a változások követése és a frissítések kezelése is támogatja.  A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid forgatókönyv-feldolgozó](../automation/automation-hybrid-runbook-worker.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Megkezdése előtt tekintse át a következő adatok ellenőrzése a minimális követelményeknek.
@@ -97,7 +97,7 @@ A proxy konfigurációs érték szintaxisa a következő:
 |Tulajdonság| Leírás |
 |--------|-------------|
 |Protokoll | https |
-|felhasználótól | Nem kötelező felhasználónév a proxyhitelesítéshez |
+|Felhasználó | Nem kötelező felhasználónév a proxyhitelesítéshez |
 |jelszó | Opcionális jelszót a proxyhitelesítéshez |
 |proxyhost | Cím vagy FQDN-jét a proxy server/OMS átjáró |
 |port | A proxy server/OMS átjáró választható portszáma |

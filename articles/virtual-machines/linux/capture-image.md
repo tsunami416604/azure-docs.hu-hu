@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 9fa87f8dc0c94ec93e049e35be727c031b4b06ea
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bb70b3ff84392797ce0d93b8cf5d4018ff8ebdd8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Egy képet egy virtuális géphez vagy virtuális merevlemez létrehozása
 
@@ -45,7 +45,7 @@ Egy egyszerűsített verziója, tesztelési, ez a témakör értékelése és me
 
 
 ## <a name="step-1-deprovision-the-vm"></a>1. lépés: A virtuális gép kiosztásának megszüntetése
-Ön kiosztásának megszüntetése a virtuális gépet az Azure Virtuálisgép-ügynök, a gép adott fájlokat és adatokat törli. Használja a `waagent` parancsot a *-deprovision + felhasználói* paraméter a Linux virtuális gép – forrásként. További információk: [Azure Linux-ügynök – felhasználói útmutató](../windows/agent-user-guide.md).
+Ön kiosztásának megszüntetése a virtuális gépet az Azure Virtuálisgép-ügynök, a gép adott fájlokat és adatokat törli. Használja a `waagent` parancsot a *-deprovision + felhasználói* paraméter a Linux virtuális gép – forrásként. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
 
 1. Csatlakoztassa a Linux virtuális gép SSH-ügyfél.
 2. Az SSH-ablakban írja be a következő parancsot:

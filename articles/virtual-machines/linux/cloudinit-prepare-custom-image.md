@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: faa28a6b28c721e4088ccfbb00514be7f605f3e2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Egy meglévő Linux Azure Virtuálisgép-lemezkép előkészítése inicializálás felhőben való használatra
 Ez a cikk bemutatja, hogyan egy meglévő Azure virtuális gépet, és készítse elő a újratelepített és felhő inicializálás használatra kész. A létrejövő kép segítségével telepítsen egy új virtuális gép vagy virtuálisgép-méretezési csoportok - vagy amelyek sikerült majd további szabhatja testre felhő inicializálás központi telepítéskor.  Ezen felhő inicializálás parancsfájlok futtatása az első betöltés után az erőforrásokat az Azure-ban kiépített. Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md)
@@ -136,7 +136,7 @@ Minden Azure platformon képek a Azure Linux ügynök van telepítve, attól fü
 sudo waagent -deprovision+user -force
 ```
 
-Az Azure Linux ügynök deprovision parancsokkal kapcsolatos további információkért lásd: a [Azure Linux ügynök](agent-user-guide.md) további részleteket.
+Az Azure Linux ügynök deprovision parancsokkal kapcsolatos további információkért lásd: a [Azure Linux ügynök](../extensions/agent-linux.md) további részleteket.
 
 Lépjen ki az SSH-munkamenetet, majd a rendszerhéjakba futtassa a következő AzureCLI parancsokat felszabadítani, generalize, és hozzon létre egy új Azure Virtuálisgép-lemezkép.  Cserélje le `myResourceGroup` és `sourceVmName` a megfelelő információkkal a sourceVM tükrözve.
 

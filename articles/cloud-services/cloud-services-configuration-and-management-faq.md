@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 05/08/2018
 ms.author: genli
-ms.openlocfilehash: cc43d1a0e07eac78a47e6f183c2fd066a489f4f4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbd817750d6c6d43ae6973eb38b866b76921f33b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és kezelésének számos Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
 
@@ -34,6 +34,7 @@ Ez a cikk tartalmazza a konfigurációs és kezelésének számos kapcsolatos gy
 - [Hogyan tudom generálhatnak egy tanúsítvány-aláírási kérelem (CSR) nélkül "RDP-ing" példányához?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [A felhőalapú szolgáltatás felügyeleti tanúsítvány lejárati ideje. Újítsa meg, hogyan?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
 - [Hogyan fő SSL tanúsítványt (.pfx) és köztes certificate(.p7b) telepítését?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Mi az a célja a "Microsoft Azure Service Management a MachineKey" tanúsítvány?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **Figyelés és naplózás**
 
@@ -103,6 +104,10 @@ A **Get-AzurePublishSettingsFile** hoz létre egy új felügyeleti tanúsítván
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Hogyan fő SSL tanúsítványt (.pfx) és köztes certificate(.p7b) telepítését?
 
 Ez a feladat indítási parancsfájl (kötegelt/cmd/PowerShell) segítségével automatizálhatja, és regisztrálja az adott indítási parancsfájl a szolgáltatásdefiníciós fájlban. Adja hozzá az indítási parancsfájl és a tanúsítványok (.p7b fájl) ugyanabban a könyvtárban, az indítási parancsfájl projektmappában.
+
+### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Mi az a célja a "Microsoft Azure Service Management a MachineKey" tanúsítvány?
+
+Ez a tanúsítvány számítógépkulcsok Azure webes szerepkörök titkosítására szolgál. További tudnivalókért tekintse meg a tanácsadó [https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731].
 
 További információkért tekintse át a következő cikkeket:
 - [Hogyan lehet konfigurálni és egy felhőalapú szolgáltatás indítási feladatok futtatása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -203,7 +208,7 @@ Cloud Services nem támogatja a szerepköralapú hozzáférés-vezérlést (RBAC
 
 Lásd: [hagyományos előfizetés rendszergazdái és az Azure RBAC](../role-based-access-control/overview.md#azure-rbac-vs-classic-subscription-administrators).
 
-## <a name="remote-desktop"></a>A távoli asztal
+## <a name="remote-desktop"></a>Távoli asztal
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>A Microsoft belső mérnökök távoli asztal Felhőszolgáltatás példányokhoz engedélye nélkül is?
 A Microsoft egy szigorú folyamat, amely nem engedélyezi, hogy a távoli asztal belső mérnökök (e-mailben vagy más írásbeli kommunikációs) írásbeli engedélye nélkül a felhőalapú szolgáltatás tulajdonosa vagy az általa kijelölt szervet követi.

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 1/4/2018
+ms.date: 5/3/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4c219820fd5b8d5502bae394142dfbe80db1f59
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: ef80c99225a9045686ba8de3fe8fd7cf7070b5cd
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -61,6 +61,16 @@ ms.lasthandoff: 05/07/2018
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="1.14.4"/>1.14.4</a>
+* rögzített npm dokumentációját.
+
+### <a name="1.14.3"/>1.14.3</a>
+* A kapcsolódási problémák alapértelmezett újrapróbálkozások támogatása.
+* Adatcsatorna-gyűjtemény módosítása a következőre támogatása.
+* Rögzített munkamenet konzisztencia hiba, ami időnként a "olvasási munkamenet nem érhető el" miatt.
+* Lekérdezés metrikák támogatása.
+* Módosított http ügynök kapcsolatok maximális számát.
 
 ### <a name="1.14.2"/>1.14.2</a>
 * Frissített hivatkozás Azure Cosmos DB helyett az Azure DocumentDB dokumentációját.
@@ -193,6 +203,8 @@ A Cosmos DB használatával kivont SDK kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.14.4](#1.14.4) |2018. Előfordulhat, hogy 03. |--- |
+| [1.14.3](#1.14.3) |2018. Előfordulhat, hogy 03. |--- |
 | [1.14.2](#1.14.2) |2017. december 21. |--- |
 | [1.14.1](#1.14.1) |2017. november 10. |--- |
 | [1.14.0](#1.14.0) |2017. november 9. |--- |

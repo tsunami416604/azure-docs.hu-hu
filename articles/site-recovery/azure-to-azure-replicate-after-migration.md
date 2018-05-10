@@ -1,17 +1,17 @@
 ---
-title: "Azure virtuális gépek az Azure-bA az Azure Site Recovery áttelepítés után állítsa be a vész-helyreállítási |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan készíti elő a vész-helyreállítási Azure-bA az Azure Site Recovery segítségével való áttelepítése után Azure-régiók közötti gépek."
+title: Azure virtuális gépek az Azure-bA az Azure Site Recovery áttelepítés után állítsa be a vész-helyreállítási |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan készíti elő a vész-helyreállítási Azure-bA az Azure Site Recovery segítségével való áttelepítése után Azure-régiók közötti gépek.
 services: site-recovery
 author: ponatara
 ms.service: site-recovery
 ms.topic: article
 ms.date: 01/07/2018
 ms.author: ponatara
-ms.openlocfilehash: c06af21cd6e273b98c004e8bd0e6eac61ba7d644
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 034052c0406ee51f33c598634f92d27867c7cbe7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Állítsa be vészhelyreállítás Azure virtuális gépek Azure való áttelepítése után 
 
@@ -30,11 +30,11 @@ Vész-helyreállítási beállítása előtt győződjön meg arról, hogy átte
 
 ## <a name="install-the-azure-vm-agent"></a>Az Azure Virtuálisgép-ügynök telepítése
 
-Az Azure [Virtuálisgép-ügynök](../virtual-machines/windows/agent-user-guide.md) telepíteni kell a virtuális Gépet, hogy a Site Recovery segítségével replikálhatja azt.
+Az Azure [Virtuálisgép-ügynök](../virtual-machines/extensions/agent-windows.md) telepíteni kell a virtuális Gépet, hogy a Site Recovery segítségével replikálhatja azt.
 
 
 1. A Virtuálisgép-ügynök telepítése Windows rendszerű virtuális gépeken, töltse le és futtassa a [ügynököt telepítő](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A virtuális Gépen a telepítés befejezéséhez rendszergazdai jogosultságokat igényel.
-2. A Linux rendszerű virtuális gépeken a Virtuálisgép-ügynök telepítéséhez telepítse a legújabb [Linux-ügynök](../virtual-machines/linux/agent-user-guide.md). A telepítés befejezéséhez rendszergazdai jogosultságokat igényel. Javasoljuk, hogy a terjesztési tárházból telepítse. Nem ajánlott közvetlenül a Githubból a Linux Virtuálisgép-ügynök telepítése. 
+2. A Linux rendszerű virtuális gépeken a Virtuálisgép-ügynök telepítéséhez telepítse a legújabb [Linux-ügynök](../virtual-machines/extensions/agent-linux.md). A telepítés befejezéséhez rendszergazdai jogosultságokat igényel. Javasoljuk, hogy a terjesztési tárházból telepítse. Nem ajánlott közvetlenül a Githubból a Linux Virtuálisgép-ügynök telepítése. 
 
 
 ## <a name="validate-the-installation-on-windows-vms"></a>A Windows virtuális gépeken a telepítés ellenőrzése

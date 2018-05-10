@@ -1,13 +1,13 @@
 ---
-title: "Gyors üzembe helyezés: Az Egypéldányos SAP HANA Azure virtuális gépek manuális telepítésére |} Microsoft Docs"
-description: "Gyors üzembe helyezési útmutató az Egypéldányos SAP HANA manuális telepítése Azure virtuális gépeken"
+title: 'Gyors üzembe helyezés: Az Egypéldányos SAP HANA Azure virtuális gépek manuális telepítésére |} Microsoft Docs'
+description: Gyors üzembe helyezési útmutató az Egypéldányos SAP HANA manuális telepítése Azure virtuális gépeken
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 321a86d6ce355273820617e6de9df2b0816c73fa
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 45c7e1b76f64db142fc8fdca85b1e1fa9aca6a42
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Gyors üzembe helyezés: Egypéldányos SAP HANA Azure virtuális gépeken manuális telepítése
 ## <a name="introduction"></a>Bevezetés
@@ -251,7 +251,7 @@ Az SAP HANA szabványos fájlrendszer elrendezését, olvassa el a [SAP HANA-kis
 
 Amikor SAP NetWeaver telepít egy szabványos SLES/SLES SAP alkalmazások 12 Azure gyűjtemény lemezkép, egy üzenet jelenik meg, amely szerint a nincs swap terület, az alábbi képernyőfelvételen látható módon. Ez az üzenet bezárásához, kézzel is hozzáadhatja a lapozófájl használatával **nn**, **mkswap**, és **swapon**. Megtudhatja, hogyan keresse meg "Lapozófájl kézi hozzáadása" a a [használatával a YaST particionáló](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) a SUSE dokumentáció része.
 
-Egy másik lehetőség egy lapozóterület konfigurálása a Linux Virtuálisgép-ügynök használatával. További információkért lásd: a [Azure Linux ügynök felhasználói útmutató](../../linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Egy másik lehetőség egy lapozóterület konfigurálása a Linux Virtuálisgép-ügynök használatával. További információkért lásd: a [Azure Linux ügynök felhasználói útmutató](../../extensions/agent-linux.md).
 
 ![Előugró üzenet tájékoztatja, hogy nincs-e elegendő lapozóterület](./media/hana-get-started/image010.jpg)
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 01f396b4a2b8851ce1433a297981d30328c113b8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: a16d65e9c462bfcacc5ae9f29889667efd9ddb84
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain munkaterület központi telepítése
 
@@ -79,27 +79,6 @@ A következő módosítania kell az alkalmazás jegyzékében belül az Azure AD
 
 4.  Kattintson a **mentése** az alkalmazás jegyzékének módosítások mentéséhez.
 
-### <a name="add-graph-api-key-to-application"></a>Graph API-kulcs hozzáadása az alkalmazáshoz
-
-Blockchain munkaterület használja az Azure AD a fő felügyeleti identitásrendszere felhasználók blockchain alkalmazások való interakció. Ahhoz, hogy az Azure AD eléréséhez, és a felhasználói adatok, például neveket és e-mailek lekérése Blockchain munkaterület kell hozzáadnia az elérési kulcsot. Blockchain munkaterület kulcsot használja az Azure AD szolgáltatással való hitelesítésre.
-
-1. A regisztrált alkalmazáshoz, jelölje ki a **beállítások** a regisztrált alkalmazáshoz részleteket tartalmazó ablaktáblán.
-2. Válassza a **Kulcsok** elemet.
-3. Adja hozzá egy új kulcsot a kulcs megadásával **leírás** kiválasztásával **lejár** az időtartamot. 
-
-    ![Kulcs létrehozása](media/blockchain-workbench-deploy/app-key-create.png)
-
-    |Beállítás  | Érték  |
-    |---------|---------|
-    | Leírás | `Service` |
-    | Elévül | Válassza ki a lejárati idő |
-
-4. Kattintson a **Mentés** gombra. 
-5. Másolja a kulcs értékét, és tárolja a későbbi használatra. Központi telepítéshez van szükség.
-
-    > [!IMPORTANT]
-    >  Ha a kulcs az üzemelő példány nem menti, akkor hozzon létre egy új kulcsot. A kulcs értéke később nem tudja beolvasni a portálról.
-
 ### <a name="add-graph-api-required-permissions"></a>A Graph API szükséges engedélyek hozzáadása
 
 Az API-alkalmazást kell engedélykérés a felhasználótól a könyvtár eléréséhez. Állítsa be a következő szükséges engedélyekkel, az API-alkalmazáshoz:
@@ -121,6 +100,27 @@ Az API-alkalmazást kell engedélykérés a felhasználótól a könyvtár elér
    ![Engedélyek megadása](media/blockchain-workbench-deploy/client-app-grant-permissions.png)
 
    Engedély megadása lehetővé teszi, hogy a címtárban szereplő felhasználó eléréséhez Blockchain munkaterület. Az olvasási hozzáférést keresheti ki és tagokat vehet fel Blockchain munkaterület szükséges.
+
+### <a name="add-graph-api-key-to-application"></a>Graph API-kulcs hozzáadása az alkalmazáshoz
+
+Blockchain munkaterület használja az Azure AD a fő felügyeleti identitásrendszere felhasználók blockchain alkalmazások való interakció. Ahhoz, hogy az Azure AD eléréséhez, és a felhasználói adatok, például neveket és e-mailek lekérése Blockchain munkaterület kell hozzáadnia az elérési kulcsot. Blockchain munkaterület kulcsot használja az Azure AD szolgáltatással való hitelesítésre.
+
+1. A regisztrált alkalmazáshoz, jelölje ki a **beállítások** a regisztrált alkalmazáshoz részleteket tartalmazó ablaktáblán.
+2. Válassza a **Kulcsok** elemet.
+3. Adja hozzá egy új kulcsot a kulcs megadásával **leírás** kiválasztásával **lejár** az időtartamot. 
+
+    ![Kulcs létrehozása](media/blockchain-workbench-deploy/app-key-create.png)
+
+    |Beállítás  | Érték  |
+    |---------|---------|
+    | Leírás | `Service` |
+    | Elévül | Válassza ki a lejárati idő |
+
+4. Kattintson a **Mentés** gombra. 
+5. Másolja a kulcs értékét, és tárolja a későbbi használatra. Központi telepítéshez van szükség.
+
+    > [!IMPORTANT]
+    >  Ha a kulcs az üzemelő példány nem menti, akkor hozzon létre egy új kulcsot. A kulcs értéke később nem tudja beolvasni a portálról.
 
 ### <a name="get-application-id"></a>Alkalmazásazonosító beszerzése
 
@@ -170,6 +170,7 @@ Az előfeltételként szükséges lépések elvégzése után, készen áll a Bl
     | Jelszó | A jelszó szolgál a virtuális gépeken való kapcsolódáshoz. |
     | SSH | Nyilvános RSA-kulcs használata az egysoros formátum kezdődő **ssh-rsa** , vagy használja a többsoros PEM-formátumba. SSH-kulcsok használatával hozhat létre `ssh-keygen` Linux- és OS X, vagy a PuTTYGen Windows rendszeren. SSH-kulcsokat, a további tudnivalókat lásd a [SSH használata a Windows Azure-kulcsok](../virtual-machines/linux/ssh-from-windows.md). |
     | Adatbázis-jelszó / adatbázis jelszó megerősítése | Adja meg a központi telepítés részeként létrehozott adatbázis eléréséhez használandó jelszó. |
+    | Központi telepítés régió | Adja meg a telepítendő Blockchain munkaterület erőforrások helyét. A legjobb elérhetőségét, ezzel meg kell felelnie a **hely** beállítást. |
     | Előfizetés | Adja meg a telepítéshez használni kívánt Azure-előfizetést. |
     | Erőforráscsoportok | Hozzon létre egy új erőforráscsoportot kiválasztásával **hozzon létre új** , és adja meg egy egyedi erőforráscsoport neve. |
     | Hely | Adja meg a régió kívánja telepíteni a keretrendszer. |
@@ -199,7 +200,7 @@ Az előfeltételként szükséges lépések elvégzése után, készen áll a Bl
     | Tárolási teljesítmény | Válassza ki az elsődleges virtuális gép tárolási teljesítményének megjelenítése a blockchain hálózati. |
     | Virtuális gép mérete | Válassza ki a blockchain hálózati az elsődleges Virtuálisgép-méretet. |
 
-10. Kattintson a **OK** a hálózat mérete és teljesítménye szakasz befejezéséhez.
+10. Válassza ki **OK** a hálózat mérete és teljesítménye szakasz befejezéséhez.
 
 11. Fejezze be a **Azure figyelő** beállításait.
 
@@ -207,9 +208,8 @@ Az előfeltételként szükséges lépések elvégzése után, készen áll a Bl
 
     | Beállítás | Leírás  |
     |---------|--------------|
-    | Figyelés | Válassza ki, hogy a blockchain hálózat figyeléséhez használt Azure-figyelő |
-    | Csatlakozás meglévő OMS-példányhoz | Válassza ki, hogy egy meglévő Operations Management Suite-példányt, vagy hozzon létre egy újat |
-    | OMS-munkaterület helye | Válasszon egy régiót az OMS-munkaterület. Ez a régió Blockchain munkaterület helyét meg kell egyeznie |
+    | Figyelés | Válassza ki, hogy később engedélyezni kívánja a blockchain hálózat figyelése Azure figyelője |
+    | Csatlakozás meglévő Naplóelemzési példányhoz | Válassza ki, hogy egy meglévő használni kívánt Naplóelemzési példányt, vagy hozzon létre egy újat. Ha egy meglévő példányát használja, adja meg a munkaterület azonosítója és az elsődleges kulcs. |
 
 12. Kattintson a **OK** az Azure-figyelő szakasz befejezéséhez.
 

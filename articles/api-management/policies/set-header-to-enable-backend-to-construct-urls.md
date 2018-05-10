@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API management-házirendet a minta - adjon meg egy továbbított fejlécet |} Microsoft Docs"
-description: "Az Azure API management házirend - mutatja be továbbított fejléc hozzáadása a háttér-API megfelelő URL-címek összeállításához engedélyezi a bejövő kérelemben."
+title: Az Azure API management-házirendet a minta - adjon meg egy továbbított fejlécet |} Microsoft Docs
+description: Az Azure API management házirend - mutatja be továbbított fejléc hozzáadása a háttér-API megfelelő URL-címek összeállításához engedélyezi a bejövő kérelemben.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: cc2df914532b6cda37c951b65b243e90b63d57cb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 00c8ac567b476d0591069c83c371d987d651de9d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="add-a-forwarded-header"></a>Adjon meg egy továbbított fejlécet
 
@@ -29,7 +29,7 @@ Illessze be a kódot a **bejövő** blokkot.
 
 [!code-xml[Main](../../../api-management-policy-samples/Snippets/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók APIM házirendek:
 

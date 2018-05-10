@@ -1,30 +1,34 @@
 ---
-title: "Az Azure Active Directory naplózási API-referencia |} Microsoft Docs"
-description: "Ismerkedés az Azure Active Directory naplózási API-hoz"
+title: Az Azure Active Directory naplózási API-referencia |} Microsoft Docs
+description: Ismerkedés az Azure Active Directory naplózási API-hoz
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5cdf80ff1cc49b1582302d411ee6fcc8f193c021
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 1bf86a9190039cdf0fe8dc435bdee4308b28cf29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Az Azure Active Directory naplózási API-referencia
-Ez a témakör az Azure Active Directory reporting API-val kapcsolatos témakörök gyűjteményét részét képezi.  
-Az Azure AD jelentéskészítési lehetőséget biztosít az API-k, amely lehetővé teszi a kód vagy a kapcsolódó eszközök naplózási adatok eléréséhez.
-Ez a témakör a hatóköre biztosításához kapcsolatos útmutatót a **API naplózási**.
+
+> [!TIP] 
+> Tekintse meg az új Microsoft Graph API a [reporting](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit), ami végül lecseréli az API. 
+
+
+Ez a cikk egy gyűjtemény reporting API-val az Azure Active Directory (Azure AD) ismertető cikk gyűjtemény része. Az Azure AD jelentéskészítési lehetőséget biztosít az API-k, amely lehetővé teszi a kód vagy a kapcsolódó eszközök naplózási adatok eléréséhez.
+Ez a cikk a hatóköre biztosításához kapcsolatos útmutatót a **API naplózási**.
 
 Lásd:
 
@@ -37,35 +41,34 @@ Esetén:
 
 - Gyakori kérdések, olvassa el a [– gyakori kérdések](active-directory-reporting-faq.md) 
 
-- Adjon ki [fájlt egy támogatási jegy](active-directory-troubleshooting-support-howto.md) 
+- Problémák, [fájlt egy támogatási jegy](active-directory-troubleshooting-support-howto.md) 
 
 
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 * A biztonsági rendszergazda vagy biztonsági olvasó szerepkörű felhasználók
 * A globális rendszergazdák
-* Bármely alkalmazás, amely rendelkezik hozzáférési az API-t (alkalmazás engedélyezési is lehet a telepítő csak a globális rendszergazdai engedély alapján)
+* Bármely alkalmazás, amely rendelkezik hozzáférési az API-t (alkalmazás engedélyezési beállíthatja a csak a globális rendszergazdai engedély alapján)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a jelentés eléréséhez a Reporting API-n keresztül, ha rendelkezik:
+Ez a jelentés eléréséhez a Reporting API-n keresztül, rendelkeznie kell:
 
 * Egy [Azure Active Directory ingyenes vagy jobb edition](active-directory-editions.md)
 * Befejeződött a [Előfeltételek az Azure AD reporting API eléréséhez](active-directory-reporting-api-prerequisites.md). 
 
 ## <a name="accessing-the-api"></a>Az API elérése
-Vagy az API keresztül hozzáférhet a [Graph Explorer](https://graphexplorer2.cloudapp.net) vagy programozott módon, például PowerShell használatával. Ahhoz, hogy megfelelően értelmezni az OData-szűrőszintaxisának AAD Graph REST-hívásokban használt PowerShell, a backtick kell használnia (más néven: aposztróf) "karaktert" a $ karaktert. A backtick karakter funkcionál [PowerShell escape-karakter](https://technet.microsoft.com/library/hh847755.aspx), lehetővé téve a $ karaktert a literális értelmezésének, és elkerülheti a PowerShell változó neveként zavaró, PowerShell (ie: $filter).
+Vagy az API keresztül hozzáférhet a [Graph Explorer](https://graphexplorer2.cloudapp.net) vagy programozott módon, például PowerShell használatával. Használja a backtick (más néven: aposztróf) "karaktert" a $ annak érdekében, hogy a PowerShell tudja értelmezni az OData-szűrőszintaxisának AAD Graph REST-hívásokban használt karakter. A backtick karakter funkcionál [PowerShell escape-karakter](https://technet.microsoft.com/library/hh847755.aspx), így PowerShell $ karaktert a literális értelmezésének, és elkerülheti a zavaró, a PowerShell változó neveként (például $filter).
 
-A jelen témakör elsősorban a Graph Explorer. A PowerShell például megjelenik ez [PowerShell-parancsfájl](active-directory-reporting-api-audit-samples.md#powershell-script).
+Ez a cikk a Graph Explorer a célja. A PowerShell például megjelenik ez [PowerShell-parancsfájl](active-directory-reporting-api-audit-samples.md#powershell-script).
 
 ## <a name="api-endpoint"></a>API-végpont
+
 Ez az API a következő URI használatával érhető el:  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
 
-Az Azure AD naplózási API-t (OData tördelési használatával) által visszaadott rekordok száma korlátozva van.
-A jelentés adatainak megőrzési-korlátok, tekintse meg [adatmegőrzési Reporting](active-directory-reporting-retention.md).
+Azt jelzi, hogy a rendszer által visszaadott az Azure AD naplózási API-t (OData tördelési használatával) száma korlátozva van. A jelentési adatok megőrzési korlátai által megszabott, lásd: [adatmegőrzési Reporting](active-directory-reporting-retention.md).
 
-Ez a hívás kötegekben adatait jeleníti meg. Minden egyes legfeljebb 1000 rekord rendelkezik.  
-A következő mérési adatköteget a rekordok megtekintéséhez használja a következő hivatkozásra. A skiptoken adatok lehívása az első visszaadott rekordok készletét. A kihagyási lexikális elem az eredmény végén értéke lesz.  
+A hívás kötegekben adatait jeleníti meg. Minden egyes legfeljebb 1000 rekord rendelkezik. A következő mérési adatköteget rekordok használatához a **tovább** hivatkozásra. A kihagyási lexikális elem adatainak lekérése az első visszaadott rekordok készletét. A kihagyási lexikális elem az eredmény végén értéke lesz.  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -73,14 +76,15 @@ A következő mérési adatköteget a rekordok megtekintéséhez használja a k�
 
 
 ## <a name="supported-filters"></a>Támogatott szűrők
-Az API-k által visszaadott rekordok számának megadásával szűkíthető hívható meg egy szűrő formában.  
-Bejelentkezés az API-hoz kapcsolódó adatok, a következő szűrőket támogatottak:
 
-* **$top =\<visszaadott száma\>**  - visszaadott rekordok számát. Ez az egy drága művelet. Ha szeretne visszaállítani az objektumok több ezer ne használjon a szűrőt.     
+Visszaadott rekordok számának megadásával szűkíthető szűrő egy API-hívás által.  
+Bejelentkezési API kapcsolatos adatokat a következő szűrők használhatók:
+
+* **$top =\<visszaadott száma\>**  - visszaadott rekordok számát. Ez az egy drága művelet. Ez a szűrő ne használjon, ha szeretne visszaállítani az objektumok több ezer.     
 * **$filter =\<a szűrő utasítás\>**  – megadhatja, támogatott szűrő mezők alapján az Önt érdeklő rekordok
 
 ## <a name="supported-filter-fields-and-operators"></a>Támogatott Szűrő mezőket és operátorok
-Adja meg az Önt érdeklő rekordok, egy szűrő utasítást, amely egy vagy a következő szűrő mező tartalmazhat hozhat létre:
+Adja meg az Önt érdeklő rekordok, létrehozhat egy szűrő utasítást vagy egy, vagy a következő szűrő mezők:
 
 * [activityDate](#activitydate) -dátum vagy dátumtartomány meghatározása
 * [kategória](#category) -határozza meg a szűrni kívánt kategóriát.
@@ -182,7 +186,7 @@ kis-és nagybetűket
 Nem betűérzékeny
 
 - - -
-### <a name="actorobjectid"></a>actor/objectId
+### <a name="actorobjectid"></a>aktor/objectId
 **Támogatott operátorok**: eq
 
 **Példa**:
@@ -213,7 +217,7 @@ Nem betűérzékeny
 **Megjegyzések**:
 
 * Nem betűérzékeny
-* Hozzá kell adnia a teljes névtér Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity lekérdezésekor
+* Adja hozzá a teljes névtér Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity lekérdezésekor
 
 - - -
 ### <a name="targetobjectid"></a>cél/objectId
@@ -234,10 +238,12 @@ Nem betűérzékeny
 **Megjegyzések**:
 
 * Nem betűérzékeny 
-* Hozzá kell adnia a teljes névtér Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity lekérdezésekor
+* Adja hozzá a teljes névtér Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity lekérdezésekor
 
 - - -
 ## <a name="next-steps"></a>További lépések
-* Meg szeretné tekinteni a szűrt rendszertevékenységét példák? Tekintse meg a [Azure Active Directory naplózási API minták](active-directory-reporting-api-audit-samples.md).
-* Meg szeretné ismerni az Azure AD reporting API-val kapcsolatos? Lásd: [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md).
+
+- Meg szeretné tekinteni a szűrt rendszertevékenységét példák? Tekintse meg a [Azure Active Directory naplózási API minták](active-directory-reporting-api-audit-samples.md).
+
+- Meg szeretné ismerni az Azure AD reporting API-val kapcsolatos? Lásd: [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md).
 

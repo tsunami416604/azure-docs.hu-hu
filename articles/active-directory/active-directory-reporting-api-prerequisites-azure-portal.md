@@ -12,37 +12,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/03/2018
+ms.date: 05/07/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 72372a37c4ddcc6135fc7477807e4ff94ae90c77
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ab05907f1f23c3856b41a941c1b95992ed5a79a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory reporting API-val előfeltételei
 
 A [Azure Active Directory (Azure AD) reporting API-k](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) keresztül REST-alapú API-készlet programozott hozzáférést biztosít. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat.
 
-A jelentéskészítési API által használt [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) engedélyezéséhez a web API-k eléréséhez. 
+A jelentéskészítési API által használt [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) engedélyezéséhez a web API-k eléréséhez.
+
+Készítse elő a reporting API a hozzáférést, meg kell:
+
+1. Szerepkörök hozzárendelése
+2. Egy alkalmazás regisztrálása
+3. Engedélyek megadása
+4. Konfigurációs beállítások összegyűjtése
+
+
+
+## <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
 A jelentési adatokat juthatnak az API-n keresztül, egy a következő szerepkörrel kell:
 
 - Biztonsági olvasó
+
 - Biztonsági rendszergazda
+
 - Globális rendszergazda
 
 
-Készítse elő a reporting API a hozzáférést, a következőket kell tennie:
 
-1. Egy alkalmazás regisztrálása 
-2. Engedélyek megadása 
-3. Konfigurációs beállítások összegyűjtése 
 
-Kérdéseit, vagy visszajelzést [fájlt egy támogatási jegy](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
-
-## <a name="register-an-azure-active-directory-application"></a>Egy Azure Active Directory-alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 Kell regisztrálnia az alkalmazást, akkor is, ha a jelentéskészítési API parancsfájl segítségével éri el. Ez lehetővé teszi egy **Alkalmazásazonosító**, ami azonban szükséges engedélyezési-hívások, és lehetővé teszi, hogy a kód jogkivonatokat fogadni.
 
@@ -145,11 +152,12 @@ A következő rész lépéseit sorolja mindkét API-k esetében. Ha nem szeretn�
 
 
 ## <a name="gather-configuration-settings"></a>Konfigurációs beállítások összegyűjtése 
+
 Ez a szakasz bemutatja, hogyan az a Directoryból olvassa ki az alábbi beállításokat:
 
-* Tartománynév
-* Ügyfél-azonosító
-* Titkos ügyfélkulcs
+- Tartománynév
+- Ügyfél-azonosító
+- Titkos ügyfélkulcs
 
 A jelentéskészítési API hívásainak konfigurálásakor kell ezeket az értékeket. 
 
@@ -219,6 +227,10 @@ Ahhoz, hogy az alkalmazás ügyfélkulcs, meg kell hozzon létre egy új kulcsot
 
 
 ## <a name="next-steps"></a>További lépések
-* Szeretné az Azure AD reporting API-val programozott módon érheti el az adatait? Tekintse meg [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md).
-* Ha meg szeretne többet megtudni az Azure Active Directory reporting, tekintse meg a [Azure Active Directory-jelentéskészítés – útmutató](active-directory-reporting-guide.md).  
+
+- [Az Azure Active Directory reporting API-val rendelkező tanúsítványok használatával adatok](active-directory-reporting-api-with-certificates.md).
+
+- [A reporting API-k első benyomást beolvasása](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+
+- [A saját megoldás létrehozása](active-directory-reporting-api-getting-started-azure-portal.md#customize)
 

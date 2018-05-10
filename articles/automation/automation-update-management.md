@@ -8,17 +8,17 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3bd3c4f6501000f2490bc26cf7c6ff0345d3e7cc
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 5c76114484d10873eeb2d7a4516d4196b1d8aaf6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
 A frissítés-kezelési megoldás az Azure automationben lehetővé teszi a Windows és Linux rendszerű számítógép Azure, a helyszíni környezetben és más szolgáltatók telepítése operációs rendszer frissítéseinek kezelése. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
-A virtuális gépek frissítéseinek felügyeletét közvetlenül az [Azure Automation](automation-offering-get-started.md)-fiókjából engedélyezheti.
+Frissítéskezelés a virtuális gépek közvetlenül az Azure Automation-fiók a engedélyezheti.
 Ha szeretné megtudni, hogyan engedélyezheti a virtuális gépek frissítéseinek felügyeletét az Automation-fiókjából, akkor tekintse meg a [több virtuális gép frissítéseinek felügyeletét](manage-update-multi.md) ismertető cikket. Engedélyezheti a frissítéskezelés az egyetlen virtuális gépek létrehozását a virtuális gép lap az Azure portálon. Ebben a forgatókönyvben érhető el mindkét [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépek.
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
@@ -37,6 +37,9 @@ Az alábbi ábrán látható konceptuális ábrázolása viselkedését, és ada
 Miután a számítógép frissítési megfelelőség szempontjából vizsgálatot végez, az ügynök továbbítja a tömeges szolgáltatáshoz. Windows-számítógépeken a rendszer alapértelmezés szerint 12 óránként elvégzi a megfelelőségi vizsgálatot. A vizsgálati ütemezés szerint mellett vizsgálata frissítési megfelelőség szempontjából a kezdeményezett belül 15 perc, ha a Microsoft Monitoring Agent (MMA) újraindítása, rissítés telepítése előtt, és a frissítés telepítése után. Linux-számítógépeken a rendszer alapértelmezés szerint 3 óránként végzi el a megfelelőségi vizsgálatot, valamint az MMA-ügynök újraindítása után 15 percen belül.
 
 A megoldás jelenti, hogy mennyire naprakész a számítógép az alapján, hogy milyen forrást konfigurált a szinkronizáláshoz. Ha a Windows-számítógép a WSUS-nak való jelentésre van konfigurálva, az eredmények eltérőek lehetnek a Microsoft Update által megjelenített adatoktól attól függően, hogy a WSUS mikor szinkronizált utoljára a Microsoft Update-tel. Ez megegyezik a Linux rendszerű számítógépek, jelentést és egy nyilvános tárház egy helyi tárház vannak konfigurálva.
+
+> [!NOTE]
+> Frissítéskezelés igényel az egyes URL-címek és portok engedélyezni kell a szolgáltatás megfelelően jelentheti lásd: [hálózati hibrid feldolgozók tervezése](automation-hybrid-runbook-worker.md#network-planning) ezekkel a követelményekkel kapcsolatos további.
 
 A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. Windows-számítógépek esetében a *Választható* besorolású frissítések nem tartoznak az üzembe helyezés hatálya alá, csak a kötelező frissítések. Az ütemezett telepítési határozza meg, milyen cél számítógépek megkapják a megfelelő frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy jelöljön ki egy [számítógépcsoport](../log-analytics/log-analytics-computer-groups.md) alapuló számítógépek egy adott készletét napló átvizsgálása ki. Emellett meghatároz egy ütemezést egy időszak jóváhagyására és kijelölésére, amelyen belül engedélyezett a frissítések telepítése. A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők meg, és nem kívánnak semmilyen konfigurálást. Frissítéstelepítés létrehozásakor egy ütemezés jön létre, amely a megadott időben az érintett számítógépekre irányuló frissítési mesterrunbookot indít el. A mesterrunbook minden olyan ügynökön egy gyermekrunbookot indít el, amely elvégzi a szükséges frissítések telepítését.
 
@@ -192,7 +195,7 @@ Hozzon létre egy új központi telepítésének kattintva a **ütemezés közpo
 |Operációs rendszer| Linux- vagy Windows|
 | Gépek frissítése |Válasszon ki egy mentett keresést vagy gép válasszon címet a legördülő listán, és válassza ki az egyes gépek |
 |Frissítési besorolások|Válassza ki a szükséges összes frissítési besorolások|
-|Frissítések kizárása|Adja meg a "KB" előtag nélkül kizárandó összes KB|
+|Kihagyandó frissítések|Adja meg a "KB" előtag nélkül kizárandó összes KB|
 |Ütemezési beállítások|Válassza ki a dátumot, és válassza ki az egyszer, vagy az ismétlődés ismétlődő|
 | Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
 
@@ -220,11 +223,22 @@ A következő táblázatok tartalmazzák a frissítési besorolások felügyelet
 |Kritikus vagy biztonsági frissítések     | Frissítéseket egy meghatározott problémára vagy egy termékspecifikus biztonsági problémára.         |
 |Egyéb frissítések     | Minden más frissítéseket, amelyek nem kritikus fontosságú jellege vagy biztonsági frissítések.        |
 
+## <a name="ports"></a>Portok
+
+A következő címekre kifejezetten a kezeléséhez szükségesek. Ezeknél a címeknél kommunikációt a 443-as porton keresztül történik.
+
+* *.ods.opinsights.azure.com
+* *.oms.opinsights.azure.com
+* ods.systemcenteradvisor.com
+* *.blob.core.windows.net
+
+További információt a hibrid forgatókönyv-feldolgozó által igényelt, portokat [hibrid feldolgozói szerepkör portok](automation-hybrid-runbook-worker.md#hybrid-worker-role)
+
 ## <a name="search-logs"></a>Keresési naplókat
 
 A részleteket a portál által biztosított, mellett keresések szemben a naplók végezheti el. Az a **változások követése** megnyitva, kattintson **Naplóelemzési**, ekkor megnyílik a **naplófájl-keresési** lap
 
-### <a name="sample-queries"></a>A lekérdezés
+### <a name="sample-queries"></a>Mintalekérdezések
 
 A következő táblázat a megoldás által gyűjtött frissítési rekordok minta napló keres:
 
@@ -273,9 +287,9 @@ Ha problémák merülnek fel a megoldás vagy virtuális gépek bevezetése sor�
 | Üzenet | Ok | Megoldás |
 |----------|----------|----------|
 | A gép nem regisztrálható a javításkezelőhöz,</br>A regisztráció kivétel miatt meghiúsult</br>System.InvalidOperationException: {„Üzenet”:„A gép már</br>regisztrálva van egy másik fiókhoz. "} | A gép már be lett vezetve egy másik munkaterületre a frissítéskezeléshez | Végezze el a régi összetevők tisztítását [a hibrid runbook-csoport törlésével](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
-| Nem sikerült regisztrálni a gépet a javítások, regisztrációs kivétel miatt sikertelen volt</br>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---></br>System.Net.WebException: Az alapul szolgáló kapcsolat</br>megszakadt: Váratlan hiba</br>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:</br>Az ügyfél és a kiszolgáló nem képes kommunikálni,</br>mert nem rendelkeznek közös algoritmussal | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
-| A gép nem regisztrálható a javításkezelőhöz,</br>A regisztráció kivétel miatt meghiúsult</br>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
-| A szolgáltatás által bemutatott tanúsítványt \<wsid\>. oms.opinsights.azure.com</br>nem a Microsoft szolgáltatásaihoz használt</br>hitelesítésszolgáltató bocsátotta ki. Kapcsolatfelvétel</br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a</br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-offering-get-started.md#network-planning)|
+| Nem sikerült regisztrálni a gépet a javítások, regisztrációs kivétel miatt sikertelen volt</br>System.Net.Http.HttpRequestException: Hiba történt a kérés küldése során. ---></br>System.Net.WebException: Az alapul szolgáló kapcsolat</br>megszakadt: Váratlan hiba</br>történt a fogadó oldalon. ---> System.ComponentModel.Win32Exception:</br>Az ügyfél és a kiszolgáló nem képes kommunikálni,</br>mert nem rendelkeznek közös algoritmussal | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-hybrid-runbook-worker.md#network-planning)|
+| A gép nem regisztrálható a javításkezelőhöz,</br>A regisztráció kivétel miatt meghiúsult</br>Newtonsoft.Json.JsonReaderException: Hiba történt a pozitív végtelen érték elemzése közben. | A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-hybrid-runbook-worker.md#network-planning)|
+| A szolgáltatás által bemutatott tanúsítványt \<wsid\>. oms.opinsights.azure.com</br>nem a Microsoft szolgáltatásaihoz használt</br>hitelesítésszolgáltató bocsátotta ki. Kapcsolatfelvétel</br>a hálózati rendszergazdánál, hogy futtat-e olyan proxyt, amely elfogja a</br>TLS/SSL-kommunikációt. |A proxy/átjáró/tűzfal blokkolja a kommunikációt | [A rendszerkövetelmények áttekintése](automation-hybrid-runbook-worker.md#network-planning)|
 | A gép nem regisztrálható a javításkezelőhöz,</br>A regisztráció kivétel miatt meghiúsult</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Nem sikerült önaláírt tanúsítványt létrehozni. ---></br>System.UnauthorizedAccessException: A hozzáférés megtagadva. | Hiba az önaláírt tanúsítvány létrehozásakor | Ellenőrizze, hogy a rendszerfióknak</br>van-e olvasási hozzáférése a következő mappához:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>További lépések

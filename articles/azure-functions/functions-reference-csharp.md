@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 91e85fb25f9324f9b8d83884fe34a014f280de0b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9de8119cbde486800639bc5f3559a1a2859ec204
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Az Azure parancsfájl (.csx) fejlesztői leírás funkciók C#
 
@@ -335,7 +335,7 @@ A következő szerelvények készletekre lehet hivatkozni, egyszerű-név szerin
 ## <a name="referencing-custom-assemblies"></a>Egyéni szerelvényeket hivatkozik
 
 Egy egyéni szerelvény hivatkozni, választhat egy *megosztott* szerelvény vagy egy *titkos* szerelvény:
-- Közös szerelvényekre összes funkciók, a függvény alkalmazások között vannak megosztva. Egy egyéni szerelvény hivatkozni, töltse fel a szerelvény, a függvény alkalmazáshoz, többek között a egy `bin` mappa függvény alkalmazás gyökérkönyvtárában. 
+- Közös szerelvényekre összes funkciók, a függvény alkalmazások között vannak megosztva. Egy egyéni szerelvény hivatkozik, töltse fel a szerelvény nevű `bin` a a [függvény alkalmazás gyökérmappájában](functions-reference.md#folder-structure) (wwwroot). 
 - Titkos szerelvények egy adott funkció környezet részét képezik, és a tesztcélú különböző verzióit támogatja. Személyes szerelvények fel kell tölteni a egy `bin` mappa, a függvény könyvtárban. A szerelvényeket a fájl nevét, például a használatával hivatkozik `#r "MyAssembly.dll"`. 
 
 A fájlok feltöltéséről a függvény mappába információkért lásd: a szakasz a [felügyeleti csomag](#using-nuget-packages).

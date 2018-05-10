@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 18a0ca32f51e6c1be01e59c3899bc2e625868cad
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager gyakori kérdések (GYIK)
 
@@ -29,6 +29,10 @@ ms.lasthandoff: 04/16/2018
 A [Traffic Manager működése](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), a Traffic Manager DNS szintjén működik. DNS-válaszok irányíthatják az ügyfeleket a megfelelő szolgáltatásvégpontot küldi. Ügyfelek majd csatlakozni a szolgáltatás végpontjához közvetlenül, nem Traffic Manager használatával.
 
 Ezért a Traffic Manager nem adja meg egy végpont vagy IP-címe az ügyfelek csatlakoznak. Ha a szolgáltatás, amely is be kell állítani a szolgáltatás, nem a Traffic Manager statikus IP-címet.
+
+### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Milyen típusú forgalom lehet átirányítva a Traffic Manager használatával?
+A [Traffic Manager működése](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), egy Traffic Manager-végpont lehet bármilyen internetre irányuló a belül vagy kívül Azure által üzemeltetett. Emiatt a Traffic Manager irányíthatja a érkező forgalmat a nyilvános interneten keresztül a végpontok készlete, hogy is internet küzdenek. Ha egy magánhálózaton belül-végpontokat (például egy belső verzióját [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) vagy a felhasználók felhasználásának DNS kér az ilyen belső hálózatok ezen forgalom a Traffic Manager nem használható.
+
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Támogatja a Traffic Manager "kapcsolódó" munkamenetek?
 
@@ -121,7 +125,7 @@ A régió egy profilon belül csak egy végpont rendelhetők, ha a földrajzi ú
 
 Igen, csak a API-verzió 2017-03-01 és az újabb támogatja a földrajzi útválasztási típusa. Bármely régebbi kiadását API nem használható földrajzi útválasztási típusú létrehozott profilok vagy földrajzi régiókhoz hozzárendelése végpontok. Profilok beolvasása az Azure-előfizetésből olyan régebbi verziójú API használata esetén a profil földrajzi útválasztási típusú nem jelennek meg. Emellett régebbi API-verziók használata esetén olyan profilt, amely a földrajzi régióban hozzárendelésekor végpontok, akkor nem rendelkezik a földrajzi régióban hozzárendelése látható adott vissza.
 
-## <a name="real-user-measurements"></a>Valós felhasználóiélmény-mérések
+## <a name="real-user-measurements"></a>Valós felhasználói mérések
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Mik a tényleges felhasználói mérések használatának előnyeit?
 Teljesítmény útválasztási módszer használata esetén a Traffic Manager választja ki a forrás IP-cím és EDNS ügyfél alhálózati vizsgálatával (ha az átadott) csatlakozni a végfelhasználó számára az ajánlott Azure-régió, és megőrzi azt a hálózati késés intelligence a szolgáltatás ellen ellenőrzése. Valós felhasználói mérések javítja ezt a végfelhasználó alap azzal, hogy a felhasználói élmény hozzájárulnak a késés táblázat állapotának biztosítása mellett ez a táblázat megfelelő kiterjedő a végfelhasználó hálózatokat ahol a végfelhasználók csatlakozik az Azure. Ennek eredménye a végfelhasználók számára a útválasztását a megnövekedett pontosság.
@@ -182,7 +186,7 @@ Nem, nem kell server ügyféloldali összetevők közül bármelyik Azure valós
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Növeli a saját Azure sávszélesség-használat valós felhasználói mérések használatakor?
 Ahogyan az előző válasz, a kiszolgálóoldali összetevőket valós felhasználói mérések birtokolt vagy kezelt az Azure-ban. Ez azt jelenti, hogy a Azure sávszélesség-használat nem növekszik, mivel a tényleges felhasználói mérések használható. Vegye figyelembe, hogy milyen Azure percalapú kívül bármely sávszélesség-használat nem tartalmaz. Azt a csak egy egyetlen képpontos lemezkép letöltése a várakozási Azure-régióhoz mértékhez által használt sávszélesség minimálisra csökkenthető. 
 
-## <a name="traffic-view"></a>Traffic View
+## <a name="traffic-view"></a>Forgalomnézet
 
 ### <a name="what-does-traffic-view-do"></a>Mire használható a forgalom nézetet?
 Forgalom nézet lehetővé teszi a Traffic Manager segítségével többet szeretne tudni a felhasználók, és hogyan tapasztalataikat. A Traffic Manager és a hálózati késés üzletiintelligencia-táblák biztosítja, hogy a következő megőrzi a szolgáltatás által fogadott lekérdezések használja:

@@ -1,29 +1,29 @@
 ---
-title: "Egyéni tartományok az Azure AD alkalmazásproxy |} Microsoft Docs"
-description: "Az Azure AD alkalmazásproxy egyéni tartományok kezelése, úgy, hogy az alkalmazás URL-CÍMÉT a függetlenül ugyanaz a felhasználók elérhetik azt."
+title: Egyéni tartományok az Azure AD alkalmazásproxy |} Microsoft Docs
+description: Az Azure AD alkalmazásproxy egyéni tartományok kezelése, úgy, hogy az alkalmazás URL-CÍMÉT a függetlenül ugyanaz a felhasználók elérhetik azt.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 2fe9f895-f641-4362-8b27-7a5d08f8600f
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b198c6aba4227e33eae4af49c019bc4012086a51
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 91cb67bb7a8ebcf0b06561a4c647098c577a473a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Egyéni tartományok az Azure AD alkalmazásproxy használata
 
-Amikor közzétesz egy alkalmazást az Azure Active Directory-proxyn keresztül történő, létre kell hoznia egy külső URL-címet a továbblépéshez, ha azok dolgozik-e távolról a felhasználók számára. Az URL-cím beolvasása az alapértelmezett tartomány *yourtenant.msappproxy.net*. Például egy alkalmazás neve a költségeket és a bérlői közzétételekor neve Contoso, akkor válassza a külső URL-cím https://expenses-contoso.msappproxy.net. Ha saját tartománynevét használja, az alkalmazás az egyéni tartománynév konfigurálása 
+Amikor közzétesz egy alkalmazást az Azure Active Directory-proxyn keresztül történő, létre kell hoznia egy külső URL-címet a továbblépéshez, ha azok dolgozik-e távolról a felhasználók számára. Az URL-cím beolvasása az alapértelmezett tartomány *yourtenant.msappproxy.net*. Például, ha közzé egy alkalmazás nevű költségek a bérlő neve Contoso, majd a külső URL-cím lenne https://expenses-contoso.msappproxy.net. Ha saját tartománynevét használja, az alkalmazás az egyéni tartománynév konfigurálása 
 
 Azt javasoljuk, hogy állít be egyéni tartományok az alkalmazások, amikor csak lehetséges. Az egyéni tartományok előnyei a következők:
 
@@ -32,7 +32,7 @@ Azt javasoljuk, hogy állít be egyéni tartományok az alkalmazások, amikor cs
 - Szabályozhatja a vállalati arculat, és az URL-címeket szeretne létrehozni. 
 
 
-## <a name="configure-a-custom-domain"></a>Az egyéni tartománynév konfigurálása
+## <a name="configure-a-custom-domain"></a>Egyéni tartomány konfigurálása
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Az egyéni tartománynév konfigurálása előtt győződjön meg arról, hogy r
 - Egy egyéni tanúsítványt a tartomány, a PFX-fájl formájában. 
 - A helyszíni alkalmazások [proxyn keresztül történő közzétett](application-proxy-publish-azure-portal.md).
 
-### <a name="configure-your-custom-domain"></a>Configure your custom domain
+### <a name="configure-your-custom-domain"></a>Az egyéni tartomány konfigurálása
 
 Ha készen áll a három követelményekről, kövesse az alábbi lépéseket az egyéni tartomány beállításához:
 

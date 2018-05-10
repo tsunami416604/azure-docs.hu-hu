@@ -3,23 +3,23 @@ title: Gyakori kérdések az Azure Kubernetes szolgáltatás
 description: A témakör válaszokat ad Azure Kubernetes szolgáltatással kapcsolatos gyakori kérdésekre.
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 2/14/2018
+ms.date: 05/09/2018
 ms.author: nepeters
-ms.openlocfilehash: 55006a3f0193c96849c52f87ab01dc13ac0c7a16
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: d03f906f0cf4d22772388a589424877d8bb2f8ce
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések kapcsolatos Azure Kubernetes szolgáltatás (AKS)
 
 Ez a cikk címek gyakran használják az Azure Kubernetes szolgáltatás (AKS) kapcsolatos kérdésekre.
 
 > [!IMPORTANT]
-> A jelenleg a rendszer az Azure Kubernetes szolgáltatás (AKS) **előzetes**. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Az Azure Kubernetes Service (AKS) jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
 
 ## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Mely Azure-régiók ma biztosít az Azure Kubernetes szolgáltatás (AKS)?
@@ -28,9 +28,7 @@ Ez a cikk címek gyakran használják az Azure Kubernetes szolgáltatás (AKS) k
 - Kelet-Kanada
 - USA középső régiója
 - USA keleti régiója
-- Délkelet-Ázsia
 - Nyugat-Európa
-- USA nyugati régiója, 2.
 
 ## <a name="when-will-additional-regions-be-added"></a>Ha további régiókban megkapja?
 

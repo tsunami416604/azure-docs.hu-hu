@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: f0d9739dda608b7c49ff9a8fbd93d08b301c0b9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0af34a725849acf6fbb6523f03e90a85ce5ba719
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="grow-your-business-with-appsource"></a>Cége AppSource
 Azure piactér és AppSource is a Microsoft közös Ugrás piacra jutási tevékenységek indító pontokat és üzleti növekedésének megfelelően lendítõtömeggel. Indítsa el az előléptetés, igény szerinti létrehozásának és az értékesítési és közös használ, a Piactéri ajánlat lehet a felhő üzleti motor centerpiece. Nincs részt vevő díja van. Microsoft-ügyfél látogasson el a felhő piacterek naponta keresse meg a megfelelő alkalmazások és szolgáltatások üzleti növelése érdekében. Célunk megoldások és a Microsoft és a partner ökoszisztéma szolgáltatások szervezetek kapcsolódni. 
@@ -88,7 +88,7 @@ Az alábbi táblázatok egyes lépéseinek kitöltésével a ajánlat listaelem 
 **Storefront részletei - Marketing összetevők**
 | Storefront beállítások       | Ajánlott eljárások          | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Az ajánlat embléma (.png formátumban 58 x 48 óra)**    | Az embléma kell kell megtervezni és digitális közepes optimalizálva.<br>Töltse fel az ajánlat keresőoldalt PNG formátumban embléma. |
+| **Az ajánlat embléma (.png formátumú, 48 x 48 óra)**    | Az embléma kell kell megtervezni és digitális közepes optimalizálva.<br>Töltse fel az ajánlat keresőoldalt PNG formátumban embléma. |
 | **Az ajánlat embléma (.png. x 216 216)**     | Az embléma kell kell megtervezni és digitális közepes optimalizálva. <br>Töltse fel az ajánlat app részleteket felsoroló lap PNG formátumban embléma. |
 | **További információ**   | Támogató értékesítés és marketing "További," az eszközök közé tartozik például tanulmányok, brosúrák, ellenőrzőlisták, diavetítések, és így tovább. Minden fájl PDF formátumúnak kell lennie. Nem eladásra, tájékoztassa a potenciális. <br>A hivatkozás hozzáadása az alkalmazás kezdőlapja a dokumentumok, és adja hozzá az URL-cím paraméterek látogatók és kísérletek nyomon követéséhez. |
 | **Videók**       | Legalább egy videó feltöltése, akár négy videók engedélyezettek. A videó lépjen kapcsolatba az ajánlatot értékét. Ellenőrizze, hogy a potenciális a szövegegység, nem a vállalat hero. A videó az elsődleges kell beszéd kihívást és a fő döntési készítő személy céljaira. <br>Ajánlott hossza: 60 – 90 másodperc. A videók nevében kulcs keresőszavak tartalmaznia.<br>Vegyen fel további videók, például útmutató videót; bevezető videó vagy felhasználói testimonial videó. |
@@ -98,7 +98,7 @@ Az alábbi táblázatok egyes lépéseinek kitöltésével a ajánlat listaelem 
 
 Amikor AppSource szerepel az ajánlatot, akkor elért az "Elérhető a AppSource" jelvény megjelenítése a webhelyen a jobb. 
 
-    ![AppSource badge](./media/marketplace-appsource/appsourcebadge.png)
+ ![AppSource jelvény](./media/marketplace-appsource/appsourcebadge.png)
     
 A helyre való felvételekor a jelvény elősegíti, hogy az ajánlatot AppSource, és társíthatja a lehetséges ügyfeleket közvetlenül a listaelem lap. A AppSource jelvény három méretben kaphatók érhető el. Útmutatás a használandó együtt jelvény letöltheti [lépteti elő az alkalmazás elérhetőségét a Microsoft AppSource](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
 

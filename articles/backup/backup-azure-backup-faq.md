@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/11/2018
+ms.date: 5/9/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 9dfd600a0e3271afff0dd7ce634c78bf87ab314f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d16991d15d76caa496b2923c8d0210b6ccb10a9a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
 Ez a cikk az Azure Backup szolgáltatás-összetevőivel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -67,12 +67,19 @@ Igen.
 ### <a name="can-i-register-my-dpm-server-to-multiple-vaults-br"></a>Regisztrálhatom a DPM-kiszolgálómat több tárolóhoz? <br/>
 Nem. A DPM- vagy MABS- kiszolgálók csak egy tárolóhoz regisztrálhatók.
 
-### <a name="which-version-of-system-center-data-protection-manager-is-supported-br"></a>A System Center – Data Protection Manager melyik verziója támogatott? <br/>
-Javasoljuk, hogy telepítse a [legújabb](http://aka.ms/azurebackup_agent) Azure Backup-ügynököt a System Center – Data Protection Manager legújabb kumulatív frissítésén. 2016 augusztusában a legújabb frissítés a 11. kumulatív frissítés.
+### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>A System Center – Data Protection Manager melyik verziója támogatott?
 
-### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-system-center-dpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>Telepítettem az Azure Backup ügynököt a fájljaim és mappáim megvédéséhez. Telepíthetem a System Center DPM-et, hogy az Azure Backup-ügynökkel együttműködve az Azure-ban védje a helyszíni alkalmazásokat vagy a virtuális gépek számítási feladatait? <br/>
-Az Azure Backup és a System Center Data Protection Manager (DPM) együttes használatához először a DPM-et telepítse, majd az Azure Backup ügynököt. Az Azure Backup ügynök és a DPM együttműködését úgy biztosíthatja, ha az Azure Backup-összetevőket ebben a sorrendben telepíti. Nem javasolt és nem támogatott az Azure Backup ügynök telepítése a DPM telepítése előtt.
+Javasoljuk, hogy telepítse a [legújabb](http://aka.ms/azurebackup_agent) Azure Backup-ügynököt a System Center – Data Protection Manager legújabb kumulatív frissítésén. 
+- A System Center DPM 2012 R2 [Update Rollup 14](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) a legújabb frissítés.
+- A System Center DPM 2016 [2. kumulatív frissítés](https://support.microsoft.com/en-us/help/3209593) a legújabb frissítés.
 
+### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Telepítettem az Azure Backup ügynököt a fájljaim és mappáim megvédéséhez. Telepítheti a System Center DPM az Azure-bA a helyi alkalmazás vagy Virtuálisgép-munkaterhelések védelme érdekében?
+
+Igen. A System Center Data Protection Manager (DPM) Azure Backup használatához azonban először telepítse a DPM, és telepítse az Azure Backup szolgáltatás ügynökének. Az Azure Backup ügynök és a DPM együttműködését úgy biztosíthatja, ha az Azure Backup-összetevőket ebben a sorrendben telepíti. Nem javasolt és nem támogatott az Azure Backup ügynök telepítése a DPM telepítése előtt.
+
+### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>A DPM használatával biztonsági mentése Azure verem alkalmazások?
+
+Nem. Bár az Azure Backup segítségével védeni az Azure-vermet, Azure Backup szolgáltatás jelenleg nem támogatja a DPM biztonsági mentése Azure verem apps használatának.
 
 ## <a name="how-azure-backup-works"></a>Az Azure Backup működése
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Ha megszakítok egy már elindult biztonsági mentési feladatot, az átküldött adatok biztonsági másolata törlődik? <br/>

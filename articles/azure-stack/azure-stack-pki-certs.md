@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: ff3fd8ea331c02aa2666ec20b56dbbaef473a4df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure verem nyilvános kulcsokra épülő infrastruktúra tanúsítványkövetelmények
 
@@ -35,7 +35,7 @@ Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáfé
 ## <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges követelményeket ismerteti: 
 - Tanúsítványok vagy egy belső hitelesítésszolgáltatótól, vagy a nyilvános hitelesítésszolgáltatótól kell kiállítania. Egy nyilvános hitelesítésszolgáltató használata, akkor az alap operációs rendszer lemezképét a Microsoft megbízható legfelső szintű hitelesítésszolgáltatói Program részeként kell szerepelnie. A teljes listáját itt találja: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- Az Azure-verem infrastruktúra a tanúsítványok aláírására használt hitelesítésszolgáltató hálózati hozzáféréssel kell rendelkeznie.
+- Az Azure-verem infrastruktúra hálózati hozzáféréssel kell rendelkeznie a tanúsítvány közzé a hitelesítésszolgáltató visszavont tanúsítványok listáját (CRL) helyre. A tanúsítvány-visszavonási listát egy http-végpont kell lennie.
 - Váltás tanúsítványokat, amikor tanúsítványokat kell lennie, vagy a központi telepítés vagy a nyilvános hitelesítésszolgáltatótól származó fent megadott tanúsítványok aláírására használt azonos belső hitelesítésszolgáltatótól származó kiadott
 - Az önaláírt tanúsítványok nem támogatottak.
 - A tanúsítványt a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen helyettesítő tanúsítvány lehet. Azt is megteheti, például az végpontok helyettesítő karakterek használatával az egyes tanúsítványokat is használhat **acs** és a kulcstároló, amennyiben azok szükségesek. 
@@ -45,6 +45,7 @@ Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges köve
 - A tanúsítvány pfx-fájlok rendelkeznie kell az "Kiszolgálói hitelesítés (1.3.6.1.5.5.7.3.1)" és "Ügyfél-hitelesítés (1.3.6.1.5.5.7.3.2)" értéket a "Kibővített kulcshasználat" mezőben.
 - A tanúsítvány "kiállítva a következőnek:" mező nem lehet ugyanaz, mint a "kiállító:" mező.
 - Minden tanúsítvány pfx-fájlok a jelszavakat, meg kell egyeznie a központi telepítés során
+- Jelszó a tanúsítvány PFX-nak kell lennie egy összetett jelszót.
 - Győződjön meg arról, hogy a tulajdonos nevét és minden tanúsítványok tulajdonosának alternatív nevét egyezik-e a sikertelen központi telepítéssel elkerülése érdekében ebben a cikkben leírt előírásoknak.
 
 > [!NOTE]
@@ -83,7 +84,7 @@ A telepítéshez, a [régió] és [externalfqdn] az értékeknek egyezniük kell
 |Felügyeleti portál|adminportal.*&lt;region>.&lt;fqdn>*|Portálok|*&lt;region>.&lt;fqdn>*|
 |Az Azure erőforrás-kezelő nyilvános|management.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
 |Az Azure Resource Manager-rendszergazda|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|ACS<sup>1</sup>|Tulajdonos alternatív neveit egy multi-altartomány helyettesítő tanúsítvány:<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|Tárolás|blob.*&lt;region>.&lt;fqdn>*<br>table.*&lt;region>.&lt;fqdn>*<br>queue.*&lt;region>.&lt;fqdn>*|
+|ACS<sup>1</sup>|Tulajdonos alternatív neveit egy multi-altartomány helyettesítő tanúsítvány:<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|Storage|blob.*&lt;region>.&lt;fqdn>*<br>table.*&lt;region>.&lt;fqdn>*<br>queue.*&lt;region>.&lt;fqdn>*|
 |KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>(Altartományokra is kibővített SSL-tanúsítvány)|Key Vault|vault.*&lt;region>.&lt;fqdn>*|
 |KeyVaultInternal|&#42;.adminvault.*&lt;region>.&lt;fqdn>*<br>(Altartományokra is kibővített SSL-tanúsítvány)|Belső Keyvault|adminvault.*&lt;region>.&lt;fqdn>*|
 |
@@ -114,7 +115,7 @@ A következő táblázat ismerteti a végpontok és az SQL és MySQL adapterek �
 |App Service|Webes forgalom alapértelmezett SSL-tanúsítványt|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Altartományokra is kibővített SSL-tanúsítvány több tartomány<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|EGYSZERI BEJELENTKEZÉS|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL-tanúsítvány<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 
 <sup>1</sup> több helyettesítő alternatív tulajdonosnevek, egy tanúsítványra van szükség. Előfordulhat, hogy az összes nyilvános hitelesítésszolgáltatók által nem támogatott a rendszer egy tanúsítványt a San-okon több helyettesítő 
 
