@@ -208,7 +208,7 @@
         - name: Azure virtuálisgép-ügynök
           items:
             - name: Áttekintés
-              href: agent-user-guide.md
+              href: ../extensions/agent-linux.md
             - name: Ügynök frissítése
               href: update-agent.md
         - name: Tervezett karbantartás
@@ -434,7 +434,7 @@
         - name: VMAccess bővítmény
           href: using-vmaccess-extension.md
         - name: Bővítménytelepítés korlátozása
-          href: extensions-rmpolicy-howto-cli.md
+          href: ../extensions/extensions-rmpolicy-howto-cli.md
     - name: Virtuális gépek áttelepítése
       items:
         - name: AWS és helyszíni virtuális gépek migrálása

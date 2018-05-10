@@ -206,7 +206,7 @@
         - name: Sablon letöltése
           href: download-template.md
         - name: Azure virtuálisgép-ügynök
-          href: agent-user-guide.md
+          href: ../extensions/agent-windows.md
         - name: Tervezett karbantartás
           href: maintenance-notifications.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
@@ -369,7 +369,7 @@
         - name: Network Watcher-ügynök
           href: extensions-nwa.md
         - name: Bővítménytelepítés korlátozása
-          href: extensions-rmpolicy-howto-ps.md
+          href: ../extensions/extensions-rmpolicy-howto-ps.md
     - name: Virtuális gépek áttelepítése
       items:
         - name: AWS és helyszíni virtuális gépek migrálása

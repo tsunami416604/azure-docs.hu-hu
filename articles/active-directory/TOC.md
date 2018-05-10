@@ -174,10 +174,6 @@
 #### [Pillanatkép-jelentések létrehozása](cloudappdiscovery-set-up-snapshots.md)
 #### [Folyamatos jelentéskészítés konfigurálása](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Egyéni naplóelemző használata](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-#### Ügynökalapú felderítés
-##### [Mit jelent a felhőalkalmazások felderítése?](active-directory-cloudappdiscovery-whatis.md)
-##### [A beállításjegyzék-beállítások frissítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-##### [A biztonsággal és adatvédelemmel kapcsolatos tudnivalók](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [Appok távoli elérése az App Proxyval](active-directory-application-proxy-get-started.md)
@@ -328,7 +324,7 @@
 #### [Gyakori kérdések](active-directory-identity-protection-faqs.md)
 #### [Szószedet](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
 ## [Más szolgáltatások integrálása az Azure AD-vel]()
 ### [LinkedIn-integráció engedélyezése](linkedin-integration.md)
