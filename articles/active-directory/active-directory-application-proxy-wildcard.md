@@ -15,15 +15,15 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ebea5662017672ccbe911d4b9e7471aa081dd1bb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a5466a0b5027fa8fe0edec3c9663e6cd1aafc9a3
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő alkalmazásokat az Azure Active Directory alkalmazásproxyt 
 
-Az Azure Active Directoryban (Azure AD) konfigurálása a helyszíni nagy számú alkalmazások Kezelhetetlen vehet, és szükségtelen kockázatok konfigurációja vezet be, ha ezek szükséges, hogy ugyanazokat a beállításokat. A [az Azure AD-alkalmazásproxy](active-directory-application-proxy-get-started.md), helyettesítő alkalmazás közzététele használatával közzétehet és kezelhet egyszerre több alkalmazás meg lehet oldani a probléma. Ez az olyan megoldás, amely lehetővé teszi:
+Az Azure Active Directoryban (Azure AD) konfigurálása a helyszíni nagy számú alkalmazások Kezelhetetlen vehet, és szükségtelen kockázatok konfigurációja vezet be, ha ezek szükséges, hogy ugyanazokat a beállításokat. A [az Azure AD-alkalmazásproxy](manage-apps/application-proxy.md), helyettesítő alkalmazás közzététele használatával közzétehet és kezelhet egyszerre több alkalmazás meg lehet oldani a probléma. Ez az olyan megoldás, amely lehetővé teszi:
 
 -   A felügyelettel járó többletterhelést egyszerűsítése
 -   Adjon meg kevesebb lehetséges hibái
@@ -153,7 +153,7 @@ A következő a [lépéseket dokumentált](application-proxy-publish-azure-porta
 
 - Külső URL-címe:
 
-    ![Külső URL-cím](./media/active-directory-application-proxy-wildcard\43.png)
+    ![Külső URL-címe](./media/active-directory-application-proxy-wildcard\43.png)
 
  
 - Belső alkalmazás egyszerű szolgáltatásnév: 
@@ -192,7 +192,7 @@ A következő a [lépéseket dokumentált](application-proxy-publish-azure-porta
 
 - Az a **külső URL-cím**, beállított **pénzügyi** helyettesítő karakter helyett. 
 
-    ![Külső URL-cím](./media/active-directory-application-proxy-wildcard\53.png)
+    ![Külső URL-címe](./media/active-directory-application-proxy-wildcard\53.png)
 
 - Belső alkalmazás SPN beállított **pénzügyi** helyettesítő karakter helyett.
 

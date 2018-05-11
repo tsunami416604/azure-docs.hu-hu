@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 84ca616856f363e4d3d68ab1cc45b97f7c589185
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Nyissa meg az Azure-verem API-verzió profilok használata
 
@@ -61,7 +61,8 @@ Az Ugrás SDK attól függ, hogy a többi kérést küld az Azure Resource Manag
 Nyissa meg kód minta futtatásához Azure veremben:
   1. Azure SDK telepítéséhez nyissa meg és annak függőségeit. Az utasítás lásd az előző szakaszban [Azure SDK telepítéséhez nyissa meg a](#install-azure-sdk-for-go).
   2. A metaadat-információ lekérése a Resource Manager-végpontot. A végpont egy JSON-fájl futtatásához az Ugrás kód szükséges adatokat adja vissza.
-  > [!note]  
+
+  > [!Note]  
   > A **ResourceManagerUrl** az Azure verem Development Kit (ASDK) van: `https://management.local.azurestack.external/`  
   > A **ResourceManagerUrl** integrált rendszerekben van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > A szükséges metaadatok beolvasása: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -176,7 +177,8 @@ Ebben a szakaszban egy közös módja authorizer jogkivonatok Azure veremben üg
 ## <a name="example"></a>Példa
 
 Ez a szakasz bemutatja egy minta kód nyissa meg a virtuális hálózat létrehozása az Azure veremben. Ugrás SDK teljes példái című [Azure Ugrás SDk minták tárház](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Azure-verem minták érhetők el a hibrid / elérési út a tárház szolgáltatás mappákban.
-> [!note]  
+
+> [!Note]  
 > Az ebben a példában a kódra, győződjön meg arról, hogy rendelkezik-e a használt előfizetés **hálózati** tulajdonosaként erőforrás-szolgáltató **regisztrált**. Annak ellenőrzéséhez, hogy, keresse meg az előfizetést a verem Azure-portálon, és kattintson a **erőforrás-szolgáltatók.**
 
 1. Importálja a szükséges csomagokat a kódban. A modul importálása használjon a legújabb elérhető profil Azure veremben. 
@@ -194,7 +196,7 @@ Ez a szakasz bemutatja egy minta kód nyissa meg a virtuális hálózat létreho
   )
   ````
 
-2. Adja meg a környezeti változókat. Vegye figyelembe, hogy a virtuális hálózat létrehozása kell rendelkeznie egy erőforráscsoportot. 
+2. Adja meg a környezeti változókat. Virtuális hálózat létrehozásához szükség van erőforráscsoport. 
 
   ````go
   var (

@@ -7,14 +7,14 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 05/09/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Frissíti a statisztikákat a táblák az Azure SQL Data Warehouse létrehozása
 Javaslatok és példák létrehozásához, és frissíti a táblákon, az Azure SQL Data Warehouse-optimalizálás statisztikákat.
@@ -22,24 +22,46 @@ Javaslatok és példák létrehozásához, és frissíti a táblákon, az Azure 
 ## <a name="why-use-statistics"></a>Statisztika miért érdemes használni?
 Minél több ismeri az Azure SQL Data Warehouse az adatokat, minél gyorsabban hajtható végre rajta lekérdezések. Statisztika gyűjtése az adatokról, és majd betöltése az SQL Data Warehouse az egyik legfontosabb, amit a lekérdezések optimalizálását is van. Ez azért, mert az SQL Data Warehouse lekérdezésoptimalizáló költség-alapú optimalizáló. Összehasonlítja a különböző lekérdezésterveket költségét, és majd úgy dönt, hogy a költséghatékonyság, amely a legtöbb esetben a tervet, amely végrehajtja a leggyorsabb a tervet. Például ha a optimalizáló becslése, hogy a dátum jelenleg korlátozza a lekérdezés egy sort ad vissza, azt eldönthetik, másik csomagot, mint ha azt a választott dátum becslése, visszatér 1 millió sort foglalnak.
 
-A folyamat létrehozásának, és frissítse a statisztikai adatokat jelenleg egy kézi művelet, de egyszerű tegye.  Hamarosan lesz automatikusan létrehozásához, és egyetlen oszlopok és indexek statisztikai adatainak frissítése.  Az alábbi információk segítségével nagy mértékben automatizálható a statisztikák felügyeleti az adatokon. 
+## <a name="automatic-creation-of-statistics"></a>A statisztikák automatikus létrehozását
+Az automatikus létrehozásakor statisztika beállítás a AUTO_CREATE_STATISTICS, az SQL Data Warehouse elemzi a bejövő, ahol oszlopokat, amelyek statisztika hiányzik egyoszlopos statisztikát hoz létre felhasználói lekérdezések. A lekérdezésoptimalizáló statisztika egyedi számossága becslések a lekérdezés terv javítására lekérdezés predikátum vagy illesztési feltétel oszlopok hoz létre. A statisztikák automatikus létrehozását jelenleg úgy van kapcsolva, alapértelmezés szerint.
 
-## <a name="scenarios"></a>Forgatókönyvek
-Minden egyes oszlophoz a mintában szereplő statisztikák létrehozása egyszerű módja a kezdéshez. Elévült statisztikát optimálisnál lekérdezési teljesítmény vezethet. Azonban frissítse a statisztikai adatokat az összes oszlopot, az adatok növekedésével is memóriát használ. 
+Az adatraktár rendelkezik-e ez nincs konfigurálva a következő parancs futtatásával ellenőrizheti:
 
-Különböző alkalmazási helyzetek kapcsolatos ajánlások a következők:
-| **A forgatókönyv** | Ajánlás |
-|:--- |:--- |
-| **Első lépések** | Az összes oszlop frissítse az SQL Data Warehouse áttelepítése után |
-| **Legfontosabb oszlop vonatkozó statisztikák** | Kivonatfelosztási kulcs |
-| **Második legfontosabb oszlopában statisztikák** | Partíciókulcs |
-| **Más fontos oszlopok vonatkozó statisztikák** | Dátum, gyakori csatlakozik, a GROUP BY, HAVING, és ahol |
-| **Stats frissítési gyakoriságának**  | Konzervatív: naponta <br></br> Betöltésekor, illetve az adatok átalakítása után |
-| **Mintavételezés** |  Kevesebb mint 1 egymilliárd sort, használja az alapértelmezett mintavételi (20 %) <br></br> Több mint 1 milliárd sorból 2 %-os-köréről statisztika jó |
+```sql
+SELECT name, is_auto_create_stats_on 
+FROM sys.databases
+```
+Ha az adatraktár nincs beállítva AUTO_CREATE_STATISTICS, javasoljuk, hogy ez a tulajdonság engedélyezése a következő parancs futtatásával:
+
+```sql
+ALTER DATABASE <yourdatawarehousename> 
+SET AUTO_CREATE_STATISTICS ON
+```
+A következő utasításokat elindítja a statisztikák automatikus létrehozását: válassza ki, INSERT-válassza ki, CTAS, UPDATE, DELETE és magyarázat amikor illesztést tartalmazó vagy predikátum jelenlétét észleli. 
+
+> [!NOTE]
+> A statisztikák automatikus létrehozását nem jönnek létre az ideiglenes vagy külső táblát.
+> 
+
+A statisztikák automatikus létrehozását szinkron módon jön létre, így Ön tudomásával egy enyhe csökkent lekérdezési teljesítmény, ha az oszlop nem rendelkezik létre statisztika. Statisztikák létrehozása eltarthat néhány másodpercig egyetlen oszlop a tábla méretétől függően. Mérési teljesítménycsökkenés, különösen a teljesítmény teljesítménymérésre, elkerülése érdekében győződjön meg statisztikák hozott létre, először a referenciaalap munkaterhelés végrehajtása előtt a rendszer profilkészítési.
+
+> [!NOTE]
+> A statisztikák létrehozását is vannak, naplózva lesznek [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) különböző felhasználói környezetben.
+> 
+
+Statisztika automatikus létrehozásakor, akkor a következőkben: _WA_Sys_< 8 számjegyű oszlopazonosító hexadecimális > _ < hexadecimális számjegy 8 tábla azonosítója >. Statisztika, amely létre lett hozva a következő parancs futtatásával tekintheti meg:
+
+```sql
+DBCC SHOW_STATISTICS (<tablename>, <targetname>)
+```
 
 ## <a name="updating-statistics"></a>Frissítse a statisztikai adatokat
 
 Egy ajánlott úgy nem frissíthető statisztika dátumoszlopának dátumtulajdonságai minden nap új dátumok hozzáadása. Minden alkalommal új sorok be vannak töltve az adatraktárba, új betöltése vagy tranzakció kerülnek. Ezek az adatok terjesztési módosítsa, majd ellenőrizze a statisztika elavult. Ezzel ellentétben egy felhasználói tábla ország oszlop statisztikai előfordulhat, hogy soha nem kell frissíteni kell, értékek terjesztési általában nem módosíthatók. Feltéve, hogy a terjesztés az ügyfelek közötti állandó, új sorok hozzáadásakor a tábla változat nem fog módosítása az adatok terjesztési. Azonban ha az adatraktár csak tartalmaz egy országon, és az adatok egy új országból kapcsolná, az adatok tárolását, több országokból származó majd szeretné az ország oszlop statisztikai adatainak frissítése.
+
+Frissítse a statisztikai adatokat ajánlások a következők:
+
+| **Stats frissítési gyakoriságának** |} Konzervatív: naponta <br></br> Betöltésekor, illetve az adatok átalakítása után. **Mintavételi** |}  Kevesebb mint 1 egymilliárd sort, használja az alapértelmezett mintavételi (20 %) <br></br> Több mint 1 milliárd sorból 2 %-os-köréről statisztika jó |}
 
 Kérje meg, ha a lekérdezés még hibaelhárítás első kérdések egyike, **"Naprakészek a statisztika?"**
 

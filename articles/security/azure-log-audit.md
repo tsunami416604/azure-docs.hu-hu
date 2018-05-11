@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c0ca120da27daa7a498f73b9c62530e3af26e539
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 2b8b5095fceaa369ae8b7a426ca04685c2d86109
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Az Azure naplózása és naplózás
 ## <a name="introduction"></a>Bevezetés
@@ -65,12 +65,12 @@ Azure kiterjedt naplózás minden Azure Service eredményez. Ezek a naplók szer
 
 A következő táblázat felsorolja az Azure-ban elérhető naplók legfontosabb típusú.
 
-| Napló kategória | Napló típusa | A tanúsítványalgoritmusok | Integráció |
+| Naplókategória | Napló típusa | A tanúsítványalgoritmusok | Integráció |
 | ------------ | -------- | ------ | ----------- |
 |[Tevékenység-naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Az Azure Resource Manager-erőforrás vezérlő-vezérlősík események|   Adja meg az erőforrást az előfizetésében a végrehajtott műveletek betekintést.| REST-API & [Azure figyelője](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Az Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|a következő előfizetés erőforrásait Azure Resource Manager működésével kapcsolatos gyakori adatok| Adja meg, hogy az erőforrás maga végrehajtott műveletek betekintést| Az Azure figyelő [adatfolyam](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Az AAD-jelentés](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Naplók és jelentések|Felhasználói bejelentkezési tevékenységek & rendszer tevékenység szereplő felhasználók és csoportok kezelése|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[Virtuális gép & Cloud Services csomag](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows-Eseménynapló és a Linux rendszernaplójába bejegyzett|    Rendszeradatok és a virtuális gépek a naplózási adatokat rögzíti, és átviszi az adatok az Ön által választott tárolási figyelembe.|   Windows használatával [ÜVEGVATTA](https://docs.microsoft.com/azure/azure-diagnostics) (a Windows Azure diagnosztikai tárolási) és a Linux Azure a Teljesítményfigyelőben|
+|[Virtuális gép & Cloud Services csomag](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows-Eseménynapló és a Linux rendszernaplójába bejegyzett| Rendszeradatok és a virtuális gépek a naplózási adatokat rögzíti, és átviszi az adatok az Ön által választott tárolási figyelembe.|   Windows használatával [ÜVEGVATTA](https://docs.microsoft.com/azure/azure-diagnostics) (a Windows Azure diagnosztikai tárolási) és a Linux Azure a Teljesítményfigyelőben|
 |[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Tárolási naplózási és mérőszámok-adatokat biztosít a storage-fiók|Betekintést nyújt tárolni kívánt nyomkövetési kérelmek elemezheti a használati trendeket, és a storage-fiók problémák elemzéséhez.|    REST API-t vagy a [ügyféloldali kódtár](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG-t (hálózati biztonsági csoport) folyamat Naplók](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON formátumban jeleníti meg a bejövő és kimenő forgalom / szabály alapon és|IP-bemenő és kimenő forgalom keresztül a hálózati biztonsági csoportok adatainak megtekintése|[Hálózati figyelőt](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Naplók, kivételeket és egyéni diagnosztika|    Alkalmazásteljesítmény-felügyeleti (APM) alkalmazásszolgáltatás webfejlesztőknek, több platformon.| REST API-t [a Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
@@ -266,7 +266,7 @@ Megelőző naplózási képességeket, valamint a hálózati figyelőt jelenleg 
 
 ### <a name="application-insight"></a>Application insights
 
-[Az Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Automatikus észlelése a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.
+[Az Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Automatikusan észleli a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.
 
  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 

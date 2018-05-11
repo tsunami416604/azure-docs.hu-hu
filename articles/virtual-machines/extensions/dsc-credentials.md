@@ -16,8 +16,8 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: a6cd67e4f3c3ab58b83d2ebadbe1856dd61b0f18
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 666253d16ac51dcc21174211f71794f8b0ede07d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -87,7 +87,7 @@ Ez a folyamat eltér [nélkül a bővítmény kezelő biztonságos konfiguráci�
 
 ## <a name="next-steps"></a>További lépések
 
-- Első egy [Bevezetés az Azure DSC-kiterjesztés kezelője](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Vizsgálja meg a [Azure Resource Manager sablon a DSC-bővítmény](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Első egy [Bevezetés az Azure DSC-kiterjesztés kezelője](dsc-overview.md).
+- Vizsgálja meg a [Azure Resource Manager sablon a DSC-bővítmény](dsc-template.md).
 - A PowerShell DSC kapcsolatos további információkért lásd a [PowerShell dokumentációs központban](/powershell/dsc/overview).
 - A PowerShell DSC használatával felügyelhető további funkciókat, és további DSC-erőforrásokat, keresse meg a [PowerShell-galériában](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).

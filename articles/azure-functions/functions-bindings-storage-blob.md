@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 447f9867649c7c3a44c8a0ba894e037040023f79
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -31,23 +31,42 @@ Ez a cikk ismerteti az Azure Functions kötések Azure Blob storage használata.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-> [!NOTE]
-> [Csak a BLOB storage-fiókok](../storage/common/storage-create-storage-account.md#blob-storage-accounts) blob eseményindítók nem támogatottak. A BLOB storage eseményindítók általános célú tárfiók szükséges. A bemeneti és kimeneti kötések csak a blob storage-fiókok is használhatja.
-
 ## <a name="packages"></a>Csomagok
 
 A Blob storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) GitHub-tárházban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
+> [!NOTE]
+> Az esemény rács eseményindító használata helyett a Blob storage eseményindító csak a blob storage-fiókok, nagy méretű, vagy a cold indításának késleltetése elkerülése érdekében. További információkért tekintse meg a következőt **eseményindító** szakasz. 
+
 ## <a name="trigger"></a>Eseményindító
 
-A Blob storage eseményindító segítségével indítsa el a következő függvényt egy új vagy frissített blob észlelésekor. A blob tartalmát vannak megadva, a függvény bemenete.
+A Blob storage indítsák el a függvény, egy új vagy frissített blob észlelése esetén. A blob tartalmát vannak megadva, a függvény bemenete.
 
-> [!NOTE]
-> Egy blob eseményindító használatakor a fogyasztás terven létezhet legfeljebb 10 perces késleltetést új blobok feldolgozása után egy függvény app inaktív állapotba került. A függvény alkalmazás futtatása után blobok feldolgozása azonnal megtörténik. A kezdeti késleltetés elkerülése érdekében fontolja meg az alábbi lehetőségek közül:
-> - Használja az App Service-csomag a mindig engedélyezve van.
-> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [blob bemeneti kötések példa a cikk későbbi részében](#input---example).
+A [esemény rács eseményindító](functions-bindings-event-grid.md) rendelkezik beépített támogatása [blob-események](../storage/blobs/storage-blob-event-overview.md) és elindításához a következő függvényt egy új vagy frissített blob észlelésekor is használható. Egy vonatkozó példáért lásd: a [kép átméretezése esemény rácshoz](../event-grid/resize-images-on-storage-blob-upload-event.md) oktatóanyag.
+
+A Blob storage eseményindító helyett esemény rács a következő helyzetekben használhatja:
+
+* Csak a BLOB storage-fiókok
+* Méretezhető.
+* Cold indításának késleltetése
+
+### <a name="blob-only-storage-accounts"></a>Csak a BLOB storage-fiókok
+
+[Csak a BLOB storage-fiókok](../storage/common/storage-create-storage-account.md#blob-storage-accounts) támogatottak a blob bemeneti és kimeneti kötések, de nem az blob-eseményindítókhoz. A BLOB storage eseményindítók általános célú tárfiók szükséges.
+
+### <a name="high-scale"></a>Méretezhető.
+
+Nagy méretű lazán adható meg azok a több mint 100 000 BLOB tárolókat vagy tárfiókot, amely másodpercenként több mint 100 blob a frissítéseket.
+
+### <a name="cold-start-delay"></a>Cold indításának késleltetése
+
+Ha a függvény app a fogyasztás terv, létezhet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha egy függvény app inaktív állapotba került. A cold indítási késleltetés elkerülése érdekében váltson a az App Service-csomag az Always On engedélyezve van, vagy a különböző indítási típus használja.
+
+### <a name="queue-storage-trigger"></a>Várólista tárolási eseményindító
+
+Esemény rács mellett egy másik lehetőség az blobok feldolgozása a várólista tárolási eseményindító, de nincs blob események beépített támogatása rendelkezik. Hozzon létre üzenetsor-üzeneteket létrehozásakor vagy frissítésekor a blobok kellene. Egy példa, amely azt feltételezi, hogy a régebben már kötöttek, amely, tekintse meg a [blob bemeneti kötése például a cikk későbbi részében](#input---example).
 
 ## <a name="trigger---example"></a>Eseményindító – példa
 
@@ -283,7 +302,7 @@ A fájlnevekben kapcsos zárójelek kereséséhez escape a zárójelek két zár
 "path": "images/{{20140101}}-{name}",
 ```
 
-Ha a blob neve *{20140101}-soundfile.mp3*, a `name` változó a funkciókódot érték *soundfile.mp3*. 
+Ha a blob neve  *{20140101}-soundfile.mp3*, a `name` változó a funkciókódot érték *soundfile.mp3*. 
 
 ## <a name="trigger---metadata"></a>Eseményindító - metaadatok
 

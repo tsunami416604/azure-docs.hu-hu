@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c66b0d7ea5ade90c6bb8f88006f2a09bd407deaa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f74d378359ec66b76fd53b95ab898f1cec9b07f7
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -77,6 +77,9 @@ A következő Ubuntu Server lemezképének hozzáadása a piactéren:
     - **SKU**: 16.04-ES LTS VERZIÓ
     - **Verzió**: 16.04.201802220
 
+    > [!Note]  
+    > Ubuntu Server 16.04 LTS egynél több verzióját is szerepelhet. Akkor adja hozzá a megfelelő verziót. A Kubernetes fürt elem pontos verziója szükséges.
+
 6. Válassza ki **letöltése.**
 
 ## <a name="add-a-custom-script-for-linux"></a>Egyéni parancsfájl hozzáadása a Linux rendszerekhez
@@ -95,6 +98,9 @@ Adja hozzá a Kubernetes fürtöt a piactérről:
     - **Ajánlat**: 2.0 Linux egyéni parancsfájl
     - **Verzió**: 2.0.3
     - **A Publisher**: Microsoft Corp
+
+    > [!Note]  
+    > Egyéni parancsfájl a Linux több verziója is szerepelhet. Akkor adja hozzá a megfelelő verziót. A Kubernetes fürt elem pontos verziója szükséges.
 
 6. Válassza ki **letöltése.**
 
@@ -138,6 +144,8 @@ A fürt Kubernetes elem eltávolítása:
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure verem Kubernetes fürt központi telepítése](/user/azure-stack-solution-template-kubernetes-deploy.md)
+[Az Azure verem Kubernetes fürt központi telepítése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+
+
 
 [Az ajánlat Azure verem szolgáltatások áttekintése](azure-stack-offer-services-overview.md)

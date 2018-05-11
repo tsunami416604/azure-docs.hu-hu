@@ -3,16 +3,17 @@ title: Azure Automation DSC általi kezelésre bevezetési gépek
 description: Tudnivalók az Azure Automation DSC Szolgáltatásban felügyeleti gépek telepítéséről
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c1090751db4df54e36e5263c4036d447c95d7b50
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC általi kezelésre bevezetési gépek
 
@@ -62,6 +63,7 @@ $AutomationAccountName = ""
 $AutomationAccountResourceGroup = ""
 
 # fill in the name of a Node Configuration in Azure Automation DSC, for this VM to conform to
+# NOTE: DSC Node Configuration names are case sensitive in the portal.
 $NodeConfigName = ""
 
 # get Azure Automation DSC registration info
@@ -111,6 +113,9 @@ $VM = Set-AzureVMExtension `
 
 $VM | Update-AzureVM
 ```
+
+> [!NOTE]
+> A DSC-Csomópontkonfigurációnak nevek különbözőnek számítanak a kis a portálon. Ha a helyzet nem megfelelő a csomópont nem jelennek meg a DSC-csomópont alatt.
 
 ## <a name="azure-virtual-machines"></a>Azure virtuális gépek
 
@@ -205,6 +210,9 @@ Ez a parancs fut a gépen kell rendelkeznie a legújabb [WMF 5](http://aka.ms/wm
 1. Nyissa meg rendszergazdaként a PowerShell ISE a helyi környezet valamelyik számítógépén. A gépnek rendelkeznie kell a legújabb [WMF 5](http://aka.ms/wmf5latest) telepítve.
 2. Másolja a következő helyileg. Ezt a parancsfájlt a PowerShell DSC-konfiguráció létrehozásához metaconfigurations, és indítsa a metakonfigurációját létrehozása parancsot tartalmazza.
 
+> [!NOTE]
+> A DSC-Csomópontkonfigurációnak nevek különbözőnek számítanak a kis a portálon. Ha a helyzet nem megfelelő a csomópont nem jelennek meg a DSC-csomópont alatt.
+
     ```powershell
     # The DSC configuration that will generate metaconfigurations
     [DscLocalConfigurationManager()]
@@ -296,6 +304,7 @@ Ez a parancs fut a gépen kell rendelkeznie a legújabb [WMF 5](http://aka.ms/wm
     }
 
     # Create the metaconfigurations
+    # NOTE: DSC Node Configuration names are case sensitive in the portal.
     # TODO: edit the below as needed for your use case
     $Params = @{
         RegistrationUrl = '<fill me in>';

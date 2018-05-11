@@ -3,16 +3,17 @@ title: Azure Automation szolgáltatásbeli tanúsítvány eszközök
 description: Tanúsítványok tárolhatja biztonságosan Azure Automation, azok a runbookok vagy DSC-konfigurációk hitelesítése az Azure és a külső erőforrások elérhetők.  Ez a cikk ismerteti a tanúsítványok és a szöveges és a grafikus szerzői őket munkavégzés részleteit.
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d314b7e56b769cf4a6488b769edadf5f5795fefe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f84c35e26fe45a147aea149df8a51022a5b1187a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli tanúsítvány eszközök
 

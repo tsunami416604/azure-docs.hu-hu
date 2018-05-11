@@ -15,11 +15,11 @@ ms.date: 07/27/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a433c18be29416992304b2cb8cfa9acabe895ea6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e6764a0eeb27b8bff24140ff2c12e9e66b06b48b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="compare-remote-access-solutions"></a>A távelérési megoldások összehasonlítása
 
@@ -62,5 +62,5 @@ Az Azure AD-alkalmazásproxy előnyökkel egyedi hasonló termékek, köztük a 
 
 ## <a name="next-steps"></a>További lépések
 
-- [A helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak az Azure AD-alkalmazás segítségével](active-directory-application-proxy-get-started.md)
+- [A helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak az Azure AD-alkalmazás segítségével](manage-apps/application-proxy.md)
 - [Átállás Forefront TMG és alkalmazásproxy UAG](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/).

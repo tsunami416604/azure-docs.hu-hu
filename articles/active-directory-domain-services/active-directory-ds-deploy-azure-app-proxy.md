@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: Az Azure Active Directory-proxyt üzembe helyezni |} Microsoft Docs"
-description: "Az Azure AD-alkalmazásproxy használata a felügyelt tartományok Azure Active Directory tartományi szolgáltatások"
+title: 'Az Azure Active Directory tartományi szolgáltatások: Az Azure Active Directory-proxyt üzembe helyezni |} Microsoft Docs'
+description: Az Azure AD-alkalmazásproxy használata a felügyelt tartományok Azure Active Directory tartományi szolgáltatások
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: bd79644c6a13ccaab8eb7e14131465cc7c3165d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 13141549b5b1b77f45dd6fa1c7560b9f9d0e9b72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Központi telepítése az Azure AD-alkalmazásproxyval oldható meg az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Támogatja a távoli dolgozók által az interneten keresztül érhető el a helyszíni alkalmazások közzététele az Azure Active Directory (AD) alkalmazásproxy segítségével. Az Azure AD tartományi szolgáltatásokat helyszíni Azure infrastruktúra-szolgáltatásokat futtató örökölt alkalmazások most növekedési-és-shift lehetővé teszi. Majd közzéteheti ezeket az alkalmazásokat az Azure AD alkalmazásproxy segítségével biztonságos távoli hozzáférés biztosítása a szervezetében lévő felhasználók számára.
 
-Ha most ismerkedik az Azure AD-alkalmazásproxy, kapcsolatos további Ez a szolgáltatás a következő cikkben: [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](../active-directory/active-directory-application-proxy-get-started.md).
+Ha most ismerkedik az Azure AD-alkalmazásproxy, kapcsolatos további Ez a szolgáltatás a következő cikkben: [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](../active-directory/manage-apps/application-proxy.md).
 
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -90,7 +90,7 @@ Korábban a Windows Server virtuális gép kiépítése, és felügyelt tartomá
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Állítsa be az Azure AD-alkalmazásproxy, és azt az Azure AD tartományi szolgáltatások által kezelt tartomány integrálva.
 
 * **Az alkalmazások az Azure virtuális gépek áttelepítése:** növekedési-és-shift a felügyelt tartományra csatlakozott az alkalmazásait, a helyszíni kiszolgálók és az Azure virtuális gépek is. Így segítséget nyújt az infrastruktúra költségek a helyszíni kiszolgálók futó selejtezni.

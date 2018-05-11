@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: af35bbeb203df90878408add030c47291cd94db9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: e57470e108faf68cecca703b2200acf357d2f721
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -75,8 +75,8 @@ A következő táblázat a más adatok formátumok API-k támogathatja a hivatko
 
 API | Alapértelmezett adatformátum | Eltérő formátumban
 --------|---------------------|--------------
-/instance | JSON-ban | Szöveg
-/scheduledevents | JSON-ban | nincs
+/instance | JSON | szöveg
+/scheduledevents | JSON | nincs
 
 Egy nem alapértelmezett válaszformátum szeretne használni, adja meg a kért formátumát a kérelem lekérdezési karakterlánc paraméterként. Példa:
 
@@ -392,6 +392,7 @@ Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
 Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
+Puppet | https://github.com/keirans/azuremetadata
     
 
 ## <a name="faq"></a>GYIK

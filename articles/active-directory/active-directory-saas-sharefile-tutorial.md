@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Citrix ShareFile |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Citrix ShareFile között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Citrix ShareFile |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Citrix ShareFile között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2017
+ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 8473c262f98e77708f01d17419e935979a533307
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f633206c03a9639a375535ed7c8f5c84aa334ebf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Oktatóanyag: Azure Active Directoryval integrált Citrix ShareFile
 
@@ -108,14 +108,33 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Citrix ShareFile tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_url.png)
     
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<tenant-name>.sharefile.com/saml/login`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenant-name>.sharefile.com/saml/login`
 
-    > [!NOTE] 
-    > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [Citrix ShareFile ügyfél-támogatási csoport](https://www.citrix.co.in/products/sharefile/support.html) lekérni ezt az értéket. 
+    b. Az a **azonosítója (entitás azonosítója)** szövegmező, adja meg a következő minta használatával URL-címe:
+
+    | |
+    |---|
+    | `https://<tenant-name>.sharefile.com`|
+    | `https://<tenant-name>.sharefile.com/saml/info`|
+    | `https://<tenant-name>.sharefile1.com/saml/info`|
+    | `https://<tenant-name>.sharefile1.eu/saml/info`|
+    | `https://<tenant-name>.sharefile.eu/saml/info`|
+    | |
+    
+    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:
+    | |
+    |---|
+    | `https://<tenant-name>.sharefile.com/saml/acs`|
+    | `https://<tenant-name>.sharefile.eu/saml/<URL path>`|
+    | `https://<tenant-name>.sharefile.com/saml/<URL path>`|
+    | |
+
+    > [!NOTE]
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosítóját és válasz URL-CÍMEN. Ügyfél [Citrix ShareFile ügyfél-támogatási csoport](https://www.citrix.co.in/products/sharefile/support.html) beolvasni ezeket az értékeket.
 
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
@@ -123,7 +142,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 6. A a **Citrix ShareFile konfigurációs** kattintson **konfigurálása a Citrix ShareFile** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![Citrix ShareFile konfiguráció](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png) 
+    ![Citrix ShareFile konfiguráció](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png)
 
 7. Egy másik webes böngészőablakban, jelentkezzen be a **Citrix ShareFile** vállalati hely rendszergazdaként.
 
@@ -148,10 +167,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     e. A **kijelentkezési URL-cím** szövegmezőhöz illessze be az értékét **Sign-Out URL-cím** ami Azure-portálon másolta.
 
 11. Kattintson a **mentése** a Citrix ShareFile felügyeleti portálon.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -201,7 +216,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Citrix ShareFile, akkor
    
    ![Alapvető információkat](./media/active-directory-saas-sharefile-tutorial/IC799951.png "alapvető információk")
    
-   a. Az a **E-mail cím** szövegmezőhöz Britta Simon, e-mail címét  **brittasimon@contoso.com** .
+   a. Az a **E-mail cím** szövegmezőhöz Britta Simon, e-mail címét **brittasimon@contoso.com**.
    
    b. Az a **Utónév** szövegmezőhöz típus **Utónév** , felhasználó **Britta**.
    
@@ -242,7 +257,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -253,8 +268,6 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 
@@ -269,4 +282,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_203.png
-

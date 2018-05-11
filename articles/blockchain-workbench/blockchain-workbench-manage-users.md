@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c17a406a0fd6f1172599ac0379c6afc139403148
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a426f7f424bc1941890c80a83997d8e08b368884
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Az Azure Blockchain munkaterület felhasználók kezelése
 
@@ -68,20 +68,18 @@ Felhasználók hozzáadása a **rendszergazdák** az Azure AD-címtár csoportho
 
 A Blockchain munkaterület alkalmazás segítségével kezelheti a felhasználók és a szervezetek, amelyek a konzorcium részei. Adja hozzá, vagy távolítsa el az alkalmazások és a szerepkörök a felhasználók számára.
 
-[Nyissa meg a Blockchain munkaterület](blockchain-workbench-deploy.md#blockchain-workbench-web-url) a böngésző és a jelentkezzen be rendszergazdaként.
+1. [Nyissa meg a Blockchain munkaterület](blockchain-workbench-deploy.md#blockchain-workbench-web-url) a böngésző és a jelentkezzen be rendszergazdaként.
 
-![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
+    ![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
 
-### <a name="managing-members-in-applications"></a>Tagok alkalmazások kezelése
+    Tagok tagjává válnak az egyes alkalmazásokhoz. Egy vagy több alkalmazás szerepkörök szerződések ill. műveletek is rendelkezik.
 
-Tagok tagjává válnak az egyes alkalmazásokhoz. Egy vagy több alkalmazás szerepkörök szerződések ill. műveletek is rendelkezik.
+2. Kezelheti egy alkalmazás tagok, válassza ki az alkalmazás csempe az a **alkalmazások** ablaktáblán.
 
-Tagok hozzáadása egy alkalmazáshoz, jelölje be az alkalmazás csempe az a **alkalmazások** ablaktáblán.
+    A kijelölt alkalmazáshoz tartozó tagok száma a tagok csempe is megjelenik.
 
-![Alkalmazás kijelölése](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
+    ![Alkalmazás kijelölése](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
 
-> [!NOTE]
-> A kijelölt alkalmazáshoz tartozó tagok száma a tagok csempe is megjelenik.
 
 #### <a name="add-member-to-application"></a>Alkalmazás-tag hozzáadása
 

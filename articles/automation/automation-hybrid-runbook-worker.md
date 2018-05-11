@@ -3,16 +3,17 @@ title: Azure Automation szolgáltatásbeli hibrid forgatókönyv-feldolgozók
 description: Ez a cikk bemutatja, telepítéséről és használatáról a hibrid forgatókönyv-feldolgozó, amely egy Azure Automation, amely lehetővé teszi runbookok futtatását a helyi adatközpontban, illetve a felhőbeli szolgáltató gépeken funkciója.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 36fa5f7c9cedc25f7cb446a504faccfb386bd019
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 26762a91ddad080f698368c1a74948a5678ef75a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>A saját adatközpont vagy a felhőbe a hibrid forgatókönyv-feldolgozó erőforrások automatizálásának
 

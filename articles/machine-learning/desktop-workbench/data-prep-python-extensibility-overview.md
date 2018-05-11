@@ -4,19 +4,17 @@ description: Ez a dokumentum nyújt áttekintését és részletes néhány olya
 services: machine-learning
 author: euangMS
 ms.author: euang
-manager: lanceo
-ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 02/01/2018
-ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 05/09/2018
+ms.openlocfilehash: 6363d39b2dfbd36ccebff6780e35caf58ca84dda
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-preparations-python-extensions"></a>Előkészített Python adatkiterjesztések
 Beépített szolgáltatásai között a funkció hézagok kitöltése módja Azure Machine Learning adatok előkészített bővítési több szinten tartalmazza. Ebben a dokumentumban a Python-parancsfájl bővíthetőséget szerkezeti azt. 
@@ -24,14 +22,10 @@ Beépített szolgáltatásai között a funkció hézagok kitöltése módja Azu
 ## <a name="custom-code-steps"></a>Egyéni kód lépései 
 Adatok előkészített rendelkezik a következő egyéni lépéseket, ahol a felhasználók is írhat kódot:
 
-* Fájl olvasó *
-* Író *
 * Oszlop hozzáadása
 * Speciális szűrő
 * Adatfolyam átalakítása
 * Átalakítás partíció
-
-* Ezeket a lépéseket jelenleg nem támogatottak a Spark végrehajtása.
 
 ## <a name="code-block-types"></a>Kód blokk típusok 
 Az egyes lépések két kód blokk típus támogatott. Először is támogatott egy operációs rendszer Python kifejezést, mert a végrehajtása. Második, ahol egy ismert aláírás az adott funkciót ezt nevezik a kódot megadnia a Python modul támogatott.
@@ -158,74 +152,6 @@ Példák
     row.ColumnA + row.ColumnB  
     row["ColumnA"] + row["ColumnB"]
 ```
-
-## <a name="file-reader"></a>Fájl-olvasó 
-### <a name="purpose"></a>Cél 
-A fájl olvasó bővítmény pont lehetővé teszi teljes vezérlés folyamata a fájl olvasásakor az adatfolyam. A rendszer meghívja a kódot, és adja át a listában, amely fel kell dolgozni fájlok. A kódot kell létrehozni, és térjen vissza a Pandas dataframe. 
-
->[!NOTE]
->A bővítmény pont nem érhető el a Spark. 
-
-
-### <a name="how-to-use"></a>A használat módja 
-A bővítmény pontot hozzáférhet a **nyissa meg az adatforrás** varázsló. Válasszon **fájl** első lapján, majd válassza a fájl helye. Az a **Fájlparaméterekre válasszon** lap a **Fájltípus** legördülő menüben válassza ki **egyéni fájl (parancsfájl)**. 
-
-A kód egy "df", amely leírja a fájlokat szeretné olvasni nevű Pandas dataframe kap. Ha úgy döntött, hogy több fájlt tartalmazó könyvtár megnyitásához, akkor a dataframe egynél több sorban tartalmazza.  
-
-A dataframe a következő oszlopokkal rendelkezik:
-
-- Elérési út: A fájl olvasását.
-- PathHint: Megtudhatja, ahol a fájl megtalálható-e. Értékek: Helyi AzureBlobStorage és AzureDataLakeStorage.
-- AuthenticationType: A fájl elérésére használt hitelesítés típusa. Értékek: None, SasToken és OAuthToken.
-- AuthenticationValue: None, vagy a token által használható tartalmazza.
-
-### <a name="syntax"></a>Szintaxis 
-Kifejezés 
-
-```python
-    paths = df['Path'].tolist()  
-    df = pd.read_csv(paths[0])
-```
-
-
-Modul  
-```python
-PathHint = Local  
-def read(df):  
-    paths = df['Path'].tolist()  
-    filedf = pd.read_csv(paths[0])  
-    return filedf  
-```
- 
-
-## <a name="writer"></a>író 
-### <a name="purpose"></a>Cél 
-Az író bővítmény pont lehetővé teszi teljes mértékben a folyamat az adatok írása az adatfolyam a vezérlő. A rendszer meghívja a kódot, és egy dataframe megfelel. A kód az adatok írása, de azt szeretné, használhatja a dataframe. 
-
->[!NOTE]
->Az író bővítmény pont nem érhető el a Spark.
-
-
-### <a name="how-to-use"></a>A használat módja 
-A bővítmény pont a írási (parancsfájl) adatfolyamblokk használatával adhat hozzá. Érhető el a legfelső szintű **átalakítások** menü.
-
-### <a name="syntax"></a>Szintaxis 
-Kifejezés
-
-```python
-    df.to_csv('c:\\temp\\output.csv')
-```
-
-Modul
-
-```python
-def write(df):  
-    df.to_csv('c:\\temp\\output.csv')  
-    return df
-```
- 
- 
-Egyéni írási blokk közepén lépések listáját is létezik. Ha egy modul használata a írási kell függvénynek a dataframe, amely a bemeneti a következő lépéssel. 
 
 ## <a name="add-column"></a>Oszlop hozzáadása 
 ### <a name="purpose"></a>Cél

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2180c0da4dc77e854a9b73eb31472feae7c7c3ad
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: efedbf89a6d15a13db5bc86fef9f270e0c84e13b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden egyes dokumentum írása az alkalmazással kapcsolatos szolgáltatásokra vonatkozó az Azure Active Directory (Azure AD) átfogó listáját tartalmazza.
@@ -30,9 +30,9 @@ Az alábbi cikkek jó kezdőpont rendelkező egyszerűen szeretné az Azure AD a
 
 | Útmutató a következő cikket: |  |
 |:---:| --- |
-| Az alkalmazás felügyelettel kapcsolatos problémák, amelyek az Azure AD megoldja bemutatása |[Alkalmazások kezelése az Azure Active Directory (AD)](active-directory-enable-sso-scenario.md) |
+| Az alkalmazás felügyelettel kapcsolatos problémák, amelyek az Azure AD megoldja bemutatása |[Alkalmazások kezelése az Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
 | Kik férhetnek hozzá az alkalmazásokhoz, és hogyan indítsa el a felhasználók az alkalmazások engedélyezése egyszeri bejelentkezéshez, kapcsolódik az Azure AD a különféle funkcióinak áttekintése |[Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban](active-directory-appssoaccess-whatis.md) |
-| A különböző szükséges lépések során alkalmazások integrálása az Azure AD meg |[Az Azure Active Directory integrálása alkalmazások](active-directory-integrating-applications-getting-started.md)<br /><br />[Egyszeri bejelentkezés az SaaS-alkalmazások engedélyezése](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Az alkalmazásokhoz való hozzáférés kezelése](active-directory-managing-access-to-apps.md) |
+| A különböző szükséges lépések során alkalmazások integrálása az Azure AD meg |[Az Azure Active Directory integrálása alkalmazások](manage-apps/plan-an-application-integration.md)<br /><br />[Egyszeri bejelentkezés az SaaS-alkalmazások engedélyezése](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Az alkalmazásokhoz való hozzáférés kezelése](active-directory-managing-access-to-apps.md) |
 | Hogyan vannak megadva az alkalmazások az Azure AD technikai magyarázata |[Miért és hogyan lehet az Azure AD-alkalmazások felvétele](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>Hibaelhárítási cikkek
@@ -78,8 +78,8 @@ Ha vannak olyan alkalmazások, a magánhálózaton, amely a felhasználók és e
 
 | Útmutató a következő cikket: |  |
 |:---:| --- |
-| Az Azure AD-alkalmazásproxy és működésének áttekintése |[A helyszíni alkalmazások biztonságos távoli hozzáférést biztosító](active-directory-application-proxy-get-started.md) |
-| A szolgáltatásalkalmazás-Proxy konfigurálása és közzététele az első alkalmazás oktatóprogramok |[Az Azure AD alkalmazás Proxy beállítása](active-directory-application-proxy-enable.md)<br /><br />[Az alkalmazás alkalmazásproxy-összekötő csendes telepítése](active-directory-application-proxy-silent-installation.md)<br /><br />[Alkalmazás Proxy használó alkalmazások közzétételének módját](active-directory-application-proxy-publish.md)<br /><br />[Saját tartománynév használatával](active-directory-application-proxy-custom-domains.md) |
+| Az Azure AD-alkalmazásproxy és működésének áttekintése |[A helyszíni alkalmazások biztonságos távoli hozzáférést biztosító](manage-apps/application-proxy.md) |
+| A szolgáltatásalkalmazás-Proxy konfigurálása és közzététele az első alkalmazás oktatóprogramok |[Az Azure AD alkalmazás Proxy beállítása](active-directory-application-proxy-enable.md)<br /><br />[Az alkalmazás alkalmazásproxy-összekötő csendes telepítése](active-directory-application-proxy-silent-installation.md)<br /><br />[Alkalmazás Proxy használó alkalmazások közzétételének módját](application-proxy-publish-azure-portal.md)<br /><br />[Saját tartománynév használatával](active-directory-application-proxy-custom-domains.md) |
 | Alkalmazás Proxy közzétett alkalmazások egyszeri bejelentkezés és a feltételes hozzáférés engedélyezése |[Single-sign-on a Proxy](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[Feltételes hozzáférés és a Proxy](application-proxy-enable-remote-access-sharepoint.md) |
 | Alkalmazásproxy használata a következő forgatókönyvek esetén útmutatást |[Natív ügyfél-alkalmazások támogatásának módja](active-directory-application-proxy-native-client.md)<br /><br />[Hogyan támogatja a jogcímbarát alkalmazásokhoz](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Külön hálózatok és helyek közzétett alkalmazások támogatása](active-directory-application-proxy-connectors-azure-portal.md) |
 | Alkalmazásproxy hibaelhárítási útmutatója |[Alkalmazás Proxy hibaelhárítási útmutatója](active-directory-application-proxy-troubleshoot.md) |
@@ -121,7 +121,7 @@ A cloud App Discovery segítségével informatikai részlegek ismerje meg, melyi
 
 | Útmutató a következő cikket: |  |
 |:---:| --- |
-| Egy általános működésének áttekintése |[A Cloud App Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz](active-directory-cloudappdiscovery-whatis.md) |
+| Egy általános működésének áttekintése |[A Cloud App Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz](manage-apps/cloud-app-discovery.md) |
 | A mélyebb bemutatója ismerteti, hogyan működik, az adatvédelmi a kérdésekre adott válaszok |[Biztonsági és adatvédelmi megfontolások](active-directory-cloudappdiscovery-security-and-privacy-considerations.md) |
 | Gyakori kérdések |[Gyakori kérdések a Cloud App Discovery modulra](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx) |
 | A Cloud App Discovery telepítéséhez oktatóprogramok |[Csoport házirendjének telepítési útmutatója](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)<br /><br />[A System Center telepítési útmutatója](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)<br /><br />[A Proxy kiszolgálókon egyéni portok telepítése](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md) |

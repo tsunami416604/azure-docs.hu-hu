@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált O.C. Péter - AppreciateHub |} Microsoft Docs"
-description: "Egyszeri bejelentkezés Azure Active Directory és O.C. konfigurálása Péter - AppreciateHub."
+title: 'Oktatóanyag: Azure Active Directoryval integrált O.C. Péter - AppreciateHub |} Microsoft Docs'
+description: Egyszeri bejelentkezés Azure Active Directory és O.C. konfigurálása Péter - AppreciateHub.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ae98e6fce3507e023a72cab35894c7c2f7a87656
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9d643a9ad6dd2b19fc3b8932b80d416fbc62d7a3
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Oktatóanyag: Azure Active Directoryval integrált O.C. Péter - AppreciateHub
 
@@ -110,12 +110,12 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_url.png)
 
-    a. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.appreciatehub.com/fed/sp/authnResponse20`
+    a. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.octanner.net/sp/ACS.saml2`
 
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges válasz URL-címet. Ügyfél [O.C. Péter - AppreciateHub támogatási csoport](mailto:sso@octanner.com) lekérni ezt az értéket.
 
-    b. Nyissa meg a metaadat-fájlt a következő hivatkozás használatával: [https://fed.appreciatehub.com/fed/sp/metadata](https://fed.appreciatehub.com/fed/sp/metadata).
+    b. Nyissa meg a metaadat-fájlt a következő hivatkozás használatával: [ https://fed.appreciatehub.com/fed/sp/metadata ](https://fed.appreciatehub.com/fed/sp/metadata).
    
     c. Keresse meg a **md:AssertionConsumerService** csomópont. 
    

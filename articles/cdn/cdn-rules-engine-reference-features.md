@@ -4,7 +4,7 @@ description: Az Azure CDN referenciadokumentációt szabályok adatbázismotor-s
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -12,10 +12,10 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
-ms.openlocfilehash: fe1f61c7242cf4213b19e9496d557ae7a2253fe8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1e002b51aa5a93e7fcc800f5cf48ac401c5cb2d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -1240,25 +1240,25 @@ Ajánlott egy abszolút URL-CÍMÉT használja. Egy relatív URL-cím használat
 
 **Mintaforgatókönyv**
 
-Ez a példa bemutatja, hogyan kell CNAME URL-címet, amely a CDN alap URL-cím él átirányítási: http://marketing.azureedge.net/brochures
+Ez a példa bemutatja, hogyan kell átirányítási CNAME URL-címet, amely a CDN alap URL-cím él: http:\//marketing.azureedge.net/brochures
 
-Kérelmek jogosult irányítja át a alap peremhálózati CNAME URL-címe: http://cdn.mydomain.com/resources
+Kérelmek jogosult irányítja át a alap peremhálózati CNAME URL-cím: http:\//cdn.mydomain.com/resources
 
-Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Előfordulhat, hogy az URL-cím átirányítást elérni a következő konfigurációs: ![átirányítási URL-címe](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Kulcs mutat:**
 
 - Az átirányítási URL-cím szolgáltatást határozza meg a kérelem URL-címek, amelyek irányítja. Ennek eredményeképpen további egyezés feltételek esetén nincs szükség. Bár a egyeznek az állapot "Always" van definiálva, csak az ügyfél "marketing" eredeti "brosúrák" mappájába pont kérelmek irányítja. 
 - Minden egyező kérések a szélén CNAME URL-címet a cél-beállítás irányítja. 
     - A minta #1. forgatókönyv: 
-        - Mintakérelem (CDN URL): http://marketing.azureedge.net/brochures/widgets.pdf 
-        - A kérelem URL-címe (után átirányítási): http://cdn.mydomain.com/resources/widgets.pdf  
+        - Mintakérelem (CDN URL): http:\//marketing.azureedge.net/brochures/widgets.pdf 
+        - Kérelem URL-CÍMÉT (után átirányítási): http:\//cdn.mydomain.com/resources/widgets.pdf  
     - A minta #2. forgatókönyv: 
-        - Mintakérelem (peremhálózati CNAME URL): http://marketing.mydomain.com/brochures/widgets.pdf 
-        - Kérelem URL-CÍMÉT (után átirányítási): http://cdn.mydomain.com/resources/widgets.pdf mintaforgatókönyv
+        - Mintakérelem (peremhálózati CNAME URL): http:\//marketing.mydomain.com/brochures/widgets.pdf 
+        - Kérelem URL-CÍMÉT (után átirányítási): http:\//cdn.mydomain.com/resources/widgets.pdf mintaforgatókönyv
     - A minta #3. forgatókönyv: 
-        - Mintakérelem (peremhálózati CNAME URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
-        - A kérelem URL-címe (után átirányítási): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
+        - Mintakérelem (peremhálózati CNAME URL): http:\//brochures.mydomain.com/campaignA/final/productC.ppt 
+        - Kérelem URL-CÍMÉT (után átirányítási): http:\//cdn.mydomain.com/resources/campaignA/final/productC.ppt  
 - A kérelem rendszer (% {séma}) változó rendszer elkészítéséhez használja a cél beállítás, amely biztosítja, hogy a kérelem sémát az átirányítást követően változatlan marad.
 - A rögzítette a kérelem URL-szegmensek lesz hozzáfűzve az új URL-cím segítségével "$1."
 
@@ -1282,17 +1282,17 @@ Beállítás|Leírás
 
 **Példa: 1. forgatókönyv**
 
-Ez a példa bemutatja, hogyan CNAME URL-címet, amely a CDN alap URL-cím él átirányítására: http://marketing.azureedge.net/brochures/
+Ez a példa bemutatja, hogyan CNAME URL-címet, amely a CDN alap URL-cím él átirányítására: http:\//marketing.azureedge.net/brochures/
 
-Kérelmek jogosult irányítja át a alap peremhálózati CNAME URL-címe: http://MyOrigin.azureedge.net/resources/
+Kérelmek jogosult irányítja át a alap peremhálózati CNAME URL-cím: http:\//MyOrigin.azureedge.net/resources/
 
-Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Előfordulhat, hogy az URL-cím átirányítást elérni a következő konfigurációs: ![átirányítási URL-címe](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Mintaforgatókönyv 2**
 
 A példa bemutatja, hogyan átirányítására él kisbetűssé reguláris kifejezésekkel nagybetűs CNAME URL-CÍMÉT.
 
-Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Előfordulhat, hogy az URL-cím átirányítást elérni a következő konfigurációs: ![átirányítási URL-címe](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 
 **Kulcs mutat:**

@@ -1,11 +1,11 @@
 ---
-title: "A probléma összevont egyszeri bejelentkezés nem galéria alkalmazások konfigurálása |} Microsoft Docs"
-description: "Összevont egyszeri bejelentkezést az egyéni SAML-alkalmazás, amely nem szerepel az Azure AD Application Gallery konfigurálása során felmerülő gyakori problémák megoldása"
+title: A probléma összevont egyszeri bejelentkezés nem galéria alkalmazások konfigurálása |} Microsoft Docs
+description: Összevont egyszeri bejelentkezést az egyéni SAML-alkalmazás, amely nem szerepel az Azure AD Application Gallery konfigurálása során felmerülő gyakori problémák megoldása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 77f4bf0fc38043afd7a6634bcf16a0f10f7ddfeb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1990f6595be86d7f3a50f6c764a855aedf2cbcbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>A probléma összevont egyszeri bejelentkezés nem galéria alkalmazások konfigurálása
 
@@ -68,4 +68,4 @@ Az Azure AD nem biztosít a metaadatok beolvasása URL-CÍMÉT. A metaadatok XML
 Megtudhatja, hogyan szabhatja testre a SAML attribútum típusú jogcímek az alkalmazás számára, lásd: [hozzárendelése az Azure Active Directory-jogcímek](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) további információt.
 
 ## <a name="next-steps"></a>További lépések
-[Alkalmazások kezelése az Azure Active Directoryval](active-directory-enable-sso-scenario.md)
+[Alkalmazások kezelése az Azure Active Directoryval](manage-apps/what-is-application-management.md)

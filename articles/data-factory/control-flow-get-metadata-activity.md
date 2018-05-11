@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 91ef3f9f15797c8c0c599e8c01070369e1af0b58
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4698f2e4c75456de7387ee7fe3bfa9b2ab4dd406
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -37,6 +37,9 @@ A következő funkciókat a vezérlési folyamatában érhető el:
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
 A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, és kiírja a tevékenység kimeneti elérhető metaadat-információt. Jelenleg az alábbi csatlakozók a megfelelő lekérhető meatadata támogatottak:
+
+>[!NOTE]
+>Ha egy Self-hosted integrációs futásidejű GetMetadata tevékenység futtatja, a legújabb funkció támogatott 3.6 verzió vagy újabb verzióját. 
 
 ### <a name="supported-connectors"></a>Támogatott összekötők
 

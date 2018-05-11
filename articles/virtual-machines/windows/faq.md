@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: cynthn
-ms.openlocfilehash: f427035f413dde304c2270006c6665120cb3e1e1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c60b7df4d766ddf321ce2c807994f3b83046f1ef
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows virtuális gépek kapcsolatos gyakran ismételt kérdések
 Ez a cikk foglalkozik Windows virtuális gépek létrehozása az Azure-ban a Resource Manager üzembe helyezési modellel kapcsolatos gyakori kérdésekre. Ez a témakör Linux verziója: [gyakran feltett kérdés kapcsolatos Linux virtuális gépek](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -88,27 +88,27 @@ Felhasználónevek legfeljebb 20 karakter hosszúságú lehet, és nem végződh
 A következő felhasználónevek nem engedélyezettek:
 <table>
     <tr>
-        <td style="text-align:center">Rendszergazda </td><td style="text-align:center"> adminisztrátor </td><td style="text-align:center"> felhasználótól </td><td style="text-align:center"> Felhasználó1</td>
+        <td style="text-align:center">1</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
     </tr>
     <tr>
-        <td style="text-align:center">teszt </td><td style="text-align:center"> Felhasználó2 </td><td style="text-align:center"> Test1 </td><td style="text-align:center"> user3</td>
-    </tr>    <tr>
-        <td style="text-align:center">rendszergazda1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
+        <td style="text-align:center">ADM</td><td style="text-align:center">Rendszergazda</td><td style="text-align:center">rendszergazda1</td><td style="text-align:center">admin2</td>
+    </tr>   <tr>
+        <td style="text-align:center">Rendszergazda</td><td style="text-align:center">aspnet</td><td style="text-align:center">biztonsági mentés</td><td style="text-align:center">konzol</td>
     </tr>
     <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> ADM </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
+        <td style="text-align:center">David </td><td style="text-align:center">Vendég</td><td style="text-align:center">John</td><td style="text-align:center">tulajdonos</td>
     </tr>
     <tr>
-        <td style="text-align:center">biztonsági mentés </td><td style="text-align:center"> konzol </td><td style="text-align:center"> David </td><td style="text-align:center"> Vendég</td>
+        <td style="text-align:center">legfelső szintű</td><td style="text-align:center">kiszolgáló</td><td style="text-align:center">sql</td><td style="text-align:center">támogatás</td>
     </tr>
     <tr>
-        <td style="text-align:center">John </td><td style="text-align:center"> tulajdonos </td><td style="text-align:center"> legfelső szintű </td><td style="text-align:center"> kiszolgáló</td>
+        <td style="text-align:center">support_388945a0</td><td style="text-align:center">sys</td><td style="text-align:center">teszt</td><td style="text-align:center">Test1</td>
     </tr>
     <tr>
-        <td style="text-align:center">sql </td><td style="text-align:center"> támogatás </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
+        <td style="text-align:center">Teszt2</td><td style="text-align:center">Teszt3</td><td style="text-align:center">Felhasználó</td><td style="text-align:center">Felhasználó1</td>
     </tr>
     <tr>
-        <td style="text-align:center">Teszt2 </td><td style="text-align:center"> Teszt3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
+        <td style="text-align:center">Felhasználó2</td><td style="text-align:center">Felhasználó3</td><td style="text-align:center">Felhasználó4</td><td style="text-align:center">user5</td>
     </tr>
 </table>
 
@@ -124,17 +124,17 @@ A következő jelszavak használata nem megengedett:
 
 <table>
     <tr>
-        <td>abc@123 </td>
-        <td>P@$$w0rd </td>
-        <td>P@ssw0rd </td>
-        <td>P@ssword123 </td>
-        <td>Pa$ $word </td>
+        <td>abc@123</td>
+        <td>ILOVEYOU!</td>
+        <td>P@$$w0rd</td>
+        <td>P@ssw0rd</td>
+        <td>P@ssword123</td>
     </tr>
     <tr>
-        <td>pass@word1 </td>
-        <td>Jelszót! </td>
-        <td>Jelszó1 </td>
-        <td>Password22 </td>
-        <td>ILOVEYOU! </td>
+        <td>Pa$ $word</td>
+        <td>pass@word1</td>
+        <td>Jelszót!</td>
+        <td>Jelszó1</td>
+        <td>Password22</td>
     </tr>
 </table>

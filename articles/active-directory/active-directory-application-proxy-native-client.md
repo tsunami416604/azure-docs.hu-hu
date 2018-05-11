@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dbb709ebbecbfd5da7522b17fe837460d50fae11
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a925f8be619d0a4606205eeba5f78b2e8ba8a188
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Hogyan kommunikál a proxy alkalmazások natív ügyfél alkalmazások engedélyezése
 
@@ -34,7 +34,7 @@ Az Azure AD Authentication Library, amely gondoskodik a hitelesítésről, és t
 Ez a cikk végigvezeti a négy alkalmazásproxy és az Azure AD Authentication Library natív alkalmazás közzététele. 
 
 ## <a name="step-1-publish-your-application"></a>1. lépés: Az alkalmazás közzétételére.
-A proxy alkalmazás közzététele, mint bármilyen más alkalmazást, és rendelje hozzá a felhasználók az alkalmazás eléréséhez. További információkért lásd: [alkalmazások közzétételére az alkalmazásproxy](active-directory-application-proxy-publish.md).
+A proxy alkalmazás közzététele, mint bármilyen más alkalmazást, és rendelje hozzá a felhasználók az alkalmazás eléréséhez. További információkért lásd: [alkalmazások közzétételére az alkalmazásproxy](application-proxy-publish-azure-portal.md).
 
 ## <a name="step-2-configure-your-application"></a>2. lépés: Az alkalmazás konfigurálása
 A natív alkalmazások konfigurálása az alábbiak szerint:

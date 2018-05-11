@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: sujayt
-ms.openlocfilehash: 215874020395faebd70b6dd15a29f1bf23638a84
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d7bfbbe834ac8506b7d12d5748406460df0fe3bc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Az Azure-régió, egy másik replikálásához támogatási mátrix
 
@@ -175,7 +175,7 @@ GRS | Támogatott |
 RA-GRS | Támogatott |
 ZRS | Nem támogatott |  
 Ritkán használt adatok és a gyakran használt adatok tárolási | Nem támogatott | Virtuálisgép-lemezek használata nem támogatott a ritkán használt adatok és a gyakran használt adatok tárolási
-Virtuális hálózati Szolgáltatásvégpontok (Azure Storage tűzfalak és virtuális hálózatok)  | Nem | Adott Azure virtuális hálózatokhoz való hozzáférés engedélyezése a replikált adatok tárolására szolgáló gyorsítótár tárfiókok használata nem támogatott.
+Az Azure Storage tűzfalak a virtuális hálózatok  | Nem | Adott Azure virtuális hálózatokhoz való hozzáférés engedélyezése a replikált adatok tárolására szolgáló gyorsítótár tárfiókok használata nem támogatott.
 Általános célú V2 storage-fiókok (a gyakran és ritkán. szint) | Nem | Tranzakciós költségek növekedését jelentősen képest általános célú tárfiókok 1-es verzió
 
 >[!IMPORTANT]
@@ -200,6 +200,8 @@ Nem hitelesített Proxy | Támogatott | Tekintse meg [hálózati útmutató.](si
 Hitelesített Proxy | Nem támogatott | Ha a virtuális gép egy hitelesített proxykiszolgálót használ a kimenő hálózati kapcsolatot, akkor nem replikálhatók Azure Site Recovery segítségével.    
 Webhelyek közötti VPN a helyszíni (vagy anélkül ExpressRoute)| Támogatott | Ellenőrizze, hogy a udr-EK és NSG-ket úgy, hogy a Site recovery nem továbbítódik a helyszíni. Tekintse meg [hálózati útmutató.](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuális hálózat virtuális Hálózatot kapcsolathoz | Támogatott | Tekintse meg [hálózati útmutató.](site-recovery-azure-to-azure-networking-guidance.md)  
+Virtuális hálózati szolgáltatásvégpontok | Támogatott | Az Azure Storage tűzfalak a virtuális hálózatok nem támogatottak. Adott Azure virtuális hálózatokhoz való hozzáférés engedélyezése a replikált adatok tárolására szolgáló gyorsítótár tárfiókok használata nem támogatott.
+Gyorsított hálózatkezelés | Nem támogatott | A hálózat elérését gyorsítja fel engedélyezve van a virtuális gépek replikálható, de a feladatátvétel virtuális gép nem lesz engedélyezve van az elérését gyorsítja fel hálózati. Gyorsított hálózatkezelés is le lesz tiltva feladat-visszavételt a virtuális gép – forrásként.
 
 
 ## <a name="next-steps"></a>További lépések

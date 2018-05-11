@@ -1,8 +1,8 @@
 ---
-title: "Azure fájlszinkronizálás (előzetes verzió) hibaelhárítása |} Microsoft Docs"
-description: "Az Azure fájlszinkronizálás kapcsolatos gyakori hibák elhárítása."
+title: Azure fájlszinkronizálás (előzetes verzió) hibaelhárítása |} Microsoft Docs
+description: Az Azure fájlszinkronizálás kapcsolatos gyakori hibák elhárítása.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -28,12 +28,20 @@ Ez a cikk célja, és esetleg előforduló Azure fájlszinkronizálás telepít�
 1. Ez a cikk megjegyzéseket tartalmazó részét.
 2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure-fájlokat UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Microsoft támogatási szolgálatához. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
+4. A Microsoft ügyfélszolgálata. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
 
 ## <a name="storage-sync-service-object-management"></a>Szinkronizálási szolgáltatás objektum Tároláskezelés
 Ha törli egy erőforrás-Áthelyezés egy előfizetés másik előfizetést, fájladatforrások sync (tároló szinkronizálási szolgáltatás) le lesz tiltva áthelyezését. 
 
 ## <a name="agent-installation-and-server-registration"></a>Az ügynök telepítése és a kiszolgáló regisztrálása
+### <a name="during-server-registration-get-the-error-the-term-find-azurermresource-is-not-recognized-as-the-name"></a>Kiszolgáló regisztrálása során hibaüzenet "kifejezés"keresési-AzureRMResource"értéke nem értelmezhető a név..."
+A probléma oka, hogy a parancsmag keresés AzureRMResource változott-e a AzureRM v6.  A következő verzió a Sync-ügynök úgy lesz kijavítva, AzureRM v6 támogatásához.  Addig által a probléma megkerüléséhez:
+1. Állítsa le a jelenlegi ServerRegistration.exe taskmgr keresztül
+2. Nyissa meg egy PowerShell-parancssort rendszergazdaként
+3. PS C:\> eltávolítása modul AzureRM
+4. PS C:\> install-module-AzureRM - RequiredVersion 5.7.0 neve
+5. Indítsa el a C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
+
 <a id="agent-installation-failures"></a>**Ügynök telepítési hibáinak elhárítása**  
 Ha az Azure fájlszinkronizálás telepítése meghiúsul, egy rendszergazda jogú parancssorba a következő paranccsal bekapcsolása naplózás ügynök telepítése közben:
 

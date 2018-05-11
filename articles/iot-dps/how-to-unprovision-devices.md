@@ -5,18 +5,18 @@ services: iot-dps
 keywords: ''
 author: bryanla
 ms.author: v-jamebr;bryanla
-ms.date: 04/06/2018
+ms.date: 05/11/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 439d4ffa8eec12481f52bd15f0060800411f316e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 87932c1ae1676d36ea0eb1ba7885f2ac455949ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Hogyan korábban automatikus-kiépített eszközök kiosztásának megszüntetése 
 
@@ -29,7 +29,7 @@ Előfordulhat, szükség deprovision eszközök korábban automatikus kiosztás�
    - Az eszköz disenroll, lásd: [hogyan Azure IoT Hub eszköz kiépítése szolgáltatáshoz eszközről disenroll](how-to-revoke-device-access-portal.md).
    - Programozott módon, a létesítési szolgáltatás SDK-k egyik eszköz disenroll lásd: [eszközbeléptetésnél a szolgáltatás SDK-k kezelése](how-to-manage-enrollments-sdks.md).
 
-2. Az IoT Hub jövőbeli kommunikáció és az adatátvitelt megelőzése érdekében az eszköz regisztrációjának törléséhez. Ebben az esetben ideiglenesen letilthatja vagy véglegesen törli az eszköz bejegyzést az identitásjegyzékhez az IoT Hub, ahol lett kiépítve a. Lásd: [eszközök letiltása](/azure/iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) megfelelő tájékozódhat. "Eszköz felügyeleti / IoT-eszközök" az IoT-központ erőforrás című a [Azure-portálon](https://portal.azure.com).
+2. Az IoT Hub jövőbeli kommunikáció és az adatátvitelt megelőzése érdekében az eszköz regisztrációjának törléséhez. Ebben az esetben ideiglenesen letilthatja vagy véglegesen törli az eszköz bejegyzést az identitásjegyzékhez az IoT Hub, ahol lett kiépítve a. Lásd: [eszközök letiltása](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) megfelelő tájékozódhat. "Eszköz felügyeleti / IoT-eszközök" az IoT-központ erőforrás című a [Azure-portálon](https://portal.azure.com).
 
 A pontos lépései kiosztásának megszüntetése eszköz a tanúsítvány mechanizmus és a vonatkozó regisztrációs bejegyzés az üzembe helyezési szolgáltatással függ. A következő szakaszokban a folyamat, a regisztráció és a tanúsítvány típusa alapján áttekintése.
 

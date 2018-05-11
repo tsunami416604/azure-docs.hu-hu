@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 90fb659abfcff09eb715fcc29bbfb7e4facd3a6b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0cb37a29847e69dae4a0e0682591bae092b38360
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection által észlelt biztonsági rések
 Biztonsági rések a környezetben, amely is kihasználható egy támadó gyengeségei miatt. Azt javasoljuk, hogy a szervezet meghatározott biztonsági előírások javítása érdekében a biztonsági rések cím, és hogy a támadók kihasználva őket.
@@ -47,7 +47,7 @@ A modern vállalatok számára az informatikai részleg gyakran nem tudnak a a s
 
 Azt javasoljuk, hogy a szervezet üzembe a Cloud App Discovery nem felügyelt felhőalapú alkalmazások felderítésére, valamint hogyan kezelhetők ezek az alkalmazások az Azure Active Directoryval.
 
-További részletekért lásd: [keresése a nem felügyelt felhőalapú alkalmazásokhoz, a Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
+További részletekért lásd: [keresése a nem felügyelt felhőalapú alkalmazásokhoz, a Cloud App Discovery](manage-apps/cloud-app-discovery.md).
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>A Privileged Identity Management biztonsági riasztásai
 A biztonsági rés segít felderíteni, és oldja meg a szervezet a kiemelt jogosultságú identitások kapcsolatos riasztások.  

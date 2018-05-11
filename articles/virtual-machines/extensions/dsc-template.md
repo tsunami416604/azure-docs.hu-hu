@@ -16,8 +16,8 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: 7657f27e25af62f13371a9216596f142dc2491dd
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d19d33d7d8d19923e814b8685c3e56553f85850d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -394,6 +394,6 @@ Kövesse az előző példában megadott formátumban. Figyelendő ajánlatok, ve
 ## <a name="next-steps"></a>További lépések
 
 - További tudnivalók [virtuálisgép-méretezési használatával beállítja a Azure DSC-bővítménnyel](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
-- Kapcsolatos további részletekért található [DSC biztonságos hitelesítőadat-kezelés](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Első egy [bemutatása az Azure DSC-bővítmény kezelő](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Kapcsolatos további részletekért található [DSC biztonságos hitelesítőadat-kezelés](dsc-credentials.md).
+- Első egy [bemutatása az Azure DSC-bővítmény kezelő](dsc-overview.md).
 - A PowerShell DSC kapcsolatos további információkért lásd a [PowerShell dokumentációs központban](/powershell/dsc/overview).

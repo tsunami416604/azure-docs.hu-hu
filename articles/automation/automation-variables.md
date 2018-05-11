@@ -1,18 +1,19 @@
 ---
-title: "Az Azure Automationben változó eszközök"
-description: "Változó eszközök értékeket összes forgatókönyve és az Azure Automation DSC-konfiguráció számára elérhető.  Ez a cikk ismerteti a változók és a szöveges és a grafikus szerzői őket munkavégzés részleteit."
+title: Az Azure Automationben változó eszközök
+description: Változó eszközök értékeket összes forgatókönyve és az Azure Automation DSC-konfiguráció számára elérhető.  Ez a cikk ismerteti a változók és a szöveges és a grafikus szerzői őket munkavégzés részleteit.
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7c36fce380712da6572e9512a05af9c23c4152a2
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 2cae2746df5c9262fc0cb0071d20c04172bd5635
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Az Azure Automationben változó eszközök
 
@@ -43,7 +44,7 @@ A rendelkezésre álló Automation változó típusainak listáját a következ�
 * Egész szám
 * DateTime
 * Logikai
-* NULL értékű
+* Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
 A következő táblázatban található parancsmagokkal AzureRM, létrehozását és kezelését az automatizálási hitelesítő eszközök a Windows PowerShell használatával történik. Részét képezi a [AzureRM.Automation modul](/powershell/azure/overview) elérhető Automation-forgatókönyveket és a DSC-konfigurációk.

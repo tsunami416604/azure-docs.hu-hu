@@ -3,16 +3,17 @@ title: Egy Azure Automation-integrációs modul létrehozása
 description: Ez az oktatóprogram végigvezeti az integrációs modulok létrehozásán, tesztelésén és példahasználatán az Azure Automationben.
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7b7aa09776045705ce98a472adbbe2f36d827ccc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 470f513260cef516fd53ad213138480bd056456a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation integrációs modulok
 Az Azure Automation mögötti alapvető technológia a PowerShell. Minthogy az Azure Automation a PowerShellre épül, a PowerShell-modulok kulcsfontosságúak az Azure Automation bővíthetősége szempontjából. Ez a cikk a Microsoft végigvezeti Önt a mintaadatokról "Integrációs modulok", és ajánlott eljárások a saját PowerShell-modulok létrehozásához használhatók az Azure integrációs modulok biztosítania kell a PowerShell-modulok használata Azure Automation Automatizálási. 

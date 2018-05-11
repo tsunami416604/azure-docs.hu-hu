@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory Connect: Gyakori kérdések – |} Microsoft Docs"
-description: "Ezen a lapon az Azure AD Connect vonatkozó gyakran ismételt kérdések."
+title: 'Az Azure Active Directory Connect: Gyakori kérdések – |} Microsoft Docs'
+description: Ezen a lapon az Azure AD Connect vonatkozó gyakran ismételt kérdések.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 05/09/2018
 ms.author: billmath
-ms.openlocfilehash: 07b0209ef94f91c00b98b8801323a58cd9d14494
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 46a9bf47b4998c4d5be47f67556fbdb3ba7b71db
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Gyakori kérdések az Azure Active Directory Connect
 
@@ -98,6 +98,68 @@ Jelenleg nem támogatjuk a bejelentkezési oldal HTML attribútumainak módosít
 
 **K: akadályozza meg, hogy a munkamenetek van?**</br>
 Nem.
+
+## <a name="auto-upgrade"></a>Automatikus frissítés
+
+**K: Mi a következő előnyöket és használatával következményeit automatikus frissítését?**</br>
+Ajánlott az összes ügyfél automatikus frissítése az Azure AD Connect telepítésének engedélyezése. A következő előnyöket is, hogy a legújabb javítások, beleértve a biztonsági frissítések, az Azure AD Connectben észleltünk biztonsági réseket mindig fognak kapni. A frissítési folyamat csoportházirendes, és automatikusan történik, amint egy új verziója érhető el. Minden új kiadásban az Azure AD Connect ügyfelek automatikus frissítése a sok ezer azt kiszolgálni.
+
+Az automatikus frissítési folyamat először mindig meghatározzák hogy nélküli telepítés nem jogosult az automatikus frissítés (Ez magában foglalja, szabályok, egyéni módosításait keres adott környezeti tényezők stb.), és ha igen, a frissítés végre és tesztelt. Ha a tesztek azt mutatják, hogy egy frissítés sikertelen volt, az előző verzió automatikusan lekérni vissza.
+
+Attól függően, hogy a környezet mérete a folyamat eltarthat néhány óra múlva, és amíg megtörténik a frissítés, a Nincs szinkronizálás a Windows Server AD és az Azure AD között történik.
+
+**K: kaptam egy e-mailt kapok, amely már nem működik az automatikus frissítés és új verzió telepítéséhez van szükség. Miért kell ehhez?**</br>
+Tavaly megjelent egy verziója, az Azure AD Connect letiltó, bizonyos esetekben előfordulhat, hogy az automatikus frissítési szolgáltatás a kiszolgálón. A probléma az Azure AD Connectben verzió 1.1.750.0, az előző hónap végén kiadott rögzített azt. Igazolnia kell, hogy az ügyfelek, akik érinti ez a probléma, és manuálisan frissítse a probléma elhárítása érdekében az Azure AD Connect legújabb verzióját. Frissítsen kézzel, töltse le, és a AADConnect.msi fájl legfrissebb verzióját futtassa.
+ 
+-  Ha az aktuális verziója régebbi, mint 1.1.750.0, frissítenie kell a legújabb verzióra [amely innen tölthető le](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+- Ha az Azure AD Connect verziószáma 1.1.750.0 vagy újabb, nincs teendője elhárítása érdekében az automatikus frissítési probléma, mivel most már a verziót egy javítást a. 
+
+**K: kaptam egy e-mailt kapok kívánja újból engedélyezni az automatikus frissítés legújabb verziójára történő frissítéshez. A 1.1.654.0 vagyok, kell frissíteni?** </br>    
+Igen, akkor frissítenie kell a 1.1.750 vagy újabb kívánja újból engedélyezni az automatikus frissítés. Ez a hivatkozás, amely azt ismerteti, hogyan egy újabb verziójára történő frissítéshez
+
+**K: kaptam egy e-mailt kapok kívánja újból engedélyezni az automatikus frissítés legújabb verziójára történő frissítéshez. Engedélyezze az automatikus frissítési hoztam PowerShell, továbbra is kell telepíteni a legújabb verziót?**</br>    
+Igen, továbbra is szeretné 1.1.750.0 verzióra való frissítés vagy újabb. Az automatikus frissítés szolgáltatást, amely PowerShell nem csökkenti a található 1.1.750 előtti verziói az automatikus frissítési probléma
+
+**K: kívánt újabb verziójára, de nem biztos, akik az Azure AD Connect telepítése, és azt nem rendelkezik a felhasználónév és jelszó.  Tegye van erre szükség?**</br>
+Nem kell tudni, hogy a felhasználónév, és az Azure AD Connect – bármely Azure AD-fiókot, amely a globális rendszergazdai szerepkörrel rendelkezik. frissíteni kezdetben használt jelszót is használható.
+
+**K: Hogyan tudhatom meg, hogy a vagyok az Azure AD Connect melyik verzióját?**</br>   
+Ellenőrizze, hogy melyik Azure AD Connect verziója telepítve van a kiszolgálón, nyissa meg a Vezérlőpultot, és keresse meg a telepített programok > Programok és szolgáltatások"" a Microsoft Azure AD Connect:
+
+![verzió:](media/active-directory-aadconnect-faq/faq1.png)
+
+**K: hogyan végezhető el a legújabb verzió és az AADConnect?**</br>    
+Ez [cikk](active-directory-aadconnect-upgrade-previous-version.md) egy újabb verzióra történő frissítésének ismerteti. 
+
+**K: azt már a legújabb verzióra frissítve az AADConnect az elmúlt évben, szükséges a frissítéséhez újra?**</br> Az Azure AD Connect csapatok gyakori frissít a szolgáltatáshoz, és fontos, hogy a kiszolgáló folyamatosan naprakész adatokat tartalmazzon is kihasználhatják a hibajavításokat és biztonsági frissítések, valamint az új szolgáltatásokat a legújabb verzióra. Ha engedélyezi az automatikus frissítés szoftververziók automatikusan frissítve lesz. Az Azure AD Connect verziókiadások megkereséséhez kövesse a [hivatkozás](active-directory-aadconnect-version-history.md).
+
+**K: mennyi ideig tart a hajtsa végre a frissítést, és mi az a a felhasználók számára?**</br>    
+Frissítéséhez szükséges idő a bérlő méretétől függ, és nagyobb szervezeteknek célszerű elvégezni ezt a este vagy hétvégi lehet. Vegye figyelembe, hogy a frissítés során nem szinkronizálási tevékenység történik.
+
+**K: I úgy érzi, AADConnect frissítettem, de az Office portálon továbbra is említi DirSync.  Wny van szó?**</br>    
+Az Office-csapat működik-e az Office portál frissítéseinek a jelenlegi termék név – ezek nem feltétlenül mely Szinkronizáló eszközt használ.
+
+**K: I, az automatikus frissítési állapota be van jelölve, és "Felfüggesztve" felirat látható. Miért felfüggesztve azt? Kell engedélyezhető azt?**</br>     
+Hiba az előző verziót, bizonyos körülmények között, akkor hagyja az automatikus frissítési állapot beállítása "felfüggesztett" lett bevezetve. Manuális engedélyezése technikailag lehetséges, de számos összetett lépést igényelnének, így a legjobb művelet, amelyet az Azure AD Connect legújabb verziójának telepítése
+
+**K: a vállalat szigorú módosítás felügyeleti követelményekkel rendelkezik, és szabályozhatja, mikor leküldött szeretnék. Szabályozható, ha nincs elindítva az automatikus frissítési?**</br> Nem, nincs ilyen szolgáltatás ma, ez az, amit azt egy későbbi kiadásban kiértékelését végzi.
+
+**K: Ha az automatikus frissítés nem sikerült fog hozzá egy e-mailt? Hogyan tudják meg, hogy, hogy az sikeres volt-e?**</br>     
+Ön nem kap értesítést, az eredmény a frissítés, ez a valami azt egy későbbi kiadásban kiértékelését végzi.
+
+**Tesz közzé, ha azt tervezi, hogy automatikus-frissítésének leküldéses idősorán Q:do?**</br>    
+Automatikus frissítési első lépése a kiadás során egy újabb verzióra, így ha fennáll az új kiadási azt fogja leküldeni a auto-frissítések. Az Azure AD Connect újabb verziók az alábbiak az előre bejelentett a [Azure AD terv](../../active-directory/whats-new.md).
+
+**K: nem automatikus frissítési frissítési AAD Connect Health?**</br>   Igen, az automatikus frissítés is frissíti az AAD Connect Health
+
+**K: ne is AAD-csatlakozás kiszolgálók automatikus frissítési az átmeneti környezetű üzemmód?**</br>   
+Nem, akkor is nem automatikus frissítési egy Azure AD Connect-kiszolgáló, amely átmeneti módban van.
+
+**Kérdés: Ha automatikus frissítési sikertelen lesz, és az AAD-Csatlakozás kiszolgálóhoz nem indul el, mi a teendő?**</br>   
+Bizonyos ritkán előforduló esetekben az Azure AD Connect szolgáltatás nem indul el a frissítés végrehajtása után. Adott esetben indítsa újra a kiszolgálóra, amely a hibát általában javítja. Ha az Azure AD Connect szolgáltatás sem indul, nyisson egy támogatási jegy. Íme egy [hivatkozás](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/) , amely azt ismerteti, hogyan ehhez. 
+
+**K: nem biztos a kockázatok Mik az Azure AD Connect egy újabb verzióra történő frissítése során. Meghívhatja szeretnék segítséget kérek a frissítést?**</br>
+Ha az Azure AD Connect egy újabb verziójára frissít, a nyisson egy támogatási jegy kell, ez egy [hivatkozás](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/) , amely bemutatja, hogyan ehhez.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 **K: hogyan kaphat segítséget az Azure AD Connect?**

@@ -9,11 +9,11 @@ ms.date: 05/07/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 3750bc409753868566c91c01cf6093f439c599f9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a56fa61c6d77ab50dc1342c5a7feeaf1c579697d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -116,7 +116,7 @@ A házirend szabályban hivatkozási paraméter a következő szintaxissal:
 }
 ```
 
-## <a name="definition-location"></a>Definíció helye
+## <a name="definition-location"></a>Definiálás helye
 
 Az kezdeményezés, vagy a házirend-definíció létrehozása, során fontos, hogy megadja a Definiálás helye.
 
@@ -256,120 +256,61 @@ Példa a naplózást, ha egy virtuálisgép-bővítmény nincs telepítve, tekin
 
 Egy erőforrás típusára vonatkozó tulajdonságokat eléréséhez használt tulajdonságának aliasokat. Aliasok engedélyezi, hogy milyen értékeket, vagy a feltételek engedélyezve van a erőforrás-tulajdonságok korlátozása. Mindegyik aliasnak elérési utak a különböző API-verziók egy adott erőforrástípusra van leképezve. Házirend kiértékelése közben a házirendmotor lekérdezi az adott API-verzió útvonal.
 
-**Microsoft.Cache/Redis**
+Aliasok listája mindig nő. Annak megállapításához, hogy milyen aliasok Azure házirend által jelenleg támogatott, a következő módszerek valamelyikével:
 
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Cache/Redis/enableNonSslPort | Állítsa e a nem ssl-Redis-kiszolgáló port (6379) engedélyezve van. |
-| Microsoft.Cache/Redis/shardCount | Adjon meg a szilánkok prémium fürt gyorsítótárat létrehozni.  |
-| Microsoft.Cache/Redis/sku.capacity | A telepítendő Redis gyorsítótár méretének beállítása.  |
-| Microsoft.Cache/Redis/sku.family | Állítsa be az SKU-család használható. |
-| Microsoft.Cache/Redis/sku.name | Állítsa be a Redis Cache telepítendő típusú. |
+- Azure PowerShell
 
-**Microsoft.Cdn/profiles**
+  ```azurepowershell-interactive
+  # Login first with Connect-AzureRmAccount if not using Cloud Shell
 
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.CDN/profiles/sku.name | Állítsa be az árképzési szint nevét. |
+  $azContext = Get-AzureRmContext
+  $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+  $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+  $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
+  $authHeader = @{
+      'Content-Type'='application/json'
+      'Authorization'='Bearer ' + $token.AccessToken
+  }
 
-**Microsoft.Compute/disks**
+  # Invoke the REST API
+  $response = Invoke-RestMethod -Uri 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases' -Method Get -Headers $authHeader
 
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Compute/imageOffer | Állítsa be az ajánlat platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imagePublisher | Állítsa be a közzétevő platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imageSku | Állítsa be a Termékváltozat platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imageVersion | Állítsa be a platformlemezképet vagy a Piactéri lemezképhez a virtuális gép létrehozásához használt verzióját. |
+  # Create an Array List to hold discovered aliases
+  $aliases = New-Object System.Collections.ArrayList
 
+  foreach ($ns in $response.value) {
+      foreach ($rT in $ns.resourceTypes) {
+          if ($rT.aliases) {
+              foreach ($obj in $rT.aliases) {
+                  $alias = [PSCustomObject]@{
+                      Namespace       = $ns.namespace
+                      resourceType    = $rT.resourceType
+                      alias           = $obj.name
+                  }
+                  $aliases.Add($alias) | Out-Null
+              }
+          }
+      }
+  }
 
-**Microsoft.Compute/virtualMachines**
+  # Output the list, sort, and format. You can customize with Where-Object to limit as desired.
+  $aliases | Sort-Object -Property Namespace, resourceType, alias | Format-Table
+  ```
 
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Compute/imageId | Állítsa be a virtuális gép létrehozásához használt kép azonosítója. |
-| Microsoft.Compute/imageOffer | Állítsa be az ajánlat platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imagePublisher | Állítsa be a közzétevő platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imageSku | Állítsa be a Termékváltozat platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imageVersion | Állítsa be a platformlemezképet vagy a Piactéri lemezképhez a virtuális gép létrehozásához használt verzióját. |
-| Microsoft.Compute/licenseType | Állítsa be, hogy a lemezkép vagy lemez-e a licencelt helyszíni. Ez az érték csak a Windows Server operációs rendszert tartalmazó lemezképek használatos.  |
-| Microsoft.Compute/virtualMachines/imageOffer | Állítsa be az ajánlat platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/virtualMachines/imagePublisher | Állítsa be a közzétevő platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/virtualMachines/imageSku | Állítsa be a Termékváltozat platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/virtualMachines/imageVersion | Állítsa be a platformlemezképet vagy a Piactéri lemezképhez a virtuális gép létrehozásához használt verzióját. |
-| Microsoft.Compute/virtualMachines/osDisk.Uri | Állítsa be a virtuális merevlemez URI azonosítója. |
-| Microsoft.Compute/virtualMachines/sku.name | A virtuális gép méretének beállítása. |
-| Microsoft.Compute/virtualMachines/availabilitySet.id | Beállítja a rendelkezésre állási csoport a virtuális gép azonosítója. |
+- Azure CLI
 
-**Microsoft.Compute/virtualMachines/extensions**
+  ```azurecli-interactive
+  # Login first with az login if not using Cloud Shell
 
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Compute/virtualMachines/extensions/publisher | Állítsa be a kiadó nevét: a bővítményt. |
-| Microsoft.Compute/virtualMachines/extensions/type | Állítsa be a kiterjesztés típusú. |
-| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | A verzió megadása |
+  # Get Azure Policy aliases for a specific Namespace
+  az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
+  ```
 
-**Microsoft.Compute/virtualMachineScaleSets**
+- REST API-t / ARMClient
 
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Compute/imageId | Állítsa be a virtuális gép létrehozásához használt kép azonosítója. |
-| Microsoft.Compute/imageOffer | Állítsa be az ajánlat platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imagePublisher | Állítsa be a közzétevő platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imageSku | Állítsa be a Termékváltozat platformlemezképet vagy a virtuális gép létrehozásához használt Piactéri lemezképhez. |
-| Microsoft.Compute/imageVersion | Állítsa be a platformlemezképet vagy a Piactéri lemezképhez a virtuális gép létrehozásához használt verzióját. |
-| Microsoft.Compute/licenseType | Állítsa be, hogy a lemezkép vagy lemez-e a licencelt helyszíni. Ez az érték csak a Windows Server operációs rendszert tartalmazó lemezképek használatos. |
-| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | A méretezési csoportban lévő összes virtuális gépet a számítógép nevének előtagját beállítása |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | Állítsa be a blob URI felhasználói lemezkép. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | A méretezési az operációs rendszer lemezek tárolására használt tároló URL-címeinek beállítása. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.name | Méretezési csoportban lévő virtuális gépek méretének beállítása. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Méretezési csoportban lévő virtuális gépek szintjének beállítása |
-
-**Microsoft.Network/applicationGateways**
-
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Network/applicationGateways/sku.name | Az átjáró méretének beállítása. |
-
-**Microsoft.Network/virtualNetworkGateways**
-
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Network/virtualNetworkGateways/gatewayType | Állítsa be a virtuális hálózati átjáró típusát. |
-| Microsoft.Network/virtualNetworkGateways/sku.name | Állítsa be az átjáró-termékváltozat. |
-
-**Microsoft.Sql/servers**
-
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Sql/servers/version | Állítsa be a kiszolgáló verziója. |
-
-**Microsoft.Sql/databases**
-
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Sql/servers/databases/edition | Állítsa be az adatbázis-kiadás. |
-| Microsoft.Sql/servers/databases/elasticPoolName | Állítsa be a rugalmas készlet az adatbázis nevét. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | Állítsa be az adatbázis konfigurált szolgáltatási szint célkitűzésének azonosítója. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | Állítsa be a konfigurált szolgáltatásiszint-célkitűzés az adatbázis nevét.  |
-
-**Microsoft.Sql/elasticpools**
-
-| Alias | Leírás |
-| ----- | ----------- |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Állítsa be a rugalmas adatbáziskészlet az összes megosztott DTU. |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Állítsa be a rugalmas készlet kiadása. |
-
-**Microsoft.Storage/storageAccounts**
-
-| Alias | Leírás |
-| ----- | ----------- |
-| Microsoft.Storage/storageAccounts/accessTier | Állítsa be a hozzáférési réteg számlázási használatos. |
-| Microsoft.Storage/storageAccounts/accountType | Állítsa be a termékváltozat. |
-| Microsoft.Storage/storageAccounts/enableBlobEncryption | Állítsa be, hogy a szolgáltatás titkosítja az adatokat a blob storage szolgáltatásban tárolt. |
-| Microsoft.Storage/storageAccounts/enableFileEncryption | Állítsa be, hogy a szolgáltatás titkosítja az adatokat, a fájl storage szolgáltatásban tárolt. |
-| Microsoft.Storage/storageAccounts/sku.name | Állítsa be a termékváltozat. |
-| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Beállítása, hogy a csak https-forgalom tároló szolgáltatást. |
-| Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id | Ellenőrizze, hogy engedélyezve van-e a virtuális hálózati szolgáltatási végpont. |
+  ```http
+  GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
+  ```
 
 ## <a name="initiatives"></a>Kezdeményezések
 

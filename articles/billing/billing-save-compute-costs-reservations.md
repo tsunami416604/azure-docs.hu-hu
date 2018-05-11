@@ -3,8 +3,8 @@ title: Pénzt takaríthat meg előre fizető az Azure virtuális gépek - Azure 
 description: Tudnivalók Azure fenntartott virtuálisgép-példányt kívánja, mentheti a virtuális gépek költségeit.
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikramdesai01
+author: yashesvi
+manager: yashesvi
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: yashar
+ms.openlocfilehash: 9c73102f09e252b449f78603debaf707b3c89c3b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>Kevesebbet költeni a virtuális gépek a fenntartott virtuálisgép-példányok 
 Fenntartott virtuálisgép-példányok engedélyezi, hogy egy- vagy kedvezményes hozzáférhet a virtuális gépek számítási kapacitás három évnyi előre fizet. Ez jelentősen csökkenti a virtuális gép költségek – 72 %-át használatalapú árak – az egy- vagy három év társaságuk előre. Fenntartott virtuálisgép-példányok számlázási kedvezménnyel érhető el, és nem befolyásolja a virtuális gépek futásidejű állapotát.
@@ -35,6 +35,7 @@ Az ilyen előfizetések Azure-ügyfél vásárolhat egy fenntartott virtuális g
 -   Nagyvállalati Szerződés előfizetés ajánlattípus (MS-AZR - 0017P).
 -   [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés ajánlattípus (MS-AZR - 003 P).
 A "Tulajdonos" szerepkört az előfizetés vásárolható meg a fenntartott példánya a kell lennie. Az beszerzése a vállalati beléptetési-foglalásokat, a vállalati rendszergazda a beállítás engedélyezve van alapértelmezés szerint engedélyezi a Foglalás vásárlás EA portálon kell.
+-   Cloud Solution Provider (CSP) partnerek használhatja az Azure felügyeleti portálon vagy [Partnerközpontjában](https://docs.microsoft.com/partner-center/azure-reservations) foglalások megvásárlásához.
 
 ## <a name="how-is-a-reserved-virtual-machine-instances-purchase-billed"></a>Hogyan van egy fenntartott virtuálisgép-példányok beszerzési számlázása?
 A foglalási beszerzési a fizetési módot, az előfizetés kötve van rendelve. Ha egy vállalati előfizetéssel rendelkezik, a fenntartás költsége vonni a pénzügyi kötelezettségvállalást a egyenleg. Ha a pénzügyi kötelezettségvállalást a egyenleg nem fedi le a fenntartás költsége, díjon számlázzuk a túlhasználati.
@@ -69,5 +70,7 @@ Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a köv
 - [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés használata fenntartott példány ismertetése](billing-understand-reserved-instance-usage-ea.md)
 - [A Windows szoftverek költségeit fenntartott példányok nem találhatók](billing-reserved-instance-windows-software-costs.md)
+- [Fenntartott Partner Center Cloud Solution Provider (CSP) program-példány](https://docs.microsoft.com/partner-center/azure-reservations)
 
+## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 Ha segítségre van szüksége, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.

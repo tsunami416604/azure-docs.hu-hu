@@ -1,20 +1,22 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 05/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 100e0457627a04414ad2f0780a346933b11f4376
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 842083f0f69552fb9076423386353dbb4dae73b5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
 ---
-1. A **Csatlakozás** elemre kattintva létrehoz és letölt egy Remote Desktop Protocol fájlt (.rdp-fájlt). A fájl használatához kattintson a **Megnyitás** elemre.
+1. Kattintson a **Connect** gombra a virtuális gép tulajdonságok lapján. 
+2. Az a **kapcsolódás a virtuális gép** lapon hagyja válassza ki a megfelelő beállításokat, majd kattintson **letöltése RDP-fájl**.
+2. Nyissa meg a letöltött RDP-fájlt, és kattintson a **Connect** megjelenésekor. 
 2. Egy figyelmeztetés fog megjelenni arról, hogy az `.rdp`-fájl közzétevője ismeretlen. Ez nem jelent problémát. A Távoli asztal ablakában kattintson a **Csatlakozás** gombra a folytatáshoz.
    
     ![Képernyőkép az ismeretlen közzétevőre vonatkozó figyelmeztetésről.](./media/virtual-machines-log-on-win-server/rdp-warn.png)

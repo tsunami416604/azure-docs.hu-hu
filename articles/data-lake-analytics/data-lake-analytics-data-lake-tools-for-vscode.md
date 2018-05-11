@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: fcd821c91a8c94792eeed83940abe1c72d0b2fb8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f35aa14286874d7c152509a69bd171b95b19e22b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Az Azure Data Lake Tools használja a Visual Studio Code
 
@@ -449,6 +449,10 @@ A Data Lake Tools for Visual STUDIO Code támogatja a következő funkciókat:
 
     ![A Data Lake Tools for Visual Studio Code szintaxis kiemelések](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
 
+   >[!NOTE]
+   >Előkészítésekor a az új általános adatok védelmi szabályozás (GDPR) melyek életbe 2018. május 25. javasoljuk, hogy a felhasználók az Azure Data Lake Tools for Visual Studio Code 0.2.13 verzióra frissítésével vagy újabb. Ebben a verzióban a legfrissebb adatvédelmi követelmények alapján módosításait tartalmazza. Vegye figyelembe, hogy a korábbi verziók nem érhetők el a töltse le, és elavulttá váltak. 
+ 
+   
 ## <a name="next-steps"></a>További lépések
 - [U-SQL Python, R és az Azure Data Lake Analytics a VSCode a CSharp fejlesztése](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [U-SQL helyi futtatásával és a helyi hibakeresése a Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md)

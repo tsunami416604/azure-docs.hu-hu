@@ -3,6 +3,7 @@ title: Azure Automation kapcsolatos gyakori hibák elhárítása |} Microsoft Do
 description: Ez a cikk bővebb információt talál, és Azure Automation gyakori hibák elhárítása.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
@@ -10,11 +11,11 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Automation-hiba, hibaelhárítási, probléma
-ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d8bf617aaef463121abe76cd85a98615c83f11ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Az Azure Automationben kapcsolatos gyakori hibák elhárítása 
 Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Azure Automationben és azok megoldását lehetséges megoldások javasolja.

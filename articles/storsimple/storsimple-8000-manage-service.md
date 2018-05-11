@@ -1,24 +1,24 @@
 ---
-title: "Az Azure-ban a StorSimple Device Manager szolgáltatás üzembe helyezése |} Microsoft Docs"
-description: "Azt ismerteti, hogyan hozhat létre, és törölje a StorSimple Device Manager szolgáltatást, az Azure portálon, és a szolgáltatás regisztrációs kulcsának kezelését ismerteti."
+title: Az Azure-ban a StorSimple Device Manager szolgáltatás üzembe helyezése |} Microsoft Docs
+description: Azt ismerteti, hogyan hozhat létre, és törölje a StorSimple Device Manager szolgáltatást, az Azure portálon, és a szolgáltatás regisztrációs kulcsának kezelését ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple Device Manager szolgáltatás a StorSimple 8000 sorozat eszközeire üzembe helyezése
 
@@ -29,7 +29,9 @@ A StorSimple Device Manager szolgáltatás a Microsoft Azure-ban és több StorS
 Ez az oktatóanyag azt ismerteti, hogyan létrehozása, törlés, a szolgáltatás és a szolgáltatás regisztrációs kulcsának kezelése. Az ebben a cikkben szereplő információ is alkalmazható, csak a StorSimple 8000 sorozat eszközeire. További információ a StorSimple virtuális tömbök Ugrás [a StorSimple virtuális tömb StorSimple Device Manager szolgáltatás telepítése](storsimple-virtual-array-manage-service.md).
 
 > [!NOTE]
-> Klasszikus StorSimple eszköz vezetők automatikusan került az új Azure-portálon. Ha kérdése van, lásd: [– gyakori kérdések: áthelyezése az Azure-portálon](storsimple-8000-move-azure-portal-faq.md). Az Azure Service Management (ASM) PowerShell-parancsmagok használata nem támogatott az új Azure portálra az áthelyezés után. Frissítenie a parancsfájlokat az eszközök kezeléséhez, és keresse meg a [parancsfájlok használata Azure Resource Manager SDK-alapú StorSimple Eszközkezelés](storsimple-8000-automation-azurerm-scripts.md) további információt. Az új Azure-portálon 5.0-s vagy újabb frissítés rendszerű eszközöket támogatja. Ha az eszköz nem naprakész, 5. frissítésétől azonnal kell telepíteni. További információkért látogasson el [telepítése frissítés 5](storsimple-8000-install-update-5.md). A StorSimple felhő készülék (8010-es/8020-as modell) használata, a felhő készülék nem frissíthető. Hozzon létre egy új felhőalapú készülék frissítés 5.0, és ezután átveheti a létrehozott új felhő készülék szoftver legújabb verzióját használja. Minden eszköz 4.0-s vagy régebbi verziót futtató a frissítés fog tapasztalni [felügyeleti funkció csökkenteni](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
+> -  Az Azure-portálon 5.0-s vagy újabb frissítés rendszerű eszközöket támogatja. Ha az eszköz nem naprakész, 5. frissítésétől azonnal kell telepíteni. További információkért látogasson el [telepítése frissítés 5](storsimple-8000-install-update-5.md). 
+> - A StorSimple felhő készülék (8010-es/8020-as modell) használata, a felhő készülék nem frissíthető. Hozzon létre egy új felhőalapú készülék frissítés 5.0, és ezután átveheti a létrehozott új felhő készülék szoftver legújabb verzióját használja. 
+> - Minden eszköz 4.0-s vagy régebbi verziót futtató a frissítés fog tapasztalni [felügyeleti funkció csökkenteni](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
 
 ## <a name="create-a-service"></a>Szolgáltatás létrehozása
 Hozzon létre a StorSimple Device Manager szolgáltatást, akkor kell rendelkeznie:
@@ -38,11 +40,7 @@ Hozzon létre a StorSimple Device Manager szolgáltatást, akkor kell rendelkezn
 * Egy aktív Microsoft Azure storage-fiók
 * A kezelési használt számlázási adatokat
 
-Csak egy nagyvállalati szerződéssel rendelkező előfizetések engedélyezettek. A klasszikus Azure portálon rendelkező Microsoft Sponsorship előfizetések nem támogatottak az Azure portálon. A következő üzenet jelenik meg egy nem támogatott előfizetés használatakor:
-
-![Nem érvényes előfizetés](./media/storsimple-8000-manage-service/subscription-not-valid.jpg)
-
-Választhatja azt is, a szolgáltatás létrehozásakor egy alapértelmezett tárfiók létrehozásához.
+Csak egy nagyvállalati szerződéssel rendelkező előfizetések engedélyezettek. Választhatja azt is, a szolgáltatás létrehozásakor egy alapértelmezett tárfiók létrehozásához.
 
 Egyetlen szolgáltatás több eszközöket kezelheti. Azonban egy eszköz nem terjedhetnek ki több szolgáltatásra. A nagyvállalatok különböző előfizetések, szervezetek, vagy még a központi telepítési helyek több szolgáltatás példánya is lehet. 
 
@@ -149,8 +147,7 @@ Ez a lépés StorSimple felületet a jogosult StorSimple eszközön a Windows Po
 
 > [!NOTE]
 > Nincsenek műveletek végrehajtható az Azure-portálon a StorSimple Manager szolgáltatás a kulcshoz kapcsolódó kulcsváltás után befejezéséig.
-> 
-> 
+
 
 Ha az eszköz soros konzoljához való csatlakozáshoz a Windows PowerShell-felületet használnak, a következő lépésekkel.
 
@@ -177,12 +174,12 @@ Frissítéséhez hajtsa végre a következő lépéseket a szolgáltatásadat-ti
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>A fizikai eszközök a szolgáltatásadat-titkosítási kulcs frissítése
 1. Használja a Windows PowerShell-lel a konzolhoz való csatlakozáshoz. A beállításnak 1 teljes hozzáféréssel rendelkező bejelentkezni.
-2. A parancssorba írja be:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. A parancssorba írja be:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. Adja meg a szolgáltatásadat-titkosítási kulcs beolvasott [2. lépés: használja a Windows PowerShell-lel kezdeményezheti a szolgáltatás titkosítási kulcs változását](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Az a 8010-es/8020-as modellt felhő készülékek a szolgáltatásadat-titkosítási kulcs frissítése
 1. Letöltési és telepítési [frissítés-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell-parancsfájlt. 
-2. Nyissa meg a Powershellt, és írja be a parancssorba:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Nyissa meg a Powershellt, és írja be a parancssorba:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Ezt a parancsfájlt biztosítja, hogy szolgáltatásadat-titkosítási kulcs az Eszközkezelőben a 8010-es/8020-as modellt felhő készülékek be van állítva.
 

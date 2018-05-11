@@ -11,12 +11,15 @@ A kezdeti kezdőlapon a felhő rendszerhéj kéri, hogy társítson egy új vagy
 
 Ha alapszintű beállításokat alkalmazza, és válassza ki az előfizetés csak, felhőalapú rendszerhéj az Ön nevében, akkor a legközelebb esik a támogatott régióban hoz létre három erőforrásokat:
 * Erőforráscsoport: `cloud-shell-storage-<region>`
-* Storage-fiók:`cs<uniqueGuid>`
-* Fájlmegosztás:`cs-<user>-<domain>-com-<uniqueGuid>`
+* Storage-fiók: `cs<uniqueGuid>`
+* Fájlmegosztás: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![Az előfizetési beállítás](../articles/cloud-shell/media/persisting-shell-storage/basic-storage.png)
 
 A fájlmegosztás csatlakoztatja `clouddrive` a a `$Home` könyvtár. Ez egy egyszeri művelet, és a további munkamenetekhez automatikusan csatlakoztatja a fájlmegosztást. 
+
+> [!NOTE]
+> A biztonság érdekében minden felhasználó saját tárolási kell telepíteni.  Szerepköralapú hozzáférés-vezérlést (RBAC), a felhasználóknak hozzá kell férnie közreműködő vagy újabb.
 
 A Bash, a fájlmegosztás is tartalmaz egy 5 GB-os lemezképnek, amely automatikusan jön létre, amelyek továbbra is fennáll az adatok a `$Home` könyvtár. 
 
@@ -37,7 +40,7 @@ Kapcsolódó az Azure storage-fiókok és a felhő rendszerhéj gépet, hogy van
 A hozzárendelt régióban található, lehetséges, hogy:
 * A "speciális tárolási beállítások" párbeszédpanelen feljegyzés megtekintése
 * Tekintse meg a tárfiókot hozott létre az Ön nevét (pl.: `cloud-shell-storage-westus`)
-* Futtatás `env` , és keresse meg a változó`ACC_LOCATION`
+* Futtatás `env` , és keresse meg a változó `ACC_LOCATION`
 
 Felhő rendszerhéj gép létezik a következő régióban:
 |Terület|Régió|

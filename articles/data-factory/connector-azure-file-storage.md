@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9b4574ab4511dc91c47f6af7fe78b47076b42dd1
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 48087646a6de3d55d35032381691be7a927a36ba
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása az vagy Azure File Storage Azure Data Factory használatával
 
@@ -87,7 +87,7 @@ Adatok másolása/Azure File Storage állítsa be a type tulajdonságot a DataSe
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adathalmaz értékre kell állítani: **fájlmegosztás** |Igen |
 | folderPath | A mappa elérési útját. Helyettesítő karakter szűrő nem támogatott. |Igen |
-| fileName | **Név vagy helyettesítő karakter szűrő** az alatt a megadott "folderPath" (oka) t. Ha nem adja meg egy értéket ehhez a tulajdonsághoz a DataSet adatkészlet mutat, a mappában lévő összes fájlt. <br/><br/>Szűrő, az engedélyezett a helyettesítő karaktereket: `*` (több karaktert) és `?` (egyetlen karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészlet és **preserveHierarchy** nincs meghatározva a tevékenység a fogadó, a másolási tevékenység során automatikusan létrehozza a fájl nevét a következő formátumban: `Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`. Példa: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nem |
+| fileName | **Név vagy helyettesítő karakter szűrő** az alatt a megadott "folderPath" (oka) t. Ha nem adja meg egy értéket ehhez a tulajdonsághoz a DataSet adatkészlet mutat, a mappában lévő összes fájlt. <br/><br/>Szűrő, az engedélyezett a helyettesítő karaktereket: `*` (több karaktert) és `?` (egyetlen karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használjon `^` -e a tényleges fájlnév helyettesítő vagy a escape karaktere belül karaktert.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészlet és **preserveHierarchy** nincs meghatározva a tevékenység a fogadó, a másolási tevékenység során automatikusan létrehozza a fájl nevét a következő formátumban: "*adatok. [ a tevékenység futtatásához azonosítóját GUID]. [GUID Ha FlattenHierarchy]. [Ha konfigurálva formátum]. [tömörítési konfiguráltságát]* ". Példa: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nem |
 | Formátumban | Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Szeretne elemezni, vagy egy adott formátumú fájlok létrehozása, ha a következő fájl formátuma típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |
 | Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |
 

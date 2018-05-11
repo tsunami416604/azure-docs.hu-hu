@@ -1,11 +1,11 @@
 ---
-title: "Hozza létre, és a Node.js Express-alkalmazás telepítése Azure Cloud Services csomag"
-description: "Hozza létre, és a node.js Express.js alkalmazást központilag az Azure Cloud Services csomag"
+title: Hozza létre, és a Node.js Express-alkalmazás telepítése Azure Cloud Services csomag
+description: Hozza létre, és a node.js Express.js alkalmazást központilag az Azure Cloud Services csomag
 services: cloud-services
 documentationcenter: nodejs
-author: craigshoemaker
-manager: routlaw
-editor: 
+author: thraka
+manager: timlt
+editor: ''
 ms.assetid: 24f8e7ef-e90d-4554-9b1e-a9b31d5824e5
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: cshoe
-ms.openlocfilehash: befca8d95880936e96d1b3618c172f87499627ed
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.author: adegeo
+ms.openlocfilehash: 8bb78330591b0557b036a161eb83e47b41a8fd43
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Hozza létre és Express használata az Azure Felhőszolgáltatások a Node.js-webalkalmazás telepítése
 
@@ -97,7 +97,7 @@ Most módosítsa úgy a nézetet, az üzenet "Üdvözli az Express az Azure-bA" 
    
    ![A index.jade fájl tartalmát.](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade Express alkalmazások által használt alapértelmezett megjelenítési motort. A Jade nézet motoron további információkért lásd: [http://jade-lang.com][http://jade-lang.com].
+   Jade Express alkalmazások által használt alapértelmezett megjelenítési motort. A Jade nézet motoron további információkért lásd: [ http://jade-lang.com ] [ http://jade-lang.com].
 2. Módosítsa a szöveg utolsó sora hozzáfűzésével **az Azure-ban**.
    
    ![A index.jade fájl utolsó sora beolvassa: p Üdvözöljük \#{title} az Azure-ban](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
@@ -117,7 +117,7 @@ Miután a telepítési művelet befejeződik, a böngészőben nyissa meg, és m
 
 ![A webböngészőben az Express oldalon. Az URL-cím azt jelzi, hogy most már futó Azure.](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk: [Node.js fejlesztői központ](/develop/nodejs/).
 
 [Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/

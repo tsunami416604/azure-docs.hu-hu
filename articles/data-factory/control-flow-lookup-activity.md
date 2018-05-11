@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 18748aafa2b70d349f9914e2a8afc1c7477ca26e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b6c2e2b685855455550612abb58ada6a694bbdff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -31,11 +31,9 @@ Keresési tevékenység olvashatja, és egy konfigurációs fájlban, konfigurá
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
-A következő adatforrások jelenleg támogatott keresési:
+A következő adatforrások keresési támogatottak. A sorok maximális számát is keresési a tevékenység által visszaadott **5000**, és legfeljebb **2MB** mérete. És jelenleg keresési tevékenység időtúllépés maximális időtartama egy óra.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
-
-A keresési tevékenység által visszaadott sorok maximális száma **5000**, és legfeljebb **2MB** mérete.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -64,10 +62,11 @@ Adatkészlet | Az adatkészlet-hivatkozásban biztosít a kereséshez. Beolvasá
 source | Adatkészlet-specifikus forrás tulajdonságait, ugyanaz, mint a másolási tevékenység forrását tartalmazza. Beolvasása – részletek minden egyes megfelelő összekötő cikkben "Másolása a tevékenység tulajdonságai" szakaszában. | Kulcs/érték pár | Igen
 firstRowOnly | Azt jelzi, hogy csak az első sor vagy az összes sor visszaadása. | Logikai | Nem. Az alapértelmezett szint a `true`.
 
-Vegye figyelembe a következő szempontokat:
+**Vegye figyelembe a következő szempontokat:**
 
 1. A forrásoszlop ByteArray típusú nem támogatott.
 2. Struktúra nem támogatott az adatkészlet-definícióban. Szöveges formátumú fájlok, használhatja a fejlécsor arra, hogy az oszlop nevét.
+3. Ha a keresési forrás egy JSON (oka) t, a `jsonPathDefinition` a teljes újra kialakításában a JSON-objektum nem támogatott beállítás, objektumok, veszi.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Használja a keresési tevékenység eredménye a következő tevékenységben
 

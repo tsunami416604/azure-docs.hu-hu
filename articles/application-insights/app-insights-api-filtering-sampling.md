@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbullwin; borooji
-ms.openlocfilehash: 06f116fc5096fe4bda9c8433c3a33726acb67eea
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 987ae184a0812f24df99a0b6e6543c8be55a9e79
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Szűrés és az Application Insights SDK a telemetriai adatok előfeldolgozása
 
@@ -135,17 +135,6 @@ Az osztály nyilvános elnevezett tulajdonságok megadásával átadhatók karak
 ```
 
 Ezt a pontot fogja használni a processzor után létrehozott TelemetryClients.
-
-A következő kód bemutatja, hogyan egy telemetriai inicializáló hozzáadása az ASP.NET Core.
-
-```csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-    var initializer = new SuccessfulDependencyFilter();
-    var configuration = app.ApplicationServices.GetService<TelemetryConfiguration>();
-    configuration.TelemetryInitializers.Add(initializer);
-}
-```
 
 ### <a name="example-filters"></a>Példa szűrők
 #### <a name="synthetic-requests"></a>Szintetikus kérelmek

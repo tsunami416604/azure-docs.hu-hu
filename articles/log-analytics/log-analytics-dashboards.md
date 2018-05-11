@@ -1,11 +1,11 @@
 ---
-title: "Egyéni irányítópult létrehozása az Azure Naplóelemzés |} Microsoft Docs"
-description: "Az útmutató segítségével megismerheti, hogyan Naplóelemzési irányítópultok jelenítheti meg az összes a mentett napló keresések felkínálva egy egyetlen helyre gyűjti a környezet megtekintéséhez."
+title: Egyéni irányítópult létrehozása az Azure Naplóelemzés |} Microsoft Docs
+description: Az útmutató segítségével megismerheti, hogyan Naplóelemzési irányítópultok jelenítheti meg az összes a mentett napló keresések felkínálva egy egyetlen helyre gyűjti a környezet megtekintéséhez.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22cc516c15353e39c73e762d2b8fa0d787a05ef4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7eaa74655b009e3154e2cc4f09d5599040ec4589
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>A Log Analyticshez való használatra egyéni irányítópult létrehozása
 
 Az útmutató segítségével megismerheti, hogyan Naplóelemzési irányítópultok jelenítheti meg az összes a mentett napló keresések felkínálva egy egyetlen helyre gyűjti a környezet megtekintéséhez.
 
 >[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), akkor már nem szerkesztheti a meglévő **saját irányítópult**. Ha a munkaterületet nem rendelkezett a **saját irányítópult** csempék hozzáadni, akkor nem jelenik meg **saját irányítópult** a frissített munkaterületén. 
+> Már nem szerkesztheti a meglévő **saját irányítópult**. Ez a funkció hamarosan elavul folyamatban van.
 
 ![Példa irányítópult](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
 
@@ -70,7 +70,7 @@ Nincsenek háromféle csempe képi megjelenítéseket készíthet, lehetőségek
 | diagram típusát | működés |
 | --- | --- |
 | ![Sáv diagrammá](./media/log-analytics-dashboards/oms-dashboards-bar-chart.png) |Megjeleníti a sávdiagram, vagy attól függően egy mezőt az eredmények listában ütemterv a mentett napló keresés eredményeit, ha a naplófájl-keresési eredményeket a mező szerint összesíti, vagy nem. |
-| ![A metrika](./media/log-analytics-dashboards/oms-dashboards-metric.png) |Megjeleníti a teljes naplót keresési eredmény találatok egy számot a csempén. Metrika csempék lehetővé teszik a küszöbérték, amely a csempe jelölje ki, a küszöbérték elérésekor. |
+| ![metrika](./media/log-analytics-dashboards/oms-dashboards-metric.png) |Megjeleníti a teljes naplót keresési eredmény találatok egy számot a csempén. Metrika csempék lehetővé teszik a küszöbérték, amely a csempe jelölje ki, a küszöbérték elérésekor. |
 | ![sor](./media/log-analytics-dashboards/oms-dashboards-line.png) |A mentett napló keresési eredmény találatok értékekkel ütemterv halmazaként jelenik meg. |
 
 ### <a name="threshold"></a>Küszöbérték
@@ -86,5 +86,5 @@ Egy csempe eltávolításához nyissa meg a saját irányítópult-nézetet, és
 
 ![Egy csempe eltávolítása](./media/log-analytics-dashboards/oms-dashboards-remove-tile.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Hozzon létre [riasztások](log-analytics-alerts.md) a Naplóelemzési értesítések létrehozásához, és javítani a jelentkező problémákat.

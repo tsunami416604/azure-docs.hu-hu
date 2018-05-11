@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 71d920ea1c143ed65510b77e1804e9c5e38cc180
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7cf865f0ce75d8308d6d42306e8e05852f763cae
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -24,7 +24,7 @@ ms.lasthandoff: 05/10/2018
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-> [!note]  
+> [!Note]  
 > Az Azure-tároló szolgáltatás (ACS) Kubernetes Azure veremben van private Preview verziójára. Az Azure-verem operátort kell igényelnie az ebben a cikkben az utasítások végrehajtásához szükség Kubernetes Piactéri elemet a hozzáférést.
 
 A következő cikk megvizsgálja egy Azure Resource Manager-megoldás sablon használatával történő telepítése és jogosultságok kiosztása a erőforrások Kubernetes az egyetlen, koordinált műveletben. Ön lesz kell a szükséges adatok összegyűjtése az Azure-verem telepítésével kapcsolatos hozza létre a sablont, és ezután telepíti a felhőbe.
@@ -121,7 +121,7 @@ A szolgáltatás egyszerű hozzáférés biztosítása az előfizetését, így 
 
 6. Adja meg a **fő profil DNS-előtagja** a régió egyedi. Régió egyedi nevet, például a kell `k8s-12345`. Próbálja meg választott azt ugyanaz, mint az erőforráscsoport neve ajánlott eljárás.
 
-    > [!note]  
+    > [!Note]  
     > Minden fürthöz egy új és egyedi fő profil DNS-előtagot használja.
 
 7. Adja meg az ügynökök száma a fürtben. Ez az érték a neve a **ügynökök készlet profil száma**. Lehet 1-32 karakter

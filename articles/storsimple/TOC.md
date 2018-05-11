@@ -62,7 +62,7 @@
 ### [StorSimple – tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Biztonsági szempontok](storsimple-8000-security.md)
 ### [Régiónkénti elérhetőség](storsimple-regions.md)
-### [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md)
+
 
 ## Bevezetés
 
@@ -189,10 +189,11 @@
 ## Kibocsátási megjegyzések
 ### [5-ös frissítés – aktuális](storsimple-update5-release-notes.md)
 ### [4-es frissítés](storsimple-update4-release-notes.md)
-### [3-as frissítés](storsimple-update3-release-notes.md)
-### [2.2-es frissítés](storsimple-update21-release-notes.md)
+
 
 ### Archívum
+#### [3-as frissítés](storsimple-update3-release-notes.md)
+#### [2.2-es frissítés](storsimple-update21-release-notes.md)
 #### [2-es frissítés](storsimple-update2-release-notes.md)
 #### [1-es frissítés](storsimple-update1-release-notes.md)
 #### [0.3-as frissítés](storsimple-february-2015-release-notes.md)

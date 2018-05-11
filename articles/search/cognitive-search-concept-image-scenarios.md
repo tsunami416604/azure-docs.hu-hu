@@ -10,11 +10,11 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: cefb5b7157f2fc8672ed419961cd3a90314b95e0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c58e731f6b8c86a0b7d6f2500d81077904b2f5ef
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan kell feldolgozni információk kinyerése kognitív keresési forgatókönyvekben lemezképek
 
@@ -36,6 +36,8 @@ Kikapcsolja a normalizálást kép nem kapcsolható. Lemezképek ismétlés kés
 |  normalizedImageMaxWidth | A maximális szélességét (képpontban) normalizált lemezképek jön létre. Az alapértelmezett érték 2000.|
 |  normalizedImageMaxHeight | Normalizált generált képek maximális magasságát (képpontban). Az alapértelmezett érték 2000.|
 
+> [!NOTE]
+> Ha a *imageAction* tulajdonsága csak "nincs" értékre, csak akkor állíthatja be a *parsingMode* tulajdonság csak az "alapértelmezett" értékre.  Előfordulhat, hogy csak beállítása ezen két tulajdonságok egyikét, nem alapértelmezett értékre az indexelő konfigurációját.
 
 Az alapértelmezett 2000 képpontos normalizált képek maximális szélességét és magasságát által támogatott maximális méret alapján a [OCR szakértelem](cognitive-search-skill-ocr.md) és a [elemzés szakértelem kép](cognitive-search-skill-image-analysis.md). Ha növeli a maximális korlátai, a feldolgozás sikertelen lehet, a nagyobb méretű képek.
 

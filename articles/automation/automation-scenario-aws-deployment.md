@@ -1,18 +1,19 @@
 ---
-title: "A virtuális gépet az Amazon Web Services automatizálása"
-description: "Ez a cikk bemutatja, hogyan használható az Azure Automation automatizálhatja az Amazon Web Service virtuális gép létrehozása"
+title: A virtuális gépet az Amazon Web Services automatizálása
+description: Ez a cikk bemutatja, hogyan használható az Azure Automation automatizálhatja az Amazon Web Service virtuális gép létrehozása
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 371510bf335bda2e2475e6ba3f5f74ee2117d9a5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c2505bfdc664d52960b3e3a6c9b4646189e0b175
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation forgatókönyv - kiépítés az AWS virtuális gép
 Ebből a cikkből megismerheti, hogyan használhatják az Azure Automation-rendszerű virtuális gép az Amazon Web Service (AWS) előfizetésben, és nevezze el ezt a virtuális Gépet egy adott – ami AWS utal, mint a "címkézés" a virtuális gép.

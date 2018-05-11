@@ -3,16 +3,17 @@ title: Azure Automation DSC Chocolatey a folyamatos üzembe helyezés
 description: DevOps folyamatos üzembe helyezés Azure Automation DSC és Chocolatey Csomagkezelő használatával.  Példa a teljes JSON ARM-sablon és a PowerShell-forrás.
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: bf535dfae4c5f710a423343bc3d76c81d83df2ae
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9c3cb5a00433a76e8cc444cc48c648cb2749a2ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Példa: A virtuális gépek Automation DSC és Chocolatey folyamatos üzembe helyezés
 DevOps világában sok eszközöket különböző pontok folyamatos integrációs folyamatban van.  Azure Automation kívánt állapot konfigurációs szolgáltatása (DSC) egy üdvözlő új hozzáadása arra a DevOps csoportokat is alkalmaz.  Ez a cikk bemutatja a beállítás mentése folyamatos Deployment (CD) a Windows-számítógépen.  Könnyen kiterjesztheti a technika (egy webhely, például) szerepkör, és onnan, valamint a további szerepkörök közé tartoznak a tetszőleges számú, Windows rendszerű számítógépeken szükség szerint.

@@ -1,6 +1,6 @@
 ---
-title: Gyors üzembe helyezés – felhőalkalmazás többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés konfigurálása |} Microsoft Docs
-description: Ismerje meg, hogyan lehet összekötését a hitelesítési követelményeknek, Azure Active Directory (Azure AD) a feltételes hozzáférés használatának használt felhőalkalmazás-típusra.
+title: Gyors üzembe helyezés – szükséges a többtényezős hitelesítés (MFA) Azure Active Directory feltételes hozzáféréssel rendelkező adott alkalmazásokhoz |} Microsoft Docs
+description: A gyors üzembe helyezés elsajátíthatja, hogyan lehet összekötését a hitelesítési követelményeknek, Azure Active Directory (Azure AD) a feltételes hozzáférés használatának használt felhőalkalmazás-típusra.
 services: active-directory
 keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
 documentationcenter: ''
@@ -8,66 +8,57 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
+ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/15/2018
+ms.date: 05/10/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ac43817fb3f253c35cd69a8ecd8931afca50892b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b451ede984d3baa8331ec87575557f845686c01f
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
 ---
-# <a name="quickstart-configure-per-cloud-app-mfa-with-azure-active-directory-conditional-access"></a>Gyors üzembe helyezés: Felhőalkalmazás többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés konfigurálása 
+# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Gyors üzembe helyezés: Megkövetelő adott alkalmazásokhoz az Azure Active Directory feltételes hozzáféréssel 
 
+A bejelentkezés során tapasztal élmény a felhasználók leegyszerűsítése érdemes lehetővé teszik a felhőalapú alkalmazásokhoz, a felhasználónév és jelszó használatával való bejelentkezéshez. Azonban a legtöbb környezetben legalább néhány olyan alkalmazások, amelyekre tanácsos erősebb formája Fiókellenőrzés, például a többtényezős hitelesítés megkövetelése rendelkeznek. Ez lehet például IGAZ, a szervezet e-mail rendszer vagy a HR-alkalmazásokhoz való hozzáféréshez. Az Azure Active Directoryban a feltételes hozzáférési házirenddel ezen cél megvalósításához.    
 
-A bejelentkezés során tapasztal élmény a felhasználók leegyszerűsítése érdemes lehetővé teszik a felhőalapú alkalmazásokhoz, a felhasználónév és jelszó használatával való bejelentkezéshez. Azonban a legtöbb környezetben legalább néhány olyan alkalmazások, amelyekre tanácsos erősebb formája Fiókellenőrzés, például a többtényezős hitelesítés megkövetelése rendelkeznek. Ez lehet például IGAZ, a szervezet e-mail rendszer vagy a HR-alkalmazásokhoz való hozzáféréshez.  
-
-A gyors üzembe helyezés bemutatja, hogyan megkövetelheti a multi-factor authentication csak a kijelölt felhő kapnia a környezet használatával egy [az Azure AD feltételes hozzáférési házirend](active-directory-conditional-access-azure-portal.md).
-
-A gyors üzembe helyezés, a forgatókönyv végrehajtásához meg:
-
-
-> [!div class="checklist"]
-> * A feltételes hozzáférési szabályzat létrehozása
-> * A feltételes hozzáférési házirend kiértékelése
-> * A feltételes hozzáférési házirend tesztelése  
+A gyors üzembe helyezés ismerteti, hogyan konfigurálható egy [az Azure AD feltételes hozzáférési házirend](active-directory-conditional-access-azure-portal.md) állítja be a kijelölt felhőalapú alkalmazások vannak a környezetében többtényezős hitelesítést igényel.
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben a cikkben a forgatókönyvet használja az Azure-portálon helyőrző egy felhő-alkalmazást, amely egy megadott felhasználó többtényezős hitelesítést igényel. Britta Simon az a felhasználó a szervezetében. Amikor bejelentkezik az Azure-portálon, rá, hogy további ellenőrizzük a saját fiókját a többtényezős hitelesítéssel szeretne.
+Ebben a cikkben a forgatókönyvet használja az Azure-portálon helyőrző egy felhő-alkalmazást, amely egy megadott felhasználó többtényezős hitelesítést igényel. Isabella Simonsen az a felhasználó a szervezetében. Amikor bejelentkezik az Azure-portálon, rá, hogy további ellenőrizzük a saját fiókját a többtényezős hitelesítéssel szeretne.
 
-![Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/01.png)
+![Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/22.png)
 
 
 
-## <a name="before-you-begin"></a>Előkészületek 
+## <a name="prerequisites"></a>Előfeltételek 
 
 A forgatókönyv a gyors üzembe helyezés befejeződik, az alábbiak szükségesek:
 
 - **Hozzáférés az Azure AD prémium kiadás** – az Azure AD feltételes hozzáférés egy Azure AD Premium-funkció. Ha nincs az Azure AD Premium edition a hozzáférést, akkor [előfizetési próbaverziójára](https://azure.microsoft.com/trial/get-started-active-directory/).
 
-- **Egy olyan fiókot nevű Britta Simon** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, olvassa el [ezeket az utasításokat](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+- **Egy olyan fiókot nevű Isabella Simonsen** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, olvassa el [ezeket az utasításokat](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 
 
 ## <a name="create-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat létrehozása 
 
-Ez a szakasz ismerteti a feltételes hozzáférési szabályzat létrehozásához.  
+Ez a szakasz ismerteti a feltételes hozzáférési házirend létrehozása.  
 A házirend beállítása:
 
 |Beállítás |Érték|
 |---     | --- |
-|Felhasználók és csoportok | Britta Simon |
+|Felhasználók és csoportok | Isabella Simonsen |
 |Felhőalkalmazások | A Microsoft Azure felügyeleti |
 |Hozzáférés | Többtényezős hitelesítés megkövetelése |
  
 
-![Szabályzat létrehozása](./media/active-directory-conditional-access-app-based-mfa/12.png)
+![Szabályzat létrehozása](./media/active-directory-conditional-access-app-based-mfa/21.png)
 
 
 
@@ -88,7 +79,7 @@ A házirend beállítása:
 
     ![Hozzáadás](./media/active-directory-conditional-access-app-based-mfa/04.png)
 
-5. Az a **új** lap a **neve** szövegmezőhöz típus **Britta a többtényezős hitelesítés megkövetelése**.
+5. Az a **új** lap a **neve** szövegmezőhöz típus **többtényezős hitelesítés megkövetelése az Azure portál elérésére szolgáló**.
 
     ![Name (Név)](./media/active-directory-conditional-access-app-based-mfa/05.png)
 
@@ -98,13 +89,13 @@ A házirend beállítása:
 
 7. Az a **felhasználók és csoportok** lapon, a következő lépésekkel:
 
-    ![Felhasználók és csoportok](./media/active-directory-conditional-access-app-based-mfa/07.png)
+    ![Felhasználók és csoportok](./media/active-directory-conditional-access-app-based-mfa/24.png)
 
-    a. Kattintson a **felhasználók és csoportok kiválasztása**.
+    a. Kattintson a **felhasználók és csoportok kiválasztása**, majd válassza ki **felhasználók és csoportok**.
 
     b. Kattintson a **Kiválasztás** gombra.
 
-    c. A a **válasszon** lapon jelölje be a tesztfelhasználó számára, és kattintson a **válasszon**.
+    c. A a **válasszon** lapon, válassza ki **Isabella Simonsen**, és kattintson a **válasszon**.
 
     d. Az a **felhasználók és csoportok** kattintson **végzett**.
 
@@ -114,7 +105,7 @@ A házirend beállítása:
 
 9. Az a **felhőalapú alkalmazásokba** lapon, a következő lépésekkel:
 
-    ![Válassza ki a felhőalapú alkalmazások](./media/active-directory-conditional-access-app-based-mfa/09.png)
+    ![Válassza ki a felhőalapú alkalmazások](./media/active-directory-conditional-access-app-based-mfa/26.png)
 
     a. Kattintson a **alkalmazásokról**.
 
@@ -148,11 +139,9 @@ A házirend beállítása:
 
 ## <a name="evaluate-your-conditional-access-policy"></a>A feltételes hozzáférési házirend kiértékelése
 
-Megismerheti a hatását, a feltételes hozzáférési házirendek az adott környezet, használhatja a [feltételes hozzáférés, milyen if házirend eszközzel](active-directory-conditional-access-whatif.md). Ezzel az eszközzel kiértékelheti a szimulált bejelentkezés felhasználói.
+Most, hogy a feltételes hozzáférési házirend van beállítva, érdemes tudni, hogy az megfelelően működik-e. Első lépésként, használhatja a [feltételes hozzáférés, milyen if házirend eszközzel](active-directory-conditional-access-whatif.md) szimulálása a bejelentkezés felhasználói. Az eszköz konfigurálása során **Isabella Simonsen** felhasználóként és **Microsoft Azure Management** felhőalkalmazás, mint az eszköz látható **többtényezős hitelesítés megkövetelése az Azure portál elérésére szolgáló** alatt **Házirendek, amelyek mindegyikre érvényesek** és **többtényezős hitelesítést** , **Grant vezérlők**.
 
-Az eszköz konfigurálása során **Britta Simon** felhasználóként és **Microsoft Azure Management** felhőalkalmazás, mint az eszköz látható **Britta a többtényezős hitelesítés megkövetelése** alatt  **Házirendek, amelyek mindegyikre érvényesek**.
-
-![Mi történik, ha a házirend-eszköz](./media/active-directory-conditional-access-app-based-mfa/17.png)
+![Mi történik, ha a házirend-eszköz](./media/active-directory-conditional-access-app-based-mfa/23.png)
 
 
 
@@ -162,7 +151,7 @@ Az eszköz konfigurálása során **Britta Simon** felhasználóként és **Micr
  
     ![What If](./media/active-directory-conditional-access-app-based-mfa/14.png)
 
-2. Kattintson a **felhasználók**, jelölje be **Britta Simon**, és kattintson a **válasszon**.
+2. Kattintson a **felhasználók**, jelölje be **Isabella Simonsen**, és kattintson a **válasszon**.
 
     ![Felhasználó](./media/active-directory-conditional-access-app-based-mfa/15.png)
 
@@ -185,9 +174,11 @@ Az eszköz konfigurálása során **Britta Simon** felhasználóként és **Micr
 
 ## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
 
-Tesztelje a házirendet, próbálja meg jelentkezzen be a [Azure-portálon](https://portal.azure.com) használatával a **Britta Simon** fiók tesztelése. Meg kell jelennie egy párbeszédpanelt, amely további biztonsági ellenőrzés feliratkozott a fiók beállítását igényli.
+Az előző szakaszban az előző szakaszban, akkor 
 
-![Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/01.png)
+Tesztelje a házirendet, próbálja meg jelentkezzen be a [Azure-portálon](https://portal.azure.com) használatával a **Isabella Simonsen** fiók tesztelése. Meg kell jelennie egy párbeszédpanelt, amely további biztonsági ellenőrzés feliratkozott a fiók beállítását igényli.
+
+![Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/22.png)
 
 
 ## <a name="next-steps"></a>További lépések

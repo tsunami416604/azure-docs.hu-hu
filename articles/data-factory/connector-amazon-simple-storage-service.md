@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: bb0b9e3db4637a6b872c7fed9653a16457b848db
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b2f87c965a7c69614d476f0d931802587f0f1297
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon egyszerű Társzolgáltatás Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -93,8 +93,8 @@ Adatok másolása az Amazon S3, állítsa be a type tulajdonságot az adathalmaz
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adathalmaz értékre kell állítani: **AmazonS3Object** |Igen |
-| bucketName | S3 gyűjtő neve. |Igen |
-| kulcs | A **nevét vagy helyettesítő karakter szűrő** S3 objektum kulcs alatt a megadott gyűjtőjét. Érvényes, csak ha "előtag" tulajdonság nincs megadva. <br/><br/>A helyettesítő karakter szűrő csak a fájl neve része, de nem mappa rész támogatott. Helyettesítő karakterek engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/>-1. példa: `"key": "rootfolder/subfolder/*.csv"`<br/>– 2. példa: `"key": "rootfolder/subfolder/???20180427.txt"` |Nem |
+| bucketName | S3 gyűjtő neve. Helyettesítő karakter szűrő nem támogatott. |Igen |
+| kulcs | A **nevét vagy helyettesítő karakter szűrő** S3 objektum kulcs alatt a megadott gyűjtőjét. Érvényes, csak ha "előtag" tulajdonság nincs megadva. <br/><br/>A helyettesítő karakter szűrő csak a fájl neve része, de nem mappa rész támogatott. Helyettesítő karakterek engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/>-1. példa: `"key": "rootfolder/subfolder/*.csv"`<br/>– 2. példa: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Használjon `^` -e a tényleges fájlnév helyettesítő vagy a escape karaktere belül karaktert. |Nem |
 | előtag | S3 objektum kulcshoz előtag. Kiválasztott objektumok, amelynek kulcsait a előtaggal kezdődik. Csak akkor, ha a "key" tulajdonság nincs megadva érvényes. |Nem |
 | verzió: | A S3 objektum, ha engedélyezve van a S3 versioning verziója. |Nem |
 | Formátumban | Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Szeretne elemezni, vagy egy adott formátumú fájlok létrehozása, ha a következő fájl formátuma típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |

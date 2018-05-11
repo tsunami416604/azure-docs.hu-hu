@@ -8,8 +8,8 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 2c6867b02fd88c4616647c8602906fbf786da414
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8269b91ea3459fd9e391d46f0b3e78bc7e5b3b41
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -29,7 +29,7 @@ Fizikai kiszolgálók | A helyszíni windowsos/Linuxos fizikai serversto Azure r
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-VMware | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.<br/><br/> Azt javasoljuk, hogy a vSphere gazdagépek és vCenter-kiszolgáló található-e a folyamatkiszolgáló és a ugyanahhoz a hálózathoz. Alapértelmezés szerint a folyamat kiszolgáló-összetevők fut a konfigurációs kiszolgálón, így ez lesz a hálózatot, amelyben állítsa be a konfigurációs kiszolgáló, kivéve, ha egy dedikált folyamat kiszolgáló. 
+VMware | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.<br/><br/> Azt javasoljuk, hogy a vSphere gazdagépek és vCenter-kiszolgáló található-e a folyamatkiszolgáló és a ugyanahhoz a hálózathoz. Alapértelmezés szerint a folyamat kiszolgáló-összetevők fut a konfigurációs kiszolgálón, így ez lesz a hálózatot, amelyben állítsa be a konfigurációs kiszolgáló, kivéve, ha egy dedikált folyamat kiszolgáló.
 Fizikai | –
 
 ## <a name="site-recovery-configuration-server"></a>Helykiszolgáló helyreállítási konfiguráció
@@ -38,19 +38,19 @@ A konfigurációs kiszolgálón a helyi számítógépen, a Site Recovery össze
 
 **Összetevő** | **Követelmények**
 --- |---
-Processzormagok | 8 
+Processzormagok | 8
 RAM | 12 GB
 Lemezek száma | 3 lemezek<br/><br/> Lemezek tartalmazza az operációs rendszer lemez, a folyamat kiszolgáló gyorsítótár lemez és a feladat-visszavételi adatmegőrzési meghajtó.
 Szabad lemezterület | 600 GB lemezterület, a folyamat gyorsítótár-kiszolgáló szükséges.
 Szabad lemezterület | 600 GB lemezterület az adatmegőrzési meghajtó szükséges.
-Operációs rendszer  | Windows Server 2012 R2 vagy Windows Server 2016 | 
-Operációs rendszer területi beállítása | Angol (en-us) 
+Operációs rendszer  | Windows Server 2012 R2 vagy Windows Server 2016 |
+Operációs rendszer területi beállítása | Angol (en-us)
 PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") kell telepíteni.
 Windows Server-szerepkörök | Nem engedélyezi: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V |
 Csoportházirendek| Nem engedélyezi: <br> -Tagadni a hozzáférést a parancssorba. <br> -A hozzáférés megakadályozása a beállításjegyzék szerkesztésével eszközök. <br> – Megbízható vonatkozó logikát. <br> -Parancsfájl végrehajtása bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Ellenőrizze, hogy:<br/><br/> – Nem kell egy korábban létező alapértelmezett webhely <br> -Engedélyezése [névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br> -Nincs telepítve elérésű, korábban létező webhely vagy alkalmazás figyeli a 443-as port<br>
-A hálózati adapter típusa | VMXNET3 (ha VMware virtuális gépként telepített) 
-IP-cím típusa | Statikus 
+A hálózati adapter típusa | VMXNET3 (ha VMware virtuális gépként telepített)
+IP-cím típusa | Statikus
 Portok | a vezérlő csatorna vezénylés használt 443)<br>adatok átvitel használt 9443
 
 ## <a name="replicated-machines"></a>Replikált gép
@@ -138,7 +138,8 @@ Multi-NIC | Igen
 Fenntartott IP-cím | Igen
 IPv4 | Igen
 Tartsa meg a forrás IP-címe | Igen
-Azure virtuális hálózat szolgáltatás-végpontok<br/><br/> (Az azure Storage tűzfalak és virtuális hálózatok) | Nem
+Azure virtuális hálózat szolgáltatás-végpontok<br/> (nélkül az Azure Storage tűzfalak) | Igen
+Gyorsított hálózatkezelés | Nem
 
 ## <a name="storage"></a>Storage
 **Összetevő** | **Támogatott**
@@ -184,7 +185,7 @@ Blokkblobok | Nem
 Titkosítását (Storage szolgáltatás titkosítási)| Igen
 Prémium szintű Storage | Igen
 Import/export szolgáltatás | Nem
-Virtuális hálózati szolgáltatási végpont<br/><br/> Tárolási tűzfalak és a célként megadott tárolási/gyorsítótár storage-fiók (használt replikációs adatokat tároló) konfigurált virtuális hálózatok | Nem
+A célként megadott tárolási/gyorsítótár storage-fiók (használt replikációs adatokat tároló) konfigurált virtuális hálózatok az Azure Storage tűzfalak | Nem
 Általános célú v2 storage-fiókok (a gyakran és ritkán használt rétegek) | Nem
 
 ## <a name="azure-compute"></a>Az Azure compute
@@ -201,16 +202,16 @@ A helyszíni virtuális gépek replikálása Azure-ba, meg kell felelnie Azure v
 
 **Összetevő** | **Követelmények** | **Részletek**
 --- | --- | ---
-Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated machines). | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-Vendég operációs rendszer architektúrája | 64 bites. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-Operációs rendszert tároló lemez mérete | Legfeljebb 2048 GB. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
+Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated machines). | Ellenőrzés sikertelen lesz, ha nem támogatott.
+Vendég operációs rendszer architektúrája | 64 bites. | Ellenőrzés sikertelen lesz, ha nem támogatott.
+Operációs rendszert tároló lemez mérete | Legfeljebb 2048 GB. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 Operációs rendszer lemez száma | 1 | Ellenőrzés sikertelen lesz, ha nem támogatott.  
 Adatlemez | 64 vagy kisebb. | Ellenőrzés sikertelen lesz, ha nem támogatott.  
-Adattároló lemezeinek mérete | Legfeljebb 4095 GB | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-Hálózati adapterek | Több adapter támogatottak. | 
-Megosztott virtuális merevlemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-FC-lemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-BitLocker | Nem támogatott. | A BitLocker a gépek replikációjának engedélyezése előtt le kell tiltani. | 
+Adattároló lemezeinek mérete | Legfeljebb 4095 GB | Ellenőrzés sikertelen lesz, ha nem támogatott.
+Hálózati adapterek | Több adapter támogatottak. |
+Megosztott virtuális merevlemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott.
+FC-lemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott.
+BitLocker | Nem támogatott. | A BitLocker a gépek replikációjának engedélyezése előtt le kell tiltani. |
 a virtuális gép neve | 1 és 63 karakter.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A számítógépnév kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a virtuálisgép-tulajdonságokat a Site Recovery szolgáltatásban.
 
 

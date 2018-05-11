@@ -13,16 +13,21 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 5/9/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: 905f6b13928d11243202059af0ad255971102da8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a907335ace1f6ea9ec427327d28ca9be5ce02fcc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Biztonsági másolatot a fájlokhoz és alkalmazásokhoz Azure verem
 Azure Backup segítségével védeni (vagy készítsen biztonsági másolatot) fájlok és alkalmazások Azure veremben. Biztonsági másolatot készíteni a fájlokhoz és alkalmazásokhoz, telepítse a Microsoft Azure Backup Server Azure verem futó virtuális gépként. Egyszer telepítette az Azure Backup Server, adja hozzá az Azure-lemezeket a helyi tárterület érhető el, a rövid távú biztonsági másolatok növelése érdekében. Az Azure Backup Server hosszú távú megőrzési Azure tárolást használ.
+
+> [!NOTE]
+> Bár az Azure Backup Server és System Center Data Protection Manager (DPM) hasonló a DPM nem támogatott Azure verem való használatra.
+>
+
 
 ## <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 Az Azure Backup Server a következő Azure verem virtuálisgép-munkaterhelését védi.
@@ -49,7 +54,7 @@ Azure Backup Server telepítése egy Azure verem virtuális gépen, tekintse meg
 Egy Azure verem virtuális gépen futó Azure Backup Server, használja a A2 méret vagy nagyobb. Ha segítségre van szüksége a virtuálisgép-méret kiválasztása, töltse le a [Azure verem virtuális gép mérete Számológép](https://www.microsoft.com/download/details.aspx?id=56832).
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Virtuális hálózatok verem Azure virtuális gépeken
-Egy Azure verem munkaterhelés használt összes virtuális gépet a azonos Azure virtuális hálózat és az Azure-előfizetéshez kell tartoznia. 
+Egy Azure verem munkaterhelés használt összes virtuális gépet a azonos Azure virtuális hálózat és az Azure-előfizetéshez kell tartoznia.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Biztonsági mentési adatok tárolására, a helyi lemezen, és az Azure-ban
 Az Azure Backup Server biztonsági mentési adatokat, a műveleti helyreállítási a virtuális géphez csatolt Azure lemezeken tárolja. Miután a virtuális gép csatolt a lemezek és a tárolóhely, Azure Backup Server kezeli tároló. A biztonsági mentési adatok tárolási mértékét száma és mérete a lemez nem csatolható az egyes [verem Azure virtuális gép](../azure-stack/user/azure-stack-storage-overview.md). Minden Azure verem virtuális gép méretétől rendelkezik a virtuális géphez csatolt lemezek maximális számát. A2 például négy lemezek. A3 méretű nyolc lemezek. A4 16 lemez. Ebben az esetben a lemezek száma és mérete határozza meg a teljes biztonsági mentési tárolókészlet méretét.
@@ -82,9 +87,9 @@ Ha azt szeretné, a telepítés méretezésére, lehetősége van a következő:
 
 ## <a name="bare-metal-recovery-for-azure-stack-vm"></a>Operációs rendszer nélküli helyreállítás Azure verem méretű VM
 
-Operációs rendszer nélküli helyreállítás (BMR) biztonsági védelmet nyújt az operációs rendszer fájljait és a kritikus kötet kivételével minden adatot, felhasználói adatok. A BMR biztonsági mentése magában foglalja a rendszerállapot biztonsági mentését. A következő eljárások bemutatják, hogyan az operációs rendszer nélküli Helyreállítás adatok helyreállítását. 
+Operációs rendszer nélküli helyreállítás (BMR) biztonsági védelmet nyújt az operációs rendszer fájljait és a kritikus kötet kivételével minden adatot, felhasználói adatok. A BMR biztonsági mentése magában foglalja a rendszerállapot biztonsági mentését. A következő eljárások bemutatják, hogyan az operációs rendszer nélküli Helyreállítás adatok helyreállítását.
 
-### <a name="run-recovery-on-the-azure-backup-server"></a>Helyreállítás futtatása az Azure biztonsági mentési kiszolgálón 
+### <a name="run-recovery-on-the-azure-backup-server"></a>Helyreállítás futtatása az Azure biztonsági mentési kiszolgálón
 
 Nyissa meg az Azure Backup Server konzolt.
 
@@ -102,9 +107,9 @@ Az Azure Backup Server konzolon:
 
 ### <a name="restore-the-machine"></a>A számítógép visszaállítása
 
-1. A virtuális gépen, ahová a BMR-visszaállítás nyisson meg egy rendszergazda jogú parancssort, és írja be a következő parancsokat. **/bootore** határozza meg, hogy Windows RE automatikusan elindul, amikor legközelebb a rendszer indításakor.
+1. A virtuális gépen, ahová a BMR-visszaállítás nyisson meg egy rendszergazda jogú parancssort, és írja be a következő parancsokat. **/boottore** határozza meg, hogy Windows RE automatikusan elindul, amikor legközelebb a rendszer indításakor.
 ```
-Reagent /boottore
+Reagentc /boottore
 shutdown /r /t 0
 ```
 

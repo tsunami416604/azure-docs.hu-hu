@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 75b89ad7f118d107f570b5e323d61bbc9b94bc40
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: fcbeb6bbd090fc31febb326d3cbef90187d3e7e3
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 A memóriaoptimalizált VM-méretek ajánlat egy nagy memória-CPU arányú, amelyek kiváló relációs adatbázis-kiszolgálók, közepes vagy nagyméretű gyorsítótárak és memórián belüli elemzés. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 
@@ -25,6 +25,8 @@ A memóriaoptimalizált VM-méretek ajánlat egy nagy memória-CPU arányú, ame
 * A Dv2-sorozat az eredeti D-sorozat újabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációját alapul 2,4 GHz-es Intel Xeon® E5-2673 v3 2,4 GHz (Haswell) vagy E5-2673 v4 2.3 GHz (Broadwell) processzort, és az Intel Turbo program technológia 2.0 folytathatja legfeljebb 3.1-es GHz-es. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
 * A Ev3-sorozat szolgáltatások E5-2673 v4 2.3 GHz (Broadwell) processzor többszálú konfiguráció esetén a legtöbb általános célú munkaterhelések jobb értékajánlatához biztosítása, és a Ev3 üzembe igazítását az általános célú virtuális gépek a legtöbb más felhők.  Memória (a 7 GiB/vCPU való 8 GiB/vCPU) ki lett terjesztve, amíg a lemez-és hálózati korrigálták való megfelelés érdekében a Hyper-Threading technológia való átálláskor / core alapon.  A Ev3, a D/Dv2 családtagjai felső memóriaterület Virtuálisgép-méretek legfeljebb végezze.
+
+* Az Azure Compute kínál a virtuális gép méretét, amely a adott hardverekhez típusra, és egyetlen ügyfél számára kijelölt elszigetelt vannak.  A virtuális gép használata esetén például a megfelelőségi és szabályozási követelmények elemek munkaterhelések nagyfokú elkülönítési más felhasználóktól igénylő munkaterhelések legmegfelelőbb értékek.  Az ügyfelek is beállíthatja a további fel az erőforrások ezek elszigetelt virtuális gépek használatával [beágyazott virtuális gépek az Azure támogatási](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Ellenőrizze a virtuális gép családok alatt a virtuális gép elkülönített lehetőségek táblák.
 
 ## <a name="esv3-series"></a>Esv3-sorozat 
 

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f12cdf2fc8a1aa3b7e8bc3c5eeb338601a8f2ffe
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Az Azure Functions rács eseményindító
 
 Ez a cikk azt ismerteti, hogyan legyen kezelve [esemény rács](../event-grid/overview.md) események az Azure Functions.
 
-Esemény rács az Azure-szolgáltatások HTTP-kéréseket bekövetkező eseményekről kaphat értesítést küldő *közzétevők*. A gyártót, de a szolgáltatás erőforrása, amely az esemény származik. Például egy Azure blob storage-fiók közzétevő, pedig egy blob feltöltése vagy törlése egy eseményt. Néhány [Azure-szolgáltatásokkal rendelkezik beépített támogatása az események közzétételének esemény rácshoz](../event-grid/overview.md#event-sources). 
+Esemény rács az Azure-szolgáltatások HTTP-kéréseket bekövetkező eseményekről kaphat értesítést küldő *közzétevők*. A gyártót, de a szolgáltatás erőforrása, amely az esemény származik. Például egy Azure blob storage-fiók-e a közzétevő és [egy blob feltöltése vagy törlésre esemény](../storage/blobs/storage-blob-event-overview.md). Néhány [Azure-szolgáltatásokkal rendelkezik beépített támogatása az események közzétételének esemény rácshoz](../event-grid/overview.md#event-sources). 
 
 Esemény *kezelők* fogadni és feldolgozni az eseményeket. Az Azure Functions egyike több [Azure-szolgáltatásokat, amelyek esemény rács események kezelésére beépített támogatása](../event-grid/overview.md#event-handlers). Ebből a cikkből megismerheti, hogyan lehet meghívni a függvényt esemény rácsban fogadásakor. az esemény egy esemény rács eseményindító használandó.
 

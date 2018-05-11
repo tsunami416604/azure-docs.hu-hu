@@ -1,26 +1,27 @@
 ---
-title: "Runbook elindítása az Azure Automationben"
-description: "Összefoglalja a különböző módszereket, amelyek segítségével elindít egy forgatókönyvet az Azure Automation és részleteit az Azure portál és a Windows PowerShell használatával."
+title: Runbook elindítása az Azure Automationben
+description: Összefoglalja a különböző módszereket, amelyek segítségével elindít egy forgatókönyvet az Azure Automation és részleteit az Azure portál és a Windows PowerShell használatával.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 064ba5f73b53681a824b1416243d10ab0e565c44
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 45ac19ad5011ae67e95281d1c9928c1db4bc7043
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Runbook elindítása az Azure Automationben
 Az alábbi táblázat segít meghatározni, a runbook indítása az Azure Automationben, amely az adott helyzetnek legmegfelelőbb módszer. Ez a cikk tartalmazza a runbook elindítása és az Azure portál és a Windows PowerShell használatával. Egyéb módszerekkel kapcsolatos részletek szerepelnek a lenti hivatkozásokra kattintva érheti el más dokumentációját.
 
-| **METHOD** | **CHARACTERISTICS** |
+| **MÓDSZER** | **JELLEMZŐI** |
 | --- | --- |
 | [Azure Portal](#starting-a-runbook-with-the-azure-portal) |<li>Az interaktív felhasználói kezelőfelület legegyszerűbb módja.<br> <li>Űrlap egyszerű paraméter értékének megadására.<br> <li>Feladat állapotát nyomon.<br> <li>Az Azure bejelentkezési hitelesített hozzáférést. |
-| [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) |<li>A Windows PowerShell-parancsmagokkal a parancssorból hívható.<br> <li>Több lépést automatizált megoldást szerepeljenek.<br> <li>A tanúsítvány vagy egyszerű / szolgáltatás OAuth felhasználói kérelem hitelesítésekor egyszerű.<br> <li>Adja meg egyszerű és összetett paraméter értékét.<br> <li>Feladat-állapotok nyomon követésére.<br> <li>Az ügyfél PowerShell-parancsmagok támogatásához szükséges. |
+| [A Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) |<li>A Windows PowerShell-parancsmagokkal a parancssorból hívható.<br> <li>Több lépést automatizált megoldást szerepeljenek.<br> <li>A tanúsítvány vagy egyszerű / szolgáltatás OAuth felhasználói kérelem hitelesítésekor egyszerű.<br> <li>Adja meg egyszerű és összetett paraméter értékét.<br> <li>Feladat-állapotok nyomon követésére.<br> <li>Az ügyfél PowerShell-parancsmagok támogatásához szükséges. |
 | [Azure Automation szolgáltatásbeli API](https://msdn.microsoft.com/library/azure/mt662285.aspx) |<li>Legrugalmasabb módszer, de a legtöbb komplex is.<br> <li>Felelnek meg, és bármilyen egyéni kód használhat, amelyek HTTP-kérelmekre.<br> <li>A kérelem hitelesítése a tanúsítványt, vagy Oauth felhasználó egyszerű / szolgáltatás egyszerű.<br> <li>Adja meg egyszerű és összetett paraméter értékét. *Ha az API-val Python runbookot hív, a JSON-adattartalmat szerializálni kell.*<br> <li>Feladat-állapotok nyomon követésére. |
 | [Webhooks](automation-webhooks.md) |<li>Indítsa el a runbook egyetlen HTTP-kérelemből.<br> <li>Felhasználók hitelesítése a biztonsági jogkivonat URL-címben.<br> <li>Ügyfél nem bírálhatja felül a webhook létrehozásakor megadott paraméterértékek. Runbook megadhat egyetlen paramétert, amely a HTTP-kérelem részletes adatait a telepítéskor.<br> <li>Nem képes a webhook URL-CÍMÉT a feladat-állapotok nyomon követésére. |
 | [Az Azure riasztás válaszolni](../log-analytics/log-analytics-alerts.md) |<li>Elindít egy forgatókönyvet az Azure riasztás válasz.<br> <li>Konfigurálja webhook runbookhoz és riasztási mutató hivatkozást.<br> <li>Felhasználók hitelesítése a biztonsági jogkivonat URL-címben. |
@@ -76,7 +77,7 @@ Amikor elindít egy forgatókönyvet az Azure-portálon vagy a Windows PowerShel
 
 Az Azure Automation webszolgáltatás bizonyos adattípusokkal a következő szakaszokban ismertetett módon paraméterek speciális funkciókat biztosítja:
 
-### <a name="named-values"></a>Megnevezett értékek
+### <a name="named-values"></a>Névvel ellátott értékek
 Ha a paraméter adattípusa [objektum], akkor használhatja a következő JSON formátummal küldhet neki egy névvel ellátott értékek listája: *{Név1: 'Érték1', Name2: 'Érték2', név3: "Érték3"}*. Ezek az értékek csak egyszerű típusok lehetnek. A runbook felkérést kap, a paraméter egy [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) a Tulajdonságok megegyeznek az egyes névvel rendelkező érték.
 
 Tesztrunbook a következő egy felhasználó nevű paramétert fogad.

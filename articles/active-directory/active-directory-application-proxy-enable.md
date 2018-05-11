@@ -15,16 +15,16 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 4240b4a2aa14a0ac1a78c4faca74950b934955e6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d636542c788aff43acf9e35583b4c0615fe0c7db
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Az alkalmazásproxy első lépései, és az összekötő telepítése
 Ez a cikk útmutatást nyújt a felhőcímtárhoz tartozó Microsoft Azure AD alkalmazásproxy engedélyezéséhez szükséges lépésekről az Azure AD-ben.
 
-Ha Ön még nem ismeri a biztonsági és a termelékenység előnyök alkalmazásproxy számos lehetőséget kínál a szervezet számára, további információ [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](active-directory-application-proxy-get-started.md).
+Ha Ön még nem ismeri a biztonsági és a termelékenység előnyök alkalmazásproxy számos lehetőséget kínál a szervezet számára, további információ [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](manage-apps/application-proxy.md).
 
 ## <a name="application-proxy-prerequisites"></a>Az alkalmazásproxy használatának előfeltételei
 Az alkalmazásproxy szolgáltatásainak engedélyezése és használata előtt a következőkkel kell rendelkeznie:

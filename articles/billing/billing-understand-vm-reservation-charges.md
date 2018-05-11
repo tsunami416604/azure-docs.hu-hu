@@ -3,8 +3,8 @@ title: Azure fenntartott virtuálisgép-példányok kedvezményes alkalmazás me
 description: Ismerje meg, hogyan Azure fenntartott Virtuálisgép-példány kedvezményes alkalmazott futó virtuális gépek.
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikdesai
+author: yashesvi
+manager: yashar
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
-ms.author: vikdesai
-ms.openlocfilehash: 6e551fddfc5ba8924cd8c71a1775307e7569b847
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: yashar
+ms.openlocfilehash: ddf6e6a869fb2961db6b626878f9433fdc00a55f
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-how-the-reserved-virtual-machine-instance-discount-is-applied"></a>A fenntartott virtuális gép példány kedvezményeket alkalmazásának a módját ismertetése
 Után vásárol egy fenntartott Virtuálisgép-példány, a rendszer automatikusan alkalmaz a Foglalás kedvezményeket az attribútumokat és a foglalási mennyiség virtuális gépek. A foglalási hozzá van rendelve az infrastrukturális költségek a virtuális gépek. A következő táblázat bemutatja a virtuális gép költségek foglalás megvásárlása után. Minden esetben van szó, a tárolás és a hálózatkezelés, a szokásosnál.
 
 | Virtuális gép típusa  | A foglalási díjak |    
-|-----------------------|--------------------------------------------| 
+|-----------------------|--------------------------------------------|
 |Linux virtuális gépek nélkül további szoftverek | Foglalási hozzá van rendelve a virtuális gép infrastruktúra fenntartási költségeit.|
 |Linux virtuális gépek szoftver költségek (például a Red Hat) | Foglalási hozzá van rendelve az infrastruktúra fenntartási költségeit. Ha további szoftvereket van szó.|
 |Windows-alapú virtuális gépek nélkül további szoftverek |Foglalási hozzá van rendelve az infrastruktúra fenntartási költségeit. A Windows szoftverfrissítési van szó.|
@@ -53,7 +53,9 @@ Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a köv
 - [Kevesebbet költeni a virtuális gépek a fenntartott virtuálisgép-példányok](billing-save-compute-costs-reservations.md)
 - [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés használata fenntartott példány ismertetése](billing-understand-reserved-instance-usage-ea.md)
+- [A kriptográfiai Szolgáltató előfizetések fenntartott példány használatának megértéséhez](https://docs.microsoft.com/partner-center/azure-reservations)
 - [A Windows szoftverek költségeit fenntartott példányok nem találhatók](billing-reserved-instance-windows-software-costs.md)
+
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 

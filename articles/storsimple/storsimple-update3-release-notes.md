@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple 8000 Series Update 3 kibocsátási megjegyzései |} Microsoft Docs"
-description: "Az új funkciók, problémák és megoldások ismerteti a StorSimple 8000 Series Update 3."
+title: A StorSimple 8000 Series Update 3 kibocsátási megjegyzései |} Microsoft Docs
+description: Az új funkciók, problémák és megoldások ismerteti a StorSimple 8000 Series Update 3.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
 ms.devlang: NA
@@ -15,16 +15,13 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c22e3859fad55a8632d62aaf5f656081d6d662bd
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 9308602b77903e553e26d6f0586d963a4c58230d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Frissítse a StorSimple 8000 series eszköz 3 kibocsátási megjegyzései
-> [!NOTE]
-> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
-
 
 ## <a name="overview"></a>Áttekintés
 Az alábbi kibocsátási megjegyzések új szolgáltatásait ismerteti, és a StorSimple 8000 Series Update 3 a kritikus megnyitott problémák azonosításához. Ebben a kiadásban szereplő StorSimple szoftverfrissítések listáját is tartalmaznak. 
@@ -56,7 +53,7 @@ A következő táblázatok frissítése 3. javított problémák összegzését 
 | 2 |Helyileg rögzített kötetek |A korábbi változatban nem voltak i/o hibák, a kötet konvertálási hibák és a helyileg rögzített kötetekhez datapath sikertelen kapcsolatos problémákat. Ezek a problémák legfelső szintű okozott és rögzített ebben a kiadásban. |Igen |Nem |
 | 3 |Figyelés |Nem voltak egységek reporting és figyelési eszközök irányítópult diagramok ahol megfelelő információkat a helyileg rögzített kötetekhez jelent meg, valamint több problémáiról. Ebben a kiadásban ezek a problémák kerültek. |Igen |Nem |
 | 4 |Nagy mennyiségű írási i/o |StorSimple használata esetén a nagy írási műveletek munkaterhelések használatakor a felhasználó fog futni egy alkalomszerű hiba be ahol munkakészletének volt folyamatban rétegzett kiterjeszti a felhőbe. A kijavítanak ebben a kiadásban. |Igen |Igen |
-| 5 |Biztonsági mentés |Bizonyos ritka esetekben a szoftver, a korábbi verzióiban felhasználó elvégez egy távoli Klónozás biztonsági másolatot, ha azok volna hibákba felhő, és a művelet akkor hibaüzenetet a. Ebben a kiadásban javítani a hibát, és a művelet sikeresen befejeződik. |Igen |Igen |
+| 5 |Backup |Bizonyos ritka esetekben a szoftver, a korábbi verzióiban felhasználó elvégez egy távoli Klónozás biztonsági másolatot, ha azok volna hibákba felhő, és a művelet akkor hibaüzenetet a. Ebben a kiadásban javítani a hibát, és a művelet sikeresen befejeződik. |Igen |Igen |
 | 6 |Biztonsági mentési házirend |Bizonyos esetekben a ritka a szoftver, a korábbi kiadásokban történt a biztonsági mentési házirend törlésének kapcsolatos hiba. Ez a probléma fennáll ebben a kiadásban. |Igen |Igen |
 
 ## <a name="known-issues-in-update-3"></a>A frissítés 3 ismert problémák
@@ -72,7 +69,7 @@ A következő táblázat összefoglalja az ismert problémákról, ebben a kiad�
 | 6 |Webproxy |Ha a webproxy konfigurálása a megadott protokoll HTTPS-t, az eszköz-szolgáltatások közötti kommunikáció néven érinti, és kerül, hogy az eszköz offline állapotban. Támogatási csomag is hozható létre a folyamat során fel jelentős erőforrásokat az eszközön. |Győződjön meg arról, hogy a webalkalmazás-proxy URL-címe HTTP megadott protokollt. További információ: [Configure web proxy for your device](storsimple-8000-configure-web-proxy.md) (Webproxy beállítása az eszközhöz). |Igen |Nem |
 | 7 |Webproxy |Ha konfigurált és engedélyezett a webalkalmazás-proxy regisztrált egy eszközt, majd szüksége lesz az eszköz aktív vezérlőjén újraindítására. | |Igen |Nem |
 | 8 |Magas felhő késéssel és nagy i/o-munkaterhelés |Amikor a StorSimple eszköz nagyon magas felhő késések (másodperc sorrendben) és a magas i/o-munkaterhelés észlel, az eszköz kötetek csökkent állapotba, és az i/o "az eszköz nem áll készen" hiba miatt sikertelen lehet. |Szüksége lesz, manuálisan indítsa újra a eszközvezérlők vagy egy eszköz feladatátvétel ebben a helyzetben helyreállítás végrehajtása. |Igen |Nem |
-| 9 |Azure PowerShell |A StorSimple parancsmag használatakor **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - először 1 - várakozási** jelölje ki az első objektumot, így hozhat létre egy új **VolumeContainer** objektum, a parancsmag az összes található objektumokat adja vissza. |A parancsmag burkolása zárójelek között az alábbiak szerint: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - először 1 - várakozási** |Igen |Igen |
+| 9 |Azure PowerShell |A StorSimple parancsmag használatakor **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - először 1 - várakozási** jelölje ki az első objektumot, így hozhat létre egy új **VolumeContainer** objektum, a parancsmag az összes található objektumokat adja vissza. |A parancsmag burkolása zárójelek között az alábbiak szerint: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - First 1 - várakozási** |Igen |Igen |
 | 10 |Migrálás |Több kötet tároló áttelepítési lett átadva, az Európai legfrissebb biztonsági mentés esetén csak az első kötettároló pontos. Emellett a párhuzamos áttelepítés után az első kötettároló az első 4 biztonsági másolatok települnek indul. |Azt javasoljuk, hogy egyszerre több kötet tároló át. |Igen |Nem |
 | 11 |Migrálás |A visszaállítás után kötetek nem adódnak hozzá a biztonsági mentési házirend vagy a virtuális lemez. |Szüksége lesz a biztonsági mentési házirend ahhoz, hogy készítsen biztonsági másolatot, ezek a kötetek hozzá. |Igen |Igen |
 | 12 |Migrálás |Az áttelepítés befejezése után az adatsorozat 5000/7000-es eszköz nem hozzáférést kell az áttelepített adatok tárolókat. |Azt javasoljuk, hogy törölje az áttelepített adatok tárolókat, az áttelepítés befejezése és véglegesítése után. |Igen |Nem |

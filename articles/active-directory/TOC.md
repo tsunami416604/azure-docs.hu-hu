@@ -167,16 +167,16 @@
 #### [Hibrid Azure AD-csatlakoztatott, régebbi Windows-eszközök](device-management-troubleshoot-hybrid-join-windows-legacy.md)
 
 ## Alkalmazások kezelése
-### [Áttekintés](active-directory-enable-sso-scenario.md)
-### [Bevezetés](active-directory-integrating-applications-getting-started.md)
+### [Áttekintés](manage-apps/what-is-application-management.md)
+### [Bevezetés](manage-apps/plan-an-application-integration.md)
 ### [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
-### [Felhőalkalmazások felderítése](cloudappdiscovery-get-started.md)
-#### [Pillanatkép-jelentések létrehozása](cloudappdiscovery-set-up-snapshots.md)
+### [Felhőalkalmazások felderítése](manage-apps/cloud-app-discovery.md)
+#### [Pillanatkép-jelentések létrehozása](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Folyamatos jelentéskészítés konfigurálása](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Egyéni naplóelemző használata](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
 
-### [Appok távoli elérése az App Proxyval](active-directory-application-proxy-get-started.md)
+### [Appok távoli elérése az App Proxyval](manage-apps/application-proxy.md)
 #### Bevezetés
 ##### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
 ##### [Alkalmazások közzététele](application-proxy-publish-azure-portal.md)

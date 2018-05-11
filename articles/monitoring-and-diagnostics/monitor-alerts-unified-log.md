@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 3a4277d2106078136cee09dfe6aefc87a73c4e08
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Napló riasztásait az Azure Monitor - riasztás 
 Ez a cikk ismerteti a napló riasztások részleteit is támogatott belül az új riasztások típusú [Azure riasztások](monitoring-overview-unified-alerts.md) és a felhasználók Azure analytics platform használni alapjául riasztások... A naplók segítségével metrika riasztások leírását, [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)
@@ -92,7 +92,7 @@ Fontolja meg egy olyan forgatókönyvet, ahol keresett riasztást, ha a számít
 - **Adott időszakban:** 30 perc<br>
 - **Riasztási gyakoriságot:** öt perc<br>
 - **Értéket összesítő:** kiváló 90-nél<br>
-- **Eseményindító riasztás alapján:** összege nagyobb, mint 5 feltöri<br>
+- **Eseményindító riasztás alapján:** összesen feltöri nagyobb, mint 2<br>
 
 A lekérdezés 5 perces időközönként hozna létre az egyes számítógépek átlagos értékét.  Ez a lekérdezés az előző 30 perc át 5 percenként összegyűjtött adatok kell futnak.  Mintaadatokat három számítógépek alább láthatók.
 

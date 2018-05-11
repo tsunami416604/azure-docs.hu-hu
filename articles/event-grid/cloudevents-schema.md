@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: 84581de2819ec062a537d4a302f242085a4b3c2c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 31af59fd7057bef6e427f08cef695688dc2111d1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Esemény rács CloudEvents séma használata
 
@@ -68,7 +68,7 @@ CloudEvents v0.1 tulajdonságai a következők érhető el:
 | schemaURL          | URI      | „https://myschema.com”           | A séma, az adatok attribútum megfelelő (nem kötelező) mutató hivatkozás | *nem használható.*
 | contentType        | Karakterlánc   | az "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nem használható.*
 | Bővítmények         | Térkép      | {"extA": "vA", "extB", "vB"}  | Minden további metaadatot (nem kötelező)                                 | *nem használható.*
-| adat               | Objektum   | {"objA": "vA", "objB", "vB"}  | Az eseménytartalom (nem kötelező)                                       | adat
+| Adatok               | Objektum   | {"objA": "vA", "objB", "vB"}  | Az eseménytartalom (nem kötelező)                                       | Adatok
 
 További információkért lásd: a [CloudEvents spec](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 
@@ -95,6 +95,10 @@ A bemeneti sémát beállítása egy egyéni témakörre CloudEvents, használja
 Egy esemény rács témakör létrehozásához használja:
 
 ```azurecli
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
@@ -112,7 +116,7 @@ Egy esemény-előfizetés létrehozása, használata:
 
 ```azurecli
 az eventgrid event-subscription create \
-  --name <event_subscription_name> \  
+  --name <event_subscription_name> \
   --topic-name <topic_name> \
   -g gridResourceGroup \
   --endpoint <endpoint_URL> \

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: 03104b497034ef92ddb2c6216d6e9200e65168b0
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ce349aedc6b733d34ab61eb2e23b378727e01800
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
 Ez a témakör bemutatja a beállítások megköveteli az adatok strukturálatlan fájlból (CSV vagy TSV formátumban), vagy az Azure SQL-adatbázis egy helyi SQL Server tárolt adatok. Ezeket a feladatokat az adatok áthelyezését a felhőbe az Team tudományos folyamat részét képezik.
@@ -33,8 +33,8 @@ A következő táblázat összefoglalja az adatok áthelyezése az Azure SQL Dat
 
 | <b>FORRÁS</b> | <b>CÉL: Az Azure SQL-adatbázis</b> |
 | --- | --- |
-| <b>Egybesimított fájl (CSV vagy formázott TSV)</b> |<a href="#bulk-insert-sql-query">A tömeges beszúrás SQL-lekérdezés |
-| <b>A helyszíni SQL Server</b> |1. <a href="#export-flat-file">Egybesimított fájl exportálása<br> 2. <a href="#insert-tables-bcp">SQL-adatbázis áttelepítése varázsló<br> 3. <a href="#db-migration">Adatbázis biztonsági mentése és visszaállítása<br> 4. <a href="#adf">Az Azure Data Factory |
+| <b>Egybesimított fájl (CSV vagy formázott TSV)</b> |[A tömeges beszúrás SQL-lekérdezés](#bulk-insert-sql-query) |
+| <b>A helyszíni SQL Server</b> |1.[Egybesimított fájl exportálása](#export-flat-file)<br> 2. [SQL-adatbázis áttelepítése varázsló](#insert-tables-bcp)<br> 3. [Adatbázis biztonsági mentése és visszaállítása](#db-migration)<br> 4. [Azure Data Factory](#adf) |
 
 ## <a name="prereqs"></a>Előfeltételek
 Az itt leírt eljárások szükség van:

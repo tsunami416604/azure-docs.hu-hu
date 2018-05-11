@@ -1,6 +1,6 @@
 ---
 title: Az Azure piactér és AppSource publisher útmutató
-description: Lépésről lépésre ismerteti, és az Azure piactéren új közzétevők ellenőrzőlisták közzététele
+description: Azure piactér és AppSource Mik az alkalmazás és szolgáltatás közzétevők áttekintése
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: ellacroi
@@ -12,10 +12,10 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0e91e0b561093d3a82298f7d59b8c12ed02a81f4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 30847ff20abf6654e58a0e72a12f04dcd88d5871
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -87,7 +87,7 @@ Minden egyes kirakat több közzétételi beállítások és ajánlat típusokat
 |---------|---------|---------|
 |**List**    |    Megkereshetnek, tanácsadás     |  Azure Marketplace, AppSource       |
 |**Próbaverzió**   |     Ingyenes próbaverzió, SaaS-próbaverzióra, interaktív bemutató, kipróbálása    |  Azure Marketplace, AppSource       |
-|**Tranzakció**     |   Virtuális gép, sablon megoldás, felügyelt alkalmazás      |    Azure Piactér     |
+|**Tranzakció**     |   Virtuális gép, megoldássablonban, felügyelt alkalmazás, tárolók, SaaS-előfizetések      |    Azure Piactér     |
 
 
 
@@ -163,97 +163,6 @@ A Microsoft és egy közös értékesít készen partnerség lehetőséghez ajt�
 További információk a GTM előnyei és a cége a piactéren módjai látogasson el a [GTM előnyeit az MPN helyen](https://partner.microsoft.com/en-US/reach-customers/gtm).
 
 
-### <a name="determine-the-listing-type-right-for-your-offer"></a>Az előfizetéshez közvetlenül listaelem típusának meghatározása
-
-Minden egyes kirakat több közzétételi beállítások és ajánlat típusokat támogatja. Válassza ki az ajánlat típusa, amely a legjobban jelképezi a az alkalmazás és szolgáltatás részletes adatai. Minden közzétételi beállítások rendszerében partnerek vezethet a megosztás eléréséhez. 
-
-
-#### <a name="list"></a>Lista
-
-Használjon forduljon kérek a próba- vagy tranzakció-szintjén részvétel esetén nem valósítható meg. Ennek a megközelítésnek az az előnye, azonnali megkezdéséhez fogadására, amely képes elindítani az üzleti lendkerék eligazodást üzletek be kell nurtured érdeklődők piacra jutási megoldással közzétevők hasonlít. Azonban a hátránya, hogy az ügyfél engagement korlátozva, szemben a más típusú.
-
->[!IMPORTANT]
->Ügyfél engagement próbaverziójában és Transact kínál. Me forduljon érték megkapja az érdeklődési, tehát ha úgy dönt, hogy a lista tartalmazza az ilyen típusú, győződjön meg arról, hogy a vezető cél van beállítva, és készen áll a átfutási maximalizálása. 
-
-Amikor az ajánlat elsősorban szakmai-szolgáltatásokból állnak (például felméréseket, megvalósításokhoz, műhelyek), használja a a Consulting Services tanácsadó szolgálat fel típusa. Ajánlat hatókör, időtartama és ár javítani kell, egyetlen ügyfél számára kell lennie, és a helyen kell elvégezni.
-
-#### <a name="trial"></a>Próbaverzió
-
-Biztosít egy próbaverziója növeli az ügyfeleknek, és ezért egy gazdagabb elérhetővé tegyék a megoldást kínál engagement szintjét. A próbaverzió lehetővé teszi az ügyfelek a megoldás felfedezése megvásárlása előtt. Próbaverziója hogy magasabb veszélyét annak, hogy az előléptetés a kirakatokkal a, és az ügyfél kapcsolattartás során több és több funkcióval érdeklődők kell látnia.
- 
-Az összes próbaverzió beállítások vannak telepítve, a kísérleti környezetben és/vagy az Azure-előfizetéssel, nem pedig a felhasználói környezetben vagy az Azure-előfizetés. Próbaverzió kell lennie az ügyfél következtében további beszerzésének nélkül és minimális, ha bármely, egy egyszerű befejezéséhez további konfigurációs használati eset. Próbaverzió tartalmaznia kell szabad támogatási legalább a próbaidőszak alatt. Próbaverziós felhasználók nurtured legyen, és figyeli a legjobb eredmények elérése érdekében a szándékos értékelési útvonalon. Közzétevők javasoljuk, hogy a piactér érdeklődők, mind a közzétevő saját alkalmazásbeli az eszközintelligencia segítségével figyelheti és kezelheti a próbaverziós felhasználók.
-
-Három jellemző próba forgatókönyvek van:
-
-**Ingyenes próbaverzió**
-
-Egy ingyenes próbaverzióra használja, ha a megoldáshoz, vagy az alkalmazás által a ingyenes-az-próbálja meg, a Szolgáltatottszoftver-alapú próbaverziójának. Ez a beállítás kiváló minőségű érdeklődők meghajtók érdekelt ügyfél segítségével az üzleti lendkerék indíthat el. Ingyenes próbaverzió korlátozott használatú vagy korlátozott időtartamra próba fiókok jelenítheti meg. Tartalmazniuk kell a fizetős használja a szoftver átalakítás felgyorsítása művelet hívása.
-
-|**Próba beállítás**  |**Főbb előnyök**  |**Válassza ezt a beállítást, ha...**  |
-|---------|---------|---------|
-|**Ingyenes próbaverzió**    |     Lehetővé teszi, hogy az ügyfél a termék kipróbálásához vásárolnak egy automatikus módszerrel átalakítása fizetett használata előtt. Emellett lehetővé teszi az igazolást, ügyfél és a Microsoft értékesítési csoportok közös engagement fogalom. |     A megoldás egy virtuális géphez vagy sablonhoz megoldás.<br><br> A megoldás egy SaaS kínál, és egy több-bérlős Szolgáltatottszoftver-termék ajánlatot tesz. <br><br>A számítógép első indításakor az ügyfél megszerezni, akinek gyorsan rendelkezik. <br><br>Egyetlen bérlővel rendelkezik, de vendégként ügyfelek ad hozzá.|
-
-**Kipróbálása**
-
-Teszt meghajtót használ, a megoldás segítségével egy vagy több virtuális gépek az infrastruktúra-szolgáltatási vagy SaaS-alkalmazásokkal való telepítésekor. Ennek a megközelítésnek az az előnye, az automatizált üzembe helyezést virtuális berendezés vagy egy partner által szolgáltatott "interaktív bemutató" az ügyfél-értékelési további költségek nélkül megoldás az ügyfélnek a couched teljes megoldás környezet. Az ügyfél nem kell egy meglévő Azure ügyfél magasabb színvonalú érdeklődők kialakításához.
-
-Nincsenek további előnyökkel is jár próbát:
-
-- 27 %-a felhasználói kereséseket a piactéren csak megjelenítése ajánlatok teszt meghajtók felhasználók vannak is. 
-- Teszt meghajtók ajánlatok készítése 38 % további érdeklődők mint ajánlatok nélkül. 
-- Új ügyfél kérése a piactéren 36 %-át ügyfeleket, próbát tartott határozza meg. 
-- Teszt meghajtók engedélyezése a Microsoft mező eladók jobb megértése érdekében a termék közös értékesít erőfeszítéseket.
-
-|**Próba beállítás**  |**Főbb előnyök**  |**Válassza ezt a beállítást, ha...**  |
-|---------|---------|---------|
-|**Kipróbálása**     |     Lehetővé teszi, hogy az ügyfél előtt vásárolnak, próbálja meg a termék. Egy előre konfigurált telepítő is ez elősegítheti a megoldás. |   A megoldás egy virtuális gép, megoldássablonban vagy egy bérlői SaaS-alkalmazás, vagy összetett kiépítését. <br><br>A próbaverzió átalakítása fizetett ajánlat metódus nem rendelkezik. |
-
-**Interaktív bemutató**
-
-Az ügyfelek elősegítheti a termék keresztül igénybe az interaktív bemutató használatával. Ez a beállítás előnye, hogy egy próbaverziója biztosíthat összetett megoldások bonyolult telepítése nélkül. A beállítás hatására az ügyfelek középpontjába a megoldást tekintse meg. És elérhetővé teszi a kiadóinak érdeklődőket, is lehet nurtured való eligazodást üzletek elindítani az üzleti lendkerék kapni. 
-
-|**Próba beállítás**  |**Főbb előnyök**  |**Válassza ezt a beállítást, ha...**  |
-|---------|---------|---------|
-|**Interaktív bemutató**    |  Lehetővé teszi az ügyfelek a a terméket telepítő összetettsége nélkül művelet megjelenítéséhez.       |    A megoldás, amely nehéz elérni a próbaidőszak lenne összetett telepítési igényel.     |
-
-#### <a name="transaction"></a>Tranzakció
-
-Az Azure piactéren használja egy *virtuális gép* amikor a megoldást már telepítették, mint egy virtuális készülékre az ügyfél előfizetéséhez. Virtuális gépek teljesen commerce keresztül használatalapú vagy BYOL-kompatibilis licencelési modell engedélyezve. A Microsoft commerce-tranzakciót futtat, és az ügyfél nevében a közzétevő váltók stb. A közzétevő lekérdezi az előnye, hogy az ügyfél előnyben részesített fizetési kapcsolatot a Microsofttal, beleértve a nagyvállalati szerződés kihasználva. 
-
->[!NOTE]
->Jelenleg egy nagyvállalati szerződés pénzügyi kötelezettségvállalások is használható a virtuális készülék Azure használati szemben, de nem a közzétevő szoftverek licenc díjak ellen.
-
-Használjon egy *Azure megoldássablonban* amikor megoldást igényel a virtuális készülék túl további üzembe helyezési és konfigurálási automation. Megoldás sablonok automatizálhatja egy vagy több virtuálisgép-erőforrások kiépítése, és a hálózati és tárolási erőforrásokat oszthat. Megoldás sablonok automation előnyt biztosíthatnak, egyetlen virtuális gépek és a teljes IaaS-alapú megoldás környezetekben. Megoldás sablonok létrehozásával kapcsolatos további [GitHub](https://github.com/MicrosoftDocs/azure-docs).
-
-Használjon egy *Azure által kezelt alkalmazás* amikor egy ügyfél előfizetését – a virtuális gép vagy a teljes IaaS-alapú megoldások telepít, és a közzétevőt vagy az ügyfél szeretne (például egy SI harmadik fél által kezelt megoldás vagy MSP). Felügyelt alkalmazások létrehozásával kapcsolatos további [Azure által felügyelt alkalmazások – áttekintés](https://docs.microsoft.com/azure/managed-applications/overview). A gyakran ismételt kérdések felsorolását, [piactéren GYIK](https://azure.microsoft.com/marketplace/faq/).
-
->[!NOTE]
-> Felügyelt alkalmazások központilag telepíthető a piactéren keresztül kell lennie. Ha ügyfél-kommunikáció problémát jelent, vegye figyelembe, hogy érhető el érdekelt ügyfelek Ha átfutási megosztás engedélyezve van.
-
-#### <a name="azure-certified-program"></a>Az Azure Certified program
-
-Az Azure piactéren közzétett összes virtuális gépet az Azure hitelesített program ellenőrzi. A program:
-
-- Biztosítja a felhasználók, hogy a virtuális gép kompatibilis az Azure platformon és a piactér modellt kínál.
-- Online lemezkép biztonsági megfelelőség szempontjából, beleértve a vírusok és kártevő teszteket.
-- Lehetővé teszi, hogy az ajánlat szintjén javítása érdekében érvényesített megoldásként a Microsoft vállalati felhasználók előléptetés badging.
-- További információért olvassa el [hivatalos Microsoft Azure](https://azure.microsoft.com/en-us/marketplace/programs/certified/).
-
-
-#### <a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Az Office, Dynamics, és a Power BI termék közzétételi folyamatok
-Office-, Dynamics, és a Power BI AppSource alkalmazások esetén részletesebb kapcsolatos követelményekről az ebben a szakaszban a termékspecifikus dokumentációjában. 
-
-
-|Product |Közzétételi információkat  |
-|---------|---------|
-|Office 365     |    Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store).     |
-|Dynamics 365 a pénzügyi és műveletek  |   Ön éppen való fejlesztéskor Enterprise Edition, tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
-|Az ügyfél Engagement Dynamics 365 |Tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource). |
-|Power BI   |     Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/power-bi/developer/office-store).    |
-|Cortana Intelligence     |    További tudnivalók [AppSource a Cortana](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
-|AppSource tanácsadás ajánlatok     |  Tekintse át a [irányelvek és megtudhatja, hogyan nyújt az ajánlatot](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf).    |
-
-
 ### <a name="requirements-by-listing-type"></a>Követelményeit listaelem típusa
 
 #### <a name="prerequisites-for-marketplace-publishing"></a>Piactér-közzététel előfeltételei
@@ -298,6 +207,23 @@ Office-, Dynamics, és a Power BI AppSource alkalmazások esetén részletesebb 
 |---------|---------|---------|
 |**Számlázási és annak mérésére**    |  A virtuális gép támogatnia kell a saját licenc vagy a használat alapú, a havi számlázási.       |    Tranzakció    |
 |**Azure-kompatibilis virtuális merevlemez (VHD)**     |   Virtuális gépek kell épülő [Windows](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) vagy [Linux](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).    |   Tranzakció      |
+
+#### <a name="prerequisites-specific-to-transaction-publishing-for-containers"></a>Tárolók tranzakció közzétételének vonatkozó Előfeltételek
+
+
+|**Követelmény**  |**Részletek** |**Közzétételi beállítás**  |
+|---------|---------|---------|
+|**Számlázási és annak mérésére**   |  A tároló támogatnia kell a vagy ingyenes vagy saját licenc számlázási modellt.       |  Tranzakció       |
+|**Docker-alapú lemezkép**    |   Tároló képek a Docker képformátum kell alapulnia, és az Azure-tároló nyilvántartó kell húzni.      |  Tranzakció       |
+
+#### <a name="prerequisites-specific-to-transation-publishing-for-saas-app-subscriptions"></a>Az SaaS-alkalmazás előfizetések traznakció közzététel vonatkozó Előfeltételek
+
+|**Követelmény**  |**Részletek** |**Közzétételi beállítás**  |
+|---------|---------|---------|
+|**Számlázási és annak mérésére**    |   Az ajánlat árképzéséről havi simán sebességgel. Jelenleg nem támogatottak a használatalapú árképzési és a használat alapú "true felfelé" képességeket.      |   Tranzakció      |
+|**Visszavonás**  |   Az ajánlat bármikor törölhető az ügyfél.      |   Tranzakció      |
+|**Tranzakció kezdőlapja**     |   Egy Azure társmárkás tranzakció kezdőlapja, ahol a felhasználók létrehozása és kezelése a Szolgáltatottszoftver-szolgáltatásfiók működteti.      |    Tranzakció     |
+|**SaaS-előfizetés API**    |   Egy szolgáltatás, amely a Szolgáltatottszoftver-előfizetés létrehozása, frissítése és a felhasználói fiók és a service-csomag törlése hatással lehet teszi ki. Kritikus API módosítások 24 órán belül támogatnia kell. A nem kritikus API módosítások kiadjuk rendszeres időközönként.      |     Tranzakció    |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Közzététel szolgáltatások tanácsadás vonatkozó Előfeltételek
 
@@ -364,11 +290,11 @@ A közzétételi folyamat megkezdése előtt érdemes egy ajánlatot készítés
 
 |A közzétételi összetevő lesz szüksége  |Az ajánlattípus  |
 |---------|---------|
-|**Cím (legfeljebb 50 karakter)**    |  Tranzakció: virtuális gépek, az Azure apps (megoldás sablonok és a felügyelt alkalmazások)       |
-|**Összefoglalás (legfeljebb 200 karakter)**    |  Tranzakció: virtuális gépek, az Azure apps (megoldás sablonok és a felügyelt alkalmazások)       |
-|**Hosszú összefoglalás (legfeljebb 256 karakter)**     |   Tranzakció: virtuális gépek, az Azure apps (megoldás sablonok és a felügyelt alkalmazások)      |
-|**HTML-alapú leírása (legfeljebb 3000 olyan karakter)**    |  Tranzakció: virtuális gépek, az Azure apps (megoldás sablonok és a felügyelt alkalmazások)       |
-|**Vállalati emblémát (40 x 40, 90 x 90, 115 x 115, 255 x 115, 815 x 290)**    |  Tranzakció: virtuális gépek, az Azure apps (megoldás sablonok és a felügyelt alkalmazások)       |
+|**Cím (legfeljebb 50 karakter)**    |  Tranzakció: virtuális gépek, a Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások), a tárolók, a Szolgáltatottszoftver-előfizetések       |
+|**Összefoglalás (legfeljebb 200 karakter)**    |  Tranzakció: virtuális gépek, a Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások), a tárolók, a Szolgáltatottszoftver-előfizetések       |
+|**Hosszú összefoglalás (legfeljebb 256 karakter)**     |   Tranzakció: virtuális gépek, a Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások), a tárolók, a Szolgáltatottszoftver-előfizetések      |
+|**HTML-alapú leírása (legfeljebb 3000 olyan karakter)**    |  Tranzakció: virtuális gépek, a Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások), a tárolók, a Szolgáltatottszoftver-előfizetések      |
+|**Vállalati emblémát (40 x 40, 90 x 90, 115 x 115, 255 x 115, 815 x 290)**    |  Tranzakció: virtuális gépek, a Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások), a tárolók, a Szolgáltatottszoftver-előfizetések     |
 
 
 **Termékváltozat**
@@ -380,6 +306,7 @@ A közzétételi folyamat megkezdése előtt érdemes egy ajánlatot készítés
 |**Operációs rendszer részletei**    |   Tranzakció: virtuális gépek      |
 |**Portok és protokollok használata**    |  Tranzakció: virtuális gépek       |
 |**Lemez verzió és minden virtuális merevlemez használatban SAS URL-címe**   |  Tranzakció: virtuális gépek       |
+|**Az Azure tároló beállításjegyzék (ACR) lemezkép tárház adatait, beleértve az előfizetés-azonosító, erőforráscsoport-név, beállításjegyzék nevét, tárház nevét, felhasználónév, jelszó és kép címkék (nem kötelező)** | Tranzakció: tárolók |
 
 
 #### <a name="using-azure-active-directory-to-enable-trials"></a>Az Azure Active Directoryval kísérletek engedélyezése

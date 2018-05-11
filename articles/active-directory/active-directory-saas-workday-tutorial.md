@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f3c3bbb23b9d4439188286342d80eb1cc1d0833
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Oktatóanyag: Azure Active Directoryval integrált munkanap
 
@@ -174,19 +174,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![SAML-alapú identitás-szolgáltatóktól](./media/active-directory-saas-workday-tutorial/IC7829272.png "SAML-alapú identitás-szolgáltatóktól")
    
-    c. Válassza ki **engedélyezése idp kezdeményezett kijelentkezési**.
-   
-    d. Az Azure portálon a a **bejelentkezés konfigurálása** ablakban, a Másolás a **Sign-Out URL-cím** értékét, és illessze be azt a **kijelentkezési válaszcíme (URL)** szövegmező.
+    c. Az Azure portálon a a **bejelentkezés konfigurálása** ablakban, a Másolás a **Sign-Out URL-cím** értékét, és illessze be azt a **kijelentkezési válaszcíme (URL)** szövegmező.
 
-    e. Az Azure portálon a a **bejelentkezés konfigurálása** ablakban, a Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** értékét, és illessze be azt a **IdP egyszeri bejelentkezési URL-címe** szövegmező.
+    d. Az Azure portálon a a **bejelentkezés konfigurálása** ablakban, a Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** értékét, és illessze be azt a **IdP egyszeri bejelentkezési URL-címe** szövegmező.
 
-    f. A **környezetben használt** szövegmező, válassza ki a környezet nevét.
+    e. A **környezetben használt** szövegmező, válassza ki a környezet nevét.
 
-    g. Kattintson a **szolgáltató nyilvános kulcs Identitástanúsítvány**, és kattintson a **létrehozása**. 
+    f. Kattintson a **szolgáltató nyilvános kulcs Identitástanúsítvány**, és kattintson a **létrehozása**. 
 
     ![Hozzon létre](./media/active-directory-saas-workday-tutorial/IC782928.png "létrehozása")
 
-    h. Kattintson a **x509 létrehozása nyilvános kulcs**. 
+    g. Kattintson a **x509 létrehozása nyilvános kulcs**. 
 
     ![Hozzon létre](./media/active-directory-saas-workday-tutorial/IC782929.png "létrehozása")
 

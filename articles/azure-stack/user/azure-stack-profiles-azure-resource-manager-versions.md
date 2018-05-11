@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 54de948597a5eddfcc808371c61e36d45089abc4
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Erőforrás-szolgáltató API verziókat támogatja Azure verem profilok
 
@@ -30,7 +30,7 @@ Az API-profil három elnevezési konvenciót használ:
 
 Egy ismertetése API profilok és verzió kiadás ütemben történik az Azure-verem [kezelése API verziója profilok Azure verem](azure-stack-version-profiles.md).
 
-> [!note]  
+> [!Note]  
 > A **legújabb** API profil az erőforrás-szolgáltató API verziója legújabb tartalmazza, és nem szerepel ebben a cikkben.
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>2018 – 03-01-hibrid áttekintése
@@ -83,7 +83,7 @@ Több a verziók listáját a szolgáltatók a api-profilban szereplő minden er
 
 Szerepköralapú hozzáférés-vezérlés használatával a műveleteinek a szervezet felhasználói erőforrások kezelése. A műveletek készletét lehetővé teszi szerepkörök definiálása, felhasználók vagy csoportok szerepkörök hozzárendelése és engedélyek adatainak beolvasása. További információkért lásd: [engedélyezési](https://docs.microsoft.com/rest/api/authorization/).
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |---------------------|--------------------|
 | Zárolások | 2017-04-01 |
 | Műveletek | 2015-07-01 |
@@ -141,7 +141,7 @@ Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuáli
 
 ### <a name="microsoftinsights"></a>Microsoft.Insights
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |--------------------|--------------------|
 | Riasztási szabályok | 2016-03-01 |
 | Kategóriák | 2017 03-01. dátumú előnézeti |
@@ -153,7 +153,7 @@ Az Azure számítási API-k adnia Önnek programozott hozzáférést a virtuáli
 
 A kulcs kezelése-tárolók és a kulcsokat, a titkos kulcsok és a tanúsítványok belül a kulcstárolót. További információkért lásd: [Azure Key Vault REST API-referencia](https://docs.microsoft.com/rest/api/keyvault/).
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |-------------------------|--------------|
 | Műveletek | 2016-10-01 |
 | Tárolók | 2016-10-01 |
@@ -164,7 +164,7 @@ A kulcs kezelése-tárolók és a kulcsokat, a titkos kulcsok és a tanúsítvá
 
 Műveletek hívás eredménye a a rendelkezésre álló hálózati felhő műveletek listájának megjelenítése. További információkért lásd: [művelet REST API](https://docs.microsoft.com/rest/api/operation/).
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |---------------------------|--------------|
 | Kapcsolatok | 2015-06-15 |
 | DNS-zónák | 2016-04-01 |
@@ -186,7 +186,7 @@ Műveletek hívás eredménye a a rendelkezésre álló hálózati felhő művel
 
 Az Azure Resource Manager lehetővé teszi, hogy akkor helyezheti üzembe és felügyelheti a Azure megoldások infrastruktúra. Az erőforráscsoportok kapcsolódó erőforrások rendszerezése, és az erőforrások JSON sablonok telepítése. Bevezető történő központi telepítésére és a Resource Manager-erőforrások kezelése, tekintse meg a [Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |-----------------------------------------|-------------------|
 | Alkalmazás-regisztráció | 2015-01-01 |
 | Erőforrásnév ellenőrzése | 2015-012016-09-01 |
@@ -218,20 +218,20 @@ Az Azure Resource Manager lehetővé teszi, hogy akkor helyezheti üzembe és fe
 
 A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kulcsok programozott módon kezelését. További információkért lásd: [Azure Storage erőforrás szolgáltató REST API-referencia](https://docs.microsoft.com/rest/api/storagerp/).
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |-------------------------|--------------|
 | Név foglaltságának ellenőrzése | 2016-01-01 |
 | Helyek | 2016-01-01 |
 | Helyek/kvóták | 2016-01-01 |
 | Műveletek | 2016-01-01 |
-| StorageAccounts | 2016-01-01 |
+| Tárfiókok | 2016-01-01 |
 | A tanúsítványalgoritmusok | 2016-01-01 |
 
 ## <a name="details-for-the-2017-03-09-profile"></a>A 2017-03-09-profil részletei
 
 ### <a name="microsoft-authorization"></a>Microsoft-engedély
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |---------------------|---------------------------------|
 | Zárolások | 2017-04-01 |
 | Műveletek | 2015-07-01 |
@@ -263,7 +263,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |---------------------------|--------------|
 | Kapcsolatok | 2015-06-15 |
 | DNS-zónák | 2016-04-01 |
@@ -283,7 +283,7 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |-----------------------------------------|--------------|
 | Alkalmazás-regisztráció | 2015-01-01 |
 | Erőforrásnév ellenőrzése | 2016-09-01 |
@@ -313,13 +313,13 @@ A Storage erőforrás-szolgáltató (SRP) lehetővé teszi a tárfiók és a kul
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage
 
-| Típusú erőforrások | API-verziók |
+| Erőforrástípusok | API-verziók |
 |-------------------------|--------------|
 | Név foglaltságának ellenőrzése | 2016-01-01 |
 | Helyek | 2016-01-01 |
 | Helyek/kvóták | 2016-01-01 |
 | Műveletek | 2016-01-01 |
-| StorageAccounts | 2016-01-01 |
+| Tárfiókok | 2016-01-01 |
 | A tanúsítványalgoritmusok | 2016-01-01 |
 
 ## <a name="next-steps"></a>További lépések

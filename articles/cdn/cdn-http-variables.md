@@ -12,10 +12,10 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
-ms.openlocfilehash: ea7469b1d1c3d1c20beca9b1fb3bef0d4dac9492
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 36c1b20219fabd1b7c02247d9a93bb7b7cfc898d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -61,8 +61,8 @@ A következő táblázat ismerteti a támogatott HTTP-változókat. Egy üres é
 | Kérelem séma | a(z) % {séma} | Azt jelzi, hogy a kérelem séma. |http |
 | Kérelem URI-azonosítója (relatív) | a(z) % {request_uri} | Azt jelzi, hogy a relatív elérési út, beleértve a lekérdezési karakterláncot, a kérelem URI-azonosítója definiálva. | /marketing/foo.js?loggedin=TRUE |
 | Kérelem URI-azonosítója (relatív lekérdezési karakterlánc nélkül) | a(z) % {uri} | Azt jelzi, hogy a relatív elérési út a kért tartalomhoz. <br /><br/>Kapcsolatos információkat:<br />– A relatív elérési út nem tartalmazza a lekérdezési karakterlánc.<br />-E relatív elérési út az URL-cím újraírások tükrözi. Egy URL-cím a következő feltételek felülíródik:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Módosítsa úgy a szolgáltatás URL: Ez a szolgáltatás újraírja a kérési URI-ban meghatározott relatív elérési út.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME URL-címe: A kérés ilyen típusú rendszeren, a megfelelő CDN URL-cím. |/800001/corigin/rewrittendir/foo.js |
-| Kérés URI-ja | a(z) % {kérelem} | A kérelem ismerteti. <br />Szintaxis: `HTTPMethod RelativePath Protocol` | /Marketing/foo.js?loggedin=true HTTP/1.1 beolvasása |
-| Válasz állomásfejléc-érték | a(z) % {resp_&lt;ResponseHeader&gt;} | A megfelelő által azonosított válaszfejléc értékét adja vissza a &lt;ResponseHeader&rt; kifejezés. <br /><br />Ha a válaszfejlécet nevét (például felhasználói ügynök) kötőjellel tartalmaz, cserélje le a aláhúzás karakterrel (például User_Agent). | Példa: % {resp_Content_Length}<br /><br />Minta értéke: 100 |
+| Kérés URI-ja | a(z) % {kérelem} | A kérelem ismerteti. <br />Szintaxis: &lt;HTTP-metódus&gt; &lt;relatív elérési út&gt; &lt;HTTP protokoll&gt; | /Marketing/foo.js?loggedin=true HTTP/1.1 beolvasása |
+| Válasz állomásfejléc-érték | a(z) % {resp_&lt;ResponseHeader&gt;} | A megfelelő által azonosított válaszfejléc értékét adja vissza a &lt;ResponseHeader&gt; kifejezés. <br /><br />Ha a válaszfejlécet nevét (például felhasználói ügynök) kötőjellel tartalmaz, cserélje le a aláhúzás karakterrel (például User_Agent). | Példa: % {resp_Content_Length}<br /><br />Minta értéke: 100 |
 
 ## <a name="usage"></a>Használat
 A következő táblázat ismerteti a helyes szintaxisa egy HTTP-változó.
@@ -155,19 +155,19 @@ Kapcsolatos információkat:
      - Pozitív: Meghatározza, hogy mennyi jobb a kezdő karakter karakterláncrészletet.
      - Negatív: Meghatározza, hogy mennyi balra a kezdő karakter karakterláncrészletet.
 
-#### <a name="examples"></a>Példák:
+#### <a name="example"></a>Példa:
 
 Az alábbi példa támaszkodik a következő minta kérelem URL-címe:
 
-`https://cdn.mydomain.com/folder/marketing/myconsultant/proposal.html`
+https:\//cdn.mydomain.com/folder/marketing/myconsultant/proposal.html
 
 A következő karakterlánc változók kezelésére szolgáló különböző módszerekről mutatja be:
 
-`https://www%{http_host:3}/mobile/%{request_uri:7:10}/%{request_uri:-5:-8}.htm`
+https:\//www%{http_host:3}/mobile/%{request_uri:7:10}/%{request_uri:-5:-8}.htm
 
 A minta kérelem URL-címe alapján, a fenti változó adatkezelési eredményez a következő értéket:
 
-`https://www.mydomain.com/mobile/marketing/proposal.htm`
+https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 
 ### <a name="pattern-removal"></a>Minta eltávolítása
@@ -180,7 +180,7 @@ Egy adott bizonyos mintázatnak megfelelő szöveg elején vagy végén egy vál
 
 #### <a name="example"></a>Példa:
 
-Ez a mintaforgatókönyv request_uri változó értéke:
+A minta ebben a forgatókönyvben a *request_uri* állítja be:
 
 `/800001/myorigin/marketing/product.html?language=en-US`
 

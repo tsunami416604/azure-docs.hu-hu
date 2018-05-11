@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 29d8afb54ffbbed2178c8af611c0c0bb77fbe915
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Az Azure Active Directory Identity Protection-forgatókönyv
 
@@ -102,7 +102,7 @@ A bejelentkezés megjelennek az Identity Protection-irányítópult 2 – 4 ór�
 Biztonsági rések egy hibás szereplő is kihasználható az Azure AD környezetben gyengeségei miatt. Jelenleg biztonsági rések 3 típusú illesztett az Azure AD Identity Protection használó egyéb szolgáltatásokat az Azure AD. A biztonsági rések jelenik meg az Identity Protection-Irányítópult automatikusan után ezek a funkciók be vannak állítva.
 
 * Az Azure AD [többtényezős hitelesítés](authentication/multi-factor-authentication.md)
-* Az Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
+* Az Azure AD [Cloud App Discovery](manage-apps/cloud-app-discovery.md).
 * Az Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
 

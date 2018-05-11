@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció a Tableau Online |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Tableau Online között."
+title: 'Oktatóanyag: Azure Active Directory-integráció a Tableau Online |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Tableau Online között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ae9dbde509726065da7eaee2c7aec491389f45
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9e7de7946769eb2aeeac1c8b21448efa142728bb
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Oktatóanyag: Azure Active Directory-integráció a Tableau Online
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://sso.online.tableau.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://sso.online.tableau.com`
 
-    b. Az a **azonosító** szövegmező, írja be az URL-cím:`https://sso.online.tableau.com/public/sp/<instancename>`
+    b. Az a **azonosító** szövegmező, írja be az URL-cím: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
 
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
@@ -161,10 +161,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
    
    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_14.png)
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
 
@@ -203,7 +199,7 @@ Ebben a szakaszban a Tableau Online Britta Simon nevű felhasználó létrehozá
 1. A **Tableau Online**, kattintson a **beállítások** , majd **hitelesítési** szakasz. Görgessen le a **felhasználók** szakasz. Kattintson a **felhasználók hozzáadása az** , majd **adja meg az E-mail címek**.
    
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. Válassza ki **adja hozzá a felhasználók az egyszeri bejelentkezés (SSO) hitelesítési**. Az a **E-mail címet adjon meg** szövegmező hozzáadásabritta.simon@contoso.com
+2. Válassza ki **adja hozzá a felhasználók az egyszeri bejelentkezés (SSO) hitelesítési**. Az a **E-mail címet adjon meg** szövegmező hozzáadása britta.simon@contoso.com
    
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_11.png)
 3. Kattintson a **Create** (Létrehozás) gombra.
@@ -262,4 +258,3 @@ Ha a hozzáférési panelen a Tableau Online csempére kattint, akkor kell beolv
 [201]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_203.png
-

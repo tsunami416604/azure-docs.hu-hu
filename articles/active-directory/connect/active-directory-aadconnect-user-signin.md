@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/08/2018
 ms.author: billmath
-ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezés lehetőségei
 Az Azure Active Directory (Azure AD) Connect lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a felhő- és a helyszíni erőforrásokhoz ugyanazt a jelszót. Ez a cikk ismerteti az alapvető fogalmakat minden identitás modell segítségével válassza ki az Azure AD bejelentkezés használni kívánt identitását.
@@ -28,6 +28,7 @@ Ha már ismeri az Azure AD identity modell, és szeretné, hogy egy adott módsz
 * [Jelszókivonat-szinkronizálást](#password-hash-synchronization) rendelkező [zökkenőmentes egyszeri bejelentkezést (SSO)](active-directory-aadconnect-sso.md)
 * [Áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) rendelkező [zökkenőmentes egyszeri bejelentkezést (SSO)](active-directory-aadconnect-sso.md)
 * [Összevont egyszeri Bejelentkezést (az Active Directory összevonási szolgáltatások (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+* [Összevonás az PingFederate](#federation-with-pingfederate)
 
 > [!NOTE] 
 > Fontos megjegyezni, hogy az Azure AD összevonási konfigurálásával, megbízhatósági kapcsolatot hoz létre az Azure AD-bérlő és a összevont tartományok között. A megbízhatósági összevont tartományt a felhasználók hozzáférhetnek a Azure AD felhőalapú erőforrásokhoz a bérlő belül.  
@@ -88,6 +89,13 @@ Ha telepít egy új farmot, vagy egy meglévő farmot használ, meg kell:
 * A gépet, a varázslóban a tudjanak csatlakozni más számítógépekhez, hogy szeretné, hogy az AD FS vagy webalkalmazás-Proxy telepítése a Windows Remote Management használatával.
 
 További információkért lásd: [egyszeri bejelentkezés konfigurálása az AD FS](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs).
+
+### <a name="federation-with-pingfederate"></a>Összevonás a PingFederate-tel
+Az összevont bejelentkezés a felhasználók bármikor beléphet az Azure AD-alapú szolgáltatásokat, helyszíni jelszavukat. Amikor nem a vállalati hálózaton, azok nem is kell adja meg a jelszavukat.
+
+PingFederate való használathoz az Azure Active Directory konfigurálásával kapcsolatos további információkért lásd: [PingFederate integrálása az Azure Active Directory és az Office 365](https://www.pingidentity.com/AzureADConnect)
+
+Az Azure AD Connect használatával PingFederate beállításával kapcsolatos információkért lásd: [az Azure AD Connect egyéni telepítése](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-pingfederate)
 
 #### <a name="sign-in-by-using-an-earlier-version-of-ad-fs-or-a-third-party-solution"></a>Jelentkezzen be egy korábbi AD FS vagy egy harmadik féltől származó megoldás használatával
 Ha már konfigurálta az felhő bejelentkezhet egy korábbi verzióját (például az AD FS 2.0) AD FS vagy egy harmadik féltől származó összevonási szolgáltató használatával, ha szeretné, hagyja ki a felhasználó-bejelentkezés konfigurálása az Azure AD Connect használatával. Ez lehetővé teszi a legutóbbi szinkronizálás és más képességek az Azure AD Connect beolvasása közben továbbra is a meglévő megoldást használni a bejelentkezéshez.

@@ -15,11 +15,11 @@ ms.date: 05/02/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c79689ae7527a715266bad62ec50fddaab90129d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cd27bab470b7037087421fac1e9eeabe10957831
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Az Azure Active Directory-Proxy és a Tableau 
 
@@ -92,5 +92,5 @@ Az alkalmazás tesztelése készen áll. A Tableau, közzétételéhez használt
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD-alkalmazásproxy kapcsolatos további információkért lásd: [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](active-directory-application-proxy-get-started.md).
+Az Azure AD-alkalmazásproxy kapcsolatos további információkért lásd: [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](manage-apps/application-proxy.md).
 

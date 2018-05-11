@@ -76,7 +76,6 @@
         - name: Nyilvános Load Balancer létrehozása IPv6-tal (sablon)
           href: load-balancer-ipv6-internet-template.md
     - name: Belső Load Balancer konfigurálása
-      href: load-balancer-get-started-ilb-arm-portal.md
       items:
         - name: Belső Load Balancer konfigurálása (PowerShell)
           href: load-balancer-get-started-ilb-arm-ps.md

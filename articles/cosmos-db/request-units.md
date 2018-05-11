@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 7290c12e7d96ac01c66d97103920793f98120b38
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0aa87aeaf852d7309c29c1298e326c101a944904
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB egység kérése
 
@@ -48,81 +48,6 @@ Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, amelyben Azur
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
-
-## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Adja meg a kérelem egység kapacitás az Azure Cosmos DB
-
-Megadhatja, hogy hány kérés egység / másodperc (RU / másodperc) kívánt foglalt, mind az egyes tároló, vagy azon tárolók. A létesített átviteli sebesség alapján, Azure Cosmos DB foglal le a tárolója és elágazást/rebalances adatokat tároló partíciók között, akkor növekedésével fizikai partíciókat.
-
-Az egyes tároló szintjén RU/mp hozzárendelésekor a tárolók hozhatók létre *rögzített* vagy *korlátlan*. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. Hozzon létre egy korlátlan számú tárolót, meg kell adnia egy minimális átviteli sebességgel 1000 RU/mp és egy [partíciókulcs](partition-data.md). Az adatok kell kell-e osztani több partíciót, szükség egy partíciós kulcs, amely rendelkezik egy nagy számosságot (több millió különböző értékeket 100) kiválasztásához. A partíciós kulcs számos különböző értékekkel kiválasztásával, győződjön meg arról, hogy a tároló/tábla/graph és a kérelmek is méretezhető egységesen Azure Cosmos DB. 
-
-RU/mp tárolók egy készlete közötti hozzárendelésekor a tárolók ebbe a csoportba tartozó tekintendők *korlátlan* tárolók és a partíciókulcs kell megadnia.
-
-![Az egyes tárolók és a tárolók beállított kérelemegység kiépítése][6]
-
-> [!NOTE]
-> A partíciós kulcs, a logikai határ, és nem egy fizikai egy. Emiatt nem kell külön partíciókulcs-értékek számának korlátozása. Valójában célszerűbb értékűeknek több partíciós kulcs kisebb, mint Azure Cosmos DB rendelkezik további terheléselosztási beállításai.
-
-Íme egy tároló 3000 kérelem egység / másodperc az egyes tároló az SQL API .NET SDK használatával való létrehozásának egy kódrészletet:
-
-```csharp
-DocumentCollection myCollection = new DocumentCollection();
-myCollection.Id = "coll";
-myCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(
-    UriFactory.CreateDatabaseUri("db"),
-    myCollection,
-    new RequestOptions { OfferThroughput = 3000 });
-```
-
-Íme egy kódrészletet az üzembe helyezési 100 000 egység / másodperc között az SQL API .NET SDK használatával tárolók készlete kérelem:
-
-```csharp
-// Provision 100,000 RU/sec at the database level. 
-// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
-// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
-Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
-
-DocumentCollection sharedCollection1 = new DocumentCollection();
-sharedCollection1.Id = "sharedCollection1";
-sharedCollection1.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
-
-DocumentCollection sharedCollection2 = new DocumentCollection();
-sharedCollection2.Id = "sharedCollection2";
-sharedCollection2.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
-
-DocumentCollection dedicatedCollection = new DocumentCollection();
-dedicatedCollection.Id = "dedicatedCollection";
-dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
-```
-
-
-Azure Cosmos DB átviteli foglalás modellt működik. Ez azt jelenti, hogy kell fizetni az átviteli sebesség *fenntartott*, függetlenül attól, hogy átviteli mekkora aktívan *használt*. Az alkalmazás által könnyen méretezheti száma fel és le terhelés, az adatok és a használati minták módosítása fenntartott RUs SDK-k, vagy használja a [Azure Portal](https://portal.azure.com).
-
-Minden egyes tároló vagy elosztott tárolókban, van rendelve egy `Offer` Azure Cosmos DB, amelynek metaadatait a létesített átviteli sebesség erőforrás. A megfelelő ajánlat erőforrás egy tároló keresése, akkor új átviteli értékű frissítése módosíthatja a kiosztott átviteli sebesség. Íme egy kódrészletet a az átviteli sebesség a tároló módosítása a 5 000 kérelemegység / második .NET SDK használatával:
-
-```csharp
-// Fetch the resource to be updated
-// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
-Offer offer = client.CreateOfferQuery()
-                .Where(r => r.ResourceLink == collection.SelfLink)    
-                .AsEnumerable()
-                .SingleOrDefault();
-
-// Set the throughput to 5000 request units per second
-offer = new OfferV2(offer, 5000);
-
-// Now persist these changes to the database by replacing the original resource
-await client.ReplaceOfferAsync(offer);
-```
-
-Ha megváltoztatja az átviteli sebesség, nincs hatással a tároló rendelkezésre állását, vagy a tárolók, készletét. Az új fenntartott átviteli sebességet általában hatékony alkalmazásra, az új átviteli másodpercen belül.
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>Átviteli sebesség elkülönítési globálisan elosztott adatbázisok
 
@@ -305,7 +230,7 @@ Az alábbi táblázatban láthatók hozzávetőleges kérelem egység díjak ezt
 
 | Művelet | Egységköltség kérése |
 | --- | --- |
-| Konfigurációelem létrehozása |~15 RU |
+| Elem létrehozása |~15 RU |
 | Elem olvasása |~1 RU |
 | Lekérdezés elem azonosítója |~2.5 RU |
 
@@ -327,7 +252,7 @@ Az információ megbecsülheti a RU követelmények az alkalmazáshoz, művelete
 
 | A művelet/lekérdezés | Becsült száma másodpercenként | Szükséges RUs |
 | --- | --- | --- |
-| Konfigurációelem létrehozása |10 |150 |
+| Elem létrehozása |10 |150 |
 | Elem olvasása |100 |100 |
 | Válassza ki a gyártó által élelmiszerek |25 |175 |
 | Válassza ki a étele csoport szerint |10 |700 |
@@ -347,6 +272,11 @@ Ha a .NET SDK-ügyfél és a LINQ-lekérdezések, majd a legtöbbször ennek soh
 Ha a kérelmek aránya felett összesítve működő egynél több ügyfél, az alapértelmezett újrapróbálási viselkedése nem elegendők, és az ügyfél kivételhibát egy `DocumentClientException` állapotú code 429 az alkalmazáshoz. Ilyen esetben érdemes lehet figyelembe venni az újrapróbálási viselkedése és az alkalmazás hibakezelési rutinok a logikai vagy a tároló (vagy a tárolók) kiosztott átviteli sebesség növelése.
 
 ## <a name="next-steps"></a>További lépések
+ 
+Azure-portál és az SDK segítségével könnyebben nyerhet átviteli sebesség és a című témakörben olvashat:
+
+* [Állítsa be, és átviteli beolvasása az Azure Cosmos-Adatbázisba](set-throughput.md)
+
 További információt az Azure Cosmos DB adatbázisok fenntartott átviteli sebességet, ismerheti meg ezeket az erőforrásokat:
 
 * [Azure-beli árakról Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/)
@@ -360,4 +290,4 @@ Első lépésként a méretezés és teljesítmény Azure Cosmos DB tesztelést,
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
-[6]: ./media/request-units/provisioning_set_containers.png
+

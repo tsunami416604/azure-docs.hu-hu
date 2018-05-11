@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD Connect: Áteresztő hitelesítés – gyakori kérdések |} Microsoft Docs"
-description: "Azure Active Directory áteresztő hitelesítés gyakran feltett kérdésekre adott válaszok"
+title: 'Az Azure AD Connect: Áteresztő hitelesítés – gyakori kérdések |} Microsoft Docs'
+description: Azure Active Directory áteresztő hitelesítés gyakran feltett kérdésekre adott válaszok
 services: active-directory
-keywords: "Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 077a60949b5eed24cb9a1c56008a0073693f121e
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 7a817092581ef0be0b6be063282f7484c46ff094
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory áteresztő hitelesítés: Gyakran ismételt kérdések
 
@@ -48,7 +48,7 @@ Igen. Áteresztő hitelesítés támogat `Alternate ID` az Azure AD Connectben k
 
 Nem. Áteresztő hitelesítés _nem_ automatikusan feladatátvétel Jelszókivonat-szinkronizálást. Csak a tartalékként működik [szolgáltatásokat, amelyek jelenleg nem támogatja az áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Felhasználói bejelentkezési hibák elkerülése érdekében, konfigurálnia kell az áteresztő hitelesítés [magas rendelkezésre állású](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
 
-## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Telepíthető egy [az Azure AD-alkalmazásproxy](../active-directory-application-proxy-get-started.md) összekötő áteresztő hitelesítés megbízottként ugyanazon a kiszolgálón?
+## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Telepíthető egy [az Azure AD-alkalmazásproxy](../manage-apps/application-proxy.md) összekötő áteresztő hitelesítés megbízottként ugyanazon a kiszolgálón?
 
 Igen. A csatlakoztatott hitelesítési ügynök verziója 1.5.193.0 rebranded verziói vagy újabb rendszert támogatja ezt a konfigurációt.
 

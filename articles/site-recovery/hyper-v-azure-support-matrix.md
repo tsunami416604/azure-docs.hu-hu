@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>A Hyper-V replikáció az Azure támogatási mátrix
 
@@ -23,9 +23,9 @@ Ez a cikk bemutatja a támogatott összetevők és az Azure-bA helyszíni Hyper-
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
 **Forgatókönyv** | **Részletek**
---- | --- 
+--- | ---
 A Hyper-V Virtual Machine Managerrel | A System Center Virtual Machine Manager hálóban felügyelt Hyper-V-gazdagépeken futó virtuális gépek Azure-bA vész-helyreállítási végezheti el.<br/><br/> Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti.<br/><br/> Ha Hyper-V-gazdagépek Virtual Machine Manager által felügyelt, is elvégezhet katasztrófa utáni helyreállítás egy másodlagos helyszíni helyre. Ebben a forgatókönyvben kapcsolatos további tudnivalókért olvassa el [ebben az oktatóanyagban](tutorial-vmm-to-vmm.md).
-A Hyper-V nélkül a Virtual Machine Manager | Vész-helyreállítási Azure Virtual Machine Manager által nem felügyelt Hyper-V-gazdagépeken futó virtuális gépek végezheti el.<br/><br/> Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti. 
+A Hyper-V nélkül a Virtual Machine Manager | Vész-helyreállítási Azure Virtual Machine Manager által nem felügyelt Hyper-V-gazdagépeken futó virtuális gépek végezheti el.<br/><br/> Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti.
 
 
 ## <a name="on-premises-servers"></a>Helyszíni kiszolgálók
@@ -39,7 +39,7 @@ Hyper-V (fut a Virtual Machine Managerrel) | A Virtual Machine Manager 2016-ot, 
 ## <a name="replicated-vms"></a>A replikált virtuális gépek
 
 
-A következő táblázat összefoglalja a VM-támogatási szolgálathoz. A Site Recovery bármilyen számítási feladatot, a támogatott operációs rendszeren futó támogatja. 
+A következő táblázat összefoglalja a VM-támogatási szolgálathoz. A Site Recovery bármilyen számítási feladatot, a támogatott operációs rendszeren futó támogatja.
 
  **Összetevő** | **Részletek**
 --- | ---
@@ -78,7 +78,8 @@ Multi-NIC | Igen | Igen
 Fenntartott IP | Igen | Igen
 IPv4 | Igen | Igen
 Tartsa meg a forrás IP-címe | Igen | Igen
-Azure virtuális hálózat szolgáltatás-végpontok<br/><br/> (Az azure Storage tűzfalak és virtuális hálózatok) | Nem | Nem
+Azure virtuális hálózat szolgáltatás-végpontok<br/> (nélkül az Azure Storage tűzfalak) | Igen | Igen
+Gyorsított hálózatkezelés | Nem | Nem
 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V-gazdagép tárolási
@@ -125,7 +126,7 @@ Blokkblobok | Nem | Nem
 Titkosítását (SSE)| Igen | Igen
 Prémium szintű Storage | Igen | Igen
 Import/export szolgáltatás | Nem | Nem
-Az Azure virtuális hálózat Szolgáltatásvégpontok (Azure Storage tűzfalak és virtuális hálózatok) a cél-és a replikált adatok használt a gyorsítótár storage-fiók | Nem | Nem
+A célként megadott tárolási/gyorsítótár storage-fiók (használt replikációs adatokat tároló) konfigurált virtuális hálózatok az Azure Storage tűzfalak | Nem | Nem
 
 
 ## <a name="azure-compute-features"></a>Az Azure compute szolgáltatások
@@ -159,9 +160,9 @@ Virtuálisgép-típussá | 1. generációs<br/><br/> Windows – a 2. generáci�
 ## <a name="recovery-services-vault-actions"></a>Helyreállítási szolgáltatások tároló műveletek
 
 **Művelet** |  **A Hyper-V Virtual Machine Managerrel** | **A Hyper-V nélkül a Virtual Machine Manager**
---- | --- | --- 
-Erőforráscsoportok közötti áthelyezése közben tároló<br/><br/> Belül és között előfizetések | Nem | Nem 
-Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok áthelyezéséhez<br/><br/> Belül és között előfizetések | Nem | Nem 
+--- | --- | ---
+Erőforráscsoportok közötti áthelyezése közben tároló<br/><br/> Belül és között előfizetések | Nem | Nem
+Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok áthelyezéséhez<br/><br/> Belül és között előfizetések | Nem | Nem
 
 
 ## <a name="provider-and-agent"></a>Provider és Agent
@@ -179,4 +180,4 @@ A Microsoft Azure Recovery Services Agent ügynök | Koordinálja a Hyper-V virt
 
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan [Azure előkészítése](tutorial-prepare-azure.md) vész-helyreállítási helyszíni Hyper-V virtuális gépek. 
+Megtudhatja, hogyan [Azure előkészítése](tutorial-prepare-azure.md) vész-helyreállítási helyszíni Hyper-V virtuális gépek.

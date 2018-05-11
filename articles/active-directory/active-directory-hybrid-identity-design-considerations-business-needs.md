@@ -1,11 +1,11 @@
 ---
-title: "Identitáskövetelmények a hibrid felhőalapú identitás-kialakítási Azure |} Microsoft Docs"
-description: "Azonosítsa a vállalat üzleti igényei, amelyek a hibrid identitáskezelési kialakításának követelményei adható meg."
-documentationcenter: 
+title: Identitáskövetelmények a hibrid felhőalapú identitás-kialakítási Azure |} Microsoft Docs
+description: Azonosítsa a vállalat üzleti igényei, amelyek a hibrid identitáskezelési kialakításának követelményei adható meg.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
 ms.devlang: na
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 90c65ca22ff384bd22819eb589b3f781f8992a4e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5741a5024b5f5105a71d9404191601b951a301e4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az identitás-követelmények meghatározása
 A hibrid identitáskezelési megoldás tervezésének első lépése a követelmények, ez a megoldás kihasználva fog üzleti szervezet.  Hibrid identitás (támogatott minden más felhőalapú megoldás, adja meg a hitelesítés) támogató szerepkörként elindul, és adja meg az új és érdekes képességekkel, amelyek a felhasználók új munkaterhelések feloldásához kerül be.  A munkaterhelések vagy a szolgáltatások, a felhasználók elfogadják kívánt szabja meg, a hibrid identitáskezelési kialakításának követelményei.  Hibrid identitás kihasználhatják a helyszínen kell ezeket a szolgáltatásokat és munkaterhelések és a felhőben.  
 
 Meg kell vizsgálni, hogy mi az üzleti kulcsfontosságú elemeit most követelmény, és mi a vállalati a jövőben tervez. Ha nincs látható-e a hosszú távú stratégiát hibrid identitás tervezési, valószínűleg, hogy a megoldás nem lesz méretezhető az üzleti igények növekedésének és változásának megfelelően.   Ezután az alábbi ábrán egy példa egy hibrid identitás architektúra és a munkaterhelések vannak zárja nyitás alatt a felhasználók T. Ez az csak egy példa az új lehetőségeket, amelyek oldhatja fel, és egy teli hibrid identitás stratégia fel. 
 
-A hibrid identitáskezelési architektúrájának részét képező egyes összetevői![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
+A hibrid identitáskezelési architektúrájának részét képező egyes összetevői ![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Az üzleti igények meghatározása
 Minden vállalat különböző követelményekkel rendelkezik, akkor is, ha a vállalatok azonos iparágba, a valódi üzleti követelmények is eltérők lehetnek. Továbbra is használhatja az iparág ajánlott eljárásait, de végső soron a vállalat üzleti igényei, amelyek a hibrid identitáskezelési kialakításának követelményei adható meg. 
@@ -56,7 +56,7 @@ Is kell figyelembe vennie a felhőszolgáltatások, amelyek a vállalati lehet. 
 * Ez az integráció jelenleg éles vagy a próbaüzem?
 
 > [!NOTE]
-> Ha nem rendelkezik egy pontos leképezése az alkalmazások és a felhőalapú szolgáltatások, használhatja a Cloud App Discovery eszközt. Ez az eszköz az informatikai részleg biztosíthat a szervezet üzleti és fogyasztói felhőalkalmazások láthatósága. Így minden eddiginél egyszerűbben tárhatók fel olyan IT-adatok a szervezetben, mint például a részletes használati minták és a felhőalkalmazásokhoz hozzáférő felhasználók. Az első lépésekért lásd: [a Cloud app discovery](active-directory-cloudappdiscovery-whatis.md).
+> Ha nem rendelkezik egy pontos leképezése az alkalmazások és a felhőalapú szolgáltatások, használhatja a Cloud App Discovery eszközt. Ez az eszköz az informatikai részleg biztosíthat a szervezet üzleti és fogyasztói felhőalkalmazások láthatósága. Így minden eddiginél egyszerűbben tárhatók fel olyan IT-adatok a szervezetben, mint például a részletes használati minták és a felhőalkalmazásokhoz hozzáférő felhasználók. Az első lépésekért lásd: [a Cloud app discovery](manage-apps/cloud-app-discovery.md).
 > 
 > 
 

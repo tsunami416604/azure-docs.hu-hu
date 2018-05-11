@@ -4,16 +4,17 @@ description: Ez a cikk ismerteti az Azure AD felhasználói fiók hitelesítő a
 keywords: azure active directory felhasználó, azure szolgáltatás kezelése, azure ad és felhasználói fiók
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 43490b8ec2139b5e9f62def614dc67e4274304c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 07fb9284372020ba2aadb3758d0ab46682b50831
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Runbookok hitelesítése a klasszikus Azure üzemi modellel és a Resource Managerrel
 Ez a cikk azokat a lépéseket ismerteti, amelyeket végre kell hajtania egy Azure AD felhasználói fiók konfigurálásához klasszikus Azure üzemi modellen vagy Azure Resource Manager-erőforrásokon futó Azure Automation-runbookokhoz. Ez továbbra is az Azure Resource Manager-alapú runbookok egy támogatott hitelesítési identitását, amíg az ajánlott módszer az Azure-beli futtató fiók használatára.       

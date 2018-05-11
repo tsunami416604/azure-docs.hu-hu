@@ -1,11 +1,11 @@
 ---
-title: "Bejelentkezés az Azure AD-alkalmazásproxy használó helyszíni alkalmazások problémák |} Microsoft Docs"
-description: "Jelentkezzen be egy helyi alkalmazás nem tudja tapasztalt gyakori problémák elhárításához integrálva van az Azure AD az Azure AD-alkalmazásproxy használatával"
+title: Bejelentkezés az Azure AD-alkalmazásproxy használó helyszíni alkalmazások problémák |} Microsoft Docs
+description: Jelentkezzen be egy helyi alkalmazás nem tudja tapasztalt gyakori problémák elhárításához integrálva van az Azure AD az Azure AD-alkalmazásproxy használatával
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e3db08e5615385cbbbc77972f3cc560e9de9957b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: afd5460ef3e286cd3d8b550e7d7e54b3e09f2990
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Bejelentkezés az Azure AD-alkalmazásproxy használó helyszíni alkalmazások problémák
 
@@ -55,5 +55,5 @@ Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémá
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Problémát tapasztalok az alkalmazásproxy-ügynök összekötőjének telepítésénél](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/)
 
-## <a name="next-steps"></a>Következő lépések
-[Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak](active-directory-application-proxy-get-started.md)
+## <a name="next-steps"></a>További lépések
+[Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak](manage-apps/application-proxy.md)

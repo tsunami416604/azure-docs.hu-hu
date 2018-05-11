@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 4e3edc74350bb31e73e21455a221baf9c8b87015
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd54c4abeaa58c1b78f67c55eb5e8856dc5bb0c4
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure eszköztára Eclipse használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -229,13 +229,15 @@ Ez a hiba elhárításához szükséges [töltse le a végrehajtható fájl](htt
    ![Spark alkalmazás helyi futtatás eredménye](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="known-problems"></a>Ismert problémák
-Azure Data Lake Store kérelmet elküldéséhez válassza **interaktív** mód az Azure bejelentkezési folyamat során. Ha **automatikus** üzemmódban, előfordulhat, hogy hibaüzenetet kap.
+Amikor a fürt hivatkozásra, akkor kérem, hogy adja meg a tároló hitelesítő adatai.
 
-![Interaktív bejelentkezés](./media/apache-spark-eclipse-tool-plugin/interactive-authentication.png)
+![Interaktív bejelentkezés](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
-Az Azure Data Lake-fürt elküldeni az alkalmazás egyik bejelentkezési módszer kiválasztása
+A feladatok küldéséhez két módja van. Ha tárolási hitelesítő adat áll rendelkezésre, kötegelt módban használandó a feladat elküldéséhez. Más interaktív módban lesz érvényben. Ha a fürt foglalt, kaphat a hiba alább látható.
 
-Spark kimenetek közvetlenül megtekintése jelenleg nem támogatott.
+![a hibaüzenet eclipse-ben amikor fürt foglalt](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+
+![a hibaüzenet eclipse-ben amikor fürt foglalt](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback"></a>Visszajelzés
 Ha rendelkezik olyan visszajelzést, vagy bármely egyéb problémákat tapasztal, amikor ezzel az eszközzel, küldjön egy e-mailt hdivstool@microsoft.com.

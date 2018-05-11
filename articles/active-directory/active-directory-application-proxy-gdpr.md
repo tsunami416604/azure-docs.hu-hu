@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory alkalmazásproxyjával GDPR |} Microsoft Docs"
-description: "További tudnivalók GDPR az Azure Active Directory alkalmazásproxyjával."
+title: Az Azure Active Directory alkalmazásproxyjával GDPR |} Microsoft Docs
+description: További tudnivalók GDPR az Azure Active Directory alkalmazásproxyjával.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
@@ -15,11 +15,11 @@ ms.date: 02/16/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5e99fba2f226e1e9b401bd8ef5b3b85a5e8c6a7c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a3df15743b4918d72fac5f8769a2d3ee721a452f
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="gdpr-in-the-azure-active-directory-application-proxy"></a>Az Azure Active Directory alkalmazásproxyjával GDPR  
 
@@ -57,7 +57,7 @@ Nézet feldolgozni / kérelmek exportálása, nyissa meg a naplófájlok bejegyz
 
 Mivel a naplók szövegfájlok, úgy keresheti meg, például használatával a `findstr` parancs beírásával a felhasználóhoz kapcsolódó bejegyzéseket. Mivel előfordulhat, hogy ezek a naplók keresése a következő mezőket: 
 
-- UserId
+- Felhasználói azonosító
 - A Kerberos által korlátozott delegálást használó alkalmazások konfigurált felhasználónév típusa:
     - Egyszerű felhasználónév.
     - Helyszíni felhasználó egyszerű neve
@@ -80,5 +80,5 @@ Connector naplófájljaiban kikapcsolásához állítsa be kell `C:\Program File
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD-alkalmazásproxy áttekintését lásd: [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](active-directory-application-proxy-get-started.md).
+Az Azure AD-alkalmazásproxy áttekintését lásd: [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](manage-apps/application-proxy.md).
 

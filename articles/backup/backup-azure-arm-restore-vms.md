@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a25a2f40e93c291d4c69ee726c732468005d2cd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Az Azure-portál használatával állítsa vissza a virtuális gépek
 Pillanatképek készítése a adatait meghatározott időközönként védeni az adatokat. Ezeket a pillanatképeket nevezzük helyreállítási pontokat, és vannak tárolva, a Recovery Services-tárolók. Szükség esetén javítsa vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontok. A helyreállítási pont visszaállításakor teheti:
@@ -70,7 +70,7 @@ A virtuális gép vagy az összes lemez visszaállítása a virtuális gép bizt
 
     A **visszaállítása** panel nyílik meg.
 
-    ![Panel visszaállítása](./media/backup-azure-arm-restore-vms/restore-blade.png)
+    ![visszaállítás panel](./media/backup-azure-arm-restore-vms/restore-blade.png)
 7. Az a **visszaállítása** panelen válassza **visszaállítási pont**. A **visszaállítási pont kiválasztása** panel nyílik meg.
 
     ![Válasszon visszaállítási pontot](./media/backup-azure-arm-restore-vms/recovery-point-selector.png)
@@ -90,12 +90,12 @@ A virtuális gép vagy az összes lemez visszaállítása a virtuális gép bizt
 
     A **visszaállítása** panelt jeleníti meg, hogy van-e állítva a visszaállítási pontot.
 
-9. Ha most már nem létezik, a **visszaállítása** panelen. Győződjön meg arról, hogy egy [visszaállítási pont kiválasztása](#select-restore-point-for-restore), és válassza ki **konfiguráció visszaállítása**. A **konfiguráció visszaállítása** panel nyílik meg.
+9. Ha most már nem létezik, a **visszaállítása** panelen. Győződjön meg arról, hogy egy [visszaállítási pont kiválasztása](#select-a-restore-point-for-restore), és válassza ki **konfiguráció visszaállítása**. A **konfiguráció visszaállítása** panel nyílik meg.
 
 ## <a name="choose-a-vm-restore-configuration"></a>Válassza ki a helyreállítási Virtuálisgép-konfiguráció
 Miután kiválasztotta a visszaállítási pontot, válassza ki a helyreállítási Virtuálisgép-konfiguráció. Adja meg a visszaállított virtuális Géphez, használhatja az Azure portálon vagy a PowerShell.
 
-1. Ha most már nem létezik, a **visszaállítása** panelen. Győződjön meg arról, hogy egy [visszaállítási pont kiválasztása](#select-restore-point-for-restore), és válassza ki **konfiguráció visszaállítása**. A **konfiguráció visszaállítása** panel nyílik meg.
+1. Ha most már nem létezik, a **visszaállítása** panelen. Győződjön meg arról, hogy egy [visszaállítási pont kiválasztása](#select-a-restore-point-for-restore), és válassza ki **konfiguráció visszaállítása**. A **konfiguráció visszaállítása** panel nyílik meg.
 
     ![Állítsa vissza a konfigurációs varázsló](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
 2. Az a **konfiguráció visszaállítása** panelen, két lehetősége van:

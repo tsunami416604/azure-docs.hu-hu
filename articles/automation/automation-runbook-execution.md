@@ -3,20 +3,23 @@ title: A Runbook végrehajtása az Azure Automationben
 description: Azure Automation forgatókönyv feldolgozásának módja részleteit ismerteti.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 05/08/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 286c23e95f030f92b67e8a505905d11d6ece0297
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a6a429b85e0d7522e5840a0ad020d12f4f4d471e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>A Runbook végrehajtása az Azure Automationben
 
 Az Azure Automationben elindít egy runbookot, ha egy feladat jön létre. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation munkavégző rendelt minden feladat futtatása. Munkavállalók több Azure-fiókra által megosztott, amíg feladatokat azok másik Automation-fiók el különítve egymástól. Nem irányítás melyik Worker-szolgáltatások a feladat a kérelmet. Egyetlen runbook fut egyszerre több feladattal rendelkezhet. Az Automation-fiók a feladatok végrehajtási környezetnek felhasználhatók. Az Azure portálon megtekintett forgatókönyvek listája, amely minden runbook indított összes feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook egyes állapotának nyomon követése érdekében. A különböző feladatállapotok leírását [feladatállapotok](#job-statuses).
+
+[!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
 Az alábbi ábrán látható, a runbook-feladatok életciklusát [grafikus forgatókönyvek](automation-runbook-types.md#graphical-runbooks) és [PowerShell munkafolyamat-forgatókönyvekről](automation-runbook-types.md#powershell-workflow-runbooks).
 
@@ -37,7 +40,7 @@ A következő táblázat ismerteti a különböző állapotok feladat lehetsége
 | Befejeződött |A feladat sikeresen befejeződött. |
 | Meghiúsult |A [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md), a runbookot nem sikerült lefordítani. A [PowerShell-parancsfájl runbookok](automation-runbook-types.md), a runbookot nem sikerült elindítani, vagy a feladat kivételbe ütközött. |
 | Nem sikerült, erőforrás Várakozás |A feladat sikertelen volt, mert elérte a [igazságos elosztása révén](#fair-share) háromszor korlátjának növelését, és az azonos ellenőrzőpont vagy a runbook elindítása indított minden alkalommal. |
-| Várakozik |A feladat arra vár erőforrások egy automatizálási feldolgozó elérhető lesz, így indíthatók el. |
+| Várakozási sorba helyezve |A feladat arra vár erőforrások egy automatizálási feldolgozó elérhető lesz, így indíthatók el. |
 | Indítás |A feladat egy feldolgozónak van kiosztva, és az elindítás folyamatban van. |
 | Folytatás |A folytatása a feladat felfüggesztését követően annak folyamatban van. |
 | Fut |A feladat fut. |

@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 Series Update 4 kibocsátási megjegyzései |} Microsoft Docs"
-description: "Az új funkciók, problémák és megoldások ismerteti a StorSimple 8000 Series Update 4."
+title: A StorSimple 8000 Series Update 4 kibocsátási megjegyzései |} Microsoft Docs
+description: Az új funkciók, problémák és megoldások ismerteti a StorSimple 8000 Series Update 4.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f4db5a49b71b0c384da7af2b90bd5426a4f35c72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>A StorSimple 8000 Series Update 4 kibocsátási megjegyzései
-> [!NOTE]
-> A StorSimple klasszikus portálja elavult. A StorSimple-eszközkezelők automatikusan átkerülnek az új Azure Portalra az elavulási ütemezésnek megfelelően. Erről az áthelyezésről kapni fog egy e-mailt és egy Portal-értesítést. Ez a dokumentum hamarosan el lesz távolítva. Ha kérdései vannak az áthelyezéssel kapcsolatban, tekintse meg a [Gyakori kérdések: Váltás az Azure Portalra](storsimple-8000-move-azure-portal-faq.md) szakaszt.
-
 
 ## <a name="overview"></a>Áttekintés
 

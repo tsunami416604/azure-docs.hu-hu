@@ -1,11 +1,11 @@
 ---
-title: "Az alkalmazások listáját a váratlan alkalmazás |} Microsoft Docs"
-description: "Tekintse meg a bérlő összes alkalmazást, és megérteni, hogyan alkalmazások jelennek meg az összes alkalmazások listáját a vállalati alkalmazások"
+title: Az alkalmazások listáját a váratlan alkalmazás |} Microsoft Docs
+description: Tekintse meg a bérlő összes alkalmazást, és megérteni, hogyan alkalmazások jelennek meg az összes alkalmazások listáját a vállalati alkalmazások
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: ef04e557aca69e5a15bb38d816ca9f9b9ffaf502
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 75fb5fcb98605a080efa2c9232d186c9a81acf2b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Az alkalmazások listáját a váratlan alkalmazás
 
@@ -122,4 +122,4 @@ A **tiltsa le a teljes címtár minden jövőbeni felhasználói hozzájárulás
 6.  Tiltsa le az összes jövőbeni felhasználói hozzájárulás műveletek úgy, hogy a **felhasználók is engedélyezi, hogy az alkalmazások hozzáférjenek az adataikhoz** kapcsolót **nem** , és kattintson a **mentése** gombra.
 
 ## <a name="next-steps"></a>További lépések
-[Alkalmazások kezelése az Azure Active Directoryval](active-directory-enable-sso-scenario.md)
+[Alkalmazások kezelése az Azure Active Directoryval](manage-apps/what-is-application-management.md)

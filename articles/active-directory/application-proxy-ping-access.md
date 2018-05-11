@@ -15,15 +15,15 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bb341c5700f573e61cdbbe992aa0b0eb99389b2f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f480553e6a8ca09872cd638537bc6fb98e793d8b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Az egyszeri bejelentkezés az alkalmazásproxy és PingAccess fejléc-alapú hitelesítés
 
-Az Azure Active Directory Alkalmazásproxyjával és PingAccess közösen egyszerre több alkalmazást is hozzáférést biztosít az Azure Active Directory ügyfeleknek. PingAccess bővíti a [meglévő alkalmazásproxy ajánlatok](active-directory-application-proxy-get-started.md) egyszeri bejelentkezéses hozzáférést azon alkalmazásoknak, amelyek a hitelesítéshez használandó fejlécek tartalmazza.
+Az Azure Active Directory Alkalmazásproxyjával és PingAccess közösen egyszerre több alkalmazást is hozzáférést biztosít az Azure Active Directory ügyfeleknek. PingAccess bővíti a [meglévő alkalmazásproxy ajánlatok](manage-apps/application-proxy.md) egyszeri bejelentkezéses hozzáférést azon alkalmazásoknak, amelyek a hitelesítéshez használandó fejlécek tartalmazza.
 
 ## <a name="what-is-pingaccess-for-azure-ad"></a>Mi az az Azure AD-alapú PingAccess?
 

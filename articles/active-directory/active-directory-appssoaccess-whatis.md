@@ -14,11 +14,11 @@ ms.date: 09/11/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 19eb9bb593b349d88d8235dc2f1eca448e7646f5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1bd45027ea9c3dbffc642afedc4e478c96bffe7
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?
 Egyszeri bejelentkezés azt jelenti, hogy nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat, végre kell hajtani, üzleti által csak akkor, ha egyetlen felhasználói fiókkal jelentkezik be. Miután bejelentkezett, van-e hozzáférési összes szolgáltatásbeli hitelesítéshez szükséges nélkül kell alkalmazást (például adjon meg egy jelszót) még egyszer.
@@ -60,7 +60,7 @@ Az Azure AD is támogatja az összevont egyszeri bejelentkezést a WS-Federation
 
 További információ: [tartozó tanúsítványok összevont egyszeri bejelentkezést.](active-directory-sso-certs.md)
 
-### <a name="password-based-single-sign-on"></a>Jelszóalapú egyszeri bejelentkezés
+### <a name="password-based-single-sign-on"></a>Jelszó-alapú egyszeri bejelentkezést.
 Jelszó-alapú egyszeri bejelentkezés beállítása lehetővé teszi, hogy a felhasználók a szervezet számára automatikusan megtörténik a külső SaaS-alkalmazás használatával a felhasználói fiók adatait a harmadik fél SaaS-alkalmazás az Azure ad. Ha engedélyezi ezt a szolgáltatást, az Azure AD gyűjt, és biztonságos helyen tárolja a felhasználói fiók adatait, és a kapcsolódó jelszót.
 
 Az Azure AD bármely felhőalapú alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal jelszó-alapú egyszeri bejelentkezést is támogatja. Egy egyéni böngésző beépülő modul használatával AAD automatizálja a felhasználói bejelentkezési folyamat segítségével biztonságosan beolvasása az alkalmazás hitelesítő adatait, például a felhasználónevét és jelszavát a könyvtárból, és megadja ezeket a hitelesítő adatokat az alkalmazás bejelentkezési lapot a következő nevében: a a felhasználó. Nincsenek két használati esetek:
@@ -191,7 +191,7 @@ Ezek a hivatkozások a hozzáférési panel és az Office 365 access control ugy
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [A Cloud App Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz](active-directory-cloudappdiscovery-whatis.md)
+* [A Cloud App Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz](manage-apps/cloud-app-discovery.md)
 * [Bevezetés az alkalmazásokhoz való hozzáférés kezelése](active-directory-managing-access-to-apps.md)
 * [Az Azure AD külső identitások kezelésére szolgáló képességeket összehasonlítása](active-directory-b2b-compare-external-identities.md)
 

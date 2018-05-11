@@ -1,8 +1,8 @@
 ---
-title: "Összegyűjti és elemzi az OMS szolgáltatáshoz a Syslog-üzeneteket |} Microsoft Docs"
-description: "A Syslog egy esemény naplózása protokoll, amely Linux közös. Ez a cikk ismerteti a Syslog-üzeneteket gyűjteménye konfigurálása a Naplóelemzési és hoznak létre az OMS-tárházban rekord adatait."
+title: Összegyűjti és elemzi az OMS szolgáltatáshoz a Syslog-üzeneteket |} Microsoft Docs
+description: A Syslog egy esemény naplózása protokoll, amely Linux közös. Ez a cikk ismerteti a Syslog-üzeneteket gyűjteménye konfigurálása a Naplóelemzési és hoznak létre az OMS-tárházban rekord adatait.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 061c32fe39530f8b67899b1b9e1104e7fe006380
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 011eaf1a4705f9078225b9b871f81b4333b05ee8
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>A Naplóelemzési Syslog adatforrások
 A Syslog egy esemény naplózása protokoll, amely Linux közös.  Alkalmazások, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtőhöz kézbesíteni üzenetet szeretne küldeni.  A Linux OMS-ügynök telepítve van, amikor konfigurálja az üzenetek továbbítására az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenet Naplóelemzési, ahol az OMS-tárházban létrejön egy megfelelő bejegyzés.  
@@ -31,12 +31,12 @@ A Syslog egy esemény naplózása protokoll, amely Linux közös.  Alkalmazások
 ![Syslog-gyűjtemény](media/log-analytics-data-sources-syslog/overview.png)
 
 ## <a name="configuring-syslog"></a>Syslog konfigurálása
-Az OMS-ügynököt a Linux csak összegyűjti a létesítmények és konfigurációjában megadott súlyosságokkal események.  Syslog az OMS-portálon keresztül vagy konfigurációs fájlok, a Linux-ügynökök kezelése konfigurálható.
+Az OMS-ügynököt a Linux csak összegyűjti a létesítmények és konfigurációjában megadott súlyosságokkal események.  Syslog konfigurálhatja az Azure portálon keresztül vagy konfigurációs fájlok, a Linux-ügynökök kezelése.
 
-### <a name="configure-syslog-in-the-oms-portal"></a>Konfigurálhatja a rendszernaplót az OMS-portálon
-Konfigurálhatja a rendszernaplót a a [Naplóelemzés beállításai adatok menüben](log-analytics-data-sources.md#configuring-data-sources).  Ebben a konfigurációban lévő minden egyes Linux-ügynök konfigurációs fájlt a rendszer.
+### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurálhatja a rendszernaplót az Azure-portálon
+Konfigurálhatja a rendszernaplót a a [Naplóelemzés speciális beállításai adatok menüben](log-analytics-data-sources.md#configuring-data-sources).  Ebben a konfigurációban lévő minden egyes Linux-ügynök konfigurációs fájlt a rendszer.
 
-Hozzáadhat egy új létesítményt a személyes, írja be a nevét, majd  **+** .  Minden egyes létesítmény csak a kijelölt súlyosságokkal üzenetek gyűjtenek.  Ellenőrizze a súlyosságokkal számára az adott szolgáltatás, amellyel a szeretne gyűjteni.  Nem adhat meg további feltételeket üzenetek szűrésére.
+Hozzáadhat egy új létesítményt a személyes, írja be a nevét, majd **+**.  Minden egyes létesítmény csak a kijelölt súlyosságokkal üzenetek gyűjtenek.  Ellenőrizze a súlyosságokkal számára az adott szolgáltatás, amellyel a szeretne gyűjteni.  Nem adhat meg további feltételeket üzenetek szűrésére.
 
 ![Konfigurálhatja a rendszernaplót](media/log-analytics-data-sources-syslog/configure.png)
 
@@ -138,8 +138,8 @@ A létesítmény eltávolíthatja a szakasz a konfigurációs fájl eltávolít�
 ### <a name="collecting-data-from-additional-syslog-ports"></a>További Syslog portokat adatainak begyűjtése
 Az OMS-ügynököt a helyi ügyfélen a porton 25224 Syslog-üzeneteket figyeli.  Ha az ügynök telepítve van, egy alapértelmezett Rendszernaplózás konfigurálásánál alkalmazza, a következő helyen található:
 
-* Rsyslog:`/etc/rsyslog.d/95-omsagent.conf`
-* Syslog-ng:`/etc/syslog-ng/syslog-ng.conf`
+* Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
+* Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
 
 A portszám két konfigurációs fájlok létrehozásával módosíthatja: egy FluentD konfigurációs fájlt és egy rsyslog-vagy-syslog-ng attól függően, hogy a Syslog démon telepítését.  
 
@@ -189,7 +189,7 @@ Syslog-rekordok típusa lehet **Syslog** , és a tulajdonságok az alábbi tábl
 | Létesítmény |Határozza meg az üzenetet generált a rendszer része. |
 | HostIP |A rendszer az üzenetet küldő IP-címe. |
 | Állomásnév |A rendszer az üzenetet küldő neve. |
-| Súlyossági szint |Az esemény súlyosságának. |
+| SeverityLevel |Az esemény súlyosságának. |
 | SyslogMessage |Az üzenet szövegét. |
 | Folyamatazonosító |A folyamat által generált üzenet azonosítója. |
 | eventTime |Dátum és idő, az esemény lett létrehozva. |
@@ -204,7 +204,7 @@ Az alábbi táblázat példákat különböző Syslog lehívása napló lekérde
 | Syslog &#124; AggregatedValue összefoglalója = count() számítógépenként |Számítógép által bejegyzések száma a Syslog. |
 | Syslog &#124; AggregatedValue összefoglalója létesítmény által count() = |A Syslog száma rekordok létesítmény szerint. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.
 * Használjon [egyéni mezők](log-analytics-custom-fields.md) syslog rekordokban levő adatok elemzése az egyes mezőkbe.
 * [Linux-ügynökök konfigurálása](log-analytics-linux-agents.md) más típusú adatok gyűjtéséhez.

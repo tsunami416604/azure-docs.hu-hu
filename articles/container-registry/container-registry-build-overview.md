@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: marsma
-ms.openlocfilehash: 7506351c0d65fb167136478d2dc383cdabd81835
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Az operációs rendszer és a keretrendszer javítását az ACR Build automatizálása
 
@@ -20,8 +20,7 @@ Tárolók új virtualizációs, az infrastruktúra és működési követelmény
 
 **ACR Build**, egy tartalmazó csomag Azure tároló beállításjegyzék, a szolgáltatásokat, nem csak natív tároló kép összeállítása képességet biztosít, de is automatizálja [az operációs rendszer és a keretrendszer javítás](#automate-os-and-framework-patching) az a Docker tárolókat.
 
-> [!IMPORTANT]
-> ACR összeállítása jelenleg előzetes verzióban érhetők, és csak az Azure-tárolót nyilvántartó támogatja a **USA keleti régiója** és **Nyugat-Európában** régiók. Az előzetes verziójú funkciók elérhetővé válnak, a feltétellel, hogy elfogadja a [kiegészítő használati feltételek][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 ## <a name="what-is-acr-build"></a>Mi az az ACR Build?
 
@@ -73,7 +72,6 @@ Amikor készen áll a automatizálja az operációs rendszer és a keretrendszer
 [base-node]: https://hub.docker.com/_/node/
 [base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

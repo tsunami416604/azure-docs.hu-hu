@@ -1,18 +1,19 @@
 ---
-title: "Azure Automation-Runbook típusok"
-description: "Ismerteti a runbookok, amelyek az Azure Automation és kapcsolatos szempontokat, akkor figyelembe kell vennie annak meghatározása, amelyek használatához írja be. "
+title: Azure Automation-Runbook típusok
+description: 'Ismerteti a runbookok, amelyek az Azure Automation és kapcsolatos szempontokat, akkor figyelembe kell vennie annak meghatározása, amelyek használatához írja be. '
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f3a6b15891a4a1564073d149a198f6789b407342
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 800380c68e1bb1314021ab60f92ccd3b392dbe32
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-runbook típusok
 Azure Automation szolgáltatásbeli számos különböző típusú, amely röviden ismerteti a runbookok támogatja a következő táblázatban.  Az alábbi szakaszokban minden típusát, melynek során vegye figyelembe az egyes esetekben a további információt.
@@ -58,7 +59,7 @@ A PowerShell-forgatókönyvek a Windows PowerShell alapulnak.  Közvetlenül sze
 Az alábbiakban a PowerShell-forgatókönyvek jelenlegi ismert problémái.
 
 * A PowerShell-forgatókönyvek nem tud beolvasni egy titkosítatlan [változóeszköz](automation-variables.md) null értékű.
-* A PowerShell-forgatókönyvek nem tud beolvasni egy [változóeszköz](automation-variables.md) a  *~*  a neve.
+* A PowerShell-forgatókönyvek nem tud beolvasni egy [változóeszköz](automation-variables.md) a *~* a neve.
 * Get-Process egy PowerShell ismétlődő runbook körülbelül 80 közelítő összeomolhat. 
 * A PowerShell-forgatókönyv sikertelen lehet, ha nagyon nagy mennyiségű adatot írni a kimeneti adatfolyamba egyszerre megkísérli.   Általában oldható meg a probléma által szerint kiírta volna csak a nagyméretű objektumok az használatakor szükséges információkat.  Például helyett szerint kiírta volna hasonlót *Get-Process*, csak a kötelező mezőket a kimenetre küldheti *Get-Process |} Válassza ki a Folyamatnév, CPU*.
 

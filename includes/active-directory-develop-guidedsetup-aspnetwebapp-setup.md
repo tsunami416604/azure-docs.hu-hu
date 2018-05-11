@@ -2,24 +2,17 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
-documentationcenter: dev-center-name
 author: andretms
-manager: mtillman
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 05/04/2018
+ms.date: 05/08/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 1c51d70a3747da6a8f51c5fc6341c1975cebbdb7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 5d3af1800e18e3686e69d4a25131c68d3bdc805b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -29,7 +22,7 @@ Ez a szakasz ismerteti a lépéseket, telepítését és konfigurálását a hit
 
 ### <a name="create-your-aspnet-project"></a>Az ASP.NET-projekt létrehozása
 
-1. A Visual Studio: `File` > `New` > `Project`<br/>
+1. A Visual Studio: `File` > `New` > `Project`
 2. A *Visual C# \Web*, jelölje be `ASP.NET Web Application (.NET Framework)`.
 3. Az alkalmazás neve, és kattintson a *OK*
 4. Válassza ki `Empty` hozzáadása jelölőnégyzet bejelölésével és `MVC` hivatkozások
@@ -40,11 +33,11 @@ Ez a szakasz ismerteti a lépéseket, telepítését és konfigurálását a hit
 2. Adja hozzá *OWIN köztes NuGet-csomagok* , a Package Manager Console ablakban írja be a következő:
 
     ```powershell
-    Install-Package Microsoft.Owin.Security.OpenIdConnect -Version 3.1.0
-    Install-Package Microsoft.Owin.Security.Cookies -Version 3.1.0
-    Install-Package Microsoft.Owin.Host.SystemWeb -Version 3.1.0
+    Install-Package Microsoft.Owin.Security.OpenIdConnect
+    Install-Package Microsoft.Owin.Security.Cookies
+    Install-Package Microsoft.Owin.Host.SystemWeb
     ```
-    
+
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>Ezek a kódtárak kapcsolatos
 >A fenti könyvtárak engedélyezése az egyszeri bejelentkezés (SSO) használata az OpenID Connect cookie-alapú hitelesítéssel. Miután a hitelesítés végbemegy, és a felhasználó jelképező jogkivonatot kap az alkalmazáshoz, OWIN köztes egy munkamenetcookie-t hoz létre. A böngésző a felhasználónak nem kell újra a jelszót, és nincs további ellenőrzés van szükség, majd használja a cookie későbbi kérelmeket.
@@ -54,20 +47,19 @@ Ez a szakasz ismerteti a lépéseket, telepítését és konfigurálását a hit
 Az alábbi lépéseket egy OWIN indítási osztály konfigurálása az OpenID Connect hitelesítési köztes létrehozásához használt. Ez az osztály a lesz automatikusan végre, amikor az IIS-folyamat elindul.
 
 > [!TIP]
-> Ha a projekt nem rendelkezik egy `Startup.cs` fájl a gyökérmappában található:<br/>
-> 1. Kattintson a jobb gombbal a projekt gyökérmappához: >    `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Nevezze el `Startup.cs`<br/>
+> Ha a projekt nem rendelkezik egy `Startup.cs` fájl a gyökérmappában található:
+> 1. Kattintson a jobb gombbal a projekt gyökérmappához: > `Add` > `New Item...` > `OWIN Startup class`<br/>
+> 2. Nevezze el `Startup.cs`
 >
 >> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztályt és a nem szabványos C#-osztály. Ellenőrizheti, ha ellenőrzésével `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` fent a névteret.
 
-1. Adja hozzá *OWIN* és *Microsoft.IdentityModel* hivatkozása `Startup.cs` , hogy a használatával nyilatkozatok válnak a következő:
+1. Adja hozzá *OWIN* és *Microsoft.IdentityModel* hivatkozása `Startup.cs`:
 
     ```csharp
-    using System;
-    using System.Threading.Tasks;
     using Microsoft.Owin;
     using Owin;
-    using Microsoft.IdentityModel.Protocols;
+    using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+    using Microsoft.IdentityModel.Tokens;
     using Microsoft.Owin.Security;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OpenIdConnect;
@@ -100,7 +92,7 @@ Az alábbi lépéseket egy OWIN indítási osztály konfigurálása az OpenID Co
             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
-                app.UseOpenIdConnectAuthentication(
+            app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions
                 {
                     // Sets the ClientId, authority, RedirectUri as obtained from web.config
@@ -109,13 +101,16 @@ Az alábbi lépéseket egy OWIN indítási osztály konfigurálása az OpenID Co
                     RedirectUri = redirectUri,
                     // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it is using the home page
                     PostLogoutRedirectUri = redirectUri,
-                    Scope = OpenIdConnectScopes.OpenIdProfile,
+                    Scope = OpenIdConnectScope.OpenIdProfile,
                     // ResponseType is set to request the id_token - which contains basic information about the signed-in user
-                    ResponseType = OpenIdConnectResponseTypes.IdToken,
+                    ResponseType = OpenIdConnectResponseType.IdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
                     // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter 
-                    TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters() { ValidateIssuer = false },
+                    TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = false
+                    },
                     // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
                     Notifications = new OpenIdConnectAuthenticationNotifications
                     {
@@ -137,9 +132,7 @@ Az alábbi lépéseket egy OWIN indítási osztály konfigurálása az OpenID Co
             return Task.FromResult(0);
         }
     }
-
     ```
-
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ

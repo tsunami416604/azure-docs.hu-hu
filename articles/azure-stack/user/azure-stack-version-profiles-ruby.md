@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 98d285bf8ec92e7b6baf709d4796ce2f4420c4f2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd8130ac12f9c7c2095f9329dc4ce8a34187cf62
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Ruby Azure verem API-verzió profilok használata
 
@@ -36,7 +36,7 @@ Az API-profilt az erőforrás-szolgáltatók és verziót. Az API-profilok segí
  - A szolgáltatás legújabb api-verziót használják, használja a **legújabb** az adott gem profiljában. Például, ha szeretné használni a legújabb api-számítási szolgáltatás verziója önmagában, használja a **legújabb** profiljának a **számítási** gem.
  - Api-verziót egy szolgáltatás számára az adott API-verziók a gem belül definiált használatához.
 
-> [!note] 
+> [!Note]   
 > Kombinálhatja a beállítások ugyanabban az alkalmazásban.
 
 ## <a name="install-the-azure-ruby-sdk"></a>Az Azure Ruby SDK telepítése
@@ -96,7 +96,8 @@ Ahhoz, hogy Ruby Azure SDK-t az Azure veremnek megfelelő, adja meg a következ�
 A Microsoft Azure Resource Manager rendszer felügyeleti keretrendszere, amely lehetővé teszi a rendszergazdák számára, hogy a központi telepítése, kezelése és figyelése az Azure-erőforrások. Az Azure Resource Manager csoportként, nem pedig egyesével, egyetlen művelettel kezelik ezeket a feladatokat.
 
 A metaadatok lekérheti a Resource Manager-végpontot. A végpont egy JSON-fájl az Ön kódjának futtatásához szükséges adatokat adja vissza.
-  > [!note]  
+
+  > [!Note]  
   > A **ResourceManagerUrl** az Azure verem Development Kit (ASDK) van: `https://management.local.azurestack.external/`  
   > A **ResourceManagerUrl** integrált rendszerekben van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > A szükséges metaadatok beolvasása: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -208,7 +209,7 @@ Használhatja a GitHub repositoreis megoldások létrehozásához Ruby és Azure
 
 A minta futtatásához győződjön meg arról, hogy Ruby telepítve van. Ha a Visual Studio Code használ, a Ruby SDK letöltése bővítményként is. 
 
-> [!note]  
+> [!Note]  
 > A tárház kaphat a minta a "[kezelése Azure-erőforrások és Ruby tartalmazó erőforráscsoportokat](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)".
 
 1. Klónozza a tárházat.
@@ -243,7 +244,7 @@ A minta futtatásához győződjön meg arról, hogy Ruby telepítve van. Ha a V
   - exportálja a AZURE_SUBSCRIPTION_ID = {az előfizetés-azonosító}
   - exportálja a ARM_ENDPOINT = {a AzureStack Resource manager URL-cím}
 
-  > [!note]  
+  > [!Note]  
   > A Windows válasszon exportálása helyett.
 
 4. Gondoskodjon arról, hogy a hely változó értéke a AzureStack helyre. Például helyi = "local"

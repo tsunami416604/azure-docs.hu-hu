@@ -3,16 +3,17 @@ title: Frissítse a felügyeleti megoldás az Azure-ban
 description: Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldást Windows és Linux rendszerű számítógépek frissítéseinek kezelésére.
 services: automation
 ms.service: automation
+ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 5c76114484d10873eeb2d7a4516d4196b1d8aaf6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e23db77a1be1650c0a10e45b8b38d232e41428f6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -195,7 +196,7 @@ Hozzon létre egy új központi telepítésének kattintva a **ütemezés közpo
 |Operációs rendszer| Linux- vagy Windows|
 | Gépek frissítése |Válasszon ki egy mentett keresést vagy gép válasszon címet a legördülő listán, és válassza ki az egyes gépek |
 |Frissítési besorolások|Válassza ki a szükséges összes frissítési besorolások|
-|Kihagyandó frissítések|Adja meg a "KB" előtag nélkül kizárandó összes KB|
+|Frissítések kizárása|Adja meg a "KB" előtag nélkül kizárandó összes KB|
 |Ütemezési beállítások|Válassza ki a dátumot, és válassza ki az egyszer, vagy az ismétlődés ismétlődő|
 | Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
 
@@ -238,7 +239,7 @@ További információt a hibrid forgatókönyv-feldolgozó által igényelt, por
 
 A részleteket a portál által biztosított, mellett keresések szemben a naplók végezheti el. Az a **változások követése** megnyitva, kattintson **Naplóelemzési**, ekkor megnyílik a **naplófájl-keresési** lap
 
-### <a name="sample-queries"></a>Mintalekérdezések
+### <a name="sample-queries"></a>A lekérdezés
 
 A következő táblázat a megoldás által gyűjtött frissítési rekordok minta napló keres:
 

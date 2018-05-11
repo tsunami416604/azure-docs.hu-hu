@@ -15,8 +15,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b1a145040297debe2c348d61f204fc82d2e7d4d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: be7933b038fb5a648249e9b0c73415bff778930b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -367,5 +367,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>További lépések
-Jelentkezzen be az új virtuális gép, navigáljon a virtuális gép a [portal](https://portal.azure.com), kattintson a **Connect**, és nyissa meg a távoli asztal RDP-fájlt. A fiók hitelesítő adatait az eredeti virtuális gép jelentkezzen be az új virtuális gép használja. További információkért lásd: [csatlakoztatása, és jelentkezzen be a Windowst futtató Azure virtuális gép](connect-logon.md).
+Jelentkezzen be az új virtuális gép. További információkért lásd: [csatlakoztatása, és jelentkezzen be a Windowst futtató Azure virtuális gép](connect-logon.md).
 

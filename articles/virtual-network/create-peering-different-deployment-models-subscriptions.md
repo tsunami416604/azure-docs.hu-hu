@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 08a025acb89d3b35798688dc333038fb807284cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dcc733308f4c0441545dc0d03cca2ca1112812ac
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellek és előfizetések
 
@@ -33,7 +33,7 @@ Virtuális hálózati társviszony-létesítés létrehozásának lépései elt�
 |[Mindkét erőforrás-kezelő](create-peering-different-subscriptions.md) |Eltérő|
 |[Egy erőforrás-kezelő egy klasszikus](create-peering-different-deployment-models.md) |Azonos|
 
-Virtuális hálózati társviszony-létesítés nem hozható létre, a klasszikus üzembe helyezési modellben telepített virtuális hálózatok között. Ez az oktatóanyag használja a virtuális hálózatokat ugyanabban a régióban. Ez az oktatóanyag állomásokhoz virtuális hálózatok ugyanabban a régióban. Virtuális hálózatok, a másik partnert is meg is [támogató régiók](virtual-network-manage-peering.md#cross-region).  
+Virtuális hálózati társviszony-létesítés nem hozható létre, a klasszikus üzembe helyezési modellben telepített virtuális hálózatok között. Ez az oktatóanyag használja a virtuális hálózatokat ugyanabban a régióban. Ez az oktatóanyag állomásokhoz virtuális hálózatok ugyanabban a régióban. Virtuális hálózatok, a másik partnert is meg is [támogató régiók](virtual-network-manage-peering.md#cross-region). Javasoljuk, hogy Ön feltérképezése a [társviszony-létesítési követelményeket és korlátokat](virtual-network-manage-peering.md#requirements-and-constraints) előtt a virtuális hálózatok társviszony.
 
 A virtuális hálózati társviszony-létesítés különböző előfizetéshez létező virtuális hálózatok közötti létrehozásakor az előfizetések is kell társítani a azonos Azure Active Directory-bérlő. Ha még nem rendelkezik egy Azure Active Directory-bérlőt, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Virtuális hálózatok különböző előfizetésekhez is elérheti, és különböző Azure Active Directory bérlők egy Azure használatával [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

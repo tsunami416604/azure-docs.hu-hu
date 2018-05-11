@@ -3,16 +3,17 @@ title: Azure Automation DSC Log Analyticshez való jelentéskészítéshez szük
 description: Ez a cikk bemutatja, hogyan küldhetők szükséges konfiguráló (DSC) jelentéskészítéshez szükséges adatok további elemzéséhez és a felügyeleti szolgáltatáshoz.
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ac0da2b73341f0c6ed4f1e99e077996525890ab7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e87420c6f390d607ce6f0f57df4634a134a93d63
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Azure Automation DSC Log Analyticshez való jelentéskészítéshez szükséges adatok továbbítása
 
@@ -126,7 +127,7 @@ Azure Automation diagnosztika rekordok két kategóriába Naplóelemzési hoz l�
 | DscReportStatus |Ellenőrizze, hogy a megfelelőségi sikeresen lefutott. |
 | ConfigurationMode | A konfiguráció alkalmazásának a módját a csomópontra. A lehetséges értékek: __"ApplyOnly"__,__"ApplyandMonitior"__, és __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC konfigurációjának alkalmazására szolgál, és nincs semmi hatása további, kivéve, ha az új konfiguráció célcsomóponton, vagy ha egy kiszolgáló új konfigurációt van lekért fejlesztőre. Az új konfiguráció első alkalmazása után DSC nem ellenőrzi a korábban konfigurált állapotból eltéréseket. A konfiguráció alkalmazásához, amíg az nem lesz sikeres, mielőtt megpróbálja DSC __ApplyOnly__ lép érvénybe. </li><li> __ApplyAndMonitor__: Ez az az alapértelmezett érték. A LCM alkalmazza minden új konfigurációt. Az új konfiguráció első alkalmazása után a célcsomóponton drifts kívánt állapotból, ha DSC jelent a naplókban az eltérés. A konfiguráció alkalmazásához, amíg az nem lesz sikeres, mielőtt megpróbálja DSC __ApplyAndMonitor__ lép érvénybe.</li><li>__ApplyAndAutoCorrect__: DSC alkalmazza minden új konfigurációt. Az új konfiguráció első alkalmazása után a célcsomópont drifts kívánt állapotból, ha DSC jelent a naplókban az eltérés, és majd újra alkalmazza a jelenlegi konfiguráció.</li></ul> |
 | HostName_s | A felügyelt csomópont neve. |
-| IPAddress | A felügyelt csomóponthoz IPv4-címét. |
+| IP-cím | A felügyelt csomóponthoz IPv4-címét. |
 | Kategória | DscNodeStatus |
 | Erőforrás | Az Azure Automation-fiók neve. |
 | Tenant_g | A hívónak a bérlői azonosító GUID. |

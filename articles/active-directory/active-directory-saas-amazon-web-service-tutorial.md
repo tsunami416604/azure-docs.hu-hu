@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 3f553b9ea3629a38ab9dea0e93b16c62aebe301f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b59e3dae685c4994c44582d569875637b335bf87
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory-integráció Amazon Web Services (AWS)
 
@@ -190,7 +190,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
   
     d. Kattintson a **tovább: engedélyek**.
 
-16. A a **csatolása engedélyek házirendek** párbeszédpanel, kattintson a **tovább: felülvizsgálati**.  
+16. Az a **csatolása engedélyek házirendek** párbeszédpanel, nem kell csatolni a házirendet. Kattintson a **tovább: felülvizsgálati**.  
     
     ![Egyszeri bejelentkezés házirend konfigurálása][33]
 
@@ -404,7 +404,7 @@ Ebben a szakaszban Britta Simon hozzáférés biztosítása az Amazon Web Servic
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 

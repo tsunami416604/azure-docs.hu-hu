@@ -6,13 +6,13 @@ author: sethmanheim
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 05/08/2016
+ms.date: 05/10/2016
 ms.author: sethm
-ms.openlocfilehash: 0759decec9d80f1f836110a8907049213ca1eed6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 387801d971a349562c8a6aefc2f8d615edfd2f3a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
@@ -21,7 +21,7 @@ Az Azure Service Bus védelmi funkciókat alkalmaz, több üzenetet brókerek ü
 A Service Bus internals kapcsolatos információkért tekintse meg a [Service Bus-architektúra] [ Service Bus architecture] cikk.
 
 > [!NOTE]
-> Particionálás entitás létrehozása minden üzenetsorok és témakörök a Basic vagy Standard termékváltozat címen érhető el. A prémium szintű üzenetkezelési Termékváltozat nem érhető el, de a prémium szintű bármely létező particionált entitások várt módon fognak működni.
+> Particionálás entitás létrehozása minden üzenetsorok és témakörök a Basic vagy Standard termékváltozat címen érhető el. A prémium szintű üzenetkezelési Termékváltozat nem érhető el, de a prémium névterekben bármely korábban meglévő particionált entitások várt módon fognak működni.
  
 Nem lehet módosítani a particionálási lehetőséget, a meglévő üzenetsor vagy témakör; az entitás létrehozásakor a beállítás csak állíthatja be.
 
@@ -43,9 +43,7 @@ A normál üzenetkezelési rétegben Service Bus-üzenetsorok és témakörök 1
 
 ### <a name="premium"></a>Prémium
 
-Prémium szint névtérben Service Bus-üzenetsorok és témakörök 1, 2, 3, 4, 5, 10, 20, 40 vagy 80 GB-os méret (az alapértelmezett érték 1 GB-os) hozhat létre. Particionálás, alapértelmezés szerint engedélyezve van, a Service Bus két partíció egy entitás hoz létre. Megjelenik a particionált üzenetsor vagy témakör maximális mérete alapján a bejegyzés a [Azure-portálon][Azure portal], a a **áttekintése** panel az adott entitáshoz.
-
-Prémium szintű üzenetkezelési rétegében a partícionálásra vonatkozó további információkért lásd: [Service Bus prémium és standard szintű üzenetkezelési szintek](service-bus-premium-messaging.md). 
+Prémium szint névtérben particionálás nem támogatott. Azonban létrehozhat Service Bus-üzenetsorok és témakörök az 1, 2, 3, 4, 5, 10, 20, 40 vagy 80 GB-os méret (az alapértelmezett érték 1 GB-os). Megjelenik az üzenetsor vagy témakör mérete alapján a bejegyzés a [Azure-portálon][Azure portal], a a **áttekintése** panel az adott entitáshoz.
 
 ### <a name="create-a-partitioned-entity"></a>A particionált entitás létrehozása
 
@@ -59,7 +57,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-Másik lehetőségként létrehozhat particionált üzenetsor vagy témakör, a [Azure-portálon] [ Azure portal] vagy a Visual Studióban. A portálon, üzenetsor vagy témakör létrehozásakor a **particionálás engedélyezése** beállítást az üzenetsor vagy témakör **létrehozása** párbeszédpanelen alapértelmezés szerint be van jelölve. Csak letilthatja ezt a beállítást, a Standard csomag entitásban; a prémium szinten lévő particionálás mindig engedélyezve van. A Visual Studióban, kattintson a **particionálás engedélyezése** jelölőnégyzet a **új várólista** vagy **új témakör** párbeszédpanel megnyitásához.
+Másik lehetőségként létrehozhat particionált üzenetsor vagy témakör, a [Azure-portálon][Azure portal]. A portálon, üzenetsor vagy témakör létrehozásakor a **particionálás engedélyezése** beállítást az üzenetsor vagy témakör **létrehozása** párbeszédpanelen alapértelmezés szerint be van jelölve. Csak letilthatja ezt a beállítást, a Standard csomag entitásban; a prémium tarifacsomagra particionálás nem támogatott, és a jelölőnégyzet nincs hatása. 
 
 ## <a name="use-of-partition-keys"></a>Partíciós kulcsok használata
 Ha üzenetet a várólistában levő particionált üzenetsor vagy témakör azokat, a Service Bus ellenőrzi, hogy a partíciós kulcs. Ha megtalálja, a részlet kulcs alapján választja ki. Ha itt nem talál egy partíciókulcsot, a részlet egy belső algoritmus alapján választja ki.

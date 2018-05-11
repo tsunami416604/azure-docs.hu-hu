@@ -9,11 +9,11 @@ ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b3ff1991d76b3ab5b4b3c44f4fbe28fbb986d4bd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4bdd0ef182e0d18409ca608a645ff4011f00f9fa
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>A bevezetni frissítéskezelés, a változások követése, és a készlet megoldások
 
@@ -45,7 +45,13 @@ Válassza ki **frissítéskezelés** alatt **FRISSÍTÉSKEZELÉS**. A kiválaszt
 
 Egyes megoldások belül a munkaterület hatókör-konfigurációt használ, amelyekre a számítógépeket, amelyek a megoldás beszerzése. A hatókör beállításait olyan egy vagy több mentett keresések, amellyel korlátozhatja a megoldás az adott számítógépekhez. A hatókör-konfigurációja, az Automation-fiók alatt eléréséhez **kapcsolódó erőforrások**, jelölje be **munkaterület**. Ezt a munkaterület a **MUNKATERÜLET adatforrások**, jelölje be **hatókör konfigurációk**.
 
-Alapértelmezés szerint létrejön a két hatókör konfigurációk **MicrosoftDefaultScopeConfig-változáskövetés** és **MicrosoftDefaultScopeConfig-frissítések**.
+Ha a kijelölt munkaterülethez nem rendelkezik a frissítéskezelés vagy a változások követése megoldások, még a következő hatókör konfigurációk jönnek létre:
+
+* **MicrosoftDefaultScopeConfig-változáskövetés**
+
+* **MicrosoftDefaultScopeConfig-frissítések**
+
+Ha a kijelölt munkaterülethez már rendelkezik a megoldás. A megoldás újra nem telepíti, és a hatókör beállításait nem kerül rá.
 
 ## <a name="saved-searches"></a>Mentett keresések
 
@@ -55,7 +61,7 @@ Nyissa meg az Automation-fiók, és válassza ki **mentett keresések** alatt **
 
 |Name (Név)     |Kategória  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Változáskövetés       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
 
 Válassza ki a csoport feltöltése a lekérdezés megtekintéséhez vagy mentett keresés. Az alábbi ábrán a lekérdezés és az eredményeket:
@@ -68,7 +74,7 @@ Az Automation fiók válassza **készlet** vagy **változáskövetés** alatt **
 
 Kattintson a **+ Azure virtuális gép hozzáadása**, jelöljön ki egy virtuális Gépet a listából. Az a **frissítéskezelés** kattintson **engedélyezése**. Az aktuális virtuális gép hozzáadása a számítógép (csoport) mentett keresés a megoldáshoz.
 
-## <a name="onboard-a-non-azure-machine"></a>A bevezetni egy-Azure gép
+## <a name="onboard-a-non-azure-machine"></a>Nem Azure-beli gép előkészítése
 
 Az Automation fiók válassza **készlet** vagy **változáskövetés** alatt **konfigurációkezelés**, vagy **frissítéskezelés** a **FRISSÍTÉSKEZELÉS**.
 
@@ -82,7 +88,7 @@ Válassza ki **kezelése gépek**. Ezzel megnyílik a **kezelése gépek** lap. 
 
 ![Mentett keresések](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
-### <a name="selected-machines"></a>Kijelölt gépek
+### <a name="selected-machines"></a>Kijelölt gépekhez
 
 A megoldás egy vagy több gépek engedélyezéséhez jelölje be **engedélyezése a kijelölt gépekhez** kattintson **hozzáadása** mellett minden számítógép hozzá szeretne adni a megoldáshoz. Ez a feladat hozzáadása a számítógép (csoport) mentett keresési lekérdezés a megoldás a kijelölt számítógép nevét.
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/09/2018
 ms.author: bwren
-ms.openlocfilehash: cab92187c6c36dc4670e202b15b35db8ad510239
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Az gyűjtemény adatait a felügyeleti megoldások Azure-ban
 Ez a cikk felsorolja a [megoldások](monitoring-solutions.md) a Microsoft által kínált mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A metódus és a Log Analyticshez való használatra vonatkozó adatok gyűjtésének gyakorisága információkat is biztosít.  Ez a cikk a információt elérhető különböző megoldások azonosítására és a különböző felügyeleti megoldások adatok megismeréséhez és kapcsolat követelmények megértése érdekében használhatja. 
@@ -54,7 +54,7 @@ Az oszlopok magyarázata a következők:
 | **Felügyeleti megoldás** | **Platform** | **A Microsoft figyelési ügynök** | **Operations Manager-ügynök** | **Azure Storage** | **Az Operations Manager szükséges?** | **Az Operations Manager ügynök adatait a felügyeleti csoport keresztül küldött** | **Gyűjtemény gyakorisága** |
 | [Azure hálózati biztonsági csoport elemzés](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | az értesítés |
 | [Az Azure SQL elemzés (előzetes verzió)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 perc |
-| [Biztonsági mentés](../backup/backup-introduction-to-azure-backup.md) | Azure |  |  |  |  |  | n/a |
+| [Biztonsági mentés](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | az értesítés |
 | [Kapacitást és teljesítményt (előzetes verzió)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |érkezésükkor |
 | [Változáskövetés](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |óránként |
 | [Változáskövetés](../log-analytics/log-analytics-change-tracking.md) |Linux |&#8226; | | | | |óránként |

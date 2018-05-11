@@ -1,5 +1,5 @@
 ---
-title: Ajánlott eljárások Azure DDoS-védelem & referencia-architektúrában |} Microsoft Docs
+title: Azure DDoS-védelem ajánlott eljárások és architektúrák hivatkozhat |} Microsoft Docs
 description: További tudnivalók arról, hogyan használja a naplózási adatokat az alkalmazással kapcsolatos részletes dcu.
 services: security
 author: barclayn
@@ -13,277 +13,301 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 4b2d785f5b9095a2decfc65ec46808ff6f65c38e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 042dd4876a63e5881e67456b449570b01cb967a5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="azure-ddos-protection-best-practices-and-reference-architecture"></a>Azure DDoS-védelem: Ajánlott eljárások és hivatkozhat architektúrája
+# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS-védelem: Ajánlott eljárások és architektúrák hivatkozik
 
-Ez a dokumentum célja informatikai döntéshozók és biztonsági csoporthoz. A tesztkörnyezet az Azure-ral, hálózati és biztonsági várt.
+Ez a cikk az informatikai döntéshozók és biztonsági csoporthoz. Azt várja, hogy ismeri az Azure-ral, hálózati és biztonsági.
 
-Elosztott szolgáltatásmegtagadásos (DDoS-) tervez rugalmassági van szükség, tervezése és kialakítása során függően számos különböző. Ez a dokumentum a következő gyakorlati tanácsokat tervezése során az alkalmazások az Azure-ban, a rugalmasságot DDoS-támadások ellen.
+Elosztott szolgáltatásmegtagadásos (DDoS-) tervez rugalmassági van szükség, tervezése és kialakítása során függően számos különböző. Ez a cikk a következő gyakorlati tanácsokat tervezése során az alkalmazások az Azure-ban, a rugalmasságot DDoS-támadások ellen.
 
 ## <a name="types-of-attacks"></a>Jellegű támadások
 
-DDoS egy alkalmazás-erőforrásokat lefoglalhat használt támadás típusú. A cél, hogy az alkalmazás rendelkezésre állásának és jogos kérelmek kezelésének képessége hatással. Támadások egyre több kifinomult és nagyobb méretű és a hatása. DDoS-támadások tud célozható tetszőleges végpontot, amely nyilvánosan elérhető az interneten keresztül.
+DDoS olyan támadástípus, amely megpróbálja lefoglalhat alkalmazás-erőforrásokat. A cél, hogy az alkalmazások rendelkezésre állásáról és képességét a jogos tanúsítványigénylések hatással. Támadások egyre több kifinomult és nagyobb méretű és a hatása. DDoS-támadások tud célozható tetszőleges végpontot, amely nyilvánosan elérhető az interneten keresztül.
 
-Azure biztosít folyamatos védelem DDoS-támadások ellen. Ez a védelem integrálva van az Azure platformon alapértelmezés szerint, és minden további költség nélkül. A platform megadott DDoS-védelem core mellett is tudunk nevű új ajánlat "[Azure DDoS védelem szabványos](https://azure.microsoft.com/services/ddos-protection/)", amely hálózati támadások elleni speciális DDoS megoldás képességeket biztosít, és automatikusan beállítva, hogy az adott Azure-erőforrások védelme. Védelem használata egyszerű ahhoz, hogy az új virtuális hálózatok létrehozása során. Kezdeti létrehozás után is elvégezhető, és nem kell alkalmazás vagy erőforrás módosítani.
+Azure biztosít folyamatos védelem DDoS-támadások ellen. Ez a védelem integrálva van az Azure platformon alapértelmezés szerint, és nem kapcsolódik további költség. 
 
-![](media/azure-ddos-best-practices/image1.png)
+DDoS-védelem a platform alapszolgáltatásai mellett [Azure DDoS védelem szabványos](https://azure.microsoft.com/services/ddos-protection/) hálózati támadások elleni speciális DDoS megoldás képességeket biztosít. Az adott Azure-erőforrások védelme automatikusan terveztek. Védelem használata egyszerű ahhoz, hogy az új virtuális hálózatok létrehozása során. Létrehozása után is elvégezhető, és nem kell alkalmazás vagy erőforrás módosítani.
 
-DDoS-támadások széles körű lehet sorolni három (3) más kategóriák
+![Azure DDoS-védelem szerepét a támadó ügyfelek és a virtuális hálózat védelme](media/azure-ddos-best-practices/image1.png)
+
+DDoS-támadások három kategóriába sorolhatók:-es, protokoll, és az erőforrás.
 
 ### <a name="volumetric-attacks"></a>-Es támadások
 
--Es támadások a leggyakoribb DDoS-támadások. -Es támadások találgatásos támadások, a hálózati és a szállítási réteg célzó. Azok megkísérlik az erőforrások lefoglalhat ilyen hálózati kapcsolatokon. Több fertőzött rendszer használata esetén az ilyen támadások általában számára a hálózati rétegek látszólag jogos forgalom jelentős mennyiségű kéréssekkel. Ilyen típusú támadások különböző hálózati szintű protokollok, például az Internet Control Message Protocol (ICMP), a User Datagram Protocol (UDP) és a Transmission Control Protocol (TCP) használnak.
+-Es támadások a leggyakoribb típus DDoS-támadások. -Es támadások találgatásos támadások, a hálózati és a szállítási réteg célzó. Próbálják lefoglalhat erőforrásokhoz, mint a hálózati kapcsolat. 
 
-A leggyakrabban használt hálózati réteg DDoS-támadások: TCP SZIN elárasztás, az ICMP echo, a UDP elárasztás, a DNS és a NTP erősítési támadás. Ilyen típusú támadások segítségével nemcsak megszakadhat a szolgáltatás, hanem az, a több nefarious és célzott hálózati behatolás egy smokescreen. A legutóbbi-es támadás például a [Memcached biztonsági rés](https://www.wired.com/story/github-ddos-memcached/) , amely befolyásolja a Githubon. A támadás UDP-port 11211 céloz, és létrehozott 1.35 Tb/s támadás kötet.
+Ilyen támadások gyakran több fertőzött rendszer használnak a hálózati rétegek látszólag jogos forgalommal kéréssekkel. Hálózati szintű protokollok, például az Internet Control Message Protocol (ICMP), a User Datagram Protocol (UDP) és a Transmission Control Protocol (TCP) használnak.
+
+A leggyakrabban használt hálózati réteg DDoS-támadások elárasztás, ICMP echo, elárasztás, DNS, UDP, TCP SZIN és NTP erősítési támadásokat. Ilyen típusú támadások segítségével nemcsak megszakadhat a szolgáltatás, hanem az, a több nefarious és célzott hálózati behatolás egy smokescreen. A legutóbbi-es támadás például a [Memcached biztonsági rés](https://www.wired.com/story/github-ddos-memcached/) , amely hatással a Githubon. A támadás UDP-port 11211 céloz, és létrehozott 1.35 Tb/s támadás kötet.
 
 ### <a name="protocol-attacks"></a>Protokoll támadások
 
-Protokoll cél alkalmazásprotokollokon támadásokat. Próbálják infrastruktúra eszközök például tűzfalak, az alkalmazás-kiszolgálókat és a terheléselosztók az összes elérhető erőforrást felhasználják. Protokoll támadások használja a csomagok, amelyek nem megfelelően formázott vagy protokoll rendellenességeket tartalmaznak. Ilyen támadások több nyitott kérelmek, kiszolgálók és egyéb kommunikációs eszközök válasz és a csomag válaszra való várakozás elküldésével fog működni. A cél megkísérli a nyitott kérelmek felé, ami a célzott rendszer összeomlását válaszolni.
+Protokoll cél alkalmazásprotokollokon támadásokat. Próbálják infrastruktúra eszközök, például tűzfalakat, alkalmazás-kiszolgálókat, az összes elérhető erőforrást felhasználják, és terheléselosztókat. Protokoll támadások használja a csomagok, amelyek nem megfelelően formázott vagy protokoll rendellenességeket tartalmaznak. Ilyen támadások működik nagy számú nyitott kérelmek, hogy a kiszolgálók és egyéb kommunikációs eszközök fogadja a hívást, és várjon, amíg a csomag válaszra való küldésével. A cél megkísérli a nyitott kérelmek, a rendszer összeomlását felé, ami válaszolni.
 
-A leggyakoribb a protokoll-alapú DDoS-támadások példája TCP SZIN árvíz. A támadás TCP SZIN kérelmek több cél felé irányítja a rendszer, és ne terhelje tovább, akkor is használható. A cél, hogy ellenőrizze a cél nem válaszol. 2016 DIN leállás mellett alkalmazásszintű támadás alatt állt TCP SZIN árvizek célzó DIN tartozó DNS-kiszolgálók 53-as port is.
+A leggyakoribb a protokoll-alapú DDoS-támadások példája TCP SZIN árvíz. A támadás több TCP SZIN kérelmeket próbál ne terhelje tovább a cél. A cél, hogy ellenőrizze a cél nem válaszol. A 2016 DIN leállás mellett TCP SZIN állt alkalmazásszintű támadás alatt elárasztja, hogy célzott 53-as port DIN tartozó DNS-kiszolgálók.
 
 ### <a name="resource-attacks"></a>Erőforrás támadások
 
-Erőforrás támadások az alkalmazási rétegre célként. Háttér-folyamatok azok indítás, annak érdekében, hogy az ne terhelje tovább a célrendszeren. Erőforrás a normál keres, de ez végzi processzorigényes lekérdezi a kiszolgálóhoz való visszaélés forgalom támadásokat. A szükséges erőforrások lefoglalhat forgalom mennyiségének viszonylag alacsonyabb, mint a más típusú támadások. Az erőforrás-támadások nem különböztethetők meg jogos forgalmat, így nehezen észlelhető akkor. A leggyakrabban használt erőforrás támadások HTTP/HTTPS- és DNS szolgáltatások esetén.
+Erőforrás támadások az alkalmazási rétegre célként. Háttér-folyamatok azok indítás, annak érdekében, hogy az ne terhelje tovább a rendszer. Erőforrás a normál keres, de ez végzi processzorigényes lekérdezi a kiszolgálóhoz való visszaélés forgalom támadásokat. Szükséges erőforrások lefoglalhat forgalom mennyisége nem éri el, amely a más típusú támadások. Az erőforrás-támadások jogos forgalmat, így nehezen észlelése nem különböztethetők akkor. A leggyakrabban használt erőforrás támadások HTTP/HTTPS- és DNS szolgáltatások esetén.
 
 ## <a name="shared-responsibility-in-the-cloud"></a>Megosztott felelős a felhőben
 
-A növekvő típusok és képzettsége támadások elleni védelmi részletes stratégia szükséges. Biztonsági megosztott feladata az ügyfél és a Microsoft között. Microsoft hivatkozik, mint egy [megosztott felelősségi modell](https://azure.microsoft.com/blog/microsoft-incident-response-and-shared-responsibility-for-cloud-computing/). Az alábbi ábra a részlege felelős.
+Egy védelmi-stratégia segít a növekvő különböző és képzettsége támadások elleni. Biztonsági megosztott feladata az ügyfél és a Microsoft között. Microsoft meghívja ezt a [megosztott felelősségi modell](https://azure.microsoft.com/blog/microsoft-incident-response-and-shared-responsibility-for-cloud-computing/). Az alábbi ábrán láthatók az osztály a felelősségi:
 
-![](media/azure-ddos-best-practices/image2.png)
+![Az Azure és az ügyfél feladatkörei](media/azure-ddos-best-practices/image2.png)
 
-Azure-ügyfél kihasználhassa az ajánlott eljárások áttekintését és felépítése globálisan elosztott alkalmazások és a következő tesztelése sikertelen.
+Azure-ügyfél hasznot húzhatnak a Microsoft ajánlott eljárások áttekintését és felépítése globálisan elosztott alkalmazásokat, amelyek tervezhetők meg és tesztelése sikertelen.
 
 ## <a name="fundamental-best-practices"></a>Alapvető ajánlott eljárások
 
-DDoS-támadások és a megnövekedhet. A következő szakasz előíró útmutatást DDoS rugalmas szolgáltatások létrehozása az Azure-kiszolgálón.
+A következő szakaszok ad DDoS-rugalmas szolgáltatások létrehozásához, Azure előíró útmutatást.
 
 ### <a name="design-for-security"></a>Biztonság – tervezés
 
-Az ügyfelek biztosítania kell biztonsági prioritást során az alkalmazás, a tervezési és megvalósítási történő központi telepítése és üzemeltetése teljes életciklusát. Az alkalmazások, amelyek lehetővé teszik egy viszonylag kis mennyiségű kialakított kérést egy túlságosan mennyiségű erőforrást, ami azt eredményezi, hogy szolgáltatáskimaradás használandó hibák is rendelkezhetnek. Microsoft Azure-on futó szolgáltatás védelme érdekében ügyfelek kell alaposan megismernie az alkalmazás architektúráját, valamint kell összpontosítania, a [szoftver minőségű 5 oszlopok](https://docs.microsoft.com/azure/architecture/guide/pillars).
-Az ügyfelek tipikus forgalommal, érdemes tudni a az alkalmazás és más alkalmazások és a nyilvános internethez kitett szolgáltatásvégpontokra közötti kapcsolat modell.
+Győződjön meg arról, hogy biztonsági prioritást során az alkalmazás, a tervezési és megvalósítási történő központi telepítése és üzemeltetése teljes életciklusát. Az alkalmazások, amelyek lehetővé teszik egy viszonylag kis mennyiségű kérést egy túlságosan mennyiségű erőforrást, ami azt eredményezi, hogy szolgáltatáskimaradás használandó hibák is rendelkezhetnek. 
 
-Továbbá rugalmasak magának az alkalmazásnak irányuló szolgáltatásmegtagadást kezelni egy alkalmazás biztosítva van kiemelkedő fontosságú. Biztonság és adatvédelem az Azure platformon, kezdve be van építve a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx). Az SDL biztonsági címek minden fejlesztési fázisában, és biztosítja, hogy Azure folyamatosan frissül még biztonságosabbá teszi.
+A Microsoft Azure-on futó szolgáltatás védelme érdekében meg kell alapos ismerete szükséges az alkalmazás-architektúra pedig a a [szoftver minőségű öt oszlopok](https://docs.microsoft.com/azure/architecture/guide/pillars).
+Tudnia kell tipikus forgalommal, az alkalmazás és más alkalmazások és a végpontok, amelyek ki vannak téve a nyilvános internethez közötti kapcsolat modell.
+
+Annak biztosítása, hogy egy alkalmazás rugalmasak magának az alkalmazásnak megcélzó szolgáltatásmegtagadást kezeli az egyik legfontosabb. Az Azure platformon, kezdve beépített biztonság és adatvédelem a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx). Az SDL biztonsági címek minden fejlesztési fázisában, és biztosítja, hogy Azure folyamatosan frissül még biztonságosabbá teszi.
 
 ### <a name="design-for-scalability"></a>Méretezhetőség kialakítása
 
-A méretezhetőség a rendszernek a megnövekedett terhelés kezelésére vonatkozó képessége. Az ügyfelek kell tervezése az alkalmazások [horizontálisan méretezhető](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) felerősített terhelés, különösen a DDoS-támadások esemény az igény kielégítésére. Ha az alkalmazás attól függ, hogy a szolgáltatás egyetlen példányát, a hibaérzékeny pontot hoz létre. Kiépítés több példány növeli a rugalmasságot és a méretezhetőséget.
+A méretezhetőség azt, hogy a rendszer megnövekedett terhelés kezelése. Az alkalmazások kell tervezési [horizontálisan méretezhető](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) egy felerősített terhelés, kifejezetten a DDoS-támadások esetén az igény kielégítésére. Ha az alkalmazás attól függ, hogy a szolgáltatás egyetlen példányát, a hibaérzékeny pontot hoz létre. A rendszer több példány kiosztás révén, rugalmasabb, és több méretezhető.
 
-A [Azure App Service](../app-service/app-service-value-prop-what-is.md), jelölje be egy [App Service-csomag](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) , amely több példányt biztosít. Azure-szolgáltatásokhoz, konfigurálhatja a szerepkörök használandó [több példány](../cloud-services/cloud-services-choose-me.md). A [Azure virtuális gépek (VM)](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), győződjön meg arról, hogy a virtuális gép architektúrája tartalmazza az egynél több virtuális gép és az egyes virtuális gépek szerepel egy [rendelkezésre állási csoport](../virtual-machines/virtual-machines-windows-manage-availability.md). Azt javasoljuk, [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) automatikus skálázás képességeinek.
+A [Azure App Service](../app-service/app-service-value-prop-what-is.md), jelölje be egy [App Service-csomag](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) , amely több példányt biztosít. Azure-szolgáltatásokhoz, konfigurálhatja a szerepkörök használandó [több példány](../cloud-services/cloud-services-choose-me.md). A [Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), győződjön meg arról, hogy a virtuális gép (VM) architektúra tartalmazza az egynél több virtuális gép és az egyes virtuális gépek szerepel egy [rendelkezésre állási csoport](../virtual-machines/virtual-machines-windows-manage-availability.md). Azt javasoljuk, [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) automatikus skálázás képességeinek.
 
 ### <a name="defense-in-depth"></a>Mélyreható védelmet
 
-Mélyreható védelmet mögött lényege különböző védelmi stratégiák kockázatkezelés. Rétegez egy alkalmazás biztonsági védelmekkel csökkenti egy sikeres támogatás esélyét. Azt javasoljuk, hogy az ügyfelek valósítja meg az Azure platform beépített képességeit keresztül az alkalmazások biztonságos tervekhez.
+Mélyreható védelmet mögött lényege kockázatkezelést különböző védelmi stratégiák használatával. Rétegez egy alkalmazás biztonsági védelmekkel csökkenti egy sikeres támogatás esélyét. Azt javasoljuk, hogy megvalósítása biztonságos tervekhez az alkalmazások az Azure platformon beépített képességei használatával.
 
-Például a támadás veszélyét növeli a méretet, vagy az alkalmazás támadási felületét. Felületének csökkentése érdekében ajánlott keresztül engedélyezett lezárja-e a kitett IP cím terület & figyelő portot, amelyek nem szükségesek a terheléselosztók ([ALB](../load-balancer/load-balancer-get-started-internet-portal.md)/[App átjáró](../application-gateway/application-gateway-create-probe-portal.md)) vagy keresztül [hálózati biztonsági csoportok (NSG).](../virtual-network/virtual-networks-nsg.md)
-Használhat [címkék szolgáltatás](/virtual-network/security-overview.md) és [biztonsági csoportok](/virtual-network/security-overview.md) minimalizálása érdekében a biztonsági szabály létrehozásához összetettségét, és a hálózati biztonság beállítása egy alkalmazás struktúra természetes bővítménye.
+Például növeli a támadások veszélye méretű (*terület surface*) az alkalmazás. Engedélyezett használatával elérhető IP-címterület bezárása, és nem szükséges azokat a terheléselosztókat a portokat figyeli csökkentheti a támadási felületét ([Azure terheléselosztó](../load-balancer/load-balancer-get-started-internet-portal.md) és [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)). [Hálózati biztonsági csoportokkal (NSG-k)](../virtual-network/virtual-networks-nsg.md) , amelyek egy másik csökkenteni a támadási felületet.
+Használhat [címkék szolgáltatás](/virtual-network/security-overview.md) és [biztonsági csoportok](/virtual-network/security-overview.md) minimalizálása érdekében a biztonsági szabályok létrehozásához és konfigurálásához a hálózati biztonság, mint az alkalmazás struktúra természetes bővítménye összetettségét.
 
-Az ügyfelek telepítse az Azure-szolgáltatások egy [virtuális hálózati](../virtual-network/virtual-networks-overview.md) amikor csak lehetséges. Ez lehetővé teszi, hogy a szolgáltatás erőforrásainak kommunikációja áthaladjon magánhálózati IP-címét. Egy virtuális hálózatot az Azure szolgáltatás forgalmát forrás IP-cím nyilvános IP-címek alapértelmezés szerint használja. Használatával [szolgáltatás végpontjait](../virtual-network/virtual-network-service-endpoints-overview.md) vált, szolgáltatás-forgalom virtuális hálózati Magáncímeket használják a forrás IP-címek, ha egy virtuális hálózatot az Azure-szolgáltatás eléréséhez.
+Az Azure-szolgáltatásokat telepítsen egy [virtuális hálózati](../virtual-network/virtual-networks-overview.md) amikor csak lehetséges. Ez az eljárás lehetővé teszi, hogy a szolgáltatás erőforrásainak kommunikációja áthaladjon magánhálózati IP-címét. Egy virtuális hálózatot az Azure szolgáltatás forgalmát forrás IP-cím nyilvános IP-címek alapértelmezés szerint használja. Használatával [szolgáltatás végpontjait](../virtual-network/virtual-network-service-endpoints-overview.md) vált, a virtuális hálózati Magáncímeket használják a forrás IP-címek, ha azok próbál hozzáférni az Azure-szolgáltatás egy virtuális hálózati forgalmát.
 
-Az ügyfél helyszíni tehesse erőforrásaik az Azure-ban első megtámadott erőforrások gyakran látható. Azure csatlakozik egy helyszíni környezetben, azt javasoljuk, hogy elérhetővé tegyék a helyszíni erőforrások a nyilvános internethez minimálisra csökkenthető. A méretezés és az Azure fejlett DDoS-védelem funkcióinak használatához, üzembe helyezése az Azure-ban a jól ismert nyilvános entitásokat. Mivel ezek nyilvánosan elérhető entitások gyakran egy cél DDoS-támadások, a helyszíni erőforrások gyakorolt hatás üzembe őket az Azure-ban csökkenti.
+Ügyfelek helyszíni együtt az Azure-ban erőforrásaik első megtámadott erőforrások gyakran látható. Kapcsolat a helyszíni környezet az Azure-ba, javasoljuk, hogy elérhetővé tegyék a helyszíni erőforrások a nyilvános internethez minimálisra csökkenthető. A méretezés és az Azure fejlett DDoS védelem funkcióinak használatához, üzembe helyezése az Azure-ban a jól ismert nyilvános entitásokat. Mivel ezek nyilvánosan elérhető entitások gyakran egy cél DDoS-támadások, a helyszíni erőforrások gyakorolt hatás üzembe őket az Azure-ban csökkenti.
 
-## <a name="azure-ddos-protection"></a>Az Azure DDoS-védelem
+## <a name="azure-offerings-for-ddos-protection"></a>DDoS-védelem Azure-szolgáltatásokkal
 
-Azure két adja meg a hálózati támadások (3 & 4 réteg) - DDoS alapszintű és a szabványos DDoS-védelem a védelem DDoS service offerings rendelkezik. 
+Azure rendelkezik két DDoS szolgáltatásra vonatkozó ajánlattal kapcsolatban, hogy a hálózati támadásoktól (3. és 4. réteg) védelmet nyújt: DDoS védelem egyszerű és szabványos DDoS-védelem. 
 
-### <a name="azure-ddos-basic-protection"></a>Az Azure alapvető DDoS-védelem
+### <a name="ddos-protection-basic"></a>DDoS védelem Basic
 
-Alapszintű védelmi integrálva van az Azure alapértelmezés szerint a további költség nélkül. A teljes skála és Azure globálisan telepített hálózati kapacitása biztosít szolgálhat közös hálózati réteg támadások elleni keresztül mindig a forgalom figyelési és valós idejű megoldás. DDoS Basic védelem nélküli felhasználói konfigurációs vagy az alkalmazás módosítását igényli. Alapszintű DDoS-védelem által védett összes Azure-szolgáltatások többek között a PaaS szolgáltatások, például az Azure DNS-ben.
+Alapszintű védelmi integrálva van az Azure alapértelmezés szerint a további költség nélkül. A méretezés és a globálisan üzembe helyezett Azure hálózati kapacitása biztosít a forgalom folyamatos figyelési és valós idejű megoldás révén közös hálózati rétegbeli támadások elleni védelmet. DDoS védelem alapvető nincs felhasználói konfiguráció vagy az alkalmazás módosítását igényli. DDoS védelem alapvető megvédi az összes Azure-szolgáltatások, többek között a PaaS szolgáltatások, például az Azure DNS-ben.
 
-![](media/azure-ddos-best-practices/image3.png)
+![Az Azure-hálózatot képviselő alakot képezi rendelkező szöveg "globális DDoS megoldás jelenléte" és "Vezető DDoS megoldás kapacitás"](media/azure-ddos-best-practices/image3.png)
 
-Alapszintű Azure DDoS-védelem szoftver- és hardverkonfigurációiról összetevőkből áll. A szoftver vezérlő vezérlősík úgy dönt, mikor, ahol, és milyen kell kormányzott, elemzése, és távolítsa el a támadás forgalom hardver készülékek keresztül. A vezérlő vezérlősík teszi ehhez a döntéshez alapuló infrastruktúra kiterjedő DDoS-védelem *házirend*, amely statikusan beállította és egységesen alkalmazza az összes Azure-ügyfél számára.
+Az Azure-ban alapvető DDoS-védelem szoftver- és hardverkonfigurációiról összetevőkből áll. A szoftver vezérlő vezérlősík úgy dönt, mikor, ahol, és milyen kell kormányzott, elemzése, és távolítsa el a támadás forgalom hardver készülékek keresztül. A vezérlő vezérlősík teszi ehhez a döntéshez alapuló infrastruktúra kiterjedő DDoS-védelem *házirend*. Ez a házirend statikusan beállította és egységesen alkalmazza az összes Azure-ügyfél számára.
 
-Például a DDoS-védelem házirend azt szabja meg, milyen adatforgalma, a védelem nem lehet *indított* (Ez azt jelenti, hogy a bérlői forgalom irányítani kell a tisztítási készülékek keresztül), és ezt követően hogyan a tisztítási készülékek kell *mérséklése* a támadás.
+Például a DDoS-védelem házirend azt szabja meg, milyen adatforgalma, a védelem nem lehet *elindul.* (Ez azt jelenti, hogy a bérlői forgalom kell útválasztása készülékek tisztítási.) A házirend határozza meg majd, a háttértisztítás készülékek kell hogyan *mérséklése* a támadás.
 
-DDoS védelem alapszintű Azure-szolgáltatás irányuló infrastruktúra védelmét és az Azure platformon védelméről. Megszünteti a forgalmat, amikor az meghaladja a, hogy ez hatással lehet egy több-bérlős környezetben több ügyfél jelentős mértékben. Nem biztosít lehetőséget, vagy ügyfél testreszabott házirendeket.
+Az Azure DDoS védelem alapszintű service irányuló védelmét az infrastruktúra és az Azure platformon védelméről. Megszünteti a forgalmat, amikor az meghaladja a, hogy ez hatással lehet egy több-bérlős környezetben több ügyfél jelentős mértékben. Nem biztosít lehetőséget, vagy ügyfél testreszabott házirendeket.
 
-### <a name="azure-ddos-standard-protection"></a>Az Azure szabványos DDoS-védelem
+### <a name="ddos-protection-standard"></a>DDoS védelem Standard
 
-Standard védelem DDoS megoldás speciális funkciókat is biztosítanak, és van beállítva, hogy az adott Azure-erőforrások virtuális hálózat védelme automatikusan. Egyszerű ahhoz, hogy minden új vagy meglévő virtuális hálózat és az szükséges, alkalmazás vagy erőforrás-változása. Azt az alapvető szolgáltatás, így a naplózást, a riasztás és a telemetriai adatok keresztül több előnye is van. Az alábbiakban leírt van a kulcs differentiators Azure DDoS védelem szabványos szolgáltatás.
+Standard szintű védelmet továbbfejlesztett DDoS megoldás szolgáltatásokat biztosítja. Az adott Azure-erőforrások virtuális hálózat védelme érdekében automatikusan terveztek. Védelmi egyszerű ahhoz, hogy minden új vagy meglévő virtuális hálózat, és azt nem kell alkalmazás vagy erőforrás módosítani. Azt az alapszintű service, beleértve a naplózást, a riasztás és a telemetriai adatok keresztül több előnye is van. Az alábbi szakaszok felsorolják a kulcsfontosságú szolgáltatásokat az Azure DDoS védelem szabványos szolgáltatás.
 
-#### <a name="adaptive-realtime-tuning"></a>Adaptív valós idejű hangolása
+#### <a name="adaptive-real-time-tuning"></a>Adaptív valós idejű hangolása
 
-Az Azure DDoS védelem alapszintű service felhasználók védelme érdekében, de csak védje azokat más ügyfelek befolyásolása érdekében. Ha egy szolgáltatás ki van építve, egy tipikus kötet jogos bejövő forgalmat, amely kisebb, mint például a *eseményindító arány* infrastruktúra kiterjedő DDoS védelem házirend egy adott ügyfélhez erőforrások DDoS támadást léphet észrevétlenül. Általában összetett jellege legutóbbi támadások (például több vektoros DDoS-), valamint az alkalmazás-specifikus viselkedésmódok bérlő hívás /-ügyfél, testre szabott adatvédelmi szabályzatok.
-Mindez két insights segítségével:
+A DDoS védelem alapszintű Azure szolgáltatás segítségével az ügyfelek védelmét, és megelőzheti a hatások más ügyfelek számára. Ha egy szolgáltatás ki van építve, egy tipikus kötet jogos bejövő forgalmat, amely kisebb, mint például a *eseményindító arány* az infrastruktúra kiterjedő DDoS-védelem házirend, egy adott ügyfélhez erőforrások DDoS támadást mehet észrevétlenül. Általában legutóbbi támadások (például több vektoros DDoS-) összetettsége és a bérlők az alkalmazás-specifikus viselkedését hívás /-ügyfél, testre szabott adatvédelmi szabályzatok. A szolgáltatás a Testreszabás két insights segítségével éri el:
 
-1. Az automatikus tanulás /-ügyfél (-IP) réteg 3 vagy 4 forgalmat, és
-2. Minimalizálja a téves fényében, hogy Azure méretezési lehetővé teszi, hogy felvegye jelentős mennyiségű forgalom.
+- Egy ügyfél (-IP) forgalmi minták automatikus tudomást réteg 3 vagy 4.
 
-![](media/azure-ddos-best-practices/image5.png)
+- Minimalizálja a téves, figyelembe véve, hogy a skála Azure lehetővé teszi, hogy felvegye a jelentős mennyiségű forgalom.
 
-#### <a name="ddos-protection-telemetry-monitoring--alerting"></a>DDoS védelem telemetriai, figyelés és riasztás
+![DDoS védelem szabványos működése, a házirend. generációs"körben ábrája](media/azure-ddos-best-practices/image5.png)
 
-DDoS védelem standard elérhetővé kell tenni keresztül részletes telemetria [Azure figyelő](/monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) DDoS-támadások időtartama alatt. Riasztási bármely az Azure-figyelő metrikák DDoS-védelem által konfigurálható. Naplózási integrálható Splunk (az Azure Event Hubs), az Azure Naplóelemzés és az Azure Storage speciális elemzés a Azure figyelő Diagnostics felületén keresztül.
+#### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS-védelem telemetriai, figyelés, és a riasztás
+
+DDoS védelem szabványos közzététele keresztül részletes telemetria [Azure figyelő](/monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) DDoS-támadások időtartama. Az Azure-figyelő metrikák DDoS-védelem használó bármelyikét riasztásokat lehet beállítani. Naplózási Splunk (az Azure Event Hubs), az Azure Naplóelemzés és az Azure Storage a Azure figyelő Diagnostics felületén keresztül speciális elemzésekre szolgáló integrálva.
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS megoldás házirendek
 
-Az Azure portálon kattintson **figyelő** \> **metrikák**. Az a **metrikák** képernyőn, válassza ki az erőforráscsoportot, nyilvános IP-cím erőforrás típusa és az Azure nyilvános IP-címe. DDoS mérőszámok alapján az elérhető mérőszámok ablaktáblán látható lesz.
+Válassza ki az Azure-portálon **figyelő** > **metrikák**. Az a **metrikák** ablaktáblában jelölje ki az erőforráscsoportot, válasszon ki egy erőforrástípust a **nyilvános IP-cím**, és válassza ki az Azure nyilvános IP-címe. DDoS metrikák láthatók a **elérhető** ablaktáblán.
 
-DDoS védelem szabványos vonatkozik **három autotuned megoldás házirendek (TCP SZIN, TCP és UDP)** minden nyilvános IP-cím a védett erőforrás, a vnetben, amely DDoS engedélyezve van. A metrika kiválasztásával megtekintheti a házirend küszöbértékek **"Bejövő csomagok való DDoS megoldás"**.
+DDoS védelem szabványos három autotuned megoldás házirendet alkalmaz (TCP SZIN TCP és UDP) minden egyes nyilvános IP-cím a védett erőforrás DDoS engedélyezve van a virtuális hálózatban. A metrika kiválasztásával megtekintheti a házirend küszöbértékek **bejövő csomagok való DDoS megoldás**.
 
-![](media/azure-ddos-best-practices/image7.png)
+![Elérhető és a metrikák diagram](media/azure-ddos-best-practices/image7.png)
 
-A házirend küszöbértékek a gépi tanulási a alapú hálózati forgalom profilkészítési keresztül automatikusan konfigurált. Támadás alatt lévő IP-cím DDoS megoldás akkor következik be, csak akkor, ha a házirend küszöbérték elérése esetén.
+A házirend küszöbértékek a machine learning-alapú hálózati forgalom profilkészítési keresztül automatikusan konfigurált. Támadás alatt lévő IP-cím DDoS megoldás akkor következik be, csak akkor, ha a házirend küszöbérték elérése esetén.
 
-##### <a name="under-ddos-attack"></a>DDoS támadás
+##### <a name="metric-for-an-ip-address-under-ddos-attack"></a>A metrika DDoS támadás alatt lévő IP-cím
 
-Ha a nyilvános IP-cím támadás alatt áll, a metrika "alatt DDoS támadásokkal vagy nem" érték ki-és 1, a megoldás a támadás forgalom végezzük.
+Ha a nyilvános IP-cím a támadásoknak, a metrika értékének **alatt DDoS támadás, vagy nem** DDoS-védelem megoldás végez a támadás forgalom 1-re változik.
 
-![](media/azure-ddos-best-practices/image8.png)
+!["A DDoS támadásokkal vagy nem" metrika és diagram](media/azure-ddos-best-practices/image8.png)
 
-Azt javasoljuk, hogy ez a metrika, ha van egy aktív DDoS megoldás értesítést szeretne kapni a riasztás konfigurálása a nyilvános IP-cím végre.
+Azt javasoljuk, hogy ez a mérőszám a riasztás konfigurálása. Majd értesítést is, ha egy aktív DDoS-megoldás a nyilvános IP-cím végre.
 
 További információkért lásd: [kezelése Azure DDoS védelem szabványos az Azure portál használatával](../virtual-network/ddos-protection-manage-portal.md).
 
-#### <a name="resource-attacks"></a>Erőforrás támadások
+#### <a name="web-application-firewall-for-resource-attacks"></a>Webalkalmazási tűzfal erőforrás támadások
 
-Adott erőforrás támadásokkal szemben, az alkalmazás rétegben, az ügyfelek, konfigurálni kell webes alkalmazás tűzfalat (WAF) segítségével biztonságos webes alkalmazásokhoz. WAF megvizsgálja a bejövő webes forgalom blokkolása SQL alkalommal idegen, DDoS és más réteg 7 támadásoknak. Azure biztosít [Alkalmazásátjáró szolgáltatásként WAF](../application-gateway/application-gateway-web-application-firewall-overview.md) a webalkalmazások a gyakori biztonsági réseket és biztonsági rések központosított védelemre. Nincsenek elérhető, akkor lehetnek megfelelőbbek, az Ön igényeinek keresztül Azure partnerektől származó WAF ajánlatok fajtáinak a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1).
+Adott erőforrás támadásokkal szemben, az alkalmazás rétegben, konfigurálnia kell a webalkalmazási tűzfal (WAF) segítségével biztonságos webes alkalmazások. Egy WAF megvizsgálja a bejövő webes forgalom blokkolása SQL-utasítások, parancsfájlok, DDoS és egyéb réteg 7 támadások többhelyes. Azure biztosít [Alkalmazásátjáró szolgáltatásként WAF](../application-gateway/application-gateway-web-application-firewall-overview.md) a webalkalmazások a gyakori biztonsági réseket és biztonsági rések központosított védelemre. Nincsenek elérhető, akkor lehetnek megfelelőbbek, az Ön igényeinek keresztül Azure partnertől más WAF ajánlatokat a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1).
 
-Webalkalmazási tűzfalak még akkor is, amelyek ki vannak téve-es & állapot Erőforrásfogyás támadásokkal szemben. Erősen ajánlott DDoS Standard védelmet a virtuális hálózaton WAF-es elleni védelméhez bekapcsolásával & protokoll támadásokat. További információkért lásd: a referencia architektúra szakasz.
+-Es és state Erőforrásfogyás támadások még webalkalmazási tűzfalak. Erősen ajánlott a virtuális hálózaton WAF-es elleni védelme szabványos DDoS-védelem engedélyezése és protokoll támadásokat. További információkért lásd: a [DDoS-védelem hivatkozás architektúrák](#ddos-protection-reference-architectures) szakasz.
 
 ### <a name="protection-planning"></a>Védelem tervezése
 
-Tervezése és előkészítése fontosságúak megérteni, hogyan hajtsa végre a rendszer a DDoS-támadások során. A tervezést és előkészítést kíván is alakítsa ki egy incidenskezelési válaszadási tervet.
+Tervezése és előkészítése fontosságúak megérteni, hogyan hajtsa végre a rendszer a DDoS-támadások során. Ennek érdekében egy incidenskezelési válaszadási tervet tervezése.
 
-Az ügyfelek győződjön meg arról, hogy Standard DDoS-védelem engedélyezve van a virtuális hálózat az internet felől elérhető végpontok. DDoS-riasztások konfigurálása segít egy állandó tartsuk követheti az összes lehetséges támadás a infrastruktúra. Az ügyfelek egymástól függetlenül figyelje az alkalmazásaikat. Az alkalmazás normál működésének megértése szükséges. Lépéseket kell tenni, ha az alkalmazás viselkedik a DDoS-támadások során a várt módon.
+Ha DDoS védelem szabványos, győződjön meg arról, hogy a virtuális hálózat internet felé néző végpontok engedélyezve van. DDoS-riasztások konfigurálása segít folyamatosan figyelje a infrastruktúra bármely potenciális támadások. 
 
-#### <a name="ddos-attacks-orchestration"></a>DDoS-támadások vezénylési
+Az alkalmazások egymástól függetlenül kell figyelni. Ismerje meg az alkalmazás normál működését. Ha az alkalmazás viselkedik a DDoS-támadások során elvárt működésének előkészítése.
 
-Ajánlott a feltételezéseket hogyan a szolgáltatások válaszolni a támadás, még mielőtt akkor fordul elő, rendszeres szimulációja végzett tesztelése. Tesztelés során ellenőrzi, hogy a szolgáltatások és alkalmazások továbbra is a kívánt módon működik, és nem a végfelhasználói élmény megszakadását van. Azonosítsa a technológia és a folyamat szempontból hézagok, és azokat a DDoS válasz stratégia. Egy általános javasoljuk, hogy az ilyen tesztek kerülnek végrehajtásra átmeneti környezetek vagy a nem csúcsidőre éles környezetbe történő gyakorolt hatásának minimalizálása érdekében.
+#### <a name="testing-through-simulations"></a>Keresztül szimulációja tesztelése
 
-Azt a közösen [BreakingPoint felhő](https://www.ixiacom.com/products/breakingpoint-cloud) hozhat létre az illesztőfelület Ha Azure-ügyfél hozhat létre a forgalom elleni DDoS-védelem engedélyezve szimulációja nyilvános végpontjai. [Töréspont felhő](https://www.ixiacom.com/products/breakingpoint-cloud) szimuláció lehetővé teszi:
+Ajánlott a módját a szolgáltatások végzett rendszeres szimulációja válaszol a támadás feltételezéseket tesztelése. Tesztelés során ellenőrzi, hogy a szolgáltatások és alkalmazások továbbra is a kívánt módon működik, és nincs a felhasználói felületet nem működőképes. Azonosítsa a technológia és a folyamat szempontból hézagok, és bele azokat a DDoS válasz stratégia. Azt javasoljuk, hogy az ilyen tesztek végrehajtása átmeneti környezet vagy a csúcsidőn kívül az éles környezetbe hatás minimalizálása érdekében.
 
-- Ellenőrizze, hogy hogyan Microsoft Azure DDoS-védelem védelmet nyújt az Azure-erőforrások DDoS-támadások
+Azt a közösen [BreakingPoint felhő](https://www.ixiacom.com/products/breakingpoint-cloud) hozhat létre egy felület, ahol Azure-ügyfél hozhat létre a forgalom elleni szimulációja nyilvános végpontok DDoS-védelem engedélyezve van. Használhatja a [BreakingPoint felhő](https://www.ixiacom.com/products/breakingpoint-cloud) a szimuláció:
 
-- Az incidensekre adott reakciók folyamat DDoS támadás optimalizálása
+- Ellenőrizze, hogy hogyan Azure DDoS-védelem megóvja az Azure-erőforrások DDoS-támadások.
 
-- A dokumentum DDoS megfelelőségi
+- Az incidensekre adott reakciók folyamat DDoS támadás optimalizálásához.
 
-- A hálózati biztonsági csoportok képzése
+- A dokumentum DDoS megfelelőségét.
 
-Számítógépes egy állandó innováció védelmet igénylő folyamatos túlélésért folyó. Azure DDoS Standard védelem egy a legkorszerűbb kínál a legkorszerűbb egyre DDoS-támadások mérséklése egy hatékony megoldás rendelkező ügyfelek számára.
+- A hálózati biztonsági csoportok betanításához.
+
+Számítógépes állandó innováció védelmet igényel. Az Azure DDoS Standard védelem egy-az-a-legkorszerűbb egyre DDoS-támadások mérséklése egy hatékony megoldás kínál.
 
 ## <a name="components-of-a-ddos-response-strategy"></a>DDoS válasz stratégia összetevők
 
-A legtöbb esetben a DDoS-támadások célja az Azure-erőforrások, nincs minimális beavatkozás szükséges egy végfelhasználói tükrözik. Továbbra is DDoS tartalmazó megoldás a szervezete incidensválaszra stratégia részeként biztosítja az üzletmenet folytonossága minimális hatással van.
+A DDoS-támadások, amely általában célozza az Azure-erőforrások felhasználó szempontból minimális beavatkozást igényelnek. Továbbra is DDoS beépítése az incidensválasz-stratégia részeként megoldás segítségével az üzletmenet folytonossága hatás minimalizálása érdekében.
 
 ### <a name="microsoft-threat-intelligence"></a>Microsoft fenyegetésfelderítési adataival
 
-A Microsoft által használt egy kiterjesztett biztonsági Közösség, amely támogatja a Microsoft online services, Microsoft-partnerek és az internetes biztonsági Közösségben kapcsolatok együttes ismerete kiterjedt fenyegetés eszközintelligencia hálózattal rendelkezik. Kritikus fontosságú infrastruktúra-szolgáltatóként a Microsoft megkapja a korai figyelmeztetéseket kapcsolatos fenyegetések, megtudta, más Microsoft online services és a Microsoft globális ügyfelei fenyegetésfelderítési adataival alap vesz igénybe. Az összes Microsoft fenyegetésfelderítési adataival van építve vissza az Azure DDoS-védelem mindegyikére.
+Microsoft kiterjedt fenyegetés eszközintelligencia hálózattal rendelkezik. Ez a hálózat használ egy kiterjesztett biztonsági Közösség, amely támogatja a Microsoft online services, Microsoft-partnerek és az internetes biztonsági Közösségben kapcsolatok együttes ismerete. 
 
-Továbbá a Microsoft Digital Crimes Unit (DCU) DDoS-támadások elleni botnetek, egy közös forrás parancs és a vezérlő sértő stratégiák hajt végre.
+Kritikus fontosságú infrastruktúra-szolgáltatóként a Microsoft megkapja a korai figyelmeztetéseket fenyegetésekkel kapcsolatos. Microsoft összegyűjti fenyegetésfelderítési adataival, az online szolgáltatások és a globális felhasználói alapja. Microsoft magában foglalja a fenyegetésfelderítési adataival mindegyikét újra üzembe a Azure DDoS-védelem termékek.
 
-### <a name="perform-a-risk-evaluation-of-your-azure-resources"></a>Hajtsa végre a kockázat kiértékelésekor az Azure-erőforrások
+A Microsoft Digital Crimes Unit (DCU) is, elleni botnetek sértő stratégiák hajt végre. Botnetek közös forrás parancs és a vezérlő DDoS-támadások.
 
-rendkívül fontos tudni, hogy egy folyamatos DDoS-támadások elleni a kockázat körét. Az ügyfelek rendszeresen kérdezze meg magukat: milyen új nyilvánosan elérhető Azure-erőforrások védelmét kell? Van-e a szolgáltatás hibáinak hibaérzékeny pontot? Hogyan szolgáltatások el lehet különíteni a támadás során továbbra is szolgáltatások elérhetővé tételére érvényes ügyfelek gyakorolt hatást? Vannak-e virtuális hálózatok, ahol DDoS védelem szabványos engedélyezni kell, de nem? A szolgáltatás aktív vannak a feladatátvételi különféle régiókban?
+### <a name="risk-evaluation-of-your-azure-resources"></a>Azure-erőforrások kockázat kiértékelésekor
+
+rendkívül fontos tudni, hogy egy folyamatos DDoS-támadások elleni a kockázat körét. Rendszeres időközönként megválaszolnia: 
+- Milyen új nyilvánosan elérhető Azure-erőforrások védelmét van szüksége?
+
+- Van-e a szolgáltatás olyan hibaérzékeny pontot? 
+
+- Hogyan szolgáltatások el lehet különíteni a támadás során továbbra is szolgáltatások elérhetővé tételére érvényes ügyfelek gyakorolt hatást?
+
+- Vannak-e virtuális hálózatok, ahol DDoS védelem szabványos engedélyezni kell, de nem? 
+
+- A szolgáltatás aktív vannak a feladatátvételi különféle régiókban?
 
 ### <a name="customer-ddos-response-team"></a>Ügyfél DDoS csoportnak
 
-DDoS válasz csapat biztosításához a támadás gyors és hatékony válasz egy fő lépés. Ügyfelek különböző ügyfelek a szervezetben, akik fog felügyeletéért megtervezése és végrehajtása meg kell határoznia. DDoS csoportnak kell lennie az Azure DDoS védelem szabványos szolgáltatás alapos ismerete, és azonosítása és a támadás összehangolása a különböző belső és külső ügyfelek, beleértve a Microsoft támogatási csoport kiküszöböléséhez apt kell lennie szükség esetén.
+DDoS válasz csapat ez válaszol a támadást, gyors és hatékony legfontosabb lépés. Azonosítsa az ügyfelek a szervezetben, akik fog felügyeletéért megtervezése és végrehajtása. A DDoS válasz csapat alaposan ismerje meg az Azure DDoS védelem szabványos szolgáltatás. Győződjön meg arról, hogy a csapat azonosítása és csökkenthető a támadás belső és külső használó ügyfelek számára, többek között a Microsoft támogatási csoport egyeztetve.
 
-A Microsoft azt javasolja, amely DDoS csoportnak tervezési és a szimuláció gyakorlatokat, beleértve a érint, a szolgáltatás rendelkezésre állása és folytonosságának megtervezése normál részeként. 
+DDoS-válasz csapata javasoljuk szimuláció gyakorlatokat használhatja a szolgáltatás rendelkezésre állása és folytonosságának megtervezése normál részeként. Gyakorlatokban mérettesztelés kell tartalmaznia.
 
-### <a name="during-an-attack"></a>A támadás során
+### <a name="alerts-during-an-attack"></a>Riasztások a támadás során
 
-Az Azure DDoS védelem szabványos fog azonosításában és kiküszöbölésében DDoS-támadások felhasználói beavatkozás nélkül. Tájékoztatást kaphat nincs egy aktív megoldás védett nyilvános IP-címhez, akkor [olyan riasztást konfigurálhat](../virtual-network/ddos-protection-manage-portal.md) a metrika a "alatt DDoS támadásokkal vagy nincs". Tekintse át a további, és létre riasztásokat a kívánt módon működjenek a más DDoS metrikáihoz tudni, hogy a skála a támadás, eldobott forgalom, stb.
+Azure DDoS védelem szabványos azonosítja, és csökkenti a DDoS-támadások felhasználói beavatkozás nélkül. Tájékoztatást kaphat nincs egy aktív megoldás védett nyilvános IP-címhez, akkor [olyan riasztást konfigurálhat](../virtual-network/ddos-protection-manage-portal.md) a metrika a **alatt DDoS támadás, vagy nem**. Ha szeretné tudni, hogy a skála a támadás, eldobott forgalom és egyéb részletek más DDoS metrikák figyelmeztetések létrehozása.
 
 #### <a name="when-to-contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft támogatási szolgálatához
 
-- Ha a DDoS-támadások során azt találja, hogy a teljesítmény, a védett erőforrás súlyosan csökken, mert, vagy az erőforrás nem érhető el.
+- A DDoS-támadások során látnia, hogy a védett erőforrás teljesítménye jelentősen csökkent, vagy az erőforrás nem érhető el.
 
-- Ha úgy gondolja, hogy a DDoS-védelem szolgáltatás nem várt módon viselkedik. DDoS-védelem szolgáltatás csak kezdeményezése megoldás, ha az alábbi feltételek teljesülése esetén:
+- Úgy gondolja, hogy a DDoS-védelem szolgáltatás nem várt módon viselkedik. 
 
-    - A metrika értékét "való DDoS megoldás TCP/TCP SZIN/UDP-házirend verziója alacsonyabb, mint a védett nyilvános IP-cím erőforrás fogadott.
+  A DDoS-védelem szolgáltatás elindul a megoldás, ha csak a metrika értékét **való DDoS megoldás TCP/TCP SZIN/UDP-házirend** alacsonyabb, mint a védett nyilvános IP-erőforrás fogadott.
 
-- Ha ismeri, kívánja irányítja a hálózati forgalom jelentősen növelheti tervezett ugrásszerű esemény rendelkezik.
+- Arra készül, egy ugrásszerű esemény, amely jelentősen növeli a hálózati forgalmat.
 
-- Ha egy szereplő rendelkezik veszélyeztetett elindíthatja a DDoS-támadások az erőforrásokon.
+- Egy szereplő rendelkezik veszélyeztetett elindíthatja a DDoS-támadások az erőforrásokon.
 
-Kritikus fontosságú üzleti érintő problémákat, hozzon létre egy súlyossági-A [támogatja a jegy](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+A támadásokkal szemben, amelyek a kritikus fontosságú üzleti hatással van, hozzon létre egy súlyossági-A [támogatja a jegy](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-### <a name="post-attack-steps"></a>POST támadás lépései
+### <a name="post-attack-steps"></a>A támadás utáni lépéseket
 
-Célszerű mindig egy futás utáni támadás után ne, és állítsa be újra a DDoS válasz stratégia, igény szerint stratégiát. Vegye figyelembe a következőkre:
+Célszerű mindig egy futás utáni támadás után ne, és szükség szerint módosítsa a DDoS válasz stratégia stratégiát. Vegye figyelembe a következőkre:
 
-- Lett nincs fennakadást a szolgáltatás vagy a végfelhasználói élmény méretezhető architektúra erőforráshiány?
+- Lett nincs fennakadást a szolgáltatás vagy a felhasználói élmény méretezhető architektúra erőforráshiány?
 
 - Mely alkalmazások vagy szolgáltatások jelentkezett a legtöbb?
 
-- Hogyan hatékony volt a DDoS válasz stratégia, és hogyan azt javítható további?
+- Hogyan hatékony volt a DDoS válasz stratégia, és hogyan fejleszthető?
 
-Ha azt gyanítja, hogy egy DDoS támadás alatt áll értesítse, míg a normál Azure támogatási csatornákon keresztül.
+Ha azt gyanítja, hogy Ön egy DDoS támadás alatt áll, az ilyen normál Azure támogatási csatornáit keresztül.
 
-## <a name="ddos-protection-reference-architectures"></a>DDoS védelem referencia architektúra
+## <a name="ddos-protection-reference-architectures"></a>DDoS-védelem referencia architektúra
 
-DDoS védelem szabványos úgy van kialakítva, [vannak telepítve, a virtuális hálózat számára.](../virtual-network/virtual-network-for-azure-services.md) Egyéb szolgáltatások esetén az alapértelmezett alapvető DDoS-védelem érvényesek. A megadott hivatkozás architektúrák az alábbiakban leírt architektúra mintákat csoportosított forgatókönyvek, szerint vannak rendezve.
+DDoS védelem szabványos úgy van kialakítva, [szolgáltatások a virtuális hálózat üzembe helyezett](../virtual-network/virtual-network-for-azure-services.md). Más szolgáltatások az alapértelmezett DDoS védelem alapszintű service vonatkozik. A következő hivatkozás architektúrák csoportosított architektúra mintákat forgatókönyvek, szerint vannak rendezve.
 
 ### <a name="virtual-machine-windowslinux-workloads"></a>Virtuális gép (Windows/Linux) munkaterhelések
 
-#### <a name="application-running-on-load-balanced-vms"></a>Alkalmazás fut a terhelés eloszlik a virtuális gépek
+#### <a name="application-running-on-load-balanced-vms"></a>Elosztott terhelésű virtuális gépeken futó alkalmazás
 
-Ez a referenciaarchitektúra bevált eljárásokat mutat be, amelyekkel a méretezhetőség és a rendelkezésre állás javítása érdekében több Windows rendszerű virtuális gép (VM) futtatható egy terheléselosztó mögötti méretezési csoportban. Ez az architektúra bármely állapot nélküli alkalmazások és szolgáltatások, például webkiszolgálót használható.
+A referencia-architektúrában több Windows virtuális gép egy terheléselosztó mögött rendelkezésre állás és méretezhetőség javítása érdekében állítsa be a skála futó bevált gyakorlatok csoportja jeleníti meg. Ez az architektúra bármely állapot nélküli alkalmazások és szolgáltatások, például webkiszolgálót használható.
 
-![](media/azure-ddos-best-practices/image9.png)
+![Az elosztott terhelésű virtuális gépeken futó alkalmazás referencia-architektúrában ábrája](media/azure-ddos-best-practices/image9.png)
 
-Ebben az architektúrában a számítási feladatok több virtuálisgép-példányon oszlanak el. Az architektúra egyetlen nyilvános IP-címet használ, és az internetes forgalom terheléselosztón keresztül jut el a virtuális gépekhez. DDoS védelem szabványos engedélyezve van az Azure (internet) terheléselosztó, amely rendelkezik a nyilvános IP-cím hozzárendelve a virtuális hálózaton.
+Ebben az architektúrában a számítási feladatok több virtuálisgép-példányon oszlanak el. Egy egyetlen nyilvános IP-címet, és internetes forgalmat is csomagként küldhető el a virtuális gépek terheléselosztók keresztül. DDoS védelem szabványos engedélyezve van az Azure (internet) terheléselosztó, amely rendelkezik a nyilvános IP-cím hozzárendelve a virtuális hálózaton.
 
-A terheléselosztó osztja el a Virtuálisgép-példányok bejövő Internet kéréseket. Virtuálisgép-méretezési készlet lehetővé teszi a bejövő vagy kimenő tolja virtuális gépek számát manuálisan vagy automatikusan előre meghatározott szabályok alapján. Ez azért fontos, ha az erőforrás DDoS támadás alatt áll. Tekintse meg a [cikk](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm), a referencia-architektúrában olvashat.
+A terheléselosztó osztja el a Virtuálisgép-példányok bejövő internet kéréseket. Virtuálisgép-méretezési csoportok lehetővé teszik a bejövő vagy kimenő tolja virtuális gépek számát manuálisan vagy automatikusan előre meghatározott szabályok alapján. Ez azért fontos, ha az erőforrás DDoS támadás alatt áll. A referencia-architektúrában további információkért lásd: [Ez a cikk](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm).
 
-#### <a name="applications-running-on-windows-n-tier"></a>Futó Windows N szintű alkalmazásokhoz
+#### <a name="application-running-on-windows-n-tier"></a>Fut a Windows N szintű alkalmazás
 
-Egy N szintű architektúra számos módon implementálható. Az ábrán egy tipikusnak mondható 3 szintű webalkalmazás látható. Ez az architektúra épül [futtassa a virtuális gépek elosztott terhelésű a méretezhetőség és a rendelkezésre állási](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm). A webes és üzleti szintek elosztott terhelésű virtuális gépeket használnak.
+Egy N szintű architektúra számos módon implementálható. Az alábbi ábrán egy tipikus háromrétegű webalkalmazás. Ez az architektúra épít, a cikk [futtassa a virtuális gépek elosztott terhelésű a méretezhetőség és a rendelkezésre állási](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm). A webes és üzleti szintek elosztott terhelésű virtuális gépeket használnak.
 
-![](media/azure-ddos-best-practices/image10.png)
+![A Windows N szintű futó alkalmazást a referencia-architektúrában ábrája](media/azure-ddos-best-practices/image10.png)
 
-A fenti architektúrában szabványos DDoS-védelem engedélyezve van a virtuális hálózaton. Minden nyilvános IP-címek a virtuális hálózat kap Layer3/Layer4 DDoS-védelem. A réteg 7 védelem Application Gateway WAF termékváltozatban kell telepíteni. Tekintse meg [ez](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/n-tier) cikkben olvashat a referencia-architektúrában.
+Ebben az architektúrában szabványos DDoS-védelem engedélyezve van a virtuális hálózaton. Minden nyilvános IP-címek a virtuális hálózat DDoS-védelem réteg 3 vagy 4 beolvasása. A réteg 7 védelem központi telepítése a WAF termékváltozatban Alkalmazásátjáró. A referencia-architektúrában további információkért lásd: [Ez a cikk](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/n-tier).
 
 #### <a name="paas-web-application"></a>A PaaS-webalkalmazás
 
-A referencia-architektúrában jeleníti meg az Azure App Service-alkalmazást futtat egy régió. Ez az architektúra látható bevált gyakorlatok a webes alkalmazás esetén állítsa be [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) és [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
-Készenléti régió feladatátvételi forgatókönyvek be van állítva.
+A referencia-architektúrában jeleníti meg az Azure App Service-alkalmazást futtat egy régió. Ez az architektúra látható használó webalkalmazás bevált gyakorlatok csoportja [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) és [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
+A készenléti régió feladatátvételi forgatókönyvek be van állítva.
 
-![](media/azure-ddos-best-practices/image11.png)
+![A referencia-architektúrában PaaS webalkalmazás ábrája](media/azure-ddos-best-practices/image11.png)
 
-A TRAFFIC Manager irányítja a bejövő kérelmek alkalmazás átjárónak a régiók egyikéhez sem. A normál működés során az Alkalmazásátjáró aktív régióban irányítja a kérelmeket. Ha az adott régióban, a Traffic Manager feladatátadás az Alkalmazásátjáró készenléti régióban.
+Az Azure Traffic Manager irányítja a bejövő kérelmek alkalmazás átjárónak a régiók egyikéhez sem. A normál működés során az aktív terület az Alkalmazásátjáró irányítja a kérelmeket. Ha az adott régióban, Traffic Manager feladatátadás Application Gateway készenléti régióban.
 
-Biztosítására, hogy a webalkalmazásnak szánt internetről minden forgalom a [alkalmazás átjáró nyilvános IP-cím](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview) a Traffic Manager keresztül. Ebben a forgatókönyvben, az app service (webalkalmazások) önmagában nem közvetlenül kívülről elérhető, és Alkalmazásátjáró védi. Javasoljuk, hogy az alkalmazás átjáró WAF SKU konfigurálása (akadályozza) réteg 7 (HTTP vagy HTTPS/webes szoftvercsatorna) támadások elleni védelem érdekében. Emellett a webalkalmazások vannak konfigurálva [fogadja el a forgalom csak az Application Gateway](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) IP-címet.
+Biztosítására, hogy az összes forgalom az internetről, a webalkalmazásnak szánt a [alkalmazás átjáró nyilvános IP-cím](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview) Traffic Manager keresztül. Ebben a forgatókönyvben, az app service (webalkalmazás) önmagában nem közvetlenül kívülről elérhető, és Alkalmazásátjáró védi. 
 
-Tekintse meg [ez](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) cikkben olvashat a referencia-architektúrában.
+Azt javasoljuk, hogy konfigurálja-e az alkalmazás átjáró WAF-Termékváltozat (akadályozza) réteg 7 (HTTP/HTTPS/WebSocket) támadások elleni védelme érdekében. Ezenkívül webalkalmazások vannak konfigurálva [csak az alkalmazás átjáró forgalom fogadására](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) IP-címet.
+
+A referencia-architektúrában kapcsolatos további információkért lásd: [Ez a cikk](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
 ### <a name="mitigation-for-non-web-paas-services"></a>A megoldás nem webes PaaS szolgáltatások
 
 #### <a name="hdinsight-on-azure"></a>Az Azure HDInsight
 
-A referencia-architektúrában jeleníti meg a DDoS védelem majd konfigurálása [HDInsight-fürt](https://docs.microsoft.com/azure/hdinsight/) az Azure-on. Ellenőrizze, hogy a HDInsight-fürthöz kapcsolódó virtuális hálózatot, és DDoS-védelem engedélyezve van a virtuális hálózatban kell.
+A referencia-architektúrában látható DDoS védelem szabványa konfigurálása egy [Azure HDInsight-fürt](https://docs.microsoft.com/azure/hdinsight/). Győződjön meg arról, hogy a HDInsight-fürthöz kapcsolódó virtuális hálózatot, és hogy DDoS-védelem engedélyezve van-e a virtuális hálózaton.
 
-![](media/azure-ddos-best-practices/image12.png)
+!["HDInsight" és "A Speciális beállítások" ablaktáblák, virtuális hálózati beállításokkal](media/azure-ddos-best-practices/image12.png)
 
-![](media/azure-ddos-best-practices/image13.png)
+![DDoS védelem kiválasztása](media/azure-ddos-best-practices/image13.png)
 
-Ebben az architektúrában a HDInsight-fürthöz az internetről érkező adatforgalmat a HDInsight átjáró terheléselosztóhoz társított nyilvános IP-cím van átirányítva. Az átjáró terheléselosztó ezután elküldi a forgalmat az átjárócsomópontokkal vagy a feldolgozó csomópontok közvetlenül. Megadott szabványos DDoS-védelem engedélyezve van a HDInsight virtuális hálózaton, az összes nyilvános IP-címek a virtuális hálózat kap Layer3/Layer4 DDoS-védelem. A fenti referencia-architektúrában N-réteg/több-Region hivatkozás architektúrák kombinálva.
+Ebben az architektúrában az internetről a HDInsight-fürthöz rendelt továbbítódik a HDInsight átjáró terheléselosztóhoz társított nyilvános IP-címhez. Az átjáró terheléselosztó ezután elküldi a forgalmat az átjárócsomópontokkal vagy a feldolgozó csomópontok közvetlenül. Standard DDoS-védelem engedélyezve van a HDInsight virtuális hálózaton, mert az összes nyilvános IP-címek a virtuális hálózat első réteg 3 vagy 4 DDoS-védelem. A referencia-architektúrában az N szintű és több területi hivatkozás architektúrák kombinálva.
 
-A referencia-architektúrában a további részletekért tekintse meg a [kiterjesztése Azure HDInsight Azure virtuális hálózat használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) dokumentációját.
+A referencia-architektúrában további információkért tekintse meg a [kiterjesztése Azure HDInsight Azure virtuális hálózat használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) dokumentációját.
 
-### <a name="azure-api-management"></a>Az Azure API management
+### <a name="azure-api-management"></a>Azure API Management
 
-A referencia-architektúrában nyilvános végpontja védelmet nyújt a [API management](../api-management/api-management-key-concepts.md) erőforrás-közzétételi API-k az ügyfél számára a szervezeten kívül. A külső virtuális hálózatot DDoS-védelem engedélyezése APIM kell telepíteni.
+A referencia-architektúrában megvédi a nyilvános végpontot a [Azure API Management](../api-management/api-management-key-concepts.md) erőforrás-közzétételi API-k az ügyfél számára a szervezeten kívül. DDoS-védelem engedélyezése külső virtuális hálózatot az API Management központi telepítését.
 
-![](media/azure-ddos-best-practices/image15.png)
+![A referencia-architektúrában az API Management ábrája](media/azure-ddos-best-practices/image15.png)
 
-A külső virtuális hálózat konfigurálása, az API Management gateway & fejlesztői portálon található, a nyilvános interneten keresztül egy nyilvános terheléselosztó. Ebben az architektúrában szabványos DDoS-védelem engedélyezve van a virtuális hálózati APIM külső virtuális hálózat. Továbbítódik az internetről a nyilvános IP-címére a APIM, amelyek Layer3/Layer4 hálózati támadások elleni védelmét. Réteg 7 HTTP/HTTPs lánctámadások elleni védelem érdekében, konfigurálhatja az alkalmazás átjárót WAF módban.
+Ha a külső virtuális hálózatot kell konfigurálni, a nyilvános interneten keresztül egy nyilvános terheléselosztó az API Management-átjáró és a fejlesztői portálon érhetők el. Ebben az architektúrában szabványos DDoS-védelem engedélyezve van a külső virtuális hálózat az API Management. Továbbítódik az internetről a nyilvános IP-címet a API-kezelés a 3. rétegbeli és 4 hálózati támadások ellen védett. Réteg 7 HTTP/HTTPS lánctámadások elleni védelem érdekében, konfigurálhatja az Alkalmazásátjáró WAF módban.
 
-A virtuális hálózaton található, telepítve van, és a DDoS védelem szabványos megmarad a további szolgáltatások listája [Itt](../virtual-network/virtual-network-for-azure-services.md). DDoS védelem szabványos csak támogatja az Azure Resource Manager erőforrásokat. *A nyilvános IP-cím a VNETEN belül injected alkalmazás Service környezetben (ASE) telepítési alapértelmezés szerint nem támogatott.* ASE környezet védelme a részletekért tekintse meg ezt a szakaszt.
+Telepítve van a virtuális hálózatban, és konfigurálhatja a DDoS védelem szabványos további szolgáltatások listáját lásd: [Ez a cikk](../virtual-network/virtual-network-for-azure-services.md). DDoS védelem szabványos támogatja csak az Azure Resource Manager-erőforrásokat. 
+
+> [!NOTE]
+> App Service Environment-környezet injected telepítés nyilvános IP-címet a virtuális hálózatban a PowerApps natív módon nem támogatott. App Service Environment-környezet ellátásáról részletekért lásd: Ebben a szakaszban.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure DDoS védelem termék oldalát](https://azure.microsoft.com/services/ddos-protection/)
+* [Az Azure DDoS-védelem termék oldalát](https://azure.microsoft.com/services/ddos-protection/)
 
-* [Az Azure DDoS védelem Blog](http://aka.ms/ddosblog)
+* [DDoS-védelem Azure blog](http://aka.ms/ddosblog)
 
-* [Az Azure DDoS-védelem dokumentációja ](../virtual-network/ddos-protection-overview.md)
+* [Az Azure DDoS-védelem dokumentációja](../virtual-network/ddos-protection-overview.md)

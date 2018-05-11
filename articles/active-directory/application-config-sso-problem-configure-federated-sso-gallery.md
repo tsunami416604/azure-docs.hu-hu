@@ -1,11 +1,11 @@
 ---
-title: "A probléma összevont egyszeri bejelentkezés az Azure AD-katalógusában alkalmazás konfigurálása |} Microsoft Docs"
-description: "Cím gyakori problémák jelentkezhetnek, ha egyetlen konfigurálása összevont bejelentkezést az alkalmazások az Azure AD Application Gallery szereplő SAML használatával"
+title: A probléma összevont egyszeri bejelentkezés az Azure AD-katalógusában alkalmazás konfigurálása |} Microsoft Docs
+description: Cím gyakori problémák jelentkezhetnek, ha egyetlen konfigurálása összevont bejelentkezést az alkalmazások az Azure AD Application Gallery szereplő SAML használatával
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 581b3c4ff7cc7b25f238602560f30280efa34edd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>A probléma összevont egyszeri bejelentkezés az Azure AD-katalógusában alkalmazás konfigurálása
 
@@ -108,4 +108,4 @@ Az Azure AD nem biztosít a metaadatok beolvasása URL-CÍMÉT. A metaadatok XML
 Megtudhatja, hogyan szabhatja testre a SAML attribútum típusú jogcímek az alkalmazás számára, lásd: [hozzárendelése az Azure Active Directory-jogcímek](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) további információt.
 
 ## <a name="next-steps"></a>További lépések
-[Alkalmazások kezelése az Azure Active Directoryval](active-directory-enable-sso-scenario.md)
+[Alkalmazások kezelése az Azure Active Directoryval](manage-apps/what-is-application-management.md)

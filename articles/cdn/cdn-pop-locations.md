@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-deasim
-ms.openlocfilehash: 3538b80b8acc239eee518db482ab14bb6f559d12
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b3138c2c3136b4bfa6c1c96e5f278bbadef6a73d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -39,7 +39,7 @@ Ez a cikk felsorolja a jelenlegi nyújtó jelenléti pontra (POP) helyét, régi
 | --- | --- | --- | --- |
 | Észak-Amerika | Toronto, Kanada<br />Querétaro, Mexico<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, Illinois, USA<br /> Dallas, TX, USA<br />Jelenti, CO, USA<br />Másik Debrecenben, CA, USA<br />Miami, FL, USA<br />New York közt, NY, USA<br />A Phoenix, AZ, USA<br />Quincy, WA, USA<br />San Antonio, TX, USA<br />Santa Clara, CA, USA<br />| Hely, mexikói<br />Puebla, mexikói<br />Querétaro, Mexico<br />Atlanta –, ám, USA<br />Boston, MA, USA<br />Chicago, Illinois, USA<br />Dallas, TX, USA<br />Jelenti, CO, USA<br />Másik Debrecenben, CA, USA<br />Miami, FL, USA<br />New York közt, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Budapesti, WA, USA<br />Washington, tartományvezérlő, USA | Kanada<br />Mexikó<br />USA |
 | Dél-Amerika | Campinas, Brazília<br />A Rio de Janeiróban, Brazília<br />Santiago, Chilei | Buenos Aires, argentin<br />A Rio de Janeiróban, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chilei<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Minden jog fenntartva<br />Lima, Peru | Brazília<br />Peru |
-| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Athén, Görögország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />Durham, UK<br />Londoni, UK<br />Manchester, UK | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Bromma, svéd<br />Stockholm, Svédország<br />Londoni, UK | Ausztria<br />Dánia<br />Franciaország<br />Németország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
+| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Athén, Görögország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />Durham, UK<br />Londoni, UK<br />Manchester, UK | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Londoni, UK | Ausztria<br />Dánia<br />Franciaország<br />Németország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
 | Afrika | Fokváros, Dél-Afrika<br />Johannesburg, Dél-Afrika | Johannesburg, Dél-Afrika | |
 | Közel-Kelet | | Muscat, Omán<br />Fujirah, Egyesült Arab emírségekbeli | Katar |
 | India | Chennai, India<br />Mumbai, India | Bangalore-i, India<br />Chennai, India<br />Delhi, India<br />Mumbai, India<br />Újdelhi, India<br /> | India |

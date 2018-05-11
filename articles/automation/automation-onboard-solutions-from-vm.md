@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f8c9cb33eb90232f5eb241add284f7ea7b64bc05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39febc947f4ab6dc406290273e5e1fc1c58a59e2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>A bevezetni frissítéskezelés, a változások követése, és a készlet megoldások egy Azure virtuális gépen
 
@@ -38,11 +38,17 @@ Nyissa meg az egyéb megoldások, és kattintson a **engedélyezése**, a napló
 > [!NOTE]
 > **Változások követése** és **készlet** ugyanahhoz a megoldáshoz, használja, ha engedélyezve van a másik engedélyezve legyen.
 
-## <a name="scope-configuration"></a>Hatókör konfigurációjának
+## <a name="scope-configuration"></a>Hatókör-konfiguráció
 
 Egyes megoldások belül a munkaterület hatókör-konfigurációt használ, amelyekre a számítógépeket, amelyek a megoldás beszerzése. A hatókör beállításait olyan egy vagy több mentett keresések, amellyel korlátozhatja a megoldás az adott számítógépekhez. A hatókör-konfigurációja, az Automation-fiók alatt eléréséhez **kapcsolódó erőforrások**, jelölje be **munkaterület** majd munkaterületén **MUNKATERÜLET adatforrások**, Válassza ki **hatókör konfigurációk**.
 
-Alapértelmezés szerint a két hatókör-konfigurációk **MicrosoftDefaultScopeConfig-változáskövetés** és **MicrosoftDefaultScopeConfig-frissítések**.
+Ha a kijelölt munkaterülethez nem rendelkezik a frissítéskezelés vagy a változások követése megoldások, még a következő hatókör konfigurációk jönnek létre:
+
+* **MicrosoftDefaultScopeConfig-változáskövetés**
+
+* **MicrosoftDefaultScopeConfig-frissítések**
+
+Ha a kijelölt munkaterülethez már rendelkezik a megoldás. A megoldás újra nem telepíti, és a hatókör beállításait nem kerül rá.
 
 Kattintson a folytatást jelző pontokra (...) a konfigurációkat, és válassza ki a **szerkesztése**. Az a **Szerkesztés hatókör konfigurációjának** lapon jelölje be **számítógép csoportok kiválasztása** megnyitásához a **számítógépcsoportok** lap. Ezen a lapon látható a mentett kereséseket hozhatók létre a hatókör beállításait.
 

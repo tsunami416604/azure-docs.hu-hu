@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 353762f33da8e5d48f6b70df3b790287eeab7ff9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Az Azure nyilvános Felhőjében elszigeteléséről
 ##  <a name="introduction"></a>Bevezetés
@@ -124,6 +124,20 @@ Ha a meghajtó tárolására használt hardver meghibásodása esetén a rendsze
 
 ## <a name="compute-isolation"></a>Számítási elkülönítési
 Microsoft Azure biztosít a különböző felhőalapú számítási szolgáltatás, amely tartalmazza az számítási példányokért széles köre és a szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek. A számítási példány és a szolgáltatás kínál az elkülönítési biztosítani az adatokat a konfigurációs rugalmasságot feláldozása nélkül, hogy az ügyfelek igény szerint több szinten.
+
+### <a name="isolated-virtual-machine-sizes"></a>Elszigetelt virtuálisgép-méretek
+Az Azure Compute kínál a virtuális gép méretét, amely a adott hardverekhez típusra, és egyetlen ügyfél számára kijelölt elszigetelt vannak.  A virtuális gép használata esetén például a megfelelőségi és szabályozási követelmények elemek munkaterhelések nagyfokú elkülönítési más felhasználóktól igénylő munkaterhelések legmegfelelőbb értékek.  Az ügyfelek is beállíthatja a további fel az erőforrások ezek elszigetelt virtuális gépek használatával [beágyazott virtuális gépek az Azure támogatási](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).
+
+Egy elkülönített mérete használata biztosítja, hogy az, hogy a virtuális gépet, hogy adott server-példány csak egy futó lesz.  Az aktuális elszigetelt virtuális gép ajánlatokat a következők:
+* Standard_E64is_v3
+* Standard_E64i_v3
+* Standard_M128ms
+* Standard_GS5
+* Standard szintű, G5
+* Standard_DS15_v2
+* Standard_D15_v2
+
+Minden elérhető elkülönített méretére vonatkozó részletesebb [Itt](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>A Hyper-V & legfelső szintű OS elkülönítési legfelső szintű VM & Vendég virtuális gépek között
 Azure compute platform gép virtualizálási alapul – tehát az összes felhasználói kód végrehajtása a Hyper-V virtuális gépen. Minden Azure csomópont (vagy a hálózati végpont) nincs olyan Hipervizorra, amely közvetlenül a hardver felett fut, és egy csomópont felosztja a változó a Vendég virtuális gépek (VM) számát.

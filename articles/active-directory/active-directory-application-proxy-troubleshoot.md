@@ -15,11 +15,11 @@ ms.date: 02/14/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 54e0ebe60981ef429fdfc97cee1b460b03261a9f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 96e7361ce66caaa653706d22f767e1a109fdacf7
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása
 Ha hiba történik, a közzétett alkalmazás eléréséhez, vagy az alkalmazás-közzététel, ellenőrizze a megjelenítéséhez, ha a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -88,7 +88,7 @@ Ha egy hiba vagy probléma az Azure AD-alkalmazásproxy, amely nem szerepel az h
 
 ## <a name="see-also"></a>Lásd még
 * [Az Azure Active Directory alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
-* [Alkalmazások közzététele az alkalmazásproxy](active-directory-application-proxy-publish.md)
+* [Alkalmazások közzététele az alkalmazásproxy](application-proxy-publish-azure-portal.md)
 * [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)
 * [Feltételes hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)
 

@@ -1,24 +1,24 @@
 ---
-title: "A CHAP konfigurálása a StorSimple 8000 series eszköz |} Microsoft Docs"
-description: "A StorSimple eszközön a Challenge Handshake Authentication Protocol (CHAP) beállításának módját ismerteti."
+title: A CHAP konfigurálása a StorSimple 8000 series eszköz |} Microsoft Docs
+description: A StorSimple eszközön a Challenge Handshake Authentication Protocol (CHAP) beállításának módját ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 61e0877187759d76b6f7efcef0a5ed8bec8500fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>A CHAP konfigurálása a StorSimple eszköz
 
@@ -77,8 +77,8 @@ Egyirányú hitelesítést a tároló hitelesíti a kezdeményező. Ez a hiteles
 4. Az a **speciális beállítások** párbeszédpanel:
    
    1. Válassza ki a **CHAP engedélyezése bejelentkezés** jelölőnégyzetet.
-   2. Az a **neve** mezőben adja meg a felhasználónevet, a CHAP-kezdeményező a klasszikus portálon megadott.
-   3. Az a **cél titkos** mezőbe a jelszót a CHAP-kezdeményező a klasszikus portálon megadott.
+   2. Az a **neve** mezőben adja meg a felhasználónevet, a CHAP-kezdeményező az Azure portálon megadott.
+   3. Az a **cél titkos** mezőbe a jelszót a CHAP-kezdeményező az Azure portálon megadott.
    4. Kattintson az **OK** gombra.
       
        ![Általános speciális beállítások](./media/storsimple-configure-chap/IC740946.png)
@@ -131,8 +131,8 @@ Kétirányú hitelesítést a tároló hitelesíti a kezdeményező, és ezután
 8. Az a **speciális tulajdonságok** párbeszédpanel:
    
    1. Válassza ki a **CHAP engedélyezése bejelentkezés** jelölőnégyzetet.
-   2. Az a **neve** mezőben adja meg a felhasználónevet, a CHAP-kezdeményező a klasszikus portálon megadott.
-   3. Az a **cél titkos** mezőbe a jelszót a CHAP-kezdeményező a klasszikus portálon megadott.
+   2. Az a **neve** mezőben adja meg a felhasználónevet, a CHAP-kezdeményező az Azure portálon megadott.
+   3. Az a **cél titkos** mezőbe a jelszót a CHAP-kezdeményező az Azure portálon megadott.
    4. Válassza ki a **kölcsönös hitelesítés végrehajtása** jelölőnégyzetet.
       
        ![Speciális beállítások kölcsönös hitelesítés](./media/storsimple-configure-chap/IC740950.png)
@@ -166,7 +166,7 @@ Azt, hogy a CHAP használja a következő lépések végrehajtásával ellenőri
    
     ![Kedvenc cél részletei](./media/storsimple-configure-chap/IC740952.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ [StorSimple biztonsági](storsimple-8000-security.md).
 * További információ [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).

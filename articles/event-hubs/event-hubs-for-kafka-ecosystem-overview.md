@@ -9,11 +9,11 @@ ms.service: event-hubs
 ms.workload: na
 ms.date: 05/07/2018
 ms.author: darosa
-ms.openlocfilehash: 72a8dc074cbc0b1e34cbce91c14085124716b44b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 40805c27e7e2eaef1932c967af2d291f67b4192d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-hubs-for-kafka-ecosystems"></a>Az Event Hubs a Kafka ökoszisztéma
 
@@ -65,8 +65,8 @@ A nyilvános előzetes verzióhoz az Event hubs Kafka ökoszisztéma integráci�
 
 Ez a cikk előírt Event Hubs bemutatása Kafka ökoszisztéma. További tudnivalókért tekintse meg a következőket:
 
-* [Kafka létrehozása engedélyezve van az Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Az Event Hubsban adatfolyam a Kafka alkalmazásokból](event-hubs-what-is-event-hubs.md)
+* [Kafka létrehozása engedélyezve van az Event Hubs](event-hubs-create-kafka-enabled.md)
+* [Az Event Hubsban adatfolyam a Kafka alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 * Bevezetés az [Event Hubs használatába oktatóanyag](event-hubs-dotnet-standard-getstarted-send.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 

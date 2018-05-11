@@ -9,11 +9,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 23430ab89c739f504d3c4ed25149c71b68a8c37e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 1b7926dace37803d26ee2dd54a3eeebf37edbab2
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure Blob storage Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -135,7 +135,7 @@ Adatok másolása a Blob storage érkező vagy oda irányuló, az adatkészlet t
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adathalmaz értékre kell állítani **AzureBlob**. |Igen |
 | folderPath | A tároló és a blob-tároló mappa elérési útja. Helyettesítő karakter szűrő nem támogatott. Példa: myblobcontainer/myblobfolder /. |Igen |
-| fileName | **Név vagy helyettesítő karakter szűrő** az alatt a megadott "folderPath" blob(s). Ha nem adja meg egy értéket ehhez a tulajdonsághoz a DataSet adatkészlet mutat, a mappában található összes BLOB. <br/><br/>Szűrő, az engedélyezett a helyettesítő karaktereket: `*` (több karaktert) és `?` (egyetlen karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészlet és **preserveHierarchy** nincs meghatározva a tevékenység a fogadó, a másolási tevékenység során automatikusan létrehozza a blob neve a következő mintát: `Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`. Példa: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nem |
+| fileName | **Név vagy helyettesítő karakter szűrő** az alatt a megadott "folderPath" blob(s). Ha nem adja meg egy értéket ehhez a tulajdonsághoz a DataSet adatkészlet mutat, a mappában található összes BLOB. <br/><br/>Szűrő, az engedélyezett a helyettesítő karaktereket: `*` (több karaktert) és `?` (egyetlen karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használjon `^` -e a tényleges fájlnév helyettesítő vagy a escape karaktere belül karaktert.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészlet és **preserveHierarchy** nincs meghatározva a tevékenység a fogadó, a másolási tevékenység során automatikusan létrehozza a blob neve a következő mintát: "*adatok. [ a tevékenység futtatásához azonosítóját GUID]. [GUID Ha FlattenHierarchy]. [Ha konfigurálva formátum]. [tömörítési konfiguráltságát]* ". Példa: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nem |
 | Formátumban | Ha át kívánja másolni a fájlokat, a fájlalapú tárolók (bináris másolás) között van, hagyja ki a Formátum szakasz mind a bemeneti és kimeneti adatkészlet-definíciók.<br/><br/>Szeretne elemezni, vagy egy adott formátumú fájlok létrehozása, ha a következő fájl formátuma típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. Állítsa be a **típus** tulajdonság alapján **formátum** számára a következő értékek egyike. További információkért lásd: a [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format), [az Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszok. |Nem (csak a bináris másolásának esetéhez) |
 | Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. További információkért lásd: [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők **Optimal** és **leggyorsabb**. |Nem |
 

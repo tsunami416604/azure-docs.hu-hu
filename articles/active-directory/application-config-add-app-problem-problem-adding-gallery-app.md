@@ -1,11 +1,11 @@
 ---
-title: "A probléma az Azure AD-katalógusában alkalmazás hozzáadása |} Microsoft Docs"
-description: "A gyakori problémák személyek arcfelismerési áttekinteni hozzáadása az Azure AD-katalógusában alkalmazások és azok megoldását teendők"
+title: A probléma az Azure AD-katalógusában alkalmazás hozzáadása |} Microsoft Docs
+description: A gyakori problémák személyek arcfelismerési áttekinteni hozzáadása az Azure AD-katalógusában alkalmazások és azok megoldását teendők
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 79713cd343e1b876cd7a1b6653bbe00b43272a55
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5cb43976c17bfd46d1f16f0bdaff1c164bdc0fb6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>A probléma az Azure AD-katalógusában alkalmazás hozzáadása
 
-Ez a cikk segítenek megérteni a gyakori problémák személyek oldallal, Azure AD-katalógusában alkalmazások és azok megoldását teendők hozzáadásakor.
+Ez a cikk segít megérteni a gyakori problémák személyek felületére, Azure AD-katalógusában alkalmazások és azok megoldását teendők hozzáadásakor.
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>A "Hozzáadás" gombra kattintáskor és az alkalmazás hosszú időt vett igénybe jelenik meg
 
-Bizonyos körülmények percig is eltarthat, 1 – 2 (és egyes esetekben hosszabb) az alkalmazás számára, hogy a címtárban való hozzáadását követően jelennek meg. Ez nem a normál várt teljesítményét, az alkalmazás hozzáadása folyamatban van a kattintva megtekintheti a **értesítések** (a harang) ikonra a képernyő jobb felső sarkában a [Azure Portal](https://portal.azure.com/) , és keres egy **folyamatban lévő** vagy **befejezve** feliratú értesítési **alkalmazás létrehozása.**
+Bizonyos körülmények percig is eltarthat, 1 – 2 (és egyes esetekben hosszabb) az alkalmazás számára, hogy a címtárban való hozzáadását követően jelennek meg. Ez nem a normál várt teljesítményét, az alkalmazás hozzáadása folyamatban van a kattintva megtekintheti a **értesítések** (a harang) ikonra a képernyő jobb felső sarkában a [Azure-portálon](https://portal.azure.com/) és keresése az egy **folyamatban lévő** vagy **befejezve** feliratú értesítési **alkalmazás létrehozása.**
 
-Ha az alkalmazás soha nem adtak hozzá vagy hibát észlel a gombra kattintva a **Hozzáadás** gombra kattint, megjelenik egy **értesítési** a egy **hiba** állapotát. További információk, vagy egy támogatási engingeer megosztása a hibával kapcsolatos további adatokra van szüksége, ha a hibával kapcsolatos további információkat a lépéseket követve megtekintheti a [a portál értesítései részleteinek megtekintése](#how-to-see-the-details-of-a-portal-notification) szakasz.
+Ha az alkalmazás soha nem adtak hozzá vagy hibát észlel a gombra kattintva a **Hozzáadás** gombra kattint, megjelenik egy **értesítési** a egy **hiba** állapotát. További információk, vagy ossza meg a támogatási szakértőhöz a hibával kapcsolatos további adatokra van szüksége, ha a hibával kapcsolatos további információkat a lépéseket követve megtekintheti a [a portál értesítései részleteinek megtekintése](#how-to-see-the-details-of-a-portal-notification) szakasz.
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>A "Hozzáadás" gombra kattintáskor és az alkalmazás nem jelenik meg
 
-Egyes esetekben átmeneti hibái miatt hálózati problémák, vagy egy hiba hozzáadása egy kérelem sikertelen lesz. Beállíthatja, hogy ez akkor fordul elő, amikor kattint a **értesítések** (a harang) ikonra a képernyő jobb felső sarkában az Azure portálon, és a piros (!) ikon mellett látható a **alkalmazás létrehozása** értesítést. Ez azt jelzi, hogy hiba történt az alkalmazás létrehozásakor.
+Egyes esetekben átmeneti hibái miatt hálózati problémák, vagy egy hiba hozzáadása egy kérelem sikertelen lesz. Beállíthatja, hogy ez akkor fordul elő, amikor kattint a **értesítések** (a harang) ikonra a képernyő jobb felső sarkában az Azure-portálon, és a piros (!) ikon mellett látható a **alkalmazás létrehozása** értesítést. Ez azt jelzi, hogy hiba történt az alkalmazás létrehozásakor.
 
-Ha hibát észlel a gombra kattintva a **Hozzáadás** gombra kattint, megjelenik egy **értesítési** a egy **hiba** állapotát. További információk, vagy egy támogatási engingeer megosztása a hibával kapcsolatos további adatokra van szüksége, ha a hibával kapcsolatos további információkat a lépéseket követve megtekintheti a [a portál értesítései részleteinek megtekintése](#how-to-see-the-details-of-a-portal-notification) szakasz.
+Ha hibát észlel a gombra kattintva a **Hozzáadás** gombra kattint, megjelenik egy **értesítési** a egy **hiba** állapotát. További információk, vagy ossza meg a támogatási szakértőhöz a hibával kapcsolatos további adatokra van szüksége, ha a hibával kapcsolatos további információkat a lépéseket követve megtekintheti a [a portál értesítései részleteinek megtekintése](#how-to-see-the-details-of-a-portal-notification) szakasz.
 
  ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nem tudom, ha felvett, az alkalmazás beállítása
 
@@ -54,9 +54,7 @@ A portál értesítései részleteit láthatja az alábbi lépéseket követve:
     >
     >
 
-3.  A Megnyitás a **értesítési részletek** panelen.
-
-4.  Ez a témakör a problémával kapcsolatos további részletekért megértéséhez.
+4.  Olvassa el a **értesítési részletek** tudni, hogy a probléma további részleteit.
 
 5.  Ha további segítségre van, a ezek az információk megosztása a támogatási szakember vagy a csoport segítség a probléma megoldásában.
 
@@ -68,7 +66,7 @@ Nagyon fontos, hogy megosztott **alább felsorolt összes részletes** , ha seg�
 
 ## <a name="notification-details-explained"></a>Értesítési részletek alapján
 
-Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy elemeket, és azok példákat.
+Tekintse meg az értesítések további információt az alábbi leírásokat.
 
 ### <a name="essential-notification-items"></a>Alapvető értesítési elemek
 
@@ -94,15 +92,15 @@ Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy el
 
 -   **Belső tranzakció azonosítója** – belső azonosítója a Microsoft segítségével, a rendszer keresse meg a hiba
 
-    -   Példa – **71a2f329-ca29-402f-aa72-bc00a7aca603**
+    -   Example – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
 -   **Egyszerű felhasználónév** – a műveletet végző felhasználó
 
-    -   – Példa**tperkins@f128.info**
+    -   – Példa **tperkins@f128.info**
 
 -   **A bérlői azonosító** – az egyedi azonosító a bérlő által, hogy a művelet a felhasználó tagja volt.
 
-    -   Példa – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+    -   Example – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
 -   **Felhasználói objektum azonosítója** – a művelet a felhasználó egyedi azonosítója
 
@@ -126,9 +124,10 @@ Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy el
 
     -   Példa – **belső URL-cím "http://bing.com/" érvénytelen, mert már használatban van**
 
--   **Másolja át a hiba** – kattintson a **másolás ikon** jobb oldalán a **hiba másolása** szövegmező megosztani a támogatási szolgálathoz vagy a termék csoport mérnöke értesítés részleteinek másolása
+-   **Másolja át a hiba** – kattintson a **másolás ikon** jobb oldalán a **hiba másolása** szövegmező megosztani az egy támogatási vagy termék csoport értesítés részleteinek másolása 
+-   a visszafejtés
 
-    -   Példa```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    -   Példa ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-## <a name="next-steps"></a>Következő lépések
-[Alkalmazások kezelése az Azure Active Directoryban](active-directory-enable-sso-scenario.md)
+## <a name="next-steps"></a>További lépések
+[Alkalmazások kezelése az Azure Active Directoryval](manage-apps/what-is-application-management.md)

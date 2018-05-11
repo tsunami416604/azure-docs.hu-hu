@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 512f9e22d01e3bdb90210402aaf123ac6326759a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0f38d05dc720dd596c81a51abf7040ac062e8158
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos Adatbázisba hangolható konzisztencia szintek
 Azure Cosmos-adatbázis úgy van kialakítva egészen az alapoktól fel a globális terjesztési szem előtt az összes adatmodell. Előre jelezhető késés garanciák és több jól meghatározott laza konzisztencia modellek tervezték. Jelenleg az Azure Cosmos DB biztosít öt konzisztenciaszintek: erős, kötött elavulás, munkamenet, egységes előtag, és végleges. Kötött elavulás, munkamenet, egységes előtag és végleges biztosan néven "laza konzisztencia modellek" azok adjon meg kevesebb konzisztencia erős, mint amely a legtöbb rendelkezésre állású egységes modellje. 
@@ -44,7 +44,7 @@ Az alábbi táblázat azt illusztrálja, hogy melyik konzisztenciaszint milyen g
 | Konzisztenciaszint | Garanciák |
 | --- | --- |
 | Erős | Linearizability. Olvasási garantáltan a legfrissebb elemet adja vissza.|
-| Kötött elavulás | Konzisztens előtag. Az olvasások k verzióval vagy t időközzel követik az írásokat |
+| Kötött elavulás | Konzisztens előtag. Olvasási késés nagyobb, mint a k-előtagok vagy t időköz írási műveletek |
 | Munkamenet   | Konzisztens előtag. Monoton olvasások, monoton írások, írás utáni visszaolvasás, beolvasás utáni írás |
 | Konzisztens előtag | A visszaadott frissítések között az összes frissítés néhány egymást követő verziója szerepel, mindig megfelelő sorrendben |
 | Végleges  | Nem sorrendben történő olvasások |
@@ -121,7 +121,7 @@ Alapértelmezés szerint a felhasználó által definiált erőforrások a leké
 | --- | --- | --- |
 | A CONSISTENT (alapértelmezett) |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Válassza ki az erős, kötött elavulás, munkamenet, vagy végleges |
 | Lassú |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Végleges |
-| Nincs |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Nem alkalmazható |
+| None |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Nem alkalmazható |
 
 Mint az olvasási kéréseket csökkenthető a konzisztenciaszint minden API-ban meghatározott lekérdezési kérelem.
 

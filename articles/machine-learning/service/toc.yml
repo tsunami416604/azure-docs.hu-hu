@@ -197,8 +197,6 @@
           href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
         - name: Adatelőkészítés-végrehajtási API
           href: ../desktop-workbench/data-prep-python-execution-api.md
-        - name: Adatok előkészítésének operacionalizálása
-          href: ../desktop-workbench/data-prep-operationalization.md
     - name: Kísérletezés
       items:
         - name: Kísérletezési szolgáltatás konfigurációja

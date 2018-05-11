@@ -5,4 +5,4 @@ MS.Service: azure-házirend ms.topic: közé tartoznak a ms.date: 04/24/2018 ms.
 ---
 
 >[!Note] 
-> Ez a cikk ismerteti a személyes adatok törlése az eszközről lépéseit, és a GDPR a kötelezettségeit támogatásához használható. Ha további általános információt GDPR van szüksége, tekintse meg a [GDPR szakasz a szolgáltatás megbízható portál](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> Ez a cikk ismerteti a személyes adatok törlése az eszközről, vagy a szolgáltatás lépéseit, és a GDPR a kötelezettségeit támogatásához használható. Ha további általános információt GDPR van szüksége, tekintse meg a [GDPR szakasz a szolgáltatás megbízható portál](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

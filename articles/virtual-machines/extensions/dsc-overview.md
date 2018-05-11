@@ -16,8 +16,8 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: 356356288823c86c77e46fdfba2cf81a7ef11e0d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 60560a4a656d0ad5df15208261ab8462f4271ec5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
@@ -59,7 +59,7 @@ A WMF telepítése újraindítást igényel. Az újraindítás után a bővítm�
 
 ### <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
-Az Azure DSC-bővítményt tartalmaz egy alapértelmezett konfigurációs parancsfájlt, amely rendelkezik tekinthető használni bevezetésében, egy virtuális Gépet az Azure Automation DSC szolgáltatásra. A parancsprogram paramétereinek összhangban legyenek a konfigurálható tulajdonságainak [helyi Configuration Manager](/powershell/dsc/metaconfig). A parancsfájl paramétereit, lásd: [konfigurációs parancsfájl alapértelmezett](extensions-dsc-template.md#default-configuration-script) a [célállapot-konfiguráció bővítmény Azure Resource Manager-sablonok](extensions-dsc-template.md). A teljes parancsfájl, tekintse meg a [GitHub-sablon Azure gyors üzembe helyezés](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Az Azure DSC-bővítményt tartalmaz egy alapértelmezett konfigurációs parancsfájlt, amely rendelkezik tekinthető használni bevezetésében, egy virtuális Gépet az Azure Automation DSC szolgáltatásra. A parancsprogram paramétereinek összhangban legyenek a konfigurálható tulajdonságainak [helyi Configuration Manager](/powershell/dsc/metaconfig). A parancsfájl paramétereit, lásd: [konfigurációs parancsfájl alapértelmezett](dsc-template.md#default-configuration-script) a [célállapot-konfiguráció bővítmény Azure Resource Manager-sablonok](dsc-template.md). A teljes parancsfájl, tekintse meg a [GitHub-sablon Azure gyors üzembe helyezés](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>A DSC-bővítményt a Resource Manager-sablonok
 
@@ -155,6 +155,6 @@ A bővítmény naplók a következő helyen találhatók: `C:\WindowsAzure\Logs\
 ## <a name="next-steps"></a>További lépések
 
 - A PowerShell DSC kapcsolatos további információkért lásd a [PowerShell dokumentációs központban](/powershell/dsc/overview).
-- Vizsgálja meg a [Resource Manager-sablon a DSC-bővítmény](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Vizsgálja meg a [Resource Manager-sablon a DSC-bővítmény](dsc-template.md).
 - A PowerShell DSC használatával felügyelhető további funkciókat, és további DSC-erőforrásokat, keresse meg a [PowerShell-galériában](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- További információk a konfigurációk a bizalmas paraméterek átadása: [biztonságosan a DSC-bővítmény kezelő a hitelesítő adatok kezelése](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- További információk a konfigurációk a bizalmas paraméterek átadása: [biztonságosan a DSC-bővítmény kezelő a hitelesítő adatok kezelése](dsc-credentials.md).

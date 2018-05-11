@@ -3,29 +3,30 @@ title: Runbook-kimenet és üzenetek az Azure Automationben
 description: Hogyan hozhat létre, és kimeneti és a hiba az Azure Automation runbookjai érkező üzenetek Desribes.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d4931c710bebc5e6c3ee23fb58e1432bb86da4a5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b5eaed6c25e3d8ccc4c4577492398ef6cd741b35
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 Azure Automation-forgatókönyv a legtöbb van valamilyen kimenetet például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. A Windows PowerShell szintén [több adatfolyam](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) kimenetként egy parancsfájl vagy a munkafolyamat számára. Az összes ezekbe az adatfolyamokba eltérő módon működik az Azure Automation, és ajánlott eljárások használata minden egyes runbook létrehozásakor kell.
 
 A következő táblázat röviden az adatfolyamokat, és az Azure-portálon viselkedésük mind a közzétett runbookok futtatásakor, és ha [runbook tesztelése](automation-testing-runbook.md). További részleteket az egyes adatfolyamokkal az ezt követő szakaszok szolgálnak.
 
-| Adatfolyam | Leírás | Közzétéve | Tesztelés |
+| Stream | Leírás | Közzétéve | Tesztelés |
 |:--- |:--- |:--- |:--- |
 | Kimenet |Másik runbookok számára készült objektum. |A feladatelőzmények írni. |Megjelennek a Tesztkimenet ablaktáblán. |
 | Figyelmeztetés |A felhasználónak szóló figyelmeztető üzenetet. |A feladatelőzmények írni. |Megjelennek a Tesztkimenet ablaktáblán. |
 | Hiba |A felhasználónak szóló hibaüzenet. A kivételek a runbook továbbra is fut egy hibaüzenet megjelenésekor alapértelmezés szerint. |A feladatelőzmények írni. |Megjelennek a Tesztkimenet ablaktáblán. |
 | Részletes |Általános vagy a hibakeresési információk üzeneteket. |Csak akkor, ha a runbook be van kapcsolva a részletes naplózást, szerepel a feladatelőzményekben. |Csak akkor, ha a $VerbosePreference folytatja a runbook értéke megjelenik a Tesztkimenet ablaktáblán. |
-| Állapot |Automatikusan létrehozott előtt és után a runbook minden tevékenysége rögzíti. A runbook ne próbáljon létrehozni a saját állapotrekordjait, mert egy interaktív felhasználó szolgálnak. |Csak akkor, ha a runbook be van kapcsolva a folyamatban lévő naplózási szerepel a feladatelőzményekben. |Nem jelennek meg a Tesztkimenet ablaktáblán. |
+| Előrehaladás |Automatikusan létrehozott előtt és után a runbook minden tevékenysége rögzíti. A runbook ne próbáljon létrehozni a saját állapotrekordjait, mert egy interaktív felhasználó szolgálnak. |Csak akkor, ha a runbook be van kapcsolva a folyamatban lévő naplózási szerepel a feladatelőzményekben. |Nem jelennek meg a Tesztkimenet ablaktáblán. |
 | Hibakeresés |Egy interaktív felhasználó számára készült üzenetek. Nem használható a runbookok. |Nem szerepel a feladatelőzményekben. |Nem szerepel a Tesztkimenet ablaktáblán. |
 
 ## <a name="output-stream"></a>Kimeneti adatfolyam

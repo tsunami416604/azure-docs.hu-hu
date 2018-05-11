@@ -3,16 +3,17 @@ title: Az Azure Automation forgatókönyv- és minták
 description: Forgatókönyveit és moduljait a Microsoft és a Közösség érhetők el, telepítése és használata az Azure Automation-környezetben.  Ez a cikk ismerteti, hogyan férhet hozzá ezekhez az erőforrásokhoz, és a runbookok a gyűjteményébe hozzájárulás.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: fe0e38e384f9f3d40bc6f7556cdb5e6dee9b4395
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a33bc9ea1750d9db34c0fad678118dc81f294c61
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Az Azure Automation forgatókönyv- és minták
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, különféle forgatókönyvekhez, amik már Microsoft és a Közösség által készített végezheti el.  Használja a következő használati helyzetekben módosítás nélkül, vagy használhatja őket a kiindulási pontként, és szerkesztheti azokat az adott igények szerint.
@@ -52,7 +53,7 @@ A Microsoft javasolja, hogy a runbookok hozzáadni a Runbook gyűjteménye, amel
 * A feltöltésének megjelennek a forgatókönyvek eredmények, a felhasználó azonosítására a funkciók a runbook részletes információkat kell biztosítania.
 * A feltöltés egy-három a következő címkék kell hozzárendelni.  A runbook, a varázsló a a kategóriák, amelyek megfelelnek a címkék szerepel.  A varázsló a listában nem szereplő címkéket figyelmen kívül hagyja. A címke nem adja meg, ha a runbook szerepel a kategóriában.
   
-  * Biztonsági mentés
+  * Backup
   * Kapacitáskezelés
   * Változáskezelés
   * Megfelelőség
@@ -76,7 +77,7 @@ PowerShell-modul a runbookokban használható parancsmagokat tartalmaznak, és a
     ![A modul gyűjteménye](media/automation-runbook-gallery/modules-blade.png) <br>
 5. Az a **Tallózás gyűjtemény** lapon úgy keresheti meg a következő mezőket:
    
-   * A modul neve
+   * Modulnév
    * Címkék
    * Szerző
    * A parancsmag/DSC-erőforrás neve

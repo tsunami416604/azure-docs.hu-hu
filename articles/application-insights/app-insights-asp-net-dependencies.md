@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Application Insights nyomkövetési függőségi |} Microsoft Docs"
-description: "Az Application Insights segítségével elemezheti a használati adatokat, a rendelkezésre állást és a teljesítményt a helyszíni vagy Microsoft Azure webalkalmazásán."
+title: Az Azure Application Insights nyomkövetési függőségi |} Microsoft Docs
+description: Az Application Insights segítségével elemezheti a használati adatokat, a rendelkezésre állást és a teljesítményt a helyszíni vagy Microsoft Azure webalkalmazásán.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 060f1c9d2c74ed45e8077ec99503a1d7b885d325
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Az Application Insights beállítása: függőségi nyomon követése
 A *függőségi* az alkalmazás által külső összetevője. Általában le egy HTTP, vagy egy adatbázist vagy egy fájlrendszer nevű szolgáltatás. [Az Application Insights](app-insights-overview.md) méri, hogy az alkalmazás meddig függőségek, és milyen gyakran függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívások, és összekapcsolhatja őket a kéréseket, és kivételeket.
@@ -43,7 +43,7 @@ Részleges függőségi szolgáltatás által gyűjtött információk automatik
 
 | Platform | Telepítés |
 | --- | --- |
-| IIS Server |Vagy [Állapotmonitor telepítése a kiszolgálón](app-insights-monitor-performance-live-website-now.md) vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](http://go.microsoft.com/fwlink/?LinkId=528259) és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
+| IIS-kiszolgálón |Vagy [Állapotmonitor telepítése a kiszolgálón](app-insights-monitor-performance-live-website-now.md) vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](http://go.microsoft.com/fwlink/?LinkId=528259) és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
 | Azure Web App |A webes alkalmazás Vezérlőpult [nyissa meg az Application Insights panelt a webes alkalmazás Vezérlőpult](app-insights-azure-web-apps.md) , és válassza a telepítés, ha a rendszer kéri. |
 | Azure Cloud Service |[Használjon indítási tevékenységhez](app-insights-cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
@@ -83,7 +83,7 @@ Kattintson az összegző diagram vagy a tábla elemek hívásokat a nyers előfo
 ## <a name="ajax-calls"></a>AJAX-hívások
 A böngészők megjelenik az AJAX-hívások időtartama és sikertelen arányát [JavaScript a weblapok](app-insights-javascript.md). Szerint függőségeinek megtekinthető.
 
-## <a name="diagnosis"></a>Lassú kérelmek diagnosztizálására
+## <a name="diagnosis"></a> Lassú kérelmek diagnosztizálására
 Minden egyes kérelem esemény társítva a függőségi hívások esetében, kivételeket és eseményeket, amelyek nyomon követi az alkalmazás a kérelem feldolgozása közben. Így bizonyos kérelmek rosszul hajtja végre, ha azt is megtudhatja, hogy van-e lassú válaszainak függőség miatt.
 
 Bemutatjuk, például, hogy keresztül.
@@ -122,7 +122,7 @@ Más esetben nem függőségi hívás különösen hosszú van. De idősor néze
 
 Nem tudja, ahol a idő kerül? A [Application Insights Profilkészítő](app-insights-profiler.md) nyomkövetések HTTP meghívja az élő helyre, és megjeleníti a funkciókról a kódban a leghosszabb időt vett.
 
-## <a name="failed-requests"></a>Sikertelen kérések
+## <a name="failed-requests"></a>Sikertelen kérelmek
 Lehet, hogy a sikertelen kérelmek is társítva függőségek hívásainak sikertelen. Ebben az esetben azt átkattintással is nyomon követheti a problémát.
 
 ![Kattintson a sikertelen kérelmek diagram](./media/app-insights-asp-net-dependencies/06-fail.png)
@@ -200,9 +200,12 @@ Ha azt szeretné, hogy kikapcsolja a szabványos függőségi követési modul, 
 
 *Nem jelenik meg a teljes SQL-lekérdezésben.*
 
-* Az SDK legújabb verziójára frissítse. Ha a .NET verziószáma kisebb, mint 4.6:
-  * IIS-állomás: telepítése [Application Insights Agent](app-insights-monitor-performance-live-website-now.md) a gazdagép-kiszolgálón.
-  * Azure-webalkalmazásban: Nyissa meg az Application Insights a webes alkalmazás Vezérlőpult fülre, és telepítse az Application insights szolgáltatással.
+* Frissítse az Application Insights SDK legújabb stabil verzióját.
+
+ Ha a .NET verziószáma kisebb, mint 4.6:
+
+* IIS-állomás: telepítése [Application Insights Agent](app-insights-monitor-performance-live-website-now.md) a gazdagép-kiszolgálón.
+* Azure-webalkalmazásban: Nyissa meg az Application Insights a webes alkalmazás Vezérlőpult fülre, és telepítse az Application insights szolgáltatással.
 
 ## <a name="video"></a>Videó
 

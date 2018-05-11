@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: d663756c52a23096888b9ee568fea23163d33aa9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3d9f9cd835056b61ee72ddde5add285f47665ac1
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Az IntelliJ Azure eszköztára használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -86,7 +86,7 @@ Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználóné
    > ![az IntelliJ Tártallózó](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
 
    
-3. Láthatja, hogy a társított fürt **HDInsight** csomópont, ha a bemeneti adatokat megfelelőek. Most is elküldhetik a csatolt fürthöz kérelmet.
+3. Láthatja, hogy a társított fürt **HDInsight** csomópont, ha a bemeneti adatok jobb. Most is elküldhetik a csatolt fürthöz kérelmet.
 
    ![csatolt fürt](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
 
@@ -283,11 +283,15 @@ Ezek a hibák akkor fordulhat elő, mert a halommemória mérete nem elég nagy 
 ![Beállítások hozzáadása a "Virtuális gép beállításai" mezőben az intellij-t](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>GYIK
-Azure Data Lake Store kérelmet elküldéséhez válassza **interaktív** mód az Azure bejelentkezési folyamat során. Ha **automatikus** mód, hibaüzenetet kaphat.
+Amikor a fürt hivatkozásra, akkor kérem, hogy adja meg a tároló hitelesítő adatai.
 
-![interaktív bejelentkezés](./media/apache-spark-intellij-tool-plugin/interative-signin.png)
+![Fürt hivatkozásra, adja meg a tároló hitelesítő adatok](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
 
-Most azt feloldotta azt. Az Azure Data Lake fürt elküldeni az alkalmazás egyik bejelentkezési módszer kiválasztása
+A feladatok küldéséhez két módja van. Ha tárolási hitelesítő adat áll rendelkezésre, kötegelt módban használandó a feladat elküldéséhez. Más interaktív módban lesz érvényben. Ha a fürt foglalt, kaphat a hiba alább látható.
+
+![Az Intellij hibaüzenet Ha fürt foglalt](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
+
+![Az Intellij hibaüzenet Ha fürt foglalt](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback-and-known-issues"></a>Visszajelzés és ismert problémák
 Spark kimenetek közvetlenül megtekintése jelenleg nem támogatott.
