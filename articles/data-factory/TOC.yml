@@ -406,19 +406,19 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: További források
   items:
-    - name: GYIK
-      href: frequently-asked-questions.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=analytics'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
-    - name: Stack Overflow
+    - name: Kérdés feltevése – MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
+    - name: Kérdés feltevése – Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Szolgáltatás igénylése
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: Régiónkénti elérhetőség
-      href: 'https://azure.microsoft.com/regions/services/'
+    - name: GYIK
+      href: frequently-asked-questions.md
+    - name: Ütemterv
+      href: 'https://azure.microsoft.com/en-us/roadmap/?tag=data-factory'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
+    - name: Rendelkezésre állás régiónként
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Támogatási lehetőségek
       href: 'https://azure.microsoft.com/support/options/'

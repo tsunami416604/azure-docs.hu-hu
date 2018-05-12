@@ -62,34 +62,36 @@
               href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop'
             - name: Xamarin
               href: 'https://github.com/Azure-Samples/active-directory-b2c-xamarin-native'
-        - name: Webalkalmazások
-          items:
-            - name: Áttekintés
-              href: active-directory-b2c-reference-oidc.md
-            - name: ASP.NET
-              href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
-            - name: ASP.NET-mag
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp'
-            - name: Node.js
-              href: active-directory-b2c-devquickstarts-web-node.md
-        - name: Egylapos appok
-          items:
-            - name: Áttekintés
-              href: active-directory-b2c-reference-spa.md
-            - name: JavaScript az MSAL használatával
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp'
-            - name: JavaScript a Hello használatával
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi'
-        - name: Webes API-k
-          items:
-            - name: ASP.NET
-              href: active-directory-b2c-devquickstarts-api-dotnet.md
-            - name: ASP.NET-mag
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi'
-            - name: Node.js
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi'
-            - name: .NET-alapú webes API hívása
-              href: active-directory-b2c-devquickstarts-web-api-dotnet.md
+        - name: Erőforrás tulajdonosának jelszava
+          href: configure-ropc.md
+    - name: Webalkalmazások
+      items:
+        - name: Áttekintés
+          href: active-directory-b2c-reference-oidc.md
+        - name: ASP.NET
+          href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
+        - name: ASP.NET-mag
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp'
+        - name: Node.js
+          href: active-directory-b2c-devquickstarts-web-node.md
+    - name: Egylapos appok
+      items:
+        - name: Áttekintés
+          href: active-directory-b2c-reference-spa.md
+        - name: JavaScript az MSAL használatával
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp'
+        - name: JavaScript a Hello használatával
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi'
+    - name: Webes API-k
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-devquickstarts-api-dotnet.md
+        - name: ASP.NET-mag
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi'
+        - name: Node.js
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi'
+        - name: .NET-alapú webes API hívása
+          href: active-directory-b2c-devquickstarts-web-api-dotnet.md
     - name: Útmutatók
       items:
         - name: Identitásszolgáltatók konfigurálása
@@ -112,8 +114,6 @@
               href: active-directory-b2c-setup-qq-app.md
             - name: WeChat
               href: active-directory-b2c-setup-wechat-app.md
-            - name: Azure AD (egybérlős)
-              href: active-directory-b2c-setup-oidc-azure-active-directory.md
             - name: Egyéni OpenID Connect
               href: active-directory-b2c-setup-oidc-idp.md
         - name: Önkiszolgáló jelszó-visszaállítás beállítása
@@ -143,8 +143,12 @@
           href: active-directory-b2c-reference-usage-reporting-api.md
         - name: Hozzáférés az auditnaplókhoz
           href: active-directory-b2c-reference-audit-logs.md
+        - name: Felhasználói adatok kezelése
+          href: manage-user-data.md
         - name: Felhasználók migrálása
           href: active-directory-b2c-user-migration.md
+        - name: Felhasználók migrálása közösségi identitásokkal
+          href: active-directory-b2c-social-migration.md
         - name: A b2clogin.com használata
           href: b2clogin.md
         - name: Koralapú korlátozás használata
@@ -207,6 +211,8 @@
                   href: active-directory-b2c-reference-password-change-custom.md
                 - name: A bejelentkezve maradás engedélyezése
                   href: active-directory-b2c-reference-kmsi-custom.md
+            - name: Felhasználói hozzáférés kezelése.
+              href: manage-user-access.md
             - name: Hibaelhárítás
               items:
                 - name: Naplók gyűjtése az Application Insights használatával

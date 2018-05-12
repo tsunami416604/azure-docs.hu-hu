@@ -30,6 +30,8 @@
       href: render-coverage.md
     - name: Útválasztási lefedettség
       href: routing-coverage.md
+    - name: Keresés a kategóriákban
+      href: search-categories.md
     - name: Támogatott nyelvek
       href: supported-languages.md
 - name: Útmutatók

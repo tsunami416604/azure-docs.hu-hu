@@ -24,23 +24,27 @@
       href: blockchain-workbench-use-API.md
     - name: Hibaelhárítási alkalmazások
       href: blockchain-workbench-troubleshooting.md
-    - name: Workbench-adatbázis részleteinek lekérése
-      href: blockchain-workbench-getdb-details.md
-    - name: Workbench SQL-adatbázis tűzfalának konfigurálása
-      href: blockchain-workbench-database-firewall.md
-    - name: Workbench-adatok használata Excelben
-      href: blockchain-workbench-data-excel.md
-    - name: Workbench-adatok használata Power BI-ban
-      href: blockchain-workbench-data-powerbi.md
-    - name: Workbench-adatok használata SQL Management Studióban
-      href: blockchain-workbench-data-sql-management-studio.md
+    - name: Workbench-adatok használata
+      items:
+        - name: Adatbázistűzfal konfigurálása
+          href: blockchain-workbench-database-firewall.md
+        - name: Adatbázis részleteinek lekérése
+          href: blockchain-workbench-getdb-details.md
+        - name: Adatok használata az Excelben
+          href: blockchain-workbench-data-excel.md
+        - name: Adatok használata a Power BI-ban
+          href: blockchain-workbench-data-powerbi.md
+        - name: Adatok használata az SQL Management Studióban
+          href: blockchain-workbench-data-sql-management-studio.md
 - name: Referencia
   items:
+    - name: Kódminták
+      href: 'https://github.com/Azure-Samples/blockchain'
     - name: Konfiguráció
       href: blockchain-workbench-configuration-overview.md
     - name: Adatbázisnézetek
       href: blockchain-workbench-database-views.md
-    - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
     - name: Üzenetkezelési API
       href: blockchain-workbench-messages-overview.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'

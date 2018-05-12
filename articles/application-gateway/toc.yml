@@ -91,6 +91,8 @@
       href: tutorial-url-route-powershell.md
     - name: Webes forgalom átirányítása az Azure PowerShell használatával
       href: tutorial-url-redirect-powershell.md
+    - name: Zónaredundáns alkalmazásátjáró létrehozása
+      href: create-zone-redundant.md
 - name: Referencia
   items:
     - name: Azure CLI

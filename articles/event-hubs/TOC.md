@@ -28,6 +28,11 @@
 ### [Rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md)
 ### [Átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md)
 ### [Apache Spark – Event Hubs-integráció](event-hubs-spark-connector.md)
+## A Kafkához készült Event Hubs
+### [A Kafkához készült Event Hubs ökoszisztémája](event-hubs-for-kafka-ecosystem-overview.md)
+### [A Kafka-kompatibilis Event Hubs létrehozása](event-hubs-create-kafka-enabled.md) 
+### [Streamelés az Azure Event Hubs Kafkához készült ökoszisztémájában](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+### [A Kafka MirrorMaker használata az Azure Event Hubs Kafkához készült ökoszisztémájával](event-hubs-kafka-mirror-maker-tutorial.md)
 ## Fejlesztés
 ### [Események küldése a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Események fogadása a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-receive-eph.md)

@@ -7,10 +7,13 @@
     - name: Tudnivalók a Time Series Insightsról
       href: time-series-insights-overview.md
 - name: Gyors útmutatók
-  expanded: true
   items:
     - name: Ismerkedés a Time Series Insightsszal
       href: time-series-quickstart.md
+- name: Oktatóanyagok
+  items:
+    - name: Ismerkedés a TSI JavaScript ügyfélkönyvtárával
+      href: tutorial-explore-js-client-lib.md
 - name: Alapelvek
   items:
     - name: A környezet megtervezése

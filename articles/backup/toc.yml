@@ -49,6 +49,8 @@
       href: backup-azure-security-feature.md
     - name: Offline biztonsági mentés konfigurálása
       href: backup-azure-backup-import-export.md
+    - name: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
+      href: backup-azure-backup-server-import-export-.md
     - name: A szalagtár lecserélése
       href: backup-azure-backup-cloud-as-tape.md
 - name: Útmutató

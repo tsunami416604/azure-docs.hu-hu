@@ -1,0 +1,95 @@
+- name: Virtuálisgép-bővítmények dokumentációja
+  href: ../index.md
+- name: Áttekintés
+  items:
+    - name: Tudnivalók az Azure-bővítményekről
+      href: overview.md
+    - name: Linux rendszerű virtuálisgép-ügynök
+      href: agent-linux.md
+    - name: Windows rendszerű virtuálisgép-ügynök
+      href: agent-windows.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Egyéni szkriptbővítmény használata
+      href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      maintainContext: true
+- name: Alapelvek
+  items:
+    - name: Linux
+      href: features-linux.md
+    - name: Windows
+      href: features-windows.md
+- name: Útmutatók
+  items:
+    - name: Egyéni parancsfájl-bővítmény
+      items:
+        - name: Linux – 2-es verzió
+          href: custom-script-linux.md
+        - name: Linux – 1-es verzió (OSTC)
+          href: custom-script-linuxOstc.md
+        - name: Windows
+          href: custom-script-windows.md
+    - name: OMS-bővítmény
+      items:
+        - name: Linux
+          href: oms-linux.md
+        - name: Windows
+          href: oms-windows.md
+    - name: Diagnosztikai bővítmény
+      items:
+        - name: Linux
+          href: diagnostics-linux.md
+        - name: Windows
+          href: diagnostics-windows.md
+        - name: Sablonok használata
+          href: diagnostics-template.md
+    - name: Network Watcher-ügynök
+      items:
+        - name: Linux
+          href: network-watcher-linux.md
+        - name: Windows
+          href: network-watcher-windows.md
+    - name: PowerShell DSC bővítmény
+      href: dsc-overview.md
+      items:
+        - name: DSC és Windows
+          href: dsc-windows.md
+        - name: Hitelesítő adatok kezelése
+          href: dsc-credentials.md
+        - name: Sablonok használata
+          href: dsc-template.md
+    - name: IaaS kártevőirtó Windowshoz
+      href: iaas-antimalware-windows.md
+    - name: Key Vault-bővítmény
+      href: key-vault-windows.md
+    - name: Virtuális gépek pillanatkép-készítő bővítménye
+      items:
+        - name: Linux
+          href: vmsnapshot-linux.md
+        - name: Windows
+          href: vmsnapshot-windows.md
+    - name: Külső felektől származó bővítmények
+      items:
+        - name: Stackify Retrace
+          href: stackify-retrace-linux.md
+        - name: Symantec
+          href: symantec.md
+    - name: Elavult bővítmények
+      items:
+        - name: Naplógyűjtő bővítmény
+          href: log-collector.md
+        - name: Trend Micro Deep Security
+          href: trend.md
+    - name: Bővítménytelepítés korlátozása
+      items:
+        - name: Linux
+          href: extensions-rmpolicy-howto-cli.md
+        - name: Windows
+          href: extensions-rmpolicy-howto-ps.md
+    - name: Linux-ügynök frissítése
+      href: update-linux-agent.md
+    - name: Bővítmények exportálása
+      href: export-templates.md
+    - name: Hibaelhárítás
+      href: troubleshoot.md

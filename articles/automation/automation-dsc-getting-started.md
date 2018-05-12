@@ -3,16 +3,17 @@ title: Ismerkedés az Azure Automation DSC
 description: MAGYARÁZAT és példákat a leggyakoribb feladatokat az Azure Automation szükséges konfiguráló (DSC)
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0a00050712aa62f3b12e4af4c3da3a1dc0e60219
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7ab5c7f2f3676392b8fa0cc0b2a1c8f66d8ef3a9
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Ismerkedés az Azure Automation DSC
 
@@ -120,7 +121,7 @@ Egy fordítási elindítása után megtekintheti a a **fordítási feladatok** c
 
 ## <a name="viewing-node-configurations"></a>Csomópont-konfigurációt megtekintése
 
-Egy fordítási feladat sikeres létrehozása után egy vagy több új csomópont-konfigurációkat hoz létre. A csomópont-konfiguráció a lekérési kiszolgálójával, és készen áll a lekért és egy vagy több csomópont által alkalmazott telepített MOF dokumentum. Az Automation-fiókban lévő meg tudja tekinteni a csomópont-konfigurációt a **DSC-Csomópontkonfigurációk** panelen. A csomópont-konfiguráció van az űrlap egy nevű *ConfigurationName*. *Csomópontnév*.
+Egy fordítási feladat sikeres létrehozása után egy vagy több új csomópont-konfigurációkat hoz létre. A csomópont-konfiguráció a lekérési kiszolgálójával, és készen áll a lekért és egy vagy több csomópont által alkalmazott telepített MOF dokumentum. Az Automation-fiókban lévő meg tudja tekinteni a csomópont-konfigurációt a **DSC-Csomópontkonfigurációk** panelen. A csomópont-konfiguráció van az űrlap egy nevű *ConfigurationName*.* Csomópontnév*.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A központ menüben kattintson a **összes erőforrás** és majd az Automation-fiók nevét.

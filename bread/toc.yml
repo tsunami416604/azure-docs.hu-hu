@@ -237,6 +237,9 @@
         - name: Webes nyelvi modell
           tocHref: /azure/cognitive-services/web-language-model/
           topicHref: /azure/cognitive-services/web-language-model/home
+        - name: Személyes hatású csevegés
+          tocHref: /azure/cognitive-services/project-personality-chat/
+          topicHref: /azure/cognitive-services/project-personality-chat/overview
     - name: Összekötők
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
