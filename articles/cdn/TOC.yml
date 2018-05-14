@@ -1,10 +1,10 @@
 - name: CDN – dokumentáció
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi az Azure CDN?
       href: cdn-overview.md
-    - name: Az Azure CDN termékszolgáltatásai
+    - name: Termékjellemzők összehasonlítása
       href: cdn-features.md
 - name: Gyors útmutatók
   items:
@@ -137,13 +137,13 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: Szabálymotor funkciói
           href: cdn-rules-engine-reference-features.md
+        - name: HTTP-változók
+          href: cdn-http-variables.md
     - name: Verizon-specifikus HTTP-fejlécek
       href: cdn-verizon-http-headers.md
       items:
         - name: X-EC-Debug fejlécek
           href: cdn-http-debug-headers.md
-    - name: HTTP-változók
-      href: cdn-http-variables.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET

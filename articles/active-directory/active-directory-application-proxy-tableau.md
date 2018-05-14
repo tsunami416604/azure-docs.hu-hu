@@ -15,8 +15,8 @@ ms.date: 05/02/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cd27bab470b7037087421fac1e9eeabe10957831
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7fa8654e413ac337994d35afdce7bd3478127f64
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -31,7 +31,7 @@ Ez a cikk a forgatókönyv azt feltételezi, hogy rendelkezik:
 
 - [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) konfigurálva. 
 
-- Egy [Application Proxy connector](active-directory-application-proxy-enable.md) telepítve. 
+- Egy [Application Proxy connector](manage-apps/application-proxy-enable.md) telepítve. 
 
  
 
@@ -54,7 +54,7 @@ A Tableau való közzétételéhez szeretné közzétenni egy alkalmazást az Az
 
 Esetén:
 
-- Részletes utasítások a lépések 1-8, lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md). 
+- Részletes utasítások a lépések 1-8, lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md). 
 - Információ a Tableau értékek keresése a következő alkalmazás Proxy mezők a dokumentáció Tableau.  
 
 **Az alkalmazás közzététele**: 

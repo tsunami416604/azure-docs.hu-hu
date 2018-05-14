@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 05eb175e3d8306308998780ac230d4f44e611294
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cec377ad92e1491413f9d3ebc953abb154b83f01
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások a SAML-jogkivonat galéria-alkalmazásokhoz az Azure Active Directoryban
 Azure Active Directory (Azure AD) ma támogatja több ezer előre integrált alkalmazások az Azure Active Directory-Alkalmazásgyűjtemény. A telefonszám az 500-nál több alkalmazás, amely támogatja az egyszeri bejelentkezéshez a SAML 2.0 protokoll használatával tartalmaz. Amikor egy felhasználó egy alkalmazást az Azure AD a SAML használatával végez hitelesítést, az Azure AD egy token küld az alkalmazás (HTTP POST). Ezt követően az alkalmazás ellenőrzi, és jelentkezzen be a felhasználó nem kér felhasználónevet és jelszót a jogkivonat alapján. Ezeket a SAML-jogkivonatokat bejelentkezve az Azure AD-ben és a szabványos algoritmusok által létrehozott egyedi tanúsítvány.
@@ -29,7 +29,7 @@ Az Azure AD az alapértelmezett beállításokat használja, a gyűjtemény-alka
 
 Az Azure AD támogatja a speciális tanúsítvány-aláírási beállításait. Ezek a beállítások kiválasztásához először válassza ki azt a **megjelenítése speciális tanúsítvány-aláírási beállítások** jelölőnégyzetet:
 
-![Speciális tanúsítvány-aláírási beállítások megjelenítése][1]
+![Speciális tanúsítvány-aláírási beállítások megjelenítése](./media/active-directory-enterprise-apps-advance-certificate-options/saml-advance-certificate.png)
 
 Miután kiválasztotta ezt a jelölőnégyzetet, állíthat be a tanúsítvány-aláírási beállítások és a tanúsítvány-aláírási algoritmus.
 
@@ -43,7 +43,7 @@ Az Azure AD által támogatott három tanúsítvány-aláírási beállítások:
 
 * **Jelentkezzen be a SAML-válasz és helyességi feltétel**. Ezt a beállítást, ha az Azure AD szolgáltatásba az IdP aláírja a teljes SAML-jogkivonat a X509 a tanúsítvány az alkalmazás. Az aláírási algoritmus, amely a kijelölt használ is, a **aláírási algoritmus** legördülő listában.
 
-    ![A tanúsítvány-aláírási beállítások][4]
+    ![A tanúsítvány-aláírási beállítások](./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-options.png)
 
 ## <a name="certificate-signing-algorithms"></a>A tanúsítvány-aláírási algoritmus
 
@@ -51,20 +51,15 @@ Az Azure AD a SAML-válasz aláírásához két aláírási algoritmust támogat
 
 * **AZ SHA-256**. Az Azure AD az alapértelmezett algoritmus használ az SAML-válasz aláírásához. A legújabb algoritmus és a rendszer több biztonságos SHA-1-nél. Az alkalmazások többsége támogatja az SHA-256 algoritmust. Ha egy alkalmazás csak az SHA-1, az aláírási algoritmus támogatja, módosíthatja. Ellenkező esetben azt javasoljuk, hogy az SHA-256 algoritmust használ a SAML-válasz aláírását.
 
-    ![Az SHA-256 tanúsítvány-aláírási algoritmus][3]
+    ![Az SHA-256 tanúsítvány-aláírási algoritmus](./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-algo-sha256.png)
 
 * **AZ SHA-1**. Ez a régebbi algoritmust, és akkor a rendszer kevesebb biztonságos SM-256-nál. Ha egy alkalmazás csak az aláírási algoritmus támogatja, válassza ezt a lehetőséget a **aláírási algoritmus** legördülő listából. Az Azure AD majd az SHA-1 algoritmussal SAML-válasz jelentkezik.
 
-    ![Tanúsítvány-aláírási algoritmus az SHA-1][2]
+    ![Tanúsítvány-aláírási algoritmus az SHA-1](./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-algo-sha1.png)
 
 ## <a name="next-steps"></a>További lépések
 * [Alkalmazások kezelése az Azure Active Directoryban cikk indexe](active-directory-apps-index.md)
 * [Egyszeri bejelentkezés alkalmazásokhoz, amelyek nincsenek rajta az Azure Active Directory-Alkalmazásgyűjtemény konfigurálása](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [SAML-alapú egyszeri bejelentkezést hibaelhárítása](develop/active-directory-saml-debugging.md)
 
-<!--Image references-->
 
-[1]: ./media/active-directory-enterprise-apps-advance-certificate-options/saml-advance-certificate.png
-[2]: ./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-algo-sha1.png
-[3]: ./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-algo-sha256.png
-[4]: ./media/active-directory-enterprise-apps-advance-certificate-options/saml-signing-options.png

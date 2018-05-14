@@ -34,6 +34,8 @@
       href: search-categories.md
     - name: Támogatott nyelvek
       href: supported-languages.md
+    - name: Használatalapú modell
+      href: consumption-model.md
 - name: Útmutatók
   items:
     - name: Maps-fiókok kezelése
@@ -115,7 +117,7 @@
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates'
     - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-location-based-services'
+      href: 'http://stackoverflow.com/questions/tagged/azure-maps'
     - name: Műszaki esettanulmányok
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Videók

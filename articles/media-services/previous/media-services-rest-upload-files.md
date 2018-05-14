@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/10/2018
 ms.author: juliako
-ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése a Media Services-fiók használatával REST
 > [!div class="op_single_selector"]
@@ -87,11 +87,11 @@ Ez az oktatóanyag Postman beállítása lépéseiért lásd: [konfigurálása P
     ```
 4. A bal oldalon a **Postman** ablakban kattintson a **1. Az AAD-hitelesítési token beszerzése** -> **első Azure AD jogkivonat szolgáltatás egyszerű**.
 
-    Az URL-cím részét a rendszer beírja a **AzureADSTSEndpoint** környezeti változó (melynek értéke meg ez az oktatóanyag korábbi részében).
-    
-5. Kattintson a **Küldés** gombra.
+    Az URL-cím részét a rendszer beírja a **AzureADSTSEndpoint** környezeti változó (az oktatóanyag a korábbi értékeinek beállítása [környezeti változók](#configure-the-environment) támogató a [gyűjtemény](#configure-the-collection)).
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postment-get-token.png)
+
+5. Kattintson a **Küldés** gombra.
 
     A válasz, amely tartalmazza a "access_token" tekintheti meg. A "test" parancsfájl fogadja el ezt az értéket, és beállítja a **AccessToken** környezeti változó (a fentiekben ismertetett). Ha a környezeti változók megvizsgálja, látni fogja, hogy ez a változó most már tartalmazza a hozzáférési jogkivonat (tulajdonosi jogkivonattal) érték, amelynek a többi művelet. 
 

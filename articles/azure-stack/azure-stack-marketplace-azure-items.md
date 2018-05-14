@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 79161d0be407a5b5692e1ad0ee25c609aefb2fb5
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f5812e071046935b0a1a3ee3f14525ede336954a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -220,5 +220,6 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![NooBaa hibrid AWS S3 kompatibilis - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa hibrid AWS S3 compatibe - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibilis tárolási szolgáltatás helyezkednek nyilvános és helyszíni erőforrások kapacitás. | NooBaa |
 | ![PT tűzfal](media/azure-stack-marketplace-azure-items/pt.png) | [PT tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT tűzfal ismeretlen & ismert biztonsági rések észleli, és megakadályozza, hogy a támadások-webalkalmazásokban. <b>Töltse le mindkét PT Piactéri elemek.</b> | Pozitív technológiák |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure-verem infrastruktúra teljes életciklusát. <b>Töltse le mindkét Puppet Piactéri elemek.</b> | Puppet |
+| ![Gyors helyreállítás kérelem kitöltése](media/azure-stack-marketplace-azure-items/quest.png) | [Gyors helyreállítás Core kérelem kitöltése](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Az adatvédelem speciális gyors helyreállítás a biztonsági mentés, a replikáció és a helyreállítás egy könnyen használható szoftveres megoldás a szolgáltatás. | Szoftver kérelem kitöltése |
 | ![SUSE Manager 3.0 Proxy (saját)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (saját) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Legjobb minőségű nyílt forráskódú infrastruktúra kezelését. | SUSE |
 | ![ZeroDown szoftvereket eszköz](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | ZeroDown szoftver |

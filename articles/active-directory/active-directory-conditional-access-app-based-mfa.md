@@ -12,25 +12,25 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/10/2018
+ms.date: 05/11/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b451ede984d3baa8331ec87575557f845686c01f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: d675236f36840858f0f011484392186d355ac6df
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Gyors üzembe helyezés: Megkövetelő adott alkalmazásokhoz az Azure Active Directory feltételes hozzáféréssel 
 
-A bejelentkezés során tapasztal élmény a felhasználók leegyszerűsítése érdemes lehetővé teszik a felhőalapú alkalmazásokhoz, a felhasználónév és jelszó használatával való bejelentkezéshez. Azonban a legtöbb környezetben legalább néhány olyan alkalmazások, amelyekre tanácsos erősebb formája Fiókellenőrzés, például a többtényezős hitelesítés megkövetelése rendelkeznek. Ez lehet például IGAZ, a szervezet e-mail rendszer vagy a HR-alkalmazásokhoz való hozzáféréshez. Az Azure Active Directoryban a feltételes hozzáférési házirenddel ezen cél megvalósításához.    
+A bejelentkezés során tapasztal élmény a felhasználók leegyszerűsítése érdemes lehetővé teszik a felhőalapú alkalmazásokhoz, a felhasználónév és jelszó használatával való bejelentkezéshez. Azonban a legtöbb környezetben, amelynek tanácsos igényelnek, például a többtényezős hitelesítés (MFA) a Fiókellenőrzés erősebb formája legalább néhány alkalmazásokkal rendelkeznek. Ez lehet például IGAZ, a szervezet e-mail rendszer vagy a HR-alkalmazásokhoz való hozzáféréshez. Az Azure Active Directory (Azure AD) a feltételes hozzáférési házirenddel ezen cél megvalósításához.    
 
-A gyors üzembe helyezés ismerteti, hogyan konfigurálható egy [az Azure AD feltételes hozzáférési házirend](active-directory-conditional-access-azure-portal.md) állítja be a kijelölt felhőalapú alkalmazások vannak a környezetében többtényezős hitelesítést igényel.
+A gyors üzembe helyezés ismerteti, hogyan konfigurálható egy [az Azure AD feltételes hozzáférési házirend](active-directory-conditional-access-azure-portal.md) többtényezős hitelesítést igénylő állítja be a kijelölt felhőalapú alkalmazások vannak a környezetében.
 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben a cikkben a forgatókönyvet használja az Azure-portálon helyőrző egy felhő-alkalmazást, amely egy megadott felhasználó többtényezős hitelesítést igényel. Isabella Simonsen az a felhasználó a szervezetében. Amikor bejelentkezik az Azure-portálon, rá, hogy további ellenőrizzük a saját fiókját a többtényezős hitelesítéssel szeretne.
+Ebben a cikkben a forgatókönyvet használja az Azure-portálon helyőrző egy felhő-alkalmazást, amely egy megadott felhasználó többtényezős Hitelesítést követel meg. Isabella Simonsen az a felhasználó a szervezetében. Amikor bejelentkezik az Azure-portálon, rá, hogy további ellenőrizzük a saját fiókját a multi-factor Authentication szolgáltatás kívánt.
 
 ![Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/22.png)
 
@@ -58,7 +58,7 @@ A házirend beállítása:
 |Hozzáférés | Többtényezős hitelesítés megkövetelése |
  
 
-![Szabályzat létrehozása](./media/active-directory-conditional-access-app-based-mfa/21.png)
+![Szabályzat létrehozása](./media/active-directory-conditional-access-app-based-mfa/31.png)
 
 
 

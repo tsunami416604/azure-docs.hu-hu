@@ -12,11 +12,11 @@ ms.date: 04/03/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e10fefdd3bd46aeb90fd2cfc82d4fee3b17d867b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7e4731e150c2d6428fa8c752765780f827c33741
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy és Qlik logika 
 Az Azure Active Directory Alkalmazásproxyjával és Qlik logika közösen együtt, hogy könnyen alkalmazásproxy használatával adja meg a távoli elérés az Qlik logika üzembe helyezéshez.  
@@ -25,13 +25,13 @@ Az Azure Active Directory Alkalmazásproxyjával és Qlik logika közösen együ
 Ez a forgatókönyv további része azt feltételezi, hogy Ön a következőket:
  
 - Konfigurált [Qlik logika](https://community.qlik.com/docs/DOC-19822). 
-- [Az alkalmazásproxy-összekötő telepítése](active-directory-application-proxy-enable.md#install-and-register-a-connector) 
+- [Az alkalmazásproxy-összekötő telepítése](manage-apps/application-proxy-enable.md#install-and-register-a-connector) 
  
 ## <a name="publish-your-applications-in-azure"></a>Az alkalmazások közzététele az Azure-ban 
 QlikSense közzététele, akkor két alkalmazások közzététele az Azure-ban.  
 
 ### <a name="application-1"></a>#1. alkalmazás: 
-Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes lépéseket bemutató 1-8, tekintse meg a még [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md). 
+Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes lépéseket bemutató 1-8, tekintse meg a még [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md). 
 
 
 1. Jelentkezzen be globális rendszergazdaként az Azure-portálon. 
@@ -50,7 +50,7 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes l
 Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel: 
 
 **#5. lépés**: belső URL-cím kell a QlikSense a hitelesítési portot, az alkalmazás által használt URL-cím. Az alapértelmezett érték **4244** HTTPS és a HTTP 4248. Például: **https&#58;//demo.qlik.com:4244**</br></br> 
-**#10. lépés:** nem beállítania egyszeri Bejelentkezést, és hagyja a **egyszeri bejelentkezés le van tiltva**
+ **#10. lépés:** nem beállítania egyszeri Bejelentkezést, és hagyja a **egyszeri bejelentkezés le van tiltva**
  
  
 ## <a name="testing"></a>Tesztelés 
@@ -58,5 +58,5 @@ Az alkalmazás tesztelése készen áll. Hozzáférési QlikSense közzététel�
 
 ## <a name="next-steps"></a>További lépések
 
-- [Alkalmazások közzététele az alkalmazásproxy](application-proxy-publish-azure-portal.md)
+- [Alkalmazások közzététele az alkalmazásproxy](manage-apps/application-proxy-publish-azure-portal.md)
 - [Alkalmazásproxy összekötők használata](active-directory-application-proxy-connectors-azure-portal.md).

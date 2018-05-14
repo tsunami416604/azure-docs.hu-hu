@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 13141549b5b1b77f45dd6fa1c7560b9f9d0e9b72
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: eee20271c27f596ee6aefd0b7280c7862c53b289
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -95,7 +95,7 @@ Korábban a Windows Server virtuális gép kiépítése, és felügyelt tartomá
 
 * **Az alkalmazások az Azure virtuális gépek áttelepítése:** növekedési-és-shift a felügyelt tartományra csatlakozott az alkalmazásait, a helyszíni kiszolgálók és az Azure virtuális gépek is. Így segítséget nyújt az infrastruktúra költségek a helyszíni kiszolgálók futó selejtezni.
 
-* **Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával:** közzététele az Azure AD-alkalmazásproxy használata a Azure virtuális gépek futó alkalmazások. További információkért lásd: [az Azure AD-alkalmazásproxy használó alkalmazások közzététele](../active-directory/application-proxy-publish-azure-portal.md)
+* **Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával:** közzététele az Azure AD-alkalmazásproxy használata a Azure virtuális gépek futó alkalmazások. További információkért lásd: [az Azure AD-alkalmazásproxy használó alkalmazások közzététele](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Központi telepítés Megjegyzés - közzététel integrált Windows-Hitelesítést (integrált Windows-hitelesítés) alkalmazások az Azure AD-alkalmazásproxy használatával

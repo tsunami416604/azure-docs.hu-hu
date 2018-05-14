@@ -1,25 +1,24 @@
 ---
-title: "Hozzon létre, és tegye közzé a Piactéri elemet Azure verem |} Microsoft Docs"
-description: "Hozzon létre, és tegye közzé a Piactéri elemet Azure-készletben."
+title: Hozzon létre, és tegye közzé a Piactéri elemet Azure verem |} Microsoft Docs
+description: Hozzon létre, és tegye közzé a Piactéri elemet Azure-készletben.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 77e5f60c-a86e-4d54-aa8d-288e9a889386
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5ac91dac3cb446abaf07492d8b6ec8aa0c120ef4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5e0349d6bae9295e7a0ba9f366f84753ebd838c2
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Piactéri termék létrehozása és közzététele
 
@@ -110,7 +109,7 @@ ms.lasthandoff: 02/21/2018
 ### <a name="metadata"></a>Metaadatok
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |Karakterlánc |A javaslat 80 karakter |A portál nem jelenik meg az elem neve szabályosan Ha hosszabb 80 karakternél. |
+| Megjelenítendő név |X |Karakterlánc |A javaslat 80 karakter |A portál nem jelenik meg az elem neve szabályosan Ha hosszabb 80 karakternél. |
 | PublisherDisplayName |X |Karakterlánc |A javaslat 30 karakternél |A portál nem jelenik meg a kiadó nevét szabályosan ha 30 karakternél hosszabb. |
 | PublisherLegalName |X |Karakterlánc |Legfeljebb 256 karakter hosszú lehet | |
 | Összegzés |X |Karakterlánc |60 és 100 karakter | |
@@ -120,13 +119,13 @@ ms.lasthandoff: 02/21/2018
 ### <a name="images"></a>Képek
 A piactér az alábbi ikonok:
 
-| Name (Név) | Szélessége | Magassága | Megjegyzések |
+| Name (Név) | Szélesség | Magasság | Megjegyzések |
 | --- | --- | --- | --- |
 | Széles |255 px |115 px |Mindig szükséges. |
 | Nagy |115 px |115 px |Mindig szükséges. |
-| Közepes |90 px |90 px |Mindig szükséges. |
+| Közepes |90 képpont |90 képpont |Mindig szükséges. |
 | Kicsi |40 px |40 px |Mindig szükséges. |
-| Képernyőfelvétel |533 px |32 px |Optional |
+| Képernyőfelvétel |533 képpont |32 px |Optional |
 
 ### <a name="categories"></a>Kategóriák
 Minden egyes Piactéri elemet kell címkézését egy kategóriát, amely azonosítja a portál felhasználói felületi elem helyére. Azure verem a meglévő kategóriák közül választhat (számítási, adatok + tárolás, stb.), vagy válasszon egy újat.
@@ -136,15 +135,15 @@ Minden egyes Piactéri elemet tartalmazhat különböző, a tartalmakra mutató 
 
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |Karakterlánc |Legfeljebb 64 karakter hosszú lehet | |
-| Uri |X |URI | | |
+| Megjelenítendő név |X |Karakterlánc |Legfeljebb 64 karakter hosszú lehet | |
+| URI |X |URI | | |
 
 ### <a name="additional-properties"></a>További tulajdonságok
 A fenti metaadatok mellett piactér szerzők biztosíthat egyéni kulcs/érték pár adatokat a következő formában:
 
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |Karakterlánc |Legfeljebb 25 karakter hosszú lehet | |
+| Megjelenítendő név |X |Karakterlánc |Legfeljebb 25 karakter hosszú lehet | |
 | Érték |X |Karakterlánc |Legfeljebb 30 karakterből | |
 
 ### <a name="html-sanitization"></a>HTML tisztítási

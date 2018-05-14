@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3737ea08e593ae1018489633e23e80e1099296ae
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b416acd9a2a3b03502b7eca11eade9dbd56f3afe
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Egy nem felügyelt Virtuálisgép-lemezkép az Azure virtuális gép létrehozása
 
@@ -78,6 +78,11 @@ Linux virtuális gépet is általánosítása `sudo waagent -deprovision+user` �
     ```
 
 ## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>A virtuális gép felszabadítása és általános állapotának beállítása
+
+> [!IMPORTANT] 
+> Nem hozzáadása, szerkesztése, illetve címkék eltávolítása a virtuális gépek után van megjelölve általánosítva van. Ha szeretne egy címke hozzáadása a virtuális Gépet, győződjön meg arról, általánosítva való megjelölése előtt adja hozzá a címkéket.
+> 
+
 1. A Virtuálisgép-erőforrások felszabadítani.
    
     ```powershell

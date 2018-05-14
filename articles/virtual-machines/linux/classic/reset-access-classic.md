@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: c36498d2f4fef506dc7047fe91666aceec73c13d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3984c94770290ad29394a06b20f2dc64a980c4a8
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Linux virtuális gép jelszó vagy SSH-kulcs visszaállítása, javítsa ki az SSH-konfigurációt, és a VMAccess bővítmény használatával lemez konzisztenciájának ellenőrzése
 Ha nem csatlakozik egy Linux virtuális gépet az Azure miatt elfelejtett jelszó, nem megfelelő Secure Shell (SSH) billentyűt, vagy az SSH-konfigurációt, a probléma a VMAccessForLinux bővítmény használni az Azure parancssori felület a jelszó vagy SSH-kulcs visszaállítása, javítsa ki az SSH konfiguráció, és a lemez-konzisztencia ellenőrzése. 

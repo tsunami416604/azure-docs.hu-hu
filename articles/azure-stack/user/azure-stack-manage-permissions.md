@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 9944f51c080da6edd89927bfd26398024c5d4de2
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4f9354426ba584b26213f8a104c14122a831a453
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Hozzáférés-vezérléssel Azure Stack Role-Based erőforrásokhoz való hozzáférés kezelése
 
@@ -38,6 +38,28 @@ Azure verem rendelkezik, amely az összes erőforrástípus alkalmazható három
 * **Tulajdonos** mindent felügyelhetnek, beleértve az erőforrásokhoz való hozzáférést.
 * **A közreműködői** erőforrásokhoz való hozzáférés kivételével mindent felügyelhetnek.
 * **Olvasó** mindent megtekinthetnek, de nem módosíthatja.
+
+### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklés
+
+Azure verem rendelkezik a következő erőforrás-hierarchiában:
+
+* Minden előfizetés tartozik egy címtárban.
+* Egy előfizetés tartozik minden erőforráscsoportban.
+* Az egyes erőforrások egy erőforráscsoporthoz tartozik.
+
+A gyermekhatókör örökölt, hogy a szülő hatókörben számára biztosítson hozzáférést. Példa:
+
+* Az olvasó szerepkört rendelni az előfizetési hatókört, az Azure Active Directory-csoportnak. A csoport tagjai megtekintheti minden erőforrás csoport- és az előfizetés.
+* A közreműködői szerepkör hozzárendelése az erőforrás-csoport hatóköre az alkalmazást. Az alkalmazás kezelhetik az erőforrásokat bármilyen típusú erőforráscsoport, de nem egyéb erőforráscsoportok az előfizetést.
+
+### <a name="assigning-roles"></a>szerepkörök hozzárendelése
+
+Több szerepkör hozzárendelése egy felhasználóhoz, és minden egyes szerepkör társítható egy másik hatókört. Példa:
+
+* Előfizetés-1 TestUser-A az olvasó szerepkört rendelni.
+* A tulajdonosi TestUser-A szerepkör hozzárendelése TestVM-1.
+
+Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és szerepkörök törlése kapcsolatos részletes információkat tartalmazza.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklés
 

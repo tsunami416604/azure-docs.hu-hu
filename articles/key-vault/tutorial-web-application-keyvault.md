@@ -5,18 +5,18 @@ services: key-vault
 documentationcenter: ''
 author: barclayn
 manager: mbaldwin
-ms.assetid: ''
+ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4a765b314b9879877bb6ff926e4a6584456b7823
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Oktatóanyag: A titkos kulcs olvasni a Key Vault Azure webes alkalmazások konfigurálása
 
@@ -61,22 +61,22 @@ A kulcstároló következő az előző lépésben létrehozott erőforráscsopor
 > Az egész ebben az oktatóanyagban a kulcstároló neve "ContosoKeyVault" lesz, bár egy egyedi nevet kell használnia.
 
 * Tároló neve **ContosoKeyVault**.
-* Az erőforráscsoport neve **ContosoResourceGroup**.
-* A hely **USA keleti régiója**.
+* Erőforráscsoport neve: **ContosoResourceGroup**.
+* Hely: **USA keleti régiója**.
 
 ```azurecli
 az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceGroup --location eastus
 ```
 
-Ez a parancs kimenetét mutatja az újonnan létrehozott kulcstároló tulajdonságainak. Jegyezze fel az alábbi két tulajdonságok:
+Ez a parancs kimenetét mutatja az újonnan létrehozott kulcstároló tulajdonságainak. Jegyezze fel az alábbi két tulajdonságot:
 
 * **A tároló neve**: A példában ez a **ContosoKeyVault**. A kulcstároló neve minden Key Vault parancsok fogja használni.
 * **Tároló URI-ja**: A példában ez a https://<YourKeyVaultName>.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 >[!IMPORTANT]
-> Ha a hiba a paraméter 'vault_name' meg kell felelnie a következő mintát: "^ [a-zA-Z0 – 9-] {3,24} $" a - name paraméter értéke nincs egyedi vagy -hosszú 24 3 alfanumerikus karakterekből álló karakterlánc nem felel meg.
+> Ha a paraméter 'vault_name' meg kell felelnie a következő mintát hibaüzenet jelenik meg: "^ [a-zA-Z0 – 9-]{3,24}$" a - name paraméter értéke nem egyedi, vagy nem felelt meg – 24 hosszú 3 alfanumerikus karakterekből álló karakterlánc.
 
-Ezen a ponton az Azure-fiókjába az új tárolóhoz bármilyen műveletet végezhet egyetlen.
+Az Azure-fiókja jelenleg az egyetlen, amelyik jogosult arra, hogy műveleteket végezzen ezen az új tárolón.
 
 ## <a name="add-a-secret-to-key-vault"></a>Kulcstároló titkos kulcs hozzáadása
 

@@ -7,16 +7,16 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/1/2018
+ms.date: 5/10/2018
 ms.author: rithorn
-ms.openlocfilehash: ba51c2f8eb8db1f74c4501b045234c222b00da5c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b68223830ca6c4e178447074bfbebd1322cb9477
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kezelheti az erőforrásokat a felügyeleti csoportok 
 Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfelelőség kezeléséhez több előfizetéssel. Módosítsa, törölje, és kezelje az ezekben a tárolókban, amelyek együtt hierarchiákkal rendelkeznek a következő [Azure házirend](../azure-policy/azure-policy-introduction.md) és [Azure szerepköralapú hozzáférés vezérlők (RBAC)](../role-based-access-control/overview.md). Felügyeleti csoportok kapcsolatos további információkért lásd: [rendezheti az erőforrásokat az Azure felügyeleti csoportok ](management-groups-overview.md).
@@ -103,9 +103,9 @@ A felügyeleti csoport rendelkezik közvetlen vagy az örökölt RBAC szerepkör
 ### <a name="view-in-the-portal"></a>Tekintse meg a portálon
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com)
 2. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok** 
-3. A felügyeleti csoport hierarchia lapon terhelések, amelyekben az összes csoport látható, hogy rendelkezik-e a hozzáférést. 
+3. A felügyeleti csoport hierarchia lapon terhelések, ahol megismerheti a felügyeleti csoportok és előfizetések rendelkezik hozzáféréssel. A csoport nevét megnyitná a hierarchia valamely szintjének le. A navigációs ugyanúgy működik, mint a Fájlkezelőben is. 
     ![Main](media/management-groups/main.png)
-4. A részletekért önálló felügyeleti csoport kiválasztása  
+4. A felügyeleti csoport a részletek megtekintéséhez válasszon a **(részletek)** a felügyeleti csoport neve melletti hivatkozásra. Ez a hivatkozás nem érhető el, ha nincs engedélyek megtekintése a felügyeleti csoportnál.  
 
 ### <a name="view-in-powershell"></a>Megtekintés a PowerShell
 A Get-AzureRmManagementGroup paranccsal minden csoportjainak lekérdezésére.  

@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: afd5460ef3e286cd3d8b550e7d7e54b3e09f2990
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 5aba26d14ba0ee8e8ee58f62deb8a82ad147a8aa
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -27,33 +27,33 @@ Ha problémába ütközik egy helyi alkalmazás aláírása, az alábbi lépése
 
 Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
 
-  * [Hozzáférek az alkalmazáshoz, de az alkalmazás oldala nem megfelelően jelenik meg](https://docs.microsoft.com/azure/active-directory/application-proxy-page-appearance-broken-problem/)
-  * [Hozzáférek az alkalmazáshoz, de az alkalmazás betöltése túl sokáig tart](https://docs.microsoft.com/azure/active-directory/application-proxy-page-load-speed-problem/)
-  * [Hozzáférek az alkalmazáshoz, de az alkalmazás oldalán található hivatkozások nem működnek](https://docs.microsoft.com/azure/active-directory/application-proxy-page-links-broken-problem/)
+  * [Hozzáférek az alkalmazáshoz, de az alkalmazás oldala nem megfelelően jelenik meg](application-proxy-page-appearance-broken-problem.md)
+  * [Hozzáférek az alkalmazáshoz, de az alkalmazás betöltése túl sokáig tart](application-proxy-page-load-speed-problem.md)
+  * [Hozzáférek az alkalmazáshoz, de az alkalmazás oldalán található hivatkozások nem működnek](application-proxy-page-links-broken-problem.md)
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>Problémáim vannak csatlakozási probléma a alkalmazás
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
-  * [Nem tudom, milyen portokat nyissak meg az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-ports-how-to/)
-  * [Problémát tapasztalok, mert az alkalmazáshoz tartozó összekötőcsoportban nem volt működő összekötő](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-no-working-connector/)
+  * [Nem tudom, milyen portokat nyissak meg az alkalmazáshoz](application-proxy-connectivity-ports-how-to.md)
+  * [Problémát tapasztalok, mert az alkalmazáshoz tartozó összekötőcsoportban nem volt működő összekötő](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>A probléma az Azure AD-alkalmazásproxy a felügyeleti portál konfigurálása
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
-  * [Problémát tapasztalok egy alkalmazásproxy-alkalmazás konfigurálásánál](https://docs.microsoft.com/azure/active-directory/application-proxy-config-how-to/)
-  * [Nem tudom, hogy kell beállítani az egyszeri bejelentkezést az alkalmazásproxy-alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/application-proxy-config-sso-how-to/)
-  * [Problémát tapasztalok, amikor alkalmazást hozok létre a felügyeleti portálon](https://docs.microsoft.com/azure/active-directory/application-proxy-config-problem/)
+  * [Problémát tapasztalok egy alkalmazásproxy-alkalmazás konfigurálásánál](application-proxy-config-how-to.md)
+  * [Nem tudom, hogy kell beállítani az egyszeri bejelentkezést az alkalmazásproxy-alkalmazáshoz](application-proxy-config-sso-how-to.md)
+  * [Problémát tapasztalok, amikor alkalmazást hozok létre a felügyeleti portálon](application-proxy-config-problem.md)
 
 ## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Saját alkalmazás lépett egy tudja beállítani a háttér-hitelesítés
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
-  * [Nem tudom, hogy kell konfigurálni a Kerberos általi korlátozott delegálást](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-kerberos-constrained-delegation-how-to/)
-  * [Nem tudom, hogy kell konfigurálni az alkalmazást a PingAccess segítségével ](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-ping-access-how-to/)
+  * [Nem tudom, hogy kell konfigurálni a Kerberos általi korlátozott delegálást](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+  * [Nem tudom, hogy kell konfigurálni az alkalmazást a PingAccess segítségével ](application-proxy-back-end-ping-access-how-to.md)
 
 ## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Probléma lépett az alkalmazásban történő bejelentkezéskor
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
-  * ["Can't Access this Corporate Application" (Nem lehet hozzáférni ehhez a céges alkalmazáshoz) hibaüzenet jelenik meg](https://docs.microsoft.com/azure/active-directory/application-proxy-sign-in-bad-gateway-timeout-error/)
+  * ["Can't Access this Corporate Application" (Nem lehet hozzáférni ehhez a céges alkalmazáshoz) hibaüzenet jelenik meg](application-proxy-sign-in-bad-gateway-timeout-error.md)
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Az alkalmazásproxy-ügynök összekötő probléma lépett
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
-  * [Problémát tapasztalok az alkalmazásproxy-ügynök összekötőjének telepítésénél](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/)
+  * [Problémát tapasztalok az alkalmazásproxy-ügynök összekötőjének telepítésénél](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>További lépések
 [Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak](manage-apps/application-proxy.md)

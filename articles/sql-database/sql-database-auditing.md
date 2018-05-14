@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95c5793bec228e2da8c98ea9263475f55de739d9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázis-események, mind az írás őket naplózási jelentkezzen be az Azure storage-fiók. A naplózás is:
@@ -73,11 +73,11 @@ Az alábbi szakasz ismerteti az Azure portál használatával naplózási beáll
 
     ![Navigációs ablaktábla][3]
 5. Lehetőségre a **naplózási naplók tárolási** panelen válassza **tárolási részletek**. Válassza ki az Azure storage-fiók, ahol naplókat a rendszer menti, majd válassza ki a megőrzési időn. Törli a régi naplókat. Ezután kattintson az **OK** gombra.
-   >[!TIP]
-   >A legtöbbet hozhatja ki a naplózási jelentések sablonok, ugyanazt a tárfiókot használja az összes naplózott adatbázisok.
+    >[!TIP]
+    >A legtöbbet hozhatja ki a naplózási jelentések sablonok, ugyanazt a tárfiókot használja az összes naplózott adatbázisok.
 
     <a id="storage-screenshot"></a>![Navigációs ablaktábla][4]
-6. Ha szeretné testre szabni a naplózott eseményeket, ehhez PowerShell vagy a REST API használatával.
+6. Ha szeretné testre szabni a naplózott eseményeket, ehhez keresztül [PowerShell-parancsmagok](#subheading-7) vagy a [REST API](#subheading-9).
 7. A naplózási beállítások konfigurálása után az új fenyegetés észlelési szolgáltatás, és konfigurálja a biztonsági riasztások e-maileket. Fenyegetésészlelés használatakor kapni proaktív riasztások a adatbázist érintő rendellenes tevékenységeket, amely azt jelzi, hogy a esetleges biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [Ismerkedés a fenyegetésészlelés](sql-database-threat-detection-get-started.md).
 8. Kattintson a **Save** (Mentés) gombra.
 
@@ -149,8 +149,8 @@ Georeplikált adatbázisok Ha az elsődleges adatbázis naplózásának engedél
    * BLOB naplózását engedélyezni kell a *maga elsődleges adatbázis*, nem a kiszolgáló.
    * Blob naplózás engedélyezése után az elsődleges adatbázist, akkor is válik elérhetővé, másodlagos adatbázison.
 
-     >[!IMPORTANT]
-     >Adatbázis-szintű naplózás esetén a másodlagos adatbázis-tárolási beállításai lesz azonos az elsődleges adatbázis, a kereszt-területi forgalmat, amely. Azt javasoljuk, hogy csak a kiszolgálószintű naplózást, és hagyja meg az adatbázis-szintű naplózás le van tiltva az összes olyan adatbázis.
+    >[!IMPORTANT]
+    >Adatbázis-szintű naplózás esetén a másodlagos adatbázis-tárolási beállításai lesz azonos az elsődleges adatbázis, a kereszt-területi forgalmat, amely. Azt javasoljuk, hogy csak a kiszolgálószintű naplózást, és hagyja meg az adatbázis-szintű naplózás le van tiltva az összes olyan adatbázis.
 <br>
 
 ### <a id="subheading-6">Tárolási kulcs újragenerálása</a>
@@ -169,33 +169,41 @@ Georeplikált adatbázisok Ha az elsődleges adatbázis naplózásának engedél
 
 * A napló vonatkozó további információért formátumú, a tároló mappa hierarchiáját és elnevezési konvenciók, tekintse meg a [Blob naplózási napló fájlformátum referenciájában](https://go.microsoft.com/fwlink/?linkid=829599).
 
-   > [!IMPORTANT]
-   > Az Azure SQL adatbázishoz Audit 4000 karaktert tartalmazhat karakter mezők tárol egy naplórekordot. Ha a **utasítás** vagy a **data_sensitivity_information** naplózható művelet által visszaadott értékek legfeljebb 4000 karaktert tartalmazhat, a először 4000 karakter bármely adatok lesz  **csonkolva lesz, és nem ellenőrzött**.
+    > [!IMPORTANT]
+    > Az Azure SQL adatbázishoz Audit 4000 karaktert tartalmazhat karakter mezők tárol egy naplórekordot. Ha a **utasítás** vagy a **data_sensitivity_information** naplózható művelet által visszaadott értékek legfeljebb 4000 karaktert tartalmazhat, a először 4000 karakter bármely adatok lesz  **csonkolva lesz, és nem ellenőrzött**.
 
-* Naplók írt **hozzáfűző Blobok** egy Azure Blob Storage az Azure-előfizetése.
-   * **Prémium szintű Storage** jelenleg **nem támogatott** által hozzáfűző blobokat.
-   * **VNet a tárolási** jelenleg **nem támogatott**.
+* Naplók írt **hozzáfűző Blobok** egy az Azure-előfizetéshez az Azure Blob Storage:
+    * **Prémium szintű Storage** jelenleg **nem támogatott** által hozzáfűző blobokat.
+    * **VNet a tárolási** jelenleg **nem támogatott**.
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>SQL adatbázis-naplózás az Azure PowerShell kezelése
+* Az alapértelmezett naplózási házirend tartalmazza minden művelet és a következő művelet csoportok, amelyek fogja naplózni a lekérdezések és az adatbázis, valamint a sikeres és sikertelen bejelentkezések alapján végrehajtott tárolt eljárások:
 
-* **PowerShell-parancsmagok**:
+    BATCH_COMPLETED_GROUP<br>
+    SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP<br>
+    FAILED_DATABASE_AUTHENTICATION_GROUP
 
-   * [Get-AzureRMSqlDatabaseAuditing][101]
-   * [Get-AzureRMSqlServerAuditing][102]
-   * [Set-AzureRMSqlDatabaseAuditing][105]
-   * [Set-AzureRMSqlServerAuditing][106]
+    Beállíthatja a különböző típusú műveletek és a powershellel, a művelet csoportok naplózását a [kezelése SQL adatbázis-naplózás az Azure PowerShell](#subheading-7) szakasz.
 
-   Tekintse meg a parancsfájl például [konfigurálhatja a naplózás és a fenyegetések észlelésére, a PowerShell használatával](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+## <a id="subheading-7"></a>SQL adatbázis-naplózás az Azure PowerShell kezelése
 
-## <a name="manage-sql-database-auditing-using-rest-api"></a>SQL adatbázis naplózás REST API használatával kezelése
+**PowerShell-parancsmagok**:
 
-* **REST API - Blobnaplózási funkció**:
+* [Létrehozása vagy frissítése adatbázis Blob naplórendet (Set-AzureRMSqlDatabaseAuditing)][105]
+* [Létrehozni vagy frissíteni Server Blob naplórendet (Set-AzureRMSqlServerAuditing)][106]
+* [Adatbázis naplózási házirend beolvasása (Get-AzureRMSqlDatabaseAuditing)][101]
+* [Kiszolgáló Blob naplórendet beolvasása (Get-AzureRMSqlServerAuditing)][102]
 
-   * [Hozzon létre vagy frissítés adatbázis Blob naplózási házirend](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-   * [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-   * [Adatbázis-Blob naplórendet beolvasása](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-   * [Kiszolgáló Blob naplórendet beolvasása](https://msdn.microsoft.com/library/azure/mt771860.aspx)
-   * [Műveleti eredmény naplózás Server Blob beolvasása](https://msdn.microsoft.com/library/azure/mt771862.aspx)
+Tekintse meg a parancsfájl például [konfigurálhatja a naplózás és a fenyegetések észlelésére, a PowerShell használatával](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+
+## <a id="subheading-9"></a>SQL adatbázis naplózás REST API használatával kezelése
+
+**REST API - Blobnaplózási funkció**:
+
+* [Hozzon létre vagy frissítés adatbázis Blob naplózási házirend](https://msdn.microsoft.com/library/azure/mt695939.aspx)
+* [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://msdn.microsoft.com/library/azure/mt771861.aspx)
+* [Adatbázis-Blob naplórendet beolvasása](https://msdn.microsoft.com/library/azure/mt695938.aspx)
+* [Kiszolgáló Blob naplórendet beolvasása](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [Műveleti eredmény naplózás Server Blob beolvasása](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 
 <!--Anchors-->
@@ -204,8 +212,9 @@ Georeplikált adatbázisok Ha az elsődleges adatbázis naplózásának engedél
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Automation (PowerShell / REST API)]: #subheading-7
+[Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
+[Manage SQL database auditing using REST API]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

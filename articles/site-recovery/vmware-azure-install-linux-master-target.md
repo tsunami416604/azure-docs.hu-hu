@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 986f36cccc9755e5b5a7fc2f81d7e6dff2bf1ccf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>A Linux fő célkiszolgáló telepítése
 Miután a rendszer átadja a virtuális gépek Azure-ba, akkor is feladat-visszavételt a virtuális gépeket a helyszíni hely. A feladat-visszavételt, állítsa a virtuális gépet az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége van egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -330,9 +330,9 @@ Miután a telepítés befejeződött, a konfigurációs kiszolgáló regisztrál
      Várjon, amíg a parancsfájl befejeződik. Ha a fő célkiszolgáló sikeresen regisztrálva van, a fő célkiszolgáló megtalálható a **Site Recovery-infrastruktúra** a portál lapján.
 
 
-### <a name="install-vmware-tools-on-the-master-target-server"></a>A VMware-eszközök a fő célkiszolgáló telepítése
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>A VMware-eszközök telepítése / nyílt-virtuálisgép-eszközök a fő célkiszolgálón
 
-Szeretne telepíteni a VMware-eszközök a fő célkiszolgáló, így képes felderíteni, akkor az adattároló. Ha az eszközök nincsenek telepítve, a védelem-újrabeállítási képernyőn nem szerepel az adattároló. A VMware-eszközök telepítése, után újra kell indítania.
+Szeretne telepíteni a VMware-eszközök vagy nyílt-virtuálisgép-eszközök a fő célkiszolgáló, hogy az képes felderíteni az adattároló. Ha az eszközök nincsenek telepítve, a védelem-újrabeállítási képernyőn nem szerepel az adattároló. A VMware-eszközök telepítése, után újra kell indítania.
 
 ### <a name="upgrade-the-master-target-server"></a>A fő célkiszolgáló frissítése
 

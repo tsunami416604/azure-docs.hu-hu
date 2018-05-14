@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ebfa7da32859f8d2d0ff3778af3b5cca99bdf1f4
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -46,7 +46,14 @@ Az Azure fájlszinkronizálás ügynök csomag egy letölthető, amely lehetőv�
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Kiszolgáló-végpont
-Egy kiszolgáló végpont képviseli regisztrált kiszolgálón, például egy mappát egy olyan kiszolgáló köteten egy konkrét helyre. Több kiszolgáló végpont ugyanazon a köteten található is, ha a névterek nem lehetnek átfedésben (például `F:\sync1` és `F:\sync2`). Beállíthatja felhő rétegezési egyenként az egyes kiszolgáló-végpont esetében. Jelenleg nincs lehetőség egy kötet gyökerének kiszolgáló-végpont létrehozása (például `F:\` vagy `C:\myvolume`, ha egy kötet csatlakoztatva van a csatlakoztatási pontok).
+Egy kiszolgáló végpont képviseli regisztrált kiszolgálón, például egy mappát egy olyan kiszolgáló köteten egy konkrét helyre. Több kiszolgáló végpont ugyanazon a köteten található is, ha a névterek nem lehetnek átfedésben (például `F:\sync1` és `F:\sync2`). Beállíthatja felhő rétegezési egyenként az egyes kiszolgáló-végpont esetében. 
+
+A kiszolgáló végpont a csatlakoztatási pont használatával hozhat létre. Jegyezze fel, akkor a kiszolgáló végpont belül csatlakozási kimarad.  
+
+Létrehozhat egy végpontját a rendszerkötet, de nincsenek két korlátozások vonatkoznak, ha ezt teszi:
+* Felhő rétegezéséhez nem engedélyezhető.
+* Gyors névtér visszaállítást (ahol a rendszer gyorsan számos lehetőséget kínál a teljes névteret le, majd elindítja tartalom visszahívásához) a rendszer nem végez.
+
 
 > [!Note]  
 > Csak nem cserélhető kötetek támogatottak.  Távoli megosztásból csatlakoztatott meghajtók nem támogatottak a kiszolgáló végpont elérési útvonalat.  A kiszolgáló végpont elhelyezhető továbbá a rendszerkötet, ha felhőalapú Windows rétegezéséhez nem támogatott a rendszerköteten.
@@ -105,9 +112,9 @@ Vannak a Windows Server későbbi verzióiban lesz hozzáadva. A Windows korább
 | ~$\*.\* | Office-fájl ideiglenes |
 | \*.tmp | Ideiglenes fájl |
 | \*.laccdb | DB hozzáférés a zárolási fájl|
-| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| 635D02A9D91C401B97884B82B3BCDAEA.* | Belső szinkronizálási fájl|
 | \\A System Volume Information | Adott kötetre mappa |
-| $RECYCLE.BIN| Mappa |
+| $RECYCLE. BIN| Mappa |
 | \\SyncShareState | Mappa-szinkronizáláshoz |
 
 ### <a name="failover-clustering"></a>Feladatátvételi fürtszolgáltatás

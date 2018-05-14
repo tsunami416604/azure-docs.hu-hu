@@ -1,12 +1,12 @@
 ---
-title: "Központi telepítés forrásainak konfigurálása az Azure-veremben alkalmazásszolgáltatások |} Microsoft Docs"
-description: "Hogyan szolgáltatás-rendszergazda számára állíthat be (Git, GitHub, BitBucket, DropBox és a OneDrive) központi telepítés forrásból veremben Azure App Service"
+title: Központi telepítés forrásainak konfigurálása az Azure-veremben alkalmazásszolgáltatások |} Microsoft Docs
+description: Hogyan szolgáltatás-rendszergazda számára állíthat be (Git, GitHub, BitBucket, DropBox és a OneDrive) központi telepítés forrásból veremben Azure App Service
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 277ed277b14886d386e097e0ce4bef8add5d4ba1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 46242fd7ab9e05cfc2edde119afdc6053f129e40
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-deployment-sources"></a>Központi telepítés forrásának konfigurálása
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
@@ -36,7 +36,7 @@ Helyi Git mellett a következő verziókövetési szolgáltatók támogatottak:
 
 ## <a name="view-deployment-sources-in-app-service-administration"></a>App Service felügyeleti nézet telepítési források
 
-1. Jelentkezzen be az Azure verem felügyeleti portál (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
+1. Jelentkezzen be a verem Azure felügyeleti portálon (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
 2. Keresse meg a **erőforrás-szolgáltató** válassza ki a **App Service erőforrás szolgáltató Admin**.  ![Az App Service erőforrás-szolgáltató rendszergazda][1]
 3. Kattintson a **forrás vezérlőkonfiguráció**.  Itt láthatja a konfigurált központi telepítési források felsorolása.
     ![Az App Service erőforrás szolgáltató Admin forrás vezérlő konfigurálása][2]
@@ -45,15 +45,15 @@ Helyi Git mellett a következő verziókövetési szolgáltatók támogatottak:
 
 A feladat végrehajtásához GitHub fiókkal kell rendelkeznie. Előfordulhat, hogy szeretne egy személyes fiók helyett a szervezet olyan fiókot használjon.
 
-1. Jelentkezzen be a GitHub, keresse meg a https://www.github.com/settings/developers, és kattintson a **egy új alkalmazás regisztrálása**.
+1. Jelentkezzen be a Githubon, keresse meg a https://www.github.com/settings/developers kattintson **egy új alkalmazás regisztrálása**.
     ![GitHub - egy új alkalmazás regisztrálása][3]
 2. Adjon meg egy **alkalmazásnév** például - App Service-Azure veremben.
-3. Adja meg a **kezdőlap URL-cím**. A kezdőlap URL-CÍMÉT az Azure verem Portal címnek kell lennie. Például https://portal.local.azurestack.external.
+3. Adja meg a **kezdőlap URL-cím**. A kezdőlap URL-CÍMÉT az Azure verem Portal címnek kell lennie. Például: https://portal.local.azurestack.external.
 4. Adjon meg egy **alkalmazás leírása**.
-5. Adja meg a **engedélyezési visszahívási URL-címet**.  Alapértelmezett Azure verem üzembe helyezése esetén az URL-cím van az űrlap https://portal.local.azurestack.external/tokenauthorize, ha le egy másik tartományba helyettesítő local.azurestack.external a tartomány ![GitHub - új alkalmazás feltöltve értékekkel][4]
+5. Adja meg a **engedélyezési visszahívási URL-címet**.  Alapértelmezett Azure verem üzembe helyezése esetén az URL-cím formájában van https://portal.local.azurestack.external/TokenAuthorize, ha le egy másik tartományba helyettesítő local.azurestack.external a tartomány
 6. Kattintson a **alkalmazás regisztrálása**.  Most már választhat az oldal lista tartalmazza a **ügyfél-azonosító** és **Ügyfélkulcs** az alkalmazáshoz.
     ![GitHub - regisztrációja befejeződött][5]
-7.  Egy új böngészőlapon vagy ablakban jelentkezzen be az Azure verem felügyeleti portál (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
+7.  Egy új böngészőlapon vagy ablakban jelentkezzen be a verem Azure felügyeleti portálon (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
 8.  Keresse meg a **erőforrás-szolgáltató** válassza ki a **App Service erőforrás szolgáltató Admin**.
 9. Kattintson a **forrás vezérlőkonfiguráció**.
 10. Másolja és illessze be a **ügyfél-azonosító** és **Ügyfélkulcs** be a megfelelő beviteli mezők a github használatára.
@@ -69,14 +69,14 @@ A feladat végrehajtásához BitBucket fiókkal kell rendelkeznie. Előfordulhat
     ![BitBucket OAuth fogyasztói hozzáadása][8]
 3. Adjon meg egy **neve** veremben Azure App Service-például a fogyasztó számára.
 4. Adjon meg egy **leírás** az alkalmazáshoz.
-5. Adja meg a **visszahívási URL-cím**.  Alapértelmezett Azure verem telepítésében a visszahívás URL-cím esetén az űrlap https://portal.local.azurestack.external/TokenAuthorize le egy másik tartományba helyettesítő azurestack.local a tartományt.  Az URL-címet kell a kis-és nagybetűk kövesse az itt felsorolt BitBucket integrációs sikeres.
-6. Adja meg a **URL-cím** – az URL-cím az Azure verem portál URL-CÍMÉT, például https://portal.local.azurestack.external kell lennie.
+5. Adja meg a **visszahívási URL-cím**.  Alapértelmezett Azure verem telepítésében, a visszahívás URL-cím formájában van https://portal.local.azurestack.external/TokenAuthorize, ha le egy másik tartományba helyettesítő azurestack.local a tartományt.  Az URL-címet kell a kis-és nagybetűk kövesse az itt felsorolt BitBucket integrációs sikeres.
+6. Adja meg a **URL-cím** -URL-címet kell az Azure verem portál URL-CÍMÉT, például https://portal.local.azurestack.external.
 7. Válassza ki a **engedélyek** szükséges:
     - **Adattárak**: *olvasása*
     - **Webhook**: *olvasása és írása*
 8. Kattintson a **Save** (Mentés) gombra.  Megjelenik az új alkalmazás, valamint a **kulcs** és **titkos** alatt **OAuth fogyasztók**.
     ![BitBucket alkalmazás listázása][9]
-9.  Egy új böngészőlapon vagy ablakban jelentkezzen be az Azure verem felügyeleti portál (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
+9.  Egy új böngészőlapon vagy ablakban jelentkezzen be a verem Azure felügyeleti portálon (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
 10.  Keresse meg a **erőforrás-szolgáltató** válassza ki a **App Service erőforrás szolgáltató Admin**.
 11. Kattintson a **forrás vezérlőkonfiguráció**.
 12. Másolja és illessze be a **kulcs** azokat a **ügyfél-azonosító** beviteli mezőt és **titkos** be a **Ügyfélkulcs** bitbucket szolgáltatásokhoz tartozó beviteli mezőt.
@@ -90,7 +90,7 @@ A feladat végrehajtásához Microsoft Account csatolva a OneDrive-fiókja kell 
 > [!NOTE]
 > A OneDrive vállalati fiókok jelenleg nem támogatottak.
 
-1. Tallózással keresse meg a https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm, és jelentkezzen be a Microsoft Account.
+1. Keresse meg a https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm , és jelentkezzen be a Microsoft Account.
 2. A **alkalmazásaimból**, kattintson a **hozzáadhat egy alkalmazást**.
 ![A OneDrive-alkalmazások][10]
 3. Adjon meg egy **neve** adja meg az új alkalmazás regisztrációja **veremben Azure App Service**, és kattintson a **alkalmazás létrehozása**
@@ -98,13 +98,13 @@ A feladat végrehajtásához Microsoft Account csatolva a OneDrive-fiókja kell 
 ![Onedrive vállalati verzió alkalmazás tulajdonságai][11]
 5. A **alkalmazás titkos kulcsok**, kattintson a **új jelszó létrehozása**. Jegyezze fel a **jön létre új jelszót**. Ez az alkalmazás titkos kulcs és nincs lekérhető kattintás után **OK** ebben a szakaszban.
 6. A **platformok** kattintson **hozzáadása Platform** válassza **webes**.
-7. Adja meg a **átirányítási URI**.  Alapértelmezett Azure verem telepítésében, az átirányítási URI-van az űrlap https://portal.local.azurestack.external/tokenauthorize, ha le egy másik tartományba helyettesítő azurestack.local a tartomány ![onedrive vállalati verzió alkalmazás - hozzáadása Webes platform jöhet létre][12]
+7. Adja meg a **átirányítási URI**.  Az átirányítási URI-van alapértelmezett Azure verem telepítésében, a képernyőn https://portal.local.azurestack.external/TokenAuthorize, ha le egy másik tartományba helyettesítő azurestack.local a tartomány ![onedrive vállalati verzió alkalmazás - Web Platform hozzáadása][12]
 8. Adja hozzá a **Microsoft Graph engedélyek** - **delegált engedélyekkel**
     - **Files.ReadWrite.AppFolder**
     - **User.Read**  
       ![Onedrive vállalati verzió alkalmazás - grafikon engedélyek][13]
 9. Kattintson a **Save** (Mentés) gombra.
-10.  Egy új böngészőlapon vagy ablakban jelentkezzen be az Azure verem felügyeleti portál (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
+10.  Egy új böngészőlapon vagy ablakban jelentkezzen be a verem Azure felügyeleti portálon (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
 11.  Keresse meg a **erőforrás-szolgáltató** válassza ki a **App Service erőforrás szolgáltató Admin**.
 12. Kattintson a **forrás vezérlőkonfiguráció**.
 13. Másolja és illessze be a **Alkalmazásazonosító** azokat a **ügyfél-azonosító** beviteli mezőt és **jelszó** be a **Ügyfélkulcs** beviteli mezőt a onedrive vállalati verzióhoz.
@@ -115,7 +115,7 @@ A feladat végrehajtásához Microsoft Account csatolva a OneDrive-fiókja kell 
 > [!NOTE]
 > A DropBox-fiókot, a feladat végrehajtásához szükséges.  Kezdésként érdemes lehet egy személyes fiók helyett a szervezet olyan fiókot használjon.
 
-1. Tallózással keresse meg a https://www.dropbox.com/developers/apps, és jelentkezzen be a DropBox-fiók használatával.
+1. Keresse meg a https://www.dropbox.com/developers/apps , és jelentkezzen be a DropBox-fiók használatával.
 2. Kattintson a **-alkalmazás létrehozása**.
 
     ![Dropbox-alkalmazások][14]
@@ -126,9 +126,9 @@ A feladat végrehajtásához Microsoft Account csatolva a OneDrive-fiókja kell 
 ![Dropbox-alkalmazás regisztrációja][15]
 6. Kattintson a **-alkalmazás létrehozása**.  Most már választhat a beállításait az alkalmazás például listázása oldallal **Alkalmazáskulcs** és **alkalmazás titkos kulcs**.
 7. Ellenőrizze a **App mappanév** értéke **veremben Azure App Service**.
-8. Állítsa be a **OAuth 2 átirányítási URI-** kattintson **Hozzáadás**.  Alapértelmezett Azure verem telepítésében átirányítási URI-t esetén a képernyő https://portal.local.azurestack.external/tokenauthorize le egy másik tartományba helyettesítő azurestack.local a tartományt.
+8. Állítsa be a **OAuth 2 átirányítási URI-** kattintson **Hozzáadás**.  Az átirányítási URI-van alapértelmezett Azure verem telepítésében, a képernyőn https://portal.local.azurestack.external/TokenAuthorize, ha le egy másik tartományba helyettesítő azurestack.local a tartományt.
 ![Dropbox alkalmazás konfigurációja][16]
-9.  Egy új böngészőlapon vagy ablakban jelentkezzen be az Azure verem felügyeleti portál (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
+9.  Egy új böngészőlapon vagy ablakban jelentkezzen be a verem Azure felügyeleti portálon (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
 10.  Keresse meg a **erőforrás-szolgáltató** válassza ki a **App Service erőforrás szolgáltató Admin**.
 11. Kattintson a **forrás vezérlőkonfiguráció**.
 12. Másolja és illessze be a **Alkalmazáskulcsot** be a **ügyfél-azonosító** beviteli mezőt és **alkalmazás titkos kulcs** be a **Ügyfélkulcs** beviteli mezőt a dropbox-bA.

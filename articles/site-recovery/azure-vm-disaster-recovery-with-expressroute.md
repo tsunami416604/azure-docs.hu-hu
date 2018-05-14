@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: 8b4c7bb561d311796f59b94a6e2fbcd9b571d2cd
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 44ecbcc51cb53f4d7b68f5c5e24e7d81c5a4208c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="using-expressroute-with-azure-virtual-machine-disaster-recovery"></a>ExpressRoute használata az Azure virtuális gép katasztrófa utáni helyreállítás
 
@@ -79,7 +79,7 @@ Alapértelmezés szerint a replikációs forgalom nem hagyja meg az Azure-határ
 
 Az Azure virtuális gépek feladatátvétel történt egy másik régióban, ha a meglévő ExpressRoute-kapcsolatot a forrás virtuális hálózathoz nem automatikusan átkerül a cél virtuális hálózat helyreállítási régió. Új kapcsolat ExpressRoute a cél virtuális hálózathoz való kapcsolódáshoz szükséges.
 
-Azure virtuális gépeken belül az azonos földrajzi fürt részletes bármely Azure régióban replikálhatja [Itt](azure-to-azure-support-matrix.md#region-support). Ha a választott cél Azure-régiót kívül esik a forrás-és geopolitikai ugyanabban a régióban, akkor engedélyeznie kell ExpressRoute prémium használata egy ExpressRoute-kapcsolatcsoportot a forrás és cél régió kapcsolatra. További részletekért ellenőrizze [helyek ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute árképzési](https://azure.microsoft.com/en-us/pricing/details/expressroute/).
+Azure virtuális gépeken belül az azonos földrajzi fürt részletes bármely Azure régióban replikálhatja [Itt](azure-to-azure-support-matrix.md#region-support). Ha a választott cél Azure-régiót kívül esik a forrás-és geopolitikai ugyanabban a régióban, akkor engedélyeznie kell ExpressRoute prémium használata egy ExpressRoute-kapcsolatcsoportot a forrás és cél régió kapcsolatra. További részletekért ellenőrizze [helyek ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute árképzési](https://azure.microsoft.com/pricing/details/expressroute/).
 
 ### <a name="two-expressroute-circuits-in-two-different-expressroute-peering-locations"></a>Két különböző ExpressRoute társviszony-létesítési helyeken két ExpressRoute-Kapcsolatcsoportok
 -   Ez a konfiguráció akkor hasznos, ha sikertelen volt-e az elsődleges ExpressRoute-kapcsolatcsoport és nagy méretű regionális katasztrófák, sikerült is hatással lehet a társviszony-létesítési helyek ExpressRoute és megzavarhatják a elsődleges ExpressRoute-kapcsolatcsoportot elleni biztosítását szeretné.

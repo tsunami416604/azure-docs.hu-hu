@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/1/2018
 ms.author: billmath
-ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a28a377ec3872fad0121636070b6604eaa415b30
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Objektum-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
 Ez a dokumentum ismerteti a problémák elhárítása hibaelhárítási feladat szinkronizációs lépéseit.
@@ -34,6 +34,7 @@ A varázsló a hibaelhárítási feladat futtatásához a következő lépésekk
 4.  Nyissa meg a további feladatok lapot, válassza ki a hibaelhárítás, és kattintson a Tovább gombra.
 5.  A hibaelhárítás lapon kattintson az Indítás gombra a PowerShellben indítsa el a hibaelhárítási menü.
 6.  A főmenühöz tartozik válassza ki a szinkronizációs hibaelhárítása.
+![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>Hibaelhárítási bemeneti paraméterek
 A következő bemeneti paraméterek a hibaelhárítási feladata van szükség:
@@ -47,6 +48,8 @@ A hibaelhárítási feladat a következő műveleteket hajtja végre:
 1.  Egyszerű felhasználónév eltérés észleli, ha az objektum van-e szinkronizálva az Azure Active Directoryhoz
 2.  Ellenőrizze, hogy ha objektum szűrt miatt tartomány szűrése
 3.  Ellenőrizze, hogy ha objektum szűrt miatt szervezeti egységek szűrése
+4.  Ellenőrizze, hogy ha szinkronizációs le van tiltva, mert hivatkozott postafiókkal
+5. Annak ellenőrzése, hogy objektum dinamikus terjesztési csoport, amely nem szinkronizálható kellene
 
 Ez a szakasz a többi adott a tevékenység által visszaadott eredmények ismerteti. Minden esetben a feladat elemzi a probléma megoldása érdekében javasolt művelet követ.
 
@@ -76,9 +79,17 @@ Objektum nem része nincs konfigurálva tartomány miatt. Az alábbi példában 
 Objektum hatókörén kívül hiányzik a tartomány fut profilok/Futtatás lépéseket. Az alábbi példában célja szinkronban hatókör, a tartományban, amelyhez tartozik, a teljes importálás futtatási profiljának futtatási lépéseket hiányzik.
 ![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch6.png)
 
-### <a name="object-is-filtered-due-to-ou-filtering"></a>Objektum szűrt miatt szervezeti egységek szűrése
-Az objektum szinkronban hatókör OU szűrési konfigurációja miatt. Az alábbi példában az objektum tartozik OU NoSync, DC = = bvtadwbackdc, DC = com.  A szervezeti egység nem szerepel a szinkronizálás hatókörében.
-![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+## <a name="object-is-filtered-due-to-ou-filtering"></a>Objektum szűrt miatt szervezeti egységek szűrése
+Az objektum szinkronban hatókör OU szűrési konfigurációja miatt. Az alábbi példában az objektum tartozik OU NoSync, DC = = bvtadwbackdc, DC = com.  A szervezeti egység nem szerepel a szinkronizálás hatókörében.</br>
+
+![SZERVEZETI EGYSÉG](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+
+## <a name="linked-mailbox-issue"></a>Csatolt postaláda-probléma
+A hivatkozott postafiókkal hozzá kell rendelni egy másik fiókot megbízható erdőben található külső fő fiók kellene. Ha nincs ilyen külső fő fiók, akkor az Azure AD Connect nem szinkronizálja a felhasználói fiók megfelel-e az Azure AD-bérlő az Exchange-erdő hivatkozott postafiókkal.</br>
+![Csatolt postaláda](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch12.png)
+
+## <a name="dynamic-distribution-group-issue"></a>Dinamikus terjesztési csoport probléma
+A helyszíni különböző eltérései miatt Active Directory és az Azure Active Directory, az Azure AD Connect nem szinkronizálja az Azure AD-bérlő dinamikus terjesztési csoport.
 
 ## <a name="html-report"></a>HTML-jelentés
 Az objektum elemzése, mellett a hibaelhárítási feladat is, ami egy HTML-jelentést, amely minden ismert arról az objektumról. A HTML-jelentést megosztható támogatási csoport ehhez a további hibaelhárítási, ha szükséges.

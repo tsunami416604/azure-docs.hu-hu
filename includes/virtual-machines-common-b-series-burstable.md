@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 95a78df20f5bed07213dfa3cc2c9b35e283f54e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7372a0c49f6e41ef4d336188ceb5cf4393f4c982
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 A B sorozatnak VM termékcsalád lehetővé teszi annak meghatározását, mely Virtuálisgép-méretet a megfelelő alap szint teljesítmény a munkaterhelés a lehetőséget nyújt a CPU-teljesítmény az Intel® Broadwell E5-2673 v4 legfeljebb 100 %-os kapacitásnövelés 2.3 GHz-es, vagy egy Intel® Haswell 2.4 GHz -es E5-2673 v3 processzor vCPU.
 
@@ -58,7 +58,8 @@ Ha a 120 jóváírásokat I csúcsidőn kívüli érvénybe és kivonás a 96 kr
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>K: a B sorozatnak támogatja a prémium szintű Storage adatlemezek?
 **A**: Igen, támogatja a B sorozatnak különböző méretű a prémium szintű Storage adatok lemezeket.   
     
-
+### <a name="q-my-remaining-credit-are-set-to-0-after-a-redepoy-or-a-stopstart"></a>K: a Fennmaradó jóváírás egy redepoy vagy leállítása vagy elindítása után értéke 0.
+**A** : Ha egy virtuális gép "REDPLOYED", azaz, a virtuális gép áthelyezése egy másik csomópontra, és a halmozott jóváírás elvész. Ha a virtuális gép leállítása vagy indítása, de továbbra is ugyanazon a csomóponton, a virtuális gép megőrzi a halmozott jóváírás. A virtuális gép elindul egy csomóponton friss, amikor egy kezdeti jóváírás nyer, a Standard_B8ms 240 perc.
 
     
 

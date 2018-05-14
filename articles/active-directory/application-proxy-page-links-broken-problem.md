@@ -1,11 +1,11 @@
 ---
-title: "A lapon lévő hivatkozások nem működnek az alkalmazásproxy alkalmazás |} Microsoft Docs"
-description: "Érvénytelen hivatkozásokkal a integrálva van az Azure AD alkalmazásproxy-alkalmazásokkal kapcsolatos problémák elhárítása"
+title: A lapon lévő hivatkozások nem működnek az alkalmazásproxy alkalmazás |} Microsoft Docs
+description: Érvénytelen hivatkozásokkal a integrálva van az Azure AD alkalmazásproxy-alkalmazásokkal kapcsolatos problémák elhárítása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 17f2afb0aaf3b899784a504b77f33a1284f0a232
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 64dcf5608710a85c47cd14ed9bee33594d46e083
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>A lapon lévő hivatkozások nem működnek az alkalmazásproxy alkalmazás
 
-Ez a cikk segítséget hibaelhárítása, ezért az Azure Active Directory Alkalmazásproxyjával alkalmazás lévő hivatkozások nem működnek megfelelően.
+Ez a cikk segít hibaelhárítása, ezért az Azure Active Directory Alkalmazásproxyjával alkalmazás lévő hivatkozások nem működnek megfelelően.
 
 ## <a name="overview"></a>Áttekintés 
 Miután közzétette az alkalmazásproxy-alkalmazást, a csak hivatkozások, amelyek az alkalmazás alapértelmezés szerint működnek a célok a közzétett gyökér URL-cím található hivatkozások olyan. Az alkalmazásokon belül a hivatkozások nem működnek, az alkalmazás belső URL-címe valószínűleg nem tartalmaz hivatkozásokat az alkalmazáson belül a célhelyre.
@@ -34,15 +34,15 @@ A probléma megoldásához három módja van. Az alábbi lehetőségek a felsoro
 
 1.  Ellenőrizze, hogy a belső URL-cím a legfelső szintű az alkalmazás összes ide tartozó hivatkozásokat tartalmaz. Ez lehetővé teszi az ugyanazon alkalmazásban közzétett tartalmat oldható mutató összes hivatkozást.
 
-    Ha módosítsa a belső URL-címet, de nem szeretné módosítani a felhasználók kezdőlapja, módosítsa a kezdőlap URL-címet a korábban közzétett belső URL-címre. Ha az "Azure Active Directory" - Ehhez&gt; App regisztrációk -&gt; válassza ki az alkalmazás -&gt; tulajdonságok. A Tulajdonságok lapon tekintse meg a mező "Kezdőlap URL-címe" amely beállíthatja a kívánt kezdőlapja lehet.
+    Ha módosítsa a belső URL-címet, de nem szeretné módosítani a felhasználók kezdőlapja, módosítsa a kezdőlap URL-címet a korábban közzétett belső URL-címre. Ha az "Azure Active Directory" - Ehhez&gt; App regisztrációk -&gt; válassza ki az alkalmazás -&gt; tulajdonságok. A Tulajdonságok lapon tekintse meg a mező "Kezdőlap URL-címe", amelyen beállíthatja a kívánt kezdőlapja lehet.
 
-2.  Ha az alkalmazások teljes tartományneveit (FQDN) használ, akkor [egyéni tartományok](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) az alkalmazások közzétételét. Ez a funkció lehetővé teszi, hogy az URL-CÍMÉRE kell használni, mind belső és külső beállításait.
+2.  Ha az alkalmazások teljes tartományneveit (FQDN) használ, akkor [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) az alkalmazások közzétételét. Ez a funkció lehetővé teszi, hogy az URL-CÍMÉRE kell használni, mind belső és külső beállításait.
 
-    Ez a beállítás biztosítja, hogy az alkalmazás hivatkozását kívülről elérhető proxyn keresztül történő óta a hivatkozások belső URL-címek az alkalmazáson belül kívülről is felismeri. Ne feledje, hogy minden kapcsolat továbbra is a közzétett alkalmazás tartozik. Azonban ez a beállítás a hivatkozások nem kell tartozniuk ugyanazt az alkalmazást, és több alkalmazást is tartozik.
+    Ez a beállítás biztosítja, hogy az alkalmazás hivatkozását kívülről elérhető proxyn keresztül történő óta a hivatkozások belső URL-címek az alkalmazáson belül kívülről is felismeri. Minden kapcsolat továbbra is szeretné a közzétett alkalmazás tartozik. Azonban ez a beállítás a hivatkozások nem kell tartozniuk ugyanazt az alkalmazást, és több alkalmazást is tartozik.
 
-3.  Ha egyik sem valósítható meg, egy új szolgáltatás, amelyek URL-cím fordítása/írja át az előzetes csatlakozik. Ezzel a lehetőséggel belső URL-címeket és az alkalmazások HTML törzsében fennálló lefordítva, vagy "leképezve", a közzétett külső Proxy URL-címek. Ez csak akkor működik, a HTML-vagy CSS hivatkozások, és ez segít a hivatkozás segítségével JS jön létre. 
+3.  Ha egyik sem valósítható meg, megtekintheti az új szolgáltatása, amelyet URL-cím fordítása/újraírását. Ez a szolgáltatás belső URL-címeket és az alkalmazások HTML törzsében fennálló lefordítva, vagy "leképezve", a közzétett külső Proxy URL-címek. Ezt a fordítást csak akkor működik a hivatkozások a HTML- vagy CSS, és nem oldották a hivatkozás segítségével JS jön létre. 
 
-Ennek eredményeképpen, erősen ajánlott használatával a [egyéni tartományok](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) megoldás Ha lehetséges. Ha csatlakozni szeretne az előzetes, e-mailben <aadapfeedback@microsoft.com> a applicationId(s) együtt.
+Ennek eredményeképpen, erősen ajánlott használatával a [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) megoldás Ha lehetséges. Ha csatlakozni szeretne az előzetes, e-mailben <aadapfeedback@microsoft.com> a applicationId(s) együtt.
 
 ## <a name="next-steps"></a>További lépések
 [A meglévő helyszíni proxykiszolgálókkal működik](application-proxy-working-with-proxy-servers.md)

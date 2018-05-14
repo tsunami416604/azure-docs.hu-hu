@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 5569a7608a61b4e79a03264e0ccf62682782264b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6318b6aafda972242239ce91abb0f67a15721e1e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Az Azure Blockchain munkaterület hivatkozás
 
@@ -41,7 +41,7 @@ Egy blockchain alkalmazás konfigurációs metaadatok, a munkafolyamatok és a f
 | Mező | Leírás | Szükséges |
 |-------|-------------|:--------:|
 | ApplicationName | Egyedi alkalmazásnevet. A megfelelő intelligens szerződés kell használnia az azonos **ApplicationName** vonatkozó szerződés osztálynál.  | Igen |
-| displayName | Az alkalmazás jól hangzó megjelenítési nevet. | Igen |
+| Megjelenítendő név | Az alkalmazás jól hangzó megjelenítési nevet. | Igen |
 | Leírás | Az alkalmazás leírását. | Nem |
 | ApplicationRoles | A gyűjtemény [ApplicationRoles](#application-roles). Felhasználói szerepkörök, kik hozhatnak működésre, illetve részt venni az alkalmazáson belül.  | Igen |
 | Munkafolyamatok | A gyűjtemény [munkafolyamatok](#workflows). Minden munkafolyamat úgy működik, mint egy állapotgép az üzleti logika üzenetáramlásának szabályozására. | Igen |
@@ -55,7 +55,7 @@ Egy alkalmazás üzleti logika, hogy hol tart a művelet hatására az üzleti l
 | Mező | Leírás | Szükséges |
 |-------|-------------|:--------:|
 | Name (Név) | A munkafolyamat egyedi neve. A megfelelő intelligens szerződés kell használnia az azonos **neve** vonatkozó szerződés osztálynál. | Igen |
-| displayName | A munkafolyamat jól hangzó megjelenítési nevet. | Igen |
+| Megjelenítendő név | A munkafolyamat jól hangzó megjelenítési nevet. | Igen |
 | Leírás | A munkafolyamat leírását. | Nem |
 | Kezdeményezők | A gyűjtemény [ApplicationRoles](#application-roles). Szerepkörök, felhasználók, akik jogosultak a szerződések a munkafolyamat létrehozásához rendelt. | Igen |
 | StartState | A kezdeti állapot, a munkafolyamat nevét. | Igen |
@@ -79,7 +79,7 @@ A támogatott adattípusokat.
 | pénz    | Pénz adattípus |
 | state    | A munkafolyamat állapota |
 | karakterlánc   | Karakterlánc adattípusra |
-| felhasználótól     | Típus felhasználó címe |
+| Felhasználó     | Típus felhasználó címe |
 | time     | Idő adattípus |
 |`[ Application Role Name ]`| Bármely alkalmazás-szerepkör által megadott nevét. Korlátozza a felhasználók számára az adott szerepkör típusú lehet. |
 
@@ -124,7 +124,7 @@ Meghatározza a függvények, amelyek a munkafolyamat hajtható végre.
 | Mező | Leírás | Szükséges |
 |-------|-------------|:--------:|
 | Name (Név) | A függvény egyedi neve. A megfelelő intelligens szerződés kell használnia az azonos **neve** a alkalmazható függvény. | Igen |
-| displayName | A függvény jól hangzó megjelenítési nevet. | Igen |
+| Megjelenítendő név | A függvény jól hangzó megjelenítési nevet. | Igen |
 | Leírás | A funkció leírása | Nem |
 | Paraméterek | A gyűjtemény [azonosítók](#identifiers) megfelelő a függvény paraméterei. | Igen |
 
@@ -172,7 +172,7 @@ A munkafolyamaton belül egyedi állapotokat gyűjteménye. Az egyes üzleti log
 | Mező | Leírás | Szükséges |
 |-------|-------------|:--------:|
 | Name (Név) | Az állapot egyedi nevét. A megfelelő intelligens szerződés kell használnia az azonos **neve** a megfelelő állapothoz. | Igen |
-| displayName | Az állapot jól hangzó megjelenítési nevet. | Igen |
+| Megjelenítendő név | Az állapot jól hangzó megjelenítési nevet. | Igen |
 | Leírás | Az állapot leírása. | Nem |
 | KészültségiSzint | Megjeleníti a folyamatot, az üzleti logika folyamatábrán belül Blockchain munkaterület felhasználói felületen megjelenő egész szám. | Igen |
 | Stílus | Visual mutatót, amely azt jelzi, hogy az állapot sikeres vagy sikertelen állapotát jeleníti meg. Két érvényes érték: `Success` vagy `Failure`. | Igen |
@@ -242,7 +242,7 @@ A következő állapotban elérhető műveletek. Egy vagy több felhasználói s
 |-------|-------------|:--------:|
 | AllowedRoles | Alkalmazások szerepkörök listája az átmenet kezdeményezése engedélyezett. Lehet, hogy a megadott szerepkör minden felhasználó képes végrehajtani a műveletet. | Nem |
 | AllowedInstanceRoles | Részt vevő vagy kezdeményezheti az átmenet engedélyezett intelligens szerződésben meghatározott felhasználói szerepkörök listáját. Példány szerepkörök definiálják **tulajdonságok** munkafolyamatok belül. Ezek a felhasználók határoz meg egy felhasználó részt vevő, vagy minden felhasználó, szerepkör típusú figyelésekor intelligens szerződésben meghatározott. | Nem |
-| displayName | Az átmenet jól hangzó megjelenítési nevet. | Igen |
+| Megjelenítendő név | Az átmenet jól hangzó megjelenítési nevet. | Igen |
 | Leírás | Az átmenet leírása. | Nem |
 | Függvény | Az átmenet kezdeményezése függvény neve. | Igen |
 | NextStates | A lehetséges következő állapotainak gyűjteményét sikeres átmenet után. | Igen |
@@ -309,7 +309,7 @@ Azonosítók munkafolyamat-tulajdonságok konstruktor és függvényparaméterek
 | Mező | Leírás | Szükséges |
 |-------|-------------|:--------:|
 | Name (Név) | A következő tulajdonság vagy paraméternek egyedi neve. A megfelelő intelligens szerződés kell használnia az azonos **neve** a megfelelő tulajdonság vagy paraméter. | Igen |
-| displayName | A következő tulajdonság vagy paraméter jól hangzó megjelenítési nevet. | Igen |
+| Megjelenítendő név | A következő tulajdonság vagy paraméter jól hangzó megjelenítési nevet. | Igen |
 | Leírás | A következő tulajdonság vagy paraméter leírását. | Nem |
 
 ### <a name="identifiers-example"></a>Azonosítók – példa
@@ -491,5 +491,6 @@ A következő példa egy alapszintű kérés-válasz kérelem, amelyben a kérel
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Blockchain munkaterület központi telepítése](blockchain-workbench-deploy.md)
+> [!div class="nextstepaction"]
+> [Az Azure Blockchain Workbench üzembe helyezése](blockchain-workbench-deploy.md)
 

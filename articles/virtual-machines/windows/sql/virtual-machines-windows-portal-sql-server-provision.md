@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/15/2018
+ms.date: 05/04/2018
 ms.author: jroth
-ms.openlocfilehash: 33b7c82f08f63199cd128055bc497f61cb30fc4a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Útmutató a Windows az SQL Server rendszerű virtuális gép az Azure-portálon
 
@@ -114,7 +114,7 @@ A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiv�
 
 ![SQL virtuális gépek méretbeállításai](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
-Az éles számítási feladatok esetében ajánlott gépméretekért és -konfigurációkért tekintse meg [az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növelésével kapcsolatos ajánlott eljárásokat](virtual-machines-windows-sql-performance.md). Ha nem látja a kívánt gépméretet, kattintson **Az összes megtekintése** gombra.
+Az éles számítási feladatok esetében ajánlott gépméretekért és -konfigurációkért tekintse meg [az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növelésével kapcsolatos ajánlott eljárásokat](virtual-machines-windows-sql-performance.md).
 
 > [!NOTE]
 > További információ a virtuális gépek méretével kapcsolatban: [Virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -130,7 +130,14 @@ A **Beállítások** ablakban konfigurálhatja az Azure-tárolót, a hálózatot
    > [!NOTE]
    > A Microsoft a Managed Disks használatát javasolja az SQL Server esetében. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információ: [felügyelt lemezek áttekintése Azure] [... / felügyelt lemezek-overview.md). A felügyelt lemezek a rendelkezésre állási csoportokban való használatával kapcsolatos részletekért lásd: [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel](../manage-availability.md).
 
-* A **Hálózat** alatt elfogadhatja az automatikusan kitöltött értékeket. Az egyes funkciókra kattintva manuálisan is konfigurálhatja a **virtuális hálózatot**, az **alhálózatot**, a **nyilvános IP-címet** és a **hálózati biztonsági csoportot**. Ez a bemutató céljából használja az alapértelmezett értékeket.
+* A **hálózati**, minden bejövő válassza ki, hogy a portok a **válassza ki a nyilvános bejövő portra** listája. Például, ha a kívánt távoli asztal a virtuális Gépet, jelölje be a **RDP (3389-es)** port.
+
+   ![Bejövő portok](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
+
+   > [!NOTE]
+   > Kiválaszthatja a **(1433) az MS SQL** port az SQL Server távoli eléréséhez. Ez azonban nem szükséges itt, mert a **SQL Server-beállítások** lépés biztosítja ezt a beállítást. Ha ebben a lépésben 1433-as port, nyitható meg a beállításokat az irregardless of a **SQL Server-beállítások** lépés.
+
+   Hálózati beállítások más módosításokat, vagy használja az alapértelmezett értékeket.
 
 * Alapértelmezés szerint az Azure ugyanazzal a tárfiókkal engedélyezi a **Figyelést**, amely a virtuális géphez ki lett jelölve. Ezeket a beállításokat itt módosíthatja.
 

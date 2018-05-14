@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: cd9c5888724b634002d3029cccd42cfda4a433af
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a14dbaffe6bfa68e7606d117823195144250c230
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Az adatáttelepítési eszköz
 
@@ -43,6 +43,8 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 Mielőtt Ez a cikk utasításait követve ellenőrizze, hogy a következőkkel:
 
 * [A Microsoft .NET-keretrendszer 4.51](https://www.microsoft.com/download/developer-tools.aspx) vagy újabb verzióját.
+
+* Átviteli sebesség növelése: az adatok áttelepítés időtartama állít be egy egyedi gyűjtemény átviteli mennyisége vagy egy gyűjtemények függ. Győződjön meg arról, növelheti a teljesítményt nagyobb adatok áttelepítésre. Az áttelepítés befejezése után csökkenti az átviteli sebesség költségek csökkentése érdekében. Az Azure portálon növelésében kapcsolatos további információkért tekintse meg a teljesítményszintet és az Azure Cosmos Adatbázisba árképzési szinteket.
 
 ## <a id="Overviewl"></a>– Áttekintés
 Az adatok áttelepítési eszköz egy nyílt forráskódú megoldás, amellyel különféle adatok Azure Cosmos DB móddal, többek között számos különböző:

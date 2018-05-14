@@ -1,24 +1,24 @@
 ---
-title: "Teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows |} Microsoft Docs"
-description: "A Windows vezet be a teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény."
+title: Teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows |} Microsoft Docs
+description: A Windows vezet be a teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény.
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/29/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3e2f8be0f77e220da483dcfb18d6b324d3f203ed
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9ea7f4652aff07282c9c106f3894db807f341210
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows Azure teljesítmény Diagnostics Virtuálisgép-bővítménnyel
 
@@ -28,7 +28,7 @@ Az Azure teljesítménye Diagnostics Virtuálisgép-bővítmény segít a teljes
 
 Ezt a bővítményt a Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016 is telepíthető. Is telepíthető a Windows 8.1 és Windows 10-es.
 
-## <a name="extension-schema"></a>A séma kiterjesztése
+## <a name="extension-schema"></a>Bővítményséma
 A következő JSON Azure teljesítmény Diagnostics Virtuálisgép-bővítmény jelennek meg. a séma. Ezt a bővítményt a nevet és a kulcsot a tárfiók a diagnosztikai kimenetet és a jelentés tárolásához szükséges. Ezek az értékek érzékenyek. Tárfiók kulcsának egy védett beállítások konfigurálása belül kell tárolni. Az Azure virtuális gép beállítás bővítmény védett adatok titkosítva legyenek, és csak visszafejtése a cél virtuális gépen. Vegye figyelembe, hogy **storageAccountName** és **storageAccountKey** -és nagybetűk. Más kötelező paraméter a következő szakaszban találhatók.
 
 ```JSON

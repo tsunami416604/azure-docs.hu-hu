@@ -15,11 +15,11 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5670414cd6c58743d30246681594526544cb128b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e8f292f41c61ef208c316325f768dbdeaac88d84
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Hálózati topológia való használatának szempontjai Azure Active Directory Alkalmazásproxyjával
 
@@ -172,7 +172,7 @@ Is megfontolhatja egy variant ebben a helyzetben. Ha a szervezet a legtöbb felh
 
 ## <a name="next-steps"></a>További lépések
 
-- [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
-- [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)
+- [Alkalmazásproxy engedélyezése](manage-apps/application-proxy-enable.md)
+- [Egyszeri bejelentkezés engedélyezése](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 - [Feltételes hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)
 - [Az alkalmazásproxy problémák elhárítása](active-directory-application-proxy-troubleshoot.md)

@@ -15,19 +15,19 @@ ms.date: 07/20/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3c69450601d84f62d05ca6cc8930fd8e9a8e4203
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 77e7288060abd2577867023a777eb3bdd4331e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Az egyszeri bejelentkezés az alkalmazásproxy vaulting jelszó
 
 Az Azure Active Directory Alkalmazásproxyjával segít a helyszíni alkalmazások közzététele, hogy a távoli alkalmazottak biztonságosan érhetik el azokat, túl által a termelékenység növelése. Az Azure portálon is állíthatja be az egyszeri bejelentkezés (SSO) ezekhez az alkalmazásokhoz. A felhasználók csak kell az Azure AD hitelesíti, és nem kell ismét jelentkezzen be a vállalati alkalmazás eléréséhez.
 
-Alkalmazásproxy támogatja több [az egyszeri bejelentkezési módok](application-proxy-sso-overview.md). Jelszó alapú bejelentkezés készült alkalmazásokat, amelyek egy felhasználónév/jelszó kombináció használják a hitelesítéshez. Konfigurálásakor jelszó alapú bejelentkezés az alkalmazáshoz, a felhasználók rendelkeznek a helyszíni alkalmazások egyszer bejelentkezhet. Ezt követően az Azure Active Directory a bejelentkezési adatait tárolja, és automatikusan biztosítja azt az alkalmazásnak, amikor a felhasználók távolról el. 
+Alkalmazásproxy támogatja több [az egyszeri bejelentkezési módok](manage-apps/application-proxy-single-sign-on.md). Jelszó alapú bejelentkezés készült alkalmazásokat, amelyek egy felhasználónév/jelszó kombináció használják a hitelesítéshez. Konfigurálásakor jelszó alapú bejelentkezés az alkalmazáshoz, a felhasználók rendelkeznek a helyszíni alkalmazások egyszer bejelentkezhet. Ezt követően az Azure Active Directory a bejelentkezési adatait tárolja, és automatikusan biztosítja azt az alkalmazásnak, amikor a felhasználók távolról el. 
 
-Kell már rendelkezik közzétett és tesztelni az alkalmazást az alkalmazásproxy. Ha nem, kövesse a lépéseket [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md) majd térjen vissza ide. 
+Kell már rendelkezik közzétett és tesztelni az alkalmazást az alkalmazásproxy. Ha nem, kövesse a lépéseket [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md) majd térjen vissza ide. 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>Az alkalmazás vaulting jelszó beállítása
 
@@ -55,5 +55,5 @@ Ugrás a külső URL-címet, az alkalmazás állított be a távoli hozzáféré
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa el, egyéb módjai megvalósításához [egyszeri bejelentkezéshez az alkalmazásproxy](application-proxy-sso-overview.md)
+- Olvassa el, egyéb módjai megvalósításához [egyszeri bejelentkezéshez az alkalmazásproxy](manage-apps/application-proxy-single-sign-on.md)
 - További tudnivalók [távolról az Azure AD alkalmazásproxy alkalmazásokhoz fér hozzá biztonsági szempontjai](application-proxy-security-considerations.md)

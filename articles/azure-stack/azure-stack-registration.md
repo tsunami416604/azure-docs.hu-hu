@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/11/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: 0d8c1ebe9688f32c460ef689119313b0682a0a68
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f34c4697439685ce6ea0ce3f2c7e954ee81b5079
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure verem regisztrálni Azure-ral
 Regisztrálás [Azure verem](azure-stack-poc.md) az Azure-ral lehetővé teszi a Piactéri elemek letölteni az Azure-ból, és megkezdheti a Microsoft commerce adatok beállításához. Miután regisztrálta Azure-vermet, használati bejelentések Azure kereskedelmi, és megtekintheti az előfizetésben a regisztrációhoz használt. 
 
 > [!IMPORTANT]
-> Regisztrációs megadása kötelező, ha úgy dönt, hogy a fizetés,-akkor-használható számlázási modellt. Ellenkező esetben Ön lesz az Azure Alkalmazásveremben üzembe licencfeltételeit megsértését megfelelően használati nem fog szerepelni.
+> Regisztrációs teljes Azure verem funkciókat, beleértve a Piactéri szindikálási támogatásához szükséges. Emellett a licencelési időszakonként, ha nem regisztrálja a fizetési,-akkor-használható számlázási modellt használatakor Azure verem megsértését fog szerepelni. Azure verem modellek licencelési kapcsolatos további tudnivalókért tekintse meg a [lap megvásárlása](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt regisztrálná az Azure-vermet az Azure-ral, rendelkeznie kell:

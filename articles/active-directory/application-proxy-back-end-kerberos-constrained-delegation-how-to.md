@@ -1,11 +1,11 @@
 ---
-title: "Hibaelhárítás a Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy |} Microsoft Docs"
-description: "Hibaelhárítás a Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy."
+title: Hibaelhárítás a Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy |} Microsoft Docs
+description: Hibaelhárítás a Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: harshja
-ms.openlocfilehash: a580b0afbd34623986ea8a3f60147a937c423e5e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3ba089123198631c443a759ad62cb0ae5ca40ad3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Hibaelhárítás a Kerberos által korlátozott delegálás alkalmazásproxy konfigurációi
 
@@ -30,7 +30,7 @@ Ez a cikk, megpróbálja, hibaelhárításához és önálló javíthatja a legg
 
 Ez a cikk lehetővé teszi a következő előfeltételek:
 
--   Egy Azure Application Proxy telepítésének [dokumentáció](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) és nem a Kerberos által korlátozott Delegálás alkalmazások általános hozzáférést a várt módon működik.
+-   Egy Azure Application Proxy telepítésének [dokumentáció](manage-apps/application-proxy-enable.md) és nem a Kerberos által korlátozott Delegálás alkalmazások általános hozzáférést a várt módon működik.
 
 -   A közzétett célalkalmazás Kerberos IIS és a Microsoft végrehajtásának alapul.
 
@@ -42,7 +42,7 @@ Ez a cikk lehetővé teszi a következő előfeltételek:
 
 Azure alkalmazásproxy telepíthető a számos különböző típusú infrastruktúrák, vagy a architektúrák és környezetben minden bizonnyal eltérő a szervezetben. A Kerberos által korlátozott Delegálás kapcsolatos problémák a leggyakoribb okok egyike nem a környezetekben, de meglehetősen egyszerű hibás konfigurációt vagy általános felügyeletet.
 
-Emiatt érdemes mindig indítása a annak biztosítása, hogy jelenjen meg minden előfeltétel teljesül [Kerberos által korlátozott Delegálás egyszeri bejelentkezés használatával az alkalmazásproxy-cikk](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) elindítása előtt a hibaelhárítás.
+Emiatt érdemes mindig indítása a annak biztosítása, hogy jelenjen meg minden előfeltétel teljesül [Kerberos által korlátozott Delegálás egyszeri bejelentkezés használatával az alkalmazásproxy-cikk](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) elindítása előtt a hibaelhárítás.
 
 Különösen a szakasz a Kerberos által korlátozott Delegálás konfigurálása 2012R2, mivel ez előző verziók Windows de ugyanakkor nem számos szempontot szem előtt tartva a Kerberos által korlátozott Delegálás konfigurálása alapvetően eltérő megközelítést alkalmazza:
 
@@ -68,13 +68,13 @@ minden amelyek viselik azonos tünete, hajtsa végre az egyszeri bejelentkezés 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Hogyan majd hibaelhárítása a problémát és a megfigyelt jelenségek függenek. Mielőtt folytatja a következővel minden további, így megismerkedhet a nem még rendelkezik olyan hasznos információkat tartalmaznak az alábbi hivatkozások:
+Hogyan háríthatóak attól függ, a problémát, és a megfigyelt tüneteket. Mielőtt folytatja a következővel minden további, így megismerkedhet a nem még rendelkezik olyan hasznos információkat tartalmaznak az alábbi hivatkozások:
 
--   [Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
+-   [Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása](active-directory-application-proxy-troubleshoot.md)
 
--   [Kerberos-hibákhoz, és a jelenség](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#kerberos-errors)
+-   [Kerberos-hibákhoz, és a jelenség](active-directory-application-proxy-troubleshoot.md#kerberos-errors)
 
--   [Egyszeri bejelentkezési modellel működik ha helyszíni és felhőalapú Identitások nem azonosak.](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd#working-with-sso-when-on-premises-and-cloud-identities-are-not-identical)
+-   [Egyszeri bejelentkezési modellel működik ha helyszíni és felhőalapú Identitások nem azonosak.](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
 Ha van a távoli, majd a fő probléma mindenképpen létezik-e. Indítsa el a folyamat három különböző szakaszokat elháríthatja azokat elválasztva.
 
@@ -98,7 +98,7 @@ Ahogy korábban említettük, a böngésző hibaüzenetek általában megadja a 
 
 -   Az A rekord a belső DNS-ben az alkalmazás címének és nem egy olyan CNAME rekordot használhat
 
--   Megerősítése, hogy az összekötő állomás rendelkezik a megfelelő engedélyekkel a feladat a kijelölt tároló fiókhoz tartozó egyszerű Szolgáltatásnevet, és hogy **bármely hitelesítési protokoll** van kiválasztva. A témakörrel kapcsolatos további információkért lásd: [SSO konfigurációs cikk](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)
+-   Megerősítése, hogy az összekötő állomás rendelkezik a megfelelő engedélyekkel a feladat a kijelölt tároló fiókhoz tartozó egyszerű Szolgáltatásnevet, és hogy **bármely hitelesítési protokoll** van kiválasztva. A témakörrel kapcsolatos további információkért lásd: [SSO konfigurációs cikk](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 
 -   Győződjön meg arról, hogy nincs-e az egyszerű Szolgáltatásnevet az Active Directory fennálló csak egyetlen példányát kiállításával egy `setspn -x` bármely tartományi tag gazdagépen cmd parancssorból
 
@@ -179,4 +179,4 @@ Ha továbbra sem tudja előrehaladás a problémát, támogatási több mint ör
 -   Kettős Ugrás hitelesítés – általában esetekben használatos, ahol a kérelmet rétegzett, egy háttér és első vége, megkövetelését hitelesítést, például az SQL Reporting Services.
 
 ## <a name="next-steps"></a>További lépések
-[Kerberos által korlátozott delegálás (KCD) konfigurálása a felügyelt tartományhoz](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-enable-kcd)
+[Kerberos által korlátozott delegálás (KCD) konfigurálása a felügyelt tartományhoz](../active-directory-domain-services/active-directory-ds-enable-kcd.md)

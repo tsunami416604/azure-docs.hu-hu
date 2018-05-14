@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: barbkess
 ms.reviewer: harshja
-ms.openlocfilehash: 7783d08283c2ff3fd277e9c8604c9d4cff242510
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 74af858c433db2a178d5fa346315e3f8a2dbd4f2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Az alkalmazásproxy jogcímbarát alkalmazásokkal való munka
 [Jogcímbarát alkalmazások](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) végre átirányítás a biztonsági jogkivonat szolgáltatás (STS). Az STS cserébe jogkivonat a felhasználó kéri a hitelesítő adatokat, és ezután átirányítja a felhasználót az alkalmazáshoz. Néhány módon történő együttműködésre ezek átirányítások alkalmazásproxy engedélyezése. Ez a cikk segítségével konfigurálhatja a jogcímbarát alkalmazások központi telepítését. 
@@ -28,7 +28,7 @@ Győződjön meg arról, hogy az STS, amely átirányítja a jogcímbarát alkal
 
 ## <a name="publish-your-application"></a>Az alkalmazás közzététele
 
-1. Az ismertetett utasításoknak megfelelően az alkalmazás közzétételére [alkalmazások közzétételére az alkalmazásproxy](application-proxy-publish-azure-portal.md).
+1. Az ismertetett utasításoknak megfelelően az alkalmazás közzétételére [alkalmazások közzétételére az alkalmazásproxy](manage-apps/application-proxy-publish-azure-portal.md).
 2. Nyissa meg az alkalmazás oldalát a portálon, és válasszon **egyszeri bejelentkezés**.
 3. Ha úgy döntött, hogy **Azure Active Directory** , a **előhitelesítési módszer**, jelölje be **az Azure AD az egyszeri bejelentkezés le van tiltva** , a **belső Hitelesítési módszer**. Ha úgy döntött, hogy **csatlakoztatott** , a **előhitelesítési módszer**, nem kell bármit módosíthat.
 
@@ -38,7 +38,7 @@ Az AD FS a jogcímbarát alkalmazások az alábbi két módszer egyikével áll�
 
 ### <a name="option-1-custom-domains"></a>1. lehetőség: Egyéni tartományok
 
-Ha minden belső URL-címéből az alkalmazások teljes tartománynevek (FQDN), majd konfigurálhatja [egyéni tartományok](active-directory-application-proxy-custom-domains.md) az alkalmazások számára. Az egyéni tartományok segítségével hozzon létre a külső URL-címek, amelyek ugyanaz, mint a belső URL-címeket. Ha a külső URL-címek felel meg a belső URL-címeket, akkor az STS-átirányítások munkahelyi, hogy a felhasználók is a helyszíni vagy távoli. 
+Ha minden belső URL-címéből az alkalmazások teljes tartománynevek (FQDN), majd konfigurálhatja [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) az alkalmazások számára. Az egyéni tartományok segítségével hozzon létre a külső URL-címek, amelyek ugyanaz, mint a belső URL-címeket. Ha a külső URL-címek felel meg a belső URL-címeket, akkor az STS-átirányítások munkahelyi, hogy a felhasználók is a helyszíni vagy távoli. 
 
 ### <a name="option-2-ws-federation"></a>2. lehetőség: WS-Federation
 
@@ -53,7 +53,7 @@ Ha minden belső URL-címéből az alkalmazások teljes tartománynevek (FQDN), 
    ![Adja hozzá a végpont - állítsa be a megbízható URL-cím érték – képernyőkép](./media/active-directory-application-proxy-claims-aware-apps/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>További lépések
-* [Egyszeri bejelentkezés engedélyezése a](application-proxy-sso-overview.md) , amelyek nem jogcímbarát alkalmazásokhoz
+* [Egyszeri bejelentkezés engedélyezése a](manage-apps/application-proxy-single-sign-on.md) , amelyek nem jogcímbarát alkalmazásokhoz
 * [Proxy alkalmazások együttműködhet natív ügyfél alkalmazások engedélyezése](active-directory-application-proxy-native-client.md)
 
 

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: efedbf89a6d15a13db5bc86fef9f270e0c84e13b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4f899e3f45174aef8274810e184cc374bcca2c50
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -79,8 +79,8 @@ Ha vannak olyan alkalmazások, a magánhálózaton, amely a felhasználók és e
 | Útmutató a következő cikket: |  |
 |:---:| --- |
 | Az Azure AD-alkalmazásproxy és működésének áttekintése |[A helyszíni alkalmazások biztonságos távoli hozzáférést biztosító](manage-apps/application-proxy.md) |
-| A szolgáltatásalkalmazás-Proxy konfigurálása és közzététele az első alkalmazás oktatóprogramok |[Az Azure AD alkalmazás Proxy beállítása](active-directory-application-proxy-enable.md)<br /><br />[Az alkalmazás alkalmazásproxy-összekötő csendes telepítése](active-directory-application-proxy-silent-installation.md)<br /><br />[Alkalmazás Proxy használó alkalmazások közzétételének módját](application-proxy-publish-azure-portal.md)<br /><br />[Saját tartománynév használatával](active-directory-application-proxy-custom-domains.md) |
-| Alkalmazás Proxy közzétett alkalmazások egyszeri bejelentkezés és a feltételes hozzáférés engedélyezése |[Single-sign-on a Proxy](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[Feltételes hozzáférés és a Proxy](application-proxy-enable-remote-access-sharepoint.md) |
+| A szolgáltatásalkalmazás-Proxy konfigurálása és közzététele az első alkalmazás oktatóprogramok |[Az Azure AD alkalmazás Proxy beállítása](manage-apps/application-proxy-enable.md)<br /><br />[Az alkalmazás alkalmazásproxy-összekötő csendes telepítése](active-directory-application-proxy-silent-installation.md)<br /><br />[Alkalmazás Proxy használó alkalmazások közzétételének módját](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Saját tartománynév használatával](manage-apps/application-proxy-configure-custom-domain.md) |
+| Alkalmazás Proxy közzétett alkalmazások egyszeri bejelentkezés és a feltételes hozzáférés engedélyezése |[Single-sign-on a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Feltételes hozzáférés és a Proxy](application-proxy-enable-remote-access-sharepoint.md) |
 | Alkalmazásproxy használata a következő forgatókönyvek esetén útmutatást |[Natív ügyfél-alkalmazások támogatásának módja](active-directory-application-proxy-native-client.md)<br /><br />[Hogyan támogatja a jogcímbarát alkalmazásokhoz](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Külön hálózatok és helyek közzétett alkalmazások támogatása](active-directory-application-proxy-connectors-azure-portal.md) |
 | Alkalmazásproxy hibaelhárítási útmutatója |[Alkalmazás Proxy hibaelhárítási útmutatója](active-directory-application-proxy-troubleshoot.md) |
 

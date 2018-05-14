@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 05/10/2018
 ms.author: brenduns
-ms.openlocfilehash: 8c9fd7d5824e5d315a7dd30e5052fe10802d197e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="considerations-for-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben szempontjai
+# <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben használatának szempontjai
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Virtuális gépek az igény szerinti, méretezhető számítási erőforrások Azure verem által kínált. Virtuális gépek használatakor ismernie kell, hogy vannak-e az Azure-ban elérhető funkciókat és Azure verem közötti különbséget. Ez a cikk áttekintést a virtuális gépek és a szolgáltatások, Azure verem egyedi szempontjai. Azure verem és az Azure közötti magas szintű különbségek kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) cikk.
+Az Azure verem virtuális gépek igény szerinti, méretezhető számítási erőforrások adja meg. Virtuális gépek (VM) telepítése előtt ismernie kell a virtuális gép szolgáltatásához Azure verem és a Microsoft Azure közötti különbségekről. Ez a cikk ismerteti, ezek a különbségek, és azonosítja a virtuális gépek telepítéséhez tervezési fő szempontjait. Azure verem és az Azure közötti magas szintű különbségek kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) cikk.
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Lap cheat: virtuális gép különbségek
 
@@ -41,10 +41,12 @@ Virtuális gépek az igény szerinti, méretezhető számítási erőforrások A
 |Virtuálisgép-méretezési csoportok|Támogatott automatikus méretezése|Automatikus skálázása nem támogatott.<br>Adja hozzá a méretezési készletben, a portál, a Resource Manager-sablonok vagy a PowerShell használatával további példányokat.
 
 ## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek
-Azure erőforrás-határértékeken elkerülése érdekében az erőforrások (helyi és a szolgáltatásiszint-kiszolgáló) overconsumption többféle módon írja elő. Néhány korlátot helyezi a bérlők által felhasznált erőforrás, nélkül a bérlői felhasználói élmény esetén csökkenhet, ha zajos szomszédos overconsumes erőforrások. 
-- A virtuális hálózati kimenő sávszélesség caps vezessen be olyan. Azure-készletben a Caps felel meg a caps az Azure-ban.  
-- Tároló-erőforrások, az Azure verem tárolási IOPs-korlátok vonatkoznak a bérlők a tárolók eléréséhez erőforrások alapvető overconsumption elkerülése érdekében valósít meg. 
-- Csatolt adatok több lemezzel rendelkező virtuális gépekhez a maximális átviteli sebességgel minden egyes adatlemez 500 IOPS HHDs, de 2300 IOPS SSD-k.
+
+Azure verem írja elő az erőforrás-korlátozások keresztül (helyi és a szolgáltatásiszint-kiszolgálón.) erőforrások fogyasztásának elkerülése érdekében Ezek a korlátozások a bérlő élmény javításához, csökkenti a többi bérlő erőforrás-fogyasztásának hatását.
+
+- A virtuális hálózati kimenő sávszélesség caps vezessen be olyan. Azure-készletben a Caps ugyanazok, mint a caps az Azure-ban.
+- Tároló-erőforrások, az Azure verem tárolási IOPS-korlátok vonatkoznak a bérlők a tárolók eléréséhez erőforrások alapvető overconsumption elkerülése érdekében valósít meg.
+- Csatolt adatok több lemezzel rendelkező virtuális gépekhez a maximális átviteli sebességgel minden adatlemez 500 IOPS HHDs, de 2300 IOPS SSD-k.
 
 A következő táblázat felsorolja a virtuális gépek által támogatott Azure veremben konfigurációjuk együtt:
 
@@ -61,11 +63,11 @@ A következő táblázat felsorolja a virtuális gépek által támogatott Azure
 |Memóriaoptimalizált|Dv2-sorozat     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Memóriaoptimalizált|DSv2-sorozat-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem és az Azure közötti megegyeznek. A konzisztencia magok száma és a szám vagy méretének hozható létre az adatlemezek memória mennyiségét magában foglalja. Az ugyanazon Virtuálisgép-méretet Azure verem teljesítményét azonban egy adott Azure verem környezetben alapul szolgáló jellemzői függ.
+Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem és az Azure közötti megegyeznek. Ez magában foglalja az a memóriamennyiség, magok száma, és az adatlemezek hozható létre, szám vagy mérete. Az azonos méretű virtuális gépek teljesítményét azonban egy adott Azure verem környezetben alapul szolgáló jellemzői függ.
 
 ## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények
 
- Az Azure-verem bővítmények egy kis készletét tartalmazza. Frissítések és további kiterjesztések és rendelkezésre álló szindikálási piactéren keresztül.
+ Azure verem bővítmények egy kis készletét tartalmazza. Frissítések és a további kiterjesztések piactér szindikálási keresztül érhetők el.
 
 A következő PowerShell-parancsfájl segítségével a verem Azure környezetben elérhető virtuálisgép-bővítmények listájának beolvasása:
 
@@ -92,18 +94,17 @@ Get-AzureRmResourceProvider | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
+
 A támogatott erőforrástípusai és API-verziók listáját változhat, ha a felhő üzemeltetője a Azure verem környezet frissíti egy újabb verzióra.
 
 ## <a name="windows-activation"></a>Windows-aktiválás
 
-A Windows-termékeket termékkel használati jogosultságok és a Microsoft feltételeinek megfelelően kell használni. Használja az Azure verem [automatikus Virtuálisgép-aktiválás](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) Windows Server virtuális gépek (VM) aktiválása (AVMA). 
- - Az Azure-verem gazdagépen Windows Server 2016 aktiválja az AVMA kulcsokat, mert minden virtuális gép, futtassa a Windows Server 2012 vagy újabb rendszer automatikusan aktiválja.
- - Futtassa a Windows Server 2008 R2 automatikusan nincs aktiválva, és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx). 
+A Windows-termékeket termékkel használati jogosultságok és a Microsoft feltételeinek megfelelően kell használni. Használja az Azure verem [automatikus Virtuálisgép-aktiválás](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) Windows Server virtuális gépek (VM) aktiválása (AVMA).
+
+- Az Azure-verem gazdagép akkor aktiválódik, a Windows Server 2016 Windows az AVMA kulcsokat. Minden virtuális gép, amely a Windows Server 2012 vagy újabb rendszer automatikusan aktiválja.
+- Futtassa a Windows Server 2008 R2 automatikusan nincs aktiválva, és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx).
 
 Microsoft Azure használatával, hogy a KMS-aktiválás Windows virtuális gépek aktiválása. Ha áthelyezi a virtuális gépek Azure-veremből Azure és az esetlegesen fellépő problémák aktiválása, lásd: [hibaelhárítása a Windows Azure virtuális gép aktiválással kapcsolatos problémák](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). További információk találhatók a [hibaelhárítás Windows aktiválási hibák Azure virtuális gépeken](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) Azure támogatási csapatának blogja post.
-
-
-
 
 ## <a name="next-steps"></a>További lépések
 

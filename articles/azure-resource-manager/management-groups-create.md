@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 31249584891a1bb07628fde56e445fda9b2bb467
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1592e47509f2537bef9cbcefd3cf49618561edcc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Az erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfelelőség kezeléséhez több előfizetéssel. Ezekben a tárolókban felépítését egy eredményesebbé és hatékonyabbá teszi a használható létrehozása [Azure házirend](../azure-policy/azure-policy-introduction.md) és [Azure szerepkör alapú hozzáférés-vezérlést](../role-based-access-control/overview.md). A felügyeleti csoportok további információkért lásd: [rendezheti az erőforrásokat az Azure felügyeleti csoportok ](management-groups-overview.md). 
@@ -34,7 +34,7 @@ A felügyeleti csoport is létrehozhat a portál, PowerShell vagy az Azure paran
 2. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok**.
 3. Fő lapján, válassza ki a **új felügyeleti csoportban.** 
 
-    ![Csoport létrehozása](media/management-groups/create_main.png) 
+    ![Fő csoport](media/management-groups/main.png) 
 4.  Töltse ki a felügyeleti csoport azonosítója mezőt. 
     - A **felügyeleti csoport azonosítója** directory egyedi azonosítója, amely a felügyeleti csoportra parancsok továbbítására szolgál. Ez az azonosító nincs szerkeszthető létrehozása után, az Azure rendszerben ez a csoport azonosításához használt. 
     - A megjelenítési név mezője az Azure portálon megjelenő nevét. Egy külön megjelenített név mező kitöltése nem kötelező történő létrehozásakor a felügyeleti csoportban, és bármikor módosíthatók.  

@@ -1,24 +1,24 @@
 ---
-title: "Töltse le az Azure-verem eszközök a Githubról |} Microsoft Docs"
-description: "Útmutató eszközök Azure verem használata szükséges."
+title: Töltse le az Azure-verem eszközök a Githubról |} Microsoft Docs
+description: Útmutató eszközök Azure verem használata szükséges.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: E4DF77FA-F468-42B5-B44F-F10ED8049171
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 219fd8e4e164df8c3002044719a90a7be56a9edf
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: thoroet
+ms.openlocfilehash: a116b7a048ff95ca601a65633cdc63f98fefee9d
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Töltse le az Azure-verem eszközök a Githubról
 
@@ -53,13 +53,10 @@ A **AzureStack-eszközök** tárház tartalmaz, amely támogatja a következő f
 | Funkció | Leírás | Ez a modul ki tudja használni? |
 | --- | --- | --- |
 | [Felhőalapú képességek](user/azure-stack-validate-templates.md) | Ez a modul segítségével felhő felhőalapú szolgáltatásokkal. Például ez a modul használatával juthat a felhőalapú képességek, például az API-verzió és az Azure Resource Manager erőforrások. Ez a modul használatával Azure verem és Azure felhők is beszerezheti a Virtuálisgép-bővítmények. | A felhő üzemeltetőinek és a felhasználók |
-| [Az Azure verem számítási felügyeleti](azure-stack-add-vm-image.md) | Ez a modul segítségével adja hozzá, vagy távolítsa el a Virtuálisgép-lemezképet a verem Azure piactérről. | A felhő üzemeltetői |
-| [Az Azure verem infrastruktúra felügyelete](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | Ez a modul segítségével kezelheti az Azure-verem infrastruktúra virtuális gépeket, riasztások, frissítések és így tovább. |  A felhő üzemeltetői|
 | [Erőforrás-kezelő házirend Azure verem](user/azure-stack-policy-module.md) | Ez a modul segítségével konfigurálása Azure-előfizetés vagy egy Azure-erőforráscsoportot a azonos versioning és a szolgáltatás rendelkezésre állás mint Azure verem. | A felhő üzemeltetőinek és a felhasználók |
 | [Regisztrálja az Azure-ral](azure-stack-register.md) | Ez a modul segítségével regisztrálja a development kit példányát az Azure-ral. A regisztrálás után töltse le a Piactéri elemek az Azure-ból, és azok Azure verem használatát. | A felhő üzemeltetői |
 | [Az Azure verem-telepítés](azure-stack-run-powershell-script.md) | Ez a modul segítségével a előkészítéséhez Azure verem gazdagép telepítése, és telepítse újra az Azure-verem virtuális merevlemez (VHD) lemezkép használatával. | A felhő üzemeltetői|
-| [Kapcsolódás Azure verem](azure-stack-connect-powershell.md) | Ez a modul használja, egy Azure veremben példányra Powershellen keresztül csatlakozni, és Azure verem VPN-kapcsolat konfigurálása. | A felhő üzemeltetőinek és a felhasználók |
-| [Az Azure verem felügyeletét](azure-stack-create-offer.md) | Ez a modul segítségével hozzon létre egy alapértelmezett bérlői ajánlat korlátlan kvótával rendelkező számítási, az Azure Storage, a hálózati és a Key Vault szolgáltatás között.   | A felhő üzemeltetői|
+| [Kapcsolódás Azure verem](azure-stack-connect-powershell.md) | Ez a modul segítségével konfigurálhatja a VPN-kapcsolat Azure verem. | A felhő üzemeltetőinek és a felhasználók |
 | [Sablon érvényesítő](user/azure-stack-validate-templates.md) | Ez a modul segítségével ellenőrizheti, ha egy meglévő vagy új sablon Azure verem számára telepíthető. | A felhő üzemeltetőinek és a felhasználók|
 
 

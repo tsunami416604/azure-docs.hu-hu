@@ -5,16 +5,16 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/11/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 6160e3e6f23bf4eabb33295fa19323c71c7ed18d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 77dc239385261c9544b00cf2cf2e450136dce0ae
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B együttműködés – gyakori kérdések
 
@@ -31,9 +31,6 @@ Igen. A .csv fájl feltöltési szolgáltatás használatával kapcsolatos tová
 
 ### <a name="how-can-i-customize-my-invitation-emails"></a>Hogyan szabható testre a meghívó e-mailt?
 A meghívó folyamattal kapcsolatos szinte minden segítségével szabhatja testre a [B2B meghívó API-k](active-directory-b2b-api.md).
-
-### <a name="can-an-invited-external-user-leave-the-organization-after-being-invited"></a>A meghívott külső felhasználó elhagyja a szervezet meghívásának után?
-Hívja fel a szervezet rendszergazdája B2B együttműködés Vendég felhasználó törlése a könyvtárból, de a Vendég felhasználó nem léphet ki hívja fel a szervezet címtárához önmagában. 
 
 ### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>Visszaállíthatja a vendégfelhasználók a többtényezős hitelesítést?
 Igen. Vendégfelhasználók azonos módon rendszeres felhasználók visszaállíthatják a multi-factor authentication módszer.
@@ -99,9 +96,7 @@ Jelenleg folyamatban folyamatosan figyel a visszajelzést B2B együttműködés 
 Azt is hívhat meg, hogy a ötleteket és a jövőbeli szolgáltatásokat szavazzon [B2B együttműködés ötleteket](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>A Microsoft küldhet, amely automatikusan beváltott, meghívót, hogy a felhasználó csak "készen áll"? Vagy nem a felhasználó mindig kell kattintania a visszaváltási URL-címet?
-A felhasználó a hívja fel őt is a tagja a fiókpartner-szervezet által küldött meghívót nem igényelnek visszaváltás a B2B felhasználó.
-
-Azt javasoljuk, hogy egy felhasználó a partnerszervezet hívja fel a szervezet csatlakozni meghívott. [Adja hozzá a felhasználót a Vendég meghívó szerepkörhöz az erőforrás-szervezetben](active-directory-b2b-add-guest-to-role.md). Ez a felhasználó a fiókpartner-szervezet belüli más felhasználók is meghívhatja a bejelentkezési felhasználói felület, PowerShell-parancsfájlok használatával vagy API-t. Ezt követően B2B együttműködés felhasználóit, hogy a szervezet a meghívást beváltani megnyitásáig nem szükséges.
+Egy meghívó a fiókpartner-szervezet belüli más felhasználók is meghívhatja a felhasználói felületen, PowerShell-parancsfájlok, vagy API-t. Ezt követően a meghívó a Vendég felhasználói közvetlen hivatkozást elküldheti megosztott-alkalmazásokhoz. A legtöbb esetben nem egy szükség van az e-mailek meghívó megnyitásához, majd kattintson egy érvényesítési URL-címet. További információkért lásd: [Azure Active Directory B2B együttműködés meghívó érvényesítési](active-directory-b2b-redemption-experience.md).
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Hogyan működik a B2B együttműködés a Ha a meghívott partner összevonási segítségével adja hozzá a saját helyszíni hitelesítéssel?
 Ha a partner, amely a helyszíni hitelesítési infrastruktúra össze van vonva az Azure AD-bérlő, a helyszíni egyszeri bejelentkezés (SSO) automatikusan érhető el. Ha a partner az Azure AD-bérlő nem rendelkezik, az Azure AD-fiókot hoz létre az új felhasználók. 

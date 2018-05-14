@@ -15,8 +15,8 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a925f8be619d0a4606205eeba5f78b2e8ba8a188
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 79ee3aca783d7c29959c2730696a313bf821b3bc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -34,7 +34,7 @@ Az Azure AD Authentication Library, amely gondoskodik a hitelesítésről, és t
 Ez a cikk végigvezeti a négy alkalmazásproxy és az Azure AD Authentication Library natív alkalmazás közzététele. 
 
 ## <a name="step-1-publish-your-application"></a>1. lépés: Az alkalmazás közzétételére.
-A proxy alkalmazás közzététele, mint bármilyen más alkalmazást, és rendelje hozzá a felhasználók az alkalmazás eléréséhez. További információkért lásd: [alkalmazások közzétételére az alkalmazásproxy](application-proxy-publish-azure-portal.md).
+A proxy alkalmazás közzététele, mint bármilyen más alkalmazást, és rendelje hozzá a felhasználók az alkalmazás eléréséhez. További információkért lásd: [alkalmazások közzétételére az alkalmazásproxy](manage-apps/application-proxy-publish-azure-portal.md).
 
 ## <a name="step-2-configure-your-application"></a>2. lépés: Az alkalmazás konfigurálása
 A natív alkalmazások konfigurálása az alábbiak szerint:
@@ -47,7 +47,7 @@ A natív alkalmazások konfigurálása az alábbiak szerint:
    ![Hozzon létre egy új alkalmazás regisztrálása](./media/active-directory-application-proxy-native-client/create.png)
 5. Kattintson a **Létrehozás** gombra.
 
-Új alkalmazás regisztrációjának létrehozásával kapcsolatos információért, lásd: [alkalmazások integrálása az Azure Active Directory](.//develop/active-directory-integrating-applications.md).
+Új alkalmazás regisztrációjának létrehozásával kapcsolatos információért, lásd: [alkalmazások integrálása az Azure Active Directory](./develop/active-directory-integrating-applications.md).
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>3. lépés: A hozzáférés engedélyezése az egyéb alkalmazások
@@ -97,4 +97,4 @@ Ha az ADAL ezekkel a paraméterekkel szerkeszt, a felhasználók akkor is, ha a 
 
 A natív alkalmazás folyamattal kapcsolatos további információkért lásd: [natív alkalmazás webes API-hoz](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
 
-Beállításával kapcsolatos tudnivalók [egyszeri bejelentkezés az alkalmazásproxy](application-proxy-sso-overview.md)
+Beállításával kapcsolatos tudnivalók [egyszeri bejelentkezés az alkalmazásproxy](manage-apps/application-proxy-single-sign-on.md)

@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 05/11/2018
 ms.author: jgao
-ms.openlocfilehash: c28c48b5842deec9d9c3898c5742c3d4d473094e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 56b2b5ae9d3e4a0e682ec3dd47cd5cc30ebf6d58
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>A HBase fürt replikálása az Azure virtuális hálózat beállítása
 
@@ -52,51 +52,18 @@ Konfigurációs három lehetőség közül választhat:
 - Két HBase-fürtökkel a két különböző virtuális hálózatokon ugyanabban a régióban.
 - Két HBase-fürtökkel a két különböző virtuális hálózatokon két különböző régiókban (georeplikáció).
 
+Ez a cikk a georeplikáció forgatókönyvet ismertet.
+
 Segítségével állítsa be a környezetben, néhány létrehoztunk [Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-overview.md). Ha inkább a környezetek beállítása más módszerekkel, lásd:
 
 - [Hdinsight Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Hozzon létre HBase-fürtökkel Azure virtuális hálózat](apache-hbase-provision-vnet.md)
 
-### <a name="set-up-one-virtual-network"></a>Egy virtuális hálózat beállítása
-
-Az azonos virtuális hálózatban két HBase fürtök létrehozásához válassza ki az alábbi képen. A sablon tárolódik [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/).
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
-
-### <a name="set-up-two-virtual-networks-in-the-same-region"></a>Két virtuális hálózat ugyanabban a régióban beállítása
-
-Hozzon létre két virtuális hálózat virtuális hálózati társviszony-létesítés és ugyanabban a régióban két HBase-fürtökhöz, jelölje be az alábbi képen. A sablon tárolódik [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/).
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
-
-
-
-Ebben az esetben [virtuális hálózati társviszony-létesítés](../../virtual-network/virtual-network-peering-overview.md). A sablon lehetővé teszi, hogy a virtuális hálózati társviszony-létesítés.   
-
-HBase-replikálás ZooKeeper virtuális gépek IP-címeket használ. Be kell állítania statikus IP-címek a cél HBase ZooKeeper csomópontok.
-
-**Statikus IP-címek konfigurálása**
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben válassza **erőforráscsoportok**.
-3. Válassza ki az erőforráscsoportot, amely rendelkezik a cél HBase-fürtöt. Ez az az erőforráscsoport, amelyet a környezet létrehozása a Resource Manager-sablon használatakor. A szűrő segítségével szűkítheti a listát. Az erőforrások, amelyek tartalmazzák a két virtuális hálózatok listáját láthatja.
-4. Válassza ki a virtuális hálózat, amely a célként megadott HBase-fürtöt tartalmaz. Válassza például **xxxx-vnet2**. Kezdetű névvel rendelkező három eszközök **nic-zookeepermode -** vannak felsorolva. Az eszközöket a három ZooKeeper virtuális gépek.
-5. A ZooKeeper virtuális gépek közül.
-6. Válassza ki **IP-konfigurációk**.
-7. A listában válassza ki a **ipConfig1**.
-8. Válassza ki **statikus**, és másolja, vagy írja le a tényleges IP-címet. Az IP-címet kell a replikáláshoz parancsfájlművelet futtatásakor.
-
-  ![HDInsight HBase-replikálás ZooKeeper statikus IP-cím](./media/apache-hbase-replication/hdinsight-hbase-replication-zookeeper-static-ip.png)
-
-9. Ismételje meg a 6. a két ZooKeeper csomópontok a statikus IP-címének beállítása.
-
-A kereszt-virtuális hálózat forgatókönyv kell használnia a **- ip** váltani, ha meghívja a `hdi_enable_replication.sh` parancsfájl-művelet.
-
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Két különböző régiókban két virtuális hálózat beállítása
 
-A két különböző régiókban, és a VPN-kapcsolatot, a Vnetek között két virtuális hálózatok létrehozásához kattintson az alábbi képen. A sablon tárolódik [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/).
+A két különböző régiókban, és a VPN-kapcsolatot, a Vnetek között két virtuális hálózatok létrehozásához válassza az alábbi képre kattintva hozzon létre a. A sablon tárolódik a [nyilvános blob-tároló]] (https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-geo%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 Bizonyos a sablonban változtatható értékek:
 
@@ -116,11 +83,6 @@ Bizonyos a sablonban változtatható értékek:
 | Átjáró VPN-típus | Útvonalalapú |
 | Átjáró Termékváltozat | Alapszintű |
 | átjáró IP | vnet1gwip |
-| Fürt neve | &lt;ClusterNamePrefix > 1 |
-| Fürt verziója | 3.6 |
-| Fürt típusa | a hbase |
-| A fürt feldolgozó csomópontok száma | 2 |
-
 
 **Virtuális hálózat 2**
 
@@ -138,14 +100,176 @@ Bizonyos a sablonban változtatható értékek:
 | Átjáró VPN-típus | Útvonalalapú |
 | Átjáró Termékváltozat | Alapszintű |
 | átjáró IP | vnet1gwip |
-| Fürt neve | &lt;ClusterNamePrefix > 2. régiója |
-| Fürt verziója | 3.6 |
-| Fürt típusa | a hbase |
-| A fürt feldolgozó csomópontok száma | 2 |
 
-HBase-replikálás a ZooKeeper virtuális gépek IP-címét használja. Be kell állítania statikus IP-címek a cél HBase ZooKeeper csomópontok. Statikus IP-cím beállításához tekintse meg a [két virtuális hálózat ugyanabban a régióban beállítása](#set-up-two-virtual-networks-in-the-same-region) ebben a cikkben.
+## <a name="setup-dns"></a>A telepítő DNS
 
-A kereszt-virtuális hálózat forgatókönyv kell használnia a **- ip** váltani, ha meghívja a `hdi_enable_replication.sh` parancsfájl-művelet.
+Utolsó szakaszában a sablon létrehozza a tartozó Ubuntu virtuális gép minden két virtuális hálózaton.  Ebben a szakaszban Bind telepítése a két DNS virtuális gépeken, és majd adja meg a DNS-továbbítást a két virtuális gép.
+
+Kötési telepítéséhez yon kell a nyilvános IP-címének DNS két virtuális gépet.
+
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
+2. Nyissa meg a DNS-virtuális gép kiválasztásával **erőforráscsoport > [erőforráscsoport neve] > [vnet1DNS]**.  Az erőforráscsoport neve, a egy, az utolsó eljárás hoz létre. Az alapértelmezett DNS-virtuális gép nevek *vnet1DNS* és *vnet2NDS*.
+3. Válassza ki **tulajdonságok** a virtuális hálózati Tulajdonságok lapjának megnyitásához.
+4. Jegyezze fel a **nyilvános IP-cím**, és azt is ellenőrizze a **magánhálózati IP-cím**.  A magánhálózati IP-címet kell **10.1.0.4** a vnet1DNS és **10.2.0.4** vnet2DNS számára.  
+
+A kötés telepítéséhez használja az alábbi eljárást:
+
+1. SSH használatával csatlakozhat a __nyilvános IP-cím__ a DNS-virtuális gép. Az alábbi példában egy virtuális gépet, 40.68.254.142 csatlakozik:
+
+    ```bash
+    ssh sshuser@40.68.254.142
+    ```
+
+    Cserélje le `sshuser` a DNS-virtuális gép létrehozásakor megadott SSH a felhasználói fiókkal.
+
+    > [!NOTE]
+    > Nincsenek az sokféleképpen beszerzése a `ssh` segédprogram. A Linux, Unix és macOS Ez biztosítja az operációs rendszer részeként. Ha Windows használja, fontolja meg az alábbi lehetőségek közül:
+    >
+    > * [Azure-felhőbe rendszerhéj](../../cloud-shell/quickstart.md)
+    > * [A Windows 10 Ubuntu bash](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Git)https://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSH)https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+
+2. A kötés telepítéséhez használja az SSH-munkamenetet a következő parancsokat:
+
+    ```bash
+    sudo apt-get update -y
+    sudo apt-get install bind9 -y
+    ```
+
+3. Bind továbbítani a névfeloldási kérelmeket a helyszíni DNS-kiszolgáló konfigurálásához használja a következő szöveget a tartalmát a `/etc/bind/named.conf.options` fájlt:
+
+    ```
+    acl goodclients {
+        10.1.0.0/16; # Replace with the IP address range of the virtual network 1
+        10.2.0.0/16; # Replace with the IP address range of the virtual network 2
+        localhost;
+        localhost;
+    };
+    
+    options {
+        directory "/var/cache/bind";
+        recursion yes;
+        allow-query { goodclients; };
+
+        forwarders {
+            168.63.129.16 #This is the Azure DNS server
+        };
+
+        dnssec-validation auto;
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+    };
+    ```
+    
+    > [!IMPORTANT]
+    > Cserélje le az értékeket a `goodclients` a két virtuális hálózat az IP-címtartománnyal rendelkező szakasza. Ebben a szakaszban határozza meg a címeket, DNS-kiszolgáló elfogadja az érkező kérelmeket.
+
+    Ez a fájl szerkesztéséhez használja a következő parancsot:
+
+    ```bash
+    sudo nano /etc/bind/named.conf.options
+    ```
+
+    Mentse a fájlt, használja a __Ctrl + X__, __Y__, majd __Enter__.
+
+4. Az SSH-munkamenetből használja a következő parancsot:
+
+    ```bash
+    hostname -f
+    ```
+
+    Ez a parancs értéket ad vissza az alábbihoz hasonló:
+
+        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+
+    A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a __DNS-utótag__ ehhez a virtuális hálózathoz. Mentse ezt az értéket, a rendszer később.
+
+    Is található, a DNS-utótagot, a más DNS-kiszolgálóról. A következő lépésben van szükség.
+
+5. Konfigurálja a DNS-nevek a virtuális hálózaton lévő erőforrások köti, használja a következő szöveg tartalmát a `/etc/bind/named.conf.local` fájlt:
+
+    ```
+    // Replace the following with the DNS suffix for your virtual network
+    zone "v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net" {
+            type forward;
+            forwarders {10.2.0.4;}; # The Azure recursive resolver
+    };
+    ```
+
+    > [!IMPORTANT]
+    > Le kell cserélnie a `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` együtt a virtuális hálózat DNS-utótagját. És a továbbító IP-cím a magánhálózati IP-címét a DNS-kiszolgáló a virtuális hálózat része.
+
+    Ez a fájl szerkesztéséhez használja a következő parancsot:
+
+    ```bash
+    sudo nano /etc/bind/named.conf.local
+    ```
+
+    Mentse a fájlt, használja a __Ctrl + X__, __Y__, majd __Enter__.
+
+6. Indítsa el a kötési, használja a következő parancsot:
+
+    ```bash
+    sudo service bind9 restart
+    ```
+
+7. Győződjön meg arról, hogy a kötés képes névfeloldásra a másik virtuális hálózatán lévő erőforrásokat, használja a következő parancsokat:
+
+    ```bash
+    sudo apt install dnsutils
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    ```
+
+    > [!IMPORTANT]
+    > Cserélje le `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` , a DNS virtuális gépet a többi hálózati teljesen minősített tartománynevét (FQDN).
+    >
+    > Cserélje le `10.2.0.4` rendelkező a __belső IP-cím__ a egyéni DNS-kiszolgáló más virtuális hálózatban.
+
+    A válasz megjelenik az alábbihoz hasonló:
+
+    ```
+    Server:         10.2.0.4
+    Address:        10.2.0.4#53
+    
+    Non-authoritative answer:
+    Name:   vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
+    Address: 10.2.0.4
+    ```
+
+    Eddig más hálózati nélkül megadott DNS-kiszolgáló IP-cím az IP-cím nem meg.
+
+### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>Az egyéni DNS-kiszolgáló használatára a virtuális hálózat konfigurálása
+
+A virtuális hálózat az egyéni DNS-kiszolgáló használata helyett az Azure rekurzív feloldó konfigurálásához használja az alábbi lépéseket:
+
+1. Az a [Azure-portálon](https://portal.azure.com), a virtuális hálózat, majd válassza ki és __DNS-kiszolgálók__.
+
+2. Válassza ki __egyéni__, és írja be a __belső IP-cím__ az egyéni DNS-kiszolgáló. Végül válassza ki __mentése__.
+
+6. Nyissa meg a DNS-kiszolgáló virtuális gép vnet1, és kattintson **indítsa újra a**.  A virtuális hálózatban, hogy a DNS-konfiguráció életbe léptetéséhez újra kell indítani a virtuális gépeket.
+7. Ismételje meg a lépéseket a vnet2 egyéni DNS-kiszolgáló konfigurálása.
+
+A DNS-konfiguráció teszteléséhez az SSH használatával két DNS virtuális számítógépekhez kapcsolódni, és a virtuális hálózat DNS-kiszolgáló pingelése állomásnevének segítségével. Ha nem működik, a következő paranccsal DNS állapotának ellenőrzéséhez:
+
+```bash
+sudo service bind9 status
+```
+
+## <a name="create-hbase-clusters"></a>A HBase-fürtök létrehozása
+
+Hozzon létre HBase-fürtöt minden két virtuális hálózaton a következő beállításokkal:
+
+- **Az erőforráscsoport neve**: létrehozta a virtuális hálózatok az azonos erőforráscsoport nevét használja.
+- **Fürt típusa**: HBase
+- **Verzió**: HBase 1.1.2 (HDI 3.6)
+- **Hely**: ugyanazt a helyet használja a virtuális hálózatnak.  Alapértelmezés szerint vnet1 van *USA nyugati régiója*, és vnet2 *USA keleti régiója*.
+- **Tárolási**: hozzon létre egy új tárfiókot, a fürt számára.
+- **Virtuális hálózati** (a Speciális beállítások a portál): Jelölje ki a legutóbbi eljárásban létrehozott vnet1.
+- **Alhálózati**: az alapértelmezett név a sablonban használt **Alhalozat_1**.
+
+Győződjön meg arról, a környezet megfelelően van konfigurálva, kell tudni pingelni a headnode FQDN a fürtök közötti.
 
 ## <a name="load-test-data"></a>Vizsgálati adatok betöltése
 
@@ -195,7 +319,6 @@ Választható argumentumok:
 |-du, nyári időszámítás –-ambari-felhasználó | Az Ambari rendszergazda felhasználónevét adja meg a cél HBase fürtön. Az alapértelmezett érték **admin**. |
 |-t,--tábla-lista | Adja meg a táblák replikálni. Például:--tábla-lista = "table1; table2; Tábl3". Ha nem adja meg a táblák, az összes meglévő HBase táblák replikálódnak.|
 |-m,--gép | Adja meg a parancsfájlművelet futtató átjárócsomópont. Az érték az az **hn1** vagy **hn0**. Mivel a **hn0** átjárócsomópont általában busier, azt javasoljuk, **hn1**. Használja ezt a beállítást, ha a számítógépén a $0 parancsfájl parancsfájl műveletként a HDInsight portálon vagy az Azure PowerShell.|
-|-ip | Két virtuális hálózatok közötti replikáció engedélyezésekor van szükség. Ezt az argumentumot úgy működik, mint a statikus IP-címek ZooKeeper csomópontok replika fürtök használatára FQDN-nevek helyett egy kapcsolót. A statikus IP-címeket kell előkonfigurálásához, mielőtt engedélyezné a replikáció. |
 |-cp, - copydata | Lehetővé teszi, hogy az áttelepítés a meglévő adatok a táblák, amelyben engedélyezve van a replikáció. |
 |-fordulat/perces, - replikálás-phoenix-meta | Lehetővé teszi, hogy a replikációs Phoenix rendszertáblákra. <br><br>*Használja ezt a beállítást a kellő körültekintéssel járjon el.* Azt javasoljuk, hogy Ön hozza létre újból Phoenix táblák replika fürtökön használja ezt a parancsfájlt. |
 |-h, – Súgó | Megjeleníti a használati adatokat. |

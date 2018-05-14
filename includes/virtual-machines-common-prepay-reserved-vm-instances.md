@@ -1,10 +1,10 @@
 ---
 ms.topic: include
-ms.openlocfilehash: b41b93db63038645257bc348d5a027fbc4f7fdc9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 31b0d0018129ee65bb124c8008759cc6c7c8510e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="prepay-for-virtual-machines-with-reserved-vm-instances"></a>A virtuális gépek fenntartott virtuális gép osztályt előre fizetés
 
@@ -13,6 +13,7 @@ A virtuális gépek előre fizetés léptékű és költségtakarékosabb munkav
 Megvásárolhatja fenntartott virtuálisgép-példánya a [Azure-portálon](https://portal.azure.com). Vásárolhat egy fenntartott virtuális gép példány:
 -   Legalább egy vállalati vagy használatalapú előfizetés tulajdonosának szerepkört kell lennie.
 -   A vállalati előfizetések foglalás vásárlás engedélyezni kell a [EA portal](https://ea.azure.com).
+-   A Cloud Solution Provider (CSP) program csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatnak a lefoglalását.
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>A fenntartott virtuális gépet példánya megvásárlása
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
@@ -50,3 +51,4 @@ Tudhat meg többet a fenntartott virtuálisgép-példányok, tekintse meg a köv
 - [A használatalapú fizetéses előfizetésre fenntartott példány használatának megértéséhez](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés használata fenntartott példány ismertetése](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [A Windows szoftverek költségeit fenntartott példányok nem találhatók](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+- [Fenntartott Partner Center Cloud Solution Provider (CSP) program-példány](https://docs.microsoft.com/partner-center/azure-reservations)

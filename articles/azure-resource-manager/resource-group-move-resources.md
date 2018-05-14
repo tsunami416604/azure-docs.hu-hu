@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6691ba1e89b7558302c869d3246fc69acd5dcd84
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -114,6 +114,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Application Insights
 * Automation
 * Azure Cosmos DB
+* Azure Relay
 * Batch
 * Bing Térképek
 * Tartalomkézbesítési hálózat (CDN)
@@ -130,6 +131,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * IoT Hubok
 * Key Vault
 * Terheléselosztók – lásd [terheléselosztó korlátozásai](#lb-limitations)
+* Log Analytics
 * Logic Apps
 * Gépi tanulás - Machine Learning Studio webszolgáltatások helyezheti át egy erőforráscsoportot az ugyanahhoz az előfizetéshez, de nem egy másik előfizetést. Gépi tanulás erőforrását áthelyezhető előfizetésekhez.
 * Media Services
@@ -137,7 +139,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Notification Hubs
 * Operational Insights
 * Operations Management
-* Power BI
+* A Power BI -, mind a Power BI Embedded, és a Power BI-Munkaterületcsoport
 * Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
 * Redis Cache
 * Scheduler
@@ -148,7 +150,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Storage
 * Tekintse meg a tároló (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * A Stream Analytics - feladatok nem helyezhető át, ha a Stream Analytics állapotban.
-* SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek. Ez magában foglalja az Azure SQL Database és az Azure SQL Data Warehouse-adatbázist. 
+* SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek. Ez a jelenség Azure SQL Database és az Azure SQL Data Warehouse-adatbázishoz. 
 * Traffic Manager
 * Virtuális gépek - felügyelt lemezzel rendelkező virtuális gép nem helyezhető át. Lásd: [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Virtuális gépek (klasszikus) - lásd [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
@@ -164,6 +166,8 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * AD hibrid Állapotfigyelő szolgáltatás
 * Application Gateway
 * Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure Migrate
 * BizTalk Services
 * Tanúsítványok – jelzi, hogy áthelyezhetők-e a App Service-tanúsítványokkal, de feltöltött tanúsítványok [korlátozások](#app-service-limitations).
 * Kubernetes szolgáltatás
@@ -176,7 +180,7 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
 * Recovery Services-tároló - is do helyezi át a számítási, hálózati és tárolási erőforrásokat, a Recovery Services-tároló társított lásd [helyreállítási szolgáltatások korlátozásai](#recovery-services-limitations).
 * Biztonság
-* StorSimple-eszközkezelő
+* StorSimple Device Manager
 * Tekintse meg a virtuális hálózatok (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 
 ## <a name="virtual-machines-limitations"></a>Virtuális gépek korlátozásai
@@ -188,6 +192,11 @@ Felügyelt lemezek nem támogatják az áthelyezés. Ez a korlátozás, az azt j
 * Felügyelt lemezekből lemezképeit
 * Felügyelt lemezek készült pillanatképek
 * A felügyelt lemezzel rendelkező virtuális gépek rendelkezésre állási készletek
+
+Bár a kezelt lemez nem helyezhető át, hozzon létre egy másolatot, és majd hozzon létre egy új virtuális gépet a meglévő felügyelt lemezről. További információkért lásd:
+
+* Felügyelt lemezeket másolja a ugyanahhoz az előfizetéshez vagy másik előfizetés [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) vagy [Azure parancssori felület](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md)
+* Hozzon létre egy meglévő felügyelt operációsrendszer-lemezt a virtuális gép [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) vagy [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md).
 
 A csatolt tervek piactér erőforrások alapján létrehozott virtuális gépeken nem helyezhető át, erőforráscsoport-sablonok vagy előfizetések között. A virtuális gép az aktuális előfizetésben kiosztásának megszüntetése, majd telepítse újra az új előfizetés.
 

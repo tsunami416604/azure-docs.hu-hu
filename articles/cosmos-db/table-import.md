@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 7a8eaaaaa8bbfa8cf9397ce52dfa93d71b0df30c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b6e912d450e1a2fed98fab5b18ba835396257ac9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Adatok importálása az Azure Cosmos DB tábla API való használatra
 
@@ -29,6 +29,10 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Az adatáttelepítés eszközzel adatok importálása
 > * Az AzCopy adatok importálása
 > * Tábla API tábla API (előzetes verzió) áttelepítése 
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Átviteli sebesség növelése: az adatok áttelepítés időtartama állít be egy egyedi gyűjtemény átviteli mennyisége vagy egy gyűjtemények függ. Győződjön meg arról, növelheti a teljesítményt nagyobb adatok áttelepítésre. Az áttelepítés befejezése után csökkenti az átviteli sebesség költségek csökkentése érdekében. Az Azure portálon növelésében kapcsolatos további információkért tekintse meg a teljesítményszintet és az Azure Cosmos Adatbázisba árképzési szinteket.
 
 ## <a name="data-migration-tool"></a>Az adatáttelepítési eszköz
 

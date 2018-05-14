@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: 5a2a818b6a36fd4dbaf3a18c1ef98d2a13596240
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazásokhoz?
@@ -80,7 +80,7 @@ Mérnöki csapat további alkalmazásokat az üzembe helyezési támogatás kér
 
 Az Azure AD szolgáltatás kiépítését, az indítja el a kiválasztott alkalmazás konfigurációja a  **[Azure-portálon](https://portal.azure.com)**. Az a **Azure Active Directory > Vállalati alkalmazások** szakaszban jelölje be **Hozzáadás**, majd **összes**, majd adja hozzá a forgatókönyvtől függően az alábbiak valamelyikét:
 
-* Az összes alkalmazás a **kiemelt alkalmazások** szakasz támogatási automatikus kiépítés. Tekintse meg az [a felhasználók átadása az alkalmazás bemutatók felsorolása] active-directory-szolgáltatottszoftver-oktatóanyag-list.md) a további néhányat a meglévők közül.
+* Az összes alkalmazás a **kiemelt alkalmazások** szakasz támogatási automatikus kiépítés. Tekintse meg a [felhasználói kialakítási alkalmazás bemutatók felsorolása](active-directory-saas-tutorial-list.md) újak a.
 
 * A "nem galéria alkalmazás" beállítást használja egyéni fejlett SCIM integrációja
 

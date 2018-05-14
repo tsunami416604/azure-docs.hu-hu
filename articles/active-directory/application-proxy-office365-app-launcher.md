@@ -15,11 +15,11 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1627f3590bd92f2460368cffab48d43c5a82d3c4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3f2dd8dd860ecc1da476fcbccbe16f9c21e3c836
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Közzétett alkalmazások egyéni kezdőlapját beállítása az Azure AD-alkalmazásproxy használatával
 
@@ -141,4 +141,4 @@ A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az érték
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure AD alkalmazásproxy SharePoint távoli hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)
-- [Alkalmazásproxy engedélyezése az Azure-portálon](active-directory-application-proxy-enable.md)
+- [Alkalmazásproxy engedélyezése az Azure-portálon](manage-apps/application-proxy-enable.md)

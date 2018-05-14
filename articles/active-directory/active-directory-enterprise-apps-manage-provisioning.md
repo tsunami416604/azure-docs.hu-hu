@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: b57c6841566f3fd75ca0c48e055f54513247cb30
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ebc4de2b3a01138a8b48cc637dcab5fc67a68841
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Vállalati alkalmazások az Azure portálon kiépítés felhasználói fiók kezelése
 Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azure.com) automatikus felhasználói fiók üzembe helyezést és megszüntetést újra a számítógépet, amelyek támogatják ezt, különösen azokat, a "kiemelt" kategóriából a ahozzáadottalkalmazásokkezelése[ Az Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése és annak működéséről kapcsolatos további információkért lásd: [Felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-app-provisioning.md).
@@ -27,13 +27,13 @@ Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azu
 ## <a name="finding-your-apps-in-the-portal"></a>A portál az alkalmazások keresése
 Az egyszeri bejelentkezéshez egy könyvtárban, a használatával directory rendszergazda által beállított összes alkalmazás a [Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), tekinthetők meg és kezelhetők a [Azure-portálon](https://portal.azure.com). Az alkalmazások találhatók a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszban. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül.
 
-![Vállalati alkalmazások ablaktábla][0]
+![Vállalati alkalmazások ablaktábla](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.png)
 
 Válassza a **összes alkalmazás** a bal oldali hivatkozást vannak konfigurálva, beleértve az alkalmazások a gyűjteményből hozzáadott összes alkalmazások listáját tartalmazza. Az erőforrás ablaktáblán az alkalmazáshoz, ahol jelentések megtekinthetők az alkalmazáshoz, és különböző beállítások kezelheti egy alkalmazás kiválasztása tölti be.
 
 Felhasználói fiók kialakítási beállításai kezelhető kiválasztásával **kiépítési** a bal oldalon.
 
-![Alkalmazás erőforrás ablaktábla][1]
+![Alkalmazás erőforrás ablaktábla](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Üzembe helyezési mód
 A **kiépítési** ablaktábla kezdődik egy **mód** menü, amely bemutatja, milyen üzembe helyezési mód támogatja egy vállalati alkalmazás, és lehetővé teszik. Az elérhető lehetőségek a következők:
@@ -54,7 +54,7 @@ Ebben a szakaszban, ahol rendszergazdák megtekintéséhez és szerkesztéséhez
 
 Nincs olyan előre konfigurált megfeleltetéseket az Azure AD felhasználói és minden SaaS-alkalmazás felhasználói objektumok között. Egyes alkalmazások más típusú objektumok, például a csoportok vagy névjegyek kezelése. Egyikének kiválasztásával a leképezések az a táblázat a jobbra, ahol azok megtekinthetők és testre szabott hozzárendelési szerkesztőt.
 
-![Alkalmazás erőforrás ablaktábla][2]
+![Alkalmazás erőforrás ablaktábla](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.png)
 
 Támogatott testreszabások a következők:
 
@@ -80,7 +80,3 @@ Hivatkozásokkal a **tevékenységgel kapcsolatos jelentés kiépítés** biztos
 
 Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  A mérnöki csapathoz van érdeklődőbbek ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó, és használja az alakzat útmutatást, és adja meg, mit kell készíteni.
 
-
-[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG
-[1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
-[2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG

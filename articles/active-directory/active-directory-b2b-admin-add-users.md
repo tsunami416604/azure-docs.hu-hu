@@ -5,20 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 05/11/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 842446ec0db96b9234fe0c578481ab06e9f0c896
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d0565468d953c83ca5fee864b3079fbfee9bbf1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure-portálon
 
 A globális rendszergazdaként, vagy olyan felhasználó, aki hozzá van rendelve, a korlátozott rendszergazdai directory szerepkörökben használhatja az Azure-portálon a meghívott B2B együttműködés felhasználóknak. Felajánlhatja a vendégfelhasználók a könyvtárhoz, csoporthoz, vagy egy alkalmazáshoz. Követően a felhasználó az alábbi módszereket keresztül hívhat meg, a meghívott felhasználó fiók kerül Azure Active Directory (Azure AD), felhasználói típusú *vendég*. A Vendég felhasználó kell majd beváltani a meghívó erőforrások eléréséhez.
+
+A Vendég felhasználó felvétele a könyvtárban, vagy elküldheti a Vendég felhasználói egy közvetlen hivatkozást egy megosztott alkalmazást, vagy a Vendég felhasználó kattinthat a meghívó e-mail érvényesítési URL-cím. Az érvényesítési folyamattal kapcsolatos további információkért lásd: [B2B együttműködés meghívó érvényesítési](active-directory-b2b-redemption-experience.md).
+
+> [!IMPORTANT]
+> Kövesse a lépéseket [Útmutató: vegye fel a szervezet adatvédelmi információ az Azure Active Directoryban](https://aka.ms/adprivacystatement) hozzáadása a szervezet adatvédelmi nyilatkozat URL-CÍMÉT. Az első alkalommal meghívó érvényesítési folyamat részeként a meghívott felhasználó bele kell egyeznie a adatvédelmi feltételeket, hogy továbbra is. 
 
 ## <a name="add-guest-users-to-the-directory"></a>Adja hozzá a vendégfelhasználók számára a könyvtárba
 
@@ -86,7 +91,7 @@ Egy alkalmazás az Azure AD-rendszergazdaként B2B együttműködés felhasznál
  
 ## <a name="resend-invitations-to-guest-users"></a>A vendégfelhasználók számára meghívókat
 
-Ha a Vendég felhasználó még nem sikerült beváltani a meghívót, elküldheti a a meghívót.
+Ha a Vendég felhasználó még nem sikerült beváltani a meghívót, elküldheti a meghívó e-mail.
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) az Azure AD-rendszergazdaként.
 2. A navigációs ablaktáblán válassza ki a **Azure Active Directory**.
@@ -105,6 +110,4 @@ Ha a Vendég felhasználó még nem sikerült beváltani a meghívót, elküldhe
 
 - Megtudhatja, hogyan adhat hozzá rendszergazdák nem Azure AD B2B vendégfelhasználók, lásd: [hogyan információkkal dolgozó szakemberek hozzá B2B együttműködés felhasználók?](active-directory-b2b-iw-add-users.md)
 - A meghívó e-mail kapcsolatos információkért lásd: [a B2B együttműködés meghívó e-mail elemeinek](active-directory-b2b-invitation-email.md).
-- A meghívó érvényesítési folyamattal kapcsolatos információkért lásd: [B2B együttműködés meghívó érvényesítési](active-directory-b2b-redemption-experience.md).
-
 

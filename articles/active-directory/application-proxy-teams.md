@@ -15,11 +15,11 @@ ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 66fdc03d2945b84615ee39dcbcc9bc71ddb06711
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f31b5be80ae56ffe4d0f570cb8d25da8cc098009
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams keresztül férnek hozzá a helyszíni alkalmazások
 
@@ -30,7 +30,7 @@ A felhasználók felhőalapú alkalmazások hozzáadása a saját csoportjai csa
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Az alkalmazásproxy-összekötő telepítése és az alkalmazás közzététele
 
-Ha még nem tette, [-Proxy konfigurálása a bérlő számára, és az összekötő telepítéséhez](active-directory-application-proxy-enable.md). Ezt követően [a helyszíni alkalmazások közzététele](application-proxy-publish-azure-portal.md) táveléréshez. Az alkalmazás közzétételekor most jegyezze fel a a külső URL-cím, mert az alkalmazás hozzáadása csoportokhoz szolgál.
+Ha még nem tette, [-Proxy konfigurálása a bérlő számára, és az összekötő telepítéséhez](manage-apps/application-proxy-enable.md). Ezt követően [a helyszíni alkalmazások közzététele](manage-apps/application-proxy-publish-azure-portal.md) táveléréshez. Az alkalmazás közzétételekor most jegyezze fel a a külső URL-cím, mert az alkalmazás hozzáadása csoportokhoz szolgál.
 
 Ha már rendelkezik a közzétett alkalmazásokhoz, de nem emlékszik a külső URL-címeit, keresse meg azokat a [Azure-portálon](https://portal.azure.com). Jelentkezzen be, majd navigáljon a **Azure Active Directory** > **vállalati alkalmazások** > **összes alkalmazás** > Válassza ki az alkalmazást > **alkalmazásproxy**.
 
@@ -55,4 +55,4 @@ A csoport egyik tagjának hozzáadja a lapon, ha azt jeleníti meg a csatorna mi
 ## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [tegye közzé a helyszíni SharePoint helyeket](application-proxy-enable-remote-access-sharepoint.md) az alkalmazásproxy.
-- Az alkalmazások használatára konfigurálja [egyéni tartományok](active-directory-application-proxy-custom-domains.md) a külső URL-címhez. 
+- Az alkalmazások használatára konfigurálja [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) a külső URL-címhez. 

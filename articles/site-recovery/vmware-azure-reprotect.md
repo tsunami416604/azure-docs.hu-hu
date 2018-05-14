@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: aec87625cd00b11b41c248eecf7af650ae57036f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0946d5234292cfb69a7e9b5bc7846e6acf94dff4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Lássa el újból védelemmel gépek az Azure-ból a helyszíni helyhez
 
@@ -79,7 +79,7 @@ Miután létrehozott egy fő célkiszolgálóra, tegye a következőket:
     - Az alapértelmezett adatmegőrzési kötet a Windows, az R-kötet.
     - Az alapértelmezett adatmegőrzési kötet Linux /mnt/retention.
 - Egy meglévő folyamat kiszolgálóhoz vagy konfigurációs kiszolgáló vagy terjedő skálán vagy folyamat server/fő cél kiszolgáló használata, adjon hozzá egy új meghajtót kell. Az új meghajtó meg kell felelnie a fenti követelményeknek. Ha az adatmegőrzési meghajtó nincs jelen, nem jelenik meg a legördülő listában a portálon. Után hozzáadhat egy meghajtót a helyszíni fő célkiszolgáló, megjelennek a portálon a kijelölt meghajtó akár 15 percet vesz igénybe. Ha a meghajtó nem jelenik meg 15 perc után is frissítheti a konfigurációs kiszolgáló.
-- A VMware-eszközök telepítése a fő célkiszolgálón. A VMware-eszközök nélkül a fő célkiszolgáló ESXi-állomáson datastores nem észlelhető.
+- Telepítse a VMware-eszközök vagy nyílt-virtuálisgép-eszközök a fő célkiszolgálón. Az eszközök nélkül a fő célkiszolgáló ESXi-állomáson datastores nem észlelhető.
 - Állítsa be a `disk.EnableUUID=true` beállítása a konfigurációs paraméterek, a fő célkiszolgáló virtuális gép VMware-ben. Ha a sor nem létezik, adja hozzá. Ez a beállítás szükséges, hogy azt a megfelelő csatlakoztatja, adja meg a virtuális gép lemezét (VMDK) való egységes UUID.
 - Az ESX-gazdagépet, amelyen jön létre a fő célkiszolgáló kell legalább egy virtuálisgép-Fájlrendszereinek adattároló nem csatlakoztatható. Ha nincs, a **Datastore** a védelem-újrabeállítási oldalon bemenet üres lesz, és nem folytathatja a műveletet.
 - A fő célkiszolgáló nem lehet pillanatképeket a lemezeken. Ha pillanatképek vannak, ismételt védelem és a feladat-visszavétel nem.

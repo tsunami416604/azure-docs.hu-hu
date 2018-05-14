@@ -1,37 +1,61 @@
 ---
-title: Az Azure Active Directory B2B együttműködés meghívó érvényesítési |} Microsoft Docs
-description: Az Azure Active Directory B2B együttműködés meghívó érvényesítési élmény
+title: Meghívót visszaváltás a B2B együttműködés – Azure Active Directory |} Microsoft Docs
+description: Ismerteti az Azure AD B2B együttműködés meghívó érvényesítési végfelhasználói élmény, beleértve a adatvédelmi használati feltételeit.
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 05/11/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7a0b492ccb48352c5e8463d3196179237f0ca412
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2e354bc4ae06e86afd5d14e87ef796fce942521b
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Az Azure Active Directory B2B együttműködés meghívó érvényesítési
 
-## <a name="azure-ad-and-microsoft-account-users"></a>Az Azure AD és a Microsoft-fiókot használó felhasználók
-A meglévő Azure AD-fiókot vagy a Microsoft-fiókkal rendelkező felhasználók az érvényesítési szolgáltatás lehető legkönnyebben jelentkezik be.
+Az Azure Active Directory (Azure AD) B2B együttműködés a fiókpartner-szervezetek felhasználók vállalatokkal, felajánlhatja a vendégfelhasználók megosztott alkalmazások eléréséhez. Miután a Vendég felhasználó nincs hozzáadva a könyvtárba, a felhasználói felületen keresztül, vagy a felhasználó Powershellen keresztül felkérik, vendégfelhasználók be kell lépnie ahol engedélyt megadják, hogy első alkalommal hozzájárulási folyamat [adatvédelmi feltételek](#privacy-policy-agreement). Ez a folyamat történik, a következő módon:
 
-## <a name="social-id-user-first-time-redemption"></a>Közösségi azonosító felhasználó első alkalommal érvényesítési
-Az Azure AD B2B együttműködés megkönnyíti a visszaváltási portbesorolása akármilyen e-mail címet. Egy nem Microsoft e-mail címet a B2B együttműködés használata esetén tekintse meg az érvényesítési élmény. Az érvényesítési folyamat nem bonyolultabb, mert lehetséges, hogy megvásárlásakor fiók létrehozásához. Vegye ki az alábbi videóban:
+- A Vendég meghívó küld egy közvetlen hivatkozást egy megosztott alkalmazásához. A meghívott jelentkezhet be a hivatkozásra kattint, az adatvédelmi feltételeket fogad, és zökkenőmentesen hozzáfér a megosztott erőforrás. (A Vendég felhasználó továbbra is kap egy meghívó e-mail érvényesítési URL-címet, de eltérő néhány speciális esetben ez már nem szükséges a meghívó e-mail használandó.)  
+- A Vendég felhasználó meghívó e-mailt kap, majd rákattint az érvényesítési URL-címet. Az első bejelentkezés részeként azok felkéri fogadja el az adatvédelmi feltételeket.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-collaboration-redemption/Player]
-> 
+## <a name="redemption-through-a-direct-link"></a>Visszaváltás a közvetlen kapcsolaton keresztül
+
+A Vendég meghívó küldésével egy közvetlen hivatkozást egy megosztott alkalmazáshoz, a Vendég felhasználó meghívhat. A Vendég felhasználó az érvényesítési szolgáltatás egyszerű módon, hogy az alkalmazást, amelynek lett megosztanak velük való bejelentkezéskor. Ugyanakkor a hivatkozásra kattintva az alkalmazást, tekintse át és fogadja el az adatvédelmi feltételeket, és zavartalanul hozzáférni az alkalmazáshoz. A legtöbb esetben a vendégfelhasználók már nincs szüksége egy érvényesítési URL-cím meghívó e-mailben kattintson.
+
+Ha vendégfelhasználók a felhasználói felületen keresztül meghívót, vagy úgy döntene, hogy a meghívó e-mail küldése a PowerShell meghívó élmény részeként, a meghívott felhasználó továbbra is megkapja meghívó e-mailt. Az e-mailt akkor hasznos, ha a következő esetekben:
+
+- A felhasználó nem rendelkezik az Azure AD-fiókot vagy egy Microsoft-fiók (msa-t). Ebben az esetben a felhasználó előtt létre kell hoznia egy msa-t a hivatkozásra, vagy használhatják az érvényesítési URL-címet a meghívó e-mailben. Az érvényesítési folyamat automatikusan felszólítja a felhasználót, egy felügyelt Szolgáltatásfiók létrehozásához.
+- Egyes esetekben a meghívott felhasználó objektumoknak nem lehet egy e-mail címet kapcsolattartási-objektum (például az Outlook kapcsolattartási objektum) ütközés miatt. Ebben az esetben a felhasználó a meghívó e-mail érvényesítési URL-cím kell kattintania.
+- A felhasználó előfordulhat, hogy jelentkezzen be az e-mail cím, amely meghívták alias. (Az alias egy olyan e-mail fiókkal társított további e-mail címet). Ebben az esetben a felhasználó a meghívó e-mail érvényesítési URL-cím kell kattintania.
+
+Ha ezekben az esetekben speciális fontos a szervezetben, azt javasoljuk, hogy módszereket, amelyek továbbra is a a meghívó e-mail küldése a meghívott felhasználóknak. Is a felhasználó nem tartozik egy különleges esetben, ha azok továbbra is rákattinthat az URL-cím meghívó e-mailben is elérheti.
+
+## <a name="redemption-through-the-invitation-email"></a>Visszaváltás a meghívó e-mail keresztül
+
+Meghívott módszerrel, amely a meghívó e-mail küldése, ha felhasználók is a meghívó e-mail küldésével történő meghívót is beválthatja. Egy meghívott felhasználó az érvényesítési URL-címet az e-mailt, kattintson és tekintse át és fogadja el az adatvédelmi feltételeket. Az eljárást a további részletek itt:
+
+1.  Meghívásának, miután a meghívott kap keresztül e-mailek által küldött meghívót **Microsoft Invitations**.
+2.  A meghívott kiválasztja **Ismerkedés** az e-mailben.
+3.  A meghívott nem rendelkezik, az Azure AD-fiókot vagy egy felügyelt Szolgáltatásfiók, ha azok felszólítja egy felügyelt Szolgáltatásfiók létrehozásához.
+4.  A meghívott a rendszer átirányítja a **tekintse át az engedélyek** képernyő, ahonnan a hívja fel szervezete adatvédelmi nyilatkozatát tekintse át és fogadja el a feltételeket.
+
+## <a name="privacy-policy-agreement"></a>Adatvédelmi szabályzat megállapodás
+
+A Vendég felhasználó bejelentkezése után az első alkalommal egy fiókpartner-szervezet erőforrásaihoz, láthatják a **tekintse át az engedélyek** képernyő. Itt azokat is tekintheti a hívja fel szervezete adatvédelmi nyilatkozatát. A felhasználónak el kell fogadnia az adatok használatát összhangban hívja fel a szervezet adatvédelmi szabályzatáról a folytatáshoz.
+
+![A hozzáférési Panel felhasználói beállításait ábrázoló képernyőfelvétel](media/active-directory-b2b-redemption-experience/ConsentScreen.png) 
+
+További információ a hogyan bérlői rendszergazdaként társíthatja a szervezete adatvédelmi nyilatkozatát: [Útmutató: vegye fel a szervezet adatvédelmi információ az Azure Active Directoryban](https://aka.ms/adprivacystatement).
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD B2B együttműködés, tekintse meg a következő cikkeket:
-
-* [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [A B2B együttműködés meghívó e-mail elemei](active-directory-b2b-invitation-email.md)
-* [Az Azure Active Directory B2B együttműködés gyakori kérdések (GYIK)](active-directory-b2b-faq.md)
-* [Az Azure Active Directory B2B együttműködés API és a Testreszabás](active-directory-b2b-api.md)
+- [Mi az az Azure AD B2B együttműködés?](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure-portálon](active-directory-b2b-admin-add-users.md)
+- [Az információkkal dolgozó szakemberek hogyan hozzá B2B együttműködés felhasználók Azure Active Directory?](active-directory-b2b-iw-add-users.md)
+- [Azure Active Directory B2B együttműködés felhasználók hozzáadása a PowerShell használatával](active-directory-b2b-api.md#powershell)
+- [Egy szervezetet vendégfelhasználóként egy](active-directory-b2b-leave-the-organization.md)

@@ -1,11 +1,11 @@
 ---
-title: "Összevont egyszeri bejelentkezés nem galéria alkalmazások konfigurálása |} Microsoft Docs"
-description: "Összevont egyszeri bejelentkezés az Azure ad-vel integrálni kívánt egyéni nem galéria alkalmazások konfigurálása"
+title: Összevont egyszeri bejelentkezés nem galéria alkalmazások konfigurálása |} Microsoft Docs
+description: Összevont egyszeri bejelentkezés az Azure ad-vel integrálni kívánt egyéni nem galéria alkalmazások konfigurálása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 3296587de5f89b7c96a24ec975249c4705b9f072
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 65df07b6fca62476953ad98dc9e17d9a82c97a53
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Összevont egyszeri bejelentkezés nem galéria alkalmazások konfigurálása
 
@@ -181,4 +181,4 @@ Rövid időn belül a kijelölt felhasználók tudják elindítani ezeket az alk
 Megtudhatja, hogyan szabhatja testre a SAML attribútum típusú jogcímek az alkalmazás számára, lásd: [hozzárendelése az Azure Active Directory-jogcímek](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) további információt.
 
 ## <a name="next-steps"></a>További lépések
-[Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](active-directory-application-proxy-sso-using-kcd.md)
+[Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

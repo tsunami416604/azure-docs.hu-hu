@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ffc8be29cecac05fda440eaf72b51ffc6f024424
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Azure Blockchain munkaterület blockchain-alkalmazás létrehozása
 
 Azure Blockchain munkaterület hozhat létre a megfelelő több résztvevős munkafolyamatok konfigurációs és intelligens szerződés kód blockchain alkalmazások.
 
-Megtudhatja, hogyan:
+Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Beállíthat egy blockchain alkalmazást
@@ -35,6 +35,8 @@ Megtudhatja, hogyan:
 * Egy Blockchain munkaterület rendszergazdai fiók. További információkért lásd: hozzáadása [Blockchain munkaterület a rendszergazdák Azure Blockchain munkaterület](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators).
 
 Létrehozzuk, amelyben a kérelmezőnek egy kérést küld egy alapszintű alkalmazást, és a válaszoló küldése egy kérelemre adott válasz. Például egy kérelem lehetnek, "Hello, hogy folytatja?", és a válasz lehet, "Vagyok nagyszerű!". Az alapul szolgáló blockchain mind a kérés- és a rendszer rögzíti. 
+
+A lépéseket követve létrehozhat az alkalmazásfájlok vagy beállíthatja a [a minta letöltéséhez a Githubról](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain). 
 
 ## <a name="configuration-file"></a>Konfigurációs fájl
 
@@ -398,4 +400,7 @@ Felhasználók Blockchain munkaterület kezelésével kapcsolatos további infor
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy létrehozott egy alkalmazást, próbálja [blockchain alkalmazások segítségével](blockchain-workbench-use.md).
+Útmutató cikkben létrehozott egy alapszintű kérés- és alkalmazás. Megtudhatja, hogyan használhatja az alkalmazást, folytassa a következő cikkben található útmutató.
+
+> [!div class="nextstepaction"]
+> [Egy blockchain alkalmazással](blockchain-workbench-use.md)

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/27/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: 8f347827c640729112e2e8f4c11288b6bcb176ea
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9294940785deb0834a419de8320286783635d68e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Virtuális hálózatok a különböző Azure-régiók leképezése
 
@@ -37,7 +37,7 @@ Egy Azure virtuális hálózatot, amely egy Azure-régiót (Forráshálózat), a
 
 A következő példában a virtuális gép fut a Kelet-Ázsia régióban. A virtuális gép a Délkelet-Ázsia régió replikálódnak.
 
-A Kelet-Ázsia régió Délkelet-Ázsia régió egy hálózatra való leképezés létrehozásához válassza ki a forrás hálózati helye és a cél hálózati helyét. Ezt követően válassza **OK**.
+A Kelet-Ázsia régió Délkelet-Ázsia régió egy hálózatra való leképezés létrehozásához válassza ki a forrás hálózati helye és a cél hálózati helyét. Ezután válassza az **OK** lehetőséget.
 
 ![Adja hozzá a hálózat leképezési ablakban - forrása és célja a forrás hálózati helyek kiválasztása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 

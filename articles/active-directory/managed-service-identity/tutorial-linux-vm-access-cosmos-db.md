@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: skwan
-ms.openlocfilehash: 145cfac02db5aa73e92da8bb281b88b28dc0e22e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bcbafcb5b72fd156f0d8b4a4ddd52aab1d699996
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>A Linux virtuális gép MSI Azure Cosmos DB eléréséhez használja 
 
@@ -73,29 +73,30 @@ Az MSI-kompatibilis virtuális gép létrehozása:
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
+   ```
 
-## Create a Cosmos DB account 
+## <a name="create-a-cosmos-db-account"></a>Cosmos DB-fiók létrehozása 
 
-If you don't already have one, create a Cosmos DB account. You can skip this step and use an existing Cosmos DB account. 
+Ha még nem rendelkezik egy, hozzon létre egy Cosmos DB fiókot. Ezt a lépést kihagyhatja, és meglévő Cosmos DB fiók. 
 
-1. Click the **+/Create new service** button found on the upper left-hand corner of the Azure portal.
-2. Click **Databases**, then **Azure Cosmos DB**, and a new "New account" panel  displays.
-3. Enter an **ID** for the Cosmos DB account, which you use later.  
-4. **API** should be set to "SQL." The approach described in this tutorial can be used with the other available API types, but the steps in this tutorial are for the SQL API.
-5. Ensure the **Subscription** and **Resource Group** match the ones you specified when you created your VM in the previous step.  Select a **Location** where Cosmos DB is available.
-6. Click **Create**.
+1. Kattintson a **/ hozzon létre új szolgáltatást** gomb az Azure portál bal felső sarkában található.
+2. Kattintson a **adatbázisok**, majd **Azure Cosmos DB**, és egy új "új fiók" panel jeleníti meg.
+3. Adjon meg egy **azonosító** a Cosmos DB fiók, amely későbbi használatra.  
+4. **API** kell beállítani az "SQL". Az ebben az oktatóanyagban leírt módszer is használható a rendelkezésre álló API típusú, de ez az oktatóanyag lépéseit az SQL API-hoz.
+5. Győződjön meg arról a **előfizetés** és **erőforráscsoport** az előző lépésben a virtuális gép létrehozásakor megadott megfelelően.  Válassza ki a **hely** ahol Cosmos DB áll rendelkezésre.
+6. Kattintson a **Create** (Létrehozás) gombra.
 
-## Create a collection in the Cosmos DB account
+## <a name="create-a-collection-in-the-cosmos-db-account"></a>Hozzon létre egy gyűjteményt a Cosmos DB-fiókban
 
-Next, add a data collection in the Cosmos DB account that you can query in later steps.
+Ezután adja hozzá a adatok gyűjtése a Cosmos DB fiók, amely a későbbi lépésekben kérdezhetők le.
 
-1. Navigate to your newly created Cosmos DB account.
-2. On the **Overview** tab click the **+/Add Collection** button, and an "Add Collection" panel slides out.
-3. Give the collection a database ID, collection ID, select a storage capacity, enter a partition key, enter a throughput value, then click **OK**.  For this tutorial, it is sufficient to use "Test" as the database ID and collection ID, select a fixed storage capacity and lowest throughput (400 RU/s).  
+1. Nyissa meg az újonnan létrehozott Cosmos DB fiók.
+2. Az a **áttekintése** lapon kattintson a **/ gyűjtemény hozzáadása** gombra, és egy "gyűjtemény hozzáadása" kimenő diák panelen.
+3. Adjon a gyűjtemény egy adatbázis Azonosítóját, a gyűjtemény Azonosítóját, jelöljön ki egy tárolási kapacitás, adjon meg egy partíciókulcsot, adjon meg egy átviteli értéket, majd kattintson **OK**.  A jelen oktatóanyag esetében is elegendő az használja a "Teszt" az adatbázis-azonosító és a gyűjtemény Azonosítóját, válasszon ki egy rögzített tárolási kapacitás és a legalacsonyabb átviteli sebesség (400 RU/mp).  
 
-## Retrieve the `principalID` of the Linux VM's MSI
+## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>Beolvasni a `principalID` , a Linux virtuális gép MSI
 
-To gain access to the Cosmos DB account access keys from the Resource Manager in the following section, you need to retrieve the `principalID` of the Linux VM's MSI.  Be sure to replace the `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (resource group in which you VM resides), and `<VM NAME>` parameter values with your own values.
+Hozzáférni a Cosmos DB fiók hozzáférési kulcsait a az erőforrás-kezelő a következő szakaszban, kell beolvasnia a `principalID` az MSI a Linux virtuális Gépet.  Ügyeljen arra, hogy cserélje le a `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (erőforráscsoport, a virtuális gép található), és `<VM NAME>` paraméterértékeket a saját értékekkel.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01

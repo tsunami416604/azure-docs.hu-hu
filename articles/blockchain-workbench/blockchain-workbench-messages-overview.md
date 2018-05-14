@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 9fa0d74b2c07d3e460abc54ea6ef9733f07a64d1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8d9b9c74ead54280d82bf2b0f9a2232723b2af63
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-blockchain-workbench-messages-overview"></a>Az Azure Blockchain munkaterület üzenetek áttekintése
 
@@ -75,7 +75,7 @@ Azt jelzi, hogy az új fiók a megadott lánc hozzáadandó kért-e.
 
 | Name (Név)    | Leírás  |
 |----------|--------------|
-| UserId  | A létrehozott felhasználó azonosítója |
+| Felhasználói azonosító  | A létrehozott felhasználó azonosítója |
 | ChainIdentifier | A felhasználó létrehozásának blockchain hálózati címe. A Ethereum ez lenne a felhasználó "a lánc" címét. |
 
 ``` csharp
@@ -166,7 +166,7 @@ Azt jelzi, hogy a kérelem nem lett végrehajtva egy meghatározott elosztott f�
 | Name (Név)    | Leírás                              |
 |---------|------------------------------------------|
 | Cím | A felhasználót, hogy a rendszer támogatott címe. |
-| Egyenleg | A felhasználó egyenleg egyenlege.         |
+| Egyensúly | A felhasználó egyenleg egyenlege.         |
 | ChainID | A lánc egyedi azonosítója.     |
 
 
@@ -209,7 +209,7 @@ public class InsertBlockRequest : MessageModelBase
 | ChainId         | Az egyedi azonosítója, amelyhez hozzá lett adva a blokkot a lánc.             |
 | BlockId         | A blokkon belül Azure Blockchain munkaterület egyedi azonosítója. |
 | TransactionHash | A tranzakció kivonatát.                                           |
-| Forrás            | A tranzakció a feladó címe.                      |
+| Ettől:            | A tranzakció a feladó címe.                      |
 | Művelet              | A tranzakció az illetékes címzett címe.              |
 | Érték           | Az érték a tranzakcióban.                                 |
 | IsAppBuilderTx  | Azt jelzi, hogy ez a Blockchain munkaterület tranzakció.                         |
@@ -246,4 +246,5 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Blockchain munkaterület-architektúra](blockchain-workbench-architecture.md)
+> [!div class="nextstepaction"]
+> [Azure Blockchain munkaterület-architektúra](blockchain-workbench-architecture.md)

@@ -1,8 +1,8 @@
 ---
-title: "A Windows Azure fájlok problémák megoldása |} Microsoft Docs"
-description: "Windows Azure fájlok problémák hibaelhárítása"
+title: A Windows Azure fájlok problémák megoldása |} Microsoft Docs
+description: Windows Azure fájlok problémák hibaelhárítása
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
 editor: na
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 073d163e139c9fd400e4b3177c26d4ddb6228ed0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 78170df99e9ced304bebd9112d79b5c7e402f218
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure fájlok problémák megoldásához
 
@@ -51,15 +51,15 @@ Csatlakozás egy ügyfél, amely az alábbi:
 
 Rendszerhiba 53-as vagy rendszerhiba 67 akkor fordulhat elő, ha egy fájl Azure adatközpontba kimenő kommunikáció 445-ös port blokkolva van. Szolgáltatók, amely a 445-ös porton elérésének engedélyezése vagy letiltása az összegzés megtekintéséhez keresse fel [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Ha szeretné megtudni, hogy ez-e a "System error 53" üzenet mögött OK, Portqry segítségével lekérdezni a TCP:445 végpont. A TCP:445 végpont szűrt jelenik meg, ha blokkolva van, az TCP-portot. Íme egy példa lekérdezést:
+Ha szeretné megtudni, hogy ez-e a "System error 53" üzenet mögött OK, Portqry segítségével lekérdezni a TCP:445 végpont. A TCP:445 végpont szűrt jelenik meg, ha blokkolva van, az TCP-portot. Itt láthat egy példalekérdezést:
 
   `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
 
-Ha egy szabály a hálózati elérési út mentén blokkolja a 445-ös TCP-portot, a következő eredmény jelenik meg:
+Ha a 445-ös TCP-portot egy szabály blokkolja a hálózati elérési úton, a következő eredmény látható:
 
   `TCP port 445 (microsoft-ds service): FILTERED`
 
-Portqry használatával kapcsolatos további információkért lásd: [a Portqry.exe parancssori segédprogram](https://support.microsoft.com/help/310099).
+További információ a Portqry használatáról: [A Portqry.exe parancssori segédprogram használata](https://support.microsoft.com/help/310099).
 
 ### <a name="solution-for-cause-2"></a>Megoldás ok 2
 
@@ -181,7 +181,7 @@ A hálózaton keresztül másolja a fájlt, ha a fájl visszafejtése a forráss
 ### <a name="cause"></a>Ok
 Ez a probléma akkor fordulhat elő, ha titkosított fájlrendszer (EFS) használja. A BitLocker által titkosított fájlok átmásolhatók az Azure Fileshoz. Azure-fájlok azonban nem támogatja az NTFS EFS.
 
-### <a name="workaround"></a>Megkerülő megoldás
+### <a name="workaround"></a>Áthidaló megoldás
 Fájl másolása a hálózaton keresztül, akkor először vissza kell fejtenie azt. Az alábbi módszerek valamelyikével:
 
 - Használja a **/d másolása** parancsot. Lehetővé teszi a titkosított fájlokat, mint a célhely visszafejtet fájlokat menteni.

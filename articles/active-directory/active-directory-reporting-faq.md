@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8963dfb3c2d8b81309f44fcdcaab7ddc0b403e7e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 5fa52099f5cf55b78fd2fea407c34f29237939d3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -24,14 +24,14 @@ ms.lasthandoff: 05/11/2018
 
 Ez a cikk reporting Azure Active Directory (Azure AD) kapcsolatos gyakran feltett kérdésekre adott válaszokat tartalmazza. További információk: [Jelentéskészítés az Azure Active Directoryban](active-directory-reporting-azure-portal.md). 
 
-**K: használom a https://graph.windows.net/ &lt;bérlőnévvel&gt;/reports/ végpont API-k lekéréses az Azure AD naplózási és integrált alkalmazás használati jelentések jelentéskészítő rendszer programozott módon. Mit kell váltani a?**
+**K: használom a https://graph.windows.net/&lt; bérlőnévvel&gt;/reports/ végpont API-k lekéréses az Azure AD naplózási és integrált alkalmazás használati jelentések jelentéskészítő rendszer programozott módon. Mit kell váltani a?**
 
 **V:** kereshet a [API-referenciadokumentáció](https://developer.microsoft.com/graph/) használatát az új API-k elérésére megjelenítéséhez [Tevékenységjelentések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal). A végpont két jelentés (naplózási és bejelentkezések) mindazokat az adatokat, a régi API-végpont portáltól biztosító rendelkezik. Az új végpont használó alkalmazások használatát, az eszköz használata és a felhasználó bejelentkezési adatait az Azure AD Premium licenccel rendelkező bejelentkezések jelentést is rendelkezik.
 
 
 --- 
 
-**K: használom a https://graph.windows.net/ &lt;bérlőnévvel&gt;/reports/ végpont való lekérésére az Azure AD biztonsági jelentések (észlelések, például a kiszivárgott hitelesítő adatok vagy névtelen IP-címekről bejelentkezéseket adott típusú) jelentéskészítő rendszer API-k programozott módon. Mit kell váltani a?**
+**K: használom a https://graph.windows.net/&lt; bérlőnévvel&gt;/reports/ végpont való lekérésére az Azure AD biztonsági jelentések (észlelések, például a kiszivárgott hitelesítő adatok vagy névtelen IP-címekről bejelentkezéseket adott típusú) jelentéskészítő rendszer API-k programozott módon. Mit kell váltani a?**
 
 **V:** használhatja a [Identity Protection kockázati események API](active-directory-identityprotection-graph-getting-started.md) való hozzáférés biztonsági észlelések Microsoft Graph használatával. Az új formátumot hogyan kérdezheti le adatokat, a speciális szűrési, mező kiválasztása, és több, nagyobb rugalmasságot biztosít, és egy típus a siem-ektől és egyéb adatok gyűjtemény eszközök egyszerűbb integrálása a kockázati eseményekről szabványosítja. Mivel az adatok egy, a régi lekérdezések nem helyettesítse be a egy új lekérdezést. Azonban [az új API-t használja a Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), vagyis a Microsoft Office 365 vagy Azure AD ilyen API-k szabvány. Így a munka szükséges vagy kiterjesztheti az aktuális MS Graph beruházások vagy súgó megkezdése az új szabványos platform az átállás.
 
@@ -39,7 +39,7 @@ Ez a cikk reporting Azure Active Directory (Azure AD) kapcsolatos gyakran feltet
 
 **K: Mi az az adatok megőrzése (naplózási és bejelentkezések) tevékenységi naplóit Azure-portálon?** 
 
-**V:** talál [mennyi ideig van az összegyűjtött adatok tárolt?} (Az azure Active Directory-jelentés adatmegőrzési](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored) a választ a kérdésére.
+**V:** lásd [mennyi ideig van az összegyűjtött adatok tárolt?](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored) a választ a kérdésére.
 
 --- 
 

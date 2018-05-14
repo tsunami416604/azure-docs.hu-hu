@@ -1,11 +1,11 @@
 ---
-title: "Felhasználók és csoportok hozzárendelése egy alkalmazás |} Microsoft Docs"
-description: "Felhasználók hozzárendelése az alkalmazáshoz való hozzáférés engedélyezése"
+title: Felhasználók és csoportok hozzárendelése egy alkalmazás |} Microsoft Docs
+description: Felhasználók hozzárendelése az alkalmazáshoz való hozzáférés engedélyezése
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d670b2400fc1ac50afdcc8b809a1d482c3219686
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 19303237e7e2c3c3a7f373102465875c34a571d1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-assign-users-and-groups-to-an-application"></a>Felhasználók és csoportok hozzárendelése egy alkalmazás
 
@@ -163,4 +163,4 @@ Ha befejezte az önkiszolgáló Alkalmazáskonfiguráció, felhasználók lépje
 Ezek a jóváhagyások támogatja egyetlen jóváhagyási munkafolyamatok csak, ami azt jelenti, hogy több jóváhagyó ad meg, ha bármely egyetlen jóváhagyó előfordulhat, hogy jóváhagyó hozzáférni az alkalmazáshoz.
 
 ## <a name="next-steps"></a>További lépések
-[Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](active-directory-application-proxy-sso-using-kcd.md)
+[Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

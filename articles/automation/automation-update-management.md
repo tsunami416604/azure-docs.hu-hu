@@ -9,8 +9,8 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e23db77a1be1650c0a10e45b8b38d232e41428f6
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: c095576ccce7e32850c3fb2daf8303a0d6e957bc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -196,7 +196,7 @@ Hozzon létre egy új központi telepítésének kattintva a **ütemezés közpo
 |Operációs rendszer| Linux- vagy Windows|
 | Gépek frissítése |Válasszon ki egy mentett keresést vagy gép válasszon címet a legördülő listán, és válassza ki az egyes gépek |
 |Frissítési besorolások|Válassza ki a szükséges összes frissítési besorolások|
-|Frissítések kizárása|Adja meg a "KB" előtag nélkül kizárandó összes KB|
+|Kihagyandó frissítések|Adja meg a "KB" előtag nélkül kizárandó összes KB|
 |Ütemezési beállítások|Válassza ki a dátumot, és válassza ki az egyszer, vagy az ismétlődés ismétlődő|
 | Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
 
@@ -228,10 +228,11 @@ A következő táblázatok tartalmazzák a frissítési besorolások felügyelet
 
 A következő címekre kifejezetten a kezeléséhez szükségesek. Ezeknél a címeknél kommunikációt a 443-as porton keresztül történik.
 
-* *.ods.opinsights.azure.com
-* *.oms.opinsights.azure.com
-* ods.systemcenteradvisor.com
-* *.blob.core.windows.net
+|Azure Public  |Azure Government  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 
 További információt a hibrid forgatókönyv-feldolgozó által igényelt, portokat [hibrid feldolgozói szerepkör portok](automation-hybrid-runbook-worker.md#hybrid-worker-role)
 
@@ -239,7 +240,7 @@ További információt a hibrid forgatókönyv-feldolgozó által igényelt, por
 
 A részleteket a portál által biztosított, mellett keresések szemben a naplók végezheti el. Az a **változások követése** megnyitva, kattintson **Naplóelemzési**, ekkor megnyílik a **naplófájl-keresési** lap
 
-### <a name="sample-queries"></a>A lekérdezés
+### <a name="sample-queries"></a>Mintalekérdezések
 
 A következő táblázat a megoldás által gyűjtött frissítési rekordok minta napló keres:
 

@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 702fe812d4ff80c9f18a163af38f883ed3739f12
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 09f3bf3726a4a359d8c54d45843b08871d82f159
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -244,7 +244,7 @@ Hozzávetőleges időt Complete: 20 perc
 | A Microsoft Azure AD alapszintű vagy premium előfizetéssel és, amelynek egy globális rendszergazda Azure AD-címtár | [Az Azure Active Directory-kiadások](active-directory-editions.md) |
 | A webes alkalmazás üzemeltetett a helyszínen, amelyet a távelérés konfigurálása |  |
 | A Windows Server 2012 R2 vagy Windows 8.1 vagy újabb rendszert futtató kiszolgáló, amelyre telepítheti az alkalmazásproxy-összekötő | [Az Azure AD-alkalmazásproxy összekötők ismertetése](application-proxy-understand-connectors.md) |
-| Ha az elérési út egy tűzfal található, győződjön meg arról, hogy meg nyitva, hogy az összekötő el tudja küldeni az alkalmazásproxynak HTTPS (TCP) kérések | [Alkalmazásproxy engedélyezése az Azure-portálon: alkalmazásproxy Előfeltételek](active-directory-application-proxy-enable.md#application-proxy-prerequisites) |
+| Ha az elérési út egy tűzfal található, győződjön meg arról, hogy meg nyitva, hogy az összekötő el tudja küldeni az alkalmazásproxynak HTTPS (TCP) kérések | [Alkalmazásproxy engedélyezése az Azure-portálon: alkalmazásproxy Előfeltételek](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
 | Ha a szervezet proxykiszolgálót használ az internetkapcsolat működését, hajtsa végre a megfelelő egy pillantást a blog működő utáni proxykiszolgálókkal meglévő helyszíni őket konfigurálásával kapcsolatos részletekért | [A meglévő helyszíni proxykiszolgálókkal működik](application-proxy-working-with-proxy-servers.md) |
 
 
@@ -252,9 +252,9 @@ Hozzávetőleges időt Complete: 20 perc
 
 | Lépés | További források |
 | --- | --- |
-| Összekötő telepítése a kiszolgálón | [Alkalmazásproxy engedélyezése az Azure-portálon: az összekötő regisztrálása és telepítése](active-directory-application-proxy-enable.md#install-and-register-a-connector) |
-| Az Azure AD alkalmazásproxy alkalmazásként a helyszíni alkalmazás közzététele | [Az Azure AD-alkalmazásproxy használó alkalmazások közzététele](application-proxy-publish-azure-portal.md) |
-| Teszt felhasználók hozzárendelése | [Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával: teszt felhasználó hozzáadása](application-proxy-publish-azure-portal.md#add-a-test-user) |
+| Összekötő telepítése a kiszolgálón | [Alkalmazásproxy engedélyezése az Azure-portálon: az összekötő regisztrálása és telepítése](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
+| Az Azure AD alkalmazásproxy alkalmazásként a helyszíni alkalmazás közzététele | [Az Azure AD-alkalmazásproxy használó alkalmazások közzététele](manage-apps/application-proxy-publish-azure-portal.md) |
+| Teszt felhasználók hozzárendelése | [Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával: teszt felhasználó hozzáadása](manage-apps/application-proxy-publish-azure-portal.md#add-a-test-user) |
 | Nem kötelező lépésként beállíthatja egy egyszeri bejelentkezéses felhasználói élmény | [Adja meg az egyszeri bejelentkezés az Azure AD-alkalmazásproxyval](application-proxy-sso-azure-portal.md) |
 | Alkalmazás tesztelése a hozzárendelt felhasználó MyApps portálra való bejelentkezéskor | https://myapps.microsoft.com |
 

@@ -15,8 +15,8 @@ ms.date: 02/14/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 96e7361ce66caaa653706d22f767e1a109fdacf7
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 2584af94be5f36d07278d1e3d70d7d3f1403203c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -50,7 +50,7 @@ Miután megtalálta az összekötő hibát az eseménynaplóban, használja a t�
 
 | Hiba | Javasolt lépések |
 | ----- | ----------------- |
-| Összekötő regisztrálása nem sikerült: Ellenőrizze, hogy engedélyezte az Azure felügyeleti portálon Proxy és a megadott megfelelően az Active Directory-felhasználónevet és jelszót. Hiba: "egy vagy több hiba történt." | Ha korábban bezárta a regisztrációs ablakban az Azure AD bejelentkezés nélkül, futtassa újra az összekötő varázslót, és regisztrálja az összekötőt. <br><br> A regisztrációs ablak nyílik meg, és azonnal bezárása után, de nem engedélyezi, hogy jelentkezzen be, ha a hiba valószínűleg jelenik meg. Ez a hiba akkor fordul elő, amikor egy hálózati hiba van a rendszeren. Győződjön meg arról, hogy lehet csatlakozni a böngészőből nyilvános webhelyeken és, hogy a portok: Nyissa meg a [proxyval Előfeltételek](active-directory-application-proxy-enable.md). |
+| Összekötő regisztrálása nem sikerült: Ellenőrizze, hogy engedélyezte az Azure felügyeleti portálon Proxy és a megadott megfelelően az Active Directory-felhasználónevet és jelszót. Hiba: "egy vagy több hiba történt." | Ha korábban bezárta a regisztrációs ablakban az Azure AD bejelentkezés nélkül, futtassa újra az összekötő varázslót, és regisztrálja az összekötőt. <br><br> A regisztrációs ablak nyílik meg, és azonnal bezárása után, de nem engedélyezi, hogy jelentkezzen be, ha a hiba valószínűleg jelenik meg. Ez a hiba akkor fordul elő, amikor egy hálózati hiba van a rendszeren. Győződjön meg arról, hogy lehet csatlakozni a böngészőből nyilvános webhelyeken és, hogy a portok: Nyissa meg a [proxyval Előfeltételek](manage-apps/application-proxy-enable.md). |
 | Törölje a jelet hiba az ablakban jelenik meg. Nem lehet folytatni | Ha ezt a hibaüzenetet látja, és majd a időszak véget ér, a megadott a rossz felhasználónévvel vagy jelszóval. Próbálja meg újra. |
 | Összekötő regisztrálása nem sikerült: Ellenőrizze, hogy engedélyezte az Azure felügyeleti portálon Proxy és a megadott megfelelően az Active Directory-felhasználónevet és jelszót. Hiba: "AADSTS50059: bérlői azonosító adatokat található vagy a kérelem, vagy bármely hallgatólagos megadott hitelesítő adatok és a keresési szolgáltatás által egyszerű URI sikertelen volt. | Jelentkezzen be Microsoft-Account és a nem tartományhoz, amely része annak a könyvtárnak próbál hozzáférni a szervezet azonosítója kívánt. Győződjön meg arról, hogy a rendszergazda a tartomány neve megegyezik a bérlői tartomány része, például, ha az Azure AD-tartomány pedig contoso.com, a rendszergazdának kell lennie admin@contoso.com. |
 | Nem sikerült beolvasni a jelenlegi, PowerShell-parancsfájlok futtatására vonatkozó végrehajtási házirend. | Ha az összekötő telepítése nem sikerül, ellenőrizze, hogy győződjön meg arról, hogy a PowerShell végrehajtási házirend nincs letiltva. <br><br>1. Nyissa meg a Helyicsoportházirend-szerkesztő.<br>2. Ugrás a **számítógép konfigurációja** > **felügyeleti sablonok** > **Windows-összetevők**  >   **A Windows PowerShell** duplán **kapcsolja be a parancsfájl végrehajtása**.<br>3. A végrehajtási házirendet is megadni **nincs konfigurálva** vagy **engedélyezve**. Ha beállítása **engedélyezve**, győződjön meg arról, hogy a beállítások, a végrehajtási házirend beállítása értékre **engedélyezése a helyi és távoli aláírt parancsfájlok** vagy **összes parancsfájlok**. |
@@ -87,9 +87,9 @@ Ez a lista azokat a hibákat, a végfelhasználók akkor léphetnek fel, ha pró
 Ha egy hiba vagy probléma az Azure AD-alkalmazásproxy, amely nem szerepel az hibaelhárítási útmutató, szeretnénk kapcsolatos érkezett válasz. E-mail küldése a [visszajelzés team](mailto:aadapfeedback@microsoft.com) a hiba részleteit.
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Active Directory alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
-* [Alkalmazások közzététele az alkalmazásproxy](application-proxy-publish-azure-portal.md)
-* [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)
+* [Az Azure Active Directory alkalmazásproxy engedélyezése](manage-apps/application-proxy-enable.md)
+* [Alkalmazások közzététele az alkalmazásproxy](manage-apps/application-proxy-publish-azure-portal.md)
+* [Egyszeri bejelentkezés engedélyezése](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Feltételes hozzáférés engedélyezése](application-proxy-enable-remote-access-sharepoint.md)
 
 

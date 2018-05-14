@@ -15,8 +15,8 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: f480553e6a8ca09872cd638537bc6fb98e793d8b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 5554260ad2b47cf4c66046c95007c95e44f188bd
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -50,7 +50,7 @@ Ez a cikk tesznek közzé egy alkalmazást ebben a forgatókönyvben az első al
 
 Ha már Application Proxy engedélyezve van, és egy összekötő telepítve van, hagyja ki ezt a szakaszt, és helyezze át a [adja hozzá az alkalmazás az Azure AD-alkalmazásproxyval](#add-your-app-to-azure-ad-with-application-proxy).
 
-Az alkalmazásproxy-összekötő egy Windows Server-szolgáltatás, amely arra utasítja a közzétett alkalmazások a távoli alkalmazottak érkező forgalom. Telepítési utasításokat, lásd: [alkalmazásproxy engedélyezése az Azure-portálon](active-directory-application-proxy-enable.md).
+Az alkalmazásproxy-összekötő egy Windows Server-szolgáltatás, amely arra utasítja a közzétett alkalmazások a távoli alkalmazottak érkező forgalom. Telepítési utasításokat, lásd: [alkalmazásproxy engedélyezése az Azure-portálon](manage-apps/application-proxy-enable.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **alkalmazásproxy**.
@@ -65,7 +65,7 @@ Az alkalmazásproxy-összekötő egy Windows Server-szolgáltatás, amely arra u
 
 Nincsenek két műveletet kell tennie az Azure portálon. Először az alkalmazásproxy az alkalmazás közzétételére. Ezt követően kell összegyűjtenie némi információt az alkalmazást, amelynek során a PingAccess lépéseket használhatja.
 
-Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes lépéseket bemutató 1-8, tekintse meg a még [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md).
+Kövesse az alábbi lépéseket az alkalmazás közzétételére. A részletes lépéseket bemutató 1-8, tekintse meg a még [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md).
 
 1. Ha nem az utolsó szakaszban, jelentkezzen be a [Azure-portálon](https://portal.azure.com) globális rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **vállalati alkalmazások**.
@@ -181,5 +181,5 @@ Ha végrehajtotta ezeket a lépéseket, az alkalmazás működik, és kell lenni
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure AD PingAccess konfigurálása](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
-- [Hogyan nyújt az Azure AD-alkalmazásproxy egyszeri bejelentkezéshez?](application-proxy-sso-overview.md)
+- [Hogyan nyújt az Azure AD-alkalmazásproxy egyszeri bejelentkezéshez?](manage-apps/application-proxy-single-sign-on.md)
 - [Alkalmazásproxy hibaelhárítása](active-directory-application-proxy-troubleshoot.md)

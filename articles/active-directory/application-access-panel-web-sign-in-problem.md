@@ -1,11 +1,11 @@
 ---
-title: "A probléma jelentkezik be a hozzáférési panel webhelyre |} Microsoft Docs"
-description: "Jelentkezzen be a hozzáférési Panel használatához közben esetlegesen fellépő problémák megoldásához útmutatást"
+title: A probléma jelentkezik be a hozzáférési panel webhelyre |} Microsoft Docs
+description: Jelentkezzen be a hozzáférési Panel használatához közben esetlegesen fellépő problémák megoldásához útmutatást
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 83c3a893fe18f2de2acc4fdbc9b048c92cc71d15
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1820ab1e2295e6e0c7795c9d014d001d294bb337
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>A probléma jelentkezik be a hozzáférési panel webhelyre
 
@@ -289,4 +289,4 @@ támogatási jegy megnyitása a következő információkat, ha rendelkezésre �
 -   Fiddler nyomkövetések
 
 ## <a name="next-steps"></a>További lépések
-[Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](active-directory-application-proxy-sso-using-kcd.md)
+[Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

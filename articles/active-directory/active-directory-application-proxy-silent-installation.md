@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 33719ea36af3b3b554fc1d32878d7d72e11b7886
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b9d8535be51601f2ca438f2d22c18656c5ff0dc0
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Létrehozhat egy felügyelet nélküli telepítési parancsfájlt, az Azure AD alkalmazásproxy-összekötő
 
@@ -127,8 +127,8 @@ Az összekötő regisztrálása segítségével két módszer áll rendelkezésr
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
 ## <a name="next-steps"></a>További lépések 
-* [Alkalmazások közzététele saját tartománynév használatával](active-directory-application-proxy-custom-domains.md)
-* [Egyszeri bejelentkezés engedélyezése](active-directory-application-proxy-sso-using-kcd.md)
+* [Alkalmazások közzététele saját tartománynév használatával](manage-apps/application-proxy-configure-custom-domain.md)
+* [Egyszeri bejelentkezés engedélyezése](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Az alkalmazásproxy problémák elhárítása](active-directory-application-proxy-troubleshoot.md)
 
 

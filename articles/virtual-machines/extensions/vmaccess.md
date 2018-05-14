@@ -3,7 +3,7 @@ title: Hozzáférés az Azure Linux virtuális gép visszaállítása |} Microso
 description: A rendszergazda felhasználók kezelése, és alaphelyzetbe állítja a hozzáférés a Linux virtuális gépeken a VMAccess bővítmény és az Azure CLI 2.0 használatával
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: danielsollondon
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,19 +13,39 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 08/04/2017
-ms.author: danlep
-ms.openlocfilehash: a364d3c8c0297d988bc6a31b31921b49e70394bf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 05/10/2018
+ms.author: danis
+ms.openlocfilehash: b90b7948d10ff91f3c63b772bc302b1def416f2b
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Rendszergazda felhasználók, az SSH és az ellenőrzés kezeléséhez, vagy javítsa ki a Linux virtuális gépeken a VMAccess bővítmény használata az Azure CLI 2.0 lemezek
+
+## <a name="overview"></a>Áttekintés
+
 A lemezt a Linux virtuális Gépet a hibák láthatók. Valamilyen módon alaphelyzetbe állítja a gyökér szintű jelszavát a Linux virtuális gép számára, vagy véletlenül törli a titkos SSH-kulcsot. Ha vissza a datacenter napban bekövetkezett, meg kell meghajtó van, és nyissa meg a kiszolgáló konzolján beolvasandó KVM. Az Azure VMAccess bővítmény gondol adott KVM kapcsolóéval, amely lehetővé teszi a hozzáférést a következőre Linux, vagy végezzen szintű konzol eléréséhez.
 
-Ez a cikk bemutatja, hogyan használható az Azure VMAccess bővítmény ellenőrizze vagy javítsa ki a lemezt, alaphelyzetbe állítja a felhasználói hozzáférés, a rendszergazdai felhasználói fiókok kezelése vagy a Linux SSH-konfigurációját frissíteni. Az [Azure CLI 1.0-s](../linux/using-vmaccess-extension-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
+Ez a cikk bemutatja, hogyan az Azure VMAccess bővítmény használatával ellenőrizze, vagy javítsa ki a lemezt, alaphelyzetbe állítja a felhasználói hozzáférés, rendszergazdai fiókok kezelése vagy Linux SSH-konfigurációját frissíteni, ha Azure Resource Manager virtuális gépként futnak. Ha a klasszikus virtuális gépek - kezeléséhez szükséges található utasításokat kövesse a [klasszikus virtuális dokumentációját](../linux/classic/reset-access-classic.md). 
 
+## <a name="prerequisites"></a>Előfeltételek
+
+### <a name="operating-system"></a>Operációs rendszer
+
+A virtuális gép hozzáférési bővítményét is futtathatók a a Linux terjesztéseket:
+
+
+| Disztribúció | Verzió |
+|---|---|
+| Ubuntu | 16.04 LTS, 14.04 LTS és 12.04 LTS |
+| Debian | Debian 7.9 +, 8.2 + |
+| RedHat | RHEL 6.7 + 7.1 + |
+| Oracle Linux | 6.4+, 7.0+ |
+| SUSE | 11 és 12 |
+| OpenSuse | Termékek 42.2 + openSUSE |
+| CentOS | A centOS 6.3 + 7.0 + |
+| CoreOS | 494.4.0+ |
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>A VMAccess bővítmény használatának módjai
 Kétféleképpen használható a VMAccess bővítmény a Linux virtuális gépeken:

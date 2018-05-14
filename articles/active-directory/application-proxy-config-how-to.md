@@ -1,11 +1,11 @@
 ---
-title: "Az alkalmazásproxy alkalmazás konfigurálása |} Microsoft Docs"
-description: "Ismerje meg, hogyan hozhat létre egy konfigurálása az alkalmazásproxy alkalmazást néhány egyszerű lépésben"
+title: Az alkalmazásproxy alkalmazás konfigurálása |} Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy konfigurálása az alkalmazásproxy alkalmazást néhány egyszerű lépésben
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fafd7c03141f67f4fc9ffbedb7a27632754b8d59
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 816f2c10631de3809c6679c1e2715174f072f56d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Az alkalmazásproxy alkalmazás konfigurálása
 
@@ -25,15 +25,15 @@ Ez a cikk segít megérteni, hogyan teszi közzé a felhőbe a helyszíni alkalm
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok 
 
-További tudnivalók a kezdeti konfigurációt és a felügyeleti portálon keresztül alkalmazásproxy alkalmazás létrehozását, hajtsa végre a [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
+További tudnivalók a kezdeti konfigurációt és a felügyeleti portálon keresztül alkalmazásproxy alkalmazás létrehozását, hajtsa végre a [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md).
 
-Az összekötők konfigurálása, lásd: [alkalmazásproxy engedélyezése az Azure-portálon](active-directory-application-proxy-enable.md).
+Az összekötők konfigurálása, lásd: [alkalmazásproxy engedélyezése az Azure-portálon](manage-apps/application-proxy-enable.md).
 
-Tanúsítványok feltöltése és egyéni tartomány használatával kapcsolatos tudnivalókat lásd: [egyéni tartományok az Azure AD alkalmazásproxy használata](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains).
+Tanúsítványok feltöltése és egyéni tartomány használatával kapcsolatos tudnivalókat lásd: [egyéni tartományok az Azure AD alkalmazásproxy használata](manage-apps/application-proxy-configure-custom-domain.md).
 
 ## <a name="create-the-applicationsetting-the-urls"></a>Az Alkalmazásbeállítás URL-címek létrehozása
 
-Ha a következő lépéseket a [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) és a dokumentáció első hiba történt az alkalmazás létrehozásakor tekintse meg a hiba részletes adatait információk és javaslatok megoldásával a az alkalmazás. A legtöbb hiba üzenetekben javasolt javítás. Gyakori hibák elkerülése érdekében győződjön meg arról:
+Ha a következő lépéseket a [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md) és a dokumentáció első hiba történt az alkalmazás létrehozásakor tekintse meg a hiba részletes adatait információk és javaslatok megoldásával a az alkalmazás. A legtöbb hiba üzenetekben javasolt javítás. Gyakori hibák elkerülése érdekében győződjön meg arról:
 
 -   Alkalmazásproxy alkalmazás létrehozása engedéllyel rendelkező rendszergazdáknak
 
@@ -51,13 +51,13 @@ A jobb felső sarokban a hibaüzenet a következő megjelenjen-e az alkalmazás 
 
 ## <a name="configure-connectorsconnector-groups"></a>Az összekötők/összekötő csoportok beállítása
 
-Ha a rendelkezésre álló összekötők és összekötő csoportok figyelmeztetés miatt az alkalmazás konfigurálása, lásd: utasításokat a letöltési összekötők részletekért alkalmazásproxy engedélyezése. Ha azt szeretné, további információt az összekötők, tekintse meg a [összekötők dokumentációja](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
+Ha a rendelkezésre álló összekötők és összekötő csoportok figyelmeztetés miatt az alkalmazás konfigurálása, lásd: utasításokat a letöltési összekötők részletekért alkalmazásproxy engedélyezése. Ha azt szeretné, további információt az összekötők, tekintse meg a [összekötők dokumentációja](application-proxy-understand-connectors.md).
 
 Ha az összekötők nem működnek, ez azt jelenti, hogy azok nem érhetők el a szolgáltatást. Ez gyakran azért van, mivel nincsenek nyissa meg a szükséges portok. Szükséges portok listájának megtekintéséhez lásd: a szükséges Előfeltételek című részben engedélyezése alkalmazásproxy.
 
 ## <a name="upload-certificates-for-custom-domains"></a>Az egyéni tartományok tanúsítványok feltöltése
 
-Egyéni tartományok engedélyezi, hogy a külső URL-címek tartományát adja meg. Egyéni tartományok használatához szüksége töltse fel az ehhez a tartományhoz. Egyéni tartományok és tanúsítványok használatával kapcsolatos információkért lásd: [egyéni tartományok az Azure AD alkalmazásproxy használata](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains). 
+Egyéni tartományok engedélyezi, hogy a külső URL-címek tartományát adja meg. Egyéni tartományok használatához szüksége töltse fel az ehhez a tartományhoz. Egyéni tartományok és tanúsítványok használatával kapcsolatos információkért lásd: [egyéni tartományok az Azure AD alkalmazásproxy használata](manage-apps/application-proxy-configure-custom-domain.md). 
 
 Ha a tanúsítvány feltöltése problémák adódtak, keresse meg a hibaüzeneteket, a portálon található további információ a tanúsítvánnyal kapcsolatos problémát. Közös tanúsítvánnyal kapcsolatos problémák a következők:
 
@@ -71,5 +71,5 @@ A hibaüzenetet jeleníti meg a jobb felső sarokban található megpróbálja f
 
    ![Értesítési üzenet](./media/application-proxy-config-how-to/error-message2.png)
 
-## <a name="next-steps"></a>Következő lépések
-[Az Azure AD-alkalmazásproxy használó alkalmazások közzététele](application-proxy-publish-azure-portal.md)
+## <a name="next-steps"></a>További lépések
+[Az Azure AD-alkalmazásproxy használó alkalmazások közzététele](manage-apps/application-proxy-publish-azure-portal.md)

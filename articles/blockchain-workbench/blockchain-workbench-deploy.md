@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: a16d65e9c462bfcacc5ae9f29889667efd9ddb84
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6ee60d05897de7bb5408a226202623fd5955a88a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain munkaterület központi telepítése
 
@@ -254,4 +254,7 @@ Miután az Azure-Blockchain munkaterület van telepítve, a következő lépéss
 
 ## <a name="next-steps"></a>További lépések
 
-Azure Blockchain munkaterület telepítve van, a következő lépéssel fogja [Azure Blockchain munkaterület felhasználók kezelése](blockchain-workbench-manage-users.md).
+Azure Blockchain munkaterület telepítése útmutató cikkben. Megtudhatja, hogyan hozhat létre egy blockchain alkalmazást, folytassa a következő cikkben található útmutató.
+
+> [!div class="nextstepaction"]
+> [Azure Blockchain munkaterület blockchain-alkalmazás létrehozása](blockchain-workbench-create-app.md)

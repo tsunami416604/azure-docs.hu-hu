@@ -15,17 +15,17 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e2057241065ecefbbcd398ddf482961359f51de7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a96296e8918c658f1dc3ebeadf01bd064e80716a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy közzétett alkalmazásokhoz szoftveresen kötött hivatkozások átirányítása
 
 Az Azure AD-alkalmazásproxy elérhetővé teszi a helyszíni alkalmazások a távoli felhasználók vagy a saját eszközeiket. Egyes alkalmazások esetében azonban fejlesztett helyi a beágyazott HTML-hivatkozásokat tartalmazó. Ezek a hivatkozások nem működnek megfelelően az alkalmazás távolról használatakor. Ha több, egymástól mutasson a helyszíni alkalmazások, a felhasználók várható tovább dolgozik, ha azok nem az irodában a hivatkozásokat. 
 
-Győződjön meg arról, hogy hivatkozások azonos belüli és a vállalati hálózaton kívüli működik a legjobban a külső URL-címeket az alkalmazások azonos a belső URL-címek konfigurálásához. Használjon [egyéni tartományok](active-directory-application-proxy-custom-domains.md) a külső URL-címeket kell rendelkeznie a vállalati tartomány neve helyett az alapértelmezett alkalmazástartomány-proxy konfigurálása.
+Győződjön meg arról, hogy hivatkozások azonos belüli és a vállalati hálózaton kívüli működik a legjobban a külső URL-címeket az alkalmazások azonos a belső URL-címek konfigurálásához. Használjon [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) a külső URL-címeket kell rendelkeznie a vállalati tartomány neve helyett az alapértelmezett alkalmazástartomány-proxy konfigurálása.
 
 
 Ha a bérlő nem használhat egyéni tartományok, többféle módon más biztosítani ezt a funkciót. Ezek mindegyike is kompatibilis egyéni tartományok és egymással, így megadhatja az egyéni tartományok és az egyéb megoldások, ha szükséges. 
@@ -40,7 +40,7 @@ Ezek a funkciók tartsa meg a hivatkozásokat, függetlenül attól, hol találh
 
  
 > [!NOTE]
-> Az utolsó lehetőség van csak a bérlői, valamilyen okból nem használható egyéni tartományok azonos belső és külső URL-címéből alkalmazások rendelkeznek. Ez a funkció engedélyezése előtt tekintse meg, ha [egyéni tartományok az Azure AD alkalmazásproxy](active-directory-application-proxy-custom-domains.md) akkor is képes működni. 
+> Az utolsó lehetőség van csak a bérlői, valamilyen okból nem használható egyéni tartományok azonos belső és külső URL-címéből alkalmazások rendelkeznek. Ez a funkció engedélyezése előtt tekintse meg, ha [egyéni tartományok az Azure AD alkalmazásproxy](manage-apps/application-proxy-configure-custom-domain.md) akkor is képes működni. 
 
 >Vagy, ha az alkalmazás kell konfigurálnia a hivatkozással fordítási SharePoint című [másodlagos címek leképezése a SharePoint 2013 rendszerhez konfigurálása](https://technet.microsoft.com/library/cc263208.aspx) leképezési hivatkozások egy másik módjáról. 
 
@@ -118,6 +118,6 @@ Most amikor a felhasználók hozzáférése az alkalmazáshoz, a proxy automatik
 Azt szeretnénk, hogy a működnek az alkalmazások a szolgáltatás segítségével. A HTML-vagy CSS azt keresés több mint 30 címkék. Ha rendelkezik, amelyek nem szerepelnek alatt létrehozott hivatkozások példát, küldjön egy kódrészletet a [Application Proxy visszajelzés](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>További lépések
-[Egyéni tartományok használata az Azure AD-alkalmazásproxy](active-directory-application-proxy-custom-domains.md) szeretné, hogy a belső és külső URL-CÍMÉRE
+[Egyéni tartományok használata az Azure AD-alkalmazásproxy](manage-apps/application-proxy-configure-custom-domain.md) szeretné, hogy a belső és külső URL-CÍMÉRE
 
 [Konfigurálja a másodlagos címek leképezése a SharePoint 2013 rendszerhez](https://technet.microsoft.com/library/cc263208.aspx)

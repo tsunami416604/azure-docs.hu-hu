@@ -1,8 +1,8 @@
 ---
-title: "Azure-fájlok kapcsolatos problémák elhárítása a Linux |} Microsoft Docs"
-description: "Linux Azure fájlok problémák hibaelhárítása"
+title: Azure-fájlok kapcsolatos problémák elhárítása a Linux |} Microsoft Docs
+description: Linux Azure fájlok problémák hibaelhárítása
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
 editor: na
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 8fd09c748786f0bfe070c3f41201eddc3d272116
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 7b5567359e7ca87d26e05d336337b55af364031e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Azure-fájlok kapcsolatos problémák elhárítása a Linux
 
@@ -29,7 +29,7 @@ A cikk ismerteti a gyakori problémák kapcsolódó fájlok a Microsoft Azure Li
 
 A Linux az alábbihoz hasonló hibaüzenetet kap:
 
-**<filename>[a hozzáférés megtagadva] Lemez kvótája túllépve**
+**<filename> [a hozzáférés megtagadva] Lemez kvótája túllépve**
 
 ### <a name="cause"></a>Ok
 
@@ -71,7 +71,7 @@ Ez lehet újracsatlakozni a Linux kernel most problémát részeként a követke
 
 Azonban ezek a változások előfordulhat, hogy nem használatát. még a Linux-disztribúció. A következő népszerű Linux kernelek végzett javítás és egyéb újracsatlakozás javításai: 4.4.40 4.8.16 és 4.9.1. Ez a javítás kaphat ilyen ajánlott kernel verziójú frissítése.
 
-### <a name="workaround"></a>Megkerülő megoldás
+### <a name="workaround"></a>Áthidaló megoldás
 
 Ez a probléma megkerüléséhez kötött megadásával. Ez arra kényszeríti az ügyfél számára, várjon, amíg létrejön a kapcsolat, vagy explicit módon megszakad, és a hálózati időtúllépések miatt megelőzése érdekében használható. Ez a megoldás azonban határozatlan ideig vár okozhatja. Készüljön kapcsolatok szükség szerint állítsa le.
 
@@ -120,7 +120,7 @@ Linux/Unix platformokon a **cp -p** parancs sikertelen lesz, ha a különböző 
 
 A force jelzést **f** a COPYFILE eredményezi végrehajtása **cp -p -f** UNIX. Ez a parancs is sikertelen lesz, a fájlt, amely nem Ön a tulajdonosa időbélyegzőjét megőrzése érdekében.
 
-### <a name="workaround"></a>Megkerülő megoldás
+### <a name="workaround"></a>Áthidaló megoldás
 
 A tárolási fiók felhasználójának használ a fájlok másolása:
 

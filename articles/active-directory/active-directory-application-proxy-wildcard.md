@@ -15,8 +15,8 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a5466a0b5027fa8fe0edec3c9663e6cd1aafc9a3
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 61426d992e279cf88ae9750f0047b0cd81a797e3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -48,14 +48,14 @@ Például: `http(s)://*.adventure-works.com`. A belső és külső URL-címeket 
 
 Ha további alkalmazások különböző konfigurációs beállítások, közzé kell tennie az ilyen kivételek külön alkalmazások felülírja az alapértelmezett beállítása a helyettesítő karaktert. Helyettesítő karakter nélkül alkalmazások mindig elsőbbséget élveznek helyettesítő alkalmazásokat. A konfigurációs szempontjából ezek a "csak" rendszeres alkalmazások.
 
-Egy helyettesítő karakteres alkalmazás létrehozása alapuló azonos [alkalmazás közzétételi folyamat](application-proxy-publish-azure-portal.md) , amely érhető el minden más alkalmazást. Az egyetlen különbség az, hogy az URL-címeket, és esetleg az SSO konfigurációs helyettesítő tartalmazza.
+Egy helyettesítő karakteres alkalmazás létrehozása alapuló azonos [alkalmazás közzétételi folyamat](manage-apps/application-proxy-publish-azure-portal.md) , amely érhető el minden más alkalmazást. Az egyetlen különbség az, hogy az URL-címeket, és esetleg az SSO konfigurációs helyettesítő tartalmazza.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="custom-domains"></a>Egyéni tartományok
 
-Amíg [egyéni tartományok](active-directory-application-proxy-custom-domains.md) vannak más alkalmazások esetén nem kötelező,-e helyettesítő alkalmazások előfeltétele. Egyéni tartományok létrehozásáról szükséges, hogy:
+Amíg [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) vannak más alkalmazások esetén nem kötelező,-e helyettesítő alkalmazások előfeltétele. Egyéni tartományok létrehozásáról szükséges, hogy:
 
 1. Hozzon létre egy ellenőrzött tartomány Azure-ban 
 2. Töltse fel az alkalmazásproxy SSL-tanúsítvány PFX formátumban.
@@ -117,7 +117,7 @@ A helyettesítő karakteres alkalmazás szerepel a csak egy csempe az a [MyApps 
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos által korlátozott delegálás
 
-Használó alkalmazások esetében [kerberos által korlátozott delegálás (KCD) a egyszeri bejelentkezési módszerként](active-directory-application-proxy-sso-using-kcd.md), az egyszerű szolgáltatásnév felsorolt számára az egyszeri bejelentkezés módszer is szükség lehet a helyettesítő karakter. Például az egyszerű szolgáltatásnév lehet: `HTTP/*.adventure-works.com`. Továbbra is kell rendelkeznie a háttérkiszolgálókhoz konfigurált egyes SPN-ek (például `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+Használó alkalmazások esetében [kerberos által korlátozott delegálás (KCD) a egyszeri bejelentkezési módszerként](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md), az egyszerű szolgáltatásnév felsorolt számára az egyszeri bejelentkezés módszer is szükség lehet a helyettesítő karakter. Például az egyszerű szolgáltatásnév lehet: `HTTP/*.adventure-works.com`. Továbbra is kell rendelkeznie a háttérkiszolgálókhoz konfigurált egyes SPN-ek (például `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
 
 
 
@@ -136,7 +136,7 @@ Mindhárom alkalmazás:
 - Az azonos jellemzőkkel rendelkezik
 
 
-A az itt leírt lépésekkel helyettesítő alkalmazást is közzétehet [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md). Ez a forgatókönyv azt feltételezi, hogy:
+A az itt leírt lépésekkel helyettesítő alkalmazást is közzétehet [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md). Ez a forgatókönyv azt feltételezi, hogy:
 
 - A következő Azonosítóval rendelkező bérlő: `000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -144,7 +144,7 @@ A az itt leírt lépésekkel helyettesítő alkalmazást is közzétehet [alkalm
 
 - A **CNAME** bejegyzést, amely a `*.adventure-works.com` való `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` létrejött.
 
-A következő a [lépéseket dokumentált](application-proxy-publish-azure-portal.md), létrehozhat egy új application proxy alkalmazás az Ön bérelt szolgáltatásának. Ebben a példában a helyettesítő karakter lehet, a következő területeken:
+A következő a [lépéseket dokumentált](manage-apps/application-proxy-publish-azure-portal.md), létrehozhat egy új application proxy alkalmazás az Ön bérelt szolgáltatásának. Ebben a példában a helyettesítő karakter lehet, a következő területeken:
 
 - Belső URL-címe:
 
@@ -153,7 +153,7 @@ A következő a [lépéseket dokumentált](application-proxy-publish-azure-porta
 
 - Külső URL-címe:
 
-    ![Külső URL-címe](./media/active-directory-application-proxy-wildcard\43.png)
+    ![Külső URL-cím](./media/active-directory-application-proxy-wildcard\43.png)
 
  
 - Belső alkalmazás egyszerű szolgáltatásnév: 
@@ -183,7 +183,7 @@ Ebben a forgatókönyvben kell továbbá a három általános alkalmazás egy m�
 
 Meg kell győződnie arról, hogy egy CNAME-rekordok megtalálhatók-e az adott pontok `finance.adventure-works.com` az alkalmazásproxy oldalon az alkalmazáshoz megadott alkalmazás adott végpontra. Ebben a forgatókönyvben `finance.adventure-works.com` mutat `https://finance-awcycles.msappproxy.net/`. 
 
-A következő a [lépéseket dokumentált](application-proxy-publish-azure-portal.md), ebben a forgatókönyvben igényel a következő beállításokat:
+A következő a [lépéseket dokumentált](manage-apps/application-proxy-publish-azure-portal.md), ebben a forgatókönyvben igényel a következő beállításokat:
 
 
 - Az a **belső URL-cím**, beállított **pénzügyi** helyettesítő karakter helyett. 
@@ -192,7 +192,7 @@ A következő a [lépéseket dokumentált](application-proxy-publish-azure-porta
 
 - Az a **külső URL-cím**, beállított **pénzügyi** helyettesítő karakter helyett. 
 
-    ![Külső URL-címe](./media/active-directory-application-proxy-wildcard\53.png)
+    ![Külső URL-cím](./media/active-directory-application-proxy-wildcard\53.png)
 
 - Belső alkalmazás SPN beállított **pénzügyi** helyettesítő karakter helyett.
 
@@ -212,8 +212,8 @@ Ha több alkalmazást is pénzügyi közzétéve, és rendelkezik `finance.adven
 
 További információ:
 
-- **Egyéni tartományok**, lásd: [egyéni tartományok az Azure AD alkalmazásproxy használata](active-directory-application-proxy-custom-domains.md).
+- **Egyéni tartományok**, lásd: [egyéni tartományok az Azure AD alkalmazásproxy használata](manage-apps/application-proxy-configure-custom-domain.md).
 
-- **Alkalmazás-közzététel**, lásd: [az Azure AD-alkalmazásproxy használó alkalmazások közzététele](application-proxy-publish-azure-portal.md)
+- **Alkalmazás-közzététel**, lásd: [az Azure AD-alkalmazásproxy használó alkalmazások közzététele](manage-apps/application-proxy-publish-azure-portal.md)
 
 

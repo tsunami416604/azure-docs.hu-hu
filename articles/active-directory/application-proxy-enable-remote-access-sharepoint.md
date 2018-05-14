@@ -15,11 +15,11 @@ ms.date: 09/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5d61ad93ad5e3ab7fdf83c1cef2fe6770089112f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 74c99351656a685077bf4ea7714e6804274d396c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy SharePoint távoli hozzáférés engedélyezése
 
@@ -162,7 +162,7 @@ A Kerberos által korlátozott Delegálás konfigurálásához ismételje meg mi
 
 Most, hogy a SharePoint Kerberos és a beállított Kerberos által korlátozott Delegálás engedélyezését, készen áll az Azure AD-proxyn keresztül történő távoli hozzáférés a SharePoint-farm közzététele.
 
-1. Tegye közzé a SharePoint-webhely, a következő beállításokkal. Részletes útmutatásért lásd: [az Azure AD-alkalmazásproxy használó alkalmazások közzététele](application-proxy-publish-azure-portal.md). 
+1. Tegye közzé a SharePoint-webhely, a következő beállításokkal. Részletes útmutatásért lásd: [az Azure AD-alkalmazásproxy használó alkalmazások közzététele](manage-apps/application-proxy-publish-azure-portal.md). 
    - **Belső URL-cím**: a SharePoint-webhely URL-CÍMÉT belső, például **https://SharePoint/**. Ebben a példában, ügyeljen arra, hogy használjon **https**
    - **Előhitelesítési módszer**: az Azure Active Directory
    - **URL-címet a fejlécekben fordítása**: nincs
@@ -204,6 +204,6 @@ A SharePoint-webhely, az Azure AD-alkalmazásproxy külsőleg keresztül érhet�
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egyéni tartományok az Azure AD alkalmazásproxy használata](active-directory-application-proxy-custom-domains.md)
+- [Egyéni tartományok az Azure AD alkalmazásproxy használata](manage-apps/application-proxy-configure-custom-domain.md)
 - [Az Azure AD-alkalmazásproxy összekötők ismertetése](application-proxy-understand-connectors.md)
 

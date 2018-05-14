@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc446dfeee86fa1183892cba8068709f8fd277d5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra
 
@@ -256,7 +256,7 @@ Az alkalmazás mögötti infrastruktúra HANA nagy példányának biztonsági me
 
 Tekintse meg a [SAP Hana (nagy példányok) Azure SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/).
 
-## <a name="sizing"></a>Méretezése
+## <a name="sizing"></a>Méretezés
 
 Méretezési HANA nagy példány eltér nem Hana általában méretezése. Meglévő és áthelyezése más RDBMS HANA, SAP biztosít számos olyan jelentést, a meglévő SAP rendszereken futó kívánt rendszerek telepíthetők. Ha az adatbázis HANA helyezik át, ezek a jelentések ellenőrizze az adatokat, és számítja ki a memória a HANA-példány. Ezek a jelentések futtatásához, és beszerezni a legújabb javítások vagy verzió kapcsolatos további információkért tekintse meg a következő SAP megjegyzéseket:
 
@@ -303,6 +303,8 @@ Ez a lista állítja össze a SAP HANA futtatásához Azure (nagyobb példány).
    - A Red Hat Linux szüksége van a megfelelő előfizetés, amely támogatja, és frissítheti az operációs rendszerek HANA nagy példány a szolgáltatást. Red Hat [SAP megoldások] azt javasolja a Red Hat Enterprise Linux (https://access.redhat.com/solutions/3082481 előfizetés. 
 
 A támogatási mátrix a különböző Linux verzióival SAP HANA verzióiról, lásd: [SAP Megjegyzés #2235581](https://launchpad.support.sap.com/#/notes/2235581).
+
+Az operációs rendszer és a belső vezérlőprogram vagy illesztőprogram-verziókat HLI kompatibilitási mátrix, tekintse meg a [HLI operációsrendszer-verziófrissítő](os-upgrade-hana-large-instance.md).
 
 
 **Adatbázis**

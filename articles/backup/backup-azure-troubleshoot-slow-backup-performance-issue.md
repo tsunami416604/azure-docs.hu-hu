@@ -1,24 +1,24 @@
 ---
-title: "Lassú biztonsági mentési fájlok és mappák, az Azure Backup hibaelhárítása |} Microsoft Docs"
-description: "Az Azure Backup teljesítményproblémák okait diagnosztizálása hibaelhárítási útmutatást nyújt"
+title: Lassú biztonsági mentési fájlok és mappák, az Azure Backup hibaelhárítása |} Microsoft Docs
+description: Az Azure Backup teljesítményproblémák okait diagnosztizálása hibaelhárítási útmutatást nyújt
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 ms.assetid: e379180a-db13-4e0c-90e4-28e5dd6f5b14
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 373a98855886cc7be7518c664f82bb6f92ca86f3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 6ed1e2d7bfc08afe135cb85995fdebaa30202c23
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 Ez a cikk nyújt hibaelhárítási útmutatót okának fájlok és mappák biztonsági mentési teljesítménycsökkenést használatakor Azure Backup segítségével. Fájlok biztonsági mentése az Azure Backup szolgáltatás ügynöke használatakor a biztonsági mentési folyamat hosszabb ideig eltarthat. Ez a késés oka lehet az alábbiak közül:
@@ -43,7 +43,7 @@ A Windows beépített eszközt nevezett biztosít [Teljesítményfigyelő](https
 
 Íme, néhány teljesítményszámlálók és a tartományt a szűk keresztmetszetek optimális biztonsági másolatok diagnosztizálásához hasznos lehet.
 
-| A számláló | status |
+| Számláló | status |
 | --- | --- |
 | Logikai lemez (fizikai lemez) – üresjárati % |• 100 %-os üresjárati 50 %-os üresjárati = kifogástalan</br>• 49 % 20 %-át üresjárati üresjárati = figyelmeztetés vagy a figyelő</br>• 19 % 0 % üresjárati üresjárati kritikus vagy kívüli Spec = |
 | Logikai lemez (fizikai lemez) – % Átl. Lemez mp Olvasás vagy írás |• 0,015 MS 0,001 ms = kifogástalan</br>• 0,025 MS 0,015 ms = figyelmeztetés vagy a figyelő</br>• 0.026 ms vagy kritikus vagy kívüli Spec már = |

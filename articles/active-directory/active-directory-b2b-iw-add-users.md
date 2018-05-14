@@ -5,20 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 05/11/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: a758fe4d9cb00af56f7b8ba6b894f0e87ee8c0d3
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3ab78d6530bb792ad01a04c6774fe680579251db
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>Az információkkal dolgozó szakemberek hogyan hozzá B2B együttműködés felhasználók Azure Active Directory?
 
 Az információkkal dolgozó szakemberek a [alkalmazás hozzáférési Panel](http://myapps.microsoft.com) B2B együttműködés felhasználók hozzáadása a csoportok és az általuk felügyelt alkalmazások.
+
+Miután a Vendég felhasználó nincs hozzáadva a könyvtárba, az információkkal dolgozó szakember vagy küldhet a Vendég felhasználói egy közvetlen hivatkozást egy megosztott alkalmazást, vagy a Vendég felhasználó kattinthat a meghívó e-mail érvényesítési URL-cím. Az érvényesítési folyamattal kapcsolatos további információkért lásd: [B2B együttműködés meghívó érvényesítési](active-directory-b2b-redemption-experience.md).
 
 ## <a name="information-workers-adding-b2b-collaboration-users-to-an-application"></a>Az információkkal dolgozó szakemberek B2B együttműködés felhasználók hozzáadása egy alkalmazáshoz
 Ahogy az alábbi videó az B2B együttműködés felhasználók hozzárendelése az Infomunkás a fiókpartner-szervezet egy alkalmazást:

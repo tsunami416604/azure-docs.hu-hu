@@ -15,25 +15,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 5a33f183470ec3879344f0cfe335bab38f9ff30f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: db508e2311602a66a2c252ffaa842f8bfb4f670b
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Hálózati figyelő ügynök virtuálisgép-bővítmény Linux
 
 ## <a name="overview"></a>Áttekintés
 
-[Az Azure hálózati figyelőt](/azure/network-watcher/) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. A hálózati figyelő ügynök virtuálisgép-bővítményt az egyes hálózati figyelőt szolgáltatásokat az Azure virtuális gépeken működik. Ez magában foglalja, igény szerint és egyéb speciális funkciók a hálózati forgalom rögzítése.
+[Az Azure hálózati figyelőt](/azure/network-watcher/) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. A hálózati figyelő ügynök virtuális gép (VM) kiterjesztés előfeltétele annak, hogy egyes hálózati figyelőt szolgáltatásokat Azure virtuális gépeken, például az igény szerinti és egyéb speciális funkciókat a hálózati forgalom rögzítése.
 
-Ez a dokumentum részletesen a támogatott platformokról és a Linux hálózati figyelő ügynök virtuálisgép-bővítmény vonatkozó telepítési lehetőségeket. Az ügynök nem zavarja, vagy újra kell indítani, a virtuális gép.
+Ez a cikk a támogatott platformok és a központi telepítési beállításokat a hálózati figyelő ügynök Virtuálisgép-bővítmény Linux részletezi. Az ügynök nem zavarja, vagy újra kell indítani, a virtuális gép.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A hálózati figyelő ügynök bővítmény is futtathatók a a Linux terjesztéseket:
+A hálózati figyelő ügynök kiterjesztés a következő Linux terjesztésekről konfigurálhatók:
 
 | Disztribúció | Verzió |
 |---|---|
@@ -46,15 +46,15 @@ A hálózati figyelő ügynök bővítmény is futtathatók a a Linux terjeszté
 | CentOS | 6.5 + és 7 |
 | CoreOS | 899.17.0+ |
 
-Vegye figyelembe, hogy CoreOS jelenleg nem támogatott.
+CoreOS nem támogatott.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A hálózati figyelő ügynök funkciók némelyike megköveteli, hogy a cél virtuális gép kapcsolódnia kell az internetre. Kimenő kapcsolatokat képessége nélkül egyes hálózati figyelő ügynök szolgáltatásokat lehet, hogy hibás működését, vagy már nem érhető el. További részletekért lásd: a [hálózati figyelőt dokumentáció](/azure/network-watcher/).
+A hálózati figyelő ügynök funkciók némelyike megköveteli, hogy a virtuális gép csatlakozik az internethez. Kimenő kapcsolatokat képessége nélkül egyes hálózati figyelő ügynök szolgáltatásokat lehet, hogy hibás működését, vagy már nem érhető el. Amely megköveteli az ügynök hálózati figyelőt funkcióival kapcsolatos további információkért lásd: a[hálózati figyelőt dokumentáció](/azure/network-watcher/).
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sémáját. A bővítmény sem szükséges és nem támogatja a megadott felhasználó által megadott beállításokat jelenleg és az alapértelmezett beállításon támaszkodik.
+A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sémáját. A bővítmény nem szükséges, vagy támogatja, a felhasználó által megadott beállításokat. A bővítmény támaszkodik az alapértelmezett konfigurációval.
 
 ```json
 {
@@ -85,32 +85,49 @@ A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sé
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepíthető. Az előző szakaszban ismertetett JSON-séma segítségével az Azure Resource Manager-sablonok az Azure Resource Manager sablon telepítése során a hálózati figyelő ügynök bővítmény futtatása.
+Azure virtuális gép bővítményei az Azure Resource Manager-sablonok telepítése. A hálózati figyelő ügynök bővítmény telepítéséhez használja az előző json-séma a sablonban.
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+## <a name="azure-cli-10-deployment"></a>Az Azure CLI 1.0-telepítés
 
-Az Azure CLI segítségével a hálózati figyelő ügynök Virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre.
+A következő példa telepíti a hálózati figyelő ügynök Virtuálisgép-bővítmény a klasszikus üzembe helyezési modellben telepített meglévő virtuális:
 
 ```azurecli
-azure vm extension set myResourceGroup1 myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
+azure config mode asm
+azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
+```
+
+## <a name="azure-cli-20-deployment"></a>Az Azure CLI 2.0-telepítés
+
+A következő példa telepíti a hálózati figyelő ügynök Virtuálisgép-bővítmény a Resource Manager használatával telepített meglévő virtuális:
+
+```azurecli
+az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name NetworkWatcherAgentLinux --publisher Microsoft.Azure.NetworkWatcher --version 1.4
 ```
 
 ## <a name="troubleshooting-and-support"></a>Hibaelhárítás és támogatás
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotára vonatkozó lehet adatokat beolvasni az Azure-portálon, és az Azure parancssori felület használatával. A megadott virtuális gépek bővítmények központi telepítési állapotának megtekintéséhez a következő parancsot az Azure parancssori felület használatával.
+Bővítmény üzembe helyezése az Azure portálon vagy az Azure CLI állapotára vonatkozó adatok kérheti le.
+
+A következő példa bemutatja a bővítmény telepítési állapotát az Azure CLI 1.0 használata a klasszikus üzembe helyezési modellben telepített virtuális:
 
 ```azurecli
-azure vm extension get myResourceGroup1 myVM1
+azure config mode asm
+azure vm extension get myVM1
 ```
-
 A következő könyvtárban található fájlok kerül a bővítmény végrehajtás kimenetének:
 
 `
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
 `
 
+A következő példa bemutatja a NetworkWatcherAgentLinux bővítmény telepítési állapotát a Resource Manageren keresztül, központilag telepített virtuális gépek az Azure CLI 2.0 használatával:
+
+```azurecli
+az vm extension show --name NetworkWatcherAgentLinux --resource-group myResourceGroup1 --vm-name myVM1
+```
+
 ### <a name="support"></a>Támogatás
 
-Ha ez a cikk bármely pontján további segítségre van szüksége, tekintse meg a hálózati figyelőt dokumentációját, vagy lépjen kapcsolatba az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza ki a Get-támogatási szolgálathoz. Támogatja az Azure használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ez a cikk bármely pontján további segítségre van szüksége, olvassa el a [hálózati figyelőt dokumentáció](/azure/network-watcher/), vagy lépjen kapcsolatba az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **segítségre van szüksége**. Támogatja az Azure használatával kapcsolatos információkért lásd: a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

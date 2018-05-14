@@ -15,11 +15,11 @@ ms.date: 10/12/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 14e2b82b5c32e1b36bf730b7b834c9b8ad124629
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c7f27d3fd8a5785017d580df02007abaac503c39
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy összekötők ismertetése
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 05/10/2018
 
 Alkalmazásproxy sikeres telepítéséhez legalább egy összekötő van szüksége, de azt javasoljuk, hogy két vagy több, a nagyobb rugalmasságot. Telepítse az összekötőt a Windows Server 2012 R2 vagy 2016-gépnek. Az összekötő képesnek kell lennie az alkalmazásproxy-szolgáltatás, valamint a helyszíni alkalmazások közzétett folytatott kommunikációhoz. 
 
-Az összekötő kiszolgálója hálózati követelményeivel kapcsolatos további információkért lásd: [az alkalmazásproxy első lépései, és telepítse az összekötőt](active-directory-application-proxy-enable.md).
+Az összekötő kiszolgálója hálózati követelményeivel kapcsolatos további információkért lásd: [az alkalmazásproxy első lépései, és telepítse az összekötőt](manage-apps/application-proxy-enable.md).
 
 ## <a name="maintenance"></a>Karbantartás
 Az összekötők és a szolgáltatás a magas rendelkezésre állású feladatokat kezeli. Akkor is lehet hozzáadásakor vagy eltávolításakor dinamikusan. Minden alkalommal, amikor egy új kérelem érkezik továbbításuk a jelenleg rendelkezésre álló összekötők egyikéhez. Ha egy összekötő átmenetileg nem érhető el, a forgalom nem válaszol.
@@ -50,7 +50,7 @@ Ne kelljen manuálisan törölje az összekötőt, nem használt. Amikor egy ös
 
 ## <a name="automatic-updates"></a>Automatikus frissítések
 
-Az Azure AD automatikus frissítések biztosít minden olyan összekötőt, amely központilag. Mindaddig, amíg a Alkalmazásproxyösszekötő szolgáltatás fut, az összekötők automatikusan frissíteni. Ha az összekötő frissítési szolgáltatást nem látja a kiszolgálón, akkor [telepítse újra az összekötő](active-directory-application-proxy-enable.md) le a frissítéseket. 
+Az Azure AD automatikus frissítések biztosít minden olyan összekötőt, amely központilag. Mindaddig, amíg a Alkalmazásproxyösszekötő szolgáltatás fut, az összekötők automatikusan frissíteni. Ha az összekötő frissítési szolgáltatást nem látja a kiszolgálón, akkor [telepítse újra az összekötő](manage-apps/application-proxy-enable.md) le a frissítéseket. 
 
 Várjon, amíg az összekötő tudomást automatikus frissítése nem szeretnénk, ha a kézi frissítés végezheti el. Lépjen a [összekötő letöltési oldala](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) a kiszolgálóra, amelyen az összekötő található, és válassza a **letöltése**. Ez a folyamat a helyi összekötő frissítés másolattól. 
 
@@ -123,7 +123,7 @@ Olyan számítógépen, amelyen a rendszer nem tartományhoz csatlakozó összek
 
 -Összekötő telepítési egyszerű, és semmilyen speciális konfigurációra van szükség. Van azonban néhány egyedi feltételeket, amelyeket érdemes figyelembe venni:
 
-* A szervezeteknek, amelyek korlátozzák a kimenő forgalom kell [nyissa meg a szükséges portok](active-directory-application-proxy-enable.md#open-your-ports).
+* A szervezeteknek, amelyek korlátozzák a kimenő forgalom kell [nyissa meg a szükséges portok](manage-apps/application-proxy-enable.md#open-your-ports).
 * A FIPS előírásainak megfelelő gépek engedélyezi az összekötő-folyamatok hozza létre és tárolja a tanúsítványt a konfiguráció módosításához lehet szükség.
 * Győződjön meg arról, hogy mindkét összekötő-szolgáltatások engedélyezve vannak-e minden szükséges portokon és IP-cím elérésére kell szervezeteknek, amelyek alapján a folyamatok, amelyek a hálózati kérelmeket bocsásson ki környezetüket zárolását.
 * Bizonyos esetekben a kimenő előre proxyk a kétirányú tanúsítványhitelesítés törés és okozhatja a kommunikáció sikertelen lesz.

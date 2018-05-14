@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 81425c6ac4e463bd4242328206bd43ce78a1105a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 979897e3cb703b36a46e96848a9176d6d4c6cc6a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure fájlszinkronizálás proxy és tűzfal beállításai
+# <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure fájl szinkronizálása a helyszíni kiszolgálók csatlakozik Azure fájlok többhelyes szinkronizálás és a felhőalapú szolgáltatások rétegezéséhez engedélyezése. Egy helyszíni kiszolgálón, kapcsolódnia kell az internethez. Rendszergazda döntse el, hogy a legjobb útvonalat az Azure felhőszolgáltatások elérni kívánt kiszolgáló van szüksége.
 
 Ez a cikk különleges követelményeket előíró lehetőség legyen elérhető a sikeresen és biztonságosan csatlakoztassa a kiszolgálót Azure fájlszinkronizálás betekintést nyújt.
+
+> [!Important]
+> Azure fájl szinkronizálása még támogatja tűzfalak és a virtuális hálózatok a tárfiókhoz. 
 
 ## <a name="overview"></a>Áttekintés
 Azure fájlszinkronizálás úgy működik, mint az orchestration szolgáltatás a Windows Server, az Azure fájlmegosztások és több más Azure-szolgáltatásokkal szinkronizálni az adatokat, lásd: a szinkronizálási csoport között. Az Azure-fájl szinkronizálás megfelelően működjön szüksége lesz a következő Azure szolgáltatásokkal kommunikálni a kiszolgálók konfigurálása:

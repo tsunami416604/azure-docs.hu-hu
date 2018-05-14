@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Active Directory koncepció alkalmazástervezési megvalósítása |} Microsoft Docs"
-description: "Vizsgálatát, és gyorsan végrehajthatja az identitás- és kezelési helyzetek"
+title: Az Azure Active Directory koncepció alkalmazástervezési megvalósítása |} Microsoft Docs
+description: Vizsgálatát, és gyorsan végrehajthatja az identitás- és kezelési helyzetek
 services: active-directory
-keywords: "az Azure active directory, a forgatókönyv, a koncepció igazolása, PoC"
-documentationcenter: 
+keywords: az Azure active directory, a forgatókönyv, a koncepció igazolása, PoC
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: dstefan
-ms.openlocfilehash: e26dfe4aaa374f5587038a0de66c0bd8703c9a41
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f01bdee5ffcc9e2f48278c7209da40ef64cc030
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-implementation"></a>Az Azure Active Directory igazolása koncepció forgatókönyv: végrehajtása
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 A hibrid identitás a vállalati felhasználók, akiknek már van egy helyszíni címtárat a legtöbb alapját képezi. A cél szándékosan egy kevesebb alkalommal Itt a lehető a tényleges identitások és hozzáférések forgatókönyvek értékének megjelenítése. 
 
-| Eset | Építőelemek| 
+| Forgatókönyv | Építőelemek| 
 | --- | --- |  
 | [Kiterjesztése a felhőbe a helyszíni identitás](#extending-your-on-premises-identity-to-the-cloud) | [A címtár-szinkronizálás - Jelszókivonat-szinkronizálás](active-directory-playbook-building-blocks.md#directory-synchronization---password-hash-sync-phs---new-installation) <br/>**Megjegyzés:**: Ha már rendelkezik a DirSync/ADSync vagy az Azure AD Connect korábbi verzióiban, ez a lépés nem kötelező megadni. Bizonyos esetekben az útmutató az Azure AD Connect újabb verzióra lehet szükség.  <br/>[Védjegyek](active-directory-playbook-building-blocks.md#branding) | 
 | [Csoportok használata az Azure AD-licencek hozzárendelése](#assigning-azure-ad-licenses-using-groups) | [Csoport alapú licencelés](active-directory-playbook-building-blocks.md#group-based-licensing) |
@@ -47,7 +47,7 @@ A hibrid identitás a vállalati felhasználók, akiknek már van egy helyszíni
 
 ## <a name="theme---lots-of-apps-one-identity"></a>Téma - alkalmazások rengeteg, egy identitás
 
-| Eset | Építőelemek| 
+| Forgatókönyv | Építőelemek| 
 | --- | --- |  
 | [Integrálhatja SaaS-alkalmazásokhoz - összevont egyszeri bejelentkezés](#integrate-saas-applications---federated-sso) | [SaaS összevont egyszeri bejelentkezés konfigurálása](active-directory-playbook-building-blocks.md#saas-federated-sso-configuration) <br/>[Csoportok - delegált tulajdonosa](active-directory-playbook-building-blocks.md#groups---delegated-ownership) |
 | [Integrálhatja SaaS-alkalmazásokhoz - jelszó egyszeri bejelentkezés](#integrate-saas-applications---password-sso) | [SaaS-jelszó egyszeri bejelentkezés konfigurálása](active-directory-playbook-building-blocks.md#saas-password-sso-configuration) |
@@ -87,7 +87,7 @@ A hibrid identitás a vállalati felhasználók, akiknek már van egy helyszíni
 
 ### <a name="secure-remote-access-to-on-premises-applications"></a>A helyszíni alkalmazások biztonságos távoli hozzáférést
 
-1. Bob, az Azure AD globális rendszergazda ágyazott számos kérelmek alkalmazottak számos hasznos a helyszíni erőforrások eléréséhez, például a költségek alkalmazás, amikor távolról dolgoznak. Ezt követi a [alkalmazásproxy dokumentáció](active-directory-application-proxy-enable.md) feltelepít egy összekötőt és alkalmazásproxy alkalmazásként is közzéteheti. 
+1. Bob, az Azure AD globális rendszergazda ágyazott számos kérelmek alkalmazottak számos hasznos a helyszíni erőforrások eléréséhez, például a költségek alkalmazás, amikor távolról dolgoznak. Ezt követi a [alkalmazásproxy dokumentáció](manage-apps/application-proxy-enable.md) feltelepít egy összekötőt és alkalmazásproxy alkalmazásként is közzéteheti. 
 2. Bob megosztása Susie, egy távoli hozzáférésre van szüksége az alkalmazottak a költségek alkalmazás külső URL-CÍMÉT. Ő fér hozzá a hivatkozásra, és után AAD hitelesítést, ő a költségek alkalmazáshoz hozzáférhetnek, és továbbra is képesek legyenek hatékonyan dolgozni távoli közben. 
 3. Bob majd továbbra is ugyanazt az eljárást használják, és adjon hozzáférést a felhasználók igény szerint további helyszíni alkalmazások közzététele. Feltételes hozzáférés és a többtényezős hitelesítést a több érzékeny alkalmazások, amelyek ezután tesz közzé, annak biztosítása érdekében további biztonsági adja.
 
@@ -108,7 +108,7 @@ A hibrid identitás a vállalati felhasználók, akiknek már van egy helyszíni
 
 ## <a name="theme---increase-your-security"></a>Téma - a biztonság növelése 
 
-| Eset | Építőelemek| 
+| Forgatókönyv | Építőelemek| 
 | --- | --- |  
 | [Biztonságos rendszergazdai fiók hozzáféréssel](#secure-administrator-account-access) | [Az Azure MFA telefonos hívások](active-directory-playbook-building-blocks.md#azure-multi-factor-authentication-with-phone-calls) |
 | [Az alkalmazások biztonságos hozzáférést](#secure-access-to-applications) | [Feltételes hozzáférés a Szolgáltatottszoftver-alkalmazáshoz](active-directory-playbook-building-blocks.md#mfa-conditional-access-for-saas-applications) |
@@ -150,12 +150,12 @@ A hibrid identitás a vállalati felhasználók, akiknek már van egy helyszíni
 
 ## <a name="theme---scale-with-self-service"></a>Téma - méretezéssel önkiszolgáló
 
-| Eset | Építőelemek| 
+| Forgatókönyv | Építőelemek| 
 | --- | --- |  
 | [Önkiszolgáló jelszóváltoztatás](#self-service-password-reset) | [Önkiszolgáló jelszóváltoztatás](active-directory-playbook-building-blocks.md#self-service-password-reset) |
 | [Önkiszolgáló alkalmazások eléréséhez](#self-service-access-to-applications) | [Önkiszolgáló alkalmazások eléréséhez](active-directory-playbook-building-blocks.md#self-service-access-to-application-management) |
 
-### <a name="self-service-password-reset"></a>Önkiszolgáló jelszóváltoztatás 
+### <a name="self-service-password-reset"></a>Önkiszolgáló jelszóátállítás 
 
 1. Bob a Azure AD globális rendszergazda, és lehetővé teszi, hogy az önkiszolgáló jelszó-kezelő felhasználók, beleértve a Susie egy részét. 
 2. Susie naplókat a myapps portálon, és ellenőrizze, hogy egy üzenetet, amely a saját biztonsági információkat a jövőbeli jelszó alaphelyzetbe állítása események.

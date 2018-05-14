@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Event Hubs – gyakori kérdések |} Microsoft Docs"
-description: "Az Azure Event Hubs gyakran ismételt kérdések (GYIK)"
+title: Az Azure Event Hubs – gyakori kérdések |} Microsoft Docs
+description: Az Azure Event Hubs gyakran ismételt kérdések (GYIK)
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 6bdcbbe37613d5384017409f3be2772085e276ae
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs gyakran ismételt kérdések
 
@@ -112,7 +112,7 @@ A lehetséges az Event Hubs kivételek listájáért lásd: [kivételek áttekin
 Az Event Hubs támogatja a két típusú [diagnosztikai naplók](event-hubs-diagnostic-logs.md) -rögzítse a hibanaplókat és a műveleti naplókat - mindkettőnek jelennek meg a JSON-ban, és is be kell kapcsolni az Azure portálon keresztül.
 
 ### <a name="support-and-sla"></a>Támogatás és szolgáltatásszintek
-Az Event Hubs számára a technikai támogatási szolgálathoz keresztül érhető el a [közösségi fórumok](https://social.msdn.microsoft.com/forums/azure/home). A számlázás és az előfizetések kezelésének támogatása díjmentesen igénybe vehető.
+Az Event Hubs számára a technikai támogatási szolgálathoz keresztül érhető el a [közösségi fórumok](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). A számlázás és az előfizetések kezelésének támogatása díjmentesen igénybe vehető.
 
 Az SLA-t kapcsolatos további tudnivalókért tekintse meg a [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/) lap.
 

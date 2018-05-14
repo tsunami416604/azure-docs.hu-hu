@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: ffdceeba829cc77d506236274ec1d1cc160eb525
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 7cc4c84ebae7ade4169f8d85a2d5cc11f1df6f87
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Az Azure Site Recovery Azure ExpressRoute
 
@@ -46,11 +46,11 @@ Az alábbi ábrán a jelzi a kombinált forgatókönyv: ![a-helyi-az-Azure és a
 
 Az Azure Site Recovery lehetővé teszi, hogy a vész-helyreállítási [Azure virtuális gépek](azure-to-azure-architecture.md). Attól függően, hogy az Azure virtuális gépek használata [Azure felügyelt lemezek](../virtual-machines/windows/managed-disks-overview.md), egy Azure Storage-fiók vagy a felügyelt lemezt a cél Azure-régió, a replika küldött replikációs adatokat. Annak ellenére, hogy a replikációs végpontok nyilvános, az Azure virtuális gép replikációs alapértelmezés szerint a replikációs forgalom nem haladnak át az interneten, függetlenül attól, amely az Azure-régió a forrás virtuális hálózat szerepel. Ha szeretné felülbírálni az Azure alapértelmezett rendszer útvonalat a 0.0.0.0/0 címelőtag egy [egyéni útvonal](../virtual-network/virtual-networks-udr-overview.md#custom-routes) és a helyszíni hálózat virtuális készülék (NVA) a virtuális gépek forgalma átirányít, de ez a konfiguráció nem ajánlott a Site Recovery a replikáció. Ha egyéni útvonalak használ, akkor [hozzon létre egy virtuális hálózati szolgáltatási végpont](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a virtuális hálózatot "Tároló" úgy, hogy a replikálás forgalma nem hagyja meg az Azure-határ.
 
-Azure virtuális gép vész-helyreállítási, amíg a replikációs adatok ne hagyja el az Azure határ ExpressRoute nincs szükség a replikáció. Miután a virtuális gép nem keresztül a cél Azure-régió, akkor is elérhetőek használatával [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+A vészhelyreállítás Azure virtuális gép esetében alapértelmezés szerint ExpressRoute nincs szükség a replikáció. Miután a virtuális gép nem keresztül a cél Azure-régió, akkor is elérhetőek használatával [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
 
 Ha ExpressRoute csatlakozni a helyszíni adatközpontját a forrás régió, az Azure virtuális gépeken már használ, megtervezheti, ExpressRoute-kapcsolatot, a feladatátvételi cél régió újbóli létrehozásához. Az azonos ExpressRoute-kapcsolatcsoport segítségével a cél-régió, egy új virtuális hálózati kapcsolaton keresztül csatlakozni, vagy egy külön ExpressRoute-kapcsolatcsoportot és vész-helyreállítási kapcsolat használatára. A másik lehetséges forgatókönyv leírása olvasható [Itt](azure-vm-disaster-recovery-with-expressroute.md#failover-models-with-expressroute).
 
-Azure virtuális gépeken belül az azonos földrajzi fürt részletes bármely Azure régióban replikálhatja [Itt](../site-recovery/azure-to-azure-support-matrix.md#region-support). Ha a választott cél Azure-régió, mint a forrás geopolitikai ugyanabban a régióban kívül esik, előfordulhat, hogy szeretné ExpressRoute-támogatás engedélyezése. További részletekért ellenőrizze [helyek ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute árképzési](https://azure.microsoft.com/en-us/pricing/details/expressroute/).
+Azure virtuális gépeken belül az azonos földrajzi fürt részletes bármely Azure régióban replikálhatja [Itt](../site-recovery/azure-to-azure-support-matrix.md#region-support). Ha a választott cél Azure-régió, mint a forrás geopolitikai ugyanabban a régióban kívül esik, előfordulhat, hogy szeretné ExpressRoute-támogatás engedélyezése. További részletekért ellenőrizze [helyek ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute árképzési](https://azure.microsoft.com/pricing/details/expressroute/).
 
 ## <a name="next-steps"></a>További lépések
 - További információ [ExpressRoute-Kapcsolatcsoportok](../expressroute/expressroute-circuit-peerings.md).

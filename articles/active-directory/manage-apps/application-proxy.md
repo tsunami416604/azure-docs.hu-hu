@@ -15,8 +15,8 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bb71bd0bcaae8d7f9cb3ae357e726ea1f1c00b07
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 0ab788494f56364d4a46d632e34e4a1334564836
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
@@ -51,7 +51,7 @@ Az Azure AD-alkalmazásproxy van:
 ## <a name="what-kind-of-applications-work-with-application-proxy"></a>Milyen típusú alkalmazások munkahelyi az alkalmazásproxy?
 Az Azure AD alkalmazásproxy különböző típusú belső alkalmazás érhető el:
 
-* Webes használó alkalmazások [integrált Windows-hitelesítés](../active-directory-application-proxy-sso-using-kcd.md) hitelesítéshez  
+* Webes használó alkalmazások [integrált Windows-hitelesítés](application-proxy-configure-single-sign-on-with-kcd.md) hitelesítéshez  
 * Webes űrlap alapú használó alkalmazások vagy [fejléc-alapú](../application-proxy-ping-access.md) hozzáférés  
 * Webes API-t szeretné tenni a különböző eszközökön gazdag alkalmazások  
 * Alkalmazások mögött található egy [távoli asztali átjáró](../application-proxy-publish-remote-desktop.md)  
@@ -87,14 +87,14 @@ Alkalmazásproxy konfigurálása előtt ellenőrizze, hogy a támogatott [Azure 
 
 Ismerkedés az alkalmazásproxy két lépésben:
 
-1. [Alkalmazásproxy engedélyezése és konfigurálása az összekötő](../active-directory-application-proxy-enable.md).    
-2. [Alkalmazások közzététele](../application-proxy-publish-azure-portal.md) -a helyszíni alkalmazások beszerzéséhez közzétett és elérhető távolról a gyors és egyszerű varázsló segítségével.
+1. [Alkalmazásproxy engedélyezése és konfigurálása az összekötő](application-proxy-enable.md).    
+2. [Alkalmazások közzététele](application-proxy-publish-azure-portal.md) -a helyszíni alkalmazások beszerzéséhez közzétett és elérhető távolról a gyors és egyszerű varázsló segítségével.
 
 ## <a name="whats-next"></a>A következő lépések
 Miután az első alkalmazás közzétételéhez nincs sokkal több alkalmazásproxy teheti:
 
-* [Egyszeri bejelentkezés engedélyezése](../active-directory-application-proxy-sso-using-kcd.md)
-* [Alkalmazások közzététele saját tartománynév használatával](../active-directory-application-proxy-custom-domains.md)
+* [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
+* [Alkalmazások közzététele saját tartománynév használatával](application-proxy-configure-custom-domain.md)
 * [További tudnivalók az Azure AD-alkalmazásproxy-összekötő](../application-proxy-understand-connectors.md)
 * [Meglévő helyszíni Proxy kiszolgálók használata](../application-proxy-working-with-proxy-servers.md) 
 * [Állítsa be egy egyéni kezdőlap](../application-proxy-office365-app-launcher.md)

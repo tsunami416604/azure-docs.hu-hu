@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: ee8f30bc81d3c3bd0bf4659359a6ca3a9280f734
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: baf437294dbbca7f63f9d4cdc80ac1cb33a67e42
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Egyszeri bejelentkezés a vállalati alkalmazások kezelése
 
@@ -28,13 +28,13 @@ Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azu
 ## <a name="finding-your-apps-in-the-portal"></a>A portál az alkalmazások keresése
 Minden vállalati alkalmazás, amely az egyszeri bejelentkezés beállítása tekinthetők meg és felügyelete az Azure-portálon. Az alkalmazások találhatók a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszban. 
 
-![Vállalati alkalmazások panel][1]
+![Vállalati alkalmazások panel](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.png)
 
 Válassza ki **összes alkalmazás** konfigurált összes alkalmazások listájának megtekintéséhez. Látható értesítések valamelyikének kiválasztásakor az alkalmazás az adott alkalmazáshoz, ahol jelentések megtekinthetők az alkalmazáshoz, és különböző beállítások kezelheti az erőforrásokat.
 
 Egyszeri bejelentkezés beállításainak kezeléséhez, jelölje ki a **egyszeri bejelentkezés**.
 
-![Alkalmazás erőforráspanelen][2]
+![Alkalmazás erőforráspanelen](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.png)
 
 ## <a name="single-sign-on-modes"></a>Egyszeri bejelentkezési módok
 **Egyszeri bejelentkezés** kezdődik egy **mód** menü, amely lehetővé teszi, hogy az egyetlen bejelentkezés módban kell konfigurálni. Az elérhető lehetőségek a következők:
@@ -76,24 +76,19 @@ A **alkalmazás konfigurálása** úszó menü új tömör, beágyazott vonatkoz
 > 
 > 
 
-![Beágyazott docs][3]
+![Beágyazott docs](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.png)
 
 ## <a name="password-based-sign-on"></a>Jelszó alapú bejelentkezés
 Ha támogatja az alkalmazáshoz, válassza a jelszó-alapú egyszeri bejelentkezési módot, majd válassza ki **mentése** azonnal konfigurálja a teendő a jelszó-alapú egyszeri Bejelentkezést. Egyszeri jelszó alapú központi telepítésével kapcsolatos további információkért lásd: [hogyan egyszeri bejelentkezés az Azure Active Directory munkahelyi](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
-![Jelszó alapú bejelentkezés][4]
+![Jelszó alapú bejelentkezés](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.png)
 
 ## <a name="linked-sign-on"></a>Csatolt bejelentkezés
 Ha támogatja az alkalmazáshoz, a csatolt SSO mód kiválasztása lehetővé teszi az URL-címét, amelyet az Azure AD hozzáférési Panel vagy az Office 365 átirányítása, ha a felhasználó kattint a ezt az alkalmazást. Csatolt SSO (korábbi nevén "meglévő SSO") kapcsolatos további információkért lásd: [hogyan egyszeri bejelentkezés az Azure Active Directory munkahelyi](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
-![Csatolt bejelentkezés][5]
+![Csatolt bejelentkezés](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.png)
 
 ## <a name="feedback"></a>Visszajelzés
 
 Reméljük, például a továbbfejlesztett használata az Azure AD felhasználói élmény. Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó még érdeklődőbbek és az útmutató a shape felhasználása és határozza meg, mi készíteni.
 
-[1]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.PNG
-[2]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.PNG
-[3]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.PNG
-[4]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.PNG
-[5]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.PNG

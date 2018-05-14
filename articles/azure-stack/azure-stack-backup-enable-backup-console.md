@@ -1,37 +1,43 @@
 ---
-title: "Biztonsági mentés engedélyezése Azure verem az adminisztrációs portálról |} Microsoft Docs"
-description: "Engedélyezze az infrastruktúra biztonsági másolat szolgáltatás a felügyeleti portálon keresztül, hogy az Azure-verem állítható vissza, ha hiba történik."
+title: Biztonsági mentés engedélyezése Azure verem az adminisztrációs portálról |} Microsoft Docs
+description: Engedélyezze az infrastruktúra biztonsági másolat szolgáltatás a felügyeleti portálon keresztül, hogy az Azure-verem állítható vissza, ha hiba történik.
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 56C948E7-4523-43B9-A236-1EF906A0304F
 ms.service: azure-stack
 ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
-ms.author: mabrigg
-ms.openlocfilehash: 456a0db9771f5963c8d4375d54a22257f6ca1c56
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.date: 05/11/2018
+ms.author: jeffgilb
+ms.openlocfilehash: 0ef8247eba4605d3c8e5ef0992ce97bce989002e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Biztonsági mentés engedélyezése Azure verem a felügyeleti portálon
+Az infrastruktúra biztonsági másolat szolgáltatás a felügyeleti portálon keresztül, hogy az Azure-verem hozhat létre a biztonsági mentés engedélyezése Ezek a biztonsági mentések használatával állítsa vissza a környezetben, a felhő helyreállítással [végzetes hiba](.\azure-stack-backup-recover-data.md). Felhőbeli helyreállítási célja annak érdekében, hogy az operátorok és a felhasználók is jelentkezzen be a portál helyreállítást követően. Az előfizetések, beleértve a szerepköralapú hozzáférési engedélyek és szerepkörök, eredeti tervek, ajánlatokat, és a korábban meghatározott számítási, tárolási és hálózati kvóták vissza a felhasználóknak kell.
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+Azonban az infrastruktúra a biztonsági mentési szolgáltatás biztonsági mentés IaaS virtuális gépeket, a hálózati konfigurációt és a tárolási erőforrások, például a storage-fiókok, a BLOB, a táblák, és így tovább, így a felhasználók felhő helyreállítás után a bejelentkezés befejezése nem láthatók a korábban meglévő erőforrások. Platform (PaaS) szolgáltatás erőforrásokhoz és adatokhoz is nem készül biztonsági másolat a szolgáltatás. 
 
-Az infrastruktúra biztonsági másolat szolgáltatás a felügyeleti portálon keresztül, hogy az Azure-verem hozhat létre a biztonsági mentés engedélyezése Ezek a biztonsági mentések használatával állítsa vissza a környezet meghibásodása.
+A rendszergazdák és felhasználók felelőssége biztonsági mentése és visszaállítása IaaS és PaaS erőforrására külön-külön az infrastruktúra biztonsági mentési folyamatok. IaaS és PaaS erőforrására biztonsági mentésével kapcsolatos további információkért tekintse meg a következőket:
+
+- [Virtuális gépek](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-protect)
+- [APP SERVICE](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+- [SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
+
 
 > [!Note]  
 > A konzol segítségével a biztonsági mentés engedélyezése előtt kell beállítani a biztonsági mentési szolgáltatást. A biztonsági mentési szolgáltatás PowerShell-lel konfigurálhatja. További információkért lásd: [Azure verem PowerShell és a biztonsági mentés engedélyezése](azure-stack-backup-enable-backup-powershell.md).
 
 ## <a name="enable-backup"></a>Biztonsági mentés engedélyezése
 
-1. Nyissa meg a verem Azure felügyeleti portálon, a [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
+1. Nyissa meg a verem Azure felügyeleti portálon, a [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
 2. Válassza ki **további szolgáltatások** > **infrastruktúra biztonsági mentés**. Válasszon **konfigurációs** a a **infrastruktúra biztonsági mentés** panelen.
 
     ![Az Azure verem - biztonsági mentés vezérlő beállítások](media\azure-stack-backup\azure-stack-backup-settings.png).
@@ -49,5 +55,5 @@ A biztonsági mentés végrehajtásához, és töltse le az Azure-verem eszköz�
 
 ## <a name="next-steps"></a>További lépések
 
- - Ismerje meg, a biztonsági mentés futtatására. Lásd: [biztonsági mentése Azure verem](azure-stack-backup-back-up-azure-stack.md ).
-- Ismerje meg, annak ellenőrzéséhez, hogy futtatta-e a biztonsági másolat. Lásd: [ellenőrizze a biztonsági mentés felügyeleti portál](azure-stack-backup-back-up-azure-stack.md ).
+- Ismerje meg, a biztonsági mentés futtatására. Lásd: [biztonsági mentése Azure verem](azure-stack-backup-back-up-azure-stack.md ).
+- Ismerje meg, annak ellenőrzéséhez, hogy futtatta-e a biztonsági másolat. Lásd: [ellenőrizze a biztonsági mentés felügyeleti portál](azure-stack-backup-back-up-azure-stack.md).

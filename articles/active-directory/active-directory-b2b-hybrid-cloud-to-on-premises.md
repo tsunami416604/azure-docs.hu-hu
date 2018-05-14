@@ -10,11 +10,11 @@ ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 1c13da977021538651084ec4462cf8bd32f131d7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 028bbb28c7091db3c3ebea321ca2e167b999949d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Támogatás B2B az Azure AD férhetnek hozzá a helyszíni alkalmazások
 
@@ -27,7 +27,7 @@ Ha a helyszíni alkalmazások SAML-alapú hitelesítést használ, egyszerűen t
 A következő két kell tennie:
 
 - Integrálását az SAML-alkalmazás az alkalmazás nem galéria sablonnal, a [konfigurálása egyszeri bejelentkezés alkalmazásokhoz, amelyek nincsenek rajta az Azure Active Directory alkalmazáskatalógusában](active-directory-saas-custom-apps.md). Ügyeljen arra, hogy a használja a **bejelentkezési URL-cím** érték.
--  A helyszíni alkalmazás közzététele az Azure AD alkalmazásproxy segítségével **Azure Active Directory** a hitelesítési forrásaként beállított. Útmutatásért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md). 
+-  A helyszíni alkalmazás közzététele az Azure AD alkalmazásproxy segítségével **Azure Active Directory** a hitelesítési forrásaként beállított. Útmutatásért lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md). 
 
    Amikor konfigurál a **belső URL-cím** beállítás módosításához használja a bejelentkezési URL-címet, az alkalmazás nem galéria-sablonban megadott. Ezzel a módszerrel a felhasználók elérhetik az alkalmazást a szervezeten kívüli. Alkalmazásproxy a helyszíni alkalmazások a SAML-alapú egyszeri bejelentkezést hajt végre.
  
@@ -37,8 +37,8 @@ A következő két kell tennie:
 
 B2B felhasználók hozzáférést biztosítson a helyszíni alkalmazások védett integrált Windows-hitelesítés és Kerberos által korlátozott delegálás, a következő összetevők szükségesek:
 
-- **Az Azure AD-proxyn keresztül történő hitelesítési**. B2B felhasználók meg tudjanak a helyszíni alkalmazások felé történő hitelesítésre. Ehhez a helyszíni alkalmazások az Azure AD-alkalmazásproxy kell közzétennie. További információkért lásd: [az alkalmazásproxy első lépései, és az összekötő telepítéséhez](active-directory-application-proxy-enable.md) és [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](application-proxy-publish-azure-portal.md).
-- **A helyszíni címtárban B2B felhasználóobjektum keresztül engedélyezési**. Az alkalmazás felhasználói hozzáférési ellenőrzések elvégzéséhez, és adja meg a megfelelő erőforrásokhoz való hozzáférés képesnek kell lennie. Integrált Windows-Hitelesítést és Kerberos által korlátozott Delegálás igényelnek olyan felhasználói objektum, a helyszíni Windows Server Active Directory az engedélyezés befejezéséhez. A [hogyan egyszeri bejelentkezéshez a Kerberos által korlátozott Delegálás works](active-directory-application-proxy-sso-using-kcd.md#how-single-sign-on-with-kcd-works), alkalmazásproxy kell a felhasználói objektum megszemélyesíthet-e a felhasználót, és a Kerberos-jogkivonata az alkalmazásba. 
+- **Az Azure AD-proxyn keresztül történő hitelesítési**. B2B felhasználók meg tudjanak a helyszíni alkalmazások felé történő hitelesítésre. Ehhez a helyszíni alkalmazások az Azure AD-alkalmazásproxy kell közzétennie. További információkért lásd: [az alkalmazásproxy első lépései, és az összekötő telepítéséhez](manage-apps/application-proxy-enable.md) és [alkalmazások közzététele az Azure AD-alkalmazásproxy használatával](manage-apps/application-proxy-publish-azure-portal.md).
+- **A helyszíni címtárban B2B felhasználóobjektum keresztül engedélyezési**. Az alkalmazás felhasználói hozzáférési ellenőrzések elvégzéséhez, és adja meg a megfelelő erőforrásokhoz való hozzáférés képesnek kell lennie. Integrált Windows-Hitelesítést és Kerberos által korlátozott Delegálás igényelnek olyan felhasználói objektum, a helyszíni Windows Server Active Directory az engedélyezés befejezéséhez. A [hogyan egyszeri bejelentkezéshez a Kerberos által korlátozott Delegálás works](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), alkalmazásproxy kell a felhasználói objektum megszemélyesíthet-e a felhasználót, és a Kerberos-jogkivonata az alkalmazásba. 
 
    A B2B felhasználói forgatókönyvhöz kétféleképpen érhető el, hogy a Vendég felhasználói objektumok, amelyek szükségesek a hitelesítéshez a helyi címtárban létrehozásához használhatja:
 
