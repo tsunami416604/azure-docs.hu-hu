@@ -1,11 +1,11 @@
 ---
-title: "NODE.js-alkalmazás Socket.io - Azure használatával"
-description: "Ismerje meg, hogyan socket.io használható az Azure-platformon futó node.js-alkalmazás."
+title: NODE.js-alkalmazás Socket.io - Azure használatával
+description: Ismerje meg, hogyan socket.io használható az Azure-platformon futó node.js-alkalmazás.
 services: cloud-services
 documentationcenter: nodejs
-author: craigshoemaker
-manager: routlaw
-editor: 
+author: thraka
+manager: timlt
+editor: ''
 ms.assetid: 7f9435e0-7732-4aa1-a4df-ea0e894b847f
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: cshoe
-ms.openlocfilehash: 186cf5e22468b7abf58d6366ca0dec616be23cc6
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.author: adegeo
+ms.openlocfilehash: 0139c42334b53364aee8cfd29cfa771d47e2ccc8
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>A Socket.IO Node.js csevegőalkalmazás létrehozása az Azure Cloud Service-kiszolgálón
 
@@ -61,7 +61,7 @@ Ebben a projektben a Csevegés példa fogjuk használni a [Socket.IO GitHub-tár
 
 1. A tárház helyi másolat létrehozása a **Klónozás** gombra. Is használhatja a **ZIP-** gombra kattintva töltse le a projektet.
    
-   ![Egy böngészőablakban https://github.com/LearnBoost/socket.io/tree/master/examples/chat, megtekintését a ZIP-letöltési ikonja kiemelve][chat-example-view]
+   ![A böngésző ablak megjelenítése https://github.com/LearnBoost/socket.io/tree/master/examples/chat, a kiemelt ZIP letöltési ikon][chat-example-view]
 2. Keresse meg a helyi tárház a könyvtárstruktúra, amíg megérkezik a a **példák\\Csevegés** könyvtár. A könyvtár tartalmának másolása a **C:\\csomópont\\chatapp\\WorkerRole1** korábban létrehozott könyvtár.
    
    ![Explorer, a példák tartalmának\\Csevegés directory kinyert az archívumban][chat-contents]
@@ -148,7 +148,7 @@ Az alkalmazás mostantól az Azure-on fut, és továbbíthat csevegési üzenete
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag megtanulta, hogyan hozhat létre egy Azure-Felhőszolgáltatásban tárolt alapvető Csevegés alkalmazást. Ez az alkalmazás az Azure-webhely üzemeltetésére, lásd: [összeállíthat egy Node.js Csevegés alkalmazást a Socket.IO segítségével az Azure webhelyén található][chatwebsite].
 
 További információ: a [Node.js fejlesztői központ](/develop/nodejs/).

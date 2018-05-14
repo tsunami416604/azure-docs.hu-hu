@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetéséhez
 
@@ -95,9 +95,7 @@ A felhasználási tervben a skála vezérlő automatikusan méretezi CPU és mem
 A felhasználás üzemeltetési terv használatakor függvény kódfájlok Azure fájlmegosztásokat a funkció fő tárfiók tárolja. A fő tárfiókot, a függvény alkalmazás törlése, a függvény kód fájlok törlődnek, és nem állítható helyre.
 
 > [!NOTE]
-> Egy blob eseményindító használatakor a fogyasztás terven lehet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha egy függvény app inaktív állapotba került. A függvény alkalmazás futtatása után blobok feldolgozása azonnal megtörténik. A kezdeti késleltetés elkerülése érdekében fontolja meg az alábbi lehetőségek közül:
-> - Gazdagép a függvény alkalmazást, az App Service-csomagot, a mindig engedélyezve van.
-> - Egy másik mechanizmus használatával indul el, a blob feldolgozására, például egy esemény rács előfizetés vagy egy üzenetsor-üzenetet, amely tartalmazza a blob neve. Egy vonatkozó példáért lásd: a [példák a BLOB bemeneti kötése](functions-bindings-storage-blob.md#input---example).
+> Egy blob eseményindító használatakor a fogyasztás terven lehet legfeljebb 10 perces késleltetést új blobok feldolgozása, ha egy függvény app inaktív állapotba került. A függvény alkalmazás futtatása után blobok feldolgozása azonnal megtörténik. A cold indítási késleltetés elkerülése érdekében az App Service-csomag használata a mindig engedélyezve van, vagy használja az esemény rács eseményindító. További információkért lásd: [a blob eseményindító kötés áttekintésével foglalkozó cikkben](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Futásidejű skálázás
 

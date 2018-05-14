@@ -51,6 +51,8 @@
       href: tutorial-mean-stack.md
     - name: 16 – Webkiszolgáló védelme SSL-lel
       href: tutorial-secure-web-server.md
+    - name: Packer-rendszerkép és -alkalmazások üzembe helyezése méretezési csoportokban
+      href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: Példák
   items:
     - name: Azure CLI

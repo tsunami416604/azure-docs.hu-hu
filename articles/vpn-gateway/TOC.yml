@@ -8,6 +8,8 @@
   items:
     - name: VPN-átjáró létrehozása és kezelése
       href: vpn-gateway-tutorial-create-gateway-powershell.md
+    - name: S2S VPN-kapcsolatok létrehozása és kezelése
+      href: vpn-gateway-tutorial-vpnconnection-powershell.md
 - name: Példák
   items:
     - name: Azure PowerShell

@@ -63,7 +63,13 @@
 
 # További források
 ## [A szolgáltatás áttekintése](https://azure.microsoft.com/services/key-vault/)
-## [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
+## [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)
+### [Bevezetés a tanúsítványok használatába](certificate-scenarios.md)
+#### [Tanúsítvány-létrehozási módszerek](create-certificate.md)
+#### [Tanúsítvány-létrehozás monitorozása és kezelése](create-certificate-scenarios.md)
+## [Hitelesítés, kérelmek és válaszok](authentication-requests-and-responses.md)
+## [Gyakori paraméterek és fejlécek](common-parameters-and-headers.md)
+## [Key Vault-verziók](key-vault-versions.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blog](http://blogs.technet.com/b/kv/)
 ## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)

@@ -32,6 +32,16 @@
       href: use-deep-learning-dsvm.md
     - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép használata
       href: use-geo-ai-dsvm.md
+- name: Vállalati útmutató
+  items:
+    - name: Áttekintés
+      href: dsvm-enterprise-overview.md
+    - name: Méretezés
+      href: dsvm-pools.md
+    - name: Active Directory-integráció
+      href: dsvm-common-identity.md
+    - name: Biztonságos erőforrás-hozzáférési hitelesítő adatok
+      href: dsvm-secure-access-keys.md
 - name: Referencia
   expanded: true
   items:

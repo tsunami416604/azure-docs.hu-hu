@@ -1,0 +1,85 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure CDN dokumentációja
+metadata:
+  title: Az Azure CDN dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: Az Azure Content Delivery Network egy globális CDN-megoldás a nagy sávszélességű tartalmak továbbítására. Az Azure-ban bármilyen más helyen is üzemeltethető. Az Azure CDN-nel a legközelebbi POP-kiszolgáló használatával gyorsítótárazhatók az Azure Blob Storage-ból, webalkalmazásokból vagy bármilyen nyilvánosan elérhető webkiszolgálóról betöltött statikus objektumok. Az Azure CDN a különféle hálózati optimalizációk CDN POP-k segítségével történő kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is. Az Azure CDN például az útválasztás optimalizációjával meg tudja kerülni a Border Gateway Protocolt (BGP).
+  services: cdn
+  author: czeumault
+  manager: carolz
+  ms.service: cdn
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/03/2018
+  ms.author: carolz
+  ms.openlocfilehash: 42d08e9a5893bf58ecf405cc5caf750ee3e1daf7
+  ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/11/2018
+abstract:
+  description: Az Azure Content Delivery Network egy globális CDN-megoldás a nagy sávszélességű tartalmak továbbítására. Az Azure-ban bármilyen más helyen is üzemeltethető. Az Azure CDN-nel a legközelebbi POP-kiszolgáló használatával gyorsítótárazhatók az Azure Blob Storage-ból, webalkalmazásokból vagy bármilyen nyilvánosan elérhető webkiszolgálóról betöltött statikus objektumok. Az Azure CDN a különféle hálózati optimalizációk CDN POP-k segítségével történő kihasználásával felgyorsíthatja a dinamikus, nem gyorsítótárazható tartalmak kézbesítését is. Az Azure CDN például az útválasztás optimalizációjával meg tudja kerülni a Border Gateway Protocolt (BGP).
+sections:
+- title: 
+  items:
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/cdn.svg
+      text: Az Azure CDN ismertetése
+      href: /azure/cdn/cdn-overview
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: Megismerheti, hogyan engedélyezhető az Azure CDN egy CDN-profil és egy CDN-végpont létrehozásával.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/get-started.svg
+      text: Ismerkedés az Azure CDN használatával
+      href: /azure/cdn/cdn-create-new-endpoint
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan konfigurálhatja igény szerint az Azure CDN-t.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">Egyéni tartomány hozzáadása a CDN-végponthoz</a>
+    - html: <a href="/azure/cdn/cdn-custom-ssl">HTTPS konfigurálása egyéni tartományon</a>
+    - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">Gyorsítótárazási szabályok beállítása</a>
+- title: Videók
+  items:
+  - type: paragraph
+    text: Videókat tekinthet meg az Azure CDN működéséről.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/video-library.svg
+      text: Azure CDN-videótár
+      href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
+- title: Példák
+  items:
+  - type: paragraph
+    text: Szkriptek keresése a gyakori feladatok kezeléséhez.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cdn">Kódminták</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn">PowerShell</a></p>
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/cdn/">REST API – referencia</a></p>

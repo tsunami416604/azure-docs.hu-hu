@@ -29,6 +29,8 @@
 ### [Azure CLI 2.0](tutorial-autoscale-cli.md)
 ### [Azure PowerShell](tutorial-autoscale-powershell.md)
 ### [Sablon](tutorial-autoscale-template.md)
+## Alkalmazások üzembe helyezése Azure-beli virtuálisgép-méretezési csoportokban egyéni Packer-rendszerképpel
+### [Azure CLI 2.0](https://docs.microsoft.com/learn/deploy-custom-vmss-app/index)
 
 # Példák
 ## [Azure CLI 2.0](cli-samples.md)
