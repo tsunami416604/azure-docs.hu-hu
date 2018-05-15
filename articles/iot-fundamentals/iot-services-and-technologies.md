@@ -1,0 +1,120 @@
+---
+title: Azure eszközök internetes hálózata (IoT) technológiák és megoldások
+description: Az Azure IoT-megoldások építéséhez rendelkezésre álló PaaS/SaaS-technológiák és -megoldások gyűjteményét mutatja be.
+services: iot-hub
+documentationcenter: ''
+author: BryanLa
+manager: timlt
+editor: bryanla; v-clay
+ms.service: iot
+ms.devlang: na
+ms.topic: overview
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/30/2018
+ms.author: bryanla; v-clay
+ms.custom: ''
+ms.openlocfilehash: 04b4079038ab0ef3f87cfceea521a1424e93cce1
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/01/2018
+---
+# <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT-technológiák és -megoldások: PaaS és SaaS
+
+Microsoft valamennyi ügyfél igényeit támogató portfóliót épített fel, lehetővé téve mindenki számára a digitális átalakulás előnyeinek kihasználását. Az Azure IoT-termékportfólió a rendelkezésre álló PaaS/SaaS-technológiák és -megoldások áttekintése. Bemutatja a saját megoldásának létrehozásához rendelkezésre álló két lehetőséget:
+- Platformszolgáltatás (PaaS): a saját alkalmazásának felépítése az [Azure IoT Suite](https://www.azureiotsuite.com/), vagyis előre konfigurált megoldások vállalati szintű gyűjteményének használatával, amely lehetővé teszi az egyéni IoT-megoldások fejlesztésének felgyorsítását.
+- Szolgáltatott szoftver (SaaS): gyorsan lendületbe jöhet az [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) az új SaaS-megoldás használatával, amellyel az IoT-megoldás bonyolultságának való kitettség nélkül fejleszthet IoT-alkalmazásokat. Arra az esetre, ha a szervezet nem rendelkezik saját IoT-megoldás felépítéséhez szükséges erőforrásokkal, az Azure IoT Central egy kód nélküli IoT-megoldás, amelyekkel percek alatt létrehozhat eszközmodelleket, irányítópultokat és szabályokat.
+
+![Az iparág legátfogóbb, technológiákat és megoldásokat tartalmazó portfóliója][img-paas-saas-technologies-solutions]
+
+## <a name="solutions"></a>Megoldások
+
+A Microsoft Azure IoT Suite és a SaaS ajánlatok gyorsan használatba vehetők. Előre konfigurált megoldások közül választhat, amelyekkel az általános IoT-forgatókönyveknek, például a távoli figyelésnek, a prediktív karbantartásnak és a csatlakoztatott gyárnak megfelelő, teljesen testre szabható megoldásokat hozhat létre. Vagy használja az Azure IoT Centrált, amely egy teljes mértékben felügyelt, teljeskörű megoldás, és a felhőmegoldások terén szerzett szakértelem nélkül is hatékony IoT-megoldásokat tesz lehetővé.
+
+### <a name="azure-iot-suite-paas"></a>Azure IoT Suite (PaaS)
+
+Az Azure IoT Suite testre szabható PaaS-megoldások nagyvállalati szintű gyűjteménye, amely széleskörű ellenőrzési lehetőséget biztosít IoT-megoldásához. Ha a vállalata kapcsolódó műveletekhez helyezi üzembe az IoT-t, vagy meghatározott testreszabási követelményekkel rendelkezik a csatlakoztatott termékeket illetően, akkor a szükséges kontrollt az Azure IoT Suite biztosítja. 
+
+A nagy számú eszközzel vagy eszközmodellel rendelkező cégek és a csatlakoztatott gyári megoldásokat kereső gyártók például olyan vállalatok, amelyek számára az Azure IoT Suite használata előnyös lehet. Bonyolult igényekre szabott, nagy mértékben testre szabható megoldások létrehozásával az IoT Suite a következőket biztosítja:
+
+- Előre konfigurált megoldások
+    - Távoli figyelés
+    - Csatlakoztatott gyár
+    - Prediktív karbantartás
+    - Eszközszimuláció
+- Percek alatt üzembe helyezhető
+- Az értékteremtést felgyorsítása
+- Teljes körű vezérlést biztosító megoldások 
+ 
+### <a name="azure-iot-central-saas"></a>Azure IoT Central (SaaS)
+
+Az Azure IoT Central egy teljes körűen felügyelt SaaS-megoldás, amely lehetővé teszi a gyors kezdést, minimális IoT-tapasztalattal. Ha a vállalata a sebességet részesíti előnyben a testreszabással szemben, a SaaS-modellek tökéletes választást jelenthetnek az IoT-implementációs igényei kielégítéséhez. 
+
+A kevesebb eszközmodellel, megjósolhatóbb forgatókönyvekkel és korlátozott IoT/IT-képességekkel rendelkező vállalatok most SaaS-megközelítéssel élvezhetik az IoT előnyeit. Azok a vállalatok, amelyeknek régebben nem volt elég idejük, pénzük és szakértelmül összekapcsolt termékek fejlesztésére most, az Azure IoT Centrállal gyorsan nekikezdhetnek. A Microsoft iparági vezető a szokásos SaaS-megvalósítási követelményeket teljesítő, érett SaaS-megoldások biztosítása terén. 
+
+- Teljes körűen felügyelt IoT SaaS
+- Nincs szükség felhőalapú megoldásfejlesztési szakértelemre
+- Az igényei szerint testre szabható
+- Ideális egyszerű IoT-igények teljesítéséhez
+
+### <a name="compare-azure-iot-suite-and-azure-iot-central"></a>Az Azure IoT Suite és az Azure IoT Central összehasonlítása
+
+A tipikus [IoT-megoldási architektúra](/azure/iot-fundamentals/iot-introduction#iot-solution-architecture) megvalósításához az Azure IoT több lehetőséget is kínál, például az [Azure IoT Suite](/azure/iot-suite) és az [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) szolgáltatást, melyek mindegyike más ügyfélkövetelmény-készlet teljesítésére alkalmas.
+
+Az [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) alapvető Azure IoT PaaS, amelyet az Azure IoT Central és az Azure IoT Suite is használ. Az Azure IoT Hub megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz és egy felhőalapú megoldás között. Az IoT Hub segít a következő IoT implementációs kihívások leküzdésében:
+
+* Nagy mennyiségű eszköz csatlakoztatása és felügyelete.
+* Nagy mennyiségű telemetriaadat feldolgozása.
+* Eszközök irányítása és vezérlése.
+* Eszközbiztonság kikényszerítése.
+
+Az Azure IoT-termék kiválasztása kritikus része az IoT-megoldás megtervezésének. Az IoT Hub egy önálló Azure-szolgáltatás, amely önmagában nem biztosít teljes körű IoT-megoldást. Az IoT Hub bármely IoT-megoldás kiindulási pontjaként használható, és a használatához nincs szükség az Azure IoT Suite vagy az Azure IoT Central használatára. Az Azure IoT Suite és az Azure IoT Central is az IoT Hubot használja más Azure szolgáltatásokkal. Az alábbi táblázat összegzi az Azure IoT Suite és a Azure IoT Central közötti lényeges különbségeket, hogy könnyebben kiválaszthassa a követelményeinek megfelelő rendszert:
+
+|                        | Azure IoT Suite | Azure IoT Central |
+| ---------------------- | --------- | ----------- |
+| Elsődleges használat | A lehető legnagyobb rugalmasságot igénylő, egyéni IoT-megoldás fejlesztésének felgyorsításához. | Részletes szolgáltatás-testreszabást nem igénylő, egyszerű IoT-megoldások piaci bevezetési idejének lerövidítéséhez. |
+| Hozzáférés az alapul szolgáló PaaS szolgáltatásokhoz          | Hozzáféréssel rendelkezik az alapul szolgáló Azure-szolgáltatásokhoz, felügyelheti, vagy igény szerint lecserélheti őket. | SaaS. Teljes körűen felügyelt megoldás, az alapul szolgáló szolgáltatások nem érhetőek el. |
+| Rugalmasság            | Magas. A mikroszolgáltatások kódja nyílt forráskódú, és tetszés szerint módosítható. Ezenkívül az üzembehelyezési infrastruktúra testreszabható.| Közepes. A beépített böngészőalapú felhasználói felületet használhatja a megoldásmodell és a felhasználói felület aspektusainak testreszabásához. Az infrastruktúra nem testreszabható, mert a különböző összetevők nem érhetőek el.|
+| Ismeretek szintje                 | Közepes-magas. A megoldás háttérrendszerének testreszabásához Java- vagy .NET-ismeretek szükségesek. A megjelenítés testreszabásához JavaScript-ismeretek szükségesek. | Alacsony. A megoldás testreszabásához modellezési ismeretek szükségesek. Nincs szükség kódolási ismeretekre. |
+| Felhasználói élmény az első lépések során | Előre konfigurált megoldások implementálnak általános IoT-forgatókönyveket. Percek alatt üzembe helyezhető. | Az alkalmazás- és eszközsablonok előre felépített modelleket biztosítanak. Percek alatt üzembe helyezhető. |
+| Díjszabás                | Finomhangolhatja a szolgáltatásokat a költségek kézben tartásához. | Egyszerű, kiszámítható díjszabás. |
+
+A döntést, hogy végül melyik terméket használja az IoT-megoldás létrehozásához, a következők határozzák meg:
+
+* Az üzleti követelmények.
+* A létrehozni kívánt megoldás típusa
+* A szervezetében elérhető szaktudás a megoldás összeállításához és hosszú távú karbantartásához.
+
+## <a name="technologies-paas"></a>Technológiák (PaaS)
+
+A platformszolgáltatások legátfogóbb IoT-portfóliójával az Azure platformon átívelő platformszolgáltatási (PaaS) technológiák lehetővé teszik az IoT-megoldás egyszerű létrehozását, testreszabását és vezérlését. Hozzon létre kétirányú kommunikációt IoT-eszközök milliárdjaival, és kezelje IoT-eszközeit méretezve. Majd integrálja IoT-eszközadatait más platformszolgáltatásokkal, például az Azure Cosmos DB-vel és az Azure Time Series Insights-szal, hogy megoldásaiban pontosabb megállapításokra juthasson. 
+
+### <a name="device-support"></a>Eszköztámogatás
+
+Az [Azure IoT-kezdőcsomagok](https://catalog.azureiotsuite.com/kits) segítségével magabiztosan belevághat saját IoT-projektjébe, vagy választhat az [eszközkatalógusban](http://catalog.azureiotsuite.com/) található több száz Certified for IoT hitelesítéssel rendelkező eszköz közül. Minden eszköz platformfüggetlen, és zökkenőmentesen kapcsolódik az IoT Hubhoz.
+A nyílt forráskódú [eszközoldali SDK-k](/azure/iot-hub/iot-hub-devguide-sdks) használatával csatlakoztathatja eszközeit az Azure IoT-hoz. A szoftverfejlesztői készleteink (SDK) több operációs rendszert, például a Linuxot, a Windowst és valós idejű operációs rendszereket, illetve számos programozási nyelvet – például [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp) és [Python](https://github.com/Azure/azure-iot-sdk-python) – támogatnak.
+
+### <a name="iot"></a>IoT 
+Az [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) egy teljesen felügyelt szolgáltatás, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz között, valamint megoldást biztosít a háttérrendszer kialakításához. Az Azure IoT Hub Device Provisioning Service az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való érintésmentes, igény szerinti üzembe helyezést, így az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon.
+
+### <a name="edge"></a>Edge
+Az [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) egy eszközök internetes hálózata (IoT) típusú szolgáltatás. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön szeretnék elemezni az adatokat, vagyis a hálózat élén „edge”. Ha a számítási feladat egyes részeinek élre helyezésével csökkentett késést érhet el, és lehetősége nyílik offline fogatókönyvek megvalósítására.
+
+
+### <a name="data-and-analytics"></a>Adatok és analitika
+Kihasználhatja az Azure-adattömbök és az elemzési PaaS-ajánlatok előnyeit IoT-megoldásában a felhőalapú intelligencia élben történő megvalósításától az Azure Machine Learninggel, az IoT-adatok Azure Data Lake szolgáltatásban való költséghatékony tárolásán át, az IoT-eszközökről származó nagy mennyiségű adat [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) szolgáltatásban való vizualizációjáig.
+
+### <a name="visualization-and-integration"></a>Vizualizáció és integráció
+A Microsoft Azure az integrált felhőalapú megoldások folyamatosan bővülő körét és iparági vezetőkén az adatok védelme és biztonsága iránti elkötelezettséget egyesítő, teljeskörű felhőalapú megoldást kínál. További információ a [Microsoft Azure-ról](https://azure.microsoft.com/).
+
+
+
+
+
+## <a name="next-steps"></a>További lépések
+
+Tekintse meg az [Első lépések](/azure/iot-hub/iot-hub-get-started) szakaszt az IoT-funkciók gyors és egyszerű megtapasztalásához. Vagy a részletesebb gyakorlati tapasztalatok megismeréséhez próbálja ki az egyik [oktatóanyagot](/azure/iot-edge/tutorial-simulate-device-windows).
+
+[img-paas-saas-technologies-solutions]: media/iot-comparison/paas-saas-technologies-solutions.png
+

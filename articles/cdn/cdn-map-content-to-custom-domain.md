@@ -6,20 +6,19 @@ documentationcenter: ''
 author: dksimpson
 manager: akucer
 editor: ''
-ms.assetid: 289f8d9e-8839-4e21-b248-bef320f9dbfc
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/06/2018
-ms.author: mazha
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: dad9866a3d61421987bc4a62057498e004f65e7f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f57cfe19fd2eee0952a20fabcaa0d73ca96894ef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Útmutató: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
 Ez az útmutató megmutatja, hogyan adható hozzá egyéni tartomány egy Azure Content Delivery Network- (CDN-) végponthoz. Amikor CDN-végpontot használ a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a CDN URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is. 
@@ -28,9 +27,9 @@ Miután létrehoz egy CDN-végpontot a profiljában, a végpont neve – amely a
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> - CNAME DNS-rekord létrehozása
-> - Az egyéni tartomány hozzárendelése a CDN-végponthoz
-> - Az egyéni tartomány ellenőrzése
+> - CNAME DNS-rekord létrehozása.
+> - Az egyéni tartomány hozzárendelése a CDN-végponthoz.
+> - Az egyéni tartomány ellenőrzése.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -211,16 +210,16 @@ Az előző lépésekben hozzáadott egy egyéni tartományt egy CDN-végponthoz.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiak elvégzését ismerte meg:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> - CNAME DNS-rekord létrehozása
-> - Az egyéni tartomány hozzárendelése a CDN-végponthoz
-> - Az egyéni tartomány ellenőrzése
+> - CNAME DNS-rekord létrehozása.
+> - Az egyéni tartomány hozzárendelése a CDN-végponthoz.
+> - Az egyéni tartomány ellenőrzése.
 
 Lépjen tovább a következő oktatóanyagra, amely azt mutatja be, hogyan konfigurálhatja a HTTPS-t egy Azure CDN egyéni tartományon.
 
 > [!div class="nextstepaction"]
-> [HTTPS konfigurálása Azure CDN egyéni tartományon](cdn-custom-ssl.md)
+> [Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon](cdn-custom-ssl.md)
 
 

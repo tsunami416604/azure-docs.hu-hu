@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: e980eafc5bd70a15de11239c7543a7f1dde4ef64
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8c10a784e80432d60fae132cd31a9cbd604b1c8e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a PowerShell használatával
 
@@ -104,4 +104,4 @@ Remove-AzureRmResourceGroup -Name ContosoResourceGroup
 Ebben a rövid útmutatóban létrehozott egy kulcstartót, és elhelyezett benne egy szoftverkulcsot. Ha bővebb információra van szüksége a Key Vaultról és arról, hogyan használhatja az alkalmazásaival, lépjen tovább a Key Vaulttal használható webalkalmazásokat bemutató oktatóanyagra.
 
 > [!div class="nextstepaction"]
-> [Az Azure Key Vault használata egy webalkalmazásból](key-vault-use-from-web-application.md)
+> Ha meg szeretné tudni, hogyan olvashatja be a Key Vault titkos kulcsait egy felügyeltszolgáltatás-identitást használó webalkalmazással, lépjen tovább a következő oktatóanyagra: [Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához](tutorial-web-application-keyvault.md).

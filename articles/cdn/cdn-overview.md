@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/06/2018
-ms.author: rli
+ms.date: 04/20/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 2da919a880332be928c211a2493f2c0b09a0fcbb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 36de1011e48f274759c0aeebde74bd26c6604e19
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Mit takar a tartalomkézbesítési hálózat az Azure-on?
 Egy tartalomkézbesítési hálózat (CDN) kiszolgálók olyan elosztott hálózata, amely hatékonyan kézbesíti a webes tartalmakat a felhasználóknak. A CDN-ek a késés minimalizálása érdekében gyorsítótárazott tartalmat tárolnak a végfelhasználók közelében lévő jelenléti pontok (POP) peremhálózati kiszolgálóin. 
@@ -50,7 +50,7 @@ A jelenlegi CDN-csomópontok helyének listájáért tekintse meg az [Azure CDN 
 6. Amennyiben a fájl élettartama még nem járt le, a jelenléti pont peremhálózati kiszolgálója a fájlt közvetlenül a gyorsítótárból adja vissza. A folyamat eredménye nagyobb sebesség, dinamikusabb működés, vagyis összességében jobb felhasználói élmény.
 
 ## <a name="requirements"></a>Követelmények
-Az Azure CDN használatához legalább egy Azure-előfizetéssel kell rendelkeznie. Továbbá létre kell hoznia legalább egy CDN-profilt, amely egy CDN-végpontok által alkotott gyűjtemény. Minden CDN-végpont egy adott konfigurációt ad meg a tartalomkézbesítési viselkedésre és elérésre vonatkozólag. Ha rendszerezni szeretné a CDN-végpontokat internetes tartomány, webalkalmazás vagy más feltétel alapján, több profilt is használhat. Mivel az [Azure CDN-tarifacsomag](https://azure.microsoft.com/pricing/details/cdn/) kiszámítása a CDN-profil szintjén történik, több CDN-profilt kell létrehoznia, ha vegyesen szeretne tarifacsomagokat használni.
+Az Azure CDN használatához legalább egy Azure-előfizetéssel kell rendelkeznie. Továbbá létre kell hoznia legalább egy CDN-profilt, amely egy CDN-végpontok által alkotott gyűjtemény. Minden CDN-végpont egy adott konfigurációt ad meg a tartalomkézbesítési viselkedésre és elérésre vonatkozólag. Ha rendszerezni szeretné a CDN-végpontokat internetes tartomány, webalkalmazás vagy más feltétel alapján, több profilt is használhat. Mivel az [Azure CDN-tarifacsomag](https://azure.microsoft.com/pricing/details/cdn/) kiszámítása a CDN-profil szintjén történik, több CDN-profilt kell létrehoznia, ha vegyesen szeretne tarifacsomagokat használni. Az Azure CDN-számlázási struktúrára vonatkozó információért lásd: [Az Azure CDN számlázásának ismertetése](cdn-billing.md).
 
 ### <a name="limitations"></a>Korlátozások
 Az egyes Azure-előfizetések alapértelmezett korlátokkal rendelkeznek a következő erőforrásokhoz:
@@ -77,4 +77,5 @@ Az egyes Azure CDN terméket által támogatott szolgáltatások teljes listáj�
 - A CDN-végpontjait a [Microsoft Azure Portal](https://portal.azure.com) vagy a [PowerShell](cdn-manage-powershell.md) használatával kezelheti.
 - Ismerje meg, hogyan automatizálhatja az Azure CDN-t a [.NET](cdn-app-dev-net.md) vagy a [Node.js](cdn-app-dev-node.md) segítségével.
 - Ha szeretné megtekinteni az Azure CDN-t működés közben, nézze meg az [Azure CDN videóit](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest).
+- A legújabb Azure CDN-funkciókkal kapcsolatos információkért lásd: [Azure CDN blog](https://azure.microsoft.com/blog/tag/azure-cdn/).
 
