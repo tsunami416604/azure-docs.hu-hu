@@ -10,11 +10,11 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4585e563d59d29ba0a026c992d277e5b0607e681
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de75a7ab907655d84873949460692a921c8d3186
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server-adatbázisok a peremhálózaton adatok tárolásához
 
@@ -95,7 +95,7 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
         }
    ```
 
-3. Cserélje le a `<docker registry address>` kitölteni a befejezett oktatóanyag címmel [Azure funkciót központi telepítése egy IoT peremhálózati modul – előzetes](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function)
+3. Cserélje le a `<docker registry address>` kitölteni a befejezett oktatóanyag címmel [egy IoT-Edge-modul telepítése Azure funkciót](tutorial-deploy-function.md).
 
    >[!NOTE]
    >A tárolóregisztrációs adatbázis címe megegyezik a bejelentkezési kiszolgáló címével, amelyet a beállításjegyzékből másolt ki. Meg kell formájában `<your container registry name>.azurecr.io`

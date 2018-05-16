@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6691ba1e89b7558302c869d3246fc69acd5dcd84
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -115,13 +115,13 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Automation
 * Azure Cosmos DB
 * Azure Relay
-* Batch
+* Köteg
 * Bing Térképek
-* Tartalomkézbesítési hálózat (CDN)
+* CDN
 * A felhőalapú szolgáltatások – lásd [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * Cognitive Services
-* Tartalommoderátor
-* Data Catalog
+* Content Moderator
+* Adatkatalógus
 * Adat-előállító - 1-es verzió is helyezhető, de V2 áthelyezése (előzetes verzió) nem támogatott.
 * Data Lake Analytics
 * Data Lake Store
@@ -136,18 +136,18 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Gépi tanulás - Machine Learning Studio webszolgáltatások helyezheti át egy erőforráscsoportot az ugyanahhoz az előfizetéshez, de nem egy másik előfizetést. Gépi tanulás erőforrását áthelyezhető előfizetésekhez.
 * Media Services
 * Mobile Engagement
-* Notification Hubs
+* Értesítési központok
 * Operational Insights
 * Operations Management
 * A Power BI -, mind a Power BI Embedded, és a Power BI-Munkaterületcsoport
 * Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
 * Redis Cache
 * Scheduler
-* Keresés
+* Search
 * Kiszolgálófelügyelet
 * Service Bus
 * Service Fabric
-* Storage
+* Tárhely
 * Tekintse meg a tároló (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * A Stream Analytics - feladatok nem helyezhető át, ha a Stream Analytics állapotban.
 * SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek. Ez a jelenség Azure SQL Database és az Azure SQL Data Warehouse-adatbázishoz. 
@@ -156,7 +156,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Virtuális gépek (klasszikus) - lásd [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * Tekintse meg a virtuálisgép-méretezési csoportok - [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Tekintse meg a virtuális hálózatok - [virtuális hálózatok korlátozásai](#virtual-networks-limitations)
-* VPN Gateway
+* VPN-átjáró
 
 ## <a name="services-that-cannot-be-moved"></a>Nem lehet áthelyezni szolgáltatások
 
@@ -179,7 +179,7 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * Tekintse meg a felügyelt lemezek - [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
 * Recovery Services-tároló - is do helyezi át a számítási, hálózati és tárolási erőforrásokat, a Recovery Services-tároló társított lásd [helyreállítási szolgáltatások korlátozásai](#recovery-services-limitations).
-* Biztonság
+* Biztonsági
 * StorSimple Device Manager
 * Tekintse meg a virtuális hálózatok (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 
@@ -210,6 +210,8 @@ Peered virtuális hálózat áthelyezni, előbb le kell tiltania a virtuális h�
 
 Virtuális hálózat nem helyezhető át egy másik előfizetésben található, ha a virtuális hálózati alhálózat erőforrás-navigációs hivatkozásokkal tartalmaz. Például ha a Redis Cache erőforrás egy alhálózatba van telepítve, alhálózaton erőforrás navigációs hivatkozást tartalmaz.
 
+Virtuális hálózat nem helyezhető át másik előfizetést, ha a virtuális hálózat tartalmaz egy egyéni DNS-kiszolgáló. Helyezze át a virtuális hálózat, állítsa az értékét alapértelmezett (Azure által biztosított) DNS-kiszolgáló. Az áthelyezés után konfigurálja úgy az egyéni DNS-kiszolgáló.
+
 ## <a name="app-service-limitations"></a>App Service korlátozásai
 
 A korlátozások vonatkoznak az App Service-erőforrások áthelyezésére attól függően változnak, hogy helyez át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést.
@@ -234,7 +236,7 @@ Ha áthelyezi a webes alkalmazás _előfizetésekhez_, a következő korlátozá
     - Web Apps
     - App Service-csomagok
     - Feltöltött vagy importált SSL-tanúsítványok
-    - App Service-környezetek
+    - App Service Environment-környezetek
 - Az erőforráscsoport összes App Service erőforrások csak együtt helyezhetők.
 - App Service-erőforrások csak eltolható az erőforráscsoport, amelyekben azokat eredetileg létrehozott. Ha egy App Service-erőforrás már nem az eredeti erőforráscsoportban, azt kell vissza kell helyezni az eredeti erőforráscsoport először, és majd akkor helyezheti át előfizetésekhez.
 

@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: b8df65c969a37eb22589c297ecb9b0d0b840a52c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4bc41727c30d4dd213baca1d7c56cdfdf741692d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az Azure AD Privileged Identity Management?
 
@@ -32,7 +32,7 @@ Az Azure Active Directory (AD) Privileged Identity Management segítségével ke
 >- Egy Azure erőforráscsoport-szerepkörrel csak az idő vagy közvetlen (időpontokat) hozzárendelésekben  
 >- Rendelt egy áttekintése
 >
->További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
+>További információk: [Azure Active Directory editions](active-directory-whatis.md) (Azure Active Directory-kiadások).
 
 A szervezetek szeretne személyek, akiknek információ vagy az erőforrások biztonságos elérését, mert, amely csökkenti az esélyét, hogy a hozzáférést egy rosszindulatú felhasználó, vagy véletlenül a bizalmas erőforrások érintő hitelesített felhasználó számának minimalizálása érdekében.  Azonban felhasználók továbbra is el kell végezniük a jogosultságokhoz kötött műveletek az Azure AD-Azure, az Office 365 vagy az SaaS-alkalmazásokhoz. A szervezetek felhasználók privilegizált hozzáférést biztosíthat Azure erőforrásokat, például az előfizetések és az Azure AD számára. Nincs szükség a felhasználók tevékenységeit a rendszergazda jogosultságokkal a felügyeletet. Az Azure AD Privileged Identity Management túlzott, szükségtelen a kockázatok csökkentése érdekében segítségével, vagy helytelen a hozzáférési jogosultságokat.
 
@@ -76,7 +76,7 @@ A PIM kényelmes hozzáférést biztosít a szerepkörök aktiválása, és teki
 
 Elérésekor a feladatok menü elemek bármelyikét a áttekintése belépési pontról, az eredményül kapott nézet tartalmazza az Azure Active directory szerepkörök, mind az Azure erőforrás-szerepkörök (előzetes verzió).
 
-![Első lépések](./media/active-directory-privileged-identity-management-configure/quick-start.png)
+![Bevezetés](./media/active-directory-privileged-identity-management-configure/quick-start.png)
 
 A szerepkörök az Azure Active directory szerepkörök és az Azure erőforrás-szerepkörök (előzetes verzió) aktív és a megfelelő szerepkör-hozzárendelések listáját tartalmazza. [További információ a megfelelő szerepkör-hozzárendelések aktiválása](active-directory-privileged-identity-management-how-to-activate-role.md).
 

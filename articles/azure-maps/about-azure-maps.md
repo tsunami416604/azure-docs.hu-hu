@@ -1,0 +1,105 @@
+---
+title: Az Azure Maps áttekintése | Microsoft Docs
+description: Az Azure Maps bemutatása
+services: azure-maps
+keywords: ''
+author: kgremban
+ms.author: kgremban
+ms.date: 05/07/2018
+ms.topic: overview
+ms.service: azure-maps
+documentationcenter: ''
+manager: timlt
+ms.devlang: na
+ms.custom: mvc
+ms.openlocfilehash: e84580c4023be87ebfc1988c631af0b76e213987
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
+# <a name="an-introduction-to-azure-maps"></a>Az Azure Maps bemutatása
+Az Azure Maps olyan térinformatikai szolgáltatások portfóliója, amelyek elérhetővé teszik a térképek, a keresés, az útválasztás, a forgalom és az időzónák API-jainak elérését. Az Azure OneAPI kompatibilis szolgáltatásainak portfóliója lehetővé teszi, hogy ismerős eszközökkel gyorsan fejlesszen és skálázzon olyan megoldásokat, amelyek helyadatokat tesznek elérhetővé az Azure-megoldásokban. Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges, friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Maps egy REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik az egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében. 
+
+A következő videó bemutatja az Azure Mapset:
+
+<iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+Az Azure Maps öt fő szolgáltatást tartalmaz a földrajzi kontextust igénylő Azure-alkalmazások támogatására. Ezen szolgáltatások mindegyikét részletesen ismertetjük.
+
+A **Render Service** segítségével a fejlesztők térképészeti jellegű webes és mobilalkalmazásokat fejleszthetnek. A szolgáltatás használhat nagy felbontású rasztergrafikákat, amelyek 19 nagyítási szinten érhetők el, vagy teljes körűen testreszabható, vektorformátumú térképeket.
+
+![Azure Maps – Map.png](media/about-azure-maps/Introduction_Map.png)
+
+A **Route Service** valós infrastruktúra-geometriai számításokat és több közlekedési formához kapcsolódó útvonalakat tartalmaz. A szolgáltatás lehetővé teszi a fejlesztők számára, hogy többféle közlekedési formára (autó, teherautó, kerékpár, gyalog) vonatkozóan számítsák ki az útvonalakat. Olyan tényezők figyelembe vételére is képes, mint a forgalmi viszonyok, a súlykorlátozások vagy a veszélyes anyagok szállítása.
+
+![Azure Maps – Route.png](media/about-azure-maps/Introduction_Route.png)
+
+A **Search Service** lehetővé teszi a fejlesztők számára, hogy címeket, helyeket és bejegyzett vállalkozásokat keressenek név, kategória vagy egyéb földrajzi adatok alapján. A Search Service képes [fordított geokódolással](https://en.wikipedia.org/wiki/Reverse_geocoding) meghatározni a címeket és útkereszteződéseket a hosszúsági/szélességi koordináták alapján. 
+
+![Azure Maps – Search.png](media/about-azure-maps/Introduction_Search.png)
+
+A **Time Zone Service** lehetővé teszi a jelenlegi, korábbi és jövőbeli időzónaadatok lekérdezését hosszúsági/szélességi koordináták vagy egy [IANA-azonosító](http://www.iana.org/) alapján. Emellett a Time Zone Service használatával a Microsoft Windows időzóna-azonosítói IANA-időzónákká alakíthatók egy adott időzóna UTC-hez képest számolt eltérésének és az aktuális helyi idejének lekérésével. A Time Zone Service lekérdezéseire adott tipikus JSON-válasz a következő mintához hasonló:
+
+```JSON
+{
+    "Version": "2017c",
+    "ReferenceUtcTimestamp": "2017-11-20T23:09:48.686173Z",
+    "TimeZones": [{
+        "Id": "America/Los_Angeles",
+        "ReferenceTime": {
+            "Tag": "PST",
+            "StandardOffset": "-08:00:00",
+            "DaylightSavings": "00:00:00",
+            "WallTime": "2017-11-20T15:09:48.686173-08:00",
+            "PosixTzValidYear": 2017,
+            "PosixTz": "PST+8PDT,M3.2.0,M11.1.0"
+        }
+    }]
+}
+```
+
+A **Traffic Service** egy fejlesztők számára készült webszolgáltatás-csomag, amellyel forgalmi adatokat igénylő webes és mobilalkalmazások fejleszthetők. A szolgáltatás két adattípust biztosít:
+* Forgalom áramlása – valós időben megfigyelt menetsebességek és menetidők a hálózaton belüli összes fontos útra vonatkozóan; 
+* Forgalmi zavarok – pontos kép az úthálózaton fennálló forgalmi dugókról és zavarokról.
+
+![Azure Maps – Forgalom](media/about-azure-maps/Introduction_Traffic.png)
+
+Az Azure Maps a mobilitás jegyében készült, valamint különböző platformokon futó alkalmazásokat is képes kiszolgálni, mivel a programozási modell platformfüggetlen és támogatja a JSON-kimeneteket a REST API-k használatával. Az Azure Maps továbbá tartalmaz egy kényelmes JavaScript-térképvezérlőt, amelynek egyszerű programozási modellje lehetővé teszi a webes és mobilalkalmazások gyors és egyszerű fejlesztését. 
+
+Az Azure Maps egy kulcsalapú hitelesítési sémát használ, így a szolgáltatások eléréséhez csupán létre kell hozni egy Azure Maps-fiókot az [Azure Portalon](http://portal.azure.com). A fiókhoz két előre létrehozott kulcs is jár. Használja ezen kulcsok egyikét az Azure Maps szolgáltatás felé küldött kérésekben a helyalapú szolgáltatások közvetlenül az alkalmazásokba való integrálásának megkezdéséhez.
+
+## <a name="unsupported-regions"></a>Nem támogatott régiók
+Az Azure Maps API jelenleg nem érhető el minden országban. Ellenőrizze a jelenlegi IP-címét, és győződjön meg arról, hogy az IP-címének a helye nem az alábbi nem támogatott országok valamelyikében található:
+
+* Argentína
+* Kína
+* India
+* Marokkó
+* Pakisztán
+* Dél-Korea
+
+## <a name="relationship-with-bing-maps"></a>Kapcsolat a Bing Térképek szolgáltatással
+Az ebben a dokumentumban ismertetett térképszolgáltatások nem azonosak a Bing Térképek szolgáltatásaival. Bár számos funkciójuk megegyezik, ezek a szolgáltatások különbözőek, és nem kapcsolódnak egymáshoz. Ez az Azure-szolgáltatás nincs hatással a Bing Térképek termékajánlatra vagy ütemtervre.
+
+A Microsoft célja ezzel az, hogy választási lehetőséget biztosítson a fejlesztői közösség számára a helymeghatározási szolgáltatások körében. Az alábbi táblázat segítségével a fejlesztők eldönthetik, hogy melyik szolgáltatást válasszák: 
+
+| Forgatókönyv | Az Azure Maps használata ajánlott | A Bing Térképek használata ajánlott |
+| ------------- | ------------- | ------------- |
+| Fejlesztési környezet | Más Azure-szolgáltatásokban történő létrehozás vagy azok koordinálása | Külső felhő vagy más fejlesztői környezet használata |
+| Fejlesztési fázis  | Az Azure Maps jelenleg nyilvános előzetes verzióban érhető el, ezért a korai fázisú teszteléshez és megvalósíthatósági vizsgálatokhoz van optimalizálva. | Éles környezetben vállalati szintű SLA-ra van szükség |
+| Árképzési lehetőségek | Az előzetes fejlesztői árképzési lehetőségek elegendők | Testre szabott vállalati szintű árképzés szükséges |
+| Használati környezet | Járművön belüli használat szükséges | Nem szükséges járművön belüli használat |
+| Földrajzi lefedettség | India, Kína, Japán és Dél-Korea nem szükséges. | India, Kína, Japán és Dél-Korea térképes lefedettsége szükséges. |
+| Térképtartalom | Normál felszíni térképek elegendőek | Műholdas, légi és utcaképek is szükségesek. |
+| Alapul szolgáló térkép forrása | A TomTom-térképadatokat részesíti előnyben | A HERE-térképadatokat részesíti előnyben |
+
+Regisztráljon [Azure Maps-fiókot még ma](http://aka.ms/azurelbsportal)!
+
+## <a name="next-steps"></a>További lépések
+
+A cikk az Azure Mapsről nyújtott áttekintést. A következő lépésben kipróbálunk egy mintaalkalmazást, amely bemutatja a szolgáltatást.
+
+> [!div class="nextstepaction"]
+> [Bemutató interaktív kereséses térkép indítása](quick-demo-map-app.md)
+

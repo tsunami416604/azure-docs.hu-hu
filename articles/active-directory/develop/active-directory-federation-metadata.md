@@ -1,25 +1,27 @@
 ---
-title: "Az Azure AD összevonási metaadatok |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure Active Directory-tokeneket támogató szolgáltatások közzéteszi Azure Active Directory összevonási metaadat-dokumentum."
+title: Az Azure AD összevonási metaadatok |} Microsoft Docs
+description: Ez a cikk ismerteti az Azure Active Directory-tokeneket támogató szolgáltatások közzéteszi Azure Active Directory összevonási metaadat-dokumentum.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 58e5f62009e4e8b688108c6098ea8eabe8020e51
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cfc79b451eafe7dcdd0b8f4285f92714138260bb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="federation-metadata"></a>Összevonási metaadatok
 Azure Active Directory (Azure AD) tesz közzé egy összevonási metaadat-dokumentum számára, amely konfigurálva van a biztonsági jogkivonatokat, amelyek az Azure AD kibocsát fogadására. Az összevonási metaadatok dokumentum formátuma leírtak a [Web Services összevonási Language (WS-Federation) 1.2-es verziója](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), amely kiterjeszti [a OASIS Security Assertion Markup Language (SAML) 2.0 metaadatok](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
@@ -41,12 +43,12 @@ A **bérlői-specifikus végpontok**, a `TenantDomainName` a következő típuso
 
 A **bérlői független végpontok**, a `TenantDomainName` van `common`. Ez a dokumentum csak login.microsoftonline.com által futtatott összes Azure AD-bérlőre vonatkozó összevonási metaadatok elemeket sorolja fel.
 
-Például lehet, hogy a bérlő-specifikus végpont `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. A bérlői független végpont [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Írja be az URL-címet egy böngészőben megtekintheti a összevonási metaadat-dokumentum.
+Például lehet, hogy a bérlő-specifikus végpont `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. A bérlői független végpont [ https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml ](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Írja be az URL-címet egy böngészőben megtekintheti a összevonási metaadat-dokumentum.
 
 ## <a name="contents-of-federation-metadata"></a>Összevonási metaadatok tartalmát
 A következő témakör szolgáltatásokról, amelyek az Azure AD által kiállított jogkivonatokat használják számára szükséges adatokat.
 
-### <a name="entity-id"></a>Entitás azonosítója
+### <a name="entity-id"></a>Entitásazonosító
 A `EntityDescriptor` elem tartalmazza-e egy `EntityID` attribútum. Értékét a `EntityID` attribútum a kibocsátó, ez azt jelenti, hogy a biztonsági jogkivonat-szolgáltatás (STS) a jogkivonatot kibocsátó jelöli. Fontos, amikor fogadhatnak jogkivonatot a kibocsátó érvényesítéséhez.
 
 A következő metaadatokat megmutatja, bérlő-specifikus `EntityDescriptor` elem egy `EntityID` elemet.

@@ -3,23 +3,25 @@ title: Hitelesítési forgatókönyvek az Azure AD |} Microsoft Docs
 description: Öt hitelesítési legnépszerűbb áttekintést nyújt az Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2018
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f85898d566ea5c6791350df809e960f7e951012d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0c1390945848901dd71214e01469ab3bfa765ef4
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Az Azure Active Directory hitelesítési forgatókönyvei
 
@@ -49,7 +51,7 @@ A fenti ábrának szem előtt, az itt található különböző összetevőinek 
 * Az Azure AD az identitásszolgáltató felelős a felhasználók és az alkalmazásokat, amelyek a szervezetek könyvtárában identitásának ellenőrzésére, és végső soron a biztonsági jogkivonatokat ezen felhasználók és az alkalmazások sikeres hitelesítés után kiadása.
 * Olyan alkalmazás, amely az Azure AD hitelesítési kihelyező szeretne regisztrálni kell az Azure AD, ami regisztrálja, és egyedileg azonosítja az alkalmazást a címtárban.
 * A fejlesztők a nyílt forráskódú az Azure AD hitelesítési könyvtárat a hitelesítés a protokoll alfolyamatot kezelnek, megkönnyítése. További információkért lásd: [Azure Active Directory hitelesítési Kódtárai](active-directory-authentication-libraries.md).
-* A felhasználó hitelesítését követően az alkalmazás ellenőrizni kell a felhasználó biztonsági jogkivonat biztosításához, hogy a hitelesítés sikeres volt.  Mi az alkalmazás kell tennie a nyelv és keretrendszer a különböző mintáit tudunk [GitHub](https://github.com/Azure-Samples?q=active-directory).  Ha az ASP.NET webalkalmazás most felépítése, tekintse meg a [bejelentkezhet egy ASP.NET web app útmutató hozzáadása](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp).  Ha a webes API-erőforráshoz az ASP.NET éppen felépítése, tekintse meg a [webes API-k – első lépések útmutató](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
+* A felhasználó hitelesítését követően az alkalmazás ellenőrizni kell a felhasználó biztonsági jogkivonat biztosításához, hogy a hitelesítés sikeres volt. Mi az alkalmazás kell tennie a nyelv és keretrendszer a különböző mintáit tudunk [GitHub](https://github.com/Azure-Samples?q=active-directory). Ha az ASP.NET webalkalmazás most felépítése, tekintse meg a [bejelentkezhet egy ASP.NET web app útmutató hozzáadása](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Ha a webes API-erőforráshoz az ASP.NET éppen felépítése, tekintse meg a [webes API-k – első lépések útmutató](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
 * A kérelem és válasz a hitelesítési folyamathoz határozzák meg a hitelesítési protokoll, amelyet használt, például az OAuth 2.0, az OpenID Connect, vagy a WS-Federation, SAML 2.0-s. Ezek a protokollok részletes ismertetése a [Azure Active Directory hitelesítési protokolljai](active-directory-authentication-protocols.md) cikk és az alábbi szakaszokban.
 
 > [!NOTE]
@@ -61,9 +63,9 @@ Most, hogy az alapok, olvassa el az alábbiakban megtudhatja, hogy hogyan létes
 
 Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat), az Azure AD által kiadott jogcímeket vagy helyességi feltételek hitelesítése tulajdonos információinak tartalmaz. Ezeket a jogcímeket a különböző feladatokhoz használhatják az alkalmazást. Például alkalmazások jogcímek használata ellenőrzése a jogkivonat, a tulajdonos directory-bérlő azonosíthatja, felhasználói információk megjelenítése, megállapítása a tulajdonos, és így tovább. A jogcímeket bármely adott biztonsági jogkivonat szerepel token, a felhasználó és az alkalmazás konfigurációját hitelesítéséhez használt hitelesítő adat típusának típusától függenek. Minden Azure AD által kibocsátott jogcím típusú rövid leírása az alábbi táblázatban találhatók. További információkért tekintse meg [támogatott jogkivonatok és jogcímtípusok](active-directory-token-and-claims.md).
 
-| Jogcím | Leírás |
+| Igénylés | Leírás |
 | --- | --- |
-| Alkalmazásazonosító | Azonosítja az alkalmazást, amely a token-t használja. |
+| Alkalmazás azonosítója | Azonosítja az alkalmazást, amely a token-t használja. |
 | Célközönség | A jogkivonat az célja, hogy a címzett erőforrás azonosítja. |
 | Alkalmazás hitelesítési környezeti osztályait ismertető dokumentációban | Azt jelzi, hogy az ügyfél volt hitelesített (nyilvános ügyfél és a bizalmas ügyfél). |
 | Azonnali hitelesítés | A dátum és idő, amikor a hitelesítési történt rögzíti. |
@@ -74,12 +76,12 @@ Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat), az Azu
 | Ki: | Amellyel a token adta ki, gyakran használt token frissesség idejét rögzíti. |
 | Kiállító | Az STS, amely a token, valamint az Azure AD-bérlő kibocsátott azonosítja. |
 | Vezetéknév | Az Azure AD-készlet biztosít a felhasználó vezetékneve. |
-| Name (Név) | Emberi olvasható érték, amely azonosítja a token tárgya biztosít. |
+| Név | Emberi olvasható érték, amely azonosítja a token tárgya biztosít. |
 | Objektumazonosító | Az Azure ad-ben a tulajdonos nem módosítható, egyedi azonosítót tartalmaz. |
 | Szerepkörök | Az Azure AD alkalmazás-szerepkörök, amelyek a felhasználó számára engedélyezett rövid nevét tartalmazza. |
 | Hatókör | Azt jelzi, hogy az ügyfélalkalmazás számára megadott engedélyeket. |
 | Tárgy | Azt jelzi, hogy a rendszerbiztonsági tag, amelyekről a token állításokat információkat. |
-| Bérlőazonosító | A directory-bérlő a jogkivonat kiállító nem módosítható, egyedi azonosítót tartalmaz. |
+| Bérlő azonosítója | A directory-bérlő a jogkivonat kiállító nem módosítható, egyedi azonosítót tartalmaz. |
 | A jogkivonatok élettartama | Meghatározza a időtartam alatt, amelyen belül a lexikális elem érvénytelen. |
 | Egyszerű felhasználónév | A felhasználó egyszerű felhasználóneve, a tulajdonos tartalmazza. |
 | Verzió | A token a verziószámát tartalmazza. |
@@ -189,7 +191,7 @@ A segítségével ADAL.js használatával:
 * egy lejárt jogkivonat frissítését
 * a kért olyan hozzáférési jogkivonatot hívni egy webes API-erőforrás
 
-A sikeres hitelesítést követően az Azure AD hozzon létre egy munkamenetet a felhasználó böngészőben a cookie-k ír.  Vegye figyelembe, hogy létezik-e a munkamenet a felhasználó és az Azure AD (nem a felhasználó és a webes alkalmazás közötti) között. Amikor egy jogkivonat lejár, ADAL.js ehhez a munkamenethez segítségével csendes egy másik jogkivonat beszerzése. ADAL.js rejtett iFrame küldésére és fogadására a kérelem, az OAuth Implicit Grant protokollal használja. ADAL.js segítségével is ugyanezzel a módszerrel csendes más webes API-k erőforrások, az alkalmazás hívja, amíg ezek az erőforrások támogatja az eltérő eredetű erőforrások megosztása (CORS), a felhasználó regisztrált, és minden szükséges beleegyezést lett hozzáférési tokenek beszerzése érdekében a felhasználó megadott bejelentkezés során.
+A sikeres hitelesítést követően az Azure AD hozzon létre egy munkamenetet a felhasználó böngészőben a cookie-k ír. Vegye figyelembe, hogy létezik-e a munkamenet a felhasználó és az Azure AD (nem a felhasználó és a webes alkalmazás közötti) között. Amikor egy jogkivonat lejár, ADAL.js ehhez a munkamenethez segítségével csendes egy másik jogkivonat beszerzése. ADAL.js rejtett iFrame küldésére és fogadására a kérelem, az OAuth Implicit Grant protokollal használja. ADAL.js segítségével is ugyanezzel a módszerrel csendes más webes API-k erőforrások, az alkalmazás hívja, amíg ezek az erőforrások támogatja az eltérő eredetű erőforrások megosztása (CORS), a felhasználó regisztrált, és minden szükséges beleegyezést lett hozzáférési tokenek beszerzése érdekében a felhasználó megadott bejelentkezés során.
 
 ### <a name="native-application-to-web-api"></a>Natív alkalmazás webes API-hoz
 
@@ -260,7 +262,7 @@ Az Alkalmazásidentitás és a delegált felhasználói identitás típusok az a
 
 1. A felhasználó már bejelentkezett egy webes alkalmazás, amelynek hitelesítési módszer használata az Azure AD független.
 1. A webalkalmazás az engedélyezési kód Szerezzen be a hozzáférési tokent, így azt a böngészőben egy kérelmet ad ki az Azure AD hitelesítési végpontra, Alkalmazásazonosító megadása és a sikeres hitelesítést követően a webes alkalmazás átirányítási URI-címe van szükség. A felhasználó bejelentkezik az Azure ad Szolgáltatásba.
-1. Ha a felhasználó a webalkalmazás nem még hozzájárult lehetővé téve a webes alkalmazás a webes API hívásához a nevében, a felhasználó beleegyezését kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyek, a címtárban a normál felhasználók nem fogják tudni hozzájárulás. A hozzájárulási egyetlen és több-bérlős alkalmazásra vonatkozik.  Az egyetlen bérlő esetében egy rendszergazda hajthat végre a rendszergazda jóváhagyását a hozzájárulási azok a felhasználók nevében.  Ehhez használja a `Grant Permissions` gombra a [Azure Portal](https://portal.azure.com). 
+1. Ha a felhasználó a webalkalmazás nem még hozzájárult lehetővé téve a webes alkalmazás a webes API hívásához a nevében, a felhasználó beleegyezését kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyek, a címtárban a normál felhasználók nem fogják tudni hozzájárulás. A hozzájárulási egyetlen és több-bérlős alkalmazásra vonatkozik. Az egyetlen bérlő esetében egy rendszergazda hajthat végre a rendszergazda jóváhagyását a hozzájárulási azok a felhasználók nevében. Ehhez használja a `Grant Permissions` gombra a [Azure Portal](https://portal.azure.com). 
 1. Miután a felhasználó hozzájárult, a webalkalmazás kap olyan hozzáférési jogkivonatot szerezni szükséges engedélyezési kódot.
 1. Az Azure AD által kiadott engedélyezési kódot használja, a webes alkalmazás kérést küld, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrás (Alkalmazásazonosító URI-alkalmazás a webes API) az Azure AD-jogkivonat végpontjához.
 1. Az Azure AD érvényesíti az engedélyezési kódot és az információt a webalkalmazás és a webes API. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT jogkivonat és egy frissítési JWT jogkivonat.

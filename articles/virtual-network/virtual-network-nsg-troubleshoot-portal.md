@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: b053993bec74d358dd7a0a8889fa05885b563b16
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: be400d674068d89f60d3c999006bc9291944ab1c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Hálózati biztonsági csoportok az Azure portál használatával hibaelhárítása
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Az alábbi lépésekkel hibáinak elhárítása az NSG-ket a virtuális gépek:
 
 A hatékony biztonsági szabályok teljes listáját megtekintheti a hálózati Adapterhez, maga a virtuális gépről. Azt is megteheti, módosítása, és a hálózati adapter és az alhálózati NSG-szabályok törlése a hatékony szabályokat paneljéről, ha Ön rendelkezik engedéllyel a műveletek végrehajtására.
 
-1. Jelentkezzen be az Azure portálon, a https://portal.azure.com az Azure-fiókot. Ön fiókjához társítva kell lenni a *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* műveletet a hálózati adapter. Műveletek fiókokhoz rendeléséhez, lásd: [egyedi szerepkörök létrehozását, hozzáférés-vezérlési átruházásához](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Jelentkezzen be az Azure portálon, a https://portal.azure.com az Azure-fiókot. Ön fiókjához társítva kell lenni a *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* műveletet a hálózati adapter. Műveletek fiókokhoz rendeléséhez, lásd: [egyedi szerepkörök létrehozását, hozzáférés-vezérlési átruházásához](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Kattintson a **minden szolgáltatás**, majd kattintson a **virtuális gépek** a megjelenő listában.
 3. Jelöljön ki egy virtuális Gépet, a listában megjelenő hibaelhárítása, és a beállítások egy virtuális gép panel jelenik meg.
 4. Kattintson a **derítse & felmerülő problémák megoldásához** , és válassza a gyakori probléma. Ehhez a példához **nem lehet csatlakozni a windowsos virtuális Gépemhez** van kiválasztva. 

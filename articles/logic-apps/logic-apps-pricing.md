@@ -1,24 +1,24 @@
 ---
-title: "Árképzési & számlázási - Azure Logic Apps |} Microsoft Docs"
-description: "Ismerje meg, az Azure Logic Apps árak és számlázás működése"
-author: kevinlam1
-manager: anneta
-editor: 
+title: Árképzési & számlázási - Azure Logic Apps |} Microsoft Docs
+description: Ismerje meg, az Azure Logic Apps árak és számlázás működése
 services: logic-apps
-documentationcenter: 
+author: kevinlam1
+manager: cfowler
+editor: ''
+documentationcenter: ''
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 11/11/2017
-ms.author: LADocs; klam
-ms.openlocfilehash: 096fdd5a6604ed8cecc931da2169194b777664d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 05/11/2018
+ms.author: klam
+ms.openlocfilehash: 3f01ac12bb3987d564f8d9f70706ae6aabd0a0ee
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="logic-apps-pricing-model"></a>Logic Apps díjszabási modell
 
@@ -30,7 +30,7 @@ A újonnan létrehozott logikai alkalmazások kell fizetnie csak akkor használj
 
 <a name="triggers"></a>
 
-## <a name="triggers"></a>Eseményindítók
+## <a name="triggers"></a>Triggerek
 
 Eseményindítók olyan speciális művelet, hozzon létre egy logic app-példány, ha egy adott esemény történik. Eseményindítók különböző módokon, amelyek befolyásolják, hogyan a logic app forgalmi díjas jár el.
 
@@ -57,7 +57,7 @@ Műveletek hurkokon belül futó minden ciklusonként a hurkon bájtjai számít
 
 ## <a name="integration-account-usage"></a>Integráció fiók használata
 
-Használati fogyasztás alapján tartalmaz egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) ahol megismerheti, fejlesztése és tesztelése a [B2B/EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) nem a Logic Apps szolgáltatásokat További költség nélkül. Ezen integrációs fiókok, valamint régió és legfeljebb 10 szerződések és 25 maps tároló egyike lehet. Rendelkezik, és töltse fel a korlátlan partnereivel, sémákat és tanúsítványokat.
+Használati fogyasztás alapján tartalmaz egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) ahol megismerheti, fejlesztése és tesztelése a [B2B/EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) nem a Logic Apps szolgáltatásokat További költség nélkül. Valamint régió és tároló specifikus legfeljebb egy integrációs fiók lehet [az összetevők számát](../logic-apps/logic-apps-limits-and-config.md), például EDI kereskedelmi partnereknek és megállapodások maps, sémákat, szerelvényeket, tanúsítványok vagy kötegelt konfigurációk.
 
 A Logic Apps is biztosít, egyszerű és szabványos integrációs fiókok támogatott Logic Apps SLA-t. Az alapszintű integrációt fiókokat is használhatja, ha csak a kezelési üzenet használni szeretne, vagy működjön, és egy kis üzleti partner, amely nagyobb üzleti entitás kereskedelmi partner kapcsolattal rendelkezik. Standard integrációs fiókok összetettebb B2B kapcsolatokat támogatja, és az entitások felügyelhető számának növeléséhez. További információkért lásd: [Azure-beli árakról](https://azure.microsoft.com/pricing/details/logic-apps).
 

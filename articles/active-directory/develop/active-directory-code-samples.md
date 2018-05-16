@@ -8,18 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2018
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 046d633239b09ebdf21b5383b08684d81199d026
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 299e0d4fa53f9b8a2aef2fc881b136aa41aacfe4
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-code-samples-v1-endpoint"></a>Az Azure Active Directory-Kódminták (V1 végpont)
 
@@ -67,7 +69,7 @@ PHP | | [php-graphapi-webalkalmazás](https://github.com/Azure-Samples/active-di
 
 A következő minták bemutatják, hogyan szerepköralapú hozzáférés-vezérlés, amely korlátozni a hozzáférést a webes alkalmazás bizonyos felhasználókra bizonyos funkciók végrehajtásához. A felhasználók jogosultak a attól függően, hogy az Azure AD-csoport vagy szerepkör tartozik.
 
-Platform | Sample | Leírás
+Platform | Minta | Leírás
  -------- | ------------------- | ---------------------
 ASP.NET 4.5 | [DotNet-webalkalmazás-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) | A .NET 4.5 MVC webalkalmazás az Azure AD használó **csoportok** a hitelesítéshez
 ASP.NET 4.5 | [DotNet-webalkalmazás-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | A .NET 4.5 MVC webalkalmazás az Azure AD használó **szerepkörök** a hitelesítéshez
@@ -89,7 +91,7 @@ ASP.NET-webalkalmazás  | .NET / C# | Ügyfél-hitelesítő adatok |    | [DotNe
 
 A következő minta bemutatja, hogyan védi meg egy node.js webes API-t az Azure AD.
 
-Platform | Sample | Leírás
+Platform | Minta | Leírás
  -------- | ------------------- | ---------------------
 Node.js | [csomópont-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |  NodeJS webes API-t, amely az Azure AD használatával lett biztonságossá téve és OAuth 2.0 hozzáférési jogkivonatok.
 

@@ -1,11 +1,11 @@
 ---
-title: "Az ügynök Proxy összekötőjének telepítése probléma |} Microsoft Docs"
-description: "Az alkalmazásproxy-ügynök összekötő telepítésekor előfordulhat, hogy szembesülhetnek kapcsolatos problémák elhárítása"
+title: Az ügynök Proxy összekötőjének telepítése probléma |} Microsoft Docs
+description: Az alkalmazásproxy-ügynök összekötő telepítésekor előfordulhat, hogy szembesülhetnek kapcsolatos problémák elhárítása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 70d2f159c5485009e36aa80dfa8b73f9b3cf4ec1
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>A probléma az ügynök Proxy összekötőjének telepítése
 
@@ -69,4 +69,4 @@ Csatlakozás <https://login.microsoftonline.com> és ugyanezeket a hitelesítő 
 Válassza ki a felhasználói fiókot, majd "Directory szerepkör" az eredményül kapott menüjében. Győződjön meg arról, hogy a kiválasztott "Globális rendszergazda". Ha nem érhető el a oldalakon mentén ezeket a lépéseket, nem egy globális rendszergazdaként.
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure AD-alkalmazásproxy összekötők ismertetése](application-proxy-understand-connectors.md)
+[Az Azure AD-alkalmazásproxy összekötők ismertetése](manage-apps/application-proxy-connectors.md)

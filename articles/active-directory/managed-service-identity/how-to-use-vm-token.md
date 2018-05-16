@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 9300c3a45f57da7e55eed1dbdf8fd6e94b094c31
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2f24eaa65781eb56b641ed179536867ee514f668
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Egy Azure virtuális gép felügyelt szolgáltatás Identity (MSI) használata a token beszerzése 
 
@@ -41,7 +41,7 @@ Ha azt tervezi, a cikkben az Azure PowerShell-példák használni, ügyeljen arr
 > [!IMPORTANT]
 > - Felügyelt Szolgáltatásidentitás, biztonsági határ az erőforrás-használat esetén a rendszer. Összes kódot/parancsfájl egy virtuális gépen futó kérelmezhet és lekérni a tokeneket bármely felügyelt szolgáltatás identitásának rendelkezésre rajta. 
 
-## <a name="overview"></a>Áttekintés
+## <a name="overview"></a>Áttekintés (klasszikus)
 
 Egy ügyfélalkalmazás kérhet felügyelt Szolgáltatásidentitás [csak alkalmazás-hozzáférési jogkivonat](../develop/active-directory-dev-glossary.md#access-token) egy adott erőforráshoz való hozzáférést illetően. A jogkivonat [az MSI-szolgáltatás egyszerű alapján](overview.md#how-does-it-work). Így nincs szükség az regisztrálja magát az ügyfél a saját egyszerű szolgáltatásnév a hozzáférési token beszerzése. A lexikális elem egy tulajdonosi jogkivonatot a használhatók [szolgáltatások közötti hívások igénylő ügyfél hitelesítő adatait](../develop/active-directory-protocols-oauth-service-to-service.md).
 
@@ -282,17 +282,17 @@ A Szolgáltatásidentitás felügyelt endpoint jelzi a hibákat a HTTP üzenet v
 
 | Állapotkód | Hiba oka | Hogyan legyen kezelve |
 | ----------- | ------------ | ------------- |
+| 404 nem található. | IMDS végpont frissítése folyamatban van. | Expontential leállítási próbálja újra. Tekintse meg az alábbi útmutatást. |
 | 429-es jelű túl sok kérelmet. |  Elérte a IMDS sávszélesség-szabályozási korlátot. | Az exponenciális leállítási próbálja újra. Tekintse meg az alábbi útmutatást. |
 | 4xx hiba történt a kérelem. | Egy vagy több a kérelemben szereplő paraméterek helytelen volt. | Nem próbálja meg újra.  Vizsgálja meg a hiba részleteiben talál további információt.  4xx olyan tervezési idejű hibákat tartalmaznak.|
 | 5XX átmeneti hiba szolgáltatásból. | Az MSI-alrendszer vagy az Azure Active Directory átmeneti hibát adott vissza. | Biztonságos legalább 1 másodperc várakozás után ismételje meg a legyen.  Ha újra, vagy túl gyorsan túl gyakran, IMDS és/vagy az Azure AD előfordulhat, hogy hibaüzenetet egy arány korlátot (429).|
-| 404 nem található. | IMDS végpont frissítése folyamatban van. | Expontential leállítási próbálja újra. Tekintse meg az alábbi útmutatást. |
 | timeout | IMDS végpont frissítése folyamatban van. | Expontential leállítási próbálja újra. Tekintse meg az alábbi útmutatást. |
 
 Ha hiba lép fel, a megfelelő HTTP-válasz törzsében a hiba részletes adatait a JSON-adatokat tartalmaz:
 
 | Elem | Leírás |
 | ------- | ----------- |
-| error   | Hiba azonosítója. |
+| hiba   | Hiba azonosítója. |
 | error_description | Hiba részletes leírását. **Hiba leírása bármikor módosíthatja. Ne írja ki a kódot, amely ágak a hibaleírás értékei alapján.**|
 
 ### <a name="http-response-reference"></a>HTTP-válasz referencia
@@ -319,7 +319,7 @@ Próbálkozzon újra a következő stratégia javasoljuk:
 
 | **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működési elv** |
 | --- | --- | --- | --- |
-|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />false |1. kísérlet – 0 mp. késleltetés<br />2. kísérlet – kb. 2 mp. késleltetés<br />3. kísérlet – kb. 6 mp. késleltetés<br />4. kísérlet – kb. 14 mp. késleltetés<br />5. kísérlet – kb. 30 mp. késleltetés |
+|ExponentialBackoff |Újrapróbálkozások száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />hamis |1. kísérlet – 0 mp. késleltetés<br />2. kísérlet – kb. 2 mp. késleltetés<br />3. kísérlet – kb. 6 mp. késleltetés<br />4. kísérlet – kb. 14 mp. késleltetés<br />5. kísérlet – kb. 30 mp. késleltetés |
 
 ## <a name="resource-ids-for-azure-services"></a>Erőforrás-azonosítók az Azure-szolgáltatások
 

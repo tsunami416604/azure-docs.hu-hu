@@ -2,22 +2,24 @@
 title: Bejelentkezés hozzáadása egy iOS-alkalmazást az Azure AD v2.0-végponttól |} Microsoft Docs
 description: Egy iOS-alkalmazást, amely képes bejelentkeztetni a felhasználókat, és mindkét személyes Microsoft-fiók létrehozása és a munkahelyi vagy iskolai fiókok külső könyvtárak használatával.
 services: active-directory
-author: xerners
+author: CelesteDG
 manager: mtillman
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: celested
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5323f9a514c3c1c6134656e41af68e479fd8fdc5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7476417e6585976ea2404a83602a6d9aa77d9c7a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Bejelentkezés hozzáadása egy iOS-alkalmazást használ egy külső könyvtár Graph API-t használ a v2.0-végpontra
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. A fejlesztők a függvénytárat, hogy integrálni szeretne a szolgáltatások. Segítségével a fejlesztők a platformot használja a többi könyvtárak, azt korábban írt bemutatják, hogyan lehet kapcsolódni a Microsoft identity platform külső szalagtárak konfigurálása a jelen szoftverhez hasonló néhány forgatókönyvek. A legtöbb tárak, amelyek megvalósítják az [a RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) csatlakozni tud-e a Microsoft identity platform.
@@ -39,7 +41,7 @@ A v2.0-végpontra nem támogatja az összes Azure Active Directory forgatóköny
 > 
 
 ## <a name="download-code-from-github"></a>Töltse le a kód a Githubról
-Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2).  Követéséhez is [töltse le az alkalmazás vázát egy .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) vagy klónozza a vázat:
+Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2). Követéséhez is [töltse le az alkalmazás vázát egy .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) vagy klónozza a vázat:
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.git
@@ -52,7 +54,7 @@ git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.g
 ```
 
 ## <a name="register-an-app"></a>Alkalmazás regisztrálása
-Hozzon létre egy új alkalmazást a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), vagy részletes kövesse a [egy alkalmazás regisztrálása a v2.0-végponttal](active-directory-v2-app-registration.md).  Győződjön meg arról, hogy:
+Hozzon létre egy új alkalmazást a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), vagy részletes kövesse a [egy alkalmazás regisztrálása a v2.0-végponttal](active-directory-v2-app-registration.md). Győződjön meg arról, hogy:
 
 * Másolás a **alkalmazásazonosító** , amely hozzá van rendelve az alkalmazás mivel hamarosan lesz szükség.
 * Adja hozzá a **Mobile** platform az alkalmazásra vonatkozóan.
@@ -122,7 +124,7 @@ A NXOAuth2Client tartalomtárát néhány érték első beállítása. Miután e
 
 Vizsgáljuk meg a kódot részleteit.
 
-A rendszer az első karakterlánc `scopes`.  A `User.Read` érték lehetővé teszi, hogy olvassa a bejelentkezett felhasználó alapvető profiladataihoz.
+A rendszer az első karakterlánc `scopes`. A `User.Read` érték lehetővé teszi, hogy olvassa a bejelentkezett felhasználó alapvető profiladataihoz.
 
 Ön tudhat meg többet a rendelkezésre álló összes hatókör [Microsoft Graph-engedélyhatókörök](https://graph.microsoft.io/docs/authorization/permission_scopes).
 

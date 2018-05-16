@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 409ed4618b8ddf022cfc3457851cf434ba810b94
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Ajánlott eljárások az Azure virtuális gép biztonsági
 
@@ -55,7 +55,7 @@ Ha engedélyezi az erőforrás-kezelő házirendek és a virtuális gép hozzáf
 
 - [Virtuális gép közreműködő](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): kezelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez csatlakoznak.
 - [Klasszikus virtuális gép közreműködő](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): kezelheti a klasszikus üzembe helyezési modellel, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez a virtuális gépek csatlakoznak használatával létrehozott virtuális gépeket.
-- [Biztonságkezelő](../role-based-access-control/built-in-roles.md#security-manager): kezelhetik biztonsági összetevők, a biztonsági házirendek és a virtuális gépek.
+- [Biztonsági rendszergazda](../role-based-access-control/built-in-roles.md#security-admin): felügyelheti a biztonsági összetevők és biztonsági házirendjeivel.
 - [DevTest Labs felhasználói](../role-based-access-control/built-in-roles.md#devtest-labs-user): mindent megtekinthetnek, és csatlakozzon, elindítható, indítsa újra, és állítsa le a virtuális gépek.
 
 Ne ossza meg fiókkal és jelszóval egymástól a rendszergazdákat, és ne használja ugyanazt a jelszót több felhasználói fiókhoz vagy szolgáltatáshoz, különösen a közösségi oldalakon jelszavak vagy más nem felügyeleti tevékenységek. Ideális esetben használjon [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) sablonok biztonságosan beállítása a virtuális gépek. Ezt a módszert használja, a központi telepítési beállítások megerősítése és a biztonsági beállításainak a telepítés során.

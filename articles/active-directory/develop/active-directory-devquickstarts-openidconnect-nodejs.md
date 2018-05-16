@@ -3,23 +3,25 @@ title: Ismerkedés az Azure AD Node.js webalkalmazás |} Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre, amely az Azure ad-val bejelentkezési Node.js Express MVC webalkalmazás.
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Ismerkedés az Azure AD Node.js webalkalmazás
 Jelen példában használjuk a Passport:
@@ -37,7 +39,7 @@ Ehhez tegye a következőket:
 3. Be- és kijelentkezési kérések kiállítása az Azure AD számára a Passport használatával.
 4. Nyomtassa ki a felhasználóval kapcsolatos adatokat.
 
-Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS).  Követéséhez is [töltse le az alkalmazás vázát .zip-fájlként](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) vagy klónozza a vázat:
+Az oktatóanyag kódjának [karbantartása a GitHubon történik](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS). Követéséhez is [töltse le az alkalmazás vázát .zip-fájlként](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) vagy klónozza a vázat:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
@@ -55,7 +57,7 @@ Az elkészült alkalmazást is megtalálja, valamint az oktatóanyag végén.
 5. Kövesse a megjelenő utasításokat hozzon létre egy **webalkalmazás** és/vagy **WebAPI**.
   * A **neve** az alkalmazás az alkalmazás a felhasználók számára ismerteti.
 
-  * A **bejelentkezési URL-cím** az alkalmazás alap URL-címe.  A vázat alapértelmezett érték a `http://localhost:3000/auth/openid/return`.
+  * A **bejelentkezési URL-cím** az alkalmazás alap URL-címe. A vázat alapértelmezett érték a `http://localhost:3000/auth/openid/return`.
 
 6. Miután regisztrálta, az Azure AD rendeli hozzá az alkalmazás egy egyedi azonosítót. Ez az érték kell a következő szakaszokban, ezért másolja az alkalmazás oldalról.
 7. Az a **beállítások** -> **tulajdonságok** az alkalmazás lapján frissítse a App ID URI. A **App ID URI** az alkalmazás egyedi azonosítója. Az egyezmény a formátumának a használatára `https://<tenant-domain>/<app-name>`, például: `https://contoso.onmicrosoft.com/my-first-aad-app`.
@@ -78,7 +80,7 @@ Az elkészült alkalmazást is megtalálja, valamint az oktatóanyag végén.
 Ez telepíti a könyvtárak, amelyek `passport-azure-ad` függ.
 
 ## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3. lépés: Az alkalmazás használatának beállítása a passport-csomópont-js stratégia
-Itt azt az OpenID Connect hitelesítési protokoll használatára Express konfigurálása.  A Passport használatos különböző műveleteket, beleértve a probléma be- és kijelentkezési kérések, a felhasználói munkamenet kezelésére, és a felhasználó adatainak beolvasása.
+Itt azt az OpenID Connect hitelesítési protokoll használatára Express konfigurálása. A Passport használatos különböző műveleteket, beleértve a probléma be- és kijelentkezési kérések, a felhasználói munkamenet kezelésére, és a felhasználó adatainak beolvasása.
 
 1. Első lépésként nyissa meg a `config.js` a projekt gyökerében fájlt, és írja be az alkalmazás konfigurációs értékeit a `exports.creds` szakasz.
 
@@ -181,7 +183,7 @@ Az előző kód készít minden olyan felhasználó, hogy a kiszolgáló hiteles
             };
     ```
 
-5.  A következő adjuk hozzá a kódot az Express motor betöltése. Jelen példában használjuk a alapértelmezett /views és Express /routes minta nyújt.
+5. A következő adjuk hozzá a kódot az Express motor betöltése. Jelen példában használjuk a alapértelmezett /views és Express /routes minta nyújt.
 
     ```JavaScript
 
@@ -252,7 +254,7 @@ Az előző kód készít minden olyan felhasználó, hogy a kiszolgáló hiteles
 
 
 ## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4. lépés: Használatát a Passport való be- és kijelentkezési kérések kiállítása az Azure AD
-Az alkalmazás megfelelően konfigurálva van az endpoint OpenID Connect hitelesítési protokoll használatával kommunikálnak.  `passport-azure-ad` rendelkezik az összes adat hitelesítési üzenetek létrehozásával, ellenőrzése az Azure ad-jogkivonatok és karbantartása a felhasználói munkamenetek végrehajtott fontos. Összes fennmaradó jogosultságot ad a felhasználók bejelentkezés és kijelentkezés, és a bejelentkezett felhasználókkal kapcsolatos további információk összegyűjtéséhez.
+Az alkalmazás megfelelően konfigurálva van az endpoint OpenID Connect hitelesítési protokoll használatával kommunikálnak. `passport-azure-ad` rendelkezik az összes adat hitelesítési üzenetek létrehozásával, ellenőrzése az Azure ad-jogkivonatok és karbantartása a felhasználói munkamenetek végrehajtott fontos. Összes fennmaradó jogosultságot ad a felhasználók bejelentkezés és kijelentkezés, és a bejelentkezett felhasználókkal kapcsolatos további információk összegyűjtéséhez.
 
 1. Első lépésként adjuk hozzá az alapértelmezett, bejelentkezési, fiókkal, és kijelentkezési metódusokat az `app.js` fájlt:
 
@@ -282,7 +284,7 @@ Az alkalmazás megfelelően konfigurálva van az endpoint OpenID Connect hiteles
 
     ```
 
-2.  Tekintsük át részletesen ezek:
+2. Tekintsük át részletesen ezek:
 
   * A `/`útvonal átirányítja a felhasználókat a index.ejs nézetet, a felhasználó átadja a kérésben (ha van ilyen).
   * A `/account` útvonal először *biztosítja, hogy hitelesítése* (megvalósítása, amely a következő példában), és a felhasználó majd átadja a kérésben, hogy megkaphassa a felhasználó további információt.

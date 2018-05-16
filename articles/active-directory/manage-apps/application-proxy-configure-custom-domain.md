@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 502f2c8992e63ffc3eb1d3335387444114b19e05
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: cb4620babd3a1ba5087ae9ebd2870c1ef404bb58
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Egyéni tartományok az Azure AD alkalmazásproxy használata
 
@@ -82,7 +82,7 @@ Minden Tanúsítványkezelő jelenleg egyes lapjain keresztül ezért szüksége
 
 ## <a name="next-steps"></a>További lépések
 * [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokhoz az Azure AD-alapú hitelesítés.
-* [A feltételes hozzáférés engedélyezése](../application-proxy-enable-remote-access-sharepoint.md) a közzétett alkalmazásokhoz.
+* [A feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md) a közzétett alkalmazásokhoz.
 * [Egyéni tartománynév hozzáadása az Azure AD](../add-custom-domain.md)
 
 

@@ -1,19 +1,21 @@
 ---
-title: "Azure-beli virtuális gépek változásainak hibaelhárítása | Microsoft Docs"
-description: "A Change Tracking megoldás használatával háríthatja el az Azure-beli virtuális gépek változásaival kapcsolatos hibákat."
+title: Azure-beli virtuális gépek változásainak hibaelhárítása | Microsoft Docs
+description: A Change Tracking megoldás használatával háríthatja el az Azure-beli virtuális gépek változásaival kapcsolatos hibákat.
 services: automation
-keywords: "változás, követés, automatizálás"
+ms.service: automation
+ms.component: change-inventory-management
+keywords: változás, követés, automatizálás
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -40,7 +42,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
@@ -87,7 +89,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 ### <a name="add-a-windows-registry-key"></a>Windows-beállításkulcs hozzáadása
 
 1. A **Windows-beállításjegyzék** lapon kattintson a **Hozzáadás** gombra.
-    Megnyílik **A Windows beállításjegyzékének hozzáadása a változáskövetéshez** ablak.
+    Megnyílik a **Windows-beállításjegyzék felvétele a Change Tracking megoldásba** ablak.
 
 3. **A Windows beállításjegyzékének hozzáadása a változáskövetéshez** ablakban írja be a követni kívánt kulcs adatait, és kattintson a **Mentés** gombra.
 
@@ -113,7 +115,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 
 ### <a name="add-a-linux-file"></a>Linux-fájl hozzáadása
 
-1. A **Linux-fájlok** lapon kattintson a **Hozzáadás** gombra. Megnyílik a **Linux-fájl hozzáadása a változáskövetéshez** ablak.
+1. A **Linux-fájlok** lapon kattintson a **Hozzáadás** gombra. Megnyílik a **Linux-fájl felvétele a Change Tracking megoldásba** ablak.
 
 1. A **Linux-fájl hozzáadása a változáskövetéshez** ablakban írja be a követni kívánt fájl vagy címtár adatait, és kattintson a **Mentés** gombra.
 

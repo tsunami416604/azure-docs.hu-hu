@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7361a71d9e178f47761c42cebe706246eb9d5e64
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz
 Ez az oktatóanyag egy sorozat harmadik része.  Az oktatóanyag során el fogja sajátítani a HTTPS engedélyezését a Service Fabricen futó ASP.NET Core-szolgáltatásban. Ha ezzel végzett, rendelkezni fog egy HTTPS-kompatibilis ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely a 443-as porton figyel. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást a [NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-deploy-app-to-party-cluster.md) szakaszban, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz.
@@ -274,7 +274,7 @@ Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>Beállítási szkript futtatása helyi rendszergazdaként
 Alapértelmezés szerint a szolgáltatásbeállítás belépési pontjának végrehajtható fájlja ugyanolyan hitelesítő adatok alatt fut, mint a Service Fabric (általában a Hálózati szolgáltatási fiók). A *SetCertAccess.ps1* rendszergazdai jogosultságokat igényel. Az alkalmazásjegyzékben módosíthatja a biztonsági engedélyeket az indítási szkript futtatásához, egy helyi rendszergazdai fiókkal.  
 
-A Megoldáskezelőben nyissa meg *Voting/ApplicationPackageRoot/ManifestManifest.xml* fájlt. Először hozzon létre egy **Rendszerbiztonsági tagok** szakaszt, és adjon hozzá új felhasználót (például SetupAdminUser). Adja hozzá a SetupAdminUser felhasználói fiókot a rendszergazdák rendszercsoportjához.
+A Solution Explorerben (Megoldáskezelő) nyissa meg a *Voting/ApplicationPackageRoot/ApplicationManifest.xml* fájlt. Először hozzon létre egy **Rendszerbiztonsági tagok** szakaszt, és adjon hozzá új felhasználót (például SetupAdminUser). Adja hozzá a SetupAdminUser felhasználói fiókot a rendszergazdák rendszercsoportjához.
 Ezután a VotingWebPkg **ServiceManifestImport** szakaszban konfigurálja a **RunAsPolicy** elemet, hogy alkalmazza a SetupAdminUser rendszerbiztonsági tagot a beállítási belépési pontra. Ez a szabályzat tájékoztatja a Service Fabricet, hogy a Setup.bat fájl SetupAdminUser-ként fut (rendszergazdai jogosultságokkal). 
 
 ```xml

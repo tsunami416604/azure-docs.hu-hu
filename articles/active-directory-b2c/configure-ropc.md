@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: davidmu
-ms.openlocfilehash: 4a052da4a6a16fde0583b3a1dbecc2a6de5cc0a9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c1b4d641f6830751e2cb9e66d5052eb20a48d371
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-ropc-in-azure-ad-b2c"></a>Az erőforrás tulajdonosa jelszó hitelesítő adatok folyamata (ROPC) konfigurálása az Azure AD B2C
 
-Az erőforrás tulajdonosa jelszó hitelesítő adatok (ROPC) folyamat egy OAUTH szabványon alapuló hitelesítési folyamat ahol az alkalmazás, azaz a függő entitáshoz, például a felhasználói azonosítóját és jelszavát az azonosítója, hozzáférési jogkivonatot, és a frissítési jogkivonatot cseréjét érvényes hitelesítő adatokat. 
+Az erőforrás tulajdonosa jelszó hitelesítő adatok (ROPC) folyamat egy OAUTH szabványon alapuló hitelesítési folyamat, ahol az alkalmazás, más néven a függő entitás cseréje érvényes hitelesítő adatokat, például a felhasználói azonosítóját és jelszavát az azonosítója, hozzáférési jogkivonatot, és a frissítési jogkivonatot. 
 
 > [!NOTE]
 > A funkció jelenleg előzetes verzió.
@@ -48,7 +48,7 @@ Ekkor megjelenik egy végpontot, például az ebben a példában:
 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_ROPC_Auth`
 
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
 1. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **+ Hozzáadás** lehetőségre.
 2. Adjon meg egy nevet az alkalmazás, például: *ROPC_Auth_app*.

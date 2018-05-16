@@ -49,6 +49,10 @@
         - name: A Hive és a Hadoop
           href: hdinsight-use-hive.md
           items:
+            - name: A HDInsight tools for VSCode használata
+              href: ../hdinsight-for-vscode.md
+            - name: A HDInsight Tools for Visual Studio használata
+              href: apache-hadoop-use-hive-visual-studio.md
             - name: A Hive-nézet használata
               href: apache-hadoop-use-hive-ambari-view.md
             - name: A Beeline használata
@@ -59,8 +63,6 @@
               href: apache-hadoop-use-hive-powershell.md
             - name: A .NET SDK használata
               href: apache-hadoop-use-hive-dotnet-sdk.md
-            - name: A HDInsight Tools for Visual Studio használata
-              href: apache-hadoop-use-hive-visual-studio.md
             - name: A Távoli asztal használata
               href: apache-hadoop-use-hive-remote-desktop.md
             - name: A Lekérdezéskonzol használata

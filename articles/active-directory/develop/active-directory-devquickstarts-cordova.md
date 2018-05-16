@@ -1,25 +1,26 @@
 ---
-title: "Ismerkedés az Azure AD Cordova |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozható létre a Cordova-alkalmazás, amely integrálható az Azure ad-val bejelentkezhet, és meghívja az Azure AD-védelemmel ellátott API-OAuth használatával."
+title: Ismerkedés az Azure AD Cordova |} Microsoft Docs
+description: Megtudhatja, hogyan hozható létre a Cordova-alkalmazás, amely integrálható az Azure ad-val bejelentkezhet, és meghívja az Azure AD-védelemmel ellátott API-OAuth használatával.
 services: active-directory
-documentationcenter: 
-author: vibronet
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b1a8d7bd-7ad6-44d5-8ccb-5255bb623345
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: vittorib
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d6f1d545265f0965a03afb23e5791cdd5e5e379c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6d6d514875aa675bf160ee08a3e94b58944020ee
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-cordova-getting-started"></a>Ismerkedés az Azure AD Cordova
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -33,7 +34,7 @@ A Cordova beépülő modul becsomagolja az Azure AD natív SDK-k iOS, Android, W
 Ebben az oktatóanyagban egy egyszerű alkalmazást javíthatja a következő funkciók felvételének fogjuk felhasználni az Apache Cordova beépülő modul az Active Directory Authentication Library (ADAL):
 
 * A pár sornyi kód hitelesíteni a felhasználót, és jogkivonat beszerzése.
-* A jogkivonat segítségével meghívni a Graph API, amellyel könyvtárhoz, és az eredmények megjelenítéséhez.  
+* A jogkivonat segítségével meghívni a Graph API, amellyel könyvtárhoz, és az eredmények megjelenítéséhez. 
 * Az ADAL jogkivonat gyorsítótára minimalizálása érdekében kell használni a felhasználói hitelesítést kér.
 
 Ahhoz, hogy ezek a fejlesztések, kell:
@@ -47,7 +48,7 @@ Ahhoz, hogy ezek a fejlesztések, kell:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Az Azure AD-bérlő app development jogosultságokkal rendelkező fiók esetében.
-* A fejlesztési környezet, amely az Apache Cordova használatára van konfigurálva.  
+* A fejlesztési környezet, amely az Apache Cordova használatára van konfigurálva. 
 
 Ha mindkét már van beállítva, hogy továbblépjen közvetlenül 1. lépés.
 
@@ -92,14 +93,14 @@ Az Azure AD számára csak ismert alkalmazások jogkivonatokat. Az Azure AD a al
 4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
 5. Kövesse az utasításokat, és hozzon létre egy **natív ügyfélalkalmazás**. (Bár a Cordova-alkalmazásokkal HTML-alapú, most létrehozzuk natív ügyfélalkalmazás itt. A **natív ügyfélalkalmazás** beállítást, vagy az alkalmazás nem fog működni.)
   * **Név** az alkalmazás a felhasználók számára ismerteti.
-  * **Átirányítási URI** az URI azonosítót ad vissza a jogkivonatok az alkalmazáshoz. Enter **http://MyDirectorySearcherApp**.
+  * **Átirányítási URI** az URI azonosítót ad vissza a jogkivonatok az alkalmazáshoz. Adja meg **http://MyDirectorySearcherApp**.
 
 Regisztráció befejezése után az Azure AD egy egyedi alkalmazás Azonosítót rendel az alkalmazáshoz. Ez az érték a következő szakaszokban lévő lesz szüksége. Az újonnan létrehozott alkalmazás az alkalmazás lapon találja.
 
 Futtatásához `DirSearchClient Sample`, az újonnan létrehozott alkalmazás engedélyt lekérdezése az Azure AD Graph API:
 
-1. Az a **beállítások** lapon jelölje be **szükséges engedélyek**, majd válassza ki **Hozzáadás**.  
-2. Az Azure Active Directory-alkalmazást, válassza a **Microsoft Graph** az API-t, és adja hozzá a **hozzáférés a címtárhoz a bejelentkezett felhasználó az** engedélyt a **delegált engedélyek**.  Ez lehetővé teszi az alkalmazás lekérdezése a Graph API-t a felhasználók számára.
+1. Az a **beállítások** lapon jelölje be **szükséges engedélyek**, majd válassza ki **Hozzáadás**. 
+2. Az Azure Active Directory-alkalmazást, válassza a **Microsoft Graph** az API-t, és adja hozzá a **hozzáférés a címtárhoz a bejelentkezett felhasználó az** engedélyt a **delegált engedélyek**. Ez lehetővé teszi az alkalmazás lekérdezése a Graph API-t a felhasználók számára.
 
 ## <a name="step-2-clone-the-sample-app-repository"></a>2. lépés: A minta app tárház klónozása
 A rendszerhéj vagy a parancssorból írja be a következő parancsot:

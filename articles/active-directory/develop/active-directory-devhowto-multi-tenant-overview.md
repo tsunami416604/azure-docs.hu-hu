@@ -3,26 +3,28 @@ title: Hogyan hozhat létre egy alkalmazást, minden Azure AD-felhasználó beje
 description: Bemutatja, hogyan hozható létre olyan több-bérlős alkalmazás, amely bejelentkezhet a felhasználó bármely Azure Active Directory-bérlőhöz.
 services: active-directory
 documentationcenter: ''
-author: celestedg
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2018
 ms.author: celested
+ms.reviewer: elisol
 ms.custom: aaddev
-ms.openlocfilehash: f31ef7285e07467fe233d5e10534340bc912ed1c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fd02cde6327cb929d1b4c0c2e3d430d64645ca26
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Bármely a több-bérlős alkalmazásminta használó Azure Active Directory felhasználói bejelentkezés
-Ha egy szoftver számos szervezet hasonló szolgáltatás alkalmazásként, konfigurálhatja az alkalmazás Azure Active Directory (AD) a panelhez bejelentkezések fogadására. Ez a konfiguráció elnevezése, így az alkalmazás több-bérlős. Bármely Azure AD-bérlő felhasználók fog tudni bejelentkezni az alkalmazás után hozzájárul ahhoz, hogy a fiókot használja az alkalmazással.  
+Ha egy szoftver számos szervezet hasonló szolgáltatás alkalmazásként, konfigurálhatja az alkalmazás Azure Active Directory (AD) a panelhez bejelentkezések fogadására. Ez a konfiguráció elnevezése, így az alkalmazás több-bérlős. Bármely Azure AD-bérlő felhasználók fog tudni bejelentkezni az alkalmazás után hozzájárul ahhoz, hogy a fiókot használja az alkalmazással. 
 
 Ha egy meglévő alkalmazást a saját fiók rendszer, vagy más egyéb szolgáltatók bejelentkezések használatát támogatja, felvétele az Azure AD-bejelentkezés a panelhez használata egyszerű. Csak az alkalmazás regisztrálásához, adja hozzá az OAuth2, az OpenID Connect vagy a SAML-bejelentkezés kódot, és hogy egy ["Sign In with Microsoft" gomb] [ AAD-App-Branding] az alkalmazásban.
 
@@ -39,19 +41,19 @@ Az alkalmazás alakítani egy több-bérlős az Azure AD alkalmazás négy egysz
 Nézzük részletes lépéseit. Akkor is is ugorhat rögtön [ebben a listában több-bérlős minták][AAD-Samples-MT].
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Több-bérlős kell regisztráció frissítése
-Alapértelmezés szerint web app/API regisztráció az Azure ad-ben található egybérlős.  Akkor is használhatja a regisztrációs több-bérlős keresése a **több központjaként** váltani a **tulajdonságok** az alkalmazáshoz való regisztráció ablaktábláján a [Azure-portálon] [ AZURE-portal] értékre állítaná, és **Igen**.
+Alapértelmezés szerint web app/API regisztráció az Azure ad-ben található egybérlős. Akkor is használhatja a regisztrációs több-bérlős keresése a **több központjaként** váltani a **tulajdonságok** az alkalmazáshoz való regisztráció ablaktábláján a [Azure-portálon] [ AZURE-portal] értékre állítaná, és **Igen**.
 
 Előtt egy alkalmazás több-bérlős, az Azure AD globális egyedinek kell lennie az alkalmazás az App ID URI van szükség. Az App ID URI az alkalmazás azonosítható protokoll üzeneteinek eljárások valamelyikével. Egyetlen bérlői alkalmazások a rendszer megfelelő a App ID URI bérlőre belül egyedinek kell lennie. Egy több-bérlős alkalmazáshoz kell legyen globálisan egyedi, az Azure AD megtalálja az alkalmazás összes bérlők között. Globális egyediségi azzal, hogy rendelkezik egy állomásnevet, amely megfelel az Azure AD-bérlő ellenőrzött tartományt App ID URI érvényesül. Alapértelmezés szerint az Azure-portálon létrehozott alkalmazások is rendelkeznek egy globálisan egyedi App ID URI be az alkalmazás létrehozása, de az érték módosítására képes.
 
-Például, ha a bérlő neve contoso.onmicrosoft.com, majd egy érvényes App ID URI lenne `https://contoso.onmicrosoft.com/myapp`.  Ha a bérlő az ellenőrzött tartományt kellett `contoso.com`, majd egy érvényes App ID URI is használhatók lesznek `https://contoso.com/myapp`. Ha az App ID URI nem követi a ebben a mintában beállítását egy alkalmazás több-bérlős sikertelen lesz.
+Például, ha a bérlő neve contoso.onmicrosoft.com, majd egy érvényes App ID URI lenne `https://contoso.onmicrosoft.com/myapp`. Ha a bérlő az ellenőrzött tartományt kellett `contoso.com`, majd egy érvényes App ID URI is használhatók lesznek `https://contoso.com/myapp`. Ha az App ID URI nem követi a ebben a mintában beállítását egy alkalmazás több-bérlős sikertelen lesz.
 
 > [!NOTE] 
-> Natív ügyfél-regisztrációk, valamint [v2 alkalmazások](./active-directory-appmodel-v2-overview.md) több-bérlős alapértelmezés szerint.  Nem kell több-bérlős a alkalmazás regisztrációk el semmilyen művelet végrehajtására.
+> Natív ügyfél-regisztrációk, valamint [v2 alkalmazások](./active-directory-appmodel-v2-overview.md) több-bérlős alapértelmezés szerint. Nem kell több-bérlős a alkalmazás regisztrációk el semmilyen művelet végrehajtására.
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>Frissítse a kódot kérelmeket küldeni/Common
 Bejelentkezési kérelmek egy egybérlős alkalmazást, a bérlő bejelentkezési végpont kell küldeni. Például a contoso.onmicrosoft.com a végpont a következő lesz: `https://login.microsoftonline.com/contoso.onmicrosoft.com`
 
-A tenant végpont küldött kérelmeket a bérlőre elérhető alkalmazásokra mutató bérlőre jelentkezhetnek be a felhasználók (vagy a vendégek). Egy több-bérlős alkalmazással az alkalmazás nem tud előre milyen bérlő, a felhasználó tartozik, így nem tudnak kérelmeket küldeni a tenant végpont.  Ehelyett kérelmeket küldött egy végpontot, amely minden Azure AD bérlők között multiplexes: `https://login.microsoftonline.com/common`
+A tenant végpont küldött kérelmeket a bérlőre elérhető alkalmazásokra mutató bérlőre jelentkezhetnek be a felhasználók (vagy a vendégek). Egy több-bérlős alkalmazással az alkalmazás nem tud előre milyen bérlő, a felhasználó tartozik, így nem tudnak kérelmeket küldeni a tenant végpont. Ehelyett kérelmeket küldött egy végpontot, amely minden Azure AD bérlők között multiplexes: `https://login.microsoftonline.com/common`
 
 Ha az Azure AD meg az/Common kérelem érkezik a végponthoz, azt a felhasználó bejelentkezik, és, következésképpen felderíti a felhasználó mely bérlő. A/közös végpont működik együtt, minden Azure AD által támogatott hitelesítési protokoll: OpenID Connect, a OAuth 2.0, a SAML 2.0 és a WS-Federation.
 
@@ -61,12 +63,12 @@ Az alkalmazás ezután a bejelentkezési választ a felhasználó jelképező jo
 > A/közös végpont nem a bérlőt, és nincs kibocsátó, a csupán a multiplexer. / Common használata esetén az alkalmazás érvényesíthet jogkivonatokat logika figyelembe ennek frissíteni kell. 
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Frissítse a kódot több kibocsátó érték kezelése
-Webalkalmazások és webes API-k kap, és érvényesítse az Azure AD.  
+Webalkalmazások és webes API-k kap, és érvényesítse az Azure AD. 
 
 > [!NOTE]
-> Natív ügyfélalkalmazások kérése és jogkivonatokat fogadni az Azure AD, ehhez a elküldhesse az összeset API-k, ahol érvényesítve.  Natív alkalmazások nem érvényesíthet jogkivonatokat és kell kezeli őket nem átlátszó.
+> Natív ügyfélalkalmazások kérése és jogkivonatokat fogadni az Azure AD, ehhez a elküldhesse az összeset API-k, ahol érvényesítve. Natív alkalmazások nem érvényesíthet jogkivonatokat és kell kezeli őket nem átlátszó.
 
-Nézzük, hogyan ellenőrzi az alkalmazás a jogkivonatokat kap az Azure AD.  Egy egybérlős alkalmazás általában tart egy végpont értékét, például:
+Nézzük, hogyan ellenőrzi az alkalmazás a jogkivonatokat kap az Azure AD. Egy egybérlős alkalmazás általában tart egy végpont értékét, például:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
@@ -86,7 +88,7 @@ Mivel a/közös végpont a bérlő nem felel meg, és nem egy kibocsátó, vizsg
 
     https://sts.windows.net/{tenantid}/
 
-Ezért egy több-bérlős alkalmazás nem érvényesíthet jogkivonatokat csak a metaadatok a kibocsátó értékével egyező által a `issuer` a token értékét. Egy több-bérlős alkalmazást kell logika döntse el, hogy mely kibocsátó értékek érvényes, amely nem a bérlői azonosító részét a kibocsátó érték alapján.  
+Ezért egy több-bérlős alkalmazás nem érvényesíthet jogkivonatokat csak a metaadatok a kibocsátó értékével egyező által a `issuer` a token értékét. Egy több-bérlős alkalmazást kell logika döntse el, hogy mely kibocsátó értékek érvényes, amely nem a bérlői azonosító részét a kibocsátó érték alapján. 
 
 Például ha egy több-bérlős alkalmazás csak lehetővé teszi, hogy bejelentkezési adott bérlő, aki regisztrált-e a szolgáltatás, akkor azt kell ellenőrizze vagy a kibocsátó érték vagy a `tid` jogcím értéke a jogkivonatban, győződjön meg arról, hogy a bérlő az előfizetők a listában. Ha csak egy több-bérlős alkalmazás egyének foglalkozik, és nem minden hozzáférés alapján döntéseket bérlők, majd azt figyelmen kívül hagyhatja a kibocsátó érték regisztrálását.
 
@@ -137,7 +139,7 @@ Ezt mutatják be egy natív ügyfél többrétegű, webes API-mintát hívása a
 
 **A több bérlő több rétegből**
 
-Hasonló esetek történik, ha az alkalmazások különböző rétegek a különböző bérlők van regisztrálva. Vegyük példaként a kis-és az Office 365 Exchange Online API-t egy natív ügyfélalkalmazás létrehozása. A natív, és újabb verzióiban a natív alkalmazás ügyfél-bérlőben futtatásához kialakításához, az Exchange Online szolgáltatás egyszerű jelen kell lennie. Ebben az esetben a fejlesztői és az ügyfél kell vásárolnia, Exchange online-hoz létre kell hozni a bérlők egyszerű szolgáltatás.  
+Hasonló esetek történik, ha az alkalmazások különböző rétegek a különböző bérlők van regisztrálva. Vegyük példaként a kis-és az Office 365 Exchange Online API-t egy natív ügyfélalkalmazás létrehozása. A natív, és újabb verzióiban a natív alkalmazás ügyfél-bérlőben futtatásához kialakításához, az Exchange Online szolgáltatás egyszerű jelen kell lennie. Ebben az esetben a fejlesztői és az ügyfél kell vásárolnia, Exchange online-hoz létre kell hozni a bérlők egyszerű szolgáltatás. 
 
 Esetén az API-t egy szervezet, nem a Microsoft által az API-t a fejlesztői lehetővé teszik az ügyfelek számára, az alkalmazást az ügyfelek bérlők beleegyezését kell. A javasolt tervezési van, a harmadik féltől származó fejlesztő hozhat létre az API-t úgy, hogy működni a webes ügyfél regisztráció végrehajtásához. Ehhez tegye a következőket:
 

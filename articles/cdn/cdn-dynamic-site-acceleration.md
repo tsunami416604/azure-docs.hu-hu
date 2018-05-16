@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dinamikus gyorsítás Azure CDN használatával
 
@@ -158,7 +158,7 @@ Gyorsítótárazás szabályok eléréséhez:
 
 1. Az a **CDN-profil** lapon beállításaiban, válassza a **szabályok gyorsítótárazás**.  
     
-    ![CDN-gyorsítótárazás szabályok gomb](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
+    ![CDN-gyorsítótárszabályok gomb](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
     A **szabályok gyorsítótárazás** lap megnyitásakor.
 
@@ -183,9 +183,6 @@ A szabályok motor eléréséhez:
 Másik lehetőségként használhatja a két CDN-végpontok: az eszközök dinamikus és statikus optimalizálási típussal, például az általános optimalizált egy másik végpontjával DSA optimalizált egy végpont webes kézbesítése kézbesítési kérelmeznék eszközök. A weblap URL-címek közvetlenül kapcsolódik a CDN-végpont használatát tervezi meg az eszköz módosításához. 
 
 Például: `mydynamic.azureedge.net/index.html` egy dinamikus oldalra, és be töltve, a DSA végpontról.  A html-weblap hivatkozik, például JavaScript-tárak vagy lemezképeket, amelyek be vannak töltve a statikus CDN-végpont a például a statikus adategységek `mystatic.azureedge.net/banner.jpg` és `mystatic.azureedge.net/scripts.js`. 
-
-Az ASP.NET webalkalmazások vezérlők segítségével tartalmat adott CDN URL-kapcsolatos példáért lásd: [vezérlő műveletekből Azure CDN keresztül tartalmat](https://docs.microsoft.com/azure/cdn/cdn-cloud-service-with-cdn#controller).
-
 
 
 

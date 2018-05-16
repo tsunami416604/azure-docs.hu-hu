@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 05/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4c61cdc504306d4e28d1d8c03fce4e479a0bfd34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f68a4d699d1ad6592fe5481cd69795b06e7d8fca
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -76,7 +76,7 @@ Támogatja az ExpressRoute [három útválasztási tartományok](expressroute-ci
 * Dynamics 365 pénzügyi és műveletek (korábbi nevén Dynamics AX Online)
 * Az Azure-szolgáltatások legtöbb támogatottak. Ellenőrizze, közvetlenül a támogatási ellenőrzésére használt kívánt szolgáltatással.<br>
   A következő szolgáltatások nem támogatottak:
-    * Tartalomkézbesítési hálózat (CDN)
+    * CDN
     * A Visual Studio Team Services terhelés tesztelése
     * Multi-Factor Authentication
     * Traffic Manager
@@ -94,7 +94,7 @@ Támogatja az ExpressRoute [három útválasztási tartományok](expressroute-ci
   * Dynamics 365 a pénzügyi és műveletek
   * Az Azure-szolgáltatások legtöbb támogatottak. Ellenőrizze, közvetlenül a támogatási ellenőrzésére használt kívánt szolgáltatással.<br>
   A következő szolgáltatások nem támogatottak:
-    * Tartalomkézbesítési hálózat (CDN)
+    * CDN
     * A Visual Studio Team Services terhelés tesztelése
     * Multi-Factor Authentication
     * Traffic Manager
@@ -156,7 +156,7 @@ A szolgáltató mindkét helyek ExpressRoute biztosít, ha a szolgáltatónál d
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Az azonos metro is rendelkezem több ExpressRoute-Kapcsolatcsoportok? I hivatkozhat rájuk ugyanahhoz a virtuális hálózathoz?
 
-Igen. Több ExpressRoute-Kapcsolatcsoportok ugyanazon vagy másik szolgáltatókkal lehet. Ha a metro több ExpressRoute-társviszony létesítése – helyek és a kapcsolatok jönnek létre különböző társviszony-létesítési helyeken, az azonos virtuális hálózatban társíthatja azokat. A Kapcsolatcsoportok ugyanazon a társviszony-létesítési helyen létrehozott, nem hivatkozhat ugyanarra a virtuális hálózatra.
+Igen. Több ExpressRoute-Kapcsolatcsoportok ugyanazon vagy másik szolgáltatókkal lehet. Ha a metro több ExpressRoute-társviszony létesítése – helyek és a kapcsolatok jönnek létre különböző társviszony-létesítési helyeken, az azonos virtuális hálózatban társíthatja azokat. A Kapcsolatcsoportok ugyanazon a társviszony-létesítési helyen létrehozott, nem hivatkozhat ugyanarra a virtuális hálózatra. Minden hely neve, az Azure portálon vagy a PowerShell vagy parancssori felület API egy társviszony-létesítési helye jelöli. Például válassza a "Szingapúri" és "Singapore2" társviszony-létesítési helyeket, és a kapcsolatok az egyes virtuan ugyanahhoz a hálózathoz csatlakozzon. 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hogyan a virtuális hálózatok csatlakoztatása ExpressRoute-kapcsolatcsoportot
 

@@ -3,23 +3,24 @@ title: Az Azure Active Directory fejlesztői fogalmak |} Microsoft Docs
 description: A gyakran használt Azure Active Directory fejlesztői fogalmak és szolgáltatások feltételei listáját.
 services: active-directory
 documentationcenter: ''
-author: bryanla
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/16/2017
-ms.author: bryanla
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12c1a4b2b1f3e433721b9c8a335c6b55de746643
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 Ez a cikk az Azure Active Directory (AD) fejlesztői alapfogalmakat, amelyek hasznosak, ha az Azure AD alkalmazásfejlesztés megtanulni részénél definíciókat tartalmazza.
@@ -35,7 +36,7 @@ Hozzáférési jogkivonatok vannak más néven "Felhasználó + alkalmazás" vag
 Lásd: [Azure AD jogkivonat-hivatkozást] [ AAD-Tokens-Claims] további részleteket.
 
 ## <a name="application-id-client-id"></a>alkalmazásazonosító (ügyfél-azonosító)
-Egy alkalmazás regisztrációban, amely azonosítja az adott alkalmazást, és a kapcsolódó konfigurációk egyedi azonosítója az Azure AD problémákat.  Az alkalmazásazonosító ([ügyfél-azonosító](https://tools.ietf.org/html/rfc6749#page-15)) használatos, ha hajt végre a hitelesítési kérelmeket, és szerepel a hitelesítési könyvtárak fejlesztési idő. Az alkalmazásazonosító (ügyfél-azonosító) nincs titkos kulcs. 
+Egy alkalmazás regisztrációban, amely azonosítja az adott alkalmazást, és a kapcsolódó konfigurációk egyedi azonosítója az Azure AD problémákat. Az alkalmazásazonosító ([ügyfél-azonosító](https://tools.ietf.org/html/rfc6749#page-15)) használatos, ha hajt végre a hitelesítési kérelmeket, és szerepel a hitelesítési könyvtárak fejlesztési idő. Az alkalmazásazonosító (ügyfél-azonosító) nincs titkos kulcs. 
 
 ## <a name="application-manifest"></a>Az alkalmazásjegyzék
 A szolgáltatás által biztosított a [Azure-portálon][AZURE-portal], az identitás alkalmazást, a frissítés hozzá van rendelve egy mechanizmusként JSON-ábrázolását állít elő [ Alkalmazás] [ AAD-Graph-App-Entity] és [szolgáltatásnév] [ AAD-Graph-Sp-Entity] entitásokat. Lásd: [az Azure Active Directory alkalmazásjegyzékének megismerése] [ AAD-App-Manifest] további részleteket.
@@ -85,7 +86,7 @@ A [biztonsági jogkivonat](#security-token) jogcímeket, amely helyességi felt�
 Lásd: [az Azure AD-jogkivonatok referenciájából] [ AAD-Tokens-Claims] további részleteket.
 
 ## <a name="client-application"></a>ügyfélalkalmazás
-Meghatározása szerint a [OAuth2 engedélyezési keretrendszer][OAuth2-Role-Def], egy alkalmazás, amelynek eredményeképpen a védett erőforrás-kérelem a következő nevében: a [erőforrás tulajdonosa](#resource-owner). Az "ügyfél" kifejezés nem feltétlenül jelenti azt bármely adott megvalósítási hardverjellemzők (például, hogy az alkalmazás végrehajtja a kiszolgálón, asztali vagy más eszközök).  
+Meghatározása szerint a [OAuth2 engedélyezési keretrendszer][OAuth2-Role-Def], egy alkalmazás, amelynek eredményeképpen a védett erőforrás-kérelem a következő nevében: a [erőforrás tulajdonosa](#resource-owner). Az "ügyfél" kifejezés nem feltétlenül jelenti azt bármely adott megvalósítási hardverjellemzők (például, hogy az alkalmazás végrehajtja a kiszolgálón, asztali vagy más eszközök). 
 
 Egy ügyfélalkalmazás kérelmek [engedélyezési](#authorization) az erőforrás tulajdonosa részt egy [OAuth2 hitelesítésengedélyezési](#authorization-grant) egymást követő, és előfordulhat, hogy adatelérés API-k vagy az erőforrás tulajdonosa nevében. Az OAuth2 hitelesítési keretrendszer [határozza meg az ügyfelek kétféle][OAuth2-Client-Types], "bizalmas" és "nyilvános", az ügyfél képes bizalmasan kezeljék a hitelesítő adatok alapján. Alkalmazások is létrehozható egy [webes ügyfél (bizalmas)](#web-client) egy webkiszolgálón, amely fut egy [natív ügyfél (nyilvános)](#native-client) telepítve az eszközön, vagy egy [felhasználói ügynök-alapú ügyfél (nyilvános)](#user-agent-based-client)amely fut egy eszköz böngészőjében.
 
@@ -121,7 +122,7 @@ Meghatározása szerint a [OAuth2 engedélyezési keretrendszer][OAuth2-Role-Def
 ## <a name="resource-server"></a>erőforrás-kiszolgáló
 Meghatározása szerint a [OAuth2 engedélyezési keretrendszer][OAuth2-Role-Def], egy kiszolgálót, hogy a gazdagépek védett erőforrások, képes elfogadása és válaszadás a védett erőforrás kérések [ügyfél alkalmazások](#client-application) , hogy jelen van egy [hozzáférési jogkivonat](#access-token). Más néven egy védett erőforrás-kiszolgáló, vagy erőforrás-alkalmazáshoz.
 
-Egy erőforrás-kiszolgáló API-k mutatja, és érvényesíti a keresztül a védett erőforrásokhoz való hozzáférés [hatókörök](#scopes) és [szerepkörök](#roles), az OAuth 2.0 hitelesítési keretrendszer használatával. Például az Azure AD Graph API-hozzáférést biztosít az Azure AD bérlő adatokhoz és az Office 365 API-kat, amelyek például a levelezés és a naptári adatok eléréséhez. Mindkét esetben is elérhetők a [Microsoft Graph API][Microsoft-Graph].  
+Egy erőforrás-kiszolgáló API-k mutatja, és érvényesíti a keresztül a védett erőforrásokhoz való hozzáférés [hatókörök](#scopes) és [szerepkörök](#roles), az OAuth 2.0 hitelesítési keretrendszer használatával. Például az Azure AD Graph API-hozzáférést biztosít az Azure AD bérlő adatokhoz és az Office 365 API-kat, amelyek például a levelezés és a naptári adatok eléréséhez. Mindkét esetben is elérhetők a [Microsoft Graph API][Microsoft-Graph]. 
 
 Csakúgy, mint egy ügyfélalkalmazást, erőforrás identitás alkalmazást létrejön keresztül [regisztrációs](#application-registration) az Azure AD-bérlő, így az alkalmazás és a szolgáltatás egyszerű objektum. Egyes Microsoft által biztosított API-k, például az Azure AD Graph API előre regisztrált szolgáltatásnevekről kiépítése során minden bérlők elérhetik.
 
@@ -177,7 +178,7 @@ Hasonló ahhoz, ahogy a szolgáltatás egyszerű objektum egy alkalmazáspéldá
 Olyan típusú [ügyfélalkalmazás](#client-application) , amely végrehajtja az összes kód egy webkiszolgálón, és képes biztonságosan tárolja a hitelesítő adatok a kiszolgálón egy "bizalmas" ügyfél működhet. Lásd: [OAuth2-ügyfél meg kell adnia, és profilok] [ OAuth2-Client-Types] további részleteket.
 
 ## <a name="next-steps"></a>További lépések
-A [Azure AD fejlesztői útmutató] [ AAD-Dev-Guide] van minden Azure AD-fejlesztési célra kezdőlapja kapcsolódó témakörök, valamint áttekintést [alkalmazásintegráció] [ AAD-How-To-Integrate] és alapjait [az Azure AD-alapú hitelesítés és a támogatott hitelesítési forgatókönyvek][AAD-Auth-Scenarios].  Is található mintakódok és oktatóprogramok, akinek gyorsan üzembe az beszerzése [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+A [Azure AD fejlesztői útmutató] [ AAD-Dev-Guide] van minden Azure AD-fejlesztési célra kezdőlapja kapcsolódó témakörök, valamint áttekintést [alkalmazásintegráció] [ AAD-How-To-Integrate] és alapjait [az Azure AD-alapú hitelesítés és a támogatott hitelesítési forgatókönyvek][AAD-Auth-Scenarios]. Is található mintakódok és oktatóprogramok, akinek gyorsan üzembe az beszerzése [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom, például a kérelmekről új definíciók vagy meglévőket frissítése!
 

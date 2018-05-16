@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 09f3bf3726a4a359d8c54d45843b08871d82f159
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory alkalmazástervezési a koncepció igazolása: építőelemek
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 05/11/2018
 
 Az alábbiakban néhány szükséges előfeltételek bármely Koncepció az Azure AD Premium szükséges.
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Az Azure AD-bérlő definiált egy érvényes Azure-előfizetés | [Az Azure Active Directory-bérlő beszerzése](active-directory-howto-tenant.md)<br/>**Megjegyzés:** Ha már rendelkezik Azure AD Premium licenccel rendelkező környezetek, nulla cap előfizetés beszerezheti útvonalon https://aka.ms/accessaad <br/>További tudnivalókért olvassa el: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ és https://technet.microsoft.com/library/dn832618.aspx |
 | Meghatározott és ellenőrzött tartományok | [Egy egyéni tartománynév hozzáadása az Azure Active Directoryban](active-directory-domains-add-azure-portal.md)<br/>**Megjegyzés:** bizonyos munkaterhelések esetén, mint a Power bi-ban az azure AD-bérlő a színfalak sikerült létrehozta. Ellenőrizze, hogy a bérlő társítva-e egy adott tartományban, lépjen https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Ha tarozik sikeres, akkor a tartomány már hozzá van rendelve egy bérlő, és vegye át lehet szükség. Ha igen, lépjen kapcsolatba a Microsofttal kapcsolatos további iránymutatásért. További információ a felvásárlási beállításokat érintő: [Mi az az Azure önkiszolgáló regisztráció?](active-directory-self-service-signup.md) |
@@ -53,7 +53,7 @@ Hozzávetőleges időt Complete: kisebb, mint 1000 koncepció felhasználó egy 
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Futtatására az Azure AD Connect | [Az Azure AD Connect előfeltételei](./connect/active-directory-aadconnect-prerequisites.md) |
 | Koncepció felhasználók, azonos tartományban és része egy biztonsági csoport és szervezeti egység | [Az Azure AD Connect testreszabott telepítése](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) |
@@ -62,7 +62,7 @@ Hozzávetőleges időt Complete: kisebb, mint 1000 koncepció felhasználó egy 
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Az Azure AD Connect legújabb verziójának letöltése | [A Microsoft Azure Active Directory Connect letöltése](https://www.microsoft.com/download/details.aspx?id=47594) |
 | Azure AD Connect telepítése a legegyszerűbb elérési úttal rendelkező: Express <br/>1. A cél a szinkronizálási ciklusban idő minimalizálása érdekében OU szűrése<br/>2. Válasszon cél felhasználók a helyi csoport.<br/>3. Ha a Koncepció témák számára szükséges szolgáltatásokat | [Az Azure AD Connect: Testreszabott telepítés: tartomány és szervezeti egységek szűrése](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Az Azure AD Connect: Testreszabott telepítés: csoport alapú szűrése](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Az Azure AD Connect: A helyszíni identitások integrálása az Azure Active Directoryval: a szinkronizálási funkciók konfigurálása](./connect/active-directory-aadconnect.md#configure-sync-features) |
@@ -87,7 +87,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Eszközök (képek, emblémák, stb.); A legjobb képi megjelenítés győződjön meg arról, hogy az eszközök rendelkezik az ajánlott méreteket. | [Vállalati arculat megjelenítése a bejelentkezési oldal az Azure Active Directoryban](active-directory-branding-custom-signon-azure-portal.md) |
 | Nem kötelező: Ha a környezetben az AD FS-kiszolgáló, a hozzáférést a kiszolgáló, webes témák testreszabása | [AD FS felhasználói bejelentkezési testreszabása](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/ad-fs-user-sign-in-customization) |
@@ -96,7 +96,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Ugrás az Azure AD felügyeleti portál | [Azure AD felügyeleti portál - vállalati arculat megjelenítése](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
 | Töltse fel az eszközök a bejelentkezési oldal (kiemelt embléma kis embléma, címkék, stb.). Nem kötelező, ha az AD FS igazítása az AD FS bejelentkezési oldalak ugyanazokat az eszközöket | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon: testreszabható elemek](customize-branding.md) |
@@ -115,13 +115,13 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Senki Koncepció részei egy biztonsági csoportot (helyszíni vagy felhőalapú) | [Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Nyissa meg az Azure AD felügyeleti portál licencek paneljét | [Azure AD felügyeleti portál: Licencelés](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
 | A licenceket rendelhet a biztonsági csoport Koncepció felhasználókkal. | [Az Azure Active Directory felhasználók csoportja számára licencek hozzárendelése](active-directory-licensing-group-assignment-azure-portal.md) |
@@ -136,7 +136,7 @@ Hozzávetőleges időt Complete: 60 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | A rendelkezésre álló SaaS-alkalmazás tesztkörnyezetben. Ez az útmutató a ServiceNow használjuk példaként.<br/>Erősen ajánlott a test-példányt használ a Navigálás a meglévő adatok minőségét és hozzárendelések súrlódás minimalizálása érdekében. | Ugrás a https://developer.servicenow.com/app.do#! / otthoni egy teszt példány folyamatának elindításához. |
 | A ServiceNow felügyeleti konzol rendszergazdai hozzáféréssel | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](active-directory-saas-servicenow-tutorial.md) |
@@ -144,7 +144,7 @@ Hozzávetőleges időt Complete: 60 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Az oktatóanyag összes szereplő Microsoft Documentation megosztása  | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](active-directory-saas-servicenow-tutorial.md) |
 | Egy működő értekezlet beállítása, és minden résztvevővel Útmutató lépéseit kövesse. | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](active-directory-saas-servicenow-tutorial.md) |
@@ -171,7 +171,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | A tesztkörnyezet az SaaS-alkalmazásokhoz. Egy Egyszeri jelszót példája HipChat és a Twitter. Egyetlen más alkalmazáshoz van szüksége az oldal HTML-bejelentkezési űrlap pontos URL-CÍMÉT. | [A Microsoft Azure piactérről Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[A Microsoft Azure piactérről HipChat](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | Tesztelje a fiókok az alkalmazásokhoz. | [Feliratkozás a Twitteren](https://twitter.com/signup?lang=en)<br/>[Regisztráljon az ingyenes: HipChat](https://www.hipchat.com/sign_up) |
@@ -180,7 +180,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | A bővítmény telepítése | [Az Internet Explorer hozzáférési Panel bővítmény](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Hozzáférési Panel bővítményével Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Hozzáférési Panel bővítményével Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Állítsa be alkalmazását a gyűjteményből | [What's new in Azure Active Directory vállalati Alkalmazáskezelés: az új és továbbfejlesztett alkalmazáskatalógusában](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
@@ -206,7 +206,7 @@ Hozzávetőleges időt Complete: 30 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | A pontos bejelentkezési URL-CÍMEK időben és célalkalmazások listáját. Tegyük fel a Twitter is használhatja. | [A Microsoft Azure piactérről Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Feliratkozás a Twitteren](https://twitter.com/signup?lang=en) |
 | Megosztott az SaaS-alkalmazáshoz tartozó hitelesítő adatok. | [Az Azure AD fiókok megosztása](active-directory-sharing-accounts.md)<br/>[Az azure AD automatikus jelszó során a Facebook, a Twitter és a LinkedIn előzetes verzióként elérhető! -Nagyvállalati mobilitással és biztonsággal foglalkozó blogban] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
@@ -215,7 +215,7 @@ Hozzávetőleges időt Complete: 30 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | A bővítmény telepítése | [Az Internet Explorer hozzáférési Panel bővítmény](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Hozzáférési Panel bővítményével Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Hozzáférési Panel bővítményével Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Állítsa be alkalmazását a gyűjteményből | [What's new in Azure Active Directory vállalati Alkalmazáskezelés: az új és továbbfejlesztett alkalmazáskatalógusában](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
@@ -239,29 +239,29 @@ Hozzávetőleges időt Complete: 20 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
-| A Microsoft Azure AD alapszintű vagy premium előfizetéssel és, amelynek egy globális rendszergazda Azure AD-címtár | [Az Azure Active Directory-kiadások](active-directory-editions.md) |
+| A Microsoft Azure AD alapszintű vagy premium előfizetéssel és, amelynek egy globális rendszergazda Azure AD-címtár | [Az Azure Active Directory-kiadások](active-directory-whatis.md) |
 | A webes alkalmazás üzemeltetett a helyszínen, amelyet a távelérés konfigurálása |  |
-| A Windows Server 2012 R2 vagy Windows 8.1 vagy újabb rendszert futtató kiszolgáló, amelyre telepítheti az alkalmazásproxy-összekötő | [Az Azure AD-alkalmazásproxy összekötők ismertetése](application-proxy-understand-connectors.md) |
+| A Windows Server 2012 R2 vagy Windows 8.1 vagy újabb rendszert futtató kiszolgáló, amelyre telepítheti az alkalmazásproxy-összekötő | [Az Azure AD-alkalmazásproxy összekötők ismertetése](manage-apps/application-proxy-connectors.md) |
 | Ha az elérési út egy tűzfal található, győződjön meg arról, hogy meg nyitva, hogy az összekötő el tudja küldeni az alkalmazásproxynak HTTPS (TCP) kérések | [Alkalmazásproxy engedélyezése az Azure-portálon: alkalmazásproxy Előfeltételek](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
-| Ha a szervezet proxykiszolgálót használ az internetkapcsolat működését, hajtsa végre a megfelelő egy pillantást a blog működő utáni proxykiszolgálókkal meglévő helyszíni őket konfigurálásával kapcsolatos részletekért | [A meglévő helyszíni proxykiszolgálókkal működik](application-proxy-working-with-proxy-servers.md) |
+| Ha a szervezet proxykiszolgálót használ az internetkapcsolat működését, hajtsa végre a megfelelő egy pillantást a blog működő utáni proxykiszolgálókkal meglévő helyszíni őket konfigurálásával kapcsolatos részletekért | [A meglévő helyszíni proxykiszolgálókkal működik](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) |
 
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Összekötő telepítése a kiszolgálón | [Alkalmazásproxy engedélyezése az Azure-portálon: az összekötő regisztrálása és telepítése](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
 | Az Azure AD alkalmazásproxy alkalmazásként a helyszíni alkalmazás közzététele | [Az Azure AD-alkalmazásproxy használó alkalmazások közzététele](manage-apps/application-proxy-publish-azure-portal.md) |
 | Teszt felhasználók hozzárendelése | [Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával: teszt felhasználó hozzáadása](manage-apps/application-proxy-publish-azure-portal.md#add-a-test-user) |
-| Nem kötelező lépésként beállíthatja egy egyszeri bejelentkezéses felhasználói élmény | [Adja meg az egyszeri bejelentkezés az Azure AD-alkalmazásproxyval](application-proxy-sso-azure-portal.md) |
+| Nem kötelező lépésként beállíthatja egy egyszeri bejelentkezéses felhasználói élmény | [Adja meg az egyszeri bejelentkezés az Azure AD-alkalmazásproxyval](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) |
 | Alkalmazás tesztelése a hozzárendelt felhasználó MyApps portálra való bejelentkezéskor | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-1. Javasoljuk, hogy az összekötő és a vállalati hálózaton, miközben vannak esetek, amikor megjelenik a felhő helyezés jobb teljesítményt. További: [Azure Active Directory Application Proxy használata esetén a hálózati topológia szempontjai](application-proxy-network-topology-considerations.md)
-2. További biztonsági részletek és hogyan Ez a különösen biztonságos távoli hozzáférést biztosít a megoldás csak a kimenő kapcsolatok fölött:: [alkalmazásokhoz távolról az Azure AD-alkalmazásproxy használatával fér hozzá biztonsági szempontjai](application-proxy-security-considerations.md)
+1. Javasoljuk, hogy az összekötő és a vállalati hálózaton, miközben vannak esetek, amikor megjelenik a felhő helyezés jobb teljesítményt. További: [Azure Active Directory Application Proxy használata esetén a hálózati topológia szempontjai](manage-apps/application-proxy-network-topology.md)
+2. További biztonsági részletek és hogyan Ez a különösen biztonságos távoli hozzáférést biztosít a megoldás csak a kimenő kapcsolatok fölött:: [alkalmazásokhoz távolról az Azure AD-alkalmazásproxy használatával fér hozzá biztonsági szempontjai](manage-apps/application-proxy-security.md)
 
 ## <a name="generic-ldap-connector-configuration"></a>Általános LDAP-összekötő konfigurálása
 
@@ -272,7 +272,7 @@ Hozzávetőleges időt Complete: 60 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Az Azure AD Connect telepítése és konfigurálása | Építőelem: [a címtár-szinkronizálás - Jelszókivonat-szinkronizálás](#directory-synchronization--password-hash-sync-phs--new-installation) |
 | ADLDS példány értekezlet követelmények | [Általános LDAP-összekötő technikai útmutató: az általános LDAP-összekötő áttekintése](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
@@ -281,7 +281,7 @@ Hozzávetőleges időt Complete: 60 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Általános LDAP-összekötő hozzáadása | [Általános LDAP-összekötő műszaki útmutatója: hozzon létre egy új összekötőt](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
 | (A teljes importálás, különbözeti importálás, teljes szinkronizálást, a különbözeti szinkronizálás, exportálás) létrehozott összekötőhöz futtatási profilok létrehozása | [A felügyeleti ügynök futtatási profil létrehozásához](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Az az Azure AD Connect szinkronizálási Service Manager-összekötők használata](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
@@ -302,7 +302,7 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | SaaS-alkalmazáshoz (összevont egyszeri Bejelentkezéses vagy Egyszeri jelszó) már konfigurálva | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
 | Felhő csoporthoz rendelt hozzáférési # az 1. az alkalmazás, amelynél | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) <br/>[Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](active-directory-groups-create-azure-portal.md) |
@@ -312,7 +312,7 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | A csoportnak, amely rendelkezik hozzáférni az alkalmazáshoz, és konfigurálja a megadott tulajdonos csoport| [Az Azure Active Directory csoport beállításainak kezelése ](active-directory-groups-settings-azure-portal.md) |
 | Jelentkezzen be a csoport tulajdonosa, lásd: a hozzáférési panel csoportok lapján a csoporttagságot | [Az Azure Active Directory-csoportok kezelése lap](https://account.activedirectory.windowsazure.com/r/#/groups) |
@@ -327,7 +327,7 @@ Ha az alkalmazás kiépítés engedélyezve van, szükség lehet Várjon néhán
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | SaaS-alkalmazáshoz (összevont egyszeri Bejelentkezéses vagy Egyszeri jelszó) már konfigurálva | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
 | Felhő csoporthoz rendelt hozzáférési # az 1. az alkalmazás, amelynél | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) <br/>[Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](active-directory-groups-create-azure-portal.md) |
@@ -336,7 +336,7 @@ Ha az alkalmazás kiépítés engedélyezve van, szükség lehet Várjon néhán
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Távolítsa el a felhasználót a csoporthoz, az alkalmazás hozzá van rendelve. | [Az Azure Active Directory-bérlő felhasználók csoport tagságának kezelésére](active-directory-groups-members-azure-portal.md) |
 | Várjon néhány percig, megszüntetést | [Az Azure AD SaaS-alkalmazás a felhasználók átadása az automatikus: hogyan működik az automatikus létesítési munkahelyi?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
@@ -353,14 +353,14 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Amely hozzáférést biztosít az alkalmazásokhoz fog igényelni a biztonsági csoport részeként Koncepció felhasználók azonosítása | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
 | Cél alkalmazása telepítve van. | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Ugrás a vállalati alkalmazások panel az Azure AD felügyeleti portál | [Az Azure AD felügyeleti portál: Vállalati alkalmazások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) |
 | Alkalmazás eltávolítása a szükséges Előfeltételek konfigurálása az önkiszolgáló szolgáltatással | [What's new in Azure Active Directory vállalati Alkalmazáskezelés: önkiszolgáló alkalmazás-hozzáférés konfigurálása](active-directory-enterprise-apps-whats-new-azure-portal.md#configure-self-service-application-access) |
@@ -377,7 +377,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | A bérlői önkiszolgáló jelszó-kezelésen. | [Az Azure Active Directory-jelszó alaphelyzetbe állítása a informatikai rendszergazdák](active-directory-passwords-update-your-own-password.md) |
 | Engedélyezze a jelszóvisszaírást a helyszíni jelszavak kezeléséhez. Megjegyzés: ehhez az adott Azure AD Connect verziók | [Jelszóvisszaírás előfeltételei](authentication/howto-sspr-writeback.md) |
@@ -386,7 +386,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Navigáljon az Azure AD felügyeleti portálra: jelszó alaphelyzetbe állítása | [Azure AD felügyeleti portál: Jelszó alaphelyzetbe állítása](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) |
 | Határozza meg, hogy a jelszó-visszaállítási házirend. Koncepció célokra használhatja a telefonhívás és a Q & a területen. Javasoljuk, hogy a hozzáférési panel való bejelentkezéshez szükséges regisztráció engedélyezése |  |
@@ -409,14 +409,14 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Többtényezős Hitelesítést használó Koncepció felhasználók azonosítása  |  |
 | A jó fogadása az MFA-kérdést Phone  | [Mi az az Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md) |
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Navigáljon a "Felhasználók és csoportok" panel az Azure AD felügyeleti portál | [Az Azure AD felügyeleti portál: Felhasználók és csoportok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
 | Válassza ki a "Minden felhasználó" panel |  |
@@ -436,7 +436,7 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Azonosítsa a koncepció felhasználók számára a szabályzatok célzásához. Ezek a felhasználók egy biztonsági csoportot a feltételes hozzáférési szabályzat hatóköre kell lennie | [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
 | SaaS-alkalmazás már konfigurálva |  |
@@ -448,7 +448,7 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Nyissa meg az Azure AD felügyeleti portálra: feltételes hozzáférési panel | [Az Azure AD felügyeleti portál: Feltételes hozzáférés](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
 | Feltételes hozzáférési szabályzat létrehozása:<br/>-A cél koncepció felhasználók "Felhasználók és csoportok"<br/>-Koncepció célalkalmazás "Felhőalapú alkalmazások" alatt<br/>-Az összes hely cél kivételével megbízható ők "Feltételek" a "Helyek" -> **Megjegyzés:** megbízható IP-címek vannak konfigurálva a [MFA-portálon](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-"Grant" a többtényezős hitelesítés megkövetelése | [Feltételes hozzáférés az Azure Active Directoryban az első lépései: a házirend-konfigurációs lépések](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
@@ -465,7 +465,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | A globális rendszergazda, amely a PIM szolgáltatásra a Koncepció része lesz azonosítása | [Azure AD Privileged Identity Management használatának megkezdése](active-directory-privileged-identity-management-getting-started.md) |
 | A globális rendszergazdai lesz a biztonsági rendszergazda azonosítása | [Azure AD Privileged Identity Management használatának megkezdése](active-directory-privileged-identity-management-getting-started.md)<br/> [Az Azure Active Directory PIM különböző rendszergazdai szerepkörei](active-directory-privileged-identity-management-roles.md) |
@@ -474,7 +474,7 @@ Hozzávetőleges időt Complete: 15 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Jelentkezzen be https://portal.azure.com egy globális rendszergazda (GA) és a rendszerindítási a PIM panelen. A globális rendszergazda hajtja végre ezt a lépést a biztonsági rendszergazda van rendezés.  Az aktor GA1 most hívása | [Az Azure AD Privileged Identity Management biztonsági varázslóval](active-directory-privileged-identity-management-security-wizard.md) |
 | Azonosítsa a globális rendszergazda, és helyezze azokat a végleges jogosult. Egy különálló rendszergazdai az egyértelműség érdekében az 1. lépésben használt legyen. Az aktor GA2 most hívása | [Az Azure AD Privileged Identity Management: Hogyan lehet hozzáadni vagy eltávolítani egy felhasználói szerepkör](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Mi az Azure AD Privileged Identity Management?: a szerepkör-aktiválási beállításainak konfigurálása](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
@@ -496,14 +496,14 @@ Hozzávetőleges időt Complete: 20 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Tor böngészővel rendelkező eszköz letöltése és telepítése | [Töltse le a Tor-böngésző](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Koncepció felhasználó annak a bejelentkezési elérésére | [Az Azure Active Directory Identity Protection-forgatókönyv](active-directory-identityprotection-playbook.md) |
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Nyissa meg a tor-böngésző | [Töltse le a Tor-böngésző](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Jelentkezzen be https://myapps.microsoft.com Koncepció a felhasználói fiókkal | [Az Azure Active Directory Identity Protection-forgatókönyv: szimulálva kockázati események](active-directory-identityprotection-playbook.md#simulating-risk-events) |
@@ -521,7 +521,7 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Tor böngészővel rendelkező eszköz letöltése és telepítése | [Töltse le a Tor-böngésző](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Hozzáférés a bejelentkezést a tesztelés végrehajtásához Koncepció felhasználóként |  |
@@ -530,7 +530,7 @@ Hozzávetőleges időt Complete: 10 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | Jelentkezzen be egy globális rendszergazdának kell https://portal.azure.com és az Identity Protection paneljének megnyitásához | https://aka.ms/aadipgetstarted |
 | A kockázat bejelentkezési házirend engedélyezése az alábbiak szerint:<br/>-Rendelt: Koncepció felhasználó<br/>– Feltételek: Bejelentkezési kockázat közepes vagy újabb rendszer (bejelentkezés névtelen helyről akkor számít elértnek, egy közepes méretű kockázati szint)<br/>-Vezérlők: Többtényezős hitelesítés megkövetelése | [Az Azure Active Directory Identity Protection-forgatókönyv: bejelentkezési kockázata](active-directory-identityprotection-playbook.md) |
@@ -548,7 +548,7 @@ Hozzávetőleges időt igényel: 20 perc
 
 ### <a name="pre-requisites"></a>Előfeltételek
 
-| Előfeltétel | További források |
+| Előfeltétel | Erőforrások |
 | --- | --- |
 | Eszköz felhasználói tanúsítvánnyal kiépítve (Windows, iOS vagy Android) a vállalati nyilvános kulcsú infrastruktúra | [Felhasználói tanúsítványok telepítése](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Az AD FS összevont Azure AD-tartomány | [Azure AD Connect és összevonás](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory tanúsítványszolgáltatások áttekintése](https://technet.microsoft.com/library/hh831740.aspx)|
@@ -556,7 +556,7 @@ Hozzávetőleges időt igényel: 20 perc
 
 ### <a name="steps"></a>Lépések
 
-| Lépés | További források |
+| Lépés | Erőforrások |
 | --- | --- |
 | "Tanúsítvány-hitelesítés" az AD FS engedélyezése | [Hitelesítési házirendek konfigurálása: Az elsődleges hitelesítés globálisan konfigurálása a Windows Server 2012 R2](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) |
 | Választható: Engedélyezze a Tanúsítványalapú hitelesítés az Azure AD-ban az Exchange ActiveSync-ügyfelek | [A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban](active-directory-certificate-based-authentication-get-started.md) |

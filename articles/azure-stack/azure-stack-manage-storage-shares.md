@@ -1,25 +1,25 @@
 ---
-title: "Azure-készletben a tárolási kapacitás kezelése |} Microsoft Docs"
-description: "Megfigyelését és felügyeletét a rendelkezésre álló szabad hely Azure verem."
+title: Azure-készletben a tárolási kapacitás kezelése |} Microsoft Docs
+description: Megfigyelését és felügyeletét a rendelkezésre álló szabad hely Azure verem.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 02/22/2017
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.reviewer: jiahan
-ms.openlocfilehash: 749a02b38d6b074d4136bc7bb44910ee7c947b05
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: xiaofmao
+ms.openlocfilehash: da6bb00d7538c1a26e1ed4be29d3c882aa378e9e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>A tárolókapacitás Azure verem kezelése
 
@@ -136,50 +136,64 @@ Próbálja meg manuálisan át kell telepítenie néhány blob tárolók külön
 1. Győződjön meg arról, hogy [Azure PowerShell telepítése és konfigurálása](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](http://go.microsoft.com/fwlink/?LinkId=394767).
 2.  Vizsgálja meg, hogy milyen adatok áttelepítését tervezi, a megosztott tároló. A legjobb jelölt tárolók egy kötetet az áttelepítéshez azonosításához használja a **Get-AzsStorageContainer** parancsmagot:
 
-    ```
-    $shares = Get-AzsStorageShare
-    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -Intent Migration
-    ```
+    ````PowerShell  
+    $farm_name = (Get-AzsStorageFarm)[0].name
+    $shares = Get-AzsStorageShare -FarmName $farm_name
+    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
+    ````
     Vizsgálja meg $containers:
-    ```
+
+    ````PowerShell
     $containers
-    ```
+    ````
+
     ![Példa: $Containers](media/azure-stack-manage-storage-shares/containers.png)
 
 3.  Azonosítsa a legjobb cél megosztások ahhoz, hogy a tároló áttelepítése:
-    ```
+
+    ````PowerShell
     $destinationshares = Get-AzsStorageShare -SourceShareName
     $shares[0].ShareName -Intent ContainerMigration
-    ```
-    Vizsgálja meg $destinationshares:
-    ```
-    $destinationshares
-    ```    
-    ![Példa: $destination megosztások](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+    ````
 
-4. Indítsa el a tároló áttelepítése. Az áttelepítés akkor aszinkron. Ha további tárolókat az áttelepítés megkezdése az első áttelepítés befejezése előtt, a feladat azonosítója segítségével minden állapotának nyomon követését.
-  ```
-  $jobId = Start-AzsStorageContainerMigration -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares[0].UncPath
-  ```
+    Vizsgálja meg $destinationshares:
+
+    A(z) "PowerShell $destinationshares
+    ````
+
+    ![Example: $destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+
+4. Start migration for a container. Migration is asynchronous. If you start migration of additional containers before the first migration completes, use the job id to track the status of each.
+
+  ````PowerShell
+  $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
+  ````
+
   Vizsgálja meg $jobId. Az alábbi példában cserélje le *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* meg szeretne vizsgálni feladatazonosító:
-  ```
+
+  ````PowerShell
   $jobId
   d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
-  ```
+  ````
+
 5. A feladat az azonosítót használva az áttelepítési feladat állapotát. Ha a tároló áttelepítése be nem fejeződött, **MigrationStatus** értéke **Complete**.
-  ```
-  Get-AzsStorageContainerMigrationStatus -JobId $jobId
-  ```
+
+  ````PowerShell 
+  Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
+  ````
+
   ![Példa: Áttelepítés állapota](media/azure-stack-manage-storage-shares/migration-status1.png)
 
 6.  Egy folyamatban lévő áttelepítési feladat megszakítása Áttelepítési feladatok feldolgozása aszinkron módon megszakítva. Megszakítási $jobid segítségével követheti nyomon:
 
-  ```
-  Stop-AzsStorageContainerMigration -JobId $jobId
-  ```
+  ````PowerShell
+  Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
+  ````
+
   ![Példa: Visszaállítási állapota](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. A parancs a 6. lépés ismét futtathatja, amíg az állapot megerősíti, hogy az áttelepítési feladat **visszavonva**:  
+
     ![Példa: Megszakítva állapot](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>Helyezze át a virtuális gépek lemezei
@@ -187,5 +201,5 @@ Próbálja meg manuálisan át kell telepítenie néhány blob tárolók külön
 
 A rendkívüli belüli kezelésére szolgáló módszernél a virtuális gép lemezeinek áthelyezésekor. Mivel egy csatlakoztatott tároló (egy virtuális gép lemezt tartalmazó) áthelyezése összetett, forduljon a Microsoft Support Ez a művelet elvégzéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ [a felhasználók számára virtuális gépek ajánlat](azure-stack-tutorial-tenant-vm.md).

@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 440072a94ff7146ebcdb242a058ab48b434714f9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 80f20e438b1d923e688aeef9e6b353642bd74c27
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Az Azure Blockchain munkaterület felhasználók kezelése
 
@@ -43,9 +43,9 @@ Látogasson el [az Azure AD](../active-directory/add-users-azure-active-director
 
 ## <a name="manage-blockchain-workbench-administrators"></a>Blockchain munkaterület a rendszergazdák kezelése
 
-Miután a könyvtár hozzáadott felhasználók, a következő lépés, hogy válassza körültekintően mely felhasználók Blockchain munkaterület a rendszergazdák. A felhasználók a **rendszergazdák** csoportba tartoznak a **rendszergazda alkalmazás-szerepkör** Blockchain munkaterület. Rendszergazdák hozzáadása vagy eltávolítása a, felhasználók hozzárendelése az adott forgatókönyveket, és hozzon létre új alkalmazásokat.
+Miután a könyvtár hozzáadott felhasználók, a következő lépés, hogy válassza körültekintően mely felhasználók Blockchain munkaterület a rendszergazdák. A felhasználók a **rendszergazda** csoportba tartoznak a **rendszergazda alkalmazás-szerepkör** Blockchain munkaterület. Rendszergazdák hozzáadása vagy eltávolítása a, felhasználók hozzárendelése az adott forgatókönyveket, és hozzon létre új alkalmazásokat.
 
-Felhasználók hozzáadása a **rendszergazdák** az Azure AD-címtár csoporthoz:
+Felhasználók hozzáadása a **rendszergazda** az Azure AD-címtár csoporthoz:
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2.  Ellenőrizze, hogy a fiókja kiválasztja a jobb felső sarokban található Blockchain munkaterület társított Azure AD-bérlő.

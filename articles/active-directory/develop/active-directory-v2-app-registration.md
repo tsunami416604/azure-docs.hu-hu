@@ -3,23 +3,24 @@ title: Az alkalmazás regisztrálása az Azure AD v2.0-végpontra a portál hasz
 description: Alkalmazás regisztrálása a Microsoft bejelentkezés engedélyezése és használata a Microsoft-szolgáltatásokat a v2.0-végpontra segítségével
 services: active-directory
 documentationcenter: ''
-author: mtillman
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: bb2f701f-3bc3-4759-94a5-8b9d53a8a0b6
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: mtillman
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 7c24271553f131e67711a3e8d914049e704e919e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8ab4e6b5b2813a216b6dd6f0fc108a09239ca9a6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>Alkalmazás regisztrálása a v2.0-végponttal
 Hozza létre az alkalmazását, amely fogadja a személyes Microsoft-fiók (msa-t) & munkahelyi vagy iskolai fiókja (az Azure AD) bejelentkezés, hogy először regisztrálja az alkalmazást a Microsoft számára. Most, akkor használhatja a meglévő alkalmazásokat, előfordulhat, hogy az Azure ad-vel vagy MSA - szüksége lesz egy teljesen új létrehozásához.
@@ -35,7 +36,7 @@ Jelentkezzen be vagy egy személyes vagy a munkahelyi vagy iskolai Microsoft-fi�
 
 Tenni? Meg kell most megtekintik a Microsoft-alkalmazások listája olyan valószínűleg üres. Módosítsuk, amely.
 
-Kattintson a **hozzáadhat egy alkalmazást**, és adjon neki egy nevet.  A portál rendeli az alkalmazás egy globálisan egyedi azonosítója, amelyet később a kódjában fog használni.  Ha az alkalmazás olyan kiszolgálóoldali összetevőt tartalmaz, hogy kell-e hozzáférési jogkivonatok hívó API-k (gondolja, hogy: Office, az Azure vagy a saját webes API-t), érdemes létrehozni egy **Alkalmazáskulcsot** itt is.
+Kattintson a **hozzáadhat egy alkalmazást**, és adjon neki egy nevet. A portál rendeli az alkalmazás egy globálisan egyedi azonosítója, amelyet később a kódjában fog használni. Ha az alkalmazás olyan kiszolgálóoldali összetevőt tartalmaz, hogy kell-e hozzáférési jogkivonatok hívó API-k (gondolja, hogy: Office, az Azure vagy a saját webes API-t), érdemes létrehozni egy **Alkalmazáskulcsot** itt is.
 
 Ezután adja hozzá a **platformok** , amelyet az alkalmazás használni fog.
 
@@ -50,7 +51,7 @@ Másik lehetőségként testre szabhatja a bejelentkezési oldalának megjelené
 
 
 ## <a name="build-a-quickstart-app"></a>A gyors üzembe helyezés alkalmazás létrehozása
-Most, hogy a Microsoft app, befejezheti az v2.0 gyors üzembe helyezési oktatóprogramok valamelyikét.  Az alábbiakban néhány javaslatot olvashat:
+Most, hogy a Microsoft app, befejezheti az v2.0 gyors üzembe helyezési oktatóprogramok valamelyikét. Az alábbiakban néhány javaslatot olvashat:
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
 

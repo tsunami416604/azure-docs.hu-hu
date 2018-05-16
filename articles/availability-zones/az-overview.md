@@ -1,6 +1,6 @@
 ---
-title: Azure rendelkezésre állási zónák áttekintése |} Microsoft Docs
-description: Ez a cikk áttekintést rendelkezésre állási zónák használata magas rendelkezésre állású és rugalmas alkalmazások létrehozása az Azure-ban
+title: Mik az Azure rendelkezésre állási zónák? | Microsoft Docs
+description: Magas rendelkezésre állású és rugalmas alkalmazások létrehozása az Azure-ban, a rendelkezésre állási zónák segítségével a fizikailag különböző helyeken az erőforrások futtatásához használhatja.
 services: ''
 documentationcenter: ''
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 03/21/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: a4133779538e412a19a11de678b1527fb8023a87
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9eb7105b2d1a95eb8ccfa96ea0bc5188aab1b4aa
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="overview-of-availability-zones-in-azure"></a>A rendelkezésre állási zónák az Azure-ban – áttekintés
+# <a name="what-are-availability-zones-in-azure"></a>Mik azok a rendelkezésre állási zónák az Azure-ban?
 Rendelkezésre állási zónák magas rendelkezésre állású ajánlat, amely megakadályozza az alkalmazások és adatok datacenter hiba. Rendelkezésre állási zónák egyedi fizikai helyen belül egy Azure-régióban. Az egyes zónák felszerelt független power hűtési, és a hálózat egy vagy több adatközpontok épül fel. Rugalmasság biztosítása érdekében legalább három különálló zónákra minden engedélyezett régióban van. A fizikailag szét van választva a rendelkezésre állási zónák régión belül alkalmazások és adatok datacenter hibák védelmet nyújt. Zónaredundáns szolgáltatások rendelkezésre állásának zónák nyújt védelmet a single-pontok-az-szemben az alkalmazások és adatok replikálásához. A rendelkezésre állási zónák Azure iparág ajánlott 99,99 % VM hasznos üzemidő SLA-t kínál. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
 
 Kibővített kialakítást hozhat létre magas rendelkezésre állású be az alkalmazás architektúrák együttes elhelyezésével a zónán belül a számítási, tárolási, hálózatkezelési és adatok erőforrások és a többi replikálásához. Azure-szolgáltatásokat, amely támogatja a rendelkezésre állási zónák két kategóriába sorolhatók:
@@ -36,7 +36,7 @@ Kibővített kialakítást hozhat létre magas rendelkezésre állású be az al
 
 ## <a name="regions-that-support-availability-zones"></a>Rendelkezésre állási zónák támogató régiók
 
-- USA középső régiója
+- Egyesült Államok, középső régió
 - Közép-Franciaország
 - USA keleti régiója 2 (előzetes verzió)
 - Nyugat-Európában (előzetes verzió)
@@ -46,14 +46,14 @@ Kibővített kialakítást hozhat létre magas rendelkezésre állású be az al
 ## <a name="services-that-support-availability-zones"></a>Rendelkezésre állási zónák támogató szolgáltatások
 Azure-szolgáltatás, amely támogatja a rendelkezésre állási zónák a következők:
 
-- Linux rendszerű virtuális gépek
+- Linux Virtual Machines
 - Windows rendszerű virtuális gépek
-- Virtual Machine Scale Sets
+- Virtuálisgép-méretezési csoportok
 - Felügyelt lemezek
 - Load Balancer
 - Nyilvános IP-cím
 - Zónaredundáns tárolás
-- SQL Database
+- SQL-adatbázis
 
 
 ## <a name="pricing"></a>Díjszabás

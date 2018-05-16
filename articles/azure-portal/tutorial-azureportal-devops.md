@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag: A DevOps és az Azure Portal | Microsoft Docs"
-description: "Ismerje meg az Azure Portalon elérhető különböző DevOps-munkafolyamatokat."
+title: 'Oktatóanyag: DevOps az Azure portállal |} Microsoft Docs'
+description: Ismerje meg az Azure Portalon elérhető különböző DevOps-munkafolyamatokat.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
 editor: mlearned
@@ -11,17 +11,17 @@ ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: d2c059fe415b743e4b2265d6dda492878307be93
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7fb3de72e28b19f9ca30968b267bf985ae384275
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="tutorial-devops-with-the-azure-portal"></a>Oktatóanyag: A DevOps és az Azure Portal
-Az Azure platform számos rugalmas DevOps-munkafolyamatot tartalmaz. Az oktatóanyagból megtudhatja, hogyan használhatja az Azure Portal funkcióit alkalmazások fejlesztéséhez, teszteléséhez, üzembe helyezéséhez, hibaelhárításához, figyeléséhez és felügyeletéhez. Ez az oktatóanyag a következő témákkal foglalkozik:
+# <a name="tutorial-devops-with-the-azure-portal"></a>Oktatóanyag: DevOps és az Azure portál
+Az Azure platform számos rugalmas DevOps-munkafolyamatot tartalmaz. Ebben az oktatóanyagban elsajátíthatja, hogyan használhatók ki a képességek az Azure portálról történő fejlesztéséhez, teszteléséhez, telepítése, hibaelhárítása, figyeléséhez és futó alkalmazások kezelése. Ez az oktatóanyag a következő témákkal foglalkozik:
 
 1. Webalkalmazás létrehozása és a folyamatos üzembe helyezés engedélyezése
 2. Alkalmazás fejlesztése és tesztelése
@@ -29,12 +29,12 @@ Az Azure platform számos rugalmas DevOps-munkafolyamatot tartalmaz. Az oktatóa
 4. Általános alkalmazásfelügyeleti feladatok
 
 ## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Webalkalmazás létrehozása és a folyamatos üzembe helyezés engedélyezése
-Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft.com/services/app-service/) szolgáltatással. Az oktatóanyag további részeiben ezt az alkalmazást fogjuk használni. Először engedélyeznie kell a folyamatos üzembe helyezést a forráskód tárházából a futó Azure-környezetbe.
+Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft.com/services/app-service/) szolgáltatással. Az oktatóanyag további részeiben ezt az alkalmazást fogjuk használni. Először engedélyeznie kell a folyamatos üzembe helyezés a forráskódraktárban a futó Azure környezetébe.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure-portálon
 2. Válassza az **App Services** &gt; **Hozzáadás ikon** lehetőséget, adjon meg egy nevet, válassza ki az előfizetését, és hozzon létre egy új erőforráscsoportot, amely a szolgáltatás tárolója lesz.
    
-   Az erőforráscsoportok segítségével egyetlen csoportként kezelheti az [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) használatával a megoldás különböző részeit, például a számlázást, az üzemelő példányokat és a figyelést.
+   Erőforráscsoportok lehetővé teszi a megoldást, például a számlázást, a központi telepítések, és a segítségével egyetlen csoportként összes figyelési különböző jellemzőinek megtekintését felügyeletét [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
    
    ![image1][image1]
 3. Pár pillanat múlva létrejön az alkalmazásszolgáltatás. Szánjon néhány percet arra, hogy a portálon áttekintse a szolgáltatáshoz elérhető különböző menüpontokat.
@@ -43,7 +43,7 @@ Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft
 4. Kattintson az URL-címre. Tekintse át az eszközökhöz és a tárházakhoz elérhető különböző lehetőségeket. Kiválaszthatja a használni kívánt nyelveket és keretrendszereket is, ilyen például a .NET, a Java és a Ruby.
    
    ![image3][image3]    
-5. Az Azure Portal a folyamatos üzembe helyezést egyszerű, néhány rövid lépésből álló folyamattá teszi. Az Azure Portalon válassza ki a kívánt beállításokat az imént létrehozott alkalmazásszolgáltatáshoz tartozó ikonra kattintva.
+5. Az Azure Portal a folyamatos üzembe helyezést egyszerű, néhány rövid lépésből álló folyamattá teszi. Az Azure-portálon létrehozott alkalmazásszolgáltatási ikonja beállítások választhat.
    
    ![image4][image4]
    
@@ -53,7 +53,7 @@ Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft
 6. Ezután adja meg a szükséges beállításokat, hogy engedélyezze az alkalmazás folyamatos üzembe helyezését. Kattintson a Központi telepítés forrása elemre, és kattintson a Forrás kiválasztása elemre. Tekintse át a különböző lehetőségeket a tárházforrásoknál.
    
    ![image6][image6]
-7. Ebben a példában válassza a Githubot. Ha kívánja, választhat más tárházat is. Ekkor adja meg a szükséges hitelesítő adatokat.
+7. Ehhez a példához válassza ki a Githubon. Opcionálisan válassza ki a tárházban az Ön által választott, és állítsa be az engedélyezési hitelesítő adatok.
    
    ![image7][image7]
 8. Miután hitelesítette magát a tárházban, kiválaszthatja az üzembe helyezendő projektet és ágat. Alább több fiktív mintapéldát láthat.
@@ -62,7 +62,7 @@ Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft
 9. A projekt és az ág kiválasztása után kattintson az OK gombra. Meg kell jelenniük az üzembe helyezésre vonatkozó értesítéseknek.
    
    ![image9][image9]
-10. Lépjen vissza a GitHubra, és tekintse meg a webhookot, amely azért lett létrehozva, hogy integrálja a forrásvezérlő tárházat az Azure-ral. Az Azure Portal segítségével a GitHubbal való integráció néhány lépésben elvégezhető.
+10. Lépjen vissza a GitHubra, és tekintse meg a webhookot, amely azért lett létrehozva, hogy integrálja a forrásvezérlő tárházat az Azure-ral. Az Azure-portál lehetővé teszi az integrációt a Githubon csak néhány egyszerű lépésben.
     
     ![image10][image10]
 11. A folyamatos üzembe helyezés szemléltetéséhez gyorsan vegyen fel valamilyen tartalmat a tárházba. Például vegyen fel egy egyszerű minta szövegfájlt a GitHub-tárházba. Tetszőlegesen használhat .NET, Ruby, Python vagy más típusú alkalmazást az App Service szolgáltatással. Felvehet szövegfájlt, ASP.NET MVC, Java vagy Ruby típusú alkalmazást a kiválasztott tárházba.
@@ -71,7 +71,7 @@ Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft
 12. Miután véglegesítette a tárház módosításait, a portál értesítési területén megjelenik egy új üzemelő példány jelzése. Ha a tárház változtatásainak véglegesítése után nem jelennek meg hamar a változtatások, kattintson a Szinkronizálás gombra.
     
     ![image12][image12]
-13. Ha ezen a ponton megpróbálja betölteni az alkalmazásszolgáltatás oldalát, 403-as hibát kaphat. Ebben a példában ennek az az oka, hogy az oldalhoz nincs beállítva egy szokásos alapértelmezett oldal, például egy olyan fájl, mint az index.htm vagy a default.html. Ezt a helyzetet gyorsan megoldhatja az Azure Portalon elérhető eszközökkel.  Az Azure Portalon kattintson a Beállítások &gt; Alkalmazásbeállítások elemre.
+13. Ha ezen a ponton megpróbálja betölteni az alkalmazásszolgáltatás oldalát, 403-as hibát kaphat. Ebben a példában ennek az az oka, hogy az oldalhoz nincs beállítva egy szokásos alapértelmezett oldal, például egy olyan fájl, mint az index.htm vagy a default.html. Gyorsan megoldhatja ezt az Azure-portálon tooling.  Az Azure portálon válassza a beállítások &gt; alkalmazás beállításait.
     
      ![image13][image13]
 14. Megjelenik egy panel az alkalmazásbeállításokkal. Írja be az oldal „SamplePage.html” nevét, és kattintson a Mentés gombra. Szánjon még pár percet a többi beállítás áttekintésére.
@@ -81,18 +81,18 @@ Hozzon létre egy webalkalmazást az [Azure App Service](https://azure.microsoft
     
     ![image15][image15]
     
-    A folyamatos üzembe helyezés engedélyezése az Azure Portallal nem túl bonyolult feladat. Létrehozhat ennél bonyolultabb kiadási folyamatokat, és sok más módszert is használhat a meglévő forrásvezérlő és folyamatos integrációjú rendszerekkel az Azure-ba való üzembe helyezéshez, például használhat automatikus rendszereket a létrehozás és a kiadás felügyeletéhez.
+    Folyamatos üzembe helyezés és az Azure portál engedélyezése egy egyszerű élményt. Létrehozhat ennél bonyolultabb kiadási folyamatokat, és sok más módszert is használhat a meglévő forrásvezérlő és folyamatos integrációjú rendszerekkel az Azure-ba való üzembe helyezéshez, például használhat automatikus rendszereket a létrehozás és a kiadás felügyeletéhez.
 
 ## <a name="develop-and-test-an-app"></a>Alkalmazás fejlesztése és tesztelése
-Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyezze üzembe ezeket a módosításokat. Ezenkívül néhány teljesítménytesztet is be fog állítani a webalkalmazáshoz.
+Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyezze üzembe ezeket a módosításokat. Fog is beállítani néhány teljesítménytesztelési a webalkalmazás számára.
 
-1. Az Azure Portalon válassza az App Services elemet a navigációs ablaktáblában, és keresse meg az alkalmazásszolgáltatását.
+1. Az Azure portálon App Service szolgáltatások közül választhat a navigációs ablaktáblán, és keresse meg az App Service.
    
    ![image16][image16]
 2. Kattintson az Eszközök elemre.
    
    ![image17][image17]
-3. Figyelje meg az eszközöknél megjelenő Fejlesztés kategóriát. Itt több hasznos eszközt talál, amelyekkel az Azure Portal elhagyása nélkül dolgozhat az alkalmazással. Kattintson a Konzol elemre.
+3. Figyelje meg az eszközöknél megjelenő Fejlesztés kategóriát. Nincsenek számos hasznos eszközök itt, amelyek lehetővé teszik a számunkra, anélkül, hogy az Azure-portálon az alkalmazások működéséhez. Kattintson a Konzol elemre.
    
    ![image18][image18]
 4. A konzolablakban élő parancsokat adhat meg a alkalmazáshoz. Írja be a dir parancsot, és nyomja le az Enter billentyűt. Megjegyzendő, hogy az emelt szintű jogosultságokat igénylő parancsok nem működnek.
@@ -141,7 +141,7 @@ Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyez
     A teszt befejeződése után kattintson az eredményekre a további részletek megjelenítéséhez.
     
     ![image33][image33]
-16. Ebben a példában létrehozott egy kisebb tesztfuttatást, korlátozott mennyiségű elemezhető adattal, de így is megtekintheti a különböző mérőszámokat, és újból lefuttathatja a tesztet ebben a nézetben. Az Azure Portal egyszerűvé teszi a webes teljesítménytesztek létrehozását, végrehajtását és elemzését. Az alábbi képernyőfelvételeken a teljesítményadatok láthatók.
+16. Ebben a példában létrehozott egy kisebb tesztfuttatást, korlátozott mennyiségű elemezhető adattal, de így is megtekintheti a különböző mérőszámokat, és újból lefuttathatja a tesztet ebben a nézetben. Az Azure portál megkönnyíti létrehozása végrehajtása, és a webes teljesítményének elemzése teszteli, az egyszerű folyamat. Az alábbi képernyőfelvételeken a teljesítményadatok láthatók.
     
     ![image34][image34]
     
@@ -152,7 +152,7 @@ Ezután hajtson végre néhány módosítást az alapkódban, és gyorsan helyez
 ## <a name="monitoring-and-troubleshooting-an-app"></a>Alkalmazás figyelése és hibaelhárítása
 Az Azure számos funkciót kínál a futó alkalmazások figyeléséhez és hibaelhárításához.
 
-1. A webalkalmazásunkhoz tartozó Azure Portalon válassza az Eszközök lehetőséget.
+1. A webalkalmazás Azure-portálon válassza az eszközök.
    
    ![image37][image37]
 2. A Hibaelhárítás kategóriában tekintse át a különböző eszközöket, amelyeket a futó alkalmazások esetleges problémáinak megoldására használhat. Lehetőség van például az élő HTTP-forgalom figyelésére, az önjavítás engedélyezésére, a naplók megtekintésére stb.
@@ -175,7 +175,7 @@ Az Azure számos funkciót kínál a futó alkalmazások figyeléséhez és hiba
    Az összeomlási memóriakép fájljára kattintva letöltheti és elemezheti a hibakeresés diagnosztikai elemzési naplóját, amelyben megkeresheti a lehetséges problémákat.
    
    ![image43][image43]
-6. Ha még több adatot szeretne megtekinteni, engedélyeznie kell a további naplózási lehetőségeket. Az Azure Portalon lépjen a webalkalmazáshoz, és válassza a Beállítások lehetőséget.
+6. Ha még több adatot szeretne megtekinteni, engedélyeznie kell a további naplózási lehetőségeket. Az Azure portálon keresse meg azt a webalkalmazást, és válassza a beállítások.
    
    ![image44][image44]
 7. Görgessen lefelé a Szolgáltatások kategóriához, és válassza a Diagnosztikai naplók elemet.
@@ -193,10 +193,10 @@ Az Azure számos funkciót kínál a futó alkalmazások figyeléséhez és hiba
 11. Ha rákattint a HTML-naplófájlra, számos további böngészőalapú jelentés jelenik meg a további elemzéshez.
     
     ![image49][image49]
-12. Lépjen vissza az eszközök szakaszára az alkalmazás Azure Portalján. Görgessen az Eszközök szakaszra, és válassza ki a Process Explorert.
+12. Az alkalmazás helyezze vissza a eszközök szakaszban az Azure portálon. Görgessen az Eszközök szakaszra, és válassza ki a Process Explorert.
     
     ![image50][image50]
-13. A Process Explorer kiválasztásával megtekintheti a futó folyamatok adatait. Figyelje meg, hogy a folyamatokat kibonthatja, és még le is állíthatja az Azure Portalról.
+13. A Process Explorer kiválasztásával megtekintheti a futó folyamatok adatait. Figyelje meg, az alábbi folyamatok elemezze, és még kill folyamatok összes Azure-portálról.
     
     ![image51][image51]
     
@@ -204,13 +204,13 @@ Az Azure számos funkciót kínál a futó alkalmazások figyeléséhez és hiba
 14. Lépjen vissza a bal oldalon található Beállítások panelre. Kattintson az Új támogatási kérelem elemre.
     
     ![image53][image53]
-15. A jobb oldali panelen beírhatja a problémával kapcsolatos adatokat, megadhatja a kapcsolattartási adatokat, és akár fel is töltheti a diagnosztikai adatokat. Az Azure Portal lehetővé teszi, hogy zökkenőmentesen együttműködjön a Microsoft támogatási szolgálatával.
+15. A jobb oldali panelen beírhatja a problémával kapcsolatos adatokat, megadhatja a kapcsolattartási adatokat, és akár fel is töltheti a diagnosztikai adatokat. Az Azure-portálon lehetővé teszi, hogy a Microsoft támogatási szolgálatához zökkenőmentes élményt használata.
     
     ![image54][image54]
     
     ![image55][image55]
     
-    Az Azure Portal hatékony és megszokott eszközöket biztosít a futó alkalmazások figyeléséhez és hibaelhárításához. Emellett gyorsan végrehajthatja az olyan műveleteket, mint az újrahasznosítási folyamatok, a különböző adatgyűjtések engedélyezése és letiltása, és akár az integráció a Microsoft szakértő támogatásával.
+    Az Azure-portálon nyújt a hatékony és ismerős tooling eszköz figyelése és hibaelhárítása a futó alkalmazások lép. Emellett gyorsan végrehajthatja az olyan műveleteket, mint az újrahasznosítási folyamatok, a különböző adatgyűjtések engedélyezése és letiltása, és akár az integráció a Microsoft szakértő támogatásával.
 
 ## <a name="general-application-management"></a>Általános alkalmazásfelügyelet
 Amikor alkalmazásokat felügyel, gyakran kell végrehajtania olyan tevékenységeket, mint például a biztonsági mentési stratégiák konfigurálása, az identitásszolgáltatók megvalósítása és kezelése, valamint a szerepköralapú hozzáférés-vezérlés konfigurálása. A DevOps más funkcióihoz hasonlóan az Azure platform integráltan, közvetlenül a portálon teszi elérhetővé ezeket a feladatokat.
@@ -230,7 +230,7 @@ Amikor alkalmazásokat felügyel, gyakran kell végrehajtania olyan tevékenysé
 5. Most hozzon létre egy tárolót a biztonsági mentések tárolásához. Kattintson a panel alján található Létrehozás gombra. Ezután válassza ki a tárolót.
    
    ![image60][image60]
-6. Miután kiválasztotta a tárolót, beállíthatja az ütemezéseket, valamint az adatbázisok biztonsági mentését. Ebben a példában kattintson a Mentés ikonra.
+6. Miután kiválasztotta a tárolóhoz, akkor is konfiguráljon ütemezéseket, valamint az adatbázisok biztonsági mentések beállítása. Ebben a példában kattintson a Mentés ikonra.
    
     ![image61][image61]
 7. A mentés után görgessen vissza a bal oldali panelre, a Biztonsági másolatok lehetőséghez. Kattintson a Biztonsági mentés gombra az alkalmazás biztonsági mentéséhez.
@@ -248,20 +248,20 @@ Amikor alkalmazásokat felügyel, gyakran kell végrehajtania olyan tevékenysé
 11. A jobb oldali panelen válassza ki az App Service-hitelesítés lehetőséget. Tekintse át a különböző beállításokat, amelyeket megadhat a népszerű szolgáltatókhoz.
     
      ![image66][image66]
-12. Válassza ki a kívánt szolgáltatót, és tekintse át a hatókör beállításait. Adja meg az alkalmazás azonosítója és az alkalmazás titkos kulcsát, és engedélyezze az alkalmazás Facebook-hitelesítését. Az Azure Portal a hitelesítést kulcsrakész megoldásként biztosítja az alkalmazásokhoz.
+12. Válassza ki a kívánt szolgáltatót, és tekintse át a hatókör beállításait. Adja meg az alkalmazás azonosítója és az alkalmazás titkos kulcsát, és engedélyezze az alkalmazás Facebook-hitelesítését. Az Azure-portál lehetővé teszi a hitelesítést az alkalmazások azonnal használható megoldás.
     
      ![image67][image67]
 13. Lépjen vissza a Beállítások panelre, és válassza ki a Felhasználók elemet az Erőforrás-kezelés kategóriában.
     
      ![image68][image68]
-14. A jobb oldali panelen tekintse át a szerepkörök és a felhasználók hozzáadásának különböző lehetőségeit. Az Azure Portal segítségével egyszerűen meghatározhatja az alkalmazás szerepkörön alapuló hozzáférés-vezérlését.
+14. A jobb oldali panelen tekintse át a szerepkörök és a felhasználók hozzáadásának különböző lehetőségeit. Az Azure portál segítségével szabályozhatja könnyen RBAC (szerepköralapú hozzáférés-vezérlés) az alkalmazáshoz.
     
      ![image69][image69]
 
 ## <a name="summary"></a>Összefoglalás
 Ez az oktatóanyag bemutatta az Azure platform néhány hatékony funkcióját: a webalkalmazások folyamatos üzembe helyezésének gyors engedélyezését, a különböző fejlesztési és tesztelési tevékenységek végrehajtását, az élő alkalmazások figyelését és hibaelhárítását, és végül a fontos stratégiák, például a vészhelyreállítás, az identitás és a szerepköralapú hozzáférés-vezérlés kezelését. Az Azure platform lehetővé teszi a felsorolt DevOps-munkafolyamatok integrált használatát, így hatékonyan dolgozhat az adott feladatnak megfelelő környezetben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az Azure Resource Manager fontos szerepet tölt be a fejlesztés és az üzemeltetés lehetővé tételében az Azure platformon.  További tudnivalók: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 * Az Azure App Service üzembe helyezésének ismertetését lásd: [Deploy your app to Azure App Service](../app-service/app-service-deploy-local-git.md) (Alkalmazás telepítése az Azure App Service szolgáltatásban).
 

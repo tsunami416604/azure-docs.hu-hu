@@ -3,23 +3,25 @@ title: Az Azure AD v2.0 használják a felhasználói beavatkozás nélkül bizt
 description: A webalkalmazások Azure AD végrehajtása az OAuth 2.0 hitelesítési protokoll használatával.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ea681244edd81bcba1269886acc725175f779bfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: db466a3ae416c47f86bb66b3bb8ba4bcd7741f5f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Az Azure Active Directory v2.0 és az OAuth 2.0 ügyfél hitelesítő adatok folyamata
 Használhatja a [OAuth 2.0 ügyfél hitelesítő adatai megadják](http://tools.ietf.org/html/rfc6749#section-4.4) RFC 6749, más néven megadott *két Egyszárú OAuth*, az alkalmazáshoz a webkiszolgáló által szolgáltatott erőforrások eléréséhez. Gyakran engedélyezze az ilyen típusú kiszolgálók – olyan műveleteket, amelyek kell a háttérben futnak, a felhasználó azonnali közreműködése nélkül szolgál. Ilyen típusú alkalmazások gyakran nevezik *démonok* vagy *szolgáltatásfiókok*.
@@ -49,8 +51,8 @@ Ez a hitelesítési típus közös démonok és szolgáltatásfiókokat, el kell
 ### <a name="application-permissions"></a>Alkalmazásengedélyek
 Hozzáférés-vezérlési listák helyett API-k segítségével teszi közzé az alkalmazást engedélyekkel. Egy alkalmazás engedélyt kap egy alkalmazás egy szervezet rendszergazdája, és csak az adott szervezet és az alkalmazottak tulajdonában lévő adatokat eléréséhez használható. Például a Microsoft Graph több alkalmazás engedélyek a következő mutatja:
 
-* Az összes postaládában e-mailek olvasása
-* Mailek olvasása és írása az összes postaládában
+* E-mailek olvasása az összes postaládában
+* E-mailek olvasása és írása az összes postaládában
 * E-mailek küldése bármely felhasználó nevében
 * Címtáradatok olvasása
 
@@ -93,7 +95,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | bérlő |Szükséges |A directory-bérlőt, amelyet az engedélyt. Ez lehet GUID vagy rövid név formátumban. Ha nem biztos lehet bérlői a felhasználó tagja, és azt szeretné, hogy azok jelentkezzen be minden bérlő, használjon, amely `common`. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
 | redirect_uri |Szükséges |Az átirányítási URI, ha azt szeretné, hogy a válasz küldését az alkalmazások kezeléséhez. Az pontosan egyeznie kell az átirányítási URI-k, a portál regisztrált azzal a különbséggel, hogy az URL-kódolású kell lennie, és további szegmenst veheti fel. |
-| state |Ajánlott |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
+| állapot |Ajánlott |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
 
 Ezen a ponton az Azure AD kényszeríti annak engedélyezése, hogy csak a bérlői rendszergazda jelentkezhetnek be a kérés teljesítéséhez. A rendszergazda jóváhagyása az alkalmazást az app-regisztrálási portál a kért közvetlen alkalmazás engedélyeket kell adnia.
 
@@ -107,7 +109,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | Paraméter | Leírás |
 | --- | --- | --- |
 | bérlő |A directory-bérlőhöz, amely engedéllyel rendelkezik az alkalmazás a kért, GUID formátumban. |
-| state |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
+| állapot |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
 | admin_consent |Beállítása **igaz**. |
 
 ##### <a name="error-response"></a>Hibaválaszba
@@ -119,7 +121,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | Paraméter | Leírás |
 | --- | --- | --- |
-| error |Egy hiba kód karakterlánc, amely segítségével besorolni a hibákat, és amely hibák reagálni használhatja. |
+| hiba |Egy hiba kód karakterlánc, amely segítségével besorolni a hibákat, és amely hibák reagálni használhatja. |
 | error_description |Egy adott hibaüzenet, amelyik segíthet a hiba alapvető oka azonosítása. |
 
 Miután az alkalmazás üzembe helyezési végpont már a sikeres válasz érkezett, az alkalmazás köszönhetően a kért közvetlen Alkalmazásengedélyek. Most már a kívánt erőforráshoz tartozó jogkivonatot kérhet.
@@ -171,8 +173,8 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | bérlő |Szükséges | A directory-bérlőt az alkalmazás tervek szerint működik, GUID vagy a tartománynév formátumban. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
 | scope |Szükséges |Átadott értéknek a `scope` a kérésben paraméternek kell lennie az erőforrás-azonosító (alkalmazás azonosítója URI), a kívánt, elhelyezni az erőforrás a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. Ez az érték tájékoztatja arról, hogy minden közvetlen alkalmazás engedélyeit az alkalmazás már konfigurálta, akkor kell ki a használni kívánt erőforráshoz tartozó megfelelően a jogkivonat a v2.0-végponttól. |
-| client_assertion_type |Szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz. További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
+| client_assertion_type |szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz. További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
 | grant_type |Szükséges |Kell `client_credentials`. |
 
 Figyelje meg, hogy a paraméterek megegyeznek-szinte közös titkos kulcs kérése gazdabuszadaptereken azzal a különbséggel, hogy a client_secret paraméter helyébe két paramétert: egy client_assertion_type és client_assertion.
@@ -212,7 +214,7 @@ Egy hiba történt egy válasz így néz ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| error |Egy hiba kód karakterlánc, amely a besorolására a felmerülő hibákat, és reagálni hibákat is használhatja. |
+| hiba |Egy hiba kód karakterlánc, amely a besorolására a felmerülő hibákat, és reagálni hibákat is használhatja. |
 | error_description |Egy adott hibaüzenet, amelyek segíthetnek a hitelesítési hiba okának azonosításához. |
 | error_codes |Diagnosztika segíthet STS-specifikus hibakódok listáját. |
 | időbélyeg |Az az idő, a hiba történt. |

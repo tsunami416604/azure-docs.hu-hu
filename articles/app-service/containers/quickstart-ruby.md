@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 079eb7b89ff3d6c1e4ec0de6136cd934ba3a1f70
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: def1e3f3de25478e51a069bc64c98d650f59072f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Ruby alkalmazás létrehozása a Linux App Service-ben | Microsoft Docs
 
@@ -32,7 +32,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan skálázha
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">A Ruby 2.4.1 vagy újabb telepítése</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">A Ruby 2.3-as vagy újabb verziójának telepítése</a>
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
 
 ## <a name="download-the-sample"></a>A minta letöltése

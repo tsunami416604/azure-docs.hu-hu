@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 2d501419dde633f89a5760af9f82604006de6b6f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4ef1387e3c8573a2bfa64c166f08bf47723eca62
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Az Azure PowerShell útvonalak hibaelhárítása
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ A virtuális gép által használt összesített útvonalak megtekintéséhez k�
 ### <a name="view-effective-routes-for-a-network-interface"></a>Egy adott hálózati csatoló hatékony útvonalak megtekintése
 A hálózati illesztő alkalmazott összesített útvonalak megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Indítsa el az Azure PowerShell-munkamenetet és a bejelentkezés az Azure-bA. Ha nem ismeri az Azure PowerShell, olvassa el a [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) cikk. Ön fiókjához társítva kell lenni a *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* műveletet a hálózati adapter. Műveletek fiókokhoz rendeléséhez, lásd: [egyedi szerepkörök létrehozását, hozzáférés-vezérlési átruházásához](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Indítsa el az Azure PowerShell-munkamenetet és a bejelentkezés az Azure-bA. Ha nem ismeri az Azure PowerShell, olvassa el a [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) cikk. Ön fiókjához társítva kell lenni a *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* műveletet a hálózati adapter. Műveletek fiókokhoz rendeléséhez, lásd: [egyedi szerepkörök létrehozását, hozzáférés-vezérlési átruházásához](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. A következő parancsot adja vissza az összes útvonal nevű hálózati illesztő alkalmazott *VM1-NIC1* erőforráscsoportban *RG1*.
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

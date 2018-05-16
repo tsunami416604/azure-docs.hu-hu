@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: f57b470208ab3bd071b83c0736efa739c7e70363
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b9a643dab98fa685bb4873705c177a834af831ce
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nem tud hozzáférni a vállalati alkalmazás" hiba az alkalmazásproxy alkalmazás használatakor
 
 Ez a cikk segítséget nyújt a "Vállalati alkalmazás nem érhető el" hiba történt az Azure AD-alkalmazásproxy kérelmet a gyakori problémák elhárításához.
 
-## <a name="overview"></a>Áttekintés
+## <a name="overview"></a>Áttekintés (klasszikus)
 Ha ezt a hibaüzenetet látja, keresés az állapotkód: a hiba lapon. Ezt a kódot, valószínűleg egy, a következő állapotkódok:
 
 -   **Átjáró időtúllépése**: az alkalmazásproxy-szolgáltatás nem tudja elérni az összekötőt. Ez a hiba általában a connector hozzárendeléssel, összekötő kapcsolatos problémát jelez, vagy a hálózati szabályok az összekötő körül.
@@ -95,7 +95,7 @@ Győződjön meg arról, hogy minden szükséges portok nyitva, olvassa el a dok
 
 Ha egyik sem oldja meg a problémát, a következő lépés a problémákat, vagy maga az összekötő hibák kereséséhez. Néhány gyakori hibáinak láthatja a [kapcsolatos problémák elhárítása a dokumentum](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). 
 
-Is megtalálhatja közvetlenül a Connector naplófájljaiban hibák azonosítására. A hibaüzenetek számos ossza meg a javítások konkrét javaslatokért. A naplók megtekintéséhez lásd a [összekötők dokumentációja](application-proxy-understand-connectors.md#under-the-hood).
+Is megtalálhatja közvetlenül a Connector naplófájljaiban hibák azonosítására. A hibaüzenetek számos ossza meg a javítások konkrét javaslatokért. A naplók megtekintéséhez lásd a [összekötők dokumentációja](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="additional-resolutions"></a>További megoldások
 
@@ -107,7 +107,7 @@ Most nyisson meg egy böngészőt, és próbálja meg újra az alkalmazás elér
 
 Ha továbbra is találkozik a hibával, nyissa meg a gépen, amelyen telepítve van-e az az összekötő, nyisson meg egy böngészőt, és próbálják elérni az alkalmazás használt belső URL-cím. Az összekötő úgy viselkedik, mint egy másik ügyfél azonos gépen. Ha az alkalmazás nem érhető el, vizsgálja meg, miért, hogy a gép nem tudja elérni az alkalmazást, vagy használjon egy összekötő olyan kiszolgálóra, amely képes-e az alkalmazás eléréséhez.
 
-Ha az alkalmazás maga az összekötő a hibák és problémák meg, hogy a gép érhető el. Néhány gyakori hibáinak láthatja a [kapcsolatos problémák elhárítása a dokumentum](active-directory-application-proxy-troubleshoot.md#connector-errors). Is megtalálhatja közvetlenül a Connector naplófájljaiban hibák azonosítására. A hibaüzenetek számos lehet megosztani a javítások több konkrét javaslatokért. A naplók megtekintéséhez, lásd: [összekötők dokumentációban](application-proxy-understand-connectors.md#under-the-hood).
+Ha az alkalmazás maga az összekötő a hibák és problémák meg, hogy a gép érhető el. Néhány gyakori hibáinak láthatja a [kapcsolatos problémák elhárítása a dokumentum](active-directory-application-proxy-troubleshoot.md#connector-errors). Is megtalálhatja közvetlenül a Connector naplófájljaiban hibák azonosítására. A hibaüzenetek számos lehet megosztani a javítások több konkrét javaslatokért. A naplók megtekintéséhez, lásd: [összekötők dokumentációban](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure AD-alkalmazásproxy összekötők ismertetése](application-proxy-understand-connectors.md)
+[Az Azure AD-alkalmazásproxy összekötők ismertetése](manage-apps/application-proxy-connectors.md)

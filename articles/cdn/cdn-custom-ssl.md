@@ -12,34 +12,37 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/12/2018
-ms.author: rli
+ms.date: 05/01/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: a8f2da5a68552c35a55a7bbb764afc7b36af6962
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f64f25713dd05ece018138624a06c225218f68e2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
-[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+> [!IMPORTANT]
+> Ez a szolgáltatás nem érhető el az **Akamai Azure CDN Standard** termékekkel. A CDN-szolgáltatások összehasonlításáért tekintse meg [az Azure CDN áttekintését](cdn-features.md).
 
-Ez az útmutató megmutatja, hogyan lehet engedélyezni a HTTP-protokollt egy Azure Content Delivery Network (CDN-) végponthoz kapcsolódó egyéni tartomány esetében. A HTTPS-protokoll az egyéni tartományon belüli használatával (például https:\//www.contoso.com), megbizonyosodhat róla, hogy a bizalmas adatokat a rendszer biztonságosan, SSL-titkosításon keresztül továbbítja az interneten. A HTTPS megbízhatóságot, hitelesítést és védelmet nyújt a webalkalmazásai számára a támadásokkal szemben. A HTTPS engedélyezésének munkafolyamata az egy kattintással történő engedélyezésnek és a teljes körű tanúsítványkezelésnek köszönhetően egyszerű, ráadásul nem jelent további költségeket.
+Ez az útmutató bemutatja, hogyan lehet engedélyezni a HTTPS-protokollt egy Azure Content Delivery Network- (CDN-) végponthoz kapcsolódó egyéni tartomány esetében. A HTTPS-protokoll az egyéni tartományon belüli használatával (például https:\//www.contoso.com), megbizonyosodhat róla, hogy a bizalmas adatokat a rendszer biztonságosan, SSL-titkosításon keresztül továbbítja az interneten. A HTTPS megbízhatóságot, hitelesítést és védelmet nyújt a webalkalmazásai számára a támadásokkal szemben. 
 
 Az Azure CDN alapértelmezés szerint támogatja a HTTPS-t a CDN-végpontok gazdaneve esetében. Ha például CDN-végpontot hoz létre (pl. https:\//contoso.azureedge.net), a HTTPS automatikusan engedélyezve lesz.  
 
-A HTTPS szolgáltatás legfőbb jellemzői a következők:
+Az egyéni HTTPS szolgáltatás legfőbb jellemzői a következők:
 
 - Nincsenek további költségek: a tanúsítvány megszerzése vagy megújítása ingyenes, és a HTTPS-forgalom sem von maga után további költségeket. Csak a CDN-ből kimenő GB-forgalomért kell fizetnie.
 
 - Egyszerű engedélyezés: a kiépítés egy kattintással elvégezhető az [Azure Portalon](https://portal.azure.com) keresztül. A szolgáltatás engedélyezéséhez REST API-k, valamint más fejlesztői eszközök is használhatók.
 
-- Teljes körű tanúsítványkezelés: nem kell foglalkoznia a tanúsítványok beszerzésével és kezelésével A tanúsítványok üzembe helyezése és megújítása automatikusan megtörténik a lejárat előtt, így nem kell attól tartani, hogy a szolgáltatás megszakad egy lejárt tanúsítvány miatt.
+- Teljes körű tanúsítványkezelés érhető el: nem kell foglalkoznia a tanúsítványok beszerzésével és kezelésével. A tanúsítványok üzembe helyezése és megújítása automatikusan megtörténik a lejárat előtt, így nem kell attól tartani, hogy a szolgáltatás megszakad egy lejárt tanúsítvány miatt.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - HTTPS-protokoll engedélyezése az egyéni tartományon
+> - CDN által kezelt tanúsítvány használata 
+> - Saját tanúsítvány használata
 > - A tartomány érvényesítése
 > - HTTPS-protokoll letiltása az egyéni tartományon
 
@@ -49,11 +52,13 @@ Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell h
 
 Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt. További információkért lásd: [Útmutató: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md)
 
-## <a name="enable-the-https-feature"></a>HTTPS szolgáltatás engedélyezése
+## <a name="option-1-default-enable-the-https-feature-with-a-cdn-managed-certificate"></a>1. lehetőség (alapértelmezett): A HTTPS szolgáltatás engedélyezése CDN által kezelt tanúsítvánnyal  
+
+Ezzel a lehetőséggel az egyéni HTTPS szolgáltatás mindössze néhány kattintással bekapcsolható. Az Azure CDN elvégzi az összes tanúsítványkezelési feladatot, például a beszerzést és a megújítást. A szolgáltatás engedélyezése után a folyamat azonnal elindul. Ha az egyéni tartomány már le van képezve a CDN-végpontra, nincs további teendő. Az Azure CDN automatikusan feldolgozza a lépéseket és végrehajtja a kérést. Ha azonban az egyéni tartomány más helyre van leképezve, meg kell erősítenie a tartomány tulajdonjogát e-mailben.
 
 Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartományon:
 
-1. Az [Azure Portalon](https://portal.azure.com) keressen rá a **Verizon Azure CDN Standard** vagy a **Verizon Azure CDN Premium** CDN-profilra.
+1. Az [Azure Portalon](https://portal.azure.com) keressen rá a **Microsoft Azure CDN Standard**, **Verizon Azure CDN Standard** vagy a **Verizon Azure CDN Premium** profilra.
 
 2. A CDN-végpont listájából válassza ki az egyéni tartományt tartalmazó végpontot.
 
@@ -67,9 +72,60 @@ Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartomá
 
     Megjelenik az **Egyéni tartomány** lap.
 
-4. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez, majd válassza az **Alkalmaz** elemet.
+4. A Tanúsítványkezelés típusa területen válassza a **CDN által felügyelt** lehetőséget.
 
-    ![Egyéni tartomány HTTPS-állapota](./media/cdn-custom-ssl/cdn-enable-custom-ssl.png)
+4. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez.
+
+    ![Egyéni tartomány HTTPS-állapota](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
+
+
+## <a name="option-2-enable-the-https-feature-with-your-own-certificate"></a>2. lehetőség: A HTTPS szolgáltatás engedélyezése saját tanúsítvánnyal 
+ 
+Saját tanúsítványt is használhat az Azure CDN-en a tartalom HTTPS-en keresztüli küldésére. Ez a folyamat Azure Key Vault-integrációval történik. Az Azure Key Vault segítségével a felhasználók biztonságosan tárolhatják tanúsítványaikat. Az Azure CDN szolgáltatás ezt a biztonságos mechanizmust használja a tanúsítvány beszerzéséhez. A saját tanúsítvány használatához néhány további lépésre van szükség.
+
+### <a name="step-1-prepare-your-azure-key-vault-account-and-certificate"></a>1. lépés: Az Azure Key Vault-fiók és a tanúsítvány előkészítése
+ 
+1. Azure Key Vault: Rendelkeznie kell egy futó Azure Key Vault-fiókkal abban az előfizetésben, amelyben az Azure CDN-profil és azok a CDN-végpontok találhatók, amelyekhez egyéni HTTPS-t szeretne engedélyezni. Ha még nem rendelkezik Azure Key Vault-fiókkal, hozzon létre egyet.
+ 
+2. Azure Key Vault-tanúsítványok: Ha már rendelkezik tanúsítvánnyal, feltöltheti közvetlenül az Azure Key Vault-fiókjába, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vaultban azokkal a hitelesítésszolgáltató (CA) partnerekkel, amelyekkel az Azure Key Vault integrálva van. 
+
+### <a name="step-2-grant-azure-cdn-access-to-your-key-vault"></a>2. lépés: Hozzáférés biztosítása az Azure CDN számára a Key Vaulthoz
+ 
+Engedélyt kell adnia az Azure CDN számára, hogy hozzáférhessen az Azure Key Vault-fiókjában tárolt tanúsítványokhoz (titkos kódokhoz).
+1. A Key Vault-fiók BEÁLLÍTÁSOK területén válassza a **Hozzáférési szabályzatok**, majd az **Új hozzáadása** lehetőséget új szabályzat létrehozásához.
+
+    ![Új hozzáférési szabályzat létrehozása](./media/cdn-custom-ssl/cdn-new-access-policy.png)
+
+    ![Hozzáférési szabályzat beállításai](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
+
+2. Az **Egyszerű szolgáltatás kiválasztása** területen keresse meg és válassza ki az **Azure CDN** lehetőséget.
+
+3. A **Titkos kód engedélyei** területen kattintson a **Lekérdezés** elemre, hogy engedélyezze a CDN számára az engedélyek elvégzését a tanúsítványok listájának lekérdezéséhez. 
+
+4. Kattintson az **OK** gombra. 
+
+    Az Azure CDN most már hozzáférhet a Key Vaulthoz és az abban tárolt tanúsítványokhoz (titkos kódokhoz).
+ 
+### <a name="step-3-select-the-certificate-for-azure-cdn-to-deploy"></a>3. lépés: Az Azure CDN által üzembe helyezendő tanúsítvány kiválasztása
+ 
+1. Lépjen vissza az Azure CDN portálra, és válassza ki a profilt és CDN-végpontot, amelyhez engedélyezni szeretné az egyéni HTTPS-t. 
+
+2. Az egyéni tartományok listájából válassza ki azt az egyéni tartományt, amelyen engedélyezni szeretné a HTTPS-t.
+
+    Megjelenik az **Egyéni tartomány** lap.
+
+3. A Tanúsítványkezelés típusa területen válassza a **Saját tanúsítvány használata** lehetőséget. 
+
+    ![Tanúsítvány konfigurálása](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+
+4. Válassza ki a Key Vaultot, a tanúsítványt (titkos kódot) és a tanúsítványverziót.
+
+    Az Azure CDN a következő információkat jeleníti meg: 
+    - Az előfizetés azonosítójához tartozó Key Vault-fiókok. 
+    - A kiválasztott Key Vaultban található tanúsítványok (titkos kódok). 
+    - A tanúsítvány elérhető verziói. 
+ 
+5. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez.
 
 
 ## <a name="validate-the-domain"></a>A tartomány érvényesítése
@@ -87,7 +143,7 @@ A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön e
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azureedge.net |
 
-A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME DNS-rekord létrehozását ismertető](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records) részt.
+A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME DNS-rekord létrehozását ismertető](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records) részt.
 
 Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és hozzáadja azt az alternatív tulajdonosnevek (SAN) tanúsítványhoz. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
 
@@ -160,13 +216,15 @@ Ha a kérelem elküldése előtt hiba történik, a következő hibaüzenet jele
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+
+
 ## <a name="clean-up-resources---disable-https"></a>Az erőforrások eltávolítása – HTTPS letiltása
 
 Az előző lépések során engedélyezte a HTTPS protokollt az egyéni tartományon. Ha már nem szeretné HTTPS-sel használni az egyéni tartományt, letilthatja a HTTPS-t a következő lépések végrehajtásával:
 
 ### <a name="disable-the-https-feature"></a>HTTPS szolgáltatás letiltása 
 
-1. Az [Azure Portalon](https://portal.azure.com) keressen rá a **Verizon Azure CDN Standard** vagy a **Verizon Azure CDN Premium** CDN-profilra.
+1. Az [Azure Portalon](https://portal.azure.com) keressen rá a **Microsoft Azure CDN Standard**, **Verizon Azure CDN Standard** vagy a **Verizon Azure CDN Premium** profilra.
 
 2. A végpont listájában kattintson az egyéni tartományt tartalmazó végpontra.
 
@@ -198,11 +256,11 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 1. *Ki a tanúsítványszolgáltató és milyen típusú tanúsítvány van használatban?*
 
-    A Microsoft egy Alternatív tulajdonosnév (SAN) tanúsítványt használ, amelyet a DigiCert ad ki. Egy SAN tanúsítvány több teljesen minősített tartománynevet tud biztosítani egyetlen tanúsítvánnyal.
+    A **Verizon Azure CDN** a tulajdonos alternatív nevével megadott (SAN) tanúsítványt használ, amelyet a DigiCert bocsát ki. Egy SAN tanúsítvány több teljesen minősített tartománynevet tud biztosítani egyetlen tanúsítvánnyal. A **Microsoft Azure CDN Standard** egyedi tanúsítványt használ, amelyet a DigiCert bocsát ki.
 
-2. *Használhatom a dedikált tanúsítványomat?*
-    
-    Jelenleg nem, de ennek lehetővé tétele szerepel a távlati tervek között.
+2. IP-címalapú vagy SNI TLS/SSL-t használ?
+
+    A **Verizon Azure CDN** IP-címalapú TLS/SSL-t használ. A **Microsoft Azure CDN Standard** SNI TLS/SSL-t használt.
 
 3. *Mi a teendő, ha nem kapok visszaigazolási e-mailt a DigiCerttől?*
 
@@ -214,7 +272,7 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 5. *Használhatok egyéni tartományi HTTPS-t az Akamai Azure CDN-nel?*
 
-    Jelenleg ez a funkció csak a Verizon Azure CDN esetében elérhető. A Microsoft azon dolgozik, hogy a következő hónapokban elérhető legyen a funkció támogatása az Akamai Azure CDN esetében is.
+    Ez a szolgáltatás jelenleg nem érhető el az **Akamai Azure CDN Standard** típusú profilokkal. A Microsoft azon dolgozik, hogy a következő hónapokban elérhető legyen a szolgáltatás támogatása.
 
 6. *Szükségem van hitelesítésszolgáltató engedélyezési rekordra a DNS szolgáltatómnál?*
 
@@ -223,15 +281,17 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiak elvégzését ismerte meg:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> - Engedélyezte a HTTPS protokollt az egyéni tartományán
-> - Hitelesítette a tartományt
-> - Letiltotta a HTTPS protokollt az egyéni tartományán
+> - HTTPS-protokoll engedélyezése az egyéni tartományon
+> - CDN által kezelt tanúsítvány használata 
+> - Saját tanúsítvány használata
+> - A tartomány érvényesítése
+> - HTTPS-protokoll letiltása az egyéni tartományon
 
 Lépjen tovább a következő oktatóanyagra, amely bemutatja, hogyan lehet konfigurálni a gyorsítótárat a CDN-végponton.
 
 > [!div class="nextstepaction"]
-> [Az Azure CDN gyorsítótárazási viselkedésének vezérlése gyorsítótár-szabályokkal](cdn-caching-rules.md)
+> [Oktatóanyag: Azure CDN gyorsítótárazási szabályainak beállítása](cdn-caching-rules-tutorial.md)
 

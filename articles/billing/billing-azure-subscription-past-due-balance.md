@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 37e305f185afbc2c1f4b2c6e7ca0b30fb5102d74
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5e5d8849e59d95640b490d29bf1233135980486c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Hárítsa el a határidő után egy e-mailek lekérése az Azure Azure-előfizetése elosztás
 
@@ -47,6 +47,6 @@ Ha Ön a Fiókadminisztrátor [ellenőrizze, hogy milyen e-mail címmel értesí
 
 A szolgáltatás megszakad, és az erőforrások nem érhetők el. Az Azure adatokat a szolgáltatás megszakadása után 90 nappal törlődnek. További tudnivalókért lásd: [Microsoft Trust Center – hogyan azt kezeli az adatokat](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Forduljon a támogatási szolgálathoz.
 
 Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.

@@ -1,25 +1,27 @@
 ---
-title: "Az adal-t használó Android alkalmazások közötti SSO engedélyezése |} Microsoft Docs"
-description: "Hogyan szolgáltatásait is használni az ADAL SDK való egyszeri bejelentkezés engedélyezése az alkalmazások között. "
+title: Az adal-t használó Android alkalmazások közötti SSO engedélyezése |} Microsoft Docs
+description: 'Hogyan szolgáltatásait is használni az ADAL SDK való egyszeri bejelentkezés engedélyezése az alkalmazások között. '
 services: active-directory
-documentationcenter: 
-author: danieldobalian
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 04/07/2017
-ms.author: dadobali
+ms.author: celested
+ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 7d832ecf3e9c64088a75cc88551879b4e09df715
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ee27b1d4dcc091ef570e2b0aef32273af986d3f9
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Az adal-t használó Android alkalmazások közötti SSO engedélyezése
 Megadása, hogy a felhasználók csak egyszer adja meg a hitelesítő adataikat, és ezen hitelesítő adatok automatikusan rendelkezésére kell közötti használathoz egyszeri bejelentkezés (SSO) alkalmazások már várt ügyfelek. Nehézsége kis képernyőjű, gyakran alkalommal együtt egy további tényezőt (2FA) például telefonhívást vagy egy fogva kódot, a felhasználónév és jelszó megadása ehhez a termékhez egynél többször van gyors kapcsolatos, ha a felhasználó eredményez.
@@ -86,7 +88,7 @@ Ezek bejelentkezések a következő hátrányokkal rendelkezik:
 Bejelentkezések Broker támogatású olyan bejelentkezési élmény a broker alkalmazáson belül és a tárolás és a biztonsági közvetítő segítségével fájlmegosztási hitelesítő adatokat, amelyek érvényesek a Microsoft Identity platform az eszközön lévő összes alkalmazáshoz. Ez azt jelenti, hogy az alkalmazások támaszkodnak az átvitelszervező felhasználók bejelentkezni. IOS és Android rendszeren a brókerek szolgáltatáson keresztül letölthető alkalmazás, hogy az ügyfelek telepítése függetlenül vagy lehet leküldeni az eszközre a felhasználó az eszközt felügyelő által. Ez az alkalmazástípus példa: a Microsoft Authenticator alkalmazás IOS rendszerű eszközökön. Ez a funkció a Windows egy fiók kiválasztásakor az operációs rendszer, a Webeshitelesítés-szervező műszaki ismert részét biztosítja.
 A felhasználói élmény platformonként változó, és egyes esetekben zavart okozhatnak a felhasználók számára nem esetén megfelelően. Ismeri valószínűleg legtöbb ebben a mintában Ha a Facebook alkalmazást telepítették, és Facebook csatlakozni egy másik alkalmazás használja. A Microsoft Identity platform ugyanilyen mintájú használja.
 
-Ennek eredménye "átmenet" IOS animáció, ahol az alkalmazás a rendszer elküldi a háttérben, miközben a Microsoft Authenticator alkalmazás elérhető lesz, az az előtérben, válassza ki, melyik fiókot szeretné a bejelentkezéshez a felhasználónak.  
+Ennek eredménye "átmenet" IOS animáció, ahol az alkalmazás a rendszer elküldi a háttérben, miközben a Microsoft Authenticator alkalmazás elérhető lesz, az az előtérben, válassza ki, melyik fiókot szeretné a bejelentkezéshez a felhasználónak. 
 
 Android és Windows a fiók kiválasztásakor látható az alkalmazás, amely kevésbé zavaró, a felhasználó számára.
 
@@ -160,11 +162,11 @@ Ahhoz, hogy a Microsoft Identity platform tudni, hogy rendelkezik engedélyezett
 
 Előfordulhat, hogy lehet szeretné megtudni, hogy hogyan határozható meg a Microsoft Identity szolgáltatás különböző alkalmazások Ha használja az ugyanazon alkalmazás azonosítóját. A válasz a kérdésre a **átirányítási URI-azonosítók**. Minden alkalmazás több átirányítási URI-azonosítók a bevezetési portálon regisztrált rendelkezhet. A csomagban található összes alkalmazás egy másik átirányítási URI-t fog rendelkezni. Ez megjelenésének például nem éri el:
 
-Az App1 átirányítási URI-ja:`msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
+Az App1 átirányítási URI-ja: `msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
 
-App2 átirányítási URI-ja:`msauth://com.example.userapp1/KmB7PxIytyLkbGHuI%2UitkW%2Fejk%4E`
+App2 átirányítási URI-ja: `msauth://com.example.userapp1/KmB7PxIytyLkbGHuI%2UitkW%2Fejk%4E`
 
-App3 átirányítási URI-ja:`msauth://com.example.userapp2/Pt85PxIyvbLkbKUtBI%2SitkW%2Fejk%9F`
+App3 átirányítási URI-ja: `msauth://com.example.userapp2/Pt85PxIyvbLkbKUtBI%2SitkW%2Fejk%9F`
 
 ....
 

@@ -16,6 +16,7 @@
 ## [Felhasználók hozzáadása az Azure AD-hez](add-users-azure-active-directory.md)
 ## [Licencek hozzárendelése felhasználókhoz](license-users-groups.md)
 ## [Új jelszó önkiszolgáló kérésének konfigurálása](authentication/quickstart-sspr.md)
+## [Vállalat adatvédelmi információinak hozzáadása az Azure AD-ben](active-directory-properties-area.md)
 
 
 # Útmutató
@@ -58,6 +59,7 @@
 #### [B2B megosztási szabályzatok](active-directory-b2b-delegate-invitations.md)
 #### [B2B-felhasználó hozzáadása szerepkörhöz](active-directory-b2b-add-guest-to-role.md)
 #### [Dinamikus csoportok és B2B-felhasználók](active-directory-b2b-dynamic-groups.md)
+#### [Vállalat elhagyása](active-directory-b2b-leave-the-organization.md)
 #### [Naplózás és jelentéskészítés](active-directory-b2b-auditing-and-reporting.md)
 #### [B2B hibrid cégekhez és vállalkozásokhoz](active-directory-b2b-hybrid-organizations.md)
 ##### [B2B-felhasználók hozzáférésének engedélyezése a helyi alkalmazásokhoz](active-directory-b2b-hybrid-cloud-to-on-premises.md)
@@ -178,32 +180,32 @@
 
 ### [Appok távoli elérése az App Proxyval](manage-apps/application-proxy.md)
 #### Bevezetés
-##### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
-##### [Alkalmazások közzététele](application-proxy-publish-azure-portal.md)
-##### [Egyéni tartományok](active-directory-application-proxy-custom-domains.md)
-#### [Egyszeri bejelentkezés](application-proxy-sso-overview.md)
-##### [Egyszeri bejelentkezés KCD-vel](active-directory-application-proxy-sso-using-kcd.md)
-##### [Egyszeri bejelentkezés fejlécekkel](application-proxy-ping-access.md)
-##### [Egyszeri bejelentkezés jelszótárolással](application-proxy-sso-azure-portal.md)
+##### [Alkalmazásproxy engedélyezése](manage-apps/application-proxy-enable.md)
+##### [Alkalmazások közzététele](manage-apps/application-proxy-publish-azure-portal.md)
+##### [Egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md)
+#### [Egyszeri bejelentkezés](manage-apps/application-proxy-single-sign-on.md)
+##### [Egyszeri bejelentkezés KCD-vel](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+##### [Egyszeri bejelentkezés fejlécekkel](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md)
+##### [Egyszeri bejelentkezés jelszótárolással](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 #### Alapelvek
-##### [Összekötők](application-proxy-understand-connectors.md)
-##### [Biztonság](application-proxy-security-considerations.md)
-##### [Hálózatok](application-proxy-network-topology-considerations.md)
+##### [Összekötők](manage-apps/application-proxy-connectors.md)
+##### [Biztonság](manage-apps/application-proxy-security.md)
+##### [Hálózatok](manage-apps/application-proxy-network-topology.md)
 
 
-##### [Frissítés a TMG vagy a UAG rendszerről](application-proxy-transition-from-uag-tmg.md)
+##### [Frissítés a TMG vagy a UAG rendszerről](manage-apps/application-proxy-migration.md)
 
 #### Speciális konfigurációk
-##### [Közzététel külön hálózatokon](active-directory-application-proxy-connectors-azure-portal.md)
-##### [Proxykiszolgálók](application-proxy-working-with-proxy-servers.md)
-##### [Jogcímbarát alkalmazások](active-directory-application-proxy-claims-aware-apps.md)
-##### [Natív ügyfélalkalmazások](active-directory-application-proxy-native-client.md)
-##### [Csendes telepítés](active-directory-application-proxy-silent-installation.md)
-##### [Egyéni kezdőlap](application-proxy-office365-app-launcher.md)
-##### [Beágyazott hivatkozások fordítása](application-proxy-link-translation.md)
+##### [Közzététel külön hálózatokon](manage-apps/application-proxy-connector-groups.md)
+##### [Proxykiszolgálók](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
+##### [Jogcímbarát alkalmazások](manage-apps/application-proxy-configure-for-claims-aware-applications.md)
+##### [Natív ügyfélalkalmazások](manage-apps/application-proxy-configure-native-client-application.md)
+##### [Csendes telepítés](manage-apps/application-proxy-register-connector-powershell.md)
+##### [Egyéni kezdőlap](manage-apps/application-proxy-configure-custom-home-page.md)
+##### [Beágyazott hivatkozások fordítása](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
 #### Közzétételi útmutatók
-##### [Távoli asztal](application-proxy-publish-remote-desktop.md)
-##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [Távoli asztal](manage-apps/application-proxy-integrate-with-remote-desktop-services.md)
+##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
 

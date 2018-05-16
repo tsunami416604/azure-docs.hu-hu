@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció adaptív Suite |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és adaptív Suite között."
+title: 'Oktatóanyag: Azure Active Directory-integráció adaptív Suite |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és adaptív Suite között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e128ddf53a93fe30350d8e914657f3539701603
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0932eea407ea6dbb43760c2e64c49be802363360
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-suite"></a>Oktatóanyag: Azure Active Directory-integráció adaptív csomaggal
 
@@ -110,11 +110,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
 
-    Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     >[!NOTE]
     > Ez az érték lekérheti az adaptív Suite **SAML SSO beállítások** lap.
-    >  
+    >
+    
+    Ellenőrizze a **megjelenítése speciális URL-beállításainak** mezőbe. Az a **azonosítója (entitás azonosítója)** szövegmezőhöz megadott azonos URL-címét a **válasz URL-CÍMEN** szövegmező.
+    
+    >[!NOTE]
+    > Adaptív Insights tartományonként az entitás azonosítója megegyezik a válasz URL-CÍMEN.
+    >
 
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

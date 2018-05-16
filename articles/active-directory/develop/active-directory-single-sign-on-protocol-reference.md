@@ -1,13 +1,14 @@
 ---
-title: "SAML protokoll Azure az egyszeri bejelentkezés |} Microsoft Docs"
-description: "Ez a cikk ismerteti az egyszeri bejelentkezést a SAML protokoll, az Azure Active Directoryban"
+title: SAML protokoll Azure az egyszeri bejelentkezés |} Microsoft Docs
+description: Ez a cikk ismerteti az egyszeri bejelentkezést a SAML protokoll, az Azure Active Directoryban
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: 096a250685bf023f789f98e16d2bea13bf448e3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddd5fa6f2ed0878afd8bbd6399471e92dfa30385
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezés SAML protokoll
 Ez a cikk ismerteti a SAML 2.0 hitelesítési kérések és válaszok, amelyek az Azure Active Directory (Azure AD) támogatja az egyszeri bejelentkezést.
@@ -44,9 +45,9 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| ID (Azonosító) |Szükséges |Az Azure AD használja ezt az attribútumot feltölti a `InResponseTo` a visszaadott válasz attribútum. Azonosító nem kezdődhetnek egy szám, így a közös stratégia illesztenie egy karakterlánc például a "id" GUID karakterláncos ábrázolása. Például `id6c1c178c166d486687be4aaf5e482730` van egy érvényes azonosítót. |
-| Verzió |Szükséges |Ez legyen **2.0**. |
-| IssueInstant |Szükséges |Ez egy dátum és idő (UTC) értékkel és [körbejárási formátumban ("no")](https://msdn.microsoft.com/library/az4se3k1.aspx). Az Azure AD egy DateTime értéket az ilyen típusú vár, de nem kiértékelheti vagy az értéke. |
+| Azonosító |szükséges |Az Azure AD használja ezt az attribútumot feltölti a `InResponseTo` a visszaadott válasz attribútum. Azonosító nem kezdődhetnek egy szám, így a közös stratégia illesztenie egy karakterlánc például a "id" GUID karakterláncos ábrázolása. Például `id6c1c178c166d486687be4aaf5e482730` van egy érvényes azonosítót. |
+| Verzió |szükséges |Ez legyen **2.0**. |
+| IssueInstant |szükséges |Ez egy dátum és idő (UTC) értékkel és [körbejárási formátumban ("no")](https://msdn.microsoft.com/library/az4se3k1.aspx). Az Azure AD egy DateTime értéket az ilyen típusú vár, de nem kiértékelheti vagy az értéke. |
 | AssertionConsumerServiceUrl |választható |Ha a megadott, ennek egyeznie kell a `RedirectUri` a felhőalapú szolgáltatás, az Azure ad-ben. |
 | ForceAuthn |választható | Ez egy olyan logikai érték. Igaz értéke esetén ez azt jelenti, hogy a felhasználó lenne kényszerítve újra hitelesíteni, még akkor is, ha azok rendelkeznek-e egy érvényes Azure AD-munkamenetet. |
 | IsPassive |választható |Ez az egy logikai érték, amely meghatározza, hogy az Azure AD kell a felhasználói beavatkozás nélküli hitelesítés, felhasználói beavatkozás nélkül a munkamenet cookie-k használata, ha van ilyen. Ha ez igaz, az Azure AD megpróbál hitelesíteni a felhasználót, a munkamenet cookie-k használatával. |
@@ -96,7 +97,7 @@ Ne vegyen fel egy `Signature` elemében `AuthnRequest` elemek, mert nem támogat
 ### <a name="subject"></a>Tárgy
 Az Azure AD figyelmen kívül hagyja a `Subject` eleme `AuthnRequest` elemek.
 
-## <a name="response"></a>Válasz
+## <a name="response"></a>Válaszadás
 Amikor a kért bejelentkezés sikeresen befejeződött, az Azure AD küldi a felhőalapú szolgáltatást választ. Egy sikeres bejelentkezési kísérlet mintát választ így néz ki:
 
 ```
@@ -142,7 +143,7 @@ Amikor a kért bejelentkezés sikeresen befejeződött, az Azure AD küldi a fel
 </samlp:Response>
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Válaszadás
 A `Response` elemet tartalmaz, a hitelesítési kérelem eredményét. Az Azure AD-készletek a `ID`, `Version` és `IssueInstant` értékei a `Response` elemet. Állítja be a következő attribútumokat:
 
 * `Destination`: Ha a bejelentkezés sikeresen befejeződött, értékre van állítva a `RedirectUri` a szolgáltató (felhőszolgáltatás).
@@ -157,7 +158,7 @@ Például kibocsátó elemet tartalmazó mintát választ nézhet ki:
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 A `Status` elem tartalmát, a sikeres vagy sikertelen volt-e a bejelentkezésre. Ez magában foglalja a `StatusCode` elemmel rendelkezik, ami egy kódot vagy egy beágyazott kódot, amelyek megfelelnek a kérés állapotát tartalmazza. Ezenkívül tartalmazza a `StatusMessage` elem, amely tartalmazza az egyéni hibaüzeneteket, amelyek akkor jönnek létre, a bejelentkezés során.
 
 <!-- TODO: Add a authentication protocol error reference -->
@@ -255,7 +256,7 @@ A tulajdonos vagy a felhasználói jogcímek tartalmazza. A következő cikkből
 ```        
 
 * **Jogcímszabály neve** : értékének a `Name` attribútum (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) van, mint az egyszerű felhasználónév a hitelesített felhasználó `testuser@managedtenant.com`.
-* **Típusinformáció jogcím** : értékének a `ObjectIdentifier` attribútum (`http://schemas.microsoft.com/identity/claims/objectidentifier`) van a `ObjectId` a Azure AD-ben a hitelesített felhasználó képviselő objektum. `ObjectId`egy nem módosítható, globálisan egyedi, és újra felhasználhatja a hitelesített felhasználó biztonságos azonosítója.
+* **Típusinformáció jogcím** : értékének a `ObjectIdentifier` attribútum (`http://schemas.microsoft.com/identity/claims/objectidentifier`) van a `ObjectId` a Azure AD-ben a hitelesített felhasználó képviselő objektum. `ObjectId` egy nem módosítható, globálisan egyedi, és újra felhasználhatja a hitelesített felhasználó biztonságos azonosítója.
 
 #### <a name="authnstatement"></a>AuthnStatement
 Ez az elem állításokat, hogy a helyességi feltétel tulajdonos hitelesített egy adott azt jelenti, hogy egy adott időpontban.

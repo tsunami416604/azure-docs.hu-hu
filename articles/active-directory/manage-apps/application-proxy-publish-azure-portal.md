@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3ab4530047daec9e8cf163b0223109be6b18525b
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 6ab0e36fc0b4bd3f04d75499b6dfe734a9f72d4d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Alkalmazások közzététele az Azure AD-alkalmazásproxyval
 
@@ -53,7 +53,7 @@ Kövesse az alábbi lépéseket az alkalmazásproxy az alkalmazások közzétét
    - **Belső URL-cím**: az URL-cím a magánhálózaton belülről történő alkalmazás eléréséhez használt. Megadhat egyedi elérési utat a háttérkiszolgálón a közzétételhez, míg a kiszolgáló további része nem lesz közzétéve. Ezzel a módszerrel tegye közzé a ugyanarra a kiszolgálóra, mint a különböző alkalmazások különböző helyeket, és adjon minden egyes saját nevet és hozzáférési szabályokat.
 
      > [!TIP]
-     > Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Például, ha az alkalmazás jelenleg https://yourapp/app és lemezkép helyen https://yourapp/media, akkor kell közzé tenni https://yourapp/ útvonalaként. A belső URL-cím nem jelennek meg a felhasználók kezdőlapja kell. További információkért lásd: [állítsa be a közzétett alkalmazások egyéni kezdőlapját](../application-proxy-office365-app-launcher.md).
+     > Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Például, ha az alkalmazás jelenleg https://yourapp/app és lemezkép helyen https://yourapp/media, akkor kell közzé tenni https://yourapp/ útvonalaként. A belső URL-cím nem jelennek meg a felhasználók kezdőlapja kell. További információkért lásd: [állítsa be a közzétett alkalmazások egyéni kezdőlapját](application-proxy-configure-custom-home-page.md).
 
    - **Külső URL-cím**: A címet a felhasználók halad át a alkalmazást a hálózaton kívüli eléréséhez. Ha nem szeretné, az alapértelmezett alkalmazásproxy tartományát szeretné használni, olvassa el [egyéni tartományok az Azure AD alkalmazásproxy](application-proxy-configure-custom-domain.md).
    - **Előzetes hitelesítésének**: hogyan alkalmazásproxy előtt adjon hozzáférést a az alkalmazás ellenőrzi a felhasználót. 
@@ -69,7 +69,7 @@ Kövesse az alábbi lépéseket az alkalmazásproxy az alkalmazások közzétét
 5. Szükség esetén további beállításokat. A legtöbb alkalmazás esetén kell venni ezeket a beállításokat az alapértelmezett állapotra. 
    - **Háttér-alkalmazás időtúllépés**: az érték **hosszú** csak akkor, ha az alkalmazás lassú a hitelesítéshez és csatlakozáshoz. 
    - **Fejlécek URL-címek fordítása**: ezt az értéket tartsa **Igen** kivéve, ha az alkalmazás a hitelesítési kérés az eredeti állomásfejléc szükséges.
-   - **A kérelem törzsében URL-címek fordítása**: ezt az értéket tartsa **nem** kivéve, ha más helyszíni alkalmazások szoftveresen kötött HTML hivatkozások, és ne használjon egyéni tartományokat. További információkért lásd: [hivatkozásra az alkalmazásproxy fordítási](../application-proxy-link-translation.md).
+   - **A kérelem törzsében URL-címek fordítása**: ezt az értéket tartsa **nem** kivéve, ha más helyszíni alkalmazások szoftveresen kötött HTML hivatkozások, és ne használjon egyéni tartományokat. További információkért lásd: [hivatkozásra az alkalmazásproxy fordítási](application-proxy-configure-hard-coded-link-translation.md).
    
    ![Az alkalmazás konfigurálása](./media/application-proxy-publish-azure-portal/additional-settings.png)
 
@@ -99,6 +99,6 @@ A böngészőben navigáljon a közzététel lépés során konfigurált külső
 
 
 ## <a name="next-steps"></a>További lépések
-- [Töltse le az összekötők](application-proxy-enable.md) és [összekötő csoportok létrehozása a](../active-directory-application-proxy-connectors-azure-portal.md) külön hálózatok és helyek alkalmazások közzétételét.
+- [Töltse le az összekötők](application-proxy-enable.md) és [összekötő csoportok létrehozása a](application-proxy-connector-groups.md) külön hálózatok és helyek alkalmazások közzétételét.
 
-- [Egyszeri bejelentkezés beállítása](../application-proxy-sso-azure-portal.md) az újonnan közzétett alkalmazások
+- [Egyszeri bejelentkezés beállítása](application-proxy-configure-single-sign-on-password-vaulting.md) az újonnan közzétett alkalmazások

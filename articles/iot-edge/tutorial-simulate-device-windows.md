@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 213a0e7cebda6a8b89ef460799cbec477b487a64
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>A szimulált eszköz a Windows Azure IoT peremhálózati telepített – előzetes
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag feltételezi, hogy használ egy számítógépet vagy a Windo
    * Windows 10 
    * Windows Server
 2. Telepítés [Docker for Windows] [ lnk-docker] , és győződjön meg arról, hogy fut-e.
-3. Telepítés [Python 2.7-es Windows] [ lnk-python] , és győződjön meg arról, hogy a pip paranccsal.
+3. Telepítés [Windows Python] [ lnk-python] , és győződjön meg arról, hogy a pip paranccsal. Ez az oktatóanyag a Python verzióival teszteltük > = 2.7.9 és > = 3.5.4.  
 4. A következő parancsot a IoT peremhálózati vezérlő parancsprogram letöltése.
 
    ```cmd
@@ -111,7 +111,7 @@ Az Azure IoT peremhálózati eszköz felügyelete a felhőből, egy modult, amel
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 
-## <a name="view-generated-data"></a>Adatok generált megtekintése
+## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
 Ebben az oktatóanyagban létre egy új IoT peremhálózati eszköz, és telepítve van-e az IoT-Edge futásidejű. Az Azure-portálon, majd leküldéses egy IoT peremhálózati modul futtatható az eszközön anélkül, hogy a módosításokat az magához az eszközhöz használt. A modult, amely akkor leküldött ebben az esetben is használhatja az oktatóanyagok a környezeti adatokat hoz létre. 
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 207b7ab0968f775dba99c2f48c1961d74b4f11c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Csatlakoztassa a számítógépet az OMS-átjáró internetkapcsolat nélkül
 Ez a dokumentum ismerteti a kommunikáció konfigurálása az Azure Automation szolgáltatásban, és az OMS-átjáró, ha közvetlen Naplóelemzési csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáféréssel.  Az OMS-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozás parancs használatával továbbítsa HTTP-proxyt, adatokat gyűjteni, és elküldi a Azure Automation és Naplóelemzési részére azok nevében.  
@@ -36,7 +36,7 @@ Ha az Operations Manager felügyeleti csoport integrálva van a Naplóelemzési,
 
 Magas rendelkezésre állás biztosításához a közvetlenül csatlakoztatott vagy az átjárón keresztül Naplóelemzési kommunikációs műveletek felügyeleti csoportok, használhatja a hálózati terheléselosztás történő és a forgalom szét több átjárókiszolgáló.  Ha egy átjáró kiszolgáló leáll, a rendszer átirányítja a forgalmat egy másik csomópont érhető el.  
 
-Ajánlott az OMS-ügynököt telepít a figyelheti az OMS-átjáró és a teljesítmény- vagy esemény adatok elemzése OMS-átjáró szoftvert futtató számítógépen. Emellett az ügynök segít az OMS-átjáró kommunikálnia kell szolgáltatásvégpontjaira azonosítása.
+Az OMS-ügynököt ahhoz, hogy azonosítsa a kommunikációhoz, és figyelje az OMS-átjáró a teljesítmény vagy esemény adatok elemzése szükséges szolgáltatásvégpontjaira futtató az OMS-átjáró szükséges.
 
 Minden ügynök hálózati kapcsolat az átjáróhoz rendelkeznie kell, hogy az ügynökök automatikusan adatátviteli irányuló és onnan az átjáró. Az átjáró telepítése egy tartományvezérlőn nem ajánlott.
 
@@ -56,6 +56,7 @@ Egy számítógép az OMS-átjáró futtatásához kijelölésekor, ezen a szám
 * Windows Server 2016-ot, a Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, Windows Server 2008
 * .NET-keretrendszer 4.5
 * Legalább egy 4 magos processzor és 8 GB memóriát 
+* A Windows OMS-ügynököt 
 
 ### <a name="language-availability"></a>Nyelvi rendelkezésre állása
 
@@ -63,19 +64,19 @@ Az OMS-átjáró a következő nyelveken érhető el:
 
 - kínai (egyszerűsített)
 - kínai (hagyományos)
-- cseh
-- holland
-- Angol
-- francia
-- német
-- magyar
-- olasz
+- Cseh
+- Holland
+- angol
+- Francia
+- Német
+- Magyar
+- Olasz
 - japán
-- koreai
-- lengyel
+- Koreai
+- Lengyel
 - portugál (Brazília)
 - portugál (Portugália)
-- orosz
+- Orosz
 - Spanyol (nemzetközi)
 
 ### <a name="supported-encryption-protocols"></a>A támogatott titkosítási protokollok
@@ -206,12 +207,12 @@ Az alábbi táblázatok segítségével azonosíthatók a URL-címe, mindegyik h
 
 **Feladat futásidejű adatok URL-címei**
 
-| **hely** | **URL-cím** |
+| **hely** | **URL** |
 | --- | --- |
-| USA északi középső régiója |ncus-jobruntimedata-prod-su1.azure-automation.net |
+| Északkelet-USA |ncus-jobruntimedata-prod-su1.azure-automation.net |
 | Nyugat-Európa |we-jobruntimedata-prod-su1.azure-automation.net |
-| USA déli középső régiója |scus-jobruntimedata-prod-su1.azure-automation.net |
-| USA 2. keleti régiója |eus2-jobruntimedata-prod-su1.azure-automation.net |
+| USA középső déli régiója |scus-jobruntimedata-prod-su1.azure-automation.net |
+| Egyesült Államok, keleti régió 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
 | Közép-Kanada |cc-jobruntimedata-prod-su1.azure-automation.net |
 | Észak-Európa |ne-jobruntimedata-prod-su1.azure-automation.net |
 | Délkelet-Ázsia |sea-jobruntimedata-prod-su1.azure-automation.net |
@@ -221,12 +222,12 @@ Az alábbi táblázatok segítségével azonosíthatók a URL-címe, mindegyik h
 
 **Ügynök szolgáltatás URL-címek**
 
-| **hely** | **URL-cím** |
+| **hely** | **URL** |
 | --- | --- |
-| USA északi középső régiója |ncus-agentservice-prod-1.azure-automation.net |
+| Északkelet-USA |ncus-agentservice-prod-1.azure-automation.net |
 | Nyugat-Európa |we-agentservice-prod-1.azure-automation.net |
-| USA déli középső régiója |scus-agentservice-prod-1.azure-automation.net |
-| USA 2. keleti régiója |eus2-agentservice-prod-1.azure-automation.net |
+| USA középső déli régiója |scus-agentservice-prod-1.azure-automation.net |
+| Egyesült Államok, keleti régió 2 |eus2-agentservice-prod-1.azure-automation.net |
 | Közép-Kanada |cc-agentservice-prod-1.azure-automation.net |
 | Észak-Európa |ne-agentservice-prod-1.azure-automation.net |
 | Délkelet-Ázsia |sea-agentservice-prod-1.azure-automation.net |
@@ -277,7 +278,7 @@ Az átjáró által naplózott eseményeket gyűjt, az OMS-ügynököt futtató 
 
 Az alábbi táblázat a eseményazonosítók és az OMS-átjáró naplóeseményeket leírását.
 
-| **Azonosító** | **Leírás** |
+| **ID** | **Leírás** |
 | --- | --- |
 | 400 |Bármely alkalmazás hiba, amely nem rendelkezik egyedi azonosítója |
 | 401 |Helytelen konfiguráció. Például: listenPort = "text" helyett egész szám |
@@ -310,7 +311,7 @@ A következő táblázat a rendelkezésre álló teljesítményszámlálók az O
 Ha be van jelentkezve az Azure-portálon, a segítségért az OMS-átjáró vagy bármely más Azure-szolgáltatások vagy a szolgáltatás funkciója is létrehozhat.
 Segítségkérés a kérdőjel szimbólum a portál jobb felső sarkában kattintson, és kattintson a **új támogatja a kérelem**. Ezután fejezze be az új támogatási kérelem űrlap.
 
-![Új támogatási kérelem](./media/log-analytics-oms-gateway/support.png)
+![Új támogatási kérés](./media/log-analytics-oms-gateway/support.png)
 
 ## <a name="next-steps"></a>További lépések
 [Adatforrások hozzáadása](log-analytics-data-sources.md) adatokat gyűjteni a csatlakoztatott források és tárolja a Naplóelemzési munkaterület.

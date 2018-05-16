@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 1b836951bcb958d00fe846304cc1240ecfa01037
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2f521df81e5153affa95248cda2aa001bc5d6484
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="overview-of-spark-streaming"></a>Spark Streaming áttekintése
 
@@ -142,7 +142,7 @@ Majd lekérheti a kötegelt, az értékek jelenlegi készlete megjelenítéséhe
 
 Ennek kimenete a következőképpen néznek:
 
-| érték | time |
+| érték | idő |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -188,7 +188,7 @@ Az alábbi példa frissíti a kódot, amely a DummySource használ a kötegek ö
 
 Az első perc után nincsenek 12 - az egyes ablakban gyűjtött két köteg hat bejegyzéseket.
 
-| érték | time |
+| érték | idő |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158

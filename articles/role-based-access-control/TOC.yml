@@ -25,7 +25,7 @@
       href: role-assignments-external-users.md
     - name: Tevékenységnaplók
       href: change-history-report.md
-    - name: Bérlői rendszergazda hozzáférési szintjének emelése
+    - name: Globális rendszergazda hozzáférési szintjének emelése
       href: elevate-access-global-admin.md
     - name: Hibaelhárítás
       href: troubleshooting.md

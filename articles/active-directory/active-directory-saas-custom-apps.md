@@ -1,6 +1,6 @@
 ---
-title: "Az alkalmazások Azure AD egyszeri bejelentkezés konfigurálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan önkiszolgáló csatlakozzon az Azure Active Directoryhoz, SAML és a jelszó-alapú egyszeri Bejelentkezést használó alkalmazások"
+title: Az alkalmazások Azure AD egyszeri bejelentkezés konfigurálása |} Microsoft Docs
+description: Megtudhatja, hogyan önkiszolgáló csatlakozzon az Azure Active Directoryhoz, SAML és a jelszó-alapú egyszeri Bejelentkezést használó alkalmazások
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e161bb308f08e2a7c137c696e77bf1dfb86e8d31
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz
-Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nem szerepel az Azure Active Directory-alkalmazásgyűjtemény konfigurálása tárgya *kód írása nélkül*. Ez a funkció a 2015. November 18 technical Preview-ban jelent meg, és szerepel a [Azure Active Directory Premium](active-directory-editions.md). Ha ehelyett fejlesztői útmutató az egyéni alkalmazások integrálása az Azure AD kód keres, tekintse meg [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
+Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nem szerepel az Azure Active Directory-alkalmazásgyűjtemény konfigurálása tárgya *kód írása nélkül*. Ez a funkció a 2015. November 18 technical Preview-ban jelent meg, és szerepel a [Azure Active Directory Premium](active-directory-whatis.md). Ha ehelyett fejlesztői útmutató az egyéni alkalmazások integrálása az Azure AD kód keres, tekintse meg [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
 
 Az Azure Active Directory alkalmazáskatalógusában felsorolja alkalmazásokat, amelyek kat közismerten támogató egy formája, amelyet az egyszeri bejelentkezés az Azure Active Directoryval, a [Ez a cikk](active-directory-appssoaccess-whatis.md). (A egy informatikai szakember vagy a rendszer integráló a szervezet) megkeresése az alkalmazáshoz, amelyhez csatlakozni, elkezdheti az egyszeri bejelentkezés engedélyezése az Azure-portálon jelenik meg a részletes utasításokat követve.
 
-Az ügyfelek [Azure Active Directory Premium](active-directory-editions.md) licenc is ezekhez a kiegészítő lehetőségekhez beolvasása:
+Az ügyfelek [Azure Active Directory Premium](active-directory-whatis.md) licenc is ezekhez a kiegészítő lehetőségekhez beolvasása:
 
 * Önkiszolgáló integrációs bármely alkalmazás, amely támogatja az SAML 2.0 identitás-szolgáltatóktól (a Szolgáltató által kezdeményezett vagy a kiállító terjesztési hely által kezdeményezett)
 * A webes alkalmazás, amelynek használatával egy bejelentkezési lap HTML-alapú önkiszolgáló integrációs [jelszó-alapú egyszeri bejelentkezés](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
@@ -110,7 +110,7 @@ Hozzáadása és szerkesztése a jogcímek forgatókönyvek esetén információ
 ### <a name="testing-the-saml-application"></a>A SAML-alkalmazás tesztelése
 A SAML-alapú URL-címek és a tanúsítvány konfigurálása az Azure AD és az alkalmazás Azure, az alkalmazáshoz hozzárendelt felhasználók vagy csoportok és jogcímek felülvizsgálata és szerkeszthető, ha szükséges, majd jelentkezzen be az alkalmazás készen áll a felhasználó. 
 
-Egyszerűen jelentkezzen be az Azure AD hozzáférési panel https://myapps.microsoft.com az alkalmazáshoz hozzárendelt felhasználói fiókkal, teszteléséhez, és kattintson a csempére a bejelentkezési folyamat egyetlen indítsa az alkalmazásra vonatkozóan. Alternatív megoldásként tallózással is kikeresheti közvetlenül azt a bejelentkezési URL-címet az alkalmazás és a bejelentkezési onnan. 
+Teszteléséhez egyszerűen jelentkezzen be az Azure AD hozzáférési panelre a https://myapps.microsoft.com az alkalmazáshoz hozzárendelt felhasználói fiókkal, és kattintson a csempére a alkalmazás számára az egyszeri bejelentkezés folyamat indítsa. Alternatív megoldásként tallózással is kikeresheti közvetlenül azt a bejelentkezési URL-címet az alkalmazás és a bejelentkezési onnan. 
 
 Hibakeresési tippeket, megjelenik ez [cikk az SAML-alapú egyszeri bejelentkezést alkalmazások hibakeresése](active-directory-saml-debugging.md) 
 

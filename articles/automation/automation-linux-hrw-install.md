@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 95f34e5d4fd966c41a30cc68c005237ae5405592
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: e95f5d585fa97a62b709e73b6ed6eacafe69a2b3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>A Linux hibrid forgatókönyv-feldolgozók központi telepítése
 
@@ -34,6 +34,22 @@ A következő egy támogatott Linux terjesztésekről listáját:
 ## <a name="installing-linux-hybrid-runbook-worker"></a>Linux hibrid forgatókönyv-feldolgozó telepítése
 
 Telepítéséhez, és a hibrid forgatókönyv-feldolgozók konfigurálása a Linux rendszerű számítógépen, hajtsa végre egy előre egyenes folyamat kézi telepítését és konfigurálását a szerepkör. Engedélyezését igényli a **Automation Hibridfeldolgozó** megoldás Naplóelemzési munkaterületet, és futtassa a parancsokat a számítógép regisztrálása workerként, adja hozzá egy új vagy meglévő csoporthoz.
+
+A Linux hibrid forgatókönyv-feldolgozók minimális követelményei a következők:
+
+* Legalább két magok
+* Legalább 4 GB RAM
+* Port 443-as (kimenő)
+
+### <a name="package-requirements"></a>Csomag követelmények
+
+| **Szükséges csomag** | **Leírás** | **Minimális verzió**|
+|--------------------- | --------------------- | -------------------|
+|Glibc |GNU C-függvénytár| 2.5-12 |
+|Openssl| OpenSSL-függvénytárak | 0.9.8e vagy 1.0|
+|Curl | cURL-webügyfél | 7.15.5|
+|Python-ctypes | |
+|A PAM | Cserélhető hitelesítési modulok|
 
 Mielőtt továbblépne, kell figyelembe venni a Naplóelemzési munkaterület az Automation-fiók hozzá van csatolva, és az Automation-fiók elsődleges kulcsát. Található mind a portálról az Automation-fiók kiválasztása, majd válassza **munkaterület** a munkaterület azonosítója és kiválasztása **kulcsok** elsődleges kulcs. Portok és címek, amelyek szükségesek a hibrid forgatókönyv-feldolgozó kapcsolatos tudnivalókat lásd: [a hálózat konfigurálása](automation-hybrid-runbook-worker.md#network-planning).
 
@@ -82,6 +98,40 @@ A következő runbook-típusok nem használhatók a Linux hibrid feldolgozók:
 * PowerShell-munkafolyamat
 * Grafikus
 * Grafikus PowerShell-munkafolyamat
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+A Linux hibrid forgatókönyv-feldolgozó attól függ, hogy az OMS Linux-ügynök kommunikáljon az Automation-fiók regisztrálása a munkavégző, runbook-feladatok fogadása és jelentse állapotát. A dolgozó regisztrálása meghiúsul, ha az alábbiakban néhány a hiba lehetséges okai:
+
+### <a name="the-oms-agent-for-linux-is-not-running"></a>A Linux OMS-ügynök nem fut
+
+Ha Linux az OMS-ügynök nem fut, ez megakadályozza, hogy a Linux hibrid forgatókönyv-feldolgozó Azure Automation kommunikál. Ellenőrizze az ügynök fut-e a következő parancs beírásával: `ps -ef | grep python`. A következő, a python folyamatok hasonló kimenetnek kell megjelennie **nxautomation** felhasználói fiókot. Ha nem engedélyezett a frissítéskezelés vagy az Azure Automation megoldások, az a következő folyamatok egyike sem fog futni.
+
+```bash
+nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
+nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
+nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
+```
+
+Az alábbi listában láthatók az olyan folyamat számára a Linux hibrid forgatókönyv-feldolgozók. Az összes találhatók a `/var/opt/microsoft/omsagent/state/automationworker/` könyvtár.
+
+* **OMS.conf** – Ez a munkafolyamat-kezelő, ez közvetlenül a DSC elindult.
+
+* **Worker.conf** – Ez a folyamat az automatikus regisztrált hibrid munkavégző folyamat, a worker-kezelő elindult. Ez a folyamat felügyeletéhez használja, és átlátható a felhasználó. Ez a folyamat nem lehet jelen, ha a frissítés-kezelési megoldás nincs engedélyezve a számítógépen.
+
+* **diy/Worker.conf** – Ez a folyamat a DIY hibrid munkavégző folyamatban. A DIY hibrid munkavégző folyamat hajthatók végre a felhasználó a runbookok a hibrid forgatókönyv-feldolgozót a. Csak eltér az automatikus regisztrált hibrid munkavégző folyamat a kulcs részletesen, amely használja egy másik konfigurációt. Ez a folyamat nincs jelen Ha az Azure Automation megoldás nincs engedélyezve, és a Linux DIY Hibridfeldolgozó nem regisztrálható.
+
+Ha az OMS-ügynököt a Linux nem fut, a következő parancsot a szolgáltatás elindítása: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+
+### <a name="the-specified-class-does-not-exist"></a>A megadott osztály nem létezik.
+
+Ha a hibát látja **nem létezik a megadott osztály...** az a `/var/opt/microsoft/omsconfig/omsconfig.log` majd Linux OMS-ügynököt frissíteni kell. A következő parancsot az OMS-ügynököt újra kell telepíteni:
+
+```bash
+wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
+```
+
+A frissítés-kezeléssel kapcsolatos problémák elhárítása a további lépéseket lásd: [felügyelete – hibaelhárítás](automation-update-management.md#troubleshooting)
 
 ## <a name="next-steps"></a>További lépések
 

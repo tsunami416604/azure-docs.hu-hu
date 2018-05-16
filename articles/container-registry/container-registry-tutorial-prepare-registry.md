@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/26/2017
+ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2e91a92d34131d0b35cfb7b0bfdca99637924552
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -31,17 +31,13 @@ A következő oktatóanyagokban egy két Azure-régióban futó webalkalmazás s
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag elvégzéséhez az Azure CLI 2.0.20-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Az oktatóanyaghoz az Azure CLI (2.0.31-es vagy újabb verzió) helyi telepítésére lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű Docker-parancsokra vonatkozó alapvető ismeretekkel. Amennyiben szükséges, tekintse meg a tárolók alapfogalmainak ismertetését a [Bevezetés a Docker használatába]( https://docs.docker.com/get-started/) című cikkben.
+Ismernie kell a Docker fő fogalmait, például a tárolókat, a tárolórendszerképeket és a Docker parancssori felületének alapszintű parancsait. A tárolókkal kapcsolatos alapfogalmakért tekintse meg [a Docker használatának első lépéseivel]( https://docs.docker.com/get-started/) foglalkozó témakört.
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Docker-fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) vagy [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszeren.
+Az oktatóanyag elvégzéséhez a szüksége lesz egy helyi Docker-telepítésre. A Docker a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszerhez biztosít telepítési utasításokat.
 
 Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzéséhez szükséges Docker-összetevőket, Ezért ajánlott az Azure CLI és a Docker fejlesztőkörnyezet helyi telepítése.
-
-> [!IMPORTANT]
-> Az Azure Container Registry georeplikációs funkciója jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
->
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
@@ -91,9 +87,9 @@ A replikáció befejezése után a portál mindkét régió esetén a *Kész* á
 
 ## <a name="container-registry-login"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
 
-Most, hogy konfigurálta a georeplikációt, állítson össze egy tárolórendszerképet, és küldje le azt a tárolójegyzékbe. Először be kell jelentkeznie az ACR-példányba, mielőtt rendszerképeket próbálna leküldeni rá. Az [Alapszintű, Standard és Prémium termékváltozatokban](container-registry-skus.md) az Azure-identitással végezheti el a hitelesítést.
+Most, hogy konfigurálta a georeplikációt, állítson össze egy tárolórendszerképet, és küldje le azt a tárolójegyzékbe. Először be kell jelentkeznie az ACR-példányba, mielőtt rendszerképeket próbálna leküldeni rá.
 
-Az [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) paranccsal hitelesítheti és gyorsítótárazhatja a tárolójegyzék hitelesítő adatait. Cserélje le az `<acrName>` elemet az előző lépésekben létrehozott tárolójegyzék nevére.
+Az [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) paranccsal hitelesítheti és gyorsítótárazhatja a tárolójegyzék hitelesítő adatait. Cserélje le az `<acrName>` elemet a korábban létrehozott tárolójegyzék nevére.
 
 ```azurecli
 az acr login --name <acrName>
@@ -103,7 +99,7 @@ A parancs a `Login Succeeded` értéket adja vissza, ha befejeződött.
 
 ## <a name="get-application-code"></a>Az alkalmazáskód letöltése
 
-Az oktatóanyagban foglalt példa egy, az [ASP.NET Core](http://dot.net) használatával létrehozott kis webalkalmazást tartalmaz. Az alkalmazás egy HTML-oldalt működtet, amely azt a régiót jeleníti meg, amelyről az Azure Container Registry a rendszerképet üzembe helyezte.
+Az oktatóanyagban foglalt példa egy, az [ASP.NET Core][aspnet-core] használatával létrehozott kis webalkalmazást tartalmaz. Az alkalmazás egy HTML-oldalt működtet, amely azt a régiót jeleníti meg, amelyről az Azure Container Registry a rendszerképet üzembe helyezte.
 
 ![Az oktatóanyag alkalmazása böngészőben megjelenítve][tut-app-01]
 
@@ -114,11 +110,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
+Ha a `git` nincs telepítve, közvetlenül a GitHubról [töltheti le a ZIP-archívumot][acr-helloworld-zip].
+
 ## <a name="update-dockerfile"></a>A Dockerfile frissítése
 
-A mintában szereplő Dockerfile bemutatja a tároló összeállításának menetét. Egy hivatalos [aspnetcore](https://store.docker.com/community/images/microsoft/aspnetcore)-rendszerképből indul ki, a tárolóba másolja az alkalmazásfájlokat, telepíti a függőségeket, összeállítja a hivatalos [aspnetcore-build](https://store.docker.com/community/images/microsoft/aspnetcore-build)-rendszerképet, és végül egy optimalizált aspnetcore-rendszerképet hoz létre.
+A mintában szereplő Dockerfile bemutatja a tároló összeállításának menetét. Egy hivatalos [aspnetcore][dockerhub-aspnetcore]-rendszerképből indul ki, a tárolóba másolja az alkalmazásfájlokat, telepíti a függőségeket, összeállítja a hivatalos [aspnetcore-build][dockerhub-aspnetcore-build]-rendszerképet, és végül egy optimalizált aspnetcore-rendszerképet hoz létre.
 
-A Dockerfile a klónozott forrásban a következő helyen található: `./AcrHelloworld/Dockerfile`.
+A [Dockerfile][dockerfile] a klónozott forrásban a következő helyen található: `./AcrHelloworld/Dockerfile`.
 
 ```dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -146,9 +144,9 @@ COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "AcrHelloworld.dll"]
 ```
 
-Az *acr-helloworld* rendszerképben lévő alkalmazás megpróbálja meghatározni azt a régiót, amelyből a tárolója üzembe lett helyezve. Ehhez lekérdezi a DNS-ből a tárolójegyzék bejelentkezési kiszolgálójával kapcsolatos adatokat. A tárolójegyzék bejelentkezési kiszolgálójának URL-címét a Dockerfile `DOCKER_REGISTRY` környezeti változójában kell megadnia.
+Az *acr-helloworld* rendszerképben lévő alkalmazás megpróbálja meghatározni azt a régiót, amelyből a tárolója üzembe lett helyezve. Ehhez lekérdezi a DNS-ből a tárolójegyzék bejelentkezési kiszolgálójával kapcsolatos adatokat. A tárolójegyzék bejelentkezési kiszolgálójának teljes tartománynevét a Dockerfile `DOCKER_REGISTRY` környezeti változójában kell megadnia.
 
-Először kérje le a tárolójegyzék bejelentkezési kiszolgálójának URL-címét az `az acr show` paranccsal. Cserélje le az `<acrName>` elemet az előző lépésekben létrehozott tárolójegyzék nevére.
+Először kérje le a tárolójegyzék bejelentkezési kiszolgálóját az `az acr show` paranccsal. Cserélje le az `<acrName>` elemet az előző lépésekben létrehozott tárolójegyzék nevére.
 
 ```azurecli
 az acr show --name <acrName> --query "{acrLoginServer:loginServer}" --output table
@@ -162,7 +160,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-Ezután frissítse a `DOCKER_REGISTRY` sort a tárolójegyzék bejelentkezési kiszolgálójának URL-címével. Ebben a példában úgy frissítjük a sort, hogy az tükrözze a példa tárolójegyzékének nevét (*uniqueregistryname*):
+Ezután frissítse az `ENV DOCKER_REGISTRY` sort a tárolójegyzék bejelentkezési kiszolgálójának teljes tartománynevével. Ebben a példában a példa tárolójegyzékének neve (*uniqueregistryname*) látható:
 
 ```dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -170,7 +168,7 @@ ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
 
 ## <a name="build-container-image"></a>Tárolórendszerkép összeállítása
 
-Most, hogy a frissítette a Dockerfile-t a tárolójegyzék URL-címével, a `docker build` paranccsal hozhatja létre a tárolórendszerképet. Futtassa a következő parancsot a rendszerkép összeállításához és a privát tárolójegyzék URL-címével való felcímkézésével, majd ismét cserélje le az `<acrName>` elemet a tárolójegyzék nevére:
+Most, hogy a frissítette a Dockerfile-t a tárolójegyzék bejelentkezési kiszolgálójának teljes tartománynevével, a `docker build` paranccsal hozhatja létre a tárolórendszerképet. Futtassa a következő parancsot a rendszerkép összeállításához és a privát tárolójegyzék URL-címével való felcímkézésével, majd ismét cserélje le az `<acrName>` elemet a tárolójegyzék nevére:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -183,7 +181,9 @@ Sending build context to Docker daemon  523.8kB
 Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
 2.0: Pulling from microsoft/aspnetcore
 3e17c6eae66c: Pulling fs layer
-...
+
+[...]
+
 Step 18/18 : ENTRYPOINT dotnet AcrHelloworld.dll
  ---> Running in 6906d98c47a1
  ---> c9ca1763cfb1
@@ -192,23 +192,18 @@ Successfully built c9ca1763cfb1
 Successfully tagged uniqueregistryname.azurecr.io/acr-helloworld:v1
 ```
 
-A `docker images` paranccsal megtekintheti az összeállított rendszerképet:
+A `docker images` használatával tekintse meg a felépített és címkézett rendszerképet:
 
-```bash
-docker images
-```
-
-Kimenet:
-
-```bash
+```console
+$ docker images
 REPOSITORY                                      TAG    IMAGE ID        CREATED               SIZE
 uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a minute ago    284MB
-...
+[...]
 ```
 
 ## <a name="push-image-to-azure-container-registry"></a>Rendszerkép leküldése az Azure Container Registrybe
 
-Végül a `docker push` paranccsal küldje le az *acr-helloworld*-rendszerképet a tárolójegyzékbe. Cserélje le az `<acrName>` elemet a tárolójegyzék nevére.
+Ezután a `docker push` paranccsal küldje le az *acr-helloworld*-rendszerképet a tárolójegyzékbe. Cserélje le az `<acrName>` elemet a tárolójegyzék nevére.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -216,9 +211,8 @@ docker push <acrName>.azurecr.io/acr-helloworld:v1
 
 Mivel georeplikációhoz konfigurálta a tárolójegyzéket, a rendszerkép ezzel az egy `docker push` paranccsal automatikusan replikálva lesz az *USA nyugati régióján* és az *USA keleti régióján* is.
 
-Kimenet:
-
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 cd54739c444b: Pushed
 d6803756744a: Pushed
@@ -232,15 +226,9 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy privát, georeplikált tárolójegyzéket, felépített egy tárolórendszerképet, majd ezt a rendszerképet leküldte a tárolójegyzékbe. A jelen oktatóanyag lépéseit követve a következőket végezte el:
+Ebben az oktatóanyagban létrehozott egy privát, georeplikált tárolójegyzéket, felépített egy tárolórendszerképet, majd ezt a rendszerképet leküldte a tárolójegyzékbe.
 
-> [!div class="checklist"]
-> * Létrehozott egy georeplikált Azure Container Registryt
-> * Klónozta az alkalmazás forráskódját a GitHubról
-> * Összeállította egy Docker-tároló rendszerképét az alkalmazásforrásból
-> * Leküldte a tárolórendszerképet a tárolójegyzékbe
-
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan helyezhető üzembe a tároló több Web Apps for Containers -példányon, georeplikációt használva a rendszerképek helyi kiszolgálásához.
+Folytassa a következő oktatóanyaggal, amely üzembe helyezi a tárolót több Web Apps for Containers-példányon, georeplikációt használva a rendszerképek helyi kiszolgálásához.
 
 > [!div class="nextstepaction"]
 > [Webalkalmazás üzembe helyezése az Azure Container Registryből](container-registry-tutorial-deploy-app.md)
@@ -253,3 +241,10 @@ Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan helyezhető
 [tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
 [tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
 [tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
+
+<!-- LINKS - External -->
+[acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
+[aspnet-core]: http://dot.net
+[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
+[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
+[dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

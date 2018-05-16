@@ -3,23 +3,25 @@ title: Az Azure Active Directory-Kódminták |} Microsoft Docs
 description: Itt az elérhető Azure Active Directory (V2 végpont) index mintakódok forgatókönyv szerint vannak rendezve.
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/26/2018
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 39c2c5adef72db830ef226228017065c1b70f496
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b7a894ccd27ddcda2ab4b98c69333d37de077863
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-code-samples-v2-endpoint"></a>Az Azure Active Directory-Kódminták (V2 végpont)
 
@@ -85,7 +87,7 @@ JavaScript (hello.js + szögben kifejezett 4) | [angular4 csatlakozás minta](ht
 
 Az alábbi minta bemutatja, hogyan védi meg a webes API-t az Azure AD V2-végponthoz.
 
-Platform | Sample | Leírás
+Platform | Minta | Leírás
  -------- | ------------------- | ---------------------
 Node.js | [DotNet-natív-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2) | Meghívja az ASP.NET Core webes API-k használata az Azure AD V2 WPF-alkalmazás.
 

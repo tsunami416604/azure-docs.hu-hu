@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 66f0d0064fe59c6e1d249eb69c1b433fe661c513
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a442b6c3c8e2b8a781ee54f41a2e0db5b44b7395
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: Fejlesztés a Graph API-val .NET-keretrendszerben
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
@@ -110,7 +110,7 @@ Következő lépésként hozzon létre egy gráftárolót a **DocumentClient** o
 DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync( 
     UriFactory.CreateDatabaseUri("graphdb"), 
     new DocumentCollection { Id = "graphcollz" }, 
-    new RequestOptions { OfferThroughput = 1000 }); 
+    new RequestOptions { OfferThroughput = 400 }); 
 ``` 
 
 ## <a id="serializing"></a>Csúcsok és élek szerializálása .NET-objektumokká
@@ -121,7 +121,7 @@ Példaként vegyünk most egy négy személyt magában foglaló egyszerű közö
 A `Microsoft.Azure.Graphs.Elements` névtér `Vertex`, `Edge`, `Property` és `VertexProperty` osztályokat biztosít a GraphSON-válaszok jól definiált .NET-objektumokká való deszerializálásához.
 
 ## <a name="run-gremlin-using-creategremlinquery"></a>A Gremlin futtatása a CreateGremlinQuery használatával
-Az SQL-hez hasonlóan a Gremlin is az olvasás, írás és lekérdezés műveleteket támogatja. Az alábbi kódrészlet például bemutatja, hogyan lehet csúcsokat és éleket létrehozni, néhány mintalekérdezést végrehajtani a `CreateGremlinQuery<T>` használatával, valamint aszinkron módon végigvenni ezeket az eredményeket az `ExecuteNextAsync` és a `HasMoreResults használatával.
+Az SQL-hez hasonlóan a Gremlin is az olvasás, írás és lekérdezés műveleteket támogatja. Az alábbi kódrészlet például bemutatja, hogyan lehet csúcsokat és éleket létrehozni, néhány mintalekérdezést végrehajtani a `CreateGremlinQuery<T>` használatával, valamint aszinkron módon végigvenni ezeket az eredményeket az `ExecuteNextAsync` és a `HasMoreResults` használatával.
 
 ```cs
 Dictionary<string, string> gremlinQueries = new Dictionary<string, string>

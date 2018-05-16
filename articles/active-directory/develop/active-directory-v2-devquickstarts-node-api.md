@@ -1,25 +1,27 @@
 ---
-title: "Egy Azure Active Directory v2.0 webes API biztonságossá tétele a Node.js használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan build egy Node.js webes API-t, amely fogadja a jogkivonatokat, a személyes Microsoft-fiók pedig a munkahelyi vagy iskolai fiókok."
+title: Egy Azure Active Directory v2.0 webes API biztonságossá tétele a Node.js használatával |} Microsoft Docs
+description: Megtudhatja, hogyan build egy Node.js webes API-t, amely fogadja a jogkivonatokat, a személyes Microsoft-fiók pedig a munkahelyi vagy iskolai fiókok.
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0b572fc1-2aaf-4cb6-82de-63010fb1941d
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 05/13/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f07e421feedf3c82da7be16434891cdbe6069038
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19ad25c7b08ff073097cacf3be359772ca0a327f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>Biztonságos webes API-k számára a Node.js segítségével
 > [!NOTE]
@@ -139,7 +141,7 @@ A restify egy rendkívül erős eszköz többi meghívja a DTrace segítségéve
     ```
 
 ## <a name="6-add-passport-azure-ad-to-your-web-api"></a>6: a passport-azure-ad hozzá a web API
-Ezután adja hozzá az OAuth stratégiát, a passport-azuread használatával. `passport-azuread`a stratégiacsomag szolgál, amely az Azure AD connect a Passport van. Ez a stratégia használható a tulajdonosi jogkivonatokhoz a REST API minta használjuk.
+Ezután adja hozzá az OAuth stratégiát, a passport-azuread használatával. `passport-azuread` a stratégiacsomag szolgál, amely az Azure AD connect a Passport van. Ez a stratégia használható a tulajdonosi jogkivonatokhoz a REST API minta használjuk.
 
 > [!NOTE]
 > Bár az OAuth 2.0-s, amelyben bármely ismert jogkivonat típus kibocsáthatja keretet biztosít, néhány gyakran használják. Tulajdonosi jogkivonatok gyakran használják a végpontok védelme. Tulajdonosi jogkivonatok olyan OAuth 2.0 token leggyakrabban kibocsátott típusú. Sok OAuth 2.0 típusú hitelesítés megvalósításához feltételezik, hogy tulajdonosi jogkivonatokat bocsátottak ki csak ilyen típusú.
@@ -830,7 +832,7 @@ A 401-es válasz azt jelzi, hogy a Passport réteg megpróbálja átirányítani
 
 Ön már megtettünk mindent, ami az OAuth 2.0-kompatibilis ügyfél használata nélkül is ezen a kiszolgálón. Ehhez szüksége lesz egy további oktatóanyag áttekintése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként biztosított [egy .zip fájl](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip). Akkor is klónozhatja azt a Githubról:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```

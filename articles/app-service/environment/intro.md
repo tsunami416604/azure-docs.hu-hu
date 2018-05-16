@@ -11,26 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6be6bb3b6b75b278a7c28307d93d6273c5bb18d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Az App Service Environment bemutatása #
  
 ## <a name="overview"></a>Áttekintés ##
 
-Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen elkülönített és dedikált környezetet biztosít az App Service-alkalmazások biztonságos, nagy léptékű futtatásához. Ennek köszönhetően a szolgáltatás képes a webalkalmazások, [mobilalkalmazások][mobileapps], API-alkalmazások és [függvények][Functions] üzemeltetésére.
+Az Azure App Service Environment egy Azure App Service-funkció, amely teljesen elkülönített és dedikált környezetet biztosít az App Service-alkalmazások biztonságos, nagy léptékű futtatásához. Ez a szolgáltatás a következők üzemeltetésére képes:
+
+* Windows-webalkalmazások
+* Linux-webalkalmazások (előzetes verzió)
+* Docker-tárolók (előzetes verzió)
+* Mobilalkalmazások
+* Functions
 
 Az App Service Environment (ASE) a következő igényekkel rendelkező összes alkalmazási számítási feladat elvégzésére használható:
 
-- Nagyon nagy skálázhatóság.
-- Elkülönítés és biztonságos hálózati hozzáférés.
-- Magas memóriakihasználtság.
+* Nagyon nagy skálázhatóság.
+* Elkülönítés és biztonságos hálózati hozzáférés.
+* Magas memóriakihasználtság.
 
 Egy vagy több Azure-régión belül több ASE létrehozásának lehetősége az ügyfelek számára. Az ASE környezetek ennek a rugalmasságnak köszönhetik, hogy ideálisak az állapot nélküli, magas RPS-terhelésű alkalmazásszintek horizontális felskálázásához.
 
@@ -39,7 +45,7 @@ Elkülönítettségük révén az ASE-k környezetek egyetlen ügyfél alkalmaz�
 * Az ASE környezetek lehetővé teszik a biztonságos hálózati hozzáférésű, magas skálázhatóságú alkalmazásüzemeltetést. További információt az [AzureCon Deep Dive](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) ASE környezetekről szóló részében talál.
 * Több ASE is felhasználható a horizontális skálázásra. További információkért lásd a [földrajzilag elosztott alkalmazás beállítását](app-service-app-service-environment-geo-distributed-scale.md) ismertető részt.
 * Az ASE környezetek használatával a biztonsági architektúra is konfigurálható, ahogyan azt az AzureCon Deep Dive is bemutatja. Az AzureCon Deep Dive-ban látható biztonsági architektúra konfigurálásáról a [rétegelt biztonsági architektúra App Service Environmenttel történő megvalósításáról szóló cikkben](app-service-app-service-environment-layered-security.md) találhat további információkat.
-* Az ASE környezetekben futó alkalmazások hozzáférésében sorompós kapcsolatok alakíthatók ki alsóbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF-ok) segítségével. További információt a [WAF App Service Environmenthez történő konfigurálását](app-service-app-service-environment-web-application-firewall.md) ismertető cikkben talál.
+* Az ASE környezetekben futó alkalmazások hozzáférésében sorompós kapcsolatok alakíthatók ki alsóbb rétegbeli eszközök, például webalkalmazás-tűzfalak (WAF-ok) segítségével. További információkat [az ILB App Service Environment és az Azure Application Gateway integrációját][AppGW] bemutató cikkben olvashat.
 
 ## <a name="dedicated-environment"></a>Dedikált környezet ##
 
@@ -59,7 +65,7 @@ Az ASE átalányalapú havidíja fedezi az infrastruktúra költségét, és nem
 
 ## <a name="virtual-network-support"></a>Virtuális hálózatok támogatása ##
 
-ASE környezetek kizárólag az Azure Resource Manager virtuális hálózatán hozhatók létre. Az Azure virtuális hálózatairól további információt az [Azure virtuális hálózatok GYIK](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) dokumentumában talál. Az ASE mindig egy virtuális hálózaton belül, pontosabban a virtuális hálózat alhálózatán működik. A virtuális hálózatok biztonsági funkciói segítségével szabályozhatja az alkalmazásai bejövő és kimenő hálózati kommunikációját.
+Az ASE szolgáltatás az Azure App Service üzemelő példánya közvetlenül az ügyfelek Azure Resource Managerének virtuális hálózatán. Az Azure virtuális hálózatairól további információt az [Azure virtuális hálózatok GYIK](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) dokumentumában talál. Az ASE mindig egy virtuális hálózaton belül, pontosabban a virtuális hálózat alhálózatán működik. A virtuális hálózatok biztonsági funkciói segítségével szabályozhatja az alkalmazásai bejövő és kimenő hálózati kommunikációját.
 
 Az ASE lehet internetre irányuló, nyilvános IP-címmel, vagy befelé irányuló, Azure belső terheléselosztási (ILB) címmel.
 

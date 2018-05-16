@@ -3,27 +3,29 @@ title: Azure Active Directory v2.0 hitelesítési kódtárai |} Microsoft Docs
 description: Kompatibilis ügyfél függvénytárainak és a server köztes könyvtárak, és a kapcsolódó könyvtár, a forrás és a minták mutató hivatkozásokat, az Azure Active Directory v2.0-végponttól.
 services: active-directory
 documentationcenter: ''
-author: SaeedAkhter-MSFT
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2018
-ms.author: saeeda
+ms.author: celested
+ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4bcf4854198e7c5f3861a39484a047adcbc1d797
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8fe3db09acbdec606f25d0bc81300bc4f5e87411
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 hitelesítési kódtárai
 
-A [Azure Active Directory (Azure AD) v2.0-végponttól](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) a szabványos OAuth 2.0 és az OpenID Connect 1.0 protokoll használatát támogatja. A Microsoft hitelesítési könyvtár (MSAL) tervezték a Azure AD v2.0-végponttal.  Akkor is, amely támogatja az OAuth 2.0 és az OpenID Connect 1.0 nyílt forráskódú kódtárai használatára.
+A [Azure Active Directory (Azure AD) v2.0-végponttól](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) a szabványos OAuth 2.0 és az OpenID Connect 1.0 protokoll használatát támogatja. A Microsoft hitelesítési könyvtár (MSAL) tervezték a Azure AD v2.0-végponttal. Akkor is, amely támogatja az OAuth 2.0 és az OpenID Connect 1.0 nyílt forráskódú kódtárai használatára.
 
 Javasoljuk, hogy használja-e a biztonságos fejlesztési Életciklussal (SDL) módszer, például kövesse protokoll tartomány szakértők által írt szalagtárak [a Microsoft követ][Microsoft-SDL]. Ha úgy dönt, hogy az aktuális-kód támogatása a protokollokat, hajtsa végre a módszer, például a Microsoft SDL és fizetési zárja be a biztonsági szempontok a szabványoknak specifikációi minden protokollhoz a figyelmet.
 
@@ -55,28 +57,28 @@ Szalagtár szerepel, amely a v2.0-végpontra a listája tekintse meg a következ
 > [!IMPORTANT]
 > A MSAL preview könyvtárak olyan éles környezetben használható. Microsoft támogatja a azonos termelési szint ezekhez a könyvtárakhoz, a jelenlegi üzemi függvénytárak (ADAL). Az előzetes várt módosítását a MSAL API, a belső gyorsítótár formátum és a más mechanizmusok ezeket a könyvtárakat értesítés nélkül, amely együtt a hibajavításokat és a szolgáltatásokat érintő fejlesztések érvénybe szükséges. Ez hatással lehet az alkalmazás. A gyorsítótár-formátum módosítva lett, a felhasználókat, hogy jelentkezzen be újra lehet szükség. Egy API-módosítást szükség lehet, hogy frissítse a kódot. Amikor az általános rendelkezésre állási (GA) kiadás elérhetővé válik, a szalagtár előzetes verzióval összes alkalmazás hat hónapban frissíteni kell, vagy működésképtelenné is.
 
-| Platform | Részletes ismertetés | Letöltés | Forráskód | Sample | Leírások
+| Platform | Szalagtár | Letöltés | Forráskód | Minta | Leírások
 | --- | --- | --- | --- | --- | --- |
-| .NET ügyfél, a Windows Store UWP, Xamarin iOS és Android rendszerhez | MSAL .NET (előzetes verzió) |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Egy asztali alkalmazás](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  |
-| JavaScript | MSAL.js (előzetes verzió) | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [Egyetlen alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  |
-| iOS, macOS | MSAL (előzetes verzió) | [GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS-alkalmazás](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
-| Android | MSAL (előzetes verzió) | [A központi tárházban](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHubon](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android-alkalmazás](guidedsetups/active-directory-mobileanddesktopapp-android-intro.md) | [JavaDocs](http://javadoc.io/doc/com.microsoft.identity.client/msal) |
+| .NET ügyfél, a Windows Store UWP, Xamarin iOS és Android rendszerhez | MSAL .NET (előzetes verzió) |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Egy asztali alkalmazás](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  |
+| JavaScript | MSAL.js (előzetes verzió) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [Egyetlen alkalmazás](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  |
+| iOS, macOS | MSAL (előzetes verzió) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS-alkalmazás](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
+| Android | MSAL (előzetes verzió) | [A központi tárházban](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android-alkalmazás](guidedsetups/active-directory-mobileanddesktopapp-android-intro.md) | [JavaDocs](http://javadoc.io/doc/com.microsoft.identity.client/msal) |
 
 ## <a name="microsoft-supported-server-middleware-libraries"></a>A Microsoft által támogatott server köztes könyvtárak
 
-| Platform | Részletes ismertetés | Letöltés | Forráskód | Sample | Leírások
+| Platform | Szalagtár | Letöltés | Forráskód | Minta | Leírások
 | --- | --- | --- | --- | --- | --- |
-| .NET 4.x | OWIN OpenID Connect köztes |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHubon](https://github.com/aspnet/AspNetKatana/) |[MVC-alkalmazáshoz](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
-| .NET 4.x | OWIN OAuth tulajdonosi köztes az AzureAD |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHubon](https://github.com/aspnet/AspNetKatana/) |  | |
-| .NET 4.x | A .NET 4.5 JWT-kezelő | [NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/4.0.4.403061554) | [GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| .NET 4.x | OWIN OpenID Connect köztes |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHub](https://github.com/aspnet/AspNetKatana/) |[MVC-alkalmazáshoz](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
+| .NET 4.x | OWIN OAuth tulajdonosi köztes az AzureAD |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/) |  | |
+| .NET 4.x | A .NET 4.5 JWT-kezelő | [NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/4.0.4.403061554) | [GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
 | .NET Core | ASP.NET OpenID Connect köztes |[Microsoft.AspNetCore.Authentication.OpenIdConnect (NuGet)][ServerLib-NetCore-Owin-Oidc-Lib] |[Az ASP.NET biztonsága (GitHub)][ServerLib-NetCore-Owin-Oidc-Repo] |[MVC-alkalmazáshoz](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-v2) |
 | .NET Core | ASP.NET OAuth tulajdonosi köztes |[Microsoft.AspNetCore.Authentication.OAuth (NuGet)][ServerLib-NetCore-Owin-Oauth-Lib] |[Az ASP.NET biztonsága (GitHub)][ServerLib-NetCore-Owin-Oauth-Repo] |  |
-| .NET Core | A .NET Core JWT-kezelő  |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| Node.js |Az Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHubon](https://github.com/AzureAD/passport-azure-ad) | [Webalkalmazás](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)| |
+| .NET Core | A .NET Core JWT-kezelő  |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| Node.js |Az Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Webalkalmazás](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)| |
 
 ## <a name="compatible-client-libraries"></a>Kompatibilis ügyfél függvénytárainak
 
-| Platform | Szalagtár neve | Tesztelt verziója | Forráskód | Sample |
+| Platform | Szalagtár neve | Tesztelt verziója | Forráskód | Minta |
 |:---:|:---:|:---:|:---:|:---:|
 | Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[Natív alkalmazás – minta](active-directory-v2-devquickstarts-android.md) |
 | iOS |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |1.2.8 |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |[Natív alkalmazás – minta](active-directory-v2-devquickstarts-ios.md) |

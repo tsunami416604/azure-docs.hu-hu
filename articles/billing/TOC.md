@@ -43,6 +43,7 @@
 ### [Fizetési információk frissítése](billing-how-to-change-credit-card.md)
 ### [Előfizetések fizetése számla alapján](billing-how-to-pay-by-invoice.md)
 ### [Hivatkozás partnerazonosítóra](billing-partner-admin-link-started.md)
+### [Számlázási fiókok megtekintése](billing-view-all-accounts.md)
 ## [Fenntartott VM-példányok felügyelete](billing-manage-reserved-vm-instance.md)
 ## Hibaelhárítás
 ### [Regisztrálással kapcsolatos problémák](https://support.microsoft.com/en-us/help/4042959)

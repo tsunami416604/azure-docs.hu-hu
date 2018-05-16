@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dc820a95a9ccd0feb8b67c898ecfa8ce9826838a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d1c9f4dd8504c2409663cb87b0c0d56164229ed2
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Hogyan nyújt az Azure AD-alkalmazásproxy egyszeri bejelentkezéshez?
 
@@ -54,7 +54,7 @@ Ez a beállítás akkor hasznos, ha a helyszíni alkalmazások nincs szükség a
 
 Ha azt szeretné, az Azure Active Directory használatával és egy jelszó-tárolónak a helyszíni alkalmazások, **jelszóalapú bejelentkezés**. Ez a beállítás akkor hasznos, ha az alkalmazás végzi a hitelesítést egy felhasználónév/jelszó kombinált jogkivonatot, vagy a fejlécek helyett. A jelszó alapú bejelentkezés a felhasználóknak kell jelentkezzen be az alkalmazás az első alkalommal. Ezt követően Azure Active Directory választékát kínálja a felhasználónevet és jelszót a felhasználó nevében. 
 
-Jelszó alapú bejelentkezés beállításával kapcsolatos információkért lásd: [az egyszeri bejelentkezés az alkalmazásproxy vaulting jelszó](../application-proxy-sso-azure-portal.md).
+Jelszó alapú bejelentkezés beállításával kapcsolatos információkért lásd: [az egyszeri bejelentkezés az alkalmazásproxy vaulting jelszó](application-proxy-configure-single-sign-on-password-vaulting.md).
 
 ## <a name="linked-sign-on"></a>Csatolt bejelentkezés
 
@@ -72,10 +72,10 @@ Integrált Windows-hitelesítés beállításával kapcsolatos információkért
 
 Ha az alkalmazások fejlécek használnak a hitelesítéshez, válassza a **fejléc-alapú bejelentkezés**. Ezzel a beállítással a felhasználók csak kell hitelesítés az Azure Active Directoryban. Microsoft-partnereknek, egy harmadik fél hitelesítési szolgáltatással PingAccess, amely az Azure Active Directory jogkivonat lefordítani a fejléc formátuma az alkalmazás neve. 
 
-Fejléc-alapú hitelesítés beállításával kapcsolatos információkért lásd: [fejléc-alapú hitelesítés egyszeri bejelentkezéshez az alkalmazásproxy](../application-proxy-ping-access.md).
+Fejléc-alapú hitelesítés beállításával kapcsolatos információkért lásd: [fejléc-alapú hitelesítés egyszeri bejelentkezéshez az alkalmazásproxy](application-proxy-configure-single-sign-on-with-ping-access.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az egyszeri bejelentkezés az alkalmazásproxy vaulting jelszó](../application-proxy-sso-azure-portal.md)
+- [Az egyszeri bejelentkezés az alkalmazásproxy vaulting jelszó](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [Kerberos által korlátozott delegálás az egyszeri bejelentkezés az alkalmazásproxy](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Az egyszeri bejelentkezés az alkalmazásproxy fejléc-alapú hitelesítés](../application-proxy-ping-access.md) 
+- [Az egyszeri bejelentkezés az alkalmazásproxy fejléc-alapú hitelesítés](application-proxy-configure-single-sign-on-with-ping-access.md) 

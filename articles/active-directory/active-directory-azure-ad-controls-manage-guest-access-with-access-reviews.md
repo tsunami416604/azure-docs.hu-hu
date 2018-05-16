@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 2ac28c278b9ac832f05cdb19a48ea576526104b3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Az Azure ad-val vendég-hozzáférés kezelése értékelést eléréséhez
 
@@ -33,7 +33,7 @@ Is könnyen biztosítható, hogy a vendégfelhasználók megfelelő hozzáféré
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-A hozzáférési felülvizsgálatok az Azure AD Premium P2 kiadásában érhetők el, a Microsoft nagyvállalati mobilitási + biztonsági E5 csomagban. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások). Minden olyan felhasználónak licencre van szüksége, aki a szolgáltatást felülvizsgálat létrehozása, felülvizsgálat elérése vagy felülvizsgálat alkalmazása céljából használja.
+A hozzáférési felülvizsgálatok az Azure AD Premium P2 kiadásában érhetők el, a Microsoft nagyvállalati mobilitási + biztonsági E5 csomagban. További információk: [Azure Active Directory editions](active-directory-whatis.md) (Azure Active Directory-kiadások). Minden olyan felhasználónak licencre van szüksége, aki a szolgáltatást felülvizsgálat létrehozása, felülvizsgálat elérése vagy felülvizsgálat alkalmazása céljából használja.
 
 Ha azt tervezi, kérje meg a vendégfelhasználók számára saját hozzáférési áttekintéséhez, olvassa el a Vendég felhasználó licencelésével kapcsolatban. További információkért lásd: [Azure AD B2B együttműködés licencelési](active-directory-b2b-licensing.md).
 

@@ -1,9 +1,9 @@
 ---
-title: Ismerkedés a Notification Hubs Xamarin.Android-alkalmazásokkal való használatával | Microsoft Docs
+title: Leküldéses értesítések küldése Xamarin.Android-alkalmazásokba az Azure Notification Hubs használatával | Microsoft Docs
 description: Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin Android-alkalmazásokba.
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: ''
+editor: spelluru
 services: notification-hubs
 documentationcenter: xamarin
 ms.assetid: 0be600fe-d5f3-43a5-9e5e-3135c9743e54
@@ -11,88 +11,76 @@ ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 7fee7813bbdcf902d5f5ae2d0af7540c8899ad25
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: f75671e2e5511054f3db550a8c24e62d031492c3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-started-with-notification-hubs-for-xamarinandroid-apps"></a>Ismerkedés a Notification Hubs Xamarin.Android-alkalmazásokkal való használatával
+# <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése Xamarin.Android-alkalmazásokba az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin.Android-alkalmazásokba. Létre fog hozni egy üres Xamarin.Android-alkalmazást, amely leküldéses értesítéseket fogad a Firebase Cloud Messaging (FCM) használatával. Amikor végzett, képes lesz az értesítési központ használatával leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre. A befejezett kód a minta [NotificationHubs alkalmazásban][GitHub] érhető el.
+Ez az oktatóanyag azt mutatja be, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin.Android-alkalmazásokba. Létre fog hozni egy üres Xamarin.Android-alkalmazást, amely leküldéses értesítéseket fogad a Firebase Cloud Messaging (FCM) használatával. Az értesítési központ használatával fog leküldéses értesítéseket küldeni az alkalmazást futtató összes eszközre. A befejezett kód a minta [NotificationHubs alkalmazásban][GitHub] érhető el.
 
-Ez az oktatóanyag az egyszerű küldési forgatókönyvet mutatja be a Notification Hubs használatával.
+Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
-## <a name="before-you-begin"></a>Előkészületek
-[!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
-
-Az oktatóanyag teljes kódja a GitHubon, [itt][GitHub] található meg.
+> [!div class="checklist"]
+> * Egy Firebase-projekt létrehozása és a Firebase Cloud Messaging engedélyezése
+> * Értesítési központ létrehozása
+> * Egy Xamarin.Android-alkalmazás létrehozása és csatlakoztatása az értesítési központhoz
+> * Tesztértesítések küldése az Azure Portalról
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyaghoz az alábbiakra lesz szükség:
 
-* Windows rendszeren [Visual Studio és Xamarin], vagy OS X rendszeren [Visual Studio for Mac].
-* Aktív Google-fiók
+- **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+- Windows rendszeren [Visual Studio és Xamarin], vagy OS X rendszeren [Visual Studio for Mac].
+- Aktív Google-fiók
 
-Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Xamarin.Android-alkalmazásokkal kapcsolatos Notification Hubs-oktatóanyag elvégzéséhez.
-
-> [!IMPORTANT]
-> Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F).
-> 
-> 
-
-## <a name="enable-firebase-cloud-messaging"></a>A Firebase Cloud Messaging engedélyezése
+## <a name="create-a-firebase-project-and-enable-firebase-cloud-messaging"></a>Egy Firebase-projekt létrehozása és a Firebase Cloud Messaging engedélyezése
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-## <a name="configure-your-notification-hub"></a>Az értesítési központ konfigurálása
+## <a name="create-a-notification-hub"></a>Értesítési központ létrehozása
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="6">
+### <a name="configure-gcm-settings-for-the-notification-hub"></a>Az értesítési központ GCM-beállításainak konfigurálása
 
-<li><p>Válassza az oldal tetején található <b>Konfigurálás</b> lapot, adja meg az <b>API-kulcs</b> az előző szakaszban beszerzett értékét, majd kattintson a <b>Mentés</b> parancsra.</p>
-</li>
-</ol>
-&emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+1. Válassza a **Google (GCM)** lehetőséget a **NOTIFICATION SETTINGS** (Értesítési beállítások) részen. 
+2. Adja meg a korábban a Google Firebase konzoljáról feljegyezett **Legacy server key** (Régi kiszolgálókulcs) értékét. 
+3. Válassza az eszköztár **Save** (Mentés) elemét. 
+
+    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 Az értesítési központ konfigurálva van az FCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
-## <a name="connect-your-app-to-the-notification-hub"></a>Az alkalmazás csatlakoztatása az értesítési központhoz
-Először hozzon létre egy új projektet. 
+## <a name="create-xamainandroid-app-and-connect-it-to-notification-hub"></a>Egy Xamarin.Android-alkalmazás létrehozása és csatlakoztatása az értesítési központhoz
 
-1. A Visual Studióban válassza az **New Solution** (Új megoldás)  > **Android App** (Android-alkalmazás) elemet, majd kattintson a **Next** (Tovább) elemre.
+### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Egy Visual Studio-projekt létrehozása és NuGet-csomagok hozzáadása
+1. A Visual Studióban mutasson a **File** (Fájl) menüre, és válassza a **New** (Új), majd a **Project** (Projekt) elemet. 
    
-      ![Visual Studio – Új Android-projekt létrehozása][22]
+      ![Visual Studio – Új Android-projekt létrehozása](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog.png)
+2. A **Solution Explorer** (Megoldáskezelő) ablakában bontsa ki a **Properties** (Tulajdonságok) elemet, majd kattintson az **AndroidManifest.xml** fájlra. Frissítse a csomag nevét arra a csomagnévre, amelyet akkor adott meg, amikor hozzáadta a Firebase Cloud Messaginget a projekthez a Google Firebase konzolján. 
 
-2. Adja meg az **App name** (Alkalmazás neve) és az **Identifier** (Azonosító) értékét. Válassza ki a támogatni kívánt **Target Plaforms-** (Célplatformok) értékeit, majd válassza a **Next** (Tovább), majd a **Create** (Létrehozás) elemet.
-   
-      ![Visual Studio – Android-alkalmazás konfigurációja][23]
+      ![Csomag neve a GCM-ben](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
+3. Kattintson a jobb gombbal a projektre, és válassza a **Manage Nuget Packages…** (NuGet-csomagok kezelése) lehetőséget. 
+4. Válassza ki a **Browse** (Tallózás) lapot. Keressen rá a **Xamarin.GooglePlayServices.Base** kifejezésre. A találatok listájában válassza a **Xamarin.GooglePlayServices.Base** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot. 
 
-    Ezzel létrehoz egy új Android-projektet.
+      ![Google Play-szolgáltatások NuGet-csomagjai](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
+5. A **NuGet Package Manager** (NuGet-csomagkezelő) ablakban keressen rá a **Xamarin.Firebase.Messaging** kifejezésre. A találatok listájában válassza a **Xamarin.Firebase.Messaging** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot. 
+6. Ezután keressen rá a **Xamarin.Azure.NotificationHubs.Android** kifejezésre. A találatok listájában válassza a **Xamarin.Azure.NotificationHubs.Android** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot. 
 
-3. Nyissa meg a projekt tulajdonságait a Solution (Megoldás) nézetben a jobb gombbal az új projektre kattintva, és az **Options** (Beállítások) elemet választva. Válassza az **Android Application** (Android-alkalmazás) lehetőséget a **Build** (Felépítés) szakaszban.
-   
-    Ellenőrizze, hogy a **Package name** (Csomag neve) értéke kisbetűvel kezdődik.
-   
-   > [!IMPORTANT]
-   > A csomagnév első betűjének kisbetűnek kell lennie. Ellenkező esetben az alkalmazásjegyzékkel kapcsolatos hibák lépnek fel, amikor az alábbi lépésben regisztrálja az alkalmazást a leküldéses értesítésekre.
-   > 
-   > 
-   
-      ![Visual Studio – Android-projekt beállításai][24]
-4. A **Minimum Android version** (Minimális Android-verziót) beállíthatja egy másik API-szintre.
-5. A **Target Android version** (Cél Android-verziót) beállíthatja másik cél API-verzióra (legalább 8. szintű API-nak kell lennie).
-6. Kattintson az **OK** gombra, és zárja be a Project Options (Projektbeállítások) párbeszédpanelt.
+### <a name="add-the-google-services-json-file"></a>A Google-szolgáltatás JSON-fájljának hozzáadása
 
-### <a name="add-the-required-packages-to-your-project"></a>A szükséges csomagok hozzáadása a projekthez
+1. Másolja a Google Firebase konzoljáról letöltött **google-services.json** fájlt a projektmappába.
+2. Adja hozzá a **google-services.json** fájlt a projekthez.
+3. A **Solution Explorer** (Megoldáskezelő) ablakában válassza ki a **google-services.json** fájlt.
+4. A **Properties** (Tulajdonságok) panelen a Build Action (Felépítési művelet) számára állítsa be a **GoogleServicesJson** értéket. Ha nem látja a **GoogleServicesJson** műveletet, zárja be a Visual Studiót, indítsa el újra, nyissa meg újra a projektet, és próbálkozzon újból. 
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **Hozzáadás** > **NuGet-csomagok hozzáadása** lehetőséget.
-2. Keresse meg a **Xamarin.Azure.NotificationHubs.Android** elemet, és adja hozzá a projekthez.
-3. Keresse meg a **Xamarin.Firebase.Messaging** elemet, és adja hozzá a projekthez.
+      ![GoogleServicesJson felépítési művelet](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
 
 ### <a name="set-up-notification-hubs-in-your-project"></a>Értesítési központok beállítása a projektben
 
@@ -111,10 +99,11 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
 
 1. Gyűjtse össze az alábbi információikat az Android-alkalmazásra és az értesítési központra vonatkozóan:
    
-   * **Figyelési kapcsolati karakterlánc**: Az [Azure Portalról] irányítópultján válassza a **Kapcsolati karakterláncok megtekintése** elemet. Másolja a *DefaultListenSharedAccessSignature* kapcsolati karakterláncot ezen értékhez.
-   * **Központ neve**: Ez a központ neve az [Azure Portalról]. Például: *mynotificationhub2*.
+   * **Figyelési kapcsolati karakterlánc**: Az [Azure Portalon] irányítópultján válassza a **Kapcsolati karakterláncok megtekintése** elemet. Másolja a *DefaultListenSharedAccessSignature* kapcsolati karakterláncot ezen értékhez.
+   * **Központ neve**: A központ neve az [Azure Portalon]. Például: *mynotificationhub2*.
      
-2. Hozzon létre egy **Constants.cs** osztályt a Xamarin-projekthez, és definiálja a következő konstans értékeket az osztályban. A helyőrzőket cserélje le az értékekkel.
+2. A **Solution Explorer** (Megoldáskezelő) ablakában kattintson a jobb gombbal a **project** (projekt) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **Class** (Osztály) lehetőségre. 
+4. Hozzon létre egy **Constants.cs** osztályt a Xamarin-projekthez, és definiálja a következő konstans értékeket az osztályban. A helyőrzőket cserélje le az értékekkel.
     
     ```csharp
         public static class Constants
@@ -123,19 +112,16 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
            public const string NotificationHubName = "<hub name>";
         }
     ```
-
 3. Adja hozzá a következő using utasításokat a **MainActivity.cs** osztályhoz:
    
     ```csharp
         using Android.Util;
     ```
-
 4. Adjon hozzá egy példányváltozót a **MainActivity.cs** osztályhoz, amelyet egy figyelmeztető párbeszédpanel megjelenítésére használ a rendszer az alkalmazás futása során:
    
     ```csharp
         public const string TAG = "MainActivity";
     ```
-
 5. A **MainActivity.cs** osztályban adja hozzá az alábbi kódot az `OnCreate` elemhez a `base.OnCreate(savedInstanceState)` után:
 
     ```csharp   
@@ -151,32 +137,22 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
             }
         }
     ```
-
-6. Kattintson a jobb gombbal a projektre, és adja hozzá a Firebase-projektből korábban letöltött `google-services.json` fájlt. Kattintson a jobb gombbal a hozzáadott fájlra, és az összeállítási művelet beállításaként adja meg a `GoogleServicesJson` értéket
-
-    ![Visual Studio – A google-services.json konfigurálása][25]
-
-7. Hozzon létre egy új, **MyFirebaseIIDService** nevű osztályt.
-
+7. Hozzon létre egy új, **MyFirebaseIIDService** nevű osztályt ugyanúgy, ahogy a **Constants** osztályt létrehozta. 
 8. Adja hozzá a következő using utasításokat a **MyFirebaseIIDService.cs** osztályhoz:
    
     ```csharp
-        using System;
-        using Android.App;
-        using Firebase.Iid;
-        using Android.Util;
-        using WindowsAzure.Messaging;
-        using System.Collections.Generic;
+    using Android.Util;
+    using WindowsAzure.Messaging;
+    using Firebase.Iid;
     ```
 
-9. A **MyFirebaseIIDService** osztályban adja hozzá az alábbiakat az **osztálydeklaráció** feletti részben, és örököltesse az osztállyal a **FirebaseInstanceIdService** tulajdonságait:
+9. A **MyFirebaseIIDService** osztályban adja hozzá az alábbi **osztálydeklarációt**, és örököltesse az osztállyal a **FirebaseInstanceIdService** tulajdonságait:
    
     ```csharp
         [Service]
         [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
         public class MyFirebaseIIDService : FirebaseInstanceIdService
     ```
-
 10. Adja hozzá a következő kódot a **MyFirebaseIIDService.cs** osztályhoz:
    
     ```csharp
@@ -202,29 +178,20 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
             Log.Debug(TAG, $"Successful registration of ID {regID}");
         }
     ```
-
 11. Hozzon létre egy másik új osztályt a projekthez **MyFirebaseMessagingService** néven.
-
 12. Adja hozzá a következő using utasításokat a **MyFirebaseMessagingService.cs** osztályhoz.
     
     ```csharp
-        using System;
-        using System.Linq;
-        using Android;
-        using Android.App;
-        using Android.Content;
         using Android.Util;
         using Firebase.Messaging;
     ```
-
 13. Adja hozzá az alábbiakat az osztálydeklaráció feletti részben, és örököltesse az osztállyal a **FirebaseMessagingService** tulajdonságait:
     
     ```csharp
         [Service]
         [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
         public class MyFirebaseMessagingService : FirebaseMessagingService
-    ```
-    
+    ```    
 14. Adja hozzá a következő kódot a **MyFirebaseMessagingService.cs** osztályhoz:
     
     ```csharp
@@ -265,24 +232,22 @@ Nyissa meg az **AndroidManifest.xml** fájlt, és illessze a következő `<recei
             notificationManager.Notify(0, notificationBuilder.Build());
         }
     ```
+15. **Hozza létre** a projektet. 
+16. **Futtassa** az alkalmazást az eszközén vagy a betöltött emulátoron.
 
-15. Az alkalmazás futtatása az eszközén vagy a betöltött emulátoron
+## <a name="send-test-notification-from-the-azure-portal"></a>Tesztértesítés küldése az Azure Portalról
+Az [Azure Portalon] *Tesztküldés* lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. A parancs egy leküldéses tesztértesítést küld az eszközre.
 
-## <a name="send-notifications-from-the-portal"></a>Értesítések küldése a portálról
-Az [Azure Portalról] *Tesztküldés* lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. Ez egy leküldéses tesztértesítést küld az eszközre.
-
-![Azure Portal – Küldés tesztelése][30]
+![Azure Portal – Küldés tesztelése](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
 A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis kódtár használatával, mint a Mobile Services vagy az ASP.NET. Ha a háttérszolgáltatáshoz nem érhető el kódtár, az értesítések küldéséhez használhatja közvetlenül a REST API-t is.
 
-Az alábbi listában egyéb oktatóprogramok találhatók, amelyek az értesítések küldésével kapcsolatosak:
-
-* ASP.NET: [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára].
-* Azure Notification Hubs Java SDK: [How to use Notification Hubs from Java](notification-hubs-java-push-notification-tutorial.md) (A Notification Hubs használata Javából) oktatóprogram bemutatja, hogyan küldhetők értesítések a Javával. Ez az Eclipse-ben lett tesztelve Android-fejlesztéshez.
-* PHP: [How to use Notification Hubs from PHP](notification-hubs-php-push-notification-tutorial.md) (A Notification Hubs használata PHP-ből).
-
 ## <a name="next-steps"></a>További lépések
-Ebben az egyszerű példában értesítéseket küldött az összes Android-eszközre. Ha adott felhasználóknak szeretne értesítést küldeni, tekintse meg [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára] oktatóanyagot. Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, olvassa el a [Use Notification Hubs to send breaking news] (Friss hírek küldése Notification Hubs használatával) című témakört. A Notification Hubs használatával kapcsolatban a [Notification Hubs használatával] és [Notification Hubs Android rendszeren való használatával] foglalkozó témakörben tekinthet meg további információt.
+Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendszerben regisztrált Android-eszközök mindegyikének. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott Android-eszközökre, lépjen tovább a következő oktatóanyagra: 
+
+> [!div class="nextstepaction"]
+>[Leküldéses értesítések küldése adott eszközökre](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+
 
 <!-- Anchors. -->
 [Enable Google Cloud Messaging]: #register
@@ -321,11 +286,11 @@ Ebben az egyszerű példában értesítéseket küldött az összes Android-eszk
 [Visual Studio és Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 
-[Azure Portalról]: https://portal.azure.com/
+[Azure Portalon]: https://portal.azure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs használatával]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs Android rendszeren való használatával]: http://msdn.microsoft.com/library/dn282661.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Android]: http://msdn.microsoft.com/library/dn282661.aspx
 
-[A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára]: /manage/services/notification-hubs/notify-users-aspnet
+[Use Notification Hubs to push notifications to users]: /manage/services/notification-hubs/notify-users-aspnet
 [Use Notification Hubs to send breaking news]: /manage/services/notification-hubs/breaking-news-dotnet
 [GitHub]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid

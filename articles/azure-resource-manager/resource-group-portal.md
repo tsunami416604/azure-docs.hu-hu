@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 61cfd9e9d955b6a722bc88542b872a4a3edf5a36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fe4666f053c7f3bd582ae51dd1694a425bea35dd
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>Azure-portálon keresztül erőforrások kezelése
 
 Ez a cikk bemutatja, hogyan használható a [Azure-portálon](https://portal.azure.com) rendelkező [Azure Resource Manager](resource-group-overview.md) az Azure erőforrások kezeléséhez. A portálon keresztül erőforrások telepítésével kapcsolatos további tudnivalókért lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](resource-group-template-deploy-portal.md).
+
+[!INCLUDE [Handle personal data](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="manage-resource-groups"></a>Erőforrás-csoportok kezelése
 
@@ -100,7 +102,7 @@ Zárolhatja egy előfizetés, erőforráscsoportból vagy erőforrás véletlen 
 ## <a name="view-your-subscription-and-costs"></a>Az előfizetés és a költségek megtekintése
 Az előfizetés és az összegzett költségeinek kapcsolatos információk is megtekinthetők az erőforrások. Válassza ki **előfizetések** és meg szeretné tekinteni az előfizetést. Válasszon egy előfizetés csak lehet.
 
-![előfizetést](./media/resource-group-portal/select-subscription.png)
+![előfizetés](./media/resource-group-portal/select-subscription.png)
 
 Az írási sebesség láthatja.
 

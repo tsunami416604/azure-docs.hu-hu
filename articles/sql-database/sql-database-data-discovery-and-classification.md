@@ -1,6 +1,6 @@
 ---
-title: "Az Azure SQL-adatbázis adatainak felderítése és besorolása |} Microsoft Docs"
-description: "Az Azure SQL-adatbázis adatainak felderítése és besorolása"
+title: Az Azure SQL-adatbázis adatainak felderítése és besorolása |} Microsoft Docs
+description: Az Azure SQL-adatbázis adatainak felderítése és besorolása
 services: sql-database
 author: giladm
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 18afebefaee9117244767e0a00e293a297bbf9af
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 375142b0e55c741e6ab914e969751833f989d2fb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 Az Azure SQL Database beépített speciális képességeket biztosít a felderítési adatok & besorolás (jelenleg előzetes verzió) **felderítéséhez**, **zárolásának**, **címkézés**  &  **védelme** az adatbázisokat a bizalmas adatokat.
@@ -22,6 +22,9 @@ Felderítésének, illetve a leginkább bizalmas adatok zárolásának (üzleti,
 * Gondoskodik a megfelelő adatok adatvédelmi szabványok és az előírásoknak való megfelelés követelményeket, például GDPR.
 * Különféle biztonsági forgatókönyvek, például a figyelési (naplózás), és riasztást küld rendellenes bizalmas adatokhoz való hozzáférést.
 * Hozzáférés szabályozása, és a bizalmas adatokat tartalmazó adatbázisok biztonsági korlátozására.
+
+> [!NOTE]
+> Ez a dokumentum csak az Azure SQL Database vonatkozik. Az SQL Server (helyszíni), lásd: [SQL adatelérési felderítése és besorolása](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>– Áttekintés
 Felderítési adatok & besorolás vezeti be a speciális szolgáltatások és új SQL-képességek, egy új SQL Information Protection-összeállítást az adatokat, nem csak az adatbázis védelmét célzó képező:

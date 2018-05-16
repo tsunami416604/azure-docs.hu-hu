@@ -1,7 +1,7 @@
 ---
 title: A részletes tanulási és AI keretrendszerek - Azure |} Microsoft Docs
 description: Mély tanulás és mesterségesintelligencia-keretrendszerek
-keywords: adatok tudományos eszközök, adatok tudományos virtuális gép, adattudomány, linux adattudomány eszközei
+keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: d73869d1371247a269b6601c35b1a938d89176c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd8579fe29282f3875ecfddf67a34444e3de9ef5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatok tudományos virtuális gép](http://aka.ms/dsvm) (DSVM) és a [mély tanulási VM](http://aka.ms/dsvm/deeplearning) mély tanulási keretrendszerek mesterséges intelligencia (AI) alkalmazások a prediktív elemzés érdekében számos támogat, és kognitív képességei többek között a lemezkép és a nyelvi ismertetése. 
@@ -80,6 +80,7 @@ Az alábbiak a tanulási keretrendszerek a DSVM elérhető összes mély.
 | Mi ez?   | A részletes oktatási keretrendszer      |
 | Támogatott DSVM kiadás      | Ubuntu     |
 | Hogyan van azt konfigurált / a DSVM telepítve?  | Caffe telepítve van-e `/opt/caffe`.    |
+| Hogyan lehet váltani a Python 2.7-es | Futtassa a `source activate root` parancsot. |
 | Minták mutató hivatkozások      | Minták szerepelnek `/opt/caffe/examples`.      |
 | A DSVM a kapcsolódó eszközök      | Caffe2      |
 ### <a name="how-to-use--run-it"></a>Hogyan használja az / futtatni?  
@@ -88,12 +89,15 @@ Jelentkezzen be a virtuális Gépet, majd indítsa el egy új terminál, és ír
 
 ```
 cd /opt/caffe/examples
+source activate root
 jupyter notebook
 ```
 
 Egy új böngészőablakban nyílik meg a minta notebookok.
 
-/Opt/caffe/build/install/bin bináris fájljai vannak telepítve. 
+/Opt/caffe/build/install/bin bináris fájljai vannak telepítve.
+
+Caffe telepített verziója szükséges Python 2.7, és nem működik együtt a Python 3.5 alapértelmezés szerint aktív. Futtatás `source activate root` Anaconda környezetre váltson. 
 
 ## <a name="caffe2"></a>Caffe2
 

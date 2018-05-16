@@ -1,20 +1,20 @@
 ---
-title: "Azure-portálon kontrasztos |} Microsoft Docs"
-description: "Megtudhatja, hogyan kontrasztos, vagy módosítsa az Azure portál témát."
+title: Azure-portálon kontrasztos |} Microsoft Docs
+description: Megtudhatja, hogyan kontrasztos, vagy módosítsa az Azure portál témát.
 services: azure-portal
-keywords: 
+keywords: ''
 author: cwatson-cat
 ms.author: cwatson
 ms.date: 08/24/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: accessibility
-manager: timlt
-ms.openlocfilehash: 6099bc9d19216dced5611785c2a484d50fde7883
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+manager: dougeby
+ms.openlocfilehash: 08f42fc70373effd46297ad67d4359bfa42852b7
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Kontrasztos, vagy módosítsa a téma az Azure-portálon
 További megjelenítés vagy az Azure portálon színsémáját módosítani kívánja, nyissa meg a változtatások portál beállításait. 
@@ -37,6 +37,6 @@ További megjelenítés vagy az Azure portálon színsémáját módosítani kí
     ![Képernyőkép a téma lehetőségeket mutatja be az Azure portál beállításai](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 1. Kattintson az **Alkalmaz** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure-portálon használható billentyűparancsok](azure-portal-keyboard-shortcuts.md)
 - [Támogatott böngészők és eszközök](../azure-preview-portal-supported-browsers-devices.md)

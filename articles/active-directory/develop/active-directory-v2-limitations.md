@@ -3,23 +3,25 @@ title: Az Azure Active Directory v2.0 végpont korlátai és korlátozásai |} M
 description: Korlátozások és az Azure AD v2.0-végpontra vonatkozó korlátozások listáját.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e026fd7021b39905d5392be55dbf3862cd307360
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpontra érdemes használni?
 Alkalmazások, amelyekbe beépül az Azure Active Directory összeállításakor kell döntse el, hogy a v2.0-végpont és a hitelesítési protokollokat megfelel-e az igényeinek. Az Azure Active Directory eredeti végpont továbbra is teljes mértékben támogatja, és néhány tekintetben a v2.0-nál több szolgáltatás gazdag. Azonban a v2.0-végpontra [vezet be, jelentős előnyt](active-directory-v2-compare.md) a fejlesztők számára.
@@ -47,7 +49,7 @@ Jelenleg minden alkalmazást, amely szeretné integrálni a v2.0-végponttal, l�
 Ezenkívül a létrehozott alkalmazás-regisztráció a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) rendelkezik a következő kikötésekkel:
 
 * Csak kettő használható azonosítót.
-* Egy alkalmazás regisztrációs személyes Microsoft-fiókkal rendelkező felhasználó által regisztrált tekinthetők meg és felügyeli csak egyetlen fejlesztői fiók létrehozása. Több fejlesztők között nem lehet megosztani.  Ha meg szeretné osztani több fejlesztők többek között az alkalmazás regisztrációját, ha bejelentkezik a regisztrációs portálon az Azure AD-fiókot is létrehozhat az alkalmazás.
+* Egy alkalmazás regisztrációs személyes Microsoft-fiókkal rendelkező felhasználó által regisztrált tekinthetők meg és felügyeli csak egyetlen fejlesztői fiók létrehozása. Több fejlesztők között nem lehet megosztani. Ha meg szeretné osztani több fejlesztők többek között az alkalmazás regisztrációját, ha bejelentkezik a regisztrációs portálon az Azure AD-fiókot is létrehozhat az alkalmazás.
 * Nincsenek az átirányítási URI-t, hogy a formátumának több korlátozásait. Átirányítási URI-kkal kapcsolatos további információkért lásd: a következő szakaszban.
 
 ## <a name="restrictions-on-redirect-uris"></a>Átirányítási URI-k korlátozásai
@@ -89,12 +91,12 @@ Alkalmazás regisztrálása az alkalmazásregisztrációs portálra, lásd: [egy
 Szalagtár támogatása a v2.0-végpontra jelenleg korlátozott. Ha egy éles alkalmazásban a v2.0-végpontra használni kívánt, akkor ezeket a beállításokat:
 
 * Ha Ön által létrehozott webalkalmazás bejelentkezési és a token érvényességi végrehajtásához biztonságosan használhatja a Microsoft általánosan elérhető kiszolgálóoldali köztes. Ezek közé tartozik az OWIN Open ID Connect köztes az ASP.NET és a Node.js Passport beépülő modult. Használja a Microsoft köztes mintakódok, tekintse meg a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakasz.
-* Ha egy asztali vagy hordozható alkalmazást fejleszt, Microsoft hitelesítési könyvtárak (MSAL) szereplő előzetes verzióban egyikét használhatja.  Ezek a könyvtárak egy éles által támogatott előzetes szerepelnek, így biztonságosan is használhatja őket az üzemi környezetben működő alkalmazásokhoz. További tudnivalók az előzetes kiadásban, illetve a rendelkezésre álló tárak a [hitelesítési könyvtárak hivatkozás](active-directory-v2-libraries.md).
+* Ha egy asztali vagy hordozható alkalmazást fejleszt, Microsoft hitelesítési könyvtárak (MSAL) szereplő előzetes verzióban egyikét használhatja. Ezek a könyvtárak egy éles által támogatott előzetes szerepelnek, így biztonságosan is használhatja őket az üzemi környezetben működő alkalmazásokhoz. További tudnivalók az előzetes kiadásban, illetve a rendelkezésre álló tárak a [hitelesítési könyvtárak hivatkozás](active-directory-v2-libraries.md).
 * Nem fedi le Microsoft szalagtárak platformokhoz így integrálhatja a v2.0-végponttal közvetlenül üzenetek küldése és fogadása protokoll az alkalmazás kódjában. A v2.0 OpenID Connectet és az OAuth protokollok [explicit módon szerepelnek](active-directory-v2-protocols.md) ilyen integrációs elvégzéséhez.
 * Végezetül nyílt forráskódú ID Connect megnyitásához és az OAuth-tárak segítségével integrálható a v2.0-végponttól. A v2.0 protokoll számos nyílt forráskódú protokoll szalagtárak anélkül, hogy lényegesen módosul kompatibilisnek kell lennie. A rendelkezésre állási szalagtárak ilyen típusú függ a nyelvet és a platform. A [Open ID Connect](http://openid.net/connect/) és [OAuth 2.0](http://oauth.net/2/) webhelyek népszerű megvalósítások listának a karbantartására. További információkért lásd: [Azure Active Directory v2.0 és hitelesítési kódtárai](active-directory-v2-libraries.md), és nyílt forráskódú klienskódtárak és minták a v2.0-végponttal tesztelt listáját.
 
 ## <a name="restrictions-on-protocols"></a>Protokollok korlátozásai
-A v2.0-végpontra nem támogatja a SAML-alapú vagy a WS-Federation; csak a támogatott Open ID Connect és az OAuth 2.0-s.  Nem minden funkciók és képességek OAuth protokollok bekerültek a v2.0-végponttól. Ezen protokoll funkciók és képességek jelenleg *nem érhető el* a v2.0-végpontra a:
+A v2.0-végpontra nem támogatja a SAML-alapú vagy a WS-Federation; csak a támogatott Open ID Connect és az OAuth 2.0-s. Nem minden funkciók és képességek OAuth protokollok bekerültek a v2.0-végponttól. Ezen protokoll funkciók és képességek jelenleg *nem érhető el* a v2.0-végpontra a:
 
 * Azonosító-jogkivonatokat, amelyeket a v2.0-végpontra nem tartalmaznak egy `email` jogcímek a felhasználó számára, akkor is, ha a felhasználó engedélye az e-mailek megtekintéséhez szerez be.
 * Az OpenID Connect UserInfo végpont nem vonatkozik a v2.0-végponttól. Felhasználói profil összes adata, amely potenciálisan kapna a végponti azonban elérhető a Microsoft Graph `/me` végpont.

@@ -14,36 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2c16c0414ddf023e7055a8b57c514fc069f3112a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Az Azure enterprise scaffold implementációi
-Ez a témakör példák hogyan vállalati kapcsolatos ajánlások is létrehozható egy [Azure enterprise scaffold](resource-manager-subscription-governance.md). Gyakori helyzetek ajánlott eljárásai bemutatják egy kitalált, Contoso nevű vállalat használ.
+Ez a cikk alapján vállalati hogyan valósíthatja meg a javaslatok példákat tartalmaz egy [Azure enterprise scaffold](resource-manager-subscription-governance.md). Gyakori helyzetek ajánlott eljárásai bemutatják egy kitalált, Contoso nevű vállalat használ.
 
 ## <a name="background"></a>Háttér
-Contoso egy olyan világszerte ellátási lánc megoldásokat biztosít az ügyfelek a "Szoftver szolgáltatásként" modell csomagolt modellre a vállalat helyszíni telepítve.  Ők fejlesztik ki szoftver jelentős fejlesztési adatközpontok India, az Amerikai Egyesült Államok és Kanada között a világ körüli.
+Contoso vállalat világszerte ellátási lánc megoldást nyújt az ügyfelek. Ezek biztosítanak mindent egy szoftverfrissítési a modell csomagolt modellre telepített helyszíni.  Ők fejlesztik ki szoftver jelentős fejlesztési adatközpontok India, az Amerikai Egyesült Államok és Kanada között a világ körüli.
 
 A vállalat ISV része több független részlegek termékek kezelése jelentős üzleti van osztva. Minden részleg rendelkezik, saját fejlesztők számára, a termék kezelők és a fejlesztők.
 
 A vállalati informatikai szolgáltatások (ETS) részleg központi informatikai képességet biztosít, és ahol üzleti egységek tárolására az alkalmazások több adatközpontok kezeli. Az adatközpontok kezelése, valamint a ETS szervezet biztosít, és kezeli (például az e-mailek és webhelyek) központi együttműködés és a hálózati vagy a telefonos szolgáltatások. Akkor is kisebb részlegek műveleti személyzet nem rendelkező ügyfélkapcsolati munkaterhelések kezelése.
 
-Ez a témakör a következő személyeknek használt:
+Ez a cikk a következő személyeknek használt:
 
 * Dave a ETS Azure rendszergazda.
 * Alice Contoso igazgató a fejlesztés ellátási lánc részleg.
 
-Contoso kell hozhat létre egy üzleti alkalmazást és egy ügyfélkapcsolati alkalmazást. Az alkalmazások futtatásához Azure határozott. Dave beolvassa a [előíró előfizetés irányítás](resource-manager-subscription-governance.md) témakör, és készen áll a a ajánlások megvalósításával.
+Contoso kell hozhat létre egy üzleti alkalmazást és egy ügyfélkapcsolati alkalmazást. Az alkalmazások futtatásához Azure határozott. Dave beolvassa a [előíró előfizetés irányítás](resource-manager-subscription-governance.md) a következő cikket, és készen áll a a ajánlások megvalósításával.
 
 ## <a name="scenario-1-line-of-business-application"></a>1. forgatókönyv: üzleti alkalmazás
-A Contoso egy forrás kód kezelő rendszer (Bitbucketből) keresztül történik a fejlesztők által használandó fejleszt.  Az alkalmazás infrastruktúra használ szolgáltatásként (IaaS) futtató, és a webkiszolgálók és adatbázis-kiszolgáló áll. Fejlesztők fejlesztői környezetükben lévő kiszolgálók eléréséhez, de nem a kiszolgálók az Azure-ban való hozzáférésre van szükségük. Contoso ETS kívánja az alkalmazás tulajdonos és a csoport, az alkalmazás kezeléséhez. Az alkalmazás csak akkor közben a Contoso vállalati hálózaton. Dave kell kötnie az előfizetés ehhez az alkalmazáshoz. Az előfizetés is tárolni fogja más fejlesztéssel kapcsolatos szoftver a jövőben.  
+A Contoso egy forrás kód kezelő rendszer (Bitbucketből) keresztül történik a fejlesztők által használandó fejleszt.  Az alkalmazás infrastruktúra használ szolgáltatásként (IaaS) futtató, és a webkiszolgálók és adatbázis-kiszolgáló áll. Fejlesztők fejlesztői környezetükben lévő kiszolgálók eléréséhez, de nem a kiszolgálók az Azure-ban való hozzáférésre van szükségük. Contoso ETS szeretné az alkalmazás tulajdonos és a csoport, az alkalmazás kezeléséhez. Az alkalmazás csak akkor közben a Contoso vállalati hálózaton. Dave kell kötnie az előfizetés ehhez az alkalmazáshoz. Az előfizetés is tárolni fogja más fejlesztéssel kapcsolatos szoftver a jövőben.  
 
 ### <a name="naming-standards--resource-groups"></a>Elnevezési szabályai & erőforráscsoportok
-Dave támogatja a fejlesztők által az üzleti egységek közösen használt eszközök egy előfizetést hoz létre. Ezután létre kell hoznia kifejező nevet (a az alkalmazás és a hálózatok) előfizetésbe és erőforráscsoportba csoportjai számára. Létrehoz a következő előfizetés és az erőforrás-csoportok:
+Dave támogatja a fejlesztők által az üzleti egységek közösen használt eszközök egy előfizetést hoz létre. Dave kell kifejező nevet (a az alkalmazás és a hálózatok) előfizetésbe és erőforráscsoportba csoportjai számára. Létrehoz a következő előfizetés és az erőforrás-csoportok:
 
-| Elem | Name (Név) | Leírás |
+| Elem | Név | Leírás |
 | --- | --- | --- |
 | Előfizetés |Contoso ETS DeveloperTools éles |Támogatja a közös fejlesztői eszközök |
 | Erőforráscsoport |bitbucket-termék-rg |Tartalmazza az alkalmazások webalkalmazás-kiszolgáló és adatbázis-kiszolgáló |
@@ -54,14 +54,14 @@ Miután létrehozta az előfizetést, Dave biztosítani szeretné, hogy a megfel
 
 Dave rendeli hozzá az előfizetés a következő szerepkörök:
 
-| Szerepkör | Hozzárendelve a következőhöz: | Leírás |
+| Szerepkör | Hozzárendelve | Leírás |
 | --- | --- | --- |
 | [Tulajdonos](../role-based-access-control/built-in-roles.md#owner) |Contoso-azonosító a felügyelt AD |Ez az azonosító csak a Contoso-Identity Management eszközzel idő szerinti (JIT) hozzáférési vezérli, és biztosítja, hogy teljesen naplózza az előfizetés tulajdonosa hozzáférés |
-| [Biztonsági kezelője](../role-based-access-control/built-in-roles.md#security-manager) |Adatvédelmi és kockázatkezelési felügyeleti részleg |Ez a szerepkör lehetővé teszi a felhasználók az Azure Security Center és az erőforrások állapotának megtekintése |
+| [Biztonsági olvasó](../role-based-access-control/built-in-roles.md#security-reader) |Adatvédelmi és kockázatkezelési felügyeleti részleg |Ez a szerepkör lehetővé teszi a felhasználók az Azure Security Center és az erőforrások állapotának megtekintése |
 | [Hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor) |Hálózati adapterek |Ez a szerepkör lehetővé teszi, hogy a Contoso-hálózati adapterek a webhelyek közötti VPN és a virtuális hálózatok kezeléséhez |
 | *Egyéni szerepkör* |Alkalmazás tulajdonosa |Dave szerepet hoz létre, amely lehetővé teszi az erőforráscsoporton belül erőforrásainak módosítása. További információkért lásd: [egyéni szerepkörök az Azure RBAC](../role-based-access-control/custom-roles.md) |
 
-### <a name="policies"></a>Házirendek
+### <a name="policies"></a>Szabályzatok
 Dave az előfizetésben szereplő erőforrások kezeléséhez a következő követelményekkel rendelkezik:
 
 * A fejlesztői eszközök támogatják a fejlesztők keresztül történik, mert azt nem szeretné, hogy erőforrásokat hozzon létre bármely régióban felhasználó számára. Azonban hogy tudnia kell, ahol erőforrások jönnek létre.
@@ -70,13 +70,13 @@ Dave az előfizetésben szereplő erőforrások kezeléséhez a következő köv
 
 A következő hoz [Azure házirendek](../azure-policy/azure-policy-introduction.md):
 
-| Mező | Következmény | Leírás |
+| Mező | Hatás | Leírás |
 | --- | --- | --- |
-| location |Naplózási |Naplózási bármely régióban erőforrás létrehozása |
-| type |elutasítás |G sorozatú virtuális gépek létrehozását megtagadása |
-| tags |elutasítás |Igényelnek az alkalmazás tulajdonosa címke |
-| tags |elutasítás |Költség center címke megkövetelése |
-| tags |hozzáfűzése |A címke neve hozzáfűzése **részleghez** értéke pedig **ETS** az összes erőforráshoz |
+| hely |Naplózási |Naplózási bármely régióban erőforrás létrehozása |
+| típus |elutasítás |G sorozatú virtuális gépek létrehozását megtagadása |
+| címkék |elutasítás |Igényelnek az alkalmazás tulajdonosa címke |
+| címkék |elutasítás |Költség center címke megkövetelése |
+| címkék |hozzáfűzése |A címke neve hozzáfűzése **részleghez** értéke pedig **ETS** az összes erőforráshoz |
 
 ### <a name="resource-tags"></a>Az erőforráscímkék
 Dave tisztában van azzal, hogy ő rendelkeznie kell a számlázási azonosíthatja a költségközpont BitBucket végrehajtásához meg. Emellett Dave szeretné tudni, hogy az erőforrások ETS birtokló.
@@ -86,7 +86,7 @@ Adja a következő [címkék](resource-group-using-tags.md) erőforráscsoportok
 | A címke neve | Címke |
 | --- | --- |
 | ApplicationOwner |Ezt az alkalmazást kezelő személy nevét |
-| Költséghely |A csoport, amely az Azure felhasználásra fizeti költséghely |
+| CostCenter |A csoport, amely az Azure felhasználásra fizeti költséghely |
 | Részleghez |**ETS** (az üzleti egység az előfizetéshez tartozó) |
 
 ### <a name="core-network"></a>Központi hálózat
@@ -94,7 +94,7 @@ A Contoso ETS információk adatvédelmi és kockázatkezelési vezetőség elle
 
 Létrehoz a következőket:
 
-| Erőforrás típusa | Name (Név) | Leírás |
+| Erőforrás típusa | Név | Leírás |
 | --- | --- | --- |
 | Virtual Network |belső virtuális hálózat |A Bitbucketből alkalmazással használja, és ExpressRoute keresztül csatlakozik, a Contoso vállalati hálózathoz.  Egy alhálózat (`bitbucket`) biztosít az alkalmazást egy adott IP-címtér |
 | Virtual Network |külső-hálózatok |A jövőbeli nyilvánosan elérhető végpontok igénylő alkalmazások érhető el |
@@ -115,7 +115,7 @@ Dave automatizálható az alkalmazás nem rendelkezik. Bár a létrehozott egy A
 ### <a name="azure-security-center"></a>Azure Security Center
 Contoso informatikai szolgáltatások kezelésében gyorsan azonosíthatja és fenyegetések kezelni kell. Akkor is szeretnék megismerni, hogy milyen problémákat előfordulhat, hogy létezik.  
 
-Ezek a követelmények teljesítéséhez, Dave lehetővé teszi, hogy a [az Azure Security Center](../security-center/security-center-intro.md), és a biztonsági szerepkör hozzáférést biztosít.
+Ezek a követelmények teljesítéséhez, Dave lehetővé teszi, hogy a [az Azure Security Center](../security-center/security-center-intro.md), és a biztonsági olvasó szerepkört hozzáférést biztosít.
 
 ## <a name="scenario-2-customer-facing-app"></a>2. forgatókönyv: ügyfélkapcsolati alkalmazás
 Az üzleti vezetőségének munkáját segítik a ellátási lánc részleg azonosította a Contoso-ügyfelek növeléséhez hűség kártyával különböző lehetőségek. Ágnes team létre kell hoznia ezt az alkalmazást, és úgy dönt, hogy Azure növeli az üzleti igények kielégítéséhez képesek. Alice a fejlesztés, és az alkalmazás működtetéséhez két előfizetések konfigurálása ETS Dave működik.
@@ -123,32 +123,32 @@ Az üzleti vezetőségének munkáját segítik a ellátási lánc részleg azon
 ### <a name="azure-subscriptions"></a>Azure-előfizetések
 Dave jelentkezik be az Azure-vállalati portálra, és láthatja, hogy az ellátási lánc osztály már létezik.  Azonban mivel ebben a projektben az első alkalmazásfejlesztési projekt az ellátási lánc csoport az Azure-ban, a Dave felismeri Ágnes fejlesztői csapat az új fiók szükséges.  Ezután a csapata számára "R & D" fiókot hoz létre, és hozzáférést rendel Alice. Alice jelentkezik be az Azure-portálon, és létrehoz két előfizetések: egyet a fejlesztési kiszolgáló és egy ahhoz, hogy az üzemi kiszolgálók tárolásához.  A korábban létrehozott elnevezési szabályai ő követ, amikor a következő előfizetések létrehozása:
 
-| Előfizetés használata | Name (Név) |
+| Előfizetés használata | Név |
 | --- | --- |
 | Fejlesztés |Contoso SupplyChain ResearchDevelopment LoyaltyCard fejlesztési |
-| Production |Contoso SupplyChain műveletek LoyaltyCard éles |
+| Üzemi |Contoso SupplyChain műveletek LoyaltyCard éles |
 
-### <a name="policies"></a>Házirendek
+### <a name="policies"></a>Szabályzatok
 Dave és Alice ismertetik az alkalmazást, és azonosíthatja, hogy az alkalmazás csak szolgál az Észak-amerikai régió ügyfelek.  Alice és csapata tervez használni az Azure alkalmazás Service-környezet és az Azure SQL az alkalmazás létrehozására. Előfordulhat, hogy a fejlesztés során a virtuális gépek létrehozásához szükséges.  Alice szeretne arról, hogy a fejlesztők a vizsgálatát, és vizsgálja meg a problémákat anélkül, hogy a ETS húzza szükséges erőforrásokat.
 
 Az a **fejlesztési előfizetés**, hoznak létre a következő házirendet:
 
-| Mező | Következmény | Leírás |
+| Mező | Hatás | Leírás |
 | --- | --- | --- |
-| location |Naplózási |Naplózási bármely régióban erőforrás létrehozása |
+| hely |Naplózási |Naplózási bármely régióban erőforrás létrehozása |
 
-Ezek korlátozza a termékváltozat fejlesztési hozhat létre a felhasználó milyen típusú, és címkék nem igényelnek erőforrás-csoportok vagy-erőforrások.
+Nem korlátozzák a felhasználó hozhat létre a fejlesztési sku típusú, és címkék az erőforráscsoport-sablonok és erőforrások nem igénylik.
 
 Az a **éles előfizetés**, akkor hozza létre a következő házirendeket:
 
-| Mező | Következmény | Leírás |
+| Mező | Hatás | Leírás |
 | --- | --- | --- |
-| location |elutasítás |Az Amerikai Egyesült Államok adatközpontok kívül semmilyen erőforráshoz létrehozását megtagadása |
-| tags |elutasítás |Igényelnek az alkalmazás tulajdonosa címke |
-| tags |elutasítás |Részleg címke megkövetelése |
-| tags |hozzáfűzése |Címke hozzáfűzése minden erőforráscsoportban, amely jelzi, éles környezetben |
+| hely |elutasítás |Az Amerikai Egyesült Államok adatközpontok kívül semmilyen erőforráshoz létrehozását megtagadása |
+| címkék |elutasítás |Igényelnek az alkalmazás tulajdonosa címke |
+| címkék |elutasítás |Részleg címke megkövetelése |
+| címkék |hozzáfűzése |Címke hozzáfűzése minden erőforráscsoportban, amely jelzi, éles környezetben |
 
-Ezek korlátozza a termékváltozat éles hozhat létre a felhasználó milyen típusú.
+Azok nem korlátozza a termékváltozat éles hozhat létre a felhasználó milyen típusú.
 
 ### <a name="resource-tags"></a>Az erőforráscímkék
 Dave tisztában van azzal, hogy ő rendelkeznie kell a megfelelő üzleti azonosítására a számlázási és a tulajdonosi információk. Az erőforráscsoport-sablonok és erőforrások erőforráscímkék kiadásként definiálja.
@@ -164,13 +164,13 @@ A Contoso ETS információk adatvédelmi és kockázatkezelési vezetőség elle
 
 Az a **fejlesztési előfizetés**, hogy létre:
 
-| Erőforrás típusa | Name (Név) | Leírás |
+| Erőforrás típusa | Név | Leírás |
 | --- | --- | --- |
 | Virtual Network |belső virtuális hálózat |A Contoso hűség kártya fejlesztőkörnyezet szolgál, és ExpressRoute keresztül csatlakozik, a Contoso vállalati hálózat |
 
 Az a **éles előfizetés**, hoznak létre:
 
-| Erőforrás típusa | Name (Név) | Leírás |
+| Erőforrás típusa | Név | Leírás |
 | --- | --- | --- |
 | Virtual Network |külső-hálózatok |A hűség Card alkalmazást használja, és nem közvetlenül kapcsolódó Contoso ExpressRoute. Kód kerül a forráskód rendszeren keresztül közvetlenül a PaaS szolgáltatások |
 | Hálózati biztonsági csoport |loyaltycard-nsg |Biztosítja, hogy a támadási felületet, a munkaterhelés minimalizálható a csak a TCP 443-as porton az adathoz kötött kommunikáció engedélyezése.  Contoso is vizsgálja a további védelem webalkalmazási tűzfal használata |

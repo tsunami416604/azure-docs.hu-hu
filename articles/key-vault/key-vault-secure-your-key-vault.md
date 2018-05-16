@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/07/2017
+ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="secure-your-key-vault"></a>Kulcstartó védelme
 Az Azure Key Vault egy felhőszolgáltatás, mely a titkosítási kulcsokat és titkos kulcsokat (pl. tanúsítványok, kapcsolati karakterláncok, jelszavak) védi az Ön felhőalkalmazásainál. Mivel ezek érzékeny és üzleti szempontból kritikus jellegű adatok, fontos, hogy Ön csak jogosult alkalmazások és felhasználók számára engedélyezzen kulcstartó-hozzáférést. Ez a cikk áttekintést ad a kulcstartó-hozzáférési modellről, elmagyarázza, mi a hitelesítés és az engedélyezés, és egy példával szemlélteti, hogyan biztosíthat kulcstartó-hozzáférést felhőalkalmazásai számára.
@@ -134,8 +134,8 @@ Most nézzük meg, milyen kulcstartó-hozzáférési engedélyek szükségesek a
 | Felhasználói szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei |
 | --- | --- | --- |
 | Biztonsági csapat |Kulcstartó-közreműködő |Kulcsok: biztonsági mentése, létrehozása, törlése, beolvasása, importálása, listázása, visszaállítása <br> Titkos kulcsok: összes |
-| Fejlesztők/operátor |kulcstartó-üzembehelyezési engedély, hogy az általuk üzembe helyezett virtuális gépek lehívhassák a kulcstartóból a titkos kulcsokat |Nincs |
-| Ellenőrök |Nincs |Kulcsok: listája<br>Titkos kulcsok: listája |
+| Fejlesztők/operátor |kulcstartó-üzembehelyezési engedély, hogy az általuk üzembe helyezett virtuális gépek lehívhassák a kulcstartóból a titkos kulcsokat |None |
+| Ellenőrök |None |Kulcsok: listája<br>Titkos kulcsok: listája |
 | Alkalmazás |None |Kulcsok: aláírása<br>Titkos kulcsok: beolvasása |
 
 > [!NOTE]

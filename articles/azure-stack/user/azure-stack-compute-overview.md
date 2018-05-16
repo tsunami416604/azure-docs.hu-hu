@@ -1,6 +1,6 @@
 ---
-title: "Bevezetés az Azure-verem virtuális gépek"
-description: "További tudnivalók a verem Azure virtuális gépek"
+title: Bevezetés az Azure Stack-alapú virtuális gépekbe
+description: További tudnivalók a verem Azure virtuális gépek
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -8,41 +8,41 @@ ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2453f2449124cb4956797e0d9748f1ee3bf0d9ad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 41e75a6806cc5ff13fad64fd415344376e0d6e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="introduction-to-azure-stack-virtual-machines"></a>Bevezetés az Azure-verem virtuális gépek
+# <a name="introduction-to-azure-stack-virtual-machines"></a>Bevezetés az Azure Stack-alapú virtuális gépekbe
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-## <a name="overview"></a>Áttekintés
-Egy Azure verem virtuális gép (VM) egy típusú igény szerinti, méretezhető számítási erőforrások Azure verem kínál. Virtuális gépet általában akkor érdemes választani, ha a számítási környezet átfogóbb vezérlésére van szüksége annál, amelyet az egyéb lehetőségek kínálnak. Ez a cikk bemutatja, hogy mit kell szem előtt tartania egy virtuális gép létrehozása előtt, valamint hogy hogyan hozhatja létre és kezelheti azt.
+## <a name="overview"></a>Áttekintés (klasszikus)
+Egy Azure verem virtuális gép (VM) egy típusú egy igény szerinti, méretezhető számítási erőforrások Azure verem kínál. Virtuális gépet általában akkor érdemes választani, ha a számítási környezet átfogóbb vezérlésére van szüksége annál, amelyet az egyéb lehetőségek kínálnak. Ez a cikk bemutatja, hogy mit kell szem előtt tartania egy virtuális gép létrehozása előtt, valamint hogy hogyan hozhatja létre és kezelheti azt.
 
-Egy Azure verem virtuális gép szerződés keretein belül a virtualizáció anélkül, hogy egyes fürtök vagy gépek kezeléséhez. A virtuális gép karbantartásához azonban így is szükséges elvégeznie néhány feladatot, például a virtuális gépen futó szoftver konfigurálását, javítását és telepítését.
+Egy Azure verem virtuális gép szerződés keretein belül a virtualizálási fürt vagy az egyes gépek kezelése nélkül. Azonban továbbra is szeretné a virtuális gép karbantartása konfigurálását, javítását és a rajta futó szoftverek telepítése feladatok végrehajtásával.
 
-Az Azure verem virtuális gépek különböző módokon is használható. Példa:
+Azure verem virtuális gépek különböző módon használható. Példa:
 
 * **Fejlesztési és tesztelési** – Azure verem virtuális gépek gyors kínálnak, és egyszerű módon, hogy hozzon létre egy számítógép adott konfigurációval szükséges kód és alkalmazás.
 
 * **A felhőalapú alkalmazások** – az alkalmazás iránti igény is ingadozik, mert ésszerű gazdasági a verem Azure virtuális gép futtatásához. A további virtuális gépekért csak akkor kell fizetnie, amikor szüksége van rájuk, amikor pedig nincs, akkor leállíthatja őket.
 
-* **Datacenter kiterjesztett** – egy Azure verem virtuális hálózatban lévő virtuális gépek egyszerűen csatlakozhat a szervezet hálózati vagy Azure.
+* **Datacenter kiterjesztett** – egy Azure verem virtuális hálózatban lévő virtuális gépek egyszerűen csatlakozhat a szervezeti hálózaton vagy az Azure-bA.
 
-Az alkalmazás által használt virtuális gépek száma az Ön igényei szerint skálázható.
+A virtuális gépek, amelyek az alkalmazás által használt növelheti vagy horizontálisan függetlenül szükség az igényeinek.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Mit kell átgondolnom egy virtuális gép létrehozása előtt?
 
-Mindig akadnak kialakítási szempontok számos ki egy Azure-készletben infrastruktúrát összeállításakor. A kezdés előtt a virtuális gépek következő tulajdonságait fontos átgondolni:
+Mindig akadnak számos tervezési szempontokat ki egy Azure-készletben infrastruktúrát összeállításakor. Ezeket az jellemzőket a virtuális gépek számára fontos gondolja át az infrastruktúra létrehozásának megkezdése előtt:
 
-- Az alkalmazás erőforrásainak nevei
-- A virtuális gép mérete
-- A létrehozható virtuális gépek maximális száma
-- A virtuális gépen futó operációs rendszer
-- A virtuális gép indítás utáni konfigurációja 
-- A virtuális gép által igényelt kapcsolódó erőforrások
+* Az alkalmazás-erőforrásokat nevei.
+* A virtuális gép mérete.
+* Hozható létre virtuális gépek maximális száma.
+* A virtuális Gépen futó operációs rendszert.
+* Miután elindult a VM konfigurációját.
+* A kapcsolódó erőforrások, amelyet a virtuális Gépet.
 
 ### <a name="naming"></a>Elnevezés
 
@@ -61,12 +61,11 @@ Az előfizetés rendelkezik alapértelmezett kvótát, amely hatással lehet a p
 ### <a name="operating-system-disks-and-images"></a>Operációsrendszer-lemezek és -rendszerképek
 
 A virtuális gépek virtuális merevlemezeken (VHD-k) tárolják az operációs rendszereket és az adatokat. A VHD-ken találhatók az operációs rendszer telepítéséhez kiválasztható rendszerképek is.
-Azure verem használható különböző verziói és operációs rendszerek piactéren biztosít. A piactérről származó rendszerképek azonosítása a rendszerkép közzétevője, ajánlat, termékváltozat és verzió alapján lehetséges (a verzió általában mint „legfrissebb” van megadva).
+Azure verem használható különböző verziói és operációs rendszerek piactéren biztosít. Piactéren elérhető rendszerkép azonosítják a kép közzétevőjének, ajánlat, sku és verzió (általában verzió van megadva legújabb.)
 
 Az alábbi táblázat néhány módját, hogy a kép adatai található:
 
-
-|Módszer|Leírás|
+|Metódus|Leírás|
 |---------|---------|
 |Verem Azure portálon|Az értékek a rendszerképek kiválasztásakor automatikusan megjelennek.|
 |Azure Stack PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
@@ -74,7 +73,7 @@ Az alábbi táblázat néhány módját, hogy a kép adatai található:
 
 Ha szeretné, töltse fel, és saját rendszerkép használata. Ha így tesz, a közzétevő neve, az ajánlat és a termékváltozat nem használható.
 
-### <a name="extensions"></a>Bővítmények
+### <a name="extensions"></a>Kiterjesztések
 
 Virtuálisgép-bővítmények a feladás egy vagy több központi telepítési konfigurációs és automatikus feladatokat a virtuális gép további képességeket biztosítják.
 A bővítményekkel a következő gyakori feladatok végezhetők el:
@@ -83,7 +82,7 @@ A bővítményekkel a következő gyakori feladatok végezhetők el:
 * Telepíthetnek és kezelhetnek olyan konfigurációk – a PowerShell kívánt állapot konfigurációs szolgáltatása (DSC) kiterjesztés segítséget nyújt a virtuális gép DSC beállítása konfigurációk és a környezeteket.
 * A gyűjtés diagnosztikai adatainak – az Azure Diagnostics bővítmény segít konfigurálja a virtuális gép diagnosztikai adatokat gyűjthet, amelyek az alkalmazás állapotának figyelésére használható.
 
-### <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
+### <a name="related-resources"></a>Kapcsolódó erőforrások
 
 Az erőforrások az alábbi táblázat a virtuális gép által használt, és vagy a virtuális gép létrehozásakor létrehozása léteznie kell.
 
@@ -93,9 +92,9 @@ Az erőforrások az alábbi táblázat a virtuális gép által használt, és v
 |Erőforráscsoport|Igen|A virtuális gépnek egy erőforráscsoport tagjának kell lennie.|
 |Tárfiók|Igen|A virtuális gépnek szüksége van egy tárfiókra a virtuális merevlemezek tárolásához.|
 |Virtuális hálózat|Igen|A virtuális gépnek egy virtuális hálózat tagjának kell lennie.|
-|Nyilvános IP-cím|Nem|A virtuális gép rendelkezhet hozzárendelt nyilvános IP-címmel, hogy távolról is el lehessen érni.|
-|Hálózati illesztő|Igen|A virtuális gépnek szüksége van a hálózati illesztőre a hálózattal való kommunikációhoz.|
-|Adatlemezek|Nem|A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak.|
+|Nyilvános IP-cím|Nincs|A virtuális gép rendelkezhet hozzárendelt nyilvános IP-címmel, hogy távolról is el lehessen érni.|
+|Hálózati adapter|Igen|A virtuális gépnek szüksége van a hálózati illesztőre a hálózattal való kommunikációhoz.|
+|Adatlemezek|Nincs|A virtuális gépek a tárolókapacitást bővítő adatlemezeket is tartalmazhatnak.|
 
 ## <a name="how-do-i-create-my-first-vm"></a>Hogyan hozhatom létre az első virtuális gépemet?
 
@@ -103,23 +102,28 @@ Virtuális gép létrehozása több lehetősége van. A kiválasztott környezet
 A következő táblázat információkat az első lépések a virtuális gép létrehozása.
 
 
-|Módszer|Cikk|
+|Metódus|Cikk|
 |---------|---------|
 |Verem Azure portálon|Windows rendszerű virtuális gép létrehozása a verem Azure portállal<br>[A verem Azure portál használatával Linux virtuális gép létrehozása](azure-stack-quick-linux-portal.md)|
 |Sablonok|Az Azure verem gyorsindítási sablonok találhatók:<br> [https://github.com/Azure/AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates)|
 |PowerShell|[Windows virtuális gép létrehozása Azure-készletben a PowerShell használatával](azure-stack-quick-create-vm-windows-powershell.md)<br>[Linux virtuális gép létrehozása Azure-készletben a PowerShell használatával](azure-stack-quick-create-vm-linux-powershell.md)|
-|parancssori felület|[Windows virtuális gép létrehozása Azure-készletben parancssori felület használatával](azure-stack-quick-create-vm-windows-cli.md)<br>[Linux virtuális gép létrehozása Azure-készletben parancssori felület használatával](azure-stack-quick-create-vm-linux-cli.md)|
+|CLI|[Windows virtuális gép létrehozása Azure-készletben parancssori felület használatával](azure-stack-quick-create-vm-windows-cli.md)<br>[Linux virtuális gép létrehozása Azure-készletben parancssori felület használatával](azure-stack-quick-create-vm-linux-cli.md)|
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>Hogyan kezelhetem a létrehozott virtuális gépet?
 
-A virtuális gépek felügyelhetők egy böngészőalapú portállal, parancsfájlkezelést támogató parancssori eszközökkel, vagy közvetlenül az API-kon keresztül. A tipikus kezelési feladatok közé tartozik a virtuális gépek adatainak lekérése, a virtuális gépekre való bejelentkezés, a rendelkezésre állás kezelése és a biztonsági mentések készítése.
+Virtuális gépek egy böngészőalapú portállal, parancsfájlkezelést, vagy közvetlenül az API-k segítségével támogató parancssori eszközökkel kezelheti. Néhány tipikus felügyeleti feladatokhoz, előfordulhat, hogy végre a következők:
+
+* Információ a virtuális gép beolvasása
+* Egy virtuális Géphez való kapcsolódás
+* Rendelkezésre állási kezelése
+* A biztonságimásolat-készítő
 
 ### <a name="get-information-about-a-vm"></a>Virtuális gép adatainak lekérése
 
 A következő táblázat néhány virtuális gép információt kaphat módot.
 
 
-|Módszer|Leírás|
+|Metódus|Leírás|
 |---------|---------|
 |Verem Azure portálon|A központ menüben kattintson a virtuális gépeket, és válassza ki a virtuális Gépet a listából. A virtuális gép lapon hozzáférhet áttekintő információkat, a beállítás értéke, és figyelési metrikákat.|
 |Azure PowerShell|Virtuális gépek kezelése az Azure-ban és Azure verem hasonló. További információ a PowerShell használatával a következő témakör Azure:<br>[Hozzon létre és a Windows virtuális gépek kezelése az Azure PowerShell modul](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
@@ -130,5 +134,5 @@ A következő táblázat néhány virtuális gép információt kaphat módot.
 Használhatja a **Connect** a verem Azure portál csatlakozni a virtuális gép gombjára.
 
 ## <a name="next-steps"></a>További lépések
-* [Virtuális gépek Azure-készletben szempontjai](azure-stack-vm-considerations.md)
 
+* [Virtuális gépek Azure-készletben szempontjai](azure-stack-vm-considerations.md)

@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az Azure Container Service for Kubernetes használatába
-description: Az Azure Container Service for Kubernetes használatával egyszerűen helyezhetőek üzembe és felügyelhetőek a tárolóalapú alkalmazások az Azure-ban.
+title: Az Azure Kubernetes Service bemutatása
+description: Az Azure Kubernetes Service használatával egyszerűen helyezhetőek üzembe és felügyelhetőek a tárolóalapú alkalmazások az Azure-ban.
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,20 +9,20 @@ ms.topic: overview
 ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 5bfa445eb11ed8be608278d0b95249372f9976ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4936554465fbbed45000f43853a6a77567c3028f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="introduction-to-azure-container-service-aks-preview"></a>Az Azure Container Service (AKS) előzetes verziójának bemutatása
+# <a name="introduction-to-azure-kubernetes-service-aks-preview"></a>Az Azure Kubernetes Service (AKS) előzetes verziójának bemutatása
 
-Az Azure Container Service (AKS) elősegíti a virtuális gépek egy olyan fürtjének egyszerűbb létrehozását, konfigurálását és kezelését, amely tárolóalapú alkalmazások futtatására lett konfigurálva. Így lehetővé válik, hogy a meglévő ismereteit használja, vagy egy nagy és egyre növekvő közösségi szakértelmet vegyen igénybe a tárolóalapú alkalmazások Microsoft Azure-on történő üzembe helyezéséhez és kezeléséhez.
+Az Azure Kubernetes Service (AKS) elősegíti a virtuális gépek egy olyan fürtjének egyszerűbb létrehozását, konfigurálását és kezelését, amely tárolóalapú alkalmazások futtatására lett konfigurálva. Így lehetővé válik, hogy a meglévő ismereteit használja, vagy egy nagy és egyre növekvő közösségi szakértelmet vegyen igénybe a tárolóalapú alkalmazások Microsoft Azure-on történő üzembe helyezéséhez és kezeléséhez.
 
 Az AKS használatával igénybe veheti az Azure nagyvállalati szintű funkcióit, miközben továbbra is fenntartja az alkalmazás-hordozhatóságot a Kubernetes és a Docker rendszerképformátuma révén.
 
 > [!IMPORTANT]
-> Az Azure Container Service (AKS) jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Az Azure Kubernetes Service (AKS) jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
 
 ## <a name="managed-kubernetes-in-azure"></a>Felügyelt Kubernetes az Azure-ban
@@ -37,11 +37,11 @@ Az AKS egyszerűsíti a Kubernetes-fürtök kezelését és csökkenti annak mű
 
 Ha az Azure bonyolítja az AKS-fürt csomópontjainak kezelését, nem kell többé manuálisan végezni az olyan műveleteket, mint a fürtfrissítések. Mivel a legfontosabb karbantartási műveleteket az Azure végzi, az AKS nem ad közvetlen hozzáférést (például SSH-n keresztül) a fürthöz.
 
-## <a name="using-azure-container-service-aks"></a>Az Azure Container Service (AKS) használata
+## <a name="using-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) használata
 Az AKS célja az, hogy a manapság az ügyfelek körében népszerű nyílt forráskódú eszközök és technológiák használatával nyújtson tárolóüzemeltetési környezetet. E célból elérhetővé tesszük a standard Kubernetes API-végpontokat. A standard végpontokkal bármely olyan szoftvert használhat, amely képes a Kubernetes-fürtökkel folytatott kommunikációra. Például választhatja a következőket: [kubectl][kubectl-overview], [helm][helm] vagy [draft][draft].
 
-## <a name="creating-a-kubernetes-cluster-using-azure-container-service-aks"></a>Kubernetes-fürt létrehozása az Azure Container Service (AKS) használatával
-Az AKS használatához üzembe kell helyeznie egy AKS-fürtöt az [Azure CLI][aks-quickstart] használatával vagy a portálon keresztül (keressen a piactéren az **Azure Container Service** kifejezésre). Amennyiben Ön tapasztalt felhasználó, és átfogóbb vezérlésre van szüksége az Azure Resource Manager-sablonok fölött, a nyílt forráskódú [acs-engine][acs-engine] projekt segítségével felépíthet egy saját egyéni Kubernetes-fürtöt, és üzembe helyezheti azt az `az` parancssori felület használatával.
+## <a name="creating-a-kubernetes-cluster-using-azure-kubernetes-service-aks"></a>Kubernetes-fürt létrehozása az Azure Kubernetes Service (AKS) használatával
+Az AKS használatához üzembe kell helyeznie egy AKS-fürtöt az [Azure CLI][aks-quickstart] használatával vagy a portálon keresztül (keressen a Marketplace-en az **Azure Kubernetes Service** kifejezésre). Ha Ön tapasztalt felhasználó, és átfogóbb vezérlésre van szüksége az Azure Resource Manager-sablonok fölött, a nyílt forráskódú [acs-engine][acs-engine] projekt segítségével felépíthet egy saját egyéni Kubernetes-fürtöt, és üzembe helyezheti azt az `az` parancssori felület használatával.
 
 ### <a name="using-kubernetes"></a>A Kubernetes használata
 A Kubernetes automatizálja a tárolóalapú alkalmazások üzembe helyezését, méretezését és felügyeletét. Többek között a következő funkciókat tartalmazza:
@@ -56,7 +56,7 @@ A Kubernetes automatizálja a tárolóalapú alkalmazások üzembe helyezését,
 
 ## <a name="videos"></a>Videók
 
-Azure Container Service (AKS) – Azure Friday, 2017. október:
+Azure Kubernetes Service (AKS) – Azure Friday, 2017. október:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Container-Orchestration-Simplified-with-Managed-Kubernetes-in-Azure-Container-Service-AKS/player]
 >

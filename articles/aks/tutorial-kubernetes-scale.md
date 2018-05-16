@@ -3,19 +3,19 @@ title: Azure-on futó Kubernetes oktatóanyag – Alkalmazások skálázása
 description: AKS-oktatóanyag – Alkalmazások skálázása
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7b962ccd8349996cd33cc3960391cba8fce549ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Container Service (AKS) szolgáltatásban
+# <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes Service-ben (AKS)
 
 Ha eddig követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel az AKS-ben, és üzembe helyezte az Azure-szavazóalkalmazást.
 

@@ -3,23 +3,25 @@ title: Az Azure AD v2.0 OAuth2.0 a-meghatalmazásos folyamat |} Microsoft Docs
 description: Ez a cikk ismerteti a HTTP-üzenetek használata a szolgáltatások közötti hitelesítés használata a OAuth2.0 a-meghatalmazásos folyamat végrehajtásához.
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ccec8df0741870f3dd3ed21be43f96aa8ba90927
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2aa1c33f138619283a8785aaf3772465df6c9aee
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Az Azure Active Directory v2.0 és OAuth 2.0 On-Behalf-Of folyamata
 Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalmazás elindítja egy szolgáltatás vagy webes API, amely pedig meg kell hívni egy másik szolgáltatás vagy webes API-t. A lényege való terjesztése, a felhasználó delegált identitása és az engedélyek a kérelem lánc keresztül. A középső rétegbeli szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságos hozzáférési tokent az Azure Active Directory (Azure AD), a felhasználó nevében.
@@ -30,10 +32,10 @@ Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalma
 >
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
-Tegyük fel, hogy a felhasználó hitelesítése egy alkalmazást, amely a a [OAuth 2.0 hitelesítési kódot adjon folyamat](active-directory-v2-protocols-oauth-code.md).  Ezen a ponton az alkalmazás rendelkezik-e a hozzáférési token *az API A* (lexikális elem: A) a felhasználói jogcímek és hozzájárulási eléréséhez a középső rétegbeli webes API-t (API-A). Most API A kell hitelesített kéréseknél az alsóbb rétegbeli webes API (API-B).
+Tegyük fel, hogy a felhasználó hitelesítése egy alkalmazást, amely a a [OAuth 2.0 hitelesítési kódot adjon folyamat](active-directory-v2-protocols-oauth-code.md). Ezen a ponton az alkalmazás rendelkezik-e a hozzáférési token *az API A* (lexikális elem: A) a felhasználói jogcímek és hozzájárulási eléréséhez a középső rétegbeli webes API-t (API-A). Most API A kell hitelesített kéréseknél az alsóbb rétegbeli webes API (API-B).
 
 > [!IMPORTANT]
-> Jogkivonatok szerez a [implicit grant](active-directory-v2-protocols-implicit.md) az On-meghatalmazásos folyamat nem használható.  Az ügyfél számára implcit adatfolyamok (pl. ügyfélkulcs) keresztül nem hitelesített, és ezért nem szabadna egy másik, valószínűleg hatékonyabb jogkivonatba rendszerindításának.
+> Jogkivonatok szerez a [implicit grant](active-directory-v2-protocols-implicit.md) az On-meghatalmazásos folyamat nem használható. Az ügyfél számára implcit adatfolyamok (pl. ügyfélkulcs) keresztül nem hitelesített, és ezért nem szabadna egy másik, valószínűleg hatékonyabb jogkivonatba rendszerindításának.
 
 A következő lépések az On-meghatalmazásos folyamat jelent, és segítségével. a következő ábra ismerteti.
 
@@ -64,12 +66,12 @@ Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési ké
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |Szükséges | A token kérelem típusa. A kérelmek jwt-t használ, az értéknek kell lennie **urn: ietf:params:oauth:grant-típus: jwt-tulajdonosi**. |
-| client_id |Szükséges | Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
-| client_secret |Szükséges | Az alkalmazás titkos kulcs az alkalmazáshoz az alkalmazásregisztrációs portálra a létrehozott. |
-| assertion |Szükséges | A jogkivonatot, amelyet a kérés értéke. |
-| scope |Szükséges | Egy szóközzel elválasztott a jogkivonatkérelem hatókört. További információkért lásd: [hatókörök](active-directory-v2-scopes.md).|
-| requested_token_use |Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az érték lehet **on_behalf_of**. |
+| grant_type |szükséges | A token kérelem típusa. A kérelmek jwt-t használ, az értéknek kell lennie **urn: ietf:params:oauth:grant-típus: jwt-tulajdonosi**. |
+| client_id |szükséges | Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
+| client_secret |szükséges | Az alkalmazás titkos kulcs az alkalmazáshoz az alkalmazásregisztrációs portálra a létrehozott. |
+| assertion |szükséges | A jogkivonatot, amelyet a kérés értéke. |
+| scope |szükséges | Egy szóközzel elválasztott a jogkivonatkérelem hatókört. További információkért lásd: [hatókörök](active-directory-v2-scopes.md).|
+| requested_token_use |szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az érték lehet **on_behalf_of**. |
 
 #### <a name="example"></a>Példa
 A következő HTTP POST kérelmek egy hozzáférési jogkivonat és a frissítési jogkivonat `user.read` a hatókör a https://graph.microsoft.com webes API-t.
@@ -94,13 +96,13 @@ Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a követke
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |Szükséges | A token kérelem típusa. A kérelmek jwt-t használ, az értéknek kell lennie **urn: ietf:params:oauth:grant-típus: jwt-tulajdonosi**. |
-| client_id |Szükséges | Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
-| client_assertion_type |Szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz.  További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
-| assertion |Szükséges | A jogkivonatot, amelyet a kérés értéke. |
-| requested_token_use |Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az érték lehet **on_behalf_of**. |
-| scope |Szükséges | Egy szóközzel elválasztott a jogkivonatkérelem hatókört. További információkért lásd: [hatókörök](active-directory-v2-scopes.md).|
+| grant_type |szükséges | A token kérelem típusa. A kérelmek jwt-t használ, az értéknek kell lennie **urn: ietf:params:oauth:grant-típus: jwt-tulajdonosi**. |
+| client_id |szükséges | Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
+| client_assertion_type |szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz. További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
+| assertion |szükséges | A jogkivonatot, amelyet a kérés értéke. |
+| requested_token_use |szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az érték lehet **on_behalf_of**. |
+| scope |szükséges | Egy szóközzel elválasztott a jogkivonatkérelem hatókört. További információkért lásd: [hatókörök](active-directory-v2-scopes.md).|
 
 Figyelje meg, hogy a paraméterek megegyeznek-szinte közös titkos kulcs kérése gazdabuszadaptereken azzal a különbséggel, hogy a client_secret paraméter helyébe két paramétert: egy client_assertion_type és client_assertion.
 
@@ -149,7 +151,7 @@ A következő példa bemutatja a sikeres válasz egy hozzáférési kérelmet a 
 ```
 
 > [!NOTE]
-> Láthatja, hogy a fenti hozzáférési jogkivonat V1-formátumú jogkivonatot.  Ennek oka az, a jogkivonat van megadva, az éppen elért erőforrás alapján.  A Microsoft Graph-kérelmek V1 jogkivonatokat, az Azure AD V1 hozzáférési jogkivonatokat hoz létre, amikor egy ügyfél jogkivonatok kísérel meg Microsoft Graph.  Csak az alkalmazások hozzáférési jogkivonatok kell megtekinteni - ügyfelek nem kell őket vizsgálata. 
+> Láthatja, hogy a fenti hozzáférési jogkivonat V1-formátumú jogkivonatot. Ennek oka az, a jogkivonat van megadva, az éppen elért erőforrás alapján. A Microsoft Graph-kérelmek V1 jogkivonatokat, az Azure AD V1 hozzáférési jogkivonatokat hoz létre, amikor egy ügyfél jogkivonatok kísérel meg Microsoft Graph. Csak az alkalmazások hozzáférési jogkivonatok kell megtekinteni - ügyfelek nem kell őket vizsgálata. 
 
 
 ### <a name="error-response-example"></a>Hiba válasz – példa

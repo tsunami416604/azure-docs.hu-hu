@@ -19,6 +19,10 @@
   items:
     - name: Lekérdezések futtatása Spark-fürtön
       href: apache-spark-load-data-run-query.md
+    - name: Spark-lekérdezések futtatása VSCode használatával
+      href: ../hdinsight-for-vscode.md
+    - name: Spark-lekérdezések futtatása IntelliJ használatával
+      href: apache-spark-intellij-tool-plugin.md
     - name: Adatok elemzése BI-eszközökkel
       href: apache-spark-use-bi-tools.md
     - name: Streamelési feladat futtatása
@@ -47,10 +51,10 @@
           href: apache-spark-eclipse-tool-plugin.md
         - name: Alkalmazások létrehozása az IntelliJ-vel
           href: apache-spark-intellij-tool-plugin.md
-        - name: Spark-feladatok távoli hibakeresése az IntelliJ-vel VPN-en keresztül
-          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
         - name: Spark-feladatok távoli hibakeresése az IntelliJ-vel SSH-n keresztül
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+        - name: Spark-feladatok távoli hibakeresése az IntelliJ-vel VPN-en keresztül
+          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
         - name: Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
           maintainContext: true
@@ -316,6 +320,8 @@
       items:
         - name: Hibakeresés Spark-feladatokban
           href: apache-spark-job-debugging.md
+        - name: Spark-feladatok hibakeresése IntelliJ használatával
+          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
           href: ../hdinsight-troubleshoot-failed-cluster.md
           maintainContext: true

@@ -3,29 +3,31 @@ title: Ismerkedés az Azure AD AngularJS |} Microsoft Docs
 description: Megtudhatja, hogyan hozható létre egy AngularJS egyoldalas alkalmazás, amely integrálható az Azure ad-val bejelentkezhet, és meghívja az Azure AD-védelemmel ellátott API-OAuth használatával.
 services: active-directory
 documentationcenter: ''
-author: jmprieur
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2f78a6b17a512ab54ffab4554ccc0f3f1486f27a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b99ce605d9ecea6c7d67ab9a2ea679d531787d7
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Ismerkedés az Azure AD AngularJS
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Az Azure Active Directory (Azure AD) teszi egyszerű és magától értetődő, amelyen felvehet bejelentkezési, kijelentkezési és biztonságos OAuth API meghívja az egyoldalas alkalmazásokhoz.  Ez lehetővé teszi az alkalmazások a Windows Server Active Directory-fiókkal rendelkező felhasználók hitelesítéséhez, és a webes API-t, amely az Azure AD védi, például az Office 365 API-k vagy az Azure API-t használ.
+Az Azure Active Directory (Azure AD) teszi egyszerű és magától értetődő, amelyen felvehet bejelentkezési, kijelentkezési és biztonságos OAuth API meghívja az egyoldalas alkalmazásokhoz. Ez lehetővé teszi az alkalmazások a Windows Server Active Directory-fiókkal rendelkező felhasználók hitelesítéséhez, és a webes API-t, amely az Azure AD védi, például az Office 365 API-k vagy az Azure API-t használ.
 
 Böngészőjében futó JavaScript-alkalmazások esetében az Azure AD az Active Directory Authentication Library (ADAL), vagy adal.js biztosít. A kizárólagos adal.js célja megkönnyíti a hozzáférési jogkivonatok lekérésére, az alkalmazás. Annak bemutatásához, milyen könnyű van, itt azt fogja AngularJS teendőlista alkalmazás létrehozásához, amely:
 
@@ -53,7 +55,7 @@ Ahhoz, hogy az alkalmazás hitelesíti a felhasználókat, és a jogkivonatok le
 5. Kövesse az utasításokat, és hozzon létre egy új webalkalmazás és/vagy webes API:
   * **Név** az alkalmazás a felhasználók számára ismerteti.
   * **Bejelentkezés URL-cím** az a hely, amelyhez az Azure AD jogkivonatok ad vissza. Az alapértelmezett helye Ez a minta `https://localhost:44326/`.
-6. Regisztráció befejezése után az Azure AD egy egyedi alkalmazás Azonosítót rendel az alkalmazáshoz.  Ez az érték kell a következő szakaszokban lévő, másolja az alkalmazás lapján.
+6. Regisztráció befejezése után az Azure AD egy egyedi alkalmazás Azonosítót rendel az alkalmazáshoz. Ez az érték kell a következő szakaszokban lévő, másolja az alkalmazás lapján.
 7. Adal.js az OAuth implicit engedélyezési folyamat használatával kommunikálni az Azure AD. Az alkalmazás engedélyeznie kell a implicit engedélyezési folyamat:
   1. Kattintson az alkalmazás, és válassza **Manifest** a jegyzék beágyazott-szerkesztő megnyitásához.
   2. Keresse meg a `oauth2AllowImplicitFlow` tulajdonság. Állítsa be az értékét `true`.
@@ -117,12 +119,12 @@ Adal.js jól integrálható az AngularJS útvonal és a HTTP-szolgáltatók, az 
     ...
     ```
 
-## <a name="summary"></a>Összegzés
-Most már rendelkezik egy biztonságos alkalmazás, amely a felhasználók bejelentkezhetnek és tulajdonosi jogkivonat-védelemmel ellátott kérelmeket kiadni a háttér-API. Amikor a felhasználó rákattint a **TodoList** hivatkozásra a adal.js automatikusan átirányítja az Azure AD-hez bejelentkezési szükség esetén. Ezenkívül adal.js automatikusan kapcsolódni fog olyan hozzáférési jogkivonatot, bármely Ajax-kérelmek az alkalmazás háttér küldött.  
+## <a name="summary"></a>Összefoglalás
+Most már rendelkezik egy biztonságos alkalmazás, amely a felhasználók bejelentkezhetnek és tulajdonosi jogkivonat-védelemmel ellátott kérelmeket kiadni a háttér-API. Amikor a felhasználó rákattint a **TodoList** hivatkozásra a adal.js automatikusan átirányítja az Azure AD-hez bejelentkezési szükség esetén. Ezenkívül adal.js automatikusan kapcsolódni fog olyan hozzáférési jogkivonatot, bármely Ajax-kérelmek az alkalmazás háttér küldött. 
 
 Az előző lépéseket kell a operációs rendszer minimálisan szükséges adal.js használatával egy egyoldalas alkalmazás elkészítésére. Azonban néhány egyéb szolgáltatásokat az alkalmazás hasznos információkat:
 
-* Be- és kijelentkezési kérések explicit módon ki, a tartományvezérlőn, amely a adal.js meghívása funkciók is meghatározhatja.  A `App/Scripts/homeCtrl.js`:
+* Be- és kijelentkezési kérések explicit módon ki, a tartományvezérlőn, amely a adal.js meghívása funkciók is meghatározhatja. A `App/Scripts/homeCtrl.js`:
 
     ```js
     ...
@@ -143,7 +145,7 @@ Az előző lépéseket kell a operációs rendszer minimálisan szükséges adal
     ...
     ```
 
-* Nincsenek számos forgatókönyv, ahol érdemes tudni, hogy a felhasználó van bejelentkezve. Használhatja a `userInfo` ehhez objektum.  Például a `index.html`, vagy megjelenítheti a **bejelentkezési** vagy **kijelentkezési** gomb a hitelesítési állapot alapján:
+* Nincsenek számos forgatókönyv, ahol érdemes tudni, hogy a felhasználó van bejelentkezve. Használhatja a `userInfo` ehhez objektum. Például a `index.html`, vagy megjelenítheti a **bejelentkezési** vagy **kijelentkezési** gomb a hitelesítési állapot alapján:
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>

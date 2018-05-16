@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: b1b51b6c36143747a81d1c1fc035ee6d54d34076
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bdc97e9e28dd2af090c82378457b3c93b276cc58
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrálás az Azure által kezelt szolgáltatásokkal az Open Service Broker for Azure (OSBA) használatával
 
@@ -27,7 +27,7 @@ A [Kubernetes szolgáltatáskatalógussal][kubernetes-service-catalog] együtt a
 
 * Engedély egyszerű szolgáltatás létrehozásához Azure-előfizetése Közreműködő szerepkörében
 
-* Egy létező Azure Container Service- (AKS-) fürt. Ha egy AKS-fürtre van szüksége, kövesse az [AKS-fürt létrehozása][create-aks-cluster] című rövid útmutatót.
+* Egy meglévő Azure Kubernetes Service- (AKS-) fürt. Ha egy AKS-fürtre van szüksége, kövesse az [AKS-fürt létrehozása][create-aks-cluster] című rövid útmutatót.
 
 ## <a name="install-service-catalog"></a>Szolgáltatáskatalógus telepítése
 
@@ -182,7 +182,7 @@ kubectl get secrets -n wordpress -o yaml
 
 ## <a name="next-steps"></a>További lépések
 
-A cikk útmutatásait követve üzembe helyezte a szolgáltatáskatalógust egy Azure Container Service- (AKS-) fürtön. Az Open Service Broker for Azure használatával üzembe helyezett egy WordPress-példányt, amely az Azure által kezelt szolgáltatásokat használja, ebben az esetben az Azure Database for MySQL-t.
+A cikk útmutatásait követve üzembe helyezte a szolgáltatáskatalógust egy Azure Kubernetes Service- (AKS-) fürtön. Az Open Service Broker for Azure használatával üzembe helyezett egy WordPress-példányt, amely az Azure által kezelt szolgáltatásokat használja, ebben az esetben az Azure Database for MySQL-t.
 
 További frissített, OSBA-alapú Helm-diagramok eléréséhez tekintse meg az [Azure/helm-charts][helm-charts] adattárat. Ha szeretné saját, az OSBA-val működő diagramjait létrehozni, tekintse meg az [új diagram létrehozását][helm-create-new-chart] ismertető részt.
 

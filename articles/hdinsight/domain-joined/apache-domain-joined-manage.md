@@ -11,11 +11,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: omidm
-ms.openlocfilehash: 9875d9884f04d26ebfbd44e858beb272c2306958
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 31b58176a75918cf68cda695f27216031670493e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>Tartományhoz csatlakozó HDInsight-fürtök kezelése
 Ismerje meg, a felhasználók és a szerepköröket, a tartományhoz, és a tartományhoz a HDInsight-fürtök kezelése.
@@ -93,14 +93,16 @@ A vállalati biztonsági csomag (korábbi nevén HDInsight prémium) a fürt, ah
 
 Biztonság és a felhasználó elkülönítési fontosak a HDInsight-fürthöz, a vállalati biztonsági csomag. Ezek a követelmények teljesítéséhez, a vállalati biztonsági csomag fürt SSH-hozzáférését blokkolja. Az alábbi táblázat a minden egyes fürttípus ajánlott hozzáférési metódusokat:
 
-|Számítási feladat|Forgatókönyv|Hozzáférési módszer|
+|Számítási feladat|Eset|Hozzáférési módszer|
 |--------|--------|-------------|
 |Hadoop|Hive – interaktív feladatok/lekérdezések |<ul><li>[Beeline](#beeline)</li><li>[Hive nézete](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power bi-ban](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Spark|Interaktív feladatok/lekérdezések, interaktív PySpark|<ul><li>[Beeline](#beeline)</li><li>[A Livy Zeppelin](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive nézete](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power bi-ban](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Spark|Kötegelt forgatókönyvek – Spark küldés, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |Interaktív lekérdezés (LLAP)|Interaktív|<ul><li>[Beeline](#beeline)</li><li>[Hive nézete](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power bi-ban](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Bármelyik|Egyéni alkalmazás telepítése|<ul><li>[A Parancsfájlműveletek](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
+|Bármely|Egyéni alkalmazás telepítése|<ul><li>[A Parancsfájlműveletek](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
+   > [!NOTE]
+   > Jupyter nincs telepítve/támogatja a vállalati biztonsági csomag.
 
 Standard API-val segíti a biztonsági szempontból. Ezenkívül töltse le a következő előnyöket biztosítja:
 

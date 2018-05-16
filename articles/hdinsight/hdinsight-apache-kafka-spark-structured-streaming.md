@@ -1,6 +1,6 @@
 ---
-title: Az Apache Spark strukturált stream használata a Kafkával – Azure HDInsight | Microsoft Docs
-description: Megtudhatja, hogyan használhatja az Apache Spark streamelést (DStream) az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
+title: 'Oktatóanyag: Az Apache Spark strukturált stream használata a Kafkával – Azure HDInsight | Microsoft Docs'
+description: Megtudhatja, hogyan használhatja az Apache Spark streamelést az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben az oktatóanyagban egy Jupyter notebookkal streamelünk adatokat a Spark on HDInsightból.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -10,28 +10,107 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/04/2018
 ms.author: larryfr
-ms.openlocfilehash: 49c13bbea537d7de60ecf509bc28675191c0b34d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bdb2369f81ae8aeeb0a57e092dc1af7d0a7ded8f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>A Spark strukturált stream használata a Kafkával a HDInsighton
+# <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Oktatóanyag: A Spark strukturált stream használata a Kafkával a HDInsighton
 
-Megtudhatja, hogyan használhatja a Spark strukturált streamet az adatok olvasásához az Apache Kafkából az Azure HDInsighton.
+Az oktatóanyag bemutatja, hogyan használhatja a Spark strukturált streamet adatok olvasásához és írásához az Apache Kafkával az Azure HDInsighton.
 
-A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. A strukturált streamelésről további információt az Apache.org oldalon lévő [Structured Streaming Programming Guide [Alpha]](http://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) (Strukturált streamelés programozási útmutatója [Alfa]) szakaszban talál.
+A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. 
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+
+> [!div class="checklist"]
+> * Strukturált streamelés a Kafkával
+> * Kafka- és Spark-fürtök létrehozása
+> * A notebook feltöltése a Sparkba
+> * A notebook használata
+> * Az erőforrások eltávolítása
+
+Amikor végzett a dokumentum lépéseivel, ne felejtse el törölni a fürtöket a további díjak elkerülése érdekében.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* A Jupyter-notebookok és a HDInsighton futó Spark használatának ismerete. További információkért lásd [a Spark on HDInsight használatával végzett adatbetöltést és lekérdezésfuttatást ismertető](spark/apache-spark-load-data-run-query.md) dokumentumot.
+
+* A [Scala](https://www.scala-lang.org/) programozási nyelv ismerete. Az oktatóanyagban használt kód Scala nyelven van megírva.
+
+* A Kafka-témakörök létrehozásának ismerete. További információkért lásd [a Kafka on HDInsight használatába bevezető](kafka/apache-kafka-get-started.md) dokumentumot.
 
 > [!IMPORTANT]
-> Ez a példa a Spark 2.2-t használja a HDInsight 3.6-on.
+> A dokumentum lépéseihez egy olyan Azure-erőforráscsoport szükséges, amely Spark on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
+> 
+> A kényelmes használat érdekében ez a dokumentum tartalmaz egy hivatkozást egy olyan sablonra, amellyel az összes szükséges Azure-erőforrás létrehozható. 
 >
-> A dokumentum lépései olyan Azure-erőforráscsoportot hoznak létre, amely Spark on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
->
-> Amikor végzett a dokumentum lépéseivel, ne felejtse el törölni a fürtöket a további díjak elkerülése érdekében.
+> A HDInsight a virtuális hálózatokon való használatával kapcsolatos további információért tekintse meg [a HDInsight virtuális hálózattal való kiterjesztését ismertető](hdinsight-extend-hadoop-virtual-network.md) dokumentumot.
+
+## <a name="structured-streaming-with-kafka"></a>Strukturált streamelés a Kafkával
+
+A Spark strukturált stream egy, a Spark SQL-motorra épülő streamfeldolgozó rendszer. A strukturált stream használatával ugyanúgy írhat streamelési lekérdezéseket, mint a kötegelt lekérdezések esetében.
+
+Az alábbi kódrészletek az adatok Kafkából való beolvasását és fájlban való tárolását mutatják be. Az első egy köteg-, míg a második egy streamelési művelet:
+
+```scala
+// Read a batch from Kafka
+val kafkaDF = spark.read.format("kafka")
+                .option("kafka.bootstrap.servers", kafkaBrokers)
+                .option("subscribe", kafkaTopic)
+                .option("startingOffsets", "earliest")
+                .load()
+// Select data and write to file
+kafkaDF.select(from_json(col("value").cast("string"), schema) as "trip")
+                .write
+                .format("parquet")
+                .option("path","/example/batchtripdata")
+                .option("checkpointLocation", "/batchcheckpoint")
+                .save()
+```
+
+```scala
+// Stream from Kafka
+val kafkaStreamDF = spark.readStream.format("kafka")
+                .option("kafka.bootstrap.servers", kafkaBrokers)
+                .option("subscribe", kafkaTopic)
+                .option("startingOffsets", "earliest")
+                .load()
+// Select data from the stream and write to file
+kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
+                .writeStream
+                .format("parquet")
+                .option("path","/example/streamingtripdata")
+                .option("checkpointLocation", "/streamcheckpoint")
+                .start.awaitTermination(30000)
+```
+
+Mindkét kódrészlet a Kafkából olvassa be az adatokat, majd fájlba írja azokat. A két példa közötti különbségek:
+
+| Batch | Streamelés |
+| --- | --- |
+| `read` | `readStream` |
+| `write` | `writeStream` |
+| `save` | `start` |
+
+A streamelési művelet az `awaitTermination(30000)` utasítást is tartalmazza, amely 30000 ezredmásodperc elteltével leállítja a streamet. 
+
+A strukturált streamelés a Kafkával való használatához a projektnek függőségi viszonyban kell lennie az `org.apache.spark : spark-sql-kafka-0-10_2.11` csomaggal. A csomag verziójának egyeznie kell a Spark on HDInsight verziójával. A Spark 2.2.0 (ez a HDInsight 3.6 verzióján érhető el) esetében a különböző projekttípusokra vonatkozó függőségek adatait a következő helyen találja: [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
+
+Az oktatóanyaghoz megadott Jupyter-notebookban a következő cella tölti be ezt a csomagfüggőséget:
+
+```
+%%configure -f
+{
+    "conf": {
+        "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
+        "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+    }
+}
+```
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
 
@@ -44,7 +123,7 @@ Az alábbi ábra a Spark és a Kafka közötti kommunikáció áramlását mutat
 > [!NOTE]
 > A Kafka szolgáltatás a virtuális hálózaton belüli kommunikációra van korlátozva. A fürtön lévő többi szolgáltatás, például az SSH és az Ambari az interneten keresztül is elérhető. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
 
-A kényelem érdekében a következő lépések Azure Resource Manager-sablonnal hoznak létre Kafka- és Spark-fürtöket egy virtuális hálózatban.
+Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök létrehozásához hajtsa végre a következő lépéseket:
 
 1. Az alábbi gombbal jelentkezzen be az Azure szolgáltatásba, és nyissa meg a sablont az Azure Portalon.
     
@@ -59,7 +138,7 @@ A kényelem érdekében a következő lépések Azure Resource Manager-sablonnal
     * Egy Azure virtuális hálózat, amely tartalmazza a HDInsight-fürtöket.
 
     > [!IMPORTANT]
-    > Az ebben a példában használt strukturált stream a Spark on HDInsight 3.6-os verzióját igényli. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
+    > Az oktatóanyagban alkalmazott strukturált stream használatához a Spark 2.2.0 on HDInsight 3.6 szükséges. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
 
 2. A következő információkkal töltheti ki a **Testreszabott sablon** szakaszban lévő bejegyzéseket:
 
@@ -77,18 +156,18 @@ A kényelem érdekében a következő lépések Azure Resource Manager-sablonnal
    
     ![A testreszabott sablon képernyőképe](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
+3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
+
 4. Végül jelölje be a **Rögzítés az irányítópulton** elemet, majd válassza a **Vásárlás** lehetőséget. 
 
 > [!NOTE]
 > A fürtök létrehozása 20 percig is eltarthat.
 
-## <a name="get-the-notebook"></a>A notebook beszerzése
-
-A dokumentumban leírt példa kódja a következő helyen található: [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
-
-## <a name="upload-the-notebooks"></a>A notebookok feltöltése
+## <a name="upload-the-notebook"></a>A notebook feltöltése
 
 Ha fel szeretné tölteni a notebookot a projektből a Spark on HDInsight-fürtre, használja a következő lépéseket:
+
+1. Töltse le a projektet a következő helyről: [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
 
 1. A webböngészőben csatlakozzon a Spark-fürtön lévő Jupyter notebookhoz. A következő URL-címben cserélje le a `CLUSTERNAME` elemet a __Spark__-fürt nevére.
 
@@ -128,7 +207,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a Spark strukturált stream használatát, a következő dokumentumokból még többet tudhat meg a Spark és a Kafka használatáról:
+Az oktatóanyagból megtudta, hogyan használhatja a Spark strukturált streamet adatok írásához és olvasásához a Kafka on HDInsightból. A Storm a Kafkával való használatának megismeréséhez kövesse az alábbi hivatkozást.
 
-* [Spark streamelés (DStream) használata a Kafkával](hdinsight-apache-spark-with-kafka.md).
-* [A Jupyter Notebook és a Spark on HDInsight használatának első lépései](spark/apache-spark-jupyter-spark-sql.md)
+> [!div class="nextstepaction"]
+> [Az Apache Storm használata a Kafkával](hdinsight-apache-storm-with-kafka.md)

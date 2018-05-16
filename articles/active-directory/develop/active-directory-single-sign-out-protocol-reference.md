@@ -1,13 +1,14 @@
 ---
-title: "SAML protokoll Azure egyetlen kijelentkezés |} Microsoft Docs"
+title: SAML protokoll Azure egyetlen kijelentkezés |} Microsoft Docs
 description: Ez a cikk ismerteti az Azure Active Directoryban egyetlen Sign-Out SAML protokoll
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: c77bf15d69a4c7749567f53df96c91a1d329a466
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9ec99ffc64138cf1cd94e0f11077cdc5d86dbc57
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-out-saml-protocol"></a>Egyetlen kijelentkezési SAML protokoll
 Az Azure Active Directory (Azure AD) támogatja a SAML 2.0-s webes böngésző egyetlen kijelentkezési profil. Egyetlen kijelentkezés, megfelelő működéséhez a **LogoutURL** a az alkalmazás explicit módon regisztrálni kell az Azure AD-alkalmazás regisztrációja során. Az Azure AD felhasználók átirányítása után a rendszer kijelentkezteti a LogoutURL használja.
@@ -41,9 +42,9 @@ A felhőalapú szolgáltatás küld egy `LogoutRequest` az Azure AD-üzenet jelz
 ### <a name="logoutrequest"></a>LogoutRequest
 A `LogoutRequest` az Azure AD küldött elem szükséges a következő attribútumokat:
 
-* `ID`: Ez azonosítja a kijelentkezési kérelmet. Értékének `ID` kell nem kezdődhet számmal. Az általános gyakorlat az, hogy hozzáfűzése **azonosító** a GUID karakterláncos ábrázolása.
-* `Version`: Ez az elem értékének beállítása **2.0**. Kötelezően megadandó érték.
-* `IssueInstant`: Ez egy `DateTime` koordinálják világidő (UTC) értékű karakterlánc és [körbejárási formátumban ("no")](https://msdn.microsoft.com/library/az4se3k1.aspx). Az Azure AD egy ilyen típusú értéket vár, de nem érvényesíti.
+* `ID` : Ez azonosítja a kijelentkezési kérelmet. Értékének `ID` kell nem kezdődhet számmal. Az általános gyakorlat az, hogy hozzáfűzése **azonosító** a GUID karakterláncos ábrázolása.
+* `Version` : Ez az elem értékének beállítása **2.0**. Ezt az értéket kötelező megadni.
+* `IssueInstant` : Ez egy `DateTime` koordinálják világidő (UTC) értékű karakterlánc és [körbejárási formátumban ("no")](https://msdn.microsoft.com/library/az4se3k1.aspx). Az Azure AD egy ilyen típusú értéket vár, de nem érvényesíti.
 
 ### <a name="issuer"></a>Kiállító
 A `Issuer` eleme egy `LogoutRequest` pontosan egyeznie kell a **ServicePrincipalNames** az Azure AD-ben a felhőalapú szolgáltatáshoz. Általában értékre van állítva a **App ID URI** regisztrációja során meghatározott.
@@ -71,5 +72,5 @@ Az Azure AD állítja ezt az értéket `https://login.microsoftonline.com/<Tenan
 
 Értékének kiértékelése a `Issuer` elem, az értéket a **App ID URI** regisztrációja során.
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 Az Azure AD által használt a `StatusCode` eleme a `Status` elem a sikerességét vagy sikertelenségét kijelentkezési jelzi. A kijelentkezési kísérlet meghiúsul, ha a `StatusCode` elem is tartalmazhat egyéni hibaüzenetek.

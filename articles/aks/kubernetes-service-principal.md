@@ -3,19 +3,19 @@ title: Az Azure Kubernetes-fürthöz tartozó egyszerű szolgáltatás
 description: Kubernetes-fürthöz tartozó Azure Active Directory szolgáltatásnév létrehozása és felügyelete az AKS-ben
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 81f455668e81c2a6c21b66d85199da3f475e7265
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5e6e24d132598e3f79e4fe76c13ee0ae6a82424d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="service-principals-with-azure-container-service-aks"></a>Szolgáltatásnevek és az Azure Container Service (AKS)
+# <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
 Az AKS-fürtöknek szükségük van egy [Azure Active Directory egyszerű szolgáltatásra][aad-service-principal] az Azure API-kkal való kommunikációhoz. Az egyszerű szolgáltatással dinamikusan hozhat létre és kezelhet olyan erőforrásokat, mint az [Azure Load Balancer][azure-load-balancer-overview].
 

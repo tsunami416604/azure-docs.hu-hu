@@ -1,22 +1,22 @@
 ---
-title: "Azure Container Service- (AKS-) kvóták és -régiók rendelkezésre állása"
-description: "Az Azure Container Service (AKS) alapértelmezett kvótái és a régiók alapértelmezés szerinti rendelkezésre állása."
+title: Az Azure Kubernetes Service- (AKS-) kvóták és -régiók rendelkezésre állása
+description: Az Azure Kubernetes Service (AKS) alapértelmezett kvótái és a régiók alapértelmezés szerinti rendelkezésre állása.
 services: container-service
-author: david-stanford
-manager: timlt
+author: neilpeterson
+manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
-ms.date: 01/16/2018
-ms.author: dastanfo
-ms.openlocfilehash: eddfab874501fd045820d7da3c968d340fdffe93
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.date: 04/26/2018
+ms.author: nepeters
+ms.openlocfilehash: adf2d57961df9a4e8d03f2b3fe43ca0603685eb2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="quotas-and-region-availability-for-azure-container-service-aks"></a>Azure Container Service- (AKS-) kvóták és -régiók rendelkezésre állása
+# <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)-kvóták és -régiók rendelkezésre állása
 
-Minden Azure-szolgáltatás tartalmaz az erőforrásokra és a funkciókra vonatkozó alapértelmezett korlátokat. Az alábbi szakaszokban részletes információkat talál számos Container Service- (AKS-) erőforrás alapértelmezett erőforráskorlátjáról, valamint az AKS szolgáltatás rendelkezésre állásáról az Azure-régiókban.
+Minden Azure-szolgáltatás tartalmaz az erőforrásokra és a funkciókra vonatkozó alapértelmezett korlátokat. Az alábbi szakaszokban részletes információkat talál számos Azure Kubernetes Service- (AKS-) erőforrás alapértelmezett erőforráskorlátjáról, valamint az AKS szolgáltatás rendelkezésre állásáról az Azure-régiókban.
 
 ## <a name="service-quotas-and-limits"></a>Szolgáltatási kvóták és korlátok
 
@@ -28,7 +28,7 @@ Az üzembe helyezett infrastruktúrára minden egyéb hálózati, számítási �
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Az Azure Container Service (AKS) szolgáltatás előzetes verziója az alábbi régiókban érhető el:
+Az Azure Kubernetes Service (AKS) szolgáltatás előzetes verziója az alábbi régiókban érhető el:
 - USA keleti régiója
 - Nyugat-Európa
 - USA középső régiója

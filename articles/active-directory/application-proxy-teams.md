@@ -15,11 +15,11 @@ ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: f31b5be80ae56ffe4d0f570cb8d25da8cc098009
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 974c364588d34631c8214352be7821c69e5f7aa7
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams keresztül férnek hozzá a helyszíni alkalmazások
 
@@ -54,5 +54,5 @@ A csoport egyik tagjának hozzáadja a lapon, ha azt jeleníti meg a csatorna mi
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [tegye közzé a helyszíni SharePoint helyeket](application-proxy-enable-remote-access-sharepoint.md) az alkalmazásproxy.
+- Megtudhatja, hogyan [tegye közzé a helyszíni SharePoint helyeket](manage-apps/application-proxy-integrate-with-sharepoint-server.md) az alkalmazásproxy.
 - Az alkalmazások használatára konfigurálja [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) a külső URL-címhez. 

@@ -41,7 +41,7 @@
 ### [Oauth 2.0 hitelesítésikód-engedélyezés](active-directory-protocols-oauth-code.md)
 ### [OAuth 2.0 implicit engedélyezés](active-directory-dev-understanding-oauth2-implicit-grant.md)
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
-### [Szerepkörjogcím konfigurálása](active-directory-enterprise-app-role-management.md)
+### [Szerepkörjogcím konfigurálása](../active-directory-enterprise-app-role-management.md)
 ### [Jogcímek testreszabása](active-directory-saml-claims-customization.md)
 ### [SAML-alapú SSO hibakeresése](active-directory-saml-debugging.md)
 ### [Egyszeri bejelentkezéses SAML-protokoll](active-directory-single-sign-on-protocol-reference.md)

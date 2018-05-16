@@ -12,11 +12,11 @@ ms.date: 04/03/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7e4731e150c2d6428fa8c752765780f827c33741
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ab029420ab9aa81b585c9b0315537bff2d9aaa6d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy és Qlik logika 
 Az Azure Active Directory Alkalmazásproxyjával és Qlik logika közösen együtt, hogy könnyen alkalmazásproxy használatával adja meg a távoli elérés az Qlik logika üzembe helyezéshez.  
@@ -56,7 +56,7 @@ Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel:
 ## <a name="testing"></a>Tesztelés 
 Az alkalmazás tesztelése készen áll. Hozzáférési QlikSense közzétételéhez az alkalmazás 1 és bejelentkezési mindkét alkalmazáshoz rendelt felhasználó használt külső URL-CÍMÉT.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások közzététele az alkalmazásproxy](manage-apps/application-proxy-publish-azure-portal.md)
-- [Alkalmazásproxy összekötők használata](active-directory-application-proxy-connectors-azure-portal.md).
+- [Alkalmazásproxy összekötők használata](manage-apps/application-proxy-connector-groups.md).

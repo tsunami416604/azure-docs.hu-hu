@@ -11,14 +11,14 @@ ms.assetid: 73304272-6c8b-482e-af7c-cd25d95dab4d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 3d9f9cd835056b61ee72ddde5add285f47665ac1
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: cb78808b515bb3385f7cf56725441a2b228f0aba
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Az IntelliJ Azure eszköztára használata Spark-alkalmazások a HDInsight-fürtök létrehozása
 
@@ -36,7 +36,7 @@ A projekt létrehozásához tekintse meg a [Spark-alkalmazások létrehozása az
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- HDInsight Linux rendszeren Apache Spark-fürt. Útmutatásért lásd: [létrehozása az Apache Spark on Azure hdinsight clusters](apache-spark-jupyter-spark-sql.md).
+- HDInsight Linux rendszeren Apache Spark-fürt. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 - Oracle Java fejlesztői készlet. Telepítheti azt a [Oracle webhely](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - IntelliJ IDEA. Ez a cikk 2017.1 verzióját használja. Telepítheti azt a [JetBrains webhely](https://www.jetbrains.com/idea/download/).
 
@@ -282,7 +282,7 @@ Ezek a hibák akkor fordulhat elő, mert a halommemória mérete nem elég nagy 
 
 ![Beállítások hozzáadása a "Virtuális gép beállításai" mezőben az intellij-t](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 Amikor a fürt hivatkozásra, akkor kérem, hogy adja meg a tároló hitelesítő adatai.
 
 ![Fürt hivatkozásra, adja meg a tároló hitelesítő adatok](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)

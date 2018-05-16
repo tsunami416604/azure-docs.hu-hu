@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 19c7a0475d975344a1563b8ff5e279059a93fbea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -52,7 +52,7 @@ A leírások olvashatóságának, ez a témakör a következő kifejezést haszn
 - A következő Windows-kezelés régebbi eszközöket támogatja:
     - Windows 8.1
     - Windows 7
-    - Windows Server 2012 R2
+    - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
 - A régebbi Windows-eszközök regisztrálását **van** keresztül zökkenőmentes egyszeri bejelentkezés nem összevont környezetekben támogatott [Azure Active Directory zökkenőmentes egyszeri bejelentkezést](https://aka.ms/hybrid/sso).
@@ -561,8 +561,6 @@ Amikor befejezte a szükséges lépéseket, tartományhoz csatlakozó eszközök
 ### <a name="remarks"></a>Megjegyzések
 
 - Csoportházirend-objektum segítségével szabályozhatja a Windows 10 és Windows Server 2016 tartományhoz csatlakoztatott számítógépekre az automatikus regisztráció bevezetésének. **Ha nem szeretné, hogy ezek az eszközök automatikusan regisztrálja az Azure ad-val vagy a regisztráció szabályozni szeretné**, majd a csoportházirend az automatikus regisztrációt, hogy ezek az eszközök először letiltása konfigurációval megkezdése előtt kell megkezdik lépéseket. Miután befejezte az állítja be, amikor készen áll a tesztelése, kizárólag megkezdik a csak a vizsgálati eszközök automatikus regisztráció engedélyezése csoportházirend és majd, ha Ön minden egyéb eszköz válassza.
-
-- Windows 10 2015. November frissítés automatikusan csatlakozik az Azure ad-val **csak** Ha a bevezetés csoportházirend-objektum be van állítva.
 
 - Bevezetés a Windows-kezelés régebbi rendszerű számítógépek, központilag telepítheti egy [Windows Installer-csomag](#windows-installer-packages-for-non-windows-10-computers) a kiválasztott számítógépekre.
 

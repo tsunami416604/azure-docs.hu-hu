@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: nepeters
-ms.openlocfilehash: d03f906f0cf4d22772388a589424877d8bb2f8ce
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3152dc69bc8fb9a94111f85976e5d999c4b18261
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések kapcsolatos Azure Kubernetes szolgáltatás (AKS)
 
@@ -26,8 +26,8 @@ Ez a cikk címek gyakran használják az Azure Kubernetes szolgáltatás (AKS) k
 
 - Közép-Kanada
 - Kelet-Kanada
-- USA középső régiója
-- USA keleti régiója
+- Egyesült Államok, középső régió
+- Egyesült Államok, keleti régió
 - Nyugat-Európa
 
 ## <a name="when-will-additional-regions-be-added"></a>Ha további régiókban megkapja?
@@ -60,7 +60,7 @@ Nem, RBAC AKS jelenleg nem támogatott, de hamarosan elérhető lesz.
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Is AKS is üzembe helyezés a már meglévő virtuális hálózatot?
 
-Nem, ez még nem érhető el, de hamarosan elérhető lesz.
+Igen, ez támogatott keresztül a [speciális hálózati szolgáltatás](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS szolgáltatással integrált Azure Key Vault?
 
@@ -68,7 +68,7 @@ Nem, nem, de ez az integráció tervezett. Addig is, próbálja ki a következő
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Futtatható Windows Server-tárolók AKS?
 
-Nem, AKS jelenleg nem biztosít a Windows Server-alapú ügynök-csomópontok, ezért nem futtatható Windows Server-tárolók. Ha a Windows Server-tárolók futtatnak az Azure-ban Kubernetes van szüksége, tekintse át a [acs-motor dokumentációja](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
+Futtassa a Windows Server-tárolók, Windows Server-alapú csomópontok futtatnia kell. A jelenleg a rendszer Windows Server-alapú csomópontok [private Preview verziójára](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/). Ha a Windows Server-tárolók futtatnak az Azure-ban Kubernetes kívül az előzetes van szüksége, tekintse át a [acs-motor dokumentációja](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Két erőforráscsoport miért jönnek létre az AKS?
 

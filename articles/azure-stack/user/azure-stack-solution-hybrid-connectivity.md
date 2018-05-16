@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8b5f59d3fea402efa50bdafd7fc0439a93051e69
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 048e2636aabe406728c8fe1b93ef861f13346256
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Oktatóanyag: hibrid felhő kapcsolat konfigurálása az Azure és az Azure-verem
 
@@ -78,7 +78,7 @@ Kapcsolat specifikációk:
  - **Előfizetés**: bármely elsődleges előfizetés
  - **Erőforráscsoport**: teszt-infrastruktúra
 
-| Azure vagy az Azure-verem kapcsolat | Name (Név) | Alhálózat | IP-cím |
+| Azure vagy az Azure-verem kapcsolat | Név | Alhálózat | IP-cím |
 |-------------------------------------|---------------------------------------------|---------------------------------------|-----------------------------|
 | Az Azure virtuális hálózat | ApplicationvNet<br>10.100.102.9/23 | ApplicationSubnet<br>10.100.102.0/24 |  |
 |  |  | A GatewaySubnet<br>10.100.103.0/24 |  |
@@ -93,7 +93,7 @@ Kapcsolat specifikációk:
 
 ## <a name="create-a-virtual-network-in-global-azure-and-azure-stack"></a>Virtuális hálózat létrehozása a globális Azure és az Azure-verem
 
-> [!note]  
+> [!Note]  
 > Biztosítania kell, hogy nincs-e az Azure vagy az Azure-verem vNet címterületek IP-címek nem átfedésének. 
 
 VNet létrehozása a Resource Manager üzembe helyezési modellel, az Azure portál használatával. Használja a [példaértékeket](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values), ha a lépéseket csupán az oktatóanyag elvégzése érdekében hajtja végre. Ha a lépéseket nem az oktatóanyag keretében hajtja végre, ne felejtse el az értékeket a saját értékeire cserélni. 
@@ -129,7 +129,7 @@ Keresse meg a [portálon](http://portal.azure.com/) azt a Resource Manager-alap�
         - Kattintson a **+ új létrehozása** megnyitásához a **nyilvános IP-cím létrehozása** lap.
         - Adjon meg egy **neve** a nyilvános IP-cím. A Termékváltozat, hagyja **alapvető**, majd jelölje be **OK** menti a módosításokat a lap alján.
 
-    > [!note]  
+    > [!Note]  
     > VPN-átjáró jelenleg csak támogatja a dinamikus nyilvános IP-címek hozzárendelését. Ez azonban nem jelenti azt, hogy az IP-cím módosul a VPN Gateway-hez való hozzárendelése után. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
 
 4. Ellenőrizze a beállításokat. 

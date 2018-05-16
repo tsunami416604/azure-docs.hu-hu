@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 10/14/2016
+ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: 263946c1a1bd792b2f23a55388b73a82ddad0000
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 025ff3dea365ab75af55f107da1fb7331861eb06
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>HPC-feladatok elküldése helyi számítógépről Azure-ban üzembe helyezett HPC Pack-fürtnek
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,9 +29,9 @@ Egy helyszíni ügyfélszámítógép feladatok elküldéséhez konfigurálása 
 ![Az Azure-ban fürtre feladat elküldése][jobsubmit]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Egy Azure virtuális Gépen telepített HPC Pack átjárócsomópont** -azt javasoljuk, hogy az automatikus eszközeit használja, mint egy [Azure gyors üzembe helyezés sablon](https://azure.microsoft.com/documentation/templates/) vagy egy [Azure PowerShell-parancsfájl](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) az átjárócsomópont és a fürt központi telepítése . Az átjárócsomópont DNS-nevét és a végrehajtásához a cikkben egy fürt rendszergazdájának hitelesítő adataira van szüksége.
+* **Egy Azure virtuális Gépen telepített HPC Pack átjárócsomópont** -azt javasoljuk, hogy az automatikus eszközeit használja, mint egy [Azure gyors üzembe helyezés sablon](https://azure.microsoft.com/documentation/templates/) az átjárócsomópont és a fürt telepítéséhez. Az átjárócsomópont DNS-nevét és a végrehajtásához a cikkben egy fürt rendszergazdájának hitelesítő adataira van szüksége.
 * **Ügyfélszámítógép** -HPC Pack ügyfél segédprogramok futtatható Windows vagy Windows Server ügyfél számítógépre van szüksége (lásd: [rendszerkövetelmények](https://technet.microsoft.com/library/dn535781.aspx)). Ha szeretné feladatok küldéséhez a HPC Pack webes portál vagy a REST API-t használja, minden ügyfélszámítógép az Ön által választott is használhatja.
-* **HPC Pack telepítési adathordozó** - HPC Pack (HPC Pack 2012 R2) legújabb verziója érhető el a HPC Pack ügyfél segédprogramok, a szabad telepítési csomag telepítéséhez a [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Győződjön meg arról, hogy töltse le a virtuális gép átjárócsomópont telepített HPC Pack ugyanazt a verzióját.
+* **HPC Pack telepítési adathordozó** - HPC Pack legújabb verziója érhető el a HPC Pack ügyfél segédprogramok, a szabad telepítési csomag telepítéséhez a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56360). Győződjön meg arról, hogy töltse le a virtuális gép átjárócsomópont telepített HPC Pack ugyanazt a verzióját.
 
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>1. lépés: Telepítse és konfigurálja a webes összetevők az átjárócsomópont
 Ahhoz, hogy a fürthöz feladatok küldéséhez a HTTPS-KAPCSOLATON keresztül egy REST-felület, ellenőrizze, hogy a HPC Pack webösszetevők a HPC Pack központi csomóponton. Ha még nincsenek telepítve, először telepítse a webes összetevők a HpcWebComponents.msi telepítési fájl futtatásával. Ezt követően konfigurálja a HPC PowerShell-parancsfájl futtatásával az összetevők **Set-HPCWebComponents.ps1**.
@@ -39,7 +39,7 @@ Ahhoz, hogy a fürthöz feladatok küldéséhez a HTTPS-KAPCSOLATON keresztül e
 Szükséges részletes eljárásokért lásd: [telepítse a Microsoft HPC Pack webösszetevők](http://technet.microsoft.com/library/hh314627.aspx).
 
 > [!TIP]
-> HPC Pack bizonyos Azure gyors üzembe helyezési sablonokat telepítse, és a webes összetevők automatikusan konfigurálja. Ha használja a [HPC Pack IaaS telepítési parancsfájl](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) a fürt létrehozásához, igény szerint telepítheti és konfigurálhatja a webes összetevők a telepítés részeként.
+> Bizonyos Azure gyors üzembe helyezési sablonokat HPC Pack fürtök telepítse, és a webes összetevők automatikusan konfigurálja.
 > 
 > 
 
@@ -81,7 +81,7 @@ Szükséges részletes eljárásokért lásd: [telepítse a Microsoft HPC Pack w
     ```
 
 ## <a name="step-2-install-the-hpc-pack-client-utilities-on-an-on-premises-computer"></a>2. lépés: Telepítse a HPC Pack ügyfél segédeszközöket a helyi számítógépen
-Ha szeretné a HPC Pack ügyfél segédprogramokat telepíthet a számítógépre, le a HPC Pack telepítési fájlok (teljes telepítés) a [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Ha a telepítés megkezdéséhez válassza a telepítő beállítás megadása a **HPC Pack ügyfél segédprogramok**.
+Ha szeretné a HPC Pack ügyfél segédprogramokat telepíthet a számítógépre, le a HPC Pack telepítési fájlok (teljes telepítés) a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56360). Ha a telepítés megkezdéséhez válassza a telepítő beállítás megadása a **HPC Pack ügyfél segédprogramok**.
 
 Ha szeretné használni a HPC Pack ügyféleszközök elől az átjárócsomóponthoz VM feladatok küldéséhez, is szüksége exportálja a tanúsítványt az átjárócsomóponthoz, és telepíti az ügyfélszámítógépen. A tanúsítvány kell lennie. CER formátumú.
 

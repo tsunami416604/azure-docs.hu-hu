@@ -1,25 +1,27 @@
 ---
-title: "Folyamat ismertetése OAuth2 implicit adja meg az Azure AD |} Microsoft Docs"
-description: "Ismerje meg, további információk az Azure Active Directory végrehajtásának OAuth2 implicit biztosítani folyamata, és hogy-e megfelelő az alkalmazás."
+title: Folyamat ismertetése OAuth2 implicit adja meg az Azure AD |} Microsoft Docs
+description: Ismerje meg, további információk az Azure Active Directory végrehajtásának OAuth2 implicit biztosítani folyamata, és hogy-e megfelelő az alkalmazás.
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2016
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b3ed6edb0b770e8b57bb5bfde4c183d435335ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 263a093d5cf4b48ed1dadd4a288e548065ddf282
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Az OAuth2 implicit grant flow az Azure Active Directory (AD) ismertetése
 Az OAuth2 implicit grant ahhoz, hogy a támogatás a leghosszabb listáját az OAuth2-specifikációt a biztonsági aggályokon meg notorious. És még, amely az ADAL JS és az ajánlott SPA alkalmazások írásához által megvalósított módszerrel. Mi ad? Mellékhatásokkal összes kérdése:, és akkor kapcsolja, mert a implicit grant böngészőből egy webes API a JavaScript keresztül használó alkalmazások is végezze el a legjobb módszer.
@@ -58,7 +60,7 @@ Ha az alkalmazás egy natív ügyfél, a implicit engedélyezési folyamat nem k
 
 Ha egy webalkalmazást, beleértve a háttérkiszolgálón és felhasználása az API-k, a háttér kódból fejleszt, a implicit engedélyezési folyamat is nem remekül beválik. Más biztosít Önnek sokkal nagyobb teljesítmény. Például az OAuth2 ügyfél hitelesítő adatok megadását teszi lehetővé szerezze be a jogkivonatokat, amelyek a saját magát, az alkalmazás felhasználói delegálásokat figyelésekor rendelt engedélyek tükrözik. Ez azt jelenti, hogy az ügyfél képes a fenntartásához erőforrások programozott hozzáférést még akkor is, ha a felhasználó nem aktívan folytat egy munkamenetet, és így tovább. Nem csak az, hogy, de az ilyen adjon magasabb biztonsági garanciákat. Például hozzáférési jogkivonatok soha nem tranzit keresztül a felhasználó böngészőben, nem kockáztatja a böngészési előzményeket menti a program, és így tovább. Az ügyfélalkalmazás is elvégezheti erős hitelesítés, amikor a jogkivonat kérésével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Fejlesztői erőforrások teljes listáját, beleértve a protokollok és OAuth2 engedélyezési adatfolyamok támogatás az Azure ad nyújtására referencia jellegű információt tekintse meg a [Azure AD fejlesztői útmutató][AAD-Developers-Guide]
 * Lásd: [alkalmazás integrálása az Azure AD] [ ACOM-How-To-Integrate] további mélység alkalmazás integrációs folyamat.
 

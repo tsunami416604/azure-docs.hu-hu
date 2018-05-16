@@ -1,29 +1,29 @@
 ---
-title: "Azure-identitás kezelése – alapok"
-description: "Felhőalapú Identitások is keresztül irányítást tarthat fenn a legjobban, és betekintést, hogyan és mikor történjen a felhasználók férhetnek hozzá a vállalati alkalmazásokhoz és adatokhoz."
-keywords: 
+title: Azure-identitás kezelése – alapok
+description: Felhőalapú Identitások is keresztül irányítást tarthat fenn a legjobban, és betekintést, hogyan és mikor történjen a felhasználók férhetnek hozzá a vállalati alkalmazásokhoz és adatokhoz.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewr: jsnow
 ms.author: jeffgilb
 ms.date: 07/05/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: a7eb669aac109ae8cde6d75129004d322c270651
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure-identitás kezelése – alapok
 
 Több vállalati digitális erőforrások élő a felhőben, és az eszközökön a vállalati hálózaton kívül, felhőalapú identitás- és hozzáférés felügyeleti kiválóan áttelepítésére válik. Felhőalapú Identitások is keresztül irányítást tarthat fenn a legjobban, és betekintést, hogyan és mikor történjen a felhasználók férhetnek hozzá a vállalati alkalmazásokhoz és adatokhoz.
 
-Microsoft rendelkezik lett felhőalapú identitásainak keresztül egy évtizedben és védelme, a [Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/active-directory-editions), ezek azonos védelmi rendszerek nem elérhető. Az Azure ad-vel a vállalati rendszergazdák könnyen arról, hogy felhasználói és rendszergazdai elszámolási kötelezettségéről szóló nagyobb biztonsággal és irányítási eddiginél.
+Microsoft rendelkezik lett felhőalapú identitásainak keresztül egy évtizedben és védelme, a [Azure Active Directory (AD)](active-directory-whatis.md), ezek azonos védelmi rendszerek nem elérhető. Az Azure ad-vel a vállalati rendszergazdák könnyen arról, hogy felhasználói és rendszergazdai elszámolási kötelezettségéről szóló nagyobb biztonsággal és irányítási eddiginél.
 
 Prémium szintű Azure AD egy olyan felhőalapú identitás- és hozzáférés felügyeleti megoldás speciális védelem képességekkel bővült, amely lehetővé teszi az összes olyan alkalmazáshoz, identity protection egy biztonságos identitás (továbbfejlesztett által a [Microsoft eszközintelligencia biztonsági diagramot](https://www.microsoft.com/en-us/security/intelligence)), és a Privileged Identity Management. Nem csupán egy másik figyelés vagy jelentéskészítési eszköz, prémium szintű Azure AD a felhasználói identitások valós idejű megvédheti, illetve lehetővé teszik a szervezet adatvédelmi kockázata, adaptív hozzáférési házirendeket hozhat létre.
 

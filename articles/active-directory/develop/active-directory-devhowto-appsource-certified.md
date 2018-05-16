@@ -1,25 +1,27 @@
 ---
-title: "Az Azure Active Directory hitelesített AppSource beszerzése |} Microsoft Docs"
-description: "Az alkalmazás az Azure Active Directory hitelesített AppSource tájékoztatást."
+title: Az Azure Active Directory hitelesített AppSource beszerzése |} Microsoft Docs
+description: Az alkalmazás az Azure Active Directory hitelesített AppSource tájékoztatást.
 services: active-directory
-documentationcenter: 
-author: andretms
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/03/2017
-ms.author: andret
+ms.author: celested
+ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 5601ad80e271364fec519cf34bcdc2f650f3bb92
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Hogyan kérhet a AppSource hitelesített az Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) egy cél üzleti felhasználók számára, próbálja meg, valamint (önálló SaaS és a meglévő Microsoft SaaS-termékekben bővítmény) sor üzleti SaaS-alkalmazások kezelésében.
@@ -35,7 +37,7 @@ A vállalat vagy szervezet rendelkező felhasználók Azure Active Directory an�
 
 Ahhoz, hogy a több-bérlős az alkalmazásra:
 - Beállítása `Multi-Tenanted` tulajdonságot `Yes` a az alkalmazás regisztrációs információit a [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) (alapértelmezés szerint az Azure portálon létrehozott alkalmazások értéke, mert *single-bérlő*)
-- Frissítse a kódot kérelmek küldése a "`common`" végpont (a végpont frissítése  *https://login.microsoftonline.com/{yourtenant}*  való  *https://login.microsoftonline.com/common* )
+- Frissítse a kódot kérelmek küldése a "`common`" végpont (a végpont frissítése *https://login.microsoftonline.com/{yourtenant}* való *https://login.microsoftonline.com/common*)
 - Egyes platformokon, például az ASP.NET is frissíteni kell a kódot több kiállítók fogadásához
 
 Több vállalat kiszolgálása kapcsolatos további információkért lásd: [bármely Azure Active Directory (AD) felhasználó a több-bérlős alkalmazás minta használatával bejelentkezés](./active-directory-devhowto-multi-tenant-overview.md).
@@ -100,7 +102,7 @@ A *próbaverziója partneri* kézi vagy hosszú távú műveletet kell elvégezn
 ### <a name="more-information"></a>További információ
 Az AppSource próbaverziója kapcsolatos további információkért lásd: [Ez a videó](https://aka.ms/trialexperienceforwebapps). 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Active Directory bejelentkezések támogató alkalmazások további információkért lásd: [az Azure Active Directory hitelesítési forgatókönyvei](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios) 
 

@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0ab788494f56364d4a46d632e34e4a1334564836
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c5f706e6e9402bfc404c370a0d1a45fc07656a9e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Útmutató a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak
 
@@ -52,15 +52,15 @@ Az Azure AD-alkalmazásproxy van:
 Az Azure AD alkalmazásproxy különböző típusú belső alkalmazás érhető el:
 
 * Webes használó alkalmazások [integrált Windows-hitelesítés](application-proxy-configure-single-sign-on-with-kcd.md) hitelesítéshez  
-* Webes űrlap alapú használó alkalmazások vagy [fejléc-alapú](../application-proxy-ping-access.md) hozzáférés  
+* Webes űrlap alapú használó alkalmazások vagy [fejléc-alapú](application-proxy-configure-single-sign-on-with-ping-access.md) hozzáférés  
 * Webes API-t szeretné tenni a különböző eszközökön gazdag alkalmazások  
-* Alkalmazások mögött található egy [távoli asztali átjáró](../application-proxy-publish-remote-desktop.md)  
+* Alkalmazások mögött található egy [távoli asztali átjáró](application-proxy-integrate-with-remote-desktop-services.md)  
 * Gazdag ügyfél alkalmazások integrált rendelkező az Active Directory Authentication Library (ADAL)
 
 ## <a name="how-does-application-proxy-work"></a>Hogyan működik az alkalmazásproxy?
 Konfigurálja a munkahelyi alkalmazás proxybeállítások két összetevőből: összekötő és a külső végpont. 
 
-Az összekötő egy egyszerűsített ügynök, amely a Windows Server a hálózaton belül helyezkedik el. Az összekötő lehetővé teszi a forgalom áramlását a felhőben az alkalmazásproxy az alkalmazás a helyszínen. Kimenő kapcsolatok csak így nem kell arra, hogy semmit a Szegélyhálózaton lévő vagy nyissa meg a bejövő portra használ. Az összekötők állapot nélküli és információkat le, szükség esetén a felhőből. Összekötők, például hogy miként kapcsolatos további információk azok terheléselosztásához és elvégezni a hitelesítést, lásd: [megértéséhez Azure AD-alkalmazásproxy összekötők](../application-proxy-understand-connectors.md). 
+Az összekötő egy egyszerűsített ügynök, amely a Windows Server a hálózaton belül helyezkedik el. Az összekötő lehetővé teszi a forgalom áramlását a felhőben az alkalmazásproxy az alkalmazás a helyszínen. Kimenő kapcsolatok csak így nem kell arra, hogy semmit a Szegélyhálózaton lévő vagy nyissa meg a bejövő portra használ. Az összekötők állapot nélküli és információkat le, szükség esetén a felhőből. Összekötők, például hogy miként kapcsolatos további információk azok terheléselosztásához és elvégezni a hitelesítést, lásd: [megértéséhez Azure AD-alkalmazásproxy összekötők](application-proxy-connectors.md). 
 
 A külső végpont nem hogyan a felhasználók elérését a hálózaton kívül az alkalmazások. Azok vagy folytathatja közvetlenül egy külső URL-CÍMÉT, amely annak meghatározását, vagy azokat a MyApps portálon keresztül érhetik el az alkalmazást. Amikor a felhasználók nyissa meg ezeket a végpontokat egyikére, az Azure AD hitelesíti, és majd irányított az összekötő a helyszíni alkalmazások.
 
@@ -95,9 +95,9 @@ Miután az első alkalmazás közzétételéhez nincs sokkal több alkalmazáspr
 
 * [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
 * [Alkalmazások közzététele saját tartománynév használatával](application-proxy-configure-custom-domain.md)
-* [További tudnivalók az Azure AD-alkalmazásproxy-összekötő](../application-proxy-understand-connectors.md)
-* [Meglévő helyszíni Proxy kiszolgálók használata](../application-proxy-working-with-proxy-servers.md) 
-* [Állítsa be egy egyéni kezdőlap](../application-proxy-office365-app-launcher.md)
+* [További tudnivalók az Azure AD-alkalmazásproxy-összekötő](application-proxy-connectors.md)
+* [Meglévő helyszíni Proxy kiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md) 
+* [Állítsa be egy egyéni kezdőlap](application-proxy-configure-custom-home-page.md)
 
 A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](http://blogs.technet.com/b/applicationproxyblog/).
 

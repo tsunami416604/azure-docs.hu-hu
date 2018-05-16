@@ -1,11 +1,11 @@
 ---
-title: "Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal| Microsoft Docs"
-description: "Megtudhatja, hogyan kezelhetők a felhasználói hozzáférések csoporttagságként vagy alkalmazáshoz való hozzárendelésként az Azure Active Directory hozzáférési felülvizsgálatokkal"
+title: Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal| Microsoft Docs
+description: Megtudhatja, hogyan kezelhetők a felhasználói hozzáférések csoporttagságként vagy alkalmazáshoz való hozzárendelésként az Azure Active Directory hozzáférési felülvizsgálatokkal
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 6a4d25b2eb228cafab48419a0d0eda92bba9f1ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b11f0b2032a102501de1da8315e80df88bfd57d5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -30,7 +30,7 @@ Az Azure Active Directoryval (Azure AD) könnyedén biztosíthatja a felhasznál
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-A hozzáférési felülvizsgálatok az Azure AD Premium P2 kiadásában érhetők el, a Microsoft nagyvállalati mobilitási + biztonsági E5 csomagban. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások). Minden olyan felhasználónak licencre van szüksége, aki a szolgáltatást felülvizsgálat létrehozása, felülvizsgálat elérése vagy felülvizsgálat alkalmazása céljából használja.
+A hozzáférési felülvizsgálatok az Azure AD Premium P2 kiadásában érhetők el, a Microsoft nagyvállalati mobilitási + biztonsági E5 csomagban. További információk: [Azure Active Directory editions](active-directory-whatis.md) (Azure Active Directory-kiadások). Minden olyan felhasználónak licencre van szüksége, aki a szolgáltatást felülvizsgálat létrehozása, felülvizsgálat elérése vagy felülvizsgálat alkalmazása céljából használja.
 
 
 ## <a name="create-and-perform-an-access-review"></a>Hozzáférési felülvizsgálat létrehozása és végrehajtása

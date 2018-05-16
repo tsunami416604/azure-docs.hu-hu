@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4f899e3f45174aef8274810e184cc374bcca2c50
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden egyes dokumentum írása az alkalmazással kapcsolatos szolgáltatásokra vonatkozó az Azure Active Directory (Azure AD) átfogó listáját tartalmazza.
@@ -79,9 +79,9 @@ Ha vannak olyan alkalmazások, a magánhálózaton, amely a felhasználók és e
 | Útmutató a következő cikket: |  |
 |:---:| --- |
 | Az Azure AD-alkalmazásproxy és működésének áttekintése |[A helyszíni alkalmazások biztonságos távoli hozzáférést biztosító](manage-apps/application-proxy.md) |
-| A szolgáltatásalkalmazás-Proxy konfigurálása és közzététele az első alkalmazás oktatóprogramok |[Az Azure AD alkalmazás Proxy beállítása](manage-apps/application-proxy-enable.md)<br /><br />[Az alkalmazás alkalmazásproxy-összekötő csendes telepítése](active-directory-application-proxy-silent-installation.md)<br /><br />[Alkalmazás Proxy használó alkalmazások közzétételének módját](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Saját tartománynév használatával](manage-apps/application-proxy-configure-custom-domain.md) |
-| Alkalmazás Proxy közzétett alkalmazások egyszeri bejelentkezés és a feltételes hozzáférés engedélyezése |[Single-sign-on a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Feltételes hozzáférés és a Proxy](application-proxy-enable-remote-access-sharepoint.md) |
-| Alkalmazásproxy használata a következő forgatókönyvek esetén útmutatást |[Natív ügyfél-alkalmazások támogatásának módja](active-directory-application-proxy-native-client.md)<br /><br />[Hogyan támogatja a jogcímbarát alkalmazásokhoz](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Külön hálózatok és helyek közzétett alkalmazások támogatása](active-directory-application-proxy-connectors-azure-portal.md) |
+| A szolgáltatásalkalmazás-Proxy konfigurálása és közzététele az első alkalmazás oktatóprogramok |[Az Azure AD alkalmazás Proxy beállítása](manage-apps/application-proxy-enable.md)<br /><br />[Az alkalmazás alkalmazásproxy-összekötő csendes telepítése](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[Alkalmazás Proxy használó alkalmazások közzétételének módját](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Saját tartománynév használatával](manage-apps/application-proxy-configure-custom-domain.md) |
+| Alkalmazás Proxy közzétett alkalmazások egyszeri bejelentkezés és a feltételes hozzáférés engedélyezése |[Single-sign-on a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Feltételes hozzáférés és a Proxy](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| Alkalmazásproxy használata a következő forgatókönyvek esetén útmutatást |[Natív ügyfél-alkalmazások támogatásának módja](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[Hogyan támogatja a jogcímbarát alkalmazásokhoz](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[Külön hálózatok és helyek közzétett alkalmazások támogatása](manage-apps/application-proxy-connector-groups.md) |
 | Alkalmazásproxy hibaelhárítási útmutatója |[Alkalmazás Proxy hibaelhárítási útmutatója](active-directory-application-proxy-troubleshoot.md) |
 
 Minden kiadása felhasználónként legfeljebb tíz alkalmazásokhoz az Azure AD alkalmazásproxy érhető el. [Prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) korlátlan alkalmazásokat támogatja. Ha a szervezete [Azure AD alapvető](https://azure.microsoft.com/pricing/details/active-directory/) vagy [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), akkor [csoportoknak a segítségével hozzáférés hozzárendelése alkalmazásokhoz](#managing-access-to-applications).
@@ -108,7 +108,7 @@ Beállítása után az egyszeri bejelentkezés az alkalmazások és erőforráso
 | Útmutató a következő cikket: |  |
 |:---:| --- |
 | Bevezetés a feltételes hozzáférési funkciókat kínál az Azure AD között Office365, és az Intune-ban |[Kockázatkezelés feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) |
-| A következő típusú erőforrásokat a feltételes hozzáférés engedélyezése |[Feltételes hozzáférés a Szolgáltatottszoftver-alkalmazásoknál](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Feltételes hozzáférés az Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások](active-directory-conditional-access-azure-portal.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások közzététele az Azure AD alkalmazás-proxyn keresztül](application-proxy-enable-remote-access-sharepoint.md) |
+| A következő típusú erőforrásokat a feltételes hozzáférés engedélyezése |[Feltételes hozzáférés a Szolgáltatottszoftver-alkalmazásoknál](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Feltételes hozzáférés az Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások](active-directory-conditional-access-azure-portal.md)<br /><br />[Feltételes hozzáférés a helyszíni alkalmazások közzététele az Azure AD alkalmazás-proxyn keresztül](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Eszközök regisztrálása az Azure Active Directoryban ahhoz, hogy az eszközalapú feltételes hozzáférési házirend engedélyezése |[Az Azure Active Directory Eszközregisztráció – áttekintés](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Automatikus Eszközregisztráció engedélyezése a tartományhoz csatlakoztatott Windows-eszközök](active-directory-conditional-access-automatic-device-registration.md)<br />– [Lépéseket a Windows 8.1-eszközök](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Lépéseket a Windows 7-eszközök](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | A Microsoft Authenticator alkalmazás használata a kétlépéses ellenőrzéshez |} [Microsoft hitelesítő](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |

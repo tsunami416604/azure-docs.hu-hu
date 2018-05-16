@@ -1,12 +1,12 @@
 ---
-title: "A távoli figyelési előre konfigurált megoldás bemutatója | Microsoft Docs"
-description: "Az Azure IoT távoli figyelési előre konfigurált megoldás és architektúrájának leírása."
-services: 
+title: A távoli figyelési előre konfigurált megoldás bemutatója | Microsoft Docs
+description: Az Azure IoT távoli figyelési előre konfigurált megoldás és architektúrájának leírása.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 7cef60998cf9e46a8d89f8ad53edd0382e3ce76e
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 3aa9bb9c785bb69c80d9bb33e595393a5a1d220a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>A távoli figyelési előre konfigurált megoldás bemutatója
 
@@ -35,7 +35,17 @@ Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemé
 
 A következő diagram az előre konfigurált megoldás logikai összetevőit vázolja fel:
 
-![Logikai architektúra](media/iot-suite-v1-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
+![Logikai architektúra](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
+
+## <a name="microservices--docker-containers"></a>Mikroszolgáltatások és Docker-tárolók
+A távoli monitorozás az első olyan előre konfigurált megoldásunk, amely mikroszolgáltatásokon alapuló architektúrát használ. A megoldás [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) és [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) változatban is elérhető.
+A mikroszolgáltatások használata olyan elterjedt módszer, amely skálázhatóságot és rugalmasságot biztosít (a tárolók egyenkénti skálázásának lehetősége révén) a fejlesztés sebességének korlátozása nélkül.
+A mikroszolgáltatások felosztják a kódot és jól meghatározott felületeket biztosítanak, könnyebben érthetővé és kevésbé monolitikussá téve a megoldásokat. A módszer emellett további lehetőségeket nyit meg az olyan partnerek előtt, akik szeretnék kibővíteni jelenlegi megoldásgyorsítóinkat, hogy teljes, értékesíthető megoldásokat hozhassanak létre.
+
+**További információ a Docker-tárolókról**
+* [A Docker telepítése](https://docs.docker.com/engine/installation/)
+* [Gyakran használt Docker-parancsok távoli monitorozáshoz](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#common-docker-commands)
+* [Docker – Első lépések](https://docs.docker.com/get-started/)
 
 ## <a name="simulated-devices"></a>Szimulált eszközök
 
@@ -230,7 +240,7 @@ GROUP BY
 
 A **device info** és a **rules** ASA-feladatok az eseményközpontoknak adják át az adataikat, amelyek megbízhatóan továbbítják azokat a WebJob-feladatban futó **eseményfeldolgozónak**.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Storage tárterület
 
 A megoldás az Azure Blob Storage segítségével őrzi meg a megoldásba bevont eszközök által küldött nyers és összegzett telemetriai adatokat. A portál beolvassa a Blob Storage-ból a telemetriaadatokat a diagramok adatokkal történő feltöltéséhez. Riasztások megjelenítéséhez a megoldásportál beolvassa a Blob Storage-ból azon adatokat, amelyek akkor lettek rögzítve, amikor a telemetriaértékek túllépték a konfigurált küszöbértékeket. A megoldás a Blob Storage használatával rögzíti a megoldásportálon beállított küszöbértékeket is.
 
@@ -260,7 +270,7 @@ A megoldásportál ezen oldaláról a következőket teheti:
 * Megtekintheti az eszközök parancselőzményeit.
 * Engedélyezheti és letilthatja a különböző eszközöket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő TechNet-blogbejegyzés további részleteket tartalmaz a távoli figyelési előre konfigurált megoldásról:
 

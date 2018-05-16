@@ -15,11 +15,11 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 61426d992e279cf88ae9750f0047b0cd81a797e3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ea6817f80925c1989db13488472457e44801e7a8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő alkalmazásokat az Azure Active Directory alkalmazásproxyt 
 
@@ -112,7 +112,7 @@ Ezt a beállítást használja, is szükség van egy másik CNAME bejegyzés ér
 
 A helyettesítő karakteres alkalmazás szerepel a csak egy csempe az a [MyApps panel](https://myapps.microsoft.com). Alapértelmezés szerint ez a csempe rejtett. A csempe megjelenítése és felhasználók föld egy adott oldalon:
 
-1. Útmutatás [a kezdőlap URL-cím beállításakor](application-proxy-office365-app-launcher.md).
+1. Útmutatás [a kezdőlap URL-cím beállításakor](manage-apps/application-proxy-configure-custom-home-page.md).
 2. Állítsa be **megjelenítése alkalmazás** való **igaz** alkalmazás Tulajdonságok lapján találhat.
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos által korlátozott delegálás
@@ -201,7 +201,7 @@ A következő a [lépéseket dokumentált](manage-apps/application-proxy-publish
 
 Ez a konfiguráció valósítja meg a következő forgatókönyvet:
 
-![Forgatókönyv](./media/active-directory-application-proxy-wildcard\09.png)
+![Eset](./media/active-directory-application-proxy-wildcard\09.png)
 
 Mivel `finance.adventure-works.com` mint pontosabb URL-cím `*.adventure-works.com`, akkor lép érvénybe. Meglátogató felhasználók `finance.adventure-works.com` pénzügyi erőforrások kérelemben tapasztalattal rendelkeznie. Ebben az esetben csak a pénzügyi alkalmazottak elérő eszköztípusokra `finance.adventure-works.com`.
 

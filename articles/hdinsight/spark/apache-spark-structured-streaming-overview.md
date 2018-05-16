@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: ca4a248e9da2c0d50aaf320370b1f3050a0ff263
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f3eccfb63b127f3cbb8f9d95ec2fa802861d8c9d
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="overview-of-spark-structured-streaming"></a>A strukturált Spark Streaming áttekintése
 
@@ -43,7 +43,7 @@ Strukturált adatfolyam adatok megérkezik a rendszer, és van egy bemeneti táb
 
 A táblák tartalmazhat, csak a legutóbbi új adatokat idő a lekérdezési eredmények adatok fel lettek dolgozva (*hozzáfűzéssel*), vagy a tábla teljesen frissíteni lehet, minden alkalommal, amikor nincs új adatokat, így a tábla tartalmazza az összes kimeneti adatokat az adatfolyam-továbbítási lekérdezés kezdete óta (*teljes mód*).
 
-### <a name="append-mode"></a>Hozzáfűzéssel
+### <a name="append-mode"></a>Append mode
 
 A hozzáfűzéssel, csak a sor utolsó lekérdezés futtatása az eredmények táblázatában szerepelnek az eredmények táblázatában hozzáadott és a külső tárhelyen. Például a legegyszerűbb lekérdezés csak minden adatot a bemeneti tábla másolja az eredmények táblázatában változatlan. Minden alkalommal, amikor egy eseményindító időtartam, az új adatok feldolgozási, és az eredmények táblázatában a sorait, úgy, hogy új adatok jelennek meg. 
 

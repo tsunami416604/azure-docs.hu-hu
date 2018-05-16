@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás irányítópult – áttekintés |} Microsoft Docs
+title: Az Azure alkalmazás irányítópult – áttekintés |} Microsoft Docs
 description: Alkalmazások figyelése az Azure Application insights szolgáltatással és az áttekintő irányítópulthoz funkciókkal.
 services: application-insights
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: bccb56ad45d9054a437bf2d85e74a8d81fbc3db1
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 89ad96441ca4d519a9f4213ae3353eea1f0a7c37
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="overview-dashboard-preview"></a>Áttekintő irányítópulthoz (előzetes verzió)
+# <a name="application-insights-overview-dashboard-preview"></a>Application Insights áttekintő irányítópulthoz (előzetes verzió)
 
-Az Application Insights mindig nyújtott gyors és:-a-áttekintő értékeléséhez, az alkalmazás állapotának és teljesítményének a összefoglaló áttekintés ablaktábláján. 2018. május 15. Ezzel egy új gyorsabb és rugalmasabb élmény kiadjuk által megtekinthető villámnézetként. 2018. május 29. a rendszerből a klasszikus áttekintése élményt.
+Az Application Insights mindig nyújtott gyors és:-a-áttekintő értékeléséhez, az alkalmazás állapotának és teljesítményének a összefoglaló áttekintés ablaktábláján. Az új előzetes áttekintő irányítópulthoz gyorsabb rugalmasabb élményt nyújt.
 
 ## <a name="how-do-i-test-out-the-new-experience"></a>Hogyan tesztelheti ki az új felület?
 
-Május 15-én az új felület megkezdik jelenik meg az Application Insights: _vizsgálat_ > _áttekintése (előzetes verzió)_.
+ Az Application insightsban: _vizsgálat_ válasszon _áttekintése (előzetes verzió)_.
 
 ![Előzetes áttekintése](.\media\app-insights-overview-dashboard\01.png)
 
@@ -60,11 +60,3 @@ Hálózati adaptere esetében megtarthatja az alapértelmezett nézet tetszés s
 Lépjen vissza az Áttekintés felületet csak válasszon:
 
 ![Áttekintés gomb](.\media\app-insights-overview-dashboard\07.png)
-
-Is van nevű új gomb _PIN-kód részek_.
-
-![Áttekintés gomb](.\media\app-insights-overview-dashboard\008.png)
-
-Ez egy kicsit ismert szolgáltatás replikálja, amely lehetővé teszi, hogy a csempék a régi áttekintése tapasztalatunkat bármelyikét klasszikus áttekintésében _(riasztások, rendelkezésre állási, élő metrikákat, használat, proaktív észlelések és alkalmazás-hozzárendelés)_ és Adja hozzá az egyéni irányítópultok. 
-
-Az alapértelmezett esetén _alkalmazás irányítópult_ már jelentek meg a csempéket. De további egyéni irányítópultok létrehozásakor, vagy ha valaki a csoport törlése a klasszikus csempe, és adja hozzá ismét, szeretné _PIN-kód részek_ biztosít bármely funkció könnyen megtalálhatók a helyen.

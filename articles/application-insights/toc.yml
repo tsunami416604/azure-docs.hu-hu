@@ -53,6 +53,8 @@
           href: app-insights-asp-net-core.md
         - name: Konzol
           href: application-insights-console.md
+        - name: Alkalmazás irányítópultja
+          href: app-insights-overview-dashboard.md
     - name: Java-alkalmazások figyelése
       items:
         - name: Webalkalmazások
@@ -228,6 +230,8 @@
           href: app-insights-automate-with-flow.md
         - name: Automatizálás Azure Logic App használatával
           href: automate-with-logic-apps.md
+        - name: Egyéni e-mail-jelentések
+          href: automate-custom-reports.md
     - name: Fejlesztés
       items:
         - name: API egyéni eseményekhez és a mérőszámokhoz

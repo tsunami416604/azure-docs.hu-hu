@@ -22,7 +22,7 @@
       href: features-windows.md
 - name: Útmutatók
   items:
-    - name: Egyéni parancsfájl-bővítmény
+    - name: Egyéni szkript
       items:
         - name: Linux – 2-es verzió
           href: custom-script-linux.md
@@ -30,13 +30,13 @@
           href: custom-script-linuxOstc.md
         - name: Windows
           href: custom-script-windows.md
-    - name: OMS-bővítmény
+    - name: Operations Management Suite
       items:
         - name: Linux
           href: oms-linux.md
         - name: Windows
           href: oms-windows.md
-    - name: Diagnosztikai bővítmény
+    - name: Diagnosztika
       items:
         - name: Linux
           href: diagnostics-linux.md
@@ -50,7 +50,7 @@
           href: network-watcher-linux.md
         - name: Windows
           href: network-watcher-windows.md
-    - name: PowerShell DSC bővítmény
+    - name: PowerShell DSC
       href: dsc-overview.md
       items:
         - name: DSC és Windows
@@ -61,9 +61,9 @@
           href: dsc-template.md
     - name: IaaS kártevőirtó Windowshoz
       href: iaas-antimalware-windows.md
-    - name: Key Vault-bővítmény
+    - name: Key Vault
       href: key-vault-windows.md
-    - name: Virtuális gépek pillanatkép-készítő bővítménye
+    - name: Virtuális gép pillanatképe
       items:
         - name: Linux
           href: vmsnapshot-linux.md
@@ -77,7 +77,7 @@
           href: symantec.md
     - name: Elavult bővítmények
       items:
-        - name: Naplógyűjtő bővítmény
+        - name: Naplógyűjtő
           href: log-collector.md
         - name: Trend Micro Deep Security
           href: trend.md

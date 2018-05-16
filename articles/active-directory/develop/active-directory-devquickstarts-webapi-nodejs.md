@@ -3,10 +3,11 @@ title: Az Azure AD Node.js webes API-k első lépések |} Microsoft Docs
 description: Hogyan hozhat létre a többi Node.js webes API-k, amely az Azure AD használatára a hitelesítéshez.
 services: active-directory
 documentationcenter: nodejs
-author: celestedg
+author: CelesteDG
 manager: mtillman
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
@@ -14,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: a8438dcd1f37cfc6b259cfc7831805a0476446ea
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 24591c46858970724fbd1fe36336f7f2b0b2fefd
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-nodejs-web-api-getting-started"></a>Az Azure AD Node.js webes API-k első lépések
 
@@ -73,7 +74,7 @@ A [argumentumok](/cli/azure/ad/app?view=azure-cli-latest#az_ad_app_create) a a `
 
 Mielőtt az csatlakozna az Azure Active Directory, a következő információkat kell:
 
-| Name (Név)  | Leírás | A konfigurációs fájlban változó neve |
+| Név  | Leírás | A konfigurációs fájlban változó neve |
 | ------------- | ------------- | ------------- |
 | Bérlő neve  | [Bérlő neve](active-directory-howto-tenant.md) a hitelesítéshez használni kívánt | `tenantName`  |
 | Ügyfél-azonosító  | Ügyfél-azonosító az aad-ben használt OAuth-kifejezésnek _Alkalmazásazonosító_. |  `clientID`  |

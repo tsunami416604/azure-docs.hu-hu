@@ -1,25 +1,27 @@
 ---
-title: "Az Azure AD .NET webes API bevezetés |} Microsoft Docs"
-description: "Hogyan hozhat létre a .NET MVC webes API-k, amely az Azure AD a hitelesítéshez és engedélyezéshez."
+title: Az Azure AD .NET webes API bevezetés |} Microsoft Docs
+description: Hogyan hozhat létre a .NET MVC webes API-k, amely az Azure AD a hitelesítéshez és engedélyezéshez.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 67e74774-1748-43ea-8130-55275a18320f
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4c4cf11b26402747ef58e4fa3fbbe2154876dfae
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: aa527f66035ce8ea95ecdf405ef307c1202a92a6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Az Azure AD .NET webes API első lépések
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -125,8 +127,8 @@ Biztonságossá az alkalmazásról, először létrehoz egy alkalmazást az Ön 
     ```
 
 7. Nyissa meg a `web.config` a TodoListService projekt gyökérkönyvtárában található fájlt, és adja meg a konfigurációs értékeit a `<appSettings>` szakasz.
-  * `ida:Tenant`az Azure AD-bérlő – például a contoso.onmicrosoft.com neve van.
-  * `ida:Audience`az App ID URI az alkalmazás az Azure-portálon megadott van.
+  * `ida:Tenant` az Azure AD-bérlő – például a contoso.onmicrosoft.com neve van.
+  * `ida:Audience` az App ID URI az alkalmazás az Azure-portálon megadott van.
 
 ## <a name="step-3-configure-a-client-application-and-run-the-service"></a>3. lépés: Ügyfélalkalmazás konfigurálása és a szolgáltatás futtatásához
 Ahhoz, hogy a To tegye lista Service működés közben, a teendőlista-ügyfél konfigurálása, hogy azok jogkivonatokhoz az Azure AD és a szolgáltatás meghíváshoz kell.
@@ -143,9 +145,9 @@ Ahhoz, hogy a To tegye lista Service működés közben, a teendőlista-ügyfél
 
 5. A Visual Studióban nyissa meg a `App.config` a TodoListClient a projektre, és írja be a konfigurációs értékeit a `<appSettings>` szakasz.
 
-  * `ida:Tenant`az Azure AD-bérlő – például a contoso.onmicrosoft.com neve van.
-  * `ida:ClientId`a rendszer az Azure-portálról másolt alkalmazás Azonosítóját.
-  * `todo:TodoListResourceId`az App ID URI számára tegye lista szolgáltatásalkalmazás az Azure-portálon megadott van.
+  * `ida:Tenant` az Azure AD-bérlő – például a contoso.onmicrosoft.com neve van.
+  * `ida:ClientId` a rendszer az Azure-portálról másolt alkalmazás Azonosítóját.
+  * `todo:TodoListResourceId` az App ID URI számára tegye lista szolgáltatásalkalmazás az Azure-portálon megadott van.
 
 ## <a name="next-steps"></a>További lépések
 Végül törlése, elkészítéséhez és futtatása minden olyan projekthez. Ha még nem tette meg, most már az új felhasználó létrehozása a bérlő az idő a *. onmicrosoft.com tartományt. Jelentkezzen be, hogy a felhasználó a teendőlista ügyfélnek, és bizonyos feladatok hozzáadása a felhasználói feladatlistában.

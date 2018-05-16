@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c9d142a58f53c28c8f791692cf48b648522ccb99
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 95b385e9847a7809492bbb74bd1eba616df90d72
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>SSH-ból fürtcsomópontok Azure Kubernetes szolgáltatás (AKS)
 
-Alkalmanként szükség lehet egy Azure Kubernetes szolgáltatás (AKS) csomópont karbantartási, naplógyűjtést vagy egyéb hibaelhárítási műveletek eléréséhez. Az Azure Kubernetes szolgáltatás (AKS) csomópontok nem érhetők el az internethez. Az jelen dokumentumban szereplő lépések segítségével hozzon létre egy SSH-kapcsolat egy AKS csomóponttal.
+Alkalmanként szükség lehet egy Azure Kubernetes szolgáltatás (AKS) csomópont karbantartási, naplógyűjtést vagy egyéb hibaelhárítási műveletek eléréséhez. AKS csomópontok nem érhetők el az internethez. Az jelen dokumentumban szereplő lépések segítségével hozzon létre egy SSH-kapcsolat egy AKS csomóponttal.
 
 ## <a name="reset-ssh-keys"></a>SSH-kulcsok alaphelyzetbe állítása
 
@@ -31,7 +31,7 @@ Válassza ki **alaphelyzetbe SSH nyilvános kulcs**, adja meg a fürt AKS felhas
 
 ![AKS portál virtuális gép visszaállítási jelszó gomb](media/aks-ssh/reset-password-2.png)
 
-Miután az SSH-kulcs alaphelyzetbe lett állítva, hozzon létre egy SSH csatlakozás a megfelelő titkos kulccsal.
+Ha az SSH-kulcs alaphelyzetbe lett állítva, az SSH-kapcsolat a megfelelő titkos kulccsal is létrehozhat.
 
 ## <a name="get-aks-node-address"></a>AKS címe beolvasása
 

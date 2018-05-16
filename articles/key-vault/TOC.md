@@ -1,7 +1,7 @@
 # [A Key Vault dokumentációja](index.yml)
 
 # Áttekintés
-## [Key Vault – áttekintés](key-vault-overview.md)
+## [Tudnivalók a Key Vaultról](key-vault-overview.md)
 
 # Gyors útmutatók
 ## [Key Vault létrehozása – Parancssori felület](quick-create-cli.md)
@@ -65,8 +65,8 @@
 ## [A szolgáltatás áttekintése](https://azure.microsoft.com/services/key-vault/)
 ## [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)
 ### [Bevezetés a tanúsítványok használatába](certificate-scenarios.md)
-#### [Tanúsítvány-létrehozási módszerek](create-certificate.md)
-#### [Tanúsítvány-létrehozás monitorozása és kezelése](create-certificate-scenarios.md)
+### [Tanúsítvány-létrehozási módszerek](create-certificate.md)
+### [Tanúsítvány-létrehozás monitorozása és kezelése](create-certificate-scenarios.md)
 ## [Hitelesítés, kérelmek és válaszok](authentication-requests-and-responses.md)
 ## [Gyakori paraméterek és fejlécek](common-parameters-and-headers.md)
 ## [Key Vault-verziók](key-vault-versions.md)

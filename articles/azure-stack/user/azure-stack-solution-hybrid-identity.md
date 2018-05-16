@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 9a025716c2bb6266c1c1c552a2d0791b39429cac
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5224fe4682509f92e1f18d865e5cc5afb1218ad1
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-with-azure-and-azure-stack-applications"></a>Oktatóanyag: Azure és az Azure-verem alkalmazások hibrid felhőalapú identitás konfigurálása
 
@@ -60,7 +60,7 @@ Egy Azure verem telepítése kapcsolódik Azure Active Directory előfizetés é
 
 Azure verem kód használatával csatlakozhat, használja a hitelesítés és a graph végpontok Azure verem telepített alkalmazáshoz, és hitelesítse a többi kérelmek használatával az Azure Resource Manager API-végpontok száma. A mintaalkalmazás található [Itt](https://github.com/shriramnat/HybridARMApplication).
 
-> [!note]  
+> [!Note]  
 Kivéve, ha az Azure SDK for a választott nyelv támogatja az Azure API-profilok, az SDK-t Azure verem nem működik. Azure API-profilokkal kapcsolatos további tudnivalókért lépjen [Itt](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles).
 
 ## <a name="next-steps"></a>További lépések

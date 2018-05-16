@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 09d17f9f70ef352fe8d44a16c0f78323153a8a1a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c090a3fc36c300a108f10f02d0b663dc1e29f986
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Egyszeri bejelentkezés alkalmazásproxy alkalmazáshoz való konfigurálása
 
@@ -37,7 +37,7 @@ Az adott típusú egyszeri bejelentkezés konfigurálása. A bejelentkezés mód
 
 -   **Integrált Windows-hitelesítés**: az integrált Windows-hitelesítéssel (IWA) alkalmazások esetén az egyszeri bejelentkezés engedélyezve van a Kerberos által korlátozott delegálás (KCD). Ez a módszer az Active Directory megszemélyesíthet felhasználókat, és a küldési és fogadási jogkivonatokat a nevében Application Proxy összekötők engedélyezi. Kerberos által korlátozott Delegálás konfigurálása a részletek megtalálhatók a [egyszeri bejelentkezéshez a Kerberos által korlátozott Delegálás dokumentáció](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md).
 
--   **Fejléc-alapú bejelentkezés**: fejléc-alapú bejelentkezés az partnerség keresztül engedélyezhető, és néhány további beállításokra van szükség. További információkért a partneri kapcsolat áll fenn, és az egyszeri bejelentkezést használ fejlécek alkalmazáshoz való konfigurálásával kapcsolatos lépésenkénti útmutatót lásd: a [PingAccess az Azure AD-dokumentáció](application-proxy-ping-access.md).
+-   **Fejléc-alapú bejelentkezés**: fejléc-alapú bejelentkezés az partnerség keresztül engedélyezhető, és néhány további beállításokra van szükség. További információkért a partneri kapcsolat áll fenn, és az egyszeri bejelentkezést használ fejlécek alkalmazáshoz való konfigurálásával kapcsolatos lépésenkénti útmutatót lásd: a [PingAccess az Azure AD-dokumentáció](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md).
 
 Ezen lehetőségek találhatók az alkalmazás a "Vállalati alkalmazások" lesz, és megnyitása a **egyszeri bejelentkezés** oldalon, a bal oldali menüben. Vegye figyelembe, hogy ha az alkalmazás létrehozása a régi portál, előfordulhat, hogy nem látja ezeket a beállításokat.
 

@@ -1,81 +1,81 @@
 ---
-title: "A Notification Hubs honosított Breaking News oktatóanyag"
-description: "Megtudhatja, hogyan használható az Azure Notification Hubs honosított legfrissebb híreket tartalmazó értesítések küldése."
+title: Honosított értesítések küldése Windows-alkalmazásokba az Azure Notification Hubs használatával | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogy hogyan küldhet honosított értesítéseket a friss hírekről az Azure Notification Hubs használatával.
 services: notification-hubs
 documentationcenter: windows
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 8f205188bd68e53b187b71981ed36dcf9129ec62
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
-ms.translationtype: MT
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 517e7ae3871a1ed816ea407ad47c9033a1bb5a0e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-notification-hubs-to-send-localized-breaking-news"></a>Honosított legfrissebb hírek elküldése a Notification Hubs használatával
+# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Oktatóanyag: Honosított leküldéses értesítések küldése Windows-alkalmazásokba az Azure Notification Hubs használatával
 > [!div class="op_single_selector"]
-> * [Windows áruház C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> * [Windows Áruház C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
-> 
-> 
 
 ## <a name="overview"></a>Áttekintés
-Ez a témakör bemutatja, hogyan használható a **sablon** az Azure Notification Hubs – legfrissebb híreket tartalmazó értesítések nyelv és az eszköz honosított katalóguselemekről adás szolgáltatása. Ez az oktatóanyag a kiindulási pont a Windows Áruházbeli alkalmazásban létrehozott [legfrissebb hírek küldése Notification Hubs használata]. Amikor végzett, lesz kategóriák szeretné regisztrálni, adja meg a nyelvet, amelyen az értesítéseket, és csak a kiválasztott kategóriákra leküldéses értesítéseket kapni az adott nyelveken.
+Ez az oktatóanyag azt mutatja be, hogy hogyan lehet honosított leküldéses értesítéseket küldeni a Notification Hubs szolgáltatásban regisztrált mobileszközökre. Ebben az oktatóanyagban az [Oktatóanyag: Értesítések küldése adott eszközökre (Univerzális Windows-platform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) oktatóanyag során létrehozott alkalmazásokat fogja frissíteni az alábbi forgatókönyvek támogatásához: 
 
-Ez a forgatókönyv két részből áll:
+- A Windows Áruházbeli alkalmazás lehetővé teszi az ügyféleszközök számára nyelvek megadását, valamint a feliratkozást a különböző frisshír-kategóriákra.
+- A háttéralkalmazás értesítéseket küld, az Azure Notification Hubs **címke** és **sablon** funkcióját használva.
 
-* a Windows Áruházbeli alkalmazás tesz lehetővé az nyelv megadása, és fizessen elő a különböző breaking news kategóriák;
-* a háttér-közzéteszi az értesítéseket, a **címke** és **sablon** az Azure Notification Hubs feautres.
+Az oktatóanyag befejezését követően a mobilalkalmazás lehetővé teszi a felhasználót érdeklő kategóriákra való regisztrálást, valamint azt, hogy a felhasználó, milyen nyelven szeretné fogadni az értesítéseket. A háttéralkalmazás nyelv és eszköz alapján honosított értesítéseket küld. 
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
+
+> [!div class="checklist"]
+> * A Windows-alkalmazás frissítése a területi beállítási adatok támogatására
+> * A háttéralkalmazás frissítése honosított értesítések küldéséhez
+> * Az alkalmazás tesztelése
 
 ## <a name="prerequisites"></a>Előfeltételek
-Már végrehajtotta a [legfrissebb hírek küldése Notification Hubs használata] oktatóanyagot, és a kód érhető el, mert ez az oktatóanyag közvetlenül épít, hogy a kód.
+Végezze el az [Oktatóanyag: Értesítések küldése adott eszközökre (Univerzális Windows-platform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) című oktatóanyagot. 
 
-Szükség a Visual Studio 2012 vagy újabb.
+Az [Oktatóanyag: Értesítések küldése adott eszközökre (Univerzális Windows-platform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) oktatóanyag során létrehozott egy alkalmazást, amely **címkék** használatával iratkozott fel a hírek különböző **kategóriáira** vonatkozó értesítésekre. Ebben az oktatóanyagban a Notification Hubs **sablon** funkcióját használva fog **honosított** értesítéseket küldeni a friss hírekkel kapcsolatban.
 
-## <a name="template-concepts"></a>Sablon fogalmak
-A [legfrissebb hírek küldése Notification Hubs használata] olyan alkalmazás, amelynek használt parancsfájlkezelő **címkék** előfizetés az értesítésekre hírek különböző kategóriákban.
-Számos alkalmazás, azonban több piacok célként, és honosítási igényelnek. Ez azt jelenti, hogy a tartalom maguk értesítést kell honosított és kívánt eszközök beküldeni.
-Ebben a témakörben bemutatjuk, hogyan használható a **sablon** könnyen képes biztosítani a honosított legfrissebb híreket tartalmazó értesítések a Notification Hubs szolgáltatása.
+A sablonokkal lényegében azt a formátumot adhatja meg, amelyben egy adott eszköznek fogadnia kell az értesítéseket. A sablon meghatározza a hasznos adatok pontos formátumát a háttéralkalmazás által küldött üzenet részét képező tulajdonságokra hivatkozva. Ebben az oktatóanyagban a háttéralkalmazás egy területi beállításoktól független üzenetet küld el, amely minden támogatott nyelvet tartalmaz:
 
-Megjegyzés: egy honosított értesítések küldéséhez módja az egyes címkék több verzióját. Például angol, francia és Mandarin támogatásához lenne szükséges három különböző címkék híreket: "world_en", "world_fr" és "world_ch". A Microsoft majd kellene elküldeni a híreket honosított verzióját az egyes ezekkel a címkékkel. Ebben a témakörben a sablonok a címkék elterjedése és több üzenetet küldeni a követelmény elkerülése érdekében használjuk.
+```json
+{
+    "News_English": "...",
+    "News_French": "...",
+    "News_Mandarin": "..."
+}
+```
 
-Magas szinten sablonok, amelyek egy adja meg, hogy egy adott eszközhöz egy értesítést kell kapnia. A sablon a pontos az adattartalom formátuma az app-háttér által küldött üzenet részét képező tulajdonságok alapján határozza meg. Ebben az esetben az összes támogatott nyelvek tartalmazó területibeállítás-független üzenetet küldünk:
+Az eszközök egy sablonnal regisztrálnak, amely a megfelelő tulajdonságra hivatkozik. A bejelentési üzeneteket angol nyelven fogadni kívánó Windows Áruházbeli alkalmazás például az alábbi sablonra regisztrál a megfelelő címkékkel:
 
-    {
-        "News_English": "...",
-        "News_French": "...",
-        "News_Mandarin": "..."
-    }
+```xml
+<toast>
+    <visual>
+    <binding template=\"ToastText01\">
+        <text id=\"1\">$(News_English)</text>
+    </binding>
+    </visual>
+</toast>
+```
 
-Ezután azt fogja győződjön meg arról, hogy az eszközök regisztrálása a sablont, amely a megfelelő tulajdonság hivatkozik. Például egy Windows Áruházbeli alkalmazást, amely kéri a egyszerű bejelentési üzenet regisztrálja a következő sablon bármely megfelelő címkékkel:
+A sablonokkal kapcsolatos további információkért tekintse meg a [Sablonok](notification-hubs-templates-cross-platform-push-messages.md) című cikket. 
 
-    <toast>
-      <visual>
-        <binding template=\"ToastText01\">
-          <text id=\"1\">$(News_English)</text>
-        </binding>
-      </visual>
-    </toast>
+## <a name="update-windows-app-to-support-locale-information"></a>A Windows-alkalmazás frissítése a területi beállítási adatok támogatására
 
+1. Nyissa meg az [Oktatóanyag: Értesítések küldése adott eszközökre (Univerzális Windows-platform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) című oktatóanyaghoz létrehozott Visual Studio-megoldást. 
+2. Frissítse a **MainPage.xaml** fájlt, hogy az tartalmazza a területi beállítások kombinált listáját:
 
-
-Sablonok egyik újdonsága nagyon hatékony többet is megtudhat arról a a [sablonok](notification-hubs-templates-cross-platform-push-messages.md) cikk. 
-
-## <a name="the-app-user-interface"></a>Az alkalmazás felhasználói felülete
-A Microsoft most módosítja a Megtörje hírek alkalmazást, amely létrehozta a következő témakör [legfrissebb hírek küldése Notification Hubs használata] küldése honosított a legfrissebb hírek sablonok használatával.
-
-A Windows Áruházbeli alkalmazásban:
-
-A területi beállítás kombinált lista tartalmazza a MainPage.xaml módosítása:
-
+    ```xml
     <Grid Margin="120, 58, 120, 80"  
             Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -104,82 +104,163 @@ A területi beállítás kombinált lista tartalmazza a MainPage.xaml módosít�
         <ToggleSwitch Header="Sports" Name="SportsToggle" Grid.Row="4" Grid.Column="1"/>
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
+    ```
+2. A **Notifications** osztályban adjon hozzá egy területi beállítási paramétert a **StoreCategoriesAndSubscribe** és a **SubscribeToCateories** metódushoz.
 
-## <a name="building-the-windows-store-client-app"></a>A Windows áruház-ügyfélalkalmazás létrehozása
-1. Az értesítések osztályban adja hozzá a területi beállítással a *StoreCategoriesAndSubscribe* és *SubscribeToCateories* módszerek.
-   
-        public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
+    ```csharp   
+    public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
+    {
+        ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
+        ApplicationData.Current.LocalSettings.Values["locale"] = locale;
+        return await SubscribeToCategories(categories);
+    }
+
+    public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
+    {
+        var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+        if (categories == null)
         {
-            ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
-            ApplicationData.Current.LocalSettings.Values["locale"] = locale;
-            return await SubscribeToCategories(categories);
+            categories = RetrieveCategories();
         }
+
+        // Using a template registration. This makes supporting notifications across other platforms much easier.
+        // Using the localized tags based on locale selected.
+        string templateBodyWNS = String.Format("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(News_{0})</text></binding></visual></toast>", locale);
+
+        return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
+    }
+    ```
+
+    A *RegisterNativeAsync* metódus meghívása helyett hívja meg a *RegisterTemplateAsync* metódust. Egy adott értesítésformátumra kell regisztrálnia, amelyben a sablon a területi beállítástól függ. A sablont el is kell neveznie (például: „localizedWNSTemplateExample”), mert érdemes egynél több sablont regisztrálni (például egyet a bejelentési értesítésekhez és egyet a csempékhez). A sablonok elnevezése a frissítésükhöz és törlésükhöz is szükséges.
    
-        public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
+    Ha egy eszköz több, ugyanazon címkével rendelkező sablont is regisztrál, az adott címkét célzó bejövő üzenetekről több értesítés is érkezik az adott eszközre (egy-egy mindegyik sablon esetén). Ez a működés akkor hasznos, ha egyetlen logikai üzenetnek több látható értesítést kell eredményeznie, például egy jelvény megjelenítését és egy bejelentést a Windows Áruházbeli alkalmazásban.
+3. Adja hozzá az alábbi metódust a tárolt területi beállítás lekéréséhez:
+   
+    ```csharp
+    public string RetrieveLocale()
+    {
+        var locale = (string) ApplicationData.Current.LocalSettings.Values["locale"];
+        return locale != null ? locale : "English";
+    }
+    ```
+
+4. A **MainPage.xaml.cs** fájlban frissítése a gombkattintás-kezelőt a Locale (Területi beállítás) kombinált lista aktuális értékének lekérésével, és az értéknek a Notifications osztály meghívásában való megadásával az alább látható módon:
+   
+    ```csharp
+    private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
+    {
+        var locale = (string)Locale.SelectedItem;
+
+        var categories = new HashSet<string>();
+        if (WorldToggle.IsOn) categories.Add("World");
+        if (PoliticsToggle.IsOn) categories.Add("Politics");
+        if (BusinessToggle.IsOn) categories.Add("Business");
+        if (TechnologyToggle.IsOn) categories.Add("Technology");
+        if (ScienceToggle.IsOn) categories.Add("Science");
+        if (SportsToggle.IsOn) categories.Add("Sports");
+
+        var result = await ((App)Application.Current).notifications.StoreCategoriesAndSubscribe(locale,
+                categories);
+
+        var dialog = new MessageDialog("Locale: " + locale + " Subscribed to: " + 
+            string.Join(",", categories) + " on registration Id: " + result.RegistrationId);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
+    ```
+4. Végül az App.xaml.cs fájlban frissítse az `InitNotificationsAsync` metódust a területi beállítás lekérésére, és a feliratkozáskor való használatára:
+
+    ```csharp   
+    private async void InitNotificationsAsync()
+    {
+        var result = await notifications.SubscribeToCategories(notifications.RetrieveLocale());
+
+        // Displays the registration ID so you know it was successful
+        if (result.RegistrationId != null)
         {
-            var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-   
-            if (categories == null)
-            {
-                categories = RetrieveCategories();
-            }
-   
-            // Using a template registration. This makes supporting notifications across other platforms much easier.
-            // Using the localized tags based on locale selected.
-            string templateBodyWNS = String.Format("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(News_{0})</text></binding></visual></toast>", locale);
-   
-            return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
-        }
-   
-    Vegye figyelembe, hogy hívása helyett a *RegisterNativeAsync* metódus hívása *RegisterTemplateAsync*: egy adott értesítés formátuma, amelyben a sablont függ a területi beállítás regisztrálja azt. Egy nevet a sablonnak ("localizedWNSTemplateExample"), azt is adja meg, mert előfordulhat, hogy szeretné regisztrálni (például egy bejelentési értesítést) és a csempék egy több sablon, ezért ellenőriznünk kell a nevét ahhoz, hogy a frissítés vagy törlés őket.
-   
-    Vegye figyelembe, hogy ha egy eszköz több sablon regisztrálja az azonos címkével, egy bejövő üzenet célcsoport-kezelési eredményező címke több értesítés is érkezett kell juttatni az eszközre (minden sablon egy). Ez a viselkedés akkor hasznos, ha ugyanazon logikai üzenet van több vizuális értesítések, például a Windows Áruházbeli alkalmazások megjelenítő egy jelvény és egy bejelentési is eredményezheti.
-2. Adja hozzá a következő metódust beolvasni a tárolt nyelvterületi beállításokat:
-   
-        public string RetrieveLocale()
-        {
-            var locale = (string) ApplicationData.Current.LocalSettings.Values["locale"];
-            return locale != null ? locale : "English";
-        }
-3. A MainPage.xaml.cs, frissítse a gomb látható beolvasása a területi beállítás kombinált lista aktuális értéke, és hogy az értesítések osztály hívása kezelő kattintson:
-   
-        private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
-        {
-            var locale = (string)Locale.SelectedItem;
-   
-            var categories = new HashSet<string>();
-            if (WorldToggle.IsOn) categories.Add("World");
-            if (PoliticsToggle.IsOn) categories.Add("Politics");
-            if (BusinessToggle.IsOn) categories.Add("Business");
-            if (TechnologyToggle.IsOn) categories.Add("Technology");
-            if (ScienceToggle.IsOn) categories.Add("Science");
-            if (SportsToggle.IsOn) categories.Add("Sports");
-   
-            var result = await ((App)Application.Current).notifications.StoreCategoriesAndSubscribe(locale,
-                 categories);
-   
-            var dialog = new MessageDialog("Locale: " + locale + " Subscribed to: " + 
-                string.Join(",", categories) + " on registration Id: " + result.RegistrationId);
+            var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
-4. Végezetül az App.xaml.cs fájlban ellenőrizze, hogy frissítse a `InitNotificationsAsync` beolvasni a területi és használatra, ha az előfizetés módszert:
-   
-        private async void InitNotificationsAsync()
-        {
-            var result = await notifications.SubscribeToCategories(notifications.RetrieveLocale());
-   
-            // Displays the registration ID so you know it was successful
-            if (result.RegistrationId != null)
-            {
-                var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
-                dialog.Commands.Add(new UICommand("OK"));
-                await dialog.ShowAsync();
-            }
-        }
+    }
+    ```
 
 ## <a name="send-localized-notifications-from-your-back-end"></a>Honosított értesítések küldése a háttérrendszerből
-[!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
+Sablonértesítések küldésekor csak egy tulajdonságkészletet kell megadnia. Ebben az oktatóanyagban a háttéralkalmazás az aktuális hírek honosított verzióját tartalmazó tulajdonságkészletet küldi el, például:
+
+```json
+{
+    "News_English": "World News in English!",
+    "News_French": "World News in French!",
+    "News_Mandarin": "World News in Mandarin!"
+}
+```
+
+Ebben a szakaszban frissíteni fogja a megoldás konzolalkalmazás projektjét. Módosítsa a `SendTemplateNotificationAsync` metódust a korábban létrehozott konzolalkalmazásban az alábbi kóddal: 
+
+> [!IMPORTANT]
+> A kódban adja meg az értesítési központhoz teljes hozzáférést biztosító nevet és kapcsolati karakterláncot. 
+
+
+```csharp
+private static async void SendTemplateNotificationAsync()
+{
+    // Define the notification hub.
+    NotificationHubClient hub = 
+        NotificationHubClient.CreateClientFromConnectionString(
+            "<connection string with full access>", "<hub name>");
+
+    // Sending the notification as a template notification. All template registrations that contain 
+    // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
+    // This includes APNS, GCM, WNS, and MPNS template registrations.
+    Dictionary<string, string> templateParams = new Dictionary<string, string>();
+
+    // Create an array of breaking news categories.
+    var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
+    var locales = new string[] { "English", "French", "Mandarin" };
+
+    foreach (var category in categories)
+    {
+        templateParams["messageParam"] = "Breaking " + category + " News!";
+
+        // Sending localized News for each tag too...
+        foreach( var locale in locales)
+        {
+            string key = "News_" + locale;
+
+            // Your real localized news content would go here.
+            templateParams[key] = "Breaking " + category + " News in " + locale + "!";
+        }
+
+        await hub.SendTemplateNotificationAsync(templateParams, category);
+    }
+}
+```
+
+Ez az egyszerű hívás platformtól függetlenül az **összes** eszközre elküldi a honosított híreket, mivel az értesítési központ a létrehozott natív hasznos adatokat az összes olyan eszköz számára létrehozza és elküldi, amely feliratkozott egy adott címkére.
+
+## <a name="test-the-app"></a>Az alkalmazás tesztelése
+1. Futtassa a Windows Áruházbeli univerzális alkalmazást. Várjon, amíg megjelenik a **Registration successful** (Sikeres regisztráció) üzenet.
+
+    ![Mobilalkalmazás és regisztráció](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
+1. Jelölje ki a **kategóriákat** és a **területi beállítást**, majd kattintson a **Subscribe** (Feliratkozás) lehetőségre. Az alkalmazás címkékké alakítja át a kiválasztott kategóriákat, és új eszközregisztrációt kezdeményez az értesítési központban a kiválasztott címkékre vonatkozóan.
+
+    ![Mobilalkalmazás](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
+2.  Egy **megerősítő** üzenet jelenik meg a **feliratkozásokkal** kapcsolatban. 
+
+    ![Feliratkozási üzenet](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
+1. Ha megkapta a megerősítést, futtassa a **konzolalkalmazást**, amellyel értesítéseket küldhet az egyes kategóriákra vonatkozóan az összes támogatott nyelven. Ellenőrizze, hogy csak azon kategóriákra vonatkozóan kap-e értesítéseket, amelyekre feliratkozott, és hogy az üzenetek megfelelnek-e a kiválasztott területi beállításnak. 
+
+    ![Értesítési üzenetek](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
+ 
+
+## <a name="next-steps"></a>További lépések
+Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet honosított értesítéseket olyan adott eszközökre, amelyek a regisztrációjukhoz társított címkékkel rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet értesítéseket adott felhasználóknak, akik egynél több eszközt is használhatnak, lépjen tovább a következő oktatóanyagra: 
+
+> [!div class="nextstepaction"]
+>[Leküldéses értesítések küldése adott felhasználóknak](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
+
 
 <!-- Anchors. -->
 [Template concepts]: #concepts
@@ -194,7 +275,7 @@ A területi beállítás kombinált lista tartalmazza a MainPage.xaml módosít�
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
 [Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
-[legfrissebb hírek küldése Notification Hubs használata]: /notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
+[Use Notification Hubs to send breaking news]: /notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
 
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039

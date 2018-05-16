@@ -9,16 +9,16 @@ editor: tysonn
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: 75f06e49aa317fc887831a9e04861d9a7989bdb2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 17d57a809bcbd4c299675c07756b55423a160ed1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával
 Miután egy irányítópultot, tegye közzé, és megoszthatják más felhasználókkal a szervezetében. Engedélyezi a többi Azure használatával az irányítópult megtekintéséhez [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). Egy felhasználó vagy csoport számára hozzárendelése egy szerepkörhöz, és ez a szerepkör határozza meg, hogy ezek a felhasználók megtekintheti és módosíthatja a közzétett irányítópulton. 
@@ -33,7 +33,7 @@ Az összes közzétett irányítópultok Azure-erőforrások, mint kerülnek vé
 ## <a name="understanding-access-control-for-dashboards"></a>Irányítópultok ismertetése hozzáférés-vezérlés
 A szerepköralapú hozzáférés-vezérlés (RBAC), felhasználók hozzárendelheti a szerepkörökhöz hatókör három különböző szinteken:
 
-* előfizetést
+* előfizetés
 * erőforráscsoport
 * erőforrás
 
@@ -49,7 +49,7 @@ Tegyük fel, hogy az előfizetésben a felhasználók egy csoportjánál megoszt
 1. Az irányítópulton, válassza ki a **megosztás**.
    
      ![Válasszon megosztást](./media/azure-portal-dashboard-share-access/select-share.png)
-2. Hozzáférés engedélyezése előtt közzé kell tennie az irányítópulton. Alapértelmezés szerint az irányítópult közzéteendő nevű erőforráscsoport **irányítópultok**. Válassza ki **közzététele**.
+2. Hozzáférés engedélyezése előtt közzé kell tennie az irányítópulton. Alapértelmezés szerint az irányítópult közzéteendő nevű erőforráscsoport **irányítópultok**. Kattintson a **Publish** (Közzététel) elemre.
    
      ![publish](./media/azure-portal-dashboard-share-access/publish.png)
 

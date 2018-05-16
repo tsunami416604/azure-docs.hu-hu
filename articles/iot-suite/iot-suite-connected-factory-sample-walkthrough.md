@@ -1,12 +1,12 @@
 ---
-title: "Csatlakoztatott factory-megoldás bemutatója – Azure | Microsoft Docs"
-description: "Az Azure IoT előre konfigurált csatlakoztatott gyár megoldásának és architektúrájának leírása."
-services: 
+title: A csatlakoztatott gyáron alapuló megoldás bemutatója – Azure | Microsoft Docs
+description: Az Azure IoT csatlakoztatottgyár-alapú megoldásgyorsítónak és architektúrájának leírása.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65eb24cf5f995570b7b1752fc850b596209ea59a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connected-factory-preconfigured-solution-walkthrough"></a>Előre konfigurált csatlakoztatott gyár megoldás – bemutató
+# <a name="connected-factory-solution-accelerator-walkthrough"></a>A csatlakoztatottgyár-alapú megoldásgyorsító bemutatója
 
-Az IoT Suite [előre konfigurált][lnk-preconfigured-solutions] csatlakoztatott gyár megoldással egy teljes körű ipari megoldást implementálhat, amely:
+A csatlakoztatottgyár-alapú [megoldásgyorsítóval][lnk-preconfigured-solutions] egy teljes körű ipari megoldást implementálhat, amely:
 
 * Szimulált gyártósorokon OPC UA-kiszolgálókat futtató szimulált ipari eszközökhöz és valódi OPC UA-kiszolgálóeszközökhöz is csatlakozik. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md) fejezetben talál további információt.
 * Megjeleníti ezen eszközök és gyártósorok működési KPI- és OEE-értékeit.
@@ -34,7 +34,7 @@ Az IoT Suite [előre konfigurált][lnk-preconfigured-solutions] csatlakoztatott 
 
 A megoldást kiindulási pontként használhatja a saját implementációjához, és a saját üzleti igényeinek megfelelően [testreszabhatja][lnk-customize] azt.
 
-Ebben a cikkben bemutatjuk a csatlakoztatott gyár megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. A cikk azt is leírja, hogyan haladnak át az adatok a megoldáson. Ezeknek az ismereteknek a birtokában:
+Ebben a cikkben bemutatjuk a csatlakoztatottgyár-alapú megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. A cikk azt is leírja, hogyan haladnak át az adatok a megoldáson. Ezeknek az ismereteknek a birtokában:
 
 * Elháríthatja a megoldásban felmerülő hibákat.
 * Megtervezheti, hogy miképpen érdemes testre szabni a megoldást úgy, hogy az megfeleljen egyedi igényeinek.
@@ -44,7 +44,7 @@ További információ: [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
-A következő diagram az előre konfigurált megoldás logikai összetevőit vázolja fel:
+A következő diagram a megoldásgyorsító logikai összetevőit vázolja fel:
 
 ![Csatlakoztatott gyár logikai architektúrája][connected-factory-logical]
 
@@ -122,7 +122,7 @@ A megoldásban az IoT Hub ezenkívül a következőket teszi:
 A megoldás Azure Blob Storage tárolót használ a virtuális gép lemezes tárolójaként, valamint az üzembehelyezési adatok tárolásához.
 
 ## <a name="web-app"></a>Webalkalmazás
-Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás integrált OPC UA-ügyfélből, riasztások feldolgozásából és a telemetria megjelenítéséből áll.
+A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OPC UA-ügyfélből, riasztások feldolgozásából és a telemetria megjelenítéséből áll.
 
 ## <a name="telemetry-data-flow"></a>Telemetria-adatfolyam
 
@@ -162,7 +162,7 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
 
 9. Inaktív adat a TSI-ben.
 
-10. Az Azure AppService-lekérdezésekben a csatlakoztatott gyári webalkalmazás a TSI-ből származó adatokat igényelt.
+10. Az Azure AppService-lekérdezésekben a csatlakoztatott gyár webalkalmazása a TSI-ből származó adatokat igényelt.
     - TCP/TLS által védett kommunikációt használ.
     - Ez a lépés az adatközpontban történik.
 
@@ -172,7 +172,7 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
     - A csatlakoztatott gyár alkalmazásának eléréséhez az Azure Active Directoryn keresztül kell hitelesíteni a felhasználót.
     - A csatlakoztatott gyár alkalmazásába irányuló összes WebApi-hívást hamisítás elleni tokenek védik.
 
-12. Amikor adatfrissítés történik, a csatlakoztatott gyári webalkalmazás frissített adatokat küld a webböngészőnek.
+12. Amikor adatfrissítés történik, a csatlakoztatott gyár webalkalmazása frissített adatokat küld a webböngészőnek.
     - A SignalR protokollt használja.
     - A TCP/TLS védi.
 
@@ -194,7 +194,7 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
     - HTTPS-t használ.
     - A felhasználó kiválasztja azt az OPC UA-kiszolgálót, amelyhez csatlakozni kíván.
 
-4. A csatlakoztatott gyári webalkalmazás OPC UA-munkamenetet hoz létre a kiválasztott OPC UA-kiszolgálóval.
+4. A csatlakoztatott gyár webalkalmazása OPC UA-munkamenetet hoz létre a kiválasztott OPC UA-kiszolgálóval.
     - OPC UA-vermet használ.
 
 5. Az OPC-proxyátvitel kérést kap az OPC UA-veremtől, hogy TCP szoftvercsatorna-kapcsolatot létesítsen az OPC UA-kiszolgálóval.
@@ -215,29 +215,29 @@ Az előre konfigurált megoldás részeként üzembe helyezett webalkalmazás in
 
 10. Az OPC-proxy (kiszolgáló-összetevő) szoftvercsatornája fogadja a választ.
     - Az OPC-proxy az eszközmetódus visszatérési értékeként küldi el az adatokat az IoT Hubra és az OPC-proxyra (ügyfélösszetevő).
-    - Ezeket az adatokat az OPC UA-verembe kézbesíti a rendszer a csatlakoztatott gyári alkalmazásban.
+    - Ezeket az adatokat az OPC UA-szoftvercsatornára kézbesíti a rendszer a csatlakoztatott gyári alkalmazásban.
 
-11. A csatlakoztatott gyári webalkalmazás visszaküldi az OPC UA-kiszolgálótól kapott OPC UA-specifikus adatokkal kiegészült OPC UX-et a webböngészőnek renderelésre.
-    - Az OPC-címtérben való böngészés és az OPC-címtérben lévő csomópontokra történő függvényalkalmazás közben az OPC böngészői UX HTTPS-en keresztüli, hamisításgátló jogkivonatokkal védett AJAX-hívásokkal kéri le az adatokat a csatlakoztatott gyár webalkalmazásából.
+11. A csatlakoztatott gyár webalkalmazása visszaküldi az OPC UA-kiszolgálótól kapott OPC UA-specifikus adatokkal kiegészült OPC UX-et a webböngészőnek renderelésre.
+    - Az OPC-címtérben való böngészés és az OPC-címtérben lévő csomópontokra történő függvényalkalmazás közben az OPC böngészői UX HTTPS-en keresztüli, hamisításgátló tokenekkel védett AJAX-hívásokkal kéri le az adatokat a csatlakoztatott gyári webalkalmazásból.
     - Szükség esetén az ügyfél a 4-10. lépésekben leírt kommunikációval cserél információkat az OPC UA-kiszolgálóval.
 
 > [!NOTE]
 > Az OPC-proxy (kiszolgáló-összetevő) és az OPC-proxy (ügyfél) összetevő elvégzi a 4-10. lépéseket az OPC UA-kommunikációhoz kapcsolódó összes TCP-forgalomhoz.
 
 > [!NOTE]
-> A csatlakoztatott gyár webalkalmazásán belüli OPC UA-kiszolgáló és OPC UA-verem esetén az OPC–proxy kommunikáció átlátszó, és a hitelesítésre és titkosításra vonatkozó összes OPC UA biztonsági funkció érvényben van.
+> A csatlakoztatott gyár webalkalmazásán belüli OPC UA-kiszolgáló és OPC UA-verem esetén az OPC-proxy kommunikáció átlátszó, és a hitelesítésre és titkosításra vonatkozó összes OPC UA biztonsági funkció érvényben van.
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa az IoT Suite megismerését az alábbi cikkek elolvasásával:
+Folytassa az IoT-megoldásgyorsítók megismerését az alábbi cikkek elolvasásával:
 
 * [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
-* [Átjáró üzembe helyezése Windows vagy Linux rendszeren az előre konfigurált csatlakoztatott gyár megoldáshoz](iot-suite-connected-factory-gateway-deployment.md)
+* [Átjáró üzembe helyezése Windows vagy Linux rendszeren a csatlakoztatottgyár-alapú megoldásgyorsítóhoz](iot-suite-connected-factory-gateway-deployment.md)
 * [OPC-közzétevő referenciamegvalósítása](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md

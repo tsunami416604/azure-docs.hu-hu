@@ -153,6 +153,8 @@
           href: security-center-events-dashboard.md
         - name: Keresés
           href: security-center-search.md
+        - name: Megfelelőség áttekintése (REST)
+          href: security-center-review-policy-compliance.md
     - name: Forgatókönyvek
       items:
         - name: Incidensmegoldás

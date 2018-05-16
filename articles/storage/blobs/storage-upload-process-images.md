@@ -1,8 +1,8 @@
 ---
-title: "Képadatok feltöltése a felhőbe az Azure Storage segítségével | Microsoft Docs"
-description: "Az Azure blobtároló használata webalkalmazással az alkalmazásadatok tárolásához"
+title: Képadatok feltöltése a felhőbe az Azure Storage segítségével | Microsoft Docs
+description: Az Azure blobtároló használata webalkalmazással az alkalmazásadatok tárolásához
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: jeconnoc
 ms.service: storage
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: e3c40d0f3db1a33a405a341a714a7ce199908ca4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 29accb3394e9a2f6939a657172c1a5c2e411706a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Képadatok feltöltése a felhőbe az Azure Storage segítségével
 
@@ -65,14 +65,14 @@ az storage account create --name <blob_storage_account> \
  
 ## <a name="create-blob-storage-containers"></a>Blob Storage-tárolók létrehozása
  
-Az alkalmazás két tárolót használ a Blob Storage-fiókban. A tárolók hasonlók a mappákhoz, és a blobok tárolására szolgálnak. Az _images_ tároló az a hely, ahová az alkalmazás feltölti a teljes felbontású képeket. A sorozat egy későbbi részében egy Azure-függvényalkalmazás tölt fel átméretezett képminiatűröket a _thumbnails_ tárolóba. 
+Az alkalmazás két tárolót használ a Blob Storage-fiókban. A tárolók hasonlók a mappákhoz, és a blobok tárolására szolgálnak. A _képek_ tároló az a hely, ahová az alkalmazás feltölti a teljes felbontású képeket. A sorozat egy későbbi részében egy Azure-függvényalkalmazás tölt fel átméretezett képminiatűröket a _thumbnails_ tárolóba. 
 
 Szerezze be a tárfiókkulcsot az [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) parancs segítségével. Ezután a kulcs használatával két tárolót hozhat létre az [az storage container create](/cli/azure/storage/container#az_storage_container_create) paranccsal.  
  
 Ebben az esetben `<blob_storage_account>` a létrehozott Blob Storage-fiók neve. Az _images_ tároló nyilvános hozzáférése `off` értékű, a _thumbnails_ tároló nyilvános hozzáférése pedig `container` értékű. A `container` nyilvános hozzáférési beállítás lehetővé teszi, hogy a miniatűrök megtekinthetők legyenek a webhely látogatói számára.
  
 ```azurecli-interactive 
-blobStorageAccount=<blob_storage_account>
+$blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 

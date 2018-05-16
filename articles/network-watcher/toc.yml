@@ -17,8 +17,12 @@
   items:
     - name: A virtuális gép útválasztási problémáinak diagnosztizálása
       href: diagnose-vm-network-routing-problem.md
-    - name: Hálózati kapcsolatok monitorozása
+    - name: Virtuális gépek közötti kommunikáció monitorozása
       href: connection-monitor.md
+    - name: Hálózatok közötti kommunikációs probléma diagnosztizálása
+      href: diagnose-communication-problem-between-networks.md
+    - name: Virtuális gép hálózati forgalmának naplózása
+      href: network-watcher-nsg-flow-logging-portal.md
 - name: Alapelvek
   items:
     - name: Virtuális gép hálózati forgalmi problémáinak diagnosztizálása
@@ -35,8 +39,8 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: Hálózati biztonsági csoport nézet
       href: network-watcher-security-group-view-overview.md
-    - name: Hálózati topológia megtekintése
-      href: network-watcher-topology-overview.md
+    - name: Szerepköralapú hozzáférés-vezérlési engedélyek
+      href: required-rbac-permissions.md
 - name: Útmutatók
   items:
     - name: A Network Watcher konfigurálása
@@ -93,8 +97,6 @@
       items:
         - name: NSG-forgalom naplóinak konfigurálása
           items:
-            - name: Azure Portal
-              href: network-watcher-nsg-flow-logging-portal.md
             - name: Azure PowerShell
               href: network-watcher-nsg-flow-logging-powershell.md
             - name: Azure CLI
@@ -136,8 +138,6 @@
       items:
         - name: Hibaelhárítás
           items:
-            - name: Azure Portal
-              href: network-watcher-troubleshoot-manage-portal.md
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
             - name: Azure CLI
@@ -150,16 +150,8 @@
           href: network-watcher-monitor-with-azure-automation.md
         - name: VPN-átjárót használó helyszíni kapcsolatok diagnosztizálása
           href: network-watcher-diagnose-on-premises-connectivity.md
-    - name: A hálózati topológia megtekintése
-      items:
-        - name: Azure PowerShell
-          href: network-watcher-topology-powershell.md
-        - name: Azure CLI
-          href: network-watcher-topology-cli.md
-        - name: Azure CLI 1.0
-          href: network-watcher-topology-cli-nodejs.md
-        - name: REST
-          href: network-watcher-topology-rest.md
+    - name: Hálózati topológia megtekintése
+      href: view-network-topology.md
     - name: Egy hely és egy Azure-régió közötti relatív késés meghatározása
       href: view-relative-latencies.md
 - name: Referencia

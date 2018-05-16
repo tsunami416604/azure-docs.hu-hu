@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: acad1058cbff2099a67603cc547a19d6cac022be
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7cfc7f586e8a92c29736a7c4cff0b12796be430a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>A Spark használata HBase-adatok írására és olvasására
 
@@ -129,7 +129,7 @@ Ebben a lépésben hozzon létre, és a HBase, majd lekérheti a Spark használa
 1. Az SSH használatával a Spark-fürt átjárócsomópontjához csatlakozik.
 2. Indítsa el a spark felületet, adja meg a Spark HBase összekötő csomag:
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11
+        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/coroups/public/
 
 3. A Spark rendszerhéj példány nyitva hagyja, és folytassa a következő lépéssel.
 

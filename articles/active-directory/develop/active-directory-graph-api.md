@@ -8,6 +8,7 @@ manager: mtillman
 editor: mbaldwin
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,11 +16,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: c817964ebab358f8e31e7435b7067fc60e9516fa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4b4f698042f6688e3db484f7d96ccfb06c5cdd4f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 > [!IMPORTANT]
@@ -58,7 +59,7 @@ Az Azure AD Graph API a következő szolgáltatásokat biztosítja:
 Az Azure AD Graph API lehetővé teszi, hogy az alkalmazás-forgatókönyvek. A következő forgatókönyvek esetében a leggyakoribb:
 
 * **Üzletági (Egybérlős) alkalmazás**: Ebben a forgatókönyvben egy vállalati fejlesztői működik egy olyan szervezet, amely olyan Office 365-előfizetéssel rendelkezik. A fejlesztői fejleszt, amely együttműködik az Azure ad-val feladatok elvégzéséhez webalkalmazás ilyen rendel egy licencet a felhasználó. Ezt a feladatot az Azure AD Graph API hozzáférésre van szüksége, így a fejlesztők a egybérlős alkalmazás regisztrálása az Azure ad-ben, és konfigurálja olvasási és írási engedéllyel az Azure AD Graph API. Szerezzen be egy tokent a Azure AD Graph API hívása saját hitelesítő adatait vagy a bejelentkezés jelenleg felhasználó használja majd az alkalmazás van konfigurálva.
-* **(Több-Bérlős) szolgáltatás alkalmazás**: Ebben a forgatókönyvben egy független szoftverszállító (ISV) által fejlesztett üzemeltetett több-bérlős webalkalmazás, amely más Azure AD használó szervezetek felhasználói felügyeleti funkciókat biztosít. Ezek a funkciók címtárobjektumok hozzáférést igényelnek, és így az alkalmazás Azure AD Graph API hívása. A fejlesztői regisztrálja az alkalmazást az Azure ad-ben, olvasási és írási engedéllyel az Azure AD Graph API-val konfigurálja és majd lehetővé teszi, hogy külső hozzáférés úgy, hogy más szervezetek is hozzájárul a címtár alkalmazásával. Amikor egy felhasználó egy másik szervezet hitelesíti magát az alkalmazás első indításakor, azokat az engedélyeket, az alkalmazás egy hozzájárulási párbeszédpanelen jelennek meg.  Biztosítása a hozzájárulási adjon az alkalmazás azokat a kért Azure AD Graph API-nak a felhasználó engedélye. A hozzájárulási keretrendszerre további információkért lásd: [hozzájárulás keretében áttekintése](active-directory-integrating-applications.md).
+* **(Több-Bérlős) szolgáltatás alkalmazás**: Ebben a forgatókönyvben egy független szoftverszállító (ISV) által fejlesztett üzemeltetett több-bérlős webalkalmazás, amely más Azure AD használó szervezetek felhasználói felügyeleti funkciókat biztosít. Ezek a funkciók címtárobjektumok hozzáférést igényelnek, és így az alkalmazás Azure AD Graph API hívása. A fejlesztői regisztrálja az alkalmazást az Azure ad-ben, olvasási és írási engedéllyel az Azure AD Graph API-val konfigurálja és majd lehetővé teszi, hogy külső hozzáférés úgy, hogy más szervezetek is hozzájárul a címtár alkalmazásával. Amikor egy felhasználó egy másik szervezet hitelesíti magát az alkalmazás első indításakor, azokat az engedélyeket, az alkalmazás egy hozzájárulási párbeszédpanelen jelennek meg. Biztosítása a hozzájárulási adjon az alkalmazás azokat a kért Azure AD Graph API-nak a felhasználó engedélye. A hozzájárulási keretrendszerre további információkért lásd: [hozzájárulás keretében áttekintése](active-directory-integrating-applications.md).
 
 ## <a name="see-also"></a>Lásd még:
 [Az Azure AD Graph API gyors üzembe helyezési útmutató](active-directory-graph-api-quickstart.md)

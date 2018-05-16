@@ -1,11 +1,11 @@
 ---
-title: "Belső terheléselosztó létrehozása – klasszikus Azure CLI | Microsoft Docs"
-description: "Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure parancssori felület használatával a klasszikus üzembehelyezési modellben"
+title: Belső terheléselosztó létrehozása – klasszikus Azure CLI | Microsoft Docs
+description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure parancssori felület használatával a klasszikus üzembehelyezési modellben
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: becbbbde-a118-4269-9444-d3153f00bf34
 ms.service: load-balancer
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: f740633230b2479f77d7d09a31dbbf3f72ffb174
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: genli
+ms.openlocfilehash: 8f0ac03ff7b749e47692d03d65502df0a19bb758
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Bevezetés a belső terheléselosztó (klasszikus) létrehozásába az Azure parancssori felület használatával
 
@@ -174,7 +174,7 @@ azure vm endpoint delete DB1 tcp-1433-1433
 
 További információ: `azure vm endpoint --help`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
 

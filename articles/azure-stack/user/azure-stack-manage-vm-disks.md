@@ -1,52 +1,69 @@
 ---
-title: "Virtuális gépek lemezei Azure verem kezelése |} Microsoft Docs"
-description: "A virtuális gépek lemezek létrehozásához Azure verem."
+title: Virtuális gépek lemezei Azure verem kezelése |} Microsoft Docs
+description: A virtuális gépek Azure-készletben lemezek létrehozásához.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 0c36e2eaaf2d266842b2b7de0b0c8dc0ed1e0145
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
-ms.translationtype: MT
+ms.openlocfilehash: 314c5b51608192719c77ce143b3530f0bb310bc2
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="virtual-machine-disk-storage-for-azure-stack"></a>Virtuális gép lemezes tárolás Azure verem
+# <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Virtuális gép lemezes tárolás Azure verem kiépítése
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Az Azure verem használatát támogatja [lemezek nem felügyelt](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) egy virtuális gépen (operációs rendszer) operációsrendszer-lemez és adatlemez is. Nem felügyelt lemezeket használni, hozzon létre egy [tárfiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) és a lemezek majd tárolót, mint a tárfiókon belül tárolókban lévő lapblobokat. Ezek a lemezek majd virtuális lemezeket nevezik.
+Ez a cikk ismerteti a virtuálisgép-lemez tárolót létesíteni, a verem Azure portál használatával, vagy a PowerShell használatával.
 
-Javítsa a teljesítményt, és az Azure-verem rendszer a felügyeleti költségek csökkentése, ajánlott minden egyes Virtuálisgép-lemez külön helyezze el. Egy tároló, egy operációsrendszer-lemez vagy egy adatlemez, de nem mindkettőt egyszerre rendelkezzen. Van azonban nincs korlátozva, amely megakadályozza a üzembe mindkettő ugyanabban a tárolóban.
+## <a name="overview"></a>Áttekintés (klasszikus)
 
-Legalább egy adatlemezt ad hozzá egy virtuális Gépet, ha szeretne további tárolók használata olyan hely, a lemezek tárolására. Adatlemezek, például az operációs rendszer lemezének további virtuális gépek is kell a saját különálló tárolók.
+Az Azure verem támogatja a [lemezek nem felügyelt](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) virtuális gépeken, az operációs rendszer és adatlemez is.
 
-Több virtuális gép létrehozásakor ugyanazt a tárfiókot az egyes új virtuális gépek is felhasználhatja. Csak a tárolók létrehozása egyedinek kell lennie.  
+Nem felügyelt lemezeket használni, hozzon létre egy [tárfiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) a lemezek tárolására. A lemezek hoz létre virtuális lemezeket nevezik, és a tárolók a tárfiók tárolja.
 
-Lemezek hozzáadása a virtuális gépek, a felhasználói portál vagy PowerShell használja.
+### <a name="best-practice-guidelines"></a>Bevált gyakorlat irányelvek
 
-| Módszer | Beállítások
+Javítsa a teljesítményt, és csökkenteni szeretné költségeit, ajánlott minden egyes Virtuálisgép-lemez külön helyezze el. Egy tároló, egy operációsrendszer-lemez vagy egy adatlemez, de nem mindkettőt egyszerre rendelkezzen. (Azonban nincs mit megakadályozza, hogy mindkét lemez típusú üzembe ugyanabban a tárolóban.)
+
+Ha legalább egy adatlemezt ad hozzá egy virtuális Gépet, további tárolók használata olyan hely, ezek a lemezek tárolására. Az operációs rendszer lemezének további virtuális gépek is kell a saját tárolókban lévő.
+
+Több virtuális gép létrehozásakor felhasználhatja az egyes új virtuális gépek ugyanazt a tárfiókot. Csak a tárolók létrehozása egyedinek kell lennie.
+
+### <a name="adding-new-disks"></a>Új lemezek hozzáadása
+
+A következő táblázat összefoglalja a lemezek hozzáadása a portál használatával, és a PowerShell használatával.
+
+| Metódus | Beállítások
 |-|-|
-|[Felhasználói portál](#use-the-portal-to-add-additional-disks-to-a-vm)|-Az új adatok lemezek hozzáadása, amely korábban lett kiépítve. Új lemezek Azure verem jönnek létre. </br> </br>-Adjon hozzá egy meglévő .vhd fájlra egy lemezt egy virtuális géphez, amely korábban lett kiépítve. Ehhez először készítse elő, és töltse fel a .vhd fájlt Azure verem. |
+|[Felhasználói portál](#use-the-portal-to-add-additional-disks-to-a-vm)|-Új adatlemezek hozzáadása egy meglévő virtuális gépre. Új lemezek Azure verem jönnek létre. </br> </br>-A meglévő lemezt (.vhd) fájl hozzáadása a korábban telepített virtuális gép. Ehhez az szükséges, készítse elő a .vhd és majd feltölteni a fájlt az Azure-verem kell. |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | – Hozzon létre egy új virtuális gép operációsrendszer-lemezzel, majd egy időben adja hozzá egy vagy több adatlemezek ezt a virtuális Gépet. |
 
+## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Lemezek hozzáadása a virtuális gép a portál használatával
 
-## <a name="use-the-portal-to-add-additional-disks-to-a-vm"></a>A portál használatával további lemezek hozzáadása a virtuális gép
-Alapértelmezés szerint a portál használatával hozzon létre egy virtuális Gépet a legtöbb Piactéri elemek, ha csak egy operációsrendszer-lemez jön létre. Az Azure-ban létrehozott lemezeket felügyelt lemezeket nevezik.
+Ha a portál használatával hozzon létre egy virtuális Gépet a legtöbb Piactéri elemek, alapértelmezés szerint csak az operációsrendszer-lemez jön létre.
 
-A virtuális gép kiépítése után a portál segítségével egy új adatokat a lemez vagy egy meglévő adatok hozzáadása a virtuális gép. Minden további lemezhez külön kell rendezni. Nem felügyelt lemezek ad hozzá egy virtuális lemezeket nevezik.
+Miután létrehozott egy virtuális Gépet, a portál is használhatja:
+* Hozzon létre egy új adatlemez, és csatlakoztassa a virtuális Gépet.
+* Töltse fel a meglévő adatok lemez, és csatlakoztassa a virtuális Gépet.
 
-### <a name="use-the-portal-to-attach-a-new-data-disk-to-a-vm"></a>A portál használatával új adatlemezt csatolni egy virtuális géphez
+Minden nem felügyelt lemezt ad hozzá külön kell rendezni.
+
+>[!NOTE]
+>Hozza létre és felügyeli az Azure lemezek nevezzük [által kezelt lemezeken](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview).
+
+### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>A portál használatával hozzon létre, és új adatlemezzel
 
 1.  Kattintson a portál **virtuális gépek**.    
     ![Példa: Virtuális gép irányítópult](media/azure-stack-manage-vm-disks/vm-dashboard.png)
@@ -71,6 +88,7 @@ A virtuális gép kiépítése után a portál segítségével egy új adatokat 
 
 
 ### <a name="attach-an-existing-data-disk-to-a-vm"></a>Adatok meglévő lemez csatolása a virtuális géphez
+
 1.  [.Vhd fájl előkészítése](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd) adatlemez használni a virtuális gépek. A .vhd fájlt feltölteni egy tárfiókot, amelyet a virtuális Gépet, amely a .vhd fájlt csatolni szeretné.
 
   Ahhoz, hogy a .vhd fájlt, mint a tároló, amely az operációs rendszer lemezének különböző tárolót használni szeretne.   

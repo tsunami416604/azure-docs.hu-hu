@@ -3,7 +3,7 @@ title: Az API-k átalakítása és védelme az Azure API Management szolgáltat�
 description: Megtudhatja, hogyan védheti meg az API-kat kvótákkal és szabályozási (sebességhatároló) házirendekkel.
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fb56b8489b086b724df9f3c9179f2c3265cd05a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bebfabfa2c9012fa55bfc6964dc0b638cb7ab3f1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme 
 
@@ -197,7 +197,7 @@ A szakasz további részében teszteljük a szabályzatátalakításokat, amelye
     Miután 3 alkalommal elküldte a kérelmet, a **429 Túl sok kérelem** választ kapja.
 7. Várjon 15 másodpercet, majd kattintson ismét a **Küldés** gombra. Ezúttal a **200 OK** választ kapja.
 
-    ![Szabályozás](./media/transform-api/test-throttling.png)
+    ![Throttling](./media/transform-api/test-throttling.png)
 
 ## <a name="video"></a>Videó
 

@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b2eeb7d2cca124abd811859077d7e5e55a36c521
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -63,6 +63,8 @@ Az ILB ASE létrehozása:
 
 4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 
+    * Új virtuális hálózat kiválasztása esetén új nevet és helyet adhat meg. Ha Linux-alkalmazások üzemeltetését tervezi ezen az ASE-n, jelenleg csak ez a 6 régió támogatott: **USA nyugati régiója, USA keleti régiója, Nyugat-Európa, Észak-Európa, Kelet-Ausztrália, Délkelet-Ázsia.** 
+
 5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/25` méretet javasoljuk, amely 128 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet. A `/28` a kiválasztható legkisebb méret. Az infrastrukturális igényeket figyelembe véve ez a méret legfeljebb 3 példányra skálázható fel.
 
     * Az alapértelmezett maximális 100 példányszámot az App Service-csomagban emelheti meg.
@@ -106,7 +108,7 @@ Ha a **VIP típusa** beállítást **Belsőre** állítja, akkor nem az ASE neve
 
 Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létre alkalmazást.
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **Webes alkalmazás** vagy **Mobilalkalmazás** vagy **API-alkalmazás** elemet.
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **Webes alkalmazás** elemet.
 
 2. Adja meg az alkalmazás nevét.
 
@@ -114,9 +116,13 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 4. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 
-5. Válassza ki vagy hozzon létre egy App Service-csomagot. Amennyiben új App Service-csomagot szeretne létrehozni, válassza az ASE környezetet helyként. Válassza ki a feldolgozókészletet, amelyben az App Service-csomagot szeretné létrehozni. Amikor létrehozza az új App Service-csomagot, válassza az ASE környezetet helyként és feldolgozókészletként. Az alkalmazás nevének megadásakor az alkalmazás tartománya az ASE tartománynevére cserélődik.
+5. Válassza ki az operációs rendszert. 
 
-6. Kattintson a **Létrehozás** gombra. Ha szeretné, hogy az alkalmazás megjelenjen az irányítópulton, jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
+    * Ha egyéni Docker-tárolóval szeretne Linux-alkalmazást létrehozni, az itt található útmutató segítségével egyszerűen használhatja a saját tárolóját erre a célra. 
+
+6. Válassza ki vagy hozzon létre egy App Service-csomagot. Amennyiben új App Service-csomagot szeretne létrehozni, válassza az ASE környezetet helyként. Válassza ki a feldolgozókészletet, amelyben az App Service-csomagot szeretné létrehozni. Amikor létrehozza az új App Service-csomagot, válassza az ASE környezetet helyként és feldolgozókészletként. Az alkalmazás nevének megadásakor az alkalmazás tartománya az ASE tartománynevére cserélődik.
+
+7. Kattintson a **Létrehozás** gombra. Ha szeretné, hogy az alkalmazás megjelenjen az irányítópulton, jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
     ![App Service-csomag létrehozása][2]
 
