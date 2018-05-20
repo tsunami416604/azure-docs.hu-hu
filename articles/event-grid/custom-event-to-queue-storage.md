@@ -5,14 +5,14 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 04/30/2018
+ms.date: 05/09/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 6b408dd8c8f0bfd7f7180b10cc9a4882d6950981
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 37427a9d8fedbb379557983c5251a6df9ac96a08
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Egyéni események átirányítása az Azure Queue Storage-ba az Azure CLI-vel és az Event Griddel
 
@@ -20,11 +20,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI legújabb verzióját (2.0.24 vagy újabb) kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
-
-Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -43,6 +39,10 @@ az group create --name gridResourceGroup --location westus2
 Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli.
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 
@@ -60,7 +60,7 @@ az storage queue create --name $queuename --account-name $storagename
 
 ## <a name="subscribe-to-a-topic"></a>Feliratkozás témakörre
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. Az alábbi példa feliratkozik a létrehozott témakörre, és átadja a Queue Storage-tároló erőforrás-azonosítóját a végpontnak. A Queue Storage-tároló azonosítójának formátuma a következő:
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. Az alábbi példa feliratkozik a létrehozott témakörre, és átadja a Queue Storage-tároló erőforrás-azonosítóját a végpontnak. Az Azure CLI használatakor a Queue Storage-azonosítót kell megadnia végpontként. A végpont formátuma a következő:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 
@@ -76,6 +76,18 @@ az eventgrid event-subscription create \
   --name <event_subscription_name> \
   --endpoint-type storagequeue \
   --endpoint $queueid
+```
+
+Ha a REST API használatával hozza létre az előfizetést, a tárfiók azonosítóját és az üzenetsor nevét külön paraméterként kell megadnia.
+
+```json
+"destination": {
+  "endpointType": "storagequeue",
+  "properties": {
+    "queueName":"eventqueue",
+    "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>"
+  }
+  ...
 ```
 
 ## <a name="send-an-event-to-your-topic"></a>Esemény elküldése a témakörbe

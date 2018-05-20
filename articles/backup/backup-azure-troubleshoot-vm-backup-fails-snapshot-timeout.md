@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure biztonsági mentési hiba elhárítása: az ügynök vagy a bővítmény problémái
 
@@ -194,21 +194,6 @@ Ez a hiba csak a felügyelt virtuális gépekhez, amelyben a felhasználó záro
 
 #### <a name="solution"></a>Megoldás
 
-A probléma megoldása érdekében végezze el a visszaállítási pont gyűjtemény távolítsa el az alábbi lépéseket: <br>
- 
-1. Távolítsa el a zárolást az erőforráscsoportban, ahol a virtuális gép is található. 
-2. Telepítse a ARMClient Chocolatey használatával: <br>
-   https://github.com/projectkudu/ARMClient
-3. Jelentkezzen be ARMClient: <br>
-    `.\armclient.exe login`
-4. A visszaállítási pont gyűjteményben, amely megfelel a virtuális gép beolvasása: <br>
-    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
-
-    Példa: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
-5. A visszaállítási pont gyűjtemény törlése: <br>
-    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
-6. A következő ütemezett biztonsági mentés automatikusan létrehoz egy helyreállítási pont gyűjtemény és az új visszaállítási pontok.
-
- 
-A probléma bekövetkezésére lesz, ha az erőforráscsoport újra zárolása. 
+A probléma megoldásához távolítsa el a zárolást az erőforráscsoportot, és lehetővé teszik az Azure biztonsági mentési szolgáltatás törölheti a helyreállítási pont gyűjtemény és a következő biztonsági mentés az alapul szolgáló pillanatképeket.
+Ha végzett, újra helyezheti vissza a zárolást a Virtuálisgép-csoport. 
 

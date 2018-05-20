@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Service Fabric a metrikák töredezettségmentesítését |} Microsoft Docs"
-description: "Lemeztöredezettség-mentesítés használatával, vagy a Service Fabric metrikák stratégiáját, csomagolási áttekintése"
+title: Az Azure Service Fabric a metrikák töredezettségmentesítését |} Microsoft Docs
+description: Lemeztöredezettség-mentesítés használatával, vagy a Service Fabric metrikák stratégiáját, csomagolási áttekintése
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 0b8b2bad967532bb0040407dc6a3a7b9599576d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a35ae5933729615d634359e64e31d43536d81431
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>A metrikák és a Service Fabric terheléselosztási töredezettségmentesítését
 A Service Fabric fürt Resource Manager alapértelmezett stratégia terhelési metrika a fürt felügyeletéhez, hogy a terhelés elosztása. Győződjön meg arról, hogy a csomópontok egyenletesen felhasználtuk elkerülhető és meleg tesztüzeméhez, amely a versengés és feleslegesen erőforrásokat is vezethet. A fürt munkaterhelések terjesztése egyben tekintetében a még működő sikertelen, mert biztosítja, hogy a hibát az egy adott munkaterhelés nagy része, nem veszi a legbiztonságosabb. 
@@ -95,7 +95,7 @@ az önálló verziója telepítéseinek művelet vagy az Azure-Template.json üz
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A fürt erőforrás-kezelő program man a fürtöt leíró. További információkért róluk, tekintse meg a cikk a [leíró a Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)
 - Adatok gyűjtése le hogyan kezeli a Service Fabric fürt erőforrás-kezelő a használati és a fürt teljes kapacitását. A metrikák és konfigurálásuk módját kapcsolatos további tudnivalókért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-metrics.md)
 

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 49071044-6767-4041-9EDD-6132295FA551
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a158da6fb397b864a439e067ca99d79814e2b8d2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a3dfce6ce1b136e39047cfd47b336b2fb2a35af9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Forgassa el a titkos kulcsok Azure verem
 
@@ -49,6 +48,24 @@ Infrastruktúra-szolgáltatási tanúsítványok kívülre irányuló szolgálta
 
 Az Azure-verem infrastruktúra integritásának fenntartása operátorok kell rendszeresen elforgatásának az infrastruktúra titkok frekvencia, amelyek a szervezet biztonsági követelményekkel összhangban.
 
+### <a name="rotating-secrets-with-external-certificates-from-a-new-certificate-authority"></a>Az új hitelesítésszolgáltatótól származó külső tanúsítványok titkos kulcsok elforgatása
+
+Azure verem a következő környezeteket egy új tanúsítvány hitelesítésszolgáltatói (CA) származó tanúsítványokkal külső titkos Elforgatás támogatja:
+
+|Telepített tanúsítvány-Kanada|Forgassa el a hitelesítésszolgáltató|Támogatott|Támogatott Azure verem-verziók|
+|-----|-----|-----|-----|-----|
+|Az önaláírt|A vállalati adatbázisba|Nem támogatott||
+|Az önaláírt|Az önaláírt|Nem támogatott||
+|Az önaláírt|Nyilvános<sup>*</sup>|Támogatott|1803 és újabb verziók|
+|Vállalati|A vállalati adatbázisba|Támogatott, ha használják, az azonos vállalati hitelesítésszolgáltató, a központi telepítés használni|1803 és újabb verziók|
+|Vállalati|Az önaláírt|Nem támogatott||
+|Vállalati|Nyilvános<sup>*</sup>|Támogatott|1803 és újabb verziók|
+|Nyilvánosság elől<sup>*</sup>|A vállalati adatbázisba|Nem támogatott|1803 és újabb verziók|
+|Nyilvánosság elől<sup>*</sup>|Az önaláírt|Nem támogatott||
+|Nyilvánosság elől<sup>*</sup>|Nyilvános<sup>*</sup>|Támogatott|1803 és újabb verziók|
+
+<sup>*</sup> Nyilvános tanúsítványszolgáltatók az alábbiakban azokat, amelyeket a Windows megbízható legfelső szintű Program része. A teljes listáját megtalálhatja [Microsoft megbízható Root Certificate Program: (az 2017. június 27.) a résztvevők](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+
 ## <a name="alert-remediation"></a>Riasztási szervizelés
 
 Ha a titkos kulcsok lejárati számított 30 napon belül, a következő riasztások jönnek létre a felügyeleti portálon: 
@@ -74,7 +91,7 @@ Az alábbi utasításokat követve titkos Elforgatás futtató fogja szervizelni
 
 ## <a name="rotating-external-and-internal-secrets"></a>Belső és külső kulcsok elforgatása
 
-Mindkét külső egy belső titkos kulcsok megváltoztatása:
+Mindkét külső egy belső titkos megváltoztatása:
 
 1. Az újonnan létrehozott belül **/tanúsítványok** a előtti lépések alapján létrehozott directory helyezze el a külső tanúsítványok cseréje új készletét a könyvtárstruktúra szerint formátuma megfelel a kötelező tanúsítványok csoportban az a [Azure verem PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
 2. Hozzon létre egy PowerShell-munkamenetet a [kiemelt végpont](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) használatával a **CloudAdmin** fiókot, és tárolja a munkamenetek változóként. Ez a változó a következő lépésben paraméterként fogja használni.
@@ -137,7 +154,7 @@ A Start-SecretRotation parancsmag az infrastruktúra titkokat az Azure-verem ren
  
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Típus | Szükséges | Beosztás | Alapértelmezett | Leírás |
+| Paraméter | Típus | Szükséges | Pozíció | Alapértelmezett | Leírás |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Karakterlánc  | False (Hamis)  | nevű  | None  | A fájlmegosztási elérési útját a **\Certificates** tartalmazó minden külső hálózati végpont tanúsítványokat. Csak akkor kötelező, ha a belső és külső kulcsok elforgatása. Záró könyvtárnak kell lennie **\Certificates**. |
 | CertificatePassword | SecureString | False (Hamis)  | nevű  | None  | A jelszó - PfXFilesPath megadott tanúsítvány esetében. Ha PfxFilesPath áll rendelkezésre, ha a külső és belső titkok legyenek-e elforgatva szükséges érték. |

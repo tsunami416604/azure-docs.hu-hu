@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: b2eeb7d2cca124abd811859077d7e5e55a36c521
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 72ba97727fd4de1c419091475f14427065790cc7
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -215,7 +215,7 @@ Az SCM helynév a Kudu konzolhoz irányítja, az Azure Portal **Speciális port�
 
 A több-bérlős App Service-ben és a külső ASE környezetben az Azure Portal és a Kudu konzol között egyszeri bejelentkezés van. Az ILB ASE esetében viszont közzétételi hitelesítő adatai használatával jelentkezhet be a Kudu konzolba.
 
-A GitHubhoz és Visual Studio Team Services-hez hasonló internetes alapú CI rendszerek nem működnek az ILB ASE környezettel, mivel a közzététel végpontja nem elérhető az internetről. Ehelyett egy lekérési modellt használó CI-rendszert kell használnia, ilyen például a Dropbox.
+A GitHubhoz és Visual Studio Team Services-hez hasonló internetes alapú CI-rendszerek akkor is működnek az ILB ASE környezettel, ha a buildügynök elérhető az internetről, és ugyanazon a hálózaton található, mint az ILB ASE. Tehát a Visual Studio Team Services esetében, ha a buildügynök ugyanazon a VNET-en lett létrehozva, mint az ILB ASE (lehet más alhálózat), képes lesz lekérni a kódot a VSTS gitről és telepíteni az ILB ASE-re. Ha nem szeretne létrehozni saját buildügynököt, egy lekérési modellt használó CI-rendszert kell használnia helyette, például a Dropboxot.
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profilján és az alkalmazás portálpanelén jelenik meg (**Áttekintés** > **Alapvető szolgáltatások** és **Tulajdonságok**). Ha az ILB ASE altartománya *contoso.net* és az alkalmazás neve *mytest*, akkor FTP-hez használja a *mytest.contoso.net*, webes telepítéshez pedig az *mytest.scm.contoso.net* tartományneveket.
 

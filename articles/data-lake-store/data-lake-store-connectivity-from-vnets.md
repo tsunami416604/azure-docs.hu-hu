@@ -1,8 +1,8 @@
 ---
-title: "Csatlakozás az Azure Data Lake Store a Vnetek |} Microsoft Docs"
-description: "Csatlakozás az Azure Data Lake Store az Azure Vnetekhez"
+title: Csatlakozás az Azure Data Lake Store a Vnetek |} Microsoft Docs
+description: Csatlakozás az Azure Data Lake Store az Azure Vnetekhez
 services: data-lake-store,data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: esung22
 manager: jhubbard
 editor: cgronlun
@@ -10,15 +10,13 @@ ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 483406c6929844a8355dffcb86c1e3a3dabda061
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 489e7eb35352e2e8fd3d159381c2177098a90399
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Az Azure Data Lake Store egy Azure virtuális hálózaton belüli virtuális gépek
 Azure Data Lake Store PaaS szolgáltatás, amely a nyilvános Internet IP-címek. Bármely kiszolgáló csatlakozni tud-e a nyilvános internethez általában csatlakozhat, valamint az Azure Data Lake Store-végpontok. Alapértelmezés szerint az Azure Vnetekhez lévő összes virtuális gép hozzáférhet az interneten, és ezért férhetnek hozzá az Azure Data Lake Store. Azonban úgy is egy VNET és nem rendelkezik Internet-hozzáférés a virtuális gépek konfigurálása. Ilyen virtuális gépek elérése az Azure Data Lake Store történik is. Nyilvános Internet-hozzáférés letiltása a virtuális gépek az Azure Vnetekhez végezhető a következő módszerek bármelyikével:

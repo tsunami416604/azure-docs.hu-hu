@@ -1,6 +1,6 @@
 ---
-title: "Szereplője diagnosztika és figyelése |} Microsoft Docs"
-description: "Ez a cikk ismerteti a diagnosztika és teljesítményfigyelés a Service Fabric Reliable Actors futásidejű, beleértve az események és teljesítményszámlálók által kibocsátott szolgáltatásai."
+title: Szereplője diagnosztika és figyelése |} Microsoft Docs
+description: Ez a cikk ismerteti a diagnosztika és teljesítményfigyelés a Service Fabric Reliable Actors futásidejű, beleértve az események és teljesítményszámlálók által kibocsátott szolgáltatásai.
 services: service-fabric
 documentationcenter: .net
 author: abhishekram
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 5fbef8a3fb32f4bc47856ef6c6b459ae389dd541
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 9b4825be7ce7fb05b109310f21cd65cfe3819ae8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>A Reliable Actors diagnosztizálása és teljesítmény-figyelése
 A Reliable Actors futásidejű bocsát ki [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) események és [teljesítményszámlálók](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Ezek a futtatókörnyezet működéséről betekintést és a hibaelhárítás és a teljesítmény figyelése súgó.
@@ -43,8 +43,8 @@ A Reliable Actors futásidejű határozza meg a következő teljesítményszáml
 
 | Kategória | Leírás |
 | --- | --- |
-| Service Fabric szereplő |Azure Service Fabric szereplője, pl. időt vett aktor állapotmentésének vonatkozó számlálók |
-| Service Fabric-Aktormetódus |Számlálók a Service Fabric szereplője által megvalósított metódusok jellemző, pl. milyen gyakran egy aktormetódus meghívták |
+| Service Fabric-aktor |Azure Service Fabric szereplője, pl. időt vett aktor állapotmentésének vonatkozó számlálók |
+| Service Fabric-aktormetódus |Számlálók a Service Fabric szereplője által megvalósított metódusok jellemző, pl. milyen gyakran egy aktormetódus meghívták |
 
 A fenti kategóriák egy vagy több számlálóval rendelkezik.
 
@@ -91,7 +91,7 @@ A példában `ivoicemailboxactor.leavemessageasync` a metódus neve, `2` jön l�
 ### <a name="actor-method-events-and-performance-counters"></a>Aktor metódus események és teljesítményszámlálók
 A Reliable Actors futásidejű bocsát ki a következő események, kapcsolódó [szereplő módszerek](service-fabric-reliable-actors-introduction.md).
 
-| esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Esemény azonosítója | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |Részletes |0x2 |Szereplője futásidejű arra készül, hogy egy aktormetódus meghívni. |
 | ActorMethodStop |8 |Részletes |0x2 |Az aktor metódus végrehajtása befejeződött. Ez azt jelenti, hogy a futtatókörnyezet aszinkron hívás a aktormetódus adott vissza, és a tevékenység aktor metódus által visszaadott befejeződött. |
@@ -101,14 +101,14 @@ A Reliable Actors futásidejű teszi közzé a következő teljesítményszáml�
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric-Aktormetódus |Indítások/mp |Amelyet az aktorszolgáltatási metódus másodpercenkénti száma |
-| Service Fabric-Aktormetódus |Hívásonkénti átlagos idő ezredmásodpercben |Az aktorszolgáltatási metódus végrehajtásához felhasznált idő ezredmásodpercben |
-| Service Fabric-Aktormetódus |Kiváltott kivételek száma |Hogy az aktorszolgáltatási metódus száma másodpercenként kivételt váltott ki. |
+| Service Fabric-aktormetódus |Hívás/mp |Amelyet az aktorszolgáltatási metódus másodpercenkénti száma |
+| Service Fabric-aktormetódus |Hívásonkénti átlagos idő ezredmásodpercben |Az aktorszolgáltatási metódus végrehajtásához felhasznált idő ezredmásodpercben |
+| Service Fabric-aktormetódus |Keletkezett kivétel/mp |Hogy az aktorszolgáltatási metódus száma másodpercenként kivételt váltott ki. |
 
 ### <a name="concurrency-events-and-performance-counters"></a>Párhuzamossági események és teljesítményszámlálók
 A Reliable Actors futásidejű bocsát ki a következő események, kapcsolódó [egyidejűségi](service-fabric-reliable-actors-introduction.md#concurrency).
 
-| esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Esemény azonosítója | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ActorMethodCallsWaitingForLock |12 |Részletes |0x8 |Ez az esemény írása a egy szereplő minden egyes új kapcsolja elején. A függőben lévő szerezni a kapcsolja-alapú feldolgozási megőrző aktoronkénti zárolásra váró aktorhívások számát tartalmazza. |
 
@@ -116,14 +116,14 @@ A Reliable Actors futásidejű közzéteszi a következő feldolgozási kapcsol�
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric szereplő |Az aktor zárolására váró aktorhívások száma |Függőben lévő szerezni a kapcsolja-alapú feldolgozási megőrző aktoronkénti zárolásra váró aktorhívások száma |
-| Service Fabric szereplő |Zárolásra való várakozás átlagos ideje ezredmásodpercben |Ideje (ezredmásodpercben), amely képes kikényszeríteni kapcsolja-alapú feldolgozási az aktoronkénti zárolásra |
-| Service Fabric szereplő |Aktorzárolás fenntartásának átlagos ideje ezredmásodpercben |Időtartama (ezredmásodpercben), amelynek az aktoronkénti zárolásra tárolt |
+| Service Fabric-aktor |Az aktor zárolására váró aktorhívások száma |Függőben lévő szerezni a kapcsolja-alapú feldolgozási megőrző aktoronkénti zárolásra váró aktorhívások száma |
+| Service Fabric-aktor |Zárolásra való várakozás átlagos ideje ezredmásodpercben |Ideje (ezredmásodpercben), amely képes kikényszeríteni kapcsolja-alapú feldolgozási az aktoronkénti zárolásra |
+| Service Fabric-aktor |Aktorzárolás fenntartásának átlagos ideje ezredmásodpercben |Időtartama (ezredmásodpercben), amelynek az aktoronkénti zárolásra tárolt |
 
 ### <a name="actor-state-management-events-and-performance-counters"></a>Aktor állapot felügyeleti események és teljesítményszámlálók
 A Reliable Actors futásidejű bocsát ki a következő események, kapcsolódó [szereplő állapotkezelés](service-fabric-reliable-actors-state-management.md).
 
-| esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Esemény azonosítója | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ActorSaveStateStart |10 |Részletes |0x4 |Szereplője futásidejű arra készül, hogy az aktor állapotmentésének időtartama. |
 | ActorSaveStateStop |11 |Részletes |0x4 |Szereplője futásidejű befejezte a aktorállapot mentése. |
@@ -132,13 +132,13 @@ A Reliable Actors futásidejű szereplő állapotkezelés kapcsolódó alábbi t
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric szereplő |Állapotmentési műveletenként átlagosan eltelt ezredmásodpercek |Az aktor állapotmentésének időtartama ezredmásodpercben |
-| Service Fabric szereplő |Állapotbetöltési művelet átlagos ideje ezredmásodpercben |Aktorállapot betöltésének ideje ezredmásodpercben |
+| Service Fabric-aktor |Állapotmentési műveletenként átlagosan eltelt ezredmásodpercek |Az aktor állapotmentésének időtartama ezredmásodpercben |
+| Service Fabric-aktor |Állapotbetöltési művelet átlagos ideje ezredmásodpercben |Aktorállapot betöltésének ideje ezredmásodpercben |
 
 ### <a name="events-related-to-actor-replicas"></a>Aktor replikák kapcsolódó eseményeket.
 A Reliable Actors futásidejű bocsát ki a következő események, kapcsolódó [szereplő replikák](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
-| esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Esemény azonosítója | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |Tájékoztató |0x1 |Aktor replika szerepkör elsődleges értékre módosult. Ez azt jelenti, hogy a partíció szereplője Ez a másodpéldány lesz hozhatók létre. |
 | ReplicaChangeRoleFromPrimary |2 |Tájékoztató |0x1 |Aktor replika nem elsődleges szerepkör változott. Ez azt jelenti, hogy a partíció gyakrabban fog már nem hozhatók létre a replikára. Ez a másodpéldány belül már létrehozott szereplője az új kérelmek nem továbbítani. A szereplője meg kell semmisíteni, a folyamatban lévő kéréseit elvégzése után. |
@@ -146,7 +146,7 @@ A Reliable Actors futásidejű bocsát ki a következő események, kapcsolódó
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Aktor aktiválás és az inaktiválást események és teljesítményszámlálók
 A Reliable Actors futásidejű bocsát ki a következő események, kapcsolódó [szereplő aktiválás és az inaktiválást](service-fabric-reliable-actors-lifecycle.md).
 
-| esemény neve | Eseményazonosító | Szint | Kulcsszó | Leírás |
+| Esemény neve | Esemény azonosítója | Szint | Kulcsszó | Leírás |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |Tájékoztató |0x1 |Egy szereplő aktiválva lett. |
 | ActorDeactivated |6 |Tájékoztató |0x1 |Egy szereplő inaktív. |
@@ -155,19 +155,19 @@ A Reliable Actors futásidejű teszi közzé a következő teljesítményszáml�
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric szereplő |Átlagos OnActivateAsync ideje ezredmásodpercben |Az OnActivateAsync metódus végrehajtásának átlagos ideje ezredmásodpercben |
+| Service Fabric-aktor |OnActivateAsync metódus átlagos ideje ezredmásodpercben |Az OnActivateAsync metódus végrehajtásának átlagos ideje ezredmásodpercben |
 
 ### <a name="actor-request-processing-performance-counters"></a>Aktor Kérelemfeldolgozás teljesítményszámlálói
 Amikor egy ügyfél keresztül szereplő proxy objektum metódus meghívja, egy üzenet az aktor szolgáltatáshoz a hálózaton keresztül küldött eredményez. A szolgáltatás feldolgozza a kérelmet üzenetet, és elküld egy választ, az ügyfélnek. A Reliable Actors futásidejű szereplő Kérelemfeldolgozás kapcsolódó alábbi teljesítményszámlálók közzéteszi.
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric szereplő |Függőben lévő kérések száma |A szolgáltatás a feldolgozás alatt álló kérelmek száma |
-| Service Fabric szereplő |Kérelmenkénti átlagos idő ezredmásodpercben |Igénybe vett idő (ezredmásodpercben) a szolgáltatás által a kérelmek feldolgozásához |
-| Service Fabric szereplő |Kérelem deszerializálásának átlagos ideje ezredmásodpercben |(Ezredmásodpercben) szereplő kérelemüzenet deszerializálása, ha a szolgáltatás fogadja igénybe vett idő |
-| Service Fabric szereplő |Válasz szerializálásának átlagos ideje ezredmásodpercben |Az aktor válasz jelenik meg a szolgáltatás szerializálni az ügyfélnek a válasz elküldése előtt (ezredmásodpercben) szükséges idő |
+| Service Fabric-aktor |Függőben lévő kérések száma |A szolgáltatás a feldolgozás alatt álló kérelmek száma |
+| Service Fabric-aktor |Kérelmenkénti átlagos idő ezredmásodpercben |Igénybe vett idő (ezredmásodpercben) a szolgáltatás által a kérelmek feldolgozásához |
+| Service Fabric-aktor |Kérelem deszerializálásának átlagos ideje ezredmásodpercben |(Ezredmásodpercben) szereplő kérelemüzenet deszerializálása, ha a szolgáltatás fogadja igénybe vett idő |
+| Service Fabric-aktor |Válasz szerializálásának átlagos ideje ezredmásodpercben |Az aktor válasz jelenik meg a szolgáltatás szerializálni az ügyfélnek a válasz elküldése előtt (ezredmásodpercben) szükséges idő |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Service Fabric-platformról használatát a Reliable Actors](service-fabric-reliable-actors-platform.md)
 * [Aktor API referenciadokumentációt](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Mintakód](https://github.com/Azure/servicefabric-samples)

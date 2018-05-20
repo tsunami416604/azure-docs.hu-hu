@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Gyakori kérdések az Azure költség Management
 
@@ -148,4 +148,4 @@ Nem. Ügynökök nem használhatók. Azure virtuális gép metrikus adatokat vir
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Tegye Cloudyn szóló jelentésekben megtekintheti a jelentés egynél több AD-bérlő?
 
-Igen. Is [hozzon létre egy megfelelő cloud Partner entitás](tutorial-user-access.md#create-entities) az egyes AD bérlők, hogy rendelkezik. Majd megtekintheti az összes Azure AD-bérlő adatait és más felhőalapú platform szolgáltatók, beleértve az Amazon Web Services és a Google Cloud Platform.
+Igen. Is [hozzon létre egy megfelelő cloud Partner entitás](tutorial-user-access.md#create-and-manage-entities) az egyes AD bérlők, hogy rendelkezik. Majd megtekintheti az összes Azure AD-bérlő adatait és más felhőalapú platform szolgáltatók, beleértve az Amazon Web Services és a Google Cloud Platform.

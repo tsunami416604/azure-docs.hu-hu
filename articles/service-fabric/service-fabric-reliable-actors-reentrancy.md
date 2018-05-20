@@ -1,6 +1,6 @@
 ---
-title: "Az aktor-alapú Azure mikroszolgáltatások rögzítve |} Microsoft Docs"
-description: "A Service Fabric Reliable Actors rögzítve bemutatása"
+title: Az aktor-alapú Azure mikroszolgáltatások rögzítve |} Microsoft Docs
+description: A Service Fabric Reliable Actors rögzítve bemutatása
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,24 +9,24 @@ editor: amanbha
 ms.assetid: be23464a-0eea-4eca-ae5a-2e1b650d365e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: dec785757ac582f044811c0f64ae0d452d6ad9a0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 40f52cb399f2d7391657ce4356a0c30921d46e5f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reliable-actors-reentrancy"></a>Megbízható szereplője rögzítve
 A Reliable Actors futásidejű alapértelmezés szerint lehetővé teszi, hogy logikai hívás környezetfüggő rögzítve. Ez lehetővé teszi a szereplőket ismételten belépő, ha azok hívás környezetben ugyanabba a láncba kell. Például A Aktor üzenetet küld szereplő B, egy üzenet küld Aktor a c kiszolgálóra. Az üzenet feldolgozása részeként szereplő C Aktor A, ha az üzenet ismételten belépő, amelynek engedélyezni. Bármely más üzeneteket, amelyek egy másik hívás környezetet részei le lesz tiltva a Aktor A feldolgozás befejezéséig.
 
 Nincsenek definiálva szereplő rögzítve két lehetőség közül választhat a `ActorReentrancyMode` enum:
 
-* `LogicalCallContext`(alapértelmezés)
-* `Disallowed`-rögzítve letiltása
+* `LogicalCallContext` (alapértelmezés)
+* `Disallowed` -rögzítve letiltása
 
 ```csharp
 public enum ActorReentrancyMode
@@ -109,5 +109,5 @@ static class Program
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a rögzítve a [szereplő API referenciadokumentációt tartalmaz](https://msdn.microsoft.com/library/azure/dn971626.aspx)

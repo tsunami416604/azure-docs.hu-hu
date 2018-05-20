@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 65e1f8a907c8bf64497f7439e5b635ad336cd23a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 026ff0394e988081bdc581bf001417b13e44427b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia - IoT-központ kvóták és sávszélesség-szabályozás
 
@@ -39,7 +39,7 @@ A következő táblázat a kényszerített szabályozások. Értékek egyes hubh
 | Szabályozás | Ingyenes, B1 és S1 | K2 és S2 | B3 és S3 | 
 | -------- | ------- | ------- | ------- |
 | Identitás kapcsolatos műveletek (létrehozása, beolvasása, listázása, frissítése és törlése) | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
-| Eszközkapcsolatok | Nagyobb 100 másodpercenkénti vagy 12/mp/egység <br/> Például két S1 egység: 2\*12 = 24 vagy mp, de legalább 100/mp a egységek között. Kilenc S1 egység, az informatikai részleg 108/mp (9\*12) között a egységeket. | 120/mp/egység | 6000/mp/egység |
+| Új eszköz kapcsolatok (Ez a korlátozás vonatkozik aránya _új kapcsolatok_ jönnek létre, nem a kapcsolatok teljes száma) | Nagyobb 100 másodpercenkénti vagy 12/mp/egység <br/> Például két S1 egység: 2\*12 = 24 új kapcsolatok/mp, de van legalább 100 új kapcsolatok/mp a egységek között. Kilenc S1 egység, az informatikai részleg 108 új kapcsolatok/mp (9\*12) között a egységeket. | 120 új kapcsolatok/mp/egység | 6000 új kapcsolatok/mp/egység |
 | Az eszközről a felhőbe irányuló küldések | Nagyobb 100 másodpercenkénti vagy 12/mp/egység <br/> Például két S1 egység: 2\*12 = 24 vagy mp, de legalább 100/mp a egységek között. Kilenc S1 egység, az informatikai részleg 108/mp (9\*12) között a egységeket. | 120/mp/egység | 6000/mp/egység |
 | Felhő eszközre elküldi<sup>1</sup> | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
 | Felhő-eszköz megkapja<sup>1</sup> <br/> (csak ha eszköz HTTPS PROTOKOLLT használ)| 16.67/sec/Unit (1000/perc/egység) | 16.67/sec/Unit (1000/perc/egység) | 833.33/sec/Unit (50000/perc/egység) |

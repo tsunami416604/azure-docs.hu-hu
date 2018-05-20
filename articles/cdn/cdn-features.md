@@ -1,10 +1,10 @@
 ---
-title: Az Azure Content Delivery Network- (CDN-) termékek szolgáltatásai | Microsoft Docs
+title: Az Azure Content Delivery Network- (CDN-) termékszolgáltatások összehasonlítása | Microsoft Docs
 description: A jelen cikkben az egyes Azure Content Delivery Network- (CDN-) termékek által támogatott szolgáltatásokat ismerheti meg.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,20 +12,22 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/25/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: ae57d4e9feb23f67bb4f05148d87fec96f055a7f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 01396ceba142a91a88040ac28c51275734476e5d
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="azure-cdn-product-features"></a>Az Azure CDN termékszolgáltatásai
+# <a name="compare-azure-cdn-product-features"></a>Az Azure CDN-termékszolgáltatások összehasonlítása
 
-Az Azure Content Delivery Network (CDN) négy terméket tartalmaz: a **Microsoft Azure CDN Standard**, az **Akamai Azure CDN Standard**, a **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** terméket. Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
+Az Azure Content Delivery Network (CDN) négy terméket tartalmaz: a **Microsoft Azure CDN Standard** (előnézetben), az **Akamai Azure CDN Standard**, a **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** terméket. 
 
-| **Teljesítménnyel kapcsolatos szolgáltatások és optimalizálási lehetőségek** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** |
+Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
+
+| **Teljesítménnyel kapcsolatos szolgáltatások és optimalizálási lehetőségek** | **Standard Microsoft (előzetes verzió)** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** |
 | --- | --- | --- | --- | --- |
 | [Dinamikus helygyorsítás](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  |  | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dinamikus helygyorsítás – Adaptív képtömörítés](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-akamai-only)  |  | **&#x2713;**  |  |  |
@@ -61,7 +63,7 @@ Az Azure Content Delivery Network (CDN) négy terméket tartalmaz: a **Microsoft
 | [Valós idejű riasztások](cdn-real-time-alerts.md)  |  | | |**&#x2713;** |
 ||||
 | **Könnyű használat** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
-| Egyszerű integráció az Azure-szolgáltatásokkal – például a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Cloud Services](cdn-cloud-service-with-cdn.md), a [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md) és a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) szolgáltatással  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| Egyszerű integráció a [Storage](cdn-create-a-storage-account-with-cdn.md), a [Web Apps](app-service-web-tutorial-content-delivery-network.md), a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) és egyéb Azure-szolgáltatásokkal  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Felügyelet [REST API](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) vagy [PowerShell](cdn-manage-powershell.md) használatával  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Testreszabható, szabályalapú tartalomkézbesítési motor](cdn-rules-engine.md)  |  | | |**&#x2713;** |
 | URL-átirányítás/átírás (a [szabálymotorral](cdn-rules-engine.md))  |  | | |**&#x2713;** |

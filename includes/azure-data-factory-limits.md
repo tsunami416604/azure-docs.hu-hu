@@ -5,14 +5,14 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 04/27/2018
+ms.date: 05/16/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 03b7ce49f935c36b0e0652925c41deea987a2a26
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0deda4324a4287e7aa25cb686acb5b6152443735
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 Adat-előállító egy több-bérlős szolgáltatást a következő alapértelmezett korlátokat érdekében győződjön meg arról, hogy az ügyfél-előfizetések védettek, a másik fél munkaterhelések érvényben. A korlátok számos könnyen emelhető az előfizetéséhez, a maximális határértéket akár lépjen kapcsolatba az ügyfélszolgálattal.
 
@@ -27,7 +27,7 @@ Adat-előállító egy több-bérlős szolgáltatást a következő alapértelme
 | Egy adat-előállító belül összekapcsolt szolgáltatások | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Egy adat-előállító belül integrációs futtatókörnyezetek <sup>4</sup> | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Egy előfizetéshez tartozó teljes CPU-magokat az Azure-SSIS-integráció Runtime(s) | 100 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Folyamat fut egyidejűleg folyamat | 20 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Folyamat fut egyidejűleg folyamat | 100 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Feldolgozási sor / maximális tevékenységek | 20 | 30 |
 | Feldolgozási sor / maximális paraméterek | 20 | 30 |
 | Adatcsatorna objektumok objektumonként bájt <sup>1</sup> | 200 KB | 200 KB |

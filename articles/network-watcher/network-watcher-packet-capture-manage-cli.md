@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 804a60431faad745f8fdf01db822151dd2c8bc68
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4c0b65411e9846077036e16204b7a407c6c7ee9e
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-20"></a>Csomag rögzítésekre kezelése az Azure CLI 2.0 verziót használja Azure hálózati figyelőt
 
@@ -125,7 +125,7 @@ azure storage account list
 A csomagrögzítéssel által tárolt adatok szűrők használható. Az alábbi példa állít be egy csomagrögzítéssel több szűrők.  Az első három szűrők összegyűjtéséhez kimenő TCP-forgalom csak a helyi IP 10.0.0.3 célport 20, a 80-as és a 443-as.  Az utolsó szűrő gyűjt csak az UDP-forgalmat.
 
 ```azurecli
-az network watcher packet-capture create --resource-group {resoureceurceGroupName} --vm {vmName} --name packetCaptureName --storage-account gwteststorage123abc --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
+az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
 A következő példa egy futtatásának várható kimenete a `az network watcher packet-capture create` parancsmag.
@@ -183,61 +183,26 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>A csomagrögzítéssel beolvasása
 
-Fut a `az network watcher packet-capture show` parancsmag, beolvassa a jelenleg futó vagy befejezett csomagrögzítéssel állapotát.
+Fut a `az network watcher packet-capture show-status` parancsmag, beolvassa a jelenleg futó vagy befejezett csomagrögzítéssel állapotát.
 
 ```azurecli
-az network watcher packet-capture show --name packetCaptureName --location westcentralus
+az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-A következő példa egy kimenete a `az network watcher packet-capture show` parancsmag. A következő példa a rögzítés befejezése után van. A PacketCaptureStatus érték le van állítva, az egy TimeExceeded StopReason. Ezt az értéket jeleníti meg, hogy a csomagrögzítéssel sikeres volt-e, és az idő futott.
+A következő példa egy kimenete a `az network watcher packet-capture show-status` parancsmag. A következő példa a Rögzítés leállítása esetén a egy TimeExceeded StopReason van. 
 
 ```
 {
-  "bytesToCapturePerPacket": 0,
-  "etag": "W/\"b8cf3528-2e14-45cb-a7f3-5712ffb687ac\"",
-  "filters": [
-    {
-      "localIpAddress": "10.0.0.3",
-      "localPort": "",
-      "protocol": "TCP",
-      "remoteIpAddress": "1.1.1.1-255.255.255",
-      "remotePort": "20"
-    },
-    {
-      "localIpAddress": "10.0.0.3",
-      "localPort": "",
-      "protocol": "TCP",
-      "remoteIpAddress": "1.1.1.1-255.255.255",
-      "remotePort": "80"
-    },
-    {
-      "localIpAddress": "10.0.0.3",
-      "localPort": "",
-      "protocol": "TCP",
-      "remoteIpAddress": "1.1.1.1-255.255.255",
-      "remotePort": "443"
-    },
-    {
-      "localIpAddress": "",
-      "localPort": "",
-      "protocol": "UDP",
-      "remoteIpAddress": "",
-      "remotePort": ""
-    }
-  ],
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/packetCaptures/packetCaptureName",
-  "name": "packetCaptureName",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "NetworkWatcherRG",
-  "storageLocation": {
-    "filePath": null,
-    "storageId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/gwteststorage123abc",
-    "storagePath": "https://gwteststorage123abc.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/{resourceGroupName}/providers/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapt
-ure_16_22_34_630.cap"
+  "additionalProperties": {
+    "status": "Succeeded"
   },
-  "target": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
-  "timeLimitInSeconds": 18000,
-  "totalBytesPerSession": 1073741824
+  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
+cketCaptures/packetCaptureName",
+  "name": "packetCaptureName",
+  "packetCaptureError": [],
+  "packetCaptureStatus": "Stopped",
+  "stopReason": "TimeExceeded"
 }
 ```
 

@@ -5,14 +5,14 @@ services: log-analytics
 author: MGoedtel
 ms.service: log-analytics
 ms.topic: include
-ms.date: 03/29/2018
+ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 29256b3bcfedb7fe5045ff4c6c3842eb25e00a28
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/17/2018
 ---
 Az alábbi korlátok vonatkoznak az egyes Log Analytics-erőforrásokra előfizetésenként:
 
@@ -29,7 +29,7 @@ Az alábbi korlátok vonatkoznak az egyes Log Analytics-munkaterületekre:
 
 |  | Ingyenes | Standard | Prémium | Különálló | OMS | /GB |
 | --- | --- | --- | --- | --- | --- |--- |
-| Naponta összegyűjtött adatmennyiség |500 MB<sup>1</sup> |Nincs |None | None | Nincs | Nincs
+| Naponta összegyűjtött adatmennyiség |500 MB<sup>1</sup> |None |None | None | None | None
 | Adatmegőrzés időtartama |7 nap |1 hónap |12 hónap | 1 hónap<sup>2</sup> | 1 hónap<sup>2</sup>| 1 hónap<sup>2</sup>|
 
 <sup>1</sup> Ha az ügyfél eléri az 500 MB-os napi adatátviteli korlátot, az adatelemzés leáll, és a következő nap elején folytatódik. A napi elszámolás UTC-alapú.
@@ -39,5 +39,5 @@ Az alábbi korlátok vonatkoznak az egyes Log Analytics-munkaterületekre:
 | Kategória | Korlátok | Megjegyzések
 | --- | --- | --- |
 | Data Collector API | Az egyedi közzétételek maximális mérete 30 MB<br>A mezőértékek maximális mérete 32 KB | A nagyobb mennyiségeket bontsa több közzétételre<br>A 32 KB-nál hosszabb mezők csonkolva lesznek. |
-| Keresési API | 5000 visszaadott rekord a nem összesített adatok esetében<br>500 000 rekord az összesített adatok esetében | Az összesített adatok a `measure` parancsot tartalmazó kereséssel lekért adatok
+| Keresési API | 5000 visszaadott rekord a nem összesített adatok esetében<br>500 000 rekord az összesített adatok esetében | Az összesített adatok a `summarize` parancsot tartalmazó kereséssel lekért adatok
  

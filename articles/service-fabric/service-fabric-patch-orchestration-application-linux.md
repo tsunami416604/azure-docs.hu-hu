@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric javítás vezénylési alkalmazással Linux |} Microsoft Docs"
-description: "Alkalmazás automatizálhatja az operációs rendszer a Linux Service Fabric-fürt javítását."
+title: Azure Service Fabric javítás vezénylési alkalmazással Linux |} Microsoft Docs
+description: Alkalmazás automatizálhatja az operációs rendszer a Linux Service Fabric-fürt javítását.
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/22/2018
 ms.author: nachandr
-ms.openlocfilehash: dac8068705e284b04d84d128eb1ce62c459d44ff
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszert a Service Fabric-fürt javítás
 
@@ -124,7 +124,7 @@ Töltse le az alkalmazást a [letöltése hivatkozásra](https://go.microsoft.co
 
 A javítás vezénylési alkalmazás viselkedése beállítható úgy, hogy az igényeinek. Az alapértelmezett érték felülírására történő alkalmazás paraméterében alkalmazás létrehozása vagy frissítése során. Alkalmazás paraméterek megadásával megadható `ApplicationParameter` számára a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
 
-|**Parameter**        |**Típus**                          | **Részletek**|
+|**A paraméter**        |**Típus**                          | **Részletek**|
 |:-|-|-|
 |MaxResultsToCache    |Hosszú                              | Frissítés eredmények, amelyek gyorsítótárazza maximális száma. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma 20. <br> -A csomópont havonta történik frissítések száma: öt. <br> -Művelet eredmények száma 10 is lehet. <br> -Az elmúlt három hónap eredmények kell tárolni. |
 |TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a házirendet, amely a frissítések telepítése a Service Fabric-fürt csomópontjai között a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. A frissítései telepített egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. A frissítései telepített több frissítési tartományt egyszerre. (A maximumot, a frissítési tartományokhoz tartozó összes számítógépen lépjen a frissítéshez.)
@@ -218,7 +218,7 @@ A JSON a mezők az alábbiak szerint:
 
 Mező | Értékek | Részletek
 -- | -- | --
-OperationResult | 0 - sikeres<br> 1 – sikeres volt, a hibák<br> 2 – nem sikerült<br> 3 - megszakítva<br> 4 - megszakadt az időkorlát | Azt jelzi, hogy általános műveletet (jellemzően egy vagy több frissítés telepítését) eredményét.
+Operationresult adatokat a | 0 - sikeres<br> 1 – sikeres volt, a hibák<br> 2 – nem sikerült<br> 3 - megszakítva<br> 4 - megszakadt az időkorlát | Azt jelzi, hogy általános műveletet (jellemzően egy vagy több frissítés telepítését) eredményét.
 ResultCode | Ugyanaz, mint az operationresult adatokat a | Ez a mező egy egyedi frissítés telepítési művelet eredményét jelzi.
 OperationType | 1 - telepítés<br> 0 - keresés, és töltse le.| A csak művelettípus, amelyek akkor jelennek meg az eredmények alapértelmezés szerint egy telepítés.
 UpdateClassification | Alapértelmezett érték "securityupdates" | A frissítési művelet során telepített frissítések típusa

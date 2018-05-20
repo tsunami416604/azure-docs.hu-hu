@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: dc18437d554889655963270cdc051fb52325f09e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b9be74b4ef5a1239f6ce753ebf41af6b5dbacb5e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Testre szabhatja, és telepítse újra a mikroszolgáltatási
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ez az oktatóanyag az alábbiak szükségesek:
 
 >[!div class="checklist"]
-> * [A megoldás üzembe helyezéséhez távoli figyelési előre konfigurált helyileg](iot-suite-remote-monitoring-deploy-local.md)
+> * [A megoldás üzembe helyezéséhez távoli figyelési előre konfigurált helyileg](../iot-accelerators/iot-accelerators-remote-monitoring-deploy-local.md)
 > * [Egy Docker-fiók](https://hub.docker.com/)
 > * [Postman](https://www.getpostman.com/) - szükséges API-válaszból megtekintése
 

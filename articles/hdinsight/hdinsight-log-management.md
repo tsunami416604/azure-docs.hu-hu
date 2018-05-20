@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d3ca9983eee4db09a68bf772b80c9ef841117872
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -80,7 +80,7 @@ Egy tipikus HDInsight-fürtöt használ, több szolgáltatások és nyílt forr�
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Az Ambari felhasználói felületén, a nézet fürtbeállítások
 
-Apache Ambari egyszerűbbé, beállítást és megfigyelést a HDInsight-fürt, adja meg a webes felhasználói felület és a REST API-t. Ambari része a Linux-alapú HDInsight-fürtökön. Válassza ki a **fürt irányítópult** ablak megnyitása az Azure portál HDInsight lapján a**"fürt irányítópultok** hivatkozás lapon.  Ezután válassza ki a **HDInsight fürt irányítópult** ablaktáblán az Ambari felhasználói felületének megnyitásához.  A fürt bejelentkezési hitelesítő adatok megadását kéri.
+Apache Ambari egyszerűbbé, beállítást és megfigyelést a HDInsight-fürt, adja meg a webes felhasználói felület és a REST API-t. Ambari része a Linux-alapú HDInsight-fürtökön. Válassza ki a **fürt irányítópult** ablak megnyitása az Azure portál HDInsight lapján a **"fürt irányítópultok** hivatkozás lapon.  Ezután válassza ki a **HDInsight fürt irányítópult** ablaktáblán az Ambari felhasználói felületének megnyitásához.  A fürt bejelentkezési hitelesítő adatok megadását kéri.
 
 Szolgáltatás nézetek listájának megnyitásához, jelölje be a **Ambari nézetek** ablaktábla a HDInsight az Azure portál lapján.  Ez a lista változik, attól függően, hogy mely könyvtárak telepítését.  Megjelenhet például a YARN várólista-kezelő, a nézet Hive és a Tez nézet.  Válassza ki a bármely szolgáltatás hivatkozásra kattintva megtekintheti a konfiguráció és a szolgáltatás adatait.  Az Ambari felhasználói felület **verem és verzió** lap tájékoztatást ad azokról a fürtszolgáltatások konfigurációs és a szolgáltatás verziójának előzményei. Keresse meg ebben a szakaszban az Ambari felhasználói felület, válassza ki a **Admin** menüben, majd **verem és verziók**.  Válassza ki a **verziók** lapon, láthatja a fájlverzió-információkat.
 
@@ -105,17 +105,6 @@ A következő lépés a feladat végrehajtása a különböző szolgáltatásokh
 HDInsight tárolja a naplófájlokat, a fürt fájlrendszer, és az Azure-tárfiókba. Naplófájlok a fürt ellenőrzéséhez nyissa meg a fürthöz az SSH-kapcsolatot, és keresse meg a fájlrendszer vagy a távoli átjárócsomópont kiszolgálón a Hadoop YARN állapot portál használatával ellenőrizheti. Azure storage-ban az eszközök, amelyek férhet hozzá és töltse le az adatokat az Azure storage a naplófájlokban ellenőrizheti. Többek között az AZCopy, CloudXplorer és a Visual Studio Server Explorer. PowerShell és az Azure Storage ügyfélkódtáraival vagy az Azure .NET SDK-k, használhatja az Azure blob Storage tárolóban lévő adatok eléréséhez.
 
 Hadoop futtatja a munkát, mint a feladatok *kísérletek feladat* a fürt különböző csomópontján. HDInsight kezdeményezhet spekulatív feladat kísérletek bármely más tevékenység kísérlet, amely nem hajtható végre, először leáll. Ezt követően a rendszer naplózza a vezérlő stderr és syslog napló fájlok az azonnali jelentős tevékenység. Ezenkívül többszöri feladat fut egyidejűleg, de egy naplófájlt is csak eredmények megjelenítéséhez lineárisan.
-
-#### <a name="hdinsight-logs-written-to-azure-tables"></a>Azure-táblákban írni a HDInsight-naplók
-
-A naplók írni az Azure-táblákban betekintést, mi történik egy HDInsight-fürthöz. Amikor egy Linux-alapú HDInsight-fürtöt hoz létre, hat táblák automatikusan létrejönnek az alapértelmezett Table storage-ban:
-
-* hdinsightagentlog
-* syslog
-* daemonlog
-* hadoopservicelog
-* ambariserverlog
-* ambariagentlog
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>HDInsight naplók az Azure Blob storage írása
 

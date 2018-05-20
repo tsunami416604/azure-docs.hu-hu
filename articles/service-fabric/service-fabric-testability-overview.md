@@ -1,6 +1,6 @@
 ---
-title: "Hiba az Analysis Services áttekintése |} Microsoft Docs"
-description: "Ez a cikk ismerteti a tartalék elemzési szolgáltatás a Service Fabric hibák hogy és tesztelési forgatókönyvek futtatott a szolgáltatásokhoz."
+title: Hiba az Analysis Services áttekintése |} Microsoft Docs
+description: Ez a cikk ismerteti a tartalék elemzési szolgáltatás a Service Fabric hibák hogy és tesztelési forgatókönyvek futtatott a szolgáltatásokhoz.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: f275fa5d3d6d727b016e55c188321d7e68091a33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 807e4588e23ea01c5ce435282d7af59bb108e6c6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>A tartalék Analysis Service bemutatása
 A tartalék elemzési szolgáltatás végzi a Microsoft Azure Service Fabric épülő szolgáltatások tesztelése. A tartalék Analysis Service idéz elő a jelentéssel bíró hibák, és a teljes teszt forgatókönyvek az alkalmazások futtatásához. Ezeket a hibákat és forgatókönyvek gyakorolja, és érvényesítse a számos állapotok és átmenetek, amelyeknek a szolgáltatás teljes élettartamuk összes ellenőrzött, biztonságos és egységes módon.
@@ -95,7 +95,7 @@ Hiba az Analysis Services szolgáltatások akkor a Microsoft.ServiceFabric NuGet
 
 PowerShell használatához telepítenie kell a Service Fabric SDK. Az SDK telepítése után a a ServiceFabric PowerShell modul az automatikus betöltött használatára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Valóban felhőméretű szolgáltatások létrehozására, kiemelten fontos annak biztosítása érdekében előtt, és a központi telepítést követően, hogy a szolgáltatások is képes elviselni a valós életben hibák. A szolgáltatások világ ma, gyorsan innovációját és gyors áthelyezése a kód üzemi nagyon fontos. A tartalék Analysis Service szolgáltatásfejlesztők pontosan ennek segítségével.
 
 Az alkalmazások és szolgáltatások segítségével a beépített tesztelés megkezdése [forgatókönyvek tesztelése](service-fabric-testability-scenarios.md), vagy a saját Tesztelési forgatókönyvek használatával hozhatnak létre a [műveletek fault](service-fabric-testability-actions.md) a tartalék Analysis Services által biztosított.

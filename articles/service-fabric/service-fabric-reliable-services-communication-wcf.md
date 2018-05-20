@@ -1,6 +1,6 @@
 ---
-title: "Megbízható szolgáltatások WCF kommunikációs verem |} Microsoft Docs"
-description: "A beépített WCF kommunikációs verem a Service Fabric-ügyfélszolgáltatás WCF kommunikációt a Reliable Services biztosít."
+title: Megbízható szolgáltatások WCF kommunikációs verem |} Microsoft Docs
+description: A beépített WCF kommunikációs verem a Service Fabric-ügyfélszolgáltatás WCF kommunikációt a Reliable Services biztosít.
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7037620ebdc26a9f18531064bf45d058f5060e39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5ca579b446e5d3608d53cea73fa9392cd00db06
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-alapú kommunikációs verem a Reliable Services
 A Reliable Services keretrendszer lehetővé teszi, hogy a szolgáltatás szerzők kiválasztása a kommunikációs verem, amelyeket be szeretne használni a szolgáltatáshoz. Azok a kommunikációs verem az általuk választott keresztül is csatlakoztathatja a **ICommunicationListener** által visszaadott a [CreateServiceReplicaListeners vagy CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) módszerek. A keretrendszer a kommunikációs verem, a Windows Communication Foundation (WCF) szolgáltatást szeretné használni a WCF-alapú kommunikációt szerzőknek alapú megvalósítását.
@@ -26,7 +26,7 @@ A Reliable Services keretrendszer lehetővé teszi, hogy a szolgáltatás szerz�
 ## <a name="wcf-communication-listener"></a>WCF kommunikációs figyelő
 A WCF-specifikus végrehajtásának **ICommunicationListener** biztosítja a **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** osztály.
 
-Közpénzek ne mondja ki a szolgáltatási szerződés típusú tudunk.`ICalculator`
+Közpénzek ne mondja ki a szolgáltatási szerződés típusú tudunk. `ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -122,7 +122,7 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A távoli eljáráshívás a Reliable Services távoli eljáráshívás](service-fabric-reliable-services-communication-remoting.md)
 * [Webes API-t a Reliable Services OWIN](service-fabric-reliable-services-communication-webapi.md)
 * [A Reliable Services kommunikáció biztonságához](service-fabric-reliable-services-secure-communication.md)

@@ -1,6 +1,6 @@
 ---
-title: "Megérteni a felhasználói felület létrehozása az Azure-definíció kezelt alkalmazások |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet az Azure által felügyelt alkalmazások felhasználói felületi-meghatározások létrehozása"
+title: Megérteni a felhasználói felület létrehozása az Azure-definíció kezelt alkalmazások |} Microsoft Docs
+description: Ismerteti, hogyan lehet az Azure által felügyelt alkalmazások felhasználói felületi-meghatározások létrehozása
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1e995a3de33960fa3255074a704528bec9d21491
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 59003e71324f5342cb2b724f670603fd6b67afe4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Azure portál felhasználói felületet a felügyelt alkalmazás létrehozása
 Ez a dokumentum alapvető fogalmait a createUiDefinition.json fájl. Az Azure-portálon használják ezt a fájlt a felhasználói felület létrehozására a kezelt alkalmazás létrehozásához.

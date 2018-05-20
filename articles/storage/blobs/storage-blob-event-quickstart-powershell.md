@@ -8,11 +8,11 @@ ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 6d7ccd94243d7064008197518f6194d5837b17be
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9ea51f6ea55c62fdd01efb155d26fade3941ce41
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Útvonal Blob storage-események egy egyéni webkiszolgáló-végponthoz, a PowerShell használatával
 
@@ -21,7 +21,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a c
 Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. Ebben a cikkben bemutatott példában leegyszerűsítése események küldése egy URL-címet, az üzenetek csupán gyűjti. Az URL-címet a [Hookbin](https://hookbin.com/) külső eszközével fogjuk létrehozni.
 
 > [!NOTE]
-> **Hookbin** nem célja a magas teljesítmény-használatról. Az eszköz jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
+> **Hookbin** nem célja a magas teljesítmény-használatról. Az eszköz jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény. Emellett a következőket kell figyelembe venni, hogy **Hookbin** lekérdezi [különleges kezelést](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid#create-a-requestbin-endpoint) Azure esemény rács által. Tesztelési megkönnyítéséhez esemény rács események nem küld anélkül, hogy az előfizetés érvényesítése kérelmek helyes választ (amely történne [egyéb](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#validation-details)).
 
 A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
 

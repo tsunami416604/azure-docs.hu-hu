@@ -1,12 +1,14 @@
+## <a name="register-your-application"></a>Alkalmazás regisztrálása
+Regisztrálhatja az alkalmazás két módon, a következő két szakaszokban ismertetett módon.
 
-## <a name="create-an-application-express"></a>Hozzon létre egy alkalmazást (Express)
+### <a name="option-1-express-mode"></a>1. lehetőség: Expressz mód
 Most kell regisztrálnia az alkalmazást a *Microsoft alkalmazásregisztrációs portálra*:
 1. Az alkalmazás regisztrálása a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure)
 2.  Adjon meg egy nevet az alkalmazás és az e-maileket
 3.  Győződjön meg arról, hogy az interaktív telepítés beállítást
 4.  Az utasítások beszerzéséhez, és illessze be a kódot
 
-### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Az alkalmazás regisztrációs adatokat hozzáadni a megoldás (speciális)
+### <a name="option-2-advanced-mode"></a>2. lehetőség: Speciális módban
 
 1.  Ugrás a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app)
 2.  Adjon meg egy nevet az alkalmazás és az e-maileket

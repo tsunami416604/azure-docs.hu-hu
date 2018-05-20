@@ -207,7 +207,7 @@ Felügyelt létrehozásához rendelkezésre állási készletek virtuális gépe
 
 Teljes információ keresése a REST API előírásoknak, tekintse át a [felügyelt lemezes REST API-dokumentáció](/rest/api/manageddisks/disks/disks-create-or-update). További helyzeteket is, valamint az alapértelmezett és az elfogadható értékek, amelyek küldheti el a sablon központi telepítések keresztül API találja. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Látogasson el a következő Azure gyors üzembe helyezés tárház hivatkozások teljes kezelt lemezek használó sablonokat.
     * [A felügyelt lemezes Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
@@ -216,4 +216,4 @@ Teljes információ keresése a REST API előírásoknak, tekintse át a [felüg
 * Látogasson el a [Azure felügyelt lemezekhez – áttekintés](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentum felügyelt lemezek tájékozódhat.
 * Tekintse át a virtuális gép erőforrásai sablon dokumentációját látogasson el a [Microsoft.Compute/virtualMachines sablonra való hivatkozást](/azure/templates/microsoft.compute/virtualmachines) dokumentum.
 * Tekintse át a sablon referenciadokumentációt tartalmaz lemezerőforrásokat látogasson el a [Microsoft.Compute/disks sablonra való hivatkozást](/azure/templates/microsoft.compute/disks) dokumentum.
- 
+* Az Azure VM skálázási készletekben felügyelt lemezek használatáról további információért látogasson el a [adatlemezek használata méretezési csoportok](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) dokumentum.

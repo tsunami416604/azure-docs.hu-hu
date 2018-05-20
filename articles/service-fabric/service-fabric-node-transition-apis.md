@@ -1,24 +1,24 @@
 ---
-title: "Elindítása és leállítása a fürtcsomópontok Azure mikroszolgáltatások tesztelése |} Microsoft Docs"
-description: "Útmutató van a Service Fabric-alkalmazás tesztelése indítása és leállítása a fürtcsomópontokon."
+title: Elindítása és leállítása a fürtcsomópontok Azure mikroszolgáltatások tesztelése |} Microsoft Docs
+description: Útmutató van a Service Fabric-alkalmazás tesztelése indítása és leállítása a fürtcsomópontokon.
 services: service-fabric
 documentationcenter: .net
 author: LMWF
 manager: rsinha
-editor: 
+editor: ''
 ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 850fbc0c74811ec942292da64064dec867cd1b9e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ed18097fa18101c237b4408d26dd1bc9c5d5648
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>A Start csomópont és a leállítási csomópont API-k cseréje csomópont átmenet API-val
 
@@ -44,7 +44,7 @@ Azt is venni ezeket a problémákat fent egy új sor API-k.  Az új csomópont �
 Ha a csomópont átmenet API nem lépett fel kivételhiba meghívásakor, majd a rendszer elfogadta az aszinkron művelet, és hajtja végre.  Sikeres meghívását nem feltétlenül jelenti azt, a művelet még befejeződött.  Ahhoz, hogy a tevékenység jelenlegi állapotára vonatkozó adatokat, a csomópont átviteli folyamat API hívása (felügyelt: [GetNodeTransitionProgressAsync()][gntp]) csomópont átmenet API meghívása ehhez a művelethez használt GUID.  A csomópont átviteli folyamat API NodeTransitionProgress objektum beállítása/beolvasása.  Ez az objektum State tulajdonsága meghatározza a művelet aktuális állapotát.  Ha a állapota "fut" a művelet végrehajtása.  Ha elkészült, a művelet hiba nélkül befejeződött.  Ha a hibás, hiba történt a művelet végrehajtása.  A Result tulajdonsága Exception tulajdonság tájékoztatja arról, mi a probléma volt.  Lásd: https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate további információt az állapot tulajdonság, és példákat a "Példa" című szakaszt.
 
 
-**Egy leállított csomópont és lefelé csomópont megkülönböztetése** Ha egy csomópont *leállt* a csomópont átmenet API-val, a csomópont-lekérdezés kimenetét (felügyelt: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) jelennek meg, hogy rendelkezik-e a csomópont egy *IsStopped* tulajdonság értéke TRUE.  Ez az érték eltér a *NodeStatus* tulajdonságot, amelynek megtudhatja, hogy *le*.  Ha a *NodeStatus* tulajdonság értéke *le*, de *IsStopped* értéke HAMIS, akkor a csomópont nem állította le a csomópont átmenet API használatával, és *le* valamilyen más okból miatt.  Ha a *IsStopped* tulajdonság értéke igaz, és a *NodeStatus* tulajdonság *le*, akkor azt le lett állítva a csomópont átmenet API használatával.
+**Egy leállított csomópont és lefelé csomópont megkülönböztetése** Ha egy csomópont *leállt* a csomópont átmenet API-val, a csomópont-lekérdezés kimenetét (felügyelt: [GetNodeListAsync()] [ nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) jelennek meg, hogy rendelkezik-e a csomópont egy *IsStopped* tulajdonság értéke TRUE.  Ez az érték eltér a *NodeStatus* tulajdonságot, amelynek megtudhatja, hogy *le*.  Ha a *NodeStatus* tulajdonság értéke *le*, de *IsStopped* értéke HAMIS, akkor a csomópont nem állította le a csomópont átmenet API használatával, és *le* valamilyen más okból miatt.  Ha a *IsStopped* tulajdonság értéke igaz, és a *NodeStatus* tulajdonság *le*, akkor azt le lett állítva a csomópont átmenet API használatával.
 
 Indítása egy *leállt* csomópont átmenet API használatával csomópont visszatér, úgy, hogy működik a fürt normál tagjaként.  A csomópont-lekérdezés API ekkor *IsStopped* hamis értéket, és *NodeStatus* , valamit, hogy nem működik (pl.).
 

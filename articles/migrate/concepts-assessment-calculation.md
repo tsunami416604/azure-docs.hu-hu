@@ -4,13 +4,13 @@ description: Értékelési számítások az Azure áttelepítése szolgáltatás
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/02/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: f3ac9c328db1130ea25ac63170ee7de35fb67d16
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: be4fb15d96f5598d4b1ddbbaa4befe7f6530152c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -66,7 +66,7 @@ Más operációs rendszerekkel<br/><br/> például Oracle Solaris Apple Mac OS s
 Az operációs rendszer megadott *más* a vCenter-kiszolgáló | Az Azure áttelepítése ebben az esetben az operációs rendszer nem tudja azonosítani. | Ismeretlen készültségi. Győződjön meg arról, hogy a virtuális Gépen belül jelenleg futó operációs rendszer támogatja-e az Azure-ban.
 32 bites operációs rendszerek | A gép előfordulhat, hogy indítsa el az Azure-ban, de Azure előfordulhat, hogy nem támogatja teljes. | Feltételesen készen áll az Azure-ba, fontolja meg az áttérést az operációs rendszer, a gép a 32 bites operációs rendszer 64 bites operációs rendszer az Azure-bA áttelepítése előtt.
 
-## <a name="sizing"></a>Méretezése
+## <a name="sizing"></a>Méretezés
 
 Miután a számítógép készen áll az Azure-van megjelölve, Azure áttelepítése méretezi a a virtuális gép és a lemezek, az Azure. Ha a méretezési feltételt értékelés tulajdonságai között megadott ehhez méretezési teljesítmény-alapú, Azure áttelepítése tekinti a előzményeinek a gép azonosításához az Azure-ban egy Virtuálisgép-méretet. Ez a módszer akkor hasznos, forgatókönyvekben, ahol túlzott foglalt le a helyszíni virtuális gép, de a használat alacsony, és szeretné megfelelő méretének Azure költség menti a virtuális gépek.
 

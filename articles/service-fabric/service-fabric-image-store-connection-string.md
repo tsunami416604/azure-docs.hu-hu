@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 00f8059d-9d53-4cb8-b44a-b25149de3030
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 3c34a3851dbb5c5258b3dc0cf35a510f62cbe14e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 7d164fea62afac83c4fe2216c56a9980d9279f3a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>A előtaggal beállítás ismertetése
 
@@ -38,7 +38,7 @@ Jelenleg nincsenek Image Store szolgáltatók három lehetséges típusú, és a
 
 A szolgáltató éles környezetben használt a kép Store szolgáltatást, egy állapot-nyilvántartó megőrzött rendszerszolgáltatás is látható, a Service Fabric Explorerből. 
 
-![Image Store Service][img_is]
+![Image Store szolgáltatás][img_is]
 
 Az Image Store rendszerszolgáltatás egyrészt a fürt belül az üzemeltetési megszünteti a csomag tárház vonatkozó külső függőségeket, és a tárolási hely több ellenőrzést ad. Az Image Store körül jövőbeli fejlesztések valószínűleg úgy, hogy a lemezkép tárolási szolgáltató célozza, először, ha nem kizárólag. A kapcsolati karakterláncot, a lemezkép tárolási szolgáltató nem rendelkezik egyedi információt, mivel az ügyfél már csatlakoztatva van a célfürtön. Az ügyfélnek csak kell tudnia, hogy a rendszer szolgáltatás célzó protokollok kell használni.
 

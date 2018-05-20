@@ -1,24 +1,24 @@
 ---
-title: "Az ASP.NET Core kommunikáció szolgáltatás |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az ASP.NET Core állapotmentes és állapotalapú Reliable Services."
+title: Az ASP.NET Core kommunikáció szolgáltatás |} Microsoft Docs
+description: Ismerje meg, hogyan használható az ASP.NET Core állapotmentes és állapotalapú Reliable Services.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 8aa4668d-cbb6-4225-bd2d-ab5925a868f2
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 4f5bc49bf58773a1510b552ce6fc20aa61076348
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7786e08e04d2ebce757b4c47b8ed599036c95958
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Az ASP.NET Core a Service Fabric megbízható szolgáltatások
 
@@ -132,7 +132,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="httpsys-in-a-stateful-service"></a>Az állapotalapú service httpsys kiszolgálón
 
-`HttpSysCommunicationListener`jelenleg nincs használatra szolgál az állapotalapú szolgáltatások miatt az alapul szolgáló, komplikációk *http.sys* port megosztása szolgáltatást. További információkért lásd a következő dinamikus port kiosztását a httpsys kiszolgálón. Állapotalapú szolgáltatások esetén vércse az az ajánlott webkiszolgáló.
+`HttpSysCommunicationListener` jelenleg nincs használatra szolgál az állapotalapú szolgáltatások miatt az alapul szolgáló, komplikációk *http.sys* port megosztása szolgáltatást. További információkért lásd a következő dinamikus port kiosztását a httpsys kiszolgálón. Állapotalapú szolgáltatások esetén vércse az az ajánlott webkiszolgáló.
 
 ### <a name="endpoint-configuration"></a>Végpont-konfiguráció
 
@@ -336,7 +336,7 @@ Csak a fürtön belül hívását állapotmentes szolgáltatások egyedi URL-eke
 | Webkiszolgáló | Kestrel | Bár a httpsys kiszolgálón belső állapotmentes szolgáltatásokhoz használható, vércse a javasolt kiszolgálót úgy, hogy több-gazdagépet megosztásához szolgáltatáspéldány.  |
 | Port konfigurálása | dinamikusan kiosztott | Az állapotalapú szolgáltatás több replika megoszthatja a gazdafolyamat vagy a gazda operációs rendszer, és így kell egyedi portok. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port-hozzárendelés Ez a beállítás megakadályozza a korábban leírt téves identitás probléma. |
-| InstanceCount | any | A példányok száma beállítás állítható be értéket a szolgáltatás működtetéséhez szükséges. |
+| InstanceCount | bármilyen | A példányok száma beállítás állítható be értéket a szolgáltatás működtetéséhez szükséges. |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Csak belső állapot-nyilvántartó ASP.NET Core szolgáltatás
 Állapotalapú szolgáltatások, amelyek csak a fürtön belül hívását dinamikusan hozzárendelt portok használjon több szolgáltatás együttműködésének biztosításához. A következő konfiguráció ajánlott:

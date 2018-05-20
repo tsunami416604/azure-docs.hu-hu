@@ -1,25 +1,27 @@
 ---
-title: "Azure AD v2.0 .NET AngularJS egylapos alkalmazás első lépések |} Microsoft Docs"
-description: "Hogyan hozhat létre, hogy mindkét személyes Microsoft-fiókkal rendelkező felhasználók bejelentkezésekor szögben kifejezett JS egylapos alkalmazások és a munkahelyi vagy iskolai fiókját."
+title: Azure AD v2.0 .NET AngularJS egylapos alkalmazás első lépések |} Microsoft Docs
+description: Hogyan hozhat létre, hogy mindkét személyes Microsoft-fiókkal rendelkező felhasználók bejelentkezésekor szögben kifejezett JS egylapos alkalmazások és a munkahelyi vagy iskolai fiókját.
 services: active-directory
-documentationcenter: 
-author: jmprieur
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6a341781-278f-461b-92ca-7572a06e6852
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d2a2108fb2205f646b2ac807922a90939bdee9f6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d1ddeb957096dc506bc76e1aac600eaa5bc2fbc
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>Bejelentkezési hozzáadása egy AngularJS egylapos alkalmazás - .NET
 Ebben a cikkben fel kell venni jelentkezzen be az alkalmazás bekapcsolja Microsoft-fiókok AngularJS alkalmazásokhoz az Azure Active Directory v2.0-végponttól használatával.  A v2.0-végpontra lehetővé teszi egyetlen integrációs elvégzéséhez az alkalmazáson belüli és a személyes és munkahelyi vagy iskolai fiókkal rendelkező felhasználók hitelesítéséhez.

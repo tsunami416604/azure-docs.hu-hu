@@ -17,11 +17,11 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 844c19803f57987f4435d013cd12aa3d1ef8aeb8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Hogyan kérhet a AppSource hitelesített az Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) egy cél üzleti felhasználók számára, próbálja meg, valamint (önálló SaaS és a meglévő Microsoft SaaS-termékekben bővítmény) sor üzleti SaaS-alkalmazások kezelésében.
@@ -43,7 +43,7 @@ Ahhoz, hogy a több-bérlős az alkalmazásra:
 Több vállalat kiszolgálása kapcsolatos további információkért lásd: [bármely Azure Active Directory (AD) felhasználó a több-bérlős alkalmazás minta használatával bejelentkezés](./active-directory-devhowto-multi-tenant-overview.md).
 
 ### <a name="single-tenant-applications"></a>Single-bérlői alkalmazások
-Alkalmazások bejelentkezéseket a felhasználóktól egy meghatározott Azure Active Directory-példány csak elfogadó nevezik *single-bérlő alkalmazás*. (Beleértve a munkahelyi vagy iskolai fiókok el más szervezetek vagy személyes fiók) külső felhasználók bejelentkezhetnek a minden felhasználó hozzáadása után a single-bérlői alkalmazások *Vendég fiók* az Azure Active Directory példányt, amely a alkalmazás van regisztrálva. Hozzáadhat felhasználókat Vendég fiókok Azure Active Directory segítségével a [ *Azure AD B2B együttműködés* ](../active-directory-b2b-what-is-azure-ad-b2b.md) -is elvégezhető, és [programozottan](../active-directory-b2b-code-samples.md). Azure Active Directory Vendég fiókként hozzáadni egy felhasználót, meghívó e-mailt küld a felhasználónak, aki a felkérés elfogadásával a meghívó e-mailben szereplő hivatkozásra kattintva. Egy további felhasználó hívja fel a szervezeten, amely tagja a fiókpartner-szervezet küldött meghívót esetén nincs szükség, jelentkezzen be a meghívó elfogadásához.
+Alkalmazások bejelentkezéseket a felhasználóktól egy meghatározott Azure Active Directory-példány csak elfogadó nevezik *single-bérlő alkalmazás*. (Beleértve a munkahelyi vagy iskolai fiókok el más szervezetek vagy személyes fiók) külső felhasználók bejelentkezhetnek a minden felhasználó hozzáadása után a single-bérlői alkalmazások *Vendég fiók* az Azure Active Directory példányt, amely a alkalmazás van regisztrálva. Hozzáadhat felhasználókat Vendég fiókok Azure Active Directory segítségével a [ *Azure AD B2B együttműködés* ](../b2b/what-is-b2b.md) -is elvégezhető, és [programozottan](../b2b/code-samples.md). Azure Active Directory Vendég fiókként hozzáadni egy felhasználót, meghívó e-mailt küld a felhasználónak, aki a felkérés elfogadásával a meghívó e-mailben szereplő hivatkozásra kattintva. Egy további felhasználó hívja fel a szervezeten, amely tagja a fiókpartner-szervezet küldött meghívót esetén nincs szükség, jelentkezzen be a meghívó elfogadásához.
 
 Single-bérlői alkalmazások engedélyezheti a *forduljon Me* tapasztalhat, de az egy kattintással / ingyenes próbaverziója, amely AppSource azt javasolja, hogy engedélyezni szeretné, ha engedélyezi az alkalmazás a több-bérlős helyette.
 
@@ -102,7 +102,7 @@ A *próbaverziója partneri* kézi vagy hosszú távú műveletet kell elvégezn
 ### <a name="more-information"></a>További információ
 Az AppSource próbaverziója kapcsolatos további információkért lásd: [Ez a videó](https://aka.ms/trialexperienceforwebapps). 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure Active Directory bejelentkezések támogató alkalmazások további információkért lásd: [az Azure Active Directory hitelesítési forgatókönyvei](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios) 
 

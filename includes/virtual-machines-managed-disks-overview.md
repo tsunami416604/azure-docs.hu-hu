@@ -47,7 +47,7 @@ Vegyük a következő részletes bemutatása.
 **Tárolási típus:** felügyelt lemezek 2 teljesítmény rétegek kínál: [prémium](../articles/virtual-machines/windows/premium-storage.md) (SSD-alapú) és [szabványos](../articles/virtual-machines/windows/standard-storage.md) (HDD-alapú). Egy kezelt lemez számlázási függ a lemez kiválasztott tárolási típusát.
 
 
-**Lemezméret**: felügyelt lemezek számlázási a kiépített lemez méretének függ. Azure a kiépített mérete (kerekítve) van leképezve a legközelebbi felügyelt lemezek beállítást az alábbi táblázatban megadottak. Minden felügyelt lemezes egy, a támogatott kiosztott méretű van leképezve, és ennek megfelelően van-e terhelve. Például hozzon létre egy standard szintű felügyelt lemezes és 200 GB-os kiosztott méretet adjon meg, ha díját is felszámítjuk a S20 lemeztípus díjszabás szerint.
+**Lemezméret**: felügyelt lemezek számlázási a kiépített lemez méretének függ. Azure a kiépített mérete (kerekítve) van leképezve a legközelebbi felügyelt lemezek beállítást az alábbi táblázatban megadottak. Minden felügyelt lemezes egy, a támogatott kiosztott méretű van leképezve, és ennek megfelelően van-e terhelve. Például hozzon létre egy standard szintű felügyelt lemezes és 200 GB-os kiosztott méretet adjon meg, ha díját is felszámítjuk a S15 lemeztípus díjszabás szerint.
 
 Íme egy prémium szintű felügyelt lemezes a lemezméret:
 
@@ -58,9 +58,9 @@ Vegyük a következő részletes bemutatása.
 
 Íme egy standard szintű felügyelt lemezes a lemezméret:
 
-| **Standard felügyelt <br>lemez típusa** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Lemezméret        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 giB (2 TiB) | 4095 GiB (4 TiB) | 
+| **Standard felügyelt <br>lemez típusa** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
+| Lemezméret        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 giB (2 TiB) | 4095 GiB (4 TiB) | 
 
 
 **A tranzakciók számának**: hajt végre egy standard szintű felügyelt lemezes tranzakciók száma a kell fizetni. Nincs a prémium szintű felügyelt lemezes tranzakciók költség nélkül.

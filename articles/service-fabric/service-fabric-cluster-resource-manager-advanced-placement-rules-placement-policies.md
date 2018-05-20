@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric fürt erőforrás-kezelő – elhelyezési házirendeket |} Microsoft Docs"
-description: "További elhelyezési házirendeket és a Service Fabric szolgáltatások szabályainak áttekintése"
+title: Service Fabric fürt erőforrás-kezelő – elhelyezési házirendeket |} Microsoft Docs
+description: További elhelyezési házirendeket és a Service Fabric szolgáltatások szabályainak áttekintése
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c240643d2a7ce98ddd7f7871eeef654cced953f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf10f1d9199500d4f5bda3c5a05a3d67ff65541
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Elhelyezési házirendeket a service fabric szolgáltatásokhoz
 Elhelyezési házirendeket és a további szabályok, annak a szabályozására, szolgáltatáselhelyezés bizonyos meghatározott, kevésbé-közös esetekben használható. Néhány példa a azokra a következők:
@@ -127,7 +127,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 Most akkor lehet, amely földrajzilag nem ölel fürtben szolgáltatáshoz használja ezeket a beállításokat? Meg lehetett, de nincs nagy OK túl. A szükséges, érvénytelen, mind az elsődleges tartomány konfigurációk kivéve, ha a forgatókönyvek használatához el kell kerülni. Azt nem célszerű bármely a próbálja egy adott munkaterhelés egyetlen szekrényben futtatásához, vagy inkább a helyi fürt egyes szegmens másikkal kényszerítése. Különböző hardverkonfigurációk legyen elosztva a tartalék tartományok és kezelt normál elhelyezési korlátozás és a csomópont tulajdonságait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A szolgáltatások konfigurálásáról [további információ a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png

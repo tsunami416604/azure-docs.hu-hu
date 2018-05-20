@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 064fdc6b50bf21b78d122c650ae22f8b4f70c608
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 951e59333ab1a1e982386c5c71f79b86f5e62440
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="runbook-settings"></a>Runbook beállításai
 Azure Automation minden egyes runbookja több beállítással, amelyek segítenek azonosítani és módosítani annak naplózási viselkedését rendelkezik. Egyes beállítások alábbiakban módosításukhoz szükséges eljárások leírását.

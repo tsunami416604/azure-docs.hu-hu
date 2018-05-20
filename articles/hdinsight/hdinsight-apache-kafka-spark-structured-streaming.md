@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: larryfr
-ms.openlocfilehash: bdb2369f81ae8aeeb0a57e092dc1af7d0a7ded8f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8c7c1b37102e94f00ac6077958952eb52b342668
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Oktatóanyag: A Spark strukturált stream használata a Kafkával a HDInsighton
 
@@ -147,8 +147,8 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
     | Előfizetés | Az Azure-előfizetése |
     | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
     | Hely | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
-    | Spark-fürt neve | A Spark-fürt neve. |
-    | Kafka-fürt neve | A Kafka-fürt neve. |
+    | Spark-fürt neve | A Spark-fürt neve. Az első hat karakternek a Kafka-fürt nevétől eltérőnek kell lennie. |
+    | Kafka-fürt neve | A Kafka-fürt neve. Az első hat karakternek a Spark-fürt nevétől eltérőnek kell lennie. |
     | Fürt bejelentkezési felhasználóneve | A fürtök rendszergazdai felhasználóneve. |
     | Fürt bejelentkezési jelszava | A fürtök rendszergazdai felhasználójának jelszava. |
     | SSH-felhasználónév | A fürtökhöz létrehozandó SSH-felhasználó. |

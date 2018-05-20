@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: d0641e1c7c09ac081e4dc024d6e231b88bcb58d2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5cf61ccaadc40a5f250dcf477de5b446052aba9a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-1802-update"></a>Az Azure verem 1802 frissítés
 
@@ -115,8 +115,6 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 - Nem lehet a számítási és tárolási erőforrások megtekintése a felügyeleti portálon lehetséges. A probléma oka hiba jelentendő helytelenül sikeres frissítés a frissítés telepítése során. Ha a probléma akkor fordul elő, forduljon a Microsoft ügyfél-támogatási szolgálathoz segítségért.
 
 - A portál üres irányítópult jelenhet meg. Az irányítópult helyreállításához válassza ki a fogaskerék ikonra a portál jobb felső sarokban, majd válassza ki **alapértelmezett beállításainak visszaállítása**.
-
-- Egy erőforrás vagy egy erőforráscsoport, tulajdonságainak megtekintésekor a **áthelyezése** gomb le van tiltva. Ez az elvárt viselkedés. Erőforráscsoportok vagy előfizetések között erőforrások vagy erőforráscsoportok áthelyezése jelenleg nem támogatott.
 
 - Felhasználói előfizetések eredmények az árva erőforrások törlése. A probléma megoldásához először törölnie a felhasználói erőforrásokat és a teljes erőforráscsoport, és törölje a felhasználó előfizetések.
 
@@ -262,6 +260,7 @@ Nincsenek ismert problémák 1802 történő frissítés után.
 
 - Az erőforrás-szolgáltató, hogy a gazdagép SQL vagy MySQL elemek létrehozásához kiszolgálókon támogatott. A gazdagép-kiszolgálón létrehozott elemek, nem az erőforrás-szolgáltató által létrehozott okozhatja hibás állapotban.  
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
 
 > [!NOTE]  
 > Az Azure verem 1802 frissítése után továbbra is használja az SQL és MySQL erőforrás-szolgáltató korábban már telepített.  Azt javasoljuk, hogy frissítse az SQL és MySQL amikor elérhetővé válik az új verziót. Azure-vermét, például frissítések alkalmazása az SQL és a MySQL-szolgáltatók egymás után.  Például 1710 verzióját használja, ha először alkalmazza a 1711, majd 1712 verziója, és frissítse a 1802.      

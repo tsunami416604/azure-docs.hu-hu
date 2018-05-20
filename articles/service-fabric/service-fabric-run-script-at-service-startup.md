@@ -9,23 +9,23 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: bd2bb0d05029237242b42225a2c846c78a7c6de9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3fe22d8bb52fa5f45ce5f1cdc7b860d1ce295a71
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
 A Service Fabric-szolgáltatás végrehajtható indítása előtt lehet néhány konfigurációs vagy a telepítő feladat futtatásához szükséges.  Például konfigurálása környezeti változókat. Megadhatja, hogy a parancsfájl futtatása előtt a szolgáltatás jegyzékben a szolgáltatás indítása a szolgáltatás végrehajtható. A szolgáltatás beállítása belépési pont módosíthatja, hogy melyik fiók RunAs házirend konfigurálásával futtatható a telepítés alatt fut.  Egy külön telepítő belépési pont lehetővé teszi egy rövid ideig magas-privilged konfigurációs futtatását, így a végrehajtható szolgáltatásgazda huzamosabb ideig magas jogosultsággal rendelkező futtatásához nem kell.
 
 A telepítő belépési pont (**SetupEntryPoint** a a [szolgáltatás jegyzékfájl](service-fabric-application-and-service-manifests.md)) egy jogosultsági szintű belépési pontja, amely alapértelmezés szerint fut, ugyanazokat a hitelesítő adatokat, mint a Service Fabric (általában a  *NetworkService* fiók) más belépési pont előtt. A megadott végrehajtható fájl **EntryPoint** általában a hosszan futó szolgáltatás gazdagép legyen. A **EntryPoint** végrehajtható fájl futtatása a **SetupEntryPoint** végrehajtható fájl sikeresen kilép. Az eredményül kapott folyamat figyeli, és újra kell indítani, és újra kezdődik **SetupEntryPoint** Ha valaha is leáll, vagy összeomlik. 
 
-## <a name="configure-the-service-setup-entry-point"></a>A telepítő belépési pont konfigurálása
+## <a name="configure-the-service-setup-entry-point"></a>Szolgáltatásbeállítás belépési pontjának konfigurálása
 Az alábbiakban egy egyszerű szolgáltatás, amely meghatározza a telepítési parancsfájl állapot nélküli szolgáltatás jegyzék példa egy *MySetup.bat* szolgáltatási **SetupEntryPoint**.  **Argumentumok** argumentumok átadása a parancsfájl futása során használatos.
 
 ```xml

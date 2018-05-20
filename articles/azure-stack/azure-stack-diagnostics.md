@@ -1,25 +1,23 @@
 ---
 title: Diagnosztika az Azure Stackben
-description: "Azure-készletben diagnosztikai naplófájlok gyűjtéséről"
+description: Azure-készletben diagnosztikai naplófájlok gyűjtéséről
 services: azure-stack
 author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 04/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 28e1939d3c9cb5a9b9080e60230ad5600ad8a6a3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Az Azure verem diagnosztikai eszközök
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
- 
 Az Azure verem összetevők együttesen működő és egymáshoz való interakció nagy gyűjteménye. Ezeket az összetevőket a saját egyedi naplófájlokat hoznak létre. Ez tehet diagnosztizálás problémák nehezebb feladat, különösen a több Azure verem összetevőket használják érkező hibák. 
 
 A diagnosztikai eszközök biztosíthatja a napló gyűjtemény módszer használata egyszerű és hatékony. Az alábbi ábrán látható Azure verem munkahelyi hogyan bejelentkezés gyűjtemény eszközök:
@@ -79,7 +77,36 @@ Ezeket a fájlokat vannak, és menti a megosztási nyomkövetési gyűjtő álta
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-### <a name="to-run-get-azurestacklog-on-an-azure-stack-integrated-system"></a>Futtassa a Get-AzureStackLog egy Azure veremben integrált a rendszer
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>Futtassa a Get-AzureStackLog Azure veremben integrált a 1804 és újabb rendszerek verziója
+
+A napló gyűjtemény eszköz futtatásához az integrált rendszeren, akkor hozzáféréssel kell rendelkeznie a Rendszerjogosultságú végpont (EGP). Íme egy példa parancsfájl használata a EGP gyűjtött naplók az integrált rendszeren is futtathatja:
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- A paraméterek **OutputSharePath** és **OutputShareCredential** használják a naplók feltöltése egy külső megosztott mappába.
+- Ahogy az előző példában a **FromDate** és **ToDate** paraméterek segítségével naplógyűjtéshez egy adott időszakra vonatkozóan. Ez származhatnak helyzetekben, például az integrált rendszeren frissítések alkalmazása után a naplók gyűjtésére vonatkozó lesz szüksége.
+
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>Futtassa a Get-AzureStackLog Azure veremben integrált a 1803 és korábbi rendszerek verziója
 
 A napló gyűjtemény eszköz futtatásához az integrált rendszeren, akkor hozzáféréssel kell rendelkeznie a Rendszerjogosultságú végpont (EGP). Íme egy példa parancsfájl használata a EGP gyűjtött naplók az integrált rendszeren is futtathatja:
 
@@ -108,6 +135,7 @@ if($s)
 - A paraméterek **OutputSharePath** és **OutputShareCredential** megadása nem kötelező, és akkor használatosak, ha a naplók feltöltése egy külső megosztott mappába. Ezekkel a paraméterekkel *továbbá* való **OutputPath**. Ha **OutputPath** nincs megadva, a napló gyűjtemény eszköz a rendszermeghajtó EGP VM használja a tároláshoz. Ez a parancsfájl sikertelen lesz, mivel a lemezterület korlátozott okozhat.
 - Ahogy az előző példában a **FromDate** és **ToDate** paraméterek segítségével naplógyűjtéshez egy adott időszakra vonatkozóan. Ez származhatnak helyzetekben, például az integrált rendszeren frissítések alkalmazása után a naplók gyűjtésére vonatkozó lesz szüksége.
 
+
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>ASDK és integrált rendszerek mindkét paraméter szempontjai
 
 - Ha a **FromDate** és **ToDate** paraméter nincs megadva, a naplók alapértelmezés szerint az elmúlt négy óra összegyűjtését.
@@ -117,35 +145,44 @@ if($s)
 
    |   |   |   |
    | - | - | - |
-   | ACSMigrationService     | ACSMonitoringService   | ACSSettingsService |
-   | ACS                     | ACSFabric              | ACSFrontEnd        |
-   | ACSTableMaster          | ACSTableServer         | ACSWac             |
-   | ADFS                    | ASAppGateway           | BareMetal          |
-   | BRP                     | CA                     | CPI                |
-   | CRP                     | DeploymentMachine      | DHCP               |
-   | Tartomány                  | ECE                    | ECESeedRing        | 
-   | FabricRing              | FabricRingServices     | FRP                |
-   | Átjáró                 | HealthMonitoring       | HRP                |   
-   | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
-   | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
-   | NonPrivilegedAppGateway | NRP                    | SeedRing           |
-   | SeedRingServices        | SLB                    | SQL                |   
-   | SRP                     | Tárolás                | StorageController  |
-   | URP                     | UsageBridge            | virtuális gép    |  
-   | WAS                     | WASPUBLIC              | WDS                |
-
+   | ACS                    | DeploymentMachine                | HÁLÓZATI VEZÉRLŐ ÁLTAL                         |
+   | ACSBlob                | DiskRP                           | Network (Hálózat)                    |
+   | ACSFabric              | Tartomány                           | NonPrivilegedAppGateway    |
+   | ACSFrontEnd            | ECE                              | NRP                        |
+   | ACSMetrics             | ExternalDNS                      | OEM                        |
+   | ACSMigrationService    | Háló                           | PXE                        |
+   | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
+   | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
+   | ACSTableMaster         | FRP                              | SLB                        |   
+   | ACSTableServer         | Katalógus                          | SlbVips                    |
+   | ACSWac                 | Átjáró                          | SQL                        |   
+   | ADFS                   | HealthMonitoring                 | SRP                        |
+   | ASAppGateway           | HRP                              | Storage                    |   
+   | NCAzureBridge          | IBC                              | Tárfiókok            |    
+   | AzurePackConnector     | IdentityProvider                 | StorageController          |  
+   | AzureStackBitlocker    | IDN                             | Bérlő                     |
+   | BareMetal              | InfraServiceController           | TraceCollector             |
+   | BRP                    | Infrastruktúra                   | URP                        |
+   | CA                     | KeyVaultAdminResourceProvider    | UsageBridge                |
+   | Felhő                  | KeyVaultControlPlane             | virtuális gép            |
+   | Fürt                | KeyVaultDataPlane                | WAS                        |
+   | Compute                | KeyVaultInternalControlPlane     | WASBootstrap               |
+   | CPI                    | KeyVaultInternalDataPlane        | WASPUBLIC                  |
+   | KSZT                    | KeyVaultNamingService            |                            |
+   | DatacenterIntegration  | MonitoringAgent                  |                            |
+   |                        |                                  |                            |
 
 ### <a name="bkmk_gui"></a>Naplógyűjtéshez egy grafikus felhasználói felület használatával
-Ahelyett, hogy a Get-AzureStackLog parancsmag Azure verem naplók beolvasása szükséges paraméterek biztosít, kihasználhatja a rendelkezésre álló nyílt forráskódú Azure verem eszközök a fő Azure verem eszközök GitHub eszközök tárházban http://aka.ms/AzureStackTools címen található.
+Ahelyett, hogy a Get-AzureStackLog parancsmag Azure verem naplók beolvasása szükséges paraméterek biztosít, is kihasználhatja a rendelkezésre álló nyílt forráskódú Azure verem eszközök található, a fő Azure verem eszközök GitHub eszközök tárház: http://aka.ms/AzureStackTools.
 
-A **ERCS_AzureStackLogs.ps1** PowerShell-parancsfájl a GitHub-tárházban eszközök tárolja, és rendszeresen frissül. Győződjön meg arról, hogy rendelkezik-e az elérhető legújabb verzióra, hogy le kell töltenie azt közvetlenül a http://aka.ms/ERCS. Indította el egy felügyeleti PowerShell-munkamenetet, a parancsfájl a rendszerjogosultságú végpont csatlakozik, és futtatja a Get-AzureStackLog megadott paraméterekkel. Ha paraméter nélkül van megadva, a parancsfájl alapértelmezés szerint az adatkérés paraméterek grafikus felhasználói felületen keresztül.
+A **ERCS_AzureStackLogs.ps1** PowerShell-parancsfájl a GitHub-tárházban eszközök tárolja, és rendszeresen frissül. Annak érdekében, hogy az elérhető legújabb verzióra van, le kell töltenie azt közvetlenül a http://aka.ms/ERCS. Indította el egy felügyeleti PowerShell-munkamenetet, a parancsfájl a rendszerjogosultságú végpont csatlakozik, és futtatja a Get-AzureStackLog megadott paraméterekkel. Ha paraméter nélkül van megadva, a parancsfájl alapértelmezés szerint az adatkérés paraméterek grafikus felhasználói felületen keresztül.
 
 További információt a ERCS_AzureStackLogs.ps1 PowerShell-parancsfájlt, figyelheti az [egy rövid videót](https://www.youtube.com/watch?v=Utt7pLsXEBc) vagy a parancsfájl megtekintése [információs fájl](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) a Azure verem eszközök GitHub-tárházban található. 
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
 * A parancs bizonyos idő alapján futtassa mely szerepkör(ök) gyűjti a naplókat. Tényezőkről is naplógyűjtést, és az Azure-verem környezete számait megadott időtartamot.
-* Naplógyűjtést befejezése után ellenőrizze az új mappa létrehozása a **OutputPath** a parancsban megadott paraméter.
+* A log gyűjtemény fut, ellenőrizze az új mappa létrehozása a **OutputSharePath** a parancsban megadott paraméter.
 * Minden szerepkörhöz naplók belül egyedi zip fájlt. A gyűjtött naplók méretétől függően a szerepkör lehet osztani, több zip-fájl a naplók. Egy szerepkör egyetlen mappába a unzipped naplófájlok szeretne használni, ha egy is csomagolja ki egyszerre több (például 7zip) eszközt használja. Válassza ki a szerepkör összes zip fájlt, és válassza ki **kibontása Itt**. Ez unzips, egyetlen egyesített mappa szerepkörre a rendszernapló fájljaiban.
 * Fájl neve **Get-AzureStackLog_Output.log** zip naplófájlokat tartalmazó mappa is létrejön. A fájl a parancs kimenete, amely hibaelhárítás során naplógyűjtést esetén használható a naplófájlt.
 * Vizsgálja meg a hiba, naplók egynél több összetevő lehet szükség.

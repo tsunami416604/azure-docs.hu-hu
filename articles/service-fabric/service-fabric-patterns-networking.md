@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric hálózatkezelés mintái |} Microsoft Docs"
-description: "A Service Fabric és a fürt létrehozása az Azure hálózati szolgáltatások segítségével közös hálózati mintákat ismerteti."
+title: Azure Service Fabric hálózatkezelés mintái |} Microsoft Docs
+description: A Service Fabric és a fürt létrehozása az Azure hálózati szolgáltatások segítségével közös hálózati mintákat ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0f655becfac05acfacfeef12edd68b37835420bf
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: b180e62804b875ca4547a9d09f19efff32ae0cd9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-networking-patterns"></a>A Service Fabric hálózati minták
 Az Azure Service Fabric-fürt integrálhatja más Azure hálózati szolgáltatásokkal. Ebben a cikkben azt mutatja be az alábbi szolgáltatásokat használó fürtök létrehozásához:
@@ -340,7 +340,7 @@ Ebben a forgatókönyvben a külső terheléselosztóhoz, a Service Fabric alap�
                 ],
     ```
 
-5. Módosítsa a terheléselosztó `frontendIPConfigurations` beállítása a használatával egy `publicIPAddress`, alhálózat használatát és `privateIPAddress`. `privateIPAddress`egy előre meghatározott statikus belső IP-címet használja. A dinamikus IP-cím használatára, távolítsa el a `privateIPAddress` elemet, és módosítsa `privateIPAllocationMethod` való **dinamikus**.
+5. Módosítsa a terheléselosztó `frontendIPConfigurations` beállítása a használatával egy `publicIPAddress`, alhálózat használatát és `privateIPAddress`. `privateIPAddress` egy előre meghatározott statikus belső IP-címet használja. A dinamikus IP-cím használatára, távolítsa el a `privateIPAddress` elemet, és módosítsa `privateIPAllocationMethod` való **dinamikus**.
 
     ```
                 "frontendIPConfigurations": [

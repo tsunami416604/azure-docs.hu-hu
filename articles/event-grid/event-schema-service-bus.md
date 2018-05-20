@@ -1,18 +1,18 @@
 ---
-title: "Az Azure esemény rács Service Bus event séma"
-description: "Ismerteti a Service Bus események Azure esemény rácshoz tartozó tulajdonságait"
+title: Az Azure esemény rács Service Bus event séma
+description: Ismerteti a Service Bus események Azure esemény rácshoz tartozó tulajdonságait
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 02/21/2018
 ms.author: babanisa
-ms.openlocfilehash: 72780bff3807534efb456a9a7998f7d4de3c6f12
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 991679eeb0f7c98606133750b193a5895f39178f
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>A Service Bus Azure esemény rács esemény séma
 
@@ -85,8 +85,8 @@ Az esemény a következő legfelső szintű adatokat tartalmaz:
 | eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
 | id | karakterlánc | Az esemény egyedi azonosítója. |
 | adat | objektum | A BLOB storage eseményadatok. |
-| dataVersion | karakterlánc | Az objektum séma verziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | karakterlánc | Az esemény-metaadatok séma verziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
+| dataVersion | karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | karakterlánc | Az esemény-metaadatok sémaverziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
 
 Az objektum tulajdonságai a következők:
 
@@ -94,10 +94,10 @@ Az objektum tulajdonságai a következők:
 | -------- | ---- | ----------- |
 | nameSpaceName | karakterlánc | A Service Bus-névtér az erőforrás található. |
 | requestUri | karakterlánc | A megadott várólista vagy az esemény kibocsátó előfizetésének URI. |
-| entityType | karakterlánc | Események (várólista vagy előfizetést) kibocsátó Szolgáltatásbusz-entitás típusa. |
+| EntityType | karakterlánc | Események (várólista vagy előfizetést) kibocsátó Szolgáltatásbusz-entitás típusa. |
 | queueName | karakterlánc | A várólista aktív üzeneteket, ha annak a várólistára előfizetés. Null értéket, ha a témakörök / előfizetések. |
 | topicName | karakterlánc | A témakör aktív üzeneteket a Service Bus előfizetéshez tartozik. Érték null, ha a várólista alapján. |
-| subscriptionName | karakterlánc | A Service Bus-előfizetés aktív üzeneteket. Érték null, ha a várólista alapján. |
+| SubscriptionName | karakterlánc | A Service Bus-előfizetés aktív üzeneteket. Érték null, ha a várólista alapján. |
 
 ## <a name="next-steps"></a>További lépések
 

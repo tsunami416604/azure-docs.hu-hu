@@ -1,28 +1,28 @@
 ---
-title: "Az Azure Service Fabric API Management áttekintése |} Microsoft Docs"
-description: "Ebben a cikkben megismerkedhet az Azure API Management használatával a Service Fabric-alkalmazások átjáróként."
+title: Az Azure Service Fabric API Management áttekintése |} Microsoft Docs
+description: Ebben a cikkben megismerkedhet az Azure API Management használatával a Service Fabric-alkalmazások átjáróként.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: ea3b1f50bada3c1301f8661f8f0b4866cb1c732c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 6bf7ea90bb5351411984110fd8fb05c2f8cb0650
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>A Service Fabric Azure API Management áttekintése
 
-A felhőalapú alkalmazásokhoz általában adjon meg egy olyan hibaérzékeny pontot érkező felhasználók, eszközök és más alkalmazások előtér-átjáró szükséges. A Service Fabric átjáró lehet bármely állapotmentes szolgáltatások, mint egy [ASP.NET Core alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md), vagy egy másik szolgáltatás, amely a forgalom érkező, például a [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/), vagy [az Azure API Management](https://docs.microsoft.com/azure/api-management/).
+A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. A Service Fabric átjáró lehet bármely állapotmentes szolgáltatások, mint egy [ASP.NET Core alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md), vagy egy másik szolgáltatás, amely a forgalom érkező, például a [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/), vagy [az Azure API Management](https://docs.microsoft.com/azure/api-management/).
 
 Ebben a cikkben megismerkedhet az Azure API Management használatával a Service Fabric-alkalmazások átjáróként. Az API Management közvetlenül integrálható a Service Fabric, lehetővé téve az API-k közzététele az útválasztási szabályokat a Service Fabric háttérszolgáltatások széles skáláját. 
 
@@ -80,8 +80,8 @@ Ebben a példában egy új állapotmentes szolgáltatáspéldány hozzon létre 
 
  Minden szolgáltatás egyedi névvel rendelkezik, de a nevek nem ismert kezdeti, mert a szolgáltatások az választ a felhasználó hozott létre, vagy a rendszergazda adja meg, és így nem lehet kódolt APIM házirendek vagy útválasztási szabályokat. Ehelyett a nevét, amelyhez a kérés küldése a szolgáltatás a háttér-házirend-definíció létrehozása történik a `name` a kérelem URL-cím a megadott érték. Példa:
 
-  - A kérelmek `/api/users/foo` szolgáltatáspéldány irányítása`fabric:/app/users/foo`
-  - A kérelmek `/api/users/bar` szolgáltatáspéldány irányítása`fabric:/app/users/bar`
+  - A kérelmek `/api/users/foo` szolgáltatáspéldány irányítása `fabric:/app/users/foo`
+  - A kérelmek `/api/users/bar` szolgáltatáspéldány irányítása `fabric:/app/users/bar`
 
 ![A Service Fabric Azure API Management topológia – áttekintés][sf-apim-dynamic-stateless]
 
@@ -99,14 +99,14 @@ Ebben a példában egy új állapot-nyilvántartó szolgáltatáspéldány létr
 
  Minden szolgáltatás egyedi névvel rendelkezik, de a nevek nem ismert kezdeti, mert a szolgáltatások az választ a felhasználó hozott létre, vagy a rendszergazda adja meg, és így nem lehet kódolt APIM házirendek vagy útválasztási szabályokat. Ehelyett a nevét, amelyhez a kérés küldése a szolgáltatás a háttér-házirend-definíció létrehozása történik a `name` értéket megadva a kérelem URL-címe. Példa:
 
-  - A kérelmek `/api/users/foo` szolgáltatáspéldány irányítása`fabric:/app/users/foo`
-  - A kérelmek `/api/users/bar` szolgáltatáspéldány irányítása`fabric:/app/users/bar`
+  - A kérelmek `/api/users/foo` szolgáltatáspéldány irányítása `fabric:/app/users/foo`
+  - A kérelmek `/api/users/bar` szolgáltatáspéldány irányítása `fabric:/app/users/bar`
 
 Minden szolgáltatáspéldány is particionálva van, és két partíció és kiterjedő kulcs széles Int64 partícióséma használatával `Int64.MinValue` való `Int64.MaxValue`. A háttér-házirend kiszámítja a partíciós kulcs, azon belül átalakításával a `id` megadott érték kérelem URL-címet egy 64 bites egész számként, bár bármely algoritmushoz itt is használható a partíciós kulcs kiszámításához. 
 
 ![A Service Fabric Azure API Management topológia – áttekintés][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse a [oktatóanyag](service-fabric-tutorial-deploy-api-management.md) állíthatja be az első Service Fabric-fürt az API Management és a folyamat által az API Management keresztül a szolgáltatásokhoz.
 

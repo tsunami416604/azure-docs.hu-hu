@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: sedusch
-ms.openlocfilehash: b1a7b962d07b64aaa662aab937feed1782851a7b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bc4a6f4ecca8ffe3575a038b86192a8663c35c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>A SUSE Linux Enterprise Server Azure virtuális gépeken az NFS magas rendelkezésre állás
 
@@ -129,12 +129,11 @@ Először az NFS-fürt a virtuális gépek létrehozásához. Ezután hozzon lé
 1. Egy rendelkezésre állási csoport létrehozása  
    Készlet maximális frissítési tartomány
 1. 1 virtuális gép létrehozása   
-   Legalább SLES4SAP 12 SP1, ebben a példában a SLES4SAP 12 SP1 saját kép https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES az SAP alkalmazások 12 SP1 (saját) használatos.  
+   Legalább SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 saját rendszerkép SLES az SAP alkalmazások 12 SP3 (saját) használata  
    Válassza ki a rendelkezésre állási csoport korábban létrehozott  
 1. 2. virtuális gép létrehozása   
-   Legalább SLES4SAP 12 SP1, ebben a példában a SLES4SAP 12 SP1 saját kép https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES az SAP alkalmazások 12 SP1 (saját) használatos.  
+   Legalább SLES4SAP 12 SP3, ebben a példában a SLES4SAP 12 SP3 saját kép  
+   SLES az SAP alkalmazások 12 SP3 (saját) használatos.  
    Válassza ki a rendelkezésre állási csoport korábban létrehozott  
 1. Minden egyes SAP rendszerhez egy adatlemez hozzáadása mindkét virtuális gépei számára.
 1. Hozzon létre egy terhelés-kiegyenlítő (belső)  
@@ -184,7 +183,7 @@ Először az NFS-fürt a virtuális gépek létrehozásához. Ezután hozzon lé
 
 Kövesse a [támasztja a SUSE Linux Enterprise Server az Azure-ban beállítása](high-availability-guide-suse-pacemaker.md) az NFS-kiszolgáló alapszintű támasztja fürt létrehozásához.
 
-### <a name="configure-nfs-server"></a>Configure NFS server
+### <a name="configure-nfs-server"></a>NFS-kiszolgáló konfigurálása
 
 A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – csak érvényes csomópont 1 vagy **[2]** - csomópont 2 csak érvényes.
 

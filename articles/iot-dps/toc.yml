@@ -155,6 +155,8 @@
       href: 'https://catalog.azureiotsuite.com/'
     - name: Azure IoT fejlesztői központ
       href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Ügyfelek adatkérései
+      href: iot-dps-customer-data-requests.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
     - name: Device Explorer eszköz

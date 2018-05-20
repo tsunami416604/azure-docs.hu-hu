@@ -12,17 +12,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/15/2018
+ms.date: 05/11/2018
 ms.author: juliako
-ms.openlocfilehash: def590fa8253d81f3477c3953db684c160e25cd9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 783dc0fd37f98a12d9240ad4b3ee72aa98212eff
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>CLI-példa: Azure Media Services-fiók létrehozása
 
-Ez a szkript létrehoz egy Azure Media Services-fiókot.
+A jelen témakörben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre Azure Media Services-fiókot.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -30,14 +30,14 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ## <a name="example-script"></a>Példaszkript
 
-[!code-azurecli-interactive[main](../../../../cli_scripts/media-services/media-services-create-account/media-services-create-account.sh "Create Account")]
+[!code-azurecli-interactive[main](../../../../cli_scripts/media-services/media-services-create-account/Create-Account.sh "Create Account")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
 A következő paranccsal távolítható el az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name amsResourceGroup
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
@@ -48,9 +48,10 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy tárfiókot. |
-| **az ams account create** | Létrehoz egy Media Services-fiókot. |
-| **az ams account sp create** | Létrehoz egy jelszóval védett szolgáltatásnevet, és konfigurálja annak hozzáférését az Azure Media Services-fiókhoz. |
+| [az ams account create](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest#az-ams-account-create) | Létrehoz egy Media Services-fiókot. |
+| [az ams account sp create](https://docs.microsoft.com/cli/azure/ams/account/sp?view=azure-cli-latest#az-ams-account-sp-create) | Létrehoz egy jelszóval védett szolgáltatásnevet, és konfigurálja annak hozzáférését az Azure Media Services-fiókhoz. 
 | [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+
 
 ## <a name="next-steps"></a>További lépések
 

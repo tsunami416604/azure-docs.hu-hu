@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 29b662aa2f30083b444483554a78d53f0d05cb7f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Azure Data Lake Store teljesítményének hangolása
 
@@ -66,7 +64,7 @@ Például a HDInsight és az Azure Data Lake Analytics analytics motorok által�
 
 Az adatok általában rendezze nagyobb méretű fájlok, a jobb teljesítmény érdekében.  A szokásos megoldás, mint 256MB vagy annál nagyobb fájlok data készletek rendszerezését. Bizonyos esetekben – például képeket és a bináris adatokat nincs lehetőség a párhuzamosan dolgozza fel őket.  Ezekben az esetekben javasoljuk, hogy az egyes fájlok a 2GB.
 
-Egyes esetekben adatok folyamatok ellenőrzése alatt tartja a nyers adatait, amely a sok kisméretű fájlok korlátozott.  Javasoljuk, hogy az alsóbb rétegbeli alkalmazásoknak használandó nagyobb fájlokat generál egy "főzése" folyamat.  
+Egyes esetekben adatok folyamatok ellenőrzése alatt tartja a nyers adatait, amely a sok kisméretű fájlok korlátozott.  Javasoljuk, hogy az alsóbb rétegbeli alkalmazásoknak használandó nagyobb fájlokat generál egy "főzése" folyamat.
 
 ### <a name="organizing-time-series-data-in-folders"></a>A mappákban Idősoros adatok rendezése
 
@@ -123,7 +121,7 @@ Az alábbi három réteg belül is kell beállítani, hogy növelje a tárolók 
 
 Attól függően, hogy a munkaterhelés mindig lesz egy minimális YARN tároló mérete szükséges. Ha túl kicsi a tároló válassza ki, a feladatok a kevés memória problémák fog futni. YARN tárolók általában nem 1GB-nál kisebbnek kell lennie. Esetében gyakori, hogy 3 GB-os YARN tárolók. Bizonyos munkaterhelések esetén szükség lehet a nagyobb YARN tárolók.  
 
-**Növelje a YARN tárolóban található magok.**  Növelje a párhuzamos minden egyes tárolóban futó feladatok számának növelése érdekében minden egyes tároló lefoglalt magok száma.  Ez a módszer alkalmazások, például a Spark, amelyek több tevékenységek maximális száma tároló.  Alkalmazások, például Hive egyetlen szálon futtatja az egyes tárolókban érdemes további tárolóban található magok helyett a több tároló van.   
+**Növelje a YARN tárolóban található magok.**  Növelje a párhuzamos minden egyes tárolóban futó feladatok számának növelése érdekében minden egyes tároló lefoglalt magok száma.  Ez a módszer alkalmazások, például a Spark, amelyek több tevékenységek maximális száma tároló.  Alkalmazások, például Hive egyetlen szálon futtatja az egyes tárolókban érdemes további tárolóban található magok helyett a több tároló van.
 
 ### <a name="workload-layer"></a>Munkaterhelés réteg
 

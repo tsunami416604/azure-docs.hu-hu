@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 1d1cdee7373b949456032aff3c808cc233aaa1cc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -31,14 +31,18 @@ Ez a cikk ismerteti az Azure Functions kötések Azure Blob storage használata.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+> [!NOTE]
+> Az esemény rács eseményindító használata helyett a Blob storage eseményindító csak a blob storage-fiókok, nagy méretű, vagy a cold indításának késleltetése elkerülése érdekében. További információkért lásd: a [eseményindító](#trigger) szakasz. 
+
 ## <a name="packages"></a>Csomagok
 
 A Blob storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) GitHub-tárházban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-> [!NOTE]
-> Az esemény rács eseményindító használata helyett a Blob storage eseményindító csak a blob storage-fiókok, nagy méretű, vagy a cold indításának késleltetése elkerülése érdekében. További információkért tekintse meg a következőt **eseményindító** szakasz. 
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="trigger"></a>Eseményindító
 

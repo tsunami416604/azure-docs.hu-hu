@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e6bf1962115c4ee9212ae73eb98f664efa3b6a2d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Hajtsa végre a távoli felügyeleti megoldást használni speciális figyelésére
 
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ez az oktatóanyag van szükség a távoli felügyeleti megoldás telepített példányát az Azure-előfizetésben.
 
-Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
+Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
 
 ## <a name="choose-the-devices-to-display"></a>Válassza ki az eszközök megjelenítéséhez
 
@@ -115,7 +115,7 @@ Ez az oktatóanyag bemutatta, hogyan használható a **irányítópult** lap sz�
 
 Most, hogy az eszközök figyelése megtanulhatta,-e a javasolt lépések megtudhatja, hogyan:
 
-* [Küszöbérték-alapú szabályok használatával kapcsolatos problémák észlelése](./iot-suite-remote-monitoring-automate.md).
+* [Küszöbérték-alapú szabályok használatával kapcsolatos problémák észlelése](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md).
 * [Kezelése és az eszközök](./iot-suite-remote-monitoring-manage.md).
 * [Hibaelhárítás és szervizelheti azokat a eszközökkel kapcsolatos problémákat](./iot-suite-remote-monitoring-maintain.md).
 * [A megoldás tesztelése szimulált eszközökkel](iot-suite-remote-monitoring-test.md).

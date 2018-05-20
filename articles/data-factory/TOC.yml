@@ -350,16 +350,18 @@
           href: data-factory-service-identity.md
     - name: Monitorozás és kezelés
       items:
-        - name: SDK-k használata
-          href: monitor-programmatically.md
-        - name: Az Azure Monitor használata
-          href: monitor-using-azure-monitor.md
         - name: Vizuális megfigyelés
           href: monitor-visually.md
-        - name: Az Azure SSIS integrációs modul kezelése
-          href: manage-azure-ssis-integration-runtime.md
+        - name: Monitorozás az Azure Monitorral
+          href: monitor-using-azure-monitor.md
+        - name: Monitorozás SDK-kkal
+          href: monitor-programmatically.md
         - name: Integrációs modul monitorozása
           href: monitor-integration-runtime.md
+        - name: Az Azure SSIS integrációs modul monitorozása
+          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+        - name: Az Azure SSIS integrációs modul kezelése
+          href: manage-azure-ssis-integration-runtime.md
     - name: Integrációs modul létrehozása
       items:
         - name: Azure-beli integrációs modul
@@ -370,24 +372,22 @@
           href: create-azure-ssis-integration-runtime.md
     - name: SSIS-csomagok futtatása az Azure-ban
       items:
-        - name: Az Azure SSIS integrációs modul egyéni beállításai
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Az Azure SSIS integrációs modul Enterprise Edition kiadásának üzembe helyezése
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Az Azure SSIS integrációs modul csatlakoztatása virtuális hálózathoz
           href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Az Azure SSIS integrációs modul kezelése
-          href: manage-azure-ssis-integration-runtime.md
-        - name: Az Azure SSIS integrációs modul teljesítménybeállításainak konfigurálása
+        - name: Az Azure SSIS integrációs modul konfigurálása nagy teljesítményre
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: SSIS-csomagok futtatása SSIS-tevékenység használatával
+        - name: Az Azure SSIS integrációs modul Enterprise Edition kiadásának üzembe helyezése
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Az Azure SSIS integrációs modul telepítésének testreszabása
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Az Azure SSIS integrációs modul licencelt összetevőinek üzembe helyezése
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
+        - name: SSIS-csomagok futtatása SSIS-tevékenységgel
           href: how-to-invoke-ssis-package-ssis-activity.md
-        - name: SSIS-csomagok futtatása tárolt eljárási tevékenység használatával
+        - name: SSIS-csomagok futtatása tárolt eljárási tevékenységgel
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Azure-SSIS integrációs modul ütemezése
           href: how-to-schedule-azure-ssis-integration-runtime.md
-        - name: Az Azure SSIS integrációs modul licencelt összetevőinek fejlesztése
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: Eseményindítók létrehozása
       items:
         - name: Ütemezési eseményindító létrehozása

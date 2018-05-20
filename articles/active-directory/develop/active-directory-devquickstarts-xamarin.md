@@ -1,25 +1,27 @@
 ---
-title: "Ismerkedés az Azure AD Xamarin |} Microsoft Docs"
-description: "Xamarin-alkalmazásokat, amelyek a bejelentkezés az Azure AD integrálása, meghívják a OAuth protokollt használó Azure AD-védett API hozhatnak létre."
+title: Ismerkedés az Azure AD Xamarin |} Microsoft Docs
+description: Xamarin-alkalmazásokat, amelyek a bejelentkezés az Azure AD integrálása, meghívják a OAuth protokollt használó Azure AD-védett API hozhatnak létre.
 services: active-directory
 documentationcenter: xamarin
-author: jmprieur
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 77ac6a7cfe089fa934592c412c75a9f33efde5e8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ac04cddc00bf76bb366a249a5a2ec4c56d5212c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Ismerkedés az Azure AD Xamarin
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -57,8 +59,7 @@ Ahhoz, hogy az alkalmazás a jogkivonatok lekérésére, először regisztrálja
   * **Átirányítási URI** protokollt és a karakterlánc kombinációját, amely az Azure AD token válaszok adja vissza. Adjon meg egy értéket (például http://DirectorySearcher).
 6. Regisztráció befejezését követően az Azure AD rendeli hozzá az alkalmazás egy egyedi azonosítót. Másolja az értéket a **alkalmazás** lapon, mert később szüksége.
 7. Az a **beállítások** lapon jelölje be **szükséges engedélyek**, majd válassza ki **Hozzáadás**.
-8. Válassza ki **Microsoft Graph** , az API-t. A **delegált engedélyek**, vegye fel a **címtáradatok olvasása** engedéllyel.  
-Ez a művelet lehetővé teszi az alkalmazásnak, hogy a felhasználók számára a Graph API lekérdezése.
+8. Válassza ki **Microsoft Graph** , az API-t. A **delegált engedélyek**, vegye fel a **címtáradatok olvasása** engedéllyel. Ez a művelet lehetővé teszi az alkalmazásnak, hogy a felhasználók számára a Graph API lekérdezése.
 
 ## <a name="step-3-install-and-configure-adal"></a>3. lépés: Telepítse és konfigurálja az adal-t
 Most, hogy egy alkalmazást az Azure ad-ben, telepítse az adal-t, és az identitás-kapcsolódó kód írása. Ahhoz, hogy az adal-t az Azure AD kommunikálni, adjon neki az alkalmazás regisztrációs adatait.
@@ -91,7 +92,7 @@ Most, hogy egy alkalmazást az Azure ad-ben, telepítse az adal-t, és az identi
 
   * A *bérlői* a tartományt az Azure AD bérlője (például contoso.onmicrosoft.com).
   * A *clientId* az ügyfél-azonosító az alkalmazás, amely a portálról kimásolt.
-  * A *returnUri* az átirányítási URI-t a portálon (például http://DirectorySearcher) megadott értéke.
+  * A *returnUri* az átirányítási URI-t a portálon megadott (például http://DirectorySearcher).
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Használja az adal TÁRAT jogkivonatok lekérni az Azure AD
 Szinte teljes egészében az alkalmazás hitelesítési logikát létrejönnie `DirectorySearcher.SearchByAlias(...)`. Minden szükséges, a platform-specifikus projektben felelt meg a környezetfüggő paramétere a `DirectorySearcher` PCL.
@@ -103,8 +104,7 @@ Szinte teljes egészében az alkalmazás hitelesítési logikát létrejönnie `
     {
     ```
 
-2. Inicializálni `AuthenticationContext`, vagyis az elsődleges osztály az adal-t.  
-Ez a művelet továbbítja az adal-t az Azure AD-val kommunikációhoz szükséges koordinátái.
+2. Inicializálni `AuthenticationContext`, vagyis az elsődleges osztály az adal-t. Ez a művelet továbbítja az adal-t az Azure AD-val kommunikációhoz szükséges koordinátái.
 3. Hívás `AcquireTokenAsync(...)`, amely elfogadja a `IPlatformParameters` objektumra, és hívja meg a hitelesítési folyamat szükséges a jogkivonat az alkalmazáshoz való visszatérésre.
 
     ```csharp

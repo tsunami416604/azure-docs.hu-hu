@@ -1,18 +1,18 @@
 ---
-title: "Az Azure Event rács erőforrás csoport esemény séma"
-description: "Erőforrás események csoportosítása Azure esemény rácshoz tartozó tulajdonságait ismerteti"
+title: Az Azure Event rács erőforrás csoport esemény séma
+description: Erőforrás események csoportosítása Azure esemény rácshoz tartozó tulajdonságait ismerteti
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 109f5af5cc1647cebee805c3141f4bc83c73bcfc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 163c32bdb8a3fdc278404b9e26fdc3097797d16c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Erőforráscsoportok Azure esemény rács esemény séma
 
@@ -101,8 +101,8 @@ Az esemény a következő legfelső szintű adatokat tartalmaz:
 | eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
 | id | karakterlánc | Az esemény egyedi azonosítója. |
 | adat | objektum | Erőforrás-csoport eseményadatok. |
-| dataVersion | karakterlánc | Az objektum séma verziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | karakterlánc | Az esemény-metaadatok séma verziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
+| dataVersion | karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | karakterlánc | Az esemény-metaadatok sémaverziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
 
 Az objektum tulajdonságai a következők:
 

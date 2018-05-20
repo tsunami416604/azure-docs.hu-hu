@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 85a3898145f7aea5d3f668caeafb62286006230d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 79828193e283f0dcb80035cae0c11b050a1639ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="web-apps-overview"></a>A webalkalmazások áttekintése
 
@@ -37,7 +37,7 @@ Az App Service Web Apps néhány főbb jellemzője:
 * **DevOps-optimalizálás** – [Folyamatos integrációt és üzembe helyezést](app-service-continuous-deployment.md) állíthat be a Visual Studio Team Services, GitHub, BitBucket, Docker Hub vagy az Azure Container Registry szolgáltatásokhoz. [Teszt- és átmeneti környezetek](web-sites-staged-publishing.md) segítségével küldheti ki a frissítéseket. A Web Appsben az [Azure PowerShell](/powershell/azureps-cmdlets-docs) vagy a [többplatformos parancssori felület (CLI)](/cli/azure/install-azure-cli) segítségével kezelheti az alkalmazásait.
 * **Globális méret magas rendelkezésre állással** – Manuálisan vagy automatikusan is végezhet [vertikális skálázást](web-sites-scale.md) és [horizontális skálázást](../monitoring-and-diagnostics/insights-how-to-scale.md). A Microsoft globális adatközpont infrastruktúrájában bárhol üzemeltetheti az alkalmazásait, az App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pedig magas rendelkezésre állást biztosít.
 * **Csatlakozás SaaS-platformokhoz és helyszíni adatokhoz** – Több mint 50, nagyvállalati rendszerekhez (például SAP), SaaS-szolgáltatásokhoz (például Salesforce), valamint internetes szolgáltatásokhoz (többek között a Facebookhoz) készült [összekötő](../connectors/apis-list.md) közül választhat. Hozzáférhet helyszíni adatokhoz a [Hibrid kapcsolatok](../biztalk-services/integration-hybrid-connection-overview.md) és az [Azure virtuális hálózatok](web-sites-integrate-with-vnet.md) segítségével.
-* **Biztonság és megfelelőség** - Az App Service megfelel az [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/TrustCenter/). [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) vagy közösségi bejelentkezés ([Google](app-service-mobile-how-to-configure-google-authentication.md), [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md), [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md), és [Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)) használatával hitelesítheti a felhasználókat. [IP-címkorlátozásokat](app-service-ip-restrictions.md) hozhat létre és [kezelheti a szolgáltatásidentitásokat](app-service-managed-service-identity.md).
+* **Biztonság és megfelelőség** - Az App Service megfelel az [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/en-us/trustcenter). [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) vagy közösségi bejelentkezés ([Google](app-service-mobile-how-to-configure-google-authentication.md), [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md), [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md), és [Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)) használatával hitelesítheti a felhasználókat. [IP-címkorlátozásokat](app-service-ip-restrictions.md) hozhat létre és [kezelheti a szolgáltatásidentitásokat](app-service-managed-service-identity.md).
 * **Alkalmazássablonok** – Az [Azure Marketplace](https://azure.microsoft.com/marketplace/) alkalmazássablon-listájának széles kínálatából választhat, például a WordPresst, a Joomlát vagy a Drupalt.
 * **Visual Studio-integráció** – A Visual Studio dedikált eszközei leegyszerűsítik a létrehozás, telepítés és hibakeresés folyamatát.
 * **API- és mobilszolgáltatások** – A Web Apps azonnal használatba vehető CORS-támogatást kínál a RESTful API-forgatókönyvekhez, valamint egyszerűsíti a mobilalkalmazásokhoz kapcsolódó forgatókönyveket a hitelesítés engedélyezésével, offline adatszinkronizálással, leküldéses értesítésekkel és továbbiakkal.
@@ -50,10 +50,16 @@ Az App Service-webalkalmazásokon kívül az Azure más szolgáltatásokat is k�
 Hozza létre első webalkalmazását.
 
 > [!div class="nextstepaction"]
-> [ASP.NET](app-service-web-get-started-dotnet.md)
+> [ASP.NET Core](app-service-web-get-started-dotnet.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET](app-service-web-get-started-dotnet-framework.md)
 
 > [!div class="nextstepaction"]
 > [PHP](app-service-web-get-started-php.md)
+
+> [!div class="nextstepaction"]
+> [Ruby (Linuxon)](containers/quickstart-ruby.md)
 
 > [!div class="nextstepaction"]
 > [Node.js](app-service-web-get-started-nodejs.md)

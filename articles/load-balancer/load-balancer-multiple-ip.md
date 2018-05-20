@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2fbf7bd736a59cbcd6231fa8325a084f54927467
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Terheléselosztás több IP-konfigurációk az Azure portál használatával
 
@@ -172,7 +172,7 @@ Adja meg a terheléselosztóhoz egy állapotmintáihoz:
 
 Minden webhelyre (contoso.com és fabrikam.com) a terheléselosztási szabályok konfigurálása:
     
-1. <a name="step6-1"></a>A **beállítások**, jelölje be **állapotmintáihoz**. A következő ablaktábla felső részén, jelölje ki **Hozzáadás**. 
+1. <a name="step6-1"></a>A **beállítások**, jelölje be ** terheléselosztási szabályok **. A következő ablaktábla felső részén, jelölje ki **Hozzáadás**. 
 
 2. A **neve**, írja be a terheléselosztási szabály nevét (például **HTTPc** contoso.com, vagy **HTTPf** a, fabrikam.com).
 

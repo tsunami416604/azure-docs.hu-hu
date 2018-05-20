@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 227792bcf5776b4fd13c263e02aa462b4d2d104f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 58bcb3cbdf389393beb58a9f50b3e77aa2b3aae8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Az alkalmazásproxy első lépései, és az összekötő telepítése
 Ez a cikk útmutatást nyújt a felhőcímtárhoz tartozó Microsoft Azure AD alkalmazásproxy engedélyezéséhez szükséges lépésekről az Azure AD-ben.
@@ -33,7 +33,7 @@ Az alkalmazásproxy szolgáltatásainak engedélyezése és használata előtt a
 * Egy Windows Server 2012 R2 vagy 2016, amelyre telepítheti az alkalmazásproxy-összekötő futtató kiszolgáló. A kiszolgálónak kell lennie csatlakozni tudjanak a felhőben, és a helyszíni alkalmazások közzétételekor az alkalmazásproxy-szolgáltatásokat.
   * Az egyszeri bejelentkezéshez a Kerberos által korlátozott delegálást használó közzétett alkalmazások a gép kell a tartományhoz ugyanabban a tartományban AD mint az alkalmazások, amelyek tesznek közzé. További információ: [Kerberos által korlátozott Delegálás az egyszeri bejelentkezés az alkalmazásproxy](application-proxy-configure-single-sign-on-with-kcd.md).
 
-Ha a szervezet proxykiszolgálót használ az internetkapcsolat működését, olvassa el [együttműködnek a meglévő helyszíni proxykiszolgálókat](../application-proxy-working-with-proxy-servers.md) talál részletes információt az alkalmazásproxy megkezdése előtt konfigurálásuk módját.
+Ha a szervezet proxykiszolgálót használ az internetkapcsolat működését, olvassa el [együttműködnek a meglévő helyszíni proxykiszolgálókat](application-proxy-configure-connectors-with-proxy-servers.md) talál részletes információt az alkalmazásproxy megkezdése előtt konfigurálásuk módját.
 
 ## <a name="open-your-ports"></a>A portok megnyitása
 
@@ -51,7 +51,7 @@ A környezet előkészítése az Azure AD-alkalmazásproxy, először az Azure-a
    > [!IMPORTANT]
    > A táblázat által adott jelentéseket tükrözik a connector verziók 1.5.132.0 portokra vonatkozó követelmények és újabb. Ha továbbra is régebbi összekötő verziója van, akkor is engedélyeznie kell mellett 80 és a 443-as: 5671, 8080-as, a következő portokat 9090-9091, 9350 9352, 10100 – 10120.
    >
-   >Az összekötők a legújabb verzióra frissítésével kapcsolatos információkért lásd: [megértéséhez Azure AD-alkalmazásproxy összekötők](../application-proxy-understand-connectors.md#automatic-updates).
+   >Az összekötők a legújabb verzióra frissítésével kapcsolatos információkért lásd: [megértéséhez Azure AD-alkalmazásproxy összekötők](application-proxy-connectors.md#automatic-updates).
 
 2. Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezett, akkor az engedélyezett kapcsolatok msappproxy.net és servicebus.windows.net. Ha nem szeretné a hozzáférést a [Azure DataCenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653), amely minden héten frissítése.
 
@@ -99,10 +99,10 @@ A kiszolgálón ellenőrizze az összekötő, és megtekinti a connector aktív 
 
    ![Az alkalmazásproxy összekötőjének szolgáltatásai – képernyőfelvétel](./media/application-proxy-enable/app_proxy_services.png)
 
-Összekötők és hogyan azok friss kapcsolatos információkért lásd: [megértéséhez Azure AD-alkalmazásproxy összekötők](../application-proxy-understand-connectors.md).
+Összekötők és hogyan azok friss kapcsolatos információkért lásd: [megértéséhez Azure AD-alkalmazásproxy összekötők](application-proxy-connectors.md).
 
 
 ## <a name="next-steps"></a>További lépések
 Most már készen áll az [alkalmazások közzétételére az alkalmazásproxy használatával](application-proxy-publish-azure-portal.md).
 
-Ha olyan alkalmazásokkal rendelkezik, különálló hálózatokból vagy különböző helyeken lévő, összekötő csoportok használata a különböző összekötők rendezze a logikai egységeket. További információ: [Az alkalmazásproxy-összekötők használata](../active-directory-application-proxy-connectors-azure-portal.md).
+Ha olyan alkalmazásokkal rendelkezik, különálló hálózatokból vagy különböző helyeken lévő, összekötő csoportok használata a különböző összekötők rendezze a logikai egységeket. További információ: [Az alkalmazásproxy-összekötők használata](application-proxy-connector-groups.md).

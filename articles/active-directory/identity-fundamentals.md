@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3603a1e91bc6bcf8a472b41bb0d0a276bf231d7c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure-identitás kezelése – alapok
 
@@ -30,17 +30,17 @@ Prémium szintű Azure AD egy olyan felhőalapú identitás- és hozzáférés f
 A rövid videó az Azure AD identity kezelésén és védelmén gyors áttekintést:
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
-A Microsoft csak nem biztosít az identitás, amely everywhere, hanem eszközöket automatizálását, biztonságossá, és a kezelése informatikai szervezeten belül. A felhőalapú megoldások bevezetése után továbbra is fennáll igény szerinti kezelhetik és szabályozhatják informatikai feladatokat, mint a felhasználói jelszavak alaphelyzetbe állítása, felhasználói csoportok kezelése és alkalmazáskérelmeinek ügyfélszolgálathoz beérkező hívások száma. Dolgot további része, alkalmazottak vannak most, hogy a saját eszközök munka, és azonnal elérhetők legyenek SaaS-alkalmazások használatával. Így az alkalmazások karbantartása szabályozhatják vállalati adatközpontban és a nyilvános felhő platform között jelentős kihívást.
+A Microsoft csak nem biztosít az identitás, amely everywhere, hanem eszközöket automatizálását, biztonságossá, és a kezelése informatikai szervezeten belül. A felhőalapú megoldások bevezetése után továbbra is fennáll igény szerinti kezelhetik és szabályozhatják informatikai feladatokat, mint a felhasználói jelszavak alaphelyzetbe állítása, felhasználói csoportok kezelése és alkalmazáskérelmeinek ügyfélszolgálathoz beérkező hívások száma. Dolgot további része, alkalmazottak most vannak kapcsolásának személyes eszközeik munkahelyi, és azonnal elérhetők legyenek SaaS segítségével alkalmazásokat, így karbantartása szabályozható a keresztül az alkalmazások vállalati adatközpontban és a nyilvános felhő platform egy jelentős probléma.
 
 [!INCLUDE [identity](../../includes/azure-ad-licenses.md)]
 
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>A helyszíni Active Directory és az Azure AD Connect és az Office 365
-A szervezetek, amelyek nagy beruházások történtek a helyszíni Active Directoryban a ezeket a felhőbe beruházások kibővítheti a helyszíni címtárak integrálása az Azure AD- [hibrid Identitáskezelés](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Így a felhasználók hatékonyabb, adja meg a közös identitás függetlenül helyétől erőforrások eléréséhez. Felhasználók és a szervezetek segítségével egyszeri bejelentkezési (SSO) is a helyszíni erőforrásokhoz férnek hozzá, és a felhőalapú szolgáltatások, például az Office 365.
+A szervezetek, amelyek nagy beruházások történtek a helyszíni Active Directoryban a ezeket a felhőbe beruházások kibővítheti a helyszíni címtárak integrálása az Azure AD- [hibrid Identitáskezelés](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Így a felhasználók hatékonyabb, adja meg a közös identitás függetlenül helyétől erőforrások eléréséhez. Felhasználók és a szervezetek használhatja az egyszeri bejelentkezés (SSO) is a helyszíni erőforrások eléréséhez, és a felhőalapú szolgáltatások, például az Office 365.
 
 [Az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) le kell töltenie az integráció végzett egyetlen eszköze. Az Azure AD Connect az identitás szinkronizálási igényeinek megfelelő képességeket biztosít, és olyan például a DirSync és Azure AD Sync identitásintegrációs eszközök régebbi verzióit váltja fel. Az Azure AD Connect az Identitáskezelés és a helyszíni és az Azure AD közötti szinkronizálás keresztül engedélyezve van:
 
 - Szinkronizálás – ez az összetevő a felhasználók, csoportok és egyéb objektumok létrehozásáért felelős. Segítségével arról is meggyőződhet, hogy a helyszíni felhasználókhoz és csoportokhoz tartozó identitásadatok megegyeznek a felhőben található hasonló adatokkal. Jelszóvisszaírás is engedélyezhető a helyszíni címtárak szinkronban tartsa a felhasználó frissítését a jelszavát az Azure ad-ben.
-- Az AD FS - összevonási egy nem kötelező funkció az Azure AD Connect, amelyek segítségével egy helyszíni használó hibrid környezetet konfigurálhat által biztosított az AD FS infrastruktúra. Összevonási szervezetek összetett üzembe helyezések, például az egyszeri bejelentkezés, AD bejelentkezési házirend, és az intelligens kártya és a harmadik féltől származó MFA használható.
+- Az AD FS - összevonási egy nem kötelező funkció az Azure AD Connect, amelyek segítségével egy helyszíni használó hibrid környezetet konfigurálhat által biztosított az AD FS infrastruktúra. Összevonási szervezetek összetett üzembe helyezések, például az intelligens kártya vagy külső MFA használható.
 - Állapotfigyelés – [az Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) is hatékony megfigyelési képességgel rendelkezik, és adjon meg egy központi helyen, az Azure portálon az ilyen tevékenységek megtekintéséhez.
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>A termelékenységet, és csökkenti az ügyfélszolgálati kiadásokat az önkiszolgáló és az egyszeri bejelentkezést

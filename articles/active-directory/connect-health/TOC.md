@@ -10,6 +10,7 @@
 ## [Az Azure AD Connect Health-ügynök telepítése](active-directory-aadconnect-health-agent-install.md)
 ## [Az Azure AD Connect Health műveletei](active-directory-aadconnect-health-operations.md)
 ## [Hibák a szinkronizálás során](../active-directory-aadconnect-troubleshoot-sync-errors.md)
+## [Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása](active-directory-aadconnect-health-diagnose-sync-errors.md)
 
 # Hibaelhárítás
 ## [Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)

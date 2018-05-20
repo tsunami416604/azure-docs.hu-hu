@@ -1,23 +1,23 @@
 ---
 title: Az Azure AvailabilityZoneDropdown felhasználói felületi elem |} Microsoft Docs
 description: Azure-portálon a Microsoft.Network.AvailabilityZoneDropdown felhasználói felületi elem ismerteti.
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 03156f2fd763bb7f2b1d2ba86d042f43f268febe
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 737971551e4bfb81c4f5fd1b53987b7a52c12669
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="microsoftnetworkavailabilityzonedropdown-ui-element"></a>Microsoft.Network.AvailabilityZoneDropdown felhasználói felületi elem
 Jelölje ki a rendelkezésre állási zónát szolgáló vezérlő.

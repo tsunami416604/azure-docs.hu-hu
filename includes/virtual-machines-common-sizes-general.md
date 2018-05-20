@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 786261b38fe27dccc9c7ef5ee6550f4b50c52e4b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ab9ad821c6780c685c884a87f3075a5d58c1d73a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 Általános célú Virtuálisgép-méretek adja meg az elosztott terhelésű CPU-memória aránya. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="b-series"></a>B sorozat
 
-A B sorozatnak burstable virtuális gépek ideálisak munkaterhelések esetén, amelyek nem kell a Processzor teljes teljesítményének folyamatosan, például a webkiszolgálók, a kis adatbázisok és a fejlesztési és tesztelési környezetben. Az ilyen terhelések általában burstable teljesítmény követelményekkel rendelkezik. A B sorozatnak teszi lehetővé ezen ügyfelek vásároljon egy egy ár lelkiismereti alapteljesítményének, amely lehetővé teszi, hogy a Virtuálisgép-példány kreditek kialakításához, amikor a virtuális gép kevesebb, mint a kiinduló teljesítményét használ-e a Virtuálisgép-méretet. A virtuális gép jóváírás keletkezett, amikor a virtuális Gépet a virtuális gép alapmennyiséget meghaladóan akár 100 %-a CPU használatát, ha az alkalmazás által igényelt, a nagyobb processzorteljesítmény is kapacitásnövelés.
+A B sorozatnak burstable virtuális gépek ideálisak munkaterhelések esetén, amelyek nem kell a Processzor teljes teljesítményének folyamatosan, például a webkiszolgálók, a kis adatbázisok és a fejlesztési és tesztelési környezetben. Az ilyen terhelések általában burstable teljesítmény követelményekkel rendelkezik. A B sorozatnak teszi lehetővé ezen ügyfelek vásároljon egy egy ár tudatos alapteljesítményének, amely lehetővé teszi, hogy a Virtuálisgép-példány kreditek kialakításához, amikor a virtuális gép kevesebb, mint a kiinduló teljesítményét használ-e a Virtuálisgép-méretet. A virtuális gép jóváírás keletkezett, amikor a virtuális Gépet a virtuális gép alapmennyiséget meghaladóan akár 100 %-a CPU használatát, ha az alkalmazás által igényelt, a nagyobb processzorteljesítmény is kapacitásnövelés.
 
 
 | Méret             | vCPU  | Memória: GiB | Helyi SSD: GiB | Az alapszintű alapszintű teljesítmény | Banki kreditek / óra | Maximális banki kreditek | Adatlemezek max. száma | Helyi lemez teljesítmény max.: IOPS / MB/s | Maximális nem gyorsítótárazott lemez teljesítmény: IOPS / MB/s | Hálózati adapterek maximális száma |          

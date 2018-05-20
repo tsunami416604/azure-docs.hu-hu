@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a226a348df4f289dd68924e24b8d4b374a87766
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: e791cddb07d3204f807dbeff98b7fc69419ae23c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Használja a riasztást egy Azure Automation-runbook elindítása
 
@@ -23,7 +23,7 @@ Használhat [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview-a
 
 Automation-runbook három riasztástípusok használható:
 * Klasszikus metrika riasztások
-* Tevékenység napló riasztások
+* Tevékenységnapló-riasztások
 * Közel valós idejű metrika riasztások
 
 Riasztás egy runbookot hív, a tényleges hívás esetén a webhook HTTP POST-kérelmet. A POST kérelem törzsében egy JSON-formátumú objektum, amely hasznos a riasztáshoz kapcsolódó tulajdonságokkal rendelkezik. A következő táblázat felsorolja a hasznos séma az egyes riasztási mutató hivatkozásokat:
@@ -197,7 +197,7 @@ A runbook műveletet a művelet csoport létrehozásához:
 1. Válassza ki a **előfizetés** és **Automation-fiók**, majd válassza ki a **Stop-AzureVmInResponsetoVMAlert** runbook.  
 1. Ha elkészült, válassza ki a **OK**.
 
-### <a name="notification-action"></a>Az értesítési művelet
+### <a name="notification-action"></a>Értesítési művelet
 
 A művelet csoport létrehozása egy értesítési műveletet:
 

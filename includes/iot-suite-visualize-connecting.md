@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8eada6b88c320396b30ecdeb96c95e4ec61679ce
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5eca35141544e8ea451dfc7471a83e3e1e980360
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 ## <a name="view-device-telemetry"></a>Eszköztelemetria megtekintése
 
@@ -40,7 +40,7 @@ Az eszközök metódusok meghívása, használja a **eszközök** lap a távoli 
 
     ![Válassza ki a fizikai eszköz](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. A metódusok hívása az eszközön listájának megjelenítéséhez kattintson **ütemezés**. Ütemezés módszerét több eszközön futtassa, jelölje ki több eszközre a listában. A **ütemezés** panelen láthatók metódus általános a kiválasztott eszközök.
+1. A metódusok hívása az eszközön listájának megjelenítéséhez kattintson **feladatok**, majd **Run metódus**. Ütemezni a feladatot több eszközön futtassa, jelölje ki több eszközre a listában. A **feladatok** panelen láthatók metódus általános a kiválasztott eszközök.
 
 1. Válasszon **FirmwareUpdate**, a feladat neve **UpdatePhysicalChiller**. Állítsa be **belsővezérlőprogram-verziónként** való **2.0.0**, beállíthatja **belső vezérlőprogram URI** való **http://contoso.com/updates/firmware.bin**, és válassza a **alkalmaz**:
 
@@ -57,4 +57,4 @@ Az eszközök metódusok meghívása, használja a **eszközök** lap a távoli 
 
 ## <a name="next-steps"></a>További lépések
 
-A cikk [testre szabhatja a távoli felügyeleti megoldásgyorsító](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) testre szabhatja a megoldásgyorsító néhány módját ismerteti.
+A cikk [testre szabhatja a távoli felügyeleti megoldásgyorsító](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) testre szabhatja a megoldásgyorsító néhány módját ismerteti.

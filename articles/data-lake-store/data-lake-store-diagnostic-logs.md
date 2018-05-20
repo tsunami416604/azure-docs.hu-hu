@@ -9,16 +9,14 @@ editor: cgronlun
 ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a5cdc67a138e2316c2e87a72371a6df527cc36ac
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ed401b1d68463bc03f7931e80e2bfb18d9449970
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Diagnosztikai naplók az Azure Data Lake Store elérése
 További diagnosztikai a Data Lake Store-fiók és a fiókja gyűjtött naplók megtekintéséhez a naplózás engedélyezéséhez.
@@ -133,7 +131,7 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
 | Útvonal |Karakterlánc |Az elérési út a művelet végrehajtásának ideje |
 | RequestContentLength |int |A HTTP-kérelem a tartalom hossza |
 | ClientRequestId |Karakterlánc |Az azonosító, amely egyedileg azonosítja az ehhez a kérelemhez |
-| StartTime |Karakterlánc |Az a kiszolgáló fogadja a kérelem ideje |
+| Kezdő időpont |Karakterlánc |Az a kiszolgáló fogadja a kérelem ideje |
 | Befejezés időpontja |Karakterlánc |Az idő, ahol a kiszolgáló által küldött választ |
 
 ### <a name="audit-logs"></a>Naplók

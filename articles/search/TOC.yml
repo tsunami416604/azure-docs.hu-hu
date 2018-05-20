@@ -39,7 +39,7 @@
           href: search-fiddler.md
 - name: Oktatóanyagok
   items:
-    - name: Indexelés kognitív kereséssel
+    - name: Kognitív keresés fejlesztése
       href: cognitive-search-tutorial-blob.md
     - name: Az Azure SQL Database indexelése
       href: search-indexer-tutorial.md
@@ -73,11 +73,11 @@
   items:
     - name: Tervezés és kialakítás
       items:
-        - name: SKU kiválasztása
+        - name: Szint kiválasztása
           href: search-sku-tier.md
         - name: Szolgáltatási korlátozások
           href: search-limits-quotas-capacity.md
-        - name: A szolgáltatás méretezhetősége
+        - name: Partíciók és replikák lefoglalása
           href: search-capacity-planning.md
         - name: Kialakítási minták a több-bérlős módhoz
           href: search-modeling-multitenant-saas-applications.md

@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/5/2018
+ms.date: 5/14/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: 3b37afc9d768313f6cc202eeecca22528cc57b07
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ef6be97144d05f18362ef707ef255b93c8cf21d9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Számítási feladatok biztonsági mentésének előkészítése az Azure Backup Serverrel
 > [!div class="op_single_selector"]
@@ -73,40 +73,19 @@ A DPM-tároló, a Windows Server deduplikálásával is deduplikálása. Tovább
 > - Olyan számítógépre, amelyen az Exchange Server fut
 > - Olyan számítógépre, amely fürtcsomópontként működik
 
-Azure Backup Server mindig csatlakoztatása a tartományhoz. Ha a kiszolgáló egy másik tartományba helyezi át, javasoljuk, hogy csatlakoztassa a kiszolgálót az új tartomány Azure Backup Server telepítése előtt. Egy meglévő Azure Backup Server gépet áthelyezése egy új tartományba, telepítés *nem támogatott*.
+Azure Backup Server mindig csatlakoztatása a tartományhoz. Ha a kiszolgáló egy másik tartományba helyezi át, először telepítse az Azure Backup Server, majd csatlakoztassa a kiszolgálót az új tartományhoz. Egy meglévő Azure Backup Server gépet áthelyezése egy új tartományba, telepítés *nem támogatott*.
 
-## <a name="recovery-services-vault"></a>Recovery Services-tároló
-Biztonsági mentési adatok küldése az Azure-ba, vagy helyileg megakadályozza, hogy a szoftver Azure csatlakoznia kell. Kell több adott, az Azure biztonsági mentés kiszolgálógép regisztrálva kell lennie a recovery services-tároló.
+Biztonsági mentési adatok küldése az Azure-ba, vagy helyileg legyen, hogy a helykiszolgáló biztonsági mentése Azure szerepelnie kell a Recovery Services-tároló.
 
-Egy Recovery Services-tároló létrehozásához:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A központi menüben kattintson a **Tallózás** elemre, majd az erőforrások listájába írja be a következőt: **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Recovery Services-tároló** elemre.
-
-    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
-
-    A Recovery Services-tárolók listája jelenik meg.
-3. A **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** elemre.
-
-    ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-microsoft-azure-backup/rs-vault-menu.png)
-
-    Megnyílik a Recovery Services-tároló panelje, a rendszer pedig egy **Név**, **Előfizetés**, **Erőforráscsoport** és **Hely** megadását kéri.
-
-    ![Recovery Services-tároló létrehozása – 5. lépés](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
-4. A **Név** mezőben adjon meg egy egyszerű nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetéshez. Írjon be egy 2–50 karakter hosszúságú nevet. Ennek egy betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
-5. Kattintson az **Előfizetés** elemre az elérhető előfizetések listájának megtekintéséhez. Ha nem biztos benne, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (vagy javasolt) előfizetést. Csak akkor lesz több választási lehetőség, ha a szervezetéhez tartozó fiók több Azure-előfizetéssel van összekötve.
-6. Kattintson az **Erőforráscsoport** elemre az elérhető erőforráscsoportok listájának megtekintéséhez, vagy kattintson az **Új** elemre egy új erőforráscsoport létrehozásához. Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
-7. Kattintson a **Hely** elemre a tárolóhoz tartozó földrajzi régió kiválasztásához.
-8. Kattintson a **Create** (Létrehozás) gombra. A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az állapotértesítéseket a portál jobb felső területén.
-   A tároló létrehozása után megjelenik a portálon.
+[!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="set-storage-replication"></a>Tárreplikáció beállítása
-A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha ebben a tárolóban a elsődleges tároló, hagyja a tárolási beállítást, a georedundáns tárolást. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/common/storage-redundancy-grs.md) és a [helyileg redundáns](../storage/common/storage-redundancy-lrs.md) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
+A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a Recovery Services-tárolók georedundáns tárolás használata. Ha ebben a tárolóban a elsődleges tároló, hagyja a tárolási beállítást, a georedundáns tárolást. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/common/storage-redundancy-grs.md) és a [helyileg redundáns](../storage/common/storage-redundancy-lrs.md) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
 
 A tárreplikációs beállítás szerkesztése:
 
-1. Válassza ki a tárolót, amelyhez megnyitja a tároló irányítópultját és a Beállítások panelt. Ha a **Beállítások** panel nem nyílik meg, kattintson az **Összes beállítás** elemre a tároló irányítópultján.
-2. A **Beállítások** panelen kattintson a **Biztonsági mentési infrastruktúra** > **Biztonsági mentés konfigurációja** elemre a **Biztonsági mentés konfigurációja** panel megnyitásához. A **Biztonsági mentés konfigurációja** panelen válassza ki a tárreplikációs beállítást a tároló számára.
+1. Válassza ki a tároló, a tároló irányítópult és a beállítások menü megnyitásához. Ha a **beállítások** menü nem nyitható meg **összes beállítás** a tároló irányítópultjának.
+2. A a **beállítások** menüben kattintson a **biztonsági infrastruktúra** > **biztonsági mentési konfigurációhoz** megnyitásához a **biztonsági mentési konfigurációhoz**panelen. Az a **biztonsági mentési konfigurációhoz** menüben válassza ki a tárolási replikációs beállítás a tároló számára.
 
     ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -115,7 +94,7 @@ A tárreplikációs beállítás szerkesztése:
 ## <a name="software-package"></a>Szoftvercsomag
 ### <a name="downloading-the-software-package"></a>A csomag letöltése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Ha már rendelkezik egy Recovery Services-tároló nyitva, folytassa a 3. Ha nincs megnyitva egy Recovery Services-tároló, de az Azure portál igen, a központi menüben kattintson a **Tallózás** elemre.
+2. Ha már rendelkezik egy Recovery Services-tároló nyitva, folytassa a 3. Ha nem rendelkezik a Recovery Services-tároló nyílt, de az Azure portálon, a főmenü kattintson **Tallózás**.
 
    * Az erőforrások listájába írja be a következőt: **Recovery Services**.
    * Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Amikor meglátja a **Recovery Services-tárolót**, kattintson rá.
@@ -185,7 +164,7 @@ Ha a kinyerési folyamat befejeződött, a jelölőnégyzet bejelölésével ind
     ![Az Azure Backup Server - üdvözlő és az Előfeltételek ellenőrzése](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 3. Microsoft Azure Backup Server szükséges SQL Server Standard. További az Azure Backup Server telepítési csomag részeként elérhető csomagolt a megfelelő SQL Server bináris fájljait, akkor szükséges, ha nem szeretné használni a saját SQL. Egy új Azure Backup Server telepítésének indításakor ki kell választania a beállítás **ezzel a beállítással új SQL Server-példány telepítése** , és kattintson a **ellenőrzés és telepítés** gombra. Ha az előfeltételek telepítése sikeresen megtörtént, kattintson **következő**.
 
-    ![Azure Backup Server - SQL check](./media/backup-azure-microsoft-azure-backup/sql/01.png)
+    ![Az Azure Backup Server - SQL ellenőrzése](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
     Ha hiba lép fel, indítsa újra a gépet ajánlás, ehhez, és kattintson az **ellenőrizze újra**.
 
@@ -240,9 +219,9 @@ Miután eldöntötte, hogy az Azure-előfizetés és Azure kapcsolat állapotát
 
 | Kapcsolati állapota | Azure-előfizetés | Azure biztonsági mentés | Biztonsági mentés lemezre | Állítsa vissza az Azure-ból | Állítsa vissza a lemezről |
 | --- | --- | --- | --- | --- | --- |
-| Csatlakoztatva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
-| Csatlakoztatva |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
-| Csatlakoztatva |Platformelőfizetés |Leállítva |Leállítva |Leállított és az Azure helyreállítási pontjainak törlése |Leállítva |
+| Csatlakozva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
+| Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Csatlakozva |Platformelőfizetés |Leállítva |Leállítva |Leállított és az Azure helyreállítási pontjainak törlése |Leállítva |
 | Elveszett kapcsolat > 15 nap |Aktív |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
 | Elveszett kapcsolat > 15 nap |Elévült |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
 | Elveszett kapcsolat > 15 nap |Platformelőfizetés |Leállítva |Leállítva |Leállított és az Azure helyreállítási pontjainak törlése |Leállítva |

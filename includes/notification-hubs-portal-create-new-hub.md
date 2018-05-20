@@ -1,5 +1,19 @@
-
-
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 03/28/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: c718fa972b9d6cba13a13edd3c7e8df29fa63207
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Válassza az **Erőforrás létrehozása** > **Web + mobil** > **Értesítési központ** elemet.
@@ -18,10 +32,9 @@
    
       ![Azure Portal – értesítési központ tulajdonságainak megadása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-4. Miután létrehozta a névteret és az értesítési központot, a megnyitásához válassza a **Minden erőforrás** elemet, majd válassza ki a létrehozott értesítési központot a listából. 
-   
-      ![Azure Portal – értesítési központ portáloldala](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-resources.png)
+4. Válassza az **Értesítések** (harang ikon), majd az **Erőforrás megnyitása** lehetőséget. 
 
+      ![Azure Portal – Értesítések -> Erőforrás megnyitása](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)    
 5. A listáról válassza a **Hozzáférési szabályzatok** lehetőséget. Figyelje meg a két elérhető kapcsolati karakterláncot. Ezekre később szükség lesz a leküldéses értesítések kezeléséhez.
 
       >[!IMPORTANT]

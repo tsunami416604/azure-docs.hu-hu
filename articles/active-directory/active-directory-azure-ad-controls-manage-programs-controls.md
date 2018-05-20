@@ -1,30 +1,30 @@
 ---
-title: "Programok kezeléséhez, és szabályozza az Azure AD hozzáférési értékelést |} Microsoft Docs"
-description: "A szervezet Azure Active Directory hozzáférési értékelést vezérlőelemként gyűjtése és gyors minden irányítás, kockázatkezelés és megfelelőségi kezdeményezésére további programokat hozhat létre."
+title: Programok kezeléséhez, és szabályozza az Azure AD hozzáférési értékelést |} Microsoft Docs
+description: A szervezet Azure Active Directory hozzáférési értékelést vezérlőelemként gyűjtése és gyors minden irányítás, kockázatkezelés és megfelelőségi kezdeményezésére további programokat hozhat létre.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/14/2018
 ms.author: billmath
-ms.openlocfilehash: f322bff427384e6432fcc0c288704f6bb605c900
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a3fb812623b490e27907f63c1f7c6610ae754fb8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-programs-and-their-controls"></a>Programok telepítése és a vezérlők kezelése 
 
 Azure Active Directory (Azure AD) hozzáférési értékelést csoport tagjai és alkalmazás-hozzáférés tartalmazza. Ezekben a példákban a vezérlők győződjön meg arról, ki férhet hozzá a szervezet csoporttagságot és az alkalmazások a felügyeletet. Szervezet ezen vezérlők segítségével hatékonyan cím a cégirányítási, a kockázatkezelés és a megfelelőségi követelmények.
 
 ## <a name="create-and-manage-programs-and-their-controls"></a>Programok telepítése és a vezérlők létrehozása és kezelése
-Egyszerűbbé teheti az nyomon követése és hozzáférési értékelést gyűjtése többféle célra programokba rendezésével. A program minden áttekintése lehet társítani. Majd jelentések egy auditor előkészületeként, csak a hozzáférési értékelést egy adott Initiative hatókörében láthatók.
+Egyszerűbbé teheti az nyomon követése és hozzáférési értékelést gyűjtése többféle célra programokba rendezésével. A program minden áttekintése lehet társítani. Ezután jelentések egy auditor előkészületeként, összpontosíthat a hozzáférési értékelést egy adott Initiative hatókörében.  Programok telepítése és a hozzáférés felülvizsgálati eredményeinek láthatók a felhasználók számára a globális rendszergazda, a biztonsági rendszergazda vagy a biztonsági olvasó szerepkört.
 
 Programok listájának megtekintéséhez keresse fel a [hozzáférés ellenőrzi, hogy lap](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) válassza **programok**.
 
@@ -32,7 +32,7 @@ Programok listájának megtekintéséhez keresse fel a [hozzáférés ellenőrzi
 
 Ha már nincs szüksége egy programot, és nincs beállítva a kapcsolni vezérlőket, törölheti azt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Hozzáférési felülvizsgálat létrehozása egy csoport tagjai számára vagy egy alkalmazáshoz való hozzáférés céljából](active-directory-azure-ad-controls-create-access-review.md)
-
+- [Hozzáférési felülvizsgálat létrehozása egy csoport tagjai számára vagy egy alkalmazáshoz való hozzáférés céljából](active-directory-azure-ad-controls-create-access-review.md)
+- [Egy áttekintése eredményének beolvasása](active-directory-azure-ad-controls-retrieve-access-review.md)

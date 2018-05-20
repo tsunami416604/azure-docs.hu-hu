@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Store MapReduce teljesítményének hangolása irányelvek |} Microsoft Docs"
-description: "Az Azure Data Lake Store MapReduce teljesítményének hangolása irányelvek"
+title: Az Azure Data Lake Store MapReduce teljesítményének hangolása irányelvek |} Microsoft Docs
+description: Az Azure Data Lake Store MapReduce teljesítményének hangolása irányelvek
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -10,26 +10,23 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 522e03769a8f09acd88d92d72c4658407b86bd0b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f5586e7706d4dad7e3c943b2a661fa296b4d30bf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-store"></a>Útmutató a HDInsight és az Azure Data Lake Store MapReduce teljesítményhangolása
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Store-fiók**. Hogyan hozhat létre ilyet, lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md)
 * **Az Azure HDInsight-fürt** a Data Lake Store-fiók eléréséhez. Lásd: [HDInsight-fürtök létrehozása a Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy a fürt számára engedélyezi a távoli asztal.
-* **MapReduce használata a HDInsight**.  További információkért lásd: [használata MapReduce a Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)  
-* **Teljesítményhangolás ADLS iránymutatást**.  Általános teljesítmény fogalmakat, lásd: [Data Lake Store teljesítmény hangolása útmutató](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)  
+* **MapReduce használata a HDInsight**.  További információkért lásd: [használata MapReduce a Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
+* **Teljesítményhangolás ADLS iránymutatást**.  Általános teljesítmény fogalmakat, lásd: [Data Lake Store teljesítmény hangolása útmutató](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>Paraméterek
 

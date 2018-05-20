@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 103cdd24ca5f47ee12196cd153d528f19bb35b20
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Az eszközök internetes hálózatát biztonsági másolatot az alapoktól
 
@@ -44,11 +44,11 @@ A Microsoft systems adja meg, folyamatos behatolásérzékelési és megelőzés
 
 A megoldás gyorsítók biztonsági és adatvédelmi biztonságos fejlesztési és az összes Microsoft szoftver művelet SDL és OSA folyamatok együtt az Azure platformon épített előnyeit. Ezekkel az eljárásokkal infrastruktúra védelme, hálózatvédelmi és alapvető biztonsági megoldások identitás- és felügyeleti funkciókat biztosítanak.
 
-A [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) belül a [IoT-megoldás gyorsítók](../articles/iot-suite/iot-suite-what-is-azure-iot.md) teljes körűen felügyelt szolgáltatást, amely lehetővé teszi, mint az IoT-eszközök és az Azure-szolgáltatások közötti megbízható és biztonságos kétirányú kommunikáció [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) és [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) eszközönkénti hitelesítő adatokat és a hozzáférés-vezérlés használatával.
+A [Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) belül a [IoT-megoldás gyorsítók](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md) teljes körűen felügyelt szolgáltatást, amely lehetővé teszi, mint az IoT-eszközök és az Azure-szolgáltatások közötti megbízható és biztonságos kétirányú kommunikáció [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) és [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) eszközönkénti hitelesítő adatokat és a hozzáférés-vezérlés használatával.
 
 A biztonság és adatvédelem az Azure IoT-megoldás gyorsítók épített legjobb kommunikációhoz, ez a cikk a három elsődleges biztonsági területre suite megszakad.
 
-![Azure IoT-megoldástámogatók](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
+![Azure IoT-megoldásgyorsítók](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>Kiépítés biztonságos eszköz és a hitelesítés
 

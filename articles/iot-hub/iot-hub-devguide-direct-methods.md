@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47bf7437eda09a536aa2d960cf5ec474e23356a6
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a35c88ac053b43d4a95b5bef92f3ebfb03567e2b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Ismertetés és az IoT-központ közvetlen metódusok
-Az IoT-központ lehetővé teszi az eszközök a felhőből közvetlen módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTP-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (felhasználó által meghatározott időtúllépési) után sikertelen. Ez a megközelítés forgatókönyvekben, ahol azonnali lépéseket, attól függően, hogy képesek válaszolni volt-e az eszköz különböző érdemes használni. Az SMS ébresztési például küld egy eszközt, ha kapcsolat nélküli (SMS drágább, mint egy metódus hívása folyamatban).
+Az IoT-központ lehetővé teszi az eszközök a felhőből közvetlen módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTP-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (felhasználó által meghatározott időtúllépési) után sikertelen. Ez a megközelítés forgatókönyvekben, ahol azonnali lépéseket, attól függően, hogy képesek válaszolni volt-e az eszköz különböző érdemes használni.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

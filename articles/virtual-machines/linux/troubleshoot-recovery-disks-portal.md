@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: iainfou
-ms.openlocfilehash: 08bf4675378918097e177228ee1be4e4e690c63b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 89c4c5c986375177918f14417c6b5a9a24925908
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Linux virtuális gép hibaelhárításáról az operációsrendszer-lemez csatolása a helyreállítási virtuális gép az Azure portál használatával
 Ha a Linux virtuális gép (VM) rendszerindító vagy a lemez hibát tapasztal, szükség lehet végezze el a virtuális merevlemez hibaelhárítási lépéseket. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza a virtuális gép rendszerindító sikeresen megtörtént. Ez a cikk részletezi az Azure portál segítségével csatlakozzon a virtuális merevlemez egy másik Linux virtuális gép, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép.
@@ -31,6 +31,7 @@ A hibaelhárítási folyamat a következő:
 4. Válassza le a virtuális merevlemezt a hibaelhárító virtuális gépről.
 5. Az eredeti virtuális merevlemez virtuális gép létrehozása.
 
+A virtuális gép számára, amely felügyelt lemezt használ, tekintse meg [hibaelhárításáról egy kezelt lemez virtuális Gépet egy új operációsrendszer-lemez csatolása](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
 
 ## <a name="determine-boot-issues"></a>Határozza meg a rendszerindítási problémák
 Ellenőrizze a rendszerindítási diagnosztika és a virtuális gép képernyőkép határozhatja meg, miért nem végezhetnek rendszerindítást megfelelően a virtuális gép. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab`, vagy egy alapul szolgáló virtuális merevlemezek áthelyezése vagy törölhetők.
@@ -170,6 +171,13 @@ A sablon betöltése be az Azure portálon központi telepítéshez. Adja meg a 
 Amikor a virtuális Gépet hoz létre a meglévő virtuális merevlemez, rendszerindítási diagnosztika automatikusan nem lehet engedélyezni. Tekintse meg a rendszerindítási diagnosztika, és kapcsolja be, ha szükséges, jelölje be a virtuális Gépet a portálon. A **figyelés**, kattintson a **diagnosztikai beállítások**. Győződjön meg arról, az állapot **a**, és a pipa jelre a **rendszerindítási diagnosztika** van kiválasztva. Ha bármilyen módosításhoz kattintson **mentése**:
 
 ![Rendszerindítási diagnosztika beállításainak frissítése](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Egy kezelt lemez virtuális Gépet egy új operációsrendszer-lemez csatolásával hibaelhárítása
+1. Állítsa le az érintett kezelt lemez Windows virtuális Gépet.
+2. [Hozzon létre egy felügyelt lemezes pillanatképet](../windows/snapshot-copy-managed-disk.md) , az operációsrendszer-lemezképet, a felügyelt lemezt a virtuális gépet.
+3. [Hozzon létre egy felügyelt lemezes a pillanatképből](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
+4. [A felügyelt lemezt csatolni a virtuális gép adatok lemezként](../windows/attach-disk-ps.md).
+5. [4. lépés a adatlemez váltson az operációsrendszer-lemez](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>További lépések
 Ha a virtuális Géphez való kapcsolódás problémát tapasztal, tekintse meg [hibaelhárítása SSH kapcsolatok egy Azure virtuális gépre](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). A virtuális gépen futó alkalmazások elérésével problémákkal kapcsolatban lásd: [alkalmazás csatlakozási problémák a Linux virtuális gép](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

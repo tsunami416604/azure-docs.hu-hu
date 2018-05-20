@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric fürt erőforrás-kezelő: a mozgás költsége |} Microsoft Docs"
-description: "A mozgás költsége Service Fabric-szolgáltatások áttekintése"
+title: 'Service Fabric fürt erőforrás-kezelő: a mozgás költsége |} Microsoft Docs'
+description: A mozgás költsége Service Fabric-szolgáltatások áttekintése
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3063647671fea94da3ce635b887f6f0f7de89f70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74b61967a796fca22ab86918235f1def27a22f91
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-movement-cost"></a>A mozgás költsége szolgáltatás
 A Service Fabric fürt erőforrás-kezelő úgy ítéli meg, amikor megpróbálja megállapítani, hogy milyen módosítások, hogy a fürt tényezővel a költségét és ezeket a módosításokat. A "költség" fogalmát ellen, hogy mekkora a fürt növelhető a forog ki. Költség Beleszámítja a terheléselosztás, töredezettségmentesítés és egyéb követelmények szolgáltatások áthelyezésekor. A cél, hogy legalább zavaró vagy drága módon követelményeinek. 
@@ -115,7 +115,7 @@ az önálló verziója telepítéseinek művelet vagy az Azure-Template.json üz
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Service Fabric fürt erőforrás-kezelő metrikákat használ a használat és a kapacitás, a fürt kezeléséhez. A metrikák és konfigurálásuk módját kapcsolatos további tudnivalókért tekintse meg [hálózatierőforrás-fogyasztás kezelése és a metrikák a Service Fabric terheléselosztási](service-fabric-cluster-resource-manager-metrics.md).
 - Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos információkért tekintse meg [a Service Fabric-fürt terheléselosztási](service-fabric-cluster-resource-manager-balancing.md).
 

@@ -3,7 +3,7 @@ title: A Microsoft Azure verem szoftverfejlesztői készlet kibocsátási megjeg
 description: Fejlesztések, javítások és Azure verem szoftverfejlesztői készlet kapcsolatos ismert problémák.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: brenduns
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -11,19 +11,127 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
-ms.author: jeffgilb
+ms.date: 05/16/2018
+ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 3335fdd3a1bb20c378bf36307d742491de0e46ad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 2aa6663ae598b32979411fd10e7bb8a2eacd21de
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Az Azure verem szoftverfejlesztői készlet kibocsátási megjegyzései
 A kibocsátási megjegyzések fejlesztései, javítások és Azure verem szoftverfejlesztői készlet ismert problémáira vonatkozó információkat tartalmazzák. Ha nem biztos abban, hogy melyik verzióját futtatja, akkor [a portál használatával ellenőrizze](.\.\azure-stack-updates.md#determine-the-current-version).
 
 > Naprakész legyen what's new in a ASDK előfizet a [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [hírcsatorna](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
+
+
+## <a name="build-201805131"></a>Build 20180513.1
+
+### <a name="new-features"></a>Új funkciók 
+A build tartalmazza a következő fejlesztéseket és javításokat Azure verem.  
+
+- <!-- 1759172 - IS, ASDK --> **More granular administrative subscriptions**. With version 1804 and later, the Default Provider subscription is now complemented with two additional subscriptions. The additions facilitate separating the management of core infrastructure, additional resource providers, and workloads. The following three subscriptions are available:
+  - *Alapértelmezett szolgáltató előfizetés*. Ez az előfizetés csak az alapvető infrastruktúra használja. Ne telepítsen erőforrások vagy erőforrás-szolgáltatók ebben az előfizetésben.
+  - *Előfizetés mérési*. Ez az előfizetés erőforrás szolgáltató telepítéshez használni. Ebben az előfizetésben üzembe helyezett erőforrás nem van szó.
+  - *Felhasználás előfizetés*. Minden egyéb munkaterhelés, amely számára telepíteni kívánja használni ehhez az előfizetéshez. Itt üzembe helyezett erőforrás a normál használati díjak van szó.
+
+
+### <a name="fixed-issues"></a>Javított problémák
+- <!-- IS, ASDK -->  In the admin portal, you no longer have to refresh the Update tile before it displays information. 
+
+- <!-- 2050709 - IS, ASDK -->  You can now use the admin portal to edit storage metrics for Blob service, Table service, and Queue service.
+
+- <!-- IS, ASDK --> Under **Networking**, when you click **Connection** to set up a VPN connection, **Site-to-site (IPsec)** is now the only available option. 
+
+- **Különböző javítások** teljesítmény, stabilitásának, biztonsági és az Azure-verem által használt operációs rendszer
+
+<!-- ### Changes  --> 
+### <a name="additional-releases-timed-with-this-update"></a>Időtúllépés történt a frissítés további verziókban  
+A következő is elérhető, de nincs szükség Azure verem frissítés 1804.
+- **A Microsoft Azure verem a System Center Operations Manager figyelési csomag frissítése**. Egy új verziója (1.0.3.0) a Microsoft System Center Operations Manager figyelési csomagját Azure verem érhető el [letöltése](https://www.microsoft.com/download/details.aspx?id=55184). Ebben a verzióban Szolgáltatásnevekről egy csatlakoztatott Azure Alkalmazásveremben üzembe hozzáadásakor is használhatja. Ebben a verzióban is lehetővé teszi, hogy a javítási művelet közvetlenül belül az Operations Manager felügyelete élményt funkciókat. Új irányítópultok megjelenítése az erőforrás-szolgáltató, skálázási egységek és méretezési egység csomópontok is vannak.
+
+- **Új Azure verem Admin PowerShell-verzió 1.2.12**.  Azure verem PowerShell 1.2.12 már elérhető a telepítéshez. Ebben a verzióban tartalmazza az összes felügyeleti erőforrás-szolgáltatók kezelése az Azure-verem parancsok.  Ezzel a kiadással néhány tartalom az Azure verem eszközök githubból elavulttá válik [tárház](https://github.com/Azure/AzureStack-Tools). 
+
+   A telepítés részleteit, hajtsa végre a [utasításokat](.\.\azure-stack-powershell-install.md) vagy a [súgó](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.2.12) Azure verem modul 1.2.12 tartalmát. 
+
+- **Azure verem API Rest-referencia kiadása kezdeti**. Az API-referencia az összes Azure verem Admin erőforrás-szolgáltató most már közzé van téve.
+
+### <a name="known-issues"></a>Ismert problémák
+ 
+#### <a name="portal"></a>Portál
+- <!-- TBD - IS ASDK --> The ability [to open a new support request from the dropdown](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
+    - Azure verem szoftverfejlesztői készlet használata https://aka.ms/azurestackforum.    
+
+- <!-- 2403291 - IS ASDK --> You might not have use of the horizontal scroll bar along the bottom of the admin and user portals. If you can’t access the horizontal scroll bar, use the breadcrumbs to navigate to a previous blade in the portal by selecting the name of the blade you want to view from the breadcrumb list found at the top left of the portal.
+  ![Webhely-navigációs](media/asdk-release-notes/breadcrumb.png)
+
+- <!-- TBD -  IS ASDK --> Deleting user subscriptions results in orphaned resources. As a workaround, first delete user resources or the entire resource group, and then delete user subscriptions.
+
+- <!-- TBD -  IS ASDK --> You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use PowerShell to verify permissions.
+
+-   <!-- TBD -  IS ASDK --> In the admin portal, you might see a critical alert for the Microsoft.Update.Admin component. The Alert name, description, and remediation all display as:  
+    - *Hiba – hiányzik a sablon FaultType ResourceProviderTimeout.*
+
+    Ez a riasztás biztonságosan figyelmen kívül hagyhatja. 
+
+#### <a name="compute"></a>Compute
+- <!-- TBD -  IS ASDK --> Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
+
+- <!-- TBD -  IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a DS series VM. DS series VMs can accommodate as many data disks as the Azure configuration.
+
+- <!-- TBD -  IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
+
+  A probléma megoldásához hozzon létre egy új Virtuálisgép-lemezkép, amely a Hyper-V segítségével hozhatók létre üres virtuális merevlemez (New-VHD-elérési út C:\dummy.vhd-- SizeBytes rögzített 1 GB-os). Ez a folyamat kell hárítsa el a problémát, amely megakadályozza a sikertelen elem törlése. Ezt követően a dummy lemezkép létrehozása után 15 perc sikeresen törlése.
+
+  Ezután próbálkozzon redownload, amely korábban nem sikerült Virtuálisgép-lemezkép.
+
+- <!-- TBD -  IS ASDK --> If provisioning an extension on a VM deployment takes too long, users should let the provisioning time-out instead of trying to stop the process to deallocate or delete the VM.  
+
+- <!-- 1662991 - IS ASDK --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. 
+
+#### <a name="networking"></a>Hálózat
+- <!-- 1766332 - IS, ASDK --> Under **Networking**, if you click **Create VPN Gateway** to set up a VPN connection, **Policy Based** is listed as a VPN type. Do not select this option. Only the **Route Based** option is supported in Azure Stack.
+
+- <!-- 2388980 -  IS ASDK --> After a VM is created and associated with a public IP address, you can't disassociate that VM from that IP address. Disassociation appears to work, but the previously assigned public IP address remains associated with the original VM.
+
+  Jelenleg létrehozhat új virtuális gépek csak új nyilvános IP-címet kell használnia.
+
+  Ez akkor fordul elő, akkor is, ha egy új virtuális géphez az IP-cím ismételt hozzárendelése (más néven a *virtuális IP-címcsere*). Az összes jövőbeni megpróbál a kapcsolaton keresztül a eredetileg társított virtuális Gépet, és nem egy IP-cím eredményén keresztül kapcsolódni.
+
+- <!-- 2292271 - IS ASDK --> If you raise a Quota limit for a Network resource that is part of an Offer and Plan that is associated with a tenant subscription, the new limit is not applied to that subscription. However, the new limit does apply to new subscriptions that are created after the quota is increased. 
+
+  Ez a probléma megoldása érdekében egy bővítmény csomag használata a hálózati kvóta növeléséhez, ha a csomag már társítva van egy előfizetést. További információkért lásd: hogyan [bővítmény tervének elérhetővé](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
+
+- <!-- 2304134 IS ASDK --> You cannot delete a subscription that has DNS Zone resources or Route Table resources associated with it. To successfully delete the subscription, you must first delete DNS Zone and Route Table resources from the tenant subscription. 
+
+
+- <!-- 1902460 -  IS ASDK --> Azure Stack supports a single *local network gateway* per IP address. This is true across all tenant subscriptions. After the creation of the first local network gateway connection, subsequent attempts to create a local network gateway resource with the same IP address are blocked.
+
+- <!-- 16309153 -  IS ASDK --> On a Virtual Network that was created with a DNS Server setting of *Automatic*, changing to a custom DNS Server fails. The updated settings are not pushed to VMs in that Vnet.
+ 
+- <!-- TBD -  IS ASDK --> Azure Stack does not support adding additional network interfaces to a VM instance after the VM is deployed. If the VM requires more than one network interface, they must be defined at deployment time.
+
+
+#### <a name="sql-and-mysql"></a>Az SQL és MySQL 
+- <!-- TBD - ASDK --> The database hosting servers must be dedicated for use by the resource provider and user workloads. You cannot use an instance that is being used by any other consumer, including App Services.
+
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers. 
+
+#### <a name="app-service"></a>App Service
+- <!-- TBD -  IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+
+- <!-- TBD -  IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
+ 
+#### <a name="usage"></a>Használat  
+- <!-- TBD -  IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
+
+<!-- #### Identity -->
+
+
+
+
+
 
 ## <a name="build-201803291"></a>Build 20180329.1
 
@@ -32,7 +140,7 @@ Az új szolgáltatásokat és Azure verem integrált rendszerek verzió 1803 alk
 > [!IMPORTANT]    
 > A elemek egy része szerepel a **új szolgáltatások** és **problémák rögzített** szakaszok csak integrált Azure verem rendszerek szempontjából.
 
-### <a name="changes"></a>Változások
+### <a name="changes"></a>Módosítások
 - A módszer egy újonnan létrehozott ajánlatot állapotának módosítása *titkos* való *nyilvános* vagy *leszerelt* megváltozott. További információkért lásd: [hozzon létre egy ajánlatot](.\.\azure-stack-create-offer.md). 
 
 
@@ -44,8 +152,6 @@ Az új szolgáltatásokat és Azure verem integrált rendszerek verzió 1803 alk
 
 - <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
 
-- Egy erőforrás vagy egy erőforráscsoport, tulajdonságainak megtekintésekor a **áthelyezése** gomb le van tiltva. Ez az elvárt viselkedés. Erőforráscsoportok vagy előfizetések között erőforrások vagy erőforráscsoportok áthelyezése jelenleg nem támogatott.
- 
 - Megjelenik egy **szükséges aktiválási** figyelmeztető riasztás, amely azt ajánlja, hogy regisztrálja az Azure verem szoftverfejlesztői készlet. Ez az elvárt viselkedés.
 
 - Felhasználói előfizetések eredmények az árva erőforrások törlése. A probléma megoldásához először törölnie a felhasználói erőforrásokat és a teljes erőforráscsoport, és törölje a felhasználó előfizetések.
@@ -64,7 +170,7 @@ Az új szolgáltatásokat és Azure verem integrált rendszerek verzió 1803 alk
 #### <a name="marketplace"></a>Piactér
 - Felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és láthatja például tervek és ajánlatok felügyeleti elemeket. Ezek az elemek nem működőképes a felhasználók számára is.
  
-#### <a name="compute"></a>Számítás
+#### <a name="compute"></a>Compute
 - A virtuálisgép-méretezési csoportok skálázási beállításai nem érhetők el a portálon. Áthidaló megoldásként használja [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
 
 - Az Azure-verem felhasználói portál virtuális gépek létrehozásakor, a portál megjeleníti, hogy a DS-ben több virtuális gép csatolhat adatlemezek száma helytelen. DS adatsorozat virtuális gépek lehetővé teszi tetszőleges számú adatlemezek Azure beállításként.
@@ -103,6 +209,8 @@ Az új szolgáltatásokat és Azure verem integrált rendszerek verzió 1803 alk
 - Akár egy óraba felhasználók adatbázisok létrehozhat egy új SQL- vagy MySQL SKU is igénybe vehet.
 
 - Az adatbázis-kiszolgálók üzemeltetési az erőforrás-szolgáltató és a felhasználó munkaterhelés használatra kell kijelölnie. Bármely más fogyasztó, beleértve az App Service szolgáltatások által használt példánya nem használható.
+
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** or **Tier** names when you create a SKU for the SQL and MySQL resource providers.
 
 #### <a name="app-service"></a>App Service
 - Ahhoz, hogy az első Azure-függvény létre előfizetést felhasználók regisztrálnia kell a storage erőforrás-szolgáltató.
@@ -145,8 +253,6 @@ Tekintse meg a [új szolgáltatásokat és javításokat](.\.\azure-stack-update
 
 - <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
 
-- Egy erőforrás vagy egy erőforráscsoport, tulajdonságainak megtekintésekor a **áthelyezése** gomb le van tiltva. Ez az elvárt viselkedés. Erőforráscsoportok vagy előfizetések között erőforrások vagy erőforráscsoportok áthelyezése jelenleg nem támogatott.
- 
 - Megjelenik egy **szükséges aktiválási** figyelmeztető riasztás, amely azt ajánlja, hogy regisztrálja az Azure verem szoftverfejlesztői készlet. Ez az elvárt viselkedés.
 
 - Felhasználói előfizetések eredmények az árva erőforrások törlése. A probléma megoldásához először törölnie a felhasználói erőforrásokat és a teljes erőforráscsoport, és törölje a felhasználó előfizetések.
@@ -173,7 +279,7 @@ A verem Azure felügyeleti portálon, előfordulhat, hogy a kritikus riasztások
 #### <a name="marketplace"></a>Piactér
 - Felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és láthatja például tervek és ajánlatok felügyeleti elemeket. Ezek az elemek nem működőképes a felhasználók számára is.
  
-#### <a name="compute"></a>Számítás
+#### <a name="compute"></a>Compute
 - A virtuálisgép-méretezési csoportok skálázási beállításai nem érhetők el a portálon. Áthidaló megoldásként használja [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
 
 - Az Azure verem támogatja a csak a rögzített típusúvá a VHD-k használatát. Néhány képet, a veremben Azure piactéren keresztül felajánlott használjon dinamikus virtuális merevlemezek, de amelyek el lettek távolítva. Dinamikus lemez nem csatlakoztatható a virtuális gép (VM) átméretezése hagyja el a virtuális gép hibás állapotban.
@@ -217,6 +323,8 @@ A verem Azure felügyeleti portálon, előfordulhat, hogy a kritikus riasztások
 
 - Az adatbázis-kiszolgálók üzemeltetési az erőforrás-szolgáltató és a felhasználó munkaterhelés használatra kell kijelölnie. Bármely más fogyasztó, beleértve az App Service szolgáltatások által használt példánya nem használható.
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
+
 #### <a name="app-service"></a>App Service
 - Ahhoz, hogy az első Azure-függvény létre előfizetést felhasználók regisztrálnia kell a storage erőforrás-szolgáltató.
 
@@ -235,77 +343,4 @@ A verem Azure felügyeleti portálon, előfordulhat, hogy a kritikus riasztások
   Ez a hiba oka a legutóbbi GitHub támogatási érvénytelenítése Tlsv1 és Tlsv1.1 kriptográfiai szabványok (a PowerShell alapértelmezett). További információkért lásd: [gyenge kriptográfiai szabványok eltávolítási figyelmeztetés](https://githubengineering.com/crypto-removal-notice/).
 
   A probléma megoldásához vegye fel `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` a PowerShell-konzolon TLSv1.2 használandó, ha a letöltés a GitHub-adattárak kényszerítheti a parancsfájl elején.
-
-
-
-
-## <a name="build-201801032"></a>Build 20180103.2
-
-### <a name="new-features-and-fixes"></a>Új szolgáltatásokat és javításokat
-
-- Tekintse meg a [új szolgáltatásokat és javításokat](.\.\azure-stack-update-1712.md#new-features-and-fixes) az Azure verem 1712 frissítés kibocsátási megjegyzései Azure verem szakasza integrált rendszerek.
-
-    > [!IMPORTANT]
-    > A elemek egy része szerepel a **új szolgáltatásokat és javításokat** szakasz csak integrált Azure verem rendszerek szempontjából.
-
-### <a name="known-issues"></a>Ismert problémák
- 
-#### <a name="deployment"></a>Környezet
-- Adjon meg egy IP-cím szerint üzembe helyezése során.
-
-#### <a name="infrastructure-management"></a>Infrastruktúra felügyelete
-- Ne engedélyezze a infrastruktúra biztonsági mentés a **infrastruktúra biztonsági mentés** panelen.
-- Az alaplapi felügyeleti vezérlővel (BMC) IP-cím és a modell nem láthatók a lényeges információk egy méretezési egység csomópont. Ez az elvárt viselkedés Azure verem csomagban.
-
-#### <a name="portal"></a>Portál
-- A portál üres irányítópult jelenhet meg. Az irányítópult helyreállításához válassza ki a fogaskerék ikonra a portál jobb felső sarokban, majd válassza ki **alapértelmezett beállításainak visszaállítása**.
-- Erőforráscsoport tulajdonságainak megtekintésekor a **áthelyezése** gomb le van tiltva. Ez az elvárt viselkedés. Erőforráscsoportok áthelyezése másik előfizetések jelenleg nem támogatott.
--  Egyetlen olyan munkafolyamat, ahol ki kell választania egy előfizetés, a csoport vagy a hely egy legördülő listában, a legalább egy, az alábbi problémákat tapasztalhatja:
-
-   - Megjelenik egy üres sort a lista tetején. Továbbra is kell tudni jelöljön ki egy elemet várt módon.
-   - Ha a legördülő listán szereplő elemek listája rövid, nem lehet a cikk bármelyike megtekintheti.
-   - Ha több felhasználó-előfizetéssel rendelkezik, az erőforrás csoport legördülő lista üres is lehet. 
-
-   Az utolsó két problémák megoldása érdekében adhatja meg az előfizetés vagy az erőforráscsoport (ha tudja) neve, vagy a PowerShell segítségével helyette.
-
-- Megjelenik egy **szükséges aktiválási** figyelmeztető riasztás, amely azt ajánlja, hogy regisztrálja az Azure verem szoftverfejlesztői készlet. Ez az elvárt viselkedés.
-- Ha a **összetevő** bármelyik hivatkozásra kattint **infrastruktúra-szerepkör** riasztást, a létrejövő **áttekintése** panel megpróbálja betölteni, és sikertelen lesz. Emellett a ** – áttekintés ** panel does nem túllépi az időkorlátot.
-- Felhasználói előfizetések eredmények az árva erőforrások törlése. A probléma megoldásához először törölnie a felhasználói erőforrásokat és a teljes erőforráscsoport, és törölje a felhasználó előfizetések.
-- Nem áll az előfizetés engedéllyel megtekintheti a verem Azure portál használatával. A probléma megoldásához engedélyek PowerShell használatával ellenőrizheti.
-- A **szolgáltatásának állapota** panel betöltése sikertelen. Ha a szolgáltatás állapotát panel megnyitásához a rendszergazda vagy a felhasználói portál, Azure verem egy hibaüzenet jelenik meg, és nem betölti az információt. Ez az elvárt működés. Válassza ki, és nyissa meg a szolgáltatás állapotát, de ez a funkció még nem érhető el, de hajtják végre az Azure-verem egy jövőbeli verziójában.
-#### <a name="marketplace"></a>Piactér
-- Néhány Piactéri elemek el ebben a kiadásban kompatibilitási megfontolások miatt. Ezek lesznek ismét engedélyezni kell további ellenőrzése után.
-- Felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és láthatja például tervek és ajánlatok felügyeleti elemeket. Ezek az elemek nem működőképes a felhasználók számára is.
- 
-#### <a name="compute"></a>Számítás
-- Felhasználók rendszer felajánlja a lehetőséget a virtuális gép létrehozása a georedundáns tárolást. E konfiguráció hatására a virtuális gép nem hozható létre. 
-- Beállíthatja, hogy a virtuális gép rendelkezésre állási csoportban, csak az egyik tartalék tartomány, és egy frissítési tartomány.
-- Nincs nincs Piactéri élmény virtuálisgép-méretezési csoportok létrehozásához. A skála beállítása egy sablon használatával hozhat létre.
-- A virtuálisgép-méretezési csoportok skálázási beállításai nem érhetők el a portálon. Áthidaló megoldásként használja [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). PowerShell-verzió különbségek, miatt kell használnia a `-Name` paraméter helyett `-VMScaleSetName`.
-
-#### <a name="networking"></a>Hálózat
-- Nyilvános IP-címek a terheléselosztó nem létrehozása a portál használatával. A probléma megoldásához a PowerShell hozhat létre a terheléselosztó hasonló adataival.
-- Hálózati terheléselosztó létrehozásakor létre kell hoznia a hálózati cím címfordítási (NAT) szabály. Ha ezt elmulasztja, kapunk hiba történt egy NAT-szabály hozzáadása a terheléselosztó létrehozása után.
-- A **hálózati**, ha **kapcsolat** egy VPN-kapcsolat beállítása **VNet – VNet** van megadva, a lehetséges kapcsolattípus. Válassza ezt a beállítást. Jelenleg csak a **pont-pont (IPsec)** lehetőség.
-- Egy nyilvános IP-címet a virtuális gép (VM) nem társítását, miután a virtuális gép létrehozása és társított IP-címet. Disassociation tűnik, de a korábban hozzárendelt nyilvános IP-cím marad az eredeti virtuális társítva. Ez akkor fordul elő, akkor is, ha egy új virtuális géphez az IP-cím ismételt hozzárendelése (más néven a *virtuális IP-címcsere*). Az összes jövőbeni megpróbál a kapcsolaton keresztül a eredetileg társított virtuális Gépet, és nem egy IP-cím eredményén keresztül kapcsolódni. Új virtuális gépek létrehozására jelenleg, új nyilvános IP-címek csak használhatjuk.
-- Lehet, hogy az Azure verem operátorok nem lehet telepíteni, törlése, módosítása a Vnetek vagy a hálózati biztonsági csoportok. A probléma főként látható ugyanazon csomag későbbi frissítési kísérletek. Ennek oka egy frissítést, amely jelenleg vizsgált egy csomagolási kapcsolatos problémát.
-- Belső Load Balancing (ILB) nem megfelelően kezeli a MAC-címek háttér virtuális gépek, amelyek dobja el a csomagok és a háttér-hálózat használata Linux-példányok esetén.
- 
-#### <a name="sqlmysql"></a>SQL/MySQL 
-- Egy óraba bérlők adatbázisok létrehozhat egy új SQL- vagy MySQL SKU is igénybe vehet. 
-- Elemet közvetlenül az SQL és MySQL futtató kiszolgálókat, az erőforrás-szolgáltató által el nem végzett létrehozása nem támogatott, és nem megfelelő állapot azt eredményezheti.
-
-#### <a name="app-service"></a>App Service
-- A felhasználó regisztrálnia kell a storage erőforrás-szolgáltató, ahhoz, hogy az első Azure-függvény létre az előfizetést.
- 
-#### <a name="usage"></a>Használat  
-- Használati nyilvános IP-használat mérési adatokat jeleníti meg az azonos *EventDateTime* érték az egyes rekordokhoz ahelyett, hogy a *TimeDate* tájékoztat, hogy a rekord létrehozásának stamp. Ezeket az adatokat jelenleg nem használható a nyilvános IP-cím használatának pontos lehetet.
-
-#### <a name="identity"></a>Identitás
-
-Az Azure Active Directory összevonási szolgáltatások (ADFS) környezetben telepített a **azurestack\azurestackadmin** fiók már nincs az alapértelmezett szolgáltató előfizetés tulajdonosának. Való bejelentkezés helyett a **felügyeleti portál / adminmanagement végpont** rendelkező a **azurestack\azurestackadmin**, használhatja a **azurestack\cloudadmin** fiókot, így hogy kezelése, és az alapértelmezett szolgáltató előfizetés használatára.
-
-> [!IMPORTANT]
-> Még a **azurestack\cloudadmin** fiók telepített AD FS-környezetben az alapértelmezett szolgáltató előfizetés tulajdonosának, nincs az állomás a távoli asztali engedélyek. Továbbra is használhatja a **azurestack\azurestackadmin** vagy a helyi rendszergazdai fiók bejelentkezési, eléréséhez és a gazdagép kezelése, igény szerint.
-
 

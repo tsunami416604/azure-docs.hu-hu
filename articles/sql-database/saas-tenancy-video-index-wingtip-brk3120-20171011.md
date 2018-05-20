@@ -2,20 +2,20 @@
 title: Videó indexelt, Azure SaaS SQL-alkalmazás |} Microsoft Docs
 description: Ez a cikk különböző időpontban indexeli a 81 kapcsolatos SaaS DB bérleti app kialakításának köszönhetően az ignite-on konferencia 2017. október 11 tartani a videó percben. Kihagyhatja azokat, amelyek az Önt érdeklő részére. Legalább 3 mintákat ismerteti. Azure-szolgáltatások, amelyek megkönnyítik a fejlesztői és felügyeleti ismerteti.
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 05/14/2018
 ms.service: sql-database
 ms.reviewer: billgib
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
-ms.openlocfilehash: 7dcd4681833f227f32534ae3053b7b482bb813bc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4ea62855b61cb7439b19204564cbc2d7fcdbd0fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>Videó indexelt és jegyzetelve mulit-bérlő SaaS-alkalmazás Azure SQL Database használata
+# <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Videó indexelt és jegyzetelve a több-bérlős SaaS-alkalmazásokhoz az Azure SQL Database használatával
 
 Ez a cikk egy megjegyzésekkel ellátott index egy 81 perces videót SaaS bérleti modellek és minták idő helyeinek. Ez a cikk lehetővé teszi Ugrás vissza, vagy a videót, amely mely részében előre érdekel meg. A videó az Azure SQL Database egy több-bérlős adatbázis-alkalmazás fő kialakítási lehetőségeit ismerteti. A videó bemutatók, a felügyeleti kód forgatókönyvek és esetenként részletesebb tájékoztatást élmény írásbeli dokumentációban lehet, mint tartalmazza.
 
@@ -60,13 +60,13 @@ Az alábbi címek a cikk későbbi részében megfelelő megjegyzésekkel ellát
 - [18. A Wingtip SaaS mintaalkalmazást, 0:48:10](#anchor-image-wtip-min04810)
 - [19. Forgatókönyvek és mintázatokat írja le az oktatóanyagok 0:49:10](#anchor-image-wtip-min04910)
 - [20. Oktatóanyagok és a Github-tárházban, 0 bemutató: 50:18](#anchor-image-wtip-min05018)
-- [21. Github repo Microsoft/WingtipSaaS, 0:50:38](#anchor-image-wtip-min05038)
+- [21. Github-tárház Microsoft/WingtipSaaS, 0:50:38](#anchor-image-wtip-min05038)
 - [22. A minták, a 0 felfedezése: 56:20](#anchor-image-wtip-min05620)
 - [23. Bérlők és bevezetési, 0-kiépítés: 57:44](#anchor-image-wtip-min05744)
 - [24. Bérlők és az alkalmazás kapcsolat, 0-kiépítés: 58:58](#anchor-image-wtip-min05858)
 - [25. Bemutató felügyeleti parancsfájlok egy egybérlős, 0-kiépítés: 59:43](#anchor-image-wtip-min05943)
 - [26. Kiépítés és a katalógus, 1:00:02 PowerShell](#anchor-image-wtip-min10002)
-- [27. T-SQL SELECT * FROM TenantsExtended, 1:03:30](#anchor-image-wtip-min10330)
+- [27. T-SQL SELECT * a TenantsExtended, 1:03:30](#anchor-image-wtip-min10330)
 - [28. Előre nem látható a bérlői terhelések, 1:04:36 kezelése](#anchor-image-wtip-min10436)
 - [29. A rugalmas készlet figyelése, 1:06:39](#anchor-image-wtip-min10639)
 - [30. Létrehozás és teljesítményfigyelési feladatokat, 1:09:42 betöltése](#anchor-image-wtip-min10942)
@@ -111,7 +111,7 @@ Képernyőkép képet kattintva megnyitná a pontos idő helyét a videó.
 
 
 &nbsp; <a name="anchor-image-wtip-min00417"/>
-#### <a name="3-agenda-00409"></a>3. Agenda, 0:04:09
+#### <a name="3-agenda-00409"></a>3. Napirend, 0:04:09
 [![Agenda][image-wtip-min00417-agenda]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=249)
 
 
@@ -201,7 +201,7 @@ Képernyőkép képet kattintva megnyitná a pontos idő helyét a videó.
 
 &nbsp; <a name="anchor-image-wtip-min05038"/>
 #### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. Github repo Microsoft/WingtipSaaS, 0:50:32
-[![Github repo Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
+[![Github-tárház Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
 
 
 &nbsp; <a name="anchor-image-wtip-min05620"/>
@@ -316,7 +316,7 @@ Képernyőkép képet kattintva megnyitná a pontos idő helyét a videó.
 
 [image-wtip-min00311-session]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00311-session-objectives-takeaway.png "Munkamenet-célkitűzések."
 
-[image-wtip-min00417-agenda]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00417-agenda-app-management-models-patterns.png "Agenda."
+[image-wtip-min00417-agenda]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00417-agenda-app-management-models-patterns.png "Napirend."
 
 [image-wtip-min00505-web-app]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00505-wingtip-saas-app-mt-web.png "SaaS-alkalmazás Wingtip: több-bérlős webalkalmazás"
 
@@ -352,7 +352,7 @@ Képernyőkép képet kattintva megnyitná a pontos idő helyét a videó.
 
 [image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "Oktatóanyagok és a Github-tárház bemutató"
 
-[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Github repo Microsoft/WingtipSaaS"
+[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Github-tárház Microsoft/WingtipSaaS"
 
 [image-wtip-min05620-exploring-patterns]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05620-exploring-patterns-tutorials.png "A minták felfedezése"
 

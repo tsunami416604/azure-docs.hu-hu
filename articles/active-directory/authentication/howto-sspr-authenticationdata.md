@@ -10,11 +10,11 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1dba7c302d8acad6133c0e7c6a2186f7ba617e2c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5409bf198d0e3f6537619ef4698d9f2e31bd27c5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó alaphelyzetbe állítása, anélkül, hogy a végfelhasználói regisztrálási telepítése
 
@@ -33,16 +33,27 @@ Megfelelően működjön, telefonszámok a formátumúnak kell lennie *+ ország
 
 Ha az Azure AD Connectben az alapértelmezett beállításokat használja, a következő megfeleltetéseket történik:
 
-| Helyszíni Active Directory | Azure AD | Az Azure AD hitelesítési kapcsolattartási adatai |
-| --- | --- | --- |
-| TelephoneNumber | Irodai telefon | Másodlagos telefonszám |
-| Mobileszköz | Mobiltelefon | Telefonszám |
+| Helyszíni Active Directory | Azure AD |
+| --- | --- |
+| TelephoneNumber | Irodai telefon |
+| Mobileszköz | Mobiltelefon |
 
-Ezek a mezők üres jelenhetnek meg addig, amíg a felhasználó megerősíti, hogy a hitelesítési adatokat.
+Amikor a felhasználó ellenőriztette a mobiltelefon számával, a telefonszám mező hitelesítési kapcsolattartási adatokat az Azure ad-ben alatti is tölti fel ezt a számot.
 
-Egy globális rendszergazda manuálisan állíthatja be a hitelesítési kapcsolattartási adatokat a felhasználó az alábbi képernyőképen látható módon.
+## <a name="authentication-contact-info"></a>Hitelesítési kapcsolattartási adatok
+
+Egy globális rendszergazda manuálisan állíthatja be a hitelesítési kapcsolattartási adatokat egy felhasználó az alábbi képernyőképen látható módon.
 
 ![Contact][Contact]
+
+Ha a telefonszám mező fel van töltve, és az SSPR-házirendben engedélyezve van a mobiltelefon, a felhasználó jelenik meg, hogy a jelszó alaphelyzetbe állítása regisztrációs lapon és a jelszó során visszaállítása munkafolyamat. 
+
+A telefonszámok mező nem használatos a jelszó-visszaállításhoz.
+
+Ha az e-mailek mező nem üres, és e-mailt az SSPR-házirendben engedélyezve van, a felhasználó jelenik meg, hogy e-mailt a jelszó alaphelyzetbe állítása regisztrációs oldalon és során a jelszó alaphelyzetbe állítása a munkafolyamat.
+
+Ha a másodlagos e-mail mező fel van töltve, és e-mailt az SSPR-házirendben engedélyezve van, a felhasználó fog **nem** lásd: e-maileket a jelszó alaphelyzetbe állítása regisztrációs lapjához, de megjelennek a során a jelszó alaphelyzetbe állítása a munkafolyamat. 
+
 
 ## <a name="security-questions-and-answers"></a>Biztonsági kérdések és válaszok
 

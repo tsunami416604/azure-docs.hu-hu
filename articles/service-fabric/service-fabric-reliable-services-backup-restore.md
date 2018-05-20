@@ -9,16 +9,16 @@ editor: subramar,zhol
 ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: dd8042620b6b9829e49f3124ecdee1c038f8c12f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c90231d58ca8eb562aadb916c8667e2bee700b3a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Biztonsági mentése és visszaállítása a Reliable Services és Reliable Actors
 Az Azure Service Fabric egy magas rendelkezésre állású platform, amely replikálja az állapot karbantartásához a magas rendelkezésre állás több csomópont között.  Így még akkor is, ha a fürtben egy csomópont meghibásodik, a szolgáltatások is elérhetőek. Amikor ez a platform által biztosított a beépített redundanciát lehet, hogy elegendő-e bizonyos, bizonyos esetekben célszerű a szolgáltatás számára az adatok biztonsági másolatát (külső áruházban).
@@ -241,7 +241,7 @@ Fontos, hogy a kritikus fontosságú adatok biztonsági mentése van folyamatban
 ## <a name="under-the-hood-more-details-on-backup-and-restore"></a>A technikai részletek alatt: további részleteket a biztonsági mentés és helyreállítás
 Íme, néhány további részleteket a biztonsági mentését és helyreállítását.
 
-### <a name="backup"></a>Biztonsági mentés
+### <a name="backup"></a>Backup
 A megbízható állapotkezelője konzisztens biztonsági másolatok létrehozása nélkül blokkolja az összes olvasási és írási műveleteket biztosít. Ehhez használja a checkpoint és a naplófájlok mechanizmus.  Megbízható állapotkezelő teszi a terhelés a tranzakciós napló és a helyreállítási időkről javításához bizonyos időpontokban intelligens (egyszerűsített) ellenőrzőpontot vesz igénybe.  Amikor `BackupAsync` beszerzését, a megbízható állapotkezelője arra utasítja az összes megbízható objektumot a helyi biztonsági mentés mappájába másolhatja a legújabb ellenőrzőpontfájlok.  Ezt követően a megbízható állapotkezelője másolja át összes naplóbejegyzést kiindulva a "start"mutató legújabb naplórekord a biztonsági mentési mappába.  Akár a legújabb naplóbejegyzés naplórekordok vannak a biztonsági mentésben szereplő, és a megbízható állapotkezelője írási előre naplózási megőrzi, megbízható állapotkezelő garantálja a összes tranzakciók, amelyek véglegesített (`CommitAsync` sikeresen adott vissza ) a biztonsági mentésben szereplő.
 
 Bármely tranzakció, amely véglegesíti után `BackupAsync` előfordulhat, hogy hívása történt, vagy nem a biztonsági mentésben.  Ha a helyi biztonsági mentési mappája feltöltődtek a Platform (Ez azt jelenti, hogy helyi biztonsági másolat elkészült a futtatókörnyezet), a szolgáltatás biztonsági mentési visszahívási meghívták.  A visszahívási felelős a biztonsági mentési mappa áthelyezése egy külső helyre, például az Azure Storage.
@@ -263,5 +263,5 @@ Mindaddig, amíg a szolgáltatás teszi teljessé az API sikeresen (ad vissza IG
   - [Megbízható szolgáltatások értesítések](service-fabric-reliable-services-notifications.md)
   - [Megbízható konfigurálása](service-fabric-reliable-services-configuration.md)
   - [Fejlesztői leírás megbízható gyűjtemények](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-  - [Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
+  - [Rendszeres biztonsági mentés és visszaállítás az Azure Service Fabricben](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 

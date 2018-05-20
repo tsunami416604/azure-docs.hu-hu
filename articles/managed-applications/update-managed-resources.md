@@ -1,20 +1,20 @@
 ---
-title: "Erőforrásokat az Azure-ban kezelt alkalmazások |} Microsoft Docs"
-description: "Ismerteti, hogyan működnek a felügyelt erőforrások a kezelt alkalmazás – az Azure erőforráscsoport."
+title: Erőforrásokat az Azure-ban kezelt alkalmazások |} Microsoft Docs
+description: Ismerteti, hogyan működnek a felügyelt erőforrások a kezelt alkalmazás – az Azure erőforráscsoport.
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: d3c955d7be0e7e6d45751c0e685bad498e524d94
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 7c2b38055771dae458e4a3a56c2c98231335ae03
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>A kezelt erőforrások használata az Azure-erőforráscsoport felügyelt alkalmazás
 
@@ -93,7 +93,7 @@ A házirend-hozzárendelés megjelenik a portálon.
 
 ![Házirend-hozzárendelés megtekintése](./media/update-managed-resources/assignment.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * Mintaprojektjeit, lásd: [a kezelt alkalmazások az Azure-hoz](sample-projects.md).

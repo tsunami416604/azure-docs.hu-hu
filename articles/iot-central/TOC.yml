@@ -1,0 +1,109 @@
+- name: Azure IoT – alapok
+  href: /azure/iot-fundamentals
+- name: Azure IoT Central dokumentáció
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure IoT Central?
+      href: overview-iot-central.md
+    - name: Az IoT-megoldás beállításai
+      href: overview-iot-options.md
+    - name: Felhasználói felület bemutatása
+      href: overview-iot-central-tour.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Új alkalmazás létrehozása
+      href: quick-deploy-iot-central.md
+- name: Oktatóanyagok
+  items:
+    - name: Szerkesztő
+      items:
+        - name: 1 – Új eszköztípus megadása
+          href: tutorial-define-device-type.md
+        - name: 2 – Szabályok konfigurálása
+          href: tutorial-configure-rules.md
+        - name: 3 – Operátori nézet testreszabása
+          href: tutorial-customize-operator.md
+    - name: Művelet
+      items:
+        - name: 4 – Eszközök monitorozása
+          href: tutorial-monitor-devices.md
+        - name: 5 – Eszköz hozzáadása
+          href: tutorial-add-device.md
+- name: Alapelvek
+  items:
+    - name: Architektúra
+      href: concepts-architecture.md
+    - name: Kapcsolatok
+      href: concepts-connectivity.md
+- name: Útmutatók
+  items:
+    - name: Rendszergazda
+      items:
+        - name: Alkalmazás létrehozása
+          href: howto-create-application.md
+        - name: Alkalmazás felügyelése
+          href: howto-administer.md
+    - name: Szerkesztő
+      items:
+        - name: Eszközsablon beállítása
+          href: howto-set-up-template.md
+        - name: Verzióeszköz-sablon
+          href: howto-version-devicetemplate.md
+        - name: Telemetriaszabály létrehozása
+          href: howto-create-telemetry-rules.md
+        - name: Eseményszabály létrehozása
+          href: howto-create-event-rules.md
+        - name: Képek előkészítése és feltöltése
+          href: howto-prepare-images.md
+    - name: Művelet
+      items:
+        - name: Eszközök kezelése
+          href: howto-manage-devices.md
+        - name: Használatos eszközök készletei
+          href: howto-use-device-sets.md
+        - name: Egyéni elemzések létrehozása
+          href: howto-create-analytics.md
+    - name: Eszközfejlesztő
+      items:
+        - name: Node.js (általános) alkalmazás előkészítése és csatlakoztatása
+          href: howto-connect-nodejs.md
+        - name: MXChip IoT DevKit előkészítése és csatlakoztatása
+          href: howto-connect-devkit.md
+        - name: Raspberry Pi (Python) előkészítése és csatlakoztatása
+          href: howto-connect-raspberry-pi-python.md
+        - name: 'Raspberry Pi (C#) előkészítése és csatlakoztatása'
+          href: howto-connect-raspberry-pi-csharp.md
+        - name: Windows IoT Core eszköz előkészítése és csatlakoztatása
+          href: howto-connect-windowsiotcore.md
+- name: Kapcsolódó témakörök
+  items:
+    - name: Megoldások
+      items:
+        - name: IoT Suite előre konfigurált megoldások
+          href: /azure/iot-suite
+        - name: IoT-központ
+          href: /microsoft-iot-central
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Szolgáltatási SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: További források
+  items:
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-central'

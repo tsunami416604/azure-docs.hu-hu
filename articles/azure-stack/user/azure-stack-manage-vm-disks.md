@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 314c5b51608192719c77ce143b3530f0bb310bc2
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.openlocfilehash: 8e91b4d83aa90a7e744fb8e73cda788dbf8c58ec
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Virtuális gép lemezes tárolás Azure verem kiépítése
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/12/2018
 
 Ez a cikk ismerteti a virtuálisgép-lemez tárolót létesíteni, a verem Azure portál használatával, vagy a PowerShell használatával.
 
-## <a name="overview"></a>Áttekintés (klasszikus)
+## <a name="overview"></a>Áttekintés
 
 Az Azure verem támogatja a [lemezek nem felügyelt](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) virtuális gépeken, az operációs rendszer és adatlemez is.
 
@@ -45,7 +45,7 @@ Több virtuális gép létrehozásakor felhasználhatja az egyes új virtuális 
 
 A következő táblázat összefoglalja a lemezek hozzáadása a portál használatával, és a PowerShell használatával.
 
-| Metódus | Beállítások
+| Módszer | Beállítások
 |-|-|
 |[Felhasználói portál](#use-the-portal-to-add-additional-disks-to-a-vm)|-Új adatlemezek hozzáadása egy meglévő virtuális gépre. Új lemezek Azure verem jönnek létre. </br> </br>-A meglévő lemezt (.vhd) fájl hozzáadása a korábban telepített virtuális gép. Ehhez az szükséges, készítse elő a .vhd és majd feltölteni a fájlt az Azure-verem kell. |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | – Hozzon létre egy új virtuális gép operációsrendszer-lemezzel, majd egy időben adja hozzá egy vagy több adatlemezek ezt a virtuális Gépet. |
@@ -65,22 +65,22 @@ Minden nem felügyelt lemezt ad hozzá külön kell rendezni.
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>A portál használatával hozzon létre, és új adatlemezzel
 
-1.  Kattintson a portál **virtuális gépek**.    
+1.  Válassza ki a portál **virtuális gépek**.    
     ![Példa: Virtuális gép irányítópult](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2.  Válassza ki a korábban kiosztott virtuális gépeket.   
     ![Példa: Válassza ki a virtuális gépek az irányítópulton](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Kattintson a virtuális gép **lemezek** > **új Attach**.       
+3.  Válassza ki a virtuális gép **lemezek** > **új Attach**.       
     ![Példa: Egy új lemezt csatolni a virtuális gép](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  Az a **új lemez csatolása** ablaktáblán kattintson a **hely**. Alapértelmezés szerint a hely értéke ugyanabban a tárolóban, amely az operációsrendszer-lemezképet tárolja.      
+4.  Az a **új lemez csatolása** ablaktáblán válassza előbb **hely**. Alapértelmezés szerint a hely értéke ugyanabban a tárolóban, amely az operációsrendszer-lemezképet tárolja.      
     ![Példa: Set a lemez helye](media/azure-stack-manage-vm-disks/disk-location.png)
 
-5.  Válassza ki a **tárfiók** használatára. Ezután válassza ki a **tároló** helyezze az adatok helyét. Az a **tárolók** lapon létrehozhat egy új tároló Ha azt szeretné. A saját tároló majd módosítsa a helyet az új lemez. Az egyes lemezek külön használata esetén az adatok lemezre, amely a jobb teljesítmény érdekében elhelyezését terjesztése. Kattintson a **válasszon** a mentéshez.     
+5.  Válassza ki a **tárfiók** használatára. Ezután válassza ki a **tároló** helyezze az adatok helyét. Az a **tárolók** lapon létrehozhat egy új tároló Ha azt szeretné. A saját tároló majd módosítsa a helyet az új lemez. Az egyes lemezek külön használata esetén az adatok lemezre, amely a jobb teljesítmény érdekében elhelyezését terjesztése. Válasszon **válasszon** a mentéshez.     
     ![Példa: Egy tároló kiválasztása](media/azure-stack-manage-vm-disks/select-container.png)
 
-6.  Az a **új lemez csatolása** lapon, a frissítés a **neve**, **típus**, **mérete**, és **állomás-gyorsítótárazása** beállítások a lemezen. Kattintson a **OK** az új lemez konfigurációját a virtuális gép mentéséhez.  
+6.  Az a **új lemez csatolása** lapon, a frissítés a **neve**, **típus**, **mérete**, és **állomás-gyorsítótárazása** beállítások a lemezen. Válassza ki **OK** az új lemez konfigurációját a virtuális gép mentéséhez.  
     ![Példa: Teljes lemezek melléklet](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
 
 7.  Után Azure verem a lemezt hoz létre, és csatolja azt a virtuális gép, az új lemez szerepel-e a virtuális gép lemezbeállításokat alatt **ADATLEMEZEK**.   
@@ -94,22 +94,22 @@ Minden nem felügyelt lemezt ad hozzá külön kell rendezni.
   Ahhoz, hogy a .vhd fájlt, mint a tároló, amely az operációs rendszer lemezének különböző tárolót használni szeretne.   
   ![Példa: A VHD-fájl feltöltése](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
-2.  A .vhd fájl feltöltése, után készen áll a virtuális merevlemez csatlakoztatása egy virtuális Gépet. A bal oldali menüben kattintson a **virtuális gépek**.  
+2.  A .vhd fájl feltöltése, után készen áll a virtuális merevlemez csatlakoztatása egy virtuális Gépet. A bal oldali menüben válasszon ki **virtuális gépek**.  
  ![Példa: Válassza ki a virtuális gépek az irányítópulton](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 3.  Válassza ki a virtuális gépet a listából.    
   ![Példa: Válassza ki a virtuális gépek az irányítópulton](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-4.  Kattintson a lap a virtuális gép **lemezek** > **Csatolás meglévő**.   
+4.  A virtuális gép lapon válassza az **lemezek** > **Csatolás meglévő**.   
   ![Példa: Meglévő lemez csatolása](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
-5.  Az a **meglévő lemez csatolása** kattintson **VHD-fájl**. A **tárfiókok** lap megnyitásakor.    
+5.  Az a **meglévő lemez csatolása** lapon jelölje be **VHD-fájl**. A **tárfiókok** lap megnyitásakor.    
   ![Példa: Válasszon egy VHD-fájl](media/azure-stack-manage-vm-disks/select-vhd.png)
 
-6.  A **tárfiókok**, jelölje ki a fiókot használja, és válassza ki a tároló, amely a .vhd fájl, melyet korábban töltött fel. Válassza ki a .vhd fájlt, és kattintson **válasszon** a mentéshez.    
+6.  A **tárfiókok**, jelölje ki a fiókot használja, és válassza a olyan tároló, amely a .vhd fájl, melyet korábban töltött fel. Válassza ki a .vhd fájlt, és válassza a **válasszon** a mentéshez.    
   ![Példa: Egy tároló kiválasztása](media/azure-stack-manage-vm-disks/select-container2.png)
 
-7.  A **meglévő lemez csatolása**, a kiválasztott fájl megtalálható-e **VHD-fájl**. Frissítés a **állomás-gyorsítótárazása** beállítása a lemezen, és kattintson a **OK** az új lemez konfigurációját a virtuális gép mentéséhez.    
+7.  A **meglévő lemez csatolása**, a kiválasztott fájl megtalálható-e **VHD-fájl**. Frissítés a **állomás-gyorsítótárazása** beállítása a lemezen, és válassza ki **OK** az új lemez konfigurációját a virtuális gép mentéséhez.    
   ![Példa: A VHD-fájl csatolása](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  Után Azure verem a lemezt hoz létre, és csatolja azt a virtuális gép, az új lemez szerepel-e a virtuális gép lemezbeállításokat alatt **adatlemezek**.   
@@ -260,5 +260,5 @@ If you have a VM with more than one disk in the same container, the service oper
 To do so, use the scripts from the following location in GitHub. These scripts can be used to move the data disks to different containers.
 -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Virtuális gépek Azure-verem kapcsolatos további információkért lásd: [szempontok a virtuális gépek Azure-készletben](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-considerations).

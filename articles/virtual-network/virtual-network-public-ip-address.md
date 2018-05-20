@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 8c052b45a0db42e2220c052b03f53f538de107ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c28d409bbdb7a4100f2bb9f00ff6f58a13855ea4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Létrehozása, módosítása vagy a nyilvános IP-cím törlése
 
-Információ a nyilvános IP-cím és létrehozása, módosítása és törlése egy. A nyilvános IP-cím és a saját konfigurálható beállítások erőforrás. Lehetővé teszi egy nyilvános IP-cím hozzárendelése más Azure-erőforrások:
-- Bejövő erőforrások például az Azure virtuális gépek, Azure virtuálisgép-méretezési csoportok, Azure VPN Gateway, alkalmazásátjárót és az Internet felé néző Azure Load Balancer Terheléselosztók internetkapcsolat. Azure-erőforrások tud fogadni bejövő kommunikáció nélkül hozzárendelt nyilvános IP-címet az internetről. Egyes Azure-erőforrások eredendően keresztül hozzáférhetők nyilvános IP-címeket, amíg más erőforrások rendelkeznie kell nyilvános IP-címeket az internetről hozzáférhető legyen rendelve.
-- Kimenő kapcsolódás az internethez, egy előre jelezhető IP-címet használja. Például a virtuális gépek kommunikálhatnak kimenő internetkapcsolat nélkül egy nyilvános IP-címet kap, de a cím az Azure fordította egy előre nem látható a nyilvános cím hálózati cím. Egy erőforrást egy nyilvános IP-cím hozzárendelése lehetővé teszi, hogy tudja, melyik IP-címet a kimenő kapcsolathoz használt. Bár a előre jelezhető, a cím változhat, attól függően, hogy a választott hozzárendelési módszert. További információkért lásd: [hozzon létre egy nyilvános IP-cím](#create-a-public-ip-address). Az Azure-erőforrások kimenő kapcsolatok kapcsolatos további tudnivalókért olvassa el a [kimenő kapcsolatok megértéséhez](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk.
+Információ a nyilvános IP-cím és létrehozása, módosítása és törlése egy. A nyilvános IP-cím és a saját konfigurálható beállítások erőforrás. Lehetővé teszi egy nyilvános IP-cím hozzárendelése egy Azure-erőforrás, amely támogatja a nyilvános IP-címek:
+- Az erőforrás, például az Azure virtuális gépek (VM), Azure Alkalmazásátjárót, Azure Load Balancer Terheléselosztók, Azure VPN Gatewayek és mások számára az internetről bejövő kommunikációt. Továbbra is kommunikálhat egyes erőforrásokat, például virtuális gépek, az internetről, ha egy virtuális gép nem rendelkezik a nyilvános IP-cím hozzárendelve, mindaddig, amíg a virtuális gép terhelés terheléselosztó háttér-készlet része, és a terheléselosztó a nyilvános IP-cím van hozzárendelve. Határozza meg, hogy egy adott Azure szolgáltatás-erőforrást is hozzárendelhető egy nyilvános IP-címet, vagy hogy azt továbbíthatók a keresztül a nyilvános IP-címét egy másik Azure-erőforrás, olvassa el a dokumentációt a szolgáltatáshoz. 
+- Kimenő kapcsolódás az internethez, egy előre jelezhető IP-címet használja. Például a virtuális gépek kommunikálhatnak kimenő internetkapcsolat nélkül egy nyilvános IP-címet kap, de a cím az Azure által lefordított egy előre nem látható a nyilvános cím, alapértelmezés szerint hálózati cím. Egy erőforrást egy nyilvános IP-cím hozzárendelése lehetővé teszi, hogy tudja, melyik IP-címet a kimenő kapcsolathoz használt. Bár a előre jelezhető, a cím változhat, attól függően, hogy a választott hozzárendelési módszert. További információkért lásd: [hozzon létre egy nyilvános IP-cím](#create-a-public-ip-address). Az Azure-erőforrások kimenő kapcsolatok kapcsolatos további információkért lásd: [kimenő kapcsolatok megértéséhez](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="before-you-begin"></a>Előkészületek
 

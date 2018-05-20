@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: ed0bde0945a36c4fa194059f3b17557d566047a2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: bf6202b002aaf6d89a30c7c653fdcee00cb50290
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának figyelésére, és a problémák diagnosztizálásához gyorsan
 
@@ -34,7 +34,7 @@ Mellett a két szolgáltatás integrálása, IoT-központ is biztosít a saját 
 
 Az Azure erőforrás-szintű diagnosztikai információkat, ami azt jelenti, hogy történik az IoT hub-műveletek figyelheti biztosít. 
 
-Az Azure figyelő diagnosztikai beállítások cserél az IoT-központ műveletek figyelése Ha Ön jelenleg felhasználói műveletek figyelését, át kell telepítenie a munkafolyamatokat. További információkért lásd: [származó Diagnostics figyelési beállítások áttelepítése][lnk-migrate].
+Az Azure figyelő diagnosztikai beállítások cserél az IoT-központ műveletek figyelése Ha figyelési műveletek jelenleg használ, át kell telepítenie a munkafolyamatokat. További információkért lásd: [származó Diagnostics figyelési beállítások áttelepítése][lnk-migrate].
 
 Az adott mérőszámok és eseményeket, amelyek Azure figyelő figyeli kapcsolatos további információkért lásd: [támogatott Azure-figyelő metrikák] [ lnk-AM-metrics] és [az Azure-szolgáltatások, a sémák és a kategóriák támogatott Diagnosztikai naplók][lnk-AM-schemas].
 

@@ -1,6 +1,6 @@
 ---
-title: Egyéni események Azure esemény rács küldeni a hibrid kapcsolat |} Microsoft Docs
-description: Az Azure Event Grid és az Azure CLI segítségével közzétehet egy témakört, és feliratkozhat a kapcsolódó eseményre. A végpont egy hibrid kapcsolat használható.
+title: Egyéni Azure Event Grid-események küldése hibrid kapcsolatba | Microsoft Docs
+description: Az Azure Event Grid és az Azure CLI segítségével közzétehet egy témakört, és feliratkozhat a kapcsolódó eseményre. Végpontként egy hibrid kapcsolatot használunk.
 services: event-grid
 keywords: ''
 author: tfitzmac
@@ -8,19 +8,21 @@ ms.author: tomfitz
 ms.date: 05/04/2018
 ms.topic: article
 ms.service: event-grid
-ms.openlocfilehash: 42b3e88d4bf411aa8a0d3bb129795f0d8ab98525
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c95cfee787244367688b82959474e2a8028b7ff6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Egyéni események átirányítása Azure hibrid kapcsolatok az Azure CLI és az esemény rács
+# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Egyéni események átvitele hibrid Azure Relay-kapcsolatokon keresztül az Azure CLI és az Event Grid segítségével
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure hibrid kapcsolatok a támogatott eseménykezelők egyike. Hibrid kapcsolatok használják az eseménykezelő, amikor kell feldolgozni az eseményeket, amelyek nem rendelkeznek egy nyilvános végpontot alkalmazásokból. Előfordulhat, hogy ezeket az alkalmazásokat a vállalati hálózaton belül. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk a témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az események küldése a hibrid kapcsolat.
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. A hibrid Azure Relay-kapcsolat az egyik támogatott eseménykezelő. A hibrid kapcsolatok eseménykezelőként való használatára akkor lehet szükség, ha olyan alkalmazásokból kell eseményeket kezelnie, amelyek nem rendelkeznek nyilvános végponttal. A vállalati hálózaton belül is lehetnek ilyen alkalmazások. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk a témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket hibrid kapcsolatokba küldjük.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy már rendelkezik egy hibrid kapcsolat és egy figyelő alkalmazás. Első lépésként a hibrid kapcsolatok, lásd: [Ismerkedés a hibrid kapcsolatok - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) vagy [Ismerkedés a hibrid kapcsolatok - csomópont](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+Ez a cikk feltételezi, hogy már rendelkezik egy hibrid kapcsolattal és egy figyelőalkalmazással. A hibrid kapcsolatok használatbavételéhez tekintse át a [Bevezetés a hibrid Relay-kapcsolatok használatába – .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) vagy a [Bevezetés a hibrid Relay-kapcsolatok használatába – Node](../service-bus-relay/relay-hybrid-connections-node-get-started.md) című témakört.
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -39,16 +41,20 @@ az group create --name gridResourceGroup --location westus2
 Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli.
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 
 ## <a name="subscribe-to-a-topic"></a>Feliratkozás témakörre
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. A következő példa a témakör hozott létre, és adja át az erőforrás-azonosítója a végpont a hibrid kapcsolat számítógépcsoportra fizetett elő. A hibrid kapcsolat azonosítója a következő formátumban:
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. Az alábbi példa feliratkozik a létrehozott témakörre, és átadja a hibrid kapcsolat erőforrás-azonosítóját a végpontnak. A hibrid kapcsolat azonosítója a következő formátumot követi:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
-A következő parancsfájl lekérdezi az erőforrás-azonosítója a továbbítási névtér. A hibrid kapcsolat Azonosítót hoz létre, és egy esemény rács témakör számítógépcsoportra fizetett elő. Azt állítja be a következő típusú végpont `hybridconnection` és a hibrid kapcsolat Azonosítóját használja a végpont.
+Az alábbi szkript lekéri a Relay-névtér erőforrás-azonosítóját. Létrehozza a hibrid kapcsolat azonosítóját, és feliratkozik egy Event Grid-témakörre. A végpontot `hybridconnection` típusúra állítja be, és a hibrid kapcsolat azonosítóját használja végpontként.
 
 ```azurecli-interactive
 relayname=<namespace-name>
@@ -75,14 +81,14 @@ endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --qu
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-A folyamat leegyszerűsítése érdekében használjon mintául szolgáló eseményadatokat, amelyeket elküldhet a témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el. A CURL egy olyan segédprogram, amely HTTP-kéréseket küld. Ebben a cikkben a CURL használatával küldjük el az eseményt a témakörbe.  Az alábbi példában három az eseményeket az esemény a rács témakör küldi:
+A folyamat leegyszerűsítése érdekében használjon mintául szolgáló eseményadatokat, amelyeket elküldhet a témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el. A CURL egy olyan segédprogram, amely HTTP-kéréseket küld. Ebben a cikkben a CURL használatával küldjük el az eseményt a témakörbe.  Az alábbi példa három eseményt küld el az Event Grid-témakörnek:
 
 ```azurecli-interactive
 body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-A figyelő alkalmazás a következő esemény üzenetet kell látnia.
+A figyelőalkalmazásnak meg kell kapnia az eseményüzenetet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.

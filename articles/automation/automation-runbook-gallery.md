@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a33bc9ea1750d9db34c0fad678118dc81f294c61
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8fb0e2181c518db541504f0eea77ce9fde7edf8f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Az Azure Automation forgatókönyv- és minták
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, különféle forgatókönyvekhez, amik már Microsoft és a Közösség által készített végezheti el.  Használja a következő használati helyzetekben módosítás nélkül, vagy használhatja őket a kiindulási pontként, és szerkesztheti azokat az adott igények szerint.

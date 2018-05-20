@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Service Fabric újrakonfigurálás |} Microsoft Docs"
-description: "A Service Fabric partíció újrakonfigurálása ismertetése"
+title: Az Azure Service Fabric újrakonfigurálás |} Microsoft Docs
+description: A Service Fabric partíció újrakonfigurálása ismertetése
 services: service-fabric
 documentationcenter: .net
 author: appi101
 manager: anuragg
-editor: 
+editor: ''
 ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: 8371c4b268e1181e61542261ad7fc5fd04f6e59c
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Az Azure Service Fabric újrakonfigurálása
 A *konfigurációs* van definiálva, a replikákat és a partíció egy állapotalapú szolgáltatás szerepkörét.
@@ -47,7 +47,7 @@ Egy újrakonfigurálás halad több lépésből áll:
 
 Nincsenek más fázisok csak belső használatra szolgálnak.
 
-## <a name="stuck-reconfigurations"></a>Stuck reconfigurations
+## <a name="stuck-reconfigurations"></a>Rögzített újrakonfigurálás
 Újrakonfigurálás kaphat *akadt* a számos okból. A gyakori okai a következők:
 
 - **Replikák le**: néhány újrakonfigurálás fázisok fel kell a konfigurációban a replikák többsége szükséges.

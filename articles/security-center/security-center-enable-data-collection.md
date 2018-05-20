@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 90a73545afa82276256a021588eaa594b95ee8da
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 847127c96f23bbeb3cf3a5d1c9768af6e0cc0dc4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés az Azure Security Centerben
 A Security Center az Azure virtuális gépek (VM) és a nem Azure számítógépek számára figyeli, hogy a biztonsági réseket és a fenyegetések adatait gyűjti. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Microsoft Monitoring Agent összeomlási memóriaképek is másolja a munkaterületre.
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>A Microsoft Monitoring Agent-automatikus kiépítés engedélyezése     
-Ha automatikus kiépítés engedélyezve van, a Security Center kiosztja a Microsoft Monitoring Agent összes támogatott Azure virtuális gépek és bármely újakat létrehozott. Automatikus kiépítés erősen ajánlott, de a kézzel történő ügynöktelepítést is rendelkezésre áll. [Megtudhatja, hogyan telepítse a Microsoft Monitoring Agent bővítmény](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
+Automatikus kiépítés alapértelmezés szerint van kapcsolva. Ha automatikus kiépítés engedélyezve van, a Security Center kiosztja a Microsoft Monitoring Agent összes támogatott Azure virtuális gépek és bármely újakat létrehozott. Automatikus kiépítés erősen ajánlott, de a kézzel történő ügynöktelepítést is rendelkezésre áll. [Megtudhatja, hogyan telepítse a Microsoft Monitoring Agent bővítmény](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
 > Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását. További tudnivalókért lásd: [automatikus kiépítés letiltása](security-center-enable-data-collection.md#disable-automatic-provisioning) ebben a cikkben. Virtuálisgép-lemez pillanatfelvételek és összetevő gyűjtemény engedélyezve van, akkor is, ha az Automatikus kiépítés le van tiltva.
@@ -32,13 +32,16 @@ Ha automatikus kiépítés engedélyezve van, a Security Center kiosztja a Micro
 >
 
 A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
-1. A Security Center főmenüjében válassza a **Biztonsági szabályzat** elemet.
+1. Az a Security Center fő menüben válassza a **biztonsági házirend**.
 2. Válassza ki az előfizetést.
+
+  ![Előfizetés kiválasztása][7]
+
 3. A **Biztonsági szabályzat** területen válassza az **Adatgyűjtés** elemet.
-4. A **bevezetési**, jelölje be **a** az Automatikus kiépítés engedélyezéséhez.
+4. A **automatikus kiépítés**, jelölje be **a** az Automatikus kiépítés engedélyezéséhez.
 5. Kattintson a **Mentés** gombra.
 
-![Automatikus kiépítés engedélyezése][1]
+  ![Automatikus kiépítés engedélyezése][1]
 
 ## <a name="default-workspace-configuration"></a>Alapértelmezett munkaterület-konfiguráció
 A Security Center által gyűjtött adatok Naplóelemzési munkaterületek tárolja.  Adatok összegyűjtése az Azure virtuális gépek munkaterületek Security Center által létrehozott vagy egy meglévő munkaterületen létrehozott tárolt választhatja.
@@ -49,16 +52,16 @@ A meglévő Naplóelemzési munkaterület használata:
 
 Egy meglévő Naplóelemzési munkaterület kiválasztása:
 
-1. A **biztonsági szabályzat – adatgyűjtés**, jelölje be **egy másik munkaterületen**.
+1. A **alapértelmezett munkaterület konfigurációs**, jelölje be **egy másik munkaterületen**.
 
    ![Meglévő munkaterület kiválasztása][2]
 
 2. A legördülő menüből válassza ki a munkaterület gyűjtött adatok tárolásához.
 
-> [!NOTE]
-> A lekéréses menüre csak munkaterületek férnek hozzá, és az Azure-előfizetéshez vannak rendszerébe.
->
->
+  > [!NOTE]
+  > A lekéréses menüre, az összes előfizetését a munkaterületek érhetők el. Lásd: [kereszt-előfizetés munkaterület kijelölés](security-center-enable-data-collection.md#cross-subscription-workspace-selection) további információt.
+  >
+  >
 
 3. Kattintson a **Mentés** gombra.
 4. Miután kiválasztott **mentése**, kérni fogja, ha szeretné figyelni reconfigure virtuális gépeket.
@@ -73,7 +76,15 @@ Egy meglévő Naplóelemzési munkaterület kiválasztása:
 
    - Válassza ki **Mégse** megszakítja a műveletet.
 
-   ![Meglévő munkaterület kiválasztása][3]
+     ![Meglévő munkaterület kiválasztása][3]
+
+## <a name="cross-subscription-workspace-selection"></a>Kereszt-előfizetés munkaterület kiválasztása
+Amikor kiválaszt egy munkaterület az adatok tárolásához, az összes előfizetését a munkaterületek érhetők el. Az előfizetések közötti munkaterület kijelölés lehetővé teszi különböző előfizetésekhez futó virtuális gépek adatokat gyűjteni, és tárolja az Ön által választott munkaterületen. Ezzel a funkcióval működik, ha mindkét Linux és Windows rendszeren futó virtuális gépek.
+
+> [!NOTE]
+> Az előfizetések közötti a munkaterület kiválasztása az Azure Security Center ingyenes szint részét képezi. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
+>
+>
 
 ## <a name="data-collection-tier"></a>Adatszint gyűjtemény
 A Security Center csökkentheti a események mennyiségének elég események vizsgálati, naplózási és fenyegetésészlelés megőrzésével. Kiválaszthatja, hogy az ügynök által gyűjtendő házirend az előfizetések és a munkaterületek származó négy események szűrése a jogosultság.
@@ -84,7 +95,8 @@ A Security Center csökkentheti a események mennyiségének elég események vi
 - **Nincs** – tiltsa le a biztonsági események gyűjtése a biztonsági és alkalmazás az AppLocker-naplók. Azok számára, aki ezt a beállítást választania a biztonsági irányítópultok csak a Windows tűzfal naplók és a kártevőirtó, alapkonfiguráció és frissítési például proaktív értékelések rendelkezik.
 
 > [!NOTE]
-> Ezeket a kiszolgálócsoportokat tervezték, hogy cím a jellemző forgatókönyvek. Ügyeljen arra, hogy melyik előtt az igényeinek megfelelő kiértékeléséhez.
+> Biztonsági események halmazok érhetők el, csak a Security Center Standard csomagra. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
+Ezeket a kiszolgálócsoportokat tervezték, hogy cím a jellemző forgatókönyvek. Ügyeljen arra, hogy melyik előtt az igényeinek megfelelő kiértékeléséhez.
 >
 >
 
@@ -115,7 +127,7 @@ A biztonsági és alkalmazás tároló eseményazonosítót minden teljes részl
 >
 
 A szűrési házirend kiválasztása:
-1. Az a **biztonsági házirend & beállítások** panelen válassza ki a szűrési házirendet a **biztonsági események**.
+1. Az a **biztonsági házirend adatgyűjtés** panelen válassza ki a szűrési házirendet a **biztonsági események**.
 2. Kattintson a **Mentés** gombra.
 
    ![Válassza ki a házirend szűrése][5]
@@ -129,12 +141,13 @@ Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a bizto
 >
 
 1. Térjen vissza a Security Center főmenübe, és válassza ki a biztonsági házirendet.
-
-   ![Automatikus kiépítés letiltása][6]
-
 2. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést.
-3. A a **biztonsági szabályzat – adatgyűjtés** panelen, a **bevezetési** válasszon **ki** automatikus kiépítés letiltása.
-4. Kattintson a **Mentés** gombra.  
+3. Az a **biztonsági szabályzat – adatgyűjtés** panelen, a **automatikus kiépítés** kiválasztása **ki**.
+4. Kattintson a **Mentés** gombra.
+
+  ![Automatikus kiépítés letiltása][6]
+
+Automatikus kiépítés letiltása (kikapcsolt), az alapértelmezett munkaterületi konfigurációs szakaszban nem jelennek meg.
 
 ## <a name="next-steps"></a>További lépések
 Ez a cikk bemutatta, hogyan gyűjti az adatokat, és a Security Center works automatikus kiépítés. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
@@ -153,4 +166,5 @@ Ez a cikk bemutatta, hogyan gyűjti az adatokat, és a Security Center works aut
 [2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[6]: ./media/security-center-enable-data-collection/disable-automatic-provisioning.png
+[6]: ./media/security-center-enable-data-collection/disable-data-collection.png
+[7]: ./media/security-center-enable-data-collection/select-subscription.png

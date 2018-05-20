@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 11726b274d72f263ff3defeb7eb7b80594681e15
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: d47a1099a8b57c450aa48e086cc1c391faf91aa7
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy törlése a virtuális hálózati társviszony-létesítés
 
@@ -111,6 +111,11 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációra, de nem m
 
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások 
 
+- <a name="cross-region"></a>A ugyanabban a régióban, illetve a különböző régiókban lévő virtuális hálózatok is partnert. A következő korlátozások vonatkoznak csak akkor érvényesíthetők, ha mindkét virtuális hálózat a *azonos* régió, de alkalmazza, ha a virtuális hálózatok globálisan társviszonyban van: 
+    - A virtuális hálózatok bármely Azure nyilvános felhőjében régióban, de nem Azure nemzeti felhők létezhet.
+    - Egy virtuális hálózatán lévő erőforrásokat nem lehet kommunikálni az Azure belső terheléselosztót a peered virtuális hálózat IP-címét. A terheléselosztó és az erőforrásokat, amelyek kommunikálni az azonos virtuális hálózatban kell lennie.
+    - Nem lehet távoli átjárók használatára, vagy átjáró átvitel engedélyezése. Távoli átjárók használatára, vagy engedélyezze az átjáró átvitel során, a társviszony-létesítés mindkét virtuális hálózat ugyanabban a régióban léteznie kell. 
+- A virtuális hálózatok az ugyanazon vagy másik előfizetést is lehet. Ha a virtuális hálózatok különböző előfizetésekhez, mindkét előfizetéshez kell tartoznia, az azonos Azure Active Directory-bérlő. Ha még nem rendelkezik az AD-bérlő, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Használhatja a [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) két virtuális hálózatokat különböző előfizetésekhez tartozó másik Active Directory-bérlők kapcsolódni.
 - A virtuális hálózatok partnert, rendelkeznie kell egymást nem átfedő IP-címterületeken.
 - Nem adja hozzá a címtartományt, vagy nem címtartomány törlése egy virtuális hálózat címtartományán, ha egy virtuális hálózathoz nincsenek társviszonyban, egy másik virtuális hálózathoz. Vegye fel vagy távolítsa el a címtartomány, törli, hozzáadásához vagy távolítsa el a-címtartományokat, majd hozza újra létre a társviszony-létesítést. -Címtartományokat adja hozzá, vagy távolítsa el a címtartomány a virtuális hálózatok, lásd: [virtuális hálózatok kezeléséhez](manage-virtual-network.md).
 - Erőforrás-kezelő vagy a Resource Manager használatával telepített egy virtuális hálózattal, a klasszikus üzembe helyezési modellben telepített virtuális hálózaton keresztül telepített két virtuális hálózat is partnert. Két, a klasszikus üzembe helyezési modell használatával létrehozott virtuális hálózatok nem partnert. Ha nem ismeri az Azure üzembe helyezési modellel, olvassa el a [megértéséhez Azure üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk. A [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) használatával összeköthető két, a klasszikus üzembehelyezési modellel létrehozott virtuális hálózat.
@@ -125,13 +130,8 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációra, de nem m
   Nincs nincs társviszony-létesítés VirtualNetwork1 és VirtualNetwork3 keresztül VirtualNetwork2 között. Ha szeretne létrehozni egy virtuális hálózati társviszony-létesítés VirtualNetwork1 és VirtualNetwork3 között, kell létrehoznia a társviszony-létesítés VirtualNetwork1 és VirtualNetwork3 között.
 - Alapértelmezett Azure névfeloldás használó társítottak, virtuális hálózatok neveinek nem oldható fel. Más virtuális hálózatok neveinek feloldásához, használjon [titkos tartományok Azure DNS](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy egyéni DNS-kiszolgálót. A saját DNS-kiszolgáló beállításával kapcsolatban a [névfeloldáshoz a saját DNS-kiszolgáló](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 - Virtuális hálózatok társviszonyban ugyanabban a régióban lévő erőforrások is kommunikálhatnak egymással sávszélesség és a késés, mintha ugyanahhoz a virtuális hálózatban. Minden virtuális gép méretét azonban rendelkezik saját maximális hálózati sávszélesség. A maximális hálózati sávszélesség az másik virtuálisgép-méretek kapcsolatos további információkért lásd: [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek méretét.
-- A virtuális hálózatok az ugyanazon vagy másik előfizetést is lehet. Ha a virtuális hálózatok különböző előfizetésekhez, mindkét előfizetéshez kell tartoznia, az azonos Azure Active Directory-bérlő. Ha még nem rendelkezik az AD-bérlő, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Használhatja a [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) két virtuális hálózatokat különböző előfizetésekhez tartozó másik Active Directory-bérlők kapcsolódni.
 - Egy virtuális hálózatot is társítottak, egy másik virtuális hálózathoz, és is csatlakoztatható egy Azure virtuális hálózati átjárót egy másik virtuális hálózathoz. Ha a virtuális hálózatok társviszony-létesítés és egy átjárón keresztül csatlakoznak, a virtuális hálózatok közötti forgalom áthaladó a társviszony-létesítési konfiguráció ahelyett, hogy az átjáró.
 - Egy névleges díj vonatkozik a társhálózati viszonyt használó bejövő és kimenő forgalomra. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
-* <a name="cross-region"></a>A ugyanabban a régióban, illetve a különböző régiókban lévő virtuális hálózatok is partnert. A következő korlátozások vonatkoznak csak akkor érvényesíthetők, ha mindkét virtuális hálózat a *azonos* régió, de alkalmazza, ha a virtuális hálózatok globálisan társviszonyban van: 
-    - A virtuális hálózatok bármely Azure nyilvános felhőjében régióban, de nem Azure nemzeti felhők létezhet.
-    - Egy virtuális hálózatán lévő erőforrásokat nem lehet kommunikálni az Azure belső terheléselosztót a peered virtuális hálózat IP-címét. A terheléselosztó és az erőforrásokat, amelyek kommunikálni az azonos virtuális hálózatban kell lennie.
-    - Nem lehet távoli átjárók használatára, vagy átjáró átvitel engedélyezése. Távoli átjárók használatára, vagy engedélyezze az átjáró átvitel során, a társviszony-létesítés mindkét virtuális hálózat ugyanabban a régióban léteznie kell. 
 
 ## <a name="permissions"></a>Engedélyek
 

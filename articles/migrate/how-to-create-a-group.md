@@ -1,17 +1,17 @@
 ---
-title: "Csoportban értékeléséhez Azure telepítse át a gépek |} Microsoft Docs"
-description: "Útmutatás a gépek az Azure áttelepítése szolgáltatással értékelését futtatása előtt."
+title: Csoportban értékeléséhez Azure telepítse át a gépek |} Microsoft Docs
+description: Útmutatás a gépek az Azure áttelepítése szolgáltatással értékelését futtatása előtt.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: f42b184cddb3274d7ee0163c10cac002ccfbef62
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 5c5b5dc97c0faf43c9543422406c4fa1c30ed679
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="group-machines-for-assessment"></a>Csoport gépek értékeléshez
 
@@ -31,4 +31,4 @@ A csoport létrehozása után módosíthatja a csoport választva módosíthatja
 ## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan használható [gép függőségi leképezési](how-to-create-group-machine-dependencies.md) magas megbízhatósági csoportok létrehozásához.
-- [További](concepts-assessment-calculation.md) kapcsolatos értékelések kiszámítási módját.
+- [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.

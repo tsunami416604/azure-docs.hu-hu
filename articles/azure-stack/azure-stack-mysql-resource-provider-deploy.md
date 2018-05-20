@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/24/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 66e1d5691b431be0c3d040570b13e8d16b1669ef
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4fb522e1a5a3c1adeaf5f46b8ccc3b9a852f4a88
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -179,6 +179,8 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 | **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
 | **AcceptLicense** | Fogadja el a GPL licenc adatait kérő felület kihagyja.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
 
+>[!NOTE]
+> SKU órát is igénybe vehet egy megjeleníteni a portálon. Egy adatbázis nem hozható létre, amíg létrejön a Termékváltozat.
 
 ## <a name="verify-the-deployment-by-using-the-azure-stack-portal"></a>A telepítés ellenőrzése a verem Azure portál használatával
 
@@ -200,7 +202,7 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 
     Az a **MySQL üzemeltető kiszolgálók** panelen csatlakozhat a MySQL Server erőforrás-szolgáltató MySQL kiszolgáló tényleges példányai az erőforrás-szolgáltató háttér szolgál.
 
-    ![Hosting servers](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
+    ![Üzemeltetési kiszolgáló](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 
 3. Adja meg a MySQL-kiszolgálópéldány kapcsolat adatait. Ne adja meg a teljesen minősített tartománynevét (FQDN) vagy egy érvényes IPv4-címet, és nem a rövid virtuális gép nevét. A telepítés nem egy alapértelmezett MySQL példányt biztosít. A megadott méret segít az erőforrás-szolgáltató az adatbázis-kapacitás kezelése. A fizikai kapacitás az adatbázis-kiszolgáló közel kell lennie.
 
@@ -219,8 +221,7 @@ A termékváltozat tükröznie kell tulajdonságait, hogy a bérlők megfelelőe
 ![Hozzon létre egy MySQL Termékváltozat](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
 
->[!NOTE]
-> SKU órát is igénybe vehet egy megjeleníteni a portálon. Egy adatbázis nem hozható létre, amíg létrejön a Termékváltozat.
+
 
 
 ## <a name="test-your-deployment-by-creating-your-first-mysql-database"></a>Az első MySQL-adatbázis létrehozása a központi telepítés tesztelése
@@ -321,7 +322,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -AcceptLicense
  ```
 
-### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 parameters
+### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 paraméterek
 Ezeket a paramétereket is megadhat a parancssorban. Ha ezt elmulasztja, vagy bármely paraméter-ellenőrzés sikertelen, a szükséges paraméterek megadását kéri.
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |

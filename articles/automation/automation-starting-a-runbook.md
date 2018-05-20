@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 45ac19ad5011ae67e95281d1c9928c1db4bc7043
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 0bc414d42acd665e52f3f76037dffe225344b23d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Runbook elindítása az Azure Automationben
 Az alábbi táblázat segít meghatározni, a runbook indítása az Azure Automationben, amely az adott helyzetnek legmegfelelőbb módszer. Ez a cikk tartalmazza a runbook elindítása és az Azure portál és a Windows PowerShell használatával. Egyéb módszerekkel kapcsolatos részletek szerepelnek a lenti hivatkozásokra kattintva érheti el más dokumentációját.
@@ -77,7 +77,7 @@ Amikor elindít egy forgatókönyvet az Azure-portálon vagy a Windows PowerShel
 
 Az Azure Automation webszolgáltatás bizonyos adattípusokkal a következő szakaszokban ismertetett módon paraméterek speciális funkciókat biztosítja:
 
-### <a name="named-values"></a>Névvel ellátott értékek
+### <a name="named-values"></a>Megnevezett értékek
 Ha a paraméter adattípusa [objektum], akkor használhatja a következő JSON formátummal küldhet neki egy névvel ellátott értékek listája: *{Név1: 'Érték1', Name2: 'Érték2', név3: "Érték3"}*. Ezek az értékek csak egyszerű típusok lehetnek. A runbook felkérést kap, a paraméter egy [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) a Tulajdonságok megegyeznek az egyes névvel rendelkező érték.
 
 Tesztrunbook a következő egy felhasználó nevű paramétert fogad.

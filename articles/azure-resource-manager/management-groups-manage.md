@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/10/2018
+ms.date: 5/15/2018
 ms.author: rithorn
-ms.openlocfilehash: b68223830ca6c4e178447074bfbebd1322cb9477
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 822a2df113b848f07e616f155881f345028cee1d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kezelheti az erőforrásokat a felügyeleti csoportok 
 Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfelelőség kezeléséhez több előfizetéssel. Módosítsa, törölje, és kezelje az ezekben a tárolókban, amelyek együtt hierarchiákkal rendelkeznek a következő [Azure házirend](../azure-policy/azure-policy-introduction.md) és [Azure szerepköralapú hozzáférés vezérlők (RBAC)](../role-based-access-control/overview.md). Felügyeleti csoportok kapcsolatos további információkért lásd: [rendezheti az erőforrásokat az Azure felügyeleti csoportok ](management-groups-overview.md).
@@ -24,6 +24,8 @@ Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfe
 A felügyeleti csoport funkciót egy nyilvános előzetes verziójában érhető el. Indíthatja a felügyeleti csoportok, jelentkezzen be a [Azure-portálon](https://portal.azure.com) vagy használhat [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [Azure CLI](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), vagy a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) számára a felügyeleti csoportok kezelése.
 
 Változtatásokat egy felügyeleti csoporthoz, a felügyeleti csoport egy tulajdonos vagy közreműködő szerepkörrel kell rendelkeznie. Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, és válassza ki **IAM**. Az RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelheti a hozzáférést és engedélyeket az RBAC](../role-based-access-control/overview.md).
+
+[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>A felügyeleti csoport nevének módosítása 
 A portál, a PowerShell vagy az Azure CLI segítségével módosíthatja a felügyeleti csoport neve.

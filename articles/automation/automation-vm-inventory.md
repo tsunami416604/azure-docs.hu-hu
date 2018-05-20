@@ -8,13 +8,13 @@ keywords: leltár, automatizálás, változás, követés
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f9c157fc8d1674aefcfea2ddea2aab3a4e86444
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: d5f9bae34dabba71861adc9b2aeb0d33b8a1e226
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
 
@@ -57,7 +57,7 @@ Alapértelmezés szerint a szoftverek, a Windows-szolgáltatások és a Linux-d�
 
 Az alábbi táblázatok egyes tulajdonságokhoz, amelyek képesek a különböző kategóriákban ismertetik.
 
-### <a name="windows-registry"></a>Windows Registry
+### <a name="windows-registry"></a>Windows beállításjegyzék
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
@@ -66,7 +66,7 @@ Az alábbi táblázatok egyes tulajdonságokhoz, amelyek képesek a különböz�
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
 |Windows-beállításkulcs   | A fájl elérési útja, például: „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
-### <a name="windows-files"></a>Windows Files
+### <a name="windows-files"></a>Windows-fájlok
 
 |Tulajdonság  |Leírás  |
 |---------|---------|

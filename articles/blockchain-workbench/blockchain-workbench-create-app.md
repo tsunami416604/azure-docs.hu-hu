@@ -5,16 +5,16 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/9/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Azure Blockchain munkaterület blockchain-alkalmazás létrehozása
 
@@ -33,6 +33,8 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 * A Blockchain munkaterület központi telepítés. További információkért lásd: [Azure Blockchain munkaterület központi telepítési](blockchain-workbench-deploy.md) központi telepítés leírását.
 * Az Azure Active Directory-felhasználók Blockchain munkaterület társított tenant. További információkért lásd: [az Azure Active Directory-felhasználók hozzáadása az Azure Blockchain munkaterület](blockchain-workbench-manage-users.md#add-azure-ad-users).
 * Egy Blockchain munkaterület rendszergazdai fiók. További információkért lásd: hozzáadása [Blockchain munkaterület a rendszergazdák Azure Blockchain munkaterület](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators).
+
+## <a name="hello-blockchain"></a>Hello, Blockchain!
 
 Létrehozzuk, amelyben a kérelmezőnek egy kérést küld egy alapszintű alkalmazást, és a válaszoló küldése egy kérelemre adott válasz. Például egy kérelem lehetnek, "Hello, hogy folytatja?", és a válasz lehet, "Vagyok nagyszerű!". Az alapul szolgáló blockchain mind a kérés- és a rendszer rögzíti. 
 

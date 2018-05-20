@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: e96f31b3e91066bfc04af62c2bf82db200f35002
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bff31dafdf3263ec189f67da7de8fea6eb3d2662
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Linux virtuális gép által a operációsrendszer-lemez csatolása a helyreállítási virtuális Gépet az Azure CLI 2.0 hibaelhárítása
 Ha a Linux virtuális gép (VM) rendszerindító vagy a lemez hibát tapasztal, szükség lehet végezze el a virtuális merevlemez hibaelhárítási lépéseket. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza a virtuális gép rendszerindító sikeresen megtörtént. Ez a cikk részletezi az Azure CLI 2.0 másik Linux virtuális gép, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép csatlakozni a virtuális merevlemez használata. Az [Azure CLI 1.0-s](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket.
@@ -31,6 +31,8 @@ A hibaelhárítási folyamat a következő:
 3. Kapcsolódjon a hibaelhárítást végző virtuális gépre. Szerkesztheti a fájlokat, vagy futtassa a problémák megoldásával kapcsolatban az eredeti virtuális merevlemez olyan eszközöket.
 4. Válassza le a virtuális merevlemezt a hibaelhárító virtuális gépről.
 5. Az eredeti virtuális merevlemez virtuális gép létrehozása.
+
+A virtuális gép számára, amely felügyelt lemezt használ, tekintse meg [hibaelhárításáról egy kezelt lemez virtuális Gépet egy új operációsrendszer-lemez csatolása](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
 
 Hajtsa végre az alábbi lépéseket, a legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
@@ -183,6 +185,13 @@ Amikor a virtuális Gépet hoz létre a meglévő virtuális merevlemez, rendsze
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
 ```
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Egy kezelt lemez virtuális Gépet egy új operációsrendszer-lemez csatolásával hibaelhárítása
+1. Állítsa le az érintett kezelt lemez Windows virtuális Gépet.
+2. [Hozzon létre egy felügyelt lemezes pillanatképet](../windows/snapshot-copy-managed-disk.md) , az operációsrendszer-lemezképet, a felügyelt lemezt a virtuális gépet.
+3. [Hozzon létre egy felügyelt lemezes a pillanatképből](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
+4. [A felügyelt lemezt csatolni a virtuális gép adatok lemezként](../windows/attach-disk-ps.md).
+5. [4. lépés a adatlemez váltson az operációsrendszer-lemez](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>További lépések
 Ha a virtuális Géphez való kapcsolódás problémát tapasztal, tekintse meg [hibaelhárítása SSH kapcsolatok egy Azure virtuális gépre](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). A virtuális gépen futó alkalmazások elérésével problémákkal kapcsolatban lásd: [alkalmazás csatlakozási problémák a Linux virtuális gép](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

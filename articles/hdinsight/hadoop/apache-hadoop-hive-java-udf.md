@@ -11,13 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 02/20/2018
+ms.date: 05/16/2018
 ms.author: larryfr
-ms.openlocfilehash: ef8b8630c60b209295b844f7e1b67f8631524aff
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 00af8ca67af6ba3242c0fee6c50640944768ec4c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Egy Java használni a Hive HDInsight UDF
 
@@ -75,14 +75,14 @@ Megtudhatja, hogyan hozzon létre egy Java-alapú felhasználói függvény (UDF
     </dependencies>
     ```
 
-    Ezek a bejegyzések adja meg a Hadoop és a Hive HDInsight 3.5 részét képező verzióját. A Hadoop és a Hive HDInsight megadott verzióin információt a [HDInsight-összetevők verziószámozása](../hdinsight-component-versioning.md) dokumentum.
+    Ezek a bejegyzések adja meg a Hadoop és a Hive HDInsight 3.6 részét képező verzióját. A Hadoop és a Hive HDInsight megadott verzióin információt a [HDInsight-összetevők verziószámozása](../hdinsight-component-versioning.md) dokumentum.
 
     Adja hozzá a `<build>` előtt szakasz a `</project>` sort a fájl végén. Ez a szakasz a következő XML kell tartalmaznia:
 
     ```xml
     <build>
         <plugins>
-            <!-- build for Java 1.8. This is required by HDInsight 3.5  -->
+            <!-- build for Java 1.8. This is required by HDInsight 3.6  -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

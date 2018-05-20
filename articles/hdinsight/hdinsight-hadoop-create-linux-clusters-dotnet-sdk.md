@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: eda1f0e434c59a2a1c7bb63d92ce7b1fa5b42344
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8523b012d6ceaf116e6849abaf8952bbde8b41b3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Linux-alapú fürtök létrehozása a HDInsight .NET SDK használatával
 
@@ -30,7 +30,7 @@ Ismerje meg, a Hadoop-fürt létrehozása az Azure HDInsight-fürt a .NET SDK ha
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések egy munkavégző csomóponton hozzon létre egy fürtöt. Ha azt tervezi, több mint 32 munkavégző csomópont, vagy a fürt létrehozásakor, vagy a fürt létrehozása után skálázással szüksége legalább 8 maggal és 14GB ram átjárócsomópont kiválasztásához.
 >
-> A csomópont-méretek és a társuló költségeket további információkért lásd: [HDInsight árképzési](https://azure.microsoft.com/pricing/details/hdinsight/).
+> További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

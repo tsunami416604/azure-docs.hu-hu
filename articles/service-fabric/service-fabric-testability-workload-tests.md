@@ -1,24 +1,24 @@
 ---
-title: "Az Azure mikroszolgáltatások hibáinak szimulálása |} Microsoft Docs"
-description: "A szolgáltatások szabályos és ungraceful-hibákkal szemben támogatnia kell a módját."
+title: Az Azure mikroszolgáltatások hibáinak szimulálása |} Microsoft Docs
+description: A szolgáltatások szabályos és ungraceful-hibákkal szemben támogatnia kell a módját.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 7ec671c23e101d0f7401bd4656fb201111602cad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dccd8eeeda1a41f23c9e3dd9896e0630e2a7a0a4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatások számítási feladatai közben
 Azure Service Fabric tesztelhetőségi forgatókönyvei a fejlesztők nem foglalkoznia az egyéni hibák foglalkozik. Nincsenek forgatókönyvek, azonban ha explicit kihagyásos ügyfél munkaterhelési és sikertelen lehet szükség. Az ügyfél munkaterhelési és hibák kihagyásos biztosítja, hogy a szolgáltatás van ténylegesen néhány művelet végrehajtása során hiba történik. Megadott tesztelhetőségi biztosító felügyeleti, ezek lehetnek a munkaterhelés végrehajtásának pontos pontokon. A hibák, az alkalmazás különböző állapotok indukciós megkeresheti a hibák és minőségének javítása.

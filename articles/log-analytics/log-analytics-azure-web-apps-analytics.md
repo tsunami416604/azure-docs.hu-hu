@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Az Azure-webalkalmazás-erőforrások között metrikáihoz analitikai adatok megtekintése
 
 ![Web Apps szimbólum](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
 
 > [!NOTE]
-> Az Azure Web Apps elemzési megoldások elavult.  Az ügyfelek, akik már telepítették a megoldás továbbra is használhatják azt, de bármely új munkaterületek nem Azure Web Apps Analytics lehet hozzáadni.
+> Az Azure Web Apps elemzési megoldások elavult.  Az ügyfelek, akik már telepítették a megoldás továbbra is használhatják azt, de bármely új munkaterületek nem Azure Web Apps Analytics lehet hozzáadni.  A webalkalmazás figyelésére szolgáló ajánlott [Application Insights](../application-insights/app-insights-overview.md). 
 
 Az Azure Web Apps Analytics (előzetes verzió) megoldás betekintést biztosít a [Azure Web Apps](../app-service/app-service-web-overview.md) különböző metrikák begyűjtenie az Azure-webalkalmazás-erőforrások között. A megoldás elemezheti és web app erőforrás metrika adatok kereséséhez.
 

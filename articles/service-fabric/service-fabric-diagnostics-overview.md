@@ -9,22 +9,22 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
-ms.author: dekapur;srrengar
-ms.openlocfilehash: dd2446fda204f4026ac8080c658ca1aa9419f1bd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: srrengar
+ms.openlocfilehash: 4fcf8c514cb785dbb0a149e5b3073fc72937b68a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Megfigyelési és diagnosztikai az Azure Service Fabric
 
 Ez a cikk figyelése és diagnosztikai áttekintést nyújt az Azure Service Fabric. Megfigyelési és diagnosztikai létfontosságúak fejleszt, tesztelés vagy bármely felhőalapú környezetben munkaterhelések üzembe helyezése. Figyelési segítségével nyomon követheti az alkalmazások használatának módját, az erőforrás-használat és a fürt általános állapotát. Ezen információk használatával diagnosztizálása, és kijavíthatja az esetleges problémákat, és a jövőben bekövetkezését előforduló problémák megelőzéséhez. 
 
-## <a name="application-monitoring"></a>Alkalmazásmonitoring
+## <a name="application-monitoring"></a>Alkalmazások figyelése
 Az alkalmazásfigyelés nyomon követi, hogyan szolgáltatásait és összetevőit, az alkalmazás használják. Az alkalmazásait, és győződjön meg arról, hogy problémákat a felhasználók észlelt hatás figyelni kívánt. Az alkalmazások figyeléséről a következő esetekben hasznos lehet:
 * alkalmazásterhelés és a felhasználó forgalmi - van szüksége a szolgáltatásokat, hogy a felhasználó követelményeinek, vagy az alkalmazás potenciális szűk keresztmetszet címmel méretezési?
 * szolgáltatások közötti kommunikáció és a távelérés a fürtszinten azonosító problémái

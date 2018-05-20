@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 70b07cae9a1dc8b45e27f95e19fbc84f06a0b6d3
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 Az Azure verem SQL Server erőforrás-szolgáltató használatával teszi közzé az SQL-adatbázisok Azure verem szolgáltatásként. Az SQL-erőforrás-szolgáltató szolgáltatás fut az SQL-erőforrás-szolgáltató egy Windows Server core virtuális gép virtuális gép.
@@ -73,6 +73,8 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 | **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
 | **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
 
+>[!NOTE]
+> SKU órát is igénybe vehet egy megjeleníteni a portálon. Egy adatbázis nem hozható létre, amíg létrejön a Termékváltozat.
 
 
 ## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>Az SQL erőforrás-szolgáltató használatával egyéni parancsfájl központi telepítése

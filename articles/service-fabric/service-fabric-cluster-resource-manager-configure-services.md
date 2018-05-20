@@ -1,24 +1,24 @@
 ---
-title: "Metrikák és elhelyezési beállításainak megadása az Azure mikroszolgáltatások |} Microsoft Docs"
-description: "A Service Fabric-szolgáltatás leíró metrikákat, placement Constraints korlátozásokat és egyéb elhelyezési házirendeket megadásával."
+title: Metrikák és elhelyezési beállításainak megadása az Azure mikroszolgáltatások |} Microsoft Docs
+description: A Service Fabric-szolgáltatás leíró metrikákat, placement Constraints korlátozásokat és egyéb elhelyezési házirendeket megadásával.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 0ae4e874d0fd0922295a4ec7ad719a0a1fb108c8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16e19a02bf12e30e81eb1743fc637bce435df914
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>A Service Fabric-szolgáltatások fürt resource manager beállításainak konfigurálása
 A Service Fabric fürt erőforrás-kezelő lehetővé teszi, hogy a minden részletre kiterjedő szabályozhatják a minden személy nevű szolgáltatás meghatározó szabályok. Minden elnevezett szolgáltatás hogyan azt kell kiosztani a fürt szabályokat adhat meg. Minden elnevezett szolgáltatás is meghatározhatók szeretnének metrikák készletét a jelentéshez, beleértve a fontos hogyan vannak az adott szolgáltatáshoz. A három különböző feladatok szolgáltatások konfigurálása megszakad:

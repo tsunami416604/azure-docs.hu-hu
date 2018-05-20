@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy alkalmazás SSL-lezárást - Azure-portál |} Microsoft Docs
-description: Megtudhatja, hogyan Alkalmazásátjáró létrehozása és hozzáadása egy tanúsítványt az SSL-lezárást az Azure portál használatával.
+title: Alkalmazásátjáró konfigurálása az SSL-lezárást - Azure-portál |} Microsoft Docs
+description: Megtudhatja, hogyan konfiguráljon egy alkalmazás átjárót, és adja hozzá egy tanúsítványt az SSL-lezárást az Azure portál használatával.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,18 +8,17 @@ editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: a24cec5dfa8034cf43ce7cfe26308587cf20dc44
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c64754595ef67b7c083ee8d47da5b412467c191b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Hozzon létre egy alkalmazást az Azure portál használatával SSL-lezárást
+# <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Alkalmazásátjáró konfigurálása az SSL-lezárást az Azure portál használatával
 
-Az Azure-portálon hozhat létre egy [Alkalmazásátjáró](overview.md) egy SSL-lezárást használ a virtuális gépek háttérkiszolgálók tanúsítványával.
+Az Azure portál segítségével konfigurálhatja egy [Alkalmazásátjáró](overview.md) egy SSL-lezárást használ a virtuális gépek háttérkiszolgálók tanúsítványával.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

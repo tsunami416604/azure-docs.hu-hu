@@ -1,26 +1,26 @@
 ---
-title: "Megbízható gyűjtemények használata |} Microsoft Docs"
-description: "Ismerje meg az ajánlott eljárások megbízható gyűjtemények használata."
+title: Megbízható gyűjtemények használata |} Microsoft Docs
+description: Ismerje meg az ajánlott eljárások megbízható gyűjtemények használata.
 services: service-fabric
 documentationcenter: .net
 author: rajak
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
 ms.author: rajak
-ms.openlocfilehash: f53f13e4fb83b1cd370ec673e86e5311cd93055f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2568e116fdb3f80976d49787877d2ecf68f128ef
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="working-with-reliable-collections"></a>Megbízható gyűjtemények használata
+# <a name="working-with-reliable-collections"></a>A Reliable Collections használata
 A Service Fabric a .NET-fejlesztők számára megbízható gyűjtemények keresztül elérhető állapot-nyilvántartó programozási modellt biztosít. Pontosabban a Service Fabric megbízható szótár és megbízható várólista osztályok biztosít. Ha használja ezeket az osztályokat, az állapot (méretezhetőségre) particionálva, replikálni (a rendelkezésre állás érdekében), és egy partíciót (ACID szemantikáját) belül. Most egy tipikus használati megbízható dictionary objektum tekintse meg, és tekintse meg, milyen a végrehajtása.
 
 ```csharp
@@ -142,7 +142,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Programozói hiba megelőzése érdekében megváltoztathatatlan adattípusok definiálása
-Szeretnénk ideális esetben a fordítási hibákat, ha véletlenül eredményez, amelyeknek figyelembe kell venni az nem módosítható objektum állapotának mutates kódot. De a C# fordítóprogram nincs ehhez lehetőséget. Igen, lehetséges programozói hibák elkerülése érdekében határozottan ajánlott, hogy a típust határoznak meg kell megváltoztathatatlan típusokra megbízható gyűjteményeket használ. Pontosabban Ez azt jelenti, hogy anyagot core értéktípusok (például számok [Int32, UInt64 stb.] dátum és idő, Guid, TimeSpan érték vagy hasonló). És természetesen is karakterlánc használható. Legjobb gyűjtemény tulajdonságok szerializálása során elkerülése érdekében, és azokat deszerializálása is gyakran hátrányosan befolyásolhatja a teljesítményt. Azonban ha gyűjteménytulajdonságokkal használni kívánt, erősen ajánlott a használata. NET által nem módosítható gyűjteményeket könyvtár ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Ebben a könyvtárban http://nuget.org letölthető. Javasoljuk továbbá, az osztályok zárolásra és a mezőket csak olvasható amikor csak lehetséges.
+Szeretnénk ideális esetben a fordítási hibákat, ha véletlenül eredményez, amelyeknek figyelembe kell venni az nem módosítható objektum állapotának mutates kódot. De a C# fordítóprogram nincs ehhez lehetőséget. Igen, lehetséges programozói hibák elkerülése érdekében határozottan ajánlott, hogy a típust határoznak meg kell megváltoztathatatlan típusokra megbízható gyűjteményeket használ. Pontosabban Ez azt jelenti, hogy anyagot core értéktípusok (például számok [Int32, UInt64 stb.] dátum és idő, Guid, TimeSpan érték vagy hasonló). És természetesen is karakterlánc használható. Legjobb gyűjtemény tulajdonságok szerializálása során elkerülése érdekében, és azokat deszerializálása is gyakran hátrányosan befolyásolhatja a teljesítményt. Azonban ha gyűjteménytulajdonságokkal használni kívánt, erősen ajánlott a használata. NET által nem módosítható gyűjteményeket könyvtár ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Ebben a könyvtárban letölthető http://nuget.org. Javasoljuk továbbá, az osztályok zárolásra és a mezőket csak olvasható amikor csak lehetséges.
 
 Az alábbi UserInfo típus bemutatja, hogyan kell egy nem módosítható típus kihasználja a fenti ajánlásokat.
 
@@ -208,7 +208,7 @@ Ezenkívül szolgáltatáskódot egyszerre lehet frissített több frissítési 
 
 Másik lehetőségként hajthat végre, milyen gyakran emlegetik úgy, a 2-fázis frissítés. A 2-fázis frissítést, a szolgáltatás V1-es rendszerről frissít V2: V2 a kódot tartalmaz, amely meg tudja az új sémaváltozás foglalkozik, de ez a kód nem hajtja végre. A V2 kód V1 adatok olvasását, akkor működik, és V1 adatokat. Majd a frissítés befejezése után minden frissítési tartományok között, akkor is valamilyen módon azt a futó V2-példányokban kívánja, hogy a frissítés befejeződött. (Jel egyik módja azt a konfigurációs frissítés fokozatosan; ez hasznossá ezt a 2-fázis frissítésének.) Most a V2 példányok is V1-adatok olvasása, V2 adatokat átalakíthatja, el és kiírni V2 adatként. Ha más esetekben V2-adatok olvasása, nem kell konvertálni, csak működik rajta, és kiírni a V2-adatok.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Kompatibilis adatokat továbbítson a szerződések létrehozásával kapcsolatos további tudnivalókért lásd: [előre kompatibilis adategyezményeinek](https://msdn.microsoft.com/library/ms731083.aspx).
 
 Gyakorlati tanácsok a versioning adategyezményeinek kapcsolatban [adatok szerződés Versioning](https://msdn.microsoft.com/library/ms731138.aspx).

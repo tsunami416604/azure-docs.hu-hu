@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 720269ad22bfe4a7f5871c934be77b680627e2f7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6a38098dc2bbcfc6ff59b9f8c96d1e947c637ab1
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>A távoli felügyeleti megoldásgyorsító lehetőségeinek felfedezése
 
@@ -41,7 +41,7 @@ A következő videó bemutatja a távoli felügyeleti megoldás részletes útmu
 
 Az oktatóanyag elvégzéséhez kell a távoli felügyeleti megoldás telepített példányát az Azure-előfizetéshez.
 
-Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
+Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>A Contoso IoT üzembe helyezési minta
 
@@ -55,7 +55,7 @@ A Contoso minta látja a szimulált eszköz és a szabályok meg őket. Miután 
 Contoso kezelő eszközök különböző környezetekben számos vállalat esetében. Contoso tervek hatványra emelésének felhőalapú IoT-alkalmazásokhoz használandó távoli figyelését, és több eszköz kezelését egy központi alkalmazáshoz. Az alábbi szakaszokban a kezdeti konfiguráció a Contoso minta összefoglalása:
 
 > [!NOTE]
-> A Contoso bemutató módja csak egy szimulált eszközre továbbítani, és hozzon létre. Egyéb üzembe helyezési lehetőségei közé tartozik a saját egyéni eszközök létrehozását. A saját eszközök és a szabályok létrehozásával kapcsolatos további tudnivalókért lásd: [kezelése és az eszközök](iot-suite-remote-monitoring-manage.md) és [küszöbérték-alapú szabályok használatával kapcsolatos problémák észlelése](iot-suite-remote-monitoring-automate.md).
+> A Contoso bemutató módja csak egy szimulált eszközre továbbítani, és hozzon létre. Egyéb üzembe helyezési lehetőségei közé tartozik a saját egyéni eszközök létrehozását. A saját eszközök és a szabályok létrehozásával kapcsolatos további tudnivalókért lásd: [kezelése és az eszközök](iot-suite-remote-monitoring-manage.md) és [küszöbérték-alapú szabályok használatával kapcsolatos problémák észlelése](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md).
 
 ### <a name="contoso-devices"></a>Contoso-eszközök
 
@@ -257,5 +257,5 @@ Most, hogy rendelkezik megismerte a távoli felügyeleti megoldás, a javasolt l
 
 * [Az eszközök figyeléséhez](./iot-suite-remote-monitoring-monitor.md).
 * [Az eszközök kezeléséhez](./iot-suite-remote-monitoring-manage.md).
-* [Automatizálhatja a megoldás olyan szabályokkal készült](./iot-suite-remote-monitoring-automate.md).
+* [Automatizálhatja a megoldás olyan szabályokkal készült](./../iot-accelerators/iot-accelerators-remote-monitoring-automate.md).
 * [A megoldás karbantartása](./iot-suite-remote-monitoring-maintain.md).

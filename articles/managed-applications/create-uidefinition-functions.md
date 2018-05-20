@@ -1,23 +1,23 @@
 ---
-title: "Az Azure által felügyelt alkalmazás, hozzon létre felhasználói felület definition funkciók |} Microsoft Docs"
-description: "Az Azure által felügyelt alkalmazások felhasználói felületi definíciók konstrukciója során használandó funkcióit ismerteti"
-services: azure-resource-manager
+title: Az Azure által felügyelt alkalmazás, hozzon létre felhasználói felület definition funkciók |} Microsoft Docs
+description: Az Azure által felügyelt alkalmazások felhasználói felületi definíciók konstrukciója során használandó funkcióit ismerteti
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: dcf570ca4bdc8eacb7e4d7a8ff0011c8e07b7a40
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a01a59a7e8c9757cb41d328cd26a34fa219f9152
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition funkciók
 Ez a szakasz az összes támogatott funkcióit egy CreateUiDefinition aláírásai.
@@ -40,7 +40,7 @@ Ahol lehetséges, melyeket referenciaként használhat, a kimenet egy függvény
 "[func().prop1]"
 ```
 
-## <a name="referencing-functions"></a>Hivatkozási funkciók
+## <a name="referencing-functions"></a>Hivatkozási függvények
 Ezek a funkciók való hivatkozáshoz kimenetek a Tulajdonságok vagy egy CreateUiDefinition kontextusában használható.
 
 ### <a name="basics"></a>alapvető tudnivalók
@@ -70,7 +70,7 @@ Az alábbi példa visszaadhatja `"westus"`:
 "[location()]"
 ```
 
-## <a name="string-functions"></a>Karakterlánc
+## <a name="string-functions"></a>Karakterlánc-függvények
 Ezek a függvények csak JSON karakterláncok használható.
 
 ### <a name="concat"></a>Concat
@@ -130,7 +130,7 @@ A következő példa `"FOOBAR"`:
 ## <a name="collection-functions"></a>Gyűjtemény-funkciók
 Ezek a funkciók gyűjtemények, például a JSON-karakterláncok, tömbök és objektumok használható.
 
-### <a name="contains"></a>tartalmazza
+### <a name="contains"></a>tartalmazza a következőt:
 Beolvasása `true` Ha egy karakterláncot tartalmazza a megadott, egy tömb a megadott értéket tartalmaz, vagy az objektum tartalmazza a megadott kulcs.
 
 #### <a name="example-1-string"></a>1. példa: karakterlánc
@@ -366,7 +366,7 @@ A következő példa `{"key2": "raboof"}`:
 "[skip(steps('foo').element1, 1)]"
 ```
 
-## <a name="logical-functions"></a>Logikai funkciók
+## <a name="logical-functions"></a>Logikai függvények
 Ezek a funkciók conditionals használható. Egyes funkciókat esetleg nem támogatja az összes JSON-adattípus.
 
 ### <a name="equals"></a>egyenlő
@@ -492,7 +492,7 @@ Tegyük fel `element1` és `element2` nincs definiálva. A következő példa `"
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
-## <a name="conversion-functions"></a>Átalakítás funkciók
+## <a name="conversion-functions"></a>Konverziós függvények
 Ezek a funkciók alakítható át JSON-adattípusok és kódolások használható.
 
 ### <a name="int"></a>int
@@ -510,7 +510,7 @@ A következő példa `2`:
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>Lebegőpontos
+### <a name="float"></a>lebegőpontos
 A paraméter egy lebegőpontos alakítja át. Ez a funkció támogatja a paraméterek száma és a karakterlánc.
 
 A következő példa `1.0`:
@@ -525,7 +525,7 @@ A következő példa `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>Karakterlánc
+### <a name="string"></a>karakterlánc
 Konvertálja a paraméter karakterlánccá. Ez a függvény minden JSON adattípusú paramétereket támogatja.
 
 A következő példa `"1"`:
@@ -643,7 +643,7 @@ A következő példa `"https://portal.azure.com/"`:
 ```
 
 ## <a name="math-functions"></a>Matematikai függvények
-### <a name="add"></a>Hozzáadása
+### <a name="add"></a>hozzáadás
 Két számot ad, és visszaadja az eredményt.
 
 A következő példa `3`:
@@ -703,7 +703,7 @@ A következő példa `1`:
 "[min(1, 2)]"
 ```
 
-### <a name="max"></a>maximális
+### <a name="max"></a>max.
 A két szám nagyobb értéket ad vissza.
 
 A következő példa `2`:
@@ -785,6 +785,6 @@ A következő példa `"1991-01-01T00:59:59.000Z"`:
 "[addHours('1990-12-31T23:59:59Z', 1)]"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lásd a Bevezetés az Azure Resource Manager [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 

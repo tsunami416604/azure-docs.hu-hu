@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 2bc2559dc1cf737e018895ffae61d0da0e56fc85
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a8844ea44bf604944c5980b0d41ab5d01a30b876
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő indítófeltételt 
 
@@ -34,6 +34,8 @@ Ez a cikk ismerteti, hogyan használható az Azure Functions időzítő esemény
 Az időzítő indítófeltételt megtalálható a [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub-tárházban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="example"></a>Példa
 
@@ -173,7 +175,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**name** | n/a | A függvény a kódban időzítő az objektumot határozza meg a változó neve. | 
 |**schedule**|**ScheduleExpression**|A [CRON-kifejezés](#cron-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak egy függvény alkalmazást az App Service-csomag futó használható. Az ütemezés kifejezés be Alkalmazásbeállítás, és állítsa be ezt a tulajdonságot a beállítás neve a becsomagolt alkalmazás **%** jelentkezik, például: "% ScheduleAppSetting %". |
 |**runOnStartup**|**RunOnStartup**|Ha `true`, a függvény meghívták a futtatókörnyezet indításakor. Például a futtatókörnyezet kezdődik, amikor a függvény app felébred üresjárati tétlenség miatt váltás után. Ha a függvény alkalmazás-újraindítások függvény-módosítások miatt, ha a függvény app méretezi ki. Ezért **runOnStartup** ritkán Ha valaha is meg `true`, mert a teszi, hogy kód magas előre nem látható időpontokban hajtható végre.|
-|**useMonitor**|**UseMonitor**|Beállítása `true` vagy `false` annak jelzésére, hogy az ütemezés kell figyelni. Figyelési ütemezés fenntartása ütemezés előfordulási biztosítása az ütemezés karban kell akkor is, ha a függvény app példányok indítsa újra a segítése érdekében. Ha nem állítja be, az alapértelmezett érték `true` az ütemezést, amelyekben egy nagyobb, mint 1 perces ismétlődési időköz. Percenként egynél többször kiváltó ütemezéseket, az alapértelmezett érték `false`.
+|**UseMonitor**|**UseMonitor**|Beállítása `true` vagy `false` annak jelzésére, hogy az ütemezés kell figyelni. Figyelési ütemezés fenntartása ütemezés előfordulási biztosítása az ütemezés karban kell akkor is, ha a függvény app példányok indítsa újra a segítése érdekében. Ha nem állítja be, az alapértelmezett érték `true` az ütemezést, amelyekben egy nagyobb, mint 1 perces ismétlődési időköz. Percenként egynél többször kiváltó ütemezéseket, az alapértelmezett érték `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -209,7 +211,7 @@ Minden mező a következő típusú értékek egyike lehet:
 |Egy adott érték |<nobr>"0 5 * * * *"</nobr>|hh:05:00, ahol az ÓÓ az óránként (óránként):|
 |Összes értéket (`*`)|<nobr>"0 * 5 * * *"</nobr>|5:mm:: 00 naponta, ahol az mm percenként az óra (60 naponta alkalommal)|
 |A tartomány (`-` operátor)|<nobr>"5-7 * * * * *"</nobr>|hh:mm:05, valamint hh:mm:06 és hh:mm:07 óó: pp esetén minden perce minden órában (3-szor perc)|  
-|Az értékek egy halmazát (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05, valamint hh:mm:08 és hh:mm:10 óó: pp esetén minden perce minden órában (3-szor perc)|
+|Az értékek egy halmazát (`,` operátor)|<nobr>"5,8,10 x *"</nobr>|hh:mm:05, valamint hh:mm:08 és hh:mm:10 óó: pp esetén minden perce minden órában (3-szor perc)|
 |Az intervallum értéke (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00, hh:10:00, hh:15:00, és így tovább keresztül hh:55:00, ahol az ÓÓ az óránként (12-szer egy óra)|
 
 ### <a name="cron-examples"></a>CRON példák
@@ -220,10 +222,10 @@ Az alábbiakban néhány olyan CRON kifejezéseket is használhat az Azure Funct
 |---------|---------|
 |"0 */5 * * * *"|5 percenként egyszer|
 |"0 0 * * * *"|egyszer minden órában tetején|
-|"0 0 */2 * * *"|két óránként|
-|"0 0 9-17 * * *"|óránként egyszer a Reggel 9 a délután 5 óra|
+|"0 0 * 2 ** *"|két óránként|
+|"0 0 9-17 ** *"|óránként egyszer a Reggel 9 a délután 5 óra|
 |"0 30 9 * * *"|9:30 AM minden nap:|
-|"0 30 9 * * 1-5"|9:30 AM minden hétköznap:|
+|"0 30 9 ** 1-5"|9:30 AM minden hétköznap:|
 
 >[!NOTE]   
 >Online CRON-példák találhatók, de ezek hagyja ki ezt a `{second}` mező. Ha másolása egyik, adja hozzá a hiányzó `{second}` mező. Általában érdemes a mezőben egy csillag nem nulla.
@@ -246,7 +248,7 @@ Vagy hozzon létre az függvény alkalmazás nevű Alkalmazásbeállítás `WEBS
 "schedule": "0 0 10 * * *",
 ``` 
 
-## <a name="timespan"></a>TimeSpan
+## <a name="timespan"></a>A TimeSpan
 
  A `TimeSpan` csak egy függvény alkalmazást az App Service-csomag futó használható.
 
@@ -256,7 +258,7 @@ Egy karakterlánc kifejezett a `TimeSpan` formátuma `hh:mm:ss` amikor `hh` : ki
 
 |Példa |Elindítása  |
 |---------|---------|
-|"01:00:00" | Minden órában        |
+|"01:00:00" | óránként        |
 |"00:01:00"|percenként         |
 |"24:00:00" | 24 naponta        |
 

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 64dcf5608710a85c47cd14ed9bee33594d46e083
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7c505080e6b6144ab3cf24ad89bb084efbb77c29
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>A lapon lévő hivatkozások nem működnek az alkalmazásproxy alkalmazás
 
 Ez a cikk segít hibaelhárítása, ezért az Azure Active Directory Alkalmazásproxyjával alkalmazás lévő hivatkozások nem működnek megfelelően.
 
-## <a name="overview"></a>Áttekintés 
+## <a name="overview"></a>Áttekintés (klasszikus) 
 Miután közzétette az alkalmazásproxy-alkalmazást, a csak hivatkozások, amelyek az alkalmazás alapértelmezés szerint működnek a célok a közzétett gyökér URL-cím található hivatkozások olyan. Az alkalmazásokon belül a hivatkozások nem működnek, az alkalmazás belső URL-címe valószínűleg nem tartalmaz hivatkozásokat az alkalmazáson belül a célhelyre.
 
 **Miért történik ez?** Amikor egy alkalmazás egy hivatkozásra kattint, a alkalmazásproxy megpróbálja feloldani az URL-címet, vagy belső URL-címként belül ugyanazt az alkalmazást, vagy kívülről elérhető URL-címként. A hivatkozás mutat egy belső URL-CÍMÉT, amely kívül esik az ugyanahhoz az alkalmazáshoz, ha azt nem tartozik sem a gyűjtők és nem talált hibát eredményez.
@@ -45,5 +45,5 @@ A probléma megoldásához három módja van. Az alábbi lehetőségek a felsoro
 Ennek eredményeképpen, erősen ajánlott használatával a [egyéni tartományok](manage-apps/application-proxy-configure-custom-domain.md) megoldás Ha lehetséges. Ha csatlakozni szeretne az előzetes, e-mailben <aadapfeedback@microsoft.com> a applicationId(s) együtt.
 
 ## <a name="next-steps"></a>További lépések
-[A meglévő helyszíni proxykiszolgálókkal működik](application-proxy-working-with-proxy-servers.md)
+[A meglévő helyszíni proxykiszolgálókkal működik](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
 

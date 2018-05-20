@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc51fabaffd0f9de5c2a460922dadc0abf74577e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: b813ba564e6451f973972f08f297399c3af1747b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus készítése az Azure Automationben
 
@@ -110,7 +110,7 @@ Amikor megad egy paraméter értékét, ki kell választania egy adatforrás ann
 
 | Adatforrás | Leírás |
 |:--- |:--- |
-| Állandó érték |Adja meg a paraméter értékét. Ez a tulajdonság csak a következő típusok esetében érhető el: Int32, Int64, String, Boolean, DateTime, kapcsoló. |
+| Konstans érték |Adja meg a paraméter értékét. Ez a tulajdonság csak a következő típusok esetében érhető el: Int32, Int64, String, Boolean, DateTime, kapcsoló. |
 | Tevékenység kimeneti |Egy tevékenység, amely megelőzi az aktuális tevékenység a munkafolyamat kimenetét. Az összes érvényes tevékenység vannak felsorolva. Válassza ki a használandó kimenetét a paraméter értéke csak a tevékenység. Ha a tevékenység kimenete több tulajdonságait azonosítójú objektum, majd beírhatja a tulajdonság nevében a tevékenység kiválasztása után. |
 | A Runbook bemeneti |Jelölje ki a forgatókönyv bemeneti paramétert a tevékenység-paraméter számára. |
 | Változóeszköz |Válassza ki a egy automatizálási változó bemeneti adatként. |
@@ -244,7 +244,7 @@ Az alábbi példában egy runbookot, amely elindítja a virtuális gépek halmaz
 
 ![Szinkronizációs pont](media/automation-graphical-authoring-intro/runbook-junction.png)
 
-### <a name="cycles"></a>Ciklus
+### <a name="cycles"></a>Ciklusok
 
 A ciklus akkor, ha vissza a forrástevékenység vagy egy másik tevékenységgel, végül a forrás-hivatkozásokat biztonsági rendeltetési tevékenység hivatkozásainak. Ciklus jelenleg nem engedélyezettek grafikus szerzői. Ha a runbook rendelkezik ciklust, megfelelően menti, de egy hibaüzenetet kap, amikor fut az.
 
@@ -267,7 +267,7 @@ $ActivityOutput['Activity Label']
 $ActivityOutput['Activity Label'].PropertyName
 ```
 
-### <a name="checkpoints"></a>Az ellenőrzőpontok
+### <a name="checkpoints"></a>Ellenőrzőpontok
 
 Beállíthatja azt [ellenőrzőpontokat](automation-powershell-workflow.md#checkpoints) egy grafikus PowerShell-munkafolyamati forgatókönyv kiválasztásával a *ellenőrzőpont runbook* olyan tevékenységeket. Ennek hatására a tevékenység futtatása után kell beállítani egy ellenőrzőpontot.
 

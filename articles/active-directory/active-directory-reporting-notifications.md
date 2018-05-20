@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Active Directory jelentéskészítési értesítései"
-description: "Hogyan használható az Azure Active Directory reporting gyanús bejelentkezési értesítéseket moduljainak."
+title: Az Azure Active Directory jelentéskészítési értesítései
+description: Hogyan használható az Azure Active Directory reporting gyanús bejelentkezési értesítéseket moduljainak.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ae6d4b0e-5931-4cb3-98bf-9be91b381c92
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 01/03/2018
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 99783eebb76363ca3fa96c6777906239f3de1131
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c279b923ed4e63d810861c579dd54b3a2b7f415e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Az Azure Active Directory jelentéskészítési értesítései
 ## <a name="what-reports-generate-email-notifications"></a>Milyen jelentések készítése az értesítő e-mailek
@@ -39,7 +39,7 @@ Az e-mailt küld, ha a 10 új szabálytalan bejelentkezési tevékenység tört�
 Ha a hivatkozásra kattint, az Azure-portálon belül a jelentés oldalra irányítja. A jelentés eléréséhez kell lennie mindkét:
 
 * Rendszergazdaként vagy az Azure-előfizetéshez társadminisztrátornak
-* A címtár globális rendszergazdája és az Active Directory Premium licenc hozzárendelése. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
+* A címtár globális rendszergazdája és az Active Directory Premium licenc hozzárendelése. További információk: [Azure Active Directory editions](active-directory-whatis.md) (Azure Active Directory-kiadások).
 
 ## <a name="can-i-turn-off-these-emails"></a>Lehet kikapcsolni az e-maileket?
 Igen, a rendellenes bejelentkezések az Azure-portálon belül kapcsolatos értesítések kikapcsolásához kattintson **konfigurálása**, majd válassza ki **letiltott** alatt a **értesítések** szakasz.

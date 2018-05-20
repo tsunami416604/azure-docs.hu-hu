@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 5af348bfdccb9392948af962cf582e33ebd40872
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 347b7d183839868f3b52adbdfd00b38cee3f3fbc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services-formerly-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezetfiók beállítása az Azure Lab Services szolgáltatással (korábbi nevén DevTest Labs)
 Ebben az oktatóanyagban tesztkörnyezet-rendszergazdaként hoz létre egy tesztkörnyezetfiókot az Azure Lab Services szolgáltatással. Ezután engedélyt ad az oktatóknak, hogy tesztkörnyezeteket hozzanak létre a tanóráikhoz a tesztkörnyezetfiókban. Az oktatók az [Azure Lab Services webhely](https://labs.azure.com) segítségével hozhatnak létre tesztkörnyezeteket a tanóráikhoz.   
@@ -29,16 +29,15 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Tesztkörnyezetfiók létrehozása
 > * Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz
 
-## <a name="prerequisites"></a>Előfeltételek
-
-- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-- Az Azure Lab Services jelenleg korlátozott előzetes verzióként érthető el. Tesztkörnyezetfiók létrehozásához [iratkozzon fel az előzetes verzióra](https://aka.ms/azlabspreviewsignup).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-a-lab-account"></a>Tesztkörnyezetfiók létrehozása
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt tesztkörnyezetfiók létrehozására az Azure Lab Services szolgáltatásban. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali főmenüben kattintson az **Erőforrás létrehozása** elemre (a lista elején), mutasson a **Fejlesztői eszközök** pontra, majd kattintson a **Lab Services (előzetes verzió)** lehetőségre.
+2. A bal oldali főmenüben válassza az **Erőforrás létrehozása** lehetőséget.
+3. Keressen a **Lab Services** szövegre az Azure Marketplace-en, és válassza a **Lab Services** alkalmazást a legördülő listából. 
+4. Válassza a **Lab Services (előzetes verzió)** lehetőséget a szűrt szolgáltatáslistában. 
 1. A **Tesztkörnyezetfiók létrehozása** ablakban válassza a **Létrehozás** elemet.
 2. A **Tesztkörnyezetfiók** ablakban tegye a következőket: 
     1. Írjon be egy nevet a **Tesztkörnyezetfiók neve** mezőbe. 

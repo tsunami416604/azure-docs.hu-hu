@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Excel Azure Blockchain munkaterület adatok használata
-description: Ismerje meg, hogyan tölthetők be, és a Microsoft Excel Azure Blockchain munkaterület SQL-adatbázis adatainak megtekintéséhez.
+title: Azure Blockchain Workbench-adatok használata a Microsoft Excelben
+description: Megtudhatja, hogy hogyan töltheti be és tekintheti meg az Azure Blockchain Workbench SQL-adatbázisának adatait a Microsoft Excelben.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,61 +10,62 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 70297bd0af6322d0f3ac2c719d1827e4bc5898cd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e8c20f4b8e39615e2a8c486130d7c8bec655a936
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>A Microsoft Excel Azure Blockchain munkaterület adatok megtekintése
+# <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Azure Blockchain Workbench-adatok megtekintése a Microsoft Excelben
 
-A Microsoft Excel Azure Blockchain munkaterület SQL-adatbázis adatainak megtekintéséhez használhatja. A cikkben a lépéseket:
+Megtekintheti a Microsoft Excel alkalmazással az Azure Blockchain Workbench SQL-adatbázisának adatait. Ebben a cikkben az alábbi feladatok lépéseit találhatja meg:
 
-* Csatlakozás a Blockchain munkaterület-adatbázis a Microsoft Excel
-* Nézze meg Blockchain munkaterület-adatbázis táblák és nézetek
-* Blockchain munkaterület nézet adatok betöltése az Excel programhoz
+* Csatlakozás Blockchain Workbench-adatbázishoz a Microsoft Excelből
+* Blockchain Workbench-adatbázistáblák és -nézetek megtekintése
+* Blockchain Workbench-nézetek adatainak betöltése az Excelbe
 
-## <a name="connect-to-the-blockchain-workbench-database"></a>Csatlakozás a Blockchain munkaterület-adatbázis
+## <a name="connect-to-the-blockchain-workbench-database"></a>Csatlakozás a Blockchain Workbench adatbázisához
 
-Adatbázishoz való kapcsolódáshoz a Blockchain munkaterület:
+A Blockchain Workbench adatbázisához való csatlakozáshoz:
 
-1. Nyissa meg a Microsoft Excel.
-2. Az a **adatok** lapra, majd **adatok beolvasása**.
-3. Válassza ki **az Azure** majd **az Azure SQL Database**.
+1. Nyissa meg a Microsoft Excelt.
+2. Válassza az **Adatok** lapon az **Adatok lekérése** gombot.
+3. Válassza az **Azure-ból**, majd az **Azure SQL Database-ből** lehetőséget.
 
    ![Kapcsolódás az Azure SQL Database szolgáltatáshoz](media/blockchain-workbench-data-excel/connect-sql-db.png)
 
-4. Az a **SQL Server-adatbázis** párbeszédpanel:
+4. Az **SQL Server-adatbázis** párbeszédpanelen:
 
-    * A **Server**, adja meg a Blockchain munkaterület-kiszolgáló nevét.
-    * A **(nem kötelező) adatbázis**, adja meg az adatbázis nevét.
+    * A **Kiszolgáló** mezőben adja meg a Blockchain Workbench-kiszolgáló nevét.
+    * Az **Adatbázis (nem kötelező)** mezőben adja meg az adatbázis nevét.
 
-   ![Adja meg az adatbázis-kiszolgáló és adatbázis](media/blockchain-workbench-data-excel/provide-server-db.png)
+   ![Az adatbázis-kiszolgáló és az adatbázisnév megadása](media/blockchain-workbench-data-excel/provide-server-db.png)
 
-5. Az a **SQL Server-adatbázis** párbeszédpanel navigációs sáv, jelölje be **adatbázis**. Adja meg a **felhasználónév** és **jelszó**, majd válassza ki **Connect**.
+5. Az **SQL Server-adatbázis** párbeszédpanel navigációs sávján válassza az **Adatbázis** lehetőséget. Írja be a felhasználónevét és a jelszavát a **Felhasználónév** és a **Jelszó** mezőbe, majd válassza a **Csatlakozás** gombot.
 
     > [!NOTE]
-    > Az Azure Blockchain munkaterület központi telepítése során létrehozott hitelesítő adatok használata a **felhasználónév** van `dbadmin`. A **jelszó** egy, létrejön a Blockchain munkaterület üzembe helyezésekor.
+    > Ha az Azure Blockchain Workbench telepítési folyamata során létrehozott hitelesítő adatokat használja, akkor a **Felhasználónév** mezőben a `dbadmin` értéket kell megadnia. A **Jelszó** mezőben a Blockchain Workbench telepítésekor létrehozott jelszót kell megadnia.
     
-   ![Adja meg az adatbázis eléréséhez szükséges hitelesítő adatokat](media/blockchain-workbench-data-excel/provide-credentials.png)
+   ![Az adatbázis eléréséhez szükséges hitelesítő adatok megadása](media/blockchain-workbench-data-excel/provide-credentials.png)
 
-## <a name="look-at-database-tables-and-views"></a>Nézze meg adatbázis-táblák és nézetek
+## <a name="look-at-database-tables-and-views"></a>Adatbázistáblák és -nézetek megtekintése
 
-Miután csatlakozott az adatbázishoz, megnyílik az Excel Navigator párbeszédpanel. A Navigátor segítségével tekintse meg a táblák és nézetek az adatbázisban. A nézetek jelentéskészítéshez, és a nevük fűzve előtagként **vw**.
+Az adatbázishoz való csatlakozás után megjelenik az Excel Kezelő párbeszédpanele. A Kezelő párbeszédpanelen tallózhat az adatbázisban lévő táblák és nézetek között. A nézetek jelentéskészítéshez lettek tervezve, és az összes nézet neve **vw** előtaggal kezdődik.
 
-   ![Excel Navigator előnézete nézet](media/blockchain-workbench-data-excel/excel-navigator.png)
+   ![Az Excel Kezelő párbeszédpanele egy nézet mintaképével](media/blockchain-workbench-data-excel/excel-navigator.png)
 
-## <a name="load-view-data-into-an-excel-workbook"></a>Nézet adatok betöltése az Excel-munkafüzet
+## <a name="load-view-data-into-an-excel-workbook"></a>Nézetadatok betöltése egy Excel-munkafüzetbe
 
-A következő példa bemutatja, hogyan akkor is adatok betöltése az Excel-munkafüzet megtekintésében.
+A következő példa bemutatja, hogy hogyan tölthet be adatokat egy nézetből egy Excel-munkafüzetbe.
 
-1. Az a **Navigator** görgetősáv, jelölje be a **vwContractAction** nézet. A **vwContractAction** mutatja. a szerződés az Blockchain munkaterület-adatbázis a műveleteket.
-2. Válassza ki **terhelés** beolvasni az összes adatot a nézetben, és elhelyezi az Excel-munkafüzetet.
+1. A **Kezelő** párbeszédpanelen válassza a **vwContractAction** nézetet. A **vwContractAction** előnézet megjeleníti a Blockchain Workbench-adatbázisban lévő szerződések egyikének összes műveletét.
+2. Válassza a **Betöltés** lehetőséget a nézet összes adatának beolvasásához és Excel-munkafüzetbe helyezéséhez.
 
-   ![Az adatok betöltése a nézetből](media/blockchain-workbench-data-excel/view-data.png)
+   ![Nézetből betöltött adatok](media/blockchain-workbench-data-excel/view-data.png)
 
-Most, hogy az adatok betöltése, a Excel szolgáltatások segítségével létrehozhatja a saját jelentéseit az Azure Blockchain munkaterület-adatbázis metaadatok és a tranzakciók adatait használja.
+Most, hogy betöltötte az adatokat, az Excel funkcióival létrehozhatja a kívánt jelentéseket az Azure Blockchain Workbench-adatbázis metaadatainak és tranzakciós adatainak felhasználásával.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Adatbázis nézetekhez Azure Blockchain munkaterület](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Adatbázisnézetek az Azure Blockchain Workbenchben](blockchain-workbench-database-views.md)

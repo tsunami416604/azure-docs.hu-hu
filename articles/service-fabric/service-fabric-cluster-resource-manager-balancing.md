@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Service Fabric-fürt elosztása |} Microsoft Docs"
-description: "A fürt és a Service Fabric fürt erőforrás-kezelő terheléselosztás bemutatása."
+title: Az Azure Service Fabric-fürt elosztása |} Microsoft Docs
+description: A fürt és a Service Fabric fürt erőforrás-kezelő terheléselosztás bemutatása.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 06d65878d84fb845cf0c4c333a1e2d12b0aaec2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d2f195c50750a5c7685f62c909f77b2960613e6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>A service fabric-fürt terheléselosztás
 A Service Fabric fürt erőforrás-kezelő támogatja a dinamikus terheléselosztó módosítások reagál a hozzáadást, illetve a csomópontok vagy szolgáltatások eltávolítására. Azt is automatikusan javítja a megkötés megsértésének, és proaktív újra egyensúlyba hozza a fürt. De gyakoriságát. Ezek a műveletek készít, és mi váltja ki őket?
@@ -204,7 +204,7 @@ A fürt erőforrás-kezelő automatikusan ki, milyen szolgáltatások kapcsolato
 ![Terheléselosztás együtt szolgáltatások][Image5]
 </center>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Adatok gyűjtése le hogyan kezeli a Service Fabric fürt erőforrás-kezelő a használati és a fürt teljes kapacitását. A metrikák és konfigurálásuk módját kapcsolatos további tudnivalókért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-metrics.md)
 * A mozgás költsége az egyik módja az, hogy egyes szolgáltatások drágább, mint a többire áthelyezése a fürt erőforrás-kezelő jelzés. További információt a mozgás költsége hivatkoznak [Ez a cikk](service-fabric-cluster-resource-manager-movement-cost.md)
 * A fürt erőforrás-kezelő rendelkezik több szabályozások lassítsa le a fürt forgalmának konfigurálható. Nem fontosságúak normál esetben szükséges, de ha szüksége van rájuk megismerheti azokat [Itt](service-fabric-cluster-resource-manager-advanced-throttling.md)

@@ -138,6 +138,8 @@
         - name: A Zeppelin használata
           href: ../hdinsight-apache-spark-zeppelin-notebook.md
           maintainContext: true
+        - name: Grafana használata
+          href: ./hdinsight-grafana.md
         - name: HDInsight-alkalmazások fejlesztése
           items:
             - name: Egyedi alkalmazások telepítése

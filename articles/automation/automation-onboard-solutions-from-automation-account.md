@@ -6,14 +6,14 @@ ms.service: automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 4bdd0ef182e0d18409ca608a645ff4011f00f9fa
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 2f5d664b660d43e61dba46d13aff1ced796de884
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>A bevezetni frissítéskezelés, a változások követése, és a készlet megoldások
 
@@ -41,7 +41,7 @@ Válassza ki **frissítéskezelés** alatt **FRISSÍTÉSKEZELÉS**. A kiválaszt
 
 ![A bevezetni frissítés megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
-## <a name="scope-configuration"></a>Hatókör konfigurációjának
+## <a name="scope-configuration"></a>Hatókör-konfiguráció
 
 Egyes megoldások belül a munkaterület hatókör-konfigurációt használ, amelyekre a számítógépeket, amelyek a megoldás beszerzése. A hatókör beállításait olyan egy vagy több mentett keresések, amellyel korlátozhatja a megoldás az adott számítógépekhez. A hatókör-konfigurációja, az Automation-fiók alatt eléréséhez **kapcsolódó erőforrások**, jelölje be **munkaterület**. Ezt a munkaterület a **MUNKATERÜLET adatforrások**, jelölje be **hatókör konfigurációk**.
 
@@ -88,7 +88,7 @@ Válassza ki **kezelése gépek**. Ezzel megnyílik a **kezelése gépek** lap. 
 
 ![Mentett keresések](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
-### <a name="selected-machines"></a>Kijelölt gépekhez
+### <a name="selected-machines"></a>Kijelölt gépek
 
 A megoldás egy vagy több gépek engedélyezéséhez jelölje be **engedélyezése a kijelölt gépekhez** kattintson **hozzáadása** mellett minden számítógép hozzá szeretne adni a megoldáshoz. Ez a feladat hozzáadása a számítógép (csoport) mentett keresési lekérdezés a megoldás a kijelölt számítógép nevét.
 

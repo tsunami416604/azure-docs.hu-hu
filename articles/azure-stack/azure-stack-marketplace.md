@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/16/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 588da055d06d7e63510085ff48169f3ea756c53c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 7b1a6020fb8730aee7ed41d8c82358db0945e4ef
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Az Azure verem piactér – áttekintés
 
@@ -29,7 +29,7 @@ A piactéren olyan szolgáltatások, alkalmazások és erőforrások Azure verem
 
 Azure verem kezelőként hozzáadni kívánt elemek mellett dönt a piactér (közzététel). Beállíthatja például adatbázisok, alkalmazásszolgáltatások és így tovább is. Közzététel a felhasználók számára láthatóvá válnak. Közzéteheti az Ön által létrehozott egyéni elemet. Egy növekvő szereplő elemeket is közzéteheti [Azure piactéren elemek listáját](azure-stack-marketplace-azure-items.md). Ha közzéteszi a Piactéri elemet, a felhasználók láthatják az öt percen belül.
 
-A piactér megnyitásához kattintson **új**.
+Nyissa meg a piactéren, hogy a felügyeleti konzolban válassza **új**.
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
@@ -47,5 +47,6 @@ Minden elem a piactér közzétett Azure Katalóguscsomagban (.azpkg) formátumo
 1803 és újabb verziójával Azure verem alakítja képek ritka fájlok letöltése Azure vagy az egyéni lemezképek feltöltése. Ez a folyamat egyre több idő lemezkép való hozzáadásakor, de helyet takarít meg, és felgyorsítja a képek telepítését. Új lemezképek csak érvényes átalakítás.  Meglévő lemezképet, nem módosulnak. 
 
 ## <a name="next-steps"></a>További lépések
+[Töltse le a Piactéri elemek](azure-stack-download-azure-marketplace-item.md)  
 [Hozzon létre, és tegye közzé a Piactéri elemet](azure-stack-create-and-publish-marketplace-item.md)
 

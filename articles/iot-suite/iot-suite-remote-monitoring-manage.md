@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 599f8327e9939f400ca18c87fa6193ac3c1e4a61
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>Kezelése és az eszközök konfigurálása
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag bemutatja az eszköz felügyeleti funkcióit biztosítja a t�
 
 Contoso bontsa ki a kimeneti növeléséhez létesítményekben egyik új gépek van rendezve. Várja meg az új gépek kézbesíti, amíg a megoldás működésének ellenőrzéséhez a szimuláció futtatni kívánt. Kezelőként kívánt kezelése és konfigurálása az eszközök távoli felügyeleti megoldásba.
 
-Eszközök konfigurálása és kezelése bővíthető megoldás biztosításához, a távoli felügyeleti megoldás az IoT-központ funkciókat használ, mint [feladatok](../iot-hub/iot-hub-devguide-jobs.md) és [módszerek közvetlen](../iot-hub/iot-hub-devguide-direct-methods.md). Egy eszköz fejlesztői hogyan módszerek megvalósítja a fizikai eszköz kapcsolatban lásd: [testre szabhatja a távoli felügyeleti megoldásgyorsító](iot-suite-remote-monitoring-customize.md).
+Eszközök konfigurálása és kezelése bővíthető megoldás biztosításához, a távoli felügyeleti megoldás az IoT-központ funkciókat használ, mint [feladatok](../iot-hub/iot-hub-devguide-jobs.md) és [módszerek közvetlen](../iot-hub/iot-hub-devguide-direct-methods.md). Egy eszköz fejlesztői hogyan módszerek megvalósítja a fizikai eszköz kapcsolatban lásd: [testre szabhatja a távoli felügyeleti megoldásgyorsító](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ez az oktatóanyag van szükség a távoli felügyeleti megoldás telepített példányát az Azure-előfizetésben.
 
-Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-suite-remote-monitoring-deploy.md) oktatóanyag.
+Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
 
 ## <a name="add-a-simulated-device"></a>A szimulált eszköz hozzáadása
 

@@ -1,24 +1,24 @@
 ---
-title: "Fürt Azure Load Balancer szabály létrehozása"
-description: "Konfigurálja az Azure Load Balancer megnyitásához az Azure Service Fabric-fürt által használt portokat."
+title: Fürt Azure Load Balancer szabály létrehozása
+description: Konfigurálja az Azure Load Balancer megnyitásához az Azure Service Fabric-fürt által használt portokat.
 services: service-fabric
 documentationcenter: na
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 71dbc2b5f6c3c37e432f5318169a088c5607f083
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 53dcd6c0705faa94e83d6e44f813fa9c575843e8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Nyissa meg a Service Fabric-fürt által használt portokat
 
@@ -30,7 +30,7 @@ A Service Fabric-fürt üzembe helyezésekor az Azure-ba, a terheléselosztó au
 
 A Service Fabric-alkalmazás **ServiceManifest.xml** konfigurációs fájl határozza meg a végpontokat, az alkalmazás használatához vár. Miután a konfigurációs fájl frissült a végpont meghatározása, a terheléselosztó frissíteni kell, amely (vagy egy másik) port. A service fabric-végpont létrehozásával kapcsolatos további információkért lásd: [egy végpont beállítása](service-fabric-service-manifest-resources.md).
 
-## <a name="create-a-load-balancer-rule"></a>Hozzon létre olyan terheléselosztó szabályhoz
+## <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
 Terheléselosztó szabály egy internetre irányuló portot nyit, és továbbítja az alkalmazás által használt belső csomópont port forgalmat. Ha nem rendelkezik olyan terheléselosztóhoz, lásd: [egy internetre irányuló terheléskiegyenlítő](..\load-balancer\load-balancer-get-started-internet-portal.md).
 
@@ -105,6 +105,6 @@ Vonatkozó a `New-AzureRmLoadBalancerRuleConfig` parancs, a `-FrontendPort` a po
 >[!NOTE]
 >Terheléselosztó létrehozása a PowerShell használatával kapcsolatos további információkért lásd: [terheléselosztó létrehozása a PowerShell használatával](..\load-balancer\load-balancer-get-started-internet-arm-ps.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [hálózatkezelés a Service Fabric](service-fabric-patterns-networking.md).

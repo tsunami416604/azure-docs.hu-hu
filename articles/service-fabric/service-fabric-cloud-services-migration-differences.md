@@ -1,24 +1,24 @@
 ---
-title: "Cloud Services és a Service Fabric közötti különbségek |} Microsoft Docs"
-description: "Fogalmi áttekintése áttelepítéséhez a Service Fabric Felhőszolgáltatások alkalmazások."
+title: Cloud Services és a Service Fabric közötti különbségek |} Microsoft Docs
+description: Fogalmi áttekintése áttelepítéséhez a Service Fabric Felhőszolgáltatások alkalmazások.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4bb5d92cd46533b46b388d178990f230424b09dc
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 35ab4a9bdd66bf3571e7f189191550f88e17cee2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Cloud Services és a Service Fabric közötti különbségekről áttelepítése előtt ismerje meg alkalmazások.
 A Microsoft Azure Service Fabric a következő generációs alkalmazás felhőplatform jól skálázható, nagymértékben megbízható elosztott alkalmazásokhoz. Számos új szolgáltatást csomagolása, telepítése, frissítése és elosztott felhőalapú alkalmazások kezelése okozna. 
@@ -88,7 +88,7 @@ Az azonos kommunikációs modellt a Service Fabric használható. Ez akkor lehet
 
 ![A Service Fabric közvetlen kommunikációt][8]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A legegyszerűbb áttelepítési út Felhőszolgáltatások a Service Fabric-hoz csak a felhőalapú szolgáltatások telepítése cserélje le a Service Fabric-alkalmazás, megőrzi az alkalmazás általános architektúrája többé-kevésbé megegyezik. A következő cikk nyújt egy útmutató egy webes vagy feldolgozói szerepkör átalakítása a Service Fabric állapotmentes szolgáltatások segítségével.
 
 * [Egyszerű áttelepítési: webes vagy feldolgozói szerepkör konvertálása a Service Fabric állapotmentes szolgáltatások](service-fabric-cloud-services-migration-worker-role-stateless-service.md)

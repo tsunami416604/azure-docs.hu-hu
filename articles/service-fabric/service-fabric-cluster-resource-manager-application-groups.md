@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric fürt erőforrás-kezelő - alkalmazáscsoportok |} Microsoft Docs"
-description: "A Service Fabric fürt erőforrás-kezelőben alkalmazáscsoport funkcióinak áttekintése"
+title: Service Fabric fürt erőforrás-kezelő - alkalmazáscsoportok |} Microsoft Docs
+description: A Service Fabric fürt erőforrás-kezelőben alkalmazáscsoport funkcióinak áttekintése
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3212631ede7125bd849c2d9ba86ba2a0747d69ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 215efc1f0597f5199dd37baf4b109d7e76040aae
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-application-groups"></a>Alkalmazáscsoportok bemutatása
 A Service Fabric-fürt erőforrás-kezelő általában kezeli a fürterőforrások úgy, hogy a terhelés terjednek (keresztül képviselt [metrikák](service-fabric-cluster-resource-manager-metrics.md)) egyenletesen oszlanak meg a fürtön. A fürt és a fürt csomópontjai keresztül egy teljes kapacitásának kezeli a Service Fabric [kapacitás](service-fabric-cluster-resource-manager-cluster-description.md). Metrikák és a kapacitás működik nagy számos különféle munkaterheléshez azonban néha további követelmények is betöltheti különböző háló alkalmazáspéldányok használó mintákat. Például előfordulhat, hogy szeretné:
@@ -207,7 +207,7 @@ A korlátozások érvényesek lesznek, mind az alkalmazás létrehozása és a f
 - Ne próbálja meg az alkalmazáscsoport szolgáltatásainak használatával korlátozhatja az alkalmazás egy _adott_ csomópontok részhalmaza. Más szóval megadhatja, hogy az alkalmazás fut, legfeljebb öt csomópont, de a fürt nem adott öt csomópontok. Egy adott csomópont alkalmazást korlátozási elérhető placement Constraints korlátozásokat szolgáltatások használatával.
 - Ne próbálja meg az alkalmazás kapacitásának segítségével győződjön meg arról, hogy ugyanazt az alkalmazást a két szolgáltatás ugyanazon a csomóponton kerülnek. Ehelyett használja [affinitás](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) vagy [placement Constraints korlátozásokat](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A szolgáltatások konfigurálásáról [további információ a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
 - Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos további tudnivalókért tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)
 - Indítsa el az elejétől és [Bevezetés a Service Fabric fürt Resource Manager](service-fabric-cluster-resource-manager-introduction.md)

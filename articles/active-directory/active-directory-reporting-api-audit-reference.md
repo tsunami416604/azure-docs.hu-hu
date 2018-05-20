@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1bf86a9190039cdf0fe8dc435bdee4308b28cf29
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e620a7f488e51a60bff6943135831eea0d12816d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Az Azure Active Directory naplózási API-referencia
 
@@ -52,7 +52,7 @@ Esetén:
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a jelentés eléréséhez a Reporting API-n keresztül, rendelkeznie kell:
 
-* Egy [Azure Active Directory ingyenes vagy jobb edition](active-directory-editions.md)
+* Egy [Azure Active Directory ingyenes vagy jobb edition](active-directory-whatis.md)
 * Befejeződött a [Előfeltételek az Azure AD reporting API eléréséhez](active-directory-reporting-api-prerequisites.md). 
 
 ## <a name="accessing-the-api"></a>Az API elérése
@@ -117,10 +117,10 @@ dátum és idő (UTC) formátumban kell megadni
 
 | Kategória                         | Érték     |
 | :--                              | ---       |
-| Alapvető könyvtár                   | Címtár |
+| Alapvető könyvtár                   | Könyvtár |
 | Önkiszolgáló jelszókezelés | SSPR      |
 | Önkiszolgáló csoportkezelés    | SSGM      |
-| Fiók kiépítése             | Sync      |
+| Fiók kiépítése             | Szinkronizálás      |
 | Automatizált jelszóváltás      | Automatizált jelszóváltás |
 | Identity Protection              | IdentityProtection |
 | Meghívott felhasználók                    | Meghívott felhasználók |
@@ -140,8 +140,8 @@ dátum és idő (UTC) formátumban kell megadni
 
 | Tevékenységi állapot | Érték |
 | :--             | ---   |
-| Sikeres         | 0     |
-| Hiba         | - 1   |
+| Sikeres művelet         | 0     |
+| Sikertelen         | - 1   |
 
 **Támogatott operátorok**: eq
 
@@ -241,7 +241,7 @@ Nem betűérzékeny
 * Adja hozzá a teljes névtér Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity lekérdezésekor
 
 - - -
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Meg szeretné tekinteni a szűrt rendszertevékenységét példák? Tekintse meg a [Azure Active Directory naplózási API minták](active-directory-reporting-api-audit-samples.md).
 

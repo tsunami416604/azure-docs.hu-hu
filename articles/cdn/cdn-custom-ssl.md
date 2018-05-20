@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f64f25713dd05ece018138624a06c225218f68e2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95f73dd702b3fffcefbdea28d58ad36bf8eb7eb5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -74,13 +74,20 @@ Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartomá
 
 4. A Tanúsítványkezelés típusa területen válassza a **CDN által felügyelt** lehetőséget.
 
-4. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez.
+5. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez.
 
     ![Egyéni tartomány HTTPS-állapota](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
+6. Folytassa [A tartomány érvényesítése](#validate-the-domain) című szakasszal.
+
 
 ## <a name="option-2-enable-the-https-feature-with-your-own-certificate"></a>2. lehetőség: A HTTPS szolgáltatás engedélyezése saját tanúsítvánnyal 
+
+> [!IMPORTANT]
+> Ez a szolgáltatás csak **Microsoft Azure CDN Standard** típusú profilokkal érhető el. 
+>
  
+
 Saját tanúsítványt is használhat az Azure CDN-en a tartalom HTTPS-en keresztüli küldésére. Ez a folyamat Azure Key Vault-integrációval történik. Az Azure Key Vault segítségével a felhasználók biztonságosan tárolhatják tanúsítványaikat. Az Azure CDN szolgáltatás ezt a biztonságos mechanizmust használja a tanúsítvány beszerzéséhez. A saját tanúsítvány használatához néhány további lépésre van szükség.
 
 ### <a name="step-1-prepare-your-azure-key-vault-account-and-certificate"></a>1. lépés: Az Azure Key Vault-fiók és a tanúsítvány előkészítése
@@ -89,9 +96,23 @@ Saját tanúsítványt is használhat az Azure CDN-en a tartalom HTTPS-en keresz
  
 2. Azure Key Vault-tanúsítványok: Ha már rendelkezik tanúsítvánnyal, feltöltheti közvetlenül az Azure Key Vault-fiókjába, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vaultban azokkal a hitelesítésszolgáltató (CA) partnerekkel, amelyekkel az Azure Key Vault integrálva van. 
 
-### <a name="step-2-grant-azure-cdn-access-to-your-key-vault"></a>2. lépés: Hozzáférés biztosítása az Azure CDN számára a Key Vaulthoz
+### <a name="step-2-register-azure-cdn"></a>2. lépés: Azure CDN regisztrálása
+
+Regisztrálja az Azure CDN-t alkalmazásként az Azure Active Directoryjában PowerShellen keresztül.
+
+1. Ha szükséges, telepítse az [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) bővítményt a PowerShellhez a helyi számítógépen.
+
+2. Futtassa a PowerShellben az alábbi parancsot:
+
+     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+
+    ![Azure CDN regisztrálása PowerShellben](./media/cdn-custom-ssl/cdn-register-powershell.png)
+              
+
+### <a name="step-3-grant-azure-cdn-access-to-your-key-vault"></a>3. lépés: Hozzáférés biztosítása az Azure CDN számára a Key Vaulthoz
  
-Engedélyt kell adnia az Azure CDN számára, hogy hozzáférhessen az Azure Key Vault-fiókjában tárolt tanúsítványokhoz (titkos kódokhoz).
+Adjon engedélyt az Azure CDN számára, hogy hozzáférhessen az Azure Key Vault-fiókjában tárolt tanúsítványokhoz (titkos kódokhoz).
+
 1. A Key Vault-fiók BEÁLLÍTÁSOK területén válassza a **Hozzáférési szabályzatok**, majd az **Új hozzáadása** lehetőséget új szabályzat létrehozásához.
 
     ![Új hozzáférési szabályzat létrehozása](./media/cdn-custom-ssl/cdn-new-access-policy.png)
@@ -106,7 +127,7 @@ Engedélyt kell adnia az Azure CDN számára, hogy hozzáférhessen az Azure Key
 
     Az Azure CDN most már hozzáférhet a Key Vaulthoz és az abban tárolt tanúsítványokhoz (titkos kódokhoz).
  
-### <a name="step-3-select-the-certificate-for-azure-cdn-to-deploy"></a>3. lépés: Az Azure CDN által üzembe helyezendő tanúsítvány kiválasztása
+### <a name="step-4-select-the-certificate-for-azure-cdn-to-deploy"></a>4. lépés: Az Azure CDN által üzembe helyezendő tanúsítvány kiválasztása
  
 1. Lépjen vissza az Azure CDN portálra, és válassza ki a profilt és CDN-végpontot, amelyhez engedélyezni szeretné az egyéni HTTPS-t. 
 
@@ -126,16 +147,20 @@ Engedélyt kell adnia az Azure CDN számára, hogy hozzáférhessen az Azure Key
     - A tanúsítvány elérhető verziói. 
  
 5. Válassza a **Bekapcsolás** lehetőséget a HTTPS engedélyezéséhez.
+  
+6. Saját tanúsítvány használatakor nem szükséges tartományérvényesítés. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez.
 
 
 ## <a name="validate-the-domain"></a>A tartomány érvényesítése
 
-Ha már rendelkezik használatban lévő egyéni tartománnyal, amely az egyéni végpontjára van leképezve egy CNAME rekorddal, lépjen tovább a következőre:  
+Ha már rendelkezik használatban lévő egyéni tartománnyal, amely az egyéni végpontjára van leképezve egy CNAME rekorddal, vagy ha saját tanúsítványt használ, lépjen tovább a következőre:  
 [Az egyéni tartomány le van képezve a CDN-végpontra](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record) Ellenkező esetben, ha már nem létezik a végpont CNAME rekordjának bejegyzése, vagy a cdnverify altartományt tartalmazza, lépjen tovább a [Az egyéni tartomány nincs leképezve a CDN-végpontra](#custom-domain-is-not-mapped-to-your-cdn-endpoint) részre.
 
 ### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>Az egyéni tartomány le van képezve a CDN-végpontra egy CNAME rekord révén
 
-Amikor hozzáadott egy egyéni tartományt a végpontjához, létrehozott egy CNAME rekordot a saját tartományregisztrálójának DNS-táblájában a CDN-végpont gazdanevére való leképezéséhez. Ha ez a CNAME rekord még létezik és nem tartalmazza a cdnverify altartományt, a DigiCert hitelesítésszolgáltató (CA) arra használja, hogy érvényesítse az egyéni tartomány tulajdonjogát. 
+Amikor hozzáadott egy egyéni tartományt a végpontjához, létrehozott egy CNAME rekordot a saját tartományregisztrálójának DNS-táblájában a CDN-végpont gazdanevére való leképezéséhez. Ha ez a CNAME rekord még létezik és nem tartalmazza a cdnverify altartományt, a DigiCert hitelesítésszolgáltató (CA) arra használja, hogy automatikusan érvényesítse az egyéni tartomány tulajdonjogát. 
+
+Ha saját tanúsítványt használ, nem szükséges tartományérvényesítés.
 
 A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön egyéni tartományának neve, az *Érték* pedig a CDN-végpont gazdaneve:
 
@@ -147,7 +172,7 @@ A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME 
 
 Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és hozzáadja azt az alternatív tulajdonosnevek (SAN) tanúsítványhoz. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
 
-Az automatikus érvényesíts általában eltart néhány percig. Ha a tartománya egy órán belül sincs érvényesítve, nyisson meg egy támogatási jegyet.
+Az automatikus érvényesítés általában eltart néhány percig. Ha a tartománya egy órán belül sincs érvényesítve, nyisson meg egy támogatási jegyet.
 
 >[!NOTE]
 >Ha van egy Hitelesítésszolgáltatói engedélyezési (CAA-) rekordja a DNS-szolgáltatónál, tartalmaznia kell a DigiCertet mint érvényes hitelesítésszolgáltatót. A CAA-rekord lehetővé teszi a tartomány tulajdonosai számára, hogy megadják a DNS-szolgáltatóknál, hogy melyik hitelesítésszolgáltatók jogosultak a tartomány tanúsítványának kiállítására. Ha egy hitelesítésszolgáltató kérést kap egy CAA-rekorddal rendelkező tartomány tanúsítványának kiállítására, és a hitelesítésszolgáltató nem szerepel az engedélyezett kiállítók listáján, nem adhat ki tanúsítványt a tartománynak vagy altartománynak. További információ a CAA-rekordok kezelésével kapcsolatban: [CAA-rekordok kezelése](https://support.dnsimple.com/articles/manage-caa-record/). A CAA-rekordokhoz való eszközért lásd: [CAA-rekord segítő](https://sslmate.com/caa/).

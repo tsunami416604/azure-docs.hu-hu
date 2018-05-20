@@ -1,6 +1,6 @@
 ---
-title: "Az Azure ServiceFabric diagnostics és figyelése |} Microsoft Docs"
-description: "Ez a cikk ismerteti a Service Fabric megbízható ServiceRemoting futásidejű, például a teljesítményszámlálók azt által kibocsátott alkalmazásteljesítmény-figyelési szolgáltatásokkal."
+title: Az Azure ServiceFabric diagnostics és figyelése |} Microsoft Docs
+description: Ez a cikk ismerteti a Service Fabric megbízható ServiceRemoting futásidejű, például a teljesítményszámlálók azt által kibocsátott alkalmazásteljesítmény-figyelési szolgáltatásokkal.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -9,16 +9,16 @@ editor: suchiagicha
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: f54e157654fb15d2f7ff48ddc666c6c8803c75a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d462ba0955a362c27b786ee6a5670eec20c52a22
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és teljesítményfigyelés a megbízható szolgáltatás távelérése
 A megbízható ServiceRemoting futásidejű bocsát ki [teljesítményszámlálók](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Ezek a ServiceRemoting működéséről betekintést, és a hibaelhárítás és a Teljesítményfigyelő segítségével.
@@ -30,7 +30,7 @@ A megbízható ServiceRemoting futásidejű meghatározza, hogy a következő te
 | Kategória | Leírás |
 | --- | --- |
 | Service Fabric-szolgáltatás |Azure Service Fabric szolgáltatás távoli eljáráshívási kapcsolatos számlálókat például átlagos kérelem feldolgozásához szükséges idő |
-| Service Fabric szolgáltatás módszer |Módszerek kapcsolatos számlálókat által megvalósított Service Fabric Remoting Service, például egy metódus meghívja gyakoriságát. |
+| Service Fabric-szolgáltatási metódus |Módszerek kapcsolatos számlálókat által megvalósított Service Fabric Remoting Service, például egy metódus meghívja gyakoriságát. |
 
 A megelőző kategóriák egy vagy több számlálóval rendelkezik.
 
@@ -84,9 +84,9 @@ A megbízható szolgáltatás futásideje teszi közzé a következő teljesítm
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric szolgáltatás módszer |Indítások/mp |Amelyet a módszerrel másodpercenkénti száma |
-| Service Fabric szolgáltatás módszer |Hívásonkénti átlagos idő ezredmásodpercben |Ezredmásodpercben a metódus végrehajtásához szükséges idő |
-| Service Fabric szolgáltatás módszer |Kiváltott kivételek száma |Ennyiszer, hogy a szolgáltatás metódus kivételt / másodperc |
+| Service Fabric-szolgáltatási metódus |Hívás/mp |Amelyet a módszerrel másodpercenkénti száma |
+| Service Fabric-szolgáltatási metódus |Hívásonkénti átlagos idő ezredmásodpercben |Ezredmásodpercben a metódus végrehajtásához szükséges idő |
+| Service Fabric-szolgáltatási metódus |Keletkezett kivétel/mp |Ennyiszer, hogy a szolgáltatás metódus kivételt / másodperc |
 
 ### <a name="service-request-processing-performance-counters"></a>Szolgáltatási kérelem feldolgozása teljesítményszámlálói
 Amikor egy ügyfél keresztül a szolgáltatási proxy objektumhoz egy metódust hívja, a a hálózaton keresztül a távelérési szolgáltatásával küldött kérelemüzenet eredményez. A szolgáltatás feldolgozza a kérelmet üzenetet, és elküld egy választ, az ügyfélnek. A megbízható ServiceRemoting futásidejű teszi közzé a következő teljesítményszámlálókkal kapcsolatos szolgáltatási kérelem feldolgozása.
@@ -98,6 +98,6 @@ Amikor egy ügyfél keresztül a szolgáltatási proxy objektumhoz egy metódust
 | Service Fabric-szolgáltatás |Kérelem deszerializálásának átlagos ideje ezredmásodpercben |(Ezredmásodpercben) deszerializálása szolgáltatás üzenete, ha a szolgáltatás fogadja igénybe vett idő |
 | Service Fabric-szolgáltatás |Válasz szerializálásának átlagos ideje ezredmásodpercben |(Ezredmásodpercben), a szolgáltatás a szolgáltatás válaszüzenetet szerializálni az ügyfélnek a válasz elküldése előtt igénybe vett idő |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Mintakód](https://github.com/Azure/servicefabric-samples)
 * [A PerfView EventSource szolgáltatók](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

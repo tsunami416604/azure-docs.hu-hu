@@ -1,22 +1,22 @@
 ---
-title: "Az Azure Service Fabric környezeti változók |} Microsoft Docs"
-description: "A Service Fabric környezeti változók referenciadokumentációt tartalmaz"
+title: Az Azure Service Fabric környezeti változók |} Microsoft Docs
+description: A Service Fabric környezeti változók referenciadokumentációt tartalmaz
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: a9faefb43b9d5da81dddef8f326a3867b32842f7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7c36fec7ff58c225e41899e8264ca1dde95ce7c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-environment-variables"></a>A Service Fabric környezeti változók
 
@@ -27,7 +27,7 @@ A Service Fabric rendelkezik minden szolgáltatáspéldány beállított beépí
 | Fabric_ApplicationName                       | Az alkalmazás uri háló neve                                 | fabric: / MyApplication                                                |
 | Fabric_CodePackageName                       | A kódcsomag, amelyhez tartozik a folyamat neve              | Kód                                                                 |
 | Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | Az IP-cím vagy FQDN-jét a végpont                                 | 10.0.0.1                                                     |
-| Fabric\_Endpoint\_*ServiceEndpointName*              | A végpont portszáma                                  | 8234                                                                 |
+| Háló\_végpont\_*ServiceEndpointName*              | A végpont portszáma                                  | 8234                                                                 |
 | Fabric_Folder_App_Log                        | Naplózási mappájának                                                             | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |
 | Fabric_Folder_App_Temp                       | Ideiglenes mappa létrehozása                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\temp     |
 | Fabric_Folder_App_Work                       | Munkahelyi mappák                                                            | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\work     |

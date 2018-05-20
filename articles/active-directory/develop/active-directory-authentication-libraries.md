@@ -3,23 +3,25 @@ title: Az Azure Active Directory hitelesítési Kódtárai |} Microsoft Docs
 description: Az Azure AD Authentication Library (ADAL) lehetővé teszi az ügyfél alkalmazásfejlesztők számára könnyedén hitelesítheti a felhasználókat a felhőalapú vagy helyszíni Active Directory (AD) és majd a védelmét biztosító API-hívások hozzáférési tokenek beszerzése érdekében.
 services: active-directory
 documentationcenter: ''
-author: SaeedAkhter-MSFT
+author: CelesteDG
 manager: mtillman
-editor: mbaldwin
+editor: ''
 ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2018
-ms.author: saeeda
+ms.author: celested
+ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1e82fa62c86c80b1e68fea995ca6f90861688d5c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 143ee99c581db052c1dbcbf46decce356ee96fa6
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Az Azure Active Directory hitelesítési Kódtárai
 
@@ -45,7 +47,7 @@ Az Azure Active Directory Authentication Library (ADAL) 1.0-s verzió lehetővé
 | Android |ADAL |[A központi tárházban](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android-alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](http://javadoc.io/doc/com.microsoft.aad/adal/)|
 | Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | [Node.Js-webalkalmazás](https://github.com/Azure-Samples/active-directory-node-webapp-openidconnect)| |
 | Java |ADAL4J |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Java webalkalmazások](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) | |
-| Python |ADAL |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[Python webes alkalmazás](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) | |
+| Python |ADAL |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[Python webes alkalmazás](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) | [Referencia](http://adal-python.readthedocs.io/en/latest/) |
 
 ## <a name="microsoft-supported-server-libraries"></a>A Microsoft által támogatott Server könyvtárak
 

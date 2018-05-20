@@ -1,5 +1,5 @@
 ---
-title: Az Azure Search kapacitástervezési |} Microsoft Docs
+title: Partíciók és replikák kiosztani a lekérdezés és az Azure Search indexelő |} Microsoft Docs
 description: Állítsa be az Azure Search, ahol az egyes erőforrások árképzéséről számlázható keresési egység a partícióazonosító és másodpéldány számítógép-erőforrásokat.
 author: HeidiSteen
 manager: cgronlun
@@ -8,13 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b6c2c8283d5a60013c525db296bf84cc50d76617
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>A lekérdezés és a munkaterhelések az Azure Search indexelő erőforrás szintjeinek
+# <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Partíciók és replikák kiosztani a lekérdezés és a munkaterhelések az Azure Search indexelő
 Miután [válasszon egy tarifacsomagot](search-sku-tier.md) és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), a következő lépésre szükség növelje a replikák és a szolgáltatás által használt partíciók számát. Minden egyes kínál, számlázási egységek rögzített száma. Ez a cikk azt ismerteti, hogyan azokat az egységeket, hogy a lekérdezés-végrehajtás indexelő és tárolási követelményeinek optimális konfigurálása során eléréséhez lefoglalni.
 
 Erőforrás beállítási lehetőségek érhetők el, ha beállít egy szolgáltatást a [alapszintű rétegben](http://aka.ms/azuresearchbasic) vagy az egyik a [szabványos rétegek](search-limits-quotas-capacity.md). Ezek a rétegek szolgáltatások, a kapacitás lépésekben vásárolt *keresési egységet* (SUs) ahol minden partíció és a replika számít-e egy SU. 

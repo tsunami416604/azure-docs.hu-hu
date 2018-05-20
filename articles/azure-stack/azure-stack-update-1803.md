@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 36d4cd910f841a323dfada49d65f7acb4bdf3138
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: MT
+ms.openlocfilehash: 095356e76dc72c3e549c23ab3855962e9c2f1d26
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-1803-update"></a>Az Azure verem 1803 frissítés
 
@@ -98,7 +98,7 @@ A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure 
 - Különböző javítja a teljesítményt, stabilitását, biztonsági és az Azure-verem által használt operációs rendszer.
 
 
-### <a name="changes"></a>Változások
+### <a name="changes"></a>Módosítások
 - A módszer egy újonnan létrehozott ajánlatot állapotának módosítása *titkos* való *nyilvános* vagy *leszerelt* megváltozott. További információkért lásd: [hozzon létre egy ajánlatot](azure-stack-create-offer.md).
 
 
@@ -118,8 +118,6 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 - Nem lehet a számítási és tárolási erőforrások megtekintése a felügyeleti portálon lehetséges. A probléma oka hiba jelentendő helytelenül sikeres frissítés a frissítés telepítése során. Ha a probléma akkor fordul elő, forduljon a Microsoft ügyfél-támogatási szolgálathoz segítségért.
 
 - A portál üres irányítópult jelenhet meg. Az irányítópult helyreállításához válassza ki a fogaskerék ikonra a portál jobb felső sarokban, majd válassza ki **alapértelmezett beállításainak visszaállítása**.
-
-- Egy erőforrás vagy egy erőforráscsoport, tulajdonságainak megtekintésekor a **áthelyezése** gomb le van tiltva. Ez az elvárt viselkedés. Erőforráscsoportok vagy előfizetések között erőforrások vagy erőforráscsoportok áthelyezése jelenleg nem támogatott.
 
 - Felhasználói előfizetések eredmények az árva erőforrások törlése. A probléma megoldásához először törölnie a felhasználói erőforrásokat és a teljes erőforráscsoport, és törölje a felhasználó előfizetések.
 
@@ -244,6 +242,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 - Az erőforrás-szolgáltató, hogy a gazdagép SQL vagy MySQL elemek létrehozásához kiszolgálókon támogatott. A gazdagép-kiszolgálón létrehozott elemek, nem az erőforrás-szolgáltató által létrehozott okozhatja hibás állapotban.  
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
 
 > [!NOTE]  
 > Miután frissítette az Azure verem 1803, továbbra is használja az SQL és MySQL erőforrás-szolgáltató korábban már telepített.  Azt javasoljuk, hogy frissítse az SQL és MySQL amikor elérhetővé válik az új verziót. Azure-vermét, például frissítések alkalmazása az SQL és a MySQL-szolgáltatók egymás után.  Például 1711 verzióját használja, ha először alkalmazza a 1712, majd 1802 verziója, és frissítse a 1803.      

@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c46eb1b2da62d70337e60066ed0706c3a4fdedcf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Útmutatás a Hive HDInsight és az Azure Data Lake Store teljesítményhangolása
 
@@ -46,9 +44,9 @@ Az alábbiakban a továbbfejlesztett ADLS-teljesítmény hangolására legfontos
 
 **Hive.tez.Container.size** -tároló mérete határozza meg, hogy mennyi memória érhető el minden feladat esetében.  Ez az a fő bemeneti a Hive párhuzamossági vezérlése.  
 
-**tez.Grouping.min méretű** – Ez a paraméter lehetővé teszi, hogy meg kell adnia minden leképező legkisebb méretét.  Ha, amely Tez kiválasztja mappers száma kisebb, mint ez a paraméter értékét, majd Tez fogja használni az itt beállított érték.  
+**tez.Grouping.min méretű** – Ez a paraméter lehetővé teszi, hogy meg kell adnia minden leképező legkisebb méretét.  Ha, amely Tez kiválasztja mappers száma kisebb, mint ez a paraméter értékét, majd Tez fogja használni az itt beállított érték.
 
-**tez.Grouping.max méretű** – a paraméter lehetővé teszi, hogy meg kell adnia minden leképező maximális méretét.  Ha, amely Tez kiválasztja mappers száma nagyobb, mint ez a paraméter értékét, majd Tez fogja használni az itt beállított érték.  
+**tez.Grouping.max méretű** – a paraméter lehetővé teszi, hogy meg kell adnia minden leképező maximális méretét.  Ha, amely Tez kiválasztja mappers száma nagyobb, mint ez a paraméter értékét, majd Tez fogja használni az itt beállított érték.
 
 **Hive.Exec.reducer.bytes.per.reducer** – Ez a paraméter minden nyomáscsökkentő méretét állítja be.  Alapértelmezés szerint minden nyomáscsökkentő mérete 256MB.  
 
@@ -75,9 +73,10 @@ Tegyük fel, egy 8 csomópont D14 fürt rendelkezik.
     # of YARN containers = 768GB / 3072MB = 256
 
 ## <a name="limitations"></a>Korlátozások
+
 **ADLS-szabályozás** 
 
-UIf találati ADLS által biztosított sávszélesség határain, hogy feladat hibáihoz kezdenie. Ez azonosítható betartásával szabályozási hibák feladat naplókban által.  A párhuzamos végrehajtás Tez tároló méretének növelésével csökkenthető.  Ha a feladat több egyidejű van szüksége, lépjen kapcsolatba velünk a következő címen.   
+UIf találati ADLS által biztosított sávszélesség határain, hogy feladat hibáihoz kezdenie. Ez azonosítható betartásával szabályozási hibák feladat naplókban által.  A párhuzamos végrehajtás Tez tároló méretének növelésével csökkenthető.  Ha a feladat több egyidejű van szüksége, lépjen kapcsolatba velünk a következő címen.
 
 Ha Ön első szabályozott ellenőrzéséhez szeretne engedélyezni a hibakeresési naplózás az ügyféloldalon. Ez hogyan azt teheti meg:
 

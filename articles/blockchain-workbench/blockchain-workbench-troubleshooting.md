@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8a2715666c4fff490f5184b7b8719b412952b9bf
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 419ed6dc76101366e47ae94067f7b671a10c94e2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Hibaelhárítás az Azure Blockchain munkaterület
 
@@ -49,7 +49,8 @@ A parancsfájl a következő paraméterek fogadja el:
 |---------|---------|----|
 | SubscriptionID | A SubscriptionID létrehozásához, vagy keresse meg az összes erőforrást. | Igen |
 | ResourceGroupName | Ha Blockchain munkaterület telepítve van az Azure erőforráscsoport nevét. | Igen |
-| Kimeneti_könyvtár | A kimenet létrehozásához elérési utat. A ZIP-fájl. Ha nincs megadva, alapértelmezés szerint az aktuális könyvtárat. | Nem
+| Kimeneti_könyvtár | A kimenet létrehozásához elérési utat. A ZIP-fájl. Ha nincs megadva, alapértelmezés szerint az aktuális könyvtárat. | Nem |
+| LookbackHours | Húzza a telemetriai adatok használandó órák száma. Alapértelmezett érték: 24 óra. Maximális érték 90 üzemideje (óra) | Nem |
 | OmsSubscriptionId | Az előfizetés-azonosító OMS telepítési helyét. Csak adja át ennek a paraméternek, ha blockchain hálózat OMS Blockchain munkaterület erőforráscsoport kívül van telepítve.| Nem |
 | OmsResourceGroup |Az erőforráscsoport, amelyen OMS üzembe van helyezve. Csak adja át ennek a paraméternek, ha blockchain hálózat OMS Blockchain munkaterület erőforráscsoport kívül van telepítve.| Nem |
 | OmsWorkspaceName | Az OMS-munkaterület nevét. Csak adja át ennek a paraméternek, ha blockchain hálózat OMS Blockchain munkaterület erőforráscsoport kívül van telepítve | Nem |
@@ -58,15 +59,17 @@ A parancsfájl a következő paraméterek fogadja el:
 
 A kimeneti ZIP-fájl tartalmazza a következő gyökérmappa-szerkezetében:
 
-| Mappa \ fájl | Leírás  |
+| Fájl vagy mappa | Leírás  |
 |---------|---------|
 | \Summary.txt | A rendszer összegzése |
-| \metrics\blockchain | A blockchain kapcsolatos metrikákat |
-| \metrics\workbench | A munkaterület kapcsolatos metrikákat |
-| \details\blockchain | A blockchain kapcsolatos részletes naplókat |
-| \details\workbench | A munkaterület kapcsolatos részletes naplókat |
+| \Metrics\blockchain | A blockchain kapcsolatos metrikákat |
+| \Metrics\Workbench | A munkaterület kapcsolatos metrikákat |
+| \Details\Blockchain | A blockchain kapcsolatos részletes naplókat |
+| \Details\Workbench | A munkaterület kapcsolatos részletes naplókat |
 
 Az összegző fájl lehetővé teszi az alkalmazás általános állapotának és az alkalmazás állapotáról pillanatképet. Az összegzés kínál javasolt műveletet, a legfontosabb hibák, és a szolgáltatások futtatásával kapcsolatos metaadatok emeli ki.
+
+A **metrikák** mappa tartalmazza különböző rendszerösszetevők metrikája adott idő alatt. Például a kimeneti fájl `\Details\Workbench\apiMetrics.txt` különböző válaszkódot és a gyűjtési időszak alatt válaszidők összegzését tartalmazza. A **részletek** mappa tartalmazza az adott munkaterület vagy a mögöttes blockchain hálózati kapcsolatos hibák elhárításának részletes naplókat. Például `\Details\Workbench\Exceptions.csv` a legutóbbi kivételeket, a rendszer, amely hasznos a intelligens szerződések hibák vagy a blockchain interakció történt listáját tartalmazza. 
 
 ## <a name="next-steps"></a>További lépések
 

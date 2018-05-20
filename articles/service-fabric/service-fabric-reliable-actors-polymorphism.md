@@ -1,6 +1,6 @@
 ---
 title: A Reliable Actors keretrendszer a polimorfizmus |} Microsoft Docs
-description: "Hierarchiák .NET felületek és Reliable Actors keretében funkcióit és API-definíciók létrehozása."
+description: Hierarchiák .NET felületek és Reliable Actors keretében funkcióit és API-definíciók létrehozása.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,21 +9,21 @@ editor: vturecek
 ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 38a86b25b30420c6f0b3027258fa094529c90278
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: f03330bbbf2c1c7f92310211058f7ef8858f1941
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>A Reliable Actors keretrendszer a polimorfizmus
 A Reliable Actors keretrendszer használatával szeretné használni a kialakítás objektumorientált ugyanazok a módszerek számos szereplője build teszi lehetővé. Ezek a módszerek egyike polimorf, amely lehetővé teszi, hogy a típusok és felületek több öröklik az általános a szülők. Öröklődés Reliable Actors keretében általában modelljébe .NET néhány további korlátozásokkal. Java/Linux, esetén ez azt jelenti a Java-modell.
 
-## <a name="interfaces"></a>Felületek
+## <a name="interfaces"></a>Adapterek
 A Reliable Actors keretrendszer szükséges legalább egy csatoló a szereplő típus által végrehajtandó adható meg. Ez az interfész létrehozásához egy proxy osztály, amely segítségével az ügyfelek által a szereplője folytatott kommunikációhoz használatos. Felületek örökölhet egyéb felületek, mindaddig, amíg minden egy szereplő típus által megvalósított illesztőfelület és az összes a szülők végső soron származik IActor(C#) vagy Actor(Java). IActor(C#) és Actor(Java) a platform által definiált alap-illesztőfelületben a szereplőket a .NET- és a Java keretrendszert a kulcsattribútumokkal. Ebből kifolyólag a klasszikus polimorfizmus példa alakzatok használatával lehet, hogy kinéznie:
 
 ![A shape szereplőket felület hierarchia][shapes-interface-hierarchy]
@@ -93,7 +93,7 @@ public class Circle extends ShapeImpl implements Circle
 
 Megjegyzés: a `ActorService` az aktor attribútum. Ez az attribútum be van állítva a megbízható szereplő keretrendszer, hogy azt automatikusan hozzon létre egy szolgáltatás, az ilyen típusú szereplője üzemeltetéséhez. Bizonyos esetekben érdemes létrehozni, amely kizárólag olyan funkciókat altípusainál való megosztás, és soha nem használandó tényleges szereplője példányosítható alaptípusa. Ezekben az esetekben kell használnia a `abstract` annak jelzésére, hogy soha ne hozzon létre egy adott típusú alapján szereplő kulcsszó.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lásd: [hogyan a Reliable Actors keretrendszer kihasználja a Service Fabric-platformról](service-fabric-reliable-actors-platform.md) megbízhatóságát, méretezhetőségét és konzisztens állapotú legyen.
 * További tudnivalók a [szereplő életciklus](service-fabric-reliable-actors-lifecycle.md).
 

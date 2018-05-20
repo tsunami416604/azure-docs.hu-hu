@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric fürt erőforrás-kezelő - felügyelet integrálását |} Microsoft Docs"
-description: "Az integrációs pontjainak között a fürt erőforrás-kezelő és a Service Fabric Management áttekintése."
+title: Service Fabric fürt erőforrás-kezelő - felügyelet integrálását |} Microsoft Docs
+description: Az integrációs pontjainak között a fürt erőforrás-kezelő és a Service Fabric Management áttekintése.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 70c0cc37a1d362c937ab86bd630c5ab051e63870
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f93ca94d5aa3e95637a53a4c8fe3d9d264dd58c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Fürt resource manager integrálása a Service Fabric-fürt felügyeleti
 A Service Fabric fürt erőforrás-kezelő nem meghajtója frissítések Service Fabric azonban részt vesz. Az első, amelyek a fürt erőforrás-kezelő segítségével felügyeleti módja a kívánt állapot, a fürt és a benne lévő szolgáltatások nyomon követése révén. A fürt erőforrás-kezelő elküldi állapotjelentések száma, amikor azt a fürt nem állítható be a kívánt konfigurációs. Például ha nincs elég kapacitás a fürt erőforrás-kezelő elküldi állapotfigyelő figyelmeztetésekről és hibákról, amely jelzi, a probléma. Integráció más adat frissítések működése az rendelkezik. A fürt erőforrás-kezelő működése némileg megváltoztatja frissítéskor.  
@@ -207,5 +207,5 @@ Egy másik olyan dolog, ami a frissítések során történik, hogy a fürt erő
 ### <a name="buffered-capacity--upgrade"></a>A pufferelt kapacitás & frissítése
 Általában érdemes a frissítés, még akkor is, ha a fürt korlátozza vagy megközelíti a teljes befejezéséhez. A kapacitás, a fürt kezelése fontos még több frissítéskor megy végbe. Attól függően, hogy a frissítési tartományok száma 5 és 20 százalékát kapacitás között kell áttelepíteni, a frissítés a fürt áthalad. Munka valahol lépjen ki. Ez akkor, ha a fogalmát [kapacitások pufferelt](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) hasznos. A pufferelt kapacitás tiszteletben tartják normál működés során. A fürt erőforrás-kezelő előfordulhat, hogy töltse ki csomópont, akár a teljes kapacitásának (a puffer fel) frissítéskor szükség esetén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Indítsa el az elejétől és [Bevezetés a Service Fabric fürt Resource Manager](service-fabric-cluster-resource-manager-introduction.md)

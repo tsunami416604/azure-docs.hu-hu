@@ -4,7 +4,7 @@ description: Hozzon létre hivatkozásra, helyezze át, és vállalati integrác
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.service: logic-apps
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: ecfan; LADocs
-ms.openlocfilehash: 8e31a84d4508075dcb7a1d7ad8a64fa8e142681d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: estfan
+ms.openlocfilehash: e661920974c2b0d28200d4c3d82bd644a7a55395
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>A logic apps B2B megoldások integrációs fiókok létrehozása és kezelése
 
@@ -53,12 +53,12 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
 
    | Tulajdonság | Szükséges | Példaérték | Leírás | 
    |----------|----------|---------------|-------------|
-   | Name (Név) | Igen | teszt-integráció-fiók | Az integráció fiók nevét. Ebben a példában a megadott nevet használja. | 
+   | Név | Igen | teszt-integráció-fiók | Az integráció fiók nevét. Ebben a példában a megadott nevet használja. | 
    | Előfizetés | Igen | <*Azure-előfizetés-neve*> | A használatára az Azure-előfizetés nevét | 
    | Erőforráscsoport | Igen | teszt-integráció-fiók-rg | A nevet a [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) kapcsolódó erőforrások rendszerezéséhez használja. Ehhez a példához hozzon létre egy új erőforráscsoportot a megadott névvel. | 
-   | Tarifacsomag | Igen | Ingyenes | Ez a tarifacsomag használni kívánt. Ehhez a példához válassza ki a **szabad**. | 
-   | Hely | Igen | USA nyugati régiója | A régió integrációs fiókadatait tárolási helyét. Jelölje ki a logikai alkalmazás ugyanazon a helyen vagy logikai alkalmazás létrehozása ugyanazon a helyen, a integrációs fiókkal. Ebben a példában a | 
-   | Log Analytics | Nem | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. | 
+   | Tarifacsomag | Igen | Ingyenes | Ez a tarifacsomag használni kívánt. Ehhez a példához válassza ki a **szabad**, de további információkért lásd: [Logic Apps korlátozásai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md) és [Logic Apps árképzési](https://azure.microsoft.com/pricing/details/logic-apps/). | 
+   | Tartózkodási hely | Igen | Egyesült Államok, nyugati régió | A régió integrációs fiókadatait tárolási helyét. Jelölje ki a logikai alkalmazás ugyanazon a helyen vagy logikai alkalmazás létrehozása ugyanazon a helyen, a integrációs fiókkal. Ebben a példában a | 
+   | Log Analytics | Nincs | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. | 
    ||||| 
 
 4. Ha elkészült, válassza ki a **rögzítés az irányítópulton**, és válassza a **létrehozása**.

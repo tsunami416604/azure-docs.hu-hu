@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: b92cbf0df971afd3bea981327975ed792ce942d4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -115,13 +115,13 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Automation
 * Azure Cosmos DB
 * Azure Relay
-* Köteg
+* Batch
 * Bing Térképek
-* CDN
+* Tartalomkézbesítési hálózat (CDN)
 * A felhőalapú szolgáltatások – lásd [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * Cognitive Services
-* Content Moderator
-* Adatkatalógus
+* Tartalommoderátor
+* Data Catalog
 * Adat-előállító - 1-es verzió is helyezhető, de V2 áthelyezése (előzetes verzió) nem támogatott.
 * Data Lake Analytics
 * Data Lake Store
@@ -136,18 +136,18 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Gépi tanulás - Machine Learning Studio webszolgáltatások helyezheti át egy erőforráscsoportot az ugyanahhoz az előfizetéshez, de nem egy másik előfizetést. Gépi tanulás erőforrását áthelyezhető előfizetésekhez.
 * Media Services
 * Mobile Engagement
-* Értesítési központok
+* Notification Hubs
 * Operational Insights
 * Operations Management
 * A Power BI -, mind a Power BI Embedded, és a Power BI-Munkaterületcsoport
 * Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
 * Redis Cache
 * Scheduler
-* Search
+* Keresés
 * Kiszolgálófelügyelet
 * Service Bus
 * Service Fabric
-* Tárhely
+* Storage
 * Tekintse meg a tároló (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * A Stream Analytics - feladatok nem helyezhető át, ha a Stream Analytics állapotban.
 * SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek. Ez a jelenség Azure SQL Database és az Azure SQL Data Warehouse-adatbázishoz. 
@@ -156,7 +156,8 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Virtuális gépek (klasszikus) - lásd [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * Tekintse meg a virtuálisgép-méretezési csoportok - [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Tekintse meg a virtuális hálózatok - [virtuális hálózatok korlátozásai](#virtual-networks-limitations)
-* VPN-átjáró
+* A Visual Studio Team Services - VSTS-fiókokat nem a Microsofttól kiterjesztésű vásárolja kell [szakítsa meg a vásárlás](https://go.microsoft.com/fwlink/?linkid=871160) ahhoz, azok áthelyezheti a fiók előfizetésekhez.
+* VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>Nem lehet áthelyezni szolgáltatások
 
@@ -170,16 +171,16 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * Azure Migrate
 * BizTalk Services
 * Tanúsítványok – jelzi, hogy áthelyezhetők-e a App Service-tanúsítványokkal, de feltöltött tanúsítványok [korlátozások](#app-service-limitations).
-* Kubernetes szolgáltatás
 * DevTest Labs - helyezze át az új erőforráscsoport ugyanahhoz az előfizetéshez engedélyezve van, de több előfizetés áthelyezése nem engedélyezett.
 * Dynamics LCS
 * Express Route
+* Kubernetes szolgáltatás
 * Terheléselosztók – lásd [terheléselosztó korlátozásai](#lb-limitations)
 * Felügyelt alkalmazások
 * Tekintse meg a felügyelt lemezek - [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
 * Recovery Services-tároló - is do helyezi át a számítási, hálózati és tárolási erőforrásokat, a Recovery Services-tároló társított lásd [helyreállítási szolgáltatások korlátozásai](#recovery-services-limitations).
-* Biztonsági
+* Biztonság
 * StorSimple Device Manager
 * Tekintse meg a virtuális hálózatok (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 
@@ -236,7 +237,7 @@ Ha áthelyezi a webes alkalmazás _előfizetésekhez_, a következő korlátozá
     - Web Apps
     - App Service-csomagok
     - Feltöltött vagy importált SSL-tanúsítványok
-    - App Service Environment-környezetek
+    - App Service-környezetek
 - Az erőforráscsoport összes App Service erőforrások csak együtt helyezhetők.
 - App Service-erőforrások csak eltolható az erőforráscsoport, amelyekben azokat eredetileg létrehozott. Ha egy App Service-erőforrás már nem az eredeti erőforráscsoportban, azt kell vissza kell helyezni az eredeti erőforráscsoport először, és majd akkor helyezheti át előfizetésekhez.
 

@@ -1,24 +1,22 @@
 ---
-title: "A Data Lake Store a Stream Analytics adatok folyamatos átviteléhez |} Microsoft Docs"
-description: "Az adatfolyam adatok az Azure Data Lake Store Azure Stream Analytics segítségével"
+title: A Data Lake Store a Stream Analytics adatok folyamatos átviteléhez |} Microsoft Docs
+description: Az adatfolyam adatok az Azure Data Lake Store Azure Stream Analytics segítségével
 services: data-lake-store,stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8ced5aff33ed23aee3f3399d876c1ed62d2b5707
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ff59957cf7700af79425aa005444a135b7ee098
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Adatok streamelése az Azure Storage-blobokból a Data Lake Store-ba az Azure Stream Analytics használatával
 Ebben a cikkben, megtudhatja, hogyan használható az Azure Data Lake Store kimenetként egy Azure Stream Analytics-feladat. Ez a cikk bemutatja egy olyan egyszerű forgatókönyvet, amely egy Azure Storage-blobba (bemeneti) olvassa be az adatokat, és írja az adatokat Data Lake Store (kimenet).
@@ -96,7 +94,7 @@ Indítsa el a Stream Analytics-feladat, amely tartalmaz egy bemeneti forrás- é
     
     Kattintson a **Create** (Létrehozás) gombra. A portál most hozzáadja a kimeneti, és ellenőrzi a hozzá való csatlakozást.
     
-## <a name="run-the-stream-analytics-job"></a>A Stream Analytics-feladat futtatása
+## <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
 1. A Stream Analytics-feladat futtatásához egy lekérdezést kell futtatnia a **lekérdezés** fülre. Ebben az oktatóanyagban futtathatja a mintalekérdezést azáltal, hogy a helyőrzőket a feladat bemeneti és kimeneti aliasok, az alábbi képernyőfelvételen látható módon.
 

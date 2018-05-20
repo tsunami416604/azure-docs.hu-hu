@@ -1,23 +1,24 @@
 ---
-title: "Hiba történt az ajánlott eljárások az Azure Active Directory Authentication Library (ADAL) ügyfelek kezelése"
-description: "Útmutatás és ajánlott eljárások az ADAL ügyfélalkalmazások hibakezelési biztosít."
+title: Hiba történt az ajánlott eljárások az Azure Active Directory Authentication Library (ADAL) ügyfelek kezelése
+description: Útmutatás és ajánlott eljárások az ADAL ügyfélalkalmazások hibakezelési biztosít.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: danieldobalian
 manager: mtillman
-ms.author: bryanla
+ms.author: celested
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
-ms.custom: 
-ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: 27315262ff64b640acc3af16a26fc3887d852a00
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Hiba történt az ajánlott eljárások az Azure Active Directory Authentication Library (ADAL) ügyfelek kezelése
 
@@ -74,7 +75,7 @@ catch (AdalSilentTokenAcquisitionException e) {
     // Exception: AdalSilentTokenAcquisitionException
     // Caused when there are no tokens in the cache or a required refresh failed. 
 
-    // Action: Case 1, resolvable with an interactive request.  
+    // Action: Case 1, resolvable with an interactive request. 
 } 
 
 catch(AdalServiceException e) {
@@ -157,7 +158,7 @@ A kód volna kell végrehajtani az alábbiak szerint:
             // Error: AD_ERROR_CACHE_MULTIPLE_USERS
             // Description: There was ambiguity in the silent request resulting in multiple cache items.
             // Action: Special Case, application should perform another silent request and specify the user using ADUserIdentifier. 
-            // Can be caused in cases of a multi-user application.  
+            // Can be caused in cases of a multi-user application. 
 
             // Action: Case 2, not resolvable with an interactive request.
             // Attempt retry after some time or user action.
@@ -170,9 +171,9 @@ A kód volna kell végrehajtani az alábbiak szerint:
 
 ## <a name="acquiretoken"></a>AcquireToken
 
-AcquireToken jogkivonatok lekérésére használt alapértelmezett ADAL módszer. Azokban az esetekben, ahol szükség-e felhasználói identitást AcquireToken szolgáltatáshitelesítést egy token csendes első megkísérli, akkor jeleníti meg felhasználói felület szükség esetén (kivéve, ha a PromptBehavior.Never átadása). Azokban az esetekben, ahol szükség-e az Alkalmazásidentitás AcquireToken megkísérli a szolgáltatáshitelesítést egy token, de felület nem jeleníthető meg, amíg nem felhasználó.  
+AcquireToken jogkivonatok lekérésére használt alapértelmezett ADAL módszer. Azokban az esetekben, ahol szükség-e felhasználói identitást AcquireToken szolgáltatáshitelesítést egy token csendes első megkísérli, akkor jeleníti meg felhasználói felület szükség esetén (kivéve, ha a PromptBehavior.Never átadása). Azokban az esetekben, ahol szükség-e az Alkalmazásidentitás AcquireToken megkísérli a szolgáltatáshitelesítést egy token, de felület nem jeleníthető meg, amíg nem felhasználó. 
 
-AcquireToken hibák kezelésekor hibakezelés függ, a platform és az alkalmazás forgatókönyv próbál elérése.  
+AcquireToken hibák kezelésekor hibakezelés függ, a platform és az alkalmazás forgatókönyv próbál elérése. 
 
 Az operációs rendszer is hozhat létre a hibákat, függ az adott alkalmazás hibakezelési igénylő készlete. További információkért lásd: "Rendszerhibák" a [hiba és naplózási hivatkozás](#error-and-logging-reference). 
 
@@ -187,7 +188,7 @@ Az operációs rendszer is hozhat létre a hibákat, függ az adott alkalmazás 
 
 ### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Hibák és végrehajtandó lépések: natív ügyfél-alkalmazások
 
-Egy natív ügyfélalkalmazás most létrehozása, ha van néhány kezelési hibaeseteknél figyelembe kell venni a hálózati problémák, átmeneti hibák és más platform-specifikus hibák kapcsolatban. A legtöbb esetben az alkalmazás ne hajtsa végre a közvetlen újrapróbálkozások, de inkább várja meg, amely felszólítja a bejelentkezés végfelhasználói beavatkozást.  
+Egy natív ügyfélalkalmazás most létrehozása, ha van néhány kezelési hibaeseteknél figyelembe kell venni a hálózati problémák, átmeneti hibák és más platform-specifikus hibák kapcsolatban. A legtöbb esetben az alkalmazás ne hajtsa végre a közvetlen újrapróbálkozások, de inkább várja meg, amely felszólítja a bejelentkezés végfelhasználói beavatkozást. 
 
 Nincsenek néhány bizonyos esetekben egy egyetlen újra azzal megoldhatja a problémát. Például amikor egy felhasználó egy eszközhöz engedélyeznie kell a, vagy az Azure AD broker befejeződött letöltésére, miután a kezdeti hiba. 
 
@@ -365,7 +366,7 @@ catch (AdalException e) {
 
 ### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Hibák és végrehajtandó lépések: egyetlen oldal alkalmazások (adal.js)
 
-Ha egy egyoldalas alkalmazás adal.js használata AcquireToken most felépítése, hibakezelési kód hasonlít egy tipikus csendes hívás.  Kifejezetten a adal.js AcquireToken soha nem jelenít meg felhasználói Felületet. 
+Ha egy egyoldalas alkalmazás adal.js használata AcquireToken most felépítése, hibakezelési kód hasonlít egy tipikus csendes hívás. Kifejezetten a adal.js AcquireToken soha nem jelenít meg felhasználói Felületet. 
 
 Nem sikerült AcquireToken rendelkezik a következő esetekben:
 
@@ -441,7 +442,7 @@ A *a nevében-az* service-to-service alkalmazás-forgatókönyveket.
 
 A következő útmutatást példákat hibakezelési ADAL módszerekkel együtt: 
 
-- AcquireTokenAsync(…, UserAssertion, …)
+- AcquireTokenAsync (..., UserAssertion,...)
 
 A kód volna kell végrehajtani az alábbiak szerint:
 
@@ -512,7 +513,7 @@ Logger.getInstance().setExternalLogger(new ILogger() {
     @Override   
     public void Log(String tag, String message, String additionalMessage, LogLevel level, ADALError errorCode) { 
     // …
-    // You can write this to logfile depending on level or errorcode.     
+    // You can write this to logfile depending on level or errorcode. 
     writeToLogFile(getApplicationContext(), tag +":" + message + "-" + additionalMessage);    
     }
 }

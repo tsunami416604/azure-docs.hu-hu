@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b5eaed6c25e3d8ccc4c4577492398ef6cd741b35
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 04fae653c72c127b22f994e89b050477dac6495d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 Azure Automation-forgatókönyv a legtöbb van valamilyen kimenetet például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. A Windows PowerShell szintén [több adatfolyam](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) kimenetként egy parancsfájl vagy a munkafolyamat számára. Az összes ezekbe az adatfolyamokba eltérő módon működik az Azure Automation, és ajánlott eljárások használata minden egyes runbook létrehozásakor kell.

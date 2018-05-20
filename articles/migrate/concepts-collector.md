@@ -4,14 +4,14 @@ description: A gyűjtő készüléket és konfigurálásának áttekintése.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/03/2017
+ms.date: 05/15/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 99f34bce942626cd931c9270192766cc76105f5b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d0dd310a1f6dff389a4d3dd41dc389b7117272fe
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="collector-appliance"></a>Adatgyűjtő-készülék
 
@@ -128,7 +128,7 @@ Miután csatlakozott a vCenter, kiválaszthatja a hatókör felderítéséhez. A
 2. Egyszerre csak egy hatókör jelölhet ki. Válassza ki további virtuális gépek, végezze el az egyik felderítés, és indítsa újra a felderítési folyamatot az új hatókör.
 3. Jelölhet ki, amelynek hatókör *kisebb, mint 1500 virtuális gépek*.
 
-## <a name="specify-migration-project"></a>Adja meg az áttelepítési projekt
+## <a name="specify-migration-project"></a>Adja meg a migrálási projektet
 
 Miután a helyszíni vCenter van csatlakoztatva, és egy hatókör lett megadva, mostantól megadhatja a felderítés és az értékelés használandó igénylő áttelepítési projekt részleteit. Adja meg a Projektazonosítónak és a kulcsot, és csatlakozzon.
 
@@ -154,7 +154,7 @@ A feladat felderíti a következő statikus metaadatait a kiválasztott virtuál
 
 A következő táblázat a teljesítményszámlálók gyűjtése, valamint is felsorolja az értékelési eredmények, amelyek érintettek, ha a számláló nem gyűjtött a program.
 
-|A számláló                                  |Szint    |Eszközönkénti szint  |Értékelés gyakorolt hatás                               |
+|Számláló                                  |Szint    |Eszközönkénti szint  |Értékelés gyakorolt hatás                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
 |CPU.Usage.average                        | 1       |NA                |Ajánlott Virtuálisgép-méretet és költség                    |
 |mem.usage.average                        | 1       |NA                |Ajánlott Virtuálisgép-méretet és költség                    |

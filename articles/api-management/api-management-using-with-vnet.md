@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: db0fab5b619ddbca4663a0f6afedfff373d406f9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 20c5635c0ce00c9fccfec84c477d60c77c55e2fb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatokról (Vnetekről) helyezze el az Azure-erőforrások bármelyike nem internetes routeable hálózati hozzáférést szabályozó teszik lehetővé. Ezek a hálózatok csatlakozhatnak különböző VPN technológiáin a helyszíni hálózatokhoz. További információk az Azure virtuális hálózatok indítsa el az adatok Itt további: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -116,7 +116,7 @@ Ha egy API-kezelés szolgáltatás példányát a VNETEN belül üzemel a portok
 | * / 1886 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|A Resource Health állapot közzétételéhez szükséges |Külső és belső |
 | * / 25028 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Csatlakozzon az SMTP-továbbító az e-mailek küldésekor |Külső és belső |
 | * / 6381 - 6383 |Bejövő és kimenő |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Hozzáférés a Redis gyorsítótár példányok RoleInstances között |Külső és belső |
-| * / * | Bejövő |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure Infrastructure Load Balancer |Külső és belső |
+| * / * | Bejövő |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Az Azure infrastruktúra Terheléselosztóját |Külső és belső |
 
 >[!IMPORTANT]
 > A portok, amelynek a *célú* van **félkövér** szükséges API-kezelés szolgáltatás sikeresen telepíthető. A más portok blokkolása azonban miatt teljesítménycsökkenést használja, és figyelje a futó szolgáltatás az lehetősége.
@@ -168,6 +168,7 @@ Az alhálózat, ahol az API Management is telepíthető a minimális méret fent
 * Az alhálózat és az API Management szolgáltatás ugyanahhoz az előfizetéshez kell lennie.
 * Az API Management-példányokat tartalmazó alhálózat előfizetésekhez nem helyezhetők.
 * A belső virtuális hálózat üzemmód több területi API Management telepítéseknél felhasználók különféle régiókban, a terheléselosztás kezeléséért, mivel az útvonal saját.
+* Platform korlátai miatt nem működik, és az API Management szolgáltatás belső módban egy erőforrást egy másik régióban globálisan peered vnet közötti kapcsolatot. További információkért lásd: [egy virtuális hálózatán lévő erőforrásokat nem tud kommunikálni az Azure belső terheléselosztó virtuális hálózaton nincsenek társviszonyban](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)
 
 
 ## <a name="related-content"> </a>Kapcsolódó tartalom

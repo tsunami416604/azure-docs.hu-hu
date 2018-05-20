@@ -1,24 +1,24 @@
 ---
-title: "A Service Fabric-fürt erőforráskezelő-szabályozás |} Microsoft Docs"
-description: "Ismerje meg, a szabályozások a Service Fabric fürt-kezelő által biztosított konfigurálásához."
+title: A Service Fabric-fürt erőforráskezelő-szabályozás |} Microsoft Docs
+description: Ismerje meg, a szabályozások a Service Fabric fürt-kezelő által biztosított konfigurálásához.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 22223923f6783f11178b44c3c3087f17eb8dc41b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9db1070066a2a02b72b5cc051e59d8b04dc9928
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürt erőforrás-kezelő szabályozása
 Akkor is, ha megfelelően konfigurálta a erőforrás-kezelőt, a fürt képes lekérni megszakad. Például lehet egyidejű csomópont és a tartalék tartomány hibák - mi történne, a frissítés során történt? A fürt erőforrás-kezelő mindig megpróbálja mindent, javítsa ki próbálta átrendezéséhez, és hárítsa el a fürt a fürt erőforrásait fel. Szabályozások biztosítható a backstop, hogy a fürt használhassa erőforrások stabilizálásához – térjen vissza a csomópontokat, a hálózati partíciók javítandó, javított bits telepítve.
@@ -90,6 +90,6 @@ Ezen információ abban az esetben régebbi fürttel rendelkezik, vagy még mind
 
 Ezek a szabályozások a konfigurációját, a százalék alapú sávszélesség-szabályozás azonos mintát követi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos további tudnivalókért tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)
 - A fürt erőforrás-kezelő rendelkezik a fürt leíró számos lehetőséget. További információkért róluk, tekintse meg a cikk a [leíró a Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)

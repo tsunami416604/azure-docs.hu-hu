@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: include file
+description: include file
 services: storage
 author: tamram
 ms.service: storage
@@ -9,66 +9,66 @@ ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/24/2018
 ---
-## <a name="about-vhds"></a>Tudnivalók a VHD-kről
+## <a name="about-vhds"></a>About VHDs
 
-Az Azure-ban használt VHD-k .vhd fájlok, amelyek lapblobként vannak tárolva egy standard vagy prémium szintű Azure-tárfiókban. A lapblobokkal kapcsolatos további részletekért tekintse meg [a blokkblobokat és a lapblobokat bemutató cikket](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). A prémium szintű tárolással kapcsolatos részletekért tekintse meg [a nagy teljesítményű Premium Storage szolgáltatással és az Azure virtuális gépekkel kapcsolatos cikket](../articles/virtual-machines/windows/premium-storage.md).
+The VHDs used in Azure are .vhd files stored as page blobs in a standard or premium storage account in Azure. For details about page blobs, see [Understanding block blobs and page blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). For details about premium storage, see [High-performance premium storage and Azure VMs](../articles/virtual-machines/windows/premium-storage.md).
 
-Az Azure támogatja a rögzített lemezes VHD formátumot. A rögzített formátum a logikai lemezt lineárisan helyezi el a fájlon belül, így az X lemezeltolás az X blobeltolásnál van tárolva. A blob végén egy kis lábléc írja le a VHD tulajdonságait. A rögzített formátum gyakran helypazarló, mivel a legtöbb lemezen nagy méretű kihasználatlan tartományok találhatóak. Az Azure azonban egy ritka formátumban tárolja a .vhd fájlokat, így a rögzített és a dinamikus lemezek előnyei egyaránt kihasználhatók. További részletekért tekintse meg [a virtuális merevlemezek használatába bevezető cikket](https://technet.microsoft.com/library/dd979539.aspx).
+Azure supports the fixed disk VHD format. The fixed format lays the logical disk out linearly within the file, so that disk offset X is stored at blob offset X. A small footer at the end of the blob describes the properties of the VHD. Often, the fixed format wastes space because most disks have large unused ranges in them. However, Azure stores .vhd files in a sparse format, so you receive the benefits of both the fixed and dynamic disks at the same time. For more details, see [Getting started with virtual hard disks](https://technet.microsoft.com/library/dd979539.aspx).
 
-A lemezek vagy képek létrehozása forrásként használni kívánt Azure-ban minden .vhd fájlok írásvédettek, kivéve a .vhd fájlokat feltölteni, vagy másolja az Azure storage (amely lehet olvasási és írási vagy olvasási) a felhasználó által. Amikor létrehoz egy lemezen vagy lemezképen, Azure másolatot készít a forrás .vhd-fájlokat. Ezek a másolatok csak olvashatók vagy olvashatók és írhatók is lehetnek a VHD használatától függően.
+All .vhd files in Azure that you want to use as a source to create disks or images are read-only, except the .vhd files uploaded or copied to Azure storage by the user (which can be either read-write or read-only). When you create a disk or image, Azure makes copies of the source .vhd files. These copies can be read-only or read-and-write, depending on how you use the VHD.
 
-Amikor egy virtuális gépet hoz létre egy rendszerképből, az Azure létrehoz egy lemezt a virtuális gép számára, amely a forrás .vhd fájl másolata. A véletlen törlés elleni védelem érdekében az Azure egy bérlést helyez minden olyan forrás .vhd fájlra, amelyet egy rendszerkép, egy operációsrendszer-lemez vagy egy adatlemez létrehozásához használtak.
+When you create a virtual machine from an image, Azure creates a disk for the virtual machine that is a copy of the source .vhd file. To protect against accidental deletion, Azure places a lease on any source .vhd file that’s used to create an image, an operating system disk, or a data disk.
 
-Mielőtt a forrás .vhd fájlt törölhetné, el kell távolítania a bérlést, ehhez pedig törölnie kell a lemezt vagy a rendszerképet. Ha törölni szeretne egy virtuális gép által operációsrendszer-lemezként használt .vhd fájlt, egyszerre is törölheti a virtuális gépet, az operációsrendszer-lemezt és a forrás .vhd fájlt a virtuális gép és az összes hozzá tartozó lemez törlésével. Egy adatlemez forrásaként használt .vhd fájl törléséhez azonban több lépést is el kell végezni, egy megadott sorrendben. Először válassza le a lemezt a virtuális gépről, majd törölje a lemezt, és végül törölje a .vhd fájlt.
+Before you can delete a source .vhd file, you’ll need to remove the lease by deleting the disk or image. To delete a .vhd file that is being used by a virtual machine as an operating system disk, you can delete the virtual machine, the operating system disk, and the source .vhd file all at once by deleting the virtual machine and deleting all associated disks. However, deleting a .vhd file that’s a source for a data disk requires several steps in a set order. First you detach the disk from the virtual machine, then delete the disk, and then delete the .vhd file.
 > [!WARNING]
-> Ha töröl egy forrás .vhd fájlt a tárolóból, vagy törli a saját tárfiókját, a Microsoft nem tudja visszaállítani az adatait.
+> If you delete a source .vhd file from storage, or delete your storage account, Microsoft can't recover that data for you.
 > 
-> Prémium szintű Storage a lapblobokat használatra lettek tervezve merevlemezekként csak. A Microsoft nem javasolja más típusú adatok tárolása a prémium szintű Storage, a lapblobokat, a költség jelentősen nagyobb lehet. Blokkblobok használata, amely nincs a virtuális merevlemez adatainak tárolásához.
+> Page blobs in Premium Storage are designed for use as VHDs only. Microsoft does not recommend storing other types of data in page blobs in Premium Storage, as the cost may be significantly greater. Use block blobs for storing data that is not in a VHD.
 
-## <a name="types-of-disks"></a>Lemeztípusok 
+## <a name="types-of-disks"></a>Types of disks 
 
-Az Azure Disks 99,999%-os elérhetőséggel büszkélkedhet. Azure-lemezeket következetesen szállított vállalati szintű tartósságot, és egy iparágvezető Annualized hibaaránya %.
+Azure Disks are designed for 99.999% availability. Azure Disks have consistently delivered enterprise-grade durability, with an industry-leading ZERO% Annualized Failure Rate.
 
-A lemezek létrehozásakor kétféle teljesítményszint közül választhat: Standard Storage és Premium Storage. Emellett két lemeztípus használható, a nem felügyelt és a felügyelt, amelyek mindkét teljesítményszinten elérhetőek.
+There are two performance tiers for storage that you can choose from when creating your disks -- Standard Storage and Premium Storage. Also, there are two types of disks -- unmanaged and managed -- and they can reside in either performance tier.
 
 
-### <a name="standard-storage"></a>Standard szintű Storage 
+### <a name="standard-storage"></a>Standard storage 
 
-A merevlemez-meghajtókra épülő Standard Storage költséghatékony tárolási megoldás, amely emellett jó teljesítményt nyújt. A Standard Storage replikálható helyileg egy adatközpontban, vagy lehet georedundáns egy elsődleges és egy másodlagos adatközponttal. A tárolók replikálásával kapcsolatos további információkért tekintse át [az Azure Storage replikációjával kapcsolatos cikket](../articles/storage/common/storage-redundancy.md). 
+Standard Storage is backed by HDDs, and delivers cost-effective storage while still being performant. Standard storage can be replicated locally in one datacenter, or be geo-redundant with primary and secondary data centers. For more information about storage replication, please see [Azure Storage replication](../articles/storage/common/storage-redundancy.md). 
 
-A Standard Storage és a VM-lemezek együttes használatával kapcsolatos információkért tekintse át [a Standard Storage és a lemezek együttes használatát bemutató cikket](../articles/virtual-machines/windows/standard-storage.md).
+For more information about using Standard Storage with VM disks, please see [Standard Storage and Disks](../articles/virtual-machines/windows/standard-storage.md).
 
-### <a name="premium-storage"></a>Prémium szintű Storage 
+### <a name="premium-storage"></a>Premium storage 
 
-Az SSD-kre épülő Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatást biztosít a nagy adatátviteli teljesítményt igénylő számítási feladatokat futtató virtuális gépek számára. Prémium szintű Storage általában használható van szükség, amelyek tartalmazzák az "s". az adatsorozat neve. Például a Dv3-sorozat van, és a Dsv3-sorozat, a Dsv3-sorozat használható prémium szintű Storage.  További információk: [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
+Premium Storage is backed by SSDs, and delivers high-performance, low-latency disk support for VMs running I/O-intensive workloads. Typically you can use Premium Storage with sizes that include an "s" in the series name. For example, there is the Dv3-Series and the Dsv3-series, the Dsv3-series can be used with Premium Storage.  For more information, please see [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
-### <a name="unmanaged-disks"></a>Nem felügyelt lemezek
+### <a name="unmanaged-disks"></a>Unmanaged disks
 
-A nem felügyelt lemez a virtuális gépek által használt hagyományos lemeztípus. Az ilyen lemezekkel létrehozhatja a saját tárfiókját, és a lemez létrehozásakor azt a tárfiókot adhatja meg. Ügyeljen arra, hogy ne helyezzen túl sok lemezt ugyanabba a tárfiókba, mert azzal túllépheti a tárfiók [skálázási célértékeit](../articles/storage/common/storage-scalability-targets.md) (pl. 20 000 IOPS), amivel korlátozhatja a virtuális gépeket. Nem felügyelt lemezek esetén Önnek kell felmérnie, hogyan maximalizálhatja egy vagy több tárfiók kihasználtságát, hogy a virtuális gépeiből a lehető legjobb teljesítményt hozza ki.
+Unmanaged disks are the traditional type of disks that have been used by VMs. With these, you create your own storage account and specify that storage account when you create the disk. You have to make sure you don't put too many disks in the same storage account, because you could exceed the [scalability targets](../articles/storage/common/storage-scalability-targets.md) of the storage account (20,000 IOPS, for example), resulting in the VMs being throttled. With unmanaged disks, you have to figure out how to maximize the use of one or more storage accounts to get the best performance out of your VMs.
 
-### <a name="managed-disks"></a>Felügyelt lemezek 
+### <a name="managed-disks"></a>Managed disks 
 
-A felügyelt lemezek a háttérben végzik a tárfiók létrehozását és kezelését, hogy Önnek ne kelljen foglalkoznia a tárfiók skálázási korlátaival. Egyszerűen csak adja meg a lemez méretét és teljesítményszintjét (Standard vagy prémium), és az Azure létrehozza és felügyeli a lemezt Ön helyett. Akkor sem kell a használt tárterület miatt aggódnia, ha lemezeket ad hozzá vagy fel-/leskálázza a virtuális gépet. 
+Managed Disks handles the storage account creation/management in the background for you, and ensures that you do not have to worry about the scalability limits of the storage account. You simply specify the disk size and the performance tier (Standard/Premium), and Azure creates and manages the disk for you. Even as you add disks or scale the VM up and down, you don't have to worry about the storage being used. 
 
-Az egyéni rendszerképeit Azure-régiónként egyetlen tárfiókban is felügyelheti, és a használatukkal több száz virtuális gépet hozhat létre egy adott előfizetésben. A felügyelt lemezekkel kapcsolatos további információért tekintse meg [a felügyelt lemezek áttekintésével kapcsolatos cikket](../articles/virtual-machines/windows/managed-disks-overview.md).
+You can also manage your custom images in one storage account per Azure region, and use them to create hundreds of VMs in the same subscription. For more information about Managed Disks, please see the [Managed Disks Overview](../articles/virtual-machines/windows/managed-disks-overview.md).
 
-Javasoljuk, hogy az új virtuális gépeihez használja az Azure Managed Disks szolgáltatást, és a korábbi, nem felügyelt lemezeit is alakítsa felügyeltté, hogy kihasználhassa a Managed Disks által kínált számos szolgáltatást.
+We recommend that you use Azure Managed Disks for new VMs, and that you convert your previous unmanaged disks to managed disks, to take advantage of the many features available in Managed Disks.
 
-### <a name="disk-comparison"></a>Lemezek összehasonlítása
+### <a name="disk-comparison"></a>Disk comparison
 
-A következő tábla összehasonlítja a Prémium és a Standard szintet a nem felügyelt és a felügyelt lemezek esetén, így könnyebben eldöntheti, melyiket érdemes használni.
+The following table provides a comparison of Premium vs Standard for both unmanaged and managed disks to help you decide what to use.
 
-|    | Prémium szintű Azure-lemez | Standard szintű Azure-lemez |
+|    | Azure Premium Disk | Azure Standard Disk |
 |--- | ------------------ | ------------------- |
-| Lemez típusa | SSD-k | HDD-k  |
-| Áttekintés  | SSD-alapú, nagy teljesítményű, kis késleltetésű lemeztámogatás a nagy adatátviteli teljesítményt igénylő számítási feladatokat vagy az üzletmenet szempontjából kritikus fontosságú éles környezeteket futtató virtuális gépek számára | HDD-alapú, költséghatékony lemeztámogatás fejlesztési/tesztelési virtuálisgép-forgatókönyvekhez |
-| Forgatókönyv  | Éles, teljesítményérzékeny számítási feladatok | Fejlesztés/tesztelés, nem kritikus, <br>rendszertelen hozzáférés |
-| Lemezméret | P4: 32 GB (csak a felügyelt lemezek)<br>P6: 64 GB (csak a felügyelt lemezek)<br>P10: 128 GB<br>P20: 512 GB<br>P30: 1024 GB<br>P40: 2048 GB<br>P50: 4095 GB | Nem felügyelt lemezek: 1 GB-os – 4 TB-os (4095 GB) <br><br>Managed Disks:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1024 GB <br>S40: 2048 GB<br>S50: 4095 GB| 
-| Lemezenkénti maximális átviteli sebesség | 250 MB/s | 60 MB/s | 
-| Lemezenkénti maximális IOPS-érték | 7500 IOPS | 500 IOPS | 
+| Disk Type | Solid State Drives (SSD) | Hard Disk Drives (HDD)  |
+| Overview  | SSD-based high-performance, low-latency disk support for VMs running IO-intensive workloads or hosting mission critical production environment | HDD-based cost effective disk support for Dev/Test VM scenarios |
+| Scenario  | Production and performance sensitive workloads | Dev/Test, non-critical, <br>Infrequent access |
+| Disk Size | P4: 32 GB (Managed Disks only)<br>P6: 64 GB (Managed Disks only)<br>P10: 128 GB<br>P20: 512 GB<br>P30: 1024 GB<br>P40: 2048 GB<br>P50: 4095 GB | Unmanaged Disks: 1 GB – 4 TB (4095 GB) <br><br>Managed Disks:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1024 GB <br>S40: 2048 GB<br>S50: 4095 GB| 
+| Max Throughput per Disk | 250 MB/s | 60 MB/s | 
+| Max IOPS per Disk | 7500 IOPS | 500 IOPS | 
 

@@ -3,23 +3,25 @@ title: Az Azure AD szolgáltatás hitelesítési OAuth2.0 használatával |} Mic
 description: A cikkből megtudhatja, hogyan használható a HTTP-üzenetek OAuth2.0 ügyfél hitelesítő adatok grant flow szolgáltatások közötti hitelesítés megvalósításához.
 services: active-directory
 documentationcenter: .net
-author: navyasric
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: da657fb6072c0655e47623c58e7051e8dd462049
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1a4da1af61be4b632b51f5b8f921f6f48e925559
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Ügyfél-hitelesítő (közös titkos kulcs vagy tanúsítvány) hívásokról szolgáltatás
 Az OAuth 2.0 ügyfél hitelesítő adatok Grant Flow lehetővé teszi egy webszolgáltatás-bővítmény (*bizalmas ügyfél*) a saját hitelesítő adatok használata helyett a felhasználó megszemélyesítésekor, hitelesítésére, miközben egy másik webes szolgáltatás hívása. Ebben a forgatókönyvben az ügyfél nem általában egy középső rétegbeli webes szolgáltatás, a démon szolgáltatás vagy a webhely. A magasabb szintű megbízhatóság az Azure AD is lehetővé teszi a hívó szolgáltatás (és nem a közös titkos kulcs) tanúsítványt használják a hitelesítő adatokat.
@@ -52,10 +54,10 @@ Egy közös titkos kulcs használata esetén a szolgáltatás hozzáférési ké
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |Szükséges |A kért grant típusát határozza meg. Az ügyfél-hitelesítő adatok Grant flow, az értéknek kell lennie **client_credentials**. |
-| client_id |Szükséges |Adja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító található a a [Azure-portálon](https://portal.azure.com), kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson az alkalmazás. A client_id van a *Alkalmazásazonosító* |
-| client_secret |Szükséges |Adjon meg egy kulcsot, a hívó szolgáltatás vagy démon webalkalmazás az Azure ad-ben regisztrált. Az Azure-portálon a kulcs létrehozásához kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson az alkalmazást, majd **beállítások**, kattintson a **kulcsok** , és adja hozzá a kulcsot.|
-| erőforrás |Szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
+| grant_type |szükséges |A kért grant típusát határozza meg. Az ügyfél-hitelesítő adatok Grant flow, az értéknek kell lennie **client_credentials**. |
+| client_id |szükséges |Adja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító található a a [Azure-portálon](https://portal.azure.com), kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson az alkalmazás. A client_id van a *Alkalmazásazonosító* |
+| client_secret |szükséges |Adjon meg egy kulcsot, a hívó szolgáltatás vagy démon webalkalmazás az Azure ad-ben regisztrált. Az Azure-portálon a kulcs létrehozásához kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson az alkalmazást, majd **beállítások**, kattintson a **kulcsok** , és adja hozzá a kulcsot.|
+| erőforrás |szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
 
 #### <a name="example"></a>Példa
 A következő HTTP POST kérések számára egy jogkivonatot a https://service.contoso.com/ webes szolgáltatás. A `client_id` azonosítja a webszolgáltatás, amelyet a hozzáférési jogkivonat igényel.
@@ -73,11 +75,11 @@ Szolgáltatás hozzáférési kérelmek tanúsítvánnyal tartalmazza a követke
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |Szükséges |A kért válaszának típusa határozza meg. Az ügyfél-hitelesítő adatok Grant flow, az értéknek kell lennie **client_credentials**. |
-| client_id |Szükséges |Adja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító található a a [Azure-portálon](https://portal.azure.com), kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson az alkalmazás. A client_id van a *Alkalmazásazonosító* |
-| client_assertion_type |Szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz. További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
-| erőforrás | Szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
+| grant_type |szükséges |A kért válaszának típusa határozza meg. Az ügyfél-hitelesítő adatok Grant flow, az értéknek kell lennie **client_credentials**. |
+| client_id |szükséges |Adja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító található a a [Azure-portálon](https://portal.azure.com), kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson az alkalmazás. A client_id van a *Alkalmazásazonosító* |
+| client_assertion_type |szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |szükséges | Egy helyességi feltétel (egy JSON Web Token) hozzon létre, és írja alá a tanúsítványt igénylő regisztrálta hitelesítő adatként az alkalmazáshoz. További információ a [tanúsítvány a hitelesítő adatok](active-directory-certificate-credentials.md) megtudhatja, hogyan kell regisztrálni a tanúsítványt, és a helyességi feltétel formátuma.|
+| erőforrás | szükséges |Adja meg az App ID URI az fogadó webszolgáltatás. Az Azure portálon található App ID URI, kattintson a **Azure Active Directory**, kattintson a **App regisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
 
 Figyelje meg, hogy a paraméterek megegyeznek-szinte közös titkos kulcs kérése gazdabuszadaptereken azzal a különbséggel, hogy a client_secret paraméter helyébe két paramétert: egy client_assertion_type és client_assertion.
 

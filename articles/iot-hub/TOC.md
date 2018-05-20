@@ -292,6 +292,7 @@
 # További források
 ## [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/)
 ## [Azure IoT fejlesztői központ](https://azure.microsoft.com/develop/iot/)
+## [Ügyfelek adatkérései](iot-hub-customer-data-requests.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [DeviceExplorer eszköz](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [iothub-diagnostics eszköz](https://github.com/Azure/iothub-diagnostics)

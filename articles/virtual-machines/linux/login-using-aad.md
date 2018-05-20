@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2018
+ms.date: 05/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ec330570604494503de2fa3f5484a1e41ddf4603
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -34,6 +34,7 @@ Nincsenek az Azure AD-hitelesítés használatával próbál bejelentkezni a Lin
   - Csökkenti a helyi rendszergazda fiókok támaszkodik, nem kell foglalkoznia a hitelesítő adatok elvesztése/lopás, felhasználók gyenge hitelesítő adatok stb.
   - A jelszó összetettségét, és az Azure AD-címtár beállított élettartam jelszóházirendek segítségével biztonságos Linux virtuális gépek is.
   - További biztonságos bejelentkezés az Azure virtuális gépekhez többtényezős hitelesítést is konfigurálhat.
+  - A Linux virtuális gépekhez, és az Azure Active Directory bejelentkezési lehetőséget is működik használó ügyfelek számára [összevonási szolgáltatások](../../active-directory/connect/active-directory-aadconnectfed-whatis.md).
 
 - **Zökkenőmentes együttműködés:** With Role-Based hozzáférés-vezérlés (RBAC), adhatja ki lehet bejelentkezni egy adott virtuális gép felhasználói vagy rendszergazdai jogosultságokkal. Ha a felhasználók csatlakozni, vagy hagyja meg a csoport, frissítheti a Szerepalapú házirendet a virtuális gép a megfelelő engedélyt. A szolgáltatás sokkal egyszerűbb, mint a virtuális gépek eltávolítja a szükségtelen nyilvános SSH-kulcsok megtisztítás kellene. Amikor az alkalmazottak elhagyják a munkahelyet, és a felhasználói fiók le van tiltva vagy az Azure AD-ből eltávolítva, már nem rendelkeznek az erőforrásokhoz való hozzáférés.
 
@@ -49,7 +50,7 @@ A következő Linux terjesztésekről jelenleg az előzetes funkció támogatja:
 
 A következő Azure-régiók jelenleg az előzetes funkció támogatja:
 
-- Minden nyilvános Azure-régió
+- Globális Azure-régiók
 
 >[!IMPORTANT]
 > Ezt az előzetes funkciót használ, csak telepítenie kell egy támogatott Linux distro és a támogatott Azure-régiót. A funkció nem támogatott Azure Government vagy szuverén felhők.
@@ -166,6 +167,10 @@ Sikeresen végrehajtotta a hitelesítési lépést webböngészőben, ha lehets�
 - Győződjön meg arról, hogy az SSH-parancssorban megadott bejelentkezési neve helyesen-e. Egy elírás a bejelentkezési név a támadó a az SSH-parancssorban megadott bejelentkezési név és az Azure ad Szolgáltatásba való bejelentkezéshez eltérést. Például beírt *azuresuer@contoso.onmicrosoft.com* helyett *azureuser@contoso.onmicrosoft.com*.
 - Ha több felhasználói fiókot, ellenőrizze, hogy egy másik felhasználói fiókkal a böngészőablakban nem ad meg, ha az Azure AD bejelentkezés.
 - Linux operációs rendszer kis-és nagybetűket. Között eltérés van "Azureuser@contoso.onmicrosoft.com"és"azureuser@contoso.onmicrosoft.com", amely eltérést okozhat. Győződjön meg arról, hogy a helyes Kisbetű/nagybetű megkülönböztetése az SSH-parancssorba, adja meg az egyszerű Felhasználónevet.
+
+## <a name="preview-feedback"></a>Előzetes visszajelzés
+
+A visszajelzést az előzetes funkció vagy a jelentés problémák azt megosztása a [az Azure AD-visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 05/17/2018
 ms.author: brenduns
-ms.openlocfilehash: 1c22eb17ffcd070c1c5529033eeaa73dc7bd3859
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: b84744a52426123f2f3e7dd4c14419fef8b779cc
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure-készletben támogatott virtuálisgép-méretek
 
@@ -51,6 +51,18 @@ Ez a cikk ismerteti a virtuális gép (VM) méretű Azure verem használható.
 |**Standard_A6** |4 |28    |285 |500 |500 |8x500  |2 / 1000 |
 |**Standard_A7** |8 |56    |605 |500 |500 |16x500 |4 / 2000 |
 
+### <a name="av2-series"></a>Av2-sorozat
+*Azure verem verziója 1804 vagy újabb verzió szükséges*
+
+|Méret     |vCPU     |Memória (GB) | Ideiglenes tárhely (GB)  | A Mac OS lemez átviteli (IOPS) | Maximális ideiglenes tárolási teljesítmény (IOPS) | Maximális adatlemezek / átviteli sebesség (IOPS) | Hálózati adapter maximális / várható a hálózati sávszélesség (MB/s) |
+|-----------------|----|----|-----|-----|------|--------------|---------|
+|**Standard_A1_v2**  |1   |2   |10   |500 |1000  |2 / 2x500   |2 / 250  |
+|**Standard_A2_v2**  |2   |4   |20   |500 |2000  |4 / 4x500   |2 / 500  |
+|**Standard_A4v2**   |4   |8   |40   |500 |4000  |8 / 8x500   |4 / 1000 |
+|**Standard_A8_v2**  |8   |16  |80   |500 |8000  |16 / 16x500 |8 / 2000 |
+|**Standard_A2m_v2** |2   |16  |20   |500 |2000  |4 / 4x500   |2 / 500  |
+|**Standard_A4m_v2** |4   |32  |40   |500 |4000  |8 / 8x500   |4 / 1000 |
+|**Standard_A8m_v2** |8   |64  |80   |500 |8000  |16 / 16x500 |8 / 2000 |
 
 ### <a name="d-series"></a>D-sorozat
 |Méret     |vCPU     |Memória (GB) | Ideiglenes tárhely (GB)  | A Mac OS lemez átviteli (IOPS) | Maximális ideiglenes tárolási teljesítmény (IOPS) | Maximális adatlemezek / átviteli sebesség (IOPS) | Hálózati adapter maximális / várható a hálózati sávszélesség (MB/s) |
@@ -86,6 +98,45 @@ Ez a cikk ismerteti a virtuális gép (VM) méretű Azure verem használható.
 |**Standard_DS3_v2** |4   |14  |28  |1000 |16000 |16 / 16x2300 |4 / 3000 |
 |**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32x2300 |8 / 6000 |
 |**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64 / 64x2300 |8 / 10000 |
+
+
+## <a name="compute-optimized"></a>Számításra optimalizált
+### <a name="f-series"></a>F-sorozat
+*Azure verem verziója 1804 vagy újabb verzió szükséges*
+
+|Méret     |vCPU     |Memória (GB) | Ideiglenes tárhely (GB)  | A Mac OS lemez átviteli (IOPS) | Maximális ideiglenes tárolási teljesítmény (IOPS) | Maximális adatlemezek / átviteli sebesség (IOPS) | Hálózati adapter maximális / várható a hálózati sávszélesség (MB/s) |
+|-----------------|----|----|-----|----|------|------------|---------|
+|**Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4 x 400   |2 / 750  |
+|**Standard_F2**  |2   |4   |32   |500 |6000  |8 / 8x500   |2 / 1500 |
+|**Standard_F4**  |4   |8   |64   |500 |12000 |16 / 16x500 |4 / 3000 |
+|**Standard F8 méretű**  |8   |16  |128  |500 |24000 |32 / 32x500 |8 / 6000 |
+|**Standard f16 méretű** |16  |32  |256  |500 |48000 |64 / 64x500 |8 / 6000 - 12000  |
+
+
+### <a name="fs-series"></a>Fs sorozat
+*Azure verem verziója 1804 vagy újabb verzió szükséges*  
+
+|Méret     |vCPU     |Memória (GB) | Ideiglenes tárhely (GB)  | A Mac OS lemez átviteli (IOPS) | Maximális ideiglenes tárolási teljesítmény (IOPS) | Maximális adatlemezek / átviteli sebesség (IOPS) | Hálózati adapter maximális / várható a hálózati sávszélesség (MB/s) |
+|------------------|----|----|----|-----|------|-------------|---------|
+|**Standard_F1s**  |1   |2   |4   |1000 |4000  |4 / 4x2300   |2 / 750  |
+|**Standard_F2s**  |2   |4   |8   |1000 |8000  |8 / 8x2300   |2 / 1500 |
+|**Standard_F4s**  |4   |8   |16  |1000 |16000 |16 / 16x2300 |4 / 3000 |
+|**Standard_F8s**  |8   |16  |32  |1000 |32000 |32 / 32x2300 |8 / 6000 |
+|**Standard_F16s** |16  |32  |64  |1000 |64000 |64 / 64x2300 |8 / 6000 - 12000  |
+
+
+### <a name="fsv2-series"></a>Fsv2-sorozat
+*Azure verem verziója 1804 vagy újabb verzió szükséges* 
+
+|Méret     |vCPU     |Memória (GB) | Ideiglenes tárhely (GB)  | A Mac OS lemez átviteli (IOPS) | Maximális ideiglenes tárolási teljesítmény (IOPS) | Maximális adatlemezek / átviteli sebesség (IOPS) | Hálózati adapter maximális / várható a hálózati sávszélesség (MB/s) |
+|---------------------|----|----|-----|-----|-------|--------------|---------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |Mérsékelt |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |Mérsékelt |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |Magas     |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |Magas     |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |Magas  |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |Rendkívül nagy  |
+
 
 ## <a name="memory-optimized"></a>Memóriaoptimalizált
 
@@ -123,6 +174,7 @@ A memória optimalizált Virtuálisgép-méretek relációs adatbázis-kiszolgá
 |**Standard_DS12_v2** |4   |28  |56   |1000 |16000  |16 / 16x2300  |4 / 3000 |
 |**Standard_DS13_v2** |8   |56  |112  |1000 |32000  |32 / 32x2300  |8 / 6000 |
 |**Standard_DS14_v2** |16  |112 |224  |1000 |64000  |64 / 64x2300  |8 / 10000 |
+
 
 ## <a name="next-steps"></a>További lépések
 

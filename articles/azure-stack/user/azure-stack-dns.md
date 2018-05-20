@@ -1,65 +1,75 @@
 ---
-title: "Az Azure-készletben DNS |} Microsoft Docs"
-description: DNS az Azure Stackben
+title: Az Azure-készletben DNS |} Microsoft Docs
+description: Az Azure-készletben a DNS-sel
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 394abe5295af4ed99e48d50b5886ac93af87e875
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4e854a2751ce366e3ca3a353487f2c972401c248
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="dns-in-azure-stack"></a>DNS az Azure Stackben
+# <a name="using-dns-in-azure-stack"></a>Az Azure-készletben a DNS-sel
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Az Azure verem az alábbi DNS-szolgáltatásokat tartalmazza:
-* DNS-állomásnév feloldása támogatása
-* DNS-zónák és API-rekordok létrehozása és kezelése
+Azure verem támogatja a következő tartománynévrendszer (DNS) funkciókat:
+
+* DNS-állomásnév feloldása
+* DNS-zónák és az API-val rekordok létrehozására és kezelésére
 
 ## <a name="support-for-dns-hostname-resolution"></a>DNS-állomásnév feloldása támogatása
-Megadhatja, hogy a DNS tartománynév-címke a nyilvános IP-erőforráshoz, létrehoz egy leképezést *domainnamelabel.location*. a nyilvános IP-cím az Azure-készletben cloudapp.azurestack.external felügyelt DNS-kiszolgálók.  
 
-Ha például létrehozhat egy nyilvános IP-erőforrás a **contoso** , a tartománynév-címke a helyi Azure verem helyen, a teljesen minősített tartománynevét (FQDN) **contoso.local.cloudapp.azurestack.external**megkeresi a nyilvános IP-címet az erőforrás. Ez a teljes tartománynév használatával hozzon létre egy CNAME rekordot a nyilvános IP-cím Azure verem mutató egyéni tartományt.
+Megadhatja a DNS tartománynév-címke a nyilvános IP-erőforrások. Használja az Azure verem *domainnamelabel.location*. a címke nevét és azt a nyilvános IP-cím Azure verem maps cloudapp.azurestack.external felügyelt DNS-kiszolgálók.
+
+Például, ha létrehoz egy nyilvános IP-erőforrás a **contoso** a tartománynév-címke a helyi Azure verem helyen, mint a [teljesen minősített tartománynevét](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN)  **contoso.local.cloudapp.azurestack.external** megkeresi a nyilvános IP-címet az erőforrás. Ez a teljes tartománynév használatával hozzon létre egy CNAME rekordot a nyilvános IP-cím Azure verem mutató egyéni tartományt.
+
+A névfeloldás kapcsolatos további tudnivalókért tekintse meg a [DNS-feloldás](https://docs.microsoft.com/en-us/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) cikk.
 
 > [!IMPORTANT]
 > Minden egyes tartománynév-címke létrehozása az Azure-verem helyére belül egyedinek kell lennie.
 
-Ha a nyilvános IP-cím, a portál használatával hoz létre, néz ki:
+A következő képernyő-rögzítési mutat be a **nyilvános IP-cím létrehozása** párbeszédpanel létrehozásához egy nyilvános IP-címet, a portál használatával.
 
 ![Nyilvános IP-cím létrehozása](media/azure-stack-whats-new-dns/image01.png)
 
-Ez a konfiguráció akkor hasznos, ha egy elosztott terhelésű erőforrás egy nyilvános IP-címet hozzárendelni kívánt. Például lehetséges, hogy a terheléselosztó-webalkalmazások kérelmek feldolgozásához. A terhelés mögött terheléselosztó egy webhelyen található egy vagy több virtuális gépeken. Az elosztott terhelésű webhely most már megtekintheti a DNS-név, nem pedig egy IP-cím alapján.
+**Példa**
 
-## <a name="create-and-manage-dns-zones-and-records-using-api"></a>DNS-zónák és API-rekordok létrehozása és kezelése
-Hozzon létre, és a DNS-zónák és Azure verem rekordok kezelése.  
+Lehetősége van a terheléselosztó-webalkalmazások kérelmek feldolgozásához. A terhelés mögött terheléselosztó egy vagy több virtuális gépeken futó webhely. Az elosztott terhelésű webhely helyett IP-címet a DNS-név használatával érheti el.
 
-Azure verem Azure, például egy DNS szolgáltatást biztosít az Azure DNS API-k konzisztensek API-k használatával.  Azure verem DNS tartományt üzemeltet, kezelheti az egyéb Azure-szolgáltatások, a DNS-rekordokat a ugyanazokat a hitelesítő adatokat, API-k, eszközök, számlázási és támogatási szolgálathoz. 
+## <a name="create-and-manage-dns-zones-and-records-using-the-api"></a>DNS-zónák és az API-rekordok létrehozása és kezelése
 
-Nyilvánvaló okokból Azure verem DNS-infrastruktúrájának tömörebb Azure-nál. Ebből kifolyólag a hatókör, méretezés és teljesítmény függ az Azure Alkalmazásveremben üzembe és a környezetben, ahol központilag telepítették.  Igen többek között a teljesítményt, a rendelkezésre állási, a globális terjesztési és a magas rendelkezésre állású (HA) eltérőek lehetnek telepítésről a másikra.
+Hozzon létre, és a DNS-zónák és Azure verem rekordok kezelése.
+
+Azure verem Azure, például egy DNS szolgáltatást biztosít az Azure DNS API-k konzisztensek API-k használatával.  Az Azure verem DNS-tartományt üzemeltet, kezelheti a DNS-rekordokat a ugyanazon hitelesítő adatokkal, API-k és eszközök használatával. Is használhat ugyanazon számlázási és az egyéb Azure-szolgáltatások támogatják.
+
+Az Azure verem DNS-infrastruktúra tömörebb Azure-nál. A méretét és az Azure-verem üzembe helyezésének helyét érinti, DNS-hatókör, a méretezés és teljesítmény. Ez azt is jelenti, hogy teljesítmény, a rendelkezésre állási, a globális terjesztési és a magas rendelkezésre állású telepítésről a másikra változhat.
 
 ## <a name="comparison-with-azure-dns"></a>Az Azure DNS összehasonlítása
-Azure-készletben DNS hasonlít az Azure DNS két fő kivételekkel:
+
+Azure verem DNS hasonló, a DNS-ben az Azure-ban, de jelentős kivételek ismernie kell.
+
 * **Nem támogatja a AAAA-rekord**
 
     Azure verem nem támogatja a AAAA típusú rekordot, mert az Azure verem nem támogatja az IPv6-címeket.  Ez az DNS Azure és az Azure-verem kulcs eltérése.
 * **Nincs több-bérlős**
 
-    Eltérően Azure, a DNS szolgáltatás Azure verem nincs több-bérlős. Így mindegyik bérlő nem hozható létre a azonos DNS-zónát. Csak az első előfizetés, amely megpróbálja a zóna létrehozása sikeres, és ezt követő kérelem sikertelen lesz.  Ez nem egy ismert probléma, és Azure és az Azure DNS-verem kulcs eltérése. A probléma feloldásra kerül egy későbbi kiadásban.
+    A DNS-szolgáltatás Azure verem nem több-bérlős. Mindegyik bérlő nem hozható létre a azonos DNS-zónát. Csak az első előfizetés, amely megpróbálja a zóna létrehozása sikeres, és ezt követő kérelem sikertelen lesz.  Ez nem egy ismert probléma, és Azure és az Azure DNS-verem kulcs eltérése. A probléma feloldásra kerül egy későbbi kiadásban.
+* **Címkék, a metaadatok és az ETag-EK**
 
-Emellett néhány hogyan Azure verem DNS megvalósítja-e a címkék, a metaadatok, az ETag-EK és a korlátok kisebb különbségek vannak.
+    Hogyan kezeli az Azure verem a címkék, a metaadatok, az ETag-EK és a korlátok kisebb különbségek vannak.
 
-Az alábbi információk Azure verem DNS vonatkozik, és kis mértékben eltér az Azure DNS-ben. Azure DNS szolgáltatással kapcsolatos további tudnivalókért lásd: [DNS-zónák, és rögzíti](../../dns/dns-zones-records.md) a Microsoft Azure dokumentációjában található.
+Azure DNS szolgáltatással kapcsolatos további tudnivalókért lásd: [DNS-zónák, és rögzíti](../../dns/dns-zones-records.md).
 
 ### <a name="tags-metadata-and-etags"></a>Címkék, a metaadatok és az ETag-EK
 
@@ -67,7 +77,7 @@ Az alábbi információk Azure verem DNS vonatkozik, és kis mértékben eltér 
 
 Az Azure verem DNS támogatja az Azure Resource Manager címkék használatával a DNS-zóna erőforrás. Nem támogatja címkék a DNS-rekordhalmazok, bár a "metadata" alternatív támogatja a DNS-rekord állítja be a következő leírtak szerint.
 
-**Metadata**
+**Metaadatok**
 
 Rekordhalmaz címkék alternatívájaként Azure verem DNS-ben támogatja a ellátása megjegyzésekkel rekordhalmazok "metadata" használatával. Címkék hasonló, metaadatok lehetővé teszi minden rekordhalmaz név-érték párok társítani. Például ez lehet hasznos minden rekordhalmaz céljának rögzítéséhez. Címkék, ellentétben a metaadatok nem használható az Azure számlázásának szűrt megjelenítésére szolgáló, és nem adható meg az Azure Resource Manager-házirend.
 
@@ -83,8 +93,8 @@ Az Azure verem DNS REST API szintjén ETag-EK megadott HTTP-fejlécek használat
 
 | Fejléc | Viselkedés|
 |--------|---------|
-| Nincs   | A PUT mindig sikeres (nincs Etag ellenőrzése)|
-| If-match| PUT csak akkor sikeres, ha erőforrás létezik, és az Etag megfelel|
+| None   | A PUT mindig sikeres (nincs Etag ellenőrzése)|
+| IF-match| PUT csak akkor sikeres, ha erőforrás létezik, és az Etag megfelel|
 | IF-match *| A PUT csak akkor sikeres, ha erőforrás létezik-e|
 | IF-none-match *| PUT csak akkor sikeres, ha az erőforrás nem létezik.|
 
@@ -99,4 +109,5 @@ A következő alapértelmezett korlátokat alkalmazza, ha Azure verem DNS-sel:
 | Rekordok száma rekordkészlete| 20|
 
 ## <a name="next-steps"></a>További lépések
+
 [Azure verem IDN bemutatása](azure-stack-understanding-dns.md)

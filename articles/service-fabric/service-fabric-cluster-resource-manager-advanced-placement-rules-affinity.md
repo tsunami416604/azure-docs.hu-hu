@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric fürt erőforrás-kezelő - affinitás |} Microsoft Docs"
-description: "A Service Fabric szolgáltatások kapcsolat konfigurálása – áttekintés"
+title: Service Fabric fürt erőforrás-kezelő - affinitás |} Microsoft Docs
+description: A Service Fabric szolgáltatások kapcsolat konfigurálása – áttekintés
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8122f1644da25a9a2ab05291dafc33c77a91147f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57abea79a620aa83e16ad4cc2fd78a4294f2b278
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurálásával és a Service Fabric szolgáltatás affinitás használatával
 Kapcsolat az biztosított főként a vezérlőelem megkönnyítik az átmenet nagyobb egységes alkalmazások be a felhő- és mikroszolgáltatások világ segítségével. Azt is szolgál az optimalizálás szolgáltatások teljesítményének növelése, így bár mellékhatásokkal is.
@@ -77,7 +77,7 @@ Ma megjegyezni affinitás kapcsolatok egy másik művelet, hogy azok irányt. Ez
 ### <a name="partitioning-support"></a>Particionálás támogatása
 A végső lépés kapcsolatra vonatkozó figyelje meg, hogy kapcsolatok nem támogatottak, ha a szülő particionálva van kapcsolat. Lehet, hogy végül támogatja a particionált szülő szolgáltatások, de jelenleg nem engedélyezett.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A szolgáltatások konfigurálásáról [további információ a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
 - Korlátozza a gépek egy kis készletét a szolgáltatások vagy szolgáltatások, a terhelés összesítése [alkalmazáscsoportok](service-fabric-cluster-resource-manager-application-groups.md)
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Csatlakoztassa a számítógépet az OMS-átjáró internetkapcsolat nélkül
 Ez a dokumentum ismerteti a kommunikáció konfigurálása az Azure Automation szolgáltatásban, és az OMS-átjáró, ha közvetlen Naplóelemzési csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáféréssel.  Az OMS-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozás parancs használatával továbbítsa HTTP-proxyt, adatokat gyűjteni, és elküldi a Azure Automation és Naplóelemzési részére azok nevében.  
@@ -64,19 +64,19 @@ Az OMS-átjáró a következő nyelveken érhető el:
 
 - kínai (egyszerűsített)
 - kínai (hagyományos)
-- Cseh
-- Holland
-- angol
-- Francia
-- Német
-- Magyar
-- Olasz
+- cseh
+- holland
+- Angol
+- francia
+- német
+- magyar
+- olasz
 - japán
-- Koreai
-- Lengyel
-- portugál (Brazília)
-- portugál (Portugália)
-- Orosz
+- koreai
+- lengyel
+- portugál (brazíliai)
+- portugál (általános)
+- orosz
 - Spanyol (nemzetközi)
 
 ### <a name="supported-encryption-protocols"></a>A támogatott titkosítási protokollok
@@ -131,20 +131,18 @@ Az átjárót a magas rendelkezésre állás, a hálózati terheléselosztás (N
 
 Tervezéséhez és a Windows Server 2016-os hálózati terheléselosztási fürt telepítéséhez, lásd: [a hálózati terheléselosztás](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing).  A következő lépések a Microsoft hálózati terheléselosztási fürt konfigurálását ismertetik.  
 
-1.  Jelentkezzen be a Windows server-rendszergazdai jogosultságokkal rendelkező fiókkal a hálózati Terheléselosztási fürt tagja.  
-2.  Hálózati terheléselosztás kezelőjének megnyitása a Kiszolgálókezelőben, kattintson a **eszközök**, és kattintson a **hálózati terheléselosztás kezelője**.
+1. Jelentkezzen be a Windows server-rendszergazdai jogosultságokkal rendelkező fiókkal a hálózati Terheléselosztási fürt tagja.  
+2. Hálózati terheléselosztás kezelőjének megnyitása a Kiszolgálókezelőben, kattintson a **eszközök**, és kattintson a **hálózati terheléselosztás kezelője**.
 3. Az OMS-átjárókiszolgáló kapcsolódni a Microsoft Monitoring Agent telepítése, kattintson a jobb gombbal a fürt IP-címet, és kattintson **gazdagép hozzáadása fürthöz**.<br><br> ![Hálózati terheléselosztás kezelője – betöltése vegye fel a gazdagépet a fürthöz](./media/log-analytics-oms-gateway/nlb02.png)<br> 
 4. Adja meg az IP-cím, az átjárókiszolgáló, amely csatlakozni szeretne.<br><br> ![Hálózati terheléselosztás kezelője – állomás hozzáadása fürthöz: csatlakozás](./media/log-analytics-oms-gateway/nlb03.png) 
     
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>OMS-ügynököt, és az Operations Manager felügyeleti csoport konfigurálása
 Az alábbi szakasz a közvetlenül csatlakoztatott OMS-ügynököt, az Operations Manager felügyeleti csoport vagy Azure Automation hibrid forgatókönyv-feldolgozók konfigurálásáról az OMS-átjáróval kommunikálni az Azure Automation vagy Naplóelemzési lépéseivel.  
 
-Követelmények és az OMS-ügynököt telepíteni a Windows rendszerű számítógépeken Log Analyticshez való közvetlen csatlakozás lépéseit ismertetése: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agents.md) vagy a Linux rendszerű számítógépek lásd [csatlakozás Linux Naplóelemzési számítógépek](log-analytics-quick-collect-linux-computer.md).  Az automatizálási hibrid forgatókönyv-feldolgozó kapcsolatos információkért lásd: [telepítése hibrid forgatókönyv-feldolgozó](../automation/automation-hybrid-runbook-worker.md).
-
-### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>A OMS-ügynököt az Operations Manager az OMS-átjáró képező és a proxykiszolgáló konfigurálása
-
 ### <a name="configure-standalone-oms-agent"></a>Önálló OMS-ügynököt konfigurálása
-Lásd: [proxy és tűzfal konfigurálása a Microsoft Monitoring Agent](log-analytics-proxy-firewall.md) konfigurálásáról az ügynök proxykiszolgálót használni, amely a jelen esetben ez az átjáró.  Ha egy hálózati terheléselosztó mögött több átjárókiszolgáló telepített, akkor az OMS-ügynök proxykonfigurációt a hálózati Terheléselosztási virtuális IP-címe:<br><br> ![A Microsoft Monitoring Agent tulajdonságai – Proxybeállítások](./media/log-analytics-oms-gateway/nlb04.png)
+Követelmények és az OMS-ügynököt telepíteni a Windows rendszerű számítógépeken Log Analyticshez való közvetlen csatlakozás lépéseit ismertetése: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agents.md) vagy a Linux rendszerű számítógépek lásd [csatlakozás Linux Naplóelemzési számítógépek](log-analytics-quick-collect-linux-computer.md). Helyett adja meg a proxykiszolgáló konfigurálása az ügynök közben, akkor cserélje le ezt az értéket az IP-címet az OMS-átjárókiszolgáló és a port számának.  Ha egy hálózati terheléselosztó mögött több átjárókiszolgáló telepített, akkor az OMS-ügynök proxykonfigurációt a hálózati Terheléselosztási virtuális IP-címét.  
+
+Az automatizálási hibrid forgatókönyv-feldolgozó kapcsolatos információkért lásd: [telepítése hibrid forgatókönyv-feldolgozó](../automation/automation-hybrid-runbook-worker.md).
 
 ### <a name="configure-operations-manager---all-agents-use-the-same-proxy-server"></a>Az Operations Manager konfigurálása - az ügynökök azonos proxykiszolgáló használata
 Az Operations Manager adja hozzá az átjáró-kiszolgálót konfigurálja.  Az Operations Manager proxykonfigurációt a rendszer automatikusan alkalmazza minden ügynököt, és az Operations Manager jelentéskészítési, akkor is, ha az érték üres.  
@@ -207,12 +205,12 @@ Az alábbi táblázatok segítségével azonosíthatók a URL-címe, mindegyik h
 
 **Feladat futásidejű adatok URL-címei**
 
-| **hely** | **URL** |
+| **hely** | **URL-cím** |
 | --- | --- |
-| Északkelet-USA |ncus-jobruntimedata-prod-su1.azure-automation.net |
+| USA északi középső régiója |ncus-jobruntimedata-prod-su1.azure-automation.net |
 | Nyugat-Európa |we-jobruntimedata-prod-su1.azure-automation.net |
-| USA középső déli régiója |scus-jobruntimedata-prod-su1.azure-automation.net |
-| Egyesült Államok, keleti régió 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
+| USA déli középső régiója |scus-jobruntimedata-prod-su1.azure-automation.net |
+| USA 2. keleti régiója |eus2-jobruntimedata-prod-su1.azure-automation.net |
 | Közép-Kanada |cc-jobruntimedata-prod-su1.azure-automation.net |
 | Észak-Európa |ne-jobruntimedata-prod-su1.azure-automation.net |
 | Délkelet-Ázsia |sea-jobruntimedata-prod-su1.azure-automation.net |
@@ -222,12 +220,12 @@ Az alábbi táblázatok segítségével azonosíthatók a URL-címe, mindegyik h
 
 **Ügynök szolgáltatás URL-címek**
 
-| **hely** | **URL** |
+| **hely** | **URL-cím** |
 | --- | --- |
-| Északkelet-USA |ncus-agentservice-prod-1.azure-automation.net |
+| USA északi középső régiója |ncus-agentservice-prod-1.azure-automation.net |
 | Nyugat-Európa |we-agentservice-prod-1.azure-automation.net |
-| USA középső déli régiója |scus-agentservice-prod-1.azure-automation.net |
-| Egyesült Államok, keleti régió 2 |eus2-agentservice-prod-1.azure-automation.net |
+| USA déli középső régiója |scus-agentservice-prod-1.azure-automation.net |
+| USA 2. keleti régiója |eus2-agentservice-prod-1.azure-automation.net |
 | Közép-Kanada |cc-agentservice-prod-1.azure-automation.net |
 | Észak-Európa |ne-agentservice-prod-1.azure-automation.net |
 | Délkelet-Ázsia |sea-agentservice-prod-1.azure-automation.net |
@@ -278,7 +276,7 @@ Az átjáró által naplózott eseményeket gyűjt, az OMS-ügynököt futtató 
 
 Az alábbi táblázat a eseményazonosítók és az OMS-átjáró naplóeseményeket leírását.
 
-| **ID** | **Leírás** |
+| **Azonosító** | **Leírás** |
 | --- | --- |
 | 400 |Bármely alkalmazás hiba, amely nem rendelkezik egyedi azonosítója |
 | 401 |Helytelen konfiguráció. Például: listenPort = "text" helyett egész szám |
@@ -311,7 +309,7 @@ A következő táblázat a rendelkezésre álló teljesítményszámlálók az O
 Ha be van jelentkezve az Azure-portálon, a segítségért az OMS-átjáró vagy bármely más Azure-szolgáltatások vagy a szolgáltatás funkciója is létrehozhat.
 Segítségkérés a kérdőjel szimbólum a portál jobb felső sarkában kattintson, és kattintson a **új támogatja a kérelem**. Ezután fejezze be az új támogatási kérelem űrlap.
 
-![Új támogatási kérés](./media/log-analytics-oms-gateway/support.png)
+![Új támogatási kérelem](./media/log-analytics-oms-gateway/support.png)
 
 ## <a name="next-steps"></a>További lépések
 [Adatforrások hozzáadása](log-analytics-data-sources.md) adatokat gyűjteni a csatlakoztatott források és tárolja a Naplóelemzési munkaterület.

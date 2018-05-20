@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9246fccb1713f69d2c6c655b09f0daf51055596f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b999792876f82de9500dccf9e6263f85e3e3105e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>HTTPS érkező Azure Kubernetes-szolgáltatáshoz (AKS)
 
@@ -38,7 +38,7 @@ helm repo update
 A NGINX érkező üzembe. Ebben a példában a tartományvezérlőre telepíti a `kube-system` névtér, ez az Ön által választott egy névteret kell módosítani.
 
 ```
-helm install stable/nginx-ingress --namespace kube-system
+helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
 
 A telepítés során az Azure nyilvános IP-címet a érkező tartományvezérlő jön létre. A nyilvános IP-cím beszerzéséhez használja a kubectl get szolgáltatás parancsot. Az IP-cím hozzá kell rendelni a szolgáltatás egy ideig is eltarthat.

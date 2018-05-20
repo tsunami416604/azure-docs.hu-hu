@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 05/14/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 165a899dbad0893b3a2bddcfc68c9b5d737e9d3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Verem az Azure Storage: Különbségek és szempontok
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/28/2018
 
 A verem az Azure Storage tárolási cloud services csomag Microsoft Azure verem egy. Az Azure verem Storage blob, table, várólista és az Azure-konzisztens szemantikáját funkciók biztosít.
 
-Ez a cikk az Azure Storage Azure Storage-verem ismert különbségek foglalja össze. Emellett összegzi más szempontokat tartalmaz, amelyek Azure verem telepítésekor tartsa szem előtt. Azure verem és az Azure közötti magas szintű különbségek kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) témakör.
+Ez a cikk az Azure Storage szolgáltatás ismert Azure Storage-verem különbségeket foglalja össze. Emellett Azure verem telepítésekor megfontolandó szempontok sorolja fel. Azure verem és az Azure közötti magas szintű különbségek kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) témakör.
 
 ## <a name="cheat-sheet-storage-differences"></a>Lap cheat: tárolási különbségek
 
@@ -49,26 +49,28 @@ A blob storage a helyreállítható törlés|Előzetes verzió|Még nem támogat
 |Tábla partíciós kulcs és a sor kulcsméret|1024 karakter (2048 bájt)|400 karakterek (800 bájt)
 |A BLOB pillanatkép|A maximális számú pillanatképpel egy BLOB nem korlátozott.|A maximális számú pillanatképpel egy BLOB 1000.|
 
-### <a name="metrics"></a>Mérőszámok
-Van még néhány különbség a storage mérőszámainak:
+A storage mérőszámainak különbségek is vannak:
+
 * A tranzakciós adatokat a storage mérőszámainak nem tesz különbséget a belső vagy külső hálózati sávszélességet.
 * A tranzakciós adatokat a storage mérőszámainak nem tartalmazza a virtuális gép érje el a csatlakoztatott lemezeket.
 
 ## <a name="api-version"></a>API-verzió
+
 A következő verziók támogatottak az Azure Storage-verem:
 
 Az Azure Storage API-k szolgáltatások:
 
 1802 frissítése vagy újabb:
+
  - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
  - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
  - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08 ](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
  - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Korábbi verziók:
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Az Azure Storage szolgáltatások felügyeleti API-kat:
 
@@ -78,7 +80,7 @@ Az Azure Storage szolgáltatások felügyeleti API-kat:
 
 ## <a name="sdk-versions"></a>SDK-verzió
 
-A következő klienskódtárak segítségével az Azure Storage-verem támogatottak:
+Az Azure verem Storage támogatja a következő klienskódtárak segítségével:
 
 | Ügyfélkódtár | A verem használható az Azure-verzió | Hivatkozás                                                                                                                                                                                                                                                                                                                                     | Végpont meghatározása       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -94,4 +96,3 @@ A következő klienskódtárak segítségével az Azure Storage-verem támogatot
 
 * [Ismerkedés az Azure Storage-verem Fejlesztőeszközök](azure-stack-storage-dev.md)
 * [A verem az Azure Storage bemutatása](azure-stack-storage-overview.md)
-

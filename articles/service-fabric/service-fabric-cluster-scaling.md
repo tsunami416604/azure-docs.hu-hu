@@ -5,20 +5,20 @@ services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: ''
+editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/09/2018
-ms.author: ryanwi;aljo
-ms.openlocfilehash: 897370e48b4eb0db5c99c1102910c89f6f56cc23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: ryanwi
+ms.openlocfilehash: f9e3f190decdc907cf57a0235b9d7142081bd2f1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="scaling-service-fabric-clusters"></a>Méretezési Service Fabric-fürtök
 A Service Fabric-fürt olyan hálózathoz csatlakozó virtuális vagy fizikai gépek, amelybe a mikroszolgáltatások telepíteni és felügyelni. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy csomópont neve. Fürtök esetlegesen több ezer is tartalmazhat. Miután létrehozta a Service Fabric-fürt, a fürt horizontálisan méretezhető (csomópontok számának módosítása) vagy függőlegesen (a csomópontok erőforrások módosításához).  Méretezheti a fürt bármikor, még akkor is, ha munkaterhelések fut a fürtön.  Méretezi a fürtön, mivel az alkalmazások automatikus méretezése is.

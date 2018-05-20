@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 8c9807119519dd1f93f08d0366311619a2e793eb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 45b91241223b1286cc412ab609e60aeadef51b85
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>A Power BI használatával távoli figyelési adatok megjelenítése
 
@@ -107,7 +107,7 @@ Ebben a cikkben megtanulta, megjelenítheti a Power BI használatával távoli f
 
 A távoli felügyeleti megoldás testreszabásával kapcsolatos további információkért lásd:
 
-* [A távoli figyelési megoldást igényelnek felhasználói felület testreszabása](iot-suite-remote-monitoring-customize.md)
+* [A távoli figyelési megoldást igényelnek felhasználói felület testreszabása](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
 

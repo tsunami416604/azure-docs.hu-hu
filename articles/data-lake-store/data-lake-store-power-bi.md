@@ -1,24 +1,22 @@
 ---
-title: "A Data Lake Store adatok elemzése a Power BI használatával |} Microsoft Docs"
-description: "Azure Data Lake Store-ban tárolt adatok elemzésére a Power BI használatával"
+title: A Data Lake Store adatok elemzése a Power BI használatával |} Microsoft Docs
+description: Azure Data Lake Store-ban tárolt adatok elemzésére a Power BI használatával
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 4a10dac1eca85b54ef144a91445af6dad3b5d93e
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 08660bd1c434c9404fa53a33be209b7a3c4d9372
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>A Data Lake Store adatok elemzése a Power BI használatával
 Ebben a cikkben megtudhatja a Power BI Desktop segítségével elemezheti és az Azure Data Lake Store-ban tárolt adatok megjelenítése.
@@ -30,7 +28,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Azure Data Lake Store-fiók**. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md) című témakör utasításait. Ez a cikk feltételezi, hogy már létrejött egy Data Lake Store-fiókot, úgynevezett **mybidatalakestore**, és fel kell tölteni egy minta adatfájl (**Drivers.txt**) azt. Ezt a mintafájlt letölthető [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
 * **A Power BI Desktopban**. Letöltheti ezt a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
-## <a name="create-a-report-in-power-bi-desktop"></a>Hozzon létre egy jelentést a Power BI Desktop
+## <a name="create-a-report-in-power-bi-desktop"></a>Jelentés létrehozása a Power BI Desktopban
 1. Indítsa el a Power BI Desktop a számítógépen.
 2. Az a **Home** menüszalag, kattintson a **adatok beolvasása**, és kattintson a több. Az a **adatok beolvasása** párbeszédpanel, kattintson a **Azure**, kattintson a **Azure Data Lake Store**, és kattintson a **Connect**.
    

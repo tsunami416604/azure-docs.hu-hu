@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 55bc2bd4e065c301f11a5fc4d3b58aa443b83e2d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e035b49d9e386287baf67bba756f7b58a764acc5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 Gyorsítótár létrehozásához először jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az **Erőforrás létrehozása** > **Adatbázisok** > **Redis Cache** lehetőségre.
 
@@ -24,7 +24,7 @@ Az **Új Redis Cache-gyorsítótár** lapon adja meg az új gyorsítótár beá
 | ------------ |  ------- | -------------------------------------------------- |
 | **DNS-név** | Globálisan egyedi név | A gyorsítótár nevének 1 és 63 karakter közötti karakterláncnak kell lennie, és kizárólag számokat, betűket és a `-` karaktert tartalmazhatja. A gyorsítótár neve nem kezdődhet a `-` karakterrel, és az egymást követő `-` karakterek nem érvényesek.  | 
 | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben az új Azure Redis Cache létrejön. | 
-| **Erőforráscsoport** |  *TestResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a gyorsítótárat. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. | 
+| **Erőforráscsoport** |  *TestResources* | Az új erőforráscsoport neve, amelyben létrehozza a gyorsítótárat. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. | 
 | **Hely** | USA keleti régiója | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a gyorsítótárat használó más szolgáltatások közelében. |
 | **[Tarifacsomag](https://azure.microsoft.com/pricing/details/cache/)** |  Alapszintű C0 (250 MB-os gyorsítótár) |  Az árképzési szint határozza meg a gyorsítótár méretét, teljesítményét és az elérhető funkcióit. További információ az [Azure Redis Cache áttekintése](../articles/redis-cache/cache-overview.md) lapon található. |
 | **Rögzítés az irányítópulton** |  Kiválasztva | Kattintson az új gyorsítótár rögzítése az irányítópulton lehetőségre, így könnyen megtalálható lesz. |

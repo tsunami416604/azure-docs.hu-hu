@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 35a45947c2766ccc5e64f4c3523ce163a9680680
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.openlocfilehash: 8732d1b87acaa6673ae92b3302fb257dcb134217
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Alkalmazások használata az Azure Blockchain munkaterület
 
@@ -52,14 +52,7 @@ Létre kell hoznia egy új szerződést, tagjának lennie kell a **AllowedInstan
 ## <a name="take-action-on-contract"></a>Művelet végrehajtása a szerződés
 
 1. Blockchain munkaterület alkalmazás területen válassza ki az alkalmazás csempe, amely tartalmazza a szerződés hajtsa végre a műveletet.
-
-    ![– Alkalmazáslista](media/blockchain-workbench-use/apps-list.png)
-
-2. A listában válassza ki a szerződést.
-
-    ![Szerződés lista](media/blockchain-workbench-use/select-contract.png)
-
-    A szerződés adatait különböző szakaszokat jelennek meg. 
+2. A listában válassza ki a szerződést. A szerződés adatait különböző szakaszokat jelennek meg. 
 
     ![Szerződés részletei](media/blockchain-workbench-use/contract-details.png)
 
@@ -74,9 +67,14 @@ Létre kell hoznia egy új szerződést, tagjának lennie kell a **AllowedInstan
 
 4. A szerződés az aktuális állapotával kapcsolatos információkat a részletek ablaktáblában jelennek meg. Válassza ki a kívánt műveletet, a legördülő lista a hálózatról. 
 
+    ![A művelet kiválasztása](media/blockchain-workbench-use/choose-action.png)
+
+5. Válassza ki **hajtsa végre a műveletet** való kezdeményezze a műveletet.
+6. A művelet paraméterek szükségesek, ha a művelet a értékeket megadni.
+
     ![Művelet végrehajtása](media/blockchain-workbench-use/take-action.png)
 
-5. Válassza ki **Execute** való hajtsa végre a műveletet.
+7. Válassza ki **hajtsa végre a műveletet** a művelet végrehajtásához.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,23 +1,23 @@
 ---
-title: "Azure-irányítópultok felépítését |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure irányítópult JSON szerkezete"
+title: Azure-irányítópultok felépítését |} Microsoft Docs
+description: Ez a cikk ismerteti az Azure irányítópult JSON szerkezete
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: adamab
-manager: timlt
+manager: dougeby
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: f71ff9383f20a1a75fd2c1cf4dc3aaf049d970cf
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: fa50b31a0c8e9077658106039c4fbd2eef8b4367
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure-irányítópultok szerkezete
 Ez a dokumentum végigvezeti egy Azure-irányítópultot, az alábbi példa irányítópulttal szerkezete:
@@ -335,10 +335,10 @@ A __pozíció__ tulajdonság a méret és elhelyezkedés információkat tartalm
 Minden egyes részben olyan metadata tulajdonsággal rendelkezik, az objektum neve csak egy szükséges tulajdonság rendelkezik __típus__. Ez a karakterlánc közli a portálon milyen csempére. A példa irányítópult csempék ilyen típusú használja:
 
 
-1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart`– Megjelenítésére használ a metrikák figyelése
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart`– Megjelenítésére használ a text vagy képeket egyszerű formázás listák, hivatkozások, stb.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart`– Megjelenítésére használ a videók YouTube Channel9 és semmilyen más típusú, amely a videó html-címke videó.
-1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart`– Használja a név és az Azure virtuális gép állapotának megjelenítése.
+1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – Megjelenítésére használ a metrikák figyelése
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – Megjelenítésére használ a text vagy képeket egyszerű formázás listák, hivatkozások, stb.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` – Megjelenítésére használ a videók YouTube Channel9 és semmilyen más típusú, amely a videó html-címke videó.
+1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Használja a név és az Azure virtuális gép állapotának megjelenítése.
 
 Minden részének saját konfigurációs rendelkezik. A konfigurációs tulajdonságok nevezzük __bemenetek__, __beállítások__, és __eszköz__. 
 

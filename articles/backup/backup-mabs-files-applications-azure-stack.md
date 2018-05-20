@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/11/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: 99ac43efa5d3211bbe2d790f28532e682058313c
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 19067b40e8e87c160515d13bb490e7c1604788b6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Biztonsági másolatot a fájlokhoz és alkalmazásokhoz Azure verem
 Azure Backup segítségével védeni (vagy készítsen biztonsági másolatot) fájlok és alkalmazások Azure veremben. Biztonsági másolatot készíteni a fájlokhoz és alkalmazásokhoz, telepítse a Microsoft Azure Backup Server Azure verem futó virtuális gépként. Az azonos virtuális hálózatban lévő bármely Azure verem kiszolgálón futó alkalmazások, védelmet biztosíthat. Egyszer telepítette az Azure Backup Server, adja hozzá az Azure-lemezeket a helyi tárterület érhető el, a rövid távú biztonsági másolatok növelése érdekében. Az Azure Backup Server hosszú távú megőrzési Azure tárolást használ.
@@ -64,7 +64,7 @@ Az Azure Backup Server biztonsági mentési adatokat, a műveleti helyreállít�
 
 Biztonsági mentési adatok tárolására az Azure-ban csökkenti a biztonsági mentési infrastruktúra Azure veremben. Ha öt napnál régebbi adatok, akkor az Azure-ban kell tárolni.
 
-Az Azure biztonsági mentési adatok tárolására, hozzon létre, vagy használja a Recovery Services-tároló. Az Azure Backup Server munkaterhelést másolatot előkészítésekor fogja [a Recovery Services-tároló konfigurálása](backup-azure-microsoft-azure-backup.md#recovery-services-vault). Konfigurálása után minden alkalommal, amikor egy biztonságimásolat-készítő feladat fut, a helyreállítási pont létrehozása a tárolóban lévő állapottal. Minden Recovery Services-tároló legfeljebb 9999 helyreállítási pontokat tárolja. Attól függően, hogy mennyi ideig maradnak, és létrehozott helyreállítási pontok száma a biztonsági mentési adatok továbbra is sok éve. Például akkor képes havi helyreállítási pontot, és öt évig megőrzi azokat.
+Az Azure biztonsági mentési adatok tárolására, hozzon létre, vagy használja a Recovery Services-tároló. Amikor készül, hogy készítsen biztonsági másolatot az Azure Backup Server munkaterhelés –, akkor [a Recovery Services-tároló konfigurálása](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Konfigurálása után minden alkalommal, amikor egy biztonságimásolat-készítő feladat fut, a helyreállítási pont létrehozása a tárolóban lévő állapottal. Minden Recovery Services-tároló legfeljebb 9999 helyreállítási pontokat tárolja. Attól függően, hogy mennyi ideig maradnak, és létrehozott helyreállítási pontok száma a biztonsági mentési adatok továbbra is sok éve. Például akkor képes havi helyreállítási pontot, és öt évig megőrzi azokat.
  
 ### <a name="using-sql-server"></a>SQL Server használata
 Ha az Azure Backup Server-adatbázis egy távoli SQL Server használatához, jelölje be a csak egy Azure verem virtuális Gépen futó SQL Server.

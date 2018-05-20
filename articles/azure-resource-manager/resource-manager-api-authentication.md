@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Active Directory-hitelesítés és erőforrás-kezelő |} Microsoft Docs"
-description: "A fejlesztői útmutató az alkalmazások integrálása más Azure-előfizetések az Azure Resource Manager API és az Azure Active Directory-hitelesítés."
+title: Az Azure Active Directory-hitelesítés és erőforrás-kezelő |} Microsoft Docs
+description: A fejlesztői útmutató az alkalmazások integrálása más Azure-előfizetések az Azure Resource Manager API és az Azure Active Directory-hitelesítés.
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
-ms.author: dugill;tomfitz
-ms.openlocfilehash: 0b7ddaa7e8a98cdff0e92c87f8a1f7e24efbd67e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: dugill
+ms.openlocfilehash: 1a526663b0280bd1bb7739ccc9a4ebf78882754d
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API access előfizetésekhez
 ## <a name="introduction"></a>Bevezetés
@@ -29,7 +29,7 @@ Az alkalmazás férhetnek hozzá a Resource Manager API-k több módon:
 1. **Felhasználói + alkalmazás-hozzáférés**: az alkalmazáshoz, amelyet a bejelentkezett felhasználó nevében erőforrásokhoz férnek hozzá. Ez a módszer az alkalmazások, például webes alkalmazásokat vagy csak "interaktív kezelése" Azure-erőforrások kezelésére szolgáló parancssori eszköz működik.
 2. **Csak alkalmazás hozzáférés**: démon szolgáltatások és az ütemezett feladatok futó alkalmazások számára. Az alkalmazás identitását közvetlen hozzáférést az erőforrásokhoz. Ez a megközelítés hosszú távú távfelügyeleti (felügyelet) Azure-hozzáférést igénylő alkalmazások esetében működik.
 
-Ez a cikk részletesen ezek hitelesítési módszerek által-alkalmazás létrehozása. Azt illusztrálja, hogyan REST API-t vagy a C# egyes lépéseinek végrehajtásához. A teljes ASP.NET MVC alkalmazás érhető el: [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
+Ez a cikk részletesen ezek hitelesítési módszerek által-alkalmazás létrehozása. Azt illusztrálja, hogyan REST API-t vagy a C# egyes lépéseinek végrehajtásához. A teljes ASP.NET MVC alkalmazás érhető el: [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
 ## <a name="what-the-web-app-does"></a>A webalkalmazás funkciója
 A webalkalmazás:
@@ -224,7 +224,7 @@ Csak akkor kell egy hozzáférési jogkivonatot az Azure Resource Manager - az A
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Szerezze be a csak alkalmazás-hozzáférési tokent az Azure AD Graph API
-Hitelesítsék az alkalmazást, és egy tokent a Azure AD Graph API, adjon ki egy ügyfél-hitelesítő adat Grant OAuth2.0 folyamat token kérelmet az Azure AD-jogkivonat végpontjához (**https://login.microsoftonline.com/ {directory_domain_name} / OAuth2/Token**).
+Hitelesítsék az alkalmazást, és egy tokent a Azure AD Graph API, adjon ki egy ügyfél-hitelesítő adat Grant OAuth2.0 folyamat token kérelmet az Azure AD-jogkivonat végpontjához (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
 
 A [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) metódus az ASP.net MVC mintaalkalmazásnak lekéri csak alkalmazás hozzáférés token Graph API segítségével az Active Directory Authentication Library .NET-keretrendszerhez készült.
 

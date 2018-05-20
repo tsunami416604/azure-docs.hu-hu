@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric-fürt biztonságos kapcsolatok konfigurálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az Azure Service Fabric-fürt által támogatott biztonságos kapcsolatokat a Visual Studio használatával."
+title: Azure Service Fabric-fürt biztonságos kapcsolatok konfigurálása |} Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhatja az Azure Service Fabric-fürt által támogatott biztonságos kapcsolatokat a Visual Studio használatával.
 services: service-fabric
 documentationcenter: na
 author: cawaMS
@@ -9,16 +9,16 @@ editor: tglee
 ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d
 ms.service: multiple
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: dc07b2f38d6fd2de941ebbe99303f6e63cbf122d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2772cc2c59b93c7e523eaa0127dcf4ea0bc589e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Biztonságos kapcsolat konfigurálása a Service Fabric-fürt a Visual Studio eszközből
 Útmutató: a Visual Studio használatával biztonságosan elérni az Azure Service Fabric-fürt beállított hozzáférés-vezérlési házirendeket.
@@ -65,7 +65,7 @@ A **Fabric-alkalmazás közzététele** párbeszédpanel automatikusan ellenőrz
    ```
 5. Bármely más szükséges beállításokat, például a frissítési paraméterek és az alkalmazás paraméter fájl helye, szerkesztheti, és tegye közzé az alkalmazást a **Fabric-alkalmazás közzététele** párbeszédpanel a Visual Studióban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Service Fabric-fürtök elérésével kapcsolatos további információkért lásd: [a fürt megjelenítése a Service Fabric Explorer használatával](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->

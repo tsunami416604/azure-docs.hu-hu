@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8dbe995ac3c6799c2fa17d9faa8be0cb74d6ee23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -99,14 +99,14 @@ Az Azure Active Directory előzetesen beépített létesítési összekötők t�
 
 Üzembe helyezési connector-példány és az app-példányok közötti-az-egyhez kapcsolat áll fenn az Azure ad-ben:
 
-| A forráskiszolgálón rendszer | Célrendszer |
+| Forrásrendszer | Célrendszer |
 | ---------- | ---------- | 
 | Az Azure AD-bérlő | SaaS-alkalmazáshoz |
 
 
 Munkanapok és Active Directory használata, ha van azonban több forrás és cél rendszer figyelembe kell venni:
 
-| A forráskiszolgálón rendszer | Célrendszer | Megjegyzések |
+| Forrásrendszer | Célrendszer | Megjegyzések |
 | ---------- | ---------- | ---------- |
 | Munkanapok | Active Directory-erdő | Minden olyan erdőben, a rendszer egy különálló célrendszerben |
 | Munkanapok | Az Azure AD-bérlő | A felhasználó esetében kötelező, csak felhőalapú |
@@ -371,7 +371,7 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 | **Vezetéknév**   |   sorozatszám   |     |  Hozzon létre + frissítése |
 | **PreferredNameData**  |  displayName |     |   Hozzon létre + frissítése |
 | **Vállalati**         | Vállalati   |     |  Hozzon létre + frissítése |
-| **SupervisoryOrganization**  | Szervezeti egység  |     |  Hozzon létre + frissítése |
+| **SupervisoryOrganization**  | részleg  |     |  Hozzon létre + frissítése |
 | **ManagerReference**   | Manager  |     |  Hozzon létre + frissítése |
 | **BusinessTitle**   |  cím     |     |  Hozzon létre + frissítése | 
 | **AddressLineData**    |  StreetAddress  |     |   Hozzon létre + frissítése |
@@ -804,20 +804,13 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 * Egy vizsgálati naplóit Azure AD-bérlő található, az Európai Unió nem jelenik meg az előző problémát sikerült megoldani. Azonban további ügynök konfigurálni kell a Azure AD-bérlőt az EU-ban. További információkért lásd: [3. rész: a helyszíni-szinkronizálási ügynök konfigurálása](#Part 3: Configure the on-premises synchronization agent)
 
-## <a name="gdpr-compliance"></a>GDPR megfelelőségi
+## <a name="gdpr-information"></a>GDPR információk
 
 [Általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) Európai Unió adatok védelmét és adatvédelmi törvény van. A GDPR támaszt a vállalatok szabályok, állami intézményekhez, nem nyereség és más szervezetek, termékek és szolgáltatások biztosítson munkatársai az EU, vagy ha az adatgyűjtés és -elemzés EU lakosai kötve. 
 
-Az Azure AD-létesítési szolgáltatás GDPR megfelelő, a többi Microsoft-szolgáltatások és funkciók együtt. A Microsoft GDPR szövegegység kapcsolatos további tudnivalókért tekintse meg a [szolgáltatási feltételek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+A Microsoft GDPR szövegegység kapcsolatos további tudnivalókért tekintse meg a [szolgáltatási feltételek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
 
-A Workday kiépítési megoldás az Active Directory van szüksége a egy szinkronizálás ügynököt egy tartományhoz csatlakozó kiszolgálón kell telepíteni, mert van azonban néhány esemény is marad a megfelelő GDPR figyelni kell.
- 
-Az ügynök hoz létre a naplókat a **Windows-Eseménynapló**, amely személyes azonosításra alkalmas információkat is tartalmazhat.
-
-A megfelelő GDPR időtartamú két módja van:
-
-1. Kérésre adatok kinyerése a személy, és távolítsa el adatait az adott személy a Windows Eseménynapló. 
-2. A Windows Eseménynapló forrása a AADSyncAgent folyamat alatt 48 órát megőrzési megtartása
+Vegye figyelembe, hogy a megoldás az Active Directory-kiépítés munkanapok szükséges egy szinkronizálási ügynököt egy tartományhoz csatlakozó kiszolgálón kell telepíteni, és az ügynök hoz létre a naplókat a **Windows-Eseménynapló** is tartalmazó személyazonosításra alkalmas adatokat.
 
 A Windows-eseménynaplók az adatmegőrzés konfigurálásával kapcsolatos további információkért lásd: a [Eseménynaplók beállításai](https://technet.microsoft.com/library/cc952132.aspx). A Windows-Eseménynapló általános információkért lásd: [Ez a cikk](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
@@ -827,4 +820,3 @@ A Windows-eseménynaplók az adatmegőrzés konfigurálásával kapcsolatos tov�
 * [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
 * [Egyszeri bejelentkezés közötti Workday és az Azure Active Directory konfigurálása](active-directory-saas-workday-tutorial.md)
 * [Megtudhatja, hogyan integrálhatja más SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-tutorial-list.md)
-

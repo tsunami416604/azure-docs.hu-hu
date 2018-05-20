@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 43acf33ec7787378595ad62540a868100bf587f7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 12e2f0f458d491235a75aab7e3e5e474edf50e4b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 > [!div class="op_single_selector"]
 > * [C Windowson](../articles/iot-suite/iot-suite-connecting-devices.md)
@@ -21,10 +21,10 @@ ms.lasthandoff: 05/07/2018
 > * [Node.js Raspberry Pi-on](../articles/iot-suite/iot-suite-connecting-pi-node.md)
 > * [C Raspberry Pi-on](../articles/iot-suite/iot-suite-connecting-pi-c.md)
 
-Az oktatóanyag végrehajtása egy **hűtő** eszköz, amely a következő telemetriai adatokat küld a távoli megfigyelési [megoldásgyorsító](../articles/iot-suite/iot-suite-what-are-solution-accelerators.md):
+Az oktatóanyag végrehajtása egy **hűtő** eszköz, amely a következő telemetriai adatokat küld a távoli megfigyelési [megoldásgyorsító](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md):
 
 * Hőmérséklet
-* nyomás
+* Pressure
 * Páratartalom
 
 Az egyszerűség, a kódot állít elő, a telemetriai adatok mintaértékek a **hűtő**. A minta lehetett bővíteni a valódi érzékelők csatlakozik az eszközt, és valós telemetriai adatok küldését.
@@ -43,7 +43,7 @@ Kód írása az eszköz, mielőtt a távoli felügyeleti megoldásgyorsító kö
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>A távoli felügyeleti megoldásgyorsító központi telepítése
 
-A **hűtő** eszköz ebben az oktatóanyagban létrehozhat adatokat küld egy példányát a [távoli megfigyelési](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) megoldásgyorsító. Ha a távoli felügyeleti megoldásgyorsító még nem már megtörtént, az Azure-fiókjába, lásd: [a távoli felügyeleti megoldásgyorsító központi telepítése](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
+A **hűtő** eszköz ebben az oktatóanyagban létrehozhat adatokat küld egy példányát a [távoli megfigyelési](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) megoldásgyorsító. Ha a távoli felügyeleti megoldásgyorsító még nem már megtörtént, az Azure-fiókjába, lásd: [a távoli felügyeleti megoldásgyorsító központi telepítése](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 Ha a telepítési folyamat befejezte a távoli felügyeleti megoldás, gombra kattintva **indítása** a megoldás irányítópult megnyitása a böngészőben.
 

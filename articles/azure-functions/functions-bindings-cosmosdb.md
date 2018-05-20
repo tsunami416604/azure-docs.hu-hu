@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 3d63e33adb9cbbe96ad2851870592cc07c9cc3da
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ffb18ef65bc0d901fe237ec9c4f97fdae43dc472
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Az Azure Functions Azure Cosmos DB kötései
 
@@ -35,6 +35,8 @@ Ez a cikk azt ismerteti, hogyan használható [Azure Cosmos DB](..\cosmos-db\ser
 A Cosmos DB kötések funkciók verziójához 1.x szerepelnek a [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) NuGet-csomagot. A 2.x működik, a csomag [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB). A kötések forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) GitHub-tárházban.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="trigger"></a>Eseményindító
 
@@ -169,14 +171,14 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Választható) Az adatbázis, amely tárolja a bérletek tároló gyűjtemény nevét. Ha nincs megadva, az értékét a `databaseName` beállítást használja. Ez a paraméter értéke a kötés a portálon létrehozásakor automatikusan. |
 |**LeaseCollectionName** | **LeaseCollectionName** | (Választható) A bérletek tároló gyűjtemény nevét. Ha nincs megadva, az érték `leases` szolgál. |
 |**CreateLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Választható) Ha beállítása `true`, a bérletek gyűjtemény automatikusan jön létre, ha még nem létezik. Az alapértelmezett érték `false`. |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| (Választható) Rendel a bérletek gyűjtemény létrehozásakor kérjen egységek mennyisége határozza meg. Ez a beállítás csak akkor használhatók, ha a amikor nem `createLeaseCollectionIfNotExists` értéke `true`. Ez a paraméter értéke a kötés létrehozása a portál használatával automatikusan.
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (Választható) Ha a beállítás, hozzáadása előtag a bérletek ennél a függvénynél, két külön Azure Functions ugyanaz a címbérlet gyűjtemény megosztása különböző előtagok használatával hatékonyan így bérleti gyűjtemény létrehozása.
+|**LeasesCollectionThroughput**| **LeasesCollectionThroughput**| (Választható) Rendel a bérletek gyűjtemény létrehozásakor kérjen egységek mennyisége határozza meg. Ez a beállítás csak akkor használhatók, ha a amikor nem `createLeaseCollectionIfNotExists` értéke `true`. Ez a paraméter értéke a kötés létrehozása a portál használatával automatikusan.
+|**LeaseCollectionPrefix**| **LeaseCollectionPrefix**| (Választható) Ha a beállítás, hozzáadása előtag a bérletek ennél a függvénynél, két külön Azure Functions ugyanaz a címbérlet gyűjtemény megosztása különböző előtagok használatával hatékonyan így bérleti gyűjtemény létrehozása.
 |**FeedPollDelay**| **FeedPollDelay**| (Választható) Amikor az összes módosítások vannak merül le, ha be van állítva, meghatározza, ezredmásodpercben megadva, a késés Between lekérdezési partíciója új módosítások az adatcsatorna számára. Alapértelmezés szerint 5000 (5 másodperc).
 |**LeaseAcquireInterval**| **LeaseAcquireInterval**| (Választható) Érték beállítása esetén meghatározza, ezredmásodpercben, ha partíció van elosztva között ismert állomás-példányok számítási feladatot indítsa intervallum. Alapértelmezés szerint 13000 (13 másodperc).
 |**LeaseExpirationInterval**| **LeaseExpirationInterval**| (Választható) Érték beállítása esetén meghatározza, ezredmásodpercben megadva, az időköz, amelynek a címbérlet születik partíció képviselő címbérletét. A bérlet intervallum nem hosszabbítja meg, ha annak történő lejártát okoz, és a partíció tulajdonjogát áthelyezi egy másik példánya. Alapértelmezés szerint 60000 (60 másodperc).
 |**LeaseRenewInterval**| **LeaseRenewInterval**| (Választható) Ha a beállítás, meghatározza, ezredmásodpercben, partíciók példánya által jelenleg tárolt összes címbérlet megújítási időköz. Alapértelmezés szerint 17000 (17 másodperc).
 |**CheckpointFrequency**| **CheckpointFrequency**| (Választható) Érték beállítása esetén meghatározza, ezredmásodpercben megadva, a címbérlet ellenőrzőpontokat közötti távolság. Alapértelmezés szerint mindig sikeres függvény hívása után.
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Választható) Érték beállítása esetén az testreszabja függvény hívásához szükséges egy fogadott elemek maximális száma.
+|**MaxItemsPerInvocation**| **MaxItemsPerInvocation**| (Választható) Érték beállítása esetén az testreszabja függvény hívásához szükséges egy fogadott elemek maximális száma.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

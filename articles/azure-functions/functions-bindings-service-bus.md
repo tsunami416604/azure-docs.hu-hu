@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: ae24031922c2ef01c9274f6ecf572158a9a194d4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 5266acf2f053af62f907f71ff1fe0805e1008927
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Functions az Azure Service Bus kötései
 
@@ -49,16 +49,22 @@ Tekintse meg a nyelvspecifikus példát:
 
 ### <a name="trigger---c-example"></a>Eseményindító - C# – példa
 
-Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely egy Service Bus-üzenetsor naplózza.
+A következő példa azt mutatja be egy [C# függvény](functions-dotnet-class-library.md) , amely beolvassa [üzenet metaadatok](#trigger---message-metadata) és naplózza a Service Bus-üzenetsor:
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
 public static void Run(
     [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] 
-    string myQueueItem, 
+    string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string messageId,
     TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"DeliveryCount={deliveryCount}");
+    log.Info($"MessageId={messageId}");
 }
 ```
 
@@ -66,7 +72,7 @@ Ebben a példában az Azure Functions verziójához 1.x; a 2.x [a hozzáférési
  
 ### <a name="trigger---c-script-example"></a>Eseményindító - C# parancsfájl – példa
 
-A következő példa bemutatja egy Service Bus eseményindító kötelező egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény egy Service Bus-üzenetsor naplózza.
+A következő példa bemutatja egy Service Bus eseményindító kötelező egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény beolvassa [üzenet metaadatok](#trigger---message-metadata) és egy Service Bus-üzenetsor naplózza.
 
 Itt az kötés adatai a *function.json* fájlt:
 
@@ -88,9 +94,19 @@ Itt az kötés adatai a *function.json* fájlt:
 A C# parancsfájl kód itt látható:
 
 ```cs
-public static void Run(string myQueueItem, TraceWriter log)
+using System;
+
+public static void Run(string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string messageId,
+    TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"DeliveryCount={deliveryCount}");
+    log.Info($"MessageId={messageId}");
 }
 ```
 
@@ -124,7 +140,7 @@ let Run(myQueueItem: string, log: TraceWriter) =
 
 ### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript – példa
 
-A következő példa bemutatja egy Service Bus eseményindító kötelező egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény egy Service Bus-üzenetsor naplózza. 
+A következő példa bemutatja egy Service Bus eseményindító kötelező egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény beolvassa [üzenet metaadatok](#trigger---message-metadata) és egy Service Bus-üzenetsor naplózza. 
 
 Itt az kötés adatai a *function.json* fájlt:
 
@@ -148,6 +164,9 @@ A JavaScript parancsfájl kód itt látható:
 ```javascript
 module.exports = function(context, myQueueItem) {
     context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('DeliveryCount =', context.bindingData.deliveryCount);
+    context.log('MessageId =', context.bindingData.messageId);
     context.done();
 };
 ```
@@ -247,7 +266,30 @@ Elhalt üzenetek kezelésének nem lehet konfigurálni az Azure Functions vagy a
 
 ## <a name="trigger---peeklock-behavior"></a>Eseményindító - PeekLock viselkedése
 
-A Functions futtatókörnyezete az üzenetet kap [PeekLock mód](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Meghívja `Complete` az üzenetet, ha a függvény futtatása sikeresen befejeződött, vagy a hívások `Abandon` Ha a parancs nem működik. Ha a függvény futásakor hosszabb, mint a `PeekLock` automatikusan megújítják időtúllépés, a zárolás.
+A Functions futtatókörnyezete az üzenetet kap [PeekLock mód](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Meghívja `Complete` az üzenetet, ha a függvény futtatása sikeresen befejeződött, vagy a hívások `Abandon` Ha a parancs nem működik. Ha a függvény futásakor hosszabb, mint a `PeekLock` időtúllépés, a zárolás automatikusan megújítják mindaddig, amíg a függvény fut-e. 
+
+Funkciók 1.x konfigurálását teszi `autoRenewTimeout` a *host.json*, amely leképezhető [OnMessageOptions.AutoRenewTimeout](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout?view=azure-dotnet#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout). A megengedett maximális ehhez a beállításhoz: 5 perc, a Service Bus dokumentációjának megfelelően, mivel növelheti a funkciók időkorlátot az alapértelmezett, 5 perces 10 perc. A Service Bus-funkciók nem szeretné, majd, mert Ön meghaladná a Service Bus megújítási korlátot.
+
+## <a name="trigger---message-metadata"></a>Eseményindító - üzenet metaadatok
+
+A Service Bus eseményindító biztosít több [metaadat-tulajdonságainak](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Ezeket a tulajdonságokat meg más kötésekben kötési kifejezés részeként vagy a kód paramétereiben használható. Ezek a tulajdonságait a [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) osztály.
+
+|Tulajdonság|Típus|Leírás|
+|--------|----|-----------|
+|`DeliveryCount`|`Int32`|A kézbesítések száma.|
+|`DeadLetterSource`|`string`|Kézbesítetlen levelek forrása.|
+|`ExpiresAtUtc`|`DateTime`|A lejárati idő (UTC).|
+|`EnqueuedTimeUtc`|`DateTime`|A várólistában levő ideje UTC Formátumban.|
+|`MessageId`|`string`|A felhasználó által definiált értéket, a Service Bus segítségével azonosíthatja a duplikált üzenetek, ha engedélyezve van.|
+|`ContentType`|`string`|A küldő és fogadó alkalmazás-specifikus logika a tartalomtípus-azonosító.|
+|`ReplyTo`|`string`|A várósor címe választ.|
+|`SequenceNumber`|`Int64`|A Service Bus által egy üzenet rendelt egyedi számot.|
+|`To`|`string`|A küldési címre.|
+|`Label`|`string`|Az alkalmazás adott címkéje.|
+|`CorrelationId`|`string`|A korrelációs azonosítója.|
+|`Properties`|`IDictionary<String,Object>`|Az adott üzenet tulajdonságaiban.|
+
+Lásd: [kódpéldák](#trigger---example) ezeket a tulajdonságokat, amelyek használják az ebben a cikkben.
 
 ## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
 
@@ -404,7 +446,7 @@ Létrehoz egy üzenetet JavaScript parancsfájlkódot itt található:
 module.exports = function (context, myTimer) {
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
-    context.bindings.outputSbQueueMsg = message;
+    context.bindings.outputSbQueue = message;
     context.done();
 };
 ```
@@ -415,9 +457,9 @@ JavaScript parancsfájl létrehozó kód mellől több üzenet a következő:
 module.exports = function (context, myTimer) {
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
-    context.bindings.outputSbQueueMsg = [];
-    context.bindings.outputSbQueueMsg.push("1 " + message);
-    context.bindings.outputSbQueueMsg.push("2 " + message);
+    context.bindings.outputSbQueue = [];
+    context.bindings.outputSbQueue.push("1 " + message);
+    context.bindings.outputSbQueue.push("2 " + message);
     context.done();
 };
 ```

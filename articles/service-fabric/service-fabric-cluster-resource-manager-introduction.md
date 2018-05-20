@@ -1,24 +1,24 @@
 ---
-title: "A Service Fabric fürt erőforrás-kezelő bemutatása |} Microsoft Docs"
-description: "Bevezetés a Service Fabric fürt Resource Manager."
+title: A Service Fabric fürt erőforrás-kezelő bemutatása |} Microsoft Docs
+description: Bevezetés a Service Fabric fürt Resource Manager.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3e8cd4dc8e960e38ba0e4a9a195b2f61d9ec1924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f25a422385abfcdb7020eb7477c0ae2ee55cd8fb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürt erőforrás-kezelő bemutatása
 Hagyományosan az informatikai rendszerek vagy online szolgáltatások kezelése azt jelentette, hogy ezeket a meghatározott szolgáltatásokat vagy rendszerek adott fizikai vagy virtuális gépek dedikálni. Szolgáltatások volt tervezett rétegek szerint. A "web" réteghez és egy "data" vagy "tároló" réteget lenne. Alkalmazások kellene egy üzenetkezelési réteget, ahol a kérelmek növelésére és csökkentésére, valamint a gyorsítótárazás dedikált gépek halmazát jelenti érkezett. Minden egyes réteg vagy típusú volt kijelölve, a konkrét gépek: az adatbázis lett kijelölve, a webkiszolgálók, a kevés néhány gépek. Ha egy munkaterhelés bizonyos típusú be volt a gépek futtatása túl gyakran használt adatok, majd további gépeket, hogy azonos konfigurációval hozzá adott réteg sablonbeállításait. Azonban nem minden munkaterhelések így könnyen sikerült terjeszthető ki – különösen az adatréteg rendelkező cserélje általában a gépek, a nagyobb gépek. Egyszerű. Ha egy gép sikertelen volt, a teljes alkalmazás a része alacsonyabb kapacitással futott, mindaddig, amíg a gép lehetett visszaállítani. Továbbra is meglehetősen egyszerű (Ha ez nem szükségszerűen szórakoztató).
@@ -43,7 +43,7 @@ A fürt erőforrás-kezelő a rendszer összetevője, amely kezeli a Service Fab
 2. A környezet optimalizálása
 3. Útmutatás nyújtása a más folyamatokkal
 
-Tekintse meg a fürt erőforrás-kezelő működése, a következő Microsoft Virtual Academy videót:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
+Tekintse meg a fürt erőforrás-kezelő működése, a következő Microsoft Virtual Academy videót: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
 <img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -56,8 +56,8 @@ Ezek stratégiák némelyike érdekes, amíg a Service Fabric fürt erőforrás-
 
 A fürt erőforrás-kezelő felelős körül szolgáltatások áthelyezésére, mert egy másik készlet egy hálózati terheléselosztó volna felfedése tartalmaz. Ennek az az oka hálózati terheléselosztók kézbesíthet hálózati forgalmat adott szolgáltatások már vannak, akkor is, ha az adott hely ideális nem fut a szolgáltatás. A Service Fabric fürt erőforrás-kezelő funkcióit használja annak biztosítására, hogy a fürtön hatékonyan ki van használva alapvetően különböző stratégiákat.
 
-## <a name="next-steps"></a>Következő lépések
-- Az architektúra és információk folyamat belül a fürt erőforrás-kezelő információkért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-architecture.md)
+## <a name="next-steps"></a>További lépések
+- Az architektúra és információk folyamat belül a fürt erőforrás-kezelő információkért tekintse meg [Ez a cikk ](service-fabric-cluster-resource-manager-architecture.md)
 - A fürt erőforrás-kezelő rendelkezik a fürt leíró számos lehetőséget. Metrikák kapcsolatos további tudnivalókért tekintse meg a cikk a [leíró a Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)
 - A szolgáltatások konfigurálásáról [szolgáltatások konfigurálásával kapcsolatos tudnivalók](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
 - Adatok gyűjtése le hogyan kezeli a Service Fabric fürt erőforrás-kezelő a használati és a fürt teljes kapacitását. További információt a metrikák és konfigurálásukról kivételének [Ez a cikk](service-fabric-cluster-resource-manager-metrics.md)

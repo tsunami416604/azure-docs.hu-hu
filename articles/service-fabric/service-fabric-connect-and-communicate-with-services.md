@@ -1,6 +1,6 @@
 ---
-title: "Csatlakozás és az Azure Service Fabric szolgáltatásokkal kommunikálni |} Microsoft Docs"
-description: "Ismerje meg, hogyan oldható fel, csatlakozni, és a Service Fabric szolgáltatásokkal kommunikálni."
+title: Csatlakozás és az Azure Service Fabric szolgáltatásokkal kommunikálni |} Microsoft Docs
+description: Ismerje meg, hogyan oldható fel, csatlakozni, és a Service Fabric szolgáltatásokkal kommunikálni.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,23 +9,23 @@ editor: msfussell
 ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: d0b4ff1959465ade5f57c045d2a005e828638eb2
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 2b6fd2373a9cd0b376a6c8729d5952c5fc48ddf8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Csatlakozás és a Service Fabric szolgáltatásokkal kommunikálni
 A Service Fabric szolgáltatás fut. valahol a Service Fabric-fürt, általában pontjain több virtuális géphez Akkor helyezheti át egyetlen helyről a másikra, a szolgáltatás tulajdonosa, vagy automatikusan a Service Fabric. Szolgáltatások statikusan nem kötődnek, egy adott számítógép vagy a címet.
 
 A Service Fabric-alkalmazás általában sok különböző szolgáltatások, ahol minden szolgáltatás hajt végre egy speciális feladat tevődik össze. Ezeket a szolgáltatásokat is kommunikálhatnak egymással egy teljes funkciót, például egy webes alkalmazás megjelenítési különböző részeinek kialakításához. Van még ügyfélalkalmazások, amelyek csatlakozni és szolgáltatásokkal kommunikálni. Ez a dokumentum ismerteti a és a Service Fabric szolgáltatások közötti kommunikáció beállítása.
 
-A Microsoft Virtual Academy videó azt is ismerteti, amelyek a szolgáltatások közötti kommunikáció:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
+A Microsoft Virtual Academy videó azt is ismerteti, amelyek a szolgáltatások közötti kommunikáció: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
 <img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
@@ -181,7 +181,7 @@ Megbízható szolgáltatások keretében számos előre elkészített kommuniká
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Egyéni protokollok és egyéb kommunikációs keretrendszerek használatával
 Szolgáltatások használhatnak minden protokoll vagy keretrendszer kommunikációhoz, hogy egy egyéni bináris protokoll TCP-szoftvercsatornák vagy az esemény streamelését keresztül-e [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). A Service Fabric API-t is csatlakoztathatja a kommunikációs verem, amíg felderítésére, és csatlakozzon a munkát az Ön kiveszik kommunikációt biztosít. Ez a cikk tudnivalók a [megbízható kommunikáció modell](service-fabric-reliable-services-communication.md) további részleteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a fogalmakat és elérhető az API-kat a [Reliable Services kommunikációs modellt](service-fabric-reliable-services-communication.md), majd használatának gyors megkezdése [szolgáltatás távoli eljáráshívás](service-fabric-reliable-services-communication-remoting.md) vagy válassza a részletes megtudhatja, hogyan írhat egy kommunikációs figyelővel [Web API-t önálló gazdagép OWIN](service-fabric-reliable-services-communication-webapi.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

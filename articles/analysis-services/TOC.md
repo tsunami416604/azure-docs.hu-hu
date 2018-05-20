@@ -11,6 +11,7 @@
 ## [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
 
 # Alapelvek
+## [Automatizálás szolgáltatásnevekkel](analysis-services-service-principal.md)
 ## [Támogatott adatforrások](analysis-services-datasource.md)
 ## [Csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)
 ## [Kapcsolódás kiszolgálókhoz](analysis-services-connect.md)

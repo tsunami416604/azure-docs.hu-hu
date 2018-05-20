@@ -1,6 +1,6 @@
 ---
-title: Naplóelemzési adatok megoldást vezetéknélküli |} Microsoft Docs
-description: Átviteli adatokat az OMS-ügynököt, beleértve az Operations Manager és a Windows-csatlakoztatott ügynökök rendelkező számítógépekről összevont hálózati és a teljesítmény adatai. Hálózati adatok a naplóadatok segítséget adatainak együtt.
+title: Wire Data megoldás a Log Analyticsben | Microsoft Docs
+description: Az átviteli adatok összevont hálózati és teljesítményadatok olyan számítógépekről, amelyeken található valamilyen OMS-ügynök, például Operations Manager- vagy Windows-hoz csatlakoztatott ügynökök. A hálózati adatok és a naplóadatok összevonása segít az adatok összevetésében.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,84 +12,84 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/09/2018
 ms.author: magoedte
-ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="wire-data-20-preview-solution-in-log-analytics"></a>A Naplóelemzési átviteli adatok 2.0 (előzetes verzió) megoldás
+# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
-![Átviteli adatokat szimbólum](./media/log-analytics-wire-data/wire-data2-symbol.png)
+![Wire Data-szimbólum](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-Átviteli adatokat az összevont hálózati és a teljesítmény származó adatokat az OMS-ügynököt, beleértve a környezetben az Operations Manager által figyelt Windows-csatlakozóval csatlakoztatott és a Linux-csatlakoztatott számítógépek. Hálózati adatok a más naplóadatokat segítséget adatainak együtt.
+Az átviteli adatok összevont hálózati és teljesítményadatok, amelyeket az OMS-ügynök gyűjt össze a Windows-hoz és Linux-hoz csatlakoztatott számítógépekről, beleértve a környezetben az Operations Manager által monitorozott ügynököket. A hálózati adatok és az egyéb naplóadatok összevonása segít az adatok összevetésében.
 
-Mellett az OMS-ügynököt az átviteli adatokat megoldás használ a Microsoft függőségi ügynökök, amelyek az informatikai infrastruktúra telepítése számítógépeken. A függőségi ügynökei figyelik és a számítógépről küldött, a hálózati 2-3 szinttel hálózati adatok a [OSI-modell](https://en.wikipedia.org/wiki/OSI_model), beleértve a különböző protokollok és portok. Majd küld adatokat a Naplóelemzési ügynököt használ.  
+Az OMS-ügynök mellett a Wire Data megoldás Microsoft függőségi ügynököket is használ, amelyeket az informatikai infrastruktúra számítógépeire telepíthet. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Az adatok ezután ügynökök használatával lesznek továbbítva a Log Analyticsbe.  
 
 > [!NOTE]
-> Új munkaterületek átviteli adatokat megoldás az előző verzió nem lehet hozzáadni. Ha az eredeti átviteli adatokat megoldás, továbbra is használhatja. Azonban hálózaton adatok 2.0 használatához el kell távolítani az eredeti verzió.
+> A Wire Data előző verzióját nem lehet hozzáadni új munkaterületekhez. Ha engedélyezve van az eredeti Wire Data megoldás, azt továbbra is használhatja. Azonban a Wire Data 2.0 használatához először el kell távolítani az eredeti verziót.
 
-Alapértelmezés szerint a Naplóelemzési naplózza az adatokat a Processzor, memória, lemez és hálózati teljesítményadatait épített Windows és Linux számlálók, valamint megadhat más teljesítményszámlálókat. Hálózati és egyéb adatok gyűjtése történik valós idejű minden ügynökhöz, beleértve az alhálózatok és a számítógép által használt alkalmazásszintű protokollok.  Hálózati adatok az alkalmazás szintjén nem működik, az TCP átviteli réteg megvizsgálja átviteli adatokat.  A megoldás nem tekintse meg az egyes nyugtázás és SYNs.  Ha a handshake befejeződött, élő kapcsolattal minősül, és csatlakoztatva jelölésű. Hogy kapcsolat marad az élő mindaddig, amíg mindkét oldalon fogadja el a szoftvercsatorna meg nyitva, és adatok teljen oda-vissza.  Ha bármelyik oldal megszünteti a kapcsolatot, akkor Disconnected van megjelölve.  Ezért csak számolja a sikeresen befejezett csomagok sávszélességét, hogy nem jelenti a újraküldése vagy csomagok nem sikerült.
+Alapértelmezés szerint a Log Analytics a processzor, a memória, a lemezek és a hálózat teljesítményadatait naplózza a Windows és Linux beépített számlálóival, valamint további, szabadon megadható teljesítményszámlálók segítségével. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha bármelyik oldal bezárja a kapcsolatot, a kapcsolat Leválasztva jelölést kap.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
 
-Ha már használta [sFlow](http://www.sflow.org/) vagy más szoftvereket [Cisco tartozó NetFlow protokoll](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), akkor a statisztikák és adatok átvitel közbeni adatokból látja lesz ismerős lehet.
+Ha már használta az [sFlow](http://www.sflow.org/)-t vagy valamilyen egyéb szoftvert a [Cisco NetFlow protokolljával](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), akkor a Wire Data statisztikái és adatai már ismerősek lesznek.
 
-A beépített naplófájl-keresési lekérdezések típusú többek között:
+A beépített naplókeresési lekérdezések néhány típusa:
 
 - Átviteli adatokat szolgáltató ügynökök
-- Átviteli adatokat szolgáltató ügynökök IP-címe
-- Kimenő kommunikáció IP-cím
-- Alkalmazás-protokollokra által küldött bájtok száma
-- Egy alkalmazás szolgáltatás által küldött bájtok száma
+- Az átviteli adatokat szolgáltató ügynökök IP-címe
+- Kimenő kommunikáció IP-címek szerint
+- Az alkalmazásprotokollok által elküldött bájtok száma
+- Egy alkalmazásszolgáltatás által elküldött bájtok száma
 - A különböző protokollok által fogadott bájtok
-- IP-verziója által küldött és fogadott bájtok teljes száma
-- Volt megbízhatóan mérhető kapcsolatok átlagos késése
-- A számítógép folyamatainak kezdeményezett, illetve a hálózati forgalom érkezett
-- A folyamatot a hálózati forgalom mennyisége
+- Az elküldött és fogadott bájtok teljes száma IP-verzió szerint
+- A megbízhatóan mért kapcsolatok átlagos késése
+- Számítógép-folyamatok, amelyek hálózati forgalmat kezdeményeztek vagy fogadtak
+- Egy folyamat hálózati forgalmának mennyisége
 
-Átviteli adatokat használó keresésénél szűrheti és csoport adatai a felső ügynökök és a felső protokollokkal kapcsolatos információk megtekintéséhez. Szeretné megtekinteni, ha egyes számítógépek (IP-címet vagy MAC-címek) közölt egymással, hogyan hosszú, és mennyi adatot küldött – alapvetően, megtekintheti a hálózati forgalmat, amely keresési-alapú metaadatait.
+Az átviteli adatok használatával történő kereséskor az adatokat szűrheti és csoportosíthatja, így megtekintheti a leggyakoribb ügynökök és a leggyakoribb protokollok információit. Emellett megtekintheti, hogy az egyes számítógépek (IP-címek vagy MAC-címek) mikor kommunikáltak egymással, mennyi ideig, és mennyi adatot küldtek. Tulajdonképpen metaadatokat tekinthet meg a hálózati forgalomról, a keresések alapján.
 
-Azonban mivel megtekintett metaadatok, célszerű nem feltétlenül részletes hibaelhárítási. Átvitel közbeni Naplóelemzési adatai nem a teljes rögzítési hálózati adatok.  Nem készült részletes csomagszintű hibaelhárítás. Az ügynök, más adatgyűjtési módszerek képest használatának előnye, hogy ne kelljen telepíteni készülékek, konfigurálja újra a hálózati kapcsolókon vagy összetett konfigurációk végrehajtásához. Átviteli adatokat egyszerűen ügynök-alapú – az ügynököt telepít egy számítógépre, és azt a saját hálózati forgalom figyeli. Egy másik előnye, ha meg szeretné figyelni a szolgáltatók vagy az üzemeltetési szolgáltató vagy a Microsoft Azure, ahol a felhasználó nem a tulajdonosa a háló réteg futó feladatok.
+Mivel azonban metaadatokról van szó, ezek a részletes hibakereséshez nem feltétlenül lesznek hasznosak. A Log Analytics átviteli adatai nem rögzítik teljes körűen a hálózati adatokat.  A szolgáltatást nem mélyre menő, csomagszintű hibakereséshez tervezték. Az ügynök használatának előnye más adatgyűjtési módszerekkel szemben az, hogy nem kell berendezéseket telepíteni, újrakonfigurálni a hálózati kapcsolókat vagy elvégezni bármilyen összetett konfigurálási műveletet. A Wire Data egy egyszerű ügynökalapú megoldás – Ön telepíti az ügynököt egy számítógépen, az ügynök pedig monitorozza a saját hálózati forgalmát. Egy másik előny, hogy a felhasználó monitorozhatja a felhőszolgáltatókon, tárhelyszolgáltatókon vagy a Microsoft Azure-ban futó számítási feladatokat is, vagyis olyan helyeken, ahol nem a hálóréteg tulajdonosa.
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-Átviteli adatokat az adatok lekérése a Microsoft függőségi ügynök. A függőségi ügynök attól függ, hogy az OMS-ügynököt a kapcsolatok szolgáltatáshoz. Ez azt jelenti, hogy a kiszolgálónak rendelkeznie kell az OMS-ügynököt telepítette és konfigurálta az első, majd a függőségi ügynök telepítése. A következő táblázat ismerteti, amely az átviteli adatokat megoldás támogatja a csatlakoztatott adatforrások.
+A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függőségi ügynök az OMS-ügynöktől függ a Log Analyticsszel való kapcsolatait illetően. Ez azt jelenti, hogy a kiszolgálón először telepíteni és konfigurálni kell az OMS-ügynököt, és ezután lehet telepíteni a függőségi ügynököt. A következő táblázat ismerteti a Wire Data megoldás által támogatott csatlakoztatott forrásokat:
 
-| **Csatlakoztatott adatforrás** | **Támogatott** | **Leírás** |
+| **Csatlakoztatott forrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Igen | Átviteli adatokat elemzi, és a Windows-ügynök számítógépekről gyűjt adatokat. <br><br> Kívül a [OMS-ügynököt](log-analytics-windows-agent.md), Windows-ügynökök szükséges a Microsoft függőségi ügynök. Tekintse meg a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
-| Linux-ügynökök | Igen | Átviteli adatokat elemzi, és a Linux-ügynök számítógépekről gyűjt adatokat.<br><br> Kívül a [OMS-ügynököt](log-analytics-quick-collect-linux-computer.md), Linux-ügynököt a Microsoft függőségi ügynök szükséges. Tekintse meg a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) operációs rendszerek teljes listáját. |
-| System Center Operations Manage felügyeleti csoport | Igen | Átviteli adatokat elemzi, és összegyűjti az adatokat a Windows és Linux-ügynökök a csatlakoztatott [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md). <br><br> Naplóelemzési a System Center Operations Manager ügynök számítógépről közvetlen kapcsolatra szükség. Adatok Naplóelemzési továbbítódik a felügyeleti csoportból. |
-| Azure Storage-fiók | Nem | Átviteli adatokat adatokat gyűjt a ügynök számítógépekről, nincsenek adatok, az Azure Storage-ból gyűjtését. |
+| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Az [OMS-ügynök](log-analytics-windows-agent.md) mellett a Windows-ügynököknek a Microsoft függőségi ügynökre is szükségük van. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Az [OMS-ügynök](log-analytics-quick-collect-linux-computer.md) mellett a Linux-ügynököknek a Microsoft függőségi ügynökre is szükségük van. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) szakaszban. |
+| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](log-analytics-om-agents.md) tartoznak. <br><br> Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. Az adatok a felügyeleti csoportból a Log Analyticsbe lesznek továbbítva. |
+| Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
 
-A Windows a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és a Naplóelemzési gyűjtse össze és küldhetnek adatokat. Attól függően, hogy a környezetben az ügynököt a System Center Operations Manager ügynök, OMS-ügynököt, Log Analytics Agent, MMA vagy közvetlen ügynök neve. A System Center Operations Manager és a Naplóelemzési adja meg a MMA némileg különböző verziói. Ezen verziói egyes jelenthetik-e a System Center Operations Manager Naplóelemzési, vagy mindkettőt.
+Windows rendszeren a System Center Operations Manager és a Log Analytics egyaránt a Microsoft Monitoring Agent (MMA) segítségével gyűjti össze és továbbítja az adatokat. A kontextustól függően az ügynök neve lehet System Center Operations Manager-ügynök, OMS-ügynök, Log Analytics-ügynök, MMA vagy közvetlen ügynök. A System Center Operations Manager és Log Analytics által biztosított MMA-verziók kis mértékben különböznek. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.
 
-Linux az OMS-ügynököt Linux gyűjt, és adatokat küld a Naplóelemzési. Átviteli adatokat kiszolgálókon közvetlen OMS-ügynök, vagy a System Center Operations Manager felügyeleti csoportok keresztül Naplóelemzési csatolt kiszolgálók használható.
+Linux rendszeren a linuxos OMS-ügynök gyűjti össze és továbbítja az adatokat a Log Analyticsbe. A Wire Data olyan kiszolgálókon használható, amelyek rendelkeznek közvetlen OMS-ügynökkel, vagy egy System Center Operations Manager-beli felügyeleti csoporthoz tartoznak.
 
-Ez a cikk hivatkozik a minden ügynököt, hogy Linux vagy a Windows, hogy egy System Center Operations Manager felügyeleti csoport csatlakoztatva, vagy közvetlenül a Naplóelemzési termékeket nevezzük a _OMS-ügynököt_. A megadott központi telepítés nevét, az ügynök csak akkor, ha szükség van a környezetben fogjuk használni.
+Ez a cikk minden ügynökre az _OMS-ügynökként_ hivatkozik, függetlenül attól, hogy az ügynök Linux vagy Windows rendszerű, illetve hogy egy System Center Operations Manager-felügyeleti csoporthoz vagy közvetlenül a Log Analyticshez csatlakozik. Az ügynök konkrét üzemelő példányának nevét csak akkor használjuk, ha a kontextus miatt szükség van rá.
 
-A függőségi ügynök nem továbbítja az adatokat saját magát, és nem igényel módosításokat tűzfalak vagy portok. Az adatok átvitel közbeni mindig továbbított adatok az OMS-ügynök szolgáltatáshoz, vagy közvetlenül vagy az OMS-átjáró.
+Maga a függőségi ügynök nem közvetít adatokat, ezért nem igényli a tűzfalak vagy portok semmilyen módosítását. A Wire Data adatait mindig az OMS-ügynök továbbítja a Log Analyticsbe, vagy közvetlenül, vagy az OMS-átjárón keresztül.
 
-![ügynök diagramja](./media/log-analytics-wire-data/agents.png)
+![ügynök diagram](./media/log-analytics-wire-data/agents.png)
 
-Ha a System Center Operations Manager felhasználói Naplóelemzési csatlakoztatott felügyeleti csoport:
+Ha a System Center Operations Managert használja és a felügyeleti csoportja csatlakoztatva van a Log Analyticshez:
 
-- A System Center Operations Manager-ügynökök hozzáférjenek az internetes Log Analyticshez való csatlakozáshoz nincs szükség további konfigurációra.
-- Konfigurálja az OMS-átjáró működik a System Center Operations Manager, amikor a System Center Operations Manager-ügynökök az interneten keresztül nem tud hozzáférni a Naplóelemzési kell.
+- Nincs szükség további konfigurációra, ha a System Center Operations Manager hozzáfér az internethez, hogy csatlakozni tudjon a Log Analyticshez.
+- Az OMS-átjárót akkor kell konfigurálni a System Center Operations Managerhez, ha a System Center Operations Manager-ügynökök az interneten keresztül nem érik el a Log Analyticset.
 
-Ha a közvetlen ügynök használ, akkor az OMS-ügynököt maga Naplóelemzési vagy az OMS-átjáró konfigurálása. Letöltheti az OMS-átjárót a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+A közvetlen ügynök használata esetén magát az OMS-ügynököt kell konfigurálni, hogy csatlakozzon a Log Analyticshez vagy az OMS-átjáróhoz. Az OMS-átjárót letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Szükséges a [betekintést és az elemzések](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) megoldás ajánlat.
-- Ha az előző verzió, az átviteli adatokat megoldás használata esetén távolítsa el azt. Azonban az összes rögzített az eredeti átviteli adatokat-megoldáson keresztül érhetők el az adatok továbbra is átviteli adatok 2.0 és a keresési napló.
-- Telepíthet vagy távolíthat el a függőségi ügynök rendszergazdai jogosultság szükséges.
-- A függőség ügynököt 64 bites operációs rendszerrel rendelkező számítógépen telepíteni kell.
+- Szükség van a [Betekintések és elemzés](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) megoldásra.
+- Ha a Wire Data előző verzióját használja, először el kell távolítania azt. Az eredeti Wire Data megoldással rögzített adatok azonban továbbra is elérhetők lesznek a Wire Data 2.0-ban és a naplókeresésben.
+- A függőségi ügynök telepítéséhez vagy eltávolításához rendszergazdai jogosultság szükséges.
+- A függőségi ügynököt egy 64 bites operációs rendszert futtató számítógépre kell telepíteni.
 
 ### <a name="operating-systems"></a>Operációs rendszerek
 
-Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök listázása. Átviteli adatokat nem támogatja 32 bites operációs rendszert.
+Az alábbi táblázat a függőségi ügynök által támogatott operációs rendszereket tartalmazza: A Wire Data semmilyen operációs rendszer esetében nem támogatja a 32 bites architektúrákat.
 
 #### <a name="windows-server"></a>Windows Server
 
@@ -105,17 +105,17 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 - Windows 8
 - Windows 7
 
-#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, a CentOS Linux és az Oracle Linux (az RHEL Kernel)
+#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux és Oracle Linux (RHEL Kernellel)
 
-- Csak az alapértelmezett és az SMP Linux kernel verziókban támogatott.
-- Nem szabványos kernel kiadását, például a Xen, és a fizikai nem támogatottak a Linux-disztribúció. Például a rendszer, amely a kiadás karakterlánc _2.6.16.21-0.8-xen_ nem támogatott.
-- Egyéni mag, beleértve a szabványos kernelek újrafordításainak maximális nem támogatottak.
-- CentOSPlus kernel nem támogatott.
-- Ez a cikk későbbi részében Oracle szoros vállalati Kernel (UEK) vonatkozik.
+- Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
+- A nem szabványos kernelű kiadások, például a PAE és a Xen nem támogatottak semmilyen Linux-disztribúció esetén. Például ha egy rendszer kiadási karakterlánca _2.6.16.21-0.8-xen_, az a rendszer nem támogatott.
+- Az egyéni kernelek, beleértve a standard kernelek újrafordításait, nem támogatottak.
+- A CentOSPlus kernel szintén nem támogatott.
+- Az Oracle Unbreakable Enterprise Kernellel (UEK) a cikk későbbi szakasza foglalkozik.
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| **Operációs rendszer verziója** | **Kernel-verzió** |
+| **Operációs rendszer verziója** | **Kernel verziója** |
 | --- | --- |
 | 7.0 | 3.10.0-123 |
 | 7.1 | 3.10.0-229 |
@@ -124,7 +124,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| **Operációs rendszer verziója** | **Kernel-verzió** |
+| **Operációs rendszer verziója** | **Kernel verziója** |
 | --- | --- |
 | 6.0 | 2.6.32-71 |
 | 6.1 | 2.6.32-131 |
@@ -138,18 +138,18 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="red-hat-linux-5"></a>Red Hat Linux 5
 
-| **Operációs rendszer verziója** | **Kernel-verzió** |
+| **Operációs rendszer verziója** | **Kernel verziója** |
 | --- | --- |
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
 | 5.10 | 2.6.18-371 |
 | 5.11 | 2.6.18-398 <br> 2.6.18-400 <br>2.6.18-402 <br>2.6.18-404 <br>2.6.18-406 <br> 2.6.18-407 <br> 2.6.18-408 <br> 2.6.18-409 <br> 2.6.18-410 <br> 2.6.18-411 <br> 2.6.18-412 <br> 2.6.18-416 <br> 2.6.18-417 <br> 2.6.18-419 |
 
-#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Szoros vállalati Kernel az Oracle Enterprise Linux
+#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux és Unbreakable Enterprise Kernel
 
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 
-| **Operációs rendszer verziója** | **Kernel-verzió** |
+| **Operációs rendszer verziója** | **Kernel verziója** |
 | --- | --- |
 | 6.2 | Oracle 2.6.32-300 (UEK R1) |
 | 6.3 | Oracle 2.6.39-200 (UEK R2) |
@@ -159,7 +159,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="oracle-linux-5"></a>Oracle Linux 5
 
-| **Operációs rendszer verziója** | **Kernel-verzió** |
+| **Operációs rendszer verziója** | **Kernel verziója** |
 | --- | --- |
 | 5.8 | Oracle 2.6.32-300 (UEK R1) |
 | 5.9 | Oracle 2.6.39-300 (UEK R2) |
@@ -170,7 +170,7 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="suse-linux-11"></a>SUSE Linux 11
 
-| **Operációs rendszer verziója** | **Kernel-verzió** |
+| **Operációs rendszer verziója** | **Kernel verziója** |
 | --- | --- |
 | 11 | 2.6.27 |
 | 11 SP1 | 2.6.32 |
@@ -180,11 +180,11 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 #### <a name="suse-linux-10"></a>SUSE Linux 10
 
-| **Operációs rendszer verziója** | **Kernel-verzió** |
+| **Operációs rendszer verziója** | **Kernel verziója** |
 | --- | --- |
 | 10 SP4 | 2.6.16.60 |
 
-#### <a name="dependency-agent-downloads"></a>A függőségi ügynök letöltése
+#### <a name="dependency-agent-downloads"></a>Függőségi ügynök letöltései
 
 | **Fájl** | **OS** | **Verzió** | **SHA-256** |
 | --- | --- | --- | --- |
@@ -195,76 +195,76 @@ Az alábbiakban a támogatott operációs rendszerek a függőségi ügynök lis
 
 ## <a name="configuration"></a>Konfiguráció
 
-A következő lépésekkel állíthatja az átviteli adatokat megoldás a munkaterületek.
+A Wire Data megoldásnak a munkaterületekhez való konfigurálásához végezze el az alábbi lépéseket:
 
-1. A tevékenység Naplóelemzési megoldást engedélyezése a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) vagy ismertetett folyamatot követve [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
-2. A függőségi ügynök telepíthető minden számítógépre, amelyre az adatok lekérése. A függőségi ügynök figyelheti azonnali szomszédok, kapcsolatok, így előfordulhat, hogy nem kell minden olyan számítógépen az ügynök.
+1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](log-analytics-add-solutions.md) című témakörben leírt eljárást követve.
+2. Telepítse a függőségi ügynököt az összes olyan számítógépen, amelyről adatokat kíván gyűjteni. A függőségi ügynök képesek a közvetlen szomszédaikkal való kapcsolatok monitorozására, így lehetséges, hogy nem kell minden egyes számítógépre ügynököt telepíteni.
 
-### <a name="install-the-dependency-agent-on-windows"></a>A függőségi ügynök telepíthető Windows
+### <a name="install-the-dependency-agent-on-windows"></a>A függőségi ügynök telepítése Windows rendszeren
 
-Telepítéséhez vagy az ügynök eltávolításához rendszergazdai jogosultság szükséges.
+Az ügynök telepítéséhez vagy eltávolításához rendszergazdai jogosultság szükséges.
 
-A függőségi ügynök InstallDependencyAgent-Windows.exe Windows rendszert futtató számítógépekre telepíthető. Ha a végrehajtható fájl kapcsolók nélkül futtatja, akkor elindít egy varázslót, amelyeket követve párbeszédes formában történő telepítéséhez.
+A függőségi ügynök a Windows rendszerű számítógépekre az InstallDependencyAgent-Windows.exe fájllal telepíthető. Ha a végrehajtható fájlt bármilyen paraméter nélkül futtatja, akkor elindul egy varázsló, amelyet követve párbeszédes formában telepítheti az ügynököt.
 
-A függőségi ügynök telepítése minden Windows rendszerű számítógépen tegye a következőket:
+A függőségi ügynököt az alábbi lépésekkel telepítheti minden Windows rendszerű számítógépre:
 
-1. Az OMS-ügynököt lépéseit követve telepítse [adatok gyűjtése a Windows rendszerű számítógépek a környezetében üzemeltetett](log-analytics-windows-agent.md).
-2. Töltse le a Windows függőségi ügynök az előző szakaszban hivatkozás segítségével, és futtassa a következő paranccsal: `InstallDependencyAgent-Windows.exe`
-3. Kövesse a varázsló az ügynök telepítéséhez.
-4. Ha a függőségi ügynök nem indul el, tekintse meg a hibával kapcsolatos részletes információk a naplókat. Windows-ügynökök a naplózási könyvtár %Programfiles%\Microsoft függőségi Agent\logs esetén.
+1. Telepítse az OMS-ügynököt az [Adatok gyűjtése saját környezetben futtatott windowsos számítógépről](log-analytics-windows-agent.md) című részben ismertetett lépésekkel.
+2. Töltse le a Windows függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal: `InstallDependencyAgent-Windows.exe`
+3. Az ügynök telepítéséhez kövesse a varázslót.
+4. Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. Windows-ügynökök esetén a naplózási könyvtár a következő: %Programfiles%\Microsoft Dependency Agent\logs.
 
-#### <a name="windows-command-line"></a>A Windows parancssor
+#### <a name="windows-command-line"></a>Windows parancssor
 
-Beállítások a következő táblázat segítségével telepítése a parancssorból. A telepítési jelző listájának megtekintéséhez futtassa a telepítő használatával a /? Ez a jelző az alábbiak szerint.
+A parancssorból való telepítéshez a következő táblában leírt paraméterek használhatók. A telepítésjelzők listájának megtekintéséhez futtassa a telepítőt a /? jelzővel, a következő módon.
 
 InstallDependencyAgent-Windows.exe /?
 
-| **Flag** | **Leírás** |
+| **Jelző** | **Leírás** |
 | --- | --- |
 | <code>/?</code> | A parancssori kapcsolók listájának lekérése. |
-| <code>/S</code> | Felhasználói beavatkozás nélküli telepítés végrehajtásához. |
+| <code>/S</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
 
-A Windows függőségi ügynök fájlok alapértelmezés szerint a C:\Program Files\Microsoft függőségi ügynök kerülnek.
+A Windows függőségi ügynök fájljai alapértelmezés szerint a következő könyvtárba kerülnek: C:\Program Files\Microsoft Dependency Agent.
 
-### <a name="install-the-dependency-agent-on-linux"></a>A függőségi ügynök telepíthető Linux
+### <a name="install-the-dependency-agent-on-linux"></a>A függőségi ügynök telepítése Linux rendszeren
 
-Az ügynök telepítéséhez és konfigurálásához rendszergazdai hozzáférés szükséges.
+Az ügynök telepítéséhez vagy eltávolításához gyökérszintű hozzáférés szükséges.
 
-A függőségi ügynök telepítve van a Linux rendszerű számítógépeken InstallDependencyAgent Linux64.bin, egy önkicsomagoló bináris héjparancsfájlt keresztül. A fájl segítségével is futtathatja _megosztása_ , vagy adja hozzá végrehajtási engedélyeket magát a fájlt.
+A függőségi ügynök Linux rendszerű számítógépekre az InstallDependencyAgent-Linux64.bin fájllal telepíthető, amely egy önkicsomagoló bináris héjszkript. A fájlt futtathatja az _sh_ használatával, vagy hozzáadhat végrehajtási engedélyeket a fájlhoz.
 
-A függőségi ügynök telepítése minden egyes Linux-számítógép tegye a következőket:
+A függőségi ügynököt az alábbi lépésekkel telepítheti minden Linux rendszerű számítógépre:
 
-1. Az OMS-ügynököt lépéseit követve telepítse [adatokat gyűjteni a környezetében üzemeltetett Linux rendszerű számítógépek](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key).
-2. A Linux-függőségi ügynök az előző szakaszban hivatkozás segítségével töltse le és telepítse legfelső szintű a következő paranccsal: sh InstallDependencyAgent-Linux64.bin
-3. Ha a függőségi ügynök nem indul el, tekintse meg a hibával kapcsolatos részletes információk a naplókat. A Linux-ügynökök, a naplózási könyvtár van: /var/opt/microsoft/dependency-agent/log.
+1. Telepítse az OMS-ügynököt az [Adatok gyűjtése saját környezetben futtatott linuxos számítógépről](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) című részben ismertetett lépésekkel.
+2. Töltse le a Linux függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd telepítse gyökérként a következő paranccsal: sh InstallDependencyAgent-Linux64.bin
+3. Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. A Linux-ügynökökön a naplókönyvtár a következő: /var/opt/microsoft/dependency-agent/log.
 
-A telepítési jelző listájának megtekintéséhez futtassa a telepítőprogramot a `-help` jelzőt az alábbiak szerint.
+A telepítésjelzők listájának megtekintéséhez futtassa a `-help` jelzővel rendelkező telepítőprogramot az alábbiak szerint.
 
 ```
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Flag** | **Leírás** |
+| **Jelző** | **Leírás** |
 | --- | --- |
 | <code>-help</code> | A parancssori kapcsolók listájának lekérése. |
-| <code>-s</code> | Felhasználói beavatkozás nélküli telepítés végrehajtásához. |
-| <code>--check</code> | Ellenőrizze az engedélyeit és az operációs rendszer, de nem telepíti az ügynököt. |
+| <code>-s</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
+| <code>--check</code> | Az engedélyek és az operációs rendszer ellenőrzése, az ügynök telepítése nélkül. |
 
-A függőségi ügynök fájlok kerülnek, a következő könyvtárban:
+A függőségi ügynök fájljai az alábbi könyvtárakba kerülnek:
 
 | **Fájlok** | **Hely** |
 | --- | --- |
-| Alapvető fájljait | /opt/microsoft/dependency-agent |
+| Alapvető fájlok | /opt/microsoft/dependency-agent |
 | Naplófájlok | /var/opt/microsoft/dependency-agent/log |
-| Olyan konfigurációs fájlt | /etc/opt/microsoft/dependency-agent/config |
-| Végrehajtható fájlok | /OPT/Microsoft/Dependency-Agent/bin/Microsoft-Dependency-Agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
-| A tároló bináris fájljai | /var/opt/microsoft/dependency-agent/storage |
+| Konfigurációs fájlok | /etc/opt/microsoft/dependency-agent/config |
+| Szolgáltatás végrehajtható fájljai | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
+| Bináris tárolófájlok | /var/opt/microsoft/dependency-agent/storage |
 
-### <a name="installation-script-examples"></a>Telepítési parancsfájl példák
+### <a name="installation-script-examples"></a>Telepítési példaszkriptek
 
-Könnyen telepíthető egyszerre több kiszolgálón a függőségi ügynök, áttekinteni parancsfájl használata. Az alábbi parancsfájl-példák segítségével töltse le és a függőségi ügynök telepíthető Windows vagy Linux.
+Egy szkript használata segíthet, ha egyszerre több kiszolgálóra szeretné könnyen telepíteni a függőségi ügynököt. Az alábbi példaszkriptekkel letöltheti és telepítheti a függőségi ügynököt Windows vagy Linux rendszerű számítógépre.
 
-#### <a name="powershell-script-for-windows"></a>A Windows PowerShell-parancsfájl
+#### <a name="powershell-script-for-windows"></a>PowerShell-szkript Windowshoz
 
 ```PowerShell
 
@@ -274,7 +274,7 @@ Invoke-WebRequest &quot;https://aka.ms/dependencyagentwindows&quot; -OutFile Ins
 
 ```
 
-#### <a name="shell-script-for-linux"></a>A Linux rendszerhez parancsfájl
+#### <a name="shell-script-for-linux"></a>Héjszkript Linuxhoz
 
 ```
 wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
@@ -286,7 +286,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Célállapot-konfiguráló
 
-A célállapot-konfiguráció keresztül függőségi ügynök telepítéséhez használhatja a xPSDesiredStateConfiguration modul és a kód a következőhöz hasonló:
+A függőségi ügynök Desired State Configuration segítségével történő telepítéséhez használhatja az xPSDesiredStateConfiguration modult és egy, az alábbihoz hasonló kódrészletet:
 
 ```
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -340,17 +340,17 @@ Node $NodeName
 ```
 ### <a name="uninstall-the-dependency-agent"></a>A függőségi ügynök eltávolítása
 
-A következő szakaszok segítségével távolítsa el a függőségi ügynök.
+Az alábbi szakaszok segítséget nyújtanak a függőségi ügynök eltávolításában.
 
-#### <a name="uninstall-the-dependency-agent-on-windows"></a>Távolítsa el a függőségi ügynököt Windows rendszeren
+#### <a name="uninstall-the-dependency-agent-on-windows"></a>A függőségi ügynök eltávolítása Windows rendszeren
 
-A rendszergazda eltávolíthatja a függőségi ügynök a Windows Vezérlőpult segítségével.
+A rendszergazda Windows esetén a Vezérlőpulton keresztül törölheti a függőségi ügynököt.
 
-A rendszergazda %Programfiles%\Microsoft függőségi Agent\Uninstall.exe távolítsa el a függőségi ügynököt is futtathatja.
+Egy rendszergazda a következő fájl futtatásával is eltávolíthatja a függőségi ügynököt: %Programfiles%\Microsoft Dependency Agent\Uninstall.exe.
 
-#### <a name="uninstall-the-dependency-agent-on-linux"></a>Távolítsa el a függőségi ügynököt Linux rendszeren
+#### <a name="uninstall-the-dependency-agent-on-linux"></a>A függőségi ügynök eltávolítása Linux rendszeren
 
-A függőségi ügynök teljesen eltávolítása Linux, el kell távolítani az ügynök önmagát és az összekötő telepítésekor automatikusan települ az ügynök. Eltávolíthatja, mindkettő használatával a következő parancsot:
+A függőségi ügynök Linux rendszerről történő teljes eltávolításához el kell távolítania az ügynököt és az ügynökkel együtt automatikusan telepített összekötőt. Az alábbi egyszerű parancs futtatásával mindkettőt eltávolíthatja:
 
 ```
 rpm -e dependency-agent dependency-agent-connector
@@ -358,96 +358,96 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
-Átviteli adatokat aktiválva van a Naplóelemzési munkaterület, 300 KB-os felügyeleti csomag van küld futó Windows-kiszolgálók. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](log-analytics-om-agents.md), a függőségi figyelő felügyeleti csomag a System Center Operations Manager telepítése. Ha az ügynököt közvetlenül csatlakoztatott, Log Analyticshez nyújt a felügyeleti csomag.
+Ha az átviteli adatok aktiválva vannak a Log Analytics-munkaterületen, a rendszer egy 300 KB méretű felügyeleti csomagot küld a munkaterület Windows-kiszolgálóinak. Ha System Center Operations Manager-ügynököt használ egy [csatlakoztatott felügyeleti csoportban](log-analytics-om-agents.md), a Függőségfigyelő felügyeleti csomag a System Center Operations Managerből lesz telepítve. Ha az ügynökök közvetlenül kapcsolódnak, a Log Analytics biztosítja a felügyeleti csomagot.
 
-A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Az írás: %Programfiles%\Microsoft figyelési Agent\Agent\Health State\Management szervizcsomagok. Az adatforrás által használt felügyeleti csomag: % Program files%\Microsoft figyelés Agent\Agent\Health szolgáltatás State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMonitor. A következő helyre írja a rendszer: %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs. A felügyeleti csomag az alábbi adatforrást használja: %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
-**Telepítése és a megoldás konfigurálása**
+**A megoldás telepítése és konfigurálása**
 
-Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
+A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-- Az átviteli adatokat megoldás szerez be a Windows Server 2012 R2, Windows 8.1 és újabb operációs rendszereket futtató számítógépek adatait.
-- Microsoft .NET-keretrendszer 4.0-s vagy újabb szükséges a számítógépeken, ahol szeretné-e az átvitel közbeni adatainak megszerzése.
-- Az átviteli adatokat megoldás hozzáadni a Naplóelemzési munkaterület ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md). Nincs szükség további konfigurációra.
-- Meg szeretné tekinteni a átviteli adatokat egy adott megoldás, ha szüksége van a megoldás már hozzá van adva a munkaterületen.
+- A Wire Data megoldás a Windows Server 2012 R2, Windows 8.1 és újabb operációs rendszert futtató számítógépekről gyűjt adatokat.
+- A Microsoft .NET-keretrendszer 4.0-s vagy újabb verziójával kell rendelkeznie azoknak a számítógépeknek, amelyekről átviteli adatokat szeretne gyűjteni.
+- A Log Analytics-munkaterülethez adja hozzá a Wire Data megoldást. Ehhez kövesse a [Log Analytics-megoldások hozzáadása a megoldástárból](log-analytics-add-solutions.md) című témakörben leírt eljárást. Nincs szükség további konfigurációra.
+- Egy adott megoldás átviteli adatainak megtekintéséhez már rendelkeznie kell a megoldással a munkaterületen.
 
-Után az ügynök telepítve van, és a megoldás telepítése, az átvitel közbeni adatok 2.0 csempe jelenik meg a munkaterületen.
+Miután telepítette az ügynököket és telepíti a megoldást, a munkaterületen megjelenik a Wire Data 2.0 csempéje.
 
-![Átviteli adatokat csempe](./media/log-analytics-wire-data/wire-data-tile.png)
+![Wire Data csempe](./media/log-analytics-wire-data/wire-data-tile.png)
 
-## <a name="using-the-wire-data-20-solution"></a>A vezetékes adatok 2.0 segítségével
+## <a name="using-the-wire-data-20-solution"></a>A Wire Data 2.0 megoldás használata
 
-Az OMS-portálon kattintson a **átviteli adatok 2.0** csempére kattintva nyissa meg az átviteli adatokat irányítópulton. Az irányítópult a paneleket az alábbi táblázat tartalmazza. Minden egyes panel adott panelhez feltételeknek, a megadott hatókör és időtartomány legfeljebb 10 elemeket sorolja fel. A napló keresési, amely visszaadja az összes rekord kattintva futtathatja **láthatja az összes** alján a panelről, vagy kattintson a panel fejléc.
+Az Azure Portalon a Log Analytics-munkaterület **Áttekintés** területén kattintson a **Wire Data 2.0** csempére az Átviteli adatok irányítópult megnyitásához. Az irányítópulton az alábbi táblázatban felsorolt panelek találhatók. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. A panel alján található **Az összes megtekintése** elemre vagy a panel fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
-| **Blade** | **Leírás** |
+| **Panel** | **Leírás** |
 | --- | --- |
-| Hálózati forgalmat rögzítő ügynökök | Az ügynököket, amelyeket a hálózati forgalom rögzítése számát mutatja, és felsorolja a felső 10 számítógépet forgalom rögzítése. Kattintson a napló keresése futtatásához <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kattintson egy számítógépre, a listában egy rögzített bájtok teljes száma adatszolgáltató napló keresés futtatásához. |
-| Helyi alhálózatok | Az ügynökök felderített helyi alhálózatok számát mutatja.  Kattintson a napló keresése futtatásához <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> összes alhálózatot, amely felsorolja a minden egyes küldött bájtok száma. Kattintson a napló-keresés vissza az alhálózat küldött bájtok teljes száma futtatásához a listában lévő alhálózatot. |
-| Alkalmazásszintű protokollok | Alkalmazásszintű protokollok számának ügynököket használja, megjelenítése Kattintson a napló keresése futtatásához <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kattintson a napló-keresés vissza a protokoll használatával küldött bájtok teljes száma futtatásához protokoll. |
+| Hálózati forgalmat rögzítő ügynökök | A hálózati forgalmat rögzítő ügynökök számát és a forgalmat rögzítő első 10 számítógép listáját jeleníti meg. Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kattintson a listában található egyik számítógépre egy olyan naplókeresés futtatásához, amely a rögzített bájtok számát adja vissza. |
+| Helyi alhálózatok | Az ügynök által felderített helyi alhálózatok számát mutatja.  Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>. Ez az alhálózatokat és az egyes alhálózatokon átküldött bájtok számát jeleníti meg. Kattintson a listában található alhálózatra egy olyan naplókeresés futtatásához, amely az alhálózaton küldött bájtok teljes számát adja vissza. |
+| Alkalmazásszintű protokollok | Az ügynökök által felderített, használatban lévő alkalmazásszintű protokollok számát jeleníti meg. Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kattintson a protokollra egy olyan naplókeresés futtatásához, amely a protokoll használatával küldött bájtok számát adja vissza. |
 
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-![Átviteli adatokat irányítópult](./media/log-analytics-wire-data/wire-data-dash.png)
+![Átviteli adatok irányítópult](./media/log-analytics-wire-data/wire-data-dash.png)
 
-Használhatja a **hálózati forgalmat rögzítő ügynökök** panelt, és határozza meg, mekkora hálózati sávszélesség felhasználás alatt a számítógépek által. Ez a panel segítségével könnyedén megtalálhatja a _chattiest_ számítógép a környezetben. Ezek a számítógépek sikerült túlterheltté vált, rendellenesen működő, vagy további hálózati erőforrások, mint a normál használatával.
+A **Hálózati forgalmat rögzítő ügynökök** panellel megállapíthatja, mekkora hálózati sávszélességet használnak fel a számítógépek. A panel segítségével könnyen megtalálhatja a hálózat _legforgalmasabb_ számítógépét. Előfordulhat, hogy ezek a számítógépek túlterheltek, rendellenesen működnek vagy az átlagosnál több hálózati erőforrást használnak.
 
-![naplófájl-keresési példa](./media/log-analytics-wire-data/log-search-example01.png)
+![naplóbeli keresés példája](./media/log-analytics-wire-data/log-search-example01.png)
 
-Hasonlóképpen, használhatja a **helyi alhálózatok** panelt, és annak megállapítása, hogy mekkora hálózati forgalom áthelyezése az alhálózatokon keresztül. Felhasználók gyakran határozza meg azt az alkalmazáshoz kritikus területeket körül alhálózatokat. Ezen a panelen a fenti területekre megtekintésében kínál.
+Ehhez hasonlóan a **Helyi alhálózatok** panel segítségével megállapíthatja, mekkora hálózati forgalom halad át az alhálózatokon. A felhasználók gyakran az alkalmazásaikhoz tartozó kritikus területek körül adnak meg alhálózatokat. Ez a panel ezekbe a területekbe kínál betekintést.
 
-![naplófájl-keresési példa](./media/log-analytics-wire-data/log-search-example02.png)
+![naplóbeli keresés példája](./media/log-analytics-wire-data/log-search-example02.png)
 
-A **alkalmazásszintű protokollok** panel akkor hasznos, előnyös, mert tudják, mit protokollt használja. Például előfordulhat, hogy várt SSH használata a hálózati környezetben nem találhatók. A panelen elérhető adatok megtekintéséhez használatos időkategóriát gyorsan erősítse meg, és a várt eredmény disprove.
+Az **Alkalmazásszintű protokollok** panel hasznos, mivel fontos lehet annak ismerete, hogy mely protokollok vannak használatban. Lehetséges például, hogy arra számít, hogy az SSH nincs használatban a hálózati környezetben. A panelen megjelenő információk ezt gyorsan megerősíthetik vagy megcáfolhatják.
 
-![naplófájl-keresési példa](./media/log-analytics-wire-data/log-search-example03.png)
+![naplóbeli keresés példája](./media/log-analytics-wire-data/log-search-example03.png)
 
-Ebben a példában lehetett-feltárás SSH részletek mely számítógépeket használó SSH és sok más kommunikációs részleteinek megtekintése.
+Ebben a példában elemezheti az SSH részleteit, és például megtekintheti, melyik számítógépek használják az SSH-t, valamint egyéb kommunikációs részleteket is megismerhet.
 
-![SH keresési eredmények](./media/log-analytics-wire-data/ssh-details.png)
+![sh keresési eredmények](./media/log-analytics-wire-data/ssh-details.png)
 
-Akkor célszerű is tudja, hogy a protokoll forgalom növekvő vagy csökkenő adott idő alatt. Például ha egy alkalmazás által továbbított adatok mennyisége növekszik, előfordulhat, hogy valami kell ügyelnie, vagy hogy előfordulhat, hogy a fontos.
+Ez akkor is hasznos, ha szeretné tudni, hogy a hálózati forgalom idővel növekszik vagy csökken. Például nem árt tudnia, vagy említésre méltónak találhatja, ha egy alkalmazás által továbbított adatok mennyisége növekszik.
 
-## <a name="input-data"></a>A bemeneti adatok
+## <a name="input-data"></a>Bemeneti adatok
 
-Átviteli adatokat gyűjt a metaadatok használatával az ügynököket, amelyeket engedélyezte a hálózati forgalom. Minden ügynök 15 másodpercenként adatokat küld.
+A Wire Data az engedélyezett ügynökök használatával metaadatokat gyűjt a hálózati forgalomról. Minden ügynök körülbelül 15 másodpercenként küld adatokat.
 
 ## <a name="output-data"></a>Kimeneti adatok
 
-A típusú rekord _WireData_ jön létre az egyes bemeneti adatokat. WireData rögzíti az alábbi táblázatban szereplő jellemzőkkel rendelkezik:
+A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. A WireData-rekordok tulajdonságai az alábbi táblázatban láthatók:
 
 | Tulajdonság | Leírás |
 |---|---|
-| Computer | Számítógép neve, hol történt adatgyűjtés |
-| TimeGenerated | A rekord idő |
+| Computer | A számítógép neve, ahol az adatgyűjtés történt |
+| TimeGenerated | A rekord létrehozásának időpontja |
 | LocalIP | A helyi számítógép IP-címe |
-| SessionState | Csatlakoztatva, vagy nincs csatlakoztatva |
-| ReceivedBytes | Fogadott bájtok mennyiségét |
+| SessionState | Csatlakoztatva vagy leválasztva |
+| ReceivedBytes | A fogadott bájtok mennyisége |
 | ProtocolName | A használt hálózati protokoll neve |
-| IPVersion | IP-verziója |
-| Irány | Bejövő vagy kimenő |
-| MaliciousIP | Egy ismert rosszindulatú forrás IP-címe |
-| Súlyosság | Gyanús kártevőt súlyossága |
-| RemoteIPCountry | A távoli IP-cím ország |
-| ManagementGroupName | Az Operations Manager felügyeleti csoport neve |
-| SourceSystem | Ha adatokat gyűjtött a program forrás |
-| SessionStartTime | A munkamenet kezdési idejét |
-| SessionEndTime | Munkamenet befejezési időpontja |
-| LocalSubnet | Alhálózati hol történt adatgyűjtés |
-| LocalPortNumber | Helyi port száma |
+| IPVersion | IP-cím verziója |
+| Irány | Bemeneti vagy kimeneti |
+| MaliciousIP | Ismert kártevő forrás IP-címe |
+| Severity | Gyanús kártevő súlyossága |
+| RemoteIPCountry | Az ország, ahol a távoli IP-cím található |
+| ManagementGroupName | Az Operations Manager felügyeleti csoportjának neve |
+| SourceSystem | A gyűjtött adatok forrása |
+| SessionStartTime | A munkamenet kezdési időpontja |
+| SessionEndTime | A munkamenet befejezési időpontja |
+| LocalSubnet | Az alhálózat, ahol az adatgyűjtés történt |
+| LocalPortNumber | Helyi portszám |
 | RemoteIP | A távoli számítógép által használt távoli IP-cím |
 | RemotePortNumber | A távoli IP-cím által használt portszám |
-| Munkamenet-azonosító | Két IP-címek közötti kommunikáció munkamenetet azonosító egyedi érték |
-| SentBytes | Küldött bájtok száma |
-| TotalBytes | A munkamenetben küldött bájtok teljes száma |
+| SessionID | A két IP-cím közötti kommunikációs munkameneteket azonosító egyedi érték |
+| SentBytes | Az elküldött bájtok száma |
+| TotalBytes | A munkamenet során elküldött bájtok száma összesen |
 | ApplicationProtocol | A használt hálózati protokoll típusa   |
-| Folyamatazonosító | Windows-folyamat azonosítója |
-| Folyamatnév | A folyamat elérési útját és nevét |
-| RemoteIPLongitude | IP-hosszúság érték |
-| RemoteIPLatitude | IP-szélesség értéke |
+| ProcessID | Windows-folyamat azonosítója |
+| ProcessName | A folyamat elérési útja és neve |
+| RemoteIPLongitude | IP-cím hosszúsági értéke |
+| RemoteIPLatitude | IP-cím szélességi értéke |
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Naplók keresése](log-analytics-log-searches.md) részletes vezetékes keresési rekordok megtekintéséhez.
+- [Keresés a naplókban](log-analytics-log-searches.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f0604007255d829cab0502e93895ca541da3b93a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Való hozzáférés és a személyes alkalmazások portálon elhárítása
 
@@ -57,10 +57,11 @@ Ellenőrizze, hogy, hogy a következő webböngészőkre vonatkozó követelmén
 - **Firefox 26.0 vagy újabb**: Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb.
 - **Az Internet Explorer 11**: Windows 7 vagy újabb (korlátozottan támogatja).
 
-Emellett letöltheti a bővítmény Chrome és peremhálózati közvetlenül a következő helyekről:
+Emellett letöltheti a bővítmény közvetlenül a következő helyekről:
 
-- [Chrome-bővítmény](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Peremhálózati bővítmény](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Peremhálózati](https://go.microsoft.com/fwlink/?linkid=845176)
+- [A Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Ha telepítette a bővítményt, és továbbra is érintő problémákat tapasztal, próbálja meg a következőket:
 
@@ -77,14 +78,14 @@ Ha telepítette a bővítményt, és továbbra is érintő problémákat tapaszt
    4. Válassza ki a bővítmény ikonra.
    5. Jelentkezzen be a bővítményt, jelölje be **jelentkezzen be a kezdéshez**.
 
-* Jelentkezzen be az alkalmazások számára közvetlenül a böngészőből, tegye a következőket:
+* Jelentkezzen be közvetlenül a böngészőből az alkalmazásba, tegye a következőket:
    1. A bővítmény telepítése után jelentkezzen be az kiválasztásával **jelentkezzen be a kezdéshez**.
    2. Jelentkezzen be az alkalmazás és a bejelentkezési URL-CÍMÉT.  
        A bejelentkezési URL-címet az általában az URL-CÍMÉT, amely megjeleníti a bejelentkezési képernyőt.
       A bővítmény kell módosította az állapotát, és jelzi, hogy rendelkezésre áll-e jelszót.
    3. Jelentkezzen be, válassza a kiterjesztés ikonra.
 
-* Az alkalmazás indításához a bővítményből származó, tegye a következőket:
+* Indítsa el az alkalmazást, a bővítmény a, tegye a következőket:
    1. A bővítmény telepítése után jelentkezzen be az kiválasztásával **jelentkezzen be a kezdéshez**.
    2. Válassza ki a bővítmény ikonra a menü megnyitásához.
    3. Keresse meg a személyes alkalmazások portálon elérhető alkalmazás.

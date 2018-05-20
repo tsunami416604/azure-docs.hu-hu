@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ff48d70a19e99531dcc90a81f8c7c723133ba8a0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API aszinkron frissítés
 Bármely programozási nyelv, amely támogatja a REST-hívások segítségével az Azure Analysis Services rendszerbeli táblázatos modellek aszinkron adatfrissítési műveleteket végezheti el. Ez magában foglalja a lekérdezés kibővített írásvédett replikák szinkronizálását. 
@@ -97,7 +97,7 @@ Paraméterek megadása nem kötelező. Az alapértelmezett vonatkozik.
 
 |Name (Név)  |Típus  |Leírás  |Alapértelmezett  |
 |---------|---------|---------|---------|
-|Típus     |  Enum       |  A végrehajtandó feldolgozástípust típusa. A típusok összhangban legyenek a TMSL [a frissítési parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: full, clearValues, kiszámításához, dataOnly, automatikus adja hozzá, és töredezettségmentesítése.       |   Automatikus      |
+|Típus     |  Enum       |  A végrehajtandó feldolgozástípust típusa. A típusok összhangban legyenek a TMSL [a frissítési parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: teljes, clearValues, kiszámíthatja, dataOnly, automatikus, és a töredezettségmentesítése. Adja hozzá a típus nem támogatott.      |   Automatikus      |
 |CommitMode     |  Enum       |  Határozza meg, ha objektumok véglegesített kötegekben telepítse, vagy csak akkor, ha teljes lesz. Módok közé tartozik: alapértelmezés szerint tranzakciós, partialBatch.  |  tranzakciós       |
 |MaxParallelism     |   Int      |  A párhuzamos feldolgozás parancsok futtatására szálak maximális számát határozza meg. Ez az érték a MaxParallelism tulajdonsággal állítható be a TMSL igazítva [parancs feladatütemezési](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) vagy más módszerrel.       | 10        |
 |a retryCount    |    Int     |   Azt jelzi, hogy hányszor, mielőtt hibát jelentene próbálkozik újra a műveletet.      |     0    |

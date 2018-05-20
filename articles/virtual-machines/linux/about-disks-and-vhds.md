@@ -1,6 +1,6 @@
 ---
-title: Hamarosan nem felügyelt (lapblobokat) és a lemezek tárolási felügyelt Microsoft Azure Linux virtuális gépek |} Microsoft Docs
-description: További tudnivalók a alapjait nem felügyelt (lapblobokat) és a felügyelt Linux virtuális gépek Azure-lemezeket tároló.
+title: About unmanaged (page blobs) and managed disks storage for Microsoft Azure Linux VMs | Microsoft Docs
+description: Learn about the basics of unmanaged (page blobs) and managed disks storage for Linux virtual machines in Azure.
 services: virtual-machines
 author: roygara
 manager: jeconnoc
@@ -11,50 +11,50 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.openlocfilehash: 3742b05bceea7aed556d06ab4460abaa08aca7d1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/24/2018
 ---
-# <a name="about-disks-storage-for-azure-linux-vms"></a>Lemezek tárolás Azure Linux virtuális gépekhez
-Csakúgy, mint bármely más számítógépre az Azure virtuális gépek lemezek használatával egy olyan hely az operációs rendszerek, alkalmazások és adatok tárolására. Minden Azure virtuális gépek legalább két lemezt – a Linux operációs rendszer és egy ideiglenes lemezzel rendelkezik. Az operációs rendszer lemez létrehozása lemezkép, és mind az operációsrendszer-lemez, és a lemezkép ténylegesen tárolt virtuális merevlemezek (VHD) az Azure storage-fiók. Virtuális gépek is rendelkeznek legalább egy adatlemezt, virtuális merevlemezekként is tárolt. 
+# <a name="about-disks-storage-for-azure-linux-vms"></a>About disks storage for Azure Linux VMs
+Just like any other computer, virtual machines in Azure use disks as a place to store an operating system, applications, and data. All Azure virtual machines have at least two disks – a Linux operating system disk and a temporary disk. The operating system disk is created from an image, and both the operating system disk and the image are actually virtual hard disks (VHDs) stored in an Azure storage account. Virtual machines also can have one or more data disks, that are also stored as VHDs. 
 
-Ebben a cikkben rendszer szolgáltatással kapcsolatban a lemezek különböző használ, és a különböző típusú lemezek létrehozhat és használhat majd ismertetik. Ez a cikk érhető el is [Windows virtuális gépek](../windows/about-disks-and-vhds.md).
+In this article, we will talk about the different uses for the disks, and then discuss the different types of disks you can create and use. This article is also available for [Windows virtual machines](../windows/about-disks-and-vhds.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="disks-used-by-vms"></a>Virtuális gépek által használt lemezek
+## <a name="disks-used-by-vms"></a>Disks used by VMs
 
-Vessen egy pillantást a lemezt a virtuális gépek által használt hogyan.
+Let's take a look at how the disks are used by the VMs.
 
-## <a name="operating-system-disk"></a>Operációsrendszer-lemez
-Minden virtuális gép egy csatolt operációsrendszer-lemez van. SATA meghajtóként regisztrálva van, és alapértelmezés szerint /dev/sda lett címkézve. Ezen a lemezen vannak 2048 gigabájt (GB) maximális kapacitását. 
+## <a name="operating-system-disk"></a>Operating system disk
+Every virtual machine has one attached operating system disk. It's registered as a SATA drive and is labeled /dev/sda by default. This disk has a maximum capacity of 2048 gigabytes (GB). 
 
-## <a name="temporary-disk"></a>Ideiglenes lemez
-Minden virtuális gép ideiglenes lemezt tartalmaz. Az ideiglenes lemezre rövid távú tárolás biztosít az alkalmazások és folyamatok, és csak az adatok, például az oldal vagy swap fájlok tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) és mikor meg [újratelepíteni a virtuális gépek](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). A virtuális gép a szabványos újraindításkor az ideiglenes meghajtón található adatokat kell megőrizni.
+## <a name="temporary-disk"></a>Temporary disk
+Each VM contains a temporary disk. The temporary disk provides short-term storage for applications and processes and is intended to only store data such as page or swap files. Data on the temporary disk may be lost during a [maintenance event](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) or when you [redeploy a VM](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). During a standard reboot of the VM, the data on the temporary drive should persist.
 
-A Linux virtuális gépeken, a lemez általában **/dev/sdb** formázott és a csatlakoztatott **/mnt** az Azure Linux ügynök. Változik a ideiglenes lemez méretét, a virtuális gép méretétől függ. További információkért lásd: [Linux virtuális gépek méretei](../windows/sizes.md).
+On Linux virtual machines, the disk is typically **/dev/sdb** and is formatted and mounted to **/mnt** by the Azure Linux Agent. The size of the temporary disk varies, based on the size of the virtual machine. For more information, see [Sizes for Linux virtual machines](../windows/sizes.md).
 
-Hogyan Azure használja az ideiglenes lemez a további információkért lásd: [az ideiglenes meghajtón a Microsoft Azure virtuális gépeken ismertetése](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+For more information on how Azure uses the temporary disk, see [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-## <a name="data-disk"></a>Adatlemez
-Adatlemezt tartalmazó virtuális merevlemez csatolva van egy virtuális gép tárolásához, alkalmazás vagy egyéb adatok szüksége. Az adatlemezek SCSI meghajtóként regisztrálva van, és az Ön által betűvel fel van tüntetve. Minden egyes adatlemez 4095 GB maximális kapacitása nem. A virtuális gép mérete határozza meg, hány adatlemezt csatol, és a tároló típusa szerinti használhatja a lemezek.
+## <a name="data-disk"></a>Data disk
+A data disk is a VHD that's attached to a virtual machine to store application data, or other data you need to keep. Data disks are registered as SCSI drives and are labeled with a letter that you choose. Each data disk has a maximum capacity of 4095 GB. The size of the virtual machine determines how many data disks you can attach to it and the type of storage you can use to host the disks.
 
 > [!NOTE]
-> Virtuális gépek kapacitások kapcsolatos további tudnivalókért lásd: [Linux virtuális gépek méretei](./sizes.md).
+> For more details about virtual machines capacities, see [Sizes for Linux virtual machines](./sizes.md).
 > 
 
-Azure operációsrendszer-lemez hoz létre, amikor egy virtuális gépet hoz létre a lemezkép. Ha adatlemezt tartalmaz egy képet, a Azure is létrehoz az adatlemezek, amikor létrehozza a virtuális gép. Ellenkező esetben az adatlemezek hozzáadása, a virtuális gép létrehozása után.
+Azure creates an operating system disk when you create a virtual machine from an image. If you use an image that includes data disks, Azure also creates the data disks when it creates the virtual machine. Otherwise, you add data disks after you create the virtual machine.
 
-Adhat hozzá adatlemezt egy virtuális gép bármikor, az **csatolása** a lemezt a virtuális géphez. A tárfiók, vagy egy, az Azure létrehozza, másolni vagy feltöltött virtuális merevlemez is használhatja. A virtuális gép adatlemezt csatol társítja a VHD-fájlt a címbérlet helyez a VHD-t, így azt nem lehet törölni az tárolási amíg továbbra is csatlakoztatva van.
+You can add data disks to a virtual machine at any time, by **attaching** the disk to the virtual machine. You can use a VHD that you've uploaded or copied to your storage account, or one that Azure creates for you. Attaching a data disk associates the VHD file with the VM, by placing a 'lease' on the VHD so it can't be deleted from storage while it's still attached.
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Troubleshooting
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>További lépések
-* [A lemez csatolása](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további tárhely hozzáadása a virtuális gép számára.
-* [Pillanatkép létrehozása](snapshot-copy-managed-disk.md).
-* [Alakítsa át a felügyelt](convert-unmanaged-to-managed-disks.md).
+## <a name="next-steps"></a>Next steps
+* [Attach a disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) to add additional storage for your VM.
+* [Create a snapshot](snapshot-copy-managed-disk.md).
+* [Convert to managed disks](convert-unmanaged-to-managed-disks.md).
 

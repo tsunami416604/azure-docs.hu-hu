@@ -1,6 +1,6 @@
 ---
-title: SQL Server Management Studio Azure Blockchain munkaterület adatok használata
-description: 'Útmutató: Azure Blockchain munkaterület SQL-adatbázis SQL Server Management Studio való kapcsolódáshoz.'
+title: Azure Blockchain Workbench-adatok használata az SQL Server Management Studióval
+description: Megtudhatja, hogy hogyan csatlakozhat az Azure Blockchain Workbench SQL Database-adatbázisához az SQL Server Management Studióból.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,44 +10,45 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 1c9ee1e94ba1195db027c3edfab2e2a96f181ca3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b640aec322d6dc184a428e67d9576cf162c8f394
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Azure Blockchain munkaterület adatokat az SQL Server Management Studio használatával
+# <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Azure Blockchain Workbench-adatok használata az SQL Server Management Studióval
 
-Microsoft SQL Server Management Studio lehetővé teszi a gyors fejlesztésére, és Azure Blockhain munkaterület SQL DB lekérdezéseket tesztelésére. Ez a szakasz egy részletes útmutató arról, hogyan kell Azure Blockchain munkaterület SQL adatbázishoz az SQL Server Management Studio.
+A Microsoft SQL Server Management Studióban gyorsan írhat lekérdezéseket az Azure Blockhain Workbench SQL-adatbázisához, és azonnal tesztelheti is őket. Ebből a szakaszból részletesen megismerheti, hogy hogyan csatlakozhat az Azure Blockchain Workbench SQL Database-adatbázisához az SQL Server Management Studióból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Töltse le [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+* Töltse le az [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) alkalmazást.
 
-## <a name="connecting-sql-server-management-studio-to-data-in-azure-blockchain-workbench"></a>SQL Server Management Studio Azure Blockchain munkaterület-adatokhoz való kapcsolódásról
+## <a name="connecting-sql-server-management-studio-to-data-in-azure-blockchain-workbench"></a>Az SQL Server Management Studio csatlakoztatása az Azure Blockchain Workbench adataihoz
 
-1. Az SQL Server Management Studio megnyitásához, és válassza ki **Connect**.
-2. Válassza ki **adatbázis-motor**.
+1. Nyissa meg az SQL Server Management Studio alkalmazást, és válassza a **Connect** (Csatlakozás) lehetőséget.
+2. Válassza a **Database Engine** (Adatbázismotor) lehetőséget.
 
     ![Adatbázismotor](media/blockchain-workbench-data-sql-management-studio/database-engine.png)
 
-3. Az a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a kiszolgáló nevét és az adatbázis hitelesítő adatai.
+3. A **Connect to Server** (Csatlakozás kiszolgálóhoz) párbeszédpanelen adja meg az adatbázisa hitelesítő adatait.
 
-    Ha az Azure Blockchain munkaterület központi telepítési folyamat során létrehozott hitelesítő adatok használata esetén a felhasználónév lesz **dbadmin** és a jelszó lesz a telepítés során megadottal.
+    Ha az Azure Blockchain Workbench telepítési folyamata során létrehozott hitelesítő adatokat használja, akkor a felhasználónév **dbadmin** lesz, a jelszó pedig a telepítés során megadott jelszó.
 
-    ![SQL-hitelesítő adatainak megadása](media/blockchain-workbench-data-sql-management-studio/sql-creds.png)
+    ![SQL-adatbázis hitelesítő adatainak megadása](media/blockchain-workbench-data-sql-management-studio/sql-creds.png)
 
- 4. SQL Server Management Studio megjeleníti az adatbázisok adatbázis-nézetek és tárolt eljárások az Azure Blockchain munkaterület-adatbázis.
+ 4. Az SQL Server Management Studio képes megjeleníteni az adatbázisokat, adatbázisnézeteket és tárolt eljárásokat az Azure Blockchain Workbench adatbázisából.
 
-    ![Az adatbázisok listája](media/blockchain-workbench-data-sql-management-studio/db-list.png)
+    ![Adatbázisok listája](media/blockchain-workbench-data-sql-management-studio/db-list.png)
 
-5. Az adatbázis nézetek kapcsolódó adatok megjelenítése, automatikusan a select utasítással, az alábbi lépéseket követve hozhat létre.
-6. Kattintson a jobb gombbal az Object Explorer adatbázis nézetek.
-7. Válassza ki **nézetként parancsfájl**.
-8. Válasszon **BEJELÖLÉSÉVEL**.
-9. Válassza ki **új Lekérdezésszerkesztő ablak**.
-10. Egy új lekérdezést hozhat létre kiválasztásával **új lekérdezés**.
+5. Az adatbázisnézetekhez tartozó adatok megtekintéséhez automatikusan létrehozhat egy SELECT utasítást az alábbi lépések végrehajtásával.
+6. Kattintson a jobb gombbal egy tetszőleges adatbázisnézetre az Object Explorerben.
+7. Válassza a **Script View as** (Megtekintési szkript) lehetőséget.
+8. Válassza a **SELECT to** (SELECT cél) lehetőséget.
+9. Válassza a **New Query Editor Window** (Új Lekérdezésszerkesztő ablak) lehetőséget.
+10. Új lekérdezést a **New Query** (Új lekérdezés) lehetőség választásával hozhat létre.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Adatbázis nézetekhez Azure Blockchain munkaterület](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Adatbázisnézetek az Azure Blockchain Workbenchben](blockchain-workbench-database-views.md)

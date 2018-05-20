@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8c67c89f00362b0fc6a510a8117ac176bb3c8b6c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 15fa3e7738810ada48f471a685f79a82445ad70c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Parancsfájlművelet Windows-alapú HDInsight-fürtök testreszabása
 **Parancsfájl-művelet** alkalmazásához használt [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a fürt további szoftver telepítése a fürt létrehozása során.
@@ -53,7 +53,7 @@ HDInsight több parancsprogramokat a HDInsight-fürtök az alábbi összetevők 
 | Name (Név) | Szkript |
 | --- | --- |
 | **Spark telepítése** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. Lásd: [telepítése és használata a HDInsight Spark-fürtök][hdinsight-install-spark]. |
-| **R telepítéséhez** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Lásd: [telepítése és használata R HDInsight-fürtök][hdinsight-install-r]. |
+| **R telepítéséhez** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Lásd: [telepítése és használata R HDInsight-fürtök] [a hdinsight-install-r]. |
 | **Solr telepítése** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. Lásd: [telepítése és használata Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install.md). |
 | - **Giraph telepítése** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Lásd: [telepítése és használata Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
 | **Hive-könyvtárakhoz előzetes betöltése** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1. Lásd: [kódtárak hozzáadása Hive HDInsight-fürtök](hdinsight-hadoop-add-hive-libraries.md) |
@@ -312,12 +312,10 @@ Lásd: [parancsfájlművelet fejlesztése parancsfájlok a HDInsight][hdinsight-
 * [Hdinsight Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] HDInsight-fürtök létrehozása más egyéni beállítások használatával kapcsolatos utasításokat tartalmazza.
 * [A HDInsight parancsfájlművelet-parancsfájlok fejlesztése][hdinsight-write-script]
 * [Telepítse, és válassza a Spark on HDInsight-fürtök][hdinsight-install-spark]
-* [Telepítheti és használhatja a HDInsight-fürtök R][hdinsight-install-r]
 * [Telepítheti és használhatja a HDInsight-fürtök Solr](hdinsight-hadoop-solr-install.md).
 * [Telepítheti és használhatja a HDInsight-fürtök Giraph](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
 [hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs

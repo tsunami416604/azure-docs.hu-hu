@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 130b3ea0012c5fb21766b26ce2c3e589f0916736
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df3d843516bce30253c23080716e606dfb56f25e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL Database hosszú távú biztonsági másolatok megőrzésének kezelése
 
@@ -80,6 +80,10 @@ Tekintse meg a biztonsági mentések, amelyek egy adott adatbázis egy balról j
 ## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Hosszú távú adatmegőrzési házirendek konfigurálása és a biztonsági másolatok a PowerShell használatával
 
 Az alábbi szakaszok bemutatják a PowerShell segítségével konfigurálhatja a hosszú távú biztonsági másolatok megőrzésének, és tekintse meg az Azure SQL-tároló és az Azure SQL-tároló egy biztonsági másolatból való visszaállítása biztonsági másolatok.
+
+> [!IMPORTANT]
+> Szeretné használni a legújabb AzureRM powershell balról jobbra V2 házirendek beállítása. A jelenlegi verzió: [AzureRM 4.5.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0-preview), ez az előzetes verzióval, ezért ez a parancs telepíti: `Install-Module -Name AzureRM.Sql -AllowPrerelease -Force`.
+> Az előzetes verziót telepítésével kapcsolatos útmutatásért lásd: [Get PowerShellGet modul](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget). A AzureRM powershell előfordulhat, hogy 2018 kiadás néhány nap múlva hamarosan (kellene lennie 5/18/2018), a - AllowPrelease kapcsoló figyelmen kívül hagyja a végleges verziójának telepítésekor, amikor elérhetővé válik, és a következő paranccsal " `Install-Module -Name AzureRM.Sql -Force`.
 
 ### <a name="create-an-ltr-policy"></a>Balról jobbra házirend létrehozása
 

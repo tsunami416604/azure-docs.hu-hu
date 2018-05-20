@@ -83,7 +83,8 @@
 
 
 ## Hibaelhárítás
-### [Kapcsolatok](active-directory-aadconnect-troubleshoot-connectivity.md)
+### [Azure AD-csatlakozási lehetőségek az Azure AD Connecttel](active-directory-aadconnect-troubleshoot-connectivity.md)
+### [SQL-csatlakozási lehetőségek](active-directory-aadconnect-tshoot-sql-connectivity.md)
 ### [Hibák a szinkronizálás során](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [Az objektum nincs szinkronizálva](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [Objektum szinkronizálása a hibaelhárítási feladat használatával](active-directory-aadconnect-troubleshoot-objectsync.md)

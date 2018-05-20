@@ -2,23 +2,17 @@
 title: Az Azure storage emulator használata a fejlesztéshez és teszteléshez |} Microsoft Docs
 description: Az Azure storage emulator egy szabad helyi fejlesztési környezetet biztosít az fejlesztés és tesztelés az Azure Storage-alkalmazások. Ismerje meg, hogyan kérések hitelesítése az emulátor csatlakoztatása az alkalmazásról és a parancssori eszköz használatával.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztéshez és teszteléshez
 
@@ -44,17 +38,10 @@ Néhány funkcióbeli különbségek létezik a storage emulator és az Azure st
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>Indítsa el, és a storage emulator inicializálása
 
-### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[Futtassa az Azure storage emulator Docker](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
-```
-docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
-```
-
-### <a name="using-sdk"></a>SDK használatával
-
 Az Azure storage emulator indítása:
 1. Válassza ki a **Start** gombra vagy nyomja le az **Windows** kulcs.
-1. Írja be a szöveget `Azure Storage Emulator`.
-1. Válassza ki az emulátor megjelenített alkalmazások listája.
+2. Írja be a szöveget `Azure Storage Emulator`.
+3. Válassza ki az emulátor megjelenített alkalmazások listája.
 
 A storage emulator indításakor jelenik meg egy parancssori ablakot. A konzolablakban segítségével indítsa el és állítsa le a storage emulator, törölje az adatokat, állapotának beolvasása, és az emulátor inicializálni. További információkért lásd: a [Storage emulator parancssori eszköz hivatkozás](#storage-emulator-command-line-tool-reference) szakasz a cikk későbbi részében.
 
@@ -71,6 +58,7 @@ A storage emulator alapértelmezés szerint telepítve van `C:\Program Files (x8
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>A storage emulator egy másik SQL-adatbázist használja inicializálása
+
 A storage emulator parancssori eszköz segítségével a storage emulator egy SQL adatbázis-példányt az alapértelmezett LocalDB példányához eltérő mutasson inicializálása:
 
 1. Nyissa meg a Storage Emulator konzolablakban leírtak a [kezdő- és a storage emulator inicializálása](#start-and-initialize-the-storage-emulator) szakasz.

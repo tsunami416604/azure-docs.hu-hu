@@ -1,0 +1,163 @@
+- name: A Virtual Machines Scale Sets dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mik a virtuálisgép-méretezési csoportok?
+      href: overview.md
+- name: Gyors útmutatók
+  items:
+    - name: Létrehozás az Azure Portalon
+      href: quick-create-portal.md
+    - name: Létrehozás az Azure CLI 2.0 használatával
+      href: quick-create-cli.md
+    - name: Létrehozás az Azure PowerShell-lel
+      href: quick-create-powershell.md
+    - name: Létrehozás sablon alapján
+      items:
+        - name: Linux méretezési csoport
+          href: quick-create-template-linux.md
+        - name: Windows méretezési csoport
+          href: quick-create-template-windows.md
+- name: Oktatóanyagok
+  items:
+    - name: 1 – Méretezési csoport létrehozása/kezelése
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-create-and-manage-cli.md
+        - name: Azure PowerShell
+          href: tutorial-create-and-manage-powershell.md
+    - name: 2 – Adatlemezek használata
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-use-disks-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-disks-powershell.md
+    - name: 3 – Egyéni virtuálisgép-rendszerkép létrehozása
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-use-custom-image-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-custom-image-powershell.md
+    - name: 4 – Alkalmazások üzembe helyezése méretezési csoportba
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-install-apps-cli.md
+        - name: Azure PowerShell
+          href: tutorial-install-apps-powershell.md
+        - name: Sablon
+          href: tutorial-install-apps-template.md
+    - name: 5 – Méretezési csoport automatikus méretezése
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-autoscale-cli.md
+        - name: Azure PowerShell
+          href: tutorial-autoscale-powershell.md
+        - name: Sablon
+          href: tutorial-autoscale-template.md
+    - name: Alkalmazások üzembe helyezése Azure-beli virtuálisgép-méretezési csoportokban egyéni Packer-rendszerképpel
+      items:
+        - name: Azure CLI 2.0
+          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
+- name: Példák
+  items:
+    - name: Azure CLI 2.0
+      href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+- name: Útmutató
+  items:
+    - name: Tervezés és kialakítás
+      items:
+        - name: Kialakítási szempontok
+          href: virtual-machine-scale-sets-design-overview.md
+        - name: A példányazonosítók ismertetése
+          href: virtual-machine-scale-sets-instance-ids.md
+    - name: Sablon létrehozása
+      items:
+        - name: Információk a méretezési csoportok sablonjairól
+          href: virtual-machine-scale-sets-mvss-start.md
+        - name: Meglévő virtuális hálózat használata
+          href: virtual-machine-scale-sets-mvss-existing-vnet.md
+        - name: Egyéni rendszerkép használata
+          href: virtual-machine-scale-sets-mvss-custom-image.md
+        - name: Vendégalapú automatikus méretezés használata Linux rendszerű méretezésicsoport-sablonnal
+          href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
+    - name: Üzembe helyezés
+      items:
+        - name: Létrehozás a Visual Studióval
+          href: virtual-machine-scale-sets-vs-create.md
+        - name: Rendelkezésre állási zónák használata
+          href: virtual-machine-scale-sets-use-availability-zones.md
+        - name: Méretezési csoport automatikus méretezése
+          href: virtual-machine-scale-sets-autoscale-overview.md
+          items:
+            - name: Az Azure Portal használata
+              href: virtual-machine-scale-sets-autoscale-portal.md
+            - name: Automatikus méretezés haladó szinten
+              href: ../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: Méretezésicsoport-alkalmazások
+          href: virtual-machine-scale-sets-deploy-app.md
+        - name: Adatlemezek használata méretezési csoportokkal
+          href: virtual-machine-scale-sets-attached-disks.md
+        - name: Méretezési csoportokban lévő lemezek titkosítása
+          items:
+            - name: A PowerShell használata
+              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+            - name: Az Azure CLI 2.0 használata
+              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+        - name: Nagyméretű méretezési csoportokkal végzett munka
+          href: virtual-machine-scale-sets-placement-groups.md
+        - name: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Alacsony prioritás használata
+          href: virtual-machine-scale-sets-use-low-priority.md
+    - name: Kezelés
+      items:
+        - name: Általános kezelési feladatok
+          items:
+            - name: Az Azure CLI 2.0 használata
+              href: virtual-machine-scale-sets-manage-cli.md
+            - name: Azure PowerShell használatával
+              href: virtual-machine-scale-sets-manage-powershell.md
+        - name: Függőleges méretezés méretezési csoportban
+          href: virtual-machine-scale-sets-vertical-scale-reprovision.md
+        - name: Operációs rendszer automatikus frissítései
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Méretezési csoportok módosítása
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: DSC és méretezési csoportok használata
+          href: virtual-machine-scale-sets-dsc.md
+        - name: Méretezési csoportok hálózatkezelése
+          href: virtual-machine-scale-sets-networking.md
+        - name: Sablon konvertálása felügyelt lemezhez
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+    - name: Hibaelhárítás
+      items:
+        - name: Automatikus méretezés
+          href: virtual-machine-scale-sets-troubleshoot.md
+    - name: GYIK
+      items:
+        - name: Méretezési csoport – gyakran ismételt kérdések
+          href: virtual-machine-scale-sets-faq.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Azure CLI
+      href: ../virtual-machines/azure-cli-arm-commands.md
+    - name: REST
+      href: /rest/api/virtualmachinescalesets/
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Díjszabás
+      items:
+        - name: Linux
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
+        - name: Windows
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-vm-scale-set'

@@ -1,24 +1,24 @@
 ---
-title: "Replikák és az Azure Service Fabric-példány |} Microsoft Docs"
-description: "Replikák és példányok--a funkció és életciklusának megismerése"
+title: Replikák és az Azure Service Fabric-példány |} Microsoft Docs
+description: Replikák és példányok--a funkció és életciklusának megismerése
 services: service-fabric
 documentationcenter: .net
 author: appi101
 manager: anuragg
-editor: 
+editor: ''
 ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: 4037fc869d3e26d52f33baa62c626f4621cd11f5
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="replicas-and-instances"></a>Replikák és példányok 
 Ez a cikk áttekintést nyújt az életciklus replikák állapotalapú szolgáltatások és állapot nélküli services példányát.
@@ -97,7 +97,7 @@ Ha az alkalmazást vagy a csomópont egy nyitó másodpéldány összeomlik, át
 
 A replika szerepkör nincs megfelelő állapotban a megnyitásakor.
 
-### <a name="standby-sb"></a>StandBy (SB)
+### <a name="standby-sb"></a>A készenléti (SB)
 A készenléti replikája egy replikát készít egy megőrzött szolgáltatás, amely csökkent, és ezután nyitották meg. Ennek a replikának szüksége lehet a Service Fabric, ha a másik replika hozzáadása (mert a replika már rendelkezik egy részét az állapot és a létrehozási folyamat gyorsabb). A StandByReplicaKeepDuration lejárta után a rendszer törli a készenléti állapotban lévő replikát.
 
 Ha az alkalmazást vagy a csomópont egy készenléti replika összeomlik, átmenetek lefelé állapotát.

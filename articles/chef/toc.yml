@@ -1,25 +1,48 @@
-- name: Chef – dokumentáció
-  href: index.md
+- name: Chef szoftver az Azure-ban – Dokumentáció
+  href: ./index.yml
+- name: Áttekintés
+  items:
+    - name: Chef az Azure-on – Tudnivalók
+      href: ./chef-overview.md
+    - name: Habitat az Azure-on – Tudnivalók
+      href: ./chef-habitat-overview.md
+    - name: InSpec az Azure-on – Tudnivalók
+      href: ./chef-inspec-overview.md
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: 'Automatizálás: Gyorsindítási sablon'
-      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview'
+    - name: Chef
+      expanded: true
+      items:
+        - name: A Chef telepítése az Azure Portal használatával
+          href: ./chef-extension-portal.md
 - name: Oktatóanyagok
   items:
-    - name: Virtuális gépek automatizálása
-      href: /azure/virtual-machines/windows/chef-automation
+    - name: Chef
+      items:
+        - name: Windows rendszerű virtuális gép létrehozása
+          href: /azure/virtual-machines/windows/chef-automation
+- name: Referencia
+  items:
+    - name: Azure Chef-bővítmény
+      href: 'https://docs.chef.io/azure_portal.html#azure-chef-extension'
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 'Blog: VSTS és Chef'
-      href: 'https://blog.chef.io/2017/05/10/integrate-chef-into-your-build-and-release-pipelines-with-microsoft-visual-studio-team-services/'
-    - name: Chef és Azure PS
-      href: 'https://docs.microsoft.com/powershell/module/azure/get-azurevmchefextension?view=azuresmps-4.0.0'
-    - name: Chef és VSTS
-      href: 'https://github.com/chef-partners/vsts-chef/wiki/Getting-Started'
-    - name: Chef-hely
-      href: 'https://www.chef.io'
-    - name: 'Videó: Chef és VSTS'
-      href: 'https://channel9.msdn.com/Events/TechDaysOnline/UK-TechDays-Online-2016/Release-Management-with-VSTS--integration-with-Azure--Chef-Deployment'
+    - name: Chef Automate
+      items:
+        - name: A Chef Automate áttekintése
+          href: 'https://docs.chef.io/chef_automate.html'
+        - name: Chef Automate telepítési útmutató
+          href: 'https://docs.chef.io/install_chef_automate.html'
+        - name: Chef Automate az Azure Marketplace-en
+          href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate'
+    - name: Chef szoftver – Hírek
+      items:
+        - name: Chef szoftver – Blog
+          href: 'https://blog.chef.io/'
+- name: Eszközök
+  items:
+    - name: Chef Visual Studio Team Services-bővítmény
+      href: 'https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks'
+    - name: Habitat Visual Studio Team Services-bővítmény
+      href: 'https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks'

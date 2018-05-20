@@ -10,17 +10,16 @@ ms.assetid: 8917af15-8e37-46cf-87ad-4e6d5d67ecdb
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 81074d303fbcefdf396de09510f69067eac3f3f6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2a9f2e9c2634173cf2feb9ded2e87e49f9c8d1e4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>HDInsight-fürtök létrehozásához a Data Lake Store alapértelmezett tárolóként PowerShell használatával
+
 > [!div class="op_single_selector"]
 > * [Az Azure Portal használata](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [A PowerShell (az alapértelmezett tároló)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -38,11 +37,12 @@ Az alábbiakban a HDInsight a Data Lake Store használatára vonatkozó szempont
 A PowerShell használatával a Data Lake Store működéséhez HDInsight konfigurálásához kövesse az utasításokat a következő öt szakaszokban.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Ez az oktatóanyag megkezdése előtt győződjön meg arról, hogy teljesülnek-e az alábbi követelményeknek:
 
 * **Azure-előfizetés**: Ugrás [beolvasása az Azure ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 * **Az Azure PowerShell 1.0-ás vagy újabb**: lásd: [telepítése és konfigurálása a PowerShell](/powershell/azure/overview).
-* **A Windows Software Development Kit (SDK)**: Windows SDK telepítéséhez, [letölti és a Windows 10-eszközök](https://dev.windows.com/en-us/downloads). Az SDK segítségével hozzon létre egy biztonsági tanúsítványt.
+* **A Windows Software Development Kit (SDK)**: Windows SDK telepítéséhez, [letölti és a Windows 10-eszközök](https://dev.windows.com/downloads). Az SDK segítségével hozzon létre egy biztonsági tanúsítványt.
 * **Az Azure Active Directory szolgáltatás egyszerű**: Ez az oktatóanyag ismerteti, hogyan lehet egy egyszerű szolgáltatás létrehozása az Azure Active Directory (Azure AD). Azonban szeretne létrehozni egy egyszerű szolgáltatást, akkor az Azure AD rendszergazdai jogokkal kell rendelkeznie. Ha Ön rendszergazda, hagyja ki ezt az előfeltételt, és az oktatóanyag folytatásához.
 
     >[!NOTE]
@@ -50,6 +50,7 @@ Ez az oktatóanyag megkezdése előtt győződjön meg arról, hogy teljesülnek
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Data Lake Store-fiók létrehozása
+
 A Data Lake Store-fiók létrehozásához tegye a következőket:
 
 1. Az asztalon nyisson meg egy PowerShell-ablakot, és adja meg az alábbi részletek. Amikor bejelentkeznek, jelentkezzen be az előfizetés rendszergazdáihoz vagy tulajdonosok egyikeként kéri. 
@@ -142,7 +143,7 @@ Ebben a szakaszban egy egyszerű szolgáltatást az Azure AD-alkalmazás létreh
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 58b4c6769f6eb441e9ccaf041f3d56f4af9a0831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3d95a602815cd444fb4b062853d9d31b75993e6a
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Megérteni, hogyan használható a IoT peremhálózati modulok, konfigurálva, és használja fel újra – előzetes
 
@@ -168,7 +168,7 @@ Az üzembe helyezési jegyzék kívánt tulajdonságokat adhat meg a modul iker 
 
 Ha egy modul iker kívánt tulajdonságok az üzembe helyezési jegyzékben nincs megadva, az IoT-központ nem módosítják a modul iker bármely olyan módon, és állítsa be a kívánt tulajdonságokat programozott módon lesz.
 
-Ugyanazt a mechanizmust, amely lehetővé teszi az eszköz twins módosítása modul twins módosítására szolgálnak. Tekintse meg a [eszköz iker – útmutató fejlesztőknek](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) további tájékoztatást talál.   
+Ugyanazt a mechanizmust, amely lehetővé teszi az eszköz twins módosítása modul twins módosítására szolgálnak. Tekintse meg a [eszköz iker – útmutató fejlesztőknek](../iot-hub/iot-hub-devguide-device-twins.md) további tájékoztatást talál.   
 
 ## <a name="deployment-manifest-example"></a>Manifest központi telepítés példája
 

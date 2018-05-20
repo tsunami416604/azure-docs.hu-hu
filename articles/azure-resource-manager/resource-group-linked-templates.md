@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 05/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 326d6873ae78c5f712832c4cfce9c793f1dfbf37
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e0c0c3f51b455983dbe3f937917ed090e51d0005
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Csatolt és beágyazott sablonok Azure-erőforrások telepítése során
 
@@ -148,7 +148,7 @@ A következő példa bemutatja, hogyan két URL-címéből kapcsolt sablonok lé
 }
 ```
 
-Is [deployment()](resource-group-template-functions-deployment.md#deployment) az alap URL-CÍMÉT az aktuális sablon, és azt használja az URL-cím lekérésére más sablonok ugyanazon a helyen. Ez a módszer akkor hasznos, ha a sablon helye megváltozik (lehet, hogy miatt versioning), vagy el szeretné kerülni a merevlemez kódolási URL-címek a sablon fájlban.
+Is [deployment()](resource-group-template-functions-deployment.md#deployment) az alap URL-CÍMÉT az aktuális sablon, és azt használja az URL-cím lekérésére más sablonok ugyanazon a helyen. Ez a módszer akkor hasznos, ha a sablon helye megváltozik (lehet, hogy miatt versioning), vagy el szeretné kerülni a merevlemez kódolási URL-címek a sablon fájlban. A templateLink tulajdonság csak akkor ad vissza, a távoli sablon URL-címmel való csatoláskor. Ha egy helyi sablont használ, ez a tulajdonság nem érhető el.
 
 ```json
 "variables": {
@@ -209,7 +209,7 @@ A fő sablont a csatolt sablon telepíti, és lekérdezi a visszaadott érték. 
 }
 ```
 
-Más típusú erőforrások, például a csatolt sablont és egyéb erőforrások közti függőségeket is beállíthatja. Ezért ha más erőforrásokhoz szükséges egy kimeneti értéket, a csatolt sablonból, biztosíthatja, a csatolt sablon előtt történik. Vagy a csatolt sablon más erőforrások támaszkodik, ha biztos lehet benne, más erőforrások telepítése előtt a csatolt sablont.
+Más típusú erőforrások, például a csatolt sablont és egyéb erőforrások közti függőségeket is beállíthatja. Ezért amikor más erőforrásokhoz egy kimeneti értéket, a csatolt sablonból szükséges, győződjön meg arról, a csatolt sablon előtt történik. Vagy ha a csatolt sablon más erőforrások támaszkodik, győződjön meg arról, más erőforrások telepítése előtt a csatolt sablont.
 
 A következő példa bemutatja a sablont, amely telepít egy nyilvános IP-címet, és az erőforrás-Azonosítót adja vissza:
 

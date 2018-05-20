@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 976f61d99b88d241b39bfec9d95e16de272d9c14
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 531aeaacf0bd70521d70afb45d141fc3296ebb04
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-build"></a>Oktatóanyag: Az Azure Container Registry Build használata a rendszerképek összeállításának az alapként szolgáló rendszerkép frissítésekor történő automatikus indításához
 
@@ -28,8 +28,7 @@ Az oktatóanyag-sorozat utolsó része az alábbi lépésekből áll:
 > * Az aktivált összeállítás megjelenítése
 > * A frissített alkalmazás-rendszerkép ellenőrzése
 
-> [!IMPORTANT]
-> Az ACR Build jelenleg előzetes verzióban érhető el, és csak az **USA keleti régiójában** (eastus) és a **nyugat-európai** (westeurope) régióban lévő Azure tárolóregisztrációs adatbázisok támogatják. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -129,7 +128,7 @@ Az [az acr build-task run][az-acr-build-task-run] parancs használatával manuá
 az acr build-task run --registry $ACR_NAME --name buildhelloworld
 ```
 
-Amint az összeállítás véget ért, jegyezze fel a **Build ID** (Összeállítás-azonosító) értékét (például „eastus6”), ha a következő nem kötelező lépést is végre szeretné hajtani.
+Amint az összeállítás véget ért, jegyezze fel a **Build ID** (Összeállítás-azonosító) értékét (például „aa6”), ha a következő nem kötelező lépést is végre szeretné hajtani.
 
 ### <a name="optional-run-application-container-locally"></a>Nem kötelező: Alkalmazástároló helyi futtatása
 
@@ -141,7 +140,7 @@ Először jelentkezzen be a tárolóregisztrációs adatbázisba az [az acr logi
 az acr login --name $ACR_NAME
 ```
 
-Futtassa helyileg a tárolót a `docker run` paranccsal. A **\<build-id\>** (összeállítás-azonosító) helyére az előző lépés kimenetében található összeállítás-azonosítót (például „eastus5”) írja.
+Futtassa helyileg a tárolót a `docker run` paranccsal. A **\<build-id\>** (összeállítás-azonosító) helyére az előző lépés kimenetében található összeállítás-azonosítót (például „aa6”) írja.
 
 ```azurecli
 docker run -d -p 8080:80 $ACR_NAME.azurecr.io/helloworld:<build-id>
@@ -163,14 +162,14 @@ Ha elvégezte az előző oktatóanyagot (és nem törölte a regisztrációs ada
 
 ```console
 $ az acr build-task list-builds --registry $ACR_NAME --output table
-BUILD ID    TASK             PLATFORM    STATUS     TRIGGER       STARTED               DURATION
-----------  ---------------  ----------  ---------  ------------  --------------------  ----------
-eastus6     buildhelloworld  Linux       Succeeded  Manual        2018-04-22T00:03:46Z  00:00:40
-eastus5                                  Succeeded  Manual        2018-04-22T00:01:45Z  00:00:25
-eastus4     buildhelloworld  Linux       Succeeded  Git Commit    2018-04-21T23:52:33Z  00:00:30
-eastus3     buildhelloworld  Linux       Succeeded  Manual        2018-04-21T23:50:10Z  00:00:35
-eastus2     buildhelloworld  Linux       Succeeded  Manual        2018-04-21T23:46:15Z  00:00:55
-eastus1                                  Succeeded  Manual        2018-04-21T23:24:05Z  00:00:35
+BUILD ID    TASK             PLATFORM    STATUS     TRIGGER     STARTED               DURATION
+----------  ---------------  ----------  ---------  ----------  --------------------  ----------
+aa6         buildhelloworld  Linux       Succeeded  Manual      2018-05-10T20:00:12Z  00:00:50
+aa5                          Linux       Succeeded  Manual      2018-05-10T19:57:35Z  00:00:55
+aa4         buildhelloworld  Linux       Succeeded  Git Commit  2018-05-10T19:49:40Z  00:00:45
+aa3         buildhelloworld  Linux       Succeeded  Manual      2018-05-10T19:41:50Z  00:01:20
+aa2         buildhelloworld  Linux       Succeeded  Manual      2018-05-10T19:37:11Z  00:00:50
+aa1                          Linux       Succeeded  Manual      2018-05-10T19:10:14Z  00:00:55
 ```
 
 ## <a name="update-base-image"></a>Az alapként szolgáló rendszerkép frissítése
@@ -202,18 +201,18 @@ A kimenet a következőkhöz hasonló. Az utolsóként végrehajtott összeáll�
 ```console
 $ az acr build-task list-builds --registry $ACR_NAME --output table
 BUILD ID    TASK             PLATFORM    STATUS     TRIGGER       STARTED               DURATION
-----------  ---------------  ----------  ---------  ----------    --------------------  ----------
-eastus8     buildhelloworld  Linux       Succeeded  Image Update  2018-04-22T00:09:24Z  00:00:50
-eastus7                                  Succeeded  Manual        2018-04-22T00:08:49Z  00:00:40
-eastus6     buildhelloworld  Linux       Succeeded  Image Update  2018-04-20T00:15:30Z  00:00:43
-eastus5     buildhelloworld  Linux       Succeeded  Manual        2018-04-20T00:10:05Z  00:00:45
-eastus4     buildhelloworld  Linux       Succeeded  Git Commit    2018-04-19T23:40:38Z  00:00:40
-eastus3     buildhelloworld  Linux       Succeeded  Manual        2018-04-19T23:36:37Z  00:00:40
-eastus2     buildhelloworld  Linux       Succeeded  Manual        2018-04-19T23:35:27Z  00:00:40
-eastus1                                  Succeeded  Manual        2018-04-19T22:51:13Z  00:00:30
+----------  ---------------  ----------  ---------  ------------  --------------------  ----------
+aa8         buildhelloworld  Linux       Succeeded  Image Update  2018-05-10T20:09:52Z  00:00:45
+aa7                          Linux       Succeeded  Manual        2018-05-10T20:09:17Z  00:00:40
+aa6         buildhelloworld  Linux       Succeeded  Manual        2018-05-10T20:00:12Z  00:00:50
+aa5                          Linux       Succeeded  Manual        2018-05-10T19:57:35Z  00:00:55
+aa4         buildhelloworld  Linux       Succeeded  Git Commit    2018-05-10T19:49:40Z  00:00:45
+aa3         buildhelloworld  Linux       Succeeded  Manual        2018-05-10T19:41:50Z  00:01:20
+aa2         buildhelloworld  Linux       Succeeded  Manual        2018-05-10T19:37:11Z  00:00:50
+aa1                          Linux       Succeeded  Manual        2018-05-10T19:10:14Z  00:00:55
 ```
 
-Ha szeretné végrehajtani a következő nem kötelező lépést az újonnan összeállított tároló futtatására és a frissített verziószám megtekintésére, jegyezze fel a rendszerképfrissítés által kiváltott összeállítás **BUILD ID** (Összeállítás-azonosító) értékét (az előző kimenetben ez az „eastus6” érték).
+Ha szeretné végrehajtani a következő nem kötelező lépést az újonnan összeállított tároló futtatására és a frissített verziószám megtekintésére, jegyezze fel a rendszerképfrissítés által kiváltott összeállítás **BUILD ID** (Összeállítás-azonosító) értékét (az előző kimenetben ez az „aa8” érték).
 
 ### <a name="optional-run-newly-built-image"></a>Nem kötelező: Az újonnan összeállított rendszerkép futtatása
 
@@ -253,7 +252,6 @@ Ez az oktatóanyag azt mutatta be, hogy hogyan használhatók az összeállítá
 [code-sample]: https://github.com/Azure-Samples/acr-build-helloworld-node
 [dockerfile-app]: https://github.com/Azure-Samples/acr-build-helloworld-node/blob/master/Dockerfile-app
 [dockerfile-base]: https://github.com/Azure-Samples/acr-build-helloworld-node/blob/master/Dockerfile-base
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

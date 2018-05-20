@@ -5,16 +5,16 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/22/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 85a627678f862d783d47013d82bae8b485d7d4e9
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain munkaterület központi telepítése
 
@@ -23,6 +23,25 @@ Az Azure Blockchain munkaterület használatával lett telepítve. a megoldássa
 Blockchain munkaterület az összetevőivel kapcsolatos további információkért lásd: [Azure Blockchain munkaterület architektúra](blockchain-workbench-architecture.md).
 
 ## <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
+
+Blockchain munkaterület lehetővé teszi egy blockchain főkönyvi együtt megfelelő Azure szolgáltatások leggyakrabban használt hozható létre olyan blockchain-alapú alkalmazás telepítését. Az Azure-szolgáltatásokat az Azure-előfizetéshez az erőforráscsoporton belül létre eredményezi Blockchain munkaterület központi telepítése.
+
+* 1 esemény rács témakör
+* 1 Service Bus Namespace
+* 1 application insights szolgáltatással
+* 1 SQL-adatbázis (standard szintű, S0)
+* 2 alkalmazásszolgáltatások (normál)
+* 2 azure kulcstárolójának
+* 2 azure Storage-fiókok (Standard-LRS)
+* 2 virtuálisgép-méretezési csoportok (az érvényesítési és a munkavégző csomópont)
+* (Beleértve a terheléselosztóhoz, a hálózati biztonsági csoport és a nyilvános IP-cím minden virtuális hálózathoz), 2 virtuális hálózatok
+* Választható lehetőség: Az Azure-figyelő
+
+Az alábbiakban egy létrehozott központi telepítésre példát **myblockchain** erőforráscsoportot.
+
+![A központi telepítési példa](media/blockchain-workbench-deploy/example-deployment.png)
+
+Blockchain munkaterület költsége az alapul szolgáló Azure-szolgáltatás költségének aggregátum. Díjszabási információkért az Azure-szolgáltatások használatával kell kiszámítani a [árképzési Számológép](https://azure.microsoft.com/pricing/calculator/).
 
 Azure Blockchain munkaterület szükséges a telepítés előtt több előfeltételnek. Az Előfeltételek például a következők az Azure AD-konfiguráció és az alkalmazás regisztráció.
 
@@ -42,7 +61,7 @@ Blockchain munkaterület telepítéséhez szükséges egy Azure AD-alkalmazás r
 
     |Beállítás  | Érték  |
     |---------|---------|
-    |Név | `Blockchain API` |
+    |Name (Név) | `Blockchain API` |
     |Alkalmazástípus |Webalkalmazás/API|
     |Bejelentkezési URL | `https://blockchainapi` |
 
@@ -114,7 +133,7 @@ Blockchain munkaterület használja az Azure AD a fő felügyeleti identitásren
     |Beállítás  | Érték  |
     |---------|---------|
     | Leírás | `Service` |
-    | Lejárat | Válassza ki a lejárati idő |
+    | Elévül | Válassza ki a lejárati idő |
 
 4. Kattintson a **Mentés** gombra. 
 5. Másolja a kulcs értékét, és tárolja a későbbi használatra. Központi telepítéshez van szükség.
@@ -133,7 +152,7 @@ Az alkalmazás Azonosítóját és a bérlői adatai szükségesek telepítésé
 
     | Történő tárolásának  | Használja a központi telepítés |
     |------------------|-------------------|
-    | Alkalmazás azonosítója | Az Azure Active Directory beállítása > alkalmazás azonosítója |
+    | Alkalmazásazonosító | Az Azure Active Directory beállítása > alkalmazás azonosítója |
 
 ### <a name="get-tenant-domain-name"></a>Tartománynév-bérlő beszerzése
 
@@ -166,14 +185,14 @@ Az előfeltételként szükséges lépések elvégzése után, készen áll a Bl
     |---------|--------------|
     | Erőforrás-előtag | A központi telepítés rövid egyedi azonosítója. Ezt az értéket erőforrások elnevezési alapjaként használja. |
     | Virtuális gép felhasználónév | A felhasználónév az összes virtuális gép (VM) használatos rendszergazdaként. |
-    | Hitelesítési típus | Válassza ki, ha azt szeretné, használhat olyan jelszót, vagy a kulcsot a következőhöz csatlakozni a virtuális gépek. |
+    | Hitelesítés típusa | Válassza ki, ha azt szeretné, használhat olyan jelszót, vagy a kulcsot a következőhöz csatlakozni a virtuális gépek. |
     | Jelszó | A jelszó szolgál a virtuális gépeken való kapcsolódáshoz. |
     | SSH | Nyilvános RSA-kulcs használata az egysoros formátum kezdődő **ssh-rsa** , vagy használja a többsoros PEM-formátumba. SSH-kulcsok használatával hozhat létre `ssh-keygen` Linux- és OS X, vagy a PuTTYGen Windows rendszeren. SSH-kulcsokat, a további tudnivalókat lásd a [SSH használata a Windows Azure-kulcsok](../virtual-machines/linux/ssh-from-windows.md). |
     | Adatbázis-jelszó / adatbázis jelszó megerősítése | Adja meg a központi telepítés részeként létrehozott adatbázis eléréséhez használandó jelszó. |
     | Központi telepítés régió | Adja meg a telepítendő Blockchain munkaterület erőforrások helyét. A legjobb rendelkezésre állás érdekében ez meg kell felelnie a **hely** beállítást. |
     | Előfizetés | Adja meg a telepítéshez használni kívánt Azure-előfizetést. |
     | Erőforráscsoportok | Hozzon létre egy új erőforráscsoportot kiválasztásával **hozzon létre új** , és adja meg egy egyedi erőforráscsoport neve. |
-    | Tartózkodási hely | Adja meg a régió kívánja telepíteni a keretrendszer. |
+    | Hely | Adja meg a régió kívánja telepíteni a keretrendszer. |
 
 6.  Válassza ki **OK** az alapszintű beállítás konfigurációs szakasz befejezéséhez.
 
@@ -184,7 +203,7 @@ Az előfeltételként szükséges lépések elvégzése után, készen áll a Bl
     | Beállítás | Leírás  |
     |---------|--------------|
     | Tartománynév | Használja az Azure AD bérlő gyűjti a [Get-bérlő tartománynevét](#get-tenant-domain-name) című cikk Előfeltételek szakaszát. |
-    | Alkalmazás azonosítója | Használja az Blockchain app regisztráció az Alkalmazásazonosító gyűjti a [Alkalmazásazonosító beszerzése](#get-application-id) című cikk Előfeltételek szakaszát. |
+    | Alkalmazásazonosító | Használja az Blockchain app regisztráció az Alkalmazásazonosító gyűjti a [Alkalmazásazonosító beszerzése](#get-application-id) című cikk Előfeltételek szakaszát. |
     | Alkalmazáskulcs | Az alkalmazás-kulcsot az összegyűjtött Blockchain app regisztráció használja a [alkalmazás hozzáadása Graph API-kulcs](#add-graph-api-key-to-application) című cikk Előfeltételek szakaszát. |
 
 
@@ -208,14 +227,14 @@ Az előfeltételként szükséges lépések elvégzése után, készen áll a Bl
 
     | Beállítás | Leírás  |
     |---------|--------------|
-    | Monitorozás | Válassza ki, hogy később engedélyezni kívánja a blockchain hálózat figyelése Azure figyelője |
+    | Figyelés | Válassza ki, hogy később engedélyezni kívánja a blockchain hálózat figyelése Azure figyelője |
     | Csatlakozás meglévő Naplóelemzési példányhoz | Válassza ki, hogy egy meglévő használni kívánt Naplóelemzési példányt, vagy hozzon létre egy újat. Ha egy meglévő példányát használja, adja meg a munkaterület azonosítója és az elsődleges kulcs. |
 
 12. Kattintson a **OK** az Azure-figyelő szakasz befejezéséhez.
 
 13. Tekintse át az összefoglalást, hogy ellenőrizze a paramétereket pontosak.
 
-    ![Összefoglalás](media/blockchain-workbench-deploy/blockchain-workbench-summary.png)
+    ![Összegzés](media/blockchain-workbench-deploy/blockchain-workbench-summary.png)
 
 14. Válassza ki **létrehozása** elfogadja a feltételeket, és az Azure Blockchain munkaterület telepítéséhez.
 
@@ -254,9 +273,18 @@ Miután az Azure-Blockchain munkaterület van telepítve, a következő lépéss
 
 7. Válassza ki **mentése** ügyfél-regisztrációk frissítése.
 
+## <a name="remove-a-deployment"></a>Távolítsa el a telepítést
+
+Ha már nincs szükség a központi telepítés, eltávolíthatja a központi telepítés törölni kell a Blockchain munkaterület-csoport.
+
+1. Az Azure-portálon lépjen a **erőforráscsoport** a bal oldali navigációs panelen, és válassza ki a törölni kívánt erőforráscsoportot. 
+2. Válassza az **Erőforráscsoport törlése** elemet. Törlés ellenőrzéséhez írja be az erőforráscsoport neve, és válassza ki **törlése**.
+
+    ![Erőforráscsoport törlése](media/blockchain-workbench-deploy/delete-resource-group.png)
+
 ## <a name="next-steps"></a>További lépések
 
-Azure Blockchain munkaterület telepítése útmutató cikkben. Megtudhatja, hogyan hozhat létre egy blockchain alkalmazást, folytassa a következő cikkben található útmutató.
+Útmutató cikkben telepített Azure Blockchain munkaterületet. Megtudhatja, hogyan hozhat létre egy blockchain alkalmazást, folytassa a következő cikkben található útmutató.
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain munkaterület blockchain-alkalmazás létrehozása](blockchain-workbench-create-app.md)

@@ -1,9 +1,9 @@
 ---
-title: "Vállalati Állapothordozás engedélyezése az Azure Active Directoryban |} Microsoft Docs"
-description: "Gyakori kérdések a Windows-eszközökön a vállalati Állapothordozás beállításait. A vállalati Állapothordozás nyújt a felhasználók számára egy egységes élmény a Windows-eszközön, és csökkenti az új eszköz konfigurálásához szükséges időt."
+title: Vállalati Állapothordozás engedélyezése az Azure Active Directoryban |} Microsoft Docs
+description: Gyakori kérdések a Windows-eszközökön a vállalati Állapothordozás beállításait. A vállalati Állapothordozás nyújt a felhasználók számára egy egységes élmény a Windows-eszközön, és csökkenti az új eszköz konfigurálásához szükséges időt.
 services: active-directory
-keywords: "a vállalati állapothordozás, a windows-felhő, a vállalati állapothordozás engedélyezése"
-documentationcenter: 
+keywords: a vállalati állapothordozás, a windows-felhő, a vállalati állapothordozás engedélyezése
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 3a8714ddbda10d8e1b4a8de35711101f4c8a0106
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dba749b6d85898e6438ce1160b9bf6eaff6f4ac9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 A vállalati Állapothordozás érhető el a szervezet az Azure AD Premium vagy Enterprise Mobility + Security (EMS) licencet. Egy Azure AD-előfizetés beszerzésére további információkért lásd: a [az Azure AD, termékoldala](https://azure.microsoft.com/services/active-directory).
 
-A vállalati Állapothordozás engedélyezése esetén a szervezet automatikusan megkapja ingyenes, korlátozott használatú licencet az Azure Rights Management. Ez az ingyenes előfizetés titkosítása és visszafejtése a vállalati beállítások és a vállalati Állapothordozás által szinkronizált alkalmazásadatok korlátozódik. Rendelkeznie kell [a szolgáltatás fizetős](https://azure.microsoft.com/pricing/details/active-directory/) használata az Azure Rights Management szolgáltatás összes funkciójáról.
+Ha engedélyezi a vállalati Állapothordozás, a szervezet automatikusan kapnak Azure Rights Management-védelem ingyenes, korlátozott használatú licencet az Azure Information Protectiontől. Ez az ingyenes előfizetés titkosítása és visszafejtése a vállalati beállítások és a vállalati Állapothordozás által szinkronizált alkalmazásadatok korlátozódik. Rendelkeznie kell [a szolgáltatás fizetős](https://azure.microsoft.com/pricing/details/information-protection/) is használja az Azure Rights Management szolgáltatás teljes lehetőségeit.
 
 ## <a name="to-enable-enterprise-state-roaming"></a>A vállalati Állapothordozás engedélyezése
 
@@ -39,7 +39,7 @@ A vállalati Állapothordozás engedélyezése esetén a szervezet automatikusan
 Az a vállalati Állapothordozás szolgáltatás használata Windows 10-es eszközök az eszközt kell hitelesítenie, az Azure AD identity használatával. Az Azure AD-tartományhoz csatlakoztatott eszközök esetén a felhasználó elsődleges bejelentkezési azonosító az Azure AD identity, így nincs szükség további konfigurációra. A helyszíni Active Directoryt használó eszközök esetében az informatikai rendszergazda kell [a tartományhoz csatlakozó eszközök csatlakoztatása az Azure AD, a Windows 10 észlel](active-directory-azureadjoin-devices-group-policy.md).
 
 ## <a name="data-storage"></a>Adattárolás
-A vállalati Állapothordozás adatok található egy vagy több [Azure-régiók](https://azure.microsoft.com/regions/) , hogy ajánlott igazodnak az ország vagy régió érték beállítása az Azure Active Directory-példányban. A vállalati Állapothordozás adatok particionálása három fő földrajzi régió alapján: Észak-Amerikában, az EMEA és APAC. A bérlői vállalati Állapothordozás adatok helyben található, és a földrajzi régió, és nem replikálódnak régiók.  Például:
+A vállalati Állapothordozás adatok található egy vagy több [Azure-régiók](https://azure.microsoft.com/regions/) , hogy ajánlott igazodnak az ország vagy régió érték beállítása az Azure Active Directory-példányban. A vállalati Állapothordozás adatok particionálása három fő földrajzi régió alapján: Észak-Amerikában, az EMEA és APAC. A bérlői vállalati Állapothordozás adatok helyben található, és a földrajzi régió, és nem replikálódnak régiók.  Példa:
 Ország vagy régió érték | a birtokolt adataikat
 ---------------------|-------------------------
 "Franciaország" vagy "Zambia" például az EMEA ország | egy vagy az Azure-régiók Európa 

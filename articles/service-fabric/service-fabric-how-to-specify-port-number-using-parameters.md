@@ -1,22 +1,22 @@
 ---
-title: "A paraméterek az Azure Service Fabric szolgáltatás portszámát megadása |} Microsoft Docs"
-description: "Bemutatja, hogyan paraméterek használatával adja meg a portot, az alkalmazás a Service Fabric"
+title: A paraméterek az Azure Service Fabric szolgáltatás portszámát megadása |} Microsoft Docs
+description: Bemutatja, hogyan paraméterek használatával adja meg a portot, az alkalmazás a Service Fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: aca5b6a476e9526498a5e4834aaa28eb73750562
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 06cfb375c6c18082a0d0316cfcb742a7779fc8a8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>A port számát, a paraméterek használatával a Service Fabric szolgáltatás megadása
 
@@ -30,7 +30,7 @@ Ebben a példában az asp.net core webes API-t egy paraméter segítségével á
 1. Válassza ki az állapot nélküli ASP.NET Core sablont.
 1. Válassza a webes API-t.
 1. Nyissa meg a ServiceManifest.xml fájlt.
-1. Megjegyzés: a végpont, a szolgáltatás számára megadott név. Alapértelmezett érték a `ServiceEndpoint`.
+1. Megjegyzés: a végpont, a szolgáltatás számára megadott név. Az alapértelmezett szint a `ServiceEndpoint`.
 1. Nyissa meg a ApplicationManifest.xml fájlt
 1. Az a `ServiceManifestImport` elem, adjon hozzá egy új `RessourceOverrides` elem a végpont a ServiceManifest.xml fájlban hivatkozást.
 
@@ -46,7 +46,7 @@ Ebben a példában az asp.net core webes API-t egy paraméter segítségével á
       </ServiceManifestImport>
     ```
 
-1. Az a `Endpoint` elem, most felülbírálhatja azok az attribútumok egy paraméterrel. A jelen példában adja meg `Port` , majd állítsa be a kapcsos zárójeleket – például használatával paraméter neve`[MyWebAPI_PortNumber]`
+1. Az a `Endpoint` elem, most felülbírálhatja azok az attribútumok egy paraméterrel. A jelen példában adja meg `Port` , majd állítsa be a kapcsos zárójeleket – például használatával paraméter neve `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -68,7 +68,7 @@ Ebben a példában az asp.net core webes API-t egy paraméter segítségével á
       </Parameters>
     ```
 
-1. És adja meg a`DefaultValue`
+1. És adja meg a `DefaultValue`
 
     ```xml
       <Parameters>

@@ -3,23 +3,25 @@ title: Az Azure Active Directory v2.0-végpontra vonatkozó alkalmazástípusok 
 description: Milyen alkalmazásokat és az Azure Active Directory v2.0-végponttól által támogatott forgatókönyveket.
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
-ms.author: hpsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 291cd1adaf36d7f02aae84f97b7f7b3e6bca2c9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 134199c879f6793cb4ed0a88cf0593786341f6d8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Alkalmazástípusok az Azure Active Directory v2.0 végpont
 Az Azure Active Directory (Azure AD) v2.0-végponttól hitelesítést is támogatja a modern alkalmazás-architektúrák esetén az összes szabványos protokollokat számos [OAuth 2.0-s vagy az OpenID Connect](active-directory-v2-protocols.md). A cikkből megtudhatja, milyen típusú alkalmazásokat úgy, hogy az Azure AD v2.0, függetlenül a választott nyelv vagy platform használatával. A cikkben szereplő információkat, amelyekkel jobban megértheti az összetettebb feladatok előtt készült [a kód munka megkezdéséhez](active-directory-appmodel-v2-overview.md#getting-started).
@@ -95,7 +97,7 @@ Egy webes API-alkalmazás, illetve a kiszolgáló webalkalmazások, asztali és 
 
 A webes API biztonságossá OAuth2 hozzáférési jogkivonatok segítségével történő beállításáról tekintse meg a webes API mintakódok a [bevezetés](active-directory-appmodel-v2-overview.md#getting-started) szakasz.
 
-Sok esetben webes API-kat is kell kimenő kérelmek más alsóbb rétegbeli webes API-kat Azure Active Directory által biztosított.  Ehhez az szükséges, webes API-k kihasználhatja az Azure AD **a nevében a** folyamatot, amely lehetővé teszi, hogy a webes API-t a helyszíni Exchange számára egy új hozzáférési jogkivonat kimenő kérelmek használhatók egy bejövő jogkivonatot.  A v2.0-végpontra a folyamat nevében ismertetett [részletesen Itt](active-directory-v2-protocols-oauth-on-behalf-of.md).
+Sok esetben webes API-kat is kell kimenő kérelmek más alsóbb rétegbeli webes API-kat Azure Active Directory által biztosított. Ehhez az szükséges, webes API-k kihasználhatja az Azure AD **a nevében a** folyamatot, amely lehetővé teszi, hogy a webes API-t a helyszíni Exchange számára egy új hozzáférési jogkivonat kimenő kérelmek használhatók egy bejövő jogkivonatot. A v2.0-végpontra a folyamat nevében ismertetett [részletesen Itt](active-directory-v2-protocols-oauth-on-behalf-of.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobil- és natív alkalmazások
 Eszköz telepített alkalmazások, többek között a mobil- és asztali alkalmazások esetében gyakran igényelnek hozzáférést a háttér-szolgáltatásaihoz vagy webes API-k, amelyek adatokat tárolhatnak, és a feladatokat egy felhasználó nevében. Ezek az alkalmazások használatával adhat hozzá bejelentkezési és hitelesítési háttér szolgáltatásaihoz a [OAuth 2.0 hitelesítésikód-folyamata](active-directory-v2-protocols-oauth-code.md).

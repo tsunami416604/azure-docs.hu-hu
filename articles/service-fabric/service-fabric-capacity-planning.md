@@ -1,24 +1,24 @@
 ---
-title: "Kapacitástervezés a Service Fabric-alkalmazásokhoz |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet szükséges a Service Fabric-alkalmazás a számítási csomópontok számának meghatározása"
+title: Kapacitástervezés a Service Fabric-alkalmazásokhoz |} Microsoft Docs
+description: Ismerteti, hogyan lehet szükséges a Service Fabric-alkalmazás a számítási csomópontok számának meghatározása
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: markfuss
-editor: 
+editor: ''
 ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: dc5e81ff7e5466d258624cee80c520c848bd60fa
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ac8abbdbbe9125ea036d837c08e1089aa6d1e55d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Kapacitástervezés a Service Fabric-alkalmazások
 Ez a dokumentum útmutatást ad az Azure Service Fabric-alkalmazások futtatásához szükséges erőforrások (CPU-k, memória, lemezes tárolás) becslésére módjáról. Gyakori, hogy az erőforrás-követelményei változnak az idők is. Túl sok erőforrás általában a szolgáltatás fejlesztés/tesztelés, és ezután ugyan több erőforrást, éles környezetben módba, és az alkalmazás növekszik időben népszerűvé vált a szükséges. Az alkalmazás tervezésekor gondolja, hogy a hosszú távú követelmények keresztül, és lehetőségeket, amelyek lehetővé teszik a szolgáltatás méretezhető, nagy felhasználói igényeknek.

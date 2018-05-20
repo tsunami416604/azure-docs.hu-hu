@@ -45,14 +45,14 @@
           href: delete-cluster.md
     - name: Adatkötetek konfigurálása
       items:
-        - name: Kubernetes-kötet – Lemezek
-          href: azure-disk-volume.md
-        - name: Kubernetes-kötet – Fájlok
-          href: azure-files-volume.md
-        - name: Tartós kötet – Lemezek
+        - name: AzureDisk dinamikus kiépítés
           href: azure-disks-dynamic-pv.md
-        - name: Tartós kötet – Fájlok
+        - name: AzureDisk statikus kiépítés
+          href: azure-disk-volume.md
+        - name: AzureFile dinamikus kiépítés
           href: azure-files-dynamic-pv.md
+        - name: AzureFile statikus kiépítés
+          href: azure-files-volume.md
     - name: Hálózatkezelés konfigurálása
       items:
         - name: Hálózatok – áttekintés

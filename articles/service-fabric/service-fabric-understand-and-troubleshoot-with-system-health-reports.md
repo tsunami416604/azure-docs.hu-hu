@@ -1,24 +1,24 @@
 ---
-title: "Hibaelhárítás a rendszerállapot-jelentések |} Microsoft Docs"
-description: "A rendszerállapot-jelentések küldött hibaelhárítási fürt vagy az alkalmazások problémáival Azure Service Fabric-összetevők és használatát ismerteti"
+title: Hibaelhárítás a rendszerállapot-jelentések |} Microsoft Docs
+description: A rendszerállapot-jelentések küldött hibaelhárítási fürt vagy az alkalmazások problémáival Azure Service Fabric-összetevők és használatát ismerteti
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: def4f1cdcd173e26964f9be11266d0e1a20fcafa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8304790b5eba4679b0633641c82d57316e7f8ec4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevők adja meg, hogy közvetlenül a kezdő verzióról a fürt összes entitásának a rendszerállapot-jelentéseket. A [a health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli a rendszer-jelentéseken alapuló entitásokat. Azt is rendszerezi azokat a hierarchiában, amely rögzíti az entitás interakciókat.
@@ -35,7 +35,7 @@ Rendszerállapot-jelentések adja meg a fürt és az alkalmazás funkciói és j
 > 
 > 
 
-A rendszer az összetevő jelent azonosítják a forrás, amely kezdődik-e a "**System.**" prefix. Watchdogs nem használhatja ugyanazt az előtagot az eseményforrásokat, érvénytelen paramétereket tartalmazó jelentések utasítja el.
+A rendszer az összetevő jelent azonosítják a forrás, amely kezdődik-e a "**System.**" előtag. Watchdogs nem használhatja ugyanazt az előtagot az eseményforrásokat, érvénytelen paramétereket tartalmazó jelentések utasítja el.
 
 Vizsgáljuk meg néhány rendszer jelentések segítségével megtudhatja, mi váltja ki őket, és megtudhatja, hogyan javítsa ki a lehetséges problémák jelölnek.
 

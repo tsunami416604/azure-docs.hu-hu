@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3d7c94e8b1415a24427e1f90f5613d8c181608a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Az Azure Cosmos DB kiszolgálóoldali programozása: tárolt eljárások, eseményindítók adatbázis és a felhasználó által megadott függvények
 
@@ -151,6 +151,21 @@ A fenti példában a visszahívás hibát jelez, ha a művelet sikertelen volt. 
 Ez a tárolt eljárás bemeneti dokumentum szervek tömbje és hozza létre a címzetteket összes helyett hozzon létre hozzájuk külön-külön kéréseket azonos tárolt eljárás végrehajtása során módosítható. Ez a tárolt eljárás végrehajtása egy hatékony tömeges importáló Cosmos DB (Ez az oktatóanyag későbbi részében bemutatása) használható.   
 
 A bemutatott példában bemutatott tárolt eljárások használatával. Ezután megtudhatja, hogyan eseményindítók és felhasználói függvény (UDF) az oktatóanyag későbbi részében.
+
+### <a name="known-issues"></a>Ismert problémák
+
+A tárolt eljárás az Azure portál használatával meghatározásakor bemeneti paraméterek mindig küldése a karakterlánc a tárolt eljárás. Akkor is, ha karakterláncok bemenetként át, a tömb karakterlánccá és ezután a következő tárolt eljárást. Kerülő probléma definiálhat egy olyan függvényt tömbként karakterlánc elemzéséhez a tárolt eljárásban történik. A következő kód egy tömbként karakterlánc elemzéséhez példája: 
+
+``` 
+function sample(arr) {
+    if (typeof arr === "string") arr = JSON.parse(arr);
+    
+    arr.forEach(function(a) {
+        // do something here
+        console.log(a);
+    });
+}
+```
 
 ## <a name="database-program-transactions"></a>Adatbázis-program tranzakciók
 Egy tipikus adatbázisban tranzakció munka egyetlen logikai egységként végrehajtott műveletek sorozata adható meg. Minden tranzakció biztosít **ACID garanciák**. SAV egy jól ismert mozaikszó négy tulajdonságai – Atomicity, konzisztencia, elkülönítési és tartósságot jelző.  

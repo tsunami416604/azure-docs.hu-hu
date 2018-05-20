@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: 4d5bd28f6e2831ef7bcecc6e5cb80cb28736ec27
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: eb824913a4b3482879ccc45e2f660342695b1618
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
@@ -28,7 +28,7 @@ Ez a cikk úgy van kialakítva, segítséget nyújtanak a kiadott verziók nyomo
 
 Ez az kapcsolódó témaköröket:
 
-Téma |  Részletek
+Témakör |  Részletek
 --------- | --------- |
 Az Azure AD Connect frissítésének lépései | A különböző módszereket [a legújabb verzióra a korábbi verzióról való frissítés](active-directory-aadconnect-upgrade-previous-version.md) az Azure AD Connect kiadás.
 Szükséges engedélyek | Egy frissítés alkalmazásához szükséges engedélyek, lásd: [fiókok és engedélyek](./active-directory-aadconnect-accounts-permissions.md#upgrade).
@@ -37,14 +37,13 @@ Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?Lin
 
 ## <a name="118190"></a>1.1.819.0
 
-5/4/2018: automatikus frissítés kiadott, hamarosan elérhető lesz letöltésre.
+### <a name="release-status"></a>Kiadási állapot
 
-
+5/14/2018: automatikus frissítés és a letöltés.
 
 ### <a name="new-features-and-improvements"></a>Új szolgáltatásait és fejlesztéseit
 
 Új szolgáltatásait és fejlesztéseit
-
 
 - Ez a kiadás nyilvános előzetes verziójának PingFederate integrálása az Azure AD Connectben tartalmaz. Ebben a kiadásban az ügyfelek könnyedén és megbízható az összevonás-szolgáltatóként PingFederate kihasználhatják az Azure Active Directory-környezet konfigurálása. Ezen új szolgáltatás használatával kapcsolatos további információkért látogasson el a [online dokumentáció](active-directory-aadconnect-user-signin.md#federation-with-pingfederate). 
 - Frissítése az Azure AD Connect varázsló problémamegoldó segédprogram, ahol azt most elemzéséhez további hiba forgatókönyv, például a csatolt postaládák és AD dinamikus csoportokat. További információk a hibaelhárítási segédprogram [Itt](active-directory-aadconnect-troubleshoot-objectsync.md).
@@ -62,14 +61,16 @@ Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?Lin
 
 ### <a name="fixed-issues"></a>Javított problémák 
 
-
+- Ebben a kiadásban az SQL Server Express telepítése az SQL Server 2012 SP4, amely többek között biztosít az javítások biztonsági réseivel frissíti.  Ellenőrizze a [Itt](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information) SQL Server 2012 SP4 további információt.
 - Szinkronizálási szabály feldolgozása: nincs csatlakozás feltétel kimenő illesztési szinkronizálási szabályokat kell deszerializálni alkalmazott Ha a szülő syncrule már nem alkalmazható
+- Több kisegítő javítások vannak alkalmazva a Synchronization Service Manager felhasználói felület és a szinkronizálási szabályok szerkesztő
 - Az Azure AD Connect varázsló: AD-összekötő-fiók létrehozása hiba: Ha az Azure AD Connect egy munkacsoporthoz tartozik
 - Az Azure AD Connect varázsló: Az az Azure AD bejelentkezési oldalára megjelenítése ellenőrzési jelölőnégyzet amikor bármely nem egyezik az AD-tartományok és az Azure AD ellenőrizve tartományok
 - Automatikus frissítési PowerShell javítás beállítása automatikus frissítési állapotát megfelelően bizonyos esetekben próbált automatikus frissítés után.
 - Az Azure AD Connect varázsló: Korábban hiányzó információk rögzítése telemetrikus frissítése
-- Az Azure AD Connect varázsló: ESP telepítse az ügynököt, mielőtt tartomány átalakítása felügyelete
-- Az Azure AD Connect varázsló: Nem konvertálhatók felhasználók által kezelt (a konvertálás csak tartományhoz) az ESP
+- Az Azure AD Connect varázsló: A következő módosítások lettek bevezetve használatakor a **felhasználói bejelentkezés módosítása** feladat áteresztő hitelesítés az AD FS váltani:
+    - Az áteresztő hitelesítés ügynök telepítve van az Azure AD Connect-kiszolgáló, és az áteresztő hitelesítés engedélyezve van, nem az átalakítás a tartomány(ok) felügyelete összevont előtt.
+    - Felhasználók már nem konvertálja összevont kezelését. Csak tartomány(ok) lesznek átalakítva.
 - Az Azure AD Connect varázsló: AD FS több tartomány Regex esetén nem megfelelő felhasználó UPN ' speciális karakter Regex frissítés támogatja a speciális karaktereket
 - Az Azure AD Connect varázsló: Jelezhet "Konfigurálása source anchor attribútum" jelenik meg, amikor nincs változás eltávolítása 
 - Az Azure AD Connect varázsló: A kettős összevonási forgatókönyvet az AD FS-támogatása
@@ -209,7 +210,7 @@ A következő engedély módosítások alkalmazásával segítse a helyszíni AD
 *   Távolítsa el az adott objektum ACE-k meghatározott önmagára kivételével minden ACE-k. Szeretnénk az alapértelmezett engedélyek mindaddig módosulna, amikor a saját MAGA.
 *   Ezek az engedélyek hozzárendelése:
 
-Típus     | Név                          | Access               | Erre vonatkozik
+Típus     | Name (Név)                          | Hozzáférés               | Erre vonatkozik
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
@@ -552,9 +553,9 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Kiválasztás|
+    |CertVersion|CertSignatureAlgorithmOid|Válassza ezt:|
     |CertKeyAlgorithmParams|CertHashString|Ahol (a(z)|
-    |||A következővel: |
+    |||A következővel:|
 
 * Lehetővé teszi az ügyfeleknek sAMAccountName domainNetBios és a csoport objektumainak domainFQDN, valamint a felhasználói objektumok distinguishedName flow egyéni szinkronizálási szabályok létrehozását a következő sémamódosítások jelentek meg:
 

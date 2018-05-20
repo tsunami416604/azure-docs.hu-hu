@@ -1,24 +1,24 @@
 ---
-title: "Aktor-alapú Azure mikroszolgáltatások események |} Microsoft Docs"
-description: "A Service Fabric Reliable Actors események bemutatása."
+title: Aktor-alapú Azure mikroszolgáltatások események |} Microsoft Docs
+description: A Service Fabric Reliable Actors események bemutatása.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aa01b0f7-8f88-403a-bfe1-5aba00312c24
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 779d39e2910d0de25ee07b8fae3ca7a0e9772776
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: ed920c8d4ff7254b19c6eef8f5961593bb56bacf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="actor-events"></a>Szereplő események
 Szereplő események teszik lehetővé a szereplő lehető legjobb értesítések küldése az ügyfelek számára. Szereplő események szereplő ügyfél kommunikációhoz, és a használatuk kerülendő szereplő szereplő kommunikációhoz.
@@ -107,7 +107,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Aktor rögzítve](service-fabric-reliable-actors-reentrancy.md)
 * [Aktor diagnosztika és teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
 * [Aktor API referenciadokumentációt](https://msdn.microsoft.com/library/azure/dn971626.aspx)

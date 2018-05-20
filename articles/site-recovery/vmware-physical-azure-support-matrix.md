@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 8269b91ea3459fd9e391d46f0b3e78bc7e5b3b41
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a7e0455d92635b7767227685b622bdae303f9621
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -27,10 +27,10 @@ Fizikai kiszolgálók | A helyszíni windowsos/Linuxos fizikai serversto Azure r
 
 ## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
 
-**Kiszolgáló** | **Követelmények** | **Részletek**
+**Server** | **Követelmények** | **Részletek**
 --- | --- | ---
 VMware | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.<br/><br/> Azt javasoljuk, hogy a vSphere gazdagépek és vCenter-kiszolgáló található-e a folyamatkiszolgáló és a ugyanahhoz a hálózathoz. Alapértelmezés szerint a folyamat kiszolgáló-összetevők fut a konfigurációs kiszolgálón, így ez lesz a hálózatot, amelyben állítsa be a konfigurációs kiszolgáló, kivéve, ha egy dedikált folyamat kiszolgáló.
-Fizikai | –
+Fizikai | N.A.
 
 ## <a name="site-recovery-configuration-server"></a>Helykiszolgáló helyreállítási konfiguráció
 
@@ -110,7 +110,7 @@ XFSv5 | A 9.10 Mobilitásiszolgáltatás-verziót meghajtóbetűjeltől XFS fáj
 
 
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 
 **Összetevő** | **Támogatott**
 --- | ---
@@ -139,30 +139,31 @@ Fenntartott IP-cím | Igen
 IPv4 | Igen
 Tartsa meg a forrás IP-címe | Igen
 Azure virtuális hálózat szolgáltatás-végpontok<br/> (nélkül az Azure Storage tűzfalak) | Igen
-Gyorsított hálózatkezelés | Nem
+Gyorsított hálózatkezelés | Nincs
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárhely
 **Összetevő** | **Támogatott**
 --- | ---
 Állomás NFS | VMware Igen<br/><br/> Fizikai kiszolgálók esetében nem
-Állomás SAN (ISCSI) | Igen
+Állomás (iSCSI/FC) TÁROLÓHÁLÓZAT | Igen
+Állomás vsan-hoz | VMware Igen<br/><br/> A fizikai kiszolgálók N/A
 Állomás többutas (MPIO) | A Microsoft DSM, EMC PowerPath 5.7 SP4 EMC PowerPath DSM CLARiiON Igen, tesztelve
 Virtuális Gazdaköteteket (VVols) | VMware Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló vmdk-fájl | Igen
 Vendég-kiszolgáló EFI/UEFI| Részleges (Azure a Windows Server 2012 és újabb verziók VMware virtuális gépek csak áttelepítés) </br></br> Lásd a táblázat végén a megjegyzést
-Vendég-kiszolgáló megosztott fürtlemez | Nem
-Vendég/server titkosított lemez | Nem
-NFS Vendég-kiszolgáló | Nem
-Az SMB 3.0 Vendég-kiszolgáló | Nem
+Vendég-kiszolgáló megosztott fürtlemez | Nincs
+Vendég/server titkosított lemez | Nincs
+NFS Vendég-kiszolgáló | Nincs
+Az SMB 3.0 Vendég-kiszolgáló | Nincs
 Vendég-kiszolgáló RDM | Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló > 1 TB méretű lemez | Igen<br/><br/>Legfeljebb 4095 GB
 Vendég/server 4 KB-os logikai és a 4 KB-os fizikai szektort méretű lemez | Igen
 Vendég/server 4 KB-os logikai lemez és 512 bájtos fizikai szektorméretet | Igen
 Csíkozott Vendég/server kötetet > 4 TB-os <br><br/>Logikai kötetkezelés (LVM)| Igen
-Vendég/kiszolgáló - tárolóhelyek | Nem
-Vendég/server gyakran használt adatok hozzáadása lemez | Nem
+Vendég/kiszolgáló - tárolóhelyek | Nincs
+Vendég/server gyakran használt adatok hozzáadása lemez | Nincs
 Vendég/kiszolgáló - kizárási lemez | Igen
-Vendég-kiszolgáló többutas (MPIO) | Nem
+Vendég-kiszolgáló többutas (MPIO) | Nincs
 
 > [!NOTE]
 > UEFI rendszerindítási VMware virtuális gépek Windows Server 2012 rendszert futtató, vagy később is telepíthető az Azure-bA. A következő korlátozások vonatkoznak:
@@ -172,27 +173,27 @@ Vendég-kiszolgáló többutas (MPIO) | Nem
 > - Mobilitási szolgáltatás verziója 9.13 vagy újabb verzió szükséges.
 > - Fizikai kiszolgálók esetében nem támogatott.
 
-## <a name="azure-storage"></a>Azure Storage tárterület
+## <a name="azure-storage"></a>Azure-tároló
 
 **Összetevő** | **Támogatott**
 --- | ---
 Helyileg redundáns tárolás | Igen
 Georedundáns tárolás | Igen
 Írásvédett georedundáns tárolás | Igen
-Ritkán használt adatok | Nem
-Gyakran használt adatok| Nem
-Blokkblobok | Nem
+Ritkán használt adatok | Nincs
+Gyakran használt adatok| Nincs
+Blokkblobok | Nincs
 Titkosítását (Storage szolgáltatás titkosítási)| Igen
 Prémium szintű Storage | Igen
-Import/export szolgáltatás | Nem
-A célként megadott tárolási/gyorsítótár storage-fiók (használt replikációs adatokat tároló) konfigurált virtuális hálózatok az Azure Storage tűzfalak | Nem
-Általános célú v2 storage-fiókok (a gyakran és ritkán használt rétegek) | Nem
+Import/export szolgáltatás | Nincs
+A célként megadott tárolási/gyorsítótár storage-fiók (használt replikációs adatokat tároló) konfigurált virtuális hálózatok az Azure Storage tűzfalak | Nincs
+Általános célú v2 storage-fiókok (a gyakran és ritkán használt rétegek) | Nincs
 
 ## <a name="azure-compute"></a>Az Azure compute
 
 **Funkció** | **Támogatott**
 --- | ---
-Rendelkezésre állási csoportok | Igen
+Rendelkezésre állási készletek | Igen
 HUB | Igen
 Felügyelt lemezek | Igen
 
@@ -212,15 +213,15 @@ Hálózati adapterek | Több adapter támogatottak. |
 Megosztott virtuális merevlemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 FC-lemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 BitLocker | Nem támogatott. | A BitLocker a gépek replikációjának engedélyezése előtt le kell tiltani. |
-a virtuális gép neve | 1 és 63 karakter.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A számítógépnév kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a virtuálisgép-tulajdonságokat a Site Recovery szolgáltatásban.
+Virtuális gép neve | 1 és 63 karakter.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A számítógépnév kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a virtuálisgép-tulajdonságokat a Site Recovery szolgáltatásban.
 
 
 ## <a name="vault-tasks"></a>Tároló feladatok
 
 **Művelet** | **Támogatott**
 --- | ---
-Erőforráscsoportok közötti áthelyezése közben tároló<br/><br/> Belül és között előfizetések | Nem
-Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok áthelyezéséhez<br/><br/> Belül és között előfizetések | Nem
+Erőforráscsoportok közötti áthelyezése közben tároló<br/><br/> Belül és között előfizetések | Nincs
+Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok áthelyezéséhez<br/><br/> Belül és között előfizetések | Nincs
 
 
 ## <a name="mobility-service"></a>Mobilitási szolgáltatás

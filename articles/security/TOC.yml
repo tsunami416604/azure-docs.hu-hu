@@ -143,24 +143,14 @@
       href: ./blueprints/financial-services-regulated-workloads.md
     - name: GDPR
       items:
-        - name: Személyes adatok kezelése
-          href: manage-personal-data-azure.md
-        - name: 'Személyes adatok felderítése, azonosítása és osztályozása'
-          href: how-to-discover-classify-personal-data-azure.md
-        - name: Személyes adatok védelme az Azure-ban
-          href: protect-personal-data-azure.md
-        - name: Személyes adatok védelme a Security Center segítségével
-          href: protect-personal-data-azure-security-center.md
-        - name: Személyes adatok védelme az Application Gateway segítségével
-          href: protect-personal-data-network-security.md
-        - name: Személyes adatok védelme az identitás- és hozzáférés-vezérlés használatával
-          href: protect-personal-data-identity-access-controls.md
-        - name: Inaktív személyes adatok védelme titkosítás segítségével
-          href: protect-personal-data-at-rest.md
-        - name: Személyes adatok védelme az átvitel során titkosítás segítségével
-          href: protect-personal-data-in-transit-encryption.md
-        - name: Személyes adatok védelme az Azure jelentéskészítő eszközeinek használatával
-          href: protection-personal-data-azure-reporting-tools.md
+        - name: Adatelemzés
+          href: ./blueprints/gdpr-analytics-overview.md
+        - name: Adattárház
+          href: ./blueprints/gdpr-datawarehouse-overview.md
+        - name: IaaS-webalkalmazás
+          href: ./blueprints/gdpr-iaaswa-overview.md
+        - name: PaaS webalkalmazás
+          href: ./blueprints/gdpr-paaswa-overview.md
     - name: FedRAMP
       items:
         - name: Adatelemzés

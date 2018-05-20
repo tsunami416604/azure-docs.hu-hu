@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d5d38e7fa80db3484c397d9840bbc6092e4f18bb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3cab4d87eacc7bce17da64cda213086c262179a8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reliable-actors-state-management"></a>Megbízható szereplője állapotkezelés
 Reliable Actors egyszálas objektumok, amellyel skálája ágyazható be mind a programot, és a állapotban. Szereplője Reliable Services futtatni, mert azok is-állapot karbantartásához megbízhatóan azonos adatmegőrzési és replikációs mechanizmusok vonatkoznak. Ezzel a módszerrel szereplője ne veszítse el állapotukra hiba esetén a szemétgyűjtés után vagy a terheléselosztás erőforrás vagy frissítés miatt fürt csomópontjai között áthelyezett Újraaktiválási után.

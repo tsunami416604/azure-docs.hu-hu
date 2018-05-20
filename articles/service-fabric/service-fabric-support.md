@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/26/2018
+ms.date: 5/14/2018
 ms.author: pkc
-ms.openlocfilehash: ec634dd19cf1e944c768e1d368f114f66e9c38a9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7a00b72f0b8d52ae0ced5f44784c2a61d40c8ac2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségek
 
@@ -77,7 +77,7 @@ Az alábbiakban a Service Fabric által támogatott verziók listáját és azok
 | 5.6.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.6-os verziója |Október 13,2017   |
 | 5.7.* | 5.4.164.* |Kisebb vagy egyenlő, mint 2.7-es verzió |December 15,2017  |
 | 6.0.* | 5.6.205.* |Kisebb vagy egyenlő, mint 2.8-as verziója |30,2018. március     | 
-| 6.1.* | 5.7.221.* |Kisebb vagy egyenlő, mint a 3.0-s verzió |Június 15,2018      |
+| 6.1.* | 5.7.221.* |Kisebb vagy egyenlő, mint a 3.0-s verzió |Július 15,2018      |
 | 6.2. * | 6.0.232.* |Kisebb vagy egyenlő, mint 3.1-es verziója |Aktuális verzióra, és ezért nincs befejezési dátum |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric előzetes verzió – üzemi használatra nem támogatott.

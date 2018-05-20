@@ -1,20 +1,20 @@
 ---
 title: Azure-az Azure-bA vész-helyreállítási a mobilitási szolgáltatás automatikus frissítése |} Microsoft Docs
-description: Automatikus frissítés a mobilitási szolgáltatás, amely az Azure virtuális gépek az Azure Site Recovery segítségével replikációs áttekintése.
+description: Automatikus frissítés a mobilitási szolgáltatás, áttekintést nyújt a Azure Site Recovery segítségével Azure virtuális gépek replikálása esetén.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: rajanaki
-ms.openlocfilehash: d9b653e4766746d2142a7e1040d6d60ec2aacc44
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Azure-az Azure-bA replikációs a mobilitási szolgáltatás bővítmény automatikus frissítése
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatikus frissítés a mobilitási szolgáltatást a replikáció Azure az Azure-bA
 
 Az Azure Site Recovery rendelkezik egy havi kiadás ütemben történik, ha az a meglévő funkciók fejlesztéseivel, illetve újakat hozzáadásakor és az esetleges ismert probléma elhárítása. Ez azt jelenti, hogy maradjon naprakész lesz a szolgáltatás, kell végrehajtania a javítások havi telepítését. A frissítés társított over head elkerülése érdekében felhasználók választhatja kezelheti a frissítéseket az összetevők helyreállítás engedélyezéséhez. A részletes a [architektúra hivatkozás](azure-to-azure-architecture.md) Azure az Azure-bA vész-helyreállítási mobilitási szolgáltatás telepíti az összes Azure virtuális gépeken, amelynek a replikáció engedélyezve van egy Azure virtuális gépek replikálásához közben másik régióhoz. Amennyiben az automatikus frissítés engedélyezéséhez a mobilitási szolgáltatás bővítmény frissül minden új kiadásban. Ez a dokumentum a következő adatokat:
 

@@ -1,9 +1,9 @@
 ---
-title: "Beállítások és adatok hordozása – gyakori kérdések |} Microsoft Docs"
-description: "Biztosítja a rendszergazdák feltett kérdésekre adott válaszok beállításait, valamint az alkalmazás adatszinkronizálás rendelkezhet."
+title: Beállítások és adatok hordozása – gyakori kérdések |} Microsoft Docs
+description: Biztosítja a rendszergazdák feltett kérdésekre adott válaszok beállításait, valamint az alkalmazás adatszinkronizálás rendelkezhet.
 services: active-directory
-keywords: "Vállalati állapot barangolási beállításokat, a windows-felhő, gyakran ismételt kérdések a vállalati állapothordozás"
-documentationcenter: 
+keywords: Vállalati állapot barangolási beállításokat, a windows-felhő, gyakran ismételt kérdések a vállalati állapothordozás
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 0aac3a9d3595ea0e761ba14070bf7cff4d4b264c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f33376d5f68d64495a7a90e62870f3ec14f73246
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
-Ez a témakör néhány rendszergazdák rendelkezhet beállításait, valamint az alkalmazás adatszinkronizálás kérdésekre ad választ.
+Ebben a cikkben megválaszolunk kérdések merülhetnek fel, a rendszergazdák beállításait, valamint az alkalmazás adatszinkronizálás rendelkezhet.
 
 ## <a name="what-data-roams"></a>Milyen adatok barangol?
 **Windows-beállítások**: a számítógép beállításait, a Windows operációs rendszer beépített. Általában ezek a beállítások a számítógép testreszabása, és tartalmazzák a következő kategóriába sorolhatók:
@@ -70,12 +70,12 @@ Ha a vállalati eszköz személyes adatokat tárolja, vegye figyelembe, hogy a W
 Windows 10 November 2015-ös vagy újabb kiadásaiban a vállalati Állapothordozás csak támogatott ugyanazt a fiókot egy időben. Ha Windows jelentkezzen be a munkahelyi vagy iskolai fiókkal az Azure AD, minden adatot az Azure AD útján szinkronizálódnak. Ha bejelentkezik a Windows egy személyes Microsoft-fiókkal, minden adatot a Microsoft-fiók útján szinkronizálódnak. Univerzális appdata barangolás-e a használata csak az elsődleges bejelentkezési fiókot az eszközön, és ez csak akkor, ha az alkalmazás licencének elsődleges fiók tulajdonosa lesz barangolás. Az alkalmazások bármely másodlagos fiókokat tulajdonában univerzális appdata nem lesznek szinkronizálva.
 
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Azure AD-fiókok több bérlő beállítások is szinkronizálja?
-Ha több Azure AD különböző fiókok Azure AD bérlőre ugyanarra az eszközre, frissítenie kell az eszköz beállításjegyzékébe minden Azure AD-bérlő az Azure Rights Management (Azure RMS) folytatott kommunikációhoz.  
+Ha több Azure AD különböző fiókok Azure AD bérlőre ugyanarra az eszközre, frissítenie kell az eszköz beállításjegyzékébe minden Azure AD-bérlő az Azure Rights Management szolgáltatással való kommunikációra.  
 
-1. Minden Azure AD-bérlő a GUID keresése. Nyissa meg az Azure-portálon, és válassza ki az Azure AD-bérlő. A bérlőhöz tartozó GUID még a Tulajdonságok lapon a kiválasztott bérlő (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) címkével **könyvtár-azonosítója**. 
+1. Minden Azure AD-bérlő a GUID keresése. Nyissa meg az Azure-portálon, és válassza ki az Azure AD-bérlő. A kiválasztott bérlő tulajdonságai lapon van a bérlőhöz tartozó GUID (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), címkézett **könyvtár-azonosítója**. 
 2. Miután a globálisan egyedi Azonosítót, akkor a beállításkulcs **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<bérlői azonosító GUID >**.
    Az a **bérlői azonosító GUID** kulcsot, hozzon létre egy új karakterláncsoros értéket (REG-MULTI-SZ) **AllowedRMSServerUrls**. Az adatait adja meg a licencelési terjesztési pont URL-címei a más Azure bérlőre, az eszköz hozzáférő.
-3. A terjesztési pont licencelési URL-címeket található futtatásával a **Get-AadrmConfiguration** parancsmag. Ha az értékek a **LicensingIntranetDistributionPointUrl** és **LicensingExtranetDistributionPointUrl** eltérőek, mindkét értéket adni. Ha az értékek megegyeznek, csak egyszer adja meg az értéket.
+3. A terjesztési pont licencelési URL-címeket található futtatásával a **Get-AadrmConfiguration** parancsmag a AADRM modulból. Ha az értékek a **LicensingIntranetDistributionPointUrl** és **LicensingExtranetDistributionPointUrl** eltérőek, mindkét értéket adni. Ha az értékek megegyeznek, csak egyszer adja meg az értéket.
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Mik a meglévő Windows asztali alkalmazások központi beállítások lehetőségei?
 Csak az univerzális Windows-alkalmazások központi működik. Nincsenek elérhető egy meglévő Windows asztali alkalmazások a roaming engedélyezésének két lehetőség közül választhat:
@@ -95,9 +95,9 @@ A jövőben Microsoft előfordulhat, hogy vizsgálja ki módon UE-V mélyen inte
 A vállalati Állapothordozás az összes szinkronizált adatot tárolja Azure felhőben. UE-V biztosít egy helyszíni megoldás központi.
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>Ki, hogy a rendszer éppen forrásul az adatok tulajdonosa?
-A vállalatok számára saját vállalati Állapothordozás keresztül forrásul az adatokat. Egy Azure-adatközpontban adatokat tárolja. Összes felhasználói adat titkosítva van, mind az átvitel során, és az Azure RMS a felhő aktívan. Ez a Microsoft fiók-alapú beállítások szinkronizálás, amely csak bizonyos érzékeny adatok, például felhasználói hitelesítő adatok titkosítja, mielőtt az eszköz kikerül képest javítása.
+A vállalatok számára saját vállalati Állapothordozás keresztül forrásul az adatokat. Egy Azure-adatközpontban adatokat tárolja. Összes felhasználói adat titkosítva van, mind az átvitel során, és az Azure Rights Management szolgáltatással az Azure Information Protectiontől felhő aktívan. Ez a Microsoft fiók-alapú beállítások szinkronizálás, amely csak bizonyos érzékeny adatok, például felhasználói hitelesítő adatok titkosítja, mielőtt az eszköz kikerül képest javítása.
 
-A Microsoft elkötelezett az adatok védelme. Egy vállalati felhasználói beállítások automatikusan adattitkosítás az Azure RMS által még a Windows 10-eszközön, hogy más felhasználó nem tudja olvasni az adatokat. Ha a szervezete a szolgáltatás fizetős Azure RMS-hez, akkor használja az egyéb Azure RMS-szolgáltatásokkal, például nyomon követése és visszavonatni a dokumentumokat, automatikusan bizalmas információkat tartalmazó e-mailek védelméhez, és beállíthatja a saját kulcsok (a "állapotba hozása a saját kulcs" megoldás, más néven BYOK). Ezek a szolgáltatások és az Azure RMS működésével kapcsolatos további információkért lásd: [Mi az az Azure Rights Management](https://technet.microsoft.com/jj585026.aspx).
+A Microsoft elkötelezett az adatok védelme. Egy vállalati felhasználói beállítások automatikusan adattitkosítás az Azure Rights Management szolgáltatás még egy Windows 10 rendszerű eszköz, hogy más felhasználó nem tudja olvasni az adatokat. Ha a szervezete az Azure Rights Management szolgáltatás a szolgáltatás fizetős, is használjon más védelmi szolgáltatások, például nyomon követése és visszavonatni a dokumentumokat, automatikusan bizalmas információkat tartalmazó e-mailek védelmét, és a saját kulcsok kezelése (a "állapotba a saját kulcs"megoldás, más néven BYOK). Ezek a szolgáltatások és a védelmi szolgáltatás működésével kapcsolatos további információkért lásd: [Mi az az Azure Rights Management](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection).
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>Kezelheti egy adott alkalmazás vagy beállítás-szinkronizálás?
 Windows 10-ben található mobileszköz-kezelési vagy a csoportházirend az egyes alkalmazások a roaming letiltása. A bérlői rendszergazdák letilthatják appdata szinkronizálási az összes olyan alkalmazáshoz egy felügyelt eszközön, de nincs egyeztetését vezérlő alkalmazásonkénti vagy alkalmazáson belül szinten.
@@ -116,8 +116,8 @@ Ha a vállalati Állapothordozás és UE-V, az alábbi szabályok vonatkoznak:
 ## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>Hogyan a vállalati Állapothordozás támogatja a virtuális asztali infrastruktúra (VDI)?
 A vállalati Állapothordozás termékváltozatok Windows 10-ügyfélen, de nem található a kiszolgálón termékváltozatok esetén támogatott. Ha egy ügyfél VM birtokolt hipervizor gépen, és távolról jelentkeznek be a virtuális gépet, az adatok fog vándorol. Ha több felhasználó osztozik ugyanazon operációs rendszer és a felhasználók távolról jelentkeznek be a kiszolgáló teljes asztali élmény, központi előfordulhat, hogy nem működik. Az utóbbi munkamenet-alapú forgatókönyv hivatalosan nem támogatott.
 
-## <a name="what-happens-when-my-organization-purchases-azure-rms-after-using-roaming"></a>Mi történik, ha a szervezet Azure RMS vásárol barangolás felhasználását követően?
-Ha már használja a szervezet az Azure RMS-korlátozott használatú ingyenes előfizetés, a Windows 10 központi megvásárlásáról a fizetős Azure RMS-előfizetés nem semmilyen hatással lesz a központi funkció működését, és konfigurációs módosítások nélküli lesz szükség a rendszergazda által.
+## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>Mi történik, ha a szervezet vásárol egy előfizetést, amely tartalmazza az Azure Rights Management központi használata után?
+Ha a szervezet már használja az Azure Rights Management korlátozott használatú ingyenes előfizetés a Windows 10 központi, a megvásárlásáról a [előfizetéssel](https://azure.microsoft.com/pricing/details/information-protection/) , amely tartalmazza az Azure Rights Management védelmi szolgáltatás nem lesz. a rendszergazda által a központi funkció működését mért hatást és a konfigurációs módosítások nélküli lesz szükség.
 
 ## <a name="known-issues"></a>Ismert problémák
 A dokumentáció a a [hibaelhárítási](active-directory-windows-enterprise-state-roaming-troubleshooting.md) fellépő ismert problémák listáját szakasz. 

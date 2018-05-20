@@ -10,14 +10,14 @@ tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: 381f9ef2dac2c1dfdada32a917626b17c5969a98
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f35ed98efb26dfa0d75a57ca3646f567a7949dae
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="optimize-spark-jobs"></a>Spark-feladatok optimalizálása
 
@@ -61,11 +61,11 @@ A legjobb teljesítmény formátuma a parquet *klassz kis tömörítési*, a Spa
 
 Amikor létrehoz egy új Spark-fürt, lehetősége van az Azure Blob Storage vagy az Azure Data Lake Store jelölje ki a fürt alapértelmezett tárolási. Mindkét beállítások segítségével az előnye, hogy a hosszú távú tárolás átmeneti fürtök, így az adatok nem automatikusan törlődnek a fürt törlésekor. Hozza létre újra egy átmeneti fürtöt, és továbbra is hozzáférhet az adatokhoz.
 
-| Olyan tárolási típus | Fájlrendszer | Gyorsaság | Átmeneti | Használati esetek |
+| Olyan tárolási típus | Fájlrendszer | Sebesség | Átmeneti | Használati esetek |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:**//url/ | **Standard** | Igen | Átmeneti fürt |
 | Azure Data Lake Store | **Adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| Helyi HDFS | **hdfs:**//url/ | **Leggyorsabb** | Nem | Interaktív 24/7 fürt |
+| Helyi HDFS | **hdfs:**//url/ | **Leggyorsabb** | Nincs | Interaktív 24/7 fürt |
 
 ## <a name="use-the-cache"></a>A gyorsítótár
 

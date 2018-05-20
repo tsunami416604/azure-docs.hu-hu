@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: aef54782c200ad0be261959705b9b10cd0ebb064
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9c538be4948a8e67ee9b94fcd6ff6bcea04438ef
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>HDInsight-alkalmazások közzététele az Azure piactéren
 Azure HDInsight-alkalmazásokat is telepíthető egy Linux-alapú HDInsight-fürtöt. Ebben a cikkben megtudhatja, hogyan tehet közzé HDInsight-alkalmazások az Azure piactéren. Az Azure piactéren közzétételre vonatkozó általános információkért lásd: [ajánlat közzététele az Azure piactéren](../marketplace-publishing/marketplace-publishing-getting-started.md).

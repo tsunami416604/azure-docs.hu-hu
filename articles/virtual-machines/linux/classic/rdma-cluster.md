@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 18549a8606285238f26d2c8cec54793e26e3e8d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d53305aae3b12c0de983dced85a9626cf98c6309
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Linuxos RDMA-fürt beállítása MPI-alkalmazások futtatására
 Ismerje meg, hogyan állíthat be az Azure-ban Linux RDMA fürt [nagy teljesítményű számítási Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) párhuzamos Message Passing Interface (MPI) alkalmazások futtatásához. Ez a cikk lépéseit Intel MPI futhat egy fürt Linux HPC lemezkép előkészítése. Előkészítő, miután a virtuális gépek használata a lemezkép és az RDMA-kompatibilis Azure Virtuálisgép-méretek, (jelenleg H16r, H16mr, A8 és A9) egy fürt központi telepítése. A fürt használatával, amely a távoli közvetlen memória-hozzáférés (RDMA) technológián alapulnak, alacsony késésű, nagy átviteli hálózati hatékonyan kommunikációhoz MPI-alkalmazások futtatására.
@@ -210,7 +210,7 @@ Egy CentOS-alapú HPC-fürtre, a számítási csomópontok közötti megbízhat�
 
 Egy minta parancsfájlt a Közösségtől hozzájárult érhető el a [GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) CentOS-alapú HPC-fürt könnyen felhasználói hitelesítést. Töltse le és használja ezt a parancsfájlt a következő lépések segítségével. Módosítsa ezt a parancsfájlt vagy más módszerrel használatával szeretne létrehozni a számítási fürtcsomópontok közötti passwordless SSH hitelesítés is.
 
-    wget https://raw.githubusercontent.com/tanewill/utils/master/ user_authentication.sh
+    wget https://raw.githubusercontent.com/tanewill/utils/master/user_authentication.sh
 
 A parancsfájl futtatásához kell tudni, hogy az előtag, az alhálózati IP-címek számára. Az előtag lekérése a következő parancs futtatásával a fürtcsomópontok egyike. A kimeneti hasonlóan kell kinéznie 10.1.3.5, és az előtag a 10.1.3 részét.
 

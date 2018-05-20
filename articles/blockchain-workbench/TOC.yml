@@ -1,6 +1,7 @@
 - name: Azure Blockchain Workbench (nyilvános előzetes verzió)
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Tudnivalók az Azure Blockchain Workbenchről
       href: blockchain-workbench-overview.md
@@ -11,13 +12,14 @@
     - name: Integrációs minták
       href: blockchain-workbench-integration-patterns.md
 - name: Útmutatók
+  expanded: true
   items:
     - name: A Workbench üzembe helyezése
       href: blockchain-workbench-deploy.md
-    - name: Workbench-felhasználók kezelése
-      href: blockchain-workbench-manage-users.md
     - name: Blokkláncalkalmazások létrehozása
       href: blockchain-workbench-create-app.md
+    - name: Workbench-felhasználók kezelése
+      href: blockchain-workbench-manage-users.md
     - name: Blokkláncalkalmazások használata
       href: blockchain-workbench-use.md
     - name: A Workbench API használata

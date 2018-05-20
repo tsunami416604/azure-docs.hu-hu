@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 2419bf981f613137dba02ba0b767edc491324d27
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f0ffdb9127555ecfdd37a399335335885a10a6ea
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Hálózati biztonsági csoport Flow naplók konfigurálása a PowerShell segítségével
 
@@ -51,7 +51,7 @@ Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $ns
 Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true
 ```
 
-A tárfiók, megadhatja, hogy nem lehet a hálózati hozzáférés korlátozása csak a Microsoft-szolgáltatások vagy az adott virtuális hálózatok beállított hálózati szabályokat.
+A tárfiók, megadhatja, hogy nem lehet a hálózati hozzáférés korlátozása csak a Microsoft-szolgáltatások vagy az adott virtuális hálózatok beállított hálózati szabályokat. A tárfiók ugyanabban vagy egy másik Azure-előfizetéssel, mint az NSG-t, amely engedélyezi a folyamat naplóban lehet. Különböző előfizetések használja, ha azok is kell társítani a azonos Azure Active Directory-bérlő. Az egyes előfizetésekhez használt fióknak rendelkeznie kell a [szükséges engedélyek](required-rbac-permissions.md).
 
 ## <a name="disable-network-security-group-flow-logs"></a>Tiltsa le a hálózati biztonsági csoport folyamata naplók
 

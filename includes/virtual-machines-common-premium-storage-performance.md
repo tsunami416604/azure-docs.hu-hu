@@ -1,5 +1,5 @@
 # <a name="azure-premium-storage-design-for-high-performance"></a>Prémium szintű Azure Storage: Nagy teljesítményű kialakítása
-## <a name="overview"></a>Áttekintés
+
 Ez a cikk útmutatást nyújt a prémium szintű Azure Storage használatával nagy teljesítményű alkalmazások létrehozásához. A megjelenő utasításokat az alkalmazás által használt technológiák alkalmazandó ajánlott eljárások teljesítményének együtt dokumentumban is használhatja. Mutatja be az irányelveket, ez a dokumentum példaként, prémium szintű Storage futó SQL Server használta azt.
 
 Ebben a cikkben a tárolási réteg teljesítményének forgatókönyvei oldjuk, amíg szüksége lesz az alkalmazási rétegre optimalizálása érdekében. Például ha prémium szintű Azure Storage SharePoint-Farm üzemeltet, használhatja az SQL Server ebben a cikkben említett példákat követik az adatbázis-kiszolgáló optimalizálása érdekében. Emellett optimalizálhatja a SharePoint-Farm webkiszolgáló és a legtöbb teljesítmény-alkalmazáskiszolgáló.
@@ -83,14 +83,14 @@ A legjobb méréséhez az alkalmazás teljesítménykövetelményeknek módja Te
 
 A teljesítményszámlálók processzor, memória, és minden egyes logikai lemez és a kiszolgáló fizikai lemez érhetők el. Prémium szintű storage lemezek használatakor egy virtuális gép a fizikai lemez számlálók prémium szintű storage lemezek, és logikai lemez számlálók a prémium szintű storage lemezeken létrehozott minden kötet. A lemezeket, az alkalmazás munkaterhelés üzemeltető értékeit kell rögzíti. Ha egy-egy logikai és fizikai lemezek közötti leképezéseket, olvassa el a fizikai lemez számlálók; Ellenkező esetben tekintse meg a logikai lemez számlálókat. Linux a iostat parancs lemez- és CPU-kihasználtság jelentést hoz létre. A lemezhasználati jelentés nyújt a fizikai eszköz vagy a partíció statisztikai adatokat. Ha az adatokhoz és a naplófájlhoz az adatbázis-kiszolgáló külön lemezeken, az adatgyűjtést mindkét lemezhez. Alábbi táblázat ismerteti a lemezek, a processzor és memóriájára vonatkozóan:
 
-| A számláló | Leírás | Teljesítményfigyelő | Iostat |
+| Számláló | Leírás | Teljesítményfigyelő | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók száma másodpercenként** |A tárolási lemezre másodpercenként kiadott i/o-kérelmek száma. |Lemezolvasások/mp <br> Lemezírás/mp |TP-k <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |%-át olvasási és írási műveleteket végrehajtani a lemezen. |% Lemez olvasási idő <br> % Lemezre írási ideje |r/s <br> w/s |
 | **Átviteli sebesség** |Írni vagy olvasni a lemezre másodpercenként adatok mennyisége. |Lemezolvasási sebesség (bájt/s) <br> Lemezírási sebesség (bájt/s) |kB_read/s <br> kB_wrtn/s |
 | **Késés** |A lemez IO-kérelem végrehajtásához teljes időtartam. |Átlagos lemez mp/Olvasás <br> Átlagos lemez mp/írás |await <br> svctm |
 | **IO-méret** |I/o méretét a tárolólemezek problémák kéri. |Átlagos lemezátviteli/beolvasott bájtok száma <br> Átlagos írási bájtok/írás |avgrq-sz |
-| **Várólistamélység** |A lekérdezések képernyőn olvasható, vagy a tárolási lemezre váró függőben lévő i/o száma. |Lemezvárólista jelenlegi hossza |avgqu-sz |
+| **Várólistamélység** |A lekérdezések Várakozás a tároló lemez írni vagy olvasni függőben lévő i/o száma. |Lemezvárólista jelenlegi hossza |avgqu-sz |
 | **Max. Memória** |Zökkenőmentesen működjön az alkalmazás futtatásához szükséges memória mérete |% Előjegyzett memória |Vmstat használata |
 | **Max. PROCESSZOR** |Zökkenőmentesen működjön az alkalmazás futtatásához szükséges CPU összeg |Processzor kihasználtsága |% haszn. |
 
@@ -102,15 +102,18 @@ A fő prémium szintű Storage futó alkalmazást teljesítményét befolyásol�
 Ebben a szakaszban tekintse meg az alkalmazás követelményeinek ellenőrzőlista létrehozott, mennyire szükséges az alkalmazás teljesítményének optimalizálása érdekében. Amely alapján, fogja meg tudja határozni, mely tényezők ebben a szakaszban ismertetett kell hangolását. Tanúsítsa minden tényező hatással az alkalmazások teljesítményéről, futtassa az alkalmazást telepítő összehasonlítási eszközöket. Tekintse meg a [Benchmarking](#Benchmarking) szakasz lépései a Windows és Linux virtuális gépek közös összehasonlítási eszközök futtatása a jelen cikk végén.
 
 ### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>Egy pillanat alatt IOPS, az átviteli sebesség és a késleltetés optimalizálása
-Az alábbi táblázat összefoglalja a teljesítmény tényezők és a lépéseket IOPS, az átviteli sebesség és a késleltetés optimalizálására. A az összegzés a következő részekben egyes tényező sokkal több mélységét.
+
+Az alábbi táblázat összefoglalja a teljesítmény tényezők és IOPS, az átviteli sebesség és a késleltetés optimalizálására szükséges lépéseket. A az összegzés a következő részekben egyes tényező sokkal több mélységét.
+
+További információ a Virtuálisgép-méretek és az IOPS, az átviteli sebesség és a késés érhető el a az egyes virtuális gép: [Linux Virtuálisgép-méretek](../articles/virtual-machines/linux/sizes.md) vagy [Windows Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes.md).
 
 | &nbsp; | **IOPS** | **Átviteli sebesség** | **Késés** |
 | --- | --- | --- | --- |
 | **Példa** |Vállalati OLTP alkalmazás igénylő nagyon magas tranzakciók második sebessége. |Vállalati adatraktározási alkalmazás feldolgozási nagymennyiségű adat. |Közel valós idejű alkalmazások felhasználói kérésekre, például online játékok azonnali válasz igényelnek. |
 | Teljesítmény tényezők | &nbsp; | &nbsp; | &nbsp; |
 | **IO-méret** |Kisebb IO-méretet eredményez magasabb iops-érték. |Nagyobb IO mérete nagyobb átviteli teljesítményt eredményez. | &nbsp;|
-| **Virtuálisgép-mérettel** |A Virtuálisgép-méretet, amely nagyobb, mint az alkalmazás követelményeinek IOPS nyújt használja. Virtuálisgép-méretek és az IOPS-korlátok vonatkoznak itt talál. |A Virtuálisgép-méretet használata átviteli korlát nagyobb, mint az alkalmazás követelményeinek. Virtuálisgép-méretek és az átviteli sebességének korlátai itt talál. |Használja a virtuális gép méretét, hogy ajánlatok méretezési korlátok nagyobb, mint az alkalmazás követelményeinek. Virtuálisgép-méretek és azok korlátok itt talál. |
-| **Lemez mérete** |A lemez mérete nagyobb, mint az alkalmazás követelményeinek IOPS által használható. Lemez méretét és az IOPS-korlátok vonatkoznak itt talál. |A lemez mérete nagyobb, mint az alkalmazás követelményeinek átviteli korlátot használja. Lemez méretét és az átviteli sebességének korlátai itt talál. |Használja a lemez méretét, hogy ajánlatok méretezési korlátok nagyobb, mint az alkalmazás követelményeinek. Lemezméret és azok korlátok itt talál. |
+| **Virtuálisgép-mérettel** |A Virtuálisgép-méretet, amely nagyobb, mint az alkalmazás követelményeinek IOPS nyújt használja. |A Virtuálisgép-méretet használata átviteli korlát nagyobb, mint az alkalmazás követelményeinek. |Használja a virtuális gép méretét, hogy ajánlatok méretezési korlátok nagyobb, mint az alkalmazás követelményeinek. |
+| **Lemez mérete** |A lemez mérete nagyobb, mint az alkalmazás követelményeinek IOPS által használható. |A lemez mérete nagyobb, mint az alkalmazás követelményeinek átviteli korlátot használja. |Használja a lemez méretét, hogy ajánlatok méretezési korlátok nagyobb, mint az alkalmazás követelményeinek. |
 | **Virtuális gép és a lemez méretkorlátai** |A kiválasztott Virtuálisgép-méretet a IOPS-korláttal prémium szintű tároló lemez nem csatlakoztatható által vezérelt teljes IOPS-nál nagyobbnak kell lennie. |A Virtuálisgép-méretet választott átviteli legfeljebb teljes átviteli sebesség nem csatlakoztatható prémium tárolólemezek által vezérelt nagyobbnak kell lennie. |A kiválasztott Virtuálisgép-méretet a méretkorlátai teljes méretkorlátai csatolt prémium tárolólemezek nagyobbnak kell lennie. |
 | **A lemezes gyorsítótárazás** |Csak olvasható gyorsítótárának engedélyezése a prémium szintű tároló lemez is van olvasási nehéz műveletek olvasási magasabb IOPS eléréséhez. | &nbsp; |Csak olvasható gyorsítótárának engedélyezése a prémium szintű storage lemezeken készen nehéz műveletekkel lekérni nagyon alacsony olvasási késések fordulnak elő. |
 | **Lemez csíkozást** |Több lemez használata, és paritásos azok egymáshoz kombinált magasabb iops-érték és átviteli határérték beolvasása. Vegye figyelembe, hogy a kombinált felső határ az egyes virtuális gép csatolt premium lemezek kombinált határain nagyobbnak kell lennie. | &nbsp; | &nbsp; |
@@ -242,7 +245,7 @@ Az alábbiakban az adatlemezek, ajánlott lemez-gyorsítótárának beállítás
 
 | **Gyorsítótárazása lemezen** | **Mikor érdemes használni ezt a beállítást a javaslat** |
 | --- | --- |
-| Nincs |Gazdagép-gyorsítótár beállítása None a csak írható és írási műveleteket. |
+| None |Gazdagép-gyorsítótár beállítása None a csak írható és írási műveleteket. |
 | ReadOnly |Gazdagép-gyorsítótár beállítása csak olvasható a csak olvasható és írható-olvasható. |
 | ReadWrite |Gazdagép-gyorsítótár beállítása ReadWrite csak akkor, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatok írása állandó lemezekre, amikor szükséges. |
 

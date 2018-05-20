@@ -14,17 +14,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: e7107e5c75d79714ae8d2d78d35e2cd3742ac674
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Oktatóanyag: Azure SignalR Service-hitelesítés
 
+A Microsoft Azure SignalR szolgáltatás jelenleg [nyilvános előzetes verzióként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érhető el.
+
 Ez az oktatóanyag a rövid útmutatóban bemutatott csevegőszoba-alkalmazásra épít. Ha még nem végezte el a [Csevegőszoba létrehozása SignalR szolgáltatással](signalr-quickstart-dotnet-core.md) gyakorlatot, először végezze el azt. 
 
-Ebben az oktatóanyagban megtanulhatja, hogyan valósíthatja meg a saját hitelesítését, és hogyan integrálhatja azt az Azure SignalR Service szolgáltatással. 
+Ebben az oktatóanyagban megtanulhatja, hogyan implementálhatja a saját hitelesítését, és hogyan integrálhatja azt a Microsoft Azure SignalR Service szolgáltatással. 
 
 A rövid útmutató csevegőszoba-alkalmazásában eredetileg használt hitelesítés túl egyszerű a valós forgatókönyvekhez. Az alkalmazás lehetővé teszi, hogy az ügyfelek megadják a személyazonosságukat, a kiszolgáló pedig egyszerűen elfogadja azt. Ez a módszer nem túl hasznos a valós alkalmazások esetében, ahol a rosszindulatú felhasználók megszemélyesíthetnek más felhasználókat, hogy hozzáférjenek a bizalmas adatokhoz. 
 
@@ -603,9 +605,7 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban OAuth-hitelesítést adott hozzá az alkalmazáshoz, hogy jobb hitelesítési megoldást biztosítson az Azure SignalR Service szolgáltatással. Az Azure SignalR Server használatáról a következő, Azure Functions alkalmazással való integrációt bemutató oktatóanyagban talál további információt.
+Ebben az oktatóanyagban OAuth-hitelesítést adott hozzá az alkalmazáshoz, hogy jobb hitelesítési megoldást biztosítson az Azure SignalR Service szolgáltatással. Ha többet szeretne megtudni az Azure SignalR Server használatáról, lépjen tovább a SignalR Service Azure CLI-mintáira.
 
 > [!div class="nextstepaction"]
-> [Az Azure Functions integrálása az Azure SignalR Service szolgáltatással](./signalr-integrate-functions.md)
-
-
+> [Azure SignalR CLI-minták](./signalr-cli-samples.md)

@@ -1,24 +1,24 @@
 ---
-title: "Az alkalmazásfrissítés: adatszerializálás |} Microsoft Docs"
-description: "Ajánlott eljárások az adatok szerializálása és közbeni alkalmazás hatása."
+title: 'Az alkalmazásfrissítés: adatszerializálás |} Microsoft Docs'
+description: Ajánlott eljárások az adatok szerializálása és közbeni alkalmazás hatása.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c5a4ff9d70ea2b9c7e3a0337e913ea224b31648c
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 2f6fad0ecca09ff9210b5961301fea3446a88f11
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Hogyan befolyásolja a adatszerializálás az alkalmazás frissítés
 Az egy [működés közbeni frissítés alkalmazás](service-fabric-application-upgrade.md), a frissítés a csomópontok egy alkészlete, egyszerre több frissítési tartományt vonatkozik. A folyamat során néhány frissítési tartományok az alkalmazás újabb verziója, és néhány frissítési tartományok az alkalmazás régebbi verzióját. A bevezetés alatt az alkalmazás új verzióját kell fogja tudni elolvasni az adatok a korábbi verziója, és az alkalmazás régebbi verziójához tudja olvasni az adatokat az új verziót kell lennie. Ha az adatformátum nem előre és hátra kompatibilis, a frissítés sikertelen lehet, vagy rosszabb, adatok esetleg elveszett vagy sérült. Ez a cikk ismerteti, mi a adatformátum számít, és annak biztosítása, hogy az adatok előre és hátra ajánlott eljárásai kínál kompatibilis.
@@ -52,7 +52,7 @@ Kódja és adatai formátum két verziója kell lennie, továbbítás és a viss
 
 Adategyezmény-e annak biztosítása, hogy az adatok kompatibilis az ajánlott megoldás. Rendelkezik, jól meghatározott versioning szabályok hozzáadása, eltávolítása és mezők módosítása Azt is támogatja az ismeretlen mezők foglalkoznak, a szerializálás és a deszerializálás folyamatba csatlakoztatás és osztályöröklődést foglalkoznak. További információkért lásd: [adategyezmény használatával](https://msdn.microsoft.com/library/ms733127.aspx).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az alkalmazás használata a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti Önt az alkalmazásfrissítés Visual Studio használatával.
 
 [Az alkalmazás használatával Powershell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti Önt az alkalmazásfrissítés PowerShell használatával.

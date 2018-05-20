@@ -1,9 +1,9 @@
 ---
-title: "Bejelentkezés során lép az Azure AD Identity Protection |} Microsoft Docs"
-description: "A felhasználói élmény áttekintést nyújt, ha Identity Protection problémák elhárításáról vagy javítja a felhasználó, vagy ha a többtényezős hitelesítési házirend szükséges."
+title: Bejelentkezés során lép az Azure AD Identity Protection |} Microsoft Docs
+description: A felhasználói élmény áttekintést nyújt, ha Identity Protection problémák elhárításáról vagy javítja a felhasználó, vagy ha a többtényezős hitelesítési házirend szükséges.
 services: active-directory
-keywords: "az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése"
-documentationcenter: 
+keywords: az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend kezelése
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 558d1e04e352d5f33201bb15cb7a2dd1c18f524f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Az Azure AD Identity Protection bejelentkezési élmény
 Az Azure Active Directory azonosító adatok védelmét a következőket teheti:
@@ -49,10 +49,7 @@ Ez a témakör áttekintést nyújt a felhasználói bejelentkezési felhasznál
 ## <a name="multi-factor-authentication-registration"></a>A multi-factor authentication regisztráció
 A legjobb felhasználói élmény is, a sérült biztonságú fiók helyreállítási folyamata és a kockázatos bejelentkezési folyamata, akkor, ha a felhasználó önállóan helyre tudja állítani. Ha a felhasználók a multi-factor authentication van regisztrálva, már rendelkeznek használható jelentette biztonsági kihívásokkal átadni a fiókjához társított telefonszám. A fiók biztonsága sérülésétől helyreállítása nincs súgó ügyfélszolgálat vagy a rendszergazdai beavatkozás szükséges. Így az rendelkezik kifejezetten ajánljuk, hogy a felhasználók a többtényezős hitelesítés regisztrált. 
 
-A rendszergazdák a következőket teheti:
-
-* Állítsa be a további biztonsági ellenőrzési felhasználóknak házirend beállítása. 
-* engedélyezi a multi-factor authentication regisztráció kihagyása akár 30 napig, abban az esetben, ha szeretnék lehetőséget nyújt a felhasználóknak a türelmi időszak, mielőtt regisztrálná.
+A rendszergazdák, amely megköveteli a felhasználóktól további biztonsági ellenőrzés a fiókok beállítása házirendet állíthat be. Ez a házirend lehetővé teszi a felhasználóknak a multi-factor authentication regisztráció kihagyása 14 napig. A 14 napos türelmi időszak nem lehet konfigurálni.
 
 **A multi-factor Authentication hitelesítés regisztrációs rendelkezik három lépést:**
 
@@ -104,7 +101,7 @@ Ahhoz, hogy a felhasználó által feloldva felhasználói kockázat biztonsági
 
 ![Szervizelés](./media/active-directory-identityprotection-flows/104.png "szervizelés")
 
-## <a name="reset-password"></a>Új jelszó létrehozása
+## <a name="reset-password"></a>Jelszó visszaállítása
 Sérült biztonságú felhasználók nincs hozzáférése a bejelentkezés, ha a rendszergazda egy ideiglenes jelszót hozhat létre a számukra. A felhasználók módosíthatják a jelszavukat a következő bejelentkezés során lesz.
 
 ![Szervizelés](./media/active-directory-identityprotection-flows/160.png "szervizelés")

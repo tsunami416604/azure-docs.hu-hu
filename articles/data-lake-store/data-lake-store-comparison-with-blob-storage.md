@@ -9,16 +9,14 @@ editor: cgronlun
 ms.assetid: b199525b-84de-4f79-9eb6-69a613b8b217
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d394c856b2f27446ab28c44fe4fed2dfd59ae62f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f44532f0b0c0927c7b06c7e92a4839c5ce762f6e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Az Azure Data Lake Store és az Azure Blob Storage összehasonlítása
 Ebben a cikkben a táblázat összefoglalja, az Azure Data Lake Store és az Azure Blob Storage néhány kulcsfontosságú elemeit, az adatfeldolgozás nagy mentén. Az Azure Blob Storage egy általános célú, méretezhető objektum tároló, amely a tárolási forgatókönyvek széles szolgál. Azure Data Lake Store tárháza kapacitású, amely a big data elemzés munkaterhelések van optimalizálva.

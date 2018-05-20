@@ -1,5 +1,5 @@
 ---
-title: Gyakori kérdések az Azure-fájlok |} Microsoft Docs
+title: Gyakori kérdések (GYIK) Azure-fájlok |} Microsoft Docs
 description: Azure-fájlokkal kapcsolatban gyakran feltett kérdésekre adott válaszokat megkeresése
 services: storage
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 67884df9e38906ba7dc426b63275941dba2b8130
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="frequently-asked-questions-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
 
 Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat, beleértve az Azure fájlszinkronizálás Azure fájlokkal kapcsolatos gyakori kérdésekre. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a növekvő sorrendben) a következő csatornákon keresztül:
@@ -27,7 +27,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 1. Ez a cikk megjegyzéseket tartalmazó részét.
 2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure-fájlokat UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Microsoft támogatási szolgálatához. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
+4. A Microsoft ügyfélszolgálata. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
 
 ## <a name="general"></a>Általános kérdések
 * <a id="why-files-useful"></a>
@@ -229,10 +229,10 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 **Hogyan is csatlakoztathatja a helyi számítógépen az Azure fájlmegosztások?**  
     A fájlmegosztást csatlakoztathatja az SMB protokoll segítségével, ha a port 445 (TCP, kimenő) meg nyitva, és az ügyfél támogatja az SMB 3.0 protokollt (például, ha a Windows 10 vagy Windows Server 2016 használata). Ha a 445-ös porton le van tiltva, vagy az Internetszolgáltató által a szervezet házirendje, Azure fájlszinkronizálás használhatja az Azure fájlmegosztás eléréséhez.
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Készítsen biztonsági másolatot az Azure-fájl megosztása?**  
-    Rendszeres használható [pillanatképek megosztása](storage-snapshots-files.md) véletlen törlés elleni védelem. Is használhatja AzCopy, Robocopy, vagy egy külső biztonsági mentési eszköz képes biztonsági mentést egy csatlakoztatott fájlmegosztást. 
+    Rendszeres használható [pillanatképek megosztása](storage-snapshots-files.md) véletlen törlés elleni védelem. Is használhatja AzCopy, Robocopy, vagy egy külső biztonsági mentési eszköz képes biztonsági mentést egy csatlakoztatott fájlmegosztást. Azure biztonsági mentés kínál Azure fájlok biztonsági mentését. További információ [biztonsági mentése Azure fájlmegosztásokat Azure biztonsági mentéssel](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>A pillanatképek megosztása
 ### <a name="share-snapshots-general"></a>Pillanatképek megosztása: általános

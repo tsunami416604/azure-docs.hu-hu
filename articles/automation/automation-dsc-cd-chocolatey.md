@@ -7,13 +7,13 @@ ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9c3cb5a00433a76e8cc444cc48c648cb2749a2ae
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f695eaadc0aa2d01473262c478a3b184d89d882c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Példa: A virtuális gépek Automation DSC és Chocolatey folyamatos üzembe helyezés
 DevOps világában sok eszközöket különböző pontok folyamatos integrációs folyamatban van.  Azure Automation kívánt állapot konfigurációs szolgáltatása (DSC) egy üdvözlő új hozzáadása arra a DevOps csoportokat is alkalmaz.  Ez a cikk bemutatja a beállítás mentése folyamatos Deployment (CD) a Windows-számítógépen.  Könnyen kiterjesztheti a technika (egy webhely, például) szerepkör, és onnan, valamint a további szerepkörök közé tartoznak a tetszőleges számú, Windows rendszerű számítógépeken szükség szerint.

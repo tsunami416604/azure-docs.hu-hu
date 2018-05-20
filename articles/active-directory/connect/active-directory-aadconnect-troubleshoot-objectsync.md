@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/1/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: a28a377ec3872fad0121636070b6604eaa415b30
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Objektum-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
 Ez a dokumentum ismerteti a problémák elhárítása hibaelhárítási feladat szinkronizációs lépéseit.
@@ -90,6 +90,8 @@ A hivatkozott postafiókkal hozzá kell rendelni egy másik fiókot megbízható
 
 ## <a name="dynamic-distribution-group-issue"></a>Dinamikus terjesztési csoport probléma
 A helyszíni különböző eltérései miatt Active Directory és az Azure Active Directory, az Azure AD Connect nem szinkronizálja az Azure AD-bérlő dinamikus terjesztési csoport.
+
+![Dinamikus terjesztési csoport](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch13.png)
 
 ## <a name="html-report"></a>HTML-jelentés
 Az objektum elemzése, mellett a hibaelhárítási feladat is, ami egy HTML-jelentést, amely minden ismert arról az objektumról. A HTML-jelentést megosztható támogatási csoport ehhez a további hibaelhárítási, ha szükséges.

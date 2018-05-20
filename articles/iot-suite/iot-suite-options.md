@@ -1,6 +1,6 @@
 ---
 title: A Microsoft Azure IoT lehetőségei | Microsoft Docs
-description: Kiválaszthatja, hogyan valósítja meg IoT-megoldását az Azure IoT megoldásgyorsítók, a Microsoft IoT Central vagy az Azure IoT Hub segítségével.
+description: Kiválaszthatja, hogyan valósítja meg IoT-megoldását az Azure IoT megoldásgyorsítók, az Azure IoT Central vagy az Azure IoT Hub segítségével.
 services: iot-suite
 suite: iot-suite
 author: dominicbetts
@@ -11,11 +11,11 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddda6bc265cbbaa61025891cf9bc7c28c998160c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f0d6fc2a49034b2e01a0397fe256a2b44030777b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="compare-azure-iot-options"></a>Az Azure IoT lehetőségeinek összehasonlítása
 
@@ -29,22 +29,22 @@ Ennek az architektúrának a megvalósítására az Azure IoT számos lehetősé
 
 * Az [Azure IoT megoldásgyorsítók](index.md) a [megoldásgyorsítók](iot-suite-what-are-solution-accelerators.md) vállalati szintű gyűjteménye, amely az egyéni IoT-megoldások fejlesztésének felgyorsítását lehetővé tévő szolgáltatásként nyújtott platformon (PaaS) alapul.
 
-* A [Microsoft IoT-központ](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) egy olyan szolgáltatott szoftver (SaaS) típusú megoldás, amely egy modellalapú megközelítéssel teszi lehetővé vállalati szintű IoT-megoldások létrehozását úgy, hogy nincs szükség felhőmegoldás-fejlesztési szaktudásra.
+* Az [Azure IoT-központ](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) egy olyan szolgáltatott szoftver (SaaS) típusú megoldás, amely egy modellalapú megközelítéssel teszi lehetővé vállalati szintű IoT-megoldások létrehozását úgy, hogy nincs szükség felhőmegoldás-fejlesztési szaktudásra.
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 
-Az Azure IoT Hub az alapvető Azure PaaS, amelyet a Microsoft IoT Central és az Azure IoT megoldásgyorsítók is használnak. Az Azure IoT Hub megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz és egy felhőalapú megoldás között. Az IoT Hub segít a következő IoT implementációs kihívások leküzdésében:
+Az Azure IoT Hub az alapvető Azure PaaS, amelyet az Azure IoT Central és az Azure IoT megoldásgyorsítók is használnak. Az Azure IoT Hub megbízható és biztonságos kétirányú kommunikációt tesz lehetővé több millió IoT-eszköz és egy felhőalapú megoldás között. Az IoT Hub segít a következő IoT implementációs kihívások leküzdésében:
 
 * Nagy mennyiségű eszköz csatlakoztatása és felügyelete.
 * Nagy mennyiségű telemetriaadat feldolgozása.
 * Eszközök irányítása és vezérlése.
 * Eszközbiztonság kikényszerítése.
 
-## <a name="compare-azure-iot-solution-accelerators-and-microsoft-iot-central"></a>Az Azure IoT-megoldásgyorsítók és a Microsoft IoT Central összehasonlítása
+## <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Az Azure IoT-megoldásgyorsítók és az Azure IoT Central összehasonlítása
 
-Az Azure IoT-termék kiválasztása kritikus része az IoT-megoldás megtervezésének. Az IoT Hub egy önálló Azure-szolgáltatás, amely önmagában nem biztosít teljes körű IoT-megoldást. Az IoT Hub bármely IoT-megoldás kiindulási pontjaként használható, és a használatához nincs szükség az Azure IoT-megoldásgyorsítók vagy a Microsoft IoT Central használatára. Az Azure IoT-megoldásgyorsítók és a Microsoft IoT Central is használják az IoT Hubot más Azure-szolgáltatások mellett. Az alábbi táblázat összegzi az Azure IoT-megoldásgyorsítók és a Microsoft IoT Central közötti lényeges különbségeket, hogy könnyebben kiválaszthassa a követelményeinek megfelelő rendszert:
+Az Azure IoT-termék kiválasztása kritikus része az IoT-megoldás megtervezésének. Az IoT Hub egy önálló Azure-szolgáltatás, amely önmagában nem biztosít teljes körű IoT-megoldást. Az IoT Hub bármely IoT-megoldás kiindulási pontjaként használható, és a használatához nincs szükség az Azure IoT-megoldásgyorsítók vagy az Azure IoT Central használatára. Az Azure IoT-megoldásgyorsítók és az Azure IoT Central is használják az IoT Hubot más Azure-szolgáltatások mellett. Az alábbi táblázat összegzi az Azure IoT-megoldásgyorsítók és az Azure IoT Central közötti lényeges különbségeket, hogy könnyebben kiválaszthassa a követelményeinek megfelelő rendszert:
 
-|                        | Azure IoT-megoldásgyorsítók | Microsoft IoT-központ |
+|                        | Azure IoT-megoldásgyorsítók | Azure IoT Central |
 | ---------------------- | --------- | ----------- |
 | Elsődleges használat | A lehető legnagyobb rugalmasságot igénylő, egyéni IoT-megoldás fejlesztésének felgyorsításához. | Részletes szolgáltatás-testreszabást nem igénylő, egyszerű IoT-megoldások piaci bevezetési idejének lerövidítéséhez. |
 | Hozzáférés az alapul szolgáló PaaS szolgáltatásokhoz          | Hozzáféréssel rendelkezik az alapul szolgáló Azure-szolgáltatásokhoz, felügyelheti, vagy igény szerint lecserélheti őket. | SaaS. Teljes körűen felügyelt megoldás, az alapul szolgáló szolgáltatások nem érhetőek el. |
@@ -64,5 +64,5 @@ A döntést, hogy végül melyik terméket használja az IoT-megoldás létrehoz
 A kiválasztott termék és megközelítés alapján a javasolt következő lépések:
 
 * **Azure IoT-megoldásgyorsítók**: [Mik azok az Azure IoT-megoldásgyorsítók?](iot-suite-what-are-solution-accelerators.md)
-* **Microsoft IoT-központ**: [Microsoft IoT-központ](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions).
+* **Azure IoT-központ**: [Azure IoT-központ](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions).
 * **IoT Hub**: [Az Azure IoT Hub szolgáltatás áttekintése](../iot-hub/iot-hub-what-is-iot-hub.md).

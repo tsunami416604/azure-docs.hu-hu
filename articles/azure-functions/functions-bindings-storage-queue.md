@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: d140822b47325e8749d3b2788b47cf820f720a39
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 67dff6acff33b548518053ca1f569186d6b5b3ae
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure várólista tárolási kötések
 
@@ -253,6 +253,8 @@ A várólista eseményindító biztosít több [metaadat-tulajdonságainak](func
 |`NextVisibleTime`|`DateTimeOffset`|Az üzenet mellett látható lesz ideje.|
 |`PopReceipt`|`string`|A pop visszaigazolás.|
 
+Lásd: [kódpéldák](#trigger---example) ezeket a tulajdonságokat, amelyek használják az ebben a cikkben.
+
 ## <a name="trigger---poison-messages"></a>Eseményindító - elhalt üzenetek
 
 Ha nem sikerül egy várólista funkció, az Azure Functions újrapróbálkozik a függvény legfeljebb ötször egy adott várólistában üzenet, beleértve az első próbálkozás. Minden öt kísérlet sikertelen, ha a functions futtatókörnyezete ad hozzá egy üzenet nevű várólista  *&lt;originalqueuename >-poison*. Írhat egy folyamat üzenetek működnek, mint az elhalt üzenetsorból naplózásukhoz, vagy értesítést küld, hogy manuális beavatkozást van szükség.
@@ -457,7 +459,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**type** | n/a | meg kell `queue`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | meg kell `out`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | A várólista a funkciókódot jelölő neve. Beállítása `$return` hivatkozni, a függvény visszatérési értéke.| 
-|**queueName** |**queueName** | A várólista neve. | 
+|**queueName** |**queueName** | Az üzenetsor neve. | 
 |**Kapcsolat** | **Kapcsolat** |A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

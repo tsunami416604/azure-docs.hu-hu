@@ -1,11 +1,11 @@
 ---
-title: "Virtuálisgép-méretezési csoportok automatikusan skálázva hibaelhárítása |} Microsoft Docs"
-description: "Hárítsa el a virtuálisgép-méretezési csoportok automatikusan skálázva. Ismerje meg észlelt jellemző problémákat és azok megoldását."
+title: Virtuálisgép-méretezési csoportok automatikusan skálázva hibaelhárítása |} Microsoft Docs
+description: Hárítsa el a virtuálisgép-méretezési csoportok automatikusan skálázva. Ismerje meg észlelt jellemző problémákat és azok megoldását.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: negat
-ms.openlocfilehash: 02a3acf818bfca31a56b364f7abab97551e0d3f0
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: ea634ea8bcb4fed1ed63dc8d1e17d215a00758c6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok automatikusan skálázva hibaelhárítása
-**A probléma** – létrehozta az automatikus skálázás infrastruktúra az Azure Resource Manager használatával virtuálisgép-méretezési csoportok – például egy sablont ehhez hasonló telepítésével: https://github.com/Azure/azure-quickstart-templates/tree/master/201- a skálázási szabályok definiált vmss-bottle – automatikus skálázás – rendelkezik, és azt nagyszerű, kivéve akkor helyezni a virtuális gépek mekkora terhelés, függetlenül azok automatikus skálázás nem.
+**A probléma** – létrehozta az automatikus skálázás infrastruktúra az Azure Resource Manager használatával virtuálisgép-méretezési csoportok – például egy sablont ehhez hasonló telepítésével: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – a skálázási szabályok definiálva van, és nagy, kivéve, hogy nem működik a virtuális gépeken mennyi terhelésváltozást számít, automatikus skálázás nem.
 
-## <a name="troubleshooting-steps"></a>Hibaelhárítási útmutató
+## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 Szempontokat kell figyelembe venni a következők:
 
 * Hány Vcpu minden virtuális gép rendelkezik, és minden vCPU betöltése?
@@ -78,7 +78,7 @@ Szempontokat kell figyelembe venni a következők:
     Ha az adatok nem létezik, ez arra utalhat, a probléma van a virtuális gépeken futó diagnosztikai kiterjesztéssel. Ha az adatok ott, ez arra utalhat, vagy probléma a skála szabályokkal, vagy a Insights szolgáltatással. Ellenőrizze [Azure állapot](https://azure.microsoft.com/status/).
     
     Amennyiben azt, hogy a fenti lépéseket, ha továbbra is problémák automatikus skálázás, próbálja meg a következőket: 
-    * Olvassa el a fórumok a [MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp), vagy [veremtúlcsordulás](http://stackoverflow.com/questions/tagged/azure) 
+    * Olvassa el a fórumok a [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), vagy [veremtúlcsordulás](http://stackoverflow.com/questions/tagged/azure) 
     * A támogatási hívás naplózása. Készüljön megosztani a sablont és a teljesítményadatokat nézetét.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

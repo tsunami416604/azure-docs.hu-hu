@@ -6,14 +6,14 @@ author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 05/15/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 7e3b084f833b6d84e5c5102555eb586e306e9de8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8144f70737e5f78f568a8a6dd35ddc7d43ced0fd
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
@@ -82,7 +82,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Geo-restore](sql-database-recovery-using-backups.md#geo-restore) | Igen | Nem – visszaállíthatja COPY_ONLY tekintse meg a teljes biztonsági mentés, amelyet rendszeres időközönként - [különbségek biztonsági mentését](sql-database-managed-instance-transact-sql-information.md#backup) és [különbségek visszaállítása](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
 | [Georeplikáció](sql-database-geo-replication-overview.md) | Igen | Nem |
 | [Graph feldolgozása](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Igen | Igen |
-| [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [csak a prémium és üzleti Critial rétegek](sql-database-in-memory.md) | Nem |
+| [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [csak a prémium szintű és kritikus fontosságú üzleti rétegek](sql-database-in-memory.md) | Nem |
 | [JSON-adatok támogatása](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Igen](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [Igen](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |
 | [Nyelvi elemei](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Most – tekintse meg az egyéni elemekké |  Igen – lásd: [T-SQL különbségek](sql-database-managed-instance-transact-sql-information.md) |
 | [Csatolt kiszolgálók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem - látható [rugalmas lekérdezés](sql-database-elastic-query-horizontal-partitioning.md) | Csak az SQL Server és SQL-adatbázis |

@@ -1,23 +1,23 @@
 ---
-title: "Az Azure Service Fabric fordított proxy biztonságos kommunikációs |} Microsoft Docs"
-description: "Ahhoz, hogy biztonságos-végpontok közötti kommunikáció fordított proxy konfigurálása."
+title: Az Azure Service Fabric fordított proxy biztonságos kommunikációs |} Microsoft Docs
+description: Ahhoz, hogy biztonságos-végpontok közötti kommunikáció fordított proxy konfigurálása.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
 manager: vipulm
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 568f9638c59282bcd7d3fae058a1588a889c22dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 237a72fd282b29d3032675ccf3fb350f8db59ef7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozzon egy biztonságos szolgáltatáshoz a fordított proxy
 
@@ -190,7 +190,7 @@ Ha az ügyfél nincs jelen tanúsítvány, a fordított proxy egy üres fejléc 
 > Fordított proxy puszta továbbító. Bármely az ügyféltanúsítvány érvényesítése nem hajtja végre.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tekintse meg [fordított proxy konfigurálása a biztonságos szolgáltatásokhoz](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) az Azure Resource Manager sablon minták konfigurálása biztonságos különböző szolgáltatástanúsítvány fordított proxy ellenőrzési beállítások.
 * Példa a szolgáltatások közötti HTTP-kommunikációt egy [mintaprojektet a Githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Távoli eljáráshívások a Reliable Services távoli eljáráshívás](service-fabric-reliable-services-communication-remoting.md)

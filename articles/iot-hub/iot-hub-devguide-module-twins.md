@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fbbce06653e60cd914c2ed4d5990aac78ef53a8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 1e6f52da6f7524828cef928c2ee5d5cd92a1de1e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Ismertetés és modul twins használja az IoT hubon
 
@@ -27,7 +27,7 @@ Ez a cikk feltételezi, hogy elolvasta a [megértéséhez, valamint eszköz twin
 
 Az eszköz oldalán az IoT Hub eszköz SDK-k lehetővé teszik modulok, amely minden megnyit egy IoT-központ független kapcsolat létrehozása. Ez lehetővé teszi, hogy különálló névterek használ a különböző összetevőket az eszközön. Például hogy egy Eladóautomata, amely három különböző érzékelők rendelkezik. Minden egyes érzékelő a vállalat különböző részlegei vezérli. Minden egyes érzékelő modul hozhat létre. Így minden részleg értéke csak-feladat vagy közvetlen módszerek az érzékelő szabályozó azokat, szükségtelenné téve az ütközések és felhasználói hibákat kell küldenie.
 
- Modul identitás- és modul iker eszköz identitása és devic iker megegyezik, azonban egyeztetését részletességű ugyanazokat a képességeket biztosít. Ez nagyobb részletességgel lehetővé teszi, hogy használatára képes eszközök, például az operációs rendszer eszközök vagy a belső vezérlőprogram eszközök kezelése több összetevőjét, különítheti el a konfigurációs és az egyes összetevők feltételek alapján. Modul identitás- és modul twins adja meg a kérdések elkülönítése az IoT-eszközök, amelyek moduláris szoftverösszetevőket használatakor. A Microsoft célja modul iker szinten összes eszköz iker funkciót támogató modul iker általános rendelkezésre állás. 
+ Modul identitás- és modul iker eszközidentitás és eszköz iker, de egyeztetését részletességű ugyanazokat a képességeket biztosít. Ez nagyobb részletességgel lehetővé teszi, hogy használatára képes eszközök, például az operációs rendszer eszközök vagy a belső vezérlőprogram eszközök kezelése több összetevőjét, különítheti el a konfigurációs és az egyes összetevők feltételek alapján. Modul identitás- és modul twins adja meg a kérdések elkülönítése az IoT-eszközök, amelyek moduláris szoftverösszetevőket használatakor. A Microsoft célja modul iker szinten összes eszköz iker funkciót támogató modul iker általános rendelkezésre állás. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

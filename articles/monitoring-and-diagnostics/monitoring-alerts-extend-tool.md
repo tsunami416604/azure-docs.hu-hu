@@ -11,16 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/14/2018
 ms.author: vinagara
-ms.openlocfilehash: 0de596f454a1e79b1f5540854897bd15f8de88c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Az OMS Szolgáltatáshoz, az Azure bővítése (Másolás) riasztások
 Verziótól **2018. május 14.**, a konfigurált riasztások minden felhasználója [a Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), az Azure kiterjesztése. Riasztásokat, amelyek az Azure-bA bővítve lettek OMS a megszokott módon működik. Megfigyelési lehetőségek változatlanok maradnak. Az Azure-bA OMS létrehozott riasztások kiterjesztése számos előnyt kínál. Az előnyei és a folyamat, amely a riasztásokat az OMS Szolgáltatáshoz Azure kapcsolatos további információkért lásd: [terjessze ki a riasztások az OMS Szolgáltatáshoz Azure](monitoring-alerts-extend.md).
+
+> [!NOTE]
+> Május 14 2018 - megkezdése a Microsoft megkezdődik a folyamat automatikusan kiterjeszti a riasztások az Azure-bA. Nem minden munkaterületekkel és riasztások kibővíti a mai napon; helyette a Microsoft megkezdik terjesztheti ki az értesítések automatikusan részletben jövőbeli hét. Ezért a riasztásokat az OMS-portálon fog automatikus-terjed ki az Azure azonnal a 2018. május 14., és felhasználó továbbra is futtathatja manuálisan kiterjesztheti a riasztásokról beállítások részleteit az alábbiakban olvashatja.
 
 Az ügyfelek szeretne áthelyezi a riasztásokat az OMS Szolgáltatáshoz Azure azonnal, ehhez a megadott lehetőségek egyikének használatával.
 

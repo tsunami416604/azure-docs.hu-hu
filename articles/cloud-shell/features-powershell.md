@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: damaerte
-ms.openlocfilehash: cd1582697307219bf3710139c6b44b5957b176e4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 209ca603a3826c6516444ea4f3f4fe592e3b3f2e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Szolgáltatások és eszközök PowerShell Azure Cloud rendszerhéj (előzetes verzió)
 
@@ -90,7 +90,7 @@ Ezek a parancsok PowerShell távoli eljáráshívás épülnek, és az Azure vir
 
 |**Kategória**    |**Name (Név)**                                 |
 |----------------|-----------------------------------------|
-|Azure-eszközök     |[Az Azure PowerShell (5.7.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Az Azure CLI (2.0.31)](https://docs.microsoft.com/cli/azure)|
+|Azure-eszközök     |[Az Azure PowerShell (6.0.1)](https://docs.microsoft.com/powershell/azure/overview)<br> [Az Azure CLI (2.0.32)](https://docs.microsoft.com/cli/azure)|
 |A szerkesztő szövege    |VIM<br> nano                             |
 |A Package Manager |PowerShellGet<br> PackageManagement<br> npm<br> a pip |
 |A verziókövetési rendszerrel  |git                                      |
@@ -103,7 +103,7 @@ Ezek a parancsok PowerShell távoli eljáráshívás épülnek, és az Azure vir
 |------------|-----------|
 |.NET        |4.6        |
 |Node.js     |8.9.4       |
-|PowerShell  |5.1 és [6.1.0-preview.1](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell  |5.1 és [6.0.2](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>További lépések

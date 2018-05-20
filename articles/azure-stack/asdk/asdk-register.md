@@ -12,18 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/24/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f7398945efe6b9b5ad148f6fa0d303363da9abaa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1d90be043affcab422f8e59e6bac1c76ec923d48
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure verem regisztrálni Azure-ral
 Az Azure-ral Piactéri elemek letölteni az Azure-ból, és megkezdheti a Microsoft commerce adatok beállítása az Azure verem Development Kit (ASDK) telepítése is regisztrálhat. Regisztrációs használata ajánlott, mivel lehetővé teszi a fontos Azure verem funkciók, például a piactér szindikálási és használatai jelentések tesztelése. Miután regisztrálta Azure verem, használati Azure kereskedelmi bejelentések. Megtekintheti az előfizetésben a regisztrációhoz használt. ASDK felhasználók azonban nem felszámított bármely használati jelentést.
 
+Ha nem regisztrálja a ASDK, megjelenhet egy **szükséges aktiválási** figyelmeztető riasztás, amely azt ajánlja, hogy regisztrálja az Azure verem szoftverfejlesztői készlet. Ez az elvárt viselkedés.
 
 ## <a name="register-azure-stack-with-azure"></a>Azure verem regisztrálni Azure-ral 
 Kövesse az alábbi lépéseket a ASDK regisztrálni Azure-ral.

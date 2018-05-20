@@ -2,19 +2,18 @@
 title: Azure Automation integrálása Visual Stuido Team Services verziókezelő
 description: A forgatókönyv bemutatja, hogyan egy Azure Automation-fiók és a Visual Stuido Team Services a verziókövetési rendszerrel való integráció beállításával.
 services: automation
-documentationcenter: ''
 author: eamonoreilly
 ms.author: eamono
 keywords: az Azure powershell, a VSTS, verziókezelő, automatizálás
 ms.service: automation
 ms.component: process-automation
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2017
-ms.openlocfilehash: edd9174a9141c4db36a1b25d5f1147f9c7b2e2c2
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f34267490a0db71e05ece97c23b86467dbf7dbeb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation forgatókönyv - automatizálási verziókövetés integrálása a Visual Studio Team Services
 

@@ -16,11 +16,12 @@
 # Példák
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=key-vault)
 # Alapelvek
+## [A Key Vault ismertetése](key-vault-whatis.md)
 ## [Biztonsági világok](key-vault-ovw-security-worlds.md)
 ## [Helyreállítható törlés](key-vault-ovw-soft-delete.md)
 ## [Tárfiókkulcsok](key-vault-ovw-storage-keys.md)
 ## [Szabályozás](key-vault-ovw-throttling.md)
-## [A Key Vault ismertetése](key-vault-whatis.md)
+
 
 # Útmutatók
 ## Kezelés
@@ -68,11 +69,12 @@
 ### [Tanúsítvány-létrehozási módszerek](create-certificate.md)
 ### [Tanúsítvány-létrehozás monitorozása és kezelése](create-certificate-scenarios.md)
 ## [Hitelesítés, kérelmek és válaszok](authentication-requests-and-responses.md)
+## [Ügyféladatokkal kapcsolatos funkciók](key-vault-customer-data.md)
 ## [Gyakori paraméterek és fejlécek](common-parameters-and-headers.md)
 ## [Key Vault-verziók](key-vault-versions.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blog](http://blogs.technet.com/b/kv/)
-## [Kódminták](https://www.microsoft.com/download/details.aspx?id=45343)
+## [Kódminták](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault&type=&language=)
 ## [Fórumok](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

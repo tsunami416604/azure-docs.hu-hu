@@ -1,31 +1,31 @@
 ---
-title: "Alkalmazás életciklusa a Service Fabric |} Microsoft Docs"
-description: "Ismerteti a fejlesztés, telepítése, tesztelési, frissítése, karbantartása és a Service Fabric-alkalmazások eltávolítása."
+title: Alkalmazás életciklusa a Service Fabric |} Microsoft Docs
+description: Ismerteti a fejlesztés, telepítése, tesztelési, frissítése, karbantartása és a Service Fabric-alkalmazások eltávolítása.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 923778e54a1ae5967d681751841c3a2b3fb45130
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: e7dddfca3640615cb851fb6dce9eaa80260ccbf6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-lifecycle"></a>A Service Fabric-alkalmazás életciklusa
 És egyéb platformok, az alkalmazás Azure Service Fabric általában végig kell vinnie a következő fázisok: tervezési, fejlesztési, tesztelési, telepítési, frissítésére, karbantartási és eltávolítása. A Service Fabric első osztályú támogatást nyújt a teljes alkalmazás életciklusa a felhőalapú alkalmazások, a fejlesztését a telepítés, a napi felügyeleti és a karbantartás végleges leszerelése. A modell lehetővé teszi, hogy az alkalmazás-életciklus egymástól függetlenül részt számos különböző szerepkörrel. Ez a cikk áttekintést nyújt az API-k és azok használata során a Service Fabric-alkalmazás életciklusa fázisai a különböző szerepkörökhöz.
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-A következő Microsoft Virtual Academy videó bemutatja, hogyan kezelheti az alkalmazás-életciklus:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
+A következő Microsoft Virtual Academy videó bemutatja, hogyan kezelheti az alkalmazás-életciklus: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-application-lifecycle/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 

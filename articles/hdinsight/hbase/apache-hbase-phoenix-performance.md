@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 58ecf22fa0f9349a767455fe3ab08fca058d02da
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b4c1e3fb919ab9ad88a15b51a5e204290a7a12cf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="phoenix-performance-best-practices"></a>A Phoenix teljesítményével kapcsolatos ajánlott eljárások
 
@@ -36,23 +36,23 @@ A Phoenix egy olyan táblázatában megadva elsődleges kulcs határozza meg, ho
 
 Például a tábla a névjegyek rendelkezik, az Utónév, utolsó nevét, telefonszám és cím, az azonos oszlop termékcsalád összes. Egy elsődleges kulcs feladatütemezési egyre több alapján adható meg:
 
-|rowkey|       Cím|   Telefonszám| Utónév| Vezetéknév|
+|rowkey|       Cím|   telefon| Utónév| Vezetéknév|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|San Gabriel Dr 1111.|1-425-000-0002|    Jakab|Dole|
+|  1000|San Gabriel Dr 1111.|1-425-000-0002|    John|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 Azonban ha Vezetéknév szerint gyakran kérdezze le az elsődleges kulcs nem hajthatja végre, mert minden egyes lekérdezés egy teljes táblázatbeolvasás minden Vezetéknév értékének olvasásához szükséges. Egy elsődleges kulcs meg ehelyett a Vezetéknév, az utónév és a társadalombiztosítási szám oszlopok. Ez az utolsó oszlop, a félreérthetőség megszüntetéséhez két lakosai ugyanazzal a névvel, például egy édesapja és fia azonos címen.
 
-|rowkey|       Cím|   Telefonszám| Utónév| Vezetéknév| socialSecurityNum |
+|rowkey|       Cím|   telefon| Utónév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|San Gabriel Dr 1111.|1-425-000-0002|    Jakab|Dole| 111 |
+|  1000|San Gabriel Dr 1111.|1-425-000-0002|    John|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Ez az új elsődleges kulcs a sort a Phoenix által létrehozott kulcsok néz ki:
 
-|rowkey|       Cím|   Telefonszám| Utónév| Vezetéknév| socialSecurityNum |
+|rowkey|       Cím|   telefon| Utónév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole-John-111|San Gabriel Dr 1111.|1-425-000-0002|    Jakab|Dole| 111 |
+|  Dole-John-111|San Gabriel Dr 1111.|1-425-000-0002|    John|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 A fenti első sorban a rowkey adatai képviselt látható módon:
@@ -60,8 +60,8 @@ A fenti első sorban a rowkey adatai képviselt látható módon:
 |rowkey|       kulcs|   érték| 
 |------|--------------------|---|
 |  Dole-John-111|Cím |San Gabriel Dr 1111.|  
-|  Dole-John-111|Telefonszám |1-425-000-0002|  
-|  Dole-John-111|Utónév |Jakab|  
+|  Dole-John-111|telefon |1-425-000-0002|  
+|  Dole-John-111|Utónév |John|  
 |  Dole-John-111|Vezetéknév |Dole|  
 |  Dole-John-111|socialSecurityNum |111| 
 
@@ -118,9 +118,9 @@ Az érintett indexek rendszer mellett a értékek indexelt sor adatai indexeket.
 
 A példában például létrehozhat egy másodlagos index csak a socialSecurityNum oszlop a tábla forduljon. A másodlagos index volna felgyorsítása socialSecurityNum szűrés lekérdezések, de más mezők értékének beolvasása szükséges egy másik olvassa el a fő táblázaton.
 
-|rowkey|       Cím|   Telefonszám| Utónév| Vezetéknév| socialSecurityNum |
+|rowkey|       Cím|   telefon| Utónév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole-John-111|San Gabriel Dr 1111.|1-425-000-0002|    Jakab|Dole| 111 |
+|  Dole-John-111|San Gabriel Dr 1111.|1-425-000-0002|    John|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Azonban ha általában szeretné megkeresni a Keresztnév és Vezetéknév a socialSecurityNum megadott, létrehozhat egy kezelt indexet, amely tartalmazza az utónév és Vezetéknév tényleges adatként az index táblázatban:

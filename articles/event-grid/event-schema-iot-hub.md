@@ -1,20 +1,20 @@
 ---
-title: "Az IoT-központ Azure esemény rács séma |} Microsoft Docs"
-description: "Az esemény séma formátum és az IoT Hub tulajdonságainak referencialapja"
+title: Az IoT-központ Azure esemény rács séma |} Microsoft Docs
+description: Az esemény séma formátum és az IoT Hub tulajdonságainak referencialapja
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 29ad1233a344c3085286c27cb925b2dc9fb41f7e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 812ca3ba546112f54a76319fda853d441ce34f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Az IoT-központ Azure esemény rács esemény séma
 
@@ -92,8 +92,8 @@ A séma DeviceCreated és DeviceDeleted események hasonló struktúrával rende
 | eventType | karakterlánc | Az esemény adatforrás regisztrált esemény típusok egyike. |
 | eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
 | adat | objektum | Az IoT-központ eseményadatok.  |
-| dataVersion | karakterlánc | Az objektum séma verziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | karakterlánc | Az esemény-metaadatok séma verziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
+| dataVersion | karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | karakterlánc | Az esemény-metaadatok sémaverziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
 
 Az objektum tartalma különböző minden esemény-közzétevő. Az IoT-központ események az objektum tartalmazza a következő tulajdonságokkal:
 
@@ -110,12 +110,12 @@ Az objektum tartalma különböző minden esemény-közzétevő. Az IoT-központ
 | statusUpdateTime | karakterlánc | Az utolsó két Eszközállapot ISO8601 időbélyegzője frissítése. |
 | connectionState | karakterlánc | Hogy az eszköz van csatlakoztatva, vagy nincs csatlakoztatva. | 
 | lastActivityTime | karakterlánc | A legutolsó tevékenység ISO8601 időbélyegző. | 
-| cloudToDeviceMessageCount | integer | Felhő erre az eszközre küldött eszköz üzenetek száma. | 
+| cloudToDeviceMessageCount | egész szám | Felhő erre az eszközre küldött eszköz üzenetek száma. | 
 | authenticationType | karakterlánc | Ehhez az eszközhöz használt hitelesítés típusa: vagy `SAS`, `SelfSigned`, vagy `CertificateAuthority`. |
 | X509Thumbprint | karakterlánc | Az ujjlenyomat egy egyedi értéket a x509 tanúsítvány, egy adott tanúsítvány található a tanúsítványtárolóban általánosan használt. Az ujjlenyomat dinamikusan generálta az SHA1 algoritmusok, és a tanúsítvány fizikailag nem létezik. | 
 | primaryThumbprint | karakterlánc | Elsődleges ujjlenyomata a x509 a tanúsítványt. |
 | secondaryThumbprint | karakterlánc | Másodlagos ujjlenyomata a x509 a tanúsítványt. | 
-| verzió: | integer | Egész szám, amely értéke eggyel minden idő az eszköz iker frissül. |
+| verzió: | egész szám | Egész szám, amely értéke eggyel minden idő az eszköz iker frissül. |
 | kívánt | objektum | Csak az alkalmazás háttér-írják, és olvassa el az eszköz tulajdonságok része. | 
 | jelentve | objektum | A tulajdonságokat, amelyeket csak az eszköz által írt, és az alkalmazás háttér-olvasni egy részét. |
 | lastUpdated | karakterlánc | Az utolsó két eszköztulajdonságon ISO8601 időbélyegzője frissítése. | 

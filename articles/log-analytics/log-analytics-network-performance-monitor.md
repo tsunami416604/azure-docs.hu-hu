@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a3c81d63593bb7bf268c1026064e34c3a363ef86
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Hálózati Teljesítményfigyelő megoldás az Azure-ban
 
@@ -74,7 +74,7 @@ A legfontosabb folyamatok segítségével telepíthet ügynököket a [csatlakoz
 
 Hálózati teljesítmény figyelése szintetikus tranzakciók használja a forrás és cél ügynökök között a hálózati teljesítmény figyeléséhez. Választhat TCP és az ICMP protokollt Teljesítményfigyelő- és végpont-figyelő szolgáltatás képességek a figyelés. TCP ExpressRoute figyelő szolgál. Győződjön meg arról, hogy a tűzfal engedélyezi-e az Operations Management Suite-ügynökök úgy dönt, a protokollal figyeléshez használt közötti kommunikációt. 
 
-* **A TCP protokoll**: Ha úgy dönt, TCP protokollt a figyeléshez, nyissa meg az ügynökökhöz, győződjön meg arról, hogy az ügynökök kapcsolódhatnak egymáshoz hálózati Teljesítményfigyelő és ExpressRoute figyelő használt tűzfalport. Nyissa meg a portot, a PowerShell-parancsprogrammal a EnableRules.ps1 paraméterek nélkül egy PowerShell-ablakban rendszergazdai jogosultságokkal.
+* **A TCP protokoll**: Ha úgy dönt, TCP protokollt a figyeléshez, nyissa meg az ügynökökhöz, győződjön meg arról, hogy az ügynökök kapcsolódhatnak egymáshoz hálózati Teljesítményfigyelő és ExpressRoute figyelő használt tűzfalport. Nyissa meg a portot, futtassa a [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-parancsfájl egy PowerShell-ablakban rendszergazdai jogosultságokkal rendelkező paraméterek nélkül.
 
     A parancsfájl-megoldás által igényelt beállításkulcsokat hoz létre. A Windows tűzfal-szabályokat az ügynökök számára a TCP-kapcsolatok létrehozása egymás mellett is létrehoz. A beállításkulcsok hozta létre a parancsfájl adja meg, hogy a naplófájl a hibakeresési naplók és a naplók fájl elérési útját. A parancsfájl az ügynök-kommunikációhoz használt TCP-portot is meghatároz. Ezek a kulcsok értékeit automatikusan a parancsfájl által vannak állítva. Ezek a kulcsok manuális ne módosítsa. A port, megnyílik az 8084. A paraméter portszám a parancsfájl megadásával egyéni portot is használhat. Használhatja ugyanazt a portot a számítógépeken, ahol a parancsfájl futtatása. 
 
@@ -82,7 +82,7 @@ Hálózati teljesítmény figyelése szintetikus tranzakciók használja a forr�
     > A parancsfájl a csak a Windows tűzfal helyben konfigurálja. Ha a hálózati tűzfal, győződjön meg arról, hogy lehetővé teszi a hálózati teljesítményt figyelő által használt TCP-portot adatforgalmat.
 
     >[!NOTE]
-    > Nem kell EnableRules.ps1 PowerShell-parancsprogram futtatásához a végpont Szolgáltatásfigyelő szolgáltatásra.
+    > Nem kell futtatni a [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell-parancsfájl a végpont Szolgáltatásfigyelő szolgáltatásra.
 
     
 

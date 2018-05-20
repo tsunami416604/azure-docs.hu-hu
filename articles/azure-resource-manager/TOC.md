@@ -102,6 +102,7 @@
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
+## [Személyes adatok kezelése](resource-manager-personal-data.md)
 ## [Kérelmek szabályozása](resource-manager-request-limits.md)
 ## [Aszinkron műveletek követése](resource-manager-async-operations.md)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)

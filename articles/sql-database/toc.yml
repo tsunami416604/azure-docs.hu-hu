@@ -104,6 +104,16 @@
       items:
         - name: Áttekintés
           href: sql-database-security-overview.md
+        - name: Fejlett fenyegetésvédelem
+          href: sql-advanced-threat-protection.md
+        - name: Adatfelderítés és besorolás
+          href: sql-database-data-discovery-and-classification.md
+        - name: Sebezhetőségi felmérés
+          href: sql-vulnerability-assessment.md
+        - name: Fenyegetések észlelése – SQL Database
+          href: sql-database-threat-detection.md
+        - name: Fenyegetések észlelése – Felügyelt példány
+          href: sql-database-managed-instance-threat-detection.md
         - name: Tűzfalszabályok
           href: sql-database-firewall-configure.md
         - name: Virtuális hálózatok tűzfalszabályai
@@ -120,18 +130,10 @@
           href: sql-database-auditing.md
         - name: Auditálás – Felügyelt példány
           href: sql-database-managed-instance-auditing.md
-        - name: Fenyegetések észlelése – SQL Database
-          href: sql-database-threat-detection.md
-        - name: Fenyegetések észlelése – Felügyelt példány
-          href: sql-database-managed-instance-threat-detection.md
         - name: Táblanaplózás és TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Dinamikus adatmaszkolás
           href: sql-database-dynamic-data-masking-get-started.md
-        - name: Sebezhetőségi felmérés
-          href: sql-vulnerability-assessment.md
-        - name: Adatfelderítés és besorolás
-          href: sql-database-data-discovery-and-classification.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Áttekintés

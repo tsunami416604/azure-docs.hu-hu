@@ -1,24 +1,24 @@
 ---
-title: "A fürt Azure Service Fabric Explorerrel megjelenítése |} Microsoft Docs"
-description: "Service Fabric Explorer alkalmazás ellenőrzése és kezelése a felhőalapú alkalmazások és a Microsoft Azure Service Fabric-fürt csomópontjának."
+title: A fürt Azure Service Fabric Explorerrel megjelenítése |} Microsoft Docs
+description: Service Fabric Explorer alkalmazás ellenőrzése és kezelése a felhőalapú alkalmazások és a Microsoft Azure Service Fabric-fürt csomópontjának.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
+editor: ''
 ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: mikhegn
-ms.openlocfilehash: dc71bf8045abf72953f678dc9295346dc9204e59
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 916742d89447af4097d37b5d78e97ff86c12834c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -45,12 +45,12 @@ Az alábbi hivatkozásokat követve töltse le a Service Fabric Explorer egy asz
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>Service Fabric Explorer fut a fürtön
 
-Service Fabric Explorer is található a Service Fabric-fürt HTTP felügyeleti végpontja. SFX indítása a böngészőben, tallózással keresse meg a fürt HTTP felügyeleti végpont minden böngészőből – például https://clusterFQDN:19080.
+Service Fabric Explorer is található a Service Fabric-fürt HTTP felügyeleti végpontja. Indítsa el a SFX webböngészőben, navigáljon a HTTP-felügyeleti végpont a fürt minden böngészőből - például https://clusterFQDN:19080.
 
-A fejlesztő munkaállomás telepítő elindíthatja a Service Fabric Explorer a helyi fürtön lévő https://localhost:19080/Explorer útvonalon. Tekintse meg jelen cikk [a fejlesztőkörnyezet előkészítése](service-fabric-get-started.md).
+A fejlesztő munkaállomás telepítő, elindíthatja a Service Fabric Explorer a helyi fürtön lévő útvonalon https://localhost:19080/Explorer. Tekintse meg jelen cikk [a fejlesztőkörnyezet előkészítése](service-fabric-get-started.md).
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Csatlakozás a Service Fabric-fürt
-A Service Fabric-fürt csatlakozni kell a a fürtök felügyeleti végpont (FQDN vagy IP-) és a HTTP felügyeleti végpont portja (alapértelmezés szerint 19080). Például https://mysfcluster.westus.cloudapp.azure.com:19080. A "Localhost csatlakozás" jelölőnégyzet segítségével csatlakozzon a helyi fürthöz a munkaállomáson.
+A Service Fabric-fürt csatlakozni kell a a fürtök felügyeleti végpont (FQDN vagy IP-) és a HTTP felügyeleti végpont portja (alapértelmezés szerint 19080). Például: https://mysfcluster.westus.cloudapp.azure.com:19080. A "Localhost csatlakozás" jelölőnégyzet segítségével csatlakozzon a helyi fürthöz a munkaállomáson.
 
 ### <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 A Service Fabric fürt tanúsítványok, valamint az Azure Active Directory (AAD) használó ügyfél-hozzáférési szabályozhatja.

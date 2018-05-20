@@ -5,14 +5,14 @@ services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 04/17/2018
 ms.author: babanisa
-ms.openlocfilehash: cb7797f5322b9288faf96be2ede164f156fd66cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3e0b7fd825b8e985cea2c32301986b3a7f8bb619
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Az Azure Event rács esemény séma
 
@@ -87,8 +87,8 @@ Például az Azure Blob storage esemény közzé séma van:
 | eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
 | id | karakterlánc | Az esemény egyedi azonosítója. |
 | adat | objektum | Eseményadatok jellemző az erőforrás-szolgáltató. |
-| dataVersion | karakterlánc | Az objektum séma verziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | karakterlánc | Az esemény-metaadatok séma verziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
+| dataVersion | karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | karakterlánc | Az esemény-metaadatok sémaverziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
 
 Az objektum tulajdonságait, lásd: a következő Eseményforrás:
 

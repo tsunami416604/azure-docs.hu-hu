@@ -1,24 +1,24 @@
 ---
-title: "Azure mikroszolgáltatási terhelés mérőszámainkat kezelése |} Microsoft Docs"
-description: "További tudnivalók konfigurálásával és a Service Fabric mérőszámok segítségével erőforrás-felhasználás kezelésére."
+title: Azure mikroszolgáltatási terhelés mérőszámainkat kezelése |} Microsoft Docs
+description: További tudnivalók konfigurálásával és a Service Fabric mérőszámok segítségével erőforrás-felhasználás kezelésére.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5c291ef864518b2366c61c9e5c11fac9e8468a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Kezelése erőforrás-felhasználás és a metrikák a Service Fabric terheléselosztási
 *Metrikák* az erőforrás, a szolgáltatások ítélt információkat, és amely a fürt csomópontja által biztosított. Egy metrika, amelyeket szeretne kezelni, javítása vagy a szolgáltatások teljesítményének figyeléséhez. Például előfordulhat, hogy figyelje a rendszermemóriát tudni, hogy ha a szolgáltatás túlterhelt. Egy másik rendeltetése mérje fel, hogy a szolgáltatás tudta áthelyezni máshol ahol memória kisebb korlátozott ahhoz, hogy nagyobb teljesítményre van szüksége-e.
@@ -261,7 +261,7 @@ A felső példában csak a globális elosztás alapján az egész fürt valóban
 
 Az alsó példában a fürt erőforrás-kezelő rendelkezik elosztott a replikákat a globális és a szolgáltatás elosztás alapján. A megoldás a pontszám kiszámítása során a súlyozás a legtöbb biztosít a globális megoldást, és az egyes szolgáltatásokhoz (konfigurálható) része. Metrika globális elosztás alapján van kiszámítva átlagának kiszámítása a metrika súlyok minden szolgáltatásból. Minden szolgáltatás kiegyensúlyozott saját meghatározott metrika súlyok alapján. Ez biztosítja, hogy a szolgáltatások elosztását belül magát a saját igényeinek megfelelően. Ennek eredményeképpen ha azonos első csomópont meghibásodik, a hiba történik az összes olyan szolgáltatás összes partíciójára. Minden egyes szempontjából azonos.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A szolgáltatások konfigurálásáról [szolgáltatások konfigurálásával kapcsolatos tudnivalók](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
 - Lemeztöredezettség-mentesítés metrikák meghatározása az összevonni helyett ezzel azt csomópontok terhelése egyik módja. Lemeztöredezettség-mentesítés konfigurálásáról további tudnivalókért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - Hogyan kezeli a fürt erőforrás-kezelő, és elosztja a terhelést a fürt kapcsolatos további tudnivalókért tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)

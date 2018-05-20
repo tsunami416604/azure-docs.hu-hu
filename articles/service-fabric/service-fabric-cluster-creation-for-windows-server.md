@@ -1,24 +1,24 @@
 ---
-title: "Hozzon létre egy önálló Azure Service Fabric-fürt |} Microsoft Docs"
-description: "Az Azure Service Fabric-fürt létrehozása (fizikai vagy virtuális) bármely gépen Windows Server rendszert futtató, hogy helyszíni-e, vagy a felhőben."
+title: Hozzon létre egy önálló Azure Service Fabric-fürt |} Microsoft Docs
+description: Az Azure Service Fabric-fürt létrehozása (fizikai vagy virtuális) bármely gépen Windows Server rendszert futtató, hogy helyszíni-e, vagy a felhőben.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: dekapur;chackdan;maburlik
-ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: dekapur
+ms.openlocfilehash: efa48aa90806b45c99237404af24cb8aba762d15
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló fürt létrehozása
 Azure Service Fabric használatával Service Fabric-fürtök létrehozása a virtuális gépek vagy a Windows Server rendszerű számítógépek. Ez azt jelenti, telepítése és a Service Fabric-alkalmazások futtatása bármely összekapcsolt Windows Server számítógépek tartalmazó környezetben is kell azt a helyszíni vagy bármely felhőalapú szolgáltatóhoz. A Service Fabric biztosít a telepítési csomagot a különálló Windows Server csomag nevű Service Fabric-fürtök létrehozása.
@@ -130,7 +130,7 @@ Példa:
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
 ### <a name="step-3-bring-up-service-fabric-explorer"></a>3. lépés: Elindítani a Service Fabric Explorerrel
-Most csatlakozhat a fürthöz, a Service Fabric Explorerrel vagy közvetlenül az egyik a gépek http://localhost:19080/Explorer/index.html vagy távolról http://<*IPAddressofaMachine*>: 19080/Explorer / index.html.
+Most csatlakozhat a fürthöz, a Service Fabric Explorerrel vagy közvetlenül az egyik a gépek http://localhost:19080/Explorer/index.html vagy távolról http://<*IPAddressofaMachine*>: 19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Hozzáadása és eltávolítása, csomópontok
 Adja hozzá, vagy távolítsa el a csomópontok a különálló Service Fabric-fürt számára, az üzleti igényeinek változását. Lásd: [különálló Service Fabric-fürt a csomópontok hozzáadásához és eltávolításához](service-fabric-cluster-windows-server-add-remove-nodes.md) a részletes lépéseket.
@@ -154,14 +154,14 @@ Ezt a parancsfájlt, amely csomópontként a fürt konfigurációs fájlban fels
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Az összegyűjtött telemetrikus adatok és tilthatják le, hogyan
-Alapértelmezés szerint a termék telemetriai adatokat gyűjt a Service Fabric-használata a termék tökéletesítése érdekében. Az ajánlott eljárásokat elemző eszköz, amely fut, a telepítés részeként keresi a kapcsolatot a [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Ha nem érhető el, a telepítés sikertelen lesz, kivéve, ha kikapcsolja a telemetriai adatok.
+Alapértelmezés szerint a termék telemetriai adatokat gyűjt a Service Fabric-használata a termék tökéletesítése érdekében. Az ajánlott eljárásokat elemző eszköz, amely fut, a telepítés részeként keresi a kapcsolatot a [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1). Ha nem érhető el, a telepítés sikertelen lesz, kivéve, ha kikapcsolja a telemetriai adatok.
 
-1. A telemetria-feldolgozási folyamat megpróbálja feltölteni a következő adatok [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) naponta egyszer. A legjobb feltöltés, és nincs hatással van a fürt működését. A telemetriai adatok csak akkor lesz elküldve a csomópont, amelyen a feladatátvételi elsődleges kezelőben. Nincs más csomópontok küldött telemetriai adatokat.
+1. A telemetria-feldolgozási folyamat megpróbálja feltölteni a következő adatok [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1) naponta egyszer. A legjobb feltöltés, és nincs hatással van a fürt működését. A telemetriai adatok csak akkor lesz elküldve a csomópont, amelyen a feladatátvételi elsődleges kezelőben. Nincs más csomópontok küldött telemetriai adatokat.
 2. A telemetriai adatokat a következőkből áll:
 
 * Szolgáltatások száma
 * ServiceTypes száma
-* Alkalmazások száma
+* Alkalmazásokk száma
 * ApplicationUpgrades száma
 * Failoverunits egységek száma
 * Található inbuildfailoverunits egységek száma

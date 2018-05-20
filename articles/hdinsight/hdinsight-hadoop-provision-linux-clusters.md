@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/14/2017
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 54c88b25911ddfa4ed9ecf6ea4b28278c2d9aac2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2afe1e91465c92c6f6cba00c4383456ef78d225c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hdinsight Hadoop, Spark, Kafka és több fürt beállítása
 
@@ -30,7 +30,7 @@ Megtudhatja, hogyan telepítheti és konfigurálhatja a fürtök hdinsight Hadoo
 A Hadoop fürtök több virtuális gépek (csomópontok), a feladatok elosztott feldolgozásához használt áll. Az Azure HDInsight kezeli a megvalósítás részletei telepítési és konfigurációs az egyes csomópontokon, csak meg kell adnia az általános konfigurációs információkat. 
 
 > [!IMPORTANT]
->A HDInsight fürt számlázás követően egy fürt jön létre, és leállítja a fürt törlésekor indul. Az elszámolás percalapú, ezért a fürtöt mindig törölje, ha az már nincs használatban. Megtudhatja, hogyan [törölheti a fürtöt.](hdinsight-delete-cluster.md)
+>A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Megtudhatja, hogyan [törölheti a fürtöt.](hdinsight-delete-cluster.md)
 >
 
 ## <a name="cluster-setup-methods"></a>Fürt telepítési módszer

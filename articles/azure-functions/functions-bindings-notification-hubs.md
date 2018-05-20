@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions kötései értesítési központok"
-description: "Azure Notification Hub-kötés az Azure Functions használatának megismerése."
+title: Az Azure Functions kötései értesítési központok
+description: Azure Notification Hub-kötés az Azure Functions használatának megismerése.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 292c8295cbc2705c12365a20cee0e80b6da639a5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 572bf9d783e1018b835b47c6c63fff1ce69659e9
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>A Notification Hubs kimeneti kötése az Azure Functions
 
@@ -34,6 +34,8 @@ Az Azure Notification Hubs az a Platform értesítések szolgáltatás (PNS) has
 A Notification Hubs kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/) GitHub-tárházban.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="example---template"></a>Példa - sablon
 
@@ -282,12 +284,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** |n/a| "NotificationHub" értékre kell állítani. |
+|**type** |n/a| "NotificationHub" értékre kell állítani. |
 |**direction** |n/a| "Ki" értékre kell állítani. | 
 |**name** |n/a| Az értesítési központ üzenet függvény kódban használt változó neve. |
 |**tagExpression** |**TagExpression** | Címke kifejezések adja meg, hogy az eszközök, amelyek megfelelnek a címke kifejezésnek értesítések fogadására regisztrált értesítések kézbesítendő teszik lehetővé.  További információkért lásd: [Útválasztás és címke kifejezések](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
-|**hubName** | **HubName** | Az Azure-portálon az értesítési központ erőforrás neve. |
-|**connection** | **ConnectionStringSetting** | A Notification Hubs kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve.  A kapcsolati karakterláncot kell beállítani a *DefaultFullSharedAccessSignature* értéke az értesítési központban. Lásd: [kapcsolati karakterlánc beállítása](#connection-string-setup) című cikkben.|
+|**hubName** | **hubName** | Az Azure-portálon az értesítési központ erőforrás neve. |
+|**Kapcsolat** | **ConnectionStringSetting** | A Notification Hubs kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve.  A kapcsolati karakterláncot kell beállítani a *DefaultFullSharedAccessSignature* értéke az értesítési központban. Lásd: [kapcsolati karakterlánc beállítása](#connection-string-setup) című cikkben.|
 |**platform** | **Platform** | A platform tulajdonság jelöli a ügyfélplatform az értesítési célokat. Alapértelmezés szerint a platform tulajdonság nem szerepel a kimeneti kötés, ha sablon értesítések segítségével bármely célplatform az Azure értesítési központ konfigurálva. A közötti az Azure Notification Hub platform értesítések küldése általában sablonokkal további információkért lásd: [sablonok](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Ha a beállítás, **platform** a következő értékek egyike lehet: <ul><li><code>apns</code>&mdash;Apple Push Notification szolgáltatás. Az értesítési központ konfigurálása az APN szolgáltatás és az értesítés fogadásának egy ügyfél alkalmazásban további információkért lásd: [küldő leküldéses értesítések küldéséhez iOS az Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Az értesítési központ konfigurálása az ADM és az értesítés fogadásának Kindle-alkalmazást a további információkért lásd: [Ismerkedés a Notification Hubs szolgáltatással Kindle-alkalmazásokhoz](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>gcm</code>&mdash;[A Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, amely GCM új verziója, is támogatott. További információkért lásd: [küldő leküldéses értesítések androidra az Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).</li><li><code>wns</code>&mdash;[A Windows leküldéses értesítéseket kezelő szolgáltatása](https://msdn.microsoft.com/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview) célzó Windows platformra. Windows Phone 8.1 és újabb verziók WNS is támogatja. További információkért lásd: [Ismerkedés a Notification Hubs Windows Universal Platform alkalmazásokkal való](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[A Microsoft leküldéses értesítéseket kezelő szolgáltatása](https://msdn.microsoft.com/library/windows/apps/ff402558.aspx). Ez a platform támogatja a Windows Phone 8 és a korábbi Windows Phone-platformokat. További információkért lásd: [küldő leküldéses értesítések az Azure Notification Hubs – Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

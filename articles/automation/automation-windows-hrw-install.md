@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/25/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9ac6423c6b08aa2a86eda5b0560c8b10e7082284
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 30eda7683a1e8c27eb117b92744bf90eae3fd5d9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>A Windows hibrid forgatókönyv-feldolgozók központi telepítése
 
@@ -149,7 +149,7 @@ Naplók minden hibridfeldolgozó C:\ProgramData\Microsoft\System Center\Orchestr
 
 A frissítés-kezeléssel kapcsolatos problémák elhárítása a további lépéseket lásd: [felügyelete – hibaelhárítás](automation-update-management.md#troubleshooting)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Felülvizsgálati [runbookot futtatni a hibrid forgatókönyv-feldolgozó](automation-hrw-run-runbooks.md) megtudhatja, hogyan konfigurálhatja a runbook automatizálása a helyszíni adatközpontját, illetve más felhőalapú környezetben.
 * Távolítsa el a hibrid forgatókönyv-feldolgozók konfigurálásáról lásd: [eltávolítása Azure Automation hibrid forgatókönyv-feldolgozók](automation-hybrid-runbook-worker.md#removing-hybrid-runbook-worker)

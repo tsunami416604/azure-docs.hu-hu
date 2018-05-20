@@ -8,13 +8,13 @@ ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 93a4befce1f54dcc06d9a8faf31b04e5c0280276
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f758d6aec25ce0ef6bf9a0ecab34189296c81fc0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -254,8 +254,8 @@ Frissítéskezelés eléri több szolgáltatásban biztosítani a szolgáltatás
 |---------|---------|---------|
 |Automation-fiók     | Log Analytics közreműködő       | Automation-fiók        |
 |Automation-fiók    | Virtuális gépek közreműködője        | A fiókhoz tartozó erőforráscsoport        |
-|A Naplóelemzési munkaterület     | Log Analytics közreműködő| A Naplóelemzési munkaterület        |
-|A Naplóelemzési munkaterület |Log Analytics olvasó| Előfizetés|
+|Log Analytics-munkaterület     | Log Analytics közreműködő| Log Analytics-munkaterület        |
+|Log Analytics-munkaterület |Log Analytics olvasó| Előfizetés|
 |Megoldás     |Log Analytics közreműködő         | Megoldás|
 |Virtuális gép     | Virtuális gépek közreműködője        | Virtuális gép        |
 

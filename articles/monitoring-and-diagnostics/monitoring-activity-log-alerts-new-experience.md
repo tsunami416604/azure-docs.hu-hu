@@ -1,6 +1,6 @@
 ---
-title: Tevékenység napló figyelmeztetések létrehozása, és kezelheti azokat az új riasztások (előzetes verzió) felületet használó Azure figyelőben |} Microsoft Docs
-description: Ez a cikk tájékoztatást ad azokról a riasztások (előzetes verzió) lapon, az Azure-figyelő napló riasztások tevékenység létrehozása. Ez a cikk az új felhasználói felületet a szolgáltatáshoz tartozó adatokat.
+title: Tevékenység napló figyelmeztetések létrehozása, és kezelheti azokat az új riasztások felületet használó Azure figyelőben |} Microsoft Docs
+description: Ez a cikk ismerteti a napló riasztások tevékenység létrehozása a riasztások lapon az Azure-figyelő
 author: JYOTHIRMAISURI
 manager: vvithal
 editor: ''
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: ''
-ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 070acc6fb6f6f744474edeef0e914dda9d24c558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Az új figyelmeztetések (előzetes verzió) használatával riasztások élmény tevékenységnapló létrehozása
+# <a name="create-activity-log-alerts-using-the-new-alerts-experience"></a>Az új riasztások riasztásokról élmény tevékenységnapló létrehozása
 
 Tevékenység napló riasztások jelezhetik az beszerzése aktiválni, ha egy új tevékenység napló esemény történik a riasztás megadott feltételeknek megfelelő riasztásokat.
 
-Ezek a riasztások jelezhetik az Azure-erőforrások, az Azure Resource Manager-sablon használatával hozhatók létre. Akkor is is létrehozása, frissítése, vagy törölve az Azure portálon. Ez a cikk bemutatja a napló tevékenységriasztásokat mögött. Ezután bemutatja, hogyan használható az Azure-portálon tevékenység alkalmazásnapló-események az új felület használata a riasztás beállítása [(előzetes verzió) Azure riasztások](monitoring-overview-unified-alerts.md).
+Ezek a riasztások jelezhetik az Azure-erőforrások, az Azure Resource Manager-sablon használatával hozhatók létre. Akkor is is létrehozása, frissítése, vagy törölve az Azure portálon. Ez a cikk bemutatja a napló tevékenységriasztásokat mögött. Ezután bemutatja, hogyan használható az Azure-portálon tevékenység alkalmazásnapló-események az új felület használata a riasztás beállítása [Azure riasztások](monitoring-overview-unified-alerts.md).
 
 Általában létrehozhat tevékenység napló riasztásokat, ha értesítést szeretne kapni az Azure-előfizetéshez, gyakran hatókörű adott forrás-és erőforrás erőforrásainak adott változása esetén. Például érdemes értesíti, ha a virtuális gép (minta erőforráscsoportban) **myProductionResourceGroup** törölték, vagy előfordulhat, hogy szeretne értesítést kaphat, ha új szerepköröket a felhasználó az előfizetéshez vannak rendelve.
 
@@ -46,11 +46,11 @@ Művelet csoportokkal kapcsolatos további tudnivalókért lásd: [létrehozása
 A szolgáltatás állapotával kapcsolatos értesítésekre kapcsolatos további információkért lásd: [tevékenység napló értesítést a szolgáltatás állapotával kapcsolatos értesítésekre](monitoring-activity-log-alerts-on-service-notifications.md).
 
 
-## <a name="whats-new-in-alerts-preview-for-activity-logs"></a>Újdonságok a riasztások Preview tevékenységi naplóit?
+## <a name="whats-new-in-alerts-for-activity-logs"></a>Újdonságok a riasztások tevékenységi naplóit?
 
-[Az Azure riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md) most jobb felhasználói élményt biztosít a napló tevékenységriasztásokat. Az a [felhasználói élmény a riasztások fokozott](monitoring-overview-unified-alerts.md), most is:
+[Az Azure riasztások](monitoring-overview-unified-alerts.md) most jobb felhasználói élményt biztosít a napló tevékenységriasztásokat. Az a [felhasználói élmény a riasztások fokozott](monitoring-overview-unified-alerts.md), most is:
 
-- [Hozzon létre](#create-an-alert-rule-for-an-activity-log) és [kezelése](#view-and-manage-activity-log-alert-rules) tevékenységét naplózni riasztási szabályok **figyelő** > **riasztások (előzetes verzió)** panelen. További információ [tevékenységi naplóit](monitoring-overview-activity-logs.md).
+- [Hozzon létre](#create-an-alert-rule-for-an-activity-log) és [kezelése](#view-and-manage-activity-log-alert-rules) tevékenységét naplózni riasztási szabályok **figyelő** > **riasztások** panelen. További információ [tevékenységi naplóit](monitoring-overview-activity-logs.md).
 
 - **A riasztások cél új beállítások**: új tevékenység napló riasztási szabály létrehozásakor mostantól kiválaszthatja a cél erőforráson vagy egy erőforráscsoport vagy egy előfizetést.
 
@@ -68,8 +68,8 @@ A szolgáltatás állapotával kapcsolatos értesítésekre kapcsolatos további
 
 Kövesse az alábbi eljárást:
 
-1. Azure-portálon, válassza ki a **figyelő** > **riasztások (előzetes verzió).**
-2. Kattintson a **Új riasztási szabály** tetején a **riasztások (előzetes verzió)** ablak.
+1. Azure-portálon, válassza ki a **figyelő** > **riasztások**
+2. Kattintson a **Új riasztási szabály** tetején a **riasztások** ablak.
 
      ![Új riasztási szabályt](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule.png)
 
@@ -130,7 +130,7 @@ Kövesse az alábbi eljárást:
 
 ## <a name="view-and-manage-activity-log-alert-rules"></a>Megtekintése és tevékenység napló riasztási szabályok kezelése
 
-1. Azure-portálon, kattintson a **figyelő** > **riasztások (előzetes verzió)** kattintson **szabályok kezelése** a az ablak bal felső.
+1. Azure-portálon, kattintson a **figyelő** > **riasztások** kattintson **szabályok kezelése** a az ablak bal felső.
 
     ![ riasztási szabályok kezelése](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: c54454dd2e7b56820834e4f3cd7452be10d5ddca
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d07bd333e4d1663e37a840975cde2d9c73cec9c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>A TRAFFIC Manager-végpont figyelése
 
@@ -30,7 +30,7 @@ Figyelési végpont konfigurálásához meg kell adnia a következő beállítá
 
 * **Protokoll**. Válassza a HTTP, HTTPS vagy TCP protokollt, hogy a Traffic Manager használja, ha a végponthoz probing ellenőrizze annak állapotát. HTTPS-figyelő nem ellenőrzi, hogy az SSL-tanúsítvány érvényes--csak ellenőrzi, hogy a tanúsítvány megtalálható.
 * **Port**. Válassza ki a kéréshez használt portot.
-* **Elérési út**. A konfigurációs beállítás csak a HTTP és HTTPS protokollok, mely elérési útjának megadásához beállításra akkor szükség esetén érvényes. Ezt a beállítást a TCP protokoll hibát eredményez figyelési biztosítása. A TCP protokollra adja meg a relatív elérési út és a képernyőn látható weblapon vagy a fájlt, amely hozzáfér a figyelő nevét. Perjellel (/) egy érvényes bejegyzés a relatív elérési útja. Ez az érték azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
+* **Elérési út**. A konfigurációs beállítás csak a HTTP és HTTPS protokollok, mely elérési útjának megadásához beállításra akkor szükség esetén érvényes. Ezt a beállítást a TCP protokoll hibát eredményez figyelési biztosítása. A HTTP és HTTPS protokollt adja meg a relatív elérési út és a képernyőn látható weblapon vagy a fájlt, amely hozzáfér a figyelő nevét. Perjellel (/) egy érvényes bejegyzés a relatív elérési útja. Ez az érték azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
 * **Probing időköz**. Ez az érték határozza meg, milyen gyakran a végpont a vizsgálathoz használt Traffic Manager-ügynök állapotának ellenőrzése. Itt két értékeket adhat meg: 30 másodperc (szokásos vizsgálattal) és (gyors számlálása) 10 másodperc. Ha értékek találhatók, a profil alapértelmezett értéke 30 másodperc állítja be. Látogasson el a [Traffic Manager árazás](https://azure.microsoft.com/pricing/details/traffic-manager) tudhat meg többet a vizsgálathoz használt árképzési gyors lap.
 * **Hibák száma a megengedett**. Ez az érték határozza meg a vizsgálathoz használt Traffic Manager-ügynök eltűr sérültként végpontra való megjelölése előtt hány sikertelen. Az érték 0 és 9 közötti tartományba. A 0 érték azt jelenti egy egyetlen figyelési hiba okozhatja, hogy a végpont megfelelő állapotúként kell megjelölni. Ha nincs érték megadva, akkor használja az alapértelmezett érték 3.
 * **Figyelési időkorlát**. Ez a tulajdonság meghatározza a a vizsgálathoz használt Traffic Manager-ügynök várakozási figyelembe véve, hogy mennyi ideig ellenőrizze a hiba, amikor egy állapotmintáihoz ellenőrizze a rendszer elküldi a végpont. Ha az ellenőrzés időköz értéke 30 másodperc, majd beállíthatja az időtúllépés értéke 5 – 10 másodperc között. Ha nincs érték megadva, akkor az alapértelmezett érték 10 másodperc. Ha a Probing időköz értéke 10 másodperc, majd beállíthatja az időtúllépési értéket 5 és 9 másodperc között. Ha nincs időtúllépés értéke meg van adva, használja a 9-es másodperc, az alapértelmezett érték.
@@ -90,7 +90,7 @@ A profil a figyelő állapota a konfigurált profil állapota és a végpont a f
 | --- | --- | --- | --- |
 | Letiltva |&lt;bármely&gt; vagy egy nem meghatározott végpont-profilt. |Letiltva |A profil le van tiltva. |
 | Engedélyezve |Legalább egy végpont állapota jelenleg csökkentett. |Csökkentett teljesítmény |Tekintse át a egyedi végpont állapota értékek megadásával határozza meg, milyen végpontokat további figyelmet igényelnek. |
-| Engedélyezve |Legalább egy végpont állapota Online. Nincsenek végpontjai csökkentett teljesítményű állapotú. |Online |A szolgáltatás fogadja a forgalmat. Nincs szükség semmilyen további műveletre. |
+| Engedélyezve |Legalább egy végpont állapota Online. Nincsenek végpontjai csökkentett teljesítményű állapotú. |Online |A szolgáltatás fogadja a forgalmat. Nincs szükség további műveletekre. |
 | Engedélyezve |Legalább egy végpont állapota CheckingEndpoint. Nincsenek végpontok Online vagy a csökkentett teljesítményű állapotban vannak. |CheckingEndpoints |A közbenső műveletfázisa következik be, amikor egy profil, ha a létrehozott vagy engedélyezett. A végpont állapota első alkalommal ellenőrzés. |
 | Engedélyezve |A profil minden végpontok állapotok vagy le van tiltva, vagy leállt, vagy a profil nincs meghatározott végpont rendelkezik. |Inaktív |Máshol funkció végpontjai nem aktív, de a profil még mindig engedélyezve van. |
 

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Functions alkalmazás-beállítások referenciája"
-description: "Az Azure Functions Alkalmazásbeállítások vagy a környezeti változók referenciadokumentációt tartalmaz."
+title: Az Azure Functions alkalmazás-beállítások referenciája
+description: Az Azure Functions Alkalmazásbeállítások vagy a környezeti változók referenciadokumentációt tartalmaz.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2017
 ms.author: tdykstra
-ms.openlocfilehash: ce7bf2cf650b0df7e8998766b2d3f5a37c4a1b72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd5603b8f0e15eeae9dd3799d4e10952e115680f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions alkalmazás-beállítások referenciája
 
@@ -44,11 +44,11 @@ Nem kötelező tárolási fiók kapcsolati karakterlánc naplók tárolásához,
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`azt jelenti, hogy tiltsa le az alapértelmezett kezdőlapján látható egy függvény alkalmazás gyökér URL-címe. Alapértelmezett érték a `false`.
+`true` azt jelenti, hogy tiltsa le az alapértelmezett kezdőlapján látható egy függvény alkalmazás gyökér URL-címe. Az alapértelmezett szint a `false`.
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsDisableHomepage|Igaz|
+|AzureWebJobsDisableHomepage|true|
 
 Ha a app beállítás nincs megadva vagy beállítása `false`, az alábbi példához hasonló lap jelenik meg az URL-cím válaszul `<functionappname>.azurewebsites.net`.
 
@@ -56,11 +56,11 @@ Ha a app beállítás nincs megadva vagy beállítása `false`, az alábbi péld
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`azt jelenti, hogy kiadás üzemmódot használják, ha a .NET-kódot; fordítása `false` azt jelenti, hogy hibakeresési mód használata. Alapértelmezett érték a `true`.
+`true` azt jelenti, hogy kiadás üzemmódot használják, ha a .NET-kódot; fordítása `false` azt jelenti, hogy hibakeresési mód használata. Az alapértelmezett szint a `true`.
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|Igaz|
+|AzureWebJobsDotNetReleaseCompilation|true|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
@@ -84,7 +84,7 @@ A tárház vagy használandó kulcstároló-szolgáltató határozza meg. A tám
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsSecretStorageType|le van tiltva|
+|AzureWebJobsSecretStorageType|letiltva|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -153,10 +153,10 @@ Alapértelmezett érték a "6.5.0".
 |---|------------|
 |WEBHELY\_CSOMÓPONT\_DEFAULT_VERSION|6.5.0|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Megtudhatja, hogyan-beállítások frissítése](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+[Megtudhatja, hogyan-beállítások frissítése](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
 
-> [!div class="nextstepaction"]
-> [Tekintse meg a host.json fájl globális beállításai](functions-host-json.md)
+[Tekintse meg a host.json fájl globális beállításai](functions-host-json.md)
+
+[Más alkalmazás beállításai App Service-alkalmazásokhoz](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-machines-linux, virtual-machines-windows
+author: dlepow
+ms.service: multiple
+ms.topic: include
+ms.date: 05/11/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/12/2018
+---
 Szervezet már rendelkezik a nagyméretű számítógépes igényeinek. Az ilyen nagy számítási terhelések például a műszaki tervezés és elemzés, pénzügyi kockázat számítások, kép megjelenítési, összetett modellezési, Monte Carlo szimulációja és több. 
 
 Az Azure felhőalapú segítségével hatékonyan alkalmazásokat és szolgáltatásokat futtathatnak számítási igényű Linux és a Windows, a hagyományos HPC szimulációja párhuzamos kötegelt feladatok. Futtassa a HPC, és az Azure infrastruktúra, és a választott kötegelt munkaterhelését számítási szolgáltatások, a rács kezelők, a piactér megoldások és a szállító által szolgáltatott (SaaS) alkalmazások. Azure munkahelyi terjesztése és méretezhető, több ezer virtuális gépek vagy mag, vagy ha kevesebb erőforrást kell majd csökkentheti rugalmas megoldást kínál. 
@@ -21,6 +37,7 @@ Az Azure felhőalapú segítségével hatékonyan alkalmazásokat és szolgálta
 * **Nagy számítási megoldások szolgáltatásként**
     * Egyéni nagy számítási megoldások és munkafolyamatok használatával [Azure Batch](#azure-batch) és kapcsolódó [Azure-szolgáltatások](#related-azure-services).
     * Futtassa az Azure-kompatibilis termékgondozó csoportja és a szimuláció megoldások beleértve szállítóktól származó [Altair](http://www.altair.com/), [átméretezése](https://www.rescale.com/azure/), és [ciklus számítástechnikai](https://cyclecomputing.com/) (most [csatlakoztatni a Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).
+    * Használja a [Cray supercomputer](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) Azure-ban üzemeltetett szolgáltatás.
 * **Piactér-megoldások**
     * A skála használati [HPC-alkalmazásokhoz](#hpc-applications) és [megoldások](#marketplace-solutions) érhető el a [Azure piactér](https://azuremarketplace.microsoft.com/). 
     
@@ -107,17 +124,18 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 * [Használja az Azure Batch-Kódminták](https://github.com/Azure/azure-batch-samples)
 * [Kis prioritású virtuális gépek használata a kötegelt](../articles/batch/batch-low-pri-vms.md)
 * [HPC tárolóalapú munkafolyamatok hibaüzenettel kötegelt hajógyárnak](https://github.com/Azure/batch-shipyard)
-* [A kötegelt az R nyelv használatával](https://github.com/Azure/doAzureParallel)
-* [Futtassa az Azure elosztott mérnöki eszközkészlet kötegelt](https://github.com/Azure/aztk)
+* [A kötegelt párhuzamos R munkaterhelések futtatása](https://github.com/Azure/doAzureParallel)
+* [A kötegelt feladatok futtatása az igény a Spark](https://github.com/Azure/aztk)
 
 ## <a name="workload-managers"></a>Munkaterhelés-kezelők
 
 A következő példák fürt és a munkaterhelés-kezelők futtatható Azure-infrastruktúra. Hozzon létre különálló fürtök Azure virtuális gépeken vagy kapacitásnövelés Azure virtuális gépek helyszíni fürtök. 
+* [Alces repülési számítási](https://azuremarketplace.microsoft.com/marketplace/apps/alces-flight-limited.alces-flight-compute-solo?tab=Overview)
 * [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/) 
 * [Világos kezelő](http://www.brightcomputing.com/technology-partners/microsoft)
 * [IBM pontszámot Symphony és Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/)
 * [PBS Pro](http://pbspro.org)
-* [A Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029(v=ws.11).aspx) -beállítások futtatásához [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) virtuális gépek 
+* [A Microsoft HPC Pack](https://technet.microsoft.com/library/mt744885.aspx) -beállítások futtatásához [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) virtuális gépek 
 
 
 
@@ -127,7 +145,7 @@ A nagyméretű kötegelt és HPC munkaterhelések igényekkel rendelkezhetnek ad
 
 További információ:
 
-* [Párhuzamos fájlrendszerek HPC tárolás az Azure-on](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
+* [Párhuzamos virtuális fájlrendszer az Azure-on](https://azure.microsoft.com/resources/parallel-virtual-file-systems-on-microsoft-azure/)
 * Nagy teljesítményű felhőalapú tárolási megoldások az [Avere](http://www.averesystems.com/about-us/about-avere) (most [csatlakoztatni a Microsoft](https://blogs.microsoft.com/blog/2018/01/03/microsoft-to-acquire-avere-systems-accelerating-high-performance-computing-innovation-for-media-and-entertainment-industry-and-beyond/))
 
 
@@ -135,7 +153,7 @@ További információ:
 
 Az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a kötegelt és a kapcsolódó számítási szolgáltatások olyan Azure HPC-megoldások többsége alapját. A megoldás azonban számos kapcsolódó Azure-szolgáltatások előnyeinek életbe. Ez egy részleges lista:
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Tárhely
 
 * [A BLOB, table és a queue storage](../articles/storage/storage-introduction.md)
 * [A File storage](../articles/storage/storage-files-introduction.md)
@@ -144,30 +162,34 @@ Az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a kötegelt
 * [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
-* [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
+* [Databricks](../articles/azure-databricks/what-is-azure-databricks.md)
 * [SQL Database](../articles/sql-database/sql-database-technical-overview.md)
 
-### <a name="ai-and-cognitive-services"></a>AI és kognitív szolgáltatások
+### <a name="ai-and-machine-learning"></a>AI és a gépi tanulás
+* [Machine Learning szolgáltatás](../articles/machine-learning/service/overview-what-is-azure-ml.md)
 * [Batch AI](../articles/batch-ai/overview.md)
+* [Genomika](../articles/genomics/overview-what-is-genomics.md)
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
 ### <a name="containers"></a>Tárolók
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
+* [Az Azure Kubernetes szolgáltatás (AKS)](../articles/aks/intro-kubernetes.md)
 * [Container Registry](../articles/container-registry/container-registry-intro.md)
 
 
 
 ## <a name="customer-stories"></a>Ügyfelek történetei
 
-Az alábbiakban példát kell megoldani az üzleti problémák Azure HPC-megoldás az ügyfelek:
+Ügyfelek, amelyek üzleti problémák Azure HPC-megoldás problémák példái:
 
 * [ANEO](https://customers.microsoft.com/story/it-provider-finds-highly-scalable-cloud-based-hpc-redu) 
 * [AXA Global P&C](https://customers.microsoft.com/story/axa-global-p-and-c)
 * [Axioma](https://customers.microsoft.com/story/axioma-delivers-fintechs-first-born-in-the-cloud-multi-asset-class-enterprise-risk-solution)
 * [d3View](https://customers.microsoft.com/story/big-data-solution-provider-adopts-new-cloud-gains-thou)
+* [TITKOSÍTOTT FÁJLRENDSZER](https://customers.microsoft.com/story/efs-professionalservices-azure)
 * [Hymans Robertson](https://customers.microsoft.com/story/hymans-robertson)
 * [MetLife](https://enterprise.microsoft.com/en-us/customer-story/industries/insurance/metlife/)
 * [A Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
@@ -178,10 +200,10 @@ Az alábbiakban példát kell megoldani az üzleti problémák Azure HPC-megold�
 
 
 ## <a name="next-steps"></a>További lépések
-* További információ a megoldások nagy számítási [szimuláció mérnöki](https://simulation.azure.com/), [megjelenítési](https://simulation.azure.com/), [banki és nagy piacok](https://finance.azure.com/), és [genomika](https://enterprise.microsoft.com/en-us/industries/health/genomics/) .
+* További információ a megoldások nagy számítási [szimuláció mérnöki](https://simulation.azure.com/), [megjelenítési](https://azure.microsoft.com/solutions/big-compute/rendering/), [banki és nagy piacok](https://finance.azure.com/), és [genomika](https://enterprise.microsoft.com/en-us/industries/health/genomics/) .
 * A legújabb bejelentésekért lásd: [A Microsoft HPC és Batch csapatának blogja](http://blogs.technet.com/b/windowshpc/) és [Azure-blog](https://azure.microsoft.com/blog/tag/hpc/).
 
-* Használja a felügyelt és méretezhető Azure [kötegelt](https://azure.microsoft.com/services/batch/) szolgáltatás futtatásához a számítási-igényes munkaterhelések, alapul szolgáló infrastruktúra kezelése nélkül [további](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/)
+* Használja a felügyelt és méretezhető Azure [kötegelt](https://azure.microsoft.com/services/batch/) szolgáltatás futtatásához a számítási-igényes munkaterhelések, alapul szolgáló infrastruktúra kezelése nélkül [további](https://azure.microsoft.com/solutions/architecture/hpc-big-compute-saas/)
 
 
 

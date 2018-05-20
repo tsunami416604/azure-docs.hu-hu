@@ -6,13 +6,13 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/16/2018
 ms.author: sujayt
-ms.openlocfilehash: e3acedf4135166f5239b95eb21eb5dfd66d6100f
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 55eed1afa9d9dbf2c16643cf9186a7e6dafa847e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Az Azure az Azure-bA replikációs alkalmazás hálózatkezelési funkcióiról
 
@@ -31,7 +31,7 @@ A következő ábra szemlélteti, általában az Azure környezetben, Azure virt
 
 ![ügyfél-környezet](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
-Használata Azure expressroute-on vagy VPN-kapcsolat a helyszíni hálózatból az Azure-ba, a környezet a következőképpen néz ki:
+Használata Azure expressroute-on vagy VPN-kapcsolat a helyszíni hálózatból az Azure-ba, a környezet nem az alábbiak szerint:
 
 ![ügyfél-környezet](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
@@ -46,7 +46,7 @@ Használata Azure expressroute-on vagy VPN-kapcsolat a helyszíni hálózatból 
 Egy URL-alapú tűzfal proxy segítségével szabályozhatja a kimenő kapcsolat, ha engedélyezi a Site Recovery URL:
 
 
-**URL** | **Részletek**  
+**URL-cím** | **Részletek**  
 --- | ---
 *.blob.core.windows.net | Szükséges, hogy az is lehet adatokat írni a forrás régióban gyorsítótár tárfiók a virtuális gépről.
 login.microsoftonline.com | A Site Recovery szolgáltatás URL-címek a hitelesítési és engedélyezési szükséges.
@@ -90,10 +90,10 @@ Site Recovery IP-címtartományok a következők:
    Délkelet-Ausztrália | 13.70.159.158 | 191.239.160.45
    Közép-Kanada | 52.228.36.192 | 40.85.226.62
    Kelet-Kanada | 52.229.125.98 | 40.86.225.142
-   Egyesült Államok nyugati középső régiója | 52.161.20.168 | 13.78.149.209
-   Egyesült Államok 2. nyugati régiója | 52.183.45.166 | 13.66.228.204
-   Egyesült Királyság nyugati régiója | 51.141.3.203 | 51.141.14.113
-   Egyesült Királyság déli régiója | 51.140.43.158 | 51.140.189.52
+   USA nyugati középső régiója | 52.161.20.168 | 13.78.149.209
+   USA nyugati régiója, 2. | 52.183.45.166 | 13.66.228.204
+   Az Egyesült Királyság nyugati régiója | 51.141.3.203 | 51.141.14.113
+   Az Egyesült Királyság déli régiója | 51.140.43.158 | 51.140.189.52
    Egyesült Királyság 2. déli régiója | 13.87.37.4| 13.87.34.139
    Egyesült Királyság északi régiója | 51.142.209.167 | 13.87.102.68
    Korea középső régiója | 52.231.28.253 | 52.231.32.85

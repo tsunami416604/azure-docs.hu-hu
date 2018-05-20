@@ -9,15 +9,13 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store használatának ajánlott eljárásai
 Ebből a cikkből megismerheti kapcsolatos ajánlott eljárásokról és az Azure Data Lake Store használata szempontjai. A cikkben információkat biztosít a biztonsági, a teljesítmény, a rugalmasság és a Data Lake Store figyelését. Data Lake Store, mielőtt Azure HDInsight hasonló szolgáltatások valóban nagy adatokkal végzett bonyolult volt. Kellett részekre bonthatók az adatok több Blob storage-fiókok között, hogy petabájtnyi tárolási és optimális teljesítményt, hogy biztosít. A Data Lake Store a szigorú korlátok mérete és a teljesítményt a legtöbb törlődnek. Van azonban továbbra is számításba kell, hogy ez a cikk ismerteti, hogy a legjobb teljesítmény érdekében a Data Lake Store kaphat. 

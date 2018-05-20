@@ -21,6 +21,12 @@
       href: container-instances-tutorial-prepare-acr.md
     - name: 3 – Alkalmazás üzembe helyezése
       href: container-instances-tutorial-deploy-app.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+    - name: Resource Manager-sablonok
+      href: container-instances-samples-rm.md
 - name: Alapelvek
   items:
     - name: Kvóták és regionális korlátok
@@ -31,22 +37,28 @@
       href: container-instances-container-groups.md
 - name: Útmutatók
   items:
-    - name: Többtárolós csoportok üzembe helyezése
-      href: container-instances-multi-container-group.md
-    - name: Üzembe helyezés az Azure Container Registryből
-      href: container-instances-using-azure-container-registry.md
-    - name: Parancs végrehajtása (exec)
-      href: container-instances-exec.md
-    - name: Tárolóalapú feladatok futtatása
-      href: container-instances-restart-policy.md
-    - name: Környezeti változók beállítása (env)
-      href: container-instances-environment-variables.md
-    - name: Üzemelő példányok hibaelhárítása
-      href: container-instances-troubleshooting.md
-    - name: Jenkins-buildügynökök az ACI-ban
-      href: container-instances-jenkins.md
-    - name: Processzor- és memóriahasználat monitorozása
-      href: container-instances-monitor.md
+    - name: Üzembe helyezés
+      items:
+        - name: Többtárolós csoportok üzembe helyezése
+          href: container-instances-multi-container-group.md
+        - name: Üzembe helyezés az Azure Container Registryből
+          href: container-instances-using-azure-container-registry.md
+        - name: Környezeti változók beállítása (env)
+          href: container-instances-environment-variables.md
+        - name: Üzemelő példányok hibaelhárítása
+          href: container-instances-troubleshooting.md
+    - name: Kezelés
+      items:
+        - name: Parancs végrehajtása (exec)
+          href: container-instances-exec.md
+        - name: Processzor- és memóriahasználat monitorozása
+          href: container-instances-monitor.md
+    - name: Számítási feladatok futtatása
+      items:
+        - name: Tárolóalapú feladatok futtatása
+          href: container-instances-restart-policy.md
+        - name: Jenkins-buildügynökök az ACI-ban
+          href: container-instances-jenkins.md
     - name: Adatkötetek konfigurálása
       items:
         - name: Azure Files

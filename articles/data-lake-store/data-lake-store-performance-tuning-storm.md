@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store Storm teljesítményének hangolása irányelvek |} Microsoft Docs"
-description: "Azure Data Lake Store Storm teljesítményének hangolása irányelvek"
+title: Azure Data Lake Store Storm teljesítményének hangolása irányelvek |} Microsoft Docs
+description: Azure Data Lake Store Storm teljesítményének hangolása irányelvek
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: c872bfe36673af1292b5af9cf40374de39a5c159
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5ebca90ffd679de1c30d1bc324bf4f1c3b9f6f70
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>Útmutató a Storm on HDInsight és az Azure Data Lake Store teljesítményhangolása
 
@@ -27,7 +25,7 @@ Ismerje meg a tényezőket kell figyelembe venni, amikor egy Azure Storm-topoló
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Azure Data Lake Store-fiók**. Hogyan hozhat létre ilyet, lásd: [Ismerkedés az Azure Data Lake Store](data-lake-store-get-started-portal.md).
+* **Egy Azure Data Lake Store-fiók**. A fióklétrehozás módjával kapcsolatban tekintse meg [az Azure Data Lake Store használatának első lépéseit ismertető](data-lake-store-get-started-portal.md) témakört.
 * **Egy Azure HDInsight fürt** a Data Lake Store-fiók eléréséhez. Lásd: [HDInsight-fürtök létrehozása a Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy a fürt számára engedélyezi a távoli asztal.
 * **A Data Lake Store egy Storm-fürt futtató**. További információkért lásd: [HDInsight alatt futó Storm](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Teljesítményhangolás irányelvek a Data Lake Store**.  Általános teljesítmény fogalmakat, lásd: [Data Lake Store teljesítmény hangolása útmutatást](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).  
@@ -133,10 +131,10 @@ Elérte a Data Lake Store által biztosított sávszélesség korlátai, ha a fe
 
 Ellenőrizze, hogy Ön első szabályozott, engedélyezze a hibakeresési naplózás ügyféloldali:
 
-1. A **Ambari** > **Storm** > **Config** > **storm-worker-log4j speciális**, módosítsa  **&lt;gyökér szintű = "Infó"&gt;**  való  **&lt;legfelső szintű = "debug"&gt;**. Indítsa újra az összes a csomópontok/szolgáltatást a konfigurációjának érvénybe léptetéséhez.
+1. A **Ambari** > **Storm** > **Config** > **storm-worker-log4j speciális**, módosítsa **&lt;gyökér szintű = "Infó"&gt;** való  **&lt;legfelső szintű = "debug"&gt;**. Indítsa újra az összes a csomópontok/szolgáltatást a konfigurációjának érvénybe léptetéséhez.
 2. A Storm-topológia bejelentkezik a munkavégző csomópont monitor (alatt /var/log/storm/worker-artifacts /&lt;TopologyName&gt;/&lt;port&gt;/worker.log) a Data Lake Store szabályozási kivételeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További teljesítményhangolás, a Storm hivatkozható [ebben a blogban](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
 
 További például futtatásához, [erre a Githubon](https://github.com/hdinsight/storm-performance-automation).

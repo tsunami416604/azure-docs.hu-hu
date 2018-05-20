@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 3eaaa1ec09e9bd593a2d14e4a3bc751c431869d0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71b0405975d88e69d3ecea6090983bc3c779395d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="remote-monitoring-solution-accelerator-architecture"></a>Távoli figyelés megoldás gyorsító architektúrája
 
-A távoli megfigyelési [megoldásgyorsító](iot-suite-what-are-solution-accelerators.md) egy végpont figyelési megoldást igényelnek több valósítja meg a távoli helyeken. A megoldás fontos Azure-szolgáltatások kombinációját kínálja az üzleti forgatókönyv általános megvalósítása érdekében. Használhatja a megoldás kiindulási pontként a saját végrehajtásához és [testreszabása](iot-suite-remote-monitoring-customize.md) úgy, hogy a saját üzleti követelményeinek megfelelően.
+A távoli megfigyelési [megoldásgyorsító](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) egy végpont figyelési megoldást igényelnek több valósítja meg a távoli helyeken. A megoldás fontos Azure-szolgáltatások kombinációját kínálja az üzleti forgatókönyv általános megvalósítása érdekében. Használhatja a megoldás kiindulási pontként a saját végrehajtásához és [testreszabása](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) úgy, hogy a saját üzleti követelményeinek megfelelően.
 
 Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. Ezeknek az ismereteknek a birtokában:
 
@@ -33,7 +33,7 @@ Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemé
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
-A következő ábra bemutatja a távoli felügyeleti megoldásgyorsító az átfedett logikai összetevőinek a [IoT-architektúra](iot-suite-what-is-azure-iot.md):
+A következő ábra bemutatja a távoli felügyeleti megoldásgyorsító az átfedett logikai összetevőinek a [IoT-architektúra](../iot-accelerators/iot-accelerators-what-is-azure-iot.md):
 
 ![Logikai architektúra](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -143,4 +143,4 @@ Ha szeretné használni a kódot és fejlesztői dokumentációját, indítsa el
 * [A távoli megfigyelés az Azure IoT (Java) megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
 * [Megoldásgyorsító távoli figyelési architektúra)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
 
-További elméleti kapcsolatos további információkért a távoli felügyeleti megoldásgyorsító: [testre szabhatja a megoldásgyorsító](iot-suite-remote-monitoring-customize.md).
+További elméleti kapcsolatos további információkért a távoli felügyeleti megoldásgyorsító: [testre szabhatja a megoldásgyorsító](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).

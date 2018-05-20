@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 7bbe0945981370c15fd10e93498fcc3ee0bf1a39
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e46c2ad30b578b0642ee7b541ea003ed67c6a7f5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center, egy szolgáltatás, amely segít a megakadályozása, észlelésében és kezelésében fenyegetések láthatóság növelésével és a Microsoft Azure-erőforrások védelmét kapcsolatos kérdésekre ad választ.
@@ -51,16 +51,18 @@ A Security Center értékeli a konfigurációs az erőforrások biztonsági prob
 Lásd: [engedélyek az Azure Security Centerben](security-center-permissions.md) tudhat meg többet a szerepkörök és a Security Center engedélyezett műveletek.
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A Security Center adatokat gyűjti össze a virtuális gépek felmérheti a biztonsági állapotát, adja meg a biztonsági javaslatok és riasztásokat fenyegetéseket. A Security Center első megnyitásakor adatgyűjtés engedélyezett az előfizetésében szereplő összes virtuális gépet. A Security Center házirend adatgyűjtés is engedélyezheti.
+A Security Center az Azure virtuális gépek (VM) és a nem Azure számítógépek számára figyeli, hogy a biztonsági réseket és a fenyegetések adatait gyűjti. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére.
 
 ### <a name="how-do-i-disable-data-collection"></a>Hogyan tiltsa le az adatgyűjtő?
-Ha az Azure Security Center ingyenes csomagot használ, letilthatja a virtuális gépek bármikor adatok gyűjtése. Adatgyűjtés a Standard csomagot előfizetések szükség. A biztonsági házirend előfizetésre vonatkozó adatok gyűjtésének letiltása ([Jelentkezzen be az Azure-portálon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **Security Center**, és válassza ki **házirend**.)  Előfizetés kiválasztásakor egy új panelen nyitja meg, és kikapcsolása lehetőséget biztosít **adatgyűjtés**.
+Automatikus kiépítés alapértelmezés szerint van kapcsolva. Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a biztonsági szabályzatban kikapcsolásával letilthatja. Automatikus kiépítés erősen ajánlott biztonsági riasztások és javaslatok Rendszerfrissítések, az operációs rendszer biztonsági réseket és az endpoint protection eléréséhez.
+
+Adatok gyűjtésének a letiltása [jelentkezzen be az Azure-portálon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **Security Center**, és válassza ki **-szabályzat kiválasztásával**. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést. Ha bejelöli előfizetés **biztonsági házirend - adatok gyűjtése** megnyitása. A **automatikus kiépítés**, jelölje be **ki**.
 
 ### <a name="how-do-i-enable-data-collection"></a>Hogyan engedélyezhető az adatok gyűjtését?
-Adatgyűjtés engedélyezheti a biztonsági szabályzatban Azure-előfizetése. Szeretné az adatgyűjtést. [Jelentkezzen be az Azure-portálon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **Security Center**, és válassza ki **házirend**. Állítsa be **adatgyűjtés** való **a**.
+Adatgyűjtés engedélyezheti a biztonsági szabályzatban Azure-előfizetése. Szeretné az adatgyűjtést. [Jelentkezzen be az Azure-portálon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **Security Center**, és válassza ki **biztonsági házirend**. Válassza ki az előfizetést, amely automatikus kiépítés engedélyezéséhez. Ha bejelöli előfizetés **biztonsági házirend - adatok gyűjtése** megnyitása. A **automatikus kiépítés**, jelölje be **a**.
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>Mi történik, ha engedélyezve van az adatok gyűjtését?
-Adatgyűjtés engedélyezésekor a rendszer a Microsoft Monitoring Agent automatikusan kiépített összes meglévő, és az előfizetés új támogatott virtuális gépek vannak telepítve.
+Ha automatikus kiépítés engedélyezve van, a Security Center kiosztja a Microsoft Monitoring Agent összes támogatott Azure virtuális gépek és bármely újakat létrehozott. Automatikus kiépítés erősen ajánlott, de a kézzel történő ügynöktelepítést is rendelkezésre áll. [Megtudhatja, hogyan telepítse a Microsoft Monitoring Agent bővítmény](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 Az ügynök lehetővé teszi, hogy a folyamat létrehozásának esemény 4688 és a *CommandLine* eseményből 4688 mezőjét. A virtuális Gépre létrehozott új folyamatok EventLog által rögzített, és a Security Center észlelési szolgáltatások által figyelendő. Információk a részletes adatait rögzíti az összes új folyamat: [4688 leírás mezőiben](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Az ügynök is létre a virtuális gép 4688 eseményeit, és tárolja őket a keresés.
 

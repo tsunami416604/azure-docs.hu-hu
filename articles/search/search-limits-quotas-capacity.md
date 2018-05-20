@@ -9,11 +9,11 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatásra vonatkozó korlátozások
 Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [kiépíteni az Azure Search](search-create-service-portal.md) : **szabad**, **alapvető**, vagy **Szabványos** tarifacsomag szükséges.
@@ -44,10 +44,13 @@ Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumen
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |
 | Egy index maximális mezők |1000 |100 |1000 |1000 |1000 |1000 |
-| Egy index maximális pontozási profilok |100 |100 |100 |100 |100 |100 |
+| Maximális [javaslattevők](https://docs.microsoft.com/rest/api/searchservice/suggesters) / index |1 |1 |1 |1 |1 |1 |
+| Maximális [profilok pontozási](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) / index |100 |100 |100 |100 |100 |100 |
 | Profilonként maximális funkciók |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> alapvető szolgáltatások létrehozása után késői 2017 megnövekedett legfeljebb 15 indexek, az adatforrások és az indexelők. A korábban létrehozott szolgáltatások 5 rendelkeznek. Az alapszintű csomag az index / 100 mezők alsó határának csak SKU.
+
+<a name="document-limits"></a>
 
 ## <a name="document-limits"></a>A dokumentum korlátok 
 
@@ -93,7 +96,7 @@ Késői 2017 után létrehozott alapvető szolgáltatások megnövekedett legfel
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |
 | Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |
-| Maximális skillsets |3 |5 vagy 15 |50 |200 |200 |– |
+| Maximális skillsets <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |
 | Hívásonkénti maximális indexelési betöltése |10 000 dokumentumok |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |– |
 | Maximális futási időt | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |
 | A BLOB indexelő: blob maximális mérete, MB |16 |16 |128 |256 |256 |–  |
@@ -104,6 +107,8 @@ Késői 2017 után létrehozott alapvető szolgáltatások megnövekedett legfel
 <sup>2</sup> alapvető szolgáltatások létrehozása után késői 2017 megnövekedett legfeljebb 15 indexek, az adatforrások és az indexelők. A korábban létrehozott szolgáltatások 5 rendelkeznek.
 
 <sup>3</sup> S3 HD services nem támogatja az indexelő.
+
+<sup>4</sup> maximális száma skillset 30 képességek.
 
 ## <a name="queries-per-second-qps"></a>Lekérdezések / másodperc (QPS)
 

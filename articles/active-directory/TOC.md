@@ -283,6 +283,7 @@
 ### [Vendéghozzáférés hozzáférési felülvizsgálatokkal](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 ### [Felhasználói hozzáférések kezelése felülvizsgálatokkal](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [Programok és vezérlők kezelése](active-directory-azure-ad-controls-manage-programs-controls.md)
+### [Hozzáférési felülvizsgálatok eredményeinek lekérése](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Identitások védelme
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
@@ -336,7 +337,6 @@
 ### [Az aláírás-kivonatoló algoritmus módosítása](active-directory-federation-sha256-guidance.md)
 
 ## [Hibaelhárítás](active-directory-troubleshooting-support-howto.md)
-### [Egy Active Directory-elem hiányzik vagy nem érhető el – Hibaelhárítás](active-directory-troubleshooting.md)
 
 ## Az Azure AD központi telepítése – A koncepció igazolása (Proof of Concept, PoC)
 ### [PoC-útmutató: Bevezetés](active-directory-playbook-intro.md)

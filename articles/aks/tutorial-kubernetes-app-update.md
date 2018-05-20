@@ -3,17 +3,17 @@ title: Azure-on futó Kubernetes oktatóanyag – Alkalmazás frissítése
 description: AKS-oktatóanyag – Alkalmazás frissítése
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: df118a2b5bd8e31bd3fe6101d1d3f631092b6f24
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 622cd17a93bf1b9fa9d3c138d385ca1d29426f3b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások frissítése az Azure Kubernetes Service-ben (AKS)
 
@@ -164,10 +164,10 @@ Az oktatóanyagban frissítettünk egy alkalmazást, és a frissítést kivezett
 > * Leküldtük a tárolórendszerképet az Azure Container Registrybe
 > * Üzembe helyeztük a frissített alkalmazást
 
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan monitorozható a Kubernetes a Log Analytics segítségével.
+Folytassa a következő oktatóanyaggal, amely a Kurbernetes új verzióra történő frissítését ismerteti.
 
 > [!div class="nextstepaction"]
-> [A Kubernetes monitorozása a Log Analytics használatával][aks-tutorial-monitor]
+> [Kubernetes frissítése][aks-tutorial-upgrade]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/
@@ -178,5 +178,5 @@ Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan monitorozha
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
-[aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
 [az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

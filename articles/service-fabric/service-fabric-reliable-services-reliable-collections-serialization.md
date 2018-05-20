@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Service Fabric megbízható gyűjtemény objektum szerializálása |} Microsoft Docs"
-description: "Az Azure Service Fabric megbízható gyűjtemények objektum szerializálása"
+title: Az Azure Service Fabric megbízható gyűjtemény objektum szerializálása |} Microsoft Docs
+description: Az Azure Service Fabric megbízható gyűjtemények objektum szerializálása
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -9,16 +9,16 @@ editor: masnider,rajak
 ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: mcoskun
-ms.openlocfilehash: 0687baf12a48788d86467b1f1a822b5d9050e5d5
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: b02d8924749abb0e2fe815b555d55767bf1e5cc1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható gyűjtemény objektum szerializálása
 Megbízható gyűjtemények replikálja, és a gép hibák és áramkimaradások tartós szempontjából elemek megmaradnak.
@@ -41,11 +41,11 @@ Megbízható állapotkezelője rendelkezik beépített szerializáló következ�
 - Karakter
 - karakterlánc
 - Decimális
-- duplaszó
+- double
 - lebegőpontos
 - int
 - uint
-- hosszú
+- hossz
 - ulong
 - rövid
 - ushort

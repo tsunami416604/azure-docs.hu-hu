@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 0ef8247eba4605d3c8e5ef0992ce97bce989002e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ce5fd2feaa30948042cc0570a4b0ea7f0ab7ad77
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Biztonsági mentés engedélyezése Azure verem a felügyeleti portálon
 Az infrastruktúra biztonsági másolat szolgáltatás a felügyeleti portálon keresztül, hogy az Azure-verem hozhat létre a biztonsági mentés engedélyezése Ezek a biztonsági mentések használatával állítsa vissza a környezetben, a felhő helyreállítással [végzetes hiba](.\azure-stack-backup-recover-data.md). Felhőbeli helyreállítási célja annak érdekében, hogy az operátorok és a felhasználók is jelentkezzen be a portál helyreállítást követően. Az előfizetések, beleértve a szerepköralapú hozzáférési engedélyek és szerepkörök, eredeti tervek, ajánlatokat, és a korábban meghatározott számítási, tárolási és hálózati kvóták vissza a felhasználóknak kell.
@@ -45,7 +45,7 @@ A rendszergazdák és felhasználók felelőssége biztonsági mentése és viss
 3. Írja be a elérési útját a **biztonsági másolat tárolási helye**. Egy univerzális elnevezési konvenció (UNC) szerinti karakterlánc használata egy különálló eszköz üzemeltetett fájlmegosztás elérési útja. UNC-karakterláncnak erőforrások, például a megosztott fájlok vagy az eszközök helyét adja meg. A szolgáltatás IP-címet is használhatja. A biztonsági mentési adatok rendelkezésre állásának biztosításához után egy olyan vészhelyzet esetén, az eszköz külön kell lennie.
     > [!Note]  
     > Ha a környezet támogatja a névfeloldást a verem Azure infrastruktúra-hálózat számára a vállalati környezetben, az IP-cím helyett egy teljes Tartománynevet is használhatja.
-4. Típus a **felhasználónév** tartomány és felhasználónév használatával. Például: `Contoso\administrator`.
+4. Típus a **felhasználónév** segítségével a tartomány és felhasználónév megfelelő hozzáféréssel rendelkező fájlok olvasását és írását. Például: `Contoso\backupshareuser`.
 5. Típus a **jelszó** a felhasználó számára.
 5. Írja be újra a jelszót **jelszó megerősítése**.
 6. Adja meg az előmegosztott kulcsot a **titkosítási kulcs** mezőbe. A biztonságimásolat-fájlok titkosítása a kulcs használatával. Győződjön meg arról, hogy ezt a kulcsot biztonságos helyen tárolja. Állítsa be ezt a kulcsot az első alkalommal vagy a jövőben forgassa el a kulcsot, nem lehet megtekinteni, ezt a kulcsot, az adott csatolón. Egy előre megosztott kulcs létrehozásához további útmutatást kövesse a scripts [Azure verem PowerShell és a biztonsági mentés engedélyezése](azure-stack-backup-enable-backup-powershell.md#generate-a-new-encryption-key). 

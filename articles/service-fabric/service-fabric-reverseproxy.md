@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Service Fabric fordított proxy |} Microsoft Docs"
-description: "A Service Fabric fordított proxy használata a fürtön kívül és belül a mikroszolgáltatások kommunikál."
+title: Az Azure Service Fabric fordított proxy |} Microsoft Docs
+description: A Service Fabric fordított proxy használata a fürtön kívül és belül a mikroszolgáltatások kommunikál.
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 55b201842503a879725fa77328a72c83fe0bbade
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 21e1e3041d7b1f4dc205355f6c0b8d4fd2e82775
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Az Azure Service Fabric fordított proxy
 Azure Service Fabric épített fordított proxy segít a Service Fabric-fürt futó mikroszolgáltatások felderítése és http-végpontokról rendelkező más szolgáltatásokkal kommunikálni.
@@ -97,18 +97,18 @@ Az alábbiakban a erőforrásait a szolgáltatáshoz:
 
 Ha a szolgáltatás használ a singleton particionálási sémát, a *PartitionKey* és *PartitionKind* lekérdezési karakterlánc paraméterek esetén nincs szükség, és a szolgáltatás elérhető az átjáró, mint:
 
-* Külsőleg:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
-* Belső:`http://localhost:19081/MyApp/MyService`
+* Külsőleg: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
+* Belső: `http://localhost:19081/MyApp/MyService`
 
 Ha a szolgáltatás egységes Int64 particionálási sémát, használja a *PartitionKey* és *PartitionKind* lekérdezési karakterlánc paramétereket kell használni a szolgáltatás partíció elérésére:
 
-* Külsőleg:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
-* Belső:`http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Külsőleg: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Belső: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
 Amely a szolgáltatás elérhetővé teszi az erőforrások eléréséhez egyszerűen helyezze el az erőforrás elérési útja után a szolgáltatás nevét az URL-címe:
 
-* Külsőleg:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
-* Belső:`http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+* Külsőleg: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+* Belső: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
 Az átjáró ezután továbbítja ezeket a kéréseket a szolgáltatás URL-címe:
 
@@ -121,7 +121,7 @@ A Service Fabric fordított proxy próbálja újra feloldani a szolgáltatás c�
 Azonban replikák és a szolgáltatáspéldány egy gazdafolyamaton megoszthatnak, és előfordulhat, hogy is megoszthat egy portot, ha azt egy http.sys alapú webkiszolgálóhoz, beleértve:
 
 * [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
-* [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
+* [Az ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
 Ebben az esetben valószínű, hogy a webkiszolgáló nem érhető el a gazdagép-folyamat és válaszol a kérelmekre, de a szolgáltatáspéldány megoldott vagy a replika már nem érhető el a gazdagépen. Ebben az esetben az átjáró kap egy HTTP 404-es választ a webkiszolgálón. HTTP 404-es választ, így két különböző jelentését veheti fel:

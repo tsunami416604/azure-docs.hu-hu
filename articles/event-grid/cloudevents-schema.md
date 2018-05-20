@@ -5,14 +5,14 @@ services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: 31af59fd7057bef6e427f08cef695688dc2111d1
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 23187fbc230e384984085d330bfbfbc90cc9f945
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Esemény rács CloudEvents séma használata
 
@@ -68,7 +68,7 @@ CloudEvents v0.1 tulajdonságai a következők érhető el:
 | schemaURL          | URI      | „https://myschema.com”           | A séma, az adatok attribútum megfelelő (nem kötelező) mutató hivatkozás | *nem használható.*
 | contentType        | Karakterlánc   | az "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nem használható.*
 | Bővítmények         | Térkép      | {"extA": "vA", "extB", "vB"}  | Minden további metaadatot (nem kötelező)                                 | *nem használható.*
-| Adatok               | Objektum   | {"objA": "vA", "objB", "vB"}  | Az eseménytartalom (nem kötelező)                                       | Adatok
+| adat               | Objektum   | {"objA": "vA", "objB", "vB"}  | Az eseménytartalom (nem kötelező)                                       | adat
 
 További információkért lásd: a [CloudEvents spec](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes).
 

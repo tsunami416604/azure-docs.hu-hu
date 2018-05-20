@@ -1,24 +1,24 @@
 ---
-title: "Egy Windows Azure Service Fabric-fürt biztonságos tanúsítványok használatával |} Microsoft Docs"
-description: "Az Azure Service Fabric önálló vagy a helyi fürtön belül, valamint az ügyfelek és a fürt közötti kommunikáció védelméhez."
+title: Egy Windows Azure Service Fabric-fürt biztonságos tanúsítványok használatával |} Microsoft Docs
+description: Az Azure Service Fabric önálló vagy a helyi fürtön belül, valamint az ügyfelek és a fürt közötti kommunikáció védelméhez.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fe0ed74c-9af5-44e9-8d62-faf1849af68c
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: ee1a2eeeda95b03b185090841cf93c4183c5fce2
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 62d821894521c5dea8e7577b75d9590adc829263
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Biztonságos Windows önálló fürtben, X.509-tanúsítványok
 Ez a cikk ismerteti a különálló Windows fürt különböző csomópontok közötti kommunikáció biztonságossá tételére. Azt is bemutatja, hogyan hitelesítheti a fürt X.509-tanúsítványok használatával csatlakozó ügyfelek. Hitelesítési biztosítja, hogy az csak a hitelesített felhasználóknak a fürt és a központilag telepített alkalmazások elérése és felügyeleti feladatok elvégzésére. Tanúsítvány biztonsági engedélyezni kell a fürt a fürt létrehozásakor.  

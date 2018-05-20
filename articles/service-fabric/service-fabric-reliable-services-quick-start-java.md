@@ -1,24 +1,24 @@
 ---
-title: "Hozzon létre az első megbízható Azure mikroszolgáltatási Java nyelven |} Microsoft Docs"
-description: "Bevezetés a Microsoft Azure Service Fabric-alkalmazás létrehozása az állapotmentes és állapotalapú szolgáltatással."
+title: Hozzon létre az első megbízható Azure mikroszolgáltatási Java nyelven |} Microsoft Docs
+description: Bevezetés a Microsoft Azure Service Fabric-alkalmazás létrehozása az állapotmentes és állapotalapú szolgáltatással.
 services: service-fabric
 documentationcenter: java
 author: suhuruli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: e885a482edcba48c18e425c54f4acc28ee650ddd
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/12/2018
 >
 >
 
-Ez a cikk Azure Service Fabric Reliable Services használatának alapjait ismerteti, és végigvezeti a létrehozott és telepített egy egyszerű Java nyelven írt megbízható szolgáltatásalkalmazást. A Microsoft Virtual Academy videó is bemutatja, hogyan hozzon létre egy megbízható állapotmentes szolgáltatások:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
+Ez a cikk Azure Service Fabric Reliable Services használatának alapjait ismerteti, és végigvezeti a létrehozott és telepített egy egyszerű Java nyelven írt megbízható szolgáltatásalkalmazást. A Microsoft Virtual Academy videó is bemutatja, hogyan hozzon létre egy megbízható állapotmentes szolgáltatások: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
@@ -127,7 +127,7 @@ A platform ezt a módszert hívja, ha a szolgáltatás egy példánya elhelyezet
 
 A vezénylési kezeli a Service Fabric tartani a szolgáltatás magas rendelkezésre állású és megfelelően kiegyensúlyozott által.
 
-`runAsync()`meg nem blokkolják szinkron módon történik. RunAsync megvalósítását kell visszaadnia egy CompletableFuture folytatja a futtatókörnyezet engedélyezéséhez. Ha a számítási feladatok kell-e a CompletableFuture belül el kell végezni hosszú ideig futó feladat végrehajtásához.
+`runAsync()` meg nem blokkolják szinkron módon történik. RunAsync megvalósítását kell visszaadnia egy CompletableFuture folytatja a futtatókörnyezet engedélyezéséhez. Ha a számítási feladatok kell-e a CompletableFuture belül el kell végezni hosszú ideig futó feladat végrehajtásához.
 
 #### <a name="cancellation"></a>Megszakítása
 A számítási feladatok megszakítását egy együttműködési elérhető a megadott cancellation jogkivonat által összehangolva. A rendszer vár a feladat befejezéséhez (által sikeres befejezése, megszakítása vagy hiba), mielőtt az átvitel során. Fontos, hogy a megszakítási token tiszteletben, Befejezés munka és kilépés `runAsync()` lehető leggyorsabban tegye, amikor a rendszer törlését kéri. A következő példa bemutatja, hogyan kezelje a megszakítási esemény:
@@ -193,7 +193,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`az állapot nélküli és állapotalapú alkalmazások és szolgáltatások hasonlóan működnek. Azonban az állapotalapú service, a platform hajt végre további feladata az Ön nevében végrehajtása előtt `RunAsync()`. Ez a munkahelyi tartalmazhatnak, ezzel biztosítható, hogy a megbízható állapotkezelője és megbízható gyűjtemények rendszer készen áll a használatra.
+`RunAsync()` az állapot nélküli és állapotalapú alkalmazások és szolgáltatások hasonlóan működnek. Azonban az állapotalapú service, a platform hajt végre további feladata az Ön nevében végrehajtása előtt `RunAsync()`. Ez a munkahelyi tartalmazhatnak, ezzel biztosítható, hogy a megbízható állapotkezelője és megbízható gyűjtemények rendszer készen áll a használatra.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Megbízható gyűjtemények és a megbízható állapot-kezelő
 ```java

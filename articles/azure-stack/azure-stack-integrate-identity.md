@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: cc15c92037e18800a6f919d0ca18acb20ed5e893
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure verem datacenter integrációs - identitás
 Az identitás-szolgáltatóktól Azure verem Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) használatával telepítheti. Azure verem központi telepítése előtt meg kell nyitnia a választás. AD FS segítségével központi telepítés is nevezzük Azure verem kapcsolat nélküli módban való telepítése.
@@ -289,6 +289,9 @@ Nincsenek számos forgatókönyv, amely egy egyszerű szolgáltatásnév (SPN) h
 - Az AD FS telepítésekor Azure verem erőforrás-szolgáltató
 - Számos olyan alkalmazás
 - A nem interaktív bejelentkezési van szüksége
+
+> [!Important]  
+> Az AD FS csak olyan interaktív bejelentkezési munkameneteket támogat. Ha a nem interaktív bejelentkezési egy automatizált forgatókönyvhöz van szükség, egy egyszerű Szolgáltatásnevet kell használnia.
 
 Egyszerű Szolgáltatásnevet létrehozásával kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása az AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
 

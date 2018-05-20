@@ -11,14 +11,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 5/10/2018
+ms.date: 5/17/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 8fea502457275c89d99084a5b025b620872d796b
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: cb672c8e378db80707db1b0cf77a3196e36b1eb5
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>A verem az Azure PowerShell telepítése
 
@@ -72,8 +72,8 @@ Install-Module -Name AzureRm.BootStrapper
 # Install and import the API Version Profile required by Azure Stack into the current PowerShell session. 
 Use-AzureRmProfile -Profile 2017-03-09-profile -Force 
 
-# Install Module Version 1.2.12 if Azure Stack is running 1804 at a minimum 
-Install-Module -Name AzureStack -RequiredVersion 1.2.12 
+# Install Module Version 1.3.0 if Azure Stack is running 1804 at a minimum 
+Install-Module -Name AzureStack -RequiredVersion 1.3.0 
 
 # Install Module Version 1.2.11 if Azure Stack is running a lower version then 1804 
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 
@@ -91,8 +91,8 @@ Ha a telepítés sikeres, a kimenet a AzureRM és AzureStack modulok jelennek me
 
 Kapcsolat nélküli forgatókönyv esetében először töltse le a PowerShell-modul egy internetkapcsolattal rendelkező gép, és majd átviszi a Azure verem csomag telepítéséhez.
 
-> [!IMPORTANT]
-> A kiadási AzureRM 1.2.12 PowerShell modul megtörje a változások listájának tartalmaz. A 1.2.10 rendszerről verzióját, tekintse meg a [áttelepítési útmutató](https://github.com/bganapa/azure-powershell/blob/stack-migration/documentation/migration-guides/Stack/migration-guide.1.2.12.md).
+> [!IMPORTANT]  
+> A kiadás a verem 1.3.0 Azure PowerShell modul megtörje a változások listájának tartalmaz. A 1.2.11 rendszerről verzióját, tekintse meg a [áttelepítési útmutató](https://aka.ms/azspowershellmigration).
 
 1. Jelentkezzen be a számítógépre, amelyen kapcsolódik az internethez, és a következő parancsfájl letöltése az Azure RM-ben, és AzureStack csomagok használata a helyi számítógépre:
 
@@ -105,7 +105,7 @@ Kapcsolat nélküli forgatókönyv esetében először töltse le a PowerShell-m
      -Name AzureRM `
      -Path $Path `
      -Force `
-     -RequiredVersion 1.2.12
+     -RequiredVersion 1.2.11
 
    Save-Package `
      -ProviderName NuGet `
@@ -113,11 +113,11 @@ Kapcsolat nélküli forgatókönyv esetében először töltse le a PowerShell-m
      -Name AzureStack `
      -Path $Path `
      -Force `
-     -RequiredVersion 1.2.12 
+     -RequiredVersion 1.3.0 
    ```
 
-> [!Important]  
-> Ha nem futtatja Azure verem frissítés 1804 vagy nagyobb, módosítsa a **requiredversion** paraméterérték `1.2.11`. 
+  > [!Important]  
+  > Ha nem futtatja Azure verem frissítés 1804 vagy nagyobb, módosítsa a **requiredversion** paraméterérték `1.2.11`. 
 
 2. A letöltött csomagok másolása keresztül egy USB-eszközt.
 

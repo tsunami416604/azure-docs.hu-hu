@@ -1,24 +1,24 @@
 ---
-title: "Az Azure-szolgáltatások csomag Fabric-alkalmazás |} Microsoft Docs"
-description: "Hogyan csomag a Service Fabric-alkalmazás egy fürt üzembe helyezése előtt."
+title: Az Azure-szolgáltatások csomag Fabric-alkalmazás |} Microsoft Docs
+description: Hogyan csomag a Service Fabric-alkalmazás egy fürt üzembe helyezése előtt.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
 editor: mani-ramaswamy
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0db49b9bd50c640175292671f813d23d960b52e1
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 24cb1fd0666b404d92dfb803f55c850226ff59b6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
 Ez a cikk ismerteti, hogyan csomag a Service Fabric-alkalmazás, és lehetővé teszi a telepítésre kész.

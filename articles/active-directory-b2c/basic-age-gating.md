@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d6804f7e546547d734f966656362111b31078a4
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Az Azure AD B2C átjáró kora használatával
 
@@ -47,25 +47,22 @@ A címtár használandó kora átjáró beállítása után a az előzetes verzi
 Kor átjáró engedélyezése után a felhasználó folyamatában az a felhasználó számára a módosításokat.  Regisztráció, a felhasználók most már a születési és a felhasználói attribútumok a felhasználói folyamat konfigurált együtt lakóhelye kell adnia.  Jelentkezzen be, a felhasználók, amelyek még nem korábban megadott születési dátum és a tartózkodási ország kér a rendszer ezt az információt a legközelebb bejelentkeznek az.  E két érték közül az Azure AD B2C alapján megállapítható, hogy a felhasználó egy kisebb lesz, és frissítse a `ageGroup` mezőben, az érték lehet `null`, `Undefined`, `Minor`, `Adult`, és `NotAdult`.  A `ageGroup` és `consentProvidedForMinor` mezők majd kiszámításához használt `legalAgeGroupClassification`. 
 
 ##<a name="age-gating-options"></a>A korszűrő átjáró beállítások
-Ha szeretné az Azure AD B2C kell blokk kiskorúak szülői jóváhagyása nélkül, vagy lehetővé teszik, és mi a teendő velük a döntések az alkalmazást.  
+Választhat, az Azure AD B2C blokk kiskorúak szülői jóváhagyása nélkül vagy teszik lehetővé, és az alkalmazás döntéseket Mi a teendő velük a rendelkezésére.  
 
 ###<a name="allowing-minors-without-parental-consent"></a>Így kiskorúak szülői jóváhagyása nélkül
-Amely rendelkezik vagy aláírási, bejelentkezés felhasználói forgalom vagy mindkettő kiválaszthatja az alkalmazásba hozzájárulás nélkül kiskorúak engedélyezéséhez.  A kiskorúak szülői jóváhagyása nélkül, azok hogy jogosult-e jelentkezni, vagy jelentkezzen be a normál, ingyenesen kibocsát egy azonosító jogkivonat a `legalAgeGroupClassification` jogcímek.  Ezt az igényt dönthet úgy, hogy ezek a felhasználók jogosultak a élmény használatával, mint áthaladás beleegyezést gyűjtéséhez élményt (és frissítse a `consentProvidedForMinor` mező).
+Engedélyezése vagy jelentkezzen be, jelentkezzen be a felhasználói forgalom vagy mindkettő kiválaszthatja az alkalmazásba hozzájárulás nélkül kiskorúak engedélyezéséhez.  Kiskorúak szülői jóváhagyása nélkül, az engedélyezve van a bejelentkezéshez vagy iratkozzon fel, mint a normál és az Azure AD B2C kibocsát egy azonosító jogkivonat a `legalAgeGroupClassification` jogcímek.  Ezt az igényt dönthet úgy, hogy ezek a felhasználók jogosultak a élmény használatával, mint áthaladás beleegyezést gyűjtéséhez élményt (és frissítse a `consentProvidedForMinor` mező).
 
 ###<a name="blocking-minors-without-parental-consent"></a>Blokkoló kiskorúak szülői jóváhagyása nélkül
-Amely rendelkezik vagy aláírási, bejelentkezés felhasználói forgalom vagy mindkettő kiválaszthatja az alkalmazásba hozzájárulás nélkül kiskorúak blokkolására.  Az Azure AD B2C letiltott felhasználók kezelésére két lehetőség áll rendelkezésre:
+Engedélyezése vagy jelentkezzen be, jelentkezzen be a felhasználói forgalom vagy mindkettő kiválaszthatja blokkolására kiskorúak alkalmazásból hozzájárulása nélkül.  Az Azure AD B2C letiltott felhasználók kezelésére két lehetőség áll rendelkezésre:
 * A JSON küldi vissza az alkalmazás - ezt a beállítást olyan választ küld az alkalmazásnak, hogy egy kisebb hozzáférése le van tiltva.
 * A felhasználó megjelenik egy lap tájékoztatja, hogy nem érhető el az alkalmazást egy hibalap - megjelenítése
 
 ##<a name="known-issues"></a>Ismert problémák
-###<a name="customization-unavailable-for-new-pages"></a>Nem érhető el az új lapok testreszabása
-Nincsenek két új lapokat, amely elérhető a felhasználói folyamat kora átjáró engedélyezésekor.  Ezeken a lapokon az ország és születési gyűjtéséhez bejelentkezhet, és a hibalap nem használható oldal elrendezést vagy nyelvi testreszabása.  Ez a beállítás el a következő frissítés érhető el.
-
 ###<a name="format-for-the-response-when-a-minor-is-blocked"></a>A válasz egy kisebb blokkolásáról formátumban.
 A válasz jelenleg formátuma, egy következő frissítés kiiktatása ezt a hibát.
 
 ###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>A telepítés során felvett adott attribútumok törlése teheti a címtárban nem használható kora átjáró.
-Kor átjáró beállításaiban, a directory-ban egy beállítást konfigurálta a `Properties`.  Ha törli vagy `legalCountry` vagy `dateOfBirth`, a bérlő többé ne használhassa kora átjáró, és ezeket a tulajdonságokat nem lehet újból létre kell hozni.
+Kor átjáró beállításaiban, a directory-ban egy beállítást konfigurálta a `Properties`.  Ha törli vagy `legalCountry` vagy `dateOfBirth` keresztül diagramot, a címtár többé ne használhassa kora átjáró, és ezeket a tulajdonságokat nem lehet újból létre kell hozni.
 
 ###<a name="list-of-countries-is-incomplete"></a>Azon országok listája nem fejeződött be
 Jelenleg legalCountry országok listája nem fejeződött be, a többi országok adjuk hozzá a következő frissítés.

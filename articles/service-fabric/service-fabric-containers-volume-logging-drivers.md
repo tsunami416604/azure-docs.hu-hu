@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: other
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/30/2018
 ms.author: subramar
-ms.openlocfilehash: d4751182cac9b5b952ef9a9dd125408267c1f8d0
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2d98cff1a5869091aa81097bbb34da6e525a2ad5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric az Azure Files kötet illesztőprogram (előzetes verzió)
 Az Azure-fájlok a kötet beépülő egy [Docker kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) biztosít [Azure fájlok](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) Docker-tároló kötetek alapján. A Docker kötet beépülő modul, a Service Fabric-alkalmazás, amely a Service Fabric-fürtök telepíthető lesz csomagolva. Az célja Azure fájlok alapú más Service Fabric tároló központilag telepített alkalmazások kerülnek a fürthöz tartozó kötetek.

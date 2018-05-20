@@ -9,11 +9,11 @@ ms.author: philmea
 ms.date: 04/29/2018
 ms.topic: article
 ms.service: iot-suite
-ms.openlocfilehash: 12248a719d7d30c9b83be9c72539e0a81f19fb7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 09a54e9cb1c6f063e878fd42c42699a906b60c7b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Az idő adatsorozat insights szolgáltatással távoli figyelési adatok megjelenítése
 
@@ -23,7 +23,7 @@ Operátor érdemes további kiterjeszteni a out be adatok a távoli megfigyelés
 
 Ez az útmutató elvégzéséhez a következőkre lesz szüksége:
 
-* [Az előre konfigurált távoli figyelésére szolgáló megoldás telepítése](iot-suite-remote-monitoring-deploy.md)
+* [Az előre konfigurált távoli figyelésére szolgáló megoldás telepítése](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>Egy felhasználói csoport létrehozása
 
@@ -87,11 +87,11 @@ Hozzon létre egy új eseményforrás az IoT hub való kapcsolódáshoz. Győző
     | Eseményforrás neve | Az alábbi képernyőfelvételen a nevet használja, **contosorm-iot-központ**. Amikor végzett ezzel a lépéssel, használja a saját egyedi nevét. |
     | Forrás | **IoT Hub** |
     | Importálási beállítás | **Az elérhető előfizetések IoT Hubjának használata** |
-    | Előfizetés azonosítója | A legördülő listán válassza ki az Azure-előfizetéshez. |
-    | Iot hub neve | **contosorma57a6**. A távoli figyelésére szolgáló megoldás a az IoT hub nevét használja. |
-    | Iot hub szabályzatneve | **iothubowner** használandó házirendet legyen egy tulajdonos házirendet. |
-    | Iot hub szabályzatkulcsa | A mező automatikusan feltöltődik értékkel. |
-    | Iot hub fogyasztói csoport | **timeseriesinsights** |
+    | Előfizetési azonosító | A legördülő listán válassza ki az Azure-előfizetéshez. |
+    | Az IOT-központ nevét | **contosorma57a6**. A távoli figyelésére szolgáló megoldás a az IoT hub nevét használja. |
+    | Az IOT hub házirend neve | **iothubowner** használandó házirendet legyen egy tulajdonos házirendet. |
+    | Az IOT hub házirend kulcs | A mező automatikusan feltöltődik értékkel. |
+    | Az IOT hub fogyasztói csoportot | **timeseriesinsights** |
     | Eseményszerializációs formátum | **JSON**     | Időbélyeg-tulajdonság neve | Hagyja üresen |
 
     ![Eseményforrás létrehozása](media/iot-suite-time-series-insights/time-series-insights-event-source-create.png)

@@ -2,18 +2,17 @@
 title: Azure szabályzatdefiníciók struktúrája
 description: Ismerteti, hogyan erőforrás házirend-definíció Azure házirend létrehozásához használt erőforrásokra vonatkozó konvenciók a szervezet ismertetésével, ha a házirend érvényesítve van-e, és milyen hatása érvénybe.
 services: azure-policy
-keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-policy
-ms.custom: ''
-ms.openlocfilehash: a56fa61c6d77ab50dc1342c5a7feeaf1c579697d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+manager: carmonm
+ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -116,7 +115,7 @@ A házirend szabályban hivatkozási paraméter a következő szintaxissal:
 }
 ```
 
-## <a name="definition-location"></a>Definiálás helye
+## <a name="definition-location"></a>Definíció helye
 
 Az kezdeményezés, vagy a házirend-definíció létrehozása, során fontos, hogy megadja a Definiálás helye.
 
@@ -252,7 +251,7 @@ Az érték lehet egy karakterlánc vagy egy JSON-formátumú objektum.
 A **AuditIfNotExists** és **DeployIfNotExists** értékelje ki a kapcsolódó erőforrások meglétét, és alkalmazza a szabályt, és a megfelelő hatása, ha adott erőforrás nem létezik. Például megkövetelheti, hogy egy hálózati figyelőt az összes virtuális hálózathoz van-e telepítve.
 Példa a naplózást, ha egy virtuálisgép-bővítmény nincs telepítve, tekintse meg [kiterjesztés nem található naplózási](scripts/audit-ext-not-exist.md).
 
-## <a name="aliases"></a>Aliasnevek
+## <a name="aliases"></a>Aliasok
 
 Egy erőforrás típusára vonatkozó tulajdonságokat eléréséhez használt tulajdonságának aliasokat. Aliasok engedélyezi, hogy milyen értékeket, vagy a feltételek engedélyezve van a erőforrás-tulajdonságok korlátozása. Mindegyik aliasnak elérési utak a különböző API-verziók egy adott erőforrástípusra van leképezve. Házirend kiértékelése közben a házirendmotor lekérdezi az adott API-verzió útvonal.
 

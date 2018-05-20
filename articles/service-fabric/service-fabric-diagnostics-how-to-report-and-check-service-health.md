@@ -1,24 +1,24 @@
 ---
-title: "Jelentés, és ellenőrizze az állapotát az Azure Service Fabric |} Microsoft Docs"
-description: "Útmutató: a rendszerállapot-jelentések küldése a szolgáltatás kódból és a szolgáltatás állapotának ellenőrzéséhez hajtsa végre az Azure Service Fabric biztosító állapota Hálózatfigyelő eszközök."
+title: Jelentés, és ellenőrizze az állapotát az Azure Service Fabric |} Microsoft Docs
+description: 'Útmutató: a rendszerállapot-jelentések küldése a szolgáltatás kódból és a szolgáltatás állapotának ellenőrzéséhez hajtsa végre az Azure Service Fabric biztosító állapota Hálózatfigyelő eszközök.'
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: mfussell
-editor: 
+editor: ''
 ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/2/2017
 ms.author: dekapur
-ms.openlocfilehash: a8c1ac57d38ae504e677c44c6fec08164b9b74ce
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 82ee3cbca40713d527f64ae4698cb9ce64a10215
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
 Ha a szolgáltatások problémája, válaszol, és oldja meg az incidensek és a leállások arra a képességére, a problémák gyorsan észlelése arra a képességére, függ. Ha készít jelentést az problémák és hibák az Azure Service Fabric-kezelő szolgáltatás programkódból, szabványos állapotfigyelési, amely a rendszerállapot állapotának biztosít a Service Fabric eszközök is használhatja.
@@ -36,7 +36,7 @@ Ez a cikk végigvezeti egy példa, amely a szolgáltatáskód állapotát jelzi.
 ## <a name="prerequisites"></a>Előfeltételek
 Rendelkeznie kell a következőkkel:
 
-* Visual Studio 2015-öt vagy a Visual Studio 2017
+* Visual Studio 2015 vagy Visual Studio 2017
 * A Service Fabric SDK
 
 ## <a name="to-create-a-local-secure-dev-cluster"></a>A helyi biztonságos fejlesztési fürtök létrehozásához
@@ -147,7 +147,7 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Részletes bemutatója a Service Fabric állapota](service-fabric-health-introduction.md)
 * [REST API-t a jelentéskészítési szolgáltatás állapota](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
 * [REST API-alkalmazás állapotának jelentéskészítéshez](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)

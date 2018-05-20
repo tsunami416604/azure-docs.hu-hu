@@ -49,7 +49,7 @@
 - name: Útmutató
   items:
     - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása
-      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+      href: load-balancer-get-started-internet-az-portal.md
       items:
         - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása (PowerShell)
           href: load-balancer-get-started-internet-az-powershell.md

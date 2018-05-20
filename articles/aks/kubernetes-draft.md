@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bb80d68d7ac37c8930626b5163597dc0e492a0d2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a5dfecefb6ce1d74e02c64371a864a6d3b07a2e1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Vázlat használata Azure Kubernetes szolgáltatásnál (AKS)
 
@@ -38,7 +38,7 @@ A Vázlat CLI egy ügyfelet, amelyben a fejlesztői rendszeren fut, és lehetőv
 > [!NOTE]
 > Ha telepítette a vázlatként megjelölt verziót 0.12 előtt, kell először törölnie vázlat a fürt használt `helm delete --purge draft` , és távolítsa el a helyi konfigurációs futtatásával `rm -rf ~/.draft`. Ha MacOS, `brew upgrade draft`.
 
-A Vázlat parancssori felület telepítése egy Mac használata `brew`. További telepítési beállítások talál, a [vázlat telepítése útmutató][install-draft].
+A Vázlat parancssori felület telepítése egy Mac használata `brew`. További telepítési beállítások talál, a [vázlat telepítése útmutató][draft-documentation].
 
 ```console
 brew tap azure/draft
@@ -288,7 +288,6 @@ Vázlat használatával kapcsolatos további információkért az dokumentáció
 
 <!-- LINKS - external -->
 [draft-documentation]: https://github.com/Azure/draft/tree/master/docs
-[install-draft]: https://github.com/Azure/draft/blob/master/docs/install.md
 [kubernetes-ingress]: ./ingress.md
 [kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
 

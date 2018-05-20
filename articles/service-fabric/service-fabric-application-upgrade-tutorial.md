@@ -1,24 +1,24 @@
 ---
-title: "A Service Fabric-alkalmazás frissítési oktatóanyag |} Microsoft Docs"
-description: "Ez a cikk végigvezeti a Service Fabric-alkalmazás telepítése, kódjának a módosítása és működés közbeni frissítés ki a Visual Studio használatával élménye."
+title: A Service Fabric-alkalmazás frissítési oktatóanyag |} Microsoft Docs
+description: Ez a cikk végigvezeti a Service Fabric-alkalmazás telepítése, kódjának a módosítása és működés közbeni frissítés ki a Visual Studio használatával élménye.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3388257399ce8d2e0ac84b9bff746e1acf153312
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0a94dc91308f21d9e2b440f9638829ee03a8b903
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>A Service Fabric frissítés oktatóanyag a Visual Studio használatával
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Kiválasztása **közzététel** megjelenik egy előugró ablak, és állíthatj
 
 ![A Service Fabric-alkalmazás közzététele][image2]
 
-Most kattintson **közzététel** a párbeszédpanelen. Használhat [a fürt és az alkalmazás megtekintése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). A vizuális objektumok alkalmazásnak egy webszolgáltatás, amelyet léphet, írja be a [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) a böngésző címsorába.  A képernyőn megjelenő Navigálás 10 lebegőpontos visual objektumok kell megjelennie.
+Most kattintson **közzététel** a párbeszédpanelen. Használhat [a fürt és az alkalmazás megtekintése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). A vizuális objektumok alkalmazásnak egy webszolgáltatás, amelyet léphet, írja be a [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) a böngésző címsorába.  A képernyőn megjelenő Navigálás 10 lebegőpontos visual objektumok kell megjelennie.
 
 **Megjegyzés:** Ha üzembe `Cloud.xml` profil (Azure Service Fabric), az alkalmazás érhető el kell **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/**. Győződjön meg arról, hogy `8081/TCP` konfigurált a terheléselosztó (Keresés a terheléselosztó ugyanabban az erőforráscsoportban a Service Fabric-példányként).
 

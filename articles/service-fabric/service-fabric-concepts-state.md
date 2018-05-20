@@ -1,24 +1,24 @@
 ---
-title: "Definine és az Azure mikroszolgáltatások állapot kezelése |} Microsoft Docs"
-description: "Hogyan határozhatja meg és kezelheti a Service Fabric szolgáltatás állapota"
+title: Definine és az Azure mikroszolgáltatások állapot kezelése |} Microsoft Docs
+description: Hogyan határozhatja meg és kezelheti a Service Fabric szolgáltatás állapota
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 103fd6c3d536bc11f4e39444043a332a1d8f6c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46d2e27b9cdcb03213648982c7e9a0576838bc92
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-state"></a>Szolgáltatás állapota
 **Szolgáltatás állapota** a memóriában vagy lemez-adatokat a szolgáltatás működéséhez szükséges. Ez magában foglalja, például adatstruktúrák és tagváltozók, amely a szolgáltatás olvas és ír működnek. Attól függően, hogy a szolgáltatás tervezett azt is tartalmazhatnak fájlokat vagy más erőforrásokat, amelyek tárolása a lemezen. Például a fájlok egy adatbázis használna adatok és a tranzakciós naplók tárolásához.
@@ -34,7 +34,7 @@ Az Azure Service Fabric az első szolgáltatás állapotmentes szolgáltatások 
 
 Lehet, hogy állapota is együtt a kódot, amely kezeli a állapotát. Ez a modell használatával a Service Fabric állapotalapú szolgáltatások általában készített. Győződjön meg arról, hogy a magas rendelkezésre áll, következetes és tartós ebben az állapotban, és, hogy a szolgáltatások beépített ily módon egyszerűen méretezhető infrastruktúrát biztosít a Service Fabric.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Fabric fogalmakat további információkért tekintse meg a következő cikkeket:
 
 * [A Service Fabric-szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)

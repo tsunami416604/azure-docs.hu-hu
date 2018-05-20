@@ -14,24 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 70a2118ef0e26043f9f6a9cceb9d4a533d343556
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 86eae6813d6181b1c42e8316d159c8bbe523330b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
-# <a name="install-powershell-for-azure-stack"></a>A verem az Azure PowerShell telepítése  
+# <a name="install-powershell-for-azure-stack"></a>A verem az Azure PowerShell telepítése
 
-Azure verem kompatibilis Azure PowerShell-modulok az Azure veremnek megfelelő működéséhez szükségesek. Az útmutató azt végigvezetik Önt az Azure verem PowerShell telepítéséhez szükséges lépéseket. A lépést, ha a VPN-en keresztül kapcsolódik az Azure verem szoftverfejlesztői készlet, vagy a Windows-alapú külső ügyfél cikkben leírt használhatja.
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Ez a cikk tartalmaz részletes utasításokat verem Azure PowerShell telepítése. Ha szeretné gyorsan PowerShell telepítése és konfigurálása, használhatja a parancsfájlt, amely a "Get működik, és a PowerShell használatával" című cikkben találhatók. 
+Azure verem kompatibilis Azure PowerShell-modulok az Azure veremnek megfelelő működéséhez szükségesek. Ez a cikk végigvezeti a verem Azure PowerShell telepítéséhez szükséges lépéseket. A lépést, ha a VPN-en keresztül kapcsolódik az Azure verem szoftverfejlesztői készlet, vagy a Windows-alapú külső ügyfél cikkben leírt használhatja.
+
+Ez a cikk PowerShell telepítésére vonatkozó részletes útmutatást biztosít. Ha szeretné gyorsan PowerShell telepítése és konfigurálása, használhatja a "Get működik, és a PowerShell használatával" cikk megadott parancsfájl.
 
 > [!NOTE]
 > A következő lépések végrehajtásához szükséges PowerShell 5.0. A verzió ellenőrzéséhez $PSVersionTable.PSVersion futtatása, és hasonlítsa össze a "Fő" verziószáma.
 
 Azure verem PowerShell-parancsokat a PowerShell-galériában keresztül telepített. Regisztrálja a PSGallery tárház, nyissa meg egy rendszergazda jogú PowerShell-munkamenetet a csomag vagy a Windows-alapú külső ügyfél Ha VPN-en keresztül csatlakozó és a következő parancsot:
 
-```powershell
+```PowerShell  
 Set-PSRepository `
   -Name "PSGallery" `
   -InstallationPolicy Trusted
@@ -41,24 +43,22 @@ Set-PSRepository `
 
 A szükséges verzió telepítése előtt győződjön meg arról, hogy távolítsa el a meglévő Azure PowerShell modul. Az alábbi két módszer egyikével eltávolíthatja őket:
 
-* Távolítsa el a meglévő PowerShell-modulok, jelentkezzen be a csomagban található, vagy a Windows-alapú külső ügyfél Ha azt tervezi, hogy a VPN-kapcsolatot. Zárja be az összes aktív PowerShell-munkamenetekben, és futtassa a következő parancsot: 
+* Távolítsa el a meglévő PowerShell-modulok, jelentkezzen be a csomagban található, vagy a Windows-alapú külső ügyfél Ha azt tervezi, hogy a VPN-kapcsolatot. Zárja be az összes aktív PowerShell-munkamenetekben, és futtassa a következő parancsot:
 
-   ```powershell
+   ```PowerShell  
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* Jelentkezzen be a csomagban található, vagy a Windows-alapú külső ügyfél Ha azt tervezi, hogy a VPN-kapcsolatot. Kezdje az "Azure" összes mappa törlése a `C:\Program Files (x86)\WindowsPowerShell\Modules` és `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` mappák. Törli a "AzureStackAdmin" és "globális" felhasználói hatókörök meglévő PowerShell modul. 
+* Jelentkezzen be a csomagban található, vagy a Windows-alapú külső ügyfél Ha azt tervezi, hogy a VPN-kapcsolatot. Kezdje az "Azure" összes mappa törlése a `C:\Program Files (x86)\WindowsPowerShell\Modules` és `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` mappák. Törli a "AzureStackAdmin" és "globális" felhasználói hatókörök meglévő PowerShell modul.
 
-A következő szakaszok ismertetik a verem Azure PowerShell telepítéséhez szükséges lépéseket. PowerShell működtetett csatlakoztatva, részben kapcsolódó Azure-veremben, vagy egy leválasztott forgatókönyvben telepíthető. 
+A következő szakaszok ismertetik a verem Azure PowerShell telepítéséhez szükséges lépéseket. PowerShell működtetett csatlakoztatva, részben kapcsolódó Azure-veremben, vagy egy leválasztott forgatókönyvben telepíthető.
 
 ## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>Telepítse a PowerShell csatlakoztatott forgatókönyv esetében (internetes kapcsolattal rendelkező)
 
 Azure verem kompatibilis AzureRM-modulok API-verzió profilok keresztül telepített. Azure verem igényel a **2017-03-09-profil** API-verzió profilt, amely érhető el a AzureRM.Bootstrapper modul telepítésével. API-verzió profilok és az általuk megadott parancsmagok kapcsolatos információkért tekintse meg a [API-verzió profilok kezeléséhez](azure-stack-version-profiles-powershell.md). AzureRM modulokat is telepíteni kell a verem vonatkozó Azure PowerShell-modulok. Ezek a modulok telepítése a fejlesztő munkaállomás a következő PowerShell-parancsfájl futtatása:
 
-
-
-  ```powershell
-  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
+  ```PowerShell  
+  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
   Install-Module `
     -Name AzureRm.BootStrapper
 
@@ -73,63 +73,64 @@ Azure verem kompatibilis AzureRM-modulok API-verzió profilok keresztül telepí
 
 A telepítés jóváhagyásához, futtassa a következő parancsot:
 
-  ```powershell
+  ```PowerShell  
   Get-Module `
     -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
+
   Ha a telepítés sikeres, az Azure RM-ben és az Azure-verem modulok a kimeneti jelennek meg.
 
 ## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>Telepítse a PowerShell egy leválasztott vagy egy részben csatlakoztatott forgatókönyv (az korlátozott internetkapcsolat)
 
 Részlegesen csatlakoztatott vagy leválasztott esetén először töltse le a PowerShell-modul egy internetkapcsolattal rendelkező gép, és majd átviszi a Azure verem csomag telepítéséhez.
 
-1. Jelentkezzen be a számítógépre, amelyen kapcsolódik az internethez, és a következő parancsfájl letöltése az Azure RM-ben, és AzureStack csomagok használata a helyi számítógépre:
+1. Jelentkezzen be a számítógépre, amelyen kapcsolódik az internethez, és a következő parancsfájl letöltése az Azure RM-ben, és AzureStack csomagok használata a helyi számítógépre:  
 
-   ```powershell
-   $Path = "<Path that is used to save the packages>"
+    ```PowerShell  
+    $Path = "<Path that is used to save the packages>"
 
-   Save-Package `
-     -ProviderName NuGet `
-     -Source https://www.powershellgallery.com/api/v2 `
-     -Name AzureRM `
-     -Path $Path `
-     -Force `
-     -RequiredVersion 1.2.11
+    Save-Package `
+      -ProviderName NuGet `
+      -Source https://www.powershellgallery.com/api/v2 `
+      -Name AzureRM `
+      -Path $Path `
+      -Force `
+      -RequiredVersion 1.2.11
 
-   Save-Package `
-     -ProviderName NuGet `
-     -Source https://www.powershellgallery.com/api/v2 `
-     -Name AzureStack `
-     -Path $Path `
-     -Force `
-     -RequiredVersion 1.2.11 
-   ```
+    Save-Package `
+      -ProviderName NuGet `
+      -Source https://www.powershellgallery.com/api/v2 `
+      -Name AzureStack `
+      -Path $Path `
+      -Force `
+      -RequiredVersion 1.2.11
+    ```
 
 2. A letöltött csomagok másolása keresztül egy USB-eszközt.
 
-3. Jelentkezzen be a csomag és a csomagokat másolhatja az USB-eszközről, a csomag helyére. 
+3. Jelentkezzen be a csomag és a csomagokat másolhatja az USB-eszközről, a csomag helyére.
 
 4. Most kell ezen a helyen az alapértelmezett tárház regisztrálásához és a AzureRM és AzureStack modulok telepítése ebben a tárházban lévő:
 
-   ```powershell
-   $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
-   $RepoName = "MyNuGetSource"
+    ```PowerShell  
+    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
+    $RepoName = "MyNuGetSource"
 
-   Register-PSRepository `
-     -Name $RepoName `
-     -SourceLocation $SourceLocation `
-     -InstallationPolicy Trusted
+    Register-PSRepository `
+      -Name $RepoName `
+      -SourceLocation $SourceLocation `
+      -InstallationPolicy Trusted
 
-   ```powershell
-   Install-Module AzureRM `
-     -Repository $RepoName
+    ```PowerShell  
+    Install-Module AzureRM `
+      -Repository $RepoName
 
-   Install-Module AzureStack `
-     -Repository $RepoName 
-   ```
+    Install-Module AzureStack `
+      -Repository $RepoName
+    ```
 
 ## <a name="next-steps"></a>További lépések
 
-* [Töltse le az Azure-verem eszközök a Githubról](azure-stack-powershell-download.md)  
-* [Az Azure-verem felhasználói PowerShell környezet konfigurálása](azure-stack-powershell-configure-user.md)  
-* [Azure verem API-verzió profilok kezelése](azure-stack-version-profiles-powershell.md)  
+* [Töltse le az Azure-verem eszközök a Githubról](azure-stack-powershell-download.md)
+* [Az Azure-verem felhasználói PowerShell környezet konfigurálása](azure-stack-powershell-configure-user.md)
+* [Azure verem API-verzió profilok kezelése](azure-stack-version-profiles-powershell.md)

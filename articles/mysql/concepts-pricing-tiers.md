@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 490b162bcab0656388ef0b211ea693809d446346
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: e12010f225b5f8db247d1b751615cbedd413dfb3
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure tarifacsomagok MySQL-adatbázis
 
@@ -22,8 +22,8 @@ Létrehozhat egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis az egyik három
 |    | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási létrehozása | 4, 5. generációból generációs | 4, 5. generációból generációs | Gen 5 |
-| vCores | 1, 2 | 2, 4, 8, 16 és 32 |2, 4, 8, 16 |
-| Memória mennyisége vCore | Alapkonfiguráció | 2 x Basic | Általános célú x 2 |
+| Virtuális magok | 1, 2 | 2, 4, 8, 16 és 32 |2, 4, 8, 16 |
+| Memória mennyisége vCore | Alapterv | 2 x Basic | Általános célú x 2 |
 | Tároló mérete | 5 GB és 1 TB | 5 GB és 2 TB | 5 GB és 2 TB |
 | Tárolási típus | Az Azure standard szintű tárolót | Azure Premium Storage | Azure Premium Storage |
 | Adatbázis biztonsági mentés megőrzési időtartam | 7-35 nap | 7-35 nap | 7-35 nap |
@@ -71,7 +71,7 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 
 Attól függően, hogy ez a tarifacsomag minden vCore ki van építve a meghatározott RAM mennyiséggel. Növeléséhez vagy csökkentéséhez tegye a következőket vCores a kiszolgáló, a memória növeli vagy csökkenti arányosan. Az általános célú réteg biztosít kettős az alapszintű rétegben képest vCore memória mennyisége. A Memóriaoptimalizált réteget biztosít duplán az általános célú réteghez képest memória mennyisége.
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 A tároló, kiépítése nem MySQL-kiszolgáló az Azure-adatbázishoz rendelkezésre álló tárolókapacitás mennyiségét. A tárolót használja a rendszer az adatbázisfájlokat, az ideiglenes fájlok, a tranzakciós naplók és a a MySQL-kiszolgáló naplói. A teljes rendszermemóriához viszonyítva kiépítése tárolási-kiszolgálóhoz is határozza meg a rendelkezésre álló i/o-kapacitás.
 
@@ -86,7 +86,13 @@ Hozzáadhat további tárolási kapacitás alatt és után a kiszolgáló létre
 
 Az i/o-felhasználás az Azure portálon vagy az Azure CLI-parancsok segítségével figyelheti. Figyelésére vonatkozó adatok gyűjtése le van [tárolási kapacitása, tárolási százalékos, használt tárolási és IO százalék](concepts-monitoring.md).
 
-## <a name="backup"></a>Biztonsági mentés
+### <a name="reaching-the-storage-limit"></a>A megadott tárolási kapacitás elérése
+
+A kiszolgáló van megjelölve csak olvasható, amikor eléri a szabad tárhelymemóriájának mennyiségét, kisebb, mint 5 GB vagy 5 %-a kiépített, amelyik kisebb. Ha például 100 GB tárhely ellátta, és a tényleges kihasználtság 95 GB, a kiszolgáló van megjelölve, csak olvasható. Másik lehetőségként ellátta 5 GB tárhelyet, ha a kiszolgáló van megjelölve csak olvasható 250 MB-nál kevesebb a szabad tárhely elérésekor.  
+
+A szolgáltatás tett kísérletet a kiszolgáló írásvédett, amíg minden új írási tranzakció kérések le vannak tiltva, és a meglévő aktív tranzakciók végrehajtása folytatódik. Ha a kiszolgáló értéke csak olvasható, további írási műveletek és a tranzakciós érvényesítése sikertelen. Olvasási lekérdezések továbbra is működnek majd megszakítás nélkül. Növelje a kiosztott tárolási, miután a kiszolgáló készen áll a írási tranzakción újra fogadására lesz.
+
+## <a name="backup"></a>Backup
 
 A szolgáltatás automatikusan felveszi a kiszolgáló biztonsági másolatait. Biztonsági mentések minimális megőrzési időtartama hét nap. Megadhat egy legfeljebb 35 napos megőrzési idővel. A megőrzési bármikor módosítható a kiszolgáló élettartama során. Helyileg redundáns és georedundáns biztonsági mentések közül választhat. Georedundáns biztonsági mentéseket is tárolódnak a [párosítása, földrajzi régió](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) a régió, ahol a kiszolgáló akkor jön létre. A redundancia katasztrófa esetén védelmet biztosít. Ezenkívül igénybe veheti a kiszolgáló tárolt bármely más Azure-régió, ahol a szolgáltatás érhető georedundáns biztonsági való. Már nem módosíthatja, miután a kiszolgáló akkor jön létre két biztonsági másolatok tárolási lehetőségek közötti.
 

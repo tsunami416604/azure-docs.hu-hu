@@ -40,6 +40,8 @@
   items:
     - name: Automatikus témakör-létrehozás engedélyezése
       href: apache-kafka-auto-create-topics.md
+    - name: A Kafka használata az IoT Hubbal
+      href: apache-kafka-connector-iot-hub.md
     - name: HDInsight-alkalmazások telepítése
       href: ../hdinsight-apps-install-applications.md
       maintainContext: true

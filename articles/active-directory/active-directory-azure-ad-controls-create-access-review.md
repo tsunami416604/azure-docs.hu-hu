@@ -1,28 +1,28 @@
 ---
-title: "Hozzon létre egy csoport vagy a hozzáférést egy alkalmazáshoz, az Azure ad-vel rendelkező felhasználók tagjai egy áttekintése |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy áttekintése egy csoport vagy az alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai számára."
+title: Hozzon létre egy csoport vagy a hozzáférést egy alkalmazáshoz, az Azure ad-vel rendelkező felhasználók tagjai egy áttekintése |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy áttekintése egy csoport vagy az alkalmazáshoz hozzáféréssel rendelkező felhasználók tagjai számára.
 services: active-directory
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/14/2018
 ms.author: billmath
-ms.openlocfilehash: b2f8985f12e17ac69543cfb3a33725f796eedde8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 784a461421420af403a43f944d6f63aef3ccc152
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Hozzon létre egy áttekintése csoporttagok vagy alkalmazás-hozzáférés az Azure ad-vel
 
-Hozzáférés hozzárendelések vált "elavult", ha a felhasználók többé nem kell hozzáférést. Elavult hozzáférés hozzárendelések társított kockázatok csökkentése érdekében a rendszergazdák segítségével Azure Active Directory (Azure AD) hozzon létre egy áttekintése csoport tagjainak vagy egy alkalmazás rendelt felhasználók. Ezek a forgatókönyvek további információkért lásd: [felügyelheti a felhasználók hozzáférését](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md) és [vendég-hozzáférés kezelése](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md). 
+Hozzáférés hozzárendelések vált "elavult", ha a felhasználók többé nem kell hozzáférést. Elavult hozzáférés hozzárendelések társított kockázatok csökkentése érdekében a rendszergazdák segítségével Azure Active Directory (Azure AD) hozzon létre egy áttekintése csoport tagjainak vagy egy alkalmazás rendelt felhasználók. Ismétlődő hozzáférés értékelést létrehozása, akkor a funkciók. Ha rendszeresen tekintse át a felhasználókat, akik hozzáférést egy alkalmazáshoz vagy a csoport tagjai kell, megadhat ezen ellenőrzések gyakoriságát. Ezek a forgatókönyvek további információkért lásd: [felügyelheti a felhasználók hozzáférését](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md) és [vendég-hozzáférés kezelése](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md). 
 
-## <a name="create-an-access-review"></a>Hozzon létre egy áttekintése
+## <a name="create-an-access-review"></a>Hozzáférési felülvizsgálat létrehozása
 
 1. Globális rendszergazdaként, navigáljon a [hozzáférés ellenőrzi, hogy lap](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), és válassza ki **programok**.
 
@@ -30,15 +30,31 @@ Hozzáférés hozzárendelések vált "elavult", ha a felhasználók többé nem
 
 3. Válassza ki a programból **vezérlők**, majd válassza ki **Hozzáadás** vezérlő hozzáadása.
 
-4. Nevezze el minden áttekintése. Minden egyes felülvizsgálati szükség esetén adjon meg leírást. A többi felhasználó neve megjelenik.
+4. Neve a áttekintése. A felülvizsgálati szükség esetén adjon meg leírást. A nevet és leírást a felülvizsgáló jelennek meg.
 
-5. A kezdő és záró dátumának beállítása. Alapértelmezés szerint egy hozzáférési tekintse át a ugyanarra a napra esnek létrehozták, és karakterlánccal végződik-e havi elindul. Módosíthatja a kezdő és záró dátumát, az elérhető legyen, ellenőrizze start legutóbbi és a jövőben azonban hány napig szeretné.
+5. Állítsa be a kezdő dátum. Alapértelmezés szerint egy áttekintése többször fordul, létrejön egy időben elindul, és ezzel véget ér, egy hónap. Módosíthatja a kezdő és záró dátumát, az elérhető legyen, ellenőrizze start legutóbbi és a jövőben azonban hány napig szeretné.
 
-6. Hozzáférés értékelést lehet egy csoport tagjai számára, vagy a felhasználók számára egy alkalmazás lettek társítva. További hatókörét megadhatja a hozzáférés csak tekintse át a tekintse át a Vendég számára tagok (vagy az alkalmazáshoz hozzárendelt), ahelyett, hogy minden olyan felhasználó, akik tagjai áttekintése vagy rendelkező felhasználók hozzáférni az alkalmazáshoz.
+6. A hozzáférés felülvizsgálati ismétlődő, gyakoriságának módosítása egy alkalommal a heti, havi, negyedéves vagy évente, és használja, a csúszka vagy szöveges mezőben adja meg, hány napig minden át kell tekinteni az ismétlődő adatsorozat fog runbe nyissa meg a bemeneti a véleményezők. Például Tnem maximális időtartama a beállíthatja a havi áttekintése 27 nap, hogy kerülje az átfedésben lévő értékelést. 
 
-7. Válasszon egy vagy több személyeket, és tekintse át a hatókör összes felhasználóját. Vagy tekintse át a saját hozzáférésüket a tagot is kiválaszthatja. Ha az erőforrás egy csoport, kérje meg a csoportházirend-tulajdonosok áttekintéséhez. Is megkövetelheti, hogy felülvizsgáló OK adnia, amikor azok hagyja jóvá a hozzáférés.
+7.  Az ismétlődő hozzáférés felülvizsgálati adatsorozat 3 módon fejezheti: értékelést határozatlan ideig elindításához folyamatosan fut, vagy egy adott dátumig vagy eseményeket meghatározott számú után befejeződött. Ön vagy egy másik globális rendszergazda leállításához az adatsorozat létrehozása után a dátum a beállítások módosítása, hogy az adott dátumon végződik.
 
-8. Végül válassza ki **Start**.
+8. Hozzáférés értékelést lehet egy csoport tagjai számára, vagy a felhasználók számára egy alkalmazás lettek társítva. További hatókörét megadhatja a hozzáférés csak tekintse át a tekintse át a Vendég számára tagok (vagy az alkalmazáshoz hozzárendelt), ahelyett, hogy minden olyan felhasználó, akik tagjai áttekintése vagy rendelkező felhasználók hozzáférni az alkalmazáshoz.
+
+9. Válasszon egy vagy több személyeket, és tekintse át a hatókör összes felhasználóját. Vagy tekintse át a saját hozzáférésüket a tagot is kiválaszthatja. Ha az erőforrás egy csoport, kérje meg a csoportházirend-tulajdonosok áttekintéséhez. Is megkövetelheti, hogy felülvizsgáló OK adnia, amikor azok hagyja jóvá a hozzáférés.
+
+10. Ha manuálisan alkalmazni az eredményeket, a felülvizsgálati befejezésekor, kattintson **Start**.  Ellenkező esetben a következő szakaszban konfigurálását ismerteti a felülvizsgálati automatikus alkalmazása.
+
+### <a name="configuring-an-access-review-with-auto-apply"></a>Egy áttekintése auto-apply konfigurálása
+
+1.  Bontsa ki a menü, végrehajtási beállítások esetén andsettings és automatikus engedélyezése alkalmazni eredmények erőforrás. 
+
+2.  Azokban az esetekben, ahol felhasználók nem elvégezték a véleményező a felülvizsgálati időtartamon belül, akkor a áttekintése végrehajtása a elutasítása/jóváhagyása a felhasználó is folyamatos hozzáférést, a rendszer ajánlást (Ha engedélyezve van), vagy hagyja változatlanul hozzáférését, vagy távolítsa el a a hozzáférés. Ez hatással lesz a nem lett tekintse át a többi felhasználó által manuálisan – felhasználók esetén a végső felülvizsgáló döntési megtagadás, a felhasználó hozzáférése törlődni fog.
+
+3.  Ahhoz, hogy az a lehetőség ajánlásokat kell felülvizsgálók nem válaszol, megjelenítése a javaslatok a Speciális beállításoknál engedélyezni kell.
+ 
+4.  Végezetül kattintson **Start**.
+
+Végrehajtási beállítások esetén a megadott beállítások szerint, automatikus-alkalmazni fogja a felülvizsgálati záró dátuma, vagy ha azt manuálisan állítsa le a felülvizsgálati után hajtható végre. A felülvizsgálat állapotának köztes állapota, például az alkalmazása állapotúról befejezve, és végül állapotba történt. Tekintse meg a letiltott felhasználók, ha vannak ilyenek, távolít el a csoport tagságát vagy alkalmazás hozzárendelés néhány perc múlva kell látnia.
 
 
 ## <a name="manage-the-access-review"></a>Kezelheti a áttekintése
@@ -47,13 +63,16 @@ Alapértelmezés szerint az Azure AD küld egy e-mailt a felülvizsgálók rövi
 
 Ha a felülvizsgálók némelyike Vendégek, Vendégek értesítést kap e-mailben csak akkor, ha már korábban a meghívó elfogadásának.
 
+Az access ellenőrzések sorozatának kezeléséhez keresse meg a áttekintése a **vezérlők**, és a rendszer jövőbeli keresése az ütemezett értékelést, és szerkesztése a záró dátum, illetve hozzáadása véleményezők megfelelően. 
 
 A végrehajtás, a többi felhasználó végezze el az Azure AD-irányítópulton a áttekintette nyomon a **ellenőrzi, hogy hozzáférési** szakasz. Nincs hozzáférési jogosultsága, módosulnak, amíg a címtár [a felülvizsgálati befejeződött](active-directory-azure-ad-controls-complete-access-review.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy áttekintése indításakor az Azure AD nekik hozzáférést kérő e-mailt küld automatikusan felülvizsgálók. Ha a felhasználó nem kap egy e-mailt, elküldhetjük a utasításokkal szolgál [tekintse át a hozzáférési](active-directory-azure-ad-controls-perform-access-review.md). 
 
-Miután a hozzáférés felülvizsgálati időszak keresztül, vagy a rendszergazda leállítja a áttekintése, kövesse a [végrehajtani egy áttekintése](active-directory-azure-ad-controls-complete-access-review.md) megtekintéséhez és alkalmazásához az eredményeket.
+Ha ez egy egyszeri tekintse át, majd miután a hozzáférés felülvizsgálati időszak keresztül, vagy a rendszergazda leállítja a áttekintése, kövesse a lépéseket a [végrehajtani egy áttekintése](active-directory-azure-ad-controls-complete-access-review.md) megtekintéséhez és alkalmazásához az eredményeket.  
+
+Ha ez tekintse át azokat, majd lépjen **tekintse át az előzmények** hozzáférés felülvizsgálati adatsorozat lapján jelölje be a befejezett áttekintése.  Közelgő felülvizsgálat alatt helyezkednek el **felülvizsgálati ütemezett**, ahol meg az időtartam, szerkesztése és hozzáadhat és eltávolíthat egyéni felülvizsgálati felülvizsgálók.
 
 

@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions Twilio-kötés"
-description: "Az Azure Functions Twilio-kötések használatának megismerése."
+title: Az Azure Functions Twilio-kötés
+description: Az Azure Functions Twilio-kötések használatának megismerése.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff31f8b265452b6864e36323e770f808f87de019
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 30a47fb597b5739e9f947caa9b72238631c780fe
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Az Azure Functions Twilio-kötés
 
@@ -33,6 +33,8 @@ Ez a cikk azt ismerteti, hogyan a szöveges üzenetek küldéséhez a [Twilio](h
 A Twilio-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub-tárházban.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="example"></a>Példa
 
@@ -227,13 +229,13 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa**|| meg kell `twilioSms`.|
+|**type**|| meg kell `twilioSms`.|
 |**direction**|| meg kell `out`.|
 |**name**|| A Twilio SMS szöveges üzenetek függvény kódban használt változó neve. |
 |**accountSid**|**AccountSid**| Ez az érték, amely tárolja a Twilio-fiók Sid alkalmazásbeállítás neve értékre kell állítani.|
 |**authToken**|**AuthToken**| Ez az érték, amely tárolja a Twilio-hitelesítési jogkivonat alkalmazásbeállítás neve értékre kell állítani.|
 |**A**|**Címzett**| Ez az érték a telefonszámot, amelyet az SMS szöveg küldött értéke.|
-|**from**|**A**| Ez az érték értéke a telefonszámot, amelyet az SMS szöveg küldi.|
+|**A**|**A**| Ez az érték értéke a telefonszámot, amelyet az SMS szöveg küldi.|
 |**Törzs**|**Törzs**| Ez az érték használatával lehet SMS üzenetet a merevlemez code, ha nincs szüksége a függvény a kódban dinamikusan beállítása. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/18
+ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 442bfa7081865b2549c07a9436296ba2385a0b66
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e25bd3e5c47667a711c53711f9823fb231dbcd86
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panel?
 
@@ -86,6 +86,10 @@ Jelentkezzen be a jelszó-alapú egyszeri bejelentkezést, a bővítmény kell h
 > [!NOTE]
 > Csak a peremhálózati, Chrome és Firefox további funkciók érhetők el.
 >
+A bővítmény letöltheti közvetlenül a következő helyekről:
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Peremhálózati](https://go.microsoft.com/fwlink/?linkid=845176)
+- [A Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Használata saját alkalmazások URL-címe eltérő `https://myapps.microsoft.com`, az alapértelmezett URL-cím konfigurálása a következő tevékenységek végrehajtásával:
 1. Miközben az *nem* jelentkezve a bővítményt, kattintson a jobb gombbal bővítmény.
@@ -93,6 +97,12 @@ Használata saját alkalmazások URL-címe eltérő `https://myapps.microsoft.co
 3. Válassza ki az alapértelmezett URL-cím.
 4. Válassza ki a bővítmény ikonra.
 5. Válassza ki **jelentkezzen be a kezdéshez**.
+
+Miközben távoli bővítményének használatával, a belső vállalati URL-címeket használnak, tegye a következőket:
+1. [Proxy konfigurálása](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) a tenant.
+2. [Az alkalmazás közzététele](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) és -proxyn keresztül történő URL-címet.
+3. A bővítmény telepítése, és jelentkezzen be azt a jel kiválasztásával a kezdéshez.
+4. Most már megkeresheti a belső vállalati URL-cím távoli közben is.
 
 ## <a name="mobile-app-support"></a>Mobilalkalmazás-támogatás
 

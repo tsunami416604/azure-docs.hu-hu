@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 8526918630189824e26b95df7f0560c96392e55d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -154,7 +154,7 @@ Ha a szinkronizálás nem sikerül, a kiszolgálón:
     2. Győződjön meg arról, hogy az Azure fájl szinkronizálási szolgáltatás fut-e a kiszolgálón. Ehhez nyissa meg a szolgáltatások beépülő MMC-modulban, és ellenőrizze, hogy fut-e a tárolási szinkronizálási ügynök szolgáltatás (FileSyncSvc).
 
 <a id="replica-not-ready"></a>**Szinkronizálás sikertelen, hiba: "0x80c8300f - a replika nem áll készen a szükséges művelet"**  
-A probléma várható, ha egy felhő-végpont létrehozása és az Azure fájlmegosztások használja, amely adatokat tartalmaz. A módosítás észlelési feladat befejezése után (akár 24 órát vehet igénybe) Azure fájlmegosztás futó Szinkronizáló kell kezdődnie, megfelelően működik-e.
+A probléma várható, ha egy felhő-végpont létrehozása és az Azure fájlmegosztások használja, amely adatokat tartalmaz. A módosítás észlelése a változásokat a Azure fájlmegosztás vizsgálatok esetén 24 óránként van ütemezve.  Az idő befejezéséhez az a névtér a Azure fájlmegosztás méretétől függ.  Ez a hiba kell eltűnik befejezése után.
 
 
     > [!NOTE]

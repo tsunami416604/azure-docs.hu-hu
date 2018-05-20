@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>A HDInsight-Windows-alapú fürtök parancsfájlművelet-parancsfájlok fejlesztése
 A HDInsight parancsfájlművelet parancsfájlok írásának ismertetése. Parancsfájlművelet-parancsfájlok használatával kapcsolatos információkért lásd: [testreszabása HDInsight-fürtök használata parancsfájlművelet](hdinsight-hadoop-customize-cluster.md). A Linux-alapú HDInsight-fürtök írt ugyanazon cikk, lásd: [parancsfájlművelet fejlesztése parancsfájlok a HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -103,7 +103,7 @@ HDInsight több parancsfájlok további összetevők telepíthetők a HDInsight-
 | Name (Név) | Szkript |
 | --- | --- |
 | **Spark telepítése** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. Lásd: [telepítése és használata a HDInsight Spark-fürtök][hdinsight-install-spark]. |
-| **R telepítéséhez** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Lásd: [telepítése és használata R HDInsight-fürtök][hdinsight-r-scripts]. |
+| **R telepítéséhez** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. Lásd: [telepítése és használata R HDInsight-fürtök] [a hdinsight-r-parancsfájl]. |
 | **Solr telepítése** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. Lásd: [telepítése és használata Solr a HDInsight-fürtök](hdinsight-hadoop-solr-install.md). |
 | - **Giraph telepítése** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Lásd: [telepítése és használata Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
 
@@ -300,14 +300,12 @@ Abban az esetben, ha végrehajtási hiba történik, a kimeneti leíró azt is e
 ## <a name="see-also"></a>Lásd még
 * [Parancsfájlművelet HDInsight-fürtök testreszabása][hdinsight-cluster-customize]
 * [Telepítse, és válassza a Spark on HDInsight-fürtök][hdinsight-install-spark]
-* [Telepítheti és használhatja a HDInsight-fürtök R][hdinsight-r-scripts]
 * [Telepítheti és használhatja a HDInsight-fürtök Solr](hdinsight-hadoop-solr-install.md).
 * [Telepítheti és használhatja a HDInsight-fürtök Giraph](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-r-scripts]: hdinsight-hadoop-r-scripts.md
 [powershell-install-configure]: install-configure-powershell.md
 
 <!--Reference links in article-->

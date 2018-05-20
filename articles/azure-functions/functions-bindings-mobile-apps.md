@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions Mobile Apps kötései"
-description: "Azure Mobile Apps kötések az Azure Functions használatának megismerése."
+title: Az Azure Functions Mobile Apps kötései
+description: Azure Mobile Apps kötések az Azure Functions használatának megismerése.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: c5fb7bdd88691c9aeab6b348507901c34502b28b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1129bd36b1f1f413e5fd40da16a48f5aff1078bc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Az Azure Functions Mobile Apps kötései 
 
@@ -34,6 +34,8 @@ A Mobile Apps kötések lehetővé teszik, hogy olvassa és frissítse a mobilal
 A Mobile Apps kötések találhatók a [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) GitHub-tárházban.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="input"></a>Input (Bemenet)
 
@@ -144,12 +146,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **Típusa**|| "MobileTable" értékre kell állítani|
+| **type**|| "MobileTable" értékre kell állítani|
 | **direction**||"A" értékre kell állítani|
 | **name**|| Függvényaláíráshoz a bemeneti paraméter neve.|
-|**Táblanév** |**TableName**|A mobilalkalmazás adatok tábla neve|
+|**Táblanév** |**Táblanév**|A mobilalkalmazás adatok tábla neve|
 | **id**| **Azonosító** | A beolvasandó bejegyzés azonosítója. Lehetnek statikusak vagy az eseményindító, amely hívja meg a függvény alapján. Például, ha használja a várólista eseményindító a függvény, majd `"id": "{queueTrigger}"` az üzenetsorban lévő üzenetet karakterlánc értékét használja a rekord azonosító beolvasása.|
-|**connection**|**Kapcsolat**|A mobilalkalmazás URL-címet tartalmazó alkalmazásbeállítás neve. A funkció URL-címet a mobilalkalmazás elleni szükséges REST-műveletek összeállításához. Hozzon létre egy Alkalmazásbeállítás a függvény alkalmazásban, amelyet a mobilalkalmazás URL-címet tartalmaz, majd adja meg az Alkalmazásbeállítás a nevét a `connection` tulajdonságot a bemeneti kötése. Az URL-cím a következőképpen néz `http://<appname>.azurewebsites.net`.
+|**Kapcsolat**|**Kapcsolat**|A mobilalkalmazás URL-címet tartalmazó alkalmazásbeállítás neve. A funkció URL-címet a mobilalkalmazás elleni szükséges REST-műveletek összeállításához. Hozzon létre egy Alkalmazásbeállítás a függvény alkalmazásban, amelyet a mobilalkalmazás URL-címet tartalmaz, majd adja meg az Alkalmazásbeállítás a nevét a `connection` tulajdonságot a bemeneti kötése. Az URL-cím a következőképpen néz `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|A mobilalkalmazás API-kulcs alkalmazásbeállítás neve. Adja meg az API-kulcs Ha Ön [valósítja meg az API-kulcs a Node.js mobilalkalmazásban](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), vagy [valósítja meg az API-kulcs a .NET mobilalkalmazásban](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Adja meg a kulcsot, hozzon létre egy Alkalmazásbeállítás az API-kulcsot tartalmazó függvény alkalmazásban, és vegye fel a `apiKey` tulajdonságot a bemeneti kötése az Alkalmazásbeállítás nevét. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -303,11 +305,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **Típusa**|| "MobileTable" értékre kell állítani|
+| **type**|| "MobileTable" értékre kell állítani|
 | **direction**||"Ki" értékre kell állítani|
 | **name**|| A kimeneti paraméter függvényaláíráshoz a neve.|
-|**Táblanév** |**TableName**|A mobilalkalmazás adatok tábla neve|
-|**connection**|**MobileAppUriSetting**|A mobilalkalmazás URL-címet tartalmazó alkalmazásbeállítás neve. A funkció URL-címet a mobilalkalmazás elleni szükséges REST-műveletek összeállításához. Hozzon létre egy Alkalmazásbeállítás a függvény alkalmazásban, amelyet a mobilalkalmazás URL-címet tartalmaz, majd adja meg az Alkalmazásbeállítás a nevét a `connection` tulajdonságot a bemeneti kötése. Az URL-cím a következőképpen néz `http://<appname>.azurewebsites.net`.
+|**Táblanév** |**Táblanév**|A mobilalkalmazás adatok tábla neve|
+|**Kapcsolat**|**MobileAppUriSetting**|A mobilalkalmazás URL-címet tartalmazó alkalmazásbeállítás neve. A funkció URL-címet a mobilalkalmazás elleni szükséges REST-műveletek összeállításához. Hozzon létre egy Alkalmazásbeállítás a függvény alkalmazásban, amelyet a mobilalkalmazás URL-címet tartalmaz, majd adja meg az Alkalmazásbeállítás a nevét a `connection` tulajdonságot a bemeneti kötése. Az URL-cím a következőképpen néz `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|A mobilalkalmazás API-kulcs alkalmazásbeállítás neve. Adja meg az API-kulcs Ha Ön [valósít meg API-kulcs a Node.js mobile Apps-háttéralkalmazás](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), vagy [valósít meg API-kulcs a .NET-mobil háttéralkalmazás](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Adja meg a kulcsot, hozzon létre egy Alkalmazásbeállítás az API-kulcsot tartalmazó függvény alkalmazásban, és vegye fel a `apiKey` tulajdonságot a bemeneti kötése az Alkalmazásbeállítás nevét. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

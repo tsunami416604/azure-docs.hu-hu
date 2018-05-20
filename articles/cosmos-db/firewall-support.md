@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: 4d5743703f3a1d98b720bd92a30c91549bbf89c0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 21274a71042c5acf38711d29a5062e9f68b6a6a0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Az Azure Cosmos DB-tűzfaltámogatás
 Egy Azure Cosmos-adatbázis adatbázis-fiókban tárolt adatok védelme érdekében Azure Cosmos DB nyújtott támogatás a titkos kulcs alapú [engedélyezési modellt](https://msdn.microsoft.com/library/azure/dn783368.aspx) , amely erős kivonat-alapú üzenethitelesítő kódot (HMAC) használja. Most a titkos alapú engedélyezési modell mellett Azure Cosmos DB bejövő tűzfaltámogatás IP-alapú hozzáférés-vezérléssel vezérelt házirend támogatja. Ebben a modellben a hagyományos adatbázis rendszer tűzfalszabályok hasonló, és egy további Azure Cosmos DB adatbázis fiókhoz biztonsági szintet. Ez a modell segítségével mostantól beállíthatja egy Azure Cosmos DB adatbázisfiók csak egy jóváhagyott gépek halmazát jelenti érhetők el, illetve a felhőalapú szolgáltatások. A jóváhagyott halmazok gépek és szolgáltatások Azure Cosmos DB erőforrásokhoz való hozzáférés továbbra is szükség van egy érvényes hitelesítési jogkivonatot a hívó.
 
+> [!NOTE]
+> Tűzfaltámogatás jelenleg Azure Cosmos DB SQL API-t és a Mongo API fiókokhoz érhető el. Tűzfalak konfigurálása más API-k és szuverén felhők, például a Németországi Azure vagy az Azure Government lehessen hamarosan elérhető lesz. Ha azt tervezi, hogy konfigurálja a szolgáltatási végpont ACL Azure Cosmos DB-fiókja, amely rendelkezik egy meglévő IP-tűzfal konfigurálva, vegye figyelembe a tűzfal konfigurációját, távolítsa el az IP-tűzfal, és válassza ki a szolgáltatási végpont ACL. Miután konfigurálta a szolgáltatási végpont, engedélyezheti újra az IP-tűzfal szükség esetén.
+
 ## <a name="ip-access-control-overview"></a>IP hozzáférés-vezérlés áttekintése
-Alapértelmezés szerint egy Azure Cosmos DB adatbázisfiók érhető el nyilvános internetről mindaddig, amíg a kérelem egy érvényes engedélyezési jogkivonat együtt. IP-csoportházirend-alapú hozzáférés-vezérlés konfigurálása, a felhasználónak meg kell adnia az IP-címek vagy IP-címtartományt a CIDR formátumban része, mint az engedélyezett bővítmények listájához ügyfél IP-címek egy adott adatbázis fiókjához tartozó készletét. Ha ez a konfiguráció alkalmazása esetén a kiszolgáló blokkolja a kívül az engedélyezett bővítmények listájához készülékekről származó összes kérelem.  A kapcsolat feldolgozása a IP-alapú hozzáférés-vezérlés folyamata a következő ábra szemlélteti:
+Az Azure Cosmos DB-adatbázisfiókok alapértelmezés szerint elérhetők a nyilvános internetről, ha a kérelemhez érvényes engedélyezési jogkivonat tartozik. Az IP-szabályzatalapú hozzáférés-vezérlés beállításához a felhasználónak CIDR formátumban meg kell adnia azokat az IP-címkészletet vagy IP-címtartományokat amelyeket fel kíván venni az adott adatbázisfiók ügyfél IP-címeinek engedélyezési listájára. A konfiguráció alkalmazása után a kiszolgáló blokkol minden olyan kérelmet, amely nem az engedélyezési listán szereplő gépekről származik.  A kapcsolat feldolgozása a IP-alapú hozzáférés-vezérlés folyamata a következő ábra szemlélteti:
 
 ![IP-alapú hozzáférés-vezérlés folyamata bemutató ábra](./media/firewall-support/firewall-support-flow.png)
 

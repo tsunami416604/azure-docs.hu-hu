@@ -5,7 +5,7 @@ keywords: hadoop verziók, a hadoop-ökoszisztémával összetevők, a hadoop-ö
 services: hdinsight
 editor: cgronlun
 manager: asadk
-author: bprakash
+author: kkampf
 tags: azure-portal
 documentationcenter: ''
 ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
@@ -14,12 +14,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
-ms.author: bprakash
-ms.openlocfilehash: ebfbc53b751bc6669e2c4aee16deb09b463b0661
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: kakampf
+ms.openlocfilehash: 3d98ed2be7a040ad889d1d504f303569c265360b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a hdinsight eszközzel verziók?
 
@@ -82,7 +82,7 @@ A következő táblázat használható az Azure portál, valamint a más közpon
 | HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Kivezetési dátum | Magas rendelkezésre állás |  Az Azure portálon rendelkezésre állása | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.6. |2.6 HDP |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
-| HDInsight 3.5 |2.5 HDP |Ubuntu 16.0.4 LTS |2016. Szeptembertől 30. |2017. szeptember 5. |2018. május 31-ig. |Igen |Igen |
+| HDInsight 3.5 |2.5 HDP |Ubuntu 16.0.4 LTS |2016. Szeptembertől 30. |2017. szeptember 5. |2018. június 28. |Igen |Igen |
 | HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31-ig. |Igen |Nem |
 
 > [!NOTE]

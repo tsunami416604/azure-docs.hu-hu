@@ -1,24 +1,24 @@
 ---
-title: "A Service Fabric-fürt biztonsági: ügyfél szerepkörök |} Microsoft Docs"
-description: "Ez a cikk ismerteti a két ügyfél szerepkörök és a szerepkörök számára biztosított engedélyeit."
+title: 'A Service Fabric-fürt biztonsági: ügyfél szerepkörök |} Microsoft Docs'
+description: Ez a cikk ismerteti a két ügyfél szerepkörök és a szerepkörök számára biztosított engedélyeit.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: coreysa
-editor: 
+editor: ''
 ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: e71275d437aabdd5699f0d462fddc5a190ff19db
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 39b77813e3494e809b92738924544e196d89a166
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>A Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlés
 Azure Service Fabric két különböző hozzáférést vezérlő típusokat támogatja az ügyfelek csatlakoznak a Service Fabric-fürt: rendszergazdai és felhasználói. Hozzáférés-vezérlés lehetővé teszi, hogy a fürt rendszergazdája a különböző csoportok számára, így a fürt biztonságosabb bizonyos fürtműveletekben való hozzáférés korlátozásához.  

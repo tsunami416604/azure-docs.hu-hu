@@ -1,24 +1,24 @@
 ---
-title: "Az alkalmazás-forgatókönyvek és kialakítása |} Microsoft Docs"
-description: "A Service Fabric felhőalkalmazásokhoz kategóriáinak áttekintése. Állapot nélküli és állapotalapú alkalmazások és szolgáltatások használó alkalmazás tervét, és ismerteti."
+title: Az alkalmazás-forgatókönyvek és kialakítása |} Microsoft Docs
+description: A Service Fabric felhőalkalmazásokhoz kategóriáinak áttekintése. Állapot nélküli és állapotalapú alkalmazások és szolgáltatások használó alkalmazás tervét, és ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 471ec6f45f4152fbac56242ef3ce906f8af00b54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0a9b24704a91d6a6893937b4ee03765fb05f092
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-scenarios"></a>A Service Fabric-alkalmazás-forgatókönyvek
 Az Azure Service Fabric biztosít a megbízható és rugalmas platform, amely lehetővé teszi, és számos üzleti alkalmazások és szolgáltatások futtatásához. Ezek az alkalmazások és mikroszolgáltatások létrehozására lehet állapot nélküli és állapotalapú, és erőforrás terhelésű hatékonyságának maximalizálása a virtuális gépek között. A Service Fabric egyedi architektúra lehetővé teszi a közel valós idejű adatelemzés, a memórián belüli számítási, a párhuzamos tranzakciókat és a esemény feldolgozását az alkalmazásokban. Könnyedén méretezhető az alkalmazások felfelé vagy lefelé (valóban bejövő vagy kimenő), a változó erőforrás követelményeitől függően.
@@ -50,7 +50,7 @@ Ha a mikroszolgáltatások álló alkalmazások létrehozásához, általában a
 ![Állapot nélküli szolgáltatást használó alkalmazások][Image2]
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Figyelésére [ügyfél esettanulmányok](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=qDJnf86yC_5206218965
 )

@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric entitások megtekintése összesített állapotát |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet lekérdezni, megtekintése és Azure Service Fabric entitások összesített állapotát, állapotlekérdezések és általános lekérdezések kiértékelése."
+title: Azure Service Fabric entitások megtekintése összesített állapotát |} Microsoft Docs
+description: Ismerteti, hogyan lehet lekérdezni, megtekintése és Azure Service Fabric entitások összesített állapotát, állapotlekérdezések és általános lekérdezések kiértékelése.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: e73da18ffe146d09b191f1ea5ad1772b36ad8947
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2e5d1045edbbc3c71cb0ccff34d2ba327a98a409
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="view-service-fabric-health-reports"></a>A Service Fabric rendszerállapot-jelentések megtekintése
 Az Azure Service Fabric vezet be a [állapotmodell](service-fabric-health-introduction.md) figyelés az állapotfigyelő entitások mely rendszerösszetevők és watchdogs a hajthatja végre helyi feltételek, amelyek jelentés. A [a health Store adatbázisban](service-fabric-health-introduction.md#health-store) összesíti az összes állapotadatok kifogástalan állapotú entitások megállapításához.
@@ -1033,7 +1033,7 @@ A lekérdezések **HealthState** a szervezetek a következők:
   * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
   * PowerShell: Get-ServiceFabricNode
 * Alkalmazáslista: a fürt (lapozható) az alkalmazások listáját adja vissza.
-  * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+  * Alkalmazásprogramozási felületek: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * PowerShell: Get-ServiceFabricApplication
 * Lista: egy alkalmazás (lapozható) a szolgáltatások listáját adja vissza.
   * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)

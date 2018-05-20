@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Service Fabric-javítás vezénylési alkalmazás |} Microsoft Docs"
-description: "Alkalmazás automatizálhatja az operációs rendszer a Service Fabric-fürt javítását."
+title: Az Azure Service Fabric-javítás vezénylési alkalmazás |} Microsoft Docs
+description: Alkalmazás automatizálhatja az operációs rendszer a Service Fabric-fürt javítását.
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d36fcac4cbbdf8127e60e23df4ff2d52e68b6689
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürt javítás
 
@@ -144,7 +144,7 @@ Alkalmazás sfpkg formátumban letölthető a [sfpkg hivatkozás](https://go.mic
 
 A javítás vezénylési alkalmazás viselkedése beállítható úgy, hogy az igényeinek. Az alapértelmezett érték felülírására történő alkalmazás paraméterében alkalmazás létrehozása vagy frissítése során. Alkalmazás paraméterek megadásával megadható `ApplicationParameter` számára a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
 
-|**Parameter**        |**Típus**                          | **Részletek**|
+|**A paraméter**        |**Típus**                          | **Részletek**|
 |:-|-|-|
 |MaxResultsToCache    |Hosszú                              | A Windows Update eredmények, amelyek gyorsítótárazza maximális száma. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma 20. <br> -A csomópont havonta történik frissítések száma: öt. <br> -Művelet eredmények száma 10 is lehet. <br> -Az elmúlt három hónap eredmények kell tárolni. |
 |TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a házirendet, amely a Windows-frissítések telepítése a Service Fabric-fürt csomópontjai között a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. A Windows Update telepítve egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update telepítve egy frissítési tartományt egyszerre. (A maximumot, a frissítési tartományokhoz tartozó összes számítógépen lépjen a Windows Update.)
@@ -224,7 +224,7 @@ A JSON mezőjének az alábbiakban található.
 
 Mező | Értékek | Részletek
 -- | -- | --
-OperationResult | 0 - sikeres<br> 1 – sikeres volt, a hibák<br> 2 – nem sikerült<br> 3 - megszakítva<br> 4 - megszakadt az időkorlát | Azt jelzi, hogy általános műveletet (jellemzően egy vagy több frissítés telepítését) eredményét.
+Operationresult adatokat a | 0 - sikeres<br> 1 – sikeres volt, a hibák<br> 2 – nem sikerült<br> 3 - megszakítva<br> 4 - megszakadt az időkorlát | Azt jelzi, hogy általános műveletet (jellemzően egy vagy több frissítés telepítését) eredményét.
 ResultCode | Ugyanaz, mint az operationresult adatokat a | Ez a mező egy egyedi frissítés telepítési művelet eredményét jelzi.
 OperationType | 1 - telepítés<br> 0 - keresés, és töltse le.| A csak művelettípus, amelyek akkor jelennek meg az eredmények alapértelmezés szerint egy telepítés.
 WindowsUpdateQuery | Alapértelmezett érték "IsInstalled = 0" |A Windows update frissítések kereséséhez használt lekérdezés. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)

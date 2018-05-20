@@ -15,11 +15,11 @@ ms.date: 05/11/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 85a9b3a4f1fc21cbb47d41a61661de38d6fc246d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 91f721f5508191c7530e57b6dd96cad3301542a7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök
 [Szerepköralapú hozzáférés-vezérlést (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és szolgáltatásnevekről számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések, amelyek az Ön Azure-ban erőforrásokhoz való hozzáférés szabályozása. A beépített szerepkörök nem módosíthatja, de létrehozhat saját [egyéni szerepkörök](custom-roles.md) a szervezet igényeinek megfelelően.
@@ -100,7 +100,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 | [A TRAFFIC Manager közreműködő](#traffic-manager-contributor) | Lehetővé teszi Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [Felhasználói hozzáférés adminisztrátora](#user-access-administrator) | Lehetővé teszi a Azure-erőforrásokhoz való felhasználói hozzáférés kezelését. |
 | [Virtuális gép rendszergazdai bejelentkezés](#virtual-machine-administrator-login) | – Az ezzel a szerepkörrel rendelkező felhasználók képesek bejelentkezni egy virtuális gépre a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival. |
-| [Virtuális gép közreműködő](#virtual-machine-contributor) | Lehetővé teszi a virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
+| [Virtuális gép közreműködő](#virtual-machine-contributor) | Lehetővé teszi virtuális gépek, de nem érhető el, és nem a virtuális hálózat vagy kapcsolódó tárfiók kezelését. |
 | [Virtuális gép felhasználói bejelentkezés](#virtual-machine-user-login) | Az ezzel a szerepkörrel rendelkező felhasználók képesek bejelentkezni egy virtuális gépre normál felhasználóként. |
 | [Webes terv közreműködő](#web-plan-contributor) | Lehetővé teszi a webes tarifacsomagok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Webhely közreműködő](#website-contributor) | Lehetővé teszi a webhelyek kezelését (a webes tarifacsomagokét azonban nem), az azokhoz való hozzáférés nélkül. |
@@ -111,7 +111,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi az összes funkció kezelését, beleértve az erőforrásokhoz való hozzáférést is. |
-> | **Id** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | **Azonosító** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **Műveletek** |  |
 > | * | Hozzon létre és kezelheti az erőforrásokat bármilyen típusú |
 
@@ -120,7 +120,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférést. |
-> | **Id** | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | **Azonosító** | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | **Műveletek** |  |
 > | * | Hozzon létre és kezelheti az erőforrásokat bármilyen típusú |
 > | **NotActions** |  |
@@ -133,7 +133,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi, hogy mindent megtekinthessen, de módosításokat nem hajthat végre. |
-> | **Id** | acdd72a7-3385-48EF-bd42-f606fba81ae7 |
+> | **Azonosító** | acdd72a7-3385-48EF-bd42-f606fba81ae7 |
 > | **Műveletek** |  |
 > | * / olvasása | Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 
@@ -142,7 +142,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | ACR-lemezképaláíró |
-> | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
+> | **Azonosító** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Műveletek** |  |
 > | Microsoft.ContainerRegistry/registries/*/read |  |
 > | Microsoft.ContainerRegistry/registries/*/write |  |
@@ -152,7 +152,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | ACR-karanténadatolvasó |
-> | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
+> | **Azonosító** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Műveletek** |  |
 > | Microsoft.ContainerRegistry/registries/*/read |  |
 
@@ -161,7 +161,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | ACR-karanténadatíró |
-> | **Id** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
+> | **Azonosító** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **Műveletek** |  |
 > | Microsoft.ContainerRegistry/registries/*/write |  |
 > | Microsoft.ContainerRegistry/registries/*/read |  |
@@ -171,7 +171,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Kezelheti a szolgáltatást és az API-kat |
-> | **Id** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
+> | **Azonosító** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Műveletek** |  |
 > | Microsoft.ApiManagement/service/* | Hozzon létre és API-kezelés szolgáltatás kezelése |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
@@ -186,7 +186,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Szolgáltatásokat kezelhet, de API-kat nem |
-> | **Id** | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
+> | **Azonosító** | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | **Műveletek** |  |
 > | Microsoft.ApiManagement/service/*/read | Olvasási API Management szolgáltatáspéldány |
 > | Microsoft.ApiManagement/service/backup/action | A biztonsági mentési API Management szolgáltatás a felhasználó a megadott tárolóhoz megadott tárfiók |
@@ -211,7 +211,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Írásvédett hozzáférés a szolgáltatáshoz és az API-khoz |
-> | **Id** | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | **Azonosító** | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | **Műveletek** |  |
 > | Microsoft.ApiManagement/service/*/read | Olvasási API Management szolgáltatáspéldány |
 > | Microsoft.ApiManagement/service/read | Olvassa el a metaadatokat az API Management szolgáltatáspéldány |
@@ -229,7 +229,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Kezelhet Application Insights-összetevőket |
-> | **Id** | ae349356-3a1b-4a5e-921d-050484c6347e |
+> | **Azonosító** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -245,7 +245,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Engedélyt ad a felhasználónak az Application Insights Snapshot Debugger szolgáltatásainak használatára |
-> | **Id** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | **Azonosító** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |
@@ -259,7 +259,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Feladatok létrehozása és kezelése Automation-runbookok használatával. |
-> | **Id** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
+> | **Azonosító** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Automation/automationAccounts/jobs/read | Egy Azure Automation-feladat beolvasása |
@@ -279,7 +279,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Az Automation-operátorok elindíthatnak, leállíthatnak, felfüggeszthetnek és folytathatnak feladatokat |
-> | **Id** | d3881f73-407a-4167-8283-e981cbba0404 |
+> | **Azonosító** | d3881f73-407a-4167-8283-e981cbba0404 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | Beolvassa a hibrid forgatókönyv-feldolgozó erőforrások |
@@ -308,7 +308,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Runbook-tulajdonságok olvasása – a runbook-feladatok létrehozásához. |
-> | **Id** | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
+> | **Azonosító** | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Automation/automationAccounts/runbooks/read | Egy Azure Automation-runbook beolvasása |
@@ -322,7 +322,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi az Azure Stack-regisztrációk kezelését. |
-> | **Id** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
+> | **Azonosító** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | **Műveletek** |  |
 > | Microsoft.AzureStack/registrations/products/listDetails/action | Lekéri a kiterjesztett egy Azure verem piactér megoldás részletei |
 > | Microsoft.AzureStack/registrations/products/read | Egy Azure verem piactér termék tulajdonságainak beolvasása |
@@ -333,7 +333,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a biztonsági mentési szolgáltatás felügyeletét, de nem hozhat létre tárolókat, és nem adhat hozzáférést másoknak |
-> | **Id** | 5e467623-bb1f-42f4-a55d-6e525e11384b |
+> | **Azonosító** | 5e467623-bb1f-42f4-a55d-6e525e11384b |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Network/virtualNetworks/read | A virtuális hálózat definíciójának beolvasása |
@@ -371,7 +371,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a biztonsági mentési szolgáltatások felügyeletét, kivéve a biztonsági másolatok eltávolítását, tárolók létrehozását és a másoknak való hozzáférés megadását |
-> | **Id** | 00c29273-979b-4161-815C-10b084fb9324 |
+> | **Azonosító** | 00c29273-979b-4161-815C-10b084fb9324 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Network/virtualNetworks/read | A virtuális hálózat definíciójának beolvasása |
@@ -427,7 +427,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Megtekintheti a biztonsági mentési szolgáltatásokat, de nem végezhet módosításokat |
-> | **Id** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
+> | **Azonosító** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | A művelet állapotának beolvasása |
@@ -465,7 +465,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Olvasási hozzáférést biztosít a számlázási adatokhoz |
-> | **Id** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
+> | **Azonosító** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Billing/*/read | Olvassa el a számlázási adatokat |
@@ -479,7 +479,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a BizTalk-szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | **Azonosító** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.BizTalkServices/BizTalk/* | Létrehozásához és kezeléséhez BizTalk szolgáltatások |
@@ -494,7 +494,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Kezelhet CDN-végpontokat, de nem tud hozzáférést adni más felhasználóknak. |
-> | **Id** | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
+> | **Azonosító** | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -510,7 +510,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Megtekintheti a CDN-végpontokat, de nem végezhet módosításokat. |
-> | **Id** | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
+> | **Azonosító** | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -526,7 +526,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Kezelheti a CDN-profilokat és azok végpontjait, de nem tud hozzáférést adni más felhasználóknak. |
-> | **Id** | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
+> | **Azonosító** | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -542,7 +542,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Megtekintheti a CDN-profilokat és azok végpontjait, de nem végezhet módosításokat. |
-> | **Id** | 8f96442b-4075-438f-813d-ad51ab4019af |
+> | **Azonosító** | 8f96442b-4075-438f-813d-ad51ab4019af |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -558,7 +558,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a hagyományos hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
+> | **Azonosító** | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.ClassicNetwork/* | Hozzon létre és klasszikus hálózatok kezelése |
@@ -573,7 +573,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a hagyományos tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
-> | **Id** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
+> | **Azonosító** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.ClassicStorage/storageAccounts/* | Storage-fiókok létrehozása és kezelése |
@@ -588,7 +588,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | A hagyományos tárfiók kulcsának operátorai jogosultak a hagyományos tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
-> | **Id** | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
+> | **Azonosító** | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
 > | **Műveletek** |  |
 > | Microsoft.ClassicStorage/storageAccounts/listkeys/action | Tárfiókok elérési kulcsainak listázása. |
 > | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Tárfiók meglévő elérési kulcsainak újragenerálása. |
@@ -598,7 +598,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a hagyományos virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
-> | **Id** | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
+> | **Azonosító** | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.ClassicCompute/domainNames/* | Hozzon létre, és a hagyományos számítási tartománynevek kezelése |
@@ -623,7 +623,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a ClearDB MySQL-adatbázisok kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | 9106cda0-8a86-4E81-b686-29a22c54effe |
+> | **Azonosító** | 9106cda0-8a86-4E81-b686-29a22c54effe |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -638,7 +638,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Azure Cosmos DB fiókadatokhoz el tud olvasni. Lásd: [DocumentDB-fiók közreműködői](#documentdb-account-contributor) Azure Cosmos DB kezelésére. |
-> | **Id** | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
+> | **Azonosító** | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepkörökhöz és szerepkör-hozzárendelések elolvashatják a minden felhasználó számára megadott engedélyek |
 > | Microsoft.DocumentDB/*/read | Olvassa el a gyűjtemény |
@@ -653,7 +653,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Létrehozhat és kezelhet adat-előállítókat, valamint azokban található gyermekerőforrásokat. |
-> | **Id** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
+> | **Azonosító** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.DataFactory/dataFactories/* | Létrehozása és kezelése az adat-előállítók és gyermekerőforrásait rajtuk. |
@@ -669,7 +669,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a saját feladatok elküldését, figyelését és kezelését, de nem tud létrehozni vagy törölni Data Lake Analytics-fiókokat. |
-> | **Id** | 47b7735b-770e-4598-a7da-8b91488b4c88 |
+> | **Azonosító** | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.BigAnalytics/accounts/* |  |
@@ -700,7 +700,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Törölheti analitikai adatok |
-> | **Id** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
+> | **Azonosító** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Műveletek** |  |
 > | Microsoft.Insights/components/*/read |  |
 > | Microsoft.Insights/components/purge/action |  |
@@ -712,7 +712,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi az Azure DevTest Labs virtuális gépeinek csatlakoztatását, indítását, újraindítását és leállítását. |
-> | **Id** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
+> | **Azonosító** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.Compute/availabilitySets/read | Egy adott rendelkezésre állási csoport tulajdonságainak beolvasása |
@@ -751,7 +751,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
-> | **Id** | befefa01-2a29-4197-83a8-272ff33ce314 |
+> | **Azonosító** | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -766,7 +766,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Felügyelheti az Azure Cosmos DB fiókjait. Azure Cosmos-adatbázis a DocumentDB nevén. |
-> | **Id** | 5bd9cd88-fe45-4216-938b-f97437e15450 |
+> | **Azonosító** | 5bd9cd88-fe45-4216-938b-f97437e15450 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.DocumentDb/databaseAccounts/* | Azure Cosmos DB fiókok létrehozása és kezelése |
@@ -781,7 +781,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
+> | **Azonosító** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -796,7 +796,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a kulcstartók kezelését, de ezekhez nem biztosít hozzáférést. |
-> | **Id** | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | **Azonosító** | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |
@@ -813,7 +813,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Felügyelt tesztkörnyezetek az Azure Lab-fiókokban való létrehozását, kezelését és törlését teszi lehetővé. |
-> | **Id** | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
+> | **Azonosító** | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.LabServices/labAccounts/*/read |  |
@@ -826,7 +826,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Napló Analytics közreműködői összes figyelési adatot olvashatja és szerkesztése a figyelési beállításokat. Figyelési beállításainak szerkesztése magában foglalja a Virtuálisgép-bővítmény hozzáadása a virtuális gépek; tárfiókkulcsok tudják konfigurálni a naplók az Azure Storage; gyűjtemény olvasása létrehozásáról és konfigurálásáról az Automation-fiók; megoldásokkal; és az összes Azure-erőforrások konfigurálása az Azure diagnostics. |
-> | **Id** | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
+> | **Azonosító** | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | **Műveletek** |  |
 > | * / olvasása | Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 > | Microsoft.Automation/automationAccounts/* |  |
@@ -847,7 +847,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | A Log Analytics-olvasó megtekintheti az összes figyelési adatot, és kereshet azokban, valamint megtekintheti a figyelési beállításokat, beleértve az összes Azure-erőforrás Azure-beli diagnosztikájának konfigurációját is. |
-> | **Id** | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | **Azonosító** | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | **Műveletek** |  |
 > | * / olvasása | Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | A keresés új motor használatával. |
@@ -861,7 +861,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi logikai alkalmazások kezelését, de ezekhez nem biztosít hozzáférést. |
-> | **Id** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
+> | **Azonosító** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Tárfiókok elérési kulcsainak listázása. |
@@ -889,7 +889,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi logikai alkalmazások olvasását, engedélyezését és letiltását. |
-> | **Id** | 515c2055-d9d4-4321-B1B9-bd0c9a0f79fe |
+> | **Azonosító** | 515c2055-d9d4-4321-B1B9-bd0c9a0f79fe |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/*/read | Olvasási Insights riasztási szabályok |
@@ -913,7 +913,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | A felhasználóhoz hozzárendelt identitás létrehozása, olvasása, frissítése és törlése |
-> | **Id** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
+> | **Azonosító** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **Műveletek** |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/write |  |
@@ -929,7 +929,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | A felhasználóhoz hozzárendelt identitás olvasása és hozzárendelése |
-> | **Id** | f1a07417-d97a-45cb-824c-7a7467783830 |
+> | **Azonosító** | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Műveletek** |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action |  |
@@ -944,7 +944,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Összes figyelési adatot olvashatja és szerkesztheti a figyelési beállításokat. Lásd még: [Ismerkedés a szerepkörök, engedélyek és biztonsági Azure megfigyelővel](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
-> | **Id** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | **Azonosító** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | **Műveletek** |  |
 > | * / olvasása | Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 > | Microsoft.AlertsManagement/alerts/* |  |
@@ -974,7 +974,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Az összes figyelési adatokat (metrikákat, naplói, stb.) el tud olvasni. Lásd még: [Ismerkedés a szerepkörök, engedélyek és biztonsági Azure megfigyelővel](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
-> | **Id** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | **Azonosító** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | **Műveletek** |  |
 > | * / olvasása | Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Keresési lekérdezés végrehajtása |
@@ -985,7 +985,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
+> | **Azonosító** | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -1000,7 +1000,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | 5d28c62d-5b37-4476-8438-e587778df237 |
+> | **Azonosító** | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |
@@ -1015,7 +1015,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi, hogy mindent megtekinthetnek, de nem engedélyezi törlése, vagy hozzon létre egy tárfiókhoz vagy a benne lévő erőforrás. Olvasási és írási hozzáférést tárfiókkulcsok keresztül tárfiókokban tárolt adatokat is engedélyezi. |
-> | **Id** | c12c1c16-33a1-487b-954d-41c89c60f349 |
+> | **Azonosító** | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | **Műveletek** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
 > | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
@@ -1025,7 +1025,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
+> | **Azonosító** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.Cache/redis/* | Létrehozásához és kezeléséhez a Redis gyorsítótár |
@@ -1040,7 +1040,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
+> | **Azonosító** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -1055,7 +1055,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
+> | **Azonosító** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -1070,7 +1070,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | A csak a Security Center: is megtekintheti a biztonsági házirendek, biztonsági állapotok megtekintéséhez, szerkesztheti a biztonsági házirendek, a riasztások megtekintése és a javaslatok, hagyja figyelmen kívül a riasztások és javaslatok |
-> | **Id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | **Azonosító** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Authorization/policyAssignments/* | Hozzon létre és kezelheti a házirend-hozzárendelések |
@@ -1093,7 +1093,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Ez az örökölt szerepkör. Ehelyett használja a biztonsági rendszergazda |
-> | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | **Azonosító** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.ClassicCompute/*/read | Olvassa el a konfigurációs adatok klasszikus virtuális gépek |
@@ -1111,7 +1111,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | A csak a Security Center: javaslatokra és riasztásokra, biztonsági házirendeket, biztonsági állapotok megtekintéséhez, de nem módosíthatnak semmit nézet megtekintéséhez |
-> | **Id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | **Azonosító** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Műveletek** |  |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
 > | Microsoft.Resources/deployments/* | Hozzon létre és erőforrás-csoport központi telepítések felügyeletéhez szükséges |
@@ -1126,7 +1126,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a Site Recovery szolgáltatás felügyeletét, kivéve a tárolók létrehozását és a szerepkör-hozzárendelést |
-> | **Id** | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
+> | **Azonosító** | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -1161,7 +1161,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a feladatátvételt és a feladat-visszavételt, de nem biztosít egyéb Site Recovery-beli felügyeleti műveleteket |
-> | **Id** | 494ae006-db33-4328-BF46-533a6560a3ca |
+> | **Azonosító** | 494ae006-db33-4328-BF46-533a6560a3ca |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -1226,7 +1226,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a Site Recovery állapotának megtekintését, de nem biztosít egyéb felügyeleti műveleteket |
-> | **Id** | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
+> | **Azonosító** | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | A Lefoglalt bélyegző beolvasása egy belső művelet, melyet a szolgáltatás használ |
@@ -1265,7 +1265,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi SQL-adatbázisok, de nem való hozzáférés kezelését. Emellett a biztonsági házirendjét vagy a szülő SQL Server nem tudja kezelni. |
-> | **Id** | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
+> | **Azonosító** | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és riasztási szabályok kezelése |
@@ -1296,7 +1296,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok biztonsági házirendjeinek felügyeletére az azokhoz való hozzáférés nélkül. |
-> | **Id** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
+> | **Azonosító** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el a Microsoft engedélyezési |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |
@@ -1332,7 +1332,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok felügyeletére az azokhoz való hozzáférés nélkül. Az adatbázisok biztonsági házirendjeinek felügyeletét nem teszi lehetővé. |
-> | **Id** | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+> | **Azonosító** | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |
@@ -1366,7 +1366,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
-> | **Id** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
+> | **Azonosító** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el az összes engedélyezési |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |
@@ -1383,7 +1383,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | A tárfiók kulcsának operátorai jogosultak a tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
-> | **Id** | 81a9662b-bebf-436f-a333-f67b29880f12 |
+> | **Azonosító** | 81a9662b-bebf-436f-a333-f67b29880f12 |
 > | **Műveletek** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | A megadott tárfiók hozzáférési kulcsainak újragenerálása. |
@@ -1393,7 +1393,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Támogatási kérések létrehozását és kezelését teszi lehetővé |
-> | **Id** | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
+> | **Azonosító** | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
@@ -1404,7 +1404,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
-> | **Id** | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
+> | **Azonosító** | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |
@@ -1419,7 +1419,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a Azure-erőforrásokhoz való felhasználói hozzáférés kezelését. |
-> | **Id** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
+> | **Azonosító** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Műveletek** |  |
 > | * / olvasása | Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 > | Microsoft.Authorization/* | Engedélyezési kezelése |
@@ -1430,7 +1430,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | – Az ezzel a szerepkörrel rendelkező felhasználók képesek bejelentkezni egy virtuális gépre a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival. |
-> | **Id** | 1c0163c0-47E6-4577-8991-ea5c82e286e4 |
+> | **Azonosító** | 1c0163c0-47E6-4577-8991-ea5c82e286e4 |
 > | **Műveletek** |  |
 > | Microsoft.Network/publicIPAddresses/read | A nyilvános IP-cím definíciójának beolvasása |
 > | Microsoft.Network/virtualNetworks/read | A virtuális hálózat definíciójának beolvasása |
@@ -1442,8 +1442,8 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
-> | **Id** | 9980e02c-c2be-4D73-94e8-173b1dc7cf3c |
+> | **Leírás** | Lehetővé teszi virtuális gépek, de nem érhető el, és nem a virtuális hálózat vagy kapcsolódó tárfiók kezelését. |
+> | **Azonosító** | 9980e02c-c2be-4D73-94e8-173b1dc7cf3c |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Compute/availabilitySets/* | Hozzon létre és számítási rendelkezésre állási csoportok kezelése |
@@ -1488,7 +1488,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Az ezzel a szerepkörrel rendelkező felhasználók képesek bejelentkezni egy virtuális gépre normál felhasználóként. |
-> | **Id** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
+> | **Azonosító** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Műveletek** |  |
 > | Microsoft.Network/publicIPAddresses/read | A nyilvános IP-cím definíciójának beolvasása |
 > | Microsoft.Network/virtualNetworks/read | A virtuális hálózat definíciójának beolvasása |
@@ -1501,7 +1501,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a webes tarifacsomagok kezelését, az azokhoz való hozzáférés nélkül. |
-> | **Id** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | **Azonosító** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |
@@ -1516,7 +1516,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | | |
 > | --- | --- |
 > | **Leírás** | Lehetővé teszi a webhelyek kezelését (a webes tarifacsomagokét azonban nem), az azokhoz való hozzáférés nélkül. |
-> | **Id** | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | **Azonosító** | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási engedély |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és elemzések riasztási szabályok kezelése |

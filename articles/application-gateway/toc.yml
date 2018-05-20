@@ -7,17 +7,17 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Webes forgalom irányítása – Portal
+    - name: Webes forgalom kezelése – Portal
       href: quick-create-portal.md
-    - name: Webes forgalom irányítása – PowerShell
+    - name: Webes forgalom kezelése – PowerShell
       href: quick-create-powershell.md
-    - name: Webes forgalom irányítása – Azure CLI
+    - name: Webes forgalom kezelése – Azure CLI
       href: quick-create-cli.md
 - name: Oktatóanyagok
   items:
     - name: Webes forgalom kezelése
       href: tutorial-manage-web-traffic-cli.md
-    - name: Webes forgalom korlátozása
+    - name: Webalkalmazási tűzfal engedélyezése
       href: tutorial-restrict-web-traffic-cli.md
     - name: Védelem az SSL-lel
       href: tutorial-ssl-cli.md
@@ -35,16 +35,23 @@
       href: cli-samples.md
 - name: Alapelvek
   items:
+    - name: SSL leállítása
+      href: ssl-overview.md
+    - name: SSL-szabályzatok áttekintése
+      href: application-gateway-ssl-policy-overview.md
     - name: Web application firewall (Webalkalmazási tűzfal)
       href: waf-overview.md
     - name: URL-útválasztás
       href: url-route-overview.md
     - name: Több webhely üzemeltetése
       href: multiple-site-overview.md
-    - name: SSL leállítása
-      href: ssl-overview.md
-    - name: URL-cím átirányítása
+    - name: Átirányítási támogatás
       href: redirect-overview.md
+    - name: Több-bérlős támogatás
+    - name: Állapotfigyelés
+      href: application-gateway-probe-overview.md
+    - name: WebSocket támogatás
+      href: application-gateway-websocket.md
 - name: Útmutatók
   items:
     - name: Alkalmazásátjáró létrehozása
@@ -53,10 +60,20 @@
           href: create-vmss-template.md
         - name: Webalkalmazások – PowerShell
           href: create-web-app.md
-    - name: SSL leállításának engedélyezése – Portal
+        - name: Belső terheléselosztó konfigurálása
+          href: application-gateway-ilb.md
+    - name: SSL leállításának konfigurálása – Portal
       href: create-ssl-portal.md
     - name: Több webhely üzemeltetése – Portal
       href: create-multiple-sites-portal.md
+    - name: WAF-szabályok testreszabása
+      items:
+        - name: Azure Portal
+          href: application-gateway-customize-waf-rules-portal.md
+        - name: Azure PowerShell
+          href: application-gateway-customize-waf-rules-powershell.md
+        - name: Azure CLI
+          href: application-gateway-customize-waf-rules-cli.md
     - name: Külső forgalom átirányítása
       items:
         - name: Azure PowerShell
@@ -93,8 +110,24 @@
       href: tutorial-url-redirect-powershell.md
     - name: Zónaredundáns alkalmazásátjáró létrehozása
       href: create-zone-redundant.md
+    - name: Egyéni mintavételek
+      items:
+        - name: Portál
+          href: application-gateway-create-probe-portal.md
+        - name: Klasszikus PowerShell
+          href: application-gateway-create-probe-classic-ps.md
+        - name: Resource Manager PowerShell
+          href: application-gateway-create-probe-ps.md
+    - name: Hibaelhárítás
+      items:
+        - name: Hibás átjáróval kapcsolatos hibák (502) elhárítása
+          href: application-gateway-troubleshooting-502.md
+        - name: Diagnosztika
+          href: application-gateway-diagnostics.md
 - name: Referencia
   items:
+    - name: CRS-szabályok
+      href: application-gateway-crs-rulegroups-rules.md
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell

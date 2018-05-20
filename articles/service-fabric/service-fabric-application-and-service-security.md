@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: a84e42d3a0254c90bfad2d54eda1aa8e5e35650a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fa6d46186ad833b68e60c24f742d210b7845759a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-alkalmazás és szolgáltatás biztonsága
 Egy mikroszolgáltatások architektúra átvihetők [számos előnyt](service-fabric-overview-microservices.md). Biztonsága érdekében mikroszolgáltatások létrehozására, kezelésére azonban a kérdés és különböznek a hagyományos egységes alkalmazások biztonságának kezelése. 
@@ -95,7 +95,7 @@ A fordított proxy és a szolgáltatások közötti biztonságos kapcsolatot lé
 A Reliable Services alkalmazás-keretrendszer tartalmaz néhány előre elkészített kommunikációs verem és eszközöket, amelyek a biztonság növelése érdekében használhatja. Útmutató: biztonsági javítják a szolgáltatás távoli eljáráshívás használata (a [C#](service-fabric-reliable-services-secure-communication.md) vagy [Java](service-fabric-reliable-services-secure-communication-java.md)) vagy [WCF](service-fabric-reliable-services-secure-communication-wcf.md).
 
 ## <a name="encrypt-application-data-at-rest"></a>Alkalmazás inaktív adatok titkosítása
-Minden egyes [csomóponttípus](service-fabric-cluster-nodetypes.md) a Service Fabric-fürt az Azure-beli biztonsági egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Azure Resource Manager-sablonnal, csatolhat adatlemezek a skála megbízhatóságát, amelyek a Service Fabric-fürt alkotják.  Ha a szolgáltatások adatok mentése a mellékelt adatok lemezre, akkor [adatok lemezek titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) az alkalmazásadatok védelme érdekében.
+Minden egyes [csomóponttípus](service-fabric-cluster-nodetypes.md) a Service Fabric-fürt az Azure-beli biztonsági egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Egy Azure Resource Manager-sablonnal adatlemezeket csatlakoztathat a Service Fabric-fürtöt alkotó méretezési csoport(ok)hoz.  Ha a szolgáltatások adatok mentése a mellékelt adatok lemezre, akkor [adatok lemezek titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) az alkalmazásadatok védelme érdekében.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: f4b0758ed6f1a0d11aeb1061cac34f1e9084ef53
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b426fd253b436c71235f006cc41881f0c0c67703
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Kép elemzés kognitív szakértelem
 
@@ -39,9 +39,9 @@ A paraméterei a kis-és nagybetűket.
 
 ## <a name="skill-inputs"></a>Szakértelem bemenetek
 
-| Bemenetek     | Leírás |
-|--------------------|-------------|
-| url | A kép egyedi lokátort. Lehet, hogy egy webes URL-címet vagy a blob-tároló helyét.|
+| Bemeneti név      | Leírás                                          |
+|---------------|------------------------------------------------------|
+| Kép         | Összetett típus. Az Azure Blob indexelő által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mező, amikor ```imageAction``` értéke ```generateNormalizedImages```. Tekintse meg a [minta](#sample-output) további információt.|
 
 
 
@@ -62,8 +62,8 @@ A paraméterei a kis-és nagybetűket.
     "defaultLanguageCode": "en",
     "inputs": [
         {
-            "name": "url",
-            "source": "/document/metadata_storage_path"
+            "name": "image",
+            "source": "/document/normalized_images/*"
         }
     ],
     "outputs": [

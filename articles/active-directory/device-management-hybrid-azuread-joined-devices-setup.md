@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -52,7 +52,7 @@ A leírások olvashatóságának, ez a témakör a következő kifejezést haszn
 - A következő Windows-kezelés régebbi eszközöket támogatja:
     - Windows 8.1
     - Windows 7
-    - Windows Server 2012 R2
+    - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
 - A régebbi Windows-eszközök regisztrálását **van** keresztül zökkenőmentes egyszeri bejelentkezés nem összevont környezetekben támogatott [Azure Active Directory zökkenőmentes egyszeri bejelentkezést](https://aka.ms/hybrid/sso).
@@ -95,6 +95,7 @@ A szervezet tervezi, hogy zökkenőmentes SSO használata, ha a szervezeten bel�
 
 - Emellett a következő beállítást engedélyezni kell a felhasználó intranet zóna: "Beállítható a frissítések állapotsor parancsfájl használatával."
 
+Ha a szervezet használja a felügyelt (nem összevont) telepítése a helyszíni AD, és nem használja az AD FS összevonásához az Azure ad-vel, majd a Windows 10 csatlakoztatása az Azure AD hibrid támaszkodik a számítógép-objektumokat kell lennie az Azure AD sync'ed AD-ben. Győződjön meg arról, hogy bármely szervezeti egység (OU), amelyek tartalmazzák a számítógép-objektumok, csak az Azure AD-tartományhoz hibrid engedélyezve vannak-e az Azure AD Connect szinkronizálási konfigurációban szinkronizáláshoz.
 
 Ha a szervezet az interneten keresztül egy kimenő proxy hozzáférésre van szüksége, meg kell valósítani webes Proxy automatikus felderítését a lekérdezés (WPA) lehetővé teszik a Windows 10 számítógépek regisztrálása az Azure ad Szolgáltatásba.
 
@@ -186,6 +187,14 @@ Többerdős konfiguráció esetén a következő parancsfájlt kell használnia 
 
     $deSCP.CommitChanges()
 
+A fenti, parancsfájl
+
+- `$verifiedDomain = "contoso.com"` pedig ki kell cserélni az egyik az ellenőrzött tartomány nevét az Azure ad-ben. Meg kell vásárolnia a tartományt, mielőtt is használhatja.
+
+Ellenőrzött tartomány nevét kapcsolatos további tudnivalókért lásd: [egy egyéni tartománynév hozzáadása az Azure Active Directory](active-directory-domains-add-azure-portal.md).  
+A vállalat ellenőrzött tartományok listájának lekéréséhez használja a [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) parancsmag. 
+
+![Get-AzureADDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
 ## <a name="step-2-setup-issuance-of-claims"></a>2. lépés: A jogcímek kiállítási beállítása
 
@@ -329,6 +338,7 @@ A fenti, jogcímek
 
 
 Ellenőrzött tartomány nevét kapcsolatos további tudnivalókért lásd: [egy egyéni tartománynév hozzáadása az Azure Active Directory](active-directory-domains-add-azure-portal.md).  
+
 A vállalat ellenőrzött tartományok listájának lekéréséhez használja a [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) parancsmag. 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)

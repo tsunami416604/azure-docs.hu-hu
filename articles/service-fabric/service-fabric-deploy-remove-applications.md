@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Service Fabric-alkalmazás központi telepítése |} Microsoft Docs"
-description: "Hogyan telepítheti és távolíthat el alkalmazásokat a Service Fabric PowerShell-lel."
+title: Az Azure Service Fabric-alkalmazás központi telepítése |} Microsoft Docs
+description: Hogyan telepítheti és távolíthat el alkalmazásokat a Service Fabric PowerShell-lel.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: cd3c97bc95fb7ccfaa0dbf2d7ca76ae598a4b320
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
-ms.translationtype: MT
+ms.openlocfilehash: 55a8ad51712d673d4388fd2723fcf70d226828c5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Központi telepítése, és távolítsa el az alkalmazásokat a PowerShell használatával
 > [!div class="op_single_selector"]

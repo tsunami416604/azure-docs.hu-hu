@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és az Azure Data Factory funkciók
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -148,7 +148,7 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
 ## <a name="functions"></a>Functions  
  Kifejezések függvények hívása. Az alábbi szakaszok ismertetik a funkciók kifejezésben használható.  
 
-## <a name="string-functions"></a>Karakterlánc  
+## <a name="string-functions"></a>Karakterlánc-függvények  
  A következő funkciók csak karakterláncok vonatkoznak. Számos, a gyűjtemény a karakterláncokra is használható.  
   
 |Függvény neve|Leírás|  
@@ -181,7 +181,7 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
 |hajtsa végre a megfelelő|Visszaadja az első **száma** az átadott tömb vagy karakterlánc elemeit, például a függvény `[1, 2]`:  `take([1, 2, 3, 4], 2)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény<br /><br /> **Leírás**: kötelező. A gyűjtemény első érvénybe **száma** a következő helyről objektumokat.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: száma<br /><br /> **Leírás**: kötelező. A történő objektumok száma a **gyűjtemény**. Pozitív egész számnak kell lennie.|  
 |Kihagyása|A elemeket adja vissza, a tömb indextől kezdődő **száma**, például a függvény `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: gyűjtemény<br /><br /> **Leírás**: kötelező. Kihagyja az első gyűjtemény **száma** a következő helyről objektumokat.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: száma<br /><br /> **Leírás**: kötelező. Előre hozása távolítsa el az objektumok száma **gyűjtemény**. Pozitív egész számnak kell lennie.|  
   
-## <a name="logical-functions"></a>Logikai funkciók  
+## <a name="logical-functions"></a>Logikai függvények  
  Ezek a funkciók hasznos feltételek belül, bármilyen típusú logika kiértékeléséhez használható.  
   
 |Függvény neve|Leírás|  
@@ -196,14 +196,14 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
 |nem|Igaz értéket ad eredményül, ha a paraméter `false`. A logikai mindkét argumentumot kell. A következő értéket ad vissza `true`:  `not(contains('200 Success','Fail'))`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: logikai<br /><br /> **Leírás**: IGAZ értéket ad vissza, ha a paraméter `false`. A logikai mindkét argumentumot kell. A következő értéket ad vissza `true`:  `not(contains('200 Success','Fail'))`|  
 |Ha|Ha a megadott kifejezést kapott alapján egy megadott értéket adja vissza `true` vagy `false`.  Például a következő értéket ad vissza `"yes"`: `if(equals(1, 1), 'yes', 'no')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: kifejezés<br /><br /> **Leírás**: kötelező. Logikai érték, amely meghatározza, melyik értéket adja vissza a kifejezést.<br /><br /> **Számú paraméter**: 2. régiója<br /><br /> **Név**: igaz<br /><br /> **Leírás**: kötelező. A visszatérési érték, ha a kifejezés `true`.<br /><br /> **Számú paraméter**: 3<br /><br /> **Név**: hamis<br /><br /> **Leírás**: kötelező. A visszatérési érték, ha a kifejezés `false`.|  
   
-## <a name="conversion-functions"></a>Átalakítás funkciók  
+## <a name="conversion-functions"></a>Konverziós függvények  
  Ezek a függvények minden nyelven natív típusai közötti átváltásra használhatók:  
   
 -   karakterlánc  
   
 -   egész szám  
   
--   Lebegőpontos  
+-   lebegőpontos  
   
 -   logikai  
   
@@ -215,8 +215,8 @@ A következő példában a feldolgozási folyamat veszi **inputPath** és **outp
 |-------------------|-----------------|  
 |int|A paraméter átalakítása egy egész számot. Például a következő kifejezést ad vissza, nem pedig egy karakterlánc, 100:  `int('100')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely alakítja át egy egész számot.|  
 |karakterlánc|A paraméter alakítható át karakterlánccá. Például az alábbi kifejezés eredménye `'10'`: `string(10)` is átválthat egy objektum egy karakterlánc, például ha a **PEL** paraméter egy tulajdonság az objektum `bar : baz`, akkor a következő lenne térjen vissza `{"bar" : "baz"}` `string(pipeline().parameters.foo)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely karakterlánccá alakítja át.|  
-|JSON-ban|A paraméternek JSON típusú értékké konvertálni. String() ellentéte. Például az alábbi kifejezés eredménye `[1,2,3]` tömb, nem pedig egy karakterlánc:<br /><br /> `parse('[1,2,3]')`<br /><br /> Hasonlóképpen átválthat a karakterlánc objektum. Például `json('{"bar" : "baz"}')` adja vissza:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező. A karakterlánc, amely natív típusa értékre alakítja át.<br /><br /> A json-függvény xml bemenet is támogatja. Ha például a paraméter értékét:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> a következő JSON formátumúvá alakul:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
-|Lebegőpontos|A paraméter argumentum konvertálható lebegőpontos szám. Például az alábbi kifejezés eredménye `10.333`:  `float('10.333')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely a lebegőpontos számként alakítja át.|  
+|JSON|A paraméternek JSON típusú értékké konvertálni. String() ellentéte. Például az alábbi kifejezés eredménye `[1,2,3]` tömb, nem pedig egy karakterlánc:<br /><br /> `json('[1,2,3]')`<br /><br /> Hasonlóképpen átválthat a karakterlánc objektum. Például `json('{"bar" : "baz"}')` adja vissza:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc<br /><br /> **Leírás**: kötelező. A karakterlánc, amely natív típusa értékre alakítja át.<br /><br /> A json-függvény xml bemenet is támogatja. Ha például a paraméter értékét:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> a következő JSON formátumúvá alakul:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|lebegőpontos|A paraméter argumentum konvertálható lebegőpontos szám. Például az alábbi kifejezés eredménye `10.333`:  `float('10.333')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely a lebegőpontos számként alakítja át.|  
 |logikai érték|A paraméter átalakítása olyan logikai érték. Például az alábbi kifejezés eredménye `false`:  `bool(0)`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: érték<br /><br /> **Leírás**: kötelező. Az érték, amely egy logikai érték alakítja át.|  
 |Egyesítés|Az argumentumként átadott az első nem null objektumot ad vissza. Megjegyzés: üres karakterlánc értéke nem null. Például ha az 1. és 2 paraméterek nincsenek megadva, ez visszaad `fallback`:  `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **Számú paraméter**: 1... *n*<br /><br /> **Név**: objektum*n*<br /><br /> **Leírás**: kötelező. Az objektumok kereséséhez `null`.|  
 |a Base64|A bemeneti karakterlánc a base64 alakot adja vissza. Például az alábbi kifejezés eredménye `c29tZSBzdHJpbmc=`:  `base64('some string')`<br /><br /> **Számú paraméter**: 1<br /><br /> **Név**: karakterlánc-1<br /><br /> **Leírás**: kötelező. A karakterlánc helyére base64 kódolása.|  

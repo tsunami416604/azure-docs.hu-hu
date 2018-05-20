@@ -1,24 +1,24 @@
 ---
-title: "Erőforrás-kezelő architektúra |} Microsoft Docs"
-description: "Az architektúra áttekintése a Service Fabric fürt Resource Manager."
+title: Erőforrás-kezelő architektúra |} Microsoft Docs
+description: Az architektúra áttekintése a Service Fabric fürt Resource Manager.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f0d2202c17bf4d378a625a61e941edf7f3f24636
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48da92be0eef1154b490fb4829363598d6d66569
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Fürt resource manager architektúrájának áttekintése
 A Service Fabric fürt erőforrás-kezelő központi szolgáltatás, amely a fürt. Kezeli a kívánt azon szolgáltatások állapotát, a fürtben, különös tekintettel az erőforrás-felhasználás és elhelyezési szabályokat. 
@@ -61,7 +61,7 @@ Most nézze meg az alábbi ábrán, és tekintse meg, mi a következő lépés. 
 ![Erőforrás terheléselosztó architektúrája][Image2]
 </center>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A fürt erőforrás-kezelő rendelkezik a fürt leíró számos lehetőséget. További információkért róluk, tekintse meg a cikk a [leíró a Service Fabric-fürt](./service-fabric-cluster-resource-manager-cluster-description.md)
 - A fürt Resource Manager elsődleges feladatokat van a fürt újraelosztás, és a elhelyezési szabályokat. Ezek közül a viselkedésmódok konfigurálásával kapcsolatos további információkért lásd: [terheléselosztási a Service Fabric-fürt](./service-fabric-cluster-resource-manager-balancing.md)
 

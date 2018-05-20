@@ -102,14 +102,6 @@
           href: disk-scalability-targets.md
         - name: Lemezek biztonsági mentése és vészhelyreállítása
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: Írásgyorsító engedélyezése
-          href: how-to-enable-write-accelerator.md
-        - name: Csatlakoztatott virtuális merevlemezek hibaelhárítása
-          items:
-            - name: Tárolási erőforrások törlési hibái
-              href: storage-resource-deletion-errors.md
-            - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
-              href: unexpected-reboots-attached-vhds.md
     - name: Hálózat
       href: network-overview.md
     - name: Automatikus méretezési alkalmazások
@@ -306,6 +298,8 @@
           href: mount-azure-file-storage.md
         - name: Lemezek üzembe helyezése sablonnal
           href: using-managed-disks-template-deployments.md
+        - name: Írásgyorsító engedélyezése
+          href: how-to-enable-write-accelerator.md
         - name: Migrálás felügyelt lemezekre
           href: migrate-to-managed-disks.md
           items:
@@ -449,6 +443,12 @@
           href: troubleshoot-vm-by-use-nested-virtualization.md
         - name: A virtuálisgép-ügynök telepítése kapcsolat nélküli módban
           href: install-vm-agent-offline.md
+        - name: Csatlakoztatott virtuális merevlemezek hibaelhárítása
+          items:
+            - name: Tárolási erőforrások törlési hibái
+              href: storage-resource-deletion-errors.md
+            - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
+              href: unexpected-reboots-attached-vhds.md
 - name: Referencia
   items:
     - name: Azure CLI

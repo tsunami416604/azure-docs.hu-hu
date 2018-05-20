@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Service Fabric vészhelyreállítás |} Microsoft Docs"
-description: "Az Azure Service Fabric az összes típusú katasztrófák kezelése érdekében képességeket biztosít. Ez a cikk ismerteti a típusú katasztrófák, amik akkor léphetnek fel, és azokat kezelése."
+title: Az Azure Service Fabric vészhelyreállítás |} Microsoft Docs
+description: Az Azure Service Fabric az összes típusú katasztrófák kezelése érdekében képességeket biztosít. Ez a cikk ismerteti a típusú katasztrófák, amik akkor léphetnek fel, és azokat kezelése.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5346e331d76149ac3aed7aaf11eb3171e0ac5cfc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 295772b70529f79c7a4c135d8ea7c12a1c661fe6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Az Azure Service Fabric katasztrófa utáni helyreállítás
 A magas rendelkezésre állású kézbesítéséhez kritikus része annak ellenőrzése, hogy a szolgáltatások hibatűrését összes különböző típusú hibák. Ez különösen fontos a nem tervezett hibák és a vezérlőn kívül. Ez a cikk ismerteti az egyes közös függően katasztrófák lehet, ha nem modellezve, és a megfelelő felügyelt. Megoldást és a teendő, ha egy olyan vészhelyzet esetén történt ennek ellenére is ismertetik. A cél, hogy korlátozható vagy kiküszöbölése állásidő vagy adatvesztés kockázatát, amikor jelentkeznek a hibák, a tervezett, vagy ellenkező esetben fordulhat elő.
@@ -134,7 +134,7 @@ A Service Fabric kezdőérték csomópontok fogalma rendelkezik. Ezek a csomópo
 
 Különálló Service Fabric-fürtök és Azure az "elsődleges csomópont" típus azt, amelyik futtatja a magok. Egy elsődleges csomóponttípusok meghatározásakor a Service Fabric lesz automatikusan előnyeit legfeljebb 9 kezdőérték csomópontok és a rendszer szolgáltatások 9 replikáinak létrehozott csomópontok száma. Ha egy véletlenszerűen hibák készletét ki ezeket a rendszer szolgáltatás replikák többsége fogad adatokat egyidejűleg, a rendszerszolgáltatások lép kvórum elvesztése, azt a fent leírt módon. Ha a kezdőérték csomópontok többsége elvesznek, a fürt le fog állni hamarosan után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan használatával különféle hibák szimulálása a [tesztelhetőségi keretrendszer](service-fabric-testability-overview.md)
 - Olvassa el a vész-helyreállítási és magas rendelkezésre állású erőforrását. A Microsoft tett közzé útmutatást nagy mennyiségű ezekben a kérdésekben. Közben néhány ezeket a dokumentumokat adott technikák használható egyéb termékek, sok általános gyakorlati tanácsok a Service Fabric környezetben is alkalmazhat tartalmazzák:
   - [Rendelkezésre állási ellenőrzőlista](../best-practices-availability-checklist.md)

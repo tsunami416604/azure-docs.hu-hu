@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 49a80805c976e5584bb158965583a03eda68cc46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 483122f5d2e39c8595d0f28a6b937772c4ea2e50
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: Azure és az Azure alkalmazások telepítése verem
 
@@ -71,7 +71,7 @@ Azure Stack
     - A ASDK telepítésével kapcsolatos részletes utasításokat található "[oktatóanyag: telepítéséhez a telepítő használatával ASDK](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy)"
     - Automatizálható a ASDK a telepítés utáni lépéseket a következő PowerShell-parancsfájl számos [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ).
 
-    > [!note]  
+    > [!Note]  
     > A ASDK telepítés befejeződik, ezért ennek megfelelően tervezheti a hét órát vesz igénybe.
 
  - Telepítése [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) Azure verem PaaS-szolgáltatások. 
@@ -87,7 +87,7 @@ Azure Stack
  - [Telepítse a Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) és [bejelentkezés az VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
  - A projekt csatlakozni és [helyileg klónozni](https://www.visualstudio.com/docs/git/gitquickstart).
  
- > [!note]  
+ > [!Note]  
  > Szüksége lesz Azure verem megfelelő lemezképekkel hírcsatorna-(Windows Server és SQL) futtatásához, és a telepített App Service-szolgáltatást.
  
 ## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Az a Visual Studio Team Services integráció előkészítését a titkos build és a kiadási ügynök
@@ -207,7 +207,7 @@ Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy a 
 
 3. Másolja a jogkivonatot.
     
-    > [!note]  
+    > [!Note]  
     > A token információkhoz. Azt nem jelenik meg újra ez a képernyő megszűnését követően. 
     
     ![Helyettesítő szöveg](media\azure-stack-solution-hybrid-pipeline\000_19.png)
@@ -268,7 +268,7 @@ Felhasználók hozhatnak létre végpontokat, így VSTO buildek telepíthet Azur
 
 Hibrid CI/CD webalkalmazás telepítése az Azure és az Azure-vermet, és küldje el a módosításokat mindkét felhőben való automatikus beállítása.
 
-> [!note]  
+> [!Note]  
 > Szüksége lesz Azure verem megfelelő lemezképekkel hírcsatorna-(Windows Server és SQL) futtatásához, és a telepített App Service-szolgáltatást. Tekintse meg az App Service dokumentációt "Előfeltételek" szakaszban Azure verem operátor követelményeket.
 
 ### <a name="add-code-to-vsts-project"></a>Adja hozzá a kódot VSTS-projekthez
@@ -399,7 +399,7 @@ Visual Studio Team Services (VSTS) és a Team Foundation Server (TFS) adja meg e
 
 21. Minden módosítások mentéséhez.
 
-> [!note]  
+> [!Note]  
 > A feladatok egyes beállításai esetleg lett automatikusan meghatározott [környezeti változók](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) sablonból kiadás definíciójának létrehozásakor. Ezeket a beállításokat nem lehet módosítani a feladatbeállítások; Ehelyett ki kell választania a szülő környezet cikk ezek a beállítások szerkesztéséhez.
 
 ## <a name="create-a-release"></a>Egy kiadási létrehozása

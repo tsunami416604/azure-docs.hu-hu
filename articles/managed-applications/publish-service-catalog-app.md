@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre, és az Azure szolgáltatás katalógus által felügyelt alkalmazások közzététele |} Microsoft Docs"
-description: "Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás."
+title: Hozzon létre, és az Azure szolgáltatás katalógus által felügyelt alkalmazások közzététele |} Microsoft Docs
+description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás.
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/02/2017
+ms.date: 05/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 46adcdf39625c85dc962a7541b68c5500cf920ee
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
-ms.translationtype: MT
+ms.openlocfilehash: 57821e9c7ed1ca04aa7442f089268c5e89a017c3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>A belső felhasználásához kezelt alkalmazás közzététele
 
@@ -55,7 +55,7 @@ Adja hozzá a fájlhoz a következő JSON. A storage-fiók létrehozásához a p
         }
     },
     "variables": {
-        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString('storage'))]"
+        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
@@ -138,7 +138,7 @@ Adja hozzá a fájlhoz a következő JSON.
 }
 ```
 
-Mentse a createUIDefinition.json fájlt.
+Mentse a createUiDefinition.json fájlt.
 
 ## <a name="package-the-files"></a>A csomagfájlok
 
@@ -152,8 +152,7 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
-  -Kind Storage `
-  -EnableEncryptionService Blob
+  -Kind Storage
 
 $ctx = $storageAccount.Context
 
@@ -173,7 +172,9 @@ A következő lépés, hogy egy felhasználói csoport vagy az erőforrások kez
 
 Az Objektumazonosító, a felhasználói csoport számára az erőforrások kezelése van szüksége. 
 
-![Első csoport azonosítója](./media/publish-service-catalog-app/get-group-id.png)
+```powershell
+$groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
+```
 
 ### <a name="get-the-role-definition-id"></a>A szerepkör-definíció azonosítója beolvasása
 
@@ -203,21 +204,49 @@ New-AzureRmManagedApplicationDefinition `
   -LockLevel ReadOnly `
   -DisplayName "Managed Storage Account" `
   -Description "Managed Azure Storage Account" `
-  -Authorization "<group-id>:$ownerID" `
+  -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="create-the-managed-application-by-using-the-portal"></a>A kezelt alkalmazás létrehozása a portál használatával
+## <a name="create-the-managed-application"></a>A kezelt alkalmazás létrehozása
+
+A kezelt alkalmazás, a portál, a PowerShell vagy az Azure parancssori felület telepítése.
+
+### <a name="powershell"></a>PowerShell
+
+Először hozzuk a PowerShell használatával történő telepítése a kezelt alkalmazás.
+
+```powershell
+# Create resource group
+New-AzureRmResourceGroup -Name applicationGroup -Location westcentralus
+
+# Get ID of managed application definition
+$appid=(Get-AzureRmManagedApplicationDefinition -ResourceGroupName appDefinitionGroup -Name ManagedStorage).ManagedApplicationDefinitionId
+
+# Create the managed application
+New-AzureRmManagedApplication `
+  -Name storageApp `
+  -Location westcentralus `
+  -Kind ServiceCatalog `
+  -ResourceGroupName applicationGroup `
+  -ManagedApplicationDefinitionId $appid `
+  -ManagedResourceGroupName "InfrastructureGroup" `
+  -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
+```
+
+A kezelt alkalmazás és a felügyelt infrastruktúra most már szerepel az előfizetés.
+
+### <a name="portal"></a>Portál
 
 Most tegyük a kezelt alkalmazás központi telepítése a portál használatával. A felhasználói felület, a csomag létrehozott láthatja.
 
-1. Ugrás az Azure-portálon. Válassza ki **+ új** keresse meg a **szolgáltatáskatalógus**.
+1. Ugrás az Azure-portálon. Válassza ki **+ hozzon létre egy erőforrást** keresse meg a **szolgáltatáskatalógus**.
 
-   ![Keresési szolgáltatáskatalógus](./media/publish-service-catalog-app/select-new.png)
+   ![Keresési szolgáltatáskatalógus](./media/publish-service-catalog-app/create-new.png)
 
 1. Válassza ki **szolgáltatáskatalógus felügyelt alkalmazás**.
 
-   ![Válassza ki a szolgáltatáskatalógus](./media/publish-service-catalog-app/select-service-catalog.png)
+   ![Válassza ki a szolgáltatáskatalógus](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -227,17 +256,17 @@ Most tegyük a kezelt alkalmazás központi telepítése a portál használatáv
 
    ![Kezelt alkalmazás megkeresése](./media/publish-service-catalog-app/find-application.png)
 
-1. Adja meg a kezelt alkalmazás szükséges alapvető információkat. Adja meg az előfizetés és a kezelt alkalmazás tartalmaz egy új erőforráscsoportot. Válassza ki **nyugati középső Régiójában** helyéhez. Ha elkészült, válassza ki a **OK**.
+1. Adja meg a kezelt alkalmazás szükséges alapvető információkat. Adja meg az előfizetés és a kezelt alkalmazás tartalmaz egy új erőforráscsoportot. Válassza ki **nyugati középső Régiójában** helyéhez. Ha elkészült, kattintson az **OK** gombra.
 
-   ![Adja meg a felügyelt alkalmazási paraméterek](./media/publish-service-catalog-app/provide-basics.png)
+   ![Adja meg a felügyelt alkalmazási paraméterek](./media/publish-service-catalog-app/add-basics.png)
 
-1. Adja meg az erőforrásokat a felügyelt jellemző. Ha elkészült, válassza ki a **OK**.
+1. Adja meg az erőforrásokat a felügyelt jellemző. Ha elkészült, kattintson az **OK** gombra.
 
-   ![Adja meg az erőforrás-paraméterek](./media/publish-service-catalog-app/provide-resource-values.png)
+   ![Adja meg az erőforrás-paraméterek](./media/publish-service-catalog-app/add-storage-settings.png)
 
 1. A sablon ellenőrzi a megadott értékeket. Ha az érvényesítés sikeres, válassza ki a **OK** a telepítés elindításához.
 
-   ![A felügyelt alkalmazási ellenőrzése](./media/publish-service-catalog-app/validate.png)
+   ![A felügyelt alkalmazási ellenőrzése](./media/publish-service-catalog-app/view-summary.png)
 
 A telepítés befejezése után a kezelt alkalmazás szerepel alkalmazáscsoport nevű erőforráscsoport. A tárfiók egy erőforráscsoportot alkalmazáscsoport és kivonatolt karakterlánc-érték szerepel.
 

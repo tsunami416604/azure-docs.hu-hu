@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric-alkalmazás frissítés PowerShell használatával |} Microsoft Docs"
-description: "Ez a cikk végigvezeti a Service Fabric-alkalmazás telepítése, kódjának a módosítása és PowerShell használatával frissítés terítésével élménye."
+title: Service Fabric-alkalmazás frissítés PowerShell használatával |} Microsoft Docs
+description: Ez a cikk végigvezeti a Service Fabric-alkalmazás telepítése, kódjának a módosítása és PowerShell használatával frissítés terítésével élménye.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9bc75748-96b0-49ca-8d8a-41fe08398f25
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0306a219112a14121fd881a7cc52d58597a073a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 44f4dc3a9c876e383a6e4df8ef5f467f2b93eaa9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Az alkalmazásfrissítés Service Fabric PowerShell-lel
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Hozza létre, és tegye közzé az alkalmazást, kattintson a jobb gombbal a pro
 
 A Visual Studio projekt létrehozása, után a PowerShell-parancsot használhatja [másolási-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) alkalmazás csomag másolása a lemezképtárolóba. Ha szeretné ellenőrizni a csomag helyi, használja a [teszt-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) parancsmag. A következő lépés az, hogy az alkalmazás a Service Fabric futásidejű történő regisztrálása a [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) parancsmag. A következő lépés az, hogy az alkalmazás példányának használatával indítsa el a [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) parancsmag.  Fenti három lépést is megfelel a használatával a **telepítés** menüpont a Visual Studióban.  A telepítés elvégzése után kell távolítja el a lemezképtárolóból másolt alkalmazáscsomag az erőforrások használatának csökkentése érdekében.  Ha egy alkalmazás típus már nem szükséges, kell regisztrációját ugyanebből az okból. Lásd: [központi telepítése és törlése alkalmazás PowerShell-lel](service-fabric-application-upgrade-tutorial-powershell.md) további információt.
 
-Most már használhatja [a fürt és az alkalmazás megtekintése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Az alkalmazás rendelkezik egy webszolgáltatás, amelyet is nyílik meg, az Internet Explorerben írja be a [http://localhost: 8081/visualobjects](http://localhost:8081/visualobjects) a böngésző címsorába.  Navigálás a képernyő néhány lebegőpontos vizuális objektum kell megjelennie.  Emellett használhatja [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) az alkalmazás állapotának ellenőrzéséhez.
+Most már használhatja [a fürt és az alkalmazás megtekintése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Az alkalmazás rendelkezik egy webszolgáltatás, amelyet is nyílik meg, az Internet Explorerben írja be a [ http://localhost:8081/visualobjects ](http://localhost:8081/visualobjects) a böngésző címsorába.  Navigálás a képernyő néhány lebegőpontos vizuális objektum kell megjelennie.  Emellett használhatja [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) az alkalmazás állapotának ellenőrzéséhez.
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. lépés: A Visual objektumok minta frissítése
 Bizonyára észrevette, hogy, hogy az 1. lépésben telepített verziója, a visual objektumok nem elforgatása. Most frissítse az alkalmazás olyanra, ahol a vizuális objektumok is elforgatása.

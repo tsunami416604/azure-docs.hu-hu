@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Service Fabric önálló fürt konfigurálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálja az önálló vagy a helyszíni Azure Service Fabric-fürt."
+title: Az Azure Service Fabric önálló fürt konfigurálása |} Microsoft Docs
+description: Megtudhatja, hogyan konfigurálja az önálló vagy a helyszíni Azure Service Fabric-fürt.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: bd6e5c1591d01329d95ccb168e5a14e436920baf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: e0fed608ac9dd02a6fe5563eefc30edb63d224b1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>A különálló Windows-fürt konfigurációs beállítások
 Ez a cikk ismerteti, hogyan önálló Azure Service Fabric-fürt konfigurálása a művelet fájl használatával. Ez a fájl használandó adjon meg információt a fürtcsomópontokon, biztonsági beállításokkal, valamint a hálózati topológia hiba és a frissítési tartományok tekintetében.
@@ -200,6 +200,6 @@ Bővítmény funkciók konfigurálására, a apiVersion 04-2017 vagy újabb, val
 Ahhoz, hogy a Windows Server-tárolók és a Hyper-V fürtök különálló tárolói tároló támogatása, a DnsService bővítmény szolgáltatást engedélyezni kell.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután az önálló fürttelepítés megfelelően konfigurálta teljes művelet fájlt, a fürtök telepítése. Kövesse a [hozzon létre egy különálló Service Fabric-fürt](service-fabric-cluster-creation-for-windows-server.md). Majd folytassa a [fürt megjelenítése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) , és kövesse a lépéseket.
 

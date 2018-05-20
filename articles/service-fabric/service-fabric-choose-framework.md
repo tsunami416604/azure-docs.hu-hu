@@ -1,6 +1,6 @@
 ---
-title: "A Service Fabric programozási modell áttekintése |} Microsoft Docs"
-description: "A Service Fabric szolgáltatások felépítéséhez két keretrendszerek kínál: a szereplő keretrendszer és a szolgáltatások keretében. Különböző kompromisszumot alakítson ki az egyszerűség és vezérlő kínálnak."
+title: A Service Fabric programozási modell áttekintése |} Microsoft Docs
+description: 'A Service Fabric szolgáltatások felépítéséhez két keretrendszerek kínál: a szereplő keretrendszer és a szolgáltatások keretében. Különböző kompromisszumot alakítson ki az egyszerűség és vezérlő kínálnak.'
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 6c4503b3e05f7d78f64a161f620b1fbd6cd38ab1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a03bb3c74d9c776b893b11c3dec8788fe9ac598c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-programming-model-overview"></a>A Service Fabric programozási modell áttekintése
 A Service Fabric és a szolgáltatások kezeléséhez több lehetőséget is kínál. Szolgáltatások használhat a Service Fabric API-k a platform szolgáltatásai és alkalmazás-keretrendszerek számára teljes körű kihasználása érdekében. Szolgáltatások bármilyen nyelven vagy a Service Fabric fürt által futtatott tárolóban futó lefordított végrehajtható programok is lehet.
@@ -28,7 +28,7 @@ A [Vendég végrehajtható](service-fabric-guest-executables-introduction.md) -e
 
 Ismerkedés a Vendég végrehajtható fájlok az első üzembe helyezésével [Vendég futtatható alkalmazás](service-fabric-deploy-existing-app.md).
 
-## <a name="containers"></a>Tárolók
+## <a name="containers"></a>Containers
 Alapértelmezés szerint a Service Fabric telepíti, és aktiválja a szolgáltatást is folyamatokat. A Service Fabric is telepítheti a szolgáltatások [tárolók](service-fabric-containers-overview.md). A Service Fabric Windows Server 2016 Linux-tárolók és a Windows-tárolók központi telepítését támogatja. Tároló lemezképek bármely tároló tárház lekért, és a gépre telepítve. A meglévő alkalmazások Vendég végrehajtható fájlok, a Service Fabric állapot nélküli és állapotalapú Reliable services és Reliable Actors tárolókban lévő telepítheti, és kombinálhatja a folyamatokat a szolgáltatások és szolgáltatások tárolókban ugyanabban az alkalmazásban.
 
 [További információk a szolgáltatások a Windows vagy Linux containerizing](service-fabric-deploy-container.md)

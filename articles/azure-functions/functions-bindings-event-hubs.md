@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 44dbe4c3157b1b765004975a6f04e3a96b477846
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 8516f6d1f598e79bcb47922f02926f75c328861b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Functions az Azure Event Hubs kötései
 
@@ -82,15 +82,29 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Férhetnek hozzá az esemény metaadatok, kötést létrehozni egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektum (igényel a `using` nyilatkozata `Microsoft.ServiceBus.Messaging`).
+Is elérheti az [esemény metaadatok](#trigger---event-metadata) függvény kódban kötést létrehozni egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektum (kell használni egy utasítást `Microsoft.ServiceBus.Messaging`). Emellett ugyanazok a tulajdonságok kötése kifejezések használatával, a metódus aláírásában.  A következő példa bemutatja, mindkét módon ugyanazokat az adatokat kaphat:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData myEventHubMessage, TraceWriter log)
+public static void Run(
+    [EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData myEventHubMessage, 
+    DateTime enqueuedTimeUtc, 
+    Int64 sequenceNumber,
+    string offset,
+    TraceWriter log)
 {
-    log.Info($"{Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+    log.Info($"Event: {Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+    // Metadata accessed by binding to EventData
+    log.Info($"EnqueuedTimeUtc={myEventHubMessage.EnqueuedTimeUtc}");
+    log.Info($"SequenceNumber={myEventHubMessage.SequenceNumber}");
+    log.Info($"Offset={myEventHubMessage.Offset}");
+    // Metadata accessed by using binding expressions
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"SequenceNumber={sequenceNumber}");
+    log.Info($"Offset={offset}");
 }
 ```
+
 Események fogadásához egy kötegben, hogy `string` vagy `EventData` tömb:
 
 ```cs
@@ -130,16 +144,29 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Az esemény-metaadatok eléréséhez kötést létrehozni egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektum (kell egy használni utasítást `Microsoft.ServiceBus.Messaging`).
+Is elérheti az [esemény metaadatok](#trigger---event-metadata) függvény kódban kötést létrehozni egy [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektum (kell használni egy utasítást `Microsoft.ServiceBus.Messaging`). Emellett ugyanazok a tulajdonságok kötése kifejezések használatával, a metódus aláírásában.  A következő példa bemutatja, mindkét módon ugyanazokat az adatokat kaphat:
 
 ```cs
 #r "Microsoft.ServiceBus"
 using System.Text;
+using System;
 using Microsoft.ServiceBus.Messaging;
 
-public static void Run(EventData myEventHubMessage, TraceWriter log)
+public static void Run(EventData myEventHubMessage,
+    DateTime enqueuedTimeUtc, 
+    Int64 sequenceNumber,
+    string offset,
+    TraceWriter log)
 {
-    log.Info($"{Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+    log.Info($"Event: {Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+    // Metadata accessed by binding to EventData
+    log.Info($"EnqueuedTimeUtc={myEventHubMessage.EnqueuedTimeUtc}");
+    log.Info($"SequenceNumber={myEventHubMessage.SequenceNumber}");
+    log.Info($"Offset={myEventHubMessage.Offset}");
+    // Metadata accessed by using binding expressions
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"SequenceNumber={sequenceNumber}");
+    log.Info($"Offset={offset}");
 }
 ```
 
@@ -180,7 +207,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 ### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript – példa
 
-A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény az üzenettörzs az event hub eseményindító naplózza.
+A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény beolvassa [esemény metaadatok](#trigger---event-metadata) és naplózza az üzenetet.
 
 Itt az kötés adatai a *function.json* fájlt:
 
@@ -197,8 +224,12 @@ Itt az kötés adatai a *function.json* fájlt:
 A JavaScript-kód itt látható:
 
 ```javascript
-module.exports = function (context, myEventHubMessage) {
-    context.log('Node.js eventhub trigger function processed work item', myEventHubMessage);    
+module.exports = function (context, eventHubMessage) {
+    context.log('Event Hubs trigger function processed message: ', myEventHubMessage);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('SequenceNumber =', context.bindingData.sequenceNumber);
+    context.log('Offset =', context.bindingData.offset);
+     
     context.done();
 };
 ```
@@ -253,15 +284,31 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** | n/a | meg kell `eventHubTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**type** | n/a | meg kell `eventHubTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | Esemény-elem funkciókódot jelölő neve. | 
 |**path** |**EventHubName** | Az event hubs neve. | 
 |**ConsumerGroup** |**ConsumerGroup** | Egy nem kötelező tulajdonság, amely beállítja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) használt események központban előfizetni. Ha nincs megadva, a `$Default` fogyasztói csoportot használja. | 
 |**Kardinalitása** | n/a | A Javascript. Beállítása `many` kötegelés engedélyezéséhez.  Ha nincs megadva vagy `one`, függvénynek átadott egyetlen üzenetben. | 
-|**connection** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a [névtér](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nem magát az eseményközpontba. Ez a kapcsolati karakterlánc kell rendelkeznie legalább olvasási engedéllyel az eseményindítót.|
+|**Kapcsolat** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a [névtér](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nem magát az eseményközpontba. Ez a kapcsolati karakterlánc kell rendelkeznie legalább olvasási engedéllyel az eseményindítót.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="trigger---event-metadata"></a>Eseményindító - esemény metaadatok
+
+Az Event Hubs eseményindító biztosít több [metaadat-tulajdonságainak](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Ezeket a tulajdonságokat meg más kötésekben kötési kifejezés részeként vagy a kód paramétereiben használható. Ezek a tulajdonságait a [EventData](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventdata) osztály.
+
+|Tulajdonság|Típus|Leírás|
+|--------|----|-----------|
+|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|A `PartitionContext` példány.|
+|`EnqueuedTimeUtc`|`DateTime`|A várólistában levő ideje UTC Formátumban.|
+|`Offset`|`string`|Az eltolás az adatok az Eseményközpont partíció adatfolyam viszonyítva. Az eltolás, de egy jelölő belül az Event Hubs adatfolyam esemény azonosítója. Az Event Hubs adatfolyam a partíción belül egyedi azonosító.|
+|`PartitionKey`|`string`|A partíció melyik eseményt kell elküldeni.|
+|`Properties`|`IDictionary<String,Object>`|Az eseményadatok felhasználó tulajdonságait.|
+|`SequenceNumber`|`Int64`|Az esemény logikai sorszáma.|
+|`SystemProperties`|`IDictionary<String,Object>`|A rendszer tulajdonságai, beleértve az eseményadatok.|
+
+Lásd: [kódpéldák](#trigger---example) ezeket a tulajdonságokat, amelyek használják az ebben a cikkben.
 
 ## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
 
@@ -427,11 +474,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa** | n/a | "Az eventHub" értékre kell állítani. |
+|**type** | n/a | "Az eventHub" értékre kell állítani. |
 |**direction** | n/a | "Ki" értékre kell állítani. Ez a paraméter értéke automatikusan kötésének létrehozásakor az Azure portálon. |
 |**name** | n/a | A változó nevét, amely jelöli az esemény függvény kódban használt. | 
 |**path** |**EventHubName** | Az event hubs neve. | 
-|**connection** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc az üzenetet küldeni az eseménystream küldési engedéllyel kell rendelkeznie.|
+|**Kapcsolat** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc az üzenetet küldeni az eseménystream küldési engedéllyel kell rendelkeznie.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

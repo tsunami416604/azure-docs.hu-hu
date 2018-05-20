@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 05/17/2018
 ms.author: curtand
-ms.reviewer: piotrci
+ms.reviewer: krbain
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 43f364ed7e8539397fe8662a8c75804883a82e4f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4eda67f9c28a52667a34af175086be19b627f2ce
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist. Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
@@ -84,7 +84,7 @@ Az alábbi táblázat a támogatott kifejezés szabályoperátorokat és szintax
 | Contains |-tartalmaz |
 | Nem egyeznek |-notMatch |
 | Egyezés |-felel meg |
-| A | -a |
+| Eleme ennek | -a |
 | Nem található | -notIn |
 
 ## <a name="operator-precedence"></a>Precedencia
@@ -157,7 +157,7 @@ Engedélyezett operátorok
 | city |A karakterlánc értéke vagy *null értékű* |(user.city - eq "érték") |
 | Ország |A karakterlánc értéke vagy *null értékű* |(felhasználó.ország - eq "érték") |
 | Cégnév | A karakterlánc értéke vagy *null értékű* | (user.companyName - eq "érték") |
-| Szervezeti egység |A karakterlánc értéke vagy *null értékű* |(felhasználó.részleg - eq "érték") |
+| részleg |A karakterlánc értéke vagy *null értékű* |(felhasználó.részleg - eq "érték") |
 | displayName |Bármilyen karakterlánc típusú értéket |(user.displayName - eq "érték") |
 | employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId - eq "érték")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.facsimileTelephoneNumber - eq "érték") |
@@ -278,7 +278,7 @@ Olyan szabály, amely kijelöli a tagság eszközobjektumok egy csoportot is lé
  DeviceModel | Bármilyen karakterlánc típusú értéket | (device.deviceModel - eq "iPad vezeték nélkül")
  deviceOwnership | Személyes, munkahelyi, ismeretlen | (device.deviceOwnership - eq "Vállalati")
  Tartománynév | Bármilyen karakterlánc típusú értéket | (device.domainName - eq "contoso.com")
- enrollmentProfileName | Az Apple Eszközregisztrációs profil neve | (device.enrollmentProfileName - eq "DEP iPhone-OK")
+ enrollmentProfileName | Az Apple Eszközregisztrációs profil vagy a Windows automata profil neve | (device.enrollmentProfileName - eq "DEP iPhone-OK")
  isRooted | IGAZ, hamis | (device.isRooted - eq igaz)
  managementType | Mobileszköz-kezelési (csak mobil eszközökön)<br>PC (számára a számítógépes Intune-ügynök által felügyelt számítógépek) | (device.managementType - eq "MDM")
  OrganizationalUnit | bármilyen karakterlánc típusú értéket állítja be a helyszíni Active Directory szervezeti egység névnek megfelelő | (device.organizationalUnit - eq "USA számítógépek")

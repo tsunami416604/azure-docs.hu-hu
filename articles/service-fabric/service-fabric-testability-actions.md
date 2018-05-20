@@ -5,20 +5,20 @@ services: service-fabric
 documentationcenter: .net
 author: motanv
 manager: timlt
-editor: toddabel
+editor: heeldin
 ms.assetid: ed53ca5c-4d5e-4b48-93c9-e386f32d8b7a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
-ms.author: motanv;heeldin
-ms.openlocfilehash: c8ddc7732999ae555323bebaef60aa34c8f2ec17
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: motanv
+ms.openlocfilehash: 087a0f12f765b55c2e2976abd93d791409ff6d44
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="testability-actions"></a>Tesztelhetőségi műveletek
 Ahhoz, hogy egy nem megbízható infrastruktúra szimulálása, Azure Service Fabric biztosít, a fejlesztői, azzal, hogy különböző valós hibák és állapotváltozási adat áramlik szimulálásához. Ezek tesztelhetőségi műveletként érhetők el. A műveletek végezhetők, amelyek egy adott van, állapotváltás vagy érvényesítési alacsony szintű API-k. Ezek a műveletek kombinálásával átfogó Tesztelési forgatókönyvek írhat a szolgáltatások.
@@ -39,15 +39,15 @@ Jobb minőségű ellenőrzéséhez futtassa le a szolgáltatást és az üzleti 
 | Műveletek | Leírás | Felügyelt API | PowerShell-parancsmag | Biztonságos/ungraceful hibák |
 | --- | --- | --- | --- | --- |
 | CleanTestState |Eltávolítja az összes teszt állapota a fürt esetén a teszt illesztőprogram rossz leállítására. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nem alkalmazható |
-| InvokeDataLoss |Adatvesztés kapott egy szolgáltatás partícióra. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Graceful |
-| InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatása partíció elhelyezi a kvórum elvesztése. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Graceful |
-| Elsődleges áthelyezése |A megadott elsődleges replika az állapotalapú szolgáltatás áthelyezése a megadott fürtcsomópont. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Graceful |
-| Másodlagos áthelyezése |A jelenlegi másodlagos másodpéldány egy állapotalapú szolgáltatás áthelyezése egy másik fürtcsomópontra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Graceful |
-| RemoveReplica |Replika hiba szimulálja által replika eltávolítása egy fürtből. Ez a replika bezárul, és állapotba kerül, hogy szerepkör "None", a fürt összes állapotában eltávolítása. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Graceful |
+| InvokeDataLoss |Adatvesztés kapott egy szolgáltatás partícióra. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Biztonságos |
+| InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatása partíció elhelyezi a kvórum elvesztése. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Biztonságos |
+| Elsődleges áthelyezése |A megadott elsődleges replika az állapotalapú szolgáltatás áthelyezése a megadott fürtcsomópont. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Biztonságos |
+| Másodlagos áthelyezése |A jelenlegi másodlagos másodpéldány egy állapotalapú szolgáltatás áthelyezése egy másik fürtcsomópontra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Biztonságos |
+| RemoveReplica |Replika hiba szimulálja által replika eltávolítása egy fürtből. Ez a replika bezárul, és állapotba kerül, hogy szerepkör "None", a fürt összes állapotában eltávolítása. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Biztonságos |
 | RestartDeployedCodePackage |A kód csomag folyamat hibájának szimulálja egy egy fürt egy csomópontján telepített kódcsomag újraindításával. Ez a minden felhasználó szolgáltatás replika üzemeltetett újraindul, hogy a folyamat kód csomag folyamat megszakítása. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Ungraceful |
 | A RestartNode |A Service Fabric-fürt Csomóponthiba szimulálja egy csomópont újraindításával. |RestartNodeAsync |Restart-ServiceFabricNode |Ungraceful |
-| RestartPartition |A datacenter blackout vagy a fürt blackout forgatókönyv szimulálja néhány vagy az összes partíció replikák újraindításával. |RestartPartitionAsync |Restart-ServiceFabricPartition |Graceful |
-| RestartReplica |A replika hiba szimulálja a megőrzött replika újraindításával fürtben, a replika bezárása, és majd megnyitni. |RestartReplicaAsync |Restart-ServiceFabricReplica |Graceful |
+| RestartPartition |A datacenter blackout vagy a fürt blackout forgatókönyv szimulálja néhány vagy az összes partíció replikák újraindításával. |RestartPartitionAsync |Restart-ServiceFabricPartition |Biztonságos |
+| RestartReplica |A replika hiba szimulálja a megőrzött replika újraindításával fürtben, a replika bezárása, és majd megnyitni. |RestartReplicaAsync |Restart-ServiceFabricReplica |Biztonságos |
 | A StartNode |A csomópont elindul egy fürt, amely már le van állítva. |StartNodeAsync |Start-ServiceFabricNode |Nem alkalmazható |
 | Stopnode parancs |Egy Csomóponthiba szimulálja a fürt egyik csomópontjában levő leállításával. A csomópont le maradnak, amíg StartNode nevezik. |StopNodeAsync |Stop-ServiceFabricNode |Ungraceful |
 | ValidateApplication |A rendelkezésre állási és, hogy bizonyos hiba a rendszerbe után általában az alkalmazáson belül minden Service Fabric-szolgáltatás állapotát ellenőrzi. |ValidateApplicationAsync |Test-ServiceFabricApplication |Nem alkalmazható |

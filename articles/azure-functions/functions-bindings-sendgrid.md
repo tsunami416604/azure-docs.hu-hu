@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Functions SendGrid kötések"
-description: "Az Azure Functions SendGrid kötések hivatkozás."
+title: Az Azure Functions SendGrid kötések
+description: Az Azure Functions SendGrid kötések hivatkozás.
 services: functions
 documentationcenter: na
 author: tdykstra
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
-ms.openlocfilehash: bd4f36bb029f123b0fa41d6dcd57547413e015c0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 29f6b3e8b7d7d940da098953e8f9d3deaccf78dc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Az Azure Functions SendGrid kötések
 
@@ -29,6 +29,8 @@ Ez a cikk ismerteti, hogyan küldjön e-mailek [SendGrid](https://sendgrid.com/d
 A SendGrid kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub-tárházban.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="example"></a>Példa
 
@@ -183,12 +185,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típusa**|| Szükséges – kell állítani `sendGrid`.|
+|**type**|| Szükséges – kell állítani `sendGrid`.|
 |**direction**|| Szükséges – kell állítani `out`.|
 |**name**|| Kötelező – a kérelem vagy kérelemtörzset függvény a kódban használt változó neve. Ez az érték ```$return``` Ha csak egy visszatérési értéket. |
 |**apiKey**|**ApiKey**| Az API-kulcsot tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, a beállítás alapértelmezett alkalmazás nevének megadása "AzureWebJobsSendGridApiKey".|
 |**A**|**Címzett**| a címzett e-mail címét. |
-|**from**|**A**| a feladó e-mail címe. |
+|**A**|**A**| a feladó e-mail címe. |
 |**subject**|**Tárgy**| az e-mail tárgyát. |
 |**Szöveg**|**Szöveg**| az e-mailek tartalmának. |
 

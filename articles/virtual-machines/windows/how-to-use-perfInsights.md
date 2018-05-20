@@ -1,24 +1,24 @@
 ---
-title: "PerfInsights használata a Microsoft Azure |} Microsoft Docs"
-description: "Tanulja meg PerfInsights használata Windows virtuális gép teljesítményét problémák megoldásához."
+title: PerfInsights használata a Microsoft Azure |} Microsoft Docs
+description: Tanulja meg PerfInsights használata Windows virtuális gép teljesítményét problémák megoldásához.
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 06b3b246d5c350f0982faa9b1d5f5692cd0c428e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cac17b5f3ee730bf1f56dbfd05b6c6d3b02c891f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights használata 
 
@@ -55,7 +55,7 @@ Ez a passzív gyűjteménye, amely nem befolyásolja a rendszer.
 >[!Note]
 >Ebben a forgatókönyvben automatikusan megtalálható minden, az alábbi esetekben:
 
-### <a name="benchmarking"></a>Benchmarking
+### <a name="benchmarking"></a>Teljesítménymérésre
 
 Ez a forgatókönyv futtatása a [Diskspd](https://github.com/Microsoft/diskspd) teljesítményteszt (iops-érték és MB/s) a virtuális géphez csatolt összes merevlemezén. 
 
@@ -79,15 +79,15 @@ Ebben a forgatókönyvben egy különleges teljesítmény számláló rögzíté
 | Késés      | Kérelemfeldolgozás mp/adatok         |
 |              | Átlagos olvasási idő                 |
 |              | Átlagos mp/írás                |
-| IO-méret      | Avg. Bájtok/kérelem       |
-|              | Avg. Bájtos, Olvasás               |
-|              | Avg. Bájt írása              |
-| Teljesítmény   | Adatok bájtok/s                |
+| IO-méret      | Átlagos Bájtok/kérelem       |
+|              | Átlagos Bájtos, Olvasás               |
+|              | Átlagos Bájt írása              |
+| Sebesség   | Adatok bájtok/s                |
 |              | Olvasott bájt/mp                |
 |              | Írási bájtok/s               |
-| Várólista hossza | Avg. Olvasási várólistájának hossza        |
-|              | Avg. Írni a várólista hossza       |
-|              | Avg. Várólista hossza        |
+| Várólista hossza | Átlagos Olvasási várólistájának hossza        |
+|              | Átlagos Írni a várólista hossza       |
+|              | Átlagos Várólista hossza        |
 
 ### <a name="custom-slow-vm-analysis"></a>Egyéni lassú VM elemzés 
 
@@ -103,7 +103,7 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 
 |Összegyűjtött adatok                              |  |  | Teljesítmény-forgatókönyvek |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Alapszintű konfigurációs gyűjtése | Benchmarking | Lassú VM elemzés | Az Azure fájlok elemzés | Egyéni lassú VM elemzés |
+|                               | Alapszintű konfigurációs gyűjtése | Teljesítménymérésre | Lassú VM elemzés | Az Azure fájlok elemzés | Egyéni lassú VM elemzés |
 | Eseménynapló információk       | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Rendszerinformáció                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Kötet térkép                        | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
@@ -116,7 +116,7 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 | Netstat kimeneti                    | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Hálózati konfiguráció             | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Tűzfal-konfiguráció            | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| SQL Server configuration          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
+| SQL Server-konfigurációs          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Teljesítmény diagnosztikai nyomkövetési *  | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Teljesítmény-számláló nyomkövetési **      |                            |                                    | Igen                      |                      | Igen                  |
 | SMB-számláló nyomkövetési **              |                            |                                    |                          | Igen                  |                      |
@@ -268,7 +268,7 @@ A kötet perspektíva (kötet térkép) a táblázatok minden logikai mennyiség
 
 ![Képernyőkép a kötet lap](media/how-to-use-perfInsights/volumetab.png)
 
-### <a name="sql-tab"></a>SQL tab
+### <a name="sql-tab"></a>SQL lap
 
 Ha a cél virtuális gép bármely SQL Server-példányokat futtatja, megjelenik egy lap a nevű jelentésben **SQL**:
 
@@ -289,11 +289,11 @@ A **diagnosztikai** lapon információt tartalmaz felső CPU, a lemez és a mem�
 
 ## <a name="references-to-the-external-tools-used"></a>A külső eszközök használt mutató hivatkozások
 
-### <a name="diskspd"></a>Diskspd
+### <a name="diskspd"></a>A Diskspd
 
 A Diskspd egy olyan tárolási terhelés generator és teljesítmény vizsgálati eszköz a Microsoft. További információkért lásd: [Diskspd](https://github.com/Microsoft/diskspd).
 
-### <a name="xperf"></a>Xperf
+### <a name="xperf"></a>Következő helyen
 
 Következő helyen rögzíthesse a nyomkövetési adatokat a Windows Performance Toolkit a parancssori eszköz. További információkért lásd: [Windows Performance Toolkit – a következő helyen](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 

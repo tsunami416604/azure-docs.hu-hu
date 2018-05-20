@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 49b343fca94e853a29807521f4213a5a85725f52
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: MT
+ms.openlocfilehash: 0c3662984c63195d8fc903c66b27aa253ce419cb
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Metrikák adatfolyamot: Figyelő & Diagnosztizálás és 1 másodperc késleltetés 
 
@@ -116,7 +116,7 @@ A megadott egyéni szűrők feltételek rendszer küldi vissza az élő metriká
 
 ### <a name="add-api-key-to-configuration"></a>A konfigurációs API-kulcs hozzáadása
 
-# <a name="net-standardtabnet-standard"></a>[.NET Standard](#tab/.net-standard)
+### <a name="classic-aspnet"></a>Klasszikus ASP.NET
 
 Az applicationinsights.config fájlban vegye fel a AuthenticationApiKey a QuickPulseTelemetryModule:
 ``` XML
@@ -133,7 +133,8 @@ Vagy a kódban, állítsa be a QuickPulseTelemetryModule meg:
     module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
 
 ```
-# <a name="net-core-tabnet-core"></a>[A .NET core] (lap/.net-core #)
+
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>Az ASP.NET Core (Application Insights az ASP.NET Core SDK szükséges 2.3.0-beta vagy újabb)
 
 Az alábbiak szerint módosítsa a startup.cs fájlt:
 
@@ -141,26 +142,14 @@ Először adjon hozzá
 
 ``` C#
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-using Microsoft.ApplicationInsights.Extensibility;
 ```
 
-A konfigurálás módszer adja:
+Majd belül a ConfigureServices metódus hozzáadása:
 
 ``` C#
-  QuickPulseTelemetryModule dep;
-            var modules = app.ApplicationServices.GetServices<ITelemetryModule>();
-            foreach (var module in modules)
-            {
-                if (module is QuickPulseTelemetryModule)
-                {
-                    dep = module as QuickPulseTelemetryModule;
-                    dep.AuthenticationApiKey = "YOUR-API-KEY-HERE";
-                    dep.Initialize(TelemetryConfiguration.Active);
-                }
-            }
+services.ConfigureTelemetryModule<QuickPulseTelemetryModule>( module => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
----
 
 Ha ismeri fel, és a csatlakoztatott kiszolgálókra megbízható, megpróbálhatja az egyéni szűrők a hitelesített csatornát nélkül. Ez a beállítás hat hónapig érhető el. Ez a felülbírálás kell egyszer minden új munkamenet, vagy ha új kiszolgáló online elérhető lesz.
 

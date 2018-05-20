@@ -1,35 +1,42 @@
 ---
-title: "Egy Azure veremben biztonságosan tárolt jelszóval rendelkező virtuális gép üzembe helyezése |} Microsoft Docs"
-description: "Egy Azure verem Key Vault tárolt jelszót használó virtuális gépek telepítése"
+title: Egy Azure veremben biztonságosan tárolt jelszóval rendelkező virtuális gép üzembe helyezése |} Microsoft Docs
+description: Egy Azure verem Key Vault tárolt jelszót használó virtuális gépek telepítése
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/08/2017
+ms.date: 05/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: 8d9a2cebd7a28ca13cf88518a7c83b217af4c0e1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Virtuális gép létrehozása a kulcstároló tárolt jelszó beolvasásával
+# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Hozzon létre egy virtuális gépet az Azure verem Key Vault tárolja biztonságos jelszó
 
-Kell például a jelszót biztonságos értéket átadni üzembe helyezése során, ha egy titkos kulcsot egy Azure verem-tárolóban tárolni ezt az értéket, és az Azure Resource Manager sablonokban hivatkozni rá. Így tesz, nem kell manuálisan adja meg a titkos kulcsot minden egyes telepítéshez a erőforrásokat is megadhat mely felhasználók vagy szolgáltatásnevekről férhetnek hozzá a titkos kulcsot. 
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Ez a cikk azt végigvezetik Önt a jelszót a kulcstároló tárolt lekérésével Azure verem Windows virtuális gépek telepítéséhez szükséges lépéseket. Ezért a jelszó soha nem kerül, a sablon paraméterfájl egyszerű szöveg. Ezeket a lépéseket az Azure verem szoftverfejlesztői készlet, vagy egy külső ügyfél is használhatja, ha a VPN-en keresztül kapcsolódik.
+Ez a cikk lépéseket üzembe helyezhet egy Windows Server virtuális gép Azure verem Key Vault tárolt jelszó használatával. Az kulcstároló jelszó használata biztonságosabb, mint egy egyszerű szöveges jelszó átadásakor.
+
+## <a name="overview"></a>Áttekintés (klasszikus)
+
+Egy Azure verem-tárolóban egy titkos kulcsként értékeket, például a jelszó is tárolhatja. Titkos kulcs létrehozása után hivatkozhasson rá az Azure Resource Manager sablonokban. Titkos kulcsok használata a Resource Manager a következő előnyöket biztosítja:
+
+* Ne kelljen manuálisan adja meg titkos kulcsot minden alkalommal, amikor telepít egy erőforrást.
+* Megadhatja, hogy mely felhasználók vagy szolgáltatásnevekről férhetnek hozzá a titkos kulcsot.
 
 ## <a name="prerequisites"></a>Előfeltételek
- 
-* Az ajánlat, amely tartalmazza a Key Vault szolgáltatás elő kell fizetnie.  
-* [Telepítse a PowerShell Azure verem.](azure-stack-powershell-install.md)  
+
+* Az ajánlat, amely tartalmazza a Key Vault szolgáltatás elő kell fizetnie.
+* [Telepítse a PowerShell Azure verem.](azure-stack-powershell-install.md)
 * [Konfigurálja az Azure-verem felhasználói PowerShell környezetet.](azure-stack-powershell-configure-user.md)
 
 A folyamat által a kulcstároló tárolt jelszó lekérése a virtuális gép létrehozásához szükséges a következő lépésekből áll:
@@ -37,6 +44,8 @@ A folyamat által a kulcstároló tárolt jelszó lekérése a virtuális gép l
 1. Titkos kulcs tároló létrehozása.
 2. Frissítse a azuredeploy.parameters.json fájlt.
 3. A sablon telepítéséhez.
+
+>[MEGJEGYZÉS] Ezeket a lépéseket az Azure verem szoftverfejlesztői készlet, vagy egy külső ügyfél is használhatja, ha a VPN-en keresztül kapcsolódik.
 
 ## <a name="create-a-key-vault-secret"></a>Titkos kulcs tároló létrehozása
 
@@ -74,7 +83,7 @@ Módosítsa a `azuredeploy.parameters.json` fájlt a környezeti értékek alapj
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>A azuredeploy.parameters.json fájl frissítése
 
-Frissítse a azuredeploy.parameters.json fájlt a KeyVault URI, secretName, adminUsername a virtuális gép értékek szerint a környezetben. A következő JSON-fájlt a sablonfájl paraméterek példáját mutatja be: 
+Frissítse a azuredeploy.parameters.json fájlt a KeyVault URI, secretName, adminUsername a virtuális gép értékek szerint a környezetben. A következő JSON-fájlt a sablonfájl paraméterek példáját mutatja be:
 
 ```json
 {
@@ -114,13 +123,13 @@ New-AzureRmResourceGroupDeployment `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
+
 Ha a sablon sikeresen telepítve lett, a következő kimenetet eredményezi:
 
 ![Központi telepítés kimeneti](media/azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
 [A Key Vault mintaalkalmazás telepítése](azure-stack-kv-sample-app.md)
 
 [A Key Vault tanúsítvánnyal egy virtuális gép üzembe helyezése](azure-stack-kv-push-secret-into-vm.md)
-

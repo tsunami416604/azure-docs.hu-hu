@@ -1,23 +1,54 @@
-
-1. Lépjen be a [Google Cloud Console](https://console.developers.google.com/project) (Google felhőkonzol) felületére, és jelentkezzen be Google-fiókja hitelesítő adataival. 
-2. Kattintson a **Create Project** (Projekt létrehozása) elemre, adjon meg egy nevet a projekthez, és kattintson a **Create** (Létrehozás) gombra. Ha a rendszer kéri, végezze el az SMS-es hitelesítést, és kattintson újra a **Create** (Létrehozás) gombra.
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 04/06/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: ae84b5fd5647ef6c54006c0411e334b14173392e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/07/2018
+---
+1. Lépjen be a [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) (Google felhőkonzol) felületére, és jelentkezzen be Google-fiókja hitelesítő adataival. 
+2. Kattintson az eszköztár **Create Project** (Projekt létrehozása) gombjára. 
    
     ![Új projekt létrehozása](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
+3. A **Project name** (Projekt neve) mezőben adja meg a projektje nevét, majd kattintson a **Create** (Létrehozás) gombra.
+4. Válassza az eszköztáron az **Alerts** (Értesítések) gombot, majd válassza ki a projektjét a listából. Ekkor megjelenik a projektje irányítópultja. Az irányítópultot közvetlenül is elérheti a következő URL használatával: https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+
+    ![Projekt kiválasztása az értesítéseknél](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
+5. Jegyezze az irányítópult **Project info** (Projektadatok) csempéjén a **Project info** (Projektinformáció) tulajdonság értékét. 
+
+    ![Projektazonosító](./media/mobile-services-enable-google-cloud-messaging/project-number.png)
+6. Az irányítópult **APIs** (API-k) csempéjén kattintson a **Go to APIs overview** (Ugrás az API-k áttekintéséhez) hivatkozásra. 
+
+    ![API-k áttekintésének hivatkozása](./media/mobile-services-enable-google-cloud-messaging/go-to-api-overview.png)
+7. Az **API** lapon válassza az **ENABLE APIS AND SERVICES** (API-k és szolgáltatások engedélyezése) lehetőséget. 
+
+    ![API-k és szolgáltatások engedélyezésének gombja](./media/mobile-services-enable-google-cloud-messaging/enable-api-services-button.png)
+8. Keresse meg és válassza a **Google Cloud Messaging** lehetőséget. 
+
+    ![Google Cloud Messaging megkeresése és kiválasztása](./media/mobile-services-enable-google-cloud-messaging/search-select-gcm.png)
+9. A Google Cloud Messaging projektben való engedélyezéséhez válassza az **ENABLE** (Engedélyezés) lehetőséget.
+
+    ![A Google Cloud Messaging engedélyezése](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-button.png)
+10. Kattintson az eszköztár **Create credentials** (Hitelesítő adatok létrehozása) gombjára. 
+
+    ![Hitelesítő adatok létrehozásának gombja](./media/mobile-services-enable-google-cloud-messaging/create-credentials-button.png)
+11. Az **Add credentials to your project** (Hitelesítő adatok hozzáadása a projekthez) lapon válassza az **API key** (API-kulcs) hivatkozást. 
+
+    ![Hitelesítő adatok létrehozásának gombja](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
+12. Az **API key** lapon válassza a **Create/Save** (Létrehozás/mentés) lehetőséget. Az alábbi példában az **IP addresses** (IP-címek) lehetőséget választottuk, és a **0.0.0.0/0** értéket adtuk meg az engedélyezett IP-címeknek. Önnek a saját környezete követelményeinek megfelelően kell beállítania az API-kulcsok korlátozását. 
+
+    ![API-kulcs létrehozására szolgáló gomb](./media/mobile-services-enable-google-cloud-messaging/api-key-create-button.png)
+13. Másolja az **API key** (API-kulcs) értéket a vágólapra, és mentse valahova. 
+
+    ![API-kulcs másolása](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-     Adja meg az új projekt nevét a **Project name** mezőben, és kattintson a **Create project** (Projekt létrehozása) gombra.
-3. Kattintson a **Utilities and More** (Segédprogramok és egyebek) gombra, majd a **Project Information** (Projektinformációk) elemre. Jegyezze fel a projekt számát, amely a **Project Number** mezőben található. Ezt az értéket kell majd megadnia a `SenderId` változóként az ügyfélalkalmazásban.
-   
-    ![Segédprogramok és egyéb programok](./media/mobile-services-enable-google-cloud-messaging/notification-hubs-utilities-and-more.png)
-4. A projekt irányítópultján, a **Mobile APIs** (Mobil API-k) elem alatt kattintson a **Google Cloud Messaging**, a következő oldalon pedig az **Enable API** (API engedélyezése) lehetőségre, majd fogadja el a szolgáltatási feltételeket. 
-   
-    ![GCM engedélyezése](./media/mobile-services-enable-google-cloud-messaging/enable-GCM.png)
-   
-    ![GCM engedélyezése](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-2.png) 
-5. A projekt irányítópultján kattintson a **Credentials** (Hitelesítő adatok) > **Create Credential** (Hitelesítő adat létrehozása) > **API Key** (API-kulcs) lehetőségre. 
-   
-    ![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-create-server-key.png)
-6. A **Create a new key** (Új kulcs létrehozása) ablakban kattintson a **Server key** (Kiszolgálókulcs) lehetőségre, adja meg a kulcs nevét, majd kattintson a **Create** (Létrehozás) gombra.
-7. Jegyezze fel az **API KEY** (API-KULCS) értékét.
-   
-    Ezt az API-kulcs-értéket fogja használni, hogy engedélyezze az Azure-nak a GCM-mel való hitelesítést, és hogy leküldéses értesítéseket küldjön az alkalmazása nevében.
+    Ezt az API-kulcs-értéket fogja használni, hogy engedélyezze az Azure-nak a GCM-mel való hitelesítést, és hogy leküldéses értesítéseket küldjön az alkalmazása nevében. A projekt irányítópultjára való visszatéréshez használja ezt az URL-t: https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
 

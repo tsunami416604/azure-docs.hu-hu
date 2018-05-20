@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 3ed03194ca095d539d10081578fa71c748ba1d23
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 268ec61515f438fb7f98b6cef7a8ec60ba22e23f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
 Az Azure Service Fabric állapotalapú alkalmazások és szolgáltatások megbízható szolgáltatások StatefulServiceBase osztály bocsát ki [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) eseményeket, amelyek segítségével a szolgáltatás hibakeresési módját a futtatókörnyezet működő, és segítenek a hibaelhárításban betekintést.
@@ -29,7 +29,7 @@ Az állapotalapú alkalmazások és szolgáltatások megbízható szolgáltatás
 Például az eszközök és technológiák segíti a összegyűjtése és/vagy EventSource események megtekintése [PerfView](http://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), és a [Microsoft TraceEvent Library](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ## <a name="events"></a>Események
-| esemény neve | Esemény azonosítója | Szint | Esemény leírása |
+| Esemény neve | Esemény azonosítója | Szint | Esemény leírása |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Tájékoztató |Amikor a szolgáltatás RunAsync feladat elindítva |
 | StatefulRunAsyncCancellation |2 |Tájékoztató |Amikor a szolgáltatás RunAsync feladat meg lett szakítva |

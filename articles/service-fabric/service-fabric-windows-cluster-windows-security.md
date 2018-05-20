@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ce3bf686-ffc4-452f-b15a-3c812aa9e672
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 4eac453ad866910839088892de457c2cec48791c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0f0df7883b25344560514491c08af3eadf872ffb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Biztonságos Windows önálló fürtben, a Windows biztonsági
 A jogosulatlan hozzáférés elkerülése érdekében a Service Fabric-fürt, biztosítania kell a fürthöz. Biztonsági különösen fontos, amikor a fürt fut termelési számítási feladatokhoz. Ez a cikk ismerteti, hogyan csomópontok és ügyfél-csomópont biztonsági konfigurálása a Windows biztonsági használatával a *művelet* fájlt.  A folyamat megfelel-e a konfigurálás biztonsági lépés [létrehozása a Windows rendszert futtató önálló fürtön](service-fabric-cluster-creation-for-windows-server.md). Hogyan használja a Service Fabric a Windows biztonsági kapcsolatos további információkért lásd: [fürtök biztonsági forgatókönyveinek](service-fabric-cluster-security.md).

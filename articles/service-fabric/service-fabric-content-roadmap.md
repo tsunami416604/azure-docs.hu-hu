@@ -1,24 +1,24 @@
 ---
-title: "További tudnivalók az Azure Service Fabric |} Microsoft Docs"
-description: "További tudnivalók az alapvető fogalmait és főbb területei Azure Service Fabric. A Service Fabric és mikroszolgáltatások létrehozása kiterjesztett áttekintést nyújt."
+title: További tudnivalók az Azure Service Fabric |} Microsoft Docs
+description: További tudnivalók az alapvető fogalmait és főbb területei Azure Service Fabric. A Service Fabric és mikroszolgáltatások létrehozása kiterjesztett áttekintést nyújt.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: e9d0691876a417fe8665bed2d712d643a4364120
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1c3ea5b041cf2a961ef57bc168ae86b83412e044
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Ezért kívánt további információt a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy felületet biztosít, és sok további.  Ez a cikk a Service Fabric kivonatát biztosít, és ismerteti az alapvető fogalmakat, programozási modellek, alkalmazás-életciklus, fürtök és a állapotfigyeléssel teszteléséhez. Olvassa el a [áttekintése](service-fabric-overview.md) és [mikroszolgáltatások Mik?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk átfogó tartalom listája nem tartalmaz, de csatolás áttekintése és a Service Fabric minden területéhez elindított cikkek beolvasása. 
@@ -82,7 +82,7 @@ Miért kell állapotalapú mikroszolgáltatások állapotmentes ők együtt? A k
 ## <a name="supported-programming-models"></a>Támogatott programozási modellek
 A Service Fabric és a szolgáltatások kezeléséhez több lehetőséget is kínál. Szolgáltatások használhatnak a Service Fabric API-k teljes kihasználásához a platform szolgáltatásai és alkalmazás-keretrendszerek számára. Szolgáltatások bármilyen lefordított végrehajtható bármilyen nyelven írt, és a Service Fabric fürt által futtatott is lehet. További információkért lásd: [támogatott programozási modellek](service-fabric-choose-framework.md).
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 Alapértelmezés szerint a Service Fabric telepíti, és aktiválja a szolgáltatást is folyamatokat. A Service Fabric is telepítheti a szolgáltatások [tárolók](service-fabric-containers-overview.md). Fontos kombinálhatja a folyamatokat a szolgáltatások és szolgáltatások tárolókban ugyanabban az alkalmazásban. A Service Fabric Windows Server 2016 Linux tárolók Windows tárolók központi telepítését támogatja. A meglévő alkalmazásokat, állapotmentes szolgáltatásokhoz vagy tárolókban lévő állapotalapú szolgáltatások telepítése. 
 
 ### <a name="reliable-services"></a>Reliable Services
@@ -155,7 +155,7 @@ Fürtök védetté kell tennie, hogy jogosulatlan felhasználók csatlakozzon a 
 A fürt biztonsági forgatókönyvek a következők:
 * Csomópontok biztonsági
 * Ügyfél-csomópont biztonsági
-* Szerepköralapú hozzáférés-vezérlést (RBAC)
+* Szerepköralapú hozzáférés-vezérlés (RBAC)
 
 További információkért olvassa el a [fürt biztonságos](service-fabric-cluster-security.md).
 

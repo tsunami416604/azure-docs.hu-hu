@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0887c50ea7da00859e370f60626eabb03fcc1f4b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c3c5a3029916b91b65a5bd0f6efa5c83f5dfcb66
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -26,7 +26,7 @@ Az Application Insights bármely weblappal használható – csak egy rövid Jav
 
 ![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Böngésző elemre](./media/app-insights-javascript/03.png)
 
-Ehhez egy [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Ha a csapata szervezeti előfizetéssel rendelkezik, kérje meg a tulajdonost, hogy adjon hozzá Microsoft-fiókot. A fejlesztés és a kis mértékű használat nem kerül semmibe.
+Ehhez egy [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Ha a csapata szervezeti előfizetéssel rendelkezik, kérje meg a tulajdonost, hogy adjon hozzá Microsoft-fiókot.
 
 ## <a name="set-up-application-insights-for-your-web-page"></a>Az Application Insights beállítása a weboldalához
 A következőképpen adja hozzá a betöltő kódrészletet a weboldalakhoz.
@@ -113,11 +113,8 @@ Az [elérhető paraméterek](https://github.com/Microsoft/ApplicationInsights-JS
     // Time page load up to execution of first trackPageView().
     overridePageViewDuration: boolean,
 
-    // Set these dynamically for an authenticated user.
-    appUserId: string,
+    // Set dynamically for an authenticated user.
     accountId: string,
-
-
 
 ## <a name="run"></a>Az alkalmazás futtatása
 Futtassa a webalkalmazást, használja egy ideig telemetria létrehozásához, és várjon néhány másodpercig. Ezt futtathatja a fejlesztési számítógépén az **F5** billentyűvel, vagy közzéteheti, és hagyhatja, hogy a felhasználók játsszanak vele.

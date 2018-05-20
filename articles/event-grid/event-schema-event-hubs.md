@@ -1,18 +1,18 @@
 ---
-title: "Az Azure esemény rács event hubs esemény séma"
-description: "Az event hubs eseményeit Azure esemény rács biztosított tulajdonságait ismerteti"
+title: Az Azure esemény rács event hubs esemény séma
+description: Az event hubs eseményeit Azure esemény rács biztosított tulajdonságait ismerteti
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9fdc8816d8db88d4f1fd7b6ce722b7d2763eeaeb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6fac70a8837245e6d60a5a61db8a22ab718d4b49
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Az event hubs Azure esemény rács esemény séma
 
@@ -63,20 +63,20 @@ Az esemény a következő legfelső szintű adatokat tartalmaz:
 | eventTime | karakterlánc | Az esemény jön létre az idő alapján a szolgáltató UTC idő szerint. |
 | id | karakterlánc | Az esemény egyedi azonosítója. |
 | adat | objektum | Event hub eseményadatok. |
-| dataVersion | karakterlánc | Az objektum séma verziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | karakterlánc | Az esemény-metaadatok séma verziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
+| dataVersion | karakterlánc | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | karakterlánc | Az esemény-metaadatok sémaverziója. Esemény rács a séma legfelső szintű tulajdonság határozza meg. Esemény rács biztosítja ezt az értéket. |
 
 Az objektum tulajdonságai a következők:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | fileUrl | karakterlánc | A rögzítési fájl elérési útja. |
-| fileType | karakterlánc | A rögzítési fájl típusú fájl. |
+| Fájltípus | karakterlánc | A rögzítési fájl típusú fájl. |
 | partitionId | karakterlánc | A szilánkok azonosítóját. |
-| sizeInBytes | integer | A fájl mérete. |
-| eventCount | integer | A fájl események száma. |
-| firstSequenceNumber | integer | A legkisebb sorszám az üzenetsorból. |
-| lastSequenceNumber | integer | A várólista utolsó számát. |
+| sizeInBytes | egész szám | A fájl mérete. |
+| eventCount | egész szám | A fájl események száma. |
+| firstSequenceNumber | egész szám | A legkisebb sorszám az üzenetsorból. |
+| lastSequenceNumber | egész szám | A várólista utolsó számát. |
 | firstEnqueueTime | karakterlánc | Először az üzenetsorból. |
 | lastEnqueueTime | karakterlánc | A várólista utolsó időpontját. |
 

@@ -1,24 +1,26 @@
 ---
-title: "Az Azure AD-aláírási kulcs váltása"
-description: "Ez a cikk ismerteti, amelyek az aláírási kulcs átfordulási ajánlott eljárások az Azure Active Directory"
+title: Az Azure AD-aláírási kulcs váltása
+description: Ez a cikk ismerteti, amelyek az aláírási kulcs átfordulási ajánlott eljárások az Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2016
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5396baa57fe0b49809d9fe06eb2b2feda2ed9ba8
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directoryban kulcsváltás aláírása
 A cikk ismerteti, mit kell tudnia a nyilvános kulcsok biztonsági jogkivonatok aláírásához használt Azure Active Directory (Azure AD). Fontos megjegyezni, hogy rendszeres időközönként, és vészhelyzet esetén a kulcsok helyettesítő volt állítva azonnal. Minden alkalmazás, amely használhatja az Azure Active Directory kell tudni programozott módon a kulcsváltás folyamat, vagy a rendszeres manuális helyettesítő-folyamatot. Olvasási megértése, hogyan működnek a kulcsokat, továbbra is az alkalmazás a Váltás hatásának értékelése és az alkalmazás frissítésére, vagy kezelje a kulcsváltás, szükség esetén rendszeres manuális váltása folyamatot.
@@ -274,7 +276,7 @@ Ha követte ezeket a lépéseket, az alkalmazás Web.config frissíti a dokument
 
 Győződjön meg arról, hogy működik-e a kulcsváltás programot az alábbi lépésekkel.
 
-1. Miután ellenőrizte, hogy az alkalmazás a fenti olyan helykódot alkalmaz, nyissa meg a **Web.config** fájlt, és keresse meg a  **<issuerNameRegistry>**  blokk, kifejezetten keres a következő néhány sor:
+1. Miután ellenőrizte, hogy az alkalmazás a fenti olyan helykódot alkalmaz, nyissa meg a **Web.config** fájlt, és keresse meg a **<issuerNameRegistry>** blokk, kifejezetten keres a következő néhány sor:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -282,7 +284,7 @@ Győződjön meg arról, hogy működik-e a kulcsváltás programot az alábbi l
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. Az a  **<add thumbprint=””>**  beállításban módosítsa az ujjlenyomat értékét azáltal, hogy egy másik bármely karakter. Mentse a **Web.config** fájlt.
+2. Az a **<add thumbprint=””>** beállításban módosítsa az ujjlenyomat értékét azáltal, hogy egy másik bármely karakter. Mentse a **Web.config** fájlt.
 3. Építenie az alkalmazást, és futtassa azt. Ha a bejelentkezési folyamat elvégzése az alkalmazás sikeresen frissíti a kulcs úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentumból. Ha bejelentkezik problémát tapasztal, győződjön meg arról, a módosítások az alkalmazás olvasásával helyesek a [hozzáadása bejelentkezés a webes alkalmazás használata az Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) cikket, vagy letöltése, és tanulmányozza a következő példakód: [ Az Azure Active Directory több-Bérlős felhőalapú alkalmazásnál](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Erőforrások védelme és a Visual Studio 2008 vagy 2010 webes alkalmazások és a Windows Identity Foundation (WIF) 1.0-s a .NET 3.5

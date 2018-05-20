@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 1c805819a22d26e650d13b0e41ebac00c4e52d91
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 677fc66b66d6c17806a313f2fac3a15e8e1775ba
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="using-azure-dns-for-private-domains"></a>A privát tartományok Azure DNS-sel
 A tartománynévrendszer, vagy a DNS-, felelős fordítása (vagy feloldása) a szolgáltatás nevét az IP-címét. Az Azure DNS egy olyan üzemeltetési szolgáltatás DNS-tartományok, biztosítani a névfeloldást a Microsoft Azure-infrastruktúra használatával.  Mellett az internetre irányuló DNS-tartományok Azure DNS-ben mostantól is támogatja a saját DNS-tartományok, előzetes verziójú funkciók.  

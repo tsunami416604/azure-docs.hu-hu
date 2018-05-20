@@ -53,11 +53,19 @@
 ### [Vállalati költségek nézet letiltva](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 # Referencia
-## [API – Áttekintés](billing-usage-rate-card-overview.md)
-## [Az Enterprise Reporting API áttekintése](billing-enterprise-api.md)
-## [REST számlázása](/rest/api/billing)
-## [Használat és RateCard REST](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
-## [Partneri megoldás: Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
+## [Az Azure számlázási API áttekintése](billing-usage-rate-card-overview.md)
+### [Azure számlázási REST API](https://docs.microsoft.com/rest/api/billing)
+### [Partnermegoldás – Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
+## Azure használati API
+### [Azure használati REST API](https://docs.microsoft.com/rest/api/consumption) 
+### [RateCard REST API](https://msdn.microsoft.com/library/azure/mt219005.aspx)
+### [Használati REST API](https://msdn.microsoft.com/library/azure/mt219003.aspx)
+## [A vállalati jelentéskészítés áttekintése](billing-enterprise-api.md)
+### [Vállalati jelentéskészítési REST API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)
+## Számlázási kódminták
+### [Számlázási API kódmintája](https://github.com/Azure-Samples/billing-dotnet-core-invoice-download)
+### [Használati API kódmintája](https://github.com/Azure-Samples/billing-dotnet-usage-api)
+### [RateCard API kódmintája](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

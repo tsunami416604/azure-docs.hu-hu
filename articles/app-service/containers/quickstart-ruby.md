@@ -16,15 +16,15 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: def1e3f3de25478e51a069bc64c98d650f59072f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0707835cf4d6891397579cc41de49fc0462b4521
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Ruby alkalmazás létrehozása a Linux App Service-ben | Microsoft Docs
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Az alábbi gyors útmutató megmutatja, hogyan készíthet alapszintű Ruby on Rails alkalmazást, amelyet aztán a Linux rendszeren futó webalkalmazásként telepíthet az Azure-ba.
+A [Linuxon futó Azure App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Az alábbi gyors útmutató megmutatja, hogyan készíthet alapszintű [Ruby on Rails](https://rubyonrails.org/) alkalmazást, amelyet aztán Web App on Linux alkalmazásként telepíthet az Azure-ba.
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -45,7 +45,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 
-Az alkalmazás működéséhez futtassa a Rails-kiszolgálót. Váltson át a *hello-world* könyvtárra és a `rails server` parancs elindítja a kiszolgálót.
+Az alkalmazás működéséhez futtassa a Rails-kiszolgálót. Váltson át a `hello-world` könyvtárra, és használja a `rails server` parancsot a kiszolgáló elindításához.
 
 ```bash
 cd hello-world\bin

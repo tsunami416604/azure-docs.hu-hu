@@ -4,20 +4,20 @@ description: Ez a cikk ismerteti, hogyan lehet programozott módon az Azure-irá
 services: azure-portal
 documentationcenter: ''
 author: adamab
-manager: timlt
+manager: dougeby
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 3d72c8b026dd7c72be01aabcb47e76174d7afd6b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8670d25e10b58c40b9d0807de1db88c3296b193d
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programozott módon az Azure-irányítópultot létrehozni
 
@@ -25,7 +25,7 @@ Ebből a dokumentumból a folyamatot, amely programozott módon létrehozása é
 
 ![a minta-irányítópult](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
-## <a name="overview"></a>Áttekintés
+## <a name="overview"></a>Áttekintés (klasszikus)
 
 Irányítópultok Azure azok a megosztott [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) hasonlóan a virtuális gépek és tárfiókok.  Ezért ezek kezelhetők programozott módon keresztül a [Azure Resource Manager REST API-k](/rest/api/), a [Azure CLI](https://docs.microsoft.com/cli/azure), [Azure PowerShell-parancsok](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0), és sok [ Azure-portálon](https://portal.azure.com) szolgáltatások felett erőforrást kezelésének megkönnyítése ezen API-k létrehozása.  
 

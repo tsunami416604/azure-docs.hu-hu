@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/26/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 4d27bc3660035ace25436a4f756c41e88200649d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 429f1edae15a98b3c38ae4980a630f23b3a85d23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple adatkezelő megoldási áttekintés
 
@@ -80,6 +80,11 @@ Ezt a kulcsot a számítási erőforrások használják az átalakítás végreh
 Az adatkezelő régió eltér a definíció régiója, ha fontos, hogy tudomásul veszi a milyen adatok metaadatok e régió helyezkedik el. A következő ábra szemlélteti a hatást, hogy a különböző régiókban adatkezelő és a feladat definíciójához.
 
 ![Különböző régiókban szolgáltatás és a feladat meghatározása](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+
+## <a name="gdpr-compliance"></a>GDPR megfelelőségi
+
+[Általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) Európai Unió adatok védelmét és adatvédelmi törvény van. A GDPR arról, hogyan gyűjtésére, tárolására és személyes adatok sok követelményeket tartalmaz. A GDPR szabályok írnak a vállalatok, állami intézményekhez és más szervezetek, amelyek EU működik és gyűjtése, Európa lakosai kötött adatok elemzése. A StorSimple-kezelő megfelelő GDPR. A kezelő szolgáltatás nem gyűjt személyes adatokat.
+További információkért tekintse át a Microsoft Privacy házirendje [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>További lépések
 

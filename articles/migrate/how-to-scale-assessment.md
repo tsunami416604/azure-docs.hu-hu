@@ -4,13 +4,13 @@ description: Ismerteti, hogyan lehet az Azure áttelepítése szolgáltatás has
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 01/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: 934f32228d2c37db58c52cf4820ccc331fccd1d3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e0bd62710c47cfdf81535470ef96bad2ab675bb0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -88,7 +88,7 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
 
 3. Győződjön meg arról, hogy a létrehozott kivonatoló megegyezik-e a következő beállításokat.
 
-    1.0.9.7 petesejtek verziójához
+    Az OVA 1.0.9.7-es verziója esetében
 
     **Algoritmus** | **Kivonat értéke**
     --- | ---
@@ -167,7 +167,7 @@ Azt javasoljuk, hogy a számlálók megfelelően vannak összegyűjtött legnagy
 
 A következő táblázatban a értékelési eredmények, amelyek befolyásolják, ha a számláló nem gyűjtött a program.
 
-| A számláló                                 | Szint | Eszközönkénti szint | Értékelés gyakorolt hatás                    |
+| Számláló                                 | Szint | Eszközönkénti szint | Értékelés gyakorolt hatás                    |
 | --------------------------------------- | ----- | ---------------- | ------------------------------------ |
 | CPU.Usage.average                       | 1     | NA               | Ajánlott Virtuálisgép-méretet és költség         |
 | mem.usage.average                       | 1     | NA               | Ajánlott Virtuálisgép-méretet és költség         |
@@ -203,7 +203,7 @@ Minden felderítés, végre kell hajtania a gyűjtő felderítéséhez szükség
 5.  A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
     - Adja meg a név (FQDN) vagy a vCenter-kiszolgáló IP-címét.
     - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelyet a gyűjtő virtuális gépek felderítése a vCenter Server fog használni.
-    - A **hatókörét**, válassza ki a virtuális gép felderítési hatókörét. A gyűjtő képes felderíteni csak az adott hatókörben lévő virtuális gépek. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Hogy 1000-nél több virtuális gép nem tartalmaz. 
+    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő képes felderíteni csak az adott hatókörben lévő virtuális gépek. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Hogy 1000-nél több virtuális gép nem tartalmaz. 
 
 6.  A **megadása áttelepítési projekt**, adja meg az Azonosítót, és a projekt kulcsát. Nem másolja őket, ha a gyűjtő VM nyissa meg az Azure-portálon. A projekt **áttekintése** lapon jelölje be **gépek felderítése** , és másolja az értékeket.  
 7.  A **gyűjtemény folyamatjelző**, a felderítési folyamat figyelésére, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát.

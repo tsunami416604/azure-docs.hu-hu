@@ -6,14 +6,14 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 1424ae2d9ffe7308fe85b7eb8ed6b0062d59ce31
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9abe7743906064d182453fea403ff94a097c3558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>vCore-alapú alapjául szolgáló vásárlási modell az Azure SQL Database (előzetes verzió)
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/11/2018
 |**Alapjául szolgáló vásárlási modell**|**Leírás**|**A legjobb**|
 |---|---|---|
 |DTU-alapú modell|Ez a modell egy számítási, tárolási és IO erőforrások csomagolt mértéken alapul. A teljesítményszintek különálló adatbázisok esetében DTU-k (adatbázis-tranzakciós egységek), rugalmas készletek esetében pedig rugalmas DTU-k formájában vannak meghatározva. Dtu és edtu-k kapcsolatban bővebben lásd: [Dtu és edtu-k](sql-database-what-is-a-dtu.md)?|Ajánlott az ügyfelek számára, akik egyszerű, előre konfigurált beállításai.| 
-|vCore alapuló modell|Ez a modell lehetővé teszi, hogy egymástól függetlenül válik a számítási és tárolási erőforrások. Lehetővé teszi az SQL Server Azure hibrid juttatás segítségével költséghatékony.|Az ügyfelek, akik a rugalmasságot, a vezérlési és az átláthatóság érték legmegfelelőbb.|
+|vCore alapuló modell|Ez a modell lehetővé teszi, hogy egymástól függetlenül válik a számítási és tárolási erőforrások – legfeljebb 80 vCores adattárolásra 4 TB-os és 200000 iops-érték. Lehetővé teszi az SQL Server Azure hibrid juttatás segítségével költséghatékony.|Az ügyfelek, akik a rugalmasságot, a vezérlési és az átláthatóság érték legmegfelelőbb.|
 ||||  
 
 ![árképzési modellt](./media/sql-database-service-tiers/pricing-model.png)
@@ -48,7 +48,7 @@ Az a vCore-alapú vásárlási modell (előzetes verzió) ügyfelek díja:
 \*\* Előzetes amelyek biztonsági mentések és IOs 7 nap
 
 > [!IMPORTANT]
-> Számítás-, IOs, adatok, és a naplók tárolásához van szó, adatbázis vagy a rugalmas készlet. Biztonsági másolatok tárolási fel van töltve, egyes adatbázisonként. A részletes adatokat felügyelt példány díjak meg [Azure SQL adatbázis felügyelt példány](sql-database-managed-instance.md).
+> Számítás-, IOs, adatok, és a naplók tárolásához van szó, adatbázis vagy a rugalmas készlet. Biztonsági másolatok tárolási fel van töltve, egyes adatbázisonként. Felügyelt példány díjak részletekért tekintse meg a [Azure SQL adatbázis felügyelt példány](sql-database-managed-instance.md).
 
 > [!IMPORTANT]
 > A régióban korlátozások vonatkoznak: 
@@ -65,10 +65,10 @@ Az alábbi táblázat segít a két szintje közötti különbségek megismerés
 ||**Általános célú**|**Kritikus fontosságú üzleti**|
 |---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladat. Ajánlatok költségvetés objektumorientált elosztott terhelésű és méretezhető számítási és tárolási beállításai.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|
-|Compute|1 és 16 vCore|1 és 16 vCore|
+|Compute|1 és 80 vCore generációs 4. és 5 létrehozása |1 és 80 vCore generációs 4. és 5 létrehozása|
 |Memory (Memória)|7 GB / mag |7 GB / mag |
-|Storage|Prémium szintű távtároló, 5 GB – 4 TB-os|Helyi SSD tároló, 5 GB – 1 TB-os|
-|IO átviteli sebesség (hozzávetőleges)|500 iops-értéket vCore rendelkező 7500 maximális IOPS|5000 iops teljesítményt nyújtanak core|
+|Storage|Prémium szintű távtároló, 5 GB – 4 TB-os|Helyi SSD tároló, 5 GB – 4 TB-os|
+|IO átviteli sebesség (hozzávetőleges)|500 iops-értéket vCore a 7000-es maximális IOPS|5000 iops teljesítményt nyújtanak core rendelkező 200000 maximális IOPS|
 |Rendelkezésre állás|1 replika, nem olvasható méretezési|3 replikákat, 1 [olvasási méretű](sql-database-read-scale-out.md), redundáns magas rendelkezésre ÁLLÁSÚ zóna|
 |Biztonsági másolatok|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap) *|
 |A memóriában|–|Támogatott|

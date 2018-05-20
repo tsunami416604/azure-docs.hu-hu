@@ -12,32 +12,44 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/26/2017
+ms.date: 5/15/2018
 ms.author: mabrigg
 ms.reviewer: Balsu.G
-ms.openlocfilehash: e17fc85de3d11034889c39fd205b7ddc8cb344cc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2655b682d35dd1879c649ed58d524ecd80808896
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Az Azure-verem felhasználói PowerShell környezet konfigurálása
 
-Azure verem felhasználóként konfigurálhatja az Azure verem szoftverfejlesztői készlet PowerShell környezetben. Miután konfigurálta, PowerShell Azure verem ajánlatokat, például előfizetés erőforrások kezeléséhez használhatja virtuális gépek létrehozásához, központi telepítése Azure Resource Manager-sablonok, stb. Ez a témakör hatóköre a következő környezetekben csak, ha azt szeretné, hogy a felhőkörnyezet operátor PowerShell beállítása tekintse meg a felhasználó használja a [konfigurálása az Azure-verem operátor PowerShell környezet](../azure-stack-powershell-configure-admin.md) cikk. 
+*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-## <a name="prerequisites"></a>Előfeltételek 
+A PowerShell-környezet egy Azure verem felhasználó konfigurálásához kövesse a cikkben a utasításokat.
+Miután konfigurálta a környezetben, használhatja a PowerShell verem Azure-erőforrások kezeléséhez. Például a PowerShell használatával is ajánlatok előfizetni, virtuális gépek létrehozása és telepítése Azure Resource Manager-sablonok.
 
-Futtassa a következő előfeltételek származhatnak a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+>[!NOTE]
+>Ez a cikk hatóköre Azure verem felhasználói környezetben. Ha a felhőkörnyezet operátor PowerShell beállítása, olvassa el a [konfigurálása az Azure-verem operátor PowerShell környezet](../azure-stack-powershell-configure-admin.md) cikk.
 
-* Telepítés [Azure verem-kompatibilis Azure PowerShell-modulok](azure-stack-powershell-install.md).  
-* Töltse le a [az Azure veremnek megfelelő működéséhez szükséges eszközök](azure-stack-powershell-download.md). 
+## <a name="prerequisites"></a>Előfeltételek
+
+Beállíthatja, hogy az ezekről az előfeltételekről a [szoftverfejlesztői készlet](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-en keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+
+* Telepítés [Azure verem-kompatibilis Azure PowerShell-modulok](azure-stack-powershell-install.md).
+* Töltse le a [az Azure veremnek megfelelő működéséhez szükséges eszközök](azure-stack-powershell-download.md).
 
 ## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>A felhasználói környezet beállításait, és jelentkezzen be Azure verem
 
-Az alapján a központi telepítés (Azure AD vagy AD FS), PowerShell konfigurálása az Azure-vermet (Ügyeljen rá, hogy cserélje le a AAD tenantName, GraphAudience végpont és a környezet konfigurációjának megfelelően ArmEndpoint értékek) az alábbi parancsfájlok egyikét futtatja:
+Azure verem a központi telepítés (Azure AD vagy AD FS), futtassa az alábbi parancsfájlok PowerShell konfigurálása az Azure-verem típusa alapján.
+
+Ellenőrizze, hogy a következő parancsfájl-változókat cserélje a Azure verem konfigurációból értékeket:
+
+* Az AAD tenantName
+* GraphAudience végpont
+* ArmEndpoint
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>Az Azure Active Directory (AAD)-alapú telepítések
-       
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -67,11 +79,11 @@ Az alapján a központi telepítés (Azure AD vagy AD FS), PowerShell konfigurá
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Active Directory összevonási szolgáltatások (AD FS)-alapú telepítések 
-          
+### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Active Directory összevonási szolgáltatások (AD FS)-alapú telepítések
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -94,7 +106,7 @@ Az alapján a központi telepítés (Azure AD vagy AD FS), PowerShell konfigurá
     -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack     
+  # Get the Active Directory tenantId that is used to deploy Azure Stack
   $TenantID = Get-AzsDirectoryTenantId `
     -ADFS `
     -EnvironmentName "AzureStackUser"
@@ -102,29 +114,30 @@ Az alapján a központi telepítés (Azure AD vagy AD FS), PowerShell konfigurá
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
   ```
 
 ## <a name="register-resource-providers"></a>Erőforrás-szolgáltató regisztrálása
 
-Ha egy újonnan létrehozott felhasználó előfizetés, amely nem rendelkezik olyan erőforrásokkal, a portálon keresztül telepített, a nem automatikusan regisztrálja az erőforrás-szolgáltató. Explicit módon regisztrálnia kell őket az alábbi parancsfájl használatával:
+Erőforrás-szolgáltató nem automatikusan regisztrálja az új felhasználói előfizetések, amelyek nem rendelkeznek a portálon keresztül telepített erőforrásokat. Egy erőforrás-szolgáltató a következő parancsfájl futtatásával explicit módon regisztrálhatja:
 
 ```powershell
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
 Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -Force
-    } 
+    }
 ```
 
 ## <a name="test-the-connectivity"></a>A kapcsolat tesztelése
 
-Most, hogy minden van beállításról, tegyük a PowerShell használatával létrehozni Azure verem erőforrásokat. Például hozzon létre egy erőforráscsoportot az alkalmazáshoz, és adja hozzá a virtuális gépet. Az alábbi parancs segítségével hozzon létre egy erőforráscsoportot a "Contoso.com" nevű:
+Van minden állítsa be, amikor a kapcsolat tesztelése erőforrások létrehozásához Azure verem a PowerShell használatával. Egy tesztet hozzon létre egy erőforráscsoportot az alkalmazás, és adja hozzá a virtuális gépet. Futtassa a "Contoso.com" nevű erőforráscsoport létrehozásához a következő parancsot:
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 * [Az Azure-verem sablonok fejlesztése](azure-stack-develop-templates.md)
 * [Sablonok üzembe helyezése a PowerShell-lel](azure-stack-deploy-template-powershell.md)

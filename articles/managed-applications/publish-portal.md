@@ -1,20 +1,20 @@
 ---
-title: "Közzététel az Azure portálon keresztül alkalmazás felügyelt |} Microsoft Docs"
-description: "Bemutatja, hogyan használható az Azure portálon hozzon létre egy Azure felügyelt alkalmazás, amely tagja a szervezet számára készült."
+title: Közzététel az Azure portálon keresztül alkalmazás felügyelt |} Microsoft Docs
+description: Bemutatja, hogyan használható az Azure portálon hozzon létre egy Azure felügyelt alkalmazás, amely tagja a szervezet számára készült.
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 764eb479733a7d4acdb6e6c3eee721cb4a161c88
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 69d31a7199347574e8866b275ec17ba3997d80c2
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Az Azure portálon keresztül szolgáltatás katalógus alkalmazás közzététele
 
@@ -56,9 +56,9 @@ A kezelt alkalmazás definícióját tartalmazó .zip fájl URI keresztül elér
 
 1. Ha megadta az értékeket, válassza ki a **létrehozása**.
 
-   ![kezelt alkalmazás létrehozása](./media/publish-portal/create-app.png)
+   ![Felügyelt alkalmazás létrehozása](./media/publish-portal/create-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * Kezelt alkalmazás, tekintse meg a [a kezelt alkalmazások az Azure-hoz](sample-projects.md).
