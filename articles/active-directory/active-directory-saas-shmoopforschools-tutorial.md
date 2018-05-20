@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: e824fe7a74c4adc619f7fa324aa6fa28dacecf24
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 799a88344d6c348061af19bfbbd9022025d2d66b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Oktatóanyag: Azure Active Directoryval integrált Shmoop a iskolákat
 
@@ -30,7 +30,7 @@ Shmoop a iskolákat integrálása az Azure AD lehetővé teszi a következő el�
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Shmoop az iskola a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen--az Azure-portálon kezelheti.
 
-Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -219,7 +219,7 @@ Ebben a szakaszban Britta Simon hozzáférést biztosít az iskolai Shmoop álta
 
 7. Az a **hozzáadása hozzárendelés** párbeszédpanelen jelölje ki a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
@@ -230,7 +230,7 @@ A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások integrálása az Azure Active Directory bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

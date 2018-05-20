@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Halosys |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Halosys között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Halosys |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Halosys között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: f0ea14d5a7b954c08fb37f22d2c2fd8fe0618cde
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 80cd6730a8ddb128f4c2da823fb6968cbea9035f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>Oktatóanyag: Azure Active Directoryval integrált Halosys
 
@@ -30,7 +30,7 @@ Halosys integrálása az Azure AD lehetővé teszi a következő előnyöket biz
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Halosys (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Halosys tartomány és az URL-címek](./media/active-directory-saas-halosys-tutorial/tutorial_halosys_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<company-name>.halosys.com`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company-name>.halosys.com`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<company-name>.halosys.com/<instance name>`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company-name>.halosys.com/<instance name>`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Ügyfél [Halosys támogatási csoport](http://halosys.com/halosys#contact) beolvasni ezeket az értékeket.
@@ -125,7 +125,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 6. A a **Halosys konfigurációs** kattintson **konfigurálása Halosys** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![Halosys Configuration](./media/active-directory-saas-halosys-tutorial/tutorial_halosys_configure.png) 
+    ![Halosys konfiguráció](./media/active-directory-saas-halosys-tutorial/tutorial_halosys_configure.png) 
 
 7. Egyszeri bejelentkezés konfigurálása **Halosys** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** és **SAML-alapú egyszeri bejelentkezési URL-címe** való [Halosys támogatja Team](http://halosys.com/halosys#contact). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
@@ -198,7 +198,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -208,7 +208,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 200d87b950ac76c85513bc11da2798562e48bec3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f681eb91c1e79eb42b572956dfab93e620489e74
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Az Azure Active Directory integrálása E értékesítési vezető Remix
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban elsajátíthatja Azure Active Directory (Azure AD) inte
 - Engedélyezheti a felhasználóknak, hogy az első bejelentkezett automatikusan E értékesítés Manager Remix (egyszeri bejelentkezés, vagy az SSO) és az Azure AD-fiókok.
 - A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
 
-Az Azure AD SaaS alkalmazásintegráció kapcsolatos további információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció kapcsolatos további információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -259,7 +259,7 @@ Ebben a szakaszban a felhasználó által biztosított hozzáférés E értékes
 
 7. Az a **hozzáadása hozzárendelés** ablakban válassza ki **hozzárendelése**.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
@@ -270,7 +270,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

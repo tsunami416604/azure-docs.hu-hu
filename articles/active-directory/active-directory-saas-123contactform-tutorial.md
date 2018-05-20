@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált 123ContactForm |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és 123ContactForm között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált 123ContactForm |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és 123ContactForm között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 70955676e78642e6c8a6eb85f8165b327baece3f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f7ad606fc8ee394125300a55dc0586a055a33be
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Oktatóanyag: Azure Active Directoryval integrált 123ContactForm
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban elsajátíthatja 123ContactForm integrálása az Azure 
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a 123ContactForm (egyszeri bejelentkezés) a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-123contactform-tutorial/url1.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
 
 4. Ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
 
@@ -120,7 +120,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Kattintson a **megjelenítése speciális URL-beállításainak** beállítás
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg az URL-címet:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
+    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg az URL-címet: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Ezek a tényleges URL-címek és az oktatóanyag későbbi részében ismertetett azonosító értékét kell.
@@ -133,7 +133,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-123contactform-tutorial/tutorial_general_400.png)
 
-7. Egyszeri bejelentkezés konfigurálása **123ContactForm** oldalán, keresse fel [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/) és hajtsa végre a következő lépéseket:
+7. Egyszeri bejelentkezés konfigurálása **123ContactForm** oldalán, keresse fel [ https://www.123contactform.com/form-2709121/ ](https://www.123contactform.com/form-2709121/) és hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-123contactform-tutorial/submit.png) 
 
@@ -232,7 +232,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

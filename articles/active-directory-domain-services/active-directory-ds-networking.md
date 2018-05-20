@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b40aa0e105c0e9fac9c9cab63a5b0a2a6116c4c9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások hálózati szempontjai
 ## <a name="how-to-select-an-azure-virtual-network"></a>Egy Azure virtuális hálózat kiválasztása
@@ -66,9 +66,9 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 | Portszám | Kötelező? | Cél |
 | --- | --- | --- |
 | 443 | Kötelező |Az Azure AD-bérlő-szinkronizálás |
-| 5986 | Kötelező | Management of your domain |
-| 3389 | Nem kötelező | Management of your domain |
-| 636 | Nem kötelező | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
+| 5986 | Kötelező | A tartomány kezelése |
+| 3389 | Optional | A tartomány kezelése |
+| 636 | Optional | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
 
 **Port 443-as (szinkronizálási Azure AD-val)**
 * Az Azure AD-címtár szinkronizálja a felügyelt tartományok szolgál.
@@ -86,7 +86,7 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 * Ezen keresztül a NSG port megnyitása nem kötelező megadni.
 * Ez a port is nagy mértékben ki van kapcsolva a felügyelt tartomány marad. A módszer nem használata folyamatos, mivel a kezelési és figyelési feladatok végrehajtása használatával történik PowerShell távoli eljáráshívás. Csak az esemény ritkán fordul elő, amelyet a Microsoft számára a felügyelt tartományok speciális hibaelhárítás távolról történő csatlakozást ezt a portot használja. A port zárva van, amint a hibaelhárítási művelet be nem fejeződött.
 
-**Port 636 (Secure LDAP)**
+**Port a 636 (biztonságos LDAP)**
 * Biztonságos LDAP hozzáférés engedélyezése a felügyelt tartományra az interneten keresztül szolgál.
 * Ezen keresztül a NSG port megnyitása nem kötelező megadni. Nyissa meg a portot, csak ha hozzáfér biztonságos LDAP engedélyezve az interneten keresztül.
 * Ezt a portot a forrás IP-címek biztonságos LDAP keresztül csatlakozó várhatóan befelé korlátozhatja.
@@ -95,7 +95,7 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 
 
 ## <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)
-A [hálózati biztonsági csoport (NSG)](../virtual-network/virtual-networks-nsg.md) hozzáférés-vezérlési lista (ACL) szabályokat, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának listáját tartalmazza. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett az egyes virtuális gép is lehet korlátozni további korlátozásokat NGS társítása közvetlenül a virtuális gép.
+A [hálózati biztonsági csoport (NSG)](../virtual-network/security-overview.md) hozzáférés-vezérlési lista (ACL) szabályokat, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának listáját tartalmazza. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett az egyes virtuális gép is lehet korlátozni további korlátozásokat NGS társítása közvetlenül a virtuális gép.
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>NSG a minta virtuális hálózatok az Azure AD tartományi szolgáltatások
 Az alábbi táblázat mutatja be egy minta NSG-t is konfigurálhatja a virtuális hálózat az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. Ez a szabály lehetővé teszi a bejövő forgalom a felügyelt tartományra marad biztosításához szükséges portokon keresztül lett, frissítése és a Microsoft által is figyelhetők. Minden bejövő forgalom az internetről az alapértelmezett "DenyAll" szabály vonatkozik.
@@ -141,5 +141,5 @@ Az Azure klasszikus virtuális hálózatot, amelyben engedélyezte az Azure AD t
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Az Azure virtuális hálózati társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md)
 * [A klasszikus üzembe helyezési modell VNet – VNet kapcsolat konfigurálása](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-* [Az Azure hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md)
+* [Az Azure hálózati biztonsági csoportok](../virtual-network/security-overview.md)
 * [Hálózati biztonsági csoport létrehozása](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

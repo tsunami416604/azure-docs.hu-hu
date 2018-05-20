@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Tango Analytics |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Tango Analytics között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Tango Analytics |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Tango Analytics között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: c38d98f790d6b2cfd6553f11cc8317174461967f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f9e87fe54a325f10fd01dbde20041e37c44d51d6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>Oktatóanyag: Azure Active Directoryval integrált Tango elemzés
 
@@ -29,7 +29,7 @@ Tango Analytics integrálása az Azure AD lehetővé teszi a következő előny�
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Tango Analytics (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-tangoanalytics-tutorial/tutorial_tangoanalytics_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az értéket`TACORE_SSO`
+    a. Az a **azonosító** szövegmező, írja be az értéket `TACORE_SSO`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://mts.tangoanalytics.com/saml2/sp/acs/post`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://mts.tangoanalytics.com/saml2/sp/acs/post`
 
     > [!NOTE] 
     > A válasz URL-cím értéke nincs valós. Ez frissíti a tényleges válasz URL-CÍMEN. Ügyfél [Tango Analytics támogatási csoport](mailto:support@tangoanalytics.com) lekérni ezt az értéket.
@@ -206,7 +206,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

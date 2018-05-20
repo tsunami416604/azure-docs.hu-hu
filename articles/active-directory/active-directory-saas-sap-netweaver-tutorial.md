@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált SAP NetWeaver |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP NetWeaver között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált SAP NetWeaver |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP NetWeaver között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 3987b833e5ed15082d3cc6b39bb160e3eaac6e91
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9ef63353286a43afed9c8a909e121a75fc8a14c5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Oktatóanyag: Azure Active Directory-integráció az SAP NetWeaver megoldással
 
@@ -29,7 +29,7 @@ SAP NetWeaver integrálása az Azure AD lehetővé teszi a következő előnyök
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett az SAP NetWeaver (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -111,11 +111,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<your company instance of SAP NetWeaver>`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<your company instance of SAP NetWeaver>`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<your company instance of SAP NetWeaver>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<your company instance of SAP NetWeaver>`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<your company instance of SAP NetWeaver>/sap/saml2/sp/acs/100`
+    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<your company instance of SAP NetWeaver>/sap/saml2/sp/acs/100`
      
     > [!NOTE] 
     > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges azonosítója és válasz URL-CÍMEN és bejelentkezési URL-cím. Itt javasoljuk, hogy az azonosító a karakterlánc egyedi értéket használja. Ügyfél [SAP NetWeaver ügyfél-támogatási csoport](https://www.sap.com/support.html) beolvasni ezeket az értékeket. 
@@ -212,7 +212,7 @@ Ha a hozzáférési panelen SAP NetWeaver csempére kattint, akkor kell beolvas�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

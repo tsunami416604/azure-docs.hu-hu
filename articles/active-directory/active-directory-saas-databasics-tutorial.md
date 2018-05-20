@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált DATABASICS |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és DATABASICS között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált DATABASICS |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és DATABASICS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 3758af9a9ef29dc344af25acd8db75539de46e12
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1c7f6b63490e2cd8c94dabb689bbd7a64fd7688a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>Oktatóanyag: Azure Active Directoryval integrált DATABASICS
 
@@ -30,7 +30,7 @@ DATABASICS integrálása az Azure AD lehetővé teszi a következő előnyöket 
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett DATABASICS (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk DATABASICS tartomány és az URL-címek](./media/active-directory-saas-databasics-tutorial/tutorial_databasics_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az értéket:`DATA-BASICS_SP`
+    a. Az a **azonosító** szövegmező, írja be az értéket: `DATA-BASICS_SP`
     
-    b. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<sitenumber>.data-basics.net/<clientname>/saml_sso.jsp`
+    b. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<sitenumber>.data-basics.net/<clientname>/saml_sso.jsp`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [DATABASICS ügyfél-támogatási csoport](https://www.data-basics.com/support/) beolvasni ezeket az értékeket.
@@ -125,7 +125,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 6. Egyszeri bejelentkezés konfigurálása DATABASICS oldalán, fejezze be az űrlapra az alábbi URL-címet a. Az űrlap elküldése, miután a [DATABASICS ügyfél-támogatási csoport](https://www.data-basics.com/support/) kapcsolatba lép Önnel.
     
-    [https://www.Data-Basics.com/support/submit-SSO-onboarding-Request/](https://www.data-basics.com/support/submit-sso-onboarding-request/)
+    [https://www.data-basics.com/support/submit-sso-onboarding-request/](https://www.data-basics.com/support/submit-sso-onboarding-request/)
 
 
 > [!TIP]
@@ -198,7 +198,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -208,7 +208,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

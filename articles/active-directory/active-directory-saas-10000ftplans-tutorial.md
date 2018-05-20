@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció a 10 000 ft tervek |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és 10 000 ft tervek között."
+title: 'Oktatóanyag: Azure Active Directory-integráció a 10 000 ft tervek |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és 10 000 ft tervek között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 76e91c1a4f52337fe7e24d2c7dc727d1fb0ebef2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 340bbd62de7dab9bd0ae45da3105ec2ffd271dfe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Oktatóanyag: Azure Active Directory-integráció a 10 000 ft tervek
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban elsajátíthatja 10 000 ft tervek integrálása az Azur
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett 10 000 ft tervekbe (egyszeri bejelentkezés) a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://app.10000ft.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://app.10000ft.com`
 
-    b. Az a **azonosító** szövegmező, írja be az URL-cím:`https://app.10000ft.com/saml/metadata`
+    b. Az a **azonosító** szövegmező, írja be az URL-cím: `https://app.10000ft.com/saml/metadata`
 
     > [!NOTE] 
     > A következő **azonosító** eltérő, ha egyéni tartományt. Ügyfél [10 000 ft tervek támogatási csoport](https://www.10000ft.com/plans/support) lekérni ezt az értéket. 
@@ -210,7 +210,7 @@ Ha a hozzáférési Panel 10 000 ft tervek mozaik gombra kattint, meg kell beolv
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

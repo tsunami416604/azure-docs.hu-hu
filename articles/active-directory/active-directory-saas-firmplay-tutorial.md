@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és FirmPlay - a személyzeti osztályon dolgozó tanácsadáson között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és FirmPlay - a személyzeti osztályon dolgozó tanácsadáson között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: e1381f2273ee961a4b72dede8cf8e017814ba909
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b154901d2e31f493c32e47bd331cc2d4e9fdc1a4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Oktatóanyag: Azure Active Directoryval integrált FirmPlay - a személyzeti osztályon dolgozó tanácsadáson
 
@@ -29,7 +29,7 @@ FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon az Azure AD inte
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a FirmPlay - alkalmazott tanácsadáson a személyzeti osztályon (egyszeri bejelentkezés) a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,7 +111,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
  
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_01.png)
 
-3. Az a **FirmPlay - tartomány felvétele és URL-címek alkalmazott tanácsadáson** részben, a a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe:`https://<your-subdomain>.firmplay.com/`
+3. Az a **FirmPlay - tartomány felvétele és URL-címek alkalmazott tanácsadáson** részben, a a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe: `https://<your-subdomain>.firmplay.com/`
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_02.png)
 
@@ -235,7 +235,7 @@ A FirmPlay - alkalmazott tanácsadáson személyzeti osztályon csempe a hozzáf
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

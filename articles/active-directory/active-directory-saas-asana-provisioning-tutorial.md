@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag: Asana konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikusan ellátásához, majd leépíti Asana felhasználói fiókokat."
+title: 'Oktatóanyag: Asana konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikusan ellátásához, majd leépíti Asana felhasználói fiókokat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: sakula
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c2c9588e6c452714edcc594c05c59ed05f3c6666
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c7e33a46940c9bf0cda5e48c07d42db9f0c7cd96
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Asana konfigurálása
 
@@ -100,5 +100,5 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](active-directory-saas-asana-tutorial.md)

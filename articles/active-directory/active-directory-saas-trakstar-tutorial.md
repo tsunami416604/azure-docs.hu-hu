@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Trakstar |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Trakstar között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Trakstar |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Trakstar között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 72ba6b9f02bc36b46628394afdb29acc6a2fa332
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 28ce4cf68b6d3204e42bcf4db38846f262c9bc9e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Oktatóanyag: Azure Active Directoryval integrált Trakstar
 
@@ -29,7 +29,7 @@ Trakstar integrálása az Azure AD lehetővé teszi a következő előnyöket bi
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Trakstar (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,9 +111,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_url.png)
 
-    a. A a **bejelentkezési URL-cím** szövegmező, a Másolás érték található-e a a **ACS (ügyfél) URL-cím** Trakstar belül (Beállítások > hitelesítési & SSO) formátumban:`https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
+    a. A a **bejelentkezési URL-cím** szövegmező, a Másolás érték található-e a a **ACS (ügyfél) URL-cím** Trakstar belül (Beállítások > hitelesítési & SSO) formátumban: `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
 
-    b. Az a **azonosító** szövegmezőhöz hagyja meg az alapértelmezett:`https://app.trakstar.com`
+    b. Az a **azonosító** szövegmezőhöz hagyja meg az alapértelmezett: `https://app.trakstar.com`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Jelentkezzen be Trakstar egy rendszergazdát ezeket az értékeket.
@@ -211,7 +211,7 @@ Ha a hozzáférési panelen Trakstar csempére kattint, akkor kell beolvasása a
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

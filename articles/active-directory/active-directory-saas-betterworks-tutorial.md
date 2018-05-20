@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált BetterWorks |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és BetterWorks között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált BetterWorks |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és BetterWorks között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 85c815218bca322bcbfd25b5a10b9eaa17ea4adf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0d70e853450ac2ff5c16db005849239901184da9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>Oktatóanyag: Azure Active Directoryval integrált BetterWorks
 
@@ -29,7 +29,7 @@ BetterWorks integrálása az Azure AD lehetővé teszi a következő előnyöket
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett BetterWorks (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://app.betterworks.com/saml2/metadata/`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://app.betterworks.com/saml2/metadata/`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://app.betterworks.com/saml2/acs/`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://app.betterworks.com/saml2/acs/`
 
 4. Az a **BetterWorks tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
     
@@ -120,7 +120,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Kattintson a **megjelenítése speciális URL-beállításainak**.
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe:`https://app.betterworks.com`
+    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe: `https://app.betterworks.com`
 
     > [!NOTE] 
     > Ezek a valódi értékek nem. Frissítheti ezeket az értékeket a válasz URL-CÍMEN, a azonosítója és a tényleges bejelentkezési URL-cím. Ügyfél [BetterWorks támogatási csoport](mailto:support@betterworks.com) beolvasni ezeket az értékeket.
@@ -236,7 +236,7 @@ Ha a hozzáférési panelen BetterWorks csempére kattint, akkor kell beolvasás
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

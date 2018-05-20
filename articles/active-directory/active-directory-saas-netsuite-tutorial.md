@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: jeedes
-ms.openlocfilehash: ecbadd45f964e4d4d36dcf67cf85cd878f012150
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2f2bd227a3d8c0b797f37026032938fbcfe3de9e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Oktatóanyag: Azure Active Directoryval integrált Netsuite
 
@@ -29,7 +29,7 @@ Netsuite integrálása az Azure AD lehetővé teszi a következő előnyöket bi
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Netsuite (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -291,7 +291,7 @@ Az egyszeri bejelentkezés beállításainak ellenőrzéséhez nyissa meg a hozz
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [A felhasználók átadása konfigurálása](active-directory-saas-netsuite-provisioning-tutorial.md)
 
 <!--Image references-->

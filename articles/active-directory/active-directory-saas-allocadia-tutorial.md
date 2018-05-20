@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Allocadia |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Allocadia között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Allocadia |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Allocadia között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 0fad672f9337f7bd10b154dc6ece76879da68fbd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 80f9a95715e1e6fff7fa3a48abd3b5a542ba629f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Oktatóanyag: Azure Active Directoryval integrált Allocadia
 
@@ -29,7 +29,7 @@ Allocadia integrálása az Azure AD lehetővé teszi a következő előnyöket b
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Allocadia (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,15 +112,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **azonosító** szövegmezőhöz URL-címet a következő minták használatával írja be: 
        
-     A tesztkörnyezet-`https://na2standby.allocadia.com`
+     A tesztkörnyezet-  `https://na2standby.allocadia.com`
     
-     Az éles környezetben-`https://na2.allocadia.com`
+     Az éles környezetben- `https://na2.allocadia.com`
 
     b. Az a **válasz URL-CÍMEN** szövegmezőhöz URL-címet a következő minták használatával írja be: 
     
-     A tesztkörnyezet-`https://na2standby.allocadia.com/allocadia/saml/SSO`
+     A tesztkörnyezet- `https://na2standby.allocadia.com/allocadia/saml/SSO`
     
-     Az éles környezetben-`https://na2.allocadia.com/allocadia/saml/SSO`
+     Az éles környezetben- `https://na2.allocadia.com/allocadia/saml/SSO`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Ügyfél [Allocadia támogatási csoport](mailTo:support@allocadia.com) beolvasni ezeket az értékeket.
@@ -135,7 +135,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | ------------------- | -------------------- |    
     | Utónév | User.givenName |
     | Vezetéknév | User.surname |
-    | e-mailben | User.mail |
+    | e-mailben | user.mail |
     
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -241,7 +241,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

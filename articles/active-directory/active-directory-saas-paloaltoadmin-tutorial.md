@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory integrálása Palo Alto hálózatok - rendszergazda felhasználói felület |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Palo Alto hálózatok - rendszergazda felhasználói felület közötti."
+title: 'Oktatóanyag: Azure Active Directory integrálása Palo Alto hálózatok - rendszergazda felhasználói felület |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Palo Alto hálózatok - rendszergazda felhasználói felület közötti.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c5be53f06e009cb2d5180e43318c8670139a68db
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aa3366810a40b004fe510cb2909f8da0f3513ddb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>Az Azure Active Directory integrálása Palo Alto hálózatok - rendszergazda felhasználói felület
 
@@ -30,7 +30,7 @@ Integráló Azure ad Palo Alto hálózatokkal - rendszergazda felhasználói fel
 - Engedélyezheti a felhasználóknak, hogy az beszerzése az automatikus bejelentkezést Palo Alto hálózatokhoz - rendszergazda felhasználói felület (egyszeri bejelentkezés, vagy az SSO) az Azure AD-fiókok.
 - A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
 
-Az Azure AD SaaS alkalmazásintegráció, lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció, lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -119,7 +119,7 @@ Az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konf
         
     | Attribútum neve | Attribútum-érték |
     | --- | --- |    
-    | felhasználónév | user.userprincipalname |
+    | felhasználónév | User.userPrincipalName |
     | adminrole | customadmin |
 
     a. Válassza ki **Hozzáadás attribútum**.  
@@ -180,7 +180,7 @@ Az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konf
 
     ![A "Profil SAML Identity Provider" ablak](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
-    a. Az a **Identity Provider SLO URL-cím** mezőbe cserélje le a korábban importált SLO URL-cím a következő URL-cím:  **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0** .
+    a. Az a **Identity Provider SLO URL-cím** mezőbe cserélje le a korábban importált SLO URL-cím a következő URL-cím: **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0**.
   
     b. Kattintson az **OK** gombra.
 
@@ -301,7 +301,7 @@ Ebben a szakaszban engedélyezze felhasználói Britta Simon Azure egyszeri beje
 
 7. Az a **hozzáadása hozzárendelés** ablakban válassza ki **hozzárendelése**.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
@@ -312,7 +312,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

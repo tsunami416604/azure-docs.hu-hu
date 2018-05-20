@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Asana |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Asana között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Asana |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Asana között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 8058dcd397e5f81f4a8c8cd1845353fd789f604b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2042c1525849696efaf5fda5f35c1abc72839737
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Oktatóanyag: Azure Active Directoryval integrált Asana
 
@@ -30,7 +30,7 @@ Asana integrálása az Azure AD lehetővé teszi a következő előnyöket bizto
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Asana (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Asana tartomány és az URL-címek](./media/active-directory-saas-asana-tutorial/tutorial_asana_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőhöz típus URL-címe:`https://app.asana.com/`
+    a. Az a **bejelentkezési URL-cím** szövegmezőhöz típus URL-címe: `https://app.asana.com/`
 
-    b. Az a **azonosító** szövegmezőhöz objektumtípus-érték:`https://app.asana.com/`
+    b. Az a **azonosító** szövegmezőhöz objektumtípus-érték: `https://app.asana.com/`
  
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -215,7 +215,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ez a szakasz célja az Azure AD az egyszeri bejelentkezés tesztelése.
 
@@ -224,7 +224,7 @@ Ugrás a Asana bejelentkezési lapot. Az E-mail cím szövegmezőjének helyezze
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

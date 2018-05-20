@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció a T & E Express |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a T & E Express között."
+title: 'Oktatóanyag: Azure Active Directory-integráció a T & E Express |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a T & E Express között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 09ce6851013e05859572bd00215a9f751db4ca53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8d3980b6169c8a9fc60c04e527814159082a46e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Oktatóanyag: Azure Active Directory-integráció a T & E Express
 
@@ -29,7 +29,7 @@ T & E Express integrálása az Azure AD lehetővé teszi a következő előnyök
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett történő T & E Express (egyszeri bejelentkezés) a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az értéket, mint:`https://<domain>.tyeexpress.com`
+    a. Az a **azonosító** szövegmező, írja be az értéket, mint: `https://<domain>.tyeexpress.com`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
     > [!NOTE] 
     > Ne feledje, hogy ezek nincsenek a valódi értékek. Akkor kell frissíteni ezeket az értékeket a tényleges azonosítóját és válasz URL-CÍMEN. Itt javasoljuk, hogy az azonosító a karakterlánc egyedi értéket használja. Ügyfél [T & E Express támogatási csoport](http://www.tyeexpress.com/contacto.aspx) beolvasni ezeket az értékeket.
@@ -182,7 +182,7 @@ T & E Express, ha egy kézi tevékenység.
 
     ![Alkalmazott hozzáadása](./media/active-directory-saas-tyeexpress-tutorial/tye-adminusers.png)
 
-3. A kezdőlapon, kattintson a  **+**  a felhasználókat vehessen fel.
+3. A kezdőlapon, kattintson a **+** a felhasználókat vehessen fel.
 
     ![Alkalmazott hozzáadása](./media/active-directory-saas-tyeexpress-tutorial/tye-usershome.png)
 
@@ -232,7 +232,7 @@ Ha a hozzáférési panelen a T & E Express csempére kattint, akkor kell beolva
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Boomi |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Boomi között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Boomi |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Boomi között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 6d1af05f40d6e57b2f6128261828791be7e516c7
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: bd0b5cd66718ca0eeb9fa90366b90a899181e912
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Oktatóanyag: Azure Active Directoryval integrált Boomi
 
@@ -30,7 +30,7 @@ Boomi integrálása az Azure AD lehetővé teszi a következő előnyöket bizto
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Boomi (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Boomi tartomány és az URL-címek](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_url.png)
 
-    a. Az a **azonosító** szövegmezőhöz URL-címet írja be:`https://platform.boomi.com/`
+    a. Az a **azonosító** szövegmezőhöz URL-címet írja be: `https://platform.boomi.com/`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
 
     > [!NOTE] 
     > A válasz URL-cím értéke nincs valós. Frissítse az értéket a tényleges válasz URL-címet. Ügyfél [Boomi támogatási csoport](https://boomi.com/company/contact/) az értéket be kell olvasni.
@@ -123,7 +123,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     | Attribútum neve | Attribútum értéke |
     | -------------- | --------------- |
-    | FEDERATION_ID | User.mail |
+    | FEDERATION_ID | user.mail |
     
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
     
@@ -214,7 +214,7 @@ Ahhoz, hogy az Azure AD-felhasználók Boomi bejelentkezni, akkor ki kell épít
 
     ![Felhasználók](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_001.png "felhasználók")
 
-3. Kattintson a  **+**  ikon és a **Add/karbantartása felhasználói szerepkörök** párbeszédpanel nyílik meg.
+3. Kattintson a **+** ikon és a **Add/karbantartása felhasználói szerepkörök** párbeszédpanel nyílik meg.
 
     ![Felhasználók](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_002.png "felhasználók")
 
@@ -265,7 +265,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -275,7 +275,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

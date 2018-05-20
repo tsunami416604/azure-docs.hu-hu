@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált FilesAnywhere |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és FilesAnywhere között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált FilesAnywhere |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és FilesAnywhere között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 3ca017dbfe35d291083c66f41868fd425e74a602
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3ad92a3edf8fac79bc9eaa3b4a641b5a03eb4ebe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Oktatóanyag: Azure Active Directoryval integrált FilesAnywhere
 
@@ -29,7 +29,7 @@ FilesAnywhere integrálása az Azure AD lehetővé teszi a következő előnyök
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett FilesAnywhere (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -115,7 +115,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_url.png)
     
-    a. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<company name>.filesanywhere.com/saml20.aspx?c=215`
+    a. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.filesanywhere.com/saml20.aspx?c=215`
 > [!NOTE]
 > Ne feledje, hogy az érték **215** van egy **clientid** és csak egy példa. Cserélje le a tényleges clientid értéket kell.
 
@@ -125,7 +125,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Kattintson a **megjelenítése speciális URL-beállításainak** beállítás
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe:`https://<sub domain>.filesanywhere.com/`
+    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe: `https://<sub domain>.filesanywhere.com/`
 
     > [!NOTE] 
     > Ne feledje, hogy ezek nincsenek a valódi értékek. Akkor frissítheti ezeket az értékeket a tényleges URL-cím bejelentkezési és válasz URL-CÍMEN. Ügyfél [FilesAnywhere támogatási csoport](mailto:support@FilesAnywhere.com) beolvasni ezeket az értékeket. 
@@ -253,7 +253,7 @@ Ha a hozzáférési panelen FilesAnywhere csempére kattint, akkor kell beolvas�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

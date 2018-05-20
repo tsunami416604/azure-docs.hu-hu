@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Learningpool Act |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a törvény Learningpool között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Learningpool Act |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a törvény Learningpool között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: aca50fedb44f25f4d98e4a893ac55783263ba52b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87a36e636362a8b5bfc63a7394ddb92134e119cb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Oktatóanyag: Azure Active Directoryval integrált Learningpool Act
 
@@ -29,7 +29,7 @@ Learningpool Act integrálása az Azure AD lehetővé teszi a következő előny
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Learningpool el (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,7 +110,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-Learningpool-tutorial/tutorial_Learningpoolact_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
     | |
@@ -134,9 +134,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |
     | urn: oid:1.2.840.113556.1.4.221 | User.userPrincipalName |
-    | urn: oid:2.5.4.42 | User.givenName |
-    | urn: oid:0.9.2342.19200300.100.1.3 | User.mail |    
-    | urn: oid:2.5.4.4 | User.surname |
+    | urn:oid:2.5.4.42 | User.givenName |
+    | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |    
+    | urn:oid:2.5.4.4 | User.surname |
     
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -242,7 +242,7 @@ Ha a hozzáférési panelen Learningpool Act csempére kattint, akkor kell beolv
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

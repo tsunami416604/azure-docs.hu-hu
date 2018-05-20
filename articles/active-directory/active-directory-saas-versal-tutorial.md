@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált bejárás |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a bejárás között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált bejárás |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a bejárás között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 34ac0f6f98ba84584d468b5f199d8d6a713ede8a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a2710c7fa0d035cee8a16d10edf3d603443ad520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Oktatóanyag: Azure Active Directoryval integrált bejárás
 
@@ -30,7 +30,7 @@ Bejárás integrálása az Azure AD lehetővé teszi a következő előnyöket b
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a bejárás (egyszeri bejelentkezés) a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információkat versal tartomány- és URL-címek](./media/active-directory-saas-versal-tutorial/tutorial_versal_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az értéket:`VERSAL`
+    a. Az a **azonosító** szövegmező, írja be az értéket: `VERSAL`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://versal.com/sso/saml/orgs/<organization_id>`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://versal.com/sso/saml/orgs/<organization_id>`
 
     > [!NOTE] 
     > Válasz URL-cím értéke nincs valós. Frissítse ezt az értéket a tényleges válasz URL-címet. Ügyfél [bejárás támogatási csoport](https://support.versal.com/hc/) lekérni ezt az értéket.
@@ -198,7 +198,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a bejárás során a webhelyen belüli beágyazott segítségével tesztelheti.
 Tekintse meg a [szervezeti tanfolyamokat beágyazás](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML-alapú egyszeri bejelentkezést** beágyazása a bejárás során az Azure AD-támogatással rendelkező útmutatást egyszeri bejelentkezés útmutató támogatása. 
@@ -209,7 +209,7 @@ Akkor hozzon létre egy, a szervezet azt megosztása és közzéteszi az állom�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

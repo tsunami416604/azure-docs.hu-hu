@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Sequr |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Sequr között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Sequr |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Sequr között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a2984bc2c77e9d92d4236b01c21912c27e167f9
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: f3e245f609d96cc247f10ef3c184b7fe1de53756
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Oktatóanyag: Azure Active Directoryval integrált Sequr
 
@@ -30,7 +30,7 @@ Sequr integrálása az Azure AD lehetővé teszi a következő előnyöket bizto
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Sequr (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,13 +108,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Sequr tartomány és az URL-címek](./media/active-directory-saas-sequr-tutorial/tutorial_sequr_url.png)
 
-    Az a **azonosító** szövegmező, írja be az URL-cím:`https://login.sequr.io`
+    Az a **azonosító** szövegmező, írja be az URL-cím: `https://login.sequr.io`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
     ![Az egyszeri bejelentkezés információk Sequr tartomány és az URL-címek](./media/active-directory-saas-sequr-tutorial/tutorial_sequr_url1.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://login.sequr.io`
+    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://login.sequr.io`
 
     b. Az a **továbbítási állapotot** szövegmezőhöz ezt az értéket, az oktatóanyag későbbi részében ismertetett kap.
      
@@ -221,7 +221,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -231,7 +231,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

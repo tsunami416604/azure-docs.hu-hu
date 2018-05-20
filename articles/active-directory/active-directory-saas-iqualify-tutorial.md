@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált iQualify LMS |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és iQualify LMS között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált iQualify LMS |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és iQualify LMS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f8a7b7fd155a6ad0df7cb1f9026b4acca2401cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 341f2175d283c08496534f3ac0d946dd8671f63c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Oktatóanyag: Azure Active Directoryval integrált iQualify LMS
 
@@ -30,7 +30,7 @@ IQualify LMS integrálása az Azure AD lehetővé teszi a következő előnyöke
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett iQualify LMS (egyszeri bejelentkezés) a saját Azure AD-fiókok számára.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,14 +111,14 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: 
     | |
     |--|--|
-    | Éles környezetben:`https://<yourorg>.iqualify.com/`|
-    | Tesztelési környezetben:`https://<yourorg>.iqualify.io`|
+    | Éles környezetben: `https://<yourorg>.iqualify.com/`|
+    | Tesztelési környezetben: `https://<yourorg>.iqualify.io`|
     
     b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: 
     | |
     |--|--|
-    | Éles környezetben:`https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Tesztelési környezetben:`https://<yourorg>.iqualify.io/auth/saml2/callback` |
+    | Éles környezetben: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | Tesztelési környezetben: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
@@ -127,8 +127,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:
     | |
     |--|--|
-    | Éles környezetben:`https://<yourorg>.iqualify.com/login` |
-    | Tesztelési környezetben:`https://<yourorg>.iqualify.io/login` |
+    | Éles környezetben: `https://<yourorg>.iqualify.com/login` |
+    | Tesztelési környezetben: `https://<yourorg>.iqualify.io/login` |
      
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [iQualify LMS ügyfél-támogatási csoport](https://www.iqualify.com) beolvasni ezeket az értékeket. 
@@ -142,8 +142,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | Attribútum neve | Attribútum értéke |
     | --- | --- |    
     | e-mailben | User.userPrincipalName |
-    | Utónév | User.givenName |
-    | Vezetéknév | User.surname |
+    | first_name | User.givenName |
+    | last_name | User.surname |
     | person_id | "attribútum" | 
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
@@ -275,7 +275,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez h
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -290,7 +290,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

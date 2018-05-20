@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
-ms.author: markvi
+ms.date: 05/17/2018
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 22e07486ecd2a95a326063420cbd472d0fa10d6b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 93036b3b473de8bb0026ec0759691c20ec38401a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Létrehozhat egy felügyelet nélküli telepítési parancsfájlt, az Azure AD alkalmazásproxy-összekötő
 
@@ -62,7 +62,9 @@ Az összekötő regisztrálása segítségével két módszer áll rendelkezésr
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
 ### <a name="register-the-connector-using-a-token-created-offline"></a>A létrehozott kapcsolat nélküli jogkivonat használatával connector regisztrálása
-1. Hozzon létre egy kapcsolat nélküli jogkivonat a következő kódrészletet az értékekkel AuthenticationContext osztály használatával:
+1. Hozzon létre egy kapcsolat nélküli jogkivonatot a AuthenticationContext osztály az értékekkel a kódrészletet vagy az alábbi PowerShell-parancsmagok használatával:
+
+    **C# használatával:**
 
         using System;
         using System.Diagnostics;
@@ -117,6 +119,55 @@ Az összekötő regisztrálása segítségével két módszer áll rendelkezésr
             tenantID = authResult.TenantId;
         }
 
+    **PowerShell használatával:**
+
+        # Locate AzureAD PowerShell Module
+        # Change Name of Module to AzureAD after what you have installed
+        $AADPoshPath = (Get-InstalledModule -Name AzureAD).InstalledLocation
+        # Set Location for ADAL Helper Library
+        $ADALPath = $(Get-ChildItem -Path $($AADPoshPath) -Filter Microsoft.IdentityModel.Clients.ActiveDirectory.dll -Recurse ).FullName | Select-Object -Last 1
+        
+        # Add ADAL Helper Library
+        Add-Type -Path $ADALPath
+        
+        #region constants
+        
+        # The AAD authentication endpoint uri
+        [uri]$AadAuthenticationEndpoint = "https://login.microsoftonline.com/common/oauth2/token?api-version=1.0/" 
+        
+        # The application ID of the connector in AAD
+        [string]$ConnectorAppId = "55747057-9b5d-4bd4-b387-abf52a8bd489"
+        
+        # The reply address of the connector application in AAD
+        [uri]$ConnectorRedirectAddress = "urn:ietf:wg:oauth:2.0:oob" 
+        
+        # The AppIdUri of the registration service in AAD
+        [uri]$RegistrationServiceAppIdUri = "https://proxy.cloudwebappproxy.net/registerapp"
+        
+        #endregion
+        
+        #region GetAuthenticationToken
+        
+        # Set AuthN context
+        $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $AadAuthenticationEndpoint
+        
+        # Build platform parameters
+        $promptBehavior = [Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Always
+        $platformParam = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList $promptBehavior
+        
+        # Do AuthN and get token
+        $authResult = $authContext.AcquireTokenAsync($RegistrationServiceAppIdUri.AbsoluteUri, $ConnectorAppId, $ConnectorRedirectAddress, $platformParam).Result
+        
+        # Check AuthN result
+        If (($authResult) -and ($authResult.AccessToken) -and ($authResult.TenantId) ) {
+        $token = $authResult.AccessToken
+        $tenantId = $authResult.TenantId
+        }
+        Else {
+        Write-Output "Authentication result, token or tenant id returned are null"
+        }
+        
+        #endregion
 
 2. Miután a jogkivonatot, hozzon létre egy SecureString a token használatával:
 

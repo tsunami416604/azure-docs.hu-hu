@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált BambooHR |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és BambooHR között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált BambooHR |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és BambooHR között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 081144a645683d4d00ed0d464e23558378dc1b38
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c63a625c1eca7008c751d6904f182f76ee5f343b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Oktatóanyag: Azure Active Directoryval integrált BambooHR
 
@@ -30,7 +30,7 @@ BambooHR integrálása az Azure AD a következő előnyökkel jár:
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett BambooHR az Azure AD-fiókok egyszeri bejelentkezés (SSO) használatával.
 - A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
 
-Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -187,7 +187,7 @@ Ahhoz, hogy az Azure AD-felhasználók BambooHR bejelentkezni, állítsa be őke
    
     ![A beállítások gombra](./media/active-directory-saas-bamboo-hr-tutorial/IC796694.png "beállítás")
 
-3. Válassza ki **áttekintése**.
+3. Válassza az **Áttekintés** lehetőséget.
 
 4. A bal oldali panelen válassza ki a **biztonsági** > **felhasználók**.
 
@@ -228,7 +228,7 @@ Felhasználó Britta Simon hozzárendelése BambooHR, tegye a következőket:
 
 7. Az a **hozzáadása hozzárendelés** ablakban válassza ki a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 A hozzáférési Panel az Azure AD egyszeri bejelentkezési beállítások tesztelése.
 
@@ -239,7 +239,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

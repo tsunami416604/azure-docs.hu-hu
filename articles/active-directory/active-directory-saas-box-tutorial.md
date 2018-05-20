@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory integrálása mezőben |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a mező között."
+title: 'Oktatóanyag: Azure Active Directory integrálása mezőben |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a mező között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: 638ae63057df00375b05a58e3ceab510e2a608de
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: daad9104798dc02b479b4e022287c3630e4a67a0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-box"></a>Az Azure Active Directory integrálása mezőbe
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban megismerheti, hogyan integrálható az Azure Active Dir
 - Engedélyezheti a felhasználóknak, hogy az beszerzése aláírva automatikusan (egyszeri bejelentkezés, vagy az SSO) mezőben az Azure AD-fiókok.
 - A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
 
-Az Azure AD SaaS alkalmazásintegráció, lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció, lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -187,7 +187,7 @@ Ebben a szakaszban a felhasználó által biztosított hozzáférés be Azure eg
 
 7. Az a **hozzáadása hozzárendelés** ablakban válassza ki **hozzárendelése**.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
@@ -196,7 +196,7 @@ Ha bejelöli a **mezőben** csempére a hozzáférési panelre, akkor nyissa meg
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [A felhasználók átadása konfigurálása](active-directory-saas-box-userprovisioning-tutorial.md)
 
 

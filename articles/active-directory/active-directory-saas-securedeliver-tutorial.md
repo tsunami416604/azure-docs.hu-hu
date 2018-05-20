@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory integrációja a biztonságos FÁJLMEGOSZTÁSBA |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a biztonságos BIZTOSÍTÁSÁHOZ között."
+title: 'Oktatóanyag: Azure Active Directory integrációja a biztonságos FÁJLMEGOSZTÁSBA |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a biztonságos BIZTOSÍTÁSÁHOZ között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 60b158171a393d4020a7226c187d1e1a8b01229a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 65b831557bd439bd9cb736b95e85aca58e9c54a0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Oktatóanyag: Azure Active Directory integrációja a biztonságos BIZTOSÍTÁSÁHOZ
 
@@ -29,7 +29,7 @@ BIZTONSÁGOS FÁJLMEGOSZTÁSBA integrálása az Azure AD lehetővé teszi a köv
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett (egyszeri bejelentkezés) biztonságos továbbítani a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [FÁJLMEGOSZTÁSBA ügyfél biztonságos támogatási csoport](mailto:iw-sd-support@fujifilm.com) beolvasni ezeket az értékeket. 
@@ -209,7 +209,7 @@ Ha a hozzáférési Panel egy FÁJLMEGOSZTÁSBA biztonságos mozaik gombra katti
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

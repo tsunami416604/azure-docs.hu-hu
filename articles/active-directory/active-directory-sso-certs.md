@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 97a70781adaaaa5fd661474336373e70a3923ef5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9924d06f149b0d234cd8f5546cab8abbab740aac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Összevont egyszeri bejelentkezés az Azure Active Directoryban tanúsítványainak kezelése
 Ez a cikk ismerteti a gyakori kérdéseket és a tanúsítványok, az Azure Active Directory (Azure AD) hoz létre az SaaS-alkalmazások létrehozásához összevont egyszeri bejelentkezést (SSO) kapcsolatos adatokat. Az Azure AD-alkalmazásgyűjtemény vagy egy alkalmazás nem galéria sablon használatával, vegyen fel alkalmazásokat. Az alkalmazás beállítása az összevont egyszeri bejelentkezési beállítás használatával.
@@ -76,5 +76,5 @@ A következő megújítási lépéseket kell eredményeznie jelentős állásid�
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Alkalmazások kezelése az Azure Active Directoryban cikk indexe](active-directory-apps-index.md)
-* [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md)
+* [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md)
 * [Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](active-directory-saml-debugging.md)

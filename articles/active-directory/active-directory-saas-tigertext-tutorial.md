@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált TigerText biztonságos Messenger |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és TigerText biztonságos Messenger között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált TigerText biztonságos Messenger |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és TigerText biztonságos Messenger között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: efbdf55f425d8e559b741f41b09527e9ce93f999
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b21f3474466c8338046ebdad5a9cae18bdda4fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Oktatóanyag: Azure Active Directoryval integrált TigerText biztonságos Messenger
 
@@ -29,7 +29,7 @@ TigerText biztonságos Messenger integrálása az Azure AD lehetővé teszi a k�
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett TigerText biztonságos Messenger (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -106,9 +106,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![TigerText biztonságos Messenger tartománya és URL-címek szakasz](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőhöz típus az URL-címet:`https://home.tigertext.com`
+    a. Az a **bejelentkezési URL-cím** szövegmezőhöz típus az URL-címet: `https://home.tigertext.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://saml-lb.tigertext.me/v1/organization/<instance Id>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://saml-lb.tigertext.me/v1/organization/<instance Id>`
 
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges azonosítója. Ügyfél [TigerText biztonságos Messenger ügyfél-támogatási csoport](mailTo:prosupport@tigertext.com) lekérni ezt az értéket. 
@@ -192,7 +192,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -201,7 +201,7 @@ Ha a hozzáférési panelen TigerText csempére kattint, akkor kell beolvasása 
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

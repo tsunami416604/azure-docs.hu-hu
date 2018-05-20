@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált AppDynamics |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és AppDynamics között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált AppDynamics |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és AppDynamics között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: b818f5d24873007aff5a8713a11d368cbe799ee6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e6978db61b193fad070bf937decf208906b13b82
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Oktatóanyag: Azure Active Directoryval integrált AppDynamics
 
@@ -29,7 +29,7 @@ AppDynamics integrálása az Azure AD lehetővé teszi a következő előnyöket
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett AppDynamics (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.saas.appdynamics.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.saas.appdynamics.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.saas.appdynamics.com/controller`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.saas.appdynamics.com/controller`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [AppDynamics ügyfél-támogatási csoport](https://www.appdynamics.com/support/) beolvasni ezeket az értékeket. 
@@ -197,7 +197,7 @@ Ahhoz, hogy az Azure AD-felhasználók AppDynamics bejelentkezni, akkor ki kell 
 
 1. Jelentkezzen be rendszergazdaként a AppDynamics vállalati webhely.
 
-2. Ugrás a **felhasználók**, és kattintson a  **+**  megnyitásához a **felhasználó létrehozása** párbeszédpanel.
+2. Ugrás a **felhasználók**, és kattintson a **+** megnyitásához a **felhasználó létrehozása** párbeszédpanel.
    
     ![Felhasználók](./media/active-directory-saas-appdynamics-tutorial/ic790229.png "felhasználók")
 
@@ -251,7 +251,7 @@ Ha a hozzáférési panelen AppDynamics csempére kattint, akkor kell beolvasás
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

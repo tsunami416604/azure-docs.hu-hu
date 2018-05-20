@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag: Cerner központi konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
-description: "Útmutató: Azure Active Directory konfigurálása automatikusan rendelkezni felhasználóknak, hogy a Résztvevőlista Cerner közép-India"
+title: 'Oktatóanyag: Cerner központi konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
+description: 'Útmutató: Azure Active Directory konfigurálása automatikusan rendelkezni felhasználóknak, hogy a Résztvevőlista Cerner közép-India'
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: a4aca2db0190b97d209fc6769b9db55b0ad468d9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 060686089634eda5d15345da9668ff294d350012
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Cerner központi konfigurálása
 
@@ -57,7 +57,7 @@ A létesítési szolgáltatás engedélyezése és konfigurálása, előtt meg k
 Ez a szakasz végigvezeti az Azure AD Cerner központi felhasználói Résztvevőlista Cerner tartozó SCIM felhasználói fiók kiépítése API használatával való kapcsolódás és a létesítési szolgáltatás létrehozása, konfigurálása frissítése, és tiltsa le a hozzárendelt felhasználói fiókok a Cerner központi alapján felhasználók és csoportok hozzárendelése az Azure ad-ben.
 
 > [!TIP]
-> Dönthet úgy is engedélyezni SAML-alapú egyszeri bejelentkezést a Cerner központi utasításai [Azure-portálon (https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, abban az esetben, ha ez a két funkció egészítik ki egymást. További információkért lásd: a [Cerner központi egyszeri bejelentkezés az oktatóanyag](active-directory-saas-cernercentral-tutorial.md).
+> Választhatja azt is, SAML-alapú egyszeri bejelentkezést a Cerner központi engedélyezve van, az utasításoknak a megadott [Azure portal (https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül automatikus kiépítés, abban az esetben, ha ez a két funkció egészítik ki egymást. További információkért lásd: a [Cerner központi egyszeri bejelentkezés az oktatóanyag](active-directory-saas-cernercentral-tutorial.md).
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítés Cerner központi Azure AD-ben:
@@ -67,25 +67,25 @@ Ahhoz, hogy a felhasználói fiókok Cerner központi telepítéséhez, szüksé
 
 1.  Az első lépés annak a személynek a Cerner kezelése érdekében, és az Azure AD-integrációs kell CernerCare-fiókkal, amely utasítások végrehajtásához szükséges dokumentáció eléréséhez szükséges. Ha szükséges, használja az alábbi URL-címek CernerCare fiókokat létrehozni minden esetben környezetben.
 
-   * Védőfal: https://sandboxcernercare.com/accounts/create
+   * Védőfal:  https://sandboxcernercare.com/accounts/create
 
-   * Éles: https://cernercare.com/accounts/create  
+   * Éles:  https://cernercare.com/accounts/create  
 
 2.  A következő rendszerfiók léteznie kell az Azure AD. Az alábbi utasításokat követve a védőfal és éles környezetekhez rendszerfiók kérelem.
 
-   * Instructions:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Útmutatás:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Sandbox: https://sandboxcernercentral.com/system-accounts/
+   * Védőfal: https://sandboxcernercentral.com/system-accounts/
 
-   * Éles: https://cernercentral.com/system-accounts/
+   * Éles:  https://cernercentral.com/system-accounts/
 
 3.  Ezt követően készítse el az OAuth tulajdonosi jogkivonat minden rendszer fiók. Ehhez kövesse az alábbi utasításokat.
 
-   * Instructions:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Útmutatás:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Sandbox: https://sandboxcernercentral.com/system-accounts/
+   * Védőfal: https://sandboxcernercentral.com/system-accounts/
 
-   * Éles: https://cernercentral.com/system-accounts/
+   * Éles:  https://cernercentral.com/system-accounts/
 
 4. Végezetül beszerzése szükséges felhasználói Résztvevőlista tartomány azonosítók Cerner a konfigurálás befejezéséhez a védőfal mind az üzemi környezetben. Ez beszerzésére vonatkozó további információkért lásd:: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
 
@@ -103,9 +103,9 @@ Ahhoz, hogy a felhasználói fiókok Cerner központi telepítéséhez, szüksé
 
    * Az a **bérlői URL-cím** mezőbe írja be az alábbi formátumban "Felhasználói Résztvevőlista-tartományi-azonosító" cseréje a tartomány azonosítója #4. lépésben beszerzett URL.
 
-> Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Védőfal: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> Production: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Éles: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * Az a **titkos Token** mezőben adja meg a #3. lépésében létrehozott OAuth tulajdonosi jogkivonatot, és kattintson a **kapcsolat tesztelése**.
 
@@ -130,7 +130,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 * [Cerner központi: Az Azure AD identity adatok közzététele](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Oktatóanyag: Cerner központi konfigurálása egyszeri bejelentkezéshez az Azure Active Directoryval](active-directory-saas-cernercentral-tutorial.md)
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 * [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).

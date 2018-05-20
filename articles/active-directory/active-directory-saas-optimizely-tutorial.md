@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Optimizely |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Optimizely között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Optimizely |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Optimizely között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e44e1621632bf2c8a3c4050b718d2721f5132d06
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 995b440cbf9dc93ec01fe0b86c69ea09cd4714ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Oktatóanyag: Azure Active Directoryval integrált Optimizely
 
@@ -29,7 +29,7 @@ Optimizely integrálása az Azure AD lehetővé teszi a következő előnyöket 
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Optimizely (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://app.optimizely.net/<instance name>`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://app.optimizely.net/<instance name>`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`urn:auth0:optimizely:contoso`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:  `urn:auth0:optimizely:contoso`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek tényleges. A tényleges bejelentkezési URL-cím és azonosítója, amelynek az ismertetése, az oktatóanyag későbbi részében fogja frissítse az értéket. 
@@ -147,7 +147,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
    
     ![Az Azure AD-egyszeri bejelentkezés](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_10.png)
     
-12. Kattintson a **mentése**
+12. Kattintson a **Mentés** gombra.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -239,7 +239,7 @@ Ha a hozzáférési panelen Optimizely csempére kattint, akkor kell beolvasása
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

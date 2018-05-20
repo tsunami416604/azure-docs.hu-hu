@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált súgó Scout |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Súgó Scout között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált súgó Scout |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Súgó Scout között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 5608df300ad3b5d3fd42bd904a52d43d115ebf53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 596a1ba27516755e586d88ab56a20a1daed63fc2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Oktatóanyag: Azure Active Directoryval integrált Scout Súgó
 
@@ -30,7 +30,7 @@ Súgó Scout integrálása az Azure AD lehetővé teszi a következő előnyöke
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Súgó Scout (egyszeri bejelentkezés).
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -105,9 +105,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Súgóadatok Scout tartomány és az URL-címek egyszeri bejelentkezés](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url.png)
 
-    a. **Azonosító** van a **"Célközönség URI (Service Provider entitás azonosítója)"** a Súgó Scout kezdődik`urn:`
+    a. **Azonosító** van a **"Célközönség URI (Service Provider entitás azonosítója)"** a Súgó Scout kezdődik `urn:`
 
-    b. **Válasz URL-cím** van a **"Utáni hátsó URL-címe (helyességi feltétel ügyfél szolgáltatás URL-címe)"** a Súgó Scout kezdődik`https://` 
+    b. **Válasz URL-cím** van a **"Utáni hátsó URL-címe (helyességi feltétel ügyfél szolgáltatás URL-címe)"** a Súgó Scout kezdődik `https://` 
 
     > [!NOTE] 
     > Az URL-címek értékei csak bemutatásához. Frissítenie kell ezeket az értékeket a tényleges válasz URL-CÍMEN és azonosítója. Ezeket az értékeket a kap a **egyszeri bejelentkezés** lapon a hitelesítési szakasz, amelynek az ismertetése, az oktatóanyag későbbi részében.
@@ -116,7 +116,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Súgóadatok Scout tartomány és az URL-címek egyszeri bejelentkezés](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet:`https://secure.helpscout.net/members/login/`
+    Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet: `https://secure.helpscout.net/members/login/`
      
 5. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -234,7 +234,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -244,7 +244,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

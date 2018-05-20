@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Achieve3000 |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Achieve3000 között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Achieve3000 |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Achieve3000 között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 03a6eb581dae88e9789b73c04d5424c0ed14cf62
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e74fe33c6cfaaa8d991c4a4acd5fd16cf05eb36b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>Oktatóanyag: Azure Active Directoryval integrált Achieve3000
 
@@ -30,7 +30,7 @@ Achieve3000 integrálása az Azure AD lehetővé teszi a következő előnyöket
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Achieve3000 (egyszeri bejelentkezés) a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Achieve3000 tartomány és az URL-címek](./media/active-directory-saas-achieve3000-tutorial/tutorial_achieve3000_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg az alábbi URL-cím: mintát:`https://saml.achieve3000.com/district/<District Identifier>`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg az alábbi URL-cím: mintát: `https://saml.achieve3000.com/district/<District Identifier>`
 
-    b. Az a **azonosító** szövegmező, írja be az értéket:`achieve3000-saml`
+    b. Az a **azonosító** szövegmező, írja be az értéket: `achieve3000-saml`
 
     > [!NOTE] 
     > A bejelentkezési URL-cím értéke nincs valós. Frissítse az értéket a tényleges bejelentkezési URL-címet. Ügyfél [Achieve3000 ügyfél-támogatási csoport](https://www.achieve3000.com/contact-us/) az értéket be kell olvasni. 
@@ -127,7 +127,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |    
-    | studentID               | User.mail |
+    | studentID               | user.mail |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -216,7 +216,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -226,7 +226,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: ebc4de2b3a01138a8b48cc637dcab5fc67a68841
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: a6f9f35931ff13eb3f0f35748b3a040af37df672
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Vállalati alkalmazások az Azure portálon kiépítés felhasználói fiók kezelése
-Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azure.com) automatikus felhasználói fiók üzembe helyezést és megszüntetést újra a számítógépet, amelyek támogatják ezt, különösen azokat, a "kiemelt" kategóriából a ahozzáadottalkalmazásokkezelése[ Az Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése és annak működéséről kapcsolatos további információkért lásd: [Felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-app-provisioning.md).
+Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azure.com) automatikus felhasználói fiók üzembe helyezést és megszüntetést újra a számítógépet, amelyek támogatják ezt, különösen azokat, a "kiemelt" kategóriából a ahozzáadottalkalmazásokkezelése[ Az Azure Active Directory alkalmazáskatalógusában](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése és annak működéséről kapcsolatos további információkért lásd: [Felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-app-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>A portál az alkalmazások keresése
-Az egyszeri bejelentkezéshez egy könyvtárban, a használatával directory rendszergazda által beállított összes alkalmazás a [Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), tekinthetők meg és kezelhetők a [Azure-portálon](https://portal.azure.com). Az alkalmazások találhatók a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszban. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül.
+Az egyszeri bejelentkezéshez egy könyvtárban, a használatával directory rendszergazda által beállított összes alkalmazás a [Azure Active Directory alkalmazáskatalógusában](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), tekinthetők meg és kezelhetők a [Azure-portálon](https://portal.azure.com). Az alkalmazások találhatók a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszban. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül.
 
 ![Vállalati alkalmazások ablaktábla](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.png)
 

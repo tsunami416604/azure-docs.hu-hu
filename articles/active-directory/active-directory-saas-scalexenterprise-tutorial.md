@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció a ScaleX vállalati |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és ScaleX vállalati között."
+title: 'Oktatóanyag: Azure Active Directory-integráció a ScaleX vállalati |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és ScaleX vállalati között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: f83d817647a5339176260bfcf73005045f9ead54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 94c30d39a5d72a022dd77d65141f1af679cf3dd3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a ScaleX vállalati
 
@@ -29,7 +29,7 @@ ScaleX vállalati integrálása az Azure AD lehetővé teszi a következő előn
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett ScaleX vállalati (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg. Alkalmazás-hozzáférés és egyszeri bejelentkezés az [Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg. Alkalmazás-hozzáférés és egyszeri bejelentkezés az [Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,15 +110,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_url1.png)
 
-    a. Az a **azonosító** szövegmező, írja be az értéket a következő minta használatával:`https://platform.rescale.com/saml2/<company id>/`
+    a. Az a **azonosító** szövegmező, írja be az értéket a következő minta használatával: `https://platform.rescale.com/saml2/<company id>/`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://platform.rescale.com/saml2/<company id>/acs/`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://platform.rescale.com/saml2/<company id>/acs/`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-scalexenterprise-tutorial/tutorial_scalexenterprise_url2.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával:`https://platform.rescale.com/saml2/<company id>/sso/`
+    Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával: `https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
     > Ezek a megadandó nem valódi értékek. Ezek az értékek frissíti a tényleges azonosítója, válasz és bejelentkezési URL-címe. Ügyfél [ScaleX vállalati ügyfél-támogatási csoport](http://info.rescale.com/contact_sales) beolvasni ezeket az értékeket. 
@@ -168,7 +168,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     b. **Szolgáltató saml**: illessze be az érték ***urn: oasis: nevek: tc: SAML:2.0:nameid-formátum: állandó***
 
-    c. **Az ACS-válasz identitásszolgáltató e-mail mező neve**: illessze be az érték`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. **Az ACS-válasz identitásszolgáltató e-mail mező neve**: illessze be az érték `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. **Identity Provider EntityDescriptor Entitásazonosító:** illessze be a **SAML Entitásazonosító** az Azure-portálon átmásolja értéket.
 
@@ -259,7 +259,7 @@ Kattintson a hozzáférési panelen ScaleX vállalati csempére, akkor fogja lek
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

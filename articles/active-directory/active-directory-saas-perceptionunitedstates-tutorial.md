@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integrációval rendelkező Egyensúlyozhatom Egyesült Államok (nem-UltiPro) |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Egyensúlyozhatom az Amerikai Egyesült Államok (nem-UltiPro) között."
+title: 'Oktatóanyag: Azure Active Directory-integrációval rendelkező Egyensúlyozhatom Egyesült Államok (nem-UltiPro) |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Egyensúlyozhatom az Amerikai Egyesült Államok (nem-UltiPro) között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d94d233a12e51bf851a791fda481b91c513d64b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da0529897bb02745a2346f6a0282be86923468ba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Azure Active Directory-integrációval rendelkező Egyensúlyozhatom Egyesült Államok (nem-UltiPro)
 
@@ -30,7 +30,7 @@ Egyensúlyozhatom az Amerikai Egyesült Államok (nem-UltiPro) integrálása az 
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett a Egyensúlyozhatom Egyesült Államok (nem-UltiPro) (egyszeri bejelentkezés) a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információkat egyensúlyozhatom az Amerikai Egyesült Államok (nem-UltiPro) tartományhoz és URL-címek](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az URL-cím:`https://perception.kanjoya.com/sp`
+    a. Az a **azonosító** szövegmező, írja be az URL-cím: `https://perception.kanjoya.com/sp`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     > [!NOTE] 
     > Az érték nincs valós. Az érték a tényleges válasz URL-címet, az oktatóanyag későbbi részében ismertetett frissíti.
@@ -163,7 +163,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     c. A **identitás-szolgáltató neve** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító**, amely az Azure-portálon másolta. 
 
-    d. A **SAML tartomány szövegmező**, írja be a tartományt például  **@contoso.com** .
+    d. A **SAML tartomány szövegmező**, írja be a tartományt például **@contoso.com**.
 
     e. Kattintson a **töltse fel újra** feltölteni a **metaadatainak XML-kódja** fájlt.
 
@@ -239,7 +239,7 @@ Ebben a szakaszban Britta Simon hozzáférés biztosítása a Egyensúlyozhatom 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -249,7 +249,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

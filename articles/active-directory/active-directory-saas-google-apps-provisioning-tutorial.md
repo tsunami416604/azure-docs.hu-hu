@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Google alkalmazások konfigurálása az Azure Active Directoryval történő üzembe helyezéséhez automatikus felhasználói |} Microsoft Docs"
-description: "Megtudhatja, hogyan automatikusan ellátásához, majd leépíti a felhasználói fiókok Azure ad-Google Apps."
+title: 'Oktatóanyag: Google alkalmazások konfigurálása az Azure Active Directoryval történő üzembe helyezéséhez automatikus felhasználói |} Microsoft Docs'
+description: Megtudhatja, hogyan automatikusan ellátásához, majd leépíti a felhasználói fiókok Azure ad-Google Apps.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d5c68e709b72e4032eca76dd35103df50030ccca
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>Oktatóanyag: A Google Apps konfigurálása automatikus a felhasználók átadása
 
@@ -107,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD kapcsolódni a felhasználói fiók API Go
 
     c. Válassza ki **egy másik tartomány hozzáadása**, majd írja be a nevében a tartományt, amelyikhez hozzá szeretné adni.
      
-     ![Type in your domain name][22]
+     ![Adja meg a tartomány neve][22]
 
     d. Válassza ki **folytatja, és ellenőrizze a tartomány tulajdonosa**. Kövesse a lépéseket, hogy Ön a tulajdonosa a tartománynév ellenőrzése. Ellenőrizze a tartományt a Google Apps átfogó útmutatást lásd: [ellenőrizze a hely tulajdonjoga, a Google Apps](https://support.google.com/webmasters/answer/35179).
 
@@ -164,7 +164,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](active-directory-saas-google-apps-tutorial.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Vodeclic |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Vodeclic között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Vodeclic |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Vodeclic között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 940c7bb5040fb91a03b01dc43ee07d52e3d4e63b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: bc889919f2d869478843881cc8eae06fc9cb232c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Oktatóanyag: Azure Active Directoryval integrált Vodeclic
 
@@ -30,7 +30,7 @@ Vodeclic integrálása az Azure AD lehetővé teszi a következő előnyöket bi
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezve Vodeclic (egyszeri bejelentkezés, vagy az SSO) és az Azure AD-fiókok.
 - A fiók egyetlen központi helyen--az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,15 +108,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Vodeclic tartomány és az URL-címek](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url.png)
 
-    a. Az a **azonosító** mezőbe írja be a következő mintát olyan URL-címe:`https://<companyname>.lms.vodeclic.net/auth/saml`
+    a. Az a **azonosító** mezőbe írja be a következő mintát olyan URL-címe: `https://<companyname>.lms.vodeclic.net/auth/saml`
 
-    b. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe:`https://<companyname>.lms.vodeclic.net/auth/saml/callback`
+    b. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
 4. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módot, válassza ki a **megjelenítése speciális URL-beállításainak** jelölőnégyzetet, majd a következő lépéssel:
 
     ![Az egyszeri bejelentkezés információk Vodeclic tartomány és az URL-címek](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
-    Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe:`https://<companyname>.lms.vodeclic.net/auth/saml`
+    Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe: `https://<companyname>.lms.vodeclic.net/auth/saml`
      
     > [!NOTE] 
     > Ezek az értékek nem valódi. Frissítheti ezeket az értékeket a tényleges azonosítójú válasz URL-címet, és a bejelentkezési URL-cím. Lépjen kapcsolatba a [Vodeclic ügyfél-támogatási csoport](mailto:hotline@vodeclic.com) beolvasni ezeket az értékeket.
@@ -203,7 +203,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Az a **hozzáadása hozzárendelés** párbeszédpanelen jelölje ki a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 
@@ -214,7 +214,7 @@ A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

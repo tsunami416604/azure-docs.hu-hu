@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integrációval rendelkező Zscaler személyes hozzáférési (ZPA) |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Zscaler személyes hozzáférési (ZPA) között."
+title: 'Oktatóanyag: Azure Active Directory-integrációval rendelkező Zscaler személyes hozzáférési (ZPA) |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Zscaler személyes hozzáférési (ZPA) között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 9ac65791e8d50d5e5da5d36adee14cd0e88a3da8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d5434c57a95e53e4fe37c33f3fe11585fc3177f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Oktatóanyag: Azure Active Directory-integrációval rendelkező Zscaler személyes hozzáférési (ZPA)
 
@@ -29,7 +29,7 @@ Zscaler személyes hozzáférési (ZPA) integrálása az Azure AD lehetővé tes
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett a Zscaler személyes hozzáférési (ZPA) (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -115,9 +115,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
-    a. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe:`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+    a. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe: `https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
-    b. Az a **azonosító** szövegmező, típus:`https://samlsp.private.zscaler.com/auth/metadata`
+    b. Az a **azonosító** szövegmező, típus: `https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE] 
     > Ne feledje, hogy ezek nincsenek a valódi értékek. Akkor frissítheti ezeket az értékeket, és a tényleges URL-cím bejelentkezési azonosítója. Itt javasoljuk, hogy az azonosító URL-címe egyedi értékét használja. Ügyfél [Zscaler személyes hozzáférési (ZPA) támogatási csoport](https://help.zscaler.com/zpa-submit-ticket) beolvasni ezeket az értékeket.
@@ -242,7 +242,7 @@ Ha a hozzáférési panelen Zscaler személyes hozzáférési (ZPA) csempére ka
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

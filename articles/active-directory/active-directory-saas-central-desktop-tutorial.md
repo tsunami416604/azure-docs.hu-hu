@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált központi asztali |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a központi asztali között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált központi asztali |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a központi asztali között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 94c67bef7a0c6ba60fc9c7a60c79a23bf7984fb1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 92c24688cf3d9baefcedcf22c915752b2d29b53c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Oktatóanyag: Azure Active Directory-integráció központi asztal
 
@@ -30,7 +30,7 @@ Központi asztali integrálása az Azure AD lehetővé teszi a következő előn
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírva központi asztalhoz az Azure AD-fiókok.
 - A fiók egyetlen központi helyen--az Azure-portálon kezelheti.
 
-Az Azure AD SaaS alkalmazásintegráció kapcsolatos további tudnivalókért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció kapcsolatos további tudnivalókért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,7 +108,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk központi asztali tartomány és az URL-címek](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_url.png)
 
-    a. Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe:`https://<companyname>.centraldesktop.com`
+    a. Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe: `https://<companyname>.centraldesktop.com`
 
     b. Az a **azonosító** mezőbe írja be a következő mintát olyan URL-címe:
     | |
@@ -116,7 +116,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
     | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
 
-    c. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe:`https://<companyname>.centraldesktop.com/saml2-assertion.php`    
+    c. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe: `https://<companyname>.centraldesktop.com/saml2-assertion.php`    
      
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítójú válasz URL-címet, és a bejelentkezési URL-cím. Lépjen kapcsolatba a [központi asztali ügyfél-támogatási csoport](https://imeetcentral.com/contact-us) beolvasni ezeket az értékeket. 
@@ -153,7 +153,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 10. Az a **üzenet aláírás-ellenőrzési módszer** területen tegye a következőket:
 
-    ![Üzenet-aláírást ellenőrzési módszer](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "üzenet aláírás-ellenőrzési módszer") egy. Válassza ki **tanúsítvány**.
+    ![Üzenet-aláírást ellenőrzési módszer](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "üzenet aláírás-ellenőrzési módszer") egy. Válassza a **Tanúsítvány** elemet.
     
     b. Az a **SSO tanúsítvány** listáról válassza ki **RSH SHA256**.
     
@@ -258,7 +258,7 @@ Ebben a szakaszban felhasználói Britta Simon központi asztali hozzáférést 
 
 7. Az a **hozzáadása hozzárendelés** párbeszédpanelen jelölje ki a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel használatával.
 
@@ -268,7 +268,7 @@ A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció SD elemekkel |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SD-elemek közötti."
+title: 'Oktatóanyag: Azure Active Directory-integráció SD elemekkel |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SD-elemek közötti.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 796f4d1b679c06be8677cd07f52ce305a7bc1ef8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b523841fc40f8ac07448abc80125f1f510cba840
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Oktatóanyag: Azure Active Directoryval integrált SD elemei
 
@@ -29,7 +29,7 @@ SD elemek integrálása az Azure AD lehetővé teszi a következő előnyöket b
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett SD elemek (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-sd-elements-tutorial/tutorial_sdelements_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<tenantname>.sdelements.com/sso/saml2/metadata`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenantname>.sdelements.com/sso/saml2/metadata`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<tenantname>.sdelements.com/sso/saml2/acs/`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenantname>.sdelements.com/sso/saml2/acs/`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Ügyfél [SD elemek támogatási csoport](mailto:support@sdelements.com) beolvasni ezeket az értékeket.
@@ -125,7 +125,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     | Attribútum neve | Attribútum értéke |
     | --- | --- |
-    | e-mailben |User.mail |
+    | e-mailben |user.mail |
     | Utónév |User.givenName |
     | Vezetéknév |User.surname |
 
@@ -228,7 +228,7 @@ Ez a szakasz célja Britta Simon meghívta SD elemek felhasználó létrehozás�
    
     ![SD elemek tesztfelhasználó létrehozása](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_13.png) 
    
-    a. Az a **E-mail** szövegmező, adja meg az e-mail címét, például a felhasználó  **brittasimon@contoso.com** .
+    a. Az a **E-mail** szövegmező, adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
    
     b. Az a **Utónév** szövegmező, írja be például a felhasználó utónevét **Britta**.
    
@@ -277,7 +277,7 @@ Ha a hozzáférési panelen SD elemek csempére kattint, akkor kell beolvasása 
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

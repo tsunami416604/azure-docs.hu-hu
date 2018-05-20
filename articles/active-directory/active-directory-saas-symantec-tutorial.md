@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS) |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Symantec webes biztonsági szolgáltatás (VSS) között."
+title: 'Oktatóanyag: Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS) |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Symantec webes biztonsági szolgáltatás (VSS) között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 35427941a084e6750d66ccd3e135d7eef1767c6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0dc75a1091c56ddbbffcd54047b2465ece231254
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Oktatóanyag: Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS)
 
@@ -32,7 +32,7 @@ Symantec webes biztonsági szolgáltatás (VSS) integrálása az Azure AD lehet�
 
 - A felhasználó végrehajtásának engedélyezése, és csoportosítsa a WSS-fiókjához megadott szintű szabályzat szabályok.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,9 +111,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Symantec webes biztonsági szolgáltatás (VSS) tartományhoz és URL-címek](./media/active-directory-saas-symantec-tutorial/tutorial_symantecwebsecurityservicewss_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az URL-cím:`https://saml.threatpulse.net:8443/saml/saml_realm`
+    a. Az a **azonosító** szövegmező, írja be az URL-cím: `https://saml.threatpulse.net:8443/saml/saml_realm`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím:`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
+    b. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
     > Vegye fel a kapcsolatot a [Symantec webes biztonsági szolgáltatás (VSS) ügyfél-támogatási csoport](https://www.symantec.com/contact-us) Ha értékeit a **azonosító** és **válasz URL-CÍMEN** valamilyen okból kifolyólag nem működik.
@@ -200,7 +200,7 @@ Ebben a szakaszban engedélyezze Britta Simon Symantec webes biztonsági szolgá
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ez a szakasz azt tesztelni fogja, az egyszeri bejelentkezés funkció most, hogy konfigurálta az Azure AD SAML-alapú hitelesítéshez használandó WSS fiókját.
 
@@ -209,7 +209,7 @@ Miután konfigurálta WSS, proxy-forgalom a böngészőben nyissa meg a webböng
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

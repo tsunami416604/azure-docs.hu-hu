@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált iLMS |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és iLMS között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált iLMS |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és iLMS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 2764a109e92d3eabf2b7064ce7cd2e428256c8b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0281b0fca107908654dfac31014c79c187aa9b5d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>Oktatóanyag: Azure Active Directoryval integrált iLMS
 
@@ -29,7 +29,7 @@ ILMS integrálása az Azure AD lehetővé teszi a következő előnyöket biztos
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a iLMS (egyszeri bejelentkezés) a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,7 +112,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **azonosítója** szövegmező, illessze be a **azonosítója** értéket másol a **szolgáltató** iLMS felügyeleti portál SAML-beállítások szakasza.
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, illessze be a **végpont URL-** értéket másol a **szolgáltató** szakasz iLMS felügyeleti portál, hogy a következő mintát SAML-beállítások`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    b. Az a **válasz URL-CÍMEN** szövegmező, illessze be a **végpont URL-** értéket másol a **szolgáltató** szakasz iLMS felügyeleti portál, hogy a következő mintát SAML-beállítások `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
     >[!Note]
     >Ez 123456 példa érték azonosító.
@@ -121,7 +121,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, illessze be a **végpont URL-** értéket másol a **szolgáltató** szakasz iLMS felügyeleti portálon SAML-beállítások`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
+    Az a **bejelentkezési URL-cím** szövegmező, illessze be a **végpont URL-** értéket másol a **szolgáltató** szakasz iLMS felügyeleti portálon SAML-beállítások `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
 
 5. Igény szerinti kiépítés engedélyezéséhez iLMS alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. A következő jogcímek alkalmazás konfigurálása. Ezek az attribútumok értékének kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható egy példa a.
     
@@ -138,7 +138,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | ---------------| --------------- |    
     | osztály | felhasználó.részleg |
     | régió | User.state |
-    | Szervezeti egység | User.jobtitle |
+    | részleg | user.jobtitle |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -306,7 +306,7 @@ Ha a hozzáférési panelen iLMS csempére kattint, akkor kell beolvasása autom
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

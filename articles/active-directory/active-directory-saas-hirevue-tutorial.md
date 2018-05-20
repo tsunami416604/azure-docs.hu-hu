@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált HireVue |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és HireVue között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált HireVue |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és HireVue között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: e79526ff45babbca7722aa478347c0e3c9f013cd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cc59943871c6690a14754e919a8865065c0b40ac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>Oktatóanyag: Azure Active Directoryval integrált HireVue
 
@@ -29,7 +29,7 @@ HireVue integrálása az Azure AD lehetővé teszi a következő előnyöket biz
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett HireVue (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -114,15 +114,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     | Környezet | URL-cím |
     |-------------|---|
-    | Éles környezet | `https://<companyname>.hirevue.com` |
-    | Átmeneti    | `https://<companyname>.stghv.com` |
+    | Production | `https://<companyname>.hirevue.com` |
+    | Fájlok másolása folyamatban    | `https://<companyname>.stghv.com` |
     
     b. Az a **azonosító** szövegmező, adja meg az URL-címet:
     
     | Környezet | URN |
     |-------------|-----|
-    | Éles környezet |`urn:federation:hirevue.com:saml:sp:prod` |
-    | Átmeneti    | `urn:federation:hirevue.com:saml:sp:staging`|
+    | Production |`urn:federation:hirevue.com:saml:sp:prod` |
+    | Fájlok másolása folyamatban    | `urn:federation:hirevue.com:saml:sp:staging`|
     
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [HireVue ügyfél-támogatási csoport](mailto:samlsupport@hirevue.com) beolvasni ezeket az értékeket. 
@@ -219,7 +219,7 @@ Ha a hozzáférési panelen HireVue csempére kattint, akkor kell beolvasása au
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

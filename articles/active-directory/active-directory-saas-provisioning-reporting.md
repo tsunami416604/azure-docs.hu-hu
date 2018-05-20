@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directory automatikus felhasználói fiók kiépítése SaaS-alkalmazásokhoz való Reporting |} Microsoft Docs"
-description: "Útmutató: automatikus felhasználói fiók kiépítése feladatok állapotának ellenőrzését, és egyéni felhasználók számára a kiépítés elhárítása."
+title: Az Azure Active Directory automatikus felhasználói fiók kiépítése SaaS-alkalmazásokhoz való Reporting |} Microsoft Docs
+description: 'Útmutató: automatikus felhasználói fiók kiépítése feladatok állapotának ellenőrzését, és egyéni felhasználók számára a kiépítés elhárítása.'
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: d2ec1b25e39717fb2411d35e3b0a9f5eb3a977be
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1527e8fe28d395a77d7b3c1535e40fe59df1baba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: Jelentések automatikus felhasználói fiók kiépítése
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti, hogyan feladatok kiépítése után azok beállított álla
 
 Üzembe helyezési összekötők elsősorban állíthatók be, és a használatával konfigurálhatók a [Azure felügyeleti portálján](https://portal.azure.com), követve a [biztosított dokumentáció](active-directory-saas-tutorial-list.md) az alkalmazáshoz, ahol felhasználói fiók kiépítése van szükség. Konfigurálni és futtatni, ha egy alkalmazás feladatok kiépítés jelenthetők a két módszer egyikével:
 
-* **Azure felügyeleti portálján** -Ez a cikk elsődlegesen ismerteti a jelentés-adatok beolvasása a [Azure felügyeleti portálján](https://portal.azure.com), amely biztosítja, mind a kiépítés összefoglaló jelentést, valamint részletes kiépítés naplók egy adott alkalmazáshoz.
+* **Azure felügyeleti portálján** -Ez a cikk elsődlegesen ismerteti a jelentés-adatok beolvasása a [Azure felügyeleti portálján](https://portal.azure.com), amely biztosítja, hogy mind a kiépítési összefoglaló jelentést, valamint részletes üzembe helyezési naplózási egy adott alkalmazáshoz naplókat.
 
 * **Naplózási API** -Azure Active Directory is biztosít egy naplózási API-t, amely lehetővé teszi a programozott lekérése a részletes telepítési naplókat. Lásd: [Azure Active Directory naplózási API-referencia](active-directory-reporting-api-audit-reference.md) az API-jával vonatkozó dokumentációt. Amíg ez a cikk kifejezetten foglalkozik az API-t használja, azt a biztonsági naplóban rögzített események kiépítés típusú adatok találhatók.
 
@@ -67,7 +67,7 @@ A létesítési összefoglaló jelentést is elérhetővé válik a a **kiépít
 
 A létesítési összefoglaló jelentést kell lennie az első hely rendszergazdák tekintse meg a kiosztási feladatának működési állapotának az ellenőrzéséhez.
 
- ![Összegzési jelentése](./media/active-directory-saas-provisioning-reporting/summary_report.PNG)
+ ![Összefoglaló jelentés](./media/active-directory-saas-provisioning-reporting/summary_report.PNG)
 
 ### <a name="provisioning-audit-logs"></a>Telepítési naplófájlok
 A létesítési szolgáltatás által végzett tevékenységek tárolja, amely az Azure AD naplókat, amely tekintheti meg a **naplók** lap a **fiók** kategóriát. Naplózott esemény tevékenységtípusok a következők:
@@ -130,7 +130,7 @@ Az üzembe helyezési összegző jelentés és naplózási naplókat segíti a r
 Forgatókönyv-alapú bemutató elhárításáról automatikus a felhasználók átadása, lásd: [problémák konfigurálása, és üzembe helyezését a felhasználók számára az alkalmazás](active-directory-application-provisioning-content-map.md).
 
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)

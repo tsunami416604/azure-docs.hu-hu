@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció SAP üzleti objektum a felhő |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP Business objektumot felhő között."
+title: 'Oktatóanyag: Azure Active Directory-integráció SAP üzleti objektum a felhő |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP Business objektumot felhő között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: b0ea48aea2e13027c5af273a416489e48987b44a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a56a892ac3b28c4e90ec2ea6360da3d2eff2581
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Oktatóanyag: Azure Active Directory-integráció SAP üzleti objektum a felhő
 
@@ -30,7 +30,7 @@ SAP Business objektumot felhőalapú Azure AD-val integrálásakor kapott a köv
 - Automatikusan bejelentkezhet a felhasználókat, hogy SAP Business objektumot felhő egyszeri bejelentkezést és a felhasználó Azure AD-fiókot.
 - A fiók egyetlen, központi helyen, az Azure-portálon kezelheti.
 
-További információért, egy szolgáltatott szoftverként (SaaS) alkalmazás integráció az Azure ad-vel kapcsolatban lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+További információért, egy szolgáltatott szoftverként (SaaS) alkalmazás integráció az Azure ad-vel kapcsolatban lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -217,7 +217,7 @@ A felhasználói fiók létrehozásához:
 
     ![Alkalmazott hozzáadása](./media/active-directory-saas-sapboc-tutorial/user1.png)
 
-3. Az a **felhasználók** lapra, adja hozzá az új felhasználó adatait, válassza ki  **+** . 
+3. Az a **felhasználók** lapra, adja hozzá az új felhasználó adatait, válassza ki **+**. 
 
     ![Felhasználók hozzáadására szolgáló oldala](./media/active-directory-saas-sapboc-tutorial/user4.png)
 
@@ -231,7 +231,7 @@ A felhasználói fiók létrehozásához:
 
     4. Az a **MEGJELENÍTETT név** mezőbe írja be például a teljes nevet, a felhasználó **Britta Simon**.
 
-    5. Az a **E-MAIL** mezőbe írja be például a felhasználó e-mail címe  **brittasimon@contoso.com** .
+    5. Az a **E-MAIL** mezőbe írja be például a felhasználó e-mail címe **brittasimon@contoso.com**.
 
     6. Az a **szerepkörök kiválasztása** lapon válassza ki a megfelelő szerepkört a felhasználó számára, és válassza ki **OK**.
 
@@ -270,7 +270,7 @@ SAP Business objektumot felhő Britta Simon hozzárendelése:
 
 ![A felhasználói szerepkör hozzárendelése][200] 
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 
@@ -281,7 +281,7 @@ A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

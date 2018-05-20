@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció a IBM Kenexa felmérés vállalati |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az IBM Kenexa felmérés vállalati között."
+title: 'Oktatóanyag: Azure Active Directory-integráció a IBM Kenexa felmérés vállalati |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az IBM Kenexa felmérés vállalati között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 929ae8b780c0e18074832adfefb9a7674097fd08
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 88e0072adeeebaf6c9e964db28a45f6fe038fddf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a IBM Kenexa felmérés vállalati
 
@@ -29,7 +29,7 @@ IBM Kenexa felmérés vállalati integrálása az Azure AD lehetővé teszi a k�
 - Engedélyezheti a felhasználók automatikusan jelentkezhetnek be IBM Kenexa felmérés vállalati az Azure AD-fiókok egyszeri bejelentkezés (SSO) használatával.
 - A fiók egyetlen központi helyen kezelheti: az Azure-portálon.
 
-Ha azt szeretné, az Azure AD egy szolgáltatott szoftverként (SaaS) alkalmazás integrációt, tudnia további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Ha azt szeretné, az Azure AD egy szolgáltatott szoftverként (SaaS) alkalmazás integrációt, tudnia további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -102,9 +102,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri Bejelentkezést az Azure p
 
     ![IBM Kenexa felmérés vállalati tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
-    a. Az a **azonosító** szövegmezőhöz URL-címet adja meg a következő mintával:`https://surveys.kenexa.com/<companycode>`
+    a. Az a **azonosító** szövegmezőhöz URL-címet adja meg a következő mintával: `https://surveys.kenexa.com/<companycode>`
 
-    b. Az a **válasz URL-CÍMEN** szövegmezőhöz URL-címet adja meg a következő mintával:`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. Az a **válasz URL-CÍMEN** szövegmezőhöz URL-címet adja meg a következő mintával: `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE] 
     > Az előző értékei nem valódi. A tényleges azonosítójú frissítheti, illetve válasz URL-CÍMÉT. A tényleges értékek beszerzéséhez forduljon a [IBM Kenexa felmérés vállalati támogatási csoport](https://www.ibm.com/support/home/?lnk=fcw).
@@ -202,7 +202,7 @@ Felhasználó Britta Simon hozzárendelése IBM Kenexa felmérés vállalati, te
 
 7. Az a **hozzáadása hozzárendelés** párbeszédpanel, kattintson a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési Panel segítségével tesztelheti.
 
@@ -211,7 +211,7 @@ Amikor rákattint az **IBM Kenexa felmérés vállalati** csempére a hozzáfér
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

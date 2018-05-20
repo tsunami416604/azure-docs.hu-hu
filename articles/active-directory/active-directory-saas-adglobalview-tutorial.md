@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált ADP Globalview |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és ADP Globalview között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált ADP Globalview |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és ADP Globalview között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 7271efe4a1cd943f84d322e7333c92d6f60b62aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5471a4edfc6830367d120580c1c36f30f87a8f90
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>Oktatóanyag: Azure Active Directoryval integrált ADP Globalview
 
@@ -29,7 +29,7 @@ ADP Globalview integrálása az Azure AD lehetővé teszi a következő előnyö
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a ADP Globalview (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,7 +110,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_url.png)
 
-     Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-cím: `https://<subdomain>.globalview.adp.com/federate` vagy`https://<subdomain>.globalview.adp.com/federate2`
+     Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-cím: `https://<subdomain>.globalview.adp.com/federate` vagy `https://<subdomain>.globalview.adp.com/federate2`
 
     > [!NOTE] 
     > Az érték nincs valós. Frissítse az értéket a tényleges azonosítóval. Ügyfél [ADP Globalview támogatási](https://www.adp.com/contact-us/overview.aspx) az értéket be kell olvasni.
@@ -130,7 +130,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |    
     | personalimmutableid | User.extensionattribute2 |
-    | e-mailben               | User.mail |
+    | e-mailben               | user.mail |
     | felhasználói azonosítóját              | User.userPrincipalName|
     
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
@@ -235,7 +235,7 @@ Ha a hozzáférési panelen ADP GlobalView csempére kattint, akkor kell beolvas
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

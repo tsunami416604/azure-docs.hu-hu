@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált vxMaintain |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és vxMaintain között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált vxMaintain |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és vxMaintain között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 66165b2586304f3726f5d712fb334fe67e2cd02b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c30d59a2bd903a5578caf376957a22bb270455f9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Azure Active Directoryval integrált vxMaintain
 
@@ -29,7 +29,7 @@ Ez az integráció kínál számos fontos előnnyel jár. A következőket tehet
 - Engedélyezze a felhasználóknak automatikusan jelentkezzen be az egyszeri bejelentkezés (SSO) vxMaintain az Azure AD-fiókok használatával.
 - A fiók egyetlen központi helyen kezelheti: az Azure-portálon.
 
-Az Azure AD SaaS alkalmazásintegráció kapcsolatos további információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció kapcsolatos további információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -104,9 +104,9 @@ Ebben a szakaszban is engedélyezheti Azure AD egyszeri bejelentkezés az Azure 
 
     ![A tartomány és az URL-címek szakasz vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a. Az a **azonosító** mezőbe írjon be egy URL-címet, amely rendelkezik a következő szintaxist:`https://<company name>.verisae.com`
+    a. Az a **azonosító** mezőbe írjon be egy URL-címet, amely rendelkezik a következő szintaxist: `https://<company name>.verisae.com`
 
-    b. Az a **válasz URL-CÍMEN** mezőbe írjon be egy URL-címet, amely rendelkezik a következő szintaxist:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    b. Az a **válasz URL-CÍMEN** mezőbe írjon be egy URL-címet, amely rendelkezik a következő szintaxist: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
     > Az előző értékei nem valódi. A tényleges azonosítójú frissítheti, illetve válasz URL-CÍMÉT. Szerezze be az értékeket, lépjen kapcsolatba a [vxMaintain támogatási csoport](http://www.verisae.com/contact-us).
@@ -198,7 +198,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="next-steps"></a>További lépések
 
 * [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

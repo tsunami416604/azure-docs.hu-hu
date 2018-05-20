@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: v-ant
-ms.openlocfilehash: c7ec58b0da3a918729733809d326e6f2e5916c9d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b6f536ba1711076eab0eb9dcbea7d357e9cebf3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-replicon-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Replicon konfigurálása
 
@@ -158,7 +158,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 

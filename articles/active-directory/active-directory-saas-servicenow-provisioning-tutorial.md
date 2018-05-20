@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: ServiceNow konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
-description: "Megtudhatja, hogyan automatikusan ellátásához, majd leépíti a felhasználói fiókok Azure ad-ServiceNow."
+title: 'Oktatóanyag: ServiceNow konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
+description: Megtudhatja, hogyan automatikusan ellátásához, majd leépíti a felhasználói fiókok Azure ad-ServiceNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 50d5ecd0542d236d4d68656af7808c329728aa39
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 88505126389f51f59cf0538da8b72139f86e58d5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: ServiceNow konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval
 
@@ -91,7 +91,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](active-directory-saas-servicenow-tutorial.md)
 
 

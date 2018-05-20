@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált vászonra Lms |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a vászonra LMS között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált vászonra Lms |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a vászonra LMS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.openlocfilehash: ae007ee34f1dc997db2d7ca8267ba2522e0eb687
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 56fe4679448fec1db67f826ff70cf8768699e507
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>Oktatóanyag: Azure Active Directoryval integrált vászonra LMS
 
@@ -29,7 +29,7 @@ Vászonra integrálása az Azure AD lehetővé teszi a következő előnyöket b
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett vászon (egyszeri bejelentkezés) a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<tenant-name>.instructure.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenant-name>.instructure.com`
 
-    b. Az a **azonosító** szövegmező, írja be az értéket a következő minta használatával:`https://<tenant-name>.instructure.com/saml2`
+    b. Az a **azonosító** szövegmező, írja be az értéket a következő minta használatával: `https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [vászonra ügyfél-támogatási csoport](https://community.canvaslms.com/community/help) beolvasni ezeket az értékeket. 
@@ -221,9 +221,9 @@ Esetén a vásznon a felhasználók átadása kézi tevékenység.
    
    a. Az a **teljes nevét** szövegmező, írja be például a felhasználó nevét **BrittaSimon**.
 
-   b. Az a **E-mail** szövegmező, adja meg az e-mail címét, például a felhasználó  **brittasimon@contoso.com** .
+   b. Az a **E-mail** szövegmező, adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
 
-   c. Az a **bejelentkezési** szövegmező, írja be a felhasználó az Azure AD e-mail címét például  **brittasimon@contoso.com** .
+   c. Az a **bejelentkezési** szövegmező, írja be a felhasználó az Azure AD e-mail címét például **brittasimon@contoso.com**.
 
    d. Válassza ki **E-mail a felhasználó a fiók létrehozása**.
 
@@ -272,7 +272,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Cisco Spark |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Cisco Spark között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Cisco Spark |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Cisco Spark között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: c7ee96abacffc6599187ded9a5049cc3bf672e0a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4307904e87bdf9a0361a7fb143e87ae3a662f18e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>Oktatóanyag: Azure Active Directoryval integrált Cisco Spark
 
@@ -29,7 +29,7 @@ Cisco Spark integrálása az Azure AD lehetővé teszi a következő előnyöket
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Cisco Spark (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet:`https://web.ciscospark.com/#/signin`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet: `https://web.ciscospark.com/#/signin`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://idbroker.webex.com/<companyname>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://idbroker.webex.com/<companyname>`
 
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges azonosítója. Ügyfél [Cisco Spark ügyfél-támogatási csoport](https://support.ciscospark.com/) lekérni ezt az értéket. 
@@ -218,7 +218,7 @@ Ebben a szakaszban egy Cisco Spark Britta Simon nevű felhasználót hoz létre.
     
     b. Az a **Vezetéknév** szövegmezőhöz típus **Simon**.
     
-    c. Az a **E-mail cím** szövegmezőhöz típus  **britta.simon@contoso.com** .
+    c. Az a **E-mail cím** szövegmezőhöz típus **britta.simon@contoso.com**.
 
 5. Kattintson a plusz jelre Britta Simon hozzáadni. Ezután kattintson a **Tovább** gombra.
 
@@ -263,7 +263,7 @@ Ha a hozzáférési panelen a Cisco Spark csempére kattint, akkor kell beolvas�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

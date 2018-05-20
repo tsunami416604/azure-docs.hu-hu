@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Cisco Webex |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Cisco Webex között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Cisco Webex |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Cisco Webex között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 42632dcf8997ec5e987ac8a6615aae24e903399a
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 527d74910244058506e8435d431e239968896cd9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Oktatóanyag: Azure Active Directoryval integrált Cisco Webex
 
@@ -30,7 +30,7 @@ Cisco Webex integrálása az Azure AD lehetővé teszi a következő előnyöket
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Cisco Webex a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen--az Azure-portálon kezelheti.
 
-Az Azure AD SaaS alkalmazásintegráció kapcsolatos további tudnivalókért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció kapcsolatos további tudnivalókért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,11 +110,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Cisco Webex tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a. Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe:`https://<subdomain>.webex.com`
+    a. Az a **bejelentkezési URL-cím** mezőbe írja be a következő mintát olyan URL-címe: `https://<subdomain>.webex.com`
 
     b. Az a **azonosító** mezőben adja meg az URL-cím `http://www.webex.com`.
 
-    c. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe:`https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
+    c. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe: `https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
      
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-címet és bejelentkezés URL-CÍMÉT. Ügyfél [Cisco Webex ügyfél-támogatási csoport](https://www.webex.co.in/support/support-overview.html) beolvasni ezeket az értékeket. 
@@ -222,9 +222,9 @@ Ahhoz, hogy az Azure AD-felhasználók Cisco Webex bejelentkezni, akkor ki kell 
 
     c. Az a **Vezetéknév** mezőbe írja be a felhasználó vezetékneve (ebben az esetben **Simon**).
 
-    d. Az a **felhasználónév** mezőbe írja be az e-mail a felhasználó (ebben az esetben  **Brittasimon@contoso.com** ).
+    d. Az a **felhasználónév** mezőbe írja be az e-mail a felhasználó (ebben az esetben **Brittasimon@contoso.com**).
 
-    e. Az a **E-mail** mezőbe írja be a felhasználó e-mail címe (ebben az esetben  **Brittasimon@contoso.com** ).
+    e. Az a **E-mail** mezőbe írja be a felhasználó e-mail címe (ebben az esetben **Brittasimon@contoso.com**).
 
     f. Az a **jelszó** mezőbe írja be a jelszót.
 
@@ -267,7 +267,7 @@ Ez a szakasz lehetővé teszik a felhasználónak Britta Simon szerint Cisco Web
 
 7. Válassza ki a **hozzárendelése** gombra a **hozzáadása hozzárendelés** párbeszédpanel megnyitásához.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 
@@ -278,7 +278,7 @@ A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

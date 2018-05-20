@@ -15,23 +15,23 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5316cca9d3c944735355d7912a0f1e044c585001
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz
 Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nem szerepel az Azure Active Directory-alkalmazásgyűjtemény konfigurálása tárgya *kód írása nélkül*. Ez a funkció a 2015. November 18 technical Preview-ban jelent meg, és szerepel a [Azure Active Directory Premium](active-directory-whatis.md). Ha ehelyett fejlesztői útmutató az egyéni alkalmazások integrálása az Azure AD kód keres, tekintse meg [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
 
-Az Azure Active Directory alkalmazáskatalógusában felsorolja alkalmazásokat, amelyek kat közismerten támogató egy formája, amelyet az egyszeri bejelentkezés az Azure Active Directoryval, a [Ez a cikk](active-directory-appssoaccess-whatis.md). (A egy informatikai szakember vagy a rendszer integráló a szervezet) megkeresése az alkalmazáshoz, amelyhez csatlakozni, elkezdheti az egyszeri bejelentkezés engedélyezése az Azure-portálon jelenik meg a részletes utasításokat követve.
+Az Azure Active Directory alkalmazáskatalógusában felsorolja alkalmazásokat, amelyek kat közismerten támogató egy formája, amelyet az egyszeri bejelentkezés az Azure Active Directoryval, a [Ez a cikk](manage-apps/what-is-single-sign-on.md). (A egy informatikai szakember vagy a rendszer integráló a szervezet) megkeresése az alkalmazáshoz, amelyhez csatlakozni, elkezdheti az egyszeri bejelentkezés engedélyezése az Azure-portálon jelenik meg a részletes utasításokat követve.
 
 Az ügyfelek [Azure Active Directory Premium](active-directory-whatis.md) licenc is ezekhez a kiegészítő lehetőségekhez beolvasása:
 
 * Önkiszolgáló integrációs bármely alkalmazás, amely támogatja az SAML 2.0 identitás-szolgáltatóktól (a Szolgáltató által kezdeményezett vagy a kiállító terjesztési hely által kezdeményezett)
-* A webes alkalmazás, amelynek használatával egy bejelentkezési lap HTML-alapú önkiszolgáló integrációs [jelszó-alapú egyszeri bejelentkezés](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
+* A webes alkalmazás, amelynek használatával egy bejelentkezési lap HTML-alapú önkiszolgáló integrációs [jelszó-alapú egyszeri bejelentkezés](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
 * Kapcsolat az önkiszolgáló felhasználó történő üzembe helyezéséhez a SCIM protokollt használó alkalmazások ([itt leírt](active-directory-scim-provisioning.md))
-* Hivatkozások a bármely alkalmazás hozzáadása a [Office 365 alkalmazás indító](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* Hivatkozások a bármely alkalmazás hozzáadása a [Office 365 alkalmazás indító](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
 
 Ez magában foglalhatja nem csak a SaaS-alkalmazásokhoz, amelyek használják, de rendelkezik nem még nincs előre telepített az Azure AD alkalmazás gyűjteményébe, de külső webes alkalmazásokhoz, amelyek azt szabályozzák, vagy a felhőben, vagy a helyszíni kiszolgálók alkalmazva van a szervezet.
 
@@ -115,18 +115,18 @@ Teszteléséhez egyszerűen jelentkezzen be az Azure AD hozzáférési panelre a
 Hibakeresési tippeket, megjelenik ez [cikk az SAML-alapú egyszeri bejelentkezést alkalmazások hibakeresése](active-directory-saml-debugging.md) 
 
 ## <a name="password-single-sign-on"></a>Jelszó egyszeri bejelentkezést.
-Válassza ezt a lehetőséget választva [jelszó-alapú egyszeri bejelentkezést](active-directory-appssoaccess-whatis.md) , amely rendelkezik egy bejelentkezési lap HTML webalkalmazás. Egyszeri jelszó alapú is hívják jelszó vaulting, lehetővé teszi a felhasználói hozzáférés és a webes alkalmazásokhoz, amelyek nem támogatják az identitás-összevonási jelszavak kezeléséhez. Akkor célszerű is forgatókönyvek, ahol több felhasználó meg szeretné osztani ugyanazt a fiókot, például a szervezet közösségi app fiókokhoz. 
+Válassza ezt a lehetőséget választva [jelszó-alapú egyszeri bejelentkezést](manage-apps/what-is-single-sign-on.md) , amely rendelkezik egy bejelentkezési lap HTML webalkalmazás. Egyszeri jelszó alapú is hívják jelszó vaulting, lehetővé teszi a felhasználói hozzáférés és a webes alkalmazásokhoz, amelyek nem támogatják az identitás-összevonási jelszavak kezeléséhez. Akkor célszerű is forgatókönyvek, ahol több felhasználó meg szeretné osztani ugyanazt a fiókot, például a szervezet közösségi app fiókokhoz. 
 
 Miután kiválasztott **következő**, kérni fogja az alkalmazás webes bejelentkezési lap URL-címet. Vegye figyelembe, hogy a felhasználónév és jelszó bemeneti mezőket tartalmazó oldalon kell lennie. Ha meg van adva, az Azure AD elindítja elemzése a bejelentkezési lapon adjon meg egy felhasználónevet és jelszót adjon meg egy folyamatot. Ha a folyamat nem sikeres, majd azt végigvezeti Önt egy másik folyamat telepíthet egy bővítmény (igényli az Internet Explorer, a Chrome vagy a Firefox), amely lehetővé teszi a mezők manuálisan rögzítéséhez.
 
-Amennyiben a bejelentkezési oldal rögzítése, felhasználók és csoportok rendelt és credential házirendeket állíthat be hasonlóan rendszeres [jelszó SSO alkalmazások](active-directory-appssoaccess-whatis.md).
+Amennyiben a bejelentkezési oldal rögzítése, felhasználók és csoportok rendelt és credential házirendeket állíthat be hasonlóan rendszeres [jelszó SSO alkalmazások](manage-apps/what-is-single-sign-on.md).
 
 Megjegyzés: Az alkalmazás használatára vonatkozó egy csempeembléma feltöltheti a **embléma feltöltéséhez** gombra a **konfigurálása** fülre az alkalmazáshoz. 
 
 ## <a name="existing-single-sign-on"></a>Meglévő egyszeri bejelentkezést.
 Válassza ezt a beállítást, a szervezet Azure AD hozzáférési Panel vagy az Office 365 portál alkalmazásokra mutató hivatkozás hozzáadása. Ezzel hivatkozások felvétele egyéni webes alkalmazásokat, amelyek jelenleg használják az Azure Active Directory összevonási szolgáltatások (vagy más összevonási szolgáltatásból) helyett az Azure AD használatára a hitelesítéshez. Vagy mélyhivatkozással hozzáadása adott SharePoint-lapokat vagy más szeretné jelennek meg a felhasználói hozzáférés panelek weblapokat. 
 
-Miután kiválasztott **következő**, kérni fogja a csatolni kívánt alkalmazás URL-címet. Ezt követően felhasználókhoz és csoportokhoz rendelt az alkalmazásról, így az alkalmazás megjelenik a [Office 365 alkalmazás indító](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) azoknak a felhasználóknak.
+Miután kiválasztott **következő**, kérni fogja a csatolni kívánt alkalmazás URL-címet. Ezt követően felhasználókhoz és csoportokhoz rendelt az alkalmazásról, így az alkalmazás megjelenik a [Office 365 alkalmazás indító](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) azoknak a felhasználóknak.
 
 Megjegyzés: Az alkalmazás használatára vonatkozó egy csempeembléma feltöltheti a **embléma feltöltéséhez** gombra a **konfigurálása** fülre az alkalmazáshoz.
 

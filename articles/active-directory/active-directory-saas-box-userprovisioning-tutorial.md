@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Az Azure Active Directoryval történő üzembe helyezéséhez automatikus felhasználói beállítása használata |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a mező között."
+title: 'Oktatóanyag: Az Azure Active Directoryval történő üzembe helyezéséhez automatikus felhasználói beállítása használata |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a mező között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: d1bbafdb8bbd5ea7bfa193832992d56016b6ee5e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d9c615e3d0f144080a02f6f8d95603ecac4341f0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: Az automatikus felhasználó lépnek beállítása használata
 
@@ -43,7 +43,7 @@ A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt sz�
 A **mezőben > felhasználók és csoportok** az Azure-portálon állíthatja be, hogy mely felhasználók és csoportok kell hozzáférést adjon meg. Egy felhasználó vagy csoport hozzárendelése hatására megtörténik a következő műveleteket:
 
 * Az Azure AD való hitelesítésre szolgáló mezőben lehetővé teszi a kijelölt felhasználó (akár közvetlen címhozzárendelési vagy csoporttagság). Ha a felhasználó nem tartozik, az Azure AD engedi jelentkezzen be a mezőbe, és az Azure AD bejelentkezési lapon hibát ad vissza.
-* Az alkalmazás csempéjére a hozzá tartozó mezőben kerül a felhasználó [alkalmazásindító](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
+* Az alkalmazás csempéjére a hozzá tartozó mezőben kerül a felhasználó [alkalmazásindító](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
 * Ha automatikus kiépítés engedélyezve van, majd a kijelölt felhasználók és/vagy csoportok kerülnek a kiépítési várólista automatikusan építeni.
   
   * Ha csak a felhasználói objektumok be lett állítva, úgy kell létrehozni, majd kerülnek, a telepítési várólistán lévő összes közvetlenül hozzárendelt felhasználó, és minden olyan felhasználó, amelyek bármely hozzárendelt csoportok tagjai kerülnek be a létesítési várólistába. 
@@ -120,5 +120,5 @@ Az mezőbe-bérlőben szinkronizált felhasználók találhatók **felügyelt fe
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](active-directory-saas-box-tutorial.md)

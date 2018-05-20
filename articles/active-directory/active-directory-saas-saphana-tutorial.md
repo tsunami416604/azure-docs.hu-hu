@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált SAP HANA |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP HANA között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált SAP HANA |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP HANA között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 855525e2c1d3c33cc7134bbc1cd9b53ca59e1a70
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 626dfe07c13c90686157dea710715b333a378136
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Oktatóanyag: Azure Active Directoryval integrált SAP HANA
 
@@ -30,7 +30,7 @@ Az Azure ad-val integrálásakor SAP HANA töltse le a következő előnyöket b
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni be van jelentkezve SAP HANA a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen--az Azure-portálon kezelheti.
 
-Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS integrálásáról további információért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -109,9 +109,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Tartomány- és URL-címeket az egyszeri bejelentkezés információk](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_url.png)
 
-    a. Az a **azonosító** mezőbe írja be a következőt:`HA100` 
+    a. Az a **azonosító** mezőbe írja be a következőt: `HA100` 
 
-    b. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe:`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
+    b. Az a **válasz URL-CÍMEN** mezőbe írja be a következő mintát olyan URL-címe: `https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
     > [!NOTE] 
     > Ezek az értékek nem valódi. A tényleges azonosítójú frissítheti ezeket az értékeket, és válasz URL-CÍMÉT. Lépjen kapcsolatba a [SAP HANA ügyfél-támogatási csoport](https://cloudplatform.sap.com/contact.html) beolvasni ezeket az értékeket. 
@@ -144,7 +144,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > [!NOTE]
     > Az alapértelmezett beállítás az URL-címet átirányítja a kérést egy bejelentkezési képernyő, egy SAP HANA-adatbázis hitelesített felhasználó hitelesítő adatait, amelyhez. A felhasználó számára kérelmezni SAML-alapú felügyeleti feladatok elvégzéséhez engedélyekkel kell rendelkeznie.
 
-9. Lépjen a XSA webes felületen **SAML-Identitásszolgáltatóként**. Ott, válassza ki a  **+**  gomb megjelenítése a képernyő alján a **identitás szolgáltató adatai hozzáadása** ablaktáblán. Ezután a következő lépéseket:
+9. Lépjen a XSA webes felületen **SAML-Identitásszolgáltatóként**. Ott, válassza ki a **+** gomb megjelenítése a képernyő alján a **identitás szolgáltató adatai hozzáadása** ablaktáblán. Ezután a következő lépéseket:
 
     ![Identitás-szolgáltató felvétele](./media/active-directory-saas-saphana-tutorial/sap1.png)
 
@@ -152,7 +152,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Identitásszolgáltató beállítások hozzáadása](./media/active-directory-saas-saphana-tutorial/sap2.png)
 
-    b. Az XML-dokumentum tartalma érvényes, ha az elemzési folyamat kibontja a vonatkozó szükséges információkat a **tulajdonosa Entitásazonosító és kibocsátó** mezőiben a **általános adatok** terület képernyőn. Is bontja ki a következő URL-cím mezők a szükséges információkat a **cél** terület, például képernyőn a  **SingleSignOn és alap URL-címe (*)** mezőket.
+    b. Az XML-dokumentum tartalma érvényes, ha az elemzési folyamat kibontja a vonatkozó szükséges információkat a **tulajdonosa Entitásazonosító és kibocsátó** mezőiben a **általános adatok** terület képernyőn. Is bontja ki a következő URL-cím mezők a szükséges információkat a **cél** terület, például képernyőn a **alap URL-cím és SingleSignOn URL-cím (*)** mezőket.
 
     ![Identitásszolgáltató beállítások hozzáadása](./media/active-directory-saas-saphana-tutorial/sap3.png)
 
@@ -222,7 +222,7 @@ Ha a felhasználó manuálisan létrehozásához szükséges, a következő lép
 
 3. Válassza ki **Hozzáadás** a SAML IDP hozzáadni.  Válassza ki a megfelelő SAML IDP, majd a **OK**.
 
-4. Adja hozzá a **külső identitások** (ebben az esetben az BrittaSimon), vagy válasszon **bármely**. Válassza ki **OK**.
+4. Adja hozzá a **külső identitások** (ebben az esetben az BrittaSimon), vagy válasszon **bármely**. Ezután kattintson az **OK** gombra.
 
     >[!Note]
     >Ha a **bármely** jelölőnégyzet nincs bejelölve, akkor HANA felhasználóneve meg kell egyeznie a felhasználó a felhasználónév, a tartományi utótag elé. (Például BrittaSimon@contoso.com a HANA BrittaSimon válik.)
@@ -266,7 +266,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Válassza ki a **hozzárendelése** gombra a **hozzáadása hozzárendelés** párbeszédpanel megnyitásához.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 
@@ -276,7 +276,7 @@ A hozzáférési panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

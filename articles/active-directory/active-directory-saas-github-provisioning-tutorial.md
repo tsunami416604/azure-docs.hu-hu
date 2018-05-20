@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag: GitHub konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti a GitHub felhasználói fiókokat."
+title: 'Oktatóanyag: GitHub konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti a GitHub felhasználói fiókokat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 53eb2d0e76cb4765612dfd30226979d839a96235
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 25ab5e2628b312ae508f17cc80b945700f034273
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés GitHub konfigurálása
 
@@ -102,7 +102,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 

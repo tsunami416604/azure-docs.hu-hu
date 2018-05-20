@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: A felhőben BC Azure Active Directoryval integrált |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és BC között a felhőben."
+title: 'Oktatóanyag: A felhőben BC Azure Active Directoryval integrált |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és BC között a felhőben.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: jeedes
-ms.openlocfilehash: 97cbd4c88746500f1783f573478d279873d42f87
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 89c6aea65bb6ee812ec14cb8cc2334eb49686cd4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Oktatóanyag: Azure Active Directory-integrációval rendelkező BC a felhőben
 
@@ -29,7 +29,7 @@ BC a felhőben az Azure AD integrálása lehetővé teszi a következő előnyö
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a BC a felhőben (egyszeri bejelentkezés) a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-bcinthecloud-tutorial/tutorial_bcinthecloud_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://app.bcinthecloud.com/router/loginSaml/<customerid>`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://app.bcinthecloud.com/router/loginSaml/<customerid>`
 
-    b. Az a **azonosító** szövegmező, adja meg az URL-címet:`https://app.bcinthecloud.com`
+    b. Az a **azonosító** szövegmező, adja meg az URL-címet: `https://app.bcinthecloud.com`
 
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [BC a felhőalapú ügyfél-támogatási csoport](https://www.bcinthecloud.com/supportcenter/) lekérni ezt az értéket. 
@@ -205,7 +205,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

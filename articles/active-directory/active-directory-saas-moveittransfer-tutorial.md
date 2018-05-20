@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált MOVEit átadás - Azure AD-integrációs |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és MOVEit átadás - integráció az Azure AD között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált MOVEit átadás - Azure AD-integrációs |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és MOVEit átadás - integráció az Azure AD között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d9955655119a51656d6b17ba1cecf624c416874
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f9bfd3ad884ad36026d56af514391c5f75a97e51
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Oktatóanyag: Azure Active Directoryval integrált MOVEit átadás - Azure AD-integrációs
 
@@ -30,7 +30,7 @@ MOVEit átadás - Azure AD integrálása az Azure AD integrálása lehetővé te
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett MOVEit átviteléig – az Azure AD integrálása (egyszeri bejelentkezés) az Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,11 +108,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://contoso.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://contoso.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://contoso.com/<tenatid>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://contoso.com/<tenatid>`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`    
+    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://contoso.com/<tenatid>/SAML/SSO/HTTP-Post`    
      
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Olvassa el ezeket az értékeket később a **szolgáltató metaadatainak URL-címe** szakaszban, vagy forduljon a [MOVEit átadás - az Azure AD integrálása ügyfél támogatási csoport](https://community.ipswitch.com/s/support) beolvasni ezeket az értékeket.
@@ -242,7 +242,7 @@ Ebben a szakaszban Britta Simon használandó Azure egyszeri bejelentkezés ált
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ez a szakasz célja a hozzáférési panelen az Azure AD SSO-konfigurációjának tesztelése.
 
@@ -251,7 +251,7 @@ A MOVEit átadás - kattintva az Azure AD-integrációs csempét a hozzáférés
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Skillport |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Skillport között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Skillport |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Skillport között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b14c40b402ae1877f6bfb267c137c9a051b8225
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 269c5aedb2e990a83358605445d19d9d61261f3b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Oktatóanyag: Azure Active Directoryval integrált Skillport
 
@@ -29,7 +29,7 @@ Skillport integrálása az Azure AD lehetővé teszi a következő előnyöket b
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Skillport (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,21 +112,21 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:
       
-      EU Datacenter:`https://adfs.skillport.eu`
+      EU Datacenter: `https://adfs.skillport.eu`
    
-      USA Datacenter:`https://sso.skillport.com`
+      USA Datacenter: `https://sso.skillport.com`
 
     b. Az a **azonosító** szövegmező, írja be az URL-cím:
       
-      EU Datacenter:`http://adfs.skillport.eu/adfs/services/trust`
+      EU Datacenter: `http://adfs.skillport.eu/adfs/services/trust`
    
-      USA Datacenter:`https://sso.skillport.com`
+      USA Datacenter: `https://sso.skillport.com`
    
     c. Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-cím:
     
-      EU Datacenter:` https://adfs.skillport.eu/adfs/ls/`
+      EU Datacenter: ` https://adfs.skillport.eu/adfs/ls/`
     
-      USA Datacenter:`https://sso.skillport.com/sp/ACS.saml2`
+      USA Datacenter: `https://sso.skillport.com/sp/ACS.saml2`
  
 4. Az a **SAML-aláíró tanúsítványa** kattintson **metaadatainak XML-kódja** , és mentse az XML-fájlt a számítógépen.
 
@@ -213,7 +213,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

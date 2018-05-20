@@ -5,9 +5,9 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: kgremban
+editor: ''
 ms.assetid: ''
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
@@ -16,13 +16,13 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: dc0d91482637e3ade1147083b6d9c890e2798036
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 084594b637f813c110e4e0b2e9df2b9103d58efc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="manage-role-assignments-for-external-users"></a>Szerepkör-hozzárendelések a külső felhasználók kezelése
+# <a name="manage-role-assignments-for-external-users"></a>Külső felhasználók szerepkör-hozzárendeléseinek kezelése
 
 Szerepköralapú hozzáférés-vezérlést (RBAC) lehetővé teszi, hogy jobban biztonságkezelés nagy méretű szervezeteknek, és az SMB-khez külső közreműködő, a szállítók vagy az adott környezetben meghatározott erőforrás azonban nem feltétlenül a teljes hozzáférést igénylő freelancers használata infrastruktúra vagy bármely számlázással kapcsolatos hatókör. Az RBAC lehetővé teszi, hogy egy Azure-előfizetéssel rendelkező rugalmasan kezeli a rendszergazdai fiókot (szolgáltatás-rendszergazda szerepkörrel egy előfizetés szintjén), és több felhasználók meghívást az azonos előfizetésben, de bármilyen rendszergazdai jogosultságok nélkül működik az .
 

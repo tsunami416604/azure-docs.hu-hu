@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált LinkedInSalesNavigator |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és LinkedInSalesNavigator között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált LinkedInSalesNavigator |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és LinkedInSalesNavigator között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: fde1d2c5d1a90092ec4528f727dc7af672f80917
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c8dcf4ad49b8f261814c2d442bfdded221e8cbf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Oktatóanyag: Azure Active Directory-integráció a LinkedIn értékesítési Navigator
 
@@ -29,7 +29,7 @@ LinkedIn értékesítési Navigator integrálása az Azure AD lehetővé teszi a
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a LinkedIn értékesítési Navigator (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha szeretné tudni, hogy az Azure AD SaaS integrálásáról további információkat, keresse meg a [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha szeretné tudni, hogy az Azure AD SaaS integrálásáról további információkat, keresse meg a [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -128,7 +128,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával:`https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
+    Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
 8. A **LinkedIn értékesítési Navigator** alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban, amelyhez adja hozzá az egyéni attribútum-leképezésekhez SAML-jogkivonat attribútumok konfigurációjához. Az alábbi képernyőfelvételen szereplő példán látható. Az alapértelmezett érték **felhasználói azonosító** van **user.userprincipalname** de LinkedIn értékesítési Navigator vár képezhető le a felhasználó e-mail címmel. Használhat **user.mail** attribútumot a listából, vagy használja a megfelelő attribútum értéket a szervezet konfiguráció alapján. 
 
@@ -138,8 +138,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     | Attribútum neve | Attribútum értéke |
     | --- | --- |    
-    | e-mailben| User.mail |
-    | Szervezeti egység| felhasználó.részleg |
+    | e-mailben| user.mail |
+    | részleg| felhasználó.részleg |
     | Utónév| User.givenName |
     | Vezetéknév| User.surname |
     
@@ -264,7 +264,7 @@ Ha a hozzáférési panelen LinkedIn értékesítési Navigator csempére kattin
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

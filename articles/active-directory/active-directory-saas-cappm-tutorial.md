@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált hitelesítésszolgáltató PPM |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a hitelesítésszolgáltató PPM között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált hitelesítésszolgáltató PPM |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a hitelesítésszolgáltató PPM között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: c00b054619b6dbfffd66bfd74b1a8567a83a910b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9800ae137943ab2ff634ba93d1f721d5e3a708f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ca-ppm"></a>Oktatóanyag: Azure Active Directoryval integrált hitelesítésszolgáltató PPM
 
@@ -29,7 +29,7 @@ Hitelesítésszolgáltató PPM integrálása az Azure AD lehetővé teszi a köv
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a hitelesítésszolgáltató PPM (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-cappm-tutorial/tutorial_cappm_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://ca.ondemand.saml.20.post.<companyname>`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://ca.ondemand.saml.20.post.<companyname>`
     
-    b. Az a **válasz URL-CÍMEN** szövegmezőhöz típusú, mint:`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
+    b. Az a **válasz URL-CÍMEN** szövegmezőhöz típusú, mint: `https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
 
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges azonosítója. Ügyfél [hitelesítésszolgáltató PPM támogatási csoport](mailto:catechnicalsupport@ca.com) lekérni ezt az értéket.
@@ -209,7 +209,7 @@ Ha a hitelesítésszolgáltató PPM csempe a hozzáférési panelen gombra katti
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,8 +1,8 @@
 ---
-title: "Az Internet Explorer egy csoportházirend-objektummal Azure hozzáférési Panel bővítmény telepítése |} Microsoft Docs"
-description: "Hogyan kell az Internet Explorer bővítményt a saját alkalmazások portál telepítése a csoportházirenddel."
+title: Az Internet Explorer egy csoportházirend-objektummal Azure hozzáférési Panel bővítmény telepítése |} Microsoft Docs
+description: Hogyan kell az Internet Explorer bővítményt a saját alkalmazások portál telepítése a csoportházirenddel.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 7c2d49c8-5be0-4e7e-abac-332f9dfda736
@@ -15,14 +15,14 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a203548575eacb2d0eb0d09a4aaf239b11caad3c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a39e454bd0993f07efd1168404df453f3013e0fa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>A hozzáférési Panel bővítmény telepítése az Internet Explorer csoportházirend használatával
-Ez az oktatóanyag bemutatja, hogyan távoli telepítése a felhasználók gépeken az Internet Explorer a hozzáférési Panel bővítmény a csoportházirend segítségével. A bővítmény szükség az Internet Explorer felhasználók ki kell jelentkeznie az alkalmazásokat, amelyek használatával vannak konfigurálva [jelszó-alapú egyszeri bejelentkezést](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+Ez az oktatóanyag bemutatja, hogyan távoli telepítése a felhasználók gépeken az Internet Explorer a hozzáférési Panel bővítmény a csoportházirend segítségével. A bővítmény szükség az Internet Explorer felhasználók ki kell jelentkeznie az alkalmazásokat, amelyek használatával vannak konfigurálva [jelszó-alapú egyszeri bejelentkezést](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
 
 Javasoljuk, hogy a rendszergazdák a bővítmény telepítésének automatizálását. Ellenkező esetben a felhasználóknak kell töltse le és telepítse a bővítményt, amely vannak téve a felhasználói és rendszergazdai engedélyekkel kell rendelkeznie. Ez az oktatóanyag ismerteti egyik lehetséges módja automatizálása a szoftverek központi telepítése csoportházirend használatával. [További információ a csoportházirend.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -107,8 +107,8 @@ Mellett a telepítő fut, az Internet Explorer minden bővítmény explicit mód
     ![Kattintson az Engedélyezés parancsra, majd kattintson a megjelenítése...](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
 4. Az a **tartalom megjelenítése** ablak, hajtsa végre a következő lépéseket:
    
-   1. Az első oszlop (a **Azonosítónév** mező), másolja és illessze be a következő osztály azonosítója:`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. A második oszlopa (a **érték** mező), írja be a következő értéket:`1`
+   1. Az első oszlop (a **Azonosítónév** mező), másolja és illessze be a következő osztály azonosítója: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+   2. A második oszlopa (a **érték** mező), írja be a következő értéket: `1`
    3. Kattintson a **OK** bezárásához a **tartalom megjelenítése** ablak.
       
       ![Töltse ki a fenti értékek.](./media/active-directory-saas-ie-group-policy/show-contents.png)
@@ -151,7 +151,7 @@ Felhasználók már nem lesz képes tárolni a hitelesítő adatok vagy az autom
 Ha a bővítmény telepítése sikeres volt-e ellenőrizni az alábbi lépésekkel:
 
 1. Ha használatával telepített **számítógép konfigurációja**, jelentkezzen be egy ügyfélszámítógépre, amely a kiválasztott szervezeti Egységhez tartozik [2. lépés: a csoportházirend-objektum létrehozása](#step-2-create-the-group-policy-object). Ha használatával telepített **felhasználói konfiguráció**, ügyeljen arra, hogy jelentkezzen be egy felhasználó számára, hogy a szervezeti Egységhez tartozik.
-2. Modulok a teljes módosul a csoportházirend frissítése néhány bejelentkezési vehet fel a géppel. A frissítés kényszerítéséhez nyisson meg egy **parancssor** ablakot, és futtassa az alábbi parancsot:`gpupdate /force`
+2. Modulok a teljes módosul a csoportházirend frissítése néhány bejelentkezési vehet fel a géppel. A frissítés kényszerítéséhez nyisson meg egy **parancssor** ablakot, és futtassa az alábbi parancsot: `gpupdate /force`
 3. Újra kell indítania a gépet, a telepítés kerül sor. Rendszerindítási szokásos közben a bővítmény telepítése jelentősen több időt is igénybe vehet.
 4. Az újraindítás után nyissa meg a **Internet Explorer**. Kattintson az ablak jobb felső sarkában **eszközök** (fogaskerék ikonra), majd válassza ki **bővítmények kezelése**.
    
@@ -162,6 +162,6 @@ Ha a bővítmény telepítése sikeres volt-e ellenőrizni az alábbi lépésekk
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)
-* [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md)
+* [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md)
 * [A hozzáférési Panel bővítményét az Internet Explorer hibaelhárítása](active-directory-saas-ie-troubleshooting.md)
 

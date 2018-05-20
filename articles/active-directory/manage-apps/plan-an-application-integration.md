@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 523508bc2caeb4315caa6597662174aa0fdeb47b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: ac3438f0c706988323318146965a87461dcce1e8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása alkalmazások első lépések útmutató
 ## <a name="overview"></a>Áttekintés
@@ -64,7 +64,7 @@ Lehet, hogy nincs minden ezekre a kérdésekre adott válaszokat előre, de ez n
 Fent említett, alkalmazásokat, amelyek még nem lett kezeli a szervezet eddig lehet.  A folyamat részeként jóvá nem hagyott alkalmazások kereséséhez. Lásd: [jóvá nem hagyott alkalmazások a Cloud App Discovery keresése](cloud-app-discovery.md).
 
 ### <a name="authentication-types"></a>Hitelesítési típusok
-Az alkalmazások előfordulhat, hogy különböző hitelesítési követelményekkel rendelkező. Az Azure AD aláíró tanúsítványok használható SAML 2.0, WS-Federation, vagy OpenID Connect protokollok, valamint jelszó egyszeri bejelentkezést használó alkalmazásokat. Alkalmazással kapcsolatos további információk az Azure AD hitelesítési típus: [tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](../active-directory-sso-certs.md) és [jelszó alapján egyszeri bejelentkezési](../active-directory-appssoaccess-whatis.md).
+Az alkalmazások előfordulhat, hogy különböző hitelesítési követelményekkel rendelkező. Az Azure AD aláíró tanúsítványok használható SAML 2.0, WS-Federation, vagy OpenID Connect protokollok, valamint jelszó egyszeri bejelentkezést használó alkalmazásokat. Alkalmazással kapcsolatos további információk az Azure AD hitelesítési típus: [tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](../active-directory-sso-certs.md) és [jelszó alapján egyszeri bejelentkezési](what-is-single-sign-on.md).
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Az Azure AD alkalmazás Proxy egyszeri bejelentkezés engedélyezése
 A Microsoft Azure AD-alkalmazásproxy belül található alkalmazásokhoz a magánhálózaton biztonságosan, bárhonnan és bármilyen eszközről hozzáférést biztosíthat. Miután telepítette az alkalmazásproxy-összekötő a környezetben, könnyen beállítható az Azure ad-val.
@@ -73,7 +73,7 @@ A Microsoft Azure AD-alkalmazásproxy belül található alkalmazásokhoz a mag�
 A következő cikkekben ismertetik a különböző alkalmazások az Azure AD integrálása és néhány útmutatást nyújtanak.
 
 * [Active Directory használandó meghatározása](../active-directory-administer.md)
-* [Alkalmazások használata az az Azure alkalmazáskatalógusában](../active-directory-appssoaccess-whatis.md)
+* [Alkalmazások használata az az Azure alkalmazáskatalógusában](what-is-single-sign-on.md)
 * [Integrálása SaaS-alkalmazások oktatóanyagok listáját](../active-directory-saas-tutorial-list.md)
 
 ## <a name="managing-access-to-applications"></a>Alkalmazás-hozzáférés kezelése

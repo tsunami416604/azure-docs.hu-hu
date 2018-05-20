@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált CloudPassage |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és CloudPassage között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált CloudPassage |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és CloudPassage között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: b9d3329547b10d67c175c349fc643289823a3d81
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 412e2c46ba8dae19892b63899abbfc48ca6a82a8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>Oktatóanyag: Azure Active Directoryval integrált CloudPassage
 
@@ -29,7 +29,7 @@ CloudPassage integrálása az Azure AD lehetővé teszi a következő előnyöke
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett CloudPassage (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,7 +110,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://portal.cloudpassage.com/saml/init/accountid`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://portal.cloudpassage.com/saml/init/accountid`
 
     b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-cím: `https://portal.cloudpassage.com/saml/consume/accountid`. Kaphat a érték ehhez az attribútumhoz kattintva **egyszeri bejelentkezés beállítása dokumentáció** a a **egyszeri bejelentkezési beállítások** a CloudPassage portál szakaszban.
 
@@ -133,7 +133,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | --- | --- |
     | Utónév |User.givenName |
     | Vezetéknév |User.surname |
-    | e-mailben |User.mail |
+    | e-mailben |user.mail |
     
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -243,7 +243,7 @@ Ez a szakasz célja CloudPassage Britta Simon nevű felhasználót létrehozni.
   
     d. Mint **hozzáférési típus**, jelölje be **Halo Portal hozzáférés engedélyezése**.
   
-    e. Kattintson az **Add** (Hozzáadás) parancsra.
+    e. Kattintson a **Hozzáadás** parancsra.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
 
@@ -284,7 +284,7 @@ Ha a hozzáférési panelen CloudPassage csempére kattint, akkor kell beolvasá
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció Zscaler személyes hozzáférési rendszergazdai |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Zscaler privát hozzáférést rendszergazda között."
+title: 'Oktatóanyag: Azure Active Directory-integráció Zscaler személyes hozzáférési rendszergazdai |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Zscaler privát hozzáférést rendszergazda között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: bf0b7cbd8047dfdbc1a4503775e6d36f8e8a67c1
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: c3918e4b54d60d6f609e99e24ed2f4b2995bf80c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Oktatóanyag: Azure Active Directory-integráció Zscaler privát hozzáférést rendszergazda
 
@@ -30,7 +30,7 @@ Zscaler személyes hozzáférési rendszergazdai integrálása az Azure AD lehet
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Zscaler személyes hozzáférési rendszergazdai (egyszeri bejelentkezés).
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -214,7 +214,7 @@ Ahhoz, hogy az Azure AD felhasználók jelentkezzenek be az Zscaler titkos szolg
 
     ![Zscaler személyes hozzáférési rendszergazda felhasználó felügyeleti](./media/active-directory-saas-zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. Az a **felhasználónév** szövegmező, adja meg az e-mail címét, például a felhasználó  **BrittaSimon@contoso.com** .
+    a. Az a **felhasználónév** szövegmező, adja meg az e-mail címét, például a felhasználó **BrittaSimon@contoso.com**.
 
     b. Az a **jelszó** szövegmező, írja be a jelszót.
 
@@ -222,7 +222,7 @@ Ahhoz, hogy az Azure AD felhasználók jelentkezzenek be az Zscaler titkos szolg
 
     d. Válassza ki **szerepkör** , **Zscaler személyes hozzáférési rendszergazdai**.
 
-    e. Az a **E-mail** szövegmező, adja meg az e-mail címét, például a felhasználó  **BrittaSimon@contoso.com** .
+    e. Az a **E-mail** szövegmező, adja meg az e-mail címét, például a felhasználó **BrittaSimon@contoso.com**.
 
     f. Az a **Phone** szövegmező, írja be a telefonszámot.
 
@@ -260,7 +260,7 @@ Ebben a szakaszban Britta Simon hozzáférés biztosítása a Zscaler saját szo
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -270,7 +270,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

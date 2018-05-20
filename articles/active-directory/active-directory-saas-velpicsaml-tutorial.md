@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Velpic SAML |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Velpic SAML között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Velpic SAML |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Velpic SAML között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: e4f7e4c9e960450f0024cd7ca35bd3808d31ee19
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 03ef1ef04d80ac9bb83bcce2082b6cc3f617d812
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Oktatóanyag: Azure Active Directoryval integrált Velpic SAML
 
@@ -29,7 +29,7 @@ Velpic SAML integrálása az Azure AD lehetővé teszi a következő előnyöket
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Velpic SAML (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket, mint:`https://<sub-domain>.velpicsaml.net`
+    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket, mint: `https://<sub-domain>.velpicsaml.net`
 
-    b. Az a **azonosító** szövegmező, illessze be a **"Egyszeri bejelentkezési URL-címe"** érték`https://auth.velpic.com/saml/v2/<entity-id>/login`
+    b. Az a **azonosító** szövegmező, illessze be a **"Egyszeri bejelentkezési URL-címe"** érték `https://auth.velpic.com/saml/v2/<entity-id>/login`
     
     > [!NOTE]
     > Vegye figyelembe, hogy a Velpic SAML team biztosítja a bejelentkezési URL-címen, és azonosító értéket az SSO beépülő modul Velpic SAML oldalon konfigurálásakor lesz elérhető. Ezt az értéket Velpic SAML alkalmazáslap másolja és illessze be ide kell.
@@ -204,7 +204,7 @@ Jelentkezzen be rendszergazdaként egy vállalati Velpic SAML-alapú webhelyekhe
 
 2. Az a **"Az új felhasználó létrehozása"** párbeszédpanel lapon, a következő lépésekkel.
 
-    ![felhasználó](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
+    ![Felhasználó](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
     
     a. Az a **Keresztnév** szövegmezőhöz Britta Simon az első nevét.
 
@@ -262,7 +262,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

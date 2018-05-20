@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Concur konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Concur között."
+title: 'Oktatóanyag: Concur konfigurálása az Azure Active Directoryval automatikus felhasználólétesítés |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Concur között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 743d974c3711d5359cf7664c6a8709f7eaaeee20
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c439e6ca784bf031cd4102a6cb15b5e210130810
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Concur konfigurálása
 
@@ -121,6 +121,6 @@ Mostantól létrehozhat egy olyan fiókot. Akár 20 percig várjon győződjön 
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](active-directory-saas-concur-tutorial.md)
 

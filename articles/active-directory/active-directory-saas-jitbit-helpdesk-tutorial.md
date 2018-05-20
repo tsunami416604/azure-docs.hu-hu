@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Jitbit segélyszolgálat |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Jitbit segélyszolgálat között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Jitbit segélyszolgálat |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Jitbit segélyszolgálat között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 31d3295fa8d75aa72c8e9967b7ca81f4e98e5608
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c8e387bb98ad2e23c667ba058ff8ab5dbfedffbf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Oktatóanyag: Azure Active Directoryval integrált Jitbit segélyszolgálat
 
@@ -29,7 +29,7 @@ Jitbit segélyszolgálat integrálása az Azure AD lehetővé teszi a következ�
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett az Jitbit ügyfélszolgálathoz (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -120,7 +120,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [Jitbit segélyszolgálat ügyfél-támogatási csoport](https://www.jitbit.com/support/) lekérni ezt az értéket. 
     
-    b.  Az a **azonosító** szövegmező, a következő URL-címet írja be:`https://www.jitbit.com/web-helpdesk/`
+    b.  Az a **azonosító** szövegmező, a következő URL-címet írja be: `https://www.jitbit.com/web-helpdesk/`
 
     
  
@@ -221,7 +221,7 @@ Ahhoz, hogy az Azure AD-felhasználók Jitbit segélyszolgálat bejelentkezni, a
    
    a. Az a **felhasználónév** szövegmezőhöz típus **BrittaSimon**, a felhasználónév, mint az Azure-portálon.
 
-   b. Az a **E-mail** szövegmezőhöz, például a felhasználó e-mailek  **BrittaSimon@contoso.com** .
+   b. Az a **E-mail** szövegmezőhöz, például a felhasználó e-mailek **BrittaSimon@contoso.com**.
 
    c. Az a **Utónév** szövegmező, például a felhasználó első típusnév **Britta**.
 
@@ -274,7 +274,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

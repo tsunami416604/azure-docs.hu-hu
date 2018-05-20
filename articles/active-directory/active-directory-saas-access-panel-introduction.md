@@ -15,11 +15,11 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e25bd3e5c47667a711c53711f9823fb231dbcd86
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panel?
 
@@ -60,7 +60,7 @@ A hozzáférési panel elérését, keresztül a munkahelyi vagy iskolai fiókka
 
 Azure vagy Office 365-előfizetéssel rendelkezik, és az Azure-portálon vagy az Office 365 alkalmazást használja, ha az alkalmazások listáját megtekintheti a nélkül, jelentkezzen be újra. Ha a nem hitelesített kéri jelentkezzen be a felhasználónevet és jelszót a fiókhoz az Azure ad-ben. Ha a szervezet összevonási konfigurált, írja be a felhasználónevet is használhatók.
 
-Amikor megtörténik, kezelheti az alkalmazásokat, amelyek a rendszergazda a könyvtárban van integrálva. Alkalmazások integrálása az Azure ad-vel kapcsolatban a [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
+Amikor megtörténik, kezelheti az alkalmazásokat, amelyek a rendszergazda a könyvtárban van integrálva. Alkalmazások integrálása az Azure ad-vel kapcsolatban a [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="web-browser-requirements"></a>Webböngészőkre vonatkozó követelmények
 
@@ -215,7 +215,7 @@ Például ha egy alkalmazás a felhasználók hitelesítése az AD FS 2.0 haszn�
  
 - A SaaS-alkalmazások integrálása az Azure ad-vel kapcsolatban a [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md).
  
-- Alkalmazások kezelése az Azure AD kapcsolatos további tudnivalókért tekintse meg a [bemutatása az Azure Active Directoryval egyszeri bejelentkezés és kezelését alkalmazás eléréséhez](active-directory-appssoaccess-whatis.md).
+- Alkalmazások kezelése az Azure AD kapcsolatos további tudnivalókért tekintse meg a [bemutatása az Azure Active Directoryval egyszeri bejelentkezés és kezelését alkalmazás eléréséhez](manage-apps/what-is-single-sign-on.md).
  
 - A felhasználók átadása kapcsolatos további információkért lásd: [automatizálhatja a felhasználó kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz való](active-directory-saas-app-provisioning.md).
 

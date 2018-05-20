@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció a Lifesize felhőalapú |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Lifesize felhő között."
+title: 'Oktatóanyag: Azure Active Directory-integráció a Lifesize felhőalapú |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Lifesize felhő között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ae2c59d672c00b466d13aad1d304f4669a38c7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 84af3a9b726d990e585e2b12b1c0a6f4609fcb7e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Oktatóanyag: Azure Active Directoryval integrált Lifesize felhő
 
@@ -29,7 +29,7 @@ Lifesize felhő integrálása az Azure AD lehetővé teszi a következő előny�
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett Lifesize felhőbe (egyszeri bejelentkezés)
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,16 +110,16 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://login.lifesizecloud.com/ls/?acs`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://login.lifesizecloud.com/ls/?acs`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://login.lifesizecloud.com/<companyname>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://login.lifesizecloud.com/<companyname>`
 
      
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak**, hajtsa végre a következő lépést:    
    
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
 
-    Az a **állapot továbbítása** szövegmező, adja meg a következő minta használatával URL-címe:`https://webapp.lifesizecloud.com/?ent=<identifier>`
+    Az a **állapot továbbítása** szövegmező, adja meg a következő minta használatával URL-címe: `https://webapp.lifesizecloud.com/?ent=<identifier>`
    
    > [!NOTE] 
    >Ne feledje, hogy ezek nincsenek a valódi értékek. akkor frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, továbbítási állapotot és azonosítója. Ügyfél [Lifesize felhőalapú ügyfél-támogatási csoport](https://www.lifesize.com/support) bejelentkezési URL-címet, és azonosítóértékek, és lekérheti továbbítási állapotérték SSO-konfiguráció esetén, tekintse meg az oktatóanyag későbbi részében.
@@ -156,7 +156,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     c. A base-64 kódolású tanúsítvány megnyitása a Jegyzettömbben az Azure portálról letöltött, a tartalmának másolása a vágólapra és illessze be azt a **X.509 tanúsítvány** szövegmező.
   
-    d. A SAML attribútum Keresztnév szövegmező hozzárendelések adja meg a értékével megegyező **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
+    d. A SAML attribútum-leképezésekhez Keresztnév szövegmező adja meg az értéket, mint **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
     
     e. A SAML attribútum társítását a a **Vezetéknév** szövegmezőbe írja be a értékével megegyező **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**
     
@@ -251,7 +251,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

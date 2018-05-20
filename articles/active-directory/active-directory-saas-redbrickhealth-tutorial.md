@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált RedBrick állapotfigyelő |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és RedBrick állapotát."
+title: 'Oktatóanyag: Azure Active Directoryval integrált RedBrick állapotfigyelő |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és RedBrick állapotát.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 598592d87cf6471a431dab89d19c5e8beb48e661
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 8d51d516d8716c0ac07bc851210733d352c47b6a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Oktatóanyag: Azure Active Directoryval integrált RedBrick állapota
 
@@ -30,7 +30,7 @@ RedBrick állapotfigyelő integrálása az Azure AD lehetővé teszi a következ
 - Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett RedBrick Health (egyszeri bejelentkezés).
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,17 +108,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezési adatokat redBrick állapotfigyelő tartomány- és URL-címek](./media/active-directory-saas-redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a. Az a **azonosító** szövegmezőhöz URL-címet írja be:`http://www.redbrickhealth.com`
+    a. Az a **azonosító** szövegmezőhöz URL-címet írja be: `http://www.redbrickhealth.com`
     
-    b. Az a **válasz URL-CÍMEN** szövegmezőhöz URL-címet írja be:`https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
+    b. Az a **válasz URL-CÍMEN** szövegmezőhöz URL-címet írja be: `https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
-    Éles környezetben:`https://sso.redbrickhealth.com/sp/ACS.saml2`
+    Éles környezetben: `https://sso.redbrickhealth.com/sp/ACS.saml2`
 
     c. Kattintson a **megjelenítése speciális URL-beállításainak**.
     
     ![Az egyszeri bejelentkezési adatokat redBrick állapotfigyelő tartomány- és URL-címek](./media/active-directory-saas-redbrickhealth-tutorial/tutorial_redbrickhealth_url1.png)
 
-    d. Az a **továbbítási állapotot** szövegmező, adja meg a következő minta használatával URL-címe:`https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1`
+    d. Az a **továbbítási állapotot** szövegmező, adja meg a következő minta használatával URL-címe: `https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1`
     
     > [!NOTE] 
     > Továbbító állapot értéke nincs valós. Frissítse ezt az értéket a tényleges továbbító állapottal. Ügyfél [RedBrick állapotfigyelő támogatási csoport](https://home.redbrickhealth.com/contact/) lekérni ezt az értéket.
@@ -162,7 +162,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 8. Az a **RedBrick Állapotkonfiguráció** területen kattintson **RedBrick állapotfigyelő konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** a a **rövid összefoglaló szakasz.**
 
-    ![RedBrick Health Configuration](./media/active-directory-saas-redbrickhealth-tutorial/tutorial_redbrickhealth_configure.png) 
+    ![RedBrick Állapotkonfiguráció](./media/active-directory-saas-redbrickhealth-tutorial/tutorial_redbrickhealth_configure.png) 
 
 9. Egyszeri bejelentkezés konfigurálása **RedBrick állapotfigyelő** oldalon kell küldeniük a letöltött **Certificate(Base64)** és **SAML Entitásazonosító** való [RedBrick állapota támogatási csoport](https://home.redbrickhealth.com/contact/). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
@@ -235,7 +235,7 @@ Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejel
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -245,7 +245,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

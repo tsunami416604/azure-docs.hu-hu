@@ -1,8 +1,8 @@
 ---
-title: "Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi szolgáltatásokban |} Microsoft Docs"
-description: "Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz"
+title: Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi szolgáltatásokban |} Microsoft Docs
+description: Biztonságos LDAP (LDAPS) konfigurálása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 8b6c1dec6f97311e5fb92f2adef8685b59cbeb2c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 8da03990ace37b527553b0fe3ff0032515e1b812
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) használatos az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartozó konfigurálása
 
@@ -105,7 +105,7 @@ Az alábbi táblázat mutatja be egy minta NSG-t is konfigurálhat, biztonságos
 
 ![Minta NSG LDAPS hozzáférés biztonságossá az interneten keresztül](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
-**További információ** - [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
+**További információ** - [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
 
 <br>
 
@@ -128,5 +128,5 @@ Ha továbbra is problémákat tapasztal a felügyelt tartományra biztonságos L
 * [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)
 * [Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-domain.md)
 * [Csoportházirend a egy Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete](active-directory-ds-admin-guide-administer-group-policy.md)
-* [Hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md)
+* [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
 * [Hálózati biztonsági csoport létrehozása](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

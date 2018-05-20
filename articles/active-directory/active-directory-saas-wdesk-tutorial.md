@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Wdesk |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Wdesk között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Wdesk |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Wdesk között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 9338c8b8ef740885562ea3f2f1ac316b2a0783fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c55b9c32ccf6712da69c869a6f44c71e1c209627
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Oktatóanyag: Azure Active Directoryval integrált Wdesk
 
@@ -29,7 +29,7 @@ Wdesk integrálása az Azure AD lehetővé teszi a következő előnyöket bizto
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Wdesk (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg. [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg. [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,15 +110,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak**. Ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód, hajtsa végre a következő lépést:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
+    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
      
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Ezek az értékek első WDesk portálról az SSO konfigurálásakor. 
@@ -216,7 +216,7 @@ Ahhoz, hogy az Azure AD-felhasználók Wdesk bejelentkezni, akkor ki kell épít
    
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-wdesk-tutorial/createuser1.png)  
 
-5. A **felhasználói** szöveg mezőbe írja be például a felhasználó felhasználóneve  **brittasimon@contoso.com**  kattintson **Folytatás** gombra.
+5. A **felhasználói** szöveg mezőbe írja be például a felhasználó felhasználóneve **brittasimon@contoso.com** kattintson **Folytatás** gombra.
 
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-wdesk-tutorial/createuser3.png)
 
@@ -224,7 +224,7 @@ Ahhoz, hogy az Azure AD-felhasználók Wdesk bejelentkezni, akkor ki kell épít
   
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-wdesk-tutorial/createuser4.png)
  
-    a. A **E-mail** szöveg mezőbe írja be például a felhasználó e-mail  **brittasimon@contoso.com** .
+    a. A **E-mail** szöveg mezőbe írja be például a felhasználó e-mail **brittasimon@contoso.com**.
 
     b. A **Utónév** szöveg mezőbe írja be például a felhasználó utónevét **Britta**.
 
@@ -275,7 +275,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

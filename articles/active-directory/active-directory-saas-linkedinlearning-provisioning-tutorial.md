@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag: LinkedIn tanulási konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
-description: "Konfigurálja az Azure Active Directory automatikus kiépítése és leépíti a felhasználói fiókok LinkedIn tanulási útmutató."
+title: 'Oktatóanyag: LinkedIn tanulási konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs'
+description: Konfigurálja az Azure Active Directory automatikus kiépítése és leépíti a felhasználói fiókok LinkedIn tanulási útmutató.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: f2ef582bd3a5ecd837dd053067cae6c1ea47b6f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: da39a31777323535c90b4d57e316741295aa873a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés LinkedIn tanulási konfigurálása
 
@@ -99,7 +99,7 @@ Az első lépés a LinkedIn-jogkivonatot lekérdezni. Ha a vállalati rendszerga
 
 11)  Töltse ki a következő mezőket a **rendszergazdai hitelesítő adataival** :
 
-* Az a **bérlői URL-cím** mezőbe írja be a https://api.linkedin.com.
+* Az a **bérlői URL-cím** mezőbe írja be https://api.linkedin.com.
 
 * Az a **titkos Token** mezőben adja meg az 1. lépésben létrehozott jogkivonat, és kattintson a **kapcsolat tesztelése** .
 
@@ -124,4 +124,4 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció Yonyx interaktív útmutatók |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Yonyx interaktív útmutatók között."
+title: 'Oktatóanyag: Azure Active Directory-integráció Yonyx interaktív útmutatók |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Yonyx interaktív útmutatók között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e221959a9997c44bbcb1fe97273b2e40b1eec06c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c4448c8810d1411cb84b5c7e55a710e157c821e6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Oktatóanyag: Azure Active Directory-integráció Yonyx interaktív útmutatók
 
@@ -30,7 +30,7 @@ Interaktív útmutatók Yonyx integrálása az Azure AD lehetővé teszi a köve
 - Engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Yonyx interaktív útmutatók (egyszeri bejelentkezés) a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk Yonyx interaktív útmutatók tartomány és az URL-címek](./media/active-directory-saas-yonyx-tutorial/tutorial_yonyxinteractiveguides_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<company name>.yonyx.com`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.yonyx.com`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Yonyx interaktív útmutatók ügyfél-támogatási csoport](mailto:support@yonyx.com) beolvasni ezeket az értékeket. 
@@ -172,7 +172,7 @@ Ez a szakasz célja Yonyx interaktív útmutatók Britta Simon nevű felhasznál
 Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre Yonyx interaktív útmutatók elérhetők, ha még nem létezik tett kísérlet során.
 
 >[!NOTE]
->Hozza létre a felhasználó manuálisan kell, ha szeretné-e a Yonyx interaktív útmutatók támogatási csoportjához keresztül < mailto:support@yonyx.com >. 
+>Hozza létre a felhasználó manuálisan kell, ha szeretné-e a Yonyx interaktív útmutatók támogatási csoportjához keresztül <mailto:support@yonyx.com>. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
@@ -204,7 +204,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -215,7 +215,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

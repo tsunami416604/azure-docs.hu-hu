@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált TalentLMS |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és TalentLMS között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált TalentLMS |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és TalentLMS között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 171457617c23f2c0ff761f7ae1e78dcf152cd0b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1c81d3e01170b2d134f83551911f9fcbd6e5f6e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Oktatóanyag: Azure Active Directoryval integrált TalentLMS
 
@@ -29,7 +29,7 @@ TalentLMS integrálása az Azure AD lehetővé teszi a következő előnyöket b
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett TalentLMS (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-talentlms-tutorial/tutorial_talentlms_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<tenant-name>.TalentLMSapp.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenant-name>.TalentLMSapp.com`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`http://<tenant-name>.talentlms.com`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `http://<tenant-name>.talentlms.com`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [TalentLMS ügyfél-támogatási csoport](https://www.talentlms.com/contact) beolvasni ezeket az értékeket. 
@@ -153,13 +153,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     f. Töltse ki a következőket: 
 
-    * Az a **TargetedID** szövegmezőhöz típusa`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
+    * Az a **TargetedID** szövegmezőhöz típusa `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
      
-    * Az a **Keresztnév** szövegmezőhöz típusa`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    * Az a **Keresztnév** szövegmezőhöz típusa `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
     
-    * Az a **Vezetéknév** szövegmezőhöz típusa`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    * Az a **Vezetéknév** szövegmezőhöz típusa `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
     
-    * Az a **E-mail** szövegmezőhöz típusa`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * Az a **E-mail** szövegmezőhöz típusa `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
     
 11. Kattintson a **Save** (Mentés) gombra.
  
@@ -216,7 +216,7 @@ Ahhoz, hogy az Azure AD-felhasználók TalentLMS bejelentkezni, akkor ki kell é
 
     b. Az a **Vezetéknév** szövegmező, írja be például a felhasználó vezetéknevét **Simon**.
  
-    c. Az a **E-mail cím** szövegmező, adja meg az e-mail címét, például a felhasználó  **brittasimon@contoso.com** .
+    c. Az a **E-mail cím** szövegmező, adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
 
     d. Kattintson a **felhasználó hozzáadása**.
 
@@ -263,7 +263,7 @@ Ha a hozzáférési panelen TalentLMS csempére kattint, akkor kell beolvasása 
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 

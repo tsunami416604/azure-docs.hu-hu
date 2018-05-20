@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Replicon |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Replicon között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Replicon |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Replicon között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 130e13b0bb801c498f6de6e4bfd61bd3d2c3bf00
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 4afe9bb36080027ba1873dc6fd3938972044a5d1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Oktatóanyag: Azure Active Directoryval integrált Replicon
 
@@ -30,7 +30,7 @@ Replicon integrálása az Azure AD lehetővé teszi a következő előnyöket bi
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Replicon (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,11 +108,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk replicon tartomány és az URL-címek](./media/active-directory-saas-replicon-tutorial/tutorial_replicon_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://global.replicon.com/<companyname>`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://global.replicon.com/<companyname>`
 
-    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://global.replicon.com/!/saml2/<companyname>/sso/post`
+    c. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://global.replicon.com/!/saml2/<companyname>/sso/post`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím, azonosítóját és a válasz URL-CÍMEN. Ügyfél [Replicon ügyfél-támogatási csoport](https://www.replicon.com/customerzone/contact-support) beolvasni ezeket az értékeket. 
@@ -131,14 +131,14 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
    
     ![SAML-alapú hitelesítés engedélyezéséhez](./media/active-directory-saas-replicon-tutorial/ic777805.png "engedélyezése SAML-alapú hitelesítés")
     
-    a. A megjelenítendő a **EnableSAML Authentication2** párbeszédpanel, az URL-cím, a következő bővítése után a vállalat kulcs:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a. A megjelenítendő a **EnableSAML Authentication2** párbeszédpanel, az URL-cím, a következő bővítése után a vállalat kulcs: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
     
     * Az alábbiakban látható a teljes URL-cím sémája:  
    `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
    
-   b. Kattintson a  **+**  bontsa ki a **v20Configuration** szakasz.
+   b. Kattintson a **+** bontsa ki a **v20Configuration** szakasz.
 
-   c. Kattintson a  **+**  bontsa ki a **metaDataConfiguration** szakasz.
+   c. Kattintson a **+** bontsa ki a **metaDataConfiguration** szakasz.
 
    d. Kattintson a **Choose File**ki az identity provider metaadatok XML-fájlt, majd kattintson a **Submit**.
 
@@ -198,7 +198,7 @@ Ahhoz, hogy az Azure AD-felhasználók Replicon bejelentkezni, akkor ki kell ép
    
     ![Felhasználói profil](./media/active-directory-saas-replicon-tutorial/ic777808.png "felhasználói profil")
     
-    a. Az a **bejelentkezési név** szövegmezőhöz típus az Azure AD ki kívánja építeni például Azure AD-felhasználó e-mail címe  **BrittaSimon@contoso.com** .
+    a. Az a **bejelentkezési név** szövegmezőhöz típus az Azure AD ki kívánja építeni például Azure AD-felhasználó e-mail címe **BrittaSimon@contoso.com**.
     
     b. Mint **hitelesítési típus**, jelölje be **SSO**.
     
@@ -241,7 +241,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
@@ -251,7 +251,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

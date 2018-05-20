@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag: LinkedIn értékesítési Navigator konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti LinkedIn értékesítési Navigator felhasználói fiókok."
+title: 'Oktatóanyag: LinkedIn értékesítési Navigator konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálja az Azure Active Directory automatikus kiépítése és leépíti LinkedIn értékesítési Navigator felhasználói fiókok.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 563cb4e231aaa3abf6e70320df8cfa6b56cd354c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 56060d11373f767b023b092cf01ceb894f70efed
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés LinkedIn értékesítési Navigator konfigurálása
 
@@ -99,7 +99,7 @@ Az első lépés a LinkedIn-jogkivonatot lekérdezni. Ha a vállalati rendszerga
 
 11)  Töltse ki a következő mezőket a **rendszergazdai hitelesítő adataival** :
 
-* Az a **bérlői URL-cím** mezőbe írja be a https://api.linkedin.com.
+* Az a **bérlői URL-cím** mezőbe írja be https://api.linkedin.com.
 
 * Az a **titkos Token** mezőben adja meg az 1. lépésben létrehozott jogkivonat, és kattintson a **kapcsolat tesztelése** .
 
@@ -125,4 +125,4 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)

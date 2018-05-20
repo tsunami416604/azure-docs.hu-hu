@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/18/2018
 ms.author: billmath
-ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9cb32d137334141183831e703fb11cd3e6bd5a73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL meghatalmazott rendszergazdai engedélyek használatával az Azure AD Connect telepítése
 Az Azure AD Connect legújabb buildjével, mielőtt felügyeleti delegálás, a szükséges SQL-konfigurációk központi telepítésekor nem támogatott.  Felhasználók számára az Azure AD Connect telepítése az SQL server kiszolgáló rendszergazdai engedélyekre van szükség.
@@ -42,7 +42,7 @@ A sávon kívüli adatbázis létesítéséhez, és az Azure AD Connect telepít
 
 
 1.  Az SQL-rendszergazdához, hozzon létre az ADSync adatbázis-és nagybetűket rendezési sorrend rendelkezik **(Latin1_General_CI_AS)**.  Az adatbázis neve kell **ADSync**.  A helyreállítási modell kompatibilitási szintje és elszigetelési típusa helyes az értékük az Azure AD Connect telepítésekor frissülnek.  Azonban az SQL rendszergazda megfelelően kell beállítani az során a rendezési sorrend ellenkező esetben az Azure AD Connect letiltja a telepítés.  A rendszergazdai (SA) helyreállításához törölje, majd hozza létre újra az adatbázist.</br>
-![Rendezés](media/active-directory-aadconnect-sql-delegation/sql1.png)
+![Rendezés](media/active-directory-aadconnect-sql-delegation/sql4.png)
 2.  Adja meg az Azure AD Connect rendszergazda és a tartományi szolgáltatásfiókot az alábbi engedélyeket:
     - SQL-bejelentkezés 
     - **adatbázis-owner(dbo)** jogok.  </br>

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Mixpanel |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Mixpanel között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Mixpanel |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Mixpanel között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e48a192ada32a764b7f23634c0728c04c226b3d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0dec216ea2bc01c3ee3f5afae0ec4966c51afe00
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Oktatóanyag: Azure Active Directoryval integrált Mixpanel
 
@@ -29,7 +29,7 @@ Mixpanel integrálása az Azure AD lehetővé teszi a következő előnyöket bi
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Mixpanel (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
 - Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,10 +110,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_url.png)
 
-     Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet:`https://mixpanel.com/login/`
+     Az a **bejelentkezési URL-cím** szövegmező, adja meg az URL-címet: `https://mixpanel.com/login/`
 
     > [!NOTE] 
-    > Regisztrálja a [https://mixpanel.com/register/](https://mixpanel.com/register/) állíthat be a bejelentkezési hitelesítő adatokat, és lépjen kapcsolatba a [Mixpanel támogatási csoport](mailto:support@mixpanel.com) ahhoz, hogy a bérlő SSO beállításait. Is letölthető az URL-cím bejelentkezési érték szükség esetén a Mixpanel támogatási csoportjához. 
+    > Regisztrálja a [ https://mixpanel.com/register/ ](https://mixpanel.com/register/) állíthat be a bejelentkezési hitelesítő adatokat, és lépjen kapcsolatba a [Mixpanel támogatási csoport](mailto:support@mixpanel.com) ahhoz, hogy a bérlő SSO beállításait. Is letölthető az URL-cím bejelentkezési érték szükség esetén a Mixpanel támogatási csoportjához. 
  
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -240,7 +240,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 
 
