@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Az App Service-környezetek hálózati szempontjai #
 
@@ -47,7 +47,7 @@ Ha egy ILB ASE, a ILB IP-címe a HTTP/S, az FTP/S, a webes telepítési és a t�
 
 A normál alkalmazás-hozzáférési portok a következők:
 
-| Használat | Forrás | Művelet |
+| Használat | Ettől: | Művelet |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Felhasználó által konfigurálható |  80, 443 |
 |  FTP/FTPS    | Felhasználó által konfigurálható |  21, 990, 10001-10020 |
@@ -66,7 +66,7 @@ Nem módosítható egy ASE üzemeltetni az alhálózat méretét, a ASE telepít
 
 Egy ASE befelé függőség:
 
-| Használat | Forrás | Művelet |
+| Használat | Ettől: | Művelet |
 |-----|------|----|
 | Kezelés | App Service management címek | ASE alhálózati: 454, 455 |
 |  Belső kommunikációs ASE | ASE alhálózati: minden port | ASE alhálózati: minden port
@@ -83,7 +83,7 @@ Alkalmazás-kezelési forgalom engedélyezése a az alkalmazások ASE az alhál�
 
 A kimenő hozzáférés érdekében egy ASE több külső rendszer függ. E rendszer függőségek rendelkező DNS-nevek, és nem feleltethetők meg az IP-címek készletét. Ebből kifolyólag a ASE portok számos minden külső IP-címek a ASE alhálózatból kimenő hozzáférésre van szüksége. Egy ASE a következő kimenő függőségekkel rendelkezik:
 
-| Használat | Forrás | Művelet |
+| Használat | Ettől: | Művelet |
 |-----|------|----|
 | Azure Storage | ASE alhálózati | TABLE.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80-as, a 443-as, a 445-ös (445-ös csak szükséges ASEv1.) |
 | Azure SQL Database | ASE alhálózati | Database.Windows.NET: 1433-as számú 11000-11999, 14000-14999 (további információkért lásd: [SQL Database 12-es port használati](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).)|
@@ -224,7 +224,7 @@ Amikor a szolgáltatásvégpontok engedélyezettek egy Azure SQL-példánnyal re
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
