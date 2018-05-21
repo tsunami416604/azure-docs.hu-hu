@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/20/2018
+---
 Nincsenek különböző okokból nem kezdődhet vagy egy Azure virtuális gépen (VM) futó alkalmazás csatlakozzon. Okai az alkalmazás nem fut, vagy a várt porton figyel, a figyelő portja, blokkolva vagy a hálózat szabályok nem megfelelő az alkalmazás sikeres forgalmat. Ez a cikk ismerteti a módszeres megközelítés található, és kijavítja a hibát.
 
 Ha a virtuális gép RDP és az SSH használatával való kapcsolódás problémát tapasztal, először tekintse meg a következő cikkekben egyikét:
@@ -99,7 +115,7 @@ Ha az alkalmazás nem fér hozzá, ellenőrizze a következő beállításokat:
   
   * Győződjön meg arról, hogy a VM bejövő NAT-szabály konfigurációjának átengedi a bejövő forgalmat, különösen a protocol (TCP és UDP) és a nyilvános és titkos portszámokat.
   * Győződjön meg arról, hogy hálózati biztonsági csoport engedélyezi a bejövő kérelem és a kimenő válasz forgalmat.
-  * További információ: [What is a Network Security Group (NSG)?](../articles/virtual-network/virtual-networks-nsg.md) (Mi az a hálózati biztonsági csoport?).
+  * További információkért lásd: [Mi az a hálózati biztonsági csoport?](../articles/virtual-network/security-overview.md)
 
 Ha a virtuális gép vagy a végpont egy elosztott terhelésű készlet tagja:
 
