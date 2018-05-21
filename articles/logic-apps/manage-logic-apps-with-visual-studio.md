@@ -1,12 +1,12 @@
 ---
-title: "A logic apps a Visual Studio - Azure Logic Apps alkalmazásokat kezeléséhez |} Microsoft Docs"
-description: "A logic apps és az egyéb Azure eszközök Visual Studio Cloud Explorer kezelése"
+title: A logic apps a Visual Studio - Azure Logic Apps alkalmazásokat kezeléséhez |} Microsoft Docs
+description: A logic apps és az egyéb Azure eszközök Visual Studio Cloud Explorer kezelése
 author: ecfan
 manager: SyntaxC4
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: db847d5fa3d5f5b2b2f0293f1756226870a8b47e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7914bce6ca71b1b3f00c69fb6f33154f0f52dc7a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>A Visual Studio logic Apps-alkalmazások kezelése
 
@@ -32,24 +32,24 @@ Is hozhat létre, szerkesztése, kezelése és a logic Apps-alkalmazások telep�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiók</a>.
+* Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
-* Töltse le és telepítse ezeket az eszközöket, ha már nincs rájuk: 
+* Ha még nincsenek telepítve, töltse le és telepítse az alábbi eszközöket: 
 
-  * <a href="https://www.visualstudio.com/downloads" target="_blank">A Visual Studio 2017 vagy Visual Studio 2015 - Community edition vagy nagyobb</a>. 
-  A gyors üzembe helyezés ingyenes Visual Studio Community 2017 használja.
+  * <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2017 vagy Visual Studio 2015 – Community Edition vagy újabb</a>. 
+  Ez a rövid útmutató a Visual Studio Community 2017 kiadást használja, amely ingyenes.
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Az Azure SDK (2.9.1 vagy újabb)</a> és <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
+  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Azure SDK (2.9.1 vagy újabb)</a> és <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
 
-  * <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">A Visual Studio 2017 Azure Logic Apps eszközök</a> vagy a <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">Visual Studio 2015-verzió</a> 
+  * <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">Azure Logic Apps Tools for Visual Studio 2017</a> vagy a <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">Visual Studio 2015-ös verziója</a> 
   
-    Töltse le és telepítse az Azure Logic Apps eszközök közvetlenül a Visual Studio piactérről, vagy további <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">telepítése ezt a bővítményt a Visual Studio belül</a>. 
-    Győződjön meg arról, hogy újraindította a Visual Studio telepítése után.
+    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">hogyan telepítheti a bővítményt a Visual Studio rendszerén belül</a>. 
+    Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
 
-* A beágyazott Logic App-tervező használata során Internet-hozzáféréssel
+* A beágyazott Logic Apps-tervező használata során Internet-hozzáféréssel
 
-  A Tervező létrehozni az erőforrásokat az Azure-ban és a tulajdonságok és az adatokat olvasni az összekötők a Logic Apps alkalmazást az internetkapcsolat szükséges. 
-  Például ha a Dynamics CRM Online-összekötő használata esetén a Tervező ellenőrzi a CRM példány elérhető alapértelmezett és egyéni tulajdonságokat.
+  A tervezőnek internetkapcsolatra van szüksége, hogy létre tudja hozni az erőforrásokat az Azure-ban, és be tudja olvasni a tulajdonságokat és adatokat a logikai alkalmazásban lévő összekötőkből. 
+  Ha például a Dynamics CRM Online-összekötőt használja, a tervező elérhető alapértelmezett és egyéni tulajdonságokat keres a CRM-példányon.
 
 <a name="find-logic-apps-vs"></a>
 
@@ -72,7 +72,7 @@ A Visual Studióban található összes, az Azure-előfizetéshez társított é
 
 <a name="open-designer"></a>
 
-## <a name="open-in-visual-studio"></a>Megnyitás Visual Studióban
+## <a name="open-in-visual-studio"></a>Megnyitás Visual Studio-ban
 
 A Visual Studio nyissa meg a logic apps korábban létrehozott és telepített, közvetlenül az Azure portálon keresztül vagy a Visual Studio Azure Resource Manager projektként.
 
@@ -84,7 +84,7 @@ A Visual Studio nyissa meg a logic apps korábban létrehozott és telepített, 
 
   ![Nyissa meg a telepített logikai alkalmazás Azure-portálon](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   A logikai alkalmazást a Logic App tervezőben, a designer alján megnyitása után dönthet úgy **kódnézetben** , hogy tekintse át a logic app definition struktúráját. 
+   A logikai alkalmazást a Logic Apps tervezőben, a designer alján megnyitása után dönthet úgy **kódnézetben** , hogy tekintse át a logic app definition struktúráját. 
    Ha szeretne létrehozni a logikai alkalmazást a központi telepítési sablont, [Azure Resource Manager-sablon letöltése](#download-logic-app) az adott logikai alkalmazáshoz. További információ [Resource Manager-sablonok](../azure-resource-manager/resource-group-overview.md#template-deployment).
 
 <a name="download-logic-app"></a>

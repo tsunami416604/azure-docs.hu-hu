@@ -16,8 +16,21 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
     - name: Erőforrások rendszerezése felügyeleti csoportokkal
       href: billing-enterprise-mgmt-group-overview.md
-    - name: Költségmegtakarítás fenntartott VM-példányokkal
+    - name: Azure-beli fenntartott példányok mentése
       href: billing-save-compute-costs-reservations.md
+      items:
+        - name: Előre fizetés fenntartott példányokkal rendelkező virtuális gépekre
+          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Fenntartott példányok felügyelete
+          href: billing-manage-reserved-vm-instance.md
+        - name: Fenntartott példányokra vonatkozó kedvezmény alkalmazása
+          href: billing-understand-vm-reservation-charges.md
+        - name: Használatalapú fizetés fenntartott példányok esetén
+          href: billing-understand-reserved-instance-usage.md
+        - name: Fenntartott példányok vállalati használata
+          href: billing-understand-reserved-instance-usage-ea.md
+        - name: Fenntartott példányok Windows-költségei
+          href: billing-reserved-instance-windows-software-costs.md
     - name: Korlátok és kvóták
       href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Útmutató
@@ -38,20 +51,12 @@
           href: billing-understand-your-azure-marketplace-charges.md
         - name: Az ingyenes szolgáltatásmérő-társítások ismertetése
           href: billing-understand-free-service-meter-mapping.md
-        - name: Fenntartott VM-példányok Windows-költségei
-          href: billing-reserved-instance-windows-software-costs.md
-        - name: Fenntartott VM-példányokra vonatkozó kedvezmény alkalmazása
-          href: billing-understand-vm-reservation-charges.md
         - name: A költségkeret ismertetése
           href: billing-spending-limit.md
         - name: Számlázási értesítések beállítása
           href: billing-set-up-alerts.md
         - name: Késedelmes egyenleg kezelése
           href: billing-azure-subscription-past-due-balance.md
-        - name: Használatalapú fizetés fenntartott példányok esetén
-          href: billing-understand-reserved-instance-usage.md
-        - name: Fenntartott példányok vállalati használata
-          href: billing-understand-reserved-instance-usage-ea.md
     - name: Előfizetések kezelése
       items:
         - name: Előfizetési vagy felügyeleti csoport keresése
@@ -82,8 +87,6 @@
           href: billing-partner-admin-link-started.md
         - name: Számlázási fiókok megtekintése
           href: billing-view-all-accounts.md
-    - name: Fenntartott VM-példányok felügyelete
-      href: billing-manage-reserved-vm-instance.md
     - name: Hibaelhárítás
       items:
         - name: Regisztrációs problémák

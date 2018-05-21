@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 752df29200a5e020ccf10f511ae2f02c0d72bd48
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Az Azure Search-indexelőt, blob JSON-blobok indexelő
 Ez a cikk bemutatja, hogyan konfigurálhatja egy Azure Search blob indexelőt strukturált tartalom kibontása a JSON-blobok az Azure Blob Storage tárolóban.
@@ -23,7 +23,7 @@ Az Azure Blob storage JSON-blobok jellemzően vagy egy JSON-dokumentumot, vagy e
 | JSON-dokumentum | parsingMode | Leírás | Rendelkezésre állás |
 |--------------|-------------|--------------|--------------|
 | Egy blob egy | `json` | JSON-blobok elemez, egyetlen adattömb szöveg. Minden egyes JSON-blob lesz egy Azure Search dokumentumot. | Mindkét általánosan elérhető [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API-k. |
-| Egy blob több | `jsonArray` | A BLOB, ahol a tömb egyes elemei lesz-e egy külön Azure Search dokumentum egy JSON-tömb elemzi.  | A képen a [REST api-version =`2016-09-01-Preview` ](search-api-2016-09-01-preview.md) és [.NET SDK előzetes](https://aka.ms/search-sdk-preview). |
+| Egy blob több | `jsonArray` | A BLOB, ahol a tömb egyes elemei lesz-e egy külön Azure Search dokumentum egy JSON-tömb elemzi.  | A képen a [REST api-version =`2017-11-11-Preview` ](search-api-2017-11-11-preview.md) és [.NET SDK előzetes](https://aka.ms/search-sdk-preview). |
 
 > [!Note]
 > Előnézeti API-k tesztelésében és értékelésében készült, és nem használható üzemi környezetben.
@@ -116,7 +116,7 @@ Azt is megteheti hogy kérheti a JSON-tömb előzetes funkció. Ez a funkció ak
 
 A JSON-tömb, az indexelő kérelem használja az előzetes verziót API és a `jsonArray` elemző. Ezek a csak két tömb vonatkozó követelményei JSON-blobok indexelő.
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -129,6 +129,8 @@ A JSON-tömb, az indexelő kérelem használja az előzetes verziót API és a `
     }
 
 Figyelje meg újra, mező-leképezések esetén nincs szükség. Egy index ugyanezzel az "id" és "text" mező megadott, a blob indexelő is következtethető ki, a helyes leképezés egy mezőlista leképezés nélkül.
+
+<a name="nested-json-arrays"></a>
 
 ### <a name="nested-json-arrays"></a>Beágyazott JSON-tömbök
 Mi történik, ha szeretné JSON-objektumok tömbje, de a tömb index van beágyazva valahol a dokumentumot? Kiválaszthatja, melyik tulajdonsága tartalmazza a tömb használatával a `documentRoot` konfigurációs tulajdonság. Ha például a blobok néznek ki:
