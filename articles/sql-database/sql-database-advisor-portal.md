@@ -3,17 +3,17 @@ title: Teljesítmény ajánlásokkal – az Azure SQL Database alkalmazása |} M
 description: Az Azure-portálon is az Azure SQL adatbázis teljesítményének optimalizálása teljesítmény javaslatokat kereséséhez használja.
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítmény javaslatok alkalmazása
 
@@ -95,10 +95,14 @@ Beállíthatja, hogy az Azure SQL Database javaslatok automatikus végrehajtása
 
 1. Az a **javaslatok** kattintson **automatizálás**:
    
-    ![Advisor-beállítások](./media/sql-database-advisor-portal/settings.png)
+    ![Az Advisor-beállítások](./media/sql-database-advisor-portal/settings.png)
 2. Válassza ki az automatikus műveleteket:
    
-    ![Ajánlott indexek](./media/sql-database-advisor-portal/automation.png)
+    ![Ajánlott indexek](./media/sql-database-automatic-tuning-enable/server.png)
+
+> [!NOTE]
+> Ne feledje, hogy **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások, és nem be kell kapcsolni ezekben az esetekben.
+>
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>Az ajánlott T-SQL parancsfájl manuális futtatása
 Válassza ki a javaslat, és kattintson a **parancsfájl megtekintése**. Futtassa a parancsfájlt az adatbázis a javaslat manuális alkalmazásához.
@@ -118,7 +122,7 @@ A javaslat alkalmazása nem fordulhat elő, azonnal. A portál részletesen ajá
 |:--- |:--- |
 | Függőben |A javaslat parancs érkezett, és a végrehajtásra ütemezett alkalmazni. |
 | Végrehajtás |A javaslat vonatkozik. |
-| Ellenőrzése |A javaslat alkalmazása sikeresen, és a szolgáltatás a következő előnyöket mérés. |
+| Ellenőrzés |A javaslat alkalmazása sikeresen, és a szolgáltatás a következő előnyöket mérés. |
 | Sikeres |A javaslat alkalmazása sikeresen és előnyök mért lett. |
 | Hiba |Hiba történt az ajánlás alkalmazásának folyamatában. Ez lehet átmeneti jellegű probléma, vagy esetleg a séma módosítsa a táblázat, és a parancsfájl már nem érvényes. |
 | Visszaállítás |A javaslat alkalmazta, de nem performant megállapítása, és automatikusan vissza. |

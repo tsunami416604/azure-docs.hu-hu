@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: e46c2ad30b578b0642ee7b541ea003ed67c6a7f5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d5a9f2ba68574ba8cb99b01ce426ec77a5eecd3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center, egy szolgáltatás, amely segít a megakadályozása, észlelésében és kezelésében fenyegetések láthatóság növelésével és a Microsoft Azure-erőforrások védelmét kapcsolatos kérdésekre ad választ.
@@ -89,7 +89,7 @@ A biztonsági házirend konfigurálási módjával kapcsolatban a [biztonsági s
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Amikor a potenciális biztonsági hiányosságokat azonosít, javaslatok jönnek létre. A javaslatok végigvezeti Önt a szükséges ellenőrzési folyamatán. Például a következők:
 
 * Kártevőirtó azonosításához, és távolítsa el a kártevő szoftverek telepítése
-* Konfigurálás [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md) és a virtuális gépek forgalmának ellenőrzésére vonatkozó szabályok
+* [Hálózati biztonsági csoportok](../virtual-network/security-overview.md) és a virtuális gépek forgalmának ellenőrzésére vonatkozó szabályok
 * A webes alkalmazások célzó támadások elleni védelemre a webalkalmazási tűzfal kiépítését
 * Hiányzó rendszerfrissítések telepítése
 * Az operációs rendszer azon konfigurációinak kezelése, amelyek nem felelnek meg a javasolt alapkonfigurációknak
