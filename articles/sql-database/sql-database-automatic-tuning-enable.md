@@ -2,34 +2,34 @@
 title: Az Azure SQL Database automatikus hangolása engedélyezése |} Microsoft Docs
 description: Automatikus hangolása az Azure SQL adatbázis könnyen engedélyezheti.
 services: sql-database
-author: veljko-msft
-manager: drasumic
+author: danimir
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: vvasic
-ms.openlocfilehash: f29a7c883450cbc0f1f2b5a230a6c6e081222906
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e4c3a2c1f21bf14bfc75f20dd18cefca68fd2067
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="enable-automatic-tuning"></a>Automatikus hangolás engedélyezése
 
 Az Azure SQL Database az automatikusan kezelt adatok szolgáltatása, amely folyamatosan figyeli a lekérdezéseket, és azonosítja a végrehajtandó műveletet a számítási feladatok teljesítményének javításával végezheti el. Áttekintheti javaslatok és manuálisan alkalmazhatja azokat, vagy lehetővé teszik az Azure SQL Database automatikusan alkalmazza a javítási műveleteket – ez az úgynevezett **automatikus hangolási módot**. Az automatikus hangolással a kiszolgáló vagy az adatbázis szintjén engedélyezhető.
 
 ## <a name="enable-automatic-tuning-on-server"></a>Engedélyezze a kiszolgálón automatikus hangolása
-A kiszolgáló szintjén választhat öröklik az "Azure alapértelmezett értéke" automatikus hangolási beállítás, vagy nem az, hogy örökölje a konfigurációt. Az Azure alapértelmezett FORCE_LAST_GOOD_PLAN engedélyezve van, CREATE_INDEX engedélyezve van, és DROP_INDEX le van tiltva.
-
-## <a name="configure-automatic-tuning-e-mail-notifications"></a>Automatikus hangolási e-mail értesítések konfigurálása
-
-Lásd: [automatikus e-mail értesítések beállítása](sql-database-automatic-tuning-email-notifications.md)
+A kiszolgáló szintjén választhat öröklik az "Azure alapértelmezett értéke" automatikus hangolási beállítás, vagy nem az, hogy örökölje a konfigurációt. Az Azure azok FORCE_LAST_GOOD_PLAN engedélyezve van, engedélyezve van a CREATE_INDEX és DROP_INDEX le van tiltva.
 
 ### <a name="azure-portal"></a>Azure Portal
-Engedélyezi az automatikus hangolással Azure SQL adatbázis-kiszolgálón, keresse fel a kiszolgálót az Azure portálon, és válassza ki **automatikus hangolása** a menüben. Válassza ki a engedélyezése, és válassza ki az automatikus hangolási lehetőségeket **alkalmaz**:
+Ahhoz, hogy az Azure SQL Database-automatikus hangolása **server**, keresse fel a kiszolgálót az Azure portálon, és válassza ki **automatikus hangolása** a menüben. Válassza ki a engedélyezése, és válassza ki az automatikus hangolási lehetőségeket **alkalmaz**.
 
 ![Kiszolgáló](./media/sql-database-automatic-tuning-enable/server.png)
+
+> [!NOTE]
+> Ne feledje, hogy **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások, és nem be kell kapcsolni ezekben az esetekben.
+>
 
 A kiszolgáló automatikus hangolási lehetőségeket a kiszolgálón lévő összes adatbázis is vonatkozik. Alapértelmezés szerint minden adatbázisok a konfigurációs öröklése a fölérendelt kiszolgáló, de ez felül, és az egyes adatbázisok külön-külön megadott.
 
@@ -46,13 +46,15 @@ Az Azure SQL Database lehetővé teszi, hogy egyesével adja meg az automatikus 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Egy önálló adatbázis automatikus hangolása engedélyezéséhez nyissa meg az adatbázis az Azure portálon, és majd, és válassza ki **automatikus hangolása**. Beállíthatja, hogy a beállítások öröklése a kiszolgálóról a beállítás kiválasztásával egyetlen adatbázis, vagy a konfigurációs adatbázis egyesével adja meg.
+Ahhoz, hogy az automatikus hangolással egy **egyetlen adatbázis**, keresse meg az adatbázist, az Azure portálon, és majd, és válassza ki **automatikus hangolása**. Beállíthatja, hogy a beállítások öröklése a kiszolgálóról a beállítás kiválasztásával egyetlen adatbázis, vagy a konfigurációs adatbázis egyesével adja meg.
 
 ![Adatbázis](./media/sql-database-automatic-tuning-enable/database.png)
 
 Miután kiválasztotta a megfelelő konfigurációs, kattintson a **alkalmaz**.
 
-### <a name="rest-api"></a>REST API-n
+Vegye figyelembe, hogy DROP_INDEX beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások, és nem be kell kapcsolni ezekben az esetekben.
+
+### <a name="rest-api"></a>REST API
 [Ide kattintva további engedélyezéséről a REST API-n keresztül egy önálló adatbázis automatikus hangolása](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning)
 
 ### <a name="t-sql"></a>T-SQL
@@ -75,6 +77,10 @@ Az egyes hangolási beállítás beállítása ON értékre állítása, örök�
 
 ## <a name="disabled-by-the-system"></a>A rendszer le van tiltva
 Az automatikus hangolással figyeli időt vesz igénybe, az adatbázis az összes műveletet, és egyes esetekben meg tudja határozni, hogy automatikus hangolása nem megfelelően működik az adatbázison. Ebben a helyzetben hangolási beállítás letiltja a rendszer. A legtöbb esetben ez akkor fordul elő, mert a Lekérdezéstár nincs engedélyezve, vagy egy adott adatbázis csak olvasható állapotban van.
+
+## <a name="configure-automatic-tuning-e-mail-notifications"></a>Automatikus hangolási e-mail értesítések konfigurálása
+
+Lásd: [automatikus e-mail értesítések beállítása](sql-database-automatic-tuning-email-notifications.md)
 
 ## <a name="next-steps"></a>További lépések
 * Olvassa el a [automatikus hangolási cikk](sql-database-automatic-tuning.md) tudhat meg többet automatikus hangolása és szerepéről javítják a teljesítményt.

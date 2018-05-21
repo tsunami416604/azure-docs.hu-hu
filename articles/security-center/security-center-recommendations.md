@@ -1,11 +1,11 @@
 ---
-title: "Biztonsági javaslatok kezelése az Azure Security Centerben |} Microsoft Docs"
-description: "A dokumentumból megtudhatja, hogyan javaslatok az Azure Security Centerben segítséget nyújtanak az Azure-erőforrások védelme és maradnak meg a biztonsági házirendeknek megfelelően."
+title: Biztonsági javaslatok kezelése az Azure Security Centerben |} Microsoft Docs
+description: A dokumentumból megtudhatja, hogyan javaslatok az Azure Security Centerben segítséget nyújtanak az Azure-erőforrások védelme és maradnak meg a biztonsági házirendeknek megfelelően.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 2cb4a1c944d6893ca7913eef4e93620059f2a839
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 72070f46309adb526901192752fe421a3846398b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok kezelése az Azure Security Centerben
 Ez a dokumentum végigvezeti javaslatok használata az Azure Security Centerben az Azure-erőforrások védelméhez.
@@ -39,7 +39,7 @@ A [biztonsági szabályzatok beállítása az Azure Security Center](security-ce
 * Bekapcsolni az adatgyűjtést.
 * Válassza ki a mely ajánlások tekintse meg a biztonsági házirend részeként.
 
-Aktuális javaslatok szabályzatközpontban körül Rendszerfrissítések, alapkonfigurációs szabályok, kártevőirtó-programok, [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md) alhálózatok és a hálózati adapterek, SQL-adatbázis naplózásának, SQL adatbázis átlátható adattitkosítás és webalkalmazási tűzfalak.  [Biztonsági szabályzatok beállítása](security-center-policies.md) minden javaslat beállítás leírását.
+Aktuális javaslatok szabályzatközpontban körül Rendszerfrissítések, alapkonfigurációs szabályok, kártevőirtó programok [hálózati biztonsági csoportok](../virtual-network/security-overview.md) alhálózatok és a hálózati adapterek, SQL-adatbázis naplózásának, SQL adatbázis átlátható adattitkosítás webes alkalmazás tűzfalak és.  [Biztonsági szabályzatok beállítása](security-center-policies.md) minden javaslat beállítás leírását.
 
 ### <a name="monitor-recommendations"></a>A figyelő javaslatok
 Miután beállított egy biztonsági házirendet, a Security Center elemzi az Ön erőforrásainak állapotát, hogy észlelhesse a potenciális biztonsági réseket. A **javaslatok** a csempén **áttekintése** jelzi, a Security Center által azonosított ajánlások teljes száma.
@@ -73,9 +73,9 @@ Az alábbi táblázatban használja hivatkozásként segít megérteni a rendelk
 | Ajánlás | Leírás |
 | --- | --- |
 | [Adatgyűjtés engedélyezése az előfizetések számára](security-center-enable-data-collection.md) |Javasolja, hogy kapcsolja be a biztonsági házirend adatgyűjtés az egyes az előfizetések és az összes Azure virtuális gépek (VM) és az Azure-számítógépek. |
-| [Biztonsági beállításokkal javítása](security-center-remediate-os-vulnerabilities.md) |Javasolja, hogy az operációs rendszer azon konfigurációit a javasolt biztonsági konfigurációs szabályokat, például igazítása, ne engedélyezze a jelszavak menteni. |
+| [Biztonsági konfigurációk javítása](security-center-remediate-os-vulnerabilities.md) |Javasolja, hogy az operációs rendszer azon konfigurációit a javasolt biztonsági konfigurációs szabályokat, például igazítása, ne engedélyezze a jelszavak menteni. |
 | [Rendszerfrissítések alkalmazása](security-center-apply-system-updates.md) |Javasolja, hogy telepít hiányzó rendszer biztonsági és kritikus frissítések a Windows és a Linux virtuális gépek és a számítógépek. |
-| [A közvetlenül időponthoz kötött alkalmazni a hálózati hozzáférés-vezérlés](security-center-just-in-time.md) | Csak a virtuális gép elérhető telepítését javasolja. A szolgáltatás egyelőre időben csak és érhető el a Security Center Standard csomagra. Lásd: [árazás](security-center-pricing.md) további bővebben a Security Center által tarifacsomag szükséges. |
+| [A közvetlenül időponthoz kötött alkalmazni a hálózati hozzáférés-vezérlés](security-center-just-in-time.md) | Csak a virtuális gép elérhető telepítését javasolja. A szolgáltatás egyelőre időben csak és érhető el a Security Center Standard csomagra. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). |
 | [Rendszerfrissítések utáni újraindítás](security-center-apply-system-updates.md#reboot-after-system-updates) |Javasolja, hogy a rendszerfrissítések alkalmazási folyamatának befejezéséhez indítson újra egy virtuális gépet. |
 | [Webalkalmazási tűzfal hozzáadása](security-center-add-web-application-firewall.md) |Javasolja, hogy telepít egy webalkalmazási tűzfal (WAF) webszolgáltatási végpontok. WAF ajánlás bármely nyilvános felé néző IP-cím (példány szint IP vagy terhelés eloszlik IP), amely rendelkezik egy társított hálózati biztonsági csoportot a nyissa meg a bejövő webes portokkal (80,443) jelenik meg. </br>A Security Center javasolja, hogy egy WAF a webes alkalmazások, virtuális gépek és az App Service Environment-környezet célzó támadások elleni védelemre való ellátásához. Az App Service környezetben (ASE) van egy [prémium](https://azure.microsoft.com/pricing/details/app-service/) terv lehetőséget az Azure App Service egy teljesen elkülönített és dedikált környezetben történő biztonságos futtatására az Azure App Service apps biztosító szolgáltatás. ASE kapcsolatos további tudnivalókért tekintse meg a [App Service környezetben dokumentáció](../app-service/environment/intro.md).</br>Adja hozzá ezeket az alkalmazásokat a meglévő WAF-központitelepítések védelmet biztosíthat a Security Center több webalkalmazás. |
 | [Alkalmazásvédelem véglegesítése](security-center-add-web-application-firewall.md#finalize-application-protection) |Egy WAF konfigurációjának befejezéséhez forgalom WAF készülékre át irányítva. Ez a javaslat a következő befejezi a szükséges telepítőfájlokat módosításokat. |
