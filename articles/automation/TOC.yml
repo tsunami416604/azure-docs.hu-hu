@@ -159,6 +159,8 @@
       items:
         - name: Runbook-katalógus
           href: automation-runbook-gallery.md
+        - name: Runbookok monitorozása tevékenységnaplókkal
+          href: automation-alert-activity-log.md
         - name: Runbook indítása Azure-riasztásokból
           href: automation-create-alert-triggered-runbook.md
         - name: Amazon-webszolgáltatásbeli virtuális gép létrehozása

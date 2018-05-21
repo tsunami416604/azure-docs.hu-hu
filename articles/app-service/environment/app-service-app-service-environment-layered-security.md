@@ -1,11 +1,11 @@
 ---
-title: "Az App Service-környezetek többrétegű biztonsági architektúrája"
-description: "Az App Service Environment-környezetek egy többrétegű biztonsági architektúra megvalósítása."
+title: Az App Service-környezetek többrétegű biztonsági architektúrája
+description: Az App Service Environment-környezetek egy többrétegű biztonsági architektúra megvalósítása.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
-ms.openlocfilehash: 6c1f62b5e10a625911feea17ae6835e027709790
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29c928c7d81eb3a2532f735be9132b49db5da373
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Az App Service-környezetek egy többrétegű biztonsági architektúra megvalósítása
 ## <a name="overview"></a>Áttekintés
@@ -32,15 +32,15 @@ Az alábbi ábrán egy példa architektúra látható, az App Service-környezet
 
 A zöld plusz jel jelzi, hogy engedélyezi-e a hálózati biztonsági csoportot az "apiase" tartalmazó alhálózat bejövő hívások a felsőbb rétegbeli webes alkalmazásokból, jól hívások magából.  Azonban a hálózati biztonsági csoporton kifejezetten megtagadja általános bejövő forgalom az internethez való hozzáférést. 
 
-Ez a témakör további része végigvezeti a lépéseken, amelyekkel a hálózati biztonsági csoport konfigurálása "apiase" tartalmazó alhálózaton.
+Ez a cikk fennmaradó végigvezeti a lépéseken, amelyekkel a hálózati biztonsági csoport konfigurálása az alhálózat tartalmazó "apiase."
 
 ## <a name="determining-the-network-behavior"></a>A hálózati probléma meghatározása
 Ahhoz, hogy tudja, milyen hálózati biztonsági szabályok szükségesek, meg kell határoznia, melyik hálózati ügyfelek részére engedélyezve lesz az App Service-környezet, az API-alkalmazást tartalmazó elérni, és mely ügyfelek le lesz tiltva.
 
 Mivel [hálózati biztonsági csoportokkal (NSG-k)] [ NetworkSecurityGroups] alkalmazott alhálózatok, és az App Service Environment-környezetek alhálózatokra vannak telepítve, egy NSG foglalt szabályok vonatkoznak **összes** alkalmazások az App Service-környezetek futnak.  Használja a mintaarchitektúrája ebben a cikkben után a hálózati biztonsági csoport van alkalmazva tartalmazó "apiase", "apiase" App Service Environment-környezet futó minden alkalmazás fogja védeni az ugyanazokat a biztonsági szabályok. 
 
-* **Határozza meg a felsőbb rétegbeli hívók kimenő IP-cím:** Mi az az IP-címeket a felsőbb rétegbeli hívók?  Ezeket a címeket kell explicit módon hozzáférhessen az NSG.  App Service Environment-környezetek közötti hívások "Internet" hívások minősülnek, mivel ez azt jelenti, a kimenő IP-címet hozzárendelni a három felsőbb szintű App Service-környezetek mindegyikének kell az NSG az "apiase" alhálózat hozzáférése engedélyezett.   A kimenő IP-cím meghatározása egy App Service Environment-környezetben futó alkalmazásokhoz című vonatkozó részletes információért a [hálózati architektúra] [ NetworkArchitecture] a cikk áttekintése.
-* **A háttér-API-alkalmazásba kell hívnia magának?**  Néha kihagyott és finom pont a forgatókönyvet, ahol a háttér-alkalmazást kell hívhatja saját magát.  Ha egy háttér-API-alkalmazás az App Service-környezetek hívható meg magának kell, ez is kezeli az "Internet" hívásként.  A minta-architektúrában ehhez a kimenő IP-címét a "apiase" App Service Environment-környezet, valamint a hozzáférés.
+* **Határozza meg a felsőbb rétegbeli hívók kimenő IP-cím:** Mi az az IP-címeket a felsőbb rétegbeli hívók?  Ezeket a címeket kell explicit módon hozzáférhessen az NSG.  App Service Environment-környezetek közötti hívások "Internet" hívások minősülnek, mivel a kimenő IP-címet hozzárendelni a három felsőbb szintű App Service-környezetek mindegyikének kell az NSG az "apiase" alhálózat hozzáférése engedélyezett.   További információ a kimenő IP-cím egy App Service Environment-környezetben futó alkalmazások, lásd: a [hálózati architektúra] [ NetworkArchitecture] a cikk áttekintése.
+* **A háttér-API-alkalmazásba kell hívnia magának?**  Néha kihagyott és finom pont a forgatókönyvet, ahol a háttér-alkalmazást kell hívhatja saját magát.  Ha egy háttér-API-alkalmazás az App Service-környezetek hívhatja saját magát, akkor a is rendszer egy "Internet" hívásként.  A minta-architektúrában ehhez a kimenő IP-címét a "apiase" App Service Environment-környezet, valamint a hozzáférés.
 
 ## <a name="setting-up-the-network-security-group"></a>A hálózati biztonsági csoport
 Amennyiben az ismert kimenő IP-címek készlete, a következő lépésre hálózati biztonsági csoport létrehozásához.  Hálózati biztonsági csoportok mindkét Resource Manager-alapú virtuális hálózatokon, valamint a klasszikus virtuális hálózatok hozhatók létre.  Az alábbi példák bemutatják, létrehozása és konfigurálása egy NSG-t egy Powershell-lel klasszikus virtuális hálózaton.
@@ -76,13 +76,13 @@ Végül hozzáférést a háttér-API App Service Environment-környezet kimenő
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" -Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-Nincs más hálózati biztonsági szabály be kell állítani, mert minden NSG tartozik egy alapértelmezett szabályokkal, amelyeket az internetről bejövő hozzáférésének letiltására alapértelmezés szerint.
+Nincs más hálózati biztonsági szabály szükség, mert minden NSG tartozik egy alapértelmezett szabályokkal, amelyeket az internetről bejövő hozzáférésének letiltására alapértelmezés szerint.
 
-A hálózati biztonsági csoport szabályainak teljes listája az alábbiakban tekintheti meg.  Vegye figyelembe, hogyan letiltja az az utolsó szabályt, amely ki van jelölve, a bejövő elérését az összes hívó eltérő azokat, amelyek kifejezetten hozzáférést kapott.
+A hálózati biztonsági csoport szabályainak teljes listája az alábbiakban tekintheti meg.  Vegye figyelembe, hogyan az utolsó szabályt, amely ki van jelölve, blokkolja a bejövő összes hívó eltérő hívóknak, amely kifejezetten hozzáférést kapott hozzáférést.
 
 ![NSG-konfiguráció][NSGConfiguration] 
 
-Az utolsó lépés, hogy az NSG alkalmazása az alhálózatot, amely tartalmazza a "apiase" App Service Environment-környezet.  
+Az utolsó lépés, hogy az NSG alkalmazása az alhálózatot, amely tartalmazza a "apiase" App Service Environment-környezet.
 
      #Apply the NSG to the backend API subnet
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
@@ -90,7 +90,7 @@ Az utolsó lépés, hogy az NSG alkalmazása az alhálózatot, amely tartalmazza
 Az NSG alkalmazva, az csak a három felsőbb szintű App Service Environment-környezetek, és az App Service-környezet, az API-háttér tartalmazó engedélyezettek hívni a "apiase" környezetbe.
 
 ## <a name="additional-links-and-information"></a>További hivatkozások és információk
-Információ a [hálózati biztonsági csoportok](../../virtual-network/virtual-networks-nsg.md). 
+Információ a [hálózati biztonsági csoportok](../../virtual-network/security-overview.md).
 
 Understanding [kimenő IP-címek] [ NetworkArchitecture] és az App Service Environment-környezetek.
 

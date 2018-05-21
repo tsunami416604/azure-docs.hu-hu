@@ -1,12 +1,12 @@
 ---
-title: "Az Azure IoT Suite – gyakori kérdések |} Microsoft Docs"
-description: "Gyakran ismételt kérdések az IoT Suite-ról"
-services: 
+title: Az Azure IoT Suite – gyakori kérdések |} Microsoft Docs
+description: Gyakran ismételt kérdések az IoT Suite-ról
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: 6c644395aa7ad51c289cdc4a23b02e9e0239a0fe
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 4c8ecdae8d84028986b4b3fba94486ce8eb7f1bc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Gyakran ismételt kérdések az IoT Suite-ról
 
-További információ, a csatlakoztatott gyári specifikus [gyakran ismételt kérdések](iot-suite-faq-cf.md).
+További információ, a csatlakoztatott gyári specifikus [gyakran ismételt kérdések](../iot-accelerators/iot-accelerators-faq-cf.md).
 
 ### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>Hol található az előkonfigurált megoldásokat a kódot?
 
@@ -34,7 +34,7 @@ A forráskód a következő GitHub-adattárak tárolja:
 
 ### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>Hogyan frissíthetők a legújabb verzióra a távoli figyelési előkonfigurált megoldás, amely az IoT Hub eszköz felügyeleti funkciókat használ?
 
-* Ha egy előre konfigurált megoldást a https://www.azureiotsuite.com/ helyet telepít, mindig telepíti a legújabb verzióját a megoldás egy új példányát.
+* Ha telepít egy előre konfigurált megoldást a https://www.azureiotsuite.com/ hely, mindig a legújabb verzióját a megoldás egy új példányát telepíti.
 * Ha telepít egy parancssor segítségével előre beállított megoldás, frissítheti egy meglévő központi telepítési új kóddal. Lásd: [felhőalapú üzemelő példány] [ lnk-cloud-deployment] a github [tárház][lnk-remote-monitoring-github].
 
 ### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>Hogyan vehetek fel egy új eszköz metódus támogatja a távoli felügyeleti előre konfigurált megoldáshoz?
@@ -104,7 +104,7 @@ Eric Golpe blogbejegyzésből [bemutató az Azure AD-bérlő törlésével][lnk-
 Megismerheti az IoT Suite előre konfigurált megoldásának egyéb szolgáltatásait és funkcióit is:
 
 * [Előre konfigurált prediktív karbantartási megoldás áttekintése][lnk-predictive-overview]
-* [Előre konfigurált csatlakoztatott gyári megoldási áttekintés](iot-suite-connected-factory-overview.md)
+* [Előre konfigurált csatlakoztatott gyári megoldási áttekintés](../iot-accelerators/iot-accelerators-connected-factory-overview.md)
 * [IoT-biztonság létrehozása az alapoktól][lnk-security-groundup]
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
