@@ -10,11 +10,11 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 96a749c0cb59759e9294f52bd4f631d7fdc2275f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 404e238e51b7ac8b799f413965560a8d42ccc5df
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 Eddig meg már fut az alkalmazás kódjában, mintha a csak az alkalmazás dolgozó fejlesztők. Ebben a szakaszban megtudhatja, hogyan Azure fejlesztői szóközöket leegyszerűsíti a fejlesztési csapat:
 * Fejlesztői célokat azonos fejlesztői környezetben csapata engedélyezése.
@@ -50,7 +50,7 @@ Megtudhatja, hogy ha a futó szolgáltatások részletes bemutatása. Futtassa a
 Name         Space     Chart              Ports   Updated     Access Points
 -----------  --------  -----------------  ------  ----------  -------------------------
 mywebapi     default  mywebapi-0.1.0     80/TCP  2m ago     <not attached>
-webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     https://webfrontend-contosodev.1234abcdef.westeurope.aksapp.io
+webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-contosodev.1234abcdef.eastus.aksapp.io
 ```
 
 A terület az oszlopban látható, hogy mindkét szolgáltatás fut-e a neve szóközt `default`. Bárki, aki az URL-címe megnyílik, és a web app navigál meghívják a korábban megírt kód elérési, amelyen keresztül mindkét szolgáltatás. Most tegyük fel, hogy folytatja a fejlesztés `mywebapi`. Hogyan lehet kód módosításokat és tesztelését és nem szakítják meg a fejlesztői környezet használó más fejlesztők? Ehhez a saját területet kell beállítani.

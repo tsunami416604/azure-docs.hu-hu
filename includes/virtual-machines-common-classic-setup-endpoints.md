@@ -1,4 +1,19 @@
-
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: cfe675ca269a69c7c2bfa67638acd0afbcd1c8ea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/20/2018
+---
 Minden egyes végpont rendelkezik egy *nyilvános port* és egy *magánhálózati port*:
 
 * A nyilvános portot használják az Azure load balancer figyelni a bejövő forgalmat a virtuális gép az internetről.
@@ -6,7 +21,7 @@ Minden egyes végpont rendelkezik egy *nyilvános port* és egy *magánhálózat
 
 Az IP-protokoll és a jól ismert hálózati protokollok kapnak, ha az Azure-portálon végpontok létrehozásához TCP vagy UDP-portok alapértelmezett értékeit. Egyéni végpontok szüksége lesz a megfelelő IP-protokoll (TCP és UDP) és a nyilvános és magánhálózati portot adja meg. Véletlenszerűen szét több virtuális gép bejövő forgalmat, lesz szüksége több végpont már nem álló elosztott terhelésű készlet létrehozásához.
 
-Miután létrehozta a végpont, hozzáférés-vezérlési listaként (ACL) segítségével szabályok meghatározásához, amelyek engedélyezhetnek vagy tagadhatnak meg a végpont a forrás IP-címe alapján a nyilvános portot a bejövő forgalmat. Azonban ha a virtuális gépet egy Azure virtuális hálózatban, használjon hálózati biztonsági csoportok helyette. További információkért lásd: [hálózati biztonsági csoportok](../articles/virtual-network/virtual-networks-nsg.md).
+Miután létrehozta a végpont, hozzáférés-vezérlési listaként (ACL) segítségével szabályok meghatározásához, amelyek engedélyezhetnek vagy tagadhatnak meg a végpont a forrás IP-címe alapján a nyilvános portot a bejövő forgalmat. Azonban ha a virtuális gépet egy Azure virtuális hálózatban, használjon hálózati biztonsági csoportok helyette. További információkért lásd: [hálózati biztonsági csoportok](../articles/virtual-network/security-overview.md).
 
 > [!NOTE]
 > Az Azure virtuális gépek tűzfal-konfigurálása automatikusan történik, amely automatikusan beállítja Azure távoli kapcsolatot végpontok társított portok. A portok az összes többi végpont a megadott, nem-konfigurálása automatikusan történik a virtuális gép a tűzfalhoz. Amikor létrehoz egy végpontot a virtuális gép, szüksége lesz győződjön meg arról, hogy a tűzfal, a virtuális gép is lehetővé teszi, hogy a protokoll és magánhálózati portot a végpont-konfiguráció megfelelő a forgalmat. A tűzfal konfigurálásáról lásd: a dokumentációját, vagy az operációs rendszer a virtuális gépen futó online súgóját.
@@ -39,7 +54,7 @@ A számítógépek, amelyek képesek a forgalmat küldeni a kulcstulajdonságoka
 >
 >
 
-Ha a virtuális gépet egy Azure virtuális hálózatban, ajánlott hálózati biztonsági csoportok hozzáférés-vezérlési listák helyett. További információkért lásd: [hálózati biztonsági csoportok](../articles/virtual-network/virtual-networks-nsg.md).
+Ha a virtuális gépet egy Azure virtuális hálózatban, ajánlott hálózati biztonsági csoportok hozzáférés-vezérlési listák helyett. További információkért lásd: [hálózati biztonsági csoportok](../articles/virtual-network/security-overview.md).
 
 1. Ha még nem tette meg, jelentkezzen be az Azure-portálon.
 2. Kattintson a **virtuális gépek**, majd kattintson a konfigurálni kívánt virtuális gép nevére.
@@ -47,7 +62,7 @@ Ha a virtuális gépet egy Azure virtuális hálózatban, ajánlott hálózati b
 
    ![Adja meg a hozzáférés-vezérlési lista adatait](./media/virtual-machines-common-classic-setup-endpoints/aclpreentry.png)
 
-4. Használja a lista sorok hozzáadásához, törléséhez vagy az ACL szabályok szerkesztése, és módosíthatja azok sorrendjét. A **távoli alhálózati** értéke az IP-címtartományok, a bejövő forgalom az internetről, amely az Azure load balancer segítségével engedélyezheti vagy megtagadhatja a forgalmat a forrás IP-címe alapján. Ne adja meg az IP-címtartományt a CIDR-formátumban, más néven a cím előtag formátuma. Példa: `10.1.0.0/8`.
+4. Használja a lista sorok hozzáadásához, törléséhez vagy az ACL szabályok szerkesztése, és módosíthatja azok sorrendjét. A **távoli alhálózati** értéke az IP-címtartományok, a bejövő forgalom az internetről, amely az Azure load balancer segítségével engedélyezheti vagy megtagadhatja a forgalmat a forrás IP-címe alapján. Ne adja meg az IP-címtartományt a CIDR-formátumban, más néven a cím előtag formátuma. Például: `10.1.0.0/8`.
 
  ![Új ACL-bejegyzéssel](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
 

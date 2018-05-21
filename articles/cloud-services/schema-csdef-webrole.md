@@ -1,8 +1,8 @@
 ---
-title: Azure Cloud Services Def. Webrole típusról séma |} Microsoft Docs
+title: Azure Cloud Services alapértelmezett Webrole típusról séma |} Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
+services: cloud-services
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -13,11 +13,11 @@ caps.latest.revision: 60
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: b2873f61dcab9a14089949f27f40ca5bedaf14ee
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6db3edef937dc0b5cdd805d0045897e02b985e7b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services – Definition webrole típusról séma
 Az Azure webes szerepkör a rendszer egy testreszabott alkalmazásprogramozási web IIS 7, például az ASP.NET, PHP, a Windows Communication Foundation és a FastCGI támogatja.
@@ -119,7 +119,7 @@ A szolgáltatásdefiníciós fájlban tartalmazza ezeket az elemeket, ez a téma
 
 [Tanúsítványok](#Certificates)
 
-[tanúsítvány](#Certificate)
+[Tanúsítvány](#Certificate)
 
 [Importálása](#Imports)
 
@@ -129,7 +129,7 @@ A szolgáltatásdefiníciós fájlban tartalmazza ezeket az elemeket, ez a téma
 
 [Környezet](#Environment)
 
-[Variable](#Variable)
+[változó](#Variable)
 
 [RoleInstanceValue](#RoleInstanceValue)
 
@@ -137,7 +137,7 @@ A szolgáltatásdefiníciós fájlban tartalmazza ezeket az elemeket, ez a téma
 
 [webhelyek](#Sites)
 
-[Site](#Site)
+[Helykiszolgáló](#Site)
 
 [VirtualApplication](#VirtualApplication)
 
@@ -145,7 +145,7 @@ A szolgáltatásdefiníciós fájlban tartalmazza ezeket az elemeket, ez a téma
 
 [Kötések](#Bindings)
 
-[Binding](#Binding)
+[Kötelező](#Binding)
 
 [Indítása](#Startup)
 
@@ -157,7 +157,7 @@ A szolgáltatásdefiníciós fájlban tartalmazza ezeket az elemeket, ez a téma
 
 [SourceDirectory](#SourceDirectory)
 
-##  <a name="WebRole"></a> WebRole  
+##  <a name="WebRole"></a> Webrole típusról  
 A `WebRole` elem egy webes alkalmazásprogramozási, testreszabott szerepkörét mutatja be, az IIS 7 és az ASP.NET által támogatott. A szolgáltatás tartalmazhat nulla vagy több webes szerepkört.
 
 A következő táblázat ismerteti az attribútumai a `WebRole` elemet.
@@ -197,7 +197,7 @@ A következő táblázat ismerteti az attribútumai a `LocalStorage` elemet.
 | --------- | ---- | ----------- |  
 |név|karakterlánc|Kötelező. Egy egyedi nevet a helyi tárolójába.|  
 |cleanOnRoleRecycle|logikai|Választható. Azt jelzi, hogy a helyi tárolóban kell törölni, a szerepkör újraindításakor. Alapértelmezett érték `true`.|  
-|sizeInMb|int|Választható. A tárolóhely foglalja le a helyi tárolójába, MB-ban a kívánt memóriamennyiséget. Ha nincs megadva, az alapértelmezett tároló lefoglalt terület 100 MB. A tárolóhely lehet kiosztani minimális mérete 1 MB.<br /><br /> A helyi erőforrások maximális mérete függ, a virtuális gép méretét. További információkért lásd: [virtuálisgép-méretek a Felhőszolgáltatások](cloud-services-sizes-specs.md).|  
+|hogy a sizeInMb|int|Választható. A tárolóhely foglalja le a helyi tárolójába, MB-ban a kívánt memóriamennyiséget. Ha nincs megadva, az alapértelmezett tároló lefoglalt terület 100 MB. A tárolóhely lehet kiosztani minimális mérete 1 MB.<br /><br /> A helyi erőforrások maximális mérete függ, a virtuális gép méretét. További információkért lásd: [virtuálisgép-méretek a Felhőszolgáltatások](cloud-services-sizes-specs.md).|  
   
 Annak a könyvtárnak a helyi tároló erőforráshoz van lefoglalva a neve megegyezik a name attribútum megadott érték.
 
@@ -419,8 +419,8 @@ A `Binding` eleme csak érhető el az Azure SDK-verzió 1.3 használatával vagy
 | Attribútum | Típus | Leírás |  
 | --------- | ---- | ----------- |  
 |név|karakterlánc|Kötelező. Meghatározza a kötés azonosító nevet.|  
-|endpointName|karakterlánc|Kötelező. A végpont neve lehet kötést létrehozni.|  
-|hostHeader|karakterlánc|Választható. Adja meg egy állomásnevet, amely lehetővé teszi több hely, másik állomásnevek, egy egyetlen IP-cím/Port kombinációja.|  
+|EndpointName|karakterlánc|Kötelező. A végpont neve lehet kötést létrehozni.|  
+|Állomásfejléc|karakterlánc|Választható. Adja meg egy állomásnevet, amely lehetővé teszi több hely, másik állomásnevek, egy egyetlen IP-cím/Port kombinációja.|  
 
 ##  <a name="Startup"></a> Indítása  
 A `Startup` elem, amely a szerepkör indításakor feladatok egy gyűjteményének írja le. Ez az elem szülőjének lehet a `Variable` elemet. A szerepkör indítása feladatok használatával kapcsolatos további információkért lásd: [indítási feladatok konfigurálása](cloud-services-startup-tasks.md). Ez az elem nem kötelező, és a szerepkör csak egy indítási blokk lehet.

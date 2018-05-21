@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -235,9 +235,9 @@ Az nslookup parancs használatával a OpenDNS feloldó elküldheti a név myip.o
     nslookup myip.opendns.com resolver1.opendns.com
 
 ## <a name="preventoutbound"></a>Megakadályozza a kimenő kapcsolat
-Néha nemkívánatos is a virtuális gépek számára hozzon létre egy kimenő folyam engedélyezett. Előfordulhat, hogy mely célok elérhető a kimenő forgalom kezeléséhez követelmény, vagy mely célok megkezdheti a bejövő forgalom. Ebben az esetben használhatja [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md) kezeléséhez, amelyek a virtuális gép el lehet érni a célhelyre. Az NSG-k segítségével is kezelheti, mely nyilvános cél is kezdeményezhető a bejövő forgalom. 
+Néha nemkívánatos is a virtuális gépek számára hozzon létre egy kimenő folyam engedélyezett. Előfordulhat, hogy mely célok elérhető a kimenő forgalom kezeléséhez követelmény, vagy mely célok megkezdheti a bejövő forgalom. Ebben az esetben használhatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) kezeléséhez, amelyek a virtuális gép el lehet érni a célhelyre. Az NSG-k segítségével is kezelheti, mely nyilvános cél is kezdeményezhető a bejövő forgalom.
 
-Amikor egy NSG-t alkalmaz egy elosztott terhelésű virtuális gép, különös a [alapértelmezett címkék](../virtual-network/virtual-networks-nsg.md#default-tags) és [alapértelmezett szabályok](../virtual-network/virtual-networks-nsg.md#default-rules). Győződjön meg arról, hogy a virtuális gép állapotának mintavételi kérések fogadhat Azure Load Balancer. 
+Amikor egy NSG-t alkalmaz egy elosztott terhelésű virtuális gép, különös a [címkék szolgáltatás](../virtual-network/security-overview.md#service-tags) és [alapértelmezett biztonsági szabályok](../virtual-network/security-overview.md#default-security-rules). Győződjön meg arról, hogy a virtuális gép állapotának mintavételi kérések fogadhat Azure Load Balancer. 
 
 Ha egy NSG blokkolja az egészségügyi mintavételi kérelmeit a AZURE_LOADBALANCER az alapértelmezett címke, a virtuális gép állapotmintáihoz sikertelen lesz, és a virtuális gép van megjelölve. Terheléselosztó leállítja az új forgalom küldése ezt a virtuális Gépet.
 
@@ -249,5 +249,5 @@ Ha egy NSG blokkolja az egészségügyi mintavételi kérelmeit a AZURE_LOADBALA
 
 - További információ [terheléselosztó](load-balancer-overview.md).
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).
-- További információ [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
+- További információ [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
 - Ismerje meg, azzal kapcsolatban, a másik kulccsal [hálózati lehetőségeket](../networking/networking-overview.md) az Azure-ban.

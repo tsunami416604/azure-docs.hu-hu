@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 74830a5220a75408398af2224204f8195ab27cc6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 12dc5921cc1977b53f0457d89537193eadded188
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok források szakasza
 
@@ -96,7 +96,7 @@ Meghatározhatja az erőforrások az alábbi szerkezettel:
 | sku | Nem | Bizonyos erőforrások értékeket, amelyek meghatározzák a Termékváltozat telepítendő engedélyezése. Például megadhatja a storage-fiókok felügyeletére szolgáló típusú. |
 | típusa | Nem | Bizonyos erőforrások engedélyezése egy érték, amely meghatározza a telepít erőforrás típusát. Megadhatja például, a típus Cosmos-adatbázis létrehozásához. |
 | csomag | Nem | Bizonyos erőforrások értékeket, amelyek meghatározzák a tervezi engedélyezése. Például megadhatja a virtuális gép Piactéri lemezképhez. | 
-| erőforrás |Nem |A múltbeli erőforrástól függő gyermekszintű erőforrása. Csak olyan típusú erőforrások a szülő erőforrás sémája által számukra engedélyezett. A gyermek-erőforrás teljesen minősített típusú tartalmaz szülő erőforrástípusra, például **Microsoft.Web/sites/extensions**. A szülő erőforrás függőség nem utal. Függőséget explicit módon meg kell adni. |
+| erőforrások |Nem |A múltbeli erőforrástól függő gyermekszintű erőforrása. Csak olyan típusú erőforrások a szülő erőforrás sémája által számukra engedélyezett. A gyermek-erőforrás teljesen minősített típusú tartalmaz szülő erőforrástípusra, például **Microsoft.Web/sites/extensions**. A szülő erőforrás függőség nem utal. Függőséget explicit módon meg kell adni. |
 
 ## <a name="resource-specific-values"></a>Erőforrás-specifikus értékeket
 

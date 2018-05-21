@@ -12,20 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 7907056635049ce90a2653b0d58ef6299b77c71e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató felvétele AD FS által védett leválasztott Azure verem környezet
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 > [!IMPORTANT]
-> A 1802 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service üzembe helyezése előtt.
+> A 1804 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service 1.2 telepítése előtt.
 >
 >
 
@@ -80,7 +80,7 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 7. A következő lapon:
     1. Kattintson a **Connect** megjelenítő gombra a **Azure verem előfizetések** mezőbe.
         - Adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Írja be a jelszót, és kattintson a **bejelentkezés**.
-    2. Az a **Azure verem előfizetések** jelölje ki az előfizetését.
+    2. Az a **Azure verem előfizetések** mezőben válassza a **alapértelmezett szolgáltató előfizetés**.
     3. Az a **Azure verem helyek** válassza ki a helyet, amely megfelel a régióban való telepítése esetén. Válassza például **helyi** Ha a központi telepítése az Azure verem szoftverfejlesztői készlet.
     4. Kattintson a **Tovább** gombra.
 
@@ -126,7 +126,7 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
     ![Az App Service-telepítő][11]
 
-12. Adja meg az App Service erőforrás-szolgáltató adatbázisainak üzemeltetésére, és kattintson a server-példány az SQL Server részleteit **következő**. A telepítő ellenőrzi az SQL-kapcsolat tulajdonságai.
+12. Adja meg az App Service erőforrás-szolgáltató adatbázisainak üzemeltetésére, és kattintson a server-példány az SQL Server részleteit **következő**. A telepítő ellenőrzi az SQL-kapcsolat tulajdonságai. Ön **kell** adja meg a belső ip- vagy teljes tartománynevét adja meg az SQL Server neve.
 
 > [!NOTE]
 > A telepítő megpróbálja tesztelése az SQl Server, a folytatás előtt.  Ha úgy dönt, hogy a meglévő virtuális hálózat üzembe, a telepítő nem lehet csatlakozni az SQL Server és megkérdezi, hogy folytatja figyelmeztetést jelenít meg.  Ellenőrizze az SQL Server-adatokat, és továbbra is, ha azok helyességét.
@@ -227,7 +227,7 @@ A harmadik technical preview frissítésétől webes API és Azure létrehozás�
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>(Választható) WordPress, DNN vagy Django webhely telepítése
 
-1. Az Azure-verem bérlői portálon kattintson **+**nyissa meg az Azure piactéren, egy Django-webhely telepítése, és várjon, amíg a művelet sikeresen befejeződött. A Django webes platform jöhet létre fájl rendszer-alapú adatbázist használ. Bármely további erőforrás-szolgáltató SQL vagy MySQL például nem igényel.
+1. Az Azure-verem bérlői portálon kattintson **+** nyissa meg az Azure piactéren, egy Django-webhely telepítése, és várjon, amíg a művelet sikeresen befejeződött. A Django webes platform jöhet létre fájl rendszer-alapú adatbázist használ. Bármely további erőforrás-szolgáltató SQL vagy MySQL például nem igényel.
 
 2. Amennyiben egy MySQL erőforrás-szolgáltató is telepített, telepíthet egy WordPress-webhely a piactérről. Amikor a rendszer kéri az adatbázis-paraméterek, írja be a felhasználónevet, mint a *User1@Server1*, a felhasználó nevét és a kívánt kiszolgáló nevét.
 
