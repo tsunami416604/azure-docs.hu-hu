@@ -102,6 +102,8 @@
       href: tutorial-restrict-web-traffic-powershell.md
     - name: SSL leállítása az Azure PowerShell használatával
       href: tutorial-ssl-powershell.md
+    - name: Tanúsítványok megújítása
+      href: renew-certificates.md
     - name: Több webhely üzemeltetése az Azure PowerShell használatával
       href: tutorial-multiple-sites-powershell.md
     - name: Webes forgalom irányítása az Azure PowerShell használatával

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 422563f6a4e85884f4512d797d666e470835e2d2
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d15c5556325284dd3b0b6f11a080c9abc263286c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions HTTP és a webhook kötések
 
@@ -43,7 +43,7 @@ A HTTP-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Http](http://
 
 A HTTP-eseményindítóval lehetővé teszi a HTTP-kérelem a függvényt. Egy HTTP-eseményindítóval kiszolgáló nélküli API-k létrehozása, és webhookokkal megválaszolásához használhatja. 
 
-Alapértelmezés szerint HTTP-eseményindítóval válaszol egy HTTP 200 OK állapotot kódot és egy üres fő kérésre. A válasz módosításához konfigurálása egy [HTTP kimeneti kötése](#http-output-binding).
+Alapértelmezés szerint HTTP-eseményindítóval HTTP 200 OK visszaadja egy üres szövegtörzzsel funkciókkal 1.x vagy HTTP 204 nem tartalom egy üres szövegtörzzsel funkciókkal 2.x. A válasz módosításához konfigurálása egy [HTTP kimeneti kötése](#http-output-binding).
 
 ## <a name="trigger---example"></a>Eseményindító – példa
 
@@ -56,7 +56,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 ### <a name="trigger---c-example"></a>Eseményindító - C# – példa
 
-A következő példa azt mutatja be egy [C# függvény](functions-dotnet-class-library.md) , amely megkeresi a `name` paraméter, a lekérdezési karakterláncot vagy a HTTP-kérelem törzsét.
+A következő példa azt mutatja be egy [C# függvény](functions-dotnet-class-library.md) , amely megkeresi a `name` paraméter, a lekérdezési karakterláncot vagy a HTTP-kérelem törzsét. Figyelje meg, hogy az eredményül kapott értéket a kimeneti kötés szolgál, de a visszatérési érték attribútum nem szükséges.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -87,15 +87,29 @@ public static async Task<HttpResponseMessage> Run(
 
 A következő példa bemutatja az eseményindító kötés egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A funkció megkeresi a `name` paraméter, a lekérdezési karakterláncot vagy a HTTP-kérelem törzsét.
 
-Itt az kötés adatai a *function.json* fájlt:
+Itt a *function.json* fájlt:
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+    "disabled": false,
+    "bindings": [
+        {
+            "authLevel": "function",
+            "name": "req",
+            "type": "httpTrigger",
+            "direction": "in",
+            "methods": [
+                "get",
+                "post"
+            ]
+        },
+        {
+            "name": "$return",
+            "type": "http",
+            "direction": "out"
+        }
+    ]
+}
 ```
 
 A [konfigurációs](#trigger---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
@@ -147,15 +161,25 @@ public class CustomObject {
 
 A következő példa bemutatja az eseményindító kötés egy *function.json* fájlt és egy [F # függvény](functions-reference-fsharp.md) , amely a kötés használja. A funkció megkeresi a `name` paraméter, a lekérdezési karakterláncot vagy a HTTP-kérelem törzsét.
 
-Itt az kötés adatai a *function.json* fájlt:
+Itt a *function.json* fájlt:
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 A [konfigurációs](#trigger---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
@@ -203,15 +227,25 @@ Kell egy `project.json` fájlt, amely a NuGet való hivatkozáshoz használja a 
 
 A következő példa bemutatja az eseményindító kötés egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A funkció megkeresi a `name` paraméter, a lekérdezési karakterláncot vagy a HTTP-kérelem törzsét.
 
-Itt az kötés adatai a *function.json* fájlt:
+Itt a *function.json* fájlt:
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
 ```
 
 A [konfigurációs](#trigger---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
@@ -224,7 +258,7 @@ module.exports = function(context, req) {
 
     if (req.query.name || (req.body && req.body.name)) {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: "Hello " + (req.query.name || req.body.name)
         };
     }
@@ -263,15 +297,25 @@ public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous,
 
 A következő példa bemutatja a kötés webhook eseményindító egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény GitHub probléma megjegyzések naplózza.
 
-Itt az kötés adatai a *function.json* fájlt:
+Itt a *function.json* fájlt:
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 A [konfigurációs](#trigger---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
@@ -303,15 +347,25 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 A következő példa bemutatja a kötés webhook eseményindító egy *function.json* fájlt és egy [F # függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény GitHub probléma megjegyzések naplózza.
 
-Itt az kötés adatai a *function.json* fájlt:
+Itt a *function.json* fájlt:
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 A [konfigurációs](#trigger---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
@@ -347,11 +401,21 @@ Itt az kötés adatai a *function.json* fájlt:
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 A [konfigurációs](#trigger---configuration) a szakasz ismerteti ezeket a tulajdonságokat.
@@ -386,7 +450,6 @@ Tekintse meg a teljes például [eseményindító - C# példa](#trigger---c-exam
 ## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
 
 Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `HttpTrigger` attribútum.
-
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
@@ -472,13 +535,13 @@ module.exports = function (context, req) {
 
     if (!id) {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: "All " + category + " items were requested."
         };
     }
     else {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: category + " item with id = " + id + " was requested."
         };
     }
@@ -549,35 +612,24 @@ A [host.json](functions-host-json.md) fájl HTTP-eseményindító viselkedését
 
 ## <a name="output"></a>Kimenet
 
-Használja a HTTP kimeneti kötése a HTTP-kérést küldő válaszolni. A kötés egy HTTP-eseményindítóval igényel, és lehetővé teszi a válasz az eseményindító kérelemhez társított testreszabását. Ha HTTP kimeneti kötése van a nem Microsofttól származó, egy HTTP-eseményindítóval egy üres szövegtörzzsel HTTP 200 OK adja vissza. 
+Használja a HTTP kimeneti kötése a HTTP-kérést küldő válaszolni. A kötés egy HTTP-eseményindítóval igényel, és lehetővé teszi a válasz az eseményindító kérelemhez társított testreszabását. Ha HTTP kimeneti kötése van, nem Microsofttól származó, egy HTTP-eseményindítóval adja vissza a HTTP 200 OK, egy üres szövegtörzzsel funkciókkal 1.x vagy HTTP 204 nem tartalom egy üres szövegtörzzsel funkciókkal 2.x.
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
-A C# osztály tárak nincsenek kimeneti-specifikus kötés konfigurációs tulajdonságok. Küldjön egy HTTP-válasz, végezze el a függvény visszatérési típusa `HttpResponseMessage` vagy `Task<HttpResponseMessage>`.
-
-Egyéb nyelvek HTTP kimeneti kötése a JSON-objektumként van definiálva a `bindings` tömbje function.json, a következő példában látható módon:
-
-```json
-{
-    "name": "res",
-    "type": "http",
-    "direction": "out"
-}
-```
-
-Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájlt.
+Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájlt. C# osztály szalagtárak hiba esetén nem attribútum tulajdonságok megegyeznek az ezek *function.json* tulajdonságait. 
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
 | **type** |meg kell `http`. |
 | **direction** | meg kell `out`. |
-|**name** | A változó nevét, a válasz függvény kódban használt. |
+|**name** | A változó nevét, a válasz függvény kódban használt vagy `$return` visszatérési értéket használja. |
 
 ## <a name="output---usage"></a>Kimeneti - használat
 
-A kimeneti paraméter segítségével válaszol a http- vagy webhook hívók számára. A megfelelő nyelvet választ minták is használható. Például a válaszokat, tekintse meg a [eseményindító példa](#trigger---example) és a [webhook példa](#trigger---webhook-example).
+Küldjön egy HTTP-válasz, használja a megfelelő nyelvet választ kombinációját. C# vagy C# a parancsfájlt, hogy a függvény visszatérési típusa `HttpResponseMessage` vagy `Task<HttpResponseMessage>`. A C# a visszatérési érték attribútum nem szükséges.
+
+Például a válaszokat, tekintse meg a [eseményindító példa](#trigger---example) és a [webhook példa](#trigger---webhook-example).
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+[További tudnivalók az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)

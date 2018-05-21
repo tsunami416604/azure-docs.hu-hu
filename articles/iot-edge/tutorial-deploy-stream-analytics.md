@@ -6,14 +6,14 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 05/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5d4c2b3bc55b94b08287a06125e15ac61013834a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics egy IoT peremhálózati modulként telepítése – előzetes
 
@@ -57,7 +57,7 @@ Adja meg az Azure Stream Analytics-feladat kimenetként használható a végpont
 
 1. Az Azure-portálon lépjen **hozzon létre egy erőforrást**, adja meg **tárfiók** a keresési mezőbe, és válassza a **tárfiók - blob, a fájl, a tábla, a várólista**.
 
-2. Az a **storage-fiók létrehozása** panelen adja meg a tárfiók nevét, válassza ki az IoT hub tároló ugyanazon a helyen, és válassza **létrehozása**. Jegyezze fel a későbbi használatra.
+2. Az a **storage-fiók létrehozása** panelen adjon meg egy nevet a tárfiók, ugyanarra a helyre, ahol az IoT hub található, jelölje ki az IoT hub ugyanabban az erőforráscsoportban, majd válassza ki és **létrehozása**. Jegyezze fel a későbbi használatra.
 
     ![Create a storage account][1]
 
@@ -65,7 +65,7 @@ Adja meg az Azure Stream Analytics-feladat kimenetként használható a végpont
 
 4. Hozzon létre egy új tároló az Azure Stream Analytics modul tárolja az adatokat, állítsa be a hozzáférési szint beállítása azokhoz a **tároló**, majd válassza ki **OK**.
 
-    ![tárolási beállítások][10]
+    ![Tárolási beállítások][10]
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
@@ -84,32 +84,25 @@ Adja meg az Azure Stream Analytics-feladat kimenetként használható a végpont
 
 3. Kattintson a **Létrehozás** gombra.
 
-4. A létrehozott feldolgozás alatt **feladat topológia**, jelölje be **bemenetek**, majd válassza ki **hozzáadása**.
-
-5. Az a **új bemeneti** ablaktáblán tegye a következőket:
-
-    a. Az a **bemeneti alias** adja meg a **hőmérséklet**.
-    
-    b. Az a **forrástípus** mezőben válassza **adatfolyam**.
-    
-    c. A többi mezőben az alapértelmezett értékeket használja.
+4. A létrehozott feldolgozás alatt **feladat topológia**, nyissa meg **bemenetek**.
 
    ![Az Azure Stream Analytics bemeneti](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-6. Kattintson a **Létrehozás** gombra.
+5. Válassza ki **adatfolyam-bemenet hozzáadása**, majd jelölje be **peremhálózati Hub**.
 
-7. A **feladat topológia**, jelölje be **kimenetek**, majd válassza ki **Hozzáadás**.
+5. Az a **új bemeneti** panelen adja meg **hőmérséklet** a bemeneti aliasként. 
 
-8. Az a **új kimeneti** ablaktáblán tegye a következőket:
+6. Kattintson a **Mentés** gombra.
 
-    a. Az a **kimeneti alias** mezőbe írja be **riasztás**.
-    
-    b. A többi mezőben az alapértelmezett értékeket használja. 
-    
-    c. Kattintson a **Létrehozás** gombra.
+7. A **feladat topológia**, nyissa meg **kimenetek**.
 
    ![Az Azure Stream Analytics-kimenet](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
+8. Válassza ki **Hozzáadás**, majd jelölje be **peremhálózati Hub**.
+
+8. Az a **új kimeneti** panelen adjon meg **riasztás** a kimeneti aliasként. 
+
+9. Kattintson a **Létrehozás** gombra.
 
 9. A **feladat topológia**, jelölje be **lekérdezés**, majd cserélje le az alapértelmezett szövege a következő lekérdezést:
 
@@ -135,7 +128,7 @@ Most már készen áll az Azure Stream Analytics-feladat az IoT-peremhálózati 
 2. Válassza a **Set modules** (Modulok beállítása) lehetőséget.  
     Ha korábban telepítette a tempSensor modul ezen az eszközön, akkor előfordulhat, hogy adatokkal való automatikus feltöltés. Ha nem, a modul hozzá a következő módon:
 
-   a. Válassza ki **IoT peremhálózati modul hozzá lesz adva**.
+   a. Válassza az **IoT Edge-modul hozzáadása** lehetőséget.
 
    b. A név mezőbe írja be **tempSensor**.
     

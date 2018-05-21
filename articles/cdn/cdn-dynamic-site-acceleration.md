@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 66032a68634be5b52bbfa544d0a3bcd3d1090652
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dinamikus gyorsítás Azure CDN használatával
 
 A közösségi média, elektronikus kereskedelmi és a hyper-személyre szabott webes felbontására a végfelhasználók számára szolgáltatott tartalom gyorsan növekszik százalékaként valós idejű jönnek létre. A felhasználók a gyors, megbízható és személyre szabott webes élményt, a böngésző, helyről, eszközről vagy hálózati független várnak el. Azonban a nagyon innovációinak, amelyek a feladatait, amelyek révén is lap letöltések lassú, és a felhasználói élmény minőségének veszélynek. 
 
-Standard tartalomkézbesítési hálózat (CDN) funkció lehetővé teszi a gyorsítótárban levő fájlok közelebb a végfelhasználók számára a statikus fájlok kézbesítését felgyorsítása érdekében. Azonban a dinamikus webes alkalmazásokhoz, a gyorsítótár helye tartalmat nem lehet a kiszolgáló a tartalom felhasználói viselkedés válaszul állít elő, mert. A tartalom kézbesítésével felgyorsítása bonyolultabb, mint a hagyományos peremhálózati gyorsítótár, és egy végpont megoldás, amely a beállítás a minden elem mellett a teljes elérési útja kezdetektől továbbításához igényel. Azure CDN dinamikus acceleration (DSA) optimalizálásával a dinamikus tartalmat a weblapok kimutathatóan javul a teljesítmény.
+Standard tartalomkézbesítési hálózat (CDN) funkció lehetővé teszi a gyorsítótárban levő fájlok közelebb a végfelhasználók számára a statikus fájlok kézbesítését felgyorsítása érdekében. Azonban a dinamikus webes alkalmazásokhoz, a gyorsítótár helye tartalmat nem lehet a kiszolgáló a tartalom felhasználói viselkedés válaszul állít elő, mert. A tartalom kézbesítésével felgyorsítása bonyolultabb, mint a hagyományos peremhálózati gyorsítótár, és egy végpont megoldás, amely a beállítás a minden elem mellett a teljes elérési útja kezdetektől továbbításához igényel. Azure CDN dinamikus acceleration (DSA) optimalizálásával a webes korú dinamikus tartalmú kimutathatóan javul a teljesítmény.
 
 **Akamai Azure CDN** és **Azure CDN Verizon** DSA optimalizálási keresztül nyújtanak a **optimalizálva** menü végpont létrehozása során.
 
@@ -33,7 +33,7 @@ Standard tartalomkézbesítési hálózat (CDN) funkció lehetővé teszi a gyor
 >   
 > A **Azure CDN Verizon** profilok, után nem módosíthatja a optimalizálása a CDN-végpont lett létrehozva.
 
-## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>CDN-végpont annak érdekében, a dinamikus fájlok kézbesítési konfigurálása
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>Annak érdekében, a dinamikus fájlok kézbesítési CDN végpont-konfiguráció
 
 A CDN-végpontok optimalizálja a dinamikus fájlok kézbesítését konfigurálásához használhatja az Azure-portálon, a REST API-k, vagy az ügyfél SDK-k szoftveres ehhez az ugyanaz. 
 

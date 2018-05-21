@@ -5,32 +5,31 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 5aa00123-5b87-45e0-a671-4165e66bfbc6
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 05/14/2018
 ms.author: mabrigg
-ms.openlocfilehash: 279722cc53889cb0a261fcffde0c7e0f86be6dc5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.reviewer: efemmano
+ms.openlocfilehash: 2ebafc4249f8455bdbe45a07a5bf88aa8984d67a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>A verem Azure portál használatával
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Az Azure-verem services vásárlói nyilvános ajánlatok előfizetni a verem Azure portál használatával, és használhatják a szolgáltatásokat, amelyek ezekről az ajánlatokról biztosítanak. Már használta az Azure-portálon előtt, ha már ismeri a felhasználói felületen.
+Nyilvános ajánlatok előfizetni a verem Azure portál használatával, és használhatják a szolgáltatásokat, amelyek ezekről az ajánlatokról biztosítanak. Ha már használta a globális Azure portálra, már ismeri a hely működése.
 
 ## <a name="access-the-portal"></a>A portál eléréséhez
 
 Az Azure-verem operátor (a szolgáltató vagy a rendszergazda a szervezet), értesíti, hogy a helyes URL-címet a portál eléréséhez.
 
-- Egy integrált rendszer, az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
+- Egy integrált rendszer, az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és formátumban lesz https://portal.&lt; *a régióban*&gt;.&lt; *FQDN*&gt;.
 - Az Azure verem szoftverfejlesztői készlet használata, a portál címe https://portal.local.azurestack.external.
 
 ![Képernyőfelvétel az Azure-verem felhasználói portál](media/azure-stack-use-portal/UserPortal.png)
@@ -60,13 +59,13 @@ Ha módosítania kell az elérhető szolgáltatások használatára vonatkozó �
     Különösen javasoljuk, hogy tekintse át a kezdéshez a következő cikkeket:
 
     - [Kulcs szempontok: szolgáltatásokkal vagy az alkalmazások Azure verem](azure-stack-considerations.md)
-    - A dokumentáció "Használata a szolgáltatások" területen van egy "szempontok" a cikk az egyes szolgáltatásokhoz. A "szempontok" lapot a szolgáltatás, az Azure-ban, és ugyanazt a szolgáltatást Azure-készletben kínált közötti különbségeket mutatja. Egy vonatkozó példáért lásd: [VM szempontok](azure-stack-vm-considerations.md). Előfordulhat, hogy a "Szolgáltatások használata" szakaszban, amely egyedi Azure verem más információ.
+    - Az a **szolgáltatásokkal** szakasz dokumentáció, nincs szempontokat egy cikk a minden egyes szolgáltatás. A szempontok lapra a szolgáltatás, az Azure-ban, és ugyanazt a szolgáltatást Azure-készletben kínált közötti különbségeket ismerteti. Egy vonatkozó példáért lásd: [VM szempontok](azure-stack-vm-considerations.md). Egyéb információk lehetnek a **szolgáltatásokkal** Azure verem egyedi szakasz.
      
       Használhatja az Azure dokumentációja általános hivatkozásként egy szolgáltatáshoz, de ezek a különbségek tisztában kell lennie. Megérteni, hogy a dokumentáció a hivatkozásokat tartalmaz a **gyors üzembe helyezési oktatóanyag** csempe az Azure dokumentációja mutasson.
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Ha további segítségre segítségért forduljon a szervezet vagy szolgáltatás szolgáltatónál.
+Ha támogatásra van szüksége, ha a szervezet vagy a service provider kérjen segítséget.
 
 Az Azure verem szoftverfejlesztői készlet használata a [Azure verem fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) támogatási csak forrása.
 

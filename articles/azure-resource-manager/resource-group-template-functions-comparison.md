@@ -1,31 +1,31 @@
 ---
-title: "Az Azure Resource Manager sablonfüggvényei - összehasonlítása |} Microsoft Docs"
-description: "Az értékek összehasonlítása az Azure Resource Manager sablon használatával funkcióit ismerteti."
+title: Az Azure Resource Manager sablonfüggvényei - összehasonlítása |} Microsoft Docs
+description: Az értékek összehasonlítása az Azure Resource Manager sablon használatával funkcióit ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3291d545bc7a66ffa9b4845acd890a714cf84ef8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 364a271d84f9abfe99c7c674a6c504ce94318ac9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz összehasonlítás funkciók
 
 Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlításához.
 
 * [egyenlő](#equals)
-* [nagyobb](#greater)
+* [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [kevesebb](#less)
 * [lessOrEquals](#lessorequals)
@@ -132,7 +132,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | logikai érték | True (Igaz) |
 | checkStrings | logikai érték | True (Igaz) |
@@ -170,7 +170,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában a kimenete a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkNotEquals | logikai érték | True (Igaz) |
 
@@ -245,7 +245,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | logikai érték | False (Hamis) |
 | checkStrings | logikai érték | True (Igaz) |
@@ -321,7 +321,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | logikai érték | False (Hamis) |
 | checkStrings | logikai érték | True (Igaz) |
@@ -397,7 +397,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | logikai érték | True (Igaz) |
 | checkStrings | logikai érték | False (Hamis) |
@@ -473,7 +473,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | logikai érték | True (Igaz) |
 | checkStrings | logikai érték | False (Hamis) |
@@ -490,7 +490,7 @@ A példa sablon PowerShell használatával történő üzembe helyezéséhez has
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
 * Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).

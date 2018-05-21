@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: debfff03ea9a4de4fb2cd69779d58709a6a3a34f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34248d75c190aa4636c39f087d399d946b589d58
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása #
 
@@ -67,7 +67,7 @@ Egy ASE létrehozása, az App Service-csomag létrehozása során:
 
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot. Az erőforráscsoportok egységként kezelheti a kapcsolódó Azure-erőforrások. Erőforráscsoportok is hasznosak, ha az alkalmazások szerepköralapú hozzáférés-vezérlés szabályok létrehozása. További információkért lásd: a [Azure Resource Manager áttekintése][ARMOverview].
 
-4. Válassza ki az operációs rendszer. 
+4. Válassza ki az operációs rendszert. 
 
     * Egy új, előzetes verziójú funkciók üzemeltető egy Linux app Service-környezetben, így javasoljuk, hogy nem kell hozzáadni Linux alkalmazások be egy ASE termelési számítási feladatokhoz folyamatban. 
     * A Linux-alkalmazás hozzáadása egy ASE be azt jelenti, hogy a ASE is csak előzetes módban működik. 
@@ -170,7 +170,7 @@ Ha létrehoz egy ASE önálló, lejárt, semmi nem azt. Egy üres ASE továbbra 
 
 5. Válassza ki a virtuális hálózat és a helyet. Hozzon létre új virtuális hálózatot, vagy válasszon egy meglévő virtuális hálózatot: 
 
-    * Ha új virtuális hálózatot választja, megadhatja a nevét és helyét. Ha azt tervezi, a ASE a Linux-alkalmazások futtatására, csak a 6 régiók pillanatnyilag támogatottak: **USA nyugati régiója, USA keleti régiója, Nyugat-Európában, Észak-Európa, Kelet-Ausztrália, Délkelet-Ázsia.** 
+    * Új virtuális hálózat kiválasztása esetén új nevet és helyet adhat meg. Ha Linux-alkalmazások üzemeltetését tervezi ezen az ASE-n, jelenleg csak ez a 6 régió támogatott: **USA nyugati régiója, USA keleti régiója, Nyugat-Európa, Észak-Európa, Kelet-Ausztrália, Délkelet-Ázsia.** 
     
     * Az új VNet rendelkezik, a cím tartomány 192.168.250.0/23 és alapértelmezett nevű alhálózat. Az alhálózat 192.168.250.0/24 típusúként van definiálva. Egy erőforrás-kezelő virtuális hálózat jelölhet ki. A **VIP típus** kijelölés határozza meg, ha a ASE közvetlenül elérhető az internetről (külső), vagy ha egy ILB használ. A beállításokkal kapcsolatos további információkért lásd: [létrehozása és használata az App Service-környezet belső terheléselosztót][MakeILBASE]. 
 
@@ -207,7 +207,7 @@ ASEv1 kapcsolatos további információkért lásd: [az App Service Environment-
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../app-service-web-overview.md

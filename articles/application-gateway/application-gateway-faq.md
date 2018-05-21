@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d5861df9dbfe554f966d19a8e3ed77b55f1f2cd2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Alkalmazásátjáró gyakori kérdések
 
@@ -155,7 +155,7 @@ Ebben a forgatókönyvben végezhető Alkalmazásátjáró alhálózaton NSG-ket
 
 * Bejövő kérelmek forrásokból származó 65503-65534 portok engedélyezése [háttér állapotfigyelő kommunikációja](application-gateway-diagnostics.md).
 
-* Bejövő Azure Load Balancer mintavételt (AzureLoadBalancer címke) és a bejövő virtuális hálózati forgalmat (VirtualNetwork címke) engedélyezése a [NSG](../virtual-network/virtual-networks-nsg.md).
+* Bejövő Azure Load Balancer mintavételt (AzureLoadBalancer címke) és a bejövő virtuális hálózati forgalmat (VirtualNetwork címke) engedélyezése a [NSG](../virtual-network/security-overview.md).
 
 * Megtagadási minden egyéb bejövő forgalom blokkolása minden szabály.
 
@@ -188,7 +188,7 @@ Igen. Beállíthatja, hogy a kapcsolat megszakítása nélkül háttérkészletb
 
 Igen, Azure példányok elosztása frissítés és a tartalék tartományok győződjön meg arról, hogy minden példány nem egy időben. Alkalmazásátjáró támogatja, több példányát ugyanahhoz az átjáróhoz a terhelés hozzáadásával méretezés.
 
-## <a name="ssl-configuration"></a>SSL-beállítása
+## <a name="ssl-configuration"></a>SSL konfigurálása
 
 **Q. Milyen tanúsítványok Alkalmazásátjáró támogatottak?**
 

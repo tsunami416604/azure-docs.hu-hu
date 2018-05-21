@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: cb005549fcd9a5850c990d8ef8acb724443f9908
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3df32c39152c8dda24fd5d0796f8074af8ce8a1a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure virtuális hálózat használatával Azure HDInsight kiterjesztése
 
@@ -93,7 +93,7 @@ Ebben a szakaszban a lépések segítségével egy új HDInsight hozzáadása eg
         További információkért lásd: a [hibaelhárítása a hálózati biztonsági csoportok](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) dokumentum.
 
         > [!IMPORTANT]
-        > Hálózati biztonsági csoportszabályok szabály prioritási sorrendben alkalmazza. Az első szabály, amely a forgalom bizonyos mintázatnak megfelelő vonatkozik, és nincs más erre a forgalomra alkalmazza. Szabályok a leghatékonyabb a legkevésbé megengedő. További információkért lásd: a [hálózati forgalmat hálózati biztonsági csoportokkal](../virtual-network/virtual-networks-nsg.md) dokumentum.
+        > Hálózati biztonsági csoportszabályok szabály prioritási sorrendben alkalmazza. Az első szabály, amely a forgalom bizonyos mintázatnak megfelelő vonatkozik, és nincs más erre a forgalomra alkalmazza. Szabályok a leghatékonyabb a legkevésbé megengedő. További információkért lásd: a [hálózati forgalmat hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) dokumentum.
 
     * Felhasználó által megadott útvonalak
 
@@ -214,7 +214,7 @@ Ambari és más weblapok a virtuális hálózaton keresztül csatlakozhat, tegye
 
 Egy Azure virtuális hálózatot a hálózati forgalmat a következő módszerekkel is vezérelhető:
 
-* **Hálózati biztonsági csoportok** (NSG) lehetővé teszi a bejövő és kimenő forgalmat a hálózathoz. További információkért lásd: a [hálózati forgalmat hálózati biztonsági csoportokkal](../virtual-network/virtual-networks-nsg.md) dokumentum.
+* **Hálózati biztonsági csoportok** (NSG) lehetővé teszi a bejövő és kimenő forgalmat a hálózathoz. További információkért lásd: a [hálózati forgalmat hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) dokumentum.
 
     > [!WARNING]
     > A HDInsight nem támogatja a kimenő forgalom korlátozása.
@@ -242,7 +242,7 @@ Ha a kíván használni **hálózati biztonsági csoportok** vagy **felhasznál�
 
 Hálózati biztonsági csoport vagy felhasználó által definiált útvonalak további információkért lásd az alábbi dokumentáció:
 
-* [Hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md)
+* [Hálózati biztonsági csoport](../virtual-network/security-overview.md)
 
 * [Felhasználó által definiált útvonalak](../virtual-network/virtual-networks-udr-overview.md)
 
@@ -666,6 +666,6 @@ Ezek a lépések végrehajtását követően csatlakozhat a teljes tartománynev
 * A HBase georeplikáció konfigurálása, lásd: [HBase fürt replikálása az Azure virtuális hálózat beállítása](hbase/apache-hbase-replication.md).
 * Azure virtuális hálózataihoz további információkért tekintse meg a [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
 
-* Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
+* Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
 
 * A felhasználó által definiált útvonalak további információkért lásd: [felhasználó által definiált útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md).

@@ -9,26 +9,23 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 12/28/2017
 ms.author: eugenesh
-ms.openlocfilehash: dfb1bd48a47e45363e8761a3d79901e5171b37d1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: bf65ab7858ba792418e325e7a025ee1bd88bbb27
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Az Azure Search-indexelőt, blob CSV blobok indexelő
-Alapértelmezés szerint [blob Azure Search-indexelőt](search-howto-indexing-azure-blob-storage.md) elemez szöveg blobok szöveg egyetlen adattömb jelölik. Azonban a CSV-adatokat tartalmazó BLOB, gyakran szeretné kezelni a blob, különálló dokumentumként soronként. Például adja a következő tagolt szöveget: 
+Alapértelmezés szerint [blob Azure Search-indexelőt](search-howto-indexing-azure-blob-storage.md) elemez szöveg blobok szöveg egyetlen adattömb jelölik. Azonban a CSV-adatokat tartalmazó BLOB, gyakran szeretné kezelni a blob, különálló dokumentumként soronként. Például a következő tagolt szöveges megadott, érdemes elemzéséhez be két dokumentumot, minden egyes "id", "datePublished" és "címkék" mezőket tartalmazó: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-érdemes elemezni a 2-dokumentumok esetében az egyes "id", "datePublished" és "címkék" mezőket tartalmazó.
-
-Ebben a cikkben megismerheti, hogyan elemzése az Azure Search blob indexelő CSV blobok lesz. 
+Ebből a cikkből megismerheti, hogyan elemzése az Azure Search blob indexelő CSV blobok lesz. 
 
 > [!IMPORTANT]
-> Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el. Csak a REST API verziójával érhető el **2015-02-28-előzetes**. Adjon ne feledje, az előzetes API-k tesztelésében és értékelésében készült, és nem használható üzemi környezetben. 
-> 
+> Ez a funkció jelenleg nyilvános előzetes verziójában, és nem használható üzemi környezetben. További információkért lásd: [REST api-version = 2017-11-11-Előnézet](search-api-2017-11-11-preview.md). 
 > 
 
 ## <a name="setting-up-csv-indexing"></a>Fürt megosztott kötetei szolgáltatás indexelő beállítása
@@ -52,10 +49,10 @@ Az elválasztó karakter használatával testre szabhatja a `delimitedTextDelimi
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> Jelenleg csak az UTF-8 kódolást használata támogatott. Ha segítségre más kódolás, tudassa velünk, a [a UserVoice webhelyén](https://feedback.azure.com/forums/263029-azure-search).
+> Jelenleg csak az UTF-8 kódolást használata támogatott. Ha segítségre más kódolás, szavazhatnak az [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 > [!IMPORTANT]
-> A tagolt szövegfájl elemzése mód használata esetén Azure Search azt feltételezi, hogy az adatforrás összes BLOB lesz-e a fürt megosztott kötetei szolgáltatás. Ha támogatja a megosztott Fürtkötet, valamint nem CSV-blobok vegyesen ugyanarra az adatforrásra van szüksége, tudassa velünk, a [a UserVoice webhelyén](https://feedback.azure.com/forums/263029-azure-search).
+> A tagolt szövegfájl elemzése mód használata esetén Azure Search azt feltételezi, hogy az adatforrás összes BLOB lesz-e a fürt megosztott kötetei szolgáltatás. Ha támogatja a megosztott Fürtkötet, valamint nem CSV-blobok vegyesen ugyanarra az adatforrásra van szüksége, adjon szavazhatnak az [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 > 
 > 
 
@@ -64,7 +61,7 @@ Ez minden üzembe együtt, az alábbiakban a teljes adattartalmat példák.
 
 Adatforrás: 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -77,7 +74,7 @@ Adatforrás:
 
 Az indexelő:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -89,5 +86,5 @@ Az indexelő:
     }
 
 ## <a name="help-us-make-azure-search-better"></a>Segítsen az Azure Search továbbfejlesztésében
-Ha a szolgáltatás-kérelmek vagy ötleteket javításai, lépjen kapcsolatba velünk a a [UserVoice webhelyén](https://feedback.azure.com/forums/263029-azure-search/).
+Ha a szolgáltatás-kérelmek vagy ötleteket javításai, információk megadása a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
 

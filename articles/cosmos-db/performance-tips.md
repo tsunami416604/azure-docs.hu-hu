@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 51674f80e918f28febf0e854caa72c0da43c589c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 767d08c7a148db3e8a6d8b53bd88b154139d981d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 > [!div class="op_single_selector"]
 > * [Aszinkron Java](performance-tips-async-java.md)
@@ -41,9 +41,13 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
     Hogyan ügyfél csatlakozik-e Azure Cosmos DB rendelkezik fontos gyakorolt hatása a teljesítményre, különös tekintettel az megfigyelt ügyféloldali késés. Nincsenek elérhető az ügyfél kapcsolatkezelési házirendet – a kapcsolat konfigurálása két fő konfigurációs beállítások *mód* és a [kapcsolat *protokoll*](#connection-protocol).  A két rendelkezésre álló módok a következők:
 
    1. Átjáró mód (alapértelmezés)
+      
+      Átjáró mód minden SDK-platformon támogatott, és a beállított alapértelmezett. Ha az alkalmazás fut a vállalati hálózatról szigorú tűzfal korlátozások, az átjáró mód azért, mert a szabványos HTTPS-port és egy végpontot használ a legjobb választás. A teljesítmény kompromisszumot azonban, hogy az átjáró mód érint egy további hálózati ugrások minden alkalommal, amikor adatait olvasni vagy írni az Azure Cosmos DB. Emiatt a közvetlen üzemmódban miatt kevesebb hálózati ugrásokat jobb teljesítményt nyújt.
+
    2. Közvetlen mód
 
-      Átjáró mód minden SDK-platformon támogatott, és a beállított alapértelmezett.  Ha az alkalmazás fut a vállalati hálózatról szigorú tűzfal korlátozások, az átjáró mód azért, mert a szabványos HTTPS-port és egy végpontot használ a legjobb választás. A teljesítmény kompromisszumot azonban, hogy az átjáró mód érint egy további hálózati ugrások minden alkalommal, amikor adatait olvasni vagy írni az Azure Cosmos DB. Emiatt a közvetlen üzemmódban miatt kevesebb hálózati ugrásokat jobb teljesítményt nyújt.
+     Közvetlen mód TCP- és a HTTPS protokollokon keresztül kapcsolatot támogat. Jelenleg közvetlen használata támogatott a .NET-szabvány 2.0 csak a Windows platform.
+      
 <a id="use-tcp"></a>
 2. **Kapcsolat házirend: a TCP protokoll**
 

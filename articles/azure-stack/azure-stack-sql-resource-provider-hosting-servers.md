@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/18/2018
 ms.author: jeffgilb
-ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e08c0bfd3cbed64f5042e469801e20c913c2f70e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató az üzemeltetési kiszolgáló hozzáadása
 A virtuális gépeken belül az SQL Server-példányok is használhatja a [Azure verem](azure-stack-poc.md), vagy kívül az Azure verem környezet, az erőforrás-szolgáltató példánya tud hozzá csatlakozni. Az általános követelmények a következők:
@@ -96,25 +96,21 @@ SQL Always On példányok konfigurálásához további lépéseket igényel, és
 > [!NOTE]
 > Az SQL-adapter RP _csak_ támogatja az SQL 2016 SP1 Enterprise vagy újabb példány a mindig bekapcsolva, mivel az új SQL-szolgáltatások például az automatikus összehangolása. A fenti gyakori jegyzékét követelmények:
 
-* Meg kell adnia egy fájlkiszolgálón, az SQL mindig a számítógépek mellett. Van egy [Azure verem gyorsindítási sablonon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-ha) meg ebben a környezetben, amely hozhat létre. Azt is működhetnek való összeállítása a saját példányát.
+Pontosabban engedélyeznie kell az [automatikus összehangolása](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) minden egyes rendelkezésre állási csoporton minden SQL Server-példány:
 
-* Be kell állítania az SQL Server-kiszolgálók. Pontosabban engedélyeznie kell az [automatikus összehangolása](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) minden egyes példányaihoz tartozó SQL Server rendelkezésre állási csoporton.
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>]
+      MODIFY REPLICA ON 'InstanceName'
+      WITH (SEEDING_MODE = AUTOMATIC)
+  GO
+  ```
 
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>]
-    MODIFY REPLICA ON 'InstanceName'
-    WITH (SEEDING_MODE = AUTOMATIC)
-GO
-```
+Másodlagos példányokra ezen az SQL-parancsok használatával:
 
-Másodlagos példányokra
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
-GO
-
-```
-
-
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
 
 SQL Always On üzemeltetési kiszolgáló hozzáadásához kövesse az alábbi lépéseket:
 
@@ -124,14 +120,16 @@ SQL Always On üzemeltetési kiszolgáló hozzáadásához kövesse az alábbi l
 
     A **SQL üzemeltető kiszolgálók** panel, amelyen keresztül csatlakozhat az SQL Server erőforrás-szolgáltató, amely az erőforrás-szolgáltató háttér módon ellenőrizhető, hogy az SQL Server tényleges példányait.
 
-
-3. Az űrlap kitöltése a kapcsolódási adatait. az SQL Server-példány, figyeljen arra, hogy mindig figyelő (és nem kötelező portszám) teljes Tartománynevét vagy IPv4-cím használata. Adja meg a fiók rendszergazdai jogosultságokkal konfigurálta a fiók adatait.
+3. Az űrlap kitöltése a kapcsolódási adatait. az SQL Server-példány, figyeljen arra, hogy a teljes Tartománynevét a címe mindig figyelő (választható portszám) használja. Adja meg a fiók rendszergazdai jogosultságokkal konfigurálta a fiók adatait.
 
 4. SQL Always On rendelkezésre állási csoportnak példányok támogatásának engedélyezése jelölőnégyzet.
 
     ![Üzemeltetési kiszolgáló](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-5. Adja hozzá az SQL Always On példány egy másikra. Önálló kiszolgálók nem keverhetők az Always On osztályt a azonos Termékváltozat. Amely az első üzemeltető kiszolgálót hozzáadásakor határozza meg. Ezt követően kombinálhat típusokhoz próbál hibát eredményez.
+5. Adja hozzá az SQL Always On példány egy másikra. 
+
+> [!IMPORTANT]
+> Önálló kiszolgálók nem keverhetők az Always On osztályt a azonos Termékváltozat. Kísérlet történt kombinálhatók típusok hozzáadása az első üzemeltetési kiszolgáló eredmények a hiba után.
 
 
 ## <a name="making-sql-databases-available-to-users"></a>SQL-adatbázisok elérhetővé tétele a felhasználók számára
