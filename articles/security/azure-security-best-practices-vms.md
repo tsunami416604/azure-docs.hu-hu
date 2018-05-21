@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e0c823982bb799e324dc6fb0fb811fd9ace37878
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Ajánlott eljárások az Azure virtuális gép biztonsági
 
@@ -68,7 +68,7 @@ Ha a virtuális gép magas rendelkezésre állású rendelkeznie kell kritikus a
 
 [Az Azure terheléselosztó](../load-balancer/load-balancer-overview.md) is szükséges, hogy elosztott terhelésű virtuális gépek ugyanabban a rendelkezésre állási csoportba tartozik. Ha az interneten érhető el a virtuális gépeken, konfigurálnia kell egy [internetre terheléselosztó](../load-balancer/load-balancer-internet-overview.md).
 
-Amikor a virtuális gépek az interneten vannak kitéve, fontos, hogy [hálózati biztonsági csoportokkal (NSG-k) a hálózati adatforgalom szabályozásához](../virtual-network/virtual-networks-nsg.md). NSG-ket alhálózatokra alkalmazható, mert minimalizálhatja az NSG-k száma alhálózat szerint csoportosítja az erőforrásokat, és az alhálózatok majd alkalmazza az NSG-k. A szándéka az, hogy a hálózati elkülönítés, amely el megfelelően konfigurálása réteg létrehozása a [hálózati biztonság](../best-practices-network-security.md) képességek az Azure-ban.
+Amikor a virtuális gépek az interneten vannak kitéve, fontos, hogy [hálózati biztonsági csoportokkal (NSG-k) a hálózati adatforgalom szabályozásához](../virtual-network/security-overview.md). NSG-ket alhálózatokra alkalmazható, mert minimalizálhatja az NSG-k száma alhálózat szerint csoportosítja az erőforrásokat, és az alhálózatok majd alkalmazza az NSG-k. A szándéka az, hogy a hálózati elkülönítés, amely el megfelelően konfigurálása réteg létrehozása a [hálózati biztonság](../best-practices-network-security.md) képességek az Azure-ban.
 
 Is használhatja a just-in-time (JIT) VM-hozzáférési szolgáltatást az Azure Security Center annak vezérléséhez, aki hozzáférhet távoli egy adott virtuális géphez, és mennyi ideig.
 
@@ -124,6 +124,6 @@ Erőforrás visszaélések problémát okozhat, ha a virtuális gép folyamat t�
 
 Elemzésével [Azure diagnosztikai naplófájlok](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/), figyelheti a Virtuálisgép-erőforrások, és, mely veszélyeztetheti a teljesítmény és rendelkezésre állás lehetséges problémák azonosítása. Az Azure Diagnostics bővítmény figyelése és diagnosztikai képességeket biztosít a Windows-alapú virtuális gépeken. Ezek a képességek a kiterjesztéssel együtt részeként engedélyezheti a [Azure Resource Manager sablon](../virtual-machines/windows/extensions-diagnostics-template.md).
 
-Is [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview-metrics.md) címinfrastruktúra megjelenítési lehetőségeinek az erőforrás állapotát.
+Is [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview-metrics.md) címinfrastruktúra megjelenítési lehetőségeinek az erőforrások állapotát.
 
 A szervezeteknek, amelyek nem a virtuális gép teljesítményének figyelése nem határozható meg, hogy bizonyos teljesítmény változására-e a normál és rendellenes. A virtuális gép nem használ-e további erőforrások, mint a normál, ha egy ilyen anomáliadetektálási oka lehet egy potenciális támadási egy külső erőforrás vagy sérült biztonságú a virtuális gép futó folyamat.
