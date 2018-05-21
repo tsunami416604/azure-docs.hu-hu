@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/16/2018
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1d8c1dee087abdc13ff1b1a0a9595d1e5b29d9f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62941b3654204533d982b11f56b6ca08d591a72f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-t Azure Cosmos DB Java SDK: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -54,6 +54,22 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Az aszinkron támogatás
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
+* Egyedi Index támogatása.
+* Támogatása az adatcsatorna-beállítások folytatási jogkivonat mérete korlátozza.
+* Egy hiba kijavítva a Json-szerializálás (időbélyeg).
+* A hiba kijavítva a Json-szerializálás (enum).
+* Frissítve az 2.9.5 com.fasterxml.jackson.core:jackson databind függ.
+
+### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
+* Továbbfejlesztett kapcsolatkészlet közvetlen mód.
+* Az orderby közötti partíciólekérdezés előzetes betöltési fokozása javult.
+* Továbbfejlesztett UUID létrehozása.
+* Továbbfejlesztett munkamenet-konzisztencia logikát.
+* Multipolygon támogatása.
+* Partíciós kulcs tartomány statisztika gyűjtemény támogatása.
+* Programhiba rögzített több területi támogatására.
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * A Json-szerializálást javítja a teljesítményt.
@@ -184,6 +200,8 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.16.1](#1.16.1) |2018. május 16. |--- |
+| [1.16.0](#1.16.0) |2018. március 15. |--- |
 | [1.15.0](#1.15.0) |2017. november 14. |--- |
 | [1.14.0](#1.14.0) |2017. Oct 28. |--- |
 | [1.13.0](#1.13.0) |2017. augusztus 25. |--- |

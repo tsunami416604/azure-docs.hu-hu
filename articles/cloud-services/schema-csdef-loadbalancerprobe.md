@@ -1,23 +1,23 @@
 ---
-title: "Azure Cloud Services alapértelmezett LoadBalancerProbe séma |} Microsoft Docs"
-ms.custom: 
+title: Azure Cloud Services alapértelmezett LoadBalancerProbe séma |} Microsoft Docs
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
-caps.latest.revision: "14"
+caps.latest.revision: 14
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 31c974c5a4b9dc9cff882ff42b73ee023fc4ad9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cd56c9b04fc4657cedf845e7f111005a8dee183
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services – Definition LoadBalancerProbe séma
 A terheléselosztói mintavétel egy ügyfél meghatározott állapotmintáihoz UDP végpontok és a szerepkörpéldányok végpontok. A `LoadBalancerProbe` van nem egy önálló elem; a webes vagy feldolgozói szerepkör a szolgáltatásdefiníciós fájlban van kombinálva. A `LoadBalancerProbe` egynél több szerepkör is használható.
@@ -50,19 +50,19 @@ A `LoadBalancerProbes` eleme a szolgáltatásdefiníciós fájlban a következő
 - [LoadBalancerProbes elem](#LoadBalancerProbes)
 - [LoadBalancerProbe elem](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a>LoadBalancerProbes elem
+##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes elem
 A `LoadBalancerProbes` elem írja le a load balancer mintavételt gyűjteménye. Az elem azon a [LoadBalancerProbe elem](#LoadBalancerProbe). 
 
-##  <a name="LoadBalancerProbe"></a>LoadBalancerProbe elem
+##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe elem
 A `LoadBalancerProbe` elem definiálja a modell állapotmintáihoz. Több load balancer mintavételt adhat meg. 
 
 A következő táblázat ismerteti az attribútumai a `LoadBalancerProbe` elem:
 
 |Attribútum|Típus|Leírás|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | Kötelező. A terheléselosztói mintavétel neve. A nevének egyedinek kell lennie.|
+| `name`              | `string` | Kötelező. A terheléselosztói mintavétel neve. A névnek egyedinek kell lennie.|
 | `protocol`          | `string` | Kötelező. A végpont protokollt adja meg. A lehetséges értékek: `http` és `tcp`. Ha `tcp` van megadva, a fogadott nyugtát KAPNI szükség ahhoz, hogy sikeresen mintavétel. Ha `http` van megadva, a megadott URI azonosító 200 OK válaszára szükség ahhoz, hogy sikeresen mintavétel.|
-| `path`              | `string` | Az URI-állapot kér a virtuális gép használja. `path`szükség, ha `protocol` értéke `http`. Ellenkező esetben nem engedélyezett.<br /><br /> Nincs alapértelmezett értéke.|
+| `path`              | `string` | Az URI-állapot kér a virtuális gép használja. `path` szükség, ha `protocol` értéke `http`. Ellenkező esetben nem engedélyezett.<br /><br /> Nincs alapértelmezett értéke.|
 | `port`              | `integer` | Választható. Kommunikáció a mintavételi portot. Ez nem kötelező a tetszőleges végpontot, mivel ugyanazt a portot használja a mintavétel. Konfigurálhatja a probing, valamint más portot. A lehetséges értékek közé 1 és 65535 között, a határokat is beleértve.<br /><br /> Az alapértelmezett beállítás a végpont által.|
 | `intervalInSeconds` | `integer` | Választható. Az időköz másodpercben, hogy milyen gyakran mintavételi állapotadatok végpont. Az időköz általában valamivel kisebb, mint fele a lefoglalt időkorlát (másodpercben), amely lehetővé teszi, hogy a két teljes mintavételt a példány Elforgatás kívül helyezése előtt.<br /><br /> Az alapértelmezett érték 15, minimális értéke 5.|
 | `timeoutInSeconds`  | `integer` | Választható. Az időkorlát (másodpercben), ahol nincs válasz eredményez további kézbesítését, hogy a végpont-forgalom leállítása a mintavétel alkalmazza. Ezt az értéket lehetővé teszi a végrehajtását végpontok kívül Elforgatás gyorsabb vagy alacsonyabb, mint a szokásos alkalommal használja az Azure-ban (amelyek az alapértelmezett érték).<br /><br /> A minimális érték az alapértelmezett értéke 31, 11.|

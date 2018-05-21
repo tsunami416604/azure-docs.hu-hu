@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: ea793af7fc4565c054675af7cbf88b74722690f7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 51307e1bdb31d902636787790d1c4f1248f3886b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>HDInsight csatlakozni a helyi hálózatra
 
@@ -182,7 +182,7 @@ Linux virtuális gép által használt létrehozásához a [kötési](https://ww
 
         dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a __DNS-utótag__ ehhez a virtuális hálózathoz. Mentse ezt az értéket, a rendszer később.
+    A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a __DNS-utótag__ ehhez a virtuális hálózathoz. Mentse ezt az értéket, mivel később még használni fogjuk.
 
 5. Konfigurálja a DNS-nevek a virtuális hálózaton lévő erőforrások köti, használja a következő szöveg tartalmát a `/etc/bind/named.conf.local` fájlt:
 
@@ -336,6 +336,6 @@ Közvetlenül csatlakozhat a HDInsight a virtuális hálózaton keresztül, tegy
 
 * Azure virtuális hálózataihoz további információkért tekintse meg a [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
 
-* Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
+* Hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
 
 * A felhasználó által definiált útvonalak további információkért lásd: [felhasználó által definiált útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md).

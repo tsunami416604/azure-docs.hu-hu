@@ -1,43 +1,43 @@
 ---
-title: "Az Azure Resource Manager sablonfüggvényei - numerikus |} Microsoft Docs"
-description: "Az Azure Resource Manager-sablonok segítségével számok dolgozni funkcióit ismerteti."
+title: Az Azure Resource Manager sablonfüggvényei - numerikus |} Microsoft Docs
+description: Az Azure Resource Manager-sablonok segítségével számok dolgozni funkcióit ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2b7ec44b820e510d1e8bd99ef195546a519c365c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 4fc17b997c44560199e65edb01d20c6a24e49877
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz numerikus funkciók
 
 Erőforrás-kezelő a következő funkciókat nyújt egész számok használata:
 
-* [hozzáadása](#add)
+* [Hozzáadása](#add)
 * [copyIndex](#copyindex)
-* [DIV](#div)
-* [lebegőpontos](#float)
+* [div](#div)
+* [float](#float)
 * [int](#int)
-* [maximális](#max)
-* [perc](#min)
+* [max](#max)
+* [Perc](#min)
 * [MOD](#mod)
 * [MUL számú](#mul)
-* [Sub](#sub)
+* [sub](#sub)
 
 <a id="add" />
 
-## <a name="add"></a>Hozzáadása
+## <a name="add"></a>hozzáadás
 `add(operand1, operand2)`
 
 A két megadott egész számok összegét adja vissza.
@@ -90,9 +90,9 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| addResult | int | 8 |
+| addResult | Int | 8 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -117,8 +117,8 @@ Egy iteráció hurok indexét adja vissza.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| loopName | Nem | Karakterlánc | Neve a ciklus ismétléseinek beolvasásakor. |
-| Az offset |Nem |int |Az a szám, a nulla alapú ismétlési érték hozzáadása. |
+| loopName | Nem | karakterlánc | Neve a ciklus ismétléseinek beolvasásakor. |
+| offset |Nem |int |Az a szám, a nulla alapú ismétlési érték hozzáadása. |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -207,9 +207,9 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| divResult | int | 2 |
+| divResult | Int | 2 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -225,7 +225,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="float" />
 
-## <a name="float"></a>Lebegőpontos
+## <a name="float"></a>lebegőpontos
 `float(arg1)`
 
 Konvertálja az értéket lebegőpontos számnak. Ez a függvény csak ha egyéni paraméterek átadása egy alkalmazást, például a logikai alkalmazás használja.
@@ -301,9 +301,9 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| intEredmeny | int | 4 |
+| intEredmeny | Int | 4 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -319,7 +319,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="max" />
 
-## <a name="max"></a>maximális
+## <a name="max"></a>max.
 `max (arg1)`
 
 A maximális érték egész számok tömb vagy egészek vesszővel elválasztott listáját adja vissza.
@@ -364,10 +364,10 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | int | 5 |
-| intOutput | int | 5 |
+| arrayOutput | Int | 5 |
+| intOutput | Int | 5 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -428,10 +428,10 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | int | 0 |
-| intOutput | int | 0 |
+| arrayOutput | Int | 0 |
+| intOutput | Int | 0 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -499,9 +499,9 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| modResult | int | 1 |
+| modResult | Int | 1 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -570,9 +570,9 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| mulResult | int | 15 |
+| mulResult | Int | 15 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -640,9 +640,9 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| subResult | int | 4 |
+| subResult | Int | 4 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -656,7 +656,7 @@ A példa sablon PowerShell használatával történő üzembe helyezéséhez has
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
 * Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).

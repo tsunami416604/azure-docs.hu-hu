@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4fb522e1a5a3c1adeaf5f46b8ccc3b9a852f4a88
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bc88140bf1adea49ff4bc76667d30a379f829bbc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -117,7 +117,7 @@ A következőket teheti:
 Íme egy példa a PowerShell-parancssorból futtatható. Győződjön meg arról, a fiók- és igény szerint módosíthatja:
 
 
-```
+```powershell
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
@@ -214,6 +214,10 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
     - adatbázis-kapacitás
     - Automatikus biztonsági mentés
     - az egyes részlegek nagy teljesítményű kiszolgálók
+
+
+  > [!IMPORTANT]
+  > Önálló kiszolgálók nem keverhetők az Always On osztályt a azonos Termékváltozat. Kísérlet történt kombinálhatók típusok hozzáadása az első üzemeltetési kiszolgáló eredmények a hiba után.
  
 
 A termékváltozat tükröznie kell tulajdonságait, hogy a bérlők megfelelően elhelyezheti az adatbázisokat. A termékváltozatban minden üzemeltetési kiszolgáló ugyanazokat a képességeket kell rendelkeznie.

@@ -29,7 +29,11 @@
 ## [Az Azure AD Connect kezelése](active-directory-aadconnect-whats-next.md)
 ### [O365- és Azure AD-tanúsítványok megújítása](active-directory-aadconnect-o365-certs.md)
 ### [Active Directory összevonási szolgáltatások- (AD FS-) farm SSL-tanúsítványának frissítése](active-directory-aadconnectfed-ssl-update.md)
-### [Eszközvisszaírás engedélyezése](active-directory-aadconnect-feature-device-writeback.md)
+
+### [Eszközbeállítások](active-directory-azure-ad-connect-device-options.md)
+#### [Eszközvisszaírás engedélyezése](active-directory-aadconnect-feature-device-writeback.md)
+#### [Hibrid Azure AD-csatlakozás konfigurálás utáni feladatai](active-directory-azure-ad-connect-hybrid-azure-ad-join-post-config-tasks.md)
+
 ### [Felhasználói bejelentkezési lehetőségek](active-directory-aadconnect-user-signin.md)
 #### [Közvetlen egyszeri bejelentkezés](active-directory-aadconnect-sso.md)
 ##### [Első lépések](active-directory-aadconnect-sso-quick-start.md)
