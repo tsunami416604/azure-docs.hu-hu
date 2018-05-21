@@ -1,44 +1,44 @@
 ---
-title: "Az Azure Resource Manager-sablon működik - tömbállandó és objektumok |} Microsoft Docs"
-description: "A tömbök és objektumok használata az Azure Resource Manager sablon használandó funkcióit ismerteti."
+title: Az Azure Resource Manager-sablon működik - tömbállandó és objektumok |} Microsoft Docs
+description: A tömbök és objektumok használata az Azure Resource Manager sablon használandó funkcióit ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7d040fe55cb46665c97668a76ccbc66adc002f89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb24535956140632da73807364b6f3ff7b91a416
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz tárolótömböt és az objektum funkciók 
 
 Erőforrás-kezelő számos funkciókat nyújt, tömbök és objektumok.
 
-* [a tömb](#array)
+* [A tömb](#array)
 * [Egyesítés](#coalesce)
-* [Concat](#concat)
+* [concat](#concat)
 * [tartalmazza](#contains)
 * [createArray](#createarray)
 * [üres](#empty)
 * [első](#first)
 * [metszetének](#intersection)
-* [JSON-ban](#json)
+* [json](#json)
 * [utolsó](#last)
-* [hossza](#length)
-* [maximális](#max)
-* [perc](#min)
-* [tartomány](#range)
-* [hagyja ki](#skip)
+* [Hossza](#length)
+* [max](#max)
+* [Perc](#min)
+* [range](#range)
+* [skip](#skip)
 * [hajtsa végre a megfelelő](#take)
 * [a UNION](#union)
 
@@ -46,7 +46,7 @@ Ahhoz, hogy egy érték elválasztott karakterlánc tömböt, lásd: [vágási](
 
 <a id="array" />
 
-## <a name="array"></a>A tömb
+## <a name="array"></a>tömb
 `array(convertToArray)`
 
 Az érték alakít át tömbbé.
@@ -104,7 +104,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | intOutput | Tömb | [1] |
 | stringOutput | Tömb | ["a"] |
@@ -190,10 +190,10 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| stringOutput | Karakterlánc | Alapértelmezett |
-| intOutput | int | 1 |
+| stringOutput | Karakterlánc | alapértelmezett |
+| intOutput | Int | 1 |
 | objectOutput | Objektum | {"első": "alapértelmezett"} |
 | arrayOutput | Tömb | [1] |
 | emptyOutput | logikai érték | True (Igaz) |
@@ -268,7 +268,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | térjen vissza | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -308,7 +308,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | concatOutput | Karakterlánc | előtag-5yj4yjf5mbg72 |
 
@@ -326,7 +326,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="contains" />
 
-## <a name="contains"></a>tartalmazza
+## <a name="contains"></a>tartalmazza a következőt:
 `contains(container, itemToFind)`
 
 Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy egy karakterláncot egy substring tartalmazza.
@@ -335,7 +335,7 @@ Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| Tároló |Igen |a tömb, objektum vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
+| tároló |Igen |a tömb, objektum vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
 | itemToFind |Igen |karakterlánc- vagy int |Az érték kereséséhez. |
 
 ### <a name="return-value"></a>Visszatérési érték
@@ -397,7 +397,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringTrue | logikai érték | True (Igaz) |
 | stringFalse | logikai érték | False (Hamis) |
@@ -479,7 +479,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringArray | Tömb | ["a", "b", "c"] |
 | intArray | Tömb | [1, 2, 3] |
@@ -559,7 +559,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayEmpty | logikai érték | True (Igaz) |
 | objectEmpty | logikai érték | True (Igaz) |
@@ -625,7 +625,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Karakterlánc | egy |
 | stringOutput | Karakterlánc | O |
@@ -704,7 +704,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | objectOutput | Objektum | {"egy": "a", "három": "c"} |
 | arrayOutput | Tömb | ["két", "három"] |
@@ -721,7 +721,7 @@ A példa sablon PowerShell használatával történő üzembe helyezéséhez has
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
-## <a name="json"></a>JSON-ban
+## <a name="json"></a>JSON
 `json(arg1)`
 
 A JSON-objektumot ad vissza.
@@ -730,7 +730,7 @@ A JSON-objektumot ad vissza.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |Karakterlánc |Az érték átalakítása JSON. |
+| arg1 |Igen |karakterlánc |Az érték átalakítása JSON. |
 
 
 ### <a name="return-value"></a>Visszatérési érték
@@ -762,10 +762,10 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | jsonOutput | Objektum | {"a": "b"} |
-| nullOutput | Logikai érték | True (Igaz) |
+| nullOutput | Logikai | True (Igaz) |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -827,7 +827,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Karakterlánc | három |
 | stringOutput | Karakterlánc | E |
@@ -899,10 +899,10 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayLength | int | 3 |
-| stringLength | int | 13 |
+| arrayLength | Int | 3 |
+| stringLength | Int | 13 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -929,7 +929,7 @@ Ez a függvény egy tömb használatával kapcsolatban további információkér
 
 <a id="max" />
 
-## <a name="max"></a>maximális
+## <a name="max"></a>max.
 `max(arg1)`
 
 A maximális érték egész számok tömb vagy egészek vesszővel elválasztott listáját adja vissza.
@@ -974,10 +974,10 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | int | 5 |
-| intOutput | int | 5 |
+| arrayOutput | Int | 5 |
+| intOutput | Int | 5 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -1038,10 +1038,10 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | int | 0 |
-| intOutput | int | 0 |
+| arrayOutput | Int | 0 |
+| intOutput | Int | 0 |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -1103,7 +1103,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | rangeOutput | Tömb | [5, 6, 7] |
 
@@ -1183,7 +1183,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["három"] |
 | stringOutput | Karakterlánc | két három |
@@ -1264,10 +1264,10 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["egy", "két"] |
-| stringOutput | Karakterlánc | a |
+| stringOutput | Karakterlánc | be |
 
 A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
 
@@ -1343,7 +1343,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | objectOutput | Objektum | {"egy": "a", "2": "b", "három": "c2", "négy": "d", "5": "e"} |
 | arrayOutput | Tömb | ["egy", "két", "három", "négy"] |
@@ -1360,7 +1360,7 @@ A példa sablon PowerShell használatával történő üzembe helyezéséhez has
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
 * Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).

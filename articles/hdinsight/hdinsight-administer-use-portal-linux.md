@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: cd61aa4a69a5bed8de9874eebad059b54118ab63
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 90261e090f87a5ca0d92b86c33addce2449cfd24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával
 
@@ -125,7 +125,7 @@ Ha a NoRegisteredProviderFound hiba vagy a MissingSubscriptionRegistration hiba,
    * **Alapértelmezett adatforrás**: az alapértelmezett fürt fájlrendszert.
    * **Munkavégző csomópontok mérete**: a feldolgozó csomópontok a kiválasztott Virtuálisgép-méretet.
    * **Csomópont méretének HEAD**: az átjárócsomópontokkal a kiválasztott Virtuálisgép-méretet.
-   * **Virtuális hálózati**: A nevét, a virtuális hálózat és alhálózat, amelyhez a fürt központi telepítése, ha egy központi telepítéskor ki lett választva.
+   * **Virtuális hálózati**: a virtuális hálózatot, amely a fürt telepítése, ha egy központi telepítéskor ki lett választva nevét.
 
 ## <a name="delete-clusters"></a>Fürtök törlése
 A fürtök törlésével törli az alapértelmezett tárfiókot, sem az összes kapcsolt tárfiókot. Újra létrehozhatja a fürtöt azonos tárfiókok és ugyanazon a metaadattárakat használatával. Azt javasoljuk, hogy egy új alapértelmezett Blob tároló használatával, a fürt ismételt létrehozásakor.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 48fe35006ca9ca5ac48e6b2d2a207576426e814d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8fb75484537d577cb19b04fa091bab69d6723c9b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás Azure ITSM eszközök IT Service Management-összekötő használatával
 
@@ -31,7 +31,7 @@ Az Azure-szolgáltatásokat, mint a Naplóelemzési és Azure figyelő biztosít
 ITSMC-kapcsolatok a következő ITSM eszközöket támogatja:
 
 -   ServiceNow
--   A System Center Service Manager
+-   System Center Service Manager
 -   Provance
 -   Cherwell
 
@@ -229,9 +229,9 @@ ServiceDeskWorkItemType_s="Incident"
 **Mezők**
 
 - ServiceDeskConnectionName
-- Szolgáltatás ügyfélszolgálati azonosítója
+- Ügyfélszolgálati azonosító
 - Állapot
-- Sürgős
+- Sürgősség
 - Hatás
 - Prioritás
 - Eszkalálás
@@ -256,7 +256,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 **Mezők**
 - ServiceDeskConnectionName
-- Szolgáltatás ügyfélszolgálati azonosítója
+- Ügyfélszolgálati azonosító
 - Létrehozta
 - Lezárt
 - Forrás
@@ -267,7 +267,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Állapot
 - Eszkalálás
 - Ütközés állapota
-- Sürgős
+- Sürgősség
 - Prioritás
 - Kockázat
 - Hatás
@@ -289,7 +289,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
 | IncidentState_s | Állapot |
-| Urgency_s |Sürgős |
+| Urgency_s |Sürgősség |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
 | CreatedBy_s | Által megnyitott |
@@ -302,7 +302,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Description_s|  Megjegyzések |
 | CreatedDate_t|  Megnyitva |
 | ClosedDate_t| Lezárt|
-| ResolvedDate_t|Megoldva|
+| ResolvedDate_t|Feloldva|
 | Computer  | konfigurációs elem |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>A ServiceNow kimeneti adatok változáskérés
@@ -317,7 +317,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Type_s|  Típus |
 | Category_s|  Kategória |
 | CRState_s|  Állapot|
-| Urgency_s|  Sürgős |
+| Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
 | Impact_s| Hatás|
@@ -333,10 +333,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM kapcsolatok hibáinak elhárítása
 1.  Ha a kapcsolat hibája esetén a csatlakoztatott adatforrás felhasználói felület egy **hiba történt a kapcsolat mentése** üzenet, a következő lépéseket:
-- A ServiceNow, Cherwell és Provance kapcsolatok esetén  
+ - A ServiceNow, Cherwell és Provance kapcsolatok esetén  
     - Győződjön meg arról, megfelelően beírt a felhasználónév, a jelszó, az ügyfél-azonosító és a titkos ügyfélkulcs az egyes kapcsolatok.  
     - Ellenőrizze, hogy ha a megfelelő engedélyekkel rendelkezik a megfelelő ITSM termékben való csatlakozáshoz.  
-- A Service Manager-kapcsolatok esetén  
+ - A Service Manager-kapcsolatok esetén  
     - Győződjön meg arról, hogy a webalkalmazás telepítése sikeres volt, és a hibrid kapcsolat jön létre. Ellenőrizze, hogy sikeresen létrejött a kapcsolat a helyszíni Service Manager számítógéppel, látogasson el a webes alkalmazás URL-CÍMÉT, hogy dokumentációjában ismertetett módon a [a hibrid kapcsolat](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Ha ServiceNow adatait nem első szinkronizálva van a Naplóelemzési, győződjön meg arról, hogy a példány nem alszik ServiceNow. A ServiceNow fejlesztői példányok néha Ugrás üresjáratban alvó hosszú ideig. Más jelentse a hibát.

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 0c9450099ad3561611796a9b45157932f9ac85a9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 227ea446a75c167be27128b15de1d3c216e6856d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatizálható a NSG naplózás Azure hálózati figyelő biztonsági csoport megtekintése
 
 Az ügyfelek gyakran az ellenőrzést, a biztonságot, az infrastruktúra ellenőrzésére szemben. Ez a kérdés ugyanolyan helyzetet teremt, a virtuális gépek Azure-ban. Fontos a hálózati biztonsági csoport (NSG) szabályok alkalmazása hasonló biztonsági profilt. Használja a biztonsági csoport megtekintése, most olvashatók és egy virtuális Gépet egy NSG belül alkalmazott szabályok listája. Egy arany NSG biztonsági profil meghatározásához és biztonsági csoport megtekintése heti ütemben történik kezdeményezzen, és hasonlítsa össze a kimeneti arany profilt és jelentés létrehozása. Így azonosíthatja a könnyű, amelyek nem felelnek meg az előírt biztonsági profil az összes virtuális.
 
-Ha nem ismeri a hálózati biztonsági csoportokkal, látogasson el a [hálózati biztonsági – áttekintés](../virtual-network/virtual-networks-nsg.md)
+Ha nem ismeri a hálózati biztonsági csoportokkal, lásd: [hálózati biztonsági áttekintése](../virtual-network/security-overview.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 

@@ -1,8 +1,8 @@
 ---
-title: Azure Cloud Services Def. WorkerRole séma |} Microsoft Docs
+title: Azure Cloud Services alapértelmezett WorkerRole séma |} Microsoft Docs
+services: cloud-services
 ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -13,11 +13,11 @@ caps.latest.revision: 55
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 0171c7254db5855f0eccd19ae9938249d8966edd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 96131a0bb928da7e22f3e26449c8b2279457d03f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services – Definition WorkerRole séma
 Az Azure feldolgozói szerepkör a rendszer, amely hasznos általánosított fejlesztési és hajthat végre a háttérben történő feldolgozás a webes szerepkör.
@@ -113,7 +113,7 @@ A szolgáltatásdefiníciós fájlban tartalmazza ezeket az elemeket, ez a téma
 
 [Tanúsítványok](#Certificates)
 
-[tanúsítvány](#Certificate)
+[Tanúsítvány](#Certificate)
 
 [Importálása](#Imports)
 
@@ -129,7 +129,7 @@ A szolgáltatásdefiníciós fájlban tartalmazza ezeket az elemeket, ez a téma
 
 [ProgramEntryPoint](#ProgramEntryPoint)
 
-[Variable](#Variable)
+[változó](#Variable)
 
 [RoleInstanceValue](#RoleInstanceValue)
 
@@ -183,7 +183,7 @@ A következő táblázat ismerteti az attribútumai a `LocalStorage` elemet.
 | --------- | ---- | ----------- |
 |név|karakterlánc|Kötelező. Egy egyedi nevet a helyi tárolójába.|
 |cleanOnRoleRecycle|logikai|Választható. Azt jelzi, hogy a helyi tárolóban kell törölni, a szerepkör újraindításakor. Alapértelmezett érték `true`.|
-|sizeInMb|int|Választható. A tárolóhely foglalja le a helyi tárolójába, MB-ban a kívánt memóriamennyiséget. Ha nincs megadva, az alapértelmezett tároló lefoglalt terület 100 MB. A tárolóhely lehet kiosztani minimális mérete 1 MB.<br /><br /> A helyi erőforrások maximális mérete függ, a virtuális gép méretét. További információkért lásd: [virtuálisgép-méretek a Felhőszolgáltatások](cloud-services-sizes-specs.md).|
+|hogy a sizeInMb|int|Választható. A tárolóhely foglalja le a helyi tárolójába, MB-ban a kívánt memóriamennyiséget. Ha nincs megadva, az alapértelmezett tároló lefoglalt terület 100 MB. A tárolóhely lehet kiosztani minimális mérete 1 MB.<br /><br /> A helyi erőforrások maximális mérete függ, a virtuális gép méretét. További információkért lásd: [virtuálisgép-méretek a Felhőszolgáltatások](cloud-services-sizes-specs.md).|
 
 Annak a könyvtárnak a helyi tároló erőforráshoz van lefoglalva a neve megegyezik a name attribútum megadott érték.
 
