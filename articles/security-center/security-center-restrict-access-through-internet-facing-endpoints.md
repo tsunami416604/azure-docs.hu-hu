@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Security Centerben Internet felé néző végpontok-en keresztüli hozzáférés korlátozása |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** internetre irányuló végpont **-en keresztüli hozzáférés korlátozása."
+title: Az Azure Security Centerben Internet felé néző végpontok-en keresztüli hozzáférés korlátozása |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás **internetes végpont-en keresztüli hozzáférés korlátozása**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92906d31f4db21f37094f192dadd080e28cc6e8e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Az Azure Security Centerben Internet felé néző végpontok-en keresztüli hozzáférés korlátozása
 Azure Security Center javasolni fogja, az Internet felé néző végpontok-en keresztüli hozzáférés korlátozása, ha bármely, a hálózati biztonsági csoportok (NSG-k) egy vagy több bejövő szabályok, amelyek lehetővé teszik a hozzáférést a "bármely" forrás IP-cím. Megnyitása access "bármely" engedélyezheti, hogy a támadók a erőforrások eléréséhez. Security Center javasolni fogja, hogy a forrás IP-címek, amelyek ténylegesen hozzá kell férniük való hozzáférés korlátozása a bejövő szabályok szerkesztése.
@@ -44,18 +44,18 @@ Ez a javaslat bármely nem webes porthoz, amely rendelkezik "a" forrás jön lé
 
    ![Bejövő biztonsági szabályok][4]
 
-   Vegye figyelembe, igény szerint kiválaszthatja **alapértelmezett szabályok** című szakaszban láthat az alapértelmezett szabályokat minden NSG-k által tartalmazott. Az alapértelmezett szabályokat nem lehet törölni, de hozzárendeli őket egy alacsonyabb prioritású virtuális gép, mert azok az Ön által létrehozott szabályok felülbírálható. További információ [alapértelmezett szabályok](../virtual-network/virtual-networks-nsg.md#default-rules).
+   Vegye figyelembe, igény szerint kiválaszthatja **alapértelmezett szabályok** című szakaszban láthat az alapértelmezett szabályokat minden NSG-k által tartalmazott. Az alapértelmezett szabályokat nem lehet törölni, de hozzárendeli őket egy alacsonyabb prioritású virtuális gép, mert azok az Ön által létrehozott szabályok felülbírálható. További információ [alapértelmezett szabályok](../virtual-network/security-overview.md#default-security-rules).
 
    ![Alapértelmezett szabályok][5]
-5. A a **AllowWeb** panelen a bejövő forgalomra vonatkozó szabály tulajdonságait szerkesztheti, hogy a **forrás** blokkot az IP-címek vagy IP-cím. A bejövő szabály tulajdonságait kapcsolatos további információkért lásd: [NSG-szabályok](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+5. A a **AllowWeb** panelen a bejövő forgalomra vonatkozó szabály tulajdonságait szerkesztheti, hogy a **forrás** blokkot az IP-címek vagy IP-cím. A bejövő szabály tulajdonságait kapcsolatos további információkért lásd: [NSG-szabályok](../virtual-network/security-overview.md#security-rules).
 
    ![Bejövő forgalomra vonatkozó szabály szerkesztése][6]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ez a cikk bemutatta megvalósításához a Security Center javaslat "Hozzáférés korlátozása az Internet felé néző végpont keresztül." Az NSG-k és szabályok engedélyezésével kapcsolatos további tudnivalókért olvassa el a következőket:
 
-* [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/virtual-networks-nsg.md)
-* [Az Azure portál használatával NSG-k kezelése](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
+* [A hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 648d96bbb18186524cfad4d3df1f61e98062fcb4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer szabványos áttekintése
 
@@ -119,7 +119,7 @@ Felülvizsgálati [részletes leírását a magas rendelkezésre ÁLLÁSÚ porto
 
 Standard terheléselosztó teljesen előkészítve a virtuális hálózathoz.  A virtuális hálózat egy saját, lezárt hálózati.  Szabványos Terheléselosztókról, illetve a szabványos nyilvános IP-címeket úgy tervezték, hogy engedélyezze a virtuális hálózaton kívülről is hozzáférhetnek a virtuális hálózat, mert ezekhez az erőforrásokhoz alapértelmezés szerinti zárva, kivéve, ha megnyitja őket. Ez azt jelenti, hogy hálózati biztonsági csoportokkal (NSG-k) használnak az explicit módon engedélyezi, és a engedélyezett forgalmat.  A teljes virtuális adatközpont létrehozhat és NSG keresztül döntse el, mi, és ha annak elérhetőnek kell lennie.  Ha az alhálózat egy NSG-t vagy a virtuálisgép-erőforrás hálózati adapter nem rendelkezik, azt nem ad engedélyt forgalom az erőforrás elérésére.
 
-Az NSG-k és hogyan kell alkalmazni a forgatókönyvnek kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
+Az NSG-k és hogyan kell alkalmazni a forgatókönyvnek kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
 
 ### <a name="outbound"></a> Kimenő kapcsolatok
 
@@ -237,7 +237,7 @@ Standard terheléselosztó terheléselosztási szabályok konfigurálva és az �
 - További tudnivalók [szabványos terheléselosztó a magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok](load-balancer-ha-ports-overview.md)
 - További információ használatáról [több Frontends rendelkező terheléselosztó](load-balancer-multivip-overview.md)
 - További tudnivalók [virtuális hálózatok](../virtual-network/virtual-networks-overview.md).
-- További információ [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
+- További információ [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
 - További tudnivalók [VNet Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md)
 - Ismerje meg, azzal kapcsolatban, a másik kulccsal [hálózati lehetőségeket](../networking/networking-overview.md) az Azure-ban.
 - További információ [terheléselosztó](load-balancer-overview.md).
