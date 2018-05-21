@@ -45,13 +45,13 @@
           href: delete-cluster.md
     - name: Adatkötetek konfigurálása
       items:
-        - name: AzureDisk dinamikus kiépítés
+        - name: Azure-lemez – Dinamikus
           href: azure-disks-dynamic-pv.md
-        - name: AzureDisk statikus kiépítés
+        - name: Azure-lemez – Statikus
           href: azure-disk-volume.md
-        - name: AzureFile dinamikus kiépítés
+        - name: Azure Files – Dinamikus
           href: azure-files-dynamic-pv.md
-        - name: AzureFile statikus kiépítés
+        - name: Azure Files – Statikus
           href: azure-files-volume.md
     - name: Hálózatkezelés konfigurálása
       items:
