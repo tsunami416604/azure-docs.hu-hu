@@ -11,14 +11,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
+ms.topic: conceptual
+ms.date: 05/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5da8c747fb8f89ff627cad74bacf0753bb3484ad
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: 6f9b2b04c3bdfc02065e2a01e1975d734a5f53ac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/14/2018
 
 ## <a name="powershell"></a>PowerShell
 
-A jelen cikk példái a 3.0-s vagy újabb, az Azure PowerShell igényelnek. Ha nem rendelkezik 3.0-s vagy újabb, [frissítenie](/powershell/azureps-cmdlets-docs/) PowerShell-galériában vagy a Webplatform-telepítő használatával.
+A jelen cikk példái a 6.0-s vagy újabb, az Azure PowerShell igényelnek. Ha nem rendelkezik 6.0-s vagy újabb, [frissítenie](/powershell/azure/install-azurerm-ps).
 
 *Erőforráscsoportok* meglévő címkéinek megtekintéséhez használja a következőt:
 
@@ -48,7 +48,7 @@ Environment                    Test
 *Megadott erőforrás-azonosítóval rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
 
 ```powershell
-(Get-AzureRmResource -ResourceId {resource-id}).Tags
+(Get-AzureRmResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
 ```
 
 Vagy *megadott névvel és erőforráscsoporttal rendelkező erőforrás* meglévő címkéinek megtekintéséhez használja a következőt:
@@ -60,13 +60,19 @@ Vagy *megadott névvel és erőforráscsoporttal rendelkező erőforrás* meglé
 *Adott címkével rendelkező erőforráscsoportok* lekéréséhez használja a következőt:
 
 ```powershell
-(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name
+(Get-AzureRmResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
 ```
 
 *Adott címkével rendelkező erőforrások* lekéréséhez használja a következőt:
 
 ```powershell
-(Find-AzureRmResource -TagName Dept -TagValue Finance).Name
+(Get-AzureRmResource -Tag @{ Dept="Finance"}).Name
+```
+
+A beolvasandó *-erőforrásokra, amelyekre egy adott címkenév*, használja:
+
+```powershell
+(Get-AzureRmResource -TagName Dept).Name
 ```
 
 Minden alkalommal, amikor címkével lát el egy erőforrást vagy erőforráscsoportot, felülírja a hozzá tartozó korábbi címkéket. Ezért különböző megközelítéseket kell alkalmaznia annak függvényében, hogy az adott erőforrás vagy erőforráscsoport rendelkezik-e címkével.
@@ -81,7 +87,7 @@ Ha *meglévő címkékkel rendelkező erőforráscsoporthoz* szeretne címkéket
 
 ```powershell
 $tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
-$tags += @{Status="Approved"}
+$tags.Add("Status", "Approved")
 Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
 ```
 
@@ -96,7 +102,7 @@ Ha *meglévő címkékkel rendelkező erőforráshoz* szeretne címkéket adni, 
 
 ```powershell
 $r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$r.tags += @{Status="Approved"}
+$r.Tags.Add("Status", "Approved") 
 Set-AzureRmResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
@@ -106,7 +112,7 @@ Ha az erőforráscsoport összes címkéjét szeretné alkalmazni a csoport erő
 $groups = Get-AzureRmResourceGroup
 foreach ($g in $groups)
 {
-    Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
+    Get-AzureRmResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
 }
 ```
 
@@ -115,16 +121,21 @@ Ha az erőforráscsoport összes címkéjét szeretné alkalmazni a csoport erő
 ```powershell
 $group = Get-AzureRmResourceGroup "examplegroup"
 if ($group.Tags -ne $null) {
-    $resources = $group | Find-AzureRmResource
+    $resources = Get-AzureRmResource -ResourceGroupName $group.ResourceGroupName
     foreach ($r in $resources)
     {
         $resourcetags = (Get-AzureRmResource -ResourceId $r.ResourceId).Tags
-        foreach ($key in $group.Tags.Keys)
+        if ($resourcetags)
         {
-            if (($resourcetags) -AND ($resourcetags.ContainsKey($key))) { $resourcetags.Remove($key) }
+            foreach ($key in $group.Tags.Keys)
+            {
+                if (-not($resourcetags.ContainsKey($key)))
+                {
+                    $resourcetags.Add($key, $group.Tags[$key])
+                }
+            }
+            Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
         }
-        $resourcetags += $group.Tags
-        Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
     }
 }
 ```
@@ -134,7 +145,6 @@ Az összes címke eltávolításához adjon át egy üres kivonattáblát:
 ```powershell
 Set-AzureRmResourceGroup -Tag @{} -Name examplegroup
 ```
-
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -257,7 +267,7 @@ Amikor a fürt megosztott kötetei szolgáltatás használata számlázási cím
 
 ## <a name="next-steps"></a>További lépések
 
-* Testreszabott házirendekkel alkalmazhat korlátozások és egyezmények az előfizetéshez. Megadhat egy házirendet, minden erőforrás rendelkezik-e egy adott címke értéke lehet szükség. További információ: [Mi az az Azure Policy?](../azure-policy/azure-policy-introduction.md)
+* Testreszabott házirendekkel alkalmazhat korlátozások és egyezmények az előfizetéshez. Megadhat egy házirendet, minden erőforrás rendelkezik-e egy adott címke értéke lehet szükség. További információkért lásd: [Mi az Azure-házirendet?](../azure-policy/azure-policy-introduction.md)
 * Megismerkedhet az Azure PowerShell használatával, ha az erőforrások telepítése esetén, lásd: [az Azure PowerShell használata Azure Resource Managerrel](powershell-azure-resource-manager.md).
 * Témakörben megismerkedhet az Azure parancssori felület használatával, ha az erőforrások telepítése esetén, [az Azure parancssori felület Mac, Linux és a Windows Azure Resource Manager használatával](xplat-cli-azure-resource-manager.md).
 * Megismerkedhet a portál használatával, lásd: [az Azure portál használata az Azure erőforrások kezeléséhez](resource-group-portal.md).  

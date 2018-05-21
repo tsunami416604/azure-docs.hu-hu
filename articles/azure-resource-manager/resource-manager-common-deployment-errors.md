@@ -10,16 +10,16 @@ editor: tysonn
 keywords: központi telepítési hiba, az azure-telepítés, telepítse az azure
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 01cc75c522b85f7b4a4b38c92f42cb113d016b73
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ecc1a9557c7854a0771decb3cc7f7597bcd87dd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Hibaelhárítás általános az Azure-telepítés az Azure Resource Manager eszközzel
 
@@ -34,7 +34,7 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | AllocationFailed | A fürt vagy a régió nincs forrásanyag is elérhető, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és lefoglalás problémái Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [Windows kiépítés és lefoglalás problémái](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) és [fellépő lefoglalási hibák elhárítása](../virtual-machines/windows/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg egyidejű művelet elvégzéséhez. | |
 | AuthorizationFailed | A fióknév vagy egyszerű szolgáltatásnév nincs engedélye a központi telepítés befejezéséhez. Ellenőrizze a szerepkör a fiókja tagja, és a hozzáférése a központi telepítés hatókör. | [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) |
-| BadRequest | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-templates-resources.md#location) |
+| Hibás kérés | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-templates-resources.md#location) |
 | Ütközés | A kért műveletet az erőforrás a jelenlegi állapotban nem engedélyezett. Például a lemezek átméretezése engedélyezett csak akkor, ha a virtuális gép létrehozása, vagy ha a virtuális gép felszabadítása. | |
 | DeploymentActive | Várjon, amíg párhuzamos központi telepítést, hogy ez az erőforráscsoport befejezéséhez. | |
 | Sikertelen | A "deploymentfailed" hiba: Általános hiba, amely nem adja meg a hiba megoldásához szükséges adatokat. Keresse meg a hiba részletei hibakódot nyújt részletesebb információt. | [Hibakód keresése](#find-error-code) |
@@ -73,8 +73,8 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | NemTalálhatóErőforrás | A központi telepítés hivatkozik a erőforrása, amely nem oldható fel. Ellenőrizze, hogy Ön miként használja a a **hivatkozás** függvény a forgatókönyvhöz szükséges paramétereket tartalmazza. | [Hivatkozások feloldása](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | A központi telepítés próbál létrehozni, amelyek mérete meghaladja a kvótát, az előfizetés, erőforráscsoportban vagy régió erőforrásokat. Ha lehetséges javítsa ki a kvóták belül marad az infrastruktúra. Ellenkező esetben fontolja meg a kért módosítva lett a kvótákat. | [Hárítsa el a kvóták](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Válassza ki a Termékváltozat (például a virtuális gép méretét), amely a kijelölt helyen érhető el. | [Hárítsa el a Termékváltozat](resource-manager-sku-not-available-errors.md) |
-| StorageAccountAlreadyExists | Adjon egyedi nevet a tárfiók. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md)  |
-| StorageAccountAlreadyTaken | Adjon egyedi nevet a tárfiók. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md) |
+| StorageAccountAlreadyExists | Adjon meg egy egyedi nevet a tárfióknak. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md)  |
+| StorageAccountAlreadyTaken | Adjon meg egy egyedi nevet a tárfióknak. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | Ellenőrizze az előfizetés, erőforráscsoport és a használni kívánt tárfiók nevére. | |
 | SubnetsNotInSameVnet | A virtuális gépek csak rendelkezhet egy virtuális hálózatot. Több hálózati adapterrel való telepítésekor, ellenőrizze, hogy az azonos virtuális hálózatban tartoznak. | [Több hálózati adapter](../virtual-machines/windows/multiple-nics.md) |
 | TemplateResourceCircularDependency | Távolítsa el a felesleges függőségeket. | [Körkörös függőségek feloldása](resource-manager-invalid-template-errors.md#circular-dependency) |

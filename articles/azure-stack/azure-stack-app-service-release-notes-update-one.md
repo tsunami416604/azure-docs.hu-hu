@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: fedf511e06243d5c0652e422b397bb00da3b42c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 80bd865b7a08d9488c0fb6a1a5b60445b9c6eaaa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service az Azure-verem update 1 kibocsátási megjegyzései
 
@@ -39,7 +39,7 @@ Az App Service az Azure verem Update 1 buildszáma **69.0.13698.9**
 ### <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
-> Az Azure App Service Azure veremben új telepítés most igényel a [három-tulajdonos helyettesítő tanúsítvány](azure-stack-app-service-before-you-get-started.md#get-certificates) , amelyben az Azure App Service-ben mostantól kezelése a Kudu SSO fejlesztései miatt. Az új tulajdonos ** *.sso.appservice.<region>.<domainname>.<extension>**
+> Az Azure App Service Azure veremben új telepítés most igényel a [három-tulajdonos helyettesítő tanúsítvány](azure-stack-app-service-before-you-get-started.md#get-certificates) , amelyben az Azure App Service-ben mostantól kezelése a Kudu SSO fejlesztései miatt. Az új tulajdonos  **\*. sso.appservice.\< a régióban\>.\< tartománynév\>.\< bővítmény\>**
 >
 >
 
@@ -198,7 +198,7 @@ Hely tárolóhelycsere ebben a kiadásban megszakad. Működésének visszaáll�
     ```
 - Munkavállalók nem érhető el a fájlkiszolgáló, ha az App Service egy meglévő virtuális hálózat és a fájlkiszolgáló csak érhető el a privát hálózaton.
  
-Ha úgy dönt, hogy az üzembe helyezés meglévő virtuális hálózat és a belső IP-címnek a fájlkiszolgálóhoz való kapcsolódáshoz, hozzá kell adnia egy kimenő biztonsági szabály engedélyezése az SMB adatforgalmát. a munkavégző és a fájlkiszolgáló között. Ehhez nyissa meg a felügyeleti portál WorkersNsg, és a következő tulajdonságokkal kimenő biztonsági szabály felvétele:
+Ha úgy dönt, hogy az üzembe helyezés meglévő virtuális hálózat és a fájl kiszolgálóhoz való csatlakozás belső IP-címet, hozzá kell adnia egy kimenő biztonsági szabály engedélyezése az SMB adatforgalmát. a munkavégző és a fájlkiszolgáló között. Ehhez nyissa meg a felügyeleti portál WorkersNsg, és a következő tulajdonságokkal kimenő biztonsági szabály felvétele:
  * Forrás: bármely
  * Forrás-porttartomány: *
  * Cél: IP-címek

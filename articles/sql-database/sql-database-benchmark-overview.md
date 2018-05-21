@@ -2,18 +2,18 @@
 title: Az Azure SQL Database DTU teljesítménytesztek áttekintése
 description: Ez a témakör ismerteti az Azure SQL adatbázis teljesítményteszt használni a Azure SQL adatbázis teljesítménye.
 services: sql-database
-author: jan-eng
-manager: jhubbard
+author: CarlRabeler
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/01/2018
-ms.author: janeng
-ms.openlocfilehash: dbe991ddaa4d85ee3d117dc3c0c246a642b53f2f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: carlrab
+ms.openlocfilehash: a045a545b8a0d4dda33dd404d0d206723eb822ad
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-sql-database-dtu-benchmark-overview"></a>Az Azure SQL Database DTU teljesítménytesztek áttekintése
 ## <a name="overview"></a>Áttekintés
