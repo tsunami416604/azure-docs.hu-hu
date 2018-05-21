@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 055b2cdadf48c31635183b73f214f2215477c9d7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f2a181fbae8ab1e08669021c42c5b4be08f66172
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 
@@ -115,6 +115,27 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -FindValue $certCN `
     -StoreLocation CurrentUser `
     -StoreName My 
+```
+
+#### <a name="connect-using-certificate-thumbprint"></a>Csatlakozás a tanúsítvány ujjlenyomata
+Adja meg a fürt tanúsítvány ujjlenyomata és, hogy rendelkezik engedéllyel a kiszolgálófürt-felügyelet az ügyféltanúsítvány ujjlenyomata. A tanúsítvány részleteinél meg kell egyeznie a fürtcsomópontokon egy tanúsítványt.
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `  
+          -KeepAliveIntervalInSec 10 `  
+          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `  
+          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `  
+          -StoreLocation CurrentUser -StoreName My
+```
+
+*ServerCertThumbprint* az ujjlenyomatot a kiszolgálói tanúsítvány a fürtcsomóponton telepítve van. *Findvalue –* van a felügyeleti ügyfél tanúsítvány ujjlenyomatát.  Ha a paraméter ki van töltve, a parancs néz ki a következő példa:
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `  
+          -KeepAliveIntervalInSec 10 `  
+          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `  
+          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `  
+          -StoreLocation CurrentUser -StoreName My 
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Csatlakozás a Windows Active Directory használatával biztonságos fürthöz
