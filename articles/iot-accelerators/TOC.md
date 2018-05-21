@@ -47,48 +47,48 @@
 ### [A prediktív karbantartási megoldásgyorsító bemutatója](../iot-suite/iot-suite-predictive-walkthrough.md)
 
 ## Csatlakoztatott gyár
-### [Mi az a csatlakoztatott gyár?](../iot-suite/iot-suite-connected-factory-features.md)
-### [Csatlakoztatottgyár-megoldás áttekintése](../iot-suite/iot-suite-connected-factory-overview.md)
-### [Csatlakoztatott gyáron alapuló megoldás bemutatója](../iot-suite/iot-suite-connected-factory-sample-walkthrough.md)
+### [Mi az a csatlakoztatott gyár?](iot-accelerators-connected-factory-features.md)
+### [Csatlakoztatottgyár-megoldás áttekintése](iot-accelerators-connected-factory-overview.md)
+### [Csatlakoztatott gyáron alapuló megoldás bemutatója](iot-accelerators-connected-factory-sample-walkthrough.md)
 
 ## Eszközszimuláció
-### [Eszközszimuláció üzembe helyezése](../iot-suite/iot-suite-device-simulation-deploy.md)
-### [Ismerkedés az eszközszimulációval](../iot-suite/iot-suite-device-simulation-explore.md)
+### [Eszközszimuláció üzembe helyezése](iot-accelerators-device-simulation-deploy.md)
+### [Ismerkedés az eszközszimulációval](iot-accelerators-device-simulation-explore.md)
 
 # Útmutatók
 ## Távoli monitorozás
-### [Speciális monitorozás végrehajtása](../iot-suite/iot-suite-remote-monitoring-monitor.md)
+### [Speciális monitorozás végrehajtása](iot-accelerators-remote-monitoring-monitor.md)
 ### [Hibák észlelése szabályokkal](iot-accelerators-remote-monitoring-automate.md)
-### [SIM-adatok integrálása](../iot-suite/iot-suite-remote-monitoring-telefonica-sim.md)
-### [Saját eszközök kezelése](../iot-suite/iot-suite-remote-monitoring-manage.md)
-### [Eszközökkel kapcsolatos problémák elhárítása](../iot-suite/iot-suite-remote-monitoring-maintain.md)
-### [Az eszközmodell sémájának megismerése](../iot-suite/iot-suite-remote-monitoring-device-schema.md)
-### [Az eszközmodell viselkedésének megismerése](../iot-suite/iot-suite-remote-monitoring-device-behavior.md)
-### [Új szimulált eszköz létrehozása](../iot-suite/iot-suite-remote-monitoring-test.md)
-### [Vizualizáció a Power BI használatával](../iot-suite/iot-suite-integrate-data-powerbi.md)
+### [SIM-adatok integrálása](iot-accelerators-remote-monitoring-telefonica-sim.md)
+### [Saját eszközök kezelése](iot-accelerators-remote-monitoring-manage.md)
+### [Eszközökkel kapcsolatos problémák elhárítása](iot-accelerators-remote-monitoring-maintain.md)
+### [Az eszközmodell sémájának megismerése](iot-accelerators-remote-monitoring-device-schema.md)
+### [Az eszközmodell viselkedésének megismerése](iot-accelerators-remote-monitoring-device-behavior.md)
+### [Új szimulált eszköz létrehozása](iot-accelerators-remote-monitoring-test.md)
+### [Vizualizáció a Power BI használatával](iot-accelerators-integrate-data-powerbi.md)
 ### [A megoldás felhasználói felületének testreszabása](iot-accelerators-remote-monitoring-customize.md)
-### [Mikroszolgáltatás testreszabása és ismételt üzembe helyezése](../iot-suite/iot-suite-microservices-example.md)
+### [Mikroszolgáltatás testreszabása és ismételt üzembe helyezése](iot-accelerators-microservices-example.md)
 ### [Üzembe helyezés parancssori felületről](iot-accelerators-remote-monitoring-deploy-cli.md)
 ### [Helyi üzembe helyezés](iot-accelerators-remote-monitoring-deploy-local.md)
 ### [Adatok vizualizálása a Time Series Insightsszal](../iot-suite/iot-suite-time-series-insights.md)
-### [Integrálás a Data Lake-kel](../iot-suite/iot-suite-integrate-data-lake.md)
+### [Integrálás a Data Lake-kel](iot-accelerators-integrate-data-lake.md)
 ### Fizikai eszköz csatlakoztatása
-#### [C Windowson](../iot-suite/iot-suite-connecting-devices.md)
-#### [C Linuxon](../iot-suite/iot-suite-connecting-devices-linux.md)
-#### [Node.js (általános)](../iot-suite/iot-suite-connecting-devices-node.md)
-#### [Node.js Raspberry Pi-on](../iot-suite/iot-suite-connecting-pi-node.md)
-#### [C Raspberry Pi-on](../iot-suite/iot-suite-connecting-pi-c.md)
+#### [C Windowson](iot-accelerators-connecting-devices.md)
+#### [C Linuxon](iot-accelerators-connecting-devices-linux.md)
+#### [Node.js (általános)](iot-accelerators-connecting-devices-node.md)
+#### [Node.js Raspberry Pi-on](iot-accelerators-connecting-pi-node.md)
+#### [C Raspberry Pi-on](iot-accelerators-connecting-pi-c.md)
 #### [MX Chip AZ3166 fejlesztői készlet](../iot-suite/iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 
 ### Alapelvek
-#### [Távoli monitorozás megvalósítási részletei](../iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md)
+#### [Távoli monitorozás megvalósítási részletei](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 #### [Távoli monitorozási architektúra lehetőségei](iot-accelerators-remote-monitoring-architectural-choices.md)
 
 ## Csatlakoztatott gyár
-### [Átjáró telepítése csatlakoztatott gyárhoz](../iot-suite/iot-suite-connected-factory-gateway-deployment.md)
-### [Csatlakoztatott gyár testreszabása](../iot-suite/iot-suite-connected-factory-customize.md)
+### [Átjáró telepítése csatlakoztatott gyárhoz](iot-accelerators-connected-factory-gateway-deployment.md)
+### [Csatlakoztatott gyár testreszabása](iot-accelerators-connected-factory-customize.md)
 ### [Az OPC-közzétevő használata a csatlakoztatott gyárhoz](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
-### [Csatlakoztatott gyár konfigurálása](../iot-suite/iot-suite-connected-factory-configure.md)
+### [Csatlakoztatott gyár konfigurálása](iot-accelerators-connected-factory-configure.md)
 ## [Engedélyek az azureiotsuite.com webhelyen](../iot-suite/iot-suite-permissions.md)
 
 # Referencia
@@ -118,8 +118,8 @@
 
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
-## [GYIK](../iot-suite/iot-suite-faq.md)
-## [Gyakori kérdések a távoli monitorozásról](../iot-suite/iot-suite-faq-rm-v2.md)
-## [Csatlakoztatott gyár – GYIK](../iot-suite/iot-suite-faq-cf.md)
+## [GYIK](iot-accelerators-faq.md)
+## [Gyakori kérdések a távoli monitorozásról](iot-accelerators-faq-rm-v2.md)
+## [Csatlakoztatott gyár – GYIK](iot-accelerators-faq-cf.md)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-suite)
 ## [Az IoT-megoldásgyorsítók képzési terve](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: e518799fb4144093e5c3caf0524254a098e4b9cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3efc351861a7d5b3c02c08b96494e83a3ccb99f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Az Azure Machine Learning modell felügyeleti fiók API-referencia
 
@@ -77,7 +77,7 @@ A modell regisztrációs lépésében létrehozott Azure modell felügyeleti fi�
 Regisztrálja a modell.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -90,8 +90,8 @@ Regisztrálja a modell.
 ### <a name="responses"></a>Válaszok
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
-| 200 | OKÉ. A modell regisztrálása sikeres volt. | [Modell](#model) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| 200 | OK. A modell regisztrálása sikeres volt. | [Modell](#model) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-models-in-an-account"></a>Lekérdezési fiók a modellek listája
 ### <a name="request"></a>Kérés
@@ -103,7 +103,7 @@ Regisztrálja a modell.
 Lekérdezi a fiók a modellek listája. Az eredménylista címke és név szerint szűrhetők. Ha nincs szűrő fogad el, a lekérdezés felsorolja a fiók összes modellt. A visszaadott lista paginated van, és minden oldalon szereplő elemek száma nem kötelező paraméter.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -119,7 +119,7 @@ Lekérdezi a fiók a modellek listája. Az eredménylista címke és név szerin
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [PaginatedModelList](#paginatedmodellist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-model-details"></a>Részletek a modell
 ### <a name="request"></a>Kérés
@@ -132,7 +132,7 @@ Lekérdezi a fiók a modellek listája. Az eredménylista címke és név szerin
 Lekérdezi a modell azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -145,7 +145,7 @@ Lekérdezi a modell azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [Modell](#model) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="register-a-manifest-with-the-registered-model-and-all-dependencies"></a>A regisztrált modellhez és az összes függősége a jegyzékfájl regisztrálása
 
@@ -158,7 +158,7 @@ Lekérdezi a modell azonosítóját.
 A jegyzék regisztrálja a regisztrált modellhez és annak függőségeit.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -171,7 +171,7 @@ A jegyzék regisztrálja a regisztrált modellhez és annak függőségeit.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Manifest a regisztráció sikeres volt. | [Manifest](#manifest) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-manifests-in-an-account"></a>A lekérdezés a jegyzékfájlokat az fiók listája
 
@@ -184,7 +184,7 @@ A jegyzék regisztrálja a regisztrált modellhez és annak függőségeit.
 Lekérdezi a jegyzékfájlokat az fiók listáját. Az eredménylista modell-azonosító szerinti szűrése, és a jegyzékfájl neve. Ha nincs szűrő fogad el, a lekérdezés felsorolja az összes a jegyzékfájlokat az a fiók. A visszaadott lista paginated van, és minden oldalon szereplő elemek száma nem kötelező paraméter.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -200,7 +200,7 @@ Lekérdezi a jegyzékfájlokat az fiók listáját. Az eredménylista modell-azo
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [PaginatedManifestList](#paginatedmanifestlist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-manifest-details"></a>Részletek a jegyzék
 
@@ -213,7 +213,7 @@ Lekérdezi a jegyzékfájlokat az fiók listáját. Az eredménylista modell-azo
 Lekérdezi a jegyzékfájl által azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -226,7 +226,7 @@ Lekérdezi a jegyzékfájl által azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [Manifest](#manifest) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="create-an-image"></a>Lemezkép létrehozása
 
@@ -239,7 +239,7 @@ Lekérdezi a jegyzékfájl által azonosítóját.
 Lemezkép létrehozása az Azure-tároló beállításjegyzék Docker lemezképként.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -252,7 +252,7 @@ Lemezkép létrehozása az Azure-tároló beállításjegyzék Docker lemezképk
 | Kód | Leírás | Fejlécek | Séma |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Az aszinkron művelet hely URL-címe. GET hívást megtudhatja, a lemezkép-készítési feladat állapotát. | A művelet-helye |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-images-in-an-account"></a>Egy fiók képek listájának lekérdezése
 
@@ -265,7 +265,7 @@ Lemezkép létrehozása az Azure-tároló beállításjegyzék Docker lemezképk
 Egy fiók képek listájának lekérdezése. Az eredménylista jegyzék azonosító és név szerint szűrhetők. Ha nincs szűrő fogad el, a lekérdezés felsorolja az a fiók a lemezképeket. A visszaadott lista paginated van, és minden oldalon szereplő elemek száma nem kötelező paraméter.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -281,7 +281,7 @@ Egy fiók képek listájának lekérdezése. Az eredménylista jegyzék azonosí
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [PaginatedImageList](#paginatedimagelist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-image-details"></a>Részletek a kép
 
@@ -294,7 +294,7 @@ Egy fiók képek listájának lekérdezése. Az eredménylista jegyzék azonosí
 Lekérdezi a lemezkép azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -307,7 +307,7 @@ Lekérdezi a lemezkép azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [Rendszerkép](#image) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 
 ## <a name="create-a-service"></a>Szolgáltatás létrehozása
@@ -321,7 +321,7 @@ Lekérdezi a lemezkép azonosítóját.
 Szolgáltatás létrehozása lemezkép.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -335,7 +335,7 @@ Szolgáltatás létrehozása lemezkép.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Az aszinkron művelet hely URL-címe. GET hívást megtudhatja, a szolgáltatás-készítési feladat állapotát. | A művelet-helye |
 | 409 | Már létezik ilyen nevű szolgáltatás. |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-services-in-an-account"></a>Lekérdezési fiók szolgáltatások listája
 
@@ -348,7 +348,7 @@ Szolgáltatás létrehozása lemezkép.
 Lekérdezi egy fiókot a szolgáltatások listájában. Szűrheti az eredménylista modell név és azonosító, név/Jegyzékfájl, lemezkép-Azonosítót, szolgáltatásnév vagy Machine Learning számítási erőforrás-azonosító. Nincs szűrő fogad el, ha a lekérdezés felsorolja az összes szolgáltatás a fiókban. A visszaadott lista paginated van, és minden oldalon szereplő elemek száma nem kötelező paraméter.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -369,7 +369,7 @@ Lekérdezi egy fiókot a szolgáltatások listájában. Szűrheti az eredményli
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [PaginatedServiceList](#paginatedservicelist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-service-details"></a>Szolgáltatás-részletek
 
@@ -382,7 +382,7 @@ Lekérdezi egy fiókot a szolgáltatások listájában. Szűrheti az eredményli
 Lekérdezi a szolgáltatás által azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -395,20 +395,20 @@ Lekérdezi a szolgáltatás által azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [ServiceResponse](#serviceresponse) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="update-a-service"></a>Szolgáltatás frissítése
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| A PUT |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
+| PUT |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Leírás
 Frissíti a meglévő szolgáltatás.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -423,7 +423,7 @@ Frissíti a meglévő szolgáltatás.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Az aszinkron művelet hely URL-címe. GET hívást megtudhatja, a frissítési feladat állapotát. | A művelet-helye |
 | 404 | A szolgáltatást, amely a megadott azonosító nem létezik. |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="delete-a-service"></a>A szolgáltatás törlése
 
@@ -436,7 +436,7 @@ Frissíti a meglévő szolgáltatás.
 Szolgáltatás törlése.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -450,7 +450,7 @@ Szolgáltatás törlése.
 |--------------------|--------------------|--------------------|
 | 200 | Siker. |  |
 | 204 | A szolgáltatást, amely a megadott azonosító nem létezik. |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-service-keys"></a>Szolgáltatás-kulcsok beszerzése
 
@@ -463,7 +463,7 @@ Szolgáltatás törlése.
 Lekérdezi a kulcsai.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -476,20 +476,20 @@ Lekérdezi a kulcsai.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [AuthKeys](#authkeys)
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="regenerate-service-keys"></a>Szolgáltatás kulcsok újragenerálása
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
+| POST |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /services/ {azonosítójú} / regenerateKeys | 
 
 ### <a name="description"></a>Leírás
 Szolgáltatás kulcsainak újragenerálása, és visszaadja azokat.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -503,7 +503,7 @@ Szolgáltatás kulcsainak újragenerálása, és visszaadja azokat.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [AuthKeys](#authkeys)
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="query-the-list-of-deployments-in-an-account"></a>A központi telepítések fiók listájának lekérdezése
 
@@ -516,7 +516,7 @@ Szolgáltatás kulcsainak újragenerálása, és visszaadja azokat.
 Lekérdezi a fiók üzemelő példányok listáját. Felügyeletiszolgáltatás-azonosító csak az adott szolgáltatáshoz létrehozott telepítések visszaadható által az eredménylista végezhet. Ha nincs szűrő fogad el, a lekérdezés felsorolja a fiók összes központi telepítést.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -529,7 +529,7 @@ Lekérdezi a fiók üzemelő példányok listáját. Felügyeletiszolgáltatás-
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [DeploymentList](#deploymentlist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-deployment-details"></a>Központi telepítés részletes
 
@@ -542,7 +542,7 @@ Lekérdezi a fiók üzemelő példányok listáját. Felügyeletiszolgáltatás-
 Lekérdezi a központi telepítéskor azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -555,7 +555,7 @@ Lekérdezi a központi telepítéskor azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [Üzembe helyezés](#deployment) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-operation-details"></a>A művelet részletes
 
@@ -568,7 +568,7 @@ Lekérdezi a központi telepítéskor azonosítóját.
 Művelet azonosító által aszinkron művelet állapotát olvassa be
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | A található | Leírás | Szükséges | Séma
+| Name (Név) | Hely | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
 | resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
@@ -581,7 +581,7 @@ Művelet azonosító által aszinkron művelet állapotát olvassa be
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [OperationStatus](#asyncoperationstatus) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 
 
@@ -732,7 +732,7 @@ Az Azure Machine Learning kép.
 |**id**  <br>*optional*|Lemezkép-azonosítót.|karakterlánc|
 |**imageBuildLogUri**  <br>*optional*|A kép összeállítása a feltöltött naplók URI Azonosítóját.|karakterlánc|
 |**imageLocation**  <br>*optional*|A létrehozott lemezképet Azure tároló beállításjegyzék helye karakterláncot.|karakterlánc|
-|**imageType**  <br>*optional*||[ImageType](#imagetype)|
+|**ImageType**  <br>*optional*||[ImageType](#imagetype)|
 |**Manifest**  <br>*optional*||[Manifest](#manifest)|
 |**name**  <br>*optional*|Kép neve.|karakterlánc|
 |**Verzió**  <br>*optional*|A modell szolgáltatás beállítása lemezkép verziója.|egész szám|
@@ -747,7 +747,7 @@ Azure Machine Learning lemezképeket készíthet a kérést.
 |---|---|---|
 |**computeResourceId**  <br>*Szükséges*|A környezet létre a Machine Learning számítási erőforrás-azonosítója.|karakterlánc|
 |**description**  <br>*optional*|Kép leíró szöveg.|karakterlánc|
-|**imageType**  <br>*Szükséges*||[ImageType](#imagetype)|
+|**ImageType**  <br>*Szükséges*||[ImageType](#imagetype)|
 |**Jegyzékfájl azonosítója**  <br>*Szükséges*|A jegyzékfájl, amelyből létrehozza a kép azonosítója.|karakterlánc|
 |**name**  <br>*Szükséges*|Kép neve.|karakterlánc|
 
