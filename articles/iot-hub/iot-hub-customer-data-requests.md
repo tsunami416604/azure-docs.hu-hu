@@ -4,12 +4,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/16/2018
 ms.topic: conceptual
-ms.service: iot-dps
-ms.openlocfilehash: a9115ee9c49ea069999393a6430b010addf672de
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-hub
+ms.openlocfilehash: 3af76fe22e93b6c5d502733196994bda61b9a93e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="summary-of-customer-data-request-features"></a>Felhasználói adatok kérelem szolgáltatásainak összefoglalása
 
@@ -42,7 +42,7 @@ A bérlői rendszergazdák másolási használják, és illessze be az IoT-Eszk�
 Akkor is REST API-k használatával exportálási műveleteinek elvégzéséhez. További információkért lásd: [eszköz Api - eszköz beolvasása](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice).
 
 > [!NOTE]
-> A Microsoft vállalati szolgáltatást használ, a Microsoft néhány információt, a rendszer naplókat néven hoz létre. Bizonyos Azure IoT Hub eszköz kiépítése szolgáltatáshoz rendszer által létrehozott naplók nem elérhetők, és a bérlői rendszergazdák által exportálható. Ezek a naplók a szolgáltatás és az egyes eszközökkel kapcsolatos diagnosztikai adatok végzett tényleges műveletek alkotják.
+> A Microsoft vállalati szolgáltatást használ, a Microsoft néhány információt, a rendszer naplókat néven hoz létre. Bizonyos Azure IoT Hub rendszer által létrehozott naplók nem elérhetők, és a bérlői rendszergazdák által exportálható. Ezek a naplók a szolgáltatás és az egyes eszközökkel kapcsolatos diagnosztikai adatok végzett tényleges műveletek alkotják.
 
 ## <a name="links-to-additional-documentation"></a>További dokumentációkra mutató hivatkozások
 

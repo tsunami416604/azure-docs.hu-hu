@@ -11,47 +11,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 53494abead5701052f6e08f68b01ccdf1bfa211c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1286698fb7dd13c7568a0fa8b20c50511d5a6919
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services-formerly-azure-devtest-labs"></a>Az Azure labor szolgáltatások (korábbi nevén az Azure DevTest Labs) labor fiókok kezelése
 Ez a cikk ismerteti, hogyan lab-fiók létrehozása, minden tesztkörnyezeti fiókok megtekintéséhez vagy labor fiók törlése.
 
-## <a name="create-a-lab-account"></a>Tesztlabor-fiók létrehozása
+## <a name="create-a-lab-account"></a>Tesztkörnyezetfiók létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A főmenüből a bal oldalon, válassza ki a **hozzon létre egy erőforrást**.
-3. Keresse meg **labor szolgáltatások** az Azure piactéren, és válassza ki a **labor szolgáltatások** a legördülő listában. 
+2. A bal oldali főmenüben válassza az **Erőforrás létrehozása** lehetőséget.
+3. Keressen a **Lab Services** szövegre az Azure Marketplace-en, és válassza a **Lab Services** alkalmazást a legördülő listából. 
 4. Válassza ki **Lab Sercices (előzetes verzió)** szolgáltatások flitered listáján. 
-5. Az a **lab-fiók létrehozása** ablakban válassza ki **létrehozása**.
-7. Az a **labor fiók** ablakban, a következő műveleteket hajthatja végre: 
-    1. A **labor fióknév**, adjon meg egy nevet. 
-    2. Válassza ki a **Azure-előfizetés** a kívánja a tesztlabor-fiók létrehozásához.
-    3. A **erőforráscsoport**, jelölje be **hozzon létre új**, és adja meg az erőforráscsoport nevét.
-    4. A **hely**, válasszon ki egy helyet/régiót, amelyben a labor fiókot létrehozni kívánt. 
+5. A **Tesztkörnyezetfiók létrehozása** ablakban válassza a **Létrehozás** elemet.
+7. A **Tesztkörnyezetfiók** ablakban tegye a következőket: 
+    1. Írjon be egy nevet a **Tesztkörnyezetfiók neve** mezőbe. 
+    2. Válassza ki azt az **Azure-előfizetést**, amelyben a tesztkörnyezetfiókot létre szeretné hozni.
+    3. Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget, majd adjon nevet az új erőforráscsoportnak.
+    4. A **Helyszín** esetében válassza ki a helyszínt/régiót, ahol létre szeretné hozni a tesztkörnyezetfiókot. 
     5. Kattintson a **Létrehozás** gombra. 
 
-        ![Labor fiók ablakának létrehozása](./media/how-to-manage-lab-accounts/lab-account-settings.png)
-5. Ha a labor fiók a lap nem látható, válassza ki a **értesítések** gombra, majd **forrást** az értesítések gombjára. 
+        ![Tesztkörnyezetfiók létrehozása ablak](./media/how-to-manage-lab-accounts/lab-account-settings.png)
+5. Ha a tesztkörnyezetfiók oldala nem látható, kattintson az **Értesítések** gombra, majd az **Ugrás ide: erőforrás** gombra az értesítésekben. 
 
-    ![Labor fiók ablakának létrehozása](./media/how-to-manage-lab-accounts/notification-go-to-resource.png)    
-6. Lásd a következő **labor fiók** lap:
+    ![Tesztkörnyezetfiók létrehozása ablak](./media/how-to-manage-lab-accounts/notification-go-to-resource.png)    
+6. Megjelenik az alábbi **tesztkörnyezetfiók** oldala:
 
-    ![Labor fiók lap](./media/how-to-manage-lab-accounts/lab-account-page.png)
+    ![Tesztkörnyezetfiók-oldal](./media/how-to-manage-lab-accounts/lab-account-page.png)
 
-## <a name="add-a-user-to-the-lab-creator-role"></a>Felhasználó hozzáadása a labor létrehozó szerepkör
-Nevelők labs, az osztályok létrehozásához az engedély megadásához adja hozzá a labor létrehozó szerepkört:
+## <a name="add-a-user-to-the-lab-creator-role"></a>Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz
+Ha engedélyt kíván ad az oktatóknak, hogy létrehozzák a tesztkörnyezeteket a tanóráikhoz, adja hozzá őket a Tesztkörnyezet-létrehozó szerepkörhöz:
 
-1. Az a **labor fiók** lapon jelölje be **hozzáférés-vezérlés (IAM)**, és kattintson a **+ Hozzáadás** az eszköztáron. 
+1. A **Tesztkörnyezetfiók** oldalon válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget, majd kattintson az eszköztár **+ Hozzáadás** elemére. 
 
-    ![Labor fiók lap](./media/tutorial-setup-lab-account/access-control.png)
-2. Az a **engedélyek hozzáadása** lapon jelölje be **labor létrehozó** a **szerepkör**, válassza ki a labor Creators szerepkör hozzáadása, és válassza ki a kívánt felhasználót **mentése**. 
+    ![Tesztkörnyezetfiók-oldal](./media/tutorial-setup-lab-account/access-control.png)
+2. Az **Engedélyek hozzáadása** oldal **Szerepkör** területén válassza a **Tesztkörnyezet-létrehozó** lehetőséget, válassza ki a Tesztkörnyezet-létrehozó szerepkörhöz hozzáadni kívánt felhasználót, majd kattintson a **Mentés** gombra. 
 
-    ![Felhasználó hozzáadása a labor létrehozó szerepkör](./media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
+    ![Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz](./media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 
 ## <a name="view-lab-accounts"></a>Labor számlák megtekintése
@@ -69,7 +69,7 @@ Kövesse az utasításokat a fenti szakaszban leírt tesztkörnyezet fiókok lis
 4. Válassza a **Törlés** elemet. 
 
 ## <a name="next-steps"></a>További lépések
-Ismerkedés az Azure labor Services labor beállításához:
+Kezdje meg egy tesztkörnyezet létrehozását az Azure Lab Services használatával:
 
-- [Egy osztályteremben tesztkörnyezet beállítása](tutorial-setup-classroom-lab.md)
-- [Egy egyéni tesztkörnyezet beállítása](tutorial-create-custom-lab.md)
+- [Osztályterem-tesztkörnyezet beállítása](tutorial-setup-classroom-lab.md)
+- [Egyéni tesztkörnyezet beállítása](tutorial-create-custom-lab.md)
