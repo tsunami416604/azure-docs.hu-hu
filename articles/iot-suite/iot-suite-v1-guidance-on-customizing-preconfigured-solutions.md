@@ -1,12 +1,12 @@
 ---
-title: "Testreszabás előre konfigurált megoldások |} Microsoft Docs"
-description: "Hogyan szabhatja testre az Azure IoT Suite előre konfigurált megoldásokat nyújt útmutatást."
-services: 
+title: Testreszabás előre konfigurált megoldások |} Microsoft Docs
+description: Hogyan szabhatja testre az Azure IoT Suite előre konfigurált megoldásokat nyújt útmutatást.
+services: ''
 suite: iot-suite
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4653ae53-4110-4a10-bd6c-7dc034c293a8
 ms.service: iot-suite
 ms.devlang: dotnet
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: ba965b9bc23b96adb2b1b7c9306cb7f508f820bf
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: cb5955111cb3954f71f11602042b5153ccee3473
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="customize-a-preconfigured-solution"></a>Előre konfigurált megoldás testreszabása
 
@@ -29,8 +29,8 @@ Az Azure IoT Suite előre konfigurált megoldásai belül a csomaggal együtt m�
 
 Az előkonfigurált megoldás forráskódját a következő tárházak a githubon érhető el:
 
-* Távoli megfigyelési: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
-* A prediktív karbantartási: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
+* Távoli figyelése: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
+* A prediktív karbantartás: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
 * Csatlakoztatott gyári: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
 Az előkonfigurált megoldás forráskódját bemutatása a minták és gyakorlatok összessége valósította meg a végpont funkciót egy IoT-megoldás Azure IoT Suite segítségével valósul meg. További információ és a GitHub-adattárak a megoldások üzembe található.
@@ -50,7 +50,7 @@ Ezeket a feladatokat, közvetlenül az alter logika szerkesztése, vagy adott lo
 5. A bemenet, a lekérdezés és a kimenetek szerkesztése.
    
     Egy egyszerű módosítása, hogy módosítsa a lekérdezést a **szabályok** használandó feladat egy **"<"** ahelyett, hogy egy **">"**. A megoldás portálra még mindig **">"** amikor szabály szerkesztése, de figyelje meg, hogyan viselkedését tükrözött miatt a változást az alapul szolgáló feladatot.
-6. Indítsa el a feladatot
+6. A feladat indítása
 
 > [!NOTE]
 > A távoli figyelési irányítópult adatokat, függ, így módosítása a feladat sikertelen lesz az irányítópult okozhat.
@@ -232,7 +232,7 @@ Az alapértelmezett érték 10 perc. Ez az érték módosítható [TelmetryApiCo
 
 Rendelkezik a testreszabást szeretné lásd a jelen dokumentum az érintett? Adja hozzá a szolgáltatási javaslataikat [User Voice](https://feedback.azure.com/forums/321918-azure-iot), vagy ez a cikk megjegyzés. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az előkonfigurált megoldásokat testreszabására vonatkozó beállításokkal kapcsolatos további tudnivalókért lásd:
 
@@ -252,4 +252,4 @@ Az előkonfigurált megoldásokat testreszabására vonatkozó beállításokkal
 [lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25 
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-cf-customize]: iot-suite-connected-factory-customize.md
+[lnk-cf-customize]:../iot-accelerators/iot-accelerators-connected-factory-customize.md
