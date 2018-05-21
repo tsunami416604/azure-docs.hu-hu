@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy feladatot az Azure Import/Export exportálási |} Microsoft Docs"
-description: "Útmutató a Microsoft Azure Import/Export szolgáltatás exportálási feladat létrehozásához."
+title: Hozzon létre egy feladatot az Azure Import/Export exportálási |} Microsoft Docs
+description: Útmutató a Microsoft Azure Import/Export szolgáltatás exportálási feladat létrehozásához.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 613d480b-a8ef-4b28-8f54-54174d59b3f4
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 70f74b685f4d5b902b6f6780f7c1de4d357164b8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 3fb3f2af5e5cebcac21f4372bc9d9dc9ee837202
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás exportálási feladat létrehozása
 A Microsoft Azure Import/Export szolgáltatás REST API használatával exportálási feladat létrehozása a következő lépésekből áll:
@@ -53,7 +53,7 @@ A Microsoft Azure Import/Export szolgáltatás REST API használatával exportá
  Blobok exportálása megadásával kapcsolatos további információkért lásd: a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) műveletet.
 
 ## <a name="obtaining-your-shipping-location"></a>A szállítási hely beszerzése
-Exportálási feladat létrehozása, előtt be kell szereznie a szállítási hely nevét és címét meghívásával a [első hely](https://portal.azure.com) vagy [lista helyek](/rest/api/storageimportexport/listlocations) műveletet. `List Locations`helyek és a levelezési címek listáját adja vissza. Jelöljön ki egy helyet a visszaadott listából, és küldje el a merevlemez-meghajtók adott címre. Használhatja a `Get Location` közvetlenül beszerzése a szállítási cím, egy adott helyre vonatkozó műveletet.
+Exportálási feladat létrehozása, előtt be kell szereznie a szállítási hely nevét és címét meghívásával a [első hely](https://portal.azure.com) vagy [lista helyek](/rest/api/storageimportexport/listlocations) műveletet. `List Locations` helyek és a levelezési címek listáját adja vissza. Jelöljön ki egy helyet a visszaadott listából, és küldje el a merevlemez-meghajtók adott címre. Használhatja a `Get Location` közvetlenül beszerzése a szállítási cím, egy adott helyre vonatkozó műveletet.
 
 A szállítási raktár beszerzése az alábbi lépésekkel:
 
@@ -68,7 +68,7 @@ A szállítási raktár beszerzése az alábbi lépésekkel:
 
 -   A feladat nevét.
 
--   A tárfiók nevét.
+-   A tárfiók neve.
 
 -   A szállítási hely neve, az előző lépésben beszerzett.
 
@@ -92,6 +92,8 @@ A szállítási raktár beszerzése az alábbi lépésekkel:
 ## <a name="receiving-the-package"></a>A csomag fogadása
  Az exportálási feladat feldolgozása után a meghajtók visszatér, a titkosított adatok. Kérheti le a BitLocker-kulcsot a meghajtókhoz meghívásával a [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) műveletet. Majd fel is oldhatja a meghajtót, a kulcs használatával. A meghajtó jegyzékfájl egyes fájlokat a meghajtó, valamint az eredeti blob cím az egyes fájlok listáját tartalmazza.
 
-## <a name="next-steps"></a>Következő lépések
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
+## <a name="next-steps"></a>További lépések
 
 * [Az Import/Export szolgáltatás REST API használatával](storage-import-export-using-the-rest-api.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e4e2edeb6703e8c55a16b488175fbcdb0dfe56a9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Naplóelemzési egyéni naplókat
 Az egyéni naplókat adatforrásra Naplóelemzési eseményeinek gyűjtése a Windows és Linux számítógépeken egyaránt szövegfájlból teszi lehetővé. Számos alkalmazás adatainak naplózása szöveges fájlok, például a Windows Eseménynapló vagy a Syslog szabványos naplózási szolgáltatások helyett.  Összegyűjtését követően elemezni a rekordokban a bejelentkezés használatával az egyes mezők a [egyéni mezők](log-analytics-custom-fields.md) Naplóelemzési szolgáltatása.
@@ -29,7 +29,7 @@ A naplófájlok kell gyűjteni a következő feltételeknek kell.
 
 - A napló kell el egy soronként egy bejegyzést, vagy minden egyes belépési elején a következő formátumok egyikének megfelelő időbélyeggel használjon.
 
-    ÉÉÉÉ-HH-NN ÓÓ: PP:<br>H/ÉÉÉÉ ÓÓ: PP: MP DE/DU <br>F nn, éééé óó: pp:
+    ÉÉÉÉ-HH-NN ÓÓ: PP:<br>H/ÉÉÉÉ ÓÓ: PP: MP DE/DU<br>F nn, éééé óó: pp:<br />ééhhnn óó: pp:<br />ddMMyy óó: pp:<br />HHH d óó: pp:<br />nn/hhh/yyyy:HH:mm:ss zzz<br />éééé-hh-ddTHH:mm:ssK
 
 - A naplófájl nem engedélyezheti a körkörös naplózás vagy naplóváltás, ha a fájl új bejegyzések felülírja.
 - A naplófájl ASCII vagy UTF-8 kódolást kell használnia.  Más például az UTF-16 formátum nem támogatott.
@@ -63,7 +63,7 @@ Timestamp típusú elválasztó használata esetén majd Naplóelemzési tárolt
 4. A határoló, amellyel azonosíthatja egy új rekordot, és válassza ki a szövegelválasztó, amely a legjobban azonosítja a naplófájl rekordjainak módosítása.
 5. Kattintson a **Tovább** gombra.
 
-### <a name="step-3-add-log-collection-paths"></a>3. lépés Adja hozzá a Naplógyűjtemények elérési útját
+### <a name="step-3-add-log-collection-paths"></a>3. lépés Naplógyűjtemények elérési útjának felvétele
 Meg kell adnia egy vagy több elérési utak az ügynökön, ahol keresse meg az egyéni naplót.  Vagy megadhatja a megadott elérési út és a naplófájl nevét, vagy egy elérési utat megadhatja a név helyettesítő karakter.  Ez a funkció támogatja alkalmazásokat, amelyek minden nap, vagy ha egy fájl elér egy adott méretet, hozzon létre egy új fájlt.  Több útvonal egy naplófájlt is biztosítható.
 
 Például egy alkalmazás előfordulhat, hogy dátummal hozza létre a naplófájl minden nap a a neve, ahogy log20100316.txt tartalmazza. Előfordulhat, hogy az ilyen naplók minta *napló\*.txt* amely bármely naplófájl, az alkalmazás a következő lenne érvényes csomagazonosítóját elnevezési sémát.
@@ -150,7 +150,7 @@ A naplófájlok egyikét adja meg azt, és láthatja az eseményeket, azt fogja 
 
 ![Töltse fel, és elemezni egy mintanaplót](media/log-analytics-data-sources-custom-logs/delimiter.png)
 
-### <a name="add-log-collection-paths"></a>Adja hozzá a Naplógyűjtemények elérési útját
+### <a name="add-log-collection-paths"></a>Naplógyűjtemények elérési útjának felvétele
 A naplófájlokban található *C:\MyApp\Logs*.  Egy új fájl neve tartalmazza a dátum a mintában a naponta jön létre *appYYYYMMDD.log*.  Ez a napló az elegendő mintázatát lenne *C:\MyApp\Logs\\\*.log*.
 
 ![Naplófájl elérési útvonala](media/log-analytics-data-sources-custom-logs/collection-path.png)
