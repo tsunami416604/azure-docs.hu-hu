@@ -1,33 +1,33 @@
 ---
-title: "Az Azure Resource Manager sablonfüggvényei - logikai |} Microsoft Docs"
-description: "Az Azure Resource Manager-sablonok segítségével határozza meg a logikai értékek funkcióit ismerteti."
+title: Az Azure Resource Manager sablonfüggvényei - logikai |} Microsoft Docs
+description: Az Azure Resource Manager-sablonok segítségével határozza meg a logikai értékek funkcióit ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: d16264abf64ef88dfb24948fc04e33de619f4e3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8a7ae412fc80dff7bd91c1cdc5d4fcd985e07f4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz logikai funkciók
 
 Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlításához.
 
-* [és](#and)
-* [logikai érték](#bool)
-* [Ha](#if)
-* [nem](#not)
+* [És](#and)
+* [bool](#bool)
+* [if](#if)
+* [not](#not)
 * [vagy](#or)
 
 ## <a name="and"></a>és
@@ -39,8 +39,8 @@ Ellenőrzi, hogy mindkét paraméter érték igaz.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |Logikai érték |Ellenőrizze, hogy az első érték e értéke true. |
-| Arg2 |Igen |Logikai érték |A második érték ellenőrizze, hogy igaz. |
+| arg1 |Igen |logikai |Ellenőrizze, hogy az első érték e értéke true. |
+| Arg2 |Igen |logikai |A második érték ellenőrizze, hogy igaz. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -74,7 +74,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában a kimenete a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | andExampleOutput | logikai érték | False (Hamis) |
 | orExampleOutput | logikai érték | True (Igaz) |
@@ -138,7 +138,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az alapértelmezett értékeit az előző példából kimenete:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | trueString | logikai érték | True (Igaz) |
 | falseString | logikai érték | False (Hamis) |
@@ -166,7 +166,7 @@ E alapján értéket adja vissza egy feltétele igaz vagy hamis.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| Az állapot |Igen |Logikai érték |Annak ellenőrzéséhez, hogy az IGAZ értéket. |
+| feltétel |Igen |logikai |Annak ellenőrzéséhez, hogy az IGAZ értéket. |
 | trueValue |Igen | karakterlánc, int, objektum vagy tömb |Visszatérési érték, ha a feltétel teljesül. |
 | falseValue |Igen | karakterlánc, int, objektum vagy tömb |Visszatérési érték, ha a feltétel hamis. |
 
@@ -245,7 +245,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában a kimenete a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | yesOutput | Karakterlánc | igen |
 | noOutput | Karakterlánc | nem |
@@ -271,7 +271,7 @@ Az ellenkező értékre alakítja át a logikai érték.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |Logikai érték |Alakítsa át a érték. |
+| arg1 |Igen |logikai |Alakítsa át a érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -305,7 +305,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában a kimenete a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | andExampleOutput | logikai érték | False (Hamis) |
 | orExampleOutput | logikai érték | True (Igaz) |
@@ -341,7 +341,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában a kimenete a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | checkNotEquals | logikai érték | True (Igaz) |
 
@@ -366,8 +366,8 @@ Ellenőrzi, hogy mindkét paraméter értéke igaz.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |Logikai érték |Ellenőrizze, hogy az első érték e értéke true. |
-| Arg2 |Igen |Logikai érték |A második érték ellenőrizze, hogy igaz. |
+| arg1 |Igen |logikai |Ellenőrizze, hogy az első érték e értéke true. |
+| Arg2 |Igen |logikai |A második érték ellenőrizze, hogy igaz. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -401,7 +401,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában a kimenete a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | andExampleOutput | logikai érték | False (Hamis) |
 | orExampleOutput | logikai érték | True (Igaz) |
@@ -419,7 +419,7 @@ A példa sablon PowerShell használatával történő üzembe helyezéséhez has
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
 * Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).

@@ -1,11 +1,11 @@
 ---
-title: "Új generációs tűzfal hozzáadása az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center javaslatait ** adja hozzá a következő generációs tűzfal ** és ** útvonal traffice keresztül NGFW csak **."
+title: Új generációs tűzfal hozzáadása az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center javaslatait **adja hozzá az új generációs tűzfal** és **útvonal traffice keresztül NGFW csak**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f70cb03a26fd5bea7e1e034c653ece8e0b8c349
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Új generációs tűzfal hozzáadása az Azure Security Centerben
 Az Azure Security Center javasolhatja új generációs tűzfal (NGFW) hozzáadása egy Microsoft-partner növelje a biztonsági védelmet. Ez a dokumentum útmutatást nyújt a példa bemutatja, hogyan ehhez.
@@ -49,11 +49,11 @@ Lépjen vissza a **javaslatok** panelen. Egy új bejegyzést jött létre, miut�
    ![Csak az újgenerációs tűzfalon keresztül haladjon a forgalom][7]
 2. Ekkor megnyílik a panel **keresztül NGFW forgalmat csak**, amely felsorolja azokat a virtuális gépek, amelyek irányíthatja a forgalmat. Jelöljön ki egy virtuális Gépet a listából.
    ![Jelöljön ki egy virtuális Gépet][8]
-3. A kijelölt virtuális gép ekkor megnyílik egy panel, kapcsolódó bejövő szabályok. Olyan leírást nyújt további információt a következő lépést. Válassza ki **bejövő szabályok szerkesztése** egy bejövő forgalomra vonatkozó szabály szerkesztése gombra. Az általános gyakorlat, hogy **forrás** értéke nem **bármely** az Internet felé néző végpontok az NGFW kapcsolódik. A bejövő szabály tulajdonságait kapcsolatos további információkért lásd: [NSG-szabályok](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+3. A kijelölt virtuális gép ekkor megnyílik egy panel, kapcsolódó bejövő szabályok. Olyan leírást nyújt további információt a következő lépést. Válassza ki **bejövő szabályok szerkesztése** egy bejövő forgalomra vonatkozó szabály szerkesztése gombra. Az általános gyakorlat, hogy **forrás** értéke nem **bármely** az Internet felé néző végpontok az NGFW kapcsolódik. A bejövő szabály tulajdonságait kapcsolatos további információkért lásd: [biztonsági szabályok](../virtual-network/security-overview.md#security-rules).
    ![A hozzáférés korlátozásához szabályok konfigurálása][9]
    ![bejövő forgalomra vonatkozó szabály szerkesztése][10]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ez a dokumentum bemutatta megvalósításához a Security Center javaslat "Vegyen fel új generációs tűzfal." NGFWs és a Check Point partnermegoldáshoz kapcsolatos további tudnivalókért olvassa el a következőket:
 
 * [Új generációs tűzfal](https://en.wikipedia.org/wiki/Next-Generation_Firewall)

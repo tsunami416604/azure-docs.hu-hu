@@ -9,16 +9,16 @@ editor: tysonn
 ms.assetid: 0644abe1-abaa-443d-820d-1966d7d26bfd
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: e21a8251cc4a85232b92faa05d01d0f73410e496
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fce3fd03f22c7e2d1c1524b9deb1f6935dbc3755
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-resource-manager-template-functions"></a>Az Azure Resource Manager sablonfüggvényei
 Ez a cikk ismerteti az Azure Resource Manager-sablonokban használható összes függvények.
@@ -102,7 +102,7 @@ Erőforrás-kezelő a következő funkciókat nyújt értékek lekérése a sabl
 <a id="not" />
 <a id="or" />
 
-## <a name="logical-functions"></a>Logikai funkciók
+## <a name="logical-functions"></a>Logikai függvények
 Erőforrás-kezelő a következő funkciókat biztosít a logikai feltételek használata:
 
 * [És](resource-group-template-functions-logical.md#and)
@@ -187,7 +187,7 @@ Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek be
 <a id="uricomponent" />
 <a id="uricomponenttostring" />
 
-## <a name="string-functions"></a>Karakterlánc
+## <a name="string-functions"></a>Karakterlánc-függvények
 Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata.
 
 * [base64](resource-group-template-functions-string.md#base64)

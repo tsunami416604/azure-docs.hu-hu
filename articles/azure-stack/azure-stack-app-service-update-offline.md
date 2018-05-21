@@ -1,24 +1,24 @@
 ---
-title: "Az Azure App Service Offline frissítése |} Microsoft Docs"
-description: "Részletes útmutatást Azure App Service Azure veremben offline frissítése"
+title: Az Azure App Service Offline frissítése |} Microsoft Docs
+description: Részletes útmutatást Azure App Service Azure veremben offline frissítése
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 61a3169229cc121c078a934f6b979bdaffafd565
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8671cba484a779e8d7cd0172df141497bb396a97
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Az Azure App Service Azure veremben offline frissítése
 
@@ -43,7 +43,7 @@ Ez a cikk utasításait követve frissíthet a [App Service erőforrás-szolgál
 
 Frissítse az App Service erőforrás-szolgáltató Azure verem környezetben, végre kell hajtania ezeket a feladatokat:
 
-1. Töltse le a [App Service-telepítő](https://aka.ms/appsvcupdate1installer)
+1. Töltse le a [App Service-telepítő](https://aka.ms/appsvcupdate2installer)
 2. Hozzon létre egy kapcsolat nélküli frissítési csomagot.
 3. Futtassa az App Service telepítőjét (appservice.exe), és végezze el a frissítést.
 
@@ -52,7 +52,7 @@ A folyamat során a frissítés tartalma:
 * Az App Service a korábbi központi telepítés észlelése
 * Töltse fel a tároló
 * Az összes App Service-szerepkör frissítése (vezérlők, a felügyeleti, előtér-, a közzétevő és a munkavégző szerepkörök)
-* App Service-méretezési készlet definíciók frissítése
+* Az App Service méretezésicsoport-definícióinak frissítése
 * Az App Service erőforrás-szolgáltató jegyzékfájlját frissítése
 
 ## <a name="create-an-offline-upgrade-package"></a>A kapcsolat nélküli frissítési csomag létrehozása
@@ -78,7 +78,7 @@ Frissítse App Service leválasztott környezetben, akkor először létre kell 
 >
 >
 
-1. Appservice.exe futtassa rendszergazdaként.  
+1. Appservice.exe futtassa rendszergazdaként.
 
     ![Az App Service-telepítő][1]
 
@@ -94,14 +94,14 @@ Frissítse App Service leválasztott környezetben, akkor először létre kell 
 
 6. Győződjön meg arról, hogy az Azure verem Azure Resource Manager-végpont és az Active Directory-bérlő adatok helyesek. Azure verem szoftverfejlesztői készlet üzembe helyezése során az alapértelmezett beállításokat használja, ha elfogadhatja az alapértelmezett értékeket itt. Azonban Ha testreszabta a beállítások Azure verem üzembe helyezésekor, szerkesztenie kell a ebben az ablakban megfelelően, hogy az értékek is. Például, ha a tartományi utótag *mycloud.com*, módosítsa a Azure verem Azure Resource Manager-végpontot kell *management.region.mycloud.com*. Miután meggyőződött róla, hogy az adatait, kattintson a **következő**.
 
-    ![Azure Stack Cloud Information][3]
+    ![Az Azure verem felhőalapú információk][3]
 
 7. A következő lapon:
 
    1. Kattintson a **Connect** megjelenítő gombra a **Azure verem előfizetések** mezőbe.
         * Azure Active Directory (Azure AD) használata, adja meg az Azure AD rendszergazdai fiókot és Azure verem telepítésekor megadott jelszót. Kattintson a **bejelentkezés**.
-        * Ha Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például  *cloudadmin@azurestack.local* . Írja be a jelszót, és kattintson a **bejelentkezés**.
-   2. Az a **Azure verem előfizetések** jelölje ki az előfizetését.
+        * Ha Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például *cloudadmin@azurestack.local*. Írja be a jelszót, és kattintson a **bejelentkezés**.
+   2. Az a **Azure verem előfizetések** mezőben válassza a **alapértelmezett szolgáltató előfizetés**.
    3. Az a **Azure verem helyek** válassza ki a helyet, amely megfelel a régióban való telepítése esetén. Válassza például **helyi** Ha a központi telepítése az Azure verem szoftverfejlesztői készlet.
    4. Ha egy meglévő App Service-telepítés fel van derítve, majd az erőforrás csoport és a tárolási fiók lesz lehet feltöltve, szürkén jelenik meg.
    5. Kattintson a **következő** áttekintheti a frissítési összefoglalót.
@@ -113,7 +113,7 @@ Frissítse App Service leválasztott környezetben, akkor először létre kell 
    2. Ha a konfiguráció helyes, jelölje be a jelölőnégyzetet.
    3. A frissítés elindításához kattintson **következő**.
 
-       ![App Service Upgrade Summary][5]
+       ![Az App Service frissítési összefoglalót][5]
 
 9. Frissítési folyamat oldalon:
     1. A frissítési folyamat nyomon követéséhez. A frissítés az App Service Azure veremben időtartama változó telepített szerepkör-példányok száma függ.
