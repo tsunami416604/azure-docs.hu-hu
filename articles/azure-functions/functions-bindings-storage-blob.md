@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1d1cdee7373b949456032aff3c808cc233aaa1cc
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f74a44ed1b26458ad77e5de43a67a961aee70ec1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -773,7 +773,7 @@ A C# és C# a parancsfájlt köthető a következő típusok blobok írni:
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> "a" kötésben szükséges `direction` a *function.json* vagy `FileAccess.Read` C# osztály könyvtárban.
+<sup>1</sup> "a" kötésben szükséges `direction` a *function.json* vagy `FileAccess.Read` C# osztály könyvtárban. Az objektum, amely a futtatókörnyezetet biztosít írási műveletek, például a blobok feltölteni a tárolóba is használhatja.
 
 <sup>2</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
 

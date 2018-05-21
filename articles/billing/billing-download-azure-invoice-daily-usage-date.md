@@ -17,17 +17,18 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18f568fdeead10fadad0e403ce0ca7fe4b3213a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e57e3898c5e843dcc130746a10e78b0681303670
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Az Azure számlázási számla és a napi használati adatok megtekintése és letöltése
 A számla a programot letöltheti a [Azure-portálon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy annak az e-mailben küldött. A napi használat letöltéséhez keresse fel a [Azure Account Center](https://account.azure.com/Subscriptions). Csak egyes szerepkörök engedélye számlázási számla és használati adatokat, például a fiók rendszergazdájához. Első számlázási információhoz való hozzáféréssel kapcsolatos további információkért lásd: [Azure számlázási szerepkörök használatával való hozzáférés kezelése](billing-manage-access.md).
 
->[!NOTE]
->Ez a cikk nem alkalmazza a nagyvállalati szerződés (EA) vonatkozik. Ha az ügyfél egy EA, a számlák közvetlenül a beléptetési rendszergazdák kerülnek.
+Ez a cikk nem alkalmazza a nagyvállalati szerződés (EA) vonatkozik. Ha az ügyfél egy EA, a számlák közvetlenül a beléptetési rendszergazdák kerülnek.
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="get-your-invoice-in-email-pdf"></a>A számla beolvasni e-mailben (.pdf)
 Részt, és konfigurálja az Azure fogadásához további címzetteket számla e-mailben. Ez a szolgáltatás nem az egyes előfizetések például támogatási ajánlatokat, kötött nagyvállalati szerződése vagy Azure in Open licencprogram érhetők el.

@@ -1,11 +1,11 @@
 ---
-title: "Azure-hálózat ajánlott biztonsági eljárások |} Microsoft Docs"
-description: "Ismerje meg, néhány biztonságos hálózati környezetben létrehozásához Azure-ban elérhető a legfontosabb jellemzők"
+title: Azure-hálózat ajánlott biztonsági eljárások |} Microsoft Docs
+description: Ismerje meg, néhány biztonságos hálózati környezetben létrehozásához Azure-ban elérhető a legfontosabb jellemzők
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: d169387a-1243-4867-a602-01d6f2d8a2a1
 ms.service: virtual-network
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf015f4857a22b755813d0be1af5a55a8b7b6535
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>A Microsoft cloud services és a hálózati biztonság
 A Microsoft cloud services csomag kézbesítése kapacitású szolgáltatások és az infrastruktúra, a vállalati szintű képességet és a számos választhat való hibrid kapcsolathoz. Az ügyfelek ezeket a szolgáltatásokat, vagy az interneten keresztül, vagy Azure ExpressRoute, amely kapcsolattal rendelkező eléréséhez választhat. A Microsoft Azure platform lehetővé teszi, hogy az ügyfelek zökkenőmentesen bővítheti az infrastruktúrát kiterjeszti a felhőbe, és hozhat létre többrétegű architektúrák számára. Emellett harmadik felek engedélyezéséhez bővített szolgáltatásokat nyújtó biztonsági szolgáltatásait és a virtuális készülékek. Ez a dokumentum áttekintést nyújt biztonsági és architekturális problémák, az ügyfelek figyelembe kell venni a Microsoft más felhőszolgáltatásaival ExpressRoute keresztül elért használatakor. Azt is magában foglalja biztonságosabb szolgáltatások létrehozása az Azure virtuális hálózatot.
@@ -513,9 +513,9 @@ Egy ExpressRoute privát társviszony-létesítés hálózati kapcsolat hozzáad
 ## <a name="references"></a>Referencia
 ### <a name="helpful-websites-and-documentation"></a>Hasznos webhelyek és dokumentáció
 * Access Azure az Azure Resource Manager eszközzel:
-* Azure PowerShell használata: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
+* Hozzáférés az Azure PowerShell használatával: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
 * Virtuális hálózati dokumentáció: [https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
-* Hálózati biztonsági csoport dokumentáció: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
+* Hálózati biztonsági csoport dokumentáció: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/security-overview.md)
 * Felhasználó által definiált útválasztási dokumentáció: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
 * Az Azure virtuális átjárók: [https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
 * Pont-pont VPN: [https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell](vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)

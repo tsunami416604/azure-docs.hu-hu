@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-machines
+author: jpconnock
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 05/18/2018
+ms.author: jeconnoc
+ms.custom: include file
+ms.openlocfilehash: 15cbfb9babe38ba6acaf4312735ab839af3f2d99
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/20/2018
+---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>A klasszikusból Azure Resource Manager-alapú környezetbe való migrálásra vonatkozó gyakori kérdések
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Érinti ez a migrálási terv az Azure virtuális gépeken futó meglévő szolgáltatásaimat és alkalmazásaimat? 
@@ -32,14 +48,24 @@ Nem. Nemrégiben lehetővé tettük [az ExpressRoute-kapcsolatcsoportok áthelye
 
 A migrálás során az erőforrások át lesznek alakítva klasszikusból Resource Manager-alapú erőforrásokká. Ezért azt javasoljuk, hogy az RBAC-szabályzatok szükséges frissítését a migrálás befejezte utánra tervezze.
 
-## <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Biztonsági másolatot készítettem a klasszikus virtuális gépemről egy biztonsági mentési tárban. Áttelepíthetem a virtuális gépeimet a klasszikus módból Resource Manager módba, hogy egy Recovery Services-tárolóban védjem őket?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>I biztonsági másolatot készíteni a klasszikus virtuális gépek az adott tárolóban. Áttelepíthetem a virtuális gépeimet a klasszikus módból Resource Manager módba, hogy egy Recovery Services-tárolóban védjem őket?
 
-<a name="vault">Klasszikus</a> egy mentési tárolót a virtuális gép helyreállítási pontok nem automatikusan telepíti át a Recovery Services-tároló, helyezze át a virtuális Gépet a klasszikus Resource Manager módra. Hajtsa végre ezeket a lépéseket a virtuális gép biztonsági mentéseinek áttelepítéséhez:
+<a name="vault">Amikor</a> helyez át egy virtuális Gépet a klasszikus Resource Manager módra, az áttelepítés előtt készített biztonsági másolatokat a rendszer nem telepíti át újonnan áttelepített erőforrás-kezelő virtuális géphez. Ha szeretné megtartani a klasszikus virtuális gépek biztonsági másolatokat, azonban kövesse az alábbi lépéseket az áttelepítés előtt. 
 
-1. A Backup-tárolóban lépjen a **Protected Items** (Védett elemek) lapra, és válassza ki a virtuális gépet. Kattintson a [Védelem kikapcsolása](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines) parancsra. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
-2. Törölje a biztonsági mentés/pillanatkép bővítményt a virtuális gépről.
-3. Telepítse át a virtuális gépet a klasszikus módból a Resource Manager módba. A virtuális gépnek megfelelő tároló és hálózat adatait is mindenképpen telepítse át Resource Manager módba.
-4. Hozzon létre egy Recovery Services-tárolót, és konfigurálja a biztonsági mentést az áttelepített virtuális gépen a tároló irányítópultjának tetejénél található **Backup** (Biztonsági mentés) művelettel. A virtuális gépek Recovery Services-tárolóba való biztonsági mentésével kapcsolatos részletes információkért lásd az [Azure virtuális gépek védelme Recovery Services-tárolóval](../articles/backup/backup-azure-vms-first-look-arm.md) című cikket.
+1. A Recovery Services-tároló, keresse meg a **védett elemek** fülre, és válassza ki a virtuális Gépet. 
+2. Kattintson a [Védelem kikapcsolása](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines) parancsra. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
+
+> [!NOTE]
+> Fizetnie kell biztonsági mentési példány költség keretein belül az adatok megőrzése mellett. Biztonsági másolatok adatforrásnak megőrzési tartomány megfelelően törlődnek. Legutóbbi biztonsági másolat azonban mindig tartani, amíg nem törli explicit módon biztonsági mentési adatokat. A virtuális gép és a védett elem a tárolóban lévő "A biztonsági mentési adatok törlése" eseményindítón a megőrzési tartomány ellenőrzése után a megőrzési időtartam alatt javasoljuk. 
+>
+>
+
+A virtuális gép áttelepítéséhez a Resource Manager módra 
+
+1. Törölje a biztonsági mentés/pillanatkép bővítményt a virtuális gépről.
+2. Telepítse át a virtuális gépet a klasszikus módból a Resource Manager módba. A virtuális gépnek megfelelő tároló és hálózat adatait is mindenképpen telepítse át Resource Manager módba.
+
+Továbbá, ha szeretne biztonsági másolatot készíteni az áttelepített virtuális gép, lépjen a virtuálisgép-felügyelet panel [biztonsági mentésének engedélyezése](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Ellenőrizhetem valahol, hogy az előfizetésem vagy az erőforrásaim esetében lehetséges-e a migrálás? 
 

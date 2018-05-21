@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2016
+ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 1cdf33632c282a872d0eb83dd1a1b1c639fc14bd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 661d2f789ace8da68b6d65609d4584a11967a01f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Hogyan kell beállítani egy statikus belső magánhálózati IP-cím (klasszikus) PowerShell használatával
 A legtöbb esetben nem kell a virtuális gép statikus belső IP-címet megadni. A virtuális hálózat virtuális gépek automatikusan fog kapni a belső IP-címnek megadott tartomány. Azonban bizonyos esetekben egy statikus IP-címet ad meg egy adott virtuális gép teljesen logikus. Ha például a virtuális Gépet DNS futtatni fogja vagy egy tartományvezérlő. Egy statikus belső IP-címet a virtuális gép akár keresztül stop/deprovision állapotban marad. 
@@ -95,7 +95,7 @@ A statikus belső IP-címet a fenti parancsprogramban VM hozzáadott eltávolít
     | Update-AzureVM
 
 ## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Egy statikus belső IP-cím hozzáadása egy meglévő virtuális Gépen
-Hozzáadása egy belső statikus IP-cím kötése a virtuális gép létre a parancsfájl a fent runt a következő parancsot:
+Egy statikus belső IP-cím hozzáadása a fenti parancsfájl használatával létrehozott virtuális Gépet, a következő parancsot:
 
     Get-AzureVM -ServiceName TestService000 -Name TestVM `
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `

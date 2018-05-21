@@ -1,6 +1,6 @@
 ---
 title: Az Azure biztonsági kezelési és figyelési áttekintés |} Microsoft Docs
-description: " Azure biztonsági mechanizmusai a kezelési és figyelési Azure felhőszolgáltatások és virtuális gépek a segítése érdekében.  Ez a cikk áttekintése ezeket az alapvető biztonsági funkciókat és szolgáltatásokat. "
+description: Ez a cikk az Azure által biztosított, a kezelés segítése érdekében biztonsági szolgáltatások és szolgáltatások áttekintése és figyelési Azure felhőszolgáltatások és virtuális gépek tartalmazza.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,38 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 66a3a31574778bb1238498b523d51dc0d32ac22f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 1e48131ff784ba5bb8d5a7dfffe8afb5ce8bb4c1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági kezelési és figyelési áttekintés
-Azure biztonsági mechanizmusai a kezelési és figyelési Azure felhőszolgáltatások és virtuális gépek a segítése érdekében. Ez a cikk áttekintése ezeket az alapvető biztonsági funkciókat és szolgáltatásokat. Adja meg az egyes az adatait, így további cikkek hivatkozásokkal.
+Azure biztonsági mechanizmusai a felügyeleti és figyelési Azure felhőszolgáltatások és virtuális gépek (VM). Ez a cikk áttekintése ezeket az alapvető biztonsági funkciókat és szolgáltatásokat. Adja meg az egyes az adatait, így további cikkek hivatkozásokkal.
 
-A Microsoft más felhőszolgáltatásaival biztonsági szintje egy partneri kapcsolat áll fenn, és a megosztott felelősség és a Microsoft között. Megosztott felelőssége azt jelenti, hogy a Microsoft a Microsoft Azure és a fizikai biztonságát adatközpontjaihoz felelős (például zárolt jelvény bejegyzés kerítések, vagy megóvja a biztonsági védelmet használatával). Ezenkívül az Azure biztosít erős szintű felhőalapú biztonságot kibővített ügyfelei biztonsági, adatvédelmi és megfelelőségi igényeinek megfelelő szoftver rétegben.
+A Microsoft más felhőszolgáltatásaival biztonsági szintje partnerség és egy megosztott felelőssége, és a Microsoft között. Microsoft felelős az Azure platformon és az Adatközpont fizikai biztonságát (például zárolt jelvény-bejegyzés, kerítések vagy megóvja a biztonsági védelmet használatával). Azure biztosít erős szintű felhőalapú biztonságot a szoftver rétegben, amely megfelel az ügyfelek biztonsági, adatvédelmi és megfelelőségi igényeinek.
 
-Saját adatait és identitások, a felelősséget védi őket, a helyszíni erőforrások biztonsági és a biztonsági felhő összetevők, amelyben az informatikai részleg ellenőrzése. Microsoft biztosít Önnek biztonsági vezérlők és az adatok és alkalmazások védelméhez képességeket. A bizonyos fokú biztonsági felelősséget alapul a felhőalapú szolgáltatás.
+Saját adatait és identitások, a felelősséget védi őket, a helyszíni erőforrások biztonsági és a biztonsági felhő összetevők, amelyben az informatikai részleg ellenőrzése. A Microsoft biztosít biztonsági vezérlők és az adatok és alkalmazások védelméhez képességeket. A bizonyos fokú biztonsági felelősséget alapul a felhőalapú szolgáltatás.
 
-Az alábbi táblázat a Microsoft és az ügyfél felelősségi egyenleg foglalja össze.
+Az alábbi táblázat a Microsoft és az ügyfél közötti felelősségi egyenleg foglalja össze.
 
 ![Közös felelősség][1]
 
-A biztonsági felügyeletbe mélyebb bemutatója, lásd: [biztonságkezelés az Azure-ban](azure-security-management.md).
-
-Az alábbiakban az alapvető szolgáltatásokat, a cikkben szerepelnek:
-
-* Szerepköralapú hozzáférés-vezérlés
-* Kártevőirtó
-* Többtényezős hitelesítés
-* ExpressRoute
-* Virtuális hálózati átjárók
-* Privileged identity management
-* Identity Protection
-* Security Center
+Biztonsági-kezeléssel kapcsolatos további információkért lásd: [biztonságkezelés az Azure-ban](azure-security-management.md).
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
-Szerepköralapú hozzáférés-vezérlés (RBAC) biztosít a részletes hozzáféréskezelést az Azure-erőforrások. Szerepalapú használ, biztosíthat a felhasználók csak olyan mértékű hozzáférést a munkája elvégzéséhez szükséges.  Az RBAC segítségével győződjön meg arról, hogy ha személyek elhagyják a munkahelyet megszakad a hozzáférés a felhőben található erőforrásokhoz.
+Szerepköralapú hozzáférés-vezérlés (RBAC) biztosít a részletes hozzáféréskezelést az Azure-erőforrások. Szerepalapú segítségével biztosíthat a felhasználók csak olyan mértékű hozzáférést a munkája elvégzéséhez szükséges. Az RBAC segítségével győződjön meg arról, hogy személyek adja meg a szervezet, amikor megszakad a hozzáférés a felhőben található erőforrásokhoz.
 
 További információ:
 
@@ -53,13 +42,13 @@ További információ:
 * [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Kártevőirtó
-Az Azure-ral például a Microsoft, a Symantec, Trend Micro, McAfee és Kaspersky fő biztonsági szállítóktól származó kártevőirtó szoftver segítségével a virtuális gépek védelme rosszindulatú fájlok, hirdetéseket és más fenyegetésekkel szemben.
+Az Azure-ral például a Microsoft, a Symantec, Trend Micro, McAfee és Kaspersky fő biztonsági szállítóktól származó kártevőirtó szoftverek is használhatja. Ez a szoftver megvédi a virtuális gépek a rosszindulatú fájlok, hirdetéseket és más fenyegetésekkel szemben.
 
-A Microsoft Antimalware lehetővé teszi a PaaS szerepkörök és a virtuális gépek kártevőirtó ügynök telepítéséhez. A System Center Endpoint Protection alapján, ez a funkció számos lehetőséget kínál helyszíni bevált biztonsági technológia a felhőbe.
+Azure Cloud Services és a virtuális gépek Microsoft Antimalware lehetővé teszi a PaaS szerepkörök és a virtuális gépek kártevőirtó ügynök telepítéséhez. A System Center Endpoint Protection alapján, ez a funkció számos lehetőséget kínál helyszíni bevált biztonsági technológia a felhőbe.
 
-Szoros integrációja trend meg is fel [mély biztonsági](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/)™ és [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/)™ termékek az Azure platformon. DeepSecurity víruskereső megoldás és SecureCloud egy titkosítási megoldás. DeepSecurity egy bővítmény modellt használó virtuális gépeken belül van telepítve. A portál felhasználói felület és a PowerShell használatával, dönthet úgy, új virtuális gépek láthatók, amelyek alatt hoz létre, vagy a már telepített meglévő virtuális gépeken belül DeepSecurity használatára.
+Szoros integrációja trend meg is fel [mély biztonsági](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) és [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) termékek az Azure platformon. A részletes biztonsági víruskereső megoldás, és SecureCloud egy titkosítási megoldás. Átfogó biztonsági rendszer belüli virtuális gépek egy bővítmény modell használatával. Az Azure portál felhasználói felület és a PowerShell használatával dönthet úgy, hogy a rendszer éppen hoz létre új virtuális gépek vagy a már telepített meglévő virtuális gépeken belül mély biztonság használatára.
 
-Symantec végpont védelme (Szeptember) az Azure-on is támogatott. Portál integrálásán keresztül ügyfelek adhatja meg, hogy kíván-e a virtuális Gépen belül Szeptember használja. Szeptember is telepíthető egy teljesen új virtuális Gépet az Azure-portálon, vagy egy meglévő virtuális gép PowerShell használatával is telepíthető.
+Symantec Endpoint Protection (Szeptember) is támogatja az Azure-on. Portál integrálásán keresztül adhatja meg, hogy szeretne-e a virtuális gép Szeptember használni. Szeptember is telepíthető egy új virtuális Gépet az Azure-portálon, vagy egy meglévő virtuális gép PowerShell segítségével telepíthető.
 
 További információ:
 
@@ -67,10 +56,12 @@ További információ:
 * [A Microsoft Antimalware Azure Felhőszolgáltatások és virtuális gépek](azure-security-antimalware.md)
 * [Hogyan kell telepíteni, és a Trend Micro mély biztonságának konfigurálása a Windows virtuális gép szolgáltatásként](../virtual-machines/windows/classic/install-trend.md)
 * [Hogyan kell telepíteni, és a Symantec Endpoint Protection konfigurálása a Windows virtuális gép](../virtual-machines/windows/classic/install-symantec.md)
-* [Új kártevőirtó lehetőségei az Azure virtuális gépek – McAfee az Endpoint Protection védelme](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
+* [Új kártevőirtó lehetőségei az Azure virtuális gépek védelme](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
-## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
-Az Azure többtényezős hitelesítés (MFA), amely egynél több ellenőrzési módszer használatát igényli, és a kritikus fontosságú második biztonsági réteget ad hozzá felhasználói bejelentkezéseket és tranzakciókat hitelesítési mód. Többtényezős hitelesítés segítségével hozzáférés biztonságossá tételét adatokhoz és alkalmazásokhoz egyszerű bejelentkezési folyamatot a felhasználó igény szerint betartása mellett. Erős hitelesítés, ellenőrzési lehetőségek széles keresztül biztosítja – a telefonhívás, szöveges üzenet vagy mobilalkalmazás értesítés vagy ellenőrző kód és a harmadik féltől származó OATH-tokeneket.
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+Az Azure multi-factor Authentication egynél több ellenőrzési módszer használatát igénylő hitelesítési mód. Egy kritikus fontosságú második biztonsági szintként, hozzáadja a felhasználói bejelentkezéseket és tranzakciókat. 
+
+Többtényezős hitelesítés segítségével hozzáférés biztonságossá tételét adatokhoz és alkalmazásokhoz egyszerű bejelentkezési folyamatot a felhasználó igény szerint betartása mellett. Erős hitelesítés egy tartományon keresztül ellenőrzési lehetőségek (telefonhívás, szöveges üzenet vagy mobilalkalmazás értesítés vagy ellenőrző kódot) és harmadik féltől származó OATH jogkivonatokkal biztosítja.
 
 További információ:
 
@@ -79,14 +70,20 @@ További információ:
 * [Azure multi-factor Authentication működése](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
-A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, az Office 365-tel és a CRM Online-nal. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Így az ExpressRoute-kapcsolatok a tipikus internetes kapcsolatoknál megbízhatóbbak, gyorsabbak, gyorsabb a válaszidejük, és biztonságosabbak.
+Azure ExpressRoute segítségével a helyszíni hálózatokhoz kiterjeszti a Microsoft Cloud, amely a kapcsolat szolgáltatójánál megkönnyíthető dedikált titkos kapcsolaton keresztül. Az expressroute-nál is létrehozhat kapcsolatot a Microsoft felhőszolgáltatásai, például Azure Office 365 vagy CRM Online-hoz. Kapcsolat származhatnak:
+
+- Bármely elem közöttiként (IP VPN) hálózat.
+- A Point-to-Point protokoll Ethernet-hálózaton.
+- Virtuális kereszt-keresztüli csatlakozást egy kapcsolat szolgáltatóját egy közös elhelyezés létesítményben. 
+
+Az ExpressRoute-kapcsolatok nem nyissa meg a nyilvános interneten keresztül. További megbízhatóságát, gyorsabb sebességű, kisebb késések és nagyobb biztonságot nyújtana tipikus kapcsolatok az interneten keresztül is biztosítanak.
 
 További információ:
 
 * [ExpressRoute műszaki áttekintés](../expressroute/expressroute-introduction.md)
 
 ## <a name="virtual-network-gateways"></a>Virtuális hálózati átjárók
-Virtuális hálózatok és a helyszíni helyek közötti hálózati forgalom küldése VPN-átjárók, más néven az Azure virtuális hálózati átjárók szolgálnak. Akkor is használhatók az Azure (VNet – VNet) több virtuális hálózat között forgalmat küldeni.  VPN-átjárók adja meg az Azure és az infrastruktúra közötti biztonságos létesítmények közötti kapcsolathoz.
+Virtuális hálózatok és a helyszíni helyek közötti hálózati forgalom küldése VPN-átjárók, más néven az Azure virtuális hálózati átjárók szolgálnak. Akkor is használhatók az Azure (hálózati) több virtuális hálózat között forgalmat küldeni. VPN-átjárók adja meg az Azure és az infrastruktúra közötti biztonságos létesítmények közötti kapcsolathoz.
 
 További információ:
 
@@ -94,10 +91,11 @@ További információ:
 * [Az Azure biztonsági áttekintése](security-network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
-Néha a felhasználóknak kell az Azure-erőforrások vagy más SaaS-alkalmazások kiemelt műveletek végrehajtására. Ez gyakran azt jelenti, hogy a szervezetek meg kell adni nekik az Azure Active Directory (Azure AD) az állandó privilegizált hozzáférési jogosultsága. Ez a felhőben üzemeltetett erőforrásokhoz az egyre növekvő biztonsági kockázatot jelent, mert a szervezeteknek elég nem tud figyelni, ezek a felhasználók tevékenységeit a rendszerjogosultságú hozzáférést.
-Továbbá ha jogosultsági szintű hozzáféréssel rendelkező felhasználói fiók biztonsága sérül, egy megsértésének jelentős hatással lehet az általános felhő biztonsági. Hárítsa el a kockázat jogosultságokat a kitettség idő csökkentése és a használatának láthatóság növelésével segít az Azure AD Privileged Identity Management.  
+Néha a felhasználóknak kell az Azure-erőforrások vagy más SaaS-alkalmazások kiemelt műveletek végrehajtására. Ez gyakran azt jelenti, hogy a szervezetek számukra állandó privilegizált hozzáférési jogosultsága az Azure Active Directory (Azure AD). 
 
-A privileged Identity Management bemutatja a egy ideiglenes rendszergazdai egy szerepkör vagy a "csak az időben" rendszergazdai hozzáféréssel, amely a felhasználókat, akiknek az adott szerepkörrel rendelkeznek az aktiválási folyamat befejezéséhez. Az aktiválási folyamat módosítja a felhasználó egy szerepkörhöz az Azure AD egy meghatározott ideig aktív inaktív időszak például nyolc óra.
+Ez a felhőben üzemeltetett erőforrásokhoz az egyre növekvő biztonsági kockázatot jelent, mert a szervezeteknek elég nem tud figyelni, ezek a felhasználók tevékenységeit a rendszerjogosultságú hozzáférést. Emellett ha jogosultsági szintű hozzáféréssel rendelkező felhasználói fiók biztonsága sérül, egy megsértésének hatással lehet a szervezet általános felhő biztonsági. Hárítsa el a kockázat jogosultságokat a kitettség idő csökkentése és a használatának láthatóság növelésével segít az Azure AD Privileged Identity Management.  
+
+A privileged Identity Management bemutatja a egy ideiglenes rendszergazdai egy szerepkör vagy a rendszergazdai hozzáférés "csak az időben". Az ilyen felügyeleti olyan felhasználó, aki az adott szerepkörrel rendelkeznek az aktiválási folyamat befejezéséhez szükséges. Az aktiválási folyamat módosítja a felhasználó egy szerepkörhöz az Azure AD aktív, egy meghatározott ideig inaktív időszak.
 
 További információ:
 
@@ -105,9 +103,13 @@ További információ:
 * [Ismerkedés az Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-getting-started.md)
 
 ## <a name="identity-protection"></a>Identity Protection
-Az Azure Active Directory (AD) identitás Protection gyanús bejelentkezési tevékenységek és a vállalat védelme érdekében a potenciális biztonsági réseket konszolidált nézetét biztosítja. Azonosító adatok védelmét a felhasználók gyanús tevékenységek észlelése és a kiemelt (rendszergazda) identitások, a találgatásos támadásokkal, például jelek alapján elszivárgott a hitelesítő adatokat, és bejelentkezések ismeretlen helyekről, és fertőzött eszközök.
+Az Azure AD Identity Protection gyanús bejelentkezési tevékenységek és a vállalat védelme érdekében a potenciális biztonsági réseket konszolidált nézetét biztosítja. Azonosító adatok védelmét a felhasználók és a kiemelt (rendszergazda) identitások, például a jelek alapján gyanús tevékenységek észlelése:
 
-Értesítések és az ajánlott javítási megadásával Identity Protection megelőzheti valós idejű kockázatot is rejt magában. Felhasználói kockázat súlyosság alapján számítja ki, és beállíthatja, hogy elérje a jövőbeli fenyegetések védelmében alkalmazás automatikusan segítségével kockázat-alapú házirendek.
+- Találgatásos támadások során.
+- Kiszivárgott hitelesítő adatokat.
+- Bejelentkezések ismeretlen helyek és a fertőzött eszközökről.
+
+Értesítések és az ajánlott javítási megadásával Identity Protection megelőzheti valós idejű kockázatot is rejt magában. Felhasználói kockázat súlyossági számítja ki. Beállíthatja, hogy elérje a jövőbeli fenyegetések védelmében alkalmazás automatikusan segítségével kockázat-alapú házirendek.
 
 További információ:
 
@@ -115,13 +117,15 @@ További információ:
 * [9. csatornán: Az Azure AD és az Identity: Identity Protection előzetes kiadásának](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
-Az Azure Security Center segít a megakadályozása, észlelésében és kezelésében fenyegetések, és biztosítja, hogy lássák, és szabályozhatják, az Azure-erőforrások biztonságának nőtt. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
+Az Azure Security Center segítséget nyújt a megakadályozása, észlelésében és kezelésében fenyegetések ellen. A Security Center által biztosított, láthatósága nőtt és felett, Azure-erőforrások biztonsági ellenőrzést. Biztosít integrált biztonsági monitorozást és az Azure-előfizetések. Ez segítséget nyújt az szolgáló szabályzatkezelést, és számos biztonsági megoldással együttműködik.
 
 A Security Center segítségével optimalizálhatja és által az Azure-erőforrások biztonságának figyelése:
 
-* Engedélyezi, hogy a vállalat biztonsági igényeinek megfelelően, és az alkalmazások típusának vagy az adatok érzékenységének megfelelően az Azure-előfizetés erőforrások házirendeket definiálhat az egyes előfizetések.
+* A következők szerint az Azure-előfizetés erőforrásaihoz tartozó házirendek megadhatók engedélyezése:
+  * A vállalat biztonsági igényeinek.
+  * Az alkalmazások és az egyes előfizetések adatainak érzékenysége alapján típusa.
 * Az Azure virtuális gépeken, a hálózat és az alkalmazások állapotának figyelése.
-* Rangsorolt biztonsági riasztások, beleértve az integrált partneri megoldások, valamint a gyors vizsgálatra szükséges információkat és a támadás elhárításával kapcsolatos javaslatok riasztásait listájával.
+* Rangsorolt biztonsági riasztások, beleértve az integrált partnermegoldások riasztásait listájával. A gyors vizsgálatra támadás és annak megoldásáról ajánlások kell információkat is biztosít.
 
 További információ:
 

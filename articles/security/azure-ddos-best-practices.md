@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 042dd4876a63e5881e67456b449570b01cb967a5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS-védelem: Ajánlott eljárások és architektúrák hivatkozik
 
@@ -86,8 +86,8 @@ A [Azure App Service](../app-service/app-service-value-prop-what-is.md), jelölj
 
 Mélyreható védelmet mögött lényege kockázatkezelést különböző védelmi stratégiák használatával. Rétegez egy alkalmazás biztonsági védelmekkel csökkenti egy sikeres támogatás esélyét. Azt javasoljuk, hogy megvalósítása biztonságos tervekhez az alkalmazások az Azure platformon beépített képességei használatával.
 
-Például növeli a támadások veszélye méretű (*terület surface*) az alkalmazás. Engedélyezett használatával elérhető IP-címterület bezárása, és nem szükséges azokat a terheléselosztókat a portokat figyeli csökkentheti a támadási felületét ([Azure terheléselosztó](../load-balancer/load-balancer-get-started-internet-portal.md) és [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)). [Hálózati biztonsági csoportokkal (NSG-k)](../virtual-network/virtual-networks-nsg.md) , amelyek egy másik csökkenteni a támadási felületet.
-Használhat [címkék szolgáltatás](/virtual-network/security-overview.md) és [biztonsági csoportok](/virtual-network/security-overview.md) minimalizálása érdekében a biztonsági szabályok létrehozásához és konfigurálásához a hálózati biztonság, mint az alkalmazás struktúra természetes bővítménye összetettségét.
+Például növeli a támadások veszélye méretű (*terület surface*) az alkalmazás. Engedélyezett használatával elérhető IP-címterület bezárása, és nem szükséges azokat a terheléselosztókat a portokat figyeli csökkentheti a támadási felületét ([Azure terheléselosztó](../load-balancer/load-balancer-get-started-internet-portal.md) és [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)). [Hálózati biztonsági csoportokkal (NSG-k)](../virtual-network/security-overview.md) , amelyek egy másik csökkenteni a támadási felületet.
+Használhat [címkék szolgáltatás](/virtual-network/security-overview.md#service-tags) és [biztonsági csoportok](/virtual-network/security-overview.md#application-security-groups) minimalizálása érdekében a biztonsági szabályok létrehozásához és konfigurálásához a hálózati biztonság, mint az alkalmazás struktúra természetes bővítménye összetettségét.
 
 Az Azure-szolgáltatásokat telepítsen egy [virtuális hálózati](../virtual-network/virtual-networks-overview.md) amikor csak lehetséges. Ez az eljárás lehetővé teszi, hogy a szolgáltatás erőforrásainak kommunikációja áthaladjon magánhálózati IP-címét. Egy virtuális hálózatot az Azure szolgáltatás forgalmát forrás IP-cím nyilvános IP-címek alapértelmezés szerint használja. Használatával [szolgáltatás végpontjait](../virtual-network/virtual-network-service-endpoints-overview.md) vált, a virtuális hálózati Magáncímeket használják a forrás IP-címek, ha azok próbál hozzáférni az Azure-szolgáltatás egy virtuális hálózati forgalmát.
 
@@ -262,7 +262,7 @@ Egy N szintű architektúra számos módon implementálható. Az alábbi ábrán
 
 Ebben az architektúrában szabványos DDoS-védelem engedélyezve van a virtuális hálózaton. Minden nyilvános IP-címek a virtuális hálózat DDoS-védelem réteg 3 vagy 4 beolvasása. A réteg 7 védelem központi telepítése a WAF termékváltozatban Alkalmazásátjáró. A referencia-architektúrában további információkért lásd: [Ez a cikk](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/n-tier).
 
-#### <a name="paas-web-application"></a>A PaaS-webalkalmazás
+#### <a name="paas-web-application"></a>PaaS webalkalmazás
 
 A referencia-architektúrában jeleníti meg az Azure App Service-alkalmazást futtat egy régió. Ez az architektúra látható használó webalkalmazás bevált gyakorlatok csoportja [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) és [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
 A készenléti régió feladatátvételi forgatókönyvek be van állítva.

@@ -1,11 +1,11 @@
 ---
-title: "Azure Application Gateway hibás átjáró (502-es) hibáinak elhárítása |} Microsoft Docs"
-description: "Ismerje meg az alkalmazás átjáró 502 hibák elhárítása"
+title: Azure Application Gateway hibás átjáró (502-es) hibáinak elhárítása |} Microsoft Docs
+description: Ismerje meg az alkalmazás átjáró 502 hibák elhárítása
 services: application-gateway
 documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 1d431ead-d318-47d8-b3ad-9c69f7e08813
 ms.service: application-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: e0099734a81cd8b1edf5cf80cb56b5c322a5feee
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4eca6a588d2c95189f0ba995b8db195907e9dc39
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Az Alkalmazásátjáró hibás átjáró hibák elhárítása
 
@@ -89,10 +89,10 @@ Ha telepítve van, győződjön meg arról, hogy a DNS-kiszolgáló tudja megfel
 
 * Győződjön meg arról, hogy egy alapértelmezett webhelyet van konfigurálva, és a 127.0.0.1 figyel.
 * Ha BackendHttpSetting határozza meg a 80-as portra, az alapértelmezett webhely adott porton figyeljen kell megadni.
-* Http://127.0.0.1:port hívása egy 200-as HTTP-eredménykódja kell visszaadnia. Ez vissza kell adni az 30 másodpercet időkorláton belül.
+* A hívás http://127.0.0.1:port egy 200-as HTTP-eredménykódja kell visszaadnia. Ez vissza kell adni az 30 másodpercet időkorláton belül.
 * Győződjön meg arról, hogy a konfigurált port nyitva-e, és hogy nincsenek-e a tűzfalszabályok vagy Azure hálózati biztonsági csoportok, amelyek a konfigurált port bejövő vagy kimenő forgalmát blokkolja.
 * Az Azure klasszikus virtuális gépek vagy a felhőalapú szolgáltatás FQDN vagy a nyilvános IP-cím használata esetén győződjön meg arról, hogy a megfelelő [végpont](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) már meg van nyitva.
-* Ha a virtuális gép Azure Resource Manager használatával van konfigurálva, és az Application Gateway telepítési helyét, VNet kívül esik [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) engedélyezi a hozzáférést a kívánt porton kell konfigurálni.
+* Ha a virtuális gép Azure Resource Manager használatával van konfigurálva, és az Application Gateway telepítési helyét, VNet kívül esik [hálózati biztonsági csoport](../virtual-network/security-overview.md) engedélyezi a hozzáférést a kívánt porton kell konfigurálni.
 
 ## <a name="problems-with-custom-health-probe"></a>Egyéni állapotmintáihoz kapcsolatos problémák
 

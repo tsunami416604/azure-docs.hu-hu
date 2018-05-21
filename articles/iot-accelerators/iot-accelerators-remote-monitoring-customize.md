@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: ab5a0913922e4664c867d54d9ec07e3611345dd8
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 94bd864215ad80b299db09b6237f2cebe63feb88
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli megfigyelési megoldásgyorsító testreszabása
 
@@ -462,7 +462,7 @@ A távoli figyelésére szolgáló megoldás a bemutató és képi megjeleníté
 
 Ebben a cikkben megtanulta kapcsolatos segítséget a távoli megfigyelési megoldásgyorsító a webes felhasználói felület testreszabása számára elérhető erőforrások.
 
-További elméleti kapcsolatos további információkért a távoli megfigyelési megoldásgyorsító: [távoli megfigyelési architektúrája](../iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md)
+További elméleti kapcsolatos további információkért a távoli megfigyelési megoldásgyorsító: [távoli megfigyelési architektúrája](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
-A távoli figyelésére szolgáló megoldás testreszabásával kapcsolatos további információkért lásd: [testreszabás és helyezze üzembe újra egy mikroszolgáltatási](../iot-suite/iot-suite-microservices-example.md)
+A távoli figyelésére szolgáló megoldás testreszabásával kapcsolatos további információkért lásd: [testreszabás és helyezze üzembe újra egy mikroszolgáltatási](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->

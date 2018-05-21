@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 231e8110dc6e1844108502e5c2277edc3ba77132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Bevezetés a felhőalapú informatika és a Microsoft Azure
 
@@ -162,7 +162,7 @@ Egy Azure erőforráscsoport egy olyan tároló, amely egy Azure megoldás kapcs
 
 Az Azure Resource Manager sablon a JavaScript Object Notation (JSON) fájl, amely meghatározza egy vagy több erőforrásokat egy erőforráscsoportba telepítése. Telepített erőforrások közti függőségeket is meghatározza. Az útmutató későbbi részében részletesebben lásd Resource Manager-sablonok.
 
-### <a name="automation"></a>Automatizálás
+### <a name="automation"></a>Automation
 
 
 Mellett létrehozása, kezelése és törlése erőforrásokat az Azure portál használatával ezek a tevékenységek automatizálható PowerShell vagy az Azure parancssori felület (CLI) használatával.
@@ -509,7 +509,7 @@ Hasonlóképpen az Azure parancssori felület használatával az Azure Resource 
 
 ### <a name="access-and-security-for-virtual-networks"></a>Hozzáférés és biztonság a virtuális hálózatok
 
-Biztonságos egy Azure virtuális hálózatot a hálózati biztonsági csoportok használatával segíthet. Az NSG-k hozzáférés-vezérlési lista (ACL) szabályok, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának listáját tartalmazzák. NSG-ket társíthat ket alhálózatokhoz vagy az alhálózaton belüli Virtuálisgép-példányokhoz. Amikor társít egy NSG alhálózattal, az ACL szabályok érvényessé alhálózat összes Virtuálisgép-példány. Emellett tovább korlátozhatja forgalmat egy adott virtuális gépre NGS társítása közvetlenül az adott virtuális gép által. További információkért lásd: [hálózati forgalmat hálózati biztonsági csoportokkal](../../virtual-network/virtual-networks-nsg.md).
+Biztonságos egy Azure virtuális hálózatot a hálózati biztonsági csoportok használatával segíthet. Az NSG-k hozzáférés-vezérlési lista (ACL) szabályok, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának listáját tartalmazzák. NSG-ket társíthat ket alhálózatokhoz vagy az alhálózaton belüli Virtuálisgép-példányokhoz. Amikor társít egy NSG alhálózattal, az ACL szabályok érvényessé alhálózat összes Virtuálisgép-példány. Emellett tovább korlátozhatja forgalmat egy adott virtuális gépre NGS társítása közvetlenül az adott virtuális gép által. További információkért lásd: [hálózati forgalmat hálózati biztonsági csoportokkal](../../virtual-network/security-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 

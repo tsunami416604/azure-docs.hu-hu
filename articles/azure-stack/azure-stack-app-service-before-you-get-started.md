@@ -1,31 +1,31 @@
 ---
-title: "App Service Azure veremben központi telepítése előtt |} Microsoft Docs"
-description: "App Service Azure veremben központi telepítése előtt szükséges lépések"
+title: App Service Azure veremben központi telepítése előtt |} Microsoft Docs
+description: App Service Azure veremben központi telepítése előtt szükséges lépések
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 5323fe505adfd9b3495dd85ce41d6f141125184b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 95393df03ffc33748f0f14344d989d58ae52297c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Az App Service Azure veremben megkezdése előtt
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 > [!IMPORTANT]
-> A 1802 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service üzembe helyezése előtt.
+> A 1804 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service 1.2 telepítése előtt.
 >
 >
 
@@ -47,17 +47,21 @@ Azure App Service Azure veremben telepítése előtt el kell végeznie az ebben 
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
-A 1802 kiadás Azure-készlet már támogatja a tartalék tartományok, mert az Azure App Service Azure veremben új telepítések tartalék tartományokban sor kerül, és biztosítja a hibatűrést.  Frissítse az Azure App Service Azure veremben meglévő telepítéséhez, amelyek telepítve vannak-e a 1802 kiadása előtt, tekintse meg a [dokumentáció](azure-stack-app-service-fault-domain-update.md) egyensúlyba a központi telepítési módját.
+A 1802 kiadás Azure-készlet már támogatja a tartalék tartományok, mert az Azure App Service Azure veremben új telepítések tartalék tartományokban sor kerül, és biztosítja a hibatűrést.  Telepítéseit az Azure App Service Azure veremben, amelyen telepítve vannak-e a 1802 frissítés előtt, tekintse meg a [dokumentáció](azure-stack-app-service-fault-domain-update.md) egyensúlyba a központi telepítési módját.
 
-Ezen kívül az Azure App Service Azure veremben a magas rendelkezésre állás érdekében telepíteni a szükséges fájl server és SQL Server-példány egy magas rendelkezésre állású konfigurációban. 
+Ezen kívül az Azure App Service Azure veremben a magas rendelkezésre állás érdekében telepíteni a szükséges fájl server és SQL Server-példány egy magas rendelkezésre állású konfigurációban.
 
 ## <a name="get-certificates"></a>Tanúsítványok beszerzése
 
 ### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Az Azure erőforrás-kezelő legfelső szintű tanúsítvány Azure verem
 
-A PowerShell-munkamenetben fut a számítógépen, amely képes elérni az Azure verem integrált rendszer vagy az Azure verem Development Kit állomás kiemelt végpont azurestack\CloudAdmin futtassa a Get-AzureStackRootCert.ps1 parancsfájlt a mappát, amelyikbe kibontotta a segítő parancsfájlok. A parancsfájl a parancsfájlt, amelyet az App Service tanúsítványok létrehozásához ugyanabban a mappában hozzon létre egy legfelső szintű tanúsítványt.
+Azurestack\CloudAdmin futtató gépen, a kiemelt végpont az Azure verem integrált rendszer vagy az Azure verem Development Kit állomás érhető el, amely PowerShell-munkamenetben futtassa a Get-AzureStackRootCert.ps1 parancsfájlt a mappát, amelyikbe kibontotta a segítő parancsfájlok. A parancsfájl egy legfelső szintű tanúsítványt, amelyet az App Service tanúsítványok létrehozásához a parancsfájl ugyanabban a mappában hoz létre.
 
-| Get-AzureStackRootCert.ps1 parameter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
+```PowerShell
+    Get-AzureStackRootCert.ps1
+```
+
+| Paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | Szükséges | AzS-ERCS01 | Kiemelt végpont |
 | CloudAdminCredential | Szükséges | AzureStack\CloudAdmin | Tartományi fiók hitelesítő adatait a Azure verem felhő rendszergazdák számára |
@@ -68,7 +72,7 @@ Az első parancsfájl együttműködik az Azure-verem hitelesítésszolgáltató
 
 | Fájlnév | Használat |
 | --- | --- |
-| _.appservice.local.azurestack.external.pfx | App Service alapértelmezett SSL-tanúsítvány |
+| _.appservice.local.azurestack.external.pfx | App Service API alapértelmezett SSL-tanúsítványa |
 | api.appservice.local.azurestack.external.pfx | App Service API SSL-tanúsítvány |
 | ftp.appservice.local.azurestack.external.pfx | App Service publisher SSL-tanúsítvány |
 | sso.appservice.local.azurestack.external.pfx | App Service alkalmazás identitástanúsítvány |
@@ -80,10 +84,14 @@ Futtassa a parancsfájlt a Azure verem szoftverfejlesztői készlet gazdagépen,
 
 #### <a name="create-appservicecertsps1-parameters"></a>Hozzon létre AppServiceCerts.ps1 paraméterek
 
+```PowerShell
+    Create-AppServiceCerts.ps1
+```
+
 | Paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
-| pfxPassword | Szükséges | NULL értékű | Jelszó, amely segít megvédeni a tanúsítvány titkos kulcsa |
-| DomainName | Szükséges | local.azurestack.external | Az Azure verem régió és a tartományi utótag |
+| pfxPassword | Szükséges | Null | Jelszó, amely segít megvédeni a tanúsítvány titkos kulcsa |
+| Tartománynév | Szükséges | local.azurestack.external | Az Azure verem régió és a tartományi utótag |
 
 ### <a name="certificates-required-for-a-production-deployment-of-azure-app-service-on-azure-stack"></a>Az Azure App Service Azure veremben éles üzembe helyezéséhez szükséges tanúsítványok
 
@@ -93,7 +101,7 @@ Az erőforrás-szolgáltató éles környezetben működteti, meg kell adni a k�
 
 Az alapértelmezett tartományi tanúsítvány el van helyezve az előtér-szerepkört. Az Azure App Service helyettesítő vagy az alapértelmezett tartomány kérelmek felhasználói alkalmazás ezt a tanúsítványt használja. Ezzel a tanúsítvánnyal is forrás vezérlő műveletekhez (Kudu).
 
-A tanúsítvány .pfx formátumban kell lennie, és három-tulajdonos helyettesítő tanúsítványt kell lennie. Ez lehetővé teszi, hogy egy tanúsítványt az alapértelmezett tartomány és a forrás-ellenőrzési műveletek SCM végpontja.
+A tanúsítvány .pfx formátumban kell lennie, és három-tulajdonos helyettesítő tanúsítványt kell lennie. Ez a követelmény lehetővé teszi, hogy egy tanúsítványt az alapértelmezett tartomány és a forrás-ellenőrzési műveletek SCM végpontja.
 
 | Formátum | Példa |
 | --- | --- |
@@ -138,11 +146,11 @@ Virtuális hálózati - /16
 
 Alhálózatok
 
-* ControllersSubnet /24
-* ManagementServersSubnet /24
-* FrontEndsSubnet /24
-* PublishersSubnet /24
-* WorkersSubnet /21
+- ControllersSubnet /24
+- ManagementServersSubnet /24
+- FrontEndsSubnet /24
+- PublishersSubnet /24
+- WorkersSubnet /21
 
 ## <a name="prepare-the-file-server"></a>A fájlkiszolgáló előkészítése
 
@@ -272,6 +280,9 @@ Az Azure verem szoftverfejlesztői készlet történő telepítések esetén has
 
 Az SQL Server-példány az Azure App Service Azure veremben levő összes App Service-szerepkörből elérhetőnek kell lennie. Az alapértelmezett szolgáltató előfizetésben Azure verem SQL Server telepítése. Lehetőség a szervezeten belül a meglévő infrastruktúra használata (feltéve, nincs kapcsolat az Azure-verem). Azure piactér lemezkép használata, ne felejtse el ennek megfelelően konfigurálja a tűzfalat.
 
+>[!NOTE]
+> SQL IaaS virtuális számítógépképet számos a piactér-kezelési funkción keresztül érhetők el. Ellenőrizze, hogy mindig a virtuális gép egy Piactéri elemet központi telepítése előtt töltse le az SQL IaaS bővítmény legújabb verziója. Az SQL-rendszerképek ugyanazok, mint az SQL virtuális gépen elérhető az Azure-ban. Ezeket a lemezképeket, az IaaS-bővítmény a létrehozott SQL virtuális gépen, és a megfelelő portál fejlesztései biztosítják az automatikus javítás és a biztonsági mentési funkciókat szolgáltatásokat.
+>
 Az SQL Server szerepkörök bármelyikéhez egy alapértelmezett vagy megnevezett példányt is használhatja. Ha egy megnevezett példányt használ, ügyeljen arra, hogy az manuálisan indítsa el az SQL Server Browser szolgáltatást, és nyissa meg a portot 1434.
 
 >[!IMPORTANT]
@@ -280,7 +291,7 @@ Az SQL Server szerepkörök bármelyikéhez egy alapértelmezett vagy megnevezet
 
 ## <a name="create-an-azure-active-directory-application"></a>Egy Azure Active Directory-alkalmazás létrehozása
 
-Adja meg az Azure AD szolgáltatás egyszerű az alábbiak támogatásához:
+Adja meg az Azure AD szolgáltatás egyszerű támogatásához a következő műveleteket:
 
 - Virtuális gép méretezési integrációs munkavégző rétegen.
 - Egyszeri bejelentkezés az Azure Functions portálon és speciális fejlesztői eszközök.
@@ -309,18 +320,22 @@ Kövesse az alábbi lépéseket:
 13. Kattintson a **beállítások**.
 14. Válassza ki **szükséges engedélyek** > **engedélyeket** > **Igen**.
 
-| Hozzon létre AADIdentityApp.ps1 paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
+```PowerShell
+    Create-AADIdentityApp.ps1
+```
+
+| Paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Szükséges | NULL értékű | Az Azure AD-bérlő azonosítója. Adja meg a GUID vagy karakterlánc. Példa: myazureaaddirectory.onmicrosoft.com. |
-| AdminArmEndpoint | Szükséges | NULL értékű | Felügyeleti Azure Resource Manager-végpont. Példa: adminmanagement.local.azurestack.external. |
-| TenantARMEndpoint | Szükséges | NULL értékű | A bérlői Azure Resource Manager-végpont. Példa: management.local.azurestack.external. |
-| AzureStackAdminCredential | Szükséges | NULL értékű | Az Azure AD szolgáltatás rendszergazdai hitelesítő adatait. |
-| CertificateFilePath | Szükséges | NULL értékű | A korábban létrehozott identitás alkalmazás tanúsítvány fájl elérési útja. |
-| CertificatePassword | Szükséges | NULL értékű | Olyan jelszót, amely segít megvédeni a tanúsítvány titkos kulcsa. |
+| DirectoryTenantName | Szükséges | Null | Az Azure AD-bérlő azonosítója. Adja meg a GUID vagy karakterlánc. Példa: myazureaaddirectory.onmicrosoft.com. |
+| AdminArmEndpoint | Szükséges | Null | Felügyeleti Azure Resource Manager-végpont. Példa: adminmanagement.local.azurestack.external. |
+| TenantARMEndpoint | Szükséges | Null | A bérlői Azure Resource Manager-végpont. Példa: management.local.azurestack.external. |
+| AzureStackAdminCredential | Szükséges | Null | Az Azure AD szolgáltatás rendszergazdai hitelesítő adatait. |
+| CertificateFilePath | Szükséges | Null | A korábban létrehozott identitás alkalmazás tanúsítvány fájl elérési útja. |
+| CertificatePassword | Szükséges | Null | Olyan jelszót, amely segít megvédeni a tanúsítvány titkos kulcsa. |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory összevonási szolgáltatások alkalmazás létrehozása
 
-AD FS által védett Azure verem környezetben konfigurálnia kell egy Active Directory összevonási szolgáltatások szolgáltatás egyszerű támogatásához a következő:
+Azure verem környezetek AD FS által védett konfigurálnia kell egy Active Directory összevonási szolgáltatások szolgáltatás egyszerű támogatásához a következő műveleteket:
 
 - Virtuális gép méretezési integrációs munkavégző rétegen.
 - Egyszeri bejelentkezés az Azure Functions portálon és speciális fejlesztői eszközök.
@@ -340,13 +355,17 @@ Kövesse az alábbi lépéseket:
 5. Az a **hitelesítő adat** ablak, írja be az AD FS felhőalapú rendszergazdai fiókot és jelszót. Kattintson az **OK** gombra.
 6. Adja meg a tanúsítvány elérési útja és a tanúsítvány jelszavát az [korábban létrehozott tanúsítvány](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). A tanúsítványt, az alapértelmezés szerint ez a lépés létrehozott **sso.appservice.local.azurestack.external.pfx**.
 
-| Hozzon létre ADFSIdentityApp.ps1 paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
+```PowerShell
+    Create-ADFSIdentityApp.ps1
+```
+
+| Paraméter | Kötelező vagy választható | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
-| AdminArmEndpoint | Szükséges | NULL értékű | Felügyeleti Azure Resource Manager-végpont. Példa: adminmanagement.local.azurestack.external. |
-| PrivilegedEndpoint | Szükséges | NULL értékű | Kiemelt végpont. Példa: AzS-ERCS01. |
-| CloudAdminCredential | Szükséges | NULL értékű | Tartományi fiók hitelesítő adatait a Azure verem felhő rendszergazdák számára. Példa: Azurestack\CloudAdmin. |
-| CertificateFilePath | Szükséges | NULL értékű | Az identitás alkalmazás tanúsítvány PFX-fájljának elérési útja. |
-| CertificatePassword | Szükséges | NULL értékű | Olyan jelszót, amely segít megvédeni a tanúsítvány titkos kulcsa. |
+| AdminArmEndpoint | Szükséges | Null | Felügyeleti Azure Resource Manager-végpont. Példa: adminmanagement.local.azurestack.external. |
+| PrivilegedEndpoint | Szükséges | Null | Kiemelt végpont. Példa: AzS-ERCS01. |
+| CloudAdminCredential | Szükséges | Null | Tartományi fiók hitelesítő adatait a Azure verem felhő rendszergazdák számára. Példa: Azurestack\CloudAdmin. |
+| CertificateFilePath | Szükséges | Null | Az identitás alkalmazás tanúsítvány PFX-fájljának elérési útja. |
+| CertificatePassword | Szükséges | Null | Olyan jelszót, amely segít megvédeni a tanúsítvány titkos kulcsa. |
 
 ## <a name="next-steps"></a>További lépések
 

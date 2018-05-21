@@ -1,24 +1,24 @@
 ---
-title: "Állítsa be a telepítési sorrendet, az Azure-erőforrások |} Microsoft Docs"
-description: "Útmutatás állítja be egy erőforrást egy másik erőforrástól függő erőforrások a megfelelő sorrendben legyenek telepítve. Ellenőrizze a telepítés során."
+title: Állítsa be a telepítési sorrendet, az Azure-erőforrások |} Microsoft Docs
+description: Útmutatás állítja be egy erőforrást egy másik erőforrástól függő erőforrások a megfelelő sorrendben legyenek telepítve. Ellenőrizze a telepítés során.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 34ebaf1e-480c-4b4d-9bf6-251bd3f8f2cf
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3d6a46116ae9d7d940bc10dfa832540f42c0af7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1bb3827036f0d8957ac0830f707da71dd4cd373
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Adja meg a ahhoz, hogy az Azure Resource Manager sablonokban erőforrások telepítése
 A megadott erőforrás lehet más erőforrások, amelyek már léteznie kell az erőforrás van telepítve. Például egy SQL server léteznie kell egy SQL-adatbázis telepítése előtt. Ez a kapcsolat egy erőforrást, mint a más erőforrástól függő megjelölésével határozza meg. A függőség megadhatja a **dependsOn** elem, vagy használatával a **hivatkozás** függvény. 
@@ -148,13 +148,13 @@ Amikor eldönti, milyen függőségek beállításához, kövesse az alábbi ir�
 Erőforrás-kezelő körkörös függőségi viszony azonosítja a sablon érvényesítése során. Ha hibaüzenet jelenik meg, amely meghatározza, hogy, hogy létezik-e körkörös függőséget, értékelje ki, hogy összes függőséget nem szükségesek, és el kell távolítani a sablont. Ha függőségek nem segít, elkerülhető körkörös függőségi viszony, néhány telepítési művelet áthelyezése gyermekszintű erőforrása, amely után az erőforrásokat, amelyek a körkörös függőségi viszonyban vannak telepítve. Tegyük fel például, két olyan virtuális gépet telepít, de a tulajdonságokat meg kell adni az egyes, amely a másikra hivatkozik. A következő sorrendben telepíthetők:
 
 1. vm1
-2. vm2 virtuális gépnek
+2. vm2
 3. Vm1 kiterjesztés vm1 és vm2 virtuális gépnek függ. A bővítmény beállítása, amely azt lekérése vm2 virtuális gépnek vm1 értékeket.
 4. Bővítmény vm2 virtuális gépnek a vm1 és vm2 virtuális gépnek függ. A bővítmény beállítása értékek, amelyek azt lekérése vm1 vm2 virtuális gépnek.
 
 Értékelése a telepítési sorrendet, és a függőségi hibák feloldására vonatkozó információkért lásd: [hibaelhárítás általános az Azure-telepítés az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Függőségek telepítése során hibaelhárítással kapcsolatos információkért lásd: [hibaelhárítás általános az Azure-telepítés az Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Azure Resource Manager-sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [sablonok készítése](resource-group-authoring-templates.md). 
 * A sablon elérhető funkciókat listájáért lásd: [sablonfüggvényei](resource-group-template-functions.md).

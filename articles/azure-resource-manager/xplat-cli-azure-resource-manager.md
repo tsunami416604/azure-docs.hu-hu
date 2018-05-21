@@ -1,23 +1,23 @@
 ---
-title: "Kezelheti az erőforrásokat az Azure parancssori felülettel |} Microsoft Docs"
-description: "Azure-erőforrások és csoportok kezelése az Azure parancssori felület (CLI) használatával"
-editor: 
+title: Kezelheti az erőforrásokat az Azure parancssori felülettel |} Microsoft Docs
+description: Azure-erőforrások és csoportok kezelése az Azure parancssori felület (CLI) használatával
+editor: ''
 manager: timlt
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: c68f2a8b6e18dc2d51d8bbb5cd05bc037dc2fadb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90dd1b6b7e65178f6b339e4ac0bb781fb74a25a6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Azure-erőforrások és csoportok kezelése az Azure parancssori felület használatával
 
@@ -81,7 +81,7 @@ az account show
 
 Az előfizetéshez erőforrásokat telepítés megkezdése előtt létre kell hoznia az erőforrásokat tartalmazó erőforráscsoport.
 
-Erőforráscsoport létrehozásához használja a **az csoport létrehozása** parancsot. A parancs a **neve** paraméter segítségével adjon meg egy nevet az erőforráscsoporthoz tartozó és a **hely** paramétert adja meg a helyet.
+Az erőforráscsoport létrehozásához használja az **az group create** parancsot. A parancs a **neve** paraméter segítségével adjon meg egy nevet az erőforráscsoporthoz tartozó és a **hely** paramétert adja meg a helyet.
 
 ```azurecli-interactive
 az group create --name TestRG1 --location "South Central US"
@@ -223,7 +223,7 @@ Egy erőforrás vagy egy erőforráscsoportot is eltávolíthat. Egy erőforrás
 
 Mindkét parancsok a rendszer felkéri győződjön meg arról, hogy szeretne-e az erőforrás vagy erőforráscsoport eltávolítani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Resource Manager-sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [Azure Resource Manager sablonok készítése](resource-group-authoring-templates.md).
 * Sablonok telepítésével kapcsolatos további tudnivalókért lásd: [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy-cli.md).
 * Meglévő erőforrásokat áthelyezheti egy új erőforráscsoportot. Tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).

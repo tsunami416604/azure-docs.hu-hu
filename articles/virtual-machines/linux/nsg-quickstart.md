@@ -1,11 +1,11 @@
 ---
-title: "Nyisson meg portokat a Linux virtuális gép Azure CLI 2.0 |} Microsoft Docs"
-description: "Nyisson meg egy portot / hozzon létre egy végpontot a Linux virtuális gép az Azure resource manager üzembe helyezési modellben és az Azure CLI 2.0 útmutató"
+title: Nyisson meg portokat a Linux virtuális gép Azure CLI 2.0 |} Microsoft Docs
+description: Nyisson meg egy portot / hozzon létre egy végpontot a Linux virtuális gép az Azure resource manager üzembe helyezési modellben és az Azure CLI 2.0 útmutató
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: f02e9d7c794217824bb2b0fa965d1d581ec94003
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 16493d7ecdec0ec1464820be7668dfa19ec1b13c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Nyisson meg portokat és a Linux virtuális gép végpontokat az Azure parancssori felület
 Nyissa meg a portot, vagy hozzon létre egy végpontot a virtuális gép (VM), az Azure-ban egy alhálózatot vagy a virtuális gép hálózati illesztő hálózati szűrő létrehozásával. Ezek a szűrők, amely szabályozza a bejövő és kimenő forgalmat, a hálózati biztonsági csoport az erőforrás a forgalmat fogadó csatolva helyezze el. Ilyenek például a webes forgalom most használja a 80-as porton. Ez a cikk bemutatja, hogyan nyisson meg egy portot a virtuális gépre az Azure CLI 2.0. Az [Azure CLI 1.0-s](nsg-quickstart-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
@@ -90,4 +90,4 @@ Magas rendelkezésre állású webes alkalmazásokhoz helyezze a virtuális gép
 Ebben a példában létrehozott egy egyszerű szabályt, amely engedélyezi a HTTP-forgalmat. További részletes környezetek létrehozásáról a következő cikkekben találhat:
 
 * [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md)
-* [Mi az a hálózati biztonsági csoport (NSG)?](../../virtual-network/virtual-networks-nsg.md)
+* [Mi az a hálózati biztonsági csoport (NSG)?](../../virtual-network/security-overview.md)

@@ -61,12 +61,10 @@
           href: virtual-networks-acl.md
 - name: Útmutatók
   items:
-    - name: Tervezés és kialakítás
+    - name: Felkészülés
       items:
         - name: Virtuális hálózatok
           href: virtual-network-vnet-plan-design-arm.md
-        - name: Network security groups (Hálózati biztonsági csoportok)
-          href: virtual-networks-nsg.md
     - name: Üzembe helyezés
       items:
         - name: Network security groups (Hálózati biztonsági csoportok)

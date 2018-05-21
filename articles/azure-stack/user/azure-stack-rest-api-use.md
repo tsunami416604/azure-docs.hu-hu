@@ -3,55 +3,57 @@ title: Az Azure API verem használható |} Microsoft Docs
 description: Ismerje meg, hogyan lehet lekérni a hitelesítés az Azure verem API-kérések végrehajtásához Azure-ból.
 services: azure-stack
 documentationcenter: ''
-author: cblackuk
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 05/14/2018
 ms.author: mabrigg
-ms.reviewer: sijuman
-ms.openlocfilehash: 2bbfe4f829ad5c42a5742fdf08f2d185af627f42
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.reviewer: thoroet
+ms.openlocfilehash: e8a9489a3f487a45303bac45f805381b41427b4b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
-<!--  cblackuk and charliejllewellyn -->
+<!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
 # <a name="use-the-azure-stack-api"></a>Az Azure verem API használata
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Az Azure-verem API segítségével automatizálhatja a műveletek, például a Piactéri elemek syndicating.
+Az Azure verem alkalmazásprogramozási felületet (API) segítségével automatizálhatja a műveletek, például a Piactéri elemek syndicating.
 
-Az ügyfél hitelesítése a Microsoft Azure bejelentkezési végpont az API-val van szükség. A végpont egy jogkivonatot használja az Azure-verem API-nak küldött kérelmek fejlécében adja vissza. (A Microsoft Azure használja Oauth 2.0-s).
+Az API megköveteli, hogy a Microsoft Azure bejelentkezési végpont hitelesítése az ügyfél. A végpont egy jogkivonatot használja az Azure-verem API-nak küldött kérelmek fejlécében adja vissza. A Microsoft Azure által használt Oauth 2.0-s.
 
-Ez a cikk példákat a curl segédprogrammal Azure verem kérelmek létrehozása. Ezek a példák ismerteti a folyamatot, amely az Azure-verem API eléréséhez jogkivonat beolvasása. A legtöbb programozási nyelveket adja meg az Oauth 2.0 szalagtárak, amelyeknek robusztus token felügyeleti és leíró feladatok ilyen a jogkivonat frissítését.
+Ez a cikk ismerteti, amelyek például a **cURL** segédprogram Azure verem kérelmek létrehozásához. Az alkalmazásra, a cURL, az adatok átvitele a könyvtárnak a parancssori eszköz. Ezek a példák ismerteti a folyamatot, amely az Azure-verem API eléréséhez jogkivonat beolvasása. A legtöbb programozási nyelveket adja meg az Oauth 2.0 szalagtárak, amelyeknek robusztus token felügyeleti és leíró feladatok ilyen a jogkivonat frissítését.
 
-A teljes folyamatot az Azure verem REST API használatával általános REST-ügyféllel, például a curl azt segítenek megérteni az alapul szolgáló megnézi kér, és bemutatja, mi várható válasz payloadban fogadására.
+Tekintse át az Azure verem REST API használatával egy általános REST-ügyféllel, mint például a teljes folyamat **cURL**, segít megérteni az alapul szolgáló kér, és bemutatja, mi várható válasz payloadban fogadására.
 
-Ez a cikk nem megismerkedhet a jogkivonatokat, például az interaktív bejelentkezési beolvasása, vagy hozzon létre dedikált Alkalmazásazonosítók elérhető lehetőségekről. További információkért lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/).
+Ez a cikk nem megismerkedhet a jogkivonatokat, például az interaktív bejelentkezési beolvasása, vagy hozzon létre dedikált Alkalmazásazonosítók elérhető lehetőségekről. Ezek a témakörök kapcsolatos információért lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/).
 
 ## <a name="get-a-token-from-azure"></a>A jogkivonat beszerzése az Azure-ból
 
-Hozzon létre egy kérést *törzs* formázva a tartalomtípus x-www-form-urlencoded egy hozzáférési jogkivonat beszerzése. A kérés a Azure REST-hitelesítés és bejelentkezés végpontra utáni.
+Hozzon létre egy kérelemtörzset formázva a tartalomtípus x-www-form-urlencoded egy hozzáférési jogkivonat beszerzése. A kérés a Azure REST-hitelesítés és bejelentkezés végpontra utáni.
 
-```
+### <a name="uri"></a>URI
+
+```bash  
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 ```
 
 **A bérlői azonosító** vagy:
 
-* A bérlői tartományhoz, például a fabrikam.onmicrosoft.com
-* A bérlő azonosítója, például a 8eaed023-2b34-4da1-9baa-8bc8c9d6a491
-* Alapértelmezett érték a bérlő független kulcsok: gyakori
+ - A bérlő tartománya, mint `fabrikam.onmicrosoft.com`
+ - A bérlő azonosítója, mint `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
+ - Alapértelmezett érték a bérlő független kulcsok: `common`
 
 ### <a name="post-body"></a>POST törzse
 
-```
+```bash  
 grant_type=password
 &client_id=1950a258-227b-4e31-a9cf-717495945fc2
 &resource=https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155
@@ -62,32 +64,25 @@ grant_type=password
 
 Értékek:
 
-  **grant_type**
+ - **grant_type**  
+    Hitelesítési séma használatával fogja típusa. Ebben a példában a értéke `password`
 
-  Hitelesítési séma használatával fogja típusa. Ebben a példában a érték:
+ - **resource**  
+    Az erőforrás fér hozzá a jogkivonatot. Az Azure-verem felügyeleti metaadat-végpontjához lekérdezésével erőforrás is található. Tekintse meg a **célközönség** szakasz
 
-  ```
-  password
-  ```
+ - **Az Azure verem felügyeleti végpont**  
+    ```
+    https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
+    ```
 
-  **resource**
-
-  Az erőforrás fér hozzá a jogkivonatot. Az Azure-verem felügyeleti metaadat-végpontjához lekérdezésével erőforrás is található. Tekintse meg a **célközönség** szakasz
-
-  Az Azure verem felügyeleti végpontja:
-
-  ```
-  https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
-  ```
-
- > [!NOTE]
- > Ha megpróbál hozzáférni a bérlői API rendszergazdája, akkor meg kell győződnie arról, használja a tenant végpont, például a: "https://adminmanagement.{region}.{Azure verem tartományi} / metaadatok/végpontok? api-version = 2015-01-011
+  > [!NOTE]  
+  > Ha a rendszergazda megpróbál hozzáférni a bérlői API-hoz majd meg kell győződnie arról tenant végpont, például használatára: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
   Például az az Azure verem szoftverfejlesztői készlet végpontjaként:
 
-  ```
-  curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
-  ```
+    ```bash
+    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
+    ```
 
   Válasz:
 
@@ -175,13 +170,13 @@ Ha a hozzáférési jogkivonat beszerzéséhez kell célútvonallal fejléc az e
 
 A kérelem:
 
-```
+```bash  
 curl -H "Authorization: Bearer eyJ0eXAiOi...truncated for readability..." 'https://adminmanagement.local.azurestack.external/subscriptions?api-version=2016-05-01'
 ```
 
 Válasz:
 
-```
+```bash  
 offerId : /delegatedProviders/default/offers/92F30E5D-F163-4C58-8F02-F31CFE66C21B
 id : /subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8
 subscriptionId : 800c4168-3eb1-406b-a4ca-919fe7ee42e8

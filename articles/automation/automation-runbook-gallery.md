@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8fb0e2181c518db541504f0eea77ce9fde7edf8f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 61d267898bab5e5df394d4097eacb33ada809518
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Az Azure Automation forgatókönyv- és minták
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, különféle forgatókönyvekhez, amik már Microsoft és a Közösség által készített végezheti el.  Használja a következő használati helyzetekben módosítás nélkül, vagy használhatja őket a kiindulási pontként, és szerkesztheti azokat az adott igények szerint.
@@ -90,6 +90,9 @@ PowerShell-modul a runbookokban használható parancsmagokat tartalmaznak, és a
 9. Az a **importálása** kattintson **OK** a modul importálásához. Azure Automation importálja a modult, a fiókjához, amíg a modul és a parancsmagokkal kapcsolatos metaadatok bontja ki. Ez eltarthat néhány percig, mivel minden tevékenység kinyerni kell.
 10. Befejezését követően, hogy a modul telepítése értesítés és egy másik értesítést kapni.
 11. A modul az importálása után megjelenik az elérhető tevékenységeket, és használhatja az erőforrásokat a runbookok és a célállapot-konfiguráció.
+
+> [!NOTE]
+> PowerShell core támogató modulok nem támogatottak az Azure Automationben, és nem importálhatók az Azure portálon, vagy közvetlenül a PowerShell-galériából telepítve.
 
 ## <a name="requesting-a-runbook-or-module"></a>A kért egy runbook vagy modul
 Kéréseket küldhet [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Ha a szükséges súgó írása egy runbookot, vagy PowerShell kapcsolatos kérdése van, küldéséhez a [fórum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).

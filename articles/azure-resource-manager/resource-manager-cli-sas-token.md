@@ -1,24 +1,24 @@
 ---
-title: "Az SAS-jogkivonat és az Azure CLI Azure-sablon üzembe helyezése |} Microsoft Docs"
-description: "Azure Resource Manager és az Azure parancssori felület használatával telepítse az erőforrások az Azure által védett SAS-jogkivonat sablonból."
+title: Az SAS-jogkivonat és az Azure CLI Azure-sablon üzembe helyezése |} Microsoft Docs
+description: Azure Resource Manager és az Azure parancssori felület használatával telepítse az erőforrások az Azure által védett SAS-jogkivonat sablonból.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: 22387aadd8f53a65efb76a29a9403c46a2c25954
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b97fdea36eab914926ff91e1f27bdab0fb8a3930
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>Az SAS-jogkivonat és az Azure parancssori felület titkos Resource Manager-sablon üzembe helyezése
 
@@ -84,7 +84,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 Például egy SAS-jogkivonat használatával a csatolt sablonokkal, [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megismerkedhet a sablonok központi telepítése, lásd: [erőforrások a Resource Manager-sablonok és Azure PowerShell telepítése](resource-group-template-deploy-cli.md).
 * Egy teljes parancsfájlt, amely telepít egy sablon, lásd: [sablonparancsfájlt erőforrás-kezelő telepítése](resource-manager-samples-cli-deploy.md)
 * Sablon paraméterek megadásához tekintse meg a [sablonok készítése](resource-group-authoring-templates.md#parameters).

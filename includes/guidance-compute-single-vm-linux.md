@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-machines-linux
+author: iainfoulds
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: iainfou
+ms.custom: include file
+ms.openlocfilehash: 08b0cd35294a6cd4086fd5640b09d944ed361c41
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/20/2018
+---
 Ez a cikk bevált gyakorlatokat mutat be egy Linux virtuális gép (VM) Azure-on való futtatására, figyelembe véve a méretezési, a rendelkezésre állási, a felügyeleti és a biztonsági szempontokat. Az Azure támogatja különböző népszerű Linux-disztribúciók, például a CentOS, a Debian, a Red Hat Enterprise, az Ubuntu és a FreeBSD futtatását. További információk: [Az Azure és a Linux][azure-linux].
 
 > [!NOTE]
@@ -184,8 +200,8 @@ A magasabb rendelkezésre állás érdekében helyezzen üzembe két vagy több 
 [manage-vm-availability]:../articles/virtual-machines/linux/manage-availability.md
 [multi-vm]: ../articles/guidance/guidance-compute-multi-vm.md
 [naming conventions]: ../articles/guidance/guidance-naming-conventions.md
-[nsg]: ../articles/virtual-network/virtual-networks-nsg.md
-[nsg-default-rules]: ../articles/virtual-network/virtual-networks-nsg.md#default-rules
+[nsg]: ../articles/virtual-network/security-overview.md
+[nsg-default-rules]: ../articles/virtual-network/security-overview.md#default-security-rules
 [OSPatching]: https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching
 [planned-maintenance]:../articles/virtual-machines/linux/planned-maintenance.md
 [premium-storage]:../articles/virtual-machines/windows/premium-storage.md

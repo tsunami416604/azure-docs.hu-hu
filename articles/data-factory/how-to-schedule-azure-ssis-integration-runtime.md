@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f7806e1155a0129d67f8848b9ba8c4d07cb126d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
 Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)). Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Ebben a cikkben leírt magas szintű lépései a következők:
@@ -70,9 +70,6 @@ Ha egy Azure Automation-fiók nem rendelkezik, hozzon létre ebben a lépésben 
 ### <a name="import-data-factory-modules"></a>Adat-előállító modul importálása
 
 1. Válassza ki **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és ellenőrizze, hogy rendelkezik **AzureRM.Profile** és **AzureRM.DataFactoryV2** modulok listáján.
-
-    > [!IMPORTANT]
-    > Jelenleg, csak használható **AzureRM.DataFactoryV2 0.5.2** és **AzureRM.Profile 4.5.0** modulok.
 
     ![A szükséges modulokat ellenőrzése](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 

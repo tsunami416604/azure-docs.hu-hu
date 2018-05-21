@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/18/2018
 ms.author: sngun
-ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9dae401bc007b78d8ee3c6993735650e3b26b9d1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB aszinkron Java SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -55,6 +55,18 @@ A SQL API aszinkron Java SDK abban tér el az SQL API Java SDK-támogatása az a
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="a-name102102"></a><a name="1.0.2"/>amely az 1.0.2-esnél újabb
+* Egyedi Index házirend támogatása.
+* Támogatja a válasz folytatási jogkivonat mérete adatcsatorna beállítások korlátozza.
+* A kereszt-Partíciólekérdezés partíció vegyes támogatása.
+* Programhiba rögzített Json Timestamp típusú szerializálási ([github #32](https://github.com/Azure/azure-cosmosdb-java/issues/32)).
+* Programhiba parancs a következő felsorolás a Json-szerializálást.
+* Rögzített 2MB méretű dokumentumok kezelése hiba ([github #33](https://github.com/Azure/azure-cosmosdb-java/issues/33)).
+* A függőségi com.fasterxml.jackson.core:jackson-databind frissítve 2.9.5 programhiba okozza az ([jackson-databind: #1599 github](https://github.com/FasterXML/jackson-databind/issues/1599))
+* Egy hiba miatt 0.8.0.17 frissített rxjava-kiegészítő funkciók függőség ([rxjava-kiegészítő funkciók: #30 github](https://github.com/davidmoten/rxjava-extras/issues/30)).
+* A metaadatok leírását a dokumentáció a többi beágyazva frissített pom fájlt.
+* Szintaxis fokozása ([github #41](https://github.com/Azure/azure-cosmosdb-java/issues/41)), ([github #40](https://github.com/Azure/azure-cosmosdb-java/issues/40)).
+
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Biztonsági-nyomás támogatja a lekérdezést.
 * Partícióazonosító legfontosabb tartomány a lekérdezés támogatása.
@@ -79,6 +91,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.0.2](#1.0.2) |2018. május 18.|--- |
 | [1.0.1](#1.0.1) |2018. április 20.|--- |
 | [1.0.0](#1.0.0) |2018. február 27.|--- |
 
