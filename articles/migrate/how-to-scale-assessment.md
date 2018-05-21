@@ -4,13 +4,13 @@ description: Ismerteti, hogyan lehet az Azure áttelepítése szolgáltatás has
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 05/18/2018
 ms.author: raynew
-ms.openlocfilehash: e0bd62710c47cfdf81535470ef96bad2ab675bb0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8943aec1c81abb34b646180df48bcc55764ca24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -33,13 +33,13 @@ Tervezze meg a felderítések és a vizsgálatok során a következő korlátoz�
 | Detektálás  | 1,500             |
 | Értékelés | 1,500             |
 
-<!-- 
-- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
+<!--
+- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments.
 - If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
 - If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
 - If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
     - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
-    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
+    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one.
       -->
 
 ## <a name="plan-multiple-discoveries"></a>Több felderítések megtervezése
@@ -88,6 +88,14 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
 
 3. Győződjön meg arról, hogy a létrehozott kivonatoló megegyezik-e a következő beállításokat.
 
+    1.0.9.8 petesejtek verziójához
+
+    **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
     Az OVA 1.0.9.7-es verziója esetében
 
     **Algoritmus** | **Kivonat értéke**
@@ -112,30 +120,6 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-    Az OVA 1.0.8.59-es verziója esetén
-
-    **Algoritmus** | **Kivonat értéke**
-    --- | ---
-    MD5 | 71139e24a532ca67669260b3062c3dad
-    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
-    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
-
-    Az OVA 1.0.8.49-es verziója esetében
-
-    **Algoritmus** | **Kivonat értéke**
-    --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8
-    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
-    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
-
-    Az OVA 1.0.8.40-es verziója esetében:
-
-    **Algoritmus** | **Kivonat értéke**
-    --- | ---
-    MD5 |afbae5a2e7142829659c21fd8a9def3f
-    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
-    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
 ## <a name="create-the-collector-vm"></a>A gyűjtő virtuális gép létrehozása
 
 A letöltött fájlt a vCenter-kiszolgáló importálása:
@@ -149,7 +133,7 @@ A letöltött fájlt a vCenter-kiszolgáló importálása:
 4. A **Host/Cluster** (Gazdagép/fürt) mezőben adja meg a gazdagépet vagy fürtöt, amelyen a gyűjtő virtuális gép futni fog.
 5. A tárolóban adja meg a célhelyet a gyűjtő virtuális gép tárolásához.
 6. A **Disk Format** (Lemezformátum) mezőben adja meg a lemez típusát és méretét.
-7. A **Network Mapping** (Hálózatleképezés) mezőben adja meg a hálózatot, amelyhez a gyűjtő virtuális gép kapcsolódni fog. A hálózati metaadatok küldésére Azure internetkapcsolat szükséges. 
+7. A **Network Mapping** (Hálózatleképezés) mezőben adja meg a hálózatot, amelyhez a gyűjtő virtuális gép kapcsolódni fog. A hálózati metaadatok küldésére Azure internetkapcsolat szükséges.
 8. Tekintse át és hagyja jóvá a beállításokat, majd válassza ki **Befejezés**.
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>Azonosítsa az ID és a kulcsok minden olyan projekthez
@@ -157,13 +141,13 @@ A letöltött fájlt a vCenter-kiszolgáló importálása:
 Ha több projektet, ügyeljen arra, hogy azonosítsa a azonosítója és a kulcsok minden egyes számára. Be kell a kulcsot, a virtuális gépek felderítése a gyűjtő futtatásakor.
 
 1. Válassza ki a projekt **bevezetés** > **felderítési & felmérési** > **gépek felderítése**.
-2. A **projekt hitelesítő adatok másolása**, másolja le az Azonosítót, és a projekt kulcsát. 
+2. A **projekt hitelesítő adatok másolása**, másolja le az Azonosítót, és a projekt kulcsát.
     ![Projekt hitelesítő adatok másolása](./media/how-to-scale-assessment/copy-project-credentials.png)
 
 ## <a name="set-the-vcenter-statistics-level"></a>A vCenter statisztika szintjének beállítása
-A felderítés során gyűjtött teljesítményszámlálók listája látható. A számlálók a rendszer a vCenter Server különböző szinteken elérhető alapértelmezés szerint. 
+A felderítés során gyűjtött teljesítményszámlálók listája látható. A számlálók a rendszer a vCenter Server különböző szinteken elérhető alapértelmezés szerint.
 
-Azt javasoljuk, hogy a számlálók megfelelően vannak összegyűjtött legnagyobb közös szintjének (3) a statisztika szint beállítása. Ha vCenter egy alacsonyabb szinten adja meg, csak néhány számlálók gyűjtik be teljesen, és a többi értéke 0. Az értékelés majd előfordulhat, hogy megjelenítése nem teljes adatokat. 
+Azt javasoljuk, hogy a számlálók megfelelően vannak összegyűjtött legnagyobb közös szintjének (3) a statisztika szint beállítása. Ha vCenter egy alacsonyabb szinten adja meg, csak néhány számlálók gyűjtik be teljesen, és a többi értéke 0. Az értékelés majd előfordulhat, hogy megjelenítése nem teljes adatokat.
 
 A következő táblázatban a értékelési eredmények, amelyek befolyásolják, ha a számláló nem gyűjtött a program.
 
@@ -203,7 +187,7 @@ Minden felderítés, végre kell hajtania a gyűjtő felderítéséhez szükség
 5.  A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
     - Adja meg a név (FQDN) vagy a vCenter-kiszolgáló IP-címét.
     - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelyet a gyűjtő virtuális gépek felderítése a vCenter Server fog használni.
-    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő képes felderíteni csak az adott hatókörben lévő virtuális gépek. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Hogy 1000-nél több virtuális gép nem tartalmaz. 
+    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő képes felderíteni csak az adott hatókörben lévő virtuális gépek. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Hogy 1000-nél több virtuális gép nem tartalmaz.
 
 6.  A **megadása áttelepítési projekt**, adja meg az Azonosítót, és a projekt kulcsát. Nem másolja őket, ha a gyűjtő VM nyissa meg az Azure-portálon. A projekt **áttekintése** lapon jelölje be **gépek felderítése** , és másolja az értékeket.  
 7.  A **gyűjtemény folyamatjelző**, a felderítési folyamat figyelésére, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát.
@@ -211,7 +195,7 @@ Minden felderítés, végre kell hajtania a gyűjtő felderítéséhez szükség
 
 ### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 
-A felderítési idő a felderített virtuális gépek számától függ. Általában 100 virtuális gépekhez, felderítési befejezi a gyűjtő követően egy óra körül. 
+A felderítési idő a felderített virtuális gépek számától függ. Általában 100 virtuális gépekhez, felderítési befejezi a gyűjtő követően egy óra körül.
 
 1. Válassza ki az áttelepítési Planner projektben **kezelése** > **gépek**.
 2. Ellenőrizze, hogy a felderíteni kívánt virtuális gépek megjelennek-e a portálon.

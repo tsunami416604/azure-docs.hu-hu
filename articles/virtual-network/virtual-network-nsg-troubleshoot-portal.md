@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: be400d674068d89f60d3c999006bc9291944ab1c
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 67ffe826ba13576578e8f09e36f84128f4ceb0f2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Hálózati biztonsági csoportok az Azure portál használatával hibaelhárítása
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.lasthandoff: 05/14/2018
 
 Ha konfigurálva a hálózati biztonsági csoportokkal (NSG-k) a virtuális gépen (VM), és virtuális gép kapcsolódási problémákat tapasztal, ez a cikk áttekintést diagnosztika képességet biztosít a További hibaelhárítás elősegítése érdekében az NSG-ket.
 
-Az NSG-k lehetővé teszik a típusú forgalom, hogy a virtuális gépek (VM) mindkét folyamata. NSG-ket alhálózatokra egy Azure virtuális hálózatot (VNet), hálózati adapterek (NIC) vagy mindkettőt alkalmazhatók. A hatékony szabályokat egy hálózati adapter egyszerűsítése érdekében a szabályokat, amelyek szerepelnek az NSG-ket egy hálózati adapterre alkalmazza, és az alhálózat van csatlakoztatva. Ezek az NSG-k között szabályok néha ütköznek egymással, és hatással lehet a virtuális gépek hálózati kapcsolattal.  
+Az NSG-k lehetővé teszik a típusú forgalom, hogy a virtuális gépek (VM) mindkét folyamata. NSG-ket alhálózatokra egy Azure virtuális hálózatot (VNet), hálózati adapterek (NIC) vagy mindkettőt alkalmazhatók. A hatékony szabályokat egy hálózati adapter egyszerűsítése érdekében a szabályokat, amelyek szerepelnek az NSG-ket egy hálózati adapterre alkalmazza, és az alhálózat van csatlakoztatva. Ezek az NSG-k között szabályok néha ütköznek egymással, és hatással lehet a virtuális gépek hálózati kapcsolattal.
 
-Az NSG-k, az összes hatékony biztonsági szabály tekintheti meg a virtuális gép hálózati adapterek alkalmazott. Ez a cikk bemutatja, hogyan VM csatlakozási problémák ezek a szabályok használatával az Azure Resource Manager üzembe helyezési modellben. Ha még nem ismeri a virtuális hálózat és NSG fogalmakat, olvassa el a [virtuális hálózati](virtual-networks-overview.md) és [hálózati biztonsági csoportok](virtual-networks-nsg.md) áttekintése cikkeket.
+Az NSG-k, az összes hatékony biztonsági szabály tekintheti meg a virtuális gép hálózati adapterek alkalmazott. Ez a cikk bemutatja, hogyan VM csatlakozási problémák ezek a szabályok használatával az Azure Resource Manager üzembe helyezési modellben. Ha még nem ismeri a virtuális hálózat és NSG fogalmait, tekintse meg a [virtuális hálózat áttekintése](virtual-networks-overview.md) és [hálózati biztonsági csoport – áttekintés](security-overview.md).
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>Hatékony biztonsági szabályok használata hibák elhárításához a virtuális gép forgalom áramlását
 A következő forgatókönyv gyakori kapcsolati probléma példája:
@@ -66,7 +66,7 @@ A hatékony biztonsági szabályok teljes listáját megtekintheti a hálózati 
    * **Hatókör:** beállítása *VM1*, a virtuális Gépet, a 3.
    * **Hálózati adapter:** *VM1-NIC1* van kiválasztva. A virtuális gépek több hálózati adapterek (NIC) lehet. Egyes hálózati adapterek egyedi hatékony biztonsági szabályokat is rendelkezhetnek. Hibaelhárításához, szükség lehet a hatékony biztonsági szabályok megjelenítése minden hálózati adaptert.
    * **Társított NSG-ket:** NSG-ket a hálózati adapter és a hálózati adapter csatlakozik-e az alhálózat alkalmazhatók. A képen látható az NSG telepítve van a hálózati adapter, mind a alhálózathoz csatlakozik. Kattintson az NSG neve közvetlenül a az NSG-ket a szabályok módosítása.
-   * **VM1-nsg lap:** a megjelenített szabályok listáján a van alkalmazza az NSG-t a hálózati adaptert. Több alapértelmezett szabályok jönnek létre az Azure-ban, amikor létrejön egy NSG. Nem távolítható el az alapértelmezett szabályokkal, de a nagyobb prioritású szabályokkal felülbírálhatja. Alapértelmezett szabályok kapcsolatos további tudnivalókért olvassa el a [NSG áttekintése](virtual-networks-nsg.md#default-rules) cikk.
+   * **VM1-nsg lap:** a megjelenített szabályok listáján a van alkalmazza az NSG-t a hálózati adaptert. Több alapértelmezett szabályok jönnek létre az Azure-ban, amikor létrejön egy NSG. Nem távolítható el az alapértelmezett szabályokkal, de a nagyobb prioritású szabályokkal felülbírálhatja. További információt az [alapértelmezett biztonsági szabályokkal](security-overview.md#default-security-rules) foglalkozó cikkben találhat.
    * **Céloszlop:** szabályainak szöveget tartalmaz az oszlopot, míg mások a címelőtagokat. A szöveg érvényesek, a biztonsági szabály lett létrehozva alapértelmezett címkék esetén. A címkék olyan rendszer által biztosított azonosítók, amelyek megfelelnek a több előtagok. A szabály címkével ellátott, például kiválasztásával *AllowInternetOutBound*, a előtag szerepel az a **cím előtagokat** panelen.
    * **Letöltés:** szabályok listáján a hosszú lehet. Egy CSV-fájlt a szabályok kapcsolat nélküli elemzéshez kattintva letöltheti **letöltése** és a fájl mentése.
    * **AllowRDP** bejövő forgalomra vonatkozó szabály: Ez a szabály lehetővé teszi, hogy a virtuális gép RDP-kapcsolatok.

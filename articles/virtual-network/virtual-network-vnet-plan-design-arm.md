@@ -1,254 +1,115 @@
 ---
-title: Az Azure Virtual Network (VNet) tervezési és kialakítási útmutató |} Microsoft Docs
-description: Megtudhatja, hogyan tervezése és kialakítása elkülönítési, a kapcsolat és a hely igény Azure virtuális hálózatairól.
+title: Tervezze meg az Azure virtuális hálózatok |} Microsoft Docs
+description: Ismerje meg a elkülönítési, a kapcsolat és a helyre vonatkozó követelmények alapján virtuális hálózatok tervezését.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: tysonn
+editor: ''
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2016
+ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 6e41dae2f4e93fe2e3cef689596612a6a192c844
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 83558b9d8d47ac5e6bd15dd54db38125376d11bd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
-# <a name="plan-and-design-azure-virtual-networks"></a>Azure virtuális hálózatok megtervezése
-Létre virtuális hálózatok kísérletezhet elég egyszerűen, de valószínűleg több Vnetek adott idő alatt a szervezet a termelési igényeinek támogatásához telepíteni fogja. Az egyes tervezési és kialakítási lesz Vnetek telepítéséhez, és csatlakozzon a hatékonyabb szükséges erőforrások. Ha nem ismeri a Vneteket, javasoljuk, hogy Ön [Vnetek megismerése](virtual-networks-overview.md) és [telepítése](quick-create-portal.md) egy, a folytatás előtt.
+# <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
-## <a name="plan"></a>Felkészülés
-Azure-előfizetések, régiók és hálózati erőforrásokat alapos ismerete fontos a sikeres. Alább szempontok listáját használhatja kiindulási pontként. E szempontok elsajátítása után hálózatterv adhat meg a követelményeknek.
+Kísérletezhet virtuális hálózat létrehozása elég egyszerűen, de, a szervezet a termelési igényeinek támogatására idővel több virtuális hálózat fog üzembe helyezni. Néhány tervezéssel fogja tudni telepíteni a virtuális hálózatok, és csatlakozzon a hatékonyabb szükséges erőforrások. A cikkben szereplő információkat akkor hasznos, ha már jártas a virtuális hálózatok, és rendelkezik némi tapasztalattal hozzájuk. Ha nem ismeri a virtuális hálózatok, javasolt elolvasni [virtuális hálózat áttekintése](virtual-networks-overview.md).
 
-### <a name="considerations"></a>Megfontolandó szempontok
-Mielőtt az alábbi kérdések megválaszolása, a tervezési, vegye figyelembe a következőket:
+## <a name="naming"></a>Elnevezés
 
-* Minden Azure-ban létrehozhat egy vagy több erőforrás áll. Egy virtuális gép (VM) egy olyan erőforrás, egy virtuális gép által használt hálózati adapter kapcsolatának (NIC) egy erőforrás, a nyilvános IP-cím egy hálózati adapter által használt erőforrás, a virtuális hálózatot a hálózati adapter csatlakoztatva van egy olyan erőforrás.
-* Erőforrások létrehozása egy [az Azure-régió](https://azure.microsoft.com/regions/#services) és -előfizetése. Erőforrások csak egy virtuális hálózat már szerepel ugyanabban a régióban kell csatlakoztatni, és az erőforrás előfizetése.
-* Virtuális hálózatok kapcsolódhatnak egymáshoz, a használatával:
-    * **[Virtuális hálózati társviszony-létesítés](virtual-network-peering-overview.md)**: már léteznie kell a virtuális hálózatok ugyanazon Azure-régiót. Erőforrások között lévő virtuális hálózatok társviszonyban sávszélessége ugyanaz, mintha ugyanahhoz a virtuális hálózathoz csatlakoztatva az erőforrásokat.
-    * **Egy Azure [VPN-átjáró](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)**: A virtuális hálózatok ugyanazon vagy másik Azure-régiókban is szerepel. Egy VPN-átjárón keresztül csatlakozó virtuális hálózatokon lévő erőforrások közötti sávszélesség korlátozza a sávszélességet a VPN-átjáró.
-* Csatlakozhat Vnetek a helyszíni hálózat használatával a [kapcsolati lehetőségek](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) érhető el az Azure-ban.
-* Különböző erőforrások foghatók egybe a [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md#resource-groups), így könnyebben kezelheti az erőforrás egy egységként. Erőforráscsoport több régióba származó erőforrásokat is tartalmaznak, mindaddig, amíg az erőforrás ugyanahhoz az előfizetéshez tartozik.
+Az összes Azure-erőforrások nevet adni. A név, amelyek minden erőforrástípus változhatnak hatókörön belül egyedinek kell lennie. Például egy virtuális hálózat nevét belül egyedinek kell lennie egy [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), de belül megkettőzhetők egy [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) vagy Azure [régió](https://azure.microsoft.com/regions/#services). Egy elnevezési konvenciója, használhat következetesen erőforrások elnevezésekor meghatározása akkor hasznos, ha az adott idő alatt több hálózati erőforrások kezelése. A javaslatok, lásd: [elnevezési konvenciói](/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="define-requirements"></a>Követelmények megadása
-Az alábbi kérdéseket használja kiindulópontként meghatározásához az Azure-hálózatot.    
+## <a name="regions"></a>Régiók
 
-1. Milyen Azure helyek használatával állomás Vnetekhez?
-2. Meg kell adnia a következő Azure helyek közötti kommunikáció?
-3. Meg kell adnia a Azure VNet(s) és a helyszíni datacenter(s) közötti kommunikáció?
-4. Egy szolgáltatási (IaaS) virtuális gép, hogy hány infrastruktúra cloud services – szerepkörök és web apps nincs szüksége a megoldás?
-5. El kell különítenie a forgalom virtuális (azaz előtér-webkiszolgáló és háttérbeli adatbázis-kiszolgálók) alapján?
-6. Virtuális készülékek használata adatforgalom szabályozásához kell?
-7. Felhasználók más-más részhalmazához különböző Azure-erőforrások engedélyek igényelnek?
+Egy Azure-régió, és az előfizetés az összes Azure-erőforrások jönnek létre. Egy erőforrás csak egy virtuális hálózat már szerepel a azonos régióban, és az előfizetés erőforrásként hozhatók létre. Ugyanakkor különböző előfizetésekhez és régiókban létező virtuális hálózatok csatlakoztatása. További információkért lásd: [kapcsolat](#connectivity). Mely régió(k) esetében az erőforrások telepítése meghatározásakor vegye figyelembe az erőforrások fogyasztói fizikailag hol:
 
-### <a name="understand-vnet-and-subnet-properties"></a>VNet és alhálózat tulajdonságok ismertetése
-Hálózatok és alhálózatok erőforrások segítségével határozza meg az Azure-ban futó munkaterhelések biztonsági korlátot. Egy VNet jellemzőek, címterekhez, meghatározott CIDR-blokkok gyűjteménye.
+- Erőforrások fogyasztói általában érdemes a legkisebb hálózati késést erőforrásaik. Egy megadott helyre és az Azure-régiók közötti relatív késések megállapításához lásd: [relatív késések megtekintése](../network-watcher/view-relative-latencies.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Rezidens, közös joghatóság alá, megfelelőségi vagy rugalmassági követelményeinek van? Ha igen, a régiót, amelyben a követelményeinek igazítja kiválasztása fontos. További információkért lásd: [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/).
+- Szükség van-e rugalmassági Azure rendelkezésre állási zónák között az erőforrások telepítése Azure régión belül? Erőforrások, például virtuális gépek (VM) telepíthet másik rendelkezésre állási zónákhoz belül az azonos virtuális hálózatban. Nem minden Azure-régiók azonban támogatja a rendelkezésre állási zónák. Rendelkezésre állási zónák és az őket támogató régiók kapcsolatos további információkért lásd: [rendelkezésre állási zónák](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-> [!NOTE]
-> A hálózati rendszergazdák jártas CIDR-formátumban. Ha nem ismeri a CIDR, [olvashat azokról bővebben](http://whatismyipaddress.com/cidr).
->
->
+## <a name="subscriptions"></a>Előfizetések
 
-Vnetek az alábbi tulajdonságokat tartalmazzák.
+Legfeljebb annyi virtuális hálózatok belül minden előfizetés szükség szerint telepítheti a [korlát](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Egyes vállalatoknak van például különböző előfizetések különböző részlegek számára. További információért és megfontolásokért előfizetések körül, lásd: [előfizetés irányítás](../azure-resource-manager/resource-manager-subscription-governance.md?toc=%2fazure%2fvirtual-network%2ftoc.json#define-your-hierarchy).
 
-| Tulajdonság | Leírás | Korlátozások |
-| --- | --- | --- |
-| **name** |VNet neve |Legfeljebb 80 karakterből álló karakterlánc. Betűk, számok, aláhúzásjelet, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie. Betűvel, számmal vagy aláhúzásjellel kell végződnie. Felső vagy kisbetűket is tartalmaz. |
-| **hely** |Azure-beli hely (más néven régió). |Az érvényes Azure helyek valamelyikén kell lennie. |
-| **addressSpace** |A virtuális hálózat CIDR-jelöléssel alkotó címelőtagokat gyűjteménye. |Érvényes CIDR címblokkokat, beleértve a nyilvános IP-címtartományok tömbje kell lennie. |
-| **subnets** |A virtuális hálózatot alkotó alhálózatok gyűjteménye |az alhálózati tulajdonságok az alábbi táblázatban találja. |
-| **dhcpOptions** |Egy kötelező tulajdonság nevű tartalmazó objektum **dnsServers**. | |
-| **dnsServers** |A virtuális hálózat által használt DNS-kiszolgálók tömbje. Ha nincs megadva kiszolgáló, az Azure belső névfeloldást szolgál. |Legfeljebb 10 DNS-kiszolgálók, IP-cím szerint tömbnek kell lennie. |
+## <a name="segmentation"></a>Szegmentálás
 
-Egy alhálózat egy Vnetet gyermek erőforrása, és segítségével meghatározhatja a címterek belül használja az IP-cím előtagokat CIDR-blokkja részeit. Hálózati adapter alhálózatok hozzá, és kapcsolódik a virtuális gépek, a különböző munkaterhelések biztosítható a kapcsolat.
+Több virtuális hálózat előfizetésenként és régiónként hozhat létre. A virtuális hálózaton belül több alhálózatra is létrehozhat. Az az alábbi szempontokat segítségével meghatározhatja, hány virtuális hálózatok és alhálózatok van szüksége:
 
-Alhálózatok az alábbi tulajdonságokat tartalmazzák.
+### <a name="virtual-networks"></a>Virtuális hálózatok
 
-| Tulajdonság | Leírás | Korlátozások |
-| --- | --- | --- |
-| **name** |Alhálózat neve |Legfeljebb 80 karakterből álló karakterlánc. Betűk, számok, aláhúzásjelet, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie. Betűvel, számmal vagy aláhúzásjellel kell végződnie. Felső vagy kisbetűket is tartalmaz. |
-| **hely** |Azure-beli hely (más néven régió). |Az érvényes Azure helyek valamelyikén kell lennie. |
-| **addressPrefix** |Az alhálózat CIDR-jelöléssel alkotó egyetlen címelőtag |Egy egyetlen CIDR-blokkja címterületeket a virtuális hálózat egyik részét képező kell lennie. |
-| **networkSecurityGroup** |Az alhálózat alkalmazott NSG | |
-| **Migrálták** |Az útvonaltábla alkalmazva | |
-| **ipConfigurations** |Az alhálózathoz csatlakoztatott hálózati adapter által használt IP-konfigurációs objektumok gyűjteménye | |
+A virtuális hálózat az Azure nyilvános hálózat virtuális, elkülönített része. Minden egyes virtuális hálózati van rendelve az előfizetéshez. Megfontolandó szempontok, ha eldöntötte, hogy a előfizetés egy virtuális hálózatot, vagy több virtuális hálózat létrehozásához:
+
+- A forgalom elkülönítése külön virtuális hálózatba léteznek bármely szervezeti biztonsági követelmények? Ha szeretné-e csatlakozni a virtuális hálózatok. Ha virtuális hálózatok, a hálózati virtuális készülék, például egy tűzfal, a virtuális hálózatok közötti forgalom üzenetáramlásának szabályozására is létrehozható. További információkért lásd: [biztonsági](#security) és [kapcsolat](#connectivity).
+- Virtuális hálózatok elkülönítésére különálló bármely szervezeti követelmények léteznek [előfizetések](#subscriptions) vagy [régiók](#regions)?
+- A [hálózati illesztő](virtual-network-network-interface.md) lehetővé teszi, hogy a virtuális gépek más erőforrások folytatott kommunikációhoz. Mindegyik hálózati interfész egy vagy több privát IP-cím van hozzárendelve. Hány hálózati adapterek és [magánhálózati IP-címek](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) szükség van-e a virtuális hálózatot? Nincsenek [korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) hálózati felületek és privát IP-címek, amelyek a virtuális hálózaton belül lehet számával.
+- Szeretné a virtuális hálózat egy másik virtuális hálózathoz vagy a helyszíni hálózatában? Néhány virtuális hálózatok csatlakozni egymáshoz vagy a helyszíni hálózatokban, de nem mások dönthet. További információkért lásd: [kapcsolat](#connectivity). Minden más virtuális hálózathoz csatlakozó virtuális hálózati vagy a helyszíni hálózat, rendelkeznie kell egy egyedi címtartományt. Minden egyes virtuális hálózati egy vagy több nyilvános vagy privát címtartományai a címterület rendelve van. Címtartomány classless internetes tartomány útválasztási (CIDR) formátumban, például 10.0.0.0/16 van megadva. További információ [-címtartományok](manage-virtual-network.md#add-or-remove-an-address-range) virtuális hálózatok.
+- Rendelkezik a különböző virtuális hálózatokon vonatkozó erőforrások szervezeti felügyeleti követelmények? Ha igen, akkor előfordulhat, hogy külön erőforrások egyszerűbbé teheti a különálló virtuális hálózati [engedély-hozzárendelést](#permissions) az alkalmazottaknak a szervezet vagy, hogy különböző [házirendek](#policies) különböző virtuális hálózatok.
+- Amikor bizonyos Azure szolgáltatás erőforrások virtuális hálózatba telepít, azok saját virtuális hálózat létrehozása. Annak megállapításához, hogy az Azure-szolgáltatások a saját virtuális hálózatot hoz létre, információ az egyes [is telepíthető egy virtuális hálózatot az Azure-szolgáltatások](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network).
+
+### <a name="subnets"></a>Alhálózatok
+
+Egy virtuális hálózatot is lehet szegmentált be egy vagy több alhálózatból akár a [korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Megfontolandó szempontok, ha eldöntötte, hogy a előfizetés egy alhálózatot, vagy több virtuális hálózat létrehozásához:
+
+- Az egyes alhálózatokon rendelkeznie kell egy egyedi-címtartományt, a virtuális hálózat a címtér CIDR formátumban megadott. A címtartomány a virtuális hálózatban lévő más alhálózatok nem lehet átfedésben.
+- Egyes Azure-szolgáltatások erőforrásokat üzembe helyezés virtuális hálózatot szeretne, ha azok előfordulhat, hogy igényel, vagy hozzon létre, a saját alhálózatot, tehát nincs elegendő szabad kell lennie szóköz, hogy ehhez. Annak megállapításához, hogy az Azure-szolgáltatások a saját IP-alhálózatot hoz-e, tekintse meg az adatok [is telepíthető egy virtuális hálózatot az Azure-szolgáltatások](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Például ha egy virtuális hálózatot az Azure VPN Gateway használatával a helyszíni hálózathoz csatlakoztat, a virtuális hálózati átjáró dedikált alhálózat kell rendelkeznie. További információ [átjáró alhálózatok](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub).
+- Az Azure útvonalak közötti hálózati forgalom egy virtuális hálózatot, alapértelmezés szerint az összes alhálózatot. Ha szeretné felülbírálni az Azure alapértelmezett útválasztási megelőzése Azure útválasztás alhálózatok között, vagy egy hálózati virtuális készüléken keresztül alhálózatok közötti forgalom irányítására például. Ha szükséges, hogy az adott virtuális hálózati adatfolyam keresztül a hálózati virtuális készülék (NVA) az erőforrások közötti forgalom, telepítheti az erőforrásokat a más alhálózatokon. További információ: [biztonsági](#security).
+- Korlátozhatja például egy Azure storage-fiók vagy az Azure SQL-adatbázis, a virtuális hálózati szolgáltatásvégpont alhálózatok Azure-erőforrások eléréséhez. További megtagadhatja a hozzáférést az erőforrásokhoz az internetről. Előfordulhat, hogy a hozzon létre több alhálózat működik, és az egyes alhálózatok, de nem mások szolgáltatásvégpont engedélyezése. További információ [szolgáltatás végpontjait](virtual-network-service-endpoints-overview.md), és az Azure-erőforrások engedélyezheti őket.
+- Nulla vagy egy hálózati biztonsági csoportot minden egyes alhálózatnak egy virtuális hálózathoz társíthatja. Társítsa ugyanazt vagy egy másik, a hálózati biztonsági csoportra, és az egyes alhálózatokon. Minden egyes hálózati biztonsági csoport tartalmazza a szabályok, amelyek források és célok érkező vagy oda irányuló adatforgalom engedélyezéséhez vagy letiltásához. További információ [hálózati biztonsági csoportok](#traffic-filtering).
+
+## <a name="security"></a>Biztonság
+
+Szűrheti a hálózati forgalmat hálózati biztonsági csoportok és a hálózati virtuális készülékek használata a virtuális hálózatán lévő erőforrásokat. Szabályozhatja, hogyan Azure irányítja a forgalmat alhálózatok. Dolgozó a szervezet képes virtuális hálózatok erőforrásokat is korlátozható.
+
+### <a name="traffic-filtering"></a>Forgalomszűrés
+
+- A hálózati biztonsági csoport, a hálózati forgalom vagy mindkettő szűrő NVA használatával egy virtuális hálózatán lévő erőforrásokat közötti hálózati forgalom jeleníthetők meg. NVA, például egy tűzfal telepíteni a hálózati forgalom szűrésére, tekintse meg a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?subcategories=appliances&page=1). NVA használatakor is létrehozhat egyéni útvonalakat a az NVA alhálózatok-forgalom irányításához. További információ [a forgalom útválasztásához](#traffic-routing).
+- Hálózati biztonsági csoport, amely engedélyezi vagy megtagadja a bejövő és kimenő forgalmat a források több alapértelmezett biztonsági szabályokat tartalmazza. Lehet, hogy a hálózati biztonsági csoport társítva a hálózati adaptert, az alhálózatot a hálózati adaptert, vagy mindkettőt. Egyszerűbbé teheti a biztonsági szabályok kezelését, javasoljuk, hogy társít egy hálózati biztonsági csoport az egyes alhálózatokhoz ahelyett, hogy az egyes hálózati adapterek a alhálózatban, amikor csak lehetséges.
+- Egy alhálózaton belül különböző virtuális gépek különböző biztonsági szabály van szükség, ha a hálózati illesztő a virtuális gép egy vagy több alkalmazás biztonsági csoportokra lehet társítani. A szabály az alkalmazás biztonsági csoport meghatározhatja a forrás és cél tartozhatnak. Ez a szabály majd csak érvényes a hálózati adapterek, amelyek az alkalmazás biztonsági csoport tagjai. További információ [hálózati biztonsági csoportok](security-overview.md) és [biztonsági csoportok](security-overview.md#application-security-groups).
+- Azure néhány alapértelmezett biztonsági szabályokat az egyes hálózati biztonsági csoportok hoz létre. Egy alapértelmezett szabály lehetővé teszi, hogy a virtuális hálózat összes erőforrása közötti összes forgalmat. Bírálja felül ezt a viselkedést, használja a hálózati biztonsági csoportok, egyéni irányíthatja a forgalmat a NVA, vagy mindkét történő továbbítást. Javasoljuk, hogy Ismerkedjen meg az összes Azure [alapértelmezett biztonsági szabályok](security-overview.md#default-security-rules) és megérteni, hogyan erőforrás hálózati biztonsági csoport szabályok érvényesek.
+
+Megtekintheti a minta tervek közötti Azure és az internet használatával DMZ végrehajtásához egy [NVA](/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) vagy [hálózati biztonsági csoportok](virtual-networks-dmz-nsg.md).
+
+### <a name="traffic-routing"></a>a forgalom útválasztásához
+
+Azure több alapértelmezett útvonalakat a kimenő forgalom alhálózatot hoz létre. Ha szeretné felülbírálni az Azure alapértelmezett útválasztási hoz létre egy útválasztási táblázatot, és alhálózathoz való társítás. Gyakori okai a figyelőkével Azure alapértelmezett útválasztási vannak:
+- Mivel NVA áramlása érdekében alhálózatok közötti forgalmat. További információt hogyan [NVA forgalmát kényszerítheti az útvonaltáblák konfigurálása](tutorial-create-route-table-portal.md)
+- Mivel az összes internetes-forgalmat az NVA vagy a helyszínen, az Azure VPN-átjárón keresztül kényszeríteni kívánja. Internetes forgalmat a helyszínen a vizsgálathoz újraindítás és a naplózást gyakran hivatkoznak, a kényszerített bújtatást. További információk konfigurálása [kényszerített bújtatás](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
+
+Ha egyéni útválasztást van szüksége, javasoljuk, hogy Ön feltérképezése [az Azure útválasztási](virtual-networks-udr-overview.md).
+
+## <a name="connectivity"></a>Kapcsolatok
+
+Kapcsolható a virtuális hálózati más virtuális hálózatok használatával a virtuális hálózati társviszony-létesítést, vagy a helyszíni hálózat az Azure VPN gateway használatával.
+
+### <a name="peering"></a>Társviszony-létesítés
+
+Használata esetén [virtuális hálózati társviszony-létesítés](virtual-network-peering-overview.md), a virtuális hálózatok lehetnek azonos, vagy másik, a támogatott Azure-régiók. A virtuális hálózatok ugyanazon vagy másik Azure-előfizetések, lehet, amíg az azonos Azure Active Directory-bérlőhöz hozzárendelt mindkét előfizetéshez. Mielőtt létrehozna egy társviszony-létesítést, javasoljuk, hogy Ön Ismerkedjen meg az összes társviszony [követelményeket és korlátokat](virtual-network-manage-peering.md#requirements-and-constraints). Erőforrások között lévő virtuális hálózatok társviszonyban sávszélessége ugyanaz, mintha az erőforrásokat ugyanabban a virtuális hálózatban.
+
+### <a name="vpn-gateway"></a>VPN-átjáró
+
+Használhatja az Azure [VPN-átjáró](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) egy virtuális hálózathoz csatlakozni a helyszíni hálózat használja egy [telephelyek közötti VPN](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json), vagy egy dedikált kapcsolat használatával az Azure-ral [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+Kombinálhatja a társviszony-létesítést és a VPN-átjáró létrehozásához [küllős hálózatok](/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json), ahol küllős virtuális hálózatok központi virtuális hálózathoz csatlakozzon, és a központ például csatlakozik egy helyszíni hálózat.
 
 ### <a name="name-resolution"></a>Névfeloldás
-Alapértelmezés szerint a virtuális hálózat használja [Azure által biztosított névfeloldás](virtual-networks-name-resolution-for-vms-and-role-instances.md) feloldani a virtuális hálózaton belül, és a nyilvános interneten. Azonban ha a Vnetek csatlakozhat a helyszíni adatközpont, meg kell adni [a saját DNS-kiszolgáló](virtual-networks-name-resolution-for-vms-and-role-instances.md) feloldani a hálózatok között.  
 
-### <a name="limits"></a>Korlátok
-Tekintse át a hálózati korlátok a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikk annak érdekében, hogy a tervező nem ütközik a határokon. Néhány korlátot lehet növelni egy támogatási jegy megnyitásával.
+Egy virtuális hálózatán lévő erőforrásokat nem oldható fel az Azure használatával peered virtuális hálózatán lévő erőforrásokat nevei [beépített DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md). Egy peered virtuális hálózati nevek feloldása [a saját DNS-kiszolgáló telepítése](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server), vagy használja az Azure DNS [titkos tartományok](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Névfeloldás virtuális hálózatán lévő erőforrásokat és a helyszíni hálózat között is meg kell a saját DNS-kiszolgáló központi telepítése.
 
-### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-Használhat [Azure RBAC](../role-based-access-control/built-in-roles.md) vezérelhető a különböző felhasználók úgy lehet, hogy az Azure-ban a különböző erőforrások hozzáférési szint. Ily módon is elkülönítse a csapat a igényeiknek dolgozott.
+## <a name="permissions"></a>Engedélyek
 
-Csakúgy, mint a virtuális hálózatok az érintett felhasználók számára a **hálózat közreműködő** szerepkör Azure Resource Manager virtuális hálózati erőforrások teljes hozzáféréssel rendelkeznek. Hasonlóképpen, a felhasználók a **klasszikus hálózat közreműködő** szerepkör klasszikus virtuális hálózati erőforrások teljes hozzáféréssel rendelkeznek.
+Használja az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) erőforrásokhoz. Jogosultságokat hozzá kell rendelni egy [hatókör](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-hierarchy-and-access-inheritance) a következő hierarchia: előfizetés, a felügyeleti csoport, a erőforráscsoport és az egyéni erőforrás. A hierarchia kapcsolatos további információkért lásd: [az erőforrások rendszerezése](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Az Azure virtuális hálózatok és a kapcsolódó funkciók, például a társviszony-létesítést, a hálózati biztonsági csoportok, a végpontok és a útvonaltáblák dolgozni, hozzárendelheti a szervezet tagjaira a beépített [tulajdonos](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor), vagy [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörök, és ezután rendelje hozzá a szerepkört a megfelelő hatókörben. Ha szeretne hozzárendelni a virtuális hálózati funkciók egy részéhez meghatározott engedélyek, hozzon létre egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , és rendelje hozzá a szükséges engedélyeket [virtuális hálózatok](manage-virtual-network.md#permissions), [ alhálózatok és a végpontok](virtual-network-manage-subnet.md#permissions), [hálózati illesztőt](virtual-network-network-interface.md), [társviszony-létesítés](virtual-network-manage-peering.md#permissions), [hálózati és az alkalmazás biztonsági csoportok](manage-network-security-group.md#permissions), vagy [útvonaltáblát](manage-route-table.md#permissions) a szerepkörhöz.
 
-> [!NOTE]
-> Emellett [saját szerepköröket hozhat létre](../role-based-access-control/role-assignments-portal.md) külön felügyeleti igényeinek.
->
->
+## <a name="policy"></a>Szabályzat
 
-## <a name="design"></a>Tervezés
-Miután eldöntötte, hogy a kérdésekre adott válaszokat a [megtervezése](#Plan) szakaszban, tekintse át az alábbiakat, mielőtt meghatározná a Vnetek.
+Az Azure házirend lehetővé teszi létrehozása, hozzárendelése és házirend-definíciók kezelése. Házirend-definíciók különböző szabályok és kényszerítése hatások keresztül az erőforrásokat, így az erőforrások maradnak megfelel a vállalati szabványoknak és a szolgáltatásszint-szerződések Azure házirend futtatja az erőforrások, az erőforrások, amely nem kompatibilis a van a házirend-definíciók keresése értékelését. Például hogy olyan házirendet, amely lehetővé teszi, hogy a virtuális hálózatok létrehozása csak egy adott erőforráscsoportban található. Egy másik házirend szükség lehet, hogy minden alhálózat rendelkezik-e a hálózati biztonsági csoport társítva. A házirendek létrehozása és frissítése erőforrások majd kiértékelése.
 
-### <a name="number-of-subscriptions-and-vnets"></a>Az előfizetések és Vnetek száma
-Érdemes lehet több Vnetek létrehozása a következő esetekben:
-
-* **Virtuális gép között kell lenniük az Azure különböző helyeken**. Az Azure Vnetekhez regionális. Ezek nem terjedhetnek ki helyét. Ezért szükség van legalább egy virtuális hálózat minden egyes állomás virtuális gépek a kívánt Azure-beli hely.
-* **Munkaterhelések, csak teljesen elkülönülnek egymástól**. Is használhatja a azonos IP-címterek elkülöníti egymástól a különböző terhelésekhez Vnetek hozhat létre.
-
-Ne feledje, hogy a fent látható korlátai régiónként, amelyek. Ez azt jelenti, hogy több előfizetéssel segítségével kezelheti az Azure-erőforrások a korlát növeléséhez. Használhatja a telephelyek közötti VPN, vagy egy ExpressRoute-kapcsolatcsoportot Vnetekhez különböző előfizetésekhez való kapcsolódáshoz.
-
-### <a name="subscription-and-vnet-design-patterns"></a>Előfizetés és hálózatok tervezési minták
-Az alábbi táblázat néhány gyakori tervminták előfizetéssel és Vnetek jeleníti meg.
-
-| Forgatókönyv | Ábra | Informatikai szakemberek | Hátrányok |
-| --- | --- | --- | --- |
-| Egyetlen előfizetés, két Vnetek alkalmazásonkénti |![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Csak egy előfizetése kezeléséhez. |Maximális száma Vnetek Azure-régiót. Legalább egy előfizetésre van szüksége, amely után. Tekintse át a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikkben alább. |
-| Alkalmazásonkénti alkalmazásonkénti két Vnetek egy előfizetés |![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Előfizetésenként csak két Vnetek használja. |Nehezebben, ha túl sok alkalmazásokat kezeléséhez. |
-| Egy előfizetés üzleti egység, két Vnetek alkalmazásonkénti. |![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Előfizetések számának és a Vnetek közötti egyensúly. |Maximális száma Vnetek részleg (előfizetés). Tekintse át a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikkben alább. |
-| Egy előfizetés üzleti egység, az egyes alkalmazások két Vnetek. |![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Előfizetések számának és a Vnetek közötti egyensúly. |Alkalmazások kell lehet különíteni alhálózatokat és az NSG-ket. |
-
-### <a name="number-of-subnets"></a>Alhálózatok száma
-A következő esetekben a Vneten belül több alhálózaton kell figyelembe vennie:
-
-* **Az alhálózat összes hálózati adapter nem elég saját IP-címek**. Ha a alhálózati cím tárhely nem található elegendő IP-címet a hálózati adapterek száma az alhálózat, hozzon létre több alhálózattal szeretné. Ne feledje, hogy Azure fenntartja az egyes alhálózatokon, amelyek nem használhatók 5 magánhálózati IP-címek: az első és utolsó által a címtartomány (az alhálózat címét, és a csoportos küldés) és 3 címeit belső (célokra DHCP és DNS-) használható.
-* **Biztonság**. Alhálózatok segítségével virtuális elválasztása egymástól, amelyek rendelkeznek egy többrétegű struktúra, és alkalmazza a különböző munkaterhelések [hálózati biztonsági csoportokkal (NSG-k)](virtual-networks-nsg.md#subnets) ezek alhálózatok esetében.
-* **A hibrid kapcsolat**. VPN-átjárók és az ExpressRoute-Kapcsolatcsoportok [csatlakozás](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) a Vnetek egymással, és a helyszíni adatok center(s). VPN-átjárók és az ExpressRoute-Kapcsolatcsoportok kell létrehozni saját alhálózat.
-* **Virtuális készülékek**. Egy Azure virtuális hálózatot a virtuális készülék, például tűzfalat, WAN gyorsító vagy VPN-átjáró használható. Ha ezt választja, meg kell [forgalmat](virtual-networks-udr-overview.md) e készülékek számára és a saját alhálózat elkülöníti azokat.
-
-### <a name="subnet-and-nsg-design-patterns"></a>Alhálózat és NSG-tervezési minták
-Az alábbi táblázat néhány gyakori tervminták alhálózatok használatával.
-
-| Forgatókönyv | Ábra | Informatikai szakemberek | Hátrányok |
-| --- | --- | --- | --- |
-| Egyetlen alhálózattal, NSG-k száma alkalmazásonként-alkalmazási rétegben |![Egyetlen alhálózattal](./media/virtual-network-vnet-plan-design-arm/figure5.png) |Csak egy alhálózat kezeléséhez. |Több NSG-ket különítheti el az egyes alkalmazásokhoz szükséges. |
-| Egy alhálózat alkalmazásonkénti alkalmazás rétegenként NSG-k |![Alkalmazásonkénti alhálózati](./media/virtual-network-vnet-plan-design-arm/figure6.png) |Kevesebb NSG-k kezelése. |Több alhálózattal kezeléséhez. |
-| Egy alhálózat alkalmazás rétegenként alkalmazásonkénti NSG-ket. |![Rétegenként alhálózati](./media/virtual-network-vnet-plan-design-arm/figure7.png) |Kiegyenlítheti száma alhálózat és NSG-k között. |Előfizetésenként NSG-k maximális száma. Tekintse át a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikkben alább. |
-| Alkalmazás rétegenként alkalmazásonkénti NSG-k száma alhálózat több alhálózattal |![Alkalmazásonkénti rétegenként alhálózati](./media/virtual-network-vnet-plan-design-arm/figure8.png) |Valószínűleg kisebb NSG-k száma. |Több alhálózattal kezeléséhez. |
-
-## <a name="sample-design"></a>A minta-Tervező
-Az alkalmazás ebben a cikkben szereplő információk mutatja be, a következő eset.
-
-A vállalatnál, amelyen 2 adatközpontok Észak-Amerikában, és két adatközpontok Európa dolgozik. 6 különböző ügyfél irányuló alkalmazások különböző 2 által fenntartott meghatározott üzleti egység az Azure-bA a próbaüzem áttelepíteni kívánt. Az alkalmazások alapszintű architektúrája a következők:
-
-* Az App1, App2, App3 és App4 futtató Ubuntu Linux-kiszolgálókon lévő webalkalmazások. Minden alkalmazás csatlakozik egy önálló kiszolgáló, amely futtatja a RESTful-szolgáltatásokat a Linux-kiszolgálókon. A RESTful-szolgáltatásokat háttérből MySQL-adatbázis csatlakozni.
-* App5 és App6 is a Windows a Windows Server 2012 R2 rendszerű kiszolgálókon tárolt webes alkalmazásokhoz. Minden alkalmazás háttérben SQL Server-adatbázis csatlakozik.
-* Minden alkalmazás jelenleg üzemelteti a vállalati adatközpontok Észak-Amerikában egyikében.
-* A helyszíni adatközpontokban a 10.0.0.0/8 címterület használata.
-
-Kell terveznie a virtuális hálózati megoldás, amely megfelel az alábbi követelményeknek:
-
-* Mindegyik üzleti egység más üzleti egységek hálózatierőforrás-fogyasztás nem érinti.
-* Akkor érdemes a lehető legkevesebb Vnetek és alhálózatok kezelésének megkönnyítése.
-* Mindegyik üzleti egység egy teszt/fejlesztői VNet összes alkalmazás használt kell rendelkeznie.
-* Minden alkalmazás 2 különböző Azure-adatközpont / kontinensen (Észak-Amerikából és Európából végzik a munkájukat) helyezkedik el.
-* Minden alkalmazás teljesen elkülönülnek egymástól.
-* Minden alkalmazás elérhetők, az ügyfelek HTTP használatával az interneten keresztül.
-* Minden alkalmazás elérhető egy titkosított alagúton keresztül csatlakoznak a helyszíni adatközpontok felhasználók.
-* Kapcsolat a helyszíni adatközpontokban használjon meglévő VPN-eszközök.
-* A vállalati hálózati csoport a VNet konfigurációját teljes hozzáféréssel kell rendelkeznie.
-* Mindegyik üzleti egység a fejlesztők használatuk csak akkor tudja telepíteni a virtuális gépek meglévő alhálózatokra.
-* Minden alkalmazást telepíti át, mivel ezek az Azure-ba (növekedési-és-shift).
-* Az egyes helyeken az adatbázisokat naponta egyszer kell replikálni Azure helyekre.
-* Minden alkalmazás kell használni, 5 előtér-webkiszolgálók, 2 alkalmazáskiszolgálók (ha szükséges) és 2 adatbázis-kiszolgálókhoz.
-
-### <a name="plan"></a>Felkészülés
-Először meg kell válaszolnia a Tervező tervezése az a kérdés megválaszolásával a [követelményeinek meghatározása](#Define-requirements) szakaszban, ahogy alább látható.
-
-1. Milyen Azure helyek használatával állomás Vnetekhez?
-
-    Észak-Amerikában 2 helyeket, és az Európai 2 helyek. Ki kell választania azokat a meglévő helyszíni adatközpontok fizikai helye alapján. Így a kapcsolat a fizikai helyek és Azure jobb késleltetése lesz.
-2. Meg kell adnia a következő Azure helyek közötti kommunikáció?
-
-    Igen. Mivel az adatbázisok replikálni kell az összes helyen.
-3. Meg kell adnia a Azure VNet(s) és a helyszíni közötti kommunikáció adatok center(s)?
-
-    Igen. Mivel felhasználók kapcsolódnak a helyszíni adatközpontok kell tudni hozzáférni az alkalmazások egy titkosított alagúton keresztül.
-4. Hány IaaS virtuális gépeket kell megoldást?
-
-    200 IaaS virtuális gépeket. Az App1, App2, App3 és App4 minden 5 webkiszolgálók, minden egyes 2 alkalmazáskiszolgálók és szükséges 2 adatbázis-kiszolgálókhoz minden. Ez összesen alkalmazásonként 9 IaaS virtuális gépeket, vagy 36 IaaS virtuális gépeket. App5 és App6 5 webkiszolgálókat és a 2 adatbázis-kiszolgálókhoz minden szükséges. Ez összesen alkalmazásonként 7 IaaS virtuális gépeket, illetve 14 IaaS virtuális gépeket. Ezért figyelembe kell 50 IaaS virtuális gépek minden egyes Azure-régióban lévő alkalmazásokhoz. 4 régiók használni kell, mert nem lesznek 200 IaaS virtuális gépeket.
-
-    Akkor adja meg minden egyes virtuális hálózatot, vagy a helyszíni adatközpontokban, amelyek az Azure IaaS virtuális gépeket és a helyszíni hálózat között név feloldása DNS-kiszolgálókat is.
-5. El kell különítenie a forgalom virtuális (azaz előtér-webkiszolgáló és háttérbeli adatbázis-kiszolgálók) alapján?
-
-    Igen. Minden alkalmazás legyen teljesen elkülönülnek egymástól, és minden alkalmazásréteg is el kell különíteni.
-6. Virtuális készülékek használata adatforgalom szabályozásához kell?
-
-    Nem. Virtuális készülékek segítségével adja meg a forgalom áramlását – beleértve a részletes adatok vezérlősík naplózási teljesebb körű vezérlése.
-7. Felhasználók más-más részhalmazához különböző Azure-erőforrások engedélyek igényelnek?
-
-    Igen. A hálózati csoport teljes hozzáférést a virtuális hálózati beállításokat kell, közben fejlesztők csak nem tudja telepíteni a virtuális Gépeik a már meglévő alhálózatokra.
-
-### <a name="design"></a>Tervezés
-A Tervező előfizetések, Vnetek, alhálózatok és egyéb NSG-ket kell követnie. Itt ismertetik az NSG-k, de kapcsolatos kell további [NSG-k](virtual-networks-nsg.md) a tervezés befejezése előtt.
-
-**Az előfizetések és Vnetek száma**
-
-Az alábbi követelmények előfizetések és Vnetek kapcsolódnak:
-
-* Mindegyik üzleti egység más üzleti egységek hálózatierőforrás-fogyasztás nem érinti.
-* A virtuális hálózatokat és alhálózatokat mennyisége kell minimálisra csökkenthető.
-* Mindegyik üzleti egység egy teszt/fejlesztői VNet összes alkalmazás használt kell rendelkeznie.
-* Minden alkalmazás 2 különböző Azure-adatközpont / kontinensen (Észak-Amerikából és Európából végzik a munkájukat) helyezkedik el.
-
-Ezek a követelmények, meg kell egy előfizetési részlegek számára. Így az üzleti egységek az erőforrások fogyasztásának is nem beleszámít korlátok egyéb üzleti egységek számára. És mivel Vnetek számának minimalizálása érdekében szeretné, érdemes lehet használni a **üzleti egység, az egyes alkalmazások két Vnetek egy előfizetés** mintát, az alább látható módon.
-
-![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure9.png)
-
-Meg kell adnia a a címterület minden vnet is. Mivel kell a helyszíni adatok közötti kapcsolat adatközpontok Azure-régiókban, a használt Azure Vnet-terület nem ütközhetnek a helyszíni hálózat és minden egyes virtuális hálózat által használt címterület nem kell más meglévő Vnetek ütközhetnek. A címterek, az alábbi táblázat segítségével ezeknek a követelményeknek.  
-
-| **Előfizetés** | **Virtuális hálózat** | **Az Azure-régió** | **Címtér** |
-| --- | --- | --- | --- |
-| BU1 |ProdBU1US1 |USA nyugati régiója |172.16.0.0/16 |
-| BU1 |ProdBU1US2 |USA keleti régiója |172.17.0.0/16 |
-| BU1 |ProdBU1EU1 |Észak-Európa |172.18.0.0/16 |
-| BU1 |ProdBU1EU2 |Nyugat-Európa |172.19.0.0/16 |
-| BU1 |TestDevBU1 |USA nyugati régiója |172.20.0.0/16 |
-| BU2 |TestDevBU2 |USA nyugati régiója |172.21.0.0/16 |
-| BU2 |ProdBU2US1 |USA nyugati régiója |172.22.0.0/16 |
-| BU2 |ProdBU2US2 |USA keleti régiója |172.23.0.0/16 |
-| BU2 |ProdBU2EU1 |Észak-Európa |172.24.0.0/16 |
-| BU2 |ProdBU2EU2 |Nyugat-Európa |172.25.0.0/16 |
-
-**Alhálózatokat és az NSG-k száma**
-
-Az alábbi követelmények alhálózatokat és az NSG-ket kapcsolódó:
-
-* A virtuális hálózatokat és alhálózatokat mennyisége kell minimálisra csökkenthető.
-* Minden alkalmazás teljesen elkülönülnek egymástól.
-* Minden alkalmazás elérhetők, az ügyfelek HTTP használatával az interneten keresztül.
-* Minden alkalmazás elérhető egy titkosított alagúton keresztül csatlakoznak a helyszíni adatközpontok felhasználók.
-* Kapcsolat a helyszíni adatközpontokban használjon meglévő VPN-eszközök.
-* Az egyes helyeken az adatbázisokat naponta egyszer kell replikálni Azure helyekre.
-
-Ezek a követelmények alapján, akkor képes használni, egy alkalmazás rétegenként, és NSG-k segítségével alkalmazásonként forgalmának szűrésére. Ezzel a módszerrel csak akkor kell minden egyes virtuális hálózat (előtér alkalmazásréteg és adatrétege) 3 alhálózatai és alkalmazásonként száma alhálózat egy NSG. Ebben az esetben érdemes lehet használni a **alkalmazás rétegenként alkalmazásonkénti NSG-ket egy alhálózat** tervezési minta alapján. Az alábbi ábra a kialakítási mintában képviselő használatát a **ProdBU1US1** virtuális hálózat.
-
-![Rétegenként rétegenként alkalmazásonként egy NSG több alhálózattal](./media/virtual-network-vnet-plan-design-arm/figure11.png)
-
-Azonban akkor is szeretne létrehozni egy külön alhálózatot a VPN-kapcsolatot a virtuális hálózatokat, és a helyszíni adatközpont között. És meg kell adnia a címtér az egyes alhálózatokon. Az alábbi ábra egy minta megoldást mutat a **ProdBU1US1** virtuális hálózat. Ebben a forgatókönyvben minden vnet replikálna. A szín jelöli egy másik alkalmazás.
-
-![A minta virtuális hálózat](./media/virtual-network-vnet-plan-design-arm/figure10.png)
-
-**Hozzáférés-vezérlés**
-
-Az alábbi követelmények kapcsolódó hozzáférés-vezérlés:
-
-* A vállalati hálózati csoport a VNet konfigurációját teljes hozzáféréssel kell rendelkeznie.
-* Mindegyik üzleti egység a fejlesztők használatuk csak akkor tudja telepíteni a virtuális gépek meglévő alhálózatokra.
-
-Ezek a követelmények alapján sikerült felhasználókat adja hozzá a hálózati csapat a beépített **hálózat közreműködő** minden előfizetésben; szerepkör, és hozzon létre egy egyéni biztonsági szerepkört minden előfizetésben jogok jogosultságot ad az alkalmazásfejlesztők virtuális gépek hozzáadása meglévő alhálózatokat.
-
-## <a name="next-steps"></a>További lépések
-* [Telepíthet egy virtuális hálózatot](quick-create-portal.md).
-* Megértéséhez hogyan [terheléselosztásához](../load-balancer/load-balancer-overview.md) IaaS virtuális gépeket és [kezelése az útválasztást a több Azure-régiók](../traffic-manager/traffic-manager-overview.md).
-* További információ [hálózati biztonsági csoportok](security-overview.md) egy NSG-megoldáshoz.
-* További információ a [létesítmények közötti és VNet kapcsolati lehetőségek](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti).
+Házirendek vonatkoznak a következő hierarchia: előfizetés, a felügyeleti csoport és az erőforráscsoportot. További információ [Azure házirend](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , vagy telepítse az egyes virtuális hálózati [Házirendsablon](policy-samples.md) minták.

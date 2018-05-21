@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 77effb7892e6d59087d07109958f4682886f12db
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e5d9fb76f66ffb98addab24e9e8bf8b82a82af7a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Az Azure Linux virtuális gép, amely nem sikerül, hibák, vagy elutasítják SSH-kapcsolatok hibáinak elhárítása
 Oka lehet különböző, hogy Secure Shell (SSH) hibák, az SSH-kapcsolódási hibák, vagy az SSH a rendszer elutasította a rendszer, amikor egy Linux virtuális gép (VM) csatlakozni próbál. Ez a cikk segít keresse meg és javítsa ki a problémákat. Az Azure-portálon az Azure parancssori felület vagy a Linux virtuális gép hozzáférési bővítményével hibakeresésre és problémák megoldásához használható.
@@ -34,7 +34,7 @@ Hibaelhárítási lépések, után próbáljon újra csatlakozni a virtuális G�
 
 1. Visszaállítja az SSH-konfigurációt.
 2. A felhasználó hitelesítő adatainak visszaállítása.
-3. Ellenőrizze a [hálózati biztonsági csoport](../../virtual-network/virtual-networks-nsg.md) szabályok lehetővé teszik az SSH-forgalmat.
+3. Ellenőrizze a [hálózati biztonsági csoport](../../virtual-network/security-overview.md) szabályok lehetővé teszik az SSH-forgalmat.
    * Győződjön meg arról, hogy létezik-e a hálózati biztonsági csoport szabály az SSH-forgalom engedélyezése (ami alapértelmezés szerint a 22-es TCP-port).
    * Nem használhat port átirányítási / leképezése egy Azure terheléselosztó használata nélkül.
 4. Ellenőrizze a [VM erőforrás állapota](../../resource-health/resource-health-overview.md). 
@@ -77,7 +77,7 @@ Használja [IP folyamata ellenőrizze](../../network-watcher/network-watcher-che
 
 Használja a hálózati figyelőt [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) képességet, hogy ellenőrizze, hogy egy útvonal nem akadályozza meg, hogy forgalom való átirányítását, vagy egy virtuális gépről. Egy adott hálózati csatoló összes hatékony útvonalak hatékony útvonalakat is felhasználhatja. További információkért lásd: [hatékony használata az útvonalakat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
 
-## <a name="use-the-azure-cli-20"></a>Az Azure parancssori felület használatával 2.0
+## <a name="use-the-azure-cli-20"></a>Az Azure CLI 2.0 használata
 Ha még nem tette meg, telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Ha létrehozott és Linux egyéni lemezképet feltöltve, ellenőrizze, hogy a [Microsoft Azure Linux ügynök](../extensions/agent-windows.md) 2.0.5 verzió vagy újabb verziója. A gyűjtemény lemezképei használatával létrehozott virtuális gép esetében a hozzáférés bővítmény már telepített és konfigurálást.

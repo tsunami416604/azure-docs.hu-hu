@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 3d1928428915d3ea5f9f28dc400f251b9f90679f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: edbf76ef5dcf581acfec17970becdf698445cbeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Hálózati biztonsági csoportok az Azure PowerShell hibaelhárítása
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.lasthandoff: 05/14/2018
 
 Ha konfigurálva a hálózati biztonsági csoportokkal (NSG-k) a virtuális gépen (VM), és virtuális gép kapcsolódási problémákat tapasztal, ez a cikk áttekintést diagnosztika képességet biztosít a További hibaelhárítás elősegítése érdekében az NSG-ket.
 
-Az NSG-k lehetővé teszik a típusú forgalom, hogy a virtuális gépek (VM) mindkét folyamata. NSG-ket alhálózatokra egy Azure virtuális hálózatot (VNet), hálózati adapterek (NIC) vagy mindkettőt alkalmazhatók. A hatékony szabályokat egy hálózati adapter egyszerűsítése érdekében a szabályokat, amelyek szerepelnek az NSG-ket egy hálózati adapterre alkalmazza, és az alhálózat van csatlakoztatva. Ezek az NSG-k között szabályok néha ütköznek egymással, és hatással lehet a virtuális gépek hálózati kapcsolattal.  
+Az NSG-k lehetővé teszik a típusú forgalom, hogy a virtuális gépek (VM) mindkét folyamata. NSG-ket alhálózatokra egy Azure virtuális hálózatot (VNet), hálózati adapterek (NIC) vagy mindkettőt alkalmazhatók. A hatékony szabályokat egy hálózati adapter egyszerűsítése érdekében a szabályokat, amelyek szerepelnek az NSG-ket egy hálózati adapterre alkalmazza, és az alhálózat van csatlakoztatva. Ezek az NSG-k között szabályok néha ütköznek egymással, és hatással lehet a virtuális gépek hálózati kapcsolattal.
 
-Az NSG-k, az összes hatékony biztonsági szabály tekintheti meg a virtuális gép hálózati adapterek alkalmazott. Ez a cikk bemutatja, hogyan VM csatlakozási problémák ezek a szabályok használatával az Azure Resource Manager üzembe helyezési modellben. Ha még nem ismeri a virtuális hálózat és NSG fogalmakat, olvassa el a [virtuális hálózati](virtual-networks-overview.md) és [hálózati biztonsági csoportok](virtual-networks-nsg.md) áttekintése cikkeket.
+Az NSG-k, az összes hatékony biztonsági szabály tekintheti meg a virtuális gép hálózati adapterek alkalmazott. Ez a cikk bemutatja, hogyan VM csatlakozási problémák ezek a szabályok használatával az Azure Resource Manager üzembe helyezési modellben. Ha még nem ismeri a virtuális hálózat és NSG fogalmait, tekintse meg a [virtuális hálózat áttekintése](virtual-networks-overview.md) és [hálózati biztonsági csoport – áttekintés](security-overview.md).
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>Hatékony biztonsági szabályok használata hibák elhárításához a virtuális gép forgalom áramlását
 A következő forgatókönyv gyakori kapcsolati probléma példája:
@@ -159,8 +159,7 @@ Az alábbi lépésekkel hibáinak elhárítása az NSG-ket a virtuális gépek:
    
    * Két **hálózati biztonsági csoporthoz tartozik** szakaszok: tartozik hozzá egy alhálózat (*Alhalozat_1*) és egy hálózati Adapterhez társított (*VM1-NIC1*). Ebben a példában egy NSG-t az egyes telepítve van.
    * **Társítás** jeleníti meg az erőforrás (alhálózati vagy hálózati), egy adott NSG társítva. Ha az NSG-erőforrás áthelyezése vagy hozzárendelésének megszüntetése a parancs futtatása előtt azonnal, szükség lehet Várjon néhány másodpercet, hogy tükrözze a parancs kimenetében a változtatás. 
-   * A szabály nevét, amelyek végrehajtásával kerüli meg a *defaultSecurityRules*: amikor egy NSG jön létre, néhány alapértelmezett biztonsági szabályok jönnek létre benne. Alapértelmezett szabályok nem távolítható el, de magasabb prioritású szabályokkal felülbírálható lesz.
-     Olvassa el a [NSG áttekintése](virtual-networks-nsg.md#default-rules) cikk további NSG bővebben alapértelmezett biztonsági szabályokat.
+   * A szabály nevét, amelyek végrehajtásával kerüli meg a *defaultSecurityRules*: amikor egy NSG jön létre, néhány alapértelmezett biztonsági szabályok jönnek létre benne. Alapértelmezett szabályok nem távolítható el, de magasabb prioritású szabályokkal felülbírálható lesz. További információt az [alapértelmezett biztonsági szabályokkal](security-overview.md#default-security-rules) foglalkozó cikkben találhat.
    * **ExpandedAddressPrefix** bővíti a címelőtagokat NSG alapértelmezett címkék. Címkék több címelőtagokat jelölik. A címkék bővítése akkor lehet hasznos, amikor adott címelőtagokat és a virtuális gép hibaelhárítása. Például a VNETBEN társviszony-létesítést, VIRTUAL_NETWORK címke bontja ki társviszonyban VNet-előtagok az előző kimenet megjelenítése.
      
      > [!NOTE]

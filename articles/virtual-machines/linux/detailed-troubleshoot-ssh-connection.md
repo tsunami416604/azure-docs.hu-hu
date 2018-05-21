@@ -1,12 +1,12 @@
 ---
-title: "Részletes SSH hibaelhárítása az Azure virtuális gép |} Microsoft Docs"
-description: "Részletesebb hibaelhárítási lépések az Azure virtuális géphez való kapcsolódás problémák SSH"
-keywords: "ssh kapcsolat visszautasította, ssh hiba és az azure-ssh, SSH-kapcsolat sikertelen"
+title: Részletes SSH hibaelhárítása az Azure virtuális gép |} Microsoft Docs
+description: Részletesebb hibaelhárítási lépések az Azure virtuális géphez való kapcsolódás problémák SSH
+keywords: ssh kapcsolat visszautasította, ssh hiba és az azure-ssh, SSH-kapcsolat sikertelen
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 66fc8bac46decacdd2214475e94980c447045935
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 88f3ca3202359f9f45f5b9a5054ab95b40558520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH hibaelhárításának lépései az Azure Linux virtuális gép csatlakozni
 Nincsenek számos oka lehet, hogy az SSH-ügyfél nem feltétlenül tudni elérni az SSH szolgáltatás a virtuális Gépen. Ha már elvégezte a több keresztül [hibaelhárítási lépések általános SSH](troubleshoot-ssh-connection.md), további hibáinak kapcsolódási problémáját. Ez a cikk végigvezeti részletes hibaelhárítási lépések elvégzésével ellenőrizheti, ha az SSH-kapcsolat nem működik, és a megoldásának módjával.
@@ -39,7 +39,7 @@ A következő lépések segítenek a különítse el a hiba forrását, és hogy
 
 2. Válassza ki **beállítások** vizsgálata végpontok, IP-címek, hálózati biztonsági csoportok és egyéb beállításokat.
 
-   A virtuális gép rendelkeznie kell egy SSH-forgalomhoz, megtekintheti a definiált végpontot **végpontok** vagy  **[hálózati biztonsági csoport](../../virtual-network/virtual-networks-nsg.md)**. Az erőforrás-kezelő használatával létrehozott virtuális gépeken végpontok hálózati biztonsági csoport vannak tárolva. Győződjön meg arról, hogy a szabályok vannak alkalmazva a hálózati biztonsági csoportot, és az alhálózati hivatkozott.
+   A virtuális gép rendelkeznie kell egy SSH-forgalomhoz, megtekintheti a definiált végpontot **végpontok** vagy  **[hálózati biztonsági csoport](../../virtual-network/security-overview.md)**. Az erőforrás-kezelő használatával létrehozott virtuális gépeken végpontok hálózati biztonsági csoport vannak tárolva. Győződjön meg arról, hogy a szabályok vannak alkalmazva a hálózati biztonsági csoportot, és az alhálózati hivatkozott.
 
 Ellenőrizze a hálózati kapcsolatot, ellenőrizze a beállított végpontjaikra, és képes-e csatlakozni a virtuális gép egy másik protokoll, például http- vagy egy másik szolgáltatás keresztül.
 
@@ -111,7 +111,7 @@ A végpont forrásként a probléma kiküszöbölése, távolítsa el az aktuál
 
 ## <a name="source-4-network-security-groups"></a>4. forrás: Hálózati biztonsági csoportok
 Hálózati biztonsági csoportok lehetővé teszik a részletesebb vezérlést engedélyezett bejövő és kimenő forgalom. Létrehozhat szabályokat, amelyek span alhálózatok és a felhőalapú szolgáltatások egy Azure virtuális hálózatra. Ellenőrizze a hálózati biztonsági csoportszabályok annak ellenőrzéséhez, hogy engedélyezett-e SSH-forgalmat az Internet felé és felől.
-További információkért lásd: [hálózati biztonsági csoportok](../../virtual-network/virtual-networks-nsg.md).
+További információkért lásd: [hálózati biztonsági csoportok](../../virtual-network/security-overview.md).
 
 Is használhatja IP ellenőrizze az NSG-konfiguráció érvényesítése céljából. További információkért lásd: [áttekintése Azure hálózatfigyelési](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 

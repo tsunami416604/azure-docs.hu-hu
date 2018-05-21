@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1a6ff01274c4a47730ffe45275aed9d122994260
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások az Azure IaaS munkaterhelések
 
@@ -106,7 +106,7 @@ További költség nélkül társítva a DevTest Labs használatát. Felszabadul
 
 Labs vagy éles rendszerek esetén az Azure-ban üzemeltető azt jelenti, hogy a rendszer kell lennie az interneten. Alapértelmezés szerint egy új Windows virtuális gép számára elérhető az internetről érkező RDP-portjára, és egy Linux virtuális gép számára az SSH-port megnyitásához. Lépések megtétele kitett korlát végpontokkal való jogosulatlan hozzáférés kockázatának minimalizálása érdekében szükség.
 
-Az Azure-ban technológiák segítségével mindegyik felügyeleti végpont való hozzáférés korlátozásához. Használhatja az Azure [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md) (NSG-k). Központi telepítés Azure Resource Manager használatakor az NSG-k korlátozhatják a minden hálózati csak a felügyeleti végpontok (RDP- vagy SSH-). Ha úgy gondolja, hogy az NSG-k, gondolja, hogy útválasztó hozzáférés-vezérlési listák. A mértékben vezérelhetik a különböző részeit az Azure-hálózatok közötti hálózati kommunikáció használhatja őket. Ez hasonlít-hálózatok létrehozásának szegélyhálózat vagy más elkülönített hálózatok. Nem vizsgálja meg a forgalmat, de a hálózati szegmentálást segítenek.
+Az Azure-ban technológiák segítségével mindegyik felügyeleti végpont való hozzáférés korlátozásához. Használhatja az Azure [hálózati biztonsági csoportok](../virtual-network/security-overview.md) (NSG-k). Központi telepítés Azure Resource Manager használatakor az NSG-k korlátozhatják a minden hálózati csak a felügyeleti végpontok (RDP- vagy SSH-). Ha úgy gondolja, hogy az NSG-k, gondolja, hogy útválasztó hozzáférés-vezérlési listák. A mértékben vezérelhetik a különböző részeit az Azure-hálózatok közötti hálózati kommunikáció használhatja őket. Ez hasonlít-hálózatok létrehozásának szegélyhálózat vagy más elkülönített hálózatok. Nem vizsgálja meg a forgalmat, de a hálózati szegmentálást segítenek.
 
 
 Azure, konfigurálhat egy [telephelyek közötti VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) a helyi hálózatról. A telephelyek közötti VPN kiterjeszti a felhőbe a helyszíni hálózat. Ez lehetővé teszi egy másik arra, hogy az NSG-k, mert az NSG-ket nem engedélyezi a hozzáférést bármely más, mint a helyi hálózaton is módosíthatja. Majd megkövetelheti, hogy a felügyeleti szolgáltatáshoz csatlakozva első az Azure-hálózatot VPN-en keresztül történik.

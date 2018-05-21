@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 0aaf49aaa31a022e040fc7019a2f115f92555010
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5ebeadd9c0805ac5f6ac543a49cb9ff63d8ded3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-best-practices"></a>Azure-hálózat ajánlott biztonsági eljárások
 A Microsoft Azure lehetővé teszi, hogy csatlakozhat a virtuális gépek és készülékek más hálózati eszközök párt Azure virtuális hálózatot. Egy Azure virtuális hálózatra olyan konstrukció, amely lehetővé teszi a virtuális hálózati kártyák engedélyezett hálózati eszközök közötti TCP/IP-alapú kommunikáció engedélyezése a virtuális hálózathoz csatlakozni. Egy Azure virtuális hálózatra csatlakozik az Azure virtuális gépek a azonos Azure virtuális hálózaton, különböző Azure virtuális hálózatok, az interneten, vagy még akkor is, a saját helyszíni hálózatokon is elérheti.
@@ -56,7 +56,7 @@ Hasonló ahhoz, ami így tesz, a helyszíni, meg kell szegmenseket, nagyobb cím
 
 Útválasztás alhálózatok között művelet automatikusan megtörténik, és nem kell manuálisan konfigurálnia az útválasztási táblázatokat. Az alapértelmezett beállítás azonban, hogy vannak-e nincs hálózati hozzáférés-vezérlést az Azure virtuális hálózat létrehozása az alhálózatok között. Hálózati hozzáférés-vezérlést alhálózatok között létrehozásához meg kell importálnia valamit a alhálózatok között.
 
-Ennek a feladatnak segítségével dolog van egy [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) (NSG). Az NSG-k a 5 rekordos (a forrás IP-címe, forrásport, cél IP-címe, célport és 4. rétegbeli protocol) használó egyszerű csomag ellenőrző eszközök a hálózati forgalom szabályok megközelítés engedélyezése vagy megtagadása létrehozásához. Akkor engedélyezheti vagy tagadhatja meg egyetlen IP-címet, a és több IP-címekről vagy akár a és a teljes alhálózat érkező vagy oda irányuló forgalmat.
+Ennek a feladatnak segítségével dolog van egy [hálózati biztonsági csoport](../virtual-network/security-overview.md) (NSG). Az NSG-k a 5 rekordos (a forrás IP-címe, forrásport, cél IP-címe, célport és 4. rétegbeli protocol) használó egyszerű csomag ellenőrző eszközök a hálózati forgalom szabályok megközelítés engedélyezése vagy megtagadása létrehozásához. Akkor engedélyezheti vagy tagadhatja meg egyetlen IP-címet, a és több IP-címekről vagy akár a és a teljes alhálózat érkező vagy oda irányuló forgalmat.
 
 Hálózati hozzáférés-vezérlési alhálózatok között NSG-k használata lehetővé teszi a ugyanazt biztonsági zóna vagy a saját alhálózatokon szerepkör tartozó erőforrásaikat. Például egy egyszerű 3 szintű alkalmazás egy webes réteghez, egy alkalmazás logikai rétegből és adatbázis-rétegből gondol. Ezek a rétegek mindegyikének saját alhálózatokra tartozó virtuális gépek állapotba. Majd segítségével NSG-ket az alhálózatok közötti forgalmat:
 
@@ -64,7 +64,7 @@ Hálózati hozzáférés-vezérlési alhálózatok között NSG-k használata le
 * Alkalmazás logika virtuális gépek csak kezdeményezhet az adatbázis-rétegből kapcsolatokhoz, és a webes réteg kapcsolódásának törléshez
 * Adatbázis réteg virtuális gépein bármi kívül a saját alhálózati kapcsolat nem indítható el, és az alkalmazás logikai rétegből kapcsolódásának törléshez
 
-Hálózati biztonsági csoportok és hogyan használhatja az Azure virtuális hálózat logikailag szegmentálja kapcsolatos további információkért lásd: [Mi az a hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) (NSG).
+Hálózati biztonsági csoportok és hogyan használhatja az Azure virtuális hálózat logikailag szegmentálja kapcsolatos további információkért lásd: [Mi az a hálózati biztonsági csoport](../virtual-network/security-overview.md) (NSG).
 
 ## <a name="control-routing-behavior"></a>Útválasztási viselkedés szabályozása
 Ha egy virtuális gép elhelyezése egy Azure virtuális hálózatra, láthatja, hogy a virtuális gép kapcsolódni tud-e az azonos Azure virtuális hálózat bármely más virtuális gép akkor is, ha más virtuális gépeket különböző alhálózatokon. Ez akkor lehetséges, mert nincs a rendszerútvonalak, amely alapértelmezés szerint engedélyezve vannak, amelyek lehetővé teszik az ilyen típusú kommunikáció gyűjteménye. Ezek az alapértelmezett útvonalak Azure virtuális hálózaton vannak egymással, és az internetes (a kimenő kommunikáció csak az internethez) kapcsolatok kezdeményezésének engedélyezése a virtuális gépek.

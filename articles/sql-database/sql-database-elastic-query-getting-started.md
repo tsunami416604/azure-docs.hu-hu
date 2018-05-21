@@ -2,18 +2,18 @@
 title: A jelentés (vízszintes particionálás) kiterjesztett felhő az adatbázisok közötti |} Microsoft Docs
 description: Több adatbázis közötti adatbázis adatbázis-lekérdezéseinek jelentéshez használja.
 services: sql-database
-manager: jhubbard
+manager: craigg
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: caf7fc8d69486e185fabd44d753471f40fda42a1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e9e0588cc38bc7c29e81a1ae288ae116e3d50279
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Jelentés közötti kiterjesztett felhő (előzetes verzió)
 A több Azure SQL-adatbázisok egyetlen kapcsolódási pont használatával jelentéseket hozhat létre egy [rugalmas lekérdezési](sql-database-elastic-query-overview.md). Az adatbázisok vízszintesen kell particionálni (más néven "szilánkos").
@@ -34,7 +34,7 @@ Itt hoz létre a shard térképre manager több szegmensben osztják, az adatok 
 2. A parancsablakban írja be a "1", és nyomja le az ENTER **Enter**. Létrehozza a shard térkép manager, és két szilánkok hozzáadása a kiszolgálóhoz. Ezután írja be a "3", és nyomja le az ENTER **Enter**; a művelet megismétlése négy alkalommal. Ez a szilánkok minta adatsorok szúrja be.
 3. A [Azure-portálon](https://portal.azure.com) jelenítsen meg három új adatbázist a kiszolgálón:
 
-   ![Visual Studio confirmation][2]
+   ![A Visual Studio-jóváhagyás][2]
 
    Ezen a ponton adatbázisok közötti-lekérdezések használata támogatott a Elastic Database ügyféloldali kódtáraknál keresztül. Például használja a 4. lehetőséget a parancsablakban. A lekérdezés eredményeként előálló egy több shard a rendszer mindig egy **UNION ALL** az összes szilánkok az eredményeket.
 

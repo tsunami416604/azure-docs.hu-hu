@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: af01676276232f4dba5a11c219a3b83259945dfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identitáskezelés és hozzáférés szabályozása ajánlott biztonsági eljárások
 
@@ -64,7 +64,7 @@ Az Azure AD szinkronizálási további információkért lásd: a cikk [a helysz
 
 Amikor kezeléséhez több címtárral rendelkezik, ez lesz-e nem csak a felügyeleti probléma informatikai, hanem a végfelhasználók számára, hogy több jelszó megjegyzése. A [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) Megadja, hogy a felhasználók képességét használja ugyanazokat a hitelesítő adatok bejelentkezhet és elérheti az erőforrásokat, amelyek van szükségük, attól függetlenül történik Ha ezt az erőforrást a helyszínen vagy a felhőben.
 
-Engedélyezze a felhasználók hozzáférhessenek az SSO használatával a [SaaS-alkalmazásokhoz](../active-directory/active-directory-appssoaccess-whatis.md) alapján saját szervezeti fiókjukba, az Azure ad-ben. Ez a tulajdonság vonatkozik nem csak a Microsoft SaaS-alkalmazásokhoz, emellett pedig más alkalmazások, például a [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) és [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Az alkalmazás használatához az Azure AD szolgáltatásba konfigurálható egy [SAML-alapú identitás](../active-directory/fundamentals-identity.md) szolgáltató. Biztonsági ellenőrzés, mint az Azure AD lehetővé teheti, hogy jelentkezzen be az alkalmazáshoz, kivéve, ha azok nem biztosít hozzáférést az Azure AD jogkivonat nem állítanak ki. Előfordulhat, hogy megadta a hozzáférést közvetlenül, vagy egy csoport tagjai legyenek.
+Engedélyezze a felhasználók hozzáférhessenek az SSO használatával a [SaaS-alkalmazásokhoz](../active-directory/manage-apps/what-is-single-sign-on.md) alapján saját szervezeti fiókjukba, az Azure ad-ben. Ez a tulajdonság vonatkozik nem csak a Microsoft SaaS-alkalmazásokhoz, emellett pedig más alkalmazások, például a [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) és [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Az alkalmazás használatához az Azure AD szolgáltatásba konfigurálható egy [SAML-alapú identitás](../active-directory/fundamentals-identity.md) szolgáltató. Biztonsági ellenőrzés, mint az Azure AD lehetővé teheti, hogy jelentkezzen be az alkalmazáshoz, kivéve, ha azok nem biztosít hozzáférést az Azure AD jogkivonat nem állítanak ki. Előfordulhat, hogy megadta a hozzáférést közvetlenül, vagy egy csoport tagjai legyenek.
 
 > [!NOTE]
 > alkalmazással való SSO használata befolyásolja, hogy hogyan integrálja a helyszíni címtár és a a felhő címtárának. Ha azt szeretné, hogy egyszeri Bejelentkezést, meg kell használnia összevonási, mert csak biztosít a címtár-szinkronizálás [ugyanazt a bejelentkezési élményt](../active-directory/active-directory-aadconnect.md).

@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 34c5d1999625d1728e884adb794af235ba415c26
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Egy kapcsolat egy Azure Search-indexelőt, és az SQL Server konfigurálása az Azure virtuális gépen
 Leírtaknak megfelelően [csatlakozás az Azure SQL Database az Azure Search használatával az indexelők](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), elleni indexelők létrehozása **az Azure virtuális gépeken futó SQL Server** (vagy **SQL Azure virtuális gépek** röviden) Azure Search által támogatott, de néhány biztonsági Előfeltételek az első végrehajtására. 
@@ -52,14 +52,14 @@ Különösen tekintse át az egyes cikk "az interneten keresztül csatlakozó" c
 ## <a name="configure-the-network-security-group-nsg"></a>Hálózati biztonsági csoport (NSG) konfigurálása
 Nincs szokatlan konfigurálása az NSG és megfelelő Azure-végpont vagy a hozzáférés-vezérlési lista (ACL) az Azure virtuális gép más felek számára. Valószínűleg ezt a, mielőtt engedélyezi a saját alkalmazáslogikát, hogy az SQL Azure virtuális gép csatlakozni. Nem különbözik, az Azure Search-kapcsolat az SQL Azure virtuális géphez. 
 
-A lenti hivatkozásokra kattintva utasításokkal láthatja el a Virtuálisgép-telepítések NSG-konfigurációban. Használja az IP-címe alapján Azure SEarch a végpont ACL ezeket az utasításokat.
+A lenti hivatkozásokra kattintva utasításokkal láthatja el a Virtuálisgép-telepítések NSG-konfigurációban. Használja az IP-címe alapján Azure Search a végpont ACL ezeket az utasításokat.
 
 > [!NOTE]
-> Háttér, lásd: [Mi az a hálózati biztonsági csoport?](../virtual-network/virtual-networks-nsg.md)
+> Háttér, lásd: [Mi az a hálózati biztonsági csoport?](../virtual-network/security-overview.md)
 > 
 > 
 
-* Az egy **erőforrás-kezelő** virtuális gép, lásd: [NSG-k létrehozása az ARM-telepítések](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+* Az egy **erőforrás-kezelő** virtuális gép, lásd: [NSG-k létrehozása az ARM-telepítések](../virtual-network/tutorial-filter-network-traffic.md). 
 * Az egy **klasszikus** virtuális gép, lásd: [NSG-k létrehozása a klasszikus telepítések](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
 
 IP-címeit, amelyek könnyen vannak megoldásához, ha a probléma és a lehetséges megoldások tudatában néhány kihívást jelenthet. A fennmaradó szakaszokban javaslatok IP-címek a hozzáférés-vezérlési listában kapcsolatos problémák kezelésére.

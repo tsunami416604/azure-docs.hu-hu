@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3b0ea0e55653e7b6087e21bd531ba3f6649d4967
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5940be8c13a85e256055d6bd6362c9cd93323ee4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 Azure virtuális gép létrehozásakor létre kell hoznia egy [virtuális hálózatot](../articles/virtual-network/virtual-networks-overview.md) (VNet), vagy egy meglévő VNetet kell használnia. Arról is döntenie kell, hogy a virtuális gépek milyen módon legyenek elérhetők a VNeten. Mindenképpen [készítsen tervet az erőforrások létrehozása előtt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md), továbbá győződjön meg arról, hogy tisztában van a [hálózati erőforrások korlátaival](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -95,7 +95,7 @@ Ez a táblázat egy VNet és alhálózatok létrehozásának lehetséges módsze
 
 ## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
-A [hálózati biztonsági csoport (NSG)](../articles/virtual-network/virtual-networks-nsg.md) tartalmazza a hozzáférés-vezérlési (ACL) szabályok listáját, amelyek megszabják, hogy milyen típusú hálózati forgalom juthat el az alhálózatokhoz, a hálózati adapterekhez vagy mindkettőhöz. Az NSG-ket alhálózatokhoz vagy alhálózathoz csatlakoztatott hálózati adapterekhez lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuális gépre. Emellett egy adott hálózati adapterre irányuló forgalmat korlátozni is lehet azáltal, hogy egy NSG-t közvetlenül a hálózati adapterhez rendelnek.
+A [hálózati biztonsági csoport (NSG)](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) tartalmazza a hozzáférés-vezérlési (ACL) szabályok listáját, amelyek megszabják, hogy milyen típusú hálózati forgalom juthat el az alhálózatokhoz, a hálózati adapterekhez vagy mindkettőhöz. Az NSG-ket alhálózatokhoz vagy alhálózathoz csatlakoztatott hálózati adapterekhez lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuális gépre. Emellett egy adott hálózati adapterre irányuló forgalmat korlátozni is lehet azáltal, hogy egy NSG-t közvetlenül a hálózati adapterhez rendelnek.
 
 Az NSG-k két szabálykészletet tartalmaznak: bejövőt és kimenőt. A szabály prioritásának az egyes készleten belül kell egyedinek lennie. Minden szabály rendelkezik protokolltulajdonságokkal, forrás- és célport-tartományokkal, címelőtagokkal, forgalomiránnyal, prioritással és hozzáférési típussal. 
 
@@ -103,7 +103,7 @@ Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezet
 
 Amikor hálózati adapterhez társít egy NSG-t, a rendszer az NSG hálózatelérési szabályait csak a hálózati adapterre alkalmazza. Ha egy több hálózati adapterrel rendelkező virtuális gépben a rendszer az NSG-t csak az egyik hálózati adapterre alkalmazza, az nem lesz hatással a többi hálózati adapter forgalmára. Különböző NSG-ket társíthat egy hálózati adapterhez (vagy virtuális géphez, az üzembe helyezési modelltől függően) és az alhálózathoz, amelyhez hozzá van kötve a hálózati adapter vagy a virtuális gép. A prioritást a forgalom iránya határozza meg.
 
-A virtuális gépek és a VNet tervezésekor az NSG-re vonatkozóan is [készítsen tervet](../articles/virtual-network/virtual-networks-nsg.md#planning).
+A virtuális gépek és a VNet tervezésekor az NSG-re vonatkozóan is [készítsen tervet](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md).
 
 Ez a táblázat egy hálózati biztonsági csoport létrehozásának lehetséges módszereit sorolja fel.
 

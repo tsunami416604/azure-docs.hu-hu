@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: jroth
-ms.openlocfilehash: b91638b6b76675711150323bee4aa9ad9d9a73d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bba9f62a78dea4db1d88f877029796739b023e46
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjai
 
@@ -46,7 +46,7 @@ Gyűjteményelem képének, egy SQL Server virtuális gép létrehozásakor a **
 
 A nagyobb biztonság érdekében válassza ki a forgatókönyvnek a legszigorúbb beállítás. Például ha egy alkalmazást futtat, amely hozzáfér az SQL Server az azonos virtuális gépen, majd **helyi** a legbiztonságosabb lehetőség van. Ha futtatja az Azure-alkalmazások, majd az SQL Server-hozzáférést igénylő **titkos** titkosítja a kommunikációt az SQL Server csak a megadott belül [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). Ha szüksége **nyilvános** (internet) az SQL Server virtuális gép által elérhető, akkor ügyeljen arra, hogy más ajánlott eljárások ebben a témakörben a támadási felület csökkentése érdekében kövesse.
 
-A kiválasztott beállításokat, a portál bejövő biztonsági szabályok használata a virtuális gépeken [hálózati biztonsági csoport](../../../virtual-network/virtual-networks-nsg.md) (NSG) és a virtuális gép hálózati adatforgalom engedélyezéséhez vagy letiltásához. Módosíthatja, vagy hozzon létre új bejövő NSG-szabályok az SQL Server portja (alapértelmezés szerint 1433) a forgalom engedélyezésére. Ezen a porton keresztül való kommunikációhoz engedélyezett IP-címek is megadható.
+A kiválasztott beállításokat, a portál bejövő biztonsági szabályok használata a virtuális gépen [hálózati biztonsági csoport](../../../virtual-network/security-overview.md) (NSG) és a virtuális gép hálózati adatforgalom engedélyezéséhez vagy letiltásához. Módosíthatja, vagy hozzon létre új bejövő NSG-szabályok az SQL Server portja (alapértelmezés szerint 1433) a forgalom engedélyezésére. Ezen a porton keresztül való kommunikációhoz engedélyezett IP-címek is megadható.
 
 ![Hálózat biztonsági csoportok szabályai](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 

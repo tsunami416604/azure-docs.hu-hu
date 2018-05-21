@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2e5862e99b3e883554b42341d2c1dbe9d8b8ec72
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-networking"></a>Az Azure hálózatkezelés
 
@@ -120,7 +120,7 @@ Az alábbi képen egy internetre irányuló többrétegű alkalmazást, amely mi
 
 Az alábbi beállítások segítségével Azure-erőforrások forgalmat szűrheti:
 
-- **Hálózati:** Azure hálózati biztonsági csoportokkal (NSG-k) szűrésére Azure-erőforrások bejövő és kimenő forgalmat is létrehozható. Minden NSG tartalmaz egy vagy több bejövő és kimenő szabályokat. Minden egyes szabály azt határozza meg, a forrás IP-címek, a cél IP-címek, a port és a forgalom szűrt protokoll. Az NSG-k különálló alhálózatokat és az egyes virtuális gépeken is alkalmazható. Ha többet szeretne megtudni az NSG-k, olvassa el a [hálózati biztonsági csoportok – áttekintés](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+- **Hálózati:** Azure hálózati biztonsági csoportokkal (NSG-k) szűrésére Azure-erőforrások bejövő és kimenő forgalmat is létrehozható. Minden NSG tartalmaz egy vagy több bejövő és kimenő szabályokat. Minden egyes szabály azt határozza meg, a forrás IP-címek, a cél IP-címek, a port és a forgalom szűrt protokoll. Az NSG-k különálló alhálózatokat és az egyes virtuális gépeken is alkalmazható. Ha többet szeretne megtudni az NSG-k, olvassa el a [hálózati biztonsági csoportok – áttekintés](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Alkalmazás:** webalkalmazási tűzfal Alkalmazásátjáró segítségével megvédheti a webalkalmazások biztonsági réseket és biztonsági réseket. Közös többek között az SQL kihasználó közötti helyközi és hibás fejléceket. Alkalmazásátjáró kiszűri a forgalmat, és leállítja a webkiszolgálók elérése. Tudunk milyen engedélyezni kívánt szabályok konfigurálása. Az SSL-egyeztetést szabályzatok konfigurálásával biztosítja engedélyezi bizonyos szabályzatokat, le kell tiltani. A webalkalmazási tűzfal kapcsolatos további tudnivalókért olvassa el a [webalkalmazási tűzfal](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 
 Ha módosítania kell az Azure nem adja meg, vagy használhatja a helyszíni hálózati alkalmazások használni kívánt hálózati funkció, a termékek megvalósítását a virtuális gépeket, és csatlakoztassa őket a virtuális hálózat. A [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) előre konfigurálva van, előfordulhat, hogy a jelenleg használt hálózati alkalmazások számos különböző virtuális gépek tartalmazza. Ezek előre konfigurált virtuális gépek általában hálózati virtuális készülékek (NVA) nevezik. Az alkalmazások, például a tűzfal és a WAN-optimalizálást NVAs érhetők el.

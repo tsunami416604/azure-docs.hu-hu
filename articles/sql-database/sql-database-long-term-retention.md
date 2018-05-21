@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 51f00984a8f0d750bdb478ae4bc8093adad8108e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce78201e3f87b9687ced181f90d352d73aa29431
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL-adatbázis biztonsági másolatait tárolni legfeljebb 10 év
 
@@ -54,8 +54,13 @@ W = 12 hetes (84 nap), M = 12 hónapon keresztül (365 nap), I = 10 évben (3650
 
 
  
-Ha el a fenti házirend módosítása és a biztonsági másolatok W = 0 (nincs heti biztonsági mentései), a ütemben történik készletét megváltozna látható a fenti táblázatban a kijelölt dátumok szerint. Ezek a biztonsági mentések megtartása szükséges tárterület ennek megfelelően csökkenne. Megjegyzés: A balról jobbra másolatok hozza létre az Azure storage szolgáltatás, a másolási folyamat nincs hatása van a létező adatbázis felett.
-Adatbázis visszaállítása a balról jobbra tárolóeszközről, jelölje ki a Timestamp típusú alapján meghatározott biztonsági másolatot.   Az adatbázis az eredeti adatbázis tárolóként ugyanazt az előfizetést a meglévő kiszolgálói állítható vissza. 
+Ha el a fenti házirend módosítása és a biztonsági másolatok W = 0 (nincs heti biztonsági mentései), a ütemben történik készletét megváltozna látható a fenti táblázatban a kijelölt dátumok szerint. Ezek a biztonsági mentések megtartása szükséges tárterület ennek megfelelően csökkenne. 
+
+> [!NOTE]
+1. A balról jobbra másolja az Azure storage szolgáltatás jönnek létre, így a másolást nem befolyásolta a teljesítményt a létező adatbázis felett.
+2. A házirend a jövőbeli biztonsági mentések vonatkozik. Például Ha a megadott WeekOfYear a múltban, ha a házirend van beállítva, az első balról jobbra biztonsági mentés készül rendszer következő év. 
+3. Adatbázis visszaállítása a balról jobbra tárolóeszközről, jelölje ki a Timestamp típusú alapján meghatározott biztonsági másolatot.   Az adatbázis az eredeti adatbázis tárolóként ugyanazt az előfizetést a meglévő kiszolgálói állítható vissza. 
+> 
 
 ## <a name="configure-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének konfigurálása
 

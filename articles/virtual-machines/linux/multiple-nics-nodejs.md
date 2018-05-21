@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 5a4e19f232abce8701e6d2e12a876c55079b91a2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c87d4f07a01fa42ceb2582b974feb4e802b3e03f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Az Azure CLI 1.0 használatával több hálózati adapterrel rendelkező Linux virtuális gép létrehozása
 Létrehozhat egy virtuális gép (VM), amelyen több virtuális hálózati adapterek (NIC) nem csatlakoztatható az Azure-ban. Egy gyakori forgatókönyv, hogy az előtér- és kapcsolat, vagy a hálózaton, figyelési vagy biztonsági mentési megoldásra dedikált különböző alhálózatokon. A cikkben gyors parancsok futtatásával hozzon létre egy virtuális gép több hálózati adapter nem csatlakoztatható. Különböző [Virtuálisgép-méretek](sizes.md) több hálózati adapter támogatja, így méretezés ennek megfelelően a virtuális Gépet.
@@ -104,7 +104,7 @@ azure network nic create \
     --subnet-name mySubnetBackEnd
 ```
 
-Általában akkor is létrehozhat egy [hálózati biztonsági csoport](../../virtual-network/virtual-networks-nsg.md) vagy [terheléselosztó](../../load-balancer/load-balancer-overview.md) segítségével kezelhetők és eloszthatók a forgalmat a virtuális gépek között. Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
+Általában akkor is létrehozhat egy [hálózati biztonsági csoport](../../virtual-network/security-overview.md) vagy [terheléselosztó](../../load-balancer/load-balancer-overview.md) segítségével kezelhetők és eloszthatók a forgalmat a virtuális gépek között. Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
 
 ```azurecli
 azure network nsg create \

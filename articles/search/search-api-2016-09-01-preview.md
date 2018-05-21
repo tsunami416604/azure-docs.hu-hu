@@ -9,18 +9,21 @@ ms.devlang: rest-api
 ms.topic: reference
 ms.date: 04/18/2018
 ms.author: nateko
-ms.openlocfilehash: 8eae54c912711a11c015737903b6898b98fd5159
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e5cd7fcd0c853f03dbafb4d95b8459dcc83aecdf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-search-service-rest-api-version-2016-09-01-preview"></a>Az Azure Search szolgáltatás REST API-ja: Verzió 2016 09-01. dátumú előnézeti
-Ez a cikk a referenciadokumentációt tartalmaz `api-version=2016-09-01-Preview`. Ez az előnézet kibővíti az aktuális általánosan elérhető verzió [api-version = 2016-09-01](https://docs.microsoft.com/rest/api/searchservice), a következő kísérleti funkciók megadásával:
+Ez a cikk felsorolja az előnézeti funkciókat `api-version=2016-09-01-Preview`. Ez az előnézet kibővíti az előző általánosan elérhető verzió [api-version = 2016-09-01](https://docs.microsoft.com/rest/api/searchservice), a következő kísérleti funkciók megadásával:
 
-* [`moreLikeThis` lekérdezésparaméter](search-more-like-this.md) , amelyek megfelelnek egy adott dokumentum a dokumentumok kereséséhez.
+* [`moreLikeThis` lekérdezésparaméter](search-more-like-this.md) , amelyek megfelelnek egy adott dokumentum a dokumentumok kereséséhez. Ez a szolgáltatás le lett korábbi előzetes verziójú funkciók. Ha ez az API korábbi verziójával api-hívás, továbbra is használhatja.
 
-Győződjön meg arról, amelyekre a minta API-verzió `api-version=2016-09-01-Preview` ezek a kísérleti funkciók kipróbálásához. A következő példa bemutatja, hogyan előzetes api-verzió van megadva egy több-szerű a lekérdezés létrehozása során.
+
+## <a name="how-to-call-a-preview-api"></a>Hogyan hívhatja meg a minta API
+
+A következő példa bemutatja, hogyan előzetes api-verzió van megadva egy több-szerű a lekérdezés létrehozása során.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?moreLikeThis=a1&api-version=2016-09-01-Preview
 

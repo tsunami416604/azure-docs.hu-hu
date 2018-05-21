@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: b08e2b7315d180a387f27ab2082b7f9f6a9bbfff
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 776ae83990a7799102c69347196a72a68561ee6b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Létrehozása és kezelése a Windows rendszerű virtuális gép, amely több hálózati adapterrel rendelkezik.
 Virtuális gépek (VM) az Azure-ban rendelkezhet több virtuális hálózati adapterek (NIC) kapcsolódik. Egy gyakori forgatókönyv, hogy az előtér- és kapcsolat, vagy a hálózaton, figyelési vagy biztonsági mentési megoldásra dedikált különböző alhálózatokon. Ez a cikk részletesen létrehozása, amely rendelkezik a több hálózati adapter nem csatlakoztatható. Azt is megtudhatja, hogyan lehet hozzáadni vagy eltávolítani a hálózati adapter egy meglévő virtuális gépről. Különböző [Virtuálisgép-méretek](sizes.md) több hálózati adapter támogatja, így méretezés ennek megfelelően a virtuális Gépet.
@@ -76,7 +76,7 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Általában akkor is létrehozhat egy [hálózati biztonsági csoport](../../virtual-network/virtual-networks-nsg.md) a virtuális gép hálózati forgalmának szűrésére és egy [terheléselosztó](../../load-balancer/load-balancer-overview.md) forgalom szét több virtuális géphez.
+Általában akkor is létrehozhat egy [hálózati biztonsági csoport](../../virtual-network/security-overview.md) a virtuális gép hálózati forgalmának szűrésére és egy [terheléselosztó](../../load-balancer/load-balancer-overview.md) forgalom szét több virtuális géphez.
 
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 Most indítsa el a Virtuálisgép-konfiguráció létrehozásához. Minden virtuális gép méretét a teljes száma, adhat hozzá egy virtuális hálózati adapterrel van korlátozva. További információkért lásd: [Windows Virtuálisgép-méretek](sizes.md).

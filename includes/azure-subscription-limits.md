@@ -5,14 +5,14 @@ services: billing
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 03/30/2018
+ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 99766ca4cc9d77927030f81cff6bb9c009874f89
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8f104ab046fad8dfd9086525b8f942f3d2941821
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -21,8 +21,8 @@ ms.lasthandoff: 04/05/2018
 | [Storage-fiókok](../articles/storage/common/storage-create-storage-account.md) régiónként<sup>2</sup> |200 |250 |
 | [Felhőszolgáltatások](../articles/cloud-services/cloud-services-choose-me.md) előfizetésenként |20 |200 |
 | [Helyi hálózatok](http://msdn.microsoft.com/library/jj157100.aspx) előfizetésenként |10 |500 |
-| SQL Database-kiszolgálók előfizetésenként |6 |150 |
-| DNS servers per subscription |9 |100 |
+| SQL Database-kiszolgálók előfizetésenként |6 |200 |
+| DNS-kiszolgálók előfizetésenként |9 |100 |
 | Fenntartott IP-címek előfizetésenként |20 |100 |
 | Üzemeltetett szolgáltatás tanúsítványok előfizetésenként |199 |199 |
 | [Affinitáscsoportok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) előfizetésenként |256 |256 |

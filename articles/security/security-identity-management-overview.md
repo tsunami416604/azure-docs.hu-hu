@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: d07ad69b3a1f6023cf70bb0b9a82cd54defc5c49
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 46e4466085200bf9042c4342ea5e6b37fd2fb701
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure-identitás biztonsági – áttekintés
 Microsoft identitások és hozzáférések felügyeleti megoldások Súgó informatikai védelme alkalmazásokhoz és erőforrásokhoz való hozzáférést az vállalati adatközpontban és a felhőben, például a többtényezős hitelesítés és a feltételes hozzáférési házirendek ellenőrzéséhez további szintek engedélyezése. Gyanús tevékenységek figyelése keresztül speciális biztonsági jelentések, a naplózás és a riasztási segít mérsékelni a potenciális biztonsági problémákat. [Az Azure Active Directory Premium](../active-directory/active-directory-editions.md) biztosítja az egyszeri bejelentkezés felhő több ezer (SaaS) alkalmazások és webalkalmazások hozzáférést a helyszíni futtatása.
@@ -56,7 +56,7 @@ Nem csak felhasználóknak nem kell több példányban felhasználónevek és je
 További információ:
 
 * [Az egyszeri bejelentkezés – áttekintés](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../active-directory/active-directory-appssoaccess-whatis.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../active-directory/manage-apps/what-is-single-sign-on.md)
 * [Azure Active Directoryval az egyszeri bejelentkezés integrálása SaaS-alkalmazásokhoz](../active-directory/active-directory-enterprise-apps-manage-sso.md)
 
 ## <a name="reverse-proxy"></a>Fordított proxy

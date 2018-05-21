@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 84988c815759a726abe93d931f73c284d771a5ba
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48253b68a329d17f213369e8e4ee2e06bdf17992
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="ocr-cognitive-skill"></a>OCR kognitív szakértelem
 
@@ -50,7 +50,7 @@ A paraméterei a kis-és nagybetűket.
 ## <a name="skill-outputs"></a>Szakértelem kimenetek
 | Kimeneti neve     | Leírás                   |
 |---------------|-------------------------------|
-| Szöveg          | A kép kinyert egyszerű szöveg.   |
+| szöveg          | A kép kinyert egyszerű szöveg.   |
 | layoutText    | Összetett típus, amely leírja a kibontott szöveg, valamint a helyet, ahol a szöveg található.|
 
 
@@ -185,16 +185,14 @@ A következő példa skillset létrehoz egy *merged_text* mező a szöveges tart
 A fenti skillset példa feltételezi, hogy van-e a normalizált képek mező. Ez a mező létrehozásához állítsa be a *imageAction* konfigurációját az indexelő-definíciót a *generateNormalizedImages* alább látható módon:
 
 ```json
-{
-  //...rest of your indexer definition goes here ...
-  "parameters":
-  {
-    "configuration": 
-    {
-        "dataToExtract": "contentAndMetadata",
-        "imageAction": "generateNormalizedImages"
-        }
-  }
+{  
+   //...rest of your indexer definition goes here ... 
+  "parameters":{  
+      "configuration":{  
+         "dataToExtract":"contentAndMetadata",
+         "imageAction":"generateNormalizedImages"
+      }
+   }
 }
 ```
 
@@ -202,3 +200,4 @@ A fenti skillset példa feltételezi, hogy van-e a normalizált képek mező. Ez
 + [Előre definiált képességek](cognitive-search-predefined-skills.md)
 + [TextMerger szakértelem](cognitive-search-skill-textmerger.md)
 + [Egy skillset definiálása](cognitive-search-defining-skillset.md)
++ [Az indexelő (REST) létrehozása](ref-create-indexer.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: d0443128064332a37c95d5c39cd73b759a002cca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a908c242b5d41d5cd61d8775bdbe53f3cdddd3ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>A Microsoft Azure Security használatának első lépései
 
@@ -136,7 +136,7 @@ A virtuális gépek alakzatot elhelyezhet [Azure virtuális hálózataihoz](http
 
 A következő Azure virtuális hálózati technológiák használatával biztonságos kommunikáció érdekében a virtuális hálózaton:
 
-* [**Hálózati biztonsági csoportokkal (NSG-k)**](../virtual-network/virtual-networks-nsg.md). A virtuális hálózat egy NSG-t egy vagy több virtuálisgép-példányok forgalmának ellenőrzésére használhatja. A hálózati biztonsági csoport olyan hozzáférés-vezérlési szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják a forgalmat a forgalom iránya, a protokoll, a forrás címe és portja, illetve a cél címe és portja alapján.
+* [**Hálózati biztonsági csoportokkal (NSG-k)**](../virtual-network/security-overview.md). A virtuális hálózat egy NSG-t egy vagy több virtuálisgép-példányok forgalmának ellenőrzésére használhatja. A hálózati biztonsági csoport olyan hozzáférés-vezérlési szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják a forgalmat a forgalom iránya, a protokoll, a forrás címe és portja, illetve a cél címe és portja alapján.
 * [**Felhasználó által definiált útválasztási**](../virtual-network/virtual-networks-udr-overview.md). A csomagok útválasztását egy virtuális készüléken keresztül, adja meg a következő ugrás a virtuális hálózati biztonsági készülékek gomba adott alhálózatra áramló csomagok létrehozásakor felhasználó által definiált útvonalak által szabályozható.
 * [**IP-továbbítás**](../virtual-network/virtual-networks-udr-overview.md). A virtuális hálózat biztonsági eszközének képesnek kell lennie a nem neki címzett bejövő forgalom fogadására. Ahhoz, hogy a virtuális gép címzett más célhelyre irányított forgalom fogadását, engedélyezi a virtuális gép IP-továbbítást.
 * [**Alagúthasználat kényszerítése**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md). A kényszerített bújtatás lehetővé átirányítási vagy "kényszerített" az összes internetes-forgalmat a virtuális hálózat a virtuális gépek által generált biztonsági másolatot a helyszíni helyre vizsgálati és naplózási pont-pont VPN-alagúton keresztül

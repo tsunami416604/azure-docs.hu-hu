@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 843ff1adddcb4c1165ead3f484ad74a503410852
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: fbd589aedb955ee4bd61dc0ec754d8713a98179a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-overview"></a>Az Azure biztonsági áttekintése
 Azure tartalmaz egy robusztus hálózati infrastruktúra, az alkalmazás és szolgáltatás hálózati kapcsolati követelményeinek támogatására. Helyszíni között, az Azure-ban lévő erőforrások közötti hálózati kapcsolatot, és Azure üzemeltetett erőforrásokhoz, és hogy, és az internetről és az Azure.
@@ -57,7 +57,7 @@ Ha módosítania kell az alapvető hálózati szintű hozzáférés-vezérlés (
 
 További információ:
 
-* [Hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md)
+* [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
 
 ### <a name="route-control-and-forced-tunneling"></a>Útvonal-vezérlés és a kényszerített bújtatás
 A virtuális hálózatokon lévő útválasztási viselkedés képes fontos. Ha útválasztási helytelenül van konfigurálva, alkalmazások és szolgáltatások a virtuális gépen futó kapcsolódását nem hitelesített eszközöket, beleértve a birtokolt és a potenciális támadók által működtetett rendszereket.

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: c41a1057bb87c70362477d221b69ca3f5137dec4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a2e2075a735b63588352f3bcdc97e2d6410660fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Hozzon létre egy virtuális hálózat (klasszikus), több alhálózattal
 
@@ -162,7 +162,6 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [Azure-port
 ## <a name="next-steps"></a>További lépések
 
 - Minden virtuális hálózati és alhálózati beállításaival kapcsolatos további tudnivalókért lásd: [virtuális hálózatok kezeléséhez](manage-virtual-network.md) és [kezelheti a virtuális hálózati alhálózat](virtual-network-manage-subnet.md). Számos közül a virtuális hálózatok és alhálózatok éles környezetben különbözőek a követelmények teljesítéséhez.
-- Bejövő és kimenő forgalmat szűréséhez, létrehozása és alkalmazása [hálózati biztonsági csoportok](virtual-networks-nsg.md) alhálózatokra.
 - Hozzon létre egy [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet, majd csatlakozzon egy létező virtuális hálózatot.
 - Csatlakozás Azure ugyanazon a helyen lévő két virtuális hálózatok, hozzon létre egy [virtuális hálózati társviszony-létesítés](create-peering-different-deployment-models.md) a virtuális hálózatok között. A virtuális hálózat (klasszikus) is egyenrangú a egy virtuális hálózat (Resource Manager), de nem hozható létre társviszony-létesítés (klasszikus) virtuális hálózatok között.
 - A virtuális hálózati csatlakozás egy helyszíni hálózat segítségével egy [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) körön.

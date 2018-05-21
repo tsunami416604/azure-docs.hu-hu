@@ -14,3 +14,4 @@
 ### [Bejelentkezés telefonnal](microsoft-authenticator-app-phone-signin-faq.md)
 ### [A fiók hitelesítő adatainak biztonsági mentése és helyreállítása](microsoft-authenticator-app-backup-and-recovery.md)
 ### [Gyakori kérdések](microsoft-authenticator-app-faq.md)
+### [A bejelentkezési felület frissítései](sign-in-experience-updates.md)
