@@ -9,29 +9,50 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: search
-ms.date: 05/01/2018
+ms.date: 05/17/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: 3a9ff6697357dec443691b261ae6fc0477603a9c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: afcc8ac31c45c1a43d3d759ef6f5a1cee8166c0a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Az Azure Search szolgáltatás REST API-ja: Verzió 2017 11-11 – előzetes verzió
-Ez a cikk ismerteti a `api-version=2017-11-11-Preview` Azure Search szolgáltatás REST API-t a következő kísérleti szolgáltatásokat nyújtó verziója:
+Ez a cikk ismerteti a `api-version=2017-11-11-Preview` Azure Search szolgáltatás REST API-t az ajánlat kísérleti funkciók nem még általánosan elérhető verziójának.
 
-+ [Kognitív keresési](cognitive-search-concept-intro.md), egy új dúsító funkció az Azure Search indexelő, amely nem szöveges források és magánháztartás szöveg átalakítása azt a teljes szöveges kereshető tartalom az Azure Search rejtett információkat talál.
+> [!NOTE]
+> Előzetes verziójú funkciók érhetők el a teszteléshez és kísérletezhet azzal a céllal, a visszajelzéseket és bármikor megváltozhat. Kifejezetten ajánlott termelési alkalmazások API-k megtekintés ellen.
 
-A minta API megegyezik az általánosan elérhető API-t a következő két műveletek kivételével:
+
+## <a name="new-in-this-preview"></a>Ebben az előzetes verzióban új
+
++ [Kognitív keresési](cognitive-search-concept-intro.md), az Azure Search új dúsító képessége nem szöveges források és magánháztartás szöveg átalakítása azt a teljes szöveges kereshető tartalom az Azure Search rejtett információkat talál.
+
+A következő két művelet bevezetett, vagy a REST API minta módosítva. Minden más REST API-k megegyeznek a nyilvánosan elérhető hívás vagy (például előzetes verzió.
 
 + [Hozzon létre Skillset (api-version = 2017-11-11 – előzetes verzió)](ref-create-skillset.md)
+
 + [Hozzon létre indexelőt (api-version = 2017-11-11 – előzetes verzió)](ref-create-indexer.md)
 
-Ügyeljen arra, hogy a cél API előzetes verzióját `api-version=2017-11-11-Preview` előzetes kiadású szolgáltatások kiértékelése során. A következő példa szintaxist API előzetes verzióját hívását mutatja be.
+Minden más REST API-k ugyanazok a nyilvánosan elérhető hívás vagy előzetes verzió. Például `GET https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11-Preview` és `GET https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11` (nélkül `Preview`) megegyezik.
+
+## <a name="other-preview-features"></a>Más előzetes verziójú funkciók
+
+A korábbi előzetes funkciók továbbra is szerepelnek, nyilvános előzetes verziójához.
+
++ [CSV-fájlok az Azure Blob indexelő](search-howto-index-csv-blobs.md), ahol egy CSV-fájlban szereplő minden egyes sor indexelése különálló dokumentumként.
+
++ [Az Azure Blob indexelő JSON-tömbök](search-howto-index-json-blobs.md), ahol a tömb egyes elemei indexelt különálló dokumentumként.
+
++ [`moreLikeThis` lekérdezésparaméter](search-more-like-this.md) , amelyek megfelelnek egy adott dokumentum a dokumentumok kereséséhez. Ez a szolgáltatás le lett korábbi előzetes verziójú funkciók. Ha ez az API korábbi verziójával api-hívás, továbbra is használhatja.
+
+
+## <a name="how-to-call-a-preview-api"></a>Hogyan hívhatja meg a minta API
+
+Régebbi előzetes továbbra is működik, de időbeli elavult válik. Ha a kód `api-version=2016-09-01-Preview` vagy `api-version=2015-02-25-Preview`, ezeket a hívások továbbra is érvényesek. Azonban csak a legújabb előzetes verziójával kapcsolatos fejlesztések frissül. 
+
+A következő példa szintaxist API előzetes verzióját hívását mutatja be.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2017-11-11-Preview
 
-> [!NOTE]
-> Előzetes verziójú funkciók érhetők el a teszteléshez és kísérletezhet azzal a céllal, a visszajelzéseket és bármikor megváltozhat. **Kifejezetten ajánlott termelési alkalmazások API-k megtekintés ellen.**
-
-Az Azure Search szolgáltatás több verzióban érhető el. Tekintse meg [API-verziók](search-api-versions.md) részleteiről.
+Az Azure Search szolgáltatás több verzióban érhető el. További információkért lásd: [API-verziók](search-api-versions.md).

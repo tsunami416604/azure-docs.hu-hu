@@ -1,11 +1,11 @@
 ---
-title: "Engedélyezze a hálózati biztonsági csoportok az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** engedélyezése hálózati biztonsági csoportok **."
+title: Engedélyezze a hálózati biztonsági csoportok az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás **engedélyezze a hálózati biztonsági csoportok**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f53ed853-ffaf-4530-a019-1906ba6f341b
 ms.service: security-center
 ms.devlang: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 1e034d59d8847f237fa0d4c772344d45cd618576
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Engedélyezze a hálózati biztonsági csoportok az Azure Security Centerben
-Az Azure Security Center azt javasolja, hogy a hálózati biztonsági csoport (NSG) engedélyezése, ha egy már nincs engedélyezve. NSG tartalmaz, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának hozzáférés-vezérlési lista (ACL) szabályok listáját. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett az egyes virtuális gép is lehet korlátozni további korlátozásokat NGS társítása közvetlenül a virtuális gép. További részletek további [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/virtual-networks-nsg.md)
+Az Azure Security Center azt javasolja, hogy a hálózati biztonsági csoport (NSG) engedélyezése, ha egy már nincs engedélyezve. NSG tartalmaz, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának hozzáférés-vezérlési lista (ACL) szabályok listáját. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett az egyes virtuális gép is lehet korlátozni további korlátozásokat NGS társítása közvetlenül a virtuális gép. További részletek további [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
 
 Ha nem rendelkezik az NSG-k engedélyezve van, a Security Center ajánlásokat két Önnek: engedélyezése hálózati biztonsági csoportok alhálózatok és a hálózati biztonsági csoportok engedélyezése virtuális gépeken. Mely szint, az alhálózati vagy a virtuális Gépet, alkalmazza az NSG-k választja.
 
@@ -44,11 +44,11 @@ Ha nem rendelkezik az NSG-k engedélyezve van, a Security Center ajánlásokat k
 
 Ha létrehoz egy NSG-t, kövesse a [kezelése az Azure portál használatával NSG-k](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) hozzon létre egy NSG-t és a biztonsági szabályokat állíthat be.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Ez a cikk bemutatta a Security Center ajánlott "A hálózati biztonsági csoportok engedélyezése" alhálózatok és virtuális gépek megvalósításához. Az NSG-k engedélyezésére vonatkozó további tudnivalókért olvassa el a következőket:
 
-* [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/virtual-networks-nsg.md)
-* [Az Azure portál használatával NSG-k kezelése](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
+* [A hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
