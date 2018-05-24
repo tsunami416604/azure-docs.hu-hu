@@ -1,11 +1,11 @@
 ---
-title: "Logikai alkalmazás importálása egy API-t az Azure portálon |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan API Management (APIM) segítségével importálja az API-k logikai alkalmazást."
+title: Logikai alkalmazás importálása API-ként az Azure Portal használatával  | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan lehet az API Management (APIM) használatával logikai alkalmazásokat API-ként importálni.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 96ac8ce81087717f05ae6480a8f875079139b7b6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: MT
+ms.openlocfilehash: 4b5f884fe6e1f1fdc12d7993418f7a10614a4cbe
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="import-a-logic-app-as-an-api"></a>Az API-k logikai alkalmazás importálása
+# <a name="import-a-logic-app-as-an-api"></a>Logikai alkalmazás importálása API-ként
 
-Ez a cikk bemutatja, az API-k logikai alkalmazás importálása. A cikk azt is bemutatja, hogyan tesztelheti a APIM API.
+A cikk bemutatja, hogyan importálhat egy logikai alkalmazást API-ként. A cikk az APIM API tesztelését is ismerteti.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Az API-k logikai alkalmazás importálása
-> * Az API tesztelése az Azure-portálon
-> * Az API-t a fejlesztői portálra tesztelése
+> * Logikai alkalmazás importálása API-ként
+> * Az API tesztelése az Azure Portalon
+> * Az API tesztelése a fejlesztői portálon
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Fejezze be a következő gyorsindítási: [Azure API Management példányt létrehozni](get-started-create-service-instance.md)
-+ Ellenőrizze, hogy van egy logikai alkalmazást az előfizetésben. További információ [az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
++ Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
++ Győződjön meg arról, hogy az előfizetése tartalmaz egy logikai alkalmazást. További információkért lásd [az első logikai alkalmazás létrehozását](../logic-apps/quickstart-create-first-logic-app-workflow.md) ismertető szakaszt.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"></a>Importálása és a háttér-API közzététele
+## <a name="create-api"> </a>Háttérrendszeri API importálása és közzététele
 
-1. Válassza ki **API-k** a alatt **API MANAGEMENT**.
-2. Válassza ki **logikai alkalmazás** a a **hozzáadása egy új API** listája.
+1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
+2. Válasszon ki egy **logikai alkalmazást** az **Új API hozzáadása** listából.
 
     ![Logikai alkalmazás](./media/import-logic-app-as-api/logic-app-api.png)
-3. Nyomja le az **Tallózás** az előfizetésében Logic Apps alkalmazások listájának megtekintéséhez.
-4. Válassza ki az alkalmazást. APIM megkeresi a kijelölt alkalmazáshoz társított swagger lekéri azt, és importálja azokat. 
-5. Adjon hozzá egy API URL-címe utótagot. A utótag, amely azonosítja az adott API-nak a APIM példány nevét. Rendelkezik a APIM példány belül egyedinek kell lennie.
-6. Tegye közzé az API által az API-t társít egy termék. Ebben az esetben a "*korlátlan*" termék szolgál.  Ha azt szeretné, az API számára tehető közzé, és a fejlesztők számára érhető el, adja hozzá a termék. API létrehozása során teheti meg, vagy állítsa be úgy később.
+3. Kattintson a **Tallózás** gombra az előfizetésben foglalt logikai alkalmazások listájának megtekintéséhez.
+4. Válassza ki az alkalmazást. Az APIM megkeresi a kiválasztott alkalmazáshoz társuló Swaggert, majd beszerzi és importálja azt. 
+5. Adja hozzá az API URL-cím utótagját. Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.
+6. Az API egy termékkel való társítással tehető közzé. Ebben az esetben az „*Unlimited*” terméket használjuk.  Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.
 
-    A termékeket társítását, egy vagy több API-k. Számos olyan API-k, és a fejlesztői portálon keresztül a fejlesztők számára biztosíthat számukra. A fejlesztők a termék az API eléréséhez először elő kell fizetnie. Fizet elő, amikor azok beolvasása, amely a termék API-k ideális előfizetés kulcsa. A APIM példányt hozott létre, ha rendszergazdaként jelentkezett már, így minden egyes termék előfizetett alapértelmezés szerint.
+    A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.
 
     Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár:
 
@@ -56,30 +56,30 @@ Ebből a cikkből megismerheti, hogyan:
     * **Korlátlan**   
 7. Kattintson a **Létrehozás** gombra.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Az új APIM API tesztelése az Azure-portálon
+## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Az új APIM API tesztelése az Azure Portalon
 
-Műveletek hívható közvetlenül a megtekintése, és az API-k működésének teszteléséhez kényelmes megoldást kínál az Azure portálon.  
+A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére.  
 
 1. Válassza ki az előző lépésben létrehozott API-t.
-2. Nyomja meg a **teszt** fülre.
-3. Válassza ki a valamilyen művelet.
+2. Kattintson a **Teszt** fülre.
+3. Válasszon ki egy műveletet.
 
-    A lap megjeleníti a lekérdezés-paraméterek és a fejlécek mezőket. A fejléc egyik "Ocp-Apim-előfizetés-kulcsot", a termék, ez az API társított előfizetés kulcshoz. A APIM példányt hozott létre, ha rendszergazdaként jelentkezett már, így a kulcs automatikusan kitölti. 
+    Az oldalon megjelennek a lekérdezési paraméterek és a fejlécek mezői. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer. 
 1. Kattintson a **Küldés** gombra.
 
-    Háttér válaszol, **200 OK** és néhány adat.
+    A háttér a **200 OK** üzenetet és néhány adatot küld válaszként.
 
 ## <a name="call-operation"></a>Művelet meghívása a fejlesztői portálról
 
-Műveletek is hívható **fejlesztői portálján** API-k teszteléséhez. 
+A **fejlesztői portálról** is meghívhat műveleteket az API-k teszteléséhez. 
 
-1. Válassza ki a létrehozott API a "Import és közzététele egy háttér-API" lépéssel.
-2. Nyomja le az **fejlesztői portálján**.
+1. Válassza ki a „Háttérrendszeri API importálása és közzététele” című lépésben létrehozott API-t.
+2. Nyomja meg a **Fejlesztői portál** gombot.
 
-    A "Fejlesztői portálján" hely megnyílik.
-3. Válassza ki a **API** létrehozott.
-4. Kattintson a vizsgálni kívánt műveletet.
-5. Nyomja le az **kipróbálás**.
+    Megnyílik a Fejlesztői portál webhely.
+3. Jelölje ki a létrehozott **API**-t.
+4. Kattintson a tesztelni kívánt műveletre.
+5. Kattintson a **Kipróbálás** gombra.
 6. Kattintson a **Küldés** gombra.
     
     A művelet meghívása után a fejlesztői portál megjeleníti a **Válasz állapota**, a **Válasz fejlécei** és a **Válasz tartalma** minden információját.
@@ -87,11 +87,11 @@ Műveletek is hívható **fejlesztői portálján** API-k teszteléséhez.
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 >[!NOTE]
-> Minden logikai alkalmazás rendelkezik **manuális meghívása** műveletet. Tartalmazza az API-t, a több logic apps, ahhoz, hogy ne legyenek ütközési, ha szüksége nevezze át a függvénynek.
+> Mindegyik logikai alkalmazás rendelkezik **manual-invoke** művelettel. Ha egy API több logikai alkalmazásból áll, az ütközések elkerülése érdekében át kell neveznie a függvényt.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az átalakítási és egy közzétett API védelme](transform-api.md)
+> [Közzétett API átalakítása és védelme](transform-api.md)

@@ -1,36 +1,36 @@
 ---
-title: Az Azure Security Center és a Windows virtuális gépek Azure-ban |} Microsoft Docs
-description: További tudnivalók a Azure Windows virtuális gép az Azure Security Center biztonsági.
+title: Oktatóanyag – Azure Security Center használata Azure-beli Windows rendszerű virtuális gépekhez | Microsoft Docs
+description: Ebben az oktatóanyagban megismeri az Azure Security Centert, és megtudhatja, hogyan védheti meg és teheti biztonságossá Windows rendszerű virtuális gépeit az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35b6c8910b0dd5e8d1c388ee83223ce77a08f6d1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b573208107b07b47b471d9c5247b362ef144099e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>A virtuális gép biztonságának monitorozása az Azure Security Centerrel
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata Windows rendszerű virtuális gépek megfigyeléséhez
 
 Az Azure Security Center segítségével áttekintheti az Azure-erőforrása biztonsági intézkedéseit. A Security Center integrált biztonsági monitorozást biztosít. Képes egyébként észrevétlenül maradó fenyegetések észlelésére. Ebben az oktatóanyagban megismeri az Azure Security Centert, és a következőket sajátíthatja el:
- 
+
 > [!div class="checklist"]
 > * Adatgyűjtés beállítása
 > * Biztonsági szabályzatok beállítása
 > * A konfiguráció állapotára vonatkozó problémák megtekintése és javítása
-> * Észlelt fenyegetések áttekintése  
+> * Észlelt fenyegetések áttekintése
 
 ## <a name="security-center-overview"></a>Security Center – Áttekintés
 
@@ -144,7 +144,7 @@ Ebben az oktatóanyagban beállította az Azure Security Centert, és áttekinte
 > * A konfiguráció állapotára vonatkozó problémák megtekintése és javítása
 > * Észlelt fenyegetések áttekintése
 
-A következő oktatóanyag áttekintésével megismerheti, hogyan CI/CD folyamat létrehozása a Visual Studio Team Services és az IIS-t futtató Windows virtuális gép továbblépés.
+Ha szeretné megtudni, hogyan hozhat létre CI-/CD-folyamatot a Visual Studio Team Services és a Windows rendszerű virtuális gépeket futtató IIS segítségével, lépjen a következő oktatóanyagra.
 
 > [!div class="nextstepaction"]
-> [A Visual Studio Team Services CI/CD-folyamat](./tutorial-vsts-iis-cicd.md)
+> [Visual Studio Team Services CI-/CD-folyamat](./tutorial-vsts-iis-cicd.md)

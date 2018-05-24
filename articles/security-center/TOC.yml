@@ -109,8 +109,6 @@
           href: security-center-just-in-time.md
         - name: Adaptív alkalmazásvezérlők
           href: security-center-adaptive-application.md
-        - name: Fájlintegritás monitorozása
-          href: security-center-file-integrity-monitoring.md
     - name: Biztonsági megoldások kezelése
       href: security-center-partner-integration.md
       items:

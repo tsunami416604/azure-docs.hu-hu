@@ -1,11 +1,11 @@
 ---
-title: "Importálja az Azure portál használatával SOAP API |} Microsoft Docs"
-description: "Megtudhatja, hogyan SOAP API-t az API Management importálásához."
+title: SOAP API importálása az Azure Portal használatával | Microsoft Docs
+description: Megismerheti, hogyan importálhatja a SOAP API-t az API Managementtel.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,46 +13,46 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 0a013aa63e8b04748e1b64126795189a5d189fa1
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: 108758751b7c8ef5906cb55495a2604f918b2714
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="import-soap-api"></a>Importálás SOAP API
+# <a name="import-soap-api"></a>SOAP API importálása
 
-Ez a cikk bemutatja, hogyan importálhatja egy SOAP API-t a szabványos XML-ábrázolása. A cikk azt is bemutatja, hogyan tesztelheti a APIM API.
+A cikk bemutatja, hogyan importálhatja egy SOAP API szabványos XML-ábrázolásását. A cikk az APIM API tesztelését is ismerteti.
 
-Ebből a cikkből megismerheti, hogyan:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Importálás SOAP API
-> * Az API tesztelése az Azure-portálon
-> * Az API-t a fejlesztői portálra tesztelése
+> * SOAP API importálása
+> * Az API tesztelése az Azure Portalon
+> * Az API tesztelése a fejlesztői portálon
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fejezze be a következő gyorsindítási: [Azure API Management példányt létrehozni](get-started-create-service-instance.md)
+Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"></a>Importálása és a háttér-API közzététele
+## <a name="create-api"> </a>Háttérrendszeri API importálása és közzététele
 
-1. Válassza ki **API-k** a alatt **API MANAGEMENT**.
-2. Válassza ki **WSDL** a a **hozzáadása egy új API** listája.
+1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
+2. Az **Új API hozzáadása** listában válassza a **WSDL** elemet.
 
-    ![A SOAP api](./media/import-soap-api/wsdl-api.png)
-3. Az a **WSDL specification**, adja meg az URL-címet a SOAP API tároló.
-4. A **SOAP áteresztő** választógomb alapértelmezettként van beállítva. Ez a választás az API-t lesz elérhető SOAP. Felhasználó rendelkezik SOAP-szabályok használata. Ha szeretné "restify" az API-t, kövesse a [importálni egy SOAP API és átalakíthatja a többi](restify-soap-api.md).
+    ![Soap api](./media/import-soap-api/wsdl-api.png)
+3. A **WSDL-specifikáció** mezőben adja meg azt az URL-címet, ahol a SOAP API található.
+4. Alapértelmezés szerint a **SOAP típusú továbbítás** választógomb van kijelölve. Így az API SOAP-ként lesz elérhető. A fogyasztónak a SOAP-szabályokat kell használnia. Ha REST API-t szeretne használni, kövesse a [SOAP API importálását és REST-konvertálását](restify-soap-api.md) ismertető szakasz lépéseit.
 
-    ![Áteresztő](./media/import-soap-api/pass-through.png)
-5. A tab billentyű megnyomásával.
+    ![Továbbítás](./media/import-soap-api/pass-through.png)
+5. Nyomja le a Tab billentyűt.
 
-    A következő mezőket a SOAP API információval beolvasása kitöltött: megjelenítési neve, név, leírás.
-6. Adjon hozzá egy API URL-címe utótagot. A utótag, amely azonosítja az adott API-nak a APIM példány nevét. Rendelkezik a APIM példány belül egyedinek kell lennie.
-9. Tegye közzé az API által az API-t társít egy termék. Ebben az esetben a "*korlátlan*" termék szolgál.  Ha azt szeretné, az API számára tehető közzé, és a fejlesztők számára érhető el, adja hozzá a termék. API létrehozása során teheti meg, vagy állítsa be úgy később.
+    A rendszer kitölti a következő mezőket a SOAP API-ból származó adatokkal: Megjelenített név, Név, Leírás.
+6. Adja hozzá az API URL-cím utótagját. Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.
+9. Az API egy termékkel való társítással tehető közzé. Ebben az esetben az „*Unlimited*” terméket használjuk.  Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.
 
-    A termékeket társítását, egy vagy több API-k. Számos olyan API-k, és a fejlesztői portálon keresztül a fejlesztők számára biztosíthat számukra. A fejlesztők a termék az API eléréséhez először elő kell fizetnie. Fizet elő, amikor azok beolvasása, amely a termék API-k ideális előfizetés kulcsa. A APIM példányt hozott létre, ha rendszergazdaként jelentkezett már, így minden egyes termék előfizetett alapértelmezés szerint.
+    A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.
 
     Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár:
 
@@ -62,29 +62,29 @@ Fejezze be a következő gyorsindítási: [Azure API Management példányt létr
 
 ### <a name="test-the-new-apim-api-in-the-administrative-portal"></a>Az új APIM API tesztelése a felügyeleti portálon
 
-Műveletek hívható közvetlenül a megtekintése, és az API-k működésének teszteléséhez kényelmes megoldást kínál a felügyeleti portálon.  
+A műveleteket meg lehet hívni közvetlenül a felügyeleti portálról, ami kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére.  
 
 1. Válassza ki az előző lépésben létrehozott API-t.
-2. Nyomja meg a **teszt** fülre.
-3. Válassza ki a valamilyen művelet.
+2. Kattintson a **Teszt** fülre.
+3. Válasszon ki egy műveletet.
 
-    A lap megjeleníti a lekérdezés-paraméterek és a fejlécek mezőket. A fejléc egyik "Ocp-Apim-előfizetés-kulcsot", a termék, ez az API társított előfizetés kulcshoz. A APIM példányt hozott létre, ha rendszergazdaként jelentkezett már, így a kulcs automatikusan kitölti. 
-1. Nyomja le az **küldése**.
+    Az oldalon megjelennek a lekérdezési paraméterek és a fejlécek mezői. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer. 
+1. Kattintson a **Küldés** gombra.
 
-    Háttér válaszol, **200 OK** és néhány adat.
+    A háttér a **200 OK** üzenetet és néhány adatot küld válaszként.
 
 ### <a name="call-operation"></a>Művelet meghívása a fejlesztői portálról
 
-Műveletek is hívható **fejlesztői portálján** API-k teszteléséhez. 
+A **fejlesztői portálról** is meghívhat műveleteket az API-k teszteléséhez. 
 
-1. Válassza ki a létrehozott API a "Import és közzététele egy háttér-API" lépéssel.
-2. Nyomja le az **fejlesztői portálján**.
+1. Válassza ki a „Háttérrendszeri API importálása és közzététele” című lépésben létrehozott API-t.
+2. Nyomja meg a **Fejlesztői portál** gombot.
 
-    A "Fejlesztői portálján" hely megnyílik.
-3. Válassza ki a **API** létrehozott.
-4. Kattintson a vizsgálni kívánt műveletet.
-5. Nyomja le az **kipróbálás**.
-6. Nyomja le az **küldése**.
+    Megnyílik a Fejlesztői portál webhely.
+3. Jelölje ki a létrehozott **API**-t.
+4. Kattintson a tesztelni kívánt műveletre.
+5. Kattintson a **Kipróbálás** gombra.
+6. Kattintson a **Küldés** gombra.
     
     A művelet meghívása után a fejlesztői portál megjeleníti a **Válasz állapota**, a **Válasz fejlécei** és a **Válasz tartalma** minden információját.
 
@@ -92,7 +92,7 @@ Műveletek is hívható **fejlesztői portálján** API-k teszteléséhez.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az átalakítási és egy közzétett API védelme](transform-api.md)
+> [Közzétett API átalakítása és védelme](transform-api.md)

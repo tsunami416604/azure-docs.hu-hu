@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 05/11/2018
 ms.author: jroth
-ms.openlocfilehash: 080fecc7e89d9a76a9b160ba2ff4ba9dc31d0925
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: aeeee58242a5f6ea41b9ba354efc4f5d5087151c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -72,11 +72,9 @@ Az **Alapvető beállítások** ablakban adja meg a következő információkat:
 
 ## <a name="choose-virtual-machine-size"></a>A virtuális gép méretének kiválasztása
 
-A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiválasztása** ablakban. Az ablak kezdetben a választott rendszerkép alapján jeleníti meg az ajánlott gépméreteket. 
+1. A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiválasztása** ablakban.
 
-1. **Az összes megtekintése** gombra kattintva megtekintheti az összes elérhető gépméretet.
-
-1. Ehhez a rövid útmutatóhoz válassza a **D2S_V3** lehetőséget. A portálon megjelennek a gép folyamatos használatára vonatkozó becsült havi költségek (az SQL Server licencköltségei nélkül). Megjegyzés: a Developer Edition esetében az SQL Servernek nincsenek külön licencelési költségei. Az egyes díjtételekkel kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) olvasható.
+   Ehhez a rövid útmutatóhoz válassza a **D2S_V3** lehetőséget. A portálon megjelennek a gép folyamatos használatára vonatkozó becsült havi költségek (az SQL Server licencköltségei nélkül). Megjegyzés: a Developer Edition esetében az SQL Servernek nincsenek külön licencelési költségei. Az egyes díjtételekkel kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) olvasható.
 
    > [!TIP]
    > A **D2S_V3** gépmérettel költségek takaríthatók meg a tesztelés során. Az éles számítási feladatok esetében ajánlott gépméretekért és -konfigurációkért azonban tekintse meg [az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növelésével kapcsolatos ajánlott eljárásokat](virtual-machines-windows-sql-performance.md).
@@ -85,7 +83,14 @@ A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiv�
 
 ## <a name="configure-optional-features"></a>Választható funkciók konfigurálása
 
-A **Beállítások** ablakban kattintson az **OK** gombra az alapértelmezett beállítások kiválasztásához.
+1. A **Beállítások** ablakban válassza ki az **RDP (3389)** portot a **Nyilvános bejövő portok kiválasztása** listában, ha távoli asztali kapcsolatot kíván kiépíteni a virtuális géppel.
+
+   ![Bejövő portok](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
+
+   > [!NOTE]
+   > Az **MS SQL (1433)** portot kiválasztva távolról érheti el az SQL Servert. Ez azonban nem szükséges, mivel az **SQL Server beállításai** lépés is biztosítja ezt a lehetőséget. Ha ebben a lépésben kiválasztja a 1433-as portot, az az **SQL Server beállításai** lépésben kiválasztott lehetőségektől függetlenül mindenképp megnyílik.
+
+1. A módosítások mentéséhez és a folytatáshoz kattintson az **OK** gombra.
 
 ## <a name="sql-server-settings"></a>SQL Server beállításai
 

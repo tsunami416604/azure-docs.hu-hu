@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 05/02/2018
 ms.author: billmath
-ms.openlocfilehash: 14d2a29e65bf2f3a974f2713f36d9b9fa497ee1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](active-directory-aadconnect-get-started-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -45,13 +45,14 @@ Amikor a szinkronizálási szolgáltatásokat telepíti, a választható konfigu
 ### <a name="user-sign-in"></a>Felhasználói bejelentkezés
 A szükséges összetevők telepítését követően a rendszer megkéri, hogy válassza ki a felhasználók egyszeri bejelentkezésének módját. Az alábbi táblázat tartalmazza az elérhető beállítások rövid ismertetését. A bejelentkezési módok teljes leírásáért lásd: [Felhasználói bejelentkezés](active-directory-aadconnect-user-signin.md).
 
-![Felhasználói bejelentkezés](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
+![Felhasználói bejelentkezés](./media/active-directory-aadconnect-get-started-custom/usersignin4.png)
 
 | Egyszeri bejelentkezési beállítás | Leírás |
 | --- | --- |
 | Jelszókivonat szinkronizálása |A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak. A felhasználók jelszavai szinkronizálva vannak az Azure AD szolgáltatásba jelszókivonatként, és a hitelesítés a felhőben történik. További információkért lásd a [jelszókivonat szinkronizálásával](active-directory-aadconnectsync-implement-password-hash-synchronization.md) foglalkozó részt. |
 |Átmenő hitelesítés|A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer a felhasználói jelszavakat az őket ellenőrző helyszíni Active Directory-tartományvezérlőn keresztül továbbítja.
 | Összevonás az AD FS rendszerrel |A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer átirányítja a felhasználókat helyszíni AD FS-példányukra a bejelentkezéshez, és a hitelesítés a helyszíni rendszeren történik. |
+| Összevonás a PingFederate-tel|A felhasználók a Microsoft felhőszolgáltatásaiba, például az Office 365-be ugyanazzal a jelszóval jelentkezhetnek be, amelyet a helyszíni hálózaton is használnak.  A rendszer átirányítja a felhasználókat a helyszíni PingFederate-példányukra a bejelentkezéshez, és a hitelesítés a helyszíni rendszeren történik. |
 | Nincs konfigurálás |Nincs telepítve és konfigurálva felhasználói bejelentkezési szolgáltatás. Válassza ezt a lehetőséget, ha már rendelkezik külső fél által biztosított összevonási kiszolgálóval vagy más meglévő megoldással. |
 |Egyszeri bejelentkezés engedélyezése|Ez a lehetőség jelszó-szinkronizálás és átmenő hitelesítés mellett is elérhető, és egyszeri bejelentkezést biztosít az asztali gépek felhasználóinak a vállalati hálózaton. További információkért tekintse meg az [egyszeri bejelentkezést](active-directory-aadconnect-sso.md) ismertető témakört. </br>Vegye figyelembe, hogy ez a lehetőség az AD FS-ügyfelek számára nem érhető el, mert az AD FS már tartalmaz ennek megfelelő szintű egyszeri bejelentkezési funkciót.</br>
 
@@ -301,6 +302,39 @@ Amikor kiválasztja az összevonandó tartományt, az Azure AD Connect megadja a
 >
 >
 
+## <a name="configuring-federation-with-pingfederate"></a>PingFederate-összevonás konfigurálása
+A PingFederate konfigurálása az Azure AD Connecttel egyszerű feladat, amely mindössze néhány kattintást igényel. A konfigurálás előtt a következőkre van szükség.  Azonban a következő előfeltételek megléte szükséges.
+- PingFederate 8.4 vagy újabb verzió.  További információk: [PingFederate-integráció az Azure Active Directory és az Office 365 szolgáltatásokkal](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html).
+- Egy SSL-tanúsítványra az összevonási szolgáltatás használni kívánt nevéhez (például sts.contoso.com)
+
+### <a name="verify-the-domain"></a>A tartomány hitelesítése
+Az Összevonás a PingFederate-tel lehetőség kiválasztása után a rendszer megkéri, hogy erősítse meg az összevonni kívánt tartományt.  Válassza ki a tartományt a legördülő listában.
+
+![Tartomány ellenőrzése](./media/active-directory-aadconnect-get-started-custom/ping1.png)
+
+### <a name="export-the-pingfederate-settings"></a>A PingFederate-beállítások exportálása
+
+
+A PingFederate-et kell beállítani összevonási kiszolgálóként mindegyik összevont Azure-tartományon.  Kattintson a Beállítások exportálása gombra, és ossza meg ezeket az információkat a PingFederate rendszergazdájával.  Az összevonási kiszolgáló rendszergazdája frissíti a konfigurációt, majd megadja a PingFederate-kiszolgáló URL-címét és portszámát, hogy az Azure AD Connect ellenőrizhesse a metaadat-beállításokat.  
+
+![Tartomány ellenőrzése](./media/active-directory-aadconnect-get-started-custom/ping2.png)
+
+Az érvényesítéssel kapcsolatos problémák megoldásához forduljon a PingFederate-rendszergazdához.  Az alábbiakban egy példa látható egy PingFederate-kiszolgálóra, amely nem rendelkezik érvényes megbízhatósági kapcsolattal az Azure-ral:
+
+![Bizalmi kapcsolat](./media/active-directory-aadconnect-get-started-custom/ping5.png)
+
+
+
+
+### <a name="verify-federation-connectivity"></a>Az összevonási kapcsolat ellenőrzése
+Az Azure AD Connect megkísérli érvényesíteni az előző lépésben a PingFederate-metaadatokból lehívott hitelesítési végpontokat.  Az Azure AD Connect először a helyi DNS-kiszolgálók használatával kísérli meg feloldani a végpontokat.  Ezután egy külső DNS-szolgáltató használatával kísérli meg feloldani azokat.  Az érvényesítéssel kapcsolatos problémák megoldásához forduljon a PingFederate-rendszergazdához.  
+
+![A kapcsolat ellenőrzése](./media/active-directory-aadconnect-get-started-custom/ping3.png)
+
+### <a name="verify-federation-login"></a>Az összevonási bejelentkezés ellenőrzése
+Végezetül az újonnan konfigurált összevont bejelentkezési folyamat ellenőrzéséhez bejelentkezhet az összevont tartományba. Ha ez sikeres, a PingFederate-összevonás sikeresen konfigurálva lett.
+![Bejelentkezés ellenőrzése](./media/active-directory-aadconnect-get-started-custom/ping4.png)
+
 ## <a name="configure-and-verify-pages"></a>Configure (Konfigurálás) és Verify (Ellenőrzés) lap
 A konfigurálás ezen az oldalon történik.
 
@@ -308,6 +342,7 @@ A konfigurálás ezen az oldalon történik.
 > Mielőtt folytatná a telepítést, ha konfigurálta az összevonást, ellenőrizze, hogy konfigurálta az [összevonási kiszolgálók névfeloldását is](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers).
 >
 >
+
 
 ![Ready to configure (Konfigurálásra kész)](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -336,8 +371,9 @@ Amikor a Verify (Ellenőrzés) gombra kattint, az Azure AD Connect ellenőrzi a 
 
 ![Ellenőrzés](./media/active-directory-aadconnect-get-started-custom/adfs7.png)
 
-Ezen felül hajtsa végre a következő ellenőrzési lépéseket:
+A teljes körű hitelesítés sikerességének ellenőrzéséhez manuálisan kell végrehajtania egyet vagy többet a következő tesztek közül:
 
+* Miután a szinkronizálás véget ért, az Azure AD Connect Összevont bejelentkezés ellenőrzése további feladatának használatával ellenőrizze egy választott helyszíni felhasználói fiók hitelesítését.
 * Ellenőrizze, hogy be tud-e jelentkezni böngészőből egy, a tartományhoz csatlakozó gépről az intraneten: csatlakozzon a https://myapps.microsoft.com helyhez, és ellenőrizze a bejelentkezést a fiókkal, amelybe be van jelentkezve. A beépített AD DS rendszergazdai fiók nincs szinkronizálva, és nem használható az ellenőrzéshez.
 * Ellenőrizze, hogy be tud jelentkezni egy, az extraneten lévő eszközről. Egy otthoni gépről vagy mobileszközről csatlakozzon a https://myapps.microsoft.com helyre, és adja meg hitelesítő adatait.
 * Ellenőrizze a gazdag ügyféllel való bejelentkezést. Csatlakozzon a https://testconnectivity.microsoft.com helyhez, lépjen az **Office 365** lapra, és válassza az **Office 365 Single Sign-On Test** (Office 365 egyszeri bejelentkezés tesztelése) lehetőséget.
