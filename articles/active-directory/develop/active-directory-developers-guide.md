@@ -16,11 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f0f577e2ff18645cfa93763f2345ef4230907e09
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6f3c0e93b20bbc570f4715318a49b502549ff295
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257549"
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory fejlesztők számára
 
@@ -55,7 +56,6 @@ Az alábbi útmutatók végigvezetik az Azure AD néhány gyakori feladatán.
 |[Alkalmazásregisztráció](active-directory-integrating-applications.md)           | Alkalmazás regisztrálása az Azure AD-ben. |
 |[Több-bérlős alkalmazások](active-directory-devhowto-multi-tenant-overview.md)    | Bejelentkezés bármely munkahelyi Microsoft-fiókba. |
 |[OAuth és OpenID Connect protokollok](active-directory-protocols-openid-connect-code.md)| Felhasználók bejelentkeztetése és webes API-k hívása a Microsoft hitelesítési protokolljaival. |
-|[További útmutatók](active-directory-developers-guide-index.md#guides)        |  Az Azure AD-hez elérhető útmutatók listája. |
 |  |  |
 
 ## <a name="reference-topics"></a>Referencia-témakörök
@@ -66,7 +66,6 @@ A következő cikkekben az API-król, a protokollüzenetekről és az Azure AD �
 | [Hitelesítési tárak (ADAL)](active-directory-authentication-libraries.md)   | Áttekintés az Azure AD által támogatott kódtárakról és SDK-król. |
 | [Kódminták](active-directory-code-samples.md)                                  | Az Azure AD összes kódmintáját tartalmazó lista. |
 | [Szószedet](active-directory-dev-glossary.md)                                      | A jelen dokumentációban használt fogalmak terminológiája és meghatározásai. |
-| [További referencia-témakörök](active-directory-developers-guide-index.md#reference)| Az Azure AD-hez elérhető referencia-témakörök listája. |
 |  |  |
 
 

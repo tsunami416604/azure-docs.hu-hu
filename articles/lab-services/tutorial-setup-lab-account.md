@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 347b7d183839868f3b52adbdfd00b38cee3f3fbc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 22a9e90404475e8ff1f1ea72c233b1abfed938f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361381"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services-formerly-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezetfiók beállítása az Azure Lab Services szolgáltatással (korábbi nevén DevTest Labs)
 Ebben az oktatóanyagban tesztkörnyezet-rendszergazdaként hoz létre egy tesztkörnyezetfiókot az Azure Lab Services szolgáltatással. Ezután engedélyt ad az oktatóknak, hogy tesztkörnyezeteket hozzanak létre a tanóráikhoz a tesztkörnyezetfiókban. Az oktatók az [Azure Lab Services webhely](https://labs.azure.com) segítségével hozhatnak létre tesztkörnyezeteket a tanóráikhoz.   

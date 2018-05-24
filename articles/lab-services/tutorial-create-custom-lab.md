@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: df70322a2d6562fce8da17fde652dd0dfbfcaec4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3a4f964fe4f103e970a6edb3e9ba716fd72b8c79
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362243"
 ---
 # <a name="tutorial-set-up-a-custom-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Egyéni tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással
 Ebben az oktatóanyagban létrehoz egy egyéni tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 

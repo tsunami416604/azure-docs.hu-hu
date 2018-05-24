@@ -9,16 +9,17 @@ editor: tysonn
 ms.assetid: 4bd084c8-0842-4a10-8460-080c6a085bec
 ms.service: azure-resource-manager
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd0680a16596931b5f595bbdd4e48414c8dbde73
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd2869b35d92ea92261223131476d7cc8eb854eb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360104"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 A Visual Studio és az [Azure SDK](https://azure.microsoft.com/downloads/) alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerbe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. Azt is megteheti, hogy meghatározza a virtuális gépet, a virtuális hálózatot és a tárfiókot, majd telepíti az infrastruktúrát a virtuális gépen végrehajtott parancsfájllal együtt. Az **Azure erőforráscsoport** telepítési projektje lehetővé teszi, hogy az összes szükséges erőforrást egyetlen, megismételhető műveletben telepítse. Az erőforrások telepítésével és kezelésével kapcsolatos további információkért lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md).

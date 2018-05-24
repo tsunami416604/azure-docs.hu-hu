@@ -10,15 +10,16 @@ ms.workload: infrastructure-services
 ms.date: 4/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 23e3fdc168b2337b142f3cba554073bad1f5eb4a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c50a97add735138c295aeb7bf5759f7d5ec54600
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34355984"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Oktatóanyag: Alkalmazásátjáró létrehozása URL-alapú átirányítással az Azure CLI használatával
 
-Az Azure CLI használatával [URL-alapú útválasztási szabályokat](application-gateway-url-route-overview.md) konfigurálhat [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben az oktatóanyagban háttérkészleteket hoz létre [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használatával. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják a webes forgalom átirányítását a megfelelő háttérkészletekre.
+Az Azure CLI használatával [URL-alapú útválasztási szabályokat](application-gateway-url-route-overview.md) konfigurálhat [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben az oktatóanyagban háttérkészleteket hoz létre [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használatával. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják, hogy a webes forgalom a megfelelő háttérkészletre legyen átirányítva.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -26,7 +27,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A hálózat beállítása
 > * Application Gateway létrehozása
 > * Figyelők és útválasztási szabályok hozzáadása
-> * Virtuálisgép-méretezési csoportok létrehozása háttérkészletekhez
+> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekhez
 
 A következő példában a 8080-as és a 8081-es portról egyaránt érkezik webhelyforgalom, amely ugyanazokra a háttérkészletekre lesz átirányítva:
 
@@ -232,7 +233,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek a három létrehozott háttérkészletet támogatják. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
+Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A *myvmss1*, *myvmss2* és *myvmss3* nevű méretezési csoportokat hozza létre. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyeken az NGINX-et telepíti.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -275,7 +276,7 @@ for i in `seq 1 3`; do
     --name CustomScript \
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
-    --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+    --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
 
 done
 ```
@@ -302,7 +303,7 @@ Módosítsa az URL-címet a http://&lt;ip-cím&gt;:8080/video/test.html értékr
 
 ![Tesztvideó URL-címe az alkalmazásátjáróban](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Most módosítsa az URL-címet a http://&lt;ip-cím&gt;:8081/images/test.htm értékre, és az &lt;ip-cím&gt; helyére írja be a saját IP-címét. Ekkor azt kellene látnia, hogy a forgalom vissza lesz irányítva a képek háttérkészletére, amely a http://&lt;ip-cím&gt;:8080/images címen található.
+Módosítsa az URL-címet http://&lt;ip-address&gt;:8081/images/test.htm értékre, és cserélje le az &lt;ip-address&gt; részt a saját IP-címére. Ekkor a képek háttérkészletére visszairányított forgalom látható a http://&lt;ip-address&gt;:8080/images címen.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -319,7 +320,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A hálózat beállítása
 > * Application Gateway létrehozása
 > * Figyelők és útválasztási szabályok hozzáadása
-> * Virtuálisgép-méretezési csoportok létrehozása háttérkészletekhez
+> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekhez
 
 > [!div class="nextstepaction"]
 > [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)

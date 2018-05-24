@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: a993338e5a16514e855d771e25aac3e451faab45
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: fed4a587d2258cdab35d09f5e3947a8cacade157
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364386"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Biztonsági szabályzatok beállítása az Azure Security Centerben
 Ebből a cikkből megismerheti a Security Center biztonsági szabályzatainak konfigurálásához szükséges lépéseket.
@@ -55,7 +56,7 @@ Az alapértelmezett biztonsági szabályzatban elérhető szabályzatdefiníció
 | Biztonsági konfigurációk |Naponta elemzi az operációs rendszer beállításait olyan problémák meghatározása érdekében, amelyek a virtuális gépet sebezhetővé tehetik a támadásokkal szemben. A szabályzat a biztonsági rések megszüntetését elősegítő konfigurációmódosításokat is javasol. A szabályzat által figyelt konfigurációkkal kapcsolatban lásd [a javasolt alapkonfigurációk listáját](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). (A Windows Server 2016 jelenleg nem részesül teljes mértékű támogatásban.) |
 | Endpoint protection (Végpontok védelme) |A szabályzat az összes windowsos virtuális gép (VM) esetében végpontvédelem beállítását javasolja a vírusok, kémprogramok és más kártevőszoftverek hatékonyabb azonosításához és eltávolításához. |
 | Disk encryption (Lemeztitkosítás) |Nyugalmi állapotban az adatvédelmi teljesítmény javításához ajánlja a lemeztitkosítás engedélyezését az összes virtuális gépen. |
-| Network security groups (Hálózati biztonsági csoportok) |[Hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md) konfigurálását ajánlja a be- és kimenő adatforgalom vezérlésére a nyilvános végpontokkal rendelkező virtuális gépek esetében. Az alhálózatra beállított hálózati biztonsági csoportokat az összes virtuális géphez tartozó hálózati adapter örökli, kivéve, ha Ön más beállítást ad meg. Annak figyelése mellett, hogy a hálózati biztonsági csoportok konfigurálása megtörtént-e, ez a szabályzat a bejövő biztonsági szabályokat is ellenőrzi, és azonosítja azokat a szabályokat, amelyek engedélyezik a bejövő forgalmat. |
+| Network security groups (Hálózati biztonsági csoportok) |[Hálózati biztonsági csoportok](../virtual-network/security-overview.md) konfigurálását ajánlja a be- és kimenő adatforgalom vezérlésére a nyilvános végpontokkal rendelkező virtuális gépek esetében. Az alhálózatra beállított hálózati biztonsági csoportokat az összes virtuális géphez tartozó hálózati adapter örökli, kivéve, ha Ön más beállítást ad meg. Annak figyelése mellett, hogy a hálózati biztonsági csoportok konfigurálása megtörtént-e, ez a szabályzat a bejövő biztonsági szabályokat is ellenőrzi, és azonosítja azokat a szabályokat, amelyek engedélyezik a bejövő forgalmat. |
 | Web application firewall (Webalkalmazási tűzfal) |Webalkalmazási tűzfal beállítását javasolja a virtuális gépeken, ha az alábbiak valamelyike teljesül: <ul><li>A rendszer egy [példányszintű nyilvános IP-címet](../virtual-network/virtual-networks-instance-level-public-ip.md) használ, és a kapcsolódó hálózati biztonsági csoportra vonatkozó bejövő biztonsági szabályok a 80/443-as port elérésének engedélyezésére vannak konfigurálva.</li><li>A rendszer elosztott terhelésű IP-címet használ, és a kapcsolódó terheléselosztás és a hálózati címfordításra (NAT) vonatkozó bejövő szabályok a 80/443-as port elérésének engedélyezésére vannak konfigurálva. A további információkat az [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md) (Azure Resource Manager-támogatás a terheléselosztóhoz) című rész tartalmazza.</li> |
 | Next generation firewall (Új generációs tűzfal) |Az Azure-ba épített hálózati biztonsági csoportokon túlra is kiterjesztheti a hálózati védelmet. A Security Center felderíti az üzemelő példányokat, amelyekhez új generációs tűzfal használata javasolt, és engedélyezi a virtuális berendezés beállítását. |
 | SQL-naplózás és fenyegetésészlelés |Javasolja, hogy a megfelelőség és a jobb fenyegetésészlelés miatt, a támadások hatékonyabb kivizsgálása céljából engedélyezze az SQL Database-hozzáférések naplózását. |

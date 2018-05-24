@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 63d5ae371b4852be96f764b91ec44f1befbd469b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ff57aec76171b45dbebff928f2898bd5f91ec1c2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365542"
 ---
 # <a name="tutorial-deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Linux-alapú Service Fabric-fürt üzembe helyezése egy Azure-beli virtuális hálózatban
-Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan helyezhet üzembe egy Linux rendszert futtató Service Fabric-fürtöt egy [Azure-beli virtuális hálózaton (VNET)](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban (NSG)](../virtual-network/virtual-networks-nsg.md) az Azure CLI és egy sablon használatával. Amikor végzett, a felhőben futó fürttel fog rendelkezni, amelyre alkalmazásokat telepíthet. Ha a PowerShell használatával szeretne Windows-fürtöt létrehozni, lásd: [Biztonságos Windows-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan helyezhet üzembe egy Linux rendszert futtató Service Fabric-fürtöt egy [Azure-beli virtuális hálózaton (VNET)](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban (NSG)](../virtual-network/security-overview.md) az Azure CLI és egy sablon használatával. Amikor végzett, a felhőben futó fürttel fog rendelkezni, amelyre alkalmazásokat telepíthet. Ha a PowerShell használatával szeretne Windows-fürtöt létrehozni, lásd: [Biztonságos Windows-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

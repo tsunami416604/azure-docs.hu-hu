@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 68ed75a9ef2faee408e65c0991182b7d95bb17a8
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2144747fdaa0c596397cc93d8509ca006b67c592
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303504"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366205"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>A csatlakoztatottgyár-alapú megoldásgyorsító bemutatója
 
 A csatlakoztatottgyár-alapú [megoldásgyorsítóval][lnk-preconfigured-solutions] egy teljes körű ipari megoldást implementálhat, amely:
 
-* Szimulált gyártósorokon OPC UA-kiszolgálókat futtató szimulált ipari eszközökhöz és valódi OPC UA-kiszolgálóeszközökhöz is csatlakozik. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md) fejezetben talál további információt.
+* Szimulált gyártósorokon OPC UA-kiszolgálókat futtató szimulált ipari eszközökhöz és valódi OPC UA-kiszolgálóeszközökhöz is csatlakozik. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-accelerators-faq-cf.md) fejezetben talál további információt.
 * Megjeleníti ezen eszközök és gyártósorok működési KPI- és OEE-értékeit.
 * Bemutatja, hogyan lehet kommunikálni az OPC UA-kiszolgálórendszerekkel felhőalapú alkalmazások használatával.
 * Lehetővé teszi, hogy összekapcsolja saját OPC UA-kiszolgálóeszközeit.
@@ -41,7 +41,7 @@ Ebben a cikkben bemutatjuk a csatlakoztatottgyár-alapú megoldás néhány font
 * Megtervezheti, hogy miképpen érdemes testre szabni a megoldást úgy, hogy az megfeleljen egyedi igényeinek.
 * Kialakíthatja saját, Azure-szolgáltatásokat használó IoT-megoldását.
 
-További információ: [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md).
+További információ: [Csatlakoztatott gyár – GYIK](iot-accelerators-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
@@ -127,7 +127,7 @@ A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OP
 
 ## <a name="telemetry-data-flow"></a>Telemetria-adatfolyam
 
-![Telemetria-adatfolyam](media/iot-suite-connected-factory-walkthrough/telemetry_dataflow.png)
+![Telemetria-adatfolyam](./media/iot-accelerators-connected-factory-sample-walkthrough/telemetry_dataflow.png)
 
 ### <a name="flow-steps"></a>A folyamat lépései
 
@@ -179,7 +179,7 @@ A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OP
 
 ## <a name="browsing-data-flow"></a>Böngészési adatfolyam
 
-![Böngészési adatfolyam](media/iot-suite-connected-factory-walkthrough/browsing_dataflow.png)
+![Böngészési adatfolyam](./media/iot-accelerators-connected-factory-sample-walkthrough/browsing_dataflow.png)
 
 ### <a name="flow-steps"></a>A folyamat lépései
 
@@ -233,15 +233,15 @@ A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OP
 Folytassa az IoT-megoldásgyorsítók megismerését az alábbi cikkek elolvasásával:
 
 * [Engedélyek az azureiotsuite.com webhelyen][lnk-permissions]
-* [Átjáró üzembe helyezése Windows vagy Linux rendszeren a csatlakoztatottgyár-alapú megoldásgyorsítóhoz](iot-suite-connected-factory-gateway-deployment.md)
+* [Átjáró üzembe helyezése Windows vagy Linux rendszeren a csatlakoztatottgyár-alapú megoldásgyorsítóhoz](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC-közzétevő referenciamegvalósítása](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
-[connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
+[connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]:../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
-[lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
+[lnk-preconfigured-solutions]:iot-accelerators-what-are-solution-accelerators.md
+[lnk-customize]: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
-[lnk-permissions]: iot-suite-v1-permissions.md
+[lnk-permissions]: ../iot-suite/iot-suite-v1-permissions.md

@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: b85c3030984758a0c425fb526a32fcd8eff974c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0f07bb9a245b9f38fd734c97fe9a3dca836c28d9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367232"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
-Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan helyezhet üzembe Windows rendszert futtató Service Fabric-fürtöt [Azure virtuális hálózatban (VNET)](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban](../virtual-network/virtual-networks-nsg.md) a PowerShell és egy sablon használatával. Amikor végzett, a felhőben futó fürttel fog rendelkezni, amelyre alkalmazásokat telepíthet.  Linux-alapú fürt létrehozása Azure CLI használatával: [Biztonságos Linux-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan helyezhet üzembe Windows rendszert futtató Service Fabric-fürtöt [Azure virtuális hálózatban (VNET)](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban](../virtual-network/security-overview.md) a PowerShell és egy sablon használatával. Amikor végzett, a felhőben futó fürttel fog rendelkezni, amelyre alkalmazásokat telepíthet.  Linux-alapú fürt létrehozása Azure CLI használatával: [Biztonságos Linux-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 Ez az oktatóanyag egy éles forgatókönyvet ismertet.  Ha gyorsan szeretne egy kis méretű fürtöt létrehozni tesztelés céljából, tekintse meg a [háromcsomópont tesztfürt létrehozásáról](./scripts/service-fabric-powershell-create-test-cluster.md) szóló cikket.
 

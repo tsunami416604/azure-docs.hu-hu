@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358047"
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Az első Azure Resource Manager-sablon létrehozása ás üzembe helyezése
 Ez a témakör bemutatja azon lépéseket, amelyekkel elkészítheti az első Resource Manager-sablonját. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md). Ha már rendelkezik erőforrásokkal, és azokhoz kíván sablont használni, lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).

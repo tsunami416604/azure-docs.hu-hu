@@ -15,13 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/22/2018
+ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: afd40d75bb9c5fd3170a4da215925244994d7749
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1707a681315fbb53f21df95664188463968bb855
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34202475"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Kapcsolódás az Azure HDInsighthoz és Hive-lekérdezések futtatása a Data Lake Tools for Visual Studio használatával
 
@@ -204,7 +205,7 @@ Hive-feladatok megtekintése:
 2. Kattintson a jobb gombbal egy HDInsight-fürtre, majd kattintson a **View Jobs** (Feladatok megtekintése) parancsra. Ekkor megjelenik azon Hive-feladatok listája, amelyek a fürtön futottak.  
 3. Válasszon ki egy feladatot. A **Hive Job Summary** (Hive-feladat összegzése) ablakban válassza a következők egyikét:
     - **Job Query** (Feladat lekérdezése)
-    - **Job Output** (Feladat kimenete)
+    - **Feladat kimenete**
     - **Job Log** (Feladatnapló)  
     - **Yarn log** (Yarn-napló)
    

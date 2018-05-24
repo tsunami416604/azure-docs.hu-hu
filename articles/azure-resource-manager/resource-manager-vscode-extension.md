@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358659"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Azure Resource Manager-sablon létrehozása Visual Studio Code-bővítménnyel
 Ez a cikk az Azure Resource Manager Tools-bővítmények telepítésének és használatának előnyeit mutatja be a Visual Studio Code-ban. Resource Manager-sablonokat a VS Code-ban a bővítmény nélkül is létrehozhat, a bővítmény azonban rendelkezik olyan automatikus kiegészítés szolgáltatásokkal, amelyek megkönnyítik a sablonok fejlesztését. A bővítmény a sablonban rendelkezésre álló sablonfüggvényekre, -paraméterekre és -változókra tesz javaslatot.

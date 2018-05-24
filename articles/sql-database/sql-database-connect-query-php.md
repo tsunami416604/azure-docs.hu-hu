@@ -15,6 +15,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363760"
 ---
 # <a name="use-php-to-query-an-azure-sql-database"></a>PHP használata Azure SQL Database-adatbázis lekérdezéséhez
 
