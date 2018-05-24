@@ -17,11 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 63dfa89af64e500e8ed0292ab282150636e57ab3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 165bd6770109348bd19ebb4fa1735bedf83004b1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261317"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-powershell"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoportokkal a PowerShell használatával
 
@@ -146,14 +147,19 @@ $virtualNetwork = Get-AzureRmVirtualNetwork `
 ```
 Hozzon létre egy nyilvános IP-címet minden virtuális gép esetében a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) paranccsal.
 
+```powershell-interactive
 $publicIpWeb = New-AzureRmPublicIpAddress `
-  -AllocationMethod Dynamic ` -ResourceGroupName myResourceGroup `
-  -Location eastus ` -Name myVmWeb
+  -AllocationMethod Dynamic `
+  -ResourceGroupName myResourceGroup `
+  -Location eastus `
+  -Name myVmWeb
 
 $publicIpMgmt = New-AzureRmPublicIpAddress `
-  -AllocationMethod Dynamic ` -ResourceGroupName myResourceGroup `
-  -Location eastus ` -Name myVmMgmt
-
+  -AllocationMethod Dynamic `
+  -ResourceGroupName myResourceGroup `
+  -Location eastus `
+  -Name myVmMgmt
+```
 
 Hozzon létre két hálózati adaptert a [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) paranccsal, és rendeljen hozzájuk egy nyilvános IP-címet. Az alábbi példa létrehoz egy hálózati adaptert, hozzárendeli a *myVmWeb* nyilvános IP-címet, és felveszi azt a *myAsgWebServers* alkalmazásbiztonsági csoport tagjai közé:
 
@@ -297,7 +303,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózat alhálózatához. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](security-overview.md) és [Hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
+Ebben az oktatóanyagban létrehozott egy hálózati biztonsági csoportot, és hozzárendelte azt egy virtuális hálózat alhálózatához. A hálózati biztonsági csoportokkal kapcsolatos további információ: [Hálózati biztonsági csoportok áttekintése](manage-network-security-group.md) és ](security-overview.md)Hálózati biztonsági csoportok kezelése[.
 
 Az Azure alapértelmezés szerint irányítja a forgalmat az alhálózatok között. Ehelyett lehetősége van arra, hogy egy virtuális gépen keresztül irányítsa a forgalmat az alhálózatok között, amely így például tűzfalként is szolgálhat. Ha meg szeretné ismerni, hogyan hozhat létre útválasztási táblázatot, folytassa a következő oktatóanyaggal.
 

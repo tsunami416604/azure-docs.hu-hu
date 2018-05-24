@@ -1,72 +1,168 @@
 ---
-title: Hálózati kapcsolatok Azure hálózati figyelőt - Azure-portálon való figyeléséhez |} Microsoft Docs
-description: Útmutató a hálózati kapcsolat figyelő Azure hálózati figyelőt az Azure portál használatával.
+title: Hálózati kommunikáció monitorozása – oktatóanyag – Azure Portal | Microsoft Docs
+description: Megismerheti, hogyan monitorozhatja a két virtuális gép közötti hálózati kommunikációt az Azure Network Watcher kapcsolatfigyelő funkciójával.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+tags: azure-resource-manager
+Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/16/2018
+ms.date: 04/27/2018
 ms.author: jdial
-ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32776618"
 ---
-# <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Hálózati kapcsolatok figyelő Azure hálózati figyelőt az Azure portál használatával
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
 
-Útmutató a kapcsolat a figyelő a figyelheti egy Azure virtuális gép (VM) és IP-cím közötti hálózati kapcsolat. Kapcsolat a figyelő a forrás és cél IP-cím és port figyelést biztosít. Kapcsolat a figyelő lehetővé teszi, hogy a helyzetekben, például egy virtuális gép futó SQL server ugyanazon vagy másik virtuális hálózatban, és egy virtuális hálózatot a virtuális gép közötti kapcsolatot ellenőrzése az 1433-as porton keresztül. Figyelő kapcsolat kapcsolat késési, egy Azure-figyelő metrika, 60 másodpercenként rögzített biztosít. Emellett a Ugrás által Ugrás topológia lehetővé teszi, és a kapcsolat érintő konfigurációs problémák azonosítja.
+A virtuális gépek és a végpontok (pl. egy másik virtuális gép) közötti sikeres kommunikáció kulcsfontosságú lehet vállalata számára. Olykor előfordulhat, hogy egyes konfigurációs módosítások megszakítják a kommunikációt. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-## <a name="prerequisites"></a>Előfeltételek
+> [!div class="checklist"]
+> * Két virtuális gép létrehozása
+> * Virtuális gépek közötti kommunikáció monitorozása a Network Watcher kapcsolatfigyelő funkciójával
+> * Virtuális gépek közötti kommunikációs probléma diagnosztizálása és a megoldás megismerése
 
-Ebben a cikkben szereplő lépések végrehajtása előtt meg kell felelnie a következő előfeltételek teljesülését:
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* A kapcsolat a figyelni kívánt hálózati figyelőt régióban példánya. Ha még nem rendelkezik egy, létrehozhat egy, a lépések végrehajtásával [hozzon létre egy Azure hálózati figyelőt példányt](network-watcher-create.md).
-* A virtuális gépek a figyelheti. A virtuális gép létrehozásához, lásd: hozzon létre egy [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) virtuális gép.
-* Rendelkezik a `AzureNetworkWatcherExtension` a kapcsolatot a figyelni kívánt virtuális gépen telepítve. A bővítmény telepítéséhez egy Windows virtuális gépre, tekintse át [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és a bővítmény telepítéséhez egy Linux virtuális gép itt talál: [az Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A bővítmény nem szükséges a figyelni kívánt cél végponton.
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+## <a name="create-vms"></a>Virtuális gépek létrehozása
 
-## <a name="create-a-connection-monitor"></a>Egy kapcsolat figyelő létrehozása
+Hozzon létre két virtuális gépet.
 
-Az alábbi lépéseket a kapcsolat a cél virtuális gép 80-as és az 1433-as porton keresztül történő figyelés engedélyezése:
+### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-1. A portál bal oldalán válassza ki a **minden szolgáltatás**.
-2. Kezdje el begépelni *hálózati figyelőt* a a **szűrő** mezőbe. Ha **hálózati figyelőt** megjelenik a keresési eredmények között, jelölje be.
-3. A **figyelés**, jelölje be **kapcsolat figyelő**.
-4. Válassza ki **+ Hozzáadás**.
-5. Adja meg vagy válassza ki a kapcsolat figyelésére, és válassza ki a kívánt adatokat **Hozzáadás**. A példában a következő ábrán látható, a figyelt kapcsolat származik a *MultiTierApp0* virtuális Gépet a *Database0* VM 80-as porton keresztül:
+1. Az Azure Portal bal felső sarkában kattintson az **+ Erőforrás létrehozása** gombra.
+2. Válassza a **Számítás** lehetőséget, majd válasszon egy operációs rendszert. Ebben az oktatóanyagban **Windows Server 2016 Datacenter** rendszert használunk.
+3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    ![Vegye fel a kapcsolatot a figyelő](./media/connection-monitor/add-connection-monitor.png)
+    |Beállítás|Érték|
+    |---|---|
+    |Name (Név)|myVm1|
+    |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
+    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Előfizetés| Válassza ki előfizetését.|
+    |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
+    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
 
-    A figyelés megkezdése. Figyelő kapcsolat 60 másodpercenként mintavétel.
-6. Végezze el ismét az 5. lépés azonos forrás és cél virtuális gépek és a következő értékek megadásával:
-    
-    |Beállítás  |Érték          |
-    |---------|---------      |
-    |Name (Név)     | AppToDB(1433) |
-    |Port     | 1433          |
+4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
+5. A **BEÁLLÍTÁSOK** területen válassza a **Bővítmények** elemet. Válassza a **Bővítmény hozzáadása**, majd a **Windowshoz készült Network Watcher-ügynök** lehetőséget, ahogyan az az alábbi képen is látható:
 
-## <a name="view-connection-monitoring"></a>Nézet kapcsolat ellenőrzése
+    ![Network Watcher-ügynök bővítmény](./media/connection-monitor/nw-agent-extension.png)
 
-1. Végezze el a lépéseket 1 – 3 [hozzon létre egy kapcsolat figyelő](#create-a-connection-monitor) kapcsolat figyelési megtekintéséhez.
-2. Az alábbi képen látható részleteit a *AppToDB(80)* kapcsolat. A **állapot** érhető el. A **nézet diagramot** jeleníti meg a **átlagosan oda-vissza** és **vizsgálat nem sikerült %**. A diagram bemutatja a Ugrás-hop, és jeleníti meg, hogy nincs probléma cél reachability vannak hatással.
+6. A **Windowshoz készült Network Watcher-ügynök** területen válassza a **Létrehozás** elemet, a **Bővítmény telepítése** területen válassza az **OK**, majd a **Bővítmények** területen válassza az **OK** lehetőséget.
+7. Fogadja el az alapértelmezett értékeket a többi **beállításnál**, és válassza az **OK** lehetőséget.
+8. Az **Összegzés** lap **Létrehozás** területén kattintson a **Létrehozás** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
 
-    ![A diagramnézetnek](./media/connection-monitor/view-graph.png)
+### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 
-3. Megtekintés a *AppToDB(1433)* kapcsolat a következő ábrán látható azt látja, hogy ugyanazon forrás és cél virtuális gépek, az állapot nem érhető el 1433-as porton keresztül. A **rácsnézethez** ebben a forgatókönyvben a szolgáltatás által az Ugrás az Ugrás által és a reachability érintő problémát. Ebben az esetben egy NSG-szabály 1433-as portot, a második Ugrás minden forgalmat blokkolja.
+Végezze el ismét [Az első virtuális gép létrehozása](#create-the-first-vm) szakaszban leírt lépéseket az alábbi módosításokkal:
 
-    ![Rácsnézet](./media/connection-monitor/view-grid.png)
+|Lépés|Beállítás|Érték|
+|---|---|---|
+| 1 | Válassza az **Ubuntu Server 17.10 VM** lehetőséget |                                                                         |
+| 3 | Name (Név)                              | myVm2                                                                   |
+| 3 | Hitelesítés típusa               | Illessze be SSH nyilvános kulcsát, vagy válassza a **Jelszó** lehetőséget és adjon meg egy jelszót. |
+| 3 | Erőforráscsoport                    | Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.                 |
+| 6 | Bővítmények                        | **Linuxhoz készült hálózati ügynök**                                             |
+
+A virtuális gép üzembe helyezése néhány percet vesz igénybe. Várjon, amíg a virtuális gép üzembe helyezése befejeződik, mielőtt folytatná a további lépésekkel.
+
+## <a name="create-a-connection-monitor"></a>Kapcsolatfigyelő létrehozása
+
+Hozzon létre egy kapcsolatfigyelőt a *myVm1* és a *myVm2* virtuális gép között a 22-es TCP-porton keresztüli kommunikáció monitorozásához.
+
+1. Válassza a portál bal oldalán található **Minden szolgáltatás** lehetőséget.
+2. Kezdje el begépelni a *Network Watcher* kifejezést a **Szűrő** mezőbe. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
+3. A **FIGYELÉS** területen válassza a **Kapcsolatfigyelő** lehetőséget.
+4. Válassza a **+ Hozzáadás** lehetőséget.
+5. Írja be vagy válassza ki a monitorozni kívánt kapcsolat adatait, majd válassza a **Hozzáadás** lehetőséget. Az alábbi képen látható példában a *myVm1* virtuális géptől a *myVm2* virtuális gépre irányuló, a 22-es porton áthaladó kommunikáció van monitorozva:
+
+    | Beállítás                  | Érték               |
+    | ---------                | ---------           |
+    | Name (Név)                     | myVm1-myVm2(22)     |
+    | Forrás                   |                     |
+    | Virtuális gép          | myVm1               |
+    | Cél              |                     |
+    | Virtuális gép kiválasztása |                     |
+    | Virtuális gép          | myVm2               |
+    | Port                     | 22                  |
+
+    ![Kapcsolatfigyelő hozzáadása](./media/connection-monitor/add-connection-monitor.png)
+
+## <a name="view-a-connection-monitor"></a>Kapcsolatfigyelő megtekintése
+
+1. Hajtsa végre a [Kapcsolatfigyelő létrehozása](#create-a-connection-monitor) szakaszban leírt 1–3. lépést a kapcsolatfigyelő megtekintéséhez. Megjelenik a meglévő kapcsolatfigyelők listája, ahogyan az az alábbi képen is látható:
+
+    ![Kapcsolatfigyelők](./media/connection-monitor/connection-monitors.png)
+
+2. Válassza ki a **myVm1-myVm2(22)** nevű figyelőt a fenti képen látható módon, és tekintse meg a figyelő részleteit az alábbi képen látható módon:
+
+    ![A figyelő részletei](./media/connection-monitor/vm-monitor.png)
+
+    Tekintse meg az alábbi információkat:
+
+    | Elem                     | Érték                      | Részletek                                                     |
+    | ---------                | ---------                  |--------                                                     |
+    | status                   | Elérhető                  | Jelzi, hogy a végpont elérhető-e.|
+    | ÁTL. ADATVÁLTÁS          | A kapcsolat adatváltási idejét jelzi ezredmásodpercben. A kapcsolatfigyelő 60 másodpercenként teszteli a kapcsolatot, így a késést az idő függvényében is monitorozhatja.                                         |
+    | Ugrások                     | A kapcsolatfigyelő jelzi a két végpont közötti ugrásokat. Eben a példában a kapcsolat két, azonos virtuális hálózaton található virtuális gép között jött létre, ezért csak egy ugrásra van szükség a 10.0.0.5 IP-címre. Ha bármilyen meglévő rendszer vagy egyéni útvonal átirányítja a forgalmat a virtuális gépek között egy VPN-átjárón vagy egy hálózati virtuális berendezésen keresztül, további ugrásokra lesz szükség.                                                                                                                         |
+    | ÁLLAPOT                   | A végpontok melletti zöld pipák jelzik, hogy a végpontok kifogástalan állapotúak.    ||
+
+## <a name="view-a-problem"></a>Probléma megtekintése
+
+Alapértelmezés szerint az Azure minden porton engedélyezi a kommunikációt két, azonos virtuális hálózaton található virtuális gép között. Idővel azonban Ön, vagy valaki a vállalatnál felülírhatja az Azure alapértelmezett szabályait, ezzel véletlenül a kommunikáció megszakadását okozva. Az alábbi lépések végrehajtásával idézzen elő kommunikációs problémát, majd tekintse meg ismét a kapcsolatfigyelőt:
+
+1. Írja be a *myResourceGroup* nevet a portál tetején lévő keresőmezőbe. Amikor a **myResourceGroup** erőforráscsoport megjelenik a keresési eredmények között, válassza ki.
+2. Válassza ki a **myVm2-nsg** hálózati biztonsági csoportot.
+3. Válassza a **Bejövő biztonsági szabályok**, majd a **Hozzáadás** elemet a következő képen látható módon:
+
+    ![Bejövő biztonsági szabály](./media/connection-monitor/inbound-security-rules.png)
+
+4. Az alapértelmezett szabály, amely engedélyezi a kommunikációt az azonos virtuális hálózaton található virtuális gépek között, a következő: **AllowVnetInBound**. Hozzon létre egy szabályt az **AllowVnetInBound** szabálynál magasabb prioritással (alacsonyabb számmal), amely elutasítja a 22-es porton keresztül érkező bejövő kommunikációt. Válassza ki vagy írja be a következő adatokat, fogadja el a fennmaradó alapértelmezett adatokat, majd válassza a **Hozzáadás** elemet:
+
+    | Beállítás                 | Érték          |
+    | ---                     | ---            |
+    | Célporttartományok | 22             |
+    | Műveletek                  | Megtagadás           |
+    | Prioritás                | 100            |
+    | Name (Név)                    | DenySshInbound |
+
+5. Mivel a kapcsolatfigyelő 60 másodpercenként vesz mintát, várjon néhány percet, és a portál bal oldalán válassza a **Network Watcher**, majd a **Kapcsolatfigyelő** elemet, és válassza ki ismét a **myVm1-myVm2(22)** figyelőt. Az eredmények most eltérőek lesznek, ahogyan az a következő képen látható:
+
+    ![Monitor details fault](./media/connection-monitor/vm-monitor-fault .png)
+
+    Egy piros felkiáltójel ikon látható a **myvm2529** hálózati adapter állapotoszlopában.
+
+6. Az állapotváltozás okának megismeréséhez válassza ki az előző képen látható 10.0.0.5-ös IP-címet. A kapcsolatfigyelő megmutatja, hogy a kommunikációs hiba oka a következő: *A forgalom blokkolva van a következő hálózati biztonsági csoport szabály miatt: UserRule_DenySshInbound*.
+
+    Ha nem tudott róla, hogy valaki megvalósította a 4. lépésben létrehozott biztonsági szabályt, a kapcsolatfigyelőből megtudhatta, hogy ez a szabály okozza a kommunikációs problémát. Ezután módosíthatja, felülírhatja vagy eltávolíthatja a szabályt, és visszaállíthatja a virtuális gépek közötti kommunikációt.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
+
+1. Írja be a *myResourceGroup* nevet a portál tetején lévő **keresőmezőbe**. Amikor a **myResourceGroup** megjelenik a keresési eredmények között, válassza ki.
+2. Válassza az **Erőforráscsoport törlése** elemet.
+3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-- Csomag rögzíti a virtuális gép riasztások szerint automatizálása [figyelmeztetés csomagrögzítéssel létrehozása](network-watcher-alert-triggered-packet-capture.md).
-- Határozza meg, hogy bizonyos forgalom engedélyezett kívül a virtuális gép vagy a [IP folyamata ellenőrizze](network-watcher-check-ip-flow-verify-portal.md).
+Ez az oktatóanyag bemutatta, hogyan monitorozhatja a két virtuális gép közötti kommunikációt. Megtudta, hogy egy hálózati biztonsági csoport szabály akadályozta meg a virtuális géppel való kommunikációt. A kapcsolatfigyelő által visszaadható válaszok megismeréséhez tekintse meg a [választípusokra](network-watcher-connectivity-overview.md#response) vonatkozó részt. Lehetősége van egy virtuális gép, egy teljes tartománynév, egy URI vagy egy IP-cím közötti kommunikáció monitorozására is.
+
+Előfordulhat, hogy egy virtuális hálózat erőforrásai nem képesek kommunikálni más, Azure virtuális hálózati átjáróval csatlakoztatott hálózatok erőforrásaival. A következő oktatóanyag a virtuális hálózati átjárókkal kapcsolatos problémák diagnosztizálását mutatja be.
+
+> [!div class="nextstepaction"]
+> [Hálózatok közötti kommunikációs problémák diagnosztizálása](diagnose-communication-problem-between-networks.md)
