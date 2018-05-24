@@ -10,24 +10,25 @@ ms.workload: infrastructure-services
 ms.date: 4/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8c87206f75114cb3947d57180f570f8defaf41ea
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 411baa24cc796a40f83e8530ab797f3e377ee5f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356239"
 ---
 # <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Oktatóanyag – Webes forgalom irányítása URL-cím alapján az Azure CLI használatával
 
-Az Azure CLI használatával konfigurálhatja a webes forgalom adott méretezhető kiszolgálókészletekre való irányítását az alkalmazás eléréséhez használt URL-cím alapján. Ebben az oktatóanyagban egy három háttérkészlettel rendelkező [Azure Application Gatewayt](application-gateway-introduction.md) hoz létre [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használatával. Mindegyik háttérkészlet adott célra használható, például a gyakori adatokhoz, a képekhez vagy a videókhoz.  A forgalom különböző készletekre való irányításával elérhető, hogy ügyfelei akkor és azt az információt kapják meg, amelyre és amikor szükségük van.
+Az Azure CLI használatával konfigurálhatja a webes forgalom adott méretezhető kiszolgálókészletekre való irányítását az alkalmazás eléréséhez használt URL-cím alapján. Ebben az oktatóanyagban egy három háttérkészlettel rendelkező [Azure Application Gatewayt](application-gateway-introduction.md) hoz létre [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használatával. Mindegyik háttérkészlet egy adott célhoz használható, például: gyakori adatok, képek, videók.  A forgalom különböző készletekhez való irányítása lehetővé teszi, hogy az ügyfelei akkor és azt az információt kapják meg, amelyre szükségük van.
 
-A forgalom irányításának engedélyezéséhez adott portokon figyelő figyelőkhöz rendelt [útválasztási szabályokat](application-gateway-url-route-overview.md) hoz létre annak érdekében, hogy a webes forgalom a megfelelő kiszolgálókra érkezzen meg a készletben.
+A forgalom irányításának engedélyezéséhez figyelőkhöz hozzárendelt [útválasztási szabályokat](application-gateway-url-route-overview.md) fog létrehozni, amelyek adott portokat figyelnek annak érdekében, hogy a webes forgalom a készlet megfelelő kiszolgálójára érkezzen meg.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
 > * Figyelők, URL-útvonaltérképek és szabályok létrehozása
-> * Méretezhető háttérkészletek létrehozása
+> * Skálázható háttérkészletek létrehozása
 
 
 ![URL-útválasztási példa](./media/tutorial-url-route-cli/scenario.png)
@@ -227,7 +228,7 @@ for i in `seq 1 3`; do
     --name CustomScript \
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
-    --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+    --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
 done
 ```
 
@@ -251,7 +252,7 @@ Módosítsa az URL-címet a http://&lt;ip-cím&gt;:8080/video/test.html értékr
 
 Módosítsa az URL-címet a http://&lt;ip-cím&gt;:8080/video/test.html értékre, és az &lt;ip-cím&gt; helyére írja be a saját IP-címét. Az alábbi példához hasonlónak kell megjelennie.
 
-![Tesztvideó URL-címe az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
+![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
