@@ -1,5 +1,5 @@
 ---
-title: Az első Azure SQL-adatbázis megtervezése SSMS használatával | Microsoft Docs
+title: 'Oktatóanyag: Az első Azure SQL Database-adatbázis megtervezése az SSMS használatával | Microsoft Docs'
 description: Ismerje meg, hogyan tervezheti meg első Azure SQL-adatbázisát az SQL Server Management Studióval.
 services: sql-database
 author: CarlRabeler
@@ -7,28 +7,30 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ba14208e971d712184052e7470757ce48ac26879
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="design-your-first-azure-sql-database-using-ssms"></a>Az első Azure SQL-adatbázis megtervezése SSMS használatával
+# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Oktatóanyag: Az első Azure SQL Database-adatbázis megtervezése az SSMS használatával
 
 Az Azure SQL Database a Microsoft Cloudon (Azure) alapuló, szolgáltatásként nyújtott relációs adatbázis (DBaaS). Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket az Azure Portal és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) használatával: 
 
 > [!div class="checklist"]
-> * Adatbázis létrehozása az Azure Portalon
+> * Adatbázis létrehozása az Azure Portalon*
 > * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 > * Kapcsolódás az adatbázishoz SSMS segítségével
 > * Táblázatok létrehozása az SSMS használatával
 > * Adatok kötegelt betöltése a BCP használatával
 > * Lekérdezés végrehajtása az adatokon az SSMS használatával
-> * Adatbázis egy korábbi [időponthoz kötött visszaállítása](sql-database-recovery-using-backups.md#point-in-time-restore) az Azure Portalon
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+
+   >[!NOTE]
+   > Ebben az oktatóanyagban a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) használjuk, de választhatja a [vCore-alapú vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) használatát is. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,13 +44,13 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Üres SQL-adatbázis létrehozása
 
-Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database-service-tiers.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL Database logikai kiszolgálón](sql-database-features.md) jön létre. 
+Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database-service-tiers-dtu.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL Database logikai kiszolgálón](sql-database-features.md) jön létre. 
 
 Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-2. Az **Új** oldalon válassza az **Adatbázisok**, majd az **Új** oldal **SQL Database** területén a **Létrehozás** lehetőséget.
+2. Az **Új** oldalon válassza az **Adatbázisok** elemet az Azure Marketplace szakaszban, majd kattintson az **SQL Database** elemre a **Kiemelt** szakaszban.
 
    ![üres adatbázis létrehozása](./media/sql-database-design-first-database/create-empty-database.png)
 
@@ -74,7 +76,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
 
 5. Kattintson a **Kiválasztás** gombra.
 
-6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Fedezze fel a DTU-k/virtuális magok számára és a tárterületre vonatkozó, egyes szolgáltatásszinteken elérhető lehetőségeket. 
+6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Fedezze fel a DTU-k/virtuális magok számára és a tárterületre vonatkozó, egyes szolgáltatásszinteken elérhető lehetőségeket. Ebben az oktatóanyagban a [DTU-alapú vásárlási modellt](sql-database-service-tiers-dtu.md) használjuk, de választhatja a [vCore-alapú vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) használatát is. 
 
 7. Ebben az oktatóanyagban válassza a **Standard** szolgáltatásszintet, majd a csúszkával állítson be **100 DTU (S3)** egységet, illetve **400** GB tárhelyet.
 
@@ -83,10 +85,9 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
 8. A **Kiegészítő tárterület** beállítás használatához el kell fogadnia az előzetes verziójú szolgáltatás feltételeit. 
 
    > [!IMPORTANT]
-   > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
-   >
-   >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-   > 
+   > -  A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
+   >-  Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
 
 9. A kiszolgálószint, a DTU-szám és a tárterületméret kiválasztása után kattintson az **Alkalmaz** gombra.  
 
@@ -108,7 +109,7 @@ Az SQL Database szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén
 
 1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő oldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20170824.database.windows.net**), valamint a további konfigurálható beállítások. 
 
-2. Másolja ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. 
+2. Másolja le ezt a teljes kiszolgálónevet, mert a későbbi oktatóanyagok és rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz. 
 
    ![kiszolgáló neve](./media/sql-database-get-started-portal/server-name.png) 
 
@@ -147,7 +148,7 @@ Az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server
 
    | Beállítás       | Ajánlott érték | Leírás | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték. |
+   | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
    | Kiszolgálónév | A teljes kiszolgálónév | A névnek a következőhöz hasonlónak kell lennie: **mynewserver20170824.database.windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
    | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
@@ -297,26 +298,6 @@ Hajtsa végre a következő lekérdezéseket az adatbázistáblákban lévő inf
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time"></a>Adatbázis visszaállítása egy korábbi időpontra
-
-Tegyük fel, hogy véletlenül törölt egy táblát. Ez nem olyasvalami, ami könnyen helyreállítható. Az Azure SQL Database segítségével az elmúlt 35 nap bármelyik pillanatára vissza lehet térni, és ezt az időpontot egy új adatbázisra vissza lehet állítani. Ezzel az adatbázissal visszaállíthatók a törölt adatok. Az alábbi lépések a mintaadatbázist a táblák hozzáadása előtti időpontra állítják vissza.
-
-1. Az adatbázishoz tartozó SQL Database oldalán kattintson az eszköztár **Visszaállítás** elemére. Megnyílik a **Visszaállítás** oldal.
-
-   ![visszaállítás](./media/sql-database-design-first-database/restore.png)
-
-2. Töltse ki a **Visszaállítás** űrlapot a szükséges információkkal:
-    * Adatbázis neve: Adjon meg egy adatbázisnevet 
-    * Időponthoz kötött: Válassza az **Időponthoz kötött** fület a Visszaállítás űrlapon 
-    * Visszaállítási pont: Válasszon ki egy, az adatbázis módosítása előtti időpontot
-    * Célkiszolgáló: Ez az érték adatbázis visszaállításakor nem módosítható 
-    * Rugalmas adatbáziskészlet: Válassza a **Nincs** lehetőséget  
-    * Tarifacsomag: Válassza a **20 DTU** egységet, illetve a **40 GB** tárhelyet.
-
-   ![visszaállítási pont](./media/sql-database-design-first-database/restore-point.png)
-
-3. Kattintson az **OK** gombra az adatbázis a táblák hozzáadása előtti [időpontra](sql-database-recovery-using-backups.md#point-in-time-restore) való visszaállításához. Az adatbázis egy másik időpontra való visszaállítása a megadott időpontnak megfelelő duplikált adatbázist hoz létre ugyanazon a kiszolgálón, amelyen az eredeti adatbázis található, amennyiben az adott pont a [szolgáltatásszint](sql-database-service-tiers.md) adatmegőrzési időszakán belül esik.
-
 ## <a name="next-steps"></a>További lépések 
 Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatokat, mint például az adatbázisok és táblák létrehozását, az adatok betöltését és lekérdezését, valamint az adatbázisok korábbi időpontra való visszaállítását. Megismerte, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
@@ -326,7 +307,6 @@ Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatokat, mint p�
 > * Táblázatok létrehozása
 > * Adatok kötegelt betöltése
 > * Az adatok lekérdezése
-> * Adatbázis visszaállítása egy korábbi időpontra az SQL Database [időponthoz kötött visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) képességeinek használatával
 
 Folytassa a következő oktatóanyaggal, amely az adatbázisok Visual Studio és C# használatával történő tervezését ismerteti.
 

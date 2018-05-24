@@ -1,6 +1,6 @@
 ---
-title: "Windowsos asztali alkalmazások használatának és teljesítményének figyelése"
-description: "Windowsos asztali alkalmazások használatát és teljesítményét elemezheti a HockeyApp és az Application Insights segítségével."
+title: Windowsos asztali alkalmazások használatának és teljesítményének figyelése
+description: A windowsos asztali alkalmazások használatát és teljesítményét az Application Insights segítségével elemezheti.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -11,25 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/26/2016
+ms.date: 04/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b91996c12a27847befcacf6daf14457a0e066aa
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5b325fd4326f2594a7386c65dea17a3da19abde8
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>Windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
-
-Az [Azure Application Insights](app-insights-overview.md) és a [HockeyApp](https://hockeyapp.net) a telepített alkalmazások használatának és teljesítményének figyelését teszi lehetővé.
-
-> [!IMPORTANT]
-> Az asztali és eszközalkalmazások terjesztésére és figyelésére a [HockeyApp](https://hockeyapp.net) szolgáltatást ajánljuk. A HockeyApp segítségével a terjesztést, a működés közbeni tesztelést és a felhasználói visszajelzéseket felügyelheti, valamint a használatot és az összeomlási jelentéseket figyelheti. Ezen túlmenően [telemetriai adatokat exportálhat és kérdezhet le az Analytics használatával](app-insights-hockeyapp-bridge-app.md).
-> 
-> Bár küldhetők asztali alkalmazásból származó telemetriai adatok az Application Insightsba, ez elsősorban hibakeresésre és kísérletezésre szolgál.
-> 
-> 
+Bár küldhetők asztali alkalmazásból származó telemetriai adatok az Application Insightsba, ez elsősorban hibakeresésre és kísérletezésre szolgál.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-windows-application"></a>Windows-alkalmazásból származó telemetriai adatok küldése az Application Insightsba
 1. [Hozzon létre egy Application Insights-erőforrást](app-insights-create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza az ASP.NET-alkalmazás lehetőséget.

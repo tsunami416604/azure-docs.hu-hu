@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: overview
-ms.date: 04/12/2018
+ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: da2ab7b0d8b83238def346790362b680cd8eda23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27b394a6b2d2f85afeb809fcad3b88564f3054e7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="azure-analysis-services-overview"></a>Azure Analysis Services – áttekintés
+# <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Az Azure Analysis Services vállalati szintű adatmodellezést nyújt a felhőben. Ez egy teljes körűen felügyelt platformszolgáltatás, amely integrálva van az Azure adatplatform-szolgáltatásaival. 
 
-Az Analysis Services segítségével több forrásból egyesítheti és kombinálhatja az adatokat, mérőszámokat határozhat meg, és egyetlen, megbízható szemantikai adatmodellben biztosíthatja az adatok védelmét. Az adatmodell egyszerűbb és gyorsabb módot biztosít a felhasználók számára, hogy nagy mennyiségű adatok között böngésszenek olyan ügyfélalkalmazásokkal, mint a Power BI, az Excel, a Reporting Services, illetve harmadik féltől származó és egyéni alkalmazásokkal.
+Az Analysis Services segítségével több adatforrásból egyesítheti és kombinálhatja az adatokat, mérőszámokat határozhat meg, és egyetlen, megbízható szemantikai adatmodellben biztosíthatja az adatok védelmét. Az adatmodell egyszerűbb és gyorsabb módot biztosít a felhasználók számára, hogy nagy mennyiségű adatok között böngésszenek olyan ügyfélalkalmazásokkal, mint a Power BI, az Excel, a Reporting Services, illetve harmadik féltől származó és egyéni alkalmazásokkal.
 
 ![Adatforrások](./media/analysis-services-overview/aas-overview-data-sources.png)
 
@@ -57,7 +57,7 @@ Az Azure Analysis Services szolgáltatásai a következő [Azure-régiókban](ht
 
 | Amerika | Európa | Ázsia és a Csendes-óceáni térség |
 |----------|--------|--------------|
-|  Dél-Brazília<br> Közép-Kanada<br> USA 2. keleti régiója<br> USA északi középső régiója<br> USA déli középső régiója<br> USA nyugati középső régiója<br> USA nyugati régiója | Észak-Európa<br> Az Egyesült Királyság déli régiója<br> Nyugat-Európa |   Délkelet-Ausztrália<br> Kelet-Japán<br> Délkelet-Ázsia<br> Nyugat-India  |
+|  Dél-Brazília<br> Közép-Kanada<br> USA keleti régiója<br> USA 2. keleti régiója<br> USA északi középső régiója<br> USA középső régiója<br> USA déli középső régiója<br> USA nyugati középső régiója<br> USA nyugati régiója<br> USA 2. nyugati régiója | Észak-Európa<br> Az Egyesült Királyság déli régiója<br> Nyugat-Európa |   Délkelet-Ausztrália<br> Kelet-Japán<br> Délkelet-Ázsia<br> Nyugat-India  |
 
 Folyamatosan veszünk fel új régiókat, így lehetséges, hogy ez a lista nem teljes. A helyet megadhatja az Azure Resource Manager-sablonok használatával, vagy a kiszolgáló Azure Portalon történő létrehozásakor. A legjobb teljesítmény eléréséhez a legnagyobb felhasználói bázisához legközelebb eső helyet válassza ki. Ha a modelljeit több régióban található redundáns kiszolgálókon helyezi üzembe, biztosíthatja a [magas rendelkezésre állást](analysis-services-bcdr.md).
 
@@ -134,4 +134,5 @@ Javaslatai vagy új funkciókkal kapcsolatos felvetései vannak? Írja meg az [A
 Javaslatai vannak a dokumentációval kapcsolatosan? Szóljon hozzá a Livefyre segítségével a cikkek alján.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy már többet tud az Azure Analysis Servicesről, itt az ideje megtenni az első lépéseket. Megtudhatja, hogyan [hozhat létre kiszolgálót](analysis-services-create-server.md) az Azure-ban. Ha a kiszolgáló készen áll, hajtsa végre az [Adventure Works-oktatóanyag](tutorials/aas-adventure-works-tutorial.md) lépéseit. Ezekből megtudhatja, hogyan hozhat létre és helyezhet üzembe a kiszolgálón egy teljes körűen használható táblázatos modellt.
+Megtudhatja, hogyan [hozhat létre kiszolgálót](analysis-services-create-server.md) az Azure-ban.   
+A kiszolgáló létrehozása után [adjon hozzá egy mintamodellt](analysis-services-create-sample-model.md).   

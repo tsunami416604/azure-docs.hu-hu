@@ -1,22 +1,22 @@
 ---
-title: "Linux rendszerű SQL Server 2017-virtuálisgép létrehozása az Azure-ban | Microsoft Docs"
-description: "Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Linux rendszerű SQL Server 2017-virtuálisgépet az Azure Portalon."
+title: Linux rendszerű SQL Server 2017-virtuálisgép létrehozása az Azure-ban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Linux rendszerű SQL Server 2017-virtuálisgépet az Azure Portalon.
 services: virtual-machines-linux
 author: rothja
 ms.author: jroth
 manager: jhubbard
-ms.date: 10/25/2017
+ms.date: 05/11/2018
 ms.topic: hero-article
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b86dd47c112c38bc65c045158787d19b470899a0
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Linux rendszerű SQL Server-virtuálisgép létrehozása az Azure Portalon
 
@@ -71,7 +71,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Kattintson az **OK** gombra.
 
-1. A **Méret** ablakban válassza ki a virtuális gép méretét. A további méretek megtekintéséhez válassza az **Összes megtekintése** elemet. A virtuális gépek méretével kapcsolatban további információt a [Linux rendszerű virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) ismertető cikkben talál.
+1. A **Méret** ablakban válassza ki a virtuális gép méretét. A virtuális gépek méretével kapcsolatban további információt a [Linux rendszerű virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) ismertető cikkben talál.
 
     ![Virtuális gép méretének kiválasztása](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
@@ -80,9 +80,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Kattintson a **Kiválasztás** gombra.
 
-1. A **Beállítások** ablakban módosíthatja a beállításokat, vagy meghagyhatja az alapértelmezett beállításokat.
+1. A **Beállítások** ablakban válassza ki az **SSH (22)** portot a **Nyilvános bejövő portok kiválasztása** listában. Ez ebben az oktatóanyagban szükséges az SQL Serverhez való csatlakozáshoz és a konfigurálás elvégzéséhez. Ha távolról szeretne az SQL Serverhez kapcsolódni, válassza ki az **MS SQL (1433)** lehetőséget is a 1433-as port megnyitásához az interneten keresztüli kapcsolatokhoz.
 
-1. Kattintson az **OK** gombra.
+   ![Bejövő portok](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+
+1. Módosíthatja a többi beállítást, vagy meghagyhatja az alapértelmezett beállításokat. Ezután kattintson az **OK** gombra.
 
 1. Az **Összefoglalás** lapon kattintson a **Vásárlás** elemre a virtuális gép létrehozásához.
 
@@ -145,7 +147,10 @@ Alapértelmezés szerint a rendszer több SQL Server-[csomagot](sql-server-linux
 
 ## <a id="remote"></a> Konfigurálás távoli kapcsolatokhoz
 
-Ha távolról kell csatlakoznia az Azure-beli virtuális gépen futó SQL Serverhez, ahhoz konfigurálnia kell egy bejövő szabályt a hálózat biztonsági csoportjában. Ez a szabály engedélyezi a forgalmat azon a porton keresztül, amelyet az SQL Server figyel (ez alapértelmezés szerint az 1433-as). A következő lépések bemutatják, hogyan végezheti el ezt a lépést az Azure Portal használatával. 
+Ha távolról kell csatlakoznia az Azure-beli virtuális gépen futó SQL Serverhez, ahhoz konfigurálnia kell egy bejövő szabályt a hálózat biztonsági csoportjában. Ez a szabály engedélyezi a forgalmat azon a porton keresztül, amelyet az SQL Server figyel (ez alapértelmezés szerint az 1433-as). A következő lépések bemutatják, hogyan végezheti el ezt a lépést az Azure Portal használatával.
+
+> [!TIP]
+> Ha a kiépítés során kiválasztotta az **MS SQL (1433)** bejövő portot, a rendszer már elvégezte ezeket a módosításokat. Továbbléphet a következő szakaszra, amely a tűzfal konfigurálásával foglalkozik.
 
 1. A portálon válassza a **Virtuális gépek** elemet, és válassza ki az SQL Server-t tartalmazó virtuális gépet.
 
